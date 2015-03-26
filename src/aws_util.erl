@@ -2,7 +2,8 @@
 
 %% API exports
 -export([base16/1,
-         binary_join/2]).
+         binary_join/2,
+         sha256_hexdigest/1]).
 
 %%====================================================================
 %% API functions
@@ -19,6 +20,11 @@ binary_join(List, Sep) when is_list(Sep)  ->
     binary_join(List, list_to_binary(Sep));
 binary_join([H|T], Sep) ->
     binary_join(T, H, Sep).
+
+%% Create a SHA256 hexdigest for Value.
+-spec sha256_hexdigest(binary()) -> binary().
+sha256_hexdigest(Value) ->
+    aws_util:base16(crypto:hash(sha256, Value)).
 
 %%====================================================================
 %% Internal utility functions
@@ -65,5 +71,18 @@ binary_join_with_single_element_list_test() ->
 %% provided.
 binary_join_with_empty_list_test() ->
     ?assertEqual(binary_join([], <<",">>), <<"">>).
+
+
+%% sha256_hexdigest/1 returns a SHA256 hexdigest for an empty value.
+sha256_hexdigest_with_empty_value_test() ->
+    ?assertEqual(
+       <<"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855">>,
+       sha256_hexdigest(<<"">>)).
+
+%% sha256_hexdigest/1 returns a SHA256 hexdigest for a non-empty body.
+sha256_hexdigest_test() ->
+    ?assertEqual(
+       <<"315f5bdb76d078c43b8ac0064e4a0164612b1fce77c869345bfc94c75894edd3">>,
+       sha256_hexdigest(<<"Hello, world!">>)).
 
 -endif.

@@ -1,7 +1,7 @@
 -module(aws_generator).
 
 %% API exports.
--exports([generate/2]).
+-export([generate/2]).
 
 -type schema() :: [tuple()].
 
@@ -14,7 +14,7 @@
 %% <code>{Headers, Source}</code>.
 -spec generate(string(), schema()) -> {string(), string()}.
 generate(_Name, _Schema) ->
-    {"", ""}.
+    {snake_case(""), ""}.
 
 %%====================================================================
 %% Internal functions
