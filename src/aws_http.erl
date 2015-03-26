@@ -84,18 +84,18 @@ payload_hash(Body) ->
 -ifdef(TEST).
 -include_lib("eunit/include/eunit.hrl").
 
-%% split_url/2 splits a URL from its query string, URL encodes the query
+%% split_url/1 splits a URL from its query string, URL encodes the query
 %% string, and returns the URL and query string as separate values.
 split_url_test() ->
     ?assertEqual({<<"https://example.com/index">>, <<"one=1&two=2">>},
                  split_url(<<"https://example.com/index?one=1&two=2">>)).
 
-%% split_url/2 returns an empty binary if no query string is present.
+%% split_url/1 returns an empty binary if no query string is present.
 split_url_without_query_string_test() ->
     ?assertEqual({<<"https://example.com/index">>, <<"">>},
                  split_url(<<"https://example.com/index?">>)).
 
-%% split_url/2 returns an empty binary if no query string is present.
+%% split_url/1 returns an empty binary if no query string is present.
 split_url_with_all_uri_elements_test() ->
     ?assertEqual(
        {<<"https://username:secret@example.com:80/index">>, <<"one=1">>},
