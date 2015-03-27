@@ -1,12 +1,12 @@
 -module(aws_util).
 
-%% API exports
 -export([base16/1,
          binary_join/2,
+         hmac_sha256_hexdigest/2,
          sha256_hexdigest/1]).
 
 %%====================================================================
-%% API functions
+%% API
 %%====================================================================
 
 %% Base16 encode binary data.
@@ -26,8 +26,14 @@ binary_join([H|T], Sep) ->
 sha256_hexdigest(Value) ->
     aws_util:base16(crypto:hash(sha256, Value)).
 
+%% Create an HMAC-SHA256 hexdigest for Key and Message.
+-spec hmac_sha256_hexdigest(binary(), binary()) -> binary().
+hmac_sha256_hexdigest(Key, Message) ->
+    %% FIXME(jkakar) test this.
+    aws_util:base16(crypto:hmac(sha256, Key, Message)).
+
 %%====================================================================
-%% Internal utility functions
+%% Internal functions
 %%====================================================================
 
 %% Convert an integer in the 0-16 range to a hexadecimal byte
@@ -44,7 +50,7 @@ binary_join([H|T], Acc, Sep) ->
     binary_join(T, <<Acc/binary, Sep/binary, H/binary>>, Sep).
 
 %%====================================================================
-%% Unit test functions
+%% Unit tests
 %%====================================================================
 
 -ifdef(TEST).

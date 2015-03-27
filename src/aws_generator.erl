@@ -1,12 +1,11 @@
 -module(aws_generator).
 
-%% API exports.
 -export([generate/2]).
 
 -type schema() :: [tuple()].
 
 %%====================================================================
-%% API functions
+%% API
 %%====================================================================
 
 %% Generate a module called <code>Name</code> based on the API
@@ -33,7 +32,7 @@ char_to_snake_case(Char) ->
     end.
 
 %%====================================================================
-%% Unit test functions
+%% Unit test
 %%====================================================================
 
 -ifdef(TEST).

@@ -1,6 +1,5 @@
 -module(aws_signature).
 
-%% API exports
 -export([v4/8]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
@@ -9,29 +8,62 @@
 -type headers() :: list(header()).
 
 %%====================================================================
-%% API functions
+%% API
 %%====================================================================
 
-%% Generate an AWS signature version 4 for the specified request.
-v4(_SecretAccessKey, Region, Service, Now, Method, URL, Headers, Body) ->
+%% Generate headers with an AWS signature version 4 for the specified
+%% request.
+v4(AccessKeyID, SecretAccessKey, Region, Service, Method, URL, Headers,
+   Body) ->
+    Now = calendar:universal_time(),
+    v4(AccessKeyID, SecretAccessKey, Region, Service, Now, Method, URL,
+       Headers, Body).
+
+%% Generate headers with an AWS signature version 4 for the specified
+%% request using the specified time when generating signatures.
+v4(_AccessKeyID, SecretAccessKey, Region, Service, Now, Method, URL, Headers,
+   Body) ->
+    LongDate = list_to_binary(ec_date:format("YmdTHMSZ", Now)),
+    ShortDate = list_to_binary(ec_date:format("Ymd", Now)),
     CanonicalRequest = canonical_request(Method, URL, Headers, Body),
     HashedCanonicalRequest = aws_util:sha256_hexdigest(CanonicalRequest),
-    LongDate = ec_date:format("YmdTHMSZ", Now),
-    ShortDate = ec_date:format("Ymd", Now),
     CredentialScope = credential_scope(ShortDate, Region, Service),
+    _SignatureKey = signature_key(SecretAccessKey, ShortDate, Region, Service),
     _StringToSign = string_to_sign(LongDate, CredentialScope,
                                   HashedCanonicalRequest),
-    undefined.
+    Headers.
 
 %%====================================================================
 %% Internal functions
 %%====================================================================
 
-credential_scope(Date, Region, Service) ->
-    aws_util:binary_join([Date, Region, Service, <<"aws4_request">>], "/").
+%% Generate a HMAC-SHA256 signature.
+-spec sign(binary(), binary()) -> binary().
+sign(Key, Message) ->
+    aws_util:hmac_sha256_hexdigest(Key, Message).
 
-string_to_sign(Date, CredentialScope, HashedCanonicalRequest) ->
-    aws_util:binary_join([<<"AWS4-HMAC-SHA256">>, Date, CredentialScope,
+%% Generate a signature key from a secret access key, a short date in
+%% YYMMDD format, a region identifier and a service identifier.
+-spec signature_key(binary(), binary(), binary(), binary()) -> binary().
+signature_key(SecretAccessKey, ShortDate, Region, Service) ->
+    SignedDate = sign(<< <<"AWS4">>/binary, SecretAccessKey/binary>>,
+                      ShortDate),
+    SignedRegion = sign(SignedDate, Region),
+    SignedService = sign(SignedRegion, Service),
+    sign(SignedService, <<"aws4_request">>).
+
+%% Generate a credential scope from a short date in YYMMDD format, a
+%% region identifier and a service identifier.
+-spec credential_scope(binary(), binary(), binary()) -> binary().
+credential_scope(ShortDate, Region, Service) ->
+    aws_util:binary_join([ShortDate, Region, Service, <<"aws4_request">>],
+                         "/").
+
+%% Generate the text to sign from a long date in YYMMDDTHHMMSSZ format, a
+%% credential scope and a hashed canonical request.
+-spec string_to_sign(binary(), binary(), binary()) -> binary().
+string_to_sign(LongDate, CredentialScope, HashedCanonicalRequest) ->
+    aws_util:binary_join([<<"AWS4-HMAC-SHA256">>, LongDate, CredentialScope,
                           HashedCanonicalRequest],
                          "\n").
 
@@ -89,17 +121,44 @@ signed_header({Name, _}) ->
     list_to_binary(string:strip(string:to_lower(binary_to_list(Name)))).
 
 %%====================================================================
-%% Unit test functions
+%% Unit tests
 %%====================================================================
 
 -ifdef(TEST).
 -include_lib("eunit/include/eunit.hrl").
 
-%% credential_scope/3 combines a date, region and service name and
+%% signature_key/4 creates a signature key from a secret access key, short
+%% date, region identifier and service identifier.
+signature_key_test() ->
+    ?assertEqual(
+       <<"4c804ed64ddbae9322ee4d6933b4ff24158cd0079a644e20689b64e309ca409e">>,
+       signature_key(<<"secret-access-key">>, <<"20150326">>, <<"us-east-1">>,
+                     <<"s3">>)).
+
+%% credential_scope/3 combines a short date, region and service name and
 %% signature identifier into a slash-joined binary value.
 credential_scope_test() ->
     ?assertEqual(<<"20150325/us-east-1/iam/aws4_request">>,
                  credential_scope(<<"20150325">>, <<"us-east-1">>, <<"iam">>)).
+
+%% string_to_sign/3 combines a long date, credential scope and hash
+%% canonical request into a binary value that's ready to sign.
+string_to_sign_test() ->
+    LongDate = <<"20150326T202136Z">>,
+    CredentialScope = credential_scope(
+                        <<"20150325">>, <<"us-east-1">>, <<"iam">>),
+    CanonicalRequest = canonical_request(
+                         <<"GET">>, <<"https://example.com">>,
+                         [{<<"Host">>, <<"example.com">>},
+                          {<<"X-Amz-Date">>, <<"20150325T105958Z">>}],
+                         <<"">>),
+    HashedCanonicalRequest = aws_util:sha256_hexdigest(CanonicalRequest),
+    ?assertEqual
+       (<< <<"AWS4-HMAC-SHA256">>/binary, <<"\n">>/binary,
+           LongDate/binary, <<"\n">>/binary,
+           CredentialScope/binary, <<"\n">>/binary,
+           HashedCanonicalRequest/binary>>,
+        string_to_sign(LongDate, CredentialScope, HashedCanonicalRequest)).
 
 %% canonical_request/4 converts an HTTP method, URL, headers and body into
 %% a canonical request for AWS signature version 4

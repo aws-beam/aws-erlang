@@ -1,12 +1,13 @@
 -module(aws).
 
-%% API exports
 -export([creds/2]).
+
 -include("include/aws.hrl").
 
 %%====================================================================
-%% API functions
+%% API
 %%====================================================================
+
 
 creds(AccessKeyID, SecretAccessKey) ->
     #creds{access_key_id=AccessKeyID, secret_access_key=SecretAccessKey}.
@@ -32,7 +33,7 @@ creds(AccessKeyID, SecretAccessKey) ->
 %%====================================================================
 
 %%====================================================================
-%% Unit test functions
+%% Unit tests
 %%====================================================================
 
 -ifdef(TEST).
