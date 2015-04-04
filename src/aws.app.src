@@ -4,9 +4,9 @@
  ,{registered, []}
  ,{applications,
     [kernel
+    ,stdlib
     ,hackney
-    ,jsx
-    ,stdlib]}
+    ,jsx]}
  ,{env,[]}
  ,{modules, []}
  ]}.
