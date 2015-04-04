@@ -29,7 +29,6 @@ sha256_hexdigest(Value) ->
 %% Create an HMAC-SHA256 hexdigest for Key and Message.
 -spec hmac_sha256_hexdigest(binary(), binary()) -> binary().
 hmac_sha256_hexdigest(Key, Message) ->
-    %% FIXME(jkakar) test this.
     aws_util:base16(crypto:hmac(sha256, Key, Message)).
 
 %%====================================================================
@@ -90,5 +89,11 @@ sha256_hexdigest_test() ->
     ?assertEqual(
        <<"315f5bdb76d078c43b8ac0064e4a0164612b1fce77c869345bfc94c75894edd3">>,
        sha256_hexdigest(<<"Hello, world!">>)).
+
+%% hmac_sha256_hexdigest/2 returns an HMAC SHA256 hexdigest for a message.
+hmac_sha256_hexdigest_test() ->
+    ?assertEqual(
+       <<"6e9ef29b75fffc5b7abae527d58fdadb2fe42e7219011976917343065f58ed4a">>,
+       hmac_sha256_hexdigest(<<"key">>, <<"message">>)).
 
 -endif.

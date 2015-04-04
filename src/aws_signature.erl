@@ -29,7 +29,7 @@ v4(AccessKeyID, SecretAccessKey, Region, Service, Now, Method, URL, Headers, Bod
     SigningKey = signing_key(SecretAccessKey, ShortDate, Region, Service),
     StringToSign = string_to_sign(LongDate, CredentialScope,
                                   HashedCanonicalRequest),
-    Signature = sign(SigningKey, StringToSign),
+    Signature = aws_util:hmac_sha256_hexdigest(SigningKey, StringToSign),
     SignedHeaders = signed_headers(Headers1),
     Authorization = authorization(AccessKeyID, CredentialScope, SignedHeaders,
                                   Signature),
@@ -59,20 +59,15 @@ authorization(AccessKeyID, CredentialScope, SignedHeaders, Signature) ->
        <<", SignedHeaders=">>/binary, SignedHeaders/binary,
        <<", Signature=">>/binary, Signature/binary >>.
 
-%% Generate a HMAC-SHA256 signature.
--spec sign(binary(), binary()) -> binary().
-sign(Key, Message) ->
-    aws_util:hmac_sha256_hexdigest(Key, Message).
-
 %% Generate a signing key from a secret access key, a short date in YYMMDD
 %% format, a region identifier and a service identifier.
 -spec signing_key(binary(), binary(), binary(), binary()) -> binary().
 signing_key(SecretAccessKey, ShortDate, Region, Service) ->
-    SignedDate = sign(<< <<"AWS4">>/binary, SecretAccessKey/binary>>,
-                      ShortDate),
-    SignedRegion = sign(SignedDate, Region),
-    SignedService = sign(SignedRegion, Service),
-    sign(SignedService, <<"aws4_request">>).
+    SigningKey = << <<"AWS4">>/binary, SecretAccessKey/binary>>,
+    SignedDate = aws_util:hmac_sha256_hexdigest(SigningKey, ShortDate),
+    SignedRegion = aws_util:hmac_sha256_hexdigest(SignedDate, Region),
+    SignedService = aws_util:hmac_sha256_hexdigest(SignedRegion, Service),
+    aws_util:hmac_sha256_hexdigest(SignedService, <<"aws4_request">>).
 
 %% Generate a credential scope from a short date in YYMMDD format, a
 %% region identifier and a service identifier.
@@ -181,25 +176,6 @@ add_date_header_test() ->
                   {<<"Host">>, <<"example.com">>}],
                  add_date_header([{<<"Host">>, <<"example.com">>}],
                                  <<"20150326T221217Z">>)).
-
-%% sign/2 creates a signature from a signing key and the string to sign.
-sign_test() ->
-    SigningKey = signing_key(<<"secret-access-key">>, <<"20150326">>,
-                             <<"us-east-1">>, <<"s3">>),
-    LongDate = <<"20150326T202136Z">>,
-    CredentialScope = credential_scope(
-                        <<"20150325">>, <<"us-east-1">>, <<"iam">>),
-    CanonicalRequest = canonical_request(
-                         <<"GET">>, <<"https://example.com">>,
-                         [{<<"Host">>, <<"example.com">>},
-                          {<<"X-Amz-Date">>, <<"20150325T105958Z">>}],
-                         <<"">>),
-    HashedCanonicalRequest = aws_util:sha256_hexdigest(CanonicalRequest),
-    StringToSign = string_to_sign(LongDate, CredentialScope,
-                                  HashedCanonicalRequest),
-    ?assertEqual(
-       <<"79daaebf3b7c59c7f1e79f1e30279b4b93536fcdff446f2e34dae262765cd3b1">>,
-       sign(SigningKey, StringToSign)).
 
 %% signing_key/4 creates a signing key from a secret access key, short
 %% date, region identifier and service identifier.
