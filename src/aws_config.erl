@@ -33,35 +33,53 @@ default_region(Region) -> Region.
 -ifdef(TEST).
 -include_lib("eunit/include/eunit.hrl").
 
-%% default_config/0 returns a configuration map with default values.
-default_config_test() ->
+%% make_config/0 returns a configuration map with default values.
+make_config_test() ->
     ?assertEqual(#{endpoint => undefined,
                    region => undefined,
                    access_key_id => undefined,
                    secret_access_key => undefined,
                    session_token => undefined},
-                 default_config()).
+                 make_config()).
 
-%% default_config/0 initializes the region from the AWS_REGION environment
+%% make_config/0 initializes the region from the AWS_REGION environment
 %% variables when it's set.
-default_config_with_region_environment_variable_test_() ->
+make_config_with_region_environment_variable_test_() ->
     AWSRegion = os:getenv("AWS_REGION"),
-    {spawn,
-     {setup,
-      fun () -> os:putenv("AWS_REGION", "us-east-1-a") end,
-      fun (_) -> case AWSRegion of
-                     false -> os:unsetenv("AWS_REGION");
-                     _ -> os:putenv("AWS_REGION", AWSRegion)
-                 end
-      end,
-      [fun () -> ?assertEqual(#{endpoint => undefined,
-                                region => "us-east-1-a",
-                                access_key_id => undefined,
-                                secret_access_key => undefined,
-                                session_token => undefined},
-                              default_config())
-       end]
-     }
+    {setup,
+     fun () -> os:putenv("AWS_REGION", "us-east-1") end,
+     fun (_) -> case AWSRegion of
+                    false -> os:unsetenv("AWS_REGION");
+                    _ -> os:putenv("AWS_REGION", AWSRegion)
+                end
+     end,
+     fun () -> ?assertEqual(#{endpoint => undefined,
+                              region => "us-east-1",
+                              access_key_id => undefined,
+                              secret_access_key => undefined,
+                              session_token => undefined},
+                            make_config())
+     end
+    }.
+
+%% make_config/1 prefers the user provided region value when the AWS_REGION
+%% environment variable is defined.
+make_config_with_region_environment_variable_prefers_user_defined_value_test_() ->
+    AWSRegion = os:getenv("AWS_REGION"),
+    {setup,
+     fun () -> os:putenv("AWS_REGION", "us-east-1-a") end,
+     fun (_) -> case AWSRegion of
+                    false -> os:unsetenv("AWS_REGION");
+                    _ -> os:putenv("AWS_REGION", AWSRegion)
+                end
+     end,
+     fun () -> ?assertEqual(#{endpoint => undefined,
+                              region => "eu-west-1",
+                              access_key_id => undefined,
+                              secret_access_key => undefined,
+                              session_token => undefined},
+                            make_config(#{region => "eu-west-1"}))
+     end
     }.
 
 -endif.

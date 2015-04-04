@@ -20,7 +20,7 @@ v4(AccessKeyID, SecretAccessKey, Region, Service, Method, URL, Headers, Body) ->
 %% Generate headers with an AWS signature version 4 for the specified
 %% request using the specified time when generating signatures.
 v4(AccessKeyID, SecretAccessKey, Region, Service, Now, Method, URL, Headers, Body) ->
-    LongDate = list_to_binary(ec_date:format("YmdTHMSZ", Now)),
+    LongDate = list_to_binary(ec_date:format("YmdTGisZ", Now)),
     ShortDate = list_to_binary(ec_date:format("Ymd", Now)),
     Headers1 = add_date_header(Headers, LongDate),
     CanonicalRequest = canonical_request(Method, URL, Headers1, Body),
@@ -30,7 +30,7 @@ v4(AccessKeyID, SecretAccessKey, Region, Service, Now, Method, URL, Headers, Bod
     StringToSign = string_to_sign(LongDate, CredentialScope,
                                   HashedCanonicalRequest),
     Signature = sign(SigningKey, StringToSign),
-    SignedHeaders = signed_headers(Headers),
+    SignedHeaders = signed_headers(Headers1),
     Authorization = authorization(AccessKeyID, CredentialScope, SignedHeaders,
                                   Signature),
     add_authorization_header(Headers1, Authorization).
@@ -146,6 +146,26 @@ signed_header({Name, _}) ->
 
 -ifdef(TEST).
 -include_lib("eunit/include/eunit.hrl").
+
+%% v4/8 generates an AWS signature version 4 for a request and returns a
+%% new set of HTTP headers with Authorization and X-Aws-Date header/value
+%% pairs added.
+v4_test() ->
+    AccessKeyID = <<"access-key-id">>,
+    SecretAccessKey = <<"secret-access-key">>,
+    Region = <<"us-east-1">>,
+    Service = <<"ec2">>,
+    Now = {{2015, 4, 3}, {21, 31, 17}},
+    Method = <<"GET">>,
+    URL = <<"https://ec2.us-east-1.amazonaws.com?Action=DescribeInstances&Version=2014-10-01">>,
+    Headers = [{<<"Host">>, <<"ec2.us-east-1.amazonaws.com">>},
+               {<<"Header">>, <<"Value">>}],
+    Body = <<"">>,
+    ?assertEqual([{<<"Authorization">>, <<"AWS4-HMAC-SHA256 Credential=access-key-id/20150403/us-east-1/ec2/aws4_request, SignedHeaders=header;host;x-amz-date, Signature=8aa86f9889396b663f8fbf2923da39501c2ee54ccbefba4e4ef6ae7004d574b8">>},
+                  {<<"X-Amz-Date">>, <<"20150403T213117Z">>},
+                  {<<"Host">>, <<"ec2.us-east-1.amazonaws.com">>},
+                  {<<"Header">>, <<"Value">>}],
+    v4(AccessKeyID, SecretAccessKey, Region, Service, Now, Method, URL, Headers, Body)).
 
 %% add_authorization_header/2 adds an Authorization header to a list of
 %% headers.
