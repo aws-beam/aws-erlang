@@ -1,6 +1,6 @@
--module(aws_signature).
+-module(aws_request).
 
--export([v4/8]).
+-export([sign_request/8]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -13,13 +13,13 @@
 
 %% Generate headers with an AWS signature version 4 for the specified
 %% request.
-v4(AccessKeyID, SecretAccessKey, Region, Service, Method, URL, Headers, Body) ->
-    v4(AccessKeyID, SecretAccessKey, Region, Service,
-       calendar:universal_time(), Method, URL, Headers, Body).
+sign_request(AccessKeyID, SecretAccessKey, Region, Service, Method, URL, Headers, Body) ->
+    sign_request(AccessKeyID, SecretAccessKey, Region, Service,
+                 calendar:universal_time(), Method, URL, Headers, Body).
 
 %% Generate headers with an AWS signature version 4 for the specified
 %% request using the specified time when generating signatures.
-v4(AccessKeyID, SecretAccessKey, Region, Service, Now, Method, URL, Headers, Body) ->
+sign_request(AccessKeyID, SecretAccessKey, Region, Service, Now, Method, URL, Headers, Body) ->
     LongDate = list_to_binary(ec_date:format("YmdTGisZ", Now)),
     ShortDate = list_to_binary(ec_date:format("Ymd", Now)),
     Headers1 = add_date_header(Headers, LongDate),
@@ -142,10 +142,10 @@ signed_header({Name, _}) ->
 -ifdef(TEST).
 -include_lib("eunit/include/eunit.hrl").
 
-%% v4/8 generates an AWS signature version 4 for a request and returns a
-%% new set of HTTP headers with Authorization and X-Aws-Date header/value
-%% pairs added.
-v4_test() ->
+%% sign_request/8 generates an AWS signature version 4 for a request and
+%% returns a new set of HTTP headers with Authorization and X-Aws-Date
+%% header/value pairs added.
+sign_request_test() ->
     AccessKeyID = <<"access-key-id">>,
     SecretAccessKey = <<"secret-access-key">>,
     Region = <<"us-east-1">>,
@@ -160,7 +160,7 @@ v4_test() ->
                   {<<"X-Amz-Date">>, <<"20150403T213117Z">>},
                   {<<"Host">>, <<"ec2.us-east-1.amazonaws.com">>},
                   {<<"Header">>, <<"Value">>}],
-    v4(AccessKeyID, SecretAccessKey, Region, Service, Now, Method, URL, Headers, Body)).
+    sign_request(AccessKeyID, SecretAccessKey, Region, Service, Now, Method, URL, Headers, Body)).
 
 %% add_authorization_header/2 adds an Authorization header to a list of
 %% headers.
@@ -271,8 +271,9 @@ canonical_header_strips_whitespace_test() ->
 %% alphabetic order.
 signed_headers_test() ->
     Headers = [{<<"X-Amz-Date">>, <<"20150325T105958Z">>},
-               {<<"Host">>, <<"example.com">>}],
-    ?assertEqual(<<"host;x-amz-date">>, signed_headers(Headers)).
+               {<<"Host">>, <<"example.com">>},
+               {<<"Header">>, <<"Value">>}],
+    ?assertEqual(<<"header;host;x-amz-date">>, signed_headers(Headers)).
 
 %% signed_header/1 lowercases the header name.
 signed_header_test() ->

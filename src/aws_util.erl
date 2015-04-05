@@ -21,15 +21,15 @@ binary_join(List, Sep) when is_list(Sep)  ->
 binary_join([H|T], Sep) ->
     binary_join(T, H, Sep).
 
-%% Create a SHA256 hexdigest for Value.
--spec sha256_hexdigest(binary()) -> binary().
-sha256_hexdigest(Value) ->
-    aws_util:base16(crypto:hash(sha256, Value)).
-
 %% Create an HMAC-SHA256 hexdigest for Key and Message.
 -spec hmac_sha256_hexdigest(binary(), binary()) -> binary().
 hmac_sha256_hexdigest(Key, Message) ->
     aws_util:base16(crypto:hmac(sha256, Key, Message)).
+
+%% Create a SHA256 hexdigest for Value.
+-spec sha256_hexdigest(binary()) -> binary().
+sha256_hexdigest(Value) ->
+    aws_util:base16(crypto:hash(sha256, Value)).
 
 %%====================================================================
 %% Internal functions
