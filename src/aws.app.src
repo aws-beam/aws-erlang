@@ -1,10 +1,11 @@
 {application, aws,
- [{description, "An automatically generated set of AWS clients in Erlang."}
+ [{description, "AWS clients for Erlang."}
  ,{vsn, "0.1.0"}
  ,{registered, []}
  ,{applications,
     [kernel
     ,stdlib
+    ,erlware_commons
     ,hackney
     ,jsx]}
  ,{env,[]}
