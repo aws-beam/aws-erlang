@@ -1,6 +1,6 @@
 -module(aws_request).
 
--export([sign_request/8]).
+-export([sign_request/5]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -13,13 +13,25 @@
 
 %% Generate headers with an AWS signature version 4 for the specified
 %% request.
-sign_request(AccessKeyID, SecretAccessKey, Region, Service, Method, URL, Headers, Body) ->
+sign_request(Config, Method, URL, Headers, Body) ->
+    AccessKeyID = maps:get(access_key_id, Config),
+    SecretAccessKey = maps:get(secret_access_key, Config),
+    Region = maps:get(region, Config),
+    Service = maps:get(region, Config),
+    sign_request(AccessKeyID, SecretAccessKey, Region, Service, Method, URL,
+                 Headers, Body).
+
+%% Generate headers with an AWS signature version 4 for the specified
+%% request.
+sign_request(AccessKeyID, SecretAccessKey, Region, Service, Method, URL,
+             Headers, Body) ->
     sign_request(AccessKeyID, SecretAccessKey, Region, Service,
                  calendar:universal_time(), Method, URL, Headers, Body).
 
 %% Generate headers with an AWS signature version 4 for the specified
 %% request using the specified time when generating signatures.
-sign_request(AccessKeyID, SecretAccessKey, Region, Service, Now, Method, URL, Headers, Body) ->
+sign_request(AccessKeyID, SecretAccessKey, Region, Service, Now, Method, URL,
+             Headers, Body) ->
     LongDate = list_to_binary(ec_date:format("YmdTGisZ", Now)),
     ShortDate = list_to_binary(ec_date:format("Ymd", Now)),
     Headers1 = add_date_header(Headers, LongDate),
@@ -64,10 +76,10 @@ authorization(AccessKeyID, CredentialScope, SignedHeaders, Signature) ->
 -spec signing_key(binary(), binary(), binary(), binary()) -> binary().
 signing_key(SecretAccessKey, ShortDate, Region, Service) ->
     SigningKey = << <<"AWS4">>/binary, SecretAccessKey/binary>>,
-    SignedDate = aws_util:hmac_sha256_hexdigest(SigningKey, ShortDate),
-    SignedRegion = aws_util:hmac_sha256_hexdigest(SignedDate, Region),
-    SignedService = aws_util:hmac_sha256_hexdigest(SignedRegion, Service),
-    aws_util:hmac_sha256_hexdigest(SignedService, <<"aws4_request">>).
+    SignedDate = aws_util:hmac_sha256(SigningKey, ShortDate),
+    SignedRegion = aws_util:hmac_sha256(SignedDate, Region),
+    SignedService = aws_util:hmac_sha256(SignedRegion, Service),
+    aws_util:hmac_sha256(SignedService, <<"aws4_request">>).
 
 %% Generate a credential scope from a short date in YYMMDD format, a
 %% region identifier and a service identifier.
@@ -103,7 +115,7 @@ split_url(URL) ->
     URI = hackney_url:parse_url(URL),
     %% FIXME(jkakar) Query string name/value pairs should be URL encoded
     %% and sorted alphabetically.
-    {hackney_url:unparse_url(URI#hackney_url{qs= <<"">>}), URI#hackney_url.qs}.
+    {URI#hackney_url.path, URI#hackney_url.qs}.
 
 %% Convert a list of headers to canonical header format.  Leading and
 %% trailing whitespace around header names and values is stripped, header
@@ -142,6 +154,26 @@ signed_header({Name, _}) ->
 -ifdef(TEST).
 -include_lib("eunit/include/eunit.hrl").
 
+%% sign_request/5 extracts credentials, service and region information from
+%% a configuration map and generates an AWS signature version 4 for a
+%% request.  It returns a new set of HTTP headers with Authorization and
+%% X-Aws-Date header/value pairs added.
+sign_request_with_config_test() ->
+    Config = aws_config:make_config(
+               #{access_key_id => <<"access-key-id">>,
+                 secret_access_key => <<"secret-access-key">>,
+                 session_token => undefined,
+                 region => <<"us-east-1">>,
+                 service => <<"ec2">>}),
+    Method = <<"GET">>,
+    URL = <<"https://ec2.us-east-1.amazonaws.com?Action=DescribeInstances&Version=2014-10-01">>,
+    Headers = [{<<"Host">>, <<"ec2.us-east-1.amazonaws.com">>},
+               {<<"Header">>, <<"Value">>}],
+    Body = <<"">>,
+    SignedHeaders = sign_request(Config, Method, URL, Headers, Body),
+    ?assertEqual(true, proplists:is_defined(<<"Authorization">>, SignedHeaders)),
+    ?assertEqual(true, proplists:is_defined(<<"X-Amz-Date">>, SignedHeaders)).
+
 %% sign_request/8 generates an AWS signature version 4 for a request and
 %% returns a new set of HTTP headers with Authorization and X-Aws-Date
 %% header/value pairs added.
@@ -156,7 +188,7 @@ sign_request_test() ->
     Headers = [{<<"Host">>, <<"ec2.us-east-1.amazonaws.com">>},
                {<<"Header">>, <<"Value">>}],
     Body = <<"">>,
-    ?assertEqual([{<<"Authorization">>, <<"AWS4-HMAC-SHA256 Credential=access-key-id/20150403/us-east-1/ec2/aws4_request, SignedHeaders=header;host;x-amz-date, Signature=8aa86f9889396b663f8fbf2923da39501c2ee54ccbefba4e4ef6ae7004d574b8">>},
+    ?assertEqual([{<<"Authorization">>, <<"AWS4-HMAC-SHA256 Credential=access-key-id/20150403/us-east-1/ec2/aws4_request, SignedHeaders=header;host;x-amz-date, Signature=4026e4f1730f8770c840c5796e4bbda14e1200fab1a89583a4727b2f9ddbb9cc">>},
                   {<<"X-Amz-Date">>, <<"20150403T213117Z">>},
                   {<<"Host">>, <<"ec2.us-east-1.amazonaws.com">>},
                   {<<"Header">>, <<"Value">>}],
@@ -181,7 +213,10 @@ add_date_header_test() ->
 %% date, region identifier and service identifier.
 signing_key_test() ->
     ?assertEqual(
-       <<"4c804ed64ddbae9322ee4d6933b4ff24158cd0079a644e20689b64e309ca409e">>,
+       <<108, 238, 174, 127,  62,  29, 151, 251,
+         60,  200, 152, 110,  95, 108, 195, 104,
+         208, 222,  84, 216, 129,  34, 102, 127,
+         208,  93,  22,  61,  71,  54, 199, 206>>,
        signing_key(<<"secret-access-key">>, <<"20150326">>, <<"us-east-1">>,
                    <<"s3">>)).
 
@@ -216,7 +251,7 @@ canonical_request_test() ->
     ?assertEqual(
        aws_util:binary_join(
          [<<"GET">>,
-          <<"https://example.com/">>,
+          <<"/">>,
           <<"">>,
           <<"host:example.com">>,
           <<"x-amz-date:20150325T105958Z">>,
@@ -232,18 +267,18 @@ canonical_request_test() ->
 %% split_url/1 splits a URL from its query string, URL encodes the query
 %% string, and returns the URL and query string as separate values.
 split_url_test() ->
-    ?assertEqual({<<"https://example.com/index">>, <<"one=1&two=2">>},
+    ?assertEqual({<<"/index">>, <<"one=1&two=2">>},
                  split_url(<<"https://example.com/index?one=1&two=2">>)).
 
 %% split_url/1 returns an empty binary if no query string is present.
 split_url_without_query_string_test() ->
-    ?assertEqual({<<"https://example.com/index">>, <<"">>},
+    ?assertEqual({<<"/index">>, <<"">>},
                  split_url(<<"https://example.com/index?">>)).
 
 %% split_url/1 returns an empty binary if no query string is present.
 split_url_with_all_uri_elements_test() ->
     ?assertEqual(
-       {<<"https://username:secret@example.com:80/index">>, <<"one=1">>},
+       {<<"/index">>, <<"one=1">>},
        split_url(<<"https://username:secret@example.com:80/index?one=1">>)).
 
 %% canonical_headers/1 returns a newline-delimited list of trimmed and

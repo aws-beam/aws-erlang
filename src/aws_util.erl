@@ -2,8 +2,9 @@
 
 -export([base16/1,
          binary_join/2,
-         hmac_sha256_hexdigest/2,
-         sha256_hexdigest/1]).
+         sha256_hexdigest/1,
+         hmac_sha256/2,
+         hmac_sha256_hexdigest/2]).
 
 %%====================================================================
 %% API
@@ -24,7 +25,12 @@ binary_join([H|T], Sep) ->
 %% Create an HMAC-SHA256 hexdigest for Key and Message.
 -spec hmac_sha256_hexdigest(binary(), binary()) -> binary().
 hmac_sha256_hexdigest(Key, Message) ->
-    aws_util:base16(crypto:hmac(sha256, Key, Message)).
+    aws_util:base16(hmac_sha256(Key, Message)).
+
+%% Create an HMAC-SHA256 hexdigest for Key and Message.
+-spec hmac_sha256(binary(), binary()) -> binary().
+hmac_sha256(Key, Message) ->
+    crypto:hmac(sha256, Key, Message).
 
 %% Create a SHA256 hexdigest for Value.
 -spec sha256_hexdigest(binary()) -> binary().
@@ -77,7 +83,6 @@ binary_join_with_single_element_list_test() ->
 binary_join_with_empty_list_test() ->
     ?assertEqual(binary_join([], <<",">>), <<"">>).
 
-
 %% sha256_hexdigest/1 returns a SHA256 hexdigest for an empty value.
 sha256_hexdigest_with_empty_value_test() ->
     ?assertEqual(
@@ -89,6 +94,15 @@ sha256_hexdigest_test() ->
     ?assertEqual(
        <<"315f5bdb76d078c43b8ac0064e4a0164612b1fce77c869345bfc94c75894edd3">>,
        sha256_hexdigest(<<"Hello, world!">>)).
+
+%% hmac_sha256/2 returns a SHA256 HMAC for a message.
+hmac_sha256_test() ->
+    ?assertEqual(
+       <<110, 158, 242, 155, 117, 255, 252,  91,
+         122, 186, 229,  39, 213, 143, 218, 219,
+          47, 228,  46, 114,  25,   1,  25, 118,
+         145, 115,  67,   6,  95,  88, 237,  74>>,
+       hmac_sha256(<<"key">>, <<"message">>)).
 
 %% hmac_sha256_hexdigest/2 returns an HMAC SHA256 hexdigest for a message.
 hmac_sha256_hexdigest_test() ->
