@@ -15,10 +15,11 @@
 base16(Data) ->
     << <<(hex(N div 16)), (hex(N rem 16))>> || <<N>> <= Data >>.
 
+%% Join binary values using the specified separator.
 binary_join([], _) -> <<"">>;
 binary_join([H|[]], _) -> H;
-binary_join(List, Sep) when is_list(Sep)  ->
-    binary_join(List, list_to_binary(Sep));
+binary_join(L, Sep) when is_list(Sep)  ->
+    binary_join(L, list_to_binary(Sep));
 binary_join([H|T], Sep) ->
     binary_join(T, H, Sep).
 
