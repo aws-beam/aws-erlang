@@ -4,9 +4,6 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
--type header() :: tuple(binary(), binary()).
--type headers() :: list(header()).
-
 %%====================================================================
 %% API
 %%====================================================================
@@ -53,13 +50,11 @@ sign_request(AccessKeyID, SecretAccessKey, Region, Service, Now, Method, URL,
 
 %% Add an Authorization header with an AWS4-HMAC-SHA256 signature to the
 %% list of headers.
--spec add_authorization_header(tuple(binary(), binary()), binary()) -> tuple(binary(), binary()).
 add_authorization_header(Headers, Authorization) ->
     [{<<"Authorization">>, Authorization}|Headers].
 
 %% Add an X-Amz-Date header with a long date value in YYMMDDTHHMMSSZ format
 %% to a list of headers.
--spec add_date_header(tuple(binary(), binary()), binary()) -> tuple(binary(), binary()).
 add_date_header(Headers, Date) ->
     [{<<"X-Amz-Date">>, Date}|Headers].
 
@@ -73,7 +68,6 @@ authorization(AccessKeyID, CredentialScope, SignedHeaders, Signature) ->
 
 %% Generate a signing key from a secret access key, a short date in YYMMDD
 %% format, a region identifier and a service identifier.
--spec signing_key(binary(), binary(), binary(), binary()) -> binary().
 signing_key(SecretAccessKey, ShortDate, Region, Service) ->
     SigningKey = << <<"AWS4">>/binary, SecretAccessKey/binary>>,
     SignedDate = aws_util:hmac_sha256(SigningKey, ShortDate),
@@ -83,14 +77,12 @@ signing_key(SecretAccessKey, ShortDate, Region, Service) ->
 
 %% Generate a credential scope from a short date in YYMMDD format, a
 %% region identifier and a service identifier.
--spec credential_scope(binary(), binary(), binary()) -> binary().
 credential_scope(ShortDate, Region, Service) ->
     aws_util:binary_join([ShortDate, Region, Service, <<"aws4_request">>],
                          "/").
 
 %% Generate the text to sign from a long date in YYMMDDTHHMMSSZ format, a
 %% credential scope and a hashed canonical request.
--spec string_to_sign(binary(), binary(), binary()) -> binary().
 string_to_sign(LongDate, CredentialScope, HashedCanonicalRequest) ->
     aws_util:binary_join([<<"AWS4-HMAC-SHA256">>, LongDate, CredentialScope,
                           HashedCanonicalRequest],
@@ -98,7 +90,6 @@ string_to_sign(LongDate, CredentialScope, HashedCanonicalRequest) ->
 
 %% Process and merge request values into a canonical request for AWS
 %% signature version 4.
--spec canonical_request(binary(), binary(), headers(), binary()) -> binary().
 canonical_request(Method, URL, Headers, Body) ->
     {CanonicalURL, CanonicalQueryString} = split_url(URL),
     CanonicalHeaders = canonical_headers(Headers),
@@ -110,7 +101,6 @@ canonical_request(Method, URL, Headers, Body) ->
 
 %% Strip the query string from the URL, if one if present, and return the
 %% URL and query string as separate values.
--spec split_url(binary()) -> tuple(binary(), binary()).
 split_url(URL) ->
     URI = hackney_url:parse_url(URL),
     %% FIXME(jkakar) Query string name/value pairs should be URL encoded
@@ -121,13 +111,11 @@ split_url(URL) ->
 %% trailing whitespace around header names and values is stripped, header
 %% names are lowercased, and headers are newline-joined in alphabetical
 %% order (with a trailing newline).
--spec canonical_headers(headers()) -> binary().
 canonical_headers(Headers) ->
     list_to_binary(lists:sort(lists:map(fun canonical_header/1, Headers))).
 
 %% Strip leading and trailing whitespace around Name and Value, convert
 %% Name to lowercase, and add a trailing newline.
--spec canonical_header(tuple(binary(), binary())) -> binary().
 canonical_header({Name, Value}) ->
     N = list_to_binary(string:strip(string:to_lower(binary_to_list(Name)))),
     V = list_to_binary(string:strip(binary_to_list(Value))),
@@ -136,14 +124,12 @@ canonical_header({Name, Value}) ->
 %% Convert a list of headers to canonicals signed header format.  Leading
 %% and trailing whitespace around names is stripped, header names are
 %% lowercased, and header names are semicolon-joined in alphabetical order.
--spec signed_headers(headers()) -> binary().
 signed_headers(Headers) ->
     aws_util:binary_join(lists:sort(lists:map(fun signed_header/1, Headers)),
                          <<";">>).
 
 %% Strip leading and trailing whitespace around Name and convert it to
 %% lowercase.
--spec signed_header(tuple(binary(), binary())) -> binary().
 signed_header({Name, _}) ->
     list_to_binary(string:strip(string:to_lower(binary_to_list(Name)))).
 

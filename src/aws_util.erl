@@ -2,16 +2,15 @@
 
 -export([base16/1,
          binary_join/2,
-         sha256_hexdigest/1,
          hmac_sha256/2,
-         hmac_sha256_hexdigest/2]).
+         hmac_sha256_hexdigest/2,
+         sha256_hexdigest/1]).
 
 %%====================================================================
 %% API
 %%====================================================================
 
 %% Base16 encode binary data.
--spec base16(binary()) -> <<_:_*16>>.
 base16(Data) ->
     << <<(hex(N div 16)), (hex(N rem 16))>> || <<N>> <= Data >>.
 
@@ -24,17 +23,14 @@ binary_join([H|T], Sep) ->
     binary_join(T, H, Sep).
 
 %% Create an HMAC-SHA256 hexdigest for Key and Message.
--spec hmac_sha256_hexdigest(binary(), binary()) -> binary().
 hmac_sha256_hexdigest(Key, Message) ->
     aws_util:base16(hmac_sha256(Key, Message)).
 
 %% Create an HMAC-SHA256 hexdigest for Key and Message.
--spec hmac_sha256(binary(), binary()) -> binary().
 hmac_sha256(Key, Message) ->
     crypto:hmac(sha256, Key, Message).
 
 %% Create a SHA256 hexdigest for Value.
--spec sha256_hexdigest(binary()) -> binary().
 sha256_hexdigest(Value) ->
     aws_util:base16(crypto:hash(sha256, Value)).
 
@@ -44,7 +40,6 @@ sha256_hexdigest(Value) ->
 
 %% Convert an integer in the 0-16 range to a hexadecimal byte
 %% representation.
--spec hex(integer()) -> byte().
 hex(N) when N >= 0, N < 10 ->
     N + $0;
 hex(N) when N < 16 ->
