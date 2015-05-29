@@ -10,11 +10,11 @@
 
 %% Generate headers with an AWS signature version 4 for the specified
 %% request.
-sign_request(Config, Method, URL, Headers, Body) ->
-    AccessKeyID = maps:get(access_key_id, Config),
-    SecretAccessKey = maps:get(secret_access_key, Config),
-    Region = maps:get(region, Config),
-    Service = maps:get(region, Config),
+sign_request(Client, Method, URL, Headers, Body) ->
+    AccessKeyID = maps:get(access_key_id, Client),
+    SecretAccessKey = maps:get(secret_access_key, Client),
+    Region = maps:get(region, Client),
+    Service = maps:get(service, Client),
     sign_request(AccessKeyID, SecretAccessKey, Region, Service, Method, URL,
                  Headers, Body).
 
@@ -141,14 +141,14 @@ signed_header({Name, _}) ->
 -include_lib("eunit/include/eunit.hrl").
 
 %% sign_request/5 extracts credentials, service and region information from
-%% a configuration map and generates an AWS signature version 4 for a
-%% request.  It returns a new set of HTTP headers with Authorization and
-%% X-Aws-Date header/value pairs added.
-sign_request_with_config_test() ->
-    Config = aws_config:make_config(
+%% a client map and generates an AWS signature version 4 for a request.  It
+%% returns a new set of HTTP headers with Authorization and X-Aws-Date
+%% header/value pairs added.
+sign_request_with_client_test() ->
+    Client = aws_client:make_client(
                #{access_key_id => <<"access-key-id">>,
                  secret_access_key => <<"secret-access-key">>,
-                 session_token => undefined,
+                 endpoint => <<"amazonaws.com">>,
                  region => <<"us-east-1">>,
                  service => <<"ec2">>}),
     Method = <<"GET">>,
@@ -156,7 +156,7 @@ sign_request_with_config_test() ->
     Headers = [{<<"Host">>, <<"ec2.us-east-1.amazonaws.com">>},
                {<<"Header">>, <<"Value">>}],
     Body = <<"">>,
-    SignedHeaders = sign_request(Config, Method, URL, Headers, Body),
+    SignedHeaders = sign_request(Client, Method, URL, Headers, Body),
     ?assertEqual(true, proplists:is_defined(<<"Authorization">>, SignedHeaders)),
     ?assertEqual(true, proplists:is_defined(<<"X-Amz-Date">>, SignedHeaders)).
 

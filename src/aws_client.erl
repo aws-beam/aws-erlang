@@ -1,25 +1,27 @@
--module(aws_config).
+-module(aws_client).
 
--export([make_config/0,
-         make_config/1]).
+-export([make_client/0,
+         make_client/1]).
 
 %%====================================================================
 %% API
 %%====================================================================
 
-make_config() ->
-    make_config(#{}).
-make_config(Config) ->
-    maps:merge(default_config(), Config).
+make_client() ->
+    make_client(#{}).
+make_client(Client) ->
+    maps:merge(default_client(), Client).
 
 %%====================================================================
 %% Internal functions
 %%====================================================================
 
-default_config() ->
-    Config = #{endpoint => undefined,
-               region => default_region()},
-    maps:merge(aws_creds:default_creds(), Config).
+default_client() ->
+    #{access_key_id => undefined,
+      secret_access_key => undefined,
+      endpoint => undefined,
+      region => default_region(),
+      service => undefined}.
 
 default_region() ->
     default_region(os:getenv("AWS_REGION")).
@@ -33,18 +35,18 @@ default_region(Region) -> Region.
 -ifdef(TEST).
 -include_lib("eunit/include/eunit.hrl").
 
-%% make_config/0 returns a configuration map with default values.
-make_config_test() ->
-    ?assertEqual(#{endpoint => undefined,
-                   region => undefined,
-                   access_key_id => undefined,
+%% make_client/0 returns a clienturation map with default values.
+make_client_test() ->
+    ?assertEqual(#{access_key_id => undefined,
                    secret_access_key => undefined,
-                   session_token => undefined},
-                 make_config()).
+                   endpoint => undefined,
+                   region => undefined,
+                   service => undefined},
+                 make_client()).
 
-%% make_config/0 initializes the region from the AWS_REGION environment
+%% make_client/0 initializes the region from the AWS_REGION environment
 %% variables when it's set.
-make_config_with_region_environment_variable_test_() ->
+make_client_with_region_environment_variable_test_() ->
     AWSRegion = os:getenv("AWS_REGION"),
     {setup,
      fun () -> os:putenv("AWS_REGION", "us-east-1") end,
@@ -53,18 +55,18 @@ make_config_with_region_environment_variable_test_() ->
                     _ -> os:putenv("AWS_REGION", AWSRegion)
                 end
      end,
-     fun () -> ?assertEqual(#{endpoint => undefined,
-                              region => "us-east-1",
-                              access_key_id => undefined,
+     fun () -> ?assertEqual(#{access_key_id => undefined,
                               secret_access_key => undefined,
-                              session_token => undefined},
-                            make_config())
+                              endpoint => undefined,
+                              region => "us-east-1",
+                              service => undefined},
+                            make_client())
      end
     }.
 
-%% make_config/1 prefers the user provided region value when the AWS_REGION
+%% make_client/1 prefers the user provided region value when the AWS_REGION
 %% environment variable is defined.
-make_config_with_region_environment_variable_prefers_user_defined_value_test_() ->
+make_client_with_region_environment_variable_prefers_user_defined_value_test_() ->
     AWSRegion = os:getenv("AWS_REGION"),
     {setup,
      fun () -> os:putenv("AWS_REGION", "us-east-1-a") end,
@@ -73,12 +75,12 @@ make_config_with_region_environment_variable_prefers_user_defined_value_test_() 
                     _ -> os:putenv("AWS_REGION", AWSRegion)
                 end
      end,
-     fun () -> ?assertEqual(#{endpoint => undefined,
-                              region => "eu-west-1",
-                              access_key_id => undefined,
+     fun () -> ?assertEqual(#{access_key_id => undefined,
                               secret_access_key => undefined,
-                              session_token => undefined},
-                            make_config(#{region => "eu-west-1"}))
+                              endpoint => undefined,
+                              region => "eu-west-1",
+                              service => undefined},
+                            make_client(#{region => "eu-west-1"}))
      end
     }.
 
