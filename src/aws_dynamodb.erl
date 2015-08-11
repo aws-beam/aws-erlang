@@ -507,9 +507,6 @@ update_table(Client, Input, Options) ->
 %% Internal functions
 %%====================================================================
 
-target(Action) ->
-    << <<"DynamoDB_20120810.">>/binary, Action/binary>>.
-
 request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"dynamodb">>},
     Method = post,
@@ -521,7 +518,7 @@ request(Client, Action, Input, Options) ->
     URL = aws_util:binary_join([<<"https://">>, Host, <<"/">>], <<"">>),
     Headers = [{<<"Host">>, Host},
                {<<"Content-Type">>, <<"application/x-amz-json-1.0">>},
-               {<<"X-Amz-Target">>, target(Action)}],
+               {<<"X-Amz-Target">>, << <<"DynamoDB_20120810.">>/binary, Action/binary>>}],
     Payload = jsx:encode(Input),
     Headers1 = aws_request:sign_request(Client1, Method, URL, Headers, Payload),
     Response = hackney:request(Method, URL, Headers1, Payload, Options),

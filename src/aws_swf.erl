@@ -979,9 +979,6 @@ terminate_workflow_execution(Client, Input, Options) ->
 %% Internal functions
 %%====================================================================
 
-target(Action) ->
-    << <<"SimpleWorkflowService.">>/binary, Action/binary>>.
-
 request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"swf">>},
     Method = post,
@@ -993,7 +990,7 @@ request(Client, Action, Input, Options) ->
     URL = aws_util:binary_join([<<"https://">>, Host, <<"/">>], <<"">>),
     Headers = [{<<"Host">>, Host},
                {<<"Content-Type">>, <<"application/x-amz-json-1.0">>},
-               {<<"X-Amz-Target">>, target(Action)}],
+               {<<"X-Amz-Target">>, << <<"SimpleWorkflowService.">>/binary, Action/binary>>}],
     Payload = jsx:encode(Input),
     Headers1 = aws_request:sign_request(Client1, Method, URL, Headers, Payload),
     Response = hackney:request(Method, URL, Headers1, Payload, Options),

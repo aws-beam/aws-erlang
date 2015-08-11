@@ -492,9 +492,6 @@ split_shard(Client, Input, Options) ->
 %% Internal functions
 %%====================================================================
 
-target(Action) ->
-    << <<"Kinesis_20131202.">>/binary, Action/binary>>.
-
 request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"kinesis">>},
     Method = post,
@@ -506,7 +503,7 @@ request(Client, Action, Input, Options) ->
     URL = aws_util:binary_join([<<"https://">>, Host, <<"/">>], <<"">>),
     Headers = [{<<"Host">>, Host},
                {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
-               {<<"X-Amz-Target">>, target(Action)}],
+               {<<"X-Amz-Target">>, << <<"Kinesis_20131202.">>/binary, Action/binary>>}],
     Payload = jsx:encode(Input),
     Headers1 = aws_request:sign_request(Client1, Method, URL, Headers, Payload),
     Response = hackney:request(Method, URL, Headers1, Payload, Options),
