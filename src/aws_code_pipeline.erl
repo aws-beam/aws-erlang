@@ -91,28 +91,51 @@
 %% provides details of a job success.</li> </ul> </li> </ul>
 -module(aws_code_pipeline).
 
--export([acknowledge_job/3,
+-export([acknowledge_job/2,
+         acknowledge_job/3,
+         acknowledge_third_party_job/2,
          acknowledge_third_party_job/3,
+         create_custom_action_type/2,
          create_custom_action_type/3,
+         create_pipeline/2,
          create_pipeline/3,
+         delete_custom_action_type/2,
          delete_custom_action_type/3,
+         delete_pipeline/2,
          delete_pipeline/3,
+         disable_stage_transition/2,
          disable_stage_transition/3,
+         enable_stage_transition/2,
          enable_stage_transition/3,
+         get_job_details/2,
          get_job_details/3,
+         get_pipeline/2,
          get_pipeline/3,
+         get_pipeline_state/2,
          get_pipeline_state/3,
+         get_third_party_job_details/2,
          get_third_party_job_details/3,
+         list_action_types/2,
          list_action_types/3,
+         list_pipelines/2,
          list_pipelines/3,
+         poll_for_jobs/2,
          poll_for_jobs/3,
+         poll_for_third_party_jobs/2,
          poll_for_third_party_jobs/3,
+         put_action_revision/2,
          put_action_revision/3,
+         put_job_failure_result/2,
          put_job_failure_result/3,
+         put_job_success_result/2,
          put_job_success_result/3,
+         put_third_party_job_failure_result/2,
          put_third_party_job_failure_result/3,
+         put_third_party_job_success_result/2,
          put_third_party_job_success_result/3,
+         start_pipeline_execution/2,
          start_pipeline_execution/3,
+         update_pipeline/2,
          update_pipeline/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
@@ -123,22 +146,38 @@
 
 %% @doc Returns information about a specified job and whether that job has
 %% been received by the job worker. Only used for custom actions.
-acknowledge_job(Client, Input, Options) ->
-  request(Client, <<"AcknowledgeJob">>, Input, Options).
+acknowledge_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    acknowledge_job(Client, Input, []).
+acknowledge_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AcknowledgeJob">>, Input, Options).
 
 %% @doc Confirms a job worker has received the specified job. Only used for
 %% partner actions.
-acknowledge_third_party_job(Client, Input, Options) ->
-  request(Client, <<"AcknowledgeThirdPartyJob">>, Input, Options).
+acknowledge_third_party_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    acknowledge_third_party_job(Client, Input, []).
+acknowledge_third_party_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AcknowledgeThirdPartyJob">>, Input, Options).
 
 %% @doc Creates a new custom action that can be used in all pipelines
 %% associated with the AWS account. Only used for custom actions.
-create_custom_action_type(Client, Input, Options) ->
-  request(Client, <<"CreateCustomActionType">>, Input, Options).
+create_custom_action_type(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_custom_action_type(Client, Input, []).
+create_custom_action_type(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateCustomActionType">>, Input, Options).
 
 %% @doc Creates a pipeline.
-create_pipeline(Client, Input, Options) ->
-  request(Client, <<"CreatePipeline">>, Input, Options).
+create_pipeline(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_pipeline(Client, Input, []).
+create_pipeline(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreatePipeline">>, Input, Options).
 
 %% @doc Marks a custom action as deleted. PollForJobs for the custom action
 %% will fail after the action is marked for deletion. Only used for custom
@@ -148,22 +187,38 @@ create_pipeline(Client, Input, Options) ->
 %% unless you increase the version number of the action.
 %%
 %% </important>
-delete_custom_action_type(Client, Input, Options) ->
-  request(Client, <<"DeleteCustomActionType">>, Input, Options).
+delete_custom_action_type(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_custom_action_type(Client, Input, []).
+delete_custom_action_type(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteCustomActionType">>, Input, Options).
 
 %% @doc Deletes the specified pipeline.
-delete_pipeline(Client, Input, Options) ->
-  request(Client, <<"DeletePipeline">>, Input, Options).
+delete_pipeline(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_pipeline(Client, Input, []).
+delete_pipeline(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeletePipeline">>, Input, Options).
 
 %% @doc Prevents artifacts in a pipeline from transitioning to the next stage
 %% in the pipeline.
-disable_stage_transition(Client, Input, Options) ->
-  request(Client, <<"DisableStageTransition">>, Input, Options).
+disable_stage_transition(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disable_stage_transition(Client, Input, []).
+disable_stage_transition(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisableStageTransition">>, Input, Options).
 
 %% @doc Enables artifacts in a pipeline to transition to a stage in a
 %% pipeline.
-enable_stage_transition(Client, Input, Options) ->
-  request(Client, <<"EnableStageTransition">>, Input, Options).
+enable_stage_transition(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    enable_stage_transition(Client, Input, []).
+enable_stage_transition(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"EnableStageTransition">>, Input, Options).
 
 %% @doc Returns information about a job. Only used for custom actions.
 %%
@@ -174,20 +229,32 @@ enable_stage_transition(Client, Input, Options) ->
 %% defined for the action.
 %%
 %% </important>
-get_job_details(Client, Input, Options) ->
-  request(Client, <<"GetJobDetails">>, Input, Options).
+get_job_details(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_job_details(Client, Input, []).
+get_job_details(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetJobDetails">>, Input, Options).
 
 %% @doc Returns the metadata, structure, stages, and actions of a pipeline.
 %% Can be used to return the entire structure of a pipeline in JSON format,
 %% which can then be modified and used to update the pipeline structure with
 %% <a>UpdatePipeline</a>.
-get_pipeline(Client, Input, Options) ->
-  request(Client, <<"GetPipeline">>, Input, Options).
+get_pipeline(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_pipeline(Client, Input, []).
+get_pipeline(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetPipeline">>, Input, Options).
 
 %% @doc Returns information about the state of a pipeline, including the
 %% stages, actions, and details about the last run of the pipeline.
-get_pipeline_state(Client, Input, Options) ->
-  request(Client, <<"GetPipelineState">>, Input, Options).
+get_pipeline_state(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_pipeline_state(Client, Input, []).
+get_pipeline_state(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetPipelineState">>, Input, Options).
 
 %% @doc Requests the details of a job for a third party action. Only used for
 %% partner actions.
@@ -199,17 +266,29 @@ get_pipeline_state(Client, Input, Options) ->
 %% defined for the action.
 %%
 %% </important>
-get_third_party_job_details(Client, Input, Options) ->
-  request(Client, <<"GetThirdPartyJobDetails">>, Input, Options).
+get_third_party_job_details(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_third_party_job_details(Client, Input, []).
+get_third_party_job_details(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetThirdPartyJobDetails">>, Input, Options).
 
 %% @doc Gets a summary of all AWS CodePipeline action types associated with
 %% your account.
-list_action_types(Client, Input, Options) ->
-  request(Client, <<"ListActionTypes">>, Input, Options).
+list_action_types(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_action_types(Client, Input, []).
+list_action_types(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListActionTypes">>, Input, Options).
 
 %% @doc Gets a summary of all of the pipelines associated with your account.
-list_pipelines(Client, Input, Options) ->
-  request(Client, <<"ListPipelines">>, Input, Options).
+list_pipelines(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_pipelines(Client, Input, []).
+list_pipelines(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListPipelines">>, Input, Options).
 
 %% @doc Returns information about any jobs for AWS CodePipeline to act upon.
 %%
@@ -220,8 +299,12 @@ list_pipelines(Client, Input, Options) ->
 %% defined for the action.
 %%
 %% </important>
-poll_for_jobs(Client, Input, Options) ->
-  request(Client, <<"PollForJobs">>, Input, Options).
+poll_for_jobs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    poll_for_jobs(Client, Input, []).
+poll_for_jobs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PollForJobs">>, Input, Options).
 
 %% @doc Determines whether there are any third party jobs for a job worker to
 %% act on. Only used for partner actions.
@@ -232,45 +315,77 @@ poll_for_jobs(Client, Input, Options) ->
 %% or output artifacts.
 %%
 %% </important>
-poll_for_third_party_jobs(Client, Input, Options) ->
-  request(Client, <<"PollForThirdPartyJobs">>, Input, Options).
+poll_for_third_party_jobs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    poll_for_third_party_jobs(Client, Input, []).
+poll_for_third_party_jobs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PollForThirdPartyJobs">>, Input, Options).
 
 %% @doc Provides information to AWS CodePipeline about new revisions to a
 %% source.
-put_action_revision(Client, Input, Options) ->
-  request(Client, <<"PutActionRevision">>, Input, Options).
+put_action_revision(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_action_revision(Client, Input, []).
+put_action_revision(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutActionRevision">>, Input, Options).
 
 %% @doc Represents the failure of a job as returned to the pipeline by a job
 %% worker. Only used for custom actions.
-put_job_failure_result(Client, Input, Options) ->
-  request(Client, <<"PutJobFailureResult">>, Input, Options).
+put_job_failure_result(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_job_failure_result(Client, Input, []).
+put_job_failure_result(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutJobFailureResult">>, Input, Options).
 
 %% @doc Represents the success of a job as returned to the pipeline by a job
 %% worker. Only used for custom actions.
-put_job_success_result(Client, Input, Options) ->
-  request(Client, <<"PutJobSuccessResult">>, Input, Options).
+put_job_success_result(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_job_success_result(Client, Input, []).
+put_job_success_result(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutJobSuccessResult">>, Input, Options).
 
 %% @doc Represents the failure of a third party job as returned to the
 %% pipeline by a job worker. Only used for partner actions.
-put_third_party_job_failure_result(Client, Input, Options) ->
-  request(Client, <<"PutThirdPartyJobFailureResult">>, Input, Options).
+put_third_party_job_failure_result(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_third_party_job_failure_result(Client, Input, []).
+put_third_party_job_failure_result(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutThirdPartyJobFailureResult">>, Input, Options).
 
 %% @doc Represents the success of a third party job as returned to the
 %% pipeline by a job worker. Only used for partner actions.
-put_third_party_job_success_result(Client, Input, Options) ->
-  request(Client, <<"PutThirdPartyJobSuccessResult">>, Input, Options).
+put_third_party_job_success_result(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_third_party_job_success_result(Client, Input, []).
+put_third_party_job_success_result(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutThirdPartyJobSuccessResult">>, Input, Options).
 
 %% @doc Starts the specified pipeline. Specifically, it begins processing the
 %% latest commit to the source location specified as part of the pipeline.
-start_pipeline_execution(Client, Input, Options) ->
-  request(Client, <<"StartPipelineExecution">>, Input, Options).
+start_pipeline_execution(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_pipeline_execution(Client, Input, []).
+start_pipeline_execution(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartPipelineExecution">>, Input, Options).
 
 %% @doc Updates a specified pipeline with edits or changes to its structure.
 %% Use a JSON file with the pipeline structure in conjunction with
 %% UpdatePipeline to provide the full structure of the pipeline. Updating the
 %% pipeline increases the version number of the pipeline by 1.
-update_pipeline(Client, Input, Options) ->
-  request(Client, <<"UpdatePipeline">>, Input, Options).
+update_pipeline(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_pipeline(Client, Input, []).
+update_pipeline(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdatePipeline">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

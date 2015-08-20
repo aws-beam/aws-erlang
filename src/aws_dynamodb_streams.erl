@@ -39,9 +39,13 @@
 %% </li> </ul>
 -module(aws_dynamodb_streams).
 
--export([describe_stream/3,
+-export([describe_stream/2,
+         describe_stream/3,
+         get_records/2,
          get_records/3,
+         get_shard_iterator/2,
          get_shard_iterator/3,
+         list_streams/2,
          list_streams/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
@@ -64,8 +68,12 @@
 %% receive more stream records). If both <code>StartingSequenceNumber</code>
 %% and <code>EndingSequenceNumber</code> are present, the that shared is
 %% closed and can no longer receive more data.
-describe_stream(Client, Input, Options) ->
-  request(Client, <<"DescribeStream">>, Input, Options).
+describe_stream(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_stream(Client, Input, []).
+describe_stream(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeStream">>, Input, Options).
 
 %% @doc Retrieves the stream records from a given shard.
 %%
@@ -81,8 +89,12 @@ describe_stream(Client, Input, Options) ->
 %% data or 2000 stream records, whichever comes first.
 %%
 %% </note>
-get_records(Client, Input, Options) ->
-  request(Client, <<"GetRecords">>, Input, Options).
+get_records(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_records(Client, Input, []).
+get_records(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetRecords">>, Input, Options).
 
 %% @doc Returns a shard iterator. A shard iterator provides information about
 %% how to retrieve the stream records from within a shard. Use the shard
@@ -93,8 +105,12 @@ get_records(Client, Input, Options) ->
 %% requester.
 %%
 %% </note>
-get_shard_iterator(Client, Input, Options) ->
-  request(Client, <<"GetShardIterator">>, Input, Options).
+get_shard_iterator(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_shard_iterator(Client, Input, []).
+get_shard_iterator(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetShardIterator">>, Input, Options).
 
 %% @doc Returns an array of stream ARNs associated with the current account
 %% and endpoint. If the <code>TableName</code> parameter is present, then
@@ -104,8 +120,12 @@ get_shard_iterator(Client, Input, Options) ->
 %% second.
 %%
 %% </note>
-list_streams(Client, Input, Options) ->
-  request(Client, <<"ListStreams">>, Input, Options).
+list_streams(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_streams(Client, Input, []).
+list_streams(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListStreams">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

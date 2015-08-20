@@ -20,16 +20,27 @@
 %% instances.
 -module(aws_ssm).
 
--export([create_association/3,
+-export([create_association/2,
+         create_association/3,
+         create_association_batch/2,
          create_association_batch/3,
+         create_document/2,
          create_document/3,
+         delete_association/2,
          delete_association/3,
+         delete_document/2,
          delete_document/3,
+         describe_association/2,
          describe_association/3,
+         describe_document/2,
          describe_document/3,
+         get_document/2,
          get_document/3,
+         list_associations/2,
          list_associations/3,
+         list_documents/2,
          list_documents/3,
+         update_association_status/2,
          update_association_status/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
@@ -48,8 +59,12 @@
 %% If you associate a configuration document with an instance that already
 %% has an associated configuration document, we replace the current
 %% configuration document with the new configuration document.
-create_association(Client, Input, Options) ->
-  request(Client, <<"CreateAssociation">>, Input, Options).
+create_association(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_association(Client, Input, []).
+create_association(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateAssociation">>, Input, Options).
 
 %% @doc Associates the specified configuration documents with the specified
 %% instances.
@@ -61,16 +76,24 @@ create_association(Client, Input, Options) ->
 %% If you associate a configuration document with an instance that already
 %% has an associated configuration document, we replace the current
 %% configuration document with the new configuration document.
-create_association_batch(Client, Input, Options) ->
-  request(Client, <<"CreateAssociationBatch">>, Input, Options).
+create_association_batch(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_association_batch(Client, Input, []).
+create_association_batch(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateAssociationBatch">>, Input, Options).
 
 %% @doc Creates a configuration document.
 %%
 %% After you create a configuration document, you can use
 %% <a>CreateAssociation</a> to associate it with one or more running
 %% instances.
-create_document(Client, Input, Options) ->
-  request(Client, <<"CreateDocument">>, Input, Options).
+create_document(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_document(Client, Input, []).
+create_document(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateDocument">>, Input, Options).
 
 %% @doc Disassociates the specified configuration document from the specified
 %% instance.
@@ -80,42 +103,74 @@ create_document(Client, Input, Options) ->
 %% state of an instance after you disassociate a configuration document, you
 %% must create a new configuration document with the desired configuration
 %% and associate it with the instance.
-delete_association(Client, Input, Options) ->
-  request(Client, <<"DeleteAssociation">>, Input, Options).
+delete_association(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_association(Client, Input, []).
+delete_association(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteAssociation">>, Input, Options).
 
 %% @doc Deletes the specified configuration document.
 %%
 %% You must use <a>DeleteAssociation</a> to disassociate all instances that
 %% are associated with the configuration document before you can delete it.
-delete_document(Client, Input, Options) ->
-  request(Client, <<"DeleteDocument">>, Input, Options).
+delete_document(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_document(Client, Input, []).
+delete_document(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteDocument">>, Input, Options).
 
 %% @doc Describes the associations for the specified configuration document
 %% or instance.
-describe_association(Client, Input, Options) ->
-  request(Client, <<"DescribeAssociation">>, Input, Options).
+describe_association(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_association(Client, Input, []).
+describe_association(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeAssociation">>, Input, Options).
 
 %% @doc Describes the specified configuration document.
-describe_document(Client, Input, Options) ->
-  request(Client, <<"DescribeDocument">>, Input, Options).
+describe_document(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_document(Client, Input, []).
+describe_document(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeDocument">>, Input, Options).
 
 %% @doc Gets the contents of the specified configuration document.
-get_document(Client, Input, Options) ->
-  request(Client, <<"GetDocument">>, Input, Options).
+get_document(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_document(Client, Input, []).
+get_document(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDocument">>, Input, Options).
 
 %% @doc Lists the associations for the specified configuration document or
 %% instance.
-list_associations(Client, Input, Options) ->
-  request(Client, <<"ListAssociations">>, Input, Options).
+list_associations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_associations(Client, Input, []).
+list_associations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAssociations">>, Input, Options).
 
 %% @doc Describes one or more of your configuration documents.
-list_documents(Client, Input, Options) ->
-  request(Client, <<"ListDocuments">>, Input, Options).
+list_documents(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_documents(Client, Input, []).
+list_documents(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListDocuments">>, Input, Options).
 
 %% @doc Updates the status of the configuration document associated with the
 %% specified instance.
-update_association_status(Client, Input, Options) ->
-  request(Client, <<"UpdateAssociationStatus">>, Input, Options).
+update_association_status(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_association_status(Client, Input, []).
+update_association_status(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateAssociationStatus">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

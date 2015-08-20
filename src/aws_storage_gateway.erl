@@ -34,55 +34,105 @@
 %% </ul>
 -module(aws_storage_gateway).
 
--export([activate_gateway/3,
+-export([activate_gateway/2,
+         activate_gateway/3,
+         add_cache/2,
          add_cache/3,
+         add_upload_buffer/2,
          add_upload_buffer/3,
+         add_working_storage/2,
          add_working_storage/3,
+         cancel_archival/2,
          cancel_archival/3,
+         cancel_retrieval/2,
          cancel_retrieval/3,
+         create_cached_iscsi_volume/2,
          create_cached_iscsi_volume/3,
+         create_snapshot/2,
          create_snapshot/3,
+         create_snapshot_from_volume_recovery_point/2,
          create_snapshot_from_volume_recovery_point/3,
+         create_stored_iscsi_volume/2,
          create_stored_iscsi_volume/3,
+         create_tapes/2,
          create_tapes/3,
+         delete_bandwidth_rate_limit/2,
          delete_bandwidth_rate_limit/3,
+         delete_chap_credentials/2,
          delete_chap_credentials/3,
+         delete_gateway/2,
          delete_gateway/3,
+         delete_snapshot_schedule/2,
          delete_snapshot_schedule/3,
+         delete_tape/2,
          delete_tape/3,
+         delete_tape_archive/2,
          delete_tape_archive/3,
+         delete_volume/2,
          delete_volume/3,
+         describe_bandwidth_rate_limit/2,
          describe_bandwidth_rate_limit/3,
+         describe_cache/2,
          describe_cache/3,
+         describe_cached_iscsi_volumes/2,
          describe_cached_iscsi_volumes/3,
+         describe_chap_credentials/2,
          describe_chap_credentials/3,
+         describe_gateway_information/2,
          describe_gateway_information/3,
+         describe_maintenance_start_time/2,
          describe_maintenance_start_time/3,
+         describe_snapshot_schedule/2,
          describe_snapshot_schedule/3,
+         describe_stored_iscsi_volumes/2,
          describe_stored_iscsi_volumes/3,
+         describe_tape_archives/2,
          describe_tape_archives/3,
+         describe_tape_recovery_points/2,
          describe_tape_recovery_points/3,
+         describe_tapes/2,
          describe_tapes/3,
+         describe_upload_buffer/2,
          describe_upload_buffer/3,
+         describe_vtl_devices/2,
          describe_vtl_devices/3,
+         describe_working_storage/2,
          describe_working_storage/3,
+         disable_gateway/2,
          disable_gateway/3,
+         list_gateways/2,
          list_gateways/3,
+         list_local_disks/2,
          list_local_disks/3,
+         list_volume_initiators/2,
          list_volume_initiators/3,
+         list_volume_recovery_points/2,
          list_volume_recovery_points/3,
+         list_volumes/2,
          list_volumes/3,
+         reset_cache/2,
          reset_cache/3,
+         retrieve_tape_archive/2,
          retrieve_tape_archive/3,
+         retrieve_tape_recovery_point/2,
          retrieve_tape_recovery_point/3,
+         shutdown_gateway/2,
          shutdown_gateway/3,
+         start_gateway/2,
          start_gateway/3,
+         update_bandwidth_rate_limit/2,
          update_bandwidth_rate_limit/3,
+         update_chap_credentials/2,
          update_chap_credentials/3,
+         update_gateway_information/2,
          update_gateway_information/3,
+         update_gateway_software_now/2,
          update_gateway_software_now/3,
+         update_maintenance_start_time/2,
          update_maintenance_start_time/3,
+         update_snapshot_schedule/2,
          update_snapshot_schedule/3,
+         update_vtl_device_type/2,
          update_vtl_device_type/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
@@ -103,8 +153,12 @@
 %%
 %% <note>You must turn on the gateway VM before you can activate your
 %% gateway.</note>
-activate_gateway(Client, Input, Options) ->
-  request(Client, <<"ActivateGateway">>, Input, Options).
+activate_gateway(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    activate_gateway(Client, Input, []).
+activate_gateway(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ActivateGateway">>, Input, Options).
 
 %% @doc This operation configures one or more gateway local disks as cache
 %% for a cached-volume gateway. This operation is supported only for the
@@ -115,8 +169,12 @@ activate_gateway(Client, Input, Options) ->
 %% In the request, you specify the gateway Amazon Resource Name (ARN) to
 %% which you want to add cache, and one or more disk IDs that you want to
 %% configure as cache.
-add_cache(Client, Input, Options) ->
-  request(Client, <<"AddCache">>, Input, Options).
+add_cache(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    add_cache(Client, Input, []).
+add_cache(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AddCache">>, Input, Options).
 
 %% @doc This operation configures one or more gateway local disks as upload
 %% buffer for a specified gateway. This operation is supported for both the
@@ -125,8 +183,12 @@ add_cache(Client, Input, Options) ->
 %% In the request, you specify the gateway Amazon Resource Name (ARN) to
 %% which you want to add upload buffer, and one or more disk IDs that you
 %% want to configure as upload buffer.
-add_upload_buffer(Client, Input, Options) ->
-  request(Client, <<"AddUploadBuffer">>, Input, Options).
+add_upload_buffer(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    add_upload_buffer(Client, Input, []).
+add_upload_buffer(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AddUploadBuffer">>, Input, Options).
 
 %% @doc This operation configures one or more gateway local disks as working
 %% storage for a gateway. This operation is supported only for the
@@ -140,19 +202,31 @@ add_upload_buffer(Client, Input, Options) ->
 %% </note> In the request, you specify the gateway Amazon Resource Name (ARN)
 %% to which you want to add working storage, and one or more disk IDs that
 %% you want to configure as working storage.
-add_working_storage(Client, Input, Options) ->
-  request(Client, <<"AddWorkingStorage">>, Input, Options).
+add_working_storage(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    add_working_storage(Client, Input, []).
+add_working_storage(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AddWorkingStorage">>, Input, Options).
 
 %% @doc Cancels archiving of a virtual tape to the virtual tape shelf (VTS)
 %% after the archiving process is initiated.
-cancel_archival(Client, Input, Options) ->
-  request(Client, <<"CancelArchival">>, Input, Options).
+cancel_archival(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    cancel_archival(Client, Input, []).
+cancel_archival(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CancelArchival">>, Input, Options).
 
 %% @doc Cancels retrieval of a virtual tape from the virtual tape shelf (VTS)
 %% to a gateway after the retrieval process is initiated. The virtual tape is
 %% returned to the VTS.
-cancel_retrieval(Client, Input, Options) ->
-  request(Client, <<"CancelRetrieval">>, Input, Options).
+cancel_retrieval(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    cancel_retrieval(Client, Input, []).
+cancel_retrieval(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CancelRetrieval">>, Input, Options).
 
 %% @doc This operation creates a cached volume on a specified cached gateway.
 %% This operation is supported only for the gateway-cached volume
@@ -166,8 +240,12 @@ cancel_retrieval(Client, Input, Options) ->
 %% Gateway creates the volume and returns information about it such as the
 %% volume Amazon Resource Name (ARN), its size, and the iSCSI target ARN that
 %% initiators can use to connect to the volume target.
-create_cached_iscsi_volume(Client, Input, Options) ->
-  request(Client, <<"CreateCachediSCSIVolume">>, Input, Options).
+create_cached_iscsi_volume(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_cached_iscsi_volume(Client, Input, []).
+create_cached_iscsi_volume(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateCachediSCSIVolume">>, Input, Options).
 
 %% @doc This operation initiates a snapshot of a volume.
 %%
@@ -192,8 +270,12 @@ create_cached_iscsi_volume(Client, Input, Options) ->
 %% more information, see DescribeSnapshots or DeleteSnapshot in the <a
 %% href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Operations.html">EC2
 %% API reference</a>.</note>
-create_snapshot(Client, Input, Options) ->
-  request(Client, <<"CreateSnapshot">>, Input, Options).
+create_snapshot(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_snapshot(Client, Input, []).
+create_snapshot(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateSnapshot">>, Input, Options).
 
 %% @doc This operation initiates a snapshot of a gateway from a volume
 %% recovery point. This operation is supported only for the gateway-cached
@@ -217,8 +299,12 @@ create_snapshot(Client, Input, Options) ->
 %% more information, in <i>Amazon Elastic Compute Cloud API Reference</i>.
 %%
 %% </note>
-create_snapshot_from_volume_recovery_point(Client, Input, Options) ->
-  request(Client, <<"CreateSnapshotFromVolumeRecoveryPoint">>, Input, Options).
+create_snapshot_from_volume_recovery_point(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_snapshot_from_volume_recovery_point(Client, Input, []).
+create_snapshot_from_volume_recovery_point(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateSnapshotFromVolumeRecoveryPoint">>, Input, Options).
 
 %% @doc This operation creates a volume on a specified gateway. This
 %% operation is supported only for the gateway-stored volume architecture.
@@ -233,8 +319,12 @@ create_snapshot_from_volume_recovery_point(Client, Input, Options) ->
 %% creates the volume and returns volume information such as the volume
 %% Amazon Resource Name (ARN), its size, and the iSCSI target ARN that
 %% initiators can use to connect to the volume target.
-create_stored_iscsi_volume(Client, Input, Options) ->
-  request(Client, <<"CreateStorediSCSIVolume">>, Input, Options).
+create_stored_iscsi_volume(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_stored_iscsi_volume(Client, Input, []).
+create_stored_iscsi_volume(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateStorediSCSIVolume">>, Input, Options).
 
 %% @doc Creates one or more virtual tapes. You write data to the virtual
 %% tapes and then archive the tapes.
@@ -242,21 +332,33 @@ create_stored_iscsi_volume(Client, Input, Options) ->
 %% <note>Cache storage must be allocated to the gateway before you can create
 %% virtual tapes. Use the <a>AddCache</a> operation to add cache storage to a
 %% gateway. </note>
-create_tapes(Client, Input, Options) ->
-  request(Client, <<"CreateTapes">>, Input, Options).
+create_tapes(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_tapes(Client, Input, []).
+create_tapes(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateTapes">>, Input, Options).
 
 %% @doc This operation deletes the bandwidth rate limits of a gateway. You
 %% can delete either the upload and download bandwidth rate limit, or you can
 %% delete both. If you delete only one of the limits, the other limit remains
 %% unchanged. To specify which gateway to work with, use the Amazon Resource
 %% Name (ARN) of the gateway in your request.
-delete_bandwidth_rate_limit(Client, Input, Options) ->
-  request(Client, <<"DeleteBandwidthRateLimit">>, Input, Options).
+delete_bandwidth_rate_limit(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_bandwidth_rate_limit(Client, Input, []).
+delete_bandwidth_rate_limit(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteBandwidthRateLimit">>, Input, Options).
 
 %% @doc This operation deletes Challenge-Handshake Authentication Protocol
 %% (CHAP) credentials for a specified iSCSI target and initiator pair.
-delete_chap_credentials(Client, Input, Options) ->
-  request(Client, <<"DeleteChapCredentials">>, Input, Options).
+delete_chap_credentials(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_chap_credentials(Client, Input, []).
+delete_chap_credentials(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteChapCredentials">>, Input, Options).
 
 %% @doc This operation deletes a gateway. To specify which gateway to delete,
 %% use the Amazon Resource Name (ARN) of the gateway in your request. The
@@ -278,8 +380,12 @@ delete_chap_credentials(Client, Input, Options) ->
 %% Page</a>.
 %%
 %% </important>
-delete_gateway(Client, Input, Options) ->
-  request(Client, <<"DeleteGateway">>, Input, Options).
+delete_gateway(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_gateway(Client, Input, []).
+delete_gateway(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteGateway">>, Input, Options).
 
 %% @doc This operation deletes a snapshot of a volume.
 %%
@@ -294,16 +400,28 @@ delete_gateway(Client, Input, Options) ->
 %% <i>Amazon Elastic Compute Cloud API Reference</i>.
 %%
 %% </note>
-delete_snapshot_schedule(Client, Input, Options) ->
-  request(Client, <<"DeleteSnapshotSchedule">>, Input, Options).
+delete_snapshot_schedule(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_snapshot_schedule(Client, Input, []).
+delete_snapshot_schedule(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteSnapshotSchedule">>, Input, Options).
 
 %% @doc Deletes the specified virtual tape.
-delete_tape(Client, Input, Options) ->
-  request(Client, <<"DeleteTape">>, Input, Options).
+delete_tape(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_tape(Client, Input, []).
+delete_tape(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteTape">>, Input, Options).
 
 %% @doc Deletes the specified virtual tape from the virtual tape shelf (VTS).
-delete_tape_archive(Client, Input, Options) ->
-  request(Client, <<"DeleteTapeArchive">>, Input, Options).
+delete_tape_archive(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_tape_archive(Client, Input, []).
+delete_tape_archive(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteTapeArchive">>, Input, Options).
 
 %% @doc This operation delete the specified gateway volume that you
 %% previously created using the <a>CreateStorediSCSIVolume</a> API. For
@@ -321,8 +439,12 @@ delete_tape_archive(Client, Input, Options) ->
 %%
 %% In the request, you must provide the Amazon Resource Name (ARN) of the
 %% storage volume you want to delete.
-delete_volume(Client, Input, Options) ->
-  request(Client, <<"DeleteVolume">>, Input, Options).
+delete_volume(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_volume(Client, Input, []).
+delete_volume(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteVolume">>, Input, Options).
 
 %% @doc This operation returns the bandwidth rate limits of a gateway. By
 %% default, these limits are not set, which means no bandwidth rate limiting
@@ -333,16 +455,24 @@ delete_volume(Client, Input, Options) ->
 %% returns only the gateway ARN in the response body. To specify which
 %% gateway to describe, use the Amazon Resource Name (ARN) of the gateway in
 %% your request.
-describe_bandwidth_rate_limit(Client, Input, Options) ->
-  request(Client, <<"DescribeBandwidthRateLimit">>, Input, Options).
+describe_bandwidth_rate_limit(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_bandwidth_rate_limit(Client, Input, []).
+describe_bandwidth_rate_limit(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeBandwidthRateLimit">>, Input, Options).
 
 %% @doc This operation returns information about the cache of a gateway. This
 %% operation is supported only for the gateway-cached volume architecture.
 %%
 %% The response includes disk IDs that are configured as cache, and it
 %% includes the amount of cache allocated and used.
-describe_cache(Client, Input, Options) ->
-  request(Client, <<"DescribeCache">>, Input, Options).
+describe_cache(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_cache(Client, Input, []).
+describe_cache(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeCache">>, Input, Options).
 
 %% @doc This operation returns a description of the gateway volumes specified
 %% in the request. This operation is supported only for the gateway-cached
@@ -351,40 +481,64 @@ describe_cache(Client, Input, Options) ->
 %% The list of gateway volumes in the request must be from one gateway. In
 %% the response Amazon Storage Gateway returns volume information sorted by
 %% volume Amazon Resource Name (ARN).
-describe_cached_iscsi_volumes(Client, Input, Options) ->
-  request(Client, <<"DescribeCachediSCSIVolumes">>, Input, Options).
+describe_cached_iscsi_volumes(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_cached_iscsi_volumes(Client, Input, []).
+describe_cached_iscsi_volumes(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeCachediSCSIVolumes">>, Input, Options).
 
 %% @doc This operation returns an array of Challenge-Handshake Authentication
 %% Protocol (CHAP) credentials information for a specified iSCSI target, one
 %% for each target-initiator pair.
-describe_chap_credentials(Client, Input, Options) ->
-  request(Client, <<"DescribeChapCredentials">>, Input, Options).
+describe_chap_credentials(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_chap_credentials(Client, Input, []).
+describe_chap_credentials(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeChapCredentials">>, Input, Options).
 
 %% @doc This operation returns metadata about a gateway such as its name,
 %% network interfaces, configured time zone, and the state (whether the
 %% gateway is running or not). To specify which gateway to describe, use the
 %% Amazon Resource Name (ARN) of the gateway in your request.
-describe_gateway_information(Client, Input, Options) ->
-  request(Client, <<"DescribeGatewayInformation">>, Input, Options).
+describe_gateway_information(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_gateway_information(Client, Input, []).
+describe_gateway_information(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeGatewayInformation">>, Input, Options).
 
 %% @doc This operation returns your gateway's weekly maintenance start time
 %% including the day and time of the week. Note that values are in terms of
 %% the gateway's time zone.
-describe_maintenance_start_time(Client, Input, Options) ->
-  request(Client, <<"DescribeMaintenanceStartTime">>, Input, Options).
+describe_maintenance_start_time(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_maintenance_start_time(Client, Input, []).
+describe_maintenance_start_time(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeMaintenanceStartTime">>, Input, Options).
 
 %% @doc This operation describes the snapshot schedule for the specified
 %% gateway volume. The snapshot schedule information includes intervals at
 %% which snapshots are automatically initiated on the volume.
-describe_snapshot_schedule(Client, Input, Options) ->
-  request(Client, <<"DescribeSnapshotSchedule">>, Input, Options).
+describe_snapshot_schedule(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_snapshot_schedule(Client, Input, []).
+describe_snapshot_schedule(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeSnapshotSchedule">>, Input, Options).
 
 %% @doc This operation returns the description of the gateway volumes
 %% specified in the request. The list of gateway volumes in the request must
 %% be from one gateway. In the response Amazon Storage Gateway returns volume
 %% information sorted by volume ARNs.
-describe_stored_iscsi_volumes(Client, Input, Options) ->
-  request(Client, <<"DescribeStorediSCSIVolumes">>, Input, Options).
+describe_stored_iscsi_volumes(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_stored_iscsi_volumes(Client, Input, []).
+describe_stored_iscsi_volumes(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeStorediSCSIVolumes">>, Input, Options).
 
 %% @doc Returns a description of specified virtual tapes in the virtual tape
 %% shelf (VTS).
@@ -392,8 +546,12 @@ describe_stored_iscsi_volumes(Client, Input, Options) ->
 %% If a specific <code>TapeARN</code> is not specified, AWS Storage Gateway
 %% returns a description of all virtual tapes found in the VTS associated
 %% with your account.
-describe_tape_archives(Client, Input, Options) ->
-  request(Client, <<"DescribeTapeArchives">>, Input, Options).
+describe_tape_archives(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_tape_archives(Client, Input, []).
+describe_tape_archives(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeTapeArchives">>, Input, Options).
 
 %% @doc Returns a list of virtual tape recovery points that are available for
 %% the specified gateway-VTL.
@@ -401,14 +559,22 @@ describe_tape_archives(Client, Input, Options) ->
 %% A recovery point is a point in time view of a virtual tape at which all
 %% the data on the virtual tape is consistent. If your gateway crashes,
 %% virtual tapes that have recovery points can be recovered to a new gateway.
-describe_tape_recovery_points(Client, Input, Options) ->
-  request(Client, <<"DescribeTapeRecoveryPoints">>, Input, Options).
+describe_tape_recovery_points(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_tape_recovery_points(Client, Input, []).
+describe_tape_recovery_points(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeTapeRecoveryPoints">>, Input, Options).
 
 %% @doc Returns a description of the specified Amazon Resource Name (ARN) of
 %% virtual tapes. If a <code>TapeARN</code> is not specified, returns a
 %% description of all virtual tapes associated with the specified gateway.
-describe_tapes(Client, Input, Options) ->
-  request(Client, <<"DescribeTapes">>, Input, Options).
+describe_tapes(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_tapes(Client, Input, []).
+describe_tapes(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeTapes">>, Input, Options).
 
 %% @doc This operation returns information about the upload buffer of a
 %% gateway. This operation is supported for both the gateway-stored and
@@ -416,16 +582,24 @@ describe_tapes(Client, Input, Options) ->
 %%
 %% The response includes disk IDs that are configured as upload buffer space,
 %% and it includes the amount of upload buffer space allocated and used.
-describe_upload_buffer(Client, Input, Options) ->
-  request(Client, <<"DescribeUploadBuffer">>, Input, Options).
+describe_upload_buffer(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_upload_buffer(Client, Input, []).
+describe_upload_buffer(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeUploadBuffer">>, Input, Options).
 
 %% @doc Returns a description of virtual tape library (VTL) devices for the
 %% specified gateway. In the response, AWS Storage Gateway returns VTL device
 %% information.
 %%
 %% The list of VTL devices must be from one gateway.
-describe_vtl_devices(Client, Input, Options) ->
-  request(Client, <<"DescribeVTLDevices">>, Input, Options).
+describe_vtl_devices(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_vtl_devices(Client, Input, []).
+describe_vtl_devices(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeVTLDevices">>, Input, Options).
 
 %% @doc This operation returns information about the working storage of a
 %% gateway. This operation is supported only for the gateway-stored volume
@@ -438,8 +612,12 @@ describe_vtl_devices(Client, Input, Options) ->
 %%
 %% </note> The response includes disk IDs that are configured as working
 %% storage, and it includes the amount of working storage allocated and used.
-describe_working_storage(Client, Input, Options) ->
-  request(Client, <<"DescribeWorkingStorage">>, Input, Options).
+describe_working_storage(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_working_storage(Client, Input, []).
+describe_working_storage(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeWorkingStorage">>, Input, Options).
 
 %% @doc Disables a gateway when the gateway is no longer functioning. For
 %% example, if your gateway VM is damaged, you can disable the gateway so you
@@ -449,8 +627,12 @@ describe_working_storage(Client, Input, Options) ->
 %% functioning.
 %%
 %% <important>Once a gateway is disabled it cannot be enabled.</important>
-disable_gateway(Client, Input, Options) ->
-  request(Client, <<"DisableGateway">>, Input, Options).
+disable_gateway(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disable_gateway(Client, Input, []).
+disable_gateway(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisableGateway">>, Input, Options).
 
 %% @doc This operation lists gateways owned by an AWS account in a region
 %% specified in the request. The returned list is ordered by gateway Amazon
@@ -464,8 +646,12 @@ disable_gateway(Client, Input, Options) ->
 %% response returns only a truncated list of your gateways-the response
 %% contains a marker that you can specify in your next request to fetch the
 %% next page of gateways.
-list_gateways(Client, Input, Options) ->
-  request(Client, <<"ListGateways">>, Input, Options).
+list_gateways(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_gateways(Client, Input, []).
+list_gateways(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListGateways">>, Input, Options).
 
 %% @doc This operation returns a list of the gateway's local disks. To
 %% specify which gateway to describe, you use the Amazon Resource Name (ARN)
@@ -478,14 +664,22 @@ list_gateways(Client, Input, Options) ->
 %% is no longer connected to the gateway), or mismatch (the disk node is
 %% occupied by a disk that has incorrect metadata or the disk content is
 %% corrupted).
-list_local_disks(Client, Input, Options) ->
-  request(Client, <<"ListLocalDisks">>, Input, Options).
+list_local_disks(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_local_disks(Client, Input, []).
+list_local_disks(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListLocalDisks">>, Input, Options).
 
 %% @doc This operation lists iSCSI initiators that are connected to a volume.
 %% You can use this operation to determine whether a volume is being used or
 %% not.
-list_volume_initiators(Client, Input, Options) ->
-  request(Client, <<"ListVolumeInitiators">>, Input, Options).
+list_volume_initiators(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_volume_initiators(Client, Input, []).
+list_volume_initiators(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListVolumeInitiators">>, Input, Options).
 
 %% @doc This operation lists the recovery points for a specified gateway.
 %% This operation is supported only for the gateway-cached volume
@@ -496,8 +690,12 @@ list_volume_initiators(Client, Input, Options) ->
 %% which you can create a snapshot. To create a snapshot from a volume
 %% recovery point use the <a>CreateSnapshotFromVolumeRecoveryPoint</a>
 %% operation.
-list_volume_recovery_points(Client, Input, Options) ->
-  request(Client, <<"ListVolumeRecoveryPoints">>, Input, Options).
+list_volume_recovery_points(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_volume_recovery_points(Client, Input, []).
+list_volume_recovery_points(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListVolumeRecoveryPoints">>, Input, Options).
 
 %% @doc This operation lists the iSCSI stored volumes of a gateway. Results
 %% are sorted by volume ARN. The response includes only the volume ARNs. If
@@ -510,8 +708,12 @@ list_volume_recovery_points(Client, Input, Options) ->
 %% response. If the number of volumes returned in the response is truncated,
 %% the response includes a Marker field. You can use this Marker value in
 %% your subsequent request to retrieve the next set of volumes.
-list_volumes(Client, Input, Options) ->
-  request(Client, <<"ListVolumes">>, Input, Options).
+list_volumes(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_volumes(Client, Input, []).
+list_volumes(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListVolumes">>, Input, Options).
 
 %% @doc This operation resets all cache disks that have encountered a error
 %% and makes the disks available for reconfiguration as cache storage. If
@@ -528,8 +730,12 @@ list_volumes(Client, Input, Options) ->
 %% function properly.
 %%
 %% </important>
-reset_cache(Client, Input, Options) ->
-  request(Client, <<"ResetCache">>, Input, Options).
+reset_cache(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    reset_cache(Client, Input, []).
+reset_cache(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ResetCache">>, Input, Options).
 
 %% @doc Retrieves an archived virtual tape from the virtual tape shelf (VTS)
 %% to a gateway-VTL. Virtual tapes archived in the VTS are not associated
@@ -539,8 +745,12 @@ reset_cache(Client, Input, Options) ->
 %% Once a tape is successfully retrieved to a gateway, it cannot be retrieved
 %% again to another gateway. You must archive the tape again before you can
 %% retrieve it to another gateway.
-retrieve_tape_archive(Client, Input, Options) ->
-  request(Client, <<"RetrieveTapeArchive">>, Input, Options).
+retrieve_tape_archive(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    retrieve_tape_archive(Client, Input, []).
+retrieve_tape_archive(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RetrieveTapeArchive">>, Input, Options).
 
 %% @doc Retrieves the recovery point for the specified virtual tape.
 %%
@@ -551,8 +761,12 @@ retrieve_tape_archive(Client, Input, Options) ->
 %% <note>The virtual tape can be retrieved to only one gateway. The retrieved
 %% tape is read-only. The virtual tape can be retrieved to only a
 %% gateway-VTL. There is no charge for retrieving recovery points.</note>
-retrieve_tape_recovery_point(Client, Input, Options) ->
-  request(Client, <<"RetrieveTapeRecoveryPoint">>, Input, Options).
+retrieve_tape_recovery_point(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    retrieve_tape_recovery_point(Client, Input, []).
+retrieve_tape_recovery_point(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RetrieveTapeRecoveryPoint">>, Input, Options).
 
 %% @doc This operation shuts down a gateway. To specify which gateway to shut
 %% down, use the Amazon Resource Name (ARN) of the gateway in the body of
@@ -576,8 +790,12 @@ retrieve_tape_recovery_point(Client, Input, Options) ->
 %% <a>ActivateGateway</a>.</note> If do not intend to use the gateway again,
 %% you must delete the gateway (using <a>DeleteGateway</a>) to no longer pay
 %% software charges associated with the gateway.
-shutdown_gateway(Client, Input, Options) ->
-  request(Client, <<"ShutdownGateway">>, Input, Options).
+shutdown_gateway(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    shutdown_gateway(Client, Input, []).
+shutdown_gateway(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ShutdownGateway">>, Input, Options).
 
 %% @doc This operation starts a gateway that you previously shut down (see
 %% <a>ShutdownGateway</a>). After the gateway starts, you can then make other
@@ -590,8 +808,12 @@ shutdown_gateway(Client, Input, Options) ->
 %% before making any additional API calls. For more information, see
 %% <a>ActivateGateway</a>.</note> To specify which gateway to start, use the
 %% Amazon Resource Name (ARN) of the gateway in your request.
-start_gateway(Client, Input, Options) ->
-  request(Client, <<"StartGateway">>, Input, Options).
+start_gateway(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_gateway(Client, Input, []).
+start_gateway(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartGateway">>, Input, Options).
 
 %% @doc This operation updates the bandwidth rate limits of a gateway. You
 %% can update both the upload and download bandwidth rate limit or specify
@@ -604,8 +826,12 @@ start_gateway(Client, Input, Options) ->
 %%
 %% To specify which gateway to update, use the Amazon Resource Name (ARN) of
 %% the gateway in your request.
-update_bandwidth_rate_limit(Client, Input, Options) ->
-  request(Client, <<"UpdateBandwidthRateLimit">>, Input, Options).
+update_bandwidth_rate_limit(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_bandwidth_rate_limit(Client, Input, []).
+update_bandwidth_rate_limit(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateBandwidthRateLimit">>, Input, Options).
 
 %% @doc This operation updates the Challenge-Handshake Authentication
 %% Protocol (CHAP) credentials for a specified iSCSI target. By default, a
@@ -617,14 +843,22 @@ update_bandwidth_rate_limit(Client, Input, Options) ->
 %% credentials.
 %%
 %% </important>
-update_chap_credentials(Client, Input, Options) ->
-  request(Client, <<"UpdateChapCredentials">>, Input, Options).
+update_chap_credentials(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_chap_credentials(Client, Input, []).
+update_chap_credentials(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateChapCredentials">>, Input, Options).
 
 %% @doc This operation updates a gateway's metadata, which includes the
 %% gateway's name and time zone. To specify which gateway to update, use the
 %% Amazon Resource Name (ARN) of the gateway in your request.
-update_gateway_information(Client, Input, Options) ->
-  request(Client, <<"UpdateGatewayInformation">>, Input, Options).
+update_gateway_information(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_gateway_information(Client, Input, []).
+update_gateway_information(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateGatewayInformation">>, Input, Options).
 
 %% @doc This operation updates the gateway virtual machine (VM) software. The
 %% request immediately triggers the software update.
@@ -641,14 +875,22 @@ update_gateway_information(Client, Input, Options) ->
 %% Your Windows iSCSI Settings</a> and <a
 %% href="http://docs.aws.amazon.com/storagegateway/latest/userguide/ConfiguringiSCSIClientInitiatorRedHatClient.html#CustomizeLinuxiSCSISettings">Customizing
 %% Your Linux iSCSI Settings</a>, respectively.</important>
-update_gateway_software_now(Client, Input, Options) ->
-  request(Client, <<"UpdateGatewaySoftwareNow">>, Input, Options).
+update_gateway_software_now(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_gateway_software_now(Client, Input, []).
+update_gateway_software_now(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateGatewaySoftwareNow">>, Input, Options).
 
 %% @doc This operation updates a gateway's weekly maintenance start time
 %% information, including day and time of the week. The maintenance time is
 %% the time in your gateway's time zone.
-update_maintenance_start_time(Client, Input, Options) ->
-  request(Client, <<"UpdateMaintenanceStartTime">>, Input, Options).
+update_maintenance_start_time(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_maintenance_start_time(Client, Input, []).
+update_maintenance_start_time(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateMaintenanceStartTime">>, Input, Options).
 
 %% @doc This operation updates a snapshot schedule configured for a gateway
 %% volume.
@@ -661,15 +903,23 @@ update_maintenance_start_time(Client, Input, Options) ->
 %% schedule you want to update, and the schedule information, including when
 %% you want the snapshot to begin on a day and the frequency (in hours) of
 %% snapshots.
-update_snapshot_schedule(Client, Input, Options) ->
-  request(Client, <<"UpdateSnapshotSchedule">>, Input, Options).
+update_snapshot_schedule(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_snapshot_schedule(Client, Input, []).
+update_snapshot_schedule(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateSnapshotSchedule">>, Input, Options).
 
 %% @doc This operation updates the type of medium changer in a gateway-VTL.
 %% When you activate a gateway-VTL, you select a medium changer type for the
 %% gateway-VTL. This operation enables you to select a different type of
 %% medium changer after a gateway-VTL is activated.
-update_vtl_device_type(Client, Input, Options) ->
-  request(Client, <<"UpdateVTLDeviceType">>, Input, Options).
+update_vtl_device_type(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_vtl_device_type(Client, Input, []).
+update_vtl_device_type(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateVTLDeviceType">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

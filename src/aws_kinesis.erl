@@ -7,18 +7,31 @@
 %% processing of streaming big data.
 -module(aws_kinesis).
 
--export([add_tags_to_stream/3,
+-export([add_tags_to_stream/2,
+         add_tags_to_stream/3,
+         create_stream/2,
          create_stream/3,
+         delete_stream/2,
          delete_stream/3,
+         describe_stream/2,
          describe_stream/3,
+         get_records/2,
          get_records/3,
+         get_shard_iterator/2,
          get_shard_iterator/3,
+         list_streams/2,
          list_streams/3,
+         list_tags_for_stream/2,
          list_tags_for_stream/3,
+         merge_shards/2,
          merge_shards/3,
+         put_record/2,
          put_record/3,
+         put_records/2,
          put_records/3,
+         remove_tags_from_stream/2,
          remove_tags_from_stream/3,
+         split_shard/2,
          split_shard/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
@@ -33,8 +46,12 @@
 %% If tags have already been assigned to the stream,
 %% <code>AddTagsToStream</code> overwrites any existing tags that correspond
 %% to the specified tag keys.
-add_tags_to_stream(Client, Input, Options) ->
-  request(Client, <<"AddTagsToStream">>, Input, Options).
+add_tags_to_stream(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    add_tags_to_stream(Client, Input, []).
+add_tags_to_stream(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AddTagsToStream">>, Input, Options).
 
 %% @doc Creates a Amazon Kinesis stream. A stream captures and transports
 %% data records that are continuously emitted from different data sources or
@@ -78,8 +95,12 @@ add_tags_to_stream(Client, Input, Options) ->
 %% is returned in <code>StreamStatus</code>.
 %%
 %% <a>CreateStream</a> has a limit of 5 transactions per second per account.
-create_stream(Client, Input, Options) ->
-  request(Client, <<"CreateStream">>, Input, Options).
+create_stream(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_stream(Client, Input, []).
+create_stream(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateStream">>, Input, Options).
 
 %% @doc Deletes a stream and all its shards and data. You must shut down any
 %% applications that are operating on the stream before you delete the
@@ -102,8 +123,12 @@ create_stream(Client, Input, Options) ->
 %% stream, which is returned in <code>StreamStatus</code>.
 %%
 %% <a>DeleteStream</a> has a limit of 5 transactions per second per account.
-delete_stream(Client, Input, Options) ->
-  request(Client, <<"DeleteStream">>, Input, Options).
+delete_stream(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_stream(Client, Input, []).
+delete_stream(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteStream">>, Input, Options).
 
 %% @doc Describes the specified stream.
 %%
@@ -129,8 +154,12 @@ delete_stream(Client, Input, Options) ->
 %%
 %% <a>DescribeStream</a> has a limit of 10 transactions per second per
 %% account.
-describe_stream(Client, Input, Options) ->
-  request(Client, <<"DescribeStream">>, Input, Options).
+describe_stream(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_stream(Client, Input, []).
+describe_stream(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeStream">>, Input, Options).
 
 %% @doc Gets data records from a shard.
 %%
@@ -182,8 +211,12 @@ describe_stream(Client, Input, Options) ->
 %% href="http://docs.aws.amazon.com/kinesis/latest/dev/monitoring_with_cloudwatch.html">Monitoring
 %% Amazon Kinesis with Amazon CloudWatch</a> in the <i>Amazon Kinesis
 %% Developer Guide</i>.
-get_records(Client, Input, Options) ->
-  request(Client, <<"GetRecords">>, Input, Options).
+get_records(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_records(Client, Input, []).
+get_records(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetRecords">>, Input, Options).
 
 %% @doc Gets a shard iterator. A shard iterator expires five minutes after it
 %% is returned to the requester.
@@ -231,8 +264,12 @@ get_records(Client, Input, Options) ->
 %%
 %% <a>GetShardIterator</a> has a limit of 5 transactions per second per
 %% account per open shard.
-get_shard_iterator(Client, Input, Options) ->
-  request(Client, <<"GetShardIterator">>, Input, Options).
+get_shard_iterator(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_shard_iterator(Client, Input, []).
+get_shard_iterator(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetShardIterator">>, Input, Options).
 
 %% @doc Lists your streams.
 %%
@@ -252,12 +289,20 @@ get_shard_iterator(Client, Input, Options) ->
 %% process until all the stream names have been collected in the list.
 %%
 %% <a>ListStreams</a> has a limit of 5 transactions per second per account.
-list_streams(Client, Input, Options) ->
-  request(Client, <<"ListStreams">>, Input, Options).
+list_streams(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_streams(Client, Input, []).
+list_streams(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListStreams">>, Input, Options).
 
 %% @doc Lists the tags for the specified Amazon Kinesis stream.
-list_tags_for_stream(Client, Input, Options) ->
-  request(Client, <<"ListTagsForStream">>, Input, Options).
+list_tags_for_stream(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_tags_for_stream(Client, Input, []).
+list_tags_for_stream(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTagsForStream">>, Input, Options).
 
 %% @doc Merges two adjacent shards in a stream and combines them into a
 %% single shard to reduce the stream's capacity to ingest and transport data.
@@ -303,8 +348,12 @@ list_tags_for_stream(Client, Input, Options) ->
 %%
 %% <code>MergeShards</code> has limit of 5 transactions per second per
 %% account.
-merge_shards(Client, Input, Options) ->
-  request(Client, <<"MergeShards">>, Input, Options).
+merge_shards(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    merge_shards(Client, Input, []).
+merge_shards(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"MergeShards">>, Input, Options).
 
 %% @doc Puts (writes) a single data record from a producer into an Amazon
 %% Kinesis stream. Call <code>PutRecord</code> to send data from the producer
@@ -350,8 +399,12 @@ merge_shards(Client, Input, Options) ->
 %%
 %% Data records are accessible for only 24 hours from the time that they are
 %% added to an Amazon Kinesis stream.
-put_record(Client, Input, Options) ->
-  request(Client, <<"PutRecord">>, Input, Options).
+put_record(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_record(Client, Input, []).
+put_record(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutRecord">>, Input, Options).
 
 %% @doc Puts (writes) multiple data records from a producer into an Amazon
 %% Kinesis stream in a single call (also referred to as a
@@ -419,14 +472,22 @@ put_record(Client, Input, Options) ->
 %%
 %% Data records are accessible for only 24 hours from the time that they are
 %% added to an Amazon Kinesis stream.
-put_records(Client, Input, Options) ->
-  request(Client, <<"PutRecords">>, Input, Options).
+put_records(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_records(Client, Input, []).
+put_records(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutRecords">>, Input, Options).
 
 %% @doc Deletes tags from the specified Amazon Kinesis stream.
 %%
 %% If you specify a tag that does not exist, it is ignored.
-remove_tags_from_stream(Client, Input, Options) ->
-  request(Client, <<"RemoveTagsFromStream">>, Input, Options).
+remove_tags_from_stream(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    remove_tags_from_stream(Client, Input, []).
+remove_tags_from_stream(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RemoveTagsFromStream">>, Input, Options).
 
 %% @doc Splits a shard into two new shards in the stream, to increase the
 %% stream's capacity to ingest and transport data. <code>SplitShard</code> is
@@ -485,8 +546,12 @@ remove_tags_from_stream(Client, Input, Options) ->
 %%
 %% <code>SplitShard</code> has limit of 5 transactions per second per
 %% account.
-split_shard(Client, Input, Options) ->
-  request(Client, <<"SplitShard">>, Input, Options).
+split_shard(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    split_shard(Client, Input, []).
+split_shard(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SplitShard">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

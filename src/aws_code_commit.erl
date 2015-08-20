@@ -13,16 +13,27 @@
 %% User Guide</i>.
 -module(aws_code_commit).
 
--export([batch_get_repositories/3,
+-export([batch_get_repositories/2,
+         batch_get_repositories/3,
+         create_branch/2,
          create_branch/3,
+         create_repository/2,
          create_repository/3,
+         delete_repository/2,
          delete_repository/3,
+         get_branch/2,
          get_branch/3,
+         get_repository/2,
          get_repository/3,
+         list_branches/2,
          list_branches/3,
+         list_repositories/2,
          list_repositories/3,
+         update_default_branch/2,
          update_default_branch/3,
+         update_repository_description/2,
          update_repository_description/3,
+         update_repository_name/2,
          update_repository_name/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
@@ -41,8 +52,12 @@
 %% on a web page.
 %%
 %% </note>
-batch_get_repositories(Client, Input, Options) ->
-  request(Client, <<"BatchGetRepositories">>, Input, Options).
+batch_get_repositories(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_get_repositories(Client, Input, []).
+batch_get_repositories(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchGetRepositories">>, Input, Options).
 
 %% @doc Creates a new branch in a repository and points the branch to a
 %% commit.
@@ -50,12 +65,20 @@ batch_get_repositories(Client, Input, Options) ->
 %% <note>Calling the create branch operation does not set a repository's
 %% default branch. To do this, call the update default branch
 %% operation.</note>
-create_branch(Client, Input, Options) ->
-  request(Client, <<"CreateBranch">>, Input, Options).
+create_branch(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_branch(Client, Input, []).
+create_branch(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateBranch">>, Input, Options).
 
 %% @doc Creates a new, empty repository.
-create_repository(Client, Input, Options) ->
-  request(Client, <<"CreateRepository">>, Input, Options).
+create_repository(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_repository(Client, Input, []).
+create_repository(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateRepository">>, Input, Options).
 
 %% @doc Deletes a repository. If a specified repository was already deleted,
 %% a null repository ID will be returned.
@@ -63,13 +86,21 @@ create_repository(Client, Input, Options) ->
 %% <important>Deleting a repository also deletes all associated objects and
 %% metadata. After a repository is deleted, all future push calls to the
 %% deleted repository will fail.</important>
-delete_repository(Client, Input, Options) ->
-  request(Client, <<"DeleteRepository">>, Input, Options).
+delete_repository(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_repository(Client, Input, []).
+delete_repository(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteRepository">>, Input, Options).
 
 %% @doc Retrieves information about a repository branch, including its name
 %% and the last commit ID.
-get_branch(Client, Input, Options) ->
-  request(Client, <<"GetBranch">>, Input, Options).
+get_branch(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_branch(Client, Input, []).
+get_branch(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetBranch">>, Input, Options).
 
 %% @doc Gets information about a repository.
 %%
@@ -81,24 +112,40 @@ get_branch(Client, Input, Options) ->
 %% on a web page.
 %%
 %% </note>
-get_repository(Client, Input, Options) ->
-  request(Client, <<"GetRepository">>, Input, Options).
+get_repository(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_repository(Client, Input, []).
+get_repository(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetRepository">>, Input, Options).
 
 %% @doc Gets information about one or more branches in a repository.
-list_branches(Client, Input, Options) ->
-  request(Client, <<"ListBranches">>, Input, Options).
+list_branches(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_branches(Client, Input, []).
+list_branches(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListBranches">>, Input, Options).
 
 %% @doc Gets information about one or more repositories.
-list_repositories(Client, Input, Options) ->
-  request(Client, <<"ListRepositories">>, Input, Options).
+list_repositories(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_repositories(Client, Input, []).
+list_repositories(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListRepositories">>, Input, Options).
 
 %% @doc Sets or changes the default branch name for the specified repository.
 %%
 %% <note>If you use this operation to change the default branch name to the
 %% current default branch name, a success message is returned even though the
 %% default branch did not change.</note>
-update_default_branch(Client, Input, Options) ->
-  request(Client, <<"UpdateDefaultBranch">>, Input, Options).
+update_default_branch(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_default_branch(Client, Input, []).
+update_default_branch(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateDefaultBranch">>, Input, Options).
 
 %% @doc Sets or changes the comment or description for a repository.
 %%
@@ -110,12 +157,20 @@ update_default_branch(Client, Input, Options) ->
 %% on a web page.
 %%
 %% </note>
-update_repository_description(Client, Input, Options) ->
-  request(Client, <<"UpdateRepositoryDescription">>, Input, Options).
+update_repository_description(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_repository_description(Client, Input, []).
+update_repository_description(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateRepositoryDescription">>, Input, Options).
 
 %% @doc Renames a repository.
-update_repository_name(Client, Input, Options) ->
-  request(Client, <<"UpdateRepositoryName">>, Input, Options).
+update_repository_name(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_repository_name(Client, Input, []).
+update_repository_name(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateRepositoryName">>, Input, Options).
 
 %%====================================================================
 %% Internal functions
