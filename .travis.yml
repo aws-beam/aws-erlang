@@ -1,0 +1,10 @@
+sudo: false
+language: erlang
+cache:
+  directories:
+  - $HOME/.cache/rebar3/
+install: "true" # don't let travis run get-deps
+script: "./rebar3 do update, eunit"
+otp_release:
+- 17.5
+- 18.0
