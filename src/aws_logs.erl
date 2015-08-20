@@ -52,27 +52,49 @@
 %% Center</a></li> </ul>
 -module(aws_logs).
 
--export([create_log_group/3,
+-export([create_log_group/2,
+         create_log_group/3,
+         create_log_stream/2,
          create_log_stream/3,
+         delete_destination/2,
          delete_destination/3,
+         delete_log_group/2,
          delete_log_group/3,
+         delete_log_stream/2,
          delete_log_stream/3,
+         delete_metric_filter/2,
          delete_metric_filter/3,
+         delete_retention_policy/2,
          delete_retention_policy/3,
+         delete_subscription_filter/2,
          delete_subscription_filter/3,
+         describe_destinations/2,
          describe_destinations/3,
+         describe_log_groups/2,
          describe_log_groups/3,
+         describe_log_streams/2,
          describe_log_streams/3,
+         describe_metric_filters/2,
          describe_metric_filters/3,
+         describe_subscription_filters/2,
          describe_subscription_filters/3,
+         filter_log_events/2,
          filter_log_events/3,
+         get_log_events/2,
          get_log_events/3,
+         put_destination/2,
          put_destination/3,
+         put_destination_policy/2,
          put_destination_policy/3,
+         put_log_events/2,
          put_log_events/3,
+         put_metric_filter/2,
          put_metric_filter/3,
+         put_retention_policy/2,
          put_retention_policy/3,
+         put_subscription_filter/2,
          put_subscription_filter/3,
+         test_metric_filter/2,
          test_metric_filter/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
@@ -89,8 +111,12 @@
 %% <li>Log group names can be between 1 and 512 characters long.</li>
 %% <li>Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (hyphen),
 %% '/' (forward slash), and '.' (period).</li> </ul>
-create_log_group(Client, Input, Options) ->
-  request(Client, <<"CreateLogGroup">>, Input, Options).
+create_log_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_log_group(Client, Input, []).
+create_log_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateLogGroup">>, Input, Options).
 
 %% @doc Creates a new log stream in the specified log group. The name of the
 %% log stream must be unique within the log group. There is no limit on the
@@ -99,38 +125,66 @@ create_log_group(Client, Input, Options) ->
 %% You must use the following guidelines when naming a log stream: <ul>
 %% <li>Log stream names can be between 1 and 512 characters long.</li>
 %% <li>The ':' colon character is not allowed.</li> </ul>
-create_log_stream(Client, Input, Options) ->
-  request(Client, <<"CreateLogStream">>, Input, Options).
+create_log_stream(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_log_stream(Client, Input, []).
+create_log_stream(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateLogStream">>, Input, Options).
 
 %% @doc Deletes the destination with the specified name and eventually
 %% disables all the subscription filters that publish to it. This will not
 %% delete the physical resource encapsulated by the destination.
-delete_destination(Client, Input, Options) ->
-  request(Client, <<"DeleteDestination">>, Input, Options).
+delete_destination(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_destination(Client, Input, []).
+delete_destination(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteDestination">>, Input, Options).
 
 %% @doc Deletes the log group with the specified name and permanently deletes
 %% all the archived log events associated with it.
-delete_log_group(Client, Input, Options) ->
-  request(Client, <<"DeleteLogGroup">>, Input, Options).
+delete_log_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_log_group(Client, Input, []).
+delete_log_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteLogGroup">>, Input, Options).
 
 %% @doc Deletes a log stream and permanently deletes all the archived log
 %% events associated with it.
-delete_log_stream(Client, Input, Options) ->
-  request(Client, <<"DeleteLogStream">>, Input, Options).
+delete_log_stream(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_log_stream(Client, Input, []).
+delete_log_stream(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteLogStream">>, Input, Options).
 
 %% @doc Deletes a metric filter associated with the specified log group.
-delete_metric_filter(Client, Input, Options) ->
-  request(Client, <<"DeleteMetricFilter">>, Input, Options).
+delete_metric_filter(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_metric_filter(Client, Input, []).
+delete_metric_filter(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteMetricFilter">>, Input, Options).
 
 %% @doc Deletes the retention policy of the specified log group. Log events
 %% would not expire if they belong to log groups without a retention policy.
-delete_retention_policy(Client, Input, Options) ->
-  request(Client, <<"DeleteRetentionPolicy">>, Input, Options).
+delete_retention_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_retention_policy(Client, Input, []).
+delete_retention_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteRetentionPolicy">>, Input, Options).
 
 %% @doc Deletes a subscription filter associated with the specified log
 %% group.
-delete_subscription_filter(Client, Input, Options) ->
-  request(Client, <<"DeleteSubscriptionFilter">>, Input, Options).
+delete_subscription_filter(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_subscription_filter(Client, Input, []).
+delete_subscription_filter(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteSubscriptionFilter">>, Input, Options).
 
 %% @doc Returns all the destinations that are associated with the AWS account
 %% making the request. The list returned in the response is ASCII-sorted by
@@ -141,8 +195,12 @@ delete_subscription_filter(Client, Input, Options) ->
 %% class="code">nextToken</code> value in the response body. You can also
 %% limit the number of destinations returned in the response by specifying
 %% the <code class="code">limit</code> parameter in the request.
-describe_destinations(Client, Input, Options) ->
-  request(Client, <<"DescribeDestinations">>, Input, Options).
+describe_destinations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_destinations(Client, Input, []).
+describe_destinations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeDestinations">>, Input, Options).
 
 %% @doc Returns all the log groups that are associated with the AWS account
 %% making the request. The list returned in the response is ASCII-sorted by
@@ -153,8 +211,12 @@ describe_destinations(Client, Input, Options) ->
 %% class="code">nextToken</code> value in the response body. You can also
 %% limit the number of log groups returned in the response by specifying the
 %% <code class="code">limit</code> parameter in the request.
-describe_log_groups(Client, Input, Options) ->
-  request(Client, <<"DescribeLogGroups">>, Input, Options).
+describe_log_groups(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_log_groups(Client, Input, []).
+describe_log_groups(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeLogGroups">>, Input, Options).
 
 %% @doc Returns all the log streams that are associated with the specified
 %% log group. The list returned in the response is ASCII-sorted by log stream
@@ -167,8 +229,12 @@ describe_log_groups(Client, Input, Options) ->
 %% <code class="code">limit</code> parameter in the request. This operation
 %% has a limit of five transactions per second, after which transactions are
 %% throttled.
-describe_log_streams(Client, Input, Options) ->
-  request(Client, <<"DescribeLogStreams">>, Input, Options).
+describe_log_streams(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_log_streams(Client, Input, []).
+describe_log_streams(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeLogStreams">>, Input, Options).
 
 %% @doc Returns all the metrics filters associated with the specified log
 %% group. The list returned in the response is ASCII-sorted by filter name.
@@ -178,8 +244,12 @@ describe_log_streams(Client, Input, Options) ->
 %% class="code">nextToken</code> value in the response body. You can also
 %% limit the number of metric filters returned in the response by specifying
 %% the <code class="code">limit</code> parameter in the request.
-describe_metric_filters(Client, Input, Options) ->
-  request(Client, <<"DescribeMetricFilters">>, Input, Options).
+describe_metric_filters(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_metric_filters(Client, Input, []).
+describe_metric_filters(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeMetricFilters">>, Input, Options).
 
 %% @doc Returns all the subscription filters associated with the specified
 %% log group. The list returned in the response is ASCII-sorted by filter
@@ -190,8 +260,12 @@ describe_metric_filters(Client, Input, Options) ->
 %% class="code">nextToken</code> value in the response body. You can also
 %% limit the number of subscription filters returned in the response by
 %% specifying the <code class="code">limit</code> parameter in the request.
-describe_subscription_filters(Client, Input, Options) ->
-  request(Client, <<"DescribeSubscriptionFilters">>, Input, Options).
+describe_subscription_filters(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_subscription_filters(Client, Input, []).
+describe_subscription_filters(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeSubscriptionFilters">>, Input, Options).
 
 %% @doc Retrieves log events, optionally filtered by a filter pattern from
 %% the specified log group. You can provide an optional time range to filter
@@ -210,8 +284,12 @@ describe_subscription_filters(Client, Input, Options) ->
 %% searched completely or require further pagination. The <code
 %% class="code">limit</code> parameter in the request. can be used to specify
 %% the maximum number of events to return in a page.
-filter_log_events(Client, Input, Options) ->
-  request(Client, <<"FilterLogEvents">>, Input, Options).
+filter_log_events(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    filter_log_events(Client, Input, []).
+filter_log_events(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"FilterLogEvents">>, Input, Options).
 
 %% @doc Retrieves log events from the specified log stream. You can provide
 %% an optional time range to filter the results on the event <code
@@ -226,8 +304,12 @@ filter_log_events(Client, Input, Options) ->
 %% direction. You can also limit the number of log events returned in the
 %% response by specifying the <code class="code">limit</code> parameter in
 %% the request.
-get_log_events(Client, Input, Options) ->
-  request(Client, <<"GetLogEvents">>, Input, Options).
+get_log_events(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_log_events(Client, Input, []).
+get_log_events(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetLogEvents">>, Input, Options).
 
 %% @doc Creates or updates a <code>Destination</code>. A destination
 %% encapsulates a physical resource (such as a Kinesis stream) and allows you
@@ -242,16 +324,24 @@ get_log_events(Client, Input, Options) ->
 %% not be able to call <code>PutSubscriptionFilter</code> against this
 %% destination. To enable that, the destination owner must call
 %% <code>PutDestinationPolicy</code> after PutDestination.
-put_destination(Client, Input, Options) ->
-  request(Client, <<"PutDestination">>, Input, Options).
+put_destination(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_destination(Client, Input, []).
+put_destination(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutDestination">>, Input, Options).
 
 %% @doc Creates or updates an access policy associated with an existing
 %% <code>Destination</code>. An access policy is an <a
 %% href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies_overview.html">IAM
 %% policy document</a> that is used to authorize claims to register a
 %% subscription filter against a given destination.
-put_destination_policy(Client, Input, Options) ->
-  request(Client, <<"PutDestinationPolicy">>, Input, Options).
+put_destination_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_destination_policy(Client, Input, []).
+put_destination_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutDestinationPolicy">>, Input, Options).
 
 %% @doc Uploads a batch of log events to the specified log stream.
 %%
@@ -269,8 +359,12 @@ put_destination_policy(Client, Input, Options) ->
 %% the batch must be in chronological ordered by their <code
 %% class="code">timestamp</code>.</li> <li>The maximum number of log events
 %% in a batch is 10,000.</li> </ul>
-put_log_events(Client, Input, Options) ->
-  request(Client, <<"PutLogEvents">>, Input, Options).
+put_log_events(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_log_events(Client, Input, []).
+put_log_events(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutLogEvents">>, Input, Options).
 
 %% @doc Creates or updates a metric filter and associates it with the
 %% specified log group. Metric filters allow you to configure rules to
@@ -279,14 +373,22 @@ put_log_events(Client, Input, Options) ->
 %%
 %% The maximum number of metric filters that can be associated with a log
 %% group is 100.
-put_metric_filter(Client, Input, Options) ->
-  request(Client, <<"PutMetricFilter">>, Input, Options).
+put_metric_filter(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_metric_filter(Client, Input, []).
+put_metric_filter(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutMetricFilter">>, Input, Options).
 
 %% @doc Sets the retention of the specified log group. A retention policy
 %% allows you to configure the number of days you want to retain log events
 %% in the specified log group.
-put_retention_policy(Client, Input, Options) ->
-  request(Client, <<"PutRetentionPolicy">>, Input, Options).
+put_retention_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_retention_policy(Client, Input, []).
+put_retention_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutRetentionPolicy">>, Input, Options).
 
 %% @doc Creates or updates a subscription filter and associates it with the
 %% specified log group. Subscription filters allow you to subscribe to a
@@ -300,14 +402,22 @@ put_retention_policy(Client, Input, Options) ->
 %%
 %% Currently there can only be one subscription filter associated with a log
 %% group.
-put_subscription_filter(Client, Input, Options) ->
-  request(Client, <<"PutSubscriptionFilter">>, Input, Options).
+put_subscription_filter(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_subscription_filter(Client, Input, []).
+put_subscription_filter(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutSubscriptionFilter">>, Input, Options).
 
 %% @doc Tests the filter pattern of a metric filter against a sample of log
 %% event messages. You can use this operation to validate the correctness of
 %% a metric filter pattern.
-test_metric_filter(Client, Input, Options) ->
-  request(Client, <<"TestMetricFilter">>, Input, Options).
+test_metric_filter(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    test_metric_filter(Client, Input, []).
+test_metric_filter(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"TestMetricFilter">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

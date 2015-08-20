@@ -8,12 +8,19 @@
 %% parameters, and errors.
 -module(aws_workspaces).
 
--export([create_workspaces/3,
+-export([create_workspaces/2,
+         create_workspaces/3,
+         describe_workspace_bundles/2,
          describe_workspace_bundles/3,
+         describe_workspace_directories/2,
          describe_workspace_directories/3,
+         describe_workspaces/2,
          describe_workspaces/3,
+         reboot_workspaces/2,
          reboot_workspaces/3,
+         rebuild_workspaces/2,
          rebuild_workspaces/3,
+         terminate_workspaces/2,
          terminate_workspaces/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
@@ -28,8 +35,12 @@
 %% are created.
 %%
 %% </note>
-create_workspaces(Client, Input, Options) ->
-  request(Client, <<"CreateWorkspaces">>, Input, Options).
+create_workspaces(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_workspaces(Client, Input, []).
+create_workspaces(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateWorkspaces">>, Input, Options).
 
 %% @doc Obtains information about the WorkSpace bundles that are available to
 %% your account in the specified region.
@@ -42,8 +53,12 @@ create_workspaces(Client, Input, Options) ->
 %% are available, the <code>NextToken</code> response member contains a token
 %% that you pass in the next call to this operation to retrieve the next set
 %% of items.
-describe_workspace_bundles(Client, Input, Options) ->
-  request(Client, <<"DescribeWorkspaceBundles">>, Input, Options).
+describe_workspace_bundles(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_workspace_bundles(Client, Input, []).
+describe_workspace_bundles(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeWorkspaceBundles">>, Input, Options).
 
 %% @doc Retrieves information about the AWS Directory Service directories in
 %% the region that are registered with Amazon WorkSpaces and are available to
@@ -54,8 +69,12 @@ describe_workspace_bundles(Client, Input, Options) ->
 %% are available, the <code>NextToken</code> response member contains a token
 %% that you pass in the next call to this operation to retrieve the next set
 %% of items.
-describe_workspace_directories(Client, Input, Options) ->
-  request(Client, <<"DescribeWorkspaceDirectories">>, Input, Options).
+describe_workspace_directories(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_workspace_directories(Client, Input, []).
+describe_workspace_directories(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeWorkspaceDirectories">>, Input, Options).
 
 %% @doc Obtains information about the specified WorkSpaces.
 %%
@@ -68,8 +87,12 @@ describe_workspace_directories(Client, Input, Options) ->
 %% are available, the <code>NextToken</code> response member contains a token
 %% that you pass in the next call to this operation to retrieve the next set
 %% of items.
-describe_workspaces(Client, Input, Options) ->
-  request(Client, <<"DescribeWorkspaces">>, Input, Options).
+describe_workspaces(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_workspaces(Client, Input, []).
+describe_workspaces(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeWorkspaces">>, Input, Options).
 
 %% @doc Reboots the specified WorkSpaces.
 %%
@@ -81,8 +104,12 @@ describe_workspaces(Client, Input, Options) ->
 %% WorkSpaces have rebooted.
 %%
 %% </note>
-reboot_workspaces(Client, Input, Options) ->
-  request(Client, <<"RebootWorkspaces">>, Input, Options).
+reboot_workspaces(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    reboot_workspaces(Client, Input, []).
+reboot_workspaces(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RebootWorkspaces">>, Input, Options).
 
 %% @doc Rebuilds the specified WorkSpaces.
 %%
@@ -103,8 +130,12 @@ reboot_workspaces(Client, Input, Options) ->
 %% WorkSpaces have been completely rebuilt.
 %%
 %% </note>
-rebuild_workspaces(Client, Input, Options) ->
-  request(Client, <<"RebuildWorkspaces">>, Input, Options).
+rebuild_workspaces(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    rebuild_workspaces(Client, Input, []).
+rebuild_workspaces(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RebuildWorkspaces">>, Input, Options).
 
 %% @doc Terminates the specified WorkSpaces.
 %%
@@ -120,8 +151,12 @@ rebuild_workspaces(Client, Input, Options) ->
 %% WorkSpaces have been completely terminated.
 %%
 %% </note>
-terminate_workspaces(Client, Input, Options) ->
-  request(Client, <<"TerminateWorkspaces">>, Input, Options).
+terminate_workspaces(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    terminate_workspaces(Client, Input, []).
+terminate_workspaces(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"TerminateWorkspaces">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

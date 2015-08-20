@@ -4,23 +4,41 @@
 
 -module(aws_route53_domains).
 
--export([check_domain_availability/3,
+-export([check_domain_availability/2,
+         check_domain_availability/3,
+         delete_tags_for_domain/2,
          delete_tags_for_domain/3,
+         disable_domain_auto_renew/2,
          disable_domain_auto_renew/3,
+         disable_domain_transfer_lock/2,
          disable_domain_transfer_lock/3,
+         enable_domain_auto_renew/2,
          enable_domain_auto_renew/3,
+         enable_domain_transfer_lock/2,
          enable_domain_transfer_lock/3,
+         get_domain_detail/2,
          get_domain_detail/3,
+         get_operation_detail/2,
          get_operation_detail/3,
+         list_domains/2,
          list_domains/3,
+         list_operations/2,
          list_operations/3,
+         list_tags_for_domain/2,
          list_tags_for_domain/3,
+         register_domain/2,
          register_domain/3,
+         retrieve_domain_auth_code/2,
          retrieve_domain_auth_code/3,
+         transfer_domain/2,
          transfer_domain/3,
+         update_domain_contact/2,
          update_domain_contact/3,
+         update_domain_contact_privacy/2,
          update_domain_contact_privacy/3,
+         update_domain_nameservers/2,
          update_domain_nameservers/3,
+         update_tags_for_domain/2,
          update_tags_for_domain/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
@@ -33,15 +51,23 @@
 %% access this API without authenticating. Note that if the availability
 %% status of a domain is pending, you must submit another request to
 %% determine the availability of the domain name.
-check_domain_availability(Client, Input, Options) ->
-  request(Client, <<"CheckDomainAvailability">>, Input, Options).
+check_domain_availability(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    check_domain_availability(Client, Input, []).
+check_domain_availability(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CheckDomainAvailability">>, Input, Options).
 
 %% @doc This operation deletes the specified tags for a domain.
 %%
 %% All tag operations are eventually consistent; subsequent operations may
 %% not immediately represent all issued operations.
-delete_tags_for_domain(Client, Input, Options) ->
-  request(Client, <<"DeleteTagsForDomain">>, Input, Options).
+delete_tags_for_domain(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_tags_for_domain(Client, Input, []).
+delete_tags_for_domain(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteTagsForDomain">>, Input, Options).
 
 %% @doc This operation disables automatic renewal of domain registration for
 %% the specified domain.
@@ -50,8 +76,12 @@ delete_tags_for_domain(Client, Input, Options) ->
 %% if you disable automatic renewal, registration for the domain will not be
 %% renewed when the expiration date passes, and you will lose control of the
 %% domain name.</note>
-disable_domain_auto_renew(Client, Input, Options) ->
-  request(Client, <<"DisableDomainAutoRenew">>, Input, Options).
+disable_domain_auto_renew(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disable_domain_auto_renew(Client, Input, []).
+disable_domain_auto_renew(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisableDomainAutoRenew">>, Input, Options).
 
 %% @doc This operation removes the transfer lock on the domain (specifically
 %% the <code>clientTransferProhibited</code> status) to allow domain
@@ -60,8 +90,12 @@ disable_domain_auto_renew(Client, Input, Options) ->
 %% submission returns an operation ID that you can use to track the progress
 %% and completion of the action. If the request is not completed
 %% successfully, the domain registrant will be notified by email.
-disable_domain_transfer_lock(Client, Input, Options) ->
-  request(Client, <<"DisableDomainTransferLock">>, Input, Options).
+disable_domain_transfer_lock(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disable_domain_transfer_lock(Client, Input, []).
+disable_domain_transfer_lock(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisableDomainTransferLock">>, Input, Options).
 
 %% @doc This operation configures Amazon Route 53 to automatically renew the
 %% specified domain before the domain registration expires. The cost of
@@ -74,44 +108,72 @@ disable_domain_transfer_lock(Client, Input, Options) ->
 %% partner, Gandi. Route 53 requires that you renew before the end of the
 %% renewal period that is listed on the Gandi website so we can complete
 %% processing before the deadline.
-enable_domain_auto_renew(Client, Input, Options) ->
-  request(Client, <<"EnableDomainAutoRenew">>, Input, Options).
+enable_domain_auto_renew(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    enable_domain_auto_renew(Client, Input, []).
+enable_domain_auto_renew(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"EnableDomainAutoRenew">>, Input, Options).
 
 %% @doc This operation sets the transfer lock on the domain (specifically the
 %% <code>clientTransferProhibited</code> status) to prevent domain transfers.
 %% Successful submission returns an operation ID that you can use to track
 %% the progress and completion of the action. If the request is not completed
 %% successfully, the domain registrant will be notified by email.
-enable_domain_transfer_lock(Client, Input, Options) ->
-  request(Client, <<"EnableDomainTransferLock">>, Input, Options).
+enable_domain_transfer_lock(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    enable_domain_transfer_lock(Client, Input, []).
+enable_domain_transfer_lock(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"EnableDomainTransferLock">>, Input, Options).
 
 %% @doc This operation returns detailed information about the domain. The
 %% domain's contact information is also returned as part of the output.
-get_domain_detail(Client, Input, Options) ->
-  request(Client, <<"GetDomainDetail">>, Input, Options).
+get_domain_detail(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_domain_detail(Client, Input, []).
+get_domain_detail(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDomainDetail">>, Input, Options).
 
 %% @doc This operation returns the current status of an operation that is not
 %% completed.
-get_operation_detail(Client, Input, Options) ->
-  request(Client, <<"GetOperationDetail">>, Input, Options).
+get_operation_detail(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_operation_detail(Client, Input, []).
+get_operation_detail(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetOperationDetail">>, Input, Options).
 
 %% @doc This operation returns all the domain names registered with Amazon
 %% Route 53 for the current AWS account.
-list_domains(Client, Input, Options) ->
-  request(Client, <<"ListDomains">>, Input, Options).
+list_domains(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_domains(Client, Input, []).
+list_domains(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListDomains">>, Input, Options).
 
 %% @doc This operation returns the operation IDs of operations that are not
 %% yet complete.
-list_operations(Client, Input, Options) ->
-  request(Client, <<"ListOperations">>, Input, Options).
+list_operations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_operations(Client, Input, []).
+list_operations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListOperations">>, Input, Options).
 
 %% @doc This operation returns all of the tags that are associated with the
 %% specified domain.
 %%
 %% All tag operations are eventually consistent; subsequent operations may
 %% not immediately represent all issued operations.
-list_tags_for_domain(Client, Input, Options) ->
-  request(Client, <<"ListTagsForDomain">>, Input, Options).
+list_tags_for_domain(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_tags_for_domain(Client, Input, []).
+list_tags_for_domain(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTagsForDomain">>, Input, Options).
 
 %% @doc This operation registers a domain. Domains are registered by the AWS
 %% registrar partner, Gandi. For some top-level domains (TLDs), this
@@ -135,13 +197,21 @@ list_tags_for_domain(Client, Input, Options) ->
 %% more information, see <a
 %% href="http://aws.amazon.com/route53/pricing/">Amazon Route 53
 %% Pricing</a>.</li> </ul>
-register_domain(Client, Input, Options) ->
-  request(Client, <<"RegisterDomain">>, Input, Options).
+register_domain(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    register_domain(Client, Input, []).
+register_domain(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RegisterDomain">>, Input, Options).
 
 %% @doc This operation returns the AuthCode for the domain. To transfer a
 %% domain to another registrar, you provide this value to the new registrar.
-retrieve_domain_auth_code(Client, Input, Options) ->
-  request(Client, <<"RetrieveDomainAuthCode">>, Input, Options).
+retrieve_domain_auth_code(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    retrieve_domain_auth_code(Client, Input, []).
+retrieve_domain_auth_code(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RetrieveDomainAuthCode">>, Input, Options).
 
 %% @doc This operation transfers a domain from another registrar to Amazon
 %% Route 53. When the transfer is complete, the domain is registered with the
@@ -168,8 +238,12 @@ retrieve_domain_auth_code(Client, Input, Options) ->
 %% this method returns an operation ID that you can use to track the progress
 %% and completion of the action. If the transfer doesn't complete
 %% successfully, the domain registrant will be notified by email.
-transfer_domain(Client, Input, Options) ->
-  request(Client, <<"TransferDomain">>, Input, Options).
+transfer_domain(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    transfer_domain(Client, Input, []).
+transfer_domain(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"TransferDomain">>, Input, Options).
 
 %% @doc This operation updates the contact information for a particular
 %% domain. Information for at least one contact (registrant, administrator,
@@ -179,8 +253,12 @@ transfer_domain(Client, Input, Options) ->
 %% can use to track the progress and completion of the action. If the request
 %% is not completed successfully, the domain registrant will be notified by
 %% email.
-update_domain_contact(Client, Input, Options) ->
-  request(Client, <<"UpdateDomainContact">>, Input, Options).
+update_domain_contact(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_domain_contact(Client, Input, []).
+update_domain_contact(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateDomainContact">>, Input, Options).
 
 %% @doc This operation updates the specified domain contact's privacy
 %% setting. When the privacy option is enabled, personal information such as
@@ -195,8 +273,12 @@ update_domain_contact(Client, Input, Options) ->
 %% operation ID that you can use with GetOperationDetail to track the
 %% progress and completion of the action. If the request is not completed
 %% successfully, the domain registrant will be notified by email.
-update_domain_contact_privacy(Client, Input, Options) ->
-  request(Client, <<"UpdateDomainContactPrivacy">>, Input, Options).
+update_domain_contact_privacy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_domain_contact_privacy(Client, Input, []).
+update_domain_contact_privacy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateDomainContactPrivacy">>, Input, Options).
 
 %% @doc This operation replaces the current set of name servers for the
 %% domain with the specified set of name servers. If you use Amazon Route 53
@@ -206,15 +288,23 @@ update_domain_contact_privacy(Client, Input, Options) ->
 %% If successful, this operation returns an operation ID that you can use to
 %% track the progress and completion of the action. If the request is not
 %% completed successfully, the domain registrant will be notified by email.
-update_domain_nameservers(Client, Input, Options) ->
-  request(Client, <<"UpdateDomainNameservers">>, Input, Options).
+update_domain_nameservers(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_domain_nameservers(Client, Input, []).
+update_domain_nameservers(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateDomainNameservers">>, Input, Options).
 
 %% @doc This operation adds or updates tags for a specified domain.
 %%
 %% All tag operations are eventually consistent; subsequent operations may
 %% not immediately represent all issued operations.
-update_tags_for_domain(Client, Input, Options) ->
-  request(Client, <<"UpdateTagsForDomain">>, Input, Options).
+update_tags_for_domain(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_tags_for_domain(Client, Input, []).
+update_tags_for_domain(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateTagsForDomain">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

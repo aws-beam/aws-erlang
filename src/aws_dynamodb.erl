@@ -119,18 +119,31 @@
 %% and Scan Operations</a> in the <i>Amazon DynamoDB Developer Guide</i>.
 -module(aws_dynamodb).
 
--export([batch_get_item/3,
+-export([batch_get_item/2,
+         batch_get_item/3,
+         batch_write_item/2,
          batch_write_item/3,
+         create_table/2,
          create_table/3,
+         delete_item/2,
          delete_item/3,
+         delete_table/2,
          delete_table/3,
+         describe_table/2,
          describe_table/3,
+         get_item/2,
          get_item/3,
+         list_tables/2,
          list_tables/3,
+         put_item/2,
          put_item/3,
+         query/2,
          query/3,
+         scan/2,
          scan/3,
+         update_item/2,
          update_item/3,
+         update_table/2,
          update_table/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
@@ -201,8 +214,12 @@
 %% according to the type of read. For more information, see <a
 %% href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#CapacityUnitCalculations">Capacity
 %% Units Calculations</a> in the <i>Amazon DynamoDB Developer Guide</i>.
-batch_get_item(Client, Input, Options) ->
-  request(Client, <<"BatchGetItem">>, Input, Options).
+batch_get_item(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_get_item(Client, Input, []).
+batch_get_item(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchGetItem">>, Input, Options).
 
 %% @doc The <i>BatchWriteItem</i> operation puts or deletes multiple items in
 %% one or more tables. A single call to <i>BatchWriteItem</i> can write up to
@@ -284,8 +301,12 @@ batch_get_item(Client, Input, Options) ->
 %% </li> <li> The total request size exceeds 16 MB.
 %%
 %% </li> </ul>
-batch_write_item(Client, Input, Options) ->
-  request(Client, <<"BatchWriteItem">>, Input, Options).
+batch_write_item(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_write_item(Client, Input, []).
+batch_write_item(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchWriteItem">>, Input, Options).
 
 %% @doc The <i>CreateTable</i> operation adds a new table to your account. In
 %% an AWS account, table names must be unique within each region. That is,
@@ -305,8 +326,12 @@ batch_write_item(Client, Input, Options) ->
 %% state at any given time.
 %%
 %% You can use the <i>DescribeTable</i> API to check the table status.
-create_table(Client, Input, Options) ->
-  request(Client, <<"CreateTable">>, Input, Options).
+create_table(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_table(Client, Input, []).
+create_table(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateTable">>, Input, Options).
 
 %% @doc Deletes a single item in a table by primary key. You can perform a
 %% conditional delete operation that deletes the item if it exists, or if it
@@ -322,8 +347,12 @@ create_table(Client, Input, Options) ->
 %% Conditional deletes are useful for deleting items only if specific
 %% conditions are met. If those conditions are met, DynamoDB performs the
 %% delete. Otherwise, the item is not deleted.
-delete_item(Client, Input, Options) ->
-  request(Client, <<"DeleteItem">>, Input, Options).
+delete_item(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_item(Client, Input, []).
+delete_item(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteItem">>, Input, Options).
 
 %% @doc The <i>DeleteTable</i> operation deletes a table and all of its
 %% items. After a <i>DeleteTable</i> request, the specified table is in the
@@ -346,8 +375,12 @@ delete_item(Client, Input, Options) ->
 %% stream is automatically deleted after 24 hours.
 %%
 %% Use the <i>DescribeTable</i> API to check the status of the table.
-delete_table(Client, Input, Options) ->
-  request(Client, <<"DeleteTable">>, Input, Options).
+delete_table(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_table(Client, Input, []).
+delete_table(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteTable">>, Input, Options).
 
 %% @doc Returns information about the table, including the current status of
 %% the table, when it was created, the primary key schema, and any indexes on
@@ -360,8 +393,12 @@ delete_table(Client, Input, Options) ->
 %% few seconds, and then try the DescribeTable request again.
 %%
 %% </note>
-describe_table(Client, Input, Options) ->
-  request(Client, <<"DescribeTable">>, Input, Options).
+describe_table(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_table(Client, Input, []).
+describe_table(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeTable">>, Input, Options).
 
 %% @doc The <i>GetItem</i> operation returns a set of attributes for the item
 %% with the given primary key. If there is no matching item, <i>GetItem</i>
@@ -372,14 +409,22 @@ describe_table(Client, Input, Options) ->
 %% to <code>true</code>. Although a strongly consistent read might take more
 %% time than an eventually consistent read, it always returns the last
 %% updated value.
-get_item(Client, Input, Options) ->
-  request(Client, <<"GetItem">>, Input, Options).
+get_item(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_item(Client, Input, []).
+get_item(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetItem">>, Input, Options).
 
 %% @doc Returns an array of table names associated with the current account
 %% and endpoint. The output from <i>ListTables</i> is paginated, with each
 %% page returning a maximum of 100 table names.
-list_tables(Client, Input, Options) ->
-  request(Client, <<"ListTables">>, Input, Options).
+list_tables(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_tables(Client, Input, []).
+list_tables(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTables">>, Input, Options).
 
 %% @doc Creates a new item, or replaces an old item with a new item. If an
 %% item that has the same primary key as the new item already exists in the
@@ -408,8 +453,12 @@ list_tables(Client, Input, Options) ->
 %% </note> For more information about using this API, see <a
 %% href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithItems.html">Working
 %% with Items</a> in the <i>Amazon DynamoDB Developer Guide</i>.
-put_item(Client, Input, Options) ->
-  request(Client, <<"PutItem">>, Input, Options).
+put_item(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_item(Client, Input, []).
+put_item(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutItem">>, Input, Options).
 
 %% @doc A <i>Query</i> operation uses the primary key of a table or a
 %% secondary index to directly access items from that table or index.
@@ -439,8 +488,12 @@ put_item(Client, Input, Options) ->
 %% strongly consistent result. Global secondary indexes support eventually
 %% consistent reads only, so do not specify <i>ConsistentRead</i> when
 %% querying a global secondary index.
-query(Client, Input, Options) ->
-  request(Client, <<"Query">>, Input, Options).
+query(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    query(Client, Input, []).
+query(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"Query">>, Input, Options).
 
 %% @doc The <i>Scan</i> operation returns one or more items and item
 %% attributes by accessing every item in a table or a secondary index. To
@@ -464,8 +517,12 @@ query(Client, Input, Options) ->
 %% data in the table or local secondary index. However, you can use strongly
 %% consistent reads instead by setting the <i>ConsistentRead</i> parameter to
 %% <i>true</i>.
-scan(Client, Input, Options) ->
-  request(Client, <<"Scan">>, Input, Options).
+scan(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    scan(Client, Input, []).
+scan(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"Scan">>, Input, Options).
 
 %% @doc Edits an existing item's attributes, or adds a new item to the table
 %% if it does not already exist. You can put, delete, or add attribute
@@ -477,8 +534,12 @@ scan(Client, Input, Options) ->
 %%
 %% You can also return the item's attribute values in the same
 %% <i>UpdateItem</i> operation using the <i>ReturnValues</i> parameter.
-update_item(Client, Input, Options) ->
-  request(Client, <<"UpdateItem">>, Input, Options).
+update_item(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_item(Client, Input, []).
+update_item(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateItem">>, Input, Options).
 
 %% @doc Modifies the provisioned throughput settings, global secondary
 %% indexes, or DynamoDB Streams settings for a given table.
@@ -500,8 +561,12 @@ update_item(Client, Input, Options) ->
 %% <code>UPDATING</code>. While it is <code>UPDATING</code>, you cannot issue
 %% another <i>UpdateTable</i> request. When the table returns to the
 %% <code>ACTIVE</code> state, the <i>UpdateTable</i> operation is complete.
-update_table(Client, Input, Options) ->
-  request(Client, <<"UpdateTable">>, Input, Options).
+update_table(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_table(Client, Input, []).
+update_table(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateTable">>, Input, Options).
 
 %%====================================================================
 %% Internal functions
