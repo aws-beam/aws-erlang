@@ -281,7 +281,6 @@ resolve_case(Client, Input, Options) ->
 
 request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"support">>},
-    Method = post,
     Host = aws_util:binary_join([<<"support.">>,
                                  maps:get(region, Client1),
                                  <<".">>,
@@ -292,8 +291,8 @@ request(Client, Action, Input, Options) ->
                {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
                {<<"X-Amz-Target">>, << <<"AWSSupport_20130415.">>/binary, Action/binary>>}],
     Payload = jsx:encode(Input),
-    Headers1 = aws_request:sign_request(Client1, Method, URL, Headers, Payload),
-    Response = hackney:request(Method, URL, Headers1, Payload, Options),
+    Headers1 = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
+    Response = hackney:request(post, URL, Headers1, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->

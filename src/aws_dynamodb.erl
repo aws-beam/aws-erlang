@@ -509,7 +509,6 @@ update_table(Client, Input, Options) ->
 
 request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"dynamodb">>},
-    Method = post,
     Host = aws_util:binary_join([<<"dynamodb.">>,
                                  maps:get(region, Client1),
                                  <<".">>,
@@ -520,8 +519,8 @@ request(Client, Action, Input, Options) ->
                {<<"Content-Type">>, <<"application/x-amz-json-1.0">>},
                {<<"X-Amz-Target">>, << <<"DynamoDB_20120810.">>/binary, Action/binary>>}],
     Payload = jsx:encode(Input),
-    Headers1 = aws_request:sign_request(Client1, Method, URL, Headers, Payload),
-    Response = hackney:request(Method, URL, Headers1, Payload, Options),
+    Headers1 = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
+    Response = hackney:request(post, URL, Headers1, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->
