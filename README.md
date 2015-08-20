@@ -1,5 +1,7 @@
 # AWS clients for Erlang
 
+[![Build Status](https://travis-ci.org/jkakar/aws-erlang.svg?branch=master)](https://travis-ci.org/jkakar/aws-erlang)
+
 Here is an example:
 
 ```erlang
