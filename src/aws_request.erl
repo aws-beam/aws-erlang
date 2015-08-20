@@ -10,6 +10,9 @@
 
 %% Generate headers with an AWS signature version 4 for the specified
 %% request.
+sign_request(Client, Method, URL, Headers, Body) when is_atom(Method) ->
+    Method1 = list_to_binary(string:to_upper(atom_to_list(Method))),
+    sign_request(Client, Method1, URL, Headers, Body);
 sign_request(Client, Method, URL, Headers, Body) ->
     AccessKeyID = maps:get(access_key_id, Client),
     SecretAccessKey = maps:get(secret_access_key, Client),

@@ -6,11 +6,12 @@
 %% API
 %%====================================================================
 
-make_client(AccessKeyID, SecretAccessKey, Region) ->
+make_client(AccessKeyID, SecretAccessKey, Region)
+  when is_binary(AccessKeyID), is_binary(SecretAccessKey), is_binary(Region) ->
     #{access_key_id => AccessKeyID,
       secret_access_key => SecretAccessKey,
       region => Region,
-      endpoint => undefined,
+      endpoint => <<"amazonaws.com">>,
       service => undefined}.
 
 %%====================================================================
@@ -25,7 +26,7 @@ make_client_test() ->
     ?assertEqual(#{access_key_id => <<"access-key-id">>,
                    secret_access_key => <<"secret-access-key">>,
                    region => <<"region">>,
-                   endpoint => undefined,
+                   endpoint => <<"amazonaws.com">>,
                    service => undefined},
                  make_client(<<"access-key-id">>, <<"secret-access-key">>,
                              <<"region">>)).
