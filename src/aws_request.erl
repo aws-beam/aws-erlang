@@ -15,20 +15,21 @@ sign_request(Client, Method, URL, Headers, Body) ->
     SecretAccessKey = maps:get(secret_access_key, Client),
     Region = maps:get(region, Client),
     Service = maps:get(service, Client),
-    sign_request(AccessKeyID, SecretAccessKey, Region, Service, Method, URL,
-                 Headers, Body).
+    Token = maps:get(token, Client, undefined),
+    sign_request(AccessKeyID, SecretAccessKey, Region, Service, Token,
+                 Method, URL,Headers, Body).
 
 %% Generate headers with an AWS signature version 4 for the specified
 %% request.
-sign_request(AccessKeyID, SecretAccessKey, Region, Service, Method, URL,
-             Headers, Body) ->
-    sign_request(AccessKeyID, SecretAccessKey, Region, Service,
+sign_request(AccessKeyID, SecretAccessKey, Region, Service, Token,
+             Method, URL, Headers, Body) ->
+    sign_request(AccessKeyID, SecretAccessKey, Region, Service, Token,
                  calendar:universal_time(), Method, URL, Headers, Body).
 
 %% Generate headers with an AWS signature version 4 for the specified
 %% request using the specified time when generating signatures.
-sign_request(AccessKeyID, SecretAccessKey, Region, Service, Now, Method, URL,
-             Headers, Body) ->
+sign_request(AccessKeyID, SecretAccessKey, Region, Service, Token, Now,
+             Method, URL, Headers, Body) ->
     LongDate = list_to_binary(ec_date:format("YmdTHisZ", Now)),
     ShortDate = list_to_binary(ec_date:format("Ymd", Now)),
     Headers1 = add_date_header(Headers, LongDate),
@@ -42,7 +43,8 @@ sign_request(AccessKeyID, SecretAccessKey, Region, Service, Now, Method, URL,
     SignedHeaders = signed_headers(Headers1),
     Authorization = authorization(AccessKeyID, CredentialScope, SignedHeaders,
                                   Signature),
-    add_authorization_header(Headers1, Authorization).
+    Headers2 = add_authorization_header(Headers1, Authorization),
+    maybe_add_token_header(Headers2, Token).
 
 %%====================================================================
 %% Internal functions
@@ -57,6 +59,13 @@ add_authorization_header(Headers, Authorization) ->
 %% to a list of headers.
 add_date_header(Headers, Date) ->
     [{<<"X-Amz-Date">>, Date}|Headers].
+
+%% Add an X-Amz-Security-Token header with the user-submitted security token
+%% to a list of headers
+maybe_add_token_header(Headers, undefined) ->
+    Headers;
+maybe_add_token_header(Headers, Token) ->
+    [{<<"X-Amz-Security-Token">>, Token}|Headers].
 
 %% Generate an AWS4-HMAC-SHA256 authorization signature.
 authorization(AccessKeyID, CredentialScope, SignedHeaders, Signature) ->
@@ -159,6 +168,23 @@ sign_request_with_client_test() ->
     ?assertEqual(true, proplists:is_defined(<<"Authorization">>, SignedHeaders)),
     ?assertEqual(true, proplists:is_defined(<<"X-Amz-Date">>, SignedHeaders)).
 
+sign_request_with_temporary_client_test() ->
+    Client = #{access_key_id => <<"access-key-id">>,
+               secret_access_key => <<"secret-access-key">>,
+               endpoint => <<"amazonaws.com">>,
+               region => <<"us-east-1">>,
+               token => <<"my-token">>,
+               service => <<"ec2">>},
+    Method = <<"GET">>,
+    URL = <<"https://ec2.us-east-1.amazonaws.com?Action=DescribeInstances&Version=2014-10-01">>,
+    Headers = [{<<"Host">>, <<"ec2.us-east-1.amazonaws.com">>},
+               {<<"Header">>, <<"Value">>}],
+    Body = <<"">>,
+    SignedHeaders = sign_request(Client, Method, URL, Headers, Body),
+    ?assertEqual(true, proplists:is_defined(<<"Authorization">>, SignedHeaders)),
+    ?assertEqual(true, proplists:is_defined(<<"X-Amz-Security-Token">>, SignedHeaders)),
+    ?assertEqual(true, proplists:is_defined(<<"X-Amz-Date">>, SignedHeaders)).
+
 %% sign_request/8 generates an AWS signature version 4 for a request and
 %% returns a new set of HTTP headers with Authorization and X-Aws-Date
 %% header/value pairs added.
@@ -177,7 +203,7 @@ sign_request_test() ->
                   {<<"X-Amz-Date">>, <<"20150403T213117Z">>},
                   {<<"Host">>, <<"ec2.us-east-1.amazonaws.com">>},
                   {<<"Header">>, <<"Value">>}],
-    sign_request(AccessKeyID, SecretAccessKey, Region, Service, Now, Method, URL, Headers, Body)).
+    sign_request(AccessKeyID, SecretAccessKey, Region, Service, undefined, Now, Method, URL, Headers, Body)).
 
 %% add_authorization_header/2 adds an Authorization header to a list of
 %% headers.
