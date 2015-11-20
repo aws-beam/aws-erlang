@@ -29,7 +29,7 @@ sign_request(AccessKeyID, SecretAccessKey, Region, Service, Method, URL,
 %% request using the specified time when generating signatures.
 sign_request(AccessKeyID, SecretAccessKey, Region, Service, Now, Method, URL,
              Headers, Body) ->
-    LongDate = list_to_binary(ec_date:format("YmdTGisZ", Now)),
+    LongDate = list_to_binary(ec_date:format("YmdTHisZ", Now)),
     ShortDate = list_to_binary(ec_date:format("Ymd", Now)),
     Headers1 = add_date_header(Headers, LongDate),
     CanonicalRequest = canonical_request(Method, URL, Headers1, Body),
