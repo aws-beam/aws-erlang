@@ -16,16 +16,24 @@
          create_computer/3,
          create_directory/2,
          create_directory/3,
+         create_microsoft_a_d/2,
+         create_microsoft_a_d/3,
          create_snapshot/2,
          create_snapshot/3,
+         create_trust/2,
+         create_trust/3,
          delete_directory/2,
          delete_directory/3,
          delete_snapshot/2,
          delete_snapshot/3,
+         delete_trust/2,
+         delete_trust/3,
          describe_directories/2,
          describe_directories/3,
          describe_snapshots/2,
          describe_snapshots/3,
+         describe_trusts/2,
+         describe_trusts/3,
          disable_radius/2,
          disable_radius/3,
          disable_sso/2,
@@ -41,7 +49,9 @@
          restore_from_snapshot/2,
          restore_from_snapshot/3,
          update_radius/2,
-         update_radius/3]).
+         update_radius/3,
+         verify_trust/2,
+         verify_trust/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -49,7 +59,7 @@
 %% API
 %%====================================================================
 
-%% @doc Creates an AD Connector to connect an on-premises directory.
+%% @doc Creates an AD Connector to connect to an on-premises directory.
 connect_directory(Client, Input)
   when is_map(Client), is_map(Input) ->
     connect_directory(Client, Input, []).
@@ -59,7 +69,8 @@ connect_directory(Client, Input, Options)
 
 %% @doc Creates an alias for a directory and assigns the alias to the
 %% directory. The alias is used to construct the access URL for the
-%% directory, such as <code>http://&#x3C;alias&#x3E;.awsapps.com</code>.
+%% directory, such as
+%% <code>http://<![CDATA[&#x3C;]]>alias<![CDATA[&#x3E;]]>.awsapps.com</code>.
 %%
 %% <important> After an alias has been created, it cannot be deleted or
 %% reused, so this operation should only be used when absolutely necessary.
@@ -89,15 +100,41 @@ create_directory(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDirectory">>, Input, Options).
 
-%% @doc Creates a snapshot of an existing directory.
+%% @doc Creates a Microsoft AD in the AWS cloud.
+create_microsoft_a_d(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_microsoft_a_d(Client, Input, []).
+create_microsoft_a_d(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateMicrosoftAD">>, Input, Options).
+
+%% @doc Creates a snapshot of a Simple AD directory.
 %%
-%% You cannot take snapshots of extended or connected directories.
+%% <note> You cannot take snapshots of AD Connector directories.
+%%
+%% </note>
 create_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_snapshot(Client, Input, []).
 create_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSnapshot">>, Input, Options).
+
+%% @doc AWS Directory Service for Microsoft Active Directory allows you to
+%% configure trust relationships. For example, you can establish a trust
+%% between your Microsoft AD in the AWS cloud, and your existing on-premises
+%% Microsoft Active Directory. This would allow you to provide users and
+%% groups access to resources in either domain, with a single set of
+%% credentials.
+%%
+%% This action initiates the creation of the AWS side of a trust relationship
+%% between a Microsoft AD in the AWS cloud and an external domain.
+create_trust(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_trust(Client, Input, []).
+create_trust(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateTrust">>, Input, Options).
 
 %% @doc Deletes an AWS Directory Service directory.
 delete_directory(Client, Input)
@@ -114,6 +151,15 @@ delete_snapshot(Client, Input)
 delete_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSnapshot">>, Input, Options).
+
+%% @doc Deletes an existing trust relationship between your Microsoft AD in
+%% the AWS cloud and an external domain.
+delete_trust(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_trust(Client, Input, []).
+delete_trust(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteTrust">>, Input, Options).
 
 %% @doc Obtains information about the directories that belong to this
 %% account.
@@ -155,8 +201,20 @@ describe_snapshots(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSnapshots">>, Input, Options).
 
-%% @doc Disables multi-factor authentication (MFA) with Remote Authentication
-%% Dial In User Service (RADIUS) for an AD Connector directory.
+%% @doc Obtains information about the trust relationships for this account.
+%%
+%% If no input parameters are provided, such as DirectoryId or TrustIds, this
+%% request describes all the trust relationships belonging to the account.
+describe_trusts(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_trusts(Client, Input, []).
+describe_trusts(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeTrusts">>, Input, Options).
+
+%% @doc Disables multi-factor authentication (MFA) with the Remote
+%% Authentication Dial In User Service (RADIUS) server for an AD Connector
+%% directory.
 disable_radius(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_radius(Client, Input, []).
@@ -172,8 +230,9 @@ disable_sso(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableSso">>, Input, Options).
 
-%% @doc Enables multi-factor authentication (MFA) with Remote Authentication
-%% Dial In User Service (RADIUS) for an AD Connector directory.
+%% @doc Enables multi-factor authentication (MFA) with the Remote
+%% Authentication Dial In User Service (RADIUS) server for an AD Connector
+%% directory.
 enable_radius(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_radius(Client, Input, []).
@@ -230,6 +289,18 @@ update_radius(Client, Input)
 update_radius(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRadius">>, Input, Options).
+
+%% @doc AWS Directory Service for Microsoft Active Directory allows you to
+%% configure and verify trust relationships.
+%%
+%% This action verifies a trust relationship between your Microsoft AD in the
+%% AWS cloud and an external domain.
+verify_trust(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    verify_trust(Client, Input, []).
+verify_trust(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"VerifyTrust">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

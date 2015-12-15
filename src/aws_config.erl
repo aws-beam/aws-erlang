@@ -154,7 +154,7 @@ deliver_config_snapshot(Client, Input, Options)
 %% <code>config:PutEvaluations</code> permission.</li> <li>The rule's AWS
 %% Lambda function has returned <code>NOT_APPLICABLE</code> for all
 %% evaluation results. This can occur if the resources were deleted or
-%% removed from the rule's scope.</li> </ul>
+%% removed from the rule's scope.</li></ul>
 describe_compliance_by_config_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_compliance_by_config_rule(Client, Input, []).
@@ -184,7 +184,7 @@ describe_compliance_by_config_rule(Client, Input, Options)
 %% <code>config:PutEvaluations</code> permission.</li> <li>The rule's AWS
 %% Lambda function has returned <code>NOT_APPLICABLE</code> for all
 %% evaluation results. This can occur if the resources were deleted or
-%% removed from the rule's scope.</li> </ul>
+%% removed from the rule's scope.</li></ul>
 describe_compliance_by_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_compliance_by_resource(Client, Input, []).
@@ -392,6 +392,8 @@ list_discovered_resources(Client, Input, Options)
 %% href="http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config.html">Evaluating
 %% AWS Resource Configurations with AWS Config</a> in the <i>AWS Config
 %% Developer Guide</i>.
+%%
+%% <p/>
 put_config_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_config_rule(Client, Input, []).
