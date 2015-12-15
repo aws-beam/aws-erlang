@@ -38,6 +38,8 @@
          activate_gateway/3,
          add_cache/2,
          add_cache/3,
+         add_tags_to_resource/2,
+         add_tags_to_resource/3,
          add_upload_buffer/2,
          add_upload_buffer/3,
          add_working_storage/2,
@@ -104,12 +106,16 @@
          list_gateways/3,
          list_local_disks/2,
          list_local_disks/3,
+         list_tags_for_resource/2,
+         list_tags_for_resource/3,
          list_volume_initiators/2,
          list_volume_initiators/3,
          list_volume_recovery_points/2,
          list_volume_recovery_points/3,
          list_volumes/2,
          list_volumes/3,
+         remove_tags_from_resource/2,
+         remove_tags_from_resource/3,
          reset_cache/2,
          reset_cache/3,
          retrieve_tape_archive/2,
@@ -175,6 +181,29 @@ add_cache(Client, Input)
 add_cache(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddCache">>, Input, Options).
+
+%% @doc This operation adds one or more tags to the specified resource. You
+%% use tags to add metadata to resources, which you can use to categorize
+%% these resources. For example, you can categorize resources by purpose,
+%% owner, environment, or team. Each tag consists of a key and a value, which
+%% you define. You can add tags to the following AWS Storage Gateway
+%% resources:
+%%
+%% <ul> <li>Storage gateways of all types
+%%
+%% </li> </ul> <ul> <li>Storage Volumes
+%%
+%% </li> </ul> <ul> <li>Virtual Tapes
+%%
+%% </li> </ul> You can create a maximum of 10 tags for each resource. Virtual
+%% tapes and storage volumes that are recovered to a new gateway maintain
+%% their tags.
+add_tags_to_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    add_tags_to_resource(Client, Input, []).
+add_tags_to_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AddTagsToResource">>, Input, Options).
 
 %% @doc This operation configures one or more gateway local disks as upload
 %% buffer for a specified gateway. This operation is supported for both the
@@ -423,11 +452,11 @@ delete_tape_archive(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTapeArchive">>, Input, Options).
 
-%% @doc This operation delete the specified gateway volume that you
-%% previously created using the <a>CreateStorediSCSIVolume</a> API. For
-%% gateway-stored volumes, the local disk that was configured as the storage
-%% volume is not deleted. You can reuse the local disk to create another
-%% storage volume.
+%% @doc This operation deletes the specified gateway volume that you
+%% previously created using the <a>CreateCachediSCSIVolume</a> or
+%% <a>CreateStorediSCSIVolume</a> API. For gateway-stored volumes, the local
+%% disk that was configured as the storage volume is not deleted. You can
+%% reuse the local disk to create another storage volume.
 %%
 %% Before you delete a gateway volume, make sure there are no iSCSI
 %% connections to the volume you are deleting. You should also make sure
@@ -671,6 +700,15 @@ list_local_disks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLocalDisks">>, Input, Options).
 
+%% @doc This operation lists the tags that have been added to the specified
+%% resource.
+list_tags_for_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_tags_for_resource(Client, Input, []).
+list_tags_for_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTagsForResource">>, Input, Options).
+
 %% @doc This operation lists iSCSI initiators that are connected to a volume.
 %% You can use this operation to determine whether a volume is being used or
 %% not.
@@ -714,6 +752,14 @@ list_volumes(Client, Input)
 list_volumes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListVolumes">>, Input, Options).
+
+%% @doc This operation removes one or more tags from the specified resource.
+remove_tags_from_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    remove_tags_from_resource(Client, Input, []).
+remove_tags_from_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RemoveTagsFromResource">>, Input, Options).
 
 %% @doc This operation resets all cache disks that have encountered a error
 %% and makes the disks available for reconfiguration as cache storage. If
@@ -947,7 +993,8 @@ handle_response({ok, 200, ResponseHeaders, Client}) ->
     {ok, Result, {200, ResponseHeaders, Client}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
     {ok, Body} = hackney:body(Client),
-    Reason = maps:get(<<"__type">>, jsx:decode(Body, [return_maps])),
-    {error, Reason, {StatusCode, ResponseHeaders, Client}};
+    #{<<"__type">> := Exception,
+      <<"message">> := Reason} = jsx:decode(Body, [return_maps]),
+    {error, {Exception, Reason}, {StatusCode, ResponseHeaders, Client}};
 handle_response({error, Reason}) ->
     {error, Reason}.

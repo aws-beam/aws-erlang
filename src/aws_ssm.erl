@@ -1,26 +1,84 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/jkakar/aws-codegen for more details.
 
-%% @doc Amazon EC2 Simple Systems Manager (SSM) enables you to configure and
-%% manage your EC2 instances. You can create a configuration document and
-%% then associate it with one or more running instances.
+%% @doc Simple Systems Manager (SSM) is a set of capabilities that can help
+%% you manage your Amazon EC2 instances running on Windows. SSM enables you
+%% to run scripts or other common administrative tasks on your instances
+%% using either SSM Run Command or SSM Config.
 %%
-%% You can use a configuration document to automate the following tasks for
-%% your Windows instances:
+%% Run Command extends the server administration capabilities of SSM by
+%% offering an on-demand experience for executing commands. You can use
+%% pre-defined Amazon SSM documents (formerly called configuration documents)
+%% to perform the actions listed later in this section, or you can create
+%% your own documents. With these document, you can then remotely configure
+%% your instances by sending commands using the AWS command line interface
+%% (CLI), AWS Tools for Windows PowerShell, or the <b>Commands</b> page in
+%% the Amazon EC2 console. Additionally, because Run Command enables you to
+%% execute PowerShell commands or scripts, you can administer your instances
+%% remotely using PowerShell as though you were logged on locally to the
+%% instance. Run Command reports the status of the command execution for each
+%% instance targeted by a command. You can also audit the command execution
+%% to understand who executed commands, when, and what changes were made. By
+%% switching between different SSM documents, you can quickly configure your
+%% instances with different types of commands.
 %%
-%% <ul> <li>Join an AWS Directory
+%% SSM Config is a lightweight instance configuration solution. With SSM
+%% Config, you can specify a setup configuration for your instances. SSM
+%% Config is similar to EC2 User Data, which is another way of running
+%% one-time scripts or applying settings during instance launch. SSM Config
+%% is an extension of this capability. Using SSM documents, you can specify
+%% which actions the system should perform on your instances, including which
+%% applications to install, which AWS Directory Service directory to join,
+%% which Microsoft PowerShell modules to install, etc. If an instance is
+%% missing one or more of these configurations, the system makes those
+%% changes. By default, the system checks every five minutes to see if there
+%% is a new configuration to apply as defined in a new SSM document. If so,
+%% the system updates the instances accordingly. In this way, you can
+%% remotely maintain a consistent configuration baseline on your instances.
+%% SSM Config is available using the AWS CLI or the AWS Tools for Windows
+%% PowerShell.
 %%
-%% </li> <li>Install, repair, or uninstall software using an MSI package
+%% <note> SSM is currently not supported on Linux instances.
 %%
-%% </li> <li>Run PowerShell scripts
+%% </note> You can use Run Command and SSM Config to do the following:
 %%
-%% </li> <li>Configure CloudWatch Logs to monitor applications and systems
+%% <ul> <li> Join an AWS Directory Service directory (SSM Config and Run
+%% Command)
 %%
-%% </li> </ul> Note that configuration documents are not supported on Linux
-%% instances.
+%% </li> <li> Install, repair, or uninstall software using an MSI package
+%% (SSM Config and Run Command)
+%%
+%% </li> <li> Install PowerShell modules (SSM Config and Run Command)
+%%
+%% </li> <li> Configure CloudWatch Logs to monitor applications and systems
+%% (SSM Config and Run Command)
+%%
+%% </li> <li> Run PowerShell commands or scripts (Run Command only)
+%%
+%% </li> <li> Update the EC2Config service (Run Command only)
+%%
+%% </li> <li> Configure Windows Update settings (Run Command only)
+%%
+%% </li> </ul> <important> SSM documents run with administrative privilege on
+%% Windows instances because the EC2Config service runs in the Local System
+%% account. If a user has permission to execute any of the pre-defined SSM
+%% documents (any document that begins with AWS-*) then that user also has
+%% administrator access to the instance. Delegate access to SSM Config and
+%% Run Command judiciously. This becomes extremely important if you create
+%% your own SSM documents. Amazon Web Services does not provide guidance
+%% about how to create secure SSM documents. You create SSM documents and
+%% delegate access to Run Command actions at your own risk. As a security
+%% best practice, we recommend that you assign access to "AWS-*" documents,
+%% especially the AWS-RunPowerShellScript document, to trusted administrators
+%% only. You can create low-level SSM documents for low security tasks and
+%% delegate access to non-administrators.
+%%
+%% </important>
 -module(aws_ssm).
 
--export([create_association/2,
+-export([cancel_command/2,
+         cancel_command/3,
+         create_association/2,
          create_association/3,
          create_association_batch/2,
          create_association_batch/3,
@@ -34,12 +92,20 @@
          describe_association/3,
          describe_document/2,
          describe_document/3,
+         describe_instance_information/2,
+         describe_instance_information/3,
          get_document/2,
          get_document/3,
          list_associations/2,
          list_associations/3,
+         list_command_invocations/2,
+         list_command_invocations/3,
+         list_commands/2,
+         list_commands/3,
          list_documents/2,
          list_documents/3,
+         send_command/2,
+         send_command/3,
          update_association_status/2,
          update_association_status/3]).
 
@@ -49,16 +115,25 @@
 %% API
 %%====================================================================
 
-%% @doc Associates the specified configuration document with the specified
-%% instance.
+%% @doc Attempts to cancel the command specified by the Command ID. There is
+%% no guarantee that the command will be terminated and the underlying
+%% process stopped.
+cancel_command(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    cancel_command(Client, Input, []).
+cancel_command(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CancelCommand">>, Input, Options).
+
+%% @doc Associates the specified SSM document with the specified instance.
 %%
-%% When you associate a configuration document with an instance, the
-%% configuration agent on the instance processes the configuration document
-%% and configures the instance as specified.
+%% When you associate an SSM document with an instance, the configuration
+%% agent on the instance processes the document and configures the instance
+%% as specified.
 %%
-%% If you associate a configuration document with an instance that already
-%% has an associated configuration document, we replace the current
-%% configuration document with the new configuration document.
+%% If you associate a document with an instance that already has an
+%% associated document, the system throws the AssociationAlreadyExists
+%% exception.
 create_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_association(Client, Input, []).
@@ -66,16 +141,15 @@ create_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAssociation">>, Input, Options).
 
-%% @doc Associates the specified configuration documents with the specified
-%% instances.
+%% @doc Associates the specified SSM document with the specified instances.
 %%
-%% When you associate a configuration document with an instance, the
-%% configuration agent on the instance processes the configuration document
-%% and configures the instance as specified.
+%% When you associate an SSM document with an instance, the configuration
+%% agent on the instance processes the document and configures the instance
+%% as specified.
 %%
-%% If you associate a configuration document with an instance that already
-%% has an associated configuration document, we replace the current
-%% configuration document with the new configuration document.
+%% If you associate a document with an instance that already has an
+%% associated document, the system throws the AssociationAlreadyExists
+%% exception.
 create_association_batch(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_association_batch(Client, Input, []).
@@ -83,11 +157,10 @@ create_association_batch(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAssociationBatch">>, Input, Options).
 
-%% @doc Creates a configuration document.
+%% @doc Creates an SSM document.
 %%
-%% After you create a configuration document, you can use
-%% <a>CreateAssociation</a> to associate it with one or more running
-%% instances.
+%% After you create an SSM document, you can use <a>CreateAssociation</a> to
+%% associate it with one or more running instances.
 create_document(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_document(Client, Input, []).
@@ -95,14 +168,12 @@ create_document(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDocument">>, Input, Options).
 
-%% @doc Disassociates the specified configuration document from the specified
-%% instance.
+%% @doc Disassociates the specified SSM document from the specified instance.
 %%
-%% When you disassociate a configuration document from an instance, it does
-%% not change the configuration of the instance. To change the configuration
-%% state of an instance after you disassociate a configuration document, you
-%% must create a new configuration document with the desired configuration
-%% and associate it with the instance.
+%% When you disassociate an SSM document from an instance, it does not change
+%% the configuration of the instance. To change the configuration state of an
+%% instance after you disassociate a document, you must create a new document
+%% with the desired configuration and associate it with the instance.
 delete_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_association(Client, Input, []).
@@ -110,10 +181,12 @@ delete_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAssociation">>, Input, Options).
 
-%% @doc Deletes the specified configuration document.
+%% @doc Deletes the SSM document and all instance associations to the
+%% document.
 %%
-%% You must use <a>DeleteAssociation</a> to disassociate all instances that
-%% are associated with the configuration document before you can delete it.
+%% Before you delete the SSM document, we recommend that you use
+%% DeleteAssociation to disassociate all instances that are associated with
+%% the document.
 delete_document(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_document(Client, Input, []).
@@ -121,8 +194,8 @@ delete_document(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDocument">>, Input, Options).
 
-%% @doc Describes the associations for the specified configuration document
-%% or instance.
+%% @doc Describes the associations for the specified SSM document or
+%% instance.
 describe_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_association(Client, Input, []).
@@ -130,7 +203,7 @@ describe_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAssociation">>, Input, Options).
 
-%% @doc Describes the specified configuration document.
+%% @doc Describes the specified SSM document.
 describe_document(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_document(Client, Input, []).
@@ -138,7 +211,21 @@ describe_document(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDocument">>, Input, Options).
 
-%% @doc Gets the contents of the specified configuration document.
+%% @doc Describes one or more of your instances. You can use this to get
+%% information about instances like the operating system platform, the SSM
+%% agent version, status etc. If you specify one or more instance IDs, it
+%% returns information for those instances. If you do not specify instance
+%% IDs, it returns information for all your instances. If you specify an
+%% instance ID that is not valid or an instance that you do not own, you
+%% receive an error.
+describe_instance_information(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_instance_information(Client, Input, []).
+describe_instance_information(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeInstanceInformation">>, Input, Options).
+
+%% @doc Gets the contents of the specified SSM document.
 get_document(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_document(Client, Input, []).
@@ -146,8 +233,7 @@ get_document(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDocument">>, Input, Options).
 
-%% @doc Lists the associations for the specified configuration document or
-%% instance.
+%% @doc Lists the associations for the specified SSM document or instance.
 list_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_associations(Client, Input, []).
@@ -155,7 +241,28 @@ list_associations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAssociations">>, Input, Options).
 
-%% @doc Describes one or more of your configuration documents.
+%% @doc An invocation is copy of a command sent to a specific instance. A
+%% command can apply to one or more instances. A command invocation applies
+%% to one instance. For example, if a user executes SendCommand against three
+%% instances, then a command invocation is created for each requested
+%% instance ID. ListCommandInvocations provide status about command
+%% execution.
+list_command_invocations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_command_invocations(Client, Input, []).
+list_command_invocations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListCommandInvocations">>, Input, Options).
+
+%% @doc Lists the commands requested by users of the AWS account.
+list_commands(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_commands(Client, Input, []).
+list_commands(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListCommands">>, Input, Options).
+
+%% @doc Describes one or more of your SSM documents.
 list_documents(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_documents(Client, Input, []).
@@ -163,8 +270,16 @@ list_documents(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDocuments">>, Input, Options).
 
-%% @doc Updates the status of the configuration document associated with the
-%% specified instance.
+%% @doc Executes commands on one or more remote instances.
+send_command(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    send_command(Client, Input, []).
+send_command(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SendCommand">>, Input, Options).
+
+%% @doc Updates the status of the SSM document associated with the specified
+%% instance.
 update_association_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_association_status(Client, Input, []).
@@ -198,7 +313,8 @@ handle_response({ok, 200, ResponseHeaders, Client}) ->
     {ok, Result, {200, ResponseHeaders, Client}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
     {ok, Body} = hackney:body(Client),
-    Reason = maps:get(<<"__type">>, jsx:decode(Body, [return_maps])),
-    {error, Reason, {StatusCode, ResponseHeaders, Client}};
+    #{<<"__type">> := Exception,
+      <<"message">> := Reason} = jsx:decode(Body, [return_maps]),
+    {error, {Exception, Reason}, {StatusCode, ResponseHeaders, Client}};
 handle_response({error, Reason}) ->
     {error, Reason}.

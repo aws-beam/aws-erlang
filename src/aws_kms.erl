@@ -3,22 +3,23 @@
 
 %% @doc <fullname>AWS Key Management Service</fullname>
 %%
-%% AWS Key Management Service (KMS) is an encryption and key management web
-%% service. This guide describes the KMS actions that you can call
-%% programmatically. For general information about KMS, see the <a
-%% href="http://docs.aws.amazon.com/kms/latest/developerguide/overview.html">
-%% AWS Key Management Service Developer Guide </a>
+%% AWS Key Management Service (AWS KMS) is an encryption and key management
+%% web service. This guide describes the AWS KMS operations that you can call
+%% programmatically. For general information about AWS KMS, see the <a
+%% href="http://docs.aws.amazon.com/kms/latest/developerguide/">AWS Key
+%% Management Service Developer Guide</a>.
 %%
 %% <note> AWS provides SDKs that consist of libraries and sample code for
 %% various programming languages and platforms (Java, Ruby, .Net, iOS,
 %% Android, etc.). The SDKs provide a convenient way to create programmatic
-%% access to KMS and AWS. For example, the SDKs take care of tasks such as
-%% signing requests (see below), managing errors, and retrying requests
-%% automatically. For more information about the AWS SDKs, including how to
-%% download and install them, see <a
+%% access to AWS KMS and other AWS services. For example, the SDKs take care
+%% of tasks such as signing requests (see below), managing errors, and
+%% retrying requests automatically. For more information about the AWS SDKs,
+%% including how to download and install them, see <a
 %% href="http://aws.amazon.com/tools/">Tools for Amazon Web Services</a>.
+%%
 %% </note> We recommend that you use the AWS SDKs to make programmatic API
-%% calls to KMS.
+%% calls to AWS KMS.
 %%
 %% Clients must support TLS (Transport Layer Security) 1.0. We recommend TLS
 %% 1.2. Clients must also support cipher suites with Perfect Forward Secrecy
@@ -29,26 +30,26 @@
 %% <b>Signing Requests</b>
 %%
 %% Requests must be signed by using an access key ID and a secret access key.
-%% We strongly recommend that you do not use your AWS account access key ID
-%% and secret key for everyday work with KMS. Instead, use the access key ID
-%% and secret access key for an IAM user, or you can use the AWS Security
-%% Token Service to generate temporary security credentials that you can use
-%% to sign requests.
+%% We strongly recommend that you <i>do not</i> use your AWS account access
+%% key ID and secret key for everyday work with AWS KMS. Instead, use the
+%% access key ID and secret access key for an IAM user, or you can use the
+%% AWS Security Token Service to generate temporary security credentials that
+%% you can use to sign requests.
 %%
-%% All KMS operations require <a
+%% All AWS KMS operations require <a
 %% href="http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">Signature
 %% Version 4</a>.
 %%
-%% <b>Recording API Requests</b>
+%% <b>Logging API Requests</b>
 %%
-%% KMS supports AWS CloudTrail, a service that records AWS API calls and
+%% AWS KMS supports AWS CloudTrail, a service that logs AWS API calls and
 %% related events for your AWS account and delivers them to an Amazon S3
 %% bucket that you specify. By using the information collected by CloudTrail,
-%% you can determine what requests were made to KMS, who made the request,
-%% when it was made, and so on. To learn more about CloudTrail, including how
-%% to turn it on and find your log files, see the <a
-%% href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/whatiscloudtrail.html">AWS
-%% CloudTrail User Guide</a>
+%% you can determine what requests were made to AWS KMS, who made the
+%% request, when it was made, and so on. To learn more about CloudTrail,
+%% including how to turn it on and find your log files, see the <a
+%% href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/">AWS
+%% CloudTrail User Guide</a>.
 %%
 %% <b>Additional Resources</b>
 %%
@@ -57,25 +58,28 @@
 %%
 %% <ul> <li> <a
 %% href="http://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html">AWS
-%% Security Credentials</a>. This topic provides general information about
+%% Security Credentials</a> - This topic provides general information about
 %% the types of credentials used for accessing AWS. </li> <li> <a
 %% href="http://docs.aws.amazon.com/STS/latest/UsingSTS/">AWS Security Token
-%% Service</a>. This guide describes how to create and use temporary security
-%% credentials. </li> <li> <a
+%% Service</a> - This guide describes how to create and use temporary
+%% security credentials. </li> <li> <a
 %% href="http://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html">Signing
-%% AWS API Requests</a>. This set of topics walks you through the process of
+%% AWS API Requests</a> - This set of topics walks you through the process of
 %% signing a request using an access key ID and a secret access key. </li>
 %% </ul> <b>Commonly Used APIs</b>
 %%
 %% Of the APIs discussed in this guide, the following will prove the most
 %% useful for most applications. You will likely perform actions other than
 %% these, such as creating keys and assigning policies, by using the console.
+%%
 %% <ul> <li><a>Encrypt</a></li> <li><a>Decrypt</a></li>
 %% <li><a>GenerateDataKey</a></li>
 %% <li><a>GenerateDataKeyWithoutPlaintext</a></li> </ul>
 -module(aws_kms).
 
--export([create_alias/2,
+-export([cancel_key_deletion/2,
+         cancel_key_deletion/3,
+         create_alias/2,
          create_alias/3,
          create_grant/2,
          create_grant/3,
@@ -115,6 +119,8 @@
          list_key_policies/3,
          list_keys/2,
          list_keys/3,
+         list_retirable_grants/2,
+         list_retirable_grants/3,
          put_key_policy/2,
          put_key_policy/3,
          re_encrypt/2,
@@ -123,6 +129,8 @@
          retire_grant/3,
          revoke_grant/2,
          revoke_grant/3,
+         schedule_key_deletion/2,
+         schedule_key_deletion/3,
          update_alias/2,
          update_alias/3,
          update_key_description/2,
@@ -134,6 +142,22 @@
 %% API
 %%====================================================================
 
+%% @doc Cancels the deletion of a customer master key (CMK). When this
+%% operation is successful, the CMK is set to the <code>Disabled</code>
+%% state. To enable a CMK, use <a>EnableKey</a>.
+%%
+%% For more information about scheduling and canceling deletion of a CMK, go
+%% to <a
+%% href="http://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html">Deleting
+%% Customer Master Keys</a> in the <i>AWS Key Management Service Developer
+%% Guide</i>.
+cancel_key_deletion(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    cancel_key_deletion(Client, Input, []).
+cancel_key_deletion(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CancelKeyDeletion">>, Input, Options).
+
 %% @doc Creates a display name for a customer master key. An alias can be
 %% used to identify a key and should be unique. The console enforces a
 %% one-to-one mapping between the alias and a key. An alias name can contain
@@ -142,10 +166,10 @@
 %% forward slash (alias/). An alias that begins with "aws" after the forward
 %% slash (alias/aws...) is reserved by Amazon Web Services (AWS).
 %%
-%% To associate an alias with a different key, call <a>UpdateAlias</a>.
+%% The alias and the key it is mapped to must be in the same AWS account and
+%% the same region.
 %%
-%% Note that you cannot create or update an alias that represents a key in
-%% another account.
+%% To map an alias to a different key, call <a>UpdateAlias</a>.
 create_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_alias(Client, Input, []).
@@ -153,14 +177,12 @@ create_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAlias">>, Input, Options).
 
-%% @doc Adds a grant to a key to specify who can access the key and under
-%% what conditions. Grants are alternate permission mechanisms to key
-%% policies. For more information about grants, see <a
+%% @doc Adds a grant to a key to specify who can use the key and under what
+%% conditions. Grants are alternate permission mechanisms to key policies.
+%%
+%% For more information about grants, see <a
 %% href="http://docs.aws.amazon.com/kms/latest/developerguide/grants.html">Grants</a>
-%% in the developer guide. If a grant is absent, access to the key is
-%% evaluated based on IAM policies attached to the user. <ol>
-%% <li><a>ListGrants</a></li> <li><a>RetireGrant</a></li>
-%% <li><a>RevokeGrant</a></li> </ol>
+%% in the <i>AWS Key Management Service Developer Guide</i>.
 create_grant(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_grant(Client, Input, []).
@@ -202,8 +224,8 @@ decrypt(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"Decrypt">>, Input, Options).
 
-%% @doc Deletes the specified alias. To associate an alias with a different
-%% key, call <a>UpdateAlias</a>.
+%% @doc Deletes the specified alias. To map an alias to a different key, call
+%% <a>UpdateAlias</a>.
 delete_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_alias(Client, Input, []).
@@ -220,7 +242,12 @@ describe_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeKey">>, Input, Options).
 
-%% @doc Marks a key as disabled, thereby preventing its use.
+%% @doc Sets the state of a master key to disabled, thereby preventing its
+%% use for cryptographic operations. For more information about how key state
+%% affects the use of a master key, go to <a
+%% href="http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How
+%% Key State Affects the Use of a Customer Master Key</a> in the <i>AWS Key
+%% Management Service Developer Guide</i>.
 disable_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_key(Client, Input, []).
@@ -236,8 +263,7 @@ disable_key_rotation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableKeyRotation">>, Input, Options).
 
-%% @doc Marks a key as enabled, thereby permitting its use. You can have up
-%% to 25 enabled keys at one time.
+%% @doc Marks a key as enabled, thereby permitting its use.
 enable_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_key(Client, Input, []).
@@ -391,6 +417,18 @@ list_keys(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListKeys">>, Input, Options).
 
+%% @doc Returns a list of all grants for which the grant's
+%% <code>RetiringPrincipal</code> matches the one specified.
+%%
+%% A typical use is to list all grants that you are able to retire. To retire
+%% a grant, use <a>RetireGrant</a>.
+list_retirable_grants(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_retirable_grants(Client, Input, []).
+list_retirable_grants(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListRetirableGrants">>, Input, Options).
+
 %% @doc Attaches a policy to the specified key.
 put_key_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -446,7 +484,37 @@ revoke_grant(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RevokeGrant">>, Input, Options).
 
-%% @doc Updates an alias to associate it with a different key.
+%% @doc Schedules the deletion of a customer master key (CMK). You may
+%% provide a waiting period, specified in days, before deletion occurs. If
+%% you do not provide a waiting period, the default period of 30 days is
+%% used. When this operation is successful, the state of the CMK changes to
+%% <code>PendingDeletion</code>. Before the waiting period ends, you can use
+%% <a>CancelKeyDeletion</a> to cancel the deletion of the CMK. After the
+%% waiting period ends, AWS KMS deletes the CMK and all AWS KMS data
+%% associated with it, including all aliases that point to it.
+%%
+%% <important> Deleting a CMK is a destructive and potentially dangerous
+%% operation. When a CMK is deleted, all data that was encrypted under the
+%% CMK is rendered unrecoverable. To restrict the use of a CMK without
+%% deleting it, use <a>DisableKey</a>.
+%%
+%% </important> For more information about scheduling a CMK for deletion, go
+%% to <a
+%% href="http://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html">Deleting
+%% Customer Master Keys</a> in the <i>AWS Key Management Service Developer
+%% Guide</i>.
+schedule_key_deletion(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    schedule_key_deletion(Client, Input, []).
+schedule_key_deletion(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ScheduleKeyDeletion">>, Input, Options).
+
+%% @doc Updates an alias to map it to a different key.
+%%
+%% An alias is not a property of a key. Therefore, an alias can be mapped to
+%% and unmapped from an existing key without changing the properties of the
+%% key.
 %%
 %% An alias name can contain only alphanumeric characters, forward slashes
 %% (/), underscores (_), and dashes (-). An alias must start with the word
@@ -454,12 +522,8 @@ revoke_grant(Client, Input, Options)
 %% "aws" after the forward slash (alias/aws...) is reserved by Amazon Web
 %% Services (AWS).
 %%
-%% An alias is not a property of a key. Therefore, an alias can be associated
-%% with and disassociated from an existing key without changing the
-%% properties of the key.
-%%
-%% Note that you cannot create or update an alias that represents a key in
-%% another account.
+%% The alias and the key it is mapped to must be in the same AWS account and
+%% the same region.
 update_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_alias(Client, Input, []).
@@ -501,7 +565,8 @@ handle_response({ok, 200, ResponseHeaders, Client}) ->
     {ok, Result, {200, ResponseHeaders, Client}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
     {ok, Body} = hackney:body(Client),
-    Reason = maps:get(<<"__type">>, jsx:decode(Body, [return_maps])),
-    {error, Reason, {StatusCode, ResponseHeaders, Client}};
+    #{<<"__type">> := Exception,
+      <<"message">> := Reason} = jsx:decode(Body, [return_maps]),
+    {error, {Exception, Reason}, {StatusCode, ResponseHeaders, Client}};
 handle_response({error, Reason}) ->
     {error, Reason}.

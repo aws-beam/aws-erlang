@@ -1,12 +1,10 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/jkakar/aws-codegen for more details.
 
-%% @doc
-%%
-%% Amazon EC2 Container Service (Amazon ECS) is a highly scalable, fast,
+%% @doc Amazon EC2 Container Service (Amazon ECS) is a highly scalable, fast,
 %% container management service that makes it easy to run, stop, and manage
-%% Docker containers on a cluster of Amazon EC2 instances. Amazon ECS lets
-%% you launch and stop container-enabled applications with simple API calls,
+%% Docker containers on a cluster of EC2 instances. Amazon ECS lets you
+%% launch and stop container-enabled applications with simple API calls,
 %% allows you to get the state of your cluster from a centralized service,
 %% and gives you access to many familiar Amazon EC2 features like security
 %% groups, Amazon EBS volumes, and IAM roles.
@@ -79,10 +77,10 @@
 %% API
 %%====================================================================
 
-%% @doc Creates a new Amazon ECS cluster. By default, your account will
-%% receive a <code>default</code> cluster when you launch your first
-%% container instance. However, you can create your own cluster with a unique
-%% name with the <code>CreateCluster</code> action.
+%% @doc Creates a new Amazon ECS cluster. By default, your account receives a
+%% <code>default</code> cluster when you launch your first container
+%% instance. However, you can create your own cluster with a unique name with
+%% the <code>CreateCluster</code> action.
 create_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cluster(Client, Input, []).
@@ -92,8 +90,8 @@ create_cluster(Client, Input, Options)
 
 %% @doc Runs and maintains a desired number of tasks from a specified task
 %% definition. If the number of tasks running in a service drops below
-%% <code>desiredCount</code>, Amazon ECS will spawn another instantiation of
-%% the task in the specified cluster.
+%% <code>desiredCount</code>, Amazon ECS spawns another instantiation of the
+%% task in the specified cluster.
 create_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_service(Client, Input, []).
@@ -121,7 +119,7 @@ delete_service(Client, Input, Options)
     request(Client, <<"DeleteService">>, Input, Options).
 
 %% @doc Deregisters an Amazon ECS container instance from the specified
-%% cluster. This instance will no longer be available to run tasks.
+%% cluster. This instance is no longer available to run tasks.
 %%
 %% If you intend to use the container instance for some other purpose after
 %% deregistration, you should stop all of the tasks running on the container
@@ -190,7 +188,7 @@ describe_services(Client, Input, Options)
     request(Client, <<"DescribeServices">>, Input, Options).
 
 %% @doc Describes a task definition. You can specify a <code>family</code>
-%% and <code>revision</code> to find information on a specific task
+%% and <code>revision</code> to find information about a specific task
 %% definition, or you can simply specify the family to find the latest
 %% <code>ACTIVE</code> revision in that family.
 %%
@@ -285,8 +283,8 @@ list_tasks(Client, Input, Options)
 %% @doc <note>This action is only used by the Amazon EC2 Container Service
 %% agent, and it is not intended for use outside of the agent.
 %%
-%% </note> Registers an Amazon EC2 instance into the specified cluster. This
-%% instance will become available to place containers on.
+%% </note> Registers an EC2 instance into the specified cluster. This
+%% instance becomes available to place containers on.
 register_container_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_container_instance(Client, Input, []).
@@ -297,7 +295,7 @@ register_container_instance(Client, Input, Options)
 %% @doc Registers a new task definition from the supplied <code>family</code>
 %% and <code>containerDefinitions</code>. Optionally, you can add data
 %% volumes to your containers with the <code>volumes</code> parameter. For
-%% more information on task definition parameters and defaults, see <a
+%% more information about task definition parameters and defaults, see <a
 %% href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html">Amazon
 %% ECS Task Definitions</a> in the <i>Amazon EC2 Container Service Developer
 %% Guide</i>.
@@ -309,8 +307,8 @@ register_task_definition(Client, Input, Options)
     request(Client, <<"RegisterTaskDefinition">>, Input, Options).
 
 %% @doc Start a task using random placement and the default Amazon ECS
-%% scheduler. If you want to use your own scheduler or place a task on a
-%% specific container instance, use <code>StartTask</code> instead.
+%% scheduler. To use your own scheduler or place a task on a specific
+%% container instance, use <code>StartTask</code> instead.
 %%
 %% <important> The <code>count</code> parameter is limited to 10 tasks per
 %% call.
@@ -324,8 +322,8 @@ run_task(Client, Input, Options)
     request(Client, <<"RunTask">>, Input, Options).
 
 %% @doc Starts a new task from the specified task definition on the specified
-%% container instance or instances. If you want to use the default Amazon ECS
-%% scheduler to place your task, use <code>RunTask</code> instead.
+%% container instance or instances. To use the default Amazon ECS scheduler
+%% to place your task, use <code>RunTask</code> instead.
 %%
 %% <important> The list of container instances to start tasks on is limited
 %% to 10.
@@ -339,6 +337,13 @@ start_task(Client, Input, Options)
     request(Client, <<"StartTask">>, Input, Options).
 
 %% @doc Stops a running task.
+%%
+%% When <a>StopTask</a> is called on a task, the equivalent of <code>docker
+%% stop</code> is issued to the containers running in the task. This results
+%% in a <code>SIGTERM</code> and a 30-second timeout, after which
+%% <code>SIGKILL</code> is sent and the containers are forcibly stopped. If
+%% the container handles the <code>SIGTERM</code> gracefully and exits within
+%% 30 seconds from receiving it, no <code>SIGKILL</code> is sent.
 stop_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_task(Client, Input, []).
@@ -405,6 +410,14 @@ update_container_agent(Client, Input, Options)
 %% when <code>UpdateService</code> is run. If your cluster cannot support
 %% another instantiation of the task used in your service, you can reduce the
 %% desired count of your service by one before modifying the task definition.
+%%
+%% When <a>UpdateService</a> replaces a task during an update, the equivalent
+%% of <code>docker stop</code> is issued to the containers running in the
+%% task. This results in a <code>SIGTERM</code> and a 30-second timeout,
+%% after which <code>SIGKILL</code> is sent and the containers are forcibly
+%% stopped. If the container handles the <code>SIGTERM</code> gracefully and
+%% exits within 30 seconds from receiving it, no <code>SIGKILL</code> is
+%% sent.
 update_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service(Client, Input, []).
@@ -438,7 +451,8 @@ handle_response({ok, 200, ResponseHeaders, Client}) ->
     {ok, Result, {200, ResponseHeaders, Client}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
     {ok, Body} = hackney:body(Client),
-    Reason = maps:get(<<"__type">>, jsx:decode(Body, [return_maps])),
-    {error, Reason, {StatusCode, ResponseHeaders, Client}};
+    #{<<"__type">> := Exception,
+      <<"message">> := Reason} = jsx:decode(Body, [return_maps]),
+    {error, {Exception, Reason}, {StatusCode, ResponseHeaders, Client}};
 handle_response({error, Reason}) ->
     {error, Reason}.
