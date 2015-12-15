@@ -24,7 +24,9 @@
 %% data that is included with each AWS API call listed in the log files.
 -module(aws_cloud_trail).
 
--export([create_trail/2,
+-export([add_tags/2,
+         add_tags/3,
+         create_trail/2,
          create_trail/3,
          delete_trail/2,
          delete_trail/3,
@@ -32,8 +34,14 @@
          describe_trails/3,
          get_trail_status/2,
          get_trail_status/3,
+         list_public_keys/2,
+         list_public_keys/3,
+         list_tags/2,
+         list_tags/3,
          lookup_events/2,
          lookup_events/3,
+         remove_tags/2,
+         remove_tags/3,
          start_logging/2,
          start_logging/3,
          stop_logging/2,
@@ -47,10 +55,19 @@
 %% API
 %%====================================================================
 
-%% @doc From the command line, use <code>create-subscription</code>.
-%%
-%% Creates a trail that specifies the settings for delivery of log data to an
-%% Amazon S3 bucket.
+%% @doc Adds one or more tags to a trail, up to a limit of 10. Tags must be
+%% unique per trail. Overwrites an existing tag's value when a new value is
+%% specified for an existing tag key. If you specify a key without a value,
+%% the tag will be created with the specified key and a value of null.
+add_tags(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    add_tags(Client, Input, []).
+add_tags(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AddTags">>, Input, Options).
+
+%% @doc Creates a trail that specifies the settings for delivery of log data
+%% to an Amazon S3 bucket.
 create_trail(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_trail(Client, Input, []).
@@ -58,7 +75,8 @@ create_trail(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTrail">>, Input, Options).
 
-%% @doc Deletes a trail.
+%% @doc Deletes a trail. This operation must be called from the region in
+%% which the trail was created.
 delete_trail(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_trail(Client, Input, []).
@@ -77,13 +95,38 @@ describe_trails(Client, Input, Options)
 
 %% @doc Returns a JSON-formatted list of information about the specified
 %% trail. Fields include information on delivery errors, Amazon SNS and
-%% Amazon S3 errors, and start and stop logging times for each trail.
+%% Amazon S3 errors, and start and stop logging times for each trail. This
+%% operation returns trail status from a single region. To return trail
+%% status from all regions, you must call the operation on each region.
 get_trail_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_trail_status(Client, Input, []).
 get_trail_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTrailStatus">>, Input, Options).
+
+%% @doc Returns all public keys whose private keys were used to sign the
+%% digest files within the specified time range. The public key is needed to
+%% validate digest files that were signed with its corresponding private key.
+%%
+%% <note>CloudTrail uses different private/public key pairs per region. Each
+%% digest file is signed with a private key unique to its region. Therefore,
+%% when you validate a digest file from a particular region, you must look in
+%% the same region for its corresponding public key.</note>
+list_public_keys(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_public_keys(Client, Input, []).
+list_public_keys(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListPublicKeys">>, Input, Options).
+
+%% @doc Lists the tags for the trail in the current region.
+list_tags(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_tags(Client, Input, []).
+list_tags(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTags">>, Input, Options).
 
 %% @doc Looks up API activity events captured by CloudTrail that create,
 %% update, or delete resources in your account. Events for a region can be
@@ -94,18 +137,27 @@ get_trail_status(Client, Input, Options)
 %% The maximum number of attributes that can be specified in any one lookup
 %% request are time range and one other attribute. The default number of
 %% results returned is 10, with a maximum of 50 possible. The response
-%% includes a token that you can use to get the next page of results. The
-%% rate of lookup requests is limited to one per second per account.
+%% includes a token that you can use to get the next page of results.
 %%
-%% <important>Events that occurred during the selected time range will not be
-%% available for lookup if CloudTrail logging was not enabled when the events
-%% occurred.</important>
+%% <important>The rate of lookup requests is limited to one per second per
+%% account. If this limit is exceeded, a throttling error occurs.
+%% </important> <important>Events that occurred during the selected time
+%% range will not be available for lookup if CloudTrail logging was not
+%% enabled when the events occurred.</important>
 lookup_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     lookup_events(Client, Input, []).
 lookup_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"LookupEvents">>, Input, Options).
+
+%% @doc Removes the specified tags from a trail.
+remove_tags(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    remove_tags(Client, Input, []).
+remove_tags(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RemoveTags">>, Input, Options).
 
 %% @doc Starts the recording of AWS API calls and log file delivery for a
 %% trail.
@@ -127,9 +179,7 @@ stop_logging(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopLogging">>, Input, Options).
 
-%% @doc From the command line, use <code>update-subscription</code>.
-%%
-%% Updates the settings that specify delivery of log files. Changes to a
+%% @doc Updates the settings that specify delivery of log files. Changes to a
 %% trail do not require stopping the CloudTrail service. Use this action to
 %% designate an existing bucket for log delivery. If the existing bucket has
 %% previously been a target for CloudTrail log files, an IAM policy exists
@@ -167,7 +217,8 @@ handle_response({ok, 200, ResponseHeaders, Client}) ->
     {ok, Result, {200, ResponseHeaders, Client}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
     {ok, Body} = hackney:body(Client),
-    Reason = maps:get(<<"__type">>, jsx:decode(Body, [return_maps])),
-    {error, Reason, {StatusCode, ResponseHeaders, Client}};
+    #{<<"__type">> := Exception,
+      <<"message">> := Reason} = jsx:decode(Body, [return_maps]),
+    {error, {Exception, Reason}, {StatusCode, ResponseHeaders, Client}};
 handle_response({error, Reason}) ->
     {error, Reason}.

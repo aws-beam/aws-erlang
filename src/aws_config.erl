@@ -34,10 +34,20 @@
 %% Is AWS Config?</a> in the <i>AWS Config Developer Guide</i>.
 -module(aws_config).
 
--export([delete_delivery_channel/2,
+-export([delete_config_rule/2,
+         delete_config_rule/3,
+         delete_delivery_channel/2,
          delete_delivery_channel/3,
          deliver_config_snapshot/2,
          deliver_config_snapshot/3,
+         describe_compliance_by_config_rule/2,
+         describe_compliance_by_config_rule/3,
+         describe_compliance_by_resource/2,
+         describe_compliance_by_resource/3,
+         describe_config_rule_evaluation_status/2,
+         describe_config_rule_evaluation_status/3,
+         describe_config_rules/2,
+         describe_config_rules/3,
          describe_configuration_recorder_status/2,
          describe_configuration_recorder_status/3,
          describe_configuration_recorders/2,
@@ -46,12 +56,26 @@
          describe_delivery_channel_status/3,
          describe_delivery_channels/2,
          describe_delivery_channels/3,
+         get_compliance_details_by_config_rule/2,
+         get_compliance_details_by_config_rule/3,
+         get_compliance_details_by_resource/2,
+         get_compliance_details_by_resource/3,
+         get_compliance_summary_by_config_rule/2,
+         get_compliance_summary_by_config_rule/3,
+         get_compliance_summary_by_resource_type/2,
+         get_compliance_summary_by_resource_type/3,
          get_resource_config_history/2,
          get_resource_config_history/3,
+         list_discovered_resources/2,
+         list_discovered_resources/3,
+         put_config_rule/2,
+         put_config_rule/3,
          put_configuration_recorder/2,
          put_configuration_recorder/3,
          put_delivery_channel/2,
          put_delivery_channel/3,
+         put_evaluations/2,
+         put_evaluations/3,
          start_configuration_recorder/2,
          start_configuration_recorder/3,
          stop_configuration_recorder/2,
@@ -62,6 +86,23 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Deletes the specified AWS Config rule and all of its evaluation
+%% results.
+%%
+%% AWS Config sets the state of a rule to <code>DELETING</code> until the
+%% deletion is complete. You cannot update a rule while it is in this state.
+%% If you make a <code>PutConfigRule</code> request for the rule, you will
+%% receive a <code>ResourceInUseException</code>.
+%%
+%% You can check the state of a rule by using the
+%% <code>DescribeConfigRules</code> request.
+delete_config_rule(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_config_rule(Client, Input, []).
+delete_config_rule(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteConfigRule">>, Input, Options).
 
 %% @doc Deletes the specified delivery channel.
 %%
@@ -91,6 +132,84 @@ deliver_config_snapshot(Client, Input)
 deliver_config_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeliverConfigSnapshot">>, Input, Options).
+
+%% @doc Indicates whether the specified AWS Config rules are compliant. If a
+%% rule is noncompliant, this action returns the number of AWS resources that
+%% do not comply with the rule.
+%%
+%% A rule is compliant if all of the evaluated resources comply with it, and
+%% it is noncompliant if any of these resources do not comply.
+%%
+%% If AWS Config has no current evaluation results for the rule, it returns
+%% <code>InsufficientData</code>. This result might indicate one of the
+%% following conditions: <ul> <li>AWS Config has never invoked an evaluation
+%% for the rule. To check whether it has, use the
+%% <code>DescribeConfigRuleEvaluationStatus</code> action to get the
+%% <code>LastSuccessfulInvocationTime</code> and
+%% <code>LastFailedInvocationTime</code>.</li> <li>The rule's AWS Lambda
+%% function is failing to send evaluation results to AWS Config. Verify that
+%% the role that you assigned to your configuration recorder includes the
+%% <code>config:PutEvaluations</code> permission. If the rule is a customer
+%% managed rule, verify that the AWS Lambda execution role includes the
+%% <code>config:PutEvaluations</code> permission.</li> <li>The rule's AWS
+%% Lambda function has returned <code>NOT_APPLICABLE</code> for all
+%% evaluation results. This can occur if the resources were deleted or
+%% removed from the rule's scope.</li></ul>
+describe_compliance_by_config_rule(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_compliance_by_config_rule(Client, Input, []).
+describe_compliance_by_config_rule(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeComplianceByConfigRule">>, Input, Options).
+
+%% @doc Indicates whether the specified AWS resources are compliant. If a
+%% resource is noncompliant, this action returns the number of AWS Config
+%% rules that the resource does not comply with.
+%%
+%% A resource is compliant if it complies with all the AWS Config rules that
+%% evaluate it. It is noncompliant if it does not comply with one or more of
+%% these rules.
+%%
+%% If AWS Config has no current evaluation results for the resource, it
+%% returns <code>InsufficientData</code>. This result might indicate one of
+%% the following conditions about the rules that evaluate the resource: <ul>
+%% <li>AWS Config has never invoked an evaluation for the rule. To check
+%% whether it has, use the <code>DescribeConfigRuleEvaluationStatus</code>
+%% action to get the <code>LastSuccessfulInvocationTime</code> and
+%% <code>LastFailedInvocationTime</code>.</li> <li>The rule's AWS Lambda
+%% function is failing to send evaluation results to AWS Config. Verify that
+%% the role that you assigned to your configuration recorder includes the
+%% <code>config:PutEvaluations</code> permission. If the rule is a customer
+%% managed rule, verify that the AWS Lambda execution role includes the
+%% <code>config:PutEvaluations</code> permission.</li> <li>The rule's AWS
+%% Lambda function has returned <code>NOT_APPLICABLE</code> for all
+%% evaluation results. This can occur if the resources were deleted or
+%% removed from the rule's scope.</li></ul>
+describe_compliance_by_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_compliance_by_resource(Client, Input, []).
+describe_compliance_by_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeComplianceByResource">>, Input, Options).
+
+%% @doc Returns status information for each of your AWS managed Config rules.
+%% The status includes information such as the last time AWS Config invoked
+%% the rule, the last time AWS Config failed to invoke the rule, and the
+%% related error for the last failure.
+describe_config_rule_evaluation_status(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_config_rule_evaluation_status(Client, Input, []).
+describe_config_rule_evaluation_status(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeConfigRuleEvaluationStatus">>, Input, Options).
+
+%% @doc Returns details about your AWS Config rules.
+describe_config_rules(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_config_rules(Client, Input, []).
+describe_config_rules(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeConfigRules">>, Input, Options).
 
 %% @doc Returns the current status of the specified configuration recorder.
 %% If a configuration recorder is not specified, this action returns the
@@ -147,17 +266,62 @@ describe_delivery_channels(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDeliveryChannels">>, Input, Options).
 
+%% @doc Returns the evaluation results for the specified AWS Config rule. The
+%% results indicate which AWS resources were evaluated by the rule, when each
+%% resource was last evaluated, and whether each resource complies with the
+%% rule.
+get_compliance_details_by_config_rule(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_compliance_details_by_config_rule(Client, Input, []).
+get_compliance_details_by_config_rule(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetComplianceDetailsByConfigRule">>, Input, Options).
+
+%% @doc Returns the evaluation results for the specified AWS resource. The
+%% results indicate which AWS Config rules were used to evaluate the
+%% resource, when each rule was last used, and whether the resource complies
+%% with each rule.
+get_compliance_details_by_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_compliance_details_by_resource(Client, Input, []).
+get_compliance_details_by_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetComplianceDetailsByResource">>, Input, Options).
+
+%% @doc Returns the number of AWS Config rules that are compliant and
+%% noncompliant, up to a maximum of 25 for each.
+get_compliance_summary_by_config_rule(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_compliance_summary_by_config_rule(Client, Input, []).
+get_compliance_summary_by_config_rule(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetComplianceSummaryByConfigRule">>, Input, Options).
+
+%% @doc Returns the number of resources that are compliant and the number
+%% that are noncompliant. You can specify one or more resource types to get
+%% these numbers for each resource type. The maximum number returned is 100.
+get_compliance_summary_by_resource_type(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_compliance_summary_by_resource_type(Client, Input, []).
+get_compliance_summary_by_resource_type(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetComplianceSummaryByResourceType">>, Input, Options).
+
 %% @doc Returns a list of configuration items for the specified resource. The
 %% list contains details about each state of the resource during the
-%% specified time interval. You can specify a <code>limit</code> on the
-%% number of results returned on the page. If a limit is specified, a
-%% <code>nextToken</code> is returned as part of the result that you can use
-%% to continue this request.
+%% specified time interval.
+%%
+%% The response is paginated, and by default, AWS Config returns a limit of
+%% 10 configuration items per page. You can customize this number with the
+%% <code>limit</code> parameter. The response includes a
+%% <code>nextToken</code> string, and to get the next page of results, run
+%% the request again and enter this string for the <code>nextToken</code>
+%% parameter.
 %%
 %% <note> Each call to the API is limited to span a duration of seven days.
 %% It is likely that the number of records returned is smaller than the
 %% specified <code>limit</code>. In such cases, you can make another call,
-%% using the <code>nextToken</code> .
+%% using the <code>nextToken</code>.
 %%
 %% </note>
 get_resource_config_history(Client, Input)
@@ -166,6 +330,76 @@ get_resource_config_history(Client, Input)
 get_resource_config_history(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResourceConfigHistory">>, Input, Options).
+
+%% @doc Accepts a resource type and returns a list of resource identifiers
+%% for the resources of that type. A resource identifier includes the
+%% resource type, ID, and (if available) the custom resource name. The
+%% results consist of resources that AWS Config has discovered, including
+%% those that AWS Config is not currently recording. You can narrow the
+%% results to include only resources that have specific resource IDs or a
+%% resource name.
+%%
+%% <note>You can specify either resource IDs or a resource name but not both
+%% in the same request.</note> The response is paginated, and by default AWS
+%% Config lists 100 resource identifiers on each page. You can customize this
+%% number with the <code>limit</code> parameter. The response includes a
+%% <code>nextToken</code> string, and to get the next page of results, run
+%% the request again and enter this string for the <code>nextToken</code>
+%% parameter.
+list_discovered_resources(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_discovered_resources(Client, Input, []).
+list_discovered_resources(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListDiscoveredResources">>, Input, Options).
+
+%% @doc Adds or updates an AWS Config rule for evaluating whether your AWS
+%% resources comply with your desired configurations.
+%%
+%% You can use this action for customer managed Config rules and AWS managed
+%% Config rules. A customer managed Config rule is a custom rule that you
+%% develop and maintain. An AWS managed Config rule is a customizable,
+%% predefined rule that is provided by AWS Config.
+%%
+%% If you are adding a new customer managed Config rule, you must first
+%% create the AWS Lambda function that the rule invokes to evaluate your
+%% resources. When you use the <code>PutConfigRule</code> action to add the
+%% rule to AWS Config, you must specify the Amazon Resource Name (ARN) that
+%% AWS Lambda assigns to the function. Specify the ARN for the
+%% <code>SourceIdentifier</code> key. This key is part of the
+%% <code>Source</code> object, which is part of the <code>ConfigRule</code>
+%% object.
+%%
+%% If you are adding a new AWS managed Config rule, specify the rule's
+%% identifier for the <code>SourceIdentifier</code> key. To reference AWS
+%% managed Config rule identifiers, see <a
+%% href="http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html">Using
+%% AWS Managed Config Rules</a>.
+%%
+%% For any new rule that you add, specify the <code>ConfigRuleName</code> in
+%% the <code>ConfigRule</code> object. Do not specify the
+%% <code>ConfigRuleArn</code> or the <code>ConfigRuleId</code>. These values
+%% are generated by AWS Config for new rules.
+%%
+%% If you are updating a rule that you have added previously, specify the
+%% rule's <code>ConfigRuleName</code>, <code>ConfigRuleId</code>, or
+%% <code>ConfigRuleArn</code> in the <code>ConfigRule</code> data type that
+%% you use in this request.
+%%
+%% The maximum number of rules that AWS Config supports is 25.
+%%
+%% For more information about developing and using AWS Config rules, see <a
+%% href="http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config.html">Evaluating
+%% AWS Resource Configurations with AWS Config</a> in the <i>AWS Config
+%% Developer Guide</i>.
+%%
+%% <p/>
+put_config_rule(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_config_rule(Client, Input, []).
+put_config_rule(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutConfigRule">>, Input, Options).
 
 %% @doc Creates a new configuration recorder to record the selected resource
 %% configurations.
@@ -208,6 +442,16 @@ put_delivery_channel(Client, Input)
 put_delivery_channel(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutDeliveryChannel">>, Input, Options).
+
+%% @doc Used by an AWS Lambda function to deliver evaluation results to AWS
+%% Config. This action is required in every AWS Lambda function that is
+%% invoked by an AWS Config rule.
+put_evaluations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_evaluations(Client, Input, []).
+put_evaluations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutEvaluations">>, Input, Options).
 
 %% @doc Starts recording configurations of the AWS resources you have
 %% selected to record in your AWS account.
@@ -256,7 +500,8 @@ handle_response({ok, 200, ResponseHeaders, Client}) ->
     {ok, Result, {200, ResponseHeaders, Client}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
     {ok, Body} = hackney:body(Client),
-    Reason = maps:get(<<"__type">>, jsx:decode(Body, [return_maps])),
-    {error, Reason, {StatusCode, ResponseHeaders, Client}};
+    #{<<"__type">> := Exception,
+      <<"message">> := Reason} = jsx:decode(Body, [return_maps]),
+    {error, {Exception, Reason}, {StatusCode, ResponseHeaders, Client}};
 handle_response({error, Reason}) ->
     {error, Reason}.

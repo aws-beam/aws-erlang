@@ -52,7 +52,11 @@
 %% Center</a></li> </ul>
 -module(aws_logs).
 
--export([create_log_group/2,
+-export([cancel_export_task/2,
+         cancel_export_task/3,
+         create_export_task/2,
+         create_export_task/3,
+         create_log_group/2,
          create_log_group/3,
          create_log_stream/2,
          create_log_stream/3,
@@ -70,6 +74,8 @@
          delete_subscription_filter/3,
          describe_destinations/2,
          describe_destinations/3,
+         describe_export_tasks/2,
+         describe_export_tasks/3,
          describe_log_groups/2,
          describe_log_groups/3,
          describe_log_streams/2,
@@ -102,6 +108,29 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Cancels an export task if it is in <code>PENDING</code> or
+%% <code>RUNNING</code> state.
+cancel_export_task(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    cancel_export_task(Client, Input, []).
+cancel_export_task(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CancelExportTask">>, Input, Options).
+
+%% @doc Creates an <code>ExportTask</code> which allows you to efficiently
+%% export data from a Log Group to your Amazon S3 bucket.
+%%
+%% This is an asynchronous call. If all the required information is provided,
+%% this API will initiate an export task and respond with the task Id. Once
+%% started, <code>DescribeExportTasks</code> can be used to get the status of
+%% an export task.
+create_export_task(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_export_task(Client, Input, []).
+create_export_task(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateExportTask">>, Input, Options).
 
 %% @doc Creates a new log group with the specified name. The name of the log
 %% group must be unique within a region for an AWS account. You can create up
@@ -201,6 +230,23 @@ describe_destinations(Client, Input)
 describe_destinations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDestinations">>, Input, Options).
+
+%% @doc Returns all the export tasks that are associated with the AWS account
+%% making the request. The export tasks can be filtered based on
+%% <code>TaskId</code> or <code>TaskStatus</code>.
+%%
+%% By default, this operation returns up to 50 export tasks that satisfy the
+%% specified filters. If there are more export tasks to list, the response
+%% would contain a <code class="code">nextToken</code> value in the response
+%% body. You can also limit the number of export tasks returned in the
+%% response by specifying the <code class="code">limit</code> parameter in
+%% the request.
+describe_export_tasks(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_export_tasks(Client, Input, []).
+describe_export_tasks(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeExportTasks">>, Input, Options).
 
 %% @doc Returns all the log groups that are associated with the AWS account
 %% making the request. The list returned in the response is ASCII-sorted by
@@ -445,7 +491,8 @@ handle_response({ok, 200, ResponseHeaders, Client}) ->
     {ok, Result, {200, ResponseHeaders, Client}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
     {ok, Body} = hackney:body(Client),
-    Reason = maps:get(<<"__type">>, jsx:decode(Body, [return_maps])),
-    {error, Reason, {StatusCode, ResponseHeaders, Client}};
+    #{<<"__type">> := Exception,
+      <<"message">> := Reason} = jsx:decode(Body, [return_maps]),
+    {error, {Exception, Reason}, {StatusCode, ResponseHeaders, Client}};
 handle_response({error, Reason}) ->
     {error, Reason}.

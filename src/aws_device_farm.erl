@@ -12,6 +12,14 @@
          create_project/3,
          create_upload/2,
          create_upload/3,
+         delete_device_pool/2,
+         delete_device_pool/3,
+         delete_project/2,
+         delete_project/3,
+         delete_run/2,
+         delete_run/3,
+         delete_upload/2,
+         delete_upload/3,
          get_account_settings/2,
          get_account_settings/3,
          get_device/2,
@@ -55,7 +63,11 @@
          list_uploads/2,
          list_uploads/3,
          schedule_run/2,
-         schedule_run/3]).
+         schedule_run/3,
+         update_device_pool/2,
+         update_device_pool/3,
+         update_project/2,
+         update_project/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -86,6 +98,43 @@ create_upload(Client, Input)
 create_upload(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUpload">>, Input, Options).
+
+%% @doc Deletes a device pool given the pool ARN. Does not allow deletion of
+%% curated pools owned by the system.
+delete_device_pool(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_device_pool(Client, Input, []).
+delete_device_pool(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteDevicePool">>, Input, Options).
+
+%% @doc Deletes an AWS Device Farm project, given the project ARN.
+%%
+%% <b>Note</b> Deleting this resource does not stop an in-progress run.
+delete_project(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_project(Client, Input, []).
+delete_project(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteProject">>, Input, Options).
+
+%% @doc Deletes the run, given the run ARN.
+%%
+%% <b>Note</b> Deleting this resource does not stop an in-progress run.
+delete_run(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_run(Client, Input, []).
+delete_run(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteRun">>, Input, Options).
+
+%% @doc Deletes an upload given the upload ARN.
+delete_upload(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_upload(Client, Input, []).
+delete_upload(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteUpload">>, Input, Options).
 
 %% @doc Returns the number of unmetered iOS and/or unmetered Android devices
 %% that have been purchased by the account.
@@ -264,6 +313,25 @@ schedule_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ScheduleRun">>, Input, Options).
 
+%% @doc Modifies the name, description, and rules in a device pool given the
+%% attributes and the pool ARN. Rule updates are all-or-nothing, meaning they
+%% can only be updated as a whole (or not at all).
+update_device_pool(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_device_pool(Client, Input, []).
+update_device_pool(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateDevicePool">>, Input, Options).
+
+%% @doc Modifies the specified project name, given the project ARN and a new
+%% name.
+update_project(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_project(Client, Input, []).
+update_project(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateProject">>, Input, Options).
+
 %%====================================================================
 %% Internal functions
 %%====================================================================
@@ -290,7 +358,8 @@ handle_response({ok, 200, ResponseHeaders, Client}) ->
     {ok, Result, {200, ResponseHeaders, Client}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
     {ok, Body} = hackney:body(Client),
-    Reason = maps:get(<<"__type">>, jsx:decode(Body, [return_maps])),
-    {error, Reason, {StatusCode, ResponseHeaders, Client}};
+    #{<<"__type">> := Exception,
+      <<"message">> := Reason} = jsx:decode(Body, [return_maps]),
+    {error, {Exception, Reason}, {StatusCode, ResponseHeaders, Client}};
 handle_response({error, Reason}) ->
     {error, Reason}.
