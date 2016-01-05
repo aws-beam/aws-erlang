@@ -349,7 +349,7 @@ resolve_case(Client, Input, Options)
 %% Internal functions
 %%====================================================================
 
--spec request(hackney:client(), binary(), map(), list()) ->
+-spec request(aws_client:aws_client(), binary(), map(), list()) ->
     {ok, Result, {integer(), list(), hackney:client()}} |
     {error, Error, {integer(), list(), hackney:client()}} |
     {error, term()} when
