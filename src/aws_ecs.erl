@@ -94,6 +94,34 @@ create_cluster(Client, Input, Options)
 %% task in the specified cluster. To update an existing service, see
 %% <a>UpdateService</a>.
 %%
+%% You can optionally specify a deployment configuration for your service.
+%% During a deployment (which is triggered by changing the task definition of
+%% a service with an <a>UpdateService</a> operation), the service scheduler
+%% uses the <code>minimumHealthyPercent</code> and
+%% <code>maximumPercent</code> parameters to determine the deployment
+%% strategy.
+%%
+%% If the <code>minimumHealthyPercent</code> is below 100%, the scheduler can
+%% ignore the <code>desiredCount</code> temporarily during a deployment. For
+%% example, if your service has a <code>desiredCount</code> of four tasks, a
+%% <code>minimumHealthyPercent</code> of 50% allows the scheduler to stop two
+%% existing tasks before starting two new tasks. Tasks for services that
+%% <i>do not</i> use a load balancer are considered healthy if they are in
+%% the <code>RUNNING</code> state; tasks for services that <i>do</i> use a
+%% load balancer are considered healthy if they are in the
+%% <code>RUNNING</code> state and the container instance it is hosted on is
+%% reported as healthy by the load balancer. The default value for
+%% <code>minimumHealthyPercent</code> is 50% in the console and 100% for the
+%% AWS CLI, the AWS SDKs, and the APIs.
+%%
+%% The <code>maximumPercent</code> parameter represents an upper limit on the
+%% number of running tasks during a deployment, which enables you to define
+%% the deployment batch size. For example, if your service has a
+%% <code>desiredCount</code> of four tasks, a <code>maximumPercent</code>
+%% value of 200% starts four new tasks before stopping the four older tasks
+%% (provided that the cluster resources required to do this are available).
+%% The default value for <code>maximumPercent</code> is 200%.
+%%
 %% When the service scheduler launches new tasks, it attempts to balance them
 %% across the Availability Zones in your cluster with the following logic:
 %%
@@ -433,24 +461,41 @@ update_container_agent(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateContainerAgent">>, Input, Options).
 
-%% @doc Modify the desired count or task definition used in a service.
+%% @doc Modifies the desired count, deployment configuration, or task
+%% definition used in a service.
 %%
 %% You can add to or subtract from the number of instantiations of a task
 %% definition in a service by specifying the cluster that the service is
 %% running in and a new <code>desiredCount</code> parameter.
 %%
-%% You can use <code>UpdateService</code> to modify your task definition and
-%% deploy a new version of your service, one task at a time. If you modify
-%% the task definition with <code>UpdateService</code>, Amazon ECS spawns a
-%% task with the new version of the task definition and then stops an old
-%% task after the new version is running. Because <code>UpdateService</code>
-%% starts a new version of the task before stopping an old version, your
-%% cluster must have capacity to support one more instantiation of the task
-%% when <code>UpdateService</code> is run. If your cluster cannot support
-%% another instantiation of the task used in your service, you can reduce the
-%% desired count of your service by one before modifying the task definition.
+%% You can use <a>UpdateService</a> to modify your task definition and deploy
+%% a new version of your service.
 %%
-%% When <a>UpdateService</a> replaces a task during an update, the equivalent
+%% You can also update the deployment configuration of a service. When a
+%% deployment is triggered by updating the task definition of a service, the
+%% service scheduler uses the deployment configuration parameters,
+%% <code>minimumHealthyPercent</code> and <code>maximumPercent</code>, to
+%% determine the deployment strategy.
+%%
+%% If the <code>minimumHealthyPercent</code> is below 100%, the scheduler can
+%% ignore the <code>desiredCount</code> temporarily during a deployment. For
+%% example, if your service has a <code>desiredCount</code> of four tasks, a
+%% <code>minimumHealthyPercent</code> of 50% allows the scheduler to stop two
+%% existing tasks before starting two new tasks. Tasks for services that
+%% <i>do not</i> use a load balancer are considered healthy if they are in
+%% the <code>RUNNING</code> state; tasks for services that <i>do</i> use a
+%% load balancer are considered healthy if they are in the
+%% <code>RUNNING</code> state and the container instance it is hosted on is
+%% reported as healthy by the load balancer.
+%%
+%% The <code>maximumPercent</code> parameter represents an upper limit on the
+%% number of running tasks during a deployment, which enables you to define
+%% the deployment batch size. For example, if your service has a
+%% <code>desiredCount</code> of four tasks, a <code>maximumPercent</code>
+%% value of 200% starts four new tasks before stopping the four older tasks
+%% (provided that the cluster resources required to do this are available).
+%%
+%% When <a>UpdateService</a> stops a task during a deployment, the equivalent
 %% of <code>docker stop</code> is issued to the containers running in the
 %% task. This results in a <code>SIGTERM</code> and a 30-second timeout,
 %% after which <code>SIGKILL</code> is sent and the containers are forcibly

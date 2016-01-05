@@ -13,15 +13,15 @@
 %% Connect. Use the following links to get started using the <i>AWS Direct
 %% Connect API Reference</i>:
 %%
-%% <ul> <li> <a
+%% <ul> <li><a
 %% href="http://docs.aws.amazon.com/directconnect/latest/APIReference/API_Operations.html">Actions</a>:
-%% An alphabetical list of all AWS Direct Connect actions.</li> <li> <a
+%% An alphabetical list of all AWS Direct Connect actions.</li> <li><a
 %% href="http://docs.aws.amazon.com/directconnect/latest/APIReference/API_Types.html">Data
 %% Types</a>: An alphabetical list of all AWS Direct Connect data types.</li>
-%% <li> <a
+%% <li><a
 %% href="http://docs.aws.amazon.com/directconnect/latest/APIReference/CommonParameters.html">Common
-%% Query Parameters</a>: Parameters that all Query actions can use.</li> <li>
-%% <a
+%% Query Parameters</a>: Parameters that all Query actions can use.</li>
+%% <li><a
 %% href="http://docs.aws.amazon.com/directconnect/latest/APIReference/CommonErrors.html">Common
 %% Errors</a>: Client and server errors that all actions can return.</li>
 %% </ul>
