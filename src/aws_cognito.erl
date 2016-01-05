@@ -327,6 +327,12 @@ update_identity_pool(Client, Input, Options)
 %% Internal functions
 %%====================================================================
 
+-spec request(hackney:client(), binary(), map(), list()) ->
+    {ok, Result, {integer(), list(), hackney:client()}} |
+    {error, Error, {integer(), list(), hackney:client()}} |
+    {error, term()} when
+    Result :: map() | undefined,
+    Error :: {binary(), binary()}.
 request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"cognito-identity">>},
     Host = aws_util:binary_join([<<"cognito-identity.">>,
@@ -344,9 +350,13 @@ request(Client, Action, Input, Options) ->
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->
-    {ok, Body} = hackney:body(Client),
-    Result = jsx:decode(Body, [return_maps]),
-    {ok, Result, {200, ResponseHeaders, Client}};
+    case hackney:body(Client) of
+        {ok, <<>>} ->
+            {ok, undefined, {200, ResponseHeaders, Client}};
+        {ok, Body} ->
+            Result = jsx:decode(Body, [return_maps]),
+            {ok, Result, {200, ResponseHeaders, Client}}
+    end;
 handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
     {ok, Body} = hackney:body(Client),
     #{<<"__type">> := Exception,
