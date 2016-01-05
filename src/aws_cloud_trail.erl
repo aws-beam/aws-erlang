@@ -58,7 +58,9 @@
 %% @doc Adds one or more tags to a trail, up to a limit of 10. Tags must be
 %% unique per trail. Overwrites an existing tag's value when a new value is
 %% specified for an existing tag key. If you specify a key without a value,
-%% the tag will be created with the specified key and a value of null.
+%% the tag will be created with the specified key and a value of null. You
+%% can tag a trail that applies to all regions only from the region in which
+%% the trail was created (that is, from its home region).
 add_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags(Client, Input, []).
@@ -67,7 +69,8 @@ add_tags(Client, Input, Options)
     request(Client, <<"AddTags">>, Input, Options).
 
 %% @doc Creates a trail that specifies the settings for delivery of log data
-%% to an Amazon S3 bucket.
+%% to an Amazon S3 bucket. A maximum of five trails can exist in a region,
+%% irrespective of the region in which they were created.
 create_trail(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_trail(Client, Input, []).
@@ -76,7 +79,9 @@ create_trail(Client, Input, Options)
     request(Client, <<"CreateTrail">>, Input, Options).
 
 %% @doc Deletes a trail. This operation must be called from the region in
-%% which the trail was created.
+%% which the trail was created. <code>DeleteTrail</code> cannot be called on
+%% the shadow trails (replicated trails in other regions) of a trail that is
+%% enabled in all regions.
 delete_trail(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_trail(Client, Input, []).
@@ -120,7 +125,10 @@ list_public_keys(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPublicKeys">>, Input, Options).
 
-%% @doc Lists the tags for the trail in the current region.
+%% @doc Lists the tags for the specified trail or trails in the current
+%% region.
+%%
+%% Lists the tags for the trail in the current region.
 list_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags(Client, Input, []).
@@ -160,7 +168,10 @@ remove_tags(Client, Input, Options)
     request(Client, <<"RemoveTags">>, Input, Options).
 
 %% @doc Starts the recording of AWS API calls and log file delivery for a
-%% trail.
+%% trail. For a trail that is enabled in all regions, this operation must be
+%% called from the region in which the trail was created. This operation
+%% cannot be called on the shadow trails (replicated trails in other regions)
+%% of a trail that is enabled in all regions.
 start_logging(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_logging(Client, Input, []).
@@ -171,7 +182,11 @@ start_logging(Client, Input, Options)
 %% @doc Suspends the recording of AWS API calls and log file delivery for the
 %% specified trail. Under most circumstances, there is no need to use this
 %% action. You can update a trail without stopping it first. This action is
-%% the only way to stop recording.
+%% the only way to stop recording. For a trail enabled in all regions, this
+%% operation must be called from the region in which the trail was created,
+%% or an <code>InvalidHomeRegionException</code> will occur. This operation
+%% cannot be called on the shadow trails (replicated trails in other regions)
+%% of a trail enabled in all regions.
 stop_logging(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_logging(Client, Input, []).
@@ -183,7 +198,9 @@ stop_logging(Client, Input, Options)
 %% trail do not require stopping the CloudTrail service. Use this action to
 %% designate an existing bucket for log delivery. If the existing bucket has
 %% previously been a target for CloudTrail log files, an IAM policy exists
-%% for the bucket.
+%% for the bucket. <code>UpdateTrail</code> must be called from the region in
+%% which the trail was created; otherwise, an
+%% <code>InvalidHomeRegionException</code> is thrown.
 update_trail(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_trail(Client, Input, []).

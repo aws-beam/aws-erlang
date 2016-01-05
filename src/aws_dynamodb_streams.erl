@@ -132,7 +132,7 @@ list_streams(Client, Input, Options)
 %%====================================================================
 
 request(Client, Action, Input, Options) ->
-    Client1 = Client#{service => <<"streams.dynamodb">>},
+    Client1 = Client#{service => <<"dynamodb">>},
     Host = aws_util:binary_join([<<"streams.dynamodb.">>,
                                  maps:get(region, Client1),
                                  <<".">>,

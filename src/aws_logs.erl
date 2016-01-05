@@ -15,17 +15,17 @@
 %% Use the following links to get started using the <i>Amazon CloudWatch Logs
 %% API Reference</i>:
 %%
-%% <ul> <li> <a
+%% <ul> <li><a
 %% href="http://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_Operations.html">Actions</a>:
-%% An alphabetical list of all Amazon CloudWatch Logs actions.</li> <li> <a
+%% An alphabetical list of all Amazon CloudWatch Logs actions.</li> <li><a
 %% href="http://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_Types.html">Data
 %% Types</a>: An alphabetical list of all Amazon CloudWatch Logs data
-%% types.</li> <li> <a
+%% types.</li> <li><a
 %% href="http://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/CommonParameters.html">Common
-%% Parameters</a>: Parameters that all Query actions can use.</li> <li> <a
+%% Parameters</a>: Parameters that all Query actions can use.</li> <li><a
 %% href="http://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/CommonErrors.html">Common
 %% Errors</a>: Client and server errors that all actions can return.</li>
-%% <li> <a
+%% <li><a
 %% href="http://docs.aws.amazon.com/general/latest/gr/index.html?rande.html">Regions
 %% and Endpoints</a>: Itemized regions and endpoints for all AWS
 %% products.</li> </ul> In addition to using the Amazon CloudWatch Logs API,
@@ -125,6 +125,11 @@ cancel_export_task(Client, Input, Options)
 %% this API will initiate an export task and respond with the task Id. Once
 %% started, <code>DescribeExportTasks</code> can be used to get the status of
 %% an export task.
+%%
+%% You can export logs from multiple log groups or multiple time ranges to
+%% the same Amazon S3 bucket. To separate out log data for each export task,
+%% you can specify a prefix that will be used as the Amazon S3 key prefix for
+%% all exported objects.
 create_export_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_export_task(Client, Input, []).
