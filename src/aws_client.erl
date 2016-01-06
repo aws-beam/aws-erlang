@@ -63,22 +63,38 @@ make_local_client(AccessKeyID, SecretAccessKey, Port)
 %% make_client/0 returns a clienturation map with default values.
 make_client_test() ->
     ?assertEqual(#{access_key_id => <<"access-key-id">>,
-                   secret_access_key => <<"secret-access-key">>,
-                   region => <<"region">>,
                    endpoint => <<"amazonaws.com">>,
+                   port => <<"443">>,
+                   proto => <<"https">>,
+                   region => <<"region">>,
+                   secret_access_key => <<"secret-access-key">>,
                    service => undefined},
                  make_client(<<"access-key-id">>, <<"secret-access-key">>,
                              <<"region">>)).
 
 make_temporary_client_test() ->
     ?assertEqual(#{access_key_id => <<"access-key-id">>,
-                   secret_access_key => <<"secret-access-key">>,
-                   token => <<"some-token">>,
-                   region => <<"region">>,
                    endpoint => <<"amazonaws.com">>,
-                   service => undefined},
+                   port => <<"443">>,
+                   proto => <<"https">>,
+                   region => <<"region">>,
+                   secret_access_key => <<"secret-access-key">>,
+                   service => undefined,
+                   token => <<"some-token">>},
                  make_temporary_client(<<"access-key-id">>,
                                        <<"secret-access-key">>,
                                        <<"some-token">>,
                                        <<"region">>)).
+
+make_local_client_test() ->
+    ?assertEqual(#{access_key_id => <<"access-key-id">>,
+		   port => <<"8000">>,
+		   proto => <<"http">>,
+		   region => <<"local">>,
+		   secret_access_key => <<"secret-access-key">>,
+		   service => undefined},
+		 make_local_client(<<"access-key-id">>,
+				   <<"secret-access-key">>,
+				   <<"8000">>)).
+
 -endif.

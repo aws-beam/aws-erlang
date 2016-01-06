@@ -170,12 +170,8 @@ terminate_workspaces(Client, Input, Options)
     Error :: {binary(), binary()}.
 request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"workspaces">>},
-    Host = aws_util:binary_join([<<"workspaces.">>,
-                                 maps:get(region, Client1),
-                                 <<".">>,
-                                 maps:get(endpoint, Client1)],
-                                <<"">>),
-    URL = aws_util:binary_join([<<"https://">>, Host, <<"/">>], <<"">>),
+    Host = get_host(Client1),
+    URL = get_url(Host, Client1),
     Headers = [{<<"Host">>, Host},
                {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
                {<<"X-Amz-Target">>, << <<"WorkspacesService.">>/binary, Action/binary>>}],
@@ -199,3 +195,19 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
     {error, {Exception, Reason}, {StatusCode, ResponseHeaders, Client}};
 handle_response({error, Reason}) ->
     {error, Reason}.
+
+get_host(#{region := <<"local">>}) ->
+    <<"localhost">>;
+get_host(#{region := Region, endpoint := Endpoint, service := Service}) ->
+    aws_util:binary_join([Service,
+			  <<".">>,
+			  Region,
+			  <<".">>,
+			  Endpoint],
+			 <<"">>).
+
+get_url(Host, Client) ->
+    Proto = maps:get(proto, Client),
+    Port = maps:get(port, Client),
+    aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>],
+			 <<"">>).
