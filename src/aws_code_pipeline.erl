@@ -399,7 +399,7 @@ update_pipeline(Client, Input, Options)
     Error :: {binary(), binary()}.
 request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"codepipeline">>},
-    Host = get_host(Client1),
+    Host = get_host(<<"codepipeline">>, Client1),
     URL = get_url(Host, Client1),
     Headers = [{<<"Host">>, Host},
                {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
@@ -425,10 +425,10 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
 handle_response({error, Reason}) ->
     {error, Reason}.
 
-get_host(#{region := <<"local">>}) ->
+get_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
-get_host(#{region := Region, endpoint := Endpoint, service := Service}) ->
-    aws_util:binary_join([Service,
+get_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
+    aws_util:binary_join([EndpointPrefix,
 			  <<".">>,
 			  Region,
 			  <<".">>,
