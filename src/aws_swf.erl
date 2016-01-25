@@ -1162,8 +1162,9 @@ handle_response({ok, 200, ResponseHeaders, Client}) ->
     end;
 handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
     {ok, Body} = hackney:body(Client),
-    #{<<"__type">> := Exception,
-      <<"message">> := Reason} = jsx:decode(Body, [return_maps]),
+    Error = jsx:decode(Body, [return_maps]),
+    Exception = maps:get(<<"__type">>, Error, undefined),
+    Reason = maps:get(<<"message">>, Error, undefined),
     {error, {Exception, Reason}, {StatusCode, ResponseHeaders, Client}};
 handle_response({error, Reason}) ->
     {error, Reason}.
