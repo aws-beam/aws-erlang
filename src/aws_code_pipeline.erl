@@ -16,28 +16,28 @@
 %% <i>Pipelines</i> are models of automated release processes. Each pipeline
 %% is uniquely named, and consists of actions, gates, and stages.
 %%
-%% You can work with pipelines by calling: <ul> <li> <a>CreatePipeline</a>,
-%% which creates a uniquely-named pipeline.</li> <li> <a>DeletePipeline</a>,
-%% which deletes the specified pipeline.</li> <li> <a>GetPipeline</a>, which
-%% returns information about a pipeline structure.</li> <li>
-%% <a>GetPipelineState</a>, which returns information about the current state
-%% of the stages and actions of a pipeline.</li> <li> <a>ListPipelines</a>,
-%% which gets a summary of all of the pipelines associated with your
-%% account.</li> <li> <a>StartPipelineExecution</a>, which runs the the most
-%% recent revision of an artifact through the pipeline.</li> <li>
-%% <a>UpdatePipeline</a>, which updates a pipeline with edits or changes to
-%% the structure of the pipeline.</li> </ul> Pipelines include <i>stages</i>,
-%% which are which are logical groupings of gates and actions. Each stage
-%% contains one or more actions that must complete before the next stage
-%% begins. A stage will result in success or failure. If a stage fails, then
-%% the pipeline stops at that stage and will remain stopped until either a
-%% new version of an artifact appears in the source location, or a user takes
-%% action to re-run the most recent artifact through the pipeline. You can
-%% call <a>GetPipelineState</a>, which displays the status of a pipeline,
-%% including the status of stages in the pipeline, or <a>GetPipeline</a>,
-%% which returns the entire structure of the pipeline, including the stages
-%% of that pipeline. For more information about the structure of stages and
-%% actions, also refer to the <ulink
+%% You can work with pipelines by calling: <ul><li><a>CreatePipeline</a>,
+%% which creates a uniquely-named pipeline.</li> <li><a>DeletePipeline</a>,
+%% which deletes the specified pipeline.</li> <li><a>GetPipeline</a>, which
+%% returns information about a pipeline structure.</li>
+%% <li><a>GetPipelineState</a>, which returns information about the current
+%% state of the stages and actions of a pipeline.</li> <li>
+%% <a>ListPipelines</a>, which gets a summary of all of the pipelines
+%% associated with your account.</li> <li><a>StartPipelineExecution</a>,
+%% which runs the the most recent revision of an artifact through the
+%% pipeline.</li> <li><a>UpdatePipeline</a>, which updates a pipeline with
+%% edits or changes to the structure of the pipeline.</li> </ul> Pipelines
+%% include <i>stages</i>, which are which are logical groupings of gates and
+%% actions. Each stage contains one or more actions that must complete before
+%% the next stage begins. A stage will result in success or failure. If a
+%% stage fails, then the pipeline stops at that stage and will remain stopped
+%% until either a new version of an artifact appears in the source location,
+%% or a user takes action to re-run the most recent artifact through the
+%% pipeline. You can call <a>GetPipelineState</a>, which displays the status
+%% of a pipeline, including the status of stages in the pipeline, or
+%% <a>GetPipeline</a>, which returns the entire structure of the pipeline,
+%% including the stages of that pipeline. For more information about the
+%% structure of stages and actions, also refer to the <ulink
 %% url="http://docs.aws.amazon.com/codepipeline/latest/UserGuide/pipeline-structure.html">AWS
 %% CodePipeline Pipeline Structure Reference</ulink>.
 %%
@@ -55,9 +55,9 @@
 %%
 %% You can work with transitions by calling:
 %%
-%% <ul> <li> <a>DisableStageTransition</a>, which prevents artifacts from
-%% transitioning to the next stage in a pipeline.</li> <li>
-%% <a>EnableStageTransition</a>, which enables transition of artifacts
+%% <ul> <li><a>DisableStageTransition</a>, which prevents artifacts from
+%% transitioning to the next stage in a pipeline.</li>
+%% <li><a>EnableStageTransition</a>, which enables transition of artifacts
 %% between stages in a pipeline. </li> </ul> <b>Using the API to integrate
 %% with AWS CodePipeline</b>
 %%
@@ -70,25 +70,25 @@
 %% source action might import a revision of an artifact from a source. You
 %% can work with jobs by calling:
 %%
-%% <ul> <li> <a>AcknowledgeJob</a>, which confirms whether a job worker has
-%% received the specified job,</li> <li> <a>GetJobDetails</a>, which returns
-%% the details of a job,</li> <li> <a>PollForJobs</a>, which determines
-%% whether there are any jobs to act upon, </li> <li>
-%% <a>PutJobFailureResult</a>, which provides details of a job failure,
-%% and</li> <li> <a>PutJobSuccessResult</a>, which provides details of a job
-%% success.</li> </ul> </li> <li>Third party jobs, which are instances of an
+%% <ul> <li><a>AcknowledgeJob</a>, which confirms whether a job worker has
+%% received the specified job,</li> <li><a>GetJobDetails</a>, which returns
+%% the details of a job,</li> <li><a>PollForJobs</a>, which determines
+%% whether there are any jobs to act upon, </li>
+%% <li><a>PutJobFailureResult</a>, which provides details of a job failure,
+%% and</li> <li><a>PutJobSuccessResult</a>, which provides details of a job
+%% success.</li> </ul></li> <li>Third party jobs, which are instances of an
 %% action created by a partner action and integrated into AWS CodePipeline.
 %% Partner actions are created by members of the AWS Partner Network. You can
 %% work with third party jobs by calling:
 %%
-%% <ul> <li> <a>AcknowledgeThirdPartyJob</a>, which confirms whether a job
-%% worker has received the specified job,</li> <li>
-%% <a>GetThirdPartyJobDetails</a>, which requests the details of a job for a
-%% partner action,</li> <li> <a>PollForThirdPartyJobs</a>, which determines
-%% whether there are any jobs to act upon, </li> <li>
-%% <a>PutThirdPartyJobFailureResult</a>, which provides details of a job
-%% failure, and</li> <li> <a>PutThirdPartyJobSuccessResult</a>, which
-%% provides details of a job success.</li> </ul> </li> </ul>
+%% <ul><li><a>AcknowledgeThirdPartyJob</a>, which confirms whether a job
+%% worker has received the specified job,</li>
+%% <li><a>GetThirdPartyJobDetails</a>, which requests the details of a job
+%% for a partner action,</li> <li><a>PollForThirdPartyJobs</a>, which
+%% determines whether there are any jobs to act upon, </li>
+%% <li><a>PutThirdPartyJobFailureResult</a>, which provides details of a job
+%% failure, and</li> <li><a>PutThirdPartyJobSuccessResult</a>, which provides
+%% details of a job success.</li> </ul></li> </ul>
 -module(aws_code_pipeline).
 
 -export([acknowledge_job/2,
