@@ -1,6 +1,6 @@
 {application, aws,
  [{description, "AWS clients for Erlang."}
- ,{vsn, "0.1.0"}
+ ,{vsn, "git"}
  ,{registered, []}
  ,{applications,
     [kernel
