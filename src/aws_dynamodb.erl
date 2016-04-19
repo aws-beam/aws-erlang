@@ -3,23 +3,38 @@
 
 %% @doc <fullname>Amazon DynamoDB</fullname>
 %%
-%% <b>Overview</b>
-%%
 %% This is the Amazon DynamoDB API Reference. This guide provides
-%% descriptions and samples of the low-level DynamoDB API. For information
-%% about DynamoDB application development, see the <a
-%% href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/">Amazon
-%% DynamoDB Developer Guide</a>.
+%% descriptions of the low-level DynamoDB API.
 %%
-%% Instead of making the requests to the low-level DynamoDB API directly from
-%% your application, we recommend that you use the AWS Software Development
-%% Kits (SDKs). The easy-to-use libraries in the AWS SDKs make it unnecessary
-%% to call the low-level DynamoDB API directly from your application. The
-%% libraries take care of request authentication, serialization, and
-%% connection management. For more information, see <a
+%% This guide is intended for use with the following DynamoDB documentation:
+%%
+%% <ul> <li> <a
+%% href="http://docs.aws.amazon.com/amazondynamodb/latest/gettingstartedguide/">Amazon
+%% DynamoDB Getting Started Guide</a> - provides hands-on exercises that help
+%% you learn the basics of working with DynamoDB. <i>If you are new to
+%% DynamoDB, we recommend that you begin with the Getting Started Guide.</i>
+%%
+%% </li> <li> <a
+%% href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/">Amazon
+%% DynamoDB Developer Guide</a> - contains detailed information about
+%% DynamoDB concepts, usage, and best practices.
+%%
+%% </li> <li> <a
+%% href="http://docs.aws.amazon.com/dynamodbstreams/latest/APIReference/">Amazon
+%% DynamoDB Streams API Reference</a> - provides descriptions and samples of
+%% the DynamoDB Streams API. (For more information, see <a
+%% href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.html">Capturing
+%% Table Activity with DynamoDB Streams</a> in the Amazon DynamoDB Developer
+%% Guide.)
+%%
+%% </li> </ul> Instead of making the requests to the low-level DynamoDB API
+%% directly from your application, we recommend that you use the AWS Software
+%% Development Kits (SDKs). The easy-to-use libraries in the AWS SDKs make it
+%% unnecessary to call the low-level DynamoDB API directly from your
+%% application. The libraries take care of request authentication,
+%% serialization, and connection management. For more information, see <a
 %% href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/UsingAWSSDK.html">Using
-%% the AWS SDKs with DynamoDB</a> in the <i>Amazon DynamoDB Developer
-%% Guide</i>.
+%% the AWS SDKs with DynamoDB</a> in the Amazon DynamoDB Developer Guide.
 %%
 %% If you decide to code against the low-level DynamoDB API directly, you
 %% will need to write the necessary code to authenticate your requests. For
@@ -33,11 +48,10 @@
 %% <b>Managing Tables</b>
 %%
 %% <ul> <li> <i>CreateTable</i> - Creates a table with user-specified
-%% provisioned throughput settings. You must designate one attribute as the
-%% hash primary key for the table; you can optionally designate a second
-%% attribute as the range primary key. DynamoDB creates indexes on these key
-%% attributes for fast data access. Optionally, you can create one or more
-%% secondary indexes, which provide fast data access using non-key
+%% provisioned throughput settings. You must define a primary key for the
+%% table - either a simple primary key (partition key), or a composite
+%% primary key (partition key and sort key). Optionally, you can create one
+%% or more secondary indexes, which provide fast data access using non-key
 %% attributes.
 %%
 %% </li> <li> <i>DescribeTable</i> - Returns metadata for a table, such as
@@ -70,10 +84,10 @@
 %% strongly consistent reads can be used.
 %%
 %% </li> <li> <i>Query</i> - Returns one or more items from a table or a
-%% secondary index. You must provide a specific hash key value. You can
-%% narrow the scope of the query using comparison operators against a range
-%% key value, or on the index key. <i>Query</i> supports either eventual or
-%% strong consistency. A single response has a size limit of 1 MB.
+%% secondary index. You must provide a specific value for the partition key.
+%% You can narrow the scope of the query using comparison operators against a
+%% sort key value, or on the index key. <i>Query</i> supports either eventual
+%% or strong consistency. A single response has a size limit of 1 MB.
 %%
 %% </li> <li> <i>Scan</i> - Reads every item in a table; the result set is
 %% eventually consistent. You can limit the number of items returned by
@@ -129,6 +143,8 @@
          delete_item/3,
          delete_table/2,
          delete_table/3,
+         describe_limits/2,
+         describe_limits/3,
          describe_table/2,
          describe_table/3,
          get_item/2,
@@ -298,7 +314,7 @@ batch_get_item(Client, Input, Options)
 %%
 %% </li> <li> Any individual item in a batch exceeds 400 KB.
 %%
-%% </li> <li> The total request size exceeds 16 MB.
+%% </li> <li>The total request size exceeds 16 MB.
 %%
 %% </li> </ul>
 batch_write_item(Client, Input)
@@ -382,15 +398,76 @@ delete_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTable">>, Input, Options).
 
+%% @doc Returns the current provisioned-capacity limits for your AWS account
+%% in a region, both for the region as a whole and for any one DynamoDB table
+%% that you create there.
+%%
+%% When you establish an AWS account, the account has initial limits on the
+%% maximum read capacity units and write capacity units that you can
+%% provision across all of your DynamoDB tables in a given region. Also,
+%% there are per-table limits that apply when you create a table there. For
+%% more information, see <a
+%% href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
+%% page in the <i>Amazon DynamoDB Developer Guide</i>.
+%%
+%% Although you can increase these limits by filing a case at <a
+%% href="https://console.aws.amazon.com/support/home#/">AWS Support
+%% Center</a>, obtaining the increase is not instantaneous. The
+%% <i>DescribeLimits</i> API lets you write code to compare the capacity you
+%% are currently using to those limits imposed by your account so that you
+%% have enough time to apply for an increase before you hit a limit.
+%%
+%% For example, you could use one of the AWS SDKs to do the following:
+%%
+%% <ol> <li>Call <i>DescribeLimits</i> for a particular region to obtain your
+%% current account limits on provisioned capacity there.</li> <li>Create a
+%% variable to hold the aggregate read capacity units provisioned for all
+%% your tables in that region, and one to hold the aggregate write capacity
+%% units. Zero them both.</li> <li>Call <i>ListTables</i> to obtain a list of
+%% all your DynamoDB tables.</li> <li>For each table name listed by
+%% <i>ListTables</i>, do the following:
+%%
+%% <ul> <li>Call <i>DescribeTable</i> with the table name.</li> <li>Use the
+%% data returned by <i>DescribeTable</i> to add the read capacity units and
+%% write capacity units provisioned for the table itself to your
+%% variables.</li> <li>If the table has one or more global secondary indexes
+%% (GSIs), loop over these GSIs and add their provisioned capacity values to
+%% your variables as well.</li> </ul> </li> <li>Report the account limits for
+%% that region returned by <i>DescribeLimits</i>, along with the total
+%% current provisioned capacity levels you have calculated.</li> </ol> This
+%% will let you see whether you are getting close to your account-level
+%% limits.
+%%
+%% The per-table limits apply only when you are creating a new table. They
+%% restrict the sum of the provisioned capacity of the new table itself and
+%% all its global secondary indexes.
+%%
+%% For existing tables and their GSIs, DynamoDB will not let you increase
+%% provisioned capacity extremely rapidly, but the only upper limit that
+%% applies is that the aggregate provisioned capacity over all your tables
+%% and GSIs cannot exceed either of the per-account limits.
+%%
+%% <note><i>DescribeLimits</i> should only be called periodically. You can
+%% expect throttling errors if you call it more than once in a minute.
+%%
+%% </note> The <i>DescribeLimits</i> Request element has no content.
+describe_limits(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_limits(Client, Input, []).
+describe_limits(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeLimits">>, Input, Options).
+
 %% @doc Returns information about the table, including the current status of
 %% the table, when it was created, the primary key schema, and any indexes on
 %% the table.
 %%
-%% <note> If you issue a DescribeTable request immediately after a
-%% CreateTable request, DynamoDB might return a ResourceNotFoundException.
-%% This is because DescribeTable uses an eventually consistent query, and the
-%% metadata for your table might not be available at that moment. Wait for a
-%% few seconds, and then try the DescribeTable request again.
+%% <note> If you issue a <i>DescribeTable</i> request immediately after a
+%% <i>CreateTable</i> request, DynamoDB might return a
+%% <i>ResourceNotFoundException</i>. This is because <i>DescribeTable</i>
+%% uses an eventually consistent query, and the metadata for your table might
+%% not be available at that moment. Wait for a few seconds, and then try the
+%% <i>DescribeTable</i> request again.
 %%
 %% </note>
 describe_table(Client, Input)
@@ -447,8 +524,11 @@ list_tables(Client, Input, Options)
 %% For more information, see the <i>ReturnValues</i> description below.
 %%
 %% <note> To prevent a new item from replacing an existing item, use a
-%% conditional put operation with <i>ComparisonOperator</i> set to
-%% <code>NULL</code> for the primary key attribute, or attributes.
+%% conditional expression that contains the <code>attribute_not_exists</code>
+%% function with the name of the attribute being used as the partition key
+%% for the table. Since every record must contain that attribute, the
+%% <code>attribute_not_exists</code> function will only succeed if no
+%% matching item exists.
 %%
 %% </note> For more information about using this API, see <a
 %% href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithItems.html">Working
@@ -463,13 +543,13 @@ put_item(Client, Input, Options)
 %% @doc A <i>Query</i> operation uses the primary key of a table or a
 %% secondary index to directly access items from that table or index.
 %%
-%% Use the <i>KeyConditionExpression</i> parameter to provide a specific hash
-%% key value. The <i>Query</i> operation will return all of the items from
-%% the table or index with that hash key value. You can optionally narrow the
-%% scope of the <i>Query</i> operation by specifying a range key value and a
-%% comparison operator in <i>KeyConditionExpression</i>. You can use the
-%% <i>ScanIndexForward</i> parameter to get results in forward or reverse
-%% order, by range key or by index key.
+%% Use the <i>KeyConditionExpression</i> parameter to provide a specific
+%% value for the partition key. The <i>Query</i> operation will return all of
+%% the items from the table or index with that partition key value. You can
+%% optionally narrow the scope of the <i>Query</i> operation by specifying a
+%% sort key value and a comparison operator in <i>KeyConditionExpression</i>.
+%% You can use the <i>ScanIndexForward</i> parameter to get results in
+%% forward or reverse order, by sort key.
 %%
 %% Queries that do not return results consume the minimum number of read
 %% capacity units for that type of read operation.
@@ -513,10 +593,11 @@ query(Client, Input, Options)
 %% href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#QueryAndScanParallelScan">Parallel
 %% Scan</a> in the <i>Amazon DynamoDB Developer Guide</i>.
 %%
-%% By default, <i>Scan</i> uses eventually consistent reads when acessing the
-%% data in the table or local secondary index. However, you can use strongly
-%% consistent reads instead by setting the <i>ConsistentRead</i> parameter to
-%% <i>true</i>.
+%% By default, <i>Scan</i> uses eventually consistent reads when accessing
+%% the data in a table; therefore, the result set might not include the
+%% changes to data in the table immediately before the operation began. If
+%% you need a consistent copy of the data, as of the time that the Scan
+%% begins, you can set the <i>ConsistentRead</i> parameter to <i>true</i>.
 scan(Client, Input)
   when is_map(Client), is_map(Input) ->
     scan(Client, Input, []).
@@ -528,9 +609,7 @@ scan(Client, Input, Options)
 %% if it does not already exist. You can put, delete, or add attribute
 %% values. You can also perform a conditional update on an existing item
 %% (insert a new attribute name-value pair if it doesn't exist, or replace an
-%% existing name-value pair if it has certain expected attribute values). If
-%% conditions are specified and the item does not exist, then the operation
-%% fails and a new item is not created.
+%% existing name-value pair if it has certain expected attribute values).
 %%
 %% You can also return the item's attribute values in the same
 %% <i>UpdateItem</i> operation using the <i>ReturnValues</i> parameter.

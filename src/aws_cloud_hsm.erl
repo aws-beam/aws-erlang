@@ -4,7 +4,9 @@
 %% @doc <fullname>AWS CloudHSM Service</fullname>
 -module(aws_cloud_hsm).
 
--export([create_hapg/2,
+-export([add_tags_to_resource/2,
+         add_tags_to_resource/3,
+         create_hapg/2,
          create_hapg/3,
          create_hsm/2,
          create_hsm/3,
@@ -32,18 +34,33 @@
          list_hsms/3,
          list_luna_clients/2,
          list_luna_clients/3,
+         list_tags_for_resource/2,
+         list_tags_for_resource/3,
          modify_hapg/2,
          modify_hapg/3,
          modify_hsm/2,
          modify_hsm/3,
          modify_luna_client/2,
-         modify_luna_client/3]).
+         modify_luna_client/3,
+         remove_tags_from_resource/2,
+         remove_tags_from_resource/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Adds or overwrites one or more tags for the specified resource.
+%%
+%% Each tag consists of a key and a value. Tag keys must be unique per
+%% resource.
+add_tags_to_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    add_tags_to_resource(Client, Input, []).
+add_tags_to_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AddTagsToResource">>, Input, Options).
 
 %% @doc Creates a high-availability partition group. A high-availability
 %% partition group is a group of partitions that spans multiple physical
@@ -194,6 +211,14 @@ list_luna_clients(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLunaClients">>, Input, Options).
 
+%% @doc Returns a list of all tags for the specified resource.
+list_tags_for_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_tags_for_resource(Client, Input, []).
+list_tags_for_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTagsForResource">>, Input, Options).
+
 %% @doc Modifies an existing high-availability partition group.
 modify_hapg(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -205,7 +230,7 @@ modify_hapg(Client, Input, Options)
 %% @doc Modifies an HSM.
 %%
 %% <important> This operation can result in the HSM being offline for up to
-%% 15 minutes while the AWS CloudHSM service is reconfigured. If you are
+%% 15 minutes while the AWS CloudHSM service is reconfigured. If you are
 %% modifying a production HSM, you should ensure that your AWS CloudHSM
 %% service is configured for high availability, and consider executing this
 %% operation during a maintenance window.
@@ -228,6 +253,17 @@ modify_luna_client(Client, Input)
 modify_luna_client(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyLunaClient">>, Input, Options).
+
+%% @doc Removes one or more tags from the specified resource.
+%%
+%% To remove a tag, specify only the tag key to remove (not the value). To
+%% overwrite the value for an existing tag, use <a>AddTagsToResource</a>.
+remove_tags_from_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    remove_tags_from_resource(Client, Input, []).
+remove_tags_from_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RemoveTagsFromResource">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

@@ -30,6 +30,8 @@
          get_device_pool_compatibility/3,
          get_job/2,
          get_job/3,
+         get_offering_status/2,
+         get_offering_status/3,
          get_project/2,
          get_project/3,
          get_run/2,
@@ -48,6 +50,10 @@
          list_devices/3,
          list_jobs/2,
          list_jobs/3,
+         list_offering_transactions/2,
+         list_offering_transactions/3,
+         list_offerings/2,
+         list_offerings/3,
          list_projects/2,
          list_projects/3,
          list_runs/2,
@@ -62,8 +68,14 @@
          list_unique_problems/3,
          list_uploads/2,
          list_uploads/3,
+         purchase_offering/2,
+         purchase_offering/3,
+         renew_offering/2,
+         renew_offering/3,
          schedule_run/2,
          schedule_run/3,
+         stop_run/2,
+         stop_run/3,
          update_device_pool/2,
          update_device_pool/3,
          update_project/2,
@@ -177,6 +189,20 @@ get_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetJob">>, Input, Options).
 
+%% @doc Gets the current status and future status of all offerings purchased
+%% by an AWS account. The response indicates how many offerings are currently
+%% available and the offerings that will be available in the next period. The
+%% API returns a <code>NotEligible</code> error if the user is not permitted
+%% to invoke the operation. Please contact <a
+%% href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a>
+%% if you believe that you should be able to invoke this operation.
+get_offering_status(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_offering_status(Client, Input, []).
+get_offering_status(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetOfferingStatus">>, Input, Options).
+
 %% @doc Gets information about a project.
 get_project(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -249,6 +275,34 @@ list_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListJobs">>, Input, Options).
 
+%% @doc Returns a list of all historical purchases, renewals, and system
+%% renewal transactions for an AWS account. The list is paginated and ordered
+%% by a descending timestamp (most recent transactions are first). The API
+%% returns a <code>NotEligible</code> error if the user is not permitted to
+%% invoke the operation. Please contact <a
+%% href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a>
+%% if you believe that you should be able to invoke this operation.
+list_offering_transactions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_offering_transactions(Client, Input, []).
+list_offering_transactions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListOfferingTransactions">>, Input, Options).
+
+%% @doc Returns a list of products or offerings that the user can manage
+%% through the API. Each offering record indicates the recurring price per
+%% unit and the frequency for that offering. The API returns a
+%% <code>NotEligible</code> error if the user is not permitted to invoke the
+%% operation. Please contact <a
+%% href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a>
+%% if you believe that you should be able to invoke this operation.
+list_offerings(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_offerings(Client, Input, []).
+list_offerings(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListOfferings">>, Input, Options).
+
 %% @doc Gets information about projects.
 list_projects(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -305,6 +359,32 @@ list_uploads(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUploads">>, Input, Options).
 
+%% @doc Immediately purchases offerings for an AWS account. Offerings renew
+%% with the latest total purchased quantity for an offering, unless the
+%% renewal was overridden. The API returns a <code>NotEligible</code> error
+%% if the user is not permitted to invoke the operation. Please contact <a
+%% href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a>
+%% if you believe that you should be able to invoke this operation.
+purchase_offering(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    purchase_offering(Client, Input, []).
+purchase_offering(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PurchaseOffering">>, Input, Options).
+
+%% @doc Explicitly sets the quantity of devices to renew for an offering,
+%% starting from the <code>effectiveDate</code> of the next period. The API
+%% returns a <code>NotEligible</code> error if the user is not permitted to
+%% invoke the operation. Please contact <a
+%% href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a>
+%% if you believe that you should be able to invoke this operation.
+renew_offering(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    renew_offering(Client, Input, []).
+renew_offering(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RenewOffering">>, Input, Options).
+
 %% @doc Schedules a run.
 schedule_run(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -312,6 +392,20 @@ schedule_run(Client, Input)
 schedule_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ScheduleRun">>, Input, Options).
+
+%% @doc Initiates a stop request for the current test run. AWS Device Farm
+%% will immediately stop the run on devices where tests have not started
+%% executing, and you will not be billed for these devices. On devices where
+%% tests have started executing, Setup Suite and Teardown Suite tests will
+%% run to completion before stopping execution on those devices. You will be
+%% billed for Setup, Teardown, and any tests that were in progress or already
+%% completed.
+stop_run(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_run(Client, Input, []).
+stop_run(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopRun">>, Input, Options).
 
 %% @doc Modifies the name, description, and rules in a device pool given the
 %% attributes and the pool ARN. Rule updates are all-or-nothing, meaning they
