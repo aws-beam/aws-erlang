@@ -14,6 +14,8 @@
          create_alias/3,
          create_computer/2,
          create_computer/3,
+         create_conditional_forwarder/2,
+         create_conditional_forwarder/3,
          create_directory/2,
          create_directory/3,
          create_microsoft_a_d/2,
@@ -22,14 +24,22 @@
          create_snapshot/3,
          create_trust/2,
          create_trust/3,
+         delete_conditional_forwarder/2,
+         delete_conditional_forwarder/3,
          delete_directory/2,
          delete_directory/3,
          delete_snapshot/2,
          delete_snapshot/3,
          delete_trust/2,
          delete_trust/3,
+         deregister_event_topic/2,
+         deregister_event_topic/3,
+         describe_conditional_forwarders/2,
+         describe_conditional_forwarders/3,
          describe_directories/2,
          describe_directories/3,
+         describe_event_topics/2,
+         describe_event_topics/3,
          describe_snapshots/2,
          describe_snapshots/3,
          describe_trusts/2,
@@ -46,8 +56,12 @@
          get_directory_limits/3,
          get_snapshot_limits/2,
          get_snapshot_limits/3,
+         register_event_topic/2,
+         register_event_topic/3,
          restore_from_snapshot/2,
          restore_from_snapshot/3,
+         update_conditional_forwarder/2,
+         update_conditional_forwarder/3,
          update_radius/2,
          update_radius/3,
          verify_trust/2,
@@ -92,6 +106,17 @@ create_computer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateComputer">>, Input, Options).
 
+%% @doc Creates a conditional forwarder associated with your AWS directory.
+%% Conditional forwarders are required in order to set up a trust
+%% relationship with another domain. The conditional forwarder points to the
+%% trusted domain.
+create_conditional_forwarder(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_conditional_forwarder(Client, Input, []).
+create_conditional_forwarder(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateConditionalForwarder">>, Input, Options).
+
 %% @doc Creates a Simple AD directory.
 create_directory(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -108,7 +133,8 @@ create_microsoft_a_d(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateMicrosoftAD">>, Input, Options).
 
-%% @doc Creates a snapshot of a Simple AD directory.
+%% @doc Creates a snapshot of a Simple AD or Microsoft AD directory in the
+%% AWS cloud.
 %%
 %% <note> You cannot take snapshots of AD Connector directories.
 %%
@@ -136,6 +162,15 @@ create_trust(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTrust">>, Input, Options).
 
+%% @doc Deletes a conditional forwarder that has been set up for your AWS
+%% directory.
+delete_conditional_forwarder(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_conditional_forwarder(Client, Input, []).
+delete_conditional_forwarder(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteConditionalForwarder">>, Input, Options).
+
 %% @doc Deletes an AWS Directory Service directory.
 delete_directory(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -161,6 +196,27 @@ delete_trust(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTrust">>, Input, Options).
 
+%% @doc Removes the specified directory as a publisher to the specified SNS
+%% topic.
+deregister_event_topic(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    deregister_event_topic(Client, Input, []).
+deregister_event_topic(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeregisterEventTopic">>, Input, Options).
+
+%% @doc Obtains information about the conditional forwarders for this
+%% account.
+%%
+%% If no input parameters are provided for RemoteDomainNames, this request
+%% describes all conditional forwarders for the specified directory ID.
+describe_conditional_forwarders(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_conditional_forwarders(Client, Input, []).
+describe_conditional_forwarders(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeConditionalForwarders">>, Input, Options).
+
 %% @doc Obtains information about the directories that belong to this
 %% account.
 %%
@@ -182,6 +238,18 @@ describe_directories(Client, Input)
 describe_directories(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDirectories">>, Input, Options).
+
+%% @doc Obtains information about which SNS topics receive status messages
+%% from the specified directory.
+%%
+%% If no input parameters are provided, such as DirectoryId or TopicName,
+%% this request describes all of the associations in the account.
+describe_event_topics(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_event_topics(Client, Input, []).
+describe_event_topics(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeEventTopics">>, Input, Options).
 
 %% @doc Obtains information about the directory snapshots that belong to this
 %% account.
@@ -264,6 +332,19 @@ get_snapshot_limits(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSnapshotLimits">>, Input, Options).
 
+%% @doc Associates a directory with an SNS topic. This establishes the
+%% directory as a publisher to the specified SNS topic. You can then receive
+%% email or text (SMS) messages when the status of your directory changes.
+%% You get notified if your directory goes from an Active status to an
+%% Impaired or Inoperable status. You also receive a notification when the
+%% directory returns to an Active status.
+register_event_topic(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    register_event_topic(Client, Input, []).
+register_event_topic(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RegisterEventTopic">>, Input, Options).
+
 %% @doc Restores a directory using an existing directory snapshot.
 %%
 %% When you restore a directory from a snapshot, any changes made to the
@@ -280,6 +361,15 @@ restore_from_snapshot(Client, Input)
 restore_from_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreFromSnapshot">>, Input, Options).
+
+%% @doc Updates a conditional forwarder that has been set up for your AWS
+%% directory.
+update_conditional_forwarder(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_conditional_forwarder(Client, Input, []).
+update_conditional_forwarder(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateConditionalForwarder">>, Input, Options).
 
 %% @doc Updates the Remote Authentication Dial In User Service (RADIUS)
 %% server information for an AD Connector directory.

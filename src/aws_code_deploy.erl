@@ -3,26 +3,23 @@
 
 %% @doc <fullname>AWS CodeDeploy</fullname>
 %%
-%% <b>Overview</b> This is the AWS CodeDeploy API Reference. This guide
-%% provides descriptions of the AWS CodeDeploy APIs. For additional
-%% information, see the <a
-%% href="http://docs.aws.amazon.com/codedeploy/latest/userguide">AWS
-%% CodeDeploy User Guide</a>.
+%% <b>Overview</b> This reference guide provides descriptions of the AWS
+%% CodeDeploy APIs. For more information about AWS CodeDeploy, see the <a
+%% href="docs.aws.amazon.com/codedeploy/latest/userguide">AWS CodeDeploy User
+%% Guide</a>.
 %%
 %% <b>Using the APIs</b> You can use the AWS CodeDeploy APIs to work with the
-%% following items:
+%% following:
 %%
-%% <ul> <li> Applications are unique identifiers that AWS CodeDeploy uses to
-%% ensure that the correct combinations of revisions, deployment
-%% configurations, and deployment groups are being referenced during
-%% deployments.
+%% <ul> <li> Applications are unique identifiers used by AWS CodeDeploy to
+%% ensure the correct combinations of revisions, deployment configurations,
+%% and deployment groups are being referenced during deployments.
 %%
 %% You can use the AWS CodeDeploy APIs to create, delete, get, list, and
 %% update applications.
 %%
 %% </li> <li> Deployment configurations are sets of deployment rules and
-%% deployment success and failure conditions that AWS CodeDeploy uses during
-%% deployments.
+%% success and failure conditions used by AWS CodeDeploy during deployments.
 %%
 %% You can use the AWS CodeDeploy APIs to create, delete, get, and list
 %% deployment configurations.
@@ -37,7 +34,7 @@
 %% revisions are deployed. Instances are identified by their Amazon EC2 tags
 %% or Auto Scaling group names. Instances belong to deployment groups.
 %%
-%% You can use the AWS CodeDeploy APIs to get and list instances.
+%% You can use the AWS CodeDeploy APIs to get and list instance.
 %%
 %% </li> <li> Deployments represent the process of deploying revisions to
 %% instances.
@@ -45,17 +42,17 @@
 %% You can use the AWS CodeDeploy APIs to create, get, list, and stop
 %% deployments.
 %%
-%% </li> <li> Application revisions are archive files that are stored in
-%% Amazon S3 buckets or GitHub repositories. These revisions contain source
-%% content (such as source code, web pages, executable files, any deployment
-%% scripts, and similar) along with an Application Specification file
-%% (AppSpec file). (The AppSpec file is unique to AWS CodeDeploy; it defines
-%% a series of deployment actions that you want AWS CodeDeploy to execute.)
-%% An application revision is uniquely identified by its Amazon S3 object key
-%% and its ETag, version, or both (for application revisions that are stored
-%% in Amazon S3 buckets) or by its repository name and commit ID (for
-%% applications revisions that are stored in GitHub repositories).
-%% Application revisions are deployed through deployment groups.
+%% </li> <li> Application revisions are archive files stored in Amazon S3
+%% buckets or GitHub repositories. These revisions contain source content
+%% (such as source code, web pages, executable files, and deployment scripts)
+%% along with an application specification (AppSpec) file. (The AppSpec file
+%% is unique to AWS CodeDeploy; it defines the deployment actions you want
+%% AWS CodeDeploy to execute.) Ffor application revisions stored in Amazon S3
+%% buckets, an application revision is uniquely identified by its Amazon S3
+%% object key and its ETag, version, or both. For application revisions
+%% stored in GitHub repositories, an application revision is uniquely
+%% identified by its repository name and commit ID. Application revisions are
+%% deployed through deployment groups.
 %%
 %% You can use the AWS CodeDeploy APIs to get, list, and register application
 %% revisions.
@@ -65,8 +62,14 @@
 
 -export([add_tags_to_on_premises_instances/2,
          add_tags_to_on_premises_instances/3,
+         batch_get_application_revisions/2,
+         batch_get_application_revisions/3,
          batch_get_applications/2,
          batch_get_applications/3,
+         batch_get_deployment_groups/2,
+         batch_get_deployment_groups/3,
+         batch_get_deployment_instances/2,
+         batch_get_deployment_instances/3,
          batch_get_deployments/2,
          batch_get_deployments/3,
          batch_get_on_premises_instances/2,
@@ -142,6 +145,14 @@ add_tags_to_on_premises_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddTagsToOnPremisesInstances">>, Input, Options).
 
+%% @doc Gets information about one or more application revisions.
+batch_get_application_revisions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_get_application_revisions(Client, Input, []).
+batch_get_application_revisions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchGetApplicationRevisions">>, Input, Options).
+
 %% @doc Gets information about one or more applications.
 batch_get_applications(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -149,6 +160,23 @@ batch_get_applications(Client, Input)
 batch_get_applications(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetApplications">>, Input, Options).
+
+%% @doc Get information about one or more deployment groups.
+batch_get_deployment_groups(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_get_deployment_groups(Client, Input, []).
+batch_get_deployment_groups(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchGetDeploymentGroups">>, Input, Options).
+
+%% @doc Gets information about one or more instance that are part of a
+%% deployment group.
+batch_get_deployment_instances(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_get_deployment_instances(Client, Input, []).
+batch_get_deployment_instances(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchGetDeploymentInstances">>, Input, Options).
 
 %% @doc Gets information about one or more deployments.
 batch_get_deployments(Client, Input)
@@ -166,7 +194,7 @@ batch_get_on_premises_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetOnPremisesInstances">>, Input, Options).
 
-%% @doc Creates a new application.
+%% @doc Creates an application.
 create_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_application(Client, Input, []).
@@ -183,7 +211,7 @@ create_deployment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDeployment">>, Input, Options).
 
-%% @doc Creates a new deployment configuration.
+%% @doc Creates a deployment configuration.
 create_deployment_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_deployment_config(Client, Input, []).
@@ -191,8 +219,8 @@ create_deployment_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDeploymentConfig">>, Input, Options).
 
-%% @doc Creates a new deployment group for application revisions to be
-%% deployed to.
+%% @doc Creates a deployment group to which application revisions will be
+%% deployed.
 create_deployment_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_deployment_group(Client, Input, []).
@@ -211,7 +239,7 @@ delete_application(Client, Input, Options)
 %% @doc Deletes a deployment configuration.
 %%
 %% <note>A deployment configuration cannot be deleted if it is currently in
-%% use. Also, predefined configurations cannot be deleted.</note>
+%% use. Predefined configurations cannot be deleted.</note>
 delete_deployment_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_deployment_config(Client, Input, []).
@@ -326,7 +354,7 @@ list_deployment_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDeploymentGroups">>, Input, Options).
 
-%% @doc Lists the instances for a deployment associated with the applicable
+%% @doc Lists the instance for a deployment associated with the applicable
 %% IAM user or AWS account.
 list_deployment_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -335,7 +363,7 @@ list_deployment_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDeploymentInstances">>, Input, Options).
 
-%% @doc Lists the deployments within a deployment group for an application
+%% @doc Lists the deployments in a deployment group for an application
 %% registered with the applicable IAM user or AWS account.
 list_deployments(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -344,7 +372,7 @@ list_deployments(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDeployments">>, Input, Options).
 
-%% @doc Gets a list of one or more on-premises instance names.
+%% @doc Gets a list of names for one or more on-premises instances.
 %%
 %% Unless otherwise specified, both registered and deregistered on-premises
 %% instance names will be listed. To list only registered or deregistered
@@ -389,7 +417,7 @@ stop_deployment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopDeployment">>, Input, Options).
 
-%% @doc Changes an existing application's name.
+%% @doc Changes the name of an application.
 update_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_application(Client, Input, []).
@@ -397,7 +425,7 @@ update_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateApplication">>, Input, Options).
 
-%% @doc Changes information about an existing deployment group.
+%% @doc Changes information about a deployment group.
 update_deployment_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_deployment_group(Client, Input, []).

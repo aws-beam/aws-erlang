@@ -1,10 +1,10 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/jkakar/aws-codegen for more details.
 
-%% @doc <fullname>Amazon Kinesis Service API Reference</fullname>
+%% @doc <fullname>Amazon Kinesis Streams Service API Reference</fullname>
 %%
-%% Amazon Kinesis is a managed service that scales elastically for real time
-%% processing of streaming big data.
+%% Amazon Kinesis Streams is a managed service that scales elastically for
+%% real time processing of streaming big data.
 -module(aws_kinesis).
 
 -export([add_tags_to_stream/2,
@@ -17,6 +17,10 @@
          delete_stream/3,
          describe_stream/2,
          describe_stream/3,
+         disable_enhanced_monitoring/2,
+         disable_enhanced_monitoring/3,
+         enable_enhanced_monitoring/2,
+         enable_enhanced_monitoring/3,
          get_records/2,
          get_records/3,
          get_shard_iterator/2,
@@ -57,11 +61,11 @@ add_tags_to_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddTagsToStream">>, Input, Options).
 
-%% @doc Creates a Amazon Kinesis stream. A stream captures and transports
+%% @doc Creates an Amazon Kinesis stream. A stream captures and transports
 %% data records that are continuously emitted from different data sources or
-%% <i>producers</i>. Scale-out within an Amazon Kinesis stream is explicitly
-%% supported by means of shards, which are uniquely identified groups of data
-%% records in an Amazon Kinesis stream.
+%% <i>producers</i>. Scale-out within a stream is explicitly supported by
+%% means of shards, which are uniquely identified groups of data records in a
+%% stream.
 %%
 %% You specify and control the number of shards that a stream is composed of.
 %% Each shard can support reads up to 5 transactions per second, up to a
@@ -89,8 +93,9 @@ add_tags_to_stream(Client, Input, Options)
 %% any point in time.</li> <li>Create more shards than are authorized for
 %% your account.</li> </ul> For the default shard limit for an AWS account,
 %% see <a
-%% href="http://docs.aws.amazon.com/kinesis/latest/dev/service-sizes-and-limits.html">Amazon
-%% Kinesis Limits</a>. If you need to increase this limit, <a
+%% href="http://docs.aws.amazon.com/kinesis/latest/dev/service-sizes-and-limits.html">Streams
+%% Limits</a> in the <i>Amazon Kinesis Streams Developer Guide</i>. If you
+%% need to increase this limit, <a
 %% href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html">contact
 %% AWS Support</a>.
 %%
@@ -105,9 +110,9 @@ create_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateStream">>, Input, Options).
 
-%% @doc Decreases the stream's retention period, which is the length of time
-%% data records are accessible after they are added to the stream. The
-%% minimum value of a stream’s retention period is 24 hours.
+%% @doc Decreases the Amazon Kinesis stream's retention period, which is the
+%% length of time data records are accessible after they are added to the
+%% stream. The minimum value of a stream's retention period is 24 hours.
 %%
 %% This operation may result in lost data. For example, if the stream's
 %% retention period is 48 hours and is decreased to 24 hours, any data
@@ -119,10 +124,11 @@ decrease_stream_retention_period(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DecreaseStreamRetentionPeriod">>, Input, Options).
 
-%% @doc Deletes a stream and all its shards and data. You must shut down any
-%% applications that are operating on the stream before you delete the
-%% stream. If an application attempts to operate on a deleted stream, it will
-%% receive the exception <code>ResourceNotFoundException</code>.
+%% @doc Deletes an Amazon Kinesis stream and all its shards and data. You
+%% must shut down any applications that are operating on the stream before
+%% you delete the stream. If an application attempts to operate on a deleted
+%% stream, it will receive the exception
+%% <code>ResourceNotFoundException</code>.
 %%
 %% If the stream is in the <code>ACTIVE</code> state, you can delete it.
 %% After a <code>DeleteStream</code> request, the specified stream is in the
@@ -147,15 +153,15 @@ delete_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteStream">>, Input, Options).
 
-%% @doc Describes the specified stream.
+%% @doc Describes the specified Amazon Kinesis stream.
 %%
 %% The information about the stream includes its current status, its Amazon
 %% Resource Name (ARN), and an array of shard objects. For each shard object,
 %% there is information about the hash key and sequence number ranges that
 %% the shard spans, and the IDs of any earlier shards that played in a role
 %% in creating the shard. A sequence number is the identifier associated with
-%% every record ingested in the Amazon Kinesis stream. The sequence number is
-%% assigned when a record is put into the stream.
+%% every record ingested in the stream. The sequence number is assigned when
+%% a record is put into the stream.
 %%
 %% You can limit the number of returned shards using the <code>Limit</code>
 %% parameter. The number of shards in a stream may be too large to return
@@ -169,6 +175,11 @@ delete_stream(Client, Input, Options)
 %% shard returned. Specify this ID in the <code>ExclusiveStartShardId</code>
 %% parameter in a subsequent request to <code>DescribeStream</code>.
 %%
+%% There are no guarantees about the chronological order shards returned in
+%% <code>DescribeStream</code> results. If you want to process shards in
+%% chronological order, use <code>ParentShardId</code> to track lineage to
+%% the oldest shard.
+%%
 %% <a>DescribeStream</a> has a limit of 10 transactions per second per
 %% account.
 describe_stream(Client, Input)
@@ -178,7 +189,24 @@ describe_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStream">>, Input, Options).
 
-%% @doc Gets data records from a shard.
+%% @doc Disables enhanced monitoring.
+disable_enhanced_monitoring(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disable_enhanced_monitoring(Client, Input, []).
+disable_enhanced_monitoring(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisableEnhancedMonitoring">>, Input, Options).
+
+%% @doc Enables enhanced Amazon Kinesis stream monitoring for shard-level
+%% metrics.
+enable_enhanced_monitoring(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    enable_enhanced_monitoring(Client, Input, []).
+enable_enhanced_monitoring(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"EnableEnhancedMonitoring">>, Input, Options).
+
+%% @doc Gets data records from an Amazon Kinesis stream's shard.
 %%
 %% Specify a shard iterator using the <code>ShardIterator</code> parameter.
 %% The shard iterator specifies the position in the shard from which you want
@@ -187,18 +215,22 @@ describe_stream(Client, Input, Options)
 %% <a>GetRecords</a> returns an empty list. Note that it might take multiple
 %% calls to get to a portion of the shard that contains records.
 %%
-%% You can scale by provisioning multiple shards. Your application should
-%% have one thread per shard, each reading continuously from its stream. To
-%% read from a stream continually, call <a>GetRecords</a> in a loop. Use
-%% <a>GetShardIterator</a> to get the shard iterator to specify in the first
-%% <a>GetRecords</a> call. <a>GetRecords</a> returns a new shard iterator in
-%% <code>NextShardIterator</code>. Specify the shard iterator returned in
-%% <code>NextShardIterator</code> in subsequent calls to <a>GetRecords</a>.
-%% Note that if the shard has been closed, the shard iterator can't return
-%% more data and <a>GetRecords</a> returns <code>null</code> in
-%% <code>NextShardIterator</code>. You can terminate the loop when the shard
-%% is closed, or when the shard iterator reaches the record with the sequence
-%% number or other attribute that marks it as the last record to process.
+%% You can scale by provisioning multiple shards per stream while considering
+%% service limits (for more information, see <a
+%% href="http://docs.aws.amazon.com/kinesis/latest/dev/service-sizes-and-limits.html">Streams
+%% Limits</a> in the <i>Amazon Kinesis Streams Developer Guide</i>). Your
+%% application should have one thread per shard, each reading continuously
+%% from its stream. To read from a stream continually, call <a>GetRecords</a>
+%% in a loop. Use <a>GetShardIterator</a> to get the shard iterator to
+%% specify in the first <a>GetRecords</a> call. <a>GetRecords</a> returns a
+%% new shard iterator in <code>NextShardIterator</code>. Specify the shard
+%% iterator returned in <code>NextShardIterator</code> in subsequent calls to
+%% <a>GetRecords</a>. Note that if the shard has been closed, the shard
+%% iterator can't return more data and <a>GetRecords</a> returns
+%% <code>null</code> in <code>NextShardIterator</code>. You can terminate the
+%% loop when the shard is closed, or when the shard iterator reaches the
+%% record with the sequence number or other attribute that marks it as the
+%% last record to process.
 %%
 %% Each data record can be up to 1 MB in size, and each shard can read up to
 %% 2 MB per second. You can ensure that your calls don't exceed the maximum
@@ -206,10 +238,10 @@ describe_stream(Client, Input, Options)
 %% specify the maximum number of records that <a>GetRecords</a> can return.
 %% Consider your average record size when determining this limit.
 %%
-%% The size of the data returned by <a>GetRecords</a> will vary depending on
-%% the utilization of the shard. The maximum size of data that
-%% <a>GetRecords</a> can return is 10 MB. If a call returns this amount of
-%% data, subsequent calls made within the next 5 seconds throw
+%% The size of the data returned by <a>GetRecords</a> varies depending on the
+%% utilization of the shard. The maximum size of data that <a>GetRecords</a>
+%% can return is 10 MB. If a call returns this amount of data, subsequent
+%% calls made within the next 5 seconds throw
 %% <code>ProvisionedThroughputExceededException</code>. If there is
 %% insufficient provisioned throughput on the shard, subsequent calls made
 %% within the next 1 second throw
@@ -221,19 +253,20 @@ describe_stream(Client, Input, Options)
 %%
 %% To detect whether the application is falling behind in processing, you can
 %% use the <code>MillisBehindLatest</code> response attribute. You can also
-%% monitor the stream using CloudWatch metrics (see <a
-%% href="http://docs.aws.amazon.com/kinesis/latest/dev/monitoring.html">Monitoring
-%% Amazon Kinesis</a> in the <i>Amazon Kinesis Developer Guide</i>).
+%% monitor the stream using CloudWatch metrics and other mechanisms (see <a
+%% href="http://docs.aws.amazon.com/kinesis/latest/dev/monitoring.html">Monitoring</a>
+%% in the <i>Amazon Kinesis Streams Developer Guide</i>).
 %%
 %% Each Amazon Kinesis record includes a value,
-%% <code>ApproximateArrivalTimestamp</code>, that is set when an Amazon
-%% Kinesis stream successfully receives and stores a record. This is commonly
-%% referred to as a server-side timestamp, which is different than a
-%% client-side timestamp, where the timestamp is set when a data producer
-%% creates or sends the record to a stream. The timestamp has millisecond
-%% precision. There are no guarantees about the timestamp accuracy, or that
-%% the timestamp is always increasing. For example, records in a shard or
-%% across a stream might have timestamps that are out of order.
+%% <code>ApproximateArrivalTimestamp</code>, that is set when a stream
+%% successfully receives and stores a record. This is commonly referred to as
+%% a server-side timestamp, whereas a client-side timestamp is set when a
+%% data producer creates or sends the record to a stream (a data producer is
+%% any data source putting data records into a stream, for example with
+%% <a>PutRecords</a>). The timestamp has millisecond precision. There are no
+%% guarantees about the timestamp accuracy, or that the timestamp is always
+%% increasing. For example, records in a shard or across a stream might have
+%% timestamps that are out of order.
 get_records(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_records(Client, Input, []).
@@ -241,15 +274,14 @@ get_records(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRecords">>, Input, Options).
 
-%% @doc Gets a shard iterator. A shard iterator expires five minutes after it
-%% is returned to the requester.
+%% @doc Gets an Amazon Kinesis shard iterator. A shard iterator expires five
+%% minutes after it is returned to the requester.
 %%
-%% A shard iterator specifies the position in the shard from which to start
-%% reading data records sequentially. A shard iterator specifies this
-%% position using the sequence number of a data record in a shard. A sequence
-%% number is the identifier associated with every record ingested in the
-%% Amazon Kinesis stream. The sequence number is assigned when a record is
-%% put into the stream.
+%% A shard iterator specifies the shard position from which to start reading
+%% data records sequentially. The position is specified using the sequence
+%% number of a data record in a shard. A sequence number is the identifier
+%% associated with every record ingested in the stream, and is assigned when
+%% a record is put into the stream. Each stream has one or more shards.
 %%
 %% You must specify the shard iterator type. For example, you can set the
 %% <code>ShardIteratorType</code> parameter to read exactly from the position
@@ -258,32 +290,31 @@ get_records(Client, Input, Options)
 %% sequence number by using the <code>AFTER_SEQUENCE_NUMBER</code> shard
 %% iterator type, using sequence numbers returned by earlier calls to
 %% <a>PutRecord</a>, <a>PutRecords</a>, <a>GetRecords</a>, or
-%% <a>DescribeStream</a>. You can specify the shard iterator type
-%% <code>TRIM_HORIZON</code> in the request to cause
-%% <code>ShardIterator</code> to point to the last untrimmed record in the
-%% shard in the system, which is the oldest data record in the shard. Or you
-%% can point to just after the most recent record in the shard, by using the
-%% shard iterator type <code>LATEST</code>, so that you always read the most
-%% recent data in the shard.
+%% <a>DescribeStream</a>. In the request, you can specify the shard iterator
+%% type <code>AT_TIMESTAMP</code> to read records from an arbitrary point in
+%% time, <code>TRIM_HORIZON</code> to cause <code>ShardIterator</code> to
+%% point to the last untrimmed record in the shard in the system (the oldest
+%% data record in the shard), or <code>LATEST</code> so that you always read
+%% the most recent data in the shard.
 %%
-%% When you repeatedly read from an Amazon Kinesis stream use a
-%% <a>GetShardIterator</a> request to get the first shard iterator for use in
-%% your first <a>GetRecords</a> request and then use the shard iterator
+%% When you read repeatedly from a stream, use a <a>GetShardIterator</a>
+%% request to get the first shard iterator for use in your first
+%% <a>GetRecords</a> request and for subsequent reads use the shard iterator
 %% returned by the <a>GetRecords</a> request in
-%% <code>NextShardIterator</code> for subsequent reads. A new shard iterator
-%% is returned by every <a>GetRecords</a> request in
-%% <code>NextShardIterator</code>, which you use in the
-%% <code>ShardIterator</code> parameter of the next <a>GetRecords</a>
+%% <code>NextShardIterator</code>. A new shard iterator is returned by every
+%% <a>GetRecords</a> request in <code>NextShardIterator</code>, which you use
+%% in the <code>ShardIterator</code> parameter of the next <a>GetRecords</a>
 %% request.
 %%
 %% If a <a>GetShardIterator</a> request is made too often, you receive a
 %% <code>ProvisionedThroughputExceededException</code>. For more information
-%% about throughput limits, see <a>GetRecords</a>.
+%% about throughput limits, see <a>GetRecords</a>, and <a
+%% href="http://docs.aws.amazon.com/kinesis/latest/dev/service-sizes-and-limits.html">Streams
+%% Limits</a> in the <i>Amazon Kinesis Streams Developer Guide</i>.
 %%
-%% If the shard is closed, the iterator can't return more data, and
-%% <a>GetShardIterator</a> returns <code>null</code> for its
-%% <code>ShardIterator</code>. A shard can be closed using <a>SplitShard</a>
-%% or <a>MergeShards</a>.
+%% If the shard is closed, <a>GetShardIterator</a> returns a valid iterator
+%% for the last sequence number of the shard. Note that a shard can be closed
+%% as a result of using <a>SplitShard</a> or <a>MergeShards</a>.
 %%
 %% <a>GetShardIterator</a> has a limit of 5 transactions per second per
 %% account per open shard.
@@ -294,15 +325,16 @@ get_shard_iterator(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetShardIterator">>, Input, Options).
 
-%% @doc Increases the stream's retention period, which is the length of time
-%% data records are accessible after they are added to the stream. The
-%% maximum value of a stream’s retention period is 168 hours (7 days).
+%% @doc Increases the Amazon Kinesis stream's retention period, which is the
+%% length of time data records are accessible after they are added to the
+%% stream. The maximum value of a stream's retention period is 168 hours (7
+%% days).
 %%
 %% Upon choosing a longer stream retention period, this operation will
 %% increase the time period records are accessible that have not yet expired.
 %% However, it will not make previous data that has expired (older than the
-%% stream’s previous retention period) accessible after the operation has
-%% been called. For example, if a stream’s retention period is set to 24
+%% stream's previous retention period) accessible after the operation has
+%% been called. For example, if a stream's retention period is set to 24
 %% hours and is increased to 168 hours, any data that is older than 24 hours
 %% will remain inaccessible to consumer applications.
 increase_stream_retention_period(Client, Input)
@@ -312,7 +344,7 @@ increase_stream_retention_period(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"IncreaseStreamRetentionPeriod">>, Input, Options).
 
-%% @doc Lists your streams.
+%% @doc Lists your Amazon Kinesis streams.
 %%
 %% The number of streams may be too large to return from a single call to
 %% <code>ListStreams</code>. You can limit the number of returned streams
@@ -345,22 +377,22 @@ list_tags_for_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForStream">>, Input, Options).
 
-%% @doc Merges two adjacent shards in a stream and combines them into a
-%% single shard to reduce the stream's capacity to ingest and transport data.
-%% Two shards are considered adjacent if the union of the hash key ranges for
-%% the two shards form a contiguous set with no gaps. For example, if you
-%% have two shards, one with a hash key range of 276...381 and the other with
-%% a hash key range of 382...454, then you could merge these two shards into
-%% a single shard that would have a hash key range of 276...454. After the
-%% merge, the single child shard receives data for all hash key values
-%% covered by the two parent shards.
+%% @doc Merges two adjacent shards in an Amazon Kinesis stream and combines
+%% them into a single shard to reduce the stream's capacity to ingest and
+%% transport data. Two shards are considered adjacent if the union of the
+%% hash key ranges for the two shards form a contiguous set with no gaps. For
+%% example, if you have two shards, one with a hash key range of 276...381
+%% and the other with a hash key range of 382...454, then you could merge
+%% these two shards into a single shard that would have a hash key range of
+%% 276...454. After the merge, the single child shard receives data for all
+%% hash key values covered by the two parent shards.
 %%
 %% <code>MergeShards</code> is called when there is a need to reduce the
 %% overall capacity of a stream because of excess capacity that is not being
 %% used. You must specify the shard to be merged and the adjacent shard for a
 %% stream. For more information about merging shards, see <a
 %% href="http://docs.aws.amazon.com/kinesis/latest/dev/kinesis-using-sdk-java-resharding-merge.html">Merge
-%% Two Shards</a> in the <i>Amazon Kinesis Developer Guide</i>.
+%% Two Shards</a> in the <i>Amazon Kinesis Streams Developer Guide</i>.
 %%
 %% If the stream is in the <code>ACTIVE</code> state, you can call
 %% <code>MergeShards</code>. If a stream is in the <code>CREATING</code>,
@@ -396,12 +428,11 @@ merge_shards(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"MergeShards">>, Input, Options).
 
-%% @doc Writes a single data record from a producer into an Amazon Kinesis
-%% stream. Call <code>PutRecord</code> to send data from the producer into
-%% the Amazon Kinesis stream for real-time ingestion and subsequent
-%% processing, one record at a time. Each shard can support writes up to
-%% 1,000 records per second, up to a maximum data write total of 1 MB per
-%% second.
+%% @doc Writes a single data record into an Amazon Kinesis stream. Call
+%% <code>PutRecord</code> to send data into the stream for real-time
+%% ingestion and subsequent processing, one record at a time. Each shard can
+%% support writes up to 1,000 records per second, up to a maximum data write
+%% total of 1 MB per second.
 %%
 %% You must specify the name of the stream that captures, stores, and
 %% transports the data; a partition key; and the data blob itself.
@@ -410,9 +441,9 @@ merge_shards(Client, Input, Options)
 %% file, geographic/location data, website clickstream data, and so on.
 %%
 %% The partition key is used by Amazon Kinesis to distribute data across
-%% shards. Amazon Kinesis segregates the data records that belong to a data
-%% stream into multiple shards, using the partition key associated with each
-%% data record to determine which shard a given data record belongs to.
+%% shards. Amazon Kinesis segregates the data records that belong to a stream
+%% into multiple shards, using the partition key associated with each data
+%% record to determine which shard a given data record belongs to.
 %%
 %% Partition keys are Unicode strings, with a maximum length limit of 256
 %% characters for each key. An MD5 hash function is used to map partition
@@ -422,26 +453,26 @@ merge_shards(Client, Input, Options)
 %% value using the <code>ExplicitHashKey</code> parameter. For more
 %% information, see <a
 %% href="http://docs.aws.amazon.com/kinesis/latest/dev/developing-producers-with-sdk.html#kinesis-using-sdk-java-add-data-to-stream">Adding
-%% Data to a Stream</a> in the <i>Amazon Kinesis Developer Guide</i>.
+%% Data to a Stream</a> in the <i>Amazon Kinesis Streams Developer Guide</i>.
 %%
 %% <code>PutRecord</code> returns the shard ID of where the data record was
 %% placed and the sequence number that was assigned to the data record.
 %%
-%% Sequence numbers generally increase over time. To guarantee strictly
-%% increasing ordering, use the <code>SequenceNumberForOrdering</code>
-%% parameter. For more information, see <a
+%% Sequence numbers increase over time and are specific to a shard within a
+%% stream, not across all shards within a stream. To guarantee strictly
+%% increasing ordering, write serially to a shard and use the
+%% <code>SequenceNumberForOrdering</code> parameter. For more information,
+%% see <a
 %% href="http://docs.aws.amazon.com/kinesis/latest/dev/developing-producers-with-sdk.html#kinesis-using-sdk-java-add-data-to-stream">Adding
-%% Data to a Stream</a> in the <i>Amazon Kinesis Developer Guide</i>.
+%% Data to a Stream</a> in the <i>Amazon Kinesis Streams Developer Guide</i>.
 %%
 %% If a <code>PutRecord</code> request cannot be processed because of
 %% insufficient provisioned throughput on the shard involved in the request,
 %% <code>PutRecord</code> throws
 %% <code>ProvisionedThroughputExceededException</code>.
 %%
-%% By default, data records are accessible for only 24 hours from the time
-%% that they are added to an Amazon Kinesis stream. This retention period can
-%% be modified using the <a>DecreaseStreamRetentionPeriod</a> and
-%% <a>IncreaseStreamRetentionPeriod</a> operations.
+%% Data records are accessible for only 24 hours from the time that they are
+%% added to a stream.
 put_record(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_record(Client, Input, []).
@@ -449,10 +480,10 @@ put_record(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRecord">>, Input, Options).
 
-%% @doc Writes multiple data records from a producer into an Amazon Kinesis
-%% stream in a single call (also referred to as a <code>PutRecords</code>
-%% request). Use this operation to send data from a data producer into the
-%% Amazon Kinesis stream for data ingestion and processing.
+%% @doc Writes multiple data records into an Amazon Kinesis stream in a
+%% single call (also referred to as a <code>PutRecords</code> request). Use
+%% this operation to send data into the stream for data ingestion and
+%% processing.
 %%
 %% Each <code>PutRecords</code> request can support up to 500 records. Each
 %% record in the request can be as large as 1 MB, up to a limit of 5 MB for
@@ -476,7 +507,7 @@ put_record(Client, Input, Options)
 %% mechanism, all data records with the same partition key map to the same
 %% shard within the stream. For more information, see <a
 %% href="http://docs.aws.amazon.com/kinesis/latest/dev/developing-producers-with-sdk.html#kinesis-using-sdk-java-add-data-to-stream">Adding
-%% Data to a Stream</a> in the <i>Amazon Kinesis Developer Guide</i>.
+%% Data to a Stream</a> in the <i>Amazon Kinesis Streams Developer Guide</i>.
 %%
 %% Each record in the <code>Records</code> array may include an optional
 %% parameter, <code>ExplicitHashKey</code>, which overrides the partition key
@@ -484,8 +515,8 @@ put_record(Client, Input, Options)
 %% explicitly the shard where the record is stored. For more information, see
 %% <a
 %% href="http://docs.aws.amazon.com/kinesis/latest/dev/developing-producers-with-sdk.html#kinesis-using-sdk-java-putrecords">Adding
-%% Multiple Records with PutRecords</a> in the <i>Amazon Kinesis Developer
-%% Guide</i>.
+%% Multiple Records with PutRecords</a> in the <i>Amazon Kinesis Streams
+%% Developer Guide</i>.
 %%
 %% The <code>PutRecords</code> response includes an array of response
 %% <code>Records</code>. Each record in the response array directly
@@ -516,8 +547,8 @@ put_record(Client, Input, Options)
 %% throttled. For more information about partially successful responses, see
 %% <a
 %% href="http://docs.aws.amazon.com/kinesis/latest/dev/kinesis-using-sdk-java-add-data-to-stream.html#kinesis-using-sdk-java-putrecords">Adding
-%% Multiple Records with PutRecords</a> in the <i>Amazon Kinesis Developer
-%% Guide</i>.
+%% Multiple Records with PutRecords</a> in the <i>Amazon Kinesis Streams
+%% Developer Guide</i>.
 %%
 %% By default, data records are accessible for only 24 hours from the time
 %% that they are added to an Amazon Kinesis stream. This retention period can
@@ -530,7 +561,9 @@ put_records(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRecords">>, Input, Options).
 
-%% @doc Deletes tags from the specified Amazon Kinesis stream.
+%% @doc Removes tags from the specified Amazon Kinesis stream. Removed tags
+%% are deleted and cannot be recovered after this operation successfully
+%% completes.
 %%
 %% If you specify a tag that does not exist, it is ignored.
 remove_tags_from_stream(Client, Input)
@@ -540,18 +573,18 @@ remove_tags_from_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTagsFromStream">>, Input, Options).
 
-%% @doc Splits a shard into two new shards in the stream, to increase the
-%% stream's capacity to ingest and transport data. <code>SplitShard</code> is
-%% called when there is a need to increase the overall capacity of stream
-%% because of an expected increase in the volume of data records being
-%% ingested.
+%% @doc Splits a shard into two new shards in the Amazon Kinesis stream to
+%% increase the stream's capacity to ingest and transport data.
+%% <code>SplitShard</code> is called when there is a need to increase the
+%% overall capacity of a stream because of an expected increase in the volume
+%% of data records being ingested.
 %%
 %% You can also use <code>SplitShard</code> when a shard appears to be
-%% approaching its maximum utilization, for example, when the set of
-%% producers sending data into the specific shard are suddenly sending more
-%% than previously anticipated. You can also call <code>SplitShard</code> to
-%% increase stream capacity, so that more Amazon Kinesis applications can
-%% simultaneously read data from the stream for real-time processing.
+%% approaching its maximum utilization; for example, the producers sending
+%% data into the specific shard are suddenly sending more than previously
+%% anticipated. You can also call <code>SplitShard</code> to increase stream
+%% capacity, so that more Amazon Kinesis applications can simultaneously read
+%% data from the stream for real-time processing.
 %%
 %% You must specify the shard to be split and the new hash key, which is the
 %% position in the shard where the shard gets split in two. In many cases,
@@ -559,7 +592,7 @@ remove_tags_from_stream(Client, Input, Options)
 %% hash key, but it can be any hash key value in the range being mapped into
 %% the shard. For more information about splitting shards, see <a
 %% href="http://docs.aws.amazon.com/kinesis/latest/dev/kinesis-using-sdk-java-resharding-split.html">Split
-%% a Shard</a> in the <i>Amazon Kinesis Developer Guide</i>.
+%% a Shard</a> in the <i>Amazon Kinesis Streams Developer Guide</i>.
 %%
 %% You can use <a>DescribeStream</a> to determine the shard ID and hash key
 %% values for the <code>ShardToSplit</code> and
@@ -586,13 +619,14 @@ remove_tags_from_stream(Client, Input, Options)
 %% <code>LimitExceededException</code>.
 %%
 %% For the default shard limit for an AWS account, see <a
-%% href="http://docs.aws.amazon.com/kinesis/latest/dev/service-sizes-and-limits.html">Amazon
-%% Kinesis Limits</a>. If you need to increase this limit, <a
+%% href="http://docs.aws.amazon.com/kinesis/latest/dev/service-sizes-and-limits.html">Streams
+%% Limits</a> in the <i>Amazon Kinesis Streams Developer Guide</i>. If you
+%% need to increase this limit, <a
 %% href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html">contact
 %% AWS Support</a>.
 %%
-%% If you try to operate on too many streams in parallel using
-%% <a>CreateStream</a>, <a>DeleteStream</a>, <a>MergeShards</a> or
+%% If you try to operate on too many streams simultaneously using
+%% <a>CreateStream</a>, <a>DeleteStream</a>, <a>MergeShards</a>, and/or
 %% <a>SplitShard</a>, you receive a <code>LimitExceededException</code>.
 %%
 %% <code>SplitShard</code> has limit of 5 transactions per second per

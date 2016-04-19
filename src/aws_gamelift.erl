@@ -22,7 +22,20 @@
 %% tool, which includes commands for GameLift. For administrative actions,
 %% you can use the Amazon GameLift console.
 %%
-%% <b>Setting Up Your Game Servers</b>
+%% <b>Managing Game and Player Sessions Through GameLift</b>
+%%
+%% Call these actions from your game clients and/or services to create and
+%% manage multiplayer game sessions.
+%%
+%% <ul> <li> <b>Game sessions</b> <ul> <li><a>CreateGameSession</a></li>
+%% <li><a>DescribeGameSessions</a></li>
+%% <li><a>DescribeGameSessionDetails</a></li>
+%% <li><a>UpdateGameSession</a></li> </ul> </li> <li> <b>Player sessions</b>
+%% <ul> <li><a>CreatePlayerSession</a></li>
+%% <li><a>CreatePlayerSessions</a></li>
+%% <li><a>DescribePlayerSessions</a></li> </ul> </li> <li> <b>Other
+%% actions:</b> <ul> <li><a>GetGameSessionLogUrl</a></li> </ul> </li> </ul>
+%% <b>Setting Up Game Servers</b>
 %%
 %% Use these administrative actions to configure GameLift to host your game
 %% servers. When configuring GameLift, you'll need to (1) configure a build
@@ -46,18 +59,10 @@
 %% <li><a>DeleteFleet</a></li> </ul> </li> <li> <b>Alias actions:</b> <ul>
 %% <li><a>ListAliases</a></li> <li><a>CreateAlias</a></li>
 %% <li><a>DescribeAlias</a></li> <li><a>UpdateAlias</a></li>
-%% <li><a>DeleteAlias</a></li> <li><a>ResolveAlias</a></li> </ul> </li> </ul>
-%% <b>Managing Game and Player Sessions Through GameLift</b>
-%%
-%% Call these actions from your game clients and/or services to create and
-%% manage multiplayer game sessions.
-%%
-%% <ul> <li> <b>Game sessions</b> <ul> <li><a>CreateGameSession</a></li>
-%% <li><a>DescribeGameSessions</a></li> <li><a>UpdateGameSession</a></li>
-%% </ul> </li> <li> <b>Player sessions</b> <ul>
-%% <li><a>CreatePlayerSession</a></li> <li><a>CreatePlayerSessions</a></li>
-%% <li><a>DescribePlayerSessions</a></li> </ul> </li> <li> <b>Other
-%% actions:</b> <ul> <li><a>GetGameSessionLogUrl</a></li> </ul> </li> </ul>
+%% <li><a>DeleteAlias</a></li> <li><a>ResolveAlias</a></li> </ul> </li> <li>
+%% <b>Scaling policy actions:</b> <ul> <li><a>PutScalingPolicy</a></li>
+%% <li><a>DescribeScalingPolicies</a></li>
+%% <li><a>DeleteScalingPolicy</a></li> </ul> </li> </ul>
 -module(aws_gamelift).
 
 -export([create_alias/2,
@@ -78,6 +83,8 @@
          delete_build/3,
          delete_fleet/2,
          delete_fleet/3,
+         delete_scaling_policy/2,
+         delete_scaling_policy/3,
          describe_alias/2,
          describe_alias/3,
          describe_build/2,
@@ -94,10 +101,14 @@
          describe_fleet_port_settings/3,
          describe_fleet_utilization/2,
          describe_fleet_utilization/3,
+         describe_game_session_details/2,
+         describe_game_session_details/3,
          describe_game_sessions/2,
          describe_game_sessions/3,
          describe_player_sessions/2,
          describe_player_sessions/3,
+         describe_scaling_policies/2,
+         describe_scaling_policies/3,
          get_game_session_log_url/2,
          get_game_session_log_url/3,
          list_aliases/2,
@@ -106,6 +117,8 @@
          list_builds/3,
          list_fleets/2,
          list_fleets/3,
+         put_scaling_policy/2,
+         put_scaling_policy/3,
          request_upload_credentials/2,
          request_upload_credentials/3,
          resolve_alias/2,
@@ -190,7 +203,8 @@ create_build(Client, Input, Options)
 %% a READY state before they can be used to build fleets. When configuring
 %% the new fleet, you can optionally (1) provide a set of launch parameters
 %% to be passed to a game server when activated; (2) limit incoming traffic
-%% to a specified range of IP addresses and port numbers; and (3) configure
+%% to a specified range of IP addresses and port numbers; (3) set game
+%% session protection for all instances in the fleet, and (4) configure
 %% Amazon GameLift to store game session logs by specifying the path to the
 %% logs stored in your game server files. If the call is successful, Amazon
 %% GameLift performs the following tasks:
@@ -304,6 +318,17 @@ delete_fleet(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFleet">>, Input, Options).
 
+%% @doc Deletes a fleet scaling policy. This action means that the policy is
+%% no longer in force and removes all record of it. To delete a scaling
+%% policy, specify both the scaling policy name and the fleet ID it is
+%% associated with.
+delete_scaling_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_scaling_policy(Client, Input, []).
+delete_scaling_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteScalingPolicy">>, Input, Options).
+
 %% @doc Retrieves properties for a specified alias. To get the alias, specify
 %% an alias ID. If successful, an <a>Alias</a> object is returned.
 describe_alias(Client, Input)
@@ -323,9 +348,14 @@ describe_build(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBuild">>, Input, Options).
 
-%% @doc Retrieves the maximum number of instances allowed, per AWS account,
-%% for each specified EC2 instance type. The current usage level for the AWS
-%% account is also retrieved.
+%% @doc Retrieves the following information for the specified EC2 instance
+%% type:
+%%
+%% <ul> <li>maximum number of instances allowed per AWS account (service
+%% limit)</li> <li>current usage level for the AWS account </li> </ul>
+%% Service limits vary depending on region. Available regions for GameLift
+%% can be found in the AWS Management Console for GameLift (see the drop-down
+%% list in the upper right corner).
 describe_e_c2_instance_limits(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_e_c2_instance_limits(Client, Input, []).
@@ -417,13 +447,31 @@ describe_fleet_utilization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFleetUtilization">>, Input, Options).
 
-%% @doc Retrieves properties for one or more game sessions. This action can
-%% be used in several ways: (1) provide a <i>GameSessionId</i> parameter to
-%% request properties for a specific game session; (2) provide a
-%% <i>FleetId</i> or <i>AliasId</i> parameter to request properties for all
-%% game sessions running on a fleet.
+%% @doc Retrieves properties, including the protection policy in force, for
+%% one or more game sessions. This action can be used in several ways: (1)
+%% provide a <i>GameSessionId</i> to request details for a specific game
+%% session; (2) provide either a <i>FleetId</i> or an <i>AliasId</i> to
+%% request properties for all game sessions running on a fleet.
 %%
-%% To get game session record(s), specify only one of the following: game
+%% To get game session record(s), specify just one of the following: game
+%% session ID, fleet ID, or alias ID. You can filter this request by game
+%% session status. Use the pagination parameters to retrieve results as a set
+%% of sequential pages. If successful, a <a>GameSessionDetail</a> object is
+%% returned for each session matching the request.
+describe_game_session_details(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_game_session_details(Client, Input, []).
+describe_game_session_details(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeGameSessionDetails">>, Input, Options).
+
+%% @doc Retrieves properties for one or more game sessions. This action can
+%% be used in several ways: (1) provide a <i>GameSessionId</i> to request
+%% properties for a specific game session; (2) provide a <i>FleetId</i> or an
+%% <i>AliasId</i> to request properties for all game sessions running on a
+%% fleet.
+%%
+%% To get game session record(s), specify just one of the following: game
 %% session ID, fleet ID, or alias ID. You can filter this request by game
 %% session status. Use the pagination parameters to retrieve results as a set
 %% of sequential pages. If successful, a <a>GameSession</a> object is
@@ -455,6 +503,20 @@ describe_player_sessions(Client, Input)
 describe_player_sessions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePlayerSessions">>, Input, Options).
+
+%% @doc Retrieves all scaling policies applied to a fleet.
+%%
+%% To get a fleet's scaling policies, specify the fleet ID. You can filter
+%% this request by policy status, such as to retrieve only active scaling
+%% policies. Use the pagination parameters to retrieve results as a set of
+%% sequential pages. If successful, set of <a>ScalingPolicy</a> objects is
+%% returned for the fleet.
+describe_scaling_policies(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_scaling_policies(Client, Input, []).
+describe_scaling_policies(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeScalingPolicies">>, Input, Options).
 
 %% @doc Retrieves the location of stored game session logs for a specified
 %% game session. When a game session is terminated, Amazon GameLift
@@ -515,6 +577,37 @@ list_fleets(Client, Input)
 list_fleets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFleets">>, Input, Options).
+
+%% @doc Creates or updates a scaling policy for a fleet. An active scaling
+%% policy prompts GameLift to track a certain metric for a fleet and
+%% automatically change the fleet's capacity in specific circumstances. Each
+%% scaling policy contains one rule statement. Fleets can have multiple
+%% scaling policies in force simultaneously.
+%%
+%% A scaling policy rule statement has the following structure:
+%%
+%% If <i>[MetricName]</i> is <i>[ComparisonOperator]</i> <i>[Threshold]</i>
+%% for <i>[EvaluationPeriods]</i> minutes, then
+%% <i>[ScalingAdjustmentType]</i> to/by <i>[ScalingAdjustment]</i>.
+%%
+%% For example, this policy: "If the number of idle instances exceeds 20 for
+%% more than 15 minutes, then reduce the fleet capacity by 10 instances"
+%% could be implemented as the following rule statement:
+%%
+%% If [IdleInstances] is [GreaterThanOrEqualToThreshold] [20] for [15]
+%% minutes, then [ChangeInCapacity] by [-10].
+%%
+%% To create or update a scaling policy, specify a unique combination of name
+%% and fleet ID, and set the rule values. All parameters for this action are
+%% required. If successful, the policy name is returned. Scaling policies
+%% cannot be suspended or made inactive. To stop enforcing a scaling policy,
+%% call <a>DeleteScalingPolicy</a>.
+put_scaling_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_scaling_policy(Client, Input, []).
+put_scaling_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutScalingPolicy">>, Input, Options).
 
 %% @doc Retrieves a fresh set of upload credentials and the assigned Amazon
 %% S3 storage location for a specific build. Valid credentials are required
@@ -583,6 +676,12 @@ update_fleet_attributes(Client, Input, Options)
 %% calling this action, you may want to call <a>DescribeEC2InstanceLimits</a>
 %% to get the maximum capacity based on the fleet's EC2 instance type.
 %%
+%% If you're using auto-scaling (see <a>PutScalingPolicy</a>), you may want
+%% to specify a minimum and/or maximum capacity. If you don't provide these
+%% boundaries, auto-scaling can set capacity anywhere between zero and the <a
+%% href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_gamelift">service
+%% limits</a>.
+%%
 %% To update fleet capacity, specify the fleet ID and the desired number of
 %% instances. If successful, Amazon GameLift starts or terminates instances
 %% so that the fleet's active instance count matches the desired instance
@@ -610,10 +709,12 @@ update_fleet_port_settings(Client, Input, Options)
     request(Client, <<"UpdateFleetPortSettings">>, Input, Options).
 
 %% @doc Updates game session properties. This includes the session name,
-%% maximum player count and the player session creation policy, which either
-%% allows or denies new players from joining the session. To update a game
-%% session, specify the game session ID and the values you want to change. If
-%% successful, an updated <a>GameSession</a> object is returned.
+%% maximum player count, protection policy, which controls whether or not an
+%% active game session can be terminated during a scale-down event, and the
+%% player session creation policy, which controls whether or not new players
+%% can join the session. To update a game session, specify the game session
+%% ID and the values you want to change. If successful, an updated
+%% <a>GameSession</a> object is returned.
 update_game_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_game_session(Client, Input, []).

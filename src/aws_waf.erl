@@ -21,6 +21,8 @@
          create_sql_injection_match_set/3,
          create_web_a_c_l/2,
          create_web_a_c_l/3,
+         create_xss_match_set/2,
+         create_xss_match_set/3,
          delete_byte_match_set/2,
          delete_byte_match_set/3,
          delete_i_p_set/2,
@@ -33,6 +35,8 @@
          delete_sql_injection_match_set/3,
          delete_web_a_c_l/2,
          delete_web_a_c_l/3,
+         delete_xss_match_set/2,
+         delete_xss_match_set/3,
          get_byte_match_set/2,
          get_byte_match_set/3,
          get_change_token/2,
@@ -51,6 +55,8 @@
          get_sql_injection_match_set/3,
          get_web_a_c_l/2,
          get_web_a_c_l/3,
+         get_xss_match_set/2,
+         get_xss_match_set/3,
          list_byte_match_sets/2,
          list_byte_match_sets/3,
          list_i_p_sets/2,
@@ -63,6 +69,8 @@
          list_sql_injection_match_sets/3,
          list_web_a_c_ls/2,
          list_web_a_c_ls/3,
+         list_xss_match_sets/2,
+         list_xss_match_sets/3,
          update_byte_match_set/2,
          update_byte_match_set/3,
          update_i_p_set/2,
@@ -74,7 +82,9 @@
          update_sql_injection_match_set/2,
          update_sql_injection_match_set/3,
          update_web_a_c_l/2,
-         update_web_a_c_l/3]).
+         update_web_a_c_l/3,
+         update_xss_match_set/2,
+         update_xss_match_set/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -283,6 +293,33 @@ create_web_a_c_l(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWebACL">>, Input, Options).
 
+%% @doc Creates an <a>XssMatchSet</a>, which you use to allow, block, or
+%% count requests that contain cross-site scripting attacks in the specified
+%% part of web requests. AWS WAF searches for character sequences that are
+%% likely to be malicious strings.
+%%
+%% To create and configure an <code>XssMatchSet</code>, perform the following
+%% steps:
+%%
+%% <ol> <li>Use <a>GetChangeToken</a> to get the change token that you
+%% provide in the <code>ChangeToken</code> parameter of a
+%% <code>CreateXssMatchSet</code> request.</li> <li>Submit a
+%% <code>CreateXssMatchSet</code> request.</li> <li>Use
+%% <code>GetChangeToken</code> to get the change token that you provide in
+%% the <code>ChangeToken</code> parameter of an <a>UpdateXssMatchSet</a>
+%% request.</li> <li>Submit an <a>UpdateXssMatchSet</a> request to specify
+%% the parts of web requests in which you want to allow, block, or count
+%% cross-site scripting attacks.</li> </ol> For more information about how to
+%% use the AWS WAF API to allow or block HTTP requests, see the <a
+%% href="http://docs.aws.amazon.com/waf/latest/developerguide/">AWS WAF
+%% Developer Guide</a>.
+create_xss_match_set(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_xss_match_set(Client, Input, []).
+create_xss_match_set(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateXssMatchSet">>, Input, Options).
+
 %% @doc Permanently deletes a <a>ByteMatchSet</a>. You can't delete a
 %% <code>ByteMatchSet</code> if it's still used in any <code>Rules</code> or
 %% if it still includes any <a>ByteMatchTuple</a> objects (any filters).
@@ -416,6 +453,29 @@ delete_web_a_c_l(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWebACL">>, Input, Options).
 
+%% @doc Permanently deletes an <a>XssMatchSet</a>. You can't delete an
+%% <code>XssMatchSet</code> if it's still used in any <code>Rules</code> or
+%% if it still contains any <a>XssMatchTuple</a> objects.
+%%
+%% If you just want to remove an <code>XssMatchSet</code> from a
+%% <code>Rule</code>, use <a>UpdateRule</a>.
+%%
+%% To permanently delete an <code>XssMatchSet</code> from AWS WAF, perform
+%% the following steps:
+%%
+%% <ol> <li>Update the <code>XssMatchSet</code> to remove filters, if any.
+%% For more information, see <a>UpdateXssMatchSet</a>.</li> <li>Use
+%% <a>GetChangeToken</a> to get the change token that you provide in the
+%% <code>ChangeToken</code> parameter of a <code>DeleteXssMatchSet</code>
+%% request.</li> <li>Submit a <code>DeleteXssMatchSet</code> request.</li>
+%% </ol>
+delete_xss_match_set(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_xss_match_set(Client, Input, []).
+delete_xss_match_set(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteXssMatchSet">>, Input, Options).
+
 %% @doc Returns the <a>ByteMatchSet</a> specified by
 %% <code>ByteMatchSetId</code>.
 get_byte_match_set(Client, Input)
@@ -528,6 +588,15 @@ get_web_a_c_l(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetWebACL">>, Input, Options).
 
+%% @doc Returns the <a>XssMatchSet</a> that is specified by
+%% <code>XssMatchSetId</code>.
+get_xss_match_set(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_xss_match_set(Client, Input, []).
+get_xss_match_set(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetXssMatchSet">>, Input, Options).
+
 %% @doc Returns an array of <a>ByteMatchSetSummary</a> objects.
 list_byte_match_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -575,6 +644,14 @@ list_web_a_c_ls(Client, Input)
 list_web_a_c_ls(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWebACLs">>, Input, Options).
+
+%% @doc Returns an array of <a>XssMatchSet</a> objects.
+list_xss_match_sets(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_xss_match_sets(Client, Input, []).
+list_xss_match_sets(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListXssMatchSets">>, Input, Options).
 
 %% @doc Inserts or deletes <a>ByteMatchTuple</a> objects (filters) in a
 %% <a>ByteMatchSet</a>. For each <code>ByteMatchTuple</code> object, you
@@ -842,6 +919,43 @@ update_web_a_c_l(Client, Input)
 update_web_a_c_l(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateWebACL">>, Input, Options).
+
+%% @doc Inserts or deletes <a>XssMatchTuple</a> objects (filters) in an
+%% <a>XssMatchSet</a>. For each <code>XssMatchTuple</code> object, you
+%% specify the following values:
+%%
+%% <ul> <li><code>Action</code>: Whether to insert the object into or delete
+%% the object from the array. To change a <code>XssMatchTuple</code>, you
+%% delete the existing object and add a new one.</li>
+%% <li><code>FieldToMatch</code>: The part of web requests that you want AWS
+%% WAF to inspect and, if you want AWS WAF to inspect a header, the name of
+%% the header.</li> <li><code>TextTransformation</code>: Which text
+%% transformation, if any, to perform on the web request before inspecting
+%% the request for cross-site scripting attacks.</li> </ul> You use
+%% <code>XssMatchSet</code> objects to specify which CloudFront requests you
+%% want to allow, block, or count. For example, if you're receiving requests
+%% that contain cross-site scripting attacks in the request body and you want
+%% to block the requests, you can create an <code>XssMatchSet</code> with the
+%% applicable settings, and then configure AWS WAF to block the requests.
+%%
+%% To create and configure an <code>XssMatchSet</code>, perform the following
+%% steps:
+%%
+%% <ol> <li>Submit a <a>CreateXssMatchSet</a> request.</li> <li>Use
+%% <a>GetChangeToken</a> to get the change token that you provide in the
+%% <code>ChangeToken</code> parameter of an <a>UpdateIPSet</a> request.</li>
+%% <li>Submit an <code>UpdateXssMatchSet</code> request to specify the parts
+%% of web requests that you want AWS WAF to inspect for cross-site scripting
+%% attacks.</li> </ol> For more information about how to use the AWS WAF API
+%% to allow or block HTTP requests, see the <a
+%% href="http://docs.aws.amazon.com/waf/latest/developerguide/">AWS WAF
+%% Developer Guide</a>.
+update_xss_match_set(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_xss_match_set(Client, Input, []).
+update_xss_match_set(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateXssMatchSet">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

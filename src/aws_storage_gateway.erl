@@ -12,26 +12,31 @@
 %% Use the following links to get started using the <i>AWS Storage Gateway
 %% Service API Reference</i>:
 %%
-%% <ul> <li> <a
+%% <ul> <li><a
 %% href="http://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayHTTPRequestsHeaders.html">AWS
 %% Storage Gateway Required Request Headers</a>: Describes the required
 %% headers that you must send with every POST request to AWS Storage
-%% Gateway.</li> <li> <a
+%% Gateway.</li> <li><a
 %% href="http://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewaySigningRequests.html">Signing
 %% Requests</a>: AWS Storage Gateway requires that you authenticate every
-%% request you send; this topic describes how sign such a request.</li> <li>
-%% <a
+%% request you send; this topic describes how sign such a request.</li>
+%% <li><a
 %% href="http://docs.aws.amazon.com/storagegateway/latest/userguide/APIErrorResponses.html">Error
 %% Responses</a>: Provides reference information about AWS Storage Gateway
-%% errors.</li> <li> <a
+%% errors.</li> <li><a
 %% href="http://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPIOperations.html">Operations
 %% in AWS Storage Gateway</a>: Contains detailed descriptions of all AWS
 %% Storage Gateway operations, their request parameters, response elements,
-%% possible errors, and examples of requests and responses.</li> <li> <a
+%% possible errors, and examples of requests and responses.</li> <li><a
 %% href="http://docs.aws.amazon.com/general/latest/gr/index.html?rande.html">AWS
 %% Storage Gateway Regions and Endpoints</a>: Provides a list of each of the
-%% regions and endpoints available for use with AWS Storage Gateway. </li>
-%% </ul>
+%% s and endpoints available for use with AWS Storage Gateway. </li> </ul>
+%% <note>AWS Storage Gateway resource IDs are in uppercase. When you use
+%% these resource IDs with the Amazon EC2 API, EC2 expects resource IDs in
+%% lowercase. You must change your resource ID to lowercase to use it with
+%% the EC2 API. For example, in Storage Gateway the ID for a volume might be
+%% vol-1122AABB. When you use this ID with the EC2 API, you must change it to
+%% vol-1122aabb. Otherwise, the EC2 API might not behave as expected.</note>
 -module(aws_storage_gateway).
 
 -export([activate_gateway/2,
@@ -56,6 +61,8 @@
          create_snapshot_from_volume_recovery_point/3,
          create_stored_iscsi_volume/2,
          create_stored_iscsi_volume/3,
+         create_tape_with_barcode/2,
+         create_tape_with_barcode/3,
          create_tapes/2,
          create_tapes/3,
          delete_bandwidth_rate_limit/2,
@@ -122,6 +129,8 @@
          retrieve_tape_archive/3,
          retrieve_tape_recovery_point/2,
          retrieve_tape_recovery_point/3,
+         set_local_console_password/2,
+         set_local_console_password/3,
          shutdown_gateway/2,
          shutdown_gateway/3,
          start_gateway/2,
@@ -147,15 +156,15 @@
 %% API
 %%====================================================================
 
-%% @doc This operation activates the gateway you previously deployed on your
-%% host. For more information, see <a
+%% @doc Activates the gateway you previously deployed on your host. For more
+%% information, see <a
 %% href="http://docs.aws.amazon.com/storagegateway/latest/userguide/GettingStartedActivateGateway-common.html">
 %% Activate the AWS Storage Gateway</a>. In the activation process, you
-%% specify information such as the region you want to use for storing
-%% snapshots, the time zone for scheduled snapshots the gateway snapshot
-%% schedule window, an activation key, and a name for your gateway. The
-%% activation process also associates your gateway with your account; for
-%% more information, see <a>UpdateGatewayInformation</a>.
+%% specify information such as the you want to use for storing snapshots, the
+%% time zone for scheduled snapshots the gateway snapshot schedule window, an
+%% activation key, and a name for your gateway. The activation process also
+%% associates your gateway with your account; for more information, see
+%% <a>UpdateGatewayInformation</a>.
 %%
 %% <note>You must turn on the gateway VM before you can activate your
 %% gateway.</note>
@@ -166,8 +175,8 @@ activate_gateway(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ActivateGateway">>, Input, Options).
 
-%% @doc This operation configures one or more gateway local disks as cache
-%% for a cached-volume gateway. This operation is supported only for the
+%% @doc Configures one or more gateway local disks as cache for a
+%% cached-volume gateway. This operation is supported only for the
 %% gateway-cached volume architecture (see <a
 %% href="http://docs.aws.amazon.com/storagegateway/latest/userguide/StorageGatewayConcepts.html">Storage
 %% Gateway Concepts</a>).
@@ -182,12 +191,11 @@ add_cache(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddCache">>, Input, Options).
 
-%% @doc This operation adds one or more tags to the specified resource. You
-%% use tags to add metadata to resources, which you can use to categorize
-%% these resources. For example, you can categorize resources by purpose,
-%% owner, environment, or team. Each tag consists of a key and a value, which
-%% you define. You can add tags to the following AWS Storage Gateway
-%% resources:
+%% @doc Adds one or more tags to the specified resource. You use tags to add
+%% metadata to resources, which you can use to categorize these resources.
+%% For example, you can categorize resources by purpose, owner, environment,
+%% or team. Each tag consists of a key and a value, which you define. You can
+%% add tags to the following AWS Storage Gateway resources:
 %%
 %% <ul> <li>Storage gateways of all types
 %%
@@ -205,9 +213,9 @@ add_tags_to_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddTagsToResource">>, Input, Options).
 
-%% @doc This operation configures one or more gateway local disks as upload
-%% buffer for a specified gateway. This operation is supported for both the
-%% gateway-stored and gateway-cached volume architectures.
+%% @doc Configures one or more gateway local disks as upload buffer for a
+%% specified gateway. This operation is supported for both the gateway-stored
+%% and gateway-cached volume architectures.
 %%
 %% In the request, you specify the gateway Amazon Resource Name (ARN) to
 %% which you want to add upload buffer, and one or more disk IDs that you
@@ -219,10 +227,10 @@ add_upload_buffer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddUploadBuffer">>, Input, Options).
 
-%% @doc This operation configures one or more gateway local disks as working
-%% storage for a gateway. This operation is supported only for the
-%% gateway-stored volume architecture. This operation is deprecated method in
-%% cached-volumes API version (20120630). Use AddUploadBuffer instead.
+%% @doc Configures one or more gateway local disks as working storage for a
+%% gateway. This operation is supported only for the gateway-stored volume
+%% architecture. This operation is deprecated in cached-volumes API version
+%% 20120630. Use <a>AddUploadBuffer</a> instead.
 %%
 %% <note>Working storage is also referred to as upload buffer. You can also
 %% use the <a>AddUploadBuffer</a> operation to add upload buffer to a
@@ -257,9 +265,8 @@ cancel_retrieval(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelRetrieval">>, Input, Options).
 
-%% @doc This operation creates a cached volume on a specified cached gateway.
-%% This operation is supported only for the gateway-cached volume
-%% architecture.
+%% @doc Creates a cached volume on a specified cached gateway. This operation
+%% is supported only for the gateway-cached volume architecture.
 %%
 %% <note>Cache storage must be allocated to the gateway before you can create
 %% a cached volume. Use the <a>AddCache</a> operation to add cache storage to
@@ -276,7 +283,7 @@ create_cached_iscsi_volume(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCachediSCSIVolume">>, Input, Options).
 
-%% @doc This operation initiates a snapshot of a volume.
+%% @doc Initiates a snapshot of a volume.
 %%
 %% AWS Storage Gateway provides the ability to back up point-in-time
 %% snapshots of your data to Amazon Simple Storage (S3) for durable off-site
@@ -306,9 +313,8 @@ create_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSnapshot">>, Input, Options).
 
-%% @doc This operation initiates a snapshot of a gateway from a volume
-%% recovery point. This operation is supported only for the gateway-cached
-%% volume architecture (see ).
+%% @doc Initiates a snapshot of a gateway from a volume recovery point. This
+%% operation is supported only for the gateway-cached volume architecture.
 %%
 %% A volume recovery point is a point in time at which all data of the volume
 %% is consistent and from which you can create a snapshot. To get a list of
@@ -335,8 +341,8 @@ create_snapshot_from_volume_recovery_point(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSnapshotFromVolumeRecoveryPoint">>, Input, Options).
 
-%% @doc This operation creates a volume on a specified gateway. This
-%% operation is supported only for the gateway-stored volume architecture.
+%% @doc Creates a volume on a specified gateway. This operation is supported
+%% only for the gateway-stored volume architecture.
 %%
 %% The size of the volume to create is inferred from the disk size. You can
 %% choose to preserve existing data on the disk, create volume from an
@@ -355,6 +361,19 @@ create_stored_iscsi_volume(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateStorediSCSIVolume">>, Input, Options).
 
+%% @doc Creates a virtual tape by using your own barcode. You write data to
+%% the virtual tape and then archive the tape.
+%%
+%% <note>Cache storage must be allocated to the gateway before you can create
+%% a virtual tape. Use the <a>AddCache</a> operation to add cache storage to
+%% a gateway.</note>
+create_tape_with_barcode(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_tape_with_barcode(Client, Input, []).
+create_tape_with_barcode(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateTapeWithBarcode">>, Input, Options).
+
 %% @doc Creates one or more virtual tapes. You write data to the virtual
 %% tapes and then archive the tapes.
 %%
@@ -368,11 +387,11 @@ create_tapes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTapes">>, Input, Options).
 
-%% @doc This operation deletes the bandwidth rate limits of a gateway. You
-%% can delete either the upload and download bandwidth rate limit, or you can
-%% delete both. If you delete only one of the limits, the other limit remains
-%% unchanged. To specify which gateway to work with, use the Amazon Resource
-%% Name (ARN) of the gateway in your request.
+%% @doc Deletes the bandwidth rate limits of a gateway. You can delete either
+%% the upload and download bandwidth rate limit, or you can delete both. If
+%% you delete only one of the limits, the other limit remains unchanged. To
+%% specify which gateway to work with, use the Amazon Resource Name (ARN) of
+%% the gateway in your request.
 delete_bandwidth_rate_limit(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_bandwidth_rate_limit(Client, Input, []).
@@ -380,8 +399,8 @@ delete_bandwidth_rate_limit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteBandwidthRateLimit">>, Input, Options).
 
-%% @doc This operation deletes Challenge-Handshake Authentication Protocol
-%% (CHAP) credentials for a specified iSCSI target and initiator pair.
+%% @doc Deletes Challenge-Handshake Authentication Protocol (CHAP)
+%% credentials for a specified iSCSI target and initiator pair.
 delete_chap_credentials(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_chap_credentials(Client, Input, []).
@@ -389,10 +408,10 @@ delete_chap_credentials(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteChapCredentials">>, Input, Options).
 
-%% @doc This operation deletes a gateway. To specify which gateway to delete,
-%% use the Amazon Resource Name (ARN) of the gateway in your request. The
-%% operation deletes the gateway; however, it does not delete the gateway
-%% virtual machine (VM) from your host computer.
+%% @doc Deletes a gateway. To specify which gateway to delete, use the Amazon
+%% Resource Name (ARN) of the gateway in your request. The operation deletes
+%% the gateway; however, it does not delete the gateway virtual machine (VM)
+%% from your host computer.
 %%
 %% After you delete a gateway, you cannot reactivate it. Completed snapshots
 %% of the gateway volumes are not deleted upon deleting the gateway, however,
@@ -402,7 +421,7 @@ delete_chap_credentials(Client, Input, Options)
 %% <important> You no longer pay software charges after the gateway is
 %% deleted; however, your existing Amazon EBS snapshots persist and you will
 %% continue to be billed for these snapshots. You can choose to remove all
-%% remaining Amazon EBS snapshots by canceling your Amazon EC2 subscription. 
+%% remaining Amazon EBS snapshots by canceling your Amazon EC2 subscription.
 %% If you prefer not to cancel your Amazon EC2 subscription, you can delete
 %% your snapshots using the Amazon EC2 console. For more information, see the
 %% <a href="http://aws.amazon.com/storagegateway"> AWS Storage Gateway Detail
@@ -416,11 +435,11 @@ delete_gateway(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteGateway">>, Input, Options).
 
-%% @doc This operation deletes a snapshot of a volume.
+%% @doc Deletes a snapshot of a volume.
 %%
-%% You can take snapshots of your gateway volumes on a scheduled or ad-hoc
-%% basis. This API enables you to delete a snapshot schedule for a volume.
-%% For more information, see <a
+%% You can take snapshots of your gateway volumes on a scheduled or ad hoc
+%% basis. This API action enables you to delete a snapshot schedule for a
+%% volume. For more information, see <a
 %% href="http://docs.aws.amazon.com/storagegateway/latest/userguide/WorkingWithSnapshots.html">Working
 %% with Snapshots</a>. In the <code>DeleteSnapshotSchedule</code> request,
 %% you identify the volume by providing its Amazon Resource Name (ARN).
@@ -452,11 +471,11 @@ delete_tape_archive(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTapeArchive">>, Input, Options).
 
-%% @doc This operation deletes the specified gateway volume that you
-%% previously created using the <a>CreateCachediSCSIVolume</a> or
-%% <a>CreateStorediSCSIVolume</a> API. For gateway-stored volumes, the local
-%% disk that was configured as the storage volume is not deleted. You can
-%% reuse the local disk to create another storage volume.
+%% @doc Deletes the specified gateway volume that you previously created
+%% using the <a>CreateCachediSCSIVolume</a> or <a>CreateStorediSCSIVolume</a>
+%% API. For gateway-stored volumes, the local disk that was configured as the
+%% storage volume is not deleted. You can reuse the local disk to create
+%% another storage volume.
 %%
 %% Before you delete a gateway volume, make sure there are no iSCSI
 %% connections to the volume you are deleting. You should also make sure
@@ -475,9 +494,8 @@ delete_volume(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteVolume">>, Input, Options).
 
-%% @doc This operation returns the bandwidth rate limits of a gateway. By
-%% default, these limits are not set, which means no bandwidth rate limiting
-%% is in effect.
+%% @doc Returns the bandwidth rate limits of a gateway. By default, these
+%% limits are not set, which means no bandwidth rate limiting is in effect.
 %%
 %% This operation only returns a value for a bandwidth rate limit only if the
 %% limit is set. If no limits are set for the gateway, then this operation
@@ -491,8 +509,8 @@ describe_bandwidth_rate_limit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBandwidthRateLimit">>, Input, Options).
 
-%% @doc This operation returns information about the cache of a gateway. This
-%% operation is supported only for the gateway-cached volume architecture.
+%% @doc Returns information about the cache of a gateway. This operation is
+%% supported only for the gateway-cached volume architecture.
 %%
 %% The response includes disk IDs that are configured as cache, and it
 %% includes the amount of cache allocated and used.
@@ -503,9 +521,9 @@ describe_cache(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCache">>, Input, Options).
 
-%% @doc This operation returns a description of the gateway volumes specified
-%% in the request. This operation is supported only for the gateway-cached
-%% volume architecture.
+%% @doc Returns a description of the gateway volumes specified in the
+%% request. This operation is supported only for the gateway-cached volume
+%% architecture.
 %%
 %% The list of gateway volumes in the request must be from one gateway. In
 %% the response Amazon Storage Gateway returns volume information sorted by
@@ -517,9 +535,9 @@ describe_cached_iscsi_volumes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCachediSCSIVolumes">>, Input, Options).
 
-%% @doc This operation returns an array of Challenge-Handshake Authentication
-%% Protocol (CHAP) credentials information for a specified iSCSI target, one
-%% for each target-initiator pair.
+%% @doc Returns an array of Challenge-Handshake Authentication Protocol
+%% (CHAP) credentials information for a specified iSCSI target, one for each
+%% target-initiator pair.
 describe_chap_credentials(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_chap_credentials(Client, Input, []).
@@ -527,10 +545,10 @@ describe_chap_credentials(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeChapCredentials">>, Input, Options).
 
-%% @doc This operation returns metadata about a gateway such as its name,
-%% network interfaces, configured time zone, and the state (whether the
-%% gateway is running or not). To specify which gateway to describe, use the
-%% Amazon Resource Name (ARN) of the gateway in your request.
+%% @doc Returns metadata about a gateway such as its name, network
+%% interfaces, configured time zone, and the state (whether the gateway is
+%% running or not). To specify which gateway to describe, use the Amazon
+%% Resource Name (ARN) of the gateway in your request.
 describe_gateway_information(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_gateway_information(Client, Input, []).
@@ -538,9 +556,9 @@ describe_gateway_information(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGatewayInformation">>, Input, Options).
 
-%% @doc This operation returns your gateway's weekly maintenance start time
-%% including the day and time of the week. Note that values are in terms of
-%% the gateway's time zone.
+%% @doc Returns your gateway's weekly maintenance start time including the
+%% day and time of the week. Note that values are in terms of the gateway's
+%% time zone.
 describe_maintenance_start_time(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_maintenance_start_time(Client, Input, []).
@@ -548,9 +566,9 @@ describe_maintenance_start_time(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMaintenanceStartTime">>, Input, Options).
 
-%% @doc This operation describes the snapshot schedule for the specified
-%% gateway volume. The snapshot schedule information includes intervals at
-%% which snapshots are automatically initiated on the volume.
+%% @doc Describes the snapshot schedule for the specified gateway volume. The
+%% snapshot schedule information includes intervals at which snapshots are
+%% automatically initiated on the volume.
 describe_snapshot_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_snapshot_schedule(Client, Input, []).
@@ -558,10 +576,10 @@ describe_snapshot_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSnapshotSchedule">>, Input, Options).
 
-%% @doc This operation returns the description of the gateway volumes
-%% specified in the request. The list of gateway volumes in the request must
-%% be from one gateway. In the response Amazon Storage Gateway returns volume
-%% information sorted by volume ARNs.
+%% @doc Returns the description of the gateway volumes specified in the
+%% request. The list of gateway volumes in the request must be from one
+%% gateway. In the response Amazon Storage Gateway returns volume information
+%% sorted by volume ARNs.
 describe_stored_iscsi_volumes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stored_iscsi_volumes(Client, Input, []).
@@ -585,7 +603,7 @@ describe_tape_archives(Client, Input, Options)
 %% @doc Returns a list of virtual tape recovery points that are available for
 %% the specified gateway-VTL.
 %%
-%% A recovery point is a point in time view of a virtual tape at which all
+%% A recovery point is a point-in-time view of a virtual tape at which all
 %% the data on the virtual tape is consistent. If your gateway crashes,
 %% virtual tapes that have recovery points can be recovered to a new gateway.
 describe_tape_recovery_points(Client, Input)
@@ -605,9 +623,9 @@ describe_tapes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTapes">>, Input, Options).
 
-%% @doc This operation returns information about the upload buffer of a
-%% gateway. This operation is supported for both the gateway-stored and
-%% gateway-cached volume architectures.
+%% @doc Returns information about the upload buffer of a gateway. This
+%% operation is supported for both the gateway-stored and gateway-cached
+%% volume architectures.
 %%
 %% The response includes disk IDs that are configured as upload buffer space,
 %% and it includes the amount of upload buffer space allocated and used.
@@ -630,10 +648,10 @@ describe_vtl_devices(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeVTLDevices">>, Input, Options).
 
-%% @doc This operation returns information about the working storage of a
-%% gateway. This operation is supported only for the gateway-stored volume
-%% architecture. This operation is deprecated in cached-volumes API version
-%% (20120630). Use DescribeUploadBuffer instead.
+%% @doc Returns information about the working storage of a gateway. This
+%% operation is supported only for the gateway-stored volume architecture.
+%% This operation is deprecated in cached-volumes API version (20120630). Use
+%% DescribeUploadBuffer instead.
 %%
 %% <note>Working storage is also referred to as upload buffer. You can also
 %% use the DescribeUploadBuffer operation to add upload buffer to a
@@ -663,16 +681,16 @@ disable_gateway(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableGateway">>, Input, Options).
 
-%% @doc This operation lists gateways owned by an AWS account in a region
-%% specified in the request. The returned list is ordered by gateway Amazon
-%% Resource Name (ARN).
+%% @doc Lists gateways owned by an AWS account in a region specified in the
+%% request. The returned list is ordered by gateway Amazon Resource Name
+%% (ARN).
 %%
 %% By default, the operation returns a maximum of 100 gateways. This
 %% operation supports pagination that allows you to optionally reduce the
 %% number of gateways returned in a response.
 %%
-%% If you have more gateways than are returned in a response-that is, the
-%% response returns only a truncated list of your gateways-the response
+%% If you have more gateways than are returned in a response (that is, the
+%% response returns only a truncated list of your gateways), the response
 %% contains a marker that you can specify in your next request to fetch the
 %% next page of gateways.
 list_gateways(Client, Input)
@@ -682,9 +700,9 @@ list_gateways(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGateways">>, Input, Options).
 
-%% @doc This operation returns a list of the gateway's local disks. To
-%% specify which gateway to describe, you use the Amazon Resource Name (ARN)
-%% of the gateway in the body of the request.
+%% @doc Returns a list of the gateway's local disks. To specify which gateway
+%% to describe, you use the Amazon Resource Name (ARN) of the gateway in the
+%% body of the request.
 %%
 %% The request returns a list of all disks, specifying which are configured
 %% as working storage, cache storage, or stored volume or not configured at
@@ -700,8 +718,7 @@ list_local_disks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLocalDisks">>, Input, Options).
 
-%% @doc This operation lists the tags that have been added to the specified
-%% resource.
+%% @doc Lists the tags that have been added to the specified resource.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -709,9 +726,8 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
-%% @doc This operation lists iSCSI initiators that are connected to a volume.
-%% You can use this operation to determine whether a volume is being used or
-%% not.
+%% @doc Lists iSCSI initiators that are connected to a volume. You can use
+%% this operation to determine whether a volume is being used or not.
 list_volume_initiators(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_volume_initiators(Client, Input, []).
@@ -719,9 +735,8 @@ list_volume_initiators(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListVolumeInitiators">>, Input, Options).
 
-%% @doc This operation lists the recovery points for a specified gateway.
-%% This operation is supported only for the gateway-cached volume
-%% architecture.
+%% @doc Lists the recovery points for a specified gateway. This operation is
+%% supported only for the gateway-cached volume architecture.
 %%
 %% Each gateway-cached volume has one recovery point. A volume recovery point
 %% is a point in time at which all data of the volume is consistent and from
@@ -735,10 +750,10 @@ list_volume_recovery_points(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListVolumeRecoveryPoints">>, Input, Options).
 
-%% @doc This operation lists the iSCSI stored volumes of a gateway. Results
-%% are sorted by volume ARN. The response includes only the volume ARNs. If
-%% you want additional volume information, use the
-%% <a>DescribeStorediSCSIVolumes</a> API.
+%% @doc Lists the iSCSI stored volumes of a gateway. Results are sorted by
+%% volume ARN. The response includes only the volume ARNs. If you want
+%% additional volume information, use the <a>DescribeStorediSCSIVolumes</a>
+%% API.
 %%
 %% The operation supports pagination. By default, the operation returns a
 %% maximum of up to 100 volumes. You can optionally specify the
@@ -753,7 +768,7 @@ list_volumes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListVolumes">>, Input, Options).
 
-%% @doc This operation removes one or more tags from the specified resource.
+%% @doc Removes one or more tags from the specified resource.
 remove_tags_from_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags_from_resource(Client, Input, []).
@@ -761,13 +776,13 @@ remove_tags_from_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTagsFromResource">>, Input, Options).
 
-%% @doc This operation resets all cache disks that have encountered a error
-%% and makes the disks available for reconfiguration as cache storage. If
-%% your cache disk encounters a error, the gateway prevents read and write
-%% operations on virtual tapes in the gateway. For example, an error can
-%% occur when a disk is corrupted or removed from the gateway. When a cache
-%% is reset, the gateway loses its cache storage. At this point you can
-%% reconfigure the disks as cache disks.
+%% @doc Resets all cache disks that have encountered a error and makes the
+%% disks available for reconfiguration as cache storage. If your cache disk
+%% encounters a error, the gateway prevents read and write operations on
+%% virtual tapes in the gateway. For example, an error can occur when a disk
+%% is corrupted or removed from the gateway. When a cache is reset, the
+%% gateway loses its cache storage. At this point you can reconfigure the
+%% disks as cache disks.
 %%
 %% <important> If the cache disk you are resetting contains data that has not
 %% been uploaded to Amazon S3 yet, that data can be lost. After you reset
@@ -814,9 +829,19 @@ retrieve_tape_recovery_point(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RetrieveTapeRecoveryPoint">>, Input, Options).
 
-%% @doc This operation shuts down a gateway. To specify which gateway to shut
-%% down, use the Amazon Resource Name (ARN) of the gateway in the body of
-%% your request.
+%% @doc Sets the password for your VM local console. When you log in to the
+%% local console for the first time, you log in to the VM with the default
+%% credentials. We recommend that you set a new password. You don't need to
+%% know the default password to set a new password.
+set_local_console_password(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    set_local_console_password(Client, Input, []).
+set_local_console_password(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SetLocalConsolePassword">>, Input, Options).
+
+%% @doc Shuts down a gateway. To specify which gateway to shut down, use the
+%% Amazon Resource Name (ARN) of the gateway in the body of your request.
 %%
 %% The operation shuts down the gateway service component running in the
 %% storage gateway's virtual machine (VM) and not the VM.
@@ -843,7 +868,7 @@ shutdown_gateway(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ShutdownGateway">>, Input, Options).
 
-%% @doc This operation starts a gateway that you previously shut down (see
+%% @doc Starts a gateway that you previously shut down (see
 %% <a>ShutdownGateway</a>). After the gateway starts, you can then make other
 %% API calls, your applications can read from or write to the gateway's
 %% storage volumes and you will be able to take snapshot backups.
@@ -861,10 +886,10 @@ start_gateway(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartGateway">>, Input, Options).
 
-%% @doc This operation updates the bandwidth rate limits of a gateway. You
-%% can update both the upload and download bandwidth rate limit or specify
-%% only one of the two. If you don't set a bandwidth rate limit, the existing
-%% rate limit remains.
+%% @doc Updates the bandwidth rate limits of a gateway. You can update both
+%% the upload and download bandwidth rate limit or specify only one of the
+%% two. If you don't set a bandwidth rate limit, the existing rate limit
+%% remains.
 %%
 %% By default, a gateway's bandwidth rate limits are not set. If you don't
 %% set any limit, the gateway does not have any limitations on its bandwidth
@@ -879,10 +904,9 @@ update_bandwidth_rate_limit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateBandwidthRateLimit">>, Input, Options).
 
-%% @doc This operation updates the Challenge-Handshake Authentication
-%% Protocol (CHAP) credentials for a specified iSCSI target. By default, a
-%% gateway does not have CHAP enabled; however, for added security, you might
-%% use it.
+%% @doc Updates the Challenge-Handshake Authentication Protocol (CHAP)
+%% credentials for a specified iSCSI target. By default, a gateway does not
+%% have CHAP enabled; however, for added security, you might use it.
 %%
 %% <important> When you update CHAP credentials, all existing connections on
 %% the target are closed and initiators must reconnect with the new
@@ -896,9 +920,13 @@ update_chap_credentials(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateChapCredentials">>, Input, Options).
 
-%% @doc This operation updates a gateway's metadata, which includes the
-%% gateway's name and time zone. To specify which gateway to update, use the
-%% Amazon Resource Name (ARN) of the gateway in your request.
+%% @doc Updates a gateway's metadata, which includes the gateway's name and
+%% time zone. To specify which gateway to update, use the Amazon Resource
+%% Name (ARN) of the gateway in your request.
+%%
+%% <note>For Gateways activated after September 2, 2015, the gateway's ARN
+%% contains the gateway ID rather than the gateway name. However, changing
+%% the name of the gateway has no effect on the gateway's ARN.</note>
 update_gateway_information(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_gateway_information(Client, Input, []).
@@ -906,8 +934,8 @@ update_gateway_information(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateGatewayInformation">>, Input, Options).
 
-%% @doc This operation updates the gateway virtual machine (VM) software. The
-%% request immediately triggers the software update.
+%% @doc Updates the gateway virtual machine (VM) software. The request
+%% immediately triggers the software update.
 %%
 %% <note>When you make this request, you get a <code>200 OK</code> success
 %% response immediately. However, it might take some time for the update to
@@ -928,9 +956,9 @@ update_gateway_software_now(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateGatewaySoftwareNow">>, Input, Options).
 
-%% @doc This operation updates a gateway's weekly maintenance start time
-%% information, including day and time of the week. The maintenance time is
-%% the time in your gateway's time zone.
+%% @doc Updates a gateway's weekly maintenance start time information,
+%% including day and time of the week. The maintenance time is the time in
+%% your gateway's time zone.
 update_maintenance_start_time(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_maintenance_start_time(Client, Input, []).
@@ -938,8 +966,7 @@ update_maintenance_start_time(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateMaintenanceStartTime">>, Input, Options).
 
-%% @doc This operation updates a snapshot schedule configured for a gateway
-%% volume.
+%% @doc Updates a snapshot schedule configured for a gateway volume.
 %%
 %% The default snapshot schedule for volume is once every 24 hours, starting
 %% at the creation time of the volume. You can use this API to change the
@@ -956,8 +983,8 @@ update_snapshot_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSnapshotSchedule">>, Input, Options).
 
-%% @doc This operation updates the type of medium changer in a gateway-VTL.
-%% When you activate a gateway-VTL, you select a medium changer type for the
+%% @doc Updates the type of medium changer in a gateway-VTL. When you
+%% activate a gateway-VTL, you select a medium changer type for the
 %% gateway-VTL. This operation enables you to select a different type of
 %% medium changer after a gateway-VTL is activated.
 update_vtl_device_type(Client, Input)

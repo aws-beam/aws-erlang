@@ -1,11 +1,24 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/jkakar/aws-codegen for more details.
 
-%% @doc Provides AWS Marketplace business intelligence data on-demand.
--module(aws_mca).
+%% @doc <fullname>AWS Marketplace Metering Service</fullname>
+%%
+%% This reference provides descriptions of the low-level AWS Marketplace
+%% Metering Service API.
+%%
+%% AWS Marketplace sellers can use this API to submit usage data for custom
+%% usage dimensions.
+%%
+%% <b>Submitting Metering Records</b>
+%%
+%% <ul> <li> <i>MeterUsage</i>- Submits the metering record for a Marketplace
+%% product.
+%%
+%% </li> </ul>
+-module(aws_marketplace_metering).
 
--export([generate_data_set/2,
-         generate_data_set/3]).
+-export([meter_usage/2,
+         meter_usage/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -13,24 +26,14 @@
 %% API
 %%====================================================================
 
-%% @doc Given a data set type and data set publication date, asynchronously
-%% publishes the requested data set to the specified S3 bucket and notifies
-%% the specified SNS topic once the data is available. Returns a unique
-%% request identifier that can be used to correlate requests with
-%% notifications from the SNS topic. Data sets will be published in
-%% comma-separated values (CSV) format with the file name
-%% {data_set_type}_YYYY-MM-DD.csv. If a file with the same name already
-%% exists (e.g. if the same data set is requested twice), the original file
-%% will be overwritten by the new file. Requires a Role with an attached
-%% permissions policy providing Allow permissions for the following actions:
-%% s3:PutObject, s3:GetBucketLocation, sns:GetTopicAttributes, sns:Publish,
-%% iam:GetRolePolicy.
-generate_data_set(Client, Input)
+%% @doc API to emit metering records. For identical requests, the API is
+%% idempotent. It simply returns the metering record ID.
+meter_usage(Client, Input)
   when is_map(Client), is_map(Input) ->
-    generate_data_set(Client, Input, []).
-generate_data_set(Client, Input, Options)
+    meter_usage(Client, Input, []).
+meter_usage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"GenerateDataSet">>, Input, Options).
+    request(Client, <<"MeterUsage">>, Input, Options).
 
 %%====================================================================
 %% Internal functions
@@ -43,12 +46,12 @@ generate_data_set(Client, Input, Options)
     Result :: map() | undefined,
     Error :: {binary(), binary()}.
 request(Client, Action, Input, Options) ->
-    Client1 = Client#{service => <<"marketplacecommerceanalytics">>},
-    Host = get_host(<<"marketplacecommerceanalytics">>, Client1),
+    Client1 = Client#{service => <<"aws-marketplace">>},
+    Host = get_host(<<"metering.marketplace">>, Client1),
     URL = get_url(Host, Client1),
     Headers = [{<<"Host">>, Host},
                {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
-               {<<"X-Amz-Target">>, << <<"MarketplaceCommerceAnalytics20150701.">>/binary, Action/binary>>}],
+               {<<"X-Amz-Target">>, << <<"AWSMPMeteringService.">>/binary, Action/binary>>}],
     Payload = jsx:encode(Input),
     Headers1 = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
     Response = hackney:request(post, URL, Headers1, Payload, Options),
