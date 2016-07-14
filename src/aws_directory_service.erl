@@ -8,7 +8,9 @@
 %% types, parameters, and errors.
 -module(aws_directory_service).
 
--export([connect_directory/2,
+-export([add_tags_to_resource/2,
+         add_tags_to_resource/3,
+         connect_directory/2,
          connect_directory/3,
          create_alias/2,
          create_alias/3,
@@ -56,8 +58,12 @@
          get_directory_limits/3,
          get_snapshot_limits/2,
          get_snapshot_limits/3,
+         list_tags_for_resource/2,
+         list_tags_for_resource/3,
          register_event_topic/2,
          register_event_topic/3,
+         remove_tags_from_resource/2,
+         remove_tags_from_resource/3,
          restore_from_snapshot/2,
          restore_from_snapshot/3,
          update_conditional_forwarder/2,
@@ -73,6 +79,17 @@
 %% API
 %%====================================================================
 
+%% @doc Adds or overwrites one or more tags for the specified Amazon
+%% Directory Services directory. Each directory can have a maximum of 10
+%% tags. Each tag consists of a key and optional value. Tag keys must be
+%% unique per resource.
+add_tags_to_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    add_tags_to_resource(Client, Input, []).
+add_tags_to_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AddTagsToResource">>, Input, Options).
+
 %% @doc Creates an AD Connector to connect to an on-premises directory.
 connect_directory(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -83,8 +100,7 @@ connect_directory(Client, Input, Options)
 
 %% @doc Creates an alias for a directory and assigns the alias to the
 %% directory. The alias is used to construct the access URL for the
-%% directory, such as
-%% <code>http://<![CDATA[&#x3C;]]>alias<![CDATA[&#x3E;]]>.awsapps.com</code>.
+%% directory, such as <code>http://&lt;alias&gt;.awsapps.com</code>.
 %%
 %% <important> After an alias has been created, it cannot be deleted or
 %% reused, so this operation should only be used when absolutely necessary.
@@ -332,6 +348,14 @@ get_snapshot_limits(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSnapshotLimits">>, Input, Options).
 
+%% @doc Lists all tags on an Amazon Directory Services directory.
+list_tags_for_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_tags_for_resource(Client, Input, []).
+list_tags_for_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTagsForResource">>, Input, Options).
+
 %% @doc Associates a directory with an SNS topic. This establishes the
 %% directory as a publisher to the specified SNS topic. You can then receive
 %% email or text (SMS) messages when the status of your directory changes.
@@ -344,6 +368,14 @@ register_event_topic(Client, Input)
 register_event_topic(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterEventTopic">>, Input, Options).
+
+%% @doc Removes tags from an Amazon Directory Services directory.
+remove_tags_from_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    remove_tags_from_resource(Client, Input, []).
+remove_tags_from_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RemoveTagsFromResource">>, Input, Options).
 
 %% @doc Restores a directory using an existing directory snapshot.
 %%

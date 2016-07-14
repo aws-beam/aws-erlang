@@ -16,6 +16,8 @@
          enable_domain_auto_renew/3,
          enable_domain_transfer_lock/2,
          enable_domain_transfer_lock/3,
+         get_contact_reachability_status/2,
+         get_contact_reachability_status/3,
          get_domain_detail/2,
          get_domain_detail/3,
          get_operation_detail/2,
@@ -28,6 +30,8 @@
          list_tags_for_domain/3,
          register_domain/2,
          register_domain/3,
+         resend_contact_reachability_email/2,
+         resend_contact_reachability_email/3,
          retrieve_domain_auth_code/2,
          retrieve_domain_auth_code/3,
          transfer_domain/2,
@@ -47,10 +51,9 @@
 %% API
 %%====================================================================
 
-%% @doc This operation checks the availability of one domain name. You can
-%% access this API without authenticating. Note that if the availability
-%% status of a domain is pending, you must submit another request to
-%% determine the availability of the domain name.
+%% @doc This operation checks the availability of one domain name. Note that
+%% if the availability status of a domain is pending, you must submit another
+%% request to determine the availability of the domain name.
 check_domain_availability(Client, Input)
   when is_map(Client), is_map(Input) ->
     check_domain_availability(Client, Input, []).
@@ -126,6 +129,20 @@ enable_domain_transfer_lock(Client, Input)
 enable_domain_transfer_lock(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableDomainTransferLock">>, Input, Options).
+
+%% @doc For operations that require confirmation that the email address for
+%% the registrant contact is valid, such as registering a new domain, this
+%% operation returns information about whether the registrant contact has
+%% responded.
+%%
+%% If you want us to resend the email, use the
+%% <code>ResendContactReachabilityEmail</code> operation.
+get_contact_reachability_status(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_contact_reachability_status(Client, Input, []).
+get_contact_reachability_status(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetContactReachabilityStatus">>, Input, Options).
 
 %% @doc This operation returns detailed information about the domain. The
 %% domain's contact information is also returned as part of the output.
@@ -203,6 +220,17 @@ register_domain(Client, Input)
 register_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterDomain">>, Input, Options).
+
+%% @doc For operations that require confirmation that the email address for
+%% the registrant contact is valid, such as registering a new domain, this
+%% operation resends the confirmation email to the current email address for
+%% the registrant contact.
+resend_contact_reachability_email(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    resend_contact_reachability_email(Client, Input, []).
+resend_contact_reachability_email(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ResendContactReachabilityEmail">>, Input, Options).
 
 %% @doc This operation returns the AuthCode for the domain. To transfer a
 %% domain to another registrar, you provide this value to the new registrar.

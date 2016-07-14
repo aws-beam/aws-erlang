@@ -36,6 +36,8 @@
 
 -export([delete_config_rule/2,
          delete_config_rule/3,
+         delete_configuration_recorder/2,
+         delete_configuration_recorder/3,
          delete_delivery_channel/2,
          delete_delivery_channel/3,
          deliver_config_snapshot/2,
@@ -105,12 +107,29 @@ delete_config_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteConfigRule">>, Input, Options).
 
-%% @doc Deletes the specified delivery channel.
+%% @doc Deletes the configuration recorder.
 %%
-%% The delivery channel cannot be deleted if it is the only delivery channel
-%% and the configuration recorder is still running. To delete the delivery
-%% channel, stop the running configuration recorder using the
-%% <a>StopConfigurationRecorder</a> action.
+%% After the configuration recorder is deleted, AWS Config will not record
+%% resource configuration changes until you create a new configuration
+%% recorder.
+%%
+%% This action does not delete the configuration information that was
+%% previously recorded. You will be able to access the previously recorded
+%% information by using the <code>GetResourceConfigHistory</code> action, but
+%% you will not be able to access this information in the AWS Config console
+%% until you create a new configuration recorder.
+delete_configuration_recorder(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_configuration_recorder(Client, Input, []).
+delete_configuration_recorder(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteConfigurationRecorder">>, Input, Options).
+
+%% @doc Deletes the delivery channel.
+%%
+%% Before you can delete the delivery channel, you must stop the
+%% configuration recorder by using the <a>StopConfigurationRecorder</a>
+%% action.
 delete_delivery_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_delivery_channel(Client, Input, []).
@@ -143,10 +162,11 @@ deliver_config_snapshot(Client, Input, Options)
 %%
 %% If AWS Config has no current evaluation results for the rule, it returns
 %% <code>INSUFFICIENT_DATA</code>. This result might indicate one of the
-%% following conditions: <ul> <li>AWS Config has never invoked an evaluation
-%% for the rule. To check whether it has, use the
-%% <code>DescribeConfigRuleEvaluationStatus</code> action to get the
-%% <code>LastSuccessfulInvocationTime</code> and
+%% following conditions:
+%%
+%% <ul> <li>AWS Config has never invoked an evaluation for the rule. To check
+%% whether it has, use the <code>DescribeConfigRuleEvaluationStatus</code>
+%% action to get the <code>LastSuccessfulInvocationTime</code> and
 %% <code>LastFailedInvocationTime</code>.</li> <li>The rule's AWS Lambda
 %% function is failing to send evaluation results to AWS Config. Verify that
 %% the role that you assigned to your configuration recorder includes the
@@ -155,7 +175,7 @@ deliver_config_snapshot(Client, Input, Options)
 %% <code>config:PutEvaluations</code> permission.</li> <li>The rule's AWS
 %% Lambda function has returned <code>NOT_APPLICABLE</code> for all
 %% evaluation results. This can occur if the resources were deleted or
-%% removed from the rule's scope.</li></ul>
+%% removed from the rule's scope.</li> </ul>
 describe_compliance_by_config_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_compliance_by_config_rule(Client, Input, []).
@@ -173,8 +193,9 @@ describe_compliance_by_config_rule(Client, Input, Options)
 %%
 %% If AWS Config has no current evaluation results for the resource, it
 %% returns <code>INSUFFICIENT_DATA</code>. This result might indicate one of
-%% the following conditions about the rules that evaluate the resource: <ul>
-%% <li>AWS Config has never invoked an evaluation for the rule. To check
+%% the following conditions about the rules that evaluate the resource:
+%%
+%% <ul> <li>AWS Config has never invoked an evaluation for the rule. To check
 %% whether it has, use the <code>DescribeConfigRuleEvaluationStatus</code>
 %% action to get the <code>LastSuccessfulInvocationTime</code> and
 %% <code>LastFailedInvocationTime</code>.</li> <li>The rule's AWS Lambda
@@ -185,7 +206,7 @@ describe_compliance_by_config_rule(Client, Input, Options)
 %% <code>config:PutEvaluations</code> permission.</li> <li>The rule's AWS
 %% Lambda function has returned <code>NOT_APPLICABLE</code> for all
 %% evaluation results. This can occur if the resources were deleted or
-%% removed from the rule's scope.</li></ul>
+%% removed from the rule's scope.</li> </ul>
 describe_compliance_by_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_compliance_by_resource(Client, Input, []).
@@ -216,8 +237,10 @@ describe_config_rules(Client, Input, Options)
 %% If a configuration recorder is not specified, this action returns the
 %% status of all configuration recorder associated with the account.
 %%
-%% <note>Currently, you can specify only one configuration recorder per
-%% account.</note>
+%% <note> Currently, you can specify only one configuration recorder per
+%% account.
+%%
+%% </note>
 describe_configuration_recorder_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_configuration_recorder_status(Client, Input, []).
@@ -244,8 +267,9 @@ describe_configuration_recorders(Client, Input, Options)
 %% delivery channel is not specified, this action returns the current status
 %% of all delivery channels associated with the account.
 %%
-%% <note>Currently, you can specify only one delivery channel per
-%% account.</note>
+%% <note> Currently, you can specify only one delivery channel per account.
+%%
+%% </note>
 describe_delivery_channel_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_delivery_channel_status(Client, Input, []).
@@ -340,10 +364,12 @@ get_resource_config_history(Client, Input, Options)
 %% results to include only resources that have specific resource IDs or a
 %% resource name.
 %%
-%% <note>You can specify either resource IDs or a resource name but not both
-%% in the same request.</note> The response is paginated, and by default AWS
-%% Config lists 100 resource identifiers on each page. You can customize this
-%% number with the <code>limit</code> parameter. The response includes a
+%% <note> You can specify either resource IDs or a resource name but not both
+%% in the same request.
+%%
+%% </note> The response is paginated, and by default AWS Config lists 100
+%% resource identifiers on each page. You can customize this number with the
+%% <code>limit</code> parameter. The response includes a
 %% <code>nextToken</code> string, and to get the next page of results, run
 %% the request again and enter this string for the <code>nextToken</code>
 %% parameter.
@@ -424,8 +450,11 @@ put_configuration_recorder(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutConfigurationRecorder">>, Input, Options).
 
-%% @doc Creates a new delivery channel object to deliver the configuration
-%% information to an Amazon S3 bucket, and to an Amazon SNS topic.
+%% @doc Creates a delivery channel object to deliver configuration
+%% information to an Amazon S3 bucket and Amazon SNS topic.
+%%
+%% Before you can create a delivery channel, you must create a configuration
+%% recorder.
 %%
 %% You can use this action to change the Amazon S3 bucket or an Amazon SNS
 %% topic of the existing delivery channel. To change the Amazon S3 bucket or
@@ -434,7 +463,7 @@ put_configuration_recorder(Client, Input, Options)
 %% either the S3 bucket or the SNS topic, this action will keep the existing
 %% value for the parameter that is not changed.
 %%
-%% <note> Currently, you can specify only one delivery channel per account.
+%% <note> You can have only one delivery channel per AWS account.
 %%
 %% </note>
 put_delivery_channel(Client, Input)

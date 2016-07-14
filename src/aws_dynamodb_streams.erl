@@ -1,30 +1,19 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/jkakar/aws-codegen for more details.
 
-%% @doc <fullname>Amazon DynamoDB Streams</fullname>
+%% @doc <fullname>Amazon DynamoDB</fullname>
 %%
-%% This is the Amazon DynamoDB Streams API Reference. This guide describes
-%% the low-level API actions for accessing streams and processing stream
-%% records. For information about application development with DynamoDB
-%% Streams, see the <a
-%% href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide//Streams.html">Amazon
-%% DynamoDB Developer Guide</a>.
+%% Amazon DynamoDB Streams provides API actions for accessing streams and
+%% processing stream records. To learn more about application development
+%% with Streams, see <a
+%% href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.html">Capturing
+%% Table Activity with DynamoDB Streams</a> in the Amazon DynamoDB Developer
+%% Guide.
 %%
-%% Note that this document is intended for use with the following DynamoDB
-%% documentation:
+%% The following are short descriptions of each low-level DynamoDB Streams
+%% action:
 %%
-%% <ul> <li> <a
-%% href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/">Amazon
-%% DynamoDB Developer Guide</a>
-%%
-%% </li> <li> <a
-%% href="http://docs.aws.amazon.com/amazondynamodb/latest/APIReference/">Amazon
-%% DynamoDB API Reference</a>
-%%
-%% </li> </ul> The following are short descriptions of each low-level
-%% DynamoDB Streams API action, organized by function.
-%%
-%% <ul> <li><i>DescribeStream</i> - Returns detailed information about a
+%% <ul> <li> <i>DescribeStream</i> - Returns detailed information about a
 %% particular stream.
 %%
 %% </li> <li> <i>GetRecords</i> - Retrieves the stream records from within a
@@ -58,15 +47,15 @@
 %% the stream, its Amazon Resource Name (ARN), the composition of its shards,
 %% and its corresponding DynamoDB table.
 %%
-%% <note>You can call <i>DescribeStream</i> at a maximum rate of 10 times per
-%% second.
+%% <note> You can call <i>DescribeStream</i> at a maximum rate of 10 times
+%% per second.
 %%
 %% </note> Each shard in the stream has a <code>SequenceNumberRange</code>
 %% associated with it. If the <code>SequenceNumberRange</code> has a
 %% <code>StartingSequenceNumber</code> but no
 %% <code>EndingSequenceNumber</code>, then the shard is still open (able to
 %% receive more stream records). If both <code>StartingSequenceNumber</code>
-%% and <code>EndingSequenceNumber</code> are present, the that shared is
+%% and <code>EndingSequenceNumber</code> are present, then that shard is
 %% closed and can no longer receive more data.
 describe_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -85,8 +74,8 @@ describe_stream(Client, Input, Options)
 %% multiple calls to get to a portion of the shard that contains stream
 %% records.
 %%
-%% <note><function>GetRecords</function> can retrieve a maximum of 1 MB of
-%% data or 2000 stream records, whichever comes first.
+%% <note> <code>GetRecords</code> can retrieve a maximum of 1 MB of data or
+%% 1000 stream records, whichever comes first.
 %%
 %% </note>
 get_records(Client, Input)
@@ -101,7 +90,7 @@ get_records(Client, Input, Options)
 %% iterator in a subsequent <code>GetRecords</code> request to read the
 %% stream records from the shard.
 %%
-%% <note>A shard iterator expires 15 minutes after it is returned to the
+%% <note> A shard iterator expires 15 minutes after it is returned to the
 %% requester.
 %%
 %% </note>
@@ -116,7 +105,7 @@ get_shard_iterator(Client, Input, Options)
 %% and endpoint. If the <code>TableName</code> parameter is present, then
 %% <i>ListStreams</i> will return only the streams ARNs for that table.
 %%
-%% <note>You can call <i>ListStreams</i> at a maximum rate of 5 times per
+%% <note> You can call <i>ListStreams</i> at a maximum rate of 5 times per
 %% second.
 %%
 %% </note>

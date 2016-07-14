@@ -30,11 +30,11 @@
 %% <b>Signing Requests</b>
 %%
 %% Requests must be signed by using an access key ID and a secret access key.
-%% We strongly recommend that you <i>do not</i> use your AWS account access
-%% key ID and secret key for everyday work with AWS KMS. Instead, use the
-%% access key ID and secret access key for an IAM user, or you can use the
-%% AWS Security Token Service to generate temporary security credentials that
-%% you can use to sign requests.
+%% We strongly recommend that you <i>do not</i> use your AWS account (root)
+%% access key ID and secret key for everyday work with AWS KMS. Instead, use
+%% the access key ID and secret access key for an IAM user, or you can use
+%% the AWS Security Token Service to generate temporary security credentials
+%% that you can use to sign requests.
 %%
 %% All AWS KMS operations require <a
 %% href="http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">Signature
@@ -59,22 +59,34 @@
 %% <ul> <li> <a
 %% href="http://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html">AWS
 %% Security Credentials</a> - This topic provides general information about
-%% the types of credentials used for accessing AWS. </li> <li> <a
-%% href="http://docs.aws.amazon.com/STS/latest/UsingSTS/">AWS Security Token
-%% Service</a> - This guide describes how to create and use temporary
-%% security credentials. </li> <li> <a
-%% href="http://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html">Signing
-%% AWS API Requests</a> - This set of topics walks you through the process of
-%% signing a request using an access key ID and a secret access key. </li>
-%% </ul> <b>Commonly Used APIs</b>
+%% the types of credentials used for accessing AWS.
+%%
+%% </li> <li> <a
+%% href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html">Temporary
+%% Security Credentials</a> - This section of the <i>IAM User Guide</i>
+%% describes how to create and use temporary security credentials.
+%%
+%% </li> <li> <a
+%% href="http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">Signature
+%% Version 4 Signing Process</a> - This set of topics walks you through the
+%% process of signing a request using an access key ID and a secret access
+%% key.
+%%
+%% </li> </ul> <b>Commonly Used APIs</b>
 %%
 %% Of the APIs discussed in this guide, the following will prove the most
 %% useful for most applications. You will likely perform actions other than
 %% these, such as creating keys and assigning policies, by using the console.
 %%
-%% <ul> <li><a>Encrypt</a></li> <li><a>Decrypt</a></li>
-%% <li><a>GenerateDataKey</a></li>
-%% <li><a>GenerateDataKeyWithoutPlaintext</a></li> </ul>
+%% <ul> <li> <a>Encrypt</a>
+%%
+%% </li> <li> <a>Decrypt</a>
+%%
+%% </li> <li> <a>GenerateDataKey</a>
+%%
+%% </li> <li> <a>GenerateDataKeyWithoutPlaintext</a>
+%%
+%% </li> </ul>
 -module(aws_kms).
 
 -export([cancel_key_deletion/2,
@@ -146,8 +158,8 @@
 %% operation is successful, the CMK is set to the <code>Disabled</code>
 %% state. To enable a CMK, use <a>EnableKey</a>.
 %%
-%% For more information about scheduling and canceling deletion of a CMK, go
-%% to <a
+%% For more information about scheduling and canceling deletion of a CMK, see
+%% <a
 %% href="http://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html">Deleting
 %% Customer Master Keys</a> in the <i>AWS Key Management Service Developer
 %% Guide</i>.
@@ -190,11 +202,21 @@ create_grant(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateGrant">>, Input, Options).
 
-%% @doc Creates a customer master key. Customer master keys can be used to
-%% encrypt small amounts of data (less than 4K) directly, but they are most
-%% commonly used to encrypt or envelope data keys that are then used to
-%% encrypt customer data. For more information about data keys, see
-%% <a>GenerateDataKey</a> and <a>GenerateDataKeyWithoutPlaintext</a>.
+%% @doc Creates a customer master key (CMK).
+%%
+%% You can use a CMK to encrypt small amounts of data (4 KiB or less)
+%% directly, but CMKs are more commonly used to encrypt data encryption keys
+%% (DEKs), which are used to encrypt raw data. For more information about
+%% DEKs and the difference between CMKs and DEKs, see the following:
+%%
+%% <ul> <li> The <a>GenerateDataKey</a> operation
+%%
+%% </li> <li> <a
+%% href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html">AWS
+%% Key Management Service Concepts</a> in the <i>AWS Key Management Service
+%% Developer Guide</i>
+%%
+%% </li> </ul>
 create_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_key(Client, Input, []).
@@ -203,20 +225,23 @@ create_key(Client, Input, Options)
     request(Client, <<"CreateKey">>, Input, Options).
 
 %% @doc Decrypts ciphertext. Ciphertext is plaintext that has been previously
-%% encrypted by using any of the following functions: <ul>
-%% <li><a>GenerateDataKey</a></li>
-%% <li><a>GenerateDataKeyWithoutPlaintext</a></li> <li><a>Encrypt</a></li>
-%% </ul>
+%% encrypted by using any of the following functions:
 %%
-%% Note that if a caller has been granted access permissions to all keys
-%% (through, for example, IAM user policies that grant <code>Decrypt</code>
-%% permission on all resources), then ciphertext encrypted by using keys in
-%% other accounts where the key grants access to the caller can be decrypted.
-%% To remedy this, we recommend that you do not grant <code>Decrypt</code>
-%% access in an IAM user policy. Instead grant <code>Decrypt</code> access
-%% only in key policies. If you must grant <code>Decrypt</code> access in an
-%% IAM user policy, you should scope the resource to specific keys or to
-%% specific trusted accounts.
+%% <ul> <li> <a>GenerateDataKey</a>
+%%
+%% </li> <li> <a>GenerateDataKeyWithoutPlaintext</a>
+%%
+%% </li> <li> <a>Encrypt</a>
+%%
+%% </li> </ul> Note that if a caller has been granted access permissions to
+%% all keys (through, for example, IAM user policies that grant
+%% <code>Decrypt</code> permission on all resources), then ciphertext
+%% encrypted by using keys in other accounts where the key grants access to
+%% the caller can be decrypted. To remedy this, we recommend that you do not
+%% grant <code>Decrypt</code> access in an IAM user policy. Instead grant
+%% <code>Decrypt</code> access only in key policies. If you must grant
+%% <code>Decrypt</code> access in an IAM user policy, you should scope the
+%% resource to specific keys or to specific trusted accounts.
 decrypt(Client, Input)
   when is_map(Client), is_map(Input) ->
     decrypt(Client, Input, []).
@@ -242,9 +267,9 @@ describe_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeKey">>, Input, Options).
 
-%% @doc Sets the state of a master key to disabled, thereby preventing its
-%% use for cryptographic operations. For more information about how key state
-%% affects the use of a master key, go to <a
+%% @doc Sets the state of a customer master key (CMK) to disabled, thereby
+%% preventing its use for cryptographic operations. For more information
+%% about how key state affects the use of a CMK, see <a
 %% href="http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How
 %% Key State Affects the Use of a Customer Master Key</a> in the <i>AWS Key
 %% Management Service Developer Guide</i>.
@@ -280,20 +305,23 @@ enable_key_rotation(Client, Input, Options)
     request(Client, <<"EnableKeyRotation">>, Input, Options).
 
 %% @doc Encrypts plaintext into ciphertext by using a customer master key.
-%% The <code>Encrypt</code> function has two primary use cases: <ul> <li>You
-%% can encrypt up to 4 KB of arbitrary data such as an RSA key, a database
-%% password, or other sensitive customer information.</li> <li>If you are
-%% moving encrypted data from one region to another, you can use this API to
-%% encrypt in the new region the plaintext data key that was used to encrypt
-%% the data in the original region. This provides you with an encrypted copy
-%% of the data key that can be decrypted in the new region and used there to
-%% decrypt the encrypted data. </li> </ul>
+%% The <code>Encrypt</code> function has two primary use cases:
 %%
-%% Unless you are moving encrypted data from one region to another, you don't
-%% use this function to encrypt a generated data key within a region. You
-%% retrieve data keys already encrypted by calling the <a>GenerateDataKey</a>
-%% or <a>GenerateDataKeyWithoutPlaintext</a> function. Data keys don't need
-%% to be encrypted again by calling <code>Encrypt</code>.
+%% <ul> <li> You can encrypt up to 4 KB of arbitrary data such as an RSA key,
+%% a database password, or other sensitive customer information.
+%%
+%% </li> <li> If you are moving encrypted data from one region to another,
+%% you can use this API to encrypt in the new region the plaintext data key
+%% that was used to encrypt the data in the original region. This provides
+%% you with an encrypted copy of the data key that can be decrypted in the
+%% new region and used there to decrypt the encrypted data.
+%%
+%% </li> </ul> Unless you are moving encrypted data from one region to
+%% another, you don't use this function to encrypt a generated data key
+%% within a region. You retrieve data keys already encrypted by calling the
+%% <a>GenerateDataKey</a> or <a>GenerateDataKeyWithoutPlaintext</a> function.
+%% Data keys don't need to be encrypted again by calling
+%% <code>Encrypt</code>.
 %%
 %% If you want to encrypt data locally in your application, you can use the
 %% <code>GenerateDataKey</code> function to return a plaintext data
@@ -320,11 +348,12 @@ encrypt(Client, Input, Options)
 %% (contained in the <code>CiphertextBlob</code> field) alongside of the
 %% locally encrypted data.
 %%
-%% <note>You should not call the <code>Encrypt</code> function to re-encrypt
+%% <note> You should not call the <code>Encrypt</code> function to re-encrypt
 %% your data keys within a region. <code>GenerateDataKey</code> always
 %% returns the data key encrypted and tied to the customer master key that
-%% will be used to decrypt it. There is no need to decrypt it twice. </note>
-%% If you decide to use the optional <code>EncryptionContext</code>
+%% will be used to decrypt it. There is no need to decrypt it twice.
+%%
+%% </note> If you decide to use the optional <code>EncryptionContext</code>
 %% parameter, you must also store the context in full or at least store
 %% enough information along with the encrypted data to be able to reconstruct
 %% the context when submitting the ciphertext to the <code>Decrypt</code>
@@ -429,7 +458,11 @@ list_retirable_grants(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRetirableGrants">>, Input, Options).
 
-%% @doc Attaches a policy to the specified key.
+%% @doc Attaches a key policy to the specified customer master key (CMK).
+%%
+%% For more information about key policies, see <a
+%% href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html">Key
+%% Policies</a> in the <i>AWS Key Management Service Developer Guide</i>.
 put_key_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_key_policy(Client, Input, []).
@@ -460,13 +493,19 @@ re_encrypt(Client, Input, Options)
 %% @doc Retires a grant. You can retire a grant when you're done using it to
 %% clean up. You should revoke a grant when you intend to actively deny
 %% operations that depend on it. The following are permitted to call this
-%% API: <ul> <li>The account that created the grant</li> <li>The
-%% <code>RetiringPrincipal</code>, if present</li> <li>The
-%% <code>GranteePrincipal</code>, if <code>RetireGrant</code> is a grantee
-%% operation</li> </ul> The grant to retire must be identified by its grant
-%% token or by a combination of the key ARN and the grant ID. A grant token
-%% is a unique variable-length base64-encoded string. A grant ID is a 64
-%% character unique identifier of a grant. Both are returned by the
+%% API:
+%%
+%% <ul> <li> The account that created the grant
+%%
+%% </li> <li> The <code>RetiringPrincipal</code>, if present
+%%
+%% </li> <li> The <code>GranteePrincipal</code>, if <code>RetireGrant</code>
+%% is a grantee operation
+%%
+%% </li> </ul> The grant to retire must be identified by its grant token or
+%% by a combination of the key ARN and the grant ID. A grant token is a
+%% unique variable-length base64-encoded string. A grant ID is a 64 character
+%% unique identifier of a grant. Both are returned by the
 %% <code>CreateGrant</code> function.
 retire_grant(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -498,8 +537,8 @@ revoke_grant(Client, Input, Options)
 %% CMK is rendered unrecoverable. To restrict the use of a CMK without
 %% deleting it, use <a>DisableKey</a>.
 %%
-%% </important> For more information about scheduling a CMK for deletion, go
-%% to <a
+%% </important> For more information about scheduling a CMK for deletion, see
+%% <a
 %% href="http://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html">Deleting
 %% Customer Master Keys</a> in the <i>AWS Key Management Service Developer
 %% Guide</i>.

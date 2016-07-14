@@ -94,6 +94,10 @@ create_cluster(Client, Input, Options)
 %% task in the specified cluster. To update an existing service, see
 %% <a>UpdateService</a>.
 %%
+%% In addition to maintaining the desired count of tasks in your service, you
+%% can optionally run your service behind a load balancer. The load balancer
+%% distributes traffic across the tasks that are associated with the service.
+%%
 %% You can optionally specify a deployment configuration for your service.
 %% During a deployment (which is triggered by changing the task definition of
 %% a service with an <a>UpdateService</a> operation), the service scheduler
@@ -198,8 +202,10 @@ delete_service(Client, Input, Options)
 %% instance, be sure to terminate it in the Amazon EC2 console to stop
 %% billing.
 %%
-%% <note>When you terminate a container instance, it is automatically
-%% deregistered from your cluster.
+%% <note> If you terminate a running container instance with a connected
+%% Amazon ECS container agent, the agent automatically deregisters the
+%% instance from your cluster (stopped container instances or instances with
+%% disconnected agents are not automatically deregistered when terminated).
 %%
 %% </note>
 deregister_container_instance(Client, Input)
@@ -278,7 +284,7 @@ describe_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTasks">>, Input, Options).
 
-%% @doc <note>This action is only used by the Amazon EC2 Container Service
+%% @doc <note> This action is only used by the Amazon EC2 Container Service
 %% agent, and it is not intended for use outside of the agent.
 %%
 %% </note> Returns an endpoint for the Amazon EC2 Container Service agent to
@@ -316,8 +322,12 @@ list_services(Client, Input, Options)
 
 %% @doc Returns a list of task definition families that are registered to
 %% your account (which may include task definition families that no longer
-%% have any <code>ACTIVE</code> task definitions). You can filter the results
-%% with the <code>familyPrefix</code> parameter.
+%% have any <code>ACTIVE</code> task definition revisions).
+%%
+%% You can filter out task definition families that do not contain any
+%% <code>ACTIVE</code> task definition revisions by setting the
+%% <code>status</code> parameter to <code>ACTIVE</code>. You can also filter
+%% the results with the <code>familyPrefix</code> parameter.
 list_task_definition_families(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_task_definition_families(Client, Input, []).
@@ -340,6 +350,9 @@ list_task_definitions(Client, Input, Options)
 %% results by family name, by a particular container instance, or by the
 %% desired status of the task with the <code>family</code>,
 %% <code>containerInstance</code>, and <code>desiredStatus</code> parameters.
+%%
+%% Recently-stopped tasks might appear in the returned results. Currently,
+%% stopped tasks appear in the returned results for at least one hour.
 list_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tasks(Client, Input, []).
@@ -347,7 +360,7 @@ list_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTasks">>, Input, Options).
 
-%% @doc <note>This action is only used by the Amazon EC2 Container Service
+%% @doc <note> This action is only used by the Amazon EC2 Container Service
 %% agent, and it is not intended for use outside of the agent.
 %%
 %% </note> Registers an EC2 instance into the specified cluster. This
@@ -365,6 +378,15 @@ register_container_instance(Client, Input, Options)
 %% more information about task definition parameters and defaults, see <a
 %% href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html">Amazon
 %% ECS Task Definitions</a> in the <i>Amazon EC2 Container Service Developer
+%% Guide</i>.
+%%
+%% You may also specify an IAM role for your task with the
+%% <code>taskRoleArn</code> parameter. When you specify an IAM role for a
+%% task, its containers can then use the latest versions of the AWS CLI or
+%% SDKs to make API requests to the AWS services that are specified in the
+%% IAM policy associated with the role. For more information, see <a
+%% href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html">IAM
+%% Roles for Tasks</a> in the <i>Amazon EC2 Container Service Developer
 %% Guide</i>.
 register_task_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -418,7 +440,7 @@ stop_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopTask">>, Input, Options).
 
-%% @doc <note>This action is only used by the Amazon EC2 Container Service
+%% @doc <note> This action is only used by the Amazon EC2 Container Service
 %% agent, and it is not intended for use outside of the agent.
 %%
 %% </note> Sent to acknowledge that a container changed states.
@@ -429,7 +451,7 @@ submit_container_state_change(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SubmitContainerStateChange">>, Input, Options).
 
-%% @doc <note>This action is only used by the Amazon EC2 Container Service
+%% @doc <note> This action is only used by the Amazon EC2 Container Service
 %% agent, and it is not intended for use outside of the agent.
 %%
 %% </note> Sent to acknowledge that a task changed states.

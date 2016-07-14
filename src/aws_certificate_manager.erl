@@ -11,11 +11,13 @@
 %% href="http://docs.aws.amazon.com/acm/latest/userguide/acm-overview.html">AWS
 %% Certificate Manager User Guide</a>. For more information about using the
 %% ACM API, see the <a
-%% href="http://docs.aws.amazon.com/acm/latest/APIReference/Welcome.html">
-%% AWS Certificate Manager API Reference</a>.
+%% href="http://docs.aws.amazon.com/acm/latest/APIReference/Welcome.html">AWS
+%% Certificate Manager API Reference</a>.
 -module(aws_certificate_manager).
 
--export([delete_certificate/2,
+-export([add_tags_to_certificate/2,
+         add_tags_to_certificate/3,
+         delete_certificate/2,
          delete_certificate/3,
          describe_certificate/2,
          describe_certificate/3,
@@ -23,6 +25,10 @@
          get_certificate/3,
          list_certificates/2,
          list_certificates/3,
+         list_tags_for_certificate/2,
+         list_tags_for_certificate/3,
+         remove_tags_from_certificate/2,
+         remove_tags_from_certificate/3,
          request_certificate/2,
          request_certificate/3,
          resend_validation_email/2,
@@ -34,15 +40,44 @@
 %% API
 %%====================================================================
 
+%% @doc Adds one or more tags to an ACM Certificate. Tags are labels that you
+%% can use to identify and organize your AWS resources. Each tag consists of
+%% a <code>key</code> and an optional <code>value</code>. You specify the
+%% certificate on input by its Amazon Resource Name (ARN). You specify the
+%% tag by using a key-value pair.
+%%
+%% You can apply a tag to just one certificate if you want to identify a
+%% specific characteristic of that certificate, or you can apply the same tag
+%% to multiple certificates if you want to filter for a common relationship
+%% among those certificates. Similarly, you can apply the same tag to
+%% multiple resources if you want to specify a relationship among those
+%% resources. For example, you can add the same tag to an ACM Certificate and
+%% an Elastic Load Balancing load balancer to indicate that they are both
+%% used by the same website. For more information, see <a
+%% href="http://docs.aws.amazon.com/acm/latest/userguide/tags.html">Tagging
+%% ACM Certificates</a>.
+%%
+%% To remove one or more tags, use the <a>RemoveTagsFromCertificate</a>
+%% action. To view all of the tags that have been applied to the certificate,
+%% use the <a>ListTagsForCertificate</a> action.
+add_tags_to_certificate(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    add_tags_to_certificate(Client, Input, []).
+add_tags_to_certificate(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AddTagsToCertificate">>, Input, Options).
+
 %% @doc Deletes an ACM Certificate and its associated private key. If this
 %% action succeeds, the certificate no longer appears in the list of ACM
 %% Certificates that can be displayed by calling the <a>ListCertificates</a>
 %% action or be retrieved by calling the <a>GetCertificate</a> action. The
 %% certificate will not be available for use by other AWS services.
 %%
-%% <note>You cannot delete an ACM Certificate that is being used by another
+%% <note> You cannot delete an ACM Certificate that is being used by another
 %% AWS service. To delete a certificate that is in use, the certificate
-%% association must first be removed. </note>
+%% association must first be removed.
+%%
+%% </note>
 delete_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_certificate(Client, Input, []).
@@ -54,7 +89,7 @@ delete_certificate(Client, Input, Options)
 %% Certificate. For example, this action returns the certificate status, a
 %% flag that indicates whether the certificate is associated with any other
 %% AWS service, and the date at which the certificate request was created.
-%% The ACM Certificate is specified on input by its Amazon Resource Name
+%% You specify the ACM Certificate on input by its Amazon Resource Name
 %% (ARN).
 describe_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -72,7 +107,9 @@ describe_certificate(Client, Input, Options)
 %% OpenSSL.
 %%
 %% <note> Currently, ACM Certificates can be used only with Elastic Load
-%% Balancing and Amazon CloudFront. </note>
+%% Balancing and Amazon CloudFront.
+%%
+%% </note>
 get_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_certificate(Client, Input, []).
@@ -80,20 +117,42 @@ get_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCertificate">>, Input, Options).
 
-%% @doc Retrieves a list of the ACM Certificate ARNs, and the domain name for
-%% each ARN, owned by the calling account. You can filter the list based on
-%% the <code>CertificateStatuses</code> parameter, and you can display up to
-%% <code>MaxItems</code> certificates at one time. If you have more than
-%% <code>MaxItems</code> certificates, use the <code>NextToken</code> marker
-%% from the response object in your next call to the
-%% <code>ListCertificates</code> action to retrieve the next set of
-%% certificate ARNs.
+%% @doc Retrieves a list of ACM Certificates and the domain name for each.
+%% You can optionally filter the list to return only the certificates that
+%% match the specified status.
 list_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_certificates(Client, Input, []).
 list_certificates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCertificates">>, Input, Options).
+
+%% @doc Lists the tags that have been applied to the ACM Certificate. Use the
+%% certificate ARN to specify the certificate. To add a tag to an ACM
+%% Certificate, use the <a>AddTagsToCertificate</a> action. To delete a tag,
+%% use the <a>RemoveTagsFromCertificate</a> action.
+list_tags_for_certificate(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_tags_for_certificate(Client, Input, []).
+list_tags_for_certificate(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTagsForCertificate">>, Input, Options).
+
+%% @doc Remove one or more tags from an ACM Certificate. A tag consists of a
+%% key-value pair. If you do not specify the value portion of the tag when
+%% calling this function, the tag will be removed regardless of value. If you
+%% specify a value, the tag is removed only if it is associated with the
+%% specified value.
+%%
+%% To add tags to a certificate, use the <a>AddTagsToCertificate</a> action.
+%% To view all of the tags that have been applied to a specific ACM
+%% Certificate, use the <a>ListTagsForCertificate</a> action.
+remove_tags_from_certificate(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    remove_tags_from_certificate(Client, Input, []).
+remove_tags_from_certificate(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RemoveTagsFromCertificate">>, Input, Options).
 
 %% @doc Requests an ACM Certificate for use with other AWS services. To
 %% request an ACM Certificate, you must specify the fully qualified domain
@@ -102,7 +161,7 @@ list_certificates(Client, Input, Options)
 %% specify, email is sent to the domain owner to request approval to issue
 %% the certificate. After receiving approval from the domain owner, the ACM
 %% Certificate is issued. For more information, see the <a
-%% href="http://docs.aws.amazon.com/acm/latest/userguide/overview.html"> AWS
+%% href="http://docs.aws.amazon.com/acm/latest/userguide/overview.html">AWS
 %% Certificate Manager User Guide </a>.
 request_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->

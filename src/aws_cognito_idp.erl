@@ -53,10 +53,6 @@
          describe_user_pool_client/3,
          forgot_password/2,
          forgot_password/3,
-         get_j_w_k_s/2,
-         get_j_w_k_s/3,
-         get_open_id_configuration/2,
-         get_open_id_configuration/3,
          get_user/2,
          get_user/3,
          get_user_attribute_verification_code/2,
@@ -274,23 +270,6 @@ forgot_password(Client, Input)
 forgot_password(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ForgotPassword">>, Input, Options).
-
-%% @doc Gets the JSON Web keys for the specified user pool.
-get_j_w_k_s(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    get_j_w_k_s(Client, Input, []).
-get_j_w_k_s(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"GetJWKS">>, Input, Options).
-
-%% @doc Gets the OpenId configuration information for the specified user
-%% pool.
-get_open_id_configuration(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    get_open_id_configuration(Client, Input, []).
-get_open_id_configuration(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"GetOpenIdConfiguration">>, Input, Options).
 
 %% @doc Gets the user attributes and metadata for a user.
 get_user(Client, Input)

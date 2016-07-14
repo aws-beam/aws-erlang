@@ -42,10 +42,14 @@
          delete_interconnect/3,
          delete_virtual_interface/2,
          delete_virtual_interface/3,
+         describe_connection_loa/2,
+         describe_connection_loa/3,
          describe_connections/2,
          describe_connections/3,
          describe_connections_on_interconnect/2,
          describe_connections_on_interconnect/3,
+         describe_interconnect_loa/2,
+         describe_interconnect_loa/3,
          describe_interconnects/2,
          describe_interconnects/3,
          describe_locations/2,
@@ -65,6 +69,10 @@
 %%
 %% Allocates a VLAN number and a specified amount of bandwidth for use by a
 %% hosted connection on the given interconnect.
+%%
+%% <note> This is intended for use by AWS Direct Connect partners only.
+%%
+%% </note>
 allocate_connection_on_interconnect(Client, Input)
   when is_map(Client), is_map(Input) ->
     allocate_connection_on_interconnect(Client, Input, []).
@@ -177,6 +185,10 @@ create_connection(Client, Input, Options)
 %% AllocateConnectionOnInterconnect. The end customer can then connect to AWS
 %% resources by creating a virtual interface on their connection, using the
 %% VLAN assigned to them by the AWS Direct Connect partner.
+%%
+%% <note> This is intended for use by AWS Direct Connect partners only.
+%%
+%% </note>
 create_interconnect(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_interconnect(Client, Input, []).
@@ -220,6 +232,10 @@ delete_connection(Client, Input, Options)
     request(Client, <<"DeleteConnection">>, Input, Options).
 
 %% @doc Deletes the specified interconnect.
+%%
+%% <note> This is intended for use by AWS Direct Connect partners only.
+%%
+%% </note>
 delete_interconnect(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_interconnect(Client, Input, []).
@@ -235,6 +251,22 @@ delete_virtual_interface(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteVirtualInterface">>, Input, Options).
 
+%% @doc Returns the LOA-CFA for a Connection.
+%%
+%% The Letter of Authorization - Connecting Facility Assignment (LOA-CFA) is
+%% a document that your APN partner or service provider uses when
+%% establishing your cross connect to AWS at the colocation facility. For
+%% more information, see <a
+%% href="http://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html">Requesting
+%% Cross Connects at AWS Direct Connect Locations</a> in the AWS Direct
+%% Connect user guide.
+describe_connection_loa(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_connection_loa(Client, Input, []).
+describe_connection_loa(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeConnectionLoa">>, Input, Options).
+
 %% @doc Displays all connections in this region.
 %%
 %% If a connection ID is provided, the call returns only that particular
@@ -248,12 +280,31 @@ describe_connections(Client, Input, Options)
 
 %% @doc Return a list of connections that have been provisioned on the given
 %% interconnect.
+%%
+%% <note> This is intended for use by AWS Direct Connect partners only.
+%%
+%% </note>
 describe_connections_on_interconnect(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_connections_on_interconnect(Client, Input, []).
 describe_connections_on_interconnect(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConnectionsOnInterconnect">>, Input, Options).
+
+%% @doc Returns the LOA-CFA for an Interconnect.
+%%
+%% The Letter of Authorization - Connecting Facility Assignment (LOA-CFA) is
+%% a document that is used when establishing your cross connect to AWS at the
+%% colocation facility. For more information, see <a
+%% href="http://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html">Requesting
+%% Cross Connects at AWS Direct Connect Locations</a> in the AWS Direct
+%% Connect user guide.
+describe_interconnect_loa(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_interconnect_loa(Client, Input, []).
+describe_interconnect_loa(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeInterconnectLoa">>, Input, Options).
 
 %% @doc Returns a list of interconnects owned by the AWS account.
 %%
