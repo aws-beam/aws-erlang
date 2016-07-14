@@ -51,9 +51,10 @@
 %% API
 %%====================================================================
 
-%% @doc Adds or overwrites one or more tags for the specified resource.
+%% @doc Adds or overwrites one or more tags for the specified AWS CloudHSM
+%% resource.
 %%
-%% Each tag consists of a key and a value. Tag keys must be unique per
+%% Each tag consists of a key and a value. Tag keys must be unique to each
 %% resource.
 add_tags_to_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -211,7 +212,7 @@ list_luna_clients(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLunaClients">>, Input, Options).
 
-%% @doc Returns a list of all tags for the specified resource.
+%% @doc Returns a list of all tags for the specified AWS CloudHSM resource.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -254,7 +255,7 @@ modify_luna_client(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyLunaClient">>, Input, Options).
 
-%% @doc Removes one or more tags from the specified resource.
+%% @doc Removes one or more tags from the specified AWS CloudHSM resource.
 %%
 %% To remove a tag, specify only the tag key to remove (not the value). To
 %% overwrite the value for an existing tag, use <a>AddTagsToResource</a>.

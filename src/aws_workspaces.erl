@@ -8,8 +8,14 @@
 %% parameters, and errors.
 -module(aws_workspaces).
 
--export([create_workspaces/2,
+-export([create_tags/2,
+         create_tags/3,
+         create_workspaces/2,
          create_workspaces/3,
+         delete_tags/2,
+         delete_tags/3,
+         describe_tags/2,
+         describe_tags/3,
          describe_workspace_bundles/2,
          describe_workspace_bundles/3,
          describe_workspace_directories/2,
@@ -29,6 +35,14 @@
 %% API
 %%====================================================================
 
+%% @doc Creates tags for a WorkSpace.
+create_tags(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_tags(Client, Input, []).
+create_tags(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateTags">>, Input, Options).
+
 %% @doc Creates one or more WorkSpaces.
 %%
 %% <note> This operation is asynchronous and returns before the WorkSpaces
@@ -41,6 +55,22 @@ create_workspaces(Client, Input)
 create_workspaces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWorkspaces">>, Input, Options).
+
+%% @doc Deletes tags from a WorkSpace.
+delete_tags(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_tags(Client, Input, []).
+delete_tags(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteTags">>, Input, Options).
+
+%% @doc Describes tags for a WorkSpace.
+describe_tags(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_tags(Client, Input, []).
+describe_tags(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeTags">>, Input, Options).
 
 %% @doc Obtains information about the WorkSpace bundles that are available to
 %% your account in the specified region.

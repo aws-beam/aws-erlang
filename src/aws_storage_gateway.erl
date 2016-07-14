@@ -12,31 +12,63 @@
 %% Use the following links to get started using the <i>AWS Storage Gateway
 %% Service API Reference</i>:
 %%
-%% <ul> <li><a
+%% <ul> <li> <a
 %% href="http://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayHTTPRequestsHeaders.html">AWS
 %% Storage Gateway Required Request Headers</a>: Describes the required
-%% headers that you must send with every POST request to AWS Storage
-%% Gateway.</li> <li><a
+%% headers that you must send with every POST request to AWS Storage Gateway.
+%%
+%% </li> <li> <a
 %% href="http://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewaySigningRequests.html">Signing
 %% Requests</a>: AWS Storage Gateway requires that you authenticate every
-%% request you send; this topic describes how sign such a request.</li>
-%% <li><a
+%% request you send; this topic describes how sign such a request.
+%%
+%% </li> <li> <a
 %% href="http://docs.aws.amazon.com/storagegateway/latest/userguide/APIErrorResponses.html">Error
 %% Responses</a>: Provides reference information about AWS Storage Gateway
-%% errors.</li> <li><a
+%% errors.
+%%
+%% </li> <li> <a
 %% href="http://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPIOperations.html">Operations
 %% in AWS Storage Gateway</a>: Contains detailed descriptions of all AWS
 %% Storage Gateway operations, their request parameters, response elements,
-%% possible errors, and examples of requests and responses.</li> <li><a
+%% possible errors, and examples of requests and responses.
+%%
+%% </li> <li> <a
 %% href="http://docs.aws.amazon.com/general/latest/gr/index.html?rande.html">AWS
 %% Storage Gateway Regions and Endpoints</a>: Provides a list of each of the
-%% s and endpoints available for use with AWS Storage Gateway. </li> </ul>
-%% <note>AWS Storage Gateway resource IDs are in uppercase. When you use
-%% these resource IDs with the Amazon EC2 API, EC2 expects resource IDs in
-%% lowercase. You must change your resource ID to lowercase to use it with
-%% the EC2 API. For example, in Storage Gateway the ID for a volume might be
-%% vol-1122AABB. When you use this ID with the EC2 API, you must change it to
-%% vol-1122aabb. Otherwise, the EC2 API might not behave as expected.</note>
+%% s and endpoints available for use with AWS Storage Gateway.
+%%
+%% </li> </ul> <note> AWS Storage Gateway resource IDs are in uppercase. When
+%% you use these resource IDs with the Amazon EC2 API, EC2 expects resource
+%% IDs in lowercase. You must change your resource ID to lowercase to use it
+%% with the EC2 API. For example, in Storage Gateway the ID for a volume
+%% might be <code>vol-1122AABB</code>. When you use this ID with the EC2 API,
+%% you must change it to <code>vol-1122aabb</code>. Otherwise, the EC2 API
+%% might not behave as expected.
+%%
+%% </note> <important> IDs for Storage Gateway volumes and Amazon EBS
+%% snapshots created from gateway volumes are changing to a longer format.
+%% Starting in December 2016, all new volumes and snapshots will be created
+%% with a 17-character string. Starting in April 2016, you will be able to
+%% use these longer IDs so you can test your systems with the new format. For
+%% more information, see <a
+%% href="https://aws.amazon.com/ec2/faqs/#longer-ids">Longer EC2 and EBS
+%% Resource IDs</a>.
+%%
+%% For example, a volume ARN with the longer volume ID format will look like
+%% this:
+%%
+%% <code>arn:aws:storagegateway:us-west-2:111122223333:gateway/sgw-12A3456B/volume/vol-1122AABBCCDDEEFFG</code>.
+%%
+%% A snapshot ID with the longer ID format will look like this:
+%% <code>snap-78e226633445566ee</code>.
+%%
+%% For more information, see <a
+%% href="https://forums.aws.amazon.com/ann.jspa?annID=3557">Announcement:
+%% Heads-up – Longer AWS Storage Gateway volume and snapshot IDs coming in
+%% 2016</a>.
+%%
+%% </important>
 -module(aws_storage_gateway).
 
 -export([activate_gateway/2,
@@ -115,6 +147,8 @@
          list_local_disks/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         list_tapes/2,
+         list_tapes/3,
          list_volume_initiators/2,
          list_volume_initiators/3,
          list_volume_recovery_points/2,
@@ -167,7 +201,9 @@
 %% <a>UpdateGatewayInformation</a>.
 %%
 %% <note>You must turn on the gateway VM before you can activate your
-%% gateway.</note>
+%% gateway.
+%%
+%% </note>
 activate_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     activate_gateway(Client, Input, []).
@@ -197,11 +233,11 @@ add_cache(Client, Input, Options)
 %% or team. Each tag consists of a key and a value, which you define. You can
 %% add tags to the following AWS Storage Gateway resources:
 %%
-%% <ul> <li>Storage gateways of all types
+%% <ul> <li> Storage gateways of all types
 %%
-%% </li> </ul> <ul> <li>Storage Volumes
+%% </li> </ul> <ul> <li> Storage Volumes
 %%
-%% </li> </ul> <ul> <li>Virtual Tapes
+%% </li> </ul> <ul> <li> Virtual Tapes
 %%
 %% </li> </ul> You can create a maximum of 10 tags for each resource. Virtual
 %% tapes and storage volumes that are recovered to a new gateway maintain
@@ -232,7 +268,7 @@ add_upload_buffer(Client, Input, Options)
 %% architecture. This operation is deprecated in cached-volumes API version
 %% 20120630. Use <a>AddUploadBuffer</a> instead.
 %%
-%% <note>Working storage is also referred to as upload buffer. You can also
+%% <note> Working storage is also referred to as upload buffer. You can also
 %% use the <a>AddUploadBuffer</a> operation to add upload buffer to a
 %% stored-volume gateway.
 %%
@@ -270,11 +306,13 @@ cancel_retrieval(Client, Input, Options)
 %%
 %% <note>Cache storage must be allocated to the gateway before you can create
 %% a cached volume. Use the <a>AddCache</a> operation to add cache storage to
-%% a gateway. </note> In the request, you must specify the gateway, size of
-%% the volume in bytes, the iSCSI target name, an IP address on which to
-%% expose the target, and a unique client token. In response, AWS Storage
-%% Gateway creates the volume and returns information about it such as the
-%% volume Amazon Resource Name (ARN), its size, and the iSCSI target ARN that
+%% a gateway.
+%%
+%% </note> In the request, you must specify the gateway, size of the volume
+%% in bytes, the iSCSI target name, an IP address on which to expose the
+%% target, and a unique client token. In response, AWS Storage Gateway
+%% creates the volume and returns information about it such as the volume
+%% Amazon Resource Name (ARN), its size, and the iSCSI target ARN that
 %% initiators can use to connect to the volume target.
 create_cached_iscsi_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -305,7 +343,14 @@ create_cached_iscsi_volume(Client, Input, Options)
 %% <note>To list or delete a snapshot, you must use the Amazon EC2 API. For
 %% more information, see DescribeSnapshots or DeleteSnapshot in the <a
 %% href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Operations.html">EC2
-%% API reference</a>.</note>
+%% API reference</a>.
+%%
+%% </note> <important> Volume and snapshot IDs are changing to a longer
+%% length ID format. For more information, see the important note on the <a
+%% href="http://docs.aws.amazon.com/storagegateway/latest/APIReference/Welcome.html">Welcome</a>
+%% page.
+%%
+%% </important>
 create_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_snapshot(Client, Input, []).
@@ -366,7 +411,9 @@ create_stored_iscsi_volume(Client, Input, Options)
 %%
 %% <note>Cache storage must be allocated to the gateway before you can create
 %% a virtual tape. Use the <a>AddCache</a> operation to add cache storage to
-%% a gateway.</note>
+%% a gateway.
+%%
+%% </note>
 create_tape_with_barcode(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_tape_with_barcode(Client, Input, []).
@@ -379,7 +426,9 @@ create_tape_with_barcode(Client, Input, Options)
 %%
 %% <note>Cache storage must be allocated to the gateway before you can create
 %% virtual tapes. Use the <a>AddCache</a> operation to add cache storage to a
-%% gateway. </note>
+%% gateway.
+%%
+%% </note>
 create_tapes(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_tapes(Client, Input, []).
@@ -653,7 +702,7 @@ describe_vtl_devices(Client, Input, Options)
 %% This operation is deprecated in cached-volumes API version (20120630). Use
 %% DescribeUploadBuffer instead.
 %%
-%% <note>Working storage is also referred to as upload buffer. You can also
+%% <note> Working storage is also referred to as upload buffer. You can also
 %% use the DescribeUploadBuffer operation to add upload buffer to a
 %% stored-volume gateway.
 %%
@@ -673,7 +722,9 @@ describe_working_storage(Client, Input, Options)
 %% Use this operation for a gateway-VTL that is not reachable or not
 %% functioning.
 %%
-%% <important>Once a gateway is disabled it cannot be enabled.</important>
+%% <important>Once a gateway is disabled it cannot be enabled.
+%%
+%% </important>
 disable_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_gateway(Client, Input, []).
@@ -725,6 +776,24 @@ list_tags_for_resource(Client, Input)
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
+
+%% @doc Lists virtual tapes in your virtual tape library (VTL) and your
+%% virtual tape shelf (VTS). You specify the tapes to list by specifying one
+%% or more tape Amazon Resource Names (ARNs). If you don't specify a tape
+%% ARN, the operation lists all virtual tapes in both your VTL and VTS.
+%%
+%% This operation supports pagination. By default, the operation returns a
+%% maximum of up to 100 tapes. You can optionally specify the
+%% <code>Limit</code> parameter in the body to limit the number of tapes in
+%% the response. If the number of tapes returned in the response is
+%% truncated, the response includes a <code>Marker</code> element that you
+%% can use in your subsequent request to retrieve the next set of tapes.
+list_tapes(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_tapes(Client, Input, []).
+list_tapes(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTapes">>, Input, Options).
 
 %% @doc Lists iSCSI initiators that are connected to a volume. You can use
 %% this operation to determine whether a volume is being used or not.
@@ -821,7 +890,9 @@ retrieve_tape_archive(Client, Input, Options)
 %%
 %% <note>The virtual tape can be retrieved to only one gateway. The retrieved
 %% tape is read-only. The virtual tape can be retrieved to only a
-%% gateway-VTL. There is no charge for retrieving recovery points.</note>
+%% gateway-VTL. There is no charge for retrieving recovery points.
+%%
+%% </note>
 retrieve_tape_recovery_point(Client, Input)
   when is_map(Client), is_map(Input) ->
     retrieve_tape_recovery_point(Client, Input, []).
@@ -848,19 +919,22 @@ set_local_console_password(Client, Input, Options)
 %%
 %% <note>If you want to shut down the VM, it is recommended that you first
 %% shut down the gateway component in the VM to avoid unpredictable
-%% conditions.</note> After the gateway is shutdown, you cannot call any
-%% other API except <a>StartGateway</a>, <a>DescribeGatewayInformation</a>,
-%% and <a>ListGateways</a>. For more information, see <a>ActivateGateway</a>.
+%% conditions.
+%%
+%% </note> After the gateway is shutdown, you cannot call any other API
+%% except <a>StartGateway</a>, <a>DescribeGatewayInformation</a>, and
+%% <a>ListGateways</a>. For more information, see <a>ActivateGateway</a>.
 %% Your applications cannot read from or write to the gateway's storage
 %% volumes, and there are no snapshots taken.
 %%
 %% <note>When you make a shutdown request, you will get a <code>200 OK</code>
 %% success response immediately. However, it might take some time for the
 %% gateway to shut down. You can call the <a>DescribeGatewayInformation</a>
-%% API to check the status. For more information, see
-%% <a>ActivateGateway</a>.</note> If do not intend to use the gateway again,
-%% you must delete the gateway (using <a>DeleteGateway</a>) to no longer pay
-%% software charges associated with the gateway.
+%% API to check the status. For more information, see <a>ActivateGateway</a>.
+%%
+%% </note> If do not intend to use the gateway again, you must delete the
+%% gateway (using <a>DeleteGateway</a>) to no longer pay software charges
+%% associated with the gateway.
 shutdown_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     shutdown_gateway(Client, Input, []).
@@ -877,8 +951,10 @@ shutdown_gateway(Client, Input, Options)
 %% immediately. However, it might take some time for the gateway to be ready.
 %% You should call <a>DescribeGatewayInformation</a> and check the status
 %% before making any additional API calls. For more information, see
-%% <a>ActivateGateway</a>.</note> To specify which gateway to start, use the
-%% Amazon Resource Name (ARN) of the gateway in your request.
+%% <a>ActivateGateway</a>.
+%%
+%% </note> To specify which gateway to start, use the Amazon Resource Name
+%% (ARN) of the gateway in your request.
 start_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_gateway(Client, Input, []).
@@ -926,7 +1002,9 @@ update_chap_credentials(Client, Input, Options)
 %%
 %% <note>For Gateways activated after September 2, 2015, the gateway's ARN
 %% contains the gateway ID rather than the gateway name. However, changing
-%% the name of the gateway has no effect on the gateway's ARN.</note>
+%% the name of the gateway has no effect on the gateway's ARN.
+%%
+%% </note>
 update_gateway_information(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_gateway_information(Client, Input, []).
@@ -940,15 +1018,19 @@ update_gateway_information(Client, Input, Options)
 %% <note>When you make this request, you get a <code>200 OK</code> success
 %% response immediately. However, it might take some time for the update to
 %% complete. You can call <a>DescribeGatewayInformation</a> to verify the
-%% gateway is in the <code>STATE_RUNNING</code> state.</note> <important>A
-%% software update forces a system restart of your gateway. You can minimize
-%% the chance of any disruption to your applications by increasing your iSCSI
-%% Initiators' timeouts. For more information about increasing iSCSI
-%% Initiator timeouts for Windows and Linux, see <a
+%% gateway is in the <code>STATE_RUNNING</code> state.
+%%
+%% </note> <important>A software update forces a system restart of your
+%% gateway. You can minimize the chance of any disruption to your
+%% applications by increasing your iSCSI Initiators' timeouts. For more
+%% information about increasing iSCSI Initiator timeouts for Windows and
+%% Linux, see <a
 %% href="http://docs.aws.amazon.com/storagegateway/latest/userguide/ConfiguringiSCSIClientInitiatorWindowsClient.html#CustomizeWindowsiSCSISettings">Customizing
 %% Your Windows iSCSI Settings</a> and <a
 %% href="http://docs.aws.amazon.com/storagegateway/latest/userguide/ConfiguringiSCSIClientInitiatorRedHatClient.html#CustomizeLinuxiSCSISettings">Customizing
-%% Your Linux iSCSI Settings</a>, respectively.</important>
+%% Your Linux iSCSI Settings</a>, respectively.
+%%
+%% </important>
 update_gateway_software_now(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_gateway_software_now(Client, Input, []).

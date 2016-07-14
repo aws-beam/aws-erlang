@@ -12,16 +12,18 @@
 %% API call, the source IP address, the request parameters, and the response
 %% elements returned by the service.
 %%
-%% <note> As an alternative to using the API, you can use one of the AWS
-%% SDKs, which consist of libraries and sample code for various programming
+%% <note> As an alternative to the API, you can use one of the AWS SDKs,
+%% which consist of libraries and sample code for various programming
 %% languages and platforms (Java, Ruby, .NET, iOS, Android, etc.). The SDKs
 %% provide a convenient way to create programmatic access to AWSCloudTrail.
 %% For example, the SDKs take care of cryptographically signing requests,
 %% managing errors, and retrying requests automatically. For information
 %% about the AWS SDKs, including how to download and install them, see the <a
 %% href="http://aws.amazon.com/tools/">Tools for Amazon Web Services
-%% page</a>. </note> See the CloudTrail User Guide for information about the
-%% data that is included with each AWS API call listed in the log files.
+%% page</a>.
+%%
+%% </note> See the CloudTrail User Guide for information about the data that
+%% is included with each AWS API call listed in the log files.
 -module(aws_cloud_trail).
 
 -export([add_tags/2,
@@ -114,10 +116,12 @@ get_trail_status(Client, Input, Options)
 %% digest files within the specified time range. The public key is needed to
 %% validate digest files that were signed with its corresponding private key.
 %%
-%% <note>CloudTrail uses different private/public key pairs per region. Each
+%% <note> CloudTrail uses different private/public key pairs per region. Each
 %% digest file is signed with a private key unique to its region. Therefore,
 %% when you validate a digest file from a particular region, you must look in
-%% the same region for its corresponding public key.</note>
+%% the same region for its corresponding public key.
+%%
+%% </note>
 list_public_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_public_keys(Client, Input, []).
@@ -125,10 +129,7 @@ list_public_keys(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPublicKeys">>, Input, Options).
 
-%% @doc Lists the tags for the specified trail or trails in the current
-%% region.
-%%
-%% Lists the tags for the trail in the current region.
+%% @doc Lists the tags for the trail in the current region.
 list_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags(Client, Input, []).
@@ -147,11 +148,14 @@ list_tags(Client, Input, Options)
 %% results returned is 10, with a maximum of 50 possible. The response
 %% includes a token that you can use to get the next page of results.
 %%
-%% <important>The rate of lookup requests is limited to one per second per
+%% <important> The rate of lookup requests is limited to one per second per
 %% account. If this limit is exceeded, a throttling error occurs.
-%% </important> <important>Events that occurred during the selected time
+%%
+%% </important> <important> Events that occurred during the selected time
 %% range will not be available for lookup if CloudTrail logging was not
-%% enabled when the events occurred.</important>
+%% enabled when the events occurred.
+%%
+%% </important>
 lookup_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     lookup_events(Client, Input, []).

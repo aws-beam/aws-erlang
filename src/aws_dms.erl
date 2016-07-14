@@ -5,10 +5,10 @@
 %%
 %% AWS Database Migration Service (AWS DMS) can migrate your data to and from
 %% the most widely used commercial and open-source databases such as Oracle,
-%% PostgreSQL, Microsoft SQL Server, MariaDB, Amazon Aurora, and MySQL. The
-%% service supports homogeneous migrations such as Oracle to Oracle, as well
-%% as heterogeneous migrations between different database platforms, such as
-%% Oracle to MySQL or SQL Server to PostgreSQL.
+%% PostgreSQL, Microsoft SQL Server, Amazon Redshift, MariaDB, Amazon Aurora,
+%% and MySQL. The service supports homogeneous migrations such as Oracle to
+%% Oracle, as well as heterogeneous migrations between different database
+%% platforms, such as Oracle to MySQL or SQL Server to PostgreSQL.
 -module(aws_dms).
 
 -export([add_tags_to_resource/2,
@@ -21,6 +21,8 @@
          create_replication_subnet_group/3,
          create_replication_task/2,
          create_replication_task/3,
+         delete_certificate/2,
+         delete_certificate/3,
          delete_endpoint/2,
          delete_endpoint/3,
          delete_replication_instance/2,
@@ -31,6 +33,8 @@
          delete_replication_task/3,
          describe_account_attributes/2,
          describe_account_attributes/3,
+         describe_certificates/2,
+         describe_certificates/3,
          describe_connections/2,
          describe_connections/3,
          describe_endpoint_types/2,
@@ -51,6 +55,8 @@
          describe_schemas/3,
          describe_table_statistics/2,
          describe_table_statistics/3,
+         import_certificate/2,
+         import_certificate/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          modify_endpoint/2,
@@ -80,8 +86,6 @@
 %% endpoint, security group, and migration task. These tags can also be used
 %% with cost allocation reporting to track cost associated with DMS
 %% resources, or used in a Condition statement in an IAM policy for DMS.
-%%
-%% <note/><p/>
 add_tags_to_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags_to_resource(Client, Input, []).
@@ -90,8 +94,6 @@ add_tags_to_resource(Client, Input, Options)
     request(Client, <<"AddTagsToResource">>, Input, Options).
 
 %% @doc Creates an endpoint using the provided settings.
-%%
-%% <note/><p/>
 create_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_endpoint(Client, Input, []).
@@ -100,8 +102,6 @@ create_endpoint(Client, Input, Options)
     request(Client, <<"CreateEndpoint">>, Input, Options).
 
 %% @doc Creates the replication instance using the specified parameters.
-%%
-%% <note/><p/>
 create_replication_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_replication_instance(Client, Input, []).
@@ -111,8 +111,6 @@ create_replication_instance(Client, Input, Options)
 
 %% @doc Creates a replication subnet group given a list of the subnet IDs in
 %% a VPC.
-%%
-%% <note/><p/>
 create_replication_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_replication_subnet_group(Client, Input, []).
@@ -121,8 +119,6 @@ create_replication_subnet_group(Client, Input, Options)
     request(Client, <<"CreateReplicationSubnetGroup">>, Input, Options).
 
 %% @doc Creates a replication task using the specified parameters.
-%%
-%% <note/><p/>
 create_replication_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_replication_task(Client, Input, []).
@@ -130,10 +126,20 @@ create_replication_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateReplicationTask">>, Input, Options).
 
+%% @doc Deletes the specified certificate.
+delete_certificate(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_certificate(Client, Input, []).
+delete_certificate(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteCertificate">>, Input, Options).
+
 %% @doc Deletes the specified endpoint.
 %%
-%% <note>All tasks associated with the endpoint must be deleted before you
-%% can delete the endpoint.</note><p/>
+%% <note> All tasks associated with the endpoint must be deleted before you
+%% can delete the endpoint.
+%%
+%% </note> <p/>
 delete_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_endpoint(Client, Input, []).
@@ -143,8 +149,10 @@ delete_endpoint(Client, Input, Options)
 
 %% @doc Deletes the specified replication instance.
 %%
-%% <note>You must delete any migration tasks that are associated with the
-%% replication instance before you can delete it.</note><p/>
+%% <note> You must delete any migration tasks that are associated with the
+%% replication instance before you can delete it.
+%%
+%% </note> <p/>
 delete_replication_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_replication_instance(Client, Input, []).
@@ -153,8 +161,6 @@ delete_replication_instance(Client, Input, Options)
     request(Client, <<"DeleteReplicationInstance">>, Input, Options).
 
 %% @doc Deletes a subnet group.
-%%
-%% <note/><p/>
 delete_replication_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_replication_subnet_group(Client, Input, []).
@@ -163,8 +169,6 @@ delete_replication_subnet_group(Client, Input, Options)
     request(Client, <<"DeleteReplicationSubnetGroup">>, Input, Options).
 
 %% @doc Deletes the specified replication task.
-%%
-%% <note/><p/>
 delete_replication_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_replication_task(Client, Input, []).
@@ -179,8 +183,6 @@ delete_replication_task(Client, Input, Options)
 %% value.
 %%
 %% This command does not take any parameters.
-%%
-%% <note/><p/>
 describe_account_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_account_attributes(Client, Input, []).
@@ -188,11 +190,17 @@ describe_account_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccountAttributes">>, Input, Options).
 
+%% @doc Provides a description of the certificate.
+describe_certificates(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_certificates(Client, Input, []).
+describe_certificates(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeCertificates">>, Input, Options).
+
 %% @doc Describes the status of the connections that have been made between
 %% the replication instance and an endpoint. Connections are created when you
 %% test an endpoint.
-%%
-%% <note/><p/>
 describe_connections(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_connections(Client, Input, []).
@@ -201,8 +209,6 @@ describe_connections(Client, Input, Options)
     request(Client, <<"DescribeConnections">>, Input, Options).
 
 %% @doc Returns information about the type of endpoints available.
-%%
-%% <note/> <p/>
 describe_endpoint_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_endpoint_types(Client, Input, []).
@@ -212,8 +218,6 @@ describe_endpoint_types(Client, Input, Options)
 
 %% @doc Returns information about the endpoints for your account in the
 %% current region.
-%%
-%% <note/><p/>
 describe_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_endpoints(Client, Input, []).
@@ -223,8 +227,6 @@ describe_endpoints(Client, Input, Options)
 
 %% @doc Returns information about the replication instance types that can be
 %% created in the specified region.
-%%
-%% <note/><p/>
 describe_orderable_replication_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_orderable_replication_instances(Client, Input, []).
@@ -233,8 +235,6 @@ describe_orderable_replication_instances(Client, Input, Options)
     request(Client, <<"DescribeOrderableReplicationInstances">>, Input, Options).
 
 %% @doc Returns the status of the RefreshSchemas operation.
-%%
-%% <note/><p/>
 describe_refresh_schemas_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_refresh_schemas_status(Client, Input, []).
@@ -244,8 +244,6 @@ describe_refresh_schemas_status(Client, Input, Options)
 
 %% @doc Returns information about replication instances for your account in
 %% the current region.
-%%
-%% <note/><p/>
 describe_replication_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_replication_instances(Client, Input, []).
@@ -254,8 +252,6 @@ describe_replication_instances(Client, Input, Options)
     request(Client, <<"DescribeReplicationInstances">>, Input, Options).
 
 %% @doc Returns information about the replication subnet groups.
-%%
-%% <note/><p/>
 describe_replication_subnet_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_replication_subnet_groups(Client, Input, []).
@@ -265,8 +261,6 @@ describe_replication_subnet_groups(Client, Input, Options)
 
 %% @doc Returns information about replication tasks for your account in the
 %% current region.
-%%
-%% <note/><p/>
 describe_replication_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_replication_tasks(Client, Input, []).
@@ -276,7 +270,7 @@ describe_replication_tasks(Client, Input, Options)
 
 %% @doc Returns information about the schema for the specified endpoint.
 %%
-%% <note/><p/>
+%% <p/>
 describe_schemas(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_schemas(Client, Input, []).
@@ -286,8 +280,6 @@ describe_schemas(Client, Input, Options)
 
 %% @doc Returns table statistics on the database migration task, including
 %% table name, rows inserted, rows updated, and rows deleted.
-%%
-%% <note/><p/>
 describe_table_statistics(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_table_statistics(Client, Input, []).
@@ -295,9 +287,15 @@ describe_table_statistics(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTableStatistics">>, Input, Options).
 
+%% @doc Uploads the specified certificate.
+import_certificate(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    import_certificate(Client, Input, []).
+import_certificate(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ImportCertificate">>, Input, Options).
+
 %% @doc Lists all tags for an AWS DMS resource.
-%%
-%% <note/><p/>
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -306,8 +304,6 @@ list_tags_for_resource(Client, Input, Options)
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc Modifies the specified endpoint.
-%%
-%% <note/><p/>
 modify_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_endpoint(Client, Input, []).
@@ -319,7 +315,8 @@ modify_endpoint(Client, Input, Options)
 %% change one or more parameters by specifying these parameters and the new
 %% values in the request.
 %%
-%% <note>Some settings are applied during the maintenance window.</note><p/>
+%% Some settings are applied during the maintenance window.
+%%
 %% <p/>
 modify_replication_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -329,8 +326,6 @@ modify_replication_instance(Client, Input, Options)
     request(Client, <<"ModifyReplicationInstance">>, Input, Options).
 
 %% @doc Modifies the settings for the specified replication subnet group.
-%%
-%% <note/><p/>
 modify_replication_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_replication_subnet_group(Client, Input, []).
@@ -342,8 +337,6 @@ modify_replication_subnet_group(Client, Input, Options)
 %% asynchronous operation and can take several minutes. You can check the
 %% status of this operation by calling the DescribeRefreshSchemasStatus
 %% operation.
-%%
-%% <note/><p/>
 refresh_schemas(Client, Input)
   when is_map(Client), is_map(Input) ->
     refresh_schemas(Client, Input, []).
@@ -352,8 +345,6 @@ refresh_schemas(Client, Input, Options)
     request(Client, <<"RefreshSchemas">>, Input, Options).
 
 %% @doc Removes metadata tags from a DMS resource.
-%%
-%% <note/><p/>
 remove_tags_from_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags_from_resource(Client, Input, []).
@@ -362,8 +353,6 @@ remove_tags_from_resource(Client, Input, Options)
     request(Client, <<"RemoveTagsFromResource">>, Input, Options).
 
 %% @doc Starts the replication task.
-%%
-%% <note/><p/>
 start_replication_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_replication_task(Client, Input, []).
@@ -373,7 +362,7 @@ start_replication_task(Client, Input, Options)
 
 %% @doc Stops the replication task.
 %%
-%% <note/><p/>
+%% <p/>
 stop_replication_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_replication_task(Client, Input, []).
@@ -383,8 +372,6 @@ stop_replication_task(Client, Input, Options)
 
 %% @doc Tests the connection between the replication instance and the
 %% endpoint.
-%%
-%% <note/><p/>
 test_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_connection(Client, Input, []).

@@ -48,11 +48,11 @@
 %% By default, you can create up to 20 delivery streams per region.
 %%
 %% A delivery stream can only be configured with a single destination, Amazon
-%% S3 or Amazon Redshift. For correct <a>CreateDeliveryStream</a> request
-%% syntax, specify only one destination configuration parameter: either
-%% <b>ElasticsearchDestinationConfiguration</b>,
-%% <b>RedshiftDestinationConfiguration</b> or
-%% <b>S3DestinationConfiguration</b>
+%% S3, Amazon Elasticsearch Service, or Amazon Redshift. For correct
+%% <a>CreateDeliveryStream</a> request syntax, specify only one destination
+%% configuration parameter: either <b>S3DestinationConfiguration</b>,
+%% <b>ElasticsearchDestinationConfiguration</b>, or
+%% <b>RedshiftDestinationConfiguration</b>.
 %%
 %% As part of <b>S3DestinationConfiguration</b>, optional values
 %% <b>BufferingHints</b>, <b>EncryptionConfiguration</b>, and
@@ -67,23 +67,27 @@
 %%
 %% A few notes about <b>RedshiftDestinationConfiguration</b>:
 %%
-%% <ul> <li>An Amazon Redshift destination requires an S3 bucket as
+%% <ul> <li> An Amazon Redshift destination requires an S3 bucket as
 %% intermediate location, as Firehose first delivers data to S3 and then uses
 %% <code>COPY</code> syntax to load data into an Amazon Redshift table. This
 %% is specified in the
-%% <b>RedshiftDestinationConfiguration.S3Configuration</b> parameter
-%% element.</li> <li>The compression formats <code>SNAPPY</code> or
-%% <code>ZIP</code> cannot be specified in
+%% <b>RedshiftDestinationConfiguration.S3Configuration</b> parameter element.
+%%
+%% </li> <li> The compression formats <code>SNAPPY</code> or <code>ZIP</code>
+%% cannot be specified in
 %% <b>RedshiftDestinationConfiguration.S3Configuration</b> because the Amazon
 %% Redshift <code>COPY</code> operation that reads from the S3 bucket doesn't
-%% support these compression formats.</li> <li>We strongly recommend that the
-%% username and password provided is used exclusively for Firehose purposes,
-%% and that the permissions for the account are restricted for Amazon
-%% Redshift <code>INSERT</code> permissions.</li> </ul> Firehose assumes the
-%% IAM role that is configured as part of destinations. The IAM role should
-%% allow the Firehose principal to assume the role, and the role should have
-%% permissions that allows the service to deliver the data. For more
-%% information, see <a
+%% support these compression formats.
+%%
+%% </li> <li> We strongly recommend that the username and password provided
+%% is used exclusively for Firehose purposes, and that the permissions for
+%% the account are restricted for Amazon Redshift <code>INSERT</code>
+%% permissions.
+%%
+%% </li> </ul> Firehose assumes the IAM role that is configured as part of
+%% destinations. The IAM role should allow the Firehose principal to assume
+%% the role, and the role should have permissions that allows the service to
+%% deliver the data. For more information, see <a
 %% href="http://docs.aws.amazon.com/firehose/latest/dev/controlling-access.html#using-iam-s3">Amazon
 %% S3 Bucket Access</a> in the <i>Amazon Kinesis Firehose Developer
 %% Guide</i>.

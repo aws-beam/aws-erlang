@@ -180,7 +180,7 @@
 %% can use this value to retry the operation starting with the next item to
 %% get.
 %%
-%% <important>If you request more than 100 items <i>BatchGetItem</i> will
+%% <important> If you request more than 100 items <i>BatchGetItem</i> will
 %% return a <i>ValidationException</i> with the message "Too many items
 %% requested for the BatchGetItem call".
 %%
@@ -221,8 +221,8 @@
 %% in parallel.
 %%
 %% When designing your application, keep in mind that DynamoDB does not
-%% return attributes in any particular order. To help parse the response by
-%% item, include the primary key values for the items in your request in the
+%% return items in any particular order. To help parse the response by item,
+%% include the primary key values for the items in your request in the
 %% <i>AttributesToGet</i> parameter.
 %%
 %% If a requested item does not exist, it is not returned in the result.
@@ -314,7 +314,7 @@ batch_get_item(Client, Input, Options)
 %%
 %% </li> <li> Any individual item in a batch exceeds 400 KB.
 %%
-%% </li> <li>The total request size exceeds 16 MB.
+%% </li> <li> The total request size exceeds 16 MB.
 %%
 %% </li> </ul>
 batch_write_item(Client, Input)
@@ -420,23 +420,34 @@ delete_table(Client, Input, Options)
 %% For example, you could use one of the AWS SDKs to do the following:
 %%
 %% <ol> <li>Call <i>DescribeLimits</i> for a particular region to obtain your
-%% current account limits on provisioned capacity there.</li> <li>Create a
-%% variable to hold the aggregate read capacity units provisioned for all
-%% your tables in that region, and one to hold the aggregate write capacity
-%% units. Zero them both.</li> <li>Call <i>ListTables</i> to obtain a list of
-%% all your DynamoDB tables.</li> <li>For each table name listed by
-%% <i>ListTables</i>, do the following:
+%% current account limits on provisioned capacity there.
 %%
-%% <ul> <li>Call <i>DescribeTable</i> with the table name.</li> <li>Use the
-%% data returned by <i>DescribeTable</i> to add the read capacity units and
-%% write capacity units provisioned for the table itself to your
-%% variables.</li> <li>If the table has one or more global secondary indexes
-%% (GSIs), loop over these GSIs and add their provisioned capacity values to
-%% your variables as well.</li> </ul> </li> <li>Report the account limits for
-%% that region returned by <i>DescribeLimits</i>, along with the total
-%% current provisioned capacity levels you have calculated.</li> </ol> This
-%% will let you see whether you are getting close to your account-level
-%% limits.
+%% </li> <li>Create a variable to hold the aggregate read capacity units
+%% provisioned for all your tables in that region, and one to hold the
+%% aggregate write capacity units. Zero them both.
+%%
+%% </li> <li>Call <i>ListTables</i> to obtain a list of all your DynamoDB
+%% tables.
+%%
+%% </li> <li> For each table name listed by <i>ListTables</i>, do the
+%% following:
+%%
+%% <ul> <li>Call <i>DescribeTable</i> with the table name.
+%%
+%% </li> <li>Use the data returned by <i>DescribeTable</i> to add the read
+%% capacity units and write capacity units provisioned for the table itself
+%% to your variables.
+%%
+%% </li> <li>If the table has one or more global secondary indexes (GSIs),
+%% loop over these GSIs and add their provisioned capacity values to your
+%% variables as well.
+%%
+%% </li> </ul> </li> <li>Report the account limits for that region returned
+%% by <i>DescribeLimits</i>, along with the total current provisioned
+%% capacity levels you have calculated.
+%%
+%% </li> </ol> This will let you see whether you are getting close to your
+%% account-level limits.
 %%
 %% The per-table limits apply only when you are creating a new table. They
 %% restrict the sum of the provisioned capacity of the new table itself and
@@ -447,7 +458,7 @@ delete_table(Client, Input, Options)
 %% applies is that the aggregate provisioned capacity over all your tables
 %% and GSIs cannot exceed either of the per-account limits.
 %%
-%% <note><i>DescribeLimits</i> should only be called periodically. You can
+%% <note> <i>DescribeLimits</i> should only be called periodically. You can
 %% expect throttling errors if you call it more than once in a minute.
 %%
 %% </note> The <i>DescribeLimits</i> Request element has no content.
@@ -560,7 +571,8 @@ put_item(Client, Input, Options)
 %% subsequent operation. Unlike a <i>Scan</i> operation, a <i>Query</i>
 %% operation never returns both an empty result set and a
 %% <i>LastEvaluatedKey</i> value. <i>LastEvaluatedKey</i> is only provided if
-%% the results exceed 1 MB, or if you have used the <i>Limit</i> parameter.
+%% you have used the <i>Limit</i> parameter, or if the result set exceeds 1
+%% MB (prior to applying a filter).
 %%
 %% You can query a table, a local secondary index, or a global secondary
 %% index. For a query on a table or on a local secondary index, you can set
@@ -625,11 +637,11 @@ update_item(Client, Input, Options)
 %%
 %% You can only perform one of the following operations at once:
 %%
-%% <ul> <li>Modify the provisioned throughput settings of the table.
+%% <ul> <li> Modify the provisioned throughput settings of the table.
 %%
-%% </li> <li>Enable or disable Streams on the table.
+%% </li> <li> Enable or disable Streams on the table.
 %%
-%% </li> <li>Remove a global secondary index from the table.
+%% </li> <li> Remove a global secondary index from the table.
 %%
 %% </li> <li> Create a new global secondary index on the table. Once the
 %% index begins backfilling, you can use <i>UpdateTable</i> to perform other

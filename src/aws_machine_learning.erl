@@ -4,7 +4,9 @@
 %% @doc Definition of the public APIs exposed by Amazon Machine Learning
 -module(aws_machine_learning).
 
--export([create_batch_prediction/2,
+-export([add_tags/2,
+         add_tags/3,
+         create_batch_prediction/2,
          create_batch_prediction/3,
          create_data_source_from_r_d_s/2,
          create_data_source_from_r_d_s/3,
@@ -28,6 +30,8 @@
          delete_m_l_model/3,
          delete_realtime_endpoint/2,
          delete_realtime_endpoint/3,
+         delete_tags/2,
+         delete_tags/3,
          describe_batch_predictions/2,
          describe_batch_predictions/3,
          describe_data_sources/2,
@@ -36,6 +40,8 @@
          describe_evaluations/3,
          describe_m_l_models/2,
          describe_m_l_models/3,
+         describe_tags/2,
+         describe_tags/3,
          get_batch_prediction/2,
          get_batch_prediction/3,
          get_data_source/2,
@@ -60,6 +66,17 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Adds one or more tags to an object, up to a limit of 10. Each tag
+%% consists of a key and an optional value. If you add a tag using a key that
+%% is already associated with the ML object, <code>AddTags</code> updates the
+%% tag's value.
+add_tags(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    add_tags(Client, Input, []).
+add_tags(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AddTags">>, Input, Options).
 
 %% @doc Generates predictions for a group of observations. The observations
 %% to process exist in one or more data files referenced by a
@@ -88,23 +105,23 @@ create_batch_prediction(Client, Input, Options)
 %% @doc Creates a <code>DataSource</code> object from an <a
 %% href="http://aws.amazon.com/rds/"> Amazon Relational Database Service</a>
 %% (Amazon RDS). A <code>DataSource</code> references data that can be used
-%% to perform <a>CreateMLModel</a>, <a>CreateEvaluation</a>, or
-%% <a>CreateBatchPrediction</a> operations.
+%% to perform <code>CreateMLModel</code>, <code>CreateEvaluation</code>, or
+%% <code>CreateBatchPrediction</code> operations.
 %%
 %% <code>CreateDataSourceFromRDS</code> is an asynchronous operation. In
 %% response to <code>CreateDataSourceFromRDS</code>, Amazon Machine Learning
 %% (Amazon ML) immediately returns and sets the <code>DataSource</code>
 %% status to <code>PENDING</code>. After the <code>DataSource</code> is
 %% created and ready for use, Amazon ML sets the <code>Status</code>
-%% parameter to <code>COMPLETED</code>. <code>DataSource</code> in
-%% <code>COMPLETED</code> or <code>PENDING</code> status can only be used to
-%% perform <a>CreateMLModel</a>, <a>CreateEvaluation</a>, or
-%% <a>CreateBatchPrediction</a> operations.
+%% parameter to <code>COMPLETED</code>. <code>DataSource</code> in the
+%% <code>COMPLETED</code> or <code>PENDING</code> state can be used only to
+%% perform <code>&gt;CreateMLModel</code>&gt;, <code>CreateEvaluation</code>,
+%% or <code>CreateBatchPrediction</code> operations.
 %%
 %% If Amazon ML cannot accept the input source, it sets the
 %% <code>Status</code> parameter to <code>FAILED</code> and includes an error
-%% message in the <code>Message</code> attribute of the <a>GetDataSource</a>
-%% operation response.
+%% message in the <code>Message</code> attribute of the
+%% <code>GetDataSource</code> operation response.
 create_data_source_from_r_d_s(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_data_source_from_r_d_s(Client, Input, []).
@@ -112,11 +129,11 @@ create_data_source_from_r_d_s(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDataSourceFromRDS">>, Input, Options).
 
-%% @doc Creates a <code>DataSource</code> from <a
-%% href="http://aws.amazon.com/redshift/">Amazon Redshift</a>. A
-%% <code>DataSource</code> references data that can be used to perform either
-%% <a>CreateMLModel</a>, <a>CreateEvaluation</a> or
-%% <a>CreateBatchPrediction</a> operations.
+%% @doc Creates a <code>DataSource</code> from a database hosted on an Amazon
+%% Redshift cluster. A <code>DataSource</code> references data that can be
+%% used to perform either <code>CreateMLModel</code>,
+%% <code>CreateEvaluation</code>, or <code>CreateBatchPrediction</code>
+%% operations.
 %%
 %% <code>CreateDataSourceFromRedshift</code> is an asynchronous operation. In
 %% response to <code>CreateDataSourceFromRedshift</code>, Amazon Machine
@@ -125,32 +142,40 @@ create_data_source_from_r_d_s(Client, Input, Options)
 %% <code>DataSource</code> is created and ready for use, Amazon ML sets the
 %% <code>Status</code> parameter to <code>COMPLETED</code>.
 %% <code>DataSource</code> in <code>COMPLETED</code> or <code>PENDING</code>
-%% status can only be used to perform <a>CreateMLModel</a>,
-%% <a>CreateEvaluation</a>, or <a>CreateBatchPrediction</a> operations.
+%% states can be used to perform only <code>CreateMLModel</code>,
+%% <code>CreateEvaluation</code>, or <code>CreateBatchPrediction</code>
+%% operations.
 %%
-%% If Amazon ML cannot accept the input source, it sets the
+%% If Amazon ML can't accept the input source, it sets the
 %% <code>Status</code> parameter to <code>FAILED</code> and includes an error
-%% message in the <code>Message</code> attribute of the <a>GetDataSource</a>
-%% operation response.
+%% message in the <code>Message</code> attribute of the
+%% <code>GetDataSource</code> operation response.
 %%
-%% The observations should exist in the database hosted on an Amazon Redshift
-%% cluster and should be specified by a <code>SelectSqlQuery</code>. Amazon
-%% ML executes <a
-%% href="http://docs.aws.amazon.com/redshift/latest/dg/t_Unloading_tables.html">
-%% Unload</a> command in Amazon Redshift to transfer the result set of
-%% <code>SelectSqlQuery</code> to <code>S3StagingLocation.</code>
+%% The observations should be contained in the database hosted on an Amazon
+%% Redshift cluster and should be specified by a <code>SelectSqlQuery</code>
+%% query. Amazon ML executes an <code>Unload</code> command in Amazon
+%% Redshift to transfer the result set of the <code>SelectSqlQuery</code>
+%% query to <code>S3StagingLocation</code>.
 %%
-%% After the <code>DataSource</code> is created, it's ready for use in
+%% After the <code>DataSource</code> has been created, it's ready for use in
 %% evaluations and batch predictions. If you plan to use the
 %% <code>DataSource</code> to train an <code>MLModel</code>, the
-%% <code>DataSource</code> requires another item -- a recipe. A recipe
-%% describes the observation variables that participate in training an
-%% <code>MLModel</code>. A recipe describes how each input variable will be
-%% used in training. Will the variable be included or excluded from training?
-%% Will the variable be manipulated, for example, combined with another
-%% variable or split apart into word combinations? The recipe provides
-%% answers to these questions. For more information, see the Amazon Machine
-%% Learning Developer Guide.
+%% <code>DataSource</code> also requires a recipe. A recipe describes how
+%% each input variable will be used in training an <code>MLModel</code>. Will
+%% the variable be included or excluded from training? Will the variable be
+%% manipulated; for example, will it be combined with another variable or
+%% will it be split apart into word combinations? The recipe provides answers
+%% to these questions.
+%%
+%% <?oxy_insert_start author="laurama" timestamp="20160406T153842-0700">You
+%% can't change an existing datasource, but you can copy and modify the
+%% settings from an existing Amazon Redshift datasource to create a new
+%% datasource. To do so, call <code>GetDataSource</code> for an existing
+%% datasource and copy the values to a <code>CreateDataSource</code> call.
+%% Change the settings that you want to change and make sure that all
+%% required fields have the appropriate values.
+%%
+%% <?oxy_insert_end>
 create_data_source_from_redshift(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_data_source_from_redshift(Client, Input, []).
@@ -159,44 +184,42 @@ create_data_source_from_redshift(Client, Input, Options)
     request(Client, <<"CreateDataSourceFromRedshift">>, Input, Options).
 
 %% @doc Creates a <code>DataSource</code> object. A <code>DataSource</code>
-%% references data that can be used to perform <a>CreateMLModel</a>,
-%% <a>CreateEvaluation</a>, or <a>CreateBatchPrediction</a> operations.
+%% references data that can be used to perform <code>CreateMLModel</code>,
+%% <code>CreateEvaluation</code>, or <code>CreateBatchPrediction</code>
+%% operations.
 %%
 %% <code>CreateDataSourceFromS3</code> is an asynchronous operation. In
 %% response to <code>CreateDataSourceFromS3</code>, Amazon Machine Learning
 %% (Amazon ML) immediately returns and sets the <code>DataSource</code>
-%% status to <code>PENDING</code>. After the <code>DataSource</code> is
-%% created and ready for use, Amazon ML sets the <code>Status</code>
-%% parameter to <code>COMPLETED</code>. <code>DataSource</code> in
-%% <code>COMPLETED</code> or <code>PENDING</code> status can only be used to
-%% perform <a>CreateMLModel</a>, <a>CreateEvaluation</a> or
-%% <a>CreateBatchPrediction</a> operations.
+%% status to <code>PENDING</code>. After the <code>DataSource</code> has been
+%% created and is ready for use, Amazon ML sets the <code>Status</code>
+%% parameter to <code>COMPLETED</code>. <code>DataSource</code> in the
+%% <code>COMPLETED</code> or <code>PENDING</code> state can be used to
+%% perform only <code>CreateMLModel</code>, <code>CreateEvaluation</code> or
+%% <code>CreateBatchPrediction</code> operations.
 %%
-%% If Amazon ML cannot accept the input source, it sets the
+%% If Amazon ML can't accept the input source, it sets the
 %% <code>Status</code> parameter to <code>FAILED</code> and includes an error
-%% message in the <code>Message</code> attribute of the <a>GetDataSource</a>
-%% operation response.
+%% message in the <code>Message</code> attribute of the
+%% <code>GetDataSource</code> operation response.
 %%
 %% The observation data used in a <code>DataSource</code> should be ready to
 %% use; that is, it should have a consistent structure, and missing data
 %% values should be kept to a minimum. The observation data must reside in
-%% one or more CSV files in an Amazon Simple Storage Service (Amazon S3)
-%% bucket, along with a schema that describes the data items by name and
+%% one or more .csv files in an Amazon Simple Storage Service (Amazon S3)
+%% location, along with a schema that describes the data items by name and
 %% type. The same schema must be used for all of the data files referenced by
 %% the <code>DataSource</code>.
 %%
 %% After the <code>DataSource</code> has been created, it's ready to use in
 %% evaluations and batch predictions. If you plan to use the
 %% <code>DataSource</code> to train an <code>MLModel</code>, the
-%% <code>DataSource</code> requires another item: a recipe. A recipe
-%% describes the observation variables that participate in training an
-%% <code>MLModel</code>. A recipe describes how each input variable will be
-%% used in training. Will the variable be included or excluded from training?
-%% Will the variable be manipulated, for example, combined with another
-%% variable, or split apart into word combinations? The recipe provides
-%% answers to these questions. For more information, see the <a
-%% href="http://docs.aws.amazon.com/machine-learning/latest/dg">Amazon
-%% Machine Learning Developer Guide</a>.
+%% <code>DataSource</code> also needs a recipe. A recipe describes how each
+%% input variable will be used in training an <code>MLModel</code>. Will the
+%% variable be included or excluded from training? Will the variable be
+%% manipulated; for example, will it be combined with another variable or
+%% will it be split apart into word combinations? The recipe provides answers
+%% to these questions.
 create_data_source_from_s3(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_data_source_from_s3(Client, Input, []).
@@ -208,14 +231,14 @@ create_data_source_from_s3(Client, Input, Options)
 %% <code>MLModel</code> is evaluated on a set of observations associated to a
 %% <code>DataSource</code>. Like a <code>DataSource</code> for an
 %% <code>MLModel</code>, the <code>DataSource</code> for an
-%% <code>Evaluation</code> contains values for the Target Variable. The
-%% <code>Evaluation</code> compares the predicted result for each observation
-%% to the actual outcome and provides a summary so that you know how
-%% effective the <code>MLModel</code> functions on the test data. Evaluation
-%% generates a relevant performance metric such as BinaryAUC, RegressionRMSE
-%% or MulticlassAvgFScore based on the corresponding
-%% <code>MLModelType</code>: <code>BINARY</code>, <code>REGRESSION</code> or
-%% <code>MULTICLASS</code>.
+%% <code>Evaluation</code> contains values for the <code>Target
+%% Variable</code>. The <code>Evaluation</code> compares the predicted result
+%% for each observation to the actual outcome and provides a summary so that
+%% you know how effective the <code>MLModel</code> functions on the test
+%% data. Evaluation generates a relevant performance metric, such as
+%% BinaryAUC, RegressionRMSE or MulticlassAvgFScore based on the
+%% corresponding <code>MLModelType</code>: <code>BINARY</code>,
+%% <code>REGRESSION</code> or <code>MULTICLASS</code>.
 %%
 %% <code>CreateEvaluation</code> is an asynchronous operation. In response to
 %% <code>CreateEvaluation</code>, Amazon Machine Learning (Amazon ML)
@@ -223,8 +246,8 @@ create_data_source_from_s3(Client, Input, Options)
 %% <code>PENDING</code>. After the <code>Evaluation</code> is created and
 %% ready for use, Amazon ML sets the status to <code>COMPLETED</code>.
 %%
-%% You can use the <a>GetEvaluation</a> operation to check progress of the
-%% evaluation during the creation operation.
+%% You can use the <code>GetEvaluation</code> operation to check progress of
+%% the evaluation during the creation operation.
 create_evaluation(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_evaluation(Client, Input, []).
@@ -232,27 +255,28 @@ create_evaluation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEvaluation">>, Input, Options).
 
-%% @doc Creates a new <code>MLModel</code> using the data files and the
-%% recipe as information sources.
+%% @doc Creates a new <code>MLModel</code> using the <code>DataSource</code>
+%% and the recipe as information sources.
 %%
-%% An <code>MLModel</code> is nearly immutable. Users can only update the
+%% An <code>MLModel</code> is nearly immutable. Users can update only the
 %% <code>MLModelName</code> and the <code>ScoreThreshold</code> in an
 %% <code>MLModel</code> without creating a new <code>MLModel</code>.
 %%
 %% <code>CreateMLModel</code> is an asynchronous operation. In response to
 %% <code>CreateMLModel</code>, Amazon Machine Learning (Amazon ML)
 %% immediately returns and sets the <code>MLModel</code> status to
-%% <code>PENDING</code>. After the <code>MLModel</code> is created and ready
-%% for use, Amazon ML sets the status to <code>COMPLETED</code>.
+%% <code>PENDING</code>. After the <code>MLModel</code> has been created and
+%% ready is for use, Amazon ML sets the status to <code>COMPLETED</code>.
 %%
-%% You can use the <a>GetMLModel</a> operation to check progress of the
-%% <code>MLModel</code> during the creation operation.
+%% You can use the <code>GetMLModel</code> operation to check the progress of
+%% the <code>MLModel</code> during the creation operation.
 %%
-%% <a>CreateMLModel</a> requires a <code>DataSource</code> with computed
-%% statistics, which can be created by setting <code>ComputeStatistics</code>
-%% to <code>true</code> in <a>CreateDataSourceFromRDS</a>,
-%% <a>CreateDataSourceFromS3</a>, or <a>CreateDataSourceFromRedshift</a>
-%% operations.
+%% <code>CreateMLModel</code> requires a <code>DataSource</code> with
+%% computed statistics, which can be created by setting
+%% <code>ComputeStatistics</code> to <code>true</code> in
+%% <code>CreateDataSourcceFromRDS</code>,
+%% <code>CreateDataSourceFromS3</code>, or
+%% <code>CreateDataSourceFromRedshift</code> operations.
 create_m_l_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_m_l_model(Client, Input, []).
@@ -307,11 +331,13 @@ delete_data_source(Client, Input, Options)
 %% <code>Evaluation</code>, rendering it unusable.
 %%
 %% After invoking the <code>DeleteEvaluation</code> operation, you can use
-%% the <a>GetEvaluation</a> operation to verify that the status of the
+%% the <code>GetEvaluation</code> operation to verify that the status of the
 %% <code>Evaluation</code> changed to <code>DELETED</code>.
 %%
-%% <b>Caution:</b> The results of the <code>DeleteEvaluation</code> operation
-%% are irreversible.
+%% <caution><title>Caution</title> The results of the
+%% <code>DeleteEvaluation</code> operation are irreversible.
+%%
+%% </caution>
 delete_evaluation(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_evaluation(Client, Input, []).
@@ -319,11 +345,11 @@ delete_evaluation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEvaluation">>, Input, Options).
 
-%% @doc Assigns the DELETED status to an <code>MLModel</code>, rendering it
-%% unusable.
+%% @doc Assigns the <code>DELETED</code> status to an <code>MLModel</code>,
+%% rendering it unusable.
 %%
 %% After using the <code>DeleteMLModel</code> operation, you can use the
-%% <a>GetMLModel</a> operation to verify that the status of the
+%% <code>GetMLModel</code> operation to verify that the status of the
 %% <code>MLModel</code> changed to DELETED.
 %%
 %% <b>Caution:</b> The result of the <code>DeleteMLModel</code> operation is
@@ -342,6 +368,17 @@ delete_realtime_endpoint(Client, Input)
 delete_realtime_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRealtimeEndpoint">>, Input, Options).
+
+%% @doc Deletes the specified tags associated with an ML object. After this
+%% operation is complete, you can't recover deleted tags.
+%%
+%% If you specify a tag that doesn't exist, Amazon ML ignores it.
+delete_tags(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_tags(Client, Input, []).
+delete_tags(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteTags">>, Input, Options).
 
 %% @doc Returns a list of <code>BatchPrediction</code> operations that match
 %% the search criteria in the request.
@@ -379,6 +416,14 @@ describe_m_l_models(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMLModels">>, Input, Options).
 
+%% @doc Describes one or more of the tags for your Amazon ML object.
+describe_tags(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_tags(Client, Input, []).
+describe_tags(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeTags">>, Input, Options).
+
 %% @doc Returns a <code>BatchPrediction</code> that includes detailed
 %% metadata, status, and data file information for a <code>Batch
 %% Prediction</code> request.
@@ -412,9 +457,8 @@ get_evaluation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEvaluation">>, Input, Options).
 
-%% @doc Returns an <code>MLModel</code> that includes detailed metadata, and
-%% data source information as well as the current status of the
-%% <code>MLModel</code>.
+%% @doc Returns an <code>MLModel</code> that includes detailed metadata, data
+%% source information, and the current status of the <code>MLModel</code>.
 %%
 %% <code>GetMLModel</code> provides results in normal or verbose format.
 get_m_l_model(Client, Input)
@@ -442,8 +486,8 @@ predict(Client, Input, Options)
 %% @doc Updates the <code>BatchPredictionName</code> of a
 %% <code>BatchPrediction</code>.
 %%
-%% You can use the <a>GetBatchPrediction</a> operation to view the contents
-%% of the updated data element.
+%% You can use the <code>GetBatchPrediction</code> operation to view the
+%% contents of the updated data element.
 update_batch_prediction(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_batch_prediction(Client, Input, []).
@@ -453,8 +497,8 @@ update_batch_prediction(Client, Input, Options)
 
 %% @doc Updates the <code>DataSourceName</code> of a <code>DataSource</code>.
 %%
-%% You can use the <a>GetDataSource</a> operation to view the contents of the
-%% updated data element.
+%% You can use the <code>GetDataSource</code> operation to view the contents
+%% of the updated data element.
 update_data_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_data_source(Client, Input, []).
@@ -465,8 +509,8 @@ update_data_source(Client, Input, Options)
 %% @doc Updates the <code>EvaluationName</code> of an
 %% <code>Evaluation</code>.
 %%
-%% You can use the <a>GetEvaluation</a> operation to view the contents of the
-%% updated data element.
+%% You can use the <code>GetEvaluation</code> operation to view the contents
+%% of the updated data element.
 update_evaluation(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_evaluation(Client, Input, []).
@@ -477,8 +521,8 @@ update_evaluation(Client, Input, Options)
 %% @doc Updates the <code>MLModelName</code> and the
 %% <code>ScoreThreshold</code> of an <code>MLModel</code>.
 %%
-%% You can use the <a>GetMLModel</a> operation to view the contents of the
-%% updated data element.
+%% You can use the <code>GetMLModel</code> operation to view the contents of
+%% the updated data element.
 update_m_l_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_m_l_model(Client, Input, []).
