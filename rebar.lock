@@ -1,8 +1,18 @@
-[{<<"idna">>,{pkg,<<"idna">>,<<"1.0.2">>},1},
- {<<"erlware_commons">>,{pkg,<<"erlware_commons">>,<<"0.15.0">>},0},
- {<<"ssl_verify_hostname">>,{pkg,<<"ssl_verify_hostname">>,<<"1.0.1">>},1},
+{"1.1.0",
+[{<<"cf">>,{pkg,<<"cf">>,<<"0.2.1">>},1},
+ {<<"erlware_commons">>,{pkg,<<"erlware_commons">>,<<"0.21.0">>},0},
  {<<"hackney">>,{pkg,<<"hackney">>,<<"1.0.6">>},0},
+ {<<"idna">>,{pkg,<<"idna">>,<<"1.0.2">>},1},
  {<<"jsx">>,
   {git,"git://github.com/talentdeficit/jsx.git",
        {ref,"9d4534edc57686f28e16c5b1f6902a7e99c8b035"}},
-  0}].
+  0},
+ {<<"ssl_verify_hostname">>,{pkg,<<"ssl_verify_hostname">>,<<"1.0.1">>},1}]}.
+[
+{pkg_hash,[
+ {<<"cf">>, <<"69D0B1349FD4D7D4DC55B7F407D29D7A840BF9A1EF5AF529F1EBE0CE153FC2AB">>},
+ {<<"erlware_commons">>, <<"A04433071AD7D112EDEFC75AC77719DD3E6753E697AC09428FC83D7564B80B15">>},
+ {<<"hackney">>, <<"EDFABD6F03D7BB2AA224A438B2BD6295FAF6DF5FD3AEAFAD7A78CDAE41252CDE">>},
+ {<<"idna">>, <<"397E3D001C002319DA75759B0A81156BF11849C71D565162436D50020CB7265E">>},
+ {<<"ssl_verify_hostname">>, <<"E6EF428C350D1B7E9C534C0929CAAE1ECB47C22F88CBBB880E07E46918380CC5">>}]}
+].
