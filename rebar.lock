@@ -1,7 +1,7 @@
 {"1.1.0",
 [{<<"certifi">>,{pkg,<<"certifi">>,<<"0.7.0">>},1},
- {<<"cf">>,{pkg,<<"cf">>,<<"0.2.1">>},1},
- {<<"erlware_commons">>,{pkg,<<"erlware_commons">>,<<"0.21.0">>},0},
+ {<<"cf">>,{pkg,<<"cf">>,<<"0.2.2">>},1},
+ {<<"erlware_commons">>,{pkg,<<"erlware_commons">>,<<"1.0.5">>},0},
  {<<"hackney">>,{pkg,<<"hackney">>,<<"1.6.3">>},0},
  {<<"idna">>,{pkg,<<"idna">>,<<"1.2.0">>},1},
  {<<"jsx">>,
@@ -14,8 +14,8 @@
 [
 {pkg_hash,[
  {<<"certifi">>, <<"861A57F3808F7EB0C2D1802AFEAAE0FA5DE813B0DF0979153CBAFCD853ABABAF">>},
- {<<"cf">>, <<"69D0B1349FD4D7D4DC55B7F407D29D7A840BF9A1EF5AF529F1EBE0CE153FC2AB">>},
- {<<"erlware_commons">>, <<"A04433071AD7D112EDEFC75AC77719DD3E6753E697AC09428FC83D7564B80B15">>},
+ {<<"cf">>, <<"7F2913FFF90ABCABD0F489896CFEB0B0674F6C8DF6C10B17A83175448029896C">>},
+ {<<"erlware_commons">>, <<"FC23D8E304140B65A811F653A76B2FB10B0CE744608CAF86E9125CEB349C9442">>},
  {<<"hackney">>, <<"D489D7CA2D4323E307BEDC4BFE684323A7BF773ECFD77938F3EE8074E488E140">>},
  {<<"idna">>, <<"AC62EE99DA068F43C50DC69ACF700E03A62A348360126260E87F2B54ECED86B2">>},
  {<<"metrics">>, <<"25F094DEA2CDA98213CECC3AEFF09E940299D950904393B2A29D191C346A8486">>},
