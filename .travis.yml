@@ -7,4 +7,6 @@ install: "true" # don't let travis run get-deps
 script: "./rebar3 do update, eunit"
 otp_release:
 - 17.5
-- 18.0
+- 18.3
+- 19.3
+- 20.2
