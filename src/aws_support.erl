@@ -9,7 +9,7 @@
 %% uses HTTP methods that return results in JSON format.
 %%
 %% The AWS Support service also exposes a set of <a
-%% href="https://aws.amazon.com/premiumsupport/trustedadvisor/">Trusted
+%% href="http://aws.amazon.com/premiumsupport/trustedadvisor/">Trusted
 %% Advisor</a> features. You can retrieve a list of checks and their
 %% descriptions, get check results, specify checks to refresh, and get the
 %% refresh status of checks.
@@ -20,28 +20,38 @@
 %% levels. </b>The <a>DescribeServices</a> and <a>DescribeSeverityLevels</a>
 %% operations return AWS service names, service codes, service categories,
 %% and problem severity levels. You use these values when you call the
-%% <a>CreateCase</a> operation. </li> <li> <b>Case creation, case details,
-%% and case resolution.</b> The <a>CreateCase</a>, <a>DescribeCases</a>,
-%% <a>DescribeAttachment</a>, and <a>ResolveCase</a> operations create AWS
-%% Support cases, retrieve information about cases, and resolve cases.</li>
-%% <li> <b>Case communication.</b> The <a>DescribeCommunications</a>,
+%% <a>CreateCase</a> operation.
+%%
+%% </li> <li> <b>Case creation, case details, and case resolution.</b> The
+%% <a>CreateCase</a>, <a>DescribeCases</a>, <a>DescribeAttachment</a>, and
+%% <a>ResolveCase</a> operations create AWS Support cases, retrieve
+%% information about cases, and resolve cases.
+%%
+%% </li> <li> <b>Case communication.</b> The <a>DescribeCommunications</a>,
 %% <a>AddCommunicationToCase</a>, and <a>AddAttachmentsToSet</a> operations
 %% retrieve and add communications and attachments to AWS Support cases.
+%%
 %% </li> </ul> The following list describes the operations available from the
 %% AWS Support service for Trusted Advisor:
 %%
 %% <ul> <li> <a>DescribeTrustedAdvisorChecks</a> returns the list of checks
-%% that run against your AWS resources.</li> <li>Using the
-%% <code>CheckId</code> for a specific check returned by
+%% that run against your AWS resources.
+%%
+%% </li> <li> Using the <code>checkId</code> for a specific check returned by
 %% <a>DescribeTrustedAdvisorChecks</a>, you can call
 %% <a>DescribeTrustedAdvisorCheckResult</a> to obtain the results for the
-%% check you specified.</li> <li> <a>DescribeTrustedAdvisorCheckSummaries</a>
-%% returns summarized results for one or more Trusted Advisor checks.</li>
-%% <li> <a>RefreshTrustedAdvisorCheck</a> requests that Trusted Advisor rerun
-%% a specified check. </li> <li>
-%% <a>DescribeTrustedAdvisorCheckRefreshStatuses</a> reports the refresh
-%% status of one or more checks. </li> </ul> For authentication of requests,
-%% AWS Support uses <a
+%% check you specified.
+%%
+%% </li> <li> <a>DescribeTrustedAdvisorCheckSummaries</a> returns summarized
+%% results for one or more Trusted Advisor checks.
+%%
+%% </li> <li> <a>RefreshTrustedAdvisorCheck</a> requests that Trusted Advisor
+%% rerun a specified check.
+%%
+%% </li> <li> <a>DescribeTrustedAdvisorCheckRefreshStatuses</a> reports the
+%% refresh status of one or more checks.
+%%
+%% </li> </ul> For authentication of requests, AWS Support uses <a
 %% href="http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">Signature
 %% Version 4 Signing Process</a>.
 %%
@@ -89,14 +99,14 @@
 %%====================================================================
 
 %% @doc Adds one or more attachments to an attachment set. If an
-%% <code>AttachmentSetId</code> is not specified, a new attachment set is
+%% <code>attachmentSetId</code> is not specified, a new attachment set is
 %% created, and the ID of the set is returned in the response. If an
-%% <code>AttachmentSetId</code> is specified, the attachments are added to
+%% <code>attachmentSetId</code> is specified, the attachments are added to
 %% the specified set, if it exists.
 %%
 %% An attachment set is a temporary container for attachments that are to be
 %% added to a case or case communication. The set is available for one hour
-%% after it is created; the <code>ExpiryTime</code> returned in the response
+%% after it is created; the <code>expiryTime</code> returned in the response
 %% indicates when the set expires. The maximum number of attachments in a set
 %% is 3, and the maximum size of any attachment in the set is 5 MB.
 add_attachments_to_set(Client, Input)
@@ -107,10 +117,10 @@ add_attachments_to_set(Client, Input, Options)
     request(Client, <<"AddAttachmentsToSet">>, Input, Options).
 
 %% @doc Adds additional customer communication to an AWS Support case. You
-%% use the <code>CaseId</code> value to identify the case to add
+%% use the <code>caseId</code> value to identify the case to add
 %% communication to. You can list a set of email addresses to copy on the
-%% communication using the <code>CcEmailAddresses</code> value. The
-%% <code>CommunicationBody</code> value contains the text of the
+%% communication using the <code>ccEmailAddresses</code> value. The
+%% <code>communicationBody</code> value contains the text of the
 %% communication.
 %%
 %% The response indicates the success or failure of the request.
@@ -130,37 +140,50 @@ add_communication_to_case(Client, Input, Options)
 %% Case</a> page. Its parameters require you to specify the following
 %% information:
 %%
-%% <ol> <li> <b>IssueType.</b> The type of issue for the case. You can
+%% <ul> <li> <b>issueType.</b> The type of issue for the case. You can
 %% specify either "customer-service" or "technical." If you do not indicate a
-%% value, the default is "technical." </li> <li> <b>ServiceCode.</b> The code
-%% for an AWS service. You obtain the <code>ServiceCode</code> by calling
-%% <a>DescribeServices</a>. </li> <li> <b>CategoryCode.</b> The category for
-%% the service defined for the <code>ServiceCode</code> value. You also
-%% obtain the category code for a service by calling <a>DescribeServices</a>.
-%% Each AWS service defines its own set of category codes. </li> <li>
-%% <b>SeverityCode.</b> A value that indicates the urgency of the case, which
-%% in turn determines the response time according to your service level
-%% agreement with AWS Support. You obtain the SeverityCode by calling
-%% <a>DescribeSeverityLevels</a>.</li> <li> <b>Subject.</b> The
-%% <b>Subject</b> field on the AWS Support Center <a
+%% value, the default is "technical."
+%%
+%% </li> <li> <b>serviceCode.</b> The code for an AWS service. You obtain the
+%% <code>serviceCode</code> by calling <a>DescribeServices</a>.
+%%
+%% </li> <li> <b>categoryCode.</b> The category for the service defined for
+%% the <code>serviceCode</code> value. You also obtain the category code for
+%% a service by calling <a>DescribeServices</a>. Each AWS service defines its
+%% own set of category codes.
+%%
+%% </li> <li> <b>severityCode.</b> A value that indicates the urgency of the
+%% case, which in turn determines the response time according to your service
+%% level agreement with AWS Support. You obtain the SeverityCode by calling
+%% <a>DescribeSeverityLevels</a>.
+%%
+%% </li> <li> <b>subject.</b> The <b>Subject</b> field on the AWS Support
+%% Center <a
 %% href="https://console.aws.amazon.com/support/home#/case/create">Create
-%% Case</a> page.</li> <li> <b>CommunicationBody.</b> The <b>Description</b>
-%% field on the AWS Support Center <a
+%% Case</a> page.
+%%
+%% </li> <li> <b>communicationBody.</b> The <b>Description</b> field on the
+%% AWS Support Center <a
 %% href="https://console.aws.amazon.com/support/home#/case/create">Create
-%% Case</a> page.</li> <li> <b>AttachmentSetId.</b> The ID of a set of
-%% attachments that has been created by using
-%% <a>AddAttachmentsToSet</a>.</li> <li> <b>Language.</b> The human language
-%% in which AWS Support handles the case. English and Japanese are currently
-%% supported.</li> <li> <b>CcEmailAddresses.</b> The AWS Support Center
-%% <b>CC</b> field on the <a
+%% Case</a> page.
+%%
+%% </li> <li> <b>attachmentSetId.</b> The ID of a set of attachments that has
+%% been created by using <a>AddAttachmentsToSet</a>.
+%%
+%% </li> <li> <b>language.</b> The human language in which AWS Support
+%% handles the case. English and Japanese are currently supported.
+%%
+%% </li> <li> <b>ccEmailAddresses.</b> The AWS Support Center <b>CC</b> field
+%% on the <a
 %% href="https://console.aws.amazon.com/support/home#/case/create">Create
 %% Case</a> page. You can list email addresses to be copied on any
 %% correspondence about the case. The account that opens the case is already
 %% identified by passing the AWS Credentials in the HTTP POST method or in a
 %% method or function call from one of the programming languages supported by
-%% an <a href="http://aws.amazon.com/tools/">AWS SDK</a>. </li> </ol>
-%% <note>To add additional communication or attachments to an existing case,
-%% use <a>AddCommunicationToCase</a>.
+%% an <a href="http://aws.amazon.com/tools/">AWS SDK</a>.
+%%
+%% </li> </ul> <note> To add additional communication or attachments to an
+%% existing case, use <a>AddCommunicationToCase</a>.
 %%
 %% </note> A successful <a>CreateCase</a> request returns an AWS Support case
 %% number. Case numbers are used by the <a>DescribeCases</a> operation to
@@ -186,9 +209,9 @@ describe_attachment(Client, Input, Options)
 
 %% @doc Returns a list of cases that you specify by passing one or more case
 %% IDs. In addition, you can filter the cases by date by setting values for
-%% the <code>AfterTime</code> and <code>BeforeTime</code> request parameters.
-%% You can set values for the <code>IncludeResolvedCases</code> and
-%% <code>IncludeCommunications</code> request parameters to control how much
+%% the <code>afterTime</code> and <code>beforeTime</code> request parameters.
+%% You can set values for the <code>includeResolvedCases</code> and
+%% <code>includeCommunications</code> request parameters to control how much
 %% information is returned.
 %%
 %% Case data is available for 12 months after creation. If a case was created
@@ -196,10 +219,13 @@ describe_attachment(Client, Input, Options)
 %%
 %% The response returns the following in JSON format:
 %%
-%% <ol> <li>One or more <a>CaseDetails</a> data types. </li> <li>One or more
-%% <code>NextToken</code> values, which specify where to paginate the
-%% returned records represented by the <code>CaseDetails</code> objects.</li>
-%% </ol>
+%% <ul> <li> One or more <a>CaseDetails</a> data types.
+%%
+%% </li> <li> One or more <code>nextToken</code> values, which specify where
+%% to paginate the returned records represented by the
+%% <code>CaseDetails</code> objects.
+%%
+%% </li> </ul>
 describe_cases(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cases(Client, Input, []).
@@ -208,17 +234,17 @@ describe_cases(Client, Input, Options)
     request(Client, <<"DescribeCases">>, Input, Options).
 
 %% @doc Returns communications (and attachments) for one or more support
-%% cases. You can use the <code>AfterTime</code> and <code>BeforeTime</code>
-%% parameters to filter by date. You can use the <code>CaseId</code>
+%% cases. You can use the <code>afterTime</code> and <code>beforeTime</code>
+%% parameters to filter by date. You can use the <code>caseId</code>
 %% parameter to restrict the results to a particular case.
 %%
 %% Case data is available for 12 months after creation. If a case was created
 %% more than 12 months ago, a request for data might cause an error.
 %%
-%% You can use the <code>MaxResults</code> and <code>NextToken</code>
+%% You can use the <code>maxResults</code> and <code>nextToken</code>
 %% parameters to control the pagination of the result set. Set
-%% <code>MaxResults</code> to the number of cases you want displayed on each
-%% page, and use <code>NextToken</code> to specify the resumption of
+%% <code>maxResults</code> to the number of cases you want displayed on each
+%% page, and use <code>nextToken</code> to specify the resumption of
 %% pagination.
 describe_communications(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -261,6 +287,13 @@ describe_severity_levels(Client, Input, Options)
 %% @doc Returns the refresh status of the Trusted Advisor checks that have
 %% the specified check IDs. Check IDs can be obtained by calling
 %% <a>DescribeTrustedAdvisorChecks</a>.
+%%
+%% <note> Some checks are refreshed automatically, and their refresh statuses
+%% cannot be retrieved by using this operation. Use of the
+%% <code>DescribeTrustedAdvisorCheckRefreshStatuses</code> operation for
+%% these checks causes an <code>InvalidParameterValue</code> error.
+%%
+%% </note>
 describe_trusted_advisor_check_refresh_statuses(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trusted_advisor_check_refresh_statuses(Client, Input, []).
@@ -275,15 +308,22 @@ describe_trusted_advisor_check_refresh_statuses(Client, Input, Options)
 %% The response contains a <a>TrustedAdvisorCheckResult</a> object, which
 %% contains these three objects:
 %%
-%% <ul> <li><a>TrustedAdvisorCategorySpecificSummary</a></li>
-%% <li><a>TrustedAdvisorResourceDetail</a></li>
-%% <li><a>TrustedAdvisorResourcesSummary</a></li> </ul> In addition, the
-%% response contains these fields:
+%% <ul> <li> <a>TrustedAdvisorCategorySpecificSummary</a>
 %%
-%% <ul> <li> <b>Status.</b> The alert status of the check: "ok" (green),
-%% "warning" (yellow), "error" (red), or "not_available".</li> <li>
-%% <b>Timestamp.</b> The time of the last refresh of the check.</li> <li>
-%% <b>CheckId.</b> The unique identifier for the check.</li> </ul>
+%% </li> <li> <a>TrustedAdvisorResourceDetail</a>
+%%
+%% </li> <li> <a>TrustedAdvisorResourcesSummary</a>
+%%
+%% </li> </ul> In addition, the response contains these fields:
+%%
+%% <ul> <li> <b>status.</b> The alert status of the check: "ok" (green),
+%% "warning" (yellow), "error" (red), or "not_available".
+%%
+%% </li> <li> <b>timestamp.</b> The time of the last refresh of the check.
+%%
+%% </li> <li> <b>checkId.</b> The unique identifier for the check.
+%%
+%% </li> </ul>
 describe_trusted_advisor_check_result(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trusted_advisor_check_result(Client, Input, []).
@@ -320,14 +360,23 @@ describe_trusted_advisor_checks(Client, Input, Options)
 %% specified check ID. Check IDs can be obtained by calling
 %% <a>DescribeTrustedAdvisorChecks</a>.
 %%
-%% The response contains a <a>TrustedAdvisorCheckRefreshStatus</a> object,
-%% which contains these fields:
+%% <note> Some checks are refreshed automatically, and they cannot be
+%% refreshed by using this operation. Use of the
+%% <code>RefreshTrustedAdvisorCheck</code> operation for these checks causes
+%% an <code>InvalidParameterValue</code> error.
 %%
-%% <ul> <li> <b>Status.</b> The refresh status of the check: "none",
-%% "enqueued", "processing", "success", or "abandoned".</li> <li>
-%% <b>MillisUntilNextRefreshable.</b> The amount of time, in milliseconds,
-%% until the check is eligible for refresh.</li> <li> <b>CheckId.</b> The
-%% unique identifier for the check.</li> </ul>
+%% </note> The response contains a <a>TrustedAdvisorCheckRefreshStatus</a>
+%% object, which contains these fields:
+%%
+%% <ul> <li> <b>status.</b> The refresh status of the check: "none",
+%% "enqueued", "processing", "success", or "abandoned".
+%%
+%% </li> <li> <b>millisUntilNextRefreshable.</b> The amount of time, in
+%% milliseconds, until the check is eligible for refresh.
+%%
+%% </li> <li> <b>checkId.</b> The unique identifier for the check.
+%%
+%% </li> </ul>
 refresh_trusted_advisor_check(Client, Input)
   when is_map(Client), is_map(Input) ->
     refresh_trusted_advisor_check(Client, Input, []).
@@ -335,7 +384,7 @@ refresh_trusted_advisor_check(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RefreshTrustedAdvisorCheck">>, Input, Options).
 
-%% @doc Takes a <code>CaseId</code> and returns the initial state of the case
+%% @doc Takes a <code>caseId</code> and returns the initial state of the case
 %% along with the state of the case after the call to <a>ResolveCase</a>
 %% completed.
 resolve_case(Client, Input)

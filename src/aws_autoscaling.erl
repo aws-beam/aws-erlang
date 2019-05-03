@@ -1,38 +1,71 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/jkakar/aws-codegen for more details.
 
-%% @doc Application Auto Scaling is a general purpose Auto Scaling service
-%% for supported elastic AWS resources. With Application Auto Scaling, you
-%% can automatically scale your AWS resources, with an experience similar to
-%% that of Auto Scaling.
+%% @doc With Application Auto Scaling, you can configure automatic scaling
+%% for your scalable resources. You can use Application Auto Scaling to
+%% accomplish the following tasks:
 %%
-%% <note> At this time, Application Auto Scaling only supports scaling Amazon
-%% ECS services.
-%%
-%% </note> For example, you can use Application Auto Scaling to accomplish
-%% the following tasks:
-%%
-%% <ul> <li> Define scaling policies for automatically adjusting your
-%% application’s resources
+%% <ul> <li> Define scaling policies to automatically scale your AWS or
+%% custom resources
 %%
 %% </li> <li> Scale your resources in response to CloudWatch alarms
 %%
-%% </li> <li> View history of your scaling events
+%% </li> <li> Schedule one-time or recurring scaling actions
 %%
-%% </li> </ul> Application Auto Scaling is available in the following
-%% regions:
+%% </li> <li> View the history of your scaling events
 %%
-%% <ul> <li> <code>us-east-1</code>
+%% </li> </ul> Application Auto Scaling can scale the following resources:
 %%
-%% </li> <li> <code>us-west-2</code>
+%% <ul> <li> Amazon ECS services. For more information, see <a
+%% href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-auto-scaling.html">Service
+%% Auto Scaling</a> in the <i>Amazon Elastic Container Service Developer
+%% Guide</i>.
 %%
-%% </li> <li> <code>eu-west-1</code>
+%% </li> <li> Amazon EC2 Spot fleets. For more information, see <a
+%% href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/fleet-auto-scaling.html">Automatic
+%% Scaling for Spot Fleet</a> in the <i>Amazon EC2 User Guide</i>.
 %%
-%% </li> </ul>
+%% </li> <li> Amazon EMR clusters. For more information, see <a
+%% href="https://docs.aws.amazon.com/ElasticMapReduce/latest/ManagementGuide/emr-automatic-scaling.html">Using
+%% Automatic Scaling in Amazon EMR</a> in the <i>Amazon EMR Management
+%% Guide</i>.
+%%
+%% </li> <li> AppStream 2.0 fleets. For more information, see <a
+%% href="https://docs.aws.amazon.com/appstream2/latest/developerguide/autoscaling.html">Fleet
+%% Auto Scaling for Amazon AppStream 2.0</a> in the <i>Amazon AppStream 2.0
+%% Developer Guide</i>.
+%%
+%% </li> <li> Provisioned read and write capacity for Amazon DynamoDB tables
+%% and global secondary indexes. For more information, see <a
+%% href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/AutoScaling.html">Managing
+%% Throughput Capacity Automatically with DynamoDB Auto Scaling</a> in the
+%% <i>Amazon DynamoDB Developer Guide</i>.
+%%
+%% </li> <li> Amazon Aurora Replicas. For more information, see <a
+%% href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Integrating.AutoScaling.html">Using
+%% Amazon Aurora Auto Scaling with Aurora Replicas</a>.
+%%
+%% </li> <li> Amazon SageMaker endpoint variants. For more information, see
+%% <a
+%% href="https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling.html">Automatically
+%% Scaling Amazon SageMaker Models</a>.
+%%
+%% </li> <li> Custom resources provided by your own applications or services.
+%% More information is available in our <a
+%% href="https://github.com/aws/aws-auto-scaling-custom-resource">GitHub
+%% repository</a>.
+%%
+%% </li> </ul> To learn more about Application Auto Scaling, including
+%% information about granting IAM users required permissions for Application
+%% Auto Scaling actions, see the <a
+%% href="https://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html">Application
+%% Auto Scaling User Guide</a>.
 -module(aws_autoscaling).
 
 -export([delete_scaling_policy/2,
          delete_scaling_policy/3,
+         delete_scheduled_action/2,
+         delete_scheduled_action/3,
          deregister_scalable_target/2,
          deregister_scalable_target/3,
          describe_scalable_targets/2,
@@ -41,8 +74,12 @@
          describe_scaling_activities/3,
          describe_scaling_policies/2,
          describe_scaling_policies/3,
+         describe_scheduled_actions/2,
+         describe_scheduled_actions/3,
          put_scaling_policy/2,
          put_scaling_policy/3,
+         put_scheduled_action/2,
+         put_scheduled_action/3,
          register_scalable_target/2,
          register_scalable_target/3]).
 
@@ -52,14 +89,13 @@
 %% API
 %%====================================================================
 
-%% @doc Deletes an Application Auto Scaling scaling policy that was
-%% previously created. If you are no longer using a scaling policy, you can
-%% delete it with this operation.
+%% @doc Deletes the specified Application Auto Scaling scaling policy.
 %%
 %% Deleting a policy deletes the underlying alarm action, but does not delete
-%% the CloudWatch alarm, even if it no longer has an associated action.
+%% the CloudWatch alarm associated with the scaling policy, even if it no
+%% longer has an associated action.
 %%
-%% To create a new scaling policy or update an existing one, see
+%% To create a scaling policy or update an existing one, see
 %% <a>PutScalingPolicy</a>.
 delete_scaling_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -68,12 +104,20 @@ delete_scaling_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteScalingPolicy">>, Input, Options).
 
-%% @doc Deregisters a scalable target that was previously registered. If you
-%% are no longer using a scalable target, you can delete it with this
-%% operation. When you deregister a scalable target, all of the scaling
-%% policies that are associated with that scalable target are deleted.
+%% @doc Deletes the specified Application Auto Scaling scheduled action.
+delete_scheduled_action(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_scheduled_action(Client, Input, []).
+delete_scheduled_action(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteScheduledAction">>, Input, Options).
+
+%% @doc Deregisters a scalable target.
 %%
-%% To create a new scalable target or update an existing one, see
+%% Deregistering a scalable target deletes the scaling policies that are
+%% associated with it.
+%%
+%% To create a scalable target or update an existing one, see
 %% <a>RegisterScalableTarget</a>.
 deregister_scalable_target(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -82,15 +126,15 @@ deregister_scalable_target(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterScalableTarget">>, Input, Options).
 
-%% @doc Provides descriptive information for scalable targets with a
-%% specified service namespace.
+%% @doc Gets information about the scalable targets in the specified
+%% namespace.
 %%
-%% You can filter the results in a service namespace with the
-%% <code>ResourceIds</code> and <code>ScalableDimension</code> parameters.
+%% You can filter the results using the <code>ResourceIds</code> and
+%% <code>ScalableDimension</code> parameters.
 %%
-%% To create a new scalable target or update an existing one, see
+%% To create a scalable target or update an existing one, see
 %% <a>RegisterScalableTarget</a>. If you are no longer using a scalable
-%% target, you can deregister it with <a>DeregisterScalableTarget</a>.
+%% target, you can deregister it using <a>DeregisterScalableTarget</a>.
 describe_scalable_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scalable_targets(Client, Input, []).
@@ -98,16 +142,16 @@ describe_scalable_targets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeScalableTargets">>, Input, Options).
 
-%% @doc Provides descriptive information for scaling activities with a
-%% specified service namespace.
+%% @doc Provides descriptive information about the scaling activities in the
+%% specified namespace from the previous six weeks.
 %%
-%% You can filter the results in a service namespace with the
-%% <code>ResourceId</code> and <code>ScalableDimension</code> parameters.
+%% You can filter the results using the <code>ResourceId</code> and
+%% <code>ScalableDimension</code> parameters.
 %%
 %% Scaling activities are triggered by CloudWatch alarms that are associated
-%% with scaling policies. To view the existing scaling policies for a service
-%% namespace, see <a>DescribeScalingPolicies</a>. To create a new scaling
-%% policy or update an existing one, see <a>PutScalingPolicy</a>.
+%% with scaling policies. To view the scaling policies for a service
+%% namespace, see <a>DescribeScalingPolicies</a>. To create a scaling policy
+%% or update an existing one, see <a>PutScalingPolicy</a>.
 describe_scaling_activities(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scaling_activities(Client, Input, []).
@@ -115,16 +159,14 @@ describe_scaling_activities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeScalingActivities">>, Input, Options).
 
-%% @doc Provides descriptive information for scaling policies with a
-%% specified service namespace.
+%% @doc Describes the scaling policies for the specified service namespace.
 %%
-%% You can filter the results in a service namespace with the
-%% <code>ResourceId</code>, <code>ScalableDimension</code>, and
-%% <code>PolicyNames</code> parameters.
+%% You can filter the results using the <code>ResourceId</code>,
+%% <code>ScalableDimension</code>, and <code>PolicyNames</code> parameters.
 %%
-%% To create a new scaling policy or update an existing one, see
+%% To create a scaling policy or update an existing one, see
 %% <a>PutScalingPolicy</a>. If you are no longer using a scaling policy, you
-%% can delete it with <a>DeleteScalingPolicy</a>.
+%% can delete it using <a>DeleteScalingPolicy</a>.
 describe_scaling_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scaling_policies(Client, Input, []).
@@ -132,20 +174,53 @@ describe_scaling_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeScalingPolicies">>, Input, Options).
 
-%% @doc Creates or updates a policy for an existing Application Auto Scaling
-%% scalable target. Each scalable target is identified by service namespace,
-%% a resource ID, and a scalable dimension, and a scaling policy applies to a
-%% scalable target that is identified by those three attributes. You cannot
-%% create a scaling policy without first registering a scalable target with
+%% @doc Describes the scheduled actions for the specified service namespace.
+%%
+%% You can filter the results using the <code>ResourceId</code>,
+%% <code>ScalableDimension</code>, and <code>ScheduledActionNames</code>
+%% parameters.
+%%
+%% To create a scheduled action or update an existing one, see
+%% <a>PutScheduledAction</a>. If you are no longer using a scheduled action,
+%% you can delete it using <a>DeleteScheduledAction</a>.
+describe_scheduled_actions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_scheduled_actions(Client, Input, []).
+describe_scheduled_actions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeScheduledActions">>, Input, Options).
+
+%% @doc Creates or updates a policy for an Application Auto Scaling scalable
+%% target.
+%%
+%% Each scalable target is identified by a service namespace, resource ID,
+%% and scalable dimension. A scaling policy applies to the scalable target
+%% identified by those three attributes. You cannot create a scaling policy
+%% until you have registered the resource as a scalable target using
 %% <a>RegisterScalableTarget</a>.
 %%
-%% To update an existing policy, use the existing policy name and set the
-%% parameters you want to change. Any existing parameter not changed in an
-%% update to an existing policy is not changed in this update request.
+%% To update a policy, specify its policy name and the parameters that you
+%% want to change. Any parameters that you don't specify are not changed by
+%% this update request.
 %%
-%% You can view the existing scaling policies for a service namespace with
+%% You can view the scaling policies for a service namespace using
 %% <a>DescribeScalingPolicies</a>. If you are no longer using a scaling
-%% policy, you can delete it with <a>DeleteScalingPolicy</a>.
+%% policy, you can delete it using <a>DeleteScalingPolicy</a>.
+%%
+%% Multiple scaling policies can be in force at the same time for the same
+%% scalable target. You can have one or more target tracking scaling
+%% policies, one or more step scaling policies, or both. However, there is a
+%% chance that multiple policies could conflict, instructing the scalable
+%% target to scale out or in at the same time. Application Auto Scaling gives
+%% precedence to the policy that provides the largest capacity for both scale
+%% in and scale out. For example, if one policy increases capacity by 3,
+%% another policy increases capacity by 200 percent, and the current capacity
+%% is 10, Application Auto Scaling uses the policy with the highest
+%% calculated capacity (200% of 10 = 20) and scales out to 30.
+%%
+%% Learn more about how to work with scaling policies in the <a
+%% href="https://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html">Application
+%% Auto Scaling User Guide</a>.
 put_scaling_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_scaling_policy(Client, Input, []).
@@ -153,19 +228,46 @@ put_scaling_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutScalingPolicy">>, Input, Options).
 
+%% @doc Creates or updates a scheduled action for an Application Auto Scaling
+%% scalable target.
+%%
+%% Each scalable target is identified by a service namespace, resource ID,
+%% and scalable dimension. A scheduled action applies to the scalable target
+%% identified by those three attributes. You cannot create a scheduled action
+%% until you have registered the resource as a scalable target using
+%% <a>RegisterScalableTarget</a>.
+%%
+%% To update an action, specify its name and the parameters that you want to
+%% change. If you don't specify start and end times, the old values are
+%% deleted. Any other parameters that you don't specify are not changed by
+%% this update request.
+%%
+%% You can view the scheduled actions using <a>DescribeScheduledActions</a>.
+%% If you are no longer using a scheduled action, you can delete it using
+%% <a>DeleteScheduledAction</a>.
+%%
+%% Learn more about how to work with scheduled actions in the <a
+%% href="https://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html">Application
+%% Auto Scaling User Guide</a>.
+put_scheduled_action(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_scheduled_action(Client, Input, []).
+put_scheduled_action(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutScheduledAction">>, Input, Options).
+
 %% @doc Registers or updates a scalable target. A scalable target is a
-%% resource that can be scaled up or down with Application Auto Scaling.
-%% After you have registered a scalable target, you can use this command to
-%% update the minimum and maximum values for your scalable dimension.
+%% resource that Application Auto Scaling can scale out and scale in. Each
+%% scalable target has a resource ID, scalable dimension, and namespace, as
+%% well as values for minimum and maximum capacity.
 %%
-%% <note> At this time, Application Auto Scaling only supports scaling Amazon
-%% ECS services.
+%% After you register a scalable target, you do not need to register it again
+%% to use other Application Auto Scaling operations. To see which resources
+%% have been registered, use <a>DescribeScalableTargets</a>. You can also
+%% view the scaling policies for a service namespace using
+%% <a>DescribeScalableTargets</a>.
 %%
-%% </note> After you register a scalable target with Application Auto
-%% Scaling, you can create and apply scaling policies to it with
-%% <a>PutScalingPolicy</a>. You can view the existing scaling policies for a
-%% service namespace with <a>DescribeScalableTargets</a>. If you are no
-%% longer using a scalable target, you can deregister it with
+%% If you no longer need a scalable target, you can deregister it using
 %% <a>DeregisterScalableTarget</a>.
 register_scalable_target(Client, Input)
   when is_map(Client), is_map(Input) ->

@@ -1,252 +1,160 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/jkakar/aws-codegen for more details.
 
-%% @doc The AWS Application Discovery Service helps Systems Integrators
-%% quickly and reliably plan application migration projects by automatically
-%% identifying applications running in on-premises data centers, their
-%% associated dependencies, and their performance profile.
+%% @doc <fullname>AWS Application Discovery Service</fullname>
 %%
-%% Planning data center migrations can involve thousands of workloads that
-%% are often deeply interdependent. Application discovery and dependency
-%% mapping are important early first steps in the migration process, but
-%% difficult to perform at scale due to the lack of automated tools.
+%% AWS Application Discovery Service helps you plan application migration
+%% projects by automatically identifying servers, virtual machines (VMs),
+%% software, and software dependencies running in your on-premises data
+%% centers. Application Discovery Service also collects application
+%% performance data, which can help you assess the outcome of your migration.
+%% The data collected by Application Discovery Service is securely retained
+%% in an AWS-hosted and managed database in the cloud. You can export the
+%% data as a CSV or XML file into your preferred visualization tool or
+%% cloud-migration solution to plan your migration. For more information, see
+%% <a href="http://aws.amazon.com/application-discovery/faqs/">AWS
+%% Application Discovery Service FAQ</a>.
 %%
-%% The AWS Application Discovery Service automatically collects configuration
-%% and usage data from servers to develop a list of applications, how they
-%% perform, and how they are interdependent. This information is securely
-%% retained in an AWS Application Discovery Service database which you can
-%% export as a CSV file into your preferred visualization tool or cloud
-%% migration solution to help reduce the complexity and time in planning your
-%% cloud migration.
+%% Application Discovery Service offers two modes of operation:
 %%
-%% The Application Discovery Service is currently available for preview. Only
-%% customers who are engaged with <a
-%% href="https://aws.amazon.com/professional-services/">AWS Professional
-%% Services</a> or a certified AWS partner can use the service. To see the
-%% list of certified partners and request access to the Application Discovery
-%% Service, complete the following <a
-%% href="http://aws.amazon.com/application-discovery/preview/">preview
-%% form</a>.
+%% <ul> <li> <b>Agentless discovery</b> mode is recommended for environments
+%% that use VMware vCenter Server. This mode doesn't require you to install
+%% an agent on each host. Agentless discovery gathers server information
+%% regardless of the operating systems, which minimizes the time required for
+%% initial on-premises infrastructure assessment. Agentless discovery doesn't
+%% collect information about software and software dependencies. It also
+%% doesn't work in non-VMware environments.
 %%
-%% This API reference provides descriptions, syntax, and usage examples for
-%% each of the actions and data types for the Discovery Service. The topic
-%% for each action shows the API request parameters and the response.
-%% Alternatively, you can use one of the AWS SDKs to access an API that is
-%% tailored to the programming language or platform that you're using. For
-%% more information, see <a href="http://aws.amazon.com/tools/#SDKs">AWS
-%% SDKs</a>.
+%% </li> <li> <b>Agent-based discovery</b> mode collects a richer set of data
+%% than agentless discovery by using the AWS Application Discovery Agent,
+%% which you install on one or more hosts in your data center. The agent
+%% captures infrastructure and application information, including an
+%% inventory of installed software applications, system and process
+%% performance, resource utilization, and network dependencies between
+%% workloads. The information collected by agents is secured at rest and in
+%% transit to the Application Discovery Service database in the cloud.
+%%
+%% </li> </ul> We recommend that you use agent-based discovery for non-VMware
+%% environments and to collect information about software and software
+%% dependencies. You can also run agent-based and agentless discovery
+%% simultaneously. Use agentless discovery to quickly complete the initial
+%% infrastructure assessment and then install agents on select hosts.
+%%
+%% Application Discovery Service integrates with application discovery
+%% solutions from AWS Partner Network (APN) partners. Third-party application
+%% discovery tools can query Application Discovery Service and write to the
+%% Application Discovery Service database using a public API. You can then
+%% import the data into either a visualization tool or cloud-migration
+%% solution.
+%%
+%% <important> Application Discovery Service doesn't gather sensitive
+%% information. All data is handled according to the <a
+%% href="http://aws.amazon.com/privacy/">AWS Privacy Policy</a>. You can
+%% operate Application Discovery Service offline to inspect collected data
+%% before it is shared with the service.
+%%
+%% </important> This API reference provides descriptions, syntax, and usage
+%% examples for each of the actions and data types for Application Discovery
+%% Service. The topic for each action shows the API request parameters and
+%% the response. Alternatively, you can use one of the AWS SDKs to access an
+%% API that is tailored to the programming language or platform that you're
+%% using. For more information, see <a
+%% href="http://aws.amazon.com/tools/#SDKs">AWS SDKs</a>.
 %%
 %% This guide is intended for use with the <a
-%% href="http://docs.aws.amazon.com/application-discovery/latest/userguide/what-is-appdiscovery.html">
-%% <i>AWS Discovery Service User Guide</i> </a>.
-%%
-%% The following are short descriptions of each API action, organized by
-%% function.
-%%
-%% <b>Managing AWS Agents Using the Application Discovery Service</b>
-%%
-%% An AWS agent is software that you install on on-premises servers and
-%% virtual machines that are targeted for discovery and migration. Agents run
-%% on Linux and Windows Server and collect server configuration and activity
-%% information about your applications and infrastructure. Specifically,
-%% agents collect the following information and send it to the Application
-%% Discovery Service using Secure Sockets Layer (SSL) encryption:
-%%
-%% <ul> <li> User information (user name, home directory)
-%%
-%% </li> <li> Group information (name)
-%%
-%% </li> <li> List of installed packages
-%%
-%% </li> <li> List of kernel modules
-%%
-%% </li> <li> All create and stop process events
-%%
-%% </li> <li> DNS queries
-%%
-%% </li> <li> NIC information
-%%
-%% </li> <li> TCP/UDP process listening ports
-%%
-%% </li> <li> TCPV4/V6 connections
-%%
-%% </li> <li> Operating system information
-%%
-%% </li> <li> System performance
-%%
-%% </li> <li> Process performance
-%%
-%% </li> </ul> The Application Discovery Service API includes the following
-%% actions to manage AWS agents:
-%%
-%% <ul> <li> <i>StartDataCollectionByAgentIds</i>: Instructs the specified
-%% agents to start collecting data. The Application Discovery Service takes
-%% several minutes to receive and process data after you initiate data
-%% collection.
-%%
-%% </li> <li> <i>StopDataCollectionByAgentIds</i>: Instructs the specified
-%% agents to stop collecting data.
-%%
-%% </li> <li> <i>DescribeAgents</i>: Lists AWS agents by ID or lists all
-%% agents associated with your user account if you did not specify an agent
-%% ID. The output includes agent IDs, IP addresses, media access control
-%% (MAC) addresses, agent health, host name where the agent resides, and the
-%% version number of each agent.
-%%
-%% </li> </ul> <b>Querying Configuration Items</b>
-%%
-%% A <i>configuration item</i> is an IT asset that was discovered in your
-%% data center by an AWS agent. When you use the Application Discovery
-%% Service, you can specify filters and query specific configuration items.
-%% The service supports Server, Process, and Connection configuration items.
-%% This means you can specify a value for the following keys and query your
-%% IT assets:
-%%
-%% <p class="title"> <b>Server</b>
-%%
-%% <ul> <li> server.HostName
-%%
-%% </li> <li> server.osName
-%%
-%% </li> <li> server.osVersion
-%%
-%% </li> <li> server.configurationId
-%%
-%% </li> <li> server.agentId
-%%
-%% </li> </ul> <p class="title"> <b>Process</b>
-%%
-%% <ul> <li> process.name
-%%
-%% </li> <li> process.CommandLine
-%%
-%% </li> <li> process.configurationId
-%%
-%% </li> <li> server.hostName
-%%
-%% </li> <li> server.osName
-%%
-%% </li> <li> server.osVersion
-%%
-%% </li> <li> server.configurationId
-%%
-%% </li> <li> server.agentId
-%%
-%% </li> </ul> <p class="title"> <b>Connection</b>
-%%
-%% <ul> <li> connection.sourceIp
-%%
-%% </li> <li> connection.sourcePort
-%%
-%% </li> <li> connection.destinationIp
-%%
-%% </li> <li> connection.destinationPort
-%%
-%% </li> <li> sourceProcess.configurationId
-%%
-%% </li> <li> sourceProcess.commandLine
-%%
-%% </li> <li> sourceProcess.name
-%%
-%% </li> <li> destinationProcessId.configurationId
-%%
-%% </li> <li> destinationProcess.commandLine
-%%
-%% </li> <li> destinationProcess.name
-%%
-%% </li> <li> sourceServer.configurationId
-%%
-%% </li> <li> sourceServer.hostName
-%%
-%% </li> <li> sourceServer.osName
-%%
-%% </li> <li> sourceServer.osVersion
-%%
-%% </li> <li> destinationServer.configurationId
-%%
-%% </li> <li> destinationServer.hostName
-%%
-%% </li> <li> destinationServer.osName
-%%
-%% </li> <li> destinationServer.osVersion
-%%
-%% </li> </ul> The Application Discovery Service includes the following
-%% actions for querying configuration items.
-%%
-%% <ul> <li> <i>DescribeConfigurations</i>: Retrieves a list of attributes
-%% for a specific configuration ID. For example, the output for a
-%% <i>server</i> configuration item includes a list of attributes about the
-%% server, including host name, operating system, number of network cards,
-%% etc.
-%%
-%% </li> <li> <i>ListConfigurations</i>: Retrieves a list of configuration
-%% items according to the criteria you specify in a filter. The filter
-%% criteria identify relationship requirements. For example, you can specify
-%% filter criteria of process.name with values of <i>nginx</i> and
-%% <i>apache</i>.
-%%
-%% </li> </ul> <b>Tagging Discovered Configuration Items</b>
-%%
-%% You can tag discovered configuration items. Tags are metadata that help
-%% you categorize IT assets in your data center. Tags use a
-%% <i>key</i>-<i>value</i> format. For example, <code>{"key": "serverType",
-%% "value": "webServer"}</code>.
-%%
-%% <ul> <li> <i>CreateTags</i>: Creates one or more tags for a configuration
-%% items.
-%%
-%% </li> <li> <i>DescribeTags</i>: Retrieves a list of configuration items
-%% that are tagged with a specific tag. <i>Or</i>, retrieves a list of all
-%% tags assigned to a specific configuration item.
-%%
-%% </li> <li> <i>DeleteTags</i>: Deletes the association between a
-%% configuration item and one or more tags.
-%%
-%% </li> </ul> <b>Exporting Data</b>
-%%
-%% You can export data as a CSV file to an Amazon S3 bucket or into your
-%% preferred visualization tool or cloud migration solution to help reduce
-%% the complexity and time in planning your cloud migration.
-%%
-%% <ul> <li> <i>ExportConfigurations</i>: Exports all discovered
-%% configuration data to an Amazon S3 bucket. Data includes tags and tag
-%% associations, processes, connections, servers, and system performance.
-%% This API returns an export ID which you can query using the
-%% GetExportStatus API.
-%%
-%% </li> <li> <i>DescribeExportConfigurations</i>: Gets the status of the
-%% data export. When the export is complete, the service returns an Amazon S3
-%% URL where you can download CSV files that include the data.
-%%
-%% </li> </ul>
+%% href="http://docs.aws.amazon.com/application-discovery/latest/userguide/">
+%% <i>AWS Application Discovery Service User Guide</i> </a>.
 -module(aws_discovery).
 
--export([create_tags/2,
+-export([associate_configuration_items_to_application/2,
+         associate_configuration_items_to_application/3,
+         batch_delete_import_data/2,
+         batch_delete_import_data/3,
+         create_application/2,
+         create_application/3,
+         create_tags/2,
          create_tags/3,
+         delete_applications/2,
+         delete_applications/3,
          delete_tags/2,
          delete_tags/3,
          describe_agents/2,
          describe_agents/3,
          describe_configurations/2,
          describe_configurations/3,
+         describe_continuous_exports/2,
+         describe_continuous_exports/3,
          describe_export_configurations/2,
          describe_export_configurations/3,
+         describe_export_tasks/2,
+         describe_export_tasks/3,
+         describe_import_tasks/2,
+         describe_import_tasks/3,
          describe_tags/2,
          describe_tags/3,
+         disassociate_configuration_items_from_application/2,
+         disassociate_configuration_items_from_application/3,
          export_configurations/2,
          export_configurations/3,
+         get_discovery_summary/2,
+         get_discovery_summary/3,
          list_configurations/2,
          list_configurations/3,
+         list_server_neighbors/2,
+         list_server_neighbors/3,
+         start_continuous_export/2,
+         start_continuous_export/3,
          start_data_collection_by_agent_ids/2,
          start_data_collection_by_agent_ids/3,
+         start_export_task/2,
+         start_export_task/3,
+         start_import_task/2,
+         start_import_task/3,
+         stop_continuous_export/2,
+         stop_continuous_export/3,
          stop_data_collection_by_agent_ids/2,
-         stop_data_collection_by_agent_ids/3]).
+         stop_data_collection_by_agent_ids/3,
+         update_application/2,
+         update_application/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Associates one or more configuration items with an application.
+associate_configuration_items_to_application(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    associate_configuration_items_to_application(Client, Input, []).
+associate_configuration_items_to_application(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssociateConfigurationItemsToApplication">>, Input, Options).
+
+%% @doc Deletes one or more import tasks, each identified by their import ID.
+%% Each import task has a number of records that can identify servers or
+%% applications.
+%%
+%% AWS Application Discovery Service has built-in matching logic that will
+%% identify when discovered servers match existing entries that you've
+%% previously discovered, the information for the already-existing discovered
+%% server is updated. When you delete an import task that contains records
+%% that were used to match, the information in those matched records that
+%% comes from the deleted records will also be deleted.
+batch_delete_import_data(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_delete_import_data(Client, Input, []).
+batch_delete_import_data(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchDeleteImportData">>, Input, Options).
+
+%% @doc Creates an application with the given name and description.
+create_application(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_application(Client, Input, []).
+create_application(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateApplication">>, Input, Options).
 
 %% @doc Creates one or more tags for configuration items. Tags are metadata
 %% that help you categorize IT assets. This API accepts a list of multiple
@@ -258,6 +166,15 @@ create_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTags">>, Input, Options).
 
+%% @doc Deletes a list of applications and their associations with
+%% configuration items.
+delete_applications(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_applications(Client, Input, []).
+delete_applications(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteApplications">>, Input, Options).
+
 %% @doc Deletes the association between configuration items and one or more
 %% tags. This API accepts a list of multiple configuration items.
 delete_tags(Client, Input)
@@ -267,8 +184,9 @@ delete_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTags">>, Input, Options).
 
-%% @doc Lists AWS agents by ID or lists all agents associated with your user
-%% account if you did not specify an agent ID.
+%% @doc Lists agents or connectors as specified by ID or other filters. All
+%% agents/connectors associated with your user account can be listed if you
+%% call <code>DescribeAgents</code> as is without passing any parameters.
 describe_agents(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_agents(Client, Input, []).
@@ -276,10 +194,29 @@ describe_agents(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAgents">>, Input, Options).
 
-%% @doc Retrieves a list of attributes for a specific configuration ID. For
+%% @doc Retrieves attributes for a list of configuration item IDs.
+%%
+%% <note> All of the supplied IDs must be for the same asset type from one of
+%% the following:
+%%
+%% <ul> <li> server
+%%
+%% </li> <li> application
+%%
+%% </li> <li> process
+%%
+%% </li> <li> connection
+%%
+%% </li> </ul> Output fields are specific to the asset type specified. For
 %% example, the output for a <i>server</i> configuration item includes a list
-%% of attributes about the server, including host name, operating system,
+%% of attributes about the server, such as host name, operating system,
 %% number of network cards, etc.
+%%
+%% For a complete list of outputs for each asset type, see <a
+%% href="http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#DescribeConfigurations">Using
+%% the DescribeConfigurations Action</a>.
+%%
+%% </note>
 describe_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_configurations(Client, Input, []).
@@ -287,8 +224,20 @@ describe_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConfigurations">>, Input, Options).
 
-%% @doc Retrieves the status of a given export process. You can retrieve
-%% status from a maximum of 100 processes.
+%% @doc Lists exports as specified by ID. All continuous exports associated
+%% with your user account can be listed if you call
+%% <code>DescribeContinuousExports</code> as is without passing any
+%% parameters.
+describe_continuous_exports(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_continuous_exports(Client, Input, []).
+describe_continuous_exports(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeContinuousExports">>, Input, Options).
+
+%% @doc <code>DescribeExportConfigurations</code> is deprecated. Use <a
+%% href="https://docs.aws.amazon.com/application-discovery/latest/APIReference/API_DescribeExportTasks.html">DescribeImportTasks</a>,
+%% instead.
 describe_export_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_export_configurations(Client, Input, []).
@@ -296,9 +245,40 @@ describe_export_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeExportConfigurations">>, Input, Options).
 
-%% @doc Retrieves a list of configuration items that are tagged with a
-%% specific tag. Or retrieves a list of all tags assigned to a specific
-%% configuration item.
+%% @doc Retrieve status of one or more export tasks. You can retrieve the
+%% status of up to 100 export tasks.
+describe_export_tasks(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_export_tasks(Client, Input, []).
+describe_export_tasks(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeExportTasks">>, Input, Options).
+
+%% @doc Returns an array of import tasks for your account, including status
+%% information, times, IDs, the Amazon S3 Object URL for the import file, and
+%% more.
+describe_import_tasks(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_import_tasks(Client, Input, []).
+describe_import_tasks(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeImportTasks">>, Input, Options).
+
+%% @doc Retrieves a list of configuration items that have tags as specified
+%% by the key-value pairs, name and value, passed to the optional parameter
+%% <code>filters</code>.
+%%
+%% There are three valid tag filter names:
+%%
+%% <ul> <li> tagKey
+%%
+%% </li> <li> tagValue
+%%
+%% </li> <li> configurationId
+%%
+%% </li> </ul> Also, all configuration items associated with your user
+%% account that have tags can be listed if you call <code>DescribeTags</code>
+%% as is without passing any parameters.
 describe_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tags(Client, Input, []).
@@ -306,11 +286,21 @@ describe_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTags">>, Input, Options).
 
-%% @doc Exports all discovered configuration data to an Amazon S3 bucket or
-%% an application that enables you to view and evaluate the data. Data
-%% includes tags and tag associations, processes, connections, servers, and
-%% system performance. This API returns an export ID which you can query
-%% using the <i>GetExportStatus</i> API. The system imposes a limit of two
+%% @doc Disassociates one or more configuration items from an application.
+disassociate_configuration_items_from_application(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disassociate_configuration_items_from_application(Client, Input, []).
+disassociate_configuration_items_from_application(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisassociateConfigurationItemsFromApplication">>, Input, Options).
+
+%% @doc Deprecated. Use <code>StartExportTask</code> instead.
+%%
+%% Exports all discovered configuration data to an Amazon S3 bucket or an
+%% application that enables you to view and evaluate the data. Data includes
+%% tags and tag associations, processes, connections, servers, and system
+%% performance. This API returns an export ID that you can query using the
+%% <i>DescribeExportConfigurations</i> API. The system imposes a limit of two
 %% configuration exports in six hours.
 export_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -319,9 +309,20 @@ export_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExportConfigurations">>, Input, Options).
 
-%% @doc Retrieves a list of configurations items according to the criteria
-%% you specify in a filter. The filter criteria identify relationship
-%% requirements.
+%% @doc Retrieves a short summary of discovered assets.
+%%
+%% This API operation takes no request parameters and is called as is at the
+%% command prompt as shown in the example.
+get_discovery_summary(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_discovery_summary(Client, Input, []).
+get_discovery_summary(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDiscoverySummary">>, Input, Options).
+
+%% @doc Retrieves a list of configuration items as specified by the value
+%% passed to the required paramater <code>configurationType</code>. Optional
+%% filtering may be applied to refine search results.
 list_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_configurations(Client, Input, []).
@@ -329,8 +330,26 @@ list_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListConfigurations">>, Input, Options).
 
-%% @doc Instructs the specified agents to start collecting data. Agents can
-%% reside on host servers or virtual machines in your data center.
+%% @doc Retrieves a list of servers that are one network hop away from a
+%% specified server.
+list_server_neighbors(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_server_neighbors(Client, Input, []).
+list_server_neighbors(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListServerNeighbors">>, Input, Options).
+
+%% @doc Start the continuous flow of agent's discovered data into Amazon
+%% Athena.
+start_continuous_export(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_continuous_export(Client, Input, []).
+start_continuous_export(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartContinuousExport">>, Input, Options).
+
+%% @doc Instructs the specified agents or connectors to start collecting
+%% data.
 start_data_collection_by_agent_ids(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_data_collection_by_agent_ids(Client, Input, []).
@@ -338,13 +357,92 @@ start_data_collection_by_agent_ids(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartDataCollectionByAgentIds">>, Input, Options).
 
-%% @doc Instructs the specified agents to stop collecting data.
+%% @doc Begins the export of discovered data to an S3 bucket.
+%%
+%% If you specify <code>agentIds</code> in a filter, the task exports up to
+%% 72 hours of detailed data collected by the identified Application
+%% Discovery Agent, including network, process, and performance details. A
+%% time range for exported agent data may be set by using
+%% <code>startTime</code> and <code>endTime</code>. Export of detailed agent
+%% data is limited to five concurrently running exports.
+%%
+%% If you do not include an <code>agentIds</code> filter, summary data is
+%% exported that includes both AWS Agentless Discovery Connector data and
+%% summary data from AWS Discovery Agents. Export of summary data is limited
+%% to two exports per day.
+start_export_task(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_export_task(Client, Input, []).
+start_export_task(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartExportTask">>, Input, Options).
+
+%% @doc Starts an import task, which allows you to import details of your
+%% on-premises environment directly into AWS without having to use the
+%% Application Discovery Service (ADS) tools such as the Discovery Connector
+%% or Discovery Agent. This gives you the option to perform migration
+%% assessment and planning directly from your imported data, including the
+%% ability to group your devices as applications and track their migration
+%% status.
+%%
+%% To start an import request, do this:
+%%
+%% <ol> <li> Download the specially formatted comma separated value (CSV)
+%% import template, which you can find here: <a
+%% href="https://s3-us-west-2.amazonaws.com/templates-7cffcf56-bd96-4b1c-b45b-a5b42f282e46/import_template.csv">https://s3-us-west-2.amazonaws.com/templates-7cffcf56-bd96-4b1c-b45b-a5b42f282e46/import_template.csv</a>.
+%%
+%% </li> <li> Fill out the template with your server and application data.
+%%
+%% </li> <li> Upload your import file to an Amazon S3 bucket, and make a note
+%% of it's Object URL. Your import file must be in the CSV format.
+%%
+%% </li> <li> Use the console or the <code>StartImportTask</code> command
+%% with the AWS CLI or one of the AWS SDKs to import the records from your
+%% file.
+%%
+%% </li> </ol> For more information, including step-by-step procedures, see
+%% <a
+%% href="https://docs.aws.amazon.com/application-discovery/latest/userguide/discovery-import.html">Migration
+%% Hub Import</a> in the <i>AWS Application Discovery Service User Guide</i>.
+%%
+%% <note> There are limits to the number of import tasks you can create (and
+%% delete) in an AWS account. For more information, see <a
+%% href="https://docs.aws.amazon.com/application-discovery/latest/userguide/ads_service_limits.html">AWS
+%% Application Discovery Service Limits</a> in the <i>AWS Application
+%% Discovery Service User Guide</i>.
+%%
+%% </note>
+start_import_task(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_import_task(Client, Input, []).
+start_import_task(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartImportTask">>, Input, Options).
+
+%% @doc Stop the continuous flow of agent's discovered data into Amazon
+%% Athena.
+stop_continuous_export(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_continuous_export(Client, Input, []).
+stop_continuous_export(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopContinuousExport">>, Input, Options).
+
+%% @doc Instructs the specified agents or connectors to stop collecting data.
 stop_data_collection_by_agent_ids(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_data_collection_by_agent_ids(Client, Input, []).
 stop_data_collection_by_agent_ids(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopDataCollectionByAgentIds">>, Input, Options).
+
+%% @doc Updates metadata about an application.
+update_application(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_application(Client, Input, []).
+update_application(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateApplication">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

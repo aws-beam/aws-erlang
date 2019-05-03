@@ -1,37 +1,57 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/jkakar/aws-codegen for more details.
 
-%% @doc Amazon Elastic MapReduce (Amazon EMR) is a web service that makes it
-%% easy to process large amounts of data efficiently. Amazon EMR uses Hadoop
-%% processing combined with several AWS products to do tasks such as web
-%% indexing, data mining, log file analysis, machine learning, scientific
-%% simulation, and data warehousing.
+%% @doc Amazon EMR is a web service that makes it easy to process large
+%% amounts of data efficiently. Amazon EMR uses Hadoop processing combined
+%% with several AWS products to do tasks such as web indexing, data mining,
+%% log file analysis, machine learning, scientific simulation, and data
+%% warehousing.
 -module(aws_emr).
 
--export([add_instance_groups/2,
+-export([add_instance_fleet/2,
+         add_instance_fleet/3,
+         add_instance_groups/2,
          add_instance_groups/3,
          add_job_flow_steps/2,
          add_job_flow_steps/3,
          add_tags/2,
          add_tags/3,
+         cancel_steps/2,
+         cancel_steps/3,
+         create_security_configuration/2,
+         create_security_configuration/3,
+         delete_security_configuration/2,
+         delete_security_configuration/3,
          describe_cluster/2,
          describe_cluster/3,
          describe_job_flows/2,
          describe_job_flows/3,
+         describe_security_configuration/2,
+         describe_security_configuration/3,
          describe_step/2,
          describe_step/3,
          list_bootstrap_actions/2,
          list_bootstrap_actions/3,
          list_clusters/2,
          list_clusters/3,
+         list_instance_fleets/2,
+         list_instance_fleets/3,
          list_instance_groups/2,
          list_instance_groups/3,
          list_instances/2,
          list_instances/3,
+         list_security_configurations/2,
+         list_security_configurations/3,
          list_steps/2,
          list_steps/3,
+         modify_instance_fleet/2,
+         modify_instance_fleet/3,
          modify_instance_groups/2,
          modify_instance_groups/3,
+         put_auto_scaling_policy/2,
+         put_auto_scaling_policy/3,
+         remove_auto_scaling_policy/2,
+         remove_auto_scaling_policy/3,
          remove_tags/2,
          remove_tags/3,
          run_job_flow/2,
@@ -49,7 +69,20 @@
 %% API
 %%====================================================================
 
-%% @doc AddInstanceGroups adds an instance group to a running cluster.
+%% @doc Adds an instance fleet to a running cluster.
+%%
+%% <note> The instance fleet configuration is available only in Amazon EMR
+%% versions 4.8.0 and later, excluding 5.0.x.
+%%
+%% </note>
+add_instance_fleet(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    add_instance_fleet(Client, Input, []).
+add_instance_fleet(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AddInstanceFleet">>, Input, Options).
+
+%% @doc Adds one or more instance groups to a running cluster.
 add_instance_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_instance_groups(Client, Input, []).
@@ -57,31 +90,31 @@ add_instance_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddInstanceGroups">>, Input, Options).
 
-%% @doc AddJobFlowSteps adds new steps to a running job flow. A maximum of
-%% 256 steps are allowed in each job flow.
+%% @doc AddJobFlowSteps adds new steps to a running cluster. A maximum of 256
+%% steps are allowed in each job flow.
 %%
-%% If your job flow is long-running (such as a Hive data warehouse) or
+%% If your cluster is long-running (such as a Hive data warehouse) or
 %% complex, you may require more than 256 steps to process your data. You can
-%% bypass the 256-step limitation in various ways, including using the SSH
-%% shell to connect to the master node and submitting queries directly to the
-%% software running on the master node, such as Hive and Hadoop. For more
-%% information on how to do this, go to <a
-%% href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/AddMoreThan256Steps.html">Add
-%% More than 256 Steps to a Job Flow</a> in the <i>Amazon Elastic MapReduce
-%% Developer's Guide</i>.
+%% bypass the 256-step limitation in various ways, including using SSH to
+%% connect to the master node and submitting queries directly to the software
+%% running on the master node, such as Hive and Hadoop. For more information
+%% on how to do this, see <a
+%% href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/AddMoreThan256Steps.html">Add
+%% More than 256 Steps to a Cluster</a> in the <i>Amazon EMR Management
+%% Guide</i>.
 %%
 %% A step specifies the location of a JAR file stored either on the master
-%% node of the job flow or in Amazon S3. Each step is performed by the main
+%% node of the cluster or in Amazon S3. Each step is performed by the main
 %% function of the main class of the JAR file. The main class can be
 %% specified either in the manifest of the JAR or by using the MainFunction
 %% parameter of the step.
 %%
-%% Elastic MapReduce executes each step in the order listed. For a step to be
+%% Amazon EMR executes each step in the order listed. For a step to be
 %% considered complete, the main function must exit with a zero exit code and
 %% all Hadoop jobs started while the step was running must have completed and
 %% run successfully.
 %%
-%% You can only add steps to a job flow that is in one of the following
+%% You can only add steps to a cluster that is in one of the following
 %% states: STARTING, BOOTSTRAPPING, RUNNING, or WAITING.
 add_job_flow_steps(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -93,8 +126,8 @@ add_job_flow_steps(Client, Input, Options)
 %% @doc Adds tags to an Amazon EMR resource. Tags make it easier to associate
 %% clusters in various ways, such as grouping clusters to track your Amazon
 %% EMR resource allocation costs. For more information, see <a
-%% href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-plan-tags.html">Tagging
-%% Amazon EMR Resources</a>.
+%% href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html">Tag
+%% Clusters</a>.
 add_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags(Client, Input, []).
@@ -102,9 +135,38 @@ add_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddTags">>, Input, Options).
 
+%% @doc Cancels a pending step or steps in a running cluster. Available only
+%% in Amazon EMR versions 4.8.0 and later, excluding version 5.0.0. A maximum
+%% of 256 steps are allowed in each CancelSteps request. CancelSteps is
+%% idempotent but asynchronous; it does not guarantee a step will be
+%% canceled, even if the request is successfully submitted. You can only
+%% cancel steps that are in a <code>PENDING</code> state.
+cancel_steps(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    cancel_steps(Client, Input, []).
+cancel_steps(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CancelSteps">>, Input, Options).
+
+%% @doc Creates a security configuration, which is stored in the service and
+%% can be specified when a cluster is created.
+create_security_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_security_configuration(Client, Input, []).
+create_security_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateSecurityConfiguration">>, Input, Options).
+
+%% @doc Deletes a security configuration.
+delete_security_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_security_configuration(Client, Input, []).
+delete_security_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteSecurityConfiguration">>, Input, Options).
+
 %% @doc Provides cluster-level details including status, hardware and
-%% software configuration, VPC settings, and so on. For information about the
-%% cluster steps, see <a>ListSteps</a>.
+%% software configuration, VPC settings, and so on.
 describe_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cluster(Client, Input, []).
@@ -126,17 +188,28 @@ describe_cluster(Client, Input, Options)
 %% If no parameters are supplied, then job flows matching either of the
 %% following criteria are returned:
 %%
-%% <ul> <li>Job flows created and completed in the last two weeks</li> <li>
-%% Job flows created within the last two months that are in one of the
-%% following states: <code>RUNNING</code>, <code>WAITING</code>,
-%% <code>SHUTTING_DOWN</code>, <code>STARTING</code> </li> </ul> Amazon
-%% Elastic MapReduce can return a maximum of 512 job flow descriptions.
+%% <ul> <li> Job flows created and completed in the last two weeks
+%%
+%% </li> <li> Job flows created within the last two months that are in one of
+%% the following states: <code>RUNNING</code>, <code>WAITING</code>,
+%% <code>SHUTTING_DOWN</code>, <code>STARTING</code>
+%%
+%% </li> </ul> Amazon EMR can return a maximum of 512 job flow descriptions.
 describe_job_flows(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_job_flows(Client, Input, []).
 describe_job_flows(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeJobFlows">>, Input, Options).
+
+%% @doc Provides the details of a security configuration by returning the
+%% configuration JSON.
+describe_security_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_security_configuration(Client, Input, []).
+describe_security_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeSecurityConfiguration">>, Input, Options).
 
 %% @doc Provides more detail about the cluster step.
 describe_step(Client, Input)
@@ -167,6 +240,19 @@ list_clusters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListClusters">>, Input, Options).
 
+%% @doc Lists all available details about the instance fleets in a cluster.
+%%
+%% <note> The instance fleet configuration is available only in Amazon EMR
+%% versions 4.8.0 and later, excluding 5.0.x versions.
+%%
+%% </note>
+list_instance_fleets(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_instance_fleets(Client, Input, []).
+list_instance_fleets(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListInstanceFleets">>, Input, Options).
+
 %% @doc Provides all available details about the instance groups in a
 %% cluster.
 list_instance_groups(Client, Input)
@@ -176,11 +262,10 @@ list_instance_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListInstanceGroups">>, Input, Options).
 
-%% @doc Provides information about the cluster instances that Amazon EMR
-%% provisions on behalf of a user when it creates the cluster. For example,
-%% this operation indicates when the EC2 instances reach the Ready state,
-%% when instances become available to Amazon EMR to use for jobs, and the IP
-%% addresses for cluster instances, etc.
+%% @doc Provides information for all active EC2 instances and EC2 instances
+%% terminated in the last 30 days, up to a maximum of 2,000. EC2 instances in
+%% any of the following states are considered active: AWAITING_FULFILLMENT,
+%% PROVISIONING, BOOTSTRAPPING, RUNNING.
 list_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_instances(Client, Input, []).
@@ -188,13 +273,41 @@ list_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListInstances">>, Input, Options).
 
-%% @doc Provides a list of steps for the cluster.
+%% @doc Lists all the security configurations visible to this account,
+%% providing their creation dates and times, and their names. This call
+%% returns a maximum of 50 clusters per call, but returns a marker to track
+%% the paging of the cluster list across multiple ListSecurityConfigurations
+%% calls.
+list_security_configurations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_security_configurations(Client, Input, []).
+list_security_configurations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListSecurityConfigurations">>, Input, Options).
+
+%% @doc Provides a list of steps for the cluster in reverse order unless you
+%% specify stepIds with the request.
 list_steps(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_steps(Client, Input, []).
 list_steps(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSteps">>, Input, Options).
+
+%% @doc Modifies the target On-Demand and target Spot capacities for the
+%% instance fleet with the specified InstanceFleetID within the cluster
+%% specified using ClusterID. The call either succeeds or fails atomically.
+%%
+%% <note> The instance fleet configuration is available only in Amazon EMR
+%% versions 4.8.0 and later, excluding 5.0.x versions.
+%%
+%% </note>
+modify_instance_fleet(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_instance_fleet(Client, Input, []).
+modify_instance_fleet(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyInstanceFleet">>, Input, Options).
 
 %% @doc ModifyInstanceGroups modifies the number of nodes and configuration
 %% settings of an instance group. The input parameters include the new target
@@ -207,11 +320,31 @@ modify_instance_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyInstanceGroups">>, Input, Options).
 
+%% @doc Creates or updates an automatic scaling policy for a core instance
+%% group or task instance group in an Amazon EMR cluster. The automatic
+%% scaling policy defines how an instance group dynamically adds and
+%% terminates EC2 instances in response to the value of a CloudWatch metric.
+put_auto_scaling_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_auto_scaling_policy(Client, Input, []).
+put_auto_scaling_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutAutoScalingPolicy">>, Input, Options).
+
+%% @doc Removes an automatic scaling policy from a specified instance group
+%% within an EMR cluster.
+remove_auto_scaling_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    remove_auto_scaling_policy(Client, Input, []).
+remove_auto_scaling_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RemoveAutoScalingPolicy">>, Input, Options).
+
 %% @doc Removes tags from an Amazon EMR resource. Tags make it easier to
 %% associate clusters in various ways, such as grouping clusters to track
 %% your Amazon EMR resource allocation costs. For more information, see <a
-%% href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-plan-tags.html">Tagging
-%% Amazon EMR Resources</a>.
+%% href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html">Tag
+%% Clusters</a>.
 %%
 %% The following example removes the stack tag with value Prod from a
 %% cluster:
@@ -222,33 +355,40 @@ remove_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTags">>, Input, Options).
 
-%% @doc RunJobFlow creates and starts running a new job flow. The job flow
-%% will run the steps specified. Once the job flow completes, the cluster is
-%% stopped and the HDFS partition is lost. To prevent loss of data, configure
+%% @doc RunJobFlow creates and starts running a new cluster (job flow). The
+%% cluster runs the steps specified. After the steps complete, the cluster
+%% stops and the HDFS partition is lost. To prevent loss of data, configure
 %% the last step of the job flow to store results in Amazon S3. If the
 %% <a>JobFlowInstancesConfig</a> <code>KeepJobFlowAliveWhenNoSteps</code>
-%% parameter is set to <code>TRUE</code>, the job flow will transition to the
-%% WAITING state rather than shutting down once the steps have completed.
+%% parameter is set to <code>TRUE</code>, the cluster transitions to the
+%% WAITING state rather than shutting down after the steps have completed.
 %%
 %% For additional protection, you can set the <a>JobFlowInstancesConfig</a>
 %% <code>TerminationProtected</code> parameter to <code>TRUE</code> to lock
-%% the job flow and prevent it from being terminated by API call, user
+%% the cluster and prevent it from being terminated by API call, user
 %% intervention, or in the event of a job flow error.
 %%
 %% A maximum of 256 steps are allowed in each job flow.
 %%
-%% If your job flow is long-running (such as a Hive data warehouse) or
+%% If your cluster is long-running (such as a Hive data warehouse) or
 %% complex, you may require more than 256 steps to process your data. You can
 %% bypass the 256-step limitation in various ways, including using the SSH
 %% shell to connect to the master node and submitting queries directly to the
 %% software running on the master node, such as Hive and Hadoop. For more
-%% information on how to do this, go to <a
-%% href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/AddMoreThan256Steps.html">Add
-%% More than 256 Steps to a Job Flow</a> in the <i>Amazon Elastic MapReduce
-%% Developer's Guide</i>.
+%% information on how to do this, see <a
+%% href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/AddMoreThan256Steps.html">Add
+%% More than 256 Steps to a Cluster</a> in the <i>Amazon EMR Management
+%% Guide</i>.
 %%
-%% For long running job flows, we recommend that you periodically store your
+%% For long running clusters, we recommend that you periodically store your
 %% results.
+%%
+%% <note> The instance fleets configuration is available only in Amazon EMR
+%% versions 4.8.0 and later, excluding 5.0.x versions. The RunJobFlow request
+%% can contain InstanceFleets parameters or InstanceGroups parameters, but
+%% not both.
+%%
+%% </note>
 run_job_flow(Client, Input)
   when is_map(Client), is_map(Input) ->
     run_job_flow(Client, Input, []).
@@ -256,27 +396,28 @@ run_job_flow(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RunJobFlow">>, Input, Options).
 
-%% @doc SetTerminationProtection locks a job flow so the Amazon EC2 instances
-%% in the cluster cannot be terminated by user intervention, an API call, or
-%% in the event of a job-flow error. The cluster still terminates upon
-%% successful completion of the job flow. Calling SetTerminationProtection on
-%% a job flow is analogous to calling the Amazon EC2 DisableAPITermination
-%% API on all of the EC2 instances in a cluster.
+%% @doc SetTerminationProtection locks a cluster (job flow) so the EC2
+%% instances in the cluster cannot be terminated by user intervention, an API
+%% call, or in the event of a job-flow error. The cluster still terminates
+%% upon successful completion of the job flow. Calling
+%% <code>SetTerminationProtection</code> on a cluster is similar to calling
+%% the Amazon EC2 <code>DisableAPITermination</code> API on all EC2 instances
+%% in a cluster.
 %%
-%% SetTerminationProtection is used to prevent accidental termination of a
-%% job flow and to ensure that in the event of an error, the instances will
-%% persist so you can recover any data stored in their ephemeral instance
-%% storage.
+%% <code>SetTerminationProtection</code> is used to prevent accidental
+%% termination of a cluster and to ensure that in the event of an error, the
+%% instances persist so that you can recover any data stored in their
+%% ephemeral instance storage.
 %%
-%% To terminate a job flow that has been locked by setting
-%% SetTerminationProtection to <code>true</code>, you must first unlock the
-%% job flow by a subsequent call to SetTerminationProtection in which you set
-%% the value to <code>false</code>.
+%% To terminate a cluster that has been locked by setting
+%% <code>SetTerminationProtection</code> to <code>true</code>, you must first
+%% unlock the job flow by a subsequent call to
+%% <code>SetTerminationProtection</code> in which you set the value to
+%% <code>false</code>.
 %%
-%% For more information, go to <a
-%% href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/UsingEMR_TerminationProtection.html">Protecting
-%% a Job Flow from Termination</a> in the <i>Amazon Elastic MapReduce
-%% Developer's Guide.</i>
+%% For more information, see<a
+%% href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/UsingEMR_TerminationProtection.html">Managing
+%% Cluster Termination</a> in the <i>Amazon EMR Management Guide</i>.
 set_termination_protection(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_termination_protection(Client, Input, []).
@@ -285,12 +426,12 @@ set_termination_protection(Client, Input, Options)
     request(Client, <<"SetTerminationProtection">>, Input, Options).
 
 %% @doc Sets whether all AWS Identity and Access Management (IAM) users under
-%% your account can access the specified job flows. This action works on
-%% running job flows. You can also set the visibility of a job flow when you
-%% launch it using the <code>VisibleToAllUsers</code> parameter of
+%% your account can access the specified clusters (job flows). This action
+%% works on running clusters. You can also set the visibility of a cluster
+%% when you launch it using the <code>VisibleToAllUsers</code> parameter of
 %% <a>RunJobFlow</a>. The SetVisibleToAllUsers action can be called only by
-%% an IAM user who created the job flow or the AWS account that owns the job
-%% flow.
+%% an IAM user who created the cluster or the AWS account that owns the
+%% cluster.
 set_visible_to_all_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_visible_to_all_users(Client, Input, []).
@@ -298,16 +439,17 @@ set_visible_to_all_users(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetVisibleToAllUsers">>, Input, Options).
 
-%% @doc TerminateJobFlows shuts a list of job flows down. When a job flow is
-%% shut down, any step not yet completed is canceled and the EC2 instances on
-%% which the job flow is running are stopped. Any log files not already saved
-%% are uploaded to Amazon S3 if a LogUri was specified when the job flow was
-%% created.
+%% @doc TerminateJobFlows shuts a list of clusters (job flows) down. When a
+%% job flow is shut down, any step not yet completed is canceled and the EC2
+%% instances on which the cluster is running are stopped. Any log files not
+%% already saved are uploaded to Amazon S3 if a LogUri was specified when the
+%% cluster was created.
 %%
-%% The maximum number of JobFlows allowed is 10. The call to
-%% TerminateJobFlows is asynchronous. Depending on the configuration of the
-%% job flow, it may take up to 5-20 minutes for the job flow to completely
-%% terminate and release allocated resources, such as Amazon EC2 instances.
+%% The maximum number of clusters allowed is 10. The call to
+%% <code>TerminateJobFlows</code> is asynchronous. Depending on the
+%% configuration of the cluster, it may take up to 1-5 minutes for the
+%% cluster to completely terminate and release allocated resources, such as
+%% Amazon EC2 instances.
 terminate_job_flows(Client, Input)
   when is_map(Client), is_map(Input) ->
     terminate_job_flows(Client, Input, []).
