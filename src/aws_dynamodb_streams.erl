@@ -9,23 +9,6 @@
 %% href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.html">Capturing
 %% Table Activity with DynamoDB Streams</a> in the Amazon DynamoDB Developer
 %% Guide.
-%%
-%% The following are short descriptions of each low-level DynamoDB Streams
-%% action:
-%%
-%% <ul> <li> <i>DescribeStream</i> - Returns detailed information about a
-%% particular stream.
-%%
-%% </li> <li> <i>GetRecords</i> - Retrieves the stream records from within a
-%% shard.
-%%
-%% </li> <li> <i>GetShardIterator</i> - Returns information on how to
-%% retrieve the streams record from a shard with a given shard ID.
-%%
-%% </li> <li> <i>ListStreams</i> - Returns a list of all the streams
-%% associated with the current AWS account and endpoint.
-%%
-%% </li> </ul>
 -module(aws_dynamodb_streams).
 
 -export([describe_stream/2,
@@ -47,8 +30,8 @@
 %% the stream, its Amazon Resource Name (ARN), the composition of its shards,
 %% and its corresponding DynamoDB table.
 %%
-%% <note> You can call <i>DescribeStream</i> at a maximum rate of 10 times
-%% per second.
+%% <note> You can call <code>DescribeStream</code> at a maximum rate of 10
+%% times per second.
 %%
 %% </note> Each shard in the stream has a <code>SequenceNumberRange</code>
 %% associated with it. If the <code>SequenceNumberRange</code> has a
@@ -103,10 +86,10 @@ get_shard_iterator(Client, Input, Options)
 
 %% @doc Returns an array of stream ARNs associated with the current account
 %% and endpoint. If the <code>TableName</code> parameter is present, then
-%% <i>ListStreams</i> will return only the streams ARNs for that table.
+%% <code>ListStreams</code> will return only the streams ARNs for that table.
 %%
-%% <note> You can call <i>ListStreams</i> at a maximum rate of 5 times per
-%% second.
+%% <note> You can call <code>ListStreams</code> at a maximum rate of 5 times
+%% per second.
 %%
 %% </note>
 list_streams(Client, Input)

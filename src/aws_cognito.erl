@@ -1,48 +1,29 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/jkakar/aws-codegen for more details.
 
-%% @doc <fullname>Amazon Cognito</fullname>
+%% @doc <fullname>Amazon Cognito Federated Identities</fullname>
 %%
-%% Amazon Cognito is a web service that delivers scoped temporary credentials
-%% to mobile devices and other untrusted environments. Amazon Cognito
-%% uniquely identifies a device and supplies the user with a consistent
+%% Amazon Cognito Federated Identities is a web service that delivers scoped
+%% temporary credentials to mobile devices and other untrusted environments.
+%% It uniquely identifies a device and supplies the user with a consistent
 %% identity over the lifetime of an application.
 %%
-%% Using Amazon Cognito, you can enable authentication with one or more
-%% third-party identity providers (Facebook, Google, or Login with Amazon),
-%% and you can also choose to support unauthenticated access from your app.
-%% Cognito delivers a unique identifier for each user and acts as an OpenID
-%% token provider trusted by AWS Security Token Service (STS) to access
-%% temporary, limited-privilege AWS credentials.
+%% Using Amazon Cognito Federated Identities, you can enable authentication
+%% with one or more third-party identity providers (Facebook, Google, or
+%% Login with Amazon) or an Amazon Cognito user pool, and you can also choose
+%% to support unauthenticated access from your app. Cognito delivers a unique
+%% identifier for each user and acts as an OpenID token provider trusted by
+%% AWS Security Token Service (STS) to access temporary, limited-privilege
+%% AWS credentials.
 %%
-%% To provide end-user credentials, first make an unsigned call to
-%% <a>GetId</a>. If the end user is authenticated with one of the supported
-%% identity providers, set the <code>Logins</code> map with the identity
-%% provider token. <code>GetId</code> returns a unique identifier for the
-%% user.
+%% For a description of the authentication flow from the Amazon Cognito
+%% Developer Guide see <a
+%% href="https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flow.html">Authentication
+%% Flow</a>.
 %%
-%% Next, make an unsigned call to <a>GetCredentialsForIdentity</a>. This call
-%% expects the same <code>Logins</code> map as the <code>GetId</code> call,
-%% as well as the <code>IdentityID</code> originally returned by
-%% <code>GetId</code>. Assuming your identity pool has been configured via
-%% the <a>SetIdentityPoolRoles</a> operation,
-%% <code>GetCredentialsForIdentity</code> will return AWS credentials for
-%% your use. If your pool has not been configured with
-%% <code>SetIdentityPoolRoles</code>, or if you want to follow legacy flow,
-%% make an unsigned call to <a>GetOpenIdToken</a>, which returns the OpenID
-%% token necessary to call STS and retrieve AWS credentials. This call
-%% expects the same <code>Logins</code> map as the <code>GetId</code> call,
-%% as well as the <code>IdentityID</code> originally returned by
-%% <code>GetId</code>. The token returned by <code>GetOpenIdToken</code> can
-%% be passed to the STS operation <a
-%% href="http://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRoleWithWebIdentity.html">AssumeRoleWithWebIdentity</a>
-%% to retrieve AWS credentials.
-%%
-%% If you want to use Amazon Cognito in an Android, iOS, or Unity
-%% application, you will probably want to make API calls via the AWS Mobile
-%% SDK. To learn more, see the <a
-%% href="http://docs.aws.amazon.com/mobile/index.html">AWS Mobile SDK
-%% Developer Guide</a>.
+%% For more information see <a
+%% href="https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html">Amazon
+%% Cognito Federated Identities</a>.
 -module(aws_cognito).
 
 -export([create_identity_pool/2,
@@ -69,16 +50,22 @@
          list_identities/3,
          list_identity_pools/2,
          list_identity_pools/3,
+         list_tags_for_resource/2,
+         list_tags_for_resource/3,
          lookup_developer_identity/2,
          lookup_developer_identity/3,
          merge_developer_identities/2,
          merge_developer_identities/3,
          set_identity_pool_roles/2,
          set_identity_pool_roles/3,
+         tag_resource/2,
+         tag_resource/3,
          unlink_developer_identity/2,
          unlink_developer_identity/3,
          unlink_identity/2,
          unlink_identity/3,
+         untag_resource/2,
+         untag_resource/3,
          update_identity_pool/2,
          update_identity_pool/3]).
 
@@ -91,13 +78,19 @@
 %% @doc Creates a new identity pool. The identity pool is a store of user
 %% identity information that is specific to your AWS account. The limit on
 %% identity pools is 60 per account. The keys for
-%% <code>SupportedLoginProviders</code> are as follows: <ul> <li>Facebook:
-%% <code>graph.facebook.com</code></li> <li>Google:
-%% <code>accounts.google.com</code></li> <li>Amazon:
-%% <code>www.amazon.com</code></li> <li>Twitter:
-%% <code>api.twitter.com</code></li> <li>Digits:
-%% <code>www.digits.com</code></li> </ul> You must use AWS Developer
-%% credentials to call this API.
+%% <code>SupportedLoginProviders</code> are as follows:
+%%
+%% <ul> <li> Facebook: <code>graph.facebook.com</code>
+%%
+%% </li> <li> Google: <code>accounts.google.com</code>
+%%
+%% </li> <li> Amazon: <code>www.amazon.com</code>
+%%
+%% </li> <li> Twitter: <code>api.twitter.com</code>
+%%
+%% </li> <li> Digits: <code>www.digits.com</code>
+%%
+%% </li> </ul> You must use AWS Developer credentials to call this API.
 create_identity_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_identity_pool(Client, Input, []).
@@ -116,8 +109,8 @@ delete_identities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteIdentities">>, Input, Options).
 
-%% @doc Deletes a user pool. Once a pool is deleted, users will not be able
-%% to authenticate with the pool.
+%% @doc Deletes an identity pool. Once a pool is deleted, users will not be
+%% able to authenticate with the pool.
 %%
 %% You must use AWS Developer credentials to call this API.
 delete_identity_pool(Client, Input)
@@ -187,7 +180,7 @@ get_identity_pool_roles(Client, Input, Options)
 %% is returned by <a>GetId</a>. You can optionally add additional logins for
 %% the identity. Supplying multiple logins creates an implicit link.
 %%
-%% The OpenId token is valid for 15 minutes.
+%% The OpenId token is valid for 10 minutes.
 %%
 %% This is a public API. You do not need any credentials to call this API.
 get_open_id_token(Client, Input)
@@ -222,7 +215,7 @@ get_open_id_token_for_developer_identity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOpenIdTokenForDeveloperIdentity">>, Input, Options).
 
-%% @doc Lists the identities in a pool.
+%% @doc Lists the identities in an identity pool.
 %%
 %% You must use AWS Developer credentials to call this API.
 list_identities(Client, Input)
@@ -242,9 +235,23 @@ list_identity_pools(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListIdentityPools">>, Input, Options).
 
+%% @doc Lists the tags that are assigned to an Amazon Cognito identity pool.
+%%
+%% A tag is a label that you can apply to identity pools to categorize and
+%% manage them in different ways, such as by purpose, owner, environment, or
+%% other criteria.
+%%
+%% You can use this action up to 10 times per second, per account.
+list_tags_for_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_tags_for_resource(Client, Input, []).
+list_tags_for_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTagsForResource">>, Input, Options).
+
 %% @doc Retrieves the <code>IdentityID</code> associated with a
 %% <code>DeveloperUserIdentifier</code> or the list of
-%% <code>DeveloperUserIdentifier</code>s associated with an
+%% <code>DeveloperUserIdentifier</code> values associated with an
 %% <code>IdentityId</code> for an existing identity. Either
 %% <code>IdentityID</code> or <code>DeveloperUserIdentifier</code> must not
 %% be null. If you supply only one of these values, the other value will be
@@ -253,6 +260,13 @@ list_identity_pools(Client, Input, Options)
 %% <code>IdentityID</code>. If the values are verified against the database,
 %% the response returns both values and is the same as the request. Otherwise
 %% a <code>ResourceConflictException</code> is thrown.
+%%
+%% <code>LookupDeveloperIdentity</code> is intended for low-throughput
+%% control plane operations: for example, to enable customer service to
+%% locate an identity ID by username. If you are using it for higher-volume
+%% operations such as user authentication, your requests are likely to be
+%% throttled. <a>GetOpenIdTokenForDeveloperIdentity</a> is a better option
+%% for higher-volume operations for user authentication.
 %%
 %% You must use AWS Developer credentials to call this API.
 lookup_developer_identity(Client, Input)
@@ -272,6 +286,11 @@ lookup_developer_identity(Client, Input, Options)
 %% merged are associated with the same public provider, but as two different
 %% users, an exception will be thrown.
 %%
+%% The number of linked logins is limited to 20. So, the number of linked
+%% logins for the source user, <code>SourceUserIdentifier</code>, and the
+%% destination user, <code>DestinationUserIdentifier</code>, together should
+%% not be larger than 20. Otherwise, an exception will be thrown.
+%%
 %% You must use AWS Developer credentials to call this API.
 merge_developer_identities(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -281,7 +300,7 @@ merge_developer_identities(Client, Input, Options)
     request(Client, <<"MergeDeveloperIdentities">>, Input, Options).
 
 %% @doc Sets the roles for an identity pool. These roles are used when making
-%% calls to <code>GetCredentialsForIdentity</code> action.
+%% calls to <a>GetCredentialsForIdentity</a> action.
 %%
 %% You must use AWS Developer credentials to call this API.
 set_identity_pool_roles(Client, Input)
@@ -290,6 +309,32 @@ set_identity_pool_roles(Client, Input)
 set_identity_pool_roles(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetIdentityPoolRoles">>, Input, Options).
+
+%% @doc Assigns a set of tags to an Amazon Cognito identity pool. A tag is a
+%% label that you can use to categorize and manage identity pools in
+%% different ways, such as by purpose, owner, environment, or other criteria.
+%%
+%% Each tag consists of a key and value, both of which you define. A key is a
+%% general category for more specific values. For example, if you have two
+%% versions of an identity pool, one for testing and another for production,
+%% you might assign an <code>Environment</code> tag key to both identity
+%% pools. The value of this key might be <code>Test</code> for one identity
+%% pool and <code>Production</code> for the other.
+%%
+%% Tags are useful for cost tracking and access control. You can activate
+%% your tags so that they appear on the Billing and Cost Management console,
+%% where you can track the costs associated with your identity pools. In an
+%% IAM policy, you can constrain permissions for identity pools based on
+%% specific tags or tag values.
+%%
+%% You can use this action up to 5 times per second, per account. An identity
+%% pool can have as many as 50 tags.
+tag_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    tag_resource(Client, Input, []).
+tag_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Unlinks a <code>DeveloperUserIdentifier</code> from an existing
 %% identity. Unlinked developer users will be considered new identities next
@@ -317,7 +362,16 @@ unlink_identity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UnlinkIdentity">>, Input, Options).
 
-%% @doc Updates a user pool.
+%% @doc Removes the specified tags from an Amazon Cognito identity pool. You
+%% can use this action up to 5 times per second, per account
+untag_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    untag_resource(Client, Input, []).
+untag_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc Updates an identity pool.
 %%
 %% You must use AWS Developer credentials to call this API.
 update_identity_pool(Client, Input)

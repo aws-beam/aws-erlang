@@ -3,59 +3,89 @@
 
 %% @doc <fullname>AWS CodeDeploy</fullname>
 %%
-%% <b>Overview</b> This reference guide provides descriptions of the AWS
-%% CodeDeploy APIs. For more information about AWS CodeDeploy, see the <a
-%% href="docs.aws.amazon.com/codedeploy/latest/userguide">AWS CodeDeploy User
-%% Guide</a>.
+%% AWS CodeDeploy is a deployment service that automates application
+%% deployments to Amazon EC2 instances, on-premises instances running in your
+%% own facility, serverless AWS Lambda functions, or applications in an
+%% Amazon ECS service.
 %%
-%% <b>Using the APIs</b> You can use the AWS CodeDeploy APIs to work with the
-%% following:
+%% You can deploy a nearly unlimited variety of application content, such as
+%% an updated Lambda function, updated applications in an Amazon ECS service,
+%% code, web and configuration files, executables, packages, scripts,
+%% multimedia files, and so on. AWS CodeDeploy can deploy application content
+%% stored in Amazon S3 buckets, GitHub repositories, or Bitbucket
+%% repositories. You do not need to make changes to your existing code before
+%% you can use AWS CodeDeploy.
 %%
-%% <ul> <li> Applications are unique identifiers used by AWS CodeDeploy to
-%% ensure the correct combinations of revisions, deployment configurations,
-%% and deployment groups are being referenced during deployments.
+%% AWS CodeDeploy makes it easier for you to rapidly release new features,
+%% helps you avoid downtime during application deployment, and handles the
+%% complexity of updating your applications, without many of the risks
+%% associated with error-prone manual deployments.
 %%
-%% You can use the AWS CodeDeploy APIs to create, delete, get, list, and
-%% update applications.
+%% <b>AWS CodeDeploy Components</b>
 %%
-%% </li> <li> Deployment configurations are sets of deployment rules and
-%% success and failure conditions used by AWS CodeDeploy during deployments.
+%% Use the information in this guide to help you work with the following AWS
+%% CodeDeploy components:
 %%
-%% You can use the AWS CodeDeploy APIs to create, delete, get, and list
-%% deployment configurations.
+%% <ul> <li> <b>Application</b>: A name that uniquely identifies the
+%% application you want to deploy. AWS CodeDeploy uses this name, which
+%% functions as a container, to ensure the correct combination of revision,
+%% deployment configuration, and deployment group are referenced during a
+%% deployment.
 %%
-%% </li> <li> Deployment groups are groups of instances to which application
-%% revisions can be deployed.
+%% </li> <li> <b>Deployment group</b>: A set of individual instances,
+%% CodeDeploy Lambda deployment configuration settings, or an Amazon ECS
+%% service and network details. A Lambda deployment group specifies how to
+%% route traffic to a new version of a Lambda function. An Amazon ECS
+%% deployment group specifies the service created in Amazon ECS to deploy, a
+%% load balancer, and a listener to reroute production traffic to an updated
+%% containerized application. An EC2/On-premises deployment group contains
+%% individually tagged instances, Amazon EC2 instances in Amazon EC2 Auto
+%% Scaling groups, or both. All deployment groups can specify optional
+%% trigger, alarm, and rollback settings.
 %%
-%% You can use the AWS CodeDeploy APIs to create, delete, get, list, and
-%% update deployment groups.
+%% </li> <li> <b>Deployment configuration</b>: A set of deployment rules and
+%% deployment success and failure conditions used by AWS CodeDeploy during a
+%% deployment.
 %%
-%% </li> <li> Instances represent Amazon EC2 instances to which application
-%% revisions are deployed. Instances are identified by their Amazon EC2 tags
-%% or Auto Scaling group names. Instances belong to deployment groups.
+%% </li> <li> <b>Deployment</b>: The process and the components used when
+%% updating a Lambda function, a containerized application in an Amazon ECS
+%% service, or of installing content on one or more instances.
 %%
-%% You can use the AWS CodeDeploy APIs to get and list instance.
+%% </li> <li> <b>Application revisions</b>: For an AWS Lambda deployment,
+%% this is an AppSpec file that specifies the Lambda function to be updated
+%% and one or more functions to validate deployment lifecycle events. For an
+%% Amazon ECS deployment, this is an AppSpec file that specifies the Amazon
+%% ECS task definition, container, and port where production traffic is
+%% rerouted. For an EC2/On-premises deployment, this is an archive file that
+%% contains source content—source code, webpages, executable files, and
+%% deployment scripts—along with an AppSpec file. Revisions are stored in
+%% Amazon S3 buckets or GitHub repositories. For Amazon S3, a revision is
+%% uniquely identified by its Amazon S3 object key and its ETag, version, or
+%% both. For GitHub, a revision is uniquely identified by its commit ID.
 %%
-%% </li> <li> Deployments represent the process of deploying revisions to
-%% instances.
-%%
-%% You can use the AWS CodeDeploy APIs to create, get, list, and stop
+%% </li> </ul> This guide also contains information to help you get details
+%% about the instances in your deployments, to make on-premises instances
+%% available for AWS CodeDeploy deployments, to get details about a Lambda
+%% function deployment, and to get details about Amazon ECS service
 %% deployments.
 %%
-%% </li> <li> Application revisions are archive files stored in Amazon S3
-%% buckets or GitHub repositories. These revisions contain source content
-%% (such as source code, web pages, executable files, and deployment scripts)
-%% along with an application specification (AppSpec) file. (The AppSpec file
-%% is unique to AWS CodeDeploy; it defines the deployment actions you want
-%% AWS CodeDeploy to execute.) Ffor application revisions stored in Amazon S3
-%% buckets, an application revision is uniquely identified by its Amazon S3
-%% object key and its ETag, version, or both. For application revisions
-%% stored in GitHub repositories, an application revision is uniquely
-%% identified by its repository name and commit ID. Application revisions are
-%% deployed through deployment groups.
+%% <b>AWS CodeDeploy Information Resources</b>
 %%
-%% You can use the AWS CodeDeploy APIs to get, list, and register application
-%% revisions.
+%% <ul> <li> <a
+%% href="https://docs.aws.amazon.com/codedeploy/latest/userguide">AWS
+%% CodeDeploy User Guide</a>
+%%
+%% </li> <li> <a
+%% href="https://docs.aws.amazon.com/codedeploy/latest/APIReference/">AWS
+%% CodeDeploy API Reference Guide</a>
+%%
+%% </li> <li> <a
+%% href="https://docs.aws.amazon.com/cli/latest/reference/deploy/index.html">AWS
+%% CLI Reference for AWS CodeDeploy</a>
+%%
+%% </li> <li> <a
+%% href="https://forums.aws.amazon.com/forum.jspa?forumID=179">AWS CodeDeploy
+%% Developer Forum</a>
 %%
 %% </li> </ul>
 -module(aws_code_deploy).
@@ -70,10 +100,14 @@
          batch_get_deployment_groups/3,
          batch_get_deployment_instances/2,
          batch_get_deployment_instances/3,
+         batch_get_deployment_targets/2,
+         batch_get_deployment_targets/3,
          batch_get_deployments/2,
          batch_get_deployments/3,
          batch_get_on_premises_instances/2,
          batch_get_on_premises_instances/3,
+         continue_deployment/2,
+         continue_deployment/3,
          create_application/2,
          create_application/3,
          create_deployment/2,
@@ -88,6 +122,8 @@
          delete_deployment_config/3,
          delete_deployment_group/2,
          delete_deployment_group/3,
+         delete_git_hub_account_token/2,
+         delete_git_hub_account_token/3,
          deregister_on_premises_instance/2,
          deregister_on_premises_instance/3,
          get_application/2,
@@ -102,6 +138,8 @@
          get_deployment_group/3,
          get_deployment_instance/2,
          get_deployment_instance/3,
+         get_deployment_target/2,
+         get_deployment_target/3,
          get_on_premises_instance/2,
          get_on_premises_instance/3,
          list_application_revisions/2,
@@ -114,16 +152,24 @@
          list_deployment_groups/3,
          list_deployment_instances/2,
          list_deployment_instances/3,
+         list_deployment_targets/2,
+         list_deployment_targets/3,
          list_deployments/2,
          list_deployments/3,
+         list_git_hub_account_token_names/2,
+         list_git_hub_account_token_names/3,
          list_on_premises_instances/2,
          list_on_premises_instances/3,
+         put_lifecycle_event_hook_execution_status/2,
+         put_lifecycle_event_hook_execution_status/3,
          register_application_revision/2,
          register_application_revision/3,
          register_on_premises_instance/2,
          register_on_premises_instance/3,
          remove_tags_from_on_premises_instances/2,
          remove_tags_from_on_premises_instances/3,
+         skip_wait_time_for_instance_termination/2,
+         skip_wait_time_for_instance_termination/3,
          stop_deployment/2,
          stop_deployment/3,
          update_application/2,
@@ -161,7 +207,7 @@ batch_get_applications(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetApplications">>, Input, Options).
 
-%% @doc Get information about one or more deployment groups.
+%% @doc Gets information about one or more deployment groups.
 batch_get_deployment_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_deployment_groups(Client, Input, []).
@@ -169,14 +215,40 @@ batch_get_deployment_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetDeploymentGroups">>, Input, Options).
 
-%% @doc Gets information about one or more instance that are part of a
-%% deployment group.
+%% @doc <note> This method works, but is deprecated. Use
+%% <code>BatchGetDeploymentTargets</code> instead.
+%%
+%% </note> Returns an array of instances associated with a deployment. This
+%% method works with EC2/On-premises and AWS Lambda compute platforms. The
+%% newer <code>BatchGetDeploymentTargets</code> works with all compute
+%% platforms.
 batch_get_deployment_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_deployment_instances(Client, Input, []).
 batch_get_deployment_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetDeploymentInstances">>, Input, Options).
+
+%% @doc Returns an array of targets associated with a deployment. This method
+%% works with all compute types and should be used instead of the deprecated
+%% <code>BatchGetDeploymentInstances</code>.
+%%
+%% The type of targets returned depends on the deployment's compute platform:
+%%
+%% <ul> <li> <b>EC2/On-premises</b>: Information about EC2 instance targets.
+%%
+%% </li> <li> <b>AWS Lambda</b>: Information about Lambda functions targets.
+%%
+%% </li> <li> <b>Amazon ECS</b>: Information about Amazon ECS service
+%% targets.
+%%
+%% </li> </ul>
+batch_get_deployment_targets(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_get_deployment_targets(Client, Input, []).
+batch_get_deployment_targets(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchGetDeploymentTargets">>, Input, Options).
 
 %% @doc Gets information about one or more deployments.
 batch_get_deployments(Client, Input)
@@ -193,6 +265,19 @@ batch_get_on_premises_instances(Client, Input)
 batch_get_on_premises_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetOnPremisesInstances">>, Input, Options).
+
+%% @doc For a blue/green deployment, starts the process of rerouting traffic
+%% from instances in the original environment to instances in the replacement
+%% environment without waiting for a specified wait time to elapse. (Traffic
+%% rerouting, which is achieved by registering instances in the replacement
+%% environment with the load balancer, can start as soon as all instances
+%% have a status of Ready.)
+continue_deployment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    continue_deployment(Client, Input, []).
+continue_deployment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ContinueDeployment">>, Input, Options).
 
 %% @doc Creates an application.
 create_application(Client, Input)
@@ -219,7 +304,7 @@ create_deployment_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDeploymentConfig">>, Input, Options).
 
-%% @doc Creates a deployment group to which application revisions will be
+%% @doc Creates a deployment group to which application revisions are
 %% deployed.
 create_deployment_group(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -238,8 +323,10 @@ delete_application(Client, Input, Options)
 
 %% @doc Deletes a deployment configuration.
 %%
-%% <note>A deployment configuration cannot be deleted if it is currently in
-%% use. Predefined configurations cannot be deleted.</note>
+%% <note> A deployment configuration cannot be deleted if it is currently in
+%% use. Predefined configurations cannot be deleted.
+%%
+%% </note>
 delete_deployment_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_deployment_config(Client, Input, []).
@@ -254,6 +341,14 @@ delete_deployment_group(Client, Input)
 delete_deployment_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDeploymentGroup">>, Input, Options).
+
+%% @doc Deletes a GitHub account connection.
+delete_git_hub_account_token(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_git_hub_account_token(Client, Input, []).
+delete_git_hub_account_token(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteGitHubAccountToken">>, Input, Options).
 
 %% @doc Deregisters an on-premises instance.
 deregister_on_premises_instance(Client, Input)
@@ -280,6 +375,14 @@ get_application_revision(Client, Input, Options)
     request(Client, <<"GetApplicationRevision">>, Input, Options).
 
 %% @doc Gets information about a deployment.
+%%
+%% <note> The <code>content</code> property of the
+%% <code>appSpecContent</code> object in the returned revision is always
+%% null. Use <code>GetApplicationRevision</code> and the <code>sha256</code>
+%% property of the returned <code>appSpecContent</code> object to get the
+%% content of the deployment’s AppSpec file.
+%%
+%% </note>
 get_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_deployment(Client, Input, []).
@@ -311,6 +414,14 @@ get_deployment_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDeploymentInstance">>, Input, Options).
 
+%% @doc Returns information about a deployment target.
+get_deployment_target(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_deployment_target(Client, Input, []).
+get_deployment_target(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDeploymentTarget">>, Input, Options).
+
 %% @doc Gets information about an on-premises instance.
 get_on_premises_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -327,8 +438,7 @@ list_application_revisions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListApplicationRevisions">>, Input, Options).
 
-%% @doc Lists the applications registered with the applicable IAM user or AWS
-%% account.
+%% @doc Lists the applications registered with the IAM user or AWS account.
 list_applications(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_applications(Client, Input, []).
@@ -336,8 +446,7 @@ list_applications(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListApplications">>, Input, Options).
 
-%% @doc Lists the deployment configurations with the applicable IAM user or
-%% AWS account.
+%% @doc Lists the deployment configurations with the IAM user or AWS account.
 list_deployment_configs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_deployment_configs(Client, Input, []).
@@ -346,7 +455,7 @@ list_deployment_configs(Client, Input, Options)
     request(Client, <<"ListDeploymentConfigs">>, Input, Options).
 
 %% @doc Lists the deployment groups for an application registered with the
-%% applicable IAM user or AWS account.
+%% IAM user or AWS account.
 list_deployment_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_deployment_groups(Client, Input, []).
@@ -354,8 +463,13 @@ list_deployment_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDeploymentGroups">>, Input, Options).
 
-%% @doc Lists the instance for a deployment associated with the applicable
-%% IAM user or AWS account.
+%% @doc <note> The newer BatchGetDeploymentTargets should be used instead
+%% because it works with all compute types.
+%% <code>ListDeploymentInstances</code> throws an exception if it is used
+%% with a compute platform other than EC2/On-premises or AWS Lambda.
+%%
+%% </note> Lists the instance for a deployment associated with the IAM user
+%% or AWS account.
 list_deployment_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_deployment_instances(Client, Input, []).
@@ -363,8 +477,16 @@ list_deployment_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDeploymentInstances">>, Input, Options).
 
+%% @doc Returns an array of target IDs that are associated a deployment.
+list_deployment_targets(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_deployment_targets(Client, Input, []).
+list_deployment_targets(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListDeploymentTargets">>, Input, Options).
+
 %% @doc Lists the deployments in a deployment group for an application
-%% registered with the applicable IAM user or AWS account.
+%% registered with the IAM user or AWS account.
 list_deployments(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_deployments(Client, Input, []).
@@ -372,10 +494,18 @@ list_deployments(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDeployments">>, Input, Options).
 
+%% @doc Lists the names of stored connections to GitHub accounts.
+list_git_hub_account_token_names(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_git_hub_account_token_names(Client, Input, []).
+list_git_hub_account_token_names(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListGitHubAccountTokenNames">>, Input, Options).
+
 %% @doc Gets a list of names for one or more on-premises instances.
 %%
 %% Unless otherwise specified, both registered and deregistered on-premises
-%% instance names will be listed. To list only registered or deregistered
+%% instance names are listed. To list only registered or deregistered
 %% on-premises instance names, use the registration status parameter.
 list_on_premises_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -383,6 +513,17 @@ list_on_premises_instances(Client, Input)
 list_on_premises_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListOnPremisesInstances">>, Input, Options).
+
+%% @doc Sets the result of a Lambda validation function. The function
+%% validates one or both lifecycle events (<code>BeforeAllowTraffic</code>
+%% and <code>AfterAllowTraffic</code>) and returns <code>Succeeded</code> or
+%% <code>Failed</code>.
+put_lifecycle_event_hook_execution_status(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_lifecycle_event_hook_execution_status(Client, Input, []).
+put_lifecycle_event_hook_execution_status(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutLifecycleEventHookExecutionStatus">>, Input, Options).
 
 %% @doc Registers with AWS CodeDeploy a revision for the specified
 %% application.
@@ -394,6 +535,11 @@ register_application_revision(Client, Input, Options)
     request(Client, <<"RegisterApplicationRevision">>, Input, Options).
 
 %% @doc Registers an on-premises instance.
+%%
+%% <note> Only one IAM ARN (an IAM session ARN or IAM user ARN) is supported
+%% in the request. You cannot use both.
+%%
+%% </note>
 register_on_premises_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_on_premises_instance(Client, Input, []).
@@ -408,6 +554,16 @@ remove_tags_from_on_premises_instances(Client, Input)
 remove_tags_from_on_premises_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTagsFromOnPremisesInstances">>, Input, Options).
+
+%% @doc In a blue/green deployment, overrides any specified wait time and
+%% starts terminating instances immediately after the traffic routing is
+%% complete.
+skip_wait_time_for_instance_termination(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    skip_wait_time_for_instance_termination(Client, Input, []).
+skip_wait_time_for_instance_termination(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SkipWaitTimeForInstanceTermination">>, Input, Options).
 
 %% @doc Attempts to stop an ongoing deployment.
 stop_deployment(Client, Input)

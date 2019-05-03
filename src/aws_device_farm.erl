@@ -8,32 +8,56 @@
 
 -export([create_device_pool/2,
          create_device_pool/3,
+         create_instance_profile/2,
+         create_instance_profile/3,
+         create_network_profile/2,
+         create_network_profile/3,
          create_project/2,
          create_project/3,
+         create_remote_access_session/2,
+         create_remote_access_session/3,
          create_upload/2,
          create_upload/3,
+         create_v_p_c_e_configuration/2,
+         create_v_p_c_e_configuration/3,
          delete_device_pool/2,
          delete_device_pool/3,
+         delete_instance_profile/2,
+         delete_instance_profile/3,
+         delete_network_profile/2,
+         delete_network_profile/3,
          delete_project/2,
          delete_project/3,
+         delete_remote_access_session/2,
+         delete_remote_access_session/3,
          delete_run/2,
          delete_run/3,
          delete_upload/2,
          delete_upload/3,
+         delete_v_p_c_e_configuration/2,
+         delete_v_p_c_e_configuration/3,
          get_account_settings/2,
          get_account_settings/3,
          get_device/2,
          get_device/3,
+         get_device_instance/2,
+         get_device_instance/3,
          get_device_pool/2,
          get_device_pool/3,
          get_device_pool_compatibility/2,
          get_device_pool_compatibility/3,
+         get_instance_profile/2,
+         get_instance_profile/3,
          get_job/2,
          get_job/3,
+         get_network_profile/2,
+         get_network_profile/3,
          get_offering_status/2,
          get_offering_status/3,
          get_project/2,
          get_project/3,
+         get_remote_access_session/2,
+         get_remote_access_session/3,
          get_run/2,
          get_run/3,
          get_suite/2,
@@ -42,20 +66,34 @@
          get_test/3,
          get_upload/2,
          get_upload/3,
+         get_v_p_c_e_configuration/2,
+         get_v_p_c_e_configuration/3,
+         install_to_remote_access_session/2,
+         install_to_remote_access_session/3,
          list_artifacts/2,
          list_artifacts/3,
+         list_device_instances/2,
+         list_device_instances/3,
          list_device_pools/2,
          list_device_pools/3,
          list_devices/2,
          list_devices/3,
+         list_instance_profiles/2,
+         list_instance_profiles/3,
          list_jobs/2,
          list_jobs/3,
+         list_network_profiles/2,
+         list_network_profiles/3,
+         list_offering_promotions/2,
+         list_offering_promotions/3,
          list_offering_transactions/2,
          list_offering_transactions/3,
          list_offerings/2,
          list_offerings/3,
          list_projects/2,
          list_projects/3,
+         list_remote_access_sessions/2,
+         list_remote_access_sessions/3,
          list_runs/2,
          list_runs/3,
          list_samples/2,
@@ -68,18 +106,34 @@
          list_unique_problems/3,
          list_uploads/2,
          list_uploads/3,
+         list_v_p_c_e_configurations/2,
+         list_v_p_c_e_configurations/3,
          purchase_offering/2,
          purchase_offering/3,
          renew_offering/2,
          renew_offering/3,
          schedule_run/2,
          schedule_run/3,
+         stop_job/2,
+         stop_job/3,
+         stop_remote_access_session/2,
+         stop_remote_access_session/3,
          stop_run/2,
          stop_run/3,
+         update_device_instance/2,
+         update_device_instance/3,
          update_device_pool/2,
          update_device_pool/3,
+         update_instance_profile/2,
+         update_instance_profile/3,
+         update_network_profile/2,
+         update_network_profile/3,
          update_project/2,
-         update_project/3]).
+         update_project/3,
+         update_upload/2,
+         update_upload/3,
+         update_v_p_c_e_configuration/2,
+         update_v_p_c_e_configuration/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -95,6 +149,23 @@ create_device_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDevicePool">>, Input, Options).
 
+%% @doc Creates a profile that can be applied to one or more private fleet
+%% device instances.
+create_instance_profile(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_instance_profile(Client, Input, []).
+create_instance_profile(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateInstanceProfile">>, Input, Options).
+
+%% @doc Creates a network profile.
+create_network_profile(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_network_profile(Client, Input, []).
+create_network_profile(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateNetworkProfile">>, Input, Options).
+
 %% @doc Creates a new project.
 create_project(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -103,6 +174,14 @@ create_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateProject">>, Input, Options).
 
+%% @doc Specifies and starts a remote access session.
+create_remote_access_session(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_remote_access_session(Client, Input, []).
+create_remote_access_session(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateRemoteAccessSession">>, Input, Options).
+
 %% @doc Uploads an app or test scripts.
 create_upload(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -110,6 +189,15 @@ create_upload(Client, Input)
 create_upload(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUpload">>, Input, Options).
+
+%% @doc Creates a configuration record in Device Farm for your Amazon Virtual
+%% Private Cloud (VPC) endpoint.
+create_v_p_c_e_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_v_p_c_e_configuration(Client, Input, []).
+create_v_p_c_e_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateVPCEConfiguration">>, Input, Options).
 
 %% @doc Deletes a device pool given the pool ARN. Does not allow deletion of
 %% curated pools owned by the system.
@@ -120,6 +208,23 @@ delete_device_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDevicePool">>, Input, Options).
 
+%% @doc Deletes a profile that can be applied to one or more private device
+%% instances.
+delete_instance_profile(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_instance_profile(Client, Input, []).
+delete_instance_profile(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteInstanceProfile">>, Input, Options).
+
+%% @doc Deletes a network profile.
+delete_network_profile(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_network_profile(Client, Input, []).
+delete_network_profile(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteNetworkProfile">>, Input, Options).
+
 %% @doc Deletes an AWS Device Farm project, given the project ARN.
 %%
 %% <b>Note</b> Deleting this resource does not stop an in-progress run.
@@ -129,6 +234,14 @@ delete_project(Client, Input)
 delete_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteProject">>, Input, Options).
+
+%% @doc Deletes a completed remote access session and its results.
+delete_remote_access_session(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_remote_access_session(Client, Input, []).
+delete_remote_access_session(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteRemoteAccessSession">>, Input, Options).
 
 %% @doc Deletes the run, given the run ARN.
 %%
@@ -148,6 +261,15 @@ delete_upload(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUpload">>, Input, Options).
 
+%% @doc Deletes a configuration for your Amazon Virtual Private Cloud (VPC)
+%% endpoint.
+delete_v_p_c_e_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_v_p_c_e_configuration(Client, Input, []).
+delete_v_p_c_e_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteVPCEConfiguration">>, Input, Options).
+
 %% @doc Returns the number of unmetered iOS and/or unmetered Android devices
 %% that have been purchased by the account.
 get_account_settings(Client, Input)
@@ -165,6 +287,15 @@ get_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDevice">>, Input, Options).
 
+%% @doc Returns information about a device instance belonging to a private
+%% device fleet.
+get_device_instance(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_device_instance(Client, Input, []).
+get_device_instance(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDeviceInstance">>, Input, Options).
+
 %% @doc Gets information about a device pool.
 get_device_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -181,6 +312,14 @@ get_device_pool_compatibility(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDevicePoolCompatibility">>, Input, Options).
 
+%% @doc Returns information about the specified instance profile.
+get_instance_profile(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_instance_profile(Client, Input, []).
+get_instance_profile(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetInstanceProfile">>, Input, Options).
+
 %% @doc Gets information about a job.
 get_job(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -188,6 +327,14 @@ get_job(Client, Input)
 get_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetJob">>, Input, Options).
+
+%% @doc Returns information about a network profile.
+get_network_profile(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_network_profile(Client, Input, []).
+get_network_profile(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetNetworkProfile">>, Input, Options).
 
 %% @doc Gets the current status and future status of all offerings purchased
 %% by an AWS account. The response indicates how many offerings are currently
@@ -210,6 +357,14 @@ get_project(Client, Input)
 get_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetProject">>, Input, Options).
+
+%% @doc Returns a link to a currently running remote access session.
+get_remote_access_session(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_remote_access_session(Client, Input, []).
+get_remote_access_session(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetRemoteAccessSession">>, Input, Options).
 
 %% @doc Gets information about a run.
 get_run(Client, Input)
@@ -243,6 +398,25 @@ get_upload(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUpload">>, Input, Options).
 
+%% @doc Returns information about the configuration settings for your Amazon
+%% Virtual Private Cloud (VPC) endpoint.
+get_v_p_c_e_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_v_p_c_e_configuration(Client, Input, []).
+get_v_p_c_e_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetVPCEConfiguration">>, Input, Options).
+
+%% @doc Installs an application to the device in a remote access session. For
+%% Android applications, the file must be in .apk format. For iOS
+%% applications, the file must be in .ipa format.
+install_to_remote_access_session(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    install_to_remote_access_session(Client, Input, []).
+install_to_remote_access_session(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"InstallToRemoteAccessSession">>, Input, Options).
+
 %% @doc Gets information about artifacts.
 list_artifacts(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -250,6 +424,15 @@ list_artifacts(Client, Input)
 list_artifacts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListArtifacts">>, Input, Options).
+
+%% @doc Returns information about the private device instances associated
+%% with one or more AWS accounts.
+list_device_instances(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_device_instances(Client, Input, []).
+list_device_instances(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListDeviceInstances">>, Input, Options).
 
 %% @doc Gets information about device pools.
 list_device_pools(Client, Input)
@@ -267,13 +450,43 @@ list_devices(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDevices">>, Input, Options).
 
-%% @doc Gets information about jobs.
+%% @doc Returns information about all the instance profiles in an AWS
+%% account.
+list_instance_profiles(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_instance_profiles(Client, Input, []).
+list_instance_profiles(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListInstanceProfiles">>, Input, Options).
+
+%% @doc Gets information about jobs for a given test run.
 list_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_jobs(Client, Input, []).
 list_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListJobs">>, Input, Options).
+
+%% @doc Returns the list of available network profiles.
+list_network_profiles(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_network_profiles(Client, Input, []).
+list_network_profiles(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListNetworkProfiles">>, Input, Options).
+
+%% @doc Returns a list of offering promotions. Each offering promotion record
+%% contains the ID and description of the promotion. The API returns a
+%% <code>NotEligible</code> error if the caller is not permitted to invoke
+%% the operation. Contact <a
+%% href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a>
+%% if you believe that you should be able to invoke this operation.
+list_offering_promotions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_offering_promotions(Client, Input, []).
+list_offering_promotions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListOfferingPromotions">>, Input, Options).
 
 %% @doc Returns a list of all historical purchases, renewals, and system
 %% renewal transactions for an AWS account. The list is paginated and ordered
@@ -311,7 +524,15 @@ list_projects(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListProjects">>, Input, Options).
 
-%% @doc Gets information about runs.
+%% @doc Returns a list of all currently running remote access sessions.
+list_remote_access_sessions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_remote_access_sessions(Client, Input, []).
+list_remote_access_sessions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListRemoteAccessSessions">>, Input, Options).
+
+%% @doc Gets information about runs, given an AWS Device Farm project ARN.
 list_runs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_runs(Client, Input, []).
@@ -319,7 +540,7 @@ list_runs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRuns">>, Input, Options).
 
-%% @doc Gets information about samples.
+%% @doc Gets information about samples, given an AWS Device Farm job ARN.
 list_samples(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_samples(Client, Input, []).
@@ -327,7 +548,7 @@ list_samples(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSamples">>, Input, Options).
 
-%% @doc Gets information about suites.
+%% @doc Gets information about test suites for a given job.
 list_suites(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_suites(Client, Input, []).
@@ -335,7 +556,7 @@ list_suites(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSuites">>, Input, Options).
 
-%% @doc Gets information about tests.
+%% @doc Gets information about tests in a given test suite.
 list_tests(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tests(Client, Input, []).
@@ -351,13 +572,22 @@ list_unique_problems(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUniqueProblems">>, Input, Options).
 
-%% @doc Gets information about uploads.
+%% @doc Gets information about uploads, given an AWS Device Farm project ARN.
 list_uploads(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_uploads(Client, Input, []).
 list_uploads(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUploads">>, Input, Options).
+
+%% @doc Returns information about all Amazon Virtual Private Cloud (VPC)
+%% endpoint configurations in the AWS account.
+list_v_p_c_e_configurations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_v_p_c_e_configurations(Client, Input, []).
+list_v_p_c_e_configurations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListVPCEConfigurations">>, Input, Options).
 
 %% @doc Immediately purchases offerings for an AWS account. Offerings renew
 %% with the latest total purchased quantity for an offering, unless the
@@ -393,6 +623,28 @@ schedule_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ScheduleRun">>, Input, Options).
 
+%% @doc Initiates a stop request for the current job. AWS Device Farm will
+%% immediately stop the job on the device where tests have not started
+%% executing, and you will not be billed for this device. On the device where
+%% tests have started executing, Setup Suite and Teardown Suite tests will
+%% run to completion before stopping execution on the device. You will be
+%% billed for Setup, Teardown, and any tests that were in progress or already
+%% completed.
+stop_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_job(Client, Input, []).
+stop_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopJob">>, Input, Options).
+
+%% @doc Ends a specified remote access session.
+stop_remote_access_session(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_remote_access_session(Client, Input, []).
+stop_remote_access_session(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopRemoteAccessSession">>, Input, Options).
+
 %% @doc Initiates a stop request for the current test run. AWS Device Farm
 %% will immediately stop the run on devices where tests have not started
 %% executing, and you will not be billed for these devices. On devices where
@@ -407,6 +659,14 @@ stop_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopRun">>, Input, Options).
 
+%% @doc Updates information about an existing private device instance.
+update_device_instance(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_device_instance(Client, Input, []).
+update_device_instance(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateDeviceInstance">>, Input, Options).
+
 %% @doc Modifies the name, description, and rules in a device pool given the
 %% attributes and the pool ARN. Rule updates are all-or-nothing, meaning they
 %% can only be updated as a whole (or not at all).
@@ -417,6 +677,23 @@ update_device_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDevicePool">>, Input, Options).
 
+%% @doc Updates information about an existing private device instance
+%% profile.
+update_instance_profile(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_instance_profile(Client, Input, []).
+update_instance_profile(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateInstanceProfile">>, Input, Options).
+
+%% @doc Updates the network profile with specific settings.
+update_network_profile(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_network_profile(Client, Input, []).
+update_network_profile(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateNetworkProfile">>, Input, Options).
+
 %% @doc Modifies the specified project name, given the project ARN and a new
 %% name.
 update_project(Client, Input)
@@ -425,6 +702,23 @@ update_project(Client, Input)
 update_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateProject">>, Input, Options).
+
+%% @doc Update an uploaded test specification (test spec).
+update_upload(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_upload(Client, Input, []).
+update_upload(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateUpload">>, Input, Options).
+
+%% @doc Updates information about an existing Amazon Virtual Private Cloud
+%% (VPC) endpoint configuration.
+update_v_p_c_e_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_v_p_c_e_configuration(Client, Input, []).
+update_v_p_c_e_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateVPCEConfiguration">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

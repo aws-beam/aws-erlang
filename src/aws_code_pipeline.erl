@@ -9,14 +9,14 @@
 %% descriptions of the actions and data types for AWS CodePipeline. Some
 %% functionality for your pipeline is only configurable through the API. For
 %% additional information, see the <a
-%% href="http://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html">AWS
+%% href="https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html">AWS
 %% CodePipeline User Guide</a>.
 %%
 %% You can use the AWS CodePipeline API to work with pipelines, stages,
-%% actions, gates, and transitions, as described below.
+%% actions, and transitions, as described below.
 %%
 %% <i>Pipelines</i> are models of automated release processes. Each pipeline
-%% is uniquely named, and consists of actions, gates, and stages.
+%% is uniquely named, and consists of stages, actions, and transitions.
 %%
 %% You can work with pipelines by calling:
 %%
@@ -24,8 +24,12 @@
 %%
 %% </li> <li> <a>DeletePipeline</a>, which deletes the specified pipeline.
 %%
-%% </li> <li> <a>GetPipeline</a>, which returns information about a pipeline
-%% structure.
+%% </li> <li> <a>GetPipeline</a>, which returns information about the
+%% pipeline structure and pipeline metadata, including the pipeline Amazon
+%% Resource Name (ARN).
+%%
+%% </li> <li> <a>GetPipelineExecution</a>, which returns information about a
+%% specific execution of a pipeline.
 %%
 %% </li> <li> <a>GetPipelineState</a>, which returns information about the
 %% current state of the stages and actions of a pipeline.
@@ -33,25 +37,27 @@
 %% </li> <li> <a>ListPipelines</a>, which gets a summary of all of the
 %% pipelines associated with your account.
 %%
+%% </li> <li> <a>ListPipelineExecutions</a>, which gets a summary of the most
+%% recent executions for a pipeline.
+%%
 %% </li> <li> <a>StartPipelineExecution</a>, which runs the the most recent
 %% revision of an artifact through the pipeline.
 %%
 %% </li> <li> <a>UpdatePipeline</a>, which updates a pipeline with edits or
 %% changes to the structure of the pipeline.
 %%
-%% </li> </ul> Pipelines include <i>stages</i>, which are which are logical
-%% groupings of gates and actions. Each stage contains one or more actions
-%% that must complete before the next stage begins. A stage will result in
-%% success or failure. If a stage fails, then the pipeline stops at that
-%% stage and will remain stopped until either a new version of an artifact
-%% appears in the source location, or a user takes action to re-run the most
-%% recent artifact through the pipeline. You can call
+%% </li> </ul> Pipelines include <i>stages</i>. Each stage contains one or
+%% more actions that must complete before the next stage begins. A stage will
+%% result in success or failure. If a stage fails, then the pipeline stops at
+%% that stage and will remain stopped until either a new version of an
+%% artifact appears in the source location, or a user takes action to re-run
+%% the most recent artifact through the pipeline. You can call
 %% <a>GetPipelineState</a>, which displays the status of a pipeline,
 %% including the status of stages in the pipeline, or <a>GetPipeline</a>,
 %% which returns the entire structure of the pipeline, including the stages
 %% of that pipeline. For more information about the structure of stages and
 %% actions, also refer to the <a
-%% href="http://docs.aws.amazon.com/codepipeline/latest/userguide/pipeline-structure.html">AWS
+%% href="https://docs.aws.amazon.com/codepipeline/latest/userguide/pipeline-structure.html">AWS
 %% CodePipeline Pipeline Structure Reference</a>.
 %%
 %% Pipeline stages include <i>actions</i>, which are categorized into
@@ -60,11 +66,24 @@
 %% into a pipeline from a source such as Amazon S3. Like stages, you do not
 %% work with actions directly in most cases, but you do define and interact
 %% with actions when working with pipeline operations such as
-%% <a>CreatePipeline</a> and <a>GetPipelineState</a>.
+%% <a>CreatePipeline</a> and <a>GetPipelineState</a>. Valid action categories
+%% are:
 %%
-%% Pipelines also include <i>transitions</i>, which allow the transition of
-%% artifacts from one stage to the next in a pipeline after the actions in
-%% one stage complete.
+%% <ul> <li> Source
+%%
+%% </li> <li> Build
+%%
+%% </li> <li> Test
+%%
+%% </li> <li> Deploy
+%%
+%% </li> <li> Approval
+%%
+%% </li> <li> Invoke
+%%
+%% </li> </ul> Pipelines also include <i>transitions</i>, which allow the
+%% transition of artifacts from one stage to the next in a pipeline after the
+%% actions in one stage complete.
 %%
 %% You can work with transitions by calling:
 %%
@@ -136,6 +155,10 @@
          delete_custom_action_type/3,
          delete_pipeline/2,
          delete_pipeline/3,
+         delete_webhook/2,
+         delete_webhook/3,
+         deregister_webhook_with_third_party/2,
+         deregister_webhook_with_third_party/3,
          disable_stage_transition/2,
          disable_stage_transition/3,
          enable_stage_transition/2,
@@ -144,14 +167,22 @@
          get_job_details/3,
          get_pipeline/2,
          get_pipeline/3,
+         get_pipeline_execution/2,
+         get_pipeline_execution/3,
          get_pipeline_state/2,
          get_pipeline_state/3,
          get_third_party_job_details/2,
          get_third_party_job_details/3,
+         list_action_executions/2,
+         list_action_executions/3,
          list_action_types/2,
          list_action_types/3,
+         list_pipeline_executions/2,
+         list_pipeline_executions/3,
          list_pipelines/2,
          list_pipelines/3,
+         list_webhooks/2,
+         list_webhooks/3,
          poll_for_jobs/2,
          poll_for_jobs/3,
          poll_for_third_party_jobs/2,
@@ -168,6 +199,10 @@
          put_third_party_job_failure_result/3,
          put_third_party_job_success_result/2,
          put_third_party_job_success_result/3,
+         put_webhook/2,
+         put_webhook/3,
+         register_webhook_with_third_party/2,
+         register_webhook_with_third_party/3,
          retry_stage_execution/2,
          retry_stage_execution/3,
          start_pipeline_execution/2,
@@ -220,8 +255,11 @@ create_pipeline(Client, Input, Options)
 %% will fail after the action is marked for deletion. Only used for custom
 %% actions.
 %%
-%% <important> You cannot recreate a custom action after it has been deleted
-%% unless you increase the version number of the action.
+%% <important> To re-create a custom action after it has been deleted you
+%% must use a string in the version field that has never been used before.
+%% This string can be an incremented version number, for example. To restore
+%% a deleted custom action, use a JSON file that is identical to the deleted
+%% action, including the original string in the version field.
 %%
 %% </important>
 delete_custom_action_type(Client, Input)
@@ -238,6 +276,28 @@ delete_pipeline(Client, Input)
 delete_pipeline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePipeline">>, Input, Options).
+
+%% @doc Deletes a previously created webhook by name. Deleting the webhook
+%% stops AWS CodePipeline from starting a pipeline every time an external
+%% event occurs. The API will return successfully when trying to delete a
+%% webhook that is already deleted. If a deleted webhook is re-created by
+%% calling PutWebhook with the same name, it will have a different URL.
+delete_webhook(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_webhook(Client, Input, []).
+delete_webhook(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteWebhook">>, Input, Options).
+
+%% @doc Removes the connection between the webhook that was created by
+%% CodePipeline and the external tool with events to be detected. Currently
+%% only supported for webhooks that target an action type of GitHub.
+deregister_webhook_with_third_party(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    deregister_webhook_with_third_party(Client, Input, []).
+deregister_webhook_with_third_party(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeregisterWebhookWithThirdParty">>, Input, Options).
 
 %% @doc Prevents artifacts in a pipeline from transitioning to the next stage
 %% in the pipeline.
@@ -284,8 +344,24 @@ get_pipeline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPipeline">>, Input, Options).
 
+%% @doc Returns information about an execution of a pipeline, including
+%% details about artifacts, the pipeline execution ID, and the name, version,
+%% and status of the pipeline.
+get_pipeline_execution(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_pipeline_execution(Client, Input, []).
+get_pipeline_execution(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetPipelineExecution">>, Input, Options).
+
 %% @doc Returns information about the state of a pipeline, including the
 %% stages and actions.
+%%
+%% <note> Values returned in the revisionId and revisionUrl fields indicate
+%% the source revision information, such as the commit ID, for the current
+%% state.
+%%
+%% </note>
 get_pipeline_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_pipeline_state(Client, Input, []).
@@ -310,6 +386,14 @@ get_third_party_job_details(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetThirdPartyJobDetails">>, Input, Options).
 
+%% @doc Lists the action executions that have occurred in a pipeline.
+list_action_executions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_action_executions(Client, Input, []).
+list_action_executions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListActionExecutions">>, Input, Options).
+
 %% @doc Gets a summary of all AWS CodePipeline action types associated with
 %% your account.
 list_action_types(Client, Input)
@@ -319,6 +403,14 @@ list_action_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListActionTypes">>, Input, Options).
 
+%% @doc Gets a summary of the most recent executions for a pipeline.
+list_pipeline_executions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_pipeline_executions(Client, Input, []).
+list_pipeline_executions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListPipelineExecutions">>, Input, Options).
+
 %% @doc Gets a summary of all of the pipelines associated with your account.
 list_pipelines(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -327,7 +419,20 @@ list_pipelines(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPipelines">>, Input, Options).
 
+%% @doc Gets a listing of all the webhooks in this region for this account.
+%% The output lists all webhooks and includes the webhook URL and ARN, as
+%% well the configuration for each webhook.
+list_webhooks(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_webhooks(Client, Input, []).
+list_webhooks(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListWebhooks">>, Input, Options).
+
 %% @doc Returns information about any jobs for AWS CodePipeline to act upon.
+%% PollForJobs is only valid for action types with "Custom" in the owner
+%% field. If the action type contains "AWS" or "ThirdParty" in the owner
+%% field, the PollForJobs action returns an error.
 %%
 %% <important> When this API is called, AWS CodePipeline returns temporary
 %% credentials for the Amazon S3 bucket used to store artifacts for the
@@ -412,6 +517,31 @@ put_third_party_job_success_result(Client, Input)
 put_third_party_job_success_result(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutThirdPartyJobSuccessResult">>, Input, Options).
+
+%% @doc Defines a webhook and returns a unique webhook URL generated by
+%% CodePipeline. This URL can be supplied to third party source hosting
+%% providers to call every time there's a code change. When CodePipeline
+%% receives a POST request on this URL, the pipeline defined in the webhook
+%% is started as long as the POST request satisfied the authentication and
+%% filtering requirements supplied when defining the webhook.
+%% RegisterWebhookWithThirdParty and DeregisterWebhookWithThirdParty APIs can
+%% be used to automatically configure supported third parties to call the
+%% generated webhook URL.
+put_webhook(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_webhook(Client, Input, []).
+put_webhook(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutWebhook">>, Input, Options).
+
+%% @doc Configures a connection between the webhook that was created and the
+%% external tool with events to be detected.
+register_webhook_with_third_party(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    register_webhook_with_third_party(Client, Input, []).
+register_webhook_with_third_party(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RegisterWebhookWithThirdParty">>, Input, Options).
 
 %% @doc Resumes the pipeline execution by retrying the last failed actions in
 %% a stage.
