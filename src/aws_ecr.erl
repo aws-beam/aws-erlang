@@ -1,7 +1,9 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
-%% See https://github.com/jkakar/aws-codegen for more details.
+%% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon Elastic Container Registry (Amazon ECR) is a managed Docker
+%% @doc <fullname>Amazon Elastic Container Registry</fullname>
+%%
+%% Amazon Elastic Container Registry (Amazon ECR) is a managed Docker
 %% registry service. Customers can use the familiar Docker CLI to push, pull,
 %% and manage images. Amazon ECR provides a secure, scalable, and reliable
 %% registry. Amazon ECR supports private Docker repositories with
@@ -48,6 +50,8 @@
          list_tags_for_resource/3,
          put_image/2,
          put_image/3,
+         put_image_tag_mutability/2,
+         put_image_tag_mutability/3,
          put_lifecycle_policy/2,
          put_lifecycle_policy/3,
          set_repository_policy/2,
@@ -299,9 +303,17 @@ put_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutImage">>, Input, Options).
 
+%% @doc Updates the image tag mutability settings for a repository.
+put_image_tag_mutability(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_image_tag_mutability(Client, Input, []).
+put_image_tag_mutability(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutImageTagMutability">>, Input, Options).
+
 %% @doc Creates or updates a lifecycle policy. For information about
 %% lifecycle policy syntax, see <a
-%% href="http://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html">Lifecycle
+%% href="https://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html">Lifecycle
 %% Policy Template</a>.
 put_lifecycle_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -311,7 +323,10 @@ put_lifecycle_policy(Client, Input, Options)
     request(Client, <<"PutLifecyclePolicy">>, Input, Options).
 
 %% @doc Applies a repository policy on a specified repository to control
-%% access permissions.
+%% access permissions. For more information, see <a
+%% href="https://docs.aws.amazon.com/AmazonECR/latest/userguide/RepositoryPolicies.html">Amazon
+%% ECR Repository Policies</a> in the <i>Amazon Elastic Container Registry
+%% User Guide</i>.
 set_repository_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_repository_policy(Client, Input, []).
@@ -375,12 +390,20 @@ request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"ecr">>},
     Host = get_host(<<"api.ecr">>, Client1),
     URL = get_url(Host, Client1),
-    Headers = [{<<"Host">>, Host},
-               {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
-               {<<"X-Amz-Target">>, << <<"AmazonEC2ContainerRegistry_V20150921.">>/binary, Action/binary>>}],
+    Headers1 =
+        case maps:get(token, Client1, undefined) of
+            Token when byte_size(Token) > 0 -> [{<<"X-Amz-Security-Token">>, Token}];
+            _ -> []
+        end,
+    Headers2 = [
+        {<<"Host">>, Host},
+        {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
+        {<<"X-Amz-Target">>, << <<"AmazonEC2ContainerRegistry_V20150921.">>/binary, Action/binary>>}
+        | Headers1
+    ],
     Payload = jsx:encode(Input),
-    Headers1 = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
-    Response = hackney:request(post, URL, Headers1, Payload, Options),
+    Headers = aws_request:sign_request(Client1, <<"POST">>, URL, Headers2, Payload),
+    Response = hackney:request(post, URL, Headers, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->
@@ -403,15 +426,9 @@ handle_response({error, Reason}) ->
 get_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 get_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
-    aws_util:binary_join([EndpointPrefix,
-			  <<".">>,
-			  Region,
-			  <<".">>,
-			  Endpoint],
-			 <<"">>).
+    aws_util:binary_join([EndpointPrefix, <<".">>, Region, <<".">>, Endpoint], <<"">>).
 
 get_url(Host, Client) ->
     Proto = maps:get(proto, Client),
     Port = maps:get(port, Client),
-    aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>],
-			 <<"">>).
+    aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>], <<"">>).

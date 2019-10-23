@@ -1,5 +1,5 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
-%% See https://github.com/jkakar/aws-codegen for more details.
+%% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc <fullname>Amazon WorkSpaces Service</fullname>
 %%
@@ -11,6 +11,8 @@
          associate_ip_groups/3,
          authorize_ip_rules/2,
          authorize_ip_rules/3,
+         copy_workspace_image/2,
+         copy_workspace_image/3,
          create_ip_group/2,
          create_ip_group/3,
          create_tags/2,
@@ -39,6 +41,8 @@
          describe_workspace_directories/3,
          describe_workspace_images/2,
          describe_workspace_images/3,
+         describe_workspace_snapshots/2,
+         describe_workspace_snapshots/3,
          describe_workspaces/2,
          describe_workspaces/3,
          describe_workspaces_connection_status/2,
@@ -61,6 +65,8 @@
          reboot_workspaces/3,
          rebuild_workspaces/2,
          rebuild_workspaces/3,
+         restore_workspace/2,
+         restore_workspace/3,
          revoke_ip_rules/2,
          revoke_ip_rules/3,
          start_workspaces/2,
@@ -97,6 +103,15 @@ authorize_ip_rules(Client, Input)
 authorize_ip_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AuthorizeIpRules">>, Input, Options).
+
+%% @doc Copies the specified image from the specified Region to the current
+%% Region.
+copy_workspace_image(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    copy_workspace_image(Client, Input, []).
+copy_workspace_image(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CopyWorkspaceImage">>, Input, Options).
 
 %% @doc Creates an IP access control group.
 %%
@@ -157,7 +172,8 @@ delete_tags(Client, Input, Options)
     request(Client, <<"DeleteTags">>, Input, Options).
 
 %% @doc Deletes the specified image from your account. To delete an image,
-%% you must first delete any bundles that are associated with the image.
+%% you must first delete any bundles that are associated with the image and
+%% un-share the image if it is shared with other accounts.
 delete_workspace_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_workspace_image(Client, Input, []).
@@ -236,6 +252,14 @@ describe_workspace_images(Client, Input)
 describe_workspace_images(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeWorkspaceImages">>, Input, Options).
+
+%% @doc Describes the snapshots for the specified WorkSpace.
+describe_workspace_snapshots(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_workspace_snapshots(Client, Input, []).
+describe_workspace_snapshots(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeWorkspaceSnapshots">>, Input, Options).
 
 %% @doc Describes the specified WorkSpaces.
 %%
@@ -319,9 +343,9 @@ modify_workspace_properties(Client, Input, Options)
 %%
 %% To maintain a WorkSpace without being interrupted, set the WorkSpace state
 %% to <code>ADMIN_MAINTENANCE</code>. WorkSpaces in this state do not respond
-%% to requests to reboot, stop, start, or rebuild. An AutoStop WorkSpace in
-%% this state is not stopped. Users can log into a WorkSpace in the
-%% <code>ADMIN_MAINTENANCE</code> state.
+%% to requests to reboot, stop, start, rebuild, or restore. An AutoStop
+%% WorkSpace in this state is not stopped. Users cannot log into a WorkSpace
+%% in the <code>ADMIN_MAINTENANCE</code> state.
 modify_workspace_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_workspace_state(Client, Input, []).
@@ -361,6 +385,25 @@ rebuild_workspaces(Client, Input)
 rebuild_workspaces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RebuildWorkspaces">>, Input, Options).
+
+%% @doc Restores the specified WorkSpace to its last known healthy state.
+%%
+%% You cannot restore a WorkSpace unless its state is <code>
+%% AVAILABLE</code>, <code>ERROR</code>, or <code>UNHEALTHY</code>.
+%%
+%% Restoring a WorkSpace is a potentially destructive action that can result
+%% in the loss of data. For more information, see <a
+%% href="https://docs.aws.amazon.com/workspaces/latest/adminguide/restore-workspace.html">Restore
+%% a WorkSpace</a>.
+%%
+%% This operation is asynchronous and returns before the WorkSpace is
+%% completely restored.
+restore_workspace(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    restore_workspace(Client, Input, []).
+restore_workspace(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RestoreWorkspace">>, Input, Options).
 
 %% @doc Removes one or more rules from the specified IP access control group.
 revoke_ip_rules(Client, Input)
@@ -434,12 +477,20 @@ request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"workspaces">>},
     Host = get_host(<<"workspaces">>, Client1),
     URL = get_url(Host, Client1),
-    Headers = [{<<"Host">>, Host},
-               {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
-               {<<"X-Amz-Target">>, << <<"WorkspacesService.">>/binary, Action/binary>>}],
+    Headers1 =
+        case maps:get(token, Client1, undefined) of
+            Token when byte_size(Token) > 0 -> [{<<"X-Amz-Security-Token">>, Token}];
+            _ -> []
+        end,
+    Headers2 = [
+        {<<"Host">>, Host},
+        {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
+        {<<"X-Amz-Target">>, << <<"WorkspacesService.">>/binary, Action/binary>>}
+        | Headers1
+    ],
     Payload = jsx:encode(Input),
-    Headers1 = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
-    Response = hackney:request(post, URL, Headers1, Payload, Options),
+    Headers = aws_request:sign_request(Client1, <<"POST">>, URL, Headers2, Payload),
+    Response = hackney:request(post, URL, Headers, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->
@@ -462,15 +513,9 @@ handle_response({error, Reason}) ->
 get_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 get_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
-    aws_util:binary_join([EndpointPrefix,
-			  <<".">>,
-			  Region,
-			  <<".">>,
-			  Endpoint],
-			 <<"">>).
+    aws_util:binary_join([EndpointPrefix, <<".">>, Region, <<".">>, Endpoint], <<"">>).
 
 get_url(Host, Client) ->
     Proto = maps:get(proto, Client),
     Port = maps:get(port, Client),
-    aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>],
-			 <<"">>).
+    aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>], <<"">>).

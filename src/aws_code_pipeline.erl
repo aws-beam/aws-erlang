@@ -1,5 +1,5 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
-%% See https://github.com/jkakar/aws-codegen for more details.
+%% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc <fullname>AWS CodePipeline</fullname>
 %%
@@ -7,20 +7,20 @@
 %%
 %% This is the AWS CodePipeline API Reference. This guide provides
 %% descriptions of the actions and data types for AWS CodePipeline. Some
-%% functionality for your pipeline is only configurable through the API. For
-%% additional information, see the <a
+%% functionality for your pipeline can only be configured through the API.
+%% For more information, see the <a
 %% href="https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html">AWS
 %% CodePipeline User Guide</a>.
 %%
 %% You can use the AWS CodePipeline API to work with pipelines, stages,
-%% actions, and transitions, as described below.
+%% actions, and transitions.
 %%
 %% <i>Pipelines</i> are models of automated release processes. Each pipeline
 %% is uniquely named, and consists of stages, actions, and transitions.
 %%
 %% You can work with pipelines by calling:
 %%
-%% <ul> <li> <a>CreatePipeline</a>, which creates a uniquely-named pipeline.
+%% <ul> <li> <a>CreatePipeline</a>, which creates a uniquely named pipeline.
 %%
 %% </li> <li> <a>DeletePipeline</a>, which deletes the specified pipeline.
 %%
@@ -34,34 +34,40 @@
 %% </li> <li> <a>GetPipelineState</a>, which returns information about the
 %% current state of the stages and actions of a pipeline.
 %%
+%% </li> <li> <a>ListActionExecutions</a>, which returns action-level details
+%% for past executions. The details include full stage and action-level
+%% details, including individual action duration, status, any errors that
+%% occurred during the execution, and input and output artifact location
+%% details.
+%%
 %% </li> <li> <a>ListPipelines</a>, which gets a summary of all of the
 %% pipelines associated with your account.
 %%
 %% </li> <li> <a>ListPipelineExecutions</a>, which gets a summary of the most
 %% recent executions for a pipeline.
 %%
-%% </li> <li> <a>StartPipelineExecution</a>, which runs the the most recent
+%% </li> <li> <a>StartPipelineExecution</a>, which runs the most recent
 %% revision of an artifact through the pipeline.
 %%
 %% </li> <li> <a>UpdatePipeline</a>, which updates a pipeline with edits or
 %% changes to the structure of the pipeline.
 %%
 %% </li> </ul> Pipelines include <i>stages</i>. Each stage contains one or
-%% more actions that must complete before the next stage begins. A stage will
-%% result in success or failure. If a stage fails, then the pipeline stops at
-%% that stage and will remain stopped until either a new version of an
-%% artifact appears in the source location, or a user takes action to re-run
-%% the most recent artifact through the pipeline. You can call
+%% more actions that must complete before the next stage begins. A stage
+%% results in success or failure. If a stage fails, the pipeline stops at
+%% that stage and remains stopped until either a new version of an artifact
+%% appears in the source location, or a user takes action to rerun the most
+%% recent artifact through the pipeline. You can call
 %% <a>GetPipelineState</a>, which displays the status of a pipeline,
 %% including the status of stages in the pipeline, or <a>GetPipeline</a>,
 %% which returns the entire structure of the pipeline, including the stages
 %% of that pipeline. For more information about the structure of stages and
-%% actions, also refer to the <a
+%% actions, see <a
 %% href="https://docs.aws.amazon.com/codepipeline/latest/userguide/pipeline-structure.html">AWS
 %% CodePipeline Pipeline Structure Reference</a>.
 %%
-%% Pipeline stages include <i>actions</i>, which are categorized into
-%% categories such as source or build actions performed within a stage of a
+%% Pipeline stages include <i>actions</i> that are categorized into
+%% categories such as source or build actions performed in a stage of a
 %% pipeline. For example, you can use a source action to import artifacts
 %% into a pipeline from a source such as Amazon S3. Like stages, you do not
 %% work with actions directly in most cases, but you do define and interact
@@ -97,8 +103,8 @@
 %%
 %% For third-party integrators or developers who want to create their own
 %% integrations with AWS CodePipeline, the expected sequence varies from the
-%% standard API user. In order to integrate with AWS CodePipeline, developers
-%% will need to work with the following items:
+%% standard API user. To integrate with AWS CodePipeline, developers need to
+%% work with the following items:
 %%
 %% <b>Jobs</b>, which are instances of an action. For example, a job for a
 %% source action might import a revision of an artifact from a source.
@@ -106,15 +112,15 @@
 %% You can work with jobs by calling:
 %%
 %% <ul> <li> <a>AcknowledgeJob</a>, which confirms whether a job worker has
-%% received the specified job,
+%% received the specified job.
 %%
-%% </li> <li> <a>GetJobDetails</a>, which returns the details of a job,
+%% </li> <li> <a>GetJobDetails</a>, which returns the details of a job.
 %%
 %% </li> <li> <a>PollForJobs</a>, which determines whether there are any jobs
-%% to act upon,
+%% to act on.
 %%
 %% </li> <li> <a>PutJobFailureResult</a>, which provides details of a job
-%% failure, and
+%% failure.
 %%
 %% </li> <li> <a>PutJobSuccessResult</a>, which provides details of a job
 %% success.
@@ -126,16 +132,16 @@
 %% You can work with third party jobs by calling:
 %%
 %% <ul> <li> <a>AcknowledgeThirdPartyJob</a>, which confirms whether a job
-%% worker has received the specified job,
+%% worker has received the specified job.
 %%
 %% </li> <li> <a>GetThirdPartyJobDetails</a>, which requests the details of a
-%% job for a partner action,
+%% job for a partner action.
 %%
 %% </li> <li> <a>PollForThirdPartyJobs</a>, which determines whether there
-%% are any jobs to act upon,
+%% are any jobs to act on.
 %%
 %% </li> <li> <a>PutThirdPartyJobFailureResult</a>, which provides details of
-%% a job failure, and
+%% a job failure.
 %%
 %% </li> <li> <a>PutThirdPartyJobSuccessResult</a>, which provides details of
 %% a job success.
@@ -181,6 +187,8 @@
          list_pipeline_executions/3,
          list_pipelines/2,
          list_pipelines/3,
+         list_tags_for_resource/2,
+         list_tags_for_resource/3,
          list_webhooks/2,
          list_webhooks/3,
          poll_for_jobs/2,
@@ -207,6 +215,10 @@
          retry_stage_execution/3,
          start_pipeline_execution/2,
          start_pipeline_execution/3,
+         tag_resource/2,
+         tag_resource/3,
+         untag_resource/2,
+         untag_resource/3,
          update_pipeline/2,
          update_pipeline/3]).
 
@@ -217,7 +229,7 @@
 %%====================================================================
 
 %% @doc Returns information about a specified job and whether that job has
-%% been received by the job worker. Only used for custom actions.
+%% been received by the job worker. Used for custom actions only.
 acknowledge_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     acknowledge_job(Client, Input, []).
@@ -225,8 +237,8 @@ acknowledge_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AcknowledgeJob">>, Input, Options).
 
-%% @doc Confirms a job worker has received the specified job. Only used for
-%% partner actions.
+%% @doc Confirms a job worker has received the specified job. Used for
+%% partner actions only.
 acknowledge_third_party_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     acknowledge_third_party_job(Client, Input, []).
@@ -244,6 +256,13 @@ create_custom_action_type(Client, Input, Options)
     request(Client, <<"CreateCustomActionType">>, Input, Options).
 
 %% @doc Creates a pipeline.
+%%
+%% <note> In the pipeline structure, you must include either
+%% <code>artifactStore</code> or <code>artifactStores</code> in your
+%% pipeline, but you cannot use both. If you create a cross-region action in
+%% your pipeline, you must use <code>artifactStores</code>.
+%%
+%% </note>
 create_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_pipeline(Client, Input, []).
@@ -251,9 +270,9 @@ create_pipeline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePipeline">>, Input, Options).
 
-%% @doc Marks a custom action as deleted. PollForJobs for the custom action
-%% will fail after the action is marked for deletion. Only used for custom
-%% actions.
+%% @doc Marks a custom action as deleted. <code>PollForJobs</code> for the
+%% custom action fails after the action is marked for deletion. Used for
+%% custom actions only.
 %%
 %% <important> To re-create a custom action after it has been deleted you
 %% must use a string in the version field that has never been used before.
@@ -279,9 +298,9 @@ delete_pipeline(Client, Input, Options)
 
 %% @doc Deletes a previously created webhook by name. Deleting the webhook
 %% stops AWS CodePipeline from starting a pipeline every time an external
-%% event occurs. The API will return successfully when trying to delete a
-%% webhook that is already deleted. If a deleted webhook is re-created by
-%% calling PutWebhook with the same name, it will have a different URL.
+%% event occurs. The API returns successfully when trying to delete a webhook
+%% that is already deleted. If a deleted webhook is re-created by calling
+%% PutWebhook with the same name, it will have a different URL.
 delete_webhook(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_webhook(Client, Input, []).
@@ -291,7 +310,7 @@ delete_webhook(Client, Input, Options)
 
 %% @doc Removes the connection between the webhook that was created by
 %% CodePipeline and the external tool with events to be detected. Currently
-%% only supported for webhooks that target an action type of GitHub.
+%% supported only for webhooks that target an action type of GitHub.
 deregister_webhook_with_third_party(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_webhook_with_third_party(Client, Input, []).
@@ -317,13 +336,13 @@ enable_stage_transition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableStageTransition">>, Input, Options).
 
-%% @doc Returns information about a job. Only used for custom actions.
+%% @doc Returns information about a job. Used for custom actions only.
 %%
 %% <important> When this API is called, AWS CodePipeline returns temporary
 %% credentials for the Amazon S3 bucket used to store artifacts for the
 %% pipeline, if the action requires access to that Amazon S3 bucket for input
-%% or output artifacts. Additionally, this API returns any secret values
-%% defined for the action.
+%% or output artifacts. This API also returns any secret values defined for
+%% the action.
 %%
 %% </important>
 get_job_details(Client, Input)
@@ -357,9 +376,9 @@ get_pipeline_execution(Client, Input, Options)
 %% @doc Returns information about the state of a pipeline, including the
 %% stages and actions.
 %%
-%% <note> Values returned in the revisionId and revisionUrl fields indicate
-%% the source revision information, such as the commit ID, for the current
-%% state.
+%% <note> Values returned in the <code>revisionId</code> and
+%% <code>revisionUrl</code> fields indicate the source revision information,
+%% such as the commit ID, for the current state.
 %%
 %% </note>
 get_pipeline_state(Client, Input)
@@ -369,14 +388,14 @@ get_pipeline_state(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPipelineState">>, Input, Options).
 
-%% @doc Requests the details of a job for a third party action. Only used for
-%% partner actions.
+%% @doc Requests the details of a job for a third party action. Used for
+%% partner actions only.
 %%
 %% <important> When this API is called, AWS CodePipeline returns temporary
 %% credentials for the Amazon S3 bucket used to store artifacts for the
 %% pipeline, if the action requires access to that Amazon S3 bucket for input
-%% or output artifacts. Additionally, this API returns any secret values
-%% defined for the action.
+%% or output artifacts. This API also returns any secret values defined for
+%% the action.
 %%
 %% </important>
 get_third_party_job_details(Client, Input)
@@ -419,9 +438,18 @@ list_pipelines(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPipelines">>, Input, Options).
 
-%% @doc Gets a listing of all the webhooks in this region for this account.
-%% The output lists all webhooks and includes the webhook URL and ARN, as
-%% well the configuration for each webhook.
+%% @doc Gets the set of key-value pairs (metadata) that are used to manage
+%% the resource.
+list_tags_for_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_tags_for_resource(Client, Input, []).
+list_tags_for_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTagsForResource">>, Input, Options).
+
+%% @doc Gets a listing of all the webhooks in this AWS Region for this
+%% account. The output lists all webhooks and includes the webhook URL and
+%% ARN and the configuration for each webhook.
 list_webhooks(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_webhooks(Client, Input, []).
@@ -429,16 +457,16 @@ list_webhooks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWebhooks">>, Input, Options).
 
-%% @doc Returns information about any jobs for AWS CodePipeline to act upon.
-%% PollForJobs is only valid for action types with "Custom" in the owner
-%% field. If the action type contains "AWS" or "ThirdParty" in the owner
-%% field, the PollForJobs action returns an error.
+%% @doc Returns information about any jobs for AWS CodePipeline to act on.
+%% <code>PollForJobs</code> is valid only for action types with "Custom" in
+%% the owner field. If the action type contains "AWS" or "ThirdParty" in the
+%% owner field, the <code>PollForJobs</code> action returns an error.
 %%
 %% <important> When this API is called, AWS CodePipeline returns temporary
 %% credentials for the Amazon S3 bucket used to store artifacts for the
 %% pipeline, if the action requires access to that Amazon S3 bucket for input
-%% or output artifacts. Additionally, this API returns any secret values
-%% defined for the action.
+%% or output artifacts. This API also returns any secret values defined for
+%% the action.
 %%
 %% </important>
 poll_for_jobs(Client, Input)
@@ -449,7 +477,7 @@ poll_for_jobs(Client, Input, Options)
     request(Client, <<"PollForJobs">>, Input, Options).
 
 %% @doc Determines whether there are any third party jobs for a job worker to
-%% act on. Only used for partner actions.
+%% act on. Used for partner actions only.
 %%
 %% <important> When this API is called, AWS CodePipeline returns temporary
 %% credentials for the Amazon S3 bucket used to store artifacts for the
@@ -483,7 +511,7 @@ put_approval_result(Client, Input, Options)
     request(Client, <<"PutApprovalResult">>, Input, Options).
 
 %% @doc Represents the failure of a job as returned to the pipeline by a job
-%% worker. Only used for custom actions.
+%% worker. Used for custom actions only.
 put_job_failure_result(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_job_failure_result(Client, Input, []).
@@ -492,7 +520,7 @@ put_job_failure_result(Client, Input, Options)
     request(Client, <<"PutJobFailureResult">>, Input, Options).
 
 %% @doc Represents the success of a job as returned to the pipeline by a job
-%% worker. Only used for custom actions.
+%% worker. Used for custom actions only.
 put_job_success_result(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_job_success_result(Client, Input, []).
@@ -501,7 +529,7 @@ put_job_success_result(Client, Input, Options)
     request(Client, <<"PutJobSuccessResult">>, Input, Options).
 
 %% @doc Represents the failure of a third party job as returned to the
-%% pipeline by a job worker. Only used for partner actions.
+%% pipeline by a job worker. Used for partner actions only.
 put_third_party_job_failure_result(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_third_party_job_failure_result(Client, Input, []).
@@ -510,7 +538,7 @@ put_third_party_job_failure_result(Client, Input, Options)
     request(Client, <<"PutThirdPartyJobFailureResult">>, Input, Options).
 
 %% @doc Represents the success of a third party job as returned to the
-%% pipeline by a job worker. Only used for partner actions.
+%% pipeline by a job worker. Used for partner actions only.
 put_third_party_job_success_result(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_third_party_job_success_result(Client, Input, []).
@@ -544,7 +572,9 @@ register_webhook_with_third_party(Client, Input, Options)
     request(Client, <<"RegisterWebhookWithThirdParty">>, Input, Options).
 
 %% @doc Resumes the pipeline execution by retrying the last failed actions in
-%% a stage.
+%% a stage. You can retry a stage immediately if any of the actions in the
+%% stage fail. When you retry, all actions that are still in progress
+%% continue working, and failed actions are triggered again.
 retry_stage_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     retry_stage_execution(Client, Input, []).
@@ -561,10 +591,27 @@ start_pipeline_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartPipelineExecution">>, Input, Options).
 
+%% @doc Adds to or modifies the tags of the given resource. Tags are metadata
+%% that can be used to manage a resource.
+tag_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    tag_resource(Client, Input, []).
+tag_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"TagResource">>, Input, Options).
+
+%% @doc Removes tags from an AWS resource.
+untag_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    untag_resource(Client, Input, []).
+untag_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UntagResource">>, Input, Options).
+
 %% @doc Updates a specified pipeline with edits or changes to its structure.
-%% Use a JSON file with the pipeline structure in conjunction with
-%% UpdatePipeline to provide the full structure of the pipeline. Updating the
-%% pipeline increases the version number of the pipeline by 1.
+%% Use a JSON file with the pipeline structure and
+%% <code>UpdatePipeline</code> to provide the full structure of the pipeline.
+%% Updating the pipeline increases the version number of the pipeline by 1.
 update_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_pipeline(Client, Input, []).
@@ -586,12 +633,20 @@ request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"codepipeline">>},
     Host = get_host(<<"codepipeline">>, Client1),
     URL = get_url(Host, Client1),
-    Headers = [{<<"Host">>, Host},
-               {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
-               {<<"X-Amz-Target">>, << <<"CodePipeline_20150709.">>/binary, Action/binary>>}],
+    Headers1 =
+        case maps:get(token, Client1, undefined) of
+            Token when byte_size(Token) > 0 -> [{<<"X-Amz-Security-Token">>, Token}];
+            _ -> []
+        end,
+    Headers2 = [
+        {<<"Host">>, Host},
+        {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
+        {<<"X-Amz-Target">>, << <<"CodePipeline_20150709.">>/binary, Action/binary>>}
+        | Headers1
+    ],
     Payload = jsx:encode(Input),
-    Headers1 = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
-    Response = hackney:request(post, URL, Headers1, Payload, Options),
+    Headers = aws_request:sign_request(Client1, <<"POST">>, URL, Headers2, Payload),
+    Response = hackney:request(post, URL, Headers, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->
@@ -614,15 +669,9 @@ handle_response({error, Reason}) ->
 get_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 get_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
-    aws_util:binary_join([EndpointPrefix,
-			  <<".">>,
-			  Region,
-			  <<".">>,
-			  Endpoint],
-			 <<"">>).
+    aws_util:binary_join([EndpointPrefix, <<".">>, Region, <<".">>, Endpoint], <<"">>).
 
 get_url(Host, Client) ->
     Proto = maps:get(proto, Client),
     Port = maps:get(port, Client),
-    aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>],
-			 <<"">>).
+    aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>], <<"">>).

@@ -1,5 +1,5 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
-%% See https://github.com/jkakar/aws-codegen for more details.
+%% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc <fullname>AWS Database Migration Service</fullname>
 %%
@@ -33,6 +33,8 @@
          create_replication_task/3,
          delete_certificate/2,
          delete_certificate/3,
+         delete_connection/2,
+         delete_connection/3,
          delete_endpoint/2,
          delete_endpoint/3,
          delete_event_subscription/2,
@@ -205,6 +207,15 @@ delete_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCertificate">>, Input, Options).
 
+%% @doc Deletes the connection between a replication instance and an
+%% endpoint.
+delete_connection(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_connection(Client, Input, []).
+delete_connection(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteConnection">>, Input, Options).
+
 %% @doc Deletes the specified endpoint.
 %%
 %% <note> All tasks associated with the endpoint must be deleted before you
@@ -255,11 +266,14 @@ delete_replication_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteReplicationTask">>, Input, Options).
 
-%% @doc Lists all of the AWS DMS attributes for a customer account. The
-%% attributes include AWS DMS quotas for the account, such as the number of
-%% replication instances allowed. The description for a quota includes the
-%% quota name, current usage toward that quota, and the quota's maximum
-%% value.
+%% @doc Lists all of the AWS DMS attributes for a customer account. These
+%% attributes include AWS DMS quotas for the account and a unique account
+%% identifier in a particular DMS region. DMS quotas include a list of
+%% resource quotas supported by the account, such as the number of
+%% replication instances allowed. The description for each resource quota,
+%% includes the quota name, current usage toward that quota, and the quota's
+%% maximum value. DMS uses the unique account identifier to name each
+%% artifact used by DMS in the given region.
 %%
 %% This command does not take any parameters.
 describe_account_attributes(Client, Input)
@@ -597,12 +611,20 @@ request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"dms">>},
     Host = get_host(<<"dms">>, Client1),
     URL = get_url(Host, Client1),
-    Headers = [{<<"Host">>, Host},
-               {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
-               {<<"X-Amz-Target">>, << <<"AmazonDMSv20160101.">>/binary, Action/binary>>}],
+    Headers1 =
+        case maps:get(token, Client1, undefined) of
+            Token when byte_size(Token) > 0 -> [{<<"X-Amz-Security-Token">>, Token}];
+            _ -> []
+        end,
+    Headers2 = [
+        {<<"Host">>, Host},
+        {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
+        {<<"X-Amz-Target">>, << <<"AmazonDMSv20160101.">>/binary, Action/binary>>}
+        | Headers1
+    ],
     Payload = jsx:encode(Input),
-    Headers1 = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
-    Response = hackney:request(post, URL, Headers1, Payload, Options),
+    Headers = aws_request:sign_request(Client1, <<"POST">>, URL, Headers2, Payload),
+    Response = hackney:request(post, URL, Headers, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->
@@ -625,15 +647,9 @@ handle_response({error, Reason}) ->
 get_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 get_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
-    aws_util:binary_join([EndpointPrefix,
-			  <<".">>,
-			  Region,
-			  <<".">>,
-			  Endpoint],
-			 <<"">>).
+    aws_util:binary_join([EndpointPrefix, <<".">>, Region, <<".">>, Endpoint], <<"">>).
 
 get_url(Host, Client) ->
     Proto = maps:get(proto, Client),
     Port = maps:get(port, Client),
-    aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>],
-			 <<"">>).
+    aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>], <<"">>).

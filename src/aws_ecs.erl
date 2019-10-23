@@ -1,5 +1,5 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
-%% See https://github.com/jkakar/aws-codegen for more details.
+%% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc <fullname>Amazon Elastic Container Service</fullname>
 %%
@@ -11,7 +11,7 @@
 %% tasks on a cluster of Amazon Elastic Compute Cloud (Amazon EC2) instances
 %% that you manage by using the EC2 launch type. For more information about
 %% launch types, see <a
-%% href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon
+%% href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon
 %% ECS Launch Types</a>.
 %%
 %% Amazon ECS lets you launch and stop container-based applications with
@@ -94,6 +94,8 @@
          start_task/3,
          stop_task/2,
          stop_task/3,
+         submit_attachment_state_changes/2,
+         submit_attachment_state_changes/3,
          submit_container_state_change/2,
          submit_container_state_change/3,
          submit_task_state_change/2,
@@ -102,6 +104,8 @@
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
+         update_cluster_settings/2,
+         update_cluster_settings/3,
          update_container_agent/2,
          update_container_agent/3,
          update_container_instances_state/2,
@@ -130,7 +134,7 @@
 %% However, if the IAM user that makes the call does not have permissions to
 %% create the service-linked role, it is not created. For more information,
 %% see <a
-%% href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html">Using
+%% href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html">Using
 %% Service-Linked Roles for Amazon ECS</a> in the <i>Amazon Elastic Container
 %% Service Developer Guide</i>.
 %%
@@ -144,14 +148,14 @@ create_cluster(Client, Input, Options)
 
 %% @doc Runs and maintains a desired number of tasks from a specified task
 %% definition. If the number of tasks running in a service drops below the
-%% <code>desiredCount</code>, Amazon ECS spawns another copy of the task in
-%% the specified cluster. To update an existing service, see
+%% <code>desiredCount</code>, Amazon ECS runs another copy of the task in the
+%% specified cluster. To update an existing service, see
 %% <a>UpdateService</a>.
 %%
 %% In addition to maintaining the desired count of tasks in your service, you
-%% can optionally run your service behind a load balancer. The load balancer
-%% distributes traffic across the tasks that are associated with the service.
-%% For more information, see <a
+%% can optionally run your service behind one or more load balancers. The
+%% load balancers distribute traffic across the tasks that are associated
+%% with the service. For more information, see <a
 %% href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html">Service
 %% Load Balancing</a> in the <i>Amazon Elastic Container Service Developer
 %% Guide</i>.
@@ -273,7 +277,7 @@ create_service(Client, Input, Options)
 %% @doc Create a task set in the specified cluster and service. This is used
 %% when a service uses the <code>EXTERNAL</code> deployment controller type.
 %% For more information, see <a
-%% href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html">Amazon
+%% href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html">Amazon
 %% ECS Deployment Types</a> in the <i>Amazon Elastic Container Service
 %% Developer Guide</i>.
 create_task_set(Client, Input)
@@ -283,10 +287,8 @@ create_task_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTaskSet">>, Input, Options).
 
-%% @doc Modifies the ARN and resource ID format of a resource for a specified
-%% IAM user, IAM role, or the root user for an account. You can specify
-%% whether the new ARN and resource ID format are disabled for new resources
-%% that are created.
+%% @doc Disables an account setting for a specified IAM user, IAM role, or
+%% the root user for an account.
 delete_account_setting(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_account_setting(Client, Input, []).
@@ -322,8 +324,9 @@ delete_cluster(Client, Input, Options)
 %% <note> When you delete a service, if there are still running tasks that
 %% require cleanup, the service status moves from <code>ACTIVE</code> to
 %% <code>DRAINING</code>, and the service is no longer visible in the console
-%% or in the <a>ListServices</a> API operation. After the tasks have stopped,
-%% then the service status moves from <code>DRAINING</code> to
+%% or in the <a>ListServices</a> API operation. After all tasks have
+%% transitioned to either <code>STOPPING</code> or <code>STOPPED</code>
+%% status, the service status moves from <code>DRAINING</code> to
 %% <code>INACTIVE</code>. Services in the <code>DRAINING</code> or
 %% <code>INACTIVE</code> status can still be viewed with the
 %% <a>DescribeServices</a> API operation. However, in the future,
@@ -346,7 +349,7 @@ delete_service(Client, Input, Options)
 %% @doc Deletes a specified task set within a service. This is used when a
 %% service uses the <code>EXTERNAL</code> deployment controller type. For
 %% more information, see <a
-%% href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html">Amazon
+%% href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html">Amazon
 %% ECS Deployment Types</a> in the <i>Amazon Elastic Container Service
 %% Developer Guide</i>.
 delete_task_set(Client, Input)
@@ -454,7 +457,7 @@ describe_task_definition(Client, Input, Options)
 %% @doc Describes the task sets in the specified cluster and service. This is
 %% used when a service uses the <code>EXTERNAL</code> deployment controller
 %% type. For more information, see <a
-%% href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html">Amazon
+%% href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html">Amazon
 %% ECS Deployment Types</a> in the <i>Amazon Elastic Container Service
 %% Developer Guide</i>.
 describe_task_sets(Client, Input)
@@ -483,8 +486,7 @@ discover_poll_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DiscoverPollEndpoint">>, Input, Options).
 
-%% @doc Lists the account settings for an Amazon ECS resource for a specified
-%% principal.
+%% @doc Lists the account settings for a specified principal.
 list_account_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_account_settings(Client, Input, []).
@@ -585,18 +587,43 @@ list_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTasks">>, Input, Options).
 
-%% @doc Modifies the ARN and resource ID format of a resource type for a
-%% specified IAM user, IAM role, or the root user for an account. If the
-%% account setting for the root user is changed, it sets the default setting
+%% @doc Modifies an account setting. Account settings are set on a per-Region
+%% basis.
+%%
+%% If you change the account setting for the root user, the default settings
 %% for all of the IAM users and roles for which no individual account setting
-%% has been set. The opt-in and opt-out account setting can be set for each
-%% Amazon ECS resource separately. The ARN and resource ID format of a
-%% resource will be defined by the opt-in status of the IAM user or role that
-%% created the resource. Enabling this setting is required to use new Amazon
-%% ECS features such as resource tagging. For more information, see <a
-%% href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-resource-ids.html">Amazon
-%% Resource Names (ARNs) and IDs</a> in the <i>Amazon Elastic Container
-%% Service Developer Guide</i>.
+%% has been specified are reset. For more information, see <a
+%% href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-account-settings.html">Account
+%% Settings</a> in the <i>Amazon Elastic Container Service Developer
+%% Guide</i>.
+%%
+%% When <code>serviceLongArnFormat</code>, <code>taskLongArnFormat</code>, or
+%% <code>containerInstanceLongArnFormat</code> are specified, the Amazon
+%% Resource Name (ARN) and resource ID format of the resource type for a
+%% specified IAM user, IAM role, or the root user for an account is affected.
+%% The opt-in and opt-out account setting must be set for each Amazon ECS
+%% resource separately. The ARN and resource ID format of a resource will be
+%% defined by the opt-in status of the IAM user or role that created the
+%% resource. You must enable this setting to use Amazon ECS features such as
+%% resource tagging.
+%%
+%% When <code>awsvpcTrunking</code> is specified, the elastic network
+%% interface (ENI) limit for any new container instances that support the
+%% feature is changed. If <code>awsvpcTrunking</code> is enabled, any new
+%% container instances that support the feature are launched have the
+%% increased ENI limits available to them. For more information, see <a
+%% href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-eni.html">Elastic
+%% Network Interface Trunking</a> in the <i>Amazon Elastic Container Service
+%% Developer Guide</i>.
+%%
+%% When <code>containerInsights</code> is specified, the default setting
+%% indicating whether CloudWatch Container Insights is enabled for your
+%% clusters is changed. If <code>containerInsights</code> is enabled, any new
+%% clusters that are created will have Container Insights enabled unless you
+%% disable it during cluster creation. For more information, see <a
+%% href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-container-insights.html">CloudWatch
+%% Container Insights</a> in the <i>Amazon Elastic Container Service
+%% Developer Guide</i>.
 put_account_setting(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_account_setting(Client, Input, []).
@@ -604,10 +631,9 @@ put_account_setting(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutAccountSetting">>, Input, Options).
 
-%% @doc Modifies the ARN and resource ID format of a resource type for all
-%% IAM users on an account for which no individual account setting has been
-%% set. Enabling this setting is required to use new Amazon ECS features such
-%% as resource tagging.
+%% @doc Modifies an account setting for all IAM users on an account for whom
+%% no individual account setting has been specified. Account settings are set
+%% on a per-Region basis.
 put_account_setting_default(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_account_setting_default(Client, Input, []).
@@ -666,7 +692,7 @@ register_container_instance(Client, Input, Options)
 %% interface, and you must specify a <a>NetworkConfiguration</a> when you
 %% create a service or run a task with the task definition. For more
 %% information, see <a
-%% href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html">Task
+%% href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html">Task
 %% Networking</a> in the <i>Amazon Elastic Container Service Developer
 %% Guide</i>.
 register_task_definition(Client, Input)
@@ -759,6 +785,17 @@ stop_task(Client, Input, Options)
 %% @doc <note> This action is only used by the Amazon ECS agent, and it is
 %% not intended for use outside of the agent.
 %%
+%% </note> Sent to acknowledge that an attachment changed states.
+submit_attachment_state_changes(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    submit_attachment_state_changes(Client, Input, []).
+submit_attachment_state_changes(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SubmitAttachmentStateChanges">>, Input, Options).
+
+%% @doc <note> This action is only used by the Amazon ECS agent, and it is
+%% not intended for use outside of the agent.
+%%
 %% </note> Sent to acknowledge that a container changed states.
 submit_container_state_change(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -797,6 +834,14 @@ untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
+%% @doc Modifies the settings to use for a cluster.
+update_cluster_settings(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_cluster_settings(Client, Input, []).
+update_cluster_settings(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateClusterSettings">>, Input, Options).
+
 %% @doc Updates the Amazon ECS container agent on a specified container
 %% instance. Updating the Amazon ECS container agent does not interrupt
 %% running tasks or services on the container instance. The process for
@@ -820,16 +865,21 @@ update_container_agent(Client, Input, Options)
 
 %% @doc Modifies the status of an Amazon ECS container instance.
 %%
-%% You can change the status of a container instance to <code>DRAINING</code>
-%% to manually remove an instance from a cluster, for example to perform
-%% system updates, update the Docker daemon, or scale down the cluster size.
+%% Once a container instance has reached an <code>ACTIVE</code> state, you
+%% can change the status of a container instance to <code>DRAINING</code> to
+%% manually remove an instance from a cluster, for example to perform system
+%% updates, update the Docker daemon, or scale down the cluster size.
 %%
-%% When you set a container instance to <code>DRAINING</code>, Amazon ECS
-%% prevents new tasks from being scheduled for placement on the container
-%% instance and replacement service tasks are started on other container
-%% instances in the cluster if the resources are available. Service tasks on
-%% the container instance that are in the <code>PENDING</code> state are
-%% stopped immediately.
+%% <important> A container instance cannot be changed to
+%% <code>DRAINING</code> until it has reached an <code>ACTIVE</code> status.
+%% If the instance is in any other status, an error will be received.
+%%
+%% </important> When you set a container instance to <code>DRAINING</code>,
+%% Amazon ECS prevents new tasks from being scheduled for placement on the
+%% container instance and replacement service tasks are started on other
+%% container instances in the cluster if the resources are available. Service
+%% tasks on the container instance that are in the <code>PENDING</code> state
+%% are stopped immediately.
 %%
 %% Service tasks on the container instance that are in the
 %% <code>RUNNING</code> state are stopped and replaced according to the
@@ -866,8 +916,9 @@ update_container_agent(Client, Input, Options)
 %% A container instance has completed draining when it has no more
 %% <code>RUNNING</code> tasks. You can verify this using <a>ListTasks</a>.
 %%
-%% When you set a container instance to <code>ACTIVE</code>, the Amazon ECS
-%% scheduler can begin scheduling tasks on the instance again.
+%% When a container instance has been drained, you can set a container
+%% instance to <code>ACTIVE</code> status and once it has reached that status
+%% the Amazon ECS scheduler can begin scheduling tasks on the instance again.
 update_container_instances_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_container_instances_state(Client, Input, []).
@@ -994,7 +1045,7 @@ update_service(Client, Input, Options)
 %% transition to the service. This is used when a service uses the
 %% <code>EXTERNAL</code> deployment controller type. For more information,
 %% see <a
-%% href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html">Amazon
+%% href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html">Amazon
 %% ECS Deployment Types</a> in the <i>Amazon Elastic Container Service
 %% Developer Guide</i>.
 update_service_primary_task_set(Client, Input)
@@ -1007,7 +1058,7 @@ update_service_primary_task_set(Client, Input, Options)
 %% @doc Modifies a task set. This is used when a service uses the
 %% <code>EXTERNAL</code> deployment controller type. For more information,
 %% see <a
-%% href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html">Amazon
+%% href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html">Amazon
 %% ECS Deployment Types</a> in the <i>Amazon Elastic Container Service
 %% Developer Guide</i>.
 update_task_set(Client, Input)
@@ -1031,12 +1082,20 @@ request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"ecs">>},
     Host = get_host(<<"ecs">>, Client1),
     URL = get_url(Host, Client1),
-    Headers = [{<<"Host">>, Host},
-               {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
-               {<<"X-Amz-Target">>, << <<"AmazonEC2ContainerServiceV20141113.">>/binary, Action/binary>>}],
+    Headers1 =
+        case maps:get(token, Client1, undefined) of
+            Token when byte_size(Token) > 0 -> [{<<"X-Amz-Security-Token">>, Token}];
+            _ -> []
+        end,
+    Headers2 = [
+        {<<"Host">>, Host},
+        {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
+        {<<"X-Amz-Target">>, << <<"AmazonEC2ContainerServiceV20141113.">>/binary, Action/binary>>}
+        | Headers1
+    ],
     Payload = jsx:encode(Input),
-    Headers1 = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
-    Response = hackney:request(post, URL, Headers1, Payload, Options),
+    Headers = aws_request:sign_request(Client1, <<"POST">>, URL, Headers2, Payload),
+    Response = hackney:request(post, URL, Headers, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->
@@ -1059,15 +1118,9 @@ handle_response({error, Reason}) ->
 get_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 get_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
-    aws_util:binary_join([EndpointPrefix,
-			  <<".">>,
-			  Region,
-			  <<".">>,
-			  Endpoint],
-			 <<"">>).
+    aws_util:binary_join([EndpointPrefix, <<".">>, Region, <<".">>, Endpoint], <<"">>).
 
 get_url(Host, Client) ->
     Proto = maps:get(proto, Client),
     Port = maps:get(port, Client),
-    aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>],
-			 <<"">>).
+    aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>], <<"">>).

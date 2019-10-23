@@ -1,5 +1,5 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
-%% See https://github.com/jkakar/aws-codegen for more details.
+%% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc <fullname>Amazon Simple Workflow Service</fullname>
 %%
@@ -16,7 +16,7 @@
 %%
 %% This documentation serves as reference only. For a broader overview of the
 %% Amazon SWF programming model, see the <i> <a
-%% href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/">Amazon
+%% href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/">Amazon
 %% SWF Developer Guide</a> </i>.
 -module(aws_swf).
 
@@ -52,6 +52,8 @@
          list_domains/3,
          list_open_workflow_executions/2,
          list_open_workflow_executions/3,
+         list_tags_for_resource/2,
+         list_tags_for_resource/3,
          list_workflow_types/2,
          list_workflow_types/3,
          poll_for_activity_task/2,
@@ -80,8 +82,18 @@
          signal_workflow_execution/3,
          start_workflow_execution/2,
          start_workflow_execution/3,
+         tag_resource/2,
+         tag_resource/3,
          terminate_workflow_execution/2,
-         terminate_workflow_execution/3]).
+         terminate_workflow_execution/3,
+         undeprecate_activity_type/2,
+         undeprecate_activity_type/3,
+         undeprecate_domain/2,
+         undeprecate_domain/3,
+         undeprecate_workflow_type/2,
+         undeprecate_workflow_type/3,
+         untag_resource/2,
+         untag_resource/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -124,7 +136,7 @@
 %% <code>cause</code> parameter is set to
 %% <code>OPERATION_NOT_PERMITTED</code>. For details and example IAM
 %% policies, see <a
-%% href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
+%% href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
 %% IAM to Manage Access to Amazon SWF Workflows</a> in the <i>Amazon SWF
 %% Developer Guide</i>.
 count_closed_workflow_executions(Client, Input)
@@ -169,7 +181,7 @@ count_closed_workflow_executions(Client, Input, Options)
 %% <code>cause</code> parameter is set to
 %% <code>OPERATION_NOT_PERMITTED</code>. For details and example IAM
 %% policies, see <a
-%% href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
+%% href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
 %% IAM to Manage Access to Amazon SWF Workflows</a> in the <i>Amazon SWF
 %% Developer Guide</i>.
 count_open_workflow_executions(Client, Input)
@@ -205,7 +217,7 @@ count_open_workflow_executions(Client, Input, Options)
 %% <code>cause</code> parameter is set to
 %% <code>OPERATION_NOT_PERMITTED</code>. For details and example IAM
 %% policies, see <a
-%% href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
+%% href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
 %% IAM to Manage Access to Amazon SWF Workflows</a> in the <i>Amazon SWF
 %% Developer Guide</i>.
 count_pending_activity_tasks(Client, Input)
@@ -241,7 +253,7 @@ count_pending_activity_tasks(Client, Input, Options)
 %% <code>cause</code> parameter is set to
 %% <code>OPERATION_NOT_PERMITTED</code>. For details and example IAM
 %% policies, see <a
-%% href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
+%% href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
 %% IAM to Manage Access to Amazon SWF Workflows</a> in the <i>Amazon SWF
 %% Developer Guide</i>.
 count_pending_decision_tasks(Client, Input)
@@ -285,7 +297,7 @@ count_pending_decision_tasks(Client, Input, Options)
 %% <code>cause</code> parameter is set to
 %% <code>OPERATION_NOT_PERMITTED</code>. For details and example IAM
 %% policies, see <a
-%% href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
+%% href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
 %% IAM to Manage Access to Amazon SWF Workflows</a> in the <i>Amazon SWF
 %% Developer Guide</i>.
 deprecate_activity_type(Client, Input)
@@ -325,7 +337,7 @@ deprecate_activity_type(Client, Input, Options)
 %% <code>cause</code> parameter is set to
 %% <code>OPERATION_NOT_PERMITTED</code>. For details and example IAM
 %% policies, see <a
-%% href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
+%% href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
 %% IAM to Manage Access to Amazon SWF Workflows</a> in the <i>Amazon SWF
 %% Developer Guide</i>.
 deprecate_domain(Client, Input)
@@ -370,7 +382,7 @@ deprecate_domain(Client, Input, Options)
 %% <code>cause</code> parameter is set to
 %% <code>OPERATION_NOT_PERMITTED</code>. For details and example IAM
 %% policies, see <a
-%% href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
+%% href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
 %% IAM to Manage Access to Amazon SWF Workflows</a> in the <i>Amazon SWF
 %% Developer Guide</i>.
 deprecate_workflow_type(Client, Input)
@@ -410,7 +422,7 @@ deprecate_workflow_type(Client, Input, Options)
 %% <code>cause</code> parameter is set to
 %% <code>OPERATION_NOT_PERMITTED</code>. For details and example IAM
 %% policies, see <a
-%% href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
+%% href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
 %% IAM to Manage Access to Amazon SWF Workflows</a> in the <i>Amazon SWF
 %% Developer Guide</i>.
 describe_activity_type(Client, Input)
@@ -443,7 +455,7 @@ describe_activity_type(Client, Input, Options)
 %% <code>cause</code> parameter is set to
 %% <code>OPERATION_NOT_PERMITTED</code>. For details and example IAM
 %% policies, see <a
-%% href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
+%% href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
 %% IAM to Manage Access to Amazon SWF Workflows</a> in the <i>Amazon SWF
 %% Developer Guide</i>.
 describe_domain(Client, Input)
@@ -479,7 +491,7 @@ describe_domain(Client, Input, Options)
 %% <code>cause</code> parameter is set to
 %% <code>OPERATION_NOT_PERMITTED</code>. For details and example IAM
 %% policies, see <a
-%% href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
+%% href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
 %% IAM to Manage Access to Amazon SWF Workflows</a> in the <i>Amazon SWF
 %% Developer Guide</i>.
 describe_workflow_execution(Client, Input)
@@ -519,7 +531,7 @@ describe_workflow_execution(Client, Input, Options)
 %% <code>cause</code> parameter is set to
 %% <code>OPERATION_NOT_PERMITTED</code>. For details and example IAM
 %% policies, see <a
-%% href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
+%% href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
 %% IAM to Manage Access to Amazon SWF Workflows</a> in the <i>Amazon SWF
 %% Developer Guide</i>.
 describe_workflow_type(Client, Input)
@@ -557,7 +569,7 @@ describe_workflow_type(Client, Input, Options)
 %% <code>cause</code> parameter is set to
 %% <code>OPERATION_NOT_PERMITTED</code>. For details and example IAM
 %% policies, see <a
-%% href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
+%% href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
 %% IAM to Manage Access to Amazon SWF Workflows</a> in the <i>Amazon SWF
 %% Developer Guide</i>.
 get_workflow_execution_history(Client, Input)
@@ -594,7 +606,7 @@ get_workflow_execution_history(Client, Input, Options)
 %% <code>cause</code> parameter is set to
 %% <code>OPERATION_NOT_PERMITTED</code>. For details and example IAM
 %% policies, see <a
-%% href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
+%% href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
 %% IAM to Manage Access to Amazon SWF Workflows</a> in the <i>Amazon SWF
 %% Developer Guide</i>.
 list_activity_types(Client, Input)
@@ -641,7 +653,7 @@ list_activity_types(Client, Input, Options)
 %% <code>cause</code> parameter is set to
 %% <code>OPERATION_NOT_PERMITTED</code>. For details and example IAM
 %% policies, see <a
-%% href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
+%% href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
 %% IAM to Manage Access to Amazon SWF Workflows</a> in the <i>Amazon SWF
 %% Developer Guide</i>.
 list_closed_workflow_executions(Client, Input)
@@ -680,7 +692,7 @@ list_closed_workflow_executions(Client, Input, Options)
 %% <code>cause</code> parameter is set to
 %% <code>OPERATION_NOT_PERMITTED</code>. For details and example IAM
 %% policies, see <a
-%% href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
+%% href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
 %% IAM to Manage Access to Amazon SWF Workflows</a> in the <i>Amazon SWF
 %% Developer Guide</i>.
 list_domains(Client, Input)
@@ -727,7 +739,7 @@ list_domains(Client, Input, Options)
 %% <code>cause</code> parameter is set to
 %% <code>OPERATION_NOT_PERMITTED</code>. For details and example IAM
 %% policies, see <a
-%% href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
+%% href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
 %% IAM to Manage Access to Amazon SWF Workflows</a> in the <i>Amazon SWF
 %% Developer Guide</i>.
 list_open_workflow_executions(Client, Input)
@@ -736,6 +748,14 @@ list_open_workflow_executions(Client, Input)
 list_open_workflow_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListOpenWorkflowExecutions">>, Input, Options).
+
+%% @doc List tags for a given domain.
+list_tags_for_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_tags_for_resource(Client, Input, []).
+list_tags_for_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc Returns information about workflow types in the specified domain. The
 %% results may be split into multiple pages that can be retrieved by making
@@ -761,7 +781,7 @@ list_open_workflow_executions(Client, Input, Options)
 %% <code>cause</code> parameter is set to
 %% <code>OPERATION_NOT_PERMITTED</code>. For details and example IAM
 %% policies, see <a
-%% href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
+%% href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
 %% IAM to Manage Access to Amazon SWF Workflows</a> in the <i>Amazon SWF
 %% Developer Guide</i>.
 list_workflow_types(Client, Input)
@@ -806,7 +826,7 @@ list_workflow_types(Client, Input, Options)
 %% <code>cause</code> parameter is set to
 %% <code>OPERATION_NOT_PERMITTED</code>. For details and example IAM
 %% policies, see <a
-%% href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
+%% href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
 %% IAM to Manage Access to Amazon SWF Workflows</a> in the <i>Amazon SWF
 %% Developer Guide</i>.
 poll_for_activity_task(Client, Input)
@@ -863,7 +883,7 @@ poll_for_activity_task(Client, Input, Options)
 %% <code>cause</code> parameter is set to
 %% <code>OPERATION_NOT_PERMITTED</code>. For details and example IAM
 %% policies, see <a
-%% href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
+%% href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
 %% IAM to Manage Access to Amazon SWF Workflows</a> in the <i>Amazon SWF
 %% Developer Guide</i>.
 poll_for_decision_task(Client, Input)
@@ -928,7 +948,7 @@ poll_for_decision_task(Client, Input, Options)
 %% <code>cause</code> parameter is set to
 %% <code>OPERATION_NOT_PERMITTED</code>. For details and example IAM
 %% policies, see <a
-%% href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
+%% href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
 %% IAM to Manage Access to Amazon SWF Workflows</a> in the <i>Amazon SWF
 %% Developer Guide</i>.
 record_activity_task_heartbeat(Client, Input)
@@ -975,7 +995,7 @@ record_activity_task_heartbeat(Client, Input, Options)
 %% <code>cause</code> parameter is set to
 %% <code>OPERATION_NOT_PERMITTED</code>. For details and example IAM
 %% policies, see <a
-%% href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
+%% href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
 %% IAM to Manage Access to Amazon SWF Workflows</a> in the <i>Amazon SWF
 %% Developer Guide</i>.
 register_activity_type(Client, Input)
@@ -1008,7 +1028,7 @@ register_activity_type(Client, Input, Options)
 %% <code>cause</code> parameter is set to
 %% <code>OPERATION_NOT_PERMITTED</code>. For details and example IAM
 %% policies, see <a
-%% href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
+%% href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
 %% IAM to Manage Access to Amazon SWF Workflows</a> in the <i>Amazon SWF
 %% Developer Guide</i>.
 register_domain(Client, Input)
@@ -1058,7 +1078,7 @@ register_domain(Client, Input, Options)
 %% <code>cause</code> parameter is set to
 %% <code>OPERATION_NOT_PERMITTED</code>. For details and example IAM
 %% policies, see <a
-%% href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
+%% href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
 %% IAM to Manage Access to Amazon SWF Workflows</a> in the <i>Amazon SWF
 %% Developer Guide</i>.
 register_workflow_type(Client, Input)
@@ -1103,7 +1123,7 @@ register_workflow_type(Client, Input, Options)
 %% <code>cause</code> parameter is set to
 %% <code>OPERATION_NOT_PERMITTED</code>. For details and example IAM
 %% policies, see <a
-%% href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
+%% href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
 %% IAM to Manage Access to Amazon SWF Workflows</a> in the <i>Amazon SWF
 %% Developer Guide</i>.
 request_cancel_workflow_execution(Client, Input)
@@ -1130,7 +1150,7 @@ request_cancel_workflow_execution(Client, Input, Options)
 %% processing it. A task is closed after it has been specified in a call to
 %% <a>RespondActivityTaskCompleted</a>, RespondActivityTaskCanceled,
 %% <a>RespondActivityTaskFailed</a>, or the task has <a
-%% href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types">timed
+%% href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types">timed
 %% out</a>.
 %%
 %% <b>Access Control</b>
@@ -1153,7 +1173,7 @@ request_cancel_workflow_execution(Client, Input, Options)
 %% <code>cause</code> parameter is set to
 %% <code>OPERATION_NOT_PERMITTED</code>. For details and example IAM
 %% policies, see <a
-%% href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
+%% href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
 %% IAM to Manage Access to Amazon SWF Workflows</a> in the <i>Amazon SWF
 %% Developer Guide</i>.
 respond_activity_task_canceled(Client, Input)
@@ -1179,7 +1199,7 @@ respond_activity_task_canceled(Client, Input, Options)
 %% processing it. A task is closed after it has been specified in a call to
 %% RespondActivityTaskCompleted, <a>RespondActivityTaskCanceled</a>,
 %% <a>RespondActivityTaskFailed</a>, or the task has <a
-%% href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types">timed
+%% href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types">timed
 %% out</a>.
 %%
 %% <b>Access Control</b>
@@ -1202,7 +1222,7 @@ respond_activity_task_canceled(Client, Input, Options)
 %% <code>cause</code> parameter is set to
 %% <code>OPERATION_NOT_PERMITTED</code>. For details and example IAM
 %% policies, see <a
-%% href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
+%% href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
 %% IAM to Manage Access to Amazon SWF Workflows</a> in the <i>Amazon SWF
 %% Developer Guide</i>.
 respond_activity_task_completed(Client, Input)
@@ -1223,7 +1243,7 @@ respond_activity_task_completed(Client, Input, Options)
 %% it. A task is closed after it has been specified in a call to
 %% <a>RespondActivityTaskCompleted</a>, <a>RespondActivityTaskCanceled</a>,
 %% RespondActivityTaskFailed, or the task has <a
-%% href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types">timed
+%% href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types">timed
 %% out</a>.
 %%
 %% <b>Access Control</b>
@@ -1246,7 +1266,7 @@ respond_activity_task_completed(Client, Input, Options)
 %% <code>cause</code> parameter is set to
 %% <code>OPERATION_NOT_PERMITTED</code>. For details and example IAM
 %% policies, see <a
-%% href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
+%% href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
 %% IAM to Manage Access to Amazon SWF Workflows</a> in the <i>Amazon SWF
 %% Developer Guide</i>.
 respond_activity_task_failed(Client, Input)
@@ -1274,7 +1294,7 @@ respond_activity_task_failed(Client, Input, Options)
 %% allow for policies to be as readable as possible, you can express
 %% permissions on decisions as if they were actual API calls, including
 %% applying conditions to some parameters. For more information, see <a
-%% href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
+%% href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
 %% IAM to Manage Access to Amazon SWF Workflows</a> in the <i>Amazon SWF
 %% Developer Guide</i>.
 respond_decision_task_completed(Client, Input)
@@ -1317,7 +1337,7 @@ respond_decision_task_completed(Client, Input, Options)
 %% <code>cause</code> parameter is set to
 %% <code>OPERATION_NOT_PERMITTED</code>. For details and example IAM
 %% policies, see <a
-%% href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
+%% href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
 %% IAM to Manage Access to Amazon SWF Workflows</a> in the <i>Amazon SWF
 %% Developer Guide</i>.
 signal_workflow_execution(Client, Input)
@@ -1376,7 +1396,7 @@ signal_workflow_execution(Client, Input, Options)
 %% <code>cause</code> parameter is set to
 %% <code>OPERATION_NOT_PERMITTED</code>. For details and example IAM
 %% policies, see <a
-%% href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
+%% href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
 %% IAM to Manage Access to Amazon SWF Workflows</a> in the <i>Amazon SWF
 %% Developer Guide</i>.
 start_workflow_execution(Client, Input)
@@ -1385,6 +1405,18 @@ start_workflow_execution(Client, Input)
 start_workflow_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartWorkflowExecution">>, Input, Options).
+
+%% @doc Add a tag to a Amazon SWF domain.
+%%
+%% <note> Amazon SWF supports a maximum of 50 tags per resource.
+%%
+%% </note>
+tag_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    tag_resource(Client, Input, []).
+tag_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Records a <code>WorkflowExecutionTerminated</code> event and forces
 %% closure of the workflow execution identified by the given domain, runId,
@@ -1424,7 +1456,7 @@ start_workflow_execution(Client, Input, Options)
 %% <code>cause</code> parameter is set to
 %% <code>OPERATION_NOT_PERMITTED</code>. For details and example IAM
 %% policies, see <a
-%% href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
+%% href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
 %% IAM to Manage Access to Amazon SWF Workflows</a> in the <i>Amazon SWF
 %% Developer Guide</i>.
 terminate_workflow_execution(Client, Input)
@@ -1433,6 +1465,137 @@ terminate_workflow_execution(Client, Input)
 terminate_workflow_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TerminateWorkflowExecution">>, Input, Options).
+
+%% @doc Undeprecates a previously deprecated <i>activity type</i>. After an
+%% activity type has been undeprecated, you can create new tasks of that
+%% activity type.
+%%
+%% <note> This operation is eventually consistent. The results are best
+%% effort and may not exactly reflect recent updates and changes.
+%%
+%% </note> <b>Access Control</b>
+%%
+%% You can use IAM policies to control this action's access to Amazon SWF
+%% resources as follows:
+%%
+%% <ul> <li> Use a <code>Resource</code> element with the domain name to
+%% limit the action to only specified domains.
+%%
+%% </li> <li> Use an <code>Action</code> element to allow or deny permission
+%% to call this action.
+%%
+%% </li> <li> Constrain the following parameters by using a
+%% <code>Condition</code> element with the appropriate keys.
+%%
+%% <ul> <li> <code>activityType.name</code>: String constraint. The key is
+%% <code>swf:activityType.name</code>.
+%%
+%% </li> <li> <code>activityType.version</code>: String constraint. The key
+%% is <code>swf:activityType.version</code>.
+%%
+%% </li> </ul> </li> </ul> If the caller doesn't have sufficient permissions
+%% to invoke the action, or the parameter values fall outside the specified
+%% constraints, the action fails. The associated event attribute's
+%% <code>cause</code> parameter is set to
+%% <code>OPERATION_NOT_PERMITTED</code>. For details and example IAM
+%% policies, see <a
+%% href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
+%% IAM to Manage Access to Amazon SWF Workflows</a> in the <i>Amazon SWF
+%% Developer Guide</i>.
+undeprecate_activity_type(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    undeprecate_activity_type(Client, Input, []).
+undeprecate_activity_type(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UndeprecateActivityType">>, Input, Options).
+
+%% @doc Undeprecates a previously deprecated domain. After a domain has been
+%% undeprecated it can be used to create new workflow executions or register
+%% new types.
+%%
+%% <note> This operation is eventually consistent. The results are best
+%% effort and may not exactly reflect recent updates and changes.
+%%
+%% </note> <b>Access Control</b>
+%%
+%% You can use IAM policies to control this action's access to Amazon SWF
+%% resources as follows:
+%%
+%% <ul> <li> Use a <code>Resource</code> element with the domain name to
+%% limit the action to only specified domains.
+%%
+%% </li> <li> Use an <code>Action</code> element to allow or deny permission
+%% to call this action.
+%%
+%% </li> <li> You cannot use an IAM policy to constrain this action's
+%% parameters.
+%%
+%% </li> </ul> If the caller doesn't have sufficient permissions to invoke
+%% the action, or the parameter values fall outside the specified
+%% constraints, the action fails. The associated event attribute's
+%% <code>cause</code> parameter is set to
+%% <code>OPERATION_NOT_PERMITTED</code>. For details and example IAM
+%% policies, see <a
+%% href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
+%% IAM to Manage Access to Amazon SWF Workflows</a> in the <i>Amazon SWF
+%% Developer Guide</i>.
+undeprecate_domain(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    undeprecate_domain(Client, Input, []).
+undeprecate_domain(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UndeprecateDomain">>, Input, Options).
+
+%% @doc Undeprecates a previously deprecated <i>workflow type</i>. After a
+%% workflow type has been undeprecated, you can create new executions of that
+%% type.
+%%
+%% <note> This operation is eventually consistent. The results are best
+%% effort and may not exactly reflect recent updates and changes.
+%%
+%% </note> <b>Access Control</b>
+%%
+%% You can use IAM policies to control this action's access to Amazon SWF
+%% resources as follows:
+%%
+%% <ul> <li> Use a <code>Resource</code> element with the domain name to
+%% limit the action to only specified domains.
+%%
+%% </li> <li> Use an <code>Action</code> element to allow or deny permission
+%% to call this action.
+%%
+%% </li> <li> Constrain the following parameters by using a
+%% <code>Condition</code> element with the appropriate keys.
+%%
+%% <ul> <li> <code>workflowType.name</code>: String constraint. The key is
+%% <code>swf:workflowType.name</code>.
+%%
+%% </li> <li> <code>workflowType.version</code>: String constraint. The key
+%% is <code>swf:workflowType.version</code>.
+%%
+%% </li> </ul> </li> </ul> If the caller doesn't have sufficient permissions
+%% to invoke the action, or the parameter values fall outside the specified
+%% constraints, the action fails. The associated event attribute's
+%% <code>cause</code> parameter is set to
+%% <code>OPERATION_NOT_PERMITTED</code>. For details and example IAM
+%% policies, see <a
+%% href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
+%% IAM to Manage Access to Amazon SWF Workflows</a> in the <i>Amazon SWF
+%% Developer Guide</i>.
+undeprecate_workflow_type(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    undeprecate_workflow_type(Client, Input, []).
+undeprecate_workflow_type(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UndeprecateWorkflowType">>, Input, Options).
+
+%% @doc Remove a tag from a Amazon SWF domain.
+untag_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    untag_resource(Client, Input, []).
+untag_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UntagResource">>, Input, Options).
 
 %%====================================================================
 %% Internal functions
@@ -1448,12 +1611,20 @@ request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"swf">>},
     Host = get_host(<<"swf">>, Client1),
     URL = get_url(Host, Client1),
-    Headers = [{<<"Host">>, Host},
-               {<<"Content-Type">>, <<"application/x-amz-json-1.0">>},
-               {<<"X-Amz-Target">>, << <<"SimpleWorkflowService.">>/binary, Action/binary>>}],
+    Headers1 =
+        case maps:get(token, Client1, undefined) of
+            Token when byte_size(Token) > 0 -> [{<<"X-Amz-Security-Token">>, Token}];
+            _ -> []
+        end,
+    Headers2 = [
+        {<<"Host">>, Host},
+        {<<"Content-Type">>, <<"application/x-amz-json-1.0">>},
+        {<<"X-Amz-Target">>, << <<"SimpleWorkflowService.">>/binary, Action/binary>>}
+        | Headers1
+    ],
     Payload = jsx:encode(Input),
-    Headers1 = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
-    Response = hackney:request(post, URL, Headers1, Payload, Options),
+    Headers = aws_request:sign_request(Client1, <<"POST">>, URL, Headers2, Payload),
+    Response = hackney:request(post, URL, Headers, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->
@@ -1476,15 +1647,9 @@ handle_response({error, Reason}) ->
 get_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 get_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
-    aws_util:binary_join([EndpointPrefix,
-			  <<".">>,
-			  Region,
-			  <<".">>,
-			  Endpoint],
-			 <<"">>).
+    aws_util:binary_join([EndpointPrefix, <<".">>, Region, <<".">>, Endpoint], <<"">>).
 
 get_url(Host, Client) ->
     Proto = maps:get(proto, Client),
     Port = maps:get(port, Client),
-    aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>],
-			 <<"">>).
+    aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>], <<"">>).

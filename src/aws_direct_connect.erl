@@ -1,5 +1,5 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
-%% See https://github.com/jkakar/aws-codegen for more details.
+%% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc AWS Direct Connect links your internal network to an AWS Direct
 %% Connect location over a standard Ethernet fiber-optic cable. One end of
@@ -515,10 +515,19 @@ create_public_virtual_interface(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePublicVirtualInterface">>, Input, Options).
 
-%% @doc Creates a transit virtual interface. A transit virtual interface is a
-%% VLAN that transports traffic from a Direct Connect gateway to one or more
-%% transit gateways. A transit virtual interface enables the connection of
-%% multiple VPCs attached to a transit gateway to a Direct Connect gateway.
+%% @doc Creates a transit virtual interface. A transit virtual interface
+%% should be used to access one or more transit gateways associated with
+%% Direct Connect gateways. A transit virtual interface enables the
+%% connection of multiple VPCs attached to a transit gateway to a Direct
+%% Connect gateway.
+%%
+%% <important> If you associate your transit gateway with one or more Direct
+%% Connect gateways, the Autonomous System Number (ASN) used by the transit
+%% gateway and the Direct Connect gateway must be different. For example, if
+%% you use the default ASN 64512 for both your the transit gateway and Direct
+%% Connect gateway, the association request fails.
+%%
+%% </important>
 create_transit_virtual_interface(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_transit_virtual_interface(Client, Input, []).
@@ -552,8 +561,8 @@ delete_connection(Client, Input, Options)
 
 %% @doc Deletes the specified Direct Connect gateway. You must first delete
 %% all virtual interfaces that are attached to the Direct Connect gateway and
-%% disassociate all virtual private gateways that are associated with the
-%% Direct Connect gateway.
+%% disassociate all virtual private gateways associated with the Direct
+%% Connect gateway.
 delete_direct_connect_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_direct_connect_gateway(Client, Input, []).
@@ -563,6 +572,12 @@ delete_direct_connect_gateway(Client, Input, Options)
 
 %% @doc Deletes the association between the specified Direct Connect gateway
 %% and virtual private gateway.
+%%
+%% We recommend that you specify the <code>associationID</code> to delete the
+%% association. Alternatively, if you own virtual gateway and a Direct
+%% Connect gateway association, you can specify the
+%% <code>virtualGatewayId</code> and <code>directConnectGatewayId</code> to
+%% delete an association.
 delete_direct_connect_gateway_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_direct_connect_gateway_association(Client, Input, []).
@@ -913,12 +928,20 @@ request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"directconnect">>},
     Host = get_host(<<"directconnect">>, Client1),
     URL = get_url(Host, Client1),
-    Headers = [{<<"Host">>, Host},
-               {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
-               {<<"X-Amz-Target">>, << <<"OvertureService.">>/binary, Action/binary>>}],
+    Headers1 =
+        case maps:get(token, Client1, undefined) of
+            Token when byte_size(Token) > 0 -> [{<<"X-Amz-Security-Token">>, Token}];
+            _ -> []
+        end,
+    Headers2 = [
+        {<<"Host">>, Host},
+        {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
+        {<<"X-Amz-Target">>, << <<"OvertureService.">>/binary, Action/binary>>}
+        | Headers1
+    ],
     Payload = jsx:encode(Input),
-    Headers1 = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
-    Response = hackney:request(post, URL, Headers1, Payload, Options),
+    Headers = aws_request:sign_request(Client1, <<"POST">>, URL, Headers2, Payload),
+    Response = hackney:request(post, URL, Headers, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->
@@ -941,15 +964,9 @@ handle_response({error, Reason}) ->
 get_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 get_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
-    aws_util:binary_join([EndpointPrefix,
-			  <<".">>,
-			  Region,
-			  <<".">>,
-			  Endpoint],
-			 <<"">>).
+    aws_util:binary_join([EndpointPrefix, <<".">>, Region, <<".">>, Endpoint], <<"">>).
 
 get_url(Host, Client) ->
     Proto = maps:get(proto, Client),
     Port = maps:get(port, Client),
-    aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>],
-			 <<"">>).
+    aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>], <<"">>).

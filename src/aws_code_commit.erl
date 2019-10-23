@@ -1,5 +1,5 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
-%% See https://github.com/jkakar/aws-codegen for more details.
+%% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc <fullname>AWS CodeCommit</fullname>
 %%
@@ -56,23 +56,25 @@
 %% <ul> <li> <a>DeleteFile</a>, which deletes the content of a specified file
 %% from a specified branch.
 %%
+%% </li> <li> <a>GetBlob</a>, which returns the base-64 encoded content of an
+%% individual Git blob object within a repository.
+%%
 %% </li> <li> <a>GetFile</a>, which returns the base-64 encoded content of a
 %% specified file.
 %%
 %% </li> <li> <a>GetFolder</a>, which returns the contents of a specified
 %% folder or directory.
 %%
-%% </li> <li> <a>PutFile</a>, which adds or modifies a file in a specified
-%% repository and branch.
+%% </li> <li> <a>PutFile</a>, which adds or modifies a single file in a
+%% specified repository and branch.
 %%
-%% </li> </ul> Information about committed code in a repository, by calling
-%% the following:
+%% </li> </ul> Commits, by calling the following:
 %%
-%% <ul> <li> <a>CreateCommit</a>, which creates a commit for changes to a
+%% <ul> <li> <a>BatchGetCommits</a>, which returns information about one or
+%% more commits in a repository
+%%
+%% </li> <li> <a>CreateCommit</a>, which creates a commit for changes to a
 %% repository.
-%%
-%% </li> <li> <a>GetBlob</a>, which returns the base-64 encoded content of an
-%% individual Git blob object within a repository.
 %%
 %% </li> <li> <a>GetCommit</a>, which returns information about a commit,
 %% including commit messages and author and committer information.
@@ -80,6 +82,37 @@
 %% </li> <li> <a>GetDifferences</a>, which returns information about the
 %% differences in a valid commit specifier (such as a branch, tag, HEAD,
 %% commit ID or other fully qualified reference).
+%%
+%% </li> </ul> Merges, by calling the following:
+%%
+%% <ul> <li> <a>BatchDescribeMergeConflicts</a>, which returns information
+%% about conflicts in a merge between commits in a repository.
+%%
+%% </li> <li> <a>CreateUnreferencedMergeCommit</a>, which creates an
+%% unreferenced commit between two branches or commits for the purpose of
+%% comparing them and identifying any potential conflicts.
+%%
+%% </li> <li> <a>DescribeMergeConflicts</a>, which returns information about
+%% merge conflicts between the base, source, and destination versions of a
+%% file in a potential merge.
+%%
+%% </li> <li> <a>GetMergeCommit</a>, which returns information about the
+%% merge between a source and destination commit.
+%%
+%% </li> <li> <a>GetMergeConflicts</a>, which returns information about merge
+%% conflicts between the source and destination branch in a pull request.
+%%
+%% </li> <li> <a>GetMergeOptions</a>, which returns information about the
+%% available merge options between two branches or commit specifiers.
+%%
+%% </li> <li> <a>MergeBranchesByFastForward</a>, which merges two branches
+%% using the fast-forward merge option.
+%%
+%% </li> <li> <a>MergeBranchesBySquash</a>, which merges two branches using
+%% the squash merge option.
+%%
+%% </li> <li> <a>MergeBranchesByThreeWay</a>, which merges two branches using
+%% the three-way merge option.
 %%
 %% </li> </ul> Pull requests, by calling the following:
 %%
@@ -92,9 +125,6 @@
 %% </li> <li> <a>GetCommentsForPullRequest</a>, which returns information
 %% about comments on a specified pull request.
 %%
-%% </li> <li> <a>GetMergeConflicts</a>, which returns information about merge
-%% conflicts between the source and destination branch in a pull request.
-%%
 %% </li> <li> <a>GetPullRequest</a>, which returns information about a
 %% specified pull request.
 %%
@@ -104,6 +134,14 @@
 %% </li> <li> <a>MergePullRequestByFastForward</a>, which merges the source
 %% destination branch of a pull request into the specified destination branch
 %% for that pull request using the fast-forward merge option.
+%%
+%% </li> <li> <a>MergePullRequestBySquash</a>, which merges the source
+%% destination branch of a pull request into the specified destination branch
+%% for that pull request using the squash merge option.
+%%
+%% </li> <li> <a>MergePullRequestByThreeWay</a>. which merges the source
+%% destination branch of a pull request into the specified destination branch
+%% for that pull request using the three-way merge option.
 %%
 %% </li> <li> <a>PostCommentForPullRequest</a>, which posts a comment to a
 %% pull request at the specified line, file, or request.
@@ -117,8 +155,7 @@
 %% </li> <li> <a>UpdatePullRequestTitle</a>, which updates the title of a
 %% pull request.
 %%
-%% </li> </ul> Information about comments in a repository, by calling the
-%% following:
+%% </li> </ul> Comments in a repository, by calling the following:
 %%
 %% <ul> <li> <a>DeleteCommentContent</a>, which deletes the content of a
 %% comment on a commit in a repository.
@@ -138,6 +175,18 @@
 %% </li> <li> <a>UpdateComment</a>, which updates the content of a comment on
 %% a commit in a repository.
 %%
+%% </li> </ul> Tags used to tag resources in AWS CodeCommit (not Git tags),
+%% by calling the following:
+%%
+%% <ul> <li> <a>ListTagsForResource</a>, which gets information about AWS
+%% tags for a specified Amazon Resource Name (ARN) in AWS CodeCommit.
+%%
+%% </li> <li> <a>TagResource</a>, which adds or updates tags for a resource
+%% in AWS CodeCommit.
+%%
+%% </li> <li> <a>UntagResource</a>, which removes tags for a resource in AWS
+%% CodeCommit.
+%%
 %% </li> </ul> Triggers, by calling the following:
 %%
 %% <ul> <li> <a>GetRepositoryTriggers</a>, which returns information about
@@ -150,11 +199,15 @@
 %% a repository trigger by sending data to the trigger target.
 %%
 %% </li> </ul> For information about how to use AWS CodeCommit, see the <a
-%% href="http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html">AWS
+%% href="https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html">AWS
 %% CodeCommit User Guide</a>.
 -module(aws_code_commit).
 
--export([batch_get_repositories/2,
+-export([batch_describe_merge_conflicts/2,
+         batch_describe_merge_conflicts/3,
+         batch_get_commits/2,
+         batch_get_commits/3,
+         batch_get_repositories/2,
          batch_get_repositories/3,
          create_branch/2,
          create_branch/3,
@@ -164,6 +217,8 @@
          create_pull_request/3,
          create_repository/2,
          create_repository/3,
+         create_unreferenced_merge_commit/2,
+         create_unreferenced_merge_commit/3,
          delete_branch/2,
          delete_branch/3,
          delete_comment_content/2,
@@ -172,6 +227,8 @@
          delete_file/3,
          delete_repository/2,
          delete_repository/3,
+         describe_merge_conflicts/2,
+         describe_merge_conflicts/3,
          describe_pull_request_events/2,
          describe_pull_request_events/3,
          get_blob/2,
@@ -192,8 +249,12 @@
          get_file/3,
          get_folder/2,
          get_folder/3,
+         get_merge_commit/2,
+         get_merge_commit/3,
          get_merge_conflicts/2,
          get_merge_conflicts/3,
+         get_merge_options/2,
+         get_merge_options/3,
          get_pull_request/2,
          get_pull_request/3,
          get_repository/2,
@@ -206,8 +267,20 @@
          list_pull_requests/3,
          list_repositories/2,
          list_repositories/3,
+         list_tags_for_resource/2,
+         list_tags_for_resource/3,
+         merge_branches_by_fast_forward/2,
+         merge_branches_by_fast_forward/3,
+         merge_branches_by_squash/2,
+         merge_branches_by_squash/3,
+         merge_branches_by_three_way/2,
+         merge_branches_by_three_way/3,
          merge_pull_request_by_fast_forward/2,
          merge_pull_request_by_fast_forward/3,
+         merge_pull_request_by_squash/2,
+         merge_pull_request_by_squash/3,
+         merge_pull_request_by_three_way/2,
+         merge_pull_request_by_three_way/3,
          post_comment_for_compared_commit/2,
          post_comment_for_compared_commit/3,
          post_comment_for_pull_request/2,
@@ -218,8 +291,12 @@
          put_file/3,
          put_repository_triggers/2,
          put_repository_triggers/3,
+         tag_resource/2,
+         tag_resource/3,
          test_repository_triggers/2,
          test_repository_triggers/3,
+         untag_resource/2,
+         untag_resource/3,
          update_comment/2,
          update_comment/3,
          update_default_branch/2,
@@ -240,6 +317,25 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Returns information about one or more merge conflicts in the
+%% attempted merge of two commit specifiers using the squash or three-way
+%% merge strategy.
+batch_describe_merge_conflicts(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_describe_merge_conflicts(Client, Input, []).
+batch_describe_merge_conflicts(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchDescribeMergeConflicts">>, Input, Options).
+
+%% @doc Returns information about the contents of one or more commits in a
+%% repository.
+batch_get_commits(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_get_commits(Client, Input, []).
+batch_get_commits(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchGetCommits">>, Input, Options).
 
 %% @doc Returns information about one or more repositories.
 %%
@@ -296,6 +392,24 @@ create_repository(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRepository">>, Input, Options).
 
+%% @doc Creates an unreferenced commit that represents the result of merging
+%% two branches using a specified merge strategy. This can help you determine
+%% the outcome of a potential merge. This API cannot be used with the
+%% fast-forward merge strategy, as that strategy does not create a merge
+%% commit.
+%%
+%% <note> This unreferenced merge commit can only be accessed using the
+%% GetCommit API or through git commands such as git fetch. To retrieve this
+%% commit, you must specify its commit ID or otherwise reference it.
+%%
+%% </note>
+create_unreferenced_merge_commit(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_unreferenced_merge_commit(Client, Input, []).
+create_unreferenced_merge_commit(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateUnreferencedMergeCommit">>, Input, Options).
+
 %% @doc Deletes a branch from a repository, unless that branch is the default
 %% branch for the repository.
 delete_branch(Client, Input)
@@ -338,6 +452,17 @@ delete_repository(Client, Input)
 delete_repository(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRepository">>, Input, Options).
+
+%% @doc Returns information about one or more merge conflicts in the
+%% attempted merge of two commit specifiers using the squash or three-way
+%% merge strategy. If the merge option for the attempted merge is specified
+%% as FAST_FORWARD_MERGE, an exception will be thrown.
+describe_merge_conflicts(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_merge_conflicts(Client, Input, []).
+describe_merge_conflicts(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeMergeConflicts">>, Input, Options).
 
 %% @doc Returns information about one or more pull request events.
 describe_pull_request_events(Client, Input)
@@ -427,6 +552,14 @@ get_folder(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetFolder">>, Input, Options).
 
+%% @doc Returns information about a specified merge commit.
+get_merge_commit(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_merge_commit(Client, Input, []).
+get_merge_commit(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetMergeCommit">>, Input, Options).
+
 %% @doc Returns information about merge conflicts between the before and
 %% after commit IDs for a pull request in a repository.
 get_merge_conflicts(Client, Input)
@@ -435,6 +568,16 @@ get_merge_conflicts(Client, Input)
 get_merge_conflicts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMergeConflicts">>, Input, Options).
+
+%% @doc Returns information about the merge options available for merging two
+%% specified branches. For details about why a particular merge option is not
+%% available, use GetMergeConflicts or DescribeMergeConflicts.
+get_merge_options(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_merge_options(Client, Input, []).
+get_merge_options(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetMergeOptions">>, Input, Options).
 
 %% @doc Gets information about a pull request in a specified repository.
 get_pull_request(Client, Input)
@@ -495,15 +638,74 @@ list_repositories(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRepositories">>, Input, Options).
 
-%% @doc Closes a pull request and attempts to merge the source commit of a
-%% pull request into the specified destination branch for that pull request
-%% at the specified commit using the fast-forward merge option.
+%% @doc Gets information about AWS tags for a specified Amazon Resource Name
+%% (ARN) in AWS CodeCommit. For a list of valid resources in AWS CodeCommit,
+%% see <a
+%% href="https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats">CodeCommit
+%% Resources and Operations</a> in the AWS CodeCommit User Guide.
+list_tags_for_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_tags_for_resource(Client, Input, []).
+list_tags_for_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTagsForResource">>, Input, Options).
+
+%% @doc Merges two branches using the fast-forward merge strategy.
+merge_branches_by_fast_forward(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    merge_branches_by_fast_forward(Client, Input, []).
+merge_branches_by_fast_forward(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"MergeBranchesByFastForward">>, Input, Options).
+
+%% @doc Merges two branches using the squash merge strategy.
+merge_branches_by_squash(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    merge_branches_by_squash(Client, Input, []).
+merge_branches_by_squash(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"MergeBranchesBySquash">>, Input, Options).
+
+%% @doc Merges two specified branches using the three-way merge strategy.
+merge_branches_by_three_way(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    merge_branches_by_three_way(Client, Input, []).
+merge_branches_by_three_way(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"MergeBranchesByThreeWay">>, Input, Options).
+
+%% @doc Attempts to merge the source commit of a pull request into the
+%% specified destination branch for that pull request at the specified commit
+%% using the fast-forward merge strategy. If the merge is successful, it
+%% closes the pull request.
 merge_pull_request_by_fast_forward(Client, Input)
   when is_map(Client), is_map(Input) ->
     merge_pull_request_by_fast_forward(Client, Input, []).
 merge_pull_request_by_fast_forward(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"MergePullRequestByFastForward">>, Input, Options).
+
+%% @doc Attempts to merge the source commit of a pull request into the
+%% specified destination branch for that pull request at the specified commit
+%% using the squash merge strategy. If the merge is successful, it closes the
+%% pull request.
+merge_pull_request_by_squash(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    merge_pull_request_by_squash(Client, Input, []).
+merge_pull_request_by_squash(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"MergePullRequestBySquash">>, Input, Options).
+
+%% @doc Attempts to merge the source commit of a pull request into the
+%% specified destination branch for that pull request at the specified commit
+%% using the three-way merge strategy. If the merge is successful, it closes
+%% the pull request.
+merge_pull_request_by_three_way(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    merge_pull_request_by_three_way(Client, Input, []).
+merge_pull_request_by_three_way(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"MergePullRequestByThreeWay">>, Input, Options).
 
 %% @doc Posts a comment on the comparison between two commits.
 post_comment_for_compared_commit(Client, Input)
@@ -548,6 +750,17 @@ put_repository_triggers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRepositoryTriggers">>, Input, Options).
 
+%% @doc Adds or updates tags for a resource in AWS CodeCommit. For a list of
+%% valid resources in AWS CodeCommit, see <a
+%% href="https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats">CodeCommit
+%% Resources and Operations</a> in the AWS CodeCommit User Guide.
+tag_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    tag_resource(Client, Input, []).
+tag_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"TagResource">>, Input, Options).
+
 %% @doc Tests the functionality of repository triggers by sending information
 %% to the trigger target. If real data is available in the repository, the
 %% test will send data from the last commit. If no data is available, sample
@@ -558,6 +771,17 @@ test_repository_triggers(Client, Input)
 test_repository_triggers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TestRepositoryTriggers">>, Input, Options).
+
+%% @doc Removes tags for a resource in AWS CodeCommit. For a list of valid
+%% resources in AWS CodeCommit, see <a
+%% href="https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats">CodeCommit
+%% Resources and Operations</a> in the AWS CodeCommit User Guide.
+untag_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    untag_resource(Client, Input, []).
+untag_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Replaces the contents of a comment.
 update_comment(Client, Input)
@@ -627,7 +851,7 @@ update_repository_description(Client, Input, Options)
 %% alphanumeric, dash, and underscore characters, and cannot include certain
 %% characters. The suffix ".git" is prohibited. For a full description of the
 %% limits on repository names, see <a
-%% href="http://docs.aws.amazon.com/codecommit/latest/userguide/limits.html">Limits</a>
+%% href="https://docs.aws.amazon.com/codecommit/latest/userguide/limits.html">Limits</a>
 %% in the AWS CodeCommit User Guide.
 update_repository_name(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -650,12 +874,20 @@ request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"codecommit">>},
     Host = get_host(<<"codecommit">>, Client1),
     URL = get_url(Host, Client1),
-    Headers = [{<<"Host">>, Host},
-               {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
-               {<<"X-Amz-Target">>, << <<"CodeCommit_20150413.">>/binary, Action/binary>>}],
+    Headers1 =
+        case maps:get(token, Client1, undefined) of
+            Token when byte_size(Token) > 0 -> [{<<"X-Amz-Security-Token">>, Token}];
+            _ -> []
+        end,
+    Headers2 = [
+        {<<"Host">>, Host},
+        {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
+        {<<"X-Amz-Target">>, << <<"CodeCommit_20150413.">>/binary, Action/binary>>}
+        | Headers1
+    ],
     Payload = jsx:encode(Input),
-    Headers1 = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
-    Response = hackney:request(post, URL, Headers1, Payload, Options),
+    Headers = aws_request:sign_request(Client1, <<"POST">>, URL, Headers2, Payload),
+    Response = hackney:request(post, URL, Headers, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->
@@ -678,15 +910,9 @@ handle_response({error, Reason}) ->
 get_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 get_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
-    aws_util:binary_join([EndpointPrefix,
-			  <<".">>,
-			  Region,
-			  <<".">>,
-			  Endpoint],
-			 <<"">>).
+    aws_util:binary_join([EndpointPrefix, <<".">>, Region, <<".">>, Endpoint], <<"">>).
 
 get_url(Host, Client) ->
     Proto = maps:get(proto, Client),
     Port = maps:get(port, Client),
-    aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>],
-			 <<"">>).
+    aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>], <<"">>).

@@ -1,5 +1,5 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
-%% See https://github.com/jkakar/aws-codegen for more details.
+%% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc You can use Amazon CloudWatch Logs to monitor, store, and access your
 %% log files from Amazon EC2 instances, AWS CloudTrail, or other sources. You
@@ -168,6 +168,9 @@ cancel_export_task(Client, Input, Options)
 %% the same S3 bucket. To separate out log data for each export task, you can
 %% specify a prefix to be used as the Amazon S3 key prefix for all exported
 %% objects.
+%%
+%% Exporting to S3 buckets that are encrypted with AES-256 is supported.
+%% Exporting to S3 buckets encrypted with SSE-KMS is not supported.
 create_export_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_export_task(Client, Input, []).
@@ -447,12 +450,20 @@ get_log_record(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLogRecord">>, Input, Options).
 
-%% @doc Returns the results from the specified query. If the query is in
-%% progress, partial results of that current execution are returned. Only the
-%% fields requested in the query are returned.
+%% @doc Returns the results from the specified query.
+%%
+%% Only the fields requested in the query are returned, along with a
+%% <code>@ptr</code> field which is the identifier for the log record. You
+%% can use the value of <code>@ptr</code> in a operation to get the full log
+%% record.
 %%
 %% <code>GetQueryResults</code> does not start a query execution. To run a
 %% query, use .
+%%
+%% If the value of the <code>Status</code> field in the output is
+%% <code>Running</code>, this operation returns only partial results. If you
+%% see a value of <code>Scheduled</code> or <code>Running</code> for the
+%% status, you can retry the operation later to see the final results.
 get_query_results(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_query_results(Client, Input, []).
@@ -471,16 +482,15 @@ list_tags_log_group(Client, Input, Options)
 %% @doc Creates or updates a destination. A destination encapsulates a
 %% physical resource (such as an Amazon Kinesis stream) and enables you to
 %% subscribe to a real-time stream of log events for a different account,
-%% ingested using <a>PutLogEvents</a>. Currently, the only supported physical
-%% resource is a Kinesis stream belonging to the same account as the
-%% destination.
+%% ingested using <a>PutLogEvents</a>. A destination can be an Amazon Kinesis
+%% stream, Amazon Kinesis Data Firehose strea, or an AWS Lambda function.
 %%
-%% Through an access policy, a destination controls what is written to its
-%% Kinesis stream. By default, <code>PutDestination</code> does not set any
-%% access policy with the destination, which means a cross-account user
-%% cannot call <a>PutSubscriptionFilter</a> against this destination. To
-%% enable this, the destination owner must call <a>PutDestinationPolicy</a>
-%% after <code>PutDestination</code>.
+%% Through an access policy, a destination controls what is written to it. By
+%% default, <code>PutDestination</code> does not set any access policy with
+%% the destination, which means a cross-account user cannot call
+%% <a>PutSubscriptionFilter</a> against this destination. To enable this, the
+%% destination owner must call <a>PutDestinationPolicy</a> after
+%% <code>PutDestination</code>.
 put_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_destination(Client, Input, []).
@@ -520,7 +530,7 @@ put_destination_policy(Client, Input, Options)
 %% the future.
 %%
 %% </li> <li> None of the log events in the batch can be older than 14 days
-%% or the retention period of the log group.
+%% or older than the retention period of the log group.
 %%
 %% </li> <li> The log events in the batch must be in chronological ordered by
 %% their timestamp. The timestamp is the time the event occurred, expressed
@@ -612,6 +622,10 @@ put_subscription_filter(Client, Input, Options)
 %% For more information, see <a
 %% href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html">CloudWatch
 %% Logs Insights Query Syntax</a>.
+%%
+%% Queries time out after 15 minutes of execution. If your queries are timing
+%% out, reduce the time range being searched, or partition your query into a
+%% number of queries.
 start_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_query(Client, Input, []).
@@ -680,12 +694,20 @@ request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"logs">>},
     Host = get_host(<<"logs">>, Client1),
     URL = get_url(Host, Client1),
-    Headers = [{<<"Host">>, Host},
-               {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
-               {<<"X-Amz-Target">>, << <<"Logs_20140328.">>/binary, Action/binary>>}],
+    Headers1 =
+        case maps:get(token, Client1, undefined) of
+            Token when byte_size(Token) > 0 -> [{<<"X-Amz-Security-Token">>, Token}];
+            _ -> []
+        end,
+    Headers2 = [
+        {<<"Host">>, Host},
+        {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
+        {<<"X-Amz-Target">>, << <<"Logs_20140328.">>/binary, Action/binary>>}
+        | Headers1
+    ],
     Payload = jsx:encode(Input),
-    Headers1 = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
-    Response = hackney:request(post, URL, Headers1, Payload, Options),
+    Headers = aws_request:sign_request(Client1, <<"POST">>, URL, Headers2, Payload),
+    Response = hackney:request(post, URL, Headers, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->
@@ -708,15 +730,9 @@ handle_response({error, Reason}) ->
 get_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 get_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
-    aws_util:binary_join([EndpointPrefix,
-			  <<".">>,
-			  Region,
-			  <<".">>,
-			  Endpoint],
-			 <<"">>).
+    aws_util:binary_join([EndpointPrefix, <<".">>, Region, <<".">>, Endpoint], <<"">>).
 
 get_url(Host, Client) ->
     Proto = maps:get(proto, Client),
     Port = maps:get(port, Client),
-    aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>],
-			 <<"">>).
+    aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>], <<"">>).

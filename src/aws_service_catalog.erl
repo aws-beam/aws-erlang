@@ -1,5 +1,5 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
-%% See https://github.com/jkakar/aws-codegen for more details.
+%% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc <fullname>AWS Service Catalog</fullname>
 %%
@@ -87,6 +87,8 @@
          describe_record/3,
          describe_service_action/2,
          describe_service_action/3,
+         describe_service_action_execution_parameters/2,
+         describe_service_action_execution_parameters/3,
          describe_tag_option/2,
          describe_tag_option/3,
          disable_a_w_s_organizations_access/2,
@@ -141,6 +143,8 @@
          list_service_actions/3,
          list_service_actions_for_provisioning_artifact/2,
          list_service_actions_for_provisioning_artifact/3,
+         list_stack_instances_for_provisioned_product/2,
+         list_stack_instances_for_provisioned_product/3,
          list_tag_options/2,
          list_tag_options/3,
          provision_product/2,
@@ -165,6 +169,8 @@
          update_product/3,
          update_provisioned_product/2,
          update_provisioned_product/3,
+         update_provisioned_product_properties/2,
+         update_provisioned_product_properties/3,
          update_provisioning_artifact/2,
          update_provisioning_artifact/3,
          update_service_action/2,
@@ -525,6 +531,15 @@ describe_provisioning_parameters(Client, Input, Options)
 %% Use this operation after calling a request operation (for example,
 %% <a>ProvisionProduct</a>, <a>TerminateProvisionedProduct</a>, or
 %% <a>UpdateProvisionedProduct</a>).
+%%
+%% <note> If a provisioned product was transferred to a new owner using
+%% <a>UpdateProvisionedProductProperties</a>, the new owner will be able to
+%% describe all past records for that product. The previous owner will no
+%% longer be able to describe the records, but will be able to use
+%% <a>ListRecordHistory</a> to see the product's history from when he was the
+%% owner.
+%%
+%% </note>
 describe_record(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_record(Client, Input, []).
@@ -539,6 +554,14 @@ describe_service_action(Client, Input)
 describe_service_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeServiceAction">>, Input, Options).
+
+
+describe_service_action_execution_parameters(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_service_action_execution_parameters(Client, Input, []).
+describe_service_action_execution_parameters(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeServiceActionExecutionParameters">>, Input, Options).
 
 %% @doc Gets information about the specified TagOption.
 describe_tag_option(Client, Input)
@@ -780,6 +803,17 @@ list_service_actions_for_provisioning_artifact(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServiceActionsForProvisioningArtifact">>, Input, Options).
 
+%% @doc Returns summary information about stack instances that are associated
+%% with the specified <code>CFN_STACKSET</code> type provisioned product. You
+%% can filter for stack instances that are associated with a specific AWS
+%% account name or region.
+list_stack_instances_for_provisioned_product(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_stack_instances_for_provisioned_product(Client, Input, []).
+list_stack_instances_for_provisioned_product(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListStackInstancesForProvisionedProduct">>, Input, Options).
+
 %% @doc Lists the specified TagOptions or all TagOptions.
 list_tag_options(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -905,6 +939,15 @@ update_provisioned_product(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateProvisionedProduct">>, Input, Options).
 
+%% @doc Requests updates to the properties of the specified provisioned
+%% product.
+update_provisioned_product_properties(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_provisioned_product_properties(Client, Input, []).
+update_provisioned_product_properties(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateProvisionedProductProperties">>, Input, Options).
+
 %% @doc Updates the specified provisioning artifact (also known as a version)
 %% for the specified product.
 %%
@@ -947,12 +990,20 @@ request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"servicecatalog">>},
     Host = get_host(<<"servicecatalog">>, Client1),
     URL = get_url(Host, Client1),
-    Headers = [{<<"Host">>, Host},
-               {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
-               {<<"X-Amz-Target">>, << <<"AWS242ServiceCatalogService.">>/binary, Action/binary>>}],
+    Headers1 =
+        case maps:get(token, Client1, undefined) of
+            Token when byte_size(Token) > 0 -> [{<<"X-Amz-Security-Token">>, Token}];
+            _ -> []
+        end,
+    Headers2 = [
+        {<<"Host">>, Host},
+        {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
+        {<<"X-Amz-Target">>, << <<"AWS242ServiceCatalogService.">>/binary, Action/binary>>}
+        | Headers1
+    ],
     Payload = jsx:encode(Input),
-    Headers1 = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
-    Response = hackney:request(post, URL, Headers1, Payload, Options),
+    Headers = aws_request:sign_request(Client1, <<"POST">>, URL, Headers2, Payload),
+    Response = hackney:request(post, URL, Headers, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->
@@ -975,15 +1026,9 @@ handle_response({error, Reason}) ->
 get_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 get_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
-    aws_util:binary_join([EndpointPrefix,
-			  <<".">>,
-			  Region,
-			  <<".">>,
-			  Endpoint],
-			 <<"">>).
+    aws_util:binary_join([EndpointPrefix, <<".">>, Region, <<".">>, Endpoint], <<"">>).
 
 get_url(Host, Client) ->
     Proto = maps:get(proto, Client),
     Port = maps:get(port, Client),
-    aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>],
-			 <<"">>).
+    aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>], <<"">>).
