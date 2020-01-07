@@ -1,5 +1,5 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
-%% See https://github.com/jkakar/aws-codegen for more details.
+%% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Using the Amazon Cognito User Pools API, you can create a user pool
 %% to manage directories and users. You can authenticate a user to obtain
@@ -53,6 +53,8 @@
          admin_respond_to_auth_challenge/3,
          admin_set_user_m_f_a_preference/2,
          admin_set_user_m_f_a_preference/3,
+         admin_set_user_password/2,
+         admin_set_user_password/3,
          admin_set_user_settings/2,
          admin_set_user_settings/3,
          admin_update_auth_event_feedback/2,
@@ -226,7 +228,7 @@ add_custom_attributes(Client, Input, Options)
 
 %% @doc Adds the specified user to the specified group.
 %%
-%% Requires developer credentials.
+%% Calling this action requires developer credentials.
 admin_add_user_to_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_add_user_to_group(Client, Input, []).
@@ -237,7 +239,7 @@ admin_add_user_to_group(Client, Input, Options)
 %% @doc Confirms user registration as an admin without using a confirmation
 %% code. Works on any user.
 %%
-%% Requires developer credentials.
+%% Calling this action requires developer credentials.
 admin_confirm_sign_up(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_confirm_sign_up(Client, Input, []).
@@ -271,7 +273,7 @@ admin_create_user(Client, Input, Options)
 
 %% @doc Deletes a user as an administrator. Works on any user.
 %%
-%% Requires developer credentials.
+%% Calling this action requires developer credentials.
 admin_delete_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_delete_user(Client, Input, []).
@@ -282,7 +284,7 @@ admin_delete_user(Client, Input, Options)
 %% @doc Deletes the user attributes in a user pool as an administrator. Works
 %% on any user.
 %%
-%% Requires developer credentials.
+%% Calling this action requires developer credentials.
 admin_delete_user_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_delete_user_attributes(Client, Input, []).
@@ -333,9 +335,9 @@ admin_disable_provider_for_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminDisableProviderForUser">>, Input, Options).
 
-%% @doc Disables the specified user as an administrator. Works on any user.
+%% @doc Disables the specified user.
 %%
-%% Requires developer credentials.
+%% Calling this action requires developer credentials.
 admin_disable_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_disable_user(Client, Input, []).
@@ -345,7 +347,7 @@ admin_disable_user(Client, Input, Options)
 
 %% @doc Enables the specified user as an administrator. Works on any user.
 %%
-%% Requires developer credentials.
+%% Calling this action requires developer credentials.
 admin_enable_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_enable_user(Client, Input, []).
@@ -355,7 +357,7 @@ admin_enable_user(Client, Input, Options)
 
 %% @doc Forgets the device, as an administrator.
 %%
-%% Requires developer credentials.
+%% Calling this action requires developer credentials.
 admin_forget_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_forget_device(Client, Input, []).
@@ -365,7 +367,7 @@ admin_forget_device(Client, Input, Options)
 
 %% @doc Gets the device, as an administrator.
 %%
-%% Requires developer credentials.
+%% Calling this action requires developer credentials.
 admin_get_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_get_device(Client, Input, []).
@@ -376,7 +378,7 @@ admin_get_device(Client, Input, Options)
 %% @doc Gets the specified user by user name in a user pool as an
 %% administrator. Works on any user.
 %%
-%% Requires developer credentials.
+%% Calling this action requires developer credentials.
 admin_get_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_get_user(Client, Input, []).
@@ -386,7 +388,7 @@ admin_get_user(Client, Input, Options)
 
 %% @doc Initiates the authentication flow, as an administrator.
 %%
-%% Requires developer credentials.
+%% Calling this action requires developer credentials.
 admin_initiate_auth(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_initiate_auth(Client, Input, []).
@@ -425,7 +427,7 @@ admin_link_provider_for_user(Client, Input, Options)
 
 %% @doc Lists devices, as an administrator.
 %%
-%% Requires developer credentials.
+%% Calling this action requires developer credentials.
 admin_list_devices(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_list_devices(Client, Input, []).
@@ -435,7 +437,7 @@ admin_list_devices(Client, Input, Options)
 
 %% @doc Lists the groups that the user belongs to.
 %%
-%% Requires developer credentials.
+%% Calling this action requires developer credentials.
 admin_list_groups_for_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_list_groups_for_user(Client, Input, []).
@@ -454,7 +456,7 @@ admin_list_user_auth_events(Client, Input, Options)
 
 %% @doc Removes the specified user from the specified group.
 %%
-%% Requires developer credentials.
+%% Calling this action requires developer credentials.
 admin_remove_user_from_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_remove_user_from_group(Client, Input, []).
@@ -475,7 +477,7 @@ admin_remove_user_from_group(Client, Input, Options)
 %% user, calling this API will also result in sending a message to the end
 %% user with the code to change their password.
 %%
-%% Requires developer credentials.
+%% Calling this action requires developer credentials.
 admin_reset_user_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_reset_user_password(Client, Input, []).
@@ -485,7 +487,7 @@ admin_reset_user_password(Client, Input, Options)
 
 %% @doc Responds to an authentication challenge, as an administrator.
 %%
-%% Requires developer credentials.
+%% Calling this action requires developer credentials.
 admin_respond_to_auth_challenge(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_respond_to_auth_challenge(Client, Input, []).
@@ -493,7 +495,12 @@ admin_respond_to_auth_challenge(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminRespondToAuthChallenge">>, Input, Options).
 
-%% @doc Sets the user's multi-factor authentication (MFA) preference.
+%% @doc Sets the user's multi-factor authentication (MFA) preference,
+%% including which MFA options are enabled and if any are preferred. Only one
+%% factor can be set as preferred. The preferred MFA factor will be used to
+%% authenticate a user if multiple factors are enabled. If multiple options
+%% are enabled and no preference is set, a challenge to choose an MFA option
+%% will be returned during sign in.
 admin_set_user_m_f_a_preference(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_set_user_m_f_a_preference(Client, Input, []).
@@ -501,10 +508,29 @@ admin_set_user_m_f_a_preference(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminSetUserMFAPreference">>, Input, Options).
 
-%% @doc Sets all the user settings for a specified user name. Works on any
-%% user.
+%% @doc Sets the specified user's password in a user pool as an
+%% administrator. Works on any user.
 %%
-%% Requires developer credentials.
+%% The password can be temporary or permanent. If it is temporary, the user
+%% status will be placed into the <code>FORCE_CHANGE_PASSWORD</code> state.
+%% When the user next tries to sign in, the InitiateAuth/AdminInitiateAuth
+%% response will contain the <code>NEW_PASSWORD_REQUIRED</code> challenge. If
+%% the user does not sign in before it expires, the user will not be able to
+%% sign in and their password will need to be reset by an administrator.
+%%
+%% Once the user has set a new password, or the password is permanent, the
+%% user status will be set to <code>Confirmed</code>.
+admin_set_user_password(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    admin_set_user_password(Client, Input, []).
+admin_set_user_password(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AdminSetUserPassword">>, Input, Options).
+
+%% @doc <i>This action is no longer supported.</i> You can use it to
+%% configure only SMS MFA. You can't use it to configure TOTP software token
+%% MFA. To configure either type of MFA, use the
+%% <a>AdminSetUserMFAPreference</a> action instead.
 admin_set_user_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_set_user_settings(Client, Input, []).
@@ -524,7 +550,7 @@ admin_update_auth_event_feedback(Client, Input, Options)
 
 %% @doc Updates the device status as an administrator.
 %%
-%% Requires developer credentials.
+%% Calling this action requires developer credentials.
 admin_update_device_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_update_device_status(Client, Input, []).
@@ -541,7 +567,7 @@ admin_update_device_status(Client, Input, Options)
 %% In addition to updating user attributes, this API can also be used to mark
 %% phone and email as verified.
 %%
-%% Requires developer credentials.
+%% Calling this action requires developer credentials.
 admin_update_user_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_update_user_attributes(Client, Input, []).
@@ -551,7 +577,7 @@ admin_update_user_attributes(Client, Input, Options)
 
 %% @doc Signs out users from all devices, as an administrator.
 %%
-%% Requires developer credentials.
+%% Calling this action requires developer credentials.
 admin_user_global_sign_out(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_user_global_sign_out(Client, Input, []).
@@ -606,7 +632,7 @@ confirm_sign_up(Client, Input, Options)
 
 %% @doc Creates a new group in the specified user pool.
 %%
-%% Requires developer credentials.
+%% Calling this action requires developer credentials.
 create_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_group(Client, Input, []).
@@ -667,7 +693,7 @@ create_user_pool_domain(Client, Input, Options)
 %% @doc Deletes a group. Currently only groups with no members can be
 %% deleted.
 %%
-%% Requires developer credentials.
+%% Calling this action requires developer credentials.
 delete_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_group(Client, Input, []).
@@ -831,7 +857,7 @@ get_device(Client, Input, Options)
 
 %% @doc Gets a group.
 %%
-%% Requires developer credentials.
+%% Calling this action requires developer credentials.
 get_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_group(Client, Input, []).
@@ -919,7 +945,7 @@ list_devices(Client, Input, Options)
 
 %% @doc Lists the groups associated with a user pool.
 %%
-%% Requires developer credentials.
+%% Calling this action requires developer credentials.
 list_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_groups(Client, Input, []).
@@ -991,7 +1017,7 @@ list_users(Client, Input, Options)
 
 %% @doc Lists the users in the specified group.
 %%
-%% Requires developer credentials.
+%% Calling this action requires developer credentials.
 list_users_in_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_users_in_group(Client, Input, []).
@@ -1055,7 +1081,12 @@ set_u_i_customization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetUICustomization">>, Input, Options).
 
-%% @doc Set the user's multi-factor authentication (MFA) method preference.
+%% @doc Set the user's multi-factor authentication (MFA) method preference,
+%% including which MFA factors are enabled and if any are preferred. Only one
+%% factor can be set as preferred. The preferred MFA factor will be used to
+%% authenticate a user if multiple factors are enabled. If multiple options
+%% are enabled and no preference is set, a challenge to choose an MFA option
+%% will be returned during sign in.
 set_user_m_f_a_preference(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_user_m_f_a_preference(Client, Input, []).
@@ -1063,7 +1094,7 @@ set_user_m_f_a_preference(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetUserMFAPreference">>, Input, Options).
 
-%% @doc Set the user pool MFA configuration.
+%% @doc Set the user pool multi-factor authentication (MFA) configuration.
 set_user_pool_mfa_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_user_pool_mfa_config(Client, Input, []).
@@ -1071,9 +1102,10 @@ set_user_pool_mfa_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetUserPoolMfaConfig">>, Input, Options).
 
-%% @doc Sets the user settings like multi-factor authentication (MFA). If MFA
-%% is to be removed for a particular attribute pass the attribute with code
-%% delivery as null. If null list is passed, all MFA options are removed.
+%% @doc <i>This action is no longer supported.</i> You can use it to
+%% configure only SMS MFA. You can't use it to configure TOTP software token
+%% MFA. To configure either type of MFA, use the <a>SetUserMFAPreference</a>
+%% action instead.
 set_user_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_user_settings(Client, Input, []).
@@ -1162,7 +1194,7 @@ update_device_status(Client, Input, Options)
 
 %% @doc Updates the specified group with the specified attributes.
 %%
-%% Requires developer credentials.
+%% Calling this action requires developer credentials.
 update_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_group(Client, Input, []).
@@ -1287,12 +1319,20 @@ request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"cognito-idp">>},
     Host = get_host(<<"cognito-idp">>, Client1),
     URL = get_url(Host, Client1),
-    Headers = [{<<"Host">>, Host},
-               {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
-               {<<"X-Amz-Target">>, << <<"AWSCognitoIdentityProviderService.">>/binary, Action/binary>>}],
+    Headers1 =
+        case maps:get(token, Client1, undefined) of
+            Token when byte_size(Token) > 0 -> [{<<"X-Amz-Security-Token">>, Token}];
+            _ -> []
+        end,
+    Headers2 = [
+        {<<"Host">>, Host},
+        {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
+        {<<"X-Amz-Target">>, << <<"AWSCognitoIdentityProviderService.">>/binary, Action/binary>>}
+        | Headers1
+    ],
     Payload = jsx:encode(Input),
-    Headers1 = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
-    Response = hackney:request(post, URL, Headers1, Payload, Options),
+    Headers = aws_request:sign_request(Client1, <<"POST">>, URL, Headers2, Payload),
+    Response = hackney:request(post, URL, Headers, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->
@@ -1315,15 +1355,9 @@ handle_response({error, Reason}) ->
 get_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 get_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
-    aws_util:binary_join([EndpointPrefix,
-			  <<".">>,
-			  Region,
-			  <<".">>,
-			  Endpoint],
-			 <<"">>).
+    aws_util:binary_join([EndpointPrefix, <<".">>, Region, <<".">>, Endpoint], <<"">>).
 
 get_url(Host, Client) ->
     Proto = maps:get(proto, Client),
     Port = maps:get(port, Client),
-    aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>],
-			 <<"">>).
+    aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>], <<"">>).

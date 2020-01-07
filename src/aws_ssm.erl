@@ -1,5 +1,5 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
-%% See https://github.com/jkakar/aws-codegen for more details.
+%% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc <fullname>AWS Systems Manager</fullname>
 %%
@@ -18,8 +18,8 @@
 %%
 %% To get started, verify prerequisites and configure managed instances. For
 %% more information, see <a
-%% href="http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html">Systems
-%% Manager Prerequisites</a> in the <i>AWS Systems Manager User Guide</i>.
+%% href="http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html">Setting
+%% Up AWS Systems Manager</a> in the <i>AWS Systems Manager User Guide</i>.
 %%
 %% For information about other API actions you can perform on Amazon EC2
 %% instances, see the <a
@@ -45,6 +45,8 @@
          create_document/3,
          create_maintenance_window/2,
          create_maintenance_window/3,
+         create_ops_item/2,
+         create_ops_item/3,
          create_patch_baseline/2,
          create_patch_baseline/3,
          create_resource_data_sync/2,
@@ -125,6 +127,8 @@
          describe_maintenance_windows/3,
          describe_maintenance_windows_for_target/2,
          describe_maintenance_windows_for_target/3,
+         describe_ops_items/2,
+         describe_ops_items/3,
          describe_parameters/2,
          describe_parameters/3,
          describe_patch_baselines/2,
@@ -133,6 +137,8 @@
          describe_patch_group_state/3,
          describe_patch_groups/2,
          describe_patch_groups/3,
+         describe_patch_properties/2,
+         describe_patch_properties/3,
          describe_sessions/2,
          describe_sessions/3,
          get_automation_execution/2,
@@ -161,6 +167,10 @@
          get_maintenance_window_execution_task_invocation/3,
          get_maintenance_window_task/2,
          get_maintenance_window_task/3,
+         get_ops_item/2,
+         get_ops_item/3,
+         get_ops_summary/2,
+         get_ops_summary/3,
          get_parameter/2,
          get_parameter/3,
          get_parameter_history/2,
@@ -253,6 +263,8 @@
          update_maintenance_window_task/3,
          update_managed_instance_role/2,
          update_managed_instance_role/3,
+         update_ops_item/2,
+         update_ops_item/3,
          update_patch_baseline/2,
          update_patch_baseline/3,
          update_service_setting/2,
@@ -266,7 +278,7 @@
 
 %% @doc Adds or overwrites one or more tags for the specified resource. Tags
 %% are metadata that you can assign to your documents, managed instances,
-%% Maintenance Windows, Parameter Store parameters, and patch baselines. Tags
+%% maintenance windows, Parameter Store parameters, and patch baselines. Tags
 %% enable you to categorize your resources in different ways, for example, by
 %% purpose, owner, or environment. Each tag consists of a key and an optional
 %% value, both of which you define. For example, you could define a set of
@@ -303,7 +315,7 @@ cancel_command(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelCommand">>, Input, Options).
 
-%% @doc Stops a Maintenance Window execution that is already in progress and
+%% @doc Stops a maintenance window execution that is already in progress and
 %% cancels any tasks in the window that have not already starting running.
 %% (Tasks already in progress will continue to completion.)
 cancel_maintenance_window_execution(Client, Input)
@@ -318,7 +330,7 @@ cancel_maintenance_window_execution(Client, Input, Options)
 %% server or virtual machine that has been registered with EC2 is called a
 %% managed instance. For more information about activations, see <a
 %% href="http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-managedinstances.html">Setting
-%% Up Systems Manager in Hybrid Environments</a>.
+%% Up AWS Systems Manager for Hybrid Environments</a>.
 create_activation(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_activation(Client, Input, []).
@@ -371,13 +383,42 @@ create_document(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDocument">>, Input, Options).
 
-%% @doc Creates a new Maintenance Window.
+%% @doc Creates a new maintenance window.
+%%
+%% <note> The value you specify for <code>Duration</code> determines the
+%% specific end time for the maintenance window based on the time it begins.
+%% No maintenance window tasks are permitted to start after the resulting
+%% endtime minus the number of hours you specify for <code>Cutoff</code>. For
+%% example, if the maintenance window starts at 3 PM, the duration is three
+%% hours, and the value you specify for <code>Cutoff</code> is one hour, no
+%% maintenance window tasks can start after 5 PM.
+%%
+%% </note>
 create_maintenance_window(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_maintenance_window(Client, Input, []).
 create_maintenance_window(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateMaintenanceWindow">>, Input, Options).
+
+%% @doc Creates a new OpsItem. You must have permission in AWS Identity and
+%% Access Management (IAM) to create a new OpsItem. For more information, see
+%% <a
+%% href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html">Getting
+%% Started with OpsCenter</a> in the <i>AWS Systems Manager User Guide</i>.
+%%
+%% Operations engineers and IT professionals use OpsCenter to view,
+%% investigate, and remediate operational issues impacting the performance
+%% and health of their AWS resources. For more information, see <a
+%% href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html">AWS
+%% Systems Manager OpsCenter</a> in the <i>AWS Systems Manager User
+%% Guide</i>.
+create_ops_item(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_ops_item(Client, Input, []).
+create_ops_item(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateOpsItem">>, Input, Options).
 
 %% @doc Creates a patch baseline.
 %%
@@ -461,7 +502,7 @@ delete_inventory(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteInventory">>, Input, Options).
 
-%% @doc Deletes a Maintenance Window.
+%% @doc Deletes a maintenance window.
 delete_maintenance_window(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_maintenance_window(Client, Input, []).
@@ -477,8 +518,7 @@ delete_parameter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteParameter">>, Input, Options).
 
-%% @doc Delete a list of parameters. This API is used to delete parameters by
-%% using the Amazon EC2 console.
+%% @doc Delete a list of parameters.
 delete_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_parameters(Client, Input, []).
@@ -524,7 +564,7 @@ deregister_patch_baseline_for_patch_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterPatchBaselineForPatchGroup">>, Input, Options).
 
-%% @doc Removes a target from a Maintenance Window.
+%% @doc Removes a target from a maintenance window.
 deregister_target_from_maintenance_window(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_target_from_maintenance_window(Client, Input, []).
@@ -532,7 +572,7 @@ deregister_target_from_maintenance_window(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterTargetFromMaintenanceWindow">>, Input, Options).
 
-%% @doc Removes a task from a Maintenance Window.
+%% @doc Removes a task from a maintenance window.
 deregister_task_from_maintenance_window(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_task_from_maintenance_window(Client, Input, []).
@@ -540,10 +580,10 @@ deregister_task_from_maintenance_window(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterTaskFromMaintenanceWindow">>, Input, Options).
 
-%% @doc Details about the activation, including: the date and time the
-%% activation was created, the expiration date, the IAM role assigned to the
-%% instances in the activation, and the number of instances activated by this
-%% registration.
+%% @doc Describes details about the activation, such as the date and time the
+%% activation was created, its expiration date, the IAM role assigned to the
+%% instances in the activation, and the number of instances registered by
+%% using this activation.
 describe_activations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_activations(Client, Input, []).
@@ -600,8 +640,7 @@ describe_automation_step_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAutomationStepExecutions">>, Input, Options).
 
-%% @doc Lists all patches that could possibly be included in a patch
-%% baseline.
+%% @doc Lists all patches eligible to be included in a patch baseline.
 describe_available_patches(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_available_patches(Client, Input, []).
@@ -709,7 +748,7 @@ describe_inventory_deletions(Client, Input, Options)
     request(Client, <<"DescribeInventoryDeletions">>, Input, Options).
 
 %% @doc Retrieves the individual task executions (one per target) for a
-%% particular task run as part of a Maintenance Window execution.
+%% particular task run as part of a maintenance window execution.
 describe_maintenance_window_execution_task_invocations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_maintenance_window_execution_task_invocations(Client, Input, []).
@@ -717,7 +756,7 @@ describe_maintenance_window_execution_task_invocations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMaintenanceWindowExecutionTaskInvocations">>, Input, Options).
 
-%% @doc For a given Maintenance Window execution, lists the tasks that were
+%% @doc For a given maintenance window execution, lists the tasks that were
 %% run.
 describe_maintenance_window_execution_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -726,10 +765,10 @@ describe_maintenance_window_execution_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMaintenanceWindowExecutionTasks">>, Input, Options).
 
-%% @doc Lists the executions of a Maintenance Window. This includes
-%% information about when the Maintenance Window was scheduled to be active,
-%% and information about tasks registered and run with the Maintenance
-%% Window.
+%% @doc Lists the executions of a maintenance window. This includes
+%% information about when the maintenance window was scheduled to be active,
+%% and information about tasks registered and run with the maintenance
+%% window.
 describe_maintenance_window_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_maintenance_window_executions(Client, Input, []).
@@ -737,8 +776,8 @@ describe_maintenance_window_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMaintenanceWindowExecutions">>, Input, Options).
 
-%% @doc Retrieves information about upcoming executions of a Maintenance
-%% Window.
+%% @doc Retrieves information about upcoming executions of a maintenance
+%% window.
 describe_maintenance_window_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_maintenance_window_schedule(Client, Input, []).
@@ -746,7 +785,7 @@ describe_maintenance_window_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMaintenanceWindowSchedule">>, Input, Options).
 
-%% @doc Lists the targets registered with the Maintenance Window.
+%% @doc Lists the targets registered with the maintenance window.
 describe_maintenance_window_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_maintenance_window_targets(Client, Input, []).
@@ -754,7 +793,7 @@ describe_maintenance_window_targets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMaintenanceWindowTargets">>, Input, Options).
 
-%% @doc Lists the tasks in a Maintenance Window.
+%% @doc Lists the tasks in a maintenance window.
 describe_maintenance_window_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_maintenance_window_tasks(Client, Input, []).
@@ -762,7 +801,7 @@ describe_maintenance_window_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMaintenanceWindowTasks">>, Input, Options).
 
-%% @doc Retrieves the Maintenance Windows in an AWS account.
+%% @doc Retrieves the maintenance windows in an AWS account.
 describe_maintenance_windows(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_maintenance_windows(Client, Input, []).
@@ -770,7 +809,7 @@ describe_maintenance_windows(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMaintenanceWindows">>, Input, Options).
 
-%% @doc Retrieves information about the Maintenance Windows targets or tasks
+%% @doc Retrieves information about the maintenance window targets or tasks
 %% that an instance is associated with.
 describe_maintenance_windows_for_target(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -778,6 +817,25 @@ describe_maintenance_windows_for_target(Client, Input)
 describe_maintenance_windows_for_target(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMaintenanceWindowsForTarget">>, Input, Options).
+
+%% @doc Query a set of OpsItems. You must have permission in AWS Identity and
+%% Access Management (IAM) to query a list of OpsItems. For more information,
+%% see <a
+%% href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html">Getting
+%% Started with OpsCenter</a> in the <i>AWS Systems Manager User Guide</i>.
+%%
+%% Operations engineers and IT professionals use OpsCenter to view,
+%% investigate, and remediate operational issues impacting the performance
+%% and health of their AWS resources. For more information, see <a
+%% href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html">AWS
+%% Systems Manager OpsCenter</a> in the <i>AWS Systems Manager User
+%% Guide</i>.
+describe_ops_items(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_ops_items(Client, Input, []).
+describe_ops_items(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeOpsItems">>, Input, Options).
 
 %% @doc Get information about a parameter.
 %%
@@ -821,6 +879,44 @@ describe_patch_groups(Client, Input)
 describe_patch_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePatchGroups">>, Input, Options).
+
+%% @doc Lists the properties of available patches organized by product,
+%% product family, classification, severity, and other properties of
+%% available patches. You can use the reported properties in the filters you
+%% specify in requests for actions such as <a>CreatePatchBaseline</a>,
+%% <a>UpdatePatchBaseline</a>, <a>DescribeAvailablePatches</a>, and
+%% <a>DescribePatchBaselines</a>.
+%%
+%% The following section lists the properties that can be used in filters for
+%% each major operating system type:
+%%
+%% <dl> <dt>WINDOWS</dt> <dd> Valid properties: PRODUCT, PRODUCT_FAMILY,
+%% CLASSIFICATION, MSRC_SEVERITY
+%%
+%% </dd> <dt>AMAZON_LINUX</dt> <dd> Valid properties: PRODUCT,
+%% CLASSIFICATION, SEVERITY
+%%
+%% </dd> <dt>AMAZON_LINUX_2</dt> <dd> Valid properties: PRODUCT,
+%% CLASSIFICATION, SEVERITY
+%%
+%% </dd> <dt>UBUNTU </dt> <dd> Valid properties: PRODUCT, PRIORITY
+%%
+%% </dd> <dt>REDHAT_ENTERPRISE_LINUX</dt> <dd> Valid properties: PRODUCT,
+%% CLASSIFICATION, SEVERITY
+%%
+%% </dd> <dt>SUSE</dt> <dd> Valid properties: PRODUCT, CLASSIFICATION,
+%% SEVERITY
+%%
+%% </dd> <dt>CENTOS</dt> <dd> Valid properties: PRODUCT, CLASSIFICATION,
+%% SEVERITY
+%%
+%% </dd> </dl>
+describe_patch_properties(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_patch_properties(Client, Input, []).
+describe_patch_properties(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribePatchProperties">>, Input, Options).
 
 %% @doc Retrieves a list of all active sessions (both connected and
 %% disconnected) or terminated sessions from the past 30 days.
@@ -906,7 +1002,7 @@ get_inventory_schema(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetInventorySchema">>, Input, Options).
 
-%% @doc Retrieves a Maintenance Window.
+%% @doc Retrieves a maintenance window.
 get_maintenance_window(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_maintenance_window(Client, Input, []).
@@ -914,8 +1010,7 @@ get_maintenance_window(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMaintenanceWindow">>, Input, Options).
 
-%% @doc Retrieves details about a specific task run as part of a Maintenance
-%% Window execution.
+%% @doc Retrieves details about a specific a maintenance window execution.
 get_maintenance_window_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_maintenance_window_execution(Client, Input, []).
@@ -924,7 +1019,7 @@ get_maintenance_window_execution(Client, Input, Options)
     request(Client, <<"GetMaintenanceWindowExecution">>, Input, Options).
 
 %% @doc Retrieves the details about a specific task run as part of a
-%% Maintenance Window execution.
+%% maintenance window execution.
 get_maintenance_window_execution_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_maintenance_window_execution_task(Client, Input, []).
@@ -932,9 +1027,8 @@ get_maintenance_window_execution_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMaintenanceWindowExecutionTask">>, Input, Options).
 
-%% @doc Retrieves a task invocation. A task invocation is a specific task
-%% running on a specific target. Maintenance Windows report status for all
-%% invocations.
+%% @doc Retrieves information about a specific task running on a specific
+%% target.
 get_maintenance_window_execution_task_invocation(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_maintenance_window_execution_task_invocation(Client, Input, []).
@@ -942,13 +1036,41 @@ get_maintenance_window_execution_task_invocation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMaintenanceWindowExecutionTaskInvocation">>, Input, Options).
 
-%% @doc Lists the tasks in a Maintenance Window.
+%% @doc Lists the tasks in a maintenance window.
 get_maintenance_window_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_maintenance_window_task(Client, Input, []).
 get_maintenance_window_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMaintenanceWindowTask">>, Input, Options).
+
+%% @doc Get information about an OpsItem by using the ID. You must have
+%% permission in AWS Identity and Access Management (IAM) to view information
+%% about an OpsItem. For more information, see <a
+%% href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html">Getting
+%% Started with OpsCenter</a> in the <i>AWS Systems Manager User Guide</i>.
+%%
+%% Operations engineers and IT professionals use OpsCenter to view,
+%% investigate, and remediate operational issues impacting the performance
+%% and health of their AWS resources. For more information, see <a
+%% href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html">AWS
+%% Systems Manager OpsCenter</a> in the <i>AWS Systems Manager User
+%% Guide</i>.
+get_ops_item(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_ops_item(Client, Input, []).
+get_ops_item(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetOpsItem">>, Input, Options).
+
+%% @doc View a summary of OpsItems based on specified filters and
+%% aggregators.
+get_ops_summary(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_ops_summary(Client, Input, []).
+get_ops_summary(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetOpsSummary">>, Input, Options).
 
 %% @doc Get information about a parameter by using the parameter name. Don't
 %% confuse this API action with the <a>GetParameters</a> API action.
@@ -1295,7 +1417,13 @@ put_parameter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutParameter">>, Input, Options).
 
-%% @doc Defines the default patch baseline.
+%% @doc Defines the default patch baseline for the relevant operating system.
+%%
+%% To reset the AWS predefined patch baseline as the default, specify the
+%% full patch baseline ARN as the baseline ID value. For example, for CentOS,
+%% specify
+%% <code>arn:aws:ssm:us-east-2:733109147000:patchbaseline/pb-0574b43a65ea646ed</code>
+%% instead of <code>pb-0574b43a65ea646ed</code>.
 register_default_patch_baseline(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_default_patch_baseline(Client, Input, []).
@@ -1311,7 +1439,7 @@ register_patch_baseline_for_patch_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterPatchBaselineForPatchGroup">>, Input, Options).
 
-%% @doc Registers a target with a Maintenance Window.
+%% @doc Registers a target with a maintenance window.
 register_target_with_maintenance_window(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_target_with_maintenance_window(Client, Input, []).
@@ -1319,7 +1447,7 @@ register_target_with_maintenance_window(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterTargetWithMaintenanceWindow">>, Input, Options).
 
-%% @doc Adds a new task to a Maintenance Window.
+%% @doc Adds a new task to a maintenance window.
 register_task_with_maintenance_window(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_task_with_maintenance_window(Client, Input, []).
@@ -1327,7 +1455,7 @@ register_task_with_maintenance_window(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterTaskWithMaintenanceWindow">>, Input, Options).
 
-%% @doc Removes all tags from the specified resource.
+%% @doc Removes tag keys from the specified resource.
 remove_tags_from_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags_from_resource(Client, Input, []).
@@ -1421,6 +1549,9 @@ start_automation_execution(Client, Input, Options)
 %% Install the Session Manager Plugin for the AWS CLI</a> in the <i>AWS
 %% Systems Manager User Guide</i>.
 %%
+%% AWS Tools for PowerShell usage: Start-SSMSession is not currently
+%% supported by AWS Tools for PowerShell on Windows local machines.
+%%
 %% </note>
 start_session(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1450,6 +1581,14 @@ terminate_session(Client, Input, Options)
 %% @doc Updates an association. You can update the association name and
 %% version, the document version, schedule, parameters, and Amazon S3 output.
 %%
+%% In order to call this API action, your IAM user account, group, or role
+%% must be configured with permission to call the <a>DescribeAssociation</a>
+%% API action. If you don't have permission to call DescribeAssociation, then
+%% you receive the following error: <code>An error occurred
+%% (AccessDeniedException) when calling the UpdateAssociation operation:
+%% User: &lt;user_arn&gt; is not authorized to perform:
+%% ssm:DescribeAssociation on resource: &lt;resource_arn&gt;</code>
+%%
 %% <important> When you update an association, the association immediately
 %% runs against the specified targets.
 %%
@@ -1470,7 +1609,7 @@ update_association_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAssociationStatus">>, Input, Options).
 
-%% @doc The document you want to update.
+%% @doc Updates one or more values for an SSM document.
 update_document(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_document(Client, Input, []).
@@ -1486,8 +1625,18 @@ update_document_default_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDocumentDefaultVersion">>, Input, Options).
 
-%% @doc Updates an existing Maintenance Window. Only specified parameters are
+%% @doc Updates an existing maintenance window. Only specified parameters are
 %% modified.
+%%
+%% <note> The value you specify for <code>Duration</code> determines the
+%% specific end time for the maintenance window based on the time it begins.
+%% No maintenance window tasks are permitted to start after the resulting
+%% endtime minus the number of hours you specify for <code>Cutoff</code>. For
+%% example, if the maintenance window starts at 3 PM, the duration is three
+%% hours, and the value you specify for <code>Cutoff</code> is one hour, no
+%% maintenance window tasks can start after 5 PM.
+%%
+%% </note>
 update_maintenance_window(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_maintenance_window(Client, Input, []).
@@ -1495,23 +1644,27 @@ update_maintenance_window(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateMaintenanceWindow">>, Input, Options).
 
-%% @doc Modifies the target of an existing Maintenance Window. You can't
-%% change the target type, but you can change the following:
+%% @doc Modifies the target of an existing maintenance window. You can change
+%% the following:
 %%
-%% The target from being an ID target to a Tag target, or a Tag target to an
-%% ID target.
+%% <ul> <li> Name
 %%
-%% IDs for an ID target.
+%% </li> <li> Description
 %%
-%% Tags for a Tag target.
+%% </li> <li> Owner
 %%
-%% Owner.
+%% </li> <li> IDs for an ID target
 %%
-%% Name.
+%% </li> <li> Tags for a Tag target
 %%
-%% Description.
+%% </li> <li> From any supported tag type to another. The three supported tag
+%% types are ID target, Tag target, and resource group. For more information,
+%% see <a>Target</a>.
 %%
-%% If a parameter is null, then the corresponding field is not modified.
+%% </li> </ul> <note> If a parameter is null, then the corresponding field is
+%% not modified.
+%%
+%% </note>
 update_maintenance_window_target(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_maintenance_window_target(Client, Input, []).
@@ -1519,7 +1672,7 @@ update_maintenance_window_target(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateMaintenanceWindowTarget">>, Input, Options).
 
-%% @doc Modifies a task assigned to a Maintenance Window. You can't change
+%% @doc Modifies a task assigned to a maintenance window. You can't change
 %% the task type, but you can change the following values:
 %%
 %% <ul> <li> TaskARN. For example, you can change a RUN_COMMAND task from
@@ -1547,13 +1700,32 @@ update_maintenance_window_task(Client, Input, Options)
     request(Client, <<"UpdateMaintenanceWindowTask">>, Input, Options).
 
 %% @doc Assigns or changes an Amazon Identity and Access Management (IAM)
-%% role to the managed instance.
+%% role for the managed instance.
 update_managed_instance_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_managed_instance_role(Client, Input, []).
 update_managed_instance_role(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateManagedInstanceRole">>, Input, Options).
+
+%% @doc Edit or change an OpsItem. You must have permission in AWS Identity
+%% and Access Management (IAM) to update an OpsItem. For more information,
+%% see <a
+%% href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html">Getting
+%% Started with OpsCenter</a> in the <i>AWS Systems Manager User Guide</i>.
+%%
+%% Operations engineers and IT professionals use OpsCenter to view,
+%% investigate, and remediate operational issues impacting the performance
+%% and health of their AWS resources. For more information, see <a
+%% href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html">AWS
+%% Systems Manager OpsCenter</a> in the <i>AWS Systems Manager User
+%% Guide</i>.
+update_ops_item(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_ops_item(Client, Input, []).
+update_ops_item(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateOpsItem">>, Input, Options).
 
 %% @doc Modifies an existing patch baseline. Fields not specified in the
 %% request are left unchanged.
@@ -1608,12 +1780,20 @@ request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"ssm">>},
     Host = get_host(<<"ssm">>, Client1),
     URL = get_url(Host, Client1),
-    Headers = [{<<"Host">>, Host},
-               {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
-               {<<"X-Amz-Target">>, << <<"AmazonSSM.">>/binary, Action/binary>>}],
+    Headers1 =
+        case maps:get(token, Client1, undefined) of
+            Token when byte_size(Token) > 0 -> [{<<"X-Amz-Security-Token">>, Token}];
+            _ -> []
+        end,
+    Headers2 = [
+        {<<"Host">>, Host},
+        {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
+        {<<"X-Amz-Target">>, << <<"AmazonSSM.">>/binary, Action/binary>>}
+        | Headers1
+    ],
     Payload = jsx:encode(Input),
-    Headers1 = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
-    Response = hackney:request(post, URL, Headers1, Payload, Options),
+    Headers = aws_request:sign_request(Client1, <<"POST">>, URL, Headers2, Payload),
+    Response = hackney:request(post, URL, Headers, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->
@@ -1636,15 +1816,9 @@ handle_response({error, Reason}) ->
 get_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 get_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
-    aws_util:binary_join([EndpointPrefix,
-			  <<".">>,
-			  Region,
-			  <<".">>,
-			  Endpoint],
-			 <<"">>).
+    aws_util:binary_join([EndpointPrefix, <<".">>, Region, <<".">>, Endpoint], <<"">>).
 
 get_url(Host, Client) ->
     Proto = maps:get(proto, Client),
     Port = maps:get(port, Client),
-    aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>],
-			 <<"">>).
+    aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>], <<"">>).

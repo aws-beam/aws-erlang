@@ -1,5 +1,5 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
-%% See https://github.com/jkakar/aws-codegen for more details.
+%% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon EMR is a web service that makes it easy to process large
 %% amounts of data efficiently. Amazon EMR uses Hadoop processing combined
@@ -30,6 +30,8 @@
          describe_security_configuration/3,
          describe_step/2,
          describe_step/3,
+         get_block_public_access_configuration/2,
+         get_block_public_access_configuration/3,
          list_bootstrap_actions/2,
          list_bootstrap_actions/3,
          list_clusters/2,
@@ -50,6 +52,8 @@
          modify_instance_groups/3,
          put_auto_scaling_policy/2,
          put_auto_scaling_policy/3,
+         put_block_public_access_configuration/2,
+         put_block_public_access_configuration/3,
          remove_auto_scaling_policy/2,
          remove_auto_scaling_policy/3,
          remove_tags/2,
@@ -219,6 +223,18 @@ describe_step(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStep">>, Input, Options).
 
+%% @doc Returns the Amazon EMR block public access configuration for your AWS
+%% account in the current Region. For more information see <a
+%% href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/configure-block-public-access.html">Configure
+%% Block Public Access for Amazon EMR</a> in the <i>Amazon EMR Management
+%% Guide</i>.
+get_block_public_access_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_block_public_access_configuration(Client, Input, []).
+get_block_public_access_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetBlockPublicAccessConfiguration">>, Input, Options).
+
 %% @doc Provides information about the bootstrap actions associated with a
 %% cluster.
 list_bootstrap_actions(Client, Input)
@@ -331,6 +347,18 @@ put_auto_scaling_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutAutoScalingPolicy">>, Input, Options).
 
+%% @doc Creates or updates an Amazon EMR block public access configuration
+%% for your AWS account in the current Region. For more information see <a
+%% href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/configure-block-public-access.html">Configure
+%% Block Public Access for Amazon EMR</a> in the <i>Amazon EMR Management
+%% Guide</i>.
+put_block_public_access_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_block_public_access_configuration(Client, Input, []).
+put_block_public_access_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutBlockPublicAccessConfiguration">>, Input, Options).
+
 %% @doc Removes an automatic scaling policy from a specified instance group
 %% within an EMR cluster.
 remove_auto_scaling_policy(Client, Input)
@@ -425,10 +453,12 @@ set_termination_protection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetTerminationProtection">>, Input, Options).
 
-%% @doc Sets whether all AWS Identity and Access Management (IAM) users under
-%% your account can access the specified clusters (job flows). This action
-%% works on running clusters. You can also set the visibility of a cluster
-%% when you launch it using the <code>VisibleToAllUsers</code> parameter of
+%% @doc <i>This member will be deprecated.</i>
+%%
+%% Sets whether all AWS Identity and Access Management (IAM) users under your
+%% account can access the specified clusters (job flows). This action works
+%% on running clusters. You can also set the visibility of a cluster when you
+%% launch it using the <code>VisibleToAllUsers</code> parameter of
 %% <a>RunJobFlow</a>. The SetVisibleToAllUsers action can be called only by
 %% an IAM user who created the cluster or the AWS account that owns the
 %% cluster.
@@ -471,12 +501,20 @@ request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"elasticmapreduce">>},
     Host = get_host(<<"elasticmapreduce">>, Client1),
     URL = get_url(Host, Client1),
-    Headers = [{<<"Host">>, Host},
-               {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
-               {<<"X-Amz-Target">>, << <<"ElasticMapReduce.">>/binary, Action/binary>>}],
+    Headers1 =
+        case maps:get(token, Client1, undefined) of
+            Token when byte_size(Token) > 0 -> [{<<"X-Amz-Security-Token">>, Token}];
+            _ -> []
+        end,
+    Headers2 = [
+        {<<"Host">>, Host},
+        {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
+        {<<"X-Amz-Target">>, << <<"ElasticMapReduce.">>/binary, Action/binary>>}
+        | Headers1
+    ],
     Payload = jsx:encode(Input),
-    Headers1 = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
-    Response = hackney:request(post, URL, Headers1, Payload, Options),
+    Headers = aws_request:sign_request(Client1, <<"POST">>, URL, Headers2, Payload),
+    Response = hackney:request(post, URL, Headers, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->
@@ -499,15 +537,9 @@ handle_response({error, Reason}) ->
 get_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 get_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
-    aws_util:binary_join([EndpointPrefix,
-			  <<".">>,
-			  Region,
-			  <<".">>,
-			  Endpoint],
-			 <<"">>).
+    aws_util:binary_join([EndpointPrefix, <<".">>, Region, <<".">>, Endpoint], <<"">>).
 
 get_url(Host, Client) ->
     Proto = maps:get(proto, Client),
     Port = maps:get(port, Client),
-    aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>],
-			 <<"">>).
+    aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>], <<"">>).

@@ -1,5 +1,5 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
-%% See https://github.com/jkakar/aws-codegen for more details.
+%% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc <fullname>AWS Config</fullname>
 %%
@@ -45,10 +45,14 @@
          delete_delivery_channel/3,
          delete_evaluation_results/2,
          delete_evaluation_results/3,
+         delete_organization_config_rule/2,
+         delete_organization_config_rule/3,
          delete_pending_aggregation_request/2,
          delete_pending_aggregation_request/3,
          delete_remediation_configuration/2,
          delete_remediation_configuration/3,
+         delete_remediation_exceptions/2,
+         delete_remediation_exceptions/3,
          delete_retention_configuration/2,
          delete_retention_configuration/3,
          deliver_config_snapshot/2,
@@ -77,10 +81,16 @@
          describe_delivery_channel_status/3,
          describe_delivery_channels/2,
          describe_delivery_channels/3,
+         describe_organization_config_rule_statuses/2,
+         describe_organization_config_rule_statuses/3,
+         describe_organization_config_rules/2,
+         describe_organization_config_rules/3,
          describe_pending_aggregation_requests/2,
          describe_pending_aggregation_requests/3,
          describe_remediation_configurations/2,
          describe_remediation_configurations/3,
+         describe_remediation_exceptions/2,
+         describe_remediation_exceptions/3,
          describe_remediation_execution_status/2,
          describe_remediation_execution_status/3,
          describe_retention_configurations/2,
@@ -103,6 +113,8 @@
          get_compliance_summary_by_resource_type/3,
          get_discovered_resource_counts/2,
          get_discovered_resource_counts/3,
+         get_organization_config_rule_detailed_status/2,
+         get_organization_config_rule_detailed_status/3,
          get_resource_config_history/2,
          get_resource_config_history/3,
          list_aggregate_discovered_resources/2,
@@ -123,8 +135,12 @@
          put_delivery_channel/3,
          put_evaluations/2,
          put_evaluations/3,
+         put_organization_config_rule/2,
+         put_organization_config_rule/3,
          put_remediation_configurations/2,
          put_remediation_configurations/3,
+         put_remediation_exceptions/2,
+         put_remediation_exceptions/3,
          put_retention_configuration/2,
          put_retention_configuration/3,
          select_resource_config/2,
@@ -262,6 +278,19 @@ delete_evaluation_results(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEvaluationResults">>, Input, Options).
 
+%% @doc Deletes the specified organization config rule and all of its
+%% evaluation results from all member accounts in that organization. Only a
+%% master account can delete an organization config rule.
+%%
+%% AWS Config sets the state of a rule to DELETE_IN_PROGRESS until the
+%% deletion is complete. You cannot update a rule while it is in this state.
+delete_organization_config_rule(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_organization_config_rule(Client, Input, []).
+delete_organization_config_rule(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteOrganizationConfigRule">>, Input, Options).
+
 %% @doc Deletes pending authorization requests for a specified aggregator
 %% account in a specified region.
 delete_pending_aggregation_request(Client, Input)
@@ -278,6 +307,15 @@ delete_remediation_configuration(Client, Input)
 delete_remediation_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRemediationConfiguration">>, Input, Options).
+
+%% @doc Deletes one or more remediation exceptions mentioned in the resource
+%% keys.
+delete_remediation_exceptions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_remediation_exceptions(Client, Input, []).
+delete_remediation_exceptions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteRemediationExceptions">>, Input, Options).
 
 %% @doc Deletes the retention configuration.
 delete_retention_configuration(Client, Input)
@@ -311,7 +349,7 @@ deliver_config_snapshot(Client, Input, Options)
 %% resources for compliant and noncompliant rules.
 %%
 %% <note> The results can return an empty result page, but if you have a
-%% nextToken, the results are displayed on the next page.
+%% <code>nextToken</code>, the results are displayed on the next page.
 %%
 %% </note>
 describe_aggregate_compliance_by_config_rules(Client, Input)
@@ -501,6 +539,45 @@ describe_delivery_channels(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDeliveryChannels">>, Input, Options).
 
+%% @doc Provides organization config rule deployment status for an
+%% organization.
+%%
+%% <note> The status is not considered successful until organization config
+%% rule is successfully deployed in all the member accounts with an exception
+%% of excluded accounts.
+%%
+%% When you specify the limit and the next token, you receive a paginated
+%% response. Limit and next token are not applicable if you specify
+%% organization config rule names. It is only applicable, when you request
+%% all the organization config rules.
+%%
+%% Only a master account can call this API.
+%%
+%% </note>
+describe_organization_config_rule_statuses(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_organization_config_rule_statuses(Client, Input, []).
+describe_organization_config_rule_statuses(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeOrganizationConfigRuleStatuses">>, Input, Options).
+
+%% @doc Returns a list of organization config rules.
+%%
+%% <note> When you specify the limit and the next token, you receive a
+%% paginated response. Limit and next token are not applicable if you specify
+%% organization config rule names. It is only applicable, when you request
+%% all the organization config rules.
+%%
+%% Only a master account can call this API.
+%%
+%% </note>
+describe_organization_config_rules(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_organization_config_rules(Client, Input, []).
+describe_organization_config_rules(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeOrganizationConfigRules">>, Input, Options).
+
 %% @doc Returns a list of all pending aggregation requests.
 describe_pending_aggregation_requests(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -516,6 +593,26 @@ describe_remediation_configurations(Client, Input)
 describe_remediation_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRemediationConfigurations">>, Input, Options).
+
+%% @doc Returns the details of one or more remediation exceptions. A detailed
+%% view of a remediation exception for a set of resources that includes an
+%% explanation of an exception and the time when the exception will be
+%% deleted. When you specify the limit and the next token, you receive a
+%% paginated response.
+%%
+%% <note> When you specify the limit and the next token, you receive a
+%% paginated response.
+%%
+%% Limit and next token are not applicable if you request resources in batch.
+%% It is only applicable, when you request all resources.
+%%
+%% </note>
+describe_remediation_exceptions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_remediation_exceptions(Client, Input, []).
+describe_remediation_exceptions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeRemediationExceptions">>, Input, Options).
 
 %% @doc Provides a detailed view of a Remediation Execution for a set of
 %% resources including state, timestamps for when steps for the remediation
@@ -550,7 +647,7 @@ describe_retention_configurations(Client, Input, Options)
 %% whether each resource complies with the rule.
 %%
 %% <note> The results can return an empty result page. But if you have a
-%% nextToken, the results are displayed on the next page.
+%% <code>nextToken</code>, the results are displayed on the next page.
 %%
 %% </note>
 get_aggregate_compliance_details_by_config_rule(Client, Input)
@@ -687,6 +784,19 @@ get_discovered_resource_counts(Client, Input)
 get_discovered_resource_counts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDiscoveredResourceCounts">>, Input, Options).
+
+%% @doc Returns detailed status for each member account within an
+%% organization for a given organization config rule.
+%%
+%% <note> Only a master account can call this API.
+%%
+%% </note>
+get_organization_config_rule_detailed_status(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_organization_config_rule_detailed_status(Client, Input, []).
+get_organization_config_rule_detailed_status(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetOrganizationConfigRuleDetailedStatus">>, Input, Options).
 
 %% @doc Returns a list of configuration items for the specified resource. The
 %% list contains details about each state of the resource during the
@@ -899,6 +1009,41 @@ put_evaluations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutEvaluations">>, Input, Options).
 
+%% @doc Adds or updates organization config rule for your entire organization
+%% evaluating whether your AWS resources comply with your desired
+%% configurations. Only a master account can create or update an organization
+%% config rule.
+%%
+%% This API enables organization service access through the
+%% <code>EnableAWSServiceAccess</code> action and creates a service linked
+%% role <code>AWSServiceRoleForConfigMultiAccountSetup</code> in the master
+%% account of your organization. The service linked role is created only when
+%% the role does not exist in the master account. AWS Config verifies the
+%% existence of role with <code>GetRole</code> action.
+%%
+%% You can use this action to create both custom AWS Config rules and AWS
+%% managed Config rules. If you are adding a new custom AWS Config rule, you
+%% must first create AWS Lambda function in the master account that the rule
+%% invokes to evaluate your resources. When you use the
+%% <code>PutOrganizationConfigRule</code> action to add the rule to AWS
+%% Config, you must specify the Amazon Resource Name (ARN) that AWS Lambda
+%% assigns to the function. If you are adding an AWS managed Config rule,
+%% specify the rule's identifier for the <code>RuleIdentifier</code> key.
+%%
+%% The maximum number of organization config rules that AWS Config supports
+%% is 150.
+%%
+%% <note> Specify either <code>OrganizationCustomRuleMetadata</code> or
+%% <code>OrganizationManagedRuleMetadata</code>.
+%%
+%% </note>
+put_organization_config_rule(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_organization_config_rule(Client, Input, []).
+put_organization_config_rule(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutOrganizationConfigRule">>, Input, Options).
+
 %% @doc Adds or updates the remediation configuration with a specific AWS
 %% Config rule with the selected target or action. The API creates the
 %% <code>RemediationConfiguration</code> object for the AWS Config rule. The
@@ -911,6 +1056,17 @@ put_remediation_configurations(Client, Input)
 put_remediation_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRemediationConfigurations">>, Input, Options).
+
+%% @doc A remediation exception is when a specific resource is no longer
+%% considered for auto-remediation. This API adds a new exception or updates
+%% an exisiting exception for a specific resource with a specific AWS Config
+%% rule.
+put_remediation_exceptions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_remediation_exceptions(Client, Input, []).
+put_remediation_exceptions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutRemediationExceptions">>, Input, Options).
 
 %% @doc Creates and updates the retention configuration with details about
 %% retention period (number of days) that AWS Config stores your historical
@@ -1059,12 +1215,20 @@ request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"config">>},
     Host = get_host(<<"config">>, Client1),
     URL = get_url(Host, Client1),
-    Headers = [{<<"Host">>, Host},
-               {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
-               {<<"X-Amz-Target">>, << <<"StarlingDoveService.">>/binary, Action/binary>>}],
+    Headers1 =
+        case maps:get(token, Client1, undefined) of
+            Token when byte_size(Token) > 0 -> [{<<"X-Amz-Security-Token">>, Token}];
+            _ -> []
+        end,
+    Headers2 = [
+        {<<"Host">>, Host},
+        {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
+        {<<"X-Amz-Target">>, << <<"StarlingDoveService.">>/binary, Action/binary>>}
+        | Headers1
+    ],
     Payload = jsx:encode(Input),
-    Headers1 = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
-    Response = hackney:request(post, URL, Headers1, Payload, Options),
+    Headers = aws_request:sign_request(Client1, <<"POST">>, URL, Headers2, Payload),
+    Response = hackney:request(post, URL, Headers, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->
@@ -1087,15 +1251,9 @@ handle_response({error, Reason}) ->
 get_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 get_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
-    aws_util:binary_join([EndpointPrefix,
-			  <<".">>,
-			  Region,
-			  <<".">>,
-			  Endpoint],
-			 <<"">>).
+    aws_util:binary_join([EndpointPrefix, <<".">>, Region, <<".">>, Endpoint], <<"">>).
 
 get_url(Host, Client) ->
     Proto = maps:get(proto, Client),
     Port = maps:get(port, Client),
-    aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>],
-			 <<"">>).
+    aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>], <<"">>).

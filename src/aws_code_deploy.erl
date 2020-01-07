@@ -1,5 +1,5 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
-%% See https://github.com/jkakar/aws-codegen for more details.
+%% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc <fullname>AWS CodeDeploy</fullname>
 %%
@@ -160,6 +160,8 @@
          list_git_hub_account_token_names/3,
          list_on_premises_instances/2,
          list_on_premises_instances/3,
+         list_tags_for_resource/2,
+         list_tags_for_resource/3,
          put_lifecycle_event_hook_execution_status/2,
          put_lifecycle_event_hook_execution_status/3,
          register_application_revision/2,
@@ -172,6 +174,10 @@
          skip_wait_time_for_instance_termination/3,
          stop_deployment/2,
          stop_deployment/3,
+         tag_resource/2,
+         tag_resource/3,
+         untag_resource/2,
+         untag_resource/3,
          update_application/2,
          update_application/3,
          update_deployment_group/2,
@@ -191,7 +197,8 @@ add_tags_to_on_premises_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddTagsToOnPremisesInstances">>, Input, Options).
 
-%% @doc Gets information about one or more application revisions.
+%% @doc Gets information about one or more application revisions. The maximum
+%% number of application revisions that can be returned is 25.
 batch_get_application_revisions(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_application_revisions(Client, Input, []).
@@ -199,7 +206,8 @@ batch_get_application_revisions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetApplicationRevisions">>, Input, Options).
 
-%% @doc Gets information about one or more applications.
+%% @doc Gets information about one or more applications. The maximum number
+%% of applications that can be returned is 25.
 batch_get_applications(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_applications(Client, Input, []).
@@ -218,10 +226,11 @@ batch_get_deployment_groups(Client, Input, Options)
 %% @doc <note> This method works, but is deprecated. Use
 %% <code>BatchGetDeploymentTargets</code> instead.
 %%
-%% </note> Returns an array of instances associated with a deployment. This
-%% method works with EC2/On-premises and AWS Lambda compute platforms. The
-%% newer <code>BatchGetDeploymentTargets</code> works with all compute
-%% platforms.
+%% </note> Returns an array of one or more instances associated with a
+%% deployment. This method works with EC2/On-premises and AWS Lambda compute
+%% platforms. The newer <code>BatchGetDeploymentTargets</code> works with all
+%% compute platforms. The maximum number of instances that can be returned is
+%% 25.
 batch_get_deployment_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_deployment_instances(Client, Input, []).
@@ -229,9 +238,10 @@ batch_get_deployment_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetDeploymentInstances">>, Input, Options).
 
-%% @doc Returns an array of targets associated with a deployment. This method
-%% works with all compute types and should be used instead of the deprecated
-%% <code>BatchGetDeploymentInstances</code>.
+%% @doc Returns an array of one or more targets associated with a deployment.
+%% This method works with all compute types and should be used instead of the
+%% deprecated <code>BatchGetDeploymentInstances</code>. The maximum number of
+%% targets that can be returned is 25.
 %%
 %% The type of targets returned depends on the deployment's compute platform:
 %%
@@ -250,7 +260,8 @@ batch_get_deployment_targets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetDeploymentTargets">>, Input, Options).
 
-%% @doc Gets information about one or more deployments.
+%% @doc Gets information about one or more deployments. The maximum number of
+%% deployments that can be returned is 25.
 batch_get_deployments(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_deployments(Client, Input, []).
@@ -258,7 +269,8 @@ batch_get_deployments(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetDeployments">>, Input, Options).
 
-%% @doc Gets information about one or more on-premises instances.
+%% @doc Gets information about one or more on-premises instances. The maximum
+%% number of on-premises instances that can be returned is 25.
 batch_get_on_premises_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_on_premises_instances(Client, Input, []).
@@ -514,6 +526,15 @@ list_on_premises_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListOnPremisesInstances">>, Input, Options).
 
+%% @doc Returns a list of tags for the resource identified by a specified
+%% ARN. Tags are used to organize and categorize your CodeDeploy resources.
+list_tags_for_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_tags_for_resource(Client, Input, []).
+list_tags_for_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTagsForResource">>, Input, Options).
+
 %% @doc Sets the result of a Lambda validation function. The function
 %% validates one or both lifecycle events (<code>BeforeAllowTraffic</code>
 %% and <code>AfterAllowTraffic</code>) and returns <code>Succeeded</code> or
@@ -573,6 +594,26 @@ stop_deployment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopDeployment">>, Input, Options).
 
+%% @doc Associates the list of tags in the input <code>Tags</code> parameter
+%% with the resource identified by the <code>ResourceArn</code> input
+%% parameter.
+tag_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    tag_resource(Client, Input, []).
+tag_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"TagResource">>, Input, Options).
+
+%% @doc Disassociates a resource from a list of tags. The resource is
+%% identified by the <code>ResourceArn</code> input parameter. The tags are
+%% identfied by the list of keys in the <code>TagKeys</code> input parameter.
+untag_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    untag_resource(Client, Input, []).
+untag_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UntagResource">>, Input, Options).
+
 %% @doc Changes the name of an application.
 update_application(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -603,12 +644,20 @@ request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"codedeploy">>},
     Host = get_host(<<"codedeploy">>, Client1),
     URL = get_url(Host, Client1),
-    Headers = [{<<"Host">>, Host},
-               {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
-               {<<"X-Amz-Target">>, << <<"CodeDeploy_20141006.">>/binary, Action/binary>>}],
+    Headers1 =
+        case maps:get(token, Client1, undefined) of
+            Token when byte_size(Token) > 0 -> [{<<"X-Amz-Security-Token">>, Token}];
+            _ -> []
+        end,
+    Headers2 = [
+        {<<"Host">>, Host},
+        {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
+        {<<"X-Amz-Target">>, << <<"CodeDeploy_20141006.">>/binary, Action/binary>>}
+        | Headers1
+    ],
     Payload = jsx:encode(Input),
-    Headers1 = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
-    Response = hackney:request(post, URL, Headers1, Payload, Options),
+    Headers = aws_request:sign_request(Client1, <<"POST">>, URL, Headers2, Payload),
+    Response = hackney:request(post, URL, Headers, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->
@@ -631,15 +680,9 @@ handle_response({error, Reason}) ->
 get_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 get_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
-    aws_util:binary_join([EndpointPrefix,
-			  <<".">>,
-			  Region,
-			  <<".">>,
-			  Endpoint],
-			 <<"">>).
+    aws_util:binary_join([EndpointPrefix, <<".">>, Region, <<".">>, Endpoint], <<"">>).
 
 get_url(Host, Client) ->
     Proto = maps:get(proto, Client),
     Port = maps:get(port, Client),
-    aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>],
-			 <<"">>).
+    aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>], <<"">>).

@@ -1,5 +1,5 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
-%% See https://github.com/jkakar/aws-codegen for more details.
+%% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc <fullname>AWS Storage Gateway Service</fullname>
 %%
@@ -37,7 +37,7 @@
 %% </li> <li> <a
 %% href="http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region">AWS
 %% Storage Gateway Regions and Endpoints:</a> Provides a list of each AWS
-%% region and endpoints available for use with AWS Storage Gateway.
+%% Region and the endpoints available for use with AWS Storage Gateway.
 %%
 %% </li> </ul> <note> AWS Storage Gateway resource IDs are in uppercase. When
 %% you use these resource IDs with the Amazon EC2 API, EC2 expects resource
@@ -82,6 +82,8 @@
          add_upload_buffer/3,
          add_working_storage/2,
          add_working_storage/3,
+         assign_tape_pool/2,
+         assign_tape_pool/3,
          attach_volume/2,
          attach_volume/3,
          cancel_archival/2,
@@ -210,6 +212,8 @@
          update_nfs_file_share/3,
          update_s_m_b_file_share/2,
          update_s_m_b_file_share/3,
+         update_s_m_b_security_strategy/2,
+         update_s_m_b_security_strategy/3,
          update_snapshot_schedule/2,
          update_snapshot_schedule/3,
          update_vtl_device_type/2,
@@ -222,11 +226,12 @@
 %%====================================================================
 
 %% @doc Activates the gateway you previously deployed on your host. In the
-%% activation process, you specify information such as the region you want to
-%% use for storing snapshots or tapes, the time zone for scheduled snapshots
-%% the gateway snapshot schedule window, an activation key, and a name for
-%% your gateway. The activation process also associates your gateway with
-%% your account; for more information, see <a>UpdateGatewayInformation</a>.
+%% activation process, you specify information such as the AWS Region that
+%% you want to use for storing snapshots or tapes, the time zone for
+%% scheduled snapshots the gateway snapshot schedule window, an activation
+%% key, and a name for your gateway. The activation process also associates
+%% your gateway with your account; for more information, see
+%% <a>UpdateGatewayInformation</a>.
 %%
 %% <note> You must turn on the gateway VM before you can activate your
 %% gateway.
@@ -312,6 +317,20 @@ add_working_storage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddWorkingStorage">>, Input, Options).
 
+%% @doc Assigns a tape to a tape pool for archiving. The tape assigned to a
+%% pool is archived in the S3 storage class that is associated with the pool.
+%% When you use your backup application to eject the tape, the tape is
+%% archived directly into the S3 storage class (Glacier or Deep Archive) that
+%% corresponds to the pool.
+%%
+%% Valid values: "GLACIER", "DEEP_ARCHIVE"
+assign_tape_pool(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    assign_tape_pool(Client, Input, []).
+assign_tape_pool(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssignTapePool">>, Input, Options).
+
 %% @doc Connects a volume to an iSCSI connection and then attaches the volume
 %% to the specified gateway. Detaching and attaching a volume enables you to
 %% recover your data from one gateway to a different gateway without creating
@@ -378,10 +397,10 @@ create_cached_iscsi_volume(Client, Input, Options)
 %%
 %% <important> File gateway requires AWS Security Token Service (AWS STS) to
 %% be activated to enable you create a file share. Make sure AWS STS is
-%% activated in the region you are creating your file gateway in. If AWS STS
-%% is not activated in the region, activate it. For information about how to
-%% activate AWS STS, see Activating and Deactivating AWS STS in an AWS Region
-%% in the AWS Identity and Access Management User Guide.
+%% activated in the AWS Region you are creating your file gateway in. If AWS
+%% STS is not activated in the AWS Region, activate it. For information about
+%% how to activate AWS STS, see Activating and Deactivating AWS STS in an AWS
+%% Region in the AWS Identity and Access Management User Guide.
 %%
 %% File gateway does not support creating hard or symbolic links on a file
 %% share.
@@ -912,8 +931,8 @@ list_file_shares(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFileShares">>, Input, Options).
 
-%% @doc Lists gateways owned by an AWS account in a region specified in the
-%% request. The returned list is ordered by gateway Amazon Resource Name
+%% @doc Lists gateways owned by an AWS account in an AWS Region specified in
+%% the request. The returned list is ordered by gateway Amazon Resource Name
 %% (ARN).
 %%
 %% By default, the operation returns a maximum of 100 gateways. This
@@ -1025,13 +1044,13 @@ list_volumes(Client, Input, Options)
     request(Client, <<"ListVolumes">>, Input, Options).
 
 %% @doc Sends you notification through CloudWatch Events when all files
-%% written to your NFS file share have been uploaded to Amazon S3.
+%% written to your file share have been uploaded to Amazon S3.
 %%
 %% AWS Storage Gateway can send a notification through Amazon CloudWatch
 %% Events when all files written to your file share up to that point in time
 %% have been uploaded to Amazon S3. These files include files written to the
-%% NFS file share up to the time that you make a request for notification.
-%% When the upload is done, Storage Gateway sends you notification through an
+%% file share up to the time that you make a request for notification. When
+%% the upload is done, Storage Gateway sends you notification through an
 %% Amazon CloudWatch Event. You can configure CloudWatch Events to send the
 %% notification through event targets such as Amazon SNS or AWS Lambda
 %% function. This operation is only supported for file gateways.
@@ -1352,6 +1371,21 @@ update_s_m_b_file_share(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSMBFileShare">>, Input, Options).
 
+%% @doc Updates the SMB security strategy on a file gateway. This action is
+%% only supported in file gateways.
+%%
+%% <note> This API is called Security level in the User Guide.
+%%
+%% A higher security level can affect performance of the gateway.
+%%
+%% </note>
+update_s_m_b_security_strategy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_s_m_b_security_strategy(Client, Input, []).
+update_s_m_b_security_strategy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateSMBSecurityStrategy">>, Input, Options).
+
 %% @doc Updates a snapshot schedule configured for a gateway volume. This
 %% operation is only supported in the cached volume and stored volume gateway
 %% types.
@@ -1397,12 +1431,20 @@ request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"storagegateway">>},
     Host = get_host(<<"storagegateway">>, Client1),
     URL = get_url(Host, Client1),
-    Headers = [{<<"Host">>, Host},
-               {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
-               {<<"X-Amz-Target">>, << <<"StorageGateway_20130630.">>/binary, Action/binary>>}],
+    Headers1 =
+        case maps:get(token, Client1, undefined) of
+            Token when byte_size(Token) > 0 -> [{<<"X-Amz-Security-Token">>, Token}];
+            _ -> []
+        end,
+    Headers2 = [
+        {<<"Host">>, Host},
+        {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
+        {<<"X-Amz-Target">>, << <<"StorageGateway_20130630.">>/binary, Action/binary>>}
+        | Headers1
+    ],
     Payload = jsx:encode(Input),
-    Headers1 = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
-    Response = hackney:request(post, URL, Headers1, Payload, Options),
+    Headers = aws_request:sign_request(Client1, <<"POST">>, URL, Headers2, Payload),
+    Response = hackney:request(post, URL, Headers, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->
@@ -1425,15 +1467,9 @@ handle_response({error, Reason}) ->
 get_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 get_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
-    aws_util:binary_join([EndpointPrefix,
-			  <<".">>,
-			  Region,
-			  <<".">>,
-			  Endpoint],
-			 <<"">>).
+    aws_util:binary_join([EndpointPrefix, <<".">>, Region, <<".">>, Endpoint], <<"">>).
 
 get_url(Host, Client) ->
     Proto = maps:get(proto, Client),
     Port = maps:get(port, Client),
-    aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>],
-			 <<"">>).
+    aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>], <<"">>).

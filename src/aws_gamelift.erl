@@ -1,5 +1,5 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
-%% See https://github.com/jkakar/aws-codegen for more details.
+%% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc <fullname>Amazon GameLift Service</fullname>
 %%
@@ -214,12 +214,24 @@
 %%
 %% If any player rejects the match, or if acceptances are not received before
 %% a specified timeout, the proposed match is dropped. The matchmaking
-%% tickets are then handled in one of two ways: For tickets where all players
-%% accepted the match, the ticket status is returned to
+%% tickets are then handled in one of two ways: For tickets where one or more
+%% players rejected the match, the ticket status is returned to
 %% <code>SEARCHING</code> to find a new match. For tickets where one or more
-%% players failed to accept the match, the ticket status is set to
-%% <code>FAILED</code>, and processing is terminated. A new matchmaking
+%% players failed to respond, the ticket status is set to
+%% <code>CANCELLED</code>, and processing is terminated. A new matchmaking
 %% request for these players can be submitted as needed.
+%%
+%% <b>Learn more</b>
+%%
+%% <a
+%% href="https://docs.aws.amazon.com/gamelift/latest/developerguide/match-client.html">
+%% Add FlexMatch to a Game Client</a>
+%%
+%% <a
+%% href="https://docs.aws.amazon.com/gamelift/latest/developerguide/match-events.html">
+%% FlexMatch Events Reference</a>
+%%
+%% <b>Related operations</b>
 %%
 %% <ul> <li> <a>StartMatchmaking</a>
 %%
@@ -575,24 +587,26 @@ create_game_session_queue(Client, Input, Options)
 %% placing a new game session for the match; and the maximum time allowed for
 %% a matchmaking attempt.
 %%
-%% <b>Player acceptance</b> -- In each configuration, you have the option to
-%% require that all players accept participation in a proposed match. To
-%% enable this feature, set <i>AcceptanceRequired</i> to true and specify a
-%% time limit for player acceptance. Players have the option to accept or
-%% reject a proposed match, and a match does not move ahead to game session
-%% placement unless all matched players accept.
+%% There are two ways to track the progress of matchmaking tickets: (1)
+%% polling ticket status with <a>DescribeMatchmaking</a>; or (2) receiving
+%% notifications with Amazon Simple Notification Service (SNS). To use
+%% notifications, you first need to set up an SNS topic to receive the
+%% notifications, and provide the topic ARN in the matchmaking configuration.
+%% Since notifications promise only "best effort" delivery, we recommend
+%% calling <code>DescribeMatchmaking</code> if no notifications are received
+%% within 30 seconds.
 %%
-%% <b>Matchmaking status notification</b> -- There are two ways to track the
-%% progress of matchmaking tickets: (1) polling ticket status with
-%% <a>DescribeMatchmaking</a>; or (2) receiving notifications with Amazon
-%% Simple Notification Service (SNS). To use notifications, you first need to
-%% set up an SNS topic to receive the notifications, and provide the topic
-%% ARN in the matchmaking configuration (see <a
+%% <b>Learn more</b>
+%%
+%% <a
+%% href="https://docs.aws.amazon.com/gamelift/latest/developerguide/match-configuration.html">
+%% Design a FlexMatch Matchmaker</a>
+%%
+%% <a
 %% href="https://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html">
-%% Setting up Notifications for Matchmaking</a>). Since notifications promise
-%% only "best effort" delivery, we recommend calling
-%% <code>DescribeMatchmaking</code> if no notifications are received within
-%% 30 seconds.
+%% Setting up Notifications for Matchmaking</a>
+%%
+%% <b>Related operations</b>
 %%
 %% <ul> <li> <a>CreateMatchmakingConfiguration</a>
 %%
@@ -626,7 +640,7 @@ create_matchmaking_configuration(Client, Input, Options)
 %%
 %% To create a matchmaking rule set, provide unique rule set name and the
 %% rule set body in JSON format. Rule sets must be defined in the same region
-%% as the matchmaking configuration they will be used with.
+%% as the matchmaking configuration they are used with.
 %%
 %% Since matchmaking rule sets cannot be edited, it is a good idea to check
 %% the rule set syntax using <a>ValidateMatchmakingRuleSet</a> before
@@ -961,6 +975,12 @@ delete_build(Client, Input, Options)
 %% must set the fleet's desired capacity to zero. See
 %% <a>UpdateFleetCapacity</a>.
 %%
+%% If the fleet being deleted has a VPC peering connection, you first need to
+%% get a valid authorization (good for 24 hours) by calling
+%% <a>CreateVpcPeeringAuthorization</a>. You do not need to explicitly delete
+%% the VPC peering connection--this is done as part of the delete fleet
+%% process.
+%%
 %% This action removes the fleet's resources and the fleet record. Once a
 %% fleet is deleted, you can no longer use that fleet.
 %%
@@ -1041,6 +1061,8 @@ delete_game_session_queue(Client, Input, Options)
 %% @doc Permanently removes a FlexMatch matchmaking configuration. To delete,
 %% specify the configuration name. A matchmaking configuration cannot be
 %% deleted if it is being used in any active matchmaking tickets.
+%%
+%% <b>Related operations</b>
 %%
 %% <ul> <li> <a>CreateMatchmakingConfiguration</a>
 %%
@@ -1175,8 +1197,8 @@ delete_script(Client, Input, Options)
     request(Client, <<"DeleteScript">>, Input, Options).
 
 %% @doc Cancels a pending VPC peering authorization for the specified VPC. If
-%% the authorization has already been used to create a peering connection,
-%% call <a>DeleteVpcPeeringConnection</a> to remove the connection.
+%% you need to delete an existing VPC peering connection, call
+%% <a>DeleteVpcPeeringConnection</a>.
 %%
 %% <ul> <li> <a>CreateVpcPeeringAuthorization</a>
 %%
@@ -1841,6 +1863,18 @@ describe_instances(Client, Input, Options)
 %% the request is successful, a ticket object is returned for each requested
 %% ID that currently exists.
 %%
+%% <b>Learn more</b>
+%%
+%% <a
+%% href="https://docs.aws.amazon.com/gamelift/latest/developerguide/match-client.html">
+%% Add FlexMatch to a Game Client</a>
+%%
+%% <a
+%% href="https://docs.aws.amazon.com/gamelift/latest/developerguidematch-notification.html">
+%% Set Up FlexMatch Event Notification</a>
+%%
+%% <b>Related operations</b>
+%%
 %% <ul> <li> <a>StartMatchmaking</a>
 %%
 %% </li> <li> <a>DescribeMatchmaking</a>
@@ -1859,7 +1893,7 @@ describe_matchmaking(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMatchmaking">>, Input, Options).
 
-%% @doc Retrieves the details of FlexMatch matchmaking configurations. with
+%% @doc Retrieves the details of FlexMatch matchmaking configurations. With
 %% this operation, you have the following options: (1) retrieve all existing
 %% configurations, (2) provide the names of one or more configurations to
 %% retrieve, or (3) retrieve all configurations that use a specified rule set
@@ -1867,6 +1901,14 @@ describe_matchmaking(Client, Input, Options)
 %% retrieve results as a set of sequential pages. If successful, a
 %% configuration is returned for each requested name. When specifying a list
 %% of names, only configurations that currently exist are returned.
+%%
+%% <b>Learn more</b>
+%%
+%% <a
+%% href="https://docs.aws.amazon.com/gamelift/latest/developerguide/matchmaker-build.html">
+%% Setting Up FlexMatch Matchmakers</a>
+%%
+%% <b>Related operations</b>
 %%
 %% <ul> <li> <a>CreateMatchmakingConfiguration</a>
 %%
@@ -2779,10 +2821,7 @@ start_game_session_placement(Client, Input, Options)
 %% describes all current players in the game session. If successful, a match
 %% backfill ticket is created and returned with status set to QUEUED. The
 %% ticket is placed in the matchmaker's ticket pool and processed. Track the
-%% status of the ticket to respond as needed. For more detail how to set up
-%% backfilling, see <a
-%% href="https://docs.aws.amazon.com/gamelift/latest/developerguide/match-backfill.html">
-%% Backfill Existing Games with FlexMatch</a>.
+%% status of the ticket to respond as needed.
 %%
 %% The process of finding backfill matches is essentially identical to the
 %% initial matchmaking process. The matchmaker searches the pool and groups
@@ -2793,8 +2832,20 @@ start_game_session_placement(Client, Input, Options)
 %% <a>GameSession</a> object is updated to include matchmaker data on the new
 %% players. For more detail on how match backfill requests are processed, see
 %% <a
-%% href="https://docs.aws.amazon.com/gamelift/latest/developerguide/match-intro.html">
+%% href="https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-match.html">
 %% How Amazon GameLift FlexMatch Works</a>.
+%%
+%% <b>Learn more</b>
+%%
+%% <a
+%% href="https://docs.aws.amazon.com/gamelift/latest/developerguide/match-backfill.html">
+%% Backfill Existing Games with FlexMatch</a>
+%%
+%% <a
+%% href="https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-match.html">
+%% How GameLift FlexMatch Works</a>
+%%
+%% <b>Related operations</b>
 %%
 %% <ul> <li> <a>StartMatchmaking</a>
 %%
@@ -2823,10 +2874,7 @@ start_match_backfill(Client, Input, Options)
 %% single player or a group of players who want to play together. FlexMatch
 %% finds additional players as needed to fill the match. Match type, rules,
 %% and the queue used to place a new game session are defined in a
-%% <code>MatchmakingConfiguration</code>. For complete information on setting
-%% up and using FlexMatch, see the topic <a
-%% href="https://docs.aws.amazon.com/gamelift/latest/developerguide/match-intro.html">
-%% Adding FlexMatch to Your Game</a>.
+%% <code>MatchmakingConfiguration</code>.
 %%
 %% To start matchmaking, provide a unique ticket ID, specify a matchmaking
 %% configuration, and include the players to be matched. You must also
@@ -2881,7 +2929,27 @@ start_match_backfill(Client, Input, Options)
 %% tickets. Matched players can use the connection information to join the
 %% game.
 %%
-%% </li> </ol> <ul> <li> <a>StartMatchmaking</a>
+%% </li> </ol> <b>Learn more</b>
+%%
+%% <a
+%% href="https://docs.aws.amazon.com/gamelift/latest/developerguide/match-client.html">
+%% Add FlexMatch to a Game Client</a>
+%%
+%% <a
+%% href="https://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html">
+%% Set Up FlexMatch Event Notification</a>
+%%
+%% <a
+%% href="https://docs.aws.amazon.com/gamelift/latest/developerguide/match-tasks.html">
+%% FlexMatch Integration Roadmap</a>
+%%
+%% <a
+%% href="https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-match.html">
+%% How GameLift FlexMatch Works</a>
+%%
+%% <b>Related operations</b>
+%%
+%% <ul> <li> <a>StartMatchmaking</a>
 %%
 %% </li> <li> <a>DescribeMatchmaking</a>
 %%
@@ -2998,10 +3066,27 @@ stop_game_session_placement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopGameSessionPlacement">>, Input, Options).
 
-%% @doc Cancels a matchmaking ticket that is currently being processed. To
-%% stop the matchmaking operation, specify the ticket ID. If successful, work
-%% on the ticket is stopped, and the ticket status is changed to
-%% <code>CANCELLED</code>.
+%% @doc Cancels a matchmaking ticket or match backfill ticket that is
+%% currently being processed. To stop the matchmaking operation, specify the
+%% ticket ID. If successful, work on the ticket is stopped, and the ticket
+%% status is changed to <code>CANCELLED</code>.
+%%
+%% This call is also used to turn off automatic backfill for an individual
+%% game session. This is for game sessions that are created with a
+%% matchmaking configuration that has automatic backfill enabled. The ticket
+%% ID is included in the <code>MatchmakerData</code> of an updated game
+%% session object, which is provided to the game server.
+%%
+%% <note> If the action is successful, the service sends back an empty JSON
+%% struct with the HTTP 200 response (not an empty HTTP body).
+%%
+%% </note> <b>Learn more</b>
+%%
+%% <a
+%% href="https://docs.aws.amazon.com/gamelift/latest/developerguide/match-client.html">
+%% Add FlexMatch to a Game Client</a>
+%%
+%% <b>Related operations</b>
 %%
 %% <ul> <li> <a>StartMatchmaking</a>
 %%
@@ -3329,9 +3414,18 @@ update_game_session_queue(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateGameSessionQueue">>, Input, Options).
 
-%% @doc Updates settings for a FlexMatch matchmaking configuration. To update
-%% settings, specify the configuration name to be updated and provide the new
-%% settings.
+%% @doc Updates settings for a FlexMatch matchmaking configuration. These
+%% changes affect all matches and game sessions that are created after the
+%% update. To update settings, specify the configuration name to be updated
+%% and provide the new settings.
+%%
+%% <b>Learn more</b>
+%%
+%% <a
+%% href="https://docs.aws.amazon.com/gamelift/latest/developerguide/match-configuration.html">
+%% Design a FlexMatch Matchmaker</a>
+%%
+%% <b>Related operations</b>
 %%
 %% <ul> <li> <a>CreateMatchmakingConfiguration</a>
 %%
@@ -3520,12 +3614,20 @@ request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"gamelift">>},
     Host = get_host(<<"gamelift">>, Client1),
     URL = get_url(Host, Client1),
-    Headers = [{<<"Host">>, Host},
-               {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
-               {<<"X-Amz-Target">>, << <<"GameLift.">>/binary, Action/binary>>}],
+    Headers1 =
+        case maps:get(token, Client1, undefined) of
+            Token when byte_size(Token) > 0 -> [{<<"X-Amz-Security-Token">>, Token}];
+            _ -> []
+        end,
+    Headers2 = [
+        {<<"Host">>, Host},
+        {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
+        {<<"X-Amz-Target">>, << <<"GameLift.">>/binary, Action/binary>>}
+        | Headers1
+    ],
     Payload = jsx:encode(Input),
-    Headers1 = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
-    Response = hackney:request(post, URL, Headers1, Payload, Options),
+    Headers = aws_request:sign_request(Client1, <<"POST">>, URL, Headers2, Payload),
+    Response = hackney:request(post, URL, Headers, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->
@@ -3548,15 +3650,9 @@ handle_response({error, Reason}) ->
 get_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 get_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
-    aws_util:binary_join([EndpointPrefix,
-			  <<".">>,
-			  Region,
-			  <<".">>,
-			  Endpoint],
-			 <<"">>).
+    aws_util:binary_join([EndpointPrefix, <<".">>, Region, <<".">>, Endpoint], <<"">>).
 
 get_url(Host, Client) ->
     Proto = maps:get(proto, Client),
     Port = maps:get(port, Client),
-    aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>],
-			 <<"">>).
+    aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>], <<"">>).

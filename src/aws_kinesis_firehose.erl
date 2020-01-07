@@ -1,5 +1,5 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
-%% See https://github.com/jkakar/aws-codegen for more details.
+%% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc <fullname>Amazon Kinesis Data Firehose API Reference</fullname>
 %%
@@ -105,7 +105,7 @@
 %% Firehose principal to assume the role, and the role should have
 %% permissions that allow the service to deliver the data. For more
 %% information, see <a
-%% href="http://docs.aws.amazon.com/firehose/latest/dev/controlling-access.html#using-iam-s3">Grant
+%% href="https://docs.aws.amazon.com/firehose/latest/dev/controlling-access.html#using-iam-s3">Grant
 %% Kinesis Data Firehose Access to an Amazon S3 Destination</a> in the
 %% <i>Amazon Kinesis Data Firehose Developer Guide</i>.
 create_delivery_stream(Client, Input)
@@ -185,7 +185,7 @@ list_tags_for_delivery_stream(Client, Input, Options)
 %% <a>PutRecord</a> and <a>PutRecordBatch</a>, the limits are an aggregate
 %% across these two operations for each delivery stream. For more information
 %% about limits and how to request an increase, see <a
-%% href="http://docs.aws.amazon.com/firehose/latest/dev/limits.html">Amazon
+%% href="https://docs.aws.amazon.com/firehose/latest/dev/limits.html">Amazon
 %% Kinesis Data Firehose Limits</a>.
 %%
 %% You must specify the name of the delivery stream and the data record when
@@ -238,7 +238,7 @@ put_record(Client, Input, Options)
 %% <a>PutRecord</a> and <a>PutRecordBatch</a>, the limits are an aggregate
 %% across these two operations for each delivery stream. For more information
 %% about limits, see <a
-%% href="http://docs.aws.amazon.com/firehose/latest/dev/limits.html">Amazon
+%% href="https://docs.aws.amazon.com/firehose/latest/dev/limits.html">Amazon
 %% Kinesis Data Firehose Limits</a>.
 %%
 %% Each <a>PutRecordBatch</a> request supports up to 500 records. Each record
@@ -459,12 +459,20 @@ request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"firehose">>},
     Host = get_host(<<"firehose">>, Client1),
     URL = get_url(Host, Client1),
-    Headers = [{<<"Host">>, Host},
-               {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
-               {<<"X-Amz-Target">>, << <<"Firehose_20150804.">>/binary, Action/binary>>}],
+    Headers1 =
+        case maps:get(token, Client1, undefined) of
+            Token when byte_size(Token) > 0 -> [{<<"X-Amz-Security-Token">>, Token}];
+            _ -> []
+        end,
+    Headers2 = [
+        {<<"Host">>, Host},
+        {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
+        {<<"X-Amz-Target">>, << <<"Firehose_20150804.">>/binary, Action/binary>>}
+        | Headers1
+    ],
     Payload = jsx:encode(Input),
-    Headers1 = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
-    Response = hackney:request(post, URL, Headers1, Payload, Options),
+    Headers = aws_request:sign_request(Client1, <<"POST">>, URL, Headers2, Payload),
+    Response = hackney:request(post, URL, Headers, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->
@@ -487,15 +495,9 @@ handle_response({error, Reason}) ->
 get_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 get_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
-    aws_util:binary_join([EndpointPrefix,
-			  <<".">>,
-			  Region,
-			  <<".">>,
-			  Endpoint],
-			 <<"">>).
+    aws_util:binary_join([EndpointPrefix, <<".">>, Region, <<".">>, Endpoint], <<"">>).
 
 get_url(Host, Client) ->
     Proto = maps:get(proto, Client),
     Port = maps:get(port, Client),
-    aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>],
-			 <<"">>).
+    aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>], <<"">>).

@@ -1,13 +1,11 @@
 # AWS clients for Erlang
 
-[![Build Status](https://travis-ci.org/jkakar/aws-erlang.svg?branch=master)](https://travis-ci.org/jkakar/aws-erlang)
+[![Build Status](https://travis-ci.org/aws-beam/aws-erlang.svg?branch=master)](https://travis-ci.org/aws-beam/aws-erlang)
 
 Here is an example:
 
 ```erlang
-Client = aws_client:make_client(<<"access-key-id">>,
-                                <<"secret-access-key">>,
-                                <<"us-east-1">>),
+Client = aws_client:make_client(<<"access-key-id">>, <<"secret-access-key">>, <<"us-east-1">>),
 {ok, Output, _Response} = aws_kinesis:list_streams(Client, #{}, []),
 io:format("~p~n", [Result]).
 ```
@@ -19,7 +17,7 @@ This outputs:
 ```
 
 * Code is generated using the JSON descriptions of AWS services used to build
-  the [AWS SDK for the Go programming language](https://github.com/awslabs/aws-sdk-go/tree/master/apis) library by [aws-codegen](https://github.com/jkakar/aws-codegen).
+  the [AWS SDK for the Go programming language](https://github.com/awslabs/aws-sdk-go/tree/master/apis) library by [aws-codegen](https://github.com/aws-beam/aws-codegen).
 * Code is readable with fairly complete documentation.
 * Support for AWS services that use the `json` protocols.
 * Request data is encoded from maps to JSON and response data is decoded from
