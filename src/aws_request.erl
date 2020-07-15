@@ -1,6 +1,9 @@
 -module(aws_request).
 
--export([sign_request/5]).
+-export([ build_headers/2
+        , method_to_binary/1
+        , sign_request/5
+        ]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -18,6 +21,37 @@ sign_request(Client, Method, URL, Headers, Body) ->
     Token = maps:get(token, Client, undefined),
     sign_request(AccessKeyID, SecretAccessKey, Region, Service, Token,
                  Method, URL,Headers, Body).
+
+%% @doc Build request headers based on a list key-value pairs
+%% representing the mappings from param names to header names and a
+%% map qith the `params`.
+build_headers(ParamsHeadersMapping, Params0)
+  when is_list(ParamsHeadersMapping),
+       is_map(Params0) ->
+  Fun = fun({ParamName, HeaderName}, {Headers, Params}) ->
+            case map:get(ParamName, Params, undefined) of
+              undefined ->
+                {Headers, Params};
+              Value ->
+                Headers = [{HeaderName, Value} | Headers],
+                Params = maps:remove(ParamName, Params),
+                {Headers, Params}
+            end
+        end,
+  lists:foldl(Fun,{[], Params0}, ParamsHeadersMapping).
+
+-spec method_to_binary(atom()) -> binary().
+method_to_binary(delete)  -> <<"DELETE">>;
+method_to_binary(get)     -> <<"GET">>;
+method_to_binary(head)    -> <<"HEAD">>;
+method_to_binary(options) -> <<"OPTIONS">>;
+method_to_binary(patch)   -> <<"PATCH">>;
+method_to_binary(post)    -> <<"POST">>;
+method_to_binary(put)     -> <<"PUT">>.
+
+%%====================================================================
+%% Internal functions
+%%====================================================================
 
 %% Generate headers with an AWS signature version 4 for the specified
 %% request.
@@ -45,10 +79,6 @@ sign_request(AccessKeyID, SecretAccessKey, Region, Service, Token, Now,
     Authorization = authorization(AccessKeyID, CredentialScope, SignedHeaders,
                                   Signature),
     add_authorization_header(Headers2, Authorization).
-
-%%====================================================================
-%% Internal functions
-%%====================================================================
 
 %% Add an Authorization header with an AWS4-HMAC-SHA256 signature to the
 %% list of headers.
