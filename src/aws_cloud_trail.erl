@@ -23,7 +23,7 @@
 %% page</a>.
 %%
 %% </note> See the <a
-%% href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html">AWS
+%% href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html">AWS
 %% CloudTrail User Guide</a> for information about the data that is included
 %% with each AWS API call listed in the log files.
 -module(aws_cloud_trail).
@@ -38,16 +38,24 @@
          describe_trails/3,
          get_event_selectors/2,
          get_event_selectors/3,
+         get_insight_selectors/2,
+         get_insight_selectors/3,
+         get_trail/2,
+         get_trail/3,
          get_trail_status/2,
          get_trail_status/3,
          list_public_keys/2,
          list_public_keys/3,
          list_tags/2,
          list_tags/3,
+         list_trails/2,
+         list_trails/3,
          lookup_events/2,
          lookup_events/3,
          put_event_selectors/2,
          put_event_selectors/3,
+         put_insight_selectors/2,
+         put_insight_selectors/3,
          remove_tags/2,
          remove_tags/3,
          start_logging/2,
@@ -63,12 +71,13 @@
 %% API
 %%====================================================================
 
-%% @doc Adds one or more tags to a trail, up to a limit of 50. Tags must be
-%% unique per trail. Overwrites an existing tag's value when a new value is
-%% specified for an existing tag key. If you specify a key without a value,
-%% the tag will be created with the specified key and a value of null. You
-%% can tag a trail that applies to all regions only from the region in which
-%% the trail was created (that is, from its home region).
+%% @doc Adds one or more tags to a trail, up to a limit of 50. Overwrites an
+%% existing tag's value when a new value is specified for an existing tag
+%% key. Tag key names must be unique for a trail; you cannot have two keys
+%% with the same name but different values. If you specify a key without a
+%% value, the tag will be created with the specified key and a value of null.
+%% You can tag a trail that applies to all AWS Regions only from the Region
+%% in which the trail was created (also known as its home region).
 add_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags(Client, Input, []).
@@ -77,8 +86,7 @@ add_tags(Client, Input, Options)
     request(Client, <<"AddTags">>, Input, Options).
 
 %% @doc Creates a trail that specifies the settings for delivery of log data
-%% to an Amazon S3 bucket. A maximum of five trails can exist in a region,
-%% irrespective of the region in which they were created.
+%% to an Amazon S3 bucket.
 create_trail(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_trail(Client, Input, []).
@@ -97,8 +105,8 @@ delete_trail(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTrail">>, Input, Options).
 
-%% @doc Retrieves settings for the trail associated with the current region
-%% for your account.
+%% @doc Retrieves settings for one or more trails associated with the current
+%% region for your account.
 describe_trails(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trails(Client, Input, []).
@@ -120,7 +128,7 @@ describe_trails(Client, Input, Options)
 %% objects or AWS Lambda functions that you are logging for data events.
 %%
 %% </li> </ul> For more information, see <a
-%% href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html">Logging
+%% href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html">Logging
 %% Data and Management Events for Trails </a> in the <i>AWS CloudTrail User
 %% Guide</i>.
 get_event_selectors(Client, Input)
@@ -129,6 +137,33 @@ get_event_selectors(Client, Input)
 get_event_selectors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEventSelectors">>, Input, Options).
+
+%% @doc Describes the settings for the Insights event selectors that you
+%% configured for your trail. <code>GetInsightSelectors</code> shows if
+%% CloudTrail Insights event logging is enabled on the trail, and if it is,
+%% which insight types are enabled. If you run
+%% <code>GetInsightSelectors</code> on a trail that does not have Insights
+%% events enabled, the operation throws the exception
+%% <code>InsightNotEnabledException</code>
+%%
+%% For more information, see <a
+%% href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-insights-events-with-cloudtrail.html">Logging
+%% CloudTrail Insights Events for Trails </a> in the <i>AWS CloudTrail User
+%% Guide</i>.
+get_insight_selectors(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_insight_selectors(Client, Input, []).
+get_insight_selectors(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetInsightSelectors">>, Input, Options).
+
+%% @doc Returns settings information for a specified trail.
+get_trail(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_trail(Client, Input, []).
+get_trail(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetTrail">>, Input, Options).
 
 %% @doc Returns a JSON-formatted list of information about the specified
 %% trail. Fields include information on delivery errors, Amazon SNS and
@@ -167,11 +202,21 @@ list_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTags">>, Input, Options).
 
+%% @doc Lists trails that are in the current account.
+list_trails(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_trails(Client, Input, []).
+list_trails(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTrails">>, Input, Options).
+
 %% @doc Looks up <a
 %% href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html#cloudtrail-concepts-management-events">management
-%% events</a> captured by CloudTrail. Events for a region can be looked up in
-%% that region during the last 90 days. Lookup supports the following
-%% attributes:
+%% events</a> or <a
+%% href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html#cloudtrail-concepts-insights-events">CloudTrail
+%% Insights events</a> that are captured by CloudTrail. You can look up
+%% events that occurred in a region within the last 90 days. Lookup supports
+%% the following attributes for management events:
 %%
 %% <ul> <li> AWS access key
 %%
@@ -189,16 +234,20 @@ list_tags(Client, Input, Options)
 %%
 %% </li> <li> User name
 %%
+%% </li> </ul> Lookup supports the following attributes for Insights events:
+%%
+%% <ul> <li> Event ID
+%%
+%% </li> <li> Event name
+%%
+%% </li> <li> Event source
+%%
 %% </li> </ul> All attributes are optional. The default number of results
 %% returned is 50, with a maximum of 50 possible. The response includes a
 %% token that you can use to get the next page of results.
 %%
-%% <important> The rate of lookup requests is limited to one per second per
+%% <important> The rate of lookup requests is limited to two per second per
 %% account. If this limit is exceeded, a throttling error occurs.
-%%
-%% </important> <important> Events that occurred during the selected time
-%% range will not be available for lookup if CloudTrail logging was not
-%% enabled when the events occurred.
 %%
 %% </important>
 lookup_events(Client, Input)
@@ -242,7 +291,7 @@ lookup_events(Client, Input, Options)
 %%
 %% You can configure up to five event selectors for each trail. For more
 %% information, see <a
-%% href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html">Logging
+%% href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html">Logging
 %% Data and Management Events for Trails </a> and <a
 %% href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html">Limits
 %% in AWS CloudTrail</a> in the <i>AWS CloudTrail User Guide</i>.
@@ -252,6 +301,18 @@ put_event_selectors(Client, Input)
 put_event_selectors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutEventSelectors">>, Input, Options).
+
+%% @doc Lets you enable Insights event logging by specifying the Insights
+%% selectors that you want to enable on an existing trail. You also use
+%% <code>PutInsightSelectors</code> to turn off Insights event logging, by
+%% passing an empty list of insight types. In this release, only
+%% <code>ApiCallRateInsight</code> is supported as an Insights selector.
+put_insight_selectors(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_insight_selectors(Client, Input, []).
+put_insight_selectors(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutInsightSelectors">>, Input, Options).
 
 %% @doc Removes the specified tags from a trail.
 remove_tags(Client, Input)
@@ -316,20 +377,14 @@ request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"cloudtrail">>},
     Host = get_host(<<"cloudtrail">>, Client1),
     URL = get_url(Host, Client1),
-    Headers1 =
-        case maps:get(token, Client1, undefined) of
-            Token when byte_size(Token) > 0 -> [{<<"X-Amz-Security-Token">>, Token}];
-            _ -> []
-        end,
-    Headers2 = [
+    Headers = [
         {<<"Host">>, Host},
         {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
         {<<"X-Amz-Target">>, << <<"com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.">>/binary, Action/binary>>}
-        | Headers1
     ],
     Payload = jsx:encode(Input),
-    Headers = aws_request:sign_request(Client1, <<"POST">>, URL, Headers2, Payload),
-    Response = hackney:request(post, URL, Headers, Payload, Options),
+    SignedHeaders = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
+    Response = hackney:request(post, URL, SignedHeaders, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->

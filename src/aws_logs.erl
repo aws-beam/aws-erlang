@@ -54,6 +54,8 @@
          delete_log_stream/3,
          delete_metric_filter/2,
          delete_metric_filter/3,
+         delete_query_definition/2,
+         delete_query_definition/3,
          delete_resource_policy/2,
          delete_resource_policy/3,
          delete_retention_policy/2,
@@ -72,6 +74,8 @@
          describe_metric_filters/3,
          describe_queries/2,
          describe_queries/3,
+         describe_query_definitions/2,
+         describe_query_definitions/3,
          describe_resource_policies/2,
          describe_resource_policies/3,
          describe_subscription_filters/2,
@@ -98,6 +102,8 @@
          put_log_events/3,
          put_metric_filter/2,
          put_metric_filter/3,
+         put_query_definition/2,
+         put_query_definition/3,
          put_resource_policy/2,
          put_resource_policy/3,
          put_retention_policy/2,
@@ -131,7 +137,14 @@
 %% with the CMK is still within Amazon CloudWatch Logs. This enables Amazon
 %% CloudWatch Logs to decrypt this data whenever it is requested.
 %%
-%% Note that it can take up to 5 minutes for this operation to take effect.
+%% <note> <b>Important:</b> CloudWatch Logs supports only symmetric CMKs. Do
+%% not use an associate an asymmetric CMK with your log group. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html">Using
+%% Symmetric and Asymmetric Keys</a>.
+%%
+%% </note> Note that it can take up to 5 minutes for this operation to take
+%% effect.
 %%
 %% If you attempt to associate a CMK with a log group but the CMK does not
 %% exist or the CMK is disabled, you will receive an
@@ -159,10 +172,12 @@ cancel_export_task(Client, Input, Options)
 %%
 %% This is an asynchronous call. If all the required information is provided,
 %% this operation initiates an export task and responds with the ID of the
-%% task. After the task has started, you can use <a>DescribeExportTasks</a>
+%% task. After the task has started, you can use <a
+%% href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeExportTasks.html">DescribeExportTasks</a>
 %% to get the status of the export task. Each account can only have one
 %% active (<code>RUNNING</code> or <code>PENDING</code>) export task at a
-%% time. To cancel an export task, use <a>CancelExportTask</a>.
+%% time. To cancel an export task, use <a
+%% href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_CancelExportTask.html">CancelExportTask</a>.
 %%
 %% You can export logs from multiple log groups or multiple time ranges to
 %% the same S3 bucket. To separate out log data for each export task, you can
@@ -180,7 +195,7 @@ create_export_task(Client, Input, Options)
 
 %% @doc Creates a log group with the specified name.
 %%
-%% You can create up to 5000 log groups per account.
+%% You can create up to 20,000 log groups per account.
 %%
 %% You must use the following guidelines when naming a log group:
 %%
@@ -190,8 +205,8 @@ create_export_task(Client, Input, Options)
 %% </li> <li> Log group names can be between 1 and 512 characters long.
 %%
 %% </li> <li> Log group names consist of the following characters: a-z, A-Z,
-%% 0-9, '_' (underscore), '-' (hyphen), '/' (forward slash), and '.'
-%% (period).
+%% 0-9, '_' (underscore), '-' (hyphen), '/' (forward slash), '.' (period),
+%% and '#' (number sign)
 %%
 %% </li> </ul> If you associate a AWS Key Management Service (AWS KMS)
 %% customer master key (CMK) with the log group, ingested data is encrypted
@@ -202,6 +217,14 @@ create_export_task(Client, Input, Options)
 %% If you attempt to associate a CMK with the log group but the CMK does not
 %% exist or the CMK is disabled, you will receive an
 %% <code>InvalidParameterException</code> error.
+%%
+%% <note> <b>Important:</b> CloudWatch Logs supports only symmetric CMKs. Do
+%% not associate an asymmetric CMK with your log group. For more information,
+%% see <a
+%% href="https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html">Using
+%% Symmetric and Asymmetric Keys</a>.
+%%
+%% </note>
 create_log_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_log_group(Client, Input, []).
@@ -212,7 +235,8 @@ create_log_group(Client, Input, Options)
 %% @doc Creates a log stream for the specified log group.
 %%
 %% There is no limit on the number of log streams that you can create for a
-%% log group.
+%% log group. There is a limit of 50 TPS on <code>CreateLogStream</code>
+%% operations, after which transactions are throttled.
 %%
 %% You must use the following guidelines when naming a log stream:
 %%
@@ -265,6 +289,14 @@ delete_metric_filter(Client, Input)
 delete_metric_filter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMetricFilter">>, Input, Options).
+
+
+delete_query_definition(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_query_definition(Client, Input, []).
+delete_query_definition(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteQueryDefinition">>, Input, Options).
 
 %% @doc Deletes a resource policy from this account. This revokes the access
 %% of the identities in that policy to put log events to this account.
@@ -356,6 +388,14 @@ describe_queries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeQueries">>, Input, Options).
 
+
+describe_query_definitions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_query_definitions(Client, Input, []).
+describe_query_definitions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeQueryDefinitions">>, Input, Options).
+
 %% @doc Lists the resource policies in this account.
 describe_resource_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -425,7 +465,10 @@ get_log_events(Client, Input, Options)
 %%
 %% In the results, fields that start with @ are fields generated by
 %% CloudWatch Logs. For example, <code>@timestamp</code> is the timestamp of
-%% each log event.
+%% each log event. For more information about the fields that are generated
+%% by CloudWatch logs, see <a
+%% href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_AnalyzeLogData-discoverable-fields.html">Supported
+%% Logs and Discovered Fields</a>.
 %%
 %% The response results are sorted by the frequency percentage, starting with
 %% the highest percentage.
@@ -454,11 +497,13 @@ get_log_record(Client, Input, Options)
 %%
 %% Only the fields requested in the query are returned, along with a
 %% <code>@ptr</code> field which is the identifier for the log record. You
-%% can use the value of <code>@ptr</code> in a operation to get the full log
-%% record.
+%% can use the value of <code>@ptr</code> in a <a
+%% href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_GetLogRecord.html">GetLogRecord</a>
+%% operation to get the full log record.
 %%
 %% <code>GetQueryResults</code> does not start a query execution. To run a
-%% query, use .
+%% query, use <a
+%% href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_StartQuery.html">StartQuery</a>.
 %%
 %% If the value of the <code>Status</code> field in the output is
 %% <code>Running</code>, this operation returns only partial results. If you
@@ -479,18 +524,22 @@ list_tags_log_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsLogGroup">>, Input, Options).
 
-%% @doc Creates or updates a destination. A destination encapsulates a
-%% physical resource (such as an Amazon Kinesis stream) and enables you to
-%% subscribe to a real-time stream of log events for a different account,
-%% ingested using <a>PutLogEvents</a>. A destination can be an Amazon Kinesis
-%% stream, Amazon Kinesis Data Firehose strea, or an AWS Lambda function.
+%% @doc Creates or updates a destination. This operation is used only to
+%% create destinations for cross-account subscriptions.
+%%
+%% A destination encapsulates a physical resource (such as an Amazon Kinesis
+%% stream) and enables you to subscribe to a real-time stream of log events
+%% for a different account, ingested using <a
+%% href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutLogEvents.html">PutLogEvents</a>.
 %%
 %% Through an access policy, a destination controls what is written to it. By
 %% default, <code>PutDestination</code> does not set any access policy with
-%% the destination, which means a cross-account user cannot call
-%% <a>PutSubscriptionFilter</a> against this destination. To enable this, the
-%% destination owner must call <a>PutDestinationPolicy</a> after
-%% <code>PutDestination</code>.
+%% the destination, which means a cross-account user cannot call <a
+%% href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutSubscriptionFilter.html">PutSubscriptionFilter</a>
+%% against this destination. To enable this, the destination owner must call
+%% <a
+%% href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDestinationPolicy.html">PutDestinationPolicy</a>
+%% after <code>PutDestination</code>.
 put_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_destination(Client, Input, []).
@@ -514,11 +563,12 @@ put_destination_policy(Client, Input, Options)
 %%
 %% You must include the sequence token obtained from the response of the
 %% previous call. An upload in a newly created log stream does not require a
-%% sequence token. You can also get the sequence token using
-%% <a>DescribeLogStreams</a>. If you call <code>PutLogEvents</code> twice
-%% within a narrow time period using the same value for
-%% <code>sequenceToken</code>, both calls may be successful, or one may be
-%% rejected.
+%% sequence token. You can also get the sequence token in the
+%% <code>expectedSequenceToken</code> field from
+%% <code>InvalidSequenceTokenException</code>. If you call
+%% <code>PutLogEvents</code> twice within a narrow time period using the same
+%% value for <code>sequenceToken</code>, both calls may be successful, or one
+%% may be rejected.
 %%
 %% The batch of events must satisfy the following constraints:
 %%
@@ -538,10 +588,13 @@ put_destination_policy(Client, Input, Options)
 %% Tools for PowerShell and the AWS SDK for .NET, the timestamp is specified
 %% in .NET format: yyyy-mm-ddThh:mm:ss. For example, 2017-09-15T13:45:30.)
 %%
-%% </li> <li> The maximum number of log events in a batch is 10,000.
-%%
 %% </li> <li> A batch of log events in a single request cannot span more than
 %% 24 hours. Otherwise, the operation fails.
+%%
+%% </li> <li> The maximum number of log events in a batch is 10,000.
+%%
+%% </li> <li> There is a quota of 5 requests per second per log stream.
+%% Additional requests are throttled. This quota can't be changed.
 %%
 %% </li> </ul> If a call to PutLogEvents returns
 %% "UnrecognizedClientException" the most likely cause is an invalid AWS
@@ -555,7 +608,8 @@ put_log_events(Client, Input, Options)
 
 %% @doc Creates or updates a metric filter and associates it with the
 %% specified log group. Metric filters allow you to configure rules to
-%% extract metric data from log events ingested through <a>PutLogEvents</a>.
+%% extract metric data from log events ingested through <a
+%% href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutLogEvents.html">PutLogEvents</a>.
 %%
 %% The maximum number of metric filters that can be associated with a log
 %% group is 100.
@@ -565,6 +619,14 @@ put_metric_filter(Client, Input)
 put_metric_filter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutMetricFilter">>, Input, Options).
+
+
+put_query_definition(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_query_definition(Client, Input, []).
+put_query_definition(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutQueryDefinition">>, Input, Options).
 
 %% @doc Creates or updates a resource policy allowing other AWS services to
 %% put log events to this account, such as Amazon Route 53. An account can
@@ -588,9 +650,10 @@ put_retention_policy(Client, Input, Options)
 
 %% @doc Creates or updates a subscription filter and associates it with the
 %% specified log group. Subscription filters allow you to subscribe to a
-%% real-time stream of log events ingested through <a>PutLogEvents</a> and
-%% have them delivered to a specific destination. Currently, the supported
-%% destinations are:
+%% real-time stream of log events ingested through <a
+%% href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutLogEvents.html">PutLogEvents</a>
+%% and have them delivered to a specific destination. Currently, the
+%% supported destinations are:
 %%
 %% <ul> <li> An Amazon Kinesis stream belonging to the same account as the
 %% subscription filter, for same-account delivery.
@@ -645,11 +708,13 @@ stop_query(Client, Input, Options)
 
 %% @doc Adds or updates the specified tags for the specified log group.
 %%
-%% To list the tags for a log group, use <a>ListTagsLogGroup</a>. To remove
-%% tags, use <a>UntagLogGroup</a>.
+%% To list the tags for a log group, use <a
+%% href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_ListTagsLogGroup.html">ListTagsLogGroup</a>.
+%% To remove tags, use <a
+%% href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_UntagLogGroup.html">UntagLogGroup</a>.
 %%
 %% For more information about tags, see <a
-%% href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/log-group-tagging.html">Tag
+%% href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html#log-group-tagging">Tag
 %% Log Groups in Amazon CloudWatch Logs</a> in the <i>Amazon CloudWatch Logs
 %% User Guide</i>.
 tag_log_group(Client, Input)
@@ -671,8 +736,10 @@ test_metric_filter(Client, Input, Options)
 
 %% @doc Removes the specified tags from the specified log group.
 %%
-%% To list the tags for a log group, use <a>ListTagsLogGroup</a>. To add
-%% tags, use <a>UntagLogGroup</a>.
+%% To list the tags for a log group, use <a
+%% href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_ListTagsLogGroup.html">ListTagsLogGroup</a>.
+%% To add tags, use <a
+%% href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_TagLogGroup.html">TagLogGroup</a>.
 untag_log_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_log_group(Client, Input, []).
@@ -694,20 +761,14 @@ request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"logs">>},
     Host = get_host(<<"logs">>, Client1),
     URL = get_url(Host, Client1),
-    Headers1 =
-        case maps:get(token, Client1, undefined) of
-            Token when byte_size(Token) > 0 -> [{<<"X-Amz-Security-Token">>, Token}];
-            _ -> []
-        end,
-    Headers2 = [
+    Headers = [
         {<<"Host">>, Host},
         {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
         {<<"X-Amz-Target">>, << <<"Logs_20140328.">>/binary, Action/binary>>}
-        | Headers1
     ],
     Payload = jsx:encode(Input),
-    Headers = aws_request:sign_request(Client1, <<"POST">>, URL, Headers2, Payload),
-    Response = hackney:request(post, URL, Headers, Payload, Options),
+    SignedHeaders = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
+    Response = hackney:request(post, URL, SignedHeaders, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->

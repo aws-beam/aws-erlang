@@ -209,6 +209,8 @@ associate_principal_with_portfolio(Client, Input, Options)
     request(Client, <<"AssociatePrincipalWithPortfolio">>, Input, Options).
 
 %% @doc Associates the specified product with the specified portfolio.
+%%
+%% A delegated admin is authorized to invoke this command.
 associate_product_with_portfolio(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_product_with_portfolio(Client, Input, []).
@@ -266,6 +268,8 @@ copy_product(Client, Input, Options)
     request(Client, <<"CopyProduct">>, Input, Options).
 
 %% @doc Creates a constraint.
+%%
+%% A delegated admin is authorized to invoke this command.
 create_constraint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_constraint(Client, Input, []).
@@ -274,6 +278,8 @@ create_constraint(Client, Input, Options)
     request(Client, <<"CreateConstraint">>, Input, Options).
 
 %% @doc Creates a portfolio.
+%%
+%% A delegated admin is authorized to invoke this command.
 create_portfolio(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_portfolio(Client, Input, []).
@@ -283,8 +289,15 @@ create_portfolio(Client, Input, Options)
 
 %% @doc Shares the specified portfolio with the specified account or
 %% organization node. Shares to an organization node can only be created by
-%% the master account of an Organization. AWSOrganizationsAccess must be
-%% enabled in order to create a portfolio share to an organization node.
+%% the master account of an organization or by a delegated administrator. You
+%% can share portfolios to an organization, an organizational unit, or a
+%% specific account.
+%%
+%% Note that if a delegated admin is de-registered, they can no longer create
+%% portfolio shares.
+%%
+%% <code>AWSOrganizationsAccess</code> must be enabled in order to create a
+%% portfolio share to an organization node.
 create_portfolio_share(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_portfolio_share(Client, Input, []).
@@ -293,6 +306,8 @@ create_portfolio_share(Client, Input, Options)
     request(Client, <<"CreatePortfolioShare">>, Input, Options).
 
 %% @doc Creates a product.
+%%
+%% A delegated admin is authorized to invoke this command.
 create_product(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_product(Client, Input, []).
@@ -347,6 +362,8 @@ create_tag_option(Client, Input, Options)
     request(Client, <<"CreateTagOption">>, Input, Options).
 
 %% @doc Deletes the specified constraint.
+%%
+%% A delegated admin is authorized to invoke this command.
 delete_constraint(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_constraint(Client, Input, []).
@@ -358,6 +375,8 @@ delete_constraint(Client, Input, Options)
 %%
 %% You cannot delete a portfolio if it was shared with you or if it has
 %% associated products, users, constraints, or shared accounts.
+%%
+%% A delegated admin is authorized to invoke this command.
 delete_portfolio(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_portfolio(Client, Input, []).
@@ -367,7 +386,10 @@ delete_portfolio(Client, Input, Options)
 
 %% @doc Stops sharing the specified portfolio with the specified account or
 %% organization node. Shares to an organization node can only be deleted by
-%% the master account of an Organization.
+%% the master account of an organization or by a delegated administrator.
+%%
+%% Note that if a delegated admin is de-registered, portfolio shares created
+%% from that account are removed.
 delete_portfolio_share(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_portfolio_share(Client, Input, []).
@@ -379,6 +401,8 @@ delete_portfolio_share(Client, Input, Options)
 %%
 %% You cannot delete a product if it was shared with you or is associated
 %% with a portfolio.
+%%
+%% A delegated admin is authorized to invoke this command.
 delete_product(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_product(Client, Input, []).
@@ -443,6 +467,8 @@ describe_copy_product_status(Client, Input, Options)
     request(Client, <<"DescribeCopyProductStatus">>, Input, Options).
 
 %% @doc Gets information about the specified portfolio.
+%%
+%% A delegated admin is authorized to invoke this command.
 describe_portfolio(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_portfolio(Client, Input, []).
@@ -451,7 +477,8 @@ describe_portfolio(Client, Input, Options)
     request(Client, <<"DescribePortfolio">>, Input, Options).
 
 %% @doc Gets the status of the specified portfolio share operation. This API
-%% can only be called by the master account in the organization.
+%% can only be called by the master account in the organization or by a
+%% delegated admin.
 describe_portfolio_share_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_portfolio_share_status(Client, Input, []).
@@ -555,7 +582,8 @@ describe_service_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeServiceAction">>, Input, Options).
 
-
+%% @doc Finds the default parameters for a specific self-service action on a
+%% specific provisioned product and returns a map of the results to the user.
 describe_service_action_execution_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_service_action_execution_parameters(Client, Input, []).
@@ -577,6 +605,12 @@ describe_tag_option(Client, Input, Options)
 %% be in sync with your organization structure if it changes after calling
 %% this API. This API can only be called by the master account in the
 %% organization.
+%%
+%% This API can't be invoked if there are active delegated administrators in
+%% the organization.
+%%
+%% Note that a delegated administrator is not authorized to invoke
+%% <code>DisableAWSOrganizationsAccess</code>.
 disable_a_w_s_organizations_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_a_w_s_organizations_access(Client, Input, []).
@@ -602,6 +636,8 @@ disassociate_principal_from_portfolio(Client, Input, Options)
     request(Client, <<"DisassociatePrincipalFromPortfolio">>, Input, Options).
 
 %% @doc Disassociates the specified product from the specified portfolio.
+%%
+%% A delegated admin is authorized to invoke this command.
 disassociate_product_from_portfolio(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_product_from_portfolio(Client, Input, []).
@@ -634,6 +670,9 @@ disassociate_tag_option_from_resource(Client, Input, Options)
 %% By calling this API Service Catalog will make a call to
 %% organizations:EnableAWSServiceAccess on your behalf so that your shares
 %% can be in sync with any changes in your AWS Organizations structure.
+%%
+%% Note that a delegated administrator is not authorized to invoke
+%% <code>EnableAWSOrganizationsAccess</code>.
 enable_a_w_s_organizations_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_a_w_s_organizations_access(Client, Input, []).
@@ -659,7 +698,8 @@ execute_provisioned_product_service_action(Client, Input, Options)
     request(Client, <<"ExecuteProvisionedProductServiceAction">>, Input, Options).
 
 %% @doc Get the Access Status for AWS Organization portfolio share feature.
-%% This API can only be called by the master account in the organization.
+%% This API can only be called by the master account in the organization or
+%% by a delegated admin.
 get_a_w_s_organizations_access_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_a_w_s_organizations_access_status(Client, Input, []).
@@ -703,7 +743,10 @@ list_launch_paths(Client, Input, Options)
 
 %% @doc Lists the organization nodes that have access to the specified
 %% portfolio. This API can only be called by the master account in the
-%% organization.
+%% organization or by a delegated admin.
+%%
+%% If a delegated admin is de-registered, they can no longer perform this
+%% operation.
 list_organization_portfolio_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_organization_portfolio_access(Client, Input, []).
@@ -712,6 +755,10 @@ list_organization_portfolio_access(Client, Input, Options)
     request(Client, <<"ListOrganizationPortfolioAccess">>, Input, Options).
 
 %% @doc Lists the account IDs that have access to the specified portfolio.
+%%
+%% A delegated admin can list the accounts that have access to the shared
+%% portfolio. Note that if a delegated admin is de-registered, they can no
+%% longer perform this operation.
 list_portfolio_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_portfolio_access(Client, Input, []).
@@ -990,20 +1037,14 @@ request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"servicecatalog">>},
     Host = get_host(<<"servicecatalog">>, Client1),
     URL = get_url(Host, Client1),
-    Headers1 =
-        case maps:get(token, Client1, undefined) of
-            Token when byte_size(Token) > 0 -> [{<<"X-Amz-Security-Token">>, Token}];
-            _ -> []
-        end,
-    Headers2 = [
+    Headers = [
         {<<"Host">>, Host},
         {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
         {<<"X-Amz-Target">>, << <<"AWS242ServiceCatalogService.">>/binary, Action/binary>>}
-        | Headers1
     ],
     Payload = jsx:encode(Input),
-    Headers = aws_request:sign_request(Client1, <<"POST">>, URL, Headers2, Payload),
-    Response = hackney:request(post, URL, Headers, Payload, Options),
+    SignedHeaders = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
+    Response = hackney:request(post, URL, SignedHeaders, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->

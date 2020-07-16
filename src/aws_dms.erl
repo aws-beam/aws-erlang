@@ -175,6 +175,15 @@ create_event_subscription(Client, Input, Options)
     request(Client, <<"CreateEventSubscription">>, Input, Options).
 
 %% @doc Creates the replication instance using the specified parameters.
+%%
+%% AWS DMS requires that your account have certain roles with appropriate
+%% permissions before you can create a replication instance. For information
+%% on the required roles, see <a
+%% href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.APIRole.html">Creating
+%% the IAM Roles to Use With the AWS CLI and AWS DMS API</a>. For information
+%% on the required permissions, see <a
+%% href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.IAMPermissions.html">IAM
+%% Permissions Needed to Use AWS DMS</a>.
 create_replication_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_replication_instance(Client, Input, []).
@@ -611,20 +620,14 @@ request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"dms">>},
     Host = get_host(<<"dms">>, Client1),
     URL = get_url(Host, Client1),
-    Headers1 =
-        case maps:get(token, Client1, undefined) of
-            Token when byte_size(Token) > 0 -> [{<<"X-Amz-Security-Token">>, Token}];
-            _ -> []
-        end,
-    Headers2 = [
+    Headers = [
         {<<"Host">>, Host},
         {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
         {<<"X-Amz-Target">>, << <<"AmazonDMSv20160101.">>/binary, Action/binary>>}
-        | Headers1
     ],
     Payload = jsx:encode(Input),
-    Headers = aws_request:sign_request(Client1, <<"POST">>, URL, Headers2, Payload),
-    Response = hackney:request(post, URL, Headers, Payload, Options),
+    SignedHeaders = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
+    Response = hackney:request(post, URL, SignedHeaders, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->

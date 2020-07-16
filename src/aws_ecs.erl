@@ -26,7 +26,9 @@
 %% scaling your management infrastructure.
 -module(aws_ecs).
 
--export([create_cluster/2,
+-export([create_capacity_provider/2,
+         create_capacity_provider/3,
+         create_cluster/2,
          create_cluster/3,
          create_service/2,
          create_service/3,
@@ -36,6 +38,8 @@
          delete_account_setting/3,
          delete_attributes/2,
          delete_attributes/3,
+         delete_capacity_provider/2,
+         delete_capacity_provider/3,
          delete_cluster/2,
          delete_cluster/3,
          delete_service/2,
@@ -46,6 +50,8 @@
          deregister_container_instance/3,
          deregister_task_definition/2,
          deregister_task_definition/3,
+         describe_capacity_providers/2,
+         describe_capacity_providers/3,
          describe_clusters/2,
          describe_clusters/3,
          describe_container_instances/2,
@@ -84,6 +90,8 @@
          put_account_setting_default/3,
          put_attributes/2,
          put_attributes/3,
+         put_cluster_capacity_providers/2,
+         put_cluster_capacity_providers/3,
          register_container_instance/2,
          register_container_instance/3,
          register_task_definition/2,
@@ -123,17 +131,32 @@
 %% API
 %%====================================================================
 
+%% @doc Creates a new capacity provider. Capacity providers are associated
+%% with an Amazon ECS cluster and are used in capacity provider strategies to
+%% facilitate cluster auto scaling.
+%%
+%% Only capacity providers using an Auto Scaling group can be created. Amazon
+%% ECS tasks on AWS Fargate use the <code>FARGATE</code> and
+%% <code>FARGATE_SPOT</code> capacity providers which are already created and
+%% available to all accounts in Regions supported by AWS Fargate.
+create_capacity_provider(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_capacity_provider(Client, Input, []).
+create_capacity_provider(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateCapacityProvider">>, Input, Options).
+
 %% @doc Creates a new Amazon ECS cluster. By default, your account receives a
 %% <code>default</code> cluster when you launch your first container
 %% instance. However, you can create your own cluster with a unique name with
 %% the <code>CreateCluster</code> action.
 %%
 %% <note> When you call the <a>CreateCluster</a> API operation, Amazon ECS
-%% attempts to create the service-linked role for your account so that
-%% required resources in other AWS services can be managed on your behalf.
-%% However, if the IAM user that makes the call does not have permissions to
-%% create the service-linked role, it is not created. For more information,
-%% see <a
+%% attempts to create the Amazon ECS service-linked role for your account so
+%% that required resources in other AWS services can be managed on your
+%% behalf. However, if the IAM user that makes the call does not have
+%% permissions to create the service-linked role, it is not created. For more
+%% information, see <a
 %% href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html">Using
 %% Service-Linked Roles for Amazon ECS</a> in the <i>Amazon Elastic Container
 %% Service Developer Guide</i>.
@@ -149,8 +172,8 @@ create_cluster(Client, Input, Options)
 %% @doc Runs and maintains a desired number of tasks from a specified task
 %% definition. If the number of tasks running in a service drops below the
 %% <code>desiredCount</code>, Amazon ECS runs another copy of the task in the
-%% specified cluster. To update an existing service, see
-%% <a>UpdateService</a>.
+%% specified cluster. To update an existing service, see the UpdateService
+%% action.
 %%
 %% In addition to maintaining the desired count of tasks in your service, you
 %% can optionally run your service behind one or more load balancers. The
@@ -179,7 +202,9 @@ create_cluster(Client, Input, Options)
 %%
 %% </li> <li> <code>DAEMON</code> - The daemon scheduling strategy deploys
 %% exactly one task on each active container instance that meets all of the
-%% task placement constraints that you specify in your cluster. When using
+%% task placement constraints that you specify in your cluster. The service
+%% scheduler also evaluates the task placement constraints for running tasks
+%% and will stop tasks that do not meet the placement constraints. When using
 %% this strategy, you don't need to specify a desired number of tasks, a task
 %% placement strategy, or use Service Auto Scaling policies. For more
 %% information, see <a
@@ -304,10 +329,40 @@ delete_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAttributes">>, Input, Options).
 
-%% @doc Deletes the specified cluster. You must deregister all container
-%% instances from this cluster before you may delete it. You can list the
-%% container instances in a cluster with <a>ListContainerInstances</a> and
-%% deregister them with <a>DeregisterContainerInstance</a>.
+%% @doc Deletes the specified capacity provider.
+%%
+%% <note> The <code>FARGATE</code> and <code>FARGATE_SPOT</code> capacity
+%% providers are reserved and cannot be deleted. You can disassociate them
+%% from a cluster using either the <a>PutClusterCapacityProviders</a> API or
+%% by deleting the cluster.
+%%
+%% </note> Prior to a capacity provider being deleted, the capacity provider
+%% must be removed from the capacity provider strategy from all services. The
+%% <a>UpdateService</a> API can be used to remove a capacity provider from a
+%% service's capacity provider strategy. When updating a service, the
+%% <code>forceNewDeployment</code> option can be used to ensure that any
+%% tasks using the Amazon EC2 instance capacity provided by the capacity
+%% provider are transitioned to use the capacity from the remaining capacity
+%% providers. Only capacity providers that are not associated with a cluster
+%% can be deleted. To remove a capacity provider from a cluster, you can
+%% either use <a>PutClusterCapacityProviders</a> or delete the cluster.
+delete_capacity_provider(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_capacity_provider(Client, Input, []).
+delete_capacity_provider(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteCapacityProvider">>, Input, Options).
+
+%% @doc Deletes the specified cluster. The cluster will transition to the
+%% <code>INACTIVE</code> state. Clusters with an <code>INACTIVE</code> status
+%% may remain discoverable in your account for a period of time. However,
+%% this behavior is subject to change in the future, so you should not rely
+%% on <code>INACTIVE</code> clusters persisting.
+%%
+%% You must deregister all container instances from this cluster before you
+%% may delete it. You can list the container instances in a cluster with
+%% <a>ListContainerInstances</a> and deregister them with
+%% <a>DeregisterContainerInstance</a>.
 delete_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cluster(Client, Input, []).
@@ -411,6 +466,14 @@ deregister_task_definition(Client, Input)
 deregister_task_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterTaskDefinition">>, Input, Options).
+
+%% @doc Describes one or more of your capacity providers.
+describe_capacity_providers(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_capacity_providers(Client, Input, []).
+describe_capacity_providers(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeCapacityProviders">>, Input, Options).
 
 %% @doc Describes one or more of your clusters.
 describe_clusters(Client, Input)
@@ -653,6 +716,30 @@ put_attributes(Client, Input)
 put_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutAttributes">>, Input, Options).
+
+%% @doc Modifies the available capacity providers and the default capacity
+%% provider strategy for a cluster.
+%%
+%% You must specify both the available capacity providers and a default
+%% capacity provider strategy for the cluster. If the specified cluster has
+%% existing capacity providers associated with it, you must specify all
+%% existing capacity providers in addition to any new ones you want to add.
+%% Any existing capacity providers associated with a cluster that are omitted
+%% from a <a>PutClusterCapacityProviders</a> API call will be disassociated
+%% with the cluster. You can only disassociate an existing capacity provider
+%% from a cluster if it's not being used by any existing tasks.
+%%
+%% When creating a service or running a task on a cluster, if no capacity
+%% provider or launch type is specified, then the cluster's default capacity
+%% provider strategy is used. It is recommended to define a default capacity
+%% provider strategy for your cluster, however you may specify an empty array
+%% (<code>[]</code>) to bypass defining a default strategy.
+put_cluster_capacity_providers(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_cluster_capacity_providers(Client, Input, []).
+put_cluster_capacity_providers(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutClusterCapacityProviders">>, Input, Options).
 
 %% @doc <note> This action is only used by the Amazon ECS agent, and it is
 %% not intended for use outside of the agent.
@@ -926,26 +1013,36 @@ update_container_instances_state(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateContainerInstancesState">>, Input, Options).
 
-%% @doc Modifies the parameters of a service.
+%% @doc <important> Updating the task placement strategies and constraints on
+%% an Amazon ECS service remains in preview and is a Beta Service as defined
+%% by and subject to the Beta Service Participation Service Terms located at
+%% <a
+%% href="https://aws.amazon.com/service-terms">https://aws.amazon.com/service-terms</a>
+%% ("Beta Terms"). These Beta Terms apply to your participation in this
+%% preview.
+%%
+%% </important> Modifies the parameters of a service.
 %%
 %% For services using the rolling update (<code>ECS</code>) deployment
 %% controller, the desired count, deployment configuration, network
-%% configuration, or task definition used can be updated.
+%% configuration, task placement constraints and strategies, or task
+%% definition used can be updated.
 %%
 %% For services using the blue/green (<code>CODE_DEPLOY</code>) deployment
-%% controller, only the desired count, deployment configuration, and health
-%% check grace period can be updated using this API. If the network
-%% configuration, platform version, or task definition need to be updated, a
-%% new AWS CodeDeploy deployment should be created. For more information, see
-%% <a
+%% controller, only the desired count, deployment configuration, task
+%% placement constraints and strategies, and health check grace period can be
+%% updated using this API. If the network configuration, platform version, or
+%% task definition need to be updated, a new AWS CodeDeploy deployment should
+%% be created. For more information, see <a
 %% href="https://docs.aws.amazon.com/codedeploy/latest/APIReference/API_CreateDeployment.html">CreateDeployment</a>
 %% in the <i>AWS CodeDeploy API Reference</i>.
 %%
 %% For services using an external deployment controller, you can update only
-%% the desired count and health check grace period using this API. If the
-%% launch type, load balancer, network configuration, platform version, or
-%% task definition need to be updated, you should create a new task set. For
-%% more information, see <a>CreateTaskSet</a>.
+%% the desired count, task placement constraints and strategies, and health
+%% check grace period using this API. If the launch type, load balancer,
+%% network configuration, platform version, or task definition need to be
+%% updated, you should create a new task set. For more information, see
+%% <a>CreateTaskSet</a>.
 %%
 %% You can add to or subtract from the number of instantiations of a task
 %% definition in a service by specifying the cluster that the service is
@@ -1082,20 +1179,14 @@ request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"ecs">>},
     Host = get_host(<<"ecs">>, Client1),
     URL = get_url(Host, Client1),
-    Headers1 =
-        case maps:get(token, Client1, undefined) of
-            Token when byte_size(Token) > 0 -> [{<<"X-Amz-Security-Token">>, Token}];
-            _ -> []
-        end,
-    Headers2 = [
+    Headers = [
         {<<"Host">>, Host},
         {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
         {<<"X-Amz-Target">>, << <<"AmazonEC2ContainerServiceV20141113.">>/binary, Action/binary>>}
-        | Headers1
     ],
     Payload = jsx:encode(Input),
-    Headers = aws_request:sign_request(Client1, <<"POST">>, URL, Headers2, Payload),
-    Response = hackney:request(post, URL, Headers, Payload, Options),
+    SignedHeaders = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
+    Response = hackney:request(post, URL, SignedHeaders, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->

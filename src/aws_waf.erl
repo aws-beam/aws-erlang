@@ -1,16 +1,27 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc This is the <i>AWS WAF API Reference</i> for using AWS WAF with
-%% Amazon CloudFront. The AWS WAF actions and data types listed in the
-%% reference are available for protecting Amazon CloudFront distributions.
-%% You can use these actions and data types via the endpoint
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> This is the <i>AWS WAF Classic API Reference</i> for using AWS WAF
+%% Classic with Amazon CloudFront. The AWS WAF Classic actions and data types
+%% listed in the reference are available for protecting Amazon CloudFront
+%% distributions. You can use these actions and data types via the endpoint
 %% <i>waf.amazonaws.com</i>. This guide is for developers who need detailed
-%% information about the AWS WAF API actions, data types, and errors. For
-%% detailed information about AWS WAF features and an overview of how to use
-%% the AWS WAF API, see the <a
-%% href="https://docs.aws.amazon.com/waf/latest/developerguide/">AWS WAF
-%% Developer Guide</a>.
+%% information about the AWS WAF Classic API actions, data types, and errors.
+%% For detailed information about AWS WAF Classic features and an overview of
+%% how to use the AWS WAF Classic API, see the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
 -module(aws_waf).
 
 -export([create_byte_match_set/2,
@@ -35,6 +46,8 @@
          create_sql_injection_match_set/3,
          create_web_a_c_l/2,
          create_web_a_c_l/3,
+         create_web_a_c_l_migration_stack/2,
+         create_web_a_c_l_migration_stack/3,
          create_xss_match_set/2,
          create_xss_match_set/3,
          delete_byte_match_set/2,
@@ -172,7 +185,18 @@
 %% API
 %%====================================================================
 
-%% @doc Creates a <code>ByteMatchSet</code>. You then use
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Creates a <code>ByteMatchSet</code>. You then use
 %% <a>UpdateByteMatchSet</a> to identify the part of a web request that you
 %% want AWS WAF to inspect, such as the values of the <code>User-Agent</code>
 %% header or the query string. For example, you can create a
@@ -209,7 +233,18 @@ create_byte_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateByteMatchSet">>, Input, Options).
 
-%% @doc Creates an <a>GeoMatchSet</a>, which you use to specify which web
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Creates an <a>GeoMatchSet</a>, which you use to specify which web
 %% requests you want to allow or block based on the country that the requests
 %% originate from. For example, if you're receiving a lot of requests from
 %% one or more countries and you want to block the requests, you can create
@@ -243,9 +278,20 @@ create_geo_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateGeoMatchSet">>, Input, Options).
 
-%% @doc Creates an <a>IPSet</a>, which you use to specify which web requests
-%% that you want to allow or block based on the IP addresses that the
-%% requests originate from. For example, if you're receiving a lot of
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Creates an <a>IPSet</a>, which you use to specify which web
+%% requests that you want to allow or block based on the IP addresses that
+%% the requests originate from. For example, if you're receiving a lot of
 %% requests from one or more individual IP addresses or one or more ranges of
 %% IP addresses and you want to block the requests, you can create an
 %% <code>IPSet</code> that contains those IP addresses and then configure AWS
@@ -278,7 +324,18 @@ create_i_p_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateIPSet">>, Input, Options).
 
-%% @doc Creates a <a>RateBasedRule</a>. The <code>RateBasedRule</code>
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Creates a <a>RateBasedRule</a>. The <code>RateBasedRule</code>
 %% contains a <code>RateLimit</code>, which specifies the maximum number of
 %% requests that AWS WAF allows from a specified IP address in a five-minute
 %% period. The <code>RateBasedRule</code> also contains the
@@ -288,8 +345,8 @@ create_i_p_set(Client, Input, Options)
 %%
 %% If you add more than one predicate to a <code>RateBasedRule</code>, a
 %% request not only must exceed the <code>RateLimit</code>, but it also must
-%% match all the specifications to be counted or blocked. For example,
-%% suppose you add the following to a <code>RateBasedRule</code>:
+%% match all the conditions to be counted or blocked. For example, suppose
+%% you add the following to a <code>RateBasedRule</code>:
 %%
 %% <ul> <li> An <code>IPSet</code> that matches the IP address
 %% <code>192.0.2.44/32</code>
@@ -297,17 +354,17 @@ create_i_p_set(Client, Input, Options)
 %% </li> <li> A <code>ByteMatchSet</code> that matches <code>BadBot</code> in
 %% the <code>User-Agent</code> header
 %%
-%% </li> </ul> Further, you specify a <code>RateLimit</code> of 15,000.
+%% </li> </ul> Further, you specify a <code>RateLimit</code> of 1,000.
 %%
 %% You then add the <code>RateBasedRule</code> to a <code>WebACL</code> and
 %% specify that you want to block requests that meet the conditions in the
 %% rule. For a request to be blocked, it must come from the IP address
 %% 192.0.2.44 <i>and</i> the <code>User-Agent</code> header in the request
 %% must contain the value <code>BadBot</code>. Further, requests that match
-%% these two conditions must be received at a rate of more than 15,000
+%% these two conditions must be received at a rate of more than 1,000
 %% requests every five minutes. If both conditions are met and the rate is
-%% exceeded, AWS WAF blocks the requests. If the rate drops below 15,000 for
-%% a five-minute period, AWS WAF no longer blocks the requests.
+%% exceeded, AWS WAF blocks the requests. If the rate drops below 1,000 for a
+%% five-minute period, AWS WAF no longer blocks the requests.
 %%
 %% As a second example, suppose you want to limit requests to a particular
 %% page on your site. To do this, you could add the following to a
@@ -320,7 +377,7 @@ create_i_p_set(Client, Input, Options)
 %%
 %% </li> <li> A <code>TargetString</code> of <code>login</code>
 %%
-%% </li> </ul> Further, you specify a <code>RateLimit</code> of 15,000.
+%% </li> </ul> Further, you specify a <code>RateLimit</code> of 1,000.
 %%
 %% By adding this <code>RateBasedRule</code> to a <code>WebACL</code>, you
 %% could limit requests to your login page without affecting the rest of your
@@ -360,7 +417,18 @@ create_rate_based_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRateBasedRule">>, Input, Options).
 
-%% @doc Creates a <a>RegexMatchSet</a>. You then use
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Creates a <a>RegexMatchSet</a>. You then use
 %% <a>UpdateRegexMatchSet</a> to identify the part of a web request that you
 %% want AWS WAF to inspect, such as the values of the <code>User-Agent</code>
 %% header or the query string. For example, you can create a
@@ -399,7 +467,18 @@ create_regex_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRegexMatchSet">>, Input, Options).
 
-%% @doc Creates a <code>RegexPatternSet</code>. You then use
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Creates a <code>RegexPatternSet</code>. You then use
 %% <a>UpdateRegexPatternSet</a> to specify the regular expression (regex)
 %% pattern that you want AWS WAF to search for, such as
 %% <code>B[a@]dB[o0]t</code>. You can then configure AWS WAF to reject those
@@ -432,7 +511,18 @@ create_regex_pattern_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRegexPatternSet">>, Input, Options).
 
-%% @doc Creates a <code>Rule</code>, which contains the <code>IPSet</code>
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Creates a <code>Rule</code>, which contains the <code>IPSet</code>
 %% objects, <code>ByteMatchSet</code> objects, and other predicates that
 %% identify the requests that you want to block. If you add more than one
 %% predicate to a <code>Rule</code>, a request must match all of the
@@ -484,7 +574,18 @@ create_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRule">>, Input, Options).
 
-%% @doc Creates a <code>RuleGroup</code>. A rule group is a collection of
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Creates a <code>RuleGroup</code>. A rule group is a collection of
 %% predefined rules that you add to a web ACL. You use <a>UpdateRuleGroup</a>
 %% to add rules to the rule group.
 %%
@@ -508,7 +609,18 @@ create_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRuleGroup">>, Input, Options).
 
-%% @doc Creates a <code>SizeConstraintSet</code>. You then use
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Creates a <code>SizeConstraintSet</code>. You then use
 %% <a>UpdateSizeConstraintSet</a> to identify the part of a web request that
 %% you want AWS WAF to check for length, such as the length of the
 %% <code>User-Agent</code> header or the length of the query string. For
@@ -544,10 +656,21 @@ create_size_constraint_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSizeConstraintSet">>, Input, Options).
 
-%% @doc Creates a <a>SqlInjectionMatchSet</a>, which you use to allow, block,
-%% or count requests that contain snippets of SQL code in a specified part of
-%% web requests. AWS WAF searches for character sequences that are likely to
-%% be malicious strings.
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Creates a <a>SqlInjectionMatchSet</a>, which you use to allow,
+%% block, or count requests that contain snippets of SQL code in a specified
+%% part of web requests. AWS WAF searches for character sequences that are
+%% likely to be malicious strings.
 %%
 %% To create and configure a <code>SqlInjectionMatchSet</code>, perform the
 %% following steps:
@@ -577,10 +700,21 @@ create_sql_injection_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSqlInjectionMatchSet">>, Input, Options).
 
-%% @doc Creates a <code>WebACL</code>, which contains the <code>Rules</code>
-%% that identify the CloudFront web requests that you want to allow, block,
-%% or count. AWS WAF evaluates <code>Rules</code> in order based on the value
-%% of <code>Priority</code> for each <code>Rule</code>.
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Creates a <code>WebACL</code>, which contains the
+%% <code>Rules</code> that identify the CloudFront web requests that you want
+%% to allow, block, or count. AWS WAF evaluates <code>Rules</code> in order
+%% based on the value of <code>Priority</code> for each <code>Rule</code>.
 %%
 %% You also specify a default action, either <code>ALLOW</code> or
 %% <code>BLOCK</code>. If a web request doesn't match any of the
@@ -625,7 +759,39 @@ create_web_a_c_l(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWebACL">>, Input, Options).
 
-%% @doc Creates an <a>XssMatchSet</a>, which you use to allow, block, or
+%% @doc Creates an AWS CloudFormation WAFV2 template for the specified web
+%% ACL in the specified Amazon S3 bucket. Then, in CloudFormation, you create
+%% a stack from the template, to create the web ACL and its resources in AWS
+%% WAFV2. Use this to migrate your AWS WAF Classic web ACL to the latest
+%% version of AWS WAF.
+%%
+%% This is part of a larger migration procedure for web ACLs from AWS WAF
+%% Classic to the latest version of AWS WAF. For the full procedure,
+%% including caveats and manual steps to complete the migration and switch
+%% over to the new web ACL, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-migrating-from-classic.html">Migrating
+%% your AWS WAF Classic resources to AWS WAF</a> in the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>.
+create_web_a_c_l_migration_stack(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_web_a_c_l_migration_stack(Client, Input, []).
+create_web_a_c_l_migration_stack(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateWebACLMigrationStack">>, Input, Options).
+
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Creates an <a>XssMatchSet</a>, which you use to allow, block, or
 %% count requests that contain cross-site scripting attacks in the specified
 %% part of web requests. AWS WAF searches for character sequences that are
 %% likely to be malicious strings.
@@ -658,7 +824,18 @@ create_xss_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateXssMatchSet">>, Input, Options).
 
-%% @doc Permanently deletes a <a>ByteMatchSet</a>. You can't delete a
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Permanently deletes a <a>ByteMatchSet</a>. You can't delete a
 %% <code>ByteMatchSet</code> if it's still used in any <code>Rules</code> or
 %% if it still includes any <a>ByteMatchTuple</a> objects (any filters).
 %%
@@ -685,7 +862,18 @@ delete_byte_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteByteMatchSet">>, Input, Options).
 
-%% @doc Permanently deletes a <a>GeoMatchSet</a>. You can't delete a
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Permanently deletes a <a>GeoMatchSet</a>. You can't delete a
 %% <code>GeoMatchSet</code> if it's still used in any <code>Rules</code> or
 %% if it still includes any countries.
 %%
@@ -712,7 +900,18 @@ delete_geo_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteGeoMatchSet">>, Input, Options).
 
-%% @doc Permanently deletes an <a>IPSet</a>. You can't delete an
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Permanently deletes an <a>IPSet</a>. You can't delete an
 %% <code>IPSet</code> if it's still used in any <code>Rules</code> or if it
 %% still includes any IP addresses.
 %%
@@ -739,7 +938,18 @@ delete_i_p_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteIPSet">>, Input, Options).
 
-%% @doc Permanently deletes the <a>LoggingConfiguration</a> from the
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Permanently deletes the <a>LoggingConfiguration</a> from the
 %% specified web ACL.
 delete_logging_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -748,7 +958,18 @@ delete_logging_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLoggingConfiguration">>, Input, Options).
 
-%% @doc Permanently deletes an IAM policy from the specified RuleGroup.
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Permanently deletes an IAM policy from the specified RuleGroup.
 %%
 %% The user making the request must be the owner of the RuleGroup.
 delete_permission_policy(Client, Input)
@@ -758,8 +979,19 @@ delete_permission_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePermissionPolicy">>, Input, Options).
 
-%% @doc Permanently deletes a <a>RateBasedRule</a>. You can't delete a rule
-%% if it's still used in any <code>WebACL</code> objects or if it still
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Permanently deletes a <a>RateBasedRule</a>. You can't delete a
+%% rule if it's still used in any <code>WebACL</code> objects or if it still
 %% includes any predicates, such as <code>ByteMatchSet</code> objects.
 %%
 %% If you just want to remove a rule from a <code>WebACL</code>, use
@@ -785,7 +1017,18 @@ delete_rate_based_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRateBasedRule">>, Input, Options).
 
-%% @doc Permanently deletes a <a>RegexMatchSet</a>. You can't delete a
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Permanently deletes a <a>RegexMatchSet</a>. You can't delete a
 %% <code>RegexMatchSet</code> if it's still used in any <code>Rules</code> or
 %% if it still includes any <code>RegexMatchTuples</code> objects (any
 %% filters).
@@ -813,7 +1056,18 @@ delete_regex_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRegexMatchSet">>, Input, Options).
 
-%% @doc Permanently deletes a <a>RegexPatternSet</a>. You can't delete a
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Permanently deletes a <a>RegexPatternSet</a>. You can't delete a
 %% <code>RegexPatternSet</code> if it's still used in any
 %% <code>RegexMatchSet</code> or if the <code>RegexPatternSet</code> is not
 %% empty.
@@ -824,7 +1078,18 @@ delete_regex_pattern_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRegexPatternSet">>, Input, Options).
 
-%% @doc Permanently deletes a <a>Rule</a>. You can't delete a
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Permanently deletes a <a>Rule</a>. You can't delete a
 %% <code>Rule</code> if it's still used in any <code>WebACL</code> objects or
 %% if it still includes any predicates, such as <code>ByteMatchSet</code>
 %% objects.
@@ -852,7 +1117,18 @@ delete_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRule">>, Input, Options).
 
-%% @doc Permanently deletes a <a>RuleGroup</a>. You can't delete a
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Permanently deletes a <a>RuleGroup</a>. You can't delete a
 %% <code>RuleGroup</code> if it's still used in any <code>WebACL</code>
 %% objects or if it still includes any rules.
 %%
@@ -879,7 +1155,18 @@ delete_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRuleGroup">>, Input, Options).
 
-%% @doc Permanently deletes a <a>SizeConstraintSet</a>. You can't delete a
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Permanently deletes a <a>SizeConstraintSet</a>. You can't delete a
 %% <code>SizeConstraintSet</code> if it's still used in any
 %% <code>Rules</code> or if it still includes any <a>SizeConstraint</a>
 %% objects (any filters).
@@ -907,8 +1194,19 @@ delete_size_constraint_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSizeConstraintSet">>, Input, Options).
 
-%% @doc Permanently deletes a <a>SqlInjectionMatchSet</a>. You can't delete a
-%% <code>SqlInjectionMatchSet</code> if it's still used in any
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Permanently deletes a <a>SqlInjectionMatchSet</a>. You can't
+%% delete a <code>SqlInjectionMatchSet</code> if it's still used in any
 %% <code>Rules</code> or if it still contains any
 %% <a>SqlInjectionMatchTuple</a> objects.
 %%
@@ -935,7 +1233,18 @@ delete_sql_injection_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSqlInjectionMatchSet">>, Input, Options).
 
-%% @doc Permanently deletes a <a>WebACL</a>. You can't delete a
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Permanently deletes a <a>WebACL</a>. You can't delete a
 %% <code>WebACL</code> if it still contains any <code>Rules</code>.
 %%
 %% To delete a <code>WebACL</code>, perform the following steps:
@@ -957,7 +1266,18 @@ delete_web_a_c_l(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWebACL">>, Input, Options).
 
-%% @doc Permanently deletes an <a>XssMatchSet</a>. You can't delete an
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Permanently deletes an <a>XssMatchSet</a>. You can't delete an
 %% <code>XssMatchSet</code> if it's still used in any <code>Rules</code> or
 %% if it still contains any <a>XssMatchTuple</a> objects.
 %%
@@ -984,7 +1304,18 @@ delete_xss_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteXssMatchSet">>, Input, Options).
 
-%% @doc Returns the <a>ByteMatchSet</a> specified by
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Returns the <a>ByteMatchSet</a> specified by
 %% <code>ByteMatchSetId</code>.
 get_byte_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -993,7 +1324,18 @@ get_byte_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetByteMatchSet">>, Input, Options).
 
-%% @doc When you want to create, update, or delete AWS WAF objects, get a
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> When you want to create, update, or delete AWS WAF objects, get a
 %% change token and include the change token in the create, update, or delete
 %% request. Change tokens ensure that your application doesn't submit
 %% conflicting requests to AWS WAF.
@@ -1017,7 +1359,18 @@ get_change_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetChangeToken">>, Input, Options).
 
-%% @doc Returns the status of a <code>ChangeToken</code> that you got by
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Returns the status of a <code>ChangeToken</code> that you got by
 %% calling <a>GetChangeToken</a>. <code>ChangeTokenStatus</code> is one of
 %% the following values:
 %%
@@ -1038,7 +1391,18 @@ get_change_token_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetChangeTokenStatus">>, Input, Options).
 
-%% @doc Returns the <a>GeoMatchSet</a> that is specified by
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Returns the <a>GeoMatchSet</a> that is specified by
 %% <code>GeoMatchSetId</code>.
 get_geo_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1047,7 +1411,19 @@ get_geo_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetGeoMatchSet">>, Input, Options).
 
-%% @doc Returns the <a>IPSet</a> that is specified by <code>IPSetId</code>.
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Returns the <a>IPSet</a> that is specified by
+%% <code>IPSetId</code>.
 get_i_p_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_i_p_set(Client, Input, []).
@@ -1055,7 +1431,18 @@ get_i_p_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetIPSet">>, Input, Options).
 
-%% @doc Returns the <a>LoggingConfiguration</a> for the specified web ACL.
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Returns the <a>LoggingConfiguration</a> for the specified web ACL.
 get_logging_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_logging_configuration(Client, Input, []).
@@ -1063,7 +1450,18 @@ get_logging_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLoggingConfiguration">>, Input, Options).
 
-%% @doc Returns the IAM policy attached to the RuleGroup.
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Returns the IAM policy attached to the RuleGroup.
 get_permission_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_permission_policy(Client, Input, []).
@@ -1071,7 +1469,18 @@ get_permission_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPermissionPolicy">>, Input, Options).
 
-%% @doc Returns the <a>RateBasedRule</a> that is specified by the
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Returns the <a>RateBasedRule</a> that is specified by the
 %% <code>RuleId</code> that you included in the <code>GetRateBasedRule</code>
 %% request.
 get_rate_based_rule(Client, Input)
@@ -1081,7 +1490,18 @@ get_rate_based_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRateBasedRule">>, Input, Options).
 
-%% @doc Returns an array of IP addresses currently being blocked by the
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Returns an array of IP addresses currently being blocked by the
 %% <a>RateBasedRule</a> that is specified by the <code>RuleId</code>. The
 %% maximum number of managed keys that will be blocked is 10,000. If more
 %% than 10,000 addresses exceed the rate limit, the 10,000 addresses with the
@@ -1093,7 +1513,18 @@ get_rate_based_rule_managed_keys(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRateBasedRuleManagedKeys">>, Input, Options).
 
-%% @doc Returns the <a>RegexMatchSet</a> specified by
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Returns the <a>RegexMatchSet</a> specified by
 %% <code>RegexMatchSetId</code>.
 get_regex_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1102,7 +1533,18 @@ get_regex_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRegexMatchSet">>, Input, Options).
 
-%% @doc Returns the <a>RegexPatternSet</a> specified by
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Returns the <a>RegexPatternSet</a> specified by
 %% <code>RegexPatternSetId</code>.
 get_regex_pattern_set(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1111,8 +1553,19 @@ get_regex_pattern_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRegexPatternSet">>, Input, Options).
 
-%% @doc Returns the <a>Rule</a> that is specified by the <code>RuleId</code>
-%% that you included in the <code>GetRule</code> request.
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Returns the <a>Rule</a> that is specified by the
+%% <code>RuleId</code> that you included in the <code>GetRule</code> request.
 get_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_rule(Client, Input, []).
@@ -1120,7 +1573,18 @@ get_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRule">>, Input, Options).
 
-%% @doc Returns the <a>RuleGroup</a> that is specified by the
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Returns the <a>RuleGroup</a> that is specified by the
 %% <code>RuleGroupId</code> that you included in the
 %% <code>GetRuleGroup</code> request.
 %%
@@ -1133,7 +1597,18 @@ get_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRuleGroup">>, Input, Options).
 
-%% @doc Gets detailed information about a specified number of requests--a
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Gets detailed information about a specified number of requests--a
 %% sample--that AWS WAF randomly selects from among the first 5,000 requests
 %% that your AWS resource received during a time range that you choose. You
 %% can specify a sample size of up to 500 requests, and you can specify any
@@ -1152,7 +1627,18 @@ get_sampled_requests(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSampledRequests">>, Input, Options).
 
-%% @doc Returns the <a>SizeConstraintSet</a> specified by
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Returns the <a>SizeConstraintSet</a> specified by
 %% <code>SizeConstraintSetId</code>.
 get_size_constraint_set(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1161,7 +1647,18 @@ get_size_constraint_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSizeConstraintSet">>, Input, Options).
 
-%% @doc Returns the <a>SqlInjectionMatchSet</a> that is specified by
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Returns the <a>SqlInjectionMatchSet</a> that is specified by
 %% <code>SqlInjectionMatchSetId</code>.
 get_sql_injection_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1170,7 +1667,19 @@ get_sql_injection_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSqlInjectionMatchSet">>, Input, Options).
 
-%% @doc Returns the <a>WebACL</a> that is specified by <code>WebACLId</code>.
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Returns the <a>WebACL</a> that is specified by
+%% <code>WebACLId</code>.
 get_web_a_c_l(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_web_a_c_l(Client, Input, []).
@@ -1178,7 +1687,18 @@ get_web_a_c_l(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetWebACL">>, Input, Options).
 
-%% @doc Returns the <a>XssMatchSet</a> that is specified by
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Returns the <a>XssMatchSet</a> that is specified by
 %% <code>XssMatchSetId</code>.
 get_xss_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1187,7 +1707,18 @@ get_xss_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetXssMatchSet">>, Input, Options).
 
-%% @doc Returns an array of <a>ActivatedRule</a> objects.
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Returns an array of <a>ActivatedRule</a> objects.
 list_activated_rules_in_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_activated_rules_in_rule_group(Client, Input, []).
@@ -1195,7 +1726,18 @@ list_activated_rules_in_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListActivatedRulesInRuleGroup">>, Input, Options).
 
-%% @doc Returns an array of <a>ByteMatchSetSummary</a> objects.
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Returns an array of <a>ByteMatchSetSummary</a> objects.
 list_byte_match_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_byte_match_sets(Client, Input, []).
@@ -1203,7 +1745,18 @@ list_byte_match_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListByteMatchSets">>, Input, Options).
 
-%% @doc Returns an array of <a>GeoMatchSetSummary</a> objects in the
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Returns an array of <a>GeoMatchSetSummary</a> objects in the
 %% response.
 list_geo_match_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1212,7 +1765,18 @@ list_geo_match_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGeoMatchSets">>, Input, Options).
 
-%% @doc Returns an array of <a>IPSetSummary</a> objects in the response.
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Returns an array of <a>IPSetSummary</a> objects in the response.
 list_i_p_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_i_p_sets(Client, Input, []).
@@ -1220,7 +1784,18 @@ list_i_p_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListIPSets">>, Input, Options).
 
-%% @doc Returns an array of <a>LoggingConfiguration</a> objects.
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Returns an array of <a>LoggingConfiguration</a> objects.
 list_logging_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_logging_configurations(Client, Input, []).
@@ -1228,7 +1803,18 @@ list_logging_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLoggingConfigurations">>, Input, Options).
 
-%% @doc Returns an array of <a>RuleSummary</a> objects.
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Returns an array of <a>RuleSummary</a> objects.
 list_rate_based_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rate_based_rules(Client, Input, []).
@@ -1236,7 +1822,18 @@ list_rate_based_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRateBasedRules">>, Input, Options).
 
-%% @doc Returns an array of <a>RegexMatchSetSummary</a> objects.
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Returns an array of <a>RegexMatchSetSummary</a> objects.
 list_regex_match_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_regex_match_sets(Client, Input, []).
@@ -1244,7 +1841,18 @@ list_regex_match_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRegexMatchSets">>, Input, Options).
 
-%% @doc Returns an array of <a>RegexPatternSetSummary</a> objects.
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Returns an array of <a>RegexPatternSetSummary</a> objects.
 list_regex_pattern_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_regex_pattern_sets(Client, Input, []).
@@ -1252,7 +1860,18 @@ list_regex_pattern_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRegexPatternSets">>, Input, Options).
 
-%% @doc Returns an array of <a>RuleGroup</a> objects.
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Returns an array of <a>RuleGroup</a> objects.
 list_rule_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rule_groups(Client, Input, []).
@@ -1260,7 +1879,18 @@ list_rule_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRuleGroups">>, Input, Options).
 
-%% @doc Returns an array of <a>RuleSummary</a> objects.
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Returns an array of <a>RuleSummary</a> objects.
 list_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rules(Client, Input, []).
@@ -1268,7 +1898,18 @@ list_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRules">>, Input, Options).
 
-%% @doc Returns an array of <a>SizeConstraintSetSummary</a> objects.
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Returns an array of <a>SizeConstraintSetSummary</a> objects.
 list_size_constraint_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_size_constraint_sets(Client, Input, []).
@@ -1276,7 +1917,18 @@ list_size_constraint_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSizeConstraintSets">>, Input, Options).
 
-%% @doc Returns an array of <a>SqlInjectionMatchSet</a> objects.
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Returns an array of <a>SqlInjectionMatchSet</a> objects.
 list_sql_injection_match_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_sql_injection_match_sets(Client, Input, []).
@@ -1284,8 +1936,19 @@ list_sql_injection_match_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSqlInjectionMatchSets">>, Input, Options).
 
-%% @doc Returns an array of <a>RuleGroup</a> objects that you are subscribed
-%% to.
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Returns an array of <a>RuleGroup</a> objects that you are
+%% subscribed to.
 list_subscribed_rule_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_subscribed_rule_groups(Client, Input, []).
@@ -1293,7 +1956,28 @@ list_subscribed_rule_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSubscribedRuleGroups">>, Input, Options).
 
-
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Retrieves the tags associated with the specified AWS resource.
+%% Tags are key:value pairs that you can use to categorize and manage your
+%% resources, for purposes like billing. For example, you might set the tag
+%% key to "customer" and the value to the customer name or ID. You can
+%% specify one or more tags to add to each AWS resource, up to 50 tags for a
+%% resource.
+%%
+%% Tagging is only available through the API, SDKs, and CLI. You can't manage
+%% or view tags through the AWS WAF Classic console. You can tag the AWS
+%% resources that you manage through AWS WAF Classic: web ACLs, rule groups,
+%% and rules.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -1301,7 +1985,18 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
-%% @doc Returns an array of <a>WebACLSummary</a> objects in the response.
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Returns an array of <a>WebACLSummary</a> objects in the response.
 list_web_a_c_ls(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_web_a_c_ls(Client, Input, []).
@@ -1309,7 +2004,18 @@ list_web_a_c_ls(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWebACLs">>, Input, Options).
 
-%% @doc Returns an array of <a>XssMatchSet</a> objects.
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Returns an array of <a>XssMatchSet</a> objects.
 list_xss_match_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_xss_match_sets(Client, Input, []).
@@ -1317,7 +2023,18 @@ list_xss_match_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListXssMatchSets">>, Input, Options).
 
-%% @doc Associates a <a>LoggingConfiguration</a> with a specified web ACL.
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Associates a <a>LoggingConfiguration</a> with a specified web ACL.
 %%
 %% You can access information about all traffic that AWS WAF inspects using
 %% the following steps:
@@ -1347,8 +2064,19 @@ put_logging_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutLoggingConfiguration">>, Input, Options).
 
-%% @doc Attaches a IAM policy to the specified resource. The only supported
-%% use for this action is to share a RuleGroup across accounts.
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Attaches an IAM policy to the specified resource. The only
+%% supported use for this action is to share a RuleGroup across accounts.
 %%
 %% The <code>PutPermissionPolicy</code> is subject to the following
 %% restrictions:
@@ -1389,7 +2117,27 @@ put_permission_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutPermissionPolicy">>, Input, Options).
 
-
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Associates tags with the specified AWS resource. Tags are
+%% key:value pairs that you can use to categorize and manage your resources,
+%% for purposes like billing. For example, you might set the tag key to
+%% "customer" and the value to the customer name or ID. You can specify one
+%% or more tags to add to each AWS resource, up to 50 tags for a resource.
+%%
+%% Tagging is only available through the API, SDKs, and CLI. You can't manage
+%% or view tags through the AWS WAF Classic console. You can use this action
+%% to tag the AWS resources that you manage through AWS WAF Classic: web
+%% ACLs, rule groups, and rules.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -1397,7 +2145,18 @@ tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
-
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> <p/>
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -1405,7 +2164,18 @@ untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
-%% @doc Inserts or deletes <a>ByteMatchTuple</a> objects (filters) in a
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Inserts or deletes <a>ByteMatchTuple</a> objects (filters) in a
 %% <a>ByteMatchSet</a>. For each <code>ByteMatchTuple</code> object, you
 %% specify the following values:
 %%
@@ -1458,7 +2228,18 @@ update_byte_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateByteMatchSet">>, Input, Options).
 
-%% @doc Inserts or deletes <a>GeoMatchConstraint</a> objects in an
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Inserts or deletes <a>GeoMatchConstraint</a> objects in an
 %% <code>GeoMatchSet</code>. For each <code>GeoMatchConstraint</code> object,
 %% you specify the following values:
 %%
@@ -1501,7 +2282,18 @@ update_geo_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateGeoMatchSet">>, Input, Options).
 
-%% @doc Inserts or deletes <a>IPSetDescriptor</a> objects in an
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Inserts or deletes <a>IPSetDescriptor</a> objects in an
 %% <code>IPSet</code>. For each <code>IPSetDescriptor</code> object, you
 %% specify the following values:
 %%
@@ -1571,8 +2363,19 @@ update_i_p_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateIPSet">>, Input, Options).
 
-%% @doc Inserts or deletes <a>Predicate</a> objects in a rule and updates the
-%% <code>RateLimit</code> in the rule.
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Inserts or deletes <a>Predicate</a> objects in a rule and updates
+%% the <code>RateLimit</code> in the rule.
 %%
 %% Each <code>Predicate</code> object identifies a predicate, such as a
 %% <a>ByteMatchSet</a> or an <a>IPSet</a>, that specifies the web requests
@@ -1590,14 +2393,14 @@ update_i_p_set(Client, Input, Options)
 %% </li> <li> A <code>ByteMatchSet</code> that matches <code>BadBot</code> in
 %% the <code>User-Agent</code> header
 %%
-%% </li> </ul> Further, you specify a <code>RateLimit</code> of 15,000.
+%% </li> </ul> Further, you specify a <code>RateLimit</code> of 1,000.
 %%
 %% You then add the <code>RateBasedRule</code> to a <code>WebACL</code> and
 %% specify that you want to block requests that satisfy the rule. For a
 %% request to be blocked, it must come from the IP address 192.0.2.44
 %% <i>and</i> the <code>User-Agent</code> header in the request must contain
 %% the value <code>BadBot</code>. Further, requests that match these two
-%% conditions much be received at a rate of more than 15,000 every five
+%% conditions much be received at a rate of more than 1,000 every five
 %% minutes. If the rate drops below this limit, AWS WAF no longer blocks the
 %% requests.
 %%
@@ -1612,7 +2415,7 @@ update_i_p_set(Client, Input, Options)
 %%
 %% </li> <li> A <code>TargetString</code> of <code>login</code>
 %%
-%% </li> </ul> Further, you specify a <code>RateLimit</code> of 15,000.
+%% </li> </ul> Further, you specify a <code>RateLimit</code> of 1,000.
 %%
 %% By adding this <code>RateBasedRule</code> to a <code>WebACL</code>, you
 %% could limit requests to your login page without affecting the rest of your
@@ -1624,7 +2427,18 @@ update_rate_based_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRateBasedRule">>, Input, Options).
 
-%% @doc Inserts or deletes <a>RegexMatchTuple</a> objects (filters) in a
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Inserts or deletes <a>RegexMatchTuple</a> objects (filters) in a
 %% <a>RegexMatchSet</a>. For each <code>RegexMatchSetUpdate</code> object,
 %% you specify the following values:
 %%
@@ -1674,7 +2488,18 @@ update_regex_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRegexMatchSet">>, Input, Options).
 
-%% @doc Inserts or deletes <code>RegexPatternString</code> objects in a
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Inserts or deletes <code>RegexPatternString</code> objects in a
 %% <a>RegexPatternSet</a>. For each <code>RegexPatternString</code> object,
 %% you specify the following values:
 %%
@@ -1719,13 +2544,24 @@ update_regex_pattern_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRegexPatternSet">>, Input, Options).
 
-%% @doc Inserts or deletes <a>Predicate</a> objects in a <code>Rule</code>.
-%% Each <code>Predicate</code> object identifies a predicate, such as a
-%% <a>ByteMatchSet</a> or an <a>IPSet</a>, that specifies the web requests
-%% that you want to allow, block, or count. If you add more than one
-%% predicate to a <code>Rule</code>, a request must match all of the
-%% specifications to be allowed, blocked, or counted. For example, suppose
-%% that you add the following to a <code>Rule</code>:
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Inserts or deletes <a>Predicate</a> objects in a
+%% <code>Rule</code>. Each <code>Predicate</code> object identifies a
+%% predicate, such as a <a>ByteMatchSet</a> or an <a>IPSet</a>, that
+%% specifies the web requests that you want to allow, block, or count. If you
+%% add more than one predicate to a <code>Rule</code>, a request must match
+%% all of the specifications to be allowed, blocked, or counted. For example,
+%% suppose that you add the following to a <code>Rule</code>:
 %%
 %% <ul> <li> A <code>ByteMatchSet</code> that matches the value
 %% <code>BadBot</code> in the <code>User-Agent</code> header
@@ -1772,7 +2608,18 @@ update_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRule">>, Input, Options).
 
-%% @doc Inserts or deletes <a>ActivatedRule</a> objects in a
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Inserts or deletes <a>ActivatedRule</a> objects in a
 %% <code>RuleGroup</code>.
 %%
 %% You can only insert <code>REGULAR</code> rules into a rule group.
@@ -1809,7 +2656,18 @@ update_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRuleGroup">>, Input, Options).
 
-%% @doc Inserts or deletes <a>SizeConstraint</a> objects (filters) in a
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Inserts or deletes <a>SizeConstraint</a> objects (filters) in a
 %% <a>SizeConstraintSet</a>. For each <code>SizeConstraint</code> object, you
 %% specify the following values:
 %%
@@ -1868,8 +2726,19 @@ update_size_constraint_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSizeConstraintSet">>, Input, Options).
 
-%% @doc Inserts or deletes <a>SqlInjectionMatchTuple</a> objects (filters) in
-%% a <a>SqlInjectionMatchSet</a>. For each
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Inserts or deletes <a>SqlInjectionMatchTuple</a> objects (filters)
+%% in a <a>SqlInjectionMatchSet</a>. For each
 %% <code>SqlInjectionMatchTuple</code> object, you specify the following
 %% values:
 %%
@@ -1919,7 +2788,18 @@ update_sql_injection_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSqlInjectionMatchSet">>, Input, Options).
 
-%% @doc Inserts or deletes <a>ActivatedRule</a> objects in a
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Inserts or deletes <a>ActivatedRule</a> objects in a
 %% <code>WebACL</code>. Each <code>Rule</code> identifies web requests that
 %% you want to allow, block, or count. When you update a <code>WebACL</code>,
 %% you specify the following values:
@@ -1973,14 +2853,14 @@ update_sql_injection_match_set(Client, Input, Options)
 %% a CloudFront distribution.
 %%
 %% The <code>ActivatedRule</code> can be a rule group. If you specify a rule
-%% group as your <code>ActivatedRule</code>, you can exclude specific rules
+%% group as your <code>ActivatedRule</code> , you can exclude specific rules
 %% from that rule group.
 %%
 %% If you already have a rule group associated with a web ACL and want to
 %% submit an <code>UpdateWebACL</code> request to exclude certain rules from
 %% that rule group, you must first remove the rule group from the web ACL,
 %% the re-insert it again, specifying the excluded rules. For details, see
-%% <a>ActivatedRule$ExcludedRules</a>.
+%% <a>ActivatedRule$ExcludedRules</a> .
 %%
 %% </li> </ol> Be aware that if you try to add a RATE_BASED rule to a web ACL
 %% without setting the rule type when first creating the rule, the
@@ -1999,7 +2879,18 @@ update_web_a_c_l(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateWebACL">>, Input, Options).
 
-%% @doc Inserts or deletes <a>XssMatchTuple</a> objects (filters) in an
+%% @doc <note> This is <b>AWS WAF Classic</b> documentation. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html">AWS
+%% WAF Classic</a> in the developer guide.
+%%
+%% <b>For the latest version of AWS WAF</b>, use the AWS WAFV2 API and see
+%% the <a
+%% href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS
+%% WAF Developer Guide</a>. With the latest version, AWS WAF has a single set
+%% of endpoints for regional and global use.
+%%
+%% </note> Inserts or deletes <a>XssMatchTuple</a> objects (filters) in an
 %% <a>XssMatchSet</a>. For each <code>XssMatchTuple</code> object, you
 %% specify the following values:
 %%
@@ -2062,20 +2953,14 @@ request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"waf">>},
     Host = get_host(<<"waf">>, Client1),
     URL = get_url(Host, Client1),
-    Headers1 =
-        case maps:get(token, Client1, undefined) of
-            Token when byte_size(Token) > 0 -> [{<<"X-Amz-Security-Token">>, Token}];
-            _ -> []
-        end,
-    Headers2 = [
+    Headers = [
         {<<"Host">>, Host},
         {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
         {<<"X-Amz-Target">>, << <<"AWSWAF_20150824.">>/binary, Action/binary>>}
-        | Headers1
     ],
     Payload = jsx:encode(Input),
-    Headers = aws_request:sign_request(Client1, <<"POST">>, URL, Headers2, Payload),
-    Response = hackney:request(post, URL, Headers, Payload, Options),
+    SignedHeaders = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
+    Response = hackney:request(post, URL, SignedHeaders, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->

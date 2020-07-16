@@ -108,6 +108,12 @@
          describe_virtual_interfaces/3,
          disassociate_connection_from_lag/2,
          disassociate_connection_from_lag/3,
+         list_virtual_interface_test_history/2,
+         list_virtual_interface_test_history/3,
+         start_bgp_failover_test/2,
+         start_bgp_failover_test/3,
+         stop_bgp_failover_test/2,
+         stop_bgp_failover_test/3,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
@@ -493,6 +499,14 @@ create_lag(Client, Input, Options)
 %% including VPCs in different AWS Regions. Connecting the private virtual
 %% interface to a VGW only provides access to a single VPC within the same
 %% Region.
+%%
+%% Setting the MTU of a virtual interface to 9001 (jumbo frames) can cause an
+%% update to the underlying physical connection if it wasn't updated to
+%% support jumbo frames. Updating the connection disrupts network
+%% connectivity for all virtual interfaces associated with the connection for
+%% up to 30 seconds. To check whether your connection supports jumbo frames,
+%% call <a>DescribeConnections</a>. To check whether your virtual interface
+%% supports jumbo frames, call <a>DescribeVirtualInterfaces</a>.
 create_private_virtual_interface(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_private_virtual_interface(Client, Input, []).
@@ -527,7 +541,13 @@ create_public_virtual_interface(Client, Input, Options)
 %% you use the default ASN 64512 for both your the transit gateway and Direct
 %% Connect gateway, the association request fails.
 %%
-%% </important>
+%% </important> Setting the MTU of a virtual interface to 8500 (jumbo frames)
+%% can cause an update to the underlying physical connection if it wasn't
+%% updated to support jumbo frames. Updating the connection disrupts network
+%% connectivity for all virtual interfaces associated with the connection for
+%% up to 30 seconds. To check whether your connection supports jumbo frames,
+%% call <a>DescribeConnections</a>. To check whether your virtual interface
+%% supports jumbo frames, call <a>DescribeVirtualInterfaces</a>.
 create_transit_virtual_interface(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_transit_virtual_interface(Client, Input, []).
@@ -842,6 +862,43 @@ disassociate_connection_from_lag(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateConnectionFromLag">>, Input, Options).
 
+%% @doc Lists the virtual interface failover test history.
+list_virtual_interface_test_history(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_virtual_interface_test_history(Client, Input, []).
+list_virtual_interface_test_history(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListVirtualInterfaceTestHistory">>, Input, Options).
+
+%% @doc Starts the virtual interface failover test that verifies your
+%% configuration meets your resiliency requirements by placing the BGP
+%% peering session in the DOWN state. You can then send traffic to verify
+%% that there are no outages.
+%%
+%% You can run the test on public, private, transit, and hosted virtual
+%% interfaces.
+%%
+%% You can use <a
+%% href="https://docs.aws.amazon.com/directconnect/latest/APIReference/API_ListVirtualInterfaceTestHistory.html">ListVirtualInterfaceTestHistory</a>
+%% to view the virtual interface test history.
+%%
+%% If you need to stop the test before the test interval completes, use <a
+%% href="https://docs.aws.amazon.com/directconnect/latest/APIReference/API_StopBgpFailoverTest.html">StopBgpFailoverTest</a>.
+start_bgp_failover_test(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_bgp_failover_test(Client, Input, []).
+start_bgp_failover_test(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartBgpFailoverTest">>, Input, Options).
+
+%% @doc Stops the virtual interface failover test.
+stop_bgp_failover_test(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_bgp_failover_test(Client, Input, []).
+stop_bgp_failover_test(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopBgpFailoverTest">>, Input, Options).
+
 %% @doc Adds the specified tags to the specified AWS Direct Connect resource.
 %% Each resource can have a maximum of 50 tags.
 %%
@@ -905,7 +962,7 @@ update_lag(Client, Input, Options)
 %% support jumbo frames. Updating the connection disrupts network
 %% connectivity for all virtual interfaces associated with the connection for
 %% up to 30 seconds. To check whether your connection supports jumbo frames,
-%% call <a>DescribeConnections</a>. To check whether your virtual interface
+%% call <a>DescribeConnections</a>. To check whether your virtual q interface
 %% supports jumbo frames, call <a>DescribeVirtualInterfaces</a>.
 update_virtual_interface_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -928,20 +985,14 @@ request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"directconnect">>},
     Host = get_host(<<"directconnect">>, Client1),
     URL = get_url(Host, Client1),
-    Headers1 =
-        case maps:get(token, Client1, undefined) of
-            Token when byte_size(Token) > 0 -> [{<<"X-Amz-Security-Token">>, Token}];
-            _ -> []
-        end,
-    Headers2 = [
+    Headers = [
         {<<"Host">>, Host},
         {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
         {<<"X-Amz-Target">>, << <<"OvertureService.">>/binary, Action/binary>>}
-        | Headers1
     ],
     Payload = jsx:encode(Input),
-    Headers = aws_request:sign_request(Client1, <<"POST">>, URL, Headers2, Payload),
-    Response = hackney:request(post, URL, Headers, Payload, Options),
+    SignedHeaders = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
+    Response = hackney:request(post, URL, SignedHeaders, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->

@@ -76,8 +76,7 @@
 %%====================================================================
 
 %% @doc Creates a new identity pool. The identity pool is a store of user
-%% identity information that is specific to your AWS account. The limit on
-%% identity pools is 60 per account. The keys for
+%% identity information that is specific to your AWS account. The keys for
 %% <code>SupportedLoginProviders</code> are as follows:
 %%
 %% <ul> <li> Facebook: <code>graph.facebook.com</code>
@@ -395,20 +394,14 @@ request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"cognito-identity">>},
     Host = get_host(<<"cognito-identity">>, Client1),
     URL = get_url(Host, Client1),
-    Headers1 =
-        case maps:get(token, Client1, undefined) of
-            Token when byte_size(Token) > 0 -> [{<<"X-Amz-Security-Token">>, Token}];
-            _ -> []
-        end,
-    Headers2 = [
+    Headers = [
         {<<"Host">>, Host},
         {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
         {<<"X-Amz-Target">>, << <<"AWSCognitoIdentityService.">>/binary, Action/binary>>}
-        | Headers1
     ],
     Payload = jsx:encode(Input),
-    Headers = aws_request:sign_request(Client1, <<"POST">>, URL, Headers2, Payload),
-    Response = hackney:request(post, URL, Headers, Payload, Options),
+    SignedHeaders = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
+    Response = hackney:request(post, URL, SignedHeaders, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->

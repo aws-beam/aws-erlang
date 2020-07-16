@@ -47,9 +47,15 @@
 %% This is an asynchronous operation that immediately returns. The initial
 %% status of the delivery stream is <code>CREATING</code>. After the delivery
 %% stream is created, its status is <code>ACTIVE</code> and it now accepts
-%% data. Attempts to send data to a delivery stream that is not in the
-%% <code>ACTIVE</code> state cause an exception. To check the state of a
-%% delivery stream, use <a>DescribeDeliveryStream</a>.
+%% data. If the delivery stream creation fails, the status transitions to
+%% <code>CREATING_FAILED</code>. Attempts to send data to a delivery stream
+%% that is not in the <code>ACTIVE</code> state cause an exception. To check
+%% the state of a delivery stream, use <a>DescribeDeliveryStream</a>.
+%%
+%% If the status of a delivery stream is <code>CREATING_FAILED</code>, this
+%% status doesn't change, and you can't invoke
+%% <code>CreateDeliveryStream</code> again on it. However, you can invoke the
+%% <a>DeleteDeliveryStream</a> operation to delete it.
 %%
 %% A Kinesis Data Firehose delivery stream can be configured to receive
 %% records directly from providers using <a>PutRecord</a> or
@@ -59,6 +65,12 @@
 %% <code>KinesisStreamAsSource</code>, and provide the Kinesis stream Amazon
 %% Resource Name (ARN) and role ARN in the
 %% <code>KinesisStreamSourceConfiguration</code> parameter.
+%%
+%% To create a delivery stream with server-side encryption (SSE) enabled,
+%% include <a>DeliveryStreamEncryptionConfigurationInput</a> in your request.
+%% This is optional. You can also invoke <a>StartDeliveryStreamEncryption</a>
+%% to turn on SSE for an existing delivery stream that doesn't have SSE
+%% enabled.
 %%
 %% A delivery stream is configured with a single destination: Amazon S3,
 %% Amazon ES, Amazon Redshift, or Splunk. You must specify only one of the
@@ -117,19 +129,19 @@ create_delivery_stream(Client, Input, Options)
 
 %% @doc Deletes a delivery stream and its data.
 %%
-%% You can delete a delivery stream only if it is in <code>ACTIVE</code> or
-%% <code>DELETING</code> state, and not in the <code>CREATING</code> state.
-%% While the deletion request is in process, the delivery stream is in the
-%% <code>DELETING</code> state.
-%%
 %% To check the state of a delivery stream, use
-%% <a>DescribeDeliveryStream</a>.
+%% <a>DescribeDeliveryStream</a>. You can delete a delivery stream only if it
+%% is in one of the following states: <code>ACTIVE</code>,
+%% <code>DELETING</code>, <code>CREATING_FAILED</code>, or
+%% <code>DELETING_FAILED</code>. You can't delete a delivery stream that is
+%% in the <code>CREATING</code> state. While the deletion request is in
+%% process, the delivery stream is in the <code>DELETING</code> state.
 %%
-%% While the delivery stream is <code>DELETING</code> state, the service
-%% might continue to accept the records, but it doesn't make any guarantees
-%% with respect to delivering the data. Therefore, as a best practice, you
-%% should first stop any applications that are sending records before
-%% deleting a delivery stream.
+%% While the delivery stream is in the <code>DELETING</code> state, the
+%% service might continue to accept records, but it doesn't make any
+%% guarantees with respect to delivering the data. Therefore, as a best
+%% practice, first stop any applications that are sending records before you
+%% delete a delivery stream.
 delete_delivery_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_delivery_stream(Client, Input, []).
@@ -137,10 +149,17 @@ delete_delivery_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDeliveryStream">>, Input, Options).
 
-%% @doc Describes the specified delivery stream and gets the status. For
-%% example, after your delivery stream is created, call
+%% @doc Describes the specified delivery stream and its status. For example,
+%% after your delivery stream is created, call
 %% <code>DescribeDeliveryStream</code> to see whether the delivery stream is
 %% <code>ACTIVE</code> and therefore ready for data to be sent to it.
+%%
+%% If the status of a delivery stream is <code>CREATING_FAILED</code>, this
+%% status doesn't change, and you can't invoke <a>CreateDeliveryStream</a>
+%% again on it. However, you can invoke the <a>DeleteDeliveryStream</a>
+%% operation to delete it. If the status is <code>DELETING_FAILED</code>, you
+%% can force deletion by invoking <a>DeleteDeliveryStream</a> again but with
+%% <a>DeleteDeliveryStreamInput$AllowForceDelete</a> set to true.
 describe_delivery_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_delivery_stream(Client, Input, []).
@@ -311,21 +330,45 @@ put_record_batch(Client, Input, Options)
 %% @doc Enables server-side encryption (SSE) for the delivery stream.
 %%
 %% This operation is asynchronous. It returns immediately. When you invoke
-%% it, Kinesis Data Firehose first sets the status of the stream to
-%% <code>ENABLING</code>, and then to <code>ENABLED</code>. You can continue
-%% to read and write data to your stream while its status is
-%% <code>ENABLING</code>, but the data is not encrypted. It can take up to 5
-%% seconds after the encryption status changes to <code>ENABLED</code> before
-%% all records written to the delivery stream are encrypted. To find out
-%% whether a record or a batch of records was encrypted, check the response
-%% elements <a>PutRecordOutput$Encrypted</a> and
-%% <a>PutRecordBatchOutput$Encrypted</a>, respectively.
+%% it, Kinesis Data Firehose first sets the encryption status of the stream
+%% to <code>ENABLING</code>, and then to <code>ENABLED</code>. The encryption
+%% status of a delivery stream is the <code>Status</code> property in
+%% <a>DeliveryStreamEncryptionConfiguration</a>. If the operation fails, the
+%% encryption status changes to <code>ENABLING_FAILED</code>. You can
+%% continue to read and write data to your delivery stream while the
+%% encryption status is <code>ENABLING</code>, but the data is not encrypted.
+%% It can take up to 5 seconds after the encryption status changes to
+%% <code>ENABLED</code> before all records written to the delivery stream are
+%% encrypted. To find out whether a record or a batch of records was
+%% encrypted, check the response elements <a>PutRecordOutput$Encrypted</a>
+%% and <a>PutRecordBatchOutput$Encrypted</a>, respectively.
 %%
-%% To check the encryption state of a delivery stream, use
+%% To check the encryption status of a delivery stream, use
 %% <a>DescribeDeliveryStream</a>.
 %%
-%% You can only enable SSE for a delivery stream that uses
-%% <code>DirectPut</code> as its source.
+%% Even if encryption is currently enabled for a delivery stream, you can
+%% still invoke this operation on it to change the ARN of the CMK or both its
+%% type and ARN. If you invoke this method to change the CMK, and the old CMK
+%% is of type <code>CUSTOMER_MANAGED_CMK</code>, Kinesis Data Firehose
+%% schedules the grant it had on the old CMK for retirement. If the new CMK
+%% is of type <code>CUSTOMER_MANAGED_CMK</code>, Kinesis Data Firehose
+%% creates a grant that enables it to use the new CMK to encrypt and decrypt
+%% data and to manage the grant.
+%%
+%% If a delivery stream already has encryption enabled and then you invoke
+%% this operation to change the ARN of the CMK or both its type and ARN and
+%% you get <code>ENABLING_FAILED</code>, this only means that the attempt to
+%% change the CMK failed. In this case, encryption remains enabled with the
+%% old CMK.
+%%
+%% If the encryption status of your delivery stream is
+%% <code>ENABLING_FAILED</code>, you can invoke this operation again with a
+%% valid CMK. The CMK must be enabled and the key policy mustn't explicitly
+%% deny the permission for Kinesis Data Firehose to invoke KMS encrypt and
+%% decrypt operations.
+%%
+%% You can enable SSE for a delivery stream only if it's a delivery stream
+%% that uses <code>DirectPut</code> as its source.
 %%
 %% The <code>StartDeliveryStreamEncryption</code> and
 %% <code>StopDeliveryStreamEncryption</code> operations have a combined limit
@@ -343,8 +386,8 @@ start_delivery_stream_encryption(Client, Input, Options)
 %% @doc Disables server-side encryption (SSE) for the delivery stream.
 %%
 %% This operation is asynchronous. It returns immediately. When you invoke
-%% it, Kinesis Data Firehose first sets the status of the stream to
-%% <code>DISABLING</code>, and then to <code>DISABLED</code>. You can
+%% it, Kinesis Data Firehose first sets the encryption status of the stream
+%% to <code>DISABLING</code>, and then to <code>DISABLED</code>. You can
 %% continue to read and write data to your stream while its status is
 %% <code>DISABLING</code>. It can take up to 5 seconds after the encryption
 %% status changes to <code>DISABLED</code> before all records written to the
@@ -355,6 +398,11 @@ start_delivery_stream_encryption(Client, Input, Options)
 %%
 %% To check the encryption state of a delivery stream, use
 %% <a>DescribeDeliveryStream</a>.
+%%
+%% If SSE is enabled using a customer managed CMK and then you invoke
+%% <code>StopDeliveryStreamEncryption</code>, Kinesis Data Firehose schedules
+%% the related KMS grant for retirement and then retires it after it ensures
+%% that it is finished delivering records to the destination.
 %%
 %% The <code>StartDeliveryStreamEncryption</code> and
 %% <code>StopDeliveryStreamEncryption</code> operations have a combined limit
@@ -459,20 +507,14 @@ request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"firehose">>},
     Host = get_host(<<"firehose">>, Client1),
     URL = get_url(Host, Client1),
-    Headers1 =
-        case maps:get(token, Client1, undefined) of
-            Token when byte_size(Token) > 0 -> [{<<"X-Amz-Security-Token">>, Token}];
-            _ -> []
-        end,
-    Headers2 = [
+    Headers = [
         {<<"Host">>, Host},
         {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
         {<<"X-Amz-Target">>, << <<"Firehose_20150804.">>/binary, Action/binary>>}
-        | Headers1
     ],
     Payload = jsx:encode(Input),
-    Headers = aws_request:sign_request(Client1, <<"POST">>, URL, Headers2, Payload),
-    Response = hackney:request(post, URL, Headers, Payload, Options),
+    SignedHeaders = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
+    Response = hackney:request(post, URL, SignedHeaders, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->

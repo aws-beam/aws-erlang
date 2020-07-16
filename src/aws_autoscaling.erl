@@ -21,6 +21,12 @@
 %%
 %% </li> <li> Custom resources provided by your own applications or services
 %%
+%% </li> <li> Amazon Comprehend document classification endpoints
+%%
+%% </li> <li> AWS Lambda function provisioned concurrency
+%%
+%% </li> <li> Amazon Keyspaces (for Apache Cassandra) tables
+%%
 %% </li> </ul> <b>API Summary</b>
 %%
 %% The Application Auto Scaling service API includes three key sets of
@@ -37,11 +43,12 @@
 %% recent scaling activity history.
 %%
 %% </li> <li> Suspend and resume scaling - Temporarily suspend and later
-%% resume automatic scaling by calling the <a>RegisterScalableTarget</a>
-%% action for any Application Auto Scaling scalable target. You can suspend
-%% and resume, individually or in combination, scale-out activities triggered
-%% by a scaling policy, scale-in activities triggered by a scaling policy,
-%% and scheduled scaling.
+%% resume automatic scaling by calling the <a
+%% href="https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html">RegisterScalableTarget</a>
+%% API action for any Application Auto Scaling scalable target. You can
+%% suspend and resume (individually or in combination) scale-out activities
+%% that are triggered by a scaling policy, scale-in activities that are
+%% triggered by a scaling policy, and scheduled scaling.
 %%
 %% </li> </ul> To learn more about Application Auto Scaling, including
 %% information about granting IAM users required permissions for Application
@@ -90,9 +97,6 @@
 %% href="https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html#delete-target-tracking-policy">Delete
 %% a Target Tracking Scaling Policy</a> in the <i>Application Auto Scaling
 %% User Guide</i>.
-%%
-%% To create a scaling policy or update an existing one, see
-%% <a>PutScalingPolicy</a>.
 delete_scaling_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_scaling_policy(Client, Input, []).
@@ -113,13 +117,14 @@ delete_scheduled_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteScheduledAction">>, Input, Options).
 
-%% @doc Deregisters an Application Auto Scaling scalable target.
+%% @doc Deregisters an Application Auto Scaling scalable target when you have
+%% finished using it. To see which resources have been registered, use <a
+%% href="https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DescribeScalableTargets.html">DescribeScalableTargets</a>.
 %%
-%% Deregistering a scalable target deletes the scaling policies that are
-%% associated with it.
+%% <note> Deregistering a scalable target deletes the scaling policies and
+%% the scheduled actions that are associated with it.
 %%
-%% To create a scalable target or update an existing one, see
-%% <a>RegisterScalableTarget</a>.
+%% </note>
 deregister_scalable_target(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_scalable_target(Client, Input, []).
@@ -132,10 +137,6 @@ deregister_scalable_target(Client, Input, Options)
 %%
 %% You can filter the results using <code>ResourceIds</code> and
 %% <code>ScalableDimension</code>.
-%%
-%% To create a scalable target or update an existing one, see
-%% <a>RegisterScalableTarget</a>. If you are no longer using a scalable
-%% target, you can deregister it using <a>DeregisterScalableTarget</a>.
 describe_scalable_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scalable_targets(Client, Input, []).
@@ -148,11 +149,6 @@ describe_scalable_targets(Client, Input, Options)
 %%
 %% You can filter the results using <code>ResourceId</code> and
 %% <code>ScalableDimension</code>.
-%%
-%% Scaling activities are triggered by CloudWatch alarms that are associated
-%% with scaling policies. To view the scaling policies for a service
-%% namespace, see <a>DescribeScalingPolicies</a>. To create a scaling policy
-%% or update an existing one, see <a>PutScalingPolicy</a>.
 describe_scaling_activities(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scaling_activities(Client, Input, []).
@@ -166,9 +162,11 @@ describe_scaling_activities(Client, Input, Options)
 %% You can filter the results using <code>ResourceId</code>,
 %% <code>ScalableDimension</code>, and <code>PolicyNames</code>.
 %%
-%% To create a scaling policy or update an existing one, see
-%% <a>PutScalingPolicy</a>. If you are no longer using a scaling policy, you
-%% can delete it using <a>DeleteScalingPolicy</a>.
+%% For more information, see <a
+%% href="https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html">Target
+%% Tracking Scaling Policies</a> and <a
+%% href="https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html">Step
+%% Scaling Policies</a> in the <i>Application Auto Scaling User Guide</i>.
 describe_scaling_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scaling_policies(Client, Input, []).
@@ -183,9 +181,9 @@ describe_scaling_policies(Client, Input, Options)
 %% <code>ScalableDimension</code>, and <code>ScheduledActionNames</code>
 %% parameters.
 %%
-%% To create a scheduled action or update an existing one, see
-%% <a>PutScheduledAction</a>. If you are no longer using a scheduled action,
-%% you can delete it using <a>DeleteScheduledAction</a>.
+%% For more information, see <a
+%% href="https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-scheduled-scaling.html">Scheduled
+%% Scaling</a> in the <i>Application Auto Scaling User Guide</i>.
 describe_scheduled_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scheduled_actions(Client, Input, []).
@@ -193,22 +191,13 @@ describe_scheduled_actions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeScheduledActions">>, Input, Options).
 
-%% @doc Creates or updates a policy for an Application Auto Scaling scalable
-%% target.
+%% @doc Creates or updates a scaling policy for an Application Auto Scaling
+%% scalable target.
 %%
 %% Each scalable target is identified by a service namespace, resource ID,
 %% and scalable dimension. A scaling policy applies to the scalable target
 %% identified by those three attributes. You cannot create a scaling policy
-%% until you have registered the resource as a scalable target using
-%% <a>RegisterScalableTarget</a>.
-%%
-%% To update a policy, specify its policy name and the parameters that you
-%% want to change. Any parameters that you don't specify are not changed by
-%% this update request.
-%%
-%% You can view the scaling policies for a service namespace using
-%% <a>DescribeScalingPolicies</a>. If you are no longer using a scaling
-%% policy, you can delete it using <a>DeleteScalingPolicy</a>.
+%% until you have registered the resource as a scalable target.
 %%
 %% Multiple scaling policies can be in force at the same time for the same
 %% scalable target. You can have one or more target tracking scaling
@@ -221,9 +210,25 @@ describe_scheduled_actions(Client, Input, Options)
 %% is 10, Application Auto Scaling uses the policy with the highest
 %% calculated capacity (200% of 10 = 20) and scales out to 30.
 %%
-%% Learn more about how to work with scaling policies in the <a
-%% href="https://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html">Application
-%% Auto Scaling User Guide</a>.
+%% We recommend caution, however, when using target tracking scaling policies
+%% with step scaling policies because conflicts between these policies can
+%% cause undesirable behavior. For example, if the step scaling policy
+%% initiates a scale-in activity before the target tracking policy is ready
+%% to scale in, the scale-in activity will not be blocked. After the scale-in
+%% activity completes, the target tracking policy could instruct the scalable
+%% target to scale out again.
+%%
+%% For more information, see <a
+%% href="https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html">Target
+%% Tracking Scaling Policies</a> and <a
+%% href="https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html">Step
+%% Scaling Policies</a> in the <i>Application Auto Scaling User Guide</i>.
+%%
+%% <note> If a scalable target is deregistered, the scalable target is no
+%% longer available to execute scaling policies. Any scaling policies that
+%% were specified for the scalable target are deleted.
+%%
+%% </note>
 put_scaling_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_scaling_policy(Client, Input, []).
@@ -237,21 +242,25 @@ put_scaling_policy(Client, Input, Options)
 %% Each scalable target is identified by a service namespace, resource ID,
 %% and scalable dimension. A scheduled action applies to the scalable target
 %% identified by those three attributes. You cannot create a scheduled action
-%% until you have registered the resource as a scalable target using
-%% <a>RegisterScalableTarget</a>.
+%% until you have registered the resource as a scalable target.
 %%
-%% To update an action, specify its name and the parameters that you want to
+%% When start and end times are specified with a recurring schedule using a
+%% cron expression or rates, they form the boundaries of when the recurring
+%% action starts and stops.
+%%
+%% To update a scheduled action, specify the parameters that you want to
 %% change. If you don't specify start and end times, the old values are
-%% deleted. Any other parameters that you don't specify are not changed by
-%% this update request.
+%% deleted.
 %%
-%% You can view the scheduled actions using <a>DescribeScheduledActions</a>.
-%% If you are no longer using a scheduled action, you can delete it using
-%% <a>DeleteScheduledAction</a>.
+%% For more information, see <a
+%% href="https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-scheduled-scaling.html">Scheduled
+%% Scaling</a> in the <i>Application Auto Scaling User Guide</i>.
 %%
-%% Learn more about how to work with scheduled actions in the <a
-%% href="https://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html">Application
-%% Auto Scaling User Guide</a>.
+%% <note> If a scalable target is deregistered, the scalable target is no
+%% longer available to run scheduled actions. Any scheduled actions that were
+%% specified for the scalable target are deleted.
+%%
+%% </note>
 put_scheduled_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_scheduled_action(Client, Input, []).
@@ -259,28 +268,29 @@ put_scheduled_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutScheduledAction">>, Input, Options).
 
-%% @doc Registers or updates a scalable target. A scalable target is a
-%% resource that Application Auto Scaling can scale out and scale in.
-%% Scalable targets are uniquely identified by the combination of resource
-%% ID, scalable dimension, and namespace.
+%% @doc Registers or updates a scalable target.
+%%
+%% A scalable target is a resource that Application Auto Scaling can scale
+%% out and scale in. Scalable targets are uniquely identified by the
+%% combination of resource ID, scalable dimension, and namespace.
 %%
 %% When you register a new scalable target, you must specify values for
-%% minimum and maximum capacity. Application Auto Scaling will not scale
-%% capacity to values that are outside of this range.
-%%
-%% To update a scalable target, specify the parameter that you want to change
-%% as well as the following parameters that identify the scalable target:
-%% resource ID, scalable dimension, and namespace. Any parameters that you
-%% don't specify are not changed by this update request.
+%% minimum and maximum capacity. Application Auto Scaling scaling policies
+%% will not scale capacity to values that are outside of this range.
 %%
 %% After you register a scalable target, you do not need to register it again
 %% to use other Application Auto Scaling operations. To see which resources
-%% have been registered, use <a>DescribeScalableTargets</a>. You can also
-%% view the scaling policies for a service namespace by using
-%% <a>DescribeScalableTargets</a>.
+%% have been registered, use <a
+%% href="https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DescribeScalableTargets.html">DescribeScalableTargets</a>.
+%% You can also view the scaling policies for a service namespace by using <a
+%% href="https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DescribeScalableTargets.html">DescribeScalableTargets</a>.
+%% If you no longer need a scalable target, you can deregister it by using <a
+%% href="https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DeregisterScalableTarget.html">DeregisterScalableTarget</a>.
 %%
-%% If you no longer need a scalable target, you can deregister it by using
-%% <a>DeregisterScalableTarget</a>.
+%% To update a scalable target, specify the parameters that you want to
+%% change. Include the parameters that identify the scalable target: resource
+%% ID, scalable dimension, and namespace. Any parameters that you don't
+%% specify are not changed by this update request.
 register_scalable_target(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_scalable_target(Client, Input, []).
@@ -300,22 +310,16 @@ register_scalable_target(Client, Input, Options)
     Error :: {binary(), binary()}.
 request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"application-autoscaling">>},
-    Host = get_host(<<"autoscaling">>, Client1),
+    Host = get_host(<<"application-autoscaling">>, Client1),
     URL = get_url(Host, Client1),
-    Headers1 =
-        case maps:get(token, Client1, undefined) of
-            Token when byte_size(Token) > 0 -> [{<<"X-Amz-Security-Token">>, Token}];
-            _ -> []
-        end,
-    Headers2 = [
+    Headers = [
         {<<"Host">>, Host},
         {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
         {<<"X-Amz-Target">>, << <<"AnyScaleFrontendService.">>/binary, Action/binary>>}
-        | Headers1
     ],
     Payload = jsx:encode(Input),
-    Headers = aws_request:sign_request(Client1, <<"POST">>, URL, Headers2, Payload),
-    Response = hackney:request(post, URL, Headers, Payload, Options),
+    SignedHeaders = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
+    Response = hackney:request(post, URL, SignedHeaders, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->
