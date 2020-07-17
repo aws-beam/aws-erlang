@@ -41,18 +41,24 @@
          delete_configuration_aggregator/3,
          delete_configuration_recorder/2,
          delete_configuration_recorder/3,
+         delete_conformance_pack/2,
+         delete_conformance_pack/3,
          delete_delivery_channel/2,
          delete_delivery_channel/3,
          delete_evaluation_results/2,
          delete_evaluation_results/3,
          delete_organization_config_rule/2,
          delete_organization_config_rule/3,
+         delete_organization_conformance_pack/2,
+         delete_organization_conformance_pack/3,
          delete_pending_aggregation_request/2,
          delete_pending_aggregation_request/3,
          delete_remediation_configuration/2,
          delete_remediation_configuration/3,
          delete_remediation_exceptions/2,
          delete_remediation_exceptions/3,
+         delete_resource_config/2,
+         delete_resource_config/3,
          delete_retention_configuration/2,
          delete_retention_configuration/3,
          deliver_config_snapshot/2,
@@ -77,6 +83,12 @@
          describe_configuration_recorder_status/3,
          describe_configuration_recorders/2,
          describe_configuration_recorders/3,
+         describe_conformance_pack_compliance/2,
+         describe_conformance_pack_compliance/3,
+         describe_conformance_pack_status/2,
+         describe_conformance_pack_status/3,
+         describe_conformance_packs/2,
+         describe_conformance_packs/3,
          describe_delivery_channel_status/2,
          describe_delivery_channel_status/3,
          describe_delivery_channels/2,
@@ -85,6 +97,10 @@
          describe_organization_config_rule_statuses/3,
          describe_organization_config_rules/2,
          describe_organization_config_rules/3,
+         describe_organization_conformance_pack_statuses/2,
+         describe_organization_conformance_pack_statuses/3,
+         describe_organization_conformance_packs/2,
+         describe_organization_conformance_packs/3,
          describe_pending_aggregation_requests/2,
          describe_pending_aggregation_requests/3,
          describe_remediation_configurations/2,
@@ -111,10 +127,16 @@
          get_compliance_summary_by_config_rule/3,
          get_compliance_summary_by_resource_type/2,
          get_compliance_summary_by_resource_type/3,
+         get_conformance_pack_compliance_details/2,
+         get_conformance_pack_compliance_details/3,
+         get_conformance_pack_compliance_summary/2,
+         get_conformance_pack_compliance_summary/3,
          get_discovered_resource_counts/2,
          get_discovered_resource_counts/3,
          get_organization_config_rule_detailed_status/2,
          get_organization_config_rule_detailed_status/3,
+         get_organization_conformance_pack_detailed_status/2,
+         get_organization_conformance_pack_detailed_status/3,
          get_resource_config_history/2,
          get_resource_config_history/3,
          list_aggregate_discovered_resources/2,
@@ -131,18 +153,26 @@
          put_configuration_aggregator/3,
          put_configuration_recorder/2,
          put_configuration_recorder/3,
+         put_conformance_pack/2,
+         put_conformance_pack/3,
          put_delivery_channel/2,
          put_delivery_channel/3,
          put_evaluations/2,
          put_evaluations/3,
          put_organization_config_rule/2,
          put_organization_config_rule/3,
+         put_organization_conformance_pack/2,
+         put_organization_conformance_pack/3,
          put_remediation_configurations/2,
          put_remediation_configurations/3,
          put_remediation_exceptions/2,
          put_remediation_exceptions/3,
+         put_resource_config/2,
+         put_resource_config/3,
          put_retention_configuration/2,
          put_retention_configuration/3,
+         select_aggregate_resource_config/2,
+         select_aggregate_resource_config/3,
          select_resource_config/2,
          select_resource_config/3,
          start_config_rules_evaluation/2,
@@ -255,6 +285,20 @@ delete_configuration_recorder(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteConfigurationRecorder">>, Input, Options).
 
+%% @doc Deletes the specified conformance pack and all the AWS Config rules,
+%% remediation actions, and all evaluation results within that conformance
+%% pack.
+%%
+%% AWS Config sets the conformance pack to <code>DELETE_IN_PROGRESS</code>
+%% until the deletion is complete. You cannot update a conformance pack while
+%% it is in this state.
+delete_conformance_pack(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_conformance_pack(Client, Input, []).
+delete_conformance_pack(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteConformancePack">>, Input, Options).
+
 %% @doc Deletes the delivery channel.
 %%
 %% Before you can delete the delivery channel, you must stop the
@@ -291,6 +335,21 @@ delete_organization_config_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteOrganizationConfigRule">>, Input, Options).
 
+%% @doc Deletes the specified organization conformance pack and all of the
+%% config rules and remediation actions from all member accounts in that
+%% organization. Only a master account can delete an organization conformance
+%% pack.
+%%
+%% AWS Config sets the state of a conformance pack to DELETE_IN_PROGRESS
+%% until the deletion is complete. You cannot update a conformance pack while
+%% it is in this state.
+delete_organization_conformance_pack(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_organization_conformance_pack(Client, Input, []).
+delete_organization_conformance_pack(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteOrganizationConformancePack">>, Input, Options).
+
 %% @doc Deletes pending authorization requests for a specified aggregator
 %% account in a specified region.
 delete_pending_aggregation_request(Client, Input)
@@ -316,6 +375,17 @@ delete_remediation_exceptions(Client, Input)
 delete_remediation_exceptions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRemediationExceptions">>, Input, Options).
+
+%% @doc Records the configuration state for a custom resource that has been
+%% deleted. This API records a new ConfigurationItem with a ResourceDeleted
+%% status. You can retrieve the ConfigurationItems recorded for this resource
+%% in your AWS Config History.
+delete_resource_config(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_resource_config(Client, Input, []).
+delete_resource_config(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteResourceConfig">>, Input, Options).
 
 %% @doc Deletes the retention configuration.
 delete_retention_configuration(Client, Input)
@@ -509,6 +579,39 @@ describe_configuration_recorders(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConfigurationRecorders">>, Input, Options).
 
+%% @doc Returns compliance details for each rule in that conformance pack.
+%%
+%% <note> You must provide exact rule names.
+%%
+%% </note>
+describe_conformance_pack_compliance(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_conformance_pack_compliance(Client, Input, []).
+describe_conformance_pack_compliance(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeConformancePackCompliance">>, Input, Options).
+
+%% @doc Provides one or more conformance packs deployment status.
+%%
+%% <note> If there are no conformance packs then you will see an empty
+%% result.
+%%
+%% </note>
+describe_conformance_pack_status(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_conformance_pack_status(Client, Input, []).
+describe_conformance_pack_status(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeConformancePackStatus">>, Input, Options).
+
+%% @doc Returns a list of one or more conformance packs.
+describe_conformance_packs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_conformance_packs(Client, Input, []).
+describe_conformance_packs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeConformancePacks">>, Input, Options).
+
 %% @doc Returns the current status of the specified delivery channel. If a
 %% delivery channel is not specified, this action returns the current status
 %% of all delivery channels associated with the account.
@@ -577,6 +680,47 @@ describe_organization_config_rules(Client, Input)
 describe_organization_config_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeOrganizationConfigRules">>, Input, Options).
+
+%% @doc Provides organization conformance pack deployment status for an
+%% organization.
+%%
+%% <note> The status is not considered successful until organization
+%% conformance pack is successfully deployed in all the member accounts with
+%% an exception of excluded accounts.
+%%
+%% When you specify the limit and the next token, you receive a paginated
+%% response. Limit and next token are not applicable if you specify
+%% organization conformance pack names. They are only applicable, when you
+%% request all the organization conformance packs.
+%%
+%% Only a master account can call this API.
+%%
+%% </note>
+describe_organization_conformance_pack_statuses(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_organization_conformance_pack_statuses(Client, Input, []).
+describe_organization_conformance_pack_statuses(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeOrganizationConformancePackStatuses">>, Input, Options).
+
+%% @doc Returns a list of organization conformance packs.
+%%
+%% <note> When you specify the limit and the next token, you receive a
+%% paginated response.
+%%
+%% Limit and next token are not applicable if you specify organization
+%% conformance packs names. They are only applicable, when you request all
+%% the organization conformance packs.
+%%
+%% Only a master account can call this API.
+%%
+%% </note>
+describe_organization_conformance_packs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_organization_conformance_packs(Client, Input, []).
+describe_organization_conformance_packs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeOrganizationConformancePacks">>, Input, Options).
 
 %% @doc Returns a list of all pending aggregation requests.
 describe_pending_aggregation_requests(Client, Input)
@@ -737,6 +881,24 @@ get_compliance_summary_by_resource_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetComplianceSummaryByResourceType">>, Input, Options).
 
+%% @doc Returns compliance details of a conformance pack for all AWS
+%% resources that are monitered by conformance pack.
+get_conformance_pack_compliance_details(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_conformance_pack_compliance_details(Client, Input, []).
+get_conformance_pack_compliance_details(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetConformancePackComplianceDetails">>, Input, Options).
+
+%% @doc Returns compliance details for the conformance pack based on the
+%% cumulative compliance results of all the rules in that conformance pack.
+get_conformance_pack_compliance_summary(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_conformance_pack_compliance_summary(Client, Input, []).
+get_conformance_pack_compliance_summary(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetConformancePackComplianceSummary">>, Input, Options).
+
 %% @doc Returns the resource types, the number of each resource type, and the
 %% total number of resources that AWS Config is recording in this region for
 %% your AWS account.
@@ -797,6 +959,17 @@ get_organization_config_rule_detailed_status(Client, Input)
 get_organization_config_rule_detailed_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOrganizationConfigRuleDetailedStatus">>, Input, Options).
+
+%% @doc Returns detailed status for each member account within an
+%% organization for a given organization conformance pack.
+%%
+%% Only a master account can call this API.
+get_organization_conformance_pack_detailed_status(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_organization_conformance_pack_detailed_status(Client, Input, []).
+get_organization_conformance_pack_detailed_status(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetOrganizationConformancePackDetailedStatus">>, Input, Options).
 
 %% @doc Returns a list of configuration items for the specified resource. The
 %% list contains details about each state of the resource during the
@@ -976,6 +1149,29 @@ put_configuration_recorder(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutConfigurationRecorder">>, Input, Options).
 
+%% @doc Creates or updates a conformance pack. A conformance pack is a
+%% collection of AWS Config rules that can be easily deployed in an account
+%% and a region and across AWS Organization.
+%%
+%% This API creates a service linked role
+%% <code>AWSServiceRoleForConfigConforms</code> in your account. The service
+%% linked role is created only when the role does not exist in your account.
+%% AWS Config verifies the existence of role with <code>GetRole</code>
+%% action.
+%%
+%% <note> You must specify either the <code>TemplateS3Uri</code> or the
+%% <code>TemplateBody</code> parameter, but not both. If you provide both AWS
+%% Config uses the <code>TemplateS3Uri</code> parameter and ignores the
+%% <code>TemplateBody</code> parameter.
+%%
+%% </note>
+put_conformance_pack(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_conformance_pack(Client, Input, []).
+put_conformance_pack(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutConformancePack">>, Input, Options).
+
 %% @doc Creates a delivery channel object to deliver configuration
 %% information to an Amazon S3 bucket and Amazon SNS topic.
 %%
@@ -1044,6 +1240,36 @@ put_organization_config_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutOrganizationConfigRule">>, Input, Options).
 
+%% @doc Deploys conformance packs across member accounts in an AWS
+%% Organization.
+%%
+%% This API enables organization service access for
+%% <code>config-multiaccountsetup.amazonaws.com</code> through the
+%% <code>EnableAWSServiceAccess</code> action and creates a service linked
+%% role <code>AWSServiceRoleForConfigMultiAccountSetup</code> in the master
+%% account of your organization. The service linked role is created only when
+%% the role does not exist in the master account. AWS Config verifies the
+%% existence of role with GetRole action.
+%%
+%% <note> You must specify either the <code>TemplateS3Uri</code> or the
+%% <code>TemplateBody</code> parameter, but not both. If you provide both AWS
+%% Config uses the <code>TemplateS3Uri</code> parameter and ignores the
+%% <code>TemplateBody</code> parameter.
+%%
+%% AWS Config sets the state of a conformance pack to CREATE_IN_PROGRESS and
+%% UPDATE_IN_PROGRESS until the confomance pack is created or updated. You
+%% cannot update a conformance pack while it is in this state.
+%%
+%% You can create 6 conformance packs with 25 AWS Config rules in each pack.
+%%
+%% </note>
+put_organization_conformance_pack(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_organization_conformance_pack(Client, Input, []).
+put_organization_conformance_pack(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutOrganizationConformancePack">>, Input, Options).
+
 %% @doc Adds or updates the remediation configuration with a specific AWS
 %% Config rule with the selected target or action. The API creates the
 %% <code>RemediationConfiguration</code> object for the AWS Config rule. The
@@ -1068,6 +1294,28 @@ put_remediation_exceptions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRemediationExceptions">>, Input, Options).
 
+%% @doc Records the configuration state for the resource provided in the
+%% request. The configuration state of a resource is represented in AWS
+%% Config as Configuration Items. Once this API records the configuration
+%% item, you can retrieve the list of configuration items for the custom
+%% resource type using existing AWS Config APIs.
+%%
+%% <note> The custom resource type must be registered with AWS
+%% CloudFormation. This API accepts the configuration item registered with
+%% AWS CloudFormation.
+%%
+%% When you call this API, AWS Config only stores configuration state of the
+%% resource provided in the request. This API does not change or remediate
+%% the configuration of the resource.
+%%
+%% </note>
+put_resource_config(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_resource_config(Client, Input, []).
+put_resource_config(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutResourceConfig">>, Input, Options).
+
 %% @doc Creates and updates the retention configuration with details about
 %% retention period (number of days) that AWS Config stores your historical
 %% information. The API creates the <code>RetentionConfiguration</code>
@@ -1085,6 +1333,21 @@ put_retention_configuration(Client, Input)
 put_retention_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRetentionConfiguration">>, Input, Options).
+
+%% @doc Accepts a structured query language (SQL) SELECT command and an
+%% aggregator to query configuration state of AWS resources across multiple
+%% accounts and regions, performs the corresponding search, and returns
+%% resource configurations matching the properties.
+%%
+%% For more information about query components, see the <a
+%% href="https://docs.aws.amazon.com/config/latest/developerguide/query-components.html">
+%% <b>Query Components</b> </a> section in the AWS Config Developer Guide.
+select_aggregate_resource_config(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    select_aggregate_resource_config(Client, Input, []).
+select_aggregate_resource_config(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SelectAggregateResourceConfig">>, Input, Options).
 
 %% @doc Accepts a structured query language (SQL) <code>SELECT</code>
 %% command, performs the corresponding search, and returns resource
@@ -1215,20 +1478,14 @@ request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"config">>},
     Host = get_host(<<"config">>, Client1),
     URL = get_url(Host, Client1),
-    Headers1 =
-        case maps:get(token, Client1, undefined) of
-            Token when byte_size(Token) > 0 -> [{<<"X-Amz-Security-Token">>, Token}];
-            _ -> []
-        end,
-    Headers2 = [
+    Headers = [
         {<<"Host">>, Host},
         {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
         {<<"X-Amz-Target">>, << <<"StarlingDoveService.">>/binary, Action/binary>>}
-        | Headers1
     ],
     Payload = jsx:encode(Input),
-    Headers = aws_request:sign_request(Client1, <<"POST">>, URL, Headers2, Payload),
-    Response = hackney:request(post, URL, Headers, Payload, Options),
+    SignedHeaders = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
+    Response = hackney:request(post, URL, SignedHeaders, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->

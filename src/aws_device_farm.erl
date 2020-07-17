@@ -1,9 +1,25 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS Device Farm is a service that enables mobile app developers to
-%% test Android, iOS, and Fire OS apps on physical phones, tablets, and other
-%% devices in the cloud.
+%% @doc Welcome to the AWS Device Farm API documentation, which contains APIs
+%% for:
+%%
+%% <ul> <li> Testing on desktop browsers
+%%
+%% Device Farm makes it possible for you to test your web applications on
+%% desktop browsers using Selenium. The APIs for desktop browser testing
+%% contain <code>TestGrid</code> in their names. For more information, see <a
+%% href="https://docs.aws.amazon.com/devicefarm/latest/testgrid/">Testing Web
+%% Applications on Selenium with Device Farm</a>.
+%%
+%% </li> <li> Testing on real mobile devices
+%%
+%% Device Farm makes it possible for you to test apps on physical phones,
+%% tablets, and other devices in the cloud. For more information, see the <a
+%% href="https://docs.aws.amazon.com/devicefarm/latest/developerguide/">Device
+%% Farm Developer Guide</a>.
+%%
+%% </li> </ul>
 -module(aws_device_farm).
 
 -export([create_device_pool/2,
@@ -16,6 +32,10 @@
          create_project/3,
          create_remote_access_session/2,
          create_remote_access_session/3,
+         create_test_grid_project/2,
+         create_test_grid_project/3,
+         create_test_grid_url/2,
+         create_test_grid_url/3,
          create_upload/2,
          create_upload/3,
          create_v_p_c_e_configuration/2,
@@ -32,6 +52,8 @@
          delete_remote_access_session/3,
          delete_run/2,
          delete_run/3,
+         delete_test_grid_project/2,
+         delete_test_grid_project/3,
          delete_upload/2,
          delete_upload/3,
          delete_v_p_c_e_configuration/2,
@@ -64,6 +86,10 @@
          get_suite/3,
          get_test/2,
          get_test/3,
+         get_test_grid_project/2,
+         get_test_grid_project/3,
+         get_test_grid_session/2,
+         get_test_grid_session/3,
          get_upload/2,
          get_upload/3,
          get_v_p_c_e_configuration/2,
@@ -102,6 +128,14 @@
          list_suites/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         list_test_grid_projects/2,
+         list_test_grid_projects/3,
+         list_test_grid_session_actions/2,
+         list_test_grid_session_actions/3,
+         list_test_grid_session_artifacts/2,
+         list_test_grid_session_artifacts/3,
+         list_test_grid_sessions/2,
+         list_test_grid_sessions/3,
          list_tests/2,
          list_tests/3,
          list_unique_problems/2,
@@ -136,6 +170,8 @@
          update_network_profile/3,
          update_project/2,
          update_project/3,
+         update_test_grid_project/2,
+         update_test_grid_project/3,
          update_upload/2,
          update_upload/3,
          update_v_p_c_e_configuration/2,
@@ -172,7 +208,7 @@ create_network_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateNetworkProfile">>, Input, Options).
 
-%% @doc Creates a new project.
+%% @doc Creates a project.
 create_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_project(Client, Input, []).
@@ -187,6 +223,24 @@ create_remote_access_session(Client, Input)
 create_remote_access_session(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRemoteAccessSession">>, Input, Options).
+
+%% @doc Creates a Selenium testing project. Projects are used to track
+%% <a>TestGridSession</a> instances.
+create_test_grid_project(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_test_grid_project(Client, Input, []).
+create_test_grid_project(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateTestGridProject">>, Input, Options).
+
+%% @doc Creates a signed, short-term URL that can be passed to a Selenium
+%% <code>RemoteWebDriver</code> constructor.
+create_test_grid_url(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_test_grid_url(Client, Input, []).
+create_test_grid_url(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateTestGridUrl">>, Input, Options).
 
 %% @doc Uploads an app or test scripts.
 create_upload(Client, Input)
@@ -233,7 +287,7 @@ delete_network_profile(Client, Input, Options)
 
 %% @doc Deletes an AWS Device Farm project, given the project ARN.
 %%
-%% <b>Note</b> Deleting this resource does not stop an in-progress run.
+%% Deleting this resource does not stop an in-progress run.
 delete_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_project(Client, Input, []).
@@ -251,13 +305,28 @@ delete_remote_access_session(Client, Input, Options)
 
 %% @doc Deletes the run, given the run ARN.
 %%
-%% <b>Note</b> Deleting this resource does not stop an in-progress run.
+%% Deleting this resource does not stop an in-progress run.
 delete_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_run(Client, Input, []).
 delete_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRun">>, Input, Options).
+
+%% @doc Deletes a Selenium testing project and all content generated under
+%% it.
+%%
+%% <important> You cannot undo this operation.
+%%
+%% </important> <note> You cannot delete a project if it has active sessions.
+%%
+%% </note>
+delete_test_grid_project(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_test_grid_project(Client, Input, []).
+delete_test_grid_project(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteTestGridProject">>, Input, Options).
 
 %% @doc Deletes an upload given the upload ARN.
 delete_upload(Client, Input)
@@ -276,8 +345,8 @@ delete_v_p_c_e_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteVPCEConfiguration">>, Input, Options).
 
-%% @doc Returns the number of unmetered iOS and/or unmetered Android devices
-%% that have been purchased by the account.
+%% @doc Returns the number of unmetered iOS or unmetered Android devices that
+%% have been purchased by the account.
 get_account_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_account_settings(Client, Input, []).
@@ -293,7 +362,7 @@ get_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDevice">>, Input, Options).
 
-%% @doc Returns information about a device instance belonging to a private
+%% @doc Returns information about a device instance that belongs to a private
 %% device fleet.
 get_device_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -346,9 +415,9 @@ get_network_profile(Client, Input, Options)
 %% by an AWS account. The response indicates how many offerings are currently
 %% available and the offerings that will be available in the next period. The
 %% API returns a <code>NotEligible</code> error if the user is not permitted
-%% to invoke the operation. Please contact <a
-%% href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a>
-%% if you believe that you should be able to invoke this operation.
+%% to invoke the operation. If you must be able to invoke this operation,
+%% contact <a
+%% href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a>.
 get_offering_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_offering_status(Client, Input, []).
@@ -395,6 +464,33 @@ get_test(Client, Input)
 get_test(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTest">>, Input, Options).
+
+%% @doc Retrieves information about a Selenium testing project.
+get_test_grid_project(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_test_grid_project(Client, Input, []).
+get_test_grid_project(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetTestGridProject">>, Input, Options).
+
+%% @doc A session is an instance of a browser created through a
+%% <code>RemoteWebDriver</code> with the URL from
+%% <a>CreateTestGridUrlResult$url</a>. You can use the following to look up
+%% sessions:
+%%
+%% <ul> <li> The session ARN (<a>GetTestGridSessionRequest$sessionArn</a>).
+%%
+%% </li> <li> The project ARN and a session ID
+%% (<a>GetTestGridSessionRequest$projectArn</a> and
+%% <a>GetTestGridSessionRequest$sessionId</a>).
+%%
+%% </li> </ul> <p/>
+get_test_grid_session(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_test_grid_session(Client, Input, []).
+get_test_grid_session(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetTestGridSession">>, Input, Options).
 
 %% @doc Gets information about an upload.
 get_upload(Client, Input)
@@ -486,7 +582,7 @@ list_network_profiles(Client, Input, Options)
 %% <code>NotEligible</code> error if the caller is not permitted to invoke
 %% the operation. Contact <a
 %% href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a>
-%% if you believe that you should be able to invoke this operation.
+%% if you must be able to invoke this operation.
 list_offering_promotions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_offering_promotions(Client, Input, []).
@@ -498,9 +594,9 @@ list_offering_promotions(Client, Input, Options)
 %% renewal transactions for an AWS account. The list is paginated and ordered
 %% by a descending timestamp (most recent transactions are first). The API
 %% returns a <code>NotEligible</code> error if the user is not permitted to
-%% invoke the operation. Please contact <a
-%% href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a>
-%% if you believe that you should be able to invoke this operation.
+%% invoke the operation. If you must be able to invoke this operation,
+%% contact <a
+%% href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a>.
 list_offering_transactions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_offering_transactions(Client, Input, []).
@@ -512,9 +608,8 @@ list_offering_transactions(Client, Input, Options)
 %% through the API. Each offering record indicates the recurring price per
 %% unit and the frequency for that offering. The API returns a
 %% <code>NotEligible</code> error if the user is not permitted to invoke the
-%% operation. Please contact <a
-%% href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a>
-%% if you believe that you should be able to invoke this operation.
+%% operation. If you must be able to invoke this operation, contact <a
+%% href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a>.
 list_offerings(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_offerings(Client, Input, []).
@@ -570,6 +665,38 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
+%% @doc Gets a list of all Selenium testing projects in your account.
+list_test_grid_projects(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_test_grid_projects(Client, Input, []).
+list_test_grid_projects(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTestGridProjects">>, Input, Options).
+
+%% @doc Returns a list of the actions taken in a <a>TestGridSession</a>.
+list_test_grid_session_actions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_test_grid_session_actions(Client, Input, []).
+list_test_grid_session_actions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTestGridSessionActions">>, Input, Options).
+
+%% @doc Retrieves a list of artifacts created during the session.
+list_test_grid_session_artifacts(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_test_grid_session_artifacts(Client, Input, []).
+list_test_grid_session_artifacts(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTestGridSessionArtifacts">>, Input, Options).
+
+%% @doc Retrieves a list of sessions for a <a>TestGridProject</a>.
+list_test_grid_sessions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_test_grid_sessions(Client, Input, []).
+list_test_grid_sessions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTestGridSessions">>, Input, Options).
+
 %% @doc Gets information about tests in a given test suite.
 list_tests(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -578,7 +705,14 @@ list_tests(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTests">>, Input, Options).
 
-%% @doc Gets information about unique problems.
+%% @doc Gets information about unique problems, such as exceptions or
+%% crashes.
+%%
+%% Unique problems are defined as a single instance of an error across a run,
+%% job, or suite. For example, if a call in your application consistently
+%% raises an exception (<code>OutOfBoundsException in
+%% MyActivity.java:386</code>), <code>ListUniqueProblems</code> returns a
+%% single entry instead of many individual entries for that exception.
 list_unique_problems(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_unique_problems(Client, Input, []).
@@ -606,9 +740,9 @@ list_v_p_c_e_configurations(Client, Input, Options)
 %% @doc Immediately purchases offerings for an AWS account. Offerings renew
 %% with the latest total purchased quantity for an offering, unless the
 %% renewal was overridden. The API returns a <code>NotEligible</code> error
-%% if the user is not permitted to invoke the operation. Please contact <a
-%% href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a>
-%% if you believe that you should be able to invoke this operation.
+%% if the user is not permitted to invoke the operation. If you must be able
+%% to invoke this operation, contact <a
+%% href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a>.
 purchase_offering(Client, Input)
   when is_map(Client), is_map(Input) ->
     purchase_offering(Client, Input, []).
@@ -619,9 +753,9 @@ purchase_offering(Client, Input, Options)
 %% @doc Explicitly sets the quantity of devices to renew for an offering,
 %% starting from the <code>effectiveDate</code> of the next period. The API
 %% returns a <code>NotEligible</code> error if the user is not permitted to
-%% invoke the operation. Please contact <a
-%% href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a>
-%% if you believe that you should be able to invoke this operation.
+%% invoke the operation. If you must be able to invoke this operation,
+%% contact <a
+%% href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a>.
 renew_offering(Client, Input)
   when is_map(Client), is_map(Input) ->
     renew_offering(Client, Input, []).
@@ -637,13 +771,12 @@ schedule_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ScheduleRun">>, Input, Options).
 
-%% @doc Initiates a stop request for the current job. AWS Device Farm will
-%% immediately stop the job on the device where tests have not started
-%% executing, and you will not be billed for this device. On the device where
-%% tests have started executing, Setup Suite and Teardown Suite tests will
-%% run to completion before stopping execution on the device. You will be
-%% billed for Setup, Teardown, and any tests that were in progress or already
-%% completed.
+%% @doc Initiates a stop request for the current job. AWS Device Farm
+%% immediately stops the job on the device where tests have not started. You
+%% are not billed for this device. On the device where tests have started,
+%% setup suite and teardown suite tests run to completion on the device. You
+%% are billed for setup, teardown, and any tests that were in progress or
+%% already completed.
 stop_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_job(Client, Input, []).
@@ -660,12 +793,11 @@ stop_remote_access_session(Client, Input, Options)
     request(Client, <<"StopRemoteAccessSession">>, Input, Options).
 
 %% @doc Initiates a stop request for the current test run. AWS Device Farm
-%% will immediately stop the run on devices where tests have not started
-%% executing, and you will not be billed for these devices. On devices where
-%% tests have started executing, Setup Suite and Teardown Suite tests will
-%% run to completion before stopping execution on those devices. You will be
-%% billed for Setup, Teardown, and any tests that were in progress or already
-%% completed.
+%% immediately stops the run on devices where tests have not started. You are
+%% not billed for these devices. On devices where tests have started
+%% executing, setup suite and teardown suite tests run to completion on those
+%% devices. You are billed for setup, teardown, and any tests that were in
+%% progress or already completed.
 stop_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_run(Client, Input, []).
@@ -676,7 +808,7 @@ stop_run(Client, Input, Options)
 %% @doc Associates the specified tags to a resource with the specified
 %% <code>resourceArn</code>. If existing tags on a resource are not specified
 %% in the request parameters, they are not changed. When a resource is
-%% deleted, the tags associated with that resource are deleted as well.
+%% deleted, the tags associated with that resource are also deleted.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -692,7 +824,7 @@ untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
-%% @doc Updates information about an existing private device instance.
+%% @doc Updates information about a private device instance.
 update_device_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_device_instance(Client, Input, []).
@@ -719,7 +851,7 @@ update_instance_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateInstanceProfile">>, Input, Options).
 
-%% @doc Updates the network profile with specific settings.
+%% @doc Updates the network profile.
 update_network_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_network_profile(Client, Input, []).
@@ -736,7 +868,15 @@ update_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateProject">>, Input, Options).
 
-%% @doc Update an uploaded test specification (test spec).
+%% @doc Change details of a project.
+update_test_grid_project(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_test_grid_project(Client, Input, []).
+update_test_grid_project(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateTestGridProject">>, Input, Options).
+
+%% @doc Updates an uploaded test spec.
 update_upload(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_upload(Client, Input, []).
@@ -744,8 +884,8 @@ update_upload(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateUpload">>, Input, Options).
 
-%% @doc Updates information about an existing Amazon Virtual Private Cloud
-%% (VPC) endpoint configuration.
+%% @doc Updates information about an Amazon Virtual Private Cloud (VPC)
+%% endpoint configuration.
 update_v_p_c_e_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_v_p_c_e_configuration(Client, Input, []).
@@ -767,20 +907,14 @@ request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"devicefarm">>},
     Host = get_host(<<"devicefarm">>, Client1),
     URL = get_url(Host, Client1),
-    Headers1 =
-        case maps:get(token, Client1, undefined) of
-            Token when byte_size(Token) > 0 -> [{<<"X-Amz-Security-Token">>, Token}];
-            _ -> []
-        end,
-    Headers2 = [
+    Headers = [
         {<<"Host">>, Host},
         {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
         {<<"X-Amz-Target">>, << <<"DeviceFarm_20150623.">>/binary, Action/binary>>}
-        | Headers1
     ],
     Payload = jsx:encode(Input),
-    Headers = aws_request:sign_request(Client1, <<"POST">>, URL, Headers2, Payload),
-    Response = hackney:request(post, URL, Headers, Payload, Options),
+    SignedHeaders = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
+    Response = hackney:request(post, URL, SignedHeaders, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->

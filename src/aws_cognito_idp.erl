@@ -575,7 +575,10 @@ admin_update_user_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminUpdateUserAttributes">>, Input, Options).
 
-%% @doc Signs out users from all devices, as an administrator.
+%% @doc Signs out users from all devices, as an administrator. It also
+%% invalidates all refresh tokens issued to a user. The user's current access
+%% and Id tokens remain valid until their expiry. Access and Id tokens expire
+%% one hour after they are issued.
 %%
 %% Calling this action requires developer credentials.
 admin_user_global_sign_out(Client, Input)
@@ -826,11 +829,12 @@ forget_device(Client, Input, Options)
 %% @doc Calling this API causes a message to be sent to the end user with a
 %% confirmation code that is required to change the user's password. For the
 %% <code>Username</code> parameter, you can use the username or user alias.
-%% If a verified phone number exists for the user, the confirmation code is
-%% sent to the phone number. Otherwise, if a verified email exists, the
-%% confirmation code is sent to the email. If neither a verified phone number
-%% nor a verified email exists, <code>InvalidParameterException</code> is
-%% thrown. To use the confirmation code for resetting the password, call .
+%% The method used to send the confirmation code is sent according to the
+%% specified AccountRecoverySetting. For more information, see <a
+%% href="">Recovering User Accounts</a> in the <i>Amazon Cognito Developer
+%% Guide</i>. If neither a verified phone number nor a verified email exists,
+%% an <code>InvalidParameterException</code> is thrown. To use the
+%% confirmation code for resetting the password, call .
 forgot_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     forgot_password(Client, Input, []).
@@ -919,7 +923,10 @@ get_user_pool_mfa_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUserPoolMfaConfig">>, Input, Options).
 
-%% @doc Signs out users from all devices.
+%% @doc Signs out users from all devices. It also invalidates all refresh
+%% tokens issued to a user. The user's current access and Id tokens remain
+%% valid until their expiry. Access and Id tokens expire one hour after they
+%% are issued.
 global_sign_out(Client, Input)
   when is_map(Client), is_map(Input) ->
     global_sign_out(Client, Input, []).
@@ -1195,6 +1202,11 @@ update_device_status(Client, Input, Options)
 %% @doc Updates the specified group with the specified attributes.
 %%
 %% Calling this action requires developer credentials.
+%%
+%% <important> If you don't provide a value for an attribute, it will be set
+%% to the default value.
+%%
+%% </important>
 update_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_group(Client, Input, []).
@@ -1212,6 +1224,11 @@ update_identity_provider(Client, Input, Options)
 
 %% @doc Updates the name and scopes of resource server. All other fields are
 %% read-only.
+%%
+%% <important> If you don't provide a value for an attribute, it will be set
+%% to the default value.
+%%
+%% </important>
 update_resource_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_resource_server(Client, Input, []).
@@ -1227,9 +1244,13 @@ update_user_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateUserAttributes">>, Input, Options).
 
-%% @doc Updates the specified user pool with the specified attributes. If you
-%% don't provide a value for an attribute, it will be set to the default
-%% value. You can get a list of the current user pool settings with .
+%% @doc Updates the specified user pool with the specified attributes. You
+%% can get a list of the current user pool settings with .
+%%
+%% <important> If you don't provide a value for an attribute, it will be set
+%% to the default value.
+%%
+%% </important>
 update_user_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user_pool(Client, Input, []).
@@ -1238,9 +1259,13 @@ update_user_pool(Client, Input, Options)
     request(Client, <<"UpdateUserPool">>, Input, Options).
 
 %% @doc Updates the specified user pool app client with the specified
-%% attributes. If you don't provide a value for an attribute, it will be set
-%% to the default value. You can get a list of the current user pool app
-%% client settings with .
+%% attributes. You can get a list of the current user pool app client
+%% settings with .
+%%
+%% <important> If you don't provide a value for an attribute, it will be set
+%% to the default value.
+%%
+%% </important>
 update_user_pool_client(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user_pool_client(Client, Input, []).
@@ -1319,20 +1344,14 @@ request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"cognito-idp">>},
     Host = get_host(<<"cognito-idp">>, Client1),
     URL = get_url(Host, Client1),
-    Headers1 =
-        case maps:get(token, Client1, undefined) of
-            Token when byte_size(Token) > 0 -> [{<<"X-Amz-Security-Token">>, Token}];
-            _ -> []
-        end,
-    Headers2 = [
+    Headers = [
         {<<"Host">>, Host},
         {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
         {<<"X-Amz-Target">>, << <<"AWSCognitoIdentityProviderService.">>/binary, Action/binary>>}
-        | Headers1
     ],
     Payload = jsx:encode(Input),
-    Headers = aws_request:sign_request(Client1, <<"POST">>, URL, Headers2, Payload),
-    Response = hackney:request(post, URL, Headers, Payload, Options),
+    SignedHeaders = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
+    Response = hackney:request(post, URL, SignedHeaders, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->

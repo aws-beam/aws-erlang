@@ -60,8 +60,12 @@
          delete_snapshot/3,
          delete_trust/2,
          delete_trust/3,
+         deregister_certificate/2,
+         deregister_certificate/3,
          deregister_event_topic/2,
          deregister_event_topic/3,
+         describe_certificate/2,
+         describe_certificate/3,
          describe_conditional_forwarders/2,
          describe_conditional_forwarders/3,
          describe_directories/2,
@@ -70,16 +74,22 @@
          describe_domain_controllers/3,
          describe_event_topics/2,
          describe_event_topics/3,
+         describe_l_d_a_p_s_settings/2,
+         describe_l_d_a_p_s_settings/3,
          describe_shared_directories/2,
          describe_shared_directories/3,
          describe_snapshots/2,
          describe_snapshots/3,
          describe_trusts/2,
          describe_trusts/3,
+         disable_l_d_a_p_s/2,
+         disable_l_d_a_p_s/3,
          disable_radius/2,
          disable_radius/3,
          disable_sso/2,
          disable_sso/3,
+         enable_l_d_a_p_s/2,
+         enable_l_d_a_p_s/3,
          enable_radius/2,
          enable_radius/3,
          enable_sso/2,
@@ -88,6 +98,8 @@
          get_directory_limits/3,
          get_snapshot_limits/2,
          get_snapshot_limits/3,
+         list_certificates/2,
+         list_certificates/3,
          list_ip_routes/2,
          list_ip_routes/3,
          list_log_subscriptions/2,
@@ -96,6 +108,8 @@
          list_schema_extensions/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         register_certificate/2,
+         register_certificate/3,
          register_event_topic/2,
          register_event_topic/3,
          reject_shared_directory/2,
@@ -234,7 +248,9 @@ create_conditional_forwarder(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateConditionalForwarder">>, Input, Options).
 
-%% @doc Creates a Simple AD directory.
+%% @doc Creates a Simple AD directory. For more information, see <a
+%% href="https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_simple_ad.html">Simple
+%% Active Directory</a> in the <i>AWS Directory Service Admin Guide</i>.
 %%
 %% Before you call <code>CreateDirectory</code>, ensure that all of the
 %% required permissions have been explicitly granted through a policy. For
@@ -250,9 +266,9 @@ create_directory(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDirectory">>, Input, Options).
 
-%% @doc Creates a subscription to forward real time Directory Service domain
-%% controller security logs to the specified CloudWatch log group in your AWS
-%% account.
+%% @doc Creates a subscription to forward real-time Directory Service domain
+%% controller security logs to the specified Amazon CloudWatch log group in
+%% your AWS account.
 create_log_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_log_subscription(Client, Input, []).
@@ -260,7 +276,10 @@ create_log_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLogSubscription">>, Input, Options).
 
-%% @doc Creates an AWS Managed Microsoft AD directory.
+%% @doc Creates a Microsoft AD directory in the AWS Cloud. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_microsoft_ad.html">AWS
+%% Managed Microsoft AD</a> in the <i>AWS Directory Service Admin Guide</i>.
 %%
 %% Before you call <i>CreateMicrosoftAD</i>, ensure that all of the required
 %% permissions have been explicitly granted through a policy. For details
@@ -356,6 +375,15 @@ delete_trust(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTrust">>, Input, Options).
 
+%% @doc Deletes from the system the certificate that was registered for a
+%% secured LDAP connection.
+deregister_certificate(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    deregister_certificate(Client, Input, []).
+deregister_certificate(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeregisterCertificate">>, Input, Options).
+
 %% @doc Removes the specified directory as a publisher to the specified SNS
 %% topic.
 deregister_event_topic(Client, Input)
@@ -364,6 +392,15 @@ deregister_event_topic(Client, Input)
 deregister_event_topic(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterEventTopic">>, Input, Options).
+
+%% @doc Displays information about the certificate registered for a secured
+%% LDAP connection.
+describe_certificate(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_certificate(Client, Input, []).
+describe_certificate(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeCertificate">>, Input, Options).
 
 %% @doc Obtains information about the conditional forwarders for this
 %% account.
@@ -420,6 +457,14 @@ describe_event_topics(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEventTopics">>, Input, Options).
 
+%% @doc Describes the status of LDAP security for the specified directory.
+describe_l_d_a_p_s_settings(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_l_d_a_p_s_settings(Client, Input, []).
+describe_l_d_a_p_s_settings(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeLDAPSSettings">>, Input, Options).
+
 %% @doc Returns the shared directories in your account.
 describe_shared_directories(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -457,6 +502,14 @@ describe_trusts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrusts">>, Input, Options).
 
+%% @doc Deactivates LDAP secure calls for the specified directory.
+disable_l_d_a_p_s(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disable_l_d_a_p_s(Client, Input, []).
+disable_l_d_a_p_s(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisableLDAPS">>, Input, Options).
+
 %% @doc Disables multi-factor authentication (MFA) with the Remote
 %% Authentication Dial In User Service (RADIUS) server for an AD Connector or
 %% Microsoft AD directory.
@@ -475,6 +528,15 @@ disable_sso(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableSso">>, Input, Options).
 
+%% @doc Activates the switch for the specific directory to always use LDAP
+%% secure calls.
+enable_l_d_a_p_s(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    enable_l_d_a_p_s(Client, Input, []).
+enable_l_d_a_p_s(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"EnableLDAPS">>, Input, Options).
+
 %% @doc Enables multi-factor authentication (MFA) with the Remote
 %% Authentication Dial In User Service (RADIUS) server for an AD Connector or
 %% Microsoft AD directory.
@@ -485,7 +547,9 @@ enable_radius(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableRadius">>, Input, Options).
 
-%% @doc Enables single sign-on for a directory.
+%% @doc Enables single sign-on for a directory. Single sign-on allows users
+%% in your directory to access certain AWS services from a computer joined to
+%% the directory without having to enter their credentials separately.
 enable_sso(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_sso(Client, Input, []).
@@ -493,7 +557,7 @@ enable_sso(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableSso">>, Input, Options).
 
-%% @doc Obtains directory limit information for the current region.
+%% @doc Obtains directory limit information for the current Region.
 get_directory_limits(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_directory_limits(Client, Input, []).
@@ -508,6 +572,15 @@ get_snapshot_limits(Client, Input)
 get_snapshot_limits(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSnapshotLimits">>, Input, Options).
+
+%% @doc For the specified directory, lists all the certificates registered
+%% for a secured LDAP connection.
+list_certificates(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_certificates(Client, Input, []).
+list_certificates(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListCertificates">>, Input, Options).
 
 %% @doc Lists the address blocks that you have added to a directory.
 list_ip_routes(Client, Input)
@@ -540,6 +613,14 @@ list_tags_for_resource(Client, Input)
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
+
+%% @doc Registers a certificate for secured LDAP connection.
+register_certificate(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    register_certificate(Client, Input, []).
+register_certificate(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RegisterCertificate">>, Input, Options).
 
 %% @doc Associates a directory with an SNS topic. This establishes the
 %% directory as a publisher to the specified SNS topic. You can then receive
@@ -581,6 +662,23 @@ remove_tags_from_resource(Client, Input, Options)
 
 %% @doc Resets the password for any user in your AWS Managed Microsoft AD or
 %% Simple AD directory.
+%%
+%% You can reset the password for any user in your directory with the
+%% following exceptions:
+%%
+%% <ul> <li> For Simple AD, you cannot reset the password for any user that
+%% is a member of either the <b>Domain Admins</b> or <b>Enterprise Admins</b>
+%% group except for the administrator user.
+%%
+%% </li> <li> For AWS Managed Microsoft AD, you can only reset the password
+%% for a user that is in an OU based off of the NetBIOS name that you typed
+%% when you created your directory. For example, you cannot reset the
+%% password for a user in the <b>AWS Reserved</b> OU. For more information
+%% about the OU structure for an AWS Managed Microsoft AD directory, see <a
+%% href="https://docs.aws.amazon.com/directoryservice/latest/admin-guide/ms_ad_getting_started_what_gets_created.html">What
+%% Gets Created</a> in the <i>AWS Directory Service Administration Guide</i>.
+%%
+%% </li> </ul>
 reset_user_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_user_password(Client, Input, []).
@@ -715,20 +813,14 @@ request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"ds">>},
     Host = get_host(<<"ds">>, Client1),
     URL = get_url(Host, Client1),
-    Headers1 =
-        case maps:get(token, Client1, undefined) of
-            Token when byte_size(Token) > 0 -> [{<<"X-Amz-Security-Token">>, Token}];
-            _ -> []
-        end,
-    Headers2 = [
+    Headers = [
         {<<"Host">>, Host},
         {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
         {<<"X-Amz-Target">>, << <<"DirectoryService_20150416.">>/binary, Action/binary>>}
-        | Headers1
     ],
     Payload = jsx:encode(Input),
-    Headers = aws_request:sign_request(Client1, <<"POST">>, URL, Headers2, Payload),
-    Response = hackney:request(post, URL, Headers, Payload, Options),
+    SignedHeaders = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
+    Response = hackney:request(post, URL, SignedHeaders, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->

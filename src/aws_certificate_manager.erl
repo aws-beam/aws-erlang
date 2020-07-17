@@ -98,15 +98,16 @@ describe_certificate(Client, Input, Options)
     request(Client, <<"DescribeCertificate">>, Input, Options).
 
 %% @doc Exports a private certificate issued by a private certificate
-%% authority (CA) for use anywhere. You can export the certificate, the
-%% certificate chain, and the encrypted private key associated with the
-%% public key embedded in the certificate. You must store the private key
-%% securely. The private key is a 2048 bit RSA key. You must provide a
-%% passphrase for the private key when exporting it. You can use the
-%% following OpenSSL command to decrypt it later. Provide the passphrase when
-%% prompted.
+%% authority (CA) for use anywhere. The exported file contains the
+%% certificate, the certificate chain, and the encrypted private 2048-bit RSA
+%% key associated with the public key that is embedded in the certificate.
+%% For security, you must assign a passphrase for the private key when
+%% exporting it.
 %%
-%% <code>openssl rsa -in encrypted_key.pem -out decrypted_key.pem</code>
+%% For information about exporting and formatting a certificate using the ACM
+%% console or CLI, see <a
+%% href="https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-export-private.html">Export
+%% a Private Certificate</a>.
 export_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     export_certificate(Client, Input, []).
@@ -114,12 +115,12 @@ export_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExportCertificate">>, Input, Options).
 
-%% @doc Retrieves a certificate specified by an ARN and its certificate chain
-%% . The chain is an ordered list of certificates that contains the end
-%% entity certificate, intermediate certificates of subordinate CAs, and the
-%% root certificate in that order. The certificate and certificate chain are
-%% base64 encoded. If you want to decode the certificate to see the
-%% individual fields, you can use OpenSSL.
+%% @doc Retrieves an Amazon-issued certificate and its certificate chain. The
+%% chain consists of the certificate of the issuing CA and the intermediate
+%% certificates of any other subordinate CAs. All of the certificates are
+%% base64 encoded. You can use <a
+%% href="https://wiki.openssl.org/index.php/Command_Line_Utilities">OpenSSL</a>
+%% to decode the certificates and inspect individual fields.
 get_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_certificate(Client, Input, []).
@@ -170,7 +171,7 @@ get_certificate(Client, Input, Options)
 %%
 %% </li> <li> To import a new certificate, omit the
 %% <code>CertificateArn</code> argument. Include this argument only when you
-%% want to replace a previously imported certificate.
+%% want to replace a previously imported certifica
 %%
 %% </li> <li> When you import a certificate by using the CLI, you must
 %% specify the certificate, the certificate chain, and the private key by
@@ -182,6 +183,10 @@ get_certificate(Client, Input, Options)
 %% </li> <li> When you import a certificate by using an SDK, you must specify
 %% the certificate, the certificate chain, and the private key files in the
 %% manner required by the programming language you're using.
+%%
+%% </li> <li> The cryptographic algorithm of an imported certificate must
+%% match the algorithm of the signing CA. For example, if the signing CA key
+%% type is RSA, then the certificate key type must also be RSA.
 %%
 %% </li> </ul> This operation returns the <a
 %% href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
@@ -195,7 +200,9 @@ import_certificate(Client, Input, Options)
 
 %% @doc Retrieves a list of certificate ARNs and domain names. You can
 %% request that only certificates that match a specific status be listed. You
-%% can also filter by specific attributes of the certificate.
+%% can also filter by specific attributes of the certificate. Default
+%% filtering returns only <code>RSA_2048</code> certificates. For more
+%% information, see <a>Filters</a>.
 list_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_certificates(Client, Input, []).
@@ -312,20 +319,14 @@ request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"acm">>},
     Host = get_host(<<"acm">>, Client1),
     URL = get_url(Host, Client1),
-    Headers1 =
-        case maps:get(token, Client1, undefined) of
-            Token when byte_size(Token) > 0 -> [{<<"X-Amz-Security-Token">>, Token}];
-            _ -> []
-        end,
-    Headers2 = [
+    Headers = [
         {<<"Host">>, Host},
         {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
         {<<"X-Amz-Target">>, << <<"CertificateManager.">>/binary, Action/binary>>}
-        | Headers1
     ],
     Payload = jsx:encode(Input),
-    Headers = aws_request:sign_request(Client1, <<"POST">>, URL, Headers2, Payload),
-    Response = hackney:request(post, URL, Headers, Payload, Options),
+    SignedHeaders = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
+    Response = hackney:request(post, URL, SignedHeaders, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->

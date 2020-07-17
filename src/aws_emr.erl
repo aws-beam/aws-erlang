@@ -32,6 +32,8 @@
          describe_step/3,
          get_block_public_access_configuration/2,
          get_block_public_access_configuration/3,
+         get_managed_scaling_policy/2,
+         get_managed_scaling_policy/3,
          list_bootstrap_actions/2,
          list_bootstrap_actions/3,
          list_clusters/2,
@@ -46,6 +48,8 @@
          list_security_configurations/3,
          list_steps/2,
          list_steps/3,
+         modify_cluster/2,
+         modify_cluster/3,
          modify_instance_fleet/2,
          modify_instance_fleet/3,
          modify_instance_groups/2,
@@ -54,8 +58,12 @@
          put_auto_scaling_policy/3,
          put_block_public_access_configuration/2,
          put_block_public_access_configuration/3,
+         put_managed_scaling_policy/2,
+         put_managed_scaling_policy/3,
          remove_auto_scaling_policy/2,
          remove_auto_scaling_policy/3,
+         remove_managed_scaling_policy/2,
+         remove_managed_scaling_policy/3,
          remove_tags/2,
          remove_tags/3,
          run_job_flow/2,
@@ -235,6 +243,15 @@ get_block_public_access_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetBlockPublicAccessConfiguration">>, Input, Options).
 
+%% @doc Fetches the attached managed scaling policy for an Amazon EMR
+%% cluster.
+get_managed_scaling_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_managed_scaling_policy(Client, Input, []).
+get_managed_scaling_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetManagedScalingPolicy">>, Input, Options).
+
 %% @doc Provides information about the bootstrap actions associated with a
 %% cluster.
 list_bootstrap_actions(Client, Input)
@@ -302,13 +319,24 @@ list_security_configurations(Client, Input, Options)
     request(Client, <<"ListSecurityConfigurations">>, Input, Options).
 
 %% @doc Provides a list of steps for the cluster in reverse order unless you
-%% specify stepIds with the request.
+%% specify <code>stepIds</code> with the request of filter by
+%% <code>StepStates</code>. You can specify a maximum of ten
+%% <code>stepIDs</code>.
 list_steps(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_steps(Client, Input, []).
 list_steps(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSteps">>, Input, Options).
+
+%% @doc Modifies the number of steps that can be executed concurrently for
+%% the cluster specified using ClusterID.
+modify_cluster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_cluster(Client, Input, []).
+modify_cluster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyCluster">>, Input, Options).
 
 %% @doc Modifies the target On-Demand and target Spot capacities for the
 %% instance fleet with the specified InstanceFleetID within the cluster
@@ -359,6 +387,18 @@ put_block_public_access_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutBlockPublicAccessConfiguration">>, Input, Options).
 
+%% @doc Creates or updates a managed scaling policy for an Amazon EMR
+%% cluster. The managed scaling policy defines the limits for resources, such
+%% as EC2 instances that can be added or terminated from a cluster. The
+%% policy only applies to the core and task nodes. The master node cannot be
+%% scaled after initial configuration.
+put_managed_scaling_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_managed_scaling_policy(Client, Input, []).
+put_managed_scaling_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutManagedScalingPolicy">>, Input, Options).
+
 %% @doc Removes an automatic scaling policy from a specified instance group
 %% within an EMR cluster.
 remove_auto_scaling_policy(Client, Input)
@@ -367,6 +407,14 @@ remove_auto_scaling_policy(Client, Input)
 remove_auto_scaling_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveAutoScalingPolicy">>, Input, Options).
+
+%% @doc Removes a managed scaling policy from a specified EMR cluster.
+remove_managed_scaling_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    remove_managed_scaling_policy(Client, Input, []).
+remove_managed_scaling_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RemoveManagedScalingPolicy">>, Input, Options).
 
 %% @doc Removes tags from an Amazon EMR resource. Tags make it easier to
 %% associate clusters in various ways, such as grouping clusters to track
@@ -453,15 +501,16 @@ set_termination_protection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetTerminationProtection">>, Input, Options).
 
-%% @doc <i>This member will be deprecated.</i>
-%%
-%% Sets whether all AWS Identity and Access Management (IAM) users under your
-%% account can access the specified clusters (job flows). This action works
-%% on running clusters. You can also set the visibility of a cluster when you
-%% launch it using the <code>VisibleToAllUsers</code> parameter of
-%% <a>RunJobFlow</a>. The SetVisibleToAllUsers action can be called only by
-%% an IAM user who created the cluster or the AWS account that owns the
-%% cluster.
+%% @doc Sets the <a>Cluster$VisibleToAllUsers</a> value, which determines
+%% whether the cluster is visible to all IAM users of the AWS account
+%% associated with the cluster. Only the IAM user who created the cluster or
+%% the AWS account root user can call this action. The default value,
+%% <code>true</code>, indicates that all IAM users in the AWS account can
+%% perform cluster actions if they have the proper IAM policy permissions. If
+%% set to <code>false</code>, only the IAM user that created the cluster can
+%% perform actions. This action works on running clusters. You can override
+%% the default <code>true</code> setting when you create a cluster by using
+%% the <code>VisibleToAllUsers</code> parameter with <code>RunJobFlow</code>.
 set_visible_to_all_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_visible_to_all_users(Client, Input, []).
@@ -501,20 +550,14 @@ request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"elasticmapreduce">>},
     Host = get_host(<<"elasticmapreduce">>, Client1),
     URL = get_url(Host, Client1),
-    Headers1 =
-        case maps:get(token, Client1, undefined) of
-            Token when byte_size(Token) > 0 -> [{<<"X-Amz-Security-Token">>, Token}];
-            _ -> []
-        end,
-    Headers2 = [
+    Headers = [
         {<<"Host">>, Host},
         {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
         {<<"X-Amz-Target">>, << <<"ElasticMapReduce.">>/binary, Action/binary>>}
-        | Headers1
     ],
     Payload = jsx:encode(Input),
-    Headers = aws_request:sign_request(Client1, <<"POST">>, URL, Headers2, Payload),
-    Response = hackney:request(post, URL, Headers, Payload, Options),
+    SignedHeaders = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
+    Response = hackney:request(post, URL, SignedHeaders, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->

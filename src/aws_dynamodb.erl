@@ -44,6 +44,8 @@
          describe_backup/3,
          describe_continuous_backups/2,
          describe_continuous_backups/3,
+         describe_contributor_insights/2,
+         describe_contributor_insights/3,
          describe_endpoints/2,
          describe_endpoints/3,
          describe_global_table/2,
@@ -54,12 +56,16 @@
          describe_limits/3,
          describe_table/2,
          describe_table/3,
+         describe_table_replica_auto_scaling/2,
+         describe_table_replica_auto_scaling/3,
          describe_time_to_live/2,
          describe_time_to_live/3,
          get_item/2,
          get_item/3,
          list_backups/2,
          list_backups/3,
+         list_contributor_insights/2,
+         list_contributor_insights/3,
          list_global_tables/2,
          list_global_tables/3,
          list_tables/2,
@@ -86,6 +92,8 @@
          untag_resource/3,
          update_continuous_backups/2,
          update_continuous_backups/3,
+         update_contributor_insights/2,
+         update_contributor_insights/3,
          update_global_table/2,
          update_global_table/3,
          update_global_table_settings/2,
@@ -94,6 +102,8 @@
          update_item/3,
          update_table/2,
          update_table/3,
+         update_table_replica_auto_scaling/2,
+         update_table_replica_auto_scaling/3,
          update_time_to_live/2,
          update_time_to_live/3]).
 
@@ -307,8 +317,12 @@ create_backup(Client, Input, Options)
 %% a replication relationship between two or more DynamoDB tables with the
 %% same table name in the provided Regions.
 %%
-%% If you want to add a new replica table to a global table, each of the
-%% following conditions must be true:
+%% <note> This operation only applies to <a
+%% href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html">Version
+%% 2017.11.29</a> of global tables.
+%%
+%% </note> If you want to add a new replica table to a global table, each of
+%% the following conditions must be true:
 %%
 %% <ul> <li> The table must have the same primary key as all of the other
 %% replicas.
@@ -327,6 +341,14 @@ create_backup(Client, Input, Options)
 %% <ul> <li> The global secondary indexes must have the same name.
 %%
 %% </li> <li> The global secondary indexes must have the same hash key and
+%% sort key (if present).
+%%
+%% </li> </ul> If local secondary indexes are specified, then the following
+%% conditions must also be met:
+%%
+%% <ul> <li> The local secondary indexes must have the same name.
+%%
+%% </li> <li> The local secondary indexes must have the same hash key and
 %% sort key (if present).
 %%
 %% </li> </ul> <important> Write capacity settings should be set consistently
@@ -471,6 +493,15 @@ describe_continuous_backups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeContinuousBackups">>, Input, Options).
 
+%% @doc Returns information about contributor insights, for a given table or
+%% global secondary index.
+describe_contributor_insights(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_contributor_insights(Client, Input, []).
+describe_contributor_insights(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeContributorInsights">>, Input, Options).
+
 %% @doc Returns the regional endpoint information.
 describe_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -480,6 +511,16 @@ describe_endpoints(Client, Input, Options)
     request(Client, <<"DescribeEndpoints">>, Input, Options).
 
 %% @doc Returns information about the specified global table.
+%%
+%% <note> This operation only applies to <a
+%% href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html">Version
+%% 2017.11.29</a> of global tables. If you are using global tables <a
+%% href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html">Version
+%% 2019.11.21</a> you can use <a
+%% href="https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_DescribeTable.html">DescribeTable</a>
+%% instead.
+%%
+%% </note>
 describe_global_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_global_table(Client, Input, []).
@@ -488,6 +529,12 @@ describe_global_table(Client, Input, Options)
     request(Client, <<"DescribeGlobalTable">>, Input, Options).
 
 %% @doc Describes Region-specific settings for a global table.
+%%
+%% <note> This operation only applies to <a
+%% href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html">Version
+%% 2017.11.29</a> of global tables.
+%%
+%% </note>
 describe_global_table_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_global_table_settings(Client, Input, []).
@@ -586,6 +633,21 @@ describe_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTable">>, Input, Options).
 
+%% @doc Describes auto scaling settings across replicas of the global table
+%% at once.
+%%
+%% <note> This operation only applies to <a
+%% href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html">Version
+%% 2019.11.21</a> of global tables.
+%%
+%% </note>
+describe_table_replica_auto_scaling(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_table_replica_auto_scaling(Client, Input, []).
+describe_table_replica_auto_scaling(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeTableReplicaAutoScaling">>, Input, Options).
+
 %% @doc Gives a description of the Time to Live (TTL) status on the specified
 %% table.
 describe_time_to_live(Client, Input)
@@ -630,7 +692,22 @@ list_backups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListBackups">>, Input, Options).
 
+%% @doc Returns a list of ContributorInsightsSummary for a table and all its
+%% global secondary indexes.
+list_contributor_insights(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_contributor_insights(Client, Input, []).
+list_contributor_insights(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListContributorInsights">>, Input, Options).
+
 %% @doc Lists all global tables that have a replica in the specified Region.
+%%
+%% <note> This operation only applies to <a
+%% href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html">Version
+%% 2017.11.29</a> of global tables.
+%%
+%% </note>
 list_global_tables(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_global_tables(Client, Input, []).
@@ -712,10 +789,15 @@ list_tags_of_resource(Client, Input, Options)
 %% PutItem in the AWS SDK for Ruby V2</a>
 %%
 %% </li> </ul> </important> When you add an item, the primary key attributes
-%% are the only required attributes. Attribute values cannot be null. String
-%% and Binary type attributes must have lengths greater than zero. Set type
-%% attributes cannot be empty. Requests with empty values will be rejected
-%% with a <code>ValidationException</code> exception.
+%% are the only required attributes. Attribute values cannot be null.
+%%
+%% Empty String and Binary attribute values are allowed. Attribute values of
+%% type String and Binary must have a length greater than zero if the
+%% attribute is used as a key attribute for a table or index. Set type
+%% attributes cannot be empty.
+%%
+%% Invalid Requests with empty values will be rejected with a
+%% <code>ValidationException</code> exception.
 %%
 %% <note> To prevent a new item from replacing an existing item, use a
 %% conditional expression that contains the <code>attribute_not_exists</code>
@@ -943,18 +1025,8 @@ tag_resource(Client, Input, Options)
 %% than one AWS account or Region. The aggregate size of the items in the
 %% transaction cannot exceed 4 MB.
 %%
-%% <note> All AWS Regions and AWS GovCloud (US) support up to 25 items per
-%% transaction with up to 4 MB of data, except the following AWS Regions:
-%%
-%% <ul> <li> China (Beijing)
-%%
-%% </li> <li> China (Ningxia)
-%%
-%% </li> </ul> The China (Beijing) and China (Ningxia) Regions support up to
-%% 10 items per transaction with up to 4 MB of data.
-%%
-%% </note> DynamoDB rejects the entire <code>TransactGetItems</code> request
-%% if any of the following is true:
+%% DynamoDB rejects the entire <code>TransactGetItems</code> request if any
+%% of the following is true:
 %%
 %% <ul> <li> A conflicting operation is in the process of updating an item to
 %% be read.
@@ -982,18 +1054,8 @@ transact_get_items(Client, Input, Options)
 %% <code>ConditionCheck</code> and <code>Update</code> the same item. The
 %% aggregate size of the items in the transaction cannot exceed 4 MB.
 %%
-%% <note> All AWS Regions and AWS GovCloud (US) support up to 25 items per
-%% transaction with up to 4 MB of data, except the following AWS Regions:
-%%
-%% <ul> <li> China (Beijing)
-%%
-%% </li> <li> China (Ningxia)
-%%
-%% </li> </ul> The China (Beijing) and China (Ningxia) Regions support up to
-%% 10 items per transaction with up to 4 MB of data.
-%%
-%% </note> The actions are completed atomically so that either all of them
-%% succeed, or all of them fail. They are defined by the following objects:
+%% The actions are completed atomically so that either all of them succeed,
+%% or all of them fail. They are defined by the following objects:
 %%
 %% <ul> <li> <code>Put</code>  &#x97;   Initiates a <code>PutItem</code>
 %% operation to write a new item. This structure specifies the primary key of
@@ -1089,6 +1151,15 @@ update_continuous_backups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateContinuousBackups">>, Input, Options).
 
+%% @doc Updates the status for contributor insights for a specific table or
+%% index.
+update_contributor_insights(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_contributor_insights(Client, Input, []).
+update_contributor_insights(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateContributorInsights">>, Input, Options).
+
 %% @doc Adds or removes replicas in the specified global table. The global
 %% table must already exist to be able to use this operation. Any replica to
 %% be added must be empty, have the same name as the global table, have the
@@ -1170,6 +1241,20 @@ update_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTable">>, Input, Options).
 
+%% @doc Updates auto scaling settings on your global tables at once.
+%%
+%% <note> This operation only applies to <a
+%% href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html">Version
+%% 2019.11.21</a> of global tables.
+%%
+%% </note>
+update_table_replica_auto_scaling(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_table_replica_auto_scaling(Client, Input, []).
+update_table_replica_auto_scaling(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateTableReplicaAutoScaling">>, Input, Options).
+
 %% @doc The <code>UpdateTimeToLive</code> method enables or disables Time to
 %% Live (TTL) for the specified table. A successful
 %% <code>UpdateTimeToLive</code> call returns the current
@@ -1223,20 +1308,14 @@ request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"dynamodb">>},
     Host = get_host(<<"dynamodb">>, Client1),
     URL = get_url(Host, Client1),
-    Headers1 =
-        case maps:get(token, Client1, undefined) of
-            Token when byte_size(Token) > 0 -> [{<<"X-Amz-Security-Token">>, Token}];
-            _ -> []
-        end,
-    Headers2 = [
+    Headers = [
         {<<"Host">>, Host},
         {<<"Content-Type">>, <<"application/x-amz-json-1.0">>},
         {<<"X-Amz-Target">>, << <<"DynamoDB_20120810.">>/binary, Action/binary>>}
-        | Headers1
     ],
     Payload = jsx:encode(Input),
-    Headers = aws_request:sign_request(Client1, <<"POST">>, URL, Headers2, Payload),
-    Response = hackney:request(post, URL, Headers, Payload, Options),
+    SignedHeaders = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
+    Response = hackney:request(post, URL, SignedHeaders, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->

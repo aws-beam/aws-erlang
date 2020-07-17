@@ -49,6 +49,9 @@
 %% </li> <li> <a>StartPipelineExecution</a>, which runs the most recent
 %% revision of an artifact through the pipeline.
 %%
+%% </li> <li> <a>StopPipelineExecution</a>, which stops the specified
+%% pipeline execution from continuing through the pipeline.
+%%
 %% </li> <li> <a>UpdatePipeline</a>, which updates a pipeline with edits or
 %% changes to the structure of the pipeline.
 %%
@@ -215,6 +218,8 @@
          retry_stage_execution/3,
          start_pipeline_execution/2,
          start_pipeline_execution/3,
+         stop_pipeline_execution/2,
+         stop_pipeline_execution/3,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
@@ -339,10 +344,9 @@ enable_stage_transition(Client, Input, Options)
 %% @doc Returns information about a job. Used for custom actions only.
 %%
 %% <important> When this API is called, AWS CodePipeline returns temporary
-%% credentials for the Amazon S3 bucket used to store artifacts for the
-%% pipeline, if the action requires access to that Amazon S3 bucket for input
-%% or output artifacts. This API also returns any secret values defined for
-%% the action.
+%% credentials for the S3 bucket used to store artifacts for the pipeline, if
+%% the action requires access to that S3 bucket for input or output
+%% artifacts. This API also returns any secret values defined for the action.
 %%
 %% </important>
 get_job_details(Client, Input)
@@ -392,10 +396,9 @@ get_pipeline_state(Client, Input, Options)
 %% partner actions only.
 %%
 %% <important> When this API is called, AWS CodePipeline returns temporary
-%% credentials for the Amazon S3 bucket used to store artifacts for the
-%% pipeline, if the action requires access to that Amazon S3 bucket for input
-%% or output artifacts. This API also returns any secret values defined for
-%% the action.
+%% credentials for the S3 bucket used to store artifacts for the pipeline, if
+%% the action requires access to that S3 bucket for input or output
+%% artifacts. This API also returns any secret values defined for the action.
 %%
 %% </important>
 get_third_party_job_details(Client, Input)
@@ -463,10 +466,9 @@ list_webhooks(Client, Input, Options)
 %% owner field, the <code>PollForJobs</code> action returns an error.
 %%
 %% <important> When this API is called, AWS CodePipeline returns temporary
-%% credentials for the Amazon S3 bucket used to store artifacts for the
-%% pipeline, if the action requires access to that Amazon S3 bucket for input
-%% or output artifacts. This API also returns any secret values defined for
-%% the action.
+%% credentials for the S3 bucket used to store artifacts for the pipeline, if
+%% the action requires access to that S3 bucket for input or output
+%% artifacts. This API also returns any secret values defined for the action.
 %%
 %% </important>
 poll_for_jobs(Client, Input)
@@ -480,9 +482,9 @@ poll_for_jobs(Client, Input, Options)
 %% act on. Used for partner actions only.
 %%
 %% <important> When this API is called, AWS CodePipeline returns temporary
-%% credentials for the Amazon S3 bucket used to store artifacts for the
-%% pipeline, if the action requires access to that Amazon S3 bucket for input
-%% or output artifacts.
+%% credentials for the S3 bucket used to store artifacts for the pipeline, if
+%% the action requires access to that S3 bucket for input or output
+%% artifacts.
 %%
 %% </important>
 poll_for_third_party_jobs(Client, Input)
@@ -591,6 +593,19 @@ start_pipeline_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartPipelineExecution">>, Input, Options).
 
+%% @doc Stops the specified pipeline execution. You choose to either stop the
+%% pipeline execution by completing in-progress actions without starting
+%% subsequent actions, or by abandoning in-progress actions. While completing
+%% or abandoning in-progress actions, the pipeline execution is in a
+%% <code>Stopping</code> state. After all in-progress actions are completed
+%% or abandoned, the pipeline execution is in a <code>Stopped</code> state.
+stop_pipeline_execution(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_pipeline_execution(Client, Input, []).
+stop_pipeline_execution(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopPipelineExecution">>, Input, Options).
+
 %% @doc Adds to or modifies the tags of the given resource. Tags are metadata
 %% that can be used to manage a resource.
 tag_resource(Client, Input)
@@ -633,20 +648,14 @@ request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"codepipeline">>},
     Host = get_host(<<"codepipeline">>, Client1),
     URL = get_url(Host, Client1),
-    Headers1 =
-        case maps:get(token, Client1, undefined) of
-            Token when byte_size(Token) > 0 -> [{<<"X-Amz-Security-Token">>, Token}];
-            _ -> []
-        end,
-    Headers2 = [
+    Headers = [
         {<<"Host">>, Host},
         {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
         {<<"X-Amz-Target">>, << <<"CodePipeline_20150709.">>/binary, Action/binary>>}
-        | Headers1
     ],
     Payload = jsx:encode(Input),
-    Headers = aws_request:sign_request(Client1, <<"POST">>, URL, Headers2, Payload),
-    Response = hackney:request(post, URL, Headers, Payload, Options),
+    SignedHeaders = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
+    Response = hackney:request(post, URL, SignedHeaders, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->

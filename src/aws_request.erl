@@ -33,18 +33,18 @@ sign_request(AccessKeyID, SecretAccessKey, Region, Service, Token, Now,
     LongDate = list_to_binary(ec_date:format("YmdTHisZ", Now)),
     ShortDate = list_to_binary(ec_date:format("Ymd", Now)),
     Headers1 = add_date_header(Headers, LongDate),
-    CanonicalRequest = canonical_request(Method, URL, Headers1, Body),
+    Headers2 = maybe_add_token_header(Headers1, Token),
+    CanonicalRequest = canonical_request(Method, URL, Headers2, Body),
     HashedCanonicalRequest = aws_util:sha256_hexdigest(CanonicalRequest),
     CredentialScope = credential_scope(ShortDate, Region, Service),
     SigningKey = signing_key(SecretAccessKey, ShortDate, Region, Service),
     StringToSign = string_to_sign(LongDate, CredentialScope,
                                   HashedCanonicalRequest),
     Signature = aws_util:hmac_sha256_hexdigest(SigningKey, StringToSign),
-    SignedHeaders = signed_headers(Headers1),
+    SignedHeaders = signed_headers(Headers2),
     Authorization = authorization(AccessKeyID, CredentialScope, SignedHeaders,
                                   Signature),
-    Headers2 = add_authorization_header(Headers1, Authorization),
-    maybe_add_token_header(Headers2, Token).
+    add_authorization_header(Headers2, Authorization).
 
 %%====================================================================
 %% Internal functions

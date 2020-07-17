@@ -124,6 +124,8 @@
          delete_deployment_group/3,
          delete_git_hub_account_token/2,
          delete_git_hub_account_token/3,
+         delete_resources_by_external_id/2,
+         delete_resources_by_external_id/3,
          deregister_on_premises_instance/2,
          deregister_on_premises_instance/3,
          get_application/2,
@@ -207,7 +209,7 @@ batch_get_application_revisions(Client, Input, Options)
     request(Client, <<"BatchGetApplicationRevisions">>, Input, Options).
 
 %% @doc Gets information about one or more applications. The maximum number
-%% of applications that can be returned is 25.
+%% of applications that can be returned is 100.
 batch_get_applications(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_applications(Client, Input, []).
@@ -243,7 +245,8 @@ batch_get_deployment_instances(Client, Input, Options)
 %% deprecated <code>BatchGetDeploymentInstances</code>. The maximum number of
 %% targets that can be returned is 25.
 %%
-%% The type of targets returned depends on the deployment's compute platform:
+%% The type of targets returned depends on the deployment's compute platform
+%% or deployment method:
 %%
 %% <ul> <li> <b>EC2/On-premises</b>: Information about EC2 instance targets.
 %%
@@ -251,6 +254,9 @@ batch_get_deployment_instances(Client, Input, Options)
 %%
 %% </li> <li> <b>Amazon ECS</b>: Information about Amazon ECS service
 %% targets.
+%%
+%% </li> <li> <b>CloudFormation</b>: Information about targets of blue/green
+%% deployments initiated by a CloudFormation stack update.
 %%
 %% </li> </ul>
 batch_get_deployment_targets(Client, Input)
@@ -361,6 +367,14 @@ delete_git_hub_account_token(Client, Input)
 delete_git_hub_account_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteGitHubAccountToken">>, Input, Options).
+
+%% @doc Deletes resources linked to an external ID.
+delete_resources_by_external_id(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_resources_by_external_id(Client, Input, []).
+delete_resources_by_external_id(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteResourcesByExternalId">>, Input, Options).
 
 %% @doc Deregisters an on-premises instance.
 deregister_on_premises_instance(Client, Input)
@@ -475,8 +489,8 @@ list_deployment_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDeploymentGroups">>, Input, Options).
 
-%% @doc <note> The newer BatchGetDeploymentTargets should be used instead
-%% because it works with all compute types.
+%% @doc <note> The newer <code>BatchGetDeploymentTargets</code> should be
+%% used instead because it works with all compute types.
 %% <code>ListDeploymentInstances</code> throws an exception if it is used
 %% with a compute platform other than EC2/On-premises or AWS Lambda.
 %%
@@ -527,7 +541,8 @@ list_on_premises_instances(Client, Input, Options)
     request(Client, <<"ListOnPremisesInstances">>, Input, Options).
 
 %% @doc Returns a list of tags for the resource identified by a specified
-%% ARN. Tags are used to organize and categorize your CodeDeploy resources.
+%% Amazon Resource Name (ARN). Tags are used to organize and categorize your
+%% CodeDeploy resources.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -536,9 +551,19 @@ list_tags_for_resource(Client, Input, Options)
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc Sets the result of a Lambda validation function. The function
-%% validates one or both lifecycle events (<code>BeforeAllowTraffic</code>
-%% and <code>AfterAllowTraffic</code>) and returns <code>Succeeded</code> or
-%% <code>Failed</code>.
+%% validates lifecycle hooks during a deployment that uses the AWS Lambda or
+%% Amazon ECS compute platform. For AWS Lambda deployments, the available
+%% lifecycle hooks are <code>BeforeAllowTraffic</code> and
+%% <code>AfterAllowTraffic</code>. For Amazon ECS deployments, the available
+%% lifecycle hooks are <code>BeforeInstall</code>, <code>AfterInstall</code>,
+%% <code>AfterAllowTestTraffic</code>, <code>BeforeAllowTraffic</code>, and
+%% <code>AfterAllowTraffic</code>. Lambda validation functions return
+%% <code>Succeeded</code> or <code>Failed</code>. For more information, see
+%% <a
+%% href="https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html#appspec-hooks-lambda">AppSpec
+%% 'hooks' Section for an AWS Lambda Deployment </a> and <a
+%% href="https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html#appspec-hooks-ecs">AppSpec
+%% 'hooks' Section for an Amazon ECS Deployment</a>.
 put_lifecycle_event_hook_execution_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_lifecycle_event_hook_execution_status(Client, Input, []).
@@ -606,7 +631,8 @@ tag_resource(Client, Input, Options)
 
 %% @doc Disassociates a resource from a list of tags. The resource is
 %% identified by the <code>ResourceArn</code> input parameter. The tags are
-%% identfied by the list of keys in the <code>TagKeys</code> input parameter.
+%% identified by the list of keys in the <code>TagKeys</code> input
+%% parameter.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -644,20 +670,14 @@ request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"codedeploy">>},
     Host = get_host(<<"codedeploy">>, Client1),
     URL = get_url(Host, Client1),
-    Headers1 =
-        case maps:get(token, Client1, undefined) of
-            Token when byte_size(Token) > 0 -> [{<<"X-Amz-Security-Token">>, Token}];
-            _ -> []
-        end,
-    Headers2 = [
+    Headers = [
         {<<"Host">>, Host},
         {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
         {<<"X-Amz-Target">>, << <<"CodeDeploy_20141006.">>/binary, Action/binary>>}
-        | Headers1
     ],
     Payload = jsx:encode(Input),
-    Headers = aws_request:sign_request(Client1, <<"POST">>, URL, Headers2, Payload),
-    Response = hackney:request(post, URL, Headers, Payload, Options),
+    SignedHeaders = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
+    Response = hackney:request(post, URL, SignedHeaders, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->

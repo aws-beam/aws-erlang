@@ -9,24 +9,25 @@
 %% Images (AMIs), and configuring operating systems (OSs) and applications at
 %% scale. Systems Manager lets you remotely and securely manage the
 %% configuration of your managed instances. A <i>managed instance</i> is any
-%% Amazon EC2 instance or on-premises machine in your hybrid environment that
-%% has been configured for Systems Manager.
+%% Amazon Elastic Compute Cloud instance (EC2 instance), or any on-premises
+%% server or virtual machine (VM) in your hybrid environment that has been
+%% configured for Systems Manager.
 %%
 %% This reference is intended to be used with the <a
-%% href="http://docs.aws.amazon.com/systems-manager/latest/userguide/">AWS
+%% href="https://docs.aws.amazon.com/systems-manager/latest/userguide/">AWS
 %% Systems Manager User Guide</a>.
 %%
 %% To get started, verify prerequisites and configure managed instances. For
 %% more information, see <a
-%% href="http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html">Setting
-%% Up AWS Systems Manager</a> in the <i>AWS Systems Manager User Guide</i>.
+%% href="https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html">Setting
+%% up AWS Systems Manager</a> in the <i>AWS Systems Manager User Guide</i>.
 %%
-%% For information about other API actions you can perform on Amazon EC2
-%% instances, see the <a
-%% href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/">Amazon EC2
+%% For information about other API actions you can perform on EC2 instances,
+%% see the <a
+%% href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/">Amazon EC2
 %% API Reference</a>. For information about how to use a Query API, see <a
-%% href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/making-api-requests.html">Making
-%% API Requests</a>.
+%% href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/making-api-requests.html">Making
+%% API requests</a>.
 -module(aws_ssm).
 
 -export([add_tags_to_resource/2,
@@ -143,6 +144,8 @@
          describe_sessions/3,
          get_automation_execution/2,
          get_automation_execution/3,
+         get_calendar_state/2,
+         get_calendar_state/3,
          get_command_invocation/2,
          get_command_invocation/3,
          get_connection_status/2,
@@ -267,6 +270,8 @@
          update_ops_item/3,
          update_patch_baseline/2,
          update_patch_baseline/3,
+         update_resource_data_sync/2,
+         update_resource_data_sync/3,
          update_service_setting/2,
          update_service_setting/3]).
 
@@ -292,12 +297,12 @@
 %% We recommend that you devise a set of tag keys that meets your needs for
 %% each resource type. Using a consistent set of tag keys makes it easier for
 %% you to manage your resources. You can search and filter the resources
-%% based on the tags you add. Tags don't have any semantic meaning to Amazon
-%% EC2 and are interpreted strictly as a string of characters.
+%% based on the tags you add. Tags don't have any semantic meaning to and are
+%% interpreted strictly as a string of characters.
 %%
-%% For more information about tags, see <a
-%% href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html">Tagging
-%% Your Amazon EC2 Resources</a> in the <i>Amazon EC2 User Guide</i>.
+%% For more information about using tags with EC2 instances, see <a
+%% href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html">Tagging
+%% your Amazon EC2 resources</a> in the <i>Amazon EC2 User Guide</i>.
 add_tags_to_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags_to_resource(Client, Input, []).
@@ -325,12 +330,22 @@ cancel_maintenance_window_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelMaintenanceWindowExecution">>, Input, Options).
 
-%% @doc Registers your on-premises server or virtual machine with Amazon EC2
-%% so that you can manage these resources using Run Command. An on-premises
-%% server or virtual machine that has been registered with EC2 is called a
-%% managed instance. For more information about activations, see <a
-%% href="http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-managedinstances.html">Setting
-%% Up AWS Systems Manager for Hybrid Environments</a>.
+%% @doc Generates an activation code and activation ID you can use to
+%% register your on-premises server or virtual machine (VM) with Systems
+%% Manager. Registering these machines with Systems Manager makes it possible
+%% to manage them using Systems Manager capabilities. You use the activation
+%% code and ID when installing SSM Agent on machines in your hybrid
+%% environment. For more information about requirements for managing
+%% on-premises instances and VMs using Systems Manager, see <a
+%% href="https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-managedinstances.html">Setting
+%% up AWS Systems Manager for hybrid environments</a> in the <i>AWS Systems
+%% Manager User Guide</i>.
+%%
+%% <note> On-premises servers or VMs that are registered with Systems Manager
+%% and EC2 instances that you manage with Systems Manager are all called
+%% <i>managed instances</i>.
+%%
+%% </note>
 create_activation(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_activation(Client, Input, []).
@@ -338,16 +353,18 @@ create_activation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateActivation">>, Input, Options).
 
-%% @doc Associates the specified Systems Manager document with the specified
-%% instances or targets.
-%%
-%% When you associate a document with one or more instances using instance
-%% IDs or tags, SSM Agent running on the instance processes the document and
-%% configures the instance as specified.
-%%
-%% If you associate a document with an instance that already has an
-%% associated document, the system returns the AssociationAlreadyExists
-%% exception.
+%% @doc A State Manager association defines the state that you want to
+%% maintain on your instances. For example, an association can specify that
+%% anti-virus software must be installed and running on your instances, or
+%% that certain ports must be closed. For static targets, the association
+%% specifies a schedule for when the configuration is reapplied. For dynamic
+%% targets, such as an AWS Resource Group or an AWS Autoscaling Group, State
+%% Manager applies the configuration when new instances are added to the
+%% group. The association also specifies actions to take when applying the
+%% configuration. For example, an association for anti-virus software might
+%% run once a day. If the software is not installed, then State Manager
+%% installs it. If the software is installed, but the service is not running,
+%% then the association might instruct State Manager to start the service.
 create_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_association(Client, Input, []).
@@ -372,10 +389,13 @@ create_association_batch(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAssociationBatch">>, Input, Options).
 
-%% @doc Creates a Systems Manager document.
-%%
-%% After you create a document, you can use CreateAssociation to associate it
-%% with one or more running instances.
+%% @doc Creates a Systems Manager (SSM) document. An SSM document defines the
+%% actions that Systems Manager performs on your managed instances. For more
+%% information about SSM documents, including information about supported
+%% schemas, features, and syntax, see <a
+%% href="https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-ssm-docs.html">AWS
+%% Systems Manager Documents</a> in the <i>AWS Systems Manager User
+%% Guide</i>.
 create_document(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_document(Client, Input, []).
@@ -404,13 +424,13 @@ create_maintenance_window(Client, Input, Options)
 %% @doc Creates a new OpsItem. You must have permission in AWS Identity and
 %% Access Management (IAM) to create a new OpsItem. For more information, see
 %% <a
-%% href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html">Getting
-%% Started with OpsCenter</a> in the <i>AWS Systems Manager User Guide</i>.
+%% href="https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html">Getting
+%% started with OpsCenter</a> in the <i>AWS Systems Manager User Guide</i>.
 %%
 %% Operations engineers and IT professionals use OpsCenter to view,
 %% investigate, and remediate operational issues impacting the performance
 %% and health of their AWS resources. For more information, see <a
-%% href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html">AWS
+%% href="https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html">AWS
 %% Systems Manager OpsCenter</a> in the <i>AWS Systems Manager User
 %% Guide</i>.
 create_ops_item(Client, Input)
@@ -434,19 +454,38 @@ create_patch_baseline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePatchBaseline">>, Input, Options).
 
-%% @doc Creates a resource data sync configuration to a single bucket in
-%% Amazon S3. This is an asynchronous operation that returns immediately.
-%% After a successful initial sync is completed, the system continuously
-%% syncs data to the Amazon S3 bucket. To check the status of the sync, use
-%% the <a>ListResourceDataSync</a>.
+%% @doc A resource data sync helps you view data from multiple sources in a
+%% single location. Systems Manager offers two types of resource data sync:
+%% <code>SyncToDestination</code> and <code>SyncFromSource</code>.
 %%
-%% By default, data is not encrypted in Amazon S3. We strongly recommend that
-%% you enable encryption in Amazon S3 to ensure secure data storage. We also
-%% recommend that you secure access to the Amazon S3 bucket by creating a
-%% restrictive bucket policy. For more information, see <a
-%% href="http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-datasync.html">Configuring
+%% You can configure Systems Manager Inventory to use the
+%% <code>SyncToDestination</code> type to synchronize Inventory data from
+%% multiple AWS Regions to a single S3 bucket. For more information, see <a
+%% href="https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-datasync.html">Configuring
 %% Resource Data Sync for Inventory</a> in the <i>AWS Systems Manager User
 %% Guide</i>.
+%%
+%% You can configure Systems Manager Explorer to use the
+%% <code>SyncFromSource</code> type to synchronize operational work items
+%% (OpsItems) and operational data (OpsData) from multiple AWS Regions to a
+%% single S3 bucket. This type can synchronize OpsItems and OpsData from
+%% multiple AWS accounts and Regions or <code>EntireOrganization</code> by
+%% using AWS Organizations. For more information, see <a
+%% href="https://docs.aws.amazon.com/systems-manager/latest/userguide/Explorer-resource-data-sync.html">Setting
+%% up Systems Manager Explorer to display data from multiple accounts and
+%% Regions</a> in the <i>AWS Systems Manager User Guide</i>.
+%%
+%% A resource data sync is an asynchronous operation that returns
+%% immediately. After a successful initial sync is completed, the system
+%% continuously syncs data. To check the status of a sync, use the
+%% <a>ListResourceDataSync</a>.
+%%
+%% <note> By default, data is not encrypted in Amazon S3. We strongly
+%% recommend that you enable encryption in Amazon S3 to ensure secure data
+%% storage. We also recommend that you secure access to the Amazon S3 bucket
+%% by creating a restrictive bucket policy.
+%%
+%% </note>
 create_resource_data_sync(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_resource_data_sync(Client, Input, []).
@@ -535,9 +574,8 @@ delete_patch_baseline(Client, Input, Options)
     request(Client, <<"DeletePatchBaseline">>, Input, Options).
 
 %% @doc Deletes a Resource Data Sync configuration. After the configuration
-%% is deleted, changes to inventory data on managed instances are no longer
-%% synced with the target Amazon S3 bucket. Deleting a sync configuration
-%% does not delete data in the target Amazon S3 bucket.
+%% is deleted, changes to data on managed instances are no longer synced to
+%% or from the target. Deleting a sync configuration does not delete data.
 delete_resource_data_sync(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_data_sync(Client, Input, []).
@@ -693,17 +731,18 @@ describe_instance_associations_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInstanceAssociationsStatus">>, Input, Options).
 
-%% @doc Describes one or more of your instances. You can use this to get
-%% information about instances like the operating system platform, the SSM
-%% Agent version (Linux), status etc. If you specify one or more instance
-%% IDs, it returns information for those instances. If you do not specify
-%% instance IDs, it returns information for all your instances. If you
-%% specify an instance ID that is not valid or an instance that you do not
-%% own, you receive an error.
+%% @doc Describes one or more of your instances, including information about
+%% the operating system platform, the version of SSM Agent installed on the
+%% instance, instance status, and so on.
+%%
+%% If you specify one or more instance IDs, it returns information for those
+%% instances. If you do not specify instance IDs, it returns information for
+%% all your instances. If you specify an instance ID that is not valid or an
+%% instance that you do not own, you receive an error.
 %%
 %% <note> The IamRole field for this API action is the Amazon Identity and
 %% Access Management (IAM) role assigned to on-premises instances. This call
-%% does not return the IAM role for Amazon EC2 instances.
+%% does not return the IAM role for EC2 instances.
 %%
 %% </note>
 describe_instance_information(Client, Input)
@@ -821,13 +860,13 @@ describe_maintenance_windows_for_target(Client, Input, Options)
 %% @doc Query a set of OpsItems. You must have permission in AWS Identity and
 %% Access Management (IAM) to query a list of OpsItems. For more information,
 %% see <a
-%% href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html">Getting
-%% Started with OpsCenter</a> in the <i>AWS Systems Manager User Guide</i>.
+%% href="https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html">Getting
+%% started with OpsCenter</a> in the <i>AWS Systems Manager User Guide</i>.
 %%
 %% Operations engineers and IT professionals use OpsCenter to view,
 %% investigate, and remediate operational issues impacting the performance
 %% and health of their AWS resources. For more information, see <a
-%% href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html">AWS
+%% href="https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html">AWS
 %% Systems Manager OpsCenter</a> in the <i>AWS Systems Manager User
 %% Guide</i>.
 describe_ops_items(Client, Input)
@@ -839,7 +878,7 @@ describe_ops_items(Client, Input, Options)
 
 %% @doc Get information about a parameter.
 %%
-%% Request results are returned on a best-effort basis. If you specify
+%% <note> Request results are returned on a best-effort basis. If you specify
 %% <code>MaxResults</code> in the request, the response includes information
 %% up to the limit specified. The number of items returned, however, can be
 %% between zero and the value of <code>MaxResults</code>. If the service
@@ -847,6 +886,8 @@ describe_ops_items(Client, Input, Options)
 %% operation and returns the matching values up to that point and a
 %% <code>NextToken</code>. You can specify the <code>NextToken</code> in a
 %% subsequent call to get the next set of results.
+%%
+%% </note>
 describe_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_parameters(Client, Input, []).
@@ -935,6 +976,25 @@ get_automation_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAutomationExecution">>, Input, Options).
 
+%% @doc Gets the state of the AWS Systems Manager Change Calendar at an
+%% optional, specified time. If you specify a time,
+%% <code>GetCalendarState</code> returns the state of the calendar at a
+%% specific time, and returns the next time that the Change Calendar state
+%% will transition. If you do not specify a time,
+%% <code>GetCalendarState</code> assumes the current time. Change Calendar
+%% entries have two possible states: <code>OPEN</code> or
+%% <code>CLOSED</code>. For more information about Systems Manager Change
+%% Calendar, see <a
+%% href="https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-change-calendar.html">AWS
+%% Systems Manager Change Calendar</a> in the <i>AWS Systems Manager User
+%% Guide</i>.
+get_calendar_state(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_calendar_state(Client, Input, []).
+get_calendar_state(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetCalendarState">>, Input, Options).
+
 %% @doc Returns detailed information about command execution for an
 %% invocation or plugin.
 get_command_invocation(Client, Input)
@@ -945,7 +1005,7 @@ get_command_invocation(Client, Input, Options)
     request(Client, <<"GetCommandInvocation">>, Input, Options).
 
 %% @doc Retrieves the Session Manager connection status for an instance to
-%% determine whether it is connected and ready to receive Session Manager
+%% determine whether it is running and ready to receive Session Manager
 %% connections.
 get_connection_status(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1047,13 +1107,13 @@ get_maintenance_window_task(Client, Input, Options)
 %% @doc Get information about an OpsItem by using the ID. You must have
 %% permission in AWS Identity and Access Management (IAM) to view information
 %% about an OpsItem. For more information, see <a
-%% href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html">Getting
-%% Started with OpsCenter</a> in the <i>AWS Systems Manager User Guide</i>.
+%% href="https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html">Getting
+%% started with OpsCenter</a> in the <i>AWS Systems Manager User Guide</i>.
 %%
 %% Operations engineers and IT professionals use OpsCenter to view,
 %% investigate, and remediate operational issues impacting the performance
 %% and health of their AWS resources. For more information, see <a
-%% href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html">AWS
+%% href="https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html">AWS
 %% Systems Manager OpsCenter</a> in the <i>AWS Systems Manager User
 %% Guide</i>.
 get_ops_item(Client, Input)
@@ -1098,13 +1158,10 @@ get_parameters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetParameters">>, Input, Options).
 
-%% @doc Retrieve parameters in a specific hierarchy. For more information,
-%% see <a
-%% href="http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-working.html">Working
-%% with Systems Manager Parameters</a> in the <i>AWS Systems Manager User
-%% Guide</i>.
+%% @doc Retrieve information about one or more parameters in a specific
+%% hierarchy.
 %%
-%% Request results are returned on a best-effort basis. If you specify
+%% <note> Request results are returned on a best-effort basis. If you specify
 %% <code>MaxResults</code> in the request, the response includes information
 %% up to the limit specified. The number of items returned, however, can be
 %% between zero and the value of <code>MaxResults</code>. If the service
@@ -1112,8 +1169,6 @@ get_parameters(Client, Input, Options)
 %% operation and returns the matching values up to that point and a
 %% <code>NextToken</code>. You can specify the <code>NextToken</code> in a
 %% subsequent call to get the next set of results.
-%%
-%% <note> This API action doesn't support filtering by tags.
 %%
 %% </note>
 get_parameters_by_path(Client, Input)
@@ -1216,8 +1271,9 @@ list_association_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAssociationVersions">>, Input, Options).
 
-%% @doc Lists the associations for the specified Systems Manager document or
-%% instance.
+%% @doc Returns all State Manager associations in the current AWS account and
+%% Region. You can limit the results to a specific State Manager association
+%% document or instance by specifying a filter.
 list_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_associations(Client, Input, []).
@@ -1276,7 +1332,9 @@ list_document_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDocumentVersions">>, Input, Options).
 
-%% @doc Describes one or more of your Systems Manager documents.
+%% @doc Returns all Systems Manager (SSM) documents in the current AWS
+%% account and Region. You can limit the results of this request by using a
+%% filter.
 list_documents(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_documents(Client, Input, []).
@@ -1545,9 +1603,9 @@ start_automation_execution(Client, Input, Options)
 %% <note> AWS CLI usage: <code>start-session</code> is an interactive command
 %% that requires the Session Manager plugin to be installed on the client
 %% machine making the call. For information, see <a
-%% href="http://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html">
-%% Install the Session Manager Plugin for the AWS CLI</a> in the <i>AWS
-%% Systems Manager User Guide</i>.
+%% href="https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html">Install
+%% the Session Manager plugin for the AWS CLI</a> in the <i>AWS Systems
+%% Manager User Guide</i>.
 %%
 %% AWS Tools for PowerShell usage: Start-SSMSession is not currently
 %% supported by AWS Tools for PowerShell on Windows local machines.
@@ -1699,8 +1757,10 @@ update_maintenance_window_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateMaintenanceWindowTask">>, Input, Options).
 
-%% @doc Assigns or changes an Amazon Identity and Access Management (IAM)
-%% role for the managed instance.
+%% @doc Changes the Amazon Identity and Access Management (IAM) role that is
+%% assigned to the on-premises instance or virtual machines (VM). IAM roles
+%% are first assigned to these hybrid instances during the activation
+%% process. For more information, see <a>CreateActivation</a>.
 update_managed_instance_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_managed_instance_role(Client, Input, []).
@@ -1711,13 +1771,13 @@ update_managed_instance_role(Client, Input, Options)
 %% @doc Edit or change an OpsItem. You must have permission in AWS Identity
 %% and Access Management (IAM) to update an OpsItem. For more information,
 %% see <a
-%% href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html">Getting
-%% Started with OpsCenter</a> in the <i>AWS Systems Manager User Guide</i>.
+%% href="https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html">Getting
+%% started with OpsCenter</a> in the <i>AWS Systems Manager User Guide</i>.
 %%
 %% Operations engineers and IT professionals use OpsCenter to view,
 %% investigate, and remediate operational issues impacting the performance
 %% and health of their AWS resources. For more information, see <a
-%% href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html">AWS
+%% href="https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html">AWS
 %% Systems Manager OpsCenter</a> in the <i>AWS Systems Manager User
 %% Guide</i>.
 update_ops_item(Client, Input)
@@ -1741,6 +1801,25 @@ update_patch_baseline(Client, Input)
 update_patch_baseline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePatchBaseline">>, Input, Options).
+
+%% @doc Update a resource data sync. After you create a resource data sync
+%% for a Region, you can't change the account options for that sync. For
+%% example, if you create a sync in the us-east-2 (Ohio) Region and you
+%% choose the Include only the current account option, you can't edit that
+%% sync later and choose the Include all accounts from my AWS Organizations
+%% configuration option. Instead, you must delete the first resource data
+%% sync, and create a new one.
+%%
+%% <note> This API action only supports a resource data sync that was created
+%% with a SyncFromSource <code>SyncType</code>.
+%%
+%% </note>
+update_resource_data_sync(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_resource_data_sync(Client, Input, []).
+update_resource_data_sync(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateResourceDataSync">>, Input, Options).
 
 %% @doc <code>ServiceSetting</code> is an account-level setting for an AWS
 %% service. This setting defines how a user interacts with or uses a service
@@ -1780,20 +1859,14 @@ request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"ssm">>},
     Host = get_host(<<"ssm">>, Client1),
     URL = get_url(Host, Client1),
-    Headers1 =
-        case maps:get(token, Client1, undefined) of
-            Token when byte_size(Token) > 0 -> [{<<"X-Amz-Security-Token">>, Token}];
-            _ -> []
-        end,
-    Headers2 = [
+    Headers = [
         {<<"Host">>, Host},
         {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
         {<<"X-Amz-Target">>, << <<"AmazonSSM.">>/binary, Action/binary>>}
-        | Headers1
     ],
     Payload = jsx:encode(Input),
-    Headers = aws_request:sign_request(Client1, <<"POST">>, URL, Headers2, Payload),
-    Response = hackney:request(post, URL, Headers, Payload, Options),
+    SignedHeaders = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
+    Response = hackney:request(post, URL, SignedHeaders, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->

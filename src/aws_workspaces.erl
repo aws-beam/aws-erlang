@@ -25,6 +25,8 @@
          delete_tags/3,
          delete_workspace_image/2,
          delete_workspace_image/3,
+         deregister_workspace_directory/2,
+         deregister_workspace_directory/3,
          describe_account/2,
          describe_account/3,
          describe_account_modifications/2,
@@ -53,10 +55,18 @@
          import_workspace_image/3,
          list_available_management_cidr_ranges/2,
          list_available_management_cidr_ranges/3,
+         migrate_workspace/2,
+         migrate_workspace/3,
          modify_account/2,
          modify_account/3,
          modify_client_properties/2,
          modify_client_properties/3,
+         modify_selfservice_permissions/2,
+         modify_selfservice_permissions/3,
+         modify_workspace_access_properties/2,
+         modify_workspace_access_properties/3,
+         modify_workspace_creation_properties/2,
+         modify_workspace_creation_properties/3,
          modify_workspace_properties/2,
          modify_workspace_properties/3,
          modify_workspace_state/2,
@@ -65,6 +75,8 @@
          reboot_workspaces/3,
          rebuild_workspaces/2,
          rebuild_workspaces/3,
+         register_workspace_directory/2,
+         register_workspace_directory/3,
          restore_workspace/2,
          restore_workspace/3,
          revoke_ip_rules/2,
@@ -181,8 +193,19 @@ delete_workspace_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWorkspaceImage">>, Input, Options).
 
-%% @doc Retrieves a list that describes the configuration of bring your own
-%% license (BYOL) for the specified account.
+%% @doc Deregisters the specified directory. This operation is asynchronous
+%% and returns before the WorkSpace directory is deregistered. If any
+%% WorkSpaces are registered to this directory, you must remove them before
+%% you can deregister the directory.
+deregister_workspace_directory(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    deregister_workspace_directory(Client, Input, []).
+deregister_workspace_directory(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeregisterWorkspaceDirectory">>, Input, Options).
+
+%% @doc Retrieves a list that describes the configuration of Bring Your Own
+%% License (BYOL) for the specified account.
 describe_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_account(Client, Input, []).
@@ -191,7 +214,7 @@ describe_account(Client, Input, Options)
     request(Client, <<"DescribeAccount">>, Input, Options).
 
 %% @doc Retrieves a list that describes modifications to the configuration of
-%% bring your own license (BYOL) for the specified account.
+%% Bring Your Own License (BYOL) for the specified account.
 describe_account_modifications(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_account_modifications(Client, Input, []).
@@ -234,8 +257,8 @@ describe_workspace_bundles(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeWorkspaceBundles">>, Input, Options).
 
-%% @doc Describes the available AWS Directory Service directories that are
-%% registered with Amazon WorkSpaces.
+%% @doc Describes the available directories that are registered with Amazon
+%% WorkSpaces.
 describe_workspace_directories(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_workspace_directories(Client, Input, []).
@@ -289,7 +312,7 @@ disassociate_ip_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateIpGroups">>, Input, Options).
 
-%% @doc Imports the specified Windows 7 or Windows 10 bring your own license
+%% @doc Imports the specified Windows 7 or Windows 10 Bring Your Own License
 %% (BYOL) image into Amazon WorkSpaces. The image must be an already licensed
 %% EC2 image that is in your AWS account, and you must own the image.
 import_workspace_image(Client, Input)
@@ -301,7 +324,7 @@ import_workspace_image(Client, Input, Options)
 
 %% @doc Retrieves a list of IP address ranges, specified as IPv4 CIDR blocks,
 %% that you can use for the network management interface when you enable
-%% bring your own license (BYOL).
+%% Bring Your Own License (BYOL).
 %%
 %% The management network interface is connected to a secure Amazon
 %% WorkSpaces management network. It is used for interactive streaming of the
@@ -314,7 +337,29 @@ list_available_management_cidr_ranges(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAvailableManagementCidrRanges">>, Input, Options).
 
-%% @doc Modifies the configuration of bring your own license (BYOL) for the
+%% @doc Migrates a WorkSpace from one operating system or bundle type to
+%% another, while retaining the data on the user volume.
+%%
+%% The migration process recreates the WorkSpace by using a new root volume
+%% from the target bundle image and the user volume from the last available
+%% snapshot of the original WorkSpace. During migration, the original
+%% <code>D:\Users\%USERNAME%</code> user profile folder is renamed to
+%% <code>D:\Users\%USERNAME%MMddyyTHHmmss%.NotMigrated</code>. A new
+%% <code>D:\Users\%USERNAME%\</code> folder is generated by the new OS.
+%% Certain files in the old user profile are moved to the new user profile.
+%%
+%% For available migration scenarios, details about what happens during
+%% migration, and best practices, see <a
+%% href="https://docs.aws.amazon.com/workspaces/latest/adminguide/migrate-workspaces.html">Migrate
+%% a WorkSpace</a>.
+migrate_workspace(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    migrate_workspace(Client, Input, []).
+migrate_workspace(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"MigrateWorkspace">>, Input, Options).
+
+%% @doc Modifies the configuration of Bring Your Own License (BYOL) for the
 %% specified account.
 modify_account(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -330,6 +375,36 @@ modify_client_properties(Client, Input)
 modify_client_properties(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyClientProperties">>, Input, Options).
+
+%% @doc Modifies the self-service WorkSpace management capabilities for your
+%% users. For more information, see <a
+%% href="https://docs.aws.amazon.com/workspaces/latest/adminguide/enable-user-self-service-workspace-management.html">Enable
+%% Self-Service WorkSpace Management Capabilities for Your Users</a>.
+modify_selfservice_permissions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_selfservice_permissions(Client, Input, []).
+modify_selfservice_permissions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifySelfservicePermissions">>, Input, Options).
+
+%% @doc Specifies which devices and operating systems users can use to access
+%% their WorkSpaces. For more information, see <a
+%% href="https://docs.aws.amazon.com/workspaces/latest/adminguide/update-directory-details.html#control-device-access">
+%% Control Device Access</a>.
+modify_workspace_access_properties(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_workspace_access_properties(Client, Input, []).
+modify_workspace_access_properties(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyWorkspaceAccessProperties">>, Input, Options).
+
+%% @doc Modify the default properties used to create WorkSpaces.
+modify_workspace_creation_properties(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_workspace_creation_properties(Client, Input, []).
+modify_workspace_creation_properties(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyWorkspaceCreationProperties">>, Input, Options).
 
 %% @doc Modifies the specified WorkSpace properties.
 modify_workspace_properties(Client, Input)
@@ -370,7 +445,7 @@ reboot_workspaces(Client, Input, Options)
 %% @doc Rebuilds the specified WorkSpace.
 %%
 %% You cannot rebuild a WorkSpace unless its state is <code>AVAILABLE</code>,
-%% <code>ERROR</code>, or <code>UNHEALTHY</code>.
+%% <code>ERROR</code>, <code>UNHEALTHY</code>, or <code>STOPPED</code>.
 %%
 %% Rebuilding a WorkSpace is a potentially destructive action that can result
 %% in the loss of data. For more information, see <a
@@ -386,10 +461,25 @@ rebuild_workspaces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RebuildWorkspaces">>, Input, Options).
 
+%% @doc Registers the specified directory. This operation is asynchronous and
+%% returns before the WorkSpace directory is registered. If this is the first
+%% time you are registering a directory, you will need to create the
+%% workspaces_DefaultRole role before you can register a directory. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/workspaces/latest/adminguide/workspaces-access-control.html#create-default-role">
+%% Creating the workspaces_DefaultRole Role</a>.
+register_workspace_directory(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    register_workspace_directory(Client, Input, []).
+register_workspace_directory(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RegisterWorkspaceDirectory">>, Input, Options).
+
 %% @doc Restores the specified WorkSpace to its last known healthy state.
 %%
 %% You cannot restore a WorkSpace unless its state is <code>
-%% AVAILABLE</code>, <code>ERROR</code>, or <code>UNHEALTHY</code>.
+%% AVAILABLE</code>, <code>ERROR</code>, <code>UNHEALTHY</code>, or
+%% <code>STOPPED</code>.
 %%
 %% Restoring a WorkSpace is a potentially destructive action that can result
 %% in the loss of data. For more information, see <a
@@ -477,20 +567,14 @@ request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"workspaces">>},
     Host = get_host(<<"workspaces">>, Client1),
     URL = get_url(Host, Client1),
-    Headers1 =
-        case maps:get(token, Client1, undefined) of
-            Token when byte_size(Token) > 0 -> [{<<"X-Amz-Security-Token">>, Token}];
-            _ -> []
-        end,
-    Headers2 = [
+    Headers = [
         {<<"Host">>, Host},
         {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
         {<<"X-Amz-Target">>, << <<"WorkspacesService.">>/binary, Action/binary>>}
-        | Headers1
     ],
     Payload = jsx:encode(Input),
-    Headers = aws_request:sign_request(Client1, <<"POST">>, URL, Headers2, Payload),
-    Response = hackney:request(post, URL, Headers, Payload, Options),
+    SignedHeaders = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
+    Response = hackney:request(post, URL, SignedHeaders, Payload, Options),
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->
