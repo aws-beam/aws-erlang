@@ -298,6 +298,9 @@ create_portfolio(Client, Input, Options)
 %%
 %% <code>AWSOrganizationsAccess</code> must be enabled in order to create a
 %% portfolio share to an organization node.
+%%
+%% You can't share a shared resource. This includes portfolios that contain a
+%% shared product.
 create_portfolio_share(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_portfolio_share(Client, Input, []).

@@ -323,8 +323,12 @@ delete_evaluation_results(Client, Input, Options)
     request(Client, <<"DeleteEvaluationResults">>, Input, Options).
 
 %% @doc Deletes the specified organization config rule and all of its
-%% evaluation results from all member accounts in that organization. Only a
-%% master account can delete an organization config rule.
+%% evaluation results from all member accounts in that organization.
+%%
+%% Only a master account and a delegated administrator account can delete an
+%% organization config rule. When calling this API with a delegated
+%% administrator, you must ensure AWS Organizations
+%% <code>ListDelegatedAdministrator</code> permissions are added.
 %%
 %% AWS Config sets the state of a rule to DELETE_IN_PROGRESS until the
 %% deletion is complete. You cannot update a rule while it is in this state.
@@ -337,8 +341,12 @@ delete_organization_config_rule(Client, Input, Options)
 
 %% @doc Deletes the specified organization conformance pack and all of the
 %% config rules and remediation actions from all member accounts in that
-%% organization. Only a master account can delete an organization conformance
-%% pack.
+%% organization.
+%%
+%% Only a master account or a delegated administrator account can delete an
+%% organization conformance pack. When calling this API with a delegated
+%% administrator, you must ensure AWS Organizations
+%% <code>ListDelegatedAdministrator</code> permissions are added.
 %%
 %% AWS Config sets the state of a conformance pack to DELETE_IN_PROGRESS
 %% until the deletion is complete. You cannot update a conformance pack while
@@ -369,6 +377,12 @@ delete_remediation_configuration(Client, Input, Options)
 
 %% @doc Deletes one or more remediation exceptions mentioned in the resource
 %% keys.
+%%
+%% <note> AWS Config generates a remediation exception when a problem occurs
+%% executing a remediation action to a specific resource. Remediation
+%% exceptions blocks auto-remediation until the exception is cleared.
+%%
+%% </note>
 delete_remediation_exceptions(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_remediation_exceptions(Client, Input, []).
@@ -645,6 +659,11 @@ describe_delivery_channels(Client, Input, Options)
 %% @doc Provides organization config rule deployment status for an
 %% organization.
 %%
+%% Only a master account and a delegated administrator account can call this
+%% API. When calling this API with a delegated administrator, you must ensure
+%% AWS Organizations <code>ListDelegatedAdministrator</code> permissions are
+%% added.
+%%
 %% <note> The status is not considered successful until organization config
 %% rule is successfully deployed in all the member accounts with an exception
 %% of excluded accounts.
@@ -653,8 +672,6 @@ describe_delivery_channels(Client, Input, Options)
 %% response. Limit and next token are not applicable if you specify
 %% organization config rule names. It is only applicable, when you request
 %% all the organization config rules.
-%%
-%% Only a master account can call this API.
 %%
 %% </note>
 describe_organization_config_rule_statuses(Client, Input)
@@ -666,12 +683,15 @@ describe_organization_config_rule_statuses(Client, Input, Options)
 
 %% @doc Returns a list of organization config rules.
 %%
+%% Only a master account and a delegated administrator account can call this
+%% API. When calling this API with a delegated administrator, you must ensure
+%% AWS Organizations <code>ListDelegatedAdministrator</code> permissions are
+%% added.&#x2028;
+%%
 %% <note> When you specify the limit and the next token, you receive a
 %% paginated response. Limit and next token are not applicable if you specify
 %% organization config rule names. It is only applicable, when you request
 %% all the organization config rules.
-%%
-%% Only a master account can call this API.
 %%
 %% </note>
 describe_organization_config_rules(Client, Input)
@@ -684,6 +704,11 @@ describe_organization_config_rules(Client, Input, Options)
 %% @doc Provides organization conformance pack deployment status for an
 %% organization.
 %%
+%% Only a master account and a delegated administrator account can call this
+%% API. When calling this API with a delegated administrator, you must ensure
+%% AWS Organizations <code>ListDelegatedAdministrator</code> permissions are
+%% added.
+%%
 %% <note> The status is not considered successful until organization
 %% conformance pack is successfully deployed in all the member accounts with
 %% an exception of excluded accounts.
@@ -692,8 +717,6 @@ describe_organization_config_rules(Client, Input, Options)
 %% response. Limit and next token are not applicable if you specify
 %% organization conformance pack names. They are only applicable, when you
 %% request all the organization conformance packs.
-%%
-%% Only a master account can call this API.
 %%
 %% </note>
 describe_organization_conformance_pack_statuses(Client, Input)
@@ -705,14 +728,17 @@ describe_organization_conformance_pack_statuses(Client, Input, Options)
 
 %% @doc Returns a list of organization conformance packs.
 %%
+%% Only a master account and a delegated administrator account can call this
+%% API. When calling this API with a delegated administrator, you must ensure
+%% AWS Organizations <code>ListDelegatedAdministrator</code> permissions are
+%% added.
+%%
 %% <note> When you specify the limit and the next token, you receive a
 %% paginated response.
 %%
 %% Limit and next token are not applicable if you specify organization
 %% conformance packs names. They are only applicable, when you request all
 %% the organization conformance packs.
-%%
-%% Only a master account can call this API.
 %%
 %% </note>
 describe_organization_conformance_packs(Client, Input)
@@ -744,8 +770,12 @@ describe_remediation_configurations(Client, Input, Options)
 %% deleted. When you specify the limit and the next token, you receive a
 %% paginated response.
 %%
-%% <note> When you specify the limit and the next token, you receive a
-%% paginated response.
+%% <note> AWS Config generates a remediation exception when a problem occurs
+%% executing a remediation action to a specific resource. Remediation
+%% exceptions blocks auto-remediation until the exception is cleared.
+%%
+%% When you specify the limit and the next token, you receive a paginated
+%% response.
 %%
 %% Limit and next token are not applicable if you request resources in batch.
 %% It is only applicable, when you request all resources.
@@ -950,9 +980,10 @@ get_discovered_resource_counts(Client, Input, Options)
 %% @doc Returns detailed status for each member account within an
 %% organization for a given organization config rule.
 %%
-%% <note> Only a master account can call this API.
-%%
-%% </note>
+%% Only a master account and a delegated administrator account can call this
+%% API. When calling this API with a delegated administrator, you must ensure
+%% AWS Organizations <code>ListDelegatedAdministrator</code> permissions are
+%% added.
 get_organization_config_rule_detailed_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_organization_config_rule_detailed_status(Client, Input, []).
@@ -963,7 +994,10 @@ get_organization_config_rule_detailed_status(Client, Input, Options)
 %% @doc Returns detailed status for each member account within an
 %% organization for a given organization conformance pack.
 %%
-%% Only a master account can call this API.
+%% Only a master account and a delegated administrator account can call this
+%% API. When calling this API with a delegated administrator, you must ensure
+%% AWS Organizations <code>ListDelegatedAdministrator</code> permissions are
+%% added.
 get_organization_conformance_pack_detailed_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_organization_conformance_pack_detailed_status(Client, Input, []).
@@ -1156,8 +1190,6 @@ put_configuration_recorder(Client, Input, Options)
 %% This API creates a service linked role
 %% <code>AWSServiceRoleForConfigConforms</code> in your account. The service
 %% linked role is created only when the role does not exist in your account.
-%% AWS Config verifies the existence of role with <code>GetRole</code>
-%% action.
 %%
 %% <note> You must specify either the <code>TemplateS3Uri</code> or the
 %% <code>TemplateBody</code> parameter, but not both. If you provide both AWS
@@ -1207,29 +1239,43 @@ put_evaluations(Client, Input, Options)
 
 %% @doc Adds or updates organization config rule for your entire organization
 %% evaluating whether your AWS resources comply with your desired
-%% configurations. Only a master account can create or update an organization
-%% config rule.
+%% configurations.
+%%
+%% Only a master account and a delegated administrator can create or update
+%% an organization config rule. When calling this API with a delegated
+%% administrator, you must ensure AWS Organizations
+%% <code>ListDelegatedAdministrator</code> permissions are added.
 %%
 %% This API enables organization service access through the
 %% <code>EnableAWSServiceAccess</code> action and creates a service linked
 %% role <code>AWSServiceRoleForConfigMultiAccountSetup</code> in the master
-%% account of your organization. The service linked role is created only when
-%% the role does not exist in the master account. AWS Config verifies the
-%% existence of role with <code>GetRole</code> action.
+%% or delegated administrator account of your organization. The service
+%% linked role is created only when the role does not exist in the caller
+%% account. AWS Config verifies the existence of role with
+%% <code>GetRole</code> action.
+%%
+%% To use this API with delegated administrator, register a delegated
+%% administrator by calling AWS Organization
+%% <code>register-delegated-administrator</code> for
+%% <code>config-multiaccountsetup.amazonaws.com</code>.
 %%
 %% You can use this action to create both custom AWS Config rules and AWS
 %% managed Config rules. If you are adding a new custom AWS Config rule, you
-%% must first create AWS Lambda function in the master account that the rule
-%% invokes to evaluate your resources. When you use the
-%% <code>PutOrganizationConfigRule</code> action to add the rule to AWS
-%% Config, you must specify the Amazon Resource Name (ARN) that AWS Lambda
-%% assigns to the function. If you are adding an AWS managed Config rule,
-%% specify the rule's identifier for the <code>RuleIdentifier</code> key.
+%% must first create AWS Lambda function in the master account or a delegated
+%% administrator that the rule invokes to evaluate your resources. When you
+%% use the <code>PutOrganizationConfigRule</code> action to add the rule to
+%% AWS Config, you must specify the Amazon Resource Name (ARN) that AWS
+%% Lambda assigns to the function. If you are adding an AWS managed Config
+%% rule, specify the rule's identifier for the <code>RuleIdentifier</code>
+%% key.
 %%
 %% The maximum number of organization config rules that AWS Config supports
-%% is 150.
+%% is 150 and 3 delegated administrator per organization.
 %%
-%% <note> Specify either <code>OrganizationCustomRuleMetadata</code> or
+%% <note> Prerequisite: Ensure you call <code>EnableAllFeatures</code> API to
+%% enable all features in an organization.
+%%
+%% Specify either <code>OrganizationCustomRuleMetadata</code> or
 %% <code>OrganizationManagedRuleMetadata</code>.
 %%
 %% </note>
@@ -1243,24 +1289,36 @@ put_organization_config_rule(Client, Input, Options)
 %% @doc Deploys conformance packs across member accounts in an AWS
 %% Organization.
 %%
+%% Only a master account and a delegated administrator can call this API.
+%% When calling this API with a delegated administrator, you must ensure AWS
+%% Organizations <code>ListDelegatedAdministrator</code> permissions are
+%% added.
+%%
 %% This API enables organization service access for
 %% <code>config-multiaccountsetup.amazonaws.com</code> through the
 %% <code>EnableAWSServiceAccess</code> action and creates a service linked
 %% role <code>AWSServiceRoleForConfigMultiAccountSetup</code> in the master
-%% account of your organization. The service linked role is created only when
-%% the role does not exist in the master account. AWS Config verifies the
-%% existence of role with GetRole action.
+%% or delegated administrator account of your organization. The service
+%% linked role is created only when the role does not exist in the caller
+%% account. To use this API with delegated administrator, register a
+%% delegated administrator by calling AWS Organization
+%% <code>register-delegate-admin</code> for
+%% <code>config-multiaccountsetup.amazonaws.com</code>.
 %%
-%% <note> You must specify either the <code>TemplateS3Uri</code> or the
+%% <note> Prerequisite: Ensure you call <code>EnableAllFeatures</code> API to
+%% enable all features in an organization.
+%%
+%% You must specify either the <code>TemplateS3Uri</code> or the
 %% <code>TemplateBody</code> parameter, but not both. If you provide both AWS
 %% Config uses the <code>TemplateS3Uri</code> parameter and ignores the
 %% <code>TemplateBody</code> parameter.
 %%
 %% AWS Config sets the state of a conformance pack to CREATE_IN_PROGRESS and
-%% UPDATE_IN_PROGRESS until the confomance pack is created or updated. You
+%% UPDATE_IN_PROGRESS until the conformance pack is created or updated. You
 %% cannot update a conformance pack while it is in this state.
 %%
-%% You can create 6 conformance packs with 25 AWS Config rules in each pack.
+%% You can create 6 conformance packs with 25 AWS Config rules in each pack
+%% and 3 delegated administrator per organization.
 %%
 %% </note>
 put_organization_conformance_pack(Client, Input)
@@ -1276,6 +1334,11 @@ put_organization_conformance_pack(Client, Input, Options)
 %% AWS Config rule must already exist for you to add a remediation
 %% configuration. The target (SSM document) must exist and have permissions
 %% to use the target.
+%%
+%% <note> If you make backward incompatible changes to the SSM document, you
+%% must call this again to ensure the remediations can run.
+%%
+%% </note>
 put_remediation_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_remediation_configurations(Client, Input, []).
@@ -1287,6 +1350,12 @@ put_remediation_configurations(Client, Input, Options)
 %% considered for auto-remediation. This API adds a new exception or updates
 %% an exisiting exception for a specific resource with a specific AWS Config
 %% rule.
+%%
+%% <note> AWS Config generates a remediation exception when a problem occurs
+%% executing a remediation action to a specific resource. Remediation
+%% exceptions blocks auto-remediation until the exception is cleared.
+%%
+%% </note>
 put_remediation_exceptions(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_remediation_exceptions(Client, Input, []).
@@ -1307,6 +1376,9 @@ put_remediation_exceptions(Client, Input, Options)
 %% When you call this API, AWS Config only stores configuration state of the
 %% resource provided in the request. This API does not change or remediate
 %% the configuration of the resource.
+%%
+%% Write-only schema properites are not recorded as part of the published
+%% configuration item.
 %%
 %% </note>
 put_resource_config(Client, Input)

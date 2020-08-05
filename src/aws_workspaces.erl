@@ -41,6 +41,8 @@
          describe_workspace_bundles/3,
          describe_workspace_directories/2,
          describe_workspace_directories/3,
+         describe_workspace_image_permissions/2,
+         describe_workspace_image_permissions/3,
          describe_workspace_images/2,
          describe_workspace_images/3,
          describe_workspace_snapshots/2,
@@ -88,7 +90,9 @@
          terminate_workspaces/2,
          terminate_workspaces/3,
          update_rules_of_ip_group/2,
-         update_rules_of_ip_group/3]).
+         update_rules_of_ip_group/3,
+         update_workspace_image_permission/2,
+         update_workspace_image_permission/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -185,7 +189,7 @@ delete_tags(Client, Input, Options)
 
 %% @doc Deletes the specified image from your account. To delete an image,
 %% you must first delete any bundles that are associated with the image and
-%% un-share the image if it is shared with other accounts.
+%% unshare the image if it is shared with other accounts.
 delete_workspace_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_workspace_image(Client, Input, []).
@@ -265,6 +269,15 @@ describe_workspace_directories(Client, Input)
 describe_workspace_directories(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeWorkspaceDirectories">>, Input, Options).
+
+%% @doc Describes the permissions that the owner of an image has granted to
+%% other AWS accounts for an image.
+describe_workspace_image_permissions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_workspace_image_permissions(Client, Input, []).
+describe_workspace_image_permissions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeWorkspaceImagePermissions">>, Input, Options).
 
 %% @doc Retrieves a list that describes one or more specified images, if the
 %% image identifiers are provided. Otherwise, all images in the account are
@@ -406,7 +419,11 @@ modify_workspace_creation_properties(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyWorkspaceCreationProperties">>, Input, Options).
 
-%% @doc Modifies the specified WorkSpace properties.
+%% @doc Modifies the specified WorkSpace properties. For important
+%% information about how to modify the size of the root and user volumes, see
+%% <a
+%% href="https://docs.aws.amazon.com/workspaces/latest/adminguide/modify-workspaces.html">
+%% Modify a WorkSpace</a>.
 modify_workspace_properties(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_workspace_properties(Client, Input, []).
@@ -445,7 +462,8 @@ reboot_workspaces(Client, Input, Options)
 %% @doc Rebuilds the specified WorkSpace.
 %%
 %% You cannot rebuild a WorkSpace unless its state is <code>AVAILABLE</code>,
-%% <code>ERROR</code>, <code>UNHEALTHY</code>, or <code>STOPPED</code>.
+%% <code>ERROR</code>, <code>UNHEALTHY</code>, <code>STOPPED</code>, or
+%% <code>REBOOTING</code>.
 %%
 %% Rebuilding a WorkSpace is a potentially destructive action that can result
 %% in the loss of data. For more information, see <a
@@ -552,6 +570,27 @@ update_rules_of_ip_group(Client, Input)
 update_rules_of_ip_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRulesOfIpGroup">>, Input, Options).
+
+%% @doc Shares or unshares an image with one account by specifying whether
+%% that account has permission to copy the image. If the copy image
+%% permission is granted, the image is shared with that account. If the copy
+%% image permission is revoked, the image is unshared with the account.
+%%
+%% <note> <ul> <li> To delete an image that has been shared, you must unshare
+%% the image before you delete it.
+%%
+%% </li> <li> Sharing Bring Your Own License (BYOL) images across AWS
+%% accounts isn't supported at this time in the AWS GovCloud (US-West)
+%% Region. To share BYOL images across accounts in the AWS GovCloud (US-West)
+%% Region, contact AWS Support.
+%%
+%% </li> </ul> </note>
+update_workspace_image_permission(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_workspace_image_permission(Client, Input, []).
+update_workspace_image_permission(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateWorkspaceImagePermission">>, Input, Options).
 
 %%====================================================================
 %% Internal functions
