@@ -1,27 +1,32 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon Lightsail is the easiest way to get started with AWS for
-%% developers who just need virtual private servers. Lightsail includes
-%% everything you need to launch your project quickly - a virtual machine, a
-%% managed database, SSD-based storage, data transfer, DNS management, and a
-%% static IP - for a low, predictable price. You manage those Lightsail
-%% servers through the Lightsail console or by using the API or command-line
-%% interface (CLI).
+%% @doc Amazon Lightsail is the easiest way to get started with Amazon Web
+%% Services (AWS) for developers who need to build websites or web
+%% applications. It includes everything you need to launch your project
+%% quickly – instances (virtual private servers), managed databases,
+%% SSD-based block storage, static IP addresses, load balancers, content
+%% delivery network (CDN) distributions, DNS management of registered
+%% domains, and snapshots (backups) – for a low, predictable monthly price.
 %%
-%% For more information about Lightsail concepts and tasks, see the <a
-%% href="https://lightsail.aws.amazon.com/ls/docs/all">Lightsail Dev
-%% Guide</a>.
-%%
-%% To use the Lightsail API or the CLI, you will need to use AWS Identity and
-%% Access Management (IAM) to generate access keys. For details about how to
-%% set this up, see the <a
+%% You can manage your Lightsail resources using the Lightsail console,
+%% Lightsail API, AWS Command Line Interface (AWS CLI), or SDKs. For more
+%% information about Lightsail concepts and tasks, see the <a
 %% href="http://lightsail.aws.amazon.com/ls/docs/how-to/article/lightsail-how-to-set-up-access-keys-to-use-sdk-api-cli">Lightsail
 %% Dev Guide</a>.
+%%
+%% This API Reference provides detailed information about the actions, data
+%% types, parameters, and errors of the Lightsail service. For more
+%% information about the supported AWS Regions, endpoints, and service quotas
+%% for the Lightsail service, see <a
+%% href="https://docs.aws.amazon.com/general/latest/gr/lightsail.html">Amazon
+%% Lightsail Endpoints and Quotas</a> in the <i>AWS General Reference</i>.
 -module(aws_lightsail).
 
 -export([allocate_static_ip/2,
          allocate_static_ip/3,
+         attach_certificate_to_distribution/2,
+         attach_certificate_to_distribution/3,
          attach_disk/2,
          attach_disk/3,
          attach_instances_to_load_balancer/2,
@@ -34,6 +39,8 @@
          close_instance_public_ports/3,
          copy_snapshot/2,
          copy_snapshot/3,
+         create_certificate/2,
+         create_certificate/3,
          create_cloud_formation_stack/2,
          create_cloud_formation_stack/3,
          create_contact_method/2,
@@ -44,6 +51,8 @@
          create_disk_from_snapshot/3,
          create_disk_snapshot/2,
          create_disk_snapshot/3,
+         create_distribution/2,
+         create_distribution/3,
          create_domain/2,
          create_domain/3,
          create_domain_entry/2,
@@ -70,12 +79,16 @@
          delete_alarm/3,
          delete_auto_snapshot/2,
          delete_auto_snapshot/3,
+         delete_certificate/2,
+         delete_certificate/3,
          delete_contact_method/2,
          delete_contact_method/3,
          delete_disk/2,
          delete_disk/3,
          delete_disk_snapshot/2,
          delete_disk_snapshot/3,
+         delete_distribution/2,
+         delete_distribution/3,
          delete_domain/2,
          delete_domain/3,
          delete_domain_entry/2,
@@ -96,6 +109,8 @@
          delete_relational_database/3,
          delete_relational_database_snapshot/2,
          delete_relational_database_snapshot/3,
+         detach_certificate_from_distribution/2,
+         detach_certificate_from_distribution/3,
          detach_disk/2,
          detach_disk/3,
          detach_instances_from_load_balancer/2,
@@ -120,6 +135,8 @@
          get_blueprints/3,
          get_bundles/2,
          get_bundles/3,
+         get_certificates/2,
+         get_certificates/3,
          get_cloud_formation_stack_records/2,
          get_cloud_formation_stack_records/3,
          get_contact_methods/2,
@@ -132,6 +149,14 @@
          get_disk_snapshots/3,
          get_disks/2,
          get_disks/3,
+         get_distribution_bundles/2,
+         get_distribution_bundles/3,
+         get_distribution_latest_cache_reset/2,
+         get_distribution_latest_cache_reset/3,
+         get_distribution_metric_data/2,
+         get_distribution_metric_data/3,
+         get_distributions/2,
+         get_distributions/3,
          get_domain/2,
          get_domain/3,
          get_domains/2,
@@ -220,6 +245,8 @@
          reboot_relational_database/3,
          release_static_ip/2,
          release_static_ip/3,
+         reset_distribution_cache/2,
+         reset_distribution_cache/3,
          send_contact_method_verification/2,
          send_contact_method_verification/3,
          start_instance/2,
@@ -238,6 +265,10 @@
          unpeer_vpc/3,
          untag_resource/2,
          untag_resource/3,
+         update_distribution/2,
+         update_distribution/3,
+         update_distribution_bundle/2,
+         update_distribution_bundle/3,
          update_domain_entry/2,
          update_domain_entry/3,
          update_load_balancer_attribute/2,
@@ -260,6 +291,29 @@ allocate_static_ip(Client, Input)
 allocate_static_ip(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AllocateStaticIp">>, Input, Options).
+
+%% @doc Attaches an SSL/TLS certificate to your Amazon Lightsail content
+%% delivery network (CDN) distribution.
+%%
+%% After the certificate is attached, your distribution accepts HTTPS traffic
+%% for all of the domains that are associated with the certificate.
+%%
+%% Use the <code>CreateCertificate</code> action to create a certificate that
+%% you can attach to your distribution.
+%%
+%% <important> Only certificates created in the <code>us-east-1</code> AWS
+%% Region can be attached to Lightsail distributions. Lightsail distributions
+%% are global resources that can reference an origin in any AWS Region, and
+%% distribute its content globally. However, all distributions are located in
+%% the <code>us-east-1</code> Region.
+%%
+%% </important>
+attach_certificate_to_distribution(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    attach_certificate_to_distribution(Client, Input, []).
+attach_certificate_to_distribution(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AttachCertificateToDistribution">>, Input, Options).
 
 %% @doc Attaches a block storage disk to a running or stopped Lightsail
 %% instance and exposes it to the instance with the specified disk name.
@@ -360,6 +414,27 @@ copy_snapshot(Client, Input)
 copy_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CopySnapshot">>, Input, Options).
+
+%% @doc Creates an SSL/TLS certificate for a Amazon Lightsail content
+%% delivery network (CDN) distribution.
+%%
+%% After the certificate is created, use the
+%% <code>AttachCertificateToDistribution</code> action to attach the
+%% certificate to your distribution.
+%%
+%% <important> Only certificates created in the <code>us-east-1</code> AWS
+%% Region can be attached to Lightsail distributions. Lightsail distributions
+%% are global resources that can reference an origin in any AWS Region, and
+%% distribute its content globally. However, all distributions are located in
+%% the <code>us-east-1</code> Region.
+%%
+%% </important>
+create_certificate(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_certificate(Client, Input, []).
+create_certificate(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateCertificate">>, Input, Options).
 
 %% @doc Creates an AWS CloudFormation stack, which creates a new Amazon EC2
 %% instance from an exported Amazon Lightsail snapshot. This operation
@@ -463,6 +538,21 @@ create_disk_snapshot(Client, Input)
 create_disk_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDiskSnapshot">>, Input, Options).
+
+%% @doc Creates an Amazon Lightsail content delivery network (CDN)
+%% distribution.
+%%
+%% A distribution is a globally distributed network of caching servers that
+%% improve the performance of your website or web application hosted on a
+%% Lightsail instance. For more information, see <a
+%% href="https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-content-delivery-networks">Content
+%% delivery networks in Amazon Lightsail</a>.
+create_distribution(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_distribution(Client, Input, []).
+create_distribution(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateDistribution">>, Input, Options).
 
 %% @doc Creates a domain resource for the specified domain (e.g.,
 %% example.com).
@@ -665,6 +755,19 @@ delete_auto_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAutoSnapshot">>, Input, Options).
 
+%% @doc Deletes an SSL/TLS certificate for your Amazon Lightsail content
+%% delivery network (CDN) distribution.
+%%
+%% Certificates that are currently attached to a distribution cannot be
+%% deleted. Use the <code>DetachCertificateFromDistribution</code> action to
+%% detach a certificate from a distribution.
+delete_certificate(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_certificate(Client, Input, []).
+delete_certificate(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteCertificate">>, Input, Options).
+
 %% @doc Deletes a contact method.
 %%
 %% A contact method is used to send you notifications about your Amazon
@@ -719,6 +822,15 @@ delete_disk_snapshot(Client, Input)
 delete_disk_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDiskSnapshot">>, Input, Options).
+
+%% @doc Deletes your Amazon Lightsail content delivery network (CDN)
+%% distribution.
+delete_distribution(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_distribution(Client, Input, []).
+delete_distribution(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteDistribution">>, Input, Options).
 
 %% @doc Deletes the specified domain recordset and all of its domain records.
 %%
@@ -871,6 +983,18 @@ delete_relational_database_snapshot(Client, Input)
 delete_relational_database_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRelationalDatabaseSnapshot">>, Input, Options).
+
+%% @doc Detaches an SSL/TLS certificate from your Amazon Lightsail content
+%% delivery network (CDN) distribution.
+%%
+%% After the certificate is detached, your distribution stops accepting
+%% traffic for all of the domains that are associated with the certificate.
+detach_certificate_from_distribution(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    detach_certificate_from_distribution(Client, Input, []).
+detach_certificate_from_distribution(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DetachCertificateFromDistribution">>, Input, Options).
 
 %% @doc Detaches a stopped block storage disk from a Lightsail instance. Make
 %% sure to unmount any file systems on the device within your operating
@@ -1040,6 +1164,22 @@ get_bundles(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetBundles">>, Input, Options).
 
+%% @doc Returns information about one or more Amazon Lightsail SSL/TLS
+%% certificates.
+%%
+%% <note> To get a summary of a certificate, ommit
+%% <code>includeCertificateDetails</code> from your request. The response
+%% will include only the certificate Amazon Resource Name (ARN), certificate
+%% name, domain name, and tags.
+%%
+%% </note>
+get_certificates(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_certificates(Client, Input, []).
+get_certificates(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetCertificates">>, Input, Options).
+
 %% @doc Returns the CloudFormation stack record created as a result of the
 %% <code>create cloud formation stack</code> operation.
 %%
@@ -1103,6 +1243,49 @@ get_disks(Client, Input)
 get_disks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDisks">>, Input, Options).
+
+%% @doc Returns the list bundles that can be applied to you Amazon Lightsail
+%% content delivery network (CDN) distributions.
+%%
+%% A distribution bundle specifies the monthly network transfer quota and
+%% monthly cost of your dsitribution.
+get_distribution_bundles(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_distribution_bundles(Client, Input, []).
+get_distribution_bundles(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDistributionBundles">>, Input, Options).
+
+%% @doc Returns the timestamp and status of the last cache reset of a
+%% specific Amazon Lightsail content delivery network (CDN) distribution.
+get_distribution_latest_cache_reset(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_distribution_latest_cache_reset(Client, Input, []).
+get_distribution_latest_cache_reset(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDistributionLatestCacheReset">>, Input, Options).
+
+%% @doc Returns the data points of a specific metric for an Amazon Lightsail
+%% content delivery network (CDN) distribution.
+%%
+%% Metrics report the utilization of your resources, and the error counts
+%% generated by them. Monitor and collect metric data regularly to maintain
+%% the reliability, availability, and performance of your resources.
+get_distribution_metric_data(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_distribution_metric_data(Client, Input, []).
+get_distribution_metric_data(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDistributionMetricData">>, Input, Options).
+
+%% @doc Returns information about one or more of your Amazon Lightsail
+%% content delivery network (CDN) distributions.
+get_distributions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_distributions(Client, Input, []).
+get_distributions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDistributions">>, Input, Options).
 
 %% @doc Returns information about a specific domain recordset.
 get_domain(Client, Input)
@@ -1576,6 +1759,18 @@ release_static_ip(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ReleaseStaticIp">>, Input, Options).
 
+%% @doc Deletes currently cached content from your Amazon Lightsail content
+%% delivery network (CDN) distribution.
+%%
+%% After resetting the cache, the next time a content request is made, your
+%% distribution pulls, serves, and caches it from the origin.
+reset_distribution_cache(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    reset_distribution_cache(Client, Input, []).
+reset_distribution_cache(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ResetDistributionCache">>, Input, Options).
+
 %% @doc Sends a verification request to an email contact method to ensure
 %% it's owned by the requester. SMS contact methods don't need to be
 %% verified.
@@ -1736,6 +1931,38 @@ untag_resource(Client, Input)
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc Updates an existing Amazon Lightsail content delivery network (CDN)
+%% distribution.
+%%
+%% Use this action to update the configuration of your existing distribution
+update_distribution(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_distribution(Client, Input, []).
+update_distribution(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateDistribution">>, Input, Options).
+
+%% @doc Updates the bundle of your Amazon Lightsail content delivery network
+%% (CDN) distribution.
+%%
+%% A distribution bundle specifies the monthly network transfer quota and
+%% monthly cost of your dsitribution.
+%%
+%% Update your distribution's bundle if your distribution is going over its
+%% monthly network transfer quota and is incurring an overage fee.
+%%
+%% You can update your distribution's bundle only one time within your
+%% monthly AWS billing cycle. To determine if you can update your
+%% distribution's bundle, use the <code>GetDistributions</code> action. The
+%% <code>ableToUpdateBundle</code> parameter in the result will indicate
+%% whether you can currently update your distribution's bundle.
+update_distribution_bundle(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_distribution_bundle(Client, Input, []).
+update_distribution_bundle(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateDistributionBundle">>, Input, Options).
 
 %% @doc Updates a domain recordset after it is created.
 %%
