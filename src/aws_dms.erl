@@ -21,6 +21,8 @@
          add_tags_to_resource/3,
          apply_pending_maintenance_action/2,
          apply_pending_maintenance_action/3,
+         cancel_replication_task_assessment_run/2,
+         cancel_replication_task_assessment_run/3,
          create_endpoint/2,
          create_endpoint/3,
          create_event_subscription/2,
@@ -45,8 +47,12 @@
          delete_replication_subnet_group/3,
          delete_replication_task/2,
          delete_replication_task/3,
+         delete_replication_task_assessment_run/2,
+         delete_replication_task_assessment_run/3,
          describe_account_attributes/2,
          describe_account_attributes/3,
+         describe_applicable_individual_assessments/2,
+         describe_applicable_individual_assessments/3,
          describe_certificates/2,
          describe_certificates/3,
          describe_connections/2,
@@ -75,6 +81,10 @@
          describe_replication_subnet_groups/3,
          describe_replication_task_assessment_results/2,
          describe_replication_task_assessment_results/3,
+         describe_replication_task_assessment_runs/2,
+         describe_replication_task_assessment_runs/3,
+         describe_replication_task_individual_assessments/2,
+         describe_replication_task_individual_assessments/3,
          describe_replication_tasks/2,
          describe_replication_tasks/3,
          describe_schemas/2,
@@ -107,6 +117,8 @@
          start_replication_task/3,
          start_replication_task_assessment/2,
          start_replication_task_assessment/3,
+         start_replication_task_assessment_run/2,
+         start_replication_task_assessment_run/3,
          stop_replication_task/2,
          stop_replication_task/3,
          test_connection/2,
@@ -137,6 +149,18 @@ apply_pending_maintenance_action(Client, Input)
 apply_pending_maintenance_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ApplyPendingMaintenanceAction">>, Input, Options).
+
+%% @doc Cancels a single premigration assessment run.
+%%
+%% This operation prevents any individual assessments from running if they
+%% haven't started running. It also attempts to cancel any individual
+%% assessments that are currently running.
+cancel_replication_task_assessment_run(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    cancel_replication_task_assessment_run(Client, Input, []).
+cancel_replication_task_assessment_run(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CancelReplicationTaskAssessmentRun">>, Input, Options).
 
 %% @doc Creates an endpoint using the provided settings.
 create_endpoint(Client, Input)
@@ -275,6 +299,18 @@ delete_replication_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteReplicationTask">>, Input, Options).
 
+%% @doc Deletes the record of a single premigration assessment run.
+%%
+%% This operation removes all metadata that AWS DMS maintains about this
+%% assessment run. However, the operation leaves untouched all information
+%% about this assessment run that is stored in your Amazon S3 bucket.
+delete_replication_task_assessment_run(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_replication_task_assessment_run(Client, Input, []).
+delete_replication_task_assessment_run(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteReplicationTaskAssessmentRun">>, Input, Options).
+
 %% @doc Lists all of the AWS DMS attributes for a customer account. These
 %% attributes include AWS DMS quotas for the account and a unique account
 %% identifier in a particular DMS region. DMS quotas include a list of
@@ -291,6 +327,35 @@ describe_account_attributes(Client, Input)
 describe_account_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccountAttributes">>, Input, Options).
+
+%% @doc Provides a list of individual assessments that you can specify for a
+%% new premigration assessment run, given one or more parameters.
+%%
+%% If you specify an existing migration task, this operation provides the
+%% default individual assessments you can specify for that task. Otherwise,
+%% the specified parameters model elements of a possible migration task on
+%% which to base a premigration assessment run.
+%%
+%% To use these migration task modeling parameters, you must specify an
+%% existing replication instance, a source database engine, a target database
+%% engine, and a migration type. This combination of parameters potentially
+%% limits the default individual assessments available for an assessment run
+%% created for a corresponding migration task.
+%%
+%% If you specify no parameters, this operation provides a list of all
+%% possible individual assessments that you can specify for an assessment
+%% run. If you specify any one of the task modeling parameters, you must
+%% specify all of them or the operation cannot provide a list of individual
+%% assessments. The only parameter that you can specify alone is for an
+%% existing migration task. The specified task definition then determines the
+%% default list of individual assessments that you can specify in an
+%% assessment run for the task.
+describe_applicable_individual_assessments(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_applicable_individual_assessments(Client, Input, []).
+describe_applicable_individual_assessments(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeApplicableIndividualAssessments">>, Input, Options).
 
 %% @doc Provides a description of the certificate.
 describe_certificates(Client, Input)
@@ -426,6 +491,37 @@ describe_replication_task_assessment_results(Client, Input)
 describe_replication_task_assessment_results(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReplicationTaskAssessmentResults">>, Input, Options).
+
+%% @doc Returns a paginated list of premigration assessment runs based on
+%% filter settings.
+%%
+%% These filter settings can specify a combination of premigration assessment
+%% runs, migration tasks, replication instances, and assessment run status
+%% values.
+%%
+%% <note> This operation doesn't return information about individual
+%% assessments. For this information, see the
+%% <code>DescribeReplicationTaskIndividualAssessments</code> operation.
+%%
+%% </note>
+describe_replication_task_assessment_runs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_replication_task_assessment_runs(Client, Input, []).
+describe_replication_task_assessment_runs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeReplicationTaskAssessmentRuns">>, Input, Options).
+
+%% @doc Returns a paginated list of individual assessments based on filter
+%% settings.
+%%
+%% These filter settings can specify a combination of premigration assessment
+%% runs, migration tasks, and assessment status values.
+describe_replication_task_individual_assessments(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_replication_task_individual_assessments(Client, Input, []).
+describe_replication_task_individual_assessments(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeReplicationTaskIndividualAssessments">>, Input, Options).
 
 %% @doc Returns information about replication tasks for your account in the
 %% current region.
@@ -587,9 +683,23 @@ start_replication_task_assessment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartReplicationTaskAssessment">>, Input, Options).
 
-%% @doc Stops the replication task.
+%% @doc Starts a new premigration assessment run for one or more individual
+%% assessments of a migration task.
 %%
-%% <p/>
+%% The assessments that you can specify depend on the source and target
+%% database engine and the migration type defined for the given task. To run
+%% this operation, your migration task must already be created. After you run
+%% this operation, you can review the status of each individual assessment.
+%% You can also run the migration task manually after the assessment run and
+%% its individual assessments complete.
+start_replication_task_assessment_run(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_replication_task_assessment_run(Client, Input, []).
+start_replication_task_assessment_run(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartReplicationTaskAssessmentRun">>, Input, Options).
+
+%% @doc Stops the replication task.
 stop_replication_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_replication_task(Client, Input, []).
