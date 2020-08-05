@@ -4,7 +4,11 @@
          binary_join/2,
          hmac_sha256/2,
          hmac_sha256_hexdigest/2,
-         sha256_hexdigest/1]).
+         sha256_hexdigest/1,
+         decode_xml/1
+        ]).
+
+-include_lib("xmerl/include/xmerl.hrl").
 
 %%====================================================================
 %% API
@@ -34,9 +38,64 @@ hmac_sha256(Key, Message) ->
 sha256_hexdigest(Value) ->
     aws_util:base16(crypto:hash(sha256, Value)).
 
+decode_xml(Xml) ->
+  XmlString = unicode:characters_to_list(Xml),
+  Opts = [{hook_fun, fun hook_fun/2}],
+  {Element, []} = xmerl_scan:string(XmlString, Opts),
+  Element.
+
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-define(TEXT, '__text').
+
+%% Callback hook_fun for xmerl parser
+hook_fun(#xmlElement{name = Tag, content = Content} , GlobalState) ->
+  Value = case lists:foldr(fun content_to_map/2, none, Content) of
+            V = #{?TEXT := Text} ->
+              case string:trim(Text) of
+                <<>>    -> maps:remove(?TEXT, V);
+                Trimmed -> V#{?TEXT => Trimmed}
+              end;
+            V -> V
+          end,
+  {#{Tag => Value}, GlobalState};
+hook_fun(#xmlText{value = Text}, GlobalState) ->
+  {unicode:characters_to_binary(Text), GlobalState}.
+
+%% @doc Convert the content of an Xml node into a map.
+%%
+%% When there is more than one element with the same tag name, their
+%% values get merged into a list.
+%%
+%% If the content is only text then that is what gets returned.
+%%
+%% If the content is a mix between text and child elements, then the
+%% elements are processed as described above and all the text parts
+%% are merged under the `__text' key.
+
+content_to_map(X, none) ->
+  X;
+content_to_map(X, Acc) when is_map(X), is_map(Acc) ->
+  [{Tag, Value}] = maps:to_list(X),
+  case maps:is_key(Tag, Acc) of
+    true ->
+      UpdateFun = fun(L) when is_list(L) ->
+                      [Value | L];
+                     (V) -> [Value, V]
+                  end,
+      maps:update_with(Tag, UpdateFun, Acc);
+    false -> maps:merge(Acc, X)
+  end;
+content_to_map(X, #{?TEXT := Text} = Acc) when is_binary(X), is_map(Acc) ->
+  Acc#{?TEXT => <<X/binary, Text/binary>>};
+content_to_map(X, Acc) when is_binary(X), is_map(Acc) ->
+  Acc#{?TEXT => X};
+content_to_map(X, Acc) when is_binary(X), is_binary(Acc) ->
+  <<X/binary, Acc/binary>>;
+content_to_map(X, Acc) when is_map(X), is_binary(Acc) ->
+  X#{?TEXT => Acc}.
 
 %% Convert an integer in the 0-16 range to a hexadecimal byte
 %% representation.
