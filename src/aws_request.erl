@@ -229,7 +229,7 @@ sign_request_test() ->
     Headers = [{<<"Host">>, <<"ec2.us-east-1.amazonaws.com">>},
                {<<"Header">>, <<"Value">>}],
     Body = <<"">>,
-    ?assertEqual([{<<"Authorization">>, <<"AWS4-HMAC-SHA256 Credential=access-key-id/20150403/us-east-1/ec2/aws4_request, SignedHeaders=header;host;x-amz-date, Signature=4026e4f1730f8770c840c5796e4bbda14e1200fab1a89583a4727b2f9ddbb9cc">>},
+    ?assertEqual([{<<"Authorization">>, <<"AWS4-HMAC-SHA256 Credential=access-key-id/20150403/us-east-1/ec2/aws4_request, SignedHeaders=header;host;x-amz-date, Signature=5ccf77d3f4dd362e51cac9843de18f659357b4aa340fcfcadfc57766fb56205d">>},
                   {<<"X-Amz-Date">>, <<"20150403T213117Z">>},
                   {<<"Host">>, <<"ec2.us-east-1.amazonaws.com">>},
                   {<<"Header">>, <<"Value">>}],

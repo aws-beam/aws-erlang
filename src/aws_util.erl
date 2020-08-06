@@ -180,4 +180,54 @@ hmac_sha256_hexdigest_test() ->
        <<"6e9ef29b75fffc5b7abae527d58fdadb2fe42e7219011976917343065f58ed4a">>,
        hmac_sha256_hexdigest(<<"key">>, <<"message">>)).
 
+%% decode_xml handles lists correctly by merging values in a list.
+decode_xml_lists_test() ->
+    ?assertEqual(
+       #{person => #{ name => <<"foo">>
+                    , addresses => #{address => [<<"1">>, <<"2">>]}
+                    }
+        },
+       decode_xml("<person>"
+                  "  <name>foo</name>"
+                  "  <addresses>"
+                  "    <address>1</address>"
+                  "    <address>2</address>"
+                  "  </addresses>"
+                  "</person>")).
+
+%% decode_xml handles multiple text elments mixed with other elements correctly.
+decode_xml_text_test() ->
+    ?assertEqual( #{person => #{ name => <<"foo">>, ?TEXT => <<"random">>}}
+                , decode_xml("<person>"
+                             "  <name>foo</name>"
+                             "  random"
+                             "</person>")
+                ),
+
+    ?assertEqual( #{person => #{ name => <<"foo">>
+                               , age => <<"42">>
+                               , ?TEXT => <<"random    text">>
+                               }
+                   }
+                , decode_xml("<person>"
+                             "  <name>foo</name>"
+                             "  random"
+                             "  <age>42</age>"
+                             "  text"
+                             "</person>")
+                ).
+
+
+%% get_in fetches the correct values and does fail when the path doesn't exist
+get_in_test() ->
+    Map = #{person => #{ error => #{ code => <<"Code">>
+                                   , message => <<"Message">>
+                                   }
+                       }
+           },
+    ?assertEqual(<<"Code">>, get_in([person, error, code], Map)),
+    ?assertEqual(<<"Message">>, get_in([person, error, message], Map)),
+    ?assertEqual(undefined, get_in([person, error, foo], Map)),
+    ?assertEqual(default, get_in([person, error, foo], Map, default)).
+
 -endif.
