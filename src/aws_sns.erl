@@ -609,7 +609,9 @@ request(Client, Action, Input0, Options) ->
         {<<"Host">>, Host},
         {<<"Content-Type">>, <<"application/x-www-form-urlencoded">>}
     ],
-    Input = Input0#{<<"Action">> => Action},
+    Input = Input0#{ <<"Action">> => Action
+                   , <<"Version">> => <<"2010-03-31">>
+                   },
     Payload = uri_string:compose_query(maps:to_list(Input)),
     SignedHeaders = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
     Response = hackney:request(post, URL, SignedHeaders, Payload, Options),
@@ -626,8 +628,8 @@ handle_response({ok, 200, ResponseHeaders, Client}) ->
 handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
     {ok, Body} = hackney:body(Client),
     Error = aws_util:decode_xml(Body),
-    Exception = maps:get(<<"__type">>, Error, undefined),
-    Reason = maps:get(<<"message">>, Error, undefined),
+    Exception = aws_util:get_in(['ErrorResponse', 'Error', 'Code'], Error),
+    Reason = aws_util:get_in(['ErrorResponse', 'Error', 'Message'], Error),
     {error, {Exception, Reason}, {StatusCode, ResponseHeaders, Client}};
 handle_response({error, Reason}) ->
     {error, Reason}.
