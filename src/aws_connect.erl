@@ -13,13 +13,8 @@
 %% create and limits to the number of requests that you can make per second.
 %% For more information, see <a
 %% href="https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html">Amazon
-%% Connect Service Quotas</a> in the <i>Amazon Connect Administrator
+%% Connect Service Limits</a> in the <i>Amazon Connect Administrator
 %% Guide</i>.
-%%
-%% To connect programmatically to an AWS service, you use an endpoint. For a
-%% list of Amazon Connect endpoints, see <a
-%% href="https://docs.aws.amazon.com/general/latest/gr/connect_region.html">Amazon
-%% Connect Endpoints</a>.
 -module(aws_connect).
 
 -export([create_user/3,
@@ -58,12 +53,20 @@
          list_user_hierarchy_groups/3,
          list_users/2,
          list_users/3,
+         resume_contact_recording/2,
+         resume_contact_recording/3,
          start_chat_contact/2,
          start_chat_contact/3,
+         start_contact_recording/2,
+         start_contact_recording/3,
          start_outbound_voice_contact/2,
          start_outbound_voice_contact/3,
          stop_contact/2,
          stop_contact/3,
+         stop_contact_recording/2,
+         stop_contact_recording/3,
+         suspend_contact_recording/2,
+         suspend_contact_recording/3,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -88,11 +91,6 @@
 %%====================================================================
 
 %% @doc Creates a user account for the specified Amazon Connect instance.
-%%
-%% For information about how to create user accounts using the Amazon Connect
-%% console, see <a
-%% href="https://docs.aws.amazon.com/connect/latest/adminguide/user-management.html">Add
-%% Users</a> in the <i>Amazon Connect Administrator Guide</i>.
 create_user(Client, InstanceId, Input) ->
     create_user(Client, InstanceId, Input, []).
 create_user(Client, InstanceId, Input0, Options) ->
@@ -104,12 +102,6 @@ create_user(Client, InstanceId, Input0, Options) ->
     request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a user account from the specified Amazon Connect instance.
-%%
-%% For information about what happens to a user's data when their account is
-%% deleted, see <a
-%% href="https://docs.aws.amazon.com/connect/latest/adminguide/delete-users.html">Delete
-%% Users from Your Amazon Connect Instance</a> in the <i>Amazon Connect
-%% Administrator Guide</i>.
 delete_user(Client, InstanceId, UserId, Input) ->
     delete_user(Client, InstanceId, UserId, Input, []).
 delete_user(Client, InstanceId, UserId, Input0, Options) ->
@@ -171,9 +163,9 @@ get_contact_attributes(Client, InitialContactId, InstanceId, Options)
 %% @doc Gets the real-time metric data from the specified Amazon Connect
 %% instance.
 %%
-%% For a description of each metric, see <a
-%% href="https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html">Real-time
-%% Metrics Definitions</a> in the <i>Amazon Connect Administrator Guide</i>.
+%% For more information, see <a
+%% href="https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-reports.html">Real-time
+%% Metrics Reports</a> in the <i>Amazon Connect Administrator Guide</i>.
 get_current_metric_data(Client, InstanceId, Input) ->
     get_current_metric_data(Client, InstanceId, Input, []).
 get_current_metric_data(Client, InstanceId, Input0, Options) ->
@@ -198,9 +190,9 @@ get_federation_token(Client, InstanceId, Options)
 %% @doc Gets historical metric data from the specified Amazon Connect
 %% instance.
 %%
-%% For a description of each historical metric, see <a
-%% href="https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html">Historical
-%% Metrics Definitions</a> in the <i>Amazon Connect Administrator Guide</i>.
+%% For more information, see <a
+%% href="https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics.html">Historical
+%% Metrics Reports</a> in the <i>Amazon Connect Administrator Guide</i>.
 get_metric_data(Client, InstanceId, Input) ->
     get_metric_data(Client, InstanceId, Input, []).
 get_metric_data(Client, InstanceId, Input0, Options) ->
@@ -213,10 +205,6 @@ get_metric_data(Client, InstanceId, Input0, Options) ->
 
 %% @doc Provides information about the contact flows for the specified Amazon
 %% Connect instance.
-%%
-%% For more information about contact flows, see <a
-%% href="https://docs.aws.amazon.com/connect/latest/adminguide/concepts-contact-flows.html">Contact
-%% Flows</a> in the <i>Amazon Connect Administrator Guide</i>.
 list_contact_flows(Client, InstanceId)
   when is_map(Client) ->
     list_contact_flows(Client, InstanceId, []).
@@ -229,11 +217,6 @@ list_contact_flows(Client, InstanceId, Options)
 
 %% @doc Provides information about the hours of operation for the specified
 %% Amazon Connect instance.
-%%
-%% For more information about hours of operation, see <a
-%% href="https://docs.aws.amazon.com/connect/latest/adminguide/set-hours-operation.html">Set
-%% the Hours of Operation for a Queue</a> in the <i>Amazon Connect
-%% Administrator Guide</i>.
 list_hours_of_operations(Client, InstanceId)
   when is_map(Client) ->
     list_hours_of_operations(Client, InstanceId, []).
@@ -246,11 +229,6 @@ list_hours_of_operations(Client, InstanceId, Options)
 
 %% @doc Provides information about the phone numbers for the specified Amazon
 %% Connect instance.
-%%
-%% For more information about phone numbers, see <a
-%% href="https://docs.aws.amazon.com/connect/latest/adminguide/contact-center-phone-number.html">Set
-%% Up Phone Numbers for Your Contact Center</a> in the <i>Amazon Connect
-%% Administrator Guide</i>.
 list_phone_numbers(Client, InstanceId)
   when is_map(Client) ->
     list_phone_numbers(Client, InstanceId, []).
@@ -263,10 +241,6 @@ list_phone_numbers(Client, InstanceId, Options)
 
 %% @doc Provides information about the queues for the specified Amazon
 %% Connect instance.
-%%
-%% For more information about queues, see <a
-%% href="https://docs.aws.amazon.com/connect/latest/adminguide/concepts-queues-standard-and-agent.html">Queues:
-%% Standard and Agent</a> in the <i>Amazon Connect Administrator Guide</i>.
 list_queues(Client, InstanceId)
   when is_map(Client) ->
     list_queues(Client, InstanceId, []).
@@ -279,12 +253,6 @@ list_queues(Client, InstanceId, Options)
 
 %% @doc Provides summary information about the routing profiles for the
 %% specified Amazon Connect instance.
-%%
-%% For more information about routing profiles, see <a
-%% href="https://docs.aws.amazon.com/connect/latest/adminguide/concepts-routing.html">Routing
-%% Profiles</a> and <a
-%% href="https://docs.aws.amazon.com/connect/latest/adminguide/routing-profiles.html">Create
-%% a Routing Profile</a> in the <i>Amazon Connect Administrator Guide</i>.
 list_routing_profiles(Client, InstanceId)
   when is_map(Client) ->
     list_routing_profiles(Client, InstanceId, []).
@@ -297,10 +265,6 @@ list_routing_profiles(Client, InstanceId, Options)
 
 %% @doc Provides summary information about the security profiles for the
 %% specified Amazon Connect instance.
-%%
-%% For more information about security profiles, see <a
-%% href="https://docs.aws.amazon.com/connect/latest/adminguide/connect-security-profiles.html">Security
-%% Profiles</a> in the <i>Amazon Connect Administrator Guide</i>.
 list_security_profiles(Client, InstanceId)
   when is_map(Client) ->
     list_security_profiles(Client, InstanceId, []).
@@ -312,11 +276,6 @@ list_security_profiles(Client, InstanceId, Options)
     request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags for the specified resource.
-%%
-%% For sample policies that use tags, see <a
-%% href="https://docs.aws.amazon.com/connect/latest/adminguide/security_iam_id-based-policy-examples.html">Amazon
-%% Connect Identity-Based Policy Examples</a> in the <i>Amazon Connect
-%% Administrator Guide</i>.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, []).
@@ -329,10 +288,6 @@ list_tags_for_resource(Client, ResourceArn, Options)
 
 %% @doc Provides summary information about the hierarchy groups for the
 %% specified Amazon Connect instance.
-%%
-%% For more information about agent hierarchies, see <a
-%% href="https://docs.aws.amazon.com/connect/latest/adminguide/agent-hierarchy.html">Set
-%% Up Agent Hierarchies</a> in the <i>Amazon Connect Administrator Guide</i>.
 list_user_hierarchy_groups(Client, InstanceId)
   when is_map(Client) ->
     list_user_hierarchy_groups(Client, InstanceId, []).
@@ -355,6 +310,21 @@ list_users(Client, InstanceId, Options)
     Headers = [],
     request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc When a contact is being recorded, and the recording has been
+%% suspended using SuspendContactRecording, this API resumes recording the
+%% call.
+%%
+%% Only voice recordings are supported at this time.
+resume_contact_recording(Client, Input) ->
+    resume_contact_recording(Client, Input, []).
+resume_contact_recording(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/contact/resume-recording"],
+    SuccessStatusCode = undefined,
+    Headers = [],
+    Input = Input0,
+    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Initiates a contact flow to start a new chat for the customer.
 %% Response of this API provides a token required to obtain credentials from
 %% the <a
@@ -366,25 +336,35 @@ list_users(Client, InstanceId, Options)
 %% This is achieved by invoking <a
 %% href="https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html">CreateParticipantConnection</a>
 %% with WEBSOCKET and CONNECTION_CREDENTIALS.
-%%
-%% A 429 error occurs in two situations:
-%%
-%% <ul> <li> API rate limit is exceeded. API TPS throttling returns a
-%% <code>TooManyRequests</code> exception from the API Gateway.
-%%
-%% </li> <li> The <a
-%% href="https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html">quota
-%% for concurrent active chats</a> is exceeded. Active chat throttling
-%% returns a <code>LimitExceededException</code>.
-%%
-%% </li> </ul> For more information about how chat works, see <a
-%% href="https://docs.aws.amazon.com/connect/latest/adminguide/chat.html">Chat</a>
-%% in the <i>Amazon Connect Administrator Guide</i>.
 start_chat_contact(Client, Input) ->
     start_chat_contact(Client, Input, []).
 start_chat_contact(Client, Input0, Options) ->
     Method = put,
     Path = ["/contact/chat"],
+    SuccessStatusCode = undefined,
+    Headers = [],
+    Input = Input0,
+    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This API starts recording the contact when the agent joins the call.
+%% StartContactRecording is a one-time action. For example, if you use
+%% StopContactRecording to stop recording an ongoing call, you can't use
+%% StartContactRecording to restart it. For scenarios where the recording has
+%% started and you want to suspend and resume it, such as when collecting
+%% sensitive information (for example, a credit card number), use
+%% SuspendContactRecording and ResumeContactRecording.
+%%
+%% You can use this API to override the recording behavior configured in the
+%% <a
+%% href="https://docs.aws.amazon.com/connect/latest/adminguide/set-recording-behavior.html">Set
+%% recording behavior</a> block.
+%%
+%% Only voice recordings are supported at this time.
+start_contact_recording(Client, Input) ->
+    start_contact_recording(Client, Input, []).
+start_contact_recording(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/contact/start-recording"],
     SuccessStatusCode = undefined,
     Headers = [],
     Input = Input0,
@@ -401,15 +381,6 @@ start_chat_contact(Client, Input0, Options) ->
 %%
 %% There is a 60 second dialing timeout for this operation. If the call is
 %% not connected after 60 seconds, it fails.
-%%
-%% <note> UK numbers with a 447 prefix are not allowed by default. Before you
-%% can dial these UK mobile numbers, you must submit a service quota increase
-%% request. For more information, see <a
-%% href="https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html">Amazon
-%% Connect Service Quotas</a> in the <i>Amazon Connect Administrator
-%% Guide</i>.
-%%
-%% </note>
 start_outbound_voice_contact(Client, Input) ->
     start_outbound_voice_contact(Client, Input, []).
 start_outbound_voice_contact(Client, Input0, Options) ->
@@ -431,14 +402,47 @@ stop_contact(Client, Input0, Options) ->
     Input = Input0,
     request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
 
+%% @doc When a contact is being recorded, this API stops recording the call.
+%% StopContactRecording is a one-time action. If you use StopContactRecording
+%% to stop recording an ongoing call, you can't use StartContactRecording to
+%% restart it. For scenarios where the recording has started and you want to
+%% suspend it for sensitive information (for example, to collect a credit
+%% card number), and then restart it, use SuspendContactRecording and
+%% ResumeContactRecording.
+%%
+%% Only voice recordings are supported at this time.
+stop_contact_recording(Client, Input) ->
+    stop_contact_recording(Client, Input, []).
+stop_contact_recording(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/contact/stop-recording"],
+    SuccessStatusCode = undefined,
+    Headers = [],
+    Input = Input0,
+    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc When a contact is being recorded, this API suspends recording the
+%% call. For example, you might suspend the call recording while collecting
+%% sensitive information, such as a credit card number. Then use
+%% ResumeContactRecording to restart recording.
+%%
+%% The period of time that the recording is suspended is filled with silence
+%% in the final recording.
+%%
+%% Only voice recordings are supported at this time.
+suspend_contact_recording(Client, Input) ->
+    suspend_contact_recording(Client, Input, []).
+suspend_contact_recording(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/contact/suspend-recording"],
+    SuccessStatusCode = undefined,
+    Headers = [],
+    Input = Input0,
+    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Adds the specified tags to the specified resource.
 %%
 %% The supported resource type is users.
-%%
-%% For sample policies that use tags, see <a
-%% href="https://docs.aws.amazon.com/connect/latest/adminguide/security_iam_id-based-policy-examples.html">Amazon
-%% Connect Identity-Based Policy Examples</a> in the <i>Amazon Connect
-%% Administrator Guide</i>.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
@@ -504,19 +508,6 @@ update_user_hierarchy(Client, InstanceId, UserId, Input0, Options) ->
     request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the identity information for the specified user.
-%%
-%% <important> Someone with the ability to invoke
-%% <code>UpdateUserIndentityInfo</code> can change the login credentials of
-%% other users by changing their email address. This poses a security risk to
-%% your organization. They can change the email address of a user to the
-%% attacker's email address, and then reset the password through email. We
-%% strongly recommend limiting who has the ability to invoke
-%% <code>UpdateUserIndentityInfo</code>. For more information, see <a
-%% href="https://docs.aws.amazon.com/connect/latest/adminguide/security-profile-best-practices.html">Best
-%% Practices for Security Profiles</a> in the <i>Amazon Connect Administrator
-%% Guide</i>.
-%%
-%% </important>
 update_user_identity_info(Client, InstanceId, UserId, Input) ->
     update_user_identity_info(Client, InstanceId, UserId, Input, []).
 update_user_identity_info(Client, InstanceId, UserId, Input0, Options) ->

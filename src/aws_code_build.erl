@@ -130,6 +130,8 @@
 
 -export([batch_delete_builds/2,
          batch_delete_builds/3,
+         batch_get_build_batches/2,
+         batch_get_build_batches/3,
          batch_get_builds/2,
          batch_get_builds/3,
          batch_get_projects/2,
@@ -144,6 +146,8 @@
          create_report_group/3,
          create_webhook/2,
          create_webhook/3,
+         delete_build_batch/2,
+         delete_build_batch/3,
          delete_project/2,
          delete_project/3,
          delete_report/2,
@@ -156,6 +160,8 @@
          delete_source_credentials/3,
          delete_webhook/2,
          delete_webhook/3,
+         describe_code_coverages/2,
+         describe_code_coverages/3,
          describe_test_cases/2,
          describe_test_cases/3,
          get_resource_policy/2,
@@ -164,6 +170,10 @@
          import_source_credentials/3,
          invalidate_project_cache/2,
          invalidate_project_cache/3,
+         list_build_batches/2,
+         list_build_batches/3,
+         list_build_batches_for_project/2,
+         list_build_batches_for_project/3,
          list_builds/2,
          list_builds/3,
          list_builds_for_project/2,
@@ -186,10 +196,18 @@
          list_source_credentials/3,
          put_resource_policy/2,
          put_resource_policy/3,
+         retry_build/2,
+         retry_build/3,
+         retry_build_batch/2,
+         retry_build_batch/3,
          start_build/2,
          start_build/3,
+         start_build_batch/2,
+         start_build_batch/3,
          stop_build/2,
          stop_build/3,
+         stop_build_batch/2,
+         stop_build_batch/3,
          update_project/2,
          update_project/3,
          update_report_group/2,
@@ -210,6 +228,14 @@ batch_delete_builds(Client, Input)
 batch_delete_builds(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchDeleteBuilds">>, Input, Options).
+
+%% @doc Retrieves information about one or more batch builds.
+batch_get_build_batches(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_get_build_batches(Client, Input, []).
+batch_get_build_batches(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchGetBuildBatches">>, Input, Options).
 
 %% @doc Gets information about one or more builds.
 batch_get_builds(Client, Input)
@@ -284,6 +310,14 @@ create_webhook(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWebhook">>, Input, Options).
 
+%% @doc Deletes a batch build.
+delete_build_batch(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_build_batch(Client, Input, []).
+delete_build_batch(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteBuildBatch">>, Input, Options).
+
 %% @doc Deletes a build project. When you delete a project, its builds are
 %% not deleted.
 delete_project(Client, Input)
@@ -343,6 +377,14 @@ delete_webhook(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWebhook">>, Input, Options).
 
+%% @doc Retrieves one or more code coverage reports.
+describe_code_coverages(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_code_coverages(Client, Input, []).
+describe_code_coverages(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeCodeCoverages">>, Input, Options).
+
 %% @doc Returns a list of details about test cases for a report.
 describe_test_cases(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -376,6 +418,24 @@ invalidate_project_cache(Client, Input)
 invalidate_project_cache(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"InvalidateProjectCache">>, Input, Options).
+
+%% @doc Retrieves the identifiers of your build batches in the current
+%% region.
+list_build_batches(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_build_batches(Client, Input, []).
+list_build_batches(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListBuildBatches">>, Input, Options).
+
+%% @doc Retrieves the identifiers of the build batches for a specific
+%% project.
+list_build_batches_for_project(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_build_batches_for_project(Client, Input, []).
+list_build_batches_for_project(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListBuildBatchesForProject">>, Input, Options).
 
 %% @doc Gets a list of build IDs, with each build ID representing a single
 %% build.
@@ -473,6 +533,22 @@ put_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutResourcePolicy">>, Input, Options).
 
+%% @doc Restarts a build.
+retry_build(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    retry_build(Client, Input, []).
+retry_build(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RetryBuild">>, Input, Options).
+
+%% @doc Restarts a batch build.
+retry_build_batch(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    retry_build_batch(Client, Input, []).
+retry_build_batch(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RetryBuildBatch">>, Input, Options).
+
 %% @doc Starts running a build.
 start_build(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -481,6 +557,14 @@ start_build(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartBuild">>, Input, Options).
 
+%% @doc Starts a batch build for a project.
+start_build_batch(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_build_batch(Client, Input, []).
+start_build_batch(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartBuildBatch">>, Input, Options).
+
 %% @doc Attempts to stop running a build.
 stop_build(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -488,6 +572,14 @@ stop_build(Client, Input)
 stop_build(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopBuild">>, Input, Options).
+
+%% @doc Stops a running batch build.
+stop_build_batch(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_build_batch(Client, Input, []).
+stop_build_batch(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopBuildBatch">>, Input, Options).
 
 %% @doc Changes the settings of a build project.
 update_project(Client, Input)
