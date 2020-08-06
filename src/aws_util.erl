@@ -5,7 +5,9 @@
          hmac_sha256/2,
          hmac_sha256_hexdigest/2,
          sha256_hexdigest/1,
-         decode_xml/1
+         decode_xml/1,
+         get_in/2,
+         get_in/3
         ]).
 
 -include_lib("xmerl/include/xmerl.hrl").
@@ -43,6 +45,19 @@ decode_xml(Xml) ->
   Opts = [{hook_fun, fun hook_fun/2}],
   {Element, []} = xmerl_scan:string(XmlString, Opts),
   Element.
+
+-spec get_in([any()], any()) -> any().
+get_in(Keys, V) ->
+  get_in(Keys, V, undefined).
+
+-spec get_in([any()], any(), any()) -> any().
+get_in([], V, _Default) ->
+  V;
+get_in([K | Keys], Map, Default) when is_map(Map) ->
+  case maps:find(K, Map) of
+    {ok, V} -> get_in(Keys, V, Default);
+    error -> Default
+  end.
 
 %%====================================================================
 %% Internal functions
