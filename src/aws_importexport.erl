@@ -133,8 +133,10 @@ handle_response({ok, 200, ResponseHeaders, Client}) ->
 handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
     {ok, Body} = hackney:body(Client),
     Error = aws_util:decode_xml(Body),
-    Exception = aws_util:get_in(['ErrorResponse', 'Error', 'Code'], Error),
-    Reason = aws_util:get_in(['ErrorResponse', 'Error', 'Message'], Error),
+    CodePath = [<<"ErrorResponse">>, <<"Error">>, <<"Code">>],
+    Exception = aws_util:get_in(CodePath, Error),
+    MessagePath = [<<"ErrorResponse">>, <<"Error">>, <<"Message">>],
+    Reason = aws_util:get_in(MessagePath, Error),
     {error, {Exception, Reason}, {StatusCode, ResponseHeaders, Client}};
 handle_response({error, Reason}) ->
     {error, Reason}.
