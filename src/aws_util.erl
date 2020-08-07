@@ -63,7 +63,7 @@ get_in([K | Keys], Map, Default) when is_map(Map) ->
 %% Internal functions
 %%====================================================================
 
--define(TEXT, '__text').
+-define(TEXT, <<"__text">>).
 
 %% Callback hook_fun for xmerl parser
 hook_fun(#xmlElement{name = Tag, content = Content} , GlobalState) ->
@@ -75,7 +75,7 @@ hook_fun(#xmlElement{name = Tag, content = Content} , GlobalState) ->
               end;
             V -> V
           end,
-  {#{Tag => Value}, GlobalState};
+  {#{atom_to_binary(Tag, utf8) => Value}, GlobalState};
 hook_fun(#xmlText{value = Text}, GlobalState) ->
   {unicode:characters_to_binary(Text), GlobalState}.
 
@@ -183,9 +183,10 @@ hmac_sha256_hexdigest_test() ->
 %% decode_xml handles lists correctly by merging values in a list.
 decode_xml_lists_test() ->
     ?assertEqual(
-       #{person => #{ name => <<"foo">>
-                    , addresses => #{address => [<<"1">>, <<"2">>]}
-                    }
+       #{ <<"person">> =>
+            #{ <<"name">> => <<"foo">>
+             , <<"addresses">> => #{<<"address">> => [<<"1">>, <<"2">>]}
+             }
         },
        decode_xml("<person>"
                   "  <name>foo</name>"
@@ -197,17 +198,21 @@ decode_xml_lists_test() ->
 
 %% decode_xml handles multiple text elments mixed with other elements correctly.
 decode_xml_text_test() ->
-    ?assertEqual( #{person => #{ name => <<"foo">>, ?TEXT => <<"random">>}}
+    ?assertEqual( #{ <<"person">> =>
+                      #{ <<"name">> => <<"foo">>
+                       , ?TEXT => <<"random">>
+                       }
+                   }
                 , decode_xml("<person>"
                              "  <name>foo</name>"
                              "  random"
                              "</person>")
                 ),
 
-    ?assertEqual( #{person => #{ name => <<"foo">>
-                               , age => <<"42">>
-                               , ?TEXT => <<"random    text">>
-                               }
+    ?assertEqual( #{<<"person">> => #{ <<"name">> => <<"foo">>
+                                     , <<"age">> => <<"42">>
+                                     , ?TEXT => <<"random    text">>
+                                     }
                    }
                 , decode_xml("<person>"
                              "  <name>foo</name>"
@@ -220,14 +225,18 @@ decode_xml_text_test() ->
 
 %% get_in fetches the correct values and does fail when the path doesn't exist
 get_in_test() ->
-    Map = #{person => #{ error => #{ code => <<"Code">>
-                                   , message => <<"Message">>
-                                   }
-                       }
+    Map = #{ <<"person">> =>
+               #{ <<"error">> => #{ <<"code">> => <<"Code">>
+                                  , <<"message">> => <<"Message">>
+                                  }
+                }
            },
-    ?assertEqual(<<"Code">>, get_in([person, error, code], Map)),
-    ?assertEqual(<<"Message">>, get_in([person, error, message], Map)),
-    ?assertEqual(undefined, get_in([person, error, foo], Map)),
-    ?assertEqual(default, get_in([person, error, foo], Map, default)).
+    CodePath = [<<"person">>, <<"error">>, <<"code">>],
+    MessagePath = [<<"person">>, <<"error">>, <<"message">>],
+    FooPath = [<<"person">>, <<"error">>, <<"foo">>],
+    ?assertEqual(<<"Code">>, get_in(CodePath, Map)),
+    ?assertEqual(<<"Message">>, get_in(MessagePath, Map)),
+    ?assertEqual(undefined, get_in(FooPath, Map)),
+    ?assertEqual(default, get_in(FooPath, Map, default)).
 
 -endif.
