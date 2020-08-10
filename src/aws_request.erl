@@ -29,7 +29,7 @@ build_headers(ParamsHeadersMapping, Params0)
   when is_list(ParamsHeadersMapping),
        is_map(Params0) ->
   Fun = fun({ParamName, HeaderName}, {Headers, Params}) ->
-            case map:get(ParamName, Params, undefined) of
+            case maps:get(ParamName, Params, undefined) of
               undefined ->
                 {Headers, Params};
               Value ->
