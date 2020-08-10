@@ -5,6 +5,7 @@
          hmac_sha256/2,
          hmac_sha256_hexdigest/2,
          sha256_hexdigest/1,
+         encode_xml/1,
          decode_xml/1,
          get_in/2,
          get_in/3
@@ -16,11 +17,11 @@
 %% API
 %%====================================================================
 
-%% Base16 encode binary data.
+%% @doc Base16 encode binary data.
 base16(Data) ->
     << <<(hex(N div 16)), (hex(N rem 16))>> || <<N>> <= Data >>.
 
-%% Join binary values using the specified separator.
+%% @doc Join binary values using the specified separator.
 binary_join([], _) -> <<"">>;
 binary_join([H|[]], _) -> H;
 binary_join(L, Sep) when is_list(Sep)  ->
@@ -28,91 +29,118 @@ binary_join(L, Sep) when is_list(Sep)  ->
 binary_join([H|T], Sep) ->
     binary_join(T, H, Sep).
 
-%% Create an HMAC-SHA256 hexdigest for Key and Message.
+%% @doc Create an HMAC-SHA256 hexdigest for Key and Message.
 hmac_sha256_hexdigest(Key, Message) ->
     aws_util:base16(hmac_sha256(Key, Message)).
 
-%% Create an HMAC-SHA256 hexdigest for Key and Message.
+%% @doc Create an HMAC-SHA256 hexdigest for Key and Message.
 hmac_sha256(Key, Message) ->
     crypto:hmac(sha256, Key, Message).
 
-%% Create a SHA256 hexdigest for Value.
+%% @doc Create a SHA256 hexdigest for Value.
 sha256_hexdigest(Value) ->
     aws_util:base16(crypto:hash(sha256, Value)).
 
-decode_xml(Xml) ->
-  XmlString = unicode:characters_to_list(Xml),
-  Opts = [{hook_fun, fun hook_fun/2}],
-  {Element, []} = xmerl_scan:string(XmlString, Opts),
-  Element.
+%% @doc Encode an Erlang map as XML
+%%
+%% All keys must be binaries. Values can be a binary, a list, an
+%% integer a float or another nested map.
+encode_xml(Map) ->
+    Result = lists:map(fun encode_xml_key_value/1, maps:to_list(Map)),
+    iolist_to_binary(Result).
 
+%% @doc Decode XML into a map representation
+%%
+%% When there is more than one element with the same tag name, their
+%% values get merged into a list.
+%%
+%% If the content is only text then a key with the element name and a
+%% value with the content is inserted.
+%%
+%% If the content is a mix between text and child elements, then the
+%% elements are processed as described above and all the text parts
+%% are merged under the binary `__text' key.
+decode_xml(Xml) ->
+    XmlString = unicode:characters_to_list(Xml),
+    Opts = [{hook_fun, fun hook_fun/2}],
+    {Element, []} = xmerl_scan:string(XmlString, Opts),
+    Element.
+
+%% @doc Get a value from nested maps
 -spec get_in([any()], any()) -> any().
 get_in(Keys, V) ->
-  get_in(Keys, V, undefined).
+    get_in(Keys, V, undefined).
 
+%% @doc Get a value from nested maps, return default value if missing
 -spec get_in([any()], any(), any()) -> any().
 get_in([], V, _Default) ->
-  V;
+    V;
 get_in([K | Keys], Map, Default) when is_map(Map) ->
-  case maps:find(K, Map) of
-    {ok, V} -> get_in(Keys, V, Default);
-    error -> Default
-  end.
+    case maps:find(K, Map) of
+        {ok, V} -> get_in(Keys, V, Default);
+        error -> Default
+    end.
 
 %%====================================================================
 %% Internal functions
 %%====================================================================
 
+-spec encode_xml_key_value({binary(), any()}) -> iolist().
+encode_xml_key_value({K, V}) when is_binary(K), is_binary(V) ->
+    ["<", K, ">", V, "</", K, ">"];
+encode_xml_key_value({K, Values}) when is_binary(K), is_list(Values) ->
+    [encode_xml_key_value({K, V}) || V <- Values];
+encode_xml_key_value({K, V}) when is_binary(K), is_integer(V) ->
+    ["<", K, ">", integer_to_binary(V), "</", K, ">"];
+encode_xml_key_value({K, V}) when is_binary(K), is_float(V) ->
+    ["<", K, ">", float_to_binary(V), "</", K, ">"];
+encode_xml_key_value({K, V}) when is_binary(K), is_map(V) ->
+    [ "<", K, ">"
+    , lists:map(fun encode_xml_key_value/1, maps:to_list(V))
+    , "</", K, ">"
+    ].
+
 -define(TEXT, <<"__text">>).
 
-%% Callback hook_fun for xmerl parser
+%% @doc Callback hook_fun for xmerl parser
 hook_fun(#xmlElement{name = Tag, content = Content} , GlobalState) ->
-  Value = case lists:foldr(fun content_to_map/2, none, Content) of
-            V = #{?TEXT := Text} ->
-              case string:trim(Text) of
-                <<>>    -> maps:remove(?TEXT, V);
-                Trimmed -> V#{?TEXT => Trimmed}
-              end;
-            V -> V
-          end,
-  {#{atom_to_binary(Tag, utf8) => Value}, GlobalState};
+    Value = case lists:foldr(fun content_to_map/2, none, Content) of
+                V = #{?TEXT := Text} ->
+                    case string:trim(Text) of
+                        <<>>    -> maps:remove(?TEXT, V);
+                        Trimmed -> V#{?TEXT => Trimmed}
+                    end;
+                V -> V
+            end,
+    {#{atom_to_binary(Tag, utf8) => Value}, GlobalState};
 hook_fun(#xmlText{value = Text}, GlobalState) ->
-  {unicode:characters_to_binary(Text), GlobalState}.
+    {unicode:characters_to_binary(Text), GlobalState}.
 
 %% @doc Convert the content of an Xml node into a map.
-%%
-%% When there is more than one element with the same tag name, their
-%% values get merged into a list.
-%%
-%% If the content is only text then that is what gets returned.
-%%
-%% If the content is a mix between text and child elements, then the
-%% elements are processed as described above and all the text parts
-%% are merged under the `__text' key.
-
 content_to_map(X, none) ->
-  X;
+    X;
 content_to_map(X, Acc) when is_map(X), is_map(Acc) ->
-  [{Tag, Value}] = maps:to_list(X),
-  case maps:is_key(Tag, Acc) of
-    true ->
-      UpdateFun = fun(L) when is_list(L) ->
-                      [Value | L];
-                     (V) -> [Value, V]
-                  end,
-      maps:update_with(Tag, UpdateFun, Acc);
-    false -> maps:merge(Acc, X)
-  end;
-content_to_map(X, #{?TEXT := Text} = Acc) when is_binary(X), is_map(Acc) ->
-  Acc#{?TEXT => <<X/binary, Text/binary>>};
+    [{Tag, Value}] = maps:to_list(X),
+    case maps:is_key(Tag, Acc) of
+        true ->
+            UpdateFun = fun(L) when is_list(L) ->
+                                [Value | L];
+                           (V) -> [Value, V]
+                        end,
+            maps:update_with(Tag, UpdateFun, Acc);
+        false -> maps:merge(Acc, X)
+    end;
+content_to_map(X, #{?TEXT := Text} = Acc)
+  when is_binary(X), is_map(Acc) ->
+    Acc#{?TEXT => <<X/binary, Text/binary>>};
 content_to_map(X, Acc) when is_binary(X), is_map(Acc) ->
-  Acc#{?TEXT => X};
+    Acc#{?TEXT => X};
 content_to_map(X, Acc) when is_binary(X), is_binary(Acc) ->
-  <<X/binary, Acc/binary>>;
+    <<X/binary, Acc/binary>>;
 content_to_map(X, Acc) when is_map(X), is_binary(Acc) ->
-  X#{?TEXT => Acc}.
+    X#{?TEXT => Acc}.
 
-%% Convert an integer in the 0-16 range to a hexadecimal byte
+%% @doc Convert an integer in the 0-16 range to a hexadecimal byte
 %% representation.
 hex(N) when N >= 0, N < 10 ->
     N + $0;
@@ -170,7 +198,7 @@ hmac_sha256_test() ->
     ?assertEqual(
        <<110, 158, 242, 155, 117, 255, 252,  91,
          122, 186, 229,  39, 213, 143, 218, 219,
-          47, 228,  46, 114,  25,   1,  25, 118,
+         47, 228,  46, 114,  25,   1,  25, 118,
          145, 115,  67,   6,  95,  88, 237,  74>>,
        hmac_sha256(<<"key">>, <<"message">>)).
 
@@ -184,9 +212,9 @@ hmac_sha256_hexdigest_test() ->
 decode_xml_lists_test() ->
     ?assertEqual(
        #{ <<"person">> =>
-            #{ <<"name">> => <<"foo">>
-             , <<"addresses">> => #{<<"address">> => [<<"1">>, <<"2">>]}
-             }
+              #{ <<"name">> => <<"foo">>
+               , <<"addresses">> => #{<<"address">> => [<<"1">>, <<"2">>]}
+               }
         },
        decode_xml("<person>"
                   "  <name>foo</name>"
@@ -199,9 +227,9 @@ decode_xml_lists_test() ->
 %% decode_xml handles multiple text elments mixed with other elements correctly.
 decode_xml_text_test() ->
     ?assertEqual( #{ <<"person">> =>
-                      #{ <<"name">> => <<"foo">>
-                       , ?TEXT => <<"random">>
-                       }
+                         #{ <<"name">> => <<"foo">>
+                          , ?TEXT => <<"random">>
+                          }
                    }
                 , decode_xml("<person>"
                              "  <name>foo</name>"
@@ -226,10 +254,10 @@ decode_xml_text_test() ->
 %% get_in fetches the correct values and does fail when the path doesn't exist
 get_in_test() ->
     Map = #{ <<"person">> =>
-               #{ <<"error">> => #{ <<"code">> => <<"Code">>
-                                  , <<"message">> => <<"Message">>
-                                  }
-                }
+                 #{ <<"error">> => #{ <<"code">> => <<"Code">>
+                                    , <<"message">> => <<"Message">>
+                                    }
+                  }
            },
     CodePath = [<<"person">>, <<"error">>, <<"code">>],
     MessagePath = [<<"person">>, <<"error">>, <<"message">>],
