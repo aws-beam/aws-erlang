@@ -28,17 +28,17 @@ sign_request(Client, Method, URL, Headers, Body) ->
 build_headers(ParamsHeadersMapping, Params0)
   when is_list(ParamsHeadersMapping),
        is_map(Params0) ->
-  Fun = fun({ParamName, HeaderName}, {Headers, Params}) ->
-            case maps:get(ParamName, Params, undefined) of
+  Fun = fun({HeaderName, ParamName}, {HeadersAcc, ParamsAcc}) ->
+            case maps:get(ParamName, ParamsAcc, undefined) of
               undefined ->
-                {Headers, Params};
+                {HeadersAcc, ParamsAcc};
               Value ->
-                Headers = [{HeaderName, Value} | Headers],
-                Params = maps:remove(ParamName, Params),
+                Headers = [{HeaderName, Value} | HeadersAcc],
+                Params = maps:remove(ParamName, ParamsAcc),
                 {Headers, Params}
             end
         end,
-  lists:foldl(Fun,{[], Params0}, ParamsHeadersMapping).
+  lists:foldl(Fun, {[], Params0}, ParamsHeadersMapping).
 
 -spec method_to_binary(atom()) -> binary().
 method_to_binary(delete)  -> <<"DELETE">>;
