@@ -348,7 +348,7 @@ update_records(Client, DatasetName, IdentityId, IdentityPoolId, Input0, Options)
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-Client-Context", "ClientContext"}
+                       {<<"x-amz-Client-Context">>, <<"ClientContext">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     

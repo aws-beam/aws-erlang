@@ -163,7 +163,7 @@ add_facet_to_object(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "DirectoryArn"}
+                       {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -180,7 +180,7 @@ apply_schema(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "DirectoryArn"}
+                       {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -202,7 +202,7 @@ attach_object(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "DirectoryArn"}
+                       {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -218,7 +218,7 @@ attach_policy(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "DirectoryArn"}
+                       {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -233,7 +233,7 @@ attach_to_index(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "DirectoryArn"}
+                       {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -251,7 +251,7 @@ attach_typed_link(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "DirectoryArn"}
+                       {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -266,8 +266,8 @@ batch_read(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-consistency-level", "ConsistencyLevel"},
-                       {"x-amz-data-partition", "DirectoryArn"}
+                       {<<"x-amz-consistency-level">>, <<"ConsistencyLevel">>},
+                       {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -283,7 +283,7 @@ batch_write(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "DirectoryArn"}
+                       {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -304,7 +304,7 @@ create_directory(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "SchemaArn"}
+                       {<<"x-amz-data-partition">>, <<"SchemaArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -320,7 +320,7 @@ create_facet(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "SchemaArn"}
+                       {<<"x-amz-data-partition">>, <<"SchemaArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -337,7 +337,7 @@ create_index(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "DirectoryArn"}
+                       {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -356,7 +356,7 @@ create_object(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "DirectoryArn"}
+                       {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -399,7 +399,7 @@ create_typed_link_facet(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "SchemaArn"}
+                       {<<"x-amz-data-partition">>, <<"SchemaArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -416,7 +416,7 @@ delete_directory(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "DirectoryArn"}
+                       {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -433,7 +433,7 @@ delete_facet(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "SchemaArn"}
+                       {<<"x-amz-data-partition">>, <<"SchemaArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -453,7 +453,7 @@ delete_object(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "DirectoryArn"}
+                       {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -469,7 +469,7 @@ delete_schema(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "SchemaArn"}
+                       {<<"x-amz-data-partition">>, <<"SchemaArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -486,7 +486,7 @@ delete_typed_link_facet(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "SchemaArn"}
+                       {<<"x-amz-data-partition">>, <<"SchemaArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -501,7 +501,7 @@ detach_from_index(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "DirectoryArn"}
+                       {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -517,7 +517,7 @@ detach_object(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "DirectoryArn"}
+                       {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -532,7 +532,7 @@ detach_policy(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "DirectoryArn"}
+                       {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -550,7 +550,7 @@ detach_typed_link(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "DirectoryArn"}
+                       {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -567,7 +567,7 @@ disable_directory(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "DirectoryArn"}
+                       {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -583,7 +583,7 @@ enable_directory(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "DirectoryArn"}
+                       {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -610,7 +610,7 @@ get_directory(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "DirectoryArn"}
+                       {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -627,7 +627,7 @@ get_facet(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "SchemaArn"}
+                       {<<"x-amz-data-partition">>, <<"SchemaArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -642,7 +642,7 @@ get_link_attributes(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "DirectoryArn"}
+                       {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -658,8 +658,8 @@ get_object_attributes(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-consistency-level", "ConsistencyLevel"},
-                       {"x-amz-data-partition", "DirectoryArn"}
+                       {<<"x-amz-consistency-level">>, <<"ConsistencyLevel">>},
+                       {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -674,8 +674,8 @@ get_object_information(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-consistency-level", "ConsistencyLevel"},
-                       {"x-amz-data-partition", "DirectoryArn"}
+                       {<<"x-amz-consistency-level">>, <<"ConsistencyLevel">>},
+                       {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -692,7 +692,7 @@ get_schema_as_json(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "SchemaArn"}
+                       {<<"x-amz-data-partition">>, <<"SchemaArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -710,7 +710,7 @@ get_typed_link_facet_information(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "SchemaArn"}
+                       {<<"x-amz-data-partition">>, <<"SchemaArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -737,8 +737,8 @@ list_attached_indices(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-consistency-level", "ConsistencyLevel"},
-                       {"x-amz-data-partition", "DirectoryArn"}
+                       {<<"x-amz-consistency-level">>, <<"ConsistencyLevel">>},
+                       {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -776,7 +776,7 @@ list_facet_attributes(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "SchemaArn"}
+                       {<<"x-amz-data-partition">>, <<"SchemaArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -791,7 +791,7 @@ list_facet_names(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "SchemaArn"}
+                       {<<"x-amz-data-partition">>, <<"SchemaArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -811,7 +811,7 @@ list_incoming_typed_links(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "DirectoryArn"}
+                       {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -826,8 +826,8 @@ list_index(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-consistency-level", "ConsistencyLevel"},
-                       {"x-amz-data-partition", "DirectoryArn"}
+                       {<<"x-amz-consistency-level">>, <<"ConsistencyLevel">>},
+                       {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -855,8 +855,8 @@ list_object_attributes(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-consistency-level", "ConsistencyLevel"},
-                       {"x-amz-data-partition", "DirectoryArn"}
+                       {<<"x-amz-consistency-level">>, <<"ConsistencyLevel">>},
+                       {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -872,8 +872,8 @@ list_object_children(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-consistency-level", "ConsistencyLevel"},
-                       {"x-amz-data-partition", "DirectoryArn"}
+                       {<<"x-amz-consistency-level">>, <<"ConsistencyLevel">>},
+                       {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -900,7 +900,7 @@ list_object_parent_paths(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "DirectoryArn"}
+                       {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -916,8 +916,8 @@ list_object_parents(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-consistency-level", "ConsistencyLevel"},
-                       {"x-amz-data-partition", "DirectoryArn"}
+                       {<<"x-amz-consistency-level">>, <<"ConsistencyLevel">>},
+                       {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -932,8 +932,8 @@ list_object_policies(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-consistency-level", "ConsistencyLevel"},
-                       {"x-amz-data-partition", "DirectoryArn"}
+                       {<<"x-amz-consistency-level">>, <<"ConsistencyLevel">>},
+                       {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -953,7 +953,7 @@ list_outgoing_typed_links(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "DirectoryArn"}
+                       {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -969,8 +969,8 @@ list_policy_attachments(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-consistency-level", "ConsistencyLevel"},
-                       {"x-amz-data-partition", "DirectoryArn"}
+                       {<<"x-amz-consistency-level">>, <<"ConsistencyLevel">>},
+                       {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -1014,7 +1014,7 @@ list_typed_link_facet_attributes(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "SchemaArn"}
+                       {<<"x-amz-data-partition">>, <<"SchemaArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -1032,7 +1032,7 @@ list_typed_link_facet_names(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "SchemaArn"}
+                       {<<"x-amz-data-partition">>, <<"SchemaArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -1055,7 +1055,7 @@ lookup_policy(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "DirectoryArn"}
+                       {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -1071,7 +1071,7 @@ publish_schema(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "DevelopmentSchemaArn"}
+                       {<<"x-amz-data-partition">>, <<"DevelopmentSchemaArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -1089,7 +1089,7 @@ put_schema_from_json(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "SchemaArn"}
+                       {<<"x-amz-data-partition">>, <<"SchemaArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -1104,7 +1104,7 @@ remove_facet_from_object(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "DirectoryArn"}
+                       {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -1152,7 +1152,7 @@ update_facet(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "SchemaArn"}
+                       {<<"x-amz-data-partition">>, <<"SchemaArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -1169,7 +1169,7 @@ update_link_attributes(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "DirectoryArn"}
+                       {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -1184,7 +1184,7 @@ update_object_attributes(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "DirectoryArn"}
+                       {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -1200,7 +1200,7 @@ update_schema(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "SchemaArn"}
+                       {<<"x-amz-data-partition">>, <<"SchemaArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -1217,7 +1217,7 @@ update_typed_link_facet(Client, Input0, Options) ->
     SuccessStatusCode = 200,
     
     HeadersMapping = [
-                       {"x-amz-data-partition", "SchemaArn"}
+                       {<<"x-amz-data-partition">>, <<"SchemaArn">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     

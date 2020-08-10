@@ -603,9 +603,9 @@ invoke(Client, FunctionName, Input0, Options) ->
     SuccessStatusCode = undefined,
     
     HeadersMapping = [
-                       {"X-Amz-Client-Context", "ClientContext"},
-                       {"X-Amz-Invocation-Type", "InvocationType"},
-                       {"X-Amz-Log-Type", "LogType"}
+                       {<<"X-Amz-Client-Context">>, <<"ClientContext">>},
+                       {<<"X-Amz-Invocation-Type">>, <<"InvocationType">>},
+                       {<<"X-Amz-Log-Type">>, <<"LogType">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -613,14 +613,14 @@ invoke(Client, FunctionName, Input0, Options) ->
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
-            {"X-Amz-Executed-Version", "ExecutedVersion"},
-            {"X-Amz-Function-Error", "FunctionError"},
-            {"X-Amz-Log-Result", "LogResult"}
+            {<<"X-Amz-Executed-Version">>, <<"ExecutedVersion">>},
+            {<<"X-Amz-Function-Error">>, <<"FunctionError">>},
+            {<<"X-Amz-Log-Result">>, <<"LogResult">>}
           ],
-        FoldFun = fun({Name, Key}, Acc) ->
-                      case lists:keyfind(Name, 1, ResponseHeaders) of
-                        false -> Acc;
-                        {_, Value} -> Acc#{Key => Value}
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
                       end
                   end,
         Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),

@@ -917,7 +917,7 @@ get_export(Client, ExportType, RestApiId, StageName, Accepts, Options)
     SuccessStatusCode = 200,
      Headers0 =
       [
-        {"Accept", Accepts}
+        {<<"Accept">>, Accepts}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
     
@@ -925,13 +925,13 @@ get_export(Client, ExportType, RestApiId, StageName, Accepts, Options)
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
-            {"Content-Disposition", "contentDisposition"},
-            {"Content-Type", "contentType"}
+            {<<"Content-Disposition">>, <<"contentDisposition">>},
+            {<<"Content-Type">>, <<"contentType">>}
           ],
-        FoldFun = fun({Name, Key}, Acc) ->
-                      case lists:keyfind(Name, 1, ResponseHeaders) of
-                        false -> Acc;
-                        {_, Value} -> Acc#{Key => Value}
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
                       end
                   end,
         Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
@@ -1125,13 +1125,13 @@ get_sdk(Client, RestApiId, SdkType, StageName, Options)
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
-            {"Content-Disposition", "contentDisposition"},
-            {"Content-Type", "contentType"}
+            {<<"Content-Disposition">>, <<"contentDisposition">>},
+            {<<"Content-Type">>, <<"contentType">>}
           ],
-        FoldFun = fun({Name, Key}, Acc) ->
-                      case lists:keyfind(Name, 1, ResponseHeaders) of
-                        false -> Acc;
-                        {_, Value} -> Acc#{Key => Value}
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
                       end
                   end,
         Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),

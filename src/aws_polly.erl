@@ -194,13 +194,13 @@ synthesize_speech(Client, Input0, Options) ->
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
-            {"Content-Type", "ContentType"},
-            {"x-amzn-RequestCharacters", "RequestCharacters"}
+            {<<"Content-Type">>, <<"ContentType">>},
+            {<<"x-amzn-RequestCharacters">>, <<"RequestCharacters">>}
           ],
-        FoldFun = fun({Name, Key}, Acc) ->
-                      case lists:keyfind(Name, 1, ResponseHeaders) of
-                        false -> Acc;
-                        {_, Value} -> Acc#{Key => Value}
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
                       end
                   end,
         Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),

@@ -26,8 +26,8 @@ put_events(Client, Input0, Options) ->
     SuccessStatusCode = 202,
     
     HeadersMapping = [
-                       {"x-amz-Client-Context", "clientContext"},
-                       {"x-amz-Client-Context-Encoding", "clientContextEncoding"}
+                       {<<"x-amz-Client-Context">>, <<"clientContext">>},
+                       {<<"x-amz-Client-Context-Encoding">>, <<"clientContextEncoding">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
