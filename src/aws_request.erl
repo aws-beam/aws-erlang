@@ -63,22 +63,24 @@ sign_request(AccessKeyID, SecretAccessKey, Region, Service, Token,
 %% Generate headers with an AWS signature version 4 for the specified
 %% request using the specified time when generating signatures.
 sign_request(AccessKeyID, SecretAccessKey, Region, Service, Token, Now,
-             Method, URL, Headers, Body) ->
+             Method, URL, Headers0, Body) ->
     LongDate = list_to_binary(ec_date:format("YmdTHisZ", Now)),
     ShortDate = list_to_binary(ec_date:format("Ymd", Now)),
-    Headers1 = add_date_header(Headers, LongDate),
-    Headers2 = maybe_add_token_header(Headers1, Token),
-    CanonicalRequest = canonical_request(Method, URL, Headers2, Body),
+    Headers1 = add_date_header(Headers0, LongDate),
+    Headers2 = add_content_hash_header(Headers1, Body),
+    Headers = maybe_add_token_header(Headers2, Token),
+
+    CanonicalRequest = canonical_request(Method, URL, Headers, Body),
     HashedCanonicalRequest = aws_util:sha256_hexdigest(CanonicalRequest),
     CredentialScope = credential_scope(ShortDate, Region, Service),
     SigningKey = signing_key(SecretAccessKey, ShortDate, Region, Service),
     StringToSign = string_to_sign(LongDate, CredentialScope,
                                   HashedCanonicalRequest),
     Signature = aws_util:hmac_sha256_hexdigest(SigningKey, StringToSign),
-    SignedHeaders = signed_headers(Headers2),
+    SignedHeaders = signed_headers(Headers),
     Authorization = authorization(AccessKeyID, CredentialScope, SignedHeaders,
                                   Signature),
-    add_authorization_header(Headers2, Authorization).
+    add_authorization_header(Headers, Authorization).
 
 %% Add an Authorization header with an AWS4-HMAC-SHA256 signature to the
 %% list of headers.
@@ -89,6 +91,14 @@ add_authorization_header(Headers, Authorization) ->
 %% to a list of headers.
 add_date_header(Headers, Date) ->
     [{<<"X-Amz-Date">>, Date}|Headers].
+
+%% Add an X-Amz-Content-SHA256 header which is the hash of the payload.
+%% This header is required for S3 when using the v4 signature. Adding it
+%% in requests for all services does not cause any issues.
+add_content_hash_header(Headers, Body) ->
+    [ {<<"X-Amz-Content-SHA256">>, aws_util:sha256_hexdigest(Body)}
+    | Headers
+    ].
 
 %% Add an X-Amz-Security-Token header with the user-submitted security token
 %% to a list of headers
