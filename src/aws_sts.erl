@@ -874,16 +874,18 @@ get_session_token(Client, Input, Options)
     {error, term()} when
     Result :: map() | undefined,
     Error :: {binary(), binary()}.
-request(Client, Action, Input, Options) ->
+request(Client, Action, Input0, Options) ->
     Client1 = Client#{service => <<"sts">>},
     Host = get_host(<<"sts">>, Client1),
     URL = get_url(Host, Client1),
     Headers = [
         {<<"Host">>, Host},
-        {<<"Content-Type">>, <<"application/x-amz-json-">>},
-        {<<"X-Amz-Target">>, << <<".">>/binary, Action/binary>>}
+        {<<"Content-Type">>, <<"application/x-www-form-urlencoded">>}
     ],
-    Payload = jsx:encode(Input),
+    Input = Input0#{ <<"Action">> => Action
+                   , <<"Version">> => <<"2011-06-15">>
+                   },
+    Payload = uri_string:compose_query(maps:to_list(Input)),
     SignedHeaders = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
     Response = hackney:request(post, URL, SignedHeaders, Payload, Options),
     handle_response(Response).
@@ -893,14 +895,16 @@ handle_response({ok, 200, ResponseHeaders, Client}) ->
         {ok, <<>>} ->
             {ok, undefined, {200, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body, [return_maps]),
+            Result = aws_util:decode_xml(Body),
             {ok, Result, {200, ResponseHeaders, Client}}
     end;
 handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
     {ok, Body} = hackney:body(Client),
-    Error = jsx:decode(Body, [return_maps]),
-    Exception = maps:get(<<"__type">>, Error, undefined),
-    Reason = maps:get(<<"message">>, Error, undefined),
+    Error = aws_util:decode_xml(Body),
+    CodePath = [<<"ErrorResponse">>, <<"Error">>, <<"Code">>],
+    Exception = aws_util:get_in(CodePath, Error),
+    MessagePath = [<<"ErrorResponse">>, <<"Error">>, <<"Message">>],
+    Reason = aws_util:get_in(MessagePath, Error),
     {error, {Exception, Reason}, {StatusCode, ResponseHeaders, Client}};
 handle_response({error, Reason}) ->
     {error, Reason}.

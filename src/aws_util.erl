@@ -4,7 +4,13 @@
          binary_join/2,
          hmac_sha256/2,
          hmac_sha256_hexdigest/2,
-         sha256_hexdigest/1]).
+         sha256_hexdigest/1,
+         decode_xml/1,
+         get_in/2,
+         get_in/3
+        ]).
+
+-include_lib("xmerl/include/xmerl.hrl").
 
 %%====================================================================
 %% API
@@ -34,9 +40,77 @@ hmac_sha256(Key, Message) ->
 sha256_hexdigest(Value) ->
     aws_util:base16(crypto:hash(sha256, Value)).
 
+decode_xml(Xml) ->
+  XmlString = unicode:characters_to_list(Xml),
+  Opts = [{hook_fun, fun hook_fun/2}],
+  {Element, []} = xmerl_scan:string(XmlString, Opts),
+  Element.
+
+-spec get_in([any()], any()) -> any().
+get_in(Keys, V) ->
+  get_in(Keys, V, undefined).
+
+-spec get_in([any()], any(), any()) -> any().
+get_in([], V, _Default) ->
+  V;
+get_in([K | Keys], Map, Default) when is_map(Map) ->
+  case maps:find(K, Map) of
+    {ok, V} -> get_in(Keys, V, Default);
+    error -> Default
+  end.
+
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-define(TEXT, <<"__text">>).
+
+%% Callback hook_fun for xmerl parser
+hook_fun(#xmlElement{name = Tag, content = Content} , GlobalState) ->
+  Value = case lists:foldr(fun content_to_map/2, none, Content) of
+            V = #{?TEXT := Text} ->
+              case string:trim(Text) of
+                <<>>    -> maps:remove(?TEXT, V);
+                Trimmed -> V#{?TEXT => Trimmed}
+              end;
+            V -> V
+          end,
+  {#{atom_to_binary(Tag, utf8) => Value}, GlobalState};
+hook_fun(#xmlText{value = Text}, GlobalState) ->
+  {unicode:characters_to_binary(Text), GlobalState}.
+
+%% @doc Convert the content of an Xml node into a map.
+%%
+%% When there is more than one element with the same tag name, their
+%% values get merged into a list.
+%%
+%% If the content is only text then that is what gets returned.
+%%
+%% If the content is a mix between text and child elements, then the
+%% elements are processed as described above and all the text parts
+%% are merged under the `__text' key.
+
+content_to_map(X, none) ->
+  X;
+content_to_map(X, Acc) when is_map(X), is_map(Acc) ->
+  [{Tag, Value}] = maps:to_list(X),
+  case maps:is_key(Tag, Acc) of
+    true ->
+      UpdateFun = fun(L) when is_list(L) ->
+                      [Value | L];
+                     (V) -> [Value, V]
+                  end,
+      maps:update_with(Tag, UpdateFun, Acc);
+    false -> maps:merge(Acc, X)
+  end;
+content_to_map(X, #{?TEXT := Text} = Acc) when is_binary(X), is_map(Acc) ->
+  Acc#{?TEXT => <<X/binary, Text/binary>>};
+content_to_map(X, Acc) when is_binary(X), is_map(Acc) ->
+  Acc#{?TEXT => X};
+content_to_map(X, Acc) when is_binary(X), is_binary(Acc) ->
+  <<X/binary, Acc/binary>>;
+content_to_map(X, Acc) when is_map(X), is_binary(Acc) ->
+  X#{?TEXT => Acc}.
 
 %% Convert an integer in the 0-16 range to a hexadecimal byte
 %% representation.
@@ -105,5 +179,64 @@ hmac_sha256_hexdigest_test() ->
     ?assertEqual(
        <<"6e9ef29b75fffc5b7abae527d58fdadb2fe42e7219011976917343065f58ed4a">>,
        hmac_sha256_hexdigest(<<"key">>, <<"message">>)).
+
+%% decode_xml handles lists correctly by merging values in a list.
+decode_xml_lists_test() ->
+    ?assertEqual(
+       #{ <<"person">> =>
+            #{ <<"name">> => <<"foo">>
+             , <<"addresses">> => #{<<"address">> => [<<"1">>, <<"2">>]}
+             }
+        },
+       decode_xml("<person>"
+                  "  <name>foo</name>"
+                  "  <addresses>"
+                  "    <address>1</address>"
+                  "    <address>2</address>"
+                  "  </addresses>"
+                  "</person>")).
+
+%% decode_xml handles multiple text elments mixed with other elements correctly.
+decode_xml_text_test() ->
+    ?assertEqual( #{ <<"person">> =>
+                      #{ <<"name">> => <<"foo">>
+                       , ?TEXT => <<"random">>
+                       }
+                   }
+                , decode_xml("<person>"
+                             "  <name>foo</name>"
+                             "  random"
+                             "</person>")
+                ),
+
+    ?assertEqual( #{<<"person">> => #{ <<"name">> => <<"foo">>
+                                     , <<"age">> => <<"42">>
+                                     , ?TEXT => <<"random    text">>
+                                     }
+                   }
+                , decode_xml("<person>"
+                             "  <name>foo</name>"
+                             "  random"
+                             "  <age>42</age>"
+                             "  text"
+                             "</person>")
+                ).
+
+
+%% get_in fetches the correct values and does fail when the path doesn't exist
+get_in_test() ->
+    Map = #{ <<"person">> =>
+               #{ <<"error">> => #{ <<"code">> => <<"Code">>
+                                  , <<"message">> => <<"Message">>
+                                  }
+                }
+           },
+    CodePath = [<<"person">>, <<"error">>, <<"code">>],
+    MessagePath = [<<"person">>, <<"error">>, <<"message">>],
+    FooPath = [<<"person">>, <<"error">>, <<"foo">>],
+    ?assertEqual(<<"Code">>, get_in(CodePath, Map)),
+    ?assertEqual(<<"Message">>, get_in(MessagePath, Map)),
+    ?assertEqual(undefined, get_in(FooPath, Map)),
+    ?assertEqual(default, get_in(FooPath, Map, default)).
 
 -endif.
