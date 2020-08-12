@@ -722,7 +722,8 @@ update_qualification_type(Client, Input, Options)
     Result :: map() | undefined,
     Error :: {binary(), binary()}.
 request(Client, Action, Input, Options) ->
-    Client1 = Client#{service => <<"mturk-requester">>},
+    Client1 = Client#{service => <<"mturk-requester">>,
+                      region => <<"">>},
     Host = get_host(<<"mturk-requester">>, Client1),
     URL = get_url(Host, Client1),
     Headers = [

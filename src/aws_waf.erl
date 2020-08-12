@@ -2950,7 +2950,8 @@ update_xss_match_set(Client, Input, Options)
     Result :: map() | undefined,
     Error :: {binary(), binary()}.
 request(Client, Action, Input, Options) ->
-    Client1 = Client#{service => <<"waf">>},
+    Client1 = Client#{service => <<"waf">>,
+                      region => <<"us-east-1">>},
     Host = get_host(<<"waf">>, Client1),
     URL = get_url(Host, Client1),
     Headers = [

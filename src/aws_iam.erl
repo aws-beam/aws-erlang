@@ -3153,7 +3153,8 @@ upload_signing_certificate(Client, Input, Options)
     Result :: map() | undefined,
     Error :: {binary(), binary()}.
 request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"iam">>},
+    Client1 = Client#{service => <<"iam">>,
+                      region => <<"us-east-1">>},
     Host = get_host(<<"iam">>, Client1),
     URL = get_url(Host, Client1),
     Headers = [

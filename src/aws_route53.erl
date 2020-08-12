@@ -1729,7 +1729,8 @@ update_traffic_policy_instance(Client, Id, Input0, Options) ->
     Result :: map() | undefined,
     Error :: {binary(), binary()}.
 request(Client, Method, Path, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"route53">>},
+    Client1 = Client#{service => <<"route53">>,
+                      region => <<"us-east-1">>},
     
     Host = get_host(<<"route53">>, Client1),
     

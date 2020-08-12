@@ -1785,7 +1785,8 @@ update_streaming_distribution(Client, Id, Input0, Options) ->
     Result :: map() | undefined,
     Error :: {binary(), binary()}.
 request(Client, Method, Path, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"cloudfront">>},
+    Client1 = Client#{service => <<"cloudfront">>,
+                      region => <<"us-east-1">>},
     
     Host = get_host(<<"cloudfront">>, Client1),
     

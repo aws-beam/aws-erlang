@@ -20,7 +20,7 @@ sign_request(Client, Method, URL, Headers, Body) ->
     Service = maps:get(service, Client),
     Token = maps:get(token, Client, undefined),
     sign_request(AccessKeyID, SecretAccessKey, Region, Service, Token,
-                 Method, URL,Headers, Body).
+                 Method, URL, Headers, Body).
 
 %% @doc Build request headers based on a list key-value pairs
 %% representing the mappings from param names to header names and a

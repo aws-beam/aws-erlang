@@ -264,7 +264,8 @@ update_subscriber(Client, Input, Options)
     Result :: map() | undefined,
     Error :: {binary(), binary()}.
 request(Client, Action, Input, Options) ->
-    Client1 = Client#{service => <<"budgets">>},
+    Client1 = Client#{service => <<"budgets">>,
+                      region => <<"us-east-1">>},
     Host = get_host(<<"budgets">>, Client1),
     URL = get_url(Host, Client1),
     Headers = [
