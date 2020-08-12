@@ -250,8 +250,8 @@ complete_multipart_upload(Client, AccountId, UploadId, VaultName, Input0, Option
     SuccessStatusCode = 201,
     
     HeadersMapping = [
-                       {"x-amz-archive-size", "archiveSize"},
-                       {"x-amz-sha256-tree-hash", "checksum"}
+                       {<<"x-amz-archive-size">>, <<"archiveSize">>},
+                       {<<"x-amz-sha256-tree-hash">>, <<"checksum">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -259,14 +259,14 @@ complete_multipart_upload(Client, AccountId, UploadId, VaultName, Input0, Option
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
-            {"x-amz-archive-id", "archiveId"},
-            {"x-amz-sha256-tree-hash", "checksum"},
-            {"Location", "location"}
+            {<<"x-amz-archive-id">>, <<"archiveId">>},
+            {<<"x-amz-sha256-tree-hash">>, <<"checksum">>},
+            {<<"Location">>, <<"location">>}
           ],
-        FoldFun = fun({Name, Key}, Acc) ->
-                      case lists:keyfind(Name, 1, ResponseHeaders) of
-                        false -> Acc;
-                        {_, Value} -> Acc#{Key => Value}
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
                       end
                   end,
         Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
@@ -342,12 +342,12 @@ create_vault(Client, AccountId, VaultName, Input0, Options) ->
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
-            {"Location", "location"}
+            {<<"Location">>, <<"location">>}
           ],
-        FoldFun = fun({Name, Key}, Acc) ->
-                      case lists:keyfind(Name, 1, ResponseHeaders) of
-                        false -> Acc;
-                        {_, Value} -> Acc#{Key => Value}
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
                       end
                   end,
         Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
@@ -625,7 +625,7 @@ get_job_output(Client, AccountId, JobId, VaultName, Range, Options)
     SuccessStatusCode = undefined,
      Headers0 =
       [
-        {"Range", Range}
+        {<<"Range">>, Range}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
     
@@ -633,16 +633,16 @@ get_job_output(Client, AccountId, JobId, VaultName, Range, Options)
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
-            {"Accept-Ranges", "acceptRanges"},
-            {"x-amz-archive-description", "archiveDescription"},
-            {"x-amz-sha256-tree-hash", "checksum"},
-            {"Content-Range", "contentRange"},
-            {"Content-Type", "contentType"}
+            {<<"Accept-Ranges">>, <<"acceptRanges">>},
+            {<<"x-amz-archive-description">>, <<"archiveDescription">>},
+            {<<"x-amz-sha256-tree-hash">>, <<"checksum">>},
+            {<<"Content-Range">>, <<"contentRange">>},
+            {<<"Content-Type">>, <<"contentType">>}
           ],
-        FoldFun = fun({Name, Key}, Acc) ->
-                      case lists:keyfind(Name, 1, ResponseHeaders) of
-                        false -> Acc;
-                        {_, Value} -> Acc#{Key => Value}
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
                       end
                   end,
         Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
@@ -757,14 +757,14 @@ initiate_job(Client, AccountId, VaultName, Input0, Options) ->
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
-            {"x-amz-job-id", "jobId"},
-            {"x-amz-job-output-path", "jobOutputPath"},
-            {"Location", "location"}
+            {<<"x-amz-job-id">>, <<"jobId">>},
+            {<<"x-amz-job-output-path">>, <<"jobOutputPath">>},
+            {<<"Location">>, <<"location">>}
           ],
-        FoldFun = fun({Name, Key}, Acc) ->
-                      case lists:keyfind(Name, 1, ResponseHeaders) of
-                        false -> Acc;
-                        {_, Value} -> Acc#{Key => Value}
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
                       end
                   end,
         Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
@@ -820,8 +820,8 @@ initiate_multipart_upload(Client, AccountId, VaultName, Input0, Options) ->
     SuccessStatusCode = 201,
     
     HeadersMapping = [
-                       {"x-amz-archive-description", "archiveDescription"},
-                       {"x-amz-part-size", "partSize"}
+                       {<<"x-amz-archive-description">>, <<"archiveDescription">>},
+                       {<<"x-amz-part-size">>, <<"partSize">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -829,13 +829,13 @@ initiate_multipart_upload(Client, AccountId, VaultName, Input0, Options) ->
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
-            {"Location", "location"},
-            {"x-amz-multipart-upload-id", "uploadId"}
+            {<<"Location">>, <<"location">>},
+            {<<"x-amz-multipart-upload-id">>, <<"uploadId">>}
           ],
-        FoldFun = fun({Name, Key}, Acc) ->
-                      case lists:keyfind(Name, 1, ResponseHeaders) of
-                        false -> Acc;
-                        {_, Value} -> Acc#{Key => Value}
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
                       end
                   end,
         Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
@@ -894,12 +894,12 @@ initiate_vault_lock(Client, AccountId, VaultName, Input0, Options) ->
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
-            {"x-amz-lock-id", "lockId"}
+            {<<"x-amz-lock-id">>, <<"lockId">>}
           ],
-        FoldFun = fun({Name, Key}, Acc) ->
-                      case lists:keyfind(Name, 1, ResponseHeaders) of
-                        false -> Acc;
-                        {_, Value} -> Acc#{Key => Value}
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
                       end
                   end,
         Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
@@ -1118,12 +1118,12 @@ purchase_provisioned_capacity(Client, AccountId, Input0, Options) ->
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
-            {"x-amz-capacity-id", "capacityId"}
+            {<<"x-amz-capacity-id">>, <<"capacityId">>}
           ],
-        FoldFun = fun({Name, Key}, Acc) ->
-                      case lists:keyfind(Name, 1, ResponseHeaders) of
-                        false -> Acc;
-                        {_, Value} -> Acc#{Key => Value}
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
                       end
                   end,
         Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
@@ -1286,8 +1286,8 @@ upload_archive(Client, AccountId, VaultName, Input0, Options) ->
     SuccessStatusCode = 201,
     
     HeadersMapping = [
-                       {"x-amz-archive-description", "archiveDescription"},
-                       {"x-amz-sha256-tree-hash", "checksum"}
+                       {<<"x-amz-archive-description">>, <<"archiveDescription">>},
+                       {<<"x-amz-sha256-tree-hash">>, <<"checksum">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -1295,14 +1295,14 @@ upload_archive(Client, AccountId, VaultName, Input0, Options) ->
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
-            {"x-amz-archive-id", "archiveId"},
-            {"x-amz-sha256-tree-hash", "checksum"},
-            {"Location", "location"}
+            {<<"x-amz-archive-id">>, <<"archiveId">>},
+            {<<"x-amz-sha256-tree-hash">>, <<"checksum">>},
+            {<<"Location">>, <<"location">>}
           ],
-        FoldFun = fun({Name, Key}, Acc) ->
-                      case lists:keyfind(Name, 1, ResponseHeaders) of
-                        false -> Acc;
-                        {_, Value} -> Acc#{Key => Value}
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
                       end
                   end,
         Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
@@ -1369,8 +1369,8 @@ upload_multipart_part(Client, AccountId, UploadId, VaultName, Input0, Options) -
     SuccessStatusCode = 204,
     
     HeadersMapping = [
-                       {"x-amz-sha256-tree-hash", "checksum"},
-                       {"Content-Range", "range"}
+                       {<<"x-amz-sha256-tree-hash">>, <<"checksum">>},
+                       {<<"Content-Range">>, <<"range">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -1378,12 +1378,12 @@ upload_multipart_part(Client, AccountId, UploadId, VaultName, Input0, Options) -
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
-            {"x-amz-sha256-tree-hash", "checksum"}
+            {<<"x-amz-sha256-tree-hash">>, <<"checksum">>}
           ],
-        FoldFun = fun({Name, Key}, Acc) ->
-                      case lists:keyfind(Name, 1, ResponseHeaders) of
-                        false -> Acc;
-                        {_, Value} -> Acc#{Key => Value}
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
                       end
                   end,
         Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
@@ -1443,7 +1443,7 @@ handle_response({error, Reason}, _) ->
 get_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 get_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
-    aws_util:binary_join([EndpointPrefix, <<".">>, Region, <<".">>, Endpoint], <<"">>).
+    aws_util:binary_join([EndpointPrefix, Region, Endpoint], <<".">>).
 
 get_url(Host, Path0, Client) ->
     Proto = maps:get(proto, Client),

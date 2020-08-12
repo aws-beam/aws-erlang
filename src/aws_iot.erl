@@ -534,7 +534,7 @@ attach_principal_policy(Client, PolicyName, Input0, Options) ->
     SuccessStatusCode = undefined,
     
     HeadersMapping = [
-                       {"x-amzn-iot-principal", "principal"}
+                       {<<"x-amzn-iot-principal">>, <<"principal">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -564,7 +564,7 @@ attach_thing_principal(Client, ThingName, Input0, Options) ->
     SuccessStatusCode = undefined,
     
     HeadersMapping = [
-                       {"x-amzn-principal", "principal"}
+                       {<<"x-amzn-principal">>, <<"principal">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -1010,7 +1010,7 @@ create_topic_rule(Client, RuleName, Input0, Options) ->
     SuccessStatusCode = undefined,
     
     HeadersMapping = [
-                       {"x-amz-tagging", "tags"}
+                       {<<"x-amz-tagging">>, <<"tags">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -1714,7 +1714,7 @@ detach_principal_policy(Client, PolicyName, Input0, Options) ->
     SuccessStatusCode = undefined,
     
     HeadersMapping = [
-                       {"x-amzn-iot-principal", "principal"}
+                       {<<"x-amzn-iot-principal">>, <<"principal">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -1748,7 +1748,7 @@ detach_thing_principal(Client, ThingName, Input0, Options) ->
     SuccessStatusCode = undefined,
     
     HeadersMapping = [
-                       {"x-amzn-principal", "principal"}
+                       {<<"x-amzn-principal">>, <<"principal">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -2027,7 +2027,7 @@ list_authorizers(Client)
     list_authorizers(Client, []).
 list_authorizers(Client, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/authorizers"],
+    Path = ["/authorizers/"],
     SuccessStatusCode = undefined,
     Headers = [],
     request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
@@ -2212,7 +2212,7 @@ list_policy_principals(Client, PolicyName, Options)
     SuccessStatusCode = undefined,
      Headers0 =
       [
-        {"x-amzn-iot-policy", PolicyName}
+        {<<"x-amzn-iot-policy">>, PolicyName}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
     
@@ -2246,7 +2246,7 @@ list_principal_policies(Client, Principal, Options)
     SuccessStatusCode = undefined,
      Headers0 =
       [
-        {"x-amzn-iot-principal", Principal}
+        {<<"x-amzn-iot-principal">>, Principal}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
     
@@ -2264,7 +2264,7 @@ list_principal_things(Client, Principal, Options)
     SuccessStatusCode = undefined,
      Headers0 =
       [
-        {"x-amzn-principal", Principal}
+        {<<"x-amzn-principal">>, Principal}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
     
@@ -3159,7 +3159,7 @@ handle_response({error, Reason}, _) ->
 get_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 get_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
-    aws_util:binary_join([EndpointPrefix, <<".">>, Region, <<".">>, Endpoint], <<"">>).
+    aws_util:binary_join([EndpointPrefix, Region, Endpoint], <<".">>).
 
 get_url(Host, Path0, Client) ->
     Proto = maps:get(proto, Client),

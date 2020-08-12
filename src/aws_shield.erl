@@ -402,7 +402,8 @@ update_subscription(Client, Input, Options)
     Result :: map() | undefined,
     Error :: {binary(), binary()}.
 request(Client, Action, Input, Options) ->
-    Client1 = Client#{service => <<"shield">>},
+    Client1 = Client#{service => <<"shield">>,
+                      region => <<"us-east-1">>},
     Host = get_host(<<"shield">>, Client1),
     URL = get_url(Host, Client1),
     Headers = [
@@ -434,8 +435,8 @@ handle_response({error, Reason}) ->
 
 get_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
-get_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
-    aws_util:binary_join([EndpointPrefix, <<".">>, Region, <<".">>, Endpoint], <<"">>).
+get_host(EndpointPrefix, #{endpoint := Endpoint}) ->
+    aws_util:binary_join([EndpointPrefix, Endpoint], <<".">>).
 
 get_url(Host, Client) ->
     Proto = maps:get(proto, Client),

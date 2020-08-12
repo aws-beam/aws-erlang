@@ -159,7 +159,7 @@ handle_response({error, Reason}, _) ->
 get_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 get_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
-    aws_util:binary_join([EndpointPrefix, <<".">>, Region, <<".">>, Endpoint], <<"">>).
+    aws_util:binary_join([EndpointPrefix, Region, Endpoint], <<".">>).
 
 get_url(Host, Path0, Client) ->
     Proto = maps:get(proto, Client),

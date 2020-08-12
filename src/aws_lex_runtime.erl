@@ -49,7 +49,7 @@ get_session(Client, BotAlias, BotName, UserId)
     get_session(Client, BotAlias, BotName, UserId, []).
 get_session(Client, BotAlias, BotName, UserId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/bot/", http_uri:encode(BotName), "/alias/", http_uri:encode(BotAlias), "/user/", http_uri:encode(UserId), "/session"],
+    Path = ["/bot/", http_uri:encode(BotName), "/alias/", http_uri:encode(BotAlias), "/user/", http_uri:encode(UserId), "/session/"],
     SuccessStatusCode = undefined,
     Headers = [],
     request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
@@ -123,10 +123,10 @@ post_content(Client, BotAlias, BotName, UserId, Input0, Options) ->
     SuccessStatusCode = undefined,
     
     HeadersMapping = [
-                       {"Accept", "accept"},
-                       {"Content-Type", "contentType"},
-                       {"x-amz-lex-request-attributes", "requestAttributes"},
-                       {"x-amz-lex-session-attributes", "sessionAttributes"}
+                       {<<"Accept">>, <<"accept">>},
+                       {<<"Content-Type">>, <<"contentType">>},
+                       {<<"x-amz-lex-request-attributes">>, <<"requestAttributes">>},
+                       {<<"x-amz-lex-session-attributes">>, <<"sessionAttributes">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -134,22 +134,22 @@ post_content(Client, BotAlias, BotName, UserId, Input0, Options) ->
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
-            {"Content-Type", "contentType"},
-            {"x-amz-lex-dialog-state", "dialogState"},
-            {"x-amz-lex-input-transcript", "inputTranscript"},
-            {"x-amz-lex-intent-name", "intentName"},
-            {"x-amz-lex-message", "message"},
-            {"x-amz-lex-message-format", "messageFormat"},
-            {"x-amz-lex-sentiment", "sentimentResponse"},
-            {"x-amz-lex-session-attributes", "sessionAttributes"},
-            {"x-amz-lex-session-id", "sessionId"},
-            {"x-amz-lex-slot-to-elicit", "slotToElicit"},
-            {"x-amz-lex-slots", "slots"}
+            {<<"Content-Type">>, <<"contentType">>},
+            {<<"x-amz-lex-dialog-state">>, <<"dialogState">>},
+            {<<"x-amz-lex-input-transcript">>, <<"inputTranscript">>},
+            {<<"x-amz-lex-intent-name">>, <<"intentName">>},
+            {<<"x-amz-lex-message">>, <<"message">>},
+            {<<"x-amz-lex-message-format">>, <<"messageFormat">>},
+            {<<"x-amz-lex-sentiment">>, <<"sentimentResponse">>},
+            {<<"x-amz-lex-session-attributes">>, <<"sessionAttributes">>},
+            {<<"x-amz-lex-session-id">>, <<"sessionId">>},
+            {<<"x-amz-lex-slot-to-elicit">>, <<"slotToElicit">>},
+            {<<"x-amz-lex-slots">>, <<"slots">>}
           ],
-        FoldFun = fun({Name, Key}, Acc) ->
-                      case lists:keyfind(Name, 1, ResponseHeaders) of
-                        false -> Acc;
-                        {_, Value} -> Acc#{Key => Value}
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
                       end
                   end,
         Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
@@ -240,7 +240,7 @@ put_session(Client, BotAlias, BotName, UserId, Input0, Options) ->
     SuccessStatusCode = undefined,
     
     HeadersMapping = [
-                       {"Accept", "accept"}
+                       {<<"Accept">>, <<"accept">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -248,20 +248,20 @@ put_session(Client, BotAlias, BotName, UserId, Input0, Options) ->
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
-            {"Content-Type", "contentType"},
-            {"x-amz-lex-dialog-state", "dialogState"},
-            {"x-amz-lex-intent-name", "intentName"},
-            {"x-amz-lex-message", "message"},
-            {"x-amz-lex-message-format", "messageFormat"},
-            {"x-amz-lex-session-attributes", "sessionAttributes"},
-            {"x-amz-lex-session-id", "sessionId"},
-            {"x-amz-lex-slot-to-elicit", "slotToElicit"},
-            {"x-amz-lex-slots", "slots"}
+            {<<"Content-Type">>, <<"contentType">>},
+            {<<"x-amz-lex-dialog-state">>, <<"dialogState">>},
+            {<<"x-amz-lex-intent-name">>, <<"intentName">>},
+            {<<"x-amz-lex-message">>, <<"message">>},
+            {<<"x-amz-lex-message-format">>, <<"messageFormat">>},
+            {<<"x-amz-lex-session-attributes">>, <<"sessionAttributes">>},
+            {<<"x-amz-lex-session-id">>, <<"sessionId">>},
+            {<<"x-amz-lex-slot-to-elicit">>, <<"slotToElicit">>},
+            {<<"x-amz-lex-slots">>, <<"slots">>}
           ],
-        FoldFun = fun({Name, Key}, Acc) ->
-                      case lists:keyfind(Name, 1, ResponseHeaders) of
-                        false -> Acc;
-                        {_, Value} -> Acc#{Key => Value}
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
                       end
                   end,
         Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
@@ -321,7 +321,7 @@ handle_response({error, Reason}, _) ->
 get_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 get_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
-    aws_util:binary_join([EndpointPrefix, <<".">>, Region, <<".">>, Endpoint], <<"">>).
+    aws_util:binary_join([EndpointPrefix, Region, Endpoint], <<".">>).
 
 get_url(Host, Path0, Client) ->
     Proto = maps:get(proto, Client),

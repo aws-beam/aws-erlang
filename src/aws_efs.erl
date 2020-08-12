@@ -577,7 +577,7 @@ describe_tags(Client, FileSystemId)
     describe_tags(Client, FileSystemId, []).
 describe_tags(Client, FileSystemId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2015-02-01/tags/", http_uri:encode(FileSystemId), ""],
+    Path = ["/2015-02-01/tags/", http_uri:encode(FileSystemId), "/"],
     SuccessStatusCode = 200,
     Headers = [],
     request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
@@ -796,7 +796,7 @@ handle_response({error, Reason}, _) ->
 get_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 get_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
-    aws_util:binary_join([EndpointPrefix, <<".">>, Region, <<".">>, Endpoint], <<"">>).
+    aws_util:binary_join([EndpointPrefix, Region, Endpoint], <<".">>).
 
 get_url(Host, Path0, Client) ->
     Proto = maps:get(proto, Client),

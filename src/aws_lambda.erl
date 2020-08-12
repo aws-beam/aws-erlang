@@ -223,7 +223,7 @@ create_event_source_mapping(Client, Input) ->
     create_event_source_mapping(Client, Input, []).
 create_event_source_mapping(Client, Input0, Options) ->
     Method = post,
-    Path = ["/2015-03-31/event-source-mappings"],
+    Path = ["/2015-03-31/event-source-mappings/"],
     SuccessStatusCode = 202,
     Headers = [],
     Input = Input0,
@@ -391,7 +391,7 @@ get_account_settings(Client)
     get_account_settings(Client, []).
 get_account_settings(Client, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2016-08-19/account-settings"],
+    Path = ["/2016-08-19/account-settings/"],
     SuccessStatusCode = 200,
     Headers = [],
     request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
@@ -603,9 +603,9 @@ invoke(Client, FunctionName, Input0, Options) ->
     SuccessStatusCode = undefined,
     
     HeadersMapping = [
-                       {"X-Amz-Client-Context", "ClientContext"},
-                       {"X-Amz-Invocation-Type", "InvocationType"},
-                       {"X-Amz-Log-Type", "LogType"}
+                       {<<"X-Amz-Client-Context">>, <<"ClientContext">>},
+                       {<<"X-Amz-Invocation-Type">>, <<"InvocationType">>},
+                       {<<"X-Amz-Log-Type">>, <<"LogType">>}
                      ],
     {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
     
@@ -613,14 +613,14 @@ invoke(Client, FunctionName, Input0, Options) ->
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
-            {"X-Amz-Executed-Version", "ExecutedVersion"},
-            {"X-Amz-Function-Error", "FunctionError"},
-            {"X-Amz-Log-Result", "LogResult"}
+            {<<"X-Amz-Executed-Version">>, <<"ExecutedVersion">>},
+            {<<"X-Amz-Function-Error">>, <<"FunctionError">>},
+            {<<"X-Amz-Log-Result">>, <<"LogResult">>}
           ],
-        FoldFun = fun({Name, Key}, Acc) ->
-                      case lists:keyfind(Name, 1, ResponseHeaders) of
-                        false -> Acc;
-                        {_, Value} -> Acc#{Key => Value}
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
                       end
                   end,
         Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
@@ -636,7 +636,7 @@ invoke_async(Client, FunctionName, Input) ->
     invoke_async(Client, FunctionName, Input, []).
 invoke_async(Client, FunctionName, Input0, Options) ->
     Method = post,
-    Path = ["/2014-11-13/functions/", http_uri:encode(FunctionName), "/invoke-async"],
+    Path = ["/2014-11-13/functions/", http_uri:encode(FunctionName), "/invoke-async/"],
     SuccessStatusCode = 202,
     Headers = [],
     Input = Input0,
@@ -662,7 +662,7 @@ list_event_source_mappings(Client)
     list_event_source_mappings(Client, []).
 list_event_source_mappings(Client, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2015-03-31/event-source-mappings"],
+    Path = ["/2015-03-31/event-source-mappings/"],
     SuccessStatusCode = 200,
     Headers = [],
     request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
@@ -694,7 +694,7 @@ list_functions(Client)
     list_functions(Client, []).
 list_functions(Client, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2015-03-31/functions"],
+    Path = ["/2015-03-31/functions/"],
     SuccessStatusCode = 200,
     Headers = [],
     request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
@@ -1092,7 +1092,7 @@ handle_response({error, Reason}, _) ->
 get_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 get_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
-    aws_util:binary_join([EndpointPrefix, <<".">>, Region, <<".">>, Endpoint], <<"">>).
+    aws_util:binary_join([EndpointPrefix, Region, Endpoint], <<".">>).
 
 get_url(Host, Path0, Client) ->
     Proto = maps:get(proto, Client),

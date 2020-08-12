@@ -20,7 +20,7 @@ sign_request(Client, Method, URL, Headers, Body) ->
     Service = maps:get(service, Client),
     Token = maps:get(token, Client, undefined),
     sign_request(AccessKeyID, SecretAccessKey, Region, Service, Token,
-                 Method, URL,Headers, Body).
+                 Method, URL, Headers, Body).
 
 %% @doc Build request headers based on a list key-value pairs
 %% representing the mappings from param names to header names and a
@@ -28,17 +28,17 @@ sign_request(Client, Method, URL, Headers, Body) ->
 build_headers(ParamsHeadersMapping, Params0)
   when is_list(ParamsHeadersMapping),
        is_map(Params0) ->
-  Fun = fun({ParamName, HeaderName}, {Headers, Params}) ->
-            case map:get(ParamName, Params, undefined) of
+  Fun = fun({HeaderName, ParamName}, {HeadersAcc, ParamsAcc}) ->
+            case maps:get(ParamName, ParamsAcc, undefined) of
               undefined ->
-                {Headers, Params};
+                {HeadersAcc, ParamsAcc};
               Value ->
-                Headers = [{HeaderName, Value} | Headers],
-                Params = maps:remove(ParamName, Params),
+                Headers = [{HeaderName, Value} | HeadersAcc],
+                Params = maps:remove(ParamName, ParamsAcc),
                 {Headers, Params}
             end
         end,
-  lists:foldl(Fun,{[], Params0}, ParamsHeadersMapping).
+  lists:foldl(Fun, {[], Params0}, ParamsHeadersMapping).
 
 -spec method_to_binary(atom()) -> binary().
 method_to_binary(delete)  -> <<"DELETE">>;
@@ -63,22 +63,24 @@ sign_request(AccessKeyID, SecretAccessKey, Region, Service, Token,
 %% Generate headers with an AWS signature version 4 for the specified
 %% request using the specified time when generating signatures.
 sign_request(AccessKeyID, SecretAccessKey, Region, Service, Token, Now,
-             Method, URL, Headers, Body) ->
+             Method, URL, Headers0, Body) ->
     LongDate = list_to_binary(ec_date:format("YmdTHisZ", Now)),
     ShortDate = list_to_binary(ec_date:format("Ymd", Now)),
-    Headers1 = add_date_header(Headers, LongDate),
-    Headers2 = maybe_add_token_header(Headers1, Token),
-    CanonicalRequest = canonical_request(Method, URL, Headers2, Body),
+    Headers1 = add_date_header(Headers0, LongDate),
+    Headers2 = add_content_hash_header(Headers1, Body),
+    Headers = maybe_add_token_header(Headers2, Token),
+
+    CanonicalRequest = canonical_request(Method, URL, Headers, Body),
     HashedCanonicalRequest = aws_util:sha256_hexdigest(CanonicalRequest),
     CredentialScope = credential_scope(ShortDate, Region, Service),
     SigningKey = signing_key(SecretAccessKey, ShortDate, Region, Service),
     StringToSign = string_to_sign(LongDate, CredentialScope,
                                   HashedCanonicalRequest),
     Signature = aws_util:hmac_sha256_hexdigest(SigningKey, StringToSign),
-    SignedHeaders = signed_headers(Headers2),
+    SignedHeaders = signed_headers(Headers),
     Authorization = authorization(AccessKeyID, CredentialScope, SignedHeaders,
                                   Signature),
-    add_authorization_header(Headers2, Authorization).
+    add_authorization_header(Headers, Authorization).
 
 %% Add an Authorization header with an AWS4-HMAC-SHA256 signature to the
 %% list of headers.
@@ -89,6 +91,14 @@ add_authorization_header(Headers, Authorization) ->
 %% to a list of headers.
 add_date_header(Headers, Date) ->
     [{<<"X-Amz-Date">>, Date}|Headers].
+
+%% Add an X-Amz-Content-SHA256 header which is the hash of the payload.
+%% This header is required for S3 when using the v4 signature. Adding it
+%% in requests for all services does not cause any issues.
+add_content_hash_header(Headers, Body) ->
+    [ {<<"X-Amz-Content-SHA256">>, aws_util:sha256_hexdigest(Body)}
+    | Headers
+    ].
 
 %% Add an X-Amz-Security-Token header with the user-submitted security token
 %% to a list of headers
@@ -229,7 +239,8 @@ sign_request_test() ->
     Headers = [{<<"Host">>, <<"ec2.us-east-1.amazonaws.com">>},
                {<<"Header">>, <<"Value">>}],
     Body = <<"">>,
-    ?assertEqual([{<<"Authorization">>, <<"AWS4-HMAC-SHA256 Credential=access-key-id/20150403/us-east-1/ec2/aws4_request, SignedHeaders=header;host;x-amz-date, Signature=5ccf77d3f4dd362e51cac9843de18f659357b4aa340fcfcadfc57766fb56205d">>},
+    ?assertEqual([{<<"Authorization">>, <<"AWS4-HMAC-SHA256 Credential=access-key-id/20150403/us-east-1/ec2/aws4_request, SignedHeaders=header;host;x-amz-content-sha256;x-amz-date, Signature=65b6f4bd9f9577791a2d4bac1b1390e96352ecb1ac47171cc49ae295a42577c5">>},
+                  {<<"X-Amz-Content-SHA256">>, <<"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855">>},
                   {<<"X-Amz-Date">>, <<"20150403T213117Z">>},
                   {<<"Host">>, <<"ec2.us-east-1.amazonaws.com">>},
                   {<<"Header">>, <<"Value">>}],
