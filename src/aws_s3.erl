@@ -3059,7 +3059,7 @@ list_buckets(Client)
     list_buckets(Client, []).
 list_buckets(Client, Options)
   when is_map(Client), is_list(Options) ->
-    Path = [""],
+    Path = ["/"],
     SuccessStatusCode = undefined,
     Headers = [],
     request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).

@@ -223,7 +223,7 @@ create_event_source_mapping(Client, Input) ->
     create_event_source_mapping(Client, Input, []).
 create_event_source_mapping(Client, Input0, Options) ->
     Method = post,
-    Path = ["/2015-03-31/event-source-mappings"],
+    Path = ["/2015-03-31/event-source-mappings/"],
     SuccessStatusCode = 202,
     Headers = [],
     Input = Input0,
@@ -391,7 +391,7 @@ get_account_settings(Client)
     get_account_settings(Client, []).
 get_account_settings(Client, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2016-08-19/account-settings"],
+    Path = ["/2016-08-19/account-settings/"],
     SuccessStatusCode = 200,
     Headers = [],
     request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
@@ -636,7 +636,7 @@ invoke_async(Client, FunctionName, Input) ->
     invoke_async(Client, FunctionName, Input, []).
 invoke_async(Client, FunctionName, Input0, Options) ->
     Method = post,
-    Path = ["/2014-11-13/functions/", http_uri:encode(FunctionName), "/invoke-async"],
+    Path = ["/2014-11-13/functions/", http_uri:encode(FunctionName), "/invoke-async/"],
     SuccessStatusCode = 202,
     Headers = [],
     Input = Input0,
@@ -662,7 +662,7 @@ list_event_source_mappings(Client)
     list_event_source_mappings(Client, []).
 list_event_source_mappings(Client, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2015-03-31/event-source-mappings"],
+    Path = ["/2015-03-31/event-source-mappings/"],
     SuccessStatusCode = 200,
     Headers = [],
     request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
@@ -694,7 +694,7 @@ list_functions(Client)
     list_functions(Client, []).
 list_functions(Client, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2015-03-31/functions"],
+    Path = ["/2015-03-31/functions/"],
     SuccessStatusCode = 200,
     Headers = [],
     request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).

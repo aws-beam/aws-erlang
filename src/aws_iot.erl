@@ -2027,7 +2027,7 @@ list_authorizers(Client)
     list_authorizers(Client, []).
 list_authorizers(Client, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/authorizers"],
+    Path = ["/authorizers/"],
     SuccessStatusCode = undefined,
     Headers = [],
     request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).

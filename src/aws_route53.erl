@@ -259,7 +259,7 @@ change_resource_record_sets(Client, HostedZoneId, Input) ->
     change_resource_record_sets(Client, HostedZoneId, Input, []).
 change_resource_record_sets(Client, HostedZoneId, Input0, Options) ->
     Method = post,
-    Path = ["/2013-04-01/hostedzone/", http_uri:encode(HostedZoneId), "/rrset"],
+    Path = ["/2013-04-01/hostedzone/", http_uri:encode(HostedZoneId), "/rrset/"],
     SuccessStatusCode = undefined,
     Headers = [],
     Input = Input0,

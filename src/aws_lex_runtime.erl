@@ -49,7 +49,7 @@ get_session(Client, BotAlias, BotName, UserId)
     get_session(Client, BotAlias, BotName, UserId, []).
 get_session(Client, BotAlias, BotName, UserId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/bot/", http_uri:encode(BotName), "/alias/", http_uri:encode(BotAlias), "/user/", http_uri:encode(UserId), "/session"],
+    Path = ["/bot/", http_uri:encode(BotName), "/alias/", http_uri:encode(BotAlias), "/user/", http_uri:encode(UserId), "/session/"],
     SuccessStatusCode = undefined,
     Headers = [],
     request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
