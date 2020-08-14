@@ -5,6 +5,7 @@
          hmac_sha256/2,
          hmac_sha256_hexdigest/2,
          sha256_hexdigest/1,
+         encode_uri/2,
          encode_xml/1,
          decode_xml/1,
          get_in/2,
@@ -40,6 +41,16 @@ hmac_sha256(Key, Message) ->
 %% @doc Create a SHA256 hexdigest for Value.
 sha256_hexdigest(Value) ->
     aws_util:base16(crypto:hash(sha256, Value)).
+
+%% @doc Encode URI taking into account if it contains more than one
+%% segment.
+encode_uri(Value, false = _MultiSegment) ->
+    http_uri:encode(Value);
+encode_uri(Value, true = _MultiSegment) ->
+    Encoded = [ http_uri:encode(Segment)
+                || Segment <- binary:split(Value, <<"/">>, [global])
+              ],
+    binary_join(Encoded, <<"/">>).
 
 %% @doc Encode an Erlang map as XML
 %%

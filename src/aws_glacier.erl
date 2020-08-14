@@ -1401,8 +1401,8 @@ upload_multipart_part(Client, AccountId, UploadId, VaultName, Input0, Options) -
     {ok, Result, {integer(), list(), hackney:client()}} |
     {error, Error, {integer(), list(), hackney:client()}} |
     {error, term()} when
-    Result :: map() | undefined,
-    Error :: {binary(), binary()}.
+    Result :: map(),
+    Error :: map().
 request(Client, Method, Path, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"glacier">>},
     Host = get_host(<<"glacier">>, Client1),
@@ -1426,7 +1426,7 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
     case hackney:body(Client) of
         {ok, <<>>} when StatusCode =:= 200;
                         StatusCode =:= SuccessStatusCode ->
-            {ok, undefined, {StatusCode, ResponseHeaders, Client}};
+            {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
             Result = jsx:decode(Body, [return_maps]),
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
@@ -1434,9 +1434,7 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
 handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body, [return_maps]),
-    Reason1 = maps:get(<<"message">>, Error, undefined),
-    Reason2 = maps:get(<<"Message">>, Error, Reason1),
-    {error, Reason2, {StatusCode, ResponseHeaders, Client}};
+    {error, Error, {StatusCode, ResponseHeaders, Client}};
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 

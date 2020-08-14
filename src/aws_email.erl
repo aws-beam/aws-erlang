@@ -1518,7 +1518,7 @@ verify_email_identity(Client, Input, Options)
     {error, Error, {integer(), list(), hackney:client()}} |
     {error, term()} when
     Result :: map() | undefined,
-    Error :: {binary(), binary()}.
+    Error :: map().
 request(Client, Action, Input0, Options) ->
     Client1 = Client#{service => <<"ses">>},
     Host = get_host(<<"email">>, Client1),
@@ -1546,11 +1546,7 @@ handle_response({ok, 200, ResponseHeaders, Client}) ->
 handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
     {ok, Body} = hackney:body(Client),
     Error = aws_util:decode_xml(Body),
-    CodePath = [<<"ErrorResponse">>, <<"Error">>, <<"Code">>],
-    Exception = aws_util:get_in(CodePath, Error),
-    MessagePath = [<<"ErrorResponse">>, <<"Error">>, <<"Message">>],
-    Reason = aws_util:get_in(MessagePath, Error),
-    {error, {Exception, Reason}, {StatusCode, ResponseHeaders, Client}};
+    {error, Error, {StatusCode, ResponseHeaders, Client}};
 handle_response({error, Reason}) ->
     {error, Reason}.
 

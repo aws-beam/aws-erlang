@@ -1727,7 +1727,7 @@ update_traffic_policy_instance(Client, Id, Input0, Options) ->
     {error, Error, {integer(), list(), hackney:client()}} |
     {error, term()} when
     Result :: map() | undefined,
-    Error :: {binary(), binary()}.
+    Error :: map().
 request(Client, Method, Path, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"route53">>,
                       region => <<"us-east-1">>},
@@ -1754,7 +1754,7 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
     case hackney:body(Client) of
         {ok, <<>>} when StatusCode =:= 200;
                         StatusCode =:= SuccessStatusCode ->
-            {ok, undefined, {StatusCode, ResponseHeaders, Client}};
+            {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
             Result = aws_util:decode_xml(Body),
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
@@ -1762,12 +1762,7 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
 handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
     {ok, Body} = hackney:body(Client),
     Error = aws_util:decode_xml(Body),
-    %% TODO: maybe unnecessary
-    MessagePath1 = [<<"ErrorResponse">>, <<"Error">>, <<"message">>],
-    Reason1 = aws_util:get_in(MessagePath1, Error),
-    MessagePath2 = [<<"ErrorResponse">>, <<"Error">>, <<"Message">>],
-    Reason2 = aws_util:get_in(MessagePath2, Error, Reason1),
-    {error, Reason2, {StatusCode, ResponseHeaders, Client}};
+    {error, Error, {StatusCode, ResponseHeaders, Client}};
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
