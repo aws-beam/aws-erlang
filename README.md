@@ -1,6 +1,6 @@
 # AWS clients for Erlang
 
-[![Build Status](https://travis-ci.org/aws-beam/aws-erlang.svg?branch=master)](https://travis-ci.org/aws-beam/aws-erlang)
+[![Actions Status](https://github.com/aws-beam/aws-erlang/workflows/Build/badge.svg)](https://github.com/aws-beam/aws-erlang/actions)
 
 Here is an example:
 
