@@ -221,7 +221,7 @@ abort_multipart_upload(Client, Bucket, Key, Input) ->
     abort_multipart_upload(Client, Bucket, Key, Input, []).
 abort_multipart_upload(Client, Bucket, Key, Input0, Options) ->
     Method = delete,
-    Path = ["/", http_uri:encode(Bucket), "/", http_uri:encode(Key), ""],
+    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), ""],
     SuccessStatusCode = 204,
     
     HeadersMapping = [
@@ -334,7 +334,7 @@ complete_multipart_upload(Client, Bucket, Key, Input) ->
     complete_multipart_upload(Client, Bucket, Key, Input, []).
 complete_multipart_upload(Client, Bucket, Key, Input0, Options) ->
     Method = post,
-    Path = ["/", http_uri:encode(Bucket), "/", http_uri:encode(Key), ""],
+    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), ""],
     SuccessStatusCode = undefined,
     
     HeadersMapping = [
@@ -541,7 +541,7 @@ copy_object(Client, Bucket, Key, Input) ->
     copy_object(Client, Bucket, Key, Input, []).
 copy_object(Client, Bucket, Key, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(Bucket), "/", http_uri:encode(Key), ""],
+    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), ""],
     SuccessStatusCode = undefined,
     
     HeadersMapping = [
@@ -979,7 +979,7 @@ create_multipart_upload(Client, Bucket, Key, Input) ->
     create_multipart_upload(Client, Bucket, Key, Input, []).
 create_multipart_upload(Client, Bucket, Key, Input0, Options) ->
     Method = post,
-    Path = ["/", http_uri:encode(Bucket), "/", http_uri:encode(Key), "?uploads"],
+    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), "?uploads"],
     SuccessStatusCode = undefined,
     
     HeadersMapping = [
@@ -1434,7 +1434,7 @@ delete_object(Client, Bucket, Key, Input) ->
     delete_object(Client, Bucket, Key, Input, []).
 delete_object(Client, Bucket, Key, Input0, Options) ->
     Method = delete,
-    Path = ["/", http_uri:encode(Bucket), "/", http_uri:encode(Key), ""],
+    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), ""],
     SuccessStatusCode = 204,
     
     HeadersMapping = [
@@ -1488,7 +1488,7 @@ delete_object_tagging(Client, Bucket, Key, Input) ->
     delete_object_tagging(Client, Bucket, Key, Input, []).
 delete_object_tagging(Client, Bucket, Key, Input0, Options) ->
     Method = delete,
-    Path = ["/", http_uri:encode(Bucket), "/", http_uri:encode(Key), "?tagging"],
+    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), "?tagging"],
     SuccessStatusCode = 204,
     Headers = [],
     Input = Input0,
@@ -2432,7 +2432,7 @@ get_object(Client, Bucket, Key, IfMatch, IfModifiedSince, IfNoneMatch, IfUnmodif
     get_object(Client, Bucket, Key, IfMatch, IfModifiedSince, IfNoneMatch, IfUnmodifiedSince, Range, RequestPayer, SSECustomerAlgorithm, SSECustomerKey, SSECustomerKeyMD5, []).
 get_object(Client, Bucket, Key, IfMatch, IfModifiedSince, IfNoneMatch, IfUnmodifiedSince, Range, RequestPayer, SSECustomerAlgorithm, SSECustomerKey, SSECustomerKeyMD5, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "/", http_uri:encode(Key), ""],
+    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), ""],
     SuccessStatusCode = undefined,
      Headers0 =
       [
@@ -2517,7 +2517,7 @@ get_object_acl(Client, Bucket, Key, RequestPayer)
     get_object_acl(Client, Bucket, Key, RequestPayer, []).
 get_object_acl(Client, Bucket, Key, RequestPayer, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "/", http_uri:encode(Key), "?acl"],
+    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), "?acl"],
     SuccessStatusCode = undefined,
      Headers0 =
       [
@@ -2552,7 +2552,7 @@ get_object_legal_hold(Client, Bucket, Key, RequestPayer)
     get_object_legal_hold(Client, Bucket, Key, RequestPayer, []).
 get_object_legal_hold(Client, Bucket, Key, RequestPayer, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "/", http_uri:encode(Key), "?legal-hold"],
+    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), "?legal-hold"],
     SuccessStatusCode = undefined,
      Headers0 =
       [
@@ -2586,7 +2586,7 @@ get_object_retention(Client, Bucket, Key, RequestPayer)
     get_object_retention(Client, Bucket, Key, RequestPayer, []).
 get_object_retention(Client, Bucket, Key, RequestPayer, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "/", http_uri:encode(Key), "?retention"],
+    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), "?retention"],
     SuccessStatusCode = undefined,
      Headers0 =
       [
@@ -2624,7 +2624,7 @@ get_object_tagging(Client, Bucket, Key)
     get_object_tagging(Client, Bucket, Key, []).
 get_object_tagging(Client, Bucket, Key, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "/", http_uri:encode(Key), "?tagging"],
+    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), "?tagging"],
     SuccessStatusCode = undefined,
     Headers = [],
     case request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode) of
@@ -2667,7 +2667,7 @@ get_object_torrent(Client, Bucket, Key, RequestPayer)
     get_object_torrent(Client, Bucket, Key, RequestPayer, []).
 get_object_torrent(Client, Bucket, Key, RequestPayer, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "/", http_uri:encode(Key), "?torrent"],
+    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), "?torrent"],
     SuccessStatusCode = undefined,
      Headers0 =
       [
@@ -2851,7 +2851,7 @@ head_object(Client, Bucket, Key, Input) ->
     head_object(Client, Bucket, Key, Input, []).
 head_object(Client, Bucket, Key, Input0, Options) ->
     Method = head,
-    Path = ["/", http_uri:encode(Bucket), "/", http_uri:encode(Key), ""],
+    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), ""],
     SuccessStatusCode = undefined,
     
     HeadersMapping = [
@@ -3276,7 +3276,7 @@ list_parts(Client, Bucket, Key, RequestPayer)
     list_parts(Client, Bucket, Key, RequestPayer, []).
 list_parts(Client, Bucket, Key, RequestPayer, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "/", http_uri:encode(Key), ""],
+    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), ""],
     SuccessStatusCode = undefined,
      Headers0 =
       [
@@ -4612,7 +4612,7 @@ put_object(Client, Bucket, Key, Input) ->
     put_object(Client, Bucket, Key, Input, []).
 put_object(Client, Bucket, Key, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(Bucket), "/", http_uri:encode(Key), ""],
+    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), ""],
     SuccessStatusCode = undefined,
     
     HeadersMapping = [
@@ -4820,7 +4820,7 @@ put_object_acl(Client, Bucket, Key, Input) ->
     put_object_acl(Client, Bucket, Key, Input, []).
 put_object_acl(Client, Bucket, Key, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(Bucket), "/", http_uri:encode(Key), "?acl"],
+    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), "?acl"],
     SuccessStatusCode = undefined,
     
     HeadersMapping = [
@@ -4866,7 +4866,7 @@ put_object_legal_hold(Client, Bucket, Key, Input) ->
     put_object_legal_hold(Client, Bucket, Key, Input, []).
 put_object_legal_hold(Client, Bucket, Key, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(Bucket), "/", http_uri:encode(Key), "?legal-hold"],
+    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), "?legal-hold"],
     SuccessStatusCode = undefined,
     
     HeadersMapping = [
@@ -4952,7 +4952,7 @@ put_object_retention(Client, Bucket, Key, Input) ->
     put_object_retention(Client, Bucket, Key, Input, []).
 put_object_retention(Client, Bucket, Key, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(Bucket), "/", http_uri:encode(Key), "?retention"],
+    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), "?retention"],
     SuccessStatusCode = undefined,
     
     HeadersMapping = [
@@ -5043,7 +5043,7 @@ put_object_tagging(Client, Bucket, Key, Input) ->
     put_object_tagging(Client, Bucket, Key, Input, []).
 put_object_tagging(Client, Bucket, Key, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(Bucket), "/", http_uri:encode(Key), "?tagging"],
+    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), "?tagging"],
     SuccessStatusCode = undefined,
     
     HeadersMapping = [
@@ -5368,7 +5368,7 @@ restore_object(Client, Bucket, Key, Input) ->
     restore_object(Client, Bucket, Key, Input, []).
 restore_object(Client, Bucket, Key, Input0, Options) ->
     Method = post,
-    Path = ["/", http_uri:encode(Bucket), "/", http_uri:encode(Key), "?restore"],
+    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), "?restore"],
     SuccessStatusCode = undefined,
     
     HeadersMapping = [
@@ -5502,7 +5502,7 @@ select_object_content(Client, Bucket, Key, Input) ->
     select_object_content(Client, Bucket, Key, Input, []).
 select_object_content(Client, Bucket, Key, Input0, Options) ->
     Method = post,
-    Path = ["/", http_uri:encode(Bucket), "/", http_uri:encode(Key), "?select&select-type=2"],
+    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), "?select&select-type=2"],
     SuccessStatusCode = undefined,
     
     HeadersMapping = [
@@ -5616,7 +5616,7 @@ upload_part(Client, Bucket, Key, Input) ->
     upload_part(Client, Bucket, Key, Input, []).
 upload_part(Client, Bucket, Key, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(Bucket), "/", http_uri:encode(Key), ""],
+    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), ""],
     SuccessStatusCode = undefined,
     
     HeadersMapping = [
@@ -5785,7 +5785,7 @@ upload_part_copy(Client, Bucket, Key, Input) ->
     upload_part_copy(Client, Bucket, Key, Input, []).
 upload_part_copy(Client, Bucket, Key, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(Bucket), "/", http_uri:encode(Key), ""],
+    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), ""],
     SuccessStatusCode = undefined,
     
     HeadersMapping = [
@@ -5838,7 +5838,7 @@ upload_part_copy(Client, Bucket, Key, Input0, Options) ->
     {error, Error, {integer(), list(), hackney:client()}} |
     {error, term()} when
     Result :: map() | undefined,
-    Error :: {binary(), binary()}.
+    Error :: map().
 request(Client, Method, Path, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"s3">>},
     
@@ -5864,7 +5864,7 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
     case hackney:body(Client) of
         {ok, <<>>} when StatusCode =:= 200;
                         StatusCode =:= SuccessStatusCode ->
-            {ok, undefined, {StatusCode, ResponseHeaders, Client}};
+            {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
             Result = aws_util:decode_xml(Body),
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
@@ -5872,12 +5872,7 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
 handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
     {ok, Body} = hackney:body(Client),
     Error = aws_util:decode_xml(Body),
-    %% TODO: maybe unnecessary
-    MessagePath1 = [<<"ErrorResponse">>, <<"Error">>, <<"message">>],
-    Reason1 = aws_util:get_in(MessagePath1, Error),
-    MessagePath2 = [<<"ErrorResponse">>, <<"Error">>, <<"Message">>],
-    Reason2 = aws_util:get_in(MessagePath2, Error, Reason1),
-    {error, Reason2, {StatusCode, ResponseHeaders, Client}};
+    {error, Error, {StatusCode, ResponseHeaders, Client}};
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 

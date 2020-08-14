@@ -978,7 +978,7 @@ update_virtual_interface_attributes(Client, Input, Options)
     {error, Error, {integer(), list(), hackney:client()}} |
     {error, term()} when
     Result :: map() | undefined,
-    Error :: {binary(), binary()}.
+    Error :: map().
 request(Client, Action, Input, Options) ->
     Client1 = Client#{service => <<"directconnect">>},
     Host = get_host(<<"directconnect">>, Client1),
@@ -1004,9 +1004,7 @@ handle_response({ok, 200, ResponseHeaders, Client}) ->
 handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body, [return_maps]),
-    Exception = maps:get(<<"__type">>, Error, undefined),
-    Reason = maps:get(<<"message">>, Error, undefined),
-    {error, {Exception, Reason}, {StatusCode, ResponseHeaders, Client}};
+    {error, Error, {StatusCode, ResponseHeaders, Client}};
 handle_response({error, Reason}) ->
     {error, Reason}.
 

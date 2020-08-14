@@ -659,7 +659,7 @@ confirm_topic_rule_destination(Client, ConfirmationToken)
     confirm_topic_rule_destination(Client, ConfirmationToken, []).
 confirm_topic_rule_destination(Client, ConfirmationToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/confirmdestination/", http_uri:encode(ConfirmationToken), ""],
+    Path = ["/confirmdestination/", aws_util:encode_uri(ConfirmationToken, true), ""],
     SuccessStatusCode = undefined,
     Headers = [],
     request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
@@ -1351,7 +1351,7 @@ delete_topic_rule_destination(Client, Arn, Input) ->
     delete_topic_rule_destination(Client, Arn, Input, []).
 delete_topic_rule_destination(Client, Arn, Input0, Options) ->
     Method = delete,
-    Path = ["/destinations/", http_uri:encode(Arn), ""],
+    Path = ["/destinations/", aws_util:encode_uri(Arn, true), ""],
     SuccessStatusCode = undefined,
     Headers = [],
     Input = Input0,
@@ -1934,7 +1934,7 @@ get_topic_rule_destination(Client, Arn)
     get_topic_rule_destination(Client, Arn, []).
 get_topic_rule_destination(Client, Arn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/destinations/", http_uri:encode(Arn), ""],
+    Path = ["/destinations/", aws_util:encode_uri(Arn, true), ""],
     SuccessStatusCode = undefined,
     Headers = [],
     request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
@@ -3117,8 +3117,8 @@ validate_security_profile_behaviors(Client, Input0, Options) ->
     {ok, Result, {integer(), list(), hackney:client()}} |
     {error, Error, {integer(), list(), hackney:client()}} |
     {error, term()} when
-    Result :: map() | undefined,
-    Error :: {binary(), binary()}.
+    Result :: map(),
+    Error :: map().
 request(Client, Method, Path, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"execute-api">>},
     Host = get_host(<<"iot">>, Client1),
@@ -3142,7 +3142,7 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
     case hackney:body(Client) of
         {ok, <<>>} when StatusCode =:= 200;
                         StatusCode =:= SuccessStatusCode ->
-            {ok, undefined, {StatusCode, ResponseHeaders, Client}};
+            {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
             Result = jsx:decode(Body, [return_maps]),
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
@@ -3150,9 +3150,7 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
 handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body, [return_maps]),
-    Reason1 = maps:get(<<"message">>, Error, undefined),
-    Reason2 = maps:get(<<"Message">>, Error, Reason1),
-    {error, Reason2, {StatusCode, ResponseHeaders, Client}};
+    {error, Error, {StatusCode, ResponseHeaders, Client}};
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
