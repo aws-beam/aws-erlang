@@ -444,7 +444,7 @@ request(Client, Action, Input0, Options) ->
     Input = Input0#{ <<"Action">> => Action
                    , <<"Version">> => <<"2013-01-01">>
                    },
-    Payload = uri_string:compose_query(maps:to_list(Input)),
+    Payload = aws_util:encode_query(Input),
     SignedHeaders = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
     Response = hackney:request(post, URL, SignedHeaders, Payload, Options),
     handle_response(Response).
