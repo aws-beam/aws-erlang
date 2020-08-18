@@ -534,10 +534,8 @@ update_job_status(Client, JobId, Input0, Options) ->
     Error :: map().
 request(Client, Method, Path, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"s3">>},
-    
     AccountId = proplists:get_value(<<"x-amz-account-id">>, Headers0),
     Host = get_host(AccountId, <<"s3-control">>, Client1),
-    
     URL = get_url(Host, Path, Client1),
     Headers1 = [
         {<<"Host">>, Host},
