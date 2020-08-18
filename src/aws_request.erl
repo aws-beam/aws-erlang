@@ -1,6 +1,7 @@
 -module(aws_request).
 
--export([ build_headers/2
+-export([ add_headers/2
+        , build_headers/2
         , method_to_binary/1
         , sign_request/5
         ]).
@@ -22,9 +23,18 @@ sign_request(Client, Method, URL, Headers, Body) ->
     sign_request(AccessKeyID, SecretAccessKey, Region, Service, Token,
                  Method, URL, Headers, Body).
 
+%% @doc Include additions only if they don't already exist in the provided list.
+add_headers([], Headers) ->
+  Headers;
+add_headers([{Name, _} = Header | Additions], Headers) ->
+  case lists:keyfind(Name, 1, Headers) of
+    false -> add_headers(Additions, [Header | Headers]);
+    _ -> add_headers(Additions, Headers)
+  end.
+
 %% @doc Build request headers based on a list key-value pairs
 %% representing the mappings from param names to header names and a
-%% map qith the `params`.
+%% map qith the `params'.
 build_headers(ParamsHeadersMapping, Params0)
   when is_list(ParamsHeadersMapping),
        is_map(Params0) ->

@@ -1789,11 +1789,10 @@ request(Client, Method, Path, Headers0, Input, Options, SuccessStatusCode) ->
                       region => <<"us-east-1">>},
     Host = get_host(<<"cloudfront">>, Client1),
     URL = get_url(Host, Path, Client1),
-    Headers1 = [
-        {<<"Host">>, Host},
-        {<<"Content-Type">>, <<"text/xml">>}
-        | Headers0
-    ],
+    AdditionalHeaders = [ {<<"Host">>, Host}
+                        , {<<"Content-Type">>, <<"text/xml">>}
+                        ],
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
     Payload = encode_payload(Input),
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
