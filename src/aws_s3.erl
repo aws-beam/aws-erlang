@@ -5843,11 +5843,10 @@ request(Client, Method, Path, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"s3">>},
     Host = get_host(<<"s3">>, Client1),
     URL = get_url(Host, Path, Client1),
-    Headers1 = [
-        {<<"Host">>, Host},
-        {<<"Content-Type">>, <<"text/xml">>}
-        | Headers0
-    ],
+    AdditionalHeaders = [ {<<"Host">>, Host}
+                        , {<<"Content-Type">>, <<"text/xml">>}
+                        ],
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
     Payload = encode_payload(Input),
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
