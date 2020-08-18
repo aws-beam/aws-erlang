@@ -5,6 +5,7 @@
          hmac_sha256/2,
          hmac_sha256_hexdigest/2,
          sha256_hexdigest/1,
+         encode_query/1,
          encode_uri/2,
          encode_xml/1,
          decode_xml/1,
@@ -51,6 +52,19 @@ encode_uri(Value, true = _MultiSegment) ->
                 || Segment <- binary:split(Value, <<"/">>, [global])
               ],
     binary_join(Encoded, <<"/">>).
+
+%% @doc Encode the map's key/value pairs as a querystring.
+encode_query(Map) when is_map(Map) ->
+  FoldFun = fun
+              (K, V, Acc) when is_integer(V) ->
+                [{K, integer_to_binary(V)} | Acc];
+              (K, V, Acc) when is_float(V) ->
+                [{K, float_to_binary(V)} | Acc];
+              (K, V, Acc) when is_binary(V) ->
+                [{K, V} | Acc]
+            end,
+  KVs = maps:fold(FoldFun, [], Map),
+  uri_string:compose_query(KVs).
 
 %% @doc Encode an Erlang map as XML
 %%
