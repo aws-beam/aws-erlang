@@ -1731,9 +1731,7 @@ update_traffic_policy_instance(Client, Id, Input0, Options) ->
 request(Client, Method, Path, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"route53">>,
                       region => <<"us-east-1">>},
-    
     Host = get_host(<<"route53">>, Client1),
-    
     URL = get_url(Host, Path, Client1),
     Headers1 = [
         {<<"Host">>, Host},

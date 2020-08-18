@@ -5841,9 +5841,7 @@ upload_part_copy(Client, Bucket, Key, Input0, Options) ->
     Error :: map().
 request(Client, Method, Path, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"s3">>},
-    
     Host = get_host(<<"s3">>, Client1),
-    
     URL = get_url(Host, Path, Client1),
     Headers1 = [
         {<<"Host">>, Host},

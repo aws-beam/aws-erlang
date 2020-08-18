@@ -1787,9 +1787,7 @@ update_streaming_distribution(Client, Id, Input0, Options) ->
 request(Client, Method, Path, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"cloudfront">>,
                       region => <<"us-east-1">>},
-    
     Host = get_host(<<"cloudfront">>, Client1),
-    
     URL = get_url(Host, Path, Client1),
     Headers1 = [
         {<<"Host">>, Host},
