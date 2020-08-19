@@ -35,24 +35,24 @@
          get_federation_token/3,
          get_metric_data/3,
          get_metric_data/4,
-         list_contact_flows/2,
-         list_contact_flows/3,
-         list_hours_of_operations/2,
-         list_hours_of_operations/3,
-         list_phone_numbers/2,
-         list_phone_numbers/3,
-         list_queues/2,
-         list_queues/3,
-         list_routing_profiles/2,
-         list_routing_profiles/3,
-         list_security_profiles/2,
-         list_security_profiles/3,
+         list_contact_flows/5,
+         list_contact_flows/6,
+         list_hours_of_operations/4,
+         list_hours_of_operations/5,
+         list_phone_numbers/6,
+         list_phone_numbers/7,
+         list_queues/5,
+         list_queues/6,
+         list_routing_profiles/4,
+         list_routing_profiles/5,
+         list_security_profiles/4,
+         list_security_profiles/5,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
-         list_user_hierarchy_groups/2,
-         list_user_hierarchy_groups/3,
-         list_users/2,
-         list_users/3,
+         list_user_hierarchy_groups/4,
+         list_user_hierarchy_groups/5,
+         list_users/4,
+         list_users/5,
          resume_contact_recording/2,
          resume_contact_recording/3,
          start_chat_contact/2,
@@ -97,9 +97,14 @@ create_user(Client, InstanceId, Input0, Options) ->
     Method = put,
     Path = ["/users/", http_uri:encode(InstanceId), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a user account from the specified Amazon Connect instance.
 delete_user(Client, InstanceId, UserId, Input) ->
@@ -108,9 +113,14 @@ delete_user(Client, InstanceId, UserId, Input0, Options) ->
     Method = delete,
     Path = ["/users/", http_uri:encode(InstanceId), "/", http_uri:encode(UserId), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes the specified user account. You can find the instance ID in
 %% the console (it’s the final part of the ARN). The console does not display
@@ -123,8 +133,12 @@ describe_user(Client, InstanceId, UserId, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/users/", http_uri:encode(InstanceId), "/", http_uri:encode(UserId), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes the specified hierarchy group.
 describe_user_hierarchy_group(Client, HierarchyGroupId, InstanceId)
@@ -134,8 +148,12 @@ describe_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/user-hierarchy-groups/", http_uri:encode(InstanceId), "/", http_uri:encode(HierarchyGroupId), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes the hierarchy structure of the specified Amazon Connect
 %% instance.
@@ -146,8 +164,12 @@ describe_user_hierarchy_structure(Client, InstanceId, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/user-hierarchy-structure/", http_uri:encode(InstanceId), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the contact attributes for the specified contact.
 get_contact_attributes(Client, InitialContactId, InstanceId)
@@ -157,8 +179,12 @@ get_contact_attributes(Client, InitialContactId, InstanceId, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/contact/attributes/", http_uri:encode(InstanceId), "/", http_uri:encode(InitialContactId), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the real-time metric data from the specified Amazon Connect
 %% instance.
@@ -172,9 +198,14 @@ get_current_metric_data(Client, InstanceId, Input0, Options) ->
     Method = post,
     Path = ["/metrics/current/", http_uri:encode(InstanceId), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a token for federation.
 get_federation_token(Client, InstanceId)
@@ -184,8 +215,12 @@ get_federation_token(Client, InstanceId, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/user/federate/", http_uri:encode(InstanceId), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets historical metric data from the specified Amazon Connect
 %% instance.
@@ -199,81 +234,144 @@ get_metric_data(Client, InstanceId, Input0, Options) ->
     Method = post,
     Path = ["/metrics/historical/", http_uri:encode(InstanceId), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Provides information about the contact flows for the specified Amazon
 %% Connect instance.
-list_contact_flows(Client, InstanceId)
+list_contact_flows(Client, InstanceId, ContactFlowTypes, MaxResults, NextToken)
   when is_map(Client) ->
-    list_contact_flows(Client, InstanceId, []).
-list_contact_flows(Client, InstanceId, Options)
+    list_contact_flows(Client, InstanceId, ContactFlowTypes, MaxResults, NextToken, []).
+list_contact_flows(Client, InstanceId, ContactFlowTypes, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/contact-flows-summary/", http_uri:encode(InstanceId), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"contactFlowTypes">>, ContactFlowTypes},
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides information about the hours of operation for the specified
 %% Amazon Connect instance.
-list_hours_of_operations(Client, InstanceId)
+list_hours_of_operations(Client, InstanceId, MaxResults, NextToken)
   when is_map(Client) ->
-    list_hours_of_operations(Client, InstanceId, []).
-list_hours_of_operations(Client, InstanceId, Options)
+    list_hours_of_operations(Client, InstanceId, MaxResults, NextToken, []).
+list_hours_of_operations(Client, InstanceId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/hours-of-operations-summary/", http_uri:encode(InstanceId), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides information about the phone numbers for the specified Amazon
 %% Connect instance.
-list_phone_numbers(Client, InstanceId)
+list_phone_numbers(Client, InstanceId, MaxResults, NextToken, PhoneNumberCountryCodes, PhoneNumberTypes)
   when is_map(Client) ->
-    list_phone_numbers(Client, InstanceId, []).
-list_phone_numbers(Client, InstanceId, Options)
+    list_phone_numbers(Client, InstanceId, MaxResults, NextToken, PhoneNumberCountryCodes, PhoneNumberTypes, []).
+list_phone_numbers(Client, InstanceId, MaxResults, NextToken, PhoneNumberCountryCodes, PhoneNumberTypes, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/phone-numbers-summary/", http_uri:encode(InstanceId), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken},
+        {<<"phoneNumberCountryCodes">>, PhoneNumberCountryCodes},
+        {<<"phoneNumberTypes">>, PhoneNumberTypes}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides information about the queues for the specified Amazon
 %% Connect instance.
-list_queues(Client, InstanceId)
+list_queues(Client, InstanceId, MaxResults, NextToken, QueueTypes)
   when is_map(Client) ->
-    list_queues(Client, InstanceId, []).
-list_queues(Client, InstanceId, Options)
+    list_queues(Client, InstanceId, MaxResults, NextToken, QueueTypes, []).
+list_queues(Client, InstanceId, MaxResults, NextToken, QueueTypes, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/queues-summary/", http_uri:encode(InstanceId), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken},
+        {<<"queueTypes">>, QueueTypes}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides summary information about the routing profiles for the
 %% specified Amazon Connect instance.
-list_routing_profiles(Client, InstanceId)
+list_routing_profiles(Client, InstanceId, MaxResults, NextToken)
   when is_map(Client) ->
-    list_routing_profiles(Client, InstanceId, []).
-list_routing_profiles(Client, InstanceId, Options)
+    list_routing_profiles(Client, InstanceId, MaxResults, NextToken, []).
+list_routing_profiles(Client, InstanceId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/routing-profiles-summary/", http_uri:encode(InstanceId), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides summary information about the security profiles for the
 %% specified Amazon Connect instance.
-list_security_profiles(Client, InstanceId)
+list_security_profiles(Client, InstanceId, MaxResults, NextToken)
   when is_map(Client) ->
-    list_security_profiles(Client, InstanceId, []).
-list_security_profiles(Client, InstanceId, Options)
+    list_security_profiles(Client, InstanceId, MaxResults, NextToken, []).
+list_security_profiles(Client, InstanceId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/security-profiles-summary/", http_uri:encode(InstanceId), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags for the specified resource.
 list_tags_for_resource(Client, ResourceArn)
@@ -283,32 +381,54 @@ list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/tags/", http_uri:encode(ResourceArn), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides summary information about the hierarchy groups for the
 %% specified Amazon Connect instance.
-list_user_hierarchy_groups(Client, InstanceId)
+list_user_hierarchy_groups(Client, InstanceId, MaxResults, NextToken)
   when is_map(Client) ->
-    list_user_hierarchy_groups(Client, InstanceId, []).
-list_user_hierarchy_groups(Client, InstanceId, Options)
+    list_user_hierarchy_groups(Client, InstanceId, MaxResults, NextToken, []).
+list_user_hierarchy_groups(Client, InstanceId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/user-hierarchy-groups-summary/", http_uri:encode(InstanceId), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides summary information about the users for the specified Amazon
 %% Connect instance.
-list_users(Client, InstanceId)
+list_users(Client, InstanceId, MaxResults, NextToken)
   when is_map(Client) ->
-    list_users(Client, InstanceId, []).
-list_users(Client, InstanceId, Options)
+    list_users(Client, InstanceId, MaxResults, NextToken, []).
+list_users(Client, InstanceId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/users-summary/", http_uri:encode(InstanceId), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc When a contact is being recorded, and the recording has been
 %% suspended using SuspendContactRecording, this API resumes recording the
@@ -321,9 +441,14 @@ resume_contact_recording(Client, Input0, Options) ->
     Method = post,
     Path = ["/contact/resume-recording"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Initiates a contact flow to start a new chat for the customer.
 %% Response of this API provides a token required to obtain credentials from
@@ -342,9 +467,14 @@ start_chat_contact(Client, Input0, Options) ->
     Method = put,
     Path = ["/contact/chat"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This API starts recording the contact when the agent joins the call.
 %% StartContactRecording is a one-time action. For example, if you use
@@ -366,9 +496,14 @@ start_contact_recording(Client, Input0, Options) ->
     Method = post,
     Path = ["/contact/start-recording"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This API places an outbound call to a contact, and then initiates the
 %% contact flow. It performs the actions in the contact flow that's specified
@@ -387,9 +522,14 @@ start_outbound_voice_contact(Client, Input0, Options) ->
     Method = put,
     Path = ["/contact/outbound-voice"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Ends the specified contact.
 stop_contact(Client, Input) ->
@@ -398,9 +538,14 @@ stop_contact(Client, Input0, Options) ->
     Method = post,
     Path = ["/contact/stop"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc When a contact is being recorded, this API stops recording the call.
 %% StopContactRecording is a one-time action. If you use StopContactRecording
@@ -417,9 +562,14 @@ stop_contact_recording(Client, Input0, Options) ->
     Method = post,
     Path = ["/contact/stop-recording"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc When a contact is being recorded, this API suspends recording the
 %% call. For example, you might suspend the call recording while collecting
@@ -436,9 +586,14 @@ suspend_contact_recording(Client, Input0, Options) ->
     Method = post,
     Path = ["/contact/suspend-recording"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds the specified tags to the specified resource.
 %%
@@ -449,9 +604,14 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
     Path = ["/tags/", http_uri:encode(ResourceArn), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the specified tags from the specified resource.
 untag_resource(Client, ResourceArn, Input) ->
@@ -460,9 +620,15 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
     Path = ["/tags/", http_uri:encode(ResourceArn), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    QueryMapping = [
+                     {<<"tagKeys">>, <<"tagKeys">>}
+                   ],
+    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates or updates the contact attributes associated with the
 %% specified contact.
@@ -492,9 +658,14 @@ update_contact_attributes(Client, Input0, Options) ->
     Method = post,
     Path = ["/contact/attributes"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Assigns the specified hierarchy group to the specified user.
 update_user_hierarchy(Client, InstanceId, UserId, Input) ->
@@ -503,9 +674,14 @@ update_user_hierarchy(Client, InstanceId, UserId, Input0, Options) ->
     Method = post,
     Path = ["/users/", http_uri:encode(InstanceId), "/", http_uri:encode(UserId), "/hierarchy"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the identity information for the specified user.
 update_user_identity_info(Client, InstanceId, UserId, Input) ->
@@ -514,9 +690,14 @@ update_user_identity_info(Client, InstanceId, UserId, Input0, Options) ->
     Method = post,
     Path = ["/users/", http_uri:encode(InstanceId), "/", http_uri:encode(UserId), "/identity-info"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the phone configuration settings for the specified user.
 update_user_phone_config(Client, InstanceId, UserId, Input) ->
@@ -525,9 +706,14 @@ update_user_phone_config(Client, InstanceId, UserId, Input0, Options) ->
     Method = post,
     Path = ["/users/", http_uri:encode(InstanceId), "/", http_uri:encode(UserId), "/phone-config"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Assigns the specified routing profile to the specified user.
 update_user_routing_profile(Client, InstanceId, UserId, Input) ->
@@ -536,9 +722,14 @@ update_user_routing_profile(Client, InstanceId, UserId, Input0, Options) ->
     Method = post,
     Path = ["/users/", http_uri:encode(InstanceId), "/", http_uri:encode(UserId), "/routing-profile"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Assigns the specified security profiles to the specified user.
 update_user_security_profiles(Client, InstanceId, UserId, Input) ->
@@ -547,25 +738,31 @@ update_user_security_profiles(Client, InstanceId, UserId, Input0, Options) ->
     Method = post,
     Path = ["/users/", http_uri:encode(InstanceId), "/", http_uri:encode(UserId), "/security-profiles"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %%====================================================================
 %% Internal functions
 %%====================================================================
 
--spec request(aws_client:aws_client(), atom(), iolist(),
+-spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->
     {ok, Result, {integer(), list(), hackney:client()}} |
     {error, Error, {integer(), list(), hackney:client()}} |
     {error, term()} when
     Result :: map(),
     Error :: map().
-request(Client, Method, Path, Headers0, Input, Options, SuccessStatusCode) ->
+request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"connect">>},
     Host = get_host(<<"connect">>, Client1),
-    URL = get_url(Host, Path, Client1),
+    URL0 = get_url(Host, Path, Client1),
+    URL = aws_request:add_query(URL0, Query),
     AdditionalHeaders = [ {<<"Host">>, Host}
                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
                         ],

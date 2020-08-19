@@ -28,10 +28,10 @@
          get_job_tagging/4,
          get_public_access_block/2,
          get_public_access_block/3,
-         list_access_points/2,
-         list_access_points/3,
-         list_jobs/2,
-         list_jobs/3,
+         list_access_points/5,
+         list_access_points/6,
+         list_jobs/5,
+         list_jobs/6,
          put_access_point_policy/3,
          put_access_point_policy/4,
          put_job_tagging/3,
@@ -56,13 +56,16 @@ create_access_point(Client, Name, Input0, Options) ->
     Method = put,
     Path = ["/v20180820/accesspoint/", http_uri:encode(Name), ""],
     SuccessStatusCode = undefined,
-    
+
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
                      ],
-    {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
-    
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc You can use Amazon S3 Batch Operations to perform large-scale Batch
 %% Operations on Amazon S3 objects. Amazon S3 Batch Operations can execute a
@@ -89,13 +92,16 @@ create_job(Client, Input0, Options) ->
     Method = post,
     Path = ["/v20180820/jobs"],
     SuccessStatusCode = undefined,
-    
+
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
                      ],
-    {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
-    
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified access point.
 delete_access_point(Client, Name, Input) ->
@@ -104,13 +110,16 @@ delete_access_point(Client, Name, Input0, Options) ->
     Method = delete,
     Path = ["/v20180820/accesspoint/", http_uri:encode(Name), ""],
     SuccessStatusCode = undefined,
-    
+
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
                      ],
-    {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
-    
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the access point policy for the specified access point.
 delete_access_point_policy(Client, Name, Input) ->
@@ -119,13 +128,16 @@ delete_access_point_policy(Client, Name, Input0, Options) ->
     Method = delete,
     Path = ["/v20180820/accesspoint/", http_uri:encode(Name), "/policy"],
     SuccessStatusCode = undefined,
-    
+
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
                      ],
-    {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
-    
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the entire tag set from the specified Amazon S3 Batch
 %% Operations job. To use this operation, you must have permission to perform
@@ -148,13 +160,16 @@ delete_job_tagging(Client, JobId, Input0, Options) ->
     Method = delete,
     Path = ["/v20180820/jobs/", http_uri:encode(JobId), "/tagging"],
     SuccessStatusCode = undefined,
-    
+
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
                      ],
-    {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
-    
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the <code>PublicAccessBlock</code> configuration for an
 %% Amazon Web Services account.
@@ -164,13 +179,16 @@ delete_public_access_block(Client, Input0, Options) ->
     Method = delete,
     Path = ["/v20180820/configuration/publicAccessBlock"],
     SuccessStatusCode = undefined,
-    
+
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
                      ],
-    {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
-    
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the configuration parameters and status for a Batch
 %% Operations job. For more information, see <a
@@ -196,13 +214,16 @@ describe_job(Client, JobId, AccountId, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/v20180820/jobs/", http_uri:encode(JobId), ""],
     SuccessStatusCode = undefined,
-     Headers0 =
+
+    Headers0 =
       [
         {<<"x-amz-account-id">>, AccountId}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
-    
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns configuration information about the specified access point.
 get_access_point(Client, Name, AccountId)
@@ -212,13 +233,16 @@ get_access_point(Client, Name, AccountId, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/v20180820/accesspoint/", http_uri:encode(Name), ""],
     SuccessStatusCode = undefined,
-     Headers0 =
+
+    Headers0 =
       [
         {<<"x-amz-account-id">>, AccountId}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
-    
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the access point policy associated with the specified access
 %% point.
@@ -229,13 +253,16 @@ get_access_point_policy(Client, Name, AccountId, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/v20180820/accesspoint/", http_uri:encode(Name), "/policy"],
     SuccessStatusCode = undefined,
-     Headers0 =
+
+    Headers0 =
       [
         {<<"x-amz-account-id">>, AccountId}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
-    
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Indicates whether the specified access point currently has a policy
 %% that allows public access. For more information about public access
@@ -250,13 +277,16 @@ get_access_point_policy_status(Client, Name, AccountId, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/v20180820/accesspoint/", http_uri:encode(Name), "/policyStatus"],
     SuccessStatusCode = undefined,
-     Headers0 =
+
+    Headers0 =
       [
         {<<"x-amz-account-id">>, AccountId}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
-    
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the tags on an Amazon S3 Batch Operations job. To use this
 %% operation, you must have permission to perform the
@@ -280,13 +310,16 @@ get_job_tagging(Client, JobId, AccountId, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/v20180820/jobs/", http_uri:encode(JobId), "/tagging"],
     SuccessStatusCode = undefined,
-     Headers0 =
+
+    Headers0 =
       [
         {<<"x-amz-account-id">>, AccountId}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
-    
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the <code>PublicAccessBlock</code> configuration for an
 %% Amazon Web Services account.
@@ -297,13 +330,16 @@ get_public_access_block(Client, AccountId, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/v20180820/configuration/publicAccessBlock"],
     SuccessStatusCode = undefined,
-     Headers0 =
+
+    Headers0 =
       [
         {<<"x-amz-account-id">>, AccountId}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
-    
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of the access points currently associated with the
 %% specified bucket. You can retrieve up to 1000 access points per call. If
@@ -311,20 +347,29 @@ get_public_access_block(Client, AccountId, Options)
 %% specified in <code>maxResults</code>, whichever is less), the response
 %% will include a continuation token that you can use to list the additional
 %% access points.
-list_access_points(Client, AccountId)
+list_access_points(Client, Bucket, MaxResults, NextToken, AccountId)
   when is_map(Client) ->
-    list_access_points(Client, AccountId, []).
-list_access_points(Client, AccountId, Options)
+    list_access_points(Client, Bucket, MaxResults, NextToken, AccountId, []).
+list_access_points(Client, Bucket, MaxResults, NextToken, AccountId, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/v20180820/accesspoint"],
     SuccessStatusCode = undefined,
-     Headers0 =
+
+    Headers0 =
       [
         {<<"x-amz-account-id">>, AccountId}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
-    
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"bucket">>, Bucket},
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists current Amazon S3 Batch Operations jobs and jobs that have
 %% ended within the last 30 days for the AWS account making the request. For
@@ -344,20 +389,29 @@ list_access_points(Client, AccountId, Options)
 %% </li> <li> <a>UpdateJobStatus</a>
 %%
 %% </li> </ul>
-list_jobs(Client, AccountId)
+list_jobs(Client, JobStatuses, MaxResults, NextToken, AccountId)
   when is_map(Client) ->
-    list_jobs(Client, AccountId, []).
-list_jobs(Client, AccountId, Options)
+    list_jobs(Client, JobStatuses, MaxResults, NextToken, AccountId, []).
+list_jobs(Client, JobStatuses, MaxResults, NextToken, AccountId, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/v20180820/jobs"],
     SuccessStatusCode = undefined,
-     Headers0 =
+
+    Headers0 =
       [
         {<<"x-amz-account-id">>, AccountId}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
-    
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"jobStatuses">>, JobStatuses},
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Associates an access policy with the specified access point. Each
 %% access point can have only one policy, so a request made to this API
@@ -368,13 +422,16 @@ put_access_point_policy(Client, Name, Input0, Options) ->
     Method = put,
     Path = ["/v20180820/accesspoint/", http_uri:encode(Name), "/policy"],
     SuccessStatusCode = undefined,
-    
+
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
                      ],
-    {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
-    
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Set the supplied tag-set on an Amazon S3 Batch Operations job.
 %%
@@ -434,13 +491,16 @@ put_job_tagging(Client, JobId, Input0, Options) ->
     Method = put,
     Path = ["/v20180820/jobs/", http_uri:encode(JobId), "/tagging"],
     SuccessStatusCode = undefined,
-    
+
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
                      ],
-    {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
-    
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates or modifies the <code>PublicAccessBlock</code> configuration
 %% for an Amazon Web Services account.
@@ -450,13 +510,16 @@ put_public_access_block(Client, Input0, Options) ->
     Method = put,
     Path = ["/v20180820/configuration/publicAccessBlock"],
     SuccessStatusCode = undefined,
-    
+
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
                      ],
-    {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
-    
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing Amazon S3 Batch Operations job's priority. For
 %% more information, see <a
@@ -481,13 +544,17 @@ update_job_priority(Client, JobId, Input0, Options) ->
     Method = post,
     Path = ["/v20180820/jobs/", http_uri:encode(JobId), "/priority"],
     SuccessStatusCode = undefined,
-    
+
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
                      ],
-    {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
-    
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    QueryMapping = [
+                     {<<"priority">>, <<"Priority">>}
+                   ],
+    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the status for the specified job. Use this operation to
 %% confirm that you want to run a job or to cancel an existing job. For more
@@ -513,30 +580,36 @@ update_job_status(Client, JobId, Input0, Options) ->
     Method = post,
     Path = ["/v20180820/jobs/", http_uri:encode(JobId), "/status"],
     SuccessStatusCode = undefined,
-    
+
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
                      ],
-    {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
-    
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    QueryMapping = [
+                     {<<"requestedJobStatus">>, <<"RequestedJobStatus">>},
+                     {<<"statusUpdateReason">>, <<"StatusUpdateReason">>}
+                   ],
+    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %%====================================================================
 %% Internal functions
 %%====================================================================
 
--spec request(aws_client:aws_client(), atom(), iolist(),
+-spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->
     {ok, Result, {integer(), list(), hackney:client()}} |
     {error, Error, {integer(), list(), hackney:client()}} |
     {error, term()} when
     Result :: map() | undefined,
     Error :: map().
-request(Client, Method, Path, Headers0, Input, Options, SuccessStatusCode) ->
+request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"s3">>},
     AccountId = proplists:get_value(<<"x-amz-account-id">>, Headers0),
     Host = get_host(AccountId, <<"s3-control">>, Client1),
-    URL = get_url(Host, Path, Client1),
+    URL0 = get_url(Host, Path, Client1),
+    URL = aws_request:add_query(URL0, Query),
     AdditionalHeaders = [ {<<"Host">>, Host}
                         , {<<"Content-Type">>, <<"text/xml">>}
                         ],

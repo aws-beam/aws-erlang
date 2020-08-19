@@ -30,24 +30,24 @@
          delete_mount_target/4,
          delete_tags/3,
          delete_tags/4,
-         describe_access_points/1,
-         describe_access_points/2,
+         describe_access_points/5,
+         describe_access_points/6,
          describe_backup_policy/2,
          describe_backup_policy/3,
          describe_file_system_policy/2,
          describe_file_system_policy/3,
-         describe_file_systems/1,
-         describe_file_systems/2,
+         describe_file_systems/5,
+         describe_file_systems/6,
          describe_lifecycle_configuration/2,
          describe_lifecycle_configuration/3,
          describe_mount_target_security_groups/2,
          describe_mount_target_security_groups/3,
-         describe_mount_targets/1,
-         describe_mount_targets/2,
-         describe_tags/2,
-         describe_tags/3,
-         list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         describe_mount_targets/6,
+         describe_mount_targets/7,
+         describe_tags/4,
+         describe_tags/5,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          modify_mount_target_security_groups/3,
          modify_mount_target_security_groups/4,
          put_backup_policy/3,
@@ -88,9 +88,14 @@ create_access_point(Client, Input0, Options) ->
     Method = post,
     Path = ["/2015-02-01/access-points"],
     SuccessStatusCode = 200,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new, empty file system. The operation requires a creation
 %% token in the request that Amazon EFS uses to ensure idempotent creation
@@ -153,9 +158,14 @@ create_file_system(Client, Input0, Options) ->
     Method = post,
     Path = ["/2015-02-01/file-systems"],
     SuccessStatusCode = 201,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a mount target for a file system. You can then mount the file
 %% system on EC2 instances by using the mount target.
@@ -276,9 +286,14 @@ create_mount_target(Client, Input0, Options) ->
     Method = post,
     Path = ["/2015-02-01/mount-targets"],
     SuccessStatusCode = 200,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates or overwrites tags associated with a file system. Each tag is
 %% a key-value pair. If a tag key specified in the request already exists on
@@ -295,9 +310,14 @@ create_tags(Client, FileSystemId, Input0, Options) ->
     Method = post,
     Path = ["/2015-02-01/create-tags/", http_uri:encode(FileSystemId), ""],
     SuccessStatusCode = 204,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified access point. After deletion is complete, new
 %% clients can no longer connect to the access points. Clients connected to
@@ -312,9 +332,14 @@ delete_access_point(Client, AccessPointId, Input0, Options) ->
     Method = delete,
     Path = ["/2015-02-01/access-points/", http_uri:encode(AccessPointId), ""],
     SuccessStatusCode = 204,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a file system, permanently severing access to its contents.
 %% Upon return, the file system no longer exists and you can't access any
@@ -340,9 +365,14 @@ delete_file_system(Client, FileSystemId, Input0, Options) ->
     Method = delete,
     Path = ["/2015-02-01/file-systems/", http_uri:encode(FileSystemId), ""],
     SuccessStatusCode = 204,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the <code>FileSystemPolicy</code> for the specified file
 %% system. The default <code>FileSystemPolicy</code> goes into effect once
@@ -359,9 +389,14 @@ delete_file_system_policy(Client, FileSystemId, Input0, Options) ->
     Method = delete,
     Path = ["/2015-02-01/file-systems/", http_uri:encode(FileSystemId), "/policy"],
     SuccessStatusCode = 200,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified mount target.
 %%
@@ -398,9 +433,14 @@ delete_mount_target(Client, MountTargetId, Input0, Options) ->
     Method = delete,
     Path = ["/2015-02-01/mount-targets/", http_uri:encode(MountTargetId), ""],
     SuccessStatusCode = 204,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified tags from a file system. If the
 %% <code>DeleteTags</code> request includes a tag key that doesn't exist,
@@ -417,9 +457,14 @@ delete_tags(Client, FileSystemId, Input0, Options) ->
     Method = post,
     Path = ["/2015-02-01/delete-tags/", http_uri:encode(FileSystemId), ""],
     SuccessStatusCode = 204,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns the description of a specific Amazon EFS access point if the
 %% <code>AccessPointId</code> is provided. If you provide an EFS
@@ -429,15 +474,26 @@ delete_tags(Client, FileSystemId, Input0, Options) ->
 %%
 %% This operation requires permissions for the
 %% <code>elasticfilesystem:DescribeAccessPoints</code> action.
-describe_access_points(Client)
+describe_access_points(Client, AccessPointId, FileSystemId, MaxResults, NextToken)
   when is_map(Client) ->
-    describe_access_points(Client, []).
-describe_access_points(Client, Options)
+    describe_access_points(Client, AccessPointId, FileSystemId, MaxResults, NextToken, []).
+describe_access_points(Client, AccessPointId, FileSystemId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2015-02-01/access-points"],
     SuccessStatusCode = 200,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"AccessPointId">>, AccessPointId},
+        {<<"FileSystemId">>, FileSystemId},
+        {<<"MaxResults">>, MaxResults},
+        {<<"NextToken">>, NextToken}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the backup policy for the specified EFS file system.
 describe_backup_policy(Client, FileSystemId)
@@ -447,8 +503,12 @@ describe_backup_policy(Client, FileSystemId, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2015-02-01/file-systems/", http_uri:encode(FileSystemId), "/backup-policy"],
     SuccessStatusCode = 200,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the <code>FileSystemPolicy</code> for the specified EFS file
 %% system.
@@ -462,8 +522,12 @@ describe_file_system_policy(Client, FileSystemId, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2015-02-01/file-systems/", http_uri:encode(FileSystemId), "/policy"],
     SuccessStatusCode = 200,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the description of a specific Amazon EFS file system if
 %% either the file system <code>CreationToken</code> or the
@@ -492,15 +556,26 @@ describe_file_system_policy(Client, FileSystemId, Options)
 %%
 %% This operation requires permissions for the
 %% <code>elasticfilesystem:DescribeFileSystems</code> action.
-describe_file_systems(Client)
+describe_file_systems(Client, CreationToken, FileSystemId, Marker, MaxItems)
   when is_map(Client) ->
-    describe_file_systems(Client, []).
-describe_file_systems(Client, Options)
+    describe_file_systems(Client, CreationToken, FileSystemId, Marker, MaxItems, []).
+describe_file_systems(Client, CreationToken, FileSystemId, Marker, MaxItems, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2015-02-01/file-systems"],
     SuccessStatusCode = 200,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"CreationToken">>, CreationToken},
+        {<<"FileSystemId">>, FileSystemId},
+        {<<"Marker">>, Marker},
+        {<<"MaxItems">>, MaxItems}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the current <code>LifecycleConfiguration</code> object for
 %% the specified Amazon EFS file system. EFS lifecycle management uses the
@@ -518,8 +593,12 @@ describe_lifecycle_configuration(Client, FileSystemId, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2015-02-01/file-systems/", http_uri:encode(FileSystemId), "/lifecycle-configuration"],
     SuccessStatusCode = 200,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the security groups currently in effect for a mount target.
 %% This operation requires that the network interface of the mount target has
@@ -542,8 +621,12 @@ describe_mount_target_security_groups(Client, MountTargetId, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2015-02-01/mount-targets/", http_uri:encode(MountTargetId), "/security-groups"],
     SuccessStatusCode = 200,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the descriptions of all the current mount targets, or a
 %% specific mount target, for a file system. When requesting all of the
@@ -555,15 +638,27 @@ describe_mount_target_security_groups(Client, MountTargetId, Options)
 %% file system ID that you specify in <code>FileSystemId</code>, or on the
 %% file system of the mount target that you specify in
 %% <code>MountTargetId</code>.
-describe_mount_targets(Client)
+describe_mount_targets(Client, AccessPointId, FileSystemId, Marker, MaxItems, MountTargetId)
   when is_map(Client) ->
-    describe_mount_targets(Client, []).
-describe_mount_targets(Client, Options)
+    describe_mount_targets(Client, AccessPointId, FileSystemId, Marker, MaxItems, MountTargetId, []).
+describe_mount_targets(Client, AccessPointId, FileSystemId, Marker, MaxItems, MountTargetId, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2015-02-01/mount-targets"],
     SuccessStatusCode = 200,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"AccessPointId">>, AccessPointId},
+        {<<"FileSystemId">>, FileSystemId},
+        {<<"Marker">>, Marker},
+        {<<"MaxItems">>, MaxItems},
+        {<<"MountTargetId">>, MountTargetId}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the tags associated with a file system. The order of tags
 %% returned in the response of one <code>DescribeTags</code> call and the
@@ -572,30 +667,48 @@ describe_mount_targets(Client, Options)
 %%
 %% This operation requires permissions for the
 %% <code>elasticfilesystem:DescribeTags</code> action.
-describe_tags(Client, FileSystemId)
+describe_tags(Client, FileSystemId, Marker, MaxItems)
   when is_map(Client) ->
-    describe_tags(Client, FileSystemId, []).
-describe_tags(Client, FileSystemId, Options)
+    describe_tags(Client, FileSystemId, Marker, MaxItems, []).
+describe_tags(Client, FileSystemId, Marker, MaxItems, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2015-02-01/tags/", http_uri:encode(FileSystemId), "/"],
     SuccessStatusCode = 200,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"Marker">>, Marker},
+        {<<"MaxItems">>, MaxItems}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all tags for a top-level EFS resource. You must provide the ID
 %% of the resource that you want to retrieve the tags for.
 %%
 %% This operation requires permissions for the
 %% <code>elasticfilesystem:DescribeAccessPoints</code> action.
-list_tags_for_resource(Client, ResourceId)
+list_tags_for_resource(Client, ResourceId, MaxResults, NextToken)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceId, []).
-list_tags_for_resource(Client, ResourceId, Options)
+    list_tags_for_resource(Client, ResourceId, MaxResults, NextToken, []).
+list_tags_for_resource(Client, ResourceId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2015-02-01/resource-tags/", http_uri:encode(ResourceId), ""],
     SuccessStatusCode = 200,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"MaxResults">>, MaxResults},
+        {<<"NextToken">>, NextToken}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Modifies the set of security groups in effect for a mount target.
 %%
@@ -622,9 +735,14 @@ modify_mount_target_security_groups(Client, MountTargetId, Input0, Options) ->
     Method = put,
     Path = ["/2015-02-01/mount-targets/", http_uri:encode(MountTargetId), "/security-groups"],
     SuccessStatusCode = 204,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the file system's backup policy. Use this action to start or
 %% stop automatic backups of the file system.
@@ -634,9 +752,14 @@ put_backup_policy(Client, FileSystemId, Input0, Options) ->
     Method = put,
     Path = ["/2015-02-01/file-systems/", http_uri:encode(FileSystemId), "/backup-policy"],
     SuccessStatusCode = 200,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Applies an Amazon EFS <code>FileSystemPolicy</code> to an Amazon EFS
 %% file system. A file system policy is an IAM resource-based policy and can
@@ -656,9 +779,14 @@ put_file_system_policy(Client, FileSystemId, Input0, Options) ->
     Method = put,
     Path = ["/2015-02-01/file-systems/", http_uri:encode(FileSystemId), "/policy"],
     SuccessStatusCode = 200,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Enables lifecycle management by creating a new
 %% <code>LifecycleConfiguration</code> object. A
@@ -699,9 +827,14 @@ put_lifecycle_configuration(Client, FileSystemId, Input0, Options) ->
     Method = put,
     Path = ["/2015-02-01/file-systems/", http_uri:encode(FileSystemId), "/lifecycle-configuration"],
     SuccessStatusCode = 200,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a tag for an EFS resource. You can create tags for EFS file
 %% systems and access points using this API operation.
@@ -714,9 +847,14 @@ tag_resource(Client, ResourceId, Input0, Options) ->
     Method = post,
     Path = ["/2015-02-01/resource-tags/", http_uri:encode(ResourceId), ""],
     SuccessStatusCode = 200,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes tags from an EFS resource. You can remove tags from EFS file
 %% systems and access points using this API operation.
@@ -729,9 +867,15 @@ untag_resource(Client, ResourceId, Input0, Options) ->
     Method = delete,
     Path = ["/2015-02-01/resource-tags/", http_uri:encode(ResourceId), ""],
     SuccessStatusCode = 200,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    QueryMapping = [
+                     {<<"tagKeys">>, <<"TagKeys">>}
+                   ],
+    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the throughput mode or the amount of provisioned throughput
 %% of an existing file system.
@@ -741,25 +885,31 @@ update_file_system(Client, FileSystemId, Input0, Options) ->
     Method = put,
     Path = ["/2015-02-01/file-systems/", http_uri:encode(FileSystemId), ""],
     SuccessStatusCode = 202,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %%====================================================================
 %% Internal functions
 %%====================================================================
 
--spec request(aws_client:aws_client(), atom(), iolist(),
+-spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->
     {ok, Result, {integer(), list(), hackney:client()}} |
     {error, Error, {integer(), list(), hackney:client()}} |
     {error, term()} when
     Result :: map(),
     Error :: map().
-request(Client, Method, Path, Headers0, Input, Options, SuccessStatusCode) ->
+request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"elasticfilesystem">>},
     Host = get_host(<<"elasticfilesystem">>, Client1),
-    URL = get_url(Host, Path, Client1),
+    URL0 = get_url(Host, Path, Client1),
+    URL = aws_request:add_query(URL0, Query),
     AdditionalHeaders = [ {<<"Host">>, Host}
                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
                         ],

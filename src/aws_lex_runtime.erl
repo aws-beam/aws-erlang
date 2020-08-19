@@ -17,8 +17,8 @@
 
 -export([delete_session/5,
          delete_session/6,
-         get_session/4,
          get_session/5,
+         get_session/6,
          post_content/5,
          post_content/6,
          post_text/5,
@@ -39,20 +39,33 @@ delete_session(Client, BotAlias, BotName, UserId, Input0, Options) ->
     Method = delete,
     Path = ["/bot/", http_uri:encode(BotName), "/alias/", http_uri:encode(BotAlias), "/user/", http_uri:encode(UserId), "/session"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns session information for a specified bot, alias, and user ID.
-get_session(Client, BotAlias, BotName, UserId)
+get_session(Client, BotAlias, BotName, UserId, CheckpointLabelFilter)
   when is_map(Client) ->
-    get_session(Client, BotAlias, BotName, UserId, []).
-get_session(Client, BotAlias, BotName, UserId, Options)
+    get_session(Client, BotAlias, BotName, UserId, CheckpointLabelFilter, []).
+get_session(Client, BotAlias, BotName, UserId, CheckpointLabelFilter, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/bot/", http_uri:encode(BotName), "/alias/", http_uri:encode(BotAlias), "/user/", http_uri:encode(UserId), "/session/"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"checkpointLabelFilter">>, CheckpointLabelFilter}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Sends user input (text or speech) to Amazon Lex. Clients use this API
 %% to send text and audio requests to Amazon Lex at runtime. Amazon Lex
@@ -121,16 +134,19 @@ post_content(Client, BotAlias, BotName, UserId, Input0, Options) ->
     Method = post,
     Path = ["/bot/", http_uri:encode(BotName), "/alias/", http_uri:encode(BotAlias), "/user/", http_uri:encode(UserId), "/content"],
     SuccessStatusCode = undefined,
-    
+
     HeadersMapping = [
                        {<<"Accept">>, <<"accept">>},
                        {<<"Content-Type">>, <<"contentType">>},
                        {<<"x-amz-lex-request-attributes">>, <<"requestAttributes">>},
                        {<<"x-amz-lex-session-attributes">>, <<"sessionAttributes">>}
                      ],
-    {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
-    
-    case request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode) of
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    Query = [],
+    Input = Input1,
+
+    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -221,9 +237,14 @@ post_text(Client, BotAlias, BotName, UserId, Input0, Options) ->
     Method = post,
     Path = ["/bot/", http_uri:encode(BotName), "/alias/", http_uri:encode(BotAlias), "/user/", http_uri:encode(UserId), "/text"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new session or modifies an existing session with an Amazon
 %% Lex bot. Use this operation to enable your application to set the state of
@@ -238,13 +259,16 @@ put_session(Client, BotAlias, BotName, UserId, Input0, Options) ->
     Method = post,
     Path = ["/bot/", http_uri:encode(BotName), "/alias/", http_uri:encode(BotAlias), "/user/", http_uri:encode(UserId), "/session"],
     SuccessStatusCode = undefined,
-    
+
     HeadersMapping = [
                        {<<"Accept">>, <<"accept">>}
                      ],
-    {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
-    
-    case request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode) of
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    Query = [],
+    Input = Input1,
+
+    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -274,17 +298,18 @@ put_session(Client, BotAlias, BotName, UserId, Input0, Options) ->
 %% Internal functions
 %%====================================================================
 
--spec request(aws_client:aws_client(), atom(), iolist(),
+-spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->
     {ok, Result, {integer(), list(), hackney:client()}} |
     {error, Error, {integer(), list(), hackney:client()}} |
     {error, term()} when
     Result :: map(),
     Error :: map().
-request(Client, Method, Path, Headers0, Input, Options, SuccessStatusCode) ->
+request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"lex">>},
     Host = get_host(<<"runtime.lex">>, Client1),
-    URL = get_url(Host, Path, Client1),
+    URL0 = get_url(Host, Path, Client1),
+    URL = aws_request:add_query(URL0, Query),
     AdditionalHeaders = [ {<<"Host">>, Host}
                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
                         ],
