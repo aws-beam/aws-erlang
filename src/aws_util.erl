@@ -54,17 +54,19 @@ encode_uri(Value, true = _MultiSegment) ->
     binary_join(Encoded, <<"/">>).
 
 %% @doc Encode the map's key/value pairs as a querystring.
-encode_query(Map) when is_map(Map) ->
+encode_query(List) when is_list(List) ->
   FoldFun = fun
-              (K, V, Acc) when is_integer(V) ->
+              ({K, V}, Acc) when is_integer(V) ->
                 [{K, integer_to_binary(V)} | Acc];
-              (K, V, Acc) when is_float(V) ->
+              ({K, V}, Acc) when is_float(V) ->
                 [{K, float_to_binary(V)} | Acc];
-              (K, V, Acc) when is_binary(V) ->
-                [{K, V} | Acc]
+              (KV = {_, V}, Acc) when is_binary(V) ->
+                [KV | Acc]
             end,
-  KVs = maps:fold(FoldFun, [], Map),
-  uri_string:compose_query(KVs).
+  KVs = lists:foldl(FoldFun, [], List),
+  uri_string:compose_query(KVs);
+encode_query(Map) when is_map(Map) ->
+  encode_query(maps:to_list(Map)).
 
 %% @doc Encode an Erlang map as XML
 %%

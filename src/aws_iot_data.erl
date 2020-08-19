@@ -22,10 +22,10 @@
 
 -export([delete_thing_shadow/3,
          delete_thing_shadow/4,
-         get_thing_shadow/2,
          get_thing_shadow/3,
-         list_named_shadows_for_thing/2,
-         list_named_shadows_for_thing/3,
+         get_thing_shadow/4,
+         list_named_shadows_for_thing/4,
+         list_named_shadows_for_thing/5,
          publish/3,
          publish/4,
          update_thing_shadow/3,
@@ -48,35 +48,58 @@ delete_thing_shadow(Client, ThingName, Input0, Options) ->
     Method = delete,
     Path = ["/things/", http_uri:encode(ThingName), "/shadow"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    QueryMapping = [
+                     {<<"name">>, <<"shadowName">>}
+                   ],
+    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets the shadow for the specified thing.
 %%
 %% For more information, see <a
 %% href="http://docs.aws.amazon.com/iot/latest/developerguide/API_GetThingShadow.html">GetThingShadow</a>
 %% in the AWS IoT Developer Guide.
-get_thing_shadow(Client, ThingName)
+get_thing_shadow(Client, ThingName, ShadowName)
   when is_map(Client) ->
-    get_thing_shadow(Client, ThingName, []).
-get_thing_shadow(Client, ThingName, Options)
+    get_thing_shadow(Client, ThingName, ShadowName, []).
+get_thing_shadow(Client, ThingName, ShadowName, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/things/", http_uri:encode(ThingName), "/shadow"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"name">>, ShadowName}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the shadows for the specified thing.
-list_named_shadows_for_thing(Client, ThingName)
+list_named_shadows_for_thing(Client, ThingName, NextToken, PageSize)
   when is_map(Client) ->
-    list_named_shadows_for_thing(Client, ThingName, []).
-list_named_shadows_for_thing(Client, ThingName, Options)
+    list_named_shadows_for_thing(Client, ThingName, NextToken, PageSize, []).
+list_named_shadows_for_thing(Client, ThingName, NextToken, PageSize, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/api/things/shadow/ListNamedShadowsForThing/", http_uri:encode(ThingName), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"nextToken">>, NextToken},
+        {<<"pageSize">>, PageSize}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Publishes state information.
 %%
@@ -89,9 +112,15 @@ publish(Client, Topic, Input0, Options) ->
     Method = post,
     Path = ["/topics/", http_uri:encode(Topic), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    QueryMapping = [
+                     {<<"qos">>, <<"qos">>}
+                   ],
+    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the shadow for the specified thing.
 %%
@@ -104,25 +133,32 @@ update_thing_shadow(Client, ThingName, Input0, Options) ->
     Method = post,
     Path = ["/things/", http_uri:encode(ThingName), "/shadow"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    QueryMapping = [
+                     {<<"name">>, <<"shadowName">>}
+                   ],
+    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %%====================================================================
 %% Internal functions
 %%====================================================================
 
--spec request(aws_client:aws_client(), atom(), iolist(),
+-spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->
     {ok, Result, {integer(), list(), hackney:client()}} |
     {error, Error, {integer(), list(), hackney:client()}} |
     {error, term()} when
     Result :: map(),
     Error :: map().
-request(Client, Method, Path, Headers0, Input, Options, SuccessStatusCode) ->
+request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"iotdata">>},
     Host = get_host(<<"data.iot">>, Client1),
-    URL = get_url(Host, Path, Client1),
+    URL0 = get_url(Host, Path, Client1),
+    URL = aws_request:add_query(URL0, Query),
     AdditionalHeaders = [ {<<"Host">>, Host}
                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
                         ],

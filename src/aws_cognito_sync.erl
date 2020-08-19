@@ -45,12 +45,12 @@
          get_cognito_events/3,
          get_identity_pool_configuration/2,
          get_identity_pool_configuration/3,
-         list_datasets/3,
-         list_datasets/4,
-         list_identity_pool_usage/1,
-         list_identity_pool_usage/2,
-         list_records/4,
-         list_records/5,
+         list_datasets/5,
+         list_datasets/6,
+         list_identity_pool_usage/3,
+         list_identity_pool_usage/4,
+         list_records/8,
+         list_records/9,
          register_device/4,
          register_device/5,
          set_cognito_events/3,
@@ -84,9 +84,14 @@ bulk_publish(Client, IdentityPoolId, Input0, Options) ->
     Method = post,
     Path = ["/identitypools/", http_uri:encode(IdentityPoolId), "/bulkpublish"],
     SuccessStatusCode = 200,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specific dataset. The dataset will be deleted
 %% permanently, and the action can't be undone. Datasets that this dataset
@@ -101,9 +106,14 @@ delete_dataset(Client, DatasetName, IdentityId, IdentityPoolId, Input0, Options)
     Method = delete,
     Path = ["/identitypools/", http_uri:encode(IdentityPoolId), "/identities/", http_uri:encode(IdentityId), "/datasets/", http_uri:encode(DatasetName), ""],
     SuccessStatusCode = 200,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets meta data about a dataset by identity and dataset name. With
 %% Amazon Cognito Sync, each identity has access only to its own data. Thus,
@@ -120,8 +130,12 @@ describe_dataset(Client, DatasetName, IdentityId, IdentityPoolId, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/identitypools/", http_uri:encode(IdentityPoolId), "/identities/", http_uri:encode(IdentityId), "/datasets/", http_uri:encode(DatasetName), ""],
     SuccessStatusCode = 200,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets usage details (for example, data storage) about a particular
 %% identity pool.
@@ -135,8 +149,12 @@ describe_identity_pool_usage(Client, IdentityPoolId, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/identitypools/", http_uri:encode(IdentityPoolId), ""],
     SuccessStatusCode = 200,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets usage information for an identity, including number of datasets
 %% and data usage.
@@ -150,8 +168,12 @@ describe_identity_usage(Client, IdentityId, IdentityPoolId, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/identitypools/", http_uri:encode(IdentityPoolId), "/identities/", http_uri:encode(IdentityId), ""],
     SuccessStatusCode = 200,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get the status of the last BulkPublish operation for an identity
 %% pool.
@@ -164,9 +186,14 @@ get_bulk_publish_details(Client, IdentityPoolId, Input0, Options) ->
     Method = post,
     Path = ["/identitypools/", http_uri:encode(IdentityPoolId), "/getBulkPublishDetails"],
     SuccessStatusCode = 200,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets the events and the corresponding Lambda functions associated
 %% with an identity pool.
@@ -180,8 +207,12 @@ get_cognito_events(Client, IdentityPoolId, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/identitypools/", http_uri:encode(IdentityPoolId), "/events"],
     SuccessStatusCode = 200,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the configuration settings of an identity pool.
 %%
@@ -194,8 +225,12 @@ get_identity_pool_configuration(Client, IdentityPoolId, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/identitypools/", http_uri:encode(IdentityPoolId), "/configuration"],
     SuccessStatusCode = 200,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists datasets for an identity. With Amazon Cognito Sync, each
 %% identity has access only to its own data. Thus, the credentials used to
@@ -204,30 +239,48 @@ get_identity_pool_configuration(Client, IdentityPoolId, Options)
 %% ListDatasets can be called with temporary user credentials provided by
 %% Cognito Identity or with developer credentials. You should use the Cognito
 %% Identity credentials to make this API call.
-list_datasets(Client, IdentityId, IdentityPoolId)
+list_datasets(Client, IdentityId, IdentityPoolId, MaxResults, NextToken)
   when is_map(Client) ->
-    list_datasets(Client, IdentityId, IdentityPoolId, []).
-list_datasets(Client, IdentityId, IdentityPoolId, Options)
+    list_datasets(Client, IdentityId, IdentityPoolId, MaxResults, NextToken, []).
+list_datasets(Client, IdentityId, IdentityPoolId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/identitypools/", http_uri:encode(IdentityPoolId), "/identities/", http_uri:encode(IdentityId), "/datasets"],
     SuccessStatusCode = 200,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a list of identity pools registered with Cognito.
 %%
 %% ListIdentityPoolUsage can only be called with developer credentials. You
 %% cannot make this API call with the temporary user credentials provided by
 %% Cognito Identity.
-list_identity_pool_usage(Client)
+list_identity_pool_usage(Client, MaxResults, NextToken)
   when is_map(Client) ->
-    list_identity_pool_usage(Client, []).
-list_identity_pool_usage(Client, Options)
+    list_identity_pool_usage(Client, MaxResults, NextToken, []).
+list_identity_pool_usage(Client, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/identitypools"],
     SuccessStatusCode = 200,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets paginated records, optionally changed after a particular sync
 %% count for a dataset and identity. With Amazon Cognito Sync, each identity
@@ -237,15 +290,26 @@ list_identity_pool_usage(Client, Options)
 %% ListRecords can be called with temporary user credentials provided by
 %% Cognito Identity or with developer credentials. You should use Cognito
 %% Identity credentials to make this API call.
-list_records(Client, DatasetName, IdentityId, IdentityPoolId)
+list_records(Client, DatasetName, IdentityId, IdentityPoolId, LastSyncCount, MaxResults, NextToken, SyncSessionToken)
   when is_map(Client) ->
-    list_records(Client, DatasetName, IdentityId, IdentityPoolId, []).
-list_records(Client, DatasetName, IdentityId, IdentityPoolId, Options)
+    list_records(Client, DatasetName, IdentityId, IdentityPoolId, LastSyncCount, MaxResults, NextToken, SyncSessionToken, []).
+list_records(Client, DatasetName, IdentityId, IdentityPoolId, LastSyncCount, MaxResults, NextToken, SyncSessionToken, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/identitypools/", http_uri:encode(IdentityPoolId), "/identities/", http_uri:encode(IdentityId), "/datasets/", http_uri:encode(DatasetName), "/records"],
     SuccessStatusCode = 200,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"lastSyncCount">>, LastSyncCount},
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken},
+        {<<"syncSessionToken">>, SyncSessionToken}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Registers a device to receive push sync notifications.
 %%
@@ -257,9 +321,14 @@ register_device(Client, IdentityId, IdentityPoolId, Input0, Options) ->
     Method = post,
     Path = ["/identitypools/", http_uri:encode(IdentityPoolId), "/identity/", http_uri:encode(IdentityId), "/device"],
     SuccessStatusCode = 200,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sets the AWS Lambda function for a given event type for an identity
 %% pool. This request only updates the key/value pair specified. Other
@@ -274,9 +343,14 @@ set_cognito_events(Client, IdentityPoolId, Input0, Options) ->
     Method = post,
     Path = ["/identitypools/", http_uri:encode(IdentityPoolId), "/events"],
     SuccessStatusCode = 200,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sets the necessary configuration for push sync.
 %%
@@ -288,9 +362,14 @@ set_identity_pool_configuration(Client, IdentityPoolId, Input0, Options) ->
     Method = post,
     Path = ["/identitypools/", http_uri:encode(IdentityPoolId), "/configuration"],
     SuccessStatusCode = 200,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Subscribes to receive notifications when a dataset is modified by
 %% another device.
@@ -303,9 +382,14 @@ subscribe_to_dataset(Client, DatasetName, DeviceId, IdentityId, IdentityPoolId, 
     Method = post,
     Path = ["/identitypools/", http_uri:encode(IdentityPoolId), "/identities/", http_uri:encode(IdentityId), "/datasets/", http_uri:encode(DatasetName), "/subscriptions/", http_uri:encode(DeviceId), ""],
     SuccessStatusCode = 200,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Unsubscribes from receiving notifications when a dataset is modified
 %% by another device.
@@ -318,9 +402,14 @@ unsubscribe_from_dataset(Client, DatasetName, DeviceId, IdentityId, IdentityPool
     Method = delete,
     Path = ["/identitypools/", http_uri:encode(IdentityPoolId), "/identities/", http_uri:encode(IdentityId), "/datasets/", http_uri:encode(DatasetName), "/subscriptions/", http_uri:encode(DeviceId), ""],
     SuccessStatusCode = 200,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Posts updates to records and adds and deletes records for a dataset
 %% and user.
@@ -346,29 +435,33 @@ update_records(Client, DatasetName, IdentityId, IdentityPoolId, Input0, Options)
     Method = post,
     Path = ["/identitypools/", http_uri:encode(IdentityPoolId), "/identities/", http_uri:encode(IdentityId), "/datasets/", http_uri:encode(DatasetName), ""],
     SuccessStatusCode = 200,
-    
+
     HeadersMapping = [
                        {<<"x-amz-Client-Context">>, <<"ClientContext">>}
                      ],
-    {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
-    
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %%====================================================================
 %% Internal functions
 %%====================================================================
 
--spec request(aws_client:aws_client(), atom(), iolist(),
+-spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->
     {ok, Result, {integer(), list(), hackney:client()}} |
     {error, Error, {integer(), list(), hackney:client()}} |
     {error, term()} when
     Result :: map(),
     Error :: map().
-request(Client, Method, Path, Headers0, Input, Options, SuccessStatusCode) ->
+request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"cognito-sync">>},
     Host = get_host(<<"cognito-sync">>, Client1),
-    URL = get_url(Host, Path, Client1),
+    URL0 = get_url(Host, Path, Client1),
+    URL = aws_request:add_query(URL0, Query),
     AdditionalHeaders = [ {<<"Host">>, Host}
                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
                         ],

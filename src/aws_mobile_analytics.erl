@@ -24,30 +24,34 @@ put_events(Client, Input0, Options) ->
     Method = post,
     Path = ["/2014-06-05/events"],
     SuccessStatusCode = 202,
-    
+
     HeadersMapping = [
                        {<<"x-amz-Client-Context">>, <<"clientContext">>},
                        {<<"x-amz-Client-Context-Encoding">>, <<"clientContextEncoding">>}
                      ],
-    {Headers, Input} = aws_request:build_headers(HeadersMapping, Input0),
-    
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %%====================================================================
 %% Internal functions
 %%====================================================================
 
--spec request(aws_client:aws_client(), atom(), iolist(),
+-spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->
     {ok, Result, {integer(), list(), hackney:client()}} |
     {error, Error, {integer(), list(), hackney:client()}} |
     {error, term()} when
     Result :: map(),
     Error :: map().
-request(Client, Method, Path, Headers0, Input, Options, SuccessStatusCode) ->
+request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"mobileanalytics">>},
     Host = get_host(<<"mobileanalytics">>, Client1),
-    URL = get_url(Host, Path, Client1),
+    URL0 = get_url(Host, Path, Client1),
+    URL = aws_request:add_query(URL0, Query),
     AdditionalHeaders = [ {<<"Host">>, Host}
                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
                         ],

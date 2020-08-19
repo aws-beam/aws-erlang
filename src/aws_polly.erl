@@ -12,16 +12,16 @@
 
 -export([delete_lexicon/3,
          delete_lexicon/4,
-         describe_voices/1,
-         describe_voices/2,
+         describe_voices/5,
+         describe_voices/6,
          get_lexicon/2,
          get_lexicon/3,
          get_speech_synthesis_task/2,
          get_speech_synthesis_task/3,
-         list_lexicons/1,
          list_lexicons/2,
-         list_speech_synthesis_tasks/1,
-         list_speech_synthesis_tasks/2,
+         list_lexicons/3,
+         list_speech_synthesis_tasks/4,
+         list_speech_synthesis_tasks/5,
          put_lexicon/3,
          put_lexicon/4,
          start_speech_synthesis_task/2,
@@ -49,9 +49,14 @@ delete_lexicon(Client, Name, Input0, Options) ->
     Method = delete,
     Path = ["/v1/lexicons/", http_uri:encode(Name), ""],
     SuccessStatusCode = 200,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns the list of voices that are available for use when requesting
 %% speech synthesis. Each voice speaks a specified language, is either male
@@ -73,15 +78,26 @@ delete_lexicon(Client, Name, Input0, Options) ->
 %%
 %% This operation requires permissions to perform the
 %% <code>polly:DescribeVoices</code> action.
-describe_voices(Client)
+describe_voices(Client, Engine, IncludeAdditionalLanguageCodes, LanguageCode, NextToken)
   when is_map(Client) ->
-    describe_voices(Client, []).
-describe_voices(Client, Options)
+    describe_voices(Client, Engine, IncludeAdditionalLanguageCodes, LanguageCode, NextToken, []).
+describe_voices(Client, Engine, IncludeAdditionalLanguageCodes, LanguageCode, NextToken, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/v1/voices"],
     SuccessStatusCode = 200,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"Engine">>, Engine},
+        {<<"IncludeAdditionalLanguageCodes">>, IncludeAdditionalLanguageCodes},
+        {<<"LanguageCode">>, LanguageCode},
+        {<<"NextToken">>, NextToken}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the content of the specified pronunciation lexicon stored in
 %% an AWS Region. For more information, see <a
@@ -94,8 +110,12 @@ get_lexicon(Client, Name, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/v1/lexicons/", http_uri:encode(Name), ""],
     SuccessStatusCode = 200,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a specific SpeechSynthesisTask object based on its TaskID.
 %% This object contains information about the given speech synthesis task,
@@ -108,35 +128,57 @@ get_speech_synthesis_task(Client, TaskId, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/v1/synthesisTasks/", http_uri:encode(TaskId), ""],
     SuccessStatusCode = 200,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of pronunciation lexicons stored in an AWS Region. For
 %% more information, see <a
 %% href="https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html">Managing
 %% Lexicons</a>.
-list_lexicons(Client)
+list_lexicons(Client, NextToken)
   when is_map(Client) ->
-    list_lexicons(Client, []).
-list_lexicons(Client, Options)
+    list_lexicons(Client, NextToken, []).
+list_lexicons(Client, NextToken, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/v1/lexicons"],
     SuccessStatusCode = 200,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"NextToken">>, NextToken}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of SpeechSynthesisTask objects ordered by their
 %% creation date. This operation can filter the tasks by their status, for
 %% example, allowing users to list only tasks that are completed.
-list_speech_synthesis_tasks(Client)
+list_speech_synthesis_tasks(Client, MaxResults, NextToken, Status)
   when is_map(Client) ->
-    list_speech_synthesis_tasks(Client, []).
-list_speech_synthesis_tasks(Client, Options)
+    list_speech_synthesis_tasks(Client, MaxResults, NextToken, Status, []).
+list_speech_synthesis_tasks(Client, MaxResults, NextToken, Status, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/v1/synthesisTasks"],
     SuccessStatusCode = 200,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"MaxResults">>, MaxResults},
+        {<<"NextToken">>, NextToken},
+        {<<"Status">>, Status}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Stores a pronunciation lexicon in an AWS Region. If a lexicon with
 %% the same name already exists in the region, it is overwritten by the new
@@ -153,9 +195,14 @@ put_lexicon(Client, Name, Input0, Options) ->
     Method = put,
     Path = ["/v1/lexicons/", http_uri:encode(Name), ""],
     SuccessStatusCode = 200,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Allows the creation of an asynchronous synthesis task, by starting a
 %% new <code>SpeechSynthesisTask</code>. This operation requires all the
@@ -171,9 +218,14 @@ start_speech_synthesis_task(Client, Input0, Options) ->
     Method = post,
     Path = ["/v1/synthesisTasks"],
     SuccessStatusCode = 200,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Synthesizes UTF-8 input, plain text or SSML, to a stream of bytes.
 %% SSML input must be valid, well-formed SSML. Some alphabets might not be
@@ -188,9 +240,14 @@ synthesize_speech(Client, Input0, Options) ->
     Method = post,
     Path = ["/v1/speech"],
     SuccessStatusCode = 200,
+
     Headers = [],
-    Input = Input0,
-    case request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode) of
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -213,17 +270,18 @@ synthesize_speech(Client, Input0, Options) ->
 %% Internal functions
 %%====================================================================
 
--spec request(aws_client:aws_client(), atom(), iolist(),
+-spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->
     {ok, Result, {integer(), list(), hackney:client()}} |
     {error, Error, {integer(), list(), hackney:client()}} |
     {error, term()} when
     Result :: map(),
     Error :: map().
-request(Client, Method, Path, Headers0, Input, Options, SuccessStatusCode) ->
+request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"polly">>},
     Host = get_host(<<"polly">>, Client1),
-    URL = get_url(Host, Path, Client1),
+    URL0 = get_url(Host, Path, Client1),
+    URL = aws_request:add_query(URL0, Query),
     AdditionalHeaders = [ {<<"Host">>, Host}
                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
                         ],

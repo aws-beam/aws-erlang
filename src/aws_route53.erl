@@ -49,8 +49,8 @@
          get_change/3,
          get_checker_ip_ranges/1,
          get_checker_ip_ranges/2,
-         get_geo_location/1,
-         get_geo_location/2,
+         get_geo_location/4,
+         get_geo_location/5,
          get_health_check/2,
          get_health_check/3,
          get_health_check_count/1,
@@ -77,40 +77,40 @@
          get_traffic_policy_instance/3,
          get_traffic_policy_instance_count/1,
          get_traffic_policy_instance_count/2,
-         list_geo_locations/1,
-         list_geo_locations/2,
-         list_health_checks/1,
-         list_health_checks/2,
-         list_hosted_zones/1,
-         list_hosted_zones/2,
-         list_hosted_zones_by_name/1,
-         list_hosted_zones_by_name/2,
-         list_hosted_zones_by_v_p_c/1,
-         list_hosted_zones_by_v_p_c/2,
-         list_query_logging_configs/1,
-         list_query_logging_configs/2,
-         list_resource_record_sets/2,
-         list_resource_record_sets/3,
-         list_reusable_delegation_sets/1,
-         list_reusable_delegation_sets/2,
+         list_geo_locations/5,
+         list_geo_locations/6,
+         list_health_checks/3,
+         list_health_checks/4,
+         list_hosted_zones/4,
+         list_hosted_zones/5,
+         list_hosted_zones_by_name/4,
+         list_hosted_zones_by_name/5,
+         list_hosted_zones_by_v_p_c/5,
+         list_hosted_zones_by_v_p_c/6,
+         list_query_logging_configs/4,
+         list_query_logging_configs/5,
+         list_resource_record_sets/6,
+         list_resource_record_sets/7,
+         list_reusable_delegation_sets/3,
+         list_reusable_delegation_sets/4,
          list_tags_for_resource/3,
          list_tags_for_resource/4,
          list_tags_for_resources/3,
          list_tags_for_resources/4,
-         list_traffic_policies/1,
-         list_traffic_policies/2,
-         list_traffic_policy_instances/1,
-         list_traffic_policy_instances/2,
-         list_traffic_policy_instances_by_hosted_zone/1,
-         list_traffic_policy_instances_by_hosted_zone/2,
-         list_traffic_policy_instances_by_policy/1,
-         list_traffic_policy_instances_by_policy/2,
-         list_traffic_policy_versions/2,
-         list_traffic_policy_versions/3,
-         list_v_p_c_association_authorizations/2,
-         list_v_p_c_association_authorizations/3,
-         test_d_n_s_answer/1,
-         test_d_n_s_answer/2,
+         list_traffic_policies/3,
+         list_traffic_policies/4,
+         list_traffic_policy_instances/5,
+         list_traffic_policy_instances/6,
+         list_traffic_policy_instances_by_hosted_zone/5,
+         list_traffic_policy_instances_by_hosted_zone/6,
+         list_traffic_policy_instances_by_policy/7,
+         list_traffic_policy_instances_by_policy/8,
+         list_traffic_policy_versions/4,
+         list_traffic_policy_versions/5,
+         list_v_p_c_association_authorizations/4,
+         list_v_p_c_association_authorizations/5,
+         test_d_n_s_answer/7,
+         test_d_n_s_answer/8,
          update_health_check/3,
          update_health_check/4,
          update_hosted_zone_comment/3,
@@ -156,9 +156,14 @@ associate_v_p_c_with_hosted_zone(Client, HostedZoneId, Input0, Options) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone/", http_uri:encode(HostedZoneId), "/associatevpc"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates, changes, or deletes a resource record set, which contains
 %% authoritative DNS information for a specified domain name or subdomain
@@ -261,9 +266,14 @@ change_resource_record_sets(Client, HostedZoneId, Input0, Options) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone/", http_uri:encode(HostedZoneId), "/rrset/"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds, edits, or deletes tags for a health check or a hosted zone.
 %%
@@ -277,9 +287,14 @@ change_tags_for_resource(Client, ResourceId, ResourceType, Input0, Options) ->
     Method = post,
     Path = ["/2013-04-01/tags/", http_uri:encode(ResourceType), "/", http_uri:encode(ResourceId), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new health check.
 %%
@@ -325,9 +340,14 @@ create_health_check(Client, Input0, Options) ->
     Method = post,
     Path = ["/2013-04-01/healthcheck"],
     SuccessStatusCode = 201,
+
     Headers = [],
-    Input = Input0,
-    case request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode) of
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -393,9 +413,14 @@ create_hosted_zone(Client, Input0, Options) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone"],
     SuccessStatusCode = 201,
+
     Headers = [],
-    Input = Input0,
-    case request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode) of
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -528,9 +553,14 @@ create_query_logging_config(Client, Input0, Options) ->
     Method = post,
     Path = ["/2013-04-01/queryloggingconfig"],
     SuccessStatusCode = 201,
+
     Headers = [],
-    Input = Input0,
-    case request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode) of
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -607,9 +637,14 @@ create_reusable_delegation_set(Client, Input0, Options) ->
     Method = post,
     Path = ["/2013-04-01/delegationset"],
     SuccessStatusCode = 201,
+
     Headers = [],
-    Input = Input0,
-    case request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode) of
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -636,9 +671,14 @@ create_traffic_policy(Client, Input0, Options) ->
     Method = post,
     Path = ["/2013-04-01/trafficpolicy"],
     SuccessStatusCode = 201,
+
     Headers = [],
-    Input = Input0,
-    case request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode) of
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -669,9 +709,14 @@ create_traffic_policy_instance(Client, Input0, Options) ->
     Method = post,
     Path = ["/2013-04-01/trafficpolicyinstance"],
     SuccessStatusCode = 201,
+
     Headers = [],
-    Input = Input0,
-    case request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode) of
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -703,9 +748,14 @@ create_traffic_policy_version(Client, Id, Input0, Options) ->
     Method = post,
     Path = ["/2013-04-01/trafficpolicy/", http_uri:encode(Id), ""],
     SuccessStatusCode = 201,
+
     Headers = [],
-    Input = Input0,
-    case request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode) of
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -742,9 +792,14 @@ create_v_p_c_association_authorization(Client, HostedZoneId, Input0, Options) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone/", http_uri:encode(HostedZoneId), "/authorizevpcassociation"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a health check.
 %%
@@ -770,9 +825,14 @@ delete_health_check(Client, HealthCheckId, Input0, Options) ->
     Method = delete,
     Path = ["/2013-04-01/healthcheck/", http_uri:encode(HealthCheckId), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a hosted zone.
 %%
@@ -833,9 +893,14 @@ delete_hosted_zone(Client, Id, Input0, Options) ->
     Method = delete,
     Path = ["/2013-04-01/hostedzone/", http_uri:encode(Id), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a configuration for DNS query logging. If you delete a
 %% configuration, Amazon Route 53 stops sending query logs to CloudWatch
@@ -850,9 +915,14 @@ delete_query_logging_config(Client, Id, Input0, Options) ->
     Method = delete,
     Path = ["/2013-04-01/queryloggingconfig/", http_uri:encode(Id), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a reusable delegation set.
 %%
@@ -870,9 +940,14 @@ delete_reusable_delegation_set(Client, Id, Input0, Options) ->
     Method = delete,
     Path = ["/2013-04-01/delegationset/", http_uri:encode(Id), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a traffic policy.
 delete_traffic_policy(Client, Id, Version, Input) ->
@@ -881,9 +956,14 @@ delete_traffic_policy(Client, Id, Version, Input0, Options) ->
     Method = delete,
     Path = ["/2013-04-01/trafficpolicy/", http_uri:encode(Id), "/", http_uri:encode(Version), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a traffic policy instance and all of the resource record sets
 %% that Amazon Route 53 created when you created the instance.
@@ -898,9 +978,14 @@ delete_traffic_policy_instance(Client, Id, Input0, Options) ->
     Method = delete,
     Path = ["/2013-04-01/trafficpolicyinstance/", http_uri:encode(Id), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes authorization to submit an
 %% <code>AssociateVPCWithHostedZone</code> request to associate a specified
@@ -922,9 +1007,14 @@ delete_v_p_c_association_authorization(Client, HostedZoneId, Input0, Options) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone/", http_uri:encode(HostedZoneId), "/deauthorizevpcassociation"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates an Amazon Virtual Private Cloud (Amazon VPC) from an
 %% Amazon Route 53 private hosted zone. Note the following:
@@ -959,9 +1049,14 @@ disassociate_v_p_c_from_hosted_zone(Client, HostedZoneId, Input0, Options) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone/", http_uri:encode(HostedZoneId), "/disassociatevpc"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets the specified limit for the current account, for example, the
 %% maximum number of health checks that you can create using the account.
@@ -986,8 +1081,12 @@ get_account_limit(Client, Type, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2013-04-01/accountlimit/", http_uri:encode(Type), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the current status of a change batch request. The status is
 %% one of the following values:
@@ -1007,8 +1106,12 @@ get_change(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2013-04-01/change/", http_uri:encode(Id), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc <important> <code>GetCheckerIpRanges</code> still works, but we
 %% recommend that you download ip-ranges.json, which includes IP address
@@ -1025,8 +1128,12 @@ get_checker_ip_ranges(Client, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2013-04-01/checkeripranges"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about whether a specified geographic location is
 %% supported for Amazon Route 53 geolocation resource record sets.
@@ -1048,15 +1155,25 @@ get_checker_ip_ranges(Client, Options)
 %%
 %% <code>GET /2013-04-01/geolocation?countrycode=<i>two-character country
 %% code</i>&amp;subdivisioncode=<i>subdivision code</i> </code>
-get_geo_location(Client)
+get_geo_location(Client, ContinentCode, CountryCode, SubdivisionCode)
   when is_map(Client) ->
-    get_geo_location(Client, []).
-get_geo_location(Client, Options)
+    get_geo_location(Client, ContinentCode, CountryCode, SubdivisionCode, []).
+get_geo_location(Client, ContinentCode, CountryCode, SubdivisionCode, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2013-04-01/geolocation"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"continentcode">>, ContinentCode},
+        {<<"countrycode">>, CountryCode},
+        {<<"subdivisioncode">>, SubdivisionCode}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a specified health check.
 get_health_check(Client, HealthCheckId)
@@ -1066,8 +1183,12 @@ get_health_check(Client, HealthCheckId, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2013-04-01/healthcheck/", http_uri:encode(HealthCheckId), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the number of health checks that are associated with the
 %% current AWS account.
@@ -1078,8 +1199,12 @@ get_health_check_count(Client, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2013-04-01/healthcheckcount"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the reason that a specified health check failed most recently.
 get_health_check_last_failure_reason(Client, HealthCheckId)
@@ -1089,8 +1214,12 @@ get_health_check_last_failure_reason(Client, HealthCheckId, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2013-04-01/healthcheck/", http_uri:encode(HealthCheckId), "/lastfailurereason"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets status of a specified health check.
 get_health_check_status(Client, HealthCheckId)
@@ -1100,8 +1229,12 @@ get_health_check_status(Client, HealthCheckId, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2013-04-01/healthcheck/", http_uri:encode(HealthCheckId), "/status"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a specified hosted zone including the four
 %% name servers assigned to the hosted zone.
@@ -1112,8 +1245,12 @@ get_hosted_zone(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2013-04-01/hostedzone/", http_uri:encode(Id), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the number of hosted zones that are associated with the
 %% current AWS account.
@@ -1124,8 +1261,12 @@ get_hosted_zone_count(Client, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2013-04-01/hostedzonecount"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the specified limit for a specified hosted zone, for example,
 %% the maximum number of records that you can create in the hosted zone.
@@ -1143,8 +1284,12 @@ get_hosted_zone_limit(Client, HostedZoneId, Type, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2013-04-01/hostedzonelimit/", http_uri:encode(HostedZoneId), "/", http_uri:encode(Type), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a specified configuration for DNS query
 %% logging.
@@ -1161,8 +1306,12 @@ get_query_logging_config(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2013-04-01/queryloggingconfig/", http_uri:encode(Id), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a specified reusable delegation set,
 %% including the four name servers that are assigned to the delegation set.
@@ -1173,8 +1322,12 @@ get_reusable_delegation_set(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2013-04-01/delegationset/", http_uri:encode(Id), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the maximum number of hosted zones that you can associate with
 %% the specified reusable delegation set.
@@ -1192,8 +1345,12 @@ get_reusable_delegation_set_limit(Client, DelegationSetId, Type, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2013-04-01/reusabledelegationsetlimit/", http_uri:encode(DelegationSetId), "/", http_uri:encode(Type), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a specific traffic policy version.
 get_traffic_policy(Client, Id, Version)
@@ -1203,8 +1360,12 @@ get_traffic_policy(Client, Id, Version, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2013-04-01/trafficpolicy/", http_uri:encode(Id), "/", http_uri:encode(Version), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a specified traffic policy instance.
 %%
@@ -1225,8 +1386,12 @@ get_traffic_policy_instance(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2013-04-01/trafficpolicyinstance/", http_uri:encode(Id), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the number of traffic policy instances that are associated with
 %% the current AWS account.
@@ -1237,8 +1402,12 @@ get_traffic_policy_instance_count(Client, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2013-04-01/trafficpolicyinstancecount"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of supported geographic locations.
 %%
@@ -1250,27 +1419,47 @@ get_traffic_policy_instance_count(Client, Options)
 %% For a list of supported geolocation codes, see the <a
 %% href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_GeoLocation.html">GeoLocation</a>
 %% data type.
-list_geo_locations(Client)
+list_geo_locations(Client, MaxItems, StartContinentCode, StartCountryCode, StartSubdivisionCode)
   when is_map(Client) ->
-    list_geo_locations(Client, []).
-list_geo_locations(Client, Options)
+    list_geo_locations(Client, MaxItems, StartContinentCode, StartCountryCode, StartSubdivisionCode, []).
+list_geo_locations(Client, MaxItems, StartContinentCode, StartCountryCode, StartSubdivisionCode, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2013-04-01/geolocations"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"maxitems">>, MaxItems},
+        {<<"startcontinentcode">>, StartContinentCode},
+        {<<"startcountrycode">>, StartCountryCode},
+        {<<"startsubdivisioncode">>, StartSubdivisionCode}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieve a list of the health checks that are associated with the
 %% current AWS account.
-list_health_checks(Client)
+list_health_checks(Client, Marker, MaxItems)
   when is_map(Client) ->
-    list_health_checks(Client, []).
-list_health_checks(Client, Options)
+    list_health_checks(Client, Marker, MaxItems, []).
+list_health_checks(Client, Marker, MaxItems, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2013-04-01/healthcheck"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"marker">>, Marker},
+        {<<"maxitems">>, MaxItems}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of the public and private hosted zones that are
 %% associated with the current AWS account. The response includes a
@@ -1279,15 +1468,25 @@ list_health_checks(Client, Options)
 %% Amazon Route 53 returns a maximum of 100 items in each response. If you
 %% have a lot of hosted zones, you can use the <code>maxitems</code>
 %% parameter to list them in groups of up to 100.
-list_hosted_zones(Client)
+list_hosted_zones(Client, DelegationSetId, Marker, MaxItems)
   when is_map(Client) ->
-    list_hosted_zones(Client, []).
-list_hosted_zones(Client, Options)
+    list_hosted_zones(Client, DelegationSetId, Marker, MaxItems, []).
+list_hosted_zones(Client, DelegationSetId, Marker, MaxItems, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2013-04-01/hostedzone"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"delegationsetid">>, DelegationSetId},
+        {<<"marker">>, Marker},
+        {<<"maxitems">>, MaxItems}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of your hosted zones in lexicographic order. The
 %% response includes a <code>HostedZones</code> child element for each hosted
@@ -1348,15 +1547,25 @@ list_hosted_zones(Client, Options)
 %% respectively.
 %%
 %% </li> </ul>
-list_hosted_zones_by_name(Client)
+list_hosted_zones_by_name(Client, DNSName, HostedZoneId, MaxItems)
   when is_map(Client) ->
-    list_hosted_zones_by_name(Client, []).
-list_hosted_zones_by_name(Client, Options)
+    list_hosted_zones_by_name(Client, DNSName, HostedZoneId, MaxItems, []).
+list_hosted_zones_by_name(Client, DNSName, HostedZoneId, MaxItems, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2013-04-01/hostedzonesbyname"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"dnsname">>, DNSName},
+        {<<"hostedzoneid">>, HostedZoneId},
+        {<<"maxitems">>, MaxItems}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all the private hosted zones that a specified VPC is associated
 %% with, regardless of which AWS account or AWS service owns the hosted
@@ -1374,15 +1583,26 @@ list_hosted_zones_by_name(Client, Options)
 %% <code>Owner</code> is <code>efs.amazonaws.com</code>.
 %%
 %% </li> </ul>
-list_hosted_zones_by_v_p_c(Client)
+list_hosted_zones_by_v_p_c(Client, MaxItems, NextToken, VPCId, VPCRegion)
   when is_map(Client) ->
-    list_hosted_zones_by_v_p_c(Client, []).
-list_hosted_zones_by_v_p_c(Client, Options)
+    list_hosted_zones_by_v_p_c(Client, MaxItems, NextToken, VPCId, VPCRegion, []).
+list_hosted_zones_by_v_p_c(Client, MaxItems, NextToken, VPCId, VPCRegion, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2013-04-01/hostedzonesbyvpc"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"maxitems">>, MaxItems},
+        {<<"nexttoken">>, NextToken},
+        {<<"vpcid">>, VPCId},
+        {<<"vpcregion">>, VPCRegion}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the configurations for DNS query logging that are associated
 %% with the current AWS account or the configuration that is associated with
@@ -1394,15 +1614,25 @@ list_hosted_zones_by_v_p_c(Client, Options)
 %% <a
 %% href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html">Logging
 %% DNS Queries</a> in the <i>Amazon Route 53 Developer Guide</i>.
-list_query_logging_configs(Client)
+list_query_logging_configs(Client, HostedZoneId, MaxResults, NextToken)
   when is_map(Client) ->
-    list_query_logging_configs(Client, []).
-list_query_logging_configs(Client, Options)
+    list_query_logging_configs(Client, HostedZoneId, MaxResults, NextToken, []).
+list_query_logging_configs(Client, HostedZoneId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2013-04-01/queryloggingconfig"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"hostedzoneid">>, HostedZoneId},
+        {<<"maxresults">>, MaxResults},
+        {<<"nexttoken">>, NextToken}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the resource record sets in a specified hosted zone.
 %%
@@ -1470,27 +1700,47 @@ list_query_logging_configs(Client, Options)
 %% another <code>ListResourceRecordSets</code> request, and specify those
 %% values for <code>StartRecordName</code>, <code>StartRecordType</code>, and
 %% <code>StartRecordIdentifier</code>.
-list_resource_record_sets(Client, HostedZoneId)
+list_resource_record_sets(Client, HostedZoneId, MaxItems, StartRecordIdentifier, StartRecordName, StartRecordType)
   when is_map(Client) ->
-    list_resource_record_sets(Client, HostedZoneId, []).
-list_resource_record_sets(Client, HostedZoneId, Options)
+    list_resource_record_sets(Client, HostedZoneId, MaxItems, StartRecordIdentifier, StartRecordName, StartRecordType, []).
+list_resource_record_sets(Client, HostedZoneId, MaxItems, StartRecordIdentifier, StartRecordName, StartRecordType, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2013-04-01/hostedzone/", http_uri:encode(HostedZoneId), "/rrset"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"maxitems">>, MaxItems},
+        {<<"identifier">>, StartRecordIdentifier},
+        {<<"name">>, StartRecordName},
+        {<<"type">>, StartRecordType}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of the reusable delegation sets that are associated
 %% with the current AWS account.
-list_reusable_delegation_sets(Client)
+list_reusable_delegation_sets(Client, Marker, MaxItems)
   when is_map(Client) ->
-    list_reusable_delegation_sets(Client, []).
-list_reusable_delegation_sets(Client, Options)
+    list_reusable_delegation_sets(Client, Marker, MaxItems, []).
+list_reusable_delegation_sets(Client, Marker, MaxItems, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2013-04-01/delegationset"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"marker">>, Marker},
+        {<<"maxitems">>, MaxItems}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists tags for one health check or hosted zone.
 %%
@@ -1505,8 +1755,12 @@ list_tags_for_resource(Client, ResourceId, ResourceType, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2013-04-01/tags/", http_uri:encode(ResourceType), "/", http_uri:encode(ResourceId), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists tags for up to 10 health checks or hosted zones.
 %%
@@ -1520,22 +1774,36 @@ list_tags_for_resources(Client, ResourceType, Input0, Options) ->
     Method = post,
     Path = ["/2013-04-01/tags/", http_uri:encode(ResourceType), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets information about the latest version for every traffic policy
 %% that is associated with the current AWS account. Policies are listed in
 %% the order that they were created in.
-list_traffic_policies(Client)
+list_traffic_policies(Client, MaxItems, TrafficPolicyIdMarker)
   when is_map(Client) ->
-    list_traffic_policies(Client, []).
-list_traffic_policies(Client, Options)
+    list_traffic_policies(Client, MaxItems, TrafficPolicyIdMarker, []).
+list_traffic_policies(Client, MaxItems, TrafficPolicyIdMarker, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2013-04-01/trafficpolicies"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"maxitems">>, MaxItems},
+        {<<"trafficpolicyid">>, TrafficPolicyIdMarker}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about the traffic policy instances that you created
 %% by using the current AWS account.
@@ -1548,15 +1816,26 @@ list_traffic_policies(Client, Options)
 %% </note> Route 53 returns a maximum of 100 items in each response. If you
 %% have a lot of traffic policy instances, you can use the
 %% <code>MaxItems</code> parameter to list them in groups of up to 100.
-list_traffic_policy_instances(Client)
+list_traffic_policy_instances(Client, HostedZoneIdMarker, MaxItems, TrafficPolicyInstanceNameMarker, TrafficPolicyInstanceTypeMarker)
   when is_map(Client) ->
-    list_traffic_policy_instances(Client, []).
-list_traffic_policy_instances(Client, Options)
+    list_traffic_policy_instances(Client, HostedZoneIdMarker, MaxItems, TrafficPolicyInstanceNameMarker, TrafficPolicyInstanceTypeMarker, []).
+list_traffic_policy_instances(Client, HostedZoneIdMarker, MaxItems, TrafficPolicyInstanceNameMarker, TrafficPolicyInstanceTypeMarker, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2013-04-01/trafficpolicyinstances"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"hostedzoneid">>, HostedZoneIdMarker},
+        {<<"maxitems">>, MaxItems},
+        {<<"trafficpolicyinstancename">>, TrafficPolicyInstanceNameMarker},
+        {<<"trafficpolicyinstancetype">>, TrafficPolicyInstanceTypeMarker}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about the traffic policy instances that you created
 %% in a specified hosted zone.
@@ -1570,15 +1849,26 @@ list_traffic_policy_instances(Client, Options)
 %% </note> Route 53 returns a maximum of 100 items in each response. If you
 %% have a lot of traffic policy instances, you can use the
 %% <code>MaxItems</code> parameter to list them in groups of up to 100.
-list_traffic_policy_instances_by_hosted_zone(Client)
+list_traffic_policy_instances_by_hosted_zone(Client, HostedZoneId, MaxItems, TrafficPolicyInstanceNameMarker, TrafficPolicyInstanceTypeMarker)
   when is_map(Client) ->
-    list_traffic_policy_instances_by_hosted_zone(Client, []).
-list_traffic_policy_instances_by_hosted_zone(Client, Options)
+    list_traffic_policy_instances_by_hosted_zone(Client, HostedZoneId, MaxItems, TrafficPolicyInstanceNameMarker, TrafficPolicyInstanceTypeMarker, []).
+list_traffic_policy_instances_by_hosted_zone(Client, HostedZoneId, MaxItems, TrafficPolicyInstanceNameMarker, TrafficPolicyInstanceTypeMarker, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2013-04-01/trafficpolicyinstances/hostedzone"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"id">>, HostedZoneId},
+        {<<"maxitems">>, MaxItems},
+        {<<"trafficpolicyinstancename">>, TrafficPolicyInstanceNameMarker},
+        {<<"trafficpolicyinstancetype">>, TrafficPolicyInstanceTypeMarker}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about the traffic policy instances that you created
 %% by using a specify traffic policy version.
@@ -1592,30 +1882,52 @@ list_traffic_policy_instances_by_hosted_zone(Client, Options)
 %% </note> Route 53 returns a maximum of 100 items in each response. If you
 %% have a lot of traffic policy instances, you can use the
 %% <code>MaxItems</code> parameter to list them in groups of up to 100.
-list_traffic_policy_instances_by_policy(Client)
+list_traffic_policy_instances_by_policy(Client, HostedZoneIdMarker, MaxItems, TrafficPolicyId, TrafficPolicyInstanceNameMarker, TrafficPolicyInstanceTypeMarker, TrafficPolicyVersion)
   when is_map(Client) ->
-    list_traffic_policy_instances_by_policy(Client, []).
-list_traffic_policy_instances_by_policy(Client, Options)
+    list_traffic_policy_instances_by_policy(Client, HostedZoneIdMarker, MaxItems, TrafficPolicyId, TrafficPolicyInstanceNameMarker, TrafficPolicyInstanceTypeMarker, TrafficPolicyVersion, []).
+list_traffic_policy_instances_by_policy(Client, HostedZoneIdMarker, MaxItems, TrafficPolicyId, TrafficPolicyInstanceNameMarker, TrafficPolicyInstanceTypeMarker, TrafficPolicyVersion, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2013-04-01/trafficpolicyinstances/trafficpolicy"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"hostedzoneid">>, HostedZoneIdMarker},
+        {<<"maxitems">>, MaxItems},
+        {<<"id">>, TrafficPolicyId},
+        {<<"trafficpolicyinstancename">>, TrafficPolicyInstanceNameMarker},
+        {<<"trafficpolicyinstancetype">>, TrafficPolicyInstanceTypeMarker},
+        {<<"version">>, TrafficPolicyVersion}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about all of the versions for a specified traffic
 %% policy.
 %%
 %% Traffic policy versions are listed in numerical order by
 %% <code>VersionNumber</code>.
-list_traffic_policy_versions(Client, Id)
+list_traffic_policy_versions(Client, Id, MaxItems, TrafficPolicyVersionMarker)
   when is_map(Client) ->
-    list_traffic_policy_versions(Client, Id, []).
-list_traffic_policy_versions(Client, Id, Options)
+    list_traffic_policy_versions(Client, Id, MaxItems, TrafficPolicyVersionMarker, []).
+list_traffic_policy_versions(Client, Id, MaxItems, TrafficPolicyVersionMarker, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2013-04-01/trafficpolicies/", http_uri:encode(Id), "/versions"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"maxitems">>, MaxItems},
+        {<<"trafficpolicyversion">>, TrafficPolicyVersionMarker}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a list of the VPCs that were created by other accounts and that
 %% can be associated with a specified hosted zone because you've submitted
@@ -1623,29 +1935,51 @@ list_traffic_policy_versions(Client, Id, Options)
 %%
 %% The response includes a <code>VPCs</code> element with a <code>VPC</code>
 %% child element for each VPC that can be associated with the hosted zone.
-list_v_p_c_association_authorizations(Client, HostedZoneId)
+list_v_p_c_association_authorizations(Client, HostedZoneId, MaxResults, NextToken)
   when is_map(Client) ->
-    list_v_p_c_association_authorizations(Client, HostedZoneId, []).
-list_v_p_c_association_authorizations(Client, HostedZoneId, Options)
+    list_v_p_c_association_authorizations(Client, HostedZoneId, MaxResults, NextToken, []).
+list_v_p_c_association_authorizations(Client, HostedZoneId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2013-04-01/hostedzone/", http_uri:encode(HostedZoneId), "/authorizevpcassociation"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"maxresults">>, MaxResults},
+        {<<"nexttoken">>, NextToken}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the value that Amazon Route 53 returns in response to a DNS
 %% request for a specified record name and type. You can optionally specify
 %% the IP address of a DNS resolver, an EDNS0 client subnet IP address, and a
 %% subnet mask.
-test_d_n_s_answer(Client)
+test_d_n_s_answer(Client, EDNS0ClientSubnetIP, EDNS0ClientSubnetMask, HostedZoneId, RecordName, RecordType, ResolverIP)
   when is_map(Client) ->
-    test_d_n_s_answer(Client, []).
-test_d_n_s_answer(Client, Options)
+    test_d_n_s_answer(Client, EDNS0ClientSubnetIP, EDNS0ClientSubnetMask, HostedZoneId, RecordName, RecordType, ResolverIP, []).
+test_d_n_s_answer(Client, EDNS0ClientSubnetIP, EDNS0ClientSubnetMask, HostedZoneId, RecordName, RecordType, ResolverIP, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2013-04-01/testdnsanswer"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"edns0clientsubnetip">>, EDNS0ClientSubnetIP},
+        {<<"edns0clientsubnetmask">>, EDNS0ClientSubnetMask},
+        {<<"hostedzoneid">>, HostedZoneId},
+        {<<"recordname">>, RecordName},
+        {<<"recordtype">>, RecordType},
+        {<<"resolverip">>, ResolverIP}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Updates an existing health check. Note that some values can't be
 %% updated.
@@ -1660,9 +1994,14 @@ update_health_check(Client, HealthCheckId, Input0, Options) ->
     Method = post,
     Path = ["/2013-04-01/healthcheck/", http_uri:encode(HealthCheckId), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the comment for a specified hosted zone.
 update_hosted_zone_comment(Client, Id, Input) ->
@@ -1671,9 +2010,14 @@ update_hosted_zone_comment(Client, Id, Input0, Options) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone/", http_uri:encode(Id), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the comment for a specified traffic policy version.
 update_traffic_policy_comment(Client, Id, Version, Input) ->
@@ -1682,9 +2026,14 @@ update_traffic_policy_comment(Client, Id, Version, Input0, Options) ->
     Method = post,
     Path = ["/2013-04-01/trafficpolicy/", http_uri:encode(Id), "/", http_uri:encode(Version), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the resource record sets in a specified hosted zone that were
 %% created based on the settings in a specified traffic policy version.
@@ -1713,26 +2062,32 @@ update_traffic_policy_instance(Client, Id, Input0, Options) ->
     Method = post,
     Path = ["/2013-04-01/trafficpolicyinstance/", http_uri:encode(Id), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %%====================================================================
 %% Internal functions
 %%====================================================================
 
--spec request(aws_client:aws_client(), atom(), iolist(),
+-spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->
     {ok, Result, {integer(), list(), hackney:client()}} |
     {error, Error, {integer(), list(), hackney:client()}} |
     {error, term()} when
     Result :: map() | undefined,
     Error :: map().
-request(Client, Method, Path, Headers0, Input, Options, SuccessStatusCode) ->
+request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"route53">>,
                       region => <<"us-east-1">>},
     Host = get_host(<<"route53">>, Client1),
-    URL = get_url(Host, Path, Client1),
+    URL0 = get_url(Host, Path, Client1),
+    URL = aws_request:add_query(URL0, Query),
     AdditionalHeaders = [ {<<"Host">>, Host}
                         , {<<"Content-Type">>, <<"text/xml">>}
                         ],

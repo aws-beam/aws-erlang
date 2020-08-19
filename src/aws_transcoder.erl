@@ -18,14 +18,14 @@
          delete_pipeline/4,
          delete_preset/3,
          delete_preset/4,
-         list_jobs_by_pipeline/2,
-         list_jobs_by_pipeline/3,
-         list_jobs_by_status/2,
-         list_jobs_by_status/3,
-         list_pipelines/1,
-         list_pipelines/2,
-         list_presets/1,
-         list_presets/2,
+         list_jobs_by_pipeline/4,
+         list_jobs_by_pipeline/5,
+         list_jobs_by_status/4,
+         list_jobs_by_status/5,
+         list_pipelines/3,
+         list_pipelines/4,
+         list_presets/3,
+         list_presets/4,
          read_job/2,
          read_job/3,
          read_pipeline/2,
@@ -61,9 +61,14 @@ cancel_job(Client, Id, Input0, Options) ->
     Method = delete,
     Path = ["/2012-09-25/jobs/", http_uri:encode(Id), ""],
     SuccessStatusCode = 202,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc When you create a job, Elastic Transcoder returns JSON data that
 %% includes the values that you specified plus information about the job that
@@ -79,9 +84,14 @@ create_job(Client, Input0, Options) ->
     Method = post,
     Path = ["/2012-09-25/jobs"],
     SuccessStatusCode = 201,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The CreatePipeline operation creates a pipeline with settings that
 %% you specify.
@@ -91,9 +101,14 @@ create_pipeline(Client, Input0, Options) ->
     Method = post,
     Path = ["/2012-09-25/pipelines"],
     SuccessStatusCode = 201,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The CreatePreset operation creates a preset with settings that you
 %% specify.
@@ -119,9 +134,14 @@ create_preset(Client, Input0, Options) ->
     Method = post,
     Path = ["/2012-09-25/presets"],
     SuccessStatusCode = 201,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The DeletePipeline operation removes a pipeline.
 %%
@@ -134,9 +154,14 @@ delete_pipeline(Client, Id, Input0, Options) ->
     Method = delete,
     Path = ["/2012-09-25/pipelines/", http_uri:encode(Id), ""],
     SuccessStatusCode = 202,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The DeletePreset operation removes a preset that you've added in an
 %% AWS region.
@@ -151,9 +176,14 @@ delete_preset(Client, Id, Input0, Options) ->
     Method = delete,
     Path = ["/2012-09-25/presets/", http_uri:encode(Id), ""],
     SuccessStatusCode = 202,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The ListJobsByPipeline operation gets a list of the jobs currently in
 %% a pipeline.
@@ -161,53 +191,89 @@ delete_preset(Client, Id, Input0, Options) ->
 %% Elastic Transcoder returns all of the jobs currently in the specified
 %% pipeline. The response body contains one element for each job that
 %% satisfies the search criteria.
-list_jobs_by_pipeline(Client, PipelineId)
+list_jobs_by_pipeline(Client, PipelineId, Ascending, PageToken)
   when is_map(Client) ->
-    list_jobs_by_pipeline(Client, PipelineId, []).
-list_jobs_by_pipeline(Client, PipelineId, Options)
+    list_jobs_by_pipeline(Client, PipelineId, Ascending, PageToken, []).
+list_jobs_by_pipeline(Client, PipelineId, Ascending, PageToken, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2012-09-25/jobsByPipeline/", http_uri:encode(PipelineId), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"Ascending">>, Ascending},
+        {<<"PageToken">>, PageToken}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc The ListJobsByStatus operation gets a list of jobs that have a
 %% specified status. The response body contains one element for each job that
 %% satisfies the search criteria.
-list_jobs_by_status(Client, Status)
+list_jobs_by_status(Client, Status, Ascending, PageToken)
   when is_map(Client) ->
-    list_jobs_by_status(Client, Status, []).
-list_jobs_by_status(Client, Status, Options)
+    list_jobs_by_status(Client, Status, Ascending, PageToken, []).
+list_jobs_by_status(Client, Status, Ascending, PageToken, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2012-09-25/jobsByStatus/", http_uri:encode(Status), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"Ascending">>, Ascending},
+        {<<"PageToken">>, PageToken}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc The ListPipelines operation gets a list of the pipelines associated
 %% with the current AWS account.
-list_pipelines(Client)
+list_pipelines(Client, Ascending, PageToken)
   when is_map(Client) ->
-    list_pipelines(Client, []).
-list_pipelines(Client, Options)
+    list_pipelines(Client, Ascending, PageToken, []).
+list_pipelines(Client, Ascending, PageToken, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2012-09-25/pipelines"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"Ascending">>, Ascending},
+        {<<"PageToken">>, PageToken}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc The ListPresets operation gets a list of the default presets included
 %% with Elastic Transcoder and the presets that you've added in an AWS
 %% region.
-list_presets(Client)
+list_presets(Client, Ascending, PageToken)
   when is_map(Client) ->
-    list_presets(Client, []).
-list_presets(Client, Options)
+    list_presets(Client, Ascending, PageToken, []).
+list_presets(Client, Ascending, PageToken, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2012-09-25/presets"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query0 =
+      [
+        {<<"Ascending">>, Ascending},
+        {<<"PageToken">>, PageToken}
+      ],
+    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc The ReadJob operation returns detailed information about a job.
 read_job(Client, Id)
@@ -217,8 +283,12 @@ read_job(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2012-09-25/jobs/", http_uri:encode(Id), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc The ReadPipeline operation gets detailed information about a
 %% pipeline.
@@ -229,8 +299,12 @@ read_pipeline(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2012-09-25/pipelines/", http_uri:encode(Id), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc The ReadPreset operation gets detailed information about a preset.
 read_preset(Client, Id)
@@ -240,8 +314,12 @@ read_preset(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2012-09-25/presets/", http_uri:encode(Id), ""],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    request(Client, get, Path, Headers, undefined, Options, SuccessStatusCode).
+
+    Query = [],
+
+    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc The TestRole operation tests the IAM role used to create the
 %% pipeline.
@@ -258,9 +336,14 @@ test_role(Client, Input0, Options) ->
     Method = post,
     Path = ["/2012-09-25/roleTests"],
     SuccessStatusCode = 200,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Use the <code>UpdatePipeline</code> operation to update settings for
 %% a pipeline.
@@ -277,9 +360,14 @@ update_pipeline(Client, Id, Input0, Options) ->
     Method = put,
     Path = ["/2012-09-25/pipelines/", http_uri:encode(Id), ""],
     SuccessStatusCode = 200,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc With the UpdatePipelineNotifications operation, you can update Amazon
 %% Simple Notification Service (Amazon SNS) notifications for a pipeline.
@@ -292,9 +380,14 @@ update_pipeline_notifications(Client, Id, Input0, Options) ->
     Method = post,
     Path = ["/2012-09-25/pipelines/", http_uri:encode(Id), "/notifications"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The UpdatePipelineStatus operation pauses or reactivates a pipeline,
 %% so that the pipeline stops or restarts the processing of jobs.
@@ -310,25 +403,31 @@ update_pipeline_status(Client, Id, Input0, Options) ->
     Method = post,
     Path = ["/2012-09-25/pipelines/", http_uri:encode(Id), "/status"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %%====================================================================
 %% Internal functions
 %%====================================================================
 
--spec request(aws_client:aws_client(), atom(), iolist(),
+-spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->
     {ok, Result, {integer(), list(), hackney:client()}} |
     {error, Error, {integer(), list(), hackney:client()}} |
     {error, term()} when
     Result :: map(),
     Error :: map().
-request(Client, Method, Path, Headers0, Input, Options, SuccessStatusCode) ->
+request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"elastictranscoder">>},
     Host = get_host(<<"elastictranscoder">>, Client1),
-    URL = get_url(Host, Path, Client1),
+    URL0 = get_url(Host, Path, Client1),
+    URL = aws_request:add_query(URL0, Query),
     AdditionalHeaders = [ {<<"Host">>, Host}
                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
                         ],

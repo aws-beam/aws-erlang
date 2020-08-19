@@ -1,6 +1,7 @@
 -module(aws_request).
 
 -export([ add_headers/2
+        , add_query/2
         , build_headers/2
         , method_to_binary/1
         , sign_request/5
@@ -49,6 +50,14 @@ build_headers(ParamsHeadersMapping, Params0)
             end
         end,
   lists:foldl(Fun, {[], Params0}, ParamsHeadersMapping).
+
+%% @doc Add querystring to url is there are any parameters in the list
+-spec add_query(binary(), [{binary(), any()}]) -> binary().
+add_query(Url, []) ->
+    Url;
+add_query(Url, Query) ->
+    QueryString = aws_util:encode_query(Query),
+    aws_util:binary_join([Url, QueryString], <<"?">>).
 
 -spec method_to_binary(atom()) -> binary().
 method_to_binary(delete)  -> <<"DELETE">>;

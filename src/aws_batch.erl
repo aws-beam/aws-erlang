@@ -72,9 +72,14 @@ cancel_job(Client, Input0, Options) ->
     Method = post,
     Path = ["/v1/canceljob"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an AWS Batch compute environment. You can create
 %% <code>MANAGED</code> or <code>UNMANAGED</code> compute environments.
@@ -129,9 +134,14 @@ create_compute_environment(Client, Input0, Options) ->
     Method = post,
     Path = ["/v1/createcomputeenvironment"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an AWS Batch job queue. When you create a job queue, you
 %% associate one or more compute environments to the queue and assign an
@@ -148,9 +158,14 @@ create_job_queue(Client, Input0, Options) ->
     Method = post,
     Path = ["/v1/createjobqueue"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an AWS Batch compute environment.
 %%
@@ -164,9 +179,14 @@ delete_compute_environment(Client, Input0, Options) ->
     Method = post,
     Path = ["/v1/deletecomputeenvironment"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified job queue. You must first disable submissions
 %% for a queue with the <a>UpdateJobQueue</a> operation. All jobs in the
@@ -180,9 +200,14 @@ delete_job_queue(Client, Input0, Options) ->
     Method = post,
     Path = ["/v1/deletejobqueue"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deregisters an AWS Batch job definition. Job definitions will be
 %% permanently deleted after 180 days.
@@ -192,9 +217,14 @@ deregister_job_definition(Client, Input0, Options) ->
     Method = post,
     Path = ["/v1/deregisterjobdefinition"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes one or more of your compute environments.
 %%
@@ -208,9 +238,14 @@ describe_compute_environments(Client, Input0, Options) ->
     Method = post,
     Path = ["/v1/describecomputeenvironments"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes a list of job definitions. You can specify a
 %% <code>status</code> (such as <code>ACTIVE</code>) to only return job
@@ -221,9 +256,14 @@ describe_job_definitions(Client, Input0, Options) ->
     Method = post,
     Path = ["/v1/describejobdefinitions"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes one or more of your job queues.
 describe_job_queues(Client, Input) ->
@@ -232,9 +272,14 @@ describe_job_queues(Client, Input0, Options) ->
     Method = post,
     Path = ["/v1/describejobqueues"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes a list of AWS Batch jobs.
 describe_jobs(Client, Input) ->
@@ -243,9 +288,14 @@ describe_jobs(Client, Input0, Options) ->
     Method = post,
     Path = ["/v1/describejobs"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of AWS Batch jobs.
 %%
@@ -267,9 +317,14 @@ list_jobs(Client, Input0, Options) ->
     Method = post,
     Path = ["/v1/listjobs"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Registers an AWS Batch job definition.
 register_job_definition(Client, Input) ->
@@ -278,9 +333,14 @@ register_job_definition(Client, Input0, Options) ->
     Method = post,
     Path = ["/v1/registerjobdefinition"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Submits an AWS Batch job from a job definition. Parameters specified
 %% during <a>SubmitJob</a> override parameters defined in the job definition.
@@ -290,9 +350,14 @@ submit_job(Client, Input0, Options) ->
     Method = post,
     Path = ["/v1/submitjob"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Terminates a job in a job queue. Jobs that are in the
 %% <code>STARTING</code> or <code>RUNNING</code> state are terminated, which
@@ -304,9 +369,14 @@ terminate_job(Client, Input0, Options) ->
     Method = post,
     Path = ["/v1/terminatejob"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an AWS Batch compute environment.
 update_compute_environment(Client, Input) ->
@@ -315,9 +385,14 @@ update_compute_environment(Client, Input0, Options) ->
     Method = post,
     Path = ["/v1/updatecomputeenvironment"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a job queue.
 update_job_queue(Client, Input) ->
@@ -326,25 +401,31 @@ update_job_queue(Client, Input0, Options) ->
     Method = post,
     Path = ["/v1/updatejobqueue"],
     SuccessStatusCode = undefined,
+
     Headers = [],
-    Input = Input0,
-    request(Client, Method, Path, Headers, Input, Options, SuccessStatusCode).
+    Input1 = Input0,
+
+    Query = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
 
 %%====================================================================
 %% Internal functions
 %%====================================================================
 
--spec request(aws_client:aws_client(), atom(), iolist(),
+-spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->
     {ok, Result, {integer(), list(), hackney:client()}} |
     {error, Error, {integer(), list(), hackney:client()}} |
     {error, term()} when
     Result :: map(),
     Error :: map().
-request(Client, Method, Path, Headers0, Input, Options, SuccessStatusCode) ->
+request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"batch">>},
     Host = get_host(<<"batch">>, Client1),
-    URL = get_url(Host, Path, Client1),
+    URL0 = get_url(Host, Path, Client1),
+    URL = aws_request:add_query(URL0, Query),
     AdditionalHeaders = [ {<<"Host">>, Host}
                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
                         ],
