@@ -63,7 +63,7 @@ encode_query(List) when is_list(List) ->
               (KV = {_, V}, Acc) when is_binary(V) ->
                 [KV | Acc]
             end,
-  KVs = lists:foldl(FoldFun, [], List),
+  KVs = lists:foldr(FoldFun, [], List),
   uri_string:compose_query(KVs);
 encode_query(Map) when is_map(Map) ->
   encode_query(maps:to_list(Map)).
