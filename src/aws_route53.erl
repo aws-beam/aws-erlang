@@ -2080,7 +2080,7 @@ update_traffic_policy_instance(Client, Id, Input0, Options) ->
     {ok, Result, {integer(), list(), hackney:client()}} |
     {error, Error, {integer(), list(), hackney:client()}} |
     {error, term()} when
-    Result :: map() | undefined,
+    Result :: map(),
     Error :: map().
 request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"route53">>,
@@ -2117,7 +2117,6 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
     {error, Error, {StatusCode, ResponseHeaders, Client}};
 handle_response({error, Reason}, _) ->
   {error, Reason}.
-
 
 get_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
