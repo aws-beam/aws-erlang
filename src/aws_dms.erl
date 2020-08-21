@@ -726,15 +726,18 @@ test_connection(Client, Input, Options)
     {error, term()} when
     Result :: map() | undefined,
     Error :: map().
-request(Client, Action, Input, Options) ->
+request(Client, Action, Input0, Options) ->
     Client1 = Client#{service => <<"dms">>},
     Host = get_host(<<"dms">>, Client1),
     URL = get_url(Host, Client1),
     Headers = [
         {<<"Host">>, Host},
         {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
-        {<<"X-Amz-Target">>, << <<"AmazonDMSv20160101.">>/binary, Action/binary>>}
+        {<<"X-Amz-Target">>, <<"AmazonDMSv20160101.", Action/binary>>}
     ],
+
+    Input = Input0,
+
     Payload = jsx:encode(Input),
     SignedHeaders = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
     Response = hackney:request(post, URL, SignedHeaders, Payload, Options),
@@ -745,12 +748,12 @@ handle_response({ok, 200, ResponseHeaders, Client}) ->
         {ok, <<>>} ->
             {ok, undefined, {200, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body, [return_maps]),
+            Result = jsx:decode(Body),
             {ok, Result, {200, ResponseHeaders, Client}}
     end;
 handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
     {ok, Body} = hackney:body(Client),
-    Error = jsx:decode(Body, [return_maps]),
+    Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
 handle_response({error, Reason}) ->
     {error, Reason}.

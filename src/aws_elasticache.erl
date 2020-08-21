@@ -1038,9 +1038,11 @@ request(Client, Action, Input0, Options) ->
         {<<"Host">>, Host},
         {<<"Content-Type">>, <<"application/x-www-form-urlencoded">>}
     ],
+
     Input = Input0#{ <<"Action">> => Action
                    , <<"Version">> => <<"2015-02-02">>
                    },
+
     Payload = aws_util:encode_query(Input),
     SignedHeaders = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
     Response = hackney:request(post, URL, SignedHeaders, Payload, Options),
