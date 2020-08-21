@@ -1510,12 +1510,12 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body, [return_maps]),
+            Result = jsx:decode(Body),
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
 handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
     {ok, Body} = hackney:body(Client),
-    Error = jsx:decode(Body, [return_maps]),
+    Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
 handle_response({error, Reason}, _) ->
   {error, Reason}.
