@@ -232,8 +232,8 @@ abort_multipart_upload(Client, Bucket, Key, Input0, Options) ->
     QueryMapping = [
                      {<<"uploadId">>, <<"UploadId">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -349,8 +349,8 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options) ->
     QueryMapping = [
                      {<<"uploadId">>, <<"UploadId">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -590,10 +590,10 @@ copy_object(Client, Bucket, Key, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -740,10 +740,10 @@ create_bucket(Client, Bucket, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -1024,10 +1024,10 @@ create_multipart_upload(Client, Bucket, Key, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -1073,10 +1073,10 @@ delete_bucket(Client, Bucket, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an analytics configuration for the bucket (specified by the
 %% analytics configuration ID).
@@ -1117,8 +1117,8 @@ delete_bucket_analytics_configuration(Client, Bucket, Input0, Options) ->
     QueryMapping = [
                      {<<"id">>, <<"Id">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the <code>cors</code> configuration information set for the
 %% bucket.
@@ -1149,10 +1149,10 @@ delete_bucket_cors(Client, Bucket, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This implementation of the DELETE operation removes default
 %% encryption from the bucket. For information about the Amazon S3 default
@@ -1188,10 +1188,10 @@ delete_bucket_encryption(Client, Bucket, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an inventory configuration (identified by the inventory ID)
 %% from the bucket.
@@ -1232,8 +1232,8 @@ delete_bucket_inventory_configuration(Client, Bucket, Input0, Options) ->
     QueryMapping = [
                      {<<"id">>, <<"Id">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the lifecycle configuration from the specified bucket. Amazon
 %% S3 removes all the lifecycle configuration rules in the lifecycle
@@ -1270,10 +1270,10 @@ delete_bucket_lifecycle(Client, Bucket, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a metrics configuration for the Amazon CloudWatch request
 %% metrics (specified by the metrics configuration ID) from the bucket. Note
@@ -1319,8 +1319,8 @@ delete_bucket_metrics_configuration(Client, Bucket, Input0, Options) ->
     QueryMapping = [
                      {<<"id">>, <<"Id">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This implementation of the DELETE operation uses the policy
 %% subresource to delete the policy of a specified bucket. If you are using
@@ -1360,10 +1360,10 @@ delete_bucket_policy(Client, Bucket, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the replication configuration from the bucket.
 %%
@@ -1401,10 +1401,10 @@ delete_bucket_replication(Client, Bucket, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the tags from the bucket.
 %%
@@ -1429,10 +1429,10 @@ delete_bucket_tagging(Client, Bucket, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This operation removes the website configuration for a bucket. Amazon
 %% S3 returns a <code>200 OK</code> response upon successfully deleting a
@@ -1468,10 +1468,10 @@ delete_bucket_website(Client, Bucket, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the null version (if there is one) of an object and inserts a
 %% delete marker, which becomes the latest version of the object. If there
@@ -1522,8 +1522,8 @@ delete_object(Client, Bucket, Key, Input0, Options) ->
     QueryMapping = [
                      {<<"versionId">>, <<"VersionId">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -1576,8 +1576,8 @@ delete_object_tagging(Client, Bucket, Key, Input0, Options) ->
     QueryMapping = [
                      {<<"versionId">>, <<"VersionId">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -1656,10 +1656,10 @@ delete_objects(Client, Bucket, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -1710,10 +1710,10 @@ delete_public_access_block(Client, Bucket, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This implementation of the GET operation uses the
 %% <code>accelerate</code> subresource to return the Transfer Acceleration
@@ -1759,9 +1759,9 @@ get_bucket_accelerate_configuration(Client, Bucket, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc This implementation of the <code>GET</code> operation uses the
 %% <code>acl</code> subresource to return the access control list (ACL) of a
@@ -1785,9 +1785,9 @@ get_bucket_acl(Client, Bucket, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc This implementation of the GET operation returns an analytics
 %% configuration (identified by the analytics configuration ID) from the
@@ -1827,13 +1827,13 @@ get_bucket_analytics_configuration(Client, Bucket, Id, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"id">>, Id}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the cors configuration information set for the bucket.
 %%
@@ -1862,9 +1862,9 @@ get_bucket_cors(Client, Bucket, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the default encryption configuration for an Amazon S3 bucket.
 %% For information about the Amazon S3 default encryption feature, see <a
@@ -1897,9 +1897,9 @@ get_bucket_encryption(Client, Bucket, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns an inventory configuration (identified by the inventory
 %% configuration ID) from the bucket.
@@ -1937,13 +1937,13 @@ get_bucket_inventory_configuration(Client, Bucket, Id, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"id">>, Id}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc <important> For an updated version of this API, see
 %% <a>GetBucketLifecycleConfiguration</a>. If you configured a bucket
@@ -1995,9 +1995,9 @@ get_bucket_lifecycle(Client, Bucket, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc <note> Bucket lifecycle configuration now supports specifying a
 %% lifecycle rule using an object key name prefix, one or more object tags,
@@ -2052,9 +2052,9 @@ get_bucket_lifecycle_configuration(Client, Bucket, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the Region the bucket resides in. You set the bucket's Region
 %% using the <code>LocationConstraint</code> request parameter in a
@@ -2080,9 +2080,9 @@ get_bucket_location(Client, Bucket, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the logging status of a bucket and the permissions users have
 %% to view and modify that status. To use GET, you must be the bucket owner.
@@ -2104,9 +2104,9 @@ get_bucket_logging(Client, Bucket, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a metrics configuration (specified by the metrics configuration
 %% ID) from the bucket. Note that this doesn't include the daily storage
@@ -2149,13 +2149,13 @@ get_bucket_metrics_configuration(Client, Bucket, Id, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"id">>, Id}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc No longer used, see <a>GetBucketNotificationConfiguration</a>.
 get_bucket_notification(Client, Bucket)
@@ -2168,9 +2168,9 @@ get_bucket_notification(Client, Bucket, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the notification configuration of a bucket.
 %%
@@ -2205,9 +2205,9 @@ get_bucket_notification_configuration(Client, Bucket, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the policy of a specified bucket. If you are using an
 %% identity other than the root user of the AWS account that owns the bucket,
@@ -2244,9 +2244,9 @@ get_bucket_policy(Client, Bucket, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the policy status for an Amazon S3 bucket, indicating
 %% whether the bucket is public. In order to use this operation, you must
@@ -2284,9 +2284,9 @@ get_bucket_policy_status(Client, Bucket, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the replication configuration of a bucket.
 %%
@@ -2329,9 +2329,9 @@ get_bucket_replication(Client, Bucket, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the request payment configuration of a bucket. To use this
 %% version of the operation, you must be the bucket owner. For more
@@ -2355,9 +2355,9 @@ get_bucket_request_payment(Client, Bucket, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the tag set associated with the bucket.
 %%
@@ -2389,9 +2389,9 @@ get_bucket_tagging(Client, Bucket, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the versioning state of a bucket.
 %%
@@ -2422,9 +2422,9 @@ get_bucket_versioning(Client, Bucket, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the website configuration for a bucket. To host website on
 %% Amazon S3, you can configure a bucket as website by adding a website
@@ -2455,9 +2455,9 @@ get_bucket_website(Client, Bucket, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves objects from Amazon S3. To use <code>GET</code>, you must
 %% have <code>READ</code> access to the object. If you grant
@@ -2634,7 +2634,7 @@ get_object(Client, Bucket, Key, PartNumber, ResponseCacheControl, ResponseConten
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
-    Query0 =
+    Query0_ =
       [
         {<<"partNumber">>, PartNumber},
         {<<"response-cache-control">>, ResponseCacheControl},
@@ -2645,9 +2645,9 @@ get_object(Client, Bucket, Key, PartNumber, ResponseCacheControl, ResponseConten
         {<<"response-expires">>, ResponseExpires},
         {<<"versionId">>, VersionId}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    case request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode) of
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -2725,13 +2725,13 @@ get_object_acl(Client, Bucket, Key, VersionId, RequestPayer, Options)
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
-    Query0 =
+    Query0_ =
       [
         {<<"versionId">>, VersionId}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    case request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode) of
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -2767,13 +2767,13 @@ get_object_legal_hold(Client, Bucket, Key, VersionId, RequestPayer, Options)
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
-    Query0 =
+    Query0_ =
       [
         {<<"versionId">>, VersionId}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the Object Lock configuration for a bucket. The rule specified
 %% in the Object Lock configuration will be applied by default to every new
@@ -2790,9 +2790,9 @@ get_object_lock_configuration(Client, Bucket, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves an object's retention settings. For more information, see
 %% <a
@@ -2812,13 +2812,13 @@ get_object_retention(Client, Bucket, Key, VersionId, RequestPayer, Options)
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
-    Query0 =
+    Query0_ =
       [
         {<<"versionId">>, VersionId}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the tag-set of an object. You send the GET request against
 %% the tagging subresource associated with the object.
@@ -2853,13 +2853,13 @@ get_object_tagging(Client, Bucket, Key, VersionId, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"versionId">>, VersionId}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    case request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode) of
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -2908,9 +2908,9 @@ get_object_torrent(Client, Bucket, Key, RequestPayer, Options)
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
-    Query = [],
+    Query_ = [],
 
-    case request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode) of
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -2971,9 +2971,9 @@ get_public_access_block(Client, Bucket, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc This operation is useful to determine if a bucket exists and you have
 %% permission to access it. The operation returns a <code>200 OK</code> if
@@ -2999,10 +2999,10 @@ head_bucket(Client, Bucket, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The HEAD operation retrieves metadata from an object without
 %% returning the object itself. This operation is useful if you're only
@@ -3115,8 +3115,8 @@ head_object(Client, Bucket, Key, Input0, Options) ->
                      {<<"partNumber">>, <<"PartNumber">>},
                      {<<"versionId">>, <<"VersionId">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -3206,13 +3206,13 @@ list_bucket_analytics_configurations(Client, Bucket, ContinuationToken, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"continuation-token">>, ContinuationToken}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of inventory configurations for the bucket. You can
 %% have up to 1,000 analytics configurations per bucket.
@@ -3260,13 +3260,13 @@ list_bucket_inventory_configurations(Client, Bucket, ContinuationToken, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"continuation-token">>, ContinuationToken}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the metrics configurations for the bucket. The metrics
 %% configurations are only for the request metrics of the bucket and do not
@@ -3317,13 +3317,13 @@ list_bucket_metrics_configurations(Client, Bucket, ContinuationToken, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"continuation-token">>, ContinuationToken}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all buckets owned by the authenticated sender of
 %% the request.
@@ -3337,9 +3337,9 @@ list_buckets(Client, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc This operation lists in-progress multipart uploads. An in-progress
 %% multipart upload is a multipart upload that has been initiated using the
@@ -3393,7 +3393,7 @@ list_multipart_uploads(Client, Bucket, Delimiter, EncodingType, KeyMarker, MaxUp
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"delimiter">>, Delimiter},
         {<<"encoding-type">>, EncodingType},
@@ -3402,9 +3402,9 @@ list_multipart_uploads(Client, Bucket, Delimiter, EncodingType, KeyMarker, MaxUp
         {<<"prefix">>, Prefix},
         {<<"upload-id-marker">>, UploadIdMarker}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns metadata about all of the versions of objects in a bucket.
 %% You can also use request parameters as selection criteria to return
@@ -3437,7 +3437,7 @@ list_object_versions(Client, Bucket, Delimiter, EncodingType, KeyMarker, MaxKeys
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"delimiter">>, Delimiter},
         {<<"encoding-type">>, EncodingType},
@@ -3446,9 +3446,9 @@ list_object_versions(Client, Bucket, Delimiter, EncodingType, KeyMarker, MaxKeys
         {<<"prefix">>, Prefix},
         {<<"version-id-marker">>, VersionIdMarker}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns some or all (up to 1,000) of the objects in a bucket. You can
 %% use the request parameters as selection criteria to return a subset of the
@@ -3488,7 +3488,7 @@ list_objects(Client, Bucket, Delimiter, EncodingType, Marker, MaxKeys, Prefix, R
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
-    Query0 =
+    Query0_ =
       [
         {<<"delimiter">>, Delimiter},
         {<<"encoding-type">>, EncodingType},
@@ -3496,9 +3496,9 @@ list_objects(Client, Bucket, Delimiter, EncodingType, Marker, MaxKeys, Prefix, R
         {<<"max-keys">>, MaxKeys},
         {<<"prefix">>, Prefix}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns some or all (up to 1,000) of the objects in a bucket. You can
 %% use the request parameters as selection criteria to return a subset of the
@@ -3548,7 +3548,7 @@ list_objects_v2(Client, Bucket, ContinuationToken, Delimiter, EncodingType, Fetc
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
-    Query0 =
+    Query0_ =
       [
         {<<"continuation-token">>, ContinuationToken},
         {<<"delimiter">>, Delimiter},
@@ -3558,9 +3558,9 @@ list_objects_v2(Client, Bucket, ContinuationToken, Delimiter, EncodingType, Fetc
         {<<"prefix">>, Prefix},
         {<<"start-after">>, StartAfter}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the parts that have been uploaded for a specific multipart
 %% upload. This operation must include the upload ID, which you obtain by
@@ -3612,15 +3612,15 @@ list_parts(Client, Bucket, Key, MaxParts, PartNumberMarker, UploadId, RequestPay
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
-    Query0 =
+    Query0_ =
       [
         {<<"max-parts">>, MaxParts},
         {<<"part-number-marker">>, PartNumberMarker},
         {<<"uploadId">>, UploadId}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    case request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode) of
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -3692,10 +3692,10 @@ put_bucket_accelerate_configuration(Client, Bucket, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sets the permissions on an existing bucket using access control lists
 %% (ACL). For more information, see <a
@@ -3868,10 +3868,10 @@ put_bucket_acl(Client, Bucket, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sets an analytics configuration for the bucket (specified by the
 %% analytics configuration ID). You can have up to 1,000 analytics
@@ -3949,8 +3949,8 @@ put_bucket_analytics_configuration(Client, Bucket, Input0, Options) ->
     QueryMapping = [
                      {<<"id">>, <<"Id">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sets the <code>cors</code> configuration for your bucket. If the
 %% configuration exists, Amazon S3 replaces it.
@@ -4015,10 +4015,10 @@ put_bucket_cors(Client, Bucket, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This implementation of the <code>PUT</code> operation uses the
 %% <code>encryption</code> subresource to set the default encryption state of
@@ -4064,10 +4064,10 @@ put_bucket_encryption(Client, Bucket, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This implementation of the <code>PUT</code> operation adds an
 %% inventory configuration (identified by the inventory ID) to the bucket.
@@ -4150,8 +4150,8 @@ put_bucket_inventory_configuration(Client, Bucket, Input0, Options) ->
     QueryMapping = [
                      {<<"id">>, <<"Id">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc <important> For an updated version of this API, see
 %% <a>PutBucketLifecycleConfiguration</a>. This version has been deprecated.
@@ -4229,10 +4229,10 @@ put_bucket_lifecycle(Client, Bucket, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new lifecycle configuration for the bucket or replaces an
 %% existing lifecycle configuration. For information about lifecycle
@@ -4318,10 +4318,10 @@ put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Set the logging parameters for a bucket and to specify permissions
 %% for who can view and modify the logging parameters. All logs are saved to
@@ -4397,10 +4397,10 @@ put_bucket_logging(Client, Bucket, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sets a metrics configuration (specified by the metrics configuration
 %% ID) for the bucket. You can have up to 1,000 metrics configurations per
@@ -4454,8 +4454,8 @@ put_bucket_metrics_configuration(Client, Bucket, Input0, Options) ->
     QueryMapping = [
                      {<<"id">>, <<"Id">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc No longer used, see the <a>PutBucketNotificationConfiguration</a>
 %% operation.
@@ -4471,10 +4471,10 @@ put_bucket_notification(Client, Bucket, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Enables notifications of specified events for a bucket. For more
 %% information about event notifications, see <a
@@ -4547,10 +4547,10 @@ put_bucket_notification_configuration(Client, Bucket, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Applies an Amazon S3 bucket policy to an Amazon S3 bucket. If you are
 %% using an identity other than the root user of the AWS account that owns
@@ -4592,10 +4592,10 @@ put_bucket_policy(Client, Bucket, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a replication configuration or replaces an existing one. For
 %% more information, see <a
@@ -4675,10 +4675,10 @@ put_bucket_replication(Client, Bucket, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sets the request payment configuration for a bucket. By default, the
 %% bucket owner pays for downloads from the bucket. This configuration
@@ -4708,10 +4708,10 @@ put_bucket_request_payment(Client, Bucket, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sets the tags for a bucket.
 %%
@@ -4786,10 +4786,10 @@ put_bucket_tagging(Client, Bucket, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sets the versioning state of an existing bucket. To set the
 %% versioning state, you must be the bucket owner.
@@ -4844,10 +4844,10 @@ put_bucket_versioning(Client, Bucket, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sets the configuration of the website that is specified in the
 %% <code>website</code> subresource. To configure a bucket as a website, you
@@ -4932,10 +4932,10 @@ put_bucket_website(Client, Bucket, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds an object to a bucket. You must have WRITE permissions on a
 %% bucket to add an object to it.
@@ -5050,10 +5050,10 @@ put_object(Client, Bucket, Key, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -5246,8 +5246,8 @@ put_object_acl(Client, Bucket, Key, Input0, Options) ->
     QueryMapping = [
                      {<<"versionId">>, <<"VersionId">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -5290,8 +5290,8 @@ put_object_legal_hold(Client, Bucket, Key, Input0, Options) ->
     QueryMapping = [
                      {<<"versionId">>, <<"VersionId">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -5337,10 +5337,10 @@ put_object_lock_configuration(Client, Bucket, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -5384,8 +5384,8 @@ put_object_retention(Client, Bucket, Key, Input0, Options) ->
     QueryMapping = [
                      {<<"versionId">>, <<"VersionId">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -5477,8 +5477,8 @@ put_object_tagging(Client, Bucket, Key, Input0, Options) ->
     QueryMapping = [
                      {<<"versionId">>, <<"VersionId">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -5541,10 +5541,10 @@ put_public_access_block(Client, Bucket, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Restores an archived copy of an object back into Amazon S3
 %%
@@ -5809,8 +5809,8 @@ restore_object(Client, Bucket, Key, Input0, Options) ->
     QueryMapping = [
                      {<<"versionId">>, <<"VersionId">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -5946,10 +5946,10 @@ select_object_content(Client, Bucket, Key, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Uploads a part in a multipart upload.
 %%
@@ -6070,8 +6070,8 @@ upload_part(Client, Bucket, Key, Input0, Options) ->
                      {<<"partNumber">>, <<"PartNumber">>},
                      {<<"uploadId">>, <<"UploadId">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -6251,8 +6251,8 @@ upload_part_copy(Client, Bucket, Key, Input0, Options) ->
                      {<<"partNumber">>, <<"PartNumber">>},
                      {<<"uploadId">>, <<"UploadId">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -6288,8 +6288,8 @@ upload_part_copy(Client, Bucket, Key, Input0, Options) ->
     Error :: map().
 request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"s3">>},
-    Host = get_host(<<"s3">>, Client1),
-    URL0 = get_url(Host, Path, Client1),
+    Host = build_host(<<"s3">>, Client1),
+    URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
     AdditionalHeaders = [ {<<"Host">>, Host}
                         , {<<"Content-Type">>, <<"text/xml">>}
@@ -6321,12 +6321,12 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
-get_host(_EndpointPrefix, #{region := <<"local">>}) ->
+build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
-get_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
+build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
     aws_util:binary_join([EndpointPrefix, Region, Endpoint], <<".">>).
 
-get_url(Host, Path0, Client) ->
+build_url(Host, Path0, Client) ->
     Proto = maps:get(proto, Client),
     Path = erlang:iolist_to_binary(Path0),
     Port = maps:get(port, Client),

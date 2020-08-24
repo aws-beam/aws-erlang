@@ -1,0 +1,556 @@
+%% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
+%% See https://github.com/aws-beam/aws-codegen for more details.
+
+%% @doc <p/>
+-module(aws_kinesis_video).
+
+-export([create_signaling_channel/2,
+         create_signaling_channel/3,
+         create_stream/2,
+         create_stream/3,
+         delete_signaling_channel/2,
+         delete_signaling_channel/3,
+         delete_stream/2,
+         delete_stream/3,
+         describe_signaling_channel/2,
+         describe_signaling_channel/3,
+         describe_stream/2,
+         describe_stream/3,
+         get_data_endpoint/2,
+         get_data_endpoint/3,
+         get_signaling_channel_endpoint/2,
+         get_signaling_channel_endpoint/3,
+         list_signaling_channels/2,
+         list_signaling_channels/3,
+         list_streams/2,
+         list_streams/3,
+         list_tags_for_resource/2,
+         list_tags_for_resource/3,
+         list_tags_for_stream/2,
+         list_tags_for_stream/3,
+         tag_resource/2,
+         tag_resource/3,
+         tag_stream/2,
+         tag_stream/3,
+         untag_resource/2,
+         untag_resource/3,
+         untag_stream/2,
+         untag_stream/3,
+         update_data_retention/2,
+         update_data_retention/3,
+         update_signaling_channel/2,
+         update_signaling_channel/3,
+         update_stream/2,
+         update_stream/3]).
+
+-include_lib("hackney/include/hackney_lib.hrl").
+
+%%====================================================================
+%% API
+%%====================================================================
+
+%% @doc Creates a signaling channel.
+%%
+%% <code>CreateSignalingChannel</code> is an asynchronous operation.
+create_signaling_channel(Client, Input) ->
+    create_signaling_channel(Client, Input, []).
+create_signaling_channel(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/createSignalingChannel"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new Kinesis video stream.
+%%
+%% When you create a new stream, Kinesis Video Streams assigns it a version
+%% number. When you change the stream's metadata, Kinesis Video Streams
+%% updates the version.
+%%
+%% <code>CreateStream</code> is an asynchronous operation.
+%%
+%% For information about how the service works, see <a
+%% href="https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/how-it-works.html">How
+%% it Works</a>.
+%%
+%% You must have permissions for the <code>KinesisVideo:CreateStream</code>
+%% action.
+create_stream(Client, Input) ->
+    create_stream(Client, Input, []).
+create_stream(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/createStream"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a specified signaling channel.
+%% <code>DeleteSignalingChannel</code> is an asynchronous operation. If you
+%% don't specify the channel's current version, the most recent version is
+%% deleted.
+delete_signaling_channel(Client, Input) ->
+    delete_signaling_channel(Client, Input, []).
+delete_signaling_channel(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/deleteSignalingChannel"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a Kinesis video stream and the data contained in the stream.
+%%
+%% This method marks the stream for deletion, and makes the data in the
+%% stream inaccessible immediately.
+%%
+%% To ensure that you have the latest version of the stream before deleting
+%% it, you can specify the stream version. Kinesis Video Streams assigns a
+%% version to each stream. When you update a stream, Kinesis Video Streams
+%% assigns a new version number. To get the latest stream version, use the
+%% <code>DescribeStream</code> API.
+%%
+%% This operation requires permission for the
+%% <code>KinesisVideo:DeleteStream</code> action.
+delete_stream(Client, Input) ->
+    delete_stream(Client, Input, []).
+delete_stream(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/deleteStream"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns the most current information about the signaling channel. You
+%% must specify either the name or the Amazon Resource Name (ARN) of the
+%% channel that you want to describe.
+describe_signaling_channel(Client, Input) ->
+    describe_signaling_channel(Client, Input, []).
+describe_signaling_channel(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/describeSignalingChannel"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns the most current information about the specified stream. You
+%% must specify either the <code>StreamName</code> or the
+%% <code>StreamARN</code>.
+describe_stream(Client, Input) ->
+    describe_stream(Client, Input, []).
+describe_stream(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/describeStream"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets an endpoint for a specified stream for either reading or
+%% writing. Use this endpoint in your application to read from the specified
+%% stream (using the <code>GetMedia</code> or
+%% <code>GetMediaForFragmentList</code> operations) or write to it (using the
+%% <code>PutMedia</code> operation).
+%%
+%% <note> The returned endpoint does not have the API name appended. The
+%% client needs to add the API name to the returned endpoint.
+%%
+%% </note> In the request, specify the stream either by
+%% <code>StreamName</code> or <code>StreamARN</code>.
+get_data_endpoint(Client, Input) ->
+    get_data_endpoint(Client, Input, []).
+get_data_endpoint(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/getDataEndpoint"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Provides an endpoint for the specified signaling channel to send and
+%% receive messages. This API uses the
+%% <code>SingleMasterChannelEndpointConfiguration</code> input parameter,
+%% which consists of the <code>Protocols</code> and <code>Role</code>
+%% properties.
+%%
+%% <code>Protocols</code> is used to determine the communication mechanism.
+%% For example, if you specify <code>WSS</code> as the protocol, this API
+%% produces a secure websocket endpoint. If you specify <code>HTTPS</code> as
+%% the protocol, this API generates an HTTPS endpoint.
+%%
+%% <code>Role</code> determines the messaging permissions. A
+%% <code>MASTER</code> role results in this API generating an endpoint that a
+%% client can use to communicate with any of the viewers on the channel. A
+%% <code>VIEWER</code> role results in this API generating an endpoint that a
+%% client can use to communicate only with a <code>MASTER</code>.
+get_signaling_channel_endpoint(Client, Input) ->
+    get_signaling_channel_endpoint(Client, Input, []).
+get_signaling_channel_endpoint(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/getSignalingChannelEndpoint"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns an array of <code>ChannelInfo</code> objects. Each object
+%% describes a signaling channel. To retrieve only those channels that
+%% satisfy a specific condition, you can specify a
+%% <code>ChannelNameCondition</code>.
+list_signaling_channels(Client, Input) ->
+    list_signaling_channels(Client, Input, []).
+list_signaling_channels(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/listSignalingChannels"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns an array of <code>StreamInfo</code> objects. Each object
+%% describes a stream. To retrieve only streams that satisfy a specific
+%% condition, you can specify a <code>StreamNameCondition</code>.
+list_streams(Client, Input) ->
+    list_streams(Client, Input, []).
+list_streams(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/listStreams"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a list of tags associated with the specified signaling
+%% channel.
+list_tags_for_resource(Client, Input) ->
+    list_tags_for_resource(Client, Input, []).
+list_tags_for_resource(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/ListTagsForResource"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a list of tags associated with the specified stream.
+%%
+%% In the request, you must specify either the <code>StreamName</code> or the
+%% <code>StreamARN</code>.
+list_tags_for_stream(Client, Input) ->
+    list_tags_for_stream(Client, Input, []).
+list_tags_for_stream(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/listTagsForStream"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Adds one or more tags to a signaling channel. A <i>tag</i> is a
+%% key-value pair (the value is optional) that you can define and assign to
+%% AWS resources. If you specify a tag that already exists, the tag value is
+%% replaced with the value that you specify in the request. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html">Using
+%% Cost Allocation Tags</a> in the <i>AWS Billing and Cost Management User
+%% Guide</i>.
+tag_resource(Client, Input) ->
+    tag_resource(Client, Input, []).
+tag_resource(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/TagResource"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Adds one or more tags to a stream. A <i>tag</i> is a key-value pair
+%% (the value is optional) that you can define and assign to AWS resources.
+%% If you specify a tag that already exists, the tag value is replaced with
+%% the value that you specify in the request. For more information, see <a
+%% href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html">Using
+%% Cost Allocation Tags</a> in the <i>AWS Billing and Cost Management User
+%% Guide</i>.
+%%
+%% You must provide either the <code>StreamName</code> or the
+%% <code>StreamARN</code>.
+%%
+%% This operation requires permission for the
+%% <code>KinesisVideo:TagStream</code> action.
+%%
+%% Kinesis video streams support up to 50 tags.
+tag_stream(Client, Input) ->
+    tag_stream(Client, Input, []).
+tag_stream(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/tagStream"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes one or more tags from a signaling channel. In the request,
+%% specify only a tag key or keys; don't specify the value. If you specify a
+%% tag key that does not exist, it's ignored.
+untag_resource(Client, Input) ->
+    untag_resource(Client, Input, []).
+untag_resource(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/UntagResource"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes one or more tags from a stream. In the request, specify only
+%% a tag key or keys; don't specify the value. If you specify a tag key that
+%% does not exist, it's ignored.
+%%
+%% In the request, you must provide the <code>StreamName</code> or
+%% <code>StreamARN</code>.
+untag_stream(Client, Input) ->
+    untag_stream(Client, Input, []).
+untag_stream(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/untagStream"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Increases or decreases the stream's data retention period by the
+%% value that you specify. To indicate whether you want to increase or
+%% decrease the data retention period, specify the <code>Operation</code>
+%% parameter in the request body. In the request, you must specify either the
+%% <code>StreamName</code> or the <code>StreamARN</code>.
+%%
+%% <note> The retention period that you specify replaces the current value.
+%%
+%% </note> This operation requires permission for the
+%% <code>KinesisVideo:UpdateDataRetention</code> action.
+%%
+%% Changing the data retention period affects the data in the stream as
+%% follows:
+%%
+%% <ul> <li> If the data retention period is increased, existing data is
+%% retained for the new retention period. For example, if the data retention
+%% period is increased from one hour to seven hours, all existing data is
+%% retained for seven hours.
+%%
+%% </li> <li> If the data retention period is decreased, existing data is
+%% retained for the new retention period. For example, if the data retention
+%% period is decreased from seven hours to one hour, all existing data is
+%% retained for one hour, and any data older than one hour is deleted
+%% immediately.
+%%
+%% </li> </ul>
+update_data_retention(Client, Input) ->
+    update_data_retention(Client, Input, []).
+update_data_retention(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/updateDataRetention"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the existing signaling channel. This is an asynchronous
+%% operation and takes time to complete.
+%%
+%% If the <code>MessageTtlSeconds</code> value is updated (either increased
+%% or reduced), it only applies to new messages sent via this channel after
+%% it's been updated. Existing messages are still expired as per the previous
+%% <code>MessageTtlSeconds</code> value.
+update_signaling_channel(Client, Input) ->
+    update_signaling_channel(Client, Input, []).
+update_signaling_channel(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/updateSignalingChannel"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates stream metadata, such as the device name and media type.
+%%
+%% You must provide the stream name or the Amazon Resource Name (ARN) of the
+%% stream.
+%%
+%% To make sure that you have the latest version of the stream before
+%% updating it, you can specify the stream version. Kinesis Video Streams
+%% assigns a version to each stream. When you update a stream, Kinesis Video
+%% Streams assigns a new version number. To get the latest stream version,
+%% use the <code>DescribeStream</code> API.
+%%
+%% <code>UpdateStream</code> is an asynchronous operation, and takes time to
+%% complete.
+update_stream(Client, Input) ->
+    update_stream(Client, Input, []).
+update_stream(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/updateStream"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%%====================================================================
+%% Internal functions
+%%====================================================================
+
+-spec request(aws_client:aws_client(), atom(), iolist(), list(),
+              list(), map() | undefined, list(), pos_integer() | undefined) ->
+    {ok, Result, {integer(), list(), hackney:client()}} |
+    {error, Error, {integer(), list(), hackney:client()}} |
+    {error, term()} when
+    Result :: map(),
+    Error :: map().
+request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
+    Client1 = Client#{service => <<"kinesisvideo">>},
+    Host = build_host(<<"kinesisvideo">>, Client1),
+    URL0 = build_url(Host, Path, Client1),
+    URL = aws_request:add_query(URL0, Query),
+    AdditionalHeaders = [ {<<"Host">>, Host}
+                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                        ],
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
+    Payload = encode_payload(Input),
+    MethodBin = aws_request:method_to_binary(Method),
+    SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
+    Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
+    handle_response(Response, SuccessStatusCode).
+
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    case hackney:body(Client) of
+        {ok, <<>>} when StatusCode =:= 200;
+                        StatusCode =:= SuccessStatusCode ->
+            {ok, #{}, {StatusCode, ResponseHeaders, Client}};
+        {ok, Body} ->
+            Result = jsx:decode(Body),
+            {ok, Result, {StatusCode, ResponseHeaders, Client}}
+    end;
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+    {ok, Body} = hackney:body(Client),
+    Error = jsx:decode(Body),
+    {error, Error, {StatusCode, ResponseHeaders, Client}};
+handle_response({error, Reason}, _) ->
+  {error, Reason}.
+
+build_host(_EndpointPrefix, #{region := <<"local">>}) ->
+    <<"localhost">>;
+build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
+    aws_util:binary_join([EndpointPrefix, Region, Endpoint], <<".">>).
+
+build_url(Host, Path0, Client) ->
+    Proto = maps:get(proto, Client),
+    Path = erlang:iolist_to_binary(Path0),
+    Port = maps:get(port, Client),
+    aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, Path], <<"">>).
+
+-spec encode_payload(undefined | map()) -> binary().
+encode_payload(undefined) ->
+  <<>>;
+encode_payload(Input) ->
+  jsx:encode(Input).

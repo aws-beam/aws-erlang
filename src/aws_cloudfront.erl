@@ -168,10 +168,10 @@ create_cache_policy(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -207,10 +207,10 @@ create_cloud_front_origin_access_identity(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -257,10 +257,10 @@ create_distribution(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -290,10 +290,10 @@ create_distribution_with_tags(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -323,10 +323,10 @@ create_field_level_encryption_config(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -356,10 +356,10 @@ create_field_level_encryption_profile(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -389,10 +389,10 @@ create_invalidation(Client, DistributionId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -448,10 +448,10 @@ create_origin_request_policy(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -483,10 +483,10 @@ create_public_key(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -550,10 +550,10 @@ create_streaming_distribution(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -583,10 +583,10 @@ create_streaming_distribution_with_tags(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -626,10 +626,10 @@ delete_cache_policy(Client, Id, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete an origin access identity.
 delete_cloud_front_origin_access_identity(Client, Id, Input) ->
@@ -644,10 +644,10 @@ delete_cloud_front_origin_access_identity(Client, Id, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete a distribution.
 delete_distribution(Client, Id, Input) ->
@@ -662,10 +662,10 @@ delete_distribution(Client, Id, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Remove a field-level encryption configuration.
 delete_field_level_encryption_config(Client, Id, Input) ->
@@ -680,10 +680,10 @@ delete_field_level_encryption_config(Client, Id, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Remove a field-level encryption profile.
 delete_field_level_encryption_profile(Client, Id, Input) ->
@@ -698,10 +698,10 @@ delete_field_level_encryption_profile(Client, Id, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an origin request policy.
 %%
@@ -725,10 +725,10 @@ delete_origin_request_policy(Client, Id, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Remove a public key you previously added to CloudFront.
 delete_public_key(Client, Id, Input) ->
@@ -743,10 +743,10 @@ delete_public_key(Client, Id, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete a streaming distribution. To delete an RTMP distribution using
 %% the CloudFront API, perform the following steps.
@@ -803,10 +803,10 @@ delete_streaming_distribution(Client, Id, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets a cache policy, including the following metadata:
 %%
@@ -830,9 +830,9 @@ get_cache_policy(Client, Id, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    case request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode) of
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -868,9 +868,9 @@ get_cache_policy_config(Client, Id, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    case request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode) of
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -899,9 +899,9 @@ get_cloud_front_origin_access_identity(Client, Id, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    case request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode) of
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -930,9 +930,9 @@ get_cloud_front_origin_access_identity_config(Client, Id, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    case request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode) of
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -961,9 +961,9 @@ get_distribution(Client, Id, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    case request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode) of
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -992,9 +992,9 @@ get_distribution_config(Client, Id, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    case request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode) of
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -1023,9 +1023,9 @@ get_field_level_encryption(Client, Id, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    case request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode) of
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -1054,9 +1054,9 @@ get_field_level_encryption_config(Client, Id, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    case request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode) of
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -1085,9 +1085,9 @@ get_field_level_encryption_profile(Client, Id, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    case request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode) of
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -1116,9 +1116,9 @@ get_field_level_encryption_profile_config(Client, Id, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    case request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode) of
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -1147,9 +1147,9 @@ get_invalidation(Client, DistributionId, Id, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets an origin request policy, including the following metadata:
 %%
@@ -1173,9 +1173,9 @@ get_origin_request_policy(Client, Id, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    case request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode) of
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -1211,9 +1211,9 @@ get_origin_request_policy_config(Client, Id, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    case request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode) of
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -1242,9 +1242,9 @@ get_public_key(Client, Id, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    case request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode) of
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -1273,9 +1273,9 @@ get_public_key_config(Client, Id, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    case request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode) of
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -1305,9 +1305,9 @@ get_streaming_distribution(Client, Id, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    case request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode) of
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -1336,9 +1336,9 @@ get_streaming_distribution_config(Client, Id, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    case request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode) of
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -1377,15 +1377,15 @@ list_cache_policies(Client, Marker, MaxItems, Type, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"Marker">>, Marker},
         {<<"MaxItems">>, MaxItems},
         {<<"Type">>, Type}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists origin access identities.
 list_cloud_front_origin_access_identities(Client, Marker, MaxItems)
@@ -1398,14 +1398,14 @@ list_cloud_front_origin_access_identities(Client, Marker, MaxItems, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"Marker">>, Marker},
         {<<"MaxItems">>, MaxItems}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List CloudFront distributions.
 list_distributions(Client, Marker, MaxItems)
@@ -1418,14 +1418,14 @@ list_distributions(Client, Marker, MaxItems, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"Marker">>, Marker},
         {<<"MaxItems">>, MaxItems}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a list of distribution IDs for distributions that have a cache
 %% behavior that’s associated with the specified cache policy.
@@ -1446,14 +1446,14 @@ list_distributions_by_cache_policy_id(Client, CachePolicyId, Marker, MaxItems, O
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"Marker">>, Marker},
         {<<"MaxItems">>, MaxItems}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a list of distribution IDs for distributions that have a cache
 %% behavior that’s associated with the specified origin request policy.
@@ -1474,14 +1474,14 @@ list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, Ma
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"Marker">>, Marker},
         {<<"MaxItems">>, MaxItems}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the distributions that are associated with a specified AWS WAF
 %% web ACL.
@@ -1495,14 +1495,14 @@ list_distributions_by_web_a_c_l_id(Client, WebACLId, Marker, MaxItems, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"Marker">>, Marker},
         {<<"MaxItems">>, MaxItems}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List all field-level encryption configurations that have been created
 %% in CloudFront for this account.
@@ -1516,14 +1516,14 @@ list_field_level_encryption_configs(Client, Marker, MaxItems, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"Marker">>, Marker},
         {<<"MaxItems">>, MaxItems}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Request a list of field-level encryption profiles that have been
 %% created in CloudFront for this account.
@@ -1537,14 +1537,14 @@ list_field_level_encryption_profiles(Client, Marker, MaxItems, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"Marker">>, Marker},
         {<<"MaxItems">>, MaxItems}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists invalidation batches.
 list_invalidations(Client, DistributionId, Marker, MaxItems)
@@ -1557,14 +1557,14 @@ list_invalidations(Client, DistributionId, Marker, MaxItems, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"Marker">>, Marker},
         {<<"MaxItems">>, MaxItems}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a list of origin request policies.
 %%
@@ -1587,15 +1587,15 @@ list_origin_request_policies(Client, Marker, MaxItems, Type, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"Marker">>, Marker},
         {<<"MaxItems">>, MaxItems},
         {<<"Type">>, Type}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List all public keys that have been added to CloudFront for this
 %% account.
@@ -1609,14 +1609,14 @@ list_public_keys(Client, Marker, MaxItems, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"Marker">>, Marker},
         {<<"MaxItems">>, MaxItems}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List streaming distributions.
 list_streaming_distributions(Client, Marker, MaxItems)
@@ -1629,14 +1629,14 @@ list_streaming_distributions(Client, Marker, MaxItems, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"Marker">>, Marker},
         {<<"MaxItems">>, MaxItems}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List tags for a CloudFront resource.
 list_tags_for_resource(Client, Resource)
@@ -1649,13 +1649,13 @@ list_tags_for_resource(Client, Resource, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"Resource">>, Resource}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Add tags to a CloudFront resource.
 tag_resource(Client, Input) ->
@@ -1671,8 +1671,8 @@ tag_resource(Client, Input0, Options) ->
     QueryMapping = [
                      {<<"Resource">>, <<"Resource">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Remove tags from a CloudFront resource.
 untag_resource(Client, Input) ->
@@ -1688,8 +1688,8 @@ untag_resource(Client, Input0, Options) ->
     QueryMapping = [
                      {<<"Resource">>, <<"Resource">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a cache policy configuration.
 %%
@@ -1720,10 +1720,10 @@ update_cache_policy(Client, Id, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -1754,10 +1754,10 @@ update_cloud_front_origin_access_identity(Client, Id, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -1865,10 +1865,10 @@ update_distribution(Client, Id, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -1899,10 +1899,10 @@ update_field_level_encryption_config(Client, Id, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -1933,10 +1933,10 @@ update_field_level_encryption_profile(Client, Id, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -1984,10 +1984,10 @@ update_origin_request_policy(Client, Id, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -2019,10 +2019,10 @@ update_public_key(Client, Id, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -2053,10 +2053,10 @@ update_streaming_distribution(Client, Id, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -2088,8 +2088,8 @@ update_streaming_distribution(Client, Id, Input0, Options) ->
 request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"cloudfront">>,
                       region => <<"us-east-1">>},
-    Host = get_host(<<"cloudfront">>, Client1),
-    URL0 = get_url(Host, Path, Client1),
+    Host = build_host(<<"cloudfront">>, Client1),
+    URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
     AdditionalHeaders = [ {<<"Host">>, Host}
                         , {<<"Content-Type">>, <<"text/xml">>}
@@ -2121,12 +2121,12 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
-get_host(_EndpointPrefix, #{region := <<"local">>}) ->
+build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
-get_host(EndpointPrefix, #{endpoint := Endpoint}) ->
+build_host(EndpointPrefix, #{endpoint := Endpoint}) ->
     aws_util:binary_join([EndpointPrefix, Endpoint], <<".">>).
 
-get_url(Host, Path0, Client) ->
+build_url(Host, Path0, Client) ->
     Proto = maps:get(proto, Client),
     Path = erlang:iolist_to_binary(Path0),
     Port = maps:get(port, Client),

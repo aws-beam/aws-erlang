@@ -272,10 +272,10 @@ create_api_key(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds a new <a>Authorizer</a> resource to an existing <a>RestApi</a>
 %% resource.
@@ -293,10 +293,10 @@ create_authorizer(Client, RestApiId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new <a>BasePathMapping</a> resource.
 create_base_path_mapping(Client, DomainName, Input) ->
@@ -309,10 +309,10 @@ create_base_path_mapping(Client, DomainName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a <a>Deployment</a> resource, which makes a specified
 %% <a>RestApi</a> callable over the internet.
@@ -326,10 +326,10 @@ create_deployment(Client, RestApiId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 
 create_documentation_part(Client, RestApiId, Input) ->
@@ -342,10 +342,10 @@ create_documentation_part(Client, RestApiId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 
 create_documentation_version(Client, RestApiId, Input) ->
@@ -358,10 +358,10 @@ create_documentation_version(Client, RestApiId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new domain name.
 create_domain_name(Client, Input) ->
@@ -374,10 +374,10 @@ create_domain_name(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds a new <a>Model</a> resource to an existing <a>RestApi</a>
 %% resource.
@@ -391,10 +391,10 @@ create_model(Client, RestApiId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a <a>ReqeustValidator</a> of a given <a>RestApi</a>.
 create_request_validator(Client, RestApiId, Input) ->
@@ -407,10 +407,10 @@ create_request_validator(Client, RestApiId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a <a>Resource</a> resource.
 create_resource(Client, ParentId, RestApiId, Input) ->
@@ -423,10 +423,10 @@ create_resource(Client, ParentId, RestApiId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new <a>RestApi</a> resource.
 create_rest_api(Client, Input) ->
@@ -439,10 +439,10 @@ create_rest_api(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new <a>Stage</a> resource that references a pre-existing
 %% <a>Deployment</a> for the API.
@@ -456,10 +456,10 @@ create_stage(Client, RestApiId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a usage plan with the throttle and quota limits, as well as
 %% the associated API stages, specified in the payload.
@@ -473,10 +473,10 @@ create_usage_plan(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a usage plan key for adding an existing API key to a usage
 %% plan.
@@ -490,10 +490,10 @@ create_usage_plan_key(Client, UsagePlanId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a VPC link, under the caller's account in a selected region,
 %% in an asynchronous operation that typically takes 2-4 minutes to complete
@@ -509,10 +509,10 @@ create_vpc_link(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the <a>ApiKey</a> resource.
 delete_api_key(Client, ApiKey, Input) ->
@@ -525,10 +525,10 @@ delete_api_key(Client, ApiKey, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an existing <a>Authorizer</a> resource.
 %%
@@ -545,10 +545,10 @@ delete_authorizer(Client, AuthorizerId, RestApiId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the <a>BasePathMapping</a> resource.
 delete_base_path_mapping(Client, BasePath, DomainName, Input) ->
@@ -561,10 +561,10 @@ delete_base_path_mapping(Client, BasePath, DomainName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the <a>ClientCertificate</a> resource.
 delete_client_certificate(Client, ClientCertificateId, Input) ->
@@ -577,10 +577,10 @@ delete_client_certificate(Client, ClientCertificateId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a <a>Deployment</a> resource. Deleting a deployment will only
 %% succeed if there are no <a>Stage</a> resources associated with it.
@@ -594,10 +594,10 @@ delete_deployment(Client, DeploymentId, RestApiId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 
 delete_documentation_part(Client, DocumentationPartId, RestApiId, Input) ->
@@ -610,10 +610,10 @@ delete_documentation_part(Client, DocumentationPartId, RestApiId, Input0, Option
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 
 delete_documentation_version(Client, DocumentationVersion, RestApiId, Input) ->
@@ -626,10 +626,10 @@ delete_documentation_version(Client, DocumentationVersion, RestApiId, Input0, Op
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the <a>DomainName</a> resource.
 delete_domain_name(Client, DomainName, Input) ->
@@ -642,10 +642,10 @@ delete_domain_name(Client, DomainName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Clears any customization of a <a>GatewayResponse</a> of a specified
 %% response type on the given <a>RestApi</a> and resets it with the default
@@ -660,10 +660,10 @@ delete_gateway_response(Client, ResponseType, RestApiId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Represents a delete integration.
 delete_integration(Client, HttpMethod, ResourceId, RestApiId, Input) ->
@@ -676,10 +676,10 @@ delete_integration(Client, HttpMethod, ResourceId, RestApiId, Input0, Options) -
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Represents a delete integration response.
 delete_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input) ->
@@ -692,10 +692,10 @@ delete_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCod
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an existing <a>Method</a> resource.
 delete_method(Client, HttpMethod, ResourceId, RestApiId, Input) ->
@@ -708,10 +708,10 @@ delete_method(Client, HttpMethod, ResourceId, RestApiId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an existing <a>MethodResponse</a> resource.
 delete_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input) ->
@@ -724,10 +724,10 @@ delete_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, In
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a model.
 delete_model(Client, ModelName, RestApiId, Input) ->
@@ -740,10 +740,10 @@ delete_model(Client, ModelName, RestApiId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a <a>RequestValidator</a> of a given <a>RestApi</a>.
 delete_request_validator(Client, RequestValidatorId, RestApiId, Input) ->
@@ -756,10 +756,10 @@ delete_request_validator(Client, RequestValidatorId, RestApiId, Input0, Options)
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a <a>Resource</a> resource.
 delete_resource(Client, ResourceId, RestApiId, Input) ->
@@ -772,10 +772,10 @@ delete_resource(Client, ResourceId, RestApiId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified API.
 delete_rest_api(Client, RestApiId, Input) ->
@@ -788,10 +788,10 @@ delete_rest_api(Client, RestApiId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a <a>Stage</a> resource.
 delete_stage(Client, RestApiId, StageName, Input) ->
@@ -804,10 +804,10 @@ delete_stage(Client, RestApiId, StageName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a usage plan of a given plan Id.
 delete_usage_plan(Client, UsagePlanId, Input) ->
@@ -820,10 +820,10 @@ delete_usage_plan(Client, UsagePlanId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a usage plan key and remove the underlying API key from the
 %% associated usage plan.
@@ -837,10 +837,10 @@ delete_usage_plan_key(Client, KeyId, UsagePlanId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an existing <a>VpcLink</a> of a specified identifier.
 delete_vpc_link(Client, VpcLinkId, Input) ->
@@ -853,10 +853,10 @@ delete_vpc_link(Client, VpcLinkId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Flushes all authorizer cache entries on a stage.
 flush_stage_authorizers_cache(Client, RestApiId, StageName, Input) ->
@@ -869,10 +869,10 @@ flush_stage_authorizers_cache(Client, RestApiId, StageName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Flushes a stage's cache.
 flush_stage_cache(Client, RestApiId, StageName, Input) ->
@@ -885,10 +885,10 @@ flush_stage_cache(Client, RestApiId, StageName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Generates a <a>ClientCertificate</a> resource.
 generate_client_certificate(Client, Input) ->
@@ -901,10 +901,10 @@ generate_client_certificate(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets information about the current <a>Account</a> resource.
 get_account(Client)
@@ -917,9 +917,9 @@ get_account(Client, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about the current <a>ApiKey</a> resource.
 get_api_key(Client, ApiKey, IncludeValue)
@@ -932,13 +932,13 @@ get_api_key(Client, ApiKey, IncludeValue, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"includeValue">>, IncludeValue}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about the current <a>ApiKeys</a> resource.
 get_api_keys(Client, CustomerId, IncludeValues, Limit, NameQuery, Position)
@@ -951,7 +951,7 @@ get_api_keys(Client, CustomerId, IncludeValues, Limit, NameQuery, Position, Opti
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"customerId">>, CustomerId},
         {<<"includeValues">>, IncludeValues},
@@ -959,9 +959,9 @@ get_api_keys(Client, CustomerId, IncludeValues, Limit, NameQuery, Position, Opti
         {<<"name">>, NameQuery},
         {<<"position">>, Position}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describe an existing <a>Authorizer</a> resource.
 %%
@@ -978,9 +978,9 @@ get_authorizer(Client, AuthorizerId, RestApiId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describe an existing <a>Authorizers</a> resource.
 %%
@@ -997,14 +997,14 @@ get_authorizers(Client, RestApiId, Limit, Position, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"limit">>, Limit},
         {<<"position">>, Position}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describe a <a>BasePathMapping</a> resource.
 get_base_path_mapping(Client, BasePath, DomainName)
@@ -1017,9 +1017,9 @@ get_base_path_mapping(Client, BasePath, DomainName, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Represents a collection of <a>BasePathMapping</a> resources.
 get_base_path_mappings(Client, DomainName, Limit, Position)
@@ -1032,14 +1032,14 @@ get_base_path_mappings(Client, DomainName, Limit, Position, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"limit">>, Limit},
         {<<"position">>, Position}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about the current <a>ClientCertificate</a> resource.
 get_client_certificate(Client, ClientCertificateId)
@@ -1052,9 +1052,9 @@ get_client_certificate(Client, ClientCertificateId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a collection of <a>ClientCertificate</a> resources.
 get_client_certificates(Client, Limit, Position)
@@ -1067,14 +1067,14 @@ get_client_certificates(Client, Limit, Position, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"limit">>, Limit},
         {<<"position">>, Position}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a <a>Deployment</a> resource.
 get_deployment(Client, DeploymentId, RestApiId, Embed)
@@ -1087,13 +1087,13 @@ get_deployment(Client, DeploymentId, RestApiId, Embed, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"embed">>, Embed}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a <a>Deployments</a> collection.
 get_deployments(Client, RestApiId, Limit, Position)
@@ -1106,14 +1106,14 @@ get_deployments(Client, RestApiId, Limit, Position, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"limit">>, Limit},
         {<<"position">>, Position}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 
 get_documentation_part(Client, DocumentationPartId, RestApiId)
@@ -1126,9 +1126,9 @@ get_documentation_part(Client, DocumentationPartId, RestApiId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 
 get_documentation_parts(Client, RestApiId, Limit, LocationStatus, NameQuery, Path, Position, Type)
@@ -1141,7 +1141,7 @@ get_documentation_parts(Client, RestApiId, Limit, LocationStatus, NameQuery, Pat
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"limit">>, Limit},
         {<<"locationStatus">>, LocationStatus},
@@ -1150,9 +1150,9 @@ get_documentation_parts(Client, RestApiId, Limit, LocationStatus, NameQuery, Pat
         {<<"position">>, Position},
         {<<"type">>, Type}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 
 get_documentation_version(Client, DocumentationVersion, RestApiId)
@@ -1165,9 +1165,9 @@ get_documentation_version(Client, DocumentationVersion, RestApiId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 
 get_documentation_versions(Client, RestApiId, Limit, Position)
@@ -1180,14 +1180,14 @@ get_documentation_versions(Client, RestApiId, Limit, Position, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"limit">>, Limit},
         {<<"position">>, Position}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Represents a domain name that is contained in a simpler, more
 %% intuitive URL that can be called.
@@ -1201,9 +1201,9 @@ get_domain_name(Client, DomainName, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Represents a collection of <a>DomainName</a> resources.
 get_domain_names(Client, Limit, Position)
@@ -1216,14 +1216,14 @@ get_domain_names(Client, Limit, Position, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"limit">>, Limit},
         {<<"position">>, Position}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Exports a deployed version of a <a>RestApi</a> in a specified format.
 get_export(Client, ExportType, RestApiId, StageName, Parameters, Accepts)
@@ -1240,13 +1240,13 @@ get_export(Client, ExportType, RestApiId, StageName, Parameters, Accepts, Option
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
-    Query0 =
+    Query0_ =
       [
         {<<"">>, Parameters}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    case request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode) of
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -1277,9 +1277,9 @@ get_gateway_response(Client, ResponseType, RestApiId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the <a>GatewayResponses</a> collection on the given
 %% <a>RestApi</a>. If an API developer has not added any definitions for
@@ -1295,14 +1295,14 @@ get_gateway_responses(Client, RestApiId, Limit, Position, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"limit">>, Limit},
         {<<"position">>, Position}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get the integration settings.
 get_integration(Client, HttpMethod, ResourceId, RestApiId)
@@ -1315,9 +1315,9 @@ get_integration(Client, HttpMethod, ResourceId, RestApiId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Represents a get integration response.
 get_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode)
@@ -1330,9 +1330,9 @@ get_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, 
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describe an existing <a>Method</a> resource.
 get_method(Client, HttpMethod, ResourceId, RestApiId)
@@ -1345,9 +1345,9 @@ get_method(Client, HttpMethod, ResourceId, RestApiId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes a <a>MethodResponse</a> resource.
 get_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode)
@@ -1360,9 +1360,9 @@ get_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Optio
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes an existing model defined for a <a>RestApi</a> resource.
 get_model(Client, ModelName, RestApiId, Flatten)
@@ -1375,13 +1375,13 @@ get_model(Client, ModelName, RestApiId, Flatten, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"flatten">>, Flatten}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Generates a sample mapping template that can be used to transform a
 %% payload into the structure of a model.
@@ -1395,9 +1395,9 @@ get_model_template(Client, ModelName, RestApiId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes existing <a>Models</a> defined for a <a>RestApi</a>
 %% resource.
@@ -1411,14 +1411,14 @@ get_models(Client, RestApiId, Limit, Position, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"limit">>, Limit},
         {<<"position">>, Position}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a <a>RequestValidator</a> of a given <a>RestApi</a>.
 get_request_validator(Client, RequestValidatorId, RestApiId)
@@ -1431,9 +1431,9 @@ get_request_validator(Client, RequestValidatorId, RestApiId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the <a>RequestValidators</a> collection of a given
 %% <a>RestApi</a>.
@@ -1447,14 +1447,14 @@ get_request_validators(Client, RestApiId, Limit, Position, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"limit">>, Limit},
         {<<"position">>, Position}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists information about a resource.
 get_resource(Client, ResourceId, RestApiId, Embed)
@@ -1467,13 +1467,13 @@ get_resource(Client, ResourceId, RestApiId, Embed, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"embed">>, Embed}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists information about a collection of <a>Resource</a> resources.
 get_resources(Client, RestApiId, Embed, Limit, Position)
@@ -1486,15 +1486,15 @@ get_resources(Client, RestApiId, Embed, Limit, Position, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"embed">>, Embed},
         {<<"limit">>, Limit},
         {<<"position">>, Position}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the <a>RestApi</a> resource in the collection.
 get_rest_api(Client, RestApiId)
@@ -1507,9 +1507,9 @@ get_rest_api(Client, RestApiId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the <a>RestApis</a> resources for your collection.
 get_rest_apis(Client, Limit, Position)
@@ -1522,14 +1522,14 @@ get_rest_apis(Client, Limit, Position, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"limit">>, Limit},
         {<<"position">>, Position}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Generates a client SDK for a <a>RestApi</a> and <a>Stage</a>.
 get_sdk(Client, RestApiId, SdkType, StageName, Parameters)
@@ -1542,13 +1542,13 @@ get_sdk(Client, RestApiId, SdkType, StageName, Parameters, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"">>, Parameters}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    case request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode) of
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -1578,9 +1578,9 @@ get_sdk_type(Client, Id, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 
 get_sdk_types(Client, Limit, Position)
@@ -1593,14 +1593,14 @@ get_sdk_types(Client, Limit, Position, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"limit">>, Limit},
         {<<"position">>, Position}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a <a>Stage</a> resource.
 get_stage(Client, RestApiId, StageName)
@@ -1613,9 +1613,9 @@ get_stage(Client, RestApiId, StageName, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about one or more <a>Stage</a> resources.
 get_stages(Client, RestApiId, DeploymentId)
@@ -1628,13 +1628,13 @@ get_stages(Client, RestApiId, DeploymentId, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"deploymentId">>, DeploymentId}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the <a>Tags</a> collection for a given resource.
 get_tags(Client, ResourceArn, Limit, Position)
@@ -1647,14 +1647,14 @@ get_tags(Client, ResourceArn, Limit, Position, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"limit">>, Limit},
         {<<"position">>, Position}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the usage data of a usage plan in a specified time interval.
 get_usage(Client, UsagePlanId, EndDate, KeyId, Limit, Position, StartDate)
@@ -1667,7 +1667,7 @@ get_usage(Client, UsagePlanId, EndDate, KeyId, Limit, Position, StartDate, Optio
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"endDate">>, EndDate},
         {<<"keyId">>, KeyId},
@@ -1675,9 +1675,9 @@ get_usage(Client, UsagePlanId, EndDate, KeyId, Limit, Position, StartDate, Optio
         {<<"position">>, Position},
         {<<"startDate">>, StartDate}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a usage plan of a given plan identifier.
 get_usage_plan(Client, UsagePlanId)
@@ -1690,9 +1690,9 @@ get_usage_plan(Client, UsagePlanId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a usage plan key of a given key identifier.
 get_usage_plan_key(Client, KeyId, UsagePlanId)
@@ -1705,9 +1705,9 @@ get_usage_plan_key(Client, KeyId, UsagePlanId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets all the usage plan keys representing the API keys added to a
 %% specified usage plan.
@@ -1721,15 +1721,15 @@ get_usage_plan_keys(Client, UsagePlanId, Limit, NameQuery, Position, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"limit">>, Limit},
         {<<"name">>, NameQuery},
         {<<"position">>, Position}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets all the usage plans of the caller's account.
 get_usage_plans(Client, KeyId, Limit, Position)
@@ -1742,15 +1742,15 @@ get_usage_plans(Client, KeyId, Limit, Position, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"keyId">>, KeyId},
         {<<"limit">>, Limit},
         {<<"position">>, Position}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a specified VPC link under the caller's account in a region.
 get_vpc_link(Client, VpcLinkId)
@@ -1763,9 +1763,9 @@ get_vpc_link(Client, VpcLinkId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the <a>VpcLinks</a> collection under the caller's account in a
 %% selected region.
@@ -1779,14 +1779,14 @@ get_vpc_links(Client, Limit, Position, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"limit">>, Limit},
         {<<"position">>, Position}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Import API keys from an external source, such as a CSV-formatted
 %% file.
@@ -1804,8 +1804,8 @@ import_api_keys(Client, Input0, Options) ->
                      {<<"failonwarnings">>, <<"failOnWarnings">>},
                      {<<"format">>, <<"format">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 
 import_documentation_parts(Client, RestApiId, Input) ->
@@ -1822,8 +1822,8 @@ import_documentation_parts(Client, RestApiId, Input0, Options) ->
                      {<<"failonwarnings">>, <<"failOnWarnings">>},
                      {<<"mode">>, <<"mode">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc A feature of the API Gateway control service for creating a new API
 %% from an external API definition file.
@@ -1841,8 +1841,8 @@ import_rest_api(Client, Input0, Options) ->
                      {<<"failonwarnings">>, <<"failOnWarnings">>},
                      {<<"">>, <<"parameters">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a customization of a <a>GatewayResponse</a> of a specified
 %% response type and status code on the given <a>RestApi</a>.
@@ -1856,10 +1856,10 @@ put_gateway_response(Client, ResponseType, RestApiId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sets up a method's integration.
 put_integration(Client, HttpMethod, ResourceId, RestApiId, Input) ->
@@ -1872,10 +1872,10 @@ put_integration(Client, HttpMethod, ResourceId, RestApiId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Represents a put integration.
 put_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input) ->
@@ -1888,10 +1888,10 @@ put_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, 
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Add a method to an existing <a>Resource</a> resource.
 put_method(Client, HttpMethod, ResourceId, RestApiId, Input) ->
@@ -1904,10 +1904,10 @@ put_method(Client, HttpMethod, ResourceId, RestApiId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds a <a>MethodResponse</a> to an existing <a>Method</a> resource.
 put_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input) ->
@@ -1920,10 +1920,10 @@ put_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc A feature of the API Gateway control service for updating an existing
 %% API with an input of external API definitions. The update can take the
@@ -1944,8 +1944,8 @@ put_rest_api(Client, RestApiId, Input0, Options) ->
                      {<<"mode">>, <<"mode">>},
                      {<<"">>, <<"parameters">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds or updates a tag on a given resource.
 tag_resource(Client, ResourceArn, Input) ->
@@ -1958,10 +1958,10 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Simulate the execution of an <a>Authorizer</a> in your <a>RestApi</a>
 %% with headers, parameters, and an incoming request body.
@@ -1981,10 +1981,10 @@ test_invoke_authorizer(Client, AuthorizerId, RestApiId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Simulate the execution of a <a>Method</a> in your <a>RestApi</a> with
 %% headers, parameters, and an incoming request body.
@@ -1998,10 +1998,10 @@ test_invoke_method(Client, HttpMethod, ResourceId, RestApiId, Input0, Options) -
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a tag from a given resource.
 untag_resource(Client, ResourceArn, Input) ->
@@ -2017,8 +2017,8 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
     QueryMapping = [
                      {<<"tagKeys">>, <<"tagKeys">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Changes information about the current <a>Account</a> resource.
 update_account(Client, Input) ->
@@ -2031,10 +2031,10 @@ update_account(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Changes information about an <a>ApiKey</a> resource.
 update_api_key(Client, ApiKey, Input) ->
@@ -2047,10 +2047,10 @@ update_api_key(Client, ApiKey, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing <a>Authorizer</a> resource.
 %%
@@ -2067,10 +2067,10 @@ update_authorizer(Client, AuthorizerId, RestApiId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Changes information about the <a>BasePathMapping</a> resource.
 update_base_path_mapping(Client, BasePath, DomainName, Input) ->
@@ -2083,10 +2083,10 @@ update_base_path_mapping(Client, BasePath, DomainName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Changes information about an <a>ClientCertificate</a> resource.
 update_client_certificate(Client, ClientCertificateId, Input) ->
@@ -2099,10 +2099,10 @@ update_client_certificate(Client, ClientCertificateId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Changes information about a <a>Deployment</a> resource.
 update_deployment(Client, DeploymentId, RestApiId, Input) ->
@@ -2115,10 +2115,10 @@ update_deployment(Client, DeploymentId, RestApiId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 
 update_documentation_part(Client, DocumentationPartId, RestApiId, Input) ->
@@ -2131,10 +2131,10 @@ update_documentation_part(Client, DocumentationPartId, RestApiId, Input0, Option
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 
 update_documentation_version(Client, DocumentationVersion, RestApiId, Input) ->
@@ -2147,10 +2147,10 @@ update_documentation_version(Client, DocumentationVersion, RestApiId, Input0, Op
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Changes information about the <a>DomainName</a> resource.
 update_domain_name(Client, DomainName, Input) ->
@@ -2163,10 +2163,10 @@ update_domain_name(Client, DomainName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a <a>GatewayResponse</a> of a specified response type on the
 %% given <a>RestApi</a>.
@@ -2180,10 +2180,10 @@ update_gateway_response(Client, ResponseType, RestApiId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Represents an update integration.
 update_integration(Client, HttpMethod, ResourceId, RestApiId, Input) ->
@@ -2196,10 +2196,10 @@ update_integration(Client, HttpMethod, ResourceId, RestApiId, Input0, Options) -
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Represents an update integration response.
 update_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input) ->
@@ -2212,10 +2212,10 @@ update_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCod
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing <a>Method</a> resource.
 update_method(Client, HttpMethod, ResourceId, RestApiId, Input) ->
@@ -2228,10 +2228,10 @@ update_method(Client, HttpMethod, ResourceId, RestApiId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing <a>MethodResponse</a> resource.
 update_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input) ->
@@ -2244,10 +2244,10 @@ update_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, In
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Changes information about a model.
 update_model(Client, ModelName, RestApiId, Input) ->
@@ -2260,10 +2260,10 @@ update_model(Client, ModelName, RestApiId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a <a>RequestValidator</a> of a given <a>RestApi</a>.
 update_request_validator(Client, RequestValidatorId, RestApiId, Input) ->
@@ -2276,10 +2276,10 @@ update_request_validator(Client, RequestValidatorId, RestApiId, Input0, Options)
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Changes information about a <a>Resource</a> resource.
 update_resource(Client, ResourceId, RestApiId, Input) ->
@@ -2292,10 +2292,10 @@ update_resource(Client, ResourceId, RestApiId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Changes information about the specified API.
 update_rest_api(Client, RestApiId, Input) ->
@@ -2308,10 +2308,10 @@ update_rest_api(Client, RestApiId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Changes information about a <a>Stage</a> resource.
 update_stage(Client, RestApiId, StageName, Input) ->
@@ -2324,10 +2324,10 @@ update_stage(Client, RestApiId, StageName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Grants a temporary extension to the remaining quota of a usage plan
 %% associated with a specified API key.
@@ -2341,10 +2341,10 @@ update_usage(Client, KeyId, UsagePlanId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a usage plan of a given plan Id.
 update_usage_plan(Client, UsagePlanId, Input) ->
@@ -2357,10 +2357,10 @@ update_usage_plan(Client, UsagePlanId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing <a>VpcLink</a> of a specified identifier.
 update_vpc_link(Client, VpcLinkId, Input) ->
@@ -2373,10 +2373,10 @@ update_vpc_link(Client, VpcLinkId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %%====================================================================
 %% Internal functions
@@ -2391,8 +2391,8 @@ update_vpc_link(Client, VpcLinkId, Input0, Options) ->
     Error :: map().
 request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"apigateway">>},
-    Host = get_host(<<"apigateway">>, Client1),
-    URL0 = get_url(Host, Path, Client1),
+    Host = build_host(<<"apigateway">>, Client1),
+    URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
     AdditionalHeaders = [ {<<"Host">>, Host}
                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
@@ -2424,12 +2424,12 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
-get_host(_EndpointPrefix, #{region := <<"local">>}) ->
+build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
-get_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
+build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
     aws_util:binary_join([EndpointPrefix, Region, Endpoint], <<".">>).
 
-get_url(Host, Path0, Client) ->
+build_url(Host, Path0, Client) ->
     Proto = maps:get(proto, Client),
     Path = erlang:iolist_to_binary(Path0),
     Port = maps:get(port, Client),

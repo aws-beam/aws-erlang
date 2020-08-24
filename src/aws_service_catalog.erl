@@ -1038,8 +1038,8 @@ update_tag_option(Client, Input, Options)
     Error :: map().
 request(Client, Action, Input0, Options) ->
     Client1 = Client#{service => <<"servicecatalog">>},
-    Host = get_host(<<"servicecatalog">>, Client1),
-    URL = get_url(Host, Client1),
+    Host = build_host(<<"servicecatalog">>, Client1),
+    URL = build_url(Host, Client1),
     Headers = [
         {<<"Host">>, Host},
         {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
@@ -1068,12 +1068,12 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
 handle_response({error, Reason}) ->
     {error, Reason}.
 
-get_host(_EndpointPrefix, #{region := <<"local">>}) ->
+build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
-get_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
+build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
     aws_util:binary_join([EndpointPrefix, Region, Endpoint], <<".">>).
 
-get_url(Host, Client) ->
+build_url(Host, Client) ->
     Proto = maps:get(proto, Client),
     Port = maps:get(port, Client),
     aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>], <<"">>).
