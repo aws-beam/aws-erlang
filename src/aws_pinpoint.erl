@@ -246,10 +246,10 @@ create_app(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new campaign for an application or updates the settings of
 %% an existing campaign for an application.
@@ -263,10 +263,10 @@ create_campaign(Client, ApplicationId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a message template for messages that are sent through the
 %% email channel.
@@ -280,10 +280,10 @@ create_email_template(Client, TemplateName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an export job for an application.
 create_export_job(Client, ApplicationId, Input) ->
@@ -296,10 +296,10 @@ create_export_job(Client, ApplicationId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an import job for an application.
 create_import_job(Client, ApplicationId, Input) ->
@@ -312,10 +312,10 @@ create_import_job(Client, ApplicationId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a journey for an application.
 create_journey(Client, ApplicationId, Input) ->
@@ -328,10 +328,10 @@ create_journey(Client, ApplicationId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a message template for messages that are sent through a push
 %% notification channel.
@@ -345,10 +345,10 @@ create_push_template(Client, TemplateName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon Pinpoint configuration for a recommender model.
 create_recommender_configuration(Client, Input) ->
@@ -361,10 +361,10 @@ create_recommender_configuration(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new segment for an application or updates the
 %% configuration, dimension, and other settings for an existing segment
@@ -379,10 +379,10 @@ create_segment(Client, ApplicationId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a message template for messages that are sent through the SMS
 %% channel.
@@ -396,10 +396,10 @@ create_sms_template(Client, TemplateName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a message template for messages that are sent through the
 %% voice channel.
@@ -413,10 +413,10 @@ create_voice_template(Client, TemplateName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disables the ADM channel for an application and deletes any existing
 %% settings for the channel.
@@ -430,10 +430,10 @@ delete_adm_channel(Client, ApplicationId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disables the APNs channel for an application and deletes any existing
 %% settings for the channel.
@@ -447,10 +447,10 @@ delete_apns_channel(Client, ApplicationId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disables the APNs sandbox channel for an application and deletes any
 %% existing settings for the channel.
@@ -464,10 +464,10 @@ delete_apns_sandbox_channel(Client, ApplicationId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disables the APNs VoIP channel for an application and deletes any
 %% existing settings for the channel.
@@ -481,10 +481,10 @@ delete_apns_voip_channel(Client, ApplicationId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disables the APNs VoIP sandbox channel for an application and deletes
 %% any existing settings for the channel.
@@ -498,10 +498,10 @@ delete_apns_voip_sandbox_channel(Client, ApplicationId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an application.
 delete_app(Client, ApplicationId, Input) ->
@@ -514,10 +514,10 @@ delete_app(Client, ApplicationId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disables the Baidu channel for an application and deletes any
 %% existing settings for the channel.
@@ -531,10 +531,10 @@ delete_baidu_channel(Client, ApplicationId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a campaign from an application.
 delete_campaign(Client, ApplicationId, CampaignId, Input) ->
@@ -547,10 +547,10 @@ delete_campaign(Client, ApplicationId, CampaignId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disables the email channel for an application and deletes any
 %% existing settings for the channel.
@@ -564,10 +564,10 @@ delete_email_channel(Client, ApplicationId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a message template for messages that were sent through the
 %% email channel.
@@ -584,8 +584,8 @@ delete_email_template(Client, TemplateName, Input0, Options) ->
     QueryMapping = [
                      {<<"version">>, <<"Version">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an endpoint from an application.
 delete_endpoint(Client, ApplicationId, EndpointId, Input) ->
@@ -598,10 +598,10 @@ delete_endpoint(Client, ApplicationId, EndpointId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the event stream for an application.
 delete_event_stream(Client, ApplicationId, Input) ->
@@ -614,10 +614,10 @@ delete_event_stream(Client, ApplicationId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disables the GCM channel for an application and deletes any existing
 %% settings for the channel.
@@ -631,10 +631,10 @@ delete_gcm_channel(Client, ApplicationId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a journey from an application.
 delete_journey(Client, ApplicationId, JourneyId, Input) ->
@@ -647,10 +647,10 @@ delete_journey(Client, ApplicationId, JourneyId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a message template for messages that were sent through a push
 %% notification channel.
@@ -667,8 +667,8 @@ delete_push_template(Client, TemplateName, Input0, Options) ->
     QueryMapping = [
                      {<<"version">>, <<"Version">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an Amazon Pinpoint configuration for a recommender model.
 delete_recommender_configuration(Client, RecommenderId, Input) ->
@@ -681,10 +681,10 @@ delete_recommender_configuration(Client, RecommenderId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a segment from an application.
 delete_segment(Client, ApplicationId, SegmentId, Input) ->
@@ -697,10 +697,10 @@ delete_segment(Client, ApplicationId, SegmentId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disables the SMS channel for an application and deletes any existing
 %% settings for the channel.
@@ -714,10 +714,10 @@ delete_sms_channel(Client, ApplicationId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a message template for messages that were sent through the
 %% SMS channel.
@@ -734,8 +734,8 @@ delete_sms_template(Client, TemplateName, Input0, Options) ->
     QueryMapping = [
                      {<<"version">>, <<"Version">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes all the endpoints that are associated with a specific user
 %% ID.
@@ -749,10 +749,10 @@ delete_user_endpoints(Client, ApplicationId, UserId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disables the voice channel for an application and deletes any
 %% existing settings for the channel.
@@ -766,10 +766,10 @@ delete_voice_channel(Client, ApplicationId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a message template for messages that were sent through the
 %% voice channel.
@@ -786,8 +786,8 @@ delete_voice_template(Client, TemplateName, Input0, Options) ->
     QueryMapping = [
                      {<<"version">>, <<"Version">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the status and settings of the ADM
 %% channel for an application.
@@ -801,9 +801,9 @@ get_adm_channel(Client, ApplicationId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the status and settings of the APNs
 %% channel for an application.
@@ -817,9 +817,9 @@ get_apns_channel(Client, ApplicationId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the status and settings of the APNs
 %% sandbox channel for an application.
@@ -833,9 +833,9 @@ get_apns_sandbox_channel(Client, ApplicationId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the status and settings of the APNs VoIP
 %% channel for an application.
@@ -849,9 +849,9 @@ get_apns_voip_channel(Client, ApplicationId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the status and settings of the APNs VoIP
 %% sandbox channel for an application.
@@ -865,9 +865,9 @@ get_apns_voip_sandbox_channel(Client, ApplicationId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about an application.
 get_app(Client, ApplicationId)
@@ -880,9 +880,9 @@ get_app(Client, ApplicationId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves (queries) pre-aggregated data for a standard metric that
 %% applies to an application.
@@ -896,16 +896,16 @@ get_application_date_range_kpi(Client, ApplicationId, KpiName, EndTime, NextToke
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"end-time">>, EndTime},
         {<<"next-token">>, NextToken},
         {<<"page-size">>, PageSize},
         {<<"start-time">>, StartTime}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the settings for an application.
 get_application_settings(Client, ApplicationId)
@@ -918,9 +918,9 @@ get_application_settings(Client, ApplicationId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about all the applications that are associated
 %% with your Amazon Pinpoint account.
@@ -934,14 +934,14 @@ get_apps(Client, PageSize, Token, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"page-size">>, PageSize},
         {<<"token">>, Token}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the status and settings of the Baidu
 %% channel for an application.
@@ -955,9 +955,9 @@ get_baidu_channel(Client, ApplicationId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the status, configuration, and other
 %% settings for a campaign.
@@ -971,9 +971,9 @@ get_campaign(Client, ApplicationId, CampaignId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about all the activities for a campaign.
 get_campaign_activities(Client, ApplicationId, CampaignId, PageSize, Token)
@@ -986,14 +986,14 @@ get_campaign_activities(Client, ApplicationId, CampaignId, PageSize, Token, Opti
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"page-size">>, PageSize},
         {<<"token">>, Token}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves (queries) pre-aggregated data for a standard metric that
 %% applies to a campaign.
@@ -1007,16 +1007,16 @@ get_campaign_date_range_kpi(Client, ApplicationId, CampaignId, KpiName, EndTime,
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"end-time">>, EndTime},
         {<<"next-token">>, NextToken},
         {<<"page-size">>, PageSize},
         {<<"start-time">>, StartTime}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the status, configuration, and other
 %% settings for a specific version of a campaign.
@@ -1030,9 +1030,9 @@ get_campaign_version(Client, ApplicationId, CampaignId, Version, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the status, configuration, and other
 %% settings for all versions of a campaign.
@@ -1046,14 +1046,14 @@ get_campaign_versions(Client, ApplicationId, CampaignId, PageSize, Token, Option
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"page-size">>, PageSize},
         {<<"token">>, Token}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the status, configuration, and other
 %% settings for all the campaigns that are associated with an application.
@@ -1067,14 +1067,14 @@ get_campaigns(Client, ApplicationId, PageSize, Token, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"page-size">>, PageSize},
         {<<"token">>, Token}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the history and status of each channel
 %% for an application.
@@ -1088,9 +1088,9 @@ get_channels(Client, ApplicationId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the status and settings of the email
 %% channel for an application.
@@ -1104,9 +1104,9 @@ get_email_channel(Client, ApplicationId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the content and settings of a message template for messages
 %% that are sent through the email channel.
@@ -1120,13 +1120,13 @@ get_email_template(Client, TemplateName, Version, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"version">>, Version}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the settings and attributes of a specific
 %% endpoint for an application.
@@ -1140,9 +1140,9 @@ get_endpoint(Client, ApplicationId, EndpointId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the event stream settings for an
 %% application.
@@ -1156,9 +1156,9 @@ get_event_stream(Client, ApplicationId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the status and settings of a specific
 %% export job for an application.
@@ -1172,9 +1172,9 @@ get_export_job(Client, ApplicationId, JobId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the status and settings of all the export
 %% jobs for an application.
@@ -1188,14 +1188,14 @@ get_export_jobs(Client, ApplicationId, PageSize, Token, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"page-size">>, PageSize},
         {<<"token">>, Token}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the status and settings of the GCM
 %% channel for an application.
@@ -1209,9 +1209,9 @@ get_gcm_channel(Client, ApplicationId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the status and settings of a specific
 %% import job for an application.
@@ -1225,9 +1225,9 @@ get_import_job(Client, ApplicationId, JobId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the status and settings of all the import
 %% jobs for an application.
@@ -1241,14 +1241,14 @@ get_import_jobs(Client, ApplicationId, PageSize, Token, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"page-size">>, PageSize},
         {<<"token">>, Token}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the status, configuration, and other
 %% settings for a journey.
@@ -1262,9 +1262,9 @@ get_journey(Client, ApplicationId, JourneyId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves (queries) pre-aggregated data for a standard engagement
 %% metric that applies to a journey.
@@ -1278,16 +1278,16 @@ get_journey_date_range_kpi(Client, ApplicationId, JourneyId, KpiName, EndTime, N
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"end-time">>, EndTime},
         {<<"next-token">>, NextToken},
         {<<"page-size">>, PageSize},
         {<<"start-time">>, StartTime}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves (queries) pre-aggregated data for a standard execution
 %% metric that applies to a journey activity.
@@ -1301,14 +1301,14 @@ get_journey_execution_activity_metrics(Client, ApplicationId, JourneyActivityId,
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"next-token">>, NextToken},
         {<<"page-size">>, PageSize}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves (queries) pre-aggregated data for a standard execution
 %% metric that applies to a journey.
@@ -1322,14 +1322,14 @@ get_journey_execution_metrics(Client, ApplicationId, JourneyId, NextToken, PageS
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"next-token">>, NextToken},
         {<<"page-size">>, PageSize}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the content and settings of a message template for messages
 %% that are sent through a push notification channel.
@@ -1343,13 +1343,13 @@ get_push_template(Client, TemplateName, Version, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"version">>, Version}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about an Amazon Pinpoint configuration for a
 %% recommender model.
@@ -1363,9 +1363,9 @@ get_recommender_configuration(Client, RecommenderId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about all the recommender model configurations
 %% that are associated with your Amazon Pinpoint account.
@@ -1379,14 +1379,14 @@ get_recommender_configurations(Client, PageSize, Token, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"page-size">>, PageSize},
         {<<"token">>, Token}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the configuration, dimension, and other
 %% settings for a specific segment that's associated with an application.
@@ -1400,9 +1400,9 @@ get_segment(Client, ApplicationId, SegmentId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the status and settings of the export
 %% jobs for a segment.
@@ -1416,14 +1416,14 @@ get_segment_export_jobs(Client, ApplicationId, SegmentId, PageSize, Token, Optio
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"page-size">>, PageSize},
         {<<"token">>, Token}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the status and settings of the import
 %% jobs for a segment.
@@ -1437,14 +1437,14 @@ get_segment_import_jobs(Client, ApplicationId, SegmentId, PageSize, Token, Optio
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"page-size">>, PageSize},
         {<<"token">>, Token}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the configuration, dimension, and other
 %% settings for a specific version of a segment that's associated with an
@@ -1459,9 +1459,9 @@ get_segment_version(Client, ApplicationId, SegmentId, Version, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the configuration, dimension, and other
 %% settings for all the versions of a specific segment that's associated with
@@ -1476,14 +1476,14 @@ get_segment_versions(Client, ApplicationId, SegmentId, PageSize, Token, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"page-size">>, PageSize},
         {<<"token">>, Token}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the configuration, dimension, and other
 %% settings for all the segments that are associated with an application.
@@ -1497,14 +1497,14 @@ get_segments(Client, ApplicationId, PageSize, Token, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"page-size">>, PageSize},
         {<<"token">>, Token}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the status and settings of the SMS
 %% channel for an application.
@@ -1518,9 +1518,9 @@ get_sms_channel(Client, ApplicationId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the content and settings of a message template for messages
 %% that are sent through the SMS channel.
@@ -1534,13 +1534,13 @@ get_sms_template(Client, TemplateName, Version, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"version">>, Version}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about all the endpoints that are associated
 %% with a specific user ID.
@@ -1554,9 +1554,9 @@ get_user_endpoints(Client, ApplicationId, UserId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the status and settings of the voice
 %% channel for an application.
@@ -1570,9 +1570,9 @@ get_voice_channel(Client, ApplicationId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the content and settings of a message template for messages
 %% that are sent through the voice channel.
@@ -1586,13 +1586,13 @@ get_voice_template(Client, TemplateName, Version, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"version">>, Version}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the status, configuration, and other
 %% settings for all the journeys that are associated with an application.
@@ -1606,14 +1606,14 @@ list_journeys(Client, ApplicationId, PageSize, Token, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"page-size">>, PageSize},
         {<<"token">>, Token}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves all the tags (keys and values) that are associated with an
 %% application, campaign, message template, or segment.
@@ -1627,9 +1627,9 @@ list_tags_for_resource(Client, ResourceArn, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about all the versions of a specific message
 %% template.
@@ -1643,14 +1643,14 @@ list_template_versions(Client, TemplateName, TemplateType, NextToken, PageSize, 
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"next-token">>, NextToken},
         {<<"page-size">>, PageSize}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about all the message templates that are
 %% associated with your Amazon Pinpoint account.
@@ -1664,16 +1664,16 @@ list_templates(Client, NextToken, PageSize, Prefix, TemplateType, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"next-token">>, NextToken},
         {<<"page-size">>, PageSize},
         {<<"prefix">>, Prefix},
         {<<"template-type">>, TemplateType}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a phone number.
 phone_number_validate(Client, Input) ->
@@ -1686,10 +1686,10 @@ phone_number_validate(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new event stream for an application or updates the settings
 %% of an existing event stream for an application.
@@ -1703,10 +1703,10 @@ put_event_stream(Client, ApplicationId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new event to record for endpoints, or creates or updates
 %% endpoint data that existing events are associated with.
@@ -1720,10 +1720,10 @@ put_events(Client, ApplicationId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes one or more attributes, of the same attribute type, from all
 %% the endpoints that are associated with an application.
@@ -1737,10 +1737,10 @@ remove_attributes(Client, ApplicationId, AttributeType, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates and sends a direct message.
 send_messages(Client, ApplicationId, Input) ->
@@ -1753,10 +1753,10 @@ send_messages(Client, ApplicationId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates and sends a message to a list of users.
 send_users_messages(Client, ApplicationId, Input) ->
@@ -1769,10 +1769,10 @@ send_users_messages(Client, ApplicationId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds one or more tags (keys and values) to an application, campaign,
 %% message template, or segment.
@@ -1786,10 +1786,10 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes one or more tags (keys and values) from an application,
 %% campaign, message template, or segment.
@@ -1806,8 +1806,8 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
     QueryMapping = [
                      {<<"tagKeys">>, <<"TagKeys">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Enables the ADM channel for an application or updates the status and
 %% settings of the ADM channel for an application.
@@ -1821,10 +1821,10 @@ update_adm_channel(Client, ApplicationId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Enables the APNs channel for an application or updates the status and
 %% settings of the APNs channel for an application.
@@ -1838,10 +1838,10 @@ update_apns_channel(Client, ApplicationId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Enables the APNs sandbox channel for an application or updates the
 %% status and settings of the APNs sandbox channel for an application.
@@ -1855,10 +1855,10 @@ update_apns_sandbox_channel(Client, ApplicationId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Enables the APNs VoIP channel for an application or updates the
 %% status and settings of the APNs VoIP channel for an application.
@@ -1872,10 +1872,10 @@ update_apns_voip_channel(Client, ApplicationId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Enables the APNs VoIP sandbox channel for an application or updates
 %% the status and settings of the APNs VoIP sandbox channel for an
@@ -1890,10 +1890,10 @@ update_apns_voip_sandbox_channel(Client, ApplicationId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the settings for an application.
 update_application_settings(Client, ApplicationId, Input) ->
@@ -1906,10 +1906,10 @@ update_application_settings(Client, ApplicationId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Enables the Baidu channel for an application or updates the status
 %% and settings of the Baidu channel for an application.
@@ -1923,10 +1923,10 @@ update_baidu_channel(Client, ApplicationId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the configuration and other settings for a campaign.
 update_campaign(Client, ApplicationId, CampaignId, Input) ->
@@ -1939,10 +1939,10 @@ update_campaign(Client, ApplicationId, CampaignId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Enables the email channel for an application or updates the status
 %% and settings of the email channel for an application.
@@ -1956,10 +1956,10 @@ update_email_channel(Client, ApplicationId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing message template for messages that are sent
 %% through the email channel.
@@ -1977,8 +1977,8 @@ update_email_template(Client, TemplateName, Input0, Options) ->
                      {<<"create-new-version">>, <<"CreateNewVersion">>},
                      {<<"version">>, <<"Version">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new endpoint for an application or updates the settings and
 %% attributes of an existing endpoint for an application. You can also use
@@ -1995,10 +1995,10 @@ update_endpoint(Client, ApplicationId, EndpointId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new batch of endpoints for an application or updates the
 %% settings and attributes of a batch of existing endpoints for an
@@ -2016,10 +2016,10 @@ update_endpoints_batch(Client, ApplicationId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Enables the GCM channel for an application or updates the status and
 %% settings of the GCM channel for an application.
@@ -2033,10 +2033,10 @@ update_gcm_channel(Client, ApplicationId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the configuration and other settings for a journey.
 update_journey(Client, ApplicationId, JourneyId, Input) ->
@@ -2049,10 +2049,10 @@ update_journey(Client, ApplicationId, JourneyId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels (stops) an active journey.
 update_journey_state(Client, ApplicationId, JourneyId, Input) ->
@@ -2065,10 +2065,10 @@ update_journey_state(Client, ApplicationId, JourneyId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing message template for messages that are sent
 %% through a push notification channel.
@@ -2086,8 +2086,8 @@ update_push_template(Client, TemplateName, Input0, Options) ->
                      {<<"create-new-version">>, <<"CreateNewVersion">>},
                      {<<"version">>, <<"Version">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an Amazon Pinpoint configuration for a recommender model.
 update_recommender_configuration(Client, RecommenderId, Input) ->
@@ -2100,10 +2100,10 @@ update_recommender_configuration(Client, RecommenderId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new segment for an application or updates the
 %% configuration, dimension, and other settings for an existing segment
@@ -2118,10 +2118,10 @@ update_segment(Client, ApplicationId, SegmentId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Enables the SMS channel for an application or updates the status and
 %% settings of the SMS channel for an application.
@@ -2135,10 +2135,10 @@ update_sms_channel(Client, ApplicationId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing message template for messages that are sent
 %% through the SMS channel.
@@ -2156,8 +2156,8 @@ update_sms_template(Client, TemplateName, Input0, Options) ->
                      {<<"create-new-version">>, <<"CreateNewVersion">>},
                      {<<"version">>, <<"Version">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Changes the status of a specific version of a message template to
 %% <i>active</i>.
@@ -2171,10 +2171,10 @@ update_template_active_version(Client, TemplateName, TemplateType, Input0, Optio
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Enables the voice channel for an application or updates the status
 %% and settings of the voice channel for an application.
@@ -2188,10 +2188,10 @@ update_voice_channel(Client, ApplicationId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing message template for messages that are sent
 %% through the voice channel.
@@ -2209,8 +2209,8 @@ update_voice_template(Client, TemplateName, Input0, Options) ->
                      {<<"create-new-version">>, <<"CreateNewVersion">>},
                      {<<"version">>, <<"Version">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %%====================================================================
 %% Internal functions
@@ -2225,8 +2225,8 @@ update_voice_template(Client, TemplateName, Input0, Options) ->
     Error :: map().
 request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"mobiletargeting">>},
-    Host = get_host(<<"pinpoint">>, Client1),
-    URL0 = get_url(Host, Path, Client1),
+    Host = build_host(<<"pinpoint">>, Client1),
+    URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
     AdditionalHeaders = [ {<<"Host">>, Host}
                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
@@ -2258,12 +2258,12 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
-get_host(_EndpointPrefix, #{region := <<"local">>}) ->
+build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
-get_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
+build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
     aws_util:binary_join([EndpointPrefix, Region, Endpoint], <<".">>).
 
-get_url(Host, Path0, Client) ->
+build_url(Host, Path0, Client) ->
     Proto = maps:get(proto, Client),
     Path = erlang:iolist_to_binary(Path0),
     Port = maps:get(port, Client),

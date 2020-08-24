@@ -1,0 +1,320 @@
+%% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
+%% See https://github.com/aws-beam/aws-codegen for more details.
+
+%% @doc Amazon Comprehend Medical extracts structured information from
+%% unstructured clinical text. Use these actions to gain insight in your
+%% documents.
+-module(aws_comprehendmedical).
+
+-export([describe_entities_detection_v2_job/2,
+         describe_entities_detection_v2_job/3,
+         describe_i_c_d10_c_m_inference_job/2,
+         describe_i_c_d10_c_m_inference_job/3,
+         describe_p_h_i_detection_job/2,
+         describe_p_h_i_detection_job/3,
+         describe_rx_norm_inference_job/2,
+         describe_rx_norm_inference_job/3,
+         detect_entities/2,
+         detect_entities/3,
+         detect_entities_v2/2,
+         detect_entities_v2/3,
+         detect_p_h_i/2,
+         detect_p_h_i/3,
+         infer_i_c_d10_c_m/2,
+         infer_i_c_d10_c_m/3,
+         infer_rx_norm/2,
+         infer_rx_norm/3,
+         list_entities_detection_v2_jobs/2,
+         list_entities_detection_v2_jobs/3,
+         list_i_c_d10_c_m_inference_jobs/2,
+         list_i_c_d10_c_m_inference_jobs/3,
+         list_p_h_i_detection_jobs/2,
+         list_p_h_i_detection_jobs/3,
+         list_rx_norm_inference_jobs/2,
+         list_rx_norm_inference_jobs/3,
+         start_entities_detection_v2_job/2,
+         start_entities_detection_v2_job/3,
+         start_i_c_d10_c_m_inference_job/2,
+         start_i_c_d10_c_m_inference_job/3,
+         start_p_h_i_detection_job/2,
+         start_p_h_i_detection_job/3,
+         start_rx_norm_inference_job/2,
+         start_rx_norm_inference_job/3,
+         stop_entities_detection_v2_job/2,
+         stop_entities_detection_v2_job/3,
+         stop_i_c_d10_c_m_inference_job/2,
+         stop_i_c_d10_c_m_inference_job/3,
+         stop_p_h_i_detection_job/2,
+         stop_p_h_i_detection_job/3,
+         stop_rx_norm_inference_job/2,
+         stop_rx_norm_inference_job/3]).
+
+-include_lib("hackney/include/hackney_lib.hrl").
+
+%%====================================================================
+%% API
+%%====================================================================
+
+%% @doc Gets the properties associated with a medical entities detection job.
+%% Use this operation to get the status of a detection job.
+describe_entities_detection_v2_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_entities_detection_v2_job(Client, Input, []).
+describe_entities_detection_v2_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeEntitiesDetectionV2Job">>, Input, Options).
+
+%% @doc Gets the properties associated with an InferICD10CM job. Use this
+%% operation to get the status of an inference job.
+describe_i_c_d10_c_m_inference_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_i_c_d10_c_m_inference_job(Client, Input, []).
+describe_i_c_d10_c_m_inference_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeICD10CMInferenceJob">>, Input, Options).
+
+%% @doc Gets the properties associated with a protected health information
+%% (PHI) detection job. Use this operation to get the status of a detection
+%% job.
+describe_p_h_i_detection_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_p_h_i_detection_job(Client, Input, []).
+describe_p_h_i_detection_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribePHIDetectionJob">>, Input, Options).
+
+%% @doc Gets the properties associated with an InferRxNorm job. Use this
+%% operation to get the status of an inference job.
+describe_rx_norm_inference_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_rx_norm_inference_job(Client, Input, []).
+describe_rx_norm_inference_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeRxNormInferenceJob">>, Input, Options).
+
+%% @doc The <code>DetectEntities</code> operation is deprecated. You should
+%% use the <a>DetectEntitiesV2</a> operation instead.
+%%
+%% Inspects the clinical text for a variety of medical entities and returns
+%% specific information about them such as entity category, location, and
+%% confidence score on that information .
+detect_entities(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    detect_entities(Client, Input, []).
+detect_entities(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DetectEntities">>, Input, Options).
+
+%% @doc Inspects the clinical text for a variety of medical entities and
+%% returns specific information about them such as entity category, location,
+%% and confidence score on that information. Amazon Comprehend Medical only
+%% detects medical entities in English language texts.
+%%
+%% The <code>DetectEntitiesV2</code> operation replaces the
+%% <a>DetectEntities</a> operation. This new action uses a different model
+%% for determining the entities in your medical text and changes the way that
+%% some entities are returned in the output. You should use the
+%% <code>DetectEntitiesV2</code> operation in all new applications.
+%%
+%% The <code>DetectEntitiesV2</code> operation returns the
+%% <code>Acuity</code> and <code>Direction</code> entities as attributes
+%% instead of types.
+detect_entities_v2(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    detect_entities_v2(Client, Input, []).
+detect_entities_v2(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DetectEntitiesV2">>, Input, Options).
+
+%% @doc Inspects the clinical text for protected health information (PHI)
+%% entities and returns the entity category, location, and confidence score
+%% for each entity. Amazon Comprehend Medical only detects entities in
+%% English language texts.
+detect_p_h_i(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    detect_p_h_i(Client, Input, []).
+detect_p_h_i(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DetectPHI">>, Input, Options).
+
+%% @doc InferICD10CM detects medical conditions as entities listed in a
+%% patient record and links those entities to normalized concept identifiers
+%% in the ICD-10-CM knowledge base from the Centers for Disease Control.
+%% Amazon Comprehend Medical only detects medical entities in English
+%% language texts.
+infer_i_c_d10_c_m(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    infer_i_c_d10_c_m(Client, Input, []).
+infer_i_c_d10_c_m(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"InferICD10CM">>, Input, Options).
+
+%% @doc InferRxNorm detects medications as entities listed in a patient
+%% record and links to the normalized concept identifiers in the RxNorm
+%% database from the National Library of Medicine. Amazon Comprehend Medical
+%% only detects medical entities in English language texts.
+infer_rx_norm(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    infer_rx_norm(Client, Input, []).
+infer_rx_norm(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"InferRxNorm">>, Input, Options).
+
+%% @doc Gets a list of medical entity detection jobs that you have submitted.
+list_entities_detection_v2_jobs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_entities_detection_v2_jobs(Client, Input, []).
+list_entities_detection_v2_jobs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListEntitiesDetectionV2Jobs">>, Input, Options).
+
+%% @doc Gets a list of InferICD10CM jobs that you have submitted.
+list_i_c_d10_c_m_inference_jobs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_i_c_d10_c_m_inference_jobs(Client, Input, []).
+list_i_c_d10_c_m_inference_jobs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListICD10CMInferenceJobs">>, Input, Options).
+
+%% @doc Gets a list of protected health information (PHI) detection jobs that
+%% you have submitted.
+list_p_h_i_detection_jobs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_p_h_i_detection_jobs(Client, Input, []).
+list_p_h_i_detection_jobs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListPHIDetectionJobs">>, Input, Options).
+
+%% @doc Gets a list of InferRxNorm jobs that you have submitted.
+list_rx_norm_inference_jobs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_rx_norm_inference_jobs(Client, Input, []).
+list_rx_norm_inference_jobs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListRxNormInferenceJobs">>, Input, Options).
+
+%% @doc Starts an asynchronous medical entity detection job for a collection
+%% of documents. Use the <code>DescribeEntitiesDetectionV2Job</code>
+%% operation to track the status of a job.
+start_entities_detection_v2_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_entities_detection_v2_job(Client, Input, []).
+start_entities_detection_v2_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartEntitiesDetectionV2Job">>, Input, Options).
+
+%% @doc Starts an asynchronous job to detect medical conditions and link them
+%% to the ICD-10-CM ontology. Use the
+%% <code>DescribeICD10CMInferenceJob</code> operation to track the status of
+%% a job.
+start_i_c_d10_c_m_inference_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_i_c_d10_c_m_inference_job(Client, Input, []).
+start_i_c_d10_c_m_inference_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartICD10CMInferenceJob">>, Input, Options).
+
+%% @doc Starts an asynchronous job to detect protected health information
+%% (PHI). Use the <code>DescribePHIDetectionJob</code> operation to track the
+%% status of a job.
+start_p_h_i_detection_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_p_h_i_detection_job(Client, Input, []).
+start_p_h_i_detection_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartPHIDetectionJob">>, Input, Options).
+
+%% @doc Starts an asynchronous job to detect medication entities and link
+%% them to the RxNorm ontology. Use the
+%% <code>DescribeRxNormInferenceJob</code> operation to track the status of a
+%% job.
+start_rx_norm_inference_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_rx_norm_inference_job(Client, Input, []).
+start_rx_norm_inference_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartRxNormInferenceJob">>, Input, Options).
+
+%% @doc Stops a medical entities detection job in progress.
+stop_entities_detection_v2_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_entities_detection_v2_job(Client, Input, []).
+stop_entities_detection_v2_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopEntitiesDetectionV2Job">>, Input, Options).
+
+%% @doc Stops an InferICD10CM inference job in progress.
+stop_i_c_d10_c_m_inference_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_i_c_d10_c_m_inference_job(Client, Input, []).
+stop_i_c_d10_c_m_inference_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopICD10CMInferenceJob">>, Input, Options).
+
+%% @doc Stops a protected health information (PHI) detection job in progress.
+stop_p_h_i_detection_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_p_h_i_detection_job(Client, Input, []).
+stop_p_h_i_detection_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopPHIDetectionJob">>, Input, Options).
+
+%% @doc Stops an InferRxNorm inference job in progress.
+stop_rx_norm_inference_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_rx_norm_inference_job(Client, Input, []).
+stop_rx_norm_inference_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopRxNormInferenceJob">>, Input, Options).
+
+%%====================================================================
+%% Internal functions
+%%====================================================================
+
+-spec request(aws_client:aws_client(), binary(), map(), list()) ->
+    {ok, Result, {integer(), list(), hackney:client()}} |
+    {error, Error, {integer(), list(), hackney:client()}} |
+    {error, term()} when
+    Result :: map() | undefined,
+    Error :: map().
+request(Client, Action, Input0, Options) ->
+    Client1 = Client#{service => <<"comprehendmedical">>},
+    Host = build_host(<<"comprehendmedical">>, Client1),
+    URL = build_url(Host, Client1),
+    Headers = [
+        {<<"Host">>, Host},
+        {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
+        {<<"X-Amz-Target">>, <<"ComprehendMedical_20181030.", Action/binary>>}
+    ],
+
+    Input = Input0,
+
+    Payload = jsx:encode(Input),
+    SignedHeaders = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
+    Response = hackney:request(post, URL, SignedHeaders, Payload, Options),
+    handle_response(Response).
+
+handle_response({ok, 200, ResponseHeaders, Client}) ->
+    case hackney:body(Client) of
+        {ok, <<>>} ->
+            {ok, undefined, {200, ResponseHeaders, Client}};
+        {ok, Body} ->
+            Result = jsx:decode(Body),
+            {ok, Result, {200, ResponseHeaders, Client}}
+    end;
+handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
+    {ok, Body} = hackney:body(Client),
+    Error = jsx:decode(Body),
+    {error, Error, {StatusCode, ResponseHeaders, Client}};
+handle_response({error, Reason}) ->
+    {error, Reason}.
+
+build_host(_EndpointPrefix, #{region := <<"local">>}) ->
+    <<"localhost">>;
+build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
+    aws_util:binary_join([EndpointPrefix, Region, Endpoint], <<".">>).
+
+build_url(Host, Client) ->
+    Proto = maps:get(proto, Client),
+    Port = maps:get(port, Client),
+    aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>], <<"">>).

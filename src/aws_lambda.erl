@@ -139,8 +139,8 @@ add_layer_version_permission(Client, LayerName, VersionNumber, Input0, Options) 
     QueryMapping = [
                      {<<"RevisionId">>, <<"RevisionId">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Grants an AWS service or another account permission to use a
 %% function. You can apply the policy at the function level, or specify a
@@ -174,8 +174,8 @@ add_permission(Client, FunctionName, Input0, Options) ->
     QueryMapping = [
                      {<<"Qualifier">>, <<"Qualifier">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an <a
 %% href="https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">alias</a>
@@ -195,10 +195,10 @@ create_alias(Client, FunctionName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a mapping between an event source and an AWS Lambda function.
 %% Lambda reads items from the event source and triggers the function.
@@ -246,10 +246,10 @@ create_event_source_mapping(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a Lambda function. To create a function, you need a <a
 %% href="https://docs.aws.amazon.com/lambda/latest/dg/deployment-package-v2.html">deployment
@@ -306,10 +306,10 @@ create_function(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a Lambda function <a
 %% href="https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">alias</a>.
@@ -323,10 +323,10 @@ delete_alias(Client, FunctionName, Name, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an <a
 %% href="https://docs.aws.amazon.com/lambda/latest/dg/intro-invocation-modes.html">event
@@ -345,10 +345,10 @@ delete_event_source_mapping(Client, UUID, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a Lambda function. To delete a specific function version, use
 %% the <code>Qualifier</code> parameter. Otherwise, all versions and aliases
@@ -371,8 +371,8 @@ delete_function(Client, FunctionName, Input0, Options) ->
     QueryMapping = [
                      {<<"Qualifier">>, <<"Qualifier">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a concurrent execution limit from a function.
 delete_function_concurrency(Client, FunctionName, Input) ->
@@ -385,10 +385,10 @@ delete_function_concurrency(Client, FunctionName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the configuration for asynchronous invocation for a function,
 %% version, or alias.
@@ -408,8 +408,8 @@ delete_function_event_invoke_config(Client, FunctionName, Input0, Options) ->
     QueryMapping = [
                      {<<"Qualifier">>, <<"Qualifier">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a version of an <a
 %% href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">AWS
@@ -426,10 +426,10 @@ delete_layer_version(Client, LayerName, VersionNumber, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the provisioned concurrency configuration for a function.
 delete_provisioned_concurrency_config(Client, FunctionName, Input) ->
@@ -445,8 +445,8 @@ delete_provisioned_concurrency_config(Client, FunctionName, Input0, Options) ->
     QueryMapping = [
                      {<<"Qualifier">>, <<"Qualifier">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves details about your account's <a
 %% href="https://docs.aws.amazon.com/lambda/latest/dg/limits.html">limits</a>
@@ -461,9 +461,9 @@ get_account_settings(Client, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns details about a Lambda function <a
 %% href="https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">alias</a>.
@@ -477,9 +477,9 @@ get_alias(Client, FunctionName, Name, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns details about an event source mapping. You can get the
 %% identifier of a mapping from the output of <a>ListEventSourceMappings</a>.
@@ -493,9 +493,9 @@ get_event_source_mapping(Client, UUID, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about the function or function version, with a
 %% link to download the deployment package that's valid for 10 minutes. If
@@ -511,13 +511,13 @@ get_function(Client, FunctionName, Qualifier, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"Qualifier">>, Qualifier}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns details about the reserved concurrency configuration for a
 %% function. To set a concurrency limit for a function, use
@@ -532,9 +532,9 @@ get_function_concurrency(Client, FunctionName, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the version-specific settings of a Lambda function or
 %% version. The output includes only options that can vary between versions
@@ -553,13 +553,13 @@ get_function_configuration(Client, FunctionName, Qualifier, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"Qualifier">>, Qualifier}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the configuration for asynchronous invocation for a
 %% function, version, or alias.
@@ -576,13 +576,13 @@ get_function_event_invoke_config(Client, FunctionName, Qualifier, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"Qualifier">>, Qualifier}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about a version of an <a
 %% href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">AWS
@@ -598,9 +598,9 @@ get_layer_version(Client, LayerName, VersionNumber, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about a version of an <a
 %% href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">AWS
@@ -616,13 +616,13 @@ get_layer_version_by_arn(Client, Arn, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"Arn">>, Arn}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the permission policy for a version of an <a
 %% href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">AWS
@@ -638,9 +638,9 @@ get_layer_version_policy(Client, LayerName, VersionNumber, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the <a
 %% href="https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html">resource-based
@@ -655,13 +655,13 @@ get_policy(Client, FunctionName, Qualifier, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"Qualifier">>, Qualifier}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the provisioned concurrency configuration for a function's
 %% alias or version.
@@ -675,13 +675,13 @@ get_provisioned_concurrency_config(Client, FunctionName, Qualifier, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"Qualifier">>, Qualifier}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Invokes a Lambda function. You can invoke a function synchronously
 %% (and wait for the response), or asynchronously. To invoke a function
@@ -749,8 +749,8 @@ invoke(Client, FunctionName, Input0, Options) ->
     QueryMapping = [
                      {<<"Qualifier">>, <<"Qualifier">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -783,10 +783,10 @@ invoke_async(Client, FunctionName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of <a
 %% href="https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">aliases</a>
@@ -801,15 +801,15 @@ list_aliases(Client, FunctionName, FunctionVersion, Marker, MaxItems, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"FunctionVersion">>, FunctionVersion},
         {<<"Marker">>, Marker},
         {<<"MaxItems">>, MaxItems}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists event source mappings. Specify an <code>EventSourceArn</code>
 %% to only show event source mappings for a single event source.
@@ -823,16 +823,16 @@ list_event_source_mappings(Client, EventSourceArn, FunctionName, Marker, MaxItem
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"EventSourceArn">>, EventSourceArn},
         {<<"FunctionName">>, FunctionName},
         {<<"Marker">>, Marker},
         {<<"MaxItems">>, MaxItems}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of configurations for asynchronous invocation for a
 %% function.
@@ -849,14 +849,14 @@ list_function_event_invoke_configs(Client, FunctionName, Marker, MaxItems, Optio
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"Marker">>, Marker},
         {<<"MaxItems">>, MaxItems}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of Lambda functions, with the version-specific
 %% configuration of each. Lambda returns up to 50 functions per call.
@@ -875,16 +875,16 @@ list_functions(Client, FunctionVersion, Marker, MasterRegion, MaxItems, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"FunctionVersion">>, FunctionVersion},
         {<<"Marker">>, Marker},
         {<<"MasterRegion">>, MasterRegion},
         {<<"MaxItems">>, MaxItems}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the versions of an <a
 %% href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">AWS
@@ -903,15 +903,15 @@ list_layer_versions(Client, LayerName, CompatibleRuntime, Marker, MaxItems, Opti
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"CompatibleRuntime">>, CompatibleRuntime},
         {<<"Marker">>, Marker},
         {<<"MaxItems">>, MaxItems}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists <a
 %% href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">AWS
@@ -930,15 +930,15 @@ list_layers(Client, CompatibleRuntime, Marker, MaxItems, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"CompatibleRuntime">>, CompatibleRuntime},
         {<<"Marker">>, Marker},
         {<<"MaxItems">>, MaxItems}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of provisioned concurrency configurations for a
 %% function.
@@ -952,14 +952,14 @@ list_provisioned_concurrency_configs(Client, FunctionName, Marker, MaxItems, Opt
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"Marker">>, Marker},
         {<<"MaxItems">>, MaxItems}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a function's <a
 %% href="https://docs.aws.amazon.com/lambda/latest/dg/tagging.html">tags</a>.
@@ -974,9 +974,9 @@ list_tags(Client, Resource, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of <a
 %% href="https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">versions</a>,
@@ -992,14 +992,14 @@ list_versions_by_function(Client, FunctionName, Marker, MaxItems, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"Marker">>, Marker},
         {<<"MaxItems">>, MaxItems}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Creates an <a
 %% href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">AWS
@@ -1019,10 +1019,10 @@ publish_layer_version(Client, LayerName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a <a
 %% href="https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">version</a>
@@ -1047,10 +1047,10 @@ publish_version(Client, FunctionName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sets the maximum number of simultaneous executions for a function,
 %% and reserves capacity for that concurrency level.
@@ -1077,10 +1077,10 @@ put_function_concurrency(Client, FunctionName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Configures options for <a
 %% href="https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html">asynchronous
@@ -1117,8 +1117,8 @@ put_function_event_invoke_config(Client, FunctionName, Input0, Options) ->
     QueryMapping = [
                      {<<"Qualifier">>, <<"Qualifier">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds a provisioned concurrency configuration to a function's alias or
 %% version.
@@ -1135,8 +1135,8 @@ put_provisioned_concurrency_config(Client, FunctionName, Input0, Options) ->
     QueryMapping = [
                      {<<"Qualifier">>, <<"Qualifier">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a statement from the permissions policy for a version of an
 %% <a
@@ -1156,8 +1156,8 @@ remove_layer_version_permission(Client, LayerName, StatementId, VersionNumber, I
     QueryMapping = [
                      {<<"RevisionId">>, <<"RevisionId">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Revokes function-use permission from an AWS service or another
 %% account. You can get the ID of the statement from the output of
@@ -1176,8 +1176,8 @@ remove_permission(Client, FunctionName, StatementId, Input0, Options) ->
                      {<<"Qualifier">>, <<"Qualifier">>},
                      {<<"RevisionId">>, <<"RevisionId">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds <a
 %% href="https://docs.aws.amazon.com/lambda/latest/dg/tagging.html">tags</a>
@@ -1192,10 +1192,10 @@ tag_resource(Client, Resource, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes <a
 %% href="https://docs.aws.amazon.com/lambda/latest/dg/tagging.html">tags</a>
@@ -1213,8 +1213,8 @@ untag_resource(Client, Resource, Input0, Options) ->
     QueryMapping = [
                      {<<"tagKeys">>, <<"TagKeys">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the configuration of a Lambda function <a
 %% href="https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">alias</a>.
@@ -1228,10 +1228,10 @@ update_alias(Client, FunctionName, Name, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an event source mapping. You can change the function that AWS
 %% Lambda invokes, or pause invocation and resume later from the same
@@ -1266,10 +1266,10 @@ update_event_source_mapping(Client, UUID, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a Lambda function's code.
 %%
@@ -1285,10 +1285,10 @@ update_function_code(Client, FunctionName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Modify the version-specific settings of a Lambda function.
 %%
@@ -1321,10 +1321,10 @@ update_function_configuration(Client, FunctionName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the configuration for asynchronous invocation for a function,
 %% version, or alias.
@@ -1344,8 +1344,8 @@ update_function_event_invoke_config(Client, FunctionName, Input0, Options) ->
     QueryMapping = [
                      {<<"Qualifier">>, <<"Qualifier">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %%====================================================================
 %% Internal functions
@@ -1360,8 +1360,8 @@ update_function_event_invoke_config(Client, FunctionName, Input0, Options) ->
     Error :: map().
 request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"lambda">>},
-    Host = get_host(<<"lambda">>, Client1),
-    URL0 = get_url(Host, Path, Client1),
+    Host = build_host(<<"lambda">>, Client1),
+    URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
     AdditionalHeaders = [ {<<"Host">>, Host}
                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
@@ -1393,12 +1393,12 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
-get_host(_EndpointPrefix, #{region := <<"local">>}) ->
+build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
-get_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
+build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
     aws_util:binary_join([EndpointPrefix, Region, Endpoint], <<".">>).
 
-get_url(Host, Path0, Client) ->
+build_url(Host, Path0, Client) ->
     Proto = maps:get(proto, Client),
     Path = erlang:iolist_to_binary(Path0),
     Port = maps:get(port, Client),

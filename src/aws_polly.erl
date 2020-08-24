@@ -53,10 +53,10 @@ delete_lexicon(Client, Name, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns the list of voices that are available for use when requesting
 %% speech synthesis. Each voice speaks a specified language, is either male
@@ -88,16 +88,16 @@ describe_voices(Client, Engine, IncludeAdditionalLanguageCodes, LanguageCode, Ne
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"Engine">>, Engine},
         {<<"IncludeAdditionalLanguageCodes">>, IncludeAdditionalLanguageCodes},
         {<<"LanguageCode">>, LanguageCode},
         {<<"NextToken">>, NextToken}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the content of the specified pronunciation lexicon stored in
 %% an AWS Region. For more information, see <a
@@ -113,9 +113,9 @@ get_lexicon(Client, Name, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a specific SpeechSynthesisTask object based on its TaskID.
 %% This object contains information about the given speech synthesis task,
@@ -131,9 +131,9 @@ get_speech_synthesis_task(Client, TaskId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of pronunciation lexicons stored in an AWS Region. For
 %% more information, see <a
@@ -149,13 +149,13 @@ list_lexicons(Client, NextToken, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"NextToken">>, NextToken}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of SpeechSynthesisTask objects ordered by their
 %% creation date. This operation can filter the tasks by their status, for
@@ -170,15 +170,15 @@ list_speech_synthesis_tasks(Client, MaxResults, NextToken, Status, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"MaxResults">>, MaxResults},
         {<<"NextToken">>, NextToken},
         {<<"Status">>, Status}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Stores a pronunciation lexicon in an AWS Region. If a lexicon with
 %% the same name already exists in the region, it is overwritten by the new
@@ -199,10 +199,10 @@ put_lexicon(Client, Name, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Allows the creation of an asynchronous synthesis task, by starting a
 %% new <code>SpeechSynthesisTask</code>. This operation requires all the
@@ -222,10 +222,10 @@ start_speech_synthesis_task(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Synthesizes UTF-8 input, plain text or SSML, to a stream of bytes.
 %% SSML input must be valid, well-formed SSML. Some alphabets might not be
@@ -244,10 +244,10 @@ synthesize_speech(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -279,8 +279,8 @@ synthesize_speech(Client, Input0, Options) ->
     Error :: map().
 request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"polly">>},
-    Host = get_host(<<"polly">>, Client1),
-    URL0 = get_url(Host, Path, Client1),
+    Host = build_host(<<"polly">>, Client1),
+    URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
     AdditionalHeaders = [ {<<"Host">>, Host}
                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
@@ -312,12 +312,12 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
-get_host(_EndpointPrefix, #{region := <<"local">>}) ->
+build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
-get_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
+build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
     aws_util:binary_join([EndpointPrefix, Region, Endpoint], <<".">>).
 
-get_url(Host, Path0, Client) ->
+build_url(Host, Path0, Client) ->
     Proto = maps:get(proto, Client),
     Path = erlang:iolist_to_binary(Path0),
     Port = maps:get(port, Client),

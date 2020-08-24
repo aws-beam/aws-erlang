@@ -146,10 +146,10 @@ abort_multipart_upload(Client, AccountId, UploadId, VaultName, Input0, Options) 
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This operation aborts the vault locking process if the vault lock is
 %% not in the <code>Locked</code> state. If the vault lock is in the
@@ -181,10 +181,10 @@ abort_vault_lock(Client, AccountId, VaultName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This operation adds the specified tags to a vault. Each tag is
 %% composed of a key and a value. Each vault can have up to 10 tags. If your
@@ -204,10 +204,10 @@ add_tags_to_vault(Client, AccountId, VaultName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc You call this operation to inform Amazon S3 Glacier (Glacier) that
 %% all the archive parts have been uploaded and that Glacier can now assemble
@@ -270,10 +270,10 @@ complete_multipart_upload(Client, AccountId, UploadId, VaultName, Input0, Option
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -322,10 +322,10 @@ complete_vault_lock(Client, AccountId, LockId, VaultName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This operation creates a new vault with the specified name. The name
 %% of the vault must be unique within a region for an AWS account. You can
@@ -363,10 +363,10 @@ create_vault(Client, AccountId, VaultName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -422,10 +422,10 @@ delete_archive(Client, AccountId, ArchiveId, VaultName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This operation deletes a vault. Amazon S3 Glacier will delete a vault
 %% only if there are no archives in the vault as of the last inventory and
@@ -464,10 +464,10 @@ delete_vault(Client, AccountId, VaultName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This operation deletes the access policy associated with the
 %% specified vault. The operation is eventually consistent; that is, it might
@@ -490,10 +490,10 @@ delete_vault_access_policy(Client, AccountId, VaultName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This operation deletes the notification configuration set for a
 %% vault. The operation is eventually consistent; that is, it might take some
@@ -524,10 +524,10 @@ delete_vault_notifications(Client, AccountId, VaultName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This operation returns information about a job you previously
 %% initiated, including the job initiation date, the user who initiated the
@@ -564,9 +564,9 @@ describe_job(Client, AccountId, JobId, VaultName, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc This operation returns information about a vault, including the
 %% vault's Amazon Resource Name (ARN), the date the vault was created, the
@@ -603,9 +603,9 @@ describe_vault(Client, AccountId, VaultName, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc This operation returns the current data retrieval policy for the
 %% account and region specified in the GET request. For more information
@@ -622,9 +622,9 @@ get_data_retrieval_policy(Client, AccountId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc This operation downloads the output of the job you initiated using
 %% <a>InitiateJob</a>. Depending on the job type you specified when you
@@ -690,9 +690,9 @@ get_job_output(Client, AccountId, JobId, VaultName, Range, Options)
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
-    Query = [],
+    Query_ = [],
 
-    case request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode) of
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -732,9 +732,9 @@ get_vault_access_policy(Client, AccountId, VaultName, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc This operation retrieves the following attributes from the
 %% <code>lock-policy</code> subresource set on the specified vault:
@@ -773,9 +773,9 @@ get_vault_lock(Client, AccountId, VaultName, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc This operation retrieves the <code>notification-configuration</code>
 %% subresource of the specified vault.
@@ -810,9 +810,9 @@ get_vault_notifications(Client, AccountId, VaultName, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc This operation initiates a job of the specified type, which can be a
 %% select, an archival retrieval, or a vault retrieval. For more information
@@ -830,10 +830,10 @@ initiate_job(Client, AccountId, VaultName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -905,10 +905,10 @@ initiate_multipart_upload(Client, AccountId, VaultName, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -975,10 +975,10 @@ initiate_vault_lock(Client, AccountId, VaultName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -1047,16 +1047,16 @@ list_jobs(Client, AccountId, VaultName, Completed, Limit, Marker, Statuscode, Op
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"completed">>, Completed},
         {<<"limit">>, Limit},
         {<<"marker">>, Marker},
         {<<"statuscode">>, Statuscode}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc This operation lists in-progress multipart uploads for the specified
 %% vault. An in-progress multipart upload is a multipart upload that has been
@@ -1102,14 +1102,14 @@ list_multipart_uploads(Client, AccountId, VaultName, Limit, Marker, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"limit">>, Limit},
         {<<"marker">>, Marker}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc This operation lists the parts of an archive that have been uploaded
 %% in a specific multipart upload. You can make this request at any time
@@ -1150,14 +1150,14 @@ list_parts(Client, AccountId, UploadId, VaultName, Limit, Marker, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"limit">>, Limit},
         {<<"marker">>, Marker}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc This operation lists the provisioned capacity units for the specified
 %% AWS account.
@@ -1171,9 +1171,9 @@ list_provisioned_capacity(Client, AccountId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc This operation lists all the tags attached to a vault. The operation
 %% returns an empty map if there are no tags. For more information about
@@ -1190,9 +1190,9 @@ list_tags_for_vault(Client, AccountId, VaultName, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc This operation lists all vaults owned by the calling user's account.
 %% The list returned in the response is ASCII-sorted by vault name.
@@ -1229,14 +1229,14 @@ list_vaults(Client, AccountId, Limit, Marker, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"limit">>, Limit},
         {<<"marker">>, Marker}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc This operation purchases a provisioned capacity unit for an AWS
 %% account.
@@ -1250,10 +1250,10 @@ purchase_provisioned_capacity(Client, AccountId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -1287,10 +1287,10 @@ remove_tags_from_vault(Client, AccountId, VaultName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This operation sets and then enacts a data retrieval policy in the
 %% region specified in the PUT request. You can set one policy per region for
@@ -1312,10 +1312,10 @@ set_data_retrieval_policy(Client, AccountId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This operation configures an access policy for a vault and will
 %% overwrite an existing policy. To configure a vault access policy, send a
@@ -1336,10 +1336,10 @@ set_vault_access_policy(Client, AccountId, VaultName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This operation configures notifications that will be sent when
 %% specific events happen to a vault. By default, you don't get any
@@ -1390,10 +1390,10 @@ set_vault_notifications(Client, AccountId, VaultName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This operation adds an archive to a vault. This is a synchronous
 %% operation, and for a successful upload, your data is durably persisted.
@@ -1450,10 +1450,10 @@ upload_archive(Client, AccountId, VaultName, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -1536,10 +1536,10 @@ upload_multipart_part(Client, AccountId, UploadId, VaultName, Input0, Options) -
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -1570,8 +1570,8 @@ upload_multipart_part(Client, AccountId, UploadId, VaultName, Input0, Options) -
     Error :: map().
 request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"glacier">>},
-    Host = get_host(<<"glacier">>, Client1),
-    URL0 = get_url(Host, Path, Client1),
+    Host = build_host(<<"glacier">>, Client1),
+    URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
     AdditionalHeaders = [ {<<"Host">>, Host}
                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
@@ -1603,12 +1603,12 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
-get_host(_EndpointPrefix, #{region := <<"local">>}) ->
+build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
-get_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
+build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
     aws_util:binary_join([EndpointPrefix, Region, Endpoint], <<".">>).
 
-get_url(Host, Path0, Client) ->
+build_url(Host, Path0, Client) ->
     Proto = maps:get(proto, Client),
     Path = erlang:iolist_to_binary(Path0),
     Port = maps:get(port, Client),

@@ -43,10 +43,10 @@ delete_session(Client, BotAlias, BotName, UserId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns session information for a specified bot, alias, and user ID.
 get_session(Client, BotAlias, BotName, UserId, CheckpointLabelFilter)
@@ -59,13 +59,13 @@ get_session(Client, BotAlias, BotName, UserId, CheckpointLabelFilter, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"checkpointLabelFilter">>, CheckpointLabelFilter}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Sends user input (text or speech) to Amazon Lex. Clients use this API
 %% to send text and audio requests to Amazon Lex at runtime. Amazon Lex
@@ -143,10 +143,10 @@ post_content(Client, BotAlias, BotName, UserId, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -241,10 +241,10 @@ post_text(Client, BotAlias, BotName, UserId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new session or modifies an existing session with an Amazon
 %% Lex bot. Use this operation to enable your application to set the state of
@@ -265,10 +265,10 @@ put_session(Client, BotAlias, BotName, UserId, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    case request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -307,8 +307,8 @@ put_session(Client, BotAlias, BotName, UserId, Input0, Options) ->
     Error :: map().
 request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"lex">>},
-    Host = get_host(<<"runtime.lex">>, Client1),
-    URL0 = get_url(Host, Path, Client1),
+    Host = build_host(<<"runtime.lex">>, Client1),
+    URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
     AdditionalHeaders = [ {<<"Host">>, Host}
                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
@@ -340,12 +340,12 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
-get_host(_EndpointPrefix, #{region := <<"local">>}) ->
+build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
-get_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
+build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
     aws_util:binary_join([EndpointPrefix, Region, Endpoint], <<".">>).
 
-get_url(Host, Path0, Client) ->
+build_url(Host, Path0, Client) ->
     Proto = maps:get(proto, Client),
     Path = erlang:iolist_to_binary(Path0),
     Port = maps:get(port, Client),

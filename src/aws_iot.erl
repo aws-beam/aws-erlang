@@ -469,8 +469,8 @@ accept_certificate_transfer(Client, CertificateId, Input0, Options) ->
     QueryMapping = [
                      {<<"setAsActive">>, <<"setAsActive">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds a thing to a billing group.
 add_thing_to_billing_group(Client, Input) ->
@@ -483,10 +483,10 @@ add_thing_to_billing_group(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds a thing to a thing group.
 add_thing_to_thing_group(Client, Input) ->
@@ -499,10 +499,10 @@ add_thing_to_thing_group(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Associates a group with a continuous job. The following criteria must
 %% be met:
@@ -526,10 +526,10 @@ associate_targets_with_job(Client, JobId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Attaches a policy to the specified target.
 attach_policy(Client, PolicyName, Input) ->
@@ -542,10 +542,10 @@ attach_policy(Client, PolicyName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Attaches the specified policy to the specified principal (certificate
 %% or other credential).
@@ -564,10 +564,10 @@ attach_principal_policy(Client, PolicyName, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Associates a Device Defender security profile with a thing group or
 %% this account. Each thing group or account can have up to five security
@@ -585,8 +585,8 @@ attach_security_profile(Client, SecurityProfileName, Input0, Options) ->
     QueryMapping = [
                      {<<"securityProfileTargetArn">>, <<"securityProfileTargetArn">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Attaches the specified principal to the specified thing. A principal
 %% can be X.509 certificates, IAM users, groups, and roles, Amazon Cognito
@@ -603,10 +603,10 @@ attach_thing_principal(Client, ThingName, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels a mitigation action task that is in progress. If the task is
 %% not in progress, an InvalidRequestException occurs.
@@ -620,10 +620,10 @@ cancel_audit_mitigation_actions_task(Client, TaskId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels an audit that is in progress. The audit can be either
 %% scheduled or on-demand. If the audit is not in progress, an
@@ -638,10 +638,10 @@ cancel_audit_task(Client, TaskId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels a pending transfer for the specified certificate.
 %%
@@ -664,10 +664,10 @@ cancel_certificate_transfer(Client, CertificateId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels a job.
 cancel_job(Client, JobId, Input) ->
@@ -683,8 +683,8 @@ cancel_job(Client, JobId, Input0, Options) ->
     QueryMapping = [
                      {<<"force">>, <<"force">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels the execution of a job for a given thing.
 cancel_job_execution(Client, JobId, ThingName, Input) ->
@@ -700,8 +700,8 @@ cancel_job_execution(Client, JobId, ThingName, Input0, Options) ->
     QueryMapping = [
                      {<<"force">>, <<"force">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Clears the default authorizer.
 clear_default_authorizer(Client, Input) ->
@@ -714,10 +714,10 @@ clear_default_authorizer(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Confirms a topic rule destination. When you create a rule requiring a
 %% destination, AWS IoT sends a confirmation message to the endpoint or base
@@ -734,9 +734,9 @@ confirm_topic_rule_destination(Client, ConfirmationToken, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Creates an authorizer.
 create_authorizer(Client, AuthorizerName, Input) ->
@@ -749,10 +749,10 @@ create_authorizer(Client, AuthorizerName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a billing group.
 create_billing_group(Client, BillingGroupName, Input) ->
@@ -765,10 +765,10 @@ create_billing_group(Client, BillingGroupName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an X.509 certificate using the specified certificate signing
 %% request.
@@ -828,8 +828,8 @@ create_certificate_from_csr(Client, Input0, Options) ->
     QueryMapping = [
                      {<<"setAsActive">>, <<"setAsActive">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Create a dimension that you can use to limit the scope of a metric
 %% used in a security profile for AWS IoT Device Defender. For example, using
@@ -846,10 +846,10 @@ create_dimension(Client, Name, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a domain configuration.
 %%
@@ -867,10 +867,10 @@ create_domain_configuration(Client, DomainConfigurationName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a dynamic thing group.
 create_dynamic_thing_group(Client, ThingGroupName, Input) ->
@@ -883,10 +883,10 @@ create_dynamic_thing_group(Client, ThingGroupName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a job.
 create_job(Client, JobId, Input) ->
@@ -899,10 +899,10 @@ create_job(Client, JobId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a 2048-bit RSA key pair and issues an X.509 certificate using
 %% the issued public key. You can also call
@@ -926,8 +926,8 @@ create_keys_and_certificate(Client, Input0, Options) ->
     QueryMapping = [
                      {<<"setAsActive">>, <<"setAsActive">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Defines an action that can be applied to audit findings by using
 %% StartAuditMitigationActionsTask. Each mitigation action can apply only one
@@ -942,10 +942,10 @@ create_mitigation_action(Client, ActionName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an AWS IoT OTAUpdate on a target group of things or groups.
 create_o_t_a_update(Client, OtaUpdateId, Input) ->
@@ -958,10 +958,10 @@ create_o_t_a_update(Client, OtaUpdateId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an AWS IoT policy.
 %%
@@ -978,10 +978,10 @@ create_policy(Client, PolicyName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new version of the specified AWS IoT policy. To update a
 %% policy, create a new policy version. A managed policy can have up to five
@@ -1005,8 +1005,8 @@ create_policy_version(Client, PolicyName, Input0, Options) ->
     QueryMapping = [
                      {<<"setAsDefault">>, <<"setAsDefault">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a provisioning claim.
 create_provisioning_claim(Client, TemplateName, Input) ->
@@ -1019,10 +1019,10 @@ create_provisioning_claim(Client, TemplateName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a fleet provisioning template.
 create_provisioning_template(Client, Input) ->
@@ -1035,10 +1035,10 @@ create_provisioning_template(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new version of a fleet provisioning template.
 create_provisioning_template_version(Client, TemplateName, Input) ->
@@ -1054,8 +1054,8 @@ create_provisioning_template_version(Client, TemplateName, Input0, Options) ->
     QueryMapping = [
                      {<<"setAsDefault">>, <<"setAsDefault">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a role alias.
 create_role_alias(Client, RoleAlias, Input) ->
@@ -1068,10 +1068,10 @@ create_role_alias(Client, RoleAlias, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a scheduled audit that is run at a specified time interval.
 create_scheduled_audit(Client, ScheduledAuditName, Input) ->
@@ -1084,10 +1084,10 @@ create_scheduled_audit(Client, ScheduledAuditName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a Device Defender security profile.
 create_security_profile(Client, SecurityProfileName, Input) ->
@@ -1100,10 +1100,10 @@ create_security_profile(Client, SecurityProfileName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a stream for delivering one or more large files in chunks
 %% over MQTT. A stream transports data bytes in chunks or blocks packaged as
@@ -1119,10 +1119,10 @@ create_stream(Client, StreamId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a thing record in the registry. If this call is made multiple
 %% times using the same thing name and configuration, the call will succeed.
@@ -1144,10 +1144,10 @@ create_thing(Client, ThingName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Create a thing group.
 %%
@@ -1166,10 +1166,10 @@ create_thing_group(Client, ThingGroupName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new thing type.
 create_thing_type(Client, ThingTypeName, Input) ->
@@ -1182,10 +1182,10 @@ create_thing_type(Client, ThingTypeName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a rule. Creating rules is an administrator-level action. Any
 %% user who has permission to create rules will be able to access data
@@ -1202,10 +1202,10 @@ create_topic_rule(Client, RuleName, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a topic rule destination. The destination must be confirmed
 %% prior to use.
@@ -1219,10 +1219,10 @@ create_topic_rule_destination(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Restores the default settings for Device Defender audits for this
 %% account. Any configuration data you entered is deleted and all audit
@@ -1240,8 +1240,8 @@ delete_account_audit_configuration(Client, Input0, Options) ->
     QueryMapping = [
                      {<<"deleteScheduledAudits">>, <<"deleteScheduledAudits">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an authorizer.
 delete_authorizer(Client, AuthorizerName, Input) ->
@@ -1254,10 +1254,10 @@ delete_authorizer(Client, AuthorizerName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the billing group.
 delete_billing_group(Client, BillingGroupName, Input) ->
@@ -1273,8 +1273,8 @@ delete_billing_group(Client, BillingGroupName, Input0, Options) ->
     QueryMapping = [
                      {<<"expectedVersion">>, <<"expectedVersion">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a registered CA certificate.
 delete_c_a_certificate(Client, CertificateId, Input) ->
@@ -1287,10 +1287,10 @@ delete_c_a_certificate(Client, CertificateId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified certificate.
 %%
@@ -1312,8 +1312,8 @@ delete_certificate(Client, CertificateId, Input0, Options) ->
     QueryMapping = [
                      {<<"forceDelete">>, <<"forceDelete">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the specified dimension from your AWS account.
 delete_dimension(Client, Name, Input) ->
@@ -1326,10 +1326,10 @@ delete_dimension(Client, Name, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified domain configuration.
 %%
@@ -1347,10 +1347,10 @@ delete_domain_configuration(Client, DomainConfigurationName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a dynamic thing group.
 delete_dynamic_thing_group(Client, ThingGroupName, Input) ->
@@ -1366,8 +1366,8 @@ delete_dynamic_thing_group(Client, ThingGroupName, Input0, Options) ->
     QueryMapping = [
                      {<<"expectedVersion">>, <<"expectedVersion">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a job and its related job executions.
 %%
@@ -1392,8 +1392,8 @@ delete_job(Client, JobId, Input0, Options) ->
     QueryMapping = [
                      {<<"force">>, <<"force">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a job execution.
 delete_job_execution(Client, ExecutionNumber, JobId, ThingName, Input) ->
@@ -1409,8 +1409,8 @@ delete_job_execution(Client, ExecutionNumber, JobId, ThingName, Input0, Options)
     QueryMapping = [
                      {<<"force">>, <<"force">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a defined mitigation action from your AWS account.
 delete_mitigation_action(Client, ActionName, Input) ->
@@ -1423,10 +1423,10 @@ delete_mitigation_action(Client, ActionName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete an OTA update.
 delete_o_t_a_update(Client, OtaUpdateId, Input) ->
@@ -1443,8 +1443,8 @@ delete_o_t_a_update(Client, OtaUpdateId, Input0, Options) ->
                      {<<"deleteStream">>, <<"deleteStream">>},
                      {<<"forceDeleteAWSJob">>, <<"forceDeleteAWSJob">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified policy.
 %%
@@ -1468,10 +1468,10 @@ delete_policy(Client, PolicyName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified version of the specified policy. You cannot
 %% delete the default version of a policy using this API. To delete the
@@ -1488,10 +1488,10 @@ delete_policy_version(Client, PolicyName, PolicyVersionId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a fleet provisioning template.
 delete_provisioning_template(Client, TemplateName, Input) ->
@@ -1504,10 +1504,10 @@ delete_provisioning_template(Client, TemplateName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a fleet provisioning template version.
 delete_provisioning_template_version(Client, TemplateName, VersionId, Input) ->
@@ -1520,10 +1520,10 @@ delete_provisioning_template_version(Client, TemplateName, VersionId, Input0, Op
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a CA certificate registration code.
 delete_registration_code(Client, Input) ->
@@ -1536,10 +1536,10 @@ delete_registration_code(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a role alias
 delete_role_alias(Client, RoleAlias, Input) ->
@@ -1552,10 +1552,10 @@ delete_role_alias(Client, RoleAlias, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a scheduled audit.
 delete_scheduled_audit(Client, ScheduledAuditName, Input) ->
@@ -1568,10 +1568,10 @@ delete_scheduled_audit(Client, ScheduledAuditName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a Device Defender security profile.
 delete_security_profile(Client, SecurityProfileName, Input) ->
@@ -1587,8 +1587,8 @@ delete_security_profile(Client, SecurityProfileName, Input0, Options) ->
     QueryMapping = [
                      {<<"expectedVersion">>, <<"expectedVersion">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a stream.
 delete_stream(Client, StreamId, Input) ->
@@ -1601,10 +1601,10 @@ delete_stream(Client, StreamId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified thing. Returns successfully with no error if
 %% the deletion is successful or you specify a thing that doesn't exist.
@@ -1621,8 +1621,8 @@ delete_thing(Client, ThingName, Input0, Options) ->
     QueryMapping = [
                      {<<"expectedVersion">>, <<"expectedVersion">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a thing group.
 delete_thing_group(Client, ThingGroupName, Input) ->
@@ -1638,8 +1638,8 @@ delete_thing_group(Client, ThingGroupName, Input0, Options) ->
     QueryMapping = [
                      {<<"expectedVersion">>, <<"expectedVersion">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified thing type. You cannot delete a thing type if
 %% it has things associated with it. To delete a thing type, first mark it as
@@ -1657,10 +1657,10 @@ delete_thing_type(Client, ThingTypeName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the rule.
 delete_topic_rule(Client, RuleName, Input) ->
@@ -1673,10 +1673,10 @@ delete_topic_rule(Client, RuleName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a topic rule destination.
 delete_topic_rule_destination(Client, Arn, Input) ->
@@ -1689,10 +1689,10 @@ delete_topic_rule_destination(Client, Arn, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a logging level.
 delete_v2_logging_level(Client, Input) ->
@@ -1709,8 +1709,8 @@ delete_v2_logging_level(Client, Input0, Options) ->
                      {<<"targetName">>, <<"targetName">>},
                      {<<"targetType">>, <<"targetType">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deprecates a thing type. You can not associate new things with
 %% deprecated thing type.
@@ -1724,10 +1724,10 @@ deprecate_thing_type(Client, ThingTypeName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets information about the Device Defender audit settings for this
 %% account. Settings include how audit notifications are sent and which audit
@@ -1742,9 +1742,9 @@ describe_account_audit_configuration(Client, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a single audit finding. Properties include the
 %% reason for noncompliance, the severity of the issue, and when the audit
@@ -1759,9 +1759,9 @@ describe_audit_finding(Client, FindingId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about an audit mitigation task that is used to apply
 %% mitigation actions to a set of audit findings. Properties include the
@@ -1777,9 +1777,9 @@ describe_audit_mitigation_actions_task(Client, TaskId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a Device Defender audit.
 describe_audit_task(Client, TaskId)
@@ -1792,9 +1792,9 @@ describe_audit_task(Client, TaskId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes an authorizer.
 describe_authorizer(Client, AuthorizerName)
@@ -1807,9 +1807,9 @@ describe_authorizer(Client, AuthorizerName, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about a billing group.
 describe_billing_group(Client, BillingGroupName)
@@ -1822,9 +1822,9 @@ describe_billing_group(Client, BillingGroupName, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes a registered CA certificate.
 describe_c_a_certificate(Client, CertificateId)
@@ -1837,9 +1837,9 @@ describe_c_a_certificate(Client, CertificateId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about the specified certificate.
 describe_certificate(Client, CertificateId)
@@ -1852,9 +1852,9 @@ describe_certificate(Client, CertificateId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes the default authorizer.
 describe_default_authorizer(Client)
@@ -1867,9 +1867,9 @@ describe_default_authorizer(Client, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides details about a dimension that is defined in your AWS
 %% account.
@@ -1883,9 +1883,9 @@ describe_dimension(Client, Name, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets summary information about a domain configuration.
 %%
@@ -1903,9 +1903,9 @@ describe_domain_configuration(Client, DomainConfigurationName, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a unique endpoint specific to the AWS account making the
 %% call.
@@ -1919,13 +1919,13 @@ describe_endpoint(Client, EndpointType, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"endpointType">>, EndpointType}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes event configurations.
 describe_event_configurations(Client)
@@ -1938,9 +1938,9 @@ describe_event_configurations(Client, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes a search index.
 describe_index(Client, IndexName)
@@ -1953,9 +1953,9 @@ describe_index(Client, IndexName, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes a job.
 describe_job(Client, JobId)
@@ -1968,9 +1968,9 @@ describe_job(Client, JobId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes a job execution.
 describe_job_execution(Client, JobId, ThingName, ExecutionNumber)
@@ -1983,13 +1983,13 @@ describe_job_execution(Client, JobId, ThingName, ExecutionNumber, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"executionNumber">>, ExecutionNumber}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a mitigation action.
 describe_mitigation_action(Client, ActionName)
@@ -2002,9 +2002,9 @@ describe_mitigation_action(Client, ActionName, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about a fleet provisioning template.
 describe_provisioning_template(Client, TemplateName)
@@ -2017,9 +2017,9 @@ describe_provisioning_template(Client, TemplateName, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about a fleet provisioning template version.
 describe_provisioning_template_version(Client, TemplateName, VersionId)
@@ -2032,9 +2032,9 @@ describe_provisioning_template_version(Client, TemplateName, VersionId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes a role alias.
 describe_role_alias(Client, RoleAlias)
@@ -2047,9 +2047,9 @@ describe_role_alias(Client, RoleAlias, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a scheduled audit.
 describe_scheduled_audit(Client, ScheduledAuditName)
@@ -2062,9 +2062,9 @@ describe_scheduled_audit(Client, ScheduledAuditName, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a Device Defender security profile.
 describe_security_profile(Client, SecurityProfileName)
@@ -2077,9 +2077,9 @@ describe_security_profile(Client, SecurityProfileName, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a stream.
 describe_stream(Client, StreamId)
@@ -2092,9 +2092,9 @@ describe_stream(Client, StreamId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about the specified thing.
 describe_thing(Client, ThingName)
@@ -2107,9 +2107,9 @@ describe_thing(Client, ThingName, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describe a thing group.
 describe_thing_group(Client, ThingGroupName)
@@ -2122,9 +2122,9 @@ describe_thing_group(Client, ThingGroupName, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes a bulk thing provisioning task.
 describe_thing_registration_task(Client, TaskId)
@@ -2137,9 +2137,9 @@ describe_thing_registration_task(Client, TaskId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about the specified thing type.
 describe_thing_type(Client, ThingTypeName)
@@ -2152,9 +2152,9 @@ describe_thing_type(Client, ThingTypeName, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Detaches a policy from the specified target.
 detach_policy(Client, PolicyName, Input) ->
@@ -2167,10 +2167,10 @@ detach_policy(Client, PolicyName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the specified policy from the specified certificate.
 %%
@@ -2188,10 +2188,10 @@ detach_principal_policy(Client, PolicyName, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates a Device Defender security profile from a thing group
 %% or from this account.
@@ -2208,8 +2208,8 @@ detach_security_profile(Client, SecurityProfileName, Input0, Options) ->
     QueryMapping = [
                      {<<"securityProfileTargetArn">>, <<"securityProfileTargetArn">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Detaches the specified principal from the specified thing. A
 %% principal can be X.509 certificates, IAM users, groups, and roles, Amazon
@@ -2231,10 +2231,10 @@ detach_thing_principal(Client, ThingName, Input0, Options) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disables the rule.
 disable_topic_rule(Client, RuleName, Input) ->
@@ -2247,10 +2247,10 @@ disable_topic_rule(Client, RuleName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Enables the rule.
 enable_topic_rule(Client, RuleName, Input) ->
@@ -2263,10 +2263,10 @@ enable_topic_rule(Client, RuleName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns the approximate count of unique values that match the query.
 get_cardinality(Client, Input) ->
@@ -2279,10 +2279,10 @@ get_cardinality(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets a list of the policies that have an effect on the authorization
 %% behavior of the specified device when it connects to the AWS IoT device
@@ -2300,8 +2300,8 @@ get_effective_policies(Client, Input0, Options) ->
     QueryMapping = [
                      {<<"thingName">>, <<"thingName">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets the indexing configuration.
 get_indexing_configuration(Client)
@@ -2314,9 +2314,9 @@ get_indexing_configuration(Client, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a job document.
 get_job_document(Client, JobId)
@@ -2329,9 +2329,9 @@ get_job_document(Client, JobId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the logging options.
 %%
@@ -2347,9 +2347,9 @@ get_logging_options(Client, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets an OTA update.
 get_o_t_a_update(Client, OtaUpdateId)
@@ -2362,9 +2362,9 @@ get_o_t_a_update(Client, OtaUpdateId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Groups the aggregated values that match the query into percentile
 %% groupings. The default percentile groupings are: 1,5,25,50,75,95,99,
@@ -2387,10 +2387,10 @@ get_percentiles(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets information about the specified policy with the policy document
 %% of the default version.
@@ -2404,9 +2404,9 @@ get_policy(Client, PolicyName, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about the specified policy version.
 get_policy_version(Client, PolicyName, PolicyVersionId)
@@ -2419,9 +2419,9 @@ get_policy_version(Client, PolicyName, PolicyVersionId, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a registration code used to register a CA certificate with AWS
 %% IoT.
@@ -2435,9 +2435,9 @@ get_registration_code(Client, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the count, average, sum, minimum, maximum, sum of squares,
 %% variance, and standard deviation for the specified aggregated field. If
@@ -2453,10 +2453,10 @@ get_statistics(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets information about the rule.
 get_topic_rule(Client, RuleName)
@@ -2469,9 +2469,9 @@ get_topic_rule(Client, RuleName, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a topic rule destination.
 get_topic_rule_destination(Client, Arn)
@@ -2484,9 +2484,9 @@ get_topic_rule_destination(Client, Arn, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the fine grained logging options.
 get_v2_logging_options(Client)
@@ -2499,9 +2499,9 @@ get_v2_logging_options(Client, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the active violations for a given Device Defender security
 %% profile.
@@ -2515,16 +2515,16 @@ list_active_violations(Client, MaxResults, NextToken, SecurityProfileName, Thing
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"maxResults">>, MaxResults},
         {<<"nextToken">>, NextToken},
         {<<"securityProfileName">>, SecurityProfileName},
         {<<"thingName">>, ThingName}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the policies attached to the specified thing group.
 list_attached_policies(Client, Target, Input) ->
@@ -2542,8 +2542,8 @@ list_attached_policies(Client, Target, Input0, Options) ->
                      {<<"pageSize">>, <<"pageSize">>},
                      {<<"recursive">>, <<"recursive">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the findings (results) of a Device Defender audit or of the
 %% audits performed during a specified time period. (Findings are retained
@@ -2558,10 +2558,10 @@ list_audit_findings(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets the status of audit mitigation action tasks that were executed.
 list_audit_mitigation_actions_executions(Client, ActionStatus, FindingId, MaxResults, NextToken, TaskId)
@@ -2574,7 +2574,7 @@ list_audit_mitigation_actions_executions(Client, ActionStatus, FindingId, MaxRes
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"actionStatus">>, ActionStatus},
         {<<"findingId">>, FindingId},
@@ -2582,9 +2582,9 @@ list_audit_mitigation_actions_executions(Client, ActionStatus, FindingId, MaxRes
         {<<"nextToken">>, NextToken},
         {<<"taskId">>, TaskId}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a list of audit mitigation action tasks that match the specified
 %% filters.
@@ -2598,7 +2598,7 @@ list_audit_mitigation_actions_tasks(Client, AuditTaskId, EndTime, FindingId, Max
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"auditTaskId">>, AuditTaskId},
         {<<"endTime">>, EndTime},
@@ -2608,9 +2608,9 @@ list_audit_mitigation_actions_tasks(Client, AuditTaskId, EndTime, FindingId, Max
         {<<"startTime">>, StartTime},
         {<<"taskStatus">>, TaskStatus}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the Device Defender audits that have been performed during a
 %% given time period.
@@ -2624,7 +2624,7 @@ list_audit_tasks(Client, EndTime, MaxResults, NextToken, StartTime, TaskStatus, 
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"endTime">>, EndTime},
         {<<"maxResults">>, MaxResults},
@@ -2633,9 +2633,9 @@ list_audit_tasks(Client, EndTime, MaxResults, NextToken, StartTime, TaskStatus, 
         {<<"taskStatus">>, TaskStatus},
         {<<"taskType">>, TaskType}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the authorizers registered in your account.
 list_authorizers(Client, AscendingOrder, Marker, PageSize, Status)
@@ -2648,16 +2648,16 @@ list_authorizers(Client, AscendingOrder, Marker, PageSize, Status, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"isAscendingOrder">>, AscendingOrder},
         {<<"marker">>, Marker},
         {<<"pageSize">>, PageSize},
         {<<"status">>, Status}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the billing groups you have created.
 list_billing_groups(Client, MaxResults, NamePrefixFilter, NextToken)
@@ -2670,15 +2670,15 @@ list_billing_groups(Client, MaxResults, NamePrefixFilter, NextToken, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"maxResults">>, MaxResults},
         {<<"namePrefixFilter">>, NamePrefixFilter},
         {<<"nextToken">>, NextToken}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the CA certificates registered for your AWS account.
 %%
@@ -2694,15 +2694,15 @@ list_c_a_certificates(Client, AscendingOrder, Marker, PageSize, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"isAscendingOrder">>, AscendingOrder},
         {<<"marker">>, Marker},
         {<<"pageSize">>, PageSize}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the certificates registered in your AWS account.
 %%
@@ -2718,15 +2718,15 @@ list_certificates(Client, AscendingOrder, Marker, PageSize, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"isAscendingOrder">>, AscendingOrder},
         {<<"marker">>, Marker},
         {<<"pageSize">>, PageSize}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the device certificates signed by the specified CA certificate.
 list_certificates_by_c_a(Client, CaCertificateId, AscendingOrder, Marker, PageSize)
@@ -2739,15 +2739,15 @@ list_certificates_by_c_a(Client, CaCertificateId, AscendingOrder, Marker, PageSi
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"isAscendingOrder">>, AscendingOrder},
         {<<"marker">>, Marker},
         {<<"pageSize">>, PageSize}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the set of dimensions that are defined for your AWS account.
 list_dimensions(Client, MaxResults, NextToken)
@@ -2760,14 +2760,14 @@ list_dimensions(Client, MaxResults, NextToken, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"maxResults">>, MaxResults},
         {<<"nextToken">>, NextToken}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a list of domain configurations for the user. This list is
 %% sorted alphabetically by domain configuration name.
@@ -2786,15 +2786,15 @@ list_domain_configurations(Client, Marker, PageSize, ServiceType, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"marker">>, Marker},
         {<<"pageSize">>, PageSize},
         {<<"serviceType">>, ServiceType}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the search indices.
 list_indices(Client, MaxResults, NextToken)
@@ -2807,14 +2807,14 @@ list_indices(Client, MaxResults, NextToken, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"maxResults">>, MaxResults},
         {<<"nextToken">>, NextToken}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the job executions for a job.
 list_job_executions_for_job(Client, JobId, MaxResults, NextToken, Status)
@@ -2827,15 +2827,15 @@ list_job_executions_for_job(Client, JobId, MaxResults, NextToken, Status, Option
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"maxResults">>, MaxResults},
         {<<"nextToken">>, NextToken},
         {<<"status">>, Status}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the job executions for the specified thing.
 list_job_executions_for_thing(Client, ThingName, MaxResults, NextToken, Status)
@@ -2848,15 +2848,15 @@ list_job_executions_for_thing(Client, ThingName, MaxResults, NextToken, Status, 
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"maxResults">>, MaxResults},
         {<<"nextToken">>, NextToken},
         {<<"status">>, Status}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists jobs.
 list_jobs(Client, MaxResults, NextToken, Status, TargetSelection, ThingGroupId, ThingGroupName)
@@ -2869,7 +2869,7 @@ list_jobs(Client, MaxResults, NextToken, Status, TargetSelection, ThingGroupId, 
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"maxResults">>, MaxResults},
         {<<"nextToken">>, NextToken},
@@ -2878,9 +2878,9 @@ list_jobs(Client, MaxResults, NextToken, Status, TargetSelection, ThingGroupId, 
         {<<"thingGroupId">>, ThingGroupId},
         {<<"thingGroupName">>, ThingGroupName}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a list of all mitigation actions that match the specified filter
 %% criteria.
@@ -2894,15 +2894,15 @@ list_mitigation_actions(Client, ActionType, MaxResults, NextToken, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"actionType">>, ActionType},
         {<<"maxResults">>, MaxResults},
         {<<"nextToken">>, NextToken}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists OTA updates.
 list_o_t_a_updates(Client, MaxResults, NextToken, OtaUpdateStatus)
@@ -2915,15 +2915,15 @@ list_o_t_a_updates(Client, MaxResults, NextToken, OtaUpdateStatus, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"maxResults">>, MaxResults},
         {<<"nextToken">>, NextToken},
         {<<"otaUpdateStatus">>, OtaUpdateStatus}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists certificates that are being transferred but not yet accepted.
 list_outgoing_certificates(Client, AscendingOrder, Marker, PageSize)
@@ -2936,15 +2936,15 @@ list_outgoing_certificates(Client, AscendingOrder, Marker, PageSize, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"isAscendingOrder">>, AscendingOrder},
         {<<"marker">>, Marker},
         {<<"pageSize">>, PageSize}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists your policies.
 list_policies(Client, AscendingOrder, Marker, PageSize)
@@ -2957,15 +2957,15 @@ list_policies(Client, AscendingOrder, Marker, PageSize, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"isAscendingOrder">>, AscendingOrder},
         {<<"marker">>, Marker},
         {<<"pageSize">>, PageSize}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the principals associated with the specified policy.
 %%
@@ -2985,15 +2985,15 @@ list_policy_principals(Client, AscendingOrder, Marker, PageSize, PolicyName, Opt
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
-    Query0 =
+    Query0_ =
       [
         {<<"isAscendingOrder">>, AscendingOrder},
         {<<"marker">>, Marker},
         {<<"pageSize">>, PageSize}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the versions of the specified policy and identifies the default
 %% version.
@@ -3007,9 +3007,9 @@ list_policy_versions(Client, PolicyName, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the policies attached to the specified principal. If you use an
 %% Cognito identity, the ID must be in <a
@@ -3032,15 +3032,15 @@ list_principal_policies(Client, AscendingOrder, Marker, PageSize, Principal, Opt
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
-    Query0 =
+    Query0_ =
       [
         {<<"isAscendingOrder">>, AscendingOrder},
         {<<"marker">>, Marker},
         {<<"pageSize">>, PageSize}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the things associated with the specified principal. A principal
 %% can be X.509 certificates, IAM users, groups, and roles, Amazon Cognito
@@ -3059,14 +3059,14 @@ list_principal_things(Client, MaxResults, NextToken, Principal, Options)
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
-    Query0 =
+    Query0_ =
       [
         {<<"maxResults">>, MaxResults},
         {<<"nextToken">>, NextToken}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc A list of fleet provisioning template versions.
 list_provisioning_template_versions(Client, TemplateName, MaxResults, NextToken)
@@ -3079,14 +3079,14 @@ list_provisioning_template_versions(Client, TemplateName, MaxResults, NextToken,
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"maxResults">>, MaxResults},
         {<<"nextToken">>, NextToken}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the fleet provisioning templates in your AWS account.
 list_provisioning_templates(Client, MaxResults, NextToken)
@@ -3099,14 +3099,14 @@ list_provisioning_templates(Client, MaxResults, NextToken, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"maxResults">>, MaxResults},
         {<<"nextToken">>, NextToken}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the role aliases registered in your account.
 list_role_aliases(Client, AscendingOrder, Marker, PageSize)
@@ -3119,15 +3119,15 @@ list_role_aliases(Client, AscendingOrder, Marker, PageSize, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"isAscendingOrder">>, AscendingOrder},
         {<<"marker">>, Marker},
         {<<"pageSize">>, PageSize}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all of your scheduled audits.
 list_scheduled_audits(Client, MaxResults, NextToken)
@@ -3140,14 +3140,14 @@ list_scheduled_audits(Client, MaxResults, NextToken, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"maxResults">>, MaxResults},
         {<<"nextToken">>, NextToken}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the Device Defender security profiles you have created. You can
 %% use filters to list only those security profiles associated with a thing
@@ -3162,15 +3162,15 @@ list_security_profiles(Client, DimensionName, MaxResults, NextToken, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"dimensionName">>, DimensionName},
         {<<"maxResults">>, MaxResults},
         {<<"nextToken">>, NextToken}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the Device Defender security profiles attached to a target
 %% (thing group).
@@ -3184,16 +3184,16 @@ list_security_profiles_for_target(Client, MaxResults, NextToken, Recursive, Secu
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"maxResults">>, MaxResults},
         {<<"nextToken">>, NextToken},
         {<<"recursive">>, Recursive},
         {<<"securityProfileTargetArn">>, SecurityProfileTargetArn}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all of the streams in your AWS account.
 list_streams(Client, AscendingOrder, MaxResults, NextToken)
@@ -3206,15 +3206,15 @@ list_streams(Client, AscendingOrder, MaxResults, NextToken, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"isAscendingOrder">>, AscendingOrder},
         {<<"maxResults">>, MaxResults},
         {<<"nextToken">>, NextToken}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags (metadata) you have assigned to the resource.
 list_tags_for_resource(Client, NextToken, ResourceArn)
@@ -3227,14 +3227,14 @@ list_tags_for_resource(Client, NextToken, ResourceArn, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"nextToken">>, NextToken},
         {<<"resourceArn">>, ResourceArn}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List targets for the specified policy.
 list_targets_for_policy(Client, PolicyName, Input) ->
@@ -3251,8 +3251,8 @@ list_targets_for_policy(Client, PolicyName, Input0, Options) ->
                      {<<"marker">>, <<"marker">>},
                      {<<"pageSize">>, <<"pageSize">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the targets (thing groups) associated with a given Device
 %% Defender security profile.
@@ -3266,14 +3266,14 @@ list_targets_for_security_profile(Client, SecurityProfileName, MaxResults, NextT
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"maxResults">>, MaxResults},
         {<<"nextToken">>, NextToken}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the thing groups in your account.
 list_thing_groups(Client, MaxResults, NamePrefixFilter, NextToken, ParentGroup, Recursive)
@@ -3286,7 +3286,7 @@ list_thing_groups(Client, MaxResults, NamePrefixFilter, NextToken, ParentGroup, 
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"maxResults">>, MaxResults},
         {<<"namePrefixFilter">>, NamePrefixFilter},
@@ -3294,9 +3294,9 @@ list_thing_groups(Client, MaxResults, NamePrefixFilter, NextToken, ParentGroup, 
         {<<"parentGroup">>, ParentGroup},
         {<<"recursive">>, Recursive}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the thing groups to which the specified thing belongs.
 list_thing_groups_for_thing(Client, ThingName, MaxResults, NextToken)
@@ -3309,14 +3309,14 @@ list_thing_groups_for_thing(Client, ThingName, MaxResults, NextToken, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"maxResults">>, MaxResults},
         {<<"nextToken">>, NextToken}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the principals associated with the specified thing. A principal
 %% can be X.509 certificates, IAM users, groups, and roles, Amazon Cognito
@@ -3331,9 +3331,9 @@ list_thing_principals(Client, ThingName, Options)
 
     Headers = [],
 
-    Query = [],
+    Query_ = [],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Information about the thing registration tasks.
 list_thing_registration_task_reports(Client, TaskId, MaxResults, NextToken, ReportType)
@@ -3346,15 +3346,15 @@ list_thing_registration_task_reports(Client, TaskId, MaxResults, NextToken, Repo
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"maxResults">>, MaxResults},
         {<<"nextToken">>, NextToken},
         {<<"reportType">>, ReportType}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List bulk thing provisioning tasks.
 list_thing_registration_tasks(Client, MaxResults, NextToken, Status)
@@ -3367,15 +3367,15 @@ list_thing_registration_tasks(Client, MaxResults, NextToken, Status, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"maxResults">>, MaxResults},
         {<<"nextToken">>, NextToken},
         {<<"status">>, Status}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the existing thing types.
 list_thing_types(Client, MaxResults, NextToken, ThingTypeName)
@@ -3388,15 +3388,15 @@ list_thing_types(Client, MaxResults, NextToken, ThingTypeName, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"maxResults">>, MaxResults},
         {<<"nextToken">>, NextToken},
         {<<"thingTypeName">>, ThingTypeName}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists your things. Use the <b>attributeName</b> and
 %% <b>attributeValue</b> parameters to filter your things. For example,
@@ -3413,7 +3413,7 @@ list_things(Client, AttributeName, AttributeValue, MaxResults, NextToken, ThingT
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"attributeName">>, AttributeName},
         {<<"attributeValue">>, AttributeValue},
@@ -3421,9 +3421,9 @@ list_things(Client, AttributeName, AttributeValue, MaxResults, NextToken, ThingT
         {<<"nextToken">>, NextToken},
         {<<"thingTypeName">>, ThingTypeName}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the things you have added to the given billing group.
 list_things_in_billing_group(Client, BillingGroupName, MaxResults, NextToken)
@@ -3436,14 +3436,14 @@ list_things_in_billing_group(Client, BillingGroupName, MaxResults, NextToken, Op
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"maxResults">>, MaxResults},
         {<<"nextToken">>, NextToken}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the things in the specified group.
 list_things_in_thing_group(Client, ThingGroupName, MaxResults, NextToken, Recursive)
@@ -3456,15 +3456,15 @@ list_things_in_thing_group(Client, ThingGroupName, MaxResults, NextToken, Recurs
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"maxResults">>, MaxResults},
         {<<"nextToken">>, NextToken},
         {<<"recursive">>, Recursive}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all the topic rule destinations in your AWS account.
 list_topic_rule_destinations(Client, MaxResults, NextToken)
@@ -3477,14 +3477,14 @@ list_topic_rule_destinations(Client, MaxResults, NextToken, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"maxResults">>, MaxResults},
         {<<"nextToken">>, NextToken}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the rules for the specific topic.
 list_topic_rules(Client, MaxResults, NextToken, RuleDisabled, Topic)
@@ -3497,16 +3497,16 @@ list_topic_rules(Client, MaxResults, NextToken, RuleDisabled, Topic, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"maxResults">>, MaxResults},
         {<<"nextToken">>, NextToken},
         {<<"ruleDisabled">>, RuleDisabled},
         {<<"topic">>, Topic}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists logging levels.
 list_v2_logging_levels(Client, MaxResults, NextToken, TargetType)
@@ -3519,15 +3519,15 @@ list_v2_logging_levels(Client, MaxResults, NextToken, TargetType, Options)
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"maxResults">>, MaxResults},
         {<<"nextToken">>, NextToken},
         {<<"targetType">>, TargetType}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the Device Defender security profile violations discovered
 %% during the given time period. You can use filters to limit the results to
@@ -3543,7 +3543,7 @@ list_violation_events(Client, EndTime, MaxResults, NextToken, SecurityProfileNam
 
     Headers = [],
 
-    Query0 =
+    Query0_ =
       [
         {<<"endTime">>, EndTime},
         {<<"maxResults">>, MaxResults},
@@ -3552,9 +3552,9 @@ list_violation_events(Client, EndTime, MaxResults, NextToken, SecurityProfileNam
         {<<"startTime">>, StartTime},
         {<<"thingName">>, ThingName}
       ],
-    Query = [H || {_, V} = H <- Query0, V =/= undefined],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Registers a CA certificate with AWS IoT. This CA certificate can then
 %% be used to sign device certificates, which can be then registered with AWS
@@ -3577,8 +3577,8 @@ register_c_a_certificate(Client, Input0, Options) ->
                      {<<"allowAutoRegistration">>, <<"allowAutoRegistration">>},
                      {<<"setAsActive">>, <<"setAsActive">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Registers a device certificate with AWS IoT. If you have more than
 %% one CA certificate that has the same subject field, you must specify the
@@ -3597,8 +3597,8 @@ register_certificate(Client, Input0, Options) ->
     QueryMapping = [
                      {<<"setAsActive">>, <<"setAsActive">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Register a certificate that does not have a certificate authority
 %% (CA).
@@ -3612,10 +3612,10 @@ register_certificate_without_c_a(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Provisions a thing in the device registry. RegisterThing calls other
 %% AWS IoT control plane APIs. These calls might exceed your account level <a
@@ -3633,10 +3633,10 @@ register_thing(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Rejects a pending certificate transfer. After AWS IoT rejects a
 %% certificate transfer, the certificate status changes from
@@ -3658,10 +3658,10 @@ reject_certificate_transfer(Client, CertificateId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the given thing from the billing group.
 remove_thing_from_billing_group(Client, Input) ->
@@ -3674,10 +3674,10 @@ remove_thing_from_billing_group(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Remove the specified thing from the specified group.
 %%
@@ -3695,10 +3695,10 @@ remove_thing_from_thing_group(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Replaces the rule. You must specify all parameters for the new rule.
 %% Creating rules is an administrator-level action. Any user who has
@@ -3714,10 +3714,10 @@ replace_topic_rule(Client, RuleName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The query search index.
 search_index(Client, Input) ->
@@ -3730,10 +3730,10 @@ search_index(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sets the default authorizer. This will be used if a websocket
 %% connection is made without specifying an authorizer.
@@ -3747,10 +3747,10 @@ set_default_authorizer(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sets the specified version of the specified policy as the policy's
 %% default (operative) version. This action affects all certificates to which
@@ -3766,10 +3766,10 @@ set_default_policy_version(Client, PolicyName, PolicyVersionId, Input0, Options)
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sets the logging options.
 %%
@@ -3785,10 +3785,10 @@ set_logging_options(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sets the logging level.
 set_v2_logging_level(Client, Input) ->
@@ -3801,10 +3801,10 @@ set_v2_logging_level(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sets the logging options for the V2 logging service.
 set_v2_logging_options(Client, Input) ->
@@ -3817,10 +3817,10 @@ set_v2_logging_options(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts a task that applies a set of mitigation actions to the
 %% specified target.
@@ -3834,10 +3834,10 @@ start_audit_mitigation_actions_task(Client, TaskId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts an on-demand Device Defender audit.
 start_on_demand_audit_task(Client, Input) ->
@@ -3850,10 +3850,10 @@ start_on_demand_audit_task(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a bulk thing provisioning task.
 start_thing_registration_task(Client, Input) ->
@@ -3866,10 +3866,10 @@ start_thing_registration_task(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels a bulk thing provisioning task.
 stop_thing_registration_task(Client, TaskId, Input) ->
@@ -3882,10 +3882,10 @@ stop_thing_registration_task(Client, TaskId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds to or modifies the tags of the given resource. Tags are metadata
 %% which can be used to manage a resource.
@@ -3899,10 +3899,10 @@ tag_resource(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Tests if a specified principal is authorized to perform an AWS IoT
 %% action on a specified resource. Use this to test and debug the
@@ -3921,8 +3921,8 @@ test_authorization(Client, Input0, Options) ->
     QueryMapping = [
                      {<<"clientId">>, <<"clientId">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Tests a custom authorization behavior by invoking a specified custom
 %% authorizer. Use this to test and debug the custom authorization behavior
@@ -3937,10 +3937,10 @@ test_invoke_authorizer(Client, AuthorizerName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Transfers the specified certificate to the specified AWS account.
 %%
@@ -3967,8 +3967,8 @@ transfer_certificate(Client, CertificateId, Input0, Options) ->
     QueryMapping = [
                      {<<"targetAwsAccount">>, <<"targetAwsAccount">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the given tags (metadata) from the resource.
 untag_resource(Client, Input) ->
@@ -3981,10 +3981,10 @@ untag_resource(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Configures or reconfigures the Device Defender audit settings for
 %% this account. Settings include how audit notifications are sent and which
@@ -3999,10 +3999,10 @@ update_account_audit_configuration(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an authorizer.
 update_authorizer(Client, AuthorizerName, Input) ->
@@ -4015,10 +4015,10 @@ update_authorizer(Client, AuthorizerName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates information about the billing group.
 update_billing_group(Client, BillingGroupName, Input) ->
@@ -4031,10 +4031,10 @@ update_billing_group(Client, BillingGroupName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a registered CA certificate.
 update_c_a_certificate(Client, CertificateId, Input) ->
@@ -4051,8 +4051,8 @@ update_c_a_certificate(Client, CertificateId, Input0, Options) ->
                      {<<"newAutoRegistrationStatus">>, <<"newAutoRegistrationStatus">>},
                      {<<"newStatus">>, <<"newStatus">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the status of the specified certificate. This operation is
 %% idempotent.
@@ -4076,8 +4076,8 @@ update_certificate(Client, CertificateId, Input0, Options) ->
     QueryMapping = [
                      {<<"newStatus">>, <<"newStatus">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the definition for a dimension. You cannot change the type of
 %% a dimension after it is created (you can delete it and re-create it).
@@ -4091,10 +4091,10 @@ update_dimension(Client, Name, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates values stored in the domain configuration. Domain
 %% configurations for default endpoints can't be updated.
@@ -4113,10 +4113,10 @@ update_domain_configuration(Client, DomainConfigurationName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a dynamic thing group.
 update_dynamic_thing_group(Client, ThingGroupName, Input) ->
@@ -4129,10 +4129,10 @@ update_dynamic_thing_group(Client, ThingGroupName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the event configurations.
 update_event_configurations(Client, Input) ->
@@ -4145,10 +4145,10 @@ update_event_configurations(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the search configuration.
 update_indexing_configuration(Client, Input) ->
@@ -4161,10 +4161,10 @@ update_indexing_configuration(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates supported fields of the specified job.
 update_job(Client, JobId, Input) ->
@@ -4177,10 +4177,10 @@ update_job(Client, JobId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the definition for the specified mitigation action.
 update_mitigation_action(Client, ActionName, Input) ->
@@ -4193,10 +4193,10 @@ update_mitigation_action(Client, ActionName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a fleet provisioning template.
 update_provisioning_template(Client, TemplateName, Input) ->
@@ -4209,10 +4209,10 @@ update_provisioning_template(Client, TemplateName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a role alias.
 update_role_alias(Client, RoleAlias, Input) ->
@@ -4225,10 +4225,10 @@ update_role_alias(Client, RoleAlias, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a scheduled audit, including which checks are performed and
 %% how often the audit takes place.
@@ -4242,10 +4242,10 @@ update_scheduled_audit(Client, ScheduledAuditName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a Device Defender security profile.
 update_security_profile(Client, SecurityProfileName, Input) ->
@@ -4261,8 +4261,8 @@ update_security_profile(Client, SecurityProfileName, Input0, Options) ->
     QueryMapping = [
                      {<<"expectedVersion">>, <<"expectedVersion">>}
                    ],
-    {Query, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing stream. The stream version will be incremented by
 %% one.
@@ -4276,10 +4276,10 @@ update_stream(Client, StreamId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the data for a thing.
 update_thing(Client, ThingName, Input) ->
@@ -4292,10 +4292,10 @@ update_thing(Client, ThingName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Update a thing group.
 update_thing_group(Client, ThingGroupName, Input) ->
@@ -4308,10 +4308,10 @@ update_thing_group(Client, ThingGroupName, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the groups to which the thing belongs.
 update_thing_groups_for_thing(Client, Input) ->
@@ -4324,10 +4324,10 @@ update_thing_groups_for_thing(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a topic rule destination. You use this to change the status,
 %% endpoint URL, or confirmation URL of the destination.
@@ -4341,10 +4341,10 @@ update_topic_rule_destination(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Validates a Device Defender security profile behaviors specification.
 validate_security_profile_behaviors(Client, Input) ->
@@ -4357,10 +4357,10 @@ validate_security_profile_behaviors(Client, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query = [],
+    Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %%====================================================================
 %% Internal functions
@@ -4375,8 +4375,8 @@ validate_security_profile_behaviors(Client, Input0, Options) ->
     Error :: map().
 request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"execute-api">>},
-    Host = get_host(<<"iot">>, Client1),
-    URL0 = get_url(Host, Path, Client1),
+    Host = build_host(<<"iot">>, Client1),
+    URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
     AdditionalHeaders = [ {<<"Host">>, Host}
                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
@@ -4408,12 +4408,12 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
-get_host(_EndpointPrefix, #{region := <<"local">>}) ->
+build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
-get_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
+build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
     aws_util:binary_join([EndpointPrefix, Region, Endpoint], <<".">>).
 
-get_url(Host, Path0, Client) ->
+build_url(Host, Path0, Client) ->
     Proto = maps:get(proto, Client),
     Path = erlang:iolist_to_binary(Path0),
     Port = maps:get(port, Client),
