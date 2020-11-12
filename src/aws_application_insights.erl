@@ -1,15 +1,15 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc <fullname>Amazon CloudWatch Application Insights for .NET and SQL
-%% Server</fullname>
+%% @doc Amazon CloudWatch Application Insights for .NET and SQL Server
 %%
 %% Amazon CloudWatch Application Insights for .NET and SQL Server is a
 %% service that helps you detect common problems with your .NET and SQL
-%% Server-based applications. It enables you to pinpoint the source of issues
-%% in your applications (built with technologies such as Microsoft IIS, .NET,
-%% and Microsoft SQL Server), by providing key insights into detected
-%% problems.
+%% Server-based applications.
+%%
+%% It enables you to pinpoint the source of issues in your applications
+%% (built with technologies such as Microsoft IIS, .NET, and Microsoft SQL
+%% Server), by providing key insights into detected problems.
 %%
 %% After you onboard your application, CloudWatch Application Insights for
 %% .NET and SQL Server identifies, recommends, and sets up metrics and logs.
@@ -99,7 +99,7 @@ create_component(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateComponent">>, Input, Options).
 
-%% @doc Adds an log pattern to a <code>LogPatternSet</code>.
+%% @doc Adds an log pattern to a `LogPatternSet`.
 create_log_pattern(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_log_pattern(Client, Input, []).
@@ -107,8 +107,9 @@ create_log_pattern(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLogPattern">>, Input, Options).
 
-%% @doc Removes the specified application from monitoring. Does not delete
-%% the application.
+%% @doc Removes the specified application from monitoring.
+%%
+%% Does not delete the application.
 delete_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application(Client, Input, []).
@@ -116,9 +117,11 @@ delete_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteApplication">>, Input, Options).
 
-%% @doc Ungroups a custom component. When you ungroup custom components, all
-%% applicable monitors that are set up for the component are removed and the
-%% instances revert to their standalone status.
+%% @doc Ungroups a custom component.
+%%
+%% When you ungroup custom components, all applicable monitors that are set
+%% up for the component are removed and the instances revert to their
+%% standalone status.
 delete_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_component(Client, Input, []).
@@ -126,7 +129,7 @@ delete_component(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteComponent">>, Input, Options).
 
-%% @doc Removes the specified log pattern from a <code>LogPatternSet</code>.
+%% @doc Removes the specified log pattern from a `LogPatternSet`.
 delete_log_pattern(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_log_pattern(Client, Input, []).
@@ -167,7 +170,7 @@ describe_component_configuration_recommendation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeComponentConfigurationRecommendation">>, Input, Options).
 
-%% @doc Describe a specific log pattern from a <code>LogPatternSet</code>.
+%% @doc Describe a specific log pattern from a `LogPatternSet`.
 describe_log_pattern(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_log_pattern(Client, Input, []).
@@ -217,8 +220,9 @@ list_components(Client, Input, Options)
     request(Client, <<"ListComponents">>, Input, Options).
 
 %% @doc Lists the INFO, WARN, and ERROR events for periodic configuration
-%% updates performed by Application Insights. Examples of events represented
-%% are:
+%% updates performed by Application Insights.
+%%
+%% Examples of events represented are:
 %%
 %% <ul> <li> INFO: creating a new alarm or updating an alarm threshold.
 %%
@@ -244,8 +248,7 @@ list_log_pattern_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLogPatternSets">>, Input, Options).
 
-%% @doc Lists the log patterns in the specific log
-%% <code>LogPatternSet</code>.
+%% @doc Lists the log patterns in the specific log `LogPatternSet`.
 list_log_patterns(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_log_patterns(Client, Input, []).
@@ -262,11 +265,13 @@ list_problems(Client, Input, Options)
     request(Client, <<"ListProblems">>, Input, Options).
 
 %% @doc Retrieve a list of the tags (keys and values) that are associated
-%% with a specified application. A <i>tag</i> is a label that you optionally
-%% define and associate with an application. Each tag consists of a required
-%% <i>tag key</i> and an optional associated <i>tag value</i>. A tag key is a
-%% general label that acts as a category for more specific tag values. A tag
-%% value acts as a descriptor within a tag key.
+%% with a specified application.
+%%
+%% A tag is a label that you optionally define and associate with an
+%% application. Each tag consists of a required tag key and an optional
+%% associated tag value. A tag key is a general label that acts as a category
+%% for more specific tag values. A tag value acts as a descriptor within a
+%% tag key.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -274,15 +279,16 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
-%% @doc Add one or more tags (keys and values) to a specified application. A
-%% <i>tag</i> is a label that you optionally define and associate with an
+%% @doc Add one or more tags (keys and values) to a specified application.
+%%
+%% A tag is a label that you optionally define and associate with an
 %% application. Tags can help you categorize and manage application in
 %% different ways, such as by purpose, owner, environment, or other criteria.
 %%
-%% Each tag consists of a required <i>tag key</i> and an associated <i>tag
-%% value</i>, both of which you define. A tag key is a general label that
-%% acts as a category for more specific tag values. A tag value acts as a
-%% descriptor within a tag key.
+%% Each tag consists of a required tag key and an associated tag value, both
+%% of which you define. A tag key is a general label that acts as a category
+%% for more specific tag values. A tag value acts as a descriptor within a
+%% tag key.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -316,10 +322,11 @@ update_component(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateComponent">>, Input, Options).
 
-%% @doc Updates the monitoring configurations for the component. The
-%% configuration input parameter is an escaped JSON of the configuration and
-%% should match the schema of what is returned by
-%% <code>DescribeComponentConfigurationRecommendation</code>.
+%% @doc Updates the monitoring configurations for the component.
+%%
+%% The configuration input parameter is an escaped JSON of the configuration
+%% and should match the schema of what is returned by
+%% `DescribeComponentConfigurationRecommendation`.
 update_component_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_component_configuration(Client, Input, []).
@@ -327,7 +334,7 @@ update_component_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateComponentConfiguration">>, Input, Options).
 
-%% @doc Adds a log pattern to a <code>LogPatternSet</code>.
+%% @doc Adds a log pattern to a `LogPatternSet`.
 update_log_pattern(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_log_pattern(Client, Input, []).
@@ -377,6 +384,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
 handle_response({error, Reason}) ->
     {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

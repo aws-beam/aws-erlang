@@ -1,7 +1,7 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc <fullname>AWS Lake Formation</fullname>
+%% @doc AWS Lake Formation
 %%
 %% Defines the public endpoint for the AWS Lake Formation service.
 -module(aws_lakeformation).
@@ -86,8 +86,9 @@ get_data_lake_settings(Client, Input, Options)
 
 %% @doc Returns the Lake Formation permissions for a specified table or
 %% database resource located at a path in Amazon S3.
-%% <code>GetEffectivePermissionsForPath</code> will not return databases and
-%% tables if the catalog is encrypted.
+%%
+%% `GetEffectivePermissionsForPath` will not return databases and tables if
+%% the catalog is encrypted.
 get_effective_permissions_for_path(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_effective_permissions_for_path(Client, Input, []).
@@ -98,9 +99,8 @@ get_effective_permissions_for_path(Client, Input, Options)
 %% @doc Grants permissions to the principal to access metadata in the Data
 %% Catalog and data organized in underlying data storage such as Amazon S3.
 %%
-%% For information about permissions, see <a
-%% href="https://docs-aws.amazon.com/lake-formation/latest/dg/security-data-access.html">Security
-%% and Access Control to Metadata and Data</a>.
+%% For information about permissions, see Security and Access Control to
+%% Metadata and Data.
 grant_permissions(Client, Input)
   when is_map(Client), is_map(Input) ->
     grant_permissions(Client, Input, []).
@@ -109,15 +109,16 @@ grant_permissions(Client, Input, Options)
     request(Client, <<"GrantPermissions">>, Input, Options).
 
 %% @doc Returns a list of the principal permissions on the resource, filtered
-%% by the permissions of the caller. For example, if you are granted an ALTER
-%% permission, you are able to see only the principal permissions for ALTER.
+%% by the permissions of the caller.
+%%
+%% For example, if you are granted an ALTER permission, you are able to see
+%% only the principal permissions for ALTER.
 %%
 %% This operation returns only those permissions that have been explicitly
 %% granted.
 %%
-%% For information about permissions, see <a
-%% href="https://docs-aws.amazon.com/lake-formation/latest/dg/security-data-access.html">Security
-%% and Access Control to Metadata and Data</a>.
+%% For information about permissions, see Security and Access Control to
+%% Metadata and Data.
 list_permissions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_permissions(Client, Input, []).
@@ -134,10 +135,10 @@ list_resources(Client, Input, Options)
     request(Client, <<"ListResources">>, Input, Options).
 
 %% @doc Sets the list of data lake administrators who have admin privileges
-%% on all resources managed by Lake Formation. For more information on admin
-%% privileges, see <a
-%% href="https://docs.aws.amazon.com/lake-formation/latest/dg/lake-formation-permissions.html">Granting
-%% Lake Formation Permissions</a>.
+%% on all resources managed by Lake Formation.
+%%
+%% For more information on admin privileges, see Granting Lake Formation
+%% Permissions.
 %%
 %% This API replaces the current list of data lake admins with the new list
 %% being passed. To add an admin, fetch the current list and add the new
@@ -164,13 +165,12 @@ put_data_lake_settings(Client, Input, Options)
 %% Formation permission to use the service-linked role to access that
 %% location.
 %%
-%% <code>ResourceArn = arn:aws:s3:::my-bucket UseServiceLinkedRole =
-%% true</code>
+%% `ResourceArn = arn:aws:s3:::my-bucket UseServiceLinkedRole = true`
 %%
-%% If <code>UseServiceLinkedRole</code> is not set to true, you must provide
-%% or set the <code>RoleArn</code>:
+%% If `UseServiceLinkedRole` is not set to true, you must provide or set the
+%% `RoleArn`:
 %%
-%% <code>arn:aws:iam::12345:role/my-data-access-role</code>
+%% `arn:aws:iam::12345:role/my-data-access-role`
 register_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_resource(Client, Input, []).
@@ -238,6 +238,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
 handle_response({error, Reason}) ->
     {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

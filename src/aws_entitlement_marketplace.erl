@@ -1,7 +1,7 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc <fullname>AWS Marketplace Entitlement Service</fullname>
+%% @doc AWS Marketplace Entitlement Service
 %%
 %% This reference provides descriptions of the AWS Marketplace Entitlement
 %% Service API.
@@ -12,9 +12,9 @@
 %% number of users or seats in an SaaS application or some amount of data
 %% capacity in a multi-tenant database.
 %%
-%% <b>Getting Entitlement Records</b>
+%% Getting Entitlement Records
 %%
-%% <ul> <li> <i>GetEntitlements</i>- Gets the entitlements for a Marketplace
+%% <ul> <li> GetEntitlements- Gets the entitlements for a Marketplace
 %% product.
 %%
 %% </li> </ul>
@@ -29,8 +29,9 @@
 %% API
 %%====================================================================
 
-%% @doc GetEntitlements retrieves entitlement values for a given product. The
-%% results can be filtered based on customer identifier or product
+%% @doc GetEntitlements retrieves entitlement values for a given product.
+%%
+%% The results can be filtered based on customer identifier or product
 %% dimensions.
 get_entitlements(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -81,6 +82,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
 handle_response({error, Reason}) ->
     {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

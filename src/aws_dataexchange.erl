@@ -55,8 +55,9 @@
 %% API
 %%====================================================================
 
-%% @doc This operation cancels a job. Jobs can be cancelled only when they
-%% are in the WAITING state.
+%% @doc This operation cancels a job.
+%%
+%% Jobs can be cancelled only when they are in the WAITING state.
 cancel_job(Client, JobId, Input) ->
     cancel_job(Client, JobId, Input, []).
 cancel_job(Client, JobId, Input0, Options) ->
@@ -249,10 +250,11 @@ list_data_set_revisions(Client, DataSetId, MaxResults, NextToken, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This operation lists your data sets. When listing by origin OWNED,
-%% results are sorted by CreatedAt in descending order. When listing by
-%% origin ENTITLED, there is no order and the maxResults parameter is
-%% ignored.
+%% @doc This operation lists your data sets.
+%%
+%% When listing by origin OWNED, results are sorted by CreatedAt in
+%% descending order. When listing by origin ENTITLED, there is no order and
+%% the maxResults parameter is ignored.
 list_data_sets(Client, MaxResults, NextToken, Origin)
   when is_map(Client) ->
     list_data_sets(Client, MaxResults, NextToken, Origin, []).
@@ -475,6 +477,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

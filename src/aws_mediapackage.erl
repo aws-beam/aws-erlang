@@ -4,7 +4,9 @@
 %% @doc AWS Elemental MediaPackage
 -module(aws_mediapackage).
 
--export([create_channel/2,
+-export([configure_logs/3,
+         configure_logs/4,
+         create_channel/2,
          create_channel/3,
          create_harvest_job/2,
          create_harvest_job/3,
@@ -46,6 +48,22 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Changes the Channel's properities to configure log subscription
+configure_logs(Client, Id, Input) ->
+    configure_logs(Client, Id, Input, []).
+configure_logs(Client, Id, Input0, Options) ->
+    Method = put,
+    Path = ["/channels/", http_uri:encode(Id), "/configure_logs"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new Channel.
 create_channel(Client, Input) ->
@@ -251,6 +269,7 @@ list_tags_for_resource(Client, ResourceArn, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Changes the Channel's first IngestEndpoint's username and password.
+%%
 %% WARNING - This API is deprecated. Please use
 %% RotateIngestEndpointCredentials instead
 rotate_channel_credentials(Client, Id, Input) ->
@@ -396,6 +415,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

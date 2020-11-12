@@ -1,25 +1,24 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc <fullname>Amazon CloudWatch Synthetics</fullname>
+%% @doc Amazon CloudWatch Synthetics
 %%
 %% You can use Amazon CloudWatch Synthetics to continually monitor your
-%% services. You can create and manage <i>canaries</i>, which are modular,
-%% lightweight scripts that monitor your endpoints and APIs from the
-%% outside-in. You can set up your canaries to run 24 hours a day, once per
-%% minute. The canaries help you check the availability and latency of your
-%% web services and troubleshoot anomalies by investigating load time data,
-%% screenshots of the UI, logs, and metrics. The canaries seamlessly
-%% integrate with CloudWatch ServiceLens to help you trace the causes of
-%% impacted nodes in your applications. For more information, see <a
-%% href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ServiceLens.html">Using
-%% ServiceLens to Monitor the Health of Your Applications</a> in the
-%% <i>Amazon CloudWatch User Guide</i>.
+%% services.
+%%
+%% You can create and manage canaries, which are modular, lightweight scripts
+%% that monitor your endpoints and APIs from the outside-in. You can set up
+%% your canaries to run 24 hours a day, once per minute. The canaries help
+%% you check the availability and latency of your web services and
+%% troubleshoot anomalies by investigating load time data, screenshots of the
+%% UI, logs, and metrics. The canaries seamlessly integrate with CloudWatch
+%% ServiceLens to help you trace the causes of impacted nodes in your
+%% applications. For more information, see Using ServiceLens to Monitor the
+%% Health of Your Applications in the Amazon CloudWatch User Guide.
 %%
 %% Before you create and manage canaries, be aware of the security
-%% considerations. For more information, see <a
-%% href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/servicelens_canaries_security.html">Security
-%% Considerations for Synthetics Canaries</a>.
+%% considerations. For more information, see Security Considerations for
+%% Synthetics Canaries.
 -module(aws_synthetics).
 
 -export([create_canary/2,
@@ -55,31 +54,26 @@
 %% API
 %%====================================================================
 
-%% @doc Creates a canary. Canaries are scripts that monitor your endpoints
-%% and APIs from the outside-in. Canaries help you check the availability and
-%% latency of your web services and troubleshoot anomalies by investigating
-%% load time data, screenshots of the UI, logs, and metrics. You can set up a
-%% canary to run continuously or just once.
+%% @doc Creates a canary.
 %%
-%% Do not use <code>CreateCanary</code> to modify an existing canary. Use <a
-%% href="https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_UpdateCanary.html">UpdateCanary</a>
+%% Canaries are scripts that monitor your endpoints and APIs from the
+%% outside-in. Canaries help you check the availability and latency of your
+%% web services and troubleshoot anomalies by investigating load time data,
+%% screenshots of the UI, logs, and metrics. You can set up a canary to run
+%% continuously or just once.
+%%
+%% Do not use `CreateCanary` to modify an existing canary. Use UpdateCanary
 %% instead.
 %%
-%% To create canaries, you must have the
-%% <code>CloudWatchSyntheticsFullAccess</code> policy. If you are creating a
-%% new IAM role for the canary, you also need the the
-%% <code>iam:CreateRole</code>, <code>iam:CreatePolicy</code> and
-%% <code>iam:AttachRolePolicy</code> permissions. For more information, see
-%% <a
-%% href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Roles">Necessary
-%% Roles and Permissions</a>.
+%% To create canaries, you must have the `CloudWatchSyntheticsFullAccess`
+%% policy. If you are creating a new IAM role for the canary, you also need
+%% the the `iam:CreateRole`, `iam:CreatePolicy` and `iam:AttachRolePolicy`
+%% permissions. For more information, see Necessary Roles and Permissions.
 %%
 %% Do not include secrets or proprietary information in your canary names.
 %% The canary name makes up part of the Amazon Resource Name (ARN) for the
 %% canary, and the ARN is included in outbound calls over the internet. For
-%% more information, see <a
-%% href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/servicelens_canaries_security.html">Security
-%% Considerations for Synthetics Canaries</a>.
+%% more information, see Security Considerations for Synthetics Canaries.
 create_canary(Client, Input) ->
     create_canary(Client, Input, []).
 create_canary(Client, Input0, Options) ->
@@ -102,26 +96,25 @@ create_canary(Client, Input0, Options) ->
 %% use again, you should also delete the following:
 %%
 %% <ul> <li> The Lambda functions and layers used by this canary. These have
-%% the prefix <code>cwsyn-<i>MyCanaryName</i> </code>.
+%% the prefix `cwsyn-MyCanaryName `.
 %%
 %% </li> <li> The CloudWatch alarms created for this canary. These alarms
-%% have a name of <code>Synthetics-SharpDrop-Alarm-<i>MyCanaryName</i>
-%% </code>.
+%% have a name of `Synthetics-SharpDrop-Alarm-MyCanaryName `.
 %%
 %% </li> <li> Amazon S3 objects and buckets, such as the canary's artifact
 %% location.
 %%
 %% </li> <li> IAM roles created for the canary. If they were created in the
-%% console, these roles have the name <code>
-%% role/service-role/CloudWatchSyntheticsRole-<i>MyCanaryName</i> </code>.
+%% console, these roles have the name `
+%% role/service-role/CloudWatchSyntheticsRole-MyCanaryName `.
 %%
 %% </li> <li> CloudWatch Logs log groups created for the canary. These logs
-%% groups have the name <code>/aws/lambda/cwsyn-<i>MyCanaryName</i> </code>.
+%% groups have the name `/aws/lambda/cwsyn-MyCanaryName `.
 %%
-%% </li> </ul> Before you delete a canary, you might want to use
-%% <code>GetCanary</code> to display the information about this canary. Make
-%% note of the information returned by this operation so that you can delete
-%% these resources after you delete the canary.
+%% </li> </ul> Before you delete a canary, you might want to use `GetCanary`
+%% to display the information about this canary. Make note of the information
+%% returned by this operation so that you can delete these resources after
+%% you delete the canary.
 delete_canary(Client, Name, Input) ->
     delete_canary(Client, Name, Input, []).
 delete_canary(Client, Name, Input0, Options) ->
@@ -141,9 +134,9 @@ delete_canary(Client, Name, Input0, Options) ->
 %% with full details about each canary.
 %%
 %% This operation does not have resource-level authorization, so if a user is
-%% able to use <code>DescribeCanaries</code>, the user can see all of the
-%% canaries in the account. A deny policy can only be used to restrict access
-%% to all canaries. It cannot be used on specific resources.
+%% able to use `DescribeCanaries`, the user can see all of the canaries in
+%% the account. A deny policy can only be used to restrict access to all
+%% canaries. It cannot be used on specific resources.
 describe_canaries(Client, Input) ->
     describe_canaries(Client, Input, []).
 describe_canaries(Client, Input0, Options) ->
@@ -176,10 +169,9 @@ describe_canaries_last_run(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of Synthetics canary runtime versions. For more
-%% information, see <a
-%% href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Library.html">
-%% Canary Runtime Versions</a>.
+%% @doc Returns a list of Synthetics canary runtime versions.
+%%
+%% For more information, see Canary Runtime Versions.
 describe_runtime_versions(Client, Input) ->
     describe_runtime_versions(Client, Input, []).
 describe_runtime_versions(Client, Input0, Options) ->
@@ -195,10 +187,10 @@ describe_runtime_versions(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves complete information about one canary. You must specify the
-%% name of the canary that you want. To get a list of canaries and their
-%% names, use <a
-%% href="https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_DescribeCanaries.html">DescribeCanaries</a>.
+%% @doc Retrieves complete information about one canary.
+%%
+%% You must specify the name of the canary that you want. To get a list of
+%% canaries and their names, use DescribeCanaries.
 get_canary(Client, Name)
   when is_map(Client) ->
     get_canary(Client, Name, []).
@@ -244,10 +236,10 @@ list_tags_for_resource(Client, ResourceArn, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Use this operation to run a canary that has already been created. The
-%% frequency of the canary runs is determined by the value of the canary's
-%% <code>Schedule</code>. To see a canary's schedule, use <a
-%% href="https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_GetCanary.html">GetCanary</a>.
+%% @doc Use this operation to run a canary that has already been created.
+%%
+%% The frequency of the canary runs is determined by the value of the
+%% canary's `Schedule`. To see a canary's schedule, use GetCanary.
 start_canary(Client, Name, Input) ->
     start_canary(Client, Name, Input, []).
 start_canary(Client, Name, Input0, Options) ->
@@ -263,14 +255,15 @@ start_canary(Client, Name, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Stops the canary to prevent all future runs. If the canary is
-%% currently running, Synthetics stops waiting for the current run of the
-%% specified canary to complete. The run that is in progress completes on its
-%% own, publishes metrics, and uploads artifacts, but it is not recorded in
-%% Synthetics as a completed run.
+%% @doc Stops the canary to prevent all future runs.
 %%
-%% You can use <code>StartCanary</code> to start it running again with the
-%% canary’s current schedule at any point in the future.
+%% If the canary is currently running, Synthetics stops waiting for the
+%% current run of the specified canary to complete. The run that is in
+%% progress completes on its own, publishes metrics, and uploads artifacts,
+%% but it is not recorded in Synthetics as a completed run.
+%%
+%% You can use `StartCanary` to start it running again with the canary’s
+%% current schedule at any point in the future.
 stop_canary(Client, Name, Input) ->
     stop_canary(Client, Name, Input, []).
 stop_canary(Client, Name, Input0, Options) ->
@@ -295,11 +288,11 @@ stop_canary(Client, Name, Input0, Options) ->
 %% Tags don't have any semantic meaning to AWS and are interpreted strictly
 %% as strings of characters.
 %%
-%% You can use the <code>TagResource</code> action with a canary that already
-%% has tags. If you specify a new tag key for the alarm, this tag is appended
-%% to the list of tags associated with the alarm. If you specify a tag key
-%% that is already associated with the alarm, the new tag value that you
-%% specify replaces the previous value for that tag.
+%% You can use the `TagResource` action with a canary that already has tags.
+%% If you specify a new tag key for the alarm, this tag is appended to the
+%% list of tags associated with the alarm. If you specify a tag key that is
+%% already associated with the alarm, the new tag value that you specify
+%% replaces the previous value for that tag.
 %%
 %% You can associate as many as 50 tags with a canary.
 tag_resource(Client, ResourceArn, Input) ->
@@ -338,8 +331,7 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 %% already been created.
 %%
 %% You can't use this operation to update the tags of an existing canary. To
-%% change the tags of an existing canary, use <a
-%% href="https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_TagResource.html">TagResource</a>.
+%% change the tags of an existing canary, use TagResource.
 update_canary(Client, Name, Input) ->
     update_canary(Client, Name, Input, []).
 update_canary(Client, Name, Input0, Options) ->
@@ -401,6 +393,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

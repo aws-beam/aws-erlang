@@ -1,158 +1,170 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc <b>Introduction</b>
+%% @doc Introduction
 %%
 %% The Amazon Interactive Video Service (IVS) API is REST compatible, using a
-%% standard HTTP API and an <a href="http://aws.amazon.com/sns">AWS SNS</a>
-%% event stream for responses. JSON is used for both requests and responses,
-%% including errors.
+%% standard HTTP API and an AWS SNS event stream for responses.
+%%
+%% JSON is used for both requests and responses, including errors.
 %%
 %% The API is an AWS regional service, currently in these regions: us-west-2,
 %% us-east-1, and eu-west-1.
 %%
-%% <i> <b>All API request parameters and URLs are case sensitive. </b> </i>
+%% All API request parameters and URLs are case sensitive.
 %%
-%% For a summary of notable documentation changes in each release, see <a
-%% href="https://docs.aws.amazon.com/ivs/latest/userguide/doc-history.html">
-%% Document History</a>.
+%% For a summary of notable documentation changes in each release, see
+%% Document History.
 %%
-%% <b>Service Endpoints</b>
+%% Service Endpoints
 %%
 %% The following are the Amazon IVS service endpoints (all HTTPS):
 %%
 %% Region name: US West (Oregon)
 %%
-%% <ul> <li> Region: <code>us-west-2</code>
+%% <ul> <li> Region: `us-west-2`
 %%
-%% </li> <li> Endpoint: <code>ivs.us-west-2.amazonaws.com</code>
+%% </li> <li> Endpoint: `ivs.us-west-2.amazonaws.com`
 %%
 %% </li> </ul> Region name: US East (Virginia)
 %%
-%% <ul> <li> Region: <code>us-east-1</code>
+%% <ul> <li> Region: `us-east-1`
 %%
-%% </li> <li> Endpoint: <code>ivs.us-east-1.amazonaws.com</code>
+%% </li> <li> Endpoint: `ivs.us-east-1.amazonaws.com`
 %%
 %% </li> </ul> Region name: EU West (Dublin)
 %%
-%% <ul> <li> Region: <code>eu-west-1</code>
+%% <ul> <li> Region: `eu-west-1`
 %%
-%% </li> <li> Endpoint: <code>ivs.eu-west-1.amazonaws.com</code>
+%% </li> <li> Endpoint: `ivs.eu-west-1.amazonaws.com`
 %%
-%% </li> </ul> <b>Allowed Header Values</b>
+%% </li> </ul> Allowed Header Values
 %%
-%% <ul> <li> <code> <b>Accept:</b> </code> application/json
+%% <ul> <li> ` Accept: ` application/json
 %%
-%% </li> <li> <code> <b>Accept-Encoding:</b> </code> gzip, deflate
+%% </li> <li> ` Accept-Encoding: ` gzip, deflate
 %%
-%% </li> <li> <code> <b>Content-Type:</b> </code>application/json
+%% </li> <li> ` Content-Type: `application/json
 %%
-%% </li> </ul> <b>Resources</b>
+%% </li> </ul> Resources
 %%
 %% The following resources contain information about your IVS live stream
-%% (see <a
-%% href="https://docs.aws.amazon.com/ivs/latest/userguide/GSIVS.html">
-%% Getting Started with Amazon IVS</a>):
+%% (see Getting Started with Amazon IVS):
 %%
 %% <ul> <li> Channel — Stores configuration data related to your live stream.
 %% You first create a channel and then use the channel’s stream key to start
-%% your live stream. See the <a>Channel</a> endpoints for more information.
+%% your live stream. See the Channel endpoints for more information.
 %%
 %% </li> <li> Stream key — An identifier assigned by Amazon IVS when you
 %% create a channel, which is then used to authorize streaming. See the
-%% <a>StreamKey</a> endpoints for more information. <i> <b>Treat the stream
-%% key like a secret, since it allows anyone to stream to the channel.</b>
-%% </i>
+%% StreamKey endpoints for more information. Treat the stream key like a
+%% secret, since it allows anyone to stream to the channel.
 %%
-%% </li> </ul> <b>Tagging</b>
+%% </li> <li> Playback key pair — Video playback may be restricted using
+%% playback-authorization tokens, which use public-key encryption. A playback
+%% key pair is the public-private pair of keys used to sign and validate the
+%% playback-authorization token. See the PlaybackKeyPair endpoints for more
+%% information.
 %%
-%% A <i>tag</i> is a metadata label that you assign to an AWS resource. A tag
-%% comprises a <i>key</i> and a <i>value</i>, both set by you. For example,
-%% you might set a tag as <code>topic:nature</code> to label a particular
-%% video category. See <a
-%% href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-%% AWS Resources</a> for more information, including restrictions that apply
-%% to tags.
+%% </li> </ul> Tagging
+%%
+%% A tag is a metadata label that you assign to an AWS resource. A tag
+%% comprises a key and a value, both set by you. For example, you might set a
+%% tag as `topic:nature` to label a particular video category. See Tagging
+%% AWS Resources for more information, including restrictions that apply to
+%% tags.
 %%
 %% Tags can help you identify and organize your AWS resources. For example,
 %% you can use the same tag for different resources to indicate that they are
-%% related. You can also use tags to manage access (see <a
-%% href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html">
-%% Access Tags</a>).
+%% related. You can also use tags to manage access (see Access Tags).
 %%
-%% The Amazon IVS API has these tag-related endpoints: <a>TagResource</a>,
-%% <a>UntagResource</a>, and <a>ListTagsForResource</a>. The following
-%% resources support tagging: Channels and Stream Keys.
+%% The Amazon IVS API has these tag-related endpoints: `TagResource`,
+%% `UntagResource`, and `ListTagsForResource`. The following resources
+%% support tagging: Channels, Stream Keys, and Playback Key Pairs.
 %%
-%% <b>API Endpoints</b>
+%% Channel Endpoints
 %%
-%% <a>Channel</a>:
+%% <ul> <li> `CreateChannel` — Creates a new channel and an associated stream
+%% key to start streaming.
 %%
-%% <ul> <li> <a>CreateChannel</a> — Creates a new channel and an associated
-%% stream key to start streaming.
+%% </li> <li> `GetChannel` — Gets the channel configuration for the specified
+%% channel ARN (Amazon Resource Name).
 %%
-%% </li> <li> <a>GetChannel</a> — Gets the channel configuration for the
-%% specified channel ARN (Amazon Resource Name).
+%% </li> <li> `BatchGetChannel` — Performs `GetChannel` on multiple ARNs
+%% simultaneously.
 %%
-%% </li> <li> <a>BatchGetChannel</a> — Performs <a>GetChannel</a> on multiple
-%% ARNs simultaneously.
+%% </li> <li> `ListChannels` — Gets summary information about all channels in
+%% your account, in the AWS region where the API request is processed. This
+%% list can be filtered to match a specified string.
 %%
-%% </li> <li> <a>ListChannels</a> — Gets summary information about all
-%% channels in your account, in the AWS region where the API request is
-%% processed. This list can be filtered to match a specified string.
+%% </li> <li> `UpdateChannel` — Updates a channel's configuration. This does
+%% not affect an ongoing stream of this channel. You must stop and restart
+%% the stream for the changes to take effect.
 %%
-%% </li> <li> <a>UpdateChannel</a> — Updates a channel's configuration. This
-%% does not affect an ongoing stream of this channel. You must stop and
-%% restart the stream for the changes to take effect.
+%% </li> <li> `DeleteChannel` — Deletes the specified channel.
 %%
-%% </li> <li> <a>DeleteChannel</a> — Deletes the specified channel.
+%% </li> </ul> StreamKey Endpoints
 %%
-%% </li> </ul> <a>StreamKey</a>:
+%% <ul> <li> `CreateStreamKey` — Creates a stream key, used to initiate a
+%% stream, for the specified channel ARN.
 %%
-%% <ul> <li> <a>CreateStreamKey</a> — Creates a stream key, used to initiate
-%% a stream, for the specified channel ARN.
+%% </li> <li> `GetStreamKey` — Gets stream key information for the specified
+%% ARN.
 %%
-%% </li> <li> <a>GetStreamKey</a> — Gets stream key information for the
-%% specified ARN.
+%% </li> <li> `BatchGetStreamKey` — Performs `GetStreamKey` on multiple ARNs
+%% simultaneously.
 %%
-%% </li> <li> <a>BatchGetStreamKey</a> — Performs <a>GetStreamKey</a> on
-%% multiple ARNs simultaneously.
+%% </li> <li> `ListStreamKeys` — Gets summary information about stream keys
+%% for the specified channel.
 %%
-%% </li> <li> <a>ListStreamKeys</a> — Gets summary information about stream
-%% keys for the specified channel.
+%% </li> <li> `DeleteStreamKey` — Deletes the stream key for the specified
+%% ARN, so it can no longer be used to stream.
 %%
-%% </li> <li> <a>DeleteStreamKey</a> — Deletes the stream key for the
-%% specified ARN, so it can no longer be used to stream.
+%% </li> </ul> Stream Endpoints
 %%
-%% </li> </ul> <a>Stream</a>:
+%% <ul> <li> `GetStream` — Gets information about the active (live) stream on
+%% a specified channel.
 %%
-%% <ul> <li> <a>GetStream</a> — Gets information about the active (live)
-%% stream on a specified channel.
+%% </li> <li> `ListStreams` — Gets summary information about live streams in
+%% your account, in the AWS region where the API request is processed.
 %%
-%% </li> <li> <a>ListStreams</a> — Gets summary information about live
-%% streams in your account, in the AWS region where the API request is
-%% processed.
+%% </li> <li> `StopStream` — Disconnects the incoming RTMPS stream for the
+%% specified channel. Can be used in conjunction with `DeleteStreamKey` to
+%% prevent further streaming to a channel.
 %%
-%% </li> <li> <a>StopStream</a> — Disconnects the incoming RTMPS stream for
-%% the specified channel. Can be used in conjunction with
-%% <a>DeleteStreamKey</a> to prevent further streaming to a channel.
-%%
-%% </li> <li> <a>PutMetadata</a> — Inserts metadata into an RTMPS stream for
-%% the specified channel. A maximum of 5 requests per second per channel is
+%% </li> <li> `PutMetadata` — Inserts metadata into an RTMPS stream for the
+%% specified channel. A maximum of 5 requests per second per channel is
 %% allowed, each with a maximum 1KB payload.
 %%
-%% </li> </ul> <a
-%% href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html"> AWS
-%% Tags</a>:
+%% </li> </ul> PlaybackKeyPair Endpoints
 %%
-%% <ul> <li> <a>TagResource</a> — Adds or updates tags for the AWS resource
-%% with the specified ARN.
+%% <ul> <li> `ImportPlaybackKeyPair` — Imports the public portion of a new
+%% key pair and returns its `arn` and `fingerprint`. The `privateKey` can
+%% then be used to generate viewer authorization tokens, to grant viewers
+%% access to authorized channels.
 %%
-%% </li> <li> <a>UntagResource</a> — Removes tags from the resource with the
+%% </li> <li> `GetPlaybackKeyPair` — Gets a specified playback authorization
+%% key pair and returns the `arn` and `fingerprint`. The `privateKey` held by
+%% the caller can be used to generate viewer authorization tokens, to grant
+%% viewers access to authorized channels.
+%%
+%% </li> <li> `ListPlaybackKeyPairs` — Gets summary information about
+%% playback key pairs.
+%%
+%% </li> <li> `DeletePlaybackKeyPair` — Deletes a specified authorization key
+%% pair. This invalidates future viewer tokens generated using the key pair’s
+%% `privateKey`.
+%%
+%% </li> </ul> AWS Tags Endpoints
+%%
+%% <ul> <li> `TagResource` — Adds or updates tags for the AWS resource with
+%% the specified ARN.
+%%
+%% </li> <li> `UntagResource` — Removes tags from the resource with the
 %% specified ARN.
 %%
-%% </li> <li> <a>ListTagsForResource</a> — Gets information about AWS tags
-%% for the specified ARN.
+%% </li> <li> `ListTagsForResource` — Gets information about AWS tags for the
+%% specified ARN.
 %%
 %% </li> </ul>
 -module(aws_ivs).
@@ -167,16 +179,24 @@
          create_stream_key/3,
          delete_channel/2,
          delete_channel/3,
+         delete_playback_key_pair/2,
+         delete_playback_key_pair/3,
          delete_stream_key/2,
          delete_stream_key/3,
          get_channel/2,
          get_channel/3,
+         get_playback_key_pair/2,
+         get_playback_key_pair/3,
          get_stream/2,
          get_stream/3,
          get_stream_key/2,
          get_stream_key/3,
+         import_playback_key_pair/2,
+         import_playback_key_pair/3,
          list_channels/2,
          list_channels/3,
+         list_playback_key_pairs/2,
+         list_playback_key_pairs/3,
          list_stream_keys/2,
          list_stream_keys/3,
          list_streams/2,
@@ -200,7 +220,7 @@
 %% API
 %%====================================================================
 
-%% @doc Performs <a>GetChannel</a> on multiple ARNs simultaneously.
+%% @doc Performs `GetChannel` on multiple ARNs simultaneously.
 batch_get_channel(Client, Input) ->
     batch_get_channel(Client, Input, []).
 batch_get_channel(Client, Input0, Options) ->
@@ -216,7 +236,7 @@ batch_get_channel(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Performs <a>GetStreamKey</a> on multiple ARNs simultaneously.
+%% @doc Performs `GetStreamKey` on multiple ARNs simultaneously.
 batch_get_stream_key(Client, Input) ->
     batch_get_stream_key(Client, Input, []).
 batch_get_stream_key(Client, Input0, Options) ->
@@ -252,10 +272,10 @@ create_channel(Client, Input0, Options) ->
 %% @doc Creates a stream key, used to initiate a stream, for the specified
 %% channel ARN.
 %%
-%% Note that <a>CreateChannel</a> creates a stream key. If you subsequently
-%% use CreateStreamKey on the same channel, it will fail because a stream key
+%% Note that `CreateChannel` creates a stream key. If you subsequently use
+%% CreateStreamKey on the same channel, it will fail because a stream key
 %% already exists and there is a limit of 1 stream key per channel. To reset
-%% the stream key on a channel, use <a>DeleteStreamKey</a> and then
+%% the stream key on a channel, use `DeleteStreamKey` and then
 %% CreateStreamKey.
 create_stream_key(Client, Input) ->
     create_stream_key(Client, Input, []).
@@ -288,6 +308,25 @@ delete_channel(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a specified authorization key pair.
+%%
+%% This invalidates future viewer tokens generated using the key pair’s
+%% `privateKey`.
+delete_playback_key_pair(Client, Input) ->
+    delete_playback_key_pair(Client, Input, []).
+delete_playback_key_pair(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/DeletePlaybackKeyPair"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes the stream key for the specified ARN, so it can no longer be
 %% used to stream.
 delete_stream_key(Client, Input) ->
@@ -305,13 +344,34 @@ delete_stream_key(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Gets the channel configuration for the specified channel ARN. See
-%% also <a>BatchGetChannel</a>.
+%% @doc Gets the channel configuration for the specified channel ARN.
+%%
+%% See also `BatchGetChannel`.
 get_channel(Client, Input) ->
     get_channel(Client, Input, []).
 get_channel(Client, Input0, Options) ->
     Method = post,
     Path = ["/GetChannel"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets a specified playback authorization key pair and returns the
+%% `arn` and `fingerprint`.
+%%
+%% The `privateKey` held by the caller can be used to generate viewer
+%% authorization tokens, to grant viewers access to authorized channels.
+get_playback_key_pair(Client, Input) ->
+    get_playback_key_pair(Client, Input, []).
+get_playback_key_pair(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/GetPlaybackKeyPair"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -355,14 +415,51 @@ get_stream_key(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Imports the public portion of a new key pair and returns its `arn`
+%% and `fingerprint`.
+%%
+%% The `privateKey` can then be used to generate viewer authorization tokens,
+%% to grant viewers access to authorized channels.
+import_playback_key_pair(Client, Input) ->
+    import_playback_key_pair(Client, Input, []).
+import_playback_key_pair(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/ImportPlaybackKeyPair"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Gets summary information about all channels in your account, in the
-%% AWS region where the API request is processed. This list can be filtered
-%% to match a specified string.
+%% AWS region where the API request is processed.
+%%
+%% This list can be filtered to match a specified string.
 list_channels(Client, Input) ->
     list_channels(Client, Input, []).
 list_channels(Client, Input0, Options) ->
     Method = post,
     Path = ["/ListChannels"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets summary information about playback key pairs.
+list_playback_key_pairs(Client, Input) ->
+    list_playback_key_pairs(Client, Input, []).
+list_playback_key_pairs(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/ListPlaybackKeyPairs"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -421,8 +518,9 @@ list_tags_for_resource(Client, ResourceArn, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Inserts metadata into an RTMPS stream for the specified channel. A
-%% maximum of 5 requests per second per channel is allowed, each with a
+%% @doc Inserts metadata into an RTMPS stream for the specified channel.
+%%
+%% A maximum of 5 requests per second per channel is allowed, each with a
 %% maximum 1KB payload.
 put_metadata(Client, Input) ->
     put_metadata(Client, Input, []).
@@ -439,15 +537,14 @@ put_metadata(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Disconnects the incoming RTMPS stream for the specified channel. Can
-%% be used in conjunction with <a>DeleteStreamKey</a> to prevent further
+%% @doc Disconnects the incoming RTMPS stream for the specified channel.
+%%
+%% Can be used in conjunction with `DeleteStreamKey` to prevent further
 %% streaming to a channel.
 %%
-%% <note> Many streaming client-software libraries automatically reconnect a
-%% dropped RTMPS session, so to stop the stream permanently, you may want to
-%% first revoke the <code>streamKey</code> attached to the channel.
-%%
-%% </note>
+%% Many streaming client-software libraries automatically reconnect a dropped
+%% RTMPS session, so to stop the stream permanently, you may want to first
+%% revoke the `streamKey` attached to the channel.
 stop_stream(Client, Input) ->
     stop_stream(Client, Input, []).
 stop_stream(Client, Input0, Options) ->
@@ -496,9 +593,10 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a channel's configuration. This does not affect an ongoing
-%% stream of this channel. You must stop and restart the stream for the
-%% changes to take effect.
+%% @doc Updates a channel's configuration.
+%%
+%% This does not affect an ongoing stream of this channel. You must stop and
+%% restart the stream for the changes to take effect.
 update_channel(Client, Input) ->
     update_channel(Client, Input, []).
 update_channel(Client, Input0, Options) ->
@@ -560,6 +658,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

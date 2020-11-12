@@ -3,9 +3,11 @@
 
 %% @doc AWS IoT Jobs is a service that allows you to define a set of jobs —
 %% remote operations that are sent to and executed on one or more devices
-%% connected to AWS IoT. For example, you can define a job that instructs a
-%% set of devices to download and install application or firmware updates,
-%% reboot, rotate certificates, or perform remote troubleshooting operations.
+%% connected to AWS IoT.
+%%
+%% For example, you can define a job that instructs a set of devices to
+%% download and install application or firmware updates, reboot, rotate
+%% certificates, or perform remote troubleshooting operations.
 %%
 %% To create a job, you make a job document which is a description of the
 %% remote operations to be performed, and you specify a list of targets that
@@ -149,6 +151,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

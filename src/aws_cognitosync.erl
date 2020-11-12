@@ -1,32 +1,27 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc <fullname>Amazon Cognito Sync</fullname>
+%% @doc Amazon Cognito Sync
 %%
 %% Amazon Cognito Sync provides an AWS service and client library that enable
-%% cross-device syncing of application-related user data. High-level client
-%% libraries are available for both iOS and Android. You can use these
-%% libraries to persist data locally so that it's available even if the
-%% device is offline. Developer credentials don't need to be stored on the
-%% mobile device to access the service. You can use Amazon Cognito to obtain
-%% a normalized user ID and credentials. User data is persisted in a dataset
-%% that can store up to 1 MB of key-value pairs, and you can have up to 20
-%% datasets per user identity.
+%% cross-device syncing of application-related user data.
+%%
+%% High-level client libraries are available for both iOS and Android. You
+%% can use these libraries to persist data locally so that it's available
+%% even if the device is offline. Developer credentials don't need to be
+%% stored on the mobile device to access the service. You can use Amazon
+%% Cognito to obtain a normalized user ID and credentials. User data is
+%% persisted in a dataset that can store up to 1 MB of key-value pairs, and
+%% you can have up to 20 datasets per user identity.
 %%
 %% With Amazon Cognito Sync, the data stored for each identity is accessible
 %% only to credentials assigned to that identity. In order to use the Cognito
 %% Sync service, you need to make API calls using credentials retrieved with
-%% <a
-%% href="http://docs.aws.amazon.com/cognitoidentity/latest/APIReference/Welcome.html">Amazon
-%% Cognito Identity service</a>.
+%% Amazon Cognito Identity service.
 %%
 %% If you want to use Cognito Sync in an Android or iOS application, you will
 %% probably want to make API calls via the AWS Mobile SDK. To learn more, see
-%% the <a
-%% href="http://docs.aws.amazon.com/mobile/sdkforandroid/developerguide/cognito-sync.html">Developer
-%% Guide for Android</a> and the <a
-%% href="http://docs.aws.amazon.com/mobile/sdkforios/developerguide/cognito-sync.html">Developer
-%% Guide for iOS</a>.
+%% the Developer Guide for Android and the Developer Guide for iOS.
 -module(aws_cognitosync).
 
 -export([bulk_publish/3,
@@ -71,10 +66,11 @@
 %%====================================================================
 
 %% @doc Initiates a bulk publish of all existing datasets for an Identity
-%% Pool to the configured stream. Customers are limited to one successful
-%% bulk publish per 24 hours. Bulk publish is an asynchronous request,
-%% customers can see the status of the request via the GetBulkPublishDetails
-%% operation.
+%% Pool to the configured stream.
+%%
+%% Customers are limited to one successful bulk publish per 24 hours. Bulk
+%% publish is an asynchronous request, customers can see the status of the
+%% request via the GetBulkPublishDetails operation.
 %%
 %% This API can only be called with developer credentials. You cannot call
 %% this API with the temporary user credentials provided by Cognito Identity.
@@ -93,10 +89,12 @@ bulk_publish(Client, IdentityPoolId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the specific dataset. The dataset will be deleted
-%% permanently, and the action can't be undone. Datasets that this dataset
-%% was merged with will no longer report the merge. Any subsequent operation
-%% on this dataset will result in a ResourceNotFoundException.
+%% @doc Deletes the specific dataset.
+%%
+%% The dataset will be deleted permanently, and the action can't be undone.
+%% Datasets that this dataset was merged with will no longer report the
+%% merge. Any subsequent operation on this dataset will result in a
+%% ResourceNotFoundException.
 %%
 %% This API can be called with temporary user credentials provided by Cognito
 %% Identity or with developer credentials.
@@ -115,10 +113,11 @@ delete_dataset(Client, DatasetName, IdentityId, IdentityPoolId, Input0, Options)
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Gets meta data about a dataset by identity and dataset name. With
-%% Amazon Cognito Sync, each identity has access only to its own data. Thus,
-%% the credentials used to make this API call need to have access to the
-%% identity data.
+%% @doc Gets meta data about a dataset by identity and dataset name.
+%%
+%% With Amazon Cognito Sync, each identity has access only to its own data.
+%% Thus, the credentials used to make this API call need to have access to
+%% the identity data.
 %%
 %% This API can be called with temporary user credentials provided by Cognito
 %% Identity or with developer credentials. You should use Cognito Identity
@@ -232,9 +231,11 @@ get_identity_pool_configuration(Client, IdentityPoolId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists datasets for an identity. With Amazon Cognito Sync, each
-%% identity has access only to its own data. Thus, the credentials used to
-%% make this API call need to have access to the identity data.
+%% @doc Lists datasets for an identity.
+%%
+%% With Amazon Cognito Sync, each identity has access only to its own data.
+%% Thus, the credentials used to make this API call need to have access to
+%% the identity data.
 %%
 %% ListDatasets can be called with temporary user credentials provided by
 %% Cognito Identity or with developer credentials. You should use the Cognito
@@ -283,9 +284,11 @@ list_identity_pool_usage(Client, MaxResults, NextToken, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets paginated records, optionally changed after a particular sync
-%% count for a dataset and identity. With Amazon Cognito Sync, each identity
-%% has access only to its own data. Thus, the credentials used to make this
-%% API call need to have access to the identity data.
+%% count for a dataset and identity.
+%%
+%% With Amazon Cognito Sync, each identity has access only to its own data.
+%% Thus, the credentials used to make this API call need to have access to
+%% the identity data.
 %%
 %% ListRecords can be called with temporary user credentials provided by
 %% Cognito Identity or with developer credentials. You should use Cognito
@@ -331,9 +334,11 @@ register_device(Client, IdentityId, IdentityPoolId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sets the AWS Lambda function for a given event type for an identity
-%% pool. This request only updates the key/value pair specified. Other
-%% key/values pairs are not updated. To remove a key value pair, pass a empty
-%% value for the particular key.
+%% pool.
+%%
+%% This request only updates the key/value pair specified. Other key/values
+%% pairs are not updated. To remove a key value pair, pass a empty value for
+%% the particular key.
 %%
 %% This API can only be called with developer credentials. You cannot call
 %% this API with the temporary user credentials provided by Cognito Identity.
@@ -492,6 +497,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

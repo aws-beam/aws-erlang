@@ -28,20 +28,22 @@
 %% API
 %%====================================================================
 
-%% @doc Creates the participant's connection. Note that ParticipantToken is
-%% used for invoking this API instead of ConnectionToken.
+%% @doc Creates the participant's connection.
+%%
+%% Note that ParticipantToken is used for invoking this API instead of
+%% ConnectionToken.
 %%
 %% The participant token is valid for the lifetime of the participant – until
 %% the they are part of a contact.
 %%
-%% The response URL for <code>WEBSOCKET</code> Type has a connect expiry
-%% timeout of 100s. Clients must manually connect to the returned websocket
-%% URL and subscribe to the desired topic.
+%% The response URL for `WEBSOCKET` Type has a connect expiry timeout of
+%% 100s. Clients must manually connect to the returned websocket URL and
+%% subscribe to the desired topic.
 %%
 %% For chat, you need to publish the following on the established websocket
 %% connection:
 %%
-%% <code>{"topic":"aws/subscribe","content":{"topics":["aws/chat"]}}</code>
+%% `{"topic":"aws/subscribe","content":{"topics":["aws/chat"]}}`
 %%
 %% Upon websocket URL expiry, as specified in the response ConnectionExpiry
 %% parameter, clients need to call this API again to obtain a new websocket
@@ -63,8 +65,10 @@ create_participant_connection(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Disconnects a participant. Note that ConnectionToken is used for
-%% invoking this API instead of ParticipantToken.
+%% @doc Disconnects a participant.
+%%
+%% Note that ConnectionToken is used for invoking this API instead of
+%% ParticipantToken.
 disconnect_participant(Client, Input) ->
     disconnect_participant(Client, Input, []).
 disconnect_participant(Client, Input0, Options) ->
@@ -82,8 +86,10 @@ disconnect_participant(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves a transcript of the session. Note that ConnectionToken is
-%% used for invoking this API instead of ParticipantToken.
+%% @doc Retrieves a transcript of the session.
+%%
+%% Note that ConnectionToken is used for invoking this API instead of
+%% ParticipantToken.
 get_transcript(Client, Input) ->
     get_transcript(Client, Input, []).
 get_transcript(Client, Input0, Options) ->
@@ -101,8 +107,10 @@ get_transcript(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Sends an event. Note that ConnectionToken is used for invoking this
-%% API instead of ParticipantToken.
+%% @doc Sends an event.
+%%
+%% Note that ConnectionToken is used for invoking this API instead of
+%% ParticipantToken.
 send_event(Client, Input) ->
     send_event(Client, Input, []).
 send_event(Client, Input0, Options) ->
@@ -120,8 +128,10 @@ send_event(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Sends a message. Note that ConnectionToken is used for invoking this
-%% API instead of ParticipantToken.
+%% @doc Sends a message.
+%%
+%% Note that ConnectionToken is used for invoking this API instead of
+%% ParticipantToken.
 send_message(Client, Input) ->
     send_message(Client, Input, []).
 send_message(Client, Input0, Options) ->
@@ -185,6 +195,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

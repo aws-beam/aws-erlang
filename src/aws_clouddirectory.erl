@@ -1,17 +1,16 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc <fullname>Amazon Cloud Directory</fullname>
+%% @doc Amazon Cloud Directory
 %%
 %% Amazon Cloud Directory is a component of the AWS Directory Service that
 %% simplifies the development and management of cloud-scale web, mobile, and
-%% IoT applications. This guide describes the Cloud Directory operations that
-%% you can call programmatically and includes detailed information on data
-%% types and errors. For information about Cloud Directory features, see <a
-%% href="https://aws.amazon.com/directoryservice/">AWS Directory Service</a>
-%% and the <a
-%% href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/what_is_cloud_directory.html">Amazon
-%% Cloud Directory Developer Guide</a>.
+%% IoT applications.
+%%
+%% This guide describes the Cloud Directory operations that you can call
+%% programmatically and includes detailed information on data types and
+%% errors. For information about Cloud Directory features, see AWS Directory
+%% Service and the Amazon Cloud Directory Developer Guide.
 -module(aws_clouddirectory).
 
 -export([add_facet_to_object/2,
@@ -153,8 +152,9 @@
 %% API
 %%====================================================================
 
-%% @doc Adds a new <a>Facet</a> to an object. An object can have more than
-%% one facet applied on it.
+%% @doc Adds a new `Facet` to an object.
+%%
+%% An object can have more than one facet applied on it.
 add_facet_to_object(Client, Input) ->
     add_facet_to_object(Client, Input, []).
 add_facet_to_object(Client, Input0, Options) ->
@@ -173,7 +173,7 @@ add_facet_to_object(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Copies the input published schema, at the specified version, into the
-%% <a>Directory</a> with the same name and version as that of the published
+%% `Directory` with the same name and version as that of the published
 %% schema.
 apply_schema(Client, Input) ->
     apply_schema(Client, Input, []).
@@ -192,12 +192,13 @@ apply_schema(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Attaches an existing object to another object. An object can be
-%% accessed in two ways:
+%% @doc Attaches an existing object to another object.
+%%
+%% An object can be accessed in two ways:
 %%
 %% <ol> <li> Using the path
 %%
-%% </li> <li> Using <code>ObjectIdentifier</code>
+%% </li> <li> Using `ObjectIdentifier`
 %%
 %% </li> </ol>
 attach_object(Client, Input) ->
@@ -217,8 +218,9 @@ attach_object(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Attaches a policy object to a regular object. An object can have a
-%% limited number of attached policies.
+%% @doc Attaches a policy object to a regular object.
+%%
+%% An object can have a limited number of attached policies.
 attach_policy(Client, Input) ->
     attach_policy(Client, Input, []).
 attach_policy(Client, Input0, Options) ->
@@ -254,10 +256,9 @@ attach_to_index(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Attaches a typed link to a specified source and target object. For
-%% more information, see <a
-%% href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink">Typed
-%% Links</a>.
+%% @doc Attaches a typed link to a specified source and target object.
+%%
+%% For more information, see Typed Links.
 attach_typed_link(Client, Input) ->
     attach_typed_link(Client, Input, []).
 attach_typed_link(Client, Input0, Options) ->
@@ -294,8 +295,9 @@ batch_read(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Performs all the write operations in a batch. Either all the
-%% operations succeed or none.
+%% @doc Performs all the write operations in a batch.
+%%
+%% Either all the operations succeed or none.
 batch_write(Client, Input) ->
     batch_write(Client, Input, []).
 batch_write(Client, Input0, Options) ->
@@ -313,13 +315,14 @@ batch_write(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a <a>Directory</a> by copying the published schema into the
-%% directory. A directory cannot be created without a schema.
+%% @doc Creates a `Directory` by copying the published schema into the
+%% directory.
+%%
+%% A directory cannot be created without a schema.
 %%
 %% You can also quickly create a directory using a managed schema, called the
-%% <code>QuickStartSchema</code>. For more information, see <a
-%% href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_managed.html">Managed
-%% Schema</a> in the <i>Amazon Cloud Directory Developer Guide</i>.
+%% `QuickStartSchema`. For more information, see Managed Schema in the Amazon
+%% Cloud Directory Developer Guide.
 create_directory(Client, Input) ->
     create_directory(Client, Input, []).
 create_directory(Client, Input0, Options) ->
@@ -337,8 +340,9 @@ create_directory(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new <a>Facet</a> in a schema. Facet creation is allowed
-%% only in development or applied schemas.
+%% @doc Creates a new `Facet` in a schema.
+%%
+%% Facet creation is allowed only in development or applied schemas.
 create_facet(Client, Input) ->
     create_facet(Client, Input, []).
 create_facet(Client, Input0, Options) ->
@@ -356,9 +360,9 @@ create_facet(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an index object. See <a
-%% href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/indexing_search.html">Indexing
-%% and search</a> for more information.
+%% @doc Creates an index object.
+%%
+%% See Indexing and search for more information.
 create_index(Client, Input) ->
     create_index(Client, Input, []).
 create_index(Client, Input0, Options) ->
@@ -376,11 +380,12 @@ create_index(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an object in a <a>Directory</a>. Additionally attaches the
-%% object to a parent, if a parent reference and <code>LinkName</code> is
-%% specified. An object is simply a collection of <a>Facet</a> attributes.
-%% You can also use this API call to create a policy object, if the facet
-%% from which you create the object is a policy facet.
+%% @doc Creates an object in a `Directory`.
+%%
+%% Additionally attaches the object to a parent, if a parent reference and
+%% `LinkName` is specified. An object is simply a collection of `Facet`
+%% attributes. You can also use this API call to create a policy object, if
+%% the facet from which you create the object is a policy facet.
 create_object(Client, Input) ->
     create_object(Client, Input, []).
 create_object(Client, Input0, Options) ->
@@ -398,20 +403,21 @@ create_object(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new schema in a development state. A schema can exist in
-%% three phases:
+%% @doc Creates a new schema in a development state.
 %%
-%% <ul> <li> <i>Development:</i> This is a mutable phase of the schema. All
-%% new schemas are in the development phase. Once the schema is finalized, it
-%% can be published.
+%% A schema can exist in three phases:
 %%
-%% </li> <li> <i>Published:</i> Published schemas are immutable and have a
-%% version associated with them.
+%% <ul> <li> Development: This is a mutable phase of the schema. All new
+%% schemas are in the development phase. Once the schema is finalized, it can
+%% be published.
 %%
-%% </li> <li> <i>Applied:</i> Applied schemas are mutable in a way that
-%% allows you to add new schema facets. You can also add new, nonrequired
-%% attributes to existing schema facets. You can apply only published schemas
-%% to directories.
+%% </li> <li> Published: Published schemas are immutable and have a version
+%% associated with them.
+%%
+%% </li> <li> Applied: Applied schemas are mutable in a way that allows you
+%% to add new schema facets. You can also add new, nonrequired attributes to
+%% existing schema facets. You can apply only published schemas to
+%% directories.
 %%
 %% </li> </ul>
 create_schema(Client, Input) ->
@@ -429,9 +435,9 @@ create_schema(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a <a>TypedLinkFacet</a>. For more information, see <a
-%% href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink">Typed
-%% Links</a>.
+%% @doc Creates a `TypedLinkFacet`.
+%%
+%% For more information, see Typed Links.
 create_typed_link_facet(Client, Input) ->
     create_typed_link_facet(Client, Input, []).
 create_typed_link_facet(Client, Input0, Options) ->
@@ -449,9 +455,10 @@ create_typed_link_facet(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a directory. Only disabled directories can be deleted. A
-%% deleted directory cannot be undone. Exercise extreme caution when deleting
-%% directories.
+%% @doc Deletes a directory.
+%%
+%% Only disabled directories can be deleted. A deleted directory cannot be
+%% undone. Exercise extreme caution when deleting directories.
 delete_directory(Client, Input) ->
     delete_directory(Client, Input, []).
 delete_directory(Client, Input0, Options) ->
@@ -469,9 +476,10 @@ delete_directory(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a given <a>Facet</a>. All attributes and <a>Rule</a>s that
-%% are associated with the facet will be deleted. Only development schema
-%% facets are allowed deletion.
+%% @doc Deletes a given `Facet`.
+%%
+%% All attributes and `Rule`s that are associated with the facet will be
+%% deleted. Only development schema facets are allowed deletion.
 delete_facet(Client, Input) ->
     delete_facet(Client, Input, []).
 delete_facet(Client, Input0, Options) ->
@@ -489,12 +497,11 @@ delete_facet(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an object and its associated attributes. Only objects with no
-%% children and no parents can be deleted. The maximum number of attributes
-%% that can be deleted during an object deletion is 30. For more information,
-%% see <a
-%% href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/limits.html">Amazon
-%% Cloud Directory Limits</a>.
+%% @doc Deletes an object and its associated attributes.
+%%
+%% Only objects with no children and no parents can be deleted. The maximum
+%% number of attributes that can be deleted during an object deletion is 30.
+%% For more information, see Amazon Cloud Directory Limits.
 delete_object(Client, Input) ->
     delete_object(Client, Input, []).
 delete_object(Client, Input0, Options) ->
@@ -512,8 +519,9 @@ delete_object(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a given schema. Schemas in a development and published state
-%% can only be deleted.
+%% @doc Deletes a given schema.
+%%
+%% Schemas in a development and published state can only be deleted.
 delete_schema(Client, Input) ->
     delete_schema(Client, Input, []).
 delete_schema(Client, Input0, Options) ->
@@ -531,9 +539,9 @@ delete_schema(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a <a>TypedLinkFacet</a>. For more information, see <a
-%% href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink">Typed
-%% Links</a>.
+%% @doc Deletes a `TypedLinkFacet`.
+%%
+%% For more information, see Typed Links.
 delete_typed_link_facet(Client, Input) ->
     delete_typed_link_facet(Client, Input, []).
 delete_typed_link_facet(Client, Input0, Options) ->
@@ -569,8 +577,10 @@ detach_from_index(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Detaches a given object from the parent object. The object that is to
-%% be detached from the parent is specified by the link name.
+%% @doc Detaches a given object from the parent object.
+%%
+%% The object that is to be detached from the parent is specified by the link
+%% name.
 detach_object(Client, Input) ->
     detach_object(Client, Input, []).
 detach_object(Client, Input0, Options) ->
@@ -606,10 +616,9 @@ detach_policy(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Detaches a typed link from a specified source and target object. For
-%% more information, see <a
-%% href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink">Typed
-%% Links</a>.
+%% @doc Detaches a typed link from a specified source and target object.
+%%
+%% For more information, see Typed Links.
 detach_typed_link(Client, Input) ->
     detach_typed_link(Client, Input, []).
 detach_typed_link(Client, Input0, Options) ->
@@ -627,9 +636,10 @@ detach_typed_link(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Disables the specified directory. Disabled directories cannot be read
-%% or written to. Only enabled directories can be disabled. Disabled
-%% directories may be reenabled.
+%% @doc Disables the specified directory.
+%%
+%% Disabled directories cannot be read or written to. Only enabled
+%% directories can be disabled. Disabled directories may be reenabled.
 disable_directory(Client, Input) ->
     disable_directory(Client, Input, []).
 disable_directory(Client, Input0, Options) ->
@@ -647,8 +657,10 @@ disable_directory(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Enables the specified directory. Only disabled directories can be
-%% enabled. Once enabled, the directory can then be read and written to.
+%% @doc Enables the specified directory.
+%%
+%% Only disabled directories can be enabled. Once enabled, the directory can
+%% then be read and written to.
 enable_directory(Client, Input) ->
     enable_directory(Client, Input, []).
 enable_directory(Client, Input0, Options) ->
@@ -701,9 +713,11 @@ get_directory(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Gets details of the <a>Facet</a>, such as facet name, attributes,
-%% <a>Rule</a>s, or <code>ObjectType</code>. You can call this on all kinds
-%% of schema facets -- published, development, or applied.
+%% @doc Gets details of the `Facet`, such as facet name, attributes, `Rule`s,
+%% or `ObjectType`.
+%%
+%% You can call this on all kinds of schema facets -- published, development,
+%% or applied.
 get_facet(Client, Input) ->
     get_facet(Client, Input, []).
 get_facet(Client, Input0, Options) ->
@@ -778,9 +792,9 @@ get_object_information(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves a JSON representation of the schema. See <a
-%% href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_jsonformat.html#schemas_json">JSON
-%% Schema Format</a> for more information.
+%% @doc Retrieves a JSON representation of the schema.
+%%
+%% See JSON Schema Format for more information.
 get_schema_as_json(Client, Input) ->
     get_schema_as_json(Client, Input, []).
 get_schema_as_json(Client, Input0, Options) ->
@@ -798,10 +812,9 @@ get_schema_as_json(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns the identity attribute order for a specific
-%% <a>TypedLinkFacet</a>. For more information, see <a
-%% href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink">Typed
-%% Links</a>.
+%% @doc Returns the identity attribute order for a specific `TypedLinkFacet`.
+%%
+%% For more information, see Typed Links.
 get_typed_link_facet_information(Client, Input) ->
     get_typed_link_facet_information(Client, Input, []).
 get_typed_link_facet_information(Client, Input0, Options) ->
@@ -819,8 +832,9 @@ get_typed_link_facet_information(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists schema major versions applied to a directory. If
-%% <code>SchemaArn</code> is provided, lists the minor version.
+%% @doc Lists schema major versions applied to a directory.
+%%
+%% If `SchemaArn` is provided, lists the minor version.
 list_applied_schema_arns(Client, Input) ->
     list_applied_schema_arns(Client, Input, []).
 list_applied_schema_arns(Client, Input0, Options) ->
@@ -924,12 +938,11 @@ list_facet_names(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a paginated list of all the incoming
-%% <a>TypedLinkSpecifier</a> information for an object. It also supports
-%% filtering by typed link facet and identity attributes. For more
-%% information, see <a
-%% href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink">Typed
-%% Links</a>.
+%% @doc Returns a paginated list of all the incoming `TypedLinkSpecifier`
+%% information for an object.
+%%
+%% It also supports filtering by typed link facet and identity attributes.
+%% For more information, see Typed Links.
 list_incoming_typed_links(Client, Input) ->
     list_incoming_typed_links(Client, Input, []).
 list_incoming_typed_links(Client, Input0, Options) ->
@@ -966,9 +979,10 @@ list_index(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists the major version families of each managed schema. If a major
-%% version ARN is provided as SchemaArn, the minor version revisions in that
-%% family are listed instead.
+%% @doc Lists the major version families of each managed schema.
+%%
+%% If a major version ARN is provided as SchemaArn, the minor version
+%% revisions in that family are listed instead.
 list_managed_schema_arns(Client, Input) ->
     list_managed_schema_arns(Client, Input, []).
 list_managed_schema_arns(Client, Input0, Options) ->
@@ -1024,18 +1038,17 @@ list_object_children(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves all available parent paths for any object type such as
-%% node, leaf node, policy node, and index node objects. For more information
-%% about objects, see <a
-%% href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directorystructure.html">Directory
-%% Structure</a>.
+%% node, leaf node, policy node, and index node objects.
+%%
+%% For more information about objects, see Directory Structure.
 %%
 %% Use this API to evaluate all parents for an object. The call returns all
 %% objects from the root of the directory up to the requested object. The API
-%% returns the number of paths based on user-defined <code>MaxResults</code>,
-%% in case there are multiple paths to the parent. The order of the paths and
-%% nodes returned is consistent among multiple API calls unless the objects
-%% are deleted or moved. Paths not leading to the directory root are ignored
-%% from the target object.
+%% returns the number of paths based on user-defined `MaxResults`, in case
+%% there are multiple paths to the parent. The order of the paths and nodes
+%% returned is consistent among multiple API calls unless the objects are
+%% deleted or moved. Paths not leading to the directory root are ignored from
+%% the target object.
 list_object_parent_paths(Client, Input) ->
     list_object_parent_paths(Client, Input, []).
 list_object_parent_paths(Client, Input0, Options) ->
@@ -1092,12 +1105,11 @@ list_object_policies(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a paginated list of all the outgoing
-%% <a>TypedLinkSpecifier</a> information for an object. It also supports
-%% filtering by typed link facet and identity attributes. For more
-%% information, see <a
-%% href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink">Typed
-%% Links</a>.
+%% @doc Returns a paginated list of all the outgoing `TypedLinkSpecifier`
+%% information for an object.
+%%
+%% It also supports filtering by typed link facet and identity attributes.
+%% For more information, see Typed Links.
 list_outgoing_typed_links(Client, Input) ->
     list_outgoing_typed_links(Client, Input, []).
 list_outgoing_typed_links(Client, Input0, Options) ->
@@ -1115,8 +1127,8 @@ list_outgoing_typed_links(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns all of the <code>ObjectIdentifiers</code> to which a given
-%% policy is attached.
+%% @doc Returns all of the `ObjectIdentifiers` to which a given policy is
+%% attached.
 list_policy_attachments(Client, Input) ->
     list_policy_attachments(Client, Input, []).
 list_policy_attachments(Client, Input0, Options) ->
@@ -1135,8 +1147,9 @@ list_policy_attachments(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists the major version families of each published schema. If a major
-%% version ARN is provided as <code>SchemaArn</code>, the minor version
+%% @doc Lists the major version families of each published schema.
+%%
+%% If a major version ARN is provided as `SchemaArn`, the minor version
 %% revisions in that family are listed instead.
 list_published_schema_arns(Client, Input) ->
     list_published_schema_arns(Client, Input, []).
@@ -1153,9 +1166,11 @@ list_published_schema_arns(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns tags for a resource. Tagging is currently supported only for
-%% directories with a limit of 50 tags per directory. All 50 tags are
-%% returned for a given directory with this API call.
+%% @doc Returns tags for a resource.
+%%
+%% Tagging is currently supported only for directories with a limit of 50
+%% tags per directory. All 50 tags are returned for a given directory with
+%% this API call.
 list_tags_for_resource(Client, Input) ->
     list_tags_for_resource(Client, Input, []).
 list_tags_for_resource(Client, Input0, Options) ->
@@ -1172,9 +1187,9 @@ list_tags_for_resource(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a paginated list of all attribute definitions for a
-%% particular <a>TypedLinkFacet</a>. For more information, see <a
-%% href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink">Typed
-%% Links</a>.
+%% particular `TypedLinkFacet`.
+%%
+%% For more information, see Typed Links.
 list_typed_link_facet_attributes(Client, Input) ->
     list_typed_link_facet_attributes(Client, Input, []).
 list_typed_link_facet_attributes(Client, Input0, Options) ->
@@ -1192,10 +1207,10 @@ list_typed_link_facet_attributes(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a paginated list of <code>TypedLink</code> facet names for a
-%% particular schema. For more information, see <a
-%% href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink">Typed
-%% Links</a>.
+%% @doc Returns a paginated list of `TypedLink` facet names for a particular
+%% schema.
+%%
+%% For more information, see Typed Links.
 list_typed_link_facet_names(Client, Input) ->
     list_typed_link_facet_names(Client, Input, []).
 list_typed_link_facet_names(Client, Input0, Options) ->
@@ -1213,15 +1228,15 @@ list_typed_link_facet_names(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists all policies from the root of the <a>Directory</a> to the
-%% object specified. If there are no policies present, an empty list is
-%% returned. If policies are present, and if some objects don't have the
-%% policies attached, it returns the <code>ObjectIdentifier</code> for such
-%% objects. If policies are present, it returns
-%% <code>ObjectIdentifier</code>, <code>policyId</code>, and
-%% <code>policyType</code>. Paths that don't lead to the root from the target
-%% object are ignored. For more information, see <a
-%% href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directory.html#key_concepts_policies">Policies</a>.
+%% @doc Lists all policies from the root of the `Directory` to the object
+%% specified.
+%%
+%% If there are no policies present, an empty list is returned. If policies
+%% are present, and if some objects don't have the policies attached, it
+%% returns the `ObjectIdentifier` for such objects. If policies are present,
+%% it returns `ObjectIdentifier`, `policyId`, and `policyType`. Paths that
+%% don't lead to the root from the target object are ignored. For more
+%% information, see Policies.
 lookup_policy(Client, Input) ->
     lookup_policy(Client, Input, []).
 lookup_policy(Client, Input0, Options) ->
@@ -1258,10 +1273,10 @@ publish_schema(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Allows a schema to be updated using JSON upload. Only available for
-%% development schemas. See <a
-%% href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_jsonformat.html#schemas_json">JSON
-%% Schema Format</a> for more information.
+%% @doc Allows a schema to be updated using JSON upload.
+%%
+%% Only available for development schemas. See JSON Schema Format for more
+%% information.
 put_schema_from_json(Client, Input) ->
     put_schema_from_json(Client, Input, []).
 put_schema_from_json(Client, Input0, Options) ->
@@ -1331,14 +1346,11 @@ untag_resource(Client, Input0, Options) ->
 
 %% @doc Does the following:
 %%
-%% <ol> <li> Adds new <code>Attributes</code>, <code>Rules</code>, or
-%% <code>ObjectTypes</code>.
+%% <ol> <li> Adds new `Attributes`, `Rules`, or `ObjectTypes`.
 %%
-%% </li> <li> Updates existing <code>Attributes</code>, <code>Rules</code>,
-%% or <code>ObjectTypes</code>.
+%% </li> <li> Updates existing `Attributes`, `Rules`, or `ObjectTypes`.
 %%
-%% </li> <li> Deletes existing <code>Attributes</code>, <code>Rules</code>,
-%% or <code>ObjectTypes</code>.
+%% </li> <li> Deletes existing `Attributes`, `Rules`, or `ObjectTypes`.
 %%
 %% </li> </ol>
 update_facet(Client, Input) ->
@@ -1358,9 +1370,10 @@ update_facet(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a given typed link’s attributes. Attributes to be updated
-%% must not contribute to the typed link’s identity, as defined by its
-%% <code>IdentityAttributeOrder</code>.
+%% @doc Updates a given typed link’s attributes.
+%%
+%% Attributes to be updated must not contribute to the typed link’s identity,
+%% as defined by its `IdentityAttributeOrder`.
 update_link_attributes(Client, Input) ->
     update_link_attributes(Client, Input, []).
 update_link_attributes(Client, Input0, Options) ->
@@ -1396,8 +1409,9 @@ update_object_attributes(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the schema name with a new name. Only development schema
-%% names can be updated.
+%% @doc Updates the schema name with a new name.
+%%
+%% Only development schema names can be updated.
 update_schema(Client, Input) ->
     update_schema(Client, Input, []).
 update_schema(Client, Input0, Options) ->
@@ -1415,9 +1429,9 @@ update_schema(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a <a>TypedLinkFacet</a>. For more information, see <a
-%% href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink">Typed
-%% Links</a>.
+%% @doc Updates a `TypedLinkFacet`.
+%%
+%% For more information, see Typed Links.
 update_typed_link_facet(Client, Input) ->
     update_typed_link_facet(Client, Input, []).
 update_typed_link_facet(Client, Input0, Options) ->
@@ -1435,13 +1449,14 @@ update_typed_link_facet(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Upgrades a single directory in-place using the
-%% <code>PublishedSchemaArn</code> with schema updates found in
-%% <code>MinorVersion</code>. Backwards-compatible minor version upgrades are
-%% instantaneously available for readers on all objects in the directory.
-%% Note: This is a synchronous API call and upgrades only one schema on a
-%% given directory per call. To upgrade multiple directories from one schema,
-%% you would need to call this API on each directory.
+%% @doc Upgrades a single directory in-place using the `PublishedSchemaArn`
+%% with schema updates found in `MinorVersion`.
+%%
+%% Backwards-compatible minor version upgrades are instantaneously available
+%% for readers on all objects in the directory. Note: This is a synchronous
+%% API call and upgrades only one schema on a given directory per call. To
+%% upgrade multiple directories from one schema, you would need to call this
+%% API on each directory.
 upgrade_applied_schema(Client, Input) ->
     upgrade_applied_schema(Client, Input, []).
 upgrade_applied_schema(Client, Input0, Options) ->
@@ -1458,7 +1473,7 @@ upgrade_applied_schema(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Upgrades a published schema under a new minor version revision using
-%% the current contents of <code>DevelopmentSchemaArn</code>.
+%% the current contents of `DevelopmentSchemaArn`.
 upgrade_published_schema(Client, Input) ->
     upgrade_published_schema(Client, Input, []).
 upgrade_published_schema(Client, Input0, Options) ->
@@ -1520,6 +1535,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

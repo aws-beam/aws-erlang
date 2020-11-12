@@ -2,9 +2,10 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc AWS IoT Events monitors your equipment or device fleets for failures
-%% or changes in operation, and triggers actions when such events occur. AWS
-%% IoT Events Data API commands enable you to send inputs to detectors, list
-%% detectors, and view or update a detector's status.
+%% or changes in operation, and triggers actions when such events occur.
+%%
+%% AWS IoT Events Data API commands enable you to send inputs to detectors,
+%% list detectors, and view or update a detector's status.
 -module(aws_iot_events_data).
 
 -export([batch_put_message/2,
@@ -22,12 +23,13 @@
 %% API
 %%====================================================================
 
-%% @doc Sends a set of messages to the AWS IoT Events system. Each message
-%% payload is transformed into the input you specify
-%% (<code>"inputName"</code>) and ingested into any detectors that monitor
-%% that input. If multiple messages are sent, the order in which the messages
-%% are processed isn't guaranteed. To guarantee ordering, you must send
-%% messages one at a time and wait for a successful response.
+%% @doc Sends a set of messages to the AWS IoT Events system.
+%%
+%% Each message payload is transformed into the input you specify
+%% (`"inputName"`) and ingested into any detectors that monitor that input.
+%% If multiple messages are sent, the order in which the messages are
+%% processed isn't guaranteed. To guarantee ordering, you must send messages
+%% one at a time and wait for a successful response.
 batch_put_message(Client, Input) ->
     batch_put_message(Client, Input, []).
 batch_put_message(Client, Input0, Options) ->
@@ -146,6 +148,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

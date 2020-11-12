@@ -1,23 +1,24 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc <fullname>AWS IoT</fullname>
+%% @doc AWS IoT
 %%
 %% AWS IoT-Data enables secure, bi-directional communication between
 %% Internet-connected things (such as sensors, actuators, embedded devices,
-%% or smart appliances) and the AWS cloud. It implements a broker for
-%% applications and things to publish messages over HTTP (Publish) and
-%% retrieve, update, and delete shadows. A shadow is a persistent
-%% representation of your things and their state in the AWS cloud.
+%% or smart appliances) and the AWS cloud.
+%%
+%% It implements a broker for applications and things to publish messages
+%% over HTTP (Publish) and retrieve, update, and delete shadows. A shadow is
+%% a persistent representation of your things and their state in the AWS
+%% cloud.
 %%
 %% Find the endpoint address for actions in the AWS IoT data plane by running
 %% this CLI command:
 %%
-%% <code>aws iot describe-endpoint --endpoint-type iot:Data-ATS</code>
+%% `aws iot describe-endpoint --endpoint-type iot:Data-ATS`
 %%
-%% The service name used by <a
-%% href="https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">AWS
-%% Signature Version 4</a> to sign requests is: <i>iotdevicegateway</i>.
+%% The service name used by AWS Signature Version 4 to sign requests is:
+%% iotdevicegateway.
 -module(aws_iot_data_plane).
 
 -export([delete_thing_shadow/3,
@@ -39,9 +40,8 @@
 
 %% @doc Deletes the shadow for the specified thing.
 %%
-%% For more information, see <a
-%% href="http://docs.aws.amazon.com/iot/latest/developerguide/API_DeleteThingShadow.html">DeleteThingShadow</a>
-%% in the AWS IoT Developer Guide.
+%% For more information, see DeleteThingShadow in the AWS IoT Developer
+%% Guide.
 delete_thing_shadow(Client, ThingName, Input) ->
     delete_thing_shadow(Client, ThingName, Input, []).
 delete_thing_shadow(Client, ThingName, Input0, Options) ->
@@ -60,9 +60,7 @@ delete_thing_shadow(Client, ThingName, Input0, Options) ->
 
 %% @doc Gets the shadow for the specified thing.
 %%
-%% For more information, see <a
-%% href="http://docs.aws.amazon.com/iot/latest/developerguide/API_GetThingShadow.html">GetThingShadow</a>
-%% in the AWS IoT Developer Guide.
+%% For more information, see GetThingShadow in the AWS IoT Developer Guide.
 get_thing_shadow(Client, ThingName, ShadowName)
   when is_map(Client) ->
     get_thing_shadow(Client, ThingName, ShadowName, []).
@@ -103,9 +101,7 @@ list_named_shadows_for_thing(Client, ThingName, NextToken, PageSize, Options)
 
 %% @doc Publishes state information.
 %%
-%% For more information, see <a
-%% href="http://docs.aws.amazon.com/iot/latest/developerguide/protocols.html#http">HTTP
-%% Protocol</a> in the AWS IoT Developer Guide.
+%% For more information, see HTTP Protocol in the AWS IoT Developer Guide.
 publish(Client, Topic, Input) ->
     publish(Client, Topic, Input, []).
 publish(Client, Topic, Input0, Options) ->
@@ -124,9 +120,8 @@ publish(Client, Topic, Input0, Options) ->
 
 %% @doc Updates the shadow for the specified thing.
 %%
-%% For more information, see <a
-%% href="http://docs.aws.amazon.com/iot/latest/developerguide/API_UpdateThingShadow.html">UpdateThingShadow</a>
-%% in the AWS IoT Developer Guide.
+%% For more information, see UpdateThingShadow in the AWS IoT Developer
+%% Guide.
 update_thing_shadow(Client, ThingName, Input) ->
     update_thing_shadow(Client, ThingName, Input, []).
 update_thing_shadow(Client, ThingName, Input0, Options) ->
@@ -189,6 +184,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

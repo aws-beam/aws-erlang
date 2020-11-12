@@ -1,7 +1,7 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc <fullname>AWS Marketplace Metering Service</fullname>
+%% @doc AWS Marketplace Metering Service
 %%
 %% This reference provides descriptions of the low-level AWS Marketplace
 %% Metering Service API.
@@ -9,30 +9,29 @@
 %% AWS Marketplace sellers can use this API to submit usage data for custom
 %% usage dimensions.
 %%
-%% For information on the permissions you need to use this API, see <a
-%% href="https://docs.aws.amazon.com/marketplace/latest/userguide/iam-user-policy-for-aws-marketplace-actions.html">AWS
-%% Marketing metering and entitlement API permissions</a> in the <i>AWS
-%% Marketplace Seller Guide.</i>
+%% For information on the permissions you need to use this API, see AWS
+%% Marketing metering and entitlement API permissions in the AWS Marketplace
+%% Seller Guide.
 %%
-%% <b>Submitting Metering Records</b>
+%% Submitting Metering Records
 %%
-%% <ul> <li> <i>MeterUsage</i>- Submits the metering record for a Marketplace
+%% <ul> <li> MeterUsage- Submits the metering record for a Marketplace
 %% product. MeterUsage is called from an EC2 instance or a container running
 %% on EKS or ECS.
 %%
-%% </li> <li> <i>BatchMeterUsage</i>- Submits the metering record for a set
-%% of customers. BatchMeterUsage is called from a software-as-a-service
-%% (SaaS) application.
+%% </li> <li> BatchMeterUsage- Submits the metering record for a set of
+%% customers. BatchMeterUsage is called from a software-as-a-service (SaaS)
+%% application.
 %%
-%% </li> </ul> <b>Accepting New Customers</b>
+%% </li> </ul> Accepting New Customers
 %%
-%% <ul> <li> <i>ResolveCustomer</i>- Called by a SaaS application during the
+%% <ul> <li> ResolveCustomer- Called by a SaaS application during the
 %% registration process. When a buyer visits your website during the
 %% registration process, the buyer submits a Registration Token through the
 %% browser. The Registration Token is resolved through this API to obtain a
 %% CustomerIdentifier and Product Code.
 %%
-%% </li> </ul> <b>Entitlement and Metering for Paid Container Products</b>
+%% </li> </ul> Entitlement and Metering for Paid Container Products
 %%
 %% <ul> <li> Paid container software products sold through AWS Marketplace
 %% must integrate with the AWS Marketplace Metering Service and call the
@@ -40,17 +39,13 @@
 %% BYOL products for Amazon ECS or Amazon EKS aren't required to call
 %% RegisterUsage, but you can do so if you want to receive usage data in your
 %% seller reports. For more information on using the RegisterUsage operation,
-%% see <a
-%% href="https://docs.aws.amazon.com/marketplace/latest/userguide/container-based-products.html">Container-Based
-%% Products</a>.
+%% see Container-Based Products.
 %%
 %% </li> </ul> BatchMeterUsage API calls are captured by AWS CloudTrail. You
 %% can use Cloudtrail to verify that the SaaS metering records that you sent
 %% are accurate by searching for records with the eventName of
 %% BatchMeterUsage. You can also use CloudTrail to audit records over time.
-%% For more information, see the <i> <a
-%% href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html">AWS
-%% CloudTrail User Guide</a> </i>.
+%% For more information, see the AWS CloudTrail User Guide .
 -module(aws_marketplace_metering).
 
 -export([batch_meter_usage/2,
@@ -79,6 +74,12 @@
 %% BatchMeterUsage.
 %%
 %% BatchMeterUsage can process up to 25 UsageRecords at a time.
+%%
+%% A UsageRecord can optionally include multiple usage allocations, to
+%% provide customers with usagedata split into buckets by tags that you
+%% define (or allow the customer to define).
+%%
+%% BatchMeterUsage requests must be less than 1MB in size.
 batch_meter_usage(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_meter_usage(Client, Input, []).
@@ -86,11 +87,17 @@ batch_meter_usage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchMeterUsage">>, Input, Options).
 
-%% @doc API to emit metering records. For identical requests, the API is
-%% idempotent. It simply returns the metering record ID.
+%% @doc API to emit metering records.
+%%
+%% For identical requests, the API is idempotent. It simply returns the
+%% metering record ID.
 %%
 %% MeterUsage is authenticated on the buyer's AWS account using credentials
 %% from the EC2 instance, ECS task, or EKS pod.
+%%
+%% MeterUsage can optionally include multiple usage allocations, to provide
+%% customers with usage data split into buckets by tags that you define (or
+%% allow the customer to define).
 meter_usage(Client, Input)
   when is_map(Client), is_map(Input) ->
     meter_usage(Client, Input, []).
@@ -100,14 +107,15 @@ meter_usage(Client, Input, Options)
 
 %% @doc Paid container software products sold through AWS Marketplace must
 %% integrate with the AWS Marketplace Metering Service and call the
-%% RegisterUsage operation for software entitlement and metering. Free and
-%% BYOL products for Amazon ECS or Amazon EKS aren't required to call
-%% RegisterUsage, but you may choose to do so if you would like to receive
-%% usage data in your seller reports. The sections below explain the behavior
-%% of RegisterUsage. RegisterUsage performs two primary functions: metering
-%% and entitlement.
+%% RegisterUsage operation for software entitlement and metering.
 %%
-%% <ul> <li> <i>Entitlement</i>: RegisterUsage allows you to verify that the
+%% Free and BYOL products for Amazon ECS or Amazon EKS aren't required to
+%% call RegisterUsage, but you may choose to do so if you would like to
+%% receive usage data in your seller reports. The sections below explain the
+%% behavior of RegisterUsage. RegisterUsage performs two primary functions:
+%% metering and entitlement.
+%%
+%% <ul> <li> Entitlement: RegisterUsage allows you to verify that the
 %% customer running your paid software is subscribed to your product on AWS
 %% Marketplace, enabling you to guard against unauthorized use. Your
 %% container image that integrates with RegisterUsage is only required to
@@ -118,20 +126,20 @@ meter_usage(Client, Input, Options)
 %% throw a CustomerNotSubscribedException, even if the customer unsubscribes
 %% while the Amazon ECS task or Amazon EKS pod is still running.
 %%
-%% </li> <li> <i>Metering</i>: RegisterUsage meters software use per ECS
-%% task, per hour, or per pod for Amazon EKS with usage prorated to the
-%% second. A minimum of 1 minute of usage applies to tasks that are short
-%% lived. For example, if a customer has a 10 node Amazon ECS or Amazon EKS
-%% cluster and a service configured as a Daemon Set, then Amazon ECS or
-%% Amazon EKS will launch a task on all 10 cluster nodes and the customer
-%% will be charged: (10 * hourly_rate). Metering for software use is
-%% automatically handled by the AWS Marketplace Metering Control Plane --
-%% your software is not required to perform any metering specific actions,
-%% other than call RegisterUsage once for metering of software use to
-%% commence. The AWS Marketplace Metering Control Plane will also continue to
-%% bill customers for running ECS tasks and Amazon EKS pods, regardless of
-%% the customers subscription state, removing the need for your software to
-%% perform entitlement checks at runtime.
+%% </li> <li> Metering: RegisterUsage meters software use per ECS task, per
+%% hour, or per pod for Amazon EKS with usage prorated to the second. A
+%% minimum of 1 minute of usage applies to tasks that are short lived. For
+%% example, if a customer has a 10 node Amazon ECS or Amazon EKS cluster and
+%% a service configured as a Daemon Set, then Amazon ECS or Amazon EKS will
+%% launch a task on all 10 cluster nodes and the customer will be charged:
+%% (10 * hourly_rate). Metering for software use is automatically handled by
+%% the AWS Marketplace Metering Control Plane -- your software is not
+%% required to perform any metering specific actions, other than call
+%% RegisterUsage once for metering of software use to commence. The AWS
+%% Marketplace Metering Control Plane will also continue to bill customers
+%% for running ECS tasks and Amazon EKS pods, regardless of the customers
+%% subscription state, removing the need for your software to perform
+%% entitlement checks at runtime.
 %%
 %% </li> </ul>
 register_usage(Client, Input)
@@ -142,10 +150,12 @@ register_usage(Client, Input, Options)
     request(Client, <<"RegisterUsage">>, Input, Options).
 
 %% @doc ResolveCustomer is called by a SaaS application during the
-%% registration process. When a buyer visits your website during the
-%% registration process, the buyer submits a registration token through their
-%% browser. The registration token is resolved through this API to obtain a
-%% CustomerIdentifier and product code.
+%% registration process.
+%%
+%% When a buyer visits your website during the registration process, the
+%% buyer submits a registration token through their browser. The registration
+%% token is resolved through this API to obtain a CustomerIdentifier and
+%% product code.
 resolve_customer(Client, Input)
   when is_map(Client), is_map(Input) ->
     resolve_customer(Client, Input, []).
@@ -195,6 +205,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
 handle_response({error, Reason}) ->
     {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

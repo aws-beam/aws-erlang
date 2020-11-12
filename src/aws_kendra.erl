@@ -59,8 +59,9 @@
 %% API
 %%====================================================================
 
-%% @doc Removes one or more documents from an index. The documents must have
-%% been added with the <a>BatchPutDocument</a> operation.
+%% @doc Removes one or more documents from an index.
+%%
+%% The documents must have been added with the `BatchPutDocument` operation.
 %%
 %% The documents are deleted asynchronously. You can see the progress of the
 %% deletion by using AWS CloudWatch. Any error messages releated to the
@@ -74,11 +75,11 @@ batch_delete_document(Client, Input, Options)
 
 %% @doc Adds one or more documents to an index.
 %%
-%% The <code>BatchPutDocument</code> operation enables you to ingest inline
-%% documents or a set of documents stored in an Amazon S3 bucket. Use this
-%% operation to ingest your text and unstructured text into an index, add
-%% custom attributes to the documents, and to attach an access control list
-%% to the documents added to the index.
+%% The `BatchPutDocument` operation enables you to ingest inline documents or
+%% a set of documents stored in an Amazon S3 bucket. Use this operation to
+%% ingest your text and unstructured text into an index, add custom
+%% attributes to the documents, and to attach an access control list to the
+%% documents added to the index.
 %%
 %% The documents are indexed asynchronously. You can see the progress of the
 %% batch using AWS CloudWatch. Any error messages related to processing the
@@ -92,16 +93,13 @@ batch_put_document(Client, Input, Options)
 
 %% @doc Creates a data source that you use to with an Amazon Kendra index.
 %%
-%% You specify a name, connector type and description for your data source.
-%% You can choose between an S3 connector, a SharePoint Online connector, and
-%% a database connector.
+%% You specify a name, data source connector type and description for your
+%% data source. You also specify configuration information such as document
+%% metadata (author, source URI, and so on) and user context information.
 %%
-%% You also specify configuration information such as document metadata
-%% (author, source URI, and so on) and user context information.
-%%
-%% <code>CreateDataSource</code> is a synchronous operation. The operation
-%% returns 200 if the data source was successfully created. Otherwise, an
-%% exception is raised.
+%% `CreateDataSource` is a synchronous operation. The operation returns 200
+%% if the data source was successfully created. Otherwise, an exception is
+%% raised.
 create_data_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_data_source(Client, Input, []).
@@ -118,11 +116,11 @@ create_faq(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFaq">>, Input, Options).
 
-%% @doc Creates a new Amazon Kendra index. Index creation is an asynchronous
-%% operation. To determine if index creation has completed, check the
-%% <code>Status</code> field returned from a call to . The
-%% <code>Status</code> field is set to <code>ACTIVE</code> when the index is
-%% ready to use.
+%% @doc Creates a new Amazon Kendra index.
+%%
+%% Index creation is an asynchronous operation. To determine if index
+%% creation has completed, check the `Status` field returned from a call to .
+%% The `Status` field is set to `ACTIVE` when the index is ready to use.
 %%
 %% Once the index is active you can index your documents using the operation
 %% or using one of the supported data sources.
@@ -133,12 +131,12 @@ create_index(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateIndex">>, Input, Options).
 
-%% @doc Deletes an Amazon Kendra data source. An exception is not thrown if
-%% the data source is already being deleted. While the data source is being
-%% deleted, the <code>Status</code> field returned by a call to the operation
-%% is set to <code>DELETING</code>. For more information, see <a
-%% href="https://docs.aws.amazon.com/kendra/latest/dg/delete-data-source.html">Deleting
-%% Data Sources</a>.
+%% @doc Deletes an Amazon Kendra data source.
+%%
+%% An exception is not thrown if the data source is already being deleted.
+%% While the data source is being deleted, the `Status` field returned by a
+%% call to the operation is set to `DELETING`. For more information, see
+%% Deleting Data Sources.
 delete_data_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_data_source(Client, Input, []).
@@ -154,10 +152,11 @@ delete_faq(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFaq">>, Input, Options).
 
-%% @doc Deletes an existing Amazon Kendra index. An exception is not thrown
-%% if the index is already being deleted. While the index is being deleted,
-%% the <code>Status</code> field returned by a call to the
-%% <a>DescribeIndex</a> operation is set to <code>DELETING</code>.
+%% @doc Deletes an existing Amazon Kendra index.
+%%
+%% An exception is not thrown if the index is already being deleted. While
+%% the index is being deleted, the `Status` field returned by a call to the
+%% `DescribeIndex` operation is set to `DELETING`.
 delete_index(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_index(Client, Input, []).
@@ -221,8 +220,9 @@ list_indices(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListIndices">>, Input, Options).
 
-%% @doc Gets a list of tags associated with a specified resource. Indexes,
-%% FAQs, and data sources can have tags associated with them.
+%% @doc Gets a list of tags associated with a specified resource.
+%%
+%% Indexes, FAQs, and data sources can have tags associated with them.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -230,9 +230,11 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
-%% @doc Searches an active index. Use this API to search your documents using
-%% query. The <code>Query</code> operation enables to do faceted search and
-%% to filter results based on document attributes.
+%% @doc Searches an active index.
+%%
+%% Use this API to search your documents using query. The `Query` operation
+%% enables to do faceted search and to filter results based on document
+%% attributes.
 %%
 %% It also enables you to provide user context that Amazon Kendra uses to
 %% enforce document access control in the search results.
@@ -247,7 +249,9 @@ list_tags_for_resource(Client, Input, Options)
 %% </li> <li> Relevant documents
 %%
 %% </li> </ul> You can specify that the query return only one type of result
-%% using the <code>QueryResultTypeConfig</code> parameter.
+%% using the `QueryResultTypeConfig` parameter.
+%%
+%% Each query returns the 100 most relevant results.
 query(Client, Input)
   when is_map(Client), is_map(Input) ->
     query(Client, Input, []).
@@ -255,9 +259,10 @@ query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"Query">>, Input, Options).
 
-%% @doc Starts a synchronization job for a data source. If a synchronization
-%% job is already in progress, Amazon Kendra returns a
-%% <code>ResourceInUseException</code> exception.
+%% @doc Starts a synchronization job for a data source.
+%%
+%% If a synchronization job is already in progress, Amazon Kendra returns a
+%% `ResourceInUseException` exception.
 start_data_source_sync_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_data_source_sync_job(Client, Input, []).
@@ -265,8 +270,9 @@ start_data_source_sync_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartDataSourceSyncJob">>, Input, Options).
 
-%% @doc Stops a running synchronization job. You can't stop a scheduled
-%% synchronization job.
+%% @doc Stops a running synchronization job.
+%%
+%% You can't stop a scheduled synchronization job.
 stop_data_source_sync_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_data_source_sync_job(Client, Input, []).
@@ -284,8 +290,10 @@ submit_feedback(Client, Input, Options)
     request(Client, <<"SubmitFeedback">>, Input, Options).
 
 %% @doc Adds the specified tag to the specified index, FAQ, or data source
-%% resource. If the tag already exists, the existing value is replaced with
-%% the new value.
+%% resource.
+%%
+%% If the tag already exists, the existing value is replaced with the new
+%% value.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -359,6 +367,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
 handle_response({error, Reason}) ->
     {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

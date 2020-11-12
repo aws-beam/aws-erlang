@@ -2,13 +2,13 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amplify enables developers to develop and deploy cloud-powered mobile
-%% and web apps. The Amplify Console provides a continuous delivery and
-%% hosting service for web applications. For more information, see the <a
-%% href="https://docs.aws.amazon.com/amplify/latest/userguide/welcome.html">Amplify
-%% Console User Guide</a>. The Amplify Framework is a comprehensive set of
-%% SDKs, libraries, tools, and documentation for client app development. For
-%% more information, see the <a href="https://docs.amplify.aws/">Amplify
-%% Framework.</a>
+%% and web apps.
+%%
+%% The Amplify Console provides a continuous delivery and hosting service for
+%% web applications. For more information, see the Amplify Console User
+%% Guide. The Amplify Framework is a comprehensive set of SDKs, libraries,
+%% tools, and documentation for client app development. For more information,
+%% see the Amplify Framework.
 -module(aws_amplify).
 
 -export([create_app/2,
@@ -140,8 +140,9 @@ create_branch(Client, AppId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a deployment for a manually deployed Amplify app. Manually
-%% deployed apps are not connected to a repository.
+%% @doc Creates a deployment for a manually deployed Amplify app.
+%%
+%% Manually deployed apps are not connected to a repository.
 create_deployment(Client, AppId, BranchName, Input) ->
     create_deployment(Client, AppId, BranchName, Input, []).
 create_deployment(Client, AppId, BranchName, Input0, Options) ->
@@ -157,8 +158,9 @@ create_deployment(Client, AppId, BranchName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new domain association for an Amplify app. This action
-%% associates a custom domain with the Amplify app
+%% @doc Creates a new domain association for an Amplify app.
+%%
+%% This action associates a custom domain with the Amplify app
 create_domain_association(Client, AppId, Input) ->
     create_domain_association(Client, AppId, Input, []).
 create_domain_association(Client, AppId, Input0, Options) ->
@@ -565,8 +567,9 @@ list_webhooks(Client, AppId, MaxResults, NextToken, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Starts a deployment for a manually deployed app. Manually deployed
-%% apps are not connected to a repository.
+%% @doc Starts a deployment for a manually deployed app.
+%%
+%% Manually deployed apps are not connected to a repository.
 start_deployment(Client, AppId, BranchName, Input) ->
     start_deployment(Client, AppId, BranchName, Input, []).
 start_deployment(Client, AppId, BranchName, Input0, Options) ->
@@ -757,6 +760,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

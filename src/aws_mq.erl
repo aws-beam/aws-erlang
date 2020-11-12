@@ -1,11 +1,13 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon MQ is a managed message broker service for Apache ActiveMQ
-%% that makes it easy to set up and operate message brokers in the cloud. A
-%% message broker allows software applications and components to communicate
-%% using various programming languages, operating systems, and formal
-%% messaging protocols.
+%% @doc Amazon MQ is a managed message broker service for Apache ActiveMQ and
+%% RabbitMQ that makes it easy to set up and operate message brokers in the
+%% cloud.
+%%
+%% A message broker allows software applications and components to
+%% communicate using various programming languages, operating systems, and
+%% formal messaging protocols.
 -module(aws_mq).
 
 -export([create_broker/2,
@@ -59,7 +61,9 @@
 %% API
 %%====================================================================
 
-%% @doc Creates a broker. Note: This API is asynchronous.
+%% @doc Creates a broker.
+%%
+%% Note: This API is asynchronous.
 create_broker(Client, Input) ->
     create_broker(Client, Input, []).
 create_broker(Client, Input0, Options) ->
@@ -76,6 +80,7 @@ create_broker(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new configuration for the specified configuration name.
+%%
 %% Amazon MQ uses the default configuration (the engine type and version).
 create_configuration(Client, Input) ->
     create_configuration(Client, Input, []).
@@ -124,7 +129,9 @@ create_user(Client, BrokerId, Username, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a broker. Note: This API is asynchronous.
+%% @doc Deletes a broker.
+%%
+%% Note: This API is asynchronous.
 delete_broker(Client, BrokerId, Input) ->
     delete_broker(Client, BrokerId, Input, []).
 delete_broker(Client, BrokerId, Input0, Options) ->
@@ -373,7 +380,9 @@ list_users(Client, BrokerId, MaxResults, NextToken, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Reboots a broker. Note: This API is asynchronous.
+%% @doc Reboots a broker.
+%%
+%% Note: This API is asynchronous.
 reboot_broker(Client, BrokerId, Input) ->
     reboot_broker(Client, BrokerId, Input, []).
 reboot_broker(Client, BrokerId, Input0, Options) ->
@@ -483,6 +492,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

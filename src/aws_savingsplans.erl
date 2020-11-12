@@ -2,15 +2,17 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Savings Plans are a pricing model that offer significant savings on
-%% AWS usage (for example, on Amazon EC2 instances). You commit to a
-%% consistent amount of usage, in USD per hour, for a term of 1 or 3 years,
-%% and receive a lower price for that usage. For more information, see the <a
-%% href="https://docs.aws.amazon.com/savingsplans/latest/userguide/">AWS
-%% Savings Plans User Guide</a>.
+%% AWS usage (for example, on Amazon EC2 instances).
+%%
+%% You commit to a consistent amount of usage, in USD per hour, for a term of
+%% 1 or 3 years, and receive a lower price for that usage. For more
+%% information, see the AWS Savings Plans User Guide.
 -module(aws_savingsplans).
 
 -export([create_savings_plan/2,
          create_savings_plan/3,
+         delete_queued_savings_plan/2,
+         delete_queued_savings_plan/3,
          describe_savings_plan_rates/2,
          describe_savings_plan_rates/3,
          describe_savings_plans/2,
@@ -38,6 +40,22 @@ create_savings_plan(Client, Input) ->
 create_savings_plan(Client, Input0, Options) ->
     Method = post,
     Path = ["/CreateSavingsPlan"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the queued purchase for the specified Savings Plan.
+delete_queued_savings_plan(Client, Input) ->
+    delete_queued_savings_plan(Client, Input, []).
+delete_queued_savings_plan(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/DeleteQueuedSavingsPlan"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -207,6 +225,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{endpoint := Endpoint}) ->

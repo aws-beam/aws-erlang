@@ -2,8 +2,10 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Using the Amazon Cognito User Pools API, you can create a user pool
-%% to manage directories and users. You can authenticate a user to obtain
-%% tokens related to user identity and access policies.
+%% to manage directories and users.
+%%
+%% You can authenticate a user to obtain tokens related to user identity and
+%% access policies.
 %%
 %% This API reference provides information about user pools in Amazon Cognito
 %% User Pools.
@@ -237,7 +239,9 @@ admin_add_user_to_group(Client, Input, Options)
     request(Client, <<"AdminAddUserToGroup">>, Input, Options).
 
 %% @doc Confirms user registration as an admin without using a confirmation
-%% code. Works on any user.
+%% code.
+%%
+%% Works on any user.
 %%
 %% Calling this action requires developer credentials.
 admin_confirm_sign_up(Client, Input)
@@ -249,21 +253,20 @@ admin_confirm_sign_up(Client, Input, Options)
 
 %% @doc Creates a new user in the specified user pool.
 %%
-%% If <code>MessageAction</code> is not set, the default is to send a welcome
-%% message via email or phone (SMS).
+%% If `MessageAction` is not set, the default is to send a welcome message
+%% via email or phone (SMS).
 %%
-%% <note> This message is based on a template that you configured in your
-%% call to or . This template includes your custom sign-up instructions and
-%% placeholders for user name and temporary password.
+%% This message is based on a template that you configured in your call to
+%% create or update a user pool. This template includes your custom sign-up
+%% instructions and placeholders for user name and temporary password.
 %%
-%% </note> Alternatively, you can call AdminCreateUser with “SUPPRESS” for
-%% the <code>MessageAction</code> parameter, and Amazon Cognito will not send
-%% any email.
+%% Alternatively, you can call `AdminCreateUser` with “SUPPRESS” for the
+%% `MessageAction` parameter, and Amazon Cognito will not send any email.
 %%
-%% In either case, the user will be in the <code>FORCE_CHANGE_PASSWORD</code>
-%% state until they sign in and change their password.
+%% In either case, the user will be in the `FORCE_CHANGE_PASSWORD` state
+%% until they sign in and change their password.
 %%
-%% AdminCreateUser requires developer credentials.
+%% `AdminCreateUser` requires developer credentials.
 admin_create_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_create_user(Client, Input, []).
@@ -271,7 +274,9 @@ admin_create_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminCreateUser">>, Input, Options).
 
-%% @doc Deletes a user as an administrator. Works on any user.
+%% @doc Deletes a user as an administrator.
+%%
+%% Works on any user.
 %%
 %% Calling this action requires developer credentials.
 admin_delete_user(Client, Input)
@@ -281,8 +286,9 @@ admin_delete_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminDeleteUser">>, Input, Options).
 
-%% @doc Deletes the user attributes in a user pool as an administrator. Works
-%% on any user.
+%% @doc Deletes the user attributes in a user pool as an administrator.
+%%
+%% Works on any user.
 %%
 %% Calling this action requires developer credentials.
 admin_delete_user_attributes(Client, Input)
@@ -293,41 +299,40 @@ admin_delete_user_attributes(Client, Input, Options)
     request(Client, <<"AdminDeleteUserAttributes">>, Input, Options).
 
 %% @doc Disables the user from signing in with the specified external (SAML
-%% or social) identity provider. If the user to disable is a Cognito User
-%% Pools native username + password user, they are not permitted to use their
-%% password to sign-in. If the user to disable is a linked external IdP user,
-%% any link between that user and an existing user is removed. The next time
-%% the external user (no longer attached to the previously linked
-%% <code>DestinationUser</code>) signs in, they must create a new user
-%% account. See .
+%% or social) identity provider.
+%%
+%% If the user to disable is a Cognito User Pools native username + password
+%% user, they are not permitted to use their password to sign-in. If the user
+%% to disable is a linked external IdP user, any link between that user and
+%% an existing user is removed. The next time the external user (no longer
+%% attached to the previously linked `DestinationUser`) signs in, they must
+%% create a new user account. See AdminLinkProviderForUser.
 %%
 %% This action is enabled only for admin access and requires developer
 %% credentials.
 %%
-%% The <code>ProviderName</code> must match the value specified when creating
-%% an IdP for the pool.
+%% The `ProviderName` must match the value specified when creating an IdP for
+%% the pool.
 %%
-%% To disable a native username + password user, the
-%% <code>ProviderName</code> value must be <code>Cognito</code> and the
-%% <code>ProviderAttributeName</code> must be <code>Cognito_Subject</code>,
-%% with the <code>ProviderAttributeValue</code> being the name that is used
-%% in the user pool for the user.
+%% To disable a native username + password user, the `ProviderName` value
+%% must be `Cognito` and the `ProviderAttributeName` must be
+%% `Cognito_Subject`, with the `ProviderAttributeValue` being the name that
+%% is used in the user pool for the user.
 %%
-%% The <code>ProviderAttributeName</code> must always be
-%% <code>Cognito_Subject</code> for social identity providers. The
-%% <code>ProviderAttributeValue</code> must always be the exact subject that
-%% was used when the user was originally linked as a source user.
+%% The `ProviderAttributeName` must always be `Cognito_Subject` for social
+%% identity providers. The `ProviderAttributeValue` must always be the exact
+%% subject that was used when the user was originally linked as a source
+%% user.
 %%
 %% For de-linking a SAML identity, there are two scenarios. If the linked
-%% identity has not yet been used to sign-in, the
-%% <code>ProviderAttributeName</code> and <code>ProviderAttributeValue</code>
-%% must be the same values that were used for the <code>SourceUser</code>
-%% when the identities were originally linked in the call. (If the linking
-%% was done with <code>ProviderAttributeName</code> set to
-%% <code>Cognito_Subject</code>, the same applies here). However, if the user
-%% has already signed in, the <code>ProviderAttributeName</code> must be
-%% <code>Cognito_Subject</code> and <code>ProviderAttributeValue</code> must
-%% be the subject of the SAML assertion.
+%% identity has not yet been used to sign-in, the `ProviderAttributeName` and
+%% `ProviderAttributeValue` must be the same values that were used for the
+%% `SourceUser` when the identities were originally linked using `
+%% AdminLinkProviderForUser` call. (If the linking was done with
+%% `ProviderAttributeName` set to `Cognito_Subject`, the same applies here).
+%% However, if the user has already signed in, the `ProviderAttributeName`
+%% must be `Cognito_Subject` and `ProviderAttributeValue` must be the subject
+%% of the SAML assertion.
 admin_disable_provider_for_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_disable_provider_for_user(Client, Input, []).
@@ -345,7 +350,9 @@ admin_disable_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminDisableUser">>, Input, Options).
 
-%% @doc Enables the specified user as an administrator. Works on any user.
+%% @doc Enables the specified user as an administrator.
+%%
+%% Works on any user.
 %%
 %% Calling this action requires developer credentials.
 admin_enable_user(Client, Input)
@@ -376,7 +383,9 @@ admin_get_device(Client, Input, Options)
     request(Client, <<"AdminGetDevice">>, Input, Options).
 
 %% @doc Gets the specified user by user name in a user pool as an
-%% administrator. Works on any user.
+%% administrator.
+%%
+%% Works on any user.
 %%
 %% Calling this action requires developer credentials.
 admin_get_user(Client, Input)
@@ -396,25 +405,26 @@ admin_initiate_auth(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminInitiateAuth">>, Input, Options).
 
-%% @doc Links an existing user account in a user pool
-%% (<code>DestinationUser</code>) to an identity from an external identity
-%% provider (<code>SourceUser</code>) based on a specified attribute name and
-%% value from the external identity provider. This allows you to create a
-%% link from the existing user account to an external federated user identity
-%% that has not yet been used to sign in, so that the federated user identity
-%% can be used to sign in as the existing user account.
+%% @doc Links an existing user account in a user pool (`DestinationUser`) to
+%% an identity from an external identity provider (`SourceUser`) based on a
+%% specified attribute name and value from the external identity provider.
+%%
+%% This allows you to create a link from the existing user account to an
+%% external federated user identity that has not yet been used to sign in, so
+%% that the federated user identity can be used to sign in as the existing
+%% user account.
 %%
 %% For example, if there is an existing user with a username and password,
 %% this API links that user to a federated user identity, so that when the
 %% federated user identity is used, the user signs in as the existing user
 %% account.
 %%
-%% <important> Because this API allows a user with an external federated
-%% identity to sign in as an existing user in the user pool, it is critical
-%% that it only be used with external identity providers and provider
-%% attributes that have been trusted by the application owner.
+%% The maximum number of federated identities linked to a user is 5.
 %%
-%% </important> See also .
+%% Because this API allows a user with an external federated identity to sign
+%% in as an existing user in the user pool, it is critical that it only be
+%% used with external identity providers and provider attributes that have
+%% been trusted by the application owner.
 %%
 %% This action is enabled only for admin access and requires developer
 %% credentials.
@@ -465,7 +475,9 @@ admin_remove_user_from_group(Client, Input, Options)
     request(Client, <<"AdminRemoveUserFromGroup">>, Input, Options).
 
 %% @doc Resets the specified user's password in a user pool as an
-%% administrator. Works on any user.
+%% administrator.
+%%
+%% Works on any user.
 %%
 %% When a developer calls this API, the current password is invalidated, so
 %% it must be changed. If a user tries to sign in after the API is called,
@@ -496,11 +508,12 @@ admin_respond_to_auth_challenge(Client, Input, Options)
     request(Client, <<"AdminRespondToAuthChallenge">>, Input, Options).
 
 %% @doc Sets the user's multi-factor authentication (MFA) preference,
-%% including which MFA options are enabled and if any are preferred. Only one
-%% factor can be set as preferred. The preferred MFA factor will be used to
-%% authenticate a user if multiple factors are enabled. If multiple options
-%% are enabled and no preference is set, a challenge to choose an MFA option
-%% will be returned during sign in.
+%% including which MFA options are enabled and if any are preferred.
+%%
+%% Only one factor can be set as preferred. The preferred MFA factor will be
+%% used to authenticate a user if multiple factors are enabled. If multiple
+%% options are enabled and no preference is set, a challenge to choose an MFA
+%% option will be returned during sign in.
 admin_set_user_m_f_a_preference(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_set_user_m_f_a_preference(Client, Input, []).
@@ -509,17 +522,19 @@ admin_set_user_m_f_a_preference(Client, Input, Options)
     request(Client, <<"AdminSetUserMFAPreference">>, Input, Options).
 
 %% @doc Sets the specified user's password in a user pool as an
-%% administrator. Works on any user.
+%% administrator.
+%%
+%% Works on any user.
 %%
 %% The password can be temporary or permanent. If it is temporary, the user
-%% status will be placed into the <code>FORCE_CHANGE_PASSWORD</code> state.
-%% When the user next tries to sign in, the InitiateAuth/AdminInitiateAuth
-%% response will contain the <code>NEW_PASSWORD_REQUIRED</code> challenge. If
-%% the user does not sign in before it expires, the user will not be able to
-%% sign in and their password will need to be reset by an administrator.
+%% status will be placed into the `FORCE_CHANGE_PASSWORD` state. When the
+%% user next tries to sign in, the InitiateAuth/AdminInitiateAuth response
+%% will contain the `NEW_PASSWORD_REQUIRED` challenge. If the user does not
+%% sign in before it expires, the user will not be able to sign in and their
+%% password will need to be reset by an administrator.
 %%
 %% Once the user has set a new password, or the password is permanent, the
-%% user status will be set to <code>Confirmed</code>.
+%% user status will be set to `Confirmed`.
 admin_set_user_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_set_user_password(Client, Input, []).
@@ -527,10 +542,11 @@ admin_set_user_password(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminSetUserPassword">>, Input, Options).
 
-%% @doc <i>This action is no longer supported.</i> You can use it to
-%% configure only SMS MFA. You can't use it to configure TOTP software token
-%% MFA. To configure either type of MFA, use the
-%% <a>AdminSetUserMFAPreference</a> action instead.
+%% @doc This action is no longer supported.
+%%
+%% You can use it to configure only SMS MFA. You can't use it to configure
+%% TOTP software token MFA. To configure either type of MFA, use
+%% AdminSetUserMFAPreference instead.
 admin_set_user_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_set_user_settings(Client, Input, []).
@@ -539,8 +555,10 @@ admin_set_user_settings(Client, Input, Options)
     request(Client, <<"AdminSetUserSettings">>, Input, Options).
 
 %% @doc Provides feedback for an authentication event as to whether it was
-%% from a valid user. This feedback is used for improving the risk evaluation
-%% decision for the user pool as part of Amazon Cognito advanced security.
+%% from a valid user.
+%%
+%% This feedback is used for improving the risk evaluation decision for the
+%% user pool as part of Amazon Cognito advanced security.
 admin_update_auth_event_feedback(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_update_auth_event_feedback(Client, Input, []).
@@ -559,10 +577,12 @@ admin_update_device_status(Client, Input, Options)
     request(Client, <<"AdminUpdateDeviceStatus">>, Input, Options).
 
 %% @doc Updates the specified user's attributes, including developer
-%% attributes, as an administrator. Works on any user.
+%% attributes, as an administrator.
 %%
-%% For custom attributes, you must prepend the <code>custom:</code> prefix to
-%% the attribute name.
+%% Works on any user.
+%%
+%% For custom attributes, you must prepend the `custom:` prefix to the
+%% attribute name.
 %%
 %% In addition to updating user attributes, this API can also be used to mark
 %% phone and email as verified.
@@ -575,10 +595,11 @@ admin_update_user_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminUpdateUserAttributes">>, Input, Options).
 
-%% @doc Signs out users from all devices, as an administrator. It also
-%% invalidates all refresh tokens issued to a user. The user's current access
-%% and Id tokens remain valid until their expiry. Access and Id tokens expire
-%% one hour after they are issued.
+%% @doc Signs out users from all devices, as an administrator.
+%%
+%% It also invalidates all refresh tokens issued to a user. The user's
+%% current access and Id tokens remain valid until their expiry. Access and
+%% Id tokens expire one hour after they are issued.
 %%
 %% Calling this action requires developer credentials.
 admin_user_global_sign_out(Client, Input)
@@ -589,8 +610,9 @@ admin_user_global_sign_out(Client, Input, Options)
     request(Client, <<"AdminUserGlobalSignOut">>, Input, Options).
 
 %% @doc Returns a unique generated shared secret key code for the user
-%% account. The request takes an access token or a session string, but not
-%% both.
+%% account.
+%%
+%% The request takes an access token or a session string, but not both.
 associate_software_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_software_token(Client, Input, []).
@@ -606,8 +628,9 @@ change_password(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ChangePassword">>, Input, Options).
 
-%% @doc Confirms tracking of the device. This API call is the call that
-%% begins device tracking.
+%% @doc Confirms tracking of the device.
+%%
+%% This API call is the call that begins device tracking.
 confirm_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     confirm_device(Client, Input, []).
@@ -693,8 +716,9 @@ create_user_pool_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUserPoolDomain">>, Input, Options).
 
-%% @doc Deletes a group. Currently only groups with no members can be
-%% deleted.
+%% @doc Deletes a group.
+%%
+%% Currently only groups with no members can be deleted.
 %%
 %% Calling this action requires developer credentials.
 delete_group(Client, Input)
@@ -827,14 +851,15 @@ forget_device(Client, Input, Options)
     request(Client, <<"ForgetDevice">>, Input, Options).
 
 %% @doc Calling this API causes a message to be sent to the end user with a
-%% confirmation code that is required to change the user's password. For the
-%% <code>Username</code> parameter, you can use the username or user alias.
-%% The method used to send the confirmation code is sent according to the
-%% specified AccountRecoverySetting. For more information, see <a
-%% href="">Recovering User Accounts</a> in the <i>Amazon Cognito Developer
-%% Guide</i>. If neither a verified phone number nor a verified email exists,
-%% an <code>InvalidParameterException</code> is thrown. To use the
-%% confirmation code for resetting the password, call .
+%% confirmation code that is required to change the user's password.
+%%
+%% For the `Username` parameter, you can use the username or user alias. The
+%% method used to send the confirmation code is sent according to the
+%% specified AccountRecoverySetting. For more information, see Recovering
+%% User Accounts in the Amazon Cognito Developer Guide. If neither a verified
+%% phone number nor a verified email exists, an `InvalidParameterException`
+%% is thrown. To use the confirmation code for resetting the password, call
+%% ConfirmForgotPassword.
 forgot_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     forgot_password(Client, Input, []).
@@ -887,10 +912,11 @@ get_signing_certificate(Client, Input, Options)
     request(Client, <<"GetSigningCertificate">>, Input, Options).
 
 %% @doc Gets the UI Customization information for a particular app client's
-%% app UI, if there is something set. If nothing is set for the particular
-%% client, but there is an existing pool level customization (app
-%% <code>clientId</code> will be <code>ALL</code>), then that is returned. If
-%% nothing is present, then an empty shape is returned.
+%% app UI, if there is something set.
+%%
+%% If nothing is set for the particular client, but there is an existing pool
+%% level customization (app `clientId` will be `ALL`), then that is returned.
+%% If nothing is present, then an empty shape is returned.
 get_u_i_customization(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_u_i_customization(Client, Input, []).
@@ -923,10 +949,11 @@ get_user_pool_mfa_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUserPoolMfaConfig">>, Input, Options).
 
-%% @doc Signs out users from all devices. It also invalidates all refresh
-%% tokens issued to a user. The user's current access and Id tokens remain
-%% valid until their expiry. Access and Id tokens expire one hour after they
-%% are issued.
+%% @doc Signs out users from all devices.
+%%
+%% It also invalidates all refresh tokens issued to a user. The user's
+%% current access and Id tokens remain valid until their expiry. Access and
+%% Id tokens expire one hour after they are issued.
 global_sign_out(Client, Input)
   when is_map(Client), is_map(Input) ->
     global_sign_out(Client, Input, []).
@@ -1049,15 +1076,13 @@ respond_to_auth_challenge(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RespondToAuthChallenge">>, Input, Options).
 
-%% @doc Configures actions on detected risks. To delete the risk
-%% configuration for <code>UserPoolId</code> or <code>ClientId</code>, pass
-%% null values for all four configuration types.
+%% @doc Configures actions on detected risks.
+%%
+%% To delete the risk configuration for `UserPoolId` or `ClientId`, pass null
+%% values for all four configuration types.
 %%
 %% To enable Amazon Cognito advanced security features, update the user pool
-%% to include the <code>UserPoolAddOns</code>
-%% key<code>AdvancedSecurityMode</code>.
-%%
-%% See .
+%% to include the `UserPoolAddOns` key`AdvancedSecurityMode`.
 set_risk_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_risk_configuration(Client, Input, []).
@@ -1069,18 +1094,15 @@ set_risk_configuration(Client, Input, Options)
 %% UI.
 %%
 %% You can specify app UI customization settings for a single client (with a
-%% specific <code>clientId</code>) or for all clients (by setting the
-%% <code>clientId</code> to <code>ALL</code>). If you specify
-%% <code>ALL</code>, the default configuration will be used for every client
-%% that has no UI customization set previously. If you specify UI
-%% customization settings for a particular client, it will no longer fall
-%% back to the <code>ALL</code> configuration.
+%% specific `clientId`) or for all clients (by setting the `clientId` to
+%% `ALL`). If you specify `ALL`, the default configuration will be used for
+%% every client that has no UI customization set previously. If you specify
+%% UI customization settings for a particular client, it will no longer fall
+%% back to the `ALL` configuration.
 %%
-%% <note> To use this API, your user pool must have a domain associated with
-%% it. Otherwise, there is no place to host the app's pages, and the service
-%% will throw an error.
-%%
-%% </note>
+%% To use this API, your user pool must have a domain associated with it.
+%% Otherwise, there is no place to host the app's pages, and the service will
+%% throw an error.
 set_u_i_customization(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_u_i_customization(Client, Input, []).
@@ -1089,11 +1111,12 @@ set_u_i_customization(Client, Input, Options)
     request(Client, <<"SetUICustomization">>, Input, Options).
 
 %% @doc Set the user's multi-factor authentication (MFA) method preference,
-%% including which MFA factors are enabled and if any are preferred. Only one
-%% factor can be set as preferred. The preferred MFA factor will be used to
-%% authenticate a user if multiple factors are enabled. If multiple options
-%% are enabled and no preference is set, a challenge to choose an MFA option
-%% will be returned during sign in.
+%% including which MFA factors are enabled and if any are preferred.
+%%
+%% Only one factor can be set as preferred. The preferred MFA factor will be
+%% used to authenticate a user if multiple factors are enabled. If multiple
+%% options are enabled and no preference is set, a challenge to choose an MFA
+%% option will be returned during sign in.
 set_user_m_f_a_preference(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_user_m_f_a_preference(Client, Input, []).
@@ -1109,10 +1132,11 @@ set_user_pool_mfa_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetUserPoolMfaConfig">>, Input, Options).
 
-%% @doc <i>This action is no longer supported.</i> You can use it to
-%% configure only SMS MFA. You can't use it to configure TOTP software token
-%% MFA. To configure either type of MFA, use the <a>SetUserMFAPreference</a>
-%% action instead.
+%% @doc This action is no longer supported.
+%%
+%% You can use it to configure only SMS MFA. You can't use it to configure
+%% TOTP software token MFA. To configure either type of MFA, use
+%% SetUserMFAPreference instead.
 set_user_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_user_settings(Client, Input, []).
@@ -1145,16 +1169,16 @@ stop_user_import_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopUserImportJob">>, Input, Options).
 
-%% @doc Assigns a set of tags to an Amazon Cognito user pool. A tag is a
-%% label that you can use to categorize and manage user pools in different
-%% ways, such as by purpose, owner, environment, or other criteria.
+%% @doc Assigns a set of tags to an Amazon Cognito user pool.
+%%
+%% A tag is a label that you can use to categorize and manage user pools in
+%% different ways, such as by purpose, owner, environment, or other criteria.
 %%
 %% Each tag consists of a key and value, both of which you define. A key is a
 %% general category for more specific values. For example, if you have two
 %% versions of a user pool, one for testing and another for production, you
-%% might assign an <code>Environment</code> tag key to both user pools. The
-%% value of this key might be <code>Test</code> for one user pool and
-%% <code>Production</code> for the other.
+%% might assign an `Environment` tag key to both user pools. The value of
+%% this key might be `Test` for one user pool and `Production` for the other.
 %%
 %% Tags are useful for cost tracking and access control. You can activate
 %% your tags so that they appear on the Billing and Cost Management console,
@@ -1171,8 +1195,9 @@ tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
-%% @doc Removes the specified tags from an Amazon Cognito user pool. You can
-%% use this action up to 5 times per second, per account
+%% @doc Removes the specified tags from an Amazon Cognito user pool.
+%%
+%% You can use this action up to 5 times per second, per account
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -1181,9 +1206,10 @@ untag_resource(Client, Input, Options)
     request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Provides the feedback for an authentication event whether it was from
-%% a valid user or not. This feedback is used for improving the risk
-%% evaluation decision for the user pool as part of Amazon Cognito advanced
-%% security.
+%% a valid user or not.
+%%
+%% This feedback is used for improving the risk evaluation decision for the
+%% user pool as part of Amazon Cognito advanced security.
 update_auth_event_feedback(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_auth_event_feedback(Client, Input, []).
@@ -1203,10 +1229,8 @@ update_device_status(Client, Input, Options)
 %%
 %% Calling this action requires developer credentials.
 %%
-%% <important> If you don't provide a value for an attribute, it will be set
-%% to the default value.
-%%
-%% </important>
+%% If you don't provide a value for an attribute, it will be set to the
+%% default value.
 update_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_group(Client, Input, []).
@@ -1222,13 +1246,12 @@ update_identity_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateIdentityProvider">>, Input, Options).
 
-%% @doc Updates the name and scopes of resource server. All other fields are
-%% read-only.
+%% @doc Updates the name and scopes of resource server.
 %%
-%% <important> If you don't provide a value for an attribute, it will be set
-%% to the default value.
+%% All other fields are read-only.
 %%
-%% </important>
+%% If you don't provide a value for an attribute, it will be set to the
+%% default value.
 update_resource_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_resource_server(Client, Input, []).
@@ -1244,13 +1267,13 @@ update_user_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateUserAttributes">>, Input, Options).
 
-%% @doc Updates the specified user pool with the specified attributes. You
-%% can get a list of the current user pool settings with .
+%% @doc Updates the specified user pool with the specified attributes.
 %%
-%% <important> If you don't provide a value for an attribute, it will be set
-%% to the default value.
+%% You can get a list of the current user pool settings using
+%% DescribeUserPool.
 %%
-%% </important>
+%% If you don't provide a value for an attribute, it will be set to the
+%% default value.
 update_user_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user_pool(Client, Input, []).
@@ -1259,13 +1282,13 @@ update_user_pool(Client, Input, Options)
     request(Client, <<"UpdateUserPool">>, Input, Options).
 
 %% @doc Updates the specified user pool app client with the specified
-%% attributes. You can get a list of the current user pool app client
-%% settings with .
+%% attributes.
 %%
-%% <important> If you don't provide a value for an attribute, it will be set
-%% to the default value.
+%% You can get a list of the current user pool app client settings using
+%% DescribeUserPoolClient.
 %%
-%% </important>
+%% If you don't provide a value for an attribute, it will be set to the
+%% default value.
 update_user_pool_client(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user_pool_client(Client, Input, []).
@@ -1302,9 +1325,7 @@ update_user_pool_client(Client, Input, Options)
 %% distribute your new certificate to your custom domain.
 %%
 %% For more information about adding a custom domain to your user pool, see
-%% <a
-%% href="https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-add-custom-domain.html">Using
-%% Your Own Domain for the Hosted UI</a>.
+%% Using Your Own Domain for the Hosted UI.
 update_user_pool_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user_pool_domain(Client, Input, []).
@@ -1313,8 +1334,9 @@ update_user_pool_domain(Client, Input, Options)
     request(Client, <<"UpdateUserPoolDomain">>, Input, Options).
 
 %% @doc Use this API to register a user's entered TOTP code and mark the
-%% user's software token MFA status as "verified" if successful. The request
-%% takes an access token or a session string, but not both.
+%% user's software token MFA status as "verified" if successful.
+%%
+%% The request takes an access token or a session string, but not both.
 verify_software_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     verify_software_token(Client, Input, []).
@@ -1372,6 +1394,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
 handle_response({error, Reason}) ->
     {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

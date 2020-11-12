@@ -2,15 +2,15 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Use AWS Resource Access Manager to share AWS resources between AWS
-%% accounts. To share a resource, you create a resource share, associate the
-%% resource with the resource share, and specify the principals that can
-%% access the resources associated with the resource share. The following
-%% principals are supported: AWS accounts, organizational units (OU) from AWS
-%% Organizations, and organizations from AWS Organizations.
+%% accounts.
 %%
-%% For more information, see the <a
-%% href="https://docs.aws.amazon.com/ram/latest/userguide/">AWS Resource
-%% Access Manager User Guide</a>.
+%% To share a resource, you create a resource share, associate the resource
+%% with the resource share, and specify the principals that can access the
+%% resources associated with the resource share. The following principals are
+%% supported: AWS accounts, organizational units (OU) from AWS Organizations,
+%% and organizations from AWS Organizations.
+%%
+%% For more information, see the AWS Resource Access Manager User Guide.
 -module(aws_ram).
 
 -export([accept_resource_share_invitation/2,
@@ -524,6 +524,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

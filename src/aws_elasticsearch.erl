@@ -1,22 +1,19 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc <fullname>Amazon Elasticsearch Configuration Service</fullname>
+%% @doc Amazon Elasticsearch Configuration Service
 %%
 %% Use the Amazon Elasticsearch Configuration API to create, configure, and
 %% manage Elasticsearch domains.
 %%
-%% For sample code that uses the Configuration API, see the <a
-%% href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-configuration-samples.html">Amazon
-%% Elasticsearch Service Developer Guide</a>. The guide also contains <a
-%% href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-request-signing.html">sample
-%% code for sending signed HTTP requests to the Elasticsearch APIs</a>.
+%% For sample code that uses the Configuration API, see the Amazon
+%% Elasticsearch Service Developer Guide. The guide also contains sample code
+%% for sending signed HTTP requests to the Elasticsearch APIs.
 %%
 %% The endpoint for configuration service requests is region-specific:
-%% es.<i>region</i>.amazonaws.com. For example, es.us-east-1.amazonaws.com.
-%% For a current list of supported regions and endpoints, see <a
-%% href="http://docs.aws.amazon.com/general/latest/gr/rande.html#elasticsearch-service-regions"
-%% target="_blank">Regions and Endpoints</a>.
+%% es.region.amazonaws.com. For example, es.us-east-1.amazonaws.com. For a
+%% current list of supported regions and endpoints, see Regions and
+%% Endpoints.
 -module(aws_elasticsearch).
 
 -export([accept_inbound_cross_cluster_search_connection/3,
@@ -65,6 +62,8 @@
          dissociate_package/5,
          get_compatible_elasticsearch_versions/2,
          get_compatible_elasticsearch_versions/3,
+         get_package_version_history/4,
+         get_package_version_history/5,
          get_upgrade_history/4,
          get_upgrade_history/5,
          get_upgrade_status/2,
@@ -91,6 +90,8 @@
          start_elasticsearch_service_software_update/3,
          update_elasticsearch_domain_config/3,
          update_elasticsearch_domain_config/4,
+         update_package/2,
+         update_package/3,
          upgrade_elasticsearch_domain/2,
          upgrade_elasticsearch_domain/3]).
 
@@ -117,12 +118,11 @@ accept_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnect
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Attaches tags to an existing Elasticsearch domain. Tags are a set of
-%% case-sensitive key value pairs. An Elasticsearch domain may have up to 10
-%% tags. See <a
-%% href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-managedomains.html#es-managedomains-awsresorcetagging"
-%% target="_blank"> Tagging Amazon Elasticsearch Service Domains for more
-%% information.</a>
+%% @doc Attaches tags to an existing Elasticsearch domain.
+%%
+%% Tags are a set of case-sensitive key value pairs. An Elasticsearch domain
+%% may have up to 10 tags. See Tagging Amazon Elasticsearch Service Domains
+%% for more information.
 add_tags(Client, Input) ->
     add_tags(Client, Input, []).
 add_tags(Client, Input0, Options) ->
@@ -155,9 +155,9 @@ associate_package(Client, DomainName, PackageID, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels a scheduled service software update for an Amazon ES domain.
-%% You can only perform this operation before the
-%% <code>AutomatedUpdateDate</code> and when the <code>UpdateStatus</code> is
-%% in the <code>PENDING_UPDATE</code> state.
+%%
+%% You can only perform this operation before the `AutomatedUpdateDate` and
+%% when the `UpdateStatus` is in the `PENDING_UPDATE` state.
 cancel_elasticsearch_service_software_update(Client, Input) ->
     cancel_elasticsearch_service_software_update(Client, Input, []).
 cancel_elasticsearch_service_software_update(Client, Input0, Options) ->
@@ -173,10 +173,10 @@ cancel_elasticsearch_service_software_update(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new Elasticsearch domain. For more information, see <a
-%% href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomains"
-%% target="_blank">Creating Elasticsearch Domains</a> in the <i>Amazon
-%% Elasticsearch Service Developer Guide</i>.
+%% @doc Creates a new Elasticsearch domain.
+%%
+%% For more information, see Creating Elasticsearch Domains in the Amazon
+%% Elasticsearch Service Developer Guide.
 create_elasticsearch_domain(Client, Input) ->
     create_elasticsearch_domain(Client, Input, []).
 create_elasticsearch_domain(Client, Input0, Options) ->
@@ -226,7 +226,9 @@ create_package(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Permanently deletes the specified Elasticsearch domain and all of its
-%% data. Once a domain is deleted, it cannot be recovered.
+%% data.
+%%
+%% Once a domain is deleted, it cannot be recovered.
 delete_elasticsearch_domain(Client, DomainName, Input) ->
     delete_elasticsearch_domain(Client, DomainName, Input, []).
 delete_elasticsearch_domain(Client, DomainName, Input0, Options) ->
@@ -243,12 +245,12 @@ delete_elasticsearch_domain(Client, DomainName, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the service-linked role that Elasticsearch Service uses to
-%% manage and maintain VPC domains. Role deletion will fail if any existing
-%% VPC domains use the role. You must delete any such Elasticsearch domains
-%% before deleting the role. See <a
-%% href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html#es-enabling-slr"
-%% target="_blank">Deleting Elasticsearch Service Role</a> in <i>VPC
-%% Endpoints for Amazon Elasticsearch Service Domains</i>.
+%% manage and maintain VPC domains.
+%%
+%% Role deletion will fail if any existing VPC domains use the role. You must
+%% delete any such Elasticsearch domains before deleting the role. See
+%% Deleting Elasticsearch Service Role in VPC Endpoints for Amazon
+%% Elasticsearch Service Domains.
 delete_elasticsearch_service_role(Client, Input) ->
     delete_elasticsearch_service_role(Client, Input, []).
 delete_elasticsearch_service_role(Client, Input0, Options) ->
@@ -367,8 +369,10 @@ describe_elasticsearch_domains(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describe Elasticsearch Limits for a given InstanceType and
-%% ElasticsearchVersion. When modifying existing Domain, specify the <code>
-%% <a>DomainName</a> </code> to know what Limits are supported for modifying.
+%% ElasticsearchVersion.
+%%
+%% When modifying existing Domain, specify the ` `DomainName` ` to know what
+%% Limits are supported for modifying.
 describe_elasticsearch_instance_type_limits(Client, ElasticsearchVersion, InstanceType, DomainName)
   when is_map(Client) ->
     describe_elasticsearch_instance_type_limits(Client, ElasticsearchVersion, InstanceType, DomainName, []).
@@ -421,8 +425,10 @@ describe_outbound_cross_cluster_search_connections(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Describes all packages available to Amazon ES. Includes options for
-%% filtering, limiting the number of results, and pagination.
+%% @doc Describes all packages available to Amazon ES.
+%%
+%% Includes options for filtering, limiting the number of results, and
+%% pagination.
 describe_packages(Client, Input) ->
     describe_packages(Client, Input, []).
 describe_packages(Client, Input0, Options) ->
@@ -497,9 +503,10 @@ dissociate_package(Client, DomainName, PackageID, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of upgrade compatible Elastisearch versions. You can
-%% optionally pass a <code> <a>DomainName</a> </code> to get all upgrade
-%% compatible Elasticsearch versions for that specific domain.
+%% @doc Returns a list of upgrade compatible Elastisearch versions.
+%%
+%% You can optionally pass a ` `DomainName` ` to get all upgrade compatible
+%% Elasticsearch versions for that specific domain.
 get_compatible_elasticsearch_versions(Client, DomainName)
   when is_map(Client) ->
     get_compatible_elasticsearch_versions(Client, DomainName, []).
@@ -513,6 +520,27 @@ get_compatible_elasticsearch_versions(Client, DomainName, Options)
     Query0_ =
       [
         {<<"domainName">>, DomainName}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of versions of the package, along with their creation
+%% time and commit message.
+get_package_version_history(Client, PackageID, MaxResults, NextToken)
+  when is_map(Client) ->
+    get_package_version_history(Client, PackageID, MaxResults, NextToken, []).
+get_package_version_history(Client, PackageID, MaxResults, NextToken, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/2015-01-01/packages/", http_uri:encode(PackageID), "/history"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -755,6 +783,22 @@ update_elasticsearch_domain_config(Client, DomainName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates a package for use with Amazon ES domains.
+update_package(Client, Input) ->
+    update_package(Client, Input, []).
+update_package(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/2015-01-01/packages/update"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Allows you to either upgrade your domain or perform an Upgrade
 %% eligibility check to a compatible Elasticsearch version.
 upgrade_elasticsearch_domain(Client, Input) ->
@@ -818,6 +862,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

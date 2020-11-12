@@ -1,7 +1,7 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc <p/>
+
 -module(aws_kinesis_video_media).
 
 -export([get_media/2,
@@ -14,55 +14,47 @@
 %%====================================================================
 
 %% @doc Use this API to retrieve media content from a Kinesis video stream.
+%%
 %% In the request, you identify the stream name or stream Amazon Resource
 %% Name (ARN), and the starting chunk. Kinesis Video Streams then returns a
 %% stream of chunks in order by fragment number.
 %%
-%% <note> You must first call the <code>GetDataEndpoint</code> API to get an
-%% endpoint. Then send the <code>GetMedia</code> requests to this endpoint
-%% using the <a
-%% href="https://docs.aws.amazon.com/cli/latest/reference/">--endpoint-url
-%% parameter</a>.
+%% You must first call the `GetDataEndpoint` API to get an endpoint. Then
+%% send the `GetMedia` requests to this endpoint using the --endpoint-url
+%% parameter.
 %%
-%% </note> When you put media data (fragments) on a stream, Kinesis Video
-%% Streams stores each incoming fragment and related metadata in what is
-%% called a "chunk." For more information, see <a
-%% href="https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/API_dataplane_PutMedia.html">PutMedia</a>.
-%% The <code>GetMedia</code> API returns a stream of these chunks starting
-%% from the chunk that you specify in the request.
+%% When you put media data (fragments) on a stream, Kinesis Video Streams
+%% stores each incoming fragment and related metadata in what is called a
+%% "chunk." For more information, see PutMedia. The `GetMedia` API returns a
+%% stream of these chunks starting from the chunk that you specify in the
+%% request.
 %%
-%% The following limits apply when using the <code>GetMedia</code> API:
+%% The following limits apply when using the `GetMedia` API:
 %%
-%% <ul> <li> A client can call <code>GetMedia</code> up to five times per
-%% second per stream.
+%% <ul> <li> A client can call `GetMedia` up to five times per second per
+%% stream.
 %%
 %% </li> <li> Kinesis Video Streams sends media data at a rate of up to 25
-%% megabytes per second (or 200 megabits per second) during a
-%% <code>GetMedia</code> session.
+%% megabytes per second (or 200 megabits per second) during a `GetMedia`
+%% session.
 %%
-%% </li> </ul> <note> If an error is thrown after invoking a Kinesis Video
-%% Streams media API, in addition to the HTTP status code and the response
-%% body, it includes the following pieces of information:
+%% </li> </ul> If an error is thrown after invoking a Kinesis Video Streams
+%% media API, in addition to the HTTP status code and the response body, it
+%% includes the following pieces of information:
 %%
-%% <ul> <li> <code>x-amz-ErrorType</code> HTTP header – contains a more
-%% specific error type in addition to what the HTTP status code provides.
+%% `x-amz-ErrorType` HTTP header – contains a more specific error type in
+%% addition to what the HTTP status code provides.
 %%
-%% </li> <li> <code>x-amz-RequestId</code> HTTP header – if you want to
-%% report an issue to AWS, the support team can better diagnose the problem
-%% if given the Request Id.
+%% `x-amz-RequestId` HTTP header – if you want to report an issue to AWS, the
+%% support team can better diagnose the problem if given the Request Id.
 %%
-%% </li> </ul> Both the HTTP status code and the ErrorType header can be
-%% utilized to make programmatic decisions about whether errors are
-%% retry-able and under what conditions, as well as provide information on
-%% what actions the client programmer might need to take in order to
-%% successfully try again.
+%% Both the HTTP status code and the ErrorType header can be utilized to make
+%% programmatic decisions about whether errors are retry-able and under what
+%% conditions, as well as provide information on what actions the client
+%% programmer might need to take in order to successfully try again.
 %%
-%% For more information, see the <b>Errors</b> section at the bottom of this
-%% topic, as well as <a
-%% href="https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/CommonErrors.html">Common
-%% Errors</a>.
-%%
-%% </note>
+%% For more information, see the Errors section at the bottom of this topic,
+%% as well as Common Errors.
 get_media(Client, Input) ->
     get_media(Client, Input, []).
 get_media(Client, Input0, Options) ->
@@ -140,6 +132,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

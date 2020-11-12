@@ -3,65 +3,49 @@
 
 %% @doc The AWS Serverless Application Repository makes it easy for
 %% developers and enterprises to quickly find
+%% and deploy serverless applications in the AWS Cloud.
 %%
-%% and deploy serverless applications in the AWS Cloud. For more information
-%% about serverless applications,
-%%
+%% For more information about serverless applications,
 %% see Serverless Computing and Applications on the AWS website.
 %%
 %% The AWS Serverless Application Repository is deeply integrated with the
 %% AWS Lambda console, so that developers of
-%%
 %% all levels can get started with serverless computing without needing to
 %% learn anything new. You can use category
-%%
 %% keywords to browse for applications such as web and mobile backends, data
 %% processing applications, or chatbots.
-%%
 %% You can also search for applications by name, publisher, or event source.
 %% To use an application, you simply choose it,
-%%
 %% configure any required fields, and deploy it with a few clicks.
 %%
 %% You can also easily publish applications, sharing them publicly with the
 %% community at large, or privately
-%%
 %% within your team or across your organization. To publish a serverless
 %% application (or app), you can use the
-%%
 %% AWS Management Console, AWS Command Line Interface (AWS CLI), or AWS SDKs
 %% to upload the code. Along with the
-%%
 %% code, you upload a simple manifest file, also known as the AWS Serverless
 %% Application Model (AWS SAM) template.
-%%
 %% For more information about AWS SAM, see AWS Serverless Application Model
 %% (AWS SAM) on the AWS Labs
-%%
 %% GitHub repository.
 %%
 %% The AWS Serverless Application Repository Developer Guide contains more
 %% information about the two developer
-%%
 %% experiences available:
 %%
 %% <ul>
-%%
 %% <li>
-%%
 %% Consuming Applications – Browse for applications and view information
 %% about them, including
-%%
 %% source code and readme files. Also install, configure, and deploy
 %% applications of your choosing.
 %%
 %% Publishing Applications – Configure and upload applications to make them
 %% available to other
-%%
 %% developers, and publish new versions of applications.
 %%
 %% </li>
-%%
 %% </ul>
 -module(aws_serverlessapplicationrepository).
 
@@ -292,14 +276,11 @@ list_applications(Client, MaxItems, NextToken, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Sets the permission policy for an application. For the list of
-%% actions supported for this operation, see
+%% @doc Sets the permission policy for an application.
 %%
-%% <a
-%% href="https://docs.aws.amazon.com/serverlessrepo/latest/devguide/access-control-resource-based.html#application-permissions">Application
-%%
-%% Permissions</a>
-%%
+%% For the list of actions supported for this operation, see
+%% Application
+%% Permissions
 %% .
 put_application_policy(Client, ApplicationId, Input) ->
     put_application_policy(Client, ApplicationId, Input, []).
@@ -396,6 +377,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

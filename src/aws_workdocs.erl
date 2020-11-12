@@ -5,9 +5,11 @@
 %%
 %% <ul> <li> File Migration: File migration applications are supported for
 %% users who want to migrate their files from an on-premises or off-premises
-%% file system or service. Users can insert files into a user directory
-%% structure, as well as allow for basic metadata changes, such as
-%% modifications to the permissions of files.
+%% file system or service.
+%%
+%% Users can insert files into a user directory structure, as well as allow
+%% for basic metadata changes, such as modifications to the permissions of
+%% files.
 %%
 %% </li> <li> Security: Support security applications are supported for users
 %% who have additional security needs, such as antivirus or data loss
@@ -125,9 +127,10 @@
 %%====================================================================
 
 %% @doc Aborts the upload of the specified document version that was
-%% previously initiated by <a>InitiateDocumentVersionUpload</a>. The client
-%% should make this call only when it no longer intends to upload the
-%% document version, or fails to do so.
+%% previously initiated by `InitiateDocumentVersionUpload`.
+%%
+%% The client should make this call only when it no longer intends to upload
+%% the document version, or fails to do so.
 abort_document_version_upload(Client, DocumentId, VersionId, Input) ->
     abort_document_version_upload(Client, DocumentId, VersionId, Input, []).
 abort_document_version_upload(Client, DocumentId, VersionId, Input0, Options) ->
@@ -145,8 +148,9 @@ abort_document_version_upload(Client, DocumentId, VersionId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Activates the specified user. Only active users can access Amazon
-%% WorkDocs.
+%% @doc Activates the specified user.
+%%
+%% Only active users can access Amazon WorkDocs.
 activate_user(Client, UserId, Input) ->
     activate_user(Client, UserId, Input, []).
 activate_user(Client, UserId, Input0, Options) ->
@@ -165,6 +169,7 @@ activate_user(Client, UserId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a set of permissions for the specified folder or document.
+%%
 %% The resource permissions are overwritten if the principals already have
 %% different permissions.
 add_resource_permissions(Client, ResourceId, Input) ->
@@ -259,13 +264,13 @@ create_labels(Client, ResourceId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Configure Amazon WorkDocs to use Amazon SNS notifications. The
-%% endpoint receives a confirmation message, and must confirm the
+%% @doc Configure Amazon WorkDocs to use Amazon SNS notifications.
+%%
+%% The endpoint receives a confirmation message, and must confirm the
 %% subscription.
 %%
-%% For more information, see <a
-%% href="https://docs.aws.amazon.com/workdocs/latest/developerguide/subscribe-notifications.html">Subscribe
-%% to Notifications</a> in the <i>Amazon WorkDocs Developer Guide</i>.
+%% For more information, see Subscribe to Notifications in the Amazon
+%% WorkDocs Developer Guide.
 create_notification_subscription(Client, OrganizationId, Input) ->
     create_notification_subscription(Client, OrganizationId, Input, []).
 create_notification_subscription(Client, OrganizationId, Input0, Options) ->
@@ -281,8 +286,10 @@ create_notification_subscription(Client, OrganizationId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a user in a Simple AD or Microsoft AD directory. The status
-%% of a newly created user is "ACTIVE". New users can access Amazon WorkDocs.
+%% @doc Creates a user in a Simple AD or Microsoft AD directory.
+%%
+%% The status of a newly created user is "ACTIVE". New users can access
+%% Amazon WorkDocs.
 create_user(Client, Input) ->
     create_user(Client, Input, []).
 create_user(Client, Input0, Options) ->
@@ -585,8 +592,9 @@ describe_folder_contents(Client, FolderId, Include, Limit, Marker, Order, Sort, 
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describes the groups specified by the query. Groups are defined by
-%% the underlying Active Directory.
+%% @doc Describes the groups specified by the query.
+%%
+%% Groups are defined by the underlying Active Directory.
 describe_groups(Client, Limit, Marker, OrganizationId, SearchQuery, AuthenticationToken)
   when is_map(Client) ->
     describe_groups(Client, Limit, Marker, OrganizationId, SearchQuery, AuthenticationToken, []).
@@ -657,18 +665,17 @@ describe_resource_permissions(Client, ResourceId, Limit, Marker, PrincipalId, Au
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describes the current user's special folders; the
-%% <code>RootFolder</code> and the <code>RecycleBin</code>.
-%% <code>RootFolder</code> is the root of user's files and folders and
-%% <code>RecycleBin</code> is the root of recycled items. This is not a valid
-%% action for SigV4 (administrative API) clients.
+%% @doc Describes the current user's special folders; the `RootFolder` and
+%% the `RecycleBin`.
+%%
+%% `RootFolder` is the root of user's files and folders and `RecycleBin` is
+%% the root of recycled items. This is not a valid action for SigV4
+%% (administrative API) clients.
 %%
 %% This action requires an authentication token. To get an authentication
 %% token, register an application with Amazon WorkDocs. For more information,
-%% see <a
-%% href="https://docs.aws.amazon.com/workdocs/latest/developerguide/wd-auth-user.html">Authentication
-%% and Access Control for User Applications</a> in the <i>Amazon WorkDocs
-%% Developer Guide</i>.
+%% see Authentication and Access Control for User Applications in the Amazon
+%% WorkDocs Developer Guide.
 describe_root_folders(Client, Limit, Marker, AuthenticationToken)
   when is_map(Client) ->
     describe_root_folders(Client, Limit, Marker, AuthenticationToken, []).
@@ -692,8 +699,10 @@ describe_root_folders(Client, Limit, Marker, AuthenticationToken, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describes the specified users. You can describe all users or filter
-%% the results (for example, by status or organization).
+%% @doc Describes the specified users.
+%%
+%% You can describe all users or filter the results (for example, by status
+%% or organization).
 %%
 %% By default, Amazon WorkDocs returns the first 24 active or pending users.
 %% If there are more results, the response includes a marker that you can use
@@ -729,15 +738,14 @@ describe_users(Client, Fields, Include, Limit, Marker, Order, OrganizationId, Qu
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves details of the current user for whom the authentication
-%% token was generated. This is not a valid action for SigV4 (administrative
-%% API) clients.
+%% token was generated.
+%%
+%% This is not a valid action for SigV4 (administrative API) clients.
 %%
 %% This action requires an authentication token. To get an authentication
 %% token, register an application with Amazon WorkDocs. For more information,
-%% see <a
-%% href="https://docs.aws.amazon.com/workdocs/latest/developerguide/wd-auth-user.html">Authentication
-%% and Access Control for User Applications</a> in the <i>Amazon WorkDocs
-%% Developer Guide</i>.
+%% see Authentication and Access Control for User Applications in the Amazon
+%% WorkDocs Developer Guide.
 get_current_user(Client, AuthenticationToken)
   when is_map(Client) ->
     get_current_user(Client, AuthenticationToken, []).
@@ -889,8 +897,8 @@ get_folder_path(Client, FolderId, Fields, Limit, Marker, AuthenticationToken, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a collection of resources, including folders and documents.
-%% The only <code>CollectionType</code> supported is
-%% <code>SHARED_WITH_ME</code>.
+%%
+%% The only `CollectionType` supported is `SHARED_WITH_ME`.
 get_resources(Client, CollectionType, Limit, Marker, UserId, AuthenticationToken)
   when is_map(Client) ->
     get_resources(Client, CollectionType, Limit, Marker, UserId, AuthenticationToken, []).
@@ -922,9 +930,9 @@ get_resources(Client, CollectionType, Limit, Marker, UserId, AuthenticationToken
 %% upload. The ID is optionally specified when creating a new version of an
 %% existing document. This is the first step to upload a document. Next,
 %% upload the document to the URL returned from the call, and then call
-%% <a>UpdateDocumentVersion</a>.
+%% `UpdateDocumentVersion`.
 %%
-%% To cancel the document upload, call <a>AbortDocumentVersionUpload</a>.
+%% To cancel the document upload, call `AbortDocumentVersionUpload`.
 initiate_document_version_upload(Client, Input) ->
     initiate_document_version_upload(Client, Input, []).
 initiate_document_version_upload(Client, Input0, Options) ->
@@ -980,8 +988,10 @@ remove_resource_permission(Client, PrincipalId, ResourceId, Input0, Options) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the specified attributes of a document. The user must have
-%% access to both the document and its parent folder, if applicable.
+%% @doc Updates the specified attributes of a document.
+%%
+%% The user must have access to both the document and its parent folder, if
+%% applicable.
 update_document(Client, DocumentId, Input) ->
     update_document(Client, DocumentId, Input, []).
 update_document(Client, DocumentId, Input0, Options) ->
@@ -1003,7 +1013,7 @@ update_document(Client, DocumentId, Input0, Options) ->
 %%
 %% Amazon WorkDocs also sets its document container to ACTIVE. This is the
 %% last step in a document upload, after the client uploads the document to
-%% an S3-presigned URL returned by <a>InitiateDocumentVersionUpload</a>.
+%% an S3-presigned URL returned by `InitiateDocumentVersionUpload`.
 update_document_version(Client, DocumentId, VersionId, Input) ->
     update_document_version(Client, DocumentId, VersionId, Input, []).
 update_document_version(Client, DocumentId, VersionId, Input0, Options) ->
@@ -1021,8 +1031,10 @@ update_document_version(Client, DocumentId, VersionId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the specified attributes of the specified folder. The user
-%% must have access to both the folder and its parent folder, if applicable.
+%% @doc Updates the specified attributes of the specified folder.
+%%
+%% The user must have access to both the folder and its parent folder, if
+%% applicable.
 update_folder(Client, FolderId, Input) ->
     update_folder(Client, FolderId, Input, []).
 update_folder(Client, FolderId, Input0, Options) ->
@@ -1105,6 +1117,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

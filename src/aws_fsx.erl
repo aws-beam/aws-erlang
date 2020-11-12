@@ -5,7 +5,9 @@
 %% and application administrators to launch and use shared file storage.
 -module(aws_fsx).
 
--export([cancel_data_repository_task/2,
+-export([associate_file_system_aliases/2,
+         associate_file_system_aliases/3,
+         cancel_data_repository_task/2,
          cancel_data_repository_task/3,
          create_backup/2,
          create_backup/3,
@@ -23,8 +25,12 @@
          describe_backups/3,
          describe_data_repository_tasks/2,
          describe_data_repository_tasks/3,
+         describe_file_system_aliases/2,
+         describe_file_system_aliases/3,
          describe_file_systems/2,
          describe_file_systems/3,
+         disassociate_file_system_aliases/2,
+         disassociate_file_system_aliases/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          tag_resource/2,
@@ -40,9 +46,31 @@
 %% API
 %%====================================================================
 
+%% @doc Use this action to associate one or more Domain Name Server (DNS)
+%% aliases with an existing Amazon FSx for Windows File Server file system.
+%%
+%% A file systen can have a maximum of 50 DNS aliases associated with it at
+%% any one time. If you try to associate a DNS alias that is already
+%% associated with the file system, FSx takes no action on that alias in the
+%% request. For more information, see Working with DNS Aliases and
+%% Walkthrough 5: Using DNS aliases to access your file system, including
+%% additional steps you must take to be able to access your file system using
+%% a DNS alias.
+%%
+%% The system response shows the DNS aliases that Amazon FSx is attempting to
+%% associate with the file system. Use the API operation to monitor the
+%% status of the aliases Amazon FSx is associating with the file system.
+associate_file_system_aliases(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    associate_file_system_aliases(Client, Input, []).
+associate_file_system_aliases(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssociateFileSystemAliases">>, Input, Options).
+
 %% @doc Cancels an existing Amazon FSx for Lustre data repository task if
-%% that task is in either the <code>PENDING</code> or <code>EXECUTING</code>
-%% state. When you cancel a task, Amazon FSx does the following.
+%% that task is in either the `PENDING` or `EXECUTING` state.
+%%
+%% When you cancel a task, Amazon FSx does the following.
 %%
 %% <ul> <li> Any files that FSx has already exported are not reverted.
 %%
@@ -59,52 +87,48 @@ cancel_data_repository_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelDataRepositoryTask">>, Input, Options).
 
-%% @doc Creates a backup of an existing Amazon FSx file system. Creating
-%% regular backups for your file system is a best practice, enabling you to
-%% restore a file system from a backup if an issue arises with the original
-%% file system.
+%% @doc Creates a backup of an existing Amazon FSx file system.
+%%
+%% Creating regular backups for your file system is a best practice, enabling
+%% you to restore a file system from a backup if an issue arises with the
+%% original file system.
 %%
 %% For Amazon FSx for Lustre file systems, you can create a backup only for
 %% file systems with the following configuration:
 %%
 %% <ul> <li> a Persistent deployment type
 %%
-%% </li> <li> is <i>not</i> linked to an Amazon S3 data respository.
+%% </li> <li> is not linked to a data respository.
 %%
 %% </li> </ul> For more information about backing up Amazon FSx for Lustre
-%% file systems, see <a
-%% href="https://docs.aws.amazon.com/fsx/latest/LustreGuide/using-backups-fsx.html">Working
-%% with FSx for Lustre backups</a>.
+%% file systems, see Working with FSx for Lustre backups.
 %%
 %% For more information about backing up Amazon FSx for Lustre file systems,
-%% see <a
-%% href="https://docs.aws.amazon.com/fsx/latest/WindowsGuide/using-backups.html">Working
-%% with FSx for Windows backups</a>.
+%% see Working with FSx for Windows backups.
 %%
 %% If a backup with the specified client request token exists, and the
 %% parameters match, this operation returns the description of the existing
 %% backup. If a backup specified client request token exists, and the
 %% parameters don't match, this operation returns
-%% <code>IncompatibleParameterError</code>. If a backup with the specified
-%% client request token doesn't exist, <code>CreateBackup</code> does the
-%% following:
+%% `IncompatibleParameterError`. If a backup with the specified client
+%% request token doesn't exist, `CreateBackup` does the following:
 %%
 %% <ul> <li> Creates a new Amazon FSx backup with an assigned ID, and an
-%% initial lifecycle state of <code>CREATING</code>.
+%% initial lifecycle state of `CREATING`.
 %%
 %% </li> <li> Returns the description of the backup.
 %%
 %% </li> </ul> By using the idempotent operation, you can retry a
-%% <code>CreateBackup</code> operation without the risk of creating an extra
-%% backup. This approach can be useful when an initial call fails in a way
-%% that makes it unclear whether a backup was created. If you use the same
-%% client request token and the initial call created a backup, the operation
-%% returns a successful result because all the parameters are the same.
+%% `CreateBackup` operation without the risk of creating an extra backup.
+%% This approach can be useful when an initial call fails in a way that makes
+%% it unclear whether a backup was created. If you use the same client
+%% request token and the initial call created a backup, the operation returns
+%% a successful result because all the parameters are the same.
 %%
-%% The <code>CreateBackup</code> operation returns while the backup's
-%% lifecycle state is still <code>CREATING</code>. You can check the backup
-%% creation status by calling the <a>DescribeBackups</a> operation, which
-%% returns the backup state along with other information.
+%% The `CreateBackup` operation returns while the backup's lifecycle state is
+%% still `CREATING`. You can check the backup creation status by calling the
+%% `DescribeBackups` operation, which returns the backup state along with
+%% other information.
 create_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_backup(Client, Input, []).
@@ -112,20 +136,17 @@ create_backup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateBackup">>, Input, Options).
 
-%% @doc Creates an Amazon FSx for Lustre data repository task. You use data
-%% repository tasks to perform bulk operations between your Amazon FSx file
-%% system and its linked data repository. An example of a data repository
-%% task is exporting any data and metadata changes, including POSIX metadata,
-%% to files, directories, and symbolic links (symlinks) from your FSx file
-%% system to its linked data repository. A
-%% <code>CreateDataRepositoryTask</code> operation will fail if a data
-%% repository is not linked to the FSx file system. To learn more about data
-%% repository tasks, see <a
-%% href="https://docs.aws.amazon.com/fsx/latest/LustreGuide/data-repository-tasks.html">Using
-%% Data Repository Tasks</a>. To learn more about linking a data repository
-%% to your file system, see <a
-%% href="https://docs.aws.amazon.com/fsx/latest/LustreGuide/export-data-repository.html#export-prefix">Setting
-%% the Export Prefix</a>.
+%% @doc Creates an Amazon FSx for Lustre data repository task.
+%%
+%% You use data repository tasks to perform bulk operations between your
+%% Amazon FSx file system and its linked data repository. An example of a
+%% data repository task is exporting any data and metadata changes, including
+%% POSIX metadata, to files, directories, and symbolic links (symlinks) from
+%% your FSx file system to its linked data repository. A
+%% `CreateDataRepositoryTask` operation will fail if a data repository is not
+%% linked to the FSx file system. To learn more about data repository tasks,
+%% see Using Data Repository Tasks. To learn more about linking a data
+%% repository to your file system, see Setting the Export Prefix.
 create_data_repository_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_data_repository_task(Client, Input, []).
@@ -136,15 +157,14 @@ create_data_repository_task(Client, Input, Options)
 %% @doc Creates a new, empty Amazon FSx file system.
 %%
 %% If a file system with the specified client request token exists and the
-%% parameters match, <code>CreateFileSystem</code> returns the description of
-%% the existing file system. If a file system specified client request token
+%% parameters match, `CreateFileSystem` returns the description of the
+%% existing file system. If a file system specified client request token
 %% exists and the parameters don't match, this call returns
-%% <code>IncompatibleParameterError</code>. If a file system with the
-%% specified client request token doesn't exist,
-%% <code>CreateFileSystem</code> does the following:
+%% `IncompatibleParameterError`. If a file system with the specified client
+%% request token doesn't exist, `CreateFileSystem` does the following:
 %%
 %% <ul> <li> Creates a new, empty Amazon FSx file system with an assigned ID,
-%% and an initial lifecycle state of <code>CREATING</code>.
+%% and an initial lifecycle state of `CREATING`.
 %%
 %% </li> <li> Returns the description of the file system.
 %%
@@ -152,21 +172,17 @@ create_data_repository_task(Client, Input, Options)
 %% that Amazon FSx uses to ensure idempotent creation. This means that
 %% calling the operation multiple times with the same client request token
 %% has no effect. By using the idempotent operation, you can retry a
-%% <code>CreateFileSystem</code> operation without the risk of creating an
-%% extra file system. This approach can be useful when an initial call fails
-%% in a way that makes it unclear whether a file system was created. Examples
-%% are if a transport level timeout occurred, or your connection was reset.
-%% If you use the same client request token and the initial call created a
-%% file system, the client receives success as long as the parameters are the
-%% same.
+%% `CreateFileSystem` operation without the risk of creating an extra file
+%% system. This approach can be useful when an initial call fails in a way
+%% that makes it unclear whether a file system was created. Examples are if a
+%% transport level timeout occurred, or your connection was reset. If you use
+%% the same client request token and the initial call created a file system,
+%% the client receives success as long as the parameters are the same.
 %%
-%% <note> The <code>CreateFileSystem</code> call returns while the file
-%% system's lifecycle state is still <code>CREATING</code>. You can check the
-%% file-system creation status by calling the <a>DescribeFileSystems</a>
-%% operation, which returns the file system state along with other
-%% information.
-%%
-%% </note>
+%% The `CreateFileSystem` call returns while the file system's lifecycle
+%% state is still `CREATING`. You can check the file-system creation status
+%% by calling the `DescribeFileSystems` operation, which returns the file
+%% system state along with other information.
 create_file_system(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_file_system(Client, Input, []).
@@ -181,12 +197,11 @@ create_file_system(Client, Input, Options)
 %% parameters match, this operation returns the description of the file
 %% system. If a client request token specified by the file system exists and
 %% the parameters don't match, this call returns
-%% <code>IncompatibleParameterError</code>. If a file system with the
-%% specified client request token doesn't exist, this operation does the
-%% following:
+%% `IncompatibleParameterError`. If a file system with the specified client
+%% request token doesn't exist, this operation does the following:
 %%
 %% <ul> <li> Creates a new Amazon FSx file system from backup with an
-%% assigned ID, and an initial lifecycle state of <code>CREATING</code>.
+%% assigned ID, and an initial lifecycle state of `CREATING`.
 %%
 %% </li> <li> Returns the description of the file system.
 %%
@@ -196,21 +211,18 @@ create_file_system(Client, Input, Options)
 %% supply other settings.
 %%
 %% By using the idempotent operation, you can retry a
-%% <code>CreateFileSystemFromBackup</code> call without the risk of creating
-%% an extra file system. This approach can be useful when an initial call
-%% fails in a way that makes it unclear whether a file system was created.
-%% Examples are if a transport level timeout occurred, or your connection was
-%% reset. If you use the same client request token and the initial call
-%% created a file system, the client receives success as long as the
-%% parameters are the same.
+%% `CreateFileSystemFromBackup` call without the risk of creating an extra
+%% file system. This approach can be useful when an initial call fails in a
+%% way that makes it unclear whether a file system was created. Examples are
+%% if a transport level timeout occurred, or your connection was reset. If
+%% you use the same client request token and the initial call created a file
+%% system, the client receives success as long as the parameters are the
+%% same.
 %%
-%% <note> The <code>CreateFileSystemFromBackup</code> call returns while the
-%% file system's lifecycle state is still <code>CREATING</code>. You can
-%% check the file-system creation status by calling the
-%% <a>DescribeFileSystems</a> operation, which returns the file system state
-%% along with other information.
-%%
-%% </note>
+%% The `CreateFileSystemFromBackup` call returns while the file system's
+%% lifecycle state is still `CREATING`. You can check the file-system
+%% creation status by calling the `DescribeFileSystems` operation, which
+%% returns the file system state along with other information.
 create_file_system_from_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_file_system_from_backup(Client, Input, []).
@@ -218,16 +230,15 @@ create_file_system_from_backup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFileSystemFromBackup">>, Input, Options).
 
-%% @doc Deletes an Amazon FSx backup, deleting its contents. After deletion,
-%% the backup no longer exists, and its data is gone.
+%% @doc Deletes an Amazon FSx backup, deleting its contents.
 %%
-%% The <code>DeleteBackup</code> call returns instantly. The backup will not
-%% show up in later <code>DescribeBackups</code> calls.
+%% After deletion, the backup no longer exists, and its data is gone.
 %%
-%% <important> The data in a deleted backup is also deleted and can't be
-%% recovered by any means.
+%% The `DeleteBackup` call returns instantly. The backup will not show up in
+%% later `DescribeBackups` calls.
 %%
-%% </important>
+%% The data in a deleted backup is also deleted and can't be recovered by any
+%% means.
 delete_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_backup(Client, Input, []).
@@ -235,30 +246,28 @@ delete_backup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteBackup">>, Input, Options).
 
-%% @doc Deletes a file system, deleting its contents. After deletion, the
-%% file system no longer exists, and its data is gone. Any existing automatic
-%% backups will also be deleted.
+%% @doc Deletes a file system, deleting its contents.
+%%
+%% After deletion, the file system no longer exists, and its data is gone.
+%% Any existing automatic backups will also be deleted.
 %%
 %% By default, when you delete an Amazon FSx for Windows File Server file
 %% system, a final backup is created upon deletion. This final backup is not
 %% subject to the file system's retention policy, and must be manually
 %% deleted.
 %%
-%% The <code>DeleteFileSystem</code> action returns while the file system has
-%% the <code>DELETING</code> status. You can check the file system deletion
-%% status by calling the <a>DescribeFileSystems</a> action, which returns a
-%% list of file systems in your account. If you pass the file system ID for a
-%% deleted file system, the <a>DescribeFileSystems</a> returns a
-%% <code>FileSystemNotFound</code> error.
+%% The `DeleteFileSystem` action returns while the file system has the
+%% `DELETING` status. You can check the file system deletion status by
+%% calling the `DescribeFileSystems` action, which returns a list of file
+%% systems in your account. If you pass the file system ID for a deleted file
+%% system, the `DescribeFileSystems` returns a `FileSystemNotFound` error.
 %%
-%% <note> Deleting an Amazon FSx for Lustre file system will fail with a 400
-%% BadRequest if a data repository task is in a <code>PENDING</code> or
-%% <code>EXECUTING</code> state.
+%% Deleting an Amazon FSx for Lustre file system will fail with a 400
+%% BadRequest if a data repository task is in a `PENDING` or `EXECUTING`
+%% state.
 %%
-%% </note> <important> The data in a deleted file system is also deleted and
-%% can't be recovered by any means.
-%%
-%% </important>
+%% The data in a deleted file system is also deleted and can't be recovered
+%% by any means.
 delete_file_system(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_file_system(Client, Input, []).
@@ -267,33 +276,31 @@ delete_file_system(Client, Input, Options)
     request(Client, <<"DeleteFileSystem">>, Input, Options).
 
 %% @doc Returns the description of specific Amazon FSx backups, if a
-%% <code>BackupIds</code> value is provided for that backup. Otherwise, it
-%% returns all backups owned by your AWS account in the AWS Region of the
-%% endpoint that you're calling.
+%% `BackupIds` value is provided for that backup.
 %%
-%% When retrieving all backups, you can optionally specify the
-%% <code>MaxResults</code> parameter to limit the number of backups in a
-%% response. If more backups remain, Amazon FSx returns a
-%% <code>NextToken</code> value in the response. In this case, send a later
-%% request with the <code>NextToken</code> request parameter set to the value
-%% of <code>NextToken</code> from the last response.
+%% Otherwise, it returns all backups owned by your AWS account in the AWS
+%% Region of the endpoint that you're calling.
+%%
+%% When retrieving all backups, you can optionally specify the `MaxResults`
+%% parameter to limit the number of backups in a response. If more backups
+%% remain, Amazon FSx returns a `NextToken` value in the response. In this
+%% case, send a later request with the `NextToken` request parameter set to
+%% the value of `NextToken` from the last response.
 %%
 %% This action is used in an iterative process to retrieve a list of your
-%% backups. <code>DescribeBackups</code> is called first without a
-%% <code>NextToken</code>value. Then the action continues to be called with
-%% the <code>NextToken</code> parameter set to the value of the last
-%% <code>NextToken</code> value until a response has no
-%% <code>NextToken</code>.
+%% backups. `DescribeBackups` is called first without a `NextToken`value.
+%% Then the action continues to be called with the `NextToken` parameter set
+%% to the value of the last `NextToken` value until a response has no
+%% `NextToken`.
 %%
 %% When using this action, keep the following in mind:
 %%
-%% <ul> <li> The implementation might return fewer than
-%% <code>MaxResults</code> file system descriptions while still including a
-%% <code>NextToken</code> value.
+%% <ul> <li> The implementation might return fewer than `MaxResults` file
+%% system descriptions while still including a `NextToken` value.
 %%
 %% </li> <li> The order of backups returned in the response of one
-%% <code>DescribeBackups</code> call and the order of backups returned across
-%% the responses of a multi-call iteration is unspecified.
+%% `DescribeBackups` call and the order of backups returned across the
+%% responses of a multi-call iteration is unspecified.
 %%
 %% </li> </ul>
 describe_backups(Client, Input)
@@ -304,19 +311,19 @@ describe_backups(Client, Input, Options)
     request(Client, <<"DescribeBackups">>, Input, Options).
 
 %% @doc Returns the description of specific Amazon FSx for Lustre data
-%% repository tasks, if one or more <code>TaskIds</code> values are provided
-%% in the request, or if filters are used in the request. You can use filters
-%% to narrow the response to include just tasks for specific file systems, or
-%% tasks in a specific lifecycle state. Otherwise, it returns all data
-%% repository tasks owned by your AWS account in the AWS Region of the
-%% endpoint that you're calling.
+%% repository tasks, if one or more `TaskIds` values are provided in the
+%% request, or if filters are used in the request.
+%%
+%% You can use filters to narrow the response to include just tasks for
+%% specific file systems, or tasks in a specific lifecycle state. Otherwise,
+%% it returns all data repository tasks owned by your AWS account in the AWS
+%% Region of the endpoint that you're calling.
 %%
 %% When retrieving all tasks, you can paginate the response by using the
-%% optional <code>MaxResults</code> parameter to limit the number of tasks
-%% returned in a response. If more tasks remain, Amazon FSx returns a
-%% <code>NextToken</code> value in the response. In this case, send a later
-%% request with the <code>NextToken</code> request parameter set to the value
-%% of <code>NextToken</code> from the last response.
+%% optional `MaxResults` parameter to limit the number of tasks returned in a
+%% response. If more tasks remain, Amazon FSx returns a `NextToken` value in
+%% the response. In this case, send a later request with the `NextToken`
+%% request parameter set to the value of `NextToken` from the last response.
 describe_data_repository_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_data_repository_tasks(Client, Input, []).
@@ -324,34 +331,47 @@ describe_data_repository_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDataRepositoryTasks">>, Input, Options).
 
+%% @doc Returns the DNS aliases that are associated with the specified Amazon
+%% FSx for Windows File Server file system.
+%%
+%% A history of all DNS aliases that have been associated with and
+%% disassociated from the file system is available in the list of
+%% `AdministrativeAction` provided in the `DescribeFileSystems` operation
+%% response.
+describe_file_system_aliases(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_file_system_aliases(Client, Input, []).
+describe_file_system_aliases(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeFileSystemAliases">>, Input, Options).
+
 %% @doc Returns the description of specific Amazon FSx file systems, if a
-%% <code>FileSystemIds</code> value is provided for that file system.
+%% `FileSystemIds` value is provided for that file system.
+%%
 %% Otherwise, it returns descriptions of all file systems owned by your AWS
 %% account in the AWS Region of the endpoint that you're calling.
 %%
 %% When retrieving all file system descriptions, you can optionally specify
-%% the <code>MaxResults</code> parameter to limit the number of descriptions
-%% in a response. If more file system descriptions remain, Amazon FSx returns
-%% a <code>NextToken</code> value in the response. In this case, send a later
-%% request with the <code>NextToken</code> request parameter set to the value
-%% of <code>NextToken</code> from the last response.
+%% the `MaxResults` parameter to limit the number of descriptions in a
+%% response. If more file system descriptions remain, Amazon FSx returns a
+%% `NextToken` value in the response. In this case, send a later request with
+%% the `NextToken` request parameter set to the value of `NextToken` from the
+%% last response.
 %%
 %% This action is used in an iterative process to retrieve a list of your
-%% file system descriptions. <code>DescribeFileSystems</code> is called first
-%% without a <code>NextToken</code>value. Then the action continues to be
-%% called with the <code>NextToken</code> parameter set to the value of the
-%% last <code>NextToken</code> value until a response has no
-%% <code>NextToken</code>.
+%% file system descriptions. `DescribeFileSystems` is called first without a
+%% `NextToken`value. Then the action continues to be called with the
+%% `NextToken` parameter set to the value of the last `NextToken` value until
+%% a response has no `NextToken`.
 %%
 %% When using this action, keep the following in mind:
 %%
-%% <ul> <li> The implementation might return fewer than
-%% <code>MaxResults</code> file system descriptions while still including a
-%% <code>NextToken</code> value.
+%% <ul> <li> The implementation might return fewer than `MaxResults` file
+%% system descriptions while still including a `NextToken` value.
 %%
 %% </li> <li> The order of file systems returned in the response of one
-%% <code>DescribeFileSystems</code> call and the order of file systems
-%% returned across the responses of a multicall iteration is unspecified.
+%% `DescribeFileSystems` call and the order of file systems returned across
+%% the responses of a multicall iteration is unspecified.
 %%
 %% </li> </ul>
 describe_file_systems(Client, Input)
@@ -361,32 +381,48 @@ describe_file_systems(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFileSystems">>, Input, Options).
 
+%% @doc Use this action to disassociate, or remove, one or more Domain Name
+%% Service (DNS) aliases from an Amazon FSx for Windows File Server file
+%% system.
+%%
+%% If you attempt to disassociate a DNS alias that is not associated with the
+%% file system, Amazon FSx responds with a 400 Bad Request. For more
+%% information, see Working with DNS Aliases.
+%%
+%% The system generated response showing the DNS aliases that Amazon FSx is
+%% attempting to disassociate from the file system. Use the API operation to
+%% monitor the status of the aliases Amazon FSx is disassociating with the
+%% file system.
+disassociate_file_system_aliases(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disassociate_file_system_aliases(Client, Input, []).
+disassociate_file_system_aliases(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisassociateFileSystemAliases">>, Input, Options).
+
 %% @doc Lists tags for an Amazon FSx file systems and backups in the case of
 %% Amazon FSx for Windows File Server.
 %%
-%% When retrieving all tags, you can optionally specify the
-%% <code>MaxResults</code> parameter to limit the number of tags in a
-%% response. If more tags remain, Amazon FSx returns a <code>NextToken</code>
-%% value in the response. In this case, send a later request with the
-%% <code>NextToken</code> request parameter set to the value of
-%% <code>NextToken</code> from the last response.
+%% When retrieving all tags, you can optionally specify the `MaxResults`
+%% parameter to limit the number of tags in a response. If more tags remain,
+%% Amazon FSx returns a `NextToken` value in the response. In this case, send
+%% a later request with the `NextToken` request parameter set to the value of
+%% `NextToken` from the last response.
 %%
 %% This action is used in an iterative process to retrieve a list of your
-%% tags. <code>ListTagsForResource</code> is called first without a
-%% <code>NextToken</code>value. Then the action continues to be called with
-%% the <code>NextToken</code> parameter set to the value of the last
-%% <code>NextToken</code> value until a response has no
-%% <code>NextToken</code>.
+%% tags. `ListTagsForResource` is called first without a `NextToken`value.
+%% Then the action continues to be called with the `NextToken` parameter set
+%% to the value of the last `NextToken` value until a response has no
+%% `NextToken`.
 %%
 %% When using this action, keep the following in mind:
 %%
-%% <ul> <li> The implementation might return fewer than
-%% <code>MaxResults</code> file system descriptions while still including a
-%% <code>NextToken</code> value.
+%% <ul> <li> The implementation might return fewer than `MaxResults` file
+%% system descriptions while still including a `NextToken` value.
 %%
 %% </li> <li> The order of tags returned in the response of one
-%% <code>ListTagsForResource</code> call and the order of tags returned
-%% across the responses of a multi-call iteration is unspecified.
+%% `ListTagsForResource` call and the order of tags returned across the
+%% responses of a multi-call iteration is unspecified.
 %%
 %% </li> </ul>
 list_tags_for_resource(Client, Input)
@@ -413,7 +449,9 @@ untag_resource(Client, Input, Options)
     request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Use this operation to update the configuration of an existing Amazon
-%% FSx file system. You can update multiple properties in a single request.
+%% FSx file system.
+%%
+%% You can update multiple properties in a single request.
 %%
 %% For Amazon FSx for Windows File Server file systems, you can update the
 %% following properties:
@@ -491,6 +529,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
 handle_response({error, Reason}) ->
     {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

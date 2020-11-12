@@ -98,8 +98,9 @@
 %% API
 %%====================================================================
 
-%% @doc CancelImageCreation cancels the creation of Image. This operation can
-%% only be used on images in a non-terminal state.
+%% @doc CancelImageCreation cancels the creation of Image.
+%%
+%% This operation can only be used on images in a non-terminal state.
 cancel_image_creation(Client, Input) ->
     cancel_image_creation(Client, Input, []).
 cancel_image_creation(Client, Input0, Options) ->
@@ -132,8 +133,10 @@ create_component(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new distribution configuration. Distribution configurations
-%% define and configure the outputs of your pipeline.
+%% @doc Creates a new distribution configuration.
+%%
+%% Distribution configurations define and configure the outputs of your
+%% pipeline.
 create_distribution_configuration(Client, Input) ->
     create_distribution_configuration(Client, Input, []).
 create_distribution_configuration(Client, Input0, Options) ->
@@ -149,9 +152,10 @@ create_distribution_configuration(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new image. This request will create a new image along with
-%% all of the configured output resources defined in the distribution
-%% configuration.
+%% @doc Creates a new image.
+%%
+%% This request will create a new image along with all of the configured
+%% output resources defined in the distribution configuration.
 create_image(Client, Input) ->
     create_image(Client, Input, []).
 create_image(Client, Input0, Options) ->
@@ -167,8 +171,10 @@ create_image(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new image pipeline. Image pipelines enable you to automate
-%% the creation and distribution of images.
+%% @doc Creates a new image pipeline.
+%%
+%% Image pipelines enable you to automate the creation and distribution of
+%% images.
 create_image_pipeline(Client, Input) ->
     create_image_pipeline(Client, Input, []).
 create_image_pipeline(Client, Input0, Options) ->
@@ -184,8 +190,9 @@ create_image_pipeline(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new image recipe. Image recipes define how images are
-%% configured, tested, and assessed.
+%% @doc Creates a new image recipe.
+%%
+%% Image recipes define how images are configured, tested, and assessed.
 create_image_recipe(Client, Input) ->
     create_image_recipe(Client, Input, []).
 create_image_recipe(Client, Input0, Options) ->
@@ -201,9 +208,10 @@ create_image_recipe(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new infrastructure configuration. An infrastructure
-%% configuration defines the environment in which your image will be built
-%% and tested.
+%% @doc Creates a new infrastructure configuration.
+%%
+%% An infrastructure configuration defines the environment in which your
+%% image will be built and tested.
 create_infrastructure_configuration(Client, Input) ->
     create_infrastructure_configuration(Client, Input, []).
 create_infrastructure_configuration(Client, Input0, Options) ->
@@ -670,14 +678,13 @@ list_tags_for_resource(Client, ResourceArn, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Applies a policy to a component. We recommend that you call the RAM
-%% API <a
-%% href="https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html">CreateResourceShare</a>
-%% to share resources. If you call the Image Builder API
-%% <code>PutComponentPolicy</code>, you must also call the RAM API <a
-%% href="https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html">PromoteResourceShareCreatedFromPolicy</a>
-%% in order for the resource to be visible to all principals with whom the
-%% resource is shared.
+%% @doc Applies a policy to a component.
+%%
+%% We recommend that you call the RAM API CreateResourceShare to share
+%% resources. If you call the Image Builder API `PutComponentPolicy`, you
+%% must also call the RAM API PromoteResourceShareCreatedFromPolicy in order
+%% for the resource to be visible to all principals with whom the resource is
+%% shared.
 put_component_policy(Client, Input) ->
     put_component_policy(Client, Input, []).
 put_component_policy(Client, Input0, Options) ->
@@ -693,14 +700,13 @@ put_component_policy(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Applies a policy to an image. We recommend that you call the RAM API
-%% <a
-%% href="https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html">CreateResourceShare</a>
-%% to share resources. If you call the Image Builder API
-%% <code>PutImagePolicy</code>, you must also call the RAM API <a
-%% href="https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html">PromoteResourceShareCreatedFromPolicy</a>
-%% in order for the resource to be visible to all principals with whom the
-%% resource is shared.
+%% @doc Applies a policy to an image.
+%%
+%% We recommend that you call the RAM API CreateResourceShare to share
+%% resources. If you call the Image Builder API `PutImagePolicy`, you must
+%% also call the RAM API PromoteResourceShareCreatedFromPolicy in order for
+%% the resource to be visible to all principals with whom the resource is
+%% shared.
 put_image_policy(Client, Input) ->
     put_image_policy(Client, Input, []).
 put_image_policy(Client, Input0, Options) ->
@@ -716,14 +722,13 @@ put_image_policy(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Applies a policy to an image recipe. We recommend that you call the
-%% RAM API <a
-%% href="https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html">CreateResourceShare</a>
-%% to share resources. If you call the Image Builder API
-%% <code>PutImageRecipePolicy</code>, you must also call the RAM API <a
-%% href="https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html">PromoteResourceShareCreatedFromPolicy</a>
-%% in order for the resource to be visible to all principals with whom the
-%% resource is shared.
+%% @doc Applies a policy to an image recipe.
+%%
+%% We recommend that you call the RAM API CreateResourceShare to share
+%% resources. If you call the Image Builder API `PutImageRecipePolicy`, you
+%% must also call the RAM API PromoteResourceShareCreatedFromPolicy in order
+%% for the resource to be visible to all principals with whom the resource is
+%% shared.
 put_image_recipe_policy(Client, Input) ->
     put_image_recipe_policy(Client, Input, []).
 put_image_recipe_policy(Client, Input0, Options) ->
@@ -788,8 +793,10 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a new distribution configuration. Distribution configurations
-%% define and configure the outputs of your pipeline.
+%% @doc Updates a new distribution configuration.
+%%
+%% Distribution configurations define and configure the outputs of your
+%% pipeline.
 update_distribution_configuration(Client, Input) ->
     update_distribution_configuration(Client, Input, []).
 update_distribution_configuration(Client, Input0, Options) ->
@@ -805,8 +812,10 @@ update_distribution_configuration(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a new image pipeline. Image pipelines enable you to automate
-%% the creation and distribution of images.
+%% @doc Updates a new image pipeline.
+%%
+%% Image pipelines enable you to automate the creation and distribution of
+%% images.
 update_image_pipeline(Client, Input) ->
     update_image_pipeline(Client, Input, []).
 update_image_pipeline(Client, Input0, Options) ->
@@ -822,9 +831,10 @@ update_image_pipeline(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a new infrastructure configuration. An infrastructure
-%% configuration defines the environment in which your image will be built
-%% and tested.
+%% @doc Updates a new infrastructure configuration.
+%%
+%% An infrastructure configuration defines the environment in which your
+%% image will be built and tested.
 update_infrastructure_configuration(Client, Input) ->
     update_infrastructure_configuration(Client, Input, []).
 update_infrastructure_configuration(Client, Input0, Options) ->
@@ -886,6 +896,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

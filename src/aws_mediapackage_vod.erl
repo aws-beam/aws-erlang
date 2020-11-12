@@ -263,8 +263,9 @@ list_tags_for_resource(Client, ResourceArn, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Adds tags to the specified resource. You can specify one or more tags
-%% to add.
+%% @doc Adds tags to the specified resource.
+%%
+%% You can specify one or more tags to add.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
@@ -280,8 +281,9 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes tags from the specified resource. You can specify one or more
-%% tags to remove.
+%% @doc Removes tags from the specified resource.
+%%
+%% You can specify one or more tags to remove.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
@@ -298,8 +300,10 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a specific packaging group. You can't change the id attribute
-%% or any other system-generated attributes.
+%% @doc Updates a specific packaging group.
+%%
+%% You can't change the id attribute or any other system-generated
+%% attributes.
 update_packaging_group(Client, Id, Input) ->
     update_packaging_group(Client, Id, Input, []).
 update_packaging_group(Client, Id, Input0, Options) ->
@@ -361,6 +365,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

@@ -70,17 +70,17 @@
 %%====================================================================
 
 %% @doc Associates a customer gateway with a device and optionally, with a
-%% link. If you specify a link, it must be associated with the specified
-%% device.
+%% link.
+%%
+%% If you specify a link, it must be associated with the specified device.
 %%
 %% You can only associate customer gateways that are connected to a VPN
 %% attachment on a transit gateway. The transit gateway must be registered in
 %% your global network. When you register a transit gateway, customer
 %% gateways that are connected to the transit gateway are automatically
 %% included in the global network. To list customer gateways that are
-%% connected to a transit gateway, use the <a
-%% href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpnConnections.html">DescribeVpnConnections</a>
-%% EC2 API and filter by <code>transit-gateway-id</code>.
+%% connected to a transit gateway, use the DescribeVpnConnections EC2 API and
+%% filter by `transit-gateway-id`.
 %%
 %% You cannot associate a customer gateway with more than one device and
 %% link.
@@ -99,9 +99,11 @@ associate_customer_gateway(Client, GlobalNetworkId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Associates a link to a device. A device can be associated to multiple
-%% links and a link can be associated to multiple devices. The device and
-%% link must be in the same global network and the same site.
+%% @doc Associates a link to a device.
+%%
+%% A device can be associated to multiple links and a link can be associated
+%% to multiple devices. The device and link must be in the same global
+%% network and the same site.
 associate_link(Client, GlobalNetworkId, Input) ->
     associate_link(Client, GlobalNetworkId, Input, []).
 associate_link(Client, GlobalNetworkId, Input0, Options) ->
@@ -117,9 +119,10 @@ associate_link(Client, GlobalNetworkId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new device in a global network. If you specify both a site
-%% ID and a location, the location of the site is used for visualization in
-%% the Network Manager console.
+%% @doc Creates a new device in a global network.
+%%
+%% If you specify both a site ID and a location, the location of the site is
+%% used for visualization in the Network Manager console.
 create_device(Client, GlobalNetworkId, Input) ->
     create_device(Client, GlobalNetworkId, Input, []).
 create_device(Client, GlobalNetworkId, Input0, Options) ->
@@ -183,8 +186,10 @@ create_site(Client, GlobalNetworkId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an existing device. You must first disassociate the device
-%% from any links and customer gateways.
+%% @doc Deletes an existing device.
+%%
+%% You must first disassociate the device from any links and customer
+%% gateways.
 delete_device(Client, DeviceId, GlobalNetworkId, Input) ->
     delete_device(Client, DeviceId, GlobalNetworkId, Input, []).
 delete_device(Client, DeviceId, GlobalNetworkId, Input0, Options) ->
@@ -200,9 +205,10 @@ delete_device(Client, DeviceId, GlobalNetworkId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an existing global network. You must first delete all global
-%% network objects (devices, links, and sites) and deregister all transit
-%% gateways.
+%% @doc Deletes an existing global network.
+%%
+%% You must first delete all global network objects (devices, links, and
+%% sites) and deregister all transit gateways.
 delete_global_network(Client, GlobalNetworkId, Input) ->
     delete_global_network(Client, GlobalNetworkId, Input, []).
 delete_global_network(Client, GlobalNetworkId, Input0, Options) ->
@@ -218,8 +224,10 @@ delete_global_network(Client, GlobalNetworkId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an existing link. You must first disassociate the link from
-%% any devices and customer gateways.
+%% @doc Deletes an existing link.
+%%
+%% You must first disassociate the link from any devices and customer
+%% gateways.
 delete_link(Client, GlobalNetworkId, LinkId, Input) ->
     delete_link(Client, GlobalNetworkId, LinkId, Input, []).
 delete_link(Client, GlobalNetworkId, LinkId, Input0, Options) ->
@@ -235,8 +243,9 @@ delete_link(Client, GlobalNetworkId, LinkId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an existing site. The site cannot be associated with any
-%% device or link.
+%% @doc Deletes an existing site.
+%%
+%% The site cannot be associated with any device or link.
 delete_site(Client, GlobalNetworkId, SiteId, Input) ->
     delete_site(Client, GlobalNetworkId, SiteId, Input, []).
 delete_site(Client, GlobalNetworkId, SiteId, Input0, Options) ->
@@ -252,9 +261,10 @@ delete_site(Client, GlobalNetworkId, SiteId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deregisters a transit gateway from your global network. This action
-%% does not delete your transit gateway, or modify any of its attachments.
-%% This action removes any customer gateway associations.
+%% @doc Deregisters a transit gateway from your global network.
+%%
+%% This action does not delete your transit gateway, or modify any of its
+%% attachments. This action removes any customer gateway associations.
 deregister_transit_gateway(Client, GlobalNetworkId, TransitGatewayArn, Input) ->
     deregister_transit_gateway(Client, GlobalNetworkId, TransitGatewayArn, Input, []).
 deregister_transit_gateway(Client, GlobalNetworkId, TransitGatewayArn, Input0, Options) ->
@@ -270,11 +280,12 @@ deregister_transit_gateway(Client, GlobalNetworkId, TransitGatewayArn, Input0, O
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Describes one or more global networks. By default, all global
-%% networks are described. To describe the objects in your global network,
-%% you must use the appropriate <code>Get*</code> action. For example, to
-%% list the transit gateways in your global network, use
-%% <a>GetTransitGatewayRegistrations</a>.
+%% @doc Describes one or more global networks.
+%%
+%% By default, all global networks are described. To describe the objects in
+%% your global network, you must use the appropriate `Get*` action. For
+%% example, to list the transit gateways in your global network, use
+%% `GetTransitGatewayRegistrations`.
 describe_global_networks(Client, GlobalNetworkIds, MaxResults, NextToken)
   when is_map(Client) ->
     describe_global_networks(Client, GlobalNetworkIds, MaxResults, NextToken, []).
@@ -311,8 +322,10 @@ disassociate_customer_gateway(Client, CustomerGatewayArn, GlobalNetworkId, Input
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Disassociates an existing device from a link. You must first
-%% disassociate any customer gateways that are associated with the link.
+%% @doc Disassociates an existing device from a link.
+%%
+%% You must first disassociate any customer gateways that are associated with
+%% the link.
 disassociate_link(Client, GlobalNetworkId, Input) ->
     disassociate_link(Client, GlobalNetworkId, Input, []).
 disassociate_link(Client, GlobalNetworkId, Input0, Options) ->
@@ -375,8 +388,9 @@ get_devices(Client, GlobalNetworkId, DeviceIds, MaxResults, NextToken, SiteId, O
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets the link associations for a device or a link. Either the device
-%% ID or the link ID must be specified.
+%% @doc Gets the link associations for a device or a link.
+%%
+%% Either the device ID or the link ID must be specified.
 get_link_associations(Client, GlobalNetworkId, DeviceId, LinkId, MaxResults, NextToken)
   when is_map(Client) ->
     get_link_associations(Client, GlobalNetworkId, DeviceId, LinkId, MaxResults, NextToken, []).
@@ -484,10 +498,11 @@ list_tags_for_resource(Client, ResourceArn, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Registers a transit gateway in your global network. The transit
-%% gateway can be in any AWS Region, but it must be owned by the same AWS
-%% account that owns the global network. You cannot register a transit
-%% gateway in more than one global network.
+%% @doc Registers a transit gateway in your global network.
+%%
+%% The transit gateway can be in any AWS Region, but it must be owned by the
+%% same AWS account that owns the global network. You cannot register a
+%% transit gateway in more than one global network.
 register_transit_gateway(Client, GlobalNetworkId, Input) ->
     register_transit_gateway(Client, GlobalNetworkId, Input, []).
 register_transit_gateway(Client, GlobalNetworkId, Input0, Options) ->
@@ -536,8 +551,9 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the details for an existing device. To remove information for
-%% any of the parameters, specify an empty string.
+%% @doc Updates the details for an existing device.
+%%
+%% To remove information for any of the parameters, specify an empty string.
 update_device(Client, DeviceId, GlobalNetworkId, Input) ->
     update_device(Client, DeviceId, GlobalNetworkId, Input, []).
 update_device(Client, DeviceId, GlobalNetworkId, Input0, Options) ->
@@ -553,8 +569,9 @@ update_device(Client, DeviceId, GlobalNetworkId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing global network. To remove information for any of
-%% the parameters, specify an empty string.
+%% @doc Updates an existing global network.
+%%
+%% To remove information for any of the parameters, specify an empty string.
 update_global_network(Client, GlobalNetworkId, Input) ->
     update_global_network(Client, GlobalNetworkId, Input, []).
 update_global_network(Client, GlobalNetworkId, Input0, Options) ->
@@ -570,8 +587,9 @@ update_global_network(Client, GlobalNetworkId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the details for an existing link. To remove information for
-%% any of the parameters, specify an empty string.
+%% @doc Updates the details for an existing link.
+%%
+%% To remove information for any of the parameters, specify an empty string.
 update_link(Client, GlobalNetworkId, LinkId, Input) ->
     update_link(Client, GlobalNetworkId, LinkId, Input, []).
 update_link(Client, GlobalNetworkId, LinkId, Input0, Options) ->
@@ -587,8 +605,9 @@ update_link(Client, GlobalNetworkId, LinkId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the information for an existing site. To remove information
-%% for any of the parameters, specify an empty string.
+%% @doc Updates the information for an existing site.
+%%
+%% To remove information for any of the parameters, specify an empty string.
 update_site(Client, GlobalNetworkId, SiteId, Input) ->
     update_site(Client, GlobalNetworkId, SiteId, Input, []).
 update_site(Client, GlobalNetworkId, SiteId, Input0, Options) ->
@@ -650,6 +669,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

@@ -1,28 +1,16 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc <fullname>AAWS Sever Migration Service</fullname>
+%% @doc AWS Server Migration Service
 %%
-%% This is the <i>AWS Sever Migration Service API Reference</i>. It provides
-%% descriptions, syntax, and usage examples for each of the actions and data
-%% types for the AWS Sever Migration Service (AWS SMS). The topic for each
-%% action shows the Query API request parameters and the XML response. You
-%% can also view the XML request elements in the WSDL.
+%% AWS Server Migration Service (AWS SMS) makes it easier and faster for you
+%% to migrate your on-premises workloads to AWS.
 %%
-%% Alternatively, you can use one of the AWS SDKs to access an API that's
-%% tailored to the programming language or platform that you're using. For
-%% more information, see <a href="http://aws.amazon.com/tools/#SDKs">AWS
-%% SDKs</a>.
+%% To learn more about AWS SMS, see the following resources:
 %%
-%% To learn more about the Server Migration Service, see the following
-%% resources:
+%% <ul> <li> AWS Server Migration Service product page
 %%
-%% <ul> <li> <a href="https://aws.amazon.com/server-migration-service/">AWS
-%% Sever Migration Service product page</a>
-%%
-%% </li> <li> <a
-%% href="https://docs.aws.amazon.com/server-migration-service/latest/userguide/server-migration.html">AWS
-%% Sever Migration Service User Guide</a>
+%% </li> <li> AWS Server Migration Service User Guide
 %%
 %% </li> </ul>
 -module(aws_sms).
@@ -37,6 +25,8 @@
          delete_app_launch_configuration/3,
          delete_app_replication_configuration/2,
          delete_app_replication_configuration/3,
+         delete_app_validation_configuration/2,
+         delete_app_validation_configuration/3,
          delete_replication_job/2,
          delete_replication_job/3,
          delete_server_catalog/2,
@@ -53,6 +43,10 @@
          get_app_launch_configuration/3,
          get_app_replication_configuration/2,
          get_app_replication_configuration/3,
+         get_app_validation_configuration/2,
+         get_app_validation_configuration/3,
+         get_app_validation_output/2,
+         get_app_validation_output/3,
          get_connectors/2,
          get_connectors/3,
          get_replication_jobs/2,
@@ -61,18 +55,26 @@
          get_replication_runs/3,
          get_servers/2,
          get_servers/3,
+         import_app_catalog/2,
+         import_app_catalog/3,
          import_server_catalog/2,
          import_server_catalog/3,
          launch_app/2,
          launch_app/3,
          list_apps/2,
          list_apps/3,
+         notify_app_validation_output/2,
+         notify_app_validation_output/3,
          put_app_launch_configuration/2,
          put_app_launch_configuration/3,
          put_app_replication_configuration/2,
          put_app_replication_configuration/3,
+         put_app_validation_configuration/2,
+         put_app_validation_configuration/3,
          start_app_replication/2,
          start_app_replication/3,
+         start_on_demand_app_replication/2,
+         start_on_demand_app_replication/3,
          start_on_demand_replication_run/2,
          start_on_demand_replication_run/3,
          stop_app_replication/2,
@@ -90,8 +92,10 @@
 %% API
 %%====================================================================
 
-%% @doc Creates an application. An application consists of one or more server
-%% groups. Each server group contain one or more servers.
+%% @doc Creates an application.
+%%
+%% An application consists of one or more server groups. Each server group
+%% contain one or more servers.
 create_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_app(Client, Input, []).
@@ -99,9 +103,10 @@ create_app(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateApp">>, Input, Options).
 
-%% @doc Creates a replication job. The replication job schedules periodic
-%% replication runs to replicate your server to AWS. Each replication run
-%% creates an Amazon Machine Image (AMI).
+%% @doc Creates a replication job.
+%%
+%% The replication job schedules periodic replication runs to replicate your
+%% server to AWS. Each replication run creates an Amazon Machine Image (AMI).
 create_replication_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_replication_job(Client, Input, []).
@@ -109,9 +114,10 @@ create_replication_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateReplicationJob">>, Input, Options).
 
-%% @doc Deletes an existing application. Optionally deletes the launched
-%% stack associated with the application and all AWS SMS replication jobs for
-%% servers in the application.
+%% @doc Deletes the specified application.
+%%
+%% Optionally deletes the launched stack associated with the application and
+%% all AWS SMS replication jobs for servers in the application.
 delete_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_app(Client, Input, []).
@@ -119,7 +125,7 @@ delete_app(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteApp">>, Input, Options).
 
-%% @doc Deletes existing launch configuration for an application.
+%% @doc Deletes the launch configuration for the specified application.
 delete_app_launch_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_app_launch_configuration(Client, Input, []).
@@ -127,13 +133,21 @@ delete_app_launch_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAppLaunchConfiguration">>, Input, Options).
 
-%% @doc Deletes existing replication configuration for an application.
+%% @doc Deletes the replication configuration for the specified application.
 delete_app_replication_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_app_replication_configuration(Client, Input, []).
 delete_app_replication_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAppReplicationConfiguration">>, Input, Options).
+
+%% @doc Deletes the validation configuration for the specified application.
+delete_app_validation_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_app_validation_configuration(Client, Input, []).
+delete_app_validation_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteAppValidationConfiguration">>, Input, Options).
 
 %% @doc Deletes the specified replication job.
 %%
@@ -175,9 +189,9 @@ generate_change_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GenerateChangeSet">>, Input, Options).
 
-%% @doc Generates an Amazon CloudFormation template based on the current
-%% launch configuration and writes it to an Amazon S3 object in the
-%% customer’s Amazon S3 bucket.
+%% @doc Generates an AWS CloudFormation template based on the current launch
+%% configuration and writes it to an Amazon S3 object in the customer’s
+%% Amazon S3 bucket.
 generate_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_template(Client, Input, []).
@@ -185,7 +199,7 @@ generate_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GenerateTemplate">>, Input, Options).
 
-%% @doc Retrieve information about an application.
+%% @doc Retrieve information about the specified application.
 get_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_app(Client, Input, []).
@@ -193,8 +207,8 @@ get_app(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetApp">>, Input, Options).
 
-%% @doc Retrieves the application launch configuration associated with an
-%% application.
+%% @doc Retrieves the application launch configuration associated with the
+%% specified application.
 get_app_launch_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_app_launch_configuration(Client, Input, []).
@@ -202,14 +216,31 @@ get_app_launch_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAppLaunchConfiguration">>, Input, Options).
 
-%% @doc Retrieves an application replication configuration associatd with an
-%% application.
+%% @doc Retrieves the application replication configuration associated with
+%% the specified application.
 get_app_replication_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_app_replication_configuration(Client, Input, []).
 get_app_replication_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAppReplicationConfiguration">>, Input, Options).
+
+%% @doc Retrieves information about a configuration for validating an
+%% application.
+get_app_validation_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_app_validation_configuration(Client, Input, []).
+get_app_validation_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetAppValidationConfiguration">>, Input, Options).
+
+%% @doc Retrieves output from validating an application.
+get_app_validation_output(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_app_validation_output(Client, Input, []).
+get_app_validation_output(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetAppValidationOutput">>, Input, Options).
 
 %% @doc Describes the connectors registered with the AWS SMS.
 get_connectors(Client, Input)
@@ -239,7 +270,7 @@ get_replication_runs(Client, Input, Options)
 %% @doc Describes the servers in your server catalog.
 %%
 %% Before you can describe your servers, you must import them using
-%% <a>ImportServerCatalog</a>.
+%% `ImportServerCatalog`.
 get_servers(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_servers(Client, Input, []).
@@ -247,8 +278,17 @@ get_servers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetServers">>, Input, Options).
 
-%% @doc Gathers a complete list of on-premises servers. Connectors must be
-%% installed and monitoring all servers that you want to import.
+%% @doc Allows application import from AWS Migration Hub.
+import_app_catalog(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    import_app_catalog(Client, Input, []).
+import_app_catalog(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ImportAppCatalog">>, Input, Options).
+
+%% @doc Gathers a complete list of on-premises servers.
+%%
+%% Connectors must be installed and monitoring all servers to import.
 %%
 %% This call returns immediately, but might take additional time to retrieve
 %% all the servers.
@@ -259,7 +299,7 @@ import_server_catalog(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportServerCatalog">>, Input, Options).
 
-%% @doc Launches an application stack.
+%% @doc Launches the specified application as a stack in AWS CloudFormation.
 launch_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     launch_app(Client, Input, []).
@@ -267,7 +307,7 @@ launch_app(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"LaunchApp">>, Input, Options).
 
-%% @doc Returns a list of summaries for all applications.
+%% @doc Retrieves summaries for all applications.
 list_apps(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_apps(Client, Input, []).
@@ -275,7 +315,17 @@ list_apps(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListApps">>, Input, Options).
 
-%% @doc Creates a launch configuration for an application.
+%% @doc Provides information to AWS SMS about whether application validation
+%% is successful.
+notify_app_validation_output(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    notify_app_validation_output(Client, Input, []).
+notify_app_validation_output(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"NotifyAppValidationOutput">>, Input, Options).
+
+%% @doc Creates or updates the launch configuration for the specified
+%% application.
 put_app_launch_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_app_launch_configuration(Client, Input, []).
@@ -283,7 +333,8 @@ put_app_launch_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutAppLaunchConfiguration">>, Input, Options).
 
-%% @doc Creates or updates a replication configuration for an application.
+%% @doc Creates or updates the replication configuration for the specified
+%% application.
 put_app_replication_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_app_replication_configuration(Client, Input, []).
@@ -291,7 +342,17 @@ put_app_replication_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutAppReplicationConfiguration">>, Input, Options).
 
-%% @doc Starts replicating an application.
+%% @doc Creates or updates a validation configuration for the specified
+%% application.
+put_app_validation_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_app_validation_configuration(Client, Input, []).
+put_app_validation_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutAppValidationConfiguration">>, Input, Options).
+
+%% @doc Starts replicating the specified application by creating replication
+%% jobs for each server in the application.
 start_app_replication(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_app_replication(Client, Input, []).
@@ -299,11 +360,21 @@ start_app_replication(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartAppReplication">>, Input, Options).
 
+%% @doc Starts an on-demand replication run for the specified application.
+start_on_demand_app_replication(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_on_demand_app_replication(Client, Input, []).
+start_on_demand_app_replication(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartOnDemandAppReplication">>, Input, Options).
+
 %% @doc Starts an on-demand replication run for the specified replication
-%% job. This replication run starts immediately. This replication run is in
+%% job.
+%%
+%% This replication run starts immediately. This replication run is in
 %% addition to the ones already scheduled.
 %%
-%% There is a limit on the number of on-demand replications runs you can
+%% There is a limit on the number of on-demand replications runs that you can
 %% request in a 24-hour period.
 start_on_demand_replication_run(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -312,7 +383,8 @@ start_on_demand_replication_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartOnDemandReplicationRun">>, Input, Options).
 
-%% @doc Stops replicating an application.
+%% @doc Stops replicating the specified application by deleting the
+%% replication job for each server in the application.
 stop_app_replication(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_app_replication(Client, Input, []).
@@ -320,7 +392,7 @@ stop_app_replication(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopAppReplication">>, Input, Options).
 
-%% @doc Terminates the stack for an application.
+%% @doc Terminates the stack for the specified application.
 terminate_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     terminate_app(Client, Input, []).
@@ -328,7 +400,7 @@ terminate_app(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TerminateApp">>, Input, Options).
 
-%% @doc Updates an application.
+%% @doc Updates the specified application.
 update_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_app(Client, Input, []).
@@ -386,6 +458,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
 handle_response({error, Reason}) ->
     {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

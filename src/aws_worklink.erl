@@ -2,14 +2,15 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon WorkLink is a cloud-based service that provides secure access
-%% to internal websites and web apps from iOS and Android phones. In a single
-%% step, your users, such as employees, can access internal websites as
-%% efficiently as they access any other public website. They enter a URL in
-%% their web browser, or choose a link to an internal website in an email.
-%% Amazon WorkLink authenticates the user's access and securely renders
-%% authorized internal web content in a secure rendering service in the AWS
-%% cloud. Amazon WorkLink doesn't download or store any internal web content
-%% on mobile devices.
+%% to internal websites and web apps from iOS and Android phones.
+%%
+%% In a single step, your users, such as employees, can access internal
+%% websites as efficiently as they access any other public website. They
+%% enter a URL in their web browser, or choose a link to an internal website
+%% in an email. Amazon WorkLink authenticates the user's access and securely
+%% renders authorized internal web content in a secure rendering service in
+%% the AWS cloud. Amazon WorkLink doesn't download or store any internal web
+%% content on mobile devices.
 -module(aws_worklink).
 
 -export([associate_domain/2,
@@ -102,6 +103,7 @@ associate_domain(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Associates a website authorization provider with a specified fleet.
+%%
 %% This is used to authorize users against associated websites in the company
 %% network.
 associate_website_authorization_provider(Client, Input) ->
@@ -137,9 +139,11 @@ associate_website_certificate_authority(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a fleet. A fleet consists of resources and the configuration
-%% that delivers associated websites to authorized users who download and set
-%% up the Amazon WorkLink app.
+%% @doc Creates a fleet.
+%%
+%% A fleet consists of resources and the configuration that delivers
+%% associated websites to authorized users who download and set up the Amazon
+%% WorkLink app.
 create_fleet(Client, Input) ->
     create_fleet(Client, Input, []).
 create_fleet(Client, Input0, Options) ->
@@ -155,8 +159,9 @@ create_fleet(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a fleet. Prevents users from accessing previously associated
-%% websites.
+%% @doc Deletes a fleet.
+%%
+%% Prevents users from accessing previously associated websites.
 delete_fleet(Client, Input) ->
     delete_fleet(Client, Input, []).
 delete_fleet(Client, Input0, Options) ->
@@ -303,8 +308,9 @@ describe_website_certificate_authority(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Disassociates a domain from Amazon WorkLink. End users lose the
-%% ability to access the domain with Amazon WorkLink.
+%% @doc Disassociates a domain from Amazon WorkLink.
+%%
+%% End users lose the ability to access the domain with Amazon WorkLink.
 disassociate_domain(Client, Input) ->
     disassociate_domain(Client, Input, []).
 disassociate_domain(Client, Input0, Options) ->
@@ -321,8 +327,10 @@ disassociate_domain(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates a website authorization provider from a specified
-%% fleet. After the disassociation, users can't load any associated websites
-%% that require this authorization provider.
+%% fleet.
+%%
+%% After the disassociation, users can't load any associated websites that
+%% require this authorization provider.
 disassociate_website_authorization_provider(Client, Input) ->
     disassociate_website_authorization_provider(Client, Input, []).
 disassociate_website_authorization_provider(Client, Input0, Options) ->
@@ -483,8 +491,9 @@ revoke_domain_access(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Signs the user out from all of their devices. The user can sign in
-%% again if they have valid credentials.
+%% @doc Signs the user out from all of their devices.
+%%
+%% The user can sign in again if they have valid credentials.
 sign_out_user(Client, Input) ->
     sign_out_user(Client, Input, []).
 sign_out_user(Client, Input0, Options) ->
@@ -501,9 +510,10 @@ sign_out_user(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds or overwrites one or more tags for the specified resource, such
-%% as a fleet. Each tag consists of a key and an optional value. If a
-%% resource already has a tag with the same key, this operation updates its
-%% value.
+%% as a fleet.
+%%
+%% Each tag consists of a key and an optional value. If a resource already
+%% has a tag with the same key, this operation updates its value.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
@@ -678,6 +688,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

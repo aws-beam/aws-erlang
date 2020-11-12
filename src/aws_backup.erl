@@ -1,12 +1,13 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc <fullname>AWS Backup</fullname>
+%% @doc AWS Backup
 %%
 %% AWS Backup is a unified backup service designed to protect AWS services
-%% and their associated data. AWS Backup simplifies the creation, migration,
-%% restoration, and deletion of backups, while also providing reporting and
-%% auditing.
+%% and their associated data.
+%%
+%% AWS Backup simplifies the creation, migration, restoration, and deletion
+%% of backups, while also providing reporting and auditing.
 -module(aws_backup).
 
 -export([create_backup_plan/2,
@@ -112,11 +113,13 @@
 %% API
 %%====================================================================
 
-%% @doc Backup plans are documents that contain information that AWS Backup
-%% uses to schedule tasks that create recovery points of resources.
+%% @doc Creates a backup plan using a backup plan name and backup rules.
 %%
-%% If you call <code>CreateBackupPlan</code> with a plan that already exists,
-%% an <code>AlreadyExistsException</code> is returned.
+%% A backup plan is a document that contains information that AWS Backup uses
+%% to schedule tasks that create recovery points for resources.
+%%
+%% If you call `CreateBackupPlan` with a plan that already exists, an
+%% `AlreadyExistsException` is returned.
 create_backup_plan(Client, Input) ->
     create_backup_plan(Client, Input, []).
 create_backup_plan(Client, Input0, Options) ->
@@ -133,34 +136,35 @@ create_backup_plan(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a JSON document that specifies a set of resources to assign
-%% to a backup plan. Resources can be included by specifying patterns for a
-%% <code>ListOfTags</code> and selected <code>Resources</code>.
+%% to a backup plan.
+%%
+%% Resources can be included by specifying patterns for a `ListOfTags` and
+%% selected `Resources`.
 %%
 %% For example, consider the following patterns:
 %%
-%% <ul> <li> <code>Resources:
-%% "arn:aws:ec2:region:account-id:volume/volume-id"</code>
+%% <ul> <li> `Resources: "arn:aws:ec2:region:account-id:volume/volume-id"`
 %%
-%% </li> <li> <code>ConditionKey:"department"</code>
+%% </li> <li> `ConditionKey:"department"`
 %%
-%% <code>ConditionValue:"finance"</code>
+%% `ConditionValue:"finance"`
 %%
-%% <code>ConditionType:"STRINGEQUALS"</code>
+%% `ConditionType:"StringEquals"`
 %%
-%% </li> <li> <code>ConditionKey:"importance"</code>
+%% </li> <li> `ConditionKey:"importance"`
 %%
-%% <code>ConditionValue:"critical"</code>
+%% `ConditionValue:"critical"`
 %%
-%% <code>ConditionType:"STRINGEQUALS"</code>
+%% `ConditionType:"StringEquals"`
 %%
 %% </li> </ul> Using these patterns would back up all Amazon Elastic Block
-%% Store (Amazon EBS) volumes that are tagged as
-%% <code>"department=finance"</code>, <code>"importance=critical"</code>, in
-%% addition to an EBS volume with the specified volume Id.
+%% Store (Amazon EBS) volumes that are tagged as `"department=finance"`,
+%% `"importance=critical"`, in addition to an EBS volume with the specified
+%% volume ID.
 %%
 %% Resources and conditions are additive in that all resources that match the
 %% pattern are selected. This shouldn't be confused with a logical AND, where
-%% all conditions must match. The matching patterns are logically 'put
+%% all conditions must match. The matching patterns are logically put
 %% together using the OR operator. In other words, all patterns that match
 %% are selected for backup.
 create_backup_selection(Client, BackupPlanId, Input) ->
@@ -178,14 +182,13 @@ create_backup_selection(Client, BackupPlanId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a logical container where backups are stored. A
-%% <code>CreateBackupVault</code> request includes a name, optionally one or
-%% more resource tags, an encryption key, and a request ID.
+%% @doc Creates a logical container where backups are stored.
 %%
-%% <note> Sensitive data, such as passport numbers, should not be included
-%% the name of a backup vault.
+%% A `CreateBackupVault` request includes a name, optionally one or more
+%% resource tags, an encryption key, and a request ID.
 %%
-%% </note>
+%% Sensitive data, such as passport numbers, should not be included the name
+%% of a backup vault.
 create_backup_vault(Client, BackupVaultName, Input) ->
     create_backup_vault(Client, BackupVaultName, Input, []).
 create_backup_vault(Client, BackupVaultName, Input0, Options) ->
@@ -201,10 +204,11 @@ create_backup_vault(Client, BackupVaultName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a backup plan. A backup plan can only be deleted after all
-%% associated selections of resources have been deleted. Deleting a backup
-%% plan deletes the current version of a backup plan. Previous versions, if
-%% any, will still exist.
+%% @doc Deletes a backup plan.
+%%
+%% A backup plan can only be deleted after all associated selections of
+%% resources have been deleted. Deleting a backup plan deletes the current
+%% version of a backup plan. Previous versions, if any, will still exist.
 delete_backup_plan(Client, BackupPlanId, Input) ->
     delete_backup_plan(Client, BackupPlanId, Input, []).
 delete_backup_plan(Client, BackupPlanId, Input0, Options) ->
@@ -221,7 +225,7 @@ delete_backup_plan(Client, BackupPlanId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the resource selection associated with a backup plan that is
-%% specified by the <code>SelectionId</code>.
+%% specified by the `SelectionId`.
 delete_backup_selection(Client, BackupPlanId, SelectionId, Input) ->
     delete_backup_selection(Client, BackupPlanId, SelectionId, Input, []).
 delete_backup_selection(Client, BackupPlanId, SelectionId, Input0, Options) ->
@@ -237,8 +241,9 @@ delete_backup_selection(Client, BackupPlanId, SelectionId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the backup vault identified by its name. A vault can be
-%% deleted only if it is empty.
+%% @doc Deletes the backup vault identified by its name.
+%%
+%% A vault can be deleted only if it is empty.
 delete_backup_vault(Client, BackupVaultName, Input) ->
     delete_backup_vault(Client, BackupVaultName, Input, []).
 delete_backup_vault(Client, BackupVaultName, Input0, Options) ->
@@ -303,7 +308,7 @@ delete_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input0, Options
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns metadata associated with creating a backup of a resource.
+%% @doc Returns backup job details for the specified `BackupJobId`.
 describe_backup_job(Client, BackupJobId)
   when is_map(Client) ->
     describe_backup_job(Client, BackupJobId, []).
@@ -381,12 +386,13 @@ describe_recovery_point(Client, BackupVaultName, RecoveryPointArn, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns the current service opt-in settings for the Region. If the
-%% service has a value set to <code>true</code>, AWS Backup attempts to
-%% protect that service's resources in this Region, when included in an
-%% on-demand backup or scheduled backup plan. If the value is set to
-%% <code>false</code> for a service, AWS Backup does not attempt to protect
-%% that service's resources in this Region.
+%% @doc Returns the current service opt-in settings for the Region.
+%%
+%% If the service has a value set to `true`, AWS Backup tries to protect that
+%% service's resources in this Region, when included in an on-demand backup
+%% or scheduled backup plan. If the value is set to `false` for a service,
+%% AWS Backup does not try to protect that service's resources in this
+%% Region.
 describe_region_settings(Client)
   when is_map(Client) ->
     describe_region_settings(Client, []).
@@ -433,7 +439,9 @@ export_backup_plan_template(Client, BackupPlanId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns the body of a backup plan in JSON format, in addition to plan
+%% @doc Returns `BackupPlan` details for the specified `BackupPlanId`.
+%%
+%% Returns the body of a backup plan in JSON format, in addition to plan
 %% metadata.
 get_backup_plan(Client, BackupPlanId, VersionId)
   when is_map(Client) ->
@@ -469,8 +477,7 @@ get_backup_plan_from_j_s_o_n(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns the template specified by its <code>templateId</code> as a
-%% backup plan.
+%% @doc Returns the template specified by its `templateId` as a backup plan.
 get_backup_plan_from_template(Client, BackupPlanTemplateId)
   when is_map(Client) ->
     get_backup_plan_from_template(Client, BackupPlanTemplateId, []).
@@ -563,7 +570,7 @@ get_supported_resource_types(Client, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns metadata about your backup jobs.
+%% @doc Returns a list of existing backup jobs for an authenticated account.
 list_backup_jobs(Client, ByAccountId, ByBackupVaultName, ByCreatedAfter, ByCreatedBefore, ByResourceArn, ByResourceType, ByState, MaxResults, NextToken)
   when is_map(Client) ->
     list_backup_jobs(Client, ByAccountId, ByBackupVaultName, ByCreatedAfter, ByCreatedBefore, ByResourceArn, ByResourceType, ByState, MaxResults, NextToken, []).
@@ -633,9 +640,12 @@ list_backup_plan_versions(Client, BackupPlanId, MaxResults, NextToken, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns metadata of your saved backup plans, including Amazon
-%% Resource Names (ARNs), plan IDs, creation and deletion dates, version IDs,
-%% plan names, and creator request IDs.
+%% @doc Returns a list of existing backup plans for an authenticated account.
+%%
+%% The list is populated only if the advanced option is set for the backup
+%% plan. The list contains information such as Amazon Resource Names (ARNs),
+%% plan IDs, creation and deletion dates, version IDs, plan names, and
+%% creator request IDs.
 list_backup_plans(Client, IncludeDeleted, MaxResults, NextToken)
   when is_map(Client) ->
     list_backup_plans(Client, IncludeDeleted, MaxResults, NextToken, []).
@@ -822,10 +832,7 @@ list_restore_jobs(Client, ByAccountId, ByCreatedAfter, ByCreatedBefore, ByStatus
 %% @doc Returns a list of key-value pairs assigned to a target recovery
 %% point, backup plan, or backup vault.
 %%
-%% <note> <code>ListTags</code> are currently only supported with Amazon EFS
-%% backups.
-%%
-%% </note>
+%% `ListTags` are currently only supported with Amazon EFS backups.
 list_tags(Client, ResourceArn, MaxResults, NextToken)
   when is_map(Client) ->
     list_tags(Client, ResourceArn, MaxResults, NextToken, []).
@@ -846,8 +853,9 @@ list_tags(Client, ResourceArn, MaxResults, NextToken, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Sets a resource-based policy that is used to manage access
-%% permissions on the target backup vault. Requires a backup vault name and
-%% an access policy document in JSON format.
+%% permissions on the target backup vault.
+%%
+%% Requires a backup vault name and an access policy document in JSON format.
 put_backup_vault_access_policy(Client, BackupVaultName, Input) ->
     put_backup_vault_access_policy(Client, BackupVaultName, Input, []).
 put_backup_vault_access_policy(Client, BackupVaultName, Input0, Options) ->
@@ -880,7 +888,7 @@ put_backup_vault_notifications(Client, BackupVaultName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Starts a job to create a one-time backup of the specified resource.
+%% @doc Starts an on-demand backup job for the specified resource.
 start_backup_job(Client, Input) ->
     start_backup_job(Client, Input, []).
 start_backup_job(Client, Input0, Options) ->
@@ -914,10 +922,6 @@ start_copy_job(Client, Input0, Options) ->
 
 %% @doc Recovers the saved resource identified by an Amazon Resource Name
 %% (ARN).
-%%
-%% If the resource ARN is included in the request, then the last complete
-%% backup of that resource is recovered. If the ARN of a recovery point is
-%% supplied, then that recovery point is restored.
 start_restore_job(Client, Input) ->
     start_restore_job(Client, Input, []).
 start_restore_job(Client, Input0, Options) ->
@@ -983,9 +987,10 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Replaces the body of a saved backup plan identified by its
-%% <code>backupPlanId</code> with the input document in JSON format. The new
-%% version is uniquely identified by a <code>VersionId</code>.
+%% @doc Updates an existing backup plan identified by its `backupPlanId` with
+%% the input document in JSON format.
+%%
+%% The new version is uniquely identified by a `VersionId`.
 update_backup_plan(Client, BackupPlanId, Input) ->
     update_backup_plan(Client, BackupPlanId, Input, []).
 update_backup_plan(Client, BackupPlanId, Input0, Options) ->
@@ -1027,12 +1032,13 @@ update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the current service opt-in settings for the Region. If the
-%% service has a value set to <code>true</code>, AWS Backup attempts to
-%% protect that service's resources in this Region, when included in an
-%% on-demand backup or scheduled backup plan. If the value is set to
-%% <code>false</code> for a service, AWS Backup does not attempt to protect
-%% that service's resources in this Region.
+%% @doc Updates the current service opt-in settings for the Region.
+%%
+%% If the service has a value set to `true`, AWS Backup tries to protect that
+%% service's resources in this Region, when included in an on-demand backup
+%% or scheduled backup plan. If the value is set to `false` for a service,
+%% AWS Backup does not try to protect that service's resources in this
+%% Region.
 update_region_settings(Client, Input) ->
     update_region_settings(Client, Input, []).
 update_region_settings(Client, Input0, Options) ->
@@ -1094,6 +1100,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

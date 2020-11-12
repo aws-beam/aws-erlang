@@ -2,10 +2,11 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon Kinesis Data Analytics is a fully managed service that you can
-%% use to process and analyze streaming data using SQL or Java. The service
-%% enables you to quickly author and run SQL or Java code against streaming
-%% sources to perform time series analytics, feed real-time dashboards, and
-%% create real-time metrics.
+%% use to process and analyze streaming data using Java, SQL, or Scala.
+%%
+%% The service enables you to quickly author and run Java, SQL, or Scala code
+%% against streaming sources to perform time series analytics, feed real-time
+%% dashboards, and create real-time metrics.
 -module(aws_kinesis_analytics_v2).
 
 -export([add_application_cloud_watch_logging_option/2,
@@ -76,17 +77,16 @@ add_application_cloud_watch_logging_option(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddApplicationCloudWatchLoggingOption">>, Input, Options).
 
-%% @doc Adds a streaming source to your SQL-based Amazon Kinesis Data
-%% Analytics application.
+%% @doc Adds a streaming source to your SQL-based Kinesis Data Analytics
+%% application.
 %%
 %% You can add a streaming source when you create an application, or you can
 %% use this operation to add a streaming source after you create an
-%% application. For more information, see <a>CreateApplication</a>.
+%% application. For more information, see `CreateApplication`.
 %%
 %% Any configuration update, including adding a streaming source using this
 %% operation, results in a new version of the application. You can use the
-%% <a>DescribeApplication</a> operation to find the current application
-%% version.
+%% `DescribeApplication` operation to find the current application version.
 add_application_input(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_application_input(Client, Input, []).
@@ -94,11 +94,12 @@ add_application_input(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddApplicationInput">>, Input, Options).
 
-%% @doc Adds an <a>InputProcessingConfiguration</a> to an SQL-based Kinesis
-%% Data Analytics application. An input processor pre-processes records on
-%% the input stream before the application's SQL code executes. Currently,
-%% the only input processor available is <a
-%% href="https://aws.amazon.com/documentation/lambda/">AWS Lambda</a>.
+%% @doc Adds an `InputProcessingConfiguration` to a SQL-based Kinesis Data
+%% Analytics application.
+%%
+%% An input processor pre-processes records on the input stream before the
+%% application's SQL code executes. Currently, the only input processor
+%% available is AWS Lambda.
 add_application_input_processing_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_application_input_processing_configuration(Client, Input, []).
@@ -106,8 +107,8 @@ add_application_input_processing_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddApplicationInputProcessingConfiguration">>, Input, Options).
 
-%% @doc Adds an external destination to your SQL-based Amazon Kinesis Data
-%% Analytics application.
+%% @doc Adds an external destination to your SQL-based Kinesis Data Analytics
+%% application.
 %%
 %% If you want Kinesis Data Analytics to deliver data from an in-application
 %% stream within your application to an external destination (such as an
@@ -123,8 +124,7 @@ add_application_input_processing_configuration(Client, Input, Options)
 %%
 %% Any configuration update, including adding a streaming source using this
 %% operation, results in a new version of the application. You can use the
-%% <a>DescribeApplication</a> operation to find the current application
-%% version.
+%% `DescribeApplication` operation to find the current application version.
 add_application_output(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_application_output(Client, Input, []).
@@ -132,8 +132,8 @@ add_application_output(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddApplicationOutput">>, Input, Options).
 
-%% @doc Adds a reference data source to an existing SQL-based Amazon Kinesis
-%% Data Analytics application.
+%% @doc Adds a reference data source to an existing SQL-based Kinesis Data
+%% Analytics application.
 %%
 %% Kinesis Data Analytics reads reference data (that is, an Amazon S3 object)
 %% and creates an in-application table within your application. In the
@@ -149,6 +149,7 @@ add_application_reference_data_source(Client, Input, Options)
     request(Client, <<"AddApplicationReferenceDataSource">>, Input, Options).
 
 %% @doc Adds a Virtual Private Cloud (VPC) configuration to the application.
+%%
 %% Applications can use VPCs to store and access resources securely.
 %%
 %% Note the following about VPC configurations for Kinesis Data Analytics
@@ -169,10 +170,10 @@ add_application_vpc_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddApplicationVpcConfiguration">>, Input, Options).
 
-%% @doc Creates an Amazon Kinesis Data Analytics application. For information
-%% about creating a Kinesis Data Analytics application, see <a
-%% href="https://docs.aws.amazon.com/kinesisanalytics/latest/java/getting-started.html">Creating
-%% an Application</a>.
+%% @doc Creates a Kinesis Data Analytics application.
+%%
+%% For information about creating a Kinesis Data Analytics application, see
+%% Creating an Application.
 create_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_application(Client, Input, []).
@@ -188,8 +189,10 @@ create_application_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateApplicationSnapshot">>, Input, Options).
 
-%% @doc Deletes the specified application. Kinesis Data Analytics halts
-%% application execution and deletes the application.
+%% @doc Deletes the specified application.
+%%
+%% Kinesis Data Analytics halts application execution and deletes the
+%% application.
 delete_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application(Client, Input, []).
@@ -197,7 +200,7 @@ delete_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteApplication">>, Input, Options).
 
-%% @doc Deletes an Amazon CloudWatch log stream from an Amazon Kinesis Data
+%% @doc Deletes an Amazon CloudWatch log stream from an Kinesis Data
 %% Analytics application.
 delete_application_cloud_watch_logging_option(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -206,7 +209,7 @@ delete_application_cloud_watch_logging_option(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteApplicationCloudWatchLoggingOption">>, Input, Options).
 
-%% @doc Deletes an <a>InputProcessingConfiguration</a> from an input.
+%% @doc Deletes an `InputProcessingConfiguration` from an input.
 delete_application_input_processing_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application_input_processing_configuration(Client, Input, []).
@@ -215,9 +218,10 @@ delete_application_input_processing_configuration(Client, Input, Options)
     request(Client, <<"DeleteApplicationInputProcessingConfiguration">>, Input, Options).
 
 %% @doc Deletes the output destination configuration from your SQL-based
-%% Amazon Kinesis Data Analytics application's configuration. Kinesis Data
-%% Analytics will no longer write data from the corresponding in-application
-%% stream to the external output destination.
+%% Kinesis Data Analytics application's configuration.
+%%
+%% Kinesis Data Analytics will no longer write data from the corresponding
+%% in-application stream to the external output destination.
 delete_application_output(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application_output(Client, Input, []).
@@ -226,11 +230,11 @@ delete_application_output(Client, Input, Options)
     request(Client, <<"DeleteApplicationOutput">>, Input, Options).
 
 %% @doc Deletes a reference data source configuration from the specified
-%% SQL-based Amazon Kinesis Data Analytics application's configuration.
+%% SQL-based Kinesis Data Analytics application's configuration.
 %%
 %% If the application is running, Kinesis Data Analytics immediately removes
 %% the in-application table that you created using the
-%% <a>AddApplicationReferenceDataSource</a> operation.
+%% `AddApplicationReferenceDataSource` operation.
 delete_application_reference_data_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application_reference_data_source(Client, Input, []).
@@ -255,11 +259,11 @@ delete_application_vpc_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteApplicationVpcConfiguration">>, Input, Options).
 
-%% @doc Returns information about a specific Amazon Kinesis Data Analytics
+%% @doc Returns information about a specific Kinesis Data Analytics
 %% application.
 %%
 %% If you want to retrieve a list of all applications in your account, use
-%% the <a>ListApplications</a> operation.
+%% the `ListApplications` operation.
 describe_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_application(Client, Input, []).
@@ -275,11 +279,12 @@ describe_application_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeApplicationSnapshot">>, Input, Options).
 
-%% @doc Infers a schema for an SQL-based Amazon Kinesis Data Analytics
-%% application by evaluating sample records on the specified streaming source
-%% (Kinesis data stream or Kinesis Data Firehose delivery stream) or Amazon
-%% S3 object. In the response, the operation returns the inferred schema and
-%% also the sample records that the operation used to infer the schema.
+%% @doc Infers a schema for a SQL-based Kinesis Data Analytics application by
+%% evaluating sample records on the specified streaming source (Kinesis data
+%% stream or Kinesis Data Firehose delivery stream) or Amazon S3 object.
+%%
+%% In the response, the operation returns the inferred schema and also the
+%% sample records that the operation used to infer the schema.
 %%
 %% You can use the inferred schema when configuring a streaming source for
 %% your application. When you create an application using the Kinesis Data
@@ -300,12 +305,14 @@ list_application_snapshots(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListApplicationSnapshots">>, Input, Options).
 
-%% @doc Returns a list of Amazon Kinesis Data Analytics applications in your
-%% account. For each application, the response includes the application name,
-%% Amazon Resource Name (ARN), and status.
+%% @doc Returns a list of Kinesis Data Analytics applications in your
+%% account.
+%%
+%% For each application, the response includes the application name, Amazon
+%% Resource Name (ARN), and status.
 %%
 %% If you want detailed information about a specific application, use
-%% <a>DescribeApplication</a>.
+%% `DescribeApplication`.
 list_applications(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_applications(Client, Input, []).
@@ -313,10 +320,9 @@ list_applications(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListApplications">>, Input, Options).
 
-%% @doc Retrieves the list of key-value tags assigned to the application. For
-%% more information, see <a
-%% href="https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html">Using
-%% Tagging</a>.
+%% @doc Retrieves the list of key-value tags assigned to the application.
+%%
+%% For more information, see Using Tagging.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -324,9 +330,10 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
-%% @doc Starts the specified Amazon Kinesis Data Analytics application. After
-%% creating an application, you must exclusively call this operation to start
-%% your application.
+%% @doc Starts the specified Kinesis Data Analytics application.
+%%
+%% After creating an application, you must exclusively call this operation to
+%% start your application.
 start_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_application(Client, Input, []).
@@ -334,9 +341,10 @@ start_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartApplication">>, Input, Options).
 
-%% @doc Stops the application from processing data. You can stop an
-%% application only if it is in the running state. You can use the
-%% <a>DescribeApplication</a> operation to find the application state.
+%% @doc Stops the application from processing data.
+%%
+%% You can stop an application only if it is in the running state. You can
+%% use the `DescribeApplication` operation to find the application state.
 stop_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_application(Client, Input, []).
@@ -344,12 +352,12 @@ stop_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopApplication">>, Input, Options).
 
-%% @doc Adds one or more key-value tags to a Kinesis Analytics application.
+%% @doc Adds one or more key-value tags to a Kinesis Data Analytics
+%% application.
+%%
 %% Note that the maximum number of application tags includes system tags. The
 %% maximum number of user-defined application tags is 50. For more
-%% information, see <a
-%% href="https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html">Using
-%% Tagging</a>.
+%% information, see Using Tagging.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -357,10 +365,9 @@ tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
-%% @doc Removes one or more tags from a Kinesis Analytics application. For
-%% more information, see <a
-%% href="https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html">Using
-%% Tagging</a>.
+%% @doc Removes one or more tags from a Kinesis Data Analytics application.
+%%
+%% For more information, see Using Tagging.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -368,12 +375,17 @@ untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
-%% @doc Updates an existing Amazon Kinesis Data Analytics application. Using
-%% this operation, you can update application code, input configuration, and
-%% output configuration.
+%% @doc Updates an existing Kinesis Data Analytics application.
 %%
-%% Kinesis Data Analytics updates the <code>ApplicationVersionId</code> each
-%% time you update your application.
+%% Using this operation, you can update application code, input
+%% configuration, and output configuration.
+%%
+%% Kinesis Data Analytics updates the `ApplicationVersionId` each time you
+%% update your application.
+%%
+%% You cannot update the `RuntimeEnvironment` of an existing application. If
+%% you need to update an application's `RuntimeEnvironment`, you must delete
+%% the application and create it again.
 update_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_application(Client, Input, []).
@@ -423,6 +435,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
 handle_response({error, Reason}) ->
     {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

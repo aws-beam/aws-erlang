@@ -3,11 +3,12 @@
 
 %% @doc AWS Performance Insights enables you to monitor and explore different
 %% dimensions of database load based on data captured from a running RDS
-%% instance. The guide provides detailed information about Performance
-%% Insights data types, parameters and errors. For more information about
-%% Performance Insights capabilities see <a
-%% href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html">Using
-%% Amazon RDS Performance Insights </a> in the <i>Amazon RDS User Guide</i>.
+%% instance.
+%%
+%% The guide provides detailed information about Performance Insights data
+%% types, parameters and errors. For more information about Performance
+%% Insights capabilities see Using Amazon RDS Performance Insights in the
+%% Amazon RDS User Guide.
 %%
 %% The AWS Performance Insights API provides visibility into the performance
 %% of your RDS instance, when Performance Insights is enabled for supported
@@ -32,8 +33,8 @@
 %% API
 %%====================================================================
 
-%% @doc For a specific time period, retrieve the top <code>N</code> dimension
-%% keys for a metric.
+%% @doc For a specific time period, retrieve the top `N` dimension keys for a
+%% metric.
 describe_dimension_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_dimension_keys(Client, Input, []).
@@ -42,8 +43,10 @@ describe_dimension_keys(Client, Input, Options)
     request(Client, <<"DescribeDimensionKeys">>, Input, Options).
 
 %% @doc Retrieve Performance Insights metrics for a set of data sources, over
-%% a time period. You can provide specific dimension groups and dimensions,
-%% and provide aggregation and filtering criteria for each group.
+%% a time period.
+%%
+%% You can provide specific dimension groups and dimensions, and provide
+%% aggregation and filtering criteria for each group.
 get_resource_metrics(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_metrics(Client, Input, []).
@@ -93,6 +96,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
 handle_response({error, Reason}) ->
     {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

@@ -123,9 +123,10 @@ export_bundle(Client, BundleId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Exports project configuration to a snapshot which can be downloaded
-%% and shared. Note that mobile app push credentials are encrypted in
-%% exported projects, so they can only be shared successfully within the same
-%% AWS account.
+%% and shared.
+%%
+%% Note that mobile app push credentials are encrypted in exported projects,
+%% so they can only be shared successfully within the same AWS account.
 export_project(Client, ProjectId, Input) ->
     export_project(Client, ProjectId, Input, []).
 export_project(Client, ProjectId, Input0, Options) ->
@@ -244,6 +245,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

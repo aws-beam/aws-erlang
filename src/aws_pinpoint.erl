@@ -1981,10 +1981,12 @@ update_email_template(Client, TemplateName, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new endpoint for an application or updates the settings and
-%% attributes of an existing endpoint for an application. You can also use
-%% this operation to define custom attributes for an endpoint. If an update
-%% includes one or more values for a custom attribute, Amazon Pinpoint
-%% replaces (overwrites) any existing values with the new values.
+%% attributes of an existing endpoint for an application.
+%%
+%% You can also use this operation to define custom attributes for an
+%% endpoint. If an update includes one or more values for a custom attribute,
+%% Amazon Pinpoint replaces (overwrites) any existing values with the new
+%% values.
 update_endpoint(Client, ApplicationId, EndpointId, Input) ->
     update_endpoint(Client, ApplicationId, EndpointId, Input, []).
 update_endpoint(Client, ApplicationId, EndpointId, Input0, Options) ->
@@ -2002,10 +2004,12 @@ update_endpoint(Client, ApplicationId, EndpointId, Input0, Options) ->
 
 %% @doc Creates a new batch of endpoints for an application or updates the
 %% settings and attributes of a batch of existing endpoints for an
-%% application. You can also use this operation to define custom attributes
-%% for a batch of endpoints. If an update includes one or more values for a
-%% custom attribute, Amazon Pinpoint replaces (overwrites) any existing
-%% values with the new values.
+%% application.
+%%
+%% You can also use this operation to define custom attributes for a batch of
+%% endpoints. If an update includes one or more values for a custom
+%% attribute, Amazon Pinpoint replaces (overwrites) any existing values with
+%% the new values.
 update_endpoints_batch(Client, ApplicationId, Input) ->
     update_endpoints_batch(Client, ApplicationId, Input, []).
 update_endpoints_batch(Client, ApplicationId, Input0, Options) ->
@@ -2160,7 +2164,7 @@ update_sms_template(Client, TemplateName, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Changes the status of a specific version of a message template to
-%% <i>active</i>.
+%% active.
 update_template_active_version(Client, TemplateName, TemplateType, Input) ->
     update_template_active_version(Client, TemplateName, TemplateType, Input, []).
 update_template_active_version(Client, TemplateName, TemplateType, Input0, Options) ->
@@ -2258,6 +2262,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

@@ -6,7 +6,6 @@
 %%
 %% Also provides sample requests, responses, and errors for the supported web
 %% services
-%%
 %% protocols.
 -module(aws_iot_1click_devices).
 
@@ -45,7 +44,6 @@
 
 %% @doc Adds device(s) to your account (i.e., claim one or more devices) if
 %% and only if you
-%%
 %% received a claim code with the device(s).
 claim_devices_by_claim_code(Client, ClaimCode, Input) ->
     claim_devices_by_claim_code(Client, ClaimCode, Input, []).
@@ -64,7 +62,6 @@ claim_devices_by_claim_code(Client, ClaimCode, Input0, Options) ->
 
 %% @doc Given a device ID, returns a DescribeDeviceResponse object describing
 %% the
-%%
 %% details of the device.
 describe_device(Client, DeviceId)
   when is_map(Client) ->
@@ -83,16 +80,10 @@ describe_device(Client, DeviceId, Options)
 %% @doc Given a device ID, finalizes the claim request for the associated
 %% device.
 %%
-%% <note>
-%%
 %% Claiming a device consists of initiating a claim, then publishing a device
 %% event,
-%%
 %% and finalizing the claim. For a device of type button, a device event can
-%%
 %% be published by simply clicking the device.
-%%
-%% </note>
 finalize_device_claim(Client, DeviceId, Input) ->
     finalize_device_claim(Client, DeviceId, Input, []).
 finalize_device_claim(Client, DeviceId, Input0, Options) ->
@@ -127,16 +118,10 @@ get_device_methods(Client, DeviceId, Options)
 %% @doc Given a device ID, initiates a claim request for the associated
 %% device.
 %%
-%% <note>
-%%
 %% Claiming a device consists of initiating a claim, then publishing a device
 %% event,
-%%
 %% and finalizing the claim. For a device of type button, a device event can
-%%
 %% be published by simply clicking the device.
-%%
-%% </note>
 initiate_device_claim(Client, DeviceId, Input) ->
     initiate_device_claim(Client, DeviceId, Input, []).
 initiate_device_claim(Client, DeviceId, Input0, Options) ->
@@ -154,8 +139,9 @@ initiate_device_claim(Client, DeviceId, Input0, Options) ->
 
 %% @doc Given a device ID, issues a request to invoke a named device method
 %% (with possible
+%% parameters).
 %%
-%% parameters). See the "Example POST" code snippet below.
+%% See the "Example POST" code snippet below.
 invoke_device_method(Client, DeviceId, Input) ->
     invoke_device_method(Client, DeviceId, Input, []).
 invoke_device_method(Client, DeviceId, Input0, Options) ->
@@ -173,7 +159,6 @@ invoke_device_method(Client, DeviceId, Input0, Options) ->
 
 %% @doc Using a device ID, returns a DeviceEventsResponse object containing
 %% an
-%%
 %% array of events for the device.
 list_device_events(Client, DeviceId, FromTimeStamp, MaxResults, NextToken, ToTimeStamp)
   when is_map(Client) ->
@@ -233,10 +218,10 @@ list_tags_for_resource(Client, ResourceArn, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Adds or updates the tags associated with the resource ARN. See <a
-%% href="https://docs.aws.amazon.com/iot-1-click/latest/developerguide/1click-appendix.html#1click-limits">AWS
-%% IoT 1-Click Service Limits</a> for the maximum number of tags allowed per
+%% @doc Adds or updates the tags associated with the resource ARN.
 %%
+%% See AWS IoT 1-Click Service Limits for the maximum number of tags allowed
+%% per
 %% resource.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
@@ -271,7 +256,6 @@ unclaim_device(Client, DeviceId, Input0, Options) ->
 
 %% @doc Using tag keys, deletes the tags (key/value pairs) associated with
 %% the specified
-%%
 %% resource ARN.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
@@ -290,7 +274,6 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Using a Boolean value (true or false), this operation
-%%
 %% enables or disables the device given a device ID.
 update_device_state(Client, DeviceId, Input) ->
     update_device_state(Client, DeviceId, Input, []).
@@ -353,6 +336,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

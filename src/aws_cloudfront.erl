@@ -1,12 +1,13 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc <fullname>Amazon CloudFront</fullname>
+%% @doc Amazon CloudFront
 %%
-%% This is the <i>Amazon CloudFront API Reference</i>. This guide is for
-%% developers who need detailed information about CloudFront API actions,
-%% data types, and errors. For detailed information about CloudFront
-%% features, see the <i>Amazon CloudFront Developer Guide</i>.
+%% This is the Amazon CloudFront API Reference.
+%%
+%% This guide is for developers who need detailed information about
+%% CloudFront API actions, data types, and errors. For detailed information
+%% about CloudFront features, see the Amazon CloudFront Developer Guide.
 -module(aws_cloudfront).
 
 -export([create_cache_policy/2,
@@ -23,10 +24,16 @@
          create_field_level_encryption_profile/3,
          create_invalidation/3,
          create_invalidation/4,
+         create_key_group/2,
+         create_key_group/3,
+         create_monitoring_subscription/3,
+         create_monitoring_subscription/4,
          create_origin_request_policy/2,
          create_origin_request_policy/3,
          create_public_key/2,
          create_public_key/3,
+         create_realtime_log_config/2,
+         create_realtime_log_config/3,
          create_streaming_distribution/2,
          create_streaming_distribution/3,
          create_streaming_distribution_with_tags/2,
@@ -41,10 +48,16 @@
          delete_field_level_encryption_config/4,
          delete_field_level_encryption_profile/3,
          delete_field_level_encryption_profile/4,
+         delete_key_group/3,
+         delete_key_group/4,
+         delete_monitoring_subscription/3,
+         delete_monitoring_subscription/4,
          delete_origin_request_policy/3,
          delete_origin_request_policy/4,
          delete_public_key/3,
          delete_public_key/4,
+         delete_realtime_log_config/2,
+         delete_realtime_log_config/3,
          delete_streaming_distribution/3,
          delete_streaming_distribution/4,
          get_cache_policy/2,
@@ -69,6 +82,12 @@
          get_field_level_encryption_profile_config/3,
          get_invalidation/3,
          get_invalidation/4,
+         get_key_group/2,
+         get_key_group/3,
+         get_key_group_config/2,
+         get_key_group_config/3,
+         get_monitoring_subscription/2,
+         get_monitoring_subscription/3,
          get_origin_request_policy/2,
          get_origin_request_policy/3,
          get_origin_request_policy_config/2,
@@ -77,6 +96,8 @@
          get_public_key/3,
          get_public_key_config/2,
          get_public_key_config/3,
+         get_realtime_log_config/2,
+         get_realtime_log_config/3,
          get_streaming_distribution/2,
          get_streaming_distribution/3,
          get_streaming_distribution_config/2,
@@ -89,8 +110,12 @@
          list_distributions/4,
          list_distributions_by_cache_policy_id/4,
          list_distributions_by_cache_policy_id/5,
+         list_distributions_by_key_group/4,
+         list_distributions_by_key_group/5,
          list_distributions_by_origin_request_policy_id/4,
          list_distributions_by_origin_request_policy_id/5,
+         list_distributions_by_realtime_log_config/2,
+         list_distributions_by_realtime_log_config/3,
          list_distributions_by_web_a_c_l_id/4,
          list_distributions_by_web_a_c_l_id/5,
          list_field_level_encryption_configs/3,
@@ -99,10 +124,14 @@
          list_field_level_encryption_profiles/4,
          list_invalidations/4,
          list_invalidations/5,
+         list_key_groups/3,
+         list_key_groups/4,
          list_origin_request_policies/4,
          list_origin_request_policies/5,
          list_public_keys/3,
          list_public_keys/4,
+         list_realtime_log_configs/3,
+         list_realtime_log_configs/4,
          list_streaming_distributions/3,
          list_streaming_distributions/4,
          list_tags_for_resource/2,
@@ -121,10 +150,14 @@
          update_field_level_encryption_config/4,
          update_field_level_encryption_profile/3,
          update_field_level_encryption_profile/4,
+         update_key_group/3,
+         update_key_group/4,
          update_origin_request_policy/3,
          update_origin_request_policy/4,
          update_public_key/3,
          update_public_key/4,
+         update_realtime_log_config/2,
+         update_realtime_log_config/3,
          update_streaming_distribution/3,
          update_streaming_distribution/4]).
 
@@ -140,8 +173,8 @@
 %% behaviors. When it’s attached to a cache behavior, the cache policy
 %% determines the following:
 %%
-%% <ul> <li> The values that CloudFront includes in the <i>cache key</i>.
-%% These values can include HTTP headers, cookies, and URL query strings.
+%% <ul> <li> The values that CloudFront includes in the cache key. These
+%% values can include HTTP headers, cookies, and URL query strings.
 %% CloudFront uses the cache key to find an object in its cache that it can
 %% return to the viewer.
 %%
@@ -152,12 +185,11 @@
 %% the cache key are automatically included in requests that CloudFront sends
 %% to the origin. CloudFront sends a request when it can’t find an object in
 %% its cache that matches the request’s cache key. If you want to send values
-%% to the origin but <i>not</i> include them in the cache key, use
-%% <code>CreateOriginRequestPolicy</code>.
+%% to the origin but not include them in the cache key, use
+%% `OriginRequestPolicy`.
 %%
-%% For more information about cache policies, see <a
-%% href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html">Controlling
-%% the cache key</a> in the <i>Amazon CloudFront Developer Guide</i>.
+%% For more information about cache policies, see Controlling the cache key
+%% in the Amazon CloudFront Developer Guide.
 create_cache_policy(Client, Input) ->
     create_cache_policy(Client, Input, []).
 create_cache_policy(Client, Input0, Options) ->
@@ -190,13 +222,13 @@ create_cache_policy(Client, Input0, Options) ->
         Result
     end.
 
-%% @doc Creates a new origin access identity. If you're using Amazon S3 for
-%% your origin, you can use an origin access identity to require users to
-%% access your content using a CloudFront URL instead of the Amazon S3 URL.
-%% For more information about how to use origin access identities, see <a
-%% href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html">Serving
-%% Private Content through CloudFront</a> in the <i>Amazon CloudFront
-%% Developer Guide</i>.
+%% @doc Creates a new origin access identity.
+%%
+%% If you're using Amazon S3 for your origin, you can use an origin access
+%% identity to require users to access your content using a CloudFront URL
+%% instead of the Amazon S3 URL. For more information about how to use origin
+%% access identities, see Serving Private Content through CloudFront in the
+%% Amazon CloudFront Developer Guide.
 create_cloud_front_origin_access_identity(Client, Input) ->
     create_cloud_front_origin_access_identity(Client, Input, []).
 create_cloud_front_origin_access_identity(Client, Input0, Options) ->
@@ -229,24 +261,20 @@ create_cloud_front_origin_access_identity(Client, Input0, Options) ->
         Result
     end.
 
-%% @doc Creates a new web distribution. You create a CloudFront distribution
-%% to tell CloudFront where you want content to be delivered from, and the
-%% details about how to track and manage content delivery. Send a
-%% <code>POST</code> request to the <code>/<i>CloudFront API
-%% version</i>/distribution</code>/<code>distribution ID</code> resource.
+%% @doc Creates a new web distribution.
 %%
-%% <important> When you update a distribution, there are more required fields
-%% than when you create a distribution. When you update your distribution by
-%% using <a
-%% href="https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html">UpdateDistribution</a>,
-%% follow the steps included in the documentation to get the current
-%% configuration and then make your updates. This helps to make sure that you
-%% include all of the required fields. To view a summary, see <a
-%% href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-overview-required-fields.html">Required
-%% Fields for Create Distribution and Update Distribution</a> in the
-%% <i>Amazon CloudFront Developer Guide</i>.
+%% You create a CloudFront distribution to tell CloudFront where you want
+%% content to be delivered from, and the details about how to track and
+%% manage content delivery. Send a `POST` request to the `/CloudFront API
+%% version/distribution`/`distribution ID` resource.
 %%
-%% </important>
+%% When you update a distribution, there are more required fields than when
+%% you create a distribution. When you update your distribution by using
+%% UpdateDistribution, follow the steps included in the documentation to get
+%% the current configuration and then make your updates. This helps to make
+%% sure that you include all of the required fields. To view a summary, see
+%% Required Fields for Create Distribution and Update Distribution in the
+%% Amazon CloudFront Developer Guide.
 create_distribution(Client, Input) ->
     create_distribution(Client, Input, []).
 create_distribution(Client, Input0, Options) ->
@@ -410,6 +438,72 @@ create_invalidation(Client, DistributionId, Input0, Options) ->
         Result
     end.
 
+%% @doc Creates a key group that you can use with CloudFront signed URLs and
+%% signed cookies.
+%%
+%% To create a key group, you must specify at least one public key for the
+%% key group. After you create a key group, you can reference it from one or
+%% more cache behaviors. When you reference a key group in a cache behavior,
+%% CloudFront requires signed URLs or signed cookies for all requests that
+%% match the cache behavior. The URLs or cookies must be signed with a
+%% private key whose corresponding public key is in the key group. The signed
+%% URL or cookie contains information about which public key CloudFront
+%% should use to verify the signature. For more information, see Serving
+%% private content in the Amazon CloudFront Developer Guide.
+create_key_group(Client, Input) ->
+    create_key_group(Client, Input, []).
+create_key_group(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/2020-05-31/key-group"],
+    SuccessStatusCode = 201,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>},
+            {<<"Location">>, <<"Location">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Enables additional CloudWatch metrics for the specified CloudFront
+%% distribution.
+%%
+%% The additional metrics incur an additional cost.
+%%
+%% For more information, see Viewing additional CloudFront distribution
+%% metrics in the Amazon CloudFront Developer Guide.
+create_monitoring_subscription(Client, DistributionId, Input) ->
+    create_monitoring_subscription(Client, DistributionId, Input, []).
+create_monitoring_subscription(Client, DistributionId, Input0, Options) ->
+    Method = post,
+    Path = ["/2020-05-31/distributions/", http_uri:encode(DistributionId), "/monitoring-subscription"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates an origin request policy.
 %%
 %% After you create an origin request policy, you can attach it to one or
@@ -422,8 +516,7 @@ create_invalidation(Client, DistributionId, Input0, Options) ->
 %% the viewer request.
 %%
 %% </li> <li> The headers that CloudFront automatically includes in every
-%% origin request, including <code>Host</code>, <code>User-Agent</code>, and
-%% <code>X-Amz-Cf-Id</code>.
+%% origin request, including `Host`, `User-Agent`, and `X-Amz-Cf-Id`.
 %%
 %% </li> <li> All HTTP headers, cookies, and URL query strings that are
 %% specified in the cache policy or the origin request policy. These can
@@ -432,12 +525,10 @@ create_invalidation(Client, DistributionId, Input0, Options) ->
 %%
 %% </li> </ul> CloudFront sends a request when it can’t find a valid object
 %% in its cache that matches the request. If you want to send values to the
-%% origin and also include them in the cache key, use
-%% <code>CreateCachePolicy</code>.
+%% origin and also include them in the cache key, use `CachePolicy`.
 %%
-%% For more information about origin request policies, see <a
-%% href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-origin-requests.html">Controlling
-%% origin requests</a> in the <i>Amazon CloudFront Developer Guide</i>.
+%% For more information about origin request policies, see Controlling origin
+%% requests in the Amazon CloudFront Developer Guide.
 create_origin_request_policy(Client, Input) ->
     create_origin_request_policy(Client, Input, []).
 create_origin_request_policy(Client, Input0, Options) ->
@@ -470,9 +561,8 @@ create_origin_request_policy(Client, Input0, Options) ->
         Result
     end.
 
-%% @doc Add a new public key to CloudFront to use, for example, for
-%% field-level encryption. You can add a maximum of 10 public keys with one
-%% AWS account.
+%% @doc Uploads a public key to CloudFront that you can use with signed URLs
+%% and signed cookies, or with field-level encryption.
 create_public_key(Client, Input) ->
     create_public_key(Client, Input, []).
 create_public_key(Client, Input0, Options) ->
@@ -505,41 +595,59 @@ create_public_key(Client, Input0, Options) ->
         Result
     end.
 
-%% @doc Creates a new RTMP distribution. An RTMP distribution is similar to a
-%% web distribution, but an RTMP distribution streams media files using the
-%% Adobe Real-Time Messaging Protocol (RTMP) instead of serving files using
-%% HTTP.
+%% @doc Creates a real-time log configuration.
 %%
-%% To create a new distribution, submit a <code>POST</code> request to the
-%% <i>CloudFront API version</i>/distribution resource. The request body must
-%% include a document with a <i>StreamingDistributionConfig</i> element. The
-%% response echoes the <code>StreamingDistributionConfig</code> element and
-%% returns other information about the RTMP distribution.
+%% After you create a real-time log configuration, you can attach it to one
+%% or more cache behaviors to send real-time log data to the specified Amazon
+%% Kinesis data stream.
 %%
-%% To get the status of your request, use the <i>GET
-%% StreamingDistribution</i> API action. When the value of
-%% <code>Enabled</code> is <code>true</code> and the value of
-%% <code>Status</code> is <code>Deployed</code>, your distribution is ready.
-%% A distribution usually deploys in less than 15 minutes.
+%% For more information about real-time log configurations, see Real-time
+%% logs in the Amazon CloudFront Developer Guide.
+create_realtime_log_config(Client, Input) ->
+    create_realtime_log_config(Client, Input, []).
+create_realtime_log_config(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/2020-05-31/realtime-log-config"],
+    SuccessStatusCode = 201,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new RTMP distribution.
 %%
-%% For more information about web distributions, see <a
-%% href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-rtmp.html">Working
-%% with RTMP Distributions</a> in the <i>Amazon CloudFront Developer
-%% Guide</i>.
+%% An RTMP distribution is similar to a web distribution, but an RTMP
+%% distribution streams media files using the Adobe Real-Time Messaging
+%% Protocol (RTMP) instead of serving files using HTTP.
 %%
-%% <important> Beginning with the 2012-05-05 version of the CloudFront API,
-%% we made substantial changes to the format of the XML document that you
-%% include in the request body when you create or update a web distribution
-%% or an RTMP distribution, and when you invalidate objects. With previous
-%% versions of the API, we discovered that it was too easy to accidentally
-%% delete one or more values for an element that accepts multiple values, for
-%% example, CNAMEs and trusted signers. Our changes for the 2012-05-05
-%% release are intended to prevent these accidental deletions and to notify
-%% you when there's a mismatch between the number of values you say you're
-%% specifying in the <code>Quantity</code> element and the number of values
-%% specified.
+%% To create a new distribution, submit a `POST` request to the CloudFront
+%% API version/distribution resource. The request body must include a
+%% document with a StreamingDistributionConfig element. The response echoes
+%% the `StreamingDistributionConfig` element and returns other information
+%% about the RTMP distribution.
 %%
-%% </important>
+%% To get the status of your request, use the GET StreamingDistribution API
+%% action. When the value of `Enabled` is `true` and the value of `Status` is
+%% `Deployed`, your distribution is ready. A distribution usually deploys in
+%% less than 15 minutes.
+%%
+%% For more information about web distributions, see Working with RTMP
+%% Distributions in the Amazon CloudFront Developer Guide.
+%%
+%% Beginning with the 2012-05-05 version of the CloudFront API, we made
+%% substantial changes to the format of the XML document that you include in
+%% the request body when you create or update a web distribution or an RTMP
+%% distribution, and when you invalidate objects. With previous versions of
+%% the API, we discovered that it was too easy to accidentally delete one or
+%% more values for an element that accepts multiple values, for example,
+%% CNAMEs and trusted signers. Our changes for the 2012-05-05 release are
+%% intended to prevent these accidental deletions and to notify you when
+%% there's a mismatch between the number of values you say you're specifying
+%% in the `Quantity` element and the number of values specified.
 create_streaming_distribution(Client, Input) ->
     create_streaming_distribution(Client, Input, []).
 create_streaming_distribution(Client, Input0, Options) ->
@@ -612,8 +720,8 @@ create_streaming_distribution_with_tags(Client, Input0, Options) ->
 %% behaviors, then delete the cache policy.
 %%
 %% To delete a cache policy, you must provide the policy’s identifier and
-%% version. To get these values, you can use <code>ListCachePolicies</code>
-%% or <code>GetCachePolicy</code>.
+%% version. To get these values, you can use `ListCachePolicies` or
+%% `GetCachePolicy`.
 delete_cache_policy(Client, Id, Input) ->
     delete_cache_policy(Client, Id, Input, []).
 delete_cache_policy(Client, Id, Input0, Options) ->
@@ -703,6 +811,49 @@ delete_field_level_encryption_profile(Client, Id, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a key group.
+%%
+%% You cannot delete a key group that is referenced in a cache behavior.
+%% First update your distributions to remove the key group from all cache
+%% behaviors, then delete the key group.
+%%
+%% To delete a key group, you must provide the key group’s identifier and
+%% version. To get these values, use `ListKeyGroups` followed by
+%% `GetKeyGroup` or `GetKeyGroupConfig`.
+delete_key_group(Client, Id, Input) ->
+    delete_key_group(Client, Id, Input, []).
+delete_key_group(Client, Id, Input0, Options) ->
+    Method = delete,
+    Path = ["/2020-05-31/key-group/", http_uri:encode(Id), ""],
+    SuccessStatusCode = 204,
+
+    HeadersMapping = [
+                       {<<"If-Match">>, <<"IfMatch">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Disables additional CloudWatch metrics for the specified CloudFront
+%% distribution.
+delete_monitoring_subscription(Client, DistributionId, Input) ->
+    delete_monitoring_subscription(Client, DistributionId, Input, []).
+delete_monitoring_subscription(Client, DistributionId, Input0, Options) ->
+    Method = delete,
+    Path = ["/2020-05-31/distributions/", http_uri:encode(DistributionId), "/monitoring-subscription"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes an origin request policy.
 %%
 %% You cannot delete an origin request policy if it’s attached to any cache
@@ -711,8 +862,7 @@ delete_field_level_encryption_profile(Client, Id, Input0, Options) ->
 %%
 %% To delete an origin request policy, you must provide the policy’s
 %% identifier and version. To get the identifier, you can use
-%% <code>ListOriginRequestPolicies</code> or
-%% <code>GetOriginRequestPolicy</code>.
+%% `ListOriginRequestPolicies` or `GetOriginRequestPolicy`.
 delete_origin_request_policy(Client, Id, Input) ->
     delete_origin_request_policy(Client, Id, Input, []).
 delete_origin_request_policy(Client, Id, Input0, Options) ->
@@ -748,49 +898,73 @@ delete_public_key(Client, Id, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Delete a streaming distribution. To delete an RTMP distribution using
-%% the CloudFront API, perform the following steps.
+%% @doc Deletes a real-time log configuration.
 %%
-%% <b>To delete an RTMP distribution using the CloudFront API</b>:
+%% You cannot delete a real-time log configuration if it’s attached to a
+%% cache behavior. First update your distributions to remove the real-time
+%% log configuration from all cache behaviors, then delete the real-time log
+%% configuration.
+%%
+%% To delete a real-time log configuration, you can provide the
+%% configuration’s name or its Amazon Resource Name (ARN). You must provide
+%% at least one. If you provide both, CloudFront uses the name to identify
+%% the real-time log configuration to delete.
+delete_realtime_log_config(Client, Input) ->
+    delete_realtime_log_config(Client, Input, []).
+delete_realtime_log_config(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/2020-05-31/delete-realtime-log-config/"],
+    SuccessStatusCode = 204,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Delete a streaming distribution.
+%%
+%% To delete an RTMP distribution using the CloudFront API, perform the
+%% following steps.
+%%
+%% To delete an RTMP distribution using the CloudFront API:
 %%
 %% <ol> <li> Disable the RTMP distribution.
 %%
-%% </li> <li> Submit a <code>GET Streaming Distribution Config</code> request
-%% to get the current configuration and the <code>Etag</code> header for the
-%% distribution.
+%% </li> <li> Submit a `GET Streaming Distribution Config` request to get the
+%% current configuration and the `Etag` header for the distribution.
 %%
 %% </li> <li> Update the XML document that was returned in the response to
-%% your <code>GET Streaming Distribution Config</code> request to change the
-%% value of <code>Enabled</code> to <code>false</code>.
+%% your `GET Streaming Distribution Config` request to change the value of
+%% `Enabled` to `false`.
 %%
-%% </li> <li> Submit a <code>PUT Streaming Distribution Config</code> request
-%% to update the configuration for your distribution. In the request body,
-%% include the XML document that you updated in Step 3. Then set the value of
-%% the HTTP <code>If-Match</code> header to the value of the
-%% <code>ETag</code> header that CloudFront returned when you submitted the
-%% <code>GET Streaming Distribution Config</code> request in Step 2.
+%% </li> <li> Submit a `PUT Streaming Distribution Config` request to update
+%% the configuration for your distribution. In the request body, include the
+%% XML document that you updated in Step 3. Then set the value of the HTTP
+%% `If-Match` header to the value of the `ETag` header that CloudFront
+%% returned when you submitted the `GET Streaming Distribution Config`
+%% request in Step 2.
 %%
-%% </li> <li> Review the response to the <code>PUT Streaming Distribution
-%% Config</code> request to confirm that the distribution was successfully
-%% disabled.
+%% </li> <li> Review the response to the `PUT Streaming Distribution Config`
+%% request to confirm that the distribution was successfully disabled.
 %%
-%% </li> <li> Submit a <code>GET Streaming Distribution Config</code> request
-%% to confirm that your changes have propagated. When propagation is
-%% complete, the value of <code>Status</code> is <code>Deployed</code>.
+%% </li> <li> Submit a `GET Streaming Distribution Config` request to confirm
+%% that your changes have propagated. When propagation is complete, the value
+%% of `Status` is `Deployed`.
 %%
-%% </li> <li> Submit a <code>DELETE Streaming Distribution</code> request.
-%% Set the value of the HTTP <code>If-Match</code> header to the value of the
-%% <code>ETag</code> header that CloudFront returned when you submitted the
-%% <code>GET Streaming Distribution Config</code> request in Step 2.
+%% </li> <li> Submit a `DELETE Streaming Distribution` request. Set the value
+%% of the HTTP `If-Match` header to the value of the `ETag` header that
+%% CloudFront returned when you submitted the `GET Streaming Distribution
+%% Config` request in Step 2.
 %%
-%% </li> <li> Review the response to your <code>DELETE Streaming
-%% Distribution</code> request to confirm that the distribution was
-%% successfully deleted.
+%% </li> <li> Review the response to your `DELETE Streaming Distribution`
+%% request to confirm that the distribution was successfully deleted.
 %%
 %% </li> </ol> For information about deleting a distribution using the
-%% CloudFront console, see <a
-%% href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowToDeleteDistribution.html">Deleting
-%% a Distribution</a> in the <i>Amazon CloudFront Developer Guide</i>.
+%% CloudFront console, see Deleting a Distribution in the Amazon CloudFront
+%% Developer Guide.
 delete_streaming_distribution(Client, Id, Input) ->
     delete_streaming_distribution(Client, Id, Input, []).
 delete_streaming_distribution(Client, Id, Input0, Options) ->
@@ -816,10 +990,9 @@ delete_streaming_distribution(Client, Id, Input0, Options) ->
 %%
 %% </li> </ul> To get a cache policy, you must provide the policy’s
 %% identifier. If the cache policy is attached to a distribution’s cache
-%% behavior, you can get the policy’s identifier using
-%% <code>ListDistributions</code> or <code>GetDistribution</code>. If the
-%% cache policy is not attached to a cache behavior, you can get the
-%% identifier using <code>ListCachePolicies</code>.
+%% behavior, you can get the policy’s identifier using `ListDistributions` or
+%% `GetDistribution`. If the cache policy is not attached to a cache
+%% behavior, you can get the identifier using `ListCachePolicies`.
 get_cache_policy(Client, Id)
   when is_map(Client) ->
     get_cache_policy(Client, Id, []).
@@ -854,10 +1027,9 @@ get_cache_policy(Client, Id, Options)
 %%
 %% To get a cache policy configuration, you must provide the policy’s
 %% identifier. If the cache policy is attached to a distribution’s cache
-%% behavior, you can get the policy’s identifier using
-%% <code>ListDistributions</code> or <code>GetDistribution</code>. If the
-%% cache policy is not attached to a cache behavior, you can get the
-%% identifier using <code>ListCachePolicies</code>.
+%% behavior, you can get the policy’s identifier using `ListDistributions` or
+%% `GetDistribution`. If the cache policy is not attached to a cache
+%% behavior, you can get the identifier using `ListCachePolicies`.
 get_cache_policy_config(Client, Id)
   when is_map(Client) ->
     get_cache_policy_config(Client, Id, []).
@@ -1151,6 +1323,97 @@ get_invalidation(Client, DistributionId, Id, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets a key group, including the date and time when the key group was
+%% last modified.
+%%
+%% To get a key group, you must provide the key group’s identifier. If the
+%% key group is referenced in a distribution’s cache behavior, you can get
+%% the key group’s identifier using `ListDistributions` or `GetDistribution`.
+%% If the key group is not referenced in a cache behavior, you can get the
+%% identifier using `ListKeyGroups`.
+get_key_group(Client, Id)
+  when is_map(Client) ->
+    get_key_group(Client, Id, []).
+get_key_group(Client, Id, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/2020-05-31/key-group/", http_uri:encode(Id), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query_ = [],
+
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Gets a key group configuration.
+%%
+%% To get a key group configuration, you must provide the key group’s
+%% identifier. If the key group is referenced in a distribution’s cache
+%% behavior, you can get the key group’s identifier using `ListDistributions`
+%% or `GetDistribution`. If the key group is not referenced in a cache
+%% behavior, you can get the identifier using `ListKeyGroups`.
+get_key_group_config(Client, Id)
+  when is_map(Client) ->
+    get_key_group_config(Client, Id, []).
+get_key_group_config(Client, Id, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/2020-05-31/key-group/", http_uri:encode(Id), "/config"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query_ = [],
+
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Gets information about whether additional CloudWatch metrics are
+%% enabled for the specified CloudFront distribution.
+get_monitoring_subscription(Client, DistributionId)
+  when is_map(Client) ->
+    get_monitoring_subscription(Client, DistributionId, []).
+get_monitoring_subscription(Client, DistributionId, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/2020-05-31/distributions/", http_uri:encode(DistributionId), "/monitoring-subscription"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets an origin request policy, including the following metadata:
 %%
 %% <ul> <li> The policy’s identifier.
@@ -1160,9 +1423,9 @@ get_invalidation(Client, DistributionId, Id, Options)
 %% </li> </ul> To get an origin request policy, you must provide the policy’s
 %% identifier. If the origin request policy is attached to a distribution’s
 %% cache behavior, you can get the policy’s identifier using
-%% <code>ListDistributions</code> or <code>GetDistribution</code>. If the
-%% origin request policy is not attached to a cache behavior, you can get the
-%% identifier using <code>ListOriginRequestPolicies</code>.
+%% `ListDistributions` or `GetDistribution`. If the origin request policy is
+%% not attached to a cache behavior, you can get the identifier using
+%% `ListOriginRequestPolicies`.
 get_origin_request_policy(Client, Id)
   when is_map(Client) ->
     get_origin_request_policy(Client, Id, []).
@@ -1198,9 +1461,9 @@ get_origin_request_policy(Client, Id, Options)
 %% To get an origin request policy configuration, you must provide the
 %% policy’s identifier. If the origin request policy is attached to a
 %% distribution’s cache behavior, you can get the policy’s identifier using
-%% <code>ListDistributions</code> or <code>GetDistribution</code>. If the
-%% origin request policy is not attached to a cache behavior, you can get the
-%% identifier using <code>ListOriginRequestPolicies</code>.
+%% `ListDistributions` or `GetDistribution`. If the origin request policy is
+%% not attached to a cache behavior, you can get the identifier using
+%% `ListOriginRequestPolicies`.
 get_origin_request_policy_config(Client, Id)
   when is_map(Client) ->
     get_origin_request_policy_config(Client, Id, []).
@@ -1231,7 +1494,7 @@ get_origin_request_policy_config(Client, Id, Options)
         Result
     end.
 
-%% @doc Get the public key information.
+%% @doc Gets a public key.
 get_public_key(Client, Id)
   when is_map(Client) ->
     get_public_key(Client, Id, []).
@@ -1262,7 +1525,7 @@ get_public_key(Client, Id, Options)
         Result
     end.
 
-%% @doc Return public key configuration informaation
+%% @doc Gets a public key configuration.
 get_public_key_config(Client, Id)
   when is_map(Client) ->
     get_public_key_config(Client, Id, []).
@@ -1292,6 +1555,27 @@ get_public_key_config(Client, Id, Options)
       Result ->
         Result
     end.
+
+%% @doc Gets a real-time log configuration.
+%%
+%% To get a real-time log configuration, you can provide the configuration’s
+%% name or its Amazon Resource Name (ARN). You must provide at least one. If
+%% you provide both, CloudFront uses the name to identify the real-time log
+%% configuration to get.
+get_realtime_log_config(Client, Input) ->
+    get_realtime_log_config(Client, Input, []).
+get_realtime_log_config(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/2020-05-31/get-realtime-log-config/"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets information about a specified RTMP distribution, including the
 %% distribution configuration.
@@ -1365,8 +1649,8 @@ get_streaming_distribution_config(Client, Id, Options)
 %% response. If the total number of items in the list exceeds the maximum
 %% that you specify, or the default maximum, the response is paginated. To
 %% get the next page of items, send a subsequent request that specifies the
-%% <code>NextMarker</code> value from the current response as the
-%% <code>Marker</code> value in the subsequent request.
+%% `NextMarker` value from the current response as the `Marker` value in the
+%% subsequent request.
 list_cache_policies(Client, Marker, MaxItems, Type)
   when is_map(Client) ->
     list_cache_policies(Client, Marker, MaxItems, Type, []).
@@ -1434,8 +1718,8 @@ list_distributions(Client, Marker, MaxItems, Options)
 %% response. If the total number of items in the list exceeds the maximum
 %% that you specify, or the default maximum, the response is paginated. To
 %% get the next page of items, send a subsequent request that specifies the
-%% <code>NextMarker</code> value from the current response as the
-%% <code>Marker</code> value in the subsequent request.
+%% `NextMarker` value from the current response as the `Marker` value in the
+%% subsequent request.
 list_distributions_by_cache_policy_id(Client, CachePolicyId, Marker, MaxItems)
   when is_map(Client) ->
     list_distributions_by_cache_policy_id(Client, CachePolicyId, Marker, MaxItems, []).
@@ -1456,14 +1740,42 @@ list_distributions_by_cache_policy_id(Client, CachePolicyId, Marker, MaxItems, O
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a list of distribution IDs for distributions that have a cache
+%% behavior that references the specified key group.
+%%
+%% You can optionally specify the maximum number of items to receive in the
+%% response. If the total number of items in the list exceeds the maximum
+%% that you specify, or the default maximum, the response is paginated. To
+%% get the next page of items, send a subsequent request that specifies the
+%% `NextMarker` value from the current response as the `Marker` value in the
+%% subsequent request.
+list_distributions_by_key_group(Client, KeyGroupId, Marker, MaxItems)
+  when is_map(Client) ->
+    list_distributions_by_key_group(Client, KeyGroupId, Marker, MaxItems, []).
+list_distributions_by_key_group(Client, KeyGroupId, Marker, MaxItems, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/2020-05-31/distributionsByKeyGroupId/", http_uri:encode(KeyGroupId), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"Marker">>, Marker},
+        {<<"MaxItems">>, MaxItems}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets a list of distribution IDs for distributions that have a cache
 %% behavior that’s associated with the specified origin request policy.
 %%
 %% You can optionally specify the maximum number of items to receive in the
 %% response. If the total number of items in the list exceeds the maximum
 %% that you specify, or the default maximum, the response is paginated. To
 %% get the next page of items, send a subsequent request that specifies the
-%% <code>NextMarker</code> value from the current response as the
-%% <code>Marker</code> value in the subsequent request.
+%% `NextMarker` value from the current response as the `Marker` value in the
+%% subsequent request.
 list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, Marker, MaxItems)
   when is_map(Client) ->
     list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, Marker, MaxItems, []).
@@ -1482,6 +1794,35 @@ list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, Ma
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets a list of distributions that have a cache behavior that’s
+%% associated with the specified real-time log configuration.
+%%
+%% You can specify the real-time log configuration by its name or its Amazon
+%% Resource Name (ARN). You must provide at least one. If you provide both,
+%% CloudFront uses the name to identify the real-time log configuration to
+%% list distributions for.
+%%
+%% You can optionally specify the maximum number of items to receive in the
+%% response. If the total number of items in the list exceeds the maximum
+%% that you specify, or the default maximum, the response is paginated. To
+%% get the next page of items, send a subsequent request that specifies the
+%% `NextMarker` value from the current response as the `Marker` value in the
+%% subsequent request.
+list_distributions_by_realtime_log_config(Client, Input) ->
+    list_distributions_by_realtime_log_config(Client, Input, []).
+list_distributions_by_realtime_log_config(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/2020-05-31/distributionsByRealtimeLogConfig/"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc List the distributions that are associated with a specified AWS WAF
 %% web ACL.
@@ -1566,6 +1907,33 @@ list_invalidations(Client, DistributionId, Marker, MaxItems, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets a list of key groups.
+%%
+%% You can optionally specify the maximum number of items to receive in the
+%% response. If the total number of items in the list exceeds the maximum
+%% that you specify, or the default maximum, the response is paginated. To
+%% get the next page of items, send a subsequent request that specifies the
+%% `NextMarker` value from the current response as the `Marker` value in the
+%% subsequent request.
+list_key_groups(Client, Marker, MaxItems)
+  when is_map(Client) ->
+    list_key_groups(Client, Marker, MaxItems, []).
+list_key_groups(Client, Marker, MaxItems, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/2020-05-31/key-group"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"Marker">>, Marker},
+        {<<"MaxItems">>, MaxItems}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets a list of origin request policies.
 %%
 %% You can optionally apply a filter to return only the managed policies
@@ -1575,8 +1943,8 @@ list_invalidations(Client, DistributionId, Marker, MaxItems, Options)
 %% response. If the total number of items in the list exceeds the maximum
 %% that you specify, or the default maximum, the response is paginated. To
 %% get the next page of items, send a subsequent request that specifies the
-%% <code>NextMarker</code> value from the current response as the
-%% <code>Marker</code> value in the subsequent request.
+%% `NextMarker` value from the current response as the `Marker` value in the
+%% subsequent request.
 list_origin_request_policies(Client, Marker, MaxItems, Type)
   when is_map(Client) ->
     list_origin_request_policies(Client, Marker, MaxItems, Type, []).
@@ -1605,6 +1973,33 @@ list_public_keys(Client, Marker, MaxItems)
 list_public_keys(Client, Marker, MaxItems, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2020-05-31/public-key"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"Marker">>, Marker},
+        {<<"MaxItems">>, MaxItems}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets a list of real-time log configurations.
+%%
+%% You can optionally specify the maximum number of items to receive in the
+%% response. If the total number of items in the list exceeds the maximum
+%% that you specify, or the default maximum, the response is paginated. To
+%% get the next page of items, send a subsequent request that specifies the
+%% `NextMarker` value from the current response as the `Marker` value in the
+%% subsequent request.
+list_realtime_log_configs(Client, Marker, MaxItems)
+  when is_map(Client) ->
+    list_realtime_log_configs(Client, Marker, MaxItems, []).
+list_realtime_log_configs(Client, Marker, MaxItems, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/2020-05-31/realtime-log-config"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1697,15 +2092,14 @@ untag_resource(Client, Input0, Options) ->
 %% with the values provided in the request. You cannot update some fields
 %% independent of others. To update a cache policy configuration:
 %%
-%% <ol> <li> Use <code>GetCachePolicyConfig</code> to get the current
-%% configuration.
+%% <ol> <li> Use `GetCachePolicyConfig` to get the current configuration.
 %%
 %% </li> <li> Locally modify the fields in the cache policy configuration
 %% that you want to update.
 %%
-%% </li> <li> Call <code>UpdateCachePolicy</code> by providing the entire
-%% cache policy configuration, including the fields that you modified and
-%% those that you didn’t.
+%% </li> <li> Call `UpdateCachePolicy` by providing the entire cache policy
+%% configuration, including the fields that you modified and those that you
+%% didn’t.
 %%
 %% </li> </ol>
 update_cache_policy(Client, Id, Input) ->
@@ -1777,80 +2171,69 @@ update_cloud_front_origin_access_identity(Client, Id, Input0, Options) ->
 
 %% @doc Updates the configuration for a web distribution.
 %%
-%% <important> When you update a distribution, there are more required fields
-%% than when you create a distribution. When you update your distribution by
-%% using this API action, follow the steps here to get the current
-%% configuration and then make your updates, to make sure that you include
-%% all of the required fields. To view a summary, see <a
-%% href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-overview-required-fields.html">Required
-%% Fields for Create Distribution and Update Distribution</a> in the
-%% <i>Amazon CloudFront Developer Guide</i>.
+%% When you update a distribution, there are more required fields than when
+%% you create a distribution. When you update your distribution by using this
+%% API action, follow the steps here to get the current configuration and
+%% then make your updates, to make sure that you include all of the required
+%% fields. To view a summary, see Required Fields for Create Distribution and
+%% Update Distribution in the Amazon CloudFront Developer Guide.
 %%
-%% </important> The update process includes getting the current distribution
+%% The update process includes getting the current distribution
 %% configuration, updating the XML document that is returned to make your
-%% changes, and then submitting an <code>UpdateDistribution</code> request to
-%% make the updates.
+%% changes, and then submitting an `UpdateDistribution` request to make the
+%% updates.
 %%
 %% For information about updating a distribution using the CloudFront console
-%% instead, see <a
-%% href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-creating-console.html">Creating
-%% a Distribution</a> in the <i>Amazon CloudFront Developer Guide</i>.
+%% instead, see Creating a Distribution in the Amazon CloudFront Developer
+%% Guide.
 %%
-%% <b>To update a web distribution using the CloudFront API</b>
+%% To update a web distribution using the CloudFront API
 %%
-%% <ol> <li> Submit a <a
-%% href="https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_GetDistributionConfig.html">GetDistributionConfig</a>
-%% request to get the current configuration and an <code>Etag</code> header
-%% for the distribution.
+%% <ol> <li> Submit a GetDistributionConfig request to get the current
+%% configuration and an `Etag` header for the distribution.
 %%
-%% <note> If you update the distribution again, you must get a new
-%% <code>Etag</code> header.
+%% If you update the distribution again, you must get a new `Etag` header.
 %%
-%% </note> </li> <li> Update the XML document that was returned in the
-%% response to your <code>GetDistributionConfig</code> request to include
-%% your changes.
+%% </li> <li> Update the XML document that was returned in the response to
+%% your `GetDistributionConfig` request to include your changes.
 %%
-%% <important> When you edit the XML file, be aware of the following:
+%% When you edit the XML file, be aware of the following:
 %%
-%% <ul> <li> You must strip out the ETag parameter that is returned.
+%% You must strip out the ETag parameter that is returned.
 %%
-%% </li> <li> Additional fields are required when you update a distribution.
-%% There may be fields included in the XML file for features that you haven't
+%% Additional fields are required when you update a distribution. There may
+%% be fields included in the XML file for features that you haven't
 %% configured for your distribution. This is expected and required to
 %% successfully update the distribution.
 %%
-%% </li> <li> You can't change the value of <code>CallerReference</code>. If
-%% you try to change this value, CloudFront returns an
-%% <code>IllegalUpdate</code> error.
+%% You can't change the value of `CallerReference`. If you try to change this
+%% value, CloudFront returns an `IllegalUpdate` error.
 %%
-%% </li> <li> The new configuration replaces the existing configuration; the
-%% values that you specify in an <code>UpdateDistribution</code> request are
-%% not merged into your existing configuration. When you add, delete, or
-%% replace values in an element that allows multiple values (for example,
-%% <code>CNAME</code>), you must specify all of the values that you want to
-%% appear in the updated distribution. In addition, you must update the
-%% corresponding <code>Quantity</code> element.
+%% The new configuration replaces the existing configuration; the values that
+%% you specify in an `UpdateDistribution` request are not merged into your
+%% existing configuration. When you add, delete, or replace values in an
+%% element that allows multiple values (for example, `CNAME`), you must
+%% specify all of the values that you want to appear in the updated
+%% distribution. In addition, you must update the corresponding `Quantity`
+%% element.
 %%
-%% </li> </ul> </important> </li> <li> Submit an
-%% <code>UpdateDistribution</code> request to update the configuration for
-%% your distribution:
+%% </li> <li> Submit an `UpdateDistribution` request to update the
+%% configuration for your distribution:
 %%
 %% <ul> <li> In the request body, include the XML document that you updated
 %% in Step 2. The request body must include an XML document with a
-%% <code>DistributionConfig</code> element.
+%% `DistributionConfig` element.
 %%
-%% </li> <li> Set the value of the HTTP <code>If-Match</code> header to the
-%% value of the <code>ETag</code> header that CloudFront returned when you
-%% submitted the <code>GetDistributionConfig</code> request in Step 1.
+%% </li> <li> Set the value of the HTTP `If-Match` header to the value of the
+%% `ETag` header that CloudFront returned when you submitted the
+%% `GetDistributionConfig` request in Step 1.
 %%
-%% </li> </ul> </li> <li> Review the response to the
-%% <code>UpdateDistribution</code> request to confirm that the configuration
-%% was successfully updated.
+%% </li> </ul> </li> <li> Review the response to the `UpdateDistribution`
+%% request to confirm that the configuration was successfully updated.
 %%
-%% </li> <li> Optional: Submit a <a
-%% href="https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_GetDistribution.html">GetDistribution</a>
-%% request to confirm that your changes have propagated. When propagation is
-%% complete, the value of <code>Status</code> is <code>Deployed</code>.
+%% </li> <li> Optional: Submit a GetDistribution request to confirm that your
+%% changes have propagated. When propagation is complete, the value of
+%% `Status` is `Deployed`.
 %%
 %% </li> </ol>
 update_distribution(Client, Id, Input) ->
@@ -1954,6 +2337,55 @@ update_field_level_encryption_profile(Client, Id, Input0, Options) ->
         Result
     end.
 
+%% @doc Updates a key group.
+%%
+%% When you update a key group, all the fields are updated with the values
+%% provided in the request. You cannot update some fields independent of
+%% others. To update a key group:
+%%
+%% <ol> <li> Get the current key group with `GetKeyGroup` or
+%% `GetKeyGroupConfig`.
+%%
+%% </li> <li> Locally modify the fields in the key group that you want to
+%% update. For example, add or remove public key IDs.
+%%
+%% </li> <li> Call `UpdateKeyGroup` with the entire key group object,
+%% including the fields that you modified and those that you didn’t.
+%%
+%% </li> </ol>
+update_key_group(Client, Id, Input) ->
+    update_key_group(Client, Id, Input, []).
+update_key_group(Client, Id, Input0, Options) ->
+    Method = put,
+    Path = ["/2020-05-31/key-group/", http_uri:encode(Id), ""],
+    SuccessStatusCode = undefined,
+
+    HeadersMapping = [
+                       {<<"If-Match">>, <<"IfMatch">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    Query_ = [],
+    Input = Input1,
+
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
 %% @doc Updates an origin request policy configuration.
 %%
 %% When you update an origin request policy configuration, all the fields are
@@ -1961,15 +2393,15 @@ update_field_level_encryption_profile(Client, Id, Input0, Options) ->
 %% fields independent of others. To update an origin request policy
 %% configuration:
 %%
-%% <ol> <li> Use <code>GetOriginRequestPolicyConfig</code> to get the current
+%% <ol> <li> Use `GetOriginRequestPolicyConfig` to get the current
 %% configuration.
 %%
 %% </li> <li> Locally modify the fields in the origin request policy
 %% configuration that you want to update.
 %%
-%% </li> <li> Call <code>UpdateOriginRequestPolicy</code> by providing the
-%% entire origin request policy configuration, including the fields that you
-%% modified and those that you didn’t.
+%% </li> <li> Call `UpdateOriginRequestPolicy` by providing the entire origin
+%% request policy configuration, including the fields that you modified and
+%% those that you didn’t.
 %%
 %% </li> </ol>
 update_origin_request_policy(Client, Id, Input) ->
@@ -2005,8 +2437,9 @@ update_origin_request_policy(Client, Id, Input0, Options) ->
         Result
     end.
 
-%% @doc Update public key information. Note that the only value you can
-%% change is the comment.
+%% @doc Update public key information.
+%%
+%% Note that the only value you can change is the comment.
 update_public_key(Client, Id, Input) ->
     update_public_key(Client, Id, Input, []).
 update_public_key(Client, Id, Input0, Options) ->
@@ -2039,6 +2472,39 @@ update_public_key(Client, Id, Input0, Options) ->
       Result ->
         Result
     end.
+
+%% @doc Updates a real-time log configuration.
+%%
+%% When you update a real-time log configuration, all the parameters are
+%% updated with the values provided in the request. You cannot update some
+%% parameters independent of others. To update a real-time log configuration:
+%%
+%% <ol> <li> Call `GetRealtimeLogConfig` to get the current real-time log
+%% configuration.
+%%
+%% </li> <li> Locally modify the parameters in the real-time log
+%% configuration that you want to update.
+%%
+%% </li> <li> Call this API (`UpdateRealtimeLogConfig`) by providing the
+%% entire real-time log configuration, including the parameters that you
+%% modified and those that you didn’t.
+%%
+%% </li> </ol> You cannot update a real-time log configuration’s `Name` or
+%% `ARN`.
+update_realtime_log_config(Client, Input) ->
+    update_realtime_log_config(Client, Input, []).
+update_realtime_log_config(Client, Input0, Options) ->
+    Method = put,
+    Path = ["/2020-05-31/realtime-log-config/"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Update a streaming distribution.
 update_streaming_distribution(Client, Id, Input) ->
@@ -2121,6 +2587,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{endpoint := Endpoint}) ->

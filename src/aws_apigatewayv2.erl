@@ -118,6 +118,8 @@
          import_api/3,
          reimport_api/3,
          reimport_api/4,
+         reset_authorizers_cache/4,
+         reset_authorizers_cache/5,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -345,8 +347,9 @@ create_vpc_link(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the AccessLogSettings for a Stage. To disable access logging
-%% for a Stage, delete its AccessLogSettings.
+%% @doc Deletes the AccessLogSettings for a Stage.
+%%
+%% To disable access logging for a Stage, delete its AccessLogSettings.
 delete_access_log_settings(Client, ApiId, StageName, Input) ->
     delete_access_log_settings(Client, ApiId, StageName, Input, []).
 delete_access_log_settings(Client, ApiId, StageName, Input0, Options) ->
@@ -1111,6 +1114,24 @@ reimport_api(Client, ApiId, Input0, Options) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Resets all authorizer cache entries for the specified stage.
+%%
+%% Supported only for HTTP API Lambda authorizers.
+reset_authorizers_cache(Client, ApiId, StageName, Input) ->
+    reset_authorizers_cache(Client, ApiId, StageName, Input, []).
+reset_authorizers_cache(Client, ApiId, StageName, Input0, Options) ->
+    Method = delete,
+    Path = ["/v2/apis/", http_uri:encode(ApiId), "/stages/", http_uri:encode(StageName), "/cache/authorizers"],
+    SuccessStatusCode = 204,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a new Tag resource to represent a tag.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
@@ -1382,6 +1403,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

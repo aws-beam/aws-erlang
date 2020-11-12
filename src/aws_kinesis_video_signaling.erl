@@ -20,18 +20,17 @@
 
 %% @doc Gets the Interactive Connectivity Establishment (ICE) server
 %% configuration information, including URIs, username, and password which
-%% can be used to configure the WebRTC connection. The ICE component uses
-%% this configuration information to setup the WebRTC connection, including
-%% authenticating with the Traversal Using Relays around NAT (TURN) relay
-%% server.
+%% can be used to configure the WebRTC connection.
+%%
+%% The ICE component uses this configuration information to setup the WebRTC
+%% connection, including authenticating with the Traversal Using Relays
+%% around NAT (TURN) relay server.
 %%
 %% TURN is a protocol that is used to improve the connectivity of
 %% peer-to-peer applications. By providing a cloud-based relay service, TURN
 %% ensures that a connection can be established even when one or more peers
 %% are incapable of a direct peer-to-peer connection. For more information,
-%% see <a
-%% href="https://tools.ietf.org/html/draft-uberti-rtcweb-turn-rest-00">A REST
-%% API For Access To TURN Services</a>.
+%% see A REST API For Access To TURN Services.
 %%
 %% You can invoke this API to establish a fallback mechanism in case either
 %% of the peers is unable to establish a direct peer-to-peer connection over
@@ -53,12 +52,13 @@ get_ice_server_config(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This API allows you to connect WebRTC-enabled devices with Alexa
-%% display devices. When invoked, it sends the Alexa Session Description
-%% Protocol (SDP) offer to the master peer. The offer is delivered as soon as
-%% the master is connected to the specified signaling channel. This API
-%% returns the SDP answer from the connected master. If the master is not
-%% connected to the signaling channel, redelivery requests are made until the
-%% message expires.
+%% display devices.
+%%
+%% When invoked, it sends the Alexa Session Description Protocol (SDP) offer
+%% to the master peer. The offer is delivered as soon as the master is
+%% connected to the specified signaling channel. This API returns the SDP
+%% answer from the connected master. If the master is not connected to the
+%% signaling channel, redelivery requests are made until the message expires.
 send_alexa_offer_to_master(Client, Input) ->
     send_alexa_offer_to_master(Client, Input, []).
 send_alexa_offer_to_master(Client, Input0, Options) ->
@@ -120,6 +120,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

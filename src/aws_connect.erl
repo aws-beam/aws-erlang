@@ -11,22 +11,37 @@
 %%
 %% There are limits to the number of Amazon Connect resources that you can
 %% create and limits to the number of requests that you can make per second.
-%% For more information, see <a
-%% href="https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html">Amazon
-%% Connect Service Limits</a> in the <i>Amazon Connect Administrator
-%% Guide</i>.
+%% For more information, see Amazon Connect Service Quotas in the Amazon
+%% Connect Administrator Guide.
+%%
+%% To connect programmatically to an AWS service, you use an endpoint. For a
+%% list of Amazon Connect endpoints, see Amazon Connect Endpoints.
+%%
+%% Working with contact flows? Check out the Amazon Connect Flow language.
 -module(aws_connect).
 
--export([create_user/3,
+-export([associate_routing_profile_queues/4,
+         associate_routing_profile_queues/5,
+         create_contact_flow/3,
+         create_contact_flow/4,
+         create_routing_profile/3,
+         create_routing_profile/4,
+         create_user/3,
          create_user/4,
          delete_user/4,
          delete_user/5,
+         describe_contact_flow/3,
+         describe_contact_flow/4,
+         describe_routing_profile/3,
+         describe_routing_profile/4,
          describe_user/3,
          describe_user/4,
          describe_user_hierarchy_group/3,
          describe_user_hierarchy_group/4,
          describe_user_hierarchy_structure/2,
          describe_user_hierarchy_structure/3,
+         disassociate_routing_profile_queues/4,
+         disassociate_routing_profile_queues/5,
          get_contact_attributes/3,
          get_contact_attributes/4,
          get_current_metric_data/3,
@@ -41,8 +56,12 @@
          list_hours_of_operations/5,
          list_phone_numbers/6,
          list_phone_numbers/7,
+         list_prompts/4,
+         list_prompts/5,
          list_queues/5,
          list_queues/6,
+         list_routing_profile_queues/5,
+         list_routing_profile_queues/6,
          list_routing_profiles/4,
          list_routing_profiles/5,
          list_security_profiles/4,
@@ -73,6 +92,18 @@
          untag_resource/4,
          update_contact_attributes/2,
          update_contact_attributes/3,
+         update_contact_flow_content/4,
+         update_contact_flow_content/5,
+         update_contact_flow_name/4,
+         update_contact_flow_name/5,
+         update_routing_profile_concurrency/4,
+         update_routing_profile_concurrency/5,
+         update_routing_profile_default_outbound_queue/4,
+         update_routing_profile_default_outbound_queue/5,
+         update_routing_profile_name/4,
+         update_routing_profile_name/5,
+         update_routing_profile_queues/4,
+         update_routing_profile_queues/5,
          update_user_hierarchy/4,
          update_user_hierarchy/5,
          update_user_identity_info/4,
@@ -90,7 +121,61 @@
 %% API
 %%====================================================================
 
+%% @doc Associates a set of queues with a routing profile.
+associate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input) ->
+    associate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input, []).
+associate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0, Options) ->
+    Method = post,
+    Path = ["/routing-profiles/", http_uri:encode(InstanceId), "/", http_uri:encode(RoutingProfileId), "/associate-queues"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a contact flow for the specified Amazon Connect instance.
+%%
+%% You can also create and update contact flows using the Amazon Connect Flow
+%% language.
+create_contact_flow(Client, InstanceId, Input) ->
+    create_contact_flow(Client, InstanceId, Input, []).
+create_contact_flow(Client, InstanceId, Input0, Options) ->
+    Method = put,
+    Path = ["/contact-flows/", http_uri:encode(InstanceId), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new routing profile.
+create_routing_profile(Client, InstanceId, Input) ->
+    create_routing_profile(Client, InstanceId, Input, []).
+create_routing_profile(Client, InstanceId, Input0, Options) ->
+    Method = put,
+    Path = ["/routing-profiles/", http_uri:encode(InstanceId), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a user account for the specified Amazon Connect instance.
+%%
+%% For information about how to create user accounts using the Amazon Connect
+%% console, see Add Users in the Amazon Connect Administrator Guide.
 create_user(Client, InstanceId, Input) ->
     create_user(Client, InstanceId, Input, []).
 create_user(Client, InstanceId, Input0, Options) ->
@@ -107,6 +192,10 @@ create_user(Client, InstanceId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a user account from the specified Amazon Connect instance.
+%%
+%% For information about what happens to a user's data when their account is
+%% deleted, see Delete Users from Your Amazon Connect Instance in the Amazon
+%% Connect Administrator Guide.
 delete_user(Client, InstanceId, UserId, Input) ->
     delete_user(Client, InstanceId, UserId, Input, []).
 delete_user(Client, InstanceId, UserId, Input0, Options) ->
@@ -122,10 +211,44 @@ delete_user(Client, InstanceId, UserId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Describes the specified user account. You can find the instance ID in
-%% the console (it’s the final part of the ARN). The console does not display
-%% the user IDs. Instead, list the users and note the IDs provided in the
-%% output.
+%% @doc Describes the specified contact flow.
+%%
+%% You can also create and update contact flows using the Amazon Connect Flow
+%% language.
+describe_contact_flow(Client, ContactFlowId, InstanceId)
+  when is_map(Client) ->
+    describe_contact_flow(Client, ContactFlowId, InstanceId, []).
+describe_contact_flow(Client, ContactFlowId, InstanceId, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/contact-flows/", http_uri:encode(InstanceId), "/", http_uri:encode(ContactFlowId), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes the specified routing profile.
+describe_routing_profile(Client, InstanceId, RoutingProfileId)
+  when is_map(Client) ->
+    describe_routing_profile(Client, InstanceId, RoutingProfileId, []).
+describe_routing_profile(Client, InstanceId, RoutingProfileId, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/routing-profiles/", http_uri:encode(InstanceId), "/", http_uri:encode(RoutingProfileId), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes the specified user account.
+%%
+%% You can find the instance ID in the console (it’s the final part of the
+%% ARN). The console does not display the user IDs. Instead, list the users
+%% and note the IDs provided in the output.
 describe_user(Client, InstanceId, UserId)
   when is_map(Client) ->
     describe_user(Client, InstanceId, UserId, []).
@@ -171,6 +294,22 @@ describe_user_hierarchy_structure(Client, InstanceId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Disassociates a set of queues from a routing profile.
+disassociate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input) ->
+    disassociate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input, []).
+disassociate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0, Options) ->
+    Method = post,
+    Path = ["/routing-profiles/", http_uri:encode(InstanceId), "/", http_uri:encode(RoutingProfileId), "/disassociate-queues"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Retrieves the contact attributes for the specified contact.
 get_contact_attributes(Client, InitialContactId, InstanceId)
   when is_map(Client) ->
@@ -189,9 +328,8 @@ get_contact_attributes(Client, InitialContactId, InstanceId, Options)
 %% @doc Gets the real-time metric data from the specified Amazon Connect
 %% instance.
 %%
-%% For more information, see <a
-%% href="https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-reports.html">Real-time
-%% Metrics Reports</a> in the <i>Amazon Connect Administrator Guide</i>.
+%% For a description of each metric, see Real-time Metrics Definitions in the
+%% Amazon Connect Administrator Guide.
 get_current_metric_data(Client, InstanceId, Input) ->
     get_current_metric_data(Client, InstanceId, Input, []).
 get_current_metric_data(Client, InstanceId, Input0, Options) ->
@@ -225,9 +363,8 @@ get_federation_token(Client, InstanceId, Options)
 %% @doc Gets historical metric data from the specified Amazon Connect
 %% instance.
 %%
-%% For more information, see <a
-%% href="https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics.html">Historical
-%% Metrics Reports</a> in the <i>Amazon Connect Administrator Guide</i>.
+%% For a description of each historical metric, see Historical Metrics
+%% Definitions in the Amazon Connect Administrator Guide.
 get_metric_data(Client, InstanceId, Input) ->
     get_metric_data(Client, InstanceId, Input, []).
 get_metric_data(Client, InstanceId, Input0, Options) ->
@@ -245,6 +382,12 @@ get_metric_data(Client, InstanceId, Input0, Options) ->
 
 %% @doc Provides information about the contact flows for the specified Amazon
 %% Connect instance.
+%%
+%% You can also create and update contact flows using the Amazon Connect Flow
+%% language.
+%%
+%% For more information about contact flows, see Contact Flows in the Amazon
+%% Connect Administrator Guide.
 list_contact_flows(Client, InstanceId, ContactFlowTypes, MaxResults, NextToken)
   when is_map(Client) ->
     list_contact_flows(Client, InstanceId, ContactFlowTypes, MaxResults, NextToken, []).
@@ -267,6 +410,9 @@ list_contact_flows(Client, InstanceId, ContactFlowTypes, MaxResults, NextToken, 
 
 %% @doc Provides information about the hours of operation for the specified
 %% Amazon Connect instance.
+%%
+%% For more information about hours of operation, see Set the Hours of
+%% Operation for a Queue in the Amazon Connect Administrator Guide.
 list_hours_of_operations(Client, InstanceId, MaxResults, NextToken)
   when is_map(Client) ->
     list_hours_of_operations(Client, InstanceId, MaxResults, NextToken, []).
@@ -288,6 +434,9 @@ list_hours_of_operations(Client, InstanceId, MaxResults, NextToken, Options)
 
 %% @doc Provides information about the phone numbers for the specified Amazon
 %% Connect instance.
+%%
+%% For more information about phone numbers, see Set Up Phone Numbers for
+%% Your Contact Center in the Amazon Connect Administrator Guide.
 list_phone_numbers(Client, InstanceId, MaxResults, NextToken, PhoneNumberCountryCodes, PhoneNumberTypes)
   when is_map(Client) ->
     list_phone_numbers(Client, InstanceId, MaxResults, NextToken, PhoneNumberCountryCodes, PhoneNumberTypes, []).
@@ -309,8 +458,32 @@ list_phone_numbers(Client, InstanceId, MaxResults, NextToken, PhoneNumberCountry
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Provides information about the prompts for the specified Amazon
+%% Connect instance.
+list_prompts(Client, InstanceId, MaxResults, NextToken)
+  when is_map(Client) ->
+    list_prompts(Client, InstanceId, MaxResults, NextToken, []).
+list_prompts(Client, InstanceId, MaxResults, NextToken, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/prompts-summary/", http_uri:encode(InstanceId), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Provides information about the queues for the specified Amazon
 %% Connect instance.
+%%
+%% For more information about queues, see Queues: Standard and Agent in the
+%% Amazon Connect Administrator Guide.
 list_queues(Client, InstanceId, MaxResults, NextToken, QueueTypes)
   when is_map(Client) ->
     list_queues(Client, InstanceId, MaxResults, NextToken, QueueTypes, []).
@@ -331,8 +504,31 @@ list_queues(Client, InstanceId, MaxResults, NextToken, QueueTypes, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc List the queues associated with a routing profile.
+list_routing_profile_queues(Client, InstanceId, RoutingProfileId, MaxResults, NextToken)
+  when is_map(Client) ->
+    list_routing_profile_queues(Client, InstanceId, RoutingProfileId, MaxResults, NextToken, []).
+list_routing_profile_queues(Client, InstanceId, RoutingProfileId, MaxResults, NextToken, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/routing-profiles/", http_uri:encode(InstanceId), "/", http_uri:encode(RoutingProfileId), "/queues"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Provides summary information about the routing profiles for the
 %% specified Amazon Connect instance.
+%%
+%% For more information about routing profiles, see Routing Profiles and
+%% Create a Routing Profile in the Amazon Connect Administrator Guide.
 list_routing_profiles(Client, InstanceId, MaxResults, NextToken)
   when is_map(Client) ->
     list_routing_profiles(Client, InstanceId, MaxResults, NextToken, []).
@@ -354,6 +550,9 @@ list_routing_profiles(Client, InstanceId, MaxResults, NextToken, Options)
 
 %% @doc Provides summary information about the security profiles for the
 %% specified Amazon Connect instance.
+%%
+%% For more information about security profiles, see Security Profiles in the
+%% Amazon Connect Administrator Guide.
 list_security_profiles(Client, InstanceId, MaxResults, NextToken)
   when is_map(Client) ->
     list_security_profiles(Client, InstanceId, MaxResults, NextToken, []).
@@ -374,6 +573,9 @@ list_security_profiles(Client, InstanceId, MaxResults, NextToken, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags for the specified resource.
+%%
+%% For sample policies that use tags, see Amazon Connect Identity-Based
+%% Policy Examples in the Amazon Connect Administrator Guide.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, []).
@@ -390,6 +592,9 @@ list_tags_for_resource(Client, ResourceArn, Options)
 
 %% @doc Provides summary information about the hierarchy groups for the
 %% specified Amazon Connect instance.
+%%
+%% For more information about agent hierarchies, see Set Up Agent Hierarchies
+%% in the Amazon Connect Administrator Guide.
 list_user_hierarchy_groups(Client, InstanceId, MaxResults, NextToken)
   when is_map(Client) ->
     list_user_hierarchy_groups(Client, InstanceId, MaxResults, NextToken, []).
@@ -451,16 +656,26 @@ resume_contact_recording(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Initiates a contact flow to start a new chat for the customer.
+%%
 %% Response of this API provides a token required to obtain credentials from
-%% the <a
-%% href="https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html">CreateParticipantConnection</a>
-%% API in the Amazon Connect Participant Service.
+%% the CreateParticipantConnection API in the Amazon Connect Participant
+%% Service.
 %%
 %% When a new chat contact is successfully created, clients need to subscribe
 %% to the participant’s connection for the created chat within 5 minutes.
-%% This is achieved by invoking <a
-%% href="https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html">CreateParticipantConnection</a>
-%% with WEBSOCKET and CONNECTION_CREDENTIALS.
+%% This is achieved by invoking CreateParticipantConnection with WEBSOCKET
+%% and CONNECTION_CREDENTIALS.
+%%
+%% A 429 error occurs in two situations:
+%%
+%% <ul> <li> API rate limit is exceeded. API TPS throttling returns a
+%% `TooManyRequests` exception from the API Gateway.
+%%
+%% </li> <li> The quota for concurrent active chats is exceeded. Active chat
+%% throttling returns a `LimitExceededException`.
+%%
+%% </li> </ul> For more information about how chat works, see Chat in the
+%% Amazon Connect Administrator Guide.
 start_chat_contact(Client, Input) ->
     start_chat_contact(Client, Input, []).
 start_chat_contact(Client, Input0, Options) ->
@@ -477,6 +692,7 @@ start_chat_contact(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This API starts recording the contact when the agent joins the call.
+%%
 %% StartContactRecording is a one-time action. For example, if you use
 %% StopContactRecording to stop recording an ongoing call, you can't use
 %% StartContactRecording to restart it. For scenarios where the recording has
@@ -485,9 +701,7 @@ start_chat_contact(Client, Input0, Options) ->
 %% SuspendContactRecording and ResumeContactRecording.
 %%
 %% You can use this API to override the recording behavior configured in the
-%% <a
-%% href="https://docs.aws.amazon.com/connect/latest/adminguide/set-recording-behavior.html">Set
-%% recording behavior</a> block.
+%% Set recording behavior block.
 %%
 %% Only voice recordings are supported at this time.
 start_contact_recording(Client, Input) ->
@@ -506,8 +720,10 @@ start_contact_recording(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This API places an outbound call to a contact, and then initiates the
-%% contact flow. It performs the actions in the contact flow that's specified
-%% (in <code>ContactFlowId</code>).
+%% contact flow.
+%%
+%% It performs the actions in the contact flow that's specified (in
+%% `ContactFlowId`).
 %%
 %% Agents are not involved in initiating the outbound API (that is, dialing
 %% the contact). If the contact flow places an outbound call to a contact,
@@ -516,6 +732,11 @@ start_contact_recording(Client, Input0, Options) ->
 %%
 %% There is a 60 second dialing timeout for this operation. If the call is
 %% not connected after 60 seconds, it fails.
+%%
+%% UK numbers with a 447 prefix are not allowed by default. Before you can
+%% dial these UK mobile numbers, you must submit a service quota increase
+%% request. For more information, see Amazon Connect Service Quotas in the
+%% Amazon Connect Administrator Guide.
 start_outbound_voice_contact(Client, Input) ->
     start_outbound_voice_contact(Client, Input, []).
 start_outbound_voice_contact(Client, Input0, Options) ->
@@ -548,6 +769,7 @@ stop_contact(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc When a contact is being recorded, this API stops recording the call.
+%%
 %% StopContactRecording is a one-time action. If you use StopContactRecording
 %% to stop recording an ongoing call, you can't use StartContactRecording to
 %% restart it. For scenarios where the recording has started and you want to
@@ -572,7 +794,9 @@ stop_contact_recording(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc When a contact is being recorded, this API suspends recording the
-%% call. For example, you might suspend the call recording while collecting
+%% call.
+%%
+%% For example, you might suspend the call recording while collecting
 %% sensitive information, such as a credit card number. Then use
 %% ResumeContactRecording to restart recording.
 %%
@@ -597,7 +821,11 @@ suspend_contact_recording(Client, Input0, Options) ->
 
 %% @doc Adds the specified tags to the specified resource.
 %%
-%% The supported resource type is users.
+%% The supported resource types are users, routing profiles, and contact
+%% flows.
+%%
+%% For sample policies that use tags, see Amazon Connect Identity-Based
+%% Policy Examples in the Amazon Connect Administrator Guide.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
@@ -645,18 +873,125 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 %% Contact attributes are available in Amazon Connect for 24 months, and are
 %% then deleted.
 %%
-%% <b>Important:</b> You cannot use the operation to update attributes for
-%% contacts that occurred prior to the release of the API, September 12,
-%% 2018. You can update attributes only for contacts that started after the
-%% release of the API. If you attempt to update attributes for a contact that
-%% occurred prior to the release of the API, a 400 error is returned. This
-%% applies also to queued callbacks that were initiated prior to the release
-%% of the API but are still active in your instance.
+%% This operation is also available in the Amazon Connect Flow language. See
+%% UpdateContactAttributes.
+%%
+%% Important: You cannot use the operation to update attributes for contacts
+%% that occurred prior to the release of the API, September 12, 2018. You can
+%% update attributes only for contacts that started after the release of the
+%% API. If you attempt to update attributes for a contact that occurred prior
+%% to the release of the API, a 400 error is returned. This applies also to
+%% queued callbacks that were initiated prior to the release of the API but
+%% are still active in your instance.
 update_contact_attributes(Client, Input) ->
     update_contact_attributes(Client, Input, []).
 update_contact_attributes(Client, Input0, Options) ->
     Method = post,
     Path = ["/contact/attributes"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the specified contact flow.
+%%
+%% You can also create and update contact flows using the Amazon Connect Flow
+%% language.
+update_contact_flow_content(Client, ContactFlowId, InstanceId, Input) ->
+    update_contact_flow_content(Client, ContactFlowId, InstanceId, Input, []).
+update_contact_flow_content(Client, ContactFlowId, InstanceId, Input0, Options) ->
+    Method = post,
+    Path = ["/contact-flows/", http_uri:encode(InstanceId), "/", http_uri:encode(ContactFlowId), "/content"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc The name of the contact flow.
+update_contact_flow_name(Client, ContactFlowId, InstanceId, Input) ->
+    update_contact_flow_name(Client, ContactFlowId, InstanceId, Input, []).
+update_contact_flow_name(Client, ContactFlowId, InstanceId, Input0, Options) ->
+    Method = post,
+    Path = ["/contact-flows/", http_uri:encode(InstanceId), "/", http_uri:encode(ContactFlowId), "/name"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the channels that agents can handle in the Contact Control
+%% Panel (CCP) for a routing profile.
+update_routing_profile_concurrency(Client, InstanceId, RoutingProfileId, Input) ->
+    update_routing_profile_concurrency(Client, InstanceId, RoutingProfileId, Input, []).
+update_routing_profile_concurrency(Client, InstanceId, RoutingProfileId, Input0, Options) ->
+    Method = post,
+    Path = ["/routing-profiles/", http_uri:encode(InstanceId), "/", http_uri:encode(RoutingProfileId), "/concurrency"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the default outbound queue of a routing profile.
+update_routing_profile_default_outbound_queue(Client, InstanceId, RoutingProfileId, Input) ->
+    update_routing_profile_default_outbound_queue(Client, InstanceId, RoutingProfileId, Input, []).
+update_routing_profile_default_outbound_queue(Client, InstanceId, RoutingProfileId, Input0, Options) ->
+    Method = post,
+    Path = ["/routing-profiles/", http_uri:encode(InstanceId), "/", http_uri:encode(RoutingProfileId), "/default-outbound-queue"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the name and description of a routing profile.
+%%
+%% The request accepts the following data in JSON format. At least `Name` or
+%% `Description` must be provided.
+update_routing_profile_name(Client, InstanceId, RoutingProfileId, Input) ->
+    update_routing_profile_name(Client, InstanceId, RoutingProfileId, Input, []).
+update_routing_profile_name(Client, InstanceId, RoutingProfileId, Input0, Options) ->
+    Method = post,
+    Path = ["/routing-profiles/", http_uri:encode(InstanceId), "/", http_uri:encode(RoutingProfileId), "/name"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the properties associated with a set of queues for a routing
+%% profile.
+update_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input) ->
+    update_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input, []).
+update_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0, Options) ->
+    Method = post,
+    Path = ["/routing-profiles/", http_uri:encode(InstanceId), "/", http_uri:encode(RoutingProfileId), "/queues"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -684,6 +1019,14 @@ update_user_hierarchy(Client, InstanceId, UserId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the identity information for the specified user.
+%%
+%% Someone with the ability to invoke `UpdateUserIndentityInfo` can change
+%% the login credentials of other users by changing their email address. This
+%% poses a security risk to your organization. They can change the email
+%% address of a user to the attacker's email address, and then reset the
+%% password through email. We strongly recommend limiting who has the ability
+%% to invoke `UpdateUserIndentityInfo`. For more information, see Best
+%% Practices for Security Profiles in the Amazon Connect Administrator Guide.
 update_user_identity_info(Client, InstanceId, UserId, Input) ->
     update_user_identity_info(Client, InstanceId, UserId, Input, []).
 update_user_identity_info(Client, InstanceId, UserId, Input0, Options) ->
@@ -793,6 +1136,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

@@ -1,19 +1,22 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc <fullname>Amazon QuickSight API Reference</fullname>
+%% @doc Amazon QuickSight API Reference
 %%
 %% Amazon QuickSight is a fully managed, serverless business intelligence
 %% service for the AWS Cloud that makes it easy to extend data and insights
-%% to every user in your organization. This API reference contains
-%% documentation for a programming interface that you can use to manage
-%% Amazon QuickSight.
+%% to every user in your organization.
+%%
+%% This API reference contains documentation for a programming interface that
+%% you can use to manage Amazon QuickSight.
 -module(aws_quicksight).
 
 -export([cancel_ingestion/5,
          cancel_ingestion/6,
          create_account_customization/3,
          create_account_customization/4,
+         create_analysis/4,
+         create_analysis/5,
          create_dashboard/4,
          create_dashboard/5,
          create_data_set/3,
@@ -40,6 +43,8 @@
          create_theme_alias/6,
          delete_account_customization/3,
          delete_account_customization/4,
+         delete_analysis/4,
+         delete_analysis/5,
          delete_dashboard/4,
          delete_dashboard/5,
          delete_data_set/4,
@@ -70,6 +75,10 @@
          describe_account_customization/5,
          describe_account_settings/2,
          describe_account_settings/3,
+         describe_analysis/3,
+         describe_analysis/4,
+         describe_analysis_permissions/3,
+         describe_analysis_permissions/4,
          describe_dashboard/5,
          describe_dashboard/6,
          describe_dashboard_permissions/3,
@@ -108,6 +117,8 @@
          get_dashboard_embed_url/9,
          get_session_embed_url/5,
          get_session_embed_url/6,
+         list_analyses/4,
+         list_analyses/5,
          list_dashboard_versions/5,
          list_dashboard_versions/6,
          list_dashboards/4,
@@ -148,6 +159,10 @@
          list_users/6,
          register_user/4,
          register_user/5,
+         restore_analysis/4,
+         restore_analysis/5,
+         search_analyses/3,
+         search_analyses/4,
          search_dashboards/3,
          search_dashboards/4,
          tag_resource/3,
@@ -158,6 +173,10 @@
          update_account_customization/4,
          update_account_settings/3,
          update_account_settings/4,
+         update_analysis/4,
+         update_analysis/5,
+         update_analysis_permissions/4,
+         update_analysis_permissions/5,
          update_dashboard/4,
          update_dashboard/5,
          update_dashboard_permissions/4,
@@ -213,8 +232,27 @@ cancel_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options) 
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a customization for the Amazon QuickSight subscription
-%% associated with your AWS account.
+%% @doc Creates Amazon QuickSight customizations the current AWS Region.
+%%
+%% Currently, you can add a custom default theme by using the
+%% `CreateAccountCustomization` or `UpdateAccountCustomization` API
+%% operation. To further customize QuickSight by removing QuickSight sample
+%% assets and videos for all new users, see Customizing QuickSight in the
+%% Amazon QuickSight User Guide.
+%%
+%% You can create customizations for your AWS account or, if you specify a
+%% namespace, for a QuickSight namespace instead. Customizations that apply
+%% to a namespace always override customizations that apply to an AWS
+%% account. To find out which customizations apply, use the
+%% `DescribeAccountCustomization` API operation.
+%%
+%% Before you use the `CreateAccountCustomization` API operation to add a
+%% theme as the namespace default, make sure that you first share the theme
+%% with the namespace. If you don't share it with the namespace, the theme
+%% isn't visible to your users even if you make it the default theme. To
+%% check if the theme is shared, view the current permissions by using the `
+%% `DescribeThemePermissions` ` API operation. To share the theme, grant
+%% permissions by using the ` `UpdateThemePermissions` ` API operation.
 create_account_customization(Client, AwsAccountId, Input) ->
     create_account_customization(Client, AwsAccountId, Input, []).
 create_account_customization(Client, AwsAccountId, Input0, Options) ->
@@ -231,16 +269,31 @@ create_account_customization(Client, AwsAccountId, Input0, Options) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a dashboard from a template. To first create a template, see
-%% the <a>CreateTemplate</a> API operation.
+%% @doc Creates an analysis in Amazon QuickSight.
+create_analysis(Client, AnalysisId, AwsAccountId, Input) ->
+    create_analysis(Client, AnalysisId, AwsAccountId, Input, []).
+create_analysis(Client, AnalysisId, AwsAccountId, Input0, Options) ->
+    Method = post,
+    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/analyses/", http_uri:encode(AnalysisId), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a dashboard from a template.
+%%
+%% To first create a template, see the ` `CreateTemplate` ` API operation.
 %%
 %% A dashboard is an entity in QuickSight that identifies QuickSight reports,
 %% created from analyses. You can share QuickSight dashboards. With the right
-%% permissions, you can create scheduled email reports from them. The
-%% <code>CreateDashboard</code>, <code>DescribeDashboard</code>, and
-%% <code>ListDashboardsByUser</code> API operations act on the dashboard
-%% entity. If you have the correct permissions, you can create a dashboard
-%% from a template that exists in a different AWS account.
+%% permissions, you can create scheduled email reports from them. If you have
+%% the correct permissions, you can create a dashboard from a template that
+%% exists in a different AWS account.
 create_dashboard(Client, AwsAccountId, DashboardId, Input) ->
     create_dashboard(Client, AwsAccountId, DashboardId, Input, []).
 create_dashboard(Client, AwsAccountId, DashboardId, Input0, Options) ->
@@ -291,8 +344,8 @@ create_data_source(Client, AwsAccountId, Input0, Options) ->
 %% @doc Creates an Amazon QuickSight group.
 %%
 %% The permissions resource is
-%% <code>arn:aws:quicksight:us-east-1:<i>&lt;relevant-aws-account-id&gt;</i>:group/default/<i>&lt;group-name&gt;</i>
-%% </code>.
+%% `arn:aws:quicksight:us-east-1:<relevant-aws-account-id>:group/default/<group-name>
+%% `.
 %%
 %% The response is a group object.
 create_group(Client, AwsAccountId, Namespace, Input) ->
@@ -327,9 +380,10 @@ create_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an assignment with one specified IAM policy, identified by
-%% its Amazon Resource Name (ARN). This policy will be assigned to specified
-%% groups or users of Amazon QuickSight. The users and groups need to be in
-%% the same namespace.
+%% its Amazon Resource Name (ARN).
+%%
+%% This policy will be assigned to specified groups or users of Amazon
+%% QuickSight. The users and groups need to be in the same namespace.
 create_i_a_m_policy_assignment(Client, AwsAccountId, Namespace, Input) ->
     create_i_a_m_policy_assignment(Client, AwsAccountId, Namespace, Input, []).
 create_i_a_m_policy_assignment(Client, AwsAccountId, Namespace, Input0, Options) ->
@@ -348,11 +402,11 @@ create_i_a_m_policy_assignment(Client, AwsAccountId, Namespace, Input0, Options)
 %% @doc Creates and starts a new SPICE ingestion on a dataset
 %%
 %% Any ingestions operating on tagged datasets inherit the same tags
-%% automatically for use in access control. For an example, see <a
-%% href="https://aws.amazon.com/premiumsupport/knowledge-center/iam-ec2-resource-tags/">How
-%% do I create an IAM policy to control access to Amazon EC2 resources using
-%% tags?</a> in the AWS Knowledge Center. Tags are visible on the tagged
-%% dataset, but not on the ingestion resource.
+%% automatically for use in access control.
+%%
+%% For an example, see How do I create an IAM policy to control access to
+%% Amazon EC2 resources using tags? in the AWS Knowledge Center. Tags are
+%% visible on the tagged dataset, but not on the ingestion resource.
 create_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input) ->
     create_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input, []).
 create_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options) ->
@@ -394,15 +448,15 @@ create_namespace(Client, AwsAccountId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a template from an existing QuickSight analysis or template.
+%%
 %% You can use the resulting template to create a dashboard.
 %%
-%% A <i>template</i> is an entity in QuickSight that encapsulates the
-%% metadata required to create an analysis and that you can use to create s
-%% dashboard. A template adds a layer of abstraction by using placeholders to
-%% replace the dataset associated with the analysis. You can use templates to
-%% create dashboards by replacing dataset placeholders with datasets that
-%% follow the same schema that was used to create the source analysis and
-%% template.
+%% A template is an entity in QuickSight that encapsulates the metadata
+%% required to create an analysis and that you can use to create s dashboard.
+%% A template adds a layer of abstraction by using placeholders to replace
+%% the dataset associated with the analysis. You can use templates to create
+%% dashboards by replacing dataset placeholders with datasets that follow the
+%% same schema that was used to create the source analysis and template.
 create_template(Client, AwsAccountId, TemplateId, Input) ->
     create_template(Client, AwsAccountId, TemplateId, Input, []).
 create_template(Client, AwsAccountId, TemplateId, Input0, Options) ->
@@ -436,11 +490,9 @@ create_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input0, Optio
 
 %% @doc Creates a theme.
 %%
-%% A <i>theme</i> is set of configuration options for color and layout.
-%% Themes apply to analyses and dashboards. For more information, see <a
-%% href="https://docs.aws.amazon.com/quicksight/latest/user/themes-in-quicksight.html">Using
-%% Themes in Amazon QuickSight</a> in the <i>Amazon QuickSight User
-%% Guide</i>.
+%% A theme is set of configuration options for color and layout. Themes apply
+%% to analyses and dashboards. For more information, see Using Themes in
+%% Amazon QuickSight in the Amazon QuickSight User Guide.
 create_theme(Client, AwsAccountId, ThemeId, Input) ->
     create_theme(Client, AwsAccountId, ThemeId, Input, []).
 create_theme(Client, AwsAccountId, ThemeId, Input0, Options) ->
@@ -472,8 +524,8 @@ create_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes customizations for the QuickSight subscription on your AWS
-%% account.
+%% @doc Deletes all Amazon QuickSight customizations in this AWS Region for
+%% the specified AWS account and QuickSight namespace.
 delete_account_customization(Client, AwsAccountId, Input) ->
     delete_account_customization(Client, AwsAccountId, Input, []).
 delete_account_customization(Client, AwsAccountId, Input0, Options) ->
@@ -486,6 +538,39 @@ delete_account_customization(Client, AwsAccountId, Input0, Options) ->
 
     QueryMapping = [
                      {<<"namespace">>, <<"Namespace">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an analysis from Amazon QuickSight.
+%%
+%% You can optionally include a recovery window during which you can restore
+%% the analysis. If you don't specify a recovery window value, the operation
+%% defaults to 30 days. QuickSight attaches a `DeletionTime` stamp to the
+%% response that specifies the end of the recovery window. At the end of the
+%% recovery window, QuickSight deletes the analysis permanently.
+%%
+%% At any time before recovery window ends, you can use the `RestoreAnalysis`
+%% API operation to remove the `DeletionTime` stamp and cancel the deletion
+%% of the analysis. The analysis remains visible in the API until it's
+%% deleted, so you can describe it but you can't make a template from it.
+%%
+%% An analysis that's scheduled for deletion isn't accessible in the
+%% QuickSight console. To access it in the console, restore it. Deleting an
+%% analysis doesn't delete the dashboards that you publish from it.
+delete_analysis(Client, AnalysisId, AwsAccountId, Input) ->
+    delete_analysis(Client, AnalysisId, AwsAccountId, Input, []).
+delete_analysis(Client, AnalysisId, AwsAccountId, Input0, Options) ->
+    Method = delete,
+    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/analyses/", http_uri:encode(AnalysisId), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    QueryMapping = [
+                     {<<"force-delete-without-recovery">>, <<"ForceDeleteWithoutRecovery">>},
+                     {<<"recovery-window-in-days">>, <<"RecoveryWindowInDays">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
@@ -523,8 +608,10 @@ delete_data_set(Client, AwsAccountId, DataSetId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the data source permanently. This action breaks all the
-%% datasets that reference the deleted data source.
+%% @doc Deletes the data source permanently.
+%%
+%% This operation breaks all the datasets that reference the deleted data
+%% source.
 delete_data_source(Client, AwsAccountId, DataSourceId, Input) ->
     delete_data_source(Client, AwsAccountId, DataSourceId, Input, []).
 delete_data_source(Client, AwsAccountId, DataSourceId, Input0, Options) ->
@@ -590,9 +677,11 @@ delete_i_a_m_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a namespace and the users and groups that are associated with
-%% the namespace. This is an asynchronous process. Assets including
-%% dashboards, analyses, datasets and data sources are not deleted. To delete
-%% these assets, you use the APIs for the relevant asset.
+%% the namespace.
+%%
+%% This is an asynchronous process. Assets including dashboards, analyses,
+%% datasets and data sources are not deleted. To delete these assets, you use
+%% the API operations for the relevant asset.
 delete_namespace(Client, AwsAccountId, Namespace, Input) ->
     delete_namespace(Client, AwsAccountId, Namespace, Input, []).
 delete_namespace(Client, AwsAccountId, Namespace, Input0, Options) ->
@@ -625,9 +714,10 @@ delete_template(Client, AwsAccountId, TemplateId, Input0, Options) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the item that the specified template alias points to. If you
-%% provide a specific alias, you delete the version of the template that the
-%% alias points to.
+%% @doc Deletes the item that the specified template alias points to.
+%%
+%% If you provide a specific alias, you delete the version of the template
+%% that the alias points to.
 delete_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input) ->
     delete_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input, []).
 delete_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input0, Options) ->
@@ -661,8 +751,10 @@ delete_theme(Client, AwsAccountId, ThemeId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the version of the theme that the specified theme alias
-%% points to. If you provide a specific alias, you delete the version of the
-%% theme that the alias points to.
+%% points to.
+%%
+%% If you provide a specific alias, you delete the version of the theme that
+%% the alias points to.
 delete_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input) ->
     delete_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input, []).
 delete_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options) ->
@@ -680,8 +772,9 @@ delete_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options) ->
 
 %% @doc Deletes the Amazon QuickSight user that is associated with the
 %% identity of the AWS Identity and Access Management (IAM) user or role
-%% that's making the call. The IAM user isn't deleted as a result of this
-%% call.
+%% that's making the call.
+%%
+%% The IAM user isn't deleted as a result of this call.
 delete_user(Client, AwsAccountId, Namespace, UserName, Input) ->
     delete_user(Client, AwsAccountId, Namespace, UserName, Input, []).
 delete_user(Client, AwsAccountId, Namespace, UserName, Input0, Options) ->
@@ -713,7 +806,55 @@ delete_user_by_principal_id(Client, AwsAccountId, Namespace, PrincipalId, Input0
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Describes the customizations associated with your AWS account.
+%% @doc Describes the customizations associated with the provided AWS account
+%% and Amazon QuickSight namespace in an AWS Region.
+%%
+%% The QuickSight console evaluates which customizations to apply by running
+%% this API operation with the `Resolved` flag included.
+%%
+%% To determine what customizations display when you run this command, it can
+%% help to visualize the relationship of the entities involved.
+%%
+%% <ul> <li> `AWS Account` - The AWS account exists at the top of the
+%% hierarchy. It has the potential to use all of the AWS Regions and AWS
+%% Services. When you subscribe to QuickSight, you choose one AWS Region to
+%% use as your home Region. That's where your free SPICE capacity is located.
+%% You can use QuickSight in any supported AWS Region.
+%%
+%% </li> <li> `AWS Region` - In each AWS Region where you sign in to
+%% QuickSight at least once, QuickSight acts as a separate instance of the
+%% same service. If you have a user directory, it resides in us-east-1, which
+%% is the US East (N. Virginia). Generally speaking, these users have access
+%% to QuickSight in any AWS Region, unless they are constrained to a
+%% namespace.
+%%
+%% To run the command in a different AWS Region, you change your Region
+%% settings. If you're using the AWS CLI, you can use one of the following
+%% options:
+%%
+%% <ul> <li> Use command line options.
+%%
+%% </li> <li> Use named profiles.
+%%
+%% </li> <li> Run `aws configure` to change your default AWS Region. Use
+%% Enter to key the same settings for your keys. For more information, see
+%% Configuring the AWS CLI.
+%%
+%% </li> </ul> </li> <li> `Namespace` - A QuickSight namespace is a partition
+%% that contains users and assets (data sources, datasets, dashboards, and so
+%% on). To access assets that are in a specific namespace, users and groups
+%% must also be part of the same namespace. People who share a namespace are
+%% completely isolated from users and assets in other namespaces, even if
+%% they are in the same AWS account and AWS Region.
+%%
+%% </li> <li> `Applied customizations` - Within an AWS Region, a set of
+%% QuickSight customizations can apply to an AWS account or to a namespace.
+%% Settings that you apply to a namespace override settings that you apply to
+%% an AWS account. All settings are isolated to a single AWS Region. To apply
+%% them in other AWS Regions, run the `CreateAccountCustomization` command in
+%% each AWS Region where you want to apply the same customizations.
+%%
+%% </li> </ul>
 describe_account_customization(Client, AwsAccountId, Namespace, Resolved)
   when is_map(Client) ->
     describe_account_customization(Client, AwsAccountId, Namespace, Resolved, []).
@@ -734,13 +875,43 @@ describe_account_customization(Client, AwsAccountId, Namespace, Resolved, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes the settings that were used when your QuickSight
-%% subscription was first created in this AWS Account.
+%% subscription was first created in this AWS account.
 describe_account_settings(Client, AwsAccountId)
   when is_map(Client) ->
     describe_account_settings(Client, AwsAccountId, []).
 describe_account_settings(Client, AwsAccountId, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/accounts/", http_uri:encode(AwsAccountId), "/settings"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Provides a summary of the metadata for an analysis.
+describe_analysis(Client, AnalysisId, AwsAccountId)
+  when is_map(Client) ->
+    describe_analysis(Client, AnalysisId, AwsAccountId, []).
+describe_analysis(Client, AnalysisId, AwsAccountId, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/analyses/", http_uri:encode(AnalysisId), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Provides the read and write permissions for an analysis.
+describe_analysis_permissions(Client, AnalysisId, AwsAccountId)
+  when is_map(Client) ->
+    describe_analysis_permissions(Client, AnalysisId, AwsAccountId, []).
+describe_analysis_permissions(Client, AnalysisId, AwsAccountId, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/analyses/", http_uri:encode(AnalysisId), "/permissions"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -802,7 +973,7 @@ describe_data_set(Client, AwsAccountId, DataSetId, Options)
 %% @doc Describes the permissions on a dataset.
 %%
 %% The permissions resource is
-%% <code>arn:aws:quicksight:region:aws-account-id:dataset/data-set-id</code>.
+%% `arn:aws:quicksight:region:aws-account-id:dataset/data-set-id`.
 describe_data_set_permissions(Client, AwsAccountId, DataSetId)
   when is_map(Client) ->
     describe_data_set_permissions(Client, AwsAccountId, DataSetId, []).
@@ -1024,13 +1195,15 @@ describe_user(Client, AwsAccountId, Namespace, UserName, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Generates a URL and authorization code that you can embed in your web
-%% server code. Before you use this command, make sure that you have
-%% configured the dashboards and permissions.
+%% @doc Generates a session URL and authorization code that you can use to
+%% embed an Amazon QuickSight read-only dashboard in your web server code.
 %%
-%% Currently, you can use <code>GetDashboardEmbedURL</code> only from the
-%% server, not from the user's browser. The following rules apply to the
-%% combination of URL and authorization code:
+%% Before you use this command, make sure that you have configured the
+%% dashboards and permissions.
+%%
+%% Currently, you can use `GetDashboardEmbedURL` only from the server, not
+%% from the user's browser. The following rules apply to the combination of
+%% URL and authorization code:
 %%
 %% <ul> <li> They must be used together.
 %%
@@ -1040,13 +1213,8 @@ describe_user(Client, AwsAccountId, Namespace, UserName, Options)
 %%
 %% </li> <li> The resulting user session is valid for 10 hours.
 %%
-%% </li> </ul> For more information, see <a
-%% href="https://docs.aws.amazon.com/quicksight/latest/user/embedding-dashboards.html">Embedding
-%% Amazon QuickSight Dashboards</a> in the <i>Amazon QuickSight User
-%% Guide</i> or <a
-%% href="https://docs.aws.amazon.com/quicksight/latest/APIReference/qs-dev-embedded-dashboards.html">Embedding
-%% Amazon QuickSight Dashboards</a> in the <i>Amazon QuickSight API
-%% Reference</i>.
+%% </li> </ul> For more information, see Embedding Amazon QuickSight in the
+%% Amazon QuickSight User Guide .
 get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, ResetDisabled, SessionLifetimeInMinutes, UndoRedoDisabled, UserArn)
   when is_map(Client) ->
     get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, ResetDisabled, SessionLifetimeInMinutes, UndoRedoDisabled, UserArn, []).
@@ -1069,8 +1237,24 @@ get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, ResetDi
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Generates a session URL and authorization code that you can embed in
-%% your web server code.
+%% @doc Generates a session URL and authorization code that you can use to
+%% embed the Amazon QuickSight console in your web server code.
+%%
+%% Use `GetSessionEmbedUrl` where you want to provide an authoring portal
+%% that allows users to create data sources, datasets, analyses, and
+%% dashboards. The users who access an embedded QuickSight console need
+%% belong to the author or admin security cohort. If you want to restrict
+%% permissions to some of these features, add a custom permissions profile to
+%% the user with the ` `UpdateUser` ` API operation. Use ` `RegisterUser` `
+%% API operation to add a new user with a custom permission profile attached.
+%% For more information, see the following sections in the Amazon QuickSight
+%% User Guide:
+%%
+%% <ul> <li> Embedding the Amazon QuickSight Console
+%%
+%% </li> <li> Customizing Access to the Amazon QuickSight Console
+%%
+%% </li> </ul>
 get_session_embed_url(Client, AwsAccountId, EntryPoint, SessionLifetimeInMinutes, UserArn)
   when is_map(Client) ->
     get_session_embed_url(Client, AwsAccountId, EntryPoint, SessionLifetimeInMinutes, UserArn, []).
@@ -1086,6 +1270,27 @@ get_session_embed_url(Client, AwsAccountId, EntryPoint, SessionLifetimeInMinutes
         {<<"entry-point">>, EntryPoint},
         {<<"session-lifetime">>, SessionLifetimeInMinutes},
         {<<"user-arn">>, UserArn}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists Amazon QuickSight analyses that exist in the specified AWS
+%% account.
+list_analyses(Client, AwsAccountId, MaxResults, NextToken)
+  when is_map(Client) ->
+    list_analyses(Client, AwsAccountId, MaxResults, NextToken, []).
+list_analyses(Client, AwsAccountId, MaxResults, NextToken, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/analyses"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, MaxResults},
+        {<<"next-token">>, NextToken}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1136,7 +1341,7 @@ list_dashboards(Client, AwsAccountId, MaxResults, NextToken, Options)
 %% AWS Region.
 %%
 %% The permissions resource is
-%% <code>arn:aws:quicksight:region:aws-account-id:dataset/*</code>.
+%% `arn:aws:quicksight:region:aws-account-id:dataset/*`.
 list_data_sets(Client, AwsAccountId, MaxResults, NextToken)
   when is_map(Client) ->
     list_data_sets(Client, AwsAccountId, MaxResults, NextToken, []).
@@ -1497,7 +1702,40 @@ register_user(Client, AwsAccountId, Namespace, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Searchs for dashboards that belong to a user.
+%% @doc Restores an analysis.
+restore_analysis(Client, AnalysisId, AwsAccountId, Input) ->
+    restore_analysis(Client, AnalysisId, AwsAccountId, Input, []).
+restore_analysis(Client, AnalysisId, AwsAccountId, Input0, Options) ->
+    Method = post,
+    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/restore/analyses/", http_uri:encode(AnalysisId), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Searches for analyses that belong to the user specified in the
+%% filter.
+search_analyses(Client, AwsAccountId, Input) ->
+    search_analyses(Client, AwsAccountId, Input, []).
+search_analyses(Client, AwsAccountId, Input0, Options) ->
+    Method = post,
+    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/search/analyses"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Searches for dashboards that belong to a user.
 search_dashboards(Client, AwsAccountId, Input) ->
     search_dashboards(Client, AwsAccountId, Input, []).
 search_dashboards(Client, AwsAccountId, Input0, Options) ->
@@ -1519,11 +1757,11 @@ search_dashboards(Client, AwsAccountId, Input0, Options) ->
 %% Tags can help you organize and categorize your resources. You can also use
 %% them to scope user permissions, by granting a user permission to access or
 %% change only resources with certain tag values. You can use the
-%% <code>TagResource</code> operation with a resource that already has tags.
-%% If you specify a new tag key for the resource, this tag is appended to the
-%% list of tags associated with the resource. If you specify a tag key that
-%% is already associated with the resource, the new tag value that you
-%% specify replaces the previous value for that tag.
+%% `TagResource` operation with a resource that already has tags. If you
+%% specify a new tag key for the resource, this tag is appended to the list
+%% of tags associated with the resource. If you specify a tag key that is
+%% already associated with the resource, the new tag value that you specify
+%% replaces the previous value for that tag.
 %%
 %% You can associate as many as 50 tags with a resource. QuickSight supports
 %% tagging on data set, data source, dashboard, and template.
@@ -1571,8 +1809,15 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates customizations associated with the QuickSight subscription on
-%% your AWS account.
+%% @doc Updates Amazon QuickSight customizations the current AWS Region.
+%%
+%% Currently, the only customization you can use is a theme.
+%%
+%% You can use customizations for your AWS account or, if you specify a
+%% namespace, for a QuickSight namespace instead. Customizations that apply
+%% to a namespace override customizations that apply to an AWS account. To
+%% find out which customizations apply, use the
+%% `DescribeAccountCustomization` API operation.
 update_account_customization(Client, AwsAccountId, Input) ->
     update_account_customization(Client, AwsAccountId, Input, []).
 update_account_customization(Client, AwsAccountId, Input0, Options) ->
@@ -1589,13 +1834,44 @@ update_account_customization(Client, AwsAccountId, Input0, Options) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the settings for the Amazon QuickSight subscription in your
-%% AWS Account.
+%% @doc Updates the Amazon QuickSight settings in your AWS account.
 update_account_settings(Client, AwsAccountId, Input) ->
     update_account_settings(Client, AwsAccountId, Input, []).
 update_account_settings(Client, AwsAccountId, Input0, Options) ->
     Method = put,
     Path = ["/accounts/", http_uri:encode(AwsAccountId), "/settings"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an analysis in Amazon QuickSight
+update_analysis(Client, AnalysisId, AwsAccountId, Input) ->
+    update_analysis(Client, AnalysisId, AwsAccountId, Input, []).
+update_analysis(Client, AnalysisId, AwsAccountId, Input0, Options) ->
+    Method = put,
+    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/analyses/", http_uri:encode(AnalysisId), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the read and write permissions for an analysis.
+update_analysis_permissions(Client, AnalysisId, AwsAccountId, Input) ->
+    update_analysis_permissions(Client, AnalysisId, AwsAccountId, Input, []).
+update_analysis_permissions(Client, AnalysisId, AwsAccountId, Input0, Options) ->
+    Method = put,
+    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/analyses/", http_uri:encode(AnalysisId), "/permissions"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1673,7 +1949,7 @@ update_data_set(Client, AwsAccountId, DataSetId, Input0, Options) ->
 %% @doc Updates the permissions on a dataset.
 %%
 %% The permissions resource is
-%% <code>arn:aws:quicksight:region:aws-account-id:dataset/data-set-id</code>.
+%% `arn:aws:quicksight:region:aws-account-id:dataset/data-set-id`.
 update_data_set_permissions(Client, AwsAccountId, DataSetId, Input) ->
     update_data_set_permissions(Client, AwsAccountId, DataSetId, Input, []).
 update_data_set_permissions(Client, AwsAccountId, DataSetId, Input0, Options) ->
@@ -1737,9 +2013,10 @@ update_group(Client, AwsAccountId, GroupName, Namespace, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing IAM policy assignment. This operation updates
-%% only the optional parameter or parameters that are specified in the
-%% request.
+%% @doc Updates an existing IAM policy assignment.
+%%
+%% This operation updates only the optional parameter or parameters that are
+%% specified in the request.
 update_i_a_m_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input) ->
     update_i_a_m_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input, []).
 update_i_a_m_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input0, Options) ->
@@ -1836,9 +2113,10 @@ update_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the resource permissions for a theme. Permissions apply to
-%% the action to grant or revoke permissions on, for example
-%% <code>"quicksight:DescribeTheme"</code>.
+%% @doc Updates the resource permissions for a theme.
+%%
+%% Permissions apply to the action to grant or revoke permissions on, for
+%% example `"quicksight:DescribeTheme"`.
 %%
 %% Theme permissions apply in groupings. Valid groupings include the
 %% following for the three levels of permissions, which are user, owner, or
@@ -1846,37 +2124,37 @@ update_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options) ->
 %%
 %% <ul> <li> User
 %%
-%% <ul> <li> <code>"quicksight:DescribeTheme"</code>
+%% <ul> <li> `"quicksight:DescribeTheme"`
 %%
-%% </li> <li> <code>"quicksight:DescribeThemeAlias"</code>
+%% </li> <li> `"quicksight:DescribeThemeAlias"`
 %%
-%% </li> <li> <code>"quicksight:ListThemeAliases"</code>
+%% </li> <li> `"quicksight:ListThemeAliases"`
 %%
-%% </li> <li> <code>"quicksight:ListThemeVersions"</code>
+%% </li> <li> `"quicksight:ListThemeVersions"`
 %%
 %% </li> </ul> </li> <li> Owner
 %%
-%% <ul> <li> <code>"quicksight:DescribeTheme"</code>
+%% <ul> <li> `"quicksight:DescribeTheme"`
 %%
-%% </li> <li> <code>"quicksight:DescribeThemeAlias"</code>
+%% </li> <li> `"quicksight:DescribeThemeAlias"`
 %%
-%% </li> <li> <code>"quicksight:ListThemeAliases"</code>
+%% </li> <li> `"quicksight:ListThemeAliases"`
 %%
-%% </li> <li> <code>"quicksight:ListThemeVersions"</code>
+%% </li> <li> `"quicksight:ListThemeVersions"`
 %%
-%% </li> <li> <code>"quicksight:DeleteTheme"</code>
+%% </li> <li> `"quicksight:DeleteTheme"`
 %%
-%% </li> <li> <code>"quicksight:UpdateTheme"</code>
+%% </li> <li> `"quicksight:UpdateTheme"`
 %%
-%% </li> <li> <code>"quicksight:CreateThemeAlias"</code>
+%% </li> <li> `"quicksight:CreateThemeAlias"`
 %%
-%% </li> <li> <code>"quicksight:DeleteThemeAlias"</code>
+%% </li> <li> `"quicksight:DeleteThemeAlias"`
 %%
-%% </li> <li> <code>"quicksight:UpdateThemeAlias"</code>
+%% </li> <li> `"quicksight:UpdateThemeAlias"`
 %%
-%% </li> <li> <code>"quicksight:UpdateThemePermissions"</code>
+%% </li> <li> `"quicksight:UpdateThemePermissions"`
 %%
-%% </li> <li> <code>"quicksight:DescribeThemePermissions"</code>
+%% </li> <li> `"quicksight:DescribeThemePermissions"`
 %%
 %% </li> </ul> </li> <li> To specify no permissions, omit the permissions
 %% list.
@@ -1959,6 +2237,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

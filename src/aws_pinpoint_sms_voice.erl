@@ -27,8 +27,10 @@
 %% API
 %%====================================================================
 
-%% @doc Create a new configuration set. After you create the configuration
-%% set, you can add one or more event destinations to it.
+%% @doc Create a new configuration set.
+%%
+%% After you create the configuration set, you can add one or more event
+%% destinations to it.
 create_configuration_set(Client, Input) ->
     create_configuration_set(Client, Input, []).
 create_configuration_set(Client, Input0, Options) ->
@@ -146,9 +148,10 @@ send_voice_message(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Update an event destination in a configuration set. An event
-%% destination is a location that you publish information about your voice
-%% calls to. For example, you can log an event to an Amazon CloudWatch
+%% @doc Update an event destination in a configuration set.
+%%
+%% An event destination is a location that you publish information about your
+%% voice calls to. For example, you can log an event to an Amazon CloudWatch
 %% destination when a call fails.
 update_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input) ->
     update_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input, []).
@@ -211,6 +214,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

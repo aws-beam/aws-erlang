@@ -57,11 +57,12 @@ get_terminology(Client, Input, Options)
     request(Client, <<"GetTerminology">>, Input, Options).
 
 %% @doc Creates or updates a custom terminology, depending on whether or not
-%% one already exists for the given terminology name. Importing a terminology
-%% with the same name as an existing one will merge the terminologies based
-%% on the chosen merge strategy. Currently, the only supported merge strategy
-%% is OVERWRITE, and so the imported terminology will overwrite an existing
-%% terminology of the same name.
+%% one already exists for the given terminology name.
+%%
+%% Importing a terminology with the same name as an existing one will merge
+%% the terminologies based on the chosen merge strategy. Currently, the only
+%% supported merge strategy is OVERWRITE, and so the imported terminology
+%% will overwrite an existing terminology of the same name.
 %%
 %% If you import a terminology that overwrites an existing one, the new
 %% terminology take up to 10 minutes to fully propagate and be available for
@@ -90,19 +91,18 @@ list_text_translation_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTextTranslationJobs">>, Input, Options).
 
-%% @doc Starts an asynchronous batch translation job. Batch translation jobs
-%% can be used to translate large volumes of text across multiple documents
-%% at once. For more information, see <a>async</a>.
+%% @doc Starts an asynchronous batch translation job.
+%%
+%% Batch translation jobs can be used to translate large volumes of text
+%% across multiple documents at once. For more information, see `async`.
 %%
 %% Batch translation jobs can be described with the
-%% <a>DescribeTextTranslationJob</a> operation, listed with the
-%% <a>ListTextTranslationJobs</a> operation, and stopped with the
-%% <a>StopTextTranslationJob</a> operation.
+%% `DescribeTextTranslationJob` operation, listed with the
+%% `ListTextTranslationJobs` operation, and stopped with the
+%% `StopTextTranslationJob` operation.
 %%
-%% <note> Amazon Translate does not support batch translation of multiple
-%% source languages at once.
-%%
-%% </note>
+%% Amazon Translate does not support batch translation of multiple source
+%% languages at once.
 start_text_translation_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_text_translation_job(Client, Input, []).
@@ -112,16 +112,15 @@ start_text_translation_job(Client, Input, Options)
 
 %% @doc Stops an asynchronous batch translation job that is in progress.
 %%
-%% If the job's state is <code>IN_PROGRESS</code>, the job will be marked for
-%% termination and put into the <code>STOP_REQUESTED</code> state. If the job
-%% completes before it can be stopped, it is put into the
-%% <code>COMPLETED</code> state. Otherwise, the job is put into the
-%% <code>STOPPED</code> state.
+%% If the job's state is `IN_PROGRESS`, the job will be marked for
+%% termination and put into the `STOP_REQUESTED` state. If the job completes
+%% before it can be stopped, it is put into the `COMPLETED` state. Otherwise,
+%% the job is put into the `STOPPED` state.
 %%
 %% Asynchronous batch translation jobs are started with the
-%% <a>StartTextTranslationJob</a> operation. You can use the
-%% <a>DescribeTextTranslationJob</a> or <a>ListTextTranslationJobs</a>
-%% operations to get a batch translation job's <code>JobId</code>.
+%% `StartTextTranslationJob` operation. You can use the
+%% `DescribeTextTranslationJob` or `ListTextTranslationJobs` operations to
+%% get a batch translation job's `JobId`.
 stop_text_translation_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_text_translation_job(Client, Input, []).
@@ -130,8 +129,10 @@ stop_text_translation_job(Client, Input, Options)
     request(Client, <<"StopTextTranslationJob">>, Input, Options).
 
 %% @doc Translates input text from the source language to the target
-%% language. For a list of available languages and language codes, see
-%% <a>what-is-languages</a>.
+%% language.
+%%
+%% For a list of available languages and language codes, see
+%% `what-is-languages`.
 translate_text(Client, Input)
   when is_map(Client), is_map(Input) ->
     translate_text(Client, Input, []).
@@ -181,6 +182,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
 handle_response({error, Reason}) ->
     {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

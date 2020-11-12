@@ -2,8 +2,9 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Catalog API actions allow you to manage your entities through list,
-%% describe, and update capabilities. An entity can be a product or an offer
-%% on AWS Marketplace.
+%% describe, and update capabilities.
+%%
+%% An entity can be a product or an offer on AWS Marketplace.
 %%
 %% You can automate your entity update process by integrating the AWS
 %% Marketplace Catalog API with your AWS Marketplace product build or
@@ -30,10 +31,11 @@
 %% API
 %%====================================================================
 
-%% @doc Used to cancel an open change request. Must be sent before the status
-%% of the request changes to <code>APPLYING</code>, the final stage of
-%% completing your change request. You can describe a change during the
-%% 60-day request history retention period for API calls.
+%% @doc Used to cancel an open change request.
+%%
+%% Must be sent before the status of the request changes to `APPLYING`, the
+%% final stage of completing your change request. You can describe a change
+%% during the 60-day request history retention period for API calls.
 cancel_change_set(Client, Input) ->
     cancel_change_set(Client, Input, []).
 cancel_change_set(Client, Input0, Options) ->
@@ -92,10 +94,11 @@ describe_entity(Client, Catalog, EntityId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the list of change sets owned by the account being used to
-%% make the call. You can filter this list by providing any combination of
-%% <code>entityId</code>, <code>ChangeSetName</code>, and status. If you
-%% provide more than one filter, the API operation applies a logical AND
-%% between the filters.
+%% make the call.
+%%
+%% You can filter this list by providing any combination of `entityId`,
+%% `ChangeSetName`, and status. If you provide more than one filter, the API
+%% operation applies a logical AND between the filters.
 %%
 %% You can describe a change during the 60-day request history retention
 %% period for API calls.
@@ -131,18 +134,17 @@ list_entities(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This operation allows you to request changes for your entities.
+%%
 %% Within a single ChangeSet, you cannot start the same change type against
 %% the same entity multiple times. Additionally, when a ChangeSet is running,
 %% all the entities targeted by the different changes are locked until the
 %% ChangeSet has completed (either succeeded, cancelled, or failed). If you
 %% try to start a ChangeSet containing a change against an entity that is
-%% already locked, you will receive a <code>ResourceInUseException</code>.
+%% already locked, you will receive a `ResourceInUseException`.
 %%
-%% For example, you cannot start the ChangeSet described in the <a
-%% href="https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/API_StartChangeSet.html#API_StartChangeSet_Examples">example</a>
-%% below because it contains two changes to execute the same change type
-%% (<code>AddRevisions</code>) against the same entity
-%% (<code>entity-id@1)</code>.
+%% For example, you cannot start the ChangeSet described in the example below
+%% because it contains two changes to execute the same change type
+%% (`AddRevisions`) against the same entity (`entity-id@1)`.
 start_change_set(Client, Input) ->
     start_change_set(Client, Input, []).
 start_change_set(Client, Input0, Options) ->
@@ -204,6 +206,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

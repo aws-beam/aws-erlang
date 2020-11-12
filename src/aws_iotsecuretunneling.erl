@@ -1,14 +1,13 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc <fullname>AWS IoT Secure Tunneling</fullname>
+%% @doc AWS IoT Secure Tunneling
 %%
 %% AWS IoT Secure Tunnling enables you to create remote connections to
 %% devices deployed in the field.
 %%
-%% For more information about how AWS IoT Secure Tunneling works, see the <a
-%% href="https://docs.aws.amazon.com/secure-tunneling/latest/ug/what-is-secure-tunneling.html">User
-%% Guide</a>.
+%% For more information about how AWS IoT Secure Tunneling works, see the
+%% User Guide.
 -module(aws_iotsecuretunneling).
 
 -export([close_tunnel/2,
@@ -32,8 +31,9 @@
 %% API
 %%====================================================================
 
-%% @doc Closes a tunnel identified by the unique tunnel id. When a
-%% <code>CloseTunnel</code> request is received, we close the WebSocket
+%% @doc Closes a tunnel identified by the unique tunnel id.
+%%
+%% When a `CloseTunnel` request is received, we close the WebSocket
 %% connections between the client and proxy server so no data can be
 %% transmitted.
 close_tunnel(Client, Input)
@@ -59,9 +59,10 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
-%% @doc List all tunnels for an AWS account. Tunnels are listed by creation
-%% time in descending order, newer tunnels will be listed before older
-%% tunnels.
+%% @doc List all tunnels for an AWS account.
+%%
+%% Tunnels are listed by creation time in descending order, newer tunnels
+%% will be listed before older tunnels.
 list_tunnels(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tunnels(Client, Input, []).
@@ -70,7 +71,9 @@ list_tunnels(Client, Input, Options)
     request(Client, <<"ListTunnels">>, Input, Options).
 
 %% @doc Creates a new tunnel, and returns two client access tokens for
-%% clients to use to connect to the AWS IoT Secure Tunneling proxy server. .
+%% clients to use to connect to the AWS IoT Secure Tunneling proxy server.
+%%
+%% .
 open_tunnel(Client, Input)
   when is_map(Client), is_map(Input) ->
     open_tunnel(Client, Input, []).
@@ -136,6 +139,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
 handle_response({error, Reason}) ->
     {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

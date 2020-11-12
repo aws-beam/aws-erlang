@@ -1,27 +1,33 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc You can use the Amazon Elastic Block Store (EBS) direct APIs to
-%% directly read the data on your EBS snapshots, and identify the difference
-%% between two snapshots. You can view the details of blocks in an EBS
-%% snapshot, compare the block difference between two snapshots, and directly
-%% access the data in a snapshot. If you're an independent software vendor
-%% (ISV) who offers backup services for EBS, the EBS direct APIs make it
-%% easier and more cost-effective to track incremental changes on your EBS
-%% volumes via EBS snapshots. This can be done without having to create new
-%% volumes from EBS snapshots.
+%% @doc You can use the Amazon Elastic Block Store (Amazon EBS) direct APIs
+%% to create EBS snapshots, write data directly to your snapshots, read data
+%% on your snapshots, and identify the differences or changes between two
+%% snapshots.
+%%
+%% If you’re an independent software vendor (ISV) who offers backup services
+%% for Amazon EBS, the EBS direct APIs make it more efficient and
+%% cost-effective to track incremental changes on your EBS volumes through
+%% snapshots. This can be done without having to create new volumes from
+%% snapshots, and then use Amazon Elastic Compute Cloud (Amazon EC2)
+%% instances to compare the differences.
+%%
+%% You can create incremental snapshots directly from data on-premises into
+%% EBS volumes and the cloud to use for quick disaster recovery. With the
+%% ability to write and read snapshots, you can write your on-premises data
+%% to an EBS snapshot during a disaster. Then after recovery, you can restore
+%% it back to AWS or on-premises from the snapshot. You no longer need to
+%% build and maintain complex mechanisms to copy data to and from Amazon EBS.
 %%
 %% This API reference provides detailed information about the actions, data
 %% types, parameters, and errors of the EBS direct APIs. For more information
 %% about the elements that make up the EBS direct APIs, and examples of how
-%% to use them effectively, see <a
-%% href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-accessing-snapshot.html">Accessing
-%% the Contents of an EBS Snapshot</a> in the <i>Amazon Elastic Compute Cloud
-%% User Guide</i>. For more information about the supported AWS Regions,
-%% endpoints, and service quotas for the EBS direct APIs, see <a
-%% href="https://docs.aws.amazon.com/general/latest/gr/ebs-service.html">Amazon
-%% Elastic Block Store Endpoints and Quotas</a> in the <i>AWS General
-%% Reference</i>.
+%% to use them effectively, see Accessing the Contents of an EBS Snapshot in
+%% the Amazon Elastic Compute Cloud User Guide. For more information about
+%% the supported AWS Regions, endpoints, and service quotas for the EBS
+%% direct APIs, see Amazon Elastic Block Store Endpoints and Quotas in the
+%% AWS General Reference.
 -module(aws_ebs).
 
 -export([complete_snapshot/3,
@@ -44,9 +50,10 @@
 %%====================================================================
 
 %% @doc Seals and completes the snapshot after all of the required blocks of
-%% data have been written to it. Completing the snapshot changes the status
-%% to <code>completed</code>. You cannot write new blocks to a snapshot after
-%% it has been completed.
+%% data have been written to it.
+%%
+%% Completing the snapshot changes the status to `completed`. You cannot
+%% write new blocks to a snapshot after it has been completed.
 complete_snapshot(Client, SnapshotId, Input) ->
     complete_snapshot(Client, SnapshotId, Input, []).
 complete_snapshot(Client, SnapshotId, Input0, Options) ->
@@ -105,9 +112,8 @@ get_snapshot_block(Client, BlockIndex, SnapshotId, BlockToken, Options)
         Result
     end.
 
-%% @doc Returns the block indexes and block tokens for blocks that are
-%% different between two Amazon Elastic Block Store snapshots of the same
-%% volume/snapshot lineage.
+%% @doc Returns information about the blocks that are different between two
+%% Amazon Elastic Block Store snapshots of the same volume/snapshot lineage.
 list_changed_blocks(Client, SecondSnapshotId, FirstSnapshotId, MaxResults, NextToken, StartingBlockIndex)
   when is_map(Client) ->
     list_changed_blocks(Client, SecondSnapshotId, FirstSnapshotId, MaxResults, NextToken, StartingBlockIndex, []).
@@ -129,8 +135,8 @@ list_changed_blocks(Client, SecondSnapshotId, FirstSnapshotId, MaxResults, NextT
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns the block indexes and block tokens for blocks in an Amazon
-%% Elastic Block Store snapshot.
+%% @doc Returns information about the blocks in an Amazon Elastic Block Store
+%% snapshot.
 list_snapshot_blocks(Client, SnapshotId, MaxResults, NextToken, StartingBlockIndex)
   when is_map(Client) ->
     list_snapshot_blocks(Client, SnapshotId, MaxResults, NextToken, StartingBlockIndex, []).
@@ -151,9 +157,10 @@ list_snapshot_blocks(Client, SnapshotId, MaxResults, NextToken, StartingBlockInd
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Writes a block of data to a block in the snapshot. If the specified
-%% block contains data, the existing data is overwritten. The target snapshot
-%% must be in the <code>pending</code> state.
+%% @doc Writes a block of data to a snapshot.
+%%
+%% If the specified block contains data, the existing data is overwritten.
+%% The target snapshot must be in the `pending` state.
 %%
 %% Data written to a snapshot must be aligned with 512-byte sectors.
 put_snapshot_block(Client, BlockIndex, SnapshotId, Input) ->
@@ -193,12 +200,12 @@ put_snapshot_block(Client, BlockIndex, SnapshotId, Input0, Options) ->
         Result
     end.
 
-%% @doc Creates a new Amazon EBS snapshot. The new snapshot enters the
-%% <code>pending</code> state after the request completes.
+%% @doc Creates a new Amazon EBS snapshot.
 %%
-%% After creating the snapshot, use <a
-%% href="https://docs.aws.amazon.com/ebs/latest/APIReference/API_PutSnapshotBlock.html">
-%% PutSnapshotBlock</a> to write blocks of data to the snapshot.
+%% The new snapshot enters the `pending` state after the request completes.
+%%
+%% After creating the snapshot, use PutSnapshotBlock to write blocks of data
+%% to the snapshot.
 start_snapshot(Client, Input) ->
     start_snapshot(Client, Input, []).
 start_snapshot(Client, Input0, Options) ->
@@ -260,6 +267,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

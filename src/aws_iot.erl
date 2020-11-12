@@ -1,33 +1,29 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc <fullname>AWS IoT</fullname>
+%% @doc AWS IoT
 %%
 %% AWS IoT provides secure, bi-directional communication between
 %% Internet-connected devices (such as sensors, actuators, embedded devices,
-%% or smart appliances) and the AWS cloud. You can discover your custom
-%% IoT-Data endpoint to communicate with, configure rules for data processing
-%% and integration with other services, organize resources associated with
-%% each device (Registry), configure logging, and create and manage policies
-%% and credentials to authenticate devices.
+%% or smart appliances) and the AWS cloud.
 %%
-%% The service endpoints that expose this API are listed in <a
-%% href="https://docs.aws.amazon.com/general/latest/gr/iot-core.html">AWS IoT
-%% Core Endpoints and Quotas</a>. You must use the endpoint for the region
-%% that has the resources you want to access.
+%% You can discover your custom IoT-Data endpoint to communicate with,
+%% configure rules for data processing and integration with other services,
+%% organize resources associated with each device (Registry), configure
+%% logging, and create and manage policies and credentials to authenticate
+%% devices.
 %%
-%% The service name used by <a
-%% href="https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">AWS
-%% Signature Version 4</a> to sign the request is: <i>execute-api</i>.
+%% The service endpoints that expose this API are listed in AWS IoT Core
+%% Endpoints and Quotas. You must use the endpoint for the region that has
+%% the resources you want to access.
 %%
-%% For more information about how AWS IoT works, see the <a
-%% href="https://docs.aws.amazon.com/iot/latest/developerguide/aws-iot-how-it-works.html">Developer
-%% Guide</a>.
+%% The service name used by AWS Signature Version 4 to sign the request is:
+%% execute-api.
+%%
+%% For more information about how AWS IoT works, see the Developer Guide.
 %%
 %% For information about how to use the credentials provider for AWS IoT, see
-%% <a
-%% href="https://docs.aws.amazon.com/iot/latest/developerguide/authorizing-direct-aws.html">Authorizing
-%% Direct Calls to AWS Services</a>.
+%% Authorizing Direct Calls to AWS Services.
 -module(aws_iot).
 
 -export([accept_certificate_transfer/3,
@@ -60,6 +56,8 @@
          clear_default_authorizer/3,
          confirm_topic_rule_destination/2,
          confirm_topic_rule_destination/3,
+         create_audit_suppression/2,
+         create_audit_suppression/3,
          create_authorizer/3,
          create_authorizer/4,
          create_billing_group/3,
@@ -110,6 +108,8 @@
          create_topic_rule_destination/3,
          delete_account_audit_configuration/2,
          delete_account_audit_configuration/3,
+         delete_audit_suppression/2,
+         delete_audit_suppression/3,
          delete_authorizer/3,
          delete_authorizer/4,
          delete_billing_group/3,
@@ -170,6 +170,8 @@
          describe_audit_finding/3,
          describe_audit_mitigation_actions_task/2,
          describe_audit_mitigation_actions_task/3,
+         describe_audit_suppression/2,
+         describe_audit_suppression/3,
          describe_audit_task/2,
          describe_audit_task/3,
          describe_authorizer/2,
@@ -268,6 +270,8 @@
          list_audit_mitigation_actions_executions/7,
          list_audit_mitigation_actions_tasks/8,
          list_audit_mitigation_actions_tasks/9,
+         list_audit_suppressions/2,
+         list_audit_suppressions/3,
          list_audit_tasks/7,
          list_audit_tasks/8,
          list_authorizers/5,
@@ -288,10 +292,10 @@
          list_indices/4,
          list_job_executions_for_job/5,
          list_job_executions_for_job/6,
-         list_job_executions_for_thing/5,
          list_job_executions_for_thing/6,
-         list_jobs/7,
+         list_job_executions_for_thing/7,
          list_jobs/8,
+         list_jobs/9,
          list_mitigation_actions/4,
          list_mitigation_actions/5,
          list_o_t_a_updates/4,
@@ -332,8 +336,8 @@
          list_thing_groups/7,
          list_thing_groups_for_thing/4,
          list_thing_groups_for_thing/5,
-         list_thing_principals/2,
-         list_thing_principals/3,
+         list_thing_principals/4,
+         list_thing_principals/5,
          list_thing_registration_task_reports/5,
          list_thing_registration_task_reports/6,
          list_thing_registration_tasks/4,
@@ -402,6 +406,8 @@
          untag_resource/3,
          update_account_audit_configuration/2,
          update_account_audit_configuration/3,
+         update_audit_suppression/2,
+         update_audit_suppression/3,
          update_authorizer/3,
          update_authorizer/4,
          update_billing_group/3,
@@ -451,11 +457,12 @@
 %% API
 %%====================================================================
 
-%% @doc Accepts a pending certificate transfer. The default state of the
-%% certificate is INACTIVE.
+%% @doc Accepts a pending certificate transfer.
 %%
-%% To check for pending certificate transfers, call <a>ListCertificates</a>
-%% to enumerate your certificates.
+%% The default state of the certificate is INACTIVE.
+%%
+%% To check for pending certificate transfers, call `ListCertificates` to
+%% enumerate your certificates.
 accept_certificate_transfer(Client, CertificateId, Input) ->
     accept_certificate_transfer(Client, CertificateId, Input, []).
 accept_certificate_transfer(Client, CertificateId, Input0, Options) ->
@@ -504,11 +511,12 @@ add_thing_to_thing_group(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Associates a group with a continuous job. The following criteria must
-%% be met:
+%% @doc Associates a group with a continuous job.
 %%
-%% <ul> <li> The job must have been created with the
-%% <code>targetSelection</code> field set to "CONTINUOUS".
+%% The following criteria must be met:
+%%
+%% <ul> <li> The job must have been created with the `targetSelection` field
+%% set to "CONTINUOUS".
 %%
 %% </li> <li> The job status must currently be "IN_PROGRESS".
 %%
@@ -526,9 +534,10 @@ associate_targets_with_job(Client, JobId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
-
+    QueryMapping = [
+                     {<<"namespaceId">>, <<"namespaceId">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Attaches a policy to the specified target.
@@ -550,8 +559,7 @@ attach_policy(Client, PolicyName, Input0, Options) ->
 %% @doc Attaches the specified policy to the specified principal (certificate
 %% or other credential).
 %%
-%% <b>Note:</b> This API is deprecated. Please use <a>AttachPolicy</a>
-%% instead.
+%% Note: This API is deprecated. Please use `AttachPolicy` instead.
 attach_principal_policy(Client, PolicyName, Input) ->
     attach_principal_policy(Client, PolicyName, Input, []).
 attach_principal_policy(Client, PolicyName, Input0, Options) ->
@@ -570,8 +578,10 @@ attach_principal_policy(Client, PolicyName, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Associates a Device Defender security profile with a thing group or
-%% this account. Each thing group or account can have up to five security
-%% profiles associated with it.
+%% this account.
+%%
+%% Each thing group or account can have up to five security profiles
+%% associated with it.
 attach_security_profile(Client, SecurityProfileName, Input) ->
     attach_security_profile(Client, SecurityProfileName, Input, []).
 attach_security_profile(Client, SecurityProfileName, Input0, Options) ->
@@ -588,9 +598,10 @@ attach_security_profile(Client, SecurityProfileName, Input0, Options) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Attaches the specified principal to the specified thing. A principal
-%% can be X.509 certificates, IAM users, groups, and roles, Amazon Cognito
-%% identities or federated identities.
+%% @doc Attaches the specified principal to the specified thing.
+%%
+%% A principal can be X.509 certificates, IAM users, groups, and roles,
+%% Amazon Cognito identities or federated identities.
 attach_thing_principal(Client, ThingName, Input) ->
     attach_thing_principal(Client, ThingName, Input, []).
 attach_thing_principal(Client, ThingName, Input0, Options) ->
@@ -608,8 +619,9 @@ attach_thing_principal(Client, ThingName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Cancels a mitigation action task that is in progress. If the task is
-%% not in progress, an InvalidRequestException occurs.
+%% @doc Cancels a mitigation action task that is in progress.
+%%
+%% If the task is not in progress, an InvalidRequestException occurs.
 cancel_audit_mitigation_actions_task(Client, TaskId, Input) ->
     cancel_audit_mitigation_actions_task(Client, TaskId, Input, []).
 cancel_audit_mitigation_actions_task(Client, TaskId, Input0, Options) ->
@@ -625,9 +637,10 @@ cancel_audit_mitigation_actions_task(Client, TaskId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Cancels an audit that is in progress. The audit can be either
-%% scheduled or on-demand. If the audit is not in progress, an
-%% "InvalidRequestException" occurs.
+%% @doc Cancels an audit that is in progress.
+%%
+%% The audit can be either scheduled or on-demand. If the audit is not in
+%% progress, an "InvalidRequestException" occurs.
 cancel_audit_task(Client, TaskId, Input) ->
     cancel_audit_task(Client, TaskId, Input, []).
 cancel_audit_task(Client, TaskId, Input0, Options) ->
@@ -645,12 +658,11 @@ cancel_audit_task(Client, TaskId, Input0, Options) ->
 
 %% @doc Cancels a pending transfer for the specified certificate.
 %%
-%% <b>Note</b> Only the transfer source account can use this operation to
-%% cancel a transfer. (Transfer destinations can use
-%% <a>RejectCertificateTransfer</a> instead.) After transfer, AWS IoT returns
-%% the certificate to the source account in the INACTIVE state. After the
-%% destination account has accepted the transfer, the transfer cannot be
-%% cancelled.
+%% Note Only the transfer source account can use this operation to cancel a
+%% transfer. (Transfer destinations can use `RejectCertificateTransfer`
+%% instead.) After transfer, AWS IoT returns the certificate to the source
+%% account in the INACTIVE state. After the destination account has accepted
+%% the transfer, the transfer cannot be cancelled.
 %%
 %% After a certificate transfer is cancelled, the status of the certificate
 %% changes from PENDING_TRANSFER to INACTIVE.
@@ -719,11 +731,13 @@ clear_default_authorizer(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Confirms a topic rule destination. When you create a rule requiring a
-%% destination, AWS IoT sends a confirmation message to the endpoint or base
-%% address you specify. The message includes a token which you pass back when
-%% calling <code>ConfirmTopicRuleDestination</code> to confirm that you own
-%% or have access to the endpoint.
+%% @doc Confirms a topic rule destination.
+%%
+%% When you create a rule requiring a destination, AWS IoT sends a
+%% confirmation message to the endpoint or base address you specify. The
+%% message includes a token which you pass back when calling
+%% `ConfirmTopicRuleDestination` to confirm that you own or have access to
+%% the endpoint.
 confirm_topic_rule_destination(Client, ConfirmationToken)
   when is_map(Client) ->
     confirm_topic_rule_destination(Client, ConfirmationToken, []).
@@ -737,6 +751,22 @@ confirm_topic_rule_destination(Client, ConfirmationToken, Options)
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Creates a Device Defender audit suppression.
+create_audit_suppression(Client, Input) ->
+    create_audit_suppression(Client, Input, []).
+create_audit_suppression(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/audit/suppressions/create"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an authorizer.
 create_authorizer(Client, AuthorizerName, Input) ->
@@ -773,12 +803,12 @@ create_billing_group(Client, BillingGroupName, Input0, Options) ->
 %% @doc Creates an X.509 certificate using the specified certificate signing
 %% request.
 %%
-%% <b>Note:</b> The CSR must include a public key that is either an RSA key
-%% with a length of at least 2048 bits or an ECC key from NIST P-256 or NIST
-%% P-384 curves.
+%% Note: The CSR must include a public key that is either an RSA key with a
+%% length of at least 2048 bits or an ECC key from NIST P-256 or NIST P-384
+%% curves.
 %%
-%% <b>Note:</b> Reusing the same certificate signing request (CSR) results in
-%% a distinct certificate.
+%% Note: Reusing the same certificate signing request (CSR) results in a
+%% distinct certificate.
 %%
 %% You can create multiple certificates in a batch by creating a directory,
 %% copying multiple .csr files into that directory, and then specifying that
@@ -807,13 +837,13 @@ create_billing_group(Client, BillingGroupName, Input0, Options) ->
 %% On Windows PowerShell, the command to create certificates for all CSRs in
 %% my-csr-directory is:
 %%
-%% &gt; ls -Name my-csr-directory | %{aws iot create-certificate-from-csr
+%% > ls -Name my-csr-directory | %{aws iot create-certificate-from-csr
 %% --certificate-signing-request file://my-csr-directory/$_}
 %%
 %% On a Windows command prompt, the command to create certificates for all
 %% CSRs in my-csr-directory is:
 %%
-%% &gt; forfiles /p my-csr-directory /c "cmd /c aws iot
+%% > forfiles /p my-csr-directory /c "cmd /c aws iot
 %% create-certificate-from-csr --certificate-signing-request file://@path"
 create_certificate_from_csr(Client, Input) ->
     create_certificate_from_csr(Client, Input, []).
@@ -832,10 +862,11 @@ create_certificate_from_csr(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Create a dimension that you can use to limit the scope of a metric
-%% used in a security profile for AWS IoT Device Defender. For example, using
-%% a <code>TOPIC_FILTER</code> dimension, you can narrow down the scope of
-%% the metric only to MQTT topics whose name match the pattern specified in
-%% the dimension.
+%% used in a security profile for AWS IoT Device Defender.
+%%
+%% For example, using a `TOPIC_FILTER` dimension, you can narrow down the
+%% scope of the metric only to MQTT topics whose name match the pattern
+%% specified in the dimension.
 create_dimension(Client, Name, Input) ->
     create_dimension(Client, Name, Input, []).
 create_dimension(Client, Name, Input0, Options) ->
@@ -853,10 +884,8 @@ create_dimension(Client, Name, Input0, Options) ->
 
 %% @doc Creates a domain configuration.
 %%
-%% <note> The domain configuration feature is in public preview and is
-%% subject to change.
-%%
-%% </note>
+%% The domain configuration feature is in public preview and is subject to
+%% change.
 create_domain_configuration(Client, DomainConfigurationName, Input) ->
     create_domain_configuration(Client, DomainConfigurationName, Input, []).
 create_domain_configuration(Client, DomainConfigurationName, Input0, Options) ->
@@ -905,13 +934,12 @@ create_job(Client, JobId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a 2048-bit RSA key pair and issues an X.509 certificate using
-%% the issued public key. You can also call
-%% <code>CreateKeysAndCertificate</code> over MQTT from a device, for more
-%% information, see <a
-%% href="https://docs.aws.amazon.com/iot/latest/developerguide/provision-wo-cert.html#provision-mqtt-api">Provisioning
-%% MQTT API</a>.
+%% the issued public key.
 %%
-%% <b>Note</b> This is the only time AWS IoT issues the private key for this
+%% You can also call `CreateKeysAndCertificate` over MQTT from a device, for
+%% more information, see Provisioning MQTT API.
+%%
+%% Note This is the only time AWS IoT issues the private key for this
 %% certificate, so it is important to keep it in a secure location.
 create_keys_and_certificate(Client, Input) ->
     create_keys_and_certificate(Client, Input, []).
@@ -930,8 +958,11 @@ create_keys_and_certificate(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Defines an action that can be applied to audit findings by using
-%% StartAuditMitigationActionsTask. Each mitigation action can apply only one
-%% type of change.
+%% StartAuditMitigationActionsTask.
+%%
+%% Only certain types of mitigation actions can be applied to specific check
+%% names. For more information, see Mitigation actions. Each mitigation
+%% action can apply only one type of change.
 create_mitigation_action(Client, ActionName, Input) ->
     create_mitigation_action(Client, ActionName, Input, []).
 create_mitigation_action(Client, ActionName, Input0, Options) ->
@@ -966,8 +997,8 @@ create_o_t_a_update(Client, OtaUpdateId, Input0, Options) ->
 %% @doc Creates an AWS IoT policy.
 %%
 %% The created policy is the default version for the policy. This operation
-%% creates a policy version with a version identifier of <b>1</b> and sets
-%% <b>1</b> as the policy's default version.
+%% creates a policy version with a version identifier of 1 and sets 1 as the
+%% policy's default version.
 create_policy(Client, PolicyName, Input) ->
     create_policy(Client, PolicyName, Input, []).
 create_policy(Client, PolicyName, Input0, Options) ->
@@ -983,11 +1014,12 @@ create_policy(Client, PolicyName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new version of the specified AWS IoT policy. To update a
-%% policy, create a new policy version. A managed policy can have up to five
-%% versions. If the policy has five versions, you must use
-%% <a>DeletePolicyVersion</a> to delete an existing version before you create
-%% a new one.
+%% @doc Creates a new version of the specified AWS IoT policy.
+%%
+%% To update a policy, create a new policy version. A managed policy can have
+%% up to five versions. If the policy has five versions, you must use
+%% `DeletePolicyVersion` to delete an existing version before you create a
+%% new one.
 %%
 %% Optionally, you can set the new version as the policy's default version.
 %% The default version is the operative version (that is, the version that is
@@ -1106,9 +1138,11 @@ create_security_profile(Client, SecurityProfileName, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a stream for delivering one or more large files in chunks
-%% over MQTT. A stream transports data bytes in chunks or blocks packaged as
-%% MQTT messages from a source like S3. You can have one or more files
-%% associated with a stream.
+%% over MQTT.
+%%
+%% A stream transports data bytes in chunks or blocks packaged as MQTT
+%% messages from a source like S3. You can have one or more files associated
+%% with a stream.
 create_stream(Client, StreamId, Input) ->
     create_stream(Client, StreamId, Input, []).
 create_stream(Client, StreamId, Input0, Options) ->
@@ -1124,16 +1158,15 @@ create_stream(Client, StreamId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a thing record in the registry. If this call is made multiple
-%% times using the same thing name and configuration, the call will succeed.
-%% If this call is made with the same thing name but different configuration
-%% a <code>ResourceAlreadyExistsException</code> is thrown.
+%% @doc Creates a thing record in the registry.
 %%
-%% <note> This is a control plane operation. See <a
-%% href="https://docs.aws.amazon.com/iot/latest/developerguide/iot-authorization.html">Authorization</a>
-%% for information about authorizing control plane actions.
+%% If this call is made multiple times using the same thing name and
+%% configuration, the call will succeed. If this call is made with the same
+%% thing name but different configuration a `ResourceAlreadyExistsException`
+%% is thrown.
 %%
-%% </note>
+%% This is a control plane operation. See Authorization for information about
+%% authorizing control plane actions.
 create_thing(Client, ThingName, Input) ->
     create_thing(Client, ThingName, Input, []).
 create_thing(Client, ThingName, Input0, Options) ->
@@ -1151,11 +1184,8 @@ create_thing(Client, ThingName, Input0, Options) ->
 
 %% @doc Create a thing group.
 %%
-%% <note> This is a control plane operation. See <a
-%% href="https://docs.aws.amazon.com/iot/latest/developerguide/iot-authorization.html">Authorization</a>
-%% for information about authorizing control plane actions.
-%%
-%% </note>
+%% This is a control plane operation. See Authorization for information about
+%% authorizing control plane actions.
 create_thing_group(Client, ThingGroupName, Input) ->
     create_thing_group(Client, ThingGroupName, Input, []).
 create_thing_group(Client, ThingGroupName, Input0, Options) ->
@@ -1187,9 +1217,11 @@ create_thing_type(Client, ThingTypeName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a rule. Creating rules is an administrator-level action. Any
-%% user who has permission to create rules will be able to access data
-%% processed by the rule.
+%% @doc Creates a rule.
+%%
+%% Creating rules is an administrator-level action. Any user who has
+%% permission to create rules will be able to access data processed by the
+%% rule.
 create_topic_rule(Client, RuleName, Input) ->
     create_topic_rule(Client, RuleName, Input, []).
 create_topic_rule(Client, RuleName, Input0, Options) ->
@@ -1207,8 +1239,9 @@ create_topic_rule(Client, RuleName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a topic rule destination. The destination must be confirmed
-%% prior to use.
+%% @doc Creates a topic rule destination.
+%%
+%% The destination must be confirmed prior to use.
 create_topic_rule_destination(Client, Input) ->
     create_topic_rule_destination(Client, Input, []).
 create_topic_rule_destination(Client, Input0, Options) ->
@@ -1225,8 +1258,10 @@ create_topic_rule_destination(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Restores the default settings for Device Defender audits for this
-%% account. Any configuration data you entered is deleted and all audit
-%% checks are reset to disabled.
+%% account.
+%%
+%% Any configuration data you entered is deleted and all audit checks are
+%% reset to disabled.
 delete_account_audit_configuration(Client, Input) ->
     delete_account_audit_configuration(Client, Input, []).
 delete_account_audit_configuration(Client, Input0, Options) ->
@@ -1241,6 +1276,22 @@ delete_account_audit_configuration(Client, Input0, Options) ->
                      {<<"deleteScheduledAudits">>, <<"deleteScheduledAudits">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a Device Defender audit suppression.
+delete_audit_suppression(Client, Input) ->
+    delete_audit_suppression(Client, Input, []).
+delete_audit_suppression(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/audit/suppressions/delete"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an authorizer.
@@ -1296,9 +1347,8 @@ delete_c_a_certificate(Client, CertificateId, Input0, Options) ->
 %%
 %% A certificate cannot be deleted if it has a policy or IoT thing attached
 %% to it or if its status is set to ACTIVE. To delete a certificate, first
-%% use the <a>DetachPrincipalPolicy</a> API to detach all policies. Next, use
-%% the <a>UpdateCertificate</a> API to set the certificate to the INACTIVE
-%% status.
+%% use the `DetachPrincipalPolicy` API to detach all policies. Next, use the
+%% `UpdateCertificate` API to set the certificate to the INACTIVE status.
 delete_certificate(Client, CertificateId, Input) ->
     delete_certificate(Client, CertificateId, Input, []).
 delete_certificate(Client, CertificateId, Input0, Options) ->
@@ -1333,10 +1383,8 @@ delete_dimension(Client, Name, Input0, Options) ->
 
 %% @doc Deletes the specified domain configuration.
 %%
-%% <note> The domain configuration feature is in public preview and is
-%% subject to change.
-%%
-%% </note>
+%% The domain configuration feature is in public preview and is subject to
+%% change.
 delete_domain_configuration(Client, DomainConfigurationName, Input) ->
     delete_domain_configuration(Client, DomainConfigurationName, Input, []).
 delete_domain_configuration(Client, DomainConfigurationName, Input0, Options) ->
@@ -1390,7 +1438,8 @@ delete_job(Client, JobId, Input0, Options) ->
     Input1 = Input0,
 
     QueryMapping = [
-                     {<<"force">>, <<"force">>}
+                     {<<"force">>, <<"force">>},
+                     {<<"namespaceId">>, <<"namespaceId">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
@@ -1407,7 +1456,8 @@ delete_job_execution(Client, ExecutionNumber, JobId, ThingName, Input0, Options)
     Input1 = Input0,
 
     QueryMapping = [
-                     {<<"force">>, <<"force">>}
+                     {<<"force">>, <<"force">>},
+                     {<<"namespaceId">>, <<"namespaceId">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
@@ -1473,10 +1523,11 @@ delete_policy(Client, PolicyName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the specified version of the specified policy. You cannot
-%% delete the default version of a policy using this API. To delete the
-%% default version of a policy, use <a>DeletePolicy</a>. To find out which
-%% version of a policy is marked as the default version, use
+%% @doc Deletes the specified version of the specified policy.
+%%
+%% You cannot delete the default version of a policy using this API. To
+%% delete the default version of a policy, use `DeletePolicy`. To find out
+%% which version of a policy is marked as the default version, use
 %% ListPolicyVersions.
 delete_policy_version(Client, PolicyName, PolicyVersionId, Input) ->
     delete_policy_version(Client, PolicyName, PolicyVersionId, Input, []).
@@ -1606,8 +1657,10 @@ delete_stream(Client, StreamId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the specified thing. Returns successfully with no error if
-%% the deletion is successful or you specify a thing that doesn't exist.
+%% @doc Deletes the specified thing.
+%%
+%% Returns successfully with no error if the deletion is successful or you
+%% specify a thing that doesn't exist.
 delete_thing(Client, ThingName, Input) ->
     delete_thing(Client, ThingName, Input, []).
 delete_thing(Client, ThingName, Input0, Options) ->
@@ -1641,12 +1694,13 @@ delete_thing_group(Client, ThingGroupName, Input0, Options) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the specified thing type. You cannot delete a thing type if
-%% it has things associated with it. To delete a thing type, first mark it as
-%% deprecated by calling <a>DeprecateThingType</a>, then remove any
-%% associated things by calling <a>UpdateThing</a> to change the thing type
-%% on any associated thing, and finally use <a>DeleteThingType</a> to delete
-%% the thing type.
+%% @doc Deletes the specified thing type.
+%%
+%% You cannot delete a thing type if it has things associated with it. To
+%% delete a thing type, first mark it as deprecated by calling
+%% `DeprecateThingType`, then remove any associated things by calling
+%% `UpdateThing` to change the thing type on any associated thing, and
+%% finally use `DeleteThingType` to delete the thing type.
 delete_thing_type(Client, ThingTypeName, Input) ->
     delete_thing_type(Client, ThingTypeName, Input, []).
 delete_thing_type(Client, ThingTypeName, Input0, Options) ->
@@ -1712,8 +1766,9 @@ delete_v2_logging_level(Client, Input0, Options) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deprecates a thing type. You can not associate new things with
-%% deprecated thing type.
+%% @doc Deprecates a thing type.
+%%
+%% You can not associate new things with deprecated thing type.
 deprecate_thing_type(Client, ThingTypeName, Input) ->
     deprecate_thing_type(Client, ThingTypeName, Input, []).
 deprecate_thing_type(Client, ThingTypeName, Input0, Options) ->
@@ -1730,8 +1785,10 @@ deprecate_thing_type(Client, ThingTypeName, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets information about the Device Defender audit settings for this
-%% account. Settings include how audit notifications are sent and which audit
-%% checks are enabled or disabled.
+%% account.
+%%
+%% Settings include how audit notifications are sent and which audit checks
+%% are enabled or disabled.
 describe_account_audit_configuration(Client)
   when is_map(Client) ->
     describe_account_audit_configuration(Client, []).
@@ -1746,9 +1803,10 @@ describe_account_audit_configuration(Client, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets information about a single audit finding. Properties include the
-%% reason for noncompliance, the severity of the issue, and when the audit
-%% that returned the finding was started.
+%% @doc Gets information about a single audit finding.
+%%
+%% Properties include the reason for noncompliance, the severity of the
+%% issue, and when the audit that returned the finding was started.
 describe_audit_finding(Client, FindingId)
   when is_map(Client) ->
     describe_audit_finding(Client, FindingId, []).
@@ -1764,9 +1822,10 @@ describe_audit_finding(Client, FindingId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about an audit mitigation task that is used to apply
-%% mitigation actions to a set of audit findings. Properties include the
-%% actions being applied, the audit checks to which they're being applied,
-%% the task status, and aggregated task statistics.
+%% mitigation actions to a set of audit findings.
+%%
+%% Properties include the actions being applied, the audit checks to which
+%% they're being applied, the task status, and aggregated task statistics.
 describe_audit_mitigation_actions_task(Client, TaskId)
   when is_map(Client) ->
     describe_audit_mitigation_actions_task(Client, TaskId, []).
@@ -1780,6 +1839,22 @@ describe_audit_mitigation_actions_task(Client, TaskId, Options)
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets information about a Device Defender audit suppression.
+describe_audit_suppression(Client, Input) ->
+    describe_audit_suppression(Client, Input, []).
+describe_audit_suppression(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/audit/suppressions/describe"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets information about a Device Defender audit.
 describe_audit_task(Client, TaskId)
@@ -1889,10 +1964,8 @@ describe_dimension(Client, Name, Options)
 
 %% @doc Gets summary information about a domain configuration.
 %%
-%% <note> The domain configuration feature is in public preview and is
-%% subject to change.
-%%
-%% </note>
+%% The domain configuration feature is in public preview and is subject to
+%% change.
 describe_domain_configuration(Client, DomainConfigurationName)
   when is_map(Client) ->
     describe_domain_configuration(Client, DomainConfigurationName, []).
@@ -2174,8 +2247,7 @@ detach_policy(Client, PolicyName, Input0, Options) ->
 
 %% @doc Removes the specified policy from the specified certificate.
 %%
-%% <b>Note:</b> This API is deprecated. Please use <a>DetachPolicy</a>
-%% instead.
+%% Note: This API is deprecated. Please use `DetachPolicy` instead.
 detach_principal_policy(Client, PolicyName, Input) ->
     detach_principal_policy(Client, PolicyName, Input, []).
 detach_principal_policy(Client, PolicyName, Input0, Options) ->
@@ -2211,14 +2283,13 @@ detach_security_profile(Client, SecurityProfileName, Input0, Options) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Detaches the specified principal from the specified thing. A
-%% principal can be X.509 certificates, IAM users, groups, and roles, Amazon
-%% Cognito identities or federated identities.
+%% @doc Detaches the specified principal from the specified thing.
 %%
-%% <note> This call is asynchronous. It might take several seconds for the
+%% A principal can be X.509 certificates, IAM users, groups, and roles,
+%% Amazon Cognito identities or federated identities.
+%%
+%% This call is asynchronous. It might take several seconds for the
 %% detachment to propagate.
-%%
-%% </note>
 detach_thing_principal(Client, ThingName, Input) ->
     detach_thing_principal(Client, ThingName, Input, []).
 detach_thing_principal(Client, ThingName, Input0, Options) ->
@@ -2335,8 +2406,8 @@ get_job_document(Client, JobId, Options)
 
 %% @doc Gets the logging options.
 %%
-%% NOTE: use of this command is not recommended. Use
-%% <code>GetV2LoggingOptions</code> instead.
+%% NOTE: use of this command is not recommended. Use `GetV2LoggingOptions`
+%% instead.
 get_logging_options(Client)
   when is_map(Client) ->
     get_logging_options(Client, []).
@@ -2367,16 +2438,17 @@ get_o_t_a_update(Client, OtaUpdateId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Groups the aggregated values that match the query into percentile
-%% groupings. The default percentile groupings are: 1,5,25,50,75,95,99,
-%% although you can specify your own when you call
-%% <code>GetPercentiles</code>. This function returns a value for each
-%% percentile group specified (or the default percentile groupings). The
-%% percentile group "1" contains the aggregated field value that occurs in
-%% approximately one percent of the values that match the query. The
-%% percentile group "5" contains the aggregated field value that occurs in
-%% approximately five percent of the values that match the query, and so on.
-%% The result is an approximation, the more values that match the query, the
-%% more accurate the percentile values.
+%% groupings.
+%%
+%% The default percentile groupings are: 1,5,25,50,75,95,99, although you can
+%% specify your own when you call `GetPercentiles`. This function returns a
+%% value for each percentile group specified (or the default percentile
+%% groupings). The percentile group "1" contains the aggregated field value
+%% that occurs in approximately one percent of the values that match the
+%% query. The percentile group "5" contains the aggregated field value that
+%% occurs in approximately five percent of the values that match the query,
+%% and so on. The result is an approximation, the more values that match the
+%% query, the more accurate the percentile values.
 get_percentiles(Client, Input) ->
     get_percentiles(Client, Input, []).
 get_percentiles(Client, Input0, Options) ->
@@ -2440,9 +2512,10 @@ get_registration_code(Client, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the count, average, sum, minimum, maximum, sum of squares,
-%% variance, and standard deviation for the specified aggregated field. If
-%% the aggregation field is of type <code>String</code>, only the count
-%% statistic is returned.
+%% variance, and standard deviation for the specified aggregated field.
+%%
+%% If the aggregation field is of type `String`, only the count statistic is
+%% returned.
 get_statistics(Client, Input) ->
     get_statistics(Client, Input, []).
 get_statistics(Client, Input0, Options) ->
@@ -2546,8 +2619,9 @@ list_attached_policies(Client, Target, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the findings (results) of a Device Defender audit or of the
-%% audits performed during a specified time period. (Findings are retained
-%% for 180 days.)
+%% audits performed during a specified time period.
+%%
+%% (Findings are retained for 90 days.)
 list_audit_findings(Client, Input) ->
     list_audit_findings(Client, Input, []).
 list_audit_findings(Client, Input0, Options) ->
@@ -2611,6 +2685,22 @@ list_audit_mitigation_actions_tasks(Client, AuditTaskId, EndTime, FindingId, Max
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists your Device Defender audit listings.
+list_audit_suppressions(Client, Input) ->
+    list_audit_suppressions(Client, Input, []).
+list_audit_suppressions(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/audit/suppressions/list"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the Device Defender audits that have been performed during a
 %% given time period.
@@ -2769,13 +2859,12 @@ list_dimensions(Client, MaxResults, NextToken, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets a list of domain configurations for the user. This list is
-%% sorted alphabetically by domain configuration name.
+%% @doc Gets a list of domain configurations for the user.
 %%
-%% <note> The domain configuration feature is in public preview and is
-%% subject to change.
+%% This list is sorted alphabetically by domain configuration name.
 %%
-%% </note>
+%% The domain configuration feature is in public preview and is subject to
+%% change.
 list_domain_configurations(Client, Marker, PageSize, ServiceType)
   when is_map(Client) ->
     list_domain_configurations(Client, Marker, PageSize, ServiceType, []).
@@ -2838,10 +2927,10 @@ list_job_executions_for_job(Client, JobId, MaxResults, NextToken, Status, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the job executions for the specified thing.
-list_job_executions_for_thing(Client, ThingName, MaxResults, NextToken, Status)
+list_job_executions_for_thing(Client, ThingName, MaxResults, NamespaceId, NextToken, Status)
   when is_map(Client) ->
-    list_job_executions_for_thing(Client, ThingName, MaxResults, NextToken, Status, []).
-list_job_executions_for_thing(Client, ThingName, MaxResults, NextToken, Status, Options)
+    list_job_executions_for_thing(Client, ThingName, MaxResults, NamespaceId, NextToken, Status, []).
+list_job_executions_for_thing(Client, ThingName, MaxResults, NamespaceId, NextToken, Status, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/things/", http_uri:encode(ThingName), "/jobs"],
     SuccessStatusCode = undefined,
@@ -2851,6 +2940,7 @@ list_job_executions_for_thing(Client, ThingName, MaxResults, NextToken, Status, 
     Query0_ =
       [
         {<<"maxResults">>, MaxResults},
+        {<<"namespaceId">>, NamespaceId},
         {<<"nextToken">>, NextToken},
         {<<"status">>, Status}
       ],
@@ -2859,10 +2949,10 @@ list_job_executions_for_thing(Client, ThingName, MaxResults, NextToken, Status, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists jobs.
-list_jobs(Client, MaxResults, NextToken, Status, TargetSelection, ThingGroupId, ThingGroupName)
+list_jobs(Client, MaxResults, NamespaceId, NextToken, Status, TargetSelection, ThingGroupId, ThingGroupName)
   when is_map(Client) ->
-    list_jobs(Client, MaxResults, NextToken, Status, TargetSelection, ThingGroupId, ThingGroupName, []).
-list_jobs(Client, MaxResults, NextToken, Status, TargetSelection, ThingGroupId, ThingGroupName, Options)
+    list_jobs(Client, MaxResults, NamespaceId, NextToken, Status, TargetSelection, ThingGroupId, ThingGroupName, []).
+list_jobs(Client, MaxResults, NamespaceId, NextToken, Status, TargetSelection, ThingGroupId, ThingGroupName, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/jobs"],
     SuccessStatusCode = undefined,
@@ -2872,6 +2962,7 @@ list_jobs(Client, MaxResults, NextToken, Status, TargetSelection, ThingGroupId, 
     Query0_ =
       [
         {<<"maxResults">>, MaxResults},
+        {<<"namespaceId">>, NamespaceId},
         {<<"nextToken">>, NextToken},
         {<<"status">>, Status},
         {<<"targetSelection">>, TargetSelection},
@@ -2969,8 +3060,7 @@ list_policies(Client, AscendingOrder, Marker, PageSize, Options)
 
 %% @doc Lists the principals associated with the specified policy.
 %%
-%% <b>Note:</b> This API is deprecated. Please use
-%% <a>ListTargetsForPolicy</a> instead.
+%% Note: This API is deprecated. Please use `ListTargetsForPolicy` instead.
 list_policy_principals(Client, AscendingOrder, Marker, PageSize, PolicyName)
   when is_map(Client) ->
     list_policy_principals(Client, AscendingOrder, Marker, PageSize, PolicyName, []).
@@ -3011,13 +3101,12 @@ list_policy_versions(Client, PolicyName, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the policies attached to the specified principal. If you use an
-%% Cognito identity, the ID must be in <a
-%% href="https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetCredentialsForIdentity.html#API_GetCredentialsForIdentity_RequestSyntax">AmazonCognito
-%% Identity format</a>.
+%% @doc Lists the policies attached to the specified principal.
 %%
-%% <b>Note:</b> This API is deprecated. Please use
-%% <a>ListAttachedPolicies</a> instead.
+%% If you use an Cognito identity, the ID must be in AmazonCognito Identity
+%% format.
+%%
+%% Note: This API is deprecated. Please use `ListAttachedPolicies` instead.
 list_principal_policies(Client, AscendingOrder, Marker, PageSize, Principal)
   when is_map(Client) ->
     list_principal_policies(Client, AscendingOrder, Marker, PageSize, Principal, []).
@@ -3042,9 +3131,10 @@ list_principal_policies(Client, AscendingOrder, Marker, PageSize, Principal, Opt
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the things associated with the specified principal. A principal
-%% can be X.509 certificates, IAM users, groups, and roles, Amazon Cognito
-%% identities or federated identities.
+%% @doc Lists the things associated with the specified principal.
+%%
+%% A principal can be X.509 certificates, IAM users, groups, and roles,
+%% Amazon Cognito identities or federated identities.
 list_principal_things(Client, MaxResults, NextToken, Principal)
   when is_map(Client) ->
     list_principal_things(Client, MaxResults, NextToken, Principal, []).
@@ -3149,9 +3239,10 @@ list_scheduled_audits(Client, MaxResults, NextToken, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the Device Defender security profiles you have created. You can
-%% use filters to list only those security profiles associated with a thing
-%% group or only those associated with your account.
+%% @doc Lists the Device Defender security profiles you have created.
+%%
+%% You can use filters to list only those security profiles associated with a
+%% thing group or only those associated with your account.
 list_security_profiles(Client, DimensionName, MaxResults, NextToken)
   when is_map(Client) ->
     list_security_profiles(Client, DimensionName, MaxResults, NextToken, []).
@@ -3318,20 +3409,26 @@ list_thing_groups_for_thing(Client, ThingName, MaxResults, NextToken, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the principals associated with the specified thing. A principal
-%% can be X.509 certificates, IAM users, groups, and roles, Amazon Cognito
-%% identities or federated identities.
-list_thing_principals(Client, ThingName)
+%% @doc Lists the principals associated with the specified thing.
+%%
+%% A principal can be X.509 certificates, IAM users, groups, and roles,
+%% Amazon Cognito identities or federated identities.
+list_thing_principals(Client, ThingName, MaxResults, NextToken)
   when is_map(Client) ->
-    list_thing_principals(Client, ThingName, []).
-list_thing_principals(Client, ThingName, Options)
+    list_thing_principals(Client, ThingName, MaxResults, NextToken, []).
+list_thing_principals(Client, ThingName, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/things/", http_uri:encode(ThingName), "/principals"],
     SuccessStatusCode = undefined,
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -3398,11 +3495,17 @@ list_thing_types(Client, MaxResults, NextToken, ThingTypeName, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists your things. Use the <b>attributeName</b> and
-%% <b>attributeValue</b> parameters to filter your things. For example,
-%% calling <code>ListThings</code> with attributeName=Color and
+%% @doc Lists your things.
+%%
+%% Use the attributeName and attributeValue parameters to filter your things.
+%% For example, calling `ListThings` with attributeName=Color and
 %% attributeValue=Red retrieves all things in the registry that contain an
-%% attribute <b>Color</b> with the value <b>Red</b>.
+%% attribute Color with the value Red.
+%%
+%% You will not be charged for calling this API if an `Access denied` error
+%% is returned. You will also not be charged if no attributes or pagination
+%% token was provided in request and no pagination token and no results were
+%% returned.
 list_things(Client, AttributeName, AttributeValue, MaxResults, NextToken, ThingTypeName)
   when is_map(Client) ->
     list_things(Client, AttributeName, AttributeValue, MaxResults, NextToken, ThingTypeName, []).
@@ -3530,9 +3633,10 @@ list_v2_logging_levels(Client, MaxResults, NextToken, TargetType, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the Device Defender security profile violations discovered
-%% during the given time period. You can use filters to limit the results to
-%% those alerts issued for a particular security profile, behavior, or thing
-%% (device).
+%% during the given time period.
+%%
+%% You can use filters to limit the results to those alerts issued for a
+%% particular security profile, behavior, or thing (device).
 list_violation_events(Client, EndTime, MaxResults, NextToken, SecurityProfileName, StartTime, ThingName)
   when is_map(Client) ->
     list_violation_events(Client, EndTime, MaxResults, NextToken, SecurityProfileName, StartTime, ThingName, []).
@@ -3556,13 +3660,15 @@ list_violation_events(Client, EndTime, MaxResults, NextToken, SecurityProfileNam
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Registers a CA certificate with AWS IoT. This CA certificate can then
-%% be used to sign device certificates, which can be then registered with AWS
-%% IoT. You can register up to 10 CA certificates per AWS account that have
-%% the same subject field. This enables you to have up to 10 certificate
-%% authorities sign your device certificates. If you have more than one CA
-%% certificate registered, make sure you pass the CA certificate when you
-%% register your device certificates with the RegisterCertificate API.
+%% @doc Registers a CA certificate with AWS IoT.
+%%
+%% This CA certificate can then be used to sign device certificates, which
+%% can be then registered with AWS IoT. You can register up to 10 CA
+%% certificates per AWS account that have the same subject field. This
+%% enables you to have up to 10 certificate authorities sign your device
+%% certificates. If you have more than one CA certificate registered, make
+%% sure you pass the CA certificate when you register your device
+%% certificates with the RegisterCertificate API.
 register_c_a_certificate(Client, Input) ->
     register_c_a_certificate(Client, Input, []).
 register_c_a_certificate(Client, Input0, Options) ->
@@ -3580,10 +3686,11 @@ register_c_a_certificate(Client, Input0, Options) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Registers a device certificate with AWS IoT. If you have more than
-%% one CA certificate that has the same subject field, you must specify the
-%% CA certificate that was used to sign the device certificate being
-%% registered.
+%% @doc Registers a device certificate with AWS IoT.
+%%
+%% If you have more than one CA certificate that has the same subject field,
+%% you must specify the CA certificate that was used to sign the device
+%% certificate being registered.
 register_certificate(Client, Input) ->
     register_certificate(Client, Input, []).
 register_certificate(Client, Input0, Options) ->
@@ -3617,12 +3724,12 @@ register_certificate_without_c_a(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Provisions a thing in the device registry. RegisterThing calls other
-%% AWS IoT control plane APIs. These calls might exceed your account level <a
-%% href="https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_iot">
-%% AWS IoT Throttling Limits</a> and cause throttle errors. Please contact <a
-%% href="https://console.aws.amazon.com/support/home">AWS Customer
-%% Support</a> to raise your throttling limits if necessary.
+%% @doc Provisions a thing in the device registry.
+%%
+%% RegisterThing calls other AWS IoT control plane APIs. These calls might
+%% exceed your account level AWS IoT Throttling Limits and cause throttle
+%% errors. Please contact AWS Customer Support to raise your throttling
+%% limits if necessary.
 register_thing(Client, Input) ->
     register_thing(Client, Input, []).
 register_thing(Client, Input0, Options) ->
@@ -3638,12 +3745,13 @@ register_thing(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Rejects a pending certificate transfer. After AWS IoT rejects a
-%% certificate transfer, the certificate status changes from
-%% <b>PENDING_TRANSFER</b> to <b>INACTIVE</b>.
+%% @doc Rejects a pending certificate transfer.
 %%
-%% To check for pending certificate transfers, call <a>ListCertificates</a>
-%% to enumerate your certificates.
+%% After AWS IoT rejects a certificate transfer, the certificate status
+%% changes from PENDING_TRANSFER to INACTIVE.
+%%
+%% To check for pending certificate transfers, call `ListCertificates` to
+%% enumerate your certificates.
 %%
 %% This operation can only be called by the transfer destination. After it is
 %% called, the certificate will be returned to the source's account in the
@@ -3681,10 +3789,9 @@ remove_thing_from_billing_group(Client, Input0, Options) ->
 
 %% @doc Remove the specified thing from the specified group.
 %%
-%% You must specify either a <code>thingGroupArn</code> or a
-%% <code>thingGroupName</code> to identify the thing group and either a
-%% <code>thingArn</code> or a <code>thingName</code> to identify the thing to
-%% remove from the thing group.
+%% You must specify either a `thingGroupArn` or a `thingGroupName` to
+%% identify the thing group and either a `thingArn` or a `thingName` to
+%% identify the thing to remove from the thing group.
 remove_thing_from_thing_group(Client, Input) ->
     remove_thing_from_thing_group(Client, Input, []).
 remove_thing_from_thing_group(Client, Input0, Options) ->
@@ -3700,10 +3807,11 @@ remove_thing_from_thing_group(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Replaces the rule. You must specify all parameters for the new rule.
-%% Creating rules is an administrator-level action. Any user who has
-%% permission to create rules will be able to access data processed by the
-%% rule.
+%% @doc Replaces the rule.
+%%
+%% You must specify all parameters for the new rule. Creating rules is an
+%% administrator-level action. Any user who has permission to create rules
+%% will be able to access data processed by the rule.
 replace_topic_rule(Client, RuleName, Input) ->
     replace_topic_rule(Client, RuleName, Input, []).
 replace_topic_rule(Client, RuleName, Input0, Options) ->
@@ -3735,8 +3843,10 @@ search_index(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Sets the default authorizer. This will be used if a websocket
-%% connection is made without specifying an authorizer.
+%% @doc Sets the default authorizer.
+%%
+%% This will be used if a websocket connection is made without specifying an
+%% authorizer.
 set_default_authorizer(Client, Input) ->
     set_default_authorizer(Client, Input, []).
 set_default_authorizer(Client, Input0, Options) ->
@@ -3753,9 +3863,11 @@ set_default_authorizer(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sets the specified version of the specified policy as the policy's
-%% default (operative) version. This action affects all certificates to which
-%% the policy is attached. To list the principals the policy is attached to,
-%% use the ListPrincipalPolicy API.
+%% default (operative) version.
+%%
+%% This action affects all certificates to which the policy is attached. To
+%% list the principals the policy is attached to, use the ListPrincipalPolicy
+%% API.
 set_default_policy_version(Client, PolicyName, PolicyVersionId, Input) ->
     set_default_policy_version(Client, PolicyName, PolicyVersionId, Input, []).
 set_default_policy_version(Client, PolicyName, PolicyVersionId, Input0, Options) ->
@@ -3773,8 +3885,8 @@ set_default_policy_version(Client, PolicyName, PolicyVersionId, Input0, Options)
 
 %% @doc Sets the logging options.
 %%
-%% NOTE: use of this command is not recommended. Use
-%% <code>SetV2LoggingOptions</code> instead.
+%% NOTE: use of this command is not recommended. Use `SetV2LoggingOptions`
+%% instead.
 set_logging_options(Client, Input) ->
     set_logging_options(Client, Input, []).
 set_logging_options(Client, Input0, Options) ->
@@ -3887,8 +3999,9 @@ stop_thing_registration_task(Client, TaskId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds to or modifies the tags of the given resource. Tags are metadata
-%% which can be used to manage a resource.
+%% @doc Adds to or modifies the tags of the given resource.
+%%
+%% Tags are metadata which can be used to manage a resource.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 tag_resource(Client, Input0, Options) ->
@@ -3905,9 +4018,10 @@ tag_resource(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Tests if a specified principal is authorized to perform an AWS IoT
-%% action on a specified resource. Use this to test and debug the
-%% authorization behavior of devices that connect to the AWS IoT device
-%% gateway.
+%% action on a specified resource.
+%%
+%% Use this to test and debug the authorization behavior of devices that
+%% connect to the AWS IoT device gateway.
 test_authorization(Client, Input) ->
     test_authorization(Client, Input, []).
 test_authorization(Client, Input0, Options) ->
@@ -3925,8 +4039,10 @@ test_authorization(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Tests a custom authorization behavior by invoking a specified custom
-%% authorizer. Use this to test and debug the custom authorization behavior
-%% of devices that connect to the AWS IoT device gateway.
+%% authorizer.
+%%
+%% Use this to test and debug the custom authorization behavior of devices
+%% that connect to the AWS IoT device gateway.
 test_invoke_authorizer(Client, AuthorizerName, Input) ->
     test_invoke_authorizer(Client, AuthorizerName, Input, []).
 test_invoke_authorizer(Client, AuthorizerName, Input0, Options) ->
@@ -3987,13 +4103,31 @@ untag_resource(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Configures or reconfigures the Device Defender audit settings for
-%% this account. Settings include how audit notifications are sent and which
-%% audit checks are enabled or disabled.
+%% this account.
+%%
+%% Settings include how audit notifications are sent and which audit checks
+%% are enabled or disabled.
 update_account_audit_configuration(Client, Input) ->
     update_account_audit_configuration(Client, Input, []).
 update_account_audit_configuration(Client, Input0, Options) ->
     Method = patch,
     Path = ["/audit/configuration"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a Device Defender audit suppression.
+update_audit_suppression(Client, Input) ->
+    update_audit_suppression(Client, Input, []).
+update_audit_suppression(Client, Input0, Options) ->
+    Method = patch,
+    Path = ["/audit/suppressions/update"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -4054,15 +4188,17 @@ update_c_a_certificate(Client, CertificateId, Input0, Options) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the status of the specified certificate. This operation is
-%% idempotent.
+%% @doc Updates the status of the specified certificate.
 %%
-%% Moving a certificate from the ACTIVE state (including REVOKED) will not
-%% disconnect currently connected devices, but these devices will be unable
-%% to reconnect.
+%% This operation is idempotent.
 %%
-%% The ACTIVE state is required to authenticate devices connecting to AWS IoT
-%% using a certificate.
+%% Certificates must be in the ACTIVE state to authenticate devices that use
+%% a certificate to connect to AWS IoT.
+%%
+%% Within a few minutes of updating a certificate from the ACTIVE state to
+%% any other state, AWS IoT disconnects all devices that used that
+%% certificate to connect. Devices cannot use a certificate that is not in
+%% the ACTIVE state to reconnect.
 update_certificate(Client, CertificateId, Input) ->
     update_certificate(Client, CertificateId, Input, []).
 update_certificate(Client, CertificateId, Input0, Options) ->
@@ -4079,8 +4215,10 @@ update_certificate(Client, CertificateId, Input0, Options) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the definition for a dimension. You cannot change the type of
-%% a dimension after it is created (you can delete it and re-create it).
+%% @doc Updates the definition for a dimension.
+%%
+%% You cannot change the type of a dimension after it is created (you can
+%% delete it and re-create it).
 update_dimension(Client, Name, Input) ->
     update_dimension(Client, Name, Input, []).
 update_dimension(Client, Name, Input0, Options) ->
@@ -4096,13 +4234,12 @@ update_dimension(Client, Name, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates values stored in the domain configuration. Domain
-%% configurations for default endpoints can't be updated.
+%% @doc Updates values stored in the domain configuration.
 %%
-%% <note> The domain configuration feature is in public preview and is
-%% subject to change.
+%% Domain configurations for default endpoints can't be updated.
 %%
-%% </note>
+%% The domain configuration feature is in public preview and is subject to
+%% change.
 update_domain_configuration(Client, DomainConfigurationName, Input) ->
     update_domain_configuration(Client, DomainConfigurationName, Input, []).
 update_domain_configuration(Client, DomainConfigurationName, Input0, Options) ->
@@ -4177,9 +4314,10 @@ update_job(Client, JobId, Input0, Options) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
-
+    QueryMapping = [
+                     {<<"namespaceId">>, <<"namespaceId">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the definition for the specified mitigation action.
@@ -4264,8 +4402,9 @@ update_security_profile(Client, SecurityProfileName, Input0, Options) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing stream. The stream version will be incremented by
-%% one.
+%% @doc Updates an existing stream.
+%%
+%% The stream version will be incremented by one.
 update_stream(Client, StreamId, Input) ->
     update_stream(Client, StreamId, Input, []).
 update_stream(Client, StreamId, Input0, Options) ->
@@ -4329,8 +4468,10 @@ update_thing_groups_for_thing(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a topic rule destination. You use this to change the status,
-%% endpoint URL, or confirmation URL of the destination.
+%% @doc Updates a topic rule destination.
+%%
+%% You use this to change the status, endpoint URL, or confirmation URL of
+%% the destination.
 update_topic_rule_destination(Client, Input) ->
     update_topic_rule_destination(Client, Input, []).
 update_topic_rule_destination(Client, Input0, Options) ->
@@ -4408,6 +4549,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

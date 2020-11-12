@@ -16,14 +16,24 @@
          delete_flow/4,
          describe_flow/2,
          describe_flow/3,
+         describe_offering/2,
+         describe_offering/3,
+         describe_reservation/2,
+         describe_reservation/3,
          grant_flow_entitlements/3,
          grant_flow_entitlements/4,
          list_entitlements/3,
          list_entitlements/4,
          list_flows/3,
          list_flows/4,
+         list_offerings/3,
+         list_offerings/4,
+         list_reservations/3,
+         list_reservations/4,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         purchase_offering/3,
+         purchase_offering/4,
          remove_flow_output/4,
          remove_flow_output/5,
          remove_flow_source/4,
@@ -55,8 +65,9 @@
 %% API
 %%====================================================================
 
-%% @doc Adds outputs to an existing flow. You can create up to 50 outputs per
-%% flow.
+%% @doc Adds outputs to an existing flow.
+%%
+%% You can create up to 50 outputs per flow.
 add_flow_outputs(Client, FlowArn, Input) ->
     add_flow_outputs(Client, FlowArn, Input, []).
 add_flow_outputs(Client, FlowArn, Input0, Options) ->
@@ -104,8 +115,10 @@ add_flow_vpc_interfaces(Client, FlowArn, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new flow. The request must include one source. The request
-%% optionally can include outputs (up to 50) and entitlements (up to 50).
+%% @doc Creates a new flow.
+%%
+%% The request must include one source. The request optionally can include
+%% outputs (up to 50) and entitlements (up to 50).
 create_flow(Client, Input) ->
     create_flow(Client, Input, []).
 create_flow(Client, Input0, Options) ->
@@ -121,7 +134,9 @@ create_flow(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a flow. Before you can delete a flow, you must stop the flow.
+%% @doc Deletes a flow.
+%%
+%% Before you can delete a flow, you must stop the flow.
 delete_flow(Client, FlowArn, Input) ->
     delete_flow(Client, FlowArn, Input, []).
 delete_flow(Client, FlowArn, Input0, Options) ->
@@ -137,15 +152,53 @@ delete_flow(Client, FlowArn, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Displays the details of a flow. The response includes the flow ARN,
-%% name, and Availability Zone, as well as details about the source, outputs,
-%% and entitlements.
+%% @doc Displays the details of a flow.
+%%
+%% The response includes the flow ARN, name, and Availability Zone, as well
+%% as details about the source, outputs, and entitlements.
 describe_flow(Client, FlowArn)
   when is_map(Client) ->
     describe_flow(Client, FlowArn, []).
 describe_flow(Client, FlowArn, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/v1/flows/", http_uri:encode(FlowArn), ""],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Displays the details of an offering.
+%%
+%% The response includes the offering description, duration, outbound
+%% bandwidth, price, and Amazon Resource Name (ARN).
+describe_offering(Client, OfferingArn)
+  when is_map(Client) ->
+    describe_offering(Client, OfferingArn, []).
+describe_offering(Client, OfferingArn, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/v1/offerings/", http_uri:encode(OfferingArn), ""],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Displays the details of a reservation.
+%%
+%% The response includes the reservation name, state, start date and time,
+%% and the details of the offering that make up the rest of the reservation
+%% (such as price, duration, and outbound bandwidth).
+describe_reservation(Client, ReservationArn)
+  when is_map(Client) ->
+    describe_reservation(Client, ReservationArn, []).
+describe_reservation(Client, ReservationArn, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/v1/reservations/", http_uri:encode(ReservationArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -171,7 +224,9 @@ grant_flow_entitlements(Client, FlowArn, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Displays a list of all entitlements that have been granted to this
-%% account. This request returns 20 results per page.
+%% account.
+%%
+%% This request returns 20 results per page.
 list_entitlements(Client, MaxResults, NextToken)
   when is_map(Client) ->
     list_entitlements(Client, MaxResults, NextToken, []).
@@ -191,14 +246,64 @@ list_entitlements(Client, MaxResults, NextToken, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Displays a list of flows that are associated with this account. This
-%% request returns a paginated result.
+%% @doc Displays a list of flows that are associated with this account.
+%%
+%% This request returns a paginated result.
 list_flows(Client, MaxResults, NextToken)
   when is_map(Client) ->
     list_flows(Client, MaxResults, NextToken, []).
 list_flows(Client, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/v1/flows"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Displays a list of all offerings that are available to this account
+%% in the current AWS Region.
+%%
+%% If you have an active reservation (which means you've purchased an
+%% offering that has already started and hasn't expired yet), your account
+%% isn't eligible for other offerings.
+list_offerings(Client, MaxResults, NextToken)
+  when is_map(Client) ->
+    list_offerings(Client, MaxResults, NextToken, []).
+list_offerings(Client, MaxResults, NextToken, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/v1/offerings"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Displays a list of all reservations that have been purchased by this
+%% account in the current AWS Region.
+%%
+%% This list includes all reservations in all states (such as active and
+%% expired).
+list_reservations(Client, MaxResults, NextToken)
+  when is_map(Client) ->
+    list_reservations(Client, MaxResults, NextToken, []).
+list_reservations(Client, MaxResults, NextToken, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/v1/reservations"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -227,11 +332,31 @@ list_tags_for_resource(Client, ResourceArn, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Removes an output from an existing flow. This request can be made
-%% only on an output that does not have an entitlement associated with it. If
-%% the output has an entitlement, you must revoke the entitlement instead.
-%% When an entitlement is revoked from a flow, the service automatically
-%% removes the associated output.
+%% @doc Submits a request to purchase an offering.
+%%
+%% If you already have an active reservation, you can't purchase another
+%% offering.
+purchase_offering(Client, OfferingArn, Input) ->
+    purchase_offering(Client, OfferingArn, Input, []).
+purchase_offering(Client, OfferingArn, Input0, Options) ->
+    Method = post,
+    Path = ["/v1/offerings/", http_uri:encode(OfferingArn), ""],
+    SuccessStatusCode = 201,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes an output from an existing flow.
+%%
+%% This request can be made only on an output that does not have an
+%% entitlement associated with it. If the output has an entitlement, you must
+%% revoke the entitlement instead. When an entitlement is revoked from a
+%% flow, the service automatically removes the associated output.
 remove_flow_output(Client, FlowArn, OutputArn, Input) ->
     remove_flow_output(Client, FlowArn, OutputArn, Input, []).
 remove_flow_output(Client, FlowArn, OutputArn, Input0, Options) ->
@@ -247,8 +372,10 @@ remove_flow_output(Client, FlowArn, OutputArn, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes a source from an existing flow. This request can be made only
-%% if there is more than one source on the flow.
+%% @doc Removes a source from an existing flow.
+%%
+%% This request can be made only if there is more than one source on the
+%% flow.
 remove_flow_source(Client, FlowArn, SourceArn, Input) ->
     remove_flow_source(Client, FlowArn, SourceArn, Input, []).
 remove_flow_source(Client, FlowArn, SourceArn, Input0, Options) ->
@@ -264,11 +391,12 @@ remove_flow_source(Client, FlowArn, SourceArn, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes a VPC Interface from an existing flow. This request can be
-%% made only on a VPC interface that does not have a Source or Output
-%% associated with it. If the VPC interface is referenced by a Source or
-%% Output, you must first delete or update the Source or Output to no longer
-%% reference the VPC interface.
+%% @doc Removes a VPC Interface from an existing flow.
+%%
+%% This request can be made only on a VPC interface that does not have a
+%% Source or Output associated with it. If the VPC interface is referenced by
+%% a Source or Output, you must first delete or update the Source or Output
+%% to no longer reference the VPC interface.
 remove_flow_vpc_interface(Client, FlowArn, VpcInterfaceName, Input) ->
     remove_flow_vpc_interface(Client, FlowArn, VpcInterfaceName, Input, []).
 remove_flow_vpc_interface(Client, FlowArn, VpcInterfaceName, Input0, Options) ->
@@ -284,9 +412,10 @@ remove_flow_vpc_interface(Client, FlowArn, VpcInterfaceName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Revokes an entitlement from a flow. Once an entitlement is revoked,
-%% the content becomes unavailable to the subscriber and the associated
-%% output is removed.
+%% @doc Revokes an entitlement from a flow.
+%%
+%% Once an entitlement is revoked, the content becomes unavailable to the
+%% subscriber and the associated output is removed.
 revoke_flow_entitlement(Client, EntitlementArn, FlowArn, Input) ->
     revoke_flow_entitlement(Client, EntitlementArn, FlowArn, Input, []).
 revoke_flow_entitlement(Client, EntitlementArn, FlowArn, Input0, Options) ->
@@ -335,9 +464,11 @@ stop_flow(Client, FlowArn, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Associates the specified tags to a resource with the specified
-%% resourceArn. If existing tags on a resource are not specified in the
-%% request parameters, they are not changed. When a resource is deleted, the
-%% tags associated with that resource are deleted as well.
+%% resourceArn.
+%%
+%% If existing tags on a resource are not specified in the request
+%% parameters, they are not changed. When a resource is deleted, the tags
+%% associated with that resource are deleted as well.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
@@ -387,8 +518,10 @@ update_flow(Client, FlowArn, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc You can change an entitlement's description, subscribers, and
-%% encryption. If you change the subscribers, the service will remove the
-%% outputs that are are used by the subscribers that are removed.
+%% encryption.
+%%
+%% If you change the subscribers, the service will remove the outputs that
+%% are are used by the subscribers that are removed.
 update_flow_entitlement(Client, EntitlementArn, FlowArn, Input) ->
     update_flow_entitlement(Client, EntitlementArn, FlowArn, Input, []).
 update_flow_entitlement(Client, EntitlementArn, FlowArn, Input0, Options) ->
@@ -482,6 +615,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

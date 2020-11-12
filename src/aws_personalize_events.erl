@@ -1,11 +1,19 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc <p/>
+%% @doc Amazon Personalize can consume real-time user event data, such as
+%% stream or click data, and use it for model training either alone or
+%% combined with historical data.
+%%
+%% For more information see `recording-events`.
 -module(aws_personalize_events).
 
 -export([put_events/2,
-         put_events/3]).
+         put_events/3,
+         put_items/2,
+         put_items/3,
+         put_users/2,
+         put_users/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -14,11 +22,49 @@
 %%====================================================================
 
 %% @doc Records user interaction event data.
+%%
+%% For more information see `event-record-api`.
 put_events(Client, Input) ->
     put_events(Client, Input, []).
 put_events(Client, Input0, Options) ->
     Method = post,
     Path = ["/events"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Adds one or more items to an Items dataset.
+%%
+%% For more information see `importing-items`.
+put_items(Client, Input) ->
+    put_items(Client, Input, []).
+put_items(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/items"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Adds one or more users to a Users dataset.
+%%
+%% For more information see `importing-users`.
+put_users(Client, Input) ->
+    put_users(Client, Input, []).
+put_users(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/users"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -75,6 +121,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

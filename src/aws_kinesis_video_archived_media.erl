@@ -1,7 +1,7 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc <p/>
+
 -module(aws_kinesis_video_archived_media).
 
 -export([get_clip/2,
@@ -29,46 +29,37 @@
 %% operation.
 %%
 %% As a prerequsite to using GetCLip API, you must obtain an endpoint using
-%% <code>GetDataEndpoint</code>, specifying GET_CLIP for<code/> the
-%% <code>APIName</code> parameter.
+%% `GetDataEndpoint`, specifying GET_CLIP for` the `APIName` parameter. `
 %%
+%% ```
 %% An Amazon Kinesis video stream has the following requirements for
 %% providing data through MP4:
 %%
-%% <ul> <li> The media must contain h.264 or h.265 encoded video and,
-%% optionally, AAC or G.711 encoded audio. Specifically, the codec ID of
-%% track 1 should be <code>V_MPEG/ISO/AVC</code> (for h.264) or
-%% V_MPEGH/ISO/HEVC (for H.265). Optionally, the codec ID of track 2 should
-%% be <code>A_AAC</code> (for AAC) or A_MS/ACM (for G.711).
+%% The media must contain h.264 or h.265 encoded video and, optionally, AAC
+%% or G.711 encoded audio. Specifically, the codec ID of track 1 should be
+%% `V_MPEG/ISO/AVC` (for h.264) or V_MPEGH/ISO/HEVC (for H.265). Optionally,
+%% the codec ID of track 2 should be `A_AAC` (for AAC) or A_MS/ACM (for
+%% G.711).
 %%
-%% </li> <li> Data retention must be greater than 0.
+%% Data retention must be greater than 0.
 %%
-%% </li> <li> The video track of each fragment must contain codec private
-%% data in the Advanced Video Coding (AVC) for H.264 format and HEVC for
-%% H.265 format. For more information, see <a
-%% href="https://www.iso.org/standard/55980.html">MPEG-4 specification
-%% ISO/IEC 14496-15</a>. For information about adapting stream data to a
-%% given format, see <a
-%% href="http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html">NAL
-%% Adaptation Flags</a>.
+%% The video track of each fragment must contain codec private data in the
+%% Advanced Video Coding (AVC) for H.264 format and HEVC for H.265 format.
+%% For more information, see MPEG-4 specification ISO/IEC 14496-15. For
+%% information about adapting stream data to a given format, see NAL
+%% Adaptation Flags.
 %%
-%% </li> <li> The audio track (if present) of each fragment must contain
-%% codec private data in the AAC format (<a
-%% href="https://www.iso.org/standard/43345.html">AAC specification ISO/IEC
-%% 13818-7</a>) or the <a
-%% href="http://www-mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/WAVE.html">MS
-%% Wave format</a>.
+%% The audio track (if present) of each fragment must contain codec private
+%% data in the AAC format (AAC specification ISO/IEC 13818-7) or the MS Wave
+%% format.
 %%
-%% </li> </ul> You can monitor the amount of outgoing data by monitoring the
-%% <code>GetClip.OutgoingBytes</code> Amazon CloudWatch metric. For
-%% information about using CloudWatch to monitor Kinesis Video Streams, see
-%% <a
-%% href="http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/monitoring.html">Monitoring
-%% Kinesis Video Streams</a>. For pricing information, see <a
-%% href="https://aws.amazon.com/kinesis/video-streams/pricing/">Amazon
-%% Kinesis Video Streams Pricing</a> and <a
-%% href="https://aws.amazon.com/pricing/">AWS Pricing</a>. Charges for
-%% outgoing AWS data apply.
+%% You can monitor the amount of outgoing data by monitoring the
+%% `GetClip.OutgoingBytes` Amazon CloudWatch metric. For information about
+%% using CloudWatch to monitor Kinesis Video Streams, see Monitoring Kinesis
+%% Video Streams. For pricing information, see Amazon Kinesis Video Streams
+%% Pricing and AWS Pricing. Charges for outgoing AWS data apply.
+%%
+%% ```
 get_clip(Client, Input) ->
     get_clip(Client, Input, []).
 get_clip(Client, Input0, Options) ->
@@ -101,65 +92,56 @@ get_clip(Client, Input0, Options) ->
     end.
 
 %% @doc Retrieves an MPEG Dynamic Adaptive Streaming over HTTP (DASH) URL for
-%% the stream. You can then open the URL in a media player to view the stream
-%% contents.
+%% the stream.
 %%
-%% Both the <code>StreamName</code> and the <code>StreamARN</code> parameters
-%% are optional, but you must specify either the <code>StreamName</code> or
-%% the <code>StreamARN</code> when invoking this API operation.
+%% You can then open the URL in a media player to view the stream contents.
+%%
+%% Both the `StreamName` and the `StreamARN` parameters are optional, but you
+%% must specify either the `StreamName` or the `StreamARN` when invoking this
+%% API operation.
 %%
 %% An Amazon Kinesis video stream has the following requirements for
 %% providing data through MPEG-DASH:
 %%
 %% <ul> <li> The media must contain h.264 or h.265 encoded video and,
 %% optionally, AAC or G.711 encoded audio. Specifically, the codec ID of
-%% track 1 should be <code>V_MPEG/ISO/AVC</code> (for h.264) or
-%% V_MPEGH/ISO/HEVC (for H.265). Optionally, the codec ID of track 2 should
-%% be <code>A_AAC</code> (for AAC) or A_MS/ACM (for G.711).
+%% track 1 should be `V_MPEG/ISO/AVC` (for h.264) or V_MPEGH/ISO/HEVC (for
+%% H.265). Optionally, the codec ID of track 2 should be `A_AAC` (for AAC) or
+%% A_MS/ACM (for G.711).
 %%
 %% </li> <li> Data retention must be greater than 0.
 %%
 %% </li> <li> The video track of each fragment must contain codec private
 %% data in the Advanced Video Coding (AVC) for H.264 format and HEVC for
-%% H.265 format. For more information, see <a
-%% href="https://www.iso.org/standard/55980.html">MPEG-4 specification
-%% ISO/IEC 14496-15</a>. For information about adapting stream data to a
-%% given format, see <a
-%% href="http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html">NAL
-%% Adaptation Flags</a>.
+%% H.265 format. For more information, see MPEG-4 specification ISO/IEC
+%% 14496-15. For information about adapting stream data to a given format,
+%% see NAL Adaptation Flags.
 %%
 %% </li> <li> The audio track (if present) of each fragment must contain
-%% codec private data in the AAC format (<a
-%% href="https://www.iso.org/standard/43345.html">AAC specification ISO/IEC
-%% 13818-7</a>) or the <a
-%% href="http://www-mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/WAVE.html">MS
-%% Wave format</a>.
+%% codec private data in the AAC format (AAC specification ISO/IEC 13818-7)
+%% or the MS Wave format.
 %%
 %% </li> </ul> The following procedure shows how to use MPEG-DASH with
 %% Kinesis Video Streams:
 %%
-%% <ol> <li> Get an endpoint using <a
-%% href="http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/API_GetDataEndpoint.html">GetDataEndpoint</a>,
-%% specifying <code>GET_DASH_STREAMING_SESSION_URL</code> for the
-%% <code>APIName</code> parameter.
+%% <ol> <li> Get an endpoint using GetDataEndpoint, specifying
+%% `GET_DASH_STREAMING_SESSION_URL` for the `APIName` parameter.
 %%
-%% </li> <li> Retrieve the MPEG-DASH URL using
-%% <code>GetDASHStreamingSessionURL</code>. Kinesis Video Streams creates an
-%% MPEG-DASH streaming session to be used for accessing content in a stream
-%% using the MPEG-DASH protocol. <code>GetDASHStreamingSessionURL</code>
-%% returns an authenticated URL (that includes an encrypted session token)
-%% for the session's MPEG-DASH <i>manifest</i> (the root resource needed for
-%% streaming with MPEG-DASH).
+%% </li> <li> Retrieve the MPEG-DASH URL using `GetDASHStreamingSessionURL`.
+%% Kinesis Video Streams creates an MPEG-DASH streaming session to be used
+%% for accessing content in a stream using the MPEG-DASH protocol.
+%% `GetDASHStreamingSessionURL` returns an authenticated URL (that includes
+%% an encrypted session token) for the session's MPEG-DASH manifest (the root
+%% resource needed for streaming with MPEG-DASH).
 %%
-%% <note> Don't share or store this token where an unauthorized entity could
-%% access it. The token provides access to the content of the stream.
-%% Safeguard the token with the same measures that you would use with your
-%% AWS credentials.
+%% Don't share or store this token where an unauthorized entity could access
+%% it. The token provides access to the content of the stream. Safeguard the
+%% token with the same measures that you would use with your AWS credentials.
 %%
-%% </note> The media that is made available through the manifest consists
-%% only of the requested stream, time range, and format. No other media data
-%% (such as frames outside the requested window or alternate bitrates) is
-%% made available.
+%% The media that is made available through the manifest consists only of the
+%% requested stream, time range, and format. No other media data (such as
+%% frames outside the requested window or alternate bitrates) is made
+%% available.
 %%
 %% </li> <li> Provide the URL (containing the encrypted session token) for
 %% the MPEG-DASH manifest to a media player that supports the MPEG-DASH
@@ -173,95 +155,78 @@ get_clip(Client, Input0, Options) ->
 %% stream metadata and media data normally. When the media player requests
 %% data, it calls the following actions:
 %%
-%% <ul> <li> <b>GetDASHManifest:</b> Retrieves an MPEG DASH manifest, which
-%% contains the metadata for the media that you want to playback.
+%% <ul> <li> GetDASHManifest: Retrieves an MPEG DASH manifest, which contains
+%% the metadata for the media that you want to playback.
 %%
-%% </li> <li> <b>GetMP4InitFragment:</b> Retrieves the MP4 initialization
-%% fragment. The media player typically loads the initialization fragment
-%% before loading any media fragments. This fragment contains the
-%% "<code>fytp</code>" and "<code>moov</code>" MP4 atoms, and the child atoms
-%% that are needed to initialize the media player decoder.
+%% </li> <li> GetMP4InitFragment: Retrieves the MP4 initialization fragment.
+%% The media player typically loads the initialization fragment before
+%% loading any media fragments. This fragment contains the "`fytp`" and
+%% "`moov`" MP4 atoms, and the child atoms that are needed to initialize the
+%% media player decoder.
 %%
 %% The initialization fragment does not correspond to a fragment in a Kinesis
 %% video stream. It contains only the codec private data for the stream and
 %% respective track, which the media player needs to decode the media frames.
 %%
-%% </li> <li> <b>GetMP4MediaFragment:</b> Retrieves MP4 media fragments.
-%% These fragments contain the "<code>moof</code>" and "<code>mdat</code>"
-%% MP4 atoms and their child atoms, containing the encoded fragment's media
-%% frames and their timestamps.
+%% </li> <li> GetMP4MediaFragment: Retrieves MP4 media fragments. These
+%% fragments contain the "`moof`" and "`mdat`" MP4 atoms and their child
+%% atoms, containing the encoded fragment's media frames and their
+%% timestamps.
 %%
-%% <note> After the first media fragment is made available in a streaming
-%% session, any fragments that don't contain the same codec private data
-%% cause an error to be returned when those different media fragments are
-%% loaded. Therefore, the codec private data should not change between
-%% fragments in a session. This also means that the session fails if the
-%% fragments in a stream change from having only video to having both audio
-%% and video.
+%% After the first media fragment is made available in a streaming session,
+%% any fragments that don't contain the same codec private data cause an
+%% error to be returned when those different media fragments are loaded.
+%% Therefore, the codec private data should not change between fragments in a
+%% session. This also means that the session fails if the fragments in a
+%% stream change from having only video to having both audio and video.
 %%
-%% </note> Data retrieved with this action is billable. See <a
-%% href="https://aws.amazon.com/kinesis/video-streams/pricing/">Pricing</a>
-%% for details.
+%% Data retrieved with this action is billable. See Pricing for details.
 %%
-%% </li> </ul> </li> </ol> <note> The following restrictions apply to
-%% MPEG-DASH sessions:
+%% </li> </ul> </li> </ol> The following restrictions apply to MPEG-DASH
+%% sessions:
 %%
-%% <ul> <li> A streaming session URL should not be shared between players.
-%% The service might throttle a session if multiple media players are sharing
-%% it. For connection limits, see <a
-%% href="http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/limits.html">Kinesis
-%% Video Streams Limits</a>.
+%% A streaming session URL should not be shared between players. The service
+%% might throttle a session if multiple media players are sharing it. For
+%% connection limits, see Kinesis Video Streams Limits.
 %%
-%% </li> <li> A Kinesis video stream can have a maximum of ten active
-%% MPEG-DASH streaming sessions. If a new session is created when the maximum
-%% number of sessions is already active, the oldest (earliest created)
-%% session is closed. The number of active <code>GetMedia</code> connections
-%% on a Kinesis video stream does not count against this limit, and the
-%% number of active MPEG-DASH sessions does not count against the active
-%% <code>GetMedia</code> connection limit.
+%% A Kinesis video stream can have a maximum of ten active MPEG-DASH
+%% streaming sessions. If a new session is created when the maximum number of
+%% sessions is already active, the oldest (earliest created) session is
+%% closed. The number of active `GetMedia` connections on a Kinesis video
+%% stream does not count against this limit, and the number of active
+%% MPEG-DASH sessions does not count against the active `GetMedia` connection
+%% limit.
 %%
-%% <note> The maximum limits for active HLS and MPEG-DASH streaming sessions
-%% are independent of each other.
+%% The maximum limits for active HLS and MPEG-DASH streaming sessions are
+%% independent of each other.
 %%
-%% </note> </li> </ul> </note> You can monitor the amount of data that the
-%% media player consumes by monitoring the
-%% <code>GetMP4MediaFragment.OutgoingBytes</code> Amazon CloudWatch metric.
-%% For information about using CloudWatch to monitor Kinesis Video Streams,
-%% see <a
-%% href="http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/monitoring.html">Monitoring
-%% Kinesis Video Streams</a>. For pricing information, see <a
-%% href="https://aws.amazon.com/kinesis/video-streams/pricing/">Amazon
-%% Kinesis Video Streams Pricing</a> and <a
-%% href="https://aws.amazon.com/pricing/">AWS Pricing</a>. Charges for both
+%% You can monitor the amount of data that the media player consumes by
+%% monitoring the `GetMP4MediaFragment.OutgoingBytes` Amazon CloudWatch
+%% metric. For information about using CloudWatch to monitor Kinesis Video
+%% Streams, see Monitoring Kinesis Video Streams. For pricing information,
+%% see Amazon Kinesis Video Streams Pricing and AWS Pricing. Charges for both
 %% HLS sessions and outgoing AWS data apply.
 %%
-%% For more information about HLS, see <a
-%% href="https://developer.apple.com/streaming/">HTTP Live Streaming</a> on
-%% the <a href="https://developer.apple.com">Apple Developer site</a>.
+%% For more information about HLS, see HTTP Live Streaming on the Apple
+%% Developer site.
 %%
-%% <important> If an error is thrown after invoking a Kinesis Video Streams
-%% archived media API, in addition to the HTTP status code and the response
-%% body, it includes the following pieces of information:
+%% If an error is thrown after invoking a Kinesis Video Streams archived
+%% media API, in addition to the HTTP status code and the response body, it
+%% includes the following pieces of information:
 %%
-%% <ul> <li> <code>x-amz-ErrorType</code> HTTP header – contains a more
-%% specific error type in addition to what the HTTP status code provides.
+%% `x-amz-ErrorType` HTTP header – contains a more specific error type in
+%% addition to what the HTTP status code provides.
 %%
-%% </li> <li> <code>x-amz-RequestId</code> HTTP header – if you want to
-%% report an issue to AWS, the support team can better diagnose the problem
-%% if given the Request Id.
+%% `x-amz-RequestId` HTTP header – if you want to report an issue to AWS, the
+%% support team can better diagnose the problem if given the Request Id.
 %%
-%% </li> </ul> Both the HTTP status code and the ErrorType header can be
-%% utilized to make programmatic decisions about whether errors are
-%% retry-able and under what conditions, as well as provide information on
-%% what actions the client programmer might need to take in order to
-%% successfully try again.
+%% Both the HTTP status code and the ErrorType header can be utilized to make
+%% programmatic decisions about whether errors are retry-able and under what
+%% conditions, as well as provide information on what actions the client
+%% programmer might need to take in order to successfully try again.
 %%
-%% For more information, see the <b>Errors</b> section at the bottom of this
-%% topic, as well as <a
-%% href="https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/CommonErrors.html">Common
-%% Errors</a>.
-%%
-%% </important>
+%% For more information, see the Errors section at the bottom of this topic,
+%% as well as Common Errors.
 get_d_a_s_h_streaming_session_u_r_l(Client, Input) ->
     get_d_a_s_h_streaming_session_u_r_l(Client, Input, []).
 get_d_a_s_h_streaming_session_u_r_l(Client, Input0, Options) ->
@@ -277,69 +242,58 @@ get_d_a_s_h_streaming_session_u_r_l(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves an HTTP Live Streaming (HLS) URL for the stream. You can
-%% then open the URL in a browser or media player to view the stream
+%% @doc Retrieves an HTTP Live Streaming (HLS) URL for the stream.
+%%
+%% You can then open the URL in a browser or media player to view the stream
 %% contents.
 %%
-%% Both the <code>StreamName</code> and the <code>StreamARN</code> parameters
-%% are optional, but you must specify either the <code>StreamName</code> or
-%% the <code>StreamARN</code> when invoking this API operation.
+%% Both the `StreamName` and the `StreamARN` parameters are optional, but you
+%% must specify either the `StreamName` or the `StreamARN` when invoking this
+%% API operation.
 %%
 %% An Amazon Kinesis video stream has the following requirements for
 %% providing data through HLS:
 %%
 %% <ul> <li> The media must contain h.264 or h.265 encoded video and,
 %% optionally, AAC encoded audio. Specifically, the codec ID of track 1
-%% should be <code>V_MPEG/ISO/AVC</code> (for h.264) or
-%% <code>V_MPEG/ISO/HEVC</code> (for h.265). Optionally, the codec ID of
-%% track 2 should be <code>A_AAC</code>.
+%% should be `V_MPEG/ISO/AVC` (for h.264) or `V_MPEG/ISO/HEVC` (for h.265).
+%% Optionally, the codec ID of track 2 should be `A_AAC`.
 %%
 %% </li> <li> Data retention must be greater than 0.
 %%
 %% </li> <li> The video track of each fragment must contain codec private
 %% data in the Advanced Video Coding (AVC) for H.264 format or HEVC for H.265
-%% format (<a href="https://www.iso.org/standard/55980.html">MPEG-4
-%% specification ISO/IEC 14496-15</a>). For information about adapting stream
-%% data to a given format, see <a
-%% href="http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html">NAL
-%% Adaptation Flags</a>.
+%% format (MPEG-4 specification ISO/IEC 14496-15). For information about
+%% adapting stream data to a given format, see NAL Adaptation Flags.
 %%
 %% </li> <li> The audio track (if present) of each fragment must contain
-%% codec private data in the AAC format (<a
-%% href="https://www.iso.org/standard/43345.html">AAC specification ISO/IEC
-%% 13818-7</a>).
+%% codec private data in the AAC format (AAC specification ISO/IEC 13818-7).
 %%
 %% </li> </ul> Kinesis Video Streams HLS sessions contain fragments in the
 %% fragmented MPEG-4 form (also called fMP4 or CMAF) or the MPEG-2 form (also
 %% called TS chunks, which the HLS specification also supports). For more
-%% information about HLS fragment types, see the <a
-%% href="https://tools.ietf.org/html/draft-pantos-http-live-streaming-23">HLS
-%% specification</a>.
+%% information about HLS fragment types, see the HLS specification.
 %%
 %% The following procedure shows how to use HLS with Kinesis Video Streams:
 %%
-%% <ol> <li> Get an endpoint using <a
-%% href="http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/API_GetDataEndpoint.html">GetDataEndpoint</a>,
-%% specifying <code>GET_HLS_STREAMING_SESSION_URL</code> for the
-%% <code>APIName</code> parameter.
+%% <ol> <li> Get an endpoint using GetDataEndpoint, specifying
+%% `GET_HLS_STREAMING_SESSION_URL` for the `APIName` parameter.
 %%
-%% </li> <li> Retrieve the HLS URL using
-%% <code>GetHLSStreamingSessionURL</code>. Kinesis Video Streams creates an
-%% HLS streaming session to be used for accessing content in a stream using
-%% the HLS protocol. <code>GetHLSStreamingSessionURL</code> returns an
-%% authenticated URL (that includes an encrypted session token) for the
-%% session's HLS <i>master playlist</i> (the root resource needed for
+%% </li> <li> Retrieve the HLS URL using `GetHLSStreamingSessionURL`. Kinesis
+%% Video Streams creates an HLS streaming session to be used for accessing
+%% content in a stream using the HLS protocol. `GetHLSStreamingSessionURL`
+%% returns an authenticated URL (that includes an encrypted session token)
+%% for the session's HLS master playlist (the root resource needed for
 %% streaming with HLS).
 %%
-%% <note> Don't share or store this token where an unauthorized entity could
-%% access it. The token provides access to the content of the stream.
-%% Safeguard the token with the same measures that you would use with your
-%% AWS credentials.
+%% Don't share or store this token where an unauthorized entity could access
+%% it. The token provides access to the content of the stream. Safeguard the
+%% token with the same measures that you would use with your AWS credentials.
 %%
-%% </note> The media that is made available through the playlist consists
-%% only of the requested stream, time range, and format. No other media data
-%% (such as frames outside the requested window or alternate bitrates) is
-%% made available.
+%% The media that is made available through the playlist consists only of the
+%% requested stream, time range, and format. No other media data (such as
+%% frames outside the requested window or alternate bitrates) is made
+%% available.
 %%
 %% </li> <li> Provide the URL (containing the encrypted session token) for
 %% the HLS master playlist to a media player that supports the HLS protocol.
@@ -354,123 +308,99 @@ get_d_a_s_h_streaming_session_u_r_l(Client, Input0, Options) ->
 %% stream metadata and media data normally. When the media player requests
 %% data, it calls the following actions:
 %%
-%% <ul> <li> <b>GetHLSMasterPlaylist:</b> Retrieves an HLS master playlist,
-%% which contains a URL for the <code>GetHLSMediaPlaylist</code> action for
-%% each track, and additional metadata for the media player, including
-%% estimated bitrate and resolution.
+%% <ul> <li> GetHLSMasterPlaylist: Retrieves an HLS master playlist, which
+%% contains a URL for the `GetHLSMediaPlaylist` action for each track, and
+%% additional metadata for the media player, including estimated bitrate and
+%% resolution.
 %%
-%% </li> <li> <b>GetHLSMediaPlaylist:</b> Retrieves an HLS media playlist,
-%% which contains a URL to access the MP4 initialization fragment with the
-%% <code>GetMP4InitFragment</code> action, and URLs to access the MP4 media
-%% fragments with the <code>GetMP4MediaFragment</code> actions. The HLS media
-%% playlist also contains metadata about the stream that the player needs to
-%% play it, such as whether the <code>PlaybackMode</code> is
-%% <code>LIVE</code> or <code>ON_DEMAND</code>. The HLS media playlist is
-%% typically static for sessions with a <code>PlaybackType</code> of
-%% <code>ON_DEMAND</code>. The HLS media playlist is continually updated with
-%% new fragments for sessions with a <code>PlaybackType</code> of
-%% <code>LIVE</code>. There is a distinct HLS media playlist for the video
-%% track and the audio track (if applicable) that contains MP4 media URLs for
-%% the specific track.
+%% </li> <li> GetHLSMediaPlaylist: Retrieves an HLS media playlist, which
+%% contains a URL to access the MP4 initialization fragment with the
+%% `GetMP4InitFragment` action, and URLs to access the MP4 media fragments
+%% with the `GetMP4MediaFragment` actions. The HLS media playlist also
+%% contains metadata about the stream that the player needs to play it, such
+%% as whether the `PlaybackMode` is `LIVE` or `ON_DEMAND`. The HLS media
+%% playlist is typically static for sessions with a `PlaybackType` of
+%% `ON_DEMAND`. The HLS media playlist is continually updated with new
+%% fragments for sessions with a `PlaybackType` of `LIVE`. There is a
+%% distinct HLS media playlist for the video track and the audio track (if
+%% applicable) that contains MP4 media URLs for the specific track.
 %%
-%% </li> <li> <b>GetMP4InitFragment:</b> Retrieves the MP4 initialization
-%% fragment. The media player typically loads the initialization fragment
-%% before loading any media fragments. This fragment contains the
-%% "<code>fytp</code>" and "<code>moov</code>" MP4 atoms, and the child atoms
-%% that are needed to initialize the media player decoder.
+%% </li> <li> GetMP4InitFragment: Retrieves the MP4 initialization fragment.
+%% The media player typically loads the initialization fragment before
+%% loading any media fragments. This fragment contains the "`fytp`" and
+%% "`moov`" MP4 atoms, and the child atoms that are needed to initialize the
+%% media player decoder.
 %%
 %% The initialization fragment does not correspond to a fragment in a Kinesis
 %% video stream. It contains only the codec private data for the stream and
 %% respective track, which the media player needs to decode the media frames.
 %%
-%% </li> <li> <b>GetMP4MediaFragment:</b> Retrieves MP4 media fragments.
-%% These fragments contain the "<code>moof</code>" and "<code>mdat</code>"
-%% MP4 atoms and their child atoms, containing the encoded fragment's media
-%% frames and their timestamps.
+%% </li> <li> GetMP4MediaFragment: Retrieves MP4 media fragments. These
+%% fragments contain the "`moof`" and "`mdat`" MP4 atoms and their child
+%% atoms, containing the encoded fragment's media frames and their
+%% timestamps.
 %%
-%% <note> After the first media fragment is made available in a streaming
-%% session, any fragments that don't contain the same codec private data
-%% cause an error to be returned when those different media fragments are
-%% loaded. Therefore, the codec private data should not change between
-%% fragments in a session. This also means that the session fails if the
-%% fragments in a stream change from having only video to having both audio
-%% and video.
+%% After the first media fragment is made available in a streaming session,
+%% any fragments that don't contain the same codec private data cause an
+%% error to be returned when those different media fragments are loaded.
+%% Therefore, the codec private data should not change between fragments in a
+%% session. This also means that the session fails if the fragments in a
+%% stream change from having only video to having both audio and video.
 %%
-%% </note> Data retrieved with this action is billable. See <a
-%% href="https://aws.amazon.com/kinesis/video-streams/pricing/">Pricing</a>
-%% for details.
+%% Data retrieved with this action is billable. See Pricing for details.
 %%
-%% </li> <li> <b>GetTSFragment:</b> Retrieves MPEG TS fragments containing
-%% both initialization and media data for all tracks in the stream.
+%% </li> <li> GetTSFragment: Retrieves MPEG TS fragments containing both
+%% initialization and media data for all tracks in the stream.
 %%
-%% <note> If the <code>ContainerFormat</code> is <code>MPEG_TS</code>, this
-%% API is used instead of <code>GetMP4InitFragment</code> and
-%% <code>GetMP4MediaFragment</code> to retrieve stream media.
+%% If the `ContainerFormat` is `MPEG_TS`, this API is used instead of
+%% `GetMP4InitFragment` and `GetMP4MediaFragment` to retrieve stream media.
 %%
-%% </note> Data retrieved with this action is billable. For more information,
-%% see <a
-%% href="https://aws.amazon.com/kinesis/video-streams/pricing/">Kinesis Video
-%% Streams pricing</a>.
+%% Data retrieved with this action is billable. For more information, see
+%% Kinesis Video Streams pricing.
 %%
-%% </li> </ul> </li> </ol> <note> The following restrictions apply to HLS
-%% sessions:
+%% </li> </ul> </li> </ol> The following restrictions apply to HLS sessions:
 %%
-%% <ul> <li> A streaming session URL should not be shared between players.
-%% The service might throttle a session if multiple media players are sharing
-%% it. For connection limits, see <a
-%% href="http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/limits.html">Kinesis
-%% Video Streams Limits</a>.
+%% A streaming session URL should not be shared between players. The service
+%% might throttle a session if multiple media players are sharing it. For
+%% connection limits, see Kinesis Video Streams Limits.
 %%
-%% </li> <li> A Kinesis video stream can have a maximum of ten active HLS
-%% streaming sessions. If a new session is created when the maximum number of
-%% sessions is already active, the oldest (earliest created) session is
-%% closed. The number of active <code>GetMedia</code> connections on a
-%% Kinesis video stream does not count against this limit, and the number of
-%% active HLS sessions does not count against the active
-%% <code>GetMedia</code> connection limit.
+%% A Kinesis video stream can have a maximum of ten active HLS streaming
+%% sessions. If a new session is created when the maximum number of sessions
+%% is already active, the oldest (earliest created) session is closed. The
+%% number of active `GetMedia` connections on a Kinesis video stream does not
+%% count against this limit, and the number of active HLS sessions does not
+%% count against the active `GetMedia` connection limit.
 %%
-%% <note> The maximum limits for active HLS and MPEG-DASH streaming sessions
-%% are independent of each other.
+%% The maximum limits for active HLS and MPEG-DASH streaming sessions are
+%% independent of each other.
 %%
-%% </note> </li> </ul> </note> You can monitor the amount of data that the
-%% media player consumes by monitoring the
-%% <code>GetMP4MediaFragment.OutgoingBytes</code> Amazon CloudWatch metric.
-%% For information about using CloudWatch to monitor Kinesis Video Streams,
-%% see <a
-%% href="http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/monitoring.html">Monitoring
-%% Kinesis Video Streams</a>. For pricing information, see <a
-%% href="https://aws.amazon.com/kinesis/video-streams/pricing/">Amazon
-%% Kinesis Video Streams Pricing</a> and <a
-%% href="https://aws.amazon.com/pricing/">AWS Pricing</a>. Charges for both
+%% You can monitor the amount of data that the media player consumes by
+%% monitoring the `GetMP4MediaFragment.OutgoingBytes` Amazon CloudWatch
+%% metric. For information about using CloudWatch to monitor Kinesis Video
+%% Streams, see Monitoring Kinesis Video Streams. For pricing information,
+%% see Amazon Kinesis Video Streams Pricing and AWS Pricing. Charges for both
 %% HLS sessions and outgoing AWS data apply.
 %%
-%% For more information about HLS, see <a
-%% href="https://developer.apple.com/streaming/">HTTP Live Streaming</a> on
-%% the <a href="https://developer.apple.com">Apple Developer site</a>.
+%% For more information about HLS, see HTTP Live Streaming on the Apple
+%% Developer site.
 %%
-%% <important> If an error is thrown after invoking a Kinesis Video Streams
-%% archived media API, in addition to the HTTP status code and the response
-%% body, it includes the following pieces of information:
+%% If an error is thrown after invoking a Kinesis Video Streams archived
+%% media API, in addition to the HTTP status code and the response body, it
+%% includes the following pieces of information:
 %%
-%% <ul> <li> <code>x-amz-ErrorType</code> HTTP header – contains a more
-%% specific error type in addition to what the HTTP status code provides.
+%% `x-amz-ErrorType` HTTP header – contains a more specific error type in
+%% addition to what the HTTP status code provides.
 %%
-%% </li> <li> <code>x-amz-RequestId</code> HTTP header – if you want to
-%% report an issue to AWS, the support team can better diagnose the problem
-%% if given the Request Id.
+%% `x-amz-RequestId` HTTP header – if you want to report an issue to AWS, the
+%% support team can better diagnose the problem if given the Request Id.
 %%
-%% </li> </ul> Both the HTTP status code and the ErrorType header can be
-%% utilized to make programmatic decisions about whether errors are
-%% retry-able and under what conditions, as well as provide information on
-%% what actions the client programmer might need to take in order to
-%% successfully try again.
+%% Both the HTTP status code and the ErrorType header can be utilized to make
+%% programmatic decisions about whether errors are retry-able and under what
+%% conditions, as well as provide information on what actions the client
+%% programmer might need to take in order to successfully try again.
 %%
-%% For more information, see the <b>Errors</b> section at the bottom of this
-%% topic, as well as <a
-%% href="https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/CommonErrors.html">Common
-%% Errors</a>.
-%%
-%% </important>
+%% For more information, see the Errors section at the bottom of this topic,
+%% as well as Common Errors.
 get_h_l_s_streaming_session_u_r_l(Client, Input) ->
     get_h_l_s_streaming_session_u_r_l(Client, Input, []).
 get_h_l_s_streaming_session_u_r_l(Client, Input0, Options) ->
@@ -489,45 +419,36 @@ get_h_l_s_streaming_session_u_r_l(Client, Input0, Options) ->
 %% @doc Gets media for a list of fragments (specified by fragment number)
 %% from the archived data in an Amazon Kinesis video stream.
 %%
-%% <note> You must first call the <code>GetDataEndpoint</code> API to get an
-%% endpoint. Then send the <code>GetMediaForFragmentList</code> requests to
-%% this endpoint using the <a
-%% href="https://docs.aws.amazon.com/cli/latest/reference/">--endpoint-url
-%% parameter</a>.
+%% You must first call the `GetDataEndpoint` API to get an endpoint. Then
+%% send the `GetMediaForFragmentList` requests to this endpoint using the
+%% --endpoint-url parameter.
 %%
-%% </note> The following limits apply when using the
-%% <code>GetMediaForFragmentList</code> API:
+%% The following limits apply when using the `GetMediaForFragmentList` API:
 %%
-%% <ul> <li> A client can call <code>GetMediaForFragmentList</code> up to
-%% five times per second per stream.
+%% <ul> <li> A client can call `GetMediaForFragmentList` up to five times per
+%% second per stream.
 %%
 %% </li> <li> Kinesis Video Streams sends media data at a rate of up to 25
 %% megabytes per second (or 200 megabits per second) during a
-%% <code>GetMediaForFragmentList</code> session.
+%% `GetMediaForFragmentList` session.
 %%
-%% </li> </ul> <important> If an error is thrown after invoking a Kinesis
-%% Video Streams archived media API, in addition to the HTTP status code and
-%% the response body, it includes the following pieces of information:
+%% </li> </ul> If an error is thrown after invoking a Kinesis Video Streams
+%% archived media API, in addition to the HTTP status code and the response
+%% body, it includes the following pieces of information:
 %%
-%% <ul> <li> <code>x-amz-ErrorType</code> HTTP header – contains a more
-%% specific error type in addition to what the HTTP status code provides.
+%% `x-amz-ErrorType` HTTP header – contains a more specific error type in
+%% addition to what the HTTP status code provides.
 %%
-%% </li> <li> <code>x-amz-RequestId</code> HTTP header – if you want to
-%% report an issue to AWS, the support team can better diagnose the problem
-%% if given the Request Id.
+%% `x-amz-RequestId` HTTP header – if you want to report an issue to AWS, the
+%% support team can better diagnose the problem if given the Request Id.
 %%
-%% </li> </ul> Both the HTTP status code and the ErrorType header can be
-%% utilized to make programmatic decisions about whether errors are
-%% retry-able and under what conditions, as well as provide information on
-%% what actions the client programmer might need to take in order to
-%% successfully try again.
+%% Both the HTTP status code and the ErrorType header can be utilized to make
+%% programmatic decisions about whether errors are retry-able and under what
+%% conditions, as well as provide information on what actions the client
+%% programmer might need to take in order to successfully try again.
 %%
-%% For more information, see the <b>Errors</b> section at the bottom of this
-%% topic, as well as <a
-%% href="https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/CommonErrors.html">Common
-%% Errors</a>.
-%%
-%% </important>
+%% For more information, see the Errors section at the bottom of this topic,
+%% as well as Common Errors.
 get_media_for_fragment_list(Client, Input) ->
     get_media_for_fragment_list(Client, Input, []).
 get_media_for_fragment_list(Client, Input0, Options) ->
@@ -559,44 +480,36 @@ get_media_for_fragment_list(Client, Input0, Options) ->
         Result
     end.
 
-%% @doc Returns a list of <a>Fragment</a> objects from the specified stream
-%% and timestamp range within the archived data.
+%% @doc Returns a list of `Fragment` objects from the specified stream and
+%% timestamp range within the archived data.
 %%
 %% Listing fragments is eventually consistent. This means that even if the
 %% producer receives an acknowledgment that a fragment is persisted, the
 %% result might not be returned immediately from a request to
-%% <code>ListFragments</code>. However, results are typically available in
-%% less than one second.
+%% `ListFragments`. However, results are typically available in less than one
+%% second.
 %%
-%% <note> You must first call the <code>GetDataEndpoint</code> API to get an
-%% endpoint. Then send the <code>ListFragments</code> requests to this
-%% endpoint using the <a
-%% href="https://docs.aws.amazon.com/cli/latest/reference/">--endpoint-url
-%% parameter</a>.
+%% You must first call the `GetDataEndpoint` API to get an endpoint. Then
+%% send the `ListFragments` requests to this endpoint using the
+%% --endpoint-url parameter.
 %%
-%% </note> <important> If an error is thrown after invoking a Kinesis Video
-%% Streams archived media API, in addition to the HTTP status code and the
-%% response body, it includes the following pieces of information:
+%% If an error is thrown after invoking a Kinesis Video Streams archived
+%% media API, in addition to the HTTP status code and the response body, it
+%% includes the following pieces of information:
 %%
-%% <ul> <li> <code>x-amz-ErrorType</code> HTTP header – contains a more
-%% specific error type in addition to what the HTTP status code provides.
+%% `x-amz-ErrorType` HTTP header – contains a more specific error type in
+%% addition to what the HTTP status code provides.
 %%
-%% </li> <li> <code>x-amz-RequestId</code> HTTP header – if you want to
-%% report an issue to AWS, the support team can better diagnose the problem
-%% if given the Request Id.
+%% `x-amz-RequestId` HTTP header – if you want to report an issue to AWS, the
+%% support team can better diagnose the problem if given the Request Id.
 %%
-%% </li> </ul> Both the HTTP status code and the ErrorType header can be
-%% utilized to make programmatic decisions about whether errors are
-%% retry-able and under what conditions, as well as provide information on
-%% what actions the client programmer might need to take in order to
-%% successfully try again.
+%% Both the HTTP status code and the ErrorType header can be utilized to make
+%% programmatic decisions about whether errors are retry-able and under what
+%% conditions, as well as provide information on what actions the client
+%% programmer might need to take in order to successfully try again.
 %%
-%% For more information, see the <b>Errors</b> section at the bottom of this
-%% topic, as well as <a
-%% href="https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/CommonErrors.html">Common
-%% Errors</a>.
-%%
-%% </important>
+%% For more information, see the Errors section at the bottom of this topic,
+%% as well as Common Errors.
 list_fragments(Client, Input) ->
     list_fragments(Client, Input, []).
 list_fragments(Client, Input0, Options) ->
@@ -658,6 +571,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

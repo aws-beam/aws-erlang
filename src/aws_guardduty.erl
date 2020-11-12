@@ -3,13 +3,15 @@
 
 %% @doc Amazon GuardDuty is a continuous security monitoring service that
 %% analyzes and processes the following data sources: VPC Flow Logs, AWS
-%% CloudTrail event logs, and DNS logs. It uses threat intelligence feeds
-%% (such as lists of malicious IPs and domains) and machine learning to
-%% identify unexpected, potentially unauthorized, and malicious activity
-%% within your AWS environment. This can include issues like escalations of
-%% privileges, uses of exposed credentials, or communication with malicious
-%% IPs, URLs, or domains. For example, GuardDuty can detect compromised EC2
-%% instances that serve malware or mine bitcoin.
+%% CloudTrail event logs, and DNS logs.
+%%
+%% It uses threat intelligence feeds (such as lists of malicious IPs and
+%% domains) and machine learning to identify unexpected, potentially
+%% unauthorized, and malicious activity within your AWS environment. This can
+%% include issues like escalations of privileges, uses of exposed
+%% credentials, or communication with malicious IPs, URLs, or domains. For
+%% example, GuardDuty can detect compromised EC2 instances that serve malware
+%% or mine bitcoin.
 %%
 %% GuardDuty also monitors AWS account access behavior for signs of
 %% compromise. Some examples of this are unauthorized infrastructure
@@ -19,9 +21,8 @@
 %%
 %% GuardDuty informs you of the status of your AWS environment by producing
 %% security findings that you can view in the GuardDuty console or through
-%% Amazon CloudWatch events. For more information, see the <i> <a
-%% href="https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html">Amazon
-%% GuardDuty User Guide</a> </i>.
+%% Amazon CloudWatch events. For more information, see the Amazon GuardDuty
+%% User Guide .
 -module(aws_guardduty).
 
 -export([accept_invitation/3,
@@ -166,10 +167,8 @@ accept_invitation(Client, DetectorId, Input0, Options) ->
 %% @doc Archives GuardDuty findings that are specified by the list of finding
 %% IDs.
 %%
-%% <note> Only the master account can archive findings. Member accounts don't
-%% have permission to archive findings from their accounts.
-%%
-%% </note>
+%% Only the master account can archive findings. Member accounts don't have
+%% permission to archive findings from their accounts.
 archive_findings(Client, DetectorId, Input) ->
     archive_findings(Client, DetectorId, Input, []).
 archive_findings(Client, DetectorId, Input0, Options) ->
@@ -185,11 +184,12 @@ archive_findings(Client, DetectorId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a single Amazon GuardDuty detector. A detector is a resource
-%% that represents the GuardDuty service. To start using GuardDuty, you must
-%% create a detector in each Region where you enable the service. You can
-%% have only one detector per account per Region. All data sources are
-%% enabled in a new detector by default.
+%% @doc Creates a single Amazon GuardDuty detector.
+%%
+%% A detector is a resource that represents the GuardDuty service. To start
+%% using GuardDuty, you must create a detector in each Region where you
+%% enable the service. You can have only one detector per account per Region.
+%% All data sources are enabled in a new detector by default.
 create_detector(Client, Input) ->
     create_detector(Client, Input, []).
 create_detector(Client, Input0, Options) ->
@@ -222,10 +222,12 @@ create_filter(Client, DetectorId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new IPSet, which is called a trusted IP list in the console
-%% user interface. An IPSet is a list of IP addresses that are trusted for
-%% secure communication with AWS infrastructure and applications. GuardDuty
-%% doesn't generate findings for IP addresses that are included in IPSets.
-%% Only users from the master account can use this operation.
+%% user interface.
+%%
+%% An IPSet is a list of IP addresses that are trusted for secure
+%% communication with AWS infrastructure and applications. GuardDuty doesn't
+%% generate findings for IP addresses that are included in IPSets. Only users
+%% from the master account can use this operation.
 create_i_p_set(Client, DetectorId, Input) ->
     create_i_p_set(Client, DetectorId, Input, []).
 create_i_p_set(Client, DetectorId, Input0, Options) ->
@@ -242,19 +244,19 @@ create_i_p_set(Client, DetectorId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates member accounts of the current AWS account by specifying a
-%% list of AWS account IDs. This step is a prerequisite for managing the
-%% associated member accounts either by invitation or through an
-%% organization.
+%% list of AWS account IDs.
 %%
-%% When using <code>Create Members</code> as an organizations delegated
-%% administrator this action will enable GuardDuty in the added member
-%% accounts, with the exception of the organization master account, which
-%% must enable GuardDuty prior to being added as a member.
+%% This step is a prerequisite for managing the associated member accounts
+%% either by invitation or through an organization.
+%%
+%% When using `Create Members` as an organizations delegated administrator
+%% this action will enable GuardDuty in the added member accounts, with the
+%% exception of the organization master account, which must enable GuardDuty
+%% prior to being added as a member.
 %%
 %% If you are adding accounts by invitation use this action after GuardDuty
-%% has been enabled in potential member accounts and before using <a
-%% href="https://docs.aws.amazon.com/guardduty/latest/APIReference/API_InviteMembers.html">
-%% <code>Invite Members</code> </a>.
+%% has been enabled in potential member accounts and before using `Invite
+%% Members` .
 create_members(Client, DetectorId, Input) ->
     create_members(Client, DetectorId, Input, []).
 create_members(Client, DetectorId, Input0, Options) ->
@@ -270,8 +272,10 @@ create_members(Client, DetectorId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a publishing destination to export findings to. The resource
-%% to export findings to must exist before you use this operation.
+%% @doc Creates a publishing destination to export findings to.
+%%
+%% The resource to export findings to must exist before you use this
+%% operation.
 create_publishing_destination(Client, DetectorId, Input) ->
     create_publishing_destination(Client, DetectorId, Input, []).
 create_publishing_destination(Client, DetectorId, Input0, Options) ->
@@ -288,8 +292,10 @@ create_publishing_destination(Client, DetectorId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Generates example findings of types specified by the list of finding
-%% types. If 'NULL' is specified for <code>findingTypes</code>, the API
-%% generates example findings of all supported finding types.
+%% types.
+%%
+%% If 'NULL' is specified for `findingTypes`, the API generates example
+%% findings of all supported finding types.
 create_sample_findings(Client, DetectorId, Input) ->
     create_sample_findings(Client, DetectorId, Input, []).
 create_sample_findings(Client, DetectorId, Input0, Options) ->
@@ -305,9 +311,11 @@ create_sample_findings(Client, DetectorId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new ThreatIntelSet. ThreatIntelSets consist of known
-%% malicious IP addresses. GuardDuty generates findings based on
-%% ThreatIntelSets. Only users of the master account can use this operation.
+%% @doc Creates a new ThreatIntelSet.
+%%
+%% ThreatIntelSets consist of known malicious IP addresses. GuardDuty
+%% generates findings based on ThreatIntelSets. Only users of the master
+%% account can use this operation.
 create_threat_intel_set(Client, DetectorId, Input) ->
     create_threat_intel_set(Client, DetectorId, Input, []).
 create_threat_intel_set(Client, DetectorId, Input0, Options) ->
@@ -373,8 +381,9 @@ delete_filter(Client, DetectorId, FilterName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the IPSet specified by the <code>ipSetId</code>. IPSets are
-%% called trusted IP lists in the console user interface.
+%% @doc Deletes the IPSet specified by the `ipSetId`.
+%%
+%% IPSets are called trusted IP lists in the console user interface.
 delete_i_p_set(Client, DetectorId, IpSetId, Input) ->
     delete_i_p_set(Client, DetectorId, IpSetId, Input, []).
 delete_i_p_set(Client, DetectorId, IpSetId, Input0, Options) ->
@@ -424,8 +433,7 @@ delete_members(Client, DetectorId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the publishing definition with the specified
-%% <code>destinationId</code>.
+%% @doc Deletes the publishing definition with the specified `destinationId`.
 delete_publishing_destination(Client, DestinationId, DetectorId, Input) ->
     delete_publishing_destination(Client, DestinationId, DetectorId, Input, []).
 delete_publishing_destination(Client, DestinationId, DetectorId, Input0, Options) ->
@@ -474,7 +482,7 @@ describe_organization_configuration(Client, DetectorId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about the publishing destination specified by the
-%% provided <code>destinationId</code>.
+%% provided `destinationId`.
 describe_publishing_destination(Client, DestinationId, DetectorId)
   when is_map(Client) ->
     describe_publishing_destination(Client, DestinationId, DetectorId, []).
@@ -620,7 +628,7 @@ get_findings_statistics(Client, DetectorId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves the IPSet specified by the <code>ipSetId</code>.
+%% @doc Retrieves the IPSet specified by the `ipSetId`.
 get_i_p_set(Client, DetectorId, IpSetId)
   when is_map(Client) ->
     get_i_p_set(Client, DetectorId, IpSetId, []).
@@ -719,12 +727,13 @@ get_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists Amazon GuardDuty usage statistics over the last 30 days for the
-%% specified detector ID. For newly enabled detectors or data sources the
-%% cost returned will include only the usage so far under 30 days, this may
-%% differ from the cost metrics in the console, which projects usage over 30
-%% days to provide a monthly cost estimate. For more information see <a
-%% href="https://docs.aws.amazon.com/guardduty/latest/ug/monitoring_costs.html#usage-calculations">Understanding
-%% How Usage Costs are Calculated</a>.
+%% specified detector ID.
+%%
+%% For newly enabled detectors or data sources the cost returned will include
+%% only the usage so far under 30 days, this may differ from the cost metrics
+%% in the console, which projects usage over 30 days to provide a monthly
+%% cost estimate. For more information see Understanding How Usage Costs are
+%% Calculated.
 get_usage_statistics(Client, DetectorId, Input) ->
     get_usage_statistics(Client, DetectorId, Input, []).
 get_usage_statistics(Client, DetectorId, Input0, Options) ->
@@ -817,8 +826,10 @@ list_findings(Client, DetectorId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the IPSets of the GuardDuty service specified by the detector
-%% ID. If you use this operation from a member account, the IPSets returned
-%% are the IPSets from the associated master account.
+%% ID.
+%%
+%% If you use this operation from a member account, the IPSets returned are
+%% the IPSets from the associated master account.
 list_i_p_sets(Client, DetectorId, MaxResults, NextToken)
   when is_map(Client) ->
     list_i_p_sets(Client, DetectorId, MaxResults, NextToken, []).
@@ -902,7 +913,7 @@ list_organization_admin_accounts(Client, MaxResults, NextToken, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of publishing destinations associated with the
-%% specified <code>dectectorId</code>.
+%% specified `dectectorId`.
 list_publishing_destinations(Client, DetectorId, MaxResults, NextToken)
   when is_map(Client) ->
     list_publishing_destinations(Client, DetectorId, MaxResults, NextToken, []).
@@ -922,10 +933,11 @@ list_publishing_destinations(Client, DetectorId, MaxResults, NextToken, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists tags for a resource. Tagging is currently supported for
-%% detectors, finding filters, IP sets, and threat intel sets, with a limit
-%% of 50 tags per resource. When invoked, this operation returns all assigned
-%% tags for a given resource.
+%% @doc Lists tags for a resource.
+%%
+%% Tagging is currently supported for detectors, finding filters, IP sets,
+%% and threat intel sets, with a limit of 50 tags per resource. When invoked,
+%% this operation returns all assigned tags for a given resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, []).
@@ -941,8 +953,10 @@ list_tags_for_resource(Client, ResourceArn, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the ThreatIntelSets of the GuardDuty service specified by the
-%% detector ID. If you use this operation from a member account, the
-%% ThreatIntelSets associated with the master account are returned.
+%% detector ID.
+%%
+%% If you use this operation from a member account, the ThreatIntelSets
+%% associated with the master account are returned.
 list_threat_intel_sets(Client, DetectorId, MaxResults, NextToken)
   when is_map(Client) ->
     list_threat_intel_sets(Client, DetectorId, MaxResults, NextToken, []).
@@ -962,9 +976,10 @@ list_threat_intel_sets(Client, DetectorId, MaxResults, NextToken, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Turns on GuardDuty monitoring of the specified member accounts. Use
-%% this operation to restart monitoring of accounts that you stopped
-%% monitoring with the <code>StopMonitoringMembers</code> operation.
+%% @doc Turns on GuardDuty monitoring of the specified member accounts.
+%%
+%% Use this operation to restart monitoring of accounts that you stopped
+%% monitoring with the `StopMonitoringMembers` operation.
 start_monitoring_members(Client, DetectorId, Input) ->
     start_monitoring_members(Client, DetectorId, Input, []).
 start_monitoring_members(Client, DetectorId, Input0, Options) ->
@@ -980,9 +995,10 @@ start_monitoring_members(Client, DetectorId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Stops GuardDuty monitoring for the specified member accounts. Use the
-%% <code>StartMonitoringMembers</code> operation to restart monitoring for
-%% those accounts.
+%% @doc Stops GuardDuty monitoring for the specified member accounts.
+%%
+%% Use the `StartMonitoringMembers` operation to restart monitoring for those
+%% accounts.
 stop_monitoring_members(Client, DetectorId, Input) ->
     stop_monitoring_members(Client, DetectorId, Input, []).
 stop_monitoring_members(Client, DetectorId, Input0, Options) ->
@@ -1014,8 +1030,7 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Unarchives GuardDuty findings specified by the
-%% <code>findingIds</code>.
+%% @doc Unarchives GuardDuty findings specified by the `findingIds`.
 unarchive_findings(Client, DetectorId, Input) ->
     unarchive_findings(Client, DetectorId, Input, []).
 unarchive_findings(Client, DetectorId, Input0, Options) ->
@@ -1145,7 +1160,7 @@ update_organization_configuration(Client, DetectorId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates information about the publishing destination specified by the
-%% <code>destinationId</code>.
+%% `destinationId`.
 update_publishing_destination(Client, DestinationId, DetectorId, Input) ->
     update_publishing_destination(Client, DestinationId, DetectorId, Input, []).
 update_publishing_destination(Client, DestinationId, DetectorId, Input0, Options) ->
@@ -1223,6 +1238,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

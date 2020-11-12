@@ -2,20 +2,23 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc This section provides documentation for the Amazon CodeGuru Reviewer
-%% API operations. CodeGuru Reviewer is a service that uses program analysis
-%% and machine learning to detect potential defects that are difficult for
-%% developers to find and recommends fixes in your Java code.
+%% API operations.
+%%
+%% CodeGuru Reviewer is a service that uses program analysis and machine
+%% learning to detect potential defects that are difficult for developers to
+%% find and recommends fixes in your Java code.
 %%
 %% By proactively detecting and providing recommendations for addressing code
 %% defects and implementing best practices, CodeGuru Reviewer improves the
 %% overall quality and maintainability of your code base during the code
-%% review stage. For more information about CodeGuru Reviewer, see the <i> <a
-%% href="https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/welcome.html">Amazon
-%% CodeGuru Reviewer User Guide</a>.</i>
+%% review stage. For more information about CodeGuru Reviewer, see the Amazon
+%% CodeGuru Reviewer User Guide.
 -module(aws_codeguru_reviewer).
 
 -export([associate_repository/2,
          associate_repository/3,
+         create_code_review/2,
+         create_code_review/3,
          describe_code_review/2,
          describe_code_review/3,
          describe_recommendation_feedback/4,
@@ -42,14 +45,13 @@
 %%====================================================================
 
 %% @doc Use to associate an AWS CodeCommit repository or a repostory managed
-%% by AWS CodeStar Connections with Amazon CodeGuru Reviewer. When you
-%% associate a repository, CodeGuru Reviewer reviews source code changes in
-%% the repository's pull requests and provides automatic recommendations. You
-%% can view recommendations using the CodeGuru Reviewer console. For more
-%% information, see <a
-%% href="https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/recommendations.html">Recommendations
-%% in Amazon CodeGuru Reviewer</a> in the <i>Amazon CodeGuru Reviewer User
-%% Guide.</i>
+%% by AWS CodeStar Connections with Amazon CodeGuru Reviewer.
+%%
+%% When you associate a repository, CodeGuru Reviewer reviews source code
+%% changes in the repository's pull requests and provides automatic
+%% recommendations. You can view recommendations using the CodeGuru Reviewer
+%% console. For more information, see Recommendations in Amazon CodeGuru
+%% Reviewer in the Amazon CodeGuru Reviewer User Guide.
 %%
 %% If you associate a CodeCommit repository, it must be in the same AWS
 %% Region and AWS account where its CodeGuru Reviewer code reviews are
@@ -57,24 +59,34 @@
 %%
 %% Bitbucket and GitHub Enterprise Server repositories are managed by AWS
 %% CodeStar Connections to connect to CodeGuru Reviewer. For more
-%% information, see <a
-%% href="https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/reviewer-ug/step-one.html#select-repository-source-provider">Connect
-%% to a repository source provider</a> in the <i>Amazon CodeGuru Reviewer
-%% User Guide.</i>
+%% information, see Connect to a repository source provider in the Amazon
+%% CodeGuru Reviewer User Guide.
 %%
-%% <note> You cannot use the CodeGuru Reviewer SDK or the AWS CLI to
-%% associate a GitHub repository with Amazon CodeGuru Reviewer. To associate
-%% a GitHub repository, use the console. For more information, see <a
-%% href="https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/getting-started-with-guru.html">Getting
-%% started with CodeGuru Reviewer</a> in the <i>CodeGuru Reviewer User
-%% Guide.</i>
-%%
-%% </note>
+%% You cannot use the CodeGuru Reviewer SDK or the AWS CLI to associate a
+%% GitHub repository with Amazon CodeGuru Reviewer. To associate a GitHub
+%% repository, use the console. For more information, see Getting started
+%% with CodeGuru Reviewer in the CodeGuru Reviewer User Guide.
 associate_repository(Client, Input) ->
     associate_repository(Client, Input, []).
 associate_repository(Client, Input0, Options) ->
     Method = post,
     Path = ["/associations"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Use to create a code review for a repository analysis.
+create_code_review(Client, Input) ->
+    create_code_review(Client, Input, []).
+create_code_review(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/codereviews"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -122,9 +134,7 @@ describe_recommendation_feedback(Client, CodeReviewArn, RecommendationId, UserId
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a <a
-%% href="https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociation.html">
-%% <code>RepositoryAssociation</code> </a> object that contains information
+%% @doc Returns a `RepositoryAssociation` object that contains information
 %% about the requested repository association.
 describe_repository_association(Client, AssociationArn)
   when is_map(Client) ->
@@ -182,10 +192,8 @@ list_code_reviews(Client, MaxResults, NextToken, ProviderTypes, RepositoryNames,
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of <a
-%% href="https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RecommendationFeedbackSummary.html">
-%% <code>RecommendationFeedbackSummary</code> </a> objects that contain
-%% customer recommendation feedback for all CodeGuru Reviewer users.
+%% @doc Returns a list of `RecommendationFeedbackSummary` objects that
+%% contain customer recommendation feedback for all CodeGuru Reviewer users.
 list_recommendation_feedback(Client, CodeReviewArn, MaxResults, NextToken, RecommendationIds, UserIds)
   when is_map(Client) ->
     list_recommendation_feedback(Client, CodeReviewArn, MaxResults, NextToken, RecommendationIds, UserIds, []).
@@ -227,19 +235,11 @@ list_recommendations(Client, CodeReviewArn, MaxResults, NextToken, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of <a
-%% href="https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html">
-%% <code>RepositoryAssociationSummary</code> </a> objects that contain
-%% summary information about a repository association. You can filter the
-%% returned list by <a
-%% href="https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html#reviewer-Type-RepositoryAssociationSummary-ProviderType">
-%% <code>ProviderType</code> </a>, <a
-%% href="https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html#reviewer-Type-RepositoryAssociationSummary-Name">
-%% <code>Name</code> </a>, <a
-%% href="https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html#reviewer-Type-RepositoryAssociationSummary-State">
-%% <code>State</code> </a>, and <a
-%% href="https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html#reviewer-Type-RepositoryAssociationSummary-Owner">
-%% <code>Owner</code> </a>.
+%% @doc Returns a list of `RepositoryAssociationSummary` objects that contain
+%% summary information about a repository association.
+%%
+%% You can filter the returned list by `ProviderType` , `Name` , `State` ,
+%% and `Owner` .
 list_repository_associations(Client, MaxResults, Names, NextToken, Owners, ProviderTypes, States)
   when is_map(Client) ->
     list_repository_associations(Client, MaxResults, Names, NextToken, Owners, ProviderTypes, States, []).
@@ -263,9 +263,10 @@ list_repository_associations(Client, MaxResults, Names, NextToken, Owners, Provi
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Stores customer feedback for a CodeGuru Reviewer recommendation. When
-%% this API is called again with different reactions the previous feedback is
-%% overwritten.
+%% @doc Stores customer feedback for a CodeGuru Reviewer recommendation.
+%%
+%% When this API is called again with different reactions the previous
+%% feedback is overwritten.
 put_recommendation_feedback(Client, Input) ->
     put_recommendation_feedback(Client, Input, []).
 put_recommendation_feedback(Client, Input0, Options) ->
@@ -327,6 +328,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

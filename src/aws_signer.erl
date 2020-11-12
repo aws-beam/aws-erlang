@@ -2,19 +2,14 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc With code signing for IoT, you can sign code that you create for any
-%% IoT device that is supported by Amazon Web Services (AWS). Code signing is
-%% available through <a
-%% href="http://docs.aws.amazon.com/freertos/latest/userguide/">Amazon
-%% FreeRTOS</a> and <a
-%% href="http://docs.aws.amazon.com/iot/latest/developerguide/">AWS IoT
-%% Device Management</a>, and integrated with <a
-%% href="http://docs.aws.amazon.com/acm/latest/userguide/">AWS Certificate
-%% Manager (ACM)</a>. In order to sign code, you import a third-party code
-%% signing certificate with ACM that is used to sign updates in Amazon
-%% FreeRTOS and AWS IoT Device Management. For general information about
-%% using code signing, see the <a
-%% href="http://docs.aws.amazon.com/signer/latest/developerguide/Welcome.html">Code
-%% Signing for IoT Developer Guide</a>.
+%% IoT device that is supported by Amazon Web Services (AWS).
+%%
+%% Code signing is available through Amazon FreeRTOS and AWS IoT Device
+%% Management, and integrated with AWS Certificate Manager (ACM). In order to
+%% sign code, you import a third-party code signing certificate with ACM that
+%% is used to sign updates in Amazon FreeRTOS and AWS IoT Device Management.
+%% For general information about using code signing, see the Code Signing for
+%% IoT Developer Guide.
 -module(aws_signer).
 
 -export([cancel_signing_profile/3,
@@ -48,10 +43,11 @@
 %% API
 %%====================================================================
 
-%% @doc Changes the state of an <code>ACTIVE</code> signing profile to
-%% <code>CANCELED</code>. A canceled profile is still viewable with the
-%% <code>ListSigningProfiles</code> operation, but it cannot perform new
-%% signing jobs, and is deleted two years after cancelation.
+%% @doc Changes the state of an `ACTIVE` signing profile to `CANCELED`.
+%%
+%% A canceled profile is still viewable with the `ListSigningProfiles`
+%% operation, but it cannot perform new signing jobs, and is deleted two
+%% years after cancelation.
 cancel_signing_profile(Client, ProfileName, Input) ->
     cancel_signing_profile(Client, ProfileName, Input, []).
 cancel_signing_profile(Client, ProfileName, Input0, Options) ->
@@ -67,9 +63,10 @@ cancel_signing_profile(Client, ProfileName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns information about a specific code signing job. You specify
-%% the job by using the <code>jobId</code> value that is returned by the
-%% <a>StartSigningJob</a> operation.
+%% @doc Returns information about a specific code signing job.
+%%
+%% You specify the job by using the `jobId` value that is returned by the
+%% `StartSigningJob` operation.
 describe_signing_job(Client, JobId)
   when is_map(Client) ->
     describe_signing_job(Client, JobId, []).
@@ -114,15 +111,15 @@ get_signing_profile(Client, ProfileName, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all your signing jobs. You can use the <code>maxResults</code>
-%% parameter to limit the number of signing jobs that are returned in the
-%% response. If additional jobs remain to be listed, code signing returns a
-%% <code>nextToken</code> value. Use this value in subsequent calls to
-%% <code>ListSigningJobs</code> to fetch the remaining values. You can
-%% continue calling <code>ListSigningJobs</code> with your
-%% <code>maxResults</code> parameter and with new values that code signing
-%% returns in the <code>nextToken</code> parameter until all of your signing
-%% jobs have been returned.
+%% @doc Lists all your signing jobs.
+%%
+%% You can use the `maxResults` parameter to limit the number of signing jobs
+%% that are returned in the response. If additional jobs remain to be listed,
+%% code signing returns a `nextToken` value. Use this value in subsequent
+%% calls to `ListSigningJobs` to fetch the remaining values. You can continue
+%% calling `ListSigningJobs` with your `maxResults` parameter and with new
+%% values that code signing returns in the `nextToken` parameter until all of
+%% your signing jobs have been returned.
 list_signing_jobs(Client, MaxResults, NextToken, PlatformId, RequestedBy, Status)
   when is_map(Client) ->
     list_signing_jobs(Client, MaxResults, NextToken, PlatformId, RequestedBy, Status, []).
@@ -146,13 +143,14 @@ list_signing_jobs(Client, MaxResults, NextToken, PlatformId, RequestedBy, Status
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all signing platforms available in code signing that match the
-%% request parameters. If additional jobs remain to be listed, code signing
-%% returns a <code>nextToken</code> value. Use this value in subsequent calls
-%% to <code>ListSigningJobs</code> to fetch the remaining values. You can
-%% continue calling <code>ListSigningJobs</code> with your
-%% <code>maxResults</code> parameter and with new values that code signing
-%% returns in the <code>nextToken</code> parameter until all of your signing
-%% jobs have been returned.
+%% request parameters.
+%%
+%% If additional jobs remain to be listed, code signing returns a `nextToken`
+%% value. Use this value in subsequent calls to `ListSigningJobs` to fetch
+%% the remaining values. You can continue calling `ListSigningJobs` with your
+%% `maxResults` parameter and with new values that code signing returns in
+%% the `nextToken` parameter until all of your signing jobs have been
+%% returned.
 list_signing_platforms(Client, Category, MaxResults, NextToken, Partner, Target)
   when is_map(Client) ->
     list_signing_platforms(Client, Category, MaxResults, NextToken, Partner, Target, []).
@@ -175,16 +173,15 @@ list_signing_platforms(Client, Category, MaxResults, NextToken, Partner, Target,
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all available signing profiles in your AWS account. Returns
-%% only profiles with an <code>ACTIVE</code> status unless the
-%% <code>includeCanceled</code> request field is set to <code>true</code>. If
-%% additional jobs remain to be listed, code signing returns a
-%% <code>nextToken</code> value. Use this value in subsequent calls to
-%% <code>ListSigningJobs</code> to fetch the remaining values. You can
-%% continue calling <code>ListSigningJobs</code> with your
-%% <code>maxResults</code> parameter and with new values that code signing
-%% returns in the <code>nextToken</code> parameter until all of your signing
-%% jobs have been returned.
+%% @doc Lists all available signing profiles in your AWS account.
+%%
+%% Returns only profiles with an `ACTIVE` status unless the `includeCanceled`
+%% request field is set to `true`. If additional jobs remain to be listed,
+%% code signing returns a `nextToken` value. Use this value in subsequent
+%% calls to `ListSigningJobs` to fetch the remaining values. You can continue
+%% calling `ListSigningJobs` with your `maxResults` parameter and with new
+%% values that code signing returns in the `nextToken` parameter until all of
+%% your signing jobs have been returned.
 list_signing_profiles(Client, IncludeCanceled, MaxResults, NextToken)
   when is_map(Client) ->
     list_signing_profiles(Client, IncludeCanceled, MaxResults, NextToken, []).
@@ -221,10 +218,11 @@ list_tags_for_resource(Client, ResourceArn, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Creates a signing profile. A signing profile is a code signing
-%% template that can be used to carry out a pre-defined signing job. For more
-%% information, see <a
-%% href="http://docs.aws.amazon.com/signer/latest/developerguide/gs-profile.html">http://docs.aws.amazon.com/signer/latest/developerguide/gs-profile.html</a>
+%% @doc Creates a signing profile.
+%%
+%% A signing profile is a code signing template that can be used to carry out
+%% a pre-defined signing job. For more information, see
+%% [http://docs.aws.amazon.com/signer/latest/developerguide/gs-profile.html]
 put_signing_profile(Client, ProfileName, Input) ->
     put_signing_profile(Client, ProfileName, Input, []).
 put_signing_profile(Client, ProfileName, Input0, Options) ->
@@ -240,14 +238,13 @@ put_signing_profile(Client, ProfileName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Initiates a signing job to be performed on the code provided. Signing
-%% jobs are viewable by the <code>ListSigningJobs</code> operation for two
-%% years after they are performed. Note the following requirements:
+%% @doc Initiates a signing job to be performed on the code provided.
+%%
+%% Signing jobs are viewable by the `ListSigningJobs` operation for two years
+%% after they are performed. Note the following requirements:
 %%
 %% <ul> <li> You must create an Amazon S3 source bucket. For more
-%% information, see <a
-%% href="http://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html">Create
-%% a Bucket</a> in the <i>Amazon S3 Getting Started Guide</i>.
+%% information, see Create a Bucket in the Amazon S3 Getting Started Guide.
 %%
 %% </li> <li> Your S3 source bucket must be version enabled.
 %%
@@ -255,17 +252,16 @@ put_signing_profile(Client, ProfileName, Input0, Options) ->
 %% your S3 destination bucket to write your signed code.
 %%
 %% </li> <li> You specify the name of the source and destination buckets when
-%% calling the <code>StartSigningJob</code> operation.
+%% calling the `StartSigningJob` operation.
 %%
 %% </li> <li> You must also specify a request token that identifies your
 %% request to code signing.
 %%
-%% </li> </ul> You can call the <a>DescribeSigningJob</a> and the
-%% <a>ListSigningJobs</a> actions after you call
-%% <code>StartSigningJob</code>.
+%% </li> </ul> You can call the `DescribeSigningJob` and the
+%% `ListSigningJobs` actions after you call `StartSigningJob`.
 %%
-%% For a Java example that shows how to use this action, see <a
-%% href="http://docs.aws.amazon.com/acm/latest/userguide/">http://docs.aws.amazon.com/acm/latest/userguide/</a>
+%% For a Java example that shows how to use this action, see
+%% [http://docs.aws.amazon.com/acm/latest/userguide/]
 start_signing_job(Client, Input) ->
     start_signing_job(Client, Input, []).
 start_signing_job(Client, Input0, Options) ->
@@ -281,10 +277,12 @@ start_signing_job(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds one or more tags to a signing profile. Tags are labels that you
-%% can use to identify and organize your AWS resources. Each tag consists of
-%% a key and an optional value. To specify the signing profile, use its
-%% Amazon Resource Name (ARN). To specify the tag, use a key-value pair.
+%% @doc Adds one or more tags to a signing profile.
+%%
+%% Tags are labels that you can use to identify and organize your AWS
+%% resources. Each tag consists of a key and an optional value. To specify
+%% the signing profile, use its Amazon Resource Name (ARN). To specify the
+%% tag, use a key-value pair.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
@@ -300,8 +298,9 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes one or more tags from a signing profile. To remove the tags,
-%% specify a list of tag keys.
+%% @doc Removes one or more tags from a signing profile.
+%%
+%% To remove the tags, specify a list of tag keys.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
@@ -364,6 +363,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

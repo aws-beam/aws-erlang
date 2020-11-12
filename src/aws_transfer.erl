@@ -2,9 +2,10 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc AWS Transfer Family is a fully managed service that enables the
-%% transfer of files over the the File Transfer Protocol (FTP), File Transfer
+%% transfer of files over the File Transfer Protocol (FTP), File Transfer
 %% Protocol over SSL (FTPS), or Secure Shell (SSH) File Transfer Protocol
 %% (SFTP) directly into and out of Amazon Simple Storage Service (Amazon S3).
+%%
 %% AWS helps you seamlessly migrate your file transfer workflows to AWS
 %% Transfer Family by integrating with existing authentication systems, and
 %% providing DNS routing with Amazon Route 53 so nothing changes for your
@@ -24,12 +25,16 @@
          delete_ssh_public_key/3,
          delete_user/2,
          delete_user/3,
+         describe_security_policy/2,
+         describe_security_policy/3,
          describe_server/2,
          describe_server/3,
          describe_user/2,
          describe_user/3,
          import_ssh_public_key/2,
          import_ssh_public_key/3,
+         list_security_policies/2,
+         list_security_policies/3,
          list_servers/2,
          list_servers/3,
          list_tags_for_resource/2,
@@ -58,10 +63,11 @@
 %%====================================================================
 
 %% @doc Instantiates an autoscaling virtual server based on the selected file
-%% transfer protocol in AWS. When you make updates to your file transfer
-%% protocol-enabled server or when you work with users, use the
-%% service-generated <code>ServerId</code> property that is assigned to the
-%% newly created server.
+%% transfer protocol in AWS.
+%%
+%% When you make updates to your file transfer protocol-enabled server or
+%% when you work with users, use the service-generated `ServerId` property
+%% that is assigned to the newly created server.
 create_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_server(Client, Input, []).
@@ -70,14 +76,15 @@ create_server(Client, Input, Options)
     request(Client, <<"CreateServer">>, Input, Options).
 
 %% @doc Creates a user and associates them with an existing file transfer
-%% protocol-enabled server. You can only create and associate users with
-%% servers that have the <code>IdentityProviderType</code> set to
-%% <code>SERVICE_MANAGED</code>. Using parameters for
-%% <code>CreateUser</code>, you can specify the user name, set the home
-%% directory, store the user's public key, and assign the user's AWS Identity
-%% and Access Management (IAM) role. You can also optionally add a scope-down
-%% policy, and assign metadata with tags that can be used to group and search
-%% for users.
+%% protocol-enabled server.
+%%
+%% You can only create and associate users with servers that have the
+%% `IdentityProviderType` set to `SERVICE_MANAGED`. Using parameters for
+%% `CreateUser`, you can specify the user name, set the home directory, store
+%% the user's public key, and assign the user's AWS Identity and Access
+%% Management (IAM) role. You can also optionally add a scope-down policy,
+%% and assign metadata with tags that can be used to group and search for
+%% users.
 create_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user(Client, Input, []).
@@ -110,10 +117,7 @@ delete_ssh_public_key(Client, Input, Options)
 %%
 %% No response returns from this operation.
 %%
-%% <note> When you delete a user from a server, the user's information is
-%% lost.
-%%
-%% </note>
+%% When you delete a user from a server, the user's information is lost.
 delete_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user(Client, Input, []).
@@ -121,12 +125,24 @@ delete_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUser">>, Input, Options).
 
+%% @doc Describes the security policy that is attached to your file transfer
+%% protocol-enabled server.
+%%
+%% The response contains a description of the security policy's properties.
+%% For more information about security policies, see Working with security
+%% policies.
+describe_security_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_security_policy(Client, Input, []).
+describe_security_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeSecurityPolicy">>, Input, Options).
+
 %% @doc Describes a file transfer protocol-enabled server that you specify by
-%% passing the <code>ServerId</code> parameter.
+%% passing the `ServerId` parameter.
 %%
 %% The response contains a description of a server's properties. When you set
-%% <code>EndpointType</code> to VPC, the response will contain the
-%% <code>EndpointDetails</code>.
+%% `EndpointType` to VPC, the response will contain the `EndpointDetails`.
 describe_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_server(Client, Input, []).
@@ -135,11 +151,10 @@ describe_server(Client, Input, Options)
     request(Client, <<"DescribeServer">>, Input, Options).
 
 %% @doc Describes the user assigned to the specific file transfer
-%% protocol-enabled server, as identified by its <code>ServerId</code>
-%% property.
+%% protocol-enabled server, as identified by its `ServerId` property.
 %%
 %% The response from this call returns the properties of the user associated
-%% with the <code>ServerId</code> value that was specified.
+%% with the `ServerId` value that was specified.
 describe_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_user(Client, Input, []).
@@ -148,18 +163,26 @@ describe_user(Client, Input, Options)
     request(Client, <<"DescribeUser">>, Input, Options).
 
 %% @doc Adds a Secure Shell (SSH) public key to a user account identified by
-%% a <code>UserName</code> value assigned to the specific file transfer
-%% protocol-enabled server, identified by <code>ServerId</code>.
+%% a `UserName` value assigned to the specific file transfer protocol-enabled
+%% server, identified by `ServerId`.
 %%
-%% The response returns the <code>UserName</code> value, the
-%% <code>ServerId</code> value, and the name of the
-%% <code>SshPublicKeyId</code>.
+%% The response returns the `UserName` value, the `ServerId` value, and the
+%% name of the `SshPublicKeyId`.
 import_ssh_public_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_ssh_public_key(Client, Input, []).
 import_ssh_public_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportSshPublicKey">>, Input, Options).
+
+%% @doc Lists the security policies that are attached to your file transfer
+%% protocol-enabled servers.
+list_security_policies(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_security_policies(Client, Input, []).
+list_security_policies(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListSecurityPolicies">>, Input, Options).
 
 %% @doc Lists the file transfer protocol-enabled servers that are associated
 %% with your AWS account.
@@ -171,7 +194,9 @@ list_servers(Client, Input, Options)
     request(Client, <<"ListServers">>, Input, Options).
 
 %% @doc Lists all of the tags associated with the Amazon Resource Number
-%% (ARN) you specify. The resource can be a user, server, or role.
+%% (ARN) you specify.
+%%
+%% The resource can be a user, server, or role.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -180,7 +205,7 @@ list_tags_for_resource(Client, Input, Options)
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc Lists the users for a file transfer protocol-enabled server that you
-%% specify by passing the <code>ServerId</code> parameter.
+%% specify by passing the `ServerId` parameter.
 list_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_users(Client, Input, []).
@@ -189,13 +214,14 @@ list_users(Client, Input, Options)
     request(Client, <<"ListUsers">>, Input, Options).
 
 %% @doc Changes the state of a file transfer protocol-enabled server from
-%% <code>OFFLINE</code> to <code>ONLINE</code>. It has no impact on a server
-%% that is already <code>ONLINE</code>. An <code>ONLINE</code> server can
-%% accept and process file transfer jobs.
+%% `OFFLINE` to `ONLINE`.
 %%
-%% The state of <code>STARTING</code> indicates that the server is in an
-%% intermediate state, either not fully able to respond, or not fully online.
-%% The values of <code>START_FAILED</code> can indicate an error condition.
+%% It has no impact on a server that is already `ONLINE`. An `ONLINE` server
+%% can accept and process file transfer jobs.
+%%
+%% The state of `STARTING` indicates that the server is in an intermediate
+%% state, either not fully able to respond, or not fully online. The values
+%% of `START_FAILED` can indicate an error condition.
 %%
 %% No response is returned from this call.
 start_server(Client, Input)
@@ -206,16 +232,18 @@ start_server(Client, Input, Options)
     request(Client, <<"StartServer">>, Input, Options).
 
 %% @doc Changes the state of a file transfer protocol-enabled server from
-%% <code>ONLINE</code> to <code>OFFLINE</code>. An <code>OFFLINE</code>
-%% server cannot accept and process file transfer jobs. Information tied to
-%% your server, such as server and user properties, are not affected by
-%% stopping your server. Stopping the server will not reduce or impact your
-%% file transfer protocol endpoint billing.
+%% `ONLINE` to `OFFLINE`.
 %%
-%% The state of <code>STOPPING</code> indicates that the server is in an
-%% intermediate state, either not fully able to respond, or not fully
-%% offline. The values of <code>STOP_FAILED</code> can indicate an error
-%% condition.
+%% An `OFFLINE` server cannot accept and process file transfer jobs.
+%% Information tied to your server, such as server and user properties, are
+%% not affected by stopping your server.
+%%
+%% Stopping the server will not reduce or impact your file transfer protocol
+%% endpoint billing; you must delete the server to stop being billed.
+%%
+%% The state of `STOPPING` indicates that the server is in an intermediate
+%% state, either not fully able to respond, or not fully offline. The values
+%% of `STOP_FAILED` can indicate an error condition.
 %%
 %% No response is returned from this call.
 stop_server(Client, Input)
@@ -226,8 +254,9 @@ stop_server(Client, Input, Options)
     request(Client, <<"StopServer">>, Input, Options).
 
 %% @doc Attaches a key-value pair to a resource, as identified by its Amazon
-%% Resource Name (ARN). Resources are users, servers, roles, and other
-%% entities.
+%% Resource Name (ARN).
+%%
+%% Resources are users, servers, roles, and other entities.
 %%
 %% There is no response returned from this call.
 tag_resource(Client, Input)
@@ -237,12 +266,14 @@ tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
-%% @doc If the <code>IdentityProviderType</code> of a file transfer
-%% protocol-enabled server is <code>API_Gateway</code>, tests whether your
-%% API Gateway is set up successfully. We highly recommend that you call this
-%% operation to test your authentication method as soon as you create your
-%% server. By doing so, you can troubleshoot issues with the API Gateway
-%% integration to ensure that your users can successfully use the service.
+%% @doc If the `IdentityProviderType` of a file transfer protocol-enabled
+%% server is `API_Gateway`, tests whether your API Gateway is set up
+%% successfully.
+%%
+%% We highly recommend that you call this operation to test your
+%% authentication method as soon as you create your server. By doing so, you
+%% can troubleshoot issues with the API Gateway integration to ensure that
+%% your users can successfully use the service.
 test_identity_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_identity_provider(Client, Input, []).
@@ -251,8 +282,9 @@ test_identity_provider(Client, Input, Options)
     request(Client, <<"TestIdentityProvider">>, Input, Options).
 
 %% @doc Detaches a key-value pair from a resource, as identified by its
-%% Amazon Resource Name (ARN). Resources are users, servers, roles, and other
-%% entities.
+%% Amazon Resource Name (ARN).
+%%
+%% Resources are users, servers, roles, and other entities.
 %%
 %% No response is returned from this call.
 untag_resource(Client, Input)
@@ -265,8 +297,7 @@ untag_resource(Client, Input, Options)
 %% @doc Updates the file transfer protocol-enabled server's properties after
 %% that server has been created.
 %%
-%% The <code>UpdateServer</code> call returns the <code>ServerId</code> of
-%% the server you updated.
+%% The `UpdateServer` call returns the `ServerId` of the server you updated.
 update_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_server(Client, Input, []).
@@ -274,12 +305,13 @@ update_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateServer">>, Input, Options).
 
-%% @doc Assigns new properties to a user. Parameters you pass modify any or
-%% all of the following: the home directory, role, and policy for the
-%% <code>UserName</code> and <code>ServerId</code> you specify.
+%% @doc Assigns new properties to a user.
 %%
-%% The response returns the <code>ServerId</code> and the
-%% <code>UserName</code> for the updated user.
+%% Parameters you pass modify any or all of the following: the home
+%% directory, role, and policy for the `UserName` and `ServerId` you specify.
+%%
+%% The response returns the `ServerId` and the `UserName` for the updated
+%% user.
 update_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user(Client, Input, []).
@@ -329,6 +361,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
 handle_response({error, Reason}) ->
     {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

@@ -3,13 +3,13 @@
 
 %% @doc The Amazon Chime API (application programming interface) is designed
 %% for developers to perform key tasks, such as creating and managing Amazon
-%% Chime accounts, users, and Voice Connectors. This guide provides detailed
-%% information about the Amazon Chime API, including operations, types,
-%% inputs and outputs, and error codes. It also includes some server-side API
-%% actions to use with the Amazon Chime SDK. For more information about the
-%% Amazon Chime SDK, see <a
-%% href="https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html">Using
-%% the Amazon Chime SDK</a> in the <i>Amazon Chime Developer Guide</i>.
+%% Chime accounts, users, and Voice Connectors.
+%%
+%% This guide provides detailed information about the Amazon Chime API,
+%% including operations, types, inputs and outputs, and error codes. It also
+%% includes some server-side API actions to use with the Amazon Chime SDK.
+%% For more information about the Amazon Chime SDK, see Using the Amazon
+%% Chime SDK in the Amazon Chime Developer Guide.
 %%
 %% You can use an AWS SDK, the AWS Command Line Interface (AWS CLI), or the
 %% REST API to make API calls. We recommend using an AWS SDK or the AWS CLI.
@@ -19,33 +19,25 @@
 %% <dl> <dt>Using an AWS SDK</dt> <dd> You don't need to write code to
 %% calculate a signature for request authentication. The SDK clients
 %% authenticate your requests by using access keys that you provide. For more
-%% information about AWS SDKs, see the <a
-%% href="http://aws.amazon.com/developer/">AWS Developer Center</a>.
+%% information about AWS SDKs, see the AWS Developer Center.
 %%
 %% </dd> <dt>Using the AWS CLI</dt> <dd> Use your access keys with the AWS
 %% CLI to make API calls. For information about setting up the AWS CLI, see
-%% <a
-%% href="https://docs.aws.amazon.com/cli/latest/userguide/installing.html">Installing
-%% the AWS Command Line Interface</a> in the <i>AWS Command Line Interface
-%% User Guide</i>. For a list of available Amazon Chime commands, see the <a
-%% href="https://docs.aws.amazon.com/cli/latest/reference/chime/index.html">Amazon
-%% Chime commands</a> in the <i>AWS CLI Command Reference</i>.
+%% Installing the AWS Command Line Interface in the AWS Command Line
+%% Interface User Guide. For a list of available Amazon Chime commands, see
+%% the Amazon Chime commands in the AWS CLI Command Reference.
 %%
 %% </dd> <dt>Using REST API</dt> <dd> If you use REST to make API calls, you
 %% must authenticate your request by providing a signature. Amazon Chime
-%% supports signature version 4. For more information, see <a
-%% href="https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">Signature
-%% Version 4 Signing Process</a> in the <i>Amazon Web Services General
-%% Reference</i>.
+%% supports signature version 4. For more information, see Signature Version
+%% 4 Signing Process in the Amazon Web Services General Reference.
 %%
-%% When making REST API calls, use the service name <code>chime</code> and
-%% REST endpoint <code>https://service.chime.aws.amazon.com</code>.
+%% When making REST API calls, use the service name `chime` and REST endpoint
+%% `https://service.chime.aws.amazon.com`.
 %%
 %% </dd> </dl> Administrative permissions are controlled using AWS Identity
-%% and Access Management (IAM). For more information, see <a
-%% href="https://docs.aws.amazon.com/chime/latest/ag/security-iam.html">Identity
-%% and Access Management for Amazon Chime</a> in the <i>Amazon Chime
-%% Administration Guide</i>.
+%% and Access Management (IAM). For more information, see Identity and Access
+%% Management for Amazon Chime in the Amazon Chime Administration Guide.
 -module(aws_chime).
 
 -export([associate_phone_number_with_user/4,
@@ -361,9 +353,10 @@ associate_signin_delegate_groups_with_account(Client, AccountId, Input0, Options
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates up to 100 new attendees for an active Amazon Chime SDK
-%% meeting. For more information about the Amazon Chime SDK, see <a
-%% href="https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html">Using
-%% the Amazon Chime SDK</a> in the <i>Amazon Chime Developer Guide</i>.
+%% meeting.
+%%
+%% For more information about the Amazon Chime SDK, see Using the Amazon
+%% Chime SDK in the Amazon Chime Developer Guide.
 batch_create_attendee(Client, MeetingId, Input) ->
     batch_create_attendee(Client, MeetingId, Input, []).
 batch_create_attendee(Client, MeetingId, Input0, Options) ->
@@ -380,9 +373,10 @@ batch_create_attendee(Client, MeetingId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds up to 50 members to a chat room in an Amazon Chime Enterprise
-%% account. Members can be either users or bots. The member role designates
-%% whether the member is a chat room administrator or a general chat room
-%% member.
+%% account.
+%%
+%% Members can be either users or bots. The member role designates whether
+%% the member is a chat room administrator or a general chat room member.
 batch_create_room_membership(Client, AccountId, RoomId, Input) ->
     batch_create_room_membership(Client, AccountId, RoomId, Input, []).
 batch_create_room_membership(Client, AccountId, RoomId, Input0, Options) ->
@@ -398,12 +392,13 @@ batch_create_room_membership(Client, AccountId, RoomId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Moves phone numbers into the <b>Deletion queue</b>. Phone numbers
-%% must be disassociated from any users or Amazon Chime Voice Connectors
-%% before they can be deleted.
+%% @doc Moves phone numbers into the Deletion queue.
 %%
-%% Phone numbers remain in the <b>Deletion queue</b> for 7 days before they
-%% are deleted permanently.
+%% Phone numbers must be disassociated from any users or Amazon Chime Voice
+%% Connectors before they can be deleted.
+%%
+%% Phone numbers remain in the Deletion queue for 7 days before they are
+%% deleted permanently.
 batch_delete_phone_number(Client, Input) ->
     batch_delete_phone_number(Client, Input, []).
 batch_delete_phone_number(Client, Input0, Options) ->
@@ -419,26 +414,23 @@ batch_delete_phone_number(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Suspends up to 50 users from a <code>Team</code> or
-%% <code>EnterpriseLWA</code> Amazon Chime account. For more information
-%% about different account types, see <a
-%% href="https://docs.aws.amazon.com/chime/latest/ag/manage-chime-account.html">Managing
-%% Your Amazon Chime Accounts</a> in the <i>Amazon Chime Administration
-%% Guide</i>.
+%% @doc Suspends up to 50 users from a `Team` or `EnterpriseLWA` Amazon Chime
+%% account.
 %%
-%% Users suspended from a <code>Team</code> account are disassociated from
-%% the account, but they can continue to use Amazon Chime as free users. To
-%% remove the suspension from suspended <code>Team</code> account users,
-%% invite them to the <code>Team</code> account again. You can use the
-%% <a>InviteUsers</a> action to do so.
+%% For more information about different account types, see Managing Your
+%% Amazon Chime Accounts in the Amazon Chime Administration Guide.
 %%
-%% Users suspended from an <code>EnterpriseLWA</code> account are immediately
-%% signed out of Amazon Chime and can no longer sign in. To remove the
-%% suspension from suspended <code>EnterpriseLWA</code> account users, use
-%% the <a>BatchUnsuspendUser</a> action.
+%% Users suspended from a `Team` account are disassociated from the account,
+%% but they can continue to use Amazon Chime as free users. To remove the
+%% suspension from suspended `Team` account users, invite them to the `Team`
+%% account again. You can use the `InviteUsers` action to do so.
 %%
-%% To sign out users without suspending them, use the <a>LogoutUser</a>
+%% Users suspended from an `EnterpriseLWA` account are immediately signed out
+%% of Amazon Chime and can no longer sign in. To remove the suspension from
+%% suspended `EnterpriseLWA` account users, use the `BatchUnsuspendUser`
 %% action.
+%%
+%% To sign out users without suspending them, use the `LogoutUser` action.
 batch_suspend_user(Client, AccountId, Input) ->
     batch_suspend_user(Client, AccountId, Input, []).
 batch_suspend_user(Client, AccountId, Input0, Options) ->
@@ -455,16 +447,15 @@ batch_suspend_user(Client, AccountId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the suspension from up to 50 previously suspended users for
-%% the specified Amazon Chime <code>EnterpriseLWA</code> account. Only users
-%% on <code>EnterpriseLWA</code> accounts can be unsuspended using this
-%% action. For more information about different account types, see <a
-%% href="https://docs.aws.amazon.com/chime/latest/ag/manage-chime-account.html">Managing
-%% Your Amazon Chime Accounts</a> in the <i>Amazon Chime Administration
-%% Guide</i>.
+%% the specified Amazon Chime `EnterpriseLWA` account.
+%%
+%% Only users on `EnterpriseLWA` accounts can be unsuspended using this
+%% action. For more information about different account types, see Managing
+%% Your Amazon Chime Accounts in the Amazon Chime Administration Guide.
 %%
 %% Previously suspended users who are unsuspended using this action are
-%% returned to <code>Registered</code> status. Users who are not previously
-%% suspended are ignored.
+%% returned to `Registered` status. Users who are not previously suspended
+%% are ignored.
 batch_unsuspend_user(Client, AccountId, Input) ->
     batch_unsuspend_user(Client, AccountId, Input, []).
 batch_unsuspend_user(Client, AccountId, Input0, Options) ->
@@ -480,10 +471,11 @@ batch_unsuspend_user(Client, AccountId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates phone number product types or calling names. You can update
-%% one attribute at a time for each
-%% <code>UpdatePhoneNumberRequestItem</code>. For example, you can update
-%% either the product type or the calling name.
+%% @doc Updates phone number product types or calling names.
+%%
+%% You can update one attribute at a time for each
+%% `UpdatePhoneNumberRequestItem`. For example, you can update either the
+%% product type or the calling name.
 %%
 %% For product types, choose from Amazon Chime Business Calling and Amazon
 %% Chime Voice Connector. For toll-free numbers, you must use the Amazon
@@ -507,9 +499,10 @@ batch_update_phone_number(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates user details within the <a>UpdateUserRequestItem</a> object
-%% for up to 20 users for the specified Amazon Chime account. Currently, only
-%% <code>LicenseType</code> updates are supported for this action.
+%% @doc Updates user details within the `UpdateUserRequestItem` object for up
+%% to 20 users for the specified Amazon Chime account.
+%%
+%% Currently, only `LicenseType` updates are supported for this action.
 batch_update_user(Client, AccountId, Input) ->
     batch_update_user(Client, AccountId, Input, []).
 batch_update_user(Client, AccountId, Input0, Options) ->
@@ -526,11 +519,11 @@ batch_update_user(Client, AccountId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon Chime account under the administrator's AWS
-%% account. Only <code>Team</code> account types are currently supported for
-%% this action. For more information about different account types, see <a
-%% href="https://docs.aws.amazon.com/chime/latest/ag/manage-chime-account.html">Managing
-%% Your Amazon Chime Accounts</a> in the <i>Amazon Chime Administration
-%% Guide</i>.
+%% account.
+%%
+%% Only `Team` account types are currently supported for this action. For
+%% more information about different account types, see Managing Your Amazon
+%% Chime Accounts in the Amazon Chime Administration Guide.
 create_account(Client, Input) ->
     create_account(Client, Input, []).
 create_account(Client, Input0, Options) ->
@@ -546,10 +539,10 @@ create_account(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new attendee for an active Amazon Chime SDK meeting. For
-%% more information about the Amazon Chime SDK, see <a
-%% href="https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html">Using
-%% the Amazon Chime SDK</a> in the <i>Amazon Chime Developer Guide</i>.
+%% @doc Creates a new attendee for an active Amazon Chime SDK meeting.
+%%
+%% For more information about the Amazon Chime SDK, see Using the Amazon
+%% Chime SDK in the Amazon Chime Developer Guide.
 create_attendee(Client, MeetingId, Input) ->
     create_attendee(Client, MeetingId, Input, []).
 create_attendee(Client, MeetingId, Input0, Options) ->
@@ -582,13 +575,12 @@ create_bot(Client, AccountId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new Amazon Chime SDK meeting in the specified media Region
-%% with no initial attendees. For more information about specifying media
-%% Regions, see <a
-%% href="https://docs.aws.amazon.com/chime/latest/dg/chime-sdk-meetings-regions.html">Amazon
-%% Chime SDK Media Regions</a> in the <i>Amazon Chime Developer Guide</i>.
-%% For more information about the Amazon Chime SDK, see <a
-%% href="https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html">Using
-%% the Amazon Chime SDK</a> in the <i>Amazon Chime Developer Guide</i>.
+%% with no initial attendees.
+%%
+%% For more information about specifying media Regions, see Amazon Chime SDK
+%% Media Regions in the Amazon Chime Developer Guide. For more information
+%% about the Amazon Chime SDK, see Using the Amazon Chime SDK in the Amazon
+%% Chime Developer Guide.
 create_meeting(Client, Input) ->
     create_meeting(Client, Input, []).
 create_meeting(Client, Input0, Options) ->
@@ -605,13 +597,12 @@ create_meeting(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new Amazon Chime SDK meeting in the specified media Region,
-%% with attendees. For more information about specifying media Regions, see
-%% <a
-%% href="https://docs.aws.amazon.com/chime/latest/dg/chime-sdk-meetings-regions.html">Amazon
-%% Chime SDK Media Regions</a> in the <i>Amazon Chime Developer Guide</i>.
-%% For more information about the Amazon Chime SDK, see <a
-%% href="https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html">Using
-%% the Amazon Chime SDK</a> in the <i>Amazon Chime Developer Guide</i>.
+%% with attendees.
+%%
+%% For more information about specifying media Regions, see Amazon Chime SDK
+%% Media Regions in the Amazon Chime Developer Guide. For more information
+%% about the Amazon Chime SDK, see Using the Amazon Chime SDK in the Amazon
+%% Chime Developer Guide.
 create_meeting_with_attendees(Client, Input) ->
     create_meeting_with_attendees(Client, Input, []).
 create_meeting_with_attendees(Client, Input0, Options) ->
@@ -627,9 +618,10 @@ create_meeting_with_attendees(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an order for phone numbers to be provisioned. Choose from
-%% Amazon Chime Business Calling and Amazon Chime Voice Connector product
-%% types. For toll-free numbers, you must use the Amazon Chime Voice
+%% @doc Creates an order for phone numbers to be provisioned.
+%%
+%% Choose from Amazon Chime Business Calling and Amazon Chime Voice Connector
+%% product types. For toll-free numbers, you must use the Amazon Chime Voice
 %% Connector product type.
 create_phone_number_order(Client, Input) ->
     create_phone_number_order(Client, Input, []).
@@ -680,8 +672,9 @@ create_room(Client, AccountId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds a member to a chat room in an Amazon Chime Enterprise account. A
-%% member can be either a user or a bot. The member role designates whether
+%% @doc Adds a member to a chat room in an Amazon Chime Enterprise account.
+%%
+%% A member can be either a user or a bot. The member role designates whether
 %% the member is a chat room administrator or a general chat room member.
 create_room_membership(Client, AccountId, RoomId, Input) ->
     create_room_membership(Client, AccountId, RoomId, Input, []).
@@ -715,12 +708,14 @@ create_user(Client, AccountId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon Chime Voice Connector under the administrator's AWS
-%% account. You can choose to create an Amazon Chime Voice Connector in a
-%% specific AWS Region.
+%% account.
 %%
-%% Enabling <a>CreateVoiceConnectorRequest$RequireEncryption</a> configures
-%% your Amazon Chime Voice Connector to use TLS transport for SIP signaling
-%% and Secure RTP (SRTP) for media. Inbound calls use TLS transport, and
+%% You can choose to create an Amazon Chime Voice Connector in a specific AWS
+%% Region.
+%%
+%% Enabling `CreateVoiceConnectorRequest$RequireEncryption` configures your
+%% Amazon Chime Voice Connector to use TLS transport for SIP signaling and
+%% Secure RTP (SRTP) for media. Inbound calls use TLS transport, and
 %% unencrypted outbound calls are blocked.
 create_voice_connector(Client, Input) ->
     create_voice_connector(Client, Input, []).
@@ -738,9 +733,10 @@ create_voice_connector(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon Chime Voice Connector group under the
-%% administrator's AWS account. You can associate Amazon Chime Voice
-%% Connectors with the Amazon Chime Voice Connector group by including
-%% <code>VoiceConnectorItems</code> in the request.
+%% administrator's AWS account.
+%%
+%% You can associate Amazon Chime Voice Connectors with the Amazon Chime
+%% Voice Connector group by including `VoiceConnectorItems` in the request.
 %%
 %% You can include Amazon Chime Voice Connectors from different AWS Regions
 %% in your group. This creates a fault tolerant mechanism for fallback in
@@ -760,21 +756,21 @@ create_voice_connector_group(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the specified Amazon Chime account. You must suspend all
-%% users before deleting a <code>Team</code> account. You can use the
-%% <a>BatchSuspendUser</a> action to do so.
+%% @doc Deletes the specified Amazon Chime account.
 %%
-%% For <code>EnterpriseLWA</code> and <code>EnterpriseAD</code> accounts, you
-%% must release the claimed domains for your Amazon Chime account before
-%% deletion. As soon as you release the domain, all users under that account
-%% are suspended.
+%% You must suspend all users before deleting a `Team` account. You can use
+%% the `BatchSuspendUser` action to do so.
 %%
-%% Deleted accounts appear in your <code>Disabled</code> accounts list for 90
-%% days. To restore a deleted account from your <code>Disabled</code>
-%% accounts list, you must contact AWS Support.
+%% For `EnterpriseLWA` and `EnterpriseAD` accounts, you must release the
+%% claimed domains for your Amazon Chime account before deletion. As soon as
+%% you release the domain, all users under that account are suspended.
+%%
+%% Deleted accounts appear in your `Disabled` accounts list for 90 days. To
+%% restore a deleted account from your `Disabled` accounts list, you must
+%% contact AWS Support.
 %%
 %% After 90 days, deleted accounts are permanently removed from your
-%% <code>Disabled</code> accounts list.
+%% `Disabled` accounts list.
 delete_account(Client, AccountId, Input) ->
     delete_account(Client, AccountId, Input, []).
 delete_account(Client, AccountId, Input0, Options) ->
@@ -791,11 +787,11 @@ delete_account(Client, AccountId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an attendee from the specified Amazon Chime SDK meeting and
-%% deletes their <code>JoinToken</code>. Attendees are automatically deleted
-%% when a Amazon Chime SDK meeting is deleted. For more information about the
-%% Amazon Chime SDK, see <a
-%% href="https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html">Using
-%% the Amazon Chime SDK</a> in the <i>Amazon Chime Developer Guide</i>.
+%% deletes their `JoinToken`.
+%%
+%% Attendees are automatically deleted when a Amazon Chime SDK meeting is
+%% deleted. For more information about the Amazon Chime SDK, see Using the
+%% Amazon Chime SDK in the Amazon Chime Developer Guide.
 delete_attendee(Client, AttendeeId, MeetingId, Input) ->
     delete_attendee(Client, AttendeeId, MeetingId, Input, []).
 delete_attendee(Client, AttendeeId, MeetingId, Input0, Options) ->
@@ -828,11 +824,11 @@ delete_events_configuration(Client, AccountId, BotId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the specified Amazon Chime SDK meeting. When a meeting is
-%% deleted, its attendees are also deleted and clients can no longer join it.
-%% For more information about the Amazon Chime SDK, see <a
-%% href="https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html">Using
-%% the Amazon Chime SDK</a> in the <i>Amazon Chime Developer Guide</i>.
+%% @doc Deletes the specified Amazon Chime SDK meeting.
+%%
+%% When a meeting is deleted, its attendees are also deleted and clients can
+%% no longer join it. For more information about the Amazon Chime SDK, see
+%% Using the Amazon Chime SDK in the Amazon Chime Developer Guide.
 delete_meeting(Client, MeetingId, Input) ->
     delete_meeting(Client, MeetingId, Input, []).
 delete_meeting(Client, MeetingId, Input0, Options) ->
@@ -848,12 +844,13 @@ delete_meeting(Client, MeetingId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Moves the specified phone number into the <b>Deletion queue</b>. A
-%% phone number must be disassociated from any users or Amazon Chime Voice
+%% @doc Moves the specified phone number into the Deletion queue.
+%%
+%% A phone number must be disassociated from any users or Amazon Chime Voice
 %% Connectors before it can be deleted.
 %%
-%% Deleted phone numbers remain in the <b>Deletion queue</b> for 7 days
-%% before they are deleted permanently.
+%% Deleted phone numbers remain in the Deletion queue for 7 days before they
+%% are deleted permanently.
 delete_phone_number(Client, PhoneNumberId, Input) ->
     delete_phone_number(Client, PhoneNumberId, Input, []).
 delete_phone_number(Client, PhoneNumberId, Input0, Options) ->
@@ -919,9 +916,10 @@ delete_room_membership(Client, AccountId, MemberId, RoomId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the specified Amazon Chime Voice Connector. Any phone numbers
-%% associated with the Amazon Chime Voice Connector must be disassociated
-%% from it before it can be deleted.
+%% @doc Deletes the specified Amazon Chime Voice Connector.
+%%
+%% Any phone numbers associated with the Amazon Chime Voice Connector must be
+%% disassociated from it before it can be deleted.
 delete_voice_connector(Client, VoiceConnectorId, Input) ->
     delete_voice_connector(Client, VoiceConnectorId, Input, []).
 delete_voice_connector(Client, VoiceConnectorId, Input0, Options) ->
@@ -954,9 +952,10 @@ delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId,
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the specified Amazon Chime Voice Connector group. Any
-%% <code>VoiceConnectorItems</code> and phone numbers associated with the
-%% group must be removed before it can be deleted.
+%% @doc Deletes the specified Amazon Chime Voice Connector group.
+%%
+%% Any `VoiceConnectorItems` and phone numbers associated with the group must
+%% be removed before it can be deleted.
 delete_voice_connector_group(Client, VoiceConnectorGroupId, Input) ->
     delete_voice_connector_group(Client, VoiceConnectorGroupId, Input, []).
 delete_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options) ->
@@ -975,10 +974,8 @@ delete_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options) ->
 %% @doc Deletes the origination settings for the specified Amazon Chime Voice
 %% Connector.
 %%
-%% <note> If emergency calling is configured for the Amazon Chime Voice
-%% Connector, it must be deleted prior to deleting the origination settings.
-%%
-%% </note>
+%% If emergency calling is configured for the Amazon Chime Voice Connector,
+%% it must be deleted prior to deleting the origination settings.
 delete_voice_connector_origination(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_origination(Client, VoiceConnectorId, Input, []).
 delete_voice_connector_origination(Client, VoiceConnectorId, Input0, Options) ->
@@ -1031,10 +1028,8 @@ delete_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input0,
 %% @doc Deletes the termination settings for the specified Amazon Chime Voice
 %% Connector.
 %%
-%% <note> If emergency calling is configured for the Amazon Chime Voice
-%% Connector, it must be deleted prior to deleting the termination settings.
-%%
-%% </note>
+%% If emergency calling is configured for the Amazon Chime Voice Connector,
+%% it must be deleted prior to deleting the termination settings.
 delete_voice_connector_termination(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_termination(Client, VoiceConnectorId, Input, []).
 delete_voice_connector_termination(Client, VoiceConnectorId, Input0, Options) ->
@@ -1152,10 +1147,10 @@ get_account(Client, AccountId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves account settings for the specified Amazon Chime account ID,
-%% such as remote control and dial out settings. For more information about
-%% these settings, see <a
-%% href="https://docs.aws.amazon.com/chime/latest/ag/policies.html">Use the
-%% Policies Page</a> in the <i>Amazon Chime Administration Guide</i>.
+%% such as remote control and dial out settings.
+%%
+%% For more information about these settings, see Use the Policies Page in
+%% the Amazon Chime Administration Guide.
 get_account_settings(Client, AccountId)
   when is_map(Client) ->
     get_account_settings(Client, AccountId, []).
@@ -1171,9 +1166,10 @@ get_account_settings(Client, AccountId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the Amazon Chime SDK attendee details for a specified meeting ID
-%% and attendee ID. For more information about the Amazon Chime SDK, see <a
-%% href="https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html">Using
-%% the Amazon Chime SDK</a> in the <i>Amazon Chime Developer Guide</i>.
+%% and attendee ID.
+%%
+%% For more information about the Amazon Chime SDK, see Using the Amazon
+%% Chime SDK in the Amazon Chime Developer Guide.
 get_attendee(Client, AttendeeId, MeetingId)
   when is_map(Client) ->
     get_attendee(Client, AttendeeId, MeetingId, []).
@@ -1238,9 +1234,10 @@ get_global_settings(Client, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the Amazon Chime SDK meeting details for the specified meeting
-%% ID. For more information about the Amazon Chime SDK, see <a
-%% href="https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html">Using
-%% the Amazon Chime SDK</a> in the <i>Amazon Chime Developer Guide</i>.
+%% ID.
+%%
+%% For more information about the Amazon Chime SDK, see Using the Amazon
+%% Chime SDK in the Amazon Chime Developer Guide.
 get_meeting(Client, MeetingId)
   when is_map(Client) ->
     get_meeting(Client, MeetingId, []).
@@ -1321,10 +1318,10 @@ get_proxy_session(Client, ProxySessionId, VoiceConnectorId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the retention settings for the specified Amazon Chime Enterprise
-%% account. For more information about retention settings, see <a
-%% href="https://docs.aws.amazon.com/chime/latest/ag/chat-retention.html">Managing
-%% Chat Retention Policies</a> in the <i>Amazon Chime Administration
-%% Guide</i>.
+%% account.
+%%
+%% For more information about retention settings, see Managing Chat Retention
+%% Policies in the Amazon Chime Administration Guide.
 get_retention_settings(Client, AccountId)
   when is_map(Client) ->
     get_retention_settings(Client, AccountId, []).
@@ -1359,7 +1356,7 @@ get_room(Client, AccountId, RoomId, Options)
 %% address, license type, and personal meeting PIN.
 %%
 %% To retrieve user details with an email address instead of a user ID, use
-%% the <a>ListUsers</a> action, and then filter by email address.
+%% the `ListUsers` action, and then filter by email address.
 get_user(Client, AccountId, UserId)
   when is_map(Client) ->
     get_user(Client, AccountId, UserId, []).
@@ -1423,8 +1420,7 @@ get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves details for the specified Amazon Chime Voice Connector
-%% group, such as timestamps, name, and associated
-%% <code>VoiceConnectorItems</code>.
+%% group, such as timestamps, name, and associated `VoiceConnectorItems`.
 get_voice_connector_group(Client, VoiceConnectorGroupId)
   when is_map(Client) ->
     get_voice_connector_group(Client, VoiceConnectorGroupId, []).
@@ -1440,8 +1436,10 @@ get_voice_connector_group(Client, VoiceConnectorGroupId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the logging configuration details for the specified Amazon
-%% Chime Voice Connector. Shows whether SIP message logs are enabled for
-%% sending to Amazon CloudWatch Logs.
+%% Chime Voice Connector.
+%%
+%% Shows whether SIP message logs are enabled for sending to Amazon
+%% CloudWatch Logs.
 get_voice_connector_logging_configuration(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_logging_configuration(Client, VoiceConnectorId, []).
@@ -1489,9 +1487,10 @@ get_voice_connector_proxy(Client, VoiceConnectorId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the streaming configuration details for the specified
-%% Amazon Chime Voice Connector. Shows whether media streaming is enabled for
-%% sending to Amazon Kinesis. It also shows the retention period, in hours,
-%% for the Amazon Kinesis data.
+%% Amazon Chime Voice Connector.
+%%
+%% Shows whether media streaming is enabled for sending to Amazon Kinesis. It
+%% also shows the retention period, in hours, for the Amazon Kinesis data.
 get_voice_connector_streaming_configuration(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_streaming_configuration(Client, VoiceConnectorId, []).
@@ -1522,9 +1521,9 @@ get_voice_connector_termination(Client, VoiceConnectorId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves information about the last time a SIP <code>OPTIONS</code>
-%% ping was received from your SIP infrastructure for the specified Amazon
-%% Chime Voice Connector.
+%% @doc Retrieves information about the last time a SIP `OPTIONS` ping was
+%% received from your SIP infrastructure for the specified Amazon Chime Voice
+%% Connector.
 get_voice_connector_termination_health(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_termination_health(Client, VoiceConnectorId, []).
@@ -1540,8 +1539,9 @@ get_voice_connector_termination_health(Client, VoiceConnectorId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Sends email to a maximum of 50 users, inviting them to the specified
-%% Amazon Chime <code>Team</code> account. Only <code>Team</code> account
-%% types are currently supported for this action.
+%% Amazon Chime `Team` account.
+%%
+%% Only `Team` account types are currently supported for this action.
 invite_users(Client, AccountId, Input) ->
     invite_users(Client, AccountId, Input, []).
 invite_users(Client, AccountId, Input0, Options) ->
@@ -1558,8 +1558,10 @@ invite_users(Client, AccountId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the Amazon Chime accounts under the administrator's AWS
-%% account. You can filter accounts by account name prefix. To find out which
-%% Amazon Chime account a user belongs to, you can filter by the user's email
+%% account.
+%%
+%% You can filter accounts by account name prefix. To find out which Amazon
+%% Chime account a user belongs to, you can filter by the user's email
 %% address, which returns one account result.
 list_accounts(Client, MaxResults, Name, NextToken, UserEmail)
   when is_map(Client) ->
@@ -1597,10 +1599,10 @@ list_attendee_tags(Client, AttendeeId, MeetingId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the attendees for the specified Amazon Chime SDK meeting. For
-%% more information about the Amazon Chime SDK, see <a
-%% href="https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html">Using
-%% the Amazon Chime SDK</a> in the <i>Amazon Chime Developer Guide</i>.
+%% @doc Lists the attendees for the specified Amazon Chime SDK meeting.
+%%
+%% For more information about the Amazon Chime SDK, see Using the Amazon
+%% Chime SDK in the Amazon Chime Developer Guide.
 list_attendees(Client, MeetingId, MaxResults, NextToken)
   when is_map(Client) ->
     list_attendees(Client, MeetingId, MaxResults, NextToken, []).
@@ -1656,10 +1658,10 @@ list_meeting_tags(Client, MeetingId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists up to 100 active Amazon Chime SDK meetings. For more
-%% information about the Amazon Chime SDK, see <a
-%% href="https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html">Using
-%% the Amazon Chime SDK</a> in the <i>Amazon Chime Developer Guide</i>.
+%% @doc Lists up to 100 active Amazon Chime SDK meetings.
+%%
+%% For more information about the Amazon Chime SDK, see Using the Amazon
+%% Chime SDK in the Amazon Chime Developer Guide.
 list_meetings(Client, MaxResults, NextToken)
   when is_map(Client) ->
     list_meetings(Client, MaxResults, NextToken, []).
@@ -1771,8 +1773,10 @@ list_room_memberships(Client, AccountId, RoomId, MaxResults, NextToken, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the room details for the specified Amazon Chime Enterprise
-%% account. Optionally, filter the results by a member ID (user ID or bot ID)
-%% to see a list of rooms that the member belongs to.
+%% account.
+%%
+%% Optionally, filter the results by a member ID (user ID or bot ID) to see a
+%% list of rooms that the member belongs to.
 list_rooms(Client, AccountId, MaxResults, MemberId, NextToken)
   when is_map(Client) ->
     list_rooms(Client, AccountId, MaxResults, MemberId, NextToken, []).
@@ -1813,6 +1817,7 @@ list_tags_for_resource(Client, ResourceARN, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the users that belong to the specified Amazon Chime account.
+%%
 %% You can specify an email address to list only the user that the email
 %% address belongs to.
 list_users(Client, AccountId, MaxResults, NextToken, UserEmail, UserType)
@@ -1912,8 +1917,10 @@ logout_user(Client, AccountId, UserId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an events configuration that allows a bot to receive outgoing
-%% events sent by Amazon Chime. Choose either an HTTPS endpoint or a Lambda
-%% function ARN. For more information, see <a>Bot</a>.
+%% events sent by Amazon Chime.
+%%
+%% Choose either an HTTPS endpoint or a Lambda function ARN. For more
+%% information, see `Bot`.
 put_events_configuration(Client, AccountId, BotId, Input) ->
     put_events_configuration(Client, AccountId, BotId, Input, []).
 put_events_configuration(Client, AccountId, BotId, Input0, Options) ->
@@ -1930,19 +1937,16 @@ put_events_configuration(Client, AccountId, BotId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Puts retention settings for the specified Amazon Chime Enterprise
-%% account. We recommend using AWS CloudTrail to monitor usage of this API
-%% for your account. For more information, see <a
-%% href="https://docs.aws.amazon.com/chime/latest/ag/cloudtrail.html">Logging
-%% Amazon Chime API Calls with AWS CloudTrail</a> in the <i>Amazon Chime
-%% Administration Guide</i>.
+%% account.
+%%
+%% We recommend using AWS CloudTrail to monitor usage of this API for your
+%% account. For more information, see Logging Amazon Chime API Calls with AWS
+%% CloudTrail in the Amazon Chime Administration Guide.
 %%
 %% To turn off existing retention settings, remove the number of days from
-%% the corresponding <b>RetentionDays</b> field in the
-%% <b>RetentionSettings</b> object. For more information about retention
-%% settings, see <a
-%% href="https://docs.aws.amazon.com/chime/latest/ag/chat-retention.html">Managing
-%% Chat Retention Policies</a> in the <i>Amazon Chime Administration
-%% Guide</i>.
+%% the corresponding RetentionDays field in the RetentionSettings object. For
+%% more information about retention settings, see Managing Chat Retention
+%% Policies in the Amazon Chime Administration Guide.
 put_retention_settings(Client, AccountId, Input) ->
     put_retention_settings(Client, AccountId, Input, []).
 put_retention_settings(Client, AccountId, Input0, Options) ->
@@ -1960,8 +1964,10 @@ put_retention_settings(Client, AccountId, Input0, Options) ->
 
 %% @doc Puts emergency calling configuration details to the specified Amazon
 %% Chime Voice Connector, such as emergency phone numbers and calling
-%% countries. Origination and termination settings must be enabled for the
-%% Amazon Chime Voice Connector before emergency calling can be configured.
+%% countries.
+%%
+%% Origination and termination settings must be enabled for the Amazon Chime
+%% Voice Connector before emergency calling can be configured.
 put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input) ->
     put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input, []).
 put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input0, Options) ->
@@ -1978,8 +1984,10 @@ put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, In
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds a logging configuration for the specified Amazon Chime Voice
-%% Connector. The logging configuration specifies whether SIP message logs
-%% are enabled for sending to Amazon CloudWatch Logs.
+%% Connector.
+%%
+%% The logging configuration specifies whether SIP message logs are enabled
+%% for sending to Amazon CloudWatch Logs.
 put_voice_connector_logging_configuration(Client, VoiceConnectorId, Input) ->
     put_voice_connector_logging_configuration(Client, VoiceConnectorId, Input, []).
 put_voice_connector_logging_configuration(Client, VoiceConnectorId, Input0, Options) ->
@@ -1998,10 +2006,8 @@ put_voice_connector_logging_configuration(Client, VoiceConnectorId, Input0, Opti
 %% @doc Adds origination settings for the specified Amazon Chime Voice
 %% Connector.
 %%
-%% <note> If emergency calling is configured for the Amazon Chime Voice
-%% Connector, it must be deleted prior to turning off origination settings.
-%%
-%% </note>
+%% If emergency calling is configured for the Amazon Chime Voice Connector,
+%% it must be deleted prior to turning off origination settings.
 put_voice_connector_origination(Client, VoiceConnectorId, Input) ->
     put_voice_connector_origination(Client, VoiceConnectorId, Input, []).
 put_voice_connector_origination(Client, VoiceConnectorId, Input0, Options) ->
@@ -2035,9 +2041,11 @@ put_voice_connector_proxy(Client, VoiceConnectorId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds a streaming configuration for the specified Amazon Chime Voice
-%% Connector. The streaming configuration specifies whether media streaming
-%% is enabled for sending to Amazon Kinesis. It also sets the retention
-%% period, in hours, for the Amazon Kinesis data.
+%% Connector.
+%%
+%% The streaming configuration specifies whether media streaming is enabled
+%% for sending to Amazon Kinesis. It also sets the retention period, in
+%% hours, for the Amazon Kinesis data.
 put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input) ->
     put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input, []).
 put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input0, Options) ->
@@ -2056,10 +2064,8 @@ put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input0, Op
 %% @doc Adds termination settings for the specified Amazon Chime Voice
 %% Connector.
 %%
-%% <note> If emergency calling is configured for the Amazon Chime Voice
-%% Connector, it must be deleted prior to turning off termination settings.
-%%
-%% </note>
+%% If emergency calling is configured for the Amazon Chime Voice Connector,
+%% it must be deleted prior to turning off termination settings.
 put_voice_connector_termination(Client, VoiceConnectorId, Input) ->
     put_voice_connector_termination(Client, VoiceConnectorId, Input, []).
 put_voice_connector_termination(Client, VoiceConnectorId, Input0, Options) ->
@@ -2143,8 +2149,9 @@ regenerate_security_token(Client, AccountId, BotId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Resets the personal meeting PIN for the specified user on an Amazon
-%% Chime account. Returns the <a>User</a> object with the updated personal
-%% meeting PIN.
+%% Chime account.
+%%
+%% Returns the `User` object with the updated personal meeting PIN.
 reset_personal_p_i_n(Client, AccountId, UserId, Input) ->
     reset_personal_p_i_n(Client, AccountId, UserId, Input, []).
 reset_personal_p_i_n(Client, AccountId, UserId, Input0, Options) ->
@@ -2160,8 +2167,8 @@ reset_personal_p_i_n(Client, AccountId, UserId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Moves a phone number from the <b>Deletion queue</b> back into the
-%% phone number <b>Inventory</b>.
+%% @doc Moves a phone number from the Deletion queue back into the phone
+%% number Inventory.
 restore_phone_number(Client, PhoneNumberId, Input) ->
     restore_phone_number(Client, PhoneNumberId, Input, []).
 restore_phone_number(Client, PhoneNumberId, Input0, Options) ->
@@ -2304,6 +2311,7 @@ untag_resource(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates account details for the specified Amazon Chime account.
+%%
 %% Currently, only account name updates are supported for this action.
 update_account(Client, AccountId, Input) ->
     update_account(Client, AccountId, Input, []).
@@ -2320,11 +2328,11 @@ update_account(Client, AccountId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the settings for the specified Amazon Chime account. You can
-%% update settings for remote control of shared screens, or for the dial-out
-%% option. For more information about these settings, see <a
-%% href="https://docs.aws.amazon.com/chime/latest/ag/policies.html">Use the
-%% Policies Page</a> in the <i>Amazon Chime Administration Guide</i>.
+%% @doc Updates the settings for the specified Amazon Chime account.
+%%
+%% You can update settings for remote control of shared screens, or for the
+%% dial-out option. For more information about these settings, see Use the
+%% Policies Page in the Amazon Chime Administration Guide.
 update_account_settings(Client, AccountId, Input) ->
     update_account_settings(Client, AccountId, Input, []).
 update_account_settings(Client, AccountId, Input0, Options) ->
@@ -2375,9 +2383,10 @@ update_global_settings(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates phone number details, such as product type or calling name,
-%% for the specified phone number ID. You can update one phone number detail
-%% at a time. For example, you can update either the product type or the
-%% calling name in one action.
+%% for the specified phone number ID.
+%%
+%% You can update one phone number detail at a time. For example, you can
+%% update either the product type or the calling name in one action.
 %%
 %% For toll-free numbers, you must use the Amazon Chime Voice Connector
 %% product type.
@@ -2401,9 +2410,10 @@ update_phone_number(Client, PhoneNumberId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the phone number settings for the administrator's AWS
-%% account, such as the default outbound calling name. You can update the
-%% default outbound calling name once every seven days. Outbound calling
-%% names can take up to 72 hours to update.
+%% account, such as the default outbound calling name.
+%%
+%% You can update the default outbound calling name once every seven days.
+%% Outbound calling names can take up to 72 hours to update.
 update_phone_number_settings(Client, Input) ->
     update_phone_number_settings(Client, Input, []).
 update_phone_number_settings(Client, Input0, Options) ->
@@ -2454,9 +2464,11 @@ update_room(Client, AccountId, RoomId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates room membership details, such as the member role, for a room
-%% in an Amazon Chime Enterprise account. The member role designates whether
-%% the member is a chat room administrator or a general chat room member. The
-%% member role can be updated only for user IDs.
+%% in an Amazon Chime Enterprise account.
+%%
+%% The member role designates whether the member is a chat room administrator
+%% or a general chat room member. The member role can be updated only for
+%% user IDs.
 update_room_membership(Client, AccountId, MemberId, RoomId, Input) ->
     update_room_membership(Client, AccountId, MemberId, RoomId, Input, []).
 update_room_membership(Client, AccountId, MemberId, RoomId, Input0, Options) ->
@@ -2472,8 +2484,9 @@ update_room_membership(Client, AccountId, MemberId, RoomId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates user details for a specified user ID. Currently, only
-%% <code>LicenseType</code> updates are supported for this action.
+%% @doc Updates user details for a specified user ID.
+%%
+%% Currently, only `LicenseType` updates are supported for this action.
 update_user(Client, AccountId, UserId, Input) ->
     update_user(Client, AccountId, UserId, Input, []).
 update_user(Client, AccountId, UserId, Input0, Options) ->
@@ -2586,6 +2599,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{endpoint := Endpoint}) ->

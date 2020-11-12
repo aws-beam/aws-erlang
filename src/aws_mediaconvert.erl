@@ -78,8 +78,9 @@ associate_certificate(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Permanently cancel a job. Once you have canceled a job, you can't
-%% start it again.
+%% @doc Permanently cancel a job.
+%%
+%% Once you have canceled a job, you can't start it again.
 cancel_job(Client, Id, Input) ->
     cancel_job(Client, Id, Input, []).
 cancel_job(Client, Id, Input0, Options) ->
@@ -95,8 +96,9 @@ cancel_job(Client, Id, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Create a new transcoding job. For information about jobs and job
-%% settings, see the User Guide at
+%% @doc Create a new transcoding job.
+%%
+%% For information about jobs and job settings, see the User Guide at
 %% http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 create_job(Client, Input) ->
     create_job(Client, Input, []).
@@ -113,8 +115,9 @@ create_job(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Create a new job template. For information about job templates see
-%% the User Guide at
+%% @doc Create a new job template.
+%%
+%% For information about job templates see the User Guide at
 %% http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 create_job_template(Client, Input) ->
     create_job_template(Client, Input, []).
@@ -131,8 +134,10 @@ create_job_template(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Create a new preset. For information about job templates see the User
-%% Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
+%% @doc Create a new preset.
+%%
+%% For information about job templates see the User Guide at
+%% http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 create_preset(Client, Input) ->
     create_preset(Client, Input, []).
 create_preset(Client, Input0, Options) ->
@@ -148,8 +153,9 @@ create_preset(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Create a new transcoding queue. For information about queues, see
-%% Working With Queues in the User Guide at
+%% @doc Create a new transcoding queue.
+%%
+%% For information about queues, see Working With Queues in the User Guide at
 %% https://docs.aws.amazon.com/mediaconvert/latest/ug/working-with-queues.html
 create_queue(Client, Input) ->
     create_queue(Client, Input, []).
@@ -309,10 +315,11 @@ get_queue(Client, Name, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieve a JSON array of up to twenty of your job templates. This
-%% will return the templates themselves, not just a list of them. To retrieve
-%% the next twenty templates, use the nextToken string returned with the
-%% array
+%% @doc Retrieve a JSON array of up to twenty of your job templates.
+%%
+%% This will return the templates themselves, not just a list of them. To
+%% retrieve the next twenty templates, use the nextToken string returned with
+%% the array
 list_job_templates(Client, Category, ListBy, MaxResults, NextToken, Order)
   when is_map(Client) ->
     list_job_templates(Client, Category, ListBy, MaxResults, NextToken, Order, []).
@@ -336,10 +343,12 @@ list_job_templates(Client, Category, ListBy, MaxResults, NextToken, Order, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieve a JSON array of up to twenty of your most recently created
-%% jobs. This array includes in-process, completed, and errored jobs. This
-%% will return the jobs themselves, not just a list of the jobs. To retrieve
-%% the twenty next most recent jobs, use the nextToken string returned with
-%% the array.
+%% jobs.
+%%
+%% This array includes in-process, completed, and errored jobs. This will
+%% return the jobs themselves, not just a list of the jobs. To retrieve the
+%% twenty next most recent jobs, use the nextToken string returned with the
+%% array.
 list_jobs(Client, MaxResults, NextToken, Order, Queue, Status)
   when is_map(Client) ->
     list_jobs(Client, MaxResults, NextToken, Order, Queue, Status, []).
@@ -362,9 +371,11 @@ list_jobs(Client, MaxResults, NextToken, Order, Queue, Status, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieve a JSON array of up to twenty of your presets. This will
-%% return the presets themselves, not just a list of them. To retrieve the
-%% next twenty presets, use the nextToken string returned with the array.
+%% @doc Retrieve a JSON array of up to twenty of your presets.
+%%
+%% This will return the presets themselves, not just a list of them. To
+%% retrieve the next twenty presets, use the nextToken string returned with
+%% the array.
 list_presets(Client, Category, ListBy, MaxResults, NextToken, Order)
   when is_map(Client) ->
     list_presets(Client, Category, ListBy, MaxResults, NextToken, Order, []).
@@ -387,9 +398,11 @@ list_presets(Client, Category, ListBy, MaxResults, NextToken, Order, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieve a JSON array of up to twenty of your queues. This will
-%% return the queues themselves, not just a list of them. To retrieve the
-%% next twenty queues, use the nextToken string returned with the array.
+%% @doc Retrieve a JSON array of up to twenty of your queues.
+%%
+%% This will return the queues themselves, not just a list of them. To
+%% retrieve the next twenty queues, use the nextToken string returned with
+%% the array.
 list_queues(Client, ListBy, MaxResults, NextToken, Order)
   when is_map(Client) ->
     list_queues(Client, ListBy, MaxResults, NextToken, Order, []).
@@ -426,8 +439,9 @@ list_tags_for_resource(Client, Arn, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Add tags to a MediaConvert queue, preset, or job template. For
-%% information about tagging, see the User Guide at
+%% @doc Add tags to a MediaConvert queue, preset, or job template.
+%%
+%% For information about tagging, see the User Guide at
 %% https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
@@ -444,8 +458,9 @@ tag_resource(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Remove tags from a MediaConvert queue, preset, or job template. For
-%% information about tagging, see the User Guide at
+%% @doc Remove tags from a MediaConvert queue, preset, or job template.
+%%
+%% For information about tagging, see the User Guide at
 %% https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html
 untag_resource(Client, Arn, Input) ->
     untag_resource(Client, Arn, Input, []).
@@ -556,6 +571,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

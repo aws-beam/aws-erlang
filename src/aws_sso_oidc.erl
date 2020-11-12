@@ -3,28 +3,26 @@
 
 %% @doc AWS Single Sign-On (SSO) OpenID Connect (OIDC) is a web service that
 %% enables a client (such as AWS CLI or a native application) to register
-%% with AWS SSO. The service also enables the client to fetch the user’s
-%% access token upon successful authentication and authorization with AWS
-%% SSO. This service conforms with the OAuth 2.0 based implementation of the
-%% device authorization grant standard (<a
-%% href="https://tools.ietf.org/html/rfc8628">https://tools.ietf.org/html/rfc8628</a>).
+%% with AWS SSO.
 %%
-%% For general information about AWS SSO, see <a
-%% href="https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html">What
-%% is AWS Single Sign-On?</a> in the <i>AWS SSO User Guide</i>.
+%% The service also enables the client to fetch the user’s access token upon
+%% successful authentication and authorization with AWS SSO. This service
+%% conforms with the OAuth 2.0 based implementation of the device
+%% authorization grant standard ([https://tools.ietf.org/html/rfc8628]).
+%%
+%% For general information about AWS SSO, see What is AWS Single Sign-On? in
+%% the AWS SSO User Guide.
 %%
 %% This API reference guide describes the AWS SSO OIDC operations that you
 %% can call programatically and includes detailed information on data types
 %% and errors.
 %%
-%% <note> AWS provides SDKs that consist of libraries and sample code for
-%% various programming languages and platforms such as Java, Ruby, .Net, iOS,
-%% and Android. The SDKs provide a convenient way to create programmatic
-%% access to AWS SSO and other AWS services. For more information about the
-%% AWS SDKs, including how to download and install them, see <a
-%% href="http://aws.amazon.com/tools/">Tools for Amazon Web Services</a>.
-%%
-%% </note>
+%% AWS provides SDKs that consist of libraries and sample code for various
+%% programming languages and platforms such as Java, Ruby, .Net, iOS, and
+%% Android. The SDKs provide a convenient way to create programmatic access
+%% to AWS SSO and other AWS services. For more information about the AWS
+%% SDKs, including how to download and install them, see Tools for Amazon Web
+%% Services.
 -module(aws_sso_oidc).
 
 -export([create_token/2,
@@ -40,9 +38,10 @@
 %% API
 %%====================================================================
 
-%% @doc Creates and returns an access token for the authorized client. The
-%% access token issued will be used to fetch short-term credentials for the
-%% assigned roles in the AWS account.
+%% @doc Creates and returns an access token for the authorized client.
+%%
+%% The access token issued will be used to fetch short-term credentials for
+%% the assigned roles in the AWS account.
 create_token(Client, Input) ->
     create_token(Client, Input, []).
 create_token(Client, Input0, Options) ->
@@ -58,9 +57,10 @@ create_token(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Registers a client with AWS SSO. This allows clients to initiate
-%% device authorization. The output should be persisted for reuse through
-%% many authentication requests.
+%% @doc Registers a client with AWS SSO.
+%%
+%% This allows clients to initiate device authorization. The output should be
+%% persisted for reuse through many authentication requests.
 register_client(Client, Input) ->
     register_client(Client, Input, []).
 register_client(Client, Input0, Options) ->
@@ -139,6 +139,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

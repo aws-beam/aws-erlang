@@ -2,26 +2,24 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc AWS Single Sign-On Portal is a web service that makes it easy for you
-%% to assign user access to AWS SSO resources such as the user portal. Users
-%% can get AWS account applications and roles assigned to them and get
+%% to assign user access to AWS SSO resources such as the user portal.
+%%
+%% Users can get AWS account applications and roles assigned to them and get
 %% federated into the application.
 %%
-%% For general information about AWS SSO, see <a
-%% href="https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html">What
-%% is AWS Single Sign-On?</a> in the <i>AWS SSO User Guide</i>.
+%% For general information about AWS SSO, see What is AWS Single Sign-On? in
+%% the AWS SSO User Guide.
 %%
 %% This API reference guide describes the AWS SSO Portal operations that you
 %% can call programatically and includes detailed information on data types
 %% and errors.
 %%
-%% <note> AWS provides SDKs that consist of libraries and sample code for
-%% various programming languages and platforms, such as Java, Ruby, .Net,
-%% iOS, or Android. The SDKs provide a convenient way to create programmatic
-%% access to AWS SSO and other AWS services. For more information about the
-%% AWS SDKs, including how to download and install them, see <a
-%% href="http://aws.amazon.com/tools/">Tools for Amazon Web Services</a>.
-%%
-%% </note>
+%% AWS provides SDKs that consist of libraries and sample code for various
+%% programming languages and platforms, such as Java, Ruby, .Net, iOS, or
+%% Android. The SDKs provide a convenient way to create programmatic access
+%% to AWS SSO and other AWS services. For more information about the AWS
+%% SDKs, including how to download and install them, see Tools for Amazon Web
+%% Services.
 -module(aws_sso).
 
 -export([get_role_credentials/4,
@@ -90,11 +88,11 @@ list_account_roles(Client, AccountId, MaxResults, NextToken, AccessToken, Option
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all AWS accounts assigned to the user. These AWS accounts are
-%% assigned by the administrator of the account. For more information, see <a
-%% href="https://docs.aws.amazon.com/singlesignon/latest/userguide/useraccess.html#assignusers">Assign
-%% User Access</a> in the <i>AWS SSO User Guide</i>. This operation returns a
-%% paginated response.
+%% @doc Lists all AWS accounts assigned to the user.
+%%
+%% These AWS accounts are assigned by the administrator of the account. For
+%% more information, see Assign User Access in the AWS SSO User Guide. This
+%% operation returns a paginated response.
 list_accounts(Client, MaxResults, NextToken, AccessToken)
   when is_map(Client) ->
     list_accounts(Client, MaxResults, NextToken, AccessToken, []).
@@ -183,6 +181,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

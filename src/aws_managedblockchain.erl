@@ -1,8 +1,11 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc <p/> Amazon Managed Blockchain is a fully managed service for
-%% creating and managing blockchain networks using open source frameworks.
+%% @doc
+%%
+%% Amazon Managed Blockchain is a fully managed service for creating and
+%% managing blockchain networks using open source frameworks.
+%%
 %% Blockchain allows you to build applications where multiple parties can
 %% securely and transparently run transactions and share data without the
 %% need for a trusted, central authority. Currently, Managed Blockchain
@@ -106,7 +109,9 @@ create_node(Client, MemberId, NetworkId, Input0, Options) ->
 
 %% @doc Creates a proposal for a change to the network that other members of
 %% the network can vote on, for example, a proposal to add a new member to
-%% the network. Any member can create a proposal.
+%% the network.
+%%
+%% Any member can create a proposal.
 create_proposal(Client, NetworkId, Input) ->
     create_proposal(Client, NetworkId, Input, []).
 create_proposal(Client, NetworkId, Input0, Options) ->
@@ -122,14 +127,15 @@ create_proposal(Client, NetworkId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a member. Deleting a member removes the member and all
-%% associated resources from the network. <code>DeleteMember</code> can only
-%% be called for a specified <code>MemberId</code> if the principal
-%% performing the action is associated with the AWS account that owns the
-%% member. In all other cases, the <code>DeleteMember</code> action is
+%% @doc Deletes a member.
+%%
+%% Deleting a member removes the member and all associated resources from the
+%% network. `DeleteMember` can only be called for a specified `MemberId` if
+%% the principal performing the action is associated with the AWS account
+%% that owns the member. In all other cases, the `DeleteMember` action is
 %% carried out as the result of an approved proposal to remove a member. If
-%% <code>MemberId</code> is the last member in a network specified by the
-%% last AWS account, the network is deleted also.
+%% `MemberId` is the last member in a network specified by the last AWS
+%% account, the network is deleted also.
 delete_member(Client, MemberId, NetworkId, Input) ->
     delete_member(Client, MemberId, NetworkId, Input, []).
 delete_member(Client, MemberId, NetworkId, Input0, Options) ->
@@ -145,8 +151,9 @@ delete_member(Client, MemberId, NetworkId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a peer node from a member that your AWS account owns. All
-%% data on the node is lost and cannot be recovered.
+%% @doc Deletes a peer node from a member that your AWS account owns.
+%%
+%% All data on the node is lost and cannot be recovered.
 delete_node(Client, MemberId, NetworkId, NodeId, Input) ->
     delete_node(Client, MemberId, NetworkId, NodeId, Input, []).
 delete_node(Client, MemberId, NetworkId, NodeId, Input0, Options) ->
@@ -222,7 +229,7 @@ get_proposal(Client, NetworkId, ProposalId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a listing of all invitations made on the specified network.
+%% @doc Returns a listing of all invitations for the current AWS account.
 list_invitations(Client, MaxResults, NextToken)
   when is_map(Client) ->
     list_invitations(Client, MaxResults, NextToken, []).
@@ -353,9 +360,10 @@ list_proposals(Client, NetworkId, MaxResults, NextToken, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Rejects an invitation to join a network. This action can be called by
-%% a principal in an AWS account that has received an invitation to create a
-%% member and join a network.
+%% @doc Rejects an invitation to join a network.
+%%
+%% This action can be called by a principal in an AWS account that has
+%% received an invitation to create a member and join a network.
 reject_invitation(Client, InvitationId, Input) ->
     reject_invitation(Client, InvitationId, Input, []).
 reject_invitation(Client, InvitationId, Input0, Options) ->
@@ -403,9 +411,10 @@ update_node(Client, MemberId, NetworkId, NodeId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Casts a vote for a specified <code>ProposalId</code> on behalf of a
-%% member. The member to vote as, specified by <code>VoterMemberId</code>,
-%% must be in the same AWS account as the principal that calls the action.
+%% @doc Casts a vote for a specified `ProposalId` on behalf of a member.
+%%
+%% The member to vote as, specified by `VoterMemberId`, must be in the same
+%% AWS account as the principal that calls the action.
 vote_on_proposal(Client, NetworkId, ProposalId, Input) ->
     vote_on_proposal(Client, NetworkId, ProposalId, Input, []).
 vote_on_proposal(Client, NetworkId, ProposalId, Input0, Options) ->
@@ -467,6 +476,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

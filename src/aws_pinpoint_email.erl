@@ -1,24 +1,23 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc <fullname>Amazon Pinpoint Email Service</fullname>
+%% @doc Amazon Pinpoint Email Service
 %%
-%% Welcome to the <i>Amazon Pinpoint Email API Reference</i>. This guide
-%% provides information about the Amazon Pinpoint Email API (version 1.0),
-%% including supported operations, data types, parameters, and schemas.
+%% Welcome to the Amazon Pinpoint Email API Reference.
 %%
-%% <a href="https://aws.amazon.com/pinpoint">Amazon Pinpoint</a> is an AWS
-%% service that you can use to engage with your customers across multiple
-%% messaging channels. You can use Amazon Pinpoint to send email, SMS text
-%% messages, voice messages, and push notifications. The Amazon Pinpoint
-%% Email API provides programmatic access to options that are unique to the
-%% email channel and supplement the options provided by the Amazon Pinpoint
-%% API.
+%% This guide provides information about the Amazon Pinpoint Email API
+%% (version 1.0), including supported operations, data types, parameters, and
+%% schemas.
+%%
+%% Amazon Pinpoint is an AWS service that you can use to engage with your
+%% customers across multiple messaging channels. You can use Amazon Pinpoint
+%% to send email, SMS text messages, voice messages, and push notifications.
+%% The Amazon Pinpoint Email API provides programmatic access to options that
+%% are unique to the email channel and supplement the options provided by the
+%% Amazon Pinpoint API.
 %%
 %% If you're new to Amazon Pinpoint, you might find it helpful to also review
-%% the <a
-%% href="https://docs.aws.amazon.com/pinpoint/latest/developerguide/welcome.html">Amazon
-%% Pinpoint Developer Guide</a>. The <i>Amazon Pinpoint Developer Guide</i>
+%% the Amazon Pinpoint Developer Guide. The Amazon Pinpoint Developer Guide
 %% provides tutorials, code samples, and procedures that demonstrate how to
 %% use Amazon Pinpoint features programmatically and how to integrate Amazon
 %% Pinpoint functionality into mobile apps and other types of applications.
@@ -28,12 +27,10 @@
 %%
 %% The Amazon Pinpoint Email API is available in several AWS Regions and it
 %% provides an endpoint for each of these Regions. For a list of all the
-%% Regions and endpoints where the API is currently available, see <a
-%% href="https://docs.aws.amazon.com/general/latest/gr/rande.html#pinpoint_region">AWS
-%% Service Endpoints</a> in the <i>Amazon Web Services General Reference</i>.
-%% To learn more about AWS Regions, see <a
-%% href="https://docs.aws.amazon.com/general/latest/gr/rande-manage.html">Managing
-%% AWS Regions</a> in the <i>Amazon Web Services General Reference</i>.
+%% Regions and endpoints where the API is currently available, see AWS
+%% Service Endpoints in the Amazon Web Services General Reference. To learn
+%% more about AWS Regions, see Managing AWS Regions in the Amazon Web
+%% Services General Reference.
 %%
 %% In each Region, AWS maintains multiple Availability Zones. These
 %% Availability Zones are physically isolated from each other, but are united
@@ -41,9 +38,7 @@
 %% connections. These Availability Zones enable us to provide very high
 %% levels of availability and redundancy, while also minimizing latency. To
 %% learn more about the number of Availability Zones that are available in
-%% each Region, see <a
-%% href="http://aws.amazon.com/about-aws/global-infrastructure/">AWS Global
-%% Infrastructure</a>.
+%% each Region, see AWS Global Infrastructure.
 -module(aws_pinpoint_email).
 
 -export([create_configuration_set/2,
@@ -137,12 +132,13 @@
 %% API
 %%====================================================================
 
-%% @doc Create a configuration set. <i>Configuration sets</i> are groups of
-%% rules that you can apply to the emails you send using Amazon Pinpoint. You
-%% apply a configuration set to an email by including a reference to the
-%% configuration set in the headers of the email. When you apply a
-%% configuration set to an email, all of the rules in that configuration set
-%% are applied to the email.
+%% @doc Create a configuration set.
+%%
+%% Configuration sets are groups of rules that you can apply to the emails
+%% you send using Amazon Pinpoint. You apply a configuration set to an email
+%% by including a reference to the configuration set in the headers of the
+%% email. When you apply a configuration set to an email, all of the rules in
+%% that configuration set are applied to the email.
 create_configuration_set(Client, Input) ->
     create_configuration_set(Client, Input, []).
 create_configuration_set(Client, Input0, Options) ->
@@ -158,13 +154,14 @@ create_configuration_set(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Create an event destination. In Amazon Pinpoint, <i>events</i>
-%% include message sends, deliveries, opens, clicks, bounces, and complaints.
-%% <i>Event destinations</i> are places that you can send information about
-%% these events to. For example, you can send event data to Amazon SNS to
-%% receive notifications when you receive bounces or complaints, or you can
-%% use Amazon Kinesis Data Firehose to stream data to Amazon S3 for long-term
-%% storage.
+%% @doc Create an event destination.
+%%
+%% In Amazon Pinpoint, events include message sends, deliveries, opens,
+%% clicks, bounces, and complaints. Event destinations are places that you
+%% can send information about these events to. For example, you can send
+%% event data to Amazon SNS to receive notifications when you receive bounces
+%% or complaints, or you can use Amazon Kinesis Data Firehose to stream data
+%% to Amazon S3 for long-term storage.
 %%
 %% A single configuration set can include more than one event destination.
 create_configuration_set_event_destination(Client, ConfigurationSetName, Input) ->
@@ -182,11 +179,13 @@ create_configuration_set_event_destination(Client, ConfigurationSetName, Input0,
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Create a new pool of dedicated IP addresses. A pool can include one
-%% or more dedicated IP addresses that are associated with your Amazon
-%% Pinpoint account. You can associate a pool with a configuration set. When
-%% you send an email that uses that configuration set, Amazon Pinpoint sends
-%% it using only the IP addresses in the associated pool.
+%% @doc Create a new pool of dedicated IP addresses.
+%%
+%% A pool can include one or more dedicated IP addresses that are associated
+%% with your Amazon Pinpoint account. You can associate a pool with a
+%% configuration set. When you send an email that uses that configuration
+%% set, Amazon Pinpoint sends it using only the IP addresses in the
+%% associated pool.
 create_dedicated_ip_pool(Client, Input) ->
     create_dedicated_ip_pool(Client, Input, []).
 create_dedicated_ip_pool(Client, Input0, Options) ->
@@ -202,14 +201,15 @@ create_dedicated_ip_pool(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Create a new predictive inbox placement test. Predictive inbox
-%% placement tests can help you predict how your messages will be handled by
-%% various email providers around the world. When you perform a predictive
-%% inbox placement test, you provide a sample message that contains the
-%% content that you plan to send to your customers. Amazon Pinpoint then
-%% sends that message to special email addresses spread across several major
-%% email providers. After about 24 hours, the test is complete, and you can
-%% use the <code>GetDeliverabilityTestReport</code> operation to view the
+%% @doc Create a new predictive inbox placement test.
+%%
+%% Predictive inbox placement tests can help you predict how your messages
+%% will be handled by various email providers around the world. When you
+%% perform a predictive inbox placement test, you provide a sample message
+%% that contains the content that you plan to send to your customers. Amazon
+%% Pinpoint then sends that message to special email addresses spread across
+%% several major email providers. After about 24 hours, the test is complete,
+%% and you can use the `GetDeliverabilityTestReport` operation to view the
 %% results of the test.
 create_deliverability_test_report(Client, Input) ->
     create_deliverability_test_report(Client, Input, []).
@@ -226,10 +226,11 @@ create_deliverability_test_report(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Verifies an email identity for use with Amazon Pinpoint. In Amazon
-%% Pinpoint, an identity is an email address or domain that you use when you
-%% send email. Before you can use an identity to send email with Amazon
-%% Pinpoint, you first have to verify it. By verifying an address, you
+%% @doc Verifies an email identity for use with Amazon Pinpoint.
+%%
+%% In Amazon Pinpoint, an identity is an email address or domain that you use
+%% when you send email. Before you can use an identity to send email with
+%% Amazon Pinpoint, you first have to verify it. By verifying an address, you
 %% demonstrate that you're the owner of the address, and that you've given
 %% Amazon Pinpoint permission to send email from the address.
 %%
@@ -260,11 +261,11 @@ create_email_identity(Client, Input0, Options) ->
 
 %% @doc Delete an existing configuration set.
 %%
-%% In Amazon Pinpoint, <i>configuration sets</i> are groups of rules that you
-%% can apply to the emails you send. You apply a configuration set to an
-%% email by including a reference to the configuration set in the headers of
-%% the email. When you apply a configuration set to an email, all of the
-%% rules in that configuration set are applied to the email.
+%% In Amazon Pinpoint, configuration sets are groups of rules that you can
+%% apply to the emails you send. You apply a configuration set to an email by
+%% including a reference to the configuration set in the headers of the
+%% email. When you apply a configuration set to an email, all of the rules in
+%% that configuration set are applied to the email.
 delete_configuration_set(Client, ConfigurationSetName, Input) ->
     delete_configuration_set(Client, ConfigurationSetName, Input, []).
 delete_configuration_set(Client, ConfigurationSetName, Input0, Options) ->
@@ -282,12 +283,12 @@ delete_configuration_set(Client, ConfigurationSetName, Input0, Options) ->
 
 %% @doc Delete an event destination.
 %%
-%% In Amazon Pinpoint, <i>events</i> include message sends, deliveries,
-%% opens, clicks, bounces, and complaints. <i>Event destinations</i> are
-%% places that you can send information about these events to. For example,
-%% you can send event data to Amazon SNS to receive notifications when you
-%% receive bounces or complaints, or you can use Amazon Kinesis Data Firehose
-%% to stream data to Amazon S3 for long-term storage.
+%% In Amazon Pinpoint, events include message sends, deliveries, opens,
+%% clicks, bounces, and complaints. Event destinations are places that you
+%% can send information about these events to. For example, you can send
+%% event data to Amazon SNS to receive notifications when you receive bounces
+%% or complaints, or you can use Amazon Kinesis Data Firehose to stream data
+%% to Amazon S3 for long-term storage.
 delete_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input) ->
     delete_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input, []).
 delete_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input0, Options) ->
@@ -320,8 +321,9 @@ delete_dedicated_ip_pool(Client, PoolName, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an email identity that you previously verified for use with
-%% Amazon Pinpoint. An identity can be either an email address or a domain
-%% name.
+%% Amazon Pinpoint.
+%%
+%% An identity can be either an email address or a domain name.
 delete_email_identity(Client, EmailIdentity, Input) ->
     delete_email_identity(Client, EmailIdentity, Input, []).
 delete_email_identity(Client, EmailIdentity, Input0, Options) ->
@@ -377,11 +379,11 @@ get_blacklist_reports(Client, BlacklistItemNames, Options)
 %% dedicated IP pool that it's associated with, whether or not it's enabled
 %% for sending email, and more.
 %%
-%% In Amazon Pinpoint, <i>configuration sets</i> are groups of rules that you
-%% can apply to the emails you send. You apply a configuration set to an
-%% email by including a reference to the configuration set in the headers of
-%% the email. When you apply a configuration set to an email, all of the
-%% rules in that configuration set are applied to the email.
+%% In Amazon Pinpoint, configuration sets are groups of rules that you can
+%% apply to the emails you send. You apply a configuration set to an email by
+%% including a reference to the configuration set in the headers of the
+%% email. When you apply a configuration set to an email, all of the rules in
+%% that configuration set are applied to the email.
 get_configuration_set(Client, ConfigurationSetName)
   when is_map(Client) ->
     get_configuration_set(Client, ConfigurationSetName, []).
@@ -399,12 +401,12 @@ get_configuration_set(Client, ConfigurationSetName, Options)
 %% @doc Retrieve a list of event destinations that are associated with a
 %% configuration set.
 %%
-%% In Amazon Pinpoint, <i>events</i> include message sends, deliveries,
-%% opens, clicks, bounces, and complaints. <i>Event destinations</i> are
-%% places that you can send information about these events to. For example,
-%% you can send event data to Amazon SNS to receive notifications when you
-%% receive bounces or complaints, or you can use Amazon Kinesis Data Firehose
-%% to stream data to Amazon S3 for long-term storage.
+%% In Amazon Pinpoint, events include message sends, deliveries, opens,
+%% clicks, bounces, and complaints. Event destinations are places that you
+%% can send information about these events to. For example, you can send
+%% event data to Amazon SNS to receive notifications when you receive bounces
+%% or complaints, or you can use Amazon Kinesis Data Firehose to stream data
+%% to Amazon S3 for long-term storage.
 get_configuration_set_event_destinations(Client, ConfigurationSetName)
   when is_map(Client) ->
     get_configuration_set_event_destinations(Client, ConfigurationSetName, []).
@@ -459,17 +461,17 @@ get_dedicated_ips(Client, NextToken, PageSize, PoolName, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieve information about the status of the Deliverability dashboard
-%% for your Amazon Pinpoint account. When the Deliverability dashboard is
-%% enabled, you gain access to reputation, deliverability, and other metrics
-%% for the domains that you use to send email using Amazon Pinpoint. You also
-%% gain the ability to perform predictive inbox placement tests.
+%% for your Amazon Pinpoint account.
+%%
+%% When the Deliverability dashboard is enabled, you gain access to
+%% reputation, deliverability, and other metrics for the domains that you use
+%% to send email using Amazon Pinpoint. You also gain the ability to perform
+%% predictive inbox placement tests.
 %%
 %% When you use the Deliverability dashboard, you pay a monthly subscription
 %% charge, in addition to any other fees that you accrue by using Amazon
 %% Pinpoint. For more information about the features and cost of a
-%% Deliverability dashboard subscription, see <a
-%% href="http://aws.amazon.com/pinpoint/pricing/">Amazon Pinpoint
-%% Pricing</a>.
+%% Deliverability dashboard subscription, see Amazon Pinpoint Pricing.
 get_deliverability_dashboard_options(Client)
   when is_map(Client) ->
     get_deliverability_dashboard_options(Client, []).
@@ -499,10 +501,11 @@ get_deliverability_test_report(Client, ReportId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieve all the deliverability data for a specific campaign. This
-%% data is available for a campaign only if the campaign sent email by using
-%% a domain that the Deliverability dashboard is enabled for
-%% (<code>PutDeliverabilityDashboardOption</code> operation).
+%% @doc Retrieve all the deliverability data for a specific campaign.
+%%
+%% This data is available for a campaign only if the campaign sent email by
+%% using a domain that the Deliverability dashboard is enabled for
+%% (`PutDeliverabilityDashboardOption` operation).
 get_domain_deliverability_campaign(Client, CampaignId)
   when is_map(Client) ->
     get_domain_deliverability_campaign(Client, CampaignId, []).
@@ -558,11 +561,11 @@ get_email_identity(Client, EmailIdentity, Options)
 %% @doc List all of the configuration sets associated with your Amazon
 %% Pinpoint account in the current region.
 %%
-%% In Amazon Pinpoint, <i>configuration sets</i> are groups of rules that you
-%% can apply to the emails you send. You apply a configuration set to an
-%% email by including a reference to the configuration set in the headers of
-%% the email. When you apply a configuration set to an email, all of the
-%% rules in that configuration set are applied to the email.
+%% In Amazon Pinpoint, configuration sets are groups of rules that you can
+%% apply to the emails you send. You apply a configuration set to an email by
+%% including a reference to the configuration set in the headers of the
+%% email. When you apply a configuration set to an email, all of the rules in
+%% that configuration set are applied to the email.
 list_configuration_sets(Client, NextToken, PageSize)
   when is_map(Client) ->
     list_configuration_sets(Client, NextToken, PageSize, []).
@@ -604,9 +607,10 @@ list_dedicated_ip_pools(Client, NextToken, PageSize, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Show a list of the predictive inbox placement tests that you've
-%% performed, regardless of their statuses. For predictive inbox placement
-%% tests that are complete, you can use the
-%% <code>GetDeliverabilityTestReport</code> operation to view the results.
+%% performed, regardless of their statuses.
+%%
+%% For predictive inbox placement tests that are complete, you can use the
+%% `GetDeliverabilityTestReport` operation to view the results.
 list_deliverability_test_reports(Client, NextToken, PageSize)
   when is_map(Client) ->
     list_deliverability_test_reports(Client, NextToken, PageSize, []).
@@ -627,9 +631,10 @@ list_deliverability_test_reports(Client, NextToken, PageSize, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieve deliverability data for all the campaigns that used a
-%% specific domain to send email during a specified time range. This data is
-%% available for a domain only if you enabled the Deliverability dashboard
-%% (<code>PutDeliverabilityDashboardOption</code> operation) for the domain.
+%% specific domain to send email during a specified time range.
+%%
+%% This data is available for a domain only if you enabled the Deliverability
+%% dashboard (`PutDeliverabilityDashboardOption` operation) for the domain.
 list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, NextToken, PageSize, StartDate)
   when is_map(Client) ->
     list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, NextToken, PageSize, StartDate, []).
@@ -652,9 +657,10 @@ list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, NextToke
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all of the email identities that are associated
-%% with your Amazon Pinpoint account. An identity can be either an email
-%% address or a domain. This operation returns identities that are verified
-%% as well as those that aren't.
+%% with your Amazon Pinpoint account.
+%%
+%% An identity can be either an email address or a domain. This operation
+%% returns identities that are verified as well as those that aren't.
 list_email_identities(Client, NextToken, PageSize)
   when is_map(Client) ->
     list_email_identities(Client, NextToken, PageSize, []).
@@ -675,11 +681,13 @@ list_email_identities(Client, NextToken, PageSize, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieve a list of the tags (keys and values) that are associated
-%% with a specified resource. A <i>tag</i> is a label that you optionally
-%% define and associate with a resource in Amazon Pinpoint. Each tag consists
-%% of a required <i>tag key</i> and an optional associated <i>tag value</i>.
-%% A tag key is a general label that acts as a category for more specific tag
-%% values. A tag value acts as a descriptor within a tag key.
+%% with a specified resource.
+%%
+%% A tag is a label that you optionally define and associate with a resource
+%% in Amazon Pinpoint. Each tag consists of a required tag key and an
+%% optional associated tag value. A tag key is a general label that acts as a
+%% category for more specific tag values. A tag value acts as a descriptor
+%% within a tag key.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, []).
@@ -731,9 +739,10 @@ put_account_sending_attributes(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Associate a configuration set with a dedicated IP pool. You can use
-%% dedicated IP pools to create groups of dedicated IP addresses for sending
-%% specific types of email.
+%% @doc Associate a configuration set with a dedicated IP pool.
+%%
+%% You can use dedicated IP pools to create groups of dedicated IP addresses
+%% for sending specific types of email.
 put_configuration_set_delivery_options(Client, ConfigurationSetName, Input) ->
     put_configuration_set_delivery_options(Client, ConfigurationSetName, Input, []).
 put_configuration_set_delivery_options(Client, ConfigurationSetName, Input0, Options) ->
@@ -802,13 +811,11 @@ put_configuration_set_tracking_options(Client, ConfigurationSetName, Input0, Opt
 
 %% @doc Move a dedicated IP address to an existing dedicated IP pool.
 %%
-%% <note> The dedicated IP address that you specify must already exist, and
-%% must be associated with your Amazon Pinpoint account.
+%% The dedicated IP address that you specify must already exist, and must be
+%% associated with your Amazon Pinpoint account.
 %%
 %% The dedicated IP pool you specify must already exist. You can create a new
-%% pool by using the <code>CreateDedicatedIpPool</code> operation.
-%%
-%% </note>
+%% pool by using the `CreateDedicatedIpPool` operation.
 put_dedicated_ip_in_pool(Client, Ip, Input) ->
     put_dedicated_ip_in_pool(Client, Ip, Input, []).
 put_dedicated_ip_in_pool(Client, Ip, Input0, Options) ->
@@ -824,7 +831,7 @@ put_dedicated_ip_in_pool(Client, Ip, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc <p/>
+%% @doc
 put_dedicated_ip_warmup_attributes(Client, Ip, Input) ->
     put_dedicated_ip_warmup_attributes(Client, Ip, Input, []).
 put_dedicated_ip_warmup_attributes(Client, Ip, Input0, Options) ->
@@ -841,17 +848,17 @@ put_dedicated_ip_warmup_attributes(Client, Ip, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Enable or disable the Deliverability dashboard for your Amazon
-%% Pinpoint account. When you enable the Deliverability dashboard, you gain
-%% access to reputation, deliverability, and other metrics for the domains
-%% that you use to send email using Amazon Pinpoint. You also gain the
-%% ability to perform predictive inbox placement tests.
+%% Pinpoint account.
+%%
+%% When you enable the Deliverability dashboard, you gain access to
+%% reputation, deliverability, and other metrics for the domains that you use
+%% to send email using Amazon Pinpoint. You also gain the ability to perform
+%% predictive inbox placement tests.
 %%
 %% When you use the Deliverability dashboard, you pay a monthly subscription
 %% charge, in addition to any other fees that you accrue by using Amazon
 %% Pinpoint. For more information about the features and cost of a
-%% Deliverability dashboard subscription, see <a
-%% href="http://aws.amazon.com/pinpoint/pricing/">Amazon Pinpoint
-%% Pricing</a>.
+%% Deliverability dashboard subscription, see Amazon Pinpoint Pricing.
 put_deliverability_dashboard_option(Client, Input) ->
     put_deliverability_dashboard_option(Client, Input, []).
 put_deliverability_dashboard_option(Client, Input0, Options) ->
@@ -883,9 +890,10 @@ put_email_identity_dkim_attributes(Client, EmailIdentity, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Used to enable or disable feedback forwarding for an identity. This
-%% setting determines what happens when an identity is used to send an email
-%% that results in a bounce or complaint event.
+%% @doc Used to enable or disable feedback forwarding for an identity.
+%%
+%% This setting determines what happens when an identity is used to send an
+%% email that results in a bounce or complaint event.
 %%
 %% When you enable feedback forwarding, Amazon Pinpoint sends you email
 %% notifications when bounce or complaint events occur. Amazon Pinpoint sends
@@ -930,18 +938,19 @@ put_email_identity_mail_from_attributes(Client, EmailIdentity, Input0, Options) 
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Sends an email message. You can use the Amazon Pinpoint Email API to
-%% send two types of messages:
+%% @doc Sends an email message.
 %%
-%% <ul> <li> <b>Simple</b> – A standard email message. When you create this
-%% type of message, you specify the sender, the recipient, and the message
-%% body, and Amazon Pinpoint assembles the message for you.
+%% You can use the Amazon Pinpoint Email API to send two types of messages:
 %%
-%% </li> <li> <b>Raw</b> – A raw, MIME-formatted email message. When you send
-%% this type of email, you have to specify all of the message headers, as
-%% well as the message body. You can use this message type to send messages
-%% that contain attachments. The message that you specify has to be a valid
-%% MIME message.
+%% <ul> <li> Simple – A standard email message. When you create this type of
+%% message, you specify the sender, the recipient, and the message body, and
+%% Amazon Pinpoint assembles the message for you.
+%%
+%% </li> <li> Raw – A raw, MIME-formatted email message. When you send this
+%% type of email, you have to specify all of the message headers, as well as
+%% the message body. You can use this message type to send messages that
+%% contain attachments. The message that you specify has to be a valid MIME
+%% message.
 %%
 %% </li> </ul>
 send_email(Client, Input) ->
@@ -959,16 +968,17 @@ send_email(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Add one or more tags (keys and values) to a specified resource. A
-%% <i>tag</i> is a label that you optionally define and associate with a
-%% resource in Amazon Pinpoint. Tags can help you categorize and manage
-%% resources in different ways, such as by purpose, owner, environment, or
-%% other criteria. A resource can have as many as 50 tags.
+%% @doc Add one or more tags (keys and values) to a specified resource.
 %%
-%% Each tag consists of a required <i>tag key</i> and an associated <i>tag
-%% value</i>, both of which you define. A tag key is a general label that
-%% acts as a category for more specific tag values. A tag value acts as a
-%% descriptor within a tag key.
+%% A tag is a label that you optionally define and associate with a resource
+%% in Amazon Pinpoint. Tags can help you categorize and manage resources in
+%% different ways, such as by purpose, owner, environment, or other criteria.
+%% A resource can have as many as 50 tags.
+%%
+%% Each tag consists of a required tag key and an associated tag value, both
+%% of which you define. A tag key is a general label that acts as a category
+%% for more specific tag values. A tag value acts as a descriptor within a
+%% tag key.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 tag_resource(Client, Input0, Options) ->
@@ -1005,12 +1015,12 @@ untag_resource(Client, Input0, Options) ->
 %% @doc Update the configuration of an event destination for a configuration
 %% set.
 %%
-%% In Amazon Pinpoint, <i>events</i> include message sends, deliveries,
-%% opens, clicks, bounces, and complaints. <i>Event destinations</i> are
-%% places that you can send information about these events to. For example,
-%% you can send event data to Amazon SNS to receive notifications when you
-%% receive bounces or complaints, or you can use Amazon Kinesis Data Firehose
-%% to stream data to Amazon S3 for long-term storage.
+%% In Amazon Pinpoint, events include message sends, deliveries, opens,
+%% clicks, bounces, and complaints. Event destinations are places that you
+%% can send information about these events to. For example, you can send
+%% event data to Amazon SNS to receive notifications when you receive bounces
+%% or complaints, or you can use Amazon Kinesis Data Firehose to stream data
+%% to Amazon S3 for long-term storage.
 update_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input) ->
     update_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input, []).
 update_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input0, Options) ->
@@ -1072,6 +1082,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

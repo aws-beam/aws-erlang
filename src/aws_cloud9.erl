@@ -1,55 +1,49 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc <fullname>AWS Cloud9</fullname>
+%% @doc AWS Cloud9
 %%
 %% AWS Cloud9 is a collection of tools that you can use to code, build, run,
 %% test, debug, and release software in the cloud.
 %%
-%% For more information about AWS Cloud9, see the <a
-%% href="https://docs.aws.amazon.com/cloud9/latest/user-guide">AWS Cloud9
-%% User Guide</a>.
+%% For more information about AWS Cloud9, see the AWS Cloud9 User Guide.
 %%
 %% AWS Cloud9 supports these operations:
 %%
-%% <ul> <li> <code>CreateEnvironmentEC2</code>: Creates an AWS Cloud9
-%% development environment, launches an Amazon EC2 instance, and then
-%% connects from the instance to the environment.
+%% <ul> <li> `CreateEnvironmentEC2`: Creates an AWS Cloud9 development
+%% environment, launches an Amazon EC2 instance, and then connects from the
+%% instance to the environment.
 %%
-%% </li> <li> <code>CreateEnvironmentMembership</code>: Adds an environment
-%% member to an environment.
-%%
-%% </li> <li> <code>DeleteEnvironment</code>: Deletes an environment. If an
-%% Amazon EC2 instance is connected to the environment, also terminates the
-%% instance.
-%%
-%% </li> <li> <code>DeleteEnvironmentMembership</code>: Deletes an
-%% environment member from an environment.
-%%
-%% </li> <li> <code>DescribeEnvironmentMemberships</code>: Gets information
-%% about environment members for an environment.
-%%
-%% </li> <li> <code>DescribeEnvironments</code>: Gets information about
-%% environments.
-%%
-%% </li> <li> <code>DescribeEnvironmentStatus</code>: Gets status information
-%% for an environment.
-%%
-%% </li> <li> <code>ListEnvironments</code>: Gets a list of environment
-%% identifiers.
-%%
-%% </li> <li> <code>ListTagsForResource</code>: Gets the tags for an
+%% </li> <li> `CreateEnvironmentMembership`: Adds an environment member to an
 %% environment.
 %%
-%% </li> <li> <code>TagResource</code>: Adds tags to an environment.
+%% </li> <li> `DeleteEnvironment`: Deletes an environment. If an Amazon EC2
+%% instance is connected to the environment, also terminates the instance.
 %%
-%% </li> <li> <code>UntagResource</code>: Removes tags from an environment.
+%% </li> <li> `DeleteEnvironmentMembership`: Deletes an environment member
+%% from an environment.
 %%
-%% </li> <li> <code>UpdateEnvironment</code>: Changes the settings of an
-%% existing environment.
+%% </li> <li> `DescribeEnvironmentMemberships`: Gets information about
+%% environment members for an environment.
 %%
-%% </li> <li> <code>UpdateEnvironmentMembership</code>: Changes the settings
-%% of an existing environment member for an environment.
+%% </li> <li> `DescribeEnvironments`: Gets information about environments.
+%%
+%% </li> <li> `DescribeEnvironmentStatus`: Gets status information for an
+%% environment.
+%%
+%% </li> <li> `ListEnvironments`: Gets a list of environment identifiers.
+%%
+%% </li> <li> `ListTagsForResource`: Gets the tags for an environment.
+%%
+%% </li> <li> `TagResource`: Adds tags to an environment.
+%%
+%% </li> <li> `UntagResource`: Removes tags from an environment.
+%%
+%% </li> <li> `UpdateEnvironment`: Changes the settings of an existing
+%% environment.
+%%
+%% </li> <li> `UpdateEnvironmentMembership`: Changes the settings of an
+%% existing environment member for an environment.
 %%
 %% </li> </ul>
 -module(aws_cloud9).
@@ -105,8 +99,10 @@ create_environment_membership(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEnvironmentMembership">>, Input, Options).
 
-%% @doc Deletes an AWS Cloud9 development environment. If an Amazon EC2
-%% instance is connected to the environment, also terminates the instance.
+%% @doc Deletes an AWS Cloud9 development environment.
+%%
+%% If an Amazon EC2 instance is connected to the environment, also terminates
+%% the instance.
 delete_environment(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_environment(Client, Input, []).
@@ -167,10 +163,8 @@ list_tags_for_resource(Client, Input, Options)
 
 %% @doc Adds tags to an AWS Cloud9 development environment.
 %%
-%% <important> Tags that you add to an AWS Cloud9 environment by using this
-%% method will NOT be automatically propagated to underlying resources.
-%%
-%% </important>
+%% Tags that you add to an AWS Cloud9 environment by using this method will
+%% NOT be automatically propagated to underlying resources.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -246,6 +240,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
 handle_response({error, Reason}) ->
     {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

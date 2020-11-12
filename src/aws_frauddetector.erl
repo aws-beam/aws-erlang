@@ -1,12 +1,12 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc This is the Amazon Fraud Detector API Reference. This guide is for
-%% developers who need detailed information about Amazon Fraud Detector API
-%% actions, data types, and errors. For more information about Amazon Fraud
-%% Detector features, see the <a
-%% href="https://docs.aws.amazon.com/frauddetector/latest/ug/">Amazon Fraud
-%% Detector User Guide</a>.
+%% @doc This is the Amazon Fraud Detector API Reference.
+%%
+%% This guide is for developers who need detailed information about Amazon
+%% Fraud Detector API actions, data types, and errors. For more information
+%% about Amazon Fraud Detector features, see the Amazon Fraud Detector User
+%% Guide.
 -module(aws_frauddetector).
 
 -export([batch_create_variable/2,
@@ -27,10 +27,26 @@
          delete_detector/3,
          delete_detector_version/2,
          delete_detector_version/3,
+         delete_entity_type/2,
+         delete_entity_type/3,
          delete_event/2,
          delete_event/3,
+         delete_event_type/2,
+         delete_event_type/3,
+         delete_external_model/2,
+         delete_external_model/3,
+         delete_label/2,
+         delete_label/3,
+         delete_model/2,
+         delete_model/3,
+         delete_model_version/2,
+         delete_model_version/3,
+         delete_outcome/2,
+         delete_outcome/3,
          delete_rule/2,
          delete_rule/3,
+         delete_variable/2,
+         delete_variable/3,
          describe_detector/2,
          describe_detector/3,
          describe_model_versions/2,
@@ -122,8 +138,9 @@ batch_get_variable(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetVariable">>, Input, Options).
 
-%% @doc Creates a detector version. The detector version starts in a
-%% <code>DRAFT</code> status.
+%% @doc Creates a detector version.
+%%
+%% The detector version starts in a `DRAFT` status.
 create_detector_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_detector_version(Client, Input, []).
@@ -164,9 +181,13 @@ create_variable(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateVariable">>, Input, Options).
 
-%% @doc Deletes the detector. Before deleting a detector, you must first
-%% delete all detector versions and rule versions associated with the
-%% detector.
+%% @doc Deletes the detector.
+%%
+%% Before deleting a detector, you must first delete all detector versions
+%% and rule versions associated with the detector.
+%%
+%% When you delete a detector, Amazon Fraud Detector permanently deletes the
+%% detector and the data is no longer stored in Amazon Fraud Detector.
 delete_detector(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_detector(Client, Input, []).
@@ -174,8 +195,13 @@ delete_detector(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDetector">>, Input, Options).
 
-%% @doc Deletes the detector version. You cannot delete detector versions
-%% that are in <code>ACTIVE</code> status.
+%% @doc Deletes the detector version.
+%%
+%% You cannot delete detector versions that are in `ACTIVE` status.
+%%
+%% When you delete a detector version, Amazon Fraud Detector permanently
+%% deletes the detector and the data is no longer stored in Amazon Fraud
+%% Detector.
 delete_detector_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_detector_version(Client, Input, []).
@@ -183,7 +209,25 @@ delete_detector_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDetectorVersion">>, Input, Options).
 
+%% @doc Deletes an entity type.
+%%
+%% You cannot delete an entity type that is included in an event type.
+%%
+%% When you delete an entity type, Amazon Fraud Detector permanently deletes
+%% that entity type from the evaluation history, and the data is no longer
+%% stored in Amazon Fraud Detector.
+delete_entity_type(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_entity_type(Client, Input, []).
+delete_entity_type(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteEntityType">>, Input, Options).
+
 %% @doc Deletes the specified event.
+%%
+%% When you delete an event, Amazon Fraud Detector permanently deletes that
+%% event from the evaluation history, and the event data is no longer stored
+%% in Amazon Fraud Detector.
 delete_event(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_event(Client, Input, []).
@@ -191,14 +235,127 @@ delete_event(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEvent">>, Input, Options).
 
-%% @doc Deletes the rule. You cannot delete a rule if it is used by an
-%% <code>ACTIVE</code> or <code>INACTIVE</code> detector version.
+%% @doc Deletes an event type.
+%%
+%% You cannot delete an event type that is used in a detector or a model.
+%%
+%% When you delete an entity type, Amazon Fraud Detector permanently deletes
+%% that entity type from the evaluation history, and the data is no longer
+%% stored in Amazon Fraud Detector.
+delete_event_type(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_event_type(Client, Input, []).
+delete_event_type(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteEventType">>, Input, Options).
+
+%% @doc Removes a SageMaker model from Amazon Fraud Detector.
+%%
+%% You can remove an Amazon SageMaker model if it is not associated with a
+%% detector version. Removing a SageMaker model disconnects it from Amazon
+%% Fraud Detector, but the model remains available in SageMaker.
+delete_external_model(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_external_model(Client, Input, []).
+delete_external_model(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteExternalModel">>, Input, Options).
+
+%% @doc Deletes a label.
+%%
+%% You cannot delete labels that are included in an event type in Amazon
+%% Fraud Detector.
+%%
+%% You cannot delete a label assigned to an event ID. You must first delete
+%% the relevant event ID.
+%%
+%% When you delete a label, Amazon Fraud Detector permanently deletes that
+%% label from the evaluation history, and the data is no longer stored in
+%% Amazon Fraud Detector.
+delete_label(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_label(Client, Input, []).
+delete_label(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteLabel">>, Input, Options).
+
+%% @doc Deletes a model.
+%%
+%% You can delete models and model versions in Amazon Fraud Detector,
+%% provided that they are not associated with a detector version.
+%%
+%% When you delete a model, Amazon Fraud Detector permanently deletes that
+%% model from the evaluation history, and the data is no longer stored in
+%% Amazon Fraud Detector.
+delete_model(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_model(Client, Input, []).
+delete_model(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteModel">>, Input, Options).
+
+%% @doc Deletes a model version.
+%%
+%% You can delete models and model versions in Amazon Fraud Detector,
+%% provided that they are not associated with a detector version.
+%%
+%% When you delete a model version, Amazon Fraud Detector permanently deletes
+%% that model version from the evaluation history, and the data is no longer
+%% stored in Amazon Fraud Detector.
+delete_model_version(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_model_version(Client, Input, []).
+delete_model_version(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteModelVersion">>, Input, Options).
+
+%% @doc Deletes an outcome.
+%%
+%% You cannot delete an outcome that is used in a rule version.
+%%
+%% When you delete an outcome, Amazon Fraud Detector permanently deletes that
+%% outcome from the evaluation history, and the data is no longer stored in
+%% Amazon Fraud Detector.
+delete_outcome(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_outcome(Client, Input, []).
+delete_outcome(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteOutcome">>, Input, Options).
+
+%% @doc Deletes the rule.
+%%
+%% You cannot delete a rule if it is used by an `ACTIVE` or `INACTIVE`
+%% detector version.
+%%
+%% When you delete a rule, Amazon Fraud Detector permanently deletes that
+%% rule from the evaluation history, and the data is no longer stored in
+%% Amazon Fraud Detector.
 delete_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_rule(Client, Input, []).
 delete_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRule">>, Input, Options).
+
+%% @doc Deletes a variable.
+%%
+%% You can't delete variables that are included in an event type in Amazon
+%% Fraud Detector.
+%%
+%% Amazon Fraud Detector automatically deletes model output variables and
+%% SageMaker model output variables when you delete the model. You can't
+%% delete these variables manually.
+%%
+%% When you delete a variable, Amazon Fraud Detector permanently deletes that
+%% variable from the evaluation history, and the data is no longer stored in
+%% Amazon Fraud Detector.
+delete_variable(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_variable(Client, Input, []).
+delete_variable(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteVariable">>, Input, Options).
 
 %% @doc Gets all versions for a specified detector.
 describe_detector(Client, Input)
@@ -209,8 +366,9 @@ describe_detector(Client, Input, Options)
     request(Client, <<"DescribeDetector">>, Input, Options).
 
 %% @doc Gets all of the model versions for the specified model type or for
-%% the specified model type and model ID. You can also get details for a
-%% single, specified model version.
+%% the specified model type and model ID.
+%%
+%% You can also get details for a single, specified model version.
 describe_model_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_model_versions(Client, Input, []).
@@ -226,13 +384,14 @@ get_detector_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDetectorVersion">>, Input, Options).
 
-%% @doc Gets all detectors or a single detector if a <code>detectorId</code>
-%% is specified. This is a paginated API. If you provide a null
-%% <code>maxResults</code>, this action retrieves a maximum of 10 records per
-%% page. If you provide a <code>maxResults</code>, the value must be between
-%% 5 and 10. To get the next page results, provide the pagination token from
-%% the <code>GetDetectorsResponse</code> as part of your request. A null
-%% pagination token fetches the records from the beginning.
+%% @doc Gets all detectors or a single detector if a `detectorId` is
+%% specified.
+%%
+%% This is a paginated API. If you provide a null `maxResults`, this action
+%% retrieves a maximum of 10 records per page. If you provide a `maxResults`,
+%% the value must be between 5 and 10. To get the next page results, provide
+%% the pagination token from the `GetDetectorsResponse` as part of your
+%% request. A null pagination token fetches the records from the beginning.
 get_detectors(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_detectors(Client, Input, []).
@@ -241,12 +400,13 @@ get_detectors(Client, Input, Options)
     request(Client, <<"GetDetectors">>, Input, Options).
 
 %% @doc Gets all entity types or a specific entity type if a name is
-%% specified. This is a paginated API. If you provide a null
-%% <code>maxResults</code>, this action retrieves a maximum of 10 records per
-%% page. If you provide a <code>maxResults</code>, the value must be between
-%% 5 and 10. To get the next page results, provide the pagination token from
-%% the <code>GetEntityTypesResponse</code> as part of your request. A null
-%% pagination token fetches the records from the beginning.
+%% specified.
+%%
+%% This is a paginated API. If you provide a null `maxResults`, this action
+%% retrieves a maximum of 10 records per page. If you provide a `maxResults`,
+%% the value must be between 5 and 10. To get the next page results, provide
+%% the pagination token from the `GetEntityTypesResponse` as part of your
+%% request. A null pagination token fetches the records from the beginning.
 get_entity_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_entity_types(Client, Input, []).
@@ -254,8 +414,10 @@ get_entity_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEntityTypes">>, Input, Options).
 
-%% @doc Evaluates an event against a detector version. If a version ID is not
-%% provided, the detector’s (<code>ACTIVE</code>) version is used.
+%% @doc Evaluates an event against a detector version.
+%%
+%% If a version ID is not provided, the detector’s (`ACTIVE`) version is
+%% used.
 get_event_prediction(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_event_prediction(Client, Input, []).
@@ -264,12 +426,12 @@ get_event_prediction(Client, Input, Options)
     request(Client, <<"GetEventPrediction">>, Input, Options).
 
 %% @doc Gets all event types or a specific event type if name is provided.
-%% This is a paginated API. If you provide a null <code>maxResults</code>,
-%% this action retrieves a maximum of 10 records per page. If you provide a
-%% <code>maxResults</code>, the value must be between 5 and 10. To get the
-%% next page results, provide the pagination token from the
-%% <code>GetEventTypesResponse</code> as part of your request. A null
-%% pagination token fetches the records from the beginning.
+%%
+%% This is a paginated API. If you provide a null `maxResults`, this action
+%% retrieves a maximum of 10 records per page. If you provide a `maxResults`,
+%% the value must be between 5 and 10. To get the next page results, provide
+%% the pagination token from the `GetEventTypesResponse` as part of your
+%% request. A null pagination token fetches the records from the beginning.
 get_event_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_event_types(Client, Input, []).
@@ -278,11 +440,12 @@ get_event_types(Client, Input, Options)
     request(Client, <<"GetEventTypes">>, Input, Options).
 
 %% @doc Gets the details for one or more Amazon SageMaker models that have
-%% been imported into the service. This is a paginated API. If you provide a
-%% null <code>maxResults</code>, this actions retrieves a maximum of 10
-%% records per page. If you provide a <code>maxResults</code>, the value must
-%% be between 5 and 10. To get the next page results, provide the pagination
-%% token from the <code>GetExternalModelsResult</code> as part of your
+%% been imported into the service.
+%%
+%% This is a paginated API. If you provide a null `maxResults`, this actions
+%% retrieves a maximum of 10 records per page. If you provide a `maxResults`,
+%% the value must be between 5 and 10. To get the next page results, provide
+%% the pagination token from the `GetExternalModelsResult` as part of your
 %% request. A null pagination token fetches the records from the beginning.
 get_external_models(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -301,13 +464,13 @@ get_k_m_s_encryption_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetKMSEncryptionKey">>, Input, Options).
 
-%% @doc Gets all labels or a specific label if name is provided. This is a
-%% paginated API. If you provide a null <code>maxResults</code>, this action
-%% retrieves a maximum of 50 records per page. If you provide a
-%% <code>maxResults</code>, the value must be between 10 and 50. To get the
-%% next page results, provide the pagination token from the
-%% <code>GetGetLabelsResponse</code> as part of your request. A null
-%% pagination token fetches the records from the beginning.
+%% @doc Gets all labels or a specific label if name is provided.
+%%
+%% This is a paginated API. If you provide a null `maxResults`, this action
+%% retrieves a maximum of 50 records per page. If you provide a `maxResults`,
+%% the value must be between 10 and 50. To get the next page results, provide
+%% the pagination token from the `GetGetLabelsResponse` as part of your
+%% request. A null pagination token fetches the records from the beginning.
 get_labels(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_labels(Client, Input, []).
@@ -323,18 +486,18 @@ get_model_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetModelVersion">>, Input, Options).
 
-%% @doc Gets one or more models. Gets all models for the AWS account if no
-%% model type and no model id provided. Gets all models for the AWS account
-%% and model type, if the model type is specified but model id is not
-%% provided. Gets a specific model if (model type, model id) tuple is
-%% specified.
+%% @doc Gets one or more models.
 %%
-%% This is a paginated API. If you provide a null <code>maxResults</code>,
-%% this action retrieves a maximum of 10 records per page. If you provide a
-%% <code>maxResults</code>, the value must be between 1 and 10. To get the
-%% next page results, provide the pagination token from the response as part
-%% of your request. A null pagination token fetches the records from the
-%% beginning.
+%% Gets all models for the AWS account if no model type and no model id
+%% provided. Gets all models for the AWS account and model type, if the model
+%% type is specified but model id is not provided. Gets a specific model if
+%% (model type, model id) tuple is specified.
+%%
+%% This is a paginated API. If you provide a null `maxResults`, this action
+%% retrieves a maximum of 10 records per page. If you provide a `maxResults`,
+%% the value must be between 1 and 10. To get the next page results, provide
+%% the pagination token from the response as part of your request. A null
+%% pagination token fetches the records from the beginning.
 get_models(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_models(Client, Input, []).
@@ -342,12 +505,14 @@ get_models(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetModels">>, Input, Options).
 
-%% @doc Gets one or more outcomes. This is a paginated API. If you provide a
-%% null <code>maxResults</code>, this actions retrieves a maximum of 100
-%% records per page. If you provide a <code>maxResults</code>, the value must
-%% be between 50 and 100. To get the next page results, provide the
-%% pagination token from the <code>GetOutcomesResult</code> as part of your
-%% request. A null pagination token fetches the records from the beginning.
+%% @doc Gets one or more outcomes.
+%%
+%% This is a paginated API. If you provide a null `maxResults`, this actions
+%% retrieves a maximum of 100 records per page. If you provide a
+%% `maxResults`, the value must be between 50 and 100. To get the next page
+%% results, provide the pagination token from the `GetOutcomesResult` as part
+%% of your request. A null pagination token fetches the records from the
+%% beginning.
 get_outcomes(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_outcomes(Client, Input, []).
@@ -355,11 +520,12 @@ get_outcomes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOutcomes">>, Input, Options).
 
-%% @doc Get all rules for a detector (paginated) if <code>ruleId</code> and
-%% <code>ruleVersion</code> are not specified. Gets all rules for the
-%% detector and the <code>ruleId</code> if present (paginated). Gets a
-%% specific rule if both the <code>ruleId</code> and the
-%% <code>ruleVersion</code> are specified.
+%% @doc Get all rules for a detector (paginated) if `ruleId` and
+%% `ruleVersion` are not specified.
+%%
+%% Gets all rules for the detector and the `ruleId` if present (paginated).
+%% Gets a specific rule if both the `ruleId` and the `ruleVersion` are
+%% specified.
 %%
 %% This is a paginated API. Providing null maxResults results in retrieving
 %% maximum of 100 records per page. If you provide maxResults the value must
@@ -373,13 +539,14 @@ get_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRules">>, Input, Options).
 
-%% @doc Gets all of the variables or the specific variable. This is a
-%% paginated API. Providing null <code>maxSizePerPage</code> results in
+%% @doc Gets all of the variables or the specific variable.
+%%
+%% This is a paginated API. Providing null `maxSizePerPage` results in
 %% retrieving maximum of 100 records per page. If you provide
-%% <code>maxSizePerPage</code> the value must be between 50 and 100. To get
-%% the next page result, a provide a pagination token from
-%% <code>GetVariablesResult</code> as part of your request. Null pagination
-%% token fetches the records from the beginning.
+%% `maxSizePerPage` the value must be between 50 and 100. To get the next
+%% page result, a provide a pagination token from `GetVariablesResult` as
+%% part of your request. Null pagination token fetches the records from the
+%% beginning.
 get_variables(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_variables(Client, Input, []).
@@ -387,10 +554,11 @@ get_variables(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetVariables">>, Input, Options).
 
-%% @doc Lists all tags associated with the resource. This is a paginated API.
-%% To get the next page results, provide the pagination token from the
-%% response as part of your request. A null pagination token fetches the
-%% records from the beginning.
+%% @doc Lists all tags associated with the resource.
+%%
+%% This is a paginated API. To get the next page results, provide the
+%% pagination token from the response as part of your request. A null
+%% pagination token fetches the records from the beginning.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -406,11 +574,12 @@ put_detector(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutDetector">>, Input, Options).
 
-%% @doc Creates or updates an entity type. An entity represents who is
-%% performing the event. As part of a fraud prediction, you pass the entity
-%% ID to indicate the specific entity who performed the event. An entity type
-%% classifies the entity. Example classifications include customer, merchant,
-%% or account.
+%% @doc Creates or updates an entity type.
+%%
+%% An entity represents who is performing the event. As part of a fraud
+%% prediction, you pass the entity ID to indicate the specific entity who
+%% performed the event. An entity type classifies the entity. Example
+%% classifications include customer, merchant, or account.
 put_entity_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_entity_type(Client, Input, []).
@@ -418,13 +587,15 @@ put_entity_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutEntityType">>, Input, Options).
 
-%% @doc Creates or updates an event type. An event is a business activity
-%% that is evaluated for fraud risk. With Amazon Fraud Detector, you generate
-%% fraud predictions for events. An event type defines the structure for an
-%% event sent to Amazon Fraud Detector. This includes the variables sent as
-%% part of the event, the entity performing the event (such as a customer),
-%% and the labels that classify the event. Example event types include online
-%% payment transactions, account registrations, and authentications.
+%% @doc Creates or updates an event type.
+%%
+%% An event is a business activity that is evaluated for fraud risk. With
+%% Amazon Fraud Detector, you generate fraud predictions for events. An event
+%% type defines the structure for an event sent to Amazon Fraud Detector.
+%% This includes the variables sent as part of the event, the entity
+%% performing the event (such as a customer), and the labels that classify
+%% the event. Example event types include online payment transactions,
+%% account registrations, and authentications.
 put_event_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_event_type(Client, Input, []).
@@ -432,9 +603,10 @@ put_event_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutEventType">>, Input, Options).
 
-%% @doc Creates or updates an Amazon SageMaker model endpoint. You can also
-%% use this action to update the configuration of the model endpoint,
-%% including the IAM role and/or the mapped variables.
+%% @doc Creates or updates an Amazon SageMaker model endpoint.
+%%
+%% You can also use this action to update the configuration of the model
+%% endpoint, including the IAM role and/or the mapped variables.
 put_external_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_external_model(Client, Input, []).
@@ -451,9 +623,11 @@ put_k_m_s_encryption_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutKMSEncryptionKey">>, Input, Options).
 
-%% @doc Creates or updates label. A label classifies an event as fraudulent
-%% or legitimate. Labels are associated with event types and used to train
-%% supervised machine learning models in Amazon Fraud Detector.
+%% @doc Creates or updates label.
+%%
+%% A label classifies an event as fraudulent or legitimate. Labels are
+%% associated with event types and used to train supervised machine learning
+%% models in Amazon Fraud Detector.
 put_label(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_label(Client, Input, []).
@@ -485,10 +659,11 @@ untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
-%% @doc Updates a detector version. The detector version attributes that you
-%% can update include models, external model endpoints, rules, rule execution
-%% mode, and description. You can only update a <code>DRAFT</code> detector
-%% version.
+%% @doc Updates a detector version.
+%%
+%% The detector version attributes that you can update include models,
+%% external model endpoints, rules, rule execution mode, and description. You
+%% can only update a `DRAFT` detector version.
 update_detector_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_detector_version(Client, Input, []).
@@ -496,9 +671,10 @@ update_detector_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDetectorVersion">>, Input, Options).
 
-%% @doc Updates the detector version's description. You can update the
-%% metadata for any detector version (<code>DRAFT, ACTIVE,</code> or
-%% <code>INACTIVE</code>).
+%% @doc Updates the detector version's description.
+%%
+%% You can update the metadata for any detector version (`DRAFT, ACTIVE,` or
+%% `INACTIVE`).
 update_detector_version_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_detector_version_metadata(Client, Input, []).
@@ -506,10 +682,11 @@ update_detector_version_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDetectorVersionMetadata">>, Input, Options).
 
-%% @doc Updates the detector version’s status. You can perform the following
-%% promotions or demotions using <code>UpdateDetectorVersionStatus</code>:
-%% <code>DRAFT</code> to <code>ACTIVE</code>, <code>ACTIVE</code> to
-%% <code>INACTIVE</code>, and <code>INACTIVE</code> to <code>ACTIVE</code>.
+%% @doc Updates the detector version’s status.
+%%
+%% You can perform the following promotions or demotions using
+%% `UpdateDetectorVersionStatus`: `DRAFT` to `ACTIVE`, `ACTIVE` to
+%% `INACTIVE`, and `INACTIVE` to `ACTIVE`.
 update_detector_version_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_detector_version_status(Client, Input, []).
@@ -517,8 +694,9 @@ update_detector_version_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDetectorVersionStatus">>, Input, Options).
 
-%% @doc Updates a model. You can update the description attribute using this
-%% action.
+%% @doc Updates a model.
+%%
+%% You can update the description attribute using this action.
 update_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_model(Client, Input, []).
@@ -526,12 +704,13 @@ update_model(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateModel">>, Input, Options).
 
-%% @doc Updates a model version. Updating a model version retrains an
-%% existing model version using updated training data and produces a new
-%% minor version of the model. You can update the training data set location
-%% and data access role attributes using this action. This action creates and
-%% trains a new minor version of the model, for example version 1.01, 1.02,
-%% 1.03.
+%% @doc Updates a model version.
+%%
+%% Updating a model version retrains an existing model version using updated
+%% training data and produces a new minor version of the model. You can
+%% update the training data set location and data access role attributes
+%% using this action. This action creates and trains a new minor version of
+%% the model, for example version 1.01, 1.02, 1.03.
 update_model_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_model_version(Client, Input, []).
@@ -543,10 +722,9 @@ update_model_version(Client, Input, Options)
 %%
 %% You can perform the following status updates:
 %%
-%% <ol> <li> Change the <code>TRAINING_COMPLETE</code> status to
-%% <code>ACTIVE</code>.
+%% <ol> <li> Change the `TRAINING_COMPLETE` status to `ACTIVE`.
 %%
-%% </li> <li> Change <code>ACTIVE</code>to <code>INACTIVE</code>.
+%% </li> <li> Change `ACTIVE`to `INACTIVE`.
 %%
 %% </li> </ol>
 update_model_version_status(Client, Input)
@@ -556,7 +734,9 @@ update_model_version_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateModelVersionStatus">>, Input, Options).
 
-%% @doc Updates a rule's metadata. The description attribute can be updated.
+%% @doc Updates a rule's metadata.
+%%
+%% The description attribute can be updated.
 update_rule_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_rule_metadata(Client, Input, []).
@@ -564,8 +744,10 @@ update_rule_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRuleMetadata">>, Input, Options).
 
-%% @doc Updates a rule version resulting in a new rule version. Updates a
-%% rule version resulting in a new rule version (version 1, 2, 3 ...).
+%% @doc Updates a rule version resulting in a new rule version.
+%%
+%% Updates a rule version resulting in a new rule version (version 1, 2, 3
+%% ...).
 update_rule_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_rule_version(Client, Input, []).
@@ -623,6 +805,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
 handle_response({error, Reason}) ->
     {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

@@ -1,7 +1,7 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc <fullname> AWS License Manager </fullname>
+%% @doc AWS License Manager
 %%
 %% AWS License Manager makes it easier to manage licenses from software
 %% vendors across multiple AWS accounts and on-premises servers.
@@ -52,8 +52,8 @@
 %% that can be consumed and enforced by License Manager. Components include
 %% specifications for the license type (licensing by instance, socket, CPU,
 %% or vCPU), allowed tenancy (shared tenancy, Dedicated Instance, Dedicated
-%% Host, or all of these), host affinity (how long a VM must be associated
-%% with a host), and the number of licenses purchased and used.
+%% Host, or all of these), license affinity to host (how long a license must
+%% be associated with a host), and the number of licenses purchased and used.
 create_license_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_license_configuration(Client, Input, []).
@@ -142,8 +142,10 @@ list_tags_for_resource(Client, Input, Options)
 
 %% @doc Lists all license usage records for a license configuration,
 %% displaying license consumption details by resource at a selected point in
-%% time. Use this action to audit the current license consumption for any
-%% license inventory and configuration.
+%% time.
+%%
+%% Use this action to audit the current license consumption for any license
+%% inventory and configuration.
 list_usage_for_license_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_usage_for_license_configuration(Client, Input, []).
@@ -168,13 +170,6 @@ untag_resource(Client, Input, Options)
     request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Modifies the attributes of an existing license configuration.
-%%
-%% A license configuration is an abstraction of a customer license agreement
-%% that can be consumed and enforced by License Manager. Components include
-%% specifications for the license type (licensing by instance, socket, CPU,
-%% or vCPU), allowed tenancy (shared tenancy, Dedicated Instance, Dedicated
-%% Host, or all of these), host affinity (how long a VM must be associated
-%% with a host), and the number of licenses purchased and used.
 update_license_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_license_configuration(Client, Input, []).
@@ -246,6 +241,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
 handle_response({error, Reason}) ->
     {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

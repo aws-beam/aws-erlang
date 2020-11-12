@@ -4,12 +4,18 @@
 %% @doc The operations for managing an Amazon MSK cluster.
 -module(aws_kafka).
 
--export([create_cluster/2,
+-export([batch_associate_scram_secret/3,
+         batch_associate_scram_secret/4,
+         batch_disassociate_scram_secret/3,
+         batch_disassociate_scram_secret/4,
+         create_cluster/2,
          create_cluster/3,
          create_configuration/2,
          create_configuration/3,
          delete_cluster/3,
          delete_cluster/4,
+         delete_configuration/3,
+         delete_configuration/4,
          describe_cluster/2,
          describe_cluster/3,
          describe_cluster_operation/2,
@@ -34,6 +40,8 @@
          list_kafka_versions/4,
          list_nodes/4,
          list_nodes/5,
+         list_scram_secrets/4,
+         list_scram_secrets/5,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          reboot_broker/3,
@@ -50,6 +58,8 @@
          update_cluster_configuration/4,
          update_cluster_kafka_version/3,
          update_cluster_kafka_version/4,
+         update_configuration/3,
+         update_configuration/4,
          update_monitoring/3,
          update_monitoring/4]).
 
@@ -58,6 +68,38 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Associates one or more Scram Secrets with an Amazon MSK cluster.
+batch_associate_scram_secret(Client, ClusterArn, Input) ->
+    batch_associate_scram_secret(Client, ClusterArn, Input, []).
+batch_associate_scram_secret(Client, ClusterArn, Input0, Options) ->
+    Method = post,
+    Path = ["/v1/clusters/", http_uri:encode(ClusterArn), "/scram-secrets"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Disassociates one or more Scram Secrets from an Amazon MSK cluster.
+batch_disassociate_scram_secret(Client, ClusterArn, Input) ->
+    batch_disassociate_scram_secret(Client, ClusterArn, Input, []).
+batch_disassociate_scram_secret(Client, ClusterArn, Input0, Options) ->
+    Method = patch,
+    Path = ["/v1/clusters/", http_uri:encode(ClusterArn), "/scram-secrets"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new MSK cluster.
 create_cluster(Client, Input) ->
@@ -107,6 +149,24 @@ delete_cluster(Client, ClusterArn, Input0, Options) ->
                      {<<"currentVersion">>, <<"CurrentVersion">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the specified MSK configuration.
+%%
+%% The configuration must be in the ACTIVE or DELETE_FAILED state.
+delete_configuration(Client, Arn, Input) ->
+    delete_configuration(Client, Arn, Input, []).
+delete_configuration(Client, Arn, Input0, Options) ->
+    Method = delete,
+    Path = ["/v1/configurations/", http_uri:encode(Arn), ""],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a description of the MSK cluster whose Amazon Resource Name
@@ -327,6 +387,27 @@ list_nodes(Client, ClusterArn, MaxResults, NextToken, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns a list of the Scram Secrets associated with an Amazon MSK
+%% cluster.
+list_scram_secrets(Client, ClusterArn, MaxResults, NextToken)
+  when is_map(Client) ->
+    list_scram_secrets(Client, ClusterArn, MaxResults, NextToken, []).
+list_scram_secrets(Client, ClusterArn, MaxResults, NextToken, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/v1/clusters/", http_uri:encode(ClusterArn), "/scram-secrets"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns a list of the tags associated with the specified resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
@@ -392,9 +473,10 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the number of broker nodes in the cluster. You can use this
-%% operation to increase the number of brokers in an existing cluster. You
-%% can't decrease the number of brokers.
+%% @doc Updates the number of broker nodes in the cluster.
+%%
+%% You can use this operation to increase the number of brokers in an
+%% existing cluster. You can't decrease the number of brokers.
 update_broker_count(Client, ClusterArn, Input) ->
     update_broker_count(Client, ClusterArn, Input, []).
 update_broker_count(Client, ClusterArn, Input0, Options) ->
@@ -459,10 +541,29 @@ update_cluster_kafka_version(Client, ClusterArn, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the monitoring settings for the cluster. You can use this
-%% operation to specify which Apache Kafka metrics you want Amazon MSK to
-%% send to Amazon CloudWatch. You can also specify settings for open
-%% monitoring with Prometheus.
+%% @doc Updates an existing MSK configuration.
+%%
+%% The configuration must be in the Active state.
+update_configuration(Client, Arn, Input) ->
+    update_configuration(Client, Arn, Input, []).
+update_configuration(Client, Arn, Input0, Options) ->
+    Method = put,
+    Path = ["/v1/configurations/", http_uri:encode(Arn), ""],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the monitoring settings for the cluster.
+%%
+%% You can use this operation to specify which Apache Kafka metrics you want
+%% Amazon MSK to send to Amazon CloudWatch. You can also specify settings for
+%% open monitoring with Prometheus.
 update_monitoring(Client, ClusterArn, Input) ->
     update_monitoring(Client, ClusterArn, Input, []).
 update_monitoring(Client, ClusterArn, Input0, Options) ->
@@ -524,6 +625,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

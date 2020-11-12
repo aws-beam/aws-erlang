@@ -3,11 +3,12 @@
 
 %% @doc AWS IoT Greengrass seamlessly extends AWS onto physical devices so
 %% they can act locally on the data they generate, while still using the
-%% cloud for management, analytics, and durable storage. AWS IoT Greengrass
-%% ensures your devices can respond quickly to local events and operate with
-%% intermittent connectivity. AWS IoT Greengrass minimizes the cost of
-%% transmitting data to the cloud by allowing you to author AWS Lambda
-%% functions that execute locally.
+%% cloud for management, analytics, and durable storage.
+%%
+%% AWS IoT Greengrass ensures your devices can respond quickly to local
+%% events and operate with intermittent connectivity. AWS IoT Greengrass
+%% minimizes the cost of transmitting data to the cloud by allowing you to
+%% author AWS Lambda functions that execute locally.
 -module(aws_greengrass).
 
 -export([associate_role_to_group/3,
@@ -118,6 +119,8 @@
          get_subscription_definition/3,
          get_subscription_definition_version/4,
          get_subscription_definition_version/5,
+         get_thing_runtime_configuration/2,
+         get_thing_runtime_configuration/3,
          list_bulk_deployment_detailed_reports/4,
          list_bulk_deployment_detailed_reports/5,
          list_bulk_deployments/3,
@@ -189,7 +192,9 @@
          update_resource_definition/3,
          update_resource_definition/4,
          update_subscription_definition/3,
-         update_subscription_definition/4]).
+         update_subscription_definition/4,
+         update_thing_runtime_configuration/3,
+         update_thing_runtime_configuration/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -197,9 +202,11 @@
 %% API
 %%====================================================================
 
-%% @doc Associates a role with a group. Your Greengrass core will use the
-%% role to access AWS cloud services. The role's permissions should allow
-%% Greengrass core Lambda functions to perform actions against the cloud.
+%% @doc Associates a role with a group.
+%%
+%% Your Greengrass core will use the role to access AWS cloud services. The
+%% role's permissions should allow Greengrass core Lambda functions to
+%% perform actions against the cloud.
 associate_role_to_group(Client, GroupId, Input) ->
     associate_role_to_group(Client, GroupId, Input, []).
 associate_role_to_group(Client, GroupId, Input0, Options) ->
@@ -215,10 +222,12 @@ associate_role_to_group(Client, GroupId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Associates a role with your account. AWS IoT Greengrass will use the
-%% role to access your Lambda functions and AWS IoT resources. This is
-%% necessary for deployments to succeed. The role must have at least minimum
-%% permissions in the policy ''AWSGreengrassResourceAccessRolePolicy''.
+%% @doc Associates a role with your account.
+%%
+%% AWS IoT Greengrass will use the role to access your Lambda functions and
+%% AWS IoT resources. This is necessary for deployments to succeed. The role
+%% must have at least minimum permissions in the policy
+%% ''AWSGreengrassResourceAccessRolePolicy''.
 associate_service_role_to_account(Client, Input) ->
     associate_service_role_to_account(Client, Input, []).
 associate_service_role_to_account(Client, Input0, Options) ->
@@ -234,8 +243,9 @@ associate_service_role_to_account(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a connector definition. You may provide the initial version
-%% of the connector definition now or use
+%% @doc Creates a connector definition.
+%%
+%% You may provide the initial version of the connector definition now or use
 %% ''CreateConnectorDefinitionVersion'' at a later time.
 create_connector_definition(Client, Input) ->
     create_connector_definition(Client, Input, []).
@@ -273,9 +283,11 @@ create_connector_definition_version(Client, ConnectorDefinitionId, Input0, Optio
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a core definition. You may provide the initial version of the
-%% core definition now or use ''CreateCoreDefinitionVersion'' at a later
-%% time. Greengrass groups must each contain exactly one Greengrass core.
+%% @doc Creates a core definition.
+%%
+%% You may provide the initial version of the core definition now or use
+%% ''CreateCoreDefinitionVersion'' at a later time. Greengrass groups must
+%% each contain exactly one Greengrass core.
 create_core_definition(Client, Input) ->
     create_core_definition(Client, Input, []).
 create_core_definition(Client, Input0, Options) ->
@@ -294,6 +306,7 @@ create_core_definition(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a version of a core definition that has already been defined.
+%%
 %% Greengrass groups must each contain exactly one Greengrass core.
 create_core_definition_version(Client, CoreDefinitionId, Input) ->
     create_core_definition_version(Client, CoreDefinitionId, Input, []).
@@ -312,9 +325,10 @@ create_core_definition_version(Client, CoreDefinitionId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a deployment. ''CreateDeployment'' requests are idempotent
-%% with respect to the ''X-Amzn-Client-Token'' token and the request
-%% parameters.
+%% @doc Creates a deployment.
+%%
+%% ''CreateDeployment'' requests are idempotent with respect to the
+%% ''X-Amzn-Client-Token'' token and the request parameters.
 create_deployment(Client, GroupId, Input) ->
     create_deployment(Client, GroupId, Input, []).
 create_deployment(Client, GroupId, Input0, Options) ->
@@ -332,9 +346,10 @@ create_deployment(Client, GroupId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a device definition. You may provide the initial version of
-%% the device definition now or use ''CreateDeviceDefinitionVersion'' at a
-%% later time.
+%% @doc Creates a device definition.
+%%
+%% You may provide the initial version of the device definition now or use
+%% ''CreateDeviceDefinitionVersion'' at a later time.
 create_device_definition(Client, Input) ->
     create_device_definition(Client, Input, []).
 create_device_definition(Client, Input0, Options) ->
@@ -372,9 +387,10 @@ create_device_definition_version(Client, DeviceDefinitionId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a Lambda function definition which contains a list of Lambda
-%% functions and their configurations to be used in a group. You can create
-%% an initial version of the definition by providing a list of Lambda
-%% functions and their configurations now, or use
+%% functions and their configurations to be used in a group.
+%%
+%% You can create an initial version of the definition by providing a list of
+%% Lambda functions and their configurations now, or use
 %% ''CreateFunctionDefinitionVersion'' later.
 create_function_definition(Client, Input) ->
     create_function_definition(Client, Input, []).
@@ -412,8 +428,10 @@ create_function_definition_version(Client, FunctionDefinitionId, Input0, Options
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a group. You may provide the initial version of the group or
-%% use ''CreateGroupVersion'' at a later time. Tip: You can use the
+%% @doc Creates a group.
+%%
+%% You may provide the initial version of the group or use
+%% ''CreateGroupVersion'' at a later time. Tip: You can use the
 %% ''gg_group_setup'' package
 %% (https://github.com/awslabs/aws-greengrass-group-setup) as a library or
 %% command-line application to create and deploy Greengrass groups.
@@ -434,8 +452,9 @@ create_group(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a CA for the group. If a CA already exists, it will rotate
-%% the existing CA.
+%% @doc Creates a CA for the group.
+%%
+%% If a CA already exists, it will rotate the existing CA.
 create_group_certificate_authority(Client, GroupId, Input) ->
     create_group_certificate_authority(Client, GroupId, Input, []).
 create_group_certificate_authority(Client, GroupId, Input0, Options) ->
@@ -471,9 +490,10 @@ create_group_version(Client, GroupId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a logger definition. You may provide the initial version of
-%% the logger definition now or use ''CreateLoggerDefinitionVersion'' at a
-%% later time.
+%% @doc Creates a logger definition.
+%%
+%% You may provide the initial version of the logger definition now or use
+%% ''CreateLoggerDefinitionVersion'' at a later time.
 create_logger_definition(Client, Input) ->
     create_logger_definition(Client, Input, []).
 create_logger_definition(Client, Input0, Options) ->
@@ -511,9 +531,10 @@ create_logger_definition_version(Client, LoggerDefinitionId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a resource definition which contains a list of resources to
-%% be used in a group. You can create an initial version of the definition by
-%% providing a list of resources now, or use
-%% ''CreateResourceDefinitionVersion'' later.
+%% be used in a group.
+%%
+%% You can create an initial version of the definition by providing a list of
+%% resources now, or use ''CreateResourceDefinitionVersion'' later.
 create_resource_definition(Client, Input) ->
     create_resource_definition(Client, Input, []).
 create_resource_definition(Client, Input0, Options) ->
@@ -552,9 +573,10 @@ create_resource_definition_version(Client, ResourceDefinitionId, Input0, Options
 
 %% @doc Creates a software update for a core or group of cores (specified as
 %% an IoT thing group.) Use this to update the OTA Agent as well as the
-%% Greengrass core software. It makes use of the IoT Jobs feature which
-%% provides additional commands to manage a Greengrass core software update
-%% job.
+%% Greengrass core software.
+%%
+%% It makes use of the IoT Jobs feature which provides additional commands to
+%% manage a Greengrass core software update job.
 create_software_update_job(Client, Input) ->
     create_software_update_job(Client, Input, []).
 create_software_update_job(Client, Input0, Options) ->
@@ -572,9 +594,10 @@ create_software_update_job(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a subscription definition. You may provide the initial
-%% version of the subscription definition now or use
-%% ''CreateSubscriptionDefinitionVersion'' at a later time.
+%% @doc Creates a subscription definition.
+%%
+%% You may provide the initial version of the subscription definition now or
+%% use ''CreateSubscriptionDefinitionVersion'' at a later time.
 create_subscription_definition(Client, Input) ->
     create_subscription_definition(Client, Input, []).
 create_subscription_definition(Client, Input0, Options) ->
@@ -755,8 +778,9 @@ disassociate_role_from_group(Client, GroupId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Disassociates the service role from your account. Without a service
-%% role, deployments will not work.
+%% @doc Disassociates the service role from your account.
+%%
+%% Without a service role, deployments will not work.
 disassociate_service_role_from_account(Client, Input) ->
     disassociate_service_role_from_account(Client, Input, []).
 disassociate_service_role_from_account(Client, Input0, Options) ->
@@ -833,9 +857,10 @@ get_connector_definition(Client, ConnectorDefinitionId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a connector definition version, including
-%% the connectors that the version contains. Connectors are prebuilt modules
-%% that interact with local infrastructure, device protocols, AWS, and other
-%% cloud services.
+%% the connectors that the version contains.
+%%
+%% Connectors are prebuilt modules that interact with local infrastructure,
+%% device protocols, AWS, and other cloud services.
 get_connector_definition_version(Client, ConnectorDefinitionId, ConnectorDefinitionVersionId, NextToken)
   when is_map(Client) ->
     get_connector_definition_version(Client, ConnectorDefinitionId, ConnectorDefinitionVersionId, NextToken, []).
@@ -985,8 +1010,9 @@ get_group(Client, GroupId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retreives the CA associated with a group. Returns the public key of
-%% the CA.
+%% @doc Retreives the CA associated with a group.
+%%
+%% Returns the public key of the CA.
 get_group_certificate_authority(Client, CertificateAuthorityId, GroupId)
   when is_map(Client) ->
     get_group_certificate_authority(Client, CertificateAuthorityId, GroupId, []).
@@ -1146,6 +1172,21 @@ get_subscription_definition_version(Client, SubscriptionDefinitionId, Subscripti
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Get the runtime configuration of a thing.
+get_thing_runtime_configuration(Client, ThingName)
+  when is_map(Client) ->
+    get_thing_runtime_configuration(Client, ThingName, []).
+get_thing_runtime_configuration(Client, ThingName, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/greengrass/things/", http_uri:encode(ThingName), "/runtimeconfig"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets a paginated list of the deployments that have been started in a
 %% bulk deployment operation, and their current deployment status.
 list_bulk_deployment_detailed_reports(Client, BulkDeploymentId, MaxResults, NextToken)
@@ -1188,9 +1229,11 @@ list_bulk_deployments(Client, MaxResults, NextToken, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the versions of a connector definition, which are containers
-%% for connectors. Connectors run on the Greengrass core and contain built-in
-%% integration with local infrastructure, device protocols, AWS, and other
-%% cloud services.
+%% for connectors.
+%%
+%% Connectors run on the Greengrass core and contain built-in integration
+%% with local infrastructure, device protocols, AWS, and other cloud
+%% services.
 list_connector_definition_versions(Client, ConnectorDefinitionId, MaxResults, NextToken)
   when is_map(Client) ->
     list_connector_definition_versions(Client, ConnectorDefinitionId, MaxResults, NextToken, []).
@@ -1578,12 +1621,14 @@ reset_deployments(Client, GroupId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deploys multiple groups in one operation. This action starts the bulk
-%% deployment of a specified set of group versions. Each group version
-%% deployment will be triggered with an adaptive rate that has a fixed upper
-%% limit. We recommend that you include an ''X-Amzn-Client-Token'' token in
-%% every ''StartBulkDeployment'' request. These requests are idempotent with
-%% respect to the token and the request parameters.
+%% @doc Deploys multiple groups in one operation.
+%%
+%% This action starts the bulk deployment of a specified set of group
+%% versions. Each group version deployment will be triggered with an adaptive
+%% rate that has a fixed upper limit. We recommend that you include an
+%% ''X-Amzn-Client-Token'' token in every ''StartBulkDeployment'' request.
+%% These requests are idempotent with respect to the token and the request
+%% parameters.
 start_bulk_deployment(Client, Input) ->
     start_bulk_deployment(Client, Input, []).
 start_bulk_deployment(Client, Input0, Options) ->
@@ -1601,11 +1646,12 @@ start_bulk_deployment(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Stops the execution of a bulk deployment. This action returns a
-%% status of ''Stopping'' until the deployment is stopped. You cannot start a
-%% new bulk deployment while a previous deployment is in the ''Stopping''
-%% state. This action doesn't rollback completed deployments or cancel
-%% pending deployments.
+%% @doc Stops the execution of a bulk deployment.
+%%
+%% This action returns a status of ''Stopping'' until the deployment is
+%% stopped. You cannot start a new bulk deployment while a previous
+%% deployment is in the ''Stopping'' state. This action doesn't rollback
+%% completed deployments or cancel pending deployments.
 stop_bulk_deployment(Client, BulkDeploymentId, Input) ->
     stop_bulk_deployment(Client, BulkDeploymentId, Input, []).
 stop_bulk_deployment(Client, BulkDeploymentId, Input0, Options) ->
@@ -1621,10 +1667,11 @@ stop_bulk_deployment(Client, BulkDeploymentId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds tags to a Greengrass resource. Valid resources are 'Group',
-%% 'ConnectorDefinition', 'CoreDefinition', 'DeviceDefinition',
-%% 'FunctionDefinition', 'LoggerDefinition', 'SubscriptionDefinition',
-%% 'ResourceDefinition', and 'BulkDeployment'.
+%% @doc Adds tags to a Greengrass resource.
+%%
+%% Valid resources are 'Group', 'ConnectorDefinition', 'CoreDefinition',
+%% 'DeviceDefinition', 'FunctionDefinition', 'LoggerDefinition',
+%% 'SubscriptionDefinition', 'ResourceDefinition', and 'BulkDeployment'.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
@@ -1657,9 +1704,10 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the connectivity information for the core. Any devices that
-%% belong to the group which has this core will receive this information in
-%% order to find the location of the core and connect to it.
+%% @doc Updates the connectivity information for the core.
+%%
+%% Any devices that belong to the group which has this core will receive this
+%% information in order to find the location of the core and connect to it.
 update_connectivity_info(Client, ThingName, Input) ->
     update_connectivity_info(Client, ThingName, Input, []).
 update_connectivity_info(Client, ThingName, Input0, Options) ->
@@ -1819,6 +1867,22 @@ update_subscription_definition(Client, SubscriptionDefinitionId, Input0, Options
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates the runtime configuration of a thing.
+update_thing_runtime_configuration(Client, ThingName, Input) ->
+    update_thing_runtime_configuration(Client, ThingName, Input, []).
+update_thing_runtime_configuration(Client, ThingName, Input0, Options) ->
+    Method = put,
+    Path = ["/greengrass/things/", http_uri:encode(ThingName), "/runtimeconfig"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %%====================================================================
 %% Internal functions
 %%====================================================================
@@ -1865,6 +1929,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

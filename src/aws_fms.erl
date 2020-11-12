@@ -1,14 +1,14 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc <fullname>AWS Firewall Manager</fullname>
+%% @doc AWS Firewall Manager
 %%
-%% This is the <i>AWS Firewall Manager API Reference</i>. This guide is for
-%% developers who need detailed information about the AWS Firewall Manager
-%% API actions, data types, and errors. For detailed information about AWS
-%% Firewall Manager features, see the <a
-%% href="https://docs.aws.amazon.com/waf/latest/developerguide/fms-chapter.html">AWS
-%% Firewall Manager Developer Guide</a>.
+%% This is the AWS Firewall Manager API Reference.
+%%
+%% This guide is for developers who need detailed information about the AWS
+%% Firewall Manager API actions, data types, and errors. For detailed
+%% information about AWS Firewall Manager features, see the AWS Firewall
+%% Manager Developer Guide.
 -module(aws_fms).
 
 -export([associate_admin_account/2,
@@ -70,12 +70,13 @@
 %% API
 %%====================================================================
 
-%% @doc Sets the AWS Firewall Manager administrator account. AWS Firewall
-%% Manager must be associated with the master account of your AWS
-%% organization or associated with a member account that has the appropriate
-%% permissions. If the account ID that you submit is not an AWS Organizations
-%% master account, AWS Firewall Manager will set the appropriate permissions
-%% for the given member account.
+%% @doc Sets the AWS Firewall Manager administrator account.
+%%
+%% AWS Firewall Manager must be associated with the master account of your
+%% AWS organization or associated with a member account that has the
+%% appropriate permissions. If the account ID that you submit is not an AWS
+%% Organizations master account, AWS Firewall Manager will set the
+%% appropriate permissions for the given member account.
 %%
 %% The account that you associate with AWS Firewall Manager is called the AWS
 %% Firewall Manager administrator account.
@@ -121,9 +122,10 @@ delete_protocols_list(Client, Input, Options)
     request(Client, <<"DeleteProtocolsList">>, Input, Options).
 
 %% @doc Disassociates the account that has been set as the AWS Firewall
-%% Manager administrator account. To set a different account as the
-%% administrator account, you must submit an
-%% <code>AssociateAdminAccount</code> request.
+%% Manager administrator account.
+%%
+%% To set a different account as the administrator account, you must submit
+%% an `AssociateAdminAccount` request.
 disassociate_admin_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_admin_account(Client, Input, []).
@@ -150,11 +152,13 @@ get_apps_list(Client, Input, Options)
     request(Client, <<"GetAppsList">>, Input, Options).
 
 %% @doc Returns detailed compliance information about the specified member
-%% account. Details include resources that are in and out of compliance with
-%% the specified policy. Resources are considered noncompliant for AWS WAF
-%% and Shield Advanced policies if the specified policy has not been applied
-%% to them. Resources are considered noncompliant for security group policies
-%% if they are in scope of the policy, they violate one or more of the policy
+%% account.
+%%
+%% Details include resources that are in and out of compliance with the
+%% specified policy. Resources are considered noncompliant for AWS WAF and
+%% Shield Advanced policies if the specified policy has not been applied to
+%% them. Resources are considered noncompliant for security group policies if
+%% they are in scope of the policy, they violate one or more of the policy
 %% rules, and remediation is disabled or not possible.
 get_compliance_detail(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -181,8 +185,9 @@ get_policy(Client, Input, Options)
     request(Client, <<"GetPolicy">>, Input, Options).
 
 %% @doc If you created a Shield Advanced policy, returns policy-level attack
-%% summary information in the event of a potential DDoS attack. Other policy
-%% types are currently unsupported.
+%% summary information in the event of a potential DDoS attack.
+%%
+%% Other policy types are currently unsupported.
 get_protection_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_protection_status(Client, Input, []).
@@ -208,7 +213,7 @@ get_violation_details(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetViolationDetails">>, Input, Options).
 
-%% @doc Returns an array of <code>AppsListDataSummary</code> objects.
+%% @doc Returns an array of `AppsListDataSummary` objects.
 list_apps_lists(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_apps_lists(Client, Input, []).
@@ -216,9 +221,10 @@ list_apps_lists(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAppsLists">>, Input, Options).
 
-%% @doc Returns an array of <code>PolicyComplianceStatus</code> objects. Use
-%% <code>PolicyComplianceStatus</code> to get a summary of which member
-%% accounts are protected by the specified policy.
+%% @doc Returns an array of `PolicyComplianceStatus` objects.
+%%
+%% Use `PolicyComplianceStatus` to get a summary of which member accounts are
+%% protected by the specified policy.
 list_compliance_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_compliance_status(Client, Input, []).
@@ -226,11 +232,11 @@ list_compliance_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListComplianceStatus">>, Input, Options).
 
-%% @doc Returns a <code>MemberAccounts</code> object that lists the member
-%% accounts in the administrator's AWS organization.
+%% @doc Returns a `MemberAccounts` object that lists the member accounts in
+%% the administrator's AWS organization.
 %%
-%% The <code>ListMemberAccounts</code> must be submitted by the account that
-%% is set as the AWS Firewall Manager administrator.
+%% The `ListMemberAccounts` must be submitted by the account that is set as
+%% the AWS Firewall Manager administrator.
 list_member_accounts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_member_accounts(Client, Input, []).
@@ -238,7 +244,7 @@ list_member_accounts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMemberAccounts">>, Input, Options).
 
-%% @doc Returns an array of <code>PolicySummary</code> objects.
+%% @doc Returns an array of `PolicySummary` objects.
 list_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_policies(Client, Input, []).
@@ -246,7 +252,7 @@ list_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPolicies">>, Input, Options).
 
-%% @doc Returns an array of <code>ProtocolsListDataSummary</code> objects.
+%% @doc Returns an array of `ProtocolsListDataSummary` objects.
 list_protocols_lists(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_protocols_lists(Client, Input, []).
@@ -301,8 +307,8 @@ put_notification_channel(Client, Input, Options)
 %% policies. You can create multiple policies for each type.
 %%
 %% You must be subscribed to Shield Advanced to create a Shield Advanced
-%% policy. For more information about subscribing to Shield Advanced, see <a
-%% href="https://docs.aws.amazon.com/waf/latest/DDOSAPIReference/API_CreateSubscription.html">CreateSubscription</a>.
+%% policy. For more information about subscribing to Shield Advanced, see
+%% CreateSubscription.
 put_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_policy(Client, Input, []).
@@ -376,6 +382,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
 handle_response({error, Reason}) ->
     {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

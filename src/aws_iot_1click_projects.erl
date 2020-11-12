@@ -75,9 +75,10 @@ create_placement(Client, ProjectName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an empty project with a placement template. A project
-%% contains zero or more placements that adhere to the placement template
-%% defined in the project.
+%% @doc Creates an empty project with a placement template.
+%%
+%% A project contains zero or more placements that adhere to the placement
+%% template defined in the project.
 create_project(Client, Input) ->
     create_project(Client, Input, []).
 create_project(Client, Input0, Options) ->
@@ -93,13 +94,11 @@ create_project(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a placement. To delete a placement, it must not have any
-%% devices associated with it.
+%% @doc Deletes a placement.
 %%
-%% <note> When you delete a placement, all associated data becomes
-%% irretrievable.
+%% To delete a placement, it must not have any devices associated with it.
 %%
-%% </note>
+%% When you delete a placement, all associated data becomes irretrievable.
 delete_placement(Client, PlacementName, ProjectName, Input) ->
     delete_placement(Client, PlacementName, ProjectName, Input, []).
 delete_placement(Client, PlacementName, ProjectName, Input0, Options) ->
@@ -115,13 +114,11 @@ delete_placement(Client, PlacementName, ProjectName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a project. To delete a project, it must not have any
-%% placements associated with it.
+%% @doc Deletes a project.
 %%
-%% <note> When you delete a project, all associated data becomes
-%% irretrievable.
+%% To delete a project, it must not have any placements associated with it.
 %%
-%% </note>
+%% When you delete a project, all associated data becomes irretrievable.
 delete_project(Client, ProjectName, Input) ->
     delete_project(Client, ProjectName, Input, []).
 delete_project(Client, ProjectName, Input0, Options) ->
@@ -255,11 +252,10 @@ list_tags_for_resource(Client, ResourceArn, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Creates or modifies tags for a resource. Tags are key/value pairs
-%% (metadata) that can be used to manage a resource. For more information,
-%% see <a
-%% href="https://aws.amazon.com/answers/account-management/aws-tagging-strategies/">AWS
-%% Tagging Strategies</a>.
+%% @doc Creates or modifies tags for a resource.
+%%
+%% Tags are key/value pairs (metadata) that can be used to manage a resource.
+%% For more information, see AWS Tagging Strategies.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
@@ -292,8 +288,9 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a placement with the given attributes. To clear an attribute,
-%% pass an empty value (i.e., "").
+%% @doc Updates a placement with the given attributes.
+%%
+%% To clear an attribute, pass an empty value (i.e., "").
 update_placement(Client, PlacementName, ProjectName, Input) ->
     update_placement(Client, PlacementName, ProjectName, Input, []).
 update_placement(Client, PlacementName, ProjectName, Input0, Options) ->
@@ -309,11 +306,12 @@ update_placement(Client, PlacementName, ProjectName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a project associated with your AWS account and region. With
-%% the exception of device template names, you can pass just the values that
-%% need to be updated because the update request will change only the values
-%% that are provided. To clear a value, pass the empty string (i.e.,
-%% <code>""</code>).
+%% @doc Updates a project associated with your AWS account and region.
+%%
+%% With the exception of device template names, you can pass just the values
+%% that need to be updated because the update request will change only the
+%% values that are provided. To clear a value, pass the empty string (i.e.,
+%% `""`).
 update_project(Client, ProjectName, Input) ->
     update_project(Client, ProjectName, Input, []).
 update_project(Client, ProjectName, Input0, Options) ->
@@ -375,6 +373,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

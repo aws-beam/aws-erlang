@@ -28,6 +28,8 @@
          describe_registry/3,
          describe_schema/4,
          describe_schema/5,
+         export_schema/5,
+         export_schema/6,
          get_code_binding_source/5,
          get_code_binding_source/6,
          get_discovered_schema/2,
@@ -105,9 +107,7 @@ create_registry(Client, RegistryName, Input0, Options) ->
 
 %% @doc Creates a schema definition.
 %%
-%% <note>Inactive schemas will be deleted after two years.
-%%
-%% </note>
+%% Inactive schemas will be deleted after two years.
 create_schema(Client, RegistryName, SchemaName, Input) ->
     create_schema(Client, RegistryName, SchemaName, Input, []).
 create_schema(Client, RegistryName, SchemaName, Input0, Options) ->
@@ -267,6 +267,26 @@ describe_schema(Client, RegistryName, SchemaName, SchemaVersion, Options)
     Query0_ =
       [
         {<<"schemaVersion">>, SchemaVersion}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Exports a schema to a different specification.
+export_schema(Client, RegistryName, SchemaName, SchemaVersion, Type)
+  when is_map(Client) ->
+    export_schema(Client, RegistryName, SchemaName, SchemaVersion, Type, []).
+export_schema(Client, RegistryName, SchemaName, SchemaVersion, Type, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/v1/registries/name/", http_uri:encode(RegistryName), "/schemas/name/", http_uri:encode(SchemaName), "/export"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"schemaVersion">>, SchemaVersion},
+        {<<"type">>, Type}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -580,9 +600,7 @@ update_registry(Client, RegistryName, Input0, Options) ->
 
 %% @doc Updates the schema definition
 %%
-%% <note>Inactive schemas will be deleted after two years.
-%%
-%% </note>
+%% Inactive schemas will be deleted after two years.
 update_schema(Client, RegistryName, SchemaName, Input) ->
     update_schema(Client, RegistryName, SchemaName, Input, []).
 update_schema(Client, RegistryName, SchemaName, Input0, Options) ->
@@ -644,6 +662,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

@@ -4,8 +4,18 @@
 %% @doc API for AWS Elemental MediaLive
 -module(aws_medialive).
 
--export([batch_update_schedule/3,
+-export([accept_input_device_transfer/3,
+         accept_input_device_transfer/4,
+         batch_delete/2,
+         batch_delete/3,
+         batch_start/2,
+         batch_start/3,
+         batch_stop/2,
+         batch_stop/3,
+         batch_update_schedule/3,
          batch_update_schedule/4,
+         cancel_input_device_transfer/3,
+         cancel_input_device_transfer/4,
          create_channel/2,
          create_channel/3,
          create_input/2,
@@ -56,6 +66,8 @@
          describe_schedule/5,
          list_channels/3,
          list_channels/4,
+         list_input_device_transfers/4,
+         list_input_device_transfers/5,
          list_input_devices/3,
          list_input_devices/4,
          list_input_security_groups/3,
@@ -74,6 +86,8 @@
          list_tags_for_resource/3,
          purchase_offering/3,
          purchase_offering/4,
+         reject_input_device_transfer/3,
+         reject_input_device_transfer/4,
          start_channel/3,
          start_channel/4,
          start_multiplex/3,
@@ -82,6 +96,8 @@
          stop_channel/4,
          stop_multiplex/3,
          stop_multiplex/4,
+         transfer_input_device/3,
+         transfer_input_device/4,
          update_channel/3,
          update_channel/4,
          update_channel_class/3,
@@ -105,12 +121,94 @@
 %% API
 %%====================================================================
 
+%% @doc Accept an incoming input device transfer.
+%%
+%% The ownership of the device will transfer to your AWS account.
+accept_input_device_transfer(Client, InputDeviceId, Input) ->
+    accept_input_device_transfer(Client, InputDeviceId, Input, []).
+accept_input_device_transfer(Client, InputDeviceId, Input0, Options) ->
+    Method = post,
+    Path = ["/prod/inputDevices/", http_uri:encode(InputDeviceId), "/accept"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts delete of resources.
+batch_delete(Client, Input) ->
+    batch_delete(Client, Input, []).
+batch_delete(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/prod/batch/delete"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts existing resources
+batch_start(Client, Input) ->
+    batch_start(Client, Input, []).
+batch_start(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/prod/batch/start"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Stops running resources
+batch_stop(Client, Input) ->
+    batch_stop(Client, Input, []).
+batch_stop(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/prod/batch/stop"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Update a channel schedule
 batch_update_schedule(Client, ChannelId, Input) ->
     batch_update_schedule(Client, ChannelId, Input, []).
 batch_update_schedule(Client, ChannelId, Input0, Options) ->
     Method = put,
     Path = ["/prod/channels/", http_uri:encode(ChannelId), "/schedule"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Cancel an input device transfer that you have requested.
+cancel_input_device_transfer(Client, InputDeviceId, Input) ->
+    cancel_input_device_transfer(Client, InputDeviceId, Input, []).
+cancel_input_device_transfer(Client, InputDeviceId, Input0, Options) ->
+    Method = post,
+    Path = ["/prod/inputDevices/", http_uri:encode(InputDeviceId), "/cancel"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -217,7 +315,9 @@ create_tags(Client, ResourceArn, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Starts deletion of channel. The associated outputs are also deleted.
+%% @doc Starts deletion of channel.
+%%
+%% The associated outputs are also deleted.
 delete_channel(Client, ChannelId, Input) ->
     delete_channel(Client, ChannelId, Input, []).
 delete_channel(Client, ChannelId, Input0, Options) ->
@@ -265,7 +365,9 @@ delete_input_security_group(Client, InputSecurityGroupId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Delete a multiplex. The multiplex must be idle.
+%% @doc Delete a multiplex.
+%%
+%% The multiplex must be idle.
 delete_multiplex(Client, MultiplexId, Input) ->
     delete_multiplex(Client, MultiplexId, Input, []).
 delete_multiplex(Client, MultiplexId, Input0, Options) ->
@@ -544,6 +646,30 @@ list_channels(Client, MaxResults, NextToken, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc List input devices that are currently being transferred.
+%%
+%% List input devices that you are transferring from your AWS account or
+%% input devices that another AWS account is transferring to you.
+list_input_device_transfers(Client, MaxResults, NextToken, TransferType)
+  when is_map(Client) ->
+    list_input_device_transfers(Client, MaxResults, NextToken, TransferType, []).
+list_input_device_transfers(Client, MaxResults, NextToken, TransferType, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/prod/inputDeviceTransfers"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken},
+        {<<"transferType">>, TransferType}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc List input devices
 list_input_devices(Client, MaxResults, NextToken)
   when is_map(Client) ->
@@ -733,6 +859,23 @@ purchase_offering(Client, OfferingId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Reject the transfer of the specified input device to your AWS
+%% account.
+reject_input_device_transfer(Client, InputDeviceId, Input) ->
+    reject_input_device_transfer(Client, InputDeviceId, Input, []).
+reject_input_device_transfer(Client, InputDeviceId, Input0, Options) ->
+    Method = post,
+    Path = ["/prod/inputDevices/", http_uri:encode(InputDeviceId), "/reject"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Starts an existing channel
 start_channel(Client, ChannelId, Input) ->
     start_channel(Client, ChannelId, Input, []).
@@ -749,8 +892,10 @@ start_channel(Client, ChannelId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Start (run) the multiplex. Starting the multiplex does not start the
-%% channels. You must explicitly start each channel.
+%% @doc Start (run) the multiplex.
+%%
+%% Starting the multiplex does not start the channels. You must explicitly
+%% start each channel.
 start_multiplex(Client, MultiplexId, Input) ->
     start_multiplex(Client, MultiplexId, Input, []).
 start_multiplex(Client, MultiplexId, Input0, Options) ->
@@ -782,14 +927,34 @@ stop_channel(Client, ChannelId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Stops a running multiplex. If the multiplex isn't running, this
-%% action has no effect.
+%% @doc Stops a running multiplex.
+%%
+%% If the multiplex isn't running, this action has no effect.
 stop_multiplex(Client, MultiplexId, Input) ->
     stop_multiplex(Client, MultiplexId, Input, []).
 stop_multiplex(Client, MultiplexId, Input0, Options) ->
     Method = post,
     Path = ["/prod/multiplexes/", http_uri:encode(MultiplexId), "/stop"],
     SuccessStatusCode = 202,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Start an input device transfer to another AWS account.
+%%
+%% After you make the request, the other account must accept or reject the
+%% transfer.
+transfer_input_device(Client, InputDeviceId, Input) ->
+    transfer_input_device(Client, InputDeviceId, Input, []).
+transfer_input_device(Client, InputDeviceId, Input0, Options) ->
+    Method = post,
+    Path = ["/prod/inputDevices/", http_uri:encode(InputDeviceId), "/transfer"],
+    SuccessStatusCode = 200,
 
     Headers = [],
     Input1 = Input0,
@@ -973,6 +1138,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

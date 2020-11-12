@@ -1,23 +1,22 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc <fullname>Amazon Macie Classic</fullname>
+%% @doc Amazon Macie Classic
 %%
 %% Amazon Macie Classic is a security service that uses machine learning to
-%% automatically discover, classify, and protect sensitive data in AWS. Macie
-%% Classic recognizes sensitive data such as personally identifiable
+%% automatically discover, classify, and protect sensitive data in AWS.
+%%
+%% Macie Classic recognizes sensitive data such as personally identifiable
 %% information (PII) or intellectual property, and provides you with
 %% dashboards and alerts that give visibility into how this data is being
-%% accessed or moved. For more information, see the <a
-%% href="https://docs.aws.amazon.com/macie/latest/userguide/what-is-macie.html">Amazon
-%% Macie Classic User Guide</a>.
+%% accessed or moved. For more information, see the Amazon Macie Classic User
+%% Guide.
 %%
 %% A new Amazon Macie is now available with significant design improvements
 %% and additional features, at a lower price and in most AWS Regions. We
 %% encourage you to explore and use the new and improved features, and
 %% benefit from the reduced cost. To learn about features and pricing for the
-%% new Amazon Macie, see <a href="https://aws.amazon.com/macie/">Amazon
-%% Macie</a>.
+%% new Amazon Macie, see Amazon Macie.
 -module(aws_macie).
 
 -export([associate_member_account/2,
@@ -51,11 +50,12 @@ associate_member_account(Client, Input, Options)
     request(Client, <<"AssociateMemberAccount">>, Input, Options).
 
 %% @doc Associates specified S3 resources with Amazon Macie Classic for
-%% monitoring and data classification. If memberAccountId isn't specified,
-%% the action associates specified S3 resources with Macie Classic for the
-%% current master account. If memberAccountId is specified, the action
-%% associates specified S3 resources with Macie Classic for the specified
-%% member account.
+%% monitoring and data classification.
+%%
+%% If memberAccountId isn't specified, the action associates specified S3
+%% resources with Macie Classic for the current master account. If
+%% memberAccountId is specified, the action associates specified S3 resources
+%% with Macie Classic for the specified member account.
 associate_s3_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_s3_resources(Client, Input, []).
@@ -72,8 +72,10 @@ disassociate_member_account(Client, Input, Options)
     request(Client, <<"DisassociateMemberAccount">>, Input, Options).
 
 %% @doc Removes specified S3 resources from being monitored by Amazon Macie
-%% Classic. If memberAccountId isn't specified, the action removes specified
-%% S3 resources from Macie Classic for the current master account. If
+%% Classic.
+%%
+%% If memberAccountId isn't specified, the action removes specified S3
+%% resources from Macie Classic for the current master account. If
 %% memberAccountId is specified, the action removes specified S3 resources
 %% from Macie Classic for the specified member account.
 disassociate_s3_resources(Client, Input)
@@ -92,8 +94,9 @@ list_member_accounts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMemberAccounts">>, Input, Options).
 
-%% @doc Lists all the S3 resources associated with Amazon Macie Classic. If
-%% memberAccountId isn't specified, the action lists the S3 resources
+%% @doc Lists all the S3 resources associated with Amazon Macie Classic.
+%%
+%% If memberAccountId isn't specified, the action lists the S3 resources
 %% associated with Amazon Macie Classic for the current master account. If
 %% memberAccountId is specified, the action lists the S3 resources associated
 %% with Amazon Macie Classic for the specified member account.
@@ -104,8 +107,9 @@ list_s3_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListS3Resources">>, Input, Options).
 
-%% @doc Updates the classification types for the specified S3 resources. If
-%% memberAccountId isn't specified, the action updates the classification
+%% @doc Updates the classification types for the specified S3 resources.
+%%
+%% If memberAccountId isn't specified, the action updates the classification
 %% types of the S3 resources associated with Amazon Macie Classic for the
 %% current master account. If memberAccountId is specified, the action
 %% updates the classification types of the S3 resources associated with
@@ -159,6 +163,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
 handle_response({error, Reason}) ->
     {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

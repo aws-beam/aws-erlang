@@ -1,7 +1,7 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc <fullname>AWS DataSync</fullname>
+%% @doc AWS DataSync
 %%
 %% AWS DataSync is a managed data transfer service that makes it simpler for
 %% you to automate moving data between on-premises storage and Amazon Simple
@@ -72,7 +72,9 @@
          update_agent/2,
          update_agent/3,
          update_task/2,
-         update_task/3]).
+         update_task/3,
+         update_task_execution/2,
+         update_task_execution/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -98,6 +100,7 @@ cancel_task_execution(Client, Input, Options)
     request(Client, <<"CancelTaskExecution">>, Input, Options).
 
 %% @doc Activates an AWS DataSync agent that you have deployed on your host.
+%%
 %% The activation process associates your agent with your account. In the
 %% activation process, you specify information such as the AWS Region that
 %% you want to activate the agent in. You activate the agent in the AWS
@@ -106,7 +109,7 @@ cancel_task_execution(Client, Input, Options)
 %%
 %% You can activate the agent in a VPC (virtual private cloud) or provide the
 %% agent access to a VPC endpoint so you can run tasks without going over the
-%% public Internet.
+%% public internet.
 %%
 %% You can use an agent for more than one location. If a task uses multiple
 %% agents, all of them need to have status AVAILABLE for the task to run. If
@@ -115,8 +118,6 @@ cancel_task_execution(Client, Input, Options)
 %%
 %% Agents are automatically updated by AWS on a regular basis, using a
 %% mechanism that ensures minimal interruption to your tasks.
-%%
-%% <p/>
 create_agent(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_agent(Client, Input, []).
@@ -150,6 +151,9 @@ create_location_nfs(Client, Input, Options)
     request(Client, <<"CreateLocationNfs">>, Input, Options).
 
 %% @doc Creates an endpoint for a self-managed object storage bucket.
+%%
+%% For more information about self-managed object storage locations, see
+%% `create-object-location`.
 create_location_object_storage(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_object_storage(Client, Input, []).
@@ -159,15 +163,9 @@ create_location_object_storage(Client, Input, Options)
 
 %% @doc Creates an endpoint for an Amazon S3 bucket.
 %%
-%% For AWS DataSync to access a destination S3 bucket, it needs an AWS
-%% Identity and Access Management (IAM) role that has the required
-%% permissions. You can set up the required permissions by creating an IAM
-%% policy that grants the required permissions and attaching the policy to
-%% the role. An example of such a policy is shown in the examples section.
-%%
 %% For more information, see
-%% https://docs.aws.amazon.com/datasync/latest/userguide/working-with-locations.html#create-s3-location
-%% in the <i>AWS DataSync User Guide.</i>
+%% https://docs.aws.amazon.com/datasync/latest/userguide/create-locations-cli.html#create-location-s3-cli
+%% in the AWS DataSync User Guide.
 create_location_s3(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_s3(Client, Input, []).
@@ -184,10 +182,12 @@ create_location_smb(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocationSmb">>, Input, Options).
 
-%% @doc Creates a task. A task is a set of two locations (source and
-%% destination) and a set of Options that you use to control the behavior of
-%% a task. If you don't specify Options when you create a task, AWS DataSync
-%% populates them with service defaults.
+%% @doc Creates a task.
+%%
+%% A task is a set of two locations (source and destination) and a set of
+%% Options that you use to control the behavior of a task. If you don't
+%% specify Options when you create a task, AWS DataSync populates them with
+%% service defaults.
 %%
 %% When you create a task, it first enters the CREATING state. During
 %% CREATING AWS DataSync attempts to mount the on-premises Network File
@@ -200,7 +200,7 @@ create_location_smb(Client, Input, Options)
 %% remains in the CREATING status for more than a few minutes, it means that
 %% your agent might be having trouble mounting the source NFS file system.
 %% Check the task's ErrorCode and ErrorDetail. Mount issues are often caused
-%% by either a misconfigured firewall or a mistyped NFS server host name.
+%% by either a misconfigured firewall or a mistyped NFS server hostname.
 create_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_task(Client, Input, []).
@@ -208,10 +208,12 @@ create_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTask">>, Input, Options).
 
-%% @doc Deletes an agent. To specify which agent to delete, use the Amazon
-%% Resource Name (ARN) of the agent in your request. The operation
-%% disassociates the agent from your AWS account. However, it doesn't delete
-%% the agent virtual machine (VM) from your on-premises environment.
+%% @doc Deletes an agent.
+%%
+%% To specify which agent to delete, use the Amazon Resource Name (ARN) of
+%% the agent in your request. The operation disassociates the agent from your
+%% AWS account. However, it doesn't delete the agent virtual machine (VM)
+%% from your on-premises environment.
 delete_agent(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_agent(Client, Input, []).
@@ -236,9 +238,10 @@ delete_task(Client, Input, Options)
     request(Client, <<"DeleteTask">>, Input, Options).
 
 %% @doc Returns metadata such as the name, the network interfaces, and the
-%% status (that is, whether the agent is running or not) for an agent. To
-%% specify which agent to describe, use the Amazon Resource Name (ARN) of the
-%% agent in your request.
+%% status (that is, whether the agent is running or not) for an agent.
+%%
+%% To specify which agent to describe, use the Amazon Resource Name (ARN) of
+%% the agent in your request.
 describe_agent(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_agent(Client, Input, []).
@@ -274,6 +277,9 @@ describe_location_nfs(Client, Input, Options)
     request(Client, <<"DescribeLocationNfs">>, Input, Options).
 
 %% @doc Returns metadata about a self-managed object storage server location.
+%%
+%% For more information about self-managed object storage locations, see
+%% `create-object-location`.
 describe_location_object_storage(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_object_storage(Client, Input, []).
@@ -316,8 +322,9 @@ describe_task_execution(Client, Input, Options)
     request(Client, <<"DescribeTaskExecution">>, Input, Options).
 
 %% @doc Returns a list of agents owned by an AWS account in the AWS Region
-%% specified in the request. The returned list is ordered by agent Amazon
-%% Resource Name (ARN).
+%% specified in the request.
+%%
+%% The returned list is ordered by agent Amazon Resource Name (ARN).
 %%
 %% By default, this operation returns a maximum of 100 agents. This operation
 %% supports pagination that enables you to optionally reduce the number of
@@ -371,15 +378,16 @@ list_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTasks">>, Input, Options).
 
-%% @doc Starts a specific invocation of a task. A <code>TaskExecution</code>
-%% value represents an individual run of a task. Each task can have at most
-%% one <code>TaskExecution</code> at a time.
+%% @doc Starts a specific invocation of a task.
 %%
-%% <code>TaskExecution</code> has the following transition phases:
-%% INITIALIZING | PREPARING | TRANSFERRING | VERIFYING | SUCCESS/FAILURE.
+%% A `TaskExecution` value represents an individual run of a task. Each task
+%% can have at most one `TaskExecution` at a time.
+%%
+%% `TaskExecution` has the following transition phases: INITIALIZING |
+%% PREPARING | TRANSFERRING | VERIFYING | SUCCESS/FAILURE.
 %%
 %% For detailed information, see the Task Execution section in the Components
-%% and Terminology topic in the <i>AWS DataSync User Guide</i>.
+%% and Terminology topic in the AWS DataSync User Guide.
 start_task_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_task_execution(Client, Input, []).
@@ -418,6 +426,21 @@ update_task(Client, Input)
 update_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTask">>, Input, Options).
+
+%% @doc Updates execution of a task.
+%%
+%% You can modify bandwidth throttling for a task execution that is running
+%% or queued. For more information, see Adjusting Bandwidth Throttling for a
+%% Task Execution.
+%%
+%% The only `Option` that can be modified by `UpdateTaskExecution` is `
+%% BytesPerSecond `.
+update_task_execution(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_task_execution(Client, Input, []).
+update_task_execution(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateTaskExecution">>, Input, Options).
 
 %%====================================================================
 %% Internal functions
@@ -461,6 +484,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
 handle_response({error, Reason}) ->
     {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

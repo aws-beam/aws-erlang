@@ -36,13 +36,12 @@
 %%====================================================================
 
 %% @doc Deletes the specified pronunciation lexicon stored in an AWS Region.
-%% A lexicon which has been deleted is not available for speech synthesis,
-%% nor is it possible to retrieve it using either the <code>GetLexicon</code>
-%% or <code>ListLexicon</code> APIs.
 %%
-%% For more information, see <a
-%% href="https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html">Managing
-%% Lexicons</a>.
+%% A lexicon which has been deleted is not available for speech synthesis,
+%% nor is it possible to retrieve it using either the `GetLexicon` or
+%% `ListLexicon` APIs.
+%%
+%% For more information, see Managing Lexicons.
 delete_lexicon(Client, Name, Input) ->
     delete_lexicon(Client, Name, Input, []).
 delete_lexicon(Client, Name, Input0, Options) ->
@@ -59,25 +58,26 @@ delete_lexicon(Client, Name, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns the list of voices that are available for use when requesting
-%% speech synthesis. Each voice speaks a specified language, is either male
-%% or female, and is identified by an ID, which is the ASCII version of the
-%% voice name.
+%% speech synthesis.
 %%
-%% When synthesizing speech ( <code>SynthesizeSpeech</code> ), you provide
-%% the voice ID for the voice you want from the list of voices returned by
-%% <code>DescribeVoices</code>.
+%% Each voice speaks a specified language, is either male or female, and is
+%% identified by an ID, which is the ASCII version of the voice name.
+%%
+%% When synthesizing speech ( `SynthesizeSpeech` ), you provide the voice ID
+%% for the voice you want from the list of voices returned by
+%% `DescribeVoices`.
 %%
 %% For example, you want your news reader application to read news in a
 %% specific language, but giving a user the option to choose the voice. Using
-%% the <code>DescribeVoices</code> operation you can provide the user with a
-%% list of available voices to select from.
+%% the `DescribeVoices` operation you can provide the user with a list of
+%% available voices to select from.
 %%
 %% You can optionally specify a language code to filter the available voices.
-%% For example, if you specify <code>en-US</code>, the operation returns a
-%% list of all available US English voices.
+%% For example, if you specify `en-US`, the operation returns a list of all
+%% available US English voices.
 %%
-%% This operation requires permissions to perform the
-%% <code>polly:DescribeVoices</code> action.
+%% This operation requires permissions to perform the `polly:DescribeVoices`
+%% action.
 describe_voices(Client, Engine, IncludeAdditionalLanguageCodes, LanguageCode, NextToken)
   when is_map(Client) ->
     describe_voices(Client, Engine, IncludeAdditionalLanguageCodes, LanguageCode, NextToken, []).
@@ -100,9 +100,9 @@ describe_voices(Client, Engine, IncludeAdditionalLanguageCodes, LanguageCode, Ne
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the content of the specified pronunciation lexicon stored in
-%% an AWS Region. For more information, see <a
-%% href="https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html">Managing
-%% Lexicons</a>.
+%% an AWS Region.
+%%
+%% For more information, see Managing Lexicons.
 get_lexicon(Client, Name)
   when is_map(Client) ->
     get_lexicon(Client, Name, []).
@@ -118,6 +118,7 @@ get_lexicon(Client, Name, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a specific SpeechSynthesisTask object based on its TaskID.
+%%
 %% This object contains information about the given speech synthesis task,
 %% including the status of the task, and a link to the S3 bucket containing
 %% the output of the task.
@@ -135,10 +136,9 @@ get_speech_synthesis_task(Client, TaskId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of pronunciation lexicons stored in an AWS Region. For
-%% more information, see <a
-%% href="https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html">Managing
-%% Lexicons</a>.
+%% @doc Returns a list of pronunciation lexicons stored in an AWS Region.
+%%
+%% For more information, see Managing Lexicons.
 list_lexicons(Client, NextToken)
   when is_map(Client) ->
     list_lexicons(Client, NextToken, []).
@@ -158,8 +158,10 @@ list_lexicons(Client, NextToken, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of SpeechSynthesisTask objects ordered by their
-%% creation date. This operation can filter the tasks by their status, for
-%% example, allowing users to list only tasks that are completed.
+%% creation date.
+%%
+%% This operation can filter the tasks by their status, for example, allowing
+%% users to list only tasks that are completed.
 list_speech_synthesis_tasks(Client, MaxResults, NextToken, Status)
   when is_map(Client) ->
     list_speech_synthesis_tasks(Client, MaxResults, NextToken, Status, []).
@@ -180,15 +182,14 @@ list_speech_synthesis_tasks(Client, MaxResults, NextToken, Status, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Stores a pronunciation lexicon in an AWS Region. If a lexicon with
-%% the same name already exists in the region, it is overwritten by the new
-%% lexicon. Lexicon operations have eventual consistency, therefore, it might
-%% take some time before the lexicon is available to the SynthesizeSpeech
-%% operation.
+%% @doc Stores a pronunciation lexicon in an AWS Region.
 %%
-%% For more information, see <a
-%% href="https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html">Managing
-%% Lexicons</a>.
+%% If a lexicon with the same name already exists in the region, it is
+%% overwritten by the new lexicon. Lexicon operations have eventual
+%% consistency, therefore, it might take some time before the lexicon is
+%% available to the SynthesizeSpeech operation.
+%%
+%% For more information, see Managing Lexicons.
 put_lexicon(Client, Name, Input) ->
     put_lexicon(Client, Name, Input, []).
 put_lexicon(Client, Name, Input0, Options) ->
@@ -205,13 +206,14 @@ put_lexicon(Client, Name, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Allows the creation of an asynchronous synthesis task, by starting a
-%% new <code>SpeechSynthesisTask</code>. This operation requires all the
-%% standard information needed for speech synthesis, plus the name of an
-%% Amazon S3 bucket for the service to store the output of the synthesis task
-%% and two optional parameters (OutputS3KeyPrefix and SnsTopicArn). Once the
-%% synthesis task is created, this operation will return a
-%% SpeechSynthesisTask object, which will include an identifier of this task
-%% as well as the current status.
+%% new `SpeechSynthesisTask`.
+%%
+%% This operation requires all the standard information needed for speech
+%% synthesis, plus the name of an Amazon S3 bucket for the service to store
+%% the output of the synthesis task and two optional parameters
+%% (OutputS3KeyPrefix and SnsTopicArn). Once the synthesis task is created,
+%% this operation will return a SpeechSynthesisTask object, which will
+%% include an identifier of this task as well as the current status.
 start_speech_synthesis_task(Client, Input) ->
     start_speech_synthesis_task(Client, Input, []).
 start_speech_synthesis_task(Client, Input0, Options) ->
@@ -228,12 +230,11 @@ start_speech_synthesis_task(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Synthesizes UTF-8 input, plain text or SSML, to a stream of bytes.
+%%
 %% SSML input must be valid, well-formed SSML. Some alphabets might not be
 %% available with all the voices (for example, Cyrillic might not be read at
 %% all by English voices) unless phoneme mapping is used. For more
-%% information, see <a
-%% href="https://docs.aws.amazon.com/polly/latest/dg/how-text-to-speech-works.html">How
-%% it Works</a>.
+%% information, see How it Works.
 synthesize_speech(Client, Input) ->
     synthesize_speech(Client, Input, []).
 synthesize_speech(Client, Input0, Options) ->
@@ -312,6 +313,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

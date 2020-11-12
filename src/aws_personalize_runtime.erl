@@ -1,7 +1,7 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc <p/>
+
 -module(aws_personalize_runtime).
 
 -export([get_personalized_ranking/2,
@@ -15,14 +15,13 @@
 %% API
 %%====================================================================
 
-%% @doc Re-ranks a list of recommended items for the given user. The first
-%% item in the list is deemed the most likely item to be of interest to the
-%% user.
+%% @doc Re-ranks a list of recommended items for the given user.
 %%
-%% <note> The solution backing the campaign must have been created using a
-%% recipe of type PERSONALIZED_RANKING.
+%% The first item in the list is deemed the most likely item to be of
+%% interest to the user.
 %%
-%% </note>
+%% The solution backing the campaign must have been created using a recipe of
+%% type PERSONALIZED_RANKING.
 get_personalized_ranking(Client, Input) ->
     get_personalized_ranking(Client, Input, []).
 get_personalized_ranking(Client, Input0, Options) ->
@@ -38,20 +37,17 @@ get_personalized_ranking(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of recommended items. The required input depends on
-%% the recipe type used to create the solution backing the campaign, as
-%% follows:
+%% @doc Returns a list of recommended items.
 %%
-%% <ul> <li> RELATED_ITEMS - <code>itemId</code> required,
-%% <code>userId</code> not used
+%% The required input depends on the recipe type used to create the solution
+%% backing the campaign, as follows:
 %%
-%% </li> <li> USER_PERSONALIZATION - <code>itemId</code> optional,
-%% <code>userId</code> required
+%% <ul> <li> RELATED_ITEMS - `itemId` required, `userId` not used
 %%
-%% </li> </ul> <note> Campaigns that are backed by a solution created using a
-%% recipe of type PERSONALIZED_RANKING use the API.
+%% </li> <li> USER_PERSONALIZATION - `itemId` optional, `userId` required
 %%
-%% </note>
+%% </li> </ul> Campaigns that are backed by a solution created using a recipe
+%% of type PERSONALIZED_RANKING use the API.
 get_recommendations(Client, Input) ->
     get_recommendations(Client, Input, []).
 get_recommendations(Client, Input0, Options) ->
@@ -113,6 +109,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

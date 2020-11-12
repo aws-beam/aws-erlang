@@ -1,78 +1,73 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc <fullname>AWS CodeStar Connections</fullname>
+%% @doc AWS CodeStar Connections
 %%
-%% <important> The CodeStar Connections feature is in preview release and is
-%% subject to change.
+%% The CodeStar Connections feature is in preview release and is subject to
+%% change.
 %%
-%% </important> This AWS CodeStar Connections API Reference provides
-%% descriptions and usage examples of the operations and data types for the
-%% AWS CodeStar Connections API. You can use the connections API to work with
-%% connections and installations.
+%% This AWS CodeStar Connections API Reference provides descriptions and
+%% usage examples of the operations and data types for the AWS CodeStar
+%% Connections API. You can use the connections API to work with connections
+%% and installations.
 %%
-%% <i>Connections</i> are configurations that you use to connect AWS
-%% resources to external code repositories. Each connection is a resource
-%% that can be given to services such as CodePipeline to connect to a
-%% third-party repository such as Bitbucket. For example, you can add the
-%% connection in CodePipeline so that it triggers your pipeline when a code
-%% change is made to your third-party code repository. Each connection is
-%% named and associated with a unique ARN that is used to reference the
-%% connection.
+%% Connections are configurations that you use to connect AWS resources to
+%% external code repositories. Each connection is a resource that can be
+%% given to services such as CodePipeline to connect to a third-party
+%% repository such as Bitbucket. For example, you can add the connection in
+%% CodePipeline so that it triggers your pipeline when a code change is made
+%% to your third-party code repository. Each connection is named and
+%% associated with a unique ARN that is used to reference the connection.
 %%
 %% When you create a connection, the console initiates a third-party
-%% connection handshake. <i>Installations</i> are the apps that are used to
-%% conduct this handshake. For example, the installation for the Bitbucket
-%% provider type is the Bitbucket Cloud app. When you create a connection,
-%% you can choose an existing installation or create one.
+%% connection handshake. Installations are the apps that are used to conduct
+%% this handshake. For example, the installation for the Bitbucket provider
+%% type is the Bitbucket Cloud app. When you create a connection, you can
+%% choose an existing installation or create one.
 %%
 %% When you want to create a connection to an installed provider type such as
-%% GitHub Enterprise Server, you create a <i>host</i> for your connections.
+%% GitHub Enterprise Server, you create a host for your connections.
 %%
 %% You can work with connections by calling:
 %%
-%% <ul> <li> <a>CreateConnection</a>, which creates a uniquely named
-%% connection that can be referenced by services such as CodePipeline.
+%% <ul> <li> `CreateConnection`, which creates a uniquely named connection
+%% that can be referenced by services such as CodePipeline.
 %%
-%% </li> <li> <a>DeleteConnection</a>, which deletes the specified
-%% connection.
+%% </li> <li> `DeleteConnection`, which deletes the specified connection.
 %%
-%% </li> <li> <a>GetConnection</a>, which returns information about the
+%% </li> <li> `GetConnection`, which returns information about the
 %% connection, including the connection status.
 %%
-%% </li> <li> <a>ListConnections</a>, which lists the connections associated
-%% with your account.
+%% </li> <li> `ListConnections`, which lists the connections associated with
+%% your account.
 %%
 %% </li> </ul> You can work with hosts by calling:
 %%
-%% <ul> <li> <a>CreateHost</a>, which creates a host that represents the
+%% <ul> <li> `CreateHost`, which creates a host that represents the
 %% infrastructure where your provider is installed.
 %%
-%% </li> <li> <a>DeleteHost</a>, which deletes the specified host.
+%% </li> <li> `DeleteHost`, which deletes the specified host.
 %%
-%% </li> <li> <a>GetHost</a>, which returns information about the host,
-%% including the setup status.
+%% </li> <li> `GetHost`, which returns information about the host, including
+%% the setup status.
 %%
-%% </li> <li> <a>ListHosts</a>, which lists the hosts associated with your
+%% </li> <li> `ListHosts`, which lists the hosts associated with your
 %% account.
 %%
 %% </li> </ul> You can work with tags in AWS CodeStar Connections by calling
 %% the following:
 %%
-%% <ul> <li> <a>ListTagsForResource</a>, which gets information about AWS
-%% tags for a specified Amazon Resource Name (ARN) in AWS CodeStar
-%% Connections.
+%% <ul> <li> `ListTagsForResource`, which gets information about AWS tags for
+%% a specified Amazon Resource Name (ARN) in AWS CodeStar Connections.
 %%
-%% </li> <li> <a>TagResource</a>, which adds or updates tags for a resource
-%% in AWS CodeStar Connections.
+%% </li> <li> `TagResource`, which adds or updates tags for a resource in AWS
+%% CodeStar Connections.
 %%
-%% </li> <li> <a>UntagResource</a>, which removes tags for a resource in AWS
+%% </li> <li> `UntagResource`, which removes tags for a resource in AWS
 %% CodeStar Connections.
 %%
 %% </li> </ul> For information about how to use AWS CodeStar Connections, see
-%% the <a
-%% href="https://docs.aws.amazon.com/dtconsole/latest/userguide/welcome-connections.html">Developer
-%% Tools User Guide</a>.
+%% the Developer Tools User Guide.
 -module(aws_codestar_connections).
 
 -export([create_connection/2,
@@ -105,9 +100,10 @@
 %%====================================================================
 
 %% @doc Creates a connection that can then be given to other AWS services
-%% like CodePipeline so that it can access third-party code repositories. The
-%% connection is in pending status until the third-party connection handshake
-%% is completed from the console.
+%% like CodePipeline so that it can access third-party code repositories.
+%%
+%% The connection is in pending status until the third-party connection
+%% handshake is completed from the console.
 create_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_connection(Client, Input, []).
@@ -116,16 +112,15 @@ create_connection(Client, Input, Options)
     request(Client, <<"CreateConnection">>, Input, Options).
 
 %% @doc Creates a resource that represents the infrastructure where a
-%% third-party provider is installed. The host is used when you create
-%% connections to an installed third-party provider type, such as GitHub
-%% Enterprise Server. You create one host for all connections to that
-%% provider.
+%% third-party provider is installed.
 %%
-%% <note> A host created through the CLI or the SDK is in `PENDING` status by
+%% The host is used when you create connections to an installed third-party
+%% provider type, such as GitHub Enterprise Server. You create one host for
+%% all connections to that provider.
+%%
+%% A host created through the CLI or the SDK is in `PENDING` status by
 %% default. You can make its status `AVAILABLE` by setting up the host in the
 %% console.
-%%
-%% </note>
 create_host(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_host(Client, Input, []).
@@ -141,13 +136,13 @@ delete_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteConnection">>, Input, Options).
 
-%% @doc The host to be deleted. Before you delete a host, all connections
-%% associated to the host must be deleted.
+%% @doc The host to be deleted.
 %%
-%% <note> A host cannot be deleted if it is in the VPC_CONFIG_INITIALIZING or
+%% Before you delete a host, all connections associated to the host must be
+%% deleted.
+%%
+%% A host cannot be deleted if it is in the VPC_CONFIG_INITIALIZING or
 %% VPC_CONFIG_DELETING state.
-%%
-%% </note>
 delete_host(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_host(Client, Input, []).
@@ -198,8 +193,9 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
-%% @doc Adds to or modifies the tags of the given resource. Tags are metadata
-%% that can be used to manage a resource.
+%% @doc Adds to or modifies the tags of the given resource.
+%%
+%% Tags are metadata that can be used to manage a resource.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -257,6 +253,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
 handle_response({error, Reason}) ->
     {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

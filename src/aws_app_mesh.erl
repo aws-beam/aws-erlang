@@ -2,42 +2,22 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc AWS App Mesh is a service mesh based on the Envoy proxy that makes it
-%% easy to monitor and
+%% easy to monitor and control microservices.
 %%
-%% control microservices. App Mesh standardizes how your microservices
-%% communicate, giving you
-%%
+%% App Mesh standardizes how your microservices communicate, giving you
 %% end-to-end visibility and helping to ensure high availability for your
 %% applications.
 %%
 %% App Mesh gives you consistent visibility and network traffic controls for
-%% every
-%%
-%% microservice in an application. You can use App Mesh with AWS Fargate,
-%% Amazon ECS, Amazon EKS,
-%%
-%% Kubernetes on AWS, and Amazon EC2.
-%%
-%% <note>
+%% every microservice in an application. You can use App Mesh with AWS
+%% Fargate, Amazon ECS, Amazon EKS, Kubernetes on AWS, and Amazon EC2.
 %%
 %% App Mesh supports microservice applications that use service discovery
-%% naming for their
-%%
-%% components. For more information about service discovery on Amazon ECS,
-%% see <a
-%% href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html">Service
-%% Discovery</a> in the <i>Amazon Elastic Container Service Developer
-%% Guide</i>. Kubernetes
-%%
-%% <code>kube-dns</code> and <code>coredns</code> are supported. For more
-%% information,
-%%
-%% see <a
-%% href="https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/">DNS
-%%
-%% for Services and Pods</a> in the Kubernetes documentation.
-%%
-%% </note>
+%% naming for their components. For more information about service discovery
+%% on Amazon ECS, see Service Discovery in the Amazon Elastic Container
+%% Service Developer Guide. Kubernetes `kube-dns` and `coredns` are
+%% supported. For more information, see DNS for Services and Pods in the
+%% Kubernetes documentation.
 -module(aws_app_mesh).
 
 -export([create_gateway_route/4,
@@ -126,14 +106,10 @@
 %% @doc Creates a gateway route.
 %%
 %% A gateway route is attached to a virtual gateway and routes traffic to an
-%% existing
+%% existing virtual service. If a route matches a request, it can distribute
+%% traffic to a target virtual service.
 %%
-%% virtual service. If a route matches a request, it can distribute traffic
-%% to a target virtual service.
-%%
-%% For more information about gateway routes, see <a
-%% href="https://docs.aws.amazon.com/app-mesh/latest/userguide/gateway-routes.html">Gateway
-%% routes</a>.
+%% For more information about gateway routes, see Gateway routes.
 create_gateway_route(Client, MeshName, VirtualGatewayName, Input) ->
     create_gateway_route(Client, MeshName, VirtualGatewayName, Input, []).
 create_gateway_route(Client, MeshName, VirtualGatewayName, Input0, Options) ->
@@ -153,19 +129,12 @@ create_gateway_route(Client, MeshName, VirtualGatewayName, Input0, Options) ->
 %% @doc Creates a service mesh.
 %%
 %% A service mesh is a logical boundary for network traffic between services
-%% that are
+%% that are represented by resources within the mesh. After you create your
+%% service mesh, you can create virtual services, virtual nodes, virtual
+%% routers, and routes to distribute traffic between the applications in your
+%% mesh.
 %%
-%% represented by resources within the mesh. After you create your service
-%% mesh, you can
-%%
-%% create virtual services, virtual nodes, virtual routers, and routes to
-%% distribute traffic
-%%
-%% between the applications in your mesh.
-%%
-%% For more information about service meshes, see <a
-%% href="https://docs.aws.amazon.com/app-mesh/latest/userguide/meshes.html">Service
-%% meshes</a>.
+%% For more information about service meshes, see Service meshes.
 create_mesh(Client, Input) ->
     create_mesh(Client, Input, []).
 create_mesh(Client, Input0, Options) ->
@@ -184,12 +153,9 @@ create_mesh(Client, Input0, Options) ->
 %% @doc Creates a route that is associated with a virtual router.
 %%
 %% You can route several different protocols and define a retry policy for a
-%% route.
+%% route. Traffic can be routed to one or more virtual nodes.
 %%
-%% Traffic can be routed to one or more virtual nodes.
-%%
-%% For more information about routes, see <a
-%% href="https://docs.aws.amazon.com/app-mesh/latest/userguide/routes.html">Routes</a>.
+%% For more information about routes, see Routes.
 create_route(Client, MeshName, VirtualRouterName, Input) ->
     create_route(Client, MeshName, VirtualRouterName, Input, []).
 create_route(Client, MeshName, VirtualRouterName, Input0, Options) ->
@@ -209,20 +175,13 @@ create_route(Client, MeshName, VirtualRouterName, Input0, Options) ->
 %% @doc Creates a virtual gateway.
 %%
 %% A virtual gateway allows resources outside your mesh to communicate to
-%% resources that
+%% resources that are inside your mesh. The virtual gateway represents an
+%% Envoy proxy running in an Amazon ECS task, in a Kubernetes service, or on
+%% an Amazon EC2 instance. Unlike a virtual node, which represents an Envoy
+%% running with an application, a virtual gateway represents Envoy deployed
+%% by itself.
 %%
-%% are inside your mesh. The virtual gateway represents an Envoy proxy
-%% running in an Amazon ECS
-%%
-%% task, in a Kubernetes service, or on an Amazon EC2 instance. Unlike a
-%% virtual node, which
-%%
-%% represents an Envoy running with an application, a virtual gateway
-%% represents Envoy deployed by itself.
-%%
-%% For more information about virtual gateways, see <a
-%% href="https://docs.aws.amazon.com/app-mesh/latest/userguide/virtual_gateways.html">Virtual
-%% gateways</a>.
+%% For more information about virtual gateways, see Virtual gateways.
 create_virtual_gateway(Client, MeshName, Input) ->
     create_virtual_gateway(Client, MeshName, Input, []).
 create_virtual_gateway(Client, MeshName, Input0, Options) ->
@@ -242,58 +201,34 @@ create_virtual_gateway(Client, MeshName, Input0, Options) ->
 %% @doc Creates a virtual node within a service mesh.
 %%
 %% A virtual node acts as a logical pointer to a particular task group, such
-%% as an Amazon ECS
+%% as an Amazon ECS service or a Kubernetes deployment. When you create a
+%% virtual node, you can specify the service discovery information for your
+%% task group, and whether the proxy running in a task group will communicate
+%% with other proxies using Transport Layer Security (TLS).
 %%
-%% service or a Kubernetes deployment. When you create a virtual node, you
-%% can specify the
-%%
-%% service discovery information for your task group, and whether the proxy
-%% running in a task
-%%
-%% group will communicate with other proxies using Transport Layer Security
-%% (TLS).
-%%
-%% You define a <code>listener</code> for any inbound traffic that your
-%% virtual node
-%%
+%% You define a `listener` for any inbound traffic that your virtual node
 %% expects. Any virtual service that your virtual node expects to communicate
-%% to is specified
+%% to is specified as a `backend`.
 %%
-%% as a <code>backend</code>.
+%% The response metadata for your new virtual node contains the `arn` that is
+%% associated with the virtual node. Set this value to the full ARN; for
+%% example,
+%% `arn:aws:appmesh:us-west-2:123456789012:myMesh/default/virtualNode/myApp`)
+%% as the `APPMESH_RESOURCE_ARN` environment variable for your task group's
+%% Envoy proxy container in your task definition or pod spec. This is then
+%% mapped to the `node.id` and `node.cluster` Envoy parameters.
 %%
-%% The response metadata for your new virtual node contains the
-%% <code>arn</code> that is
+%% By default, App Mesh uses the name of the resource you specified in
+%% `APPMESH_RESOURCE_ARN` when Envoy is referring to itself in metrics and
+%% traces. You can override this behavior by setting the
+%% `APPMESH_RESOURCE_CLUSTER` environment variable with your own name.
 %%
-%% associated with the virtual node. Set this value (either the full ARN or
-%% the truncated
+%% AWS Cloud Map is not available in the eu-south-1 Region.
 %%
-%% resource name: for example,
-%% <code>mesh/default/virtualNode/simpleapp</code>) as the
-%%
-%% <code>APPMESH_VIRTUAL_NODE_NAME</code> environment variable for your task
-%% group's Envoy
-%%
-%% proxy container in your task definition or pod spec. This is then mapped
-%% to the
-%%
-%% <code>node.id</code> and <code>node.cluster</code> Envoy parameters.
-%%
-%% <note>
-%%
-%% If you require your Envoy stats or tracing to use a different name, you
-%% can override
-%%
-%% the <code>node.cluster</code> value that is set by
-%%
-%% <code>APPMESH_VIRTUAL_NODE_NAME</code> with the
-%%
-%% <code>APPMESH_VIRTUAL_NODE_CLUSTER</code> environment variable.
-%%
-%% </note>
-%%
-%% For more information about virtual nodes, see <a
-%% href="https://docs.aws.amazon.com/app-mesh/latest/userguide/virtual_nodes.html">Virtual
-%% nodes</a>.
+%% For more information about virtual nodes, see Virtual nodes. You must be
+%% using `1.15.0` or later of the Envoy image when setting these variables.
+%% For more information about App Mesh Envoy variables, see Envoy image in
+%% the AWS App Mesh User Guide.
 create_virtual_node(Client, MeshName, Input) ->
     create_virtual_node(Client, MeshName, Input, []).
 create_virtual_node(Client, MeshName, Input0, Options) ->
@@ -312,23 +247,14 @@ create_virtual_node(Client, MeshName, Input0, Options) ->
 
 %% @doc Creates a virtual router within a service mesh.
 %%
-%% Specify a <code>listener</code> for any inbound traffic that your virtual
-%% router
-%%
+%% Specify a `listener` for any inbound traffic that your virtual router
 %% receives. Create a virtual router for each protocol and port that you need
-%% to route.
+%% to route. Virtual routers handle traffic for one or more virtual services
+%% within your mesh. After you create your virtual router, create and
+%% associate routes for your virtual router that direct incoming requests to
+%% different virtual nodes.
 %%
-%% Virtual routers handle traffic for one or more virtual services within
-%% your mesh. After you
-%%
-%% create your virtual router, create and associate routes for your virtual
-%% router that direct
-%%
-%% incoming requests to different virtual nodes.
-%%
-%% For more information about virtual routers, see <a
-%% href="https://docs.aws.amazon.com/app-mesh/latest/userguide/virtual_routers.html">Virtual
-%% routers</a>.
+%% For more information about virtual routers, see Virtual routers.
 create_virtual_router(Client, MeshName, Input) ->
     create_virtual_router(Client, MeshName, Input, []).
 create_virtual_router(Client, MeshName, Input0, Options) ->
@@ -348,22 +274,12 @@ create_virtual_router(Client, MeshName, Input0, Options) ->
 %% @doc Creates a virtual service within a service mesh.
 %%
 %% A virtual service is an abstraction of a real service that is provided by
-%% a virtual node
+%% a virtual node directly or indirectly by means of a virtual router.
+%% Dependent services call your virtual service by its `virtualServiceName`,
+%% and those requests are routed to the virtual node or virtual router that
+%% is specified as the provider for the virtual service.
 %%
-%% directly or indirectly by means of a virtual router. Dependent services
-%% call your virtual
-%%
-%% service by its <code>virtualServiceName</code>, and those requests are
-%% routed to the
-%%
-%% virtual node or virtual router that is specified as the provider for the
-%% virtual
-%%
-%% service.
-%%
-%% For more information about virtual services, see <a
-%% href="https://docs.aws.amazon.com/app-mesh/latest/userguide/virtual_services.html">Virtual
-%% services</a>.
+%% For more information about virtual services, see Virtual services.
 create_virtual_service(Client, MeshName, Input) ->
     create_virtual_service(Client, MeshName, Input, []).
 create_virtual_service(Client, MeshName, Input0, Options) ->
@@ -400,9 +316,8 @@ delete_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, Inp
 %% @doc Deletes an existing service mesh.
 %%
 %% You must delete all resources (virtual services, routes, virtual routers,
-%% and virtual
-%%
-%% nodes) in the service mesh before you can delete the mesh itself.
+%% and virtual nodes) in the service mesh before you can delete the mesh
+%% itself.
 delete_mesh(Client, MeshName, Input) ->
     delete_mesh(Client, MeshName, Input, []).
 delete_mesh(Client, MeshName, Input0, Options) ->
@@ -435,10 +350,10 @@ delete_route(Client, MeshName, RouteName, VirtualRouterName, Input0, Options) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an existing virtual gateway. You cannot delete a virtual
-%% gateway if any gateway
+%% @doc Deletes an existing virtual gateway.
 %%
-%% routes are associated to it.
+%% You cannot delete a virtual gateway if any gateway routes are associated
+%% to it.
 delete_virtual_gateway(Client, MeshName, VirtualGatewayName, Input) ->
     delete_virtual_gateway(Client, MeshName, VirtualGatewayName, Input, []).
 delete_virtual_gateway(Client, MeshName, VirtualGatewayName, Input0, Options) ->
@@ -458,9 +373,7 @@ delete_virtual_gateway(Client, MeshName, VirtualGatewayName, Input0, Options) ->
 %% @doc Deletes an existing virtual node.
 %%
 %% You must delete any virtual services that list a virtual node as a service
-%% provider
-%%
-%% before you can delete the virtual node itself.
+%% provider before you can delete the virtual node itself.
 delete_virtual_node(Client, MeshName, VirtualNodeName, Input) ->
     delete_virtual_node(Client, MeshName, VirtualNodeName, Input, []).
 delete_virtual_node(Client, MeshName, VirtualNodeName, Input0, Options) ->
@@ -480,9 +393,7 @@ delete_virtual_node(Client, MeshName, VirtualNodeName, Input0, Options) ->
 %% @doc Deletes an existing virtual router.
 %%
 %% You must delete any routes associated with the virtual router before you
-%% can delete the
-%%
-%% router itself.
+%% can delete the router itself.
 delete_virtual_router(Client, MeshName, VirtualRouterName, Input) ->
     delete_virtual_router(Client, MeshName, VirtualRouterName, Input, []).
 delete_virtual_router(Client, MeshName, VirtualRouterName, Input0, Options) ->
@@ -650,9 +561,7 @@ describe_virtual_service(Client, MeshName, VirtualServiceName, MeshOwner, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of existing gateway routes that are associated to a
-%% virtual
-%%
-%% gateway.
+%% virtual gateway.
 list_gateway_routes(Client, MeshName, VirtualGatewayName, Limit, MeshOwner, NextToken)
   when is_map(Client) ->
     list_gateway_routes(Client, MeshName, VirtualGatewayName, Limit, MeshOwner, NextToken, []).
@@ -820,15 +729,11 @@ list_virtual_services(Client, MeshName, Limit, MeshOwner, NextToken, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Associates the specified tags to a resource with the specified
-%% <code>resourceArn</code>.
+%% `resourceArn`.
 %%
 %% If existing tags on a resource aren't specified in the request parameters,
-%% they aren't
-%%
-%% changed. When a resource is deleted, the tags associated with that
-%% resource are also
-%%
-%% deleted.
+%% they aren't changed. When a resource is deleted, the tags associated with
+%% that resource are also deleted.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 tag_resource(Client, Input0, Options) ->
@@ -863,9 +768,7 @@ untag_resource(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing gateway route that is associated to a specified
-%% virtual gateway in a
-%%
-%% service mesh.
+%% virtual gateway in a service mesh.
 update_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, Input) ->
     update_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, Input, []).
 update_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, Input0, Options) ->
@@ -1030,6 +933,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
