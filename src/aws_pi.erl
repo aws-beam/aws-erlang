@@ -33,7 +33,7 @@
 %% API
 %%====================================================================
 
-%% @doc For a specific time period, retrieve the top `N` dimension keys for a
+%% @doc For a specific time period, retrieve the top `N' dimension keys for a
 %% metric.
 describe_dimension_keys(Client, Input)
   when is_map(Client), is_map(Input) ->

@@ -29,7 +29,7 @@
 %% operation.
 %%
 %% As a prerequsite to using GetCLip API, you must obtain an endpoint using
-%% `GetDataEndpoint`, specifying GET_CLIP for` the `APIName` parameter. `
+%% `GetDataEndpoint', specifying GET_CLIP for` the `APIName' parameter. '
 %%
 %% ```
 %% An Amazon Kinesis video stream has the following requirements for
@@ -37,8 +37,8 @@
 %%
 %% The media must contain h.264 or h.265 encoded video and, optionally, AAC
 %% or G.711 encoded audio. Specifically, the codec ID of track 1 should be
-%% `V_MPEG/ISO/AVC` (for h.264) or V_MPEGH/ISO/HEVC (for H.265). Optionally,
-%% the codec ID of track 2 should be `A_AAC` (for AAC) or A_MS/ACM (for
+%% `V_MPEG/ISO/AVC' (for h.264) or V_MPEGH/ISO/HEVC (for H.265). Optionally,
+%% the codec ID of track 2 should be `A_AAC' (for AAC) or A_MS/ACM (for
 %% G.711).
 %%
 %% Data retention must be greater than 0.
@@ -54,12 +54,12 @@
 %% format.
 %%
 %% You can monitor the amount of outgoing data by monitoring the
-%% `GetClip.OutgoingBytes` Amazon CloudWatch metric. For information about
+%% `GetClip.OutgoingBytes' Amazon CloudWatch metric. For information about
 %% using CloudWatch to monitor Kinesis Video Streams, see Monitoring Kinesis
 %% Video Streams. For pricing information, see Amazon Kinesis Video Streams
 %% Pricing and AWS Pricing. Charges for outgoing AWS data apply.
 %%
-%% ```
+%% '''
 get_clip(Client, Input) ->
     get_clip(Client, Input, []).
 get_clip(Client, Input0, Options) ->
@@ -96,8 +96,8 @@ get_clip(Client, Input0, Options) ->
 %%
 %% You can then open the URL in a media player to view the stream contents.
 %%
-%% Both the `StreamName` and the `StreamARN` parameters are optional, but you
-%% must specify either the `StreamName` or the `StreamARN` when invoking this
+%% Both the `StreamName' and the `StreamARN' parameters are optional, but you
+%% must specify either the `StreamName' or the `StreamARN' when invoking this
 %% API operation.
 %%
 %% An Amazon Kinesis video stream has the following requirements for
@@ -105,8 +105,8 @@ get_clip(Client, Input0, Options) ->
 %%
 %% <ul> <li> The media must contain h.264 or h.265 encoded video and,
 %% optionally, AAC or G.711 encoded audio. Specifically, the codec ID of
-%% track 1 should be `V_MPEG/ISO/AVC` (for h.264) or V_MPEGH/ISO/HEVC (for
-%% H.265). Optionally, the codec ID of track 2 should be `A_AAC` (for AAC) or
+%% track 1 should be `V_MPEG/ISO/AVC' (for h.264) or V_MPEGH/ISO/HEVC (for
+%% H.265). Optionally, the codec ID of track 2 should be `A_AAC' (for AAC) or
 %% A_MS/ACM (for G.711).
 %%
 %% </li> <li> Data retention must be greater than 0.
@@ -125,12 +125,12 @@ get_clip(Client, Input0, Options) ->
 %% Kinesis Video Streams:
 %%
 %% <ol> <li> Get an endpoint using GetDataEndpoint, specifying
-%% `GET_DASH_STREAMING_SESSION_URL` for the `APIName` parameter.
+%% `GET_DASH_STREAMING_SESSION_URL' for the `APIName' parameter.
 %%
-%% </li> <li> Retrieve the MPEG-DASH URL using `GetDASHStreamingSessionURL`.
+%% </li> <li> Retrieve the MPEG-DASH URL using `GetDASHStreamingSessionURL'.
 %% Kinesis Video Streams creates an MPEG-DASH streaming session to be used
 %% for accessing content in a stream using the MPEG-DASH protocol.
-%% `GetDASHStreamingSessionURL` returns an authenticated URL (that includes
+%% `GetDASHStreamingSessionURL' returns an authenticated URL (that includes
 %% an encrypted session token) for the session's MPEG-DASH manifest (the root
 %% resource needed for streaming with MPEG-DASH).
 %%
@@ -160,8 +160,8 @@ get_clip(Client, Input0, Options) ->
 %%
 %% </li> <li> GetMP4InitFragment: Retrieves the MP4 initialization fragment.
 %% The media player typically loads the initialization fragment before
-%% loading any media fragments. This fragment contains the "`fytp`" and
-%% "`moov`" MP4 atoms, and the child atoms that are needed to initialize the
+%% loading any media fragments. This fragment contains the "`fytp'" and
+%% "`moov'" MP4 atoms, and the child atoms that are needed to initialize the
 %% media player decoder.
 %%
 %% The initialization fragment does not correspond to a fragment in a Kinesis
@@ -169,7 +169,7 @@ get_clip(Client, Input0, Options) ->
 %% respective track, which the media player needs to decode the media frames.
 %%
 %% </li> <li> GetMP4MediaFragment: Retrieves MP4 media fragments. These
-%% fragments contain the "`moof`" and "`mdat`" MP4 atoms and their child
+%% fragments contain the "`moof'" and "`mdat'" MP4 atoms and their child
 %% atoms, containing the encoded fragment's media frames and their
 %% timestamps.
 %%
@@ -192,16 +192,16 @@ get_clip(Client, Input0, Options) ->
 %% A Kinesis video stream can have a maximum of ten active MPEG-DASH
 %% streaming sessions. If a new session is created when the maximum number of
 %% sessions is already active, the oldest (earliest created) session is
-%% closed. The number of active `GetMedia` connections on a Kinesis video
+%% closed. The number of active `GetMedia' connections on a Kinesis video
 %% stream does not count against this limit, and the number of active
-%% MPEG-DASH sessions does not count against the active `GetMedia` connection
+%% MPEG-DASH sessions does not count against the active `GetMedia' connection
 %% limit.
 %%
 %% The maximum limits for active HLS and MPEG-DASH streaming sessions are
 %% independent of each other.
 %%
 %% You can monitor the amount of data that the media player consumes by
-%% monitoring the `GetMP4MediaFragment.OutgoingBytes` Amazon CloudWatch
+%% monitoring the `GetMP4MediaFragment.OutgoingBytes' Amazon CloudWatch
 %% metric. For information about using CloudWatch to monitor Kinesis Video
 %% Streams, see Monitoring Kinesis Video Streams. For pricing information,
 %% see Amazon Kinesis Video Streams Pricing and AWS Pricing. Charges for both
@@ -214,10 +214,10 @@ get_clip(Client, Input0, Options) ->
 %% media API, in addition to the HTTP status code and the response body, it
 %% includes the following pieces of information:
 %%
-%% `x-amz-ErrorType` HTTP header – contains a more specific error type in
+%% `x-amz-ErrorType' HTTP header – contains a more specific error type in
 %% addition to what the HTTP status code provides.
 %%
-%% `x-amz-RequestId` HTTP header – if you want to report an issue to AWS, the
+%% `x-amz-RequestId' HTTP header – if you want to report an issue to AWS, the
 %% support team can better diagnose the problem if given the Request Id.
 %%
 %% Both the HTTP status code and the ErrorType header can be utilized to make
@@ -247,8 +247,8 @@ get_d_a_s_h_streaming_session_u_r_l(Client, Input0, Options) ->
 %% You can then open the URL in a browser or media player to view the stream
 %% contents.
 %%
-%% Both the `StreamName` and the `StreamARN` parameters are optional, but you
-%% must specify either the `StreamName` or the `StreamARN` when invoking this
+%% Both the `StreamName' and the `StreamARN' parameters are optional, but you
+%% must specify either the `StreamName' or the `StreamARN' when invoking this
 %% API operation.
 %%
 %% An Amazon Kinesis video stream has the following requirements for
@@ -256,8 +256,8 @@ get_d_a_s_h_streaming_session_u_r_l(Client, Input0, Options) ->
 %%
 %% <ul> <li> The media must contain h.264 or h.265 encoded video and,
 %% optionally, AAC encoded audio. Specifically, the codec ID of track 1
-%% should be `V_MPEG/ISO/AVC` (for h.264) or `V_MPEG/ISO/HEVC` (for h.265).
-%% Optionally, the codec ID of track 2 should be `A_AAC`.
+%% should be `V_MPEG/ISO/AVC' (for h.264) or `V_MPEG/ISO/HEVC' (for h.265).
+%% Optionally, the codec ID of track 2 should be `A_AAC'.
 %%
 %% </li> <li> Data retention must be greater than 0.
 %%
@@ -277,11 +277,11 @@ get_d_a_s_h_streaming_session_u_r_l(Client, Input0, Options) ->
 %% The following procedure shows how to use HLS with Kinesis Video Streams:
 %%
 %% <ol> <li> Get an endpoint using GetDataEndpoint, specifying
-%% `GET_HLS_STREAMING_SESSION_URL` for the `APIName` parameter.
+%% `GET_HLS_STREAMING_SESSION_URL' for the `APIName' parameter.
 %%
-%% </li> <li> Retrieve the HLS URL using `GetHLSStreamingSessionURL`. Kinesis
+%% </li> <li> Retrieve the HLS URL using `GetHLSStreamingSessionURL'. Kinesis
 %% Video Streams creates an HLS streaming session to be used for accessing
-%% content in a stream using the HLS protocol. `GetHLSStreamingSessionURL`
+%% content in a stream using the HLS protocol. `GetHLSStreamingSessionURL'
 %% returns an authenticated URL (that includes an encrypted session token)
 %% for the session's HLS master playlist (the root resource needed for
 %% streaming with HLS).
@@ -309,26 +309,26 @@ get_d_a_s_h_streaming_session_u_r_l(Client, Input0, Options) ->
 %% data, it calls the following actions:
 %%
 %% <ul> <li> GetHLSMasterPlaylist: Retrieves an HLS master playlist, which
-%% contains a URL for the `GetHLSMediaPlaylist` action for each track, and
+%% contains a URL for the `GetHLSMediaPlaylist' action for each track, and
 %% additional metadata for the media player, including estimated bitrate and
 %% resolution.
 %%
 %% </li> <li> GetHLSMediaPlaylist: Retrieves an HLS media playlist, which
 %% contains a URL to access the MP4 initialization fragment with the
-%% `GetMP4InitFragment` action, and URLs to access the MP4 media fragments
-%% with the `GetMP4MediaFragment` actions. The HLS media playlist also
+%% `GetMP4InitFragment' action, and URLs to access the MP4 media fragments
+%% with the `GetMP4MediaFragment' actions. The HLS media playlist also
 %% contains metadata about the stream that the player needs to play it, such
-%% as whether the `PlaybackMode` is `LIVE` or `ON_DEMAND`. The HLS media
-%% playlist is typically static for sessions with a `PlaybackType` of
-%% `ON_DEMAND`. The HLS media playlist is continually updated with new
-%% fragments for sessions with a `PlaybackType` of `LIVE`. There is a
+%% as whether the `PlaybackMode' is `LIVE' or `ON_DEMAND'. The HLS media
+%% playlist is typically static for sessions with a `PlaybackType' of
+%% `ON_DEMAND'. The HLS media playlist is continually updated with new
+%% fragments for sessions with a `PlaybackType' of `LIVE'. There is a
 %% distinct HLS media playlist for the video track and the audio track (if
 %% applicable) that contains MP4 media URLs for the specific track.
 %%
 %% </li> <li> GetMP4InitFragment: Retrieves the MP4 initialization fragment.
 %% The media player typically loads the initialization fragment before
-%% loading any media fragments. This fragment contains the "`fytp`" and
-%% "`moov`" MP4 atoms, and the child atoms that are needed to initialize the
+%% loading any media fragments. This fragment contains the "`fytp'" and
+%% "`moov'" MP4 atoms, and the child atoms that are needed to initialize the
 %% media player decoder.
 %%
 %% The initialization fragment does not correspond to a fragment in a Kinesis
@@ -336,7 +336,7 @@ get_d_a_s_h_streaming_session_u_r_l(Client, Input0, Options) ->
 %% respective track, which the media player needs to decode the media frames.
 %%
 %% </li> <li> GetMP4MediaFragment: Retrieves MP4 media fragments. These
-%% fragments contain the "`moof`" and "`mdat`" MP4 atoms and their child
+%% fragments contain the "`moof'" and "`mdat'" MP4 atoms and their child
 %% atoms, containing the encoded fragment's media frames and their
 %% timestamps.
 %%
@@ -352,8 +352,8 @@ get_d_a_s_h_streaming_session_u_r_l(Client, Input0, Options) ->
 %% </li> <li> GetTSFragment: Retrieves MPEG TS fragments containing both
 %% initialization and media data for all tracks in the stream.
 %%
-%% If the `ContainerFormat` is `MPEG_TS`, this API is used instead of
-%% `GetMP4InitFragment` and `GetMP4MediaFragment` to retrieve stream media.
+%% If the `ContainerFormat' is `MPEG_TS', this API is used instead of
+%% `GetMP4InitFragment' and `GetMP4MediaFragment' to retrieve stream media.
 %%
 %% Data retrieved with this action is billable. For more information, see
 %% Kinesis Video Streams pricing.
@@ -367,15 +367,15 @@ get_d_a_s_h_streaming_session_u_r_l(Client, Input0, Options) ->
 %% A Kinesis video stream can have a maximum of ten active HLS streaming
 %% sessions. If a new session is created when the maximum number of sessions
 %% is already active, the oldest (earliest created) session is closed. The
-%% number of active `GetMedia` connections on a Kinesis video stream does not
+%% number of active `GetMedia' connections on a Kinesis video stream does not
 %% count against this limit, and the number of active HLS sessions does not
-%% count against the active `GetMedia` connection limit.
+%% count against the active `GetMedia' connection limit.
 %%
 %% The maximum limits for active HLS and MPEG-DASH streaming sessions are
 %% independent of each other.
 %%
 %% You can monitor the amount of data that the media player consumes by
-%% monitoring the `GetMP4MediaFragment.OutgoingBytes` Amazon CloudWatch
+%% monitoring the `GetMP4MediaFragment.OutgoingBytes' Amazon CloudWatch
 %% metric. For information about using CloudWatch to monitor Kinesis Video
 %% Streams, see Monitoring Kinesis Video Streams. For pricing information,
 %% see Amazon Kinesis Video Streams Pricing and AWS Pricing. Charges for both
@@ -388,10 +388,10 @@ get_d_a_s_h_streaming_session_u_r_l(Client, Input0, Options) ->
 %% media API, in addition to the HTTP status code and the response body, it
 %% includes the following pieces of information:
 %%
-%% `x-amz-ErrorType` HTTP header – contains a more specific error type in
+%% `x-amz-ErrorType' HTTP header – contains a more specific error type in
 %% addition to what the HTTP status code provides.
 %%
-%% `x-amz-RequestId` HTTP header – if you want to report an issue to AWS, the
+%% `x-amz-RequestId' HTTP header – if you want to report an issue to AWS, the
 %% support team can better diagnose the problem if given the Request Id.
 %%
 %% Both the HTTP status code and the ErrorType header can be utilized to make
@@ -419,27 +419,27 @@ get_h_l_s_streaming_session_u_r_l(Client, Input0, Options) ->
 %% @doc Gets media for a list of fragments (specified by fragment number)
 %% from the archived data in an Amazon Kinesis video stream.
 %%
-%% You must first call the `GetDataEndpoint` API to get an endpoint. Then
-%% send the `GetMediaForFragmentList` requests to this endpoint using the
+%% You must first call the `GetDataEndpoint' API to get an endpoint. Then
+%% send the `GetMediaForFragmentList' requests to this endpoint using the
 %% --endpoint-url parameter.
 %%
-%% The following limits apply when using the `GetMediaForFragmentList` API:
+%% The following limits apply when using the `GetMediaForFragmentList' API:
 %%
-%% <ul> <li> A client can call `GetMediaForFragmentList` up to five times per
+%% <ul> <li> A client can call `GetMediaForFragmentList' up to five times per
 %% second per stream.
 %%
 %% </li> <li> Kinesis Video Streams sends media data at a rate of up to 25
 %% megabytes per second (or 200 megabits per second) during a
-%% `GetMediaForFragmentList` session.
+%% `GetMediaForFragmentList' session.
 %%
 %% </li> </ul> If an error is thrown after invoking a Kinesis Video Streams
 %% archived media API, in addition to the HTTP status code and the response
 %% body, it includes the following pieces of information:
 %%
-%% `x-amz-ErrorType` HTTP header – contains a more specific error type in
+%% `x-amz-ErrorType' HTTP header – contains a more specific error type in
 %% addition to what the HTTP status code provides.
 %%
-%% `x-amz-RequestId` HTTP header – if you want to report an issue to AWS, the
+%% `x-amz-RequestId' HTTP header – if you want to report an issue to AWS, the
 %% support team can better diagnose the problem if given the Request Id.
 %%
 %% Both the HTTP status code and the ErrorType header can be utilized to make
@@ -480,27 +480,27 @@ get_media_for_fragment_list(Client, Input0, Options) ->
         Result
     end.
 
-%% @doc Returns a list of `Fragment` objects from the specified stream and
+%% @doc Returns a list of `Fragment' objects from the specified stream and
 %% timestamp range within the archived data.
 %%
 %% Listing fragments is eventually consistent. This means that even if the
 %% producer receives an acknowledgment that a fragment is persisted, the
 %% result might not be returned immediately from a request to
-%% `ListFragments`. However, results are typically available in less than one
+%% `ListFragments'. However, results are typically available in less than one
 %% second.
 %%
-%% You must first call the `GetDataEndpoint` API to get an endpoint. Then
-%% send the `ListFragments` requests to this endpoint using the
+%% You must first call the `GetDataEndpoint' API to get an endpoint. Then
+%% send the `ListFragments' requests to this endpoint using the
 %% --endpoint-url parameter.
 %%
 %% If an error is thrown after invoking a Kinesis Video Streams archived
 %% media API, in addition to the HTTP status code and the response body, it
 %% includes the following pieces of information:
 %%
-%% `x-amz-ErrorType` HTTP header – contains a more specific error type in
+%% `x-amz-ErrorType' HTTP header – contains a more specific error type in
 %% addition to what the HTTP status code provides.
 %%
-%% `x-amz-RequestId` HTTP header – if you want to report an issue to AWS, the
+%% `x-amz-RequestId' HTTP header – if you want to report an issue to AWS, the
 %% support team can better diagnose the problem if given the Request Id.
 %%
 %% Both the HTTP status code and the ErrorType header can be utilized to make

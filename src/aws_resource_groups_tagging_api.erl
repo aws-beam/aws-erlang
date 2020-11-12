@@ -37,15 +37,15 @@
 %% </li> </ul> To use resource groups tagging API operations, you must add
 %% the following permissions to your IAM policy:
 %%
-%% <ul> <li> `tag:GetResources`
+%% <ul> <li> `tag:GetResources'
 %%
-%% </li> <li> `tag:TagResources`
+%% </li> <li> `tag:TagResources'
 %%
-%% </li> <li> `tag:UntagResources`
+%% </li> <li> `tag:UntagResources'
 %%
-%% </li> <li> `tag:GetTagKeys`
+%% </li> <li> `tag:GetTagKeys'
 %%
-%% </li> <li> `tag:GetTagValues`
+%% </li> <li> `tag:GetTagValues'
 %%
 %% </li> </ul> You'll also need permissions to access the resources of
 %% individual services so that you can tag and untag those resources.
@@ -332,7 +332,7 @@
 %% API
 %%====================================================================
 
-%% @doc Describes the status of the `StartReportCreation` operation.
+%% @doc Describes the status of the `StartReportCreation' operation.
 %%
 %% You can call this operation only from the organization's master account
 %% and from the us-east-1 Region.
@@ -372,10 +372,10 @@ get_compliance_summary(Client, Input, Options)
 %% policy. For more information on tag policies, see Tag Policies in the AWS
 %% Organizations User Guide.
 %%
-%% </li> </ul> You can check the `PaginationToken` response parameter to
+%% </li> </ul> You can check the `PaginationToken' response parameter to
 %% determine if a query is complete. Queries occasionally return fewer
-%% results on a page than allowed. The `PaginationToken` response parameter
-%% value is `null` only when there are no more results to display.
+%% results on a page than allowed. The `PaginationToken' response parameter
+%% value is `null' only when there are no more results to display.
 get_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resources(Client, Input, []).
@@ -408,7 +408,7 @@ get_tag_values(Client, Input, Options)
 %%
 %% The generated report is saved to the following location:
 %%
-%% `s3://example-bucket/AwsTagPolicies/o-exampleorgid/YYYY-MM-ddTHH:mm:ssZ/report.csv`
+%% `s3://example-bucket/AwsTagPolicies/o-exampleorgid/YYYY-MM-ddTHH:mm:ssZ/report.csv'
 %%
 %% You can call this operation only from the organization's master account
 %% and from the us-east-1 Region.

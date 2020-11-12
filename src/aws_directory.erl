@@ -185,8 +185,8 @@ add_tags_to_resource(Client, Input, Options)
 %%
 %% Once a schema extension has started replicating to all domain controllers,
 %% the task can no longer be canceled. A schema extension can be canceled
-%% during any of the following states; `Initializing`, `CreatingSnapshot`,
-%% and `UpdatingSchema`.
+%% during any of the following states; `Initializing', `CreatingSnapshot',
+%% and `UpdatingSchema'.
 cancel_schema_extension(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_schema_extension(Client, Input, []).
@@ -196,9 +196,9 @@ cancel_schema_extension(Client, Input, Options)
 
 %% @doc Creates an AD Connector to connect to an on-premises directory.
 %%
-%% Before you call `ConnectDirectory`, ensure that all of the required
+%% Before you call `ConnectDirectory', ensure that all of the required
 %% permissions have been explicitly granted through a policy. For details
-%% about what permissions are required to run the `ConnectDirectory`
+%% about what permissions are required to run the `ConnectDirectory'
 %% operation, see AWS Directory Service API Permissions: Actions, Resources,
 %% and Conditions Reference.
 connect_directory(Client, Input)
@@ -212,7 +212,7 @@ connect_directory(Client, Input, Options)
 %% directory.
 %%
 %% The alias is used to construct the access URL for the directory, such as
-%% `http://<alias>.awsapps.com`.
+%% `http://<alias>.awsapps.com'.
 %%
 %% After an alias has been created, it cannot be deleted or reused, so this
 %% operation should only be used when absolutely necessary.
@@ -249,9 +249,9 @@ create_conditional_forwarder(Client, Input, Options)
 %% For more information, see Simple Active Directory in the AWS Directory
 %% Service Admin Guide.
 %%
-%% Before you call `CreateDirectory`, ensure that all of the required
+%% Before you call `CreateDirectory', ensure that all of the required
 %% permissions have been explicitly granted through a policy. For details
-%% about what permissions are required to run the `CreateDirectory`
+%% about what permissions are required to run the `CreateDirectory'
 %% operation, see AWS Directory Service API Permissions: Actions, Resources,
 %% and Conditions Reference.
 create_directory(Client, Input)
@@ -328,9 +328,9 @@ delete_conditional_forwarder(Client, Input, Options)
 
 %% @doc Deletes an AWS Directory Service directory.
 %%
-%% Before you call `DeleteDirectory`, ensure that all of the required
+%% Before you call `DeleteDirectory', ensure that all of the required
 %% permissions have been explicitly granted through a policy. For details
-%% about what permissions are required to run the `DeleteDirectory`
+%% about what permissions are required to run the `DeleteDirectory'
 %% operation, see AWS Directory Service API Permissions: Actions, Resources,
 %% and Conditions Reference.
 delete_directory(Client, Input)
@@ -408,16 +408,16 @@ describe_conditional_forwarders(Client, Input, Options)
 %% account.
 %%
 %% You can retrieve information about specific directories by passing the
-%% directory identifiers in the `DirectoryIds` parameter. Otherwise, all
+%% directory identifiers in the `DirectoryIds' parameter. Otherwise, all
 %% directories that belong to the current account are returned.
 %%
-%% This operation supports pagination with the use of the `NextToken` request
+%% This operation supports pagination with the use of the `NextToken' request
 %% and response parameters. If more results are available, the
-%% `DescribeDirectoriesResult.NextToken` member contains a token that you
-%% pass in the next call to `DescribeDirectories` to retrieve the next set of
+%% `DescribeDirectoriesResult.NextToken' member contains a token that you
+%% pass in the next call to `DescribeDirectories' to retrieve the next set of
 %% items.
 %%
-%% You can also specify a maximum number of return results with the `Limit`
+%% You can also specify a maximum number of return results with the `Limit'
 %% parameter.
 describe_directories(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -468,7 +468,7 @@ describe_shared_directories(Client, Input, Options)
 %% This operation supports pagination with the use of the NextToken request
 %% and response parameters. If more results are available, the
 %% DescribeSnapshots.NextToken member contains a token that you pass in the
-%% next call to `DescribeSnapshots` to retrieve the next set of items.
+%% next call to `DescribeSnapshots' to retrieve the next set of items.
 %%
 %% You can also specify a maximum number of return results with the Limit
 %% parameter.
@@ -683,8 +683,8 @@ reset_user_password(Client, Input, Options)
 %%
 %% This action returns as soon as the restore operation is initiated. You can
 %% monitor the progress of the restore operation by calling the
-%% `DescribeDirectories` operation with the directory identifier. When the
-%% DirectoryDescription.Stage value changes to `Active`, the restore
+%% `DescribeDirectories' operation with the directory identifier. When the
+%% DirectoryDescription.Stage value changes to `Active', the restore
 %% operation is complete.
 restore_from_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -693,7 +693,7 @@ restore_from_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreFromSnapshot">>, Input, Options).
 
-%% @doc Shares a specified directory (`DirectoryId`) in your AWS account
+%% @doc Shares a specified directory (`DirectoryId') in your AWS account
 %% (directory owner) with another AWS account (directory consumer).
 %%
 %% With this operation you can use your directory from any AWS account and
@@ -705,13 +705,13 @@ restore_from_snapshot(Client, Input, Options)
 %% within the directory owner account. The shared directory is visible in all
 %% VPCs in the directory consumer account.
 %%
-%% The `ShareMethod` parameter determines whether the specified directory can
+%% The `ShareMethod' parameter determines whether the specified directory can
 %% be shared between AWS accounts inside the same AWS organization
-%% (`ORGANIZATIONS`). It also determines whether you can share the directory
+%% (`ORGANIZATIONS'). It also determines whether you can share the directory
 %% with any other AWS account either inside or outside of the organization
-%% (`HANDSHAKE`).
+%% (`HANDSHAKE').
 %%
-%% The `ShareNotes` parameter is only used when `HANDSHAKE` is called, which
+%% The `ShareNotes' parameter is only used when `HANDSHAKE' is called, which
 %% sends a directory sharing request to the directory consumer.
 share_directory(Client, Input)
   when is_map(Client), is_map(Input) ->

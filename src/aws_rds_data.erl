@@ -42,7 +42,7 @@
 %% operations.
 %%
 %% If a call isn't part of a transaction because it doesn't include the
-%% `transactionID` parameter, changes that result from the call are committed
+%% `transactionID' parameter, changes that result from the call are committed
 %% automatically.
 batch_execute_statement(Client, Input) ->
     batch_execute_statement(Client, Input, []).
@@ -68,7 +68,7 @@ batch_execute_statement(Client, Input0, Options) ->
 %% rolled back automatically.</p> <p>DDL statements inside a transaction
 %% cause an implicit commit. We recommend that you run each DDL statement in
 %% a separate <code>ExecuteStatement</code> call with
-%% <code>continueAfterTimeout</code> enabled.</p> </important> `</pre>
+%% <code>continueAfterTimeout</code> enabled.</p> </important> '</pre>
 begin_transaction(Client, Input) ->
     begin_transaction(Client, Input, []).
 begin_transaction(Client, Input0, Options) ->
@@ -84,7 +84,7 @@ begin_transaction(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Ends a SQL transaction started with the `BeginTransaction` operation
+%% @doc Ends a SQL transaction started with the `BeginTransaction' operation
 %% and commits the changes.
 commit_transaction(Client, Input) ->
     commit_transaction(Client, Input, []).
@@ -103,8 +103,8 @@ commit_transaction(Client, Input0, Options) ->
 
 %% @doc Runs one or more SQL statements.
 %%
-%% This operation is deprecated. Use the `BatchExecuteStatement` or
-%% `ExecuteStatement` operation.
+%% This operation is deprecated. Use the `BatchExecuteStatement' or
+%% `ExecuteStatement' operation.
 execute_sql(Client, Input) ->
     execute_sql(Client, Input, []).
 execute_sql(Client, Input0, Options) ->
@@ -123,7 +123,7 @@ execute_sql(Client, Input0, Options) ->
 %% @doc Runs a SQL statement against a database.
 %%
 %% If a call isn't part of a transaction because it doesn't include the
-%% `transactionID` parameter, changes that result from the call are committed
+%% `transactionID' parameter, changes that result from the call are committed
 %% automatically.
 %%
 %% The response size limit is 1 MB. If the call returns more than 1 MB of

@@ -186,24 +186,24 @@ batch_disassociate_project_assets(Client, ProjectId, Input0, Options) ->
 %%
 %% To identify an asset property, you must specify one of the following:
 %%
-%% <ul> <li> The `assetId` and `propertyId` of an asset property.
+%% <ul> <li> The `assetId' and `propertyId' of an asset property.
 %%
-%% </li> <li> A `propertyAlias`, which is a data stream alias (for example,
-%% `/company/windfarm/3/turbine/7/temperature`). To define an asset
+%% </li> <li> A `propertyAlias', which is a data stream alias (for example,
+%% `/company/windfarm/3/turbine/7/temperature'). To define an asset
 %% property's alias, see UpdateAssetProperty.
 %%
 %% </li> </ul> With respect to Unix epoch time, AWS IoT SiteWise accepts only
 %% TQVs that have a timestamp of no more than 15 minutes in the past and no
 %% more than 5 minutes in the future. AWS IoT SiteWise rejects timestamps
 %% outside of the inclusive range of [-15, +5] minutes and returns a
-%% `TimestampOutOfRangeException` error.
+%% `TimestampOutOfRangeException' error.
 %%
 %% For each asset property, AWS IoT SiteWise overwrites TQVs with duplicate
 %% timestamps unless the newer TQV has a different quality. For example, if
-%% you store a TQV `{T1, GOOD, V1}`, then storing `{T1, GOOD, V2}` replaces
+%% you store a TQV `{T1, GOOD, V1}', then storing `{T1, GOOD, V2}' replaces
 %% the existing TQV.
 %%
-%% AWS IoT SiteWise authorizes access to each `BatchPutAssetPropertyValue`
+%% AWS IoT SiteWise authorizes access to each `BatchPutAssetPropertyValue'
 %% entry individually. For more information, see BatchPutAssetPropertyValue
 %% authorization in the AWS IoT SiteWise User Guide.
 batch_put_asset_property_value(Client, Input) ->
@@ -683,10 +683,10 @@ disassociate_assets(Client, AssetId, Input0, Options) ->
 %%
 %% To identify an asset property, you must specify one of the following:
 %%
-%% <ul> <li> The `assetId` and `propertyId` of an asset property.
+%% <ul> <li> The `assetId' and `propertyId' of an asset property.
 %%
-%% </li> <li> A `propertyAlias`, which is a data stream alias (for example,
-%% `/company/windfarm/3/turbine/7/temperature`). To define an asset
+%% </li> <li> A `propertyAlias', which is a data stream alias (for example,
+%% `/company/windfarm/3/turbine/7/temperature'). To define an asset
 %% property's alias, see UpdateAssetProperty.
 %%
 %% </li> </ul>
@@ -725,10 +725,10 @@ get_asset_property_aggregates(Client, AggregateTypes, AssetId, EndDate, MaxResul
 %%
 %% To identify an asset property, you must specify one of the following:
 %%
-%% <ul> <li> The `assetId` and `propertyId` of an asset property.
+%% <ul> <li> The `assetId' and `propertyId' of an asset property.
 %%
-%% </li> <li> A `propertyAlias`, which is a data stream alias (for example,
-%% `/company/windfarm/3/turbine/7/temperature`). To define an asset
+%% </li> <li> A `propertyAlias', which is a data stream alias (for example,
+%% `/company/windfarm/3/turbine/7/temperature'). To define an asset
 %% property's alias, see UpdateAssetProperty.
 %%
 %% </li> </ul>
@@ -759,10 +759,10 @@ get_asset_property_value(Client, AssetId, PropertyAlias, PropertyId, Options)
 %%
 %% To identify an asset property, you must specify one of the following:
 %%
-%% <ul> <li> The `assetId` and `propertyId` of an asset property.
+%% <ul> <li> The `assetId' and `propertyId' of an asset property.
 %%
-%% </li> <li> A `propertyAlias`, which is a data stream alias (for example,
-%% `/company/windfarm/3/turbine/7/temperature`). To define an asset
+%% </li> <li> A `propertyAlias', which is a data stream alias (for example,
+%% `/company/windfarm/3/turbine/7/temperature'). To define an asset
 %% property's alias, see UpdateAssetProperty.
 %%
 %% </li> </ul>

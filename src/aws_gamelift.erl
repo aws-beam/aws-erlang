@@ -241,22 +241,22 @@
 %% players accept the proposed match within a specified time limit.
 %%
 %% When FlexMatch builds a match, all the matchmaking tickets involved in the
-%% proposed match are placed into status `REQUIRES_ACCEPTANCE`. This is a
+%% proposed match are placed into status `REQUIRES_ACCEPTANCE'. This is a
 %% trigger for your game to get acceptance from all players in the ticket.
 %% Acceptances are only valid for tickets when they are in this status; all
 %% other acceptances result in an error.
 %%
 %% To register acceptance, specify the ticket ID, a response, and one or more
 %% players. Once all players have registered acceptance, the matchmaking
-%% tickets advance to status `PLACING`, where a new game session is created
+%% tickets advance to status `PLACING', where a new game session is created
 %% for the match.
 %%
 %% If any player rejects the match, or if acceptances are not received before
 %% a specified timeout, the proposed match is dropped. The matchmaking
 %% tickets are then handled in one of two ways: For tickets where one or more
-%% players rejected the match, the ticket status is returned to `SEARCHING`
+%% players rejected the match, the ticket status is returned to `SEARCHING'
 %% to find a new match. For tickets where one or more players failed to
-%% respond, the ticket status is set to `CANCELLED`, and processing is
+%% respond, the ticket status is set to `CANCELLED', and processing is
 %% terminated. A new matchmaking request for these players can be submitted
 %% as needed.
 %%
@@ -268,15 +268,15 @@
 %%
 %% Related operations
 %%
-%% <ul> <li> `StartMatchmaking`
+%% <ul> <li> `StartMatchmaking'
 %%
-%% </li> <li> `DescribeMatchmaking`
+%% </li> <li> `DescribeMatchmaking'
 %%
-%% </li> <li> `StopMatchmaking`
+%% </li> <li> `StopMatchmaking'
 %%
-%% </li> <li> `AcceptMatch`
+%% </li> <li> `AcceptMatch'
 %%
-%% </li> <li> `StartMatchBackfill`
+%% </li> <li> `StartMatchBackfill'
 %%
 %% </li> </ul>
 accept_match(Client, Input)
@@ -293,7 +293,7 @@ accept_match(Client, Input, Options)
 %% gameplay and players. This operation is called from a game client or
 %% client service (such as a matchmaker) to request hosting resources for a
 %% new game session. In response, GameLift FleetIQ locates an available game
-%% server, places it in `CLAIMED` status for 60 seconds, and returns
+%% server, places it in `CLAIMED' status for 60 seconds, and returns
 %% connection information that players can use to connect to the game server.
 %%
 %% To claim a game server, identify a game server group. You can also specify
@@ -303,10 +303,10 @@ accept_match(Client, Input, Options)
 %% information.
 %%
 %% When a game server is successfully claimed, connection information is
-%% returned. A claimed game server's utilization status remains `AVAILABLE`
-%% while the claim status is set to `CLAIMED` for up to 60 seconds. This time
-%% period gives the game server time to update its status to `UTILIZED`
-%% (using `UpdateGameServer`) once players join. If the game server's status
+%% returned. A claimed game server's utilization status remains `AVAILABLE'
+%% while the claim status is set to `CLAIMED' for up to 60 seconds. This time
+%% period gives the game server time to update its status to `UTILIZED'
+%% (using `UpdateGameServer') once players join. If the game server's status
 %% is not updated within 60 seconds, the game server reverts to unclaimed
 %% status and is available to be claimed by another request. The claim time
 %% period is a fixed value and is not configurable.
@@ -314,14 +314,14 @@ accept_match(Client, Input, Options)
 %% If you try to claim a specific game server, this request will fail in the
 %% following cases:
 %%
-%% <ul> <li> If the game server utilization status is `UTILIZED`.
+%% <ul> <li> If the game server utilization status is `UTILIZED'.
 %%
-%% </li> <li> If the game server claim status is `CLAIMED`.
+%% </li> <li> If the game server claim status is `CLAIMED'.
 %%
 %% </li> </ul> When claiming a specific game server, this request will
-%% succeed even if the game server is running on an instance in `DRAINING`
+%% succeed even if the game server is running on an instance in `DRAINING'
 %% status. To avoid this, first check the instance status by calling
-%% `DescribeGameServerInstances`.
+%% `DescribeGameServerInstances'.
 %%
 %% Learn more
 %%
@@ -329,17 +329,17 @@ accept_match(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `RegisterGameServer`
+%% <ul> <li> `RegisterGameServer'
 %%
-%% </li> <li> `ListGameServers`
+%% </li> <li> `ListGameServers'
 %%
-%% </li> <li> `ClaimGameServer`
+%% </li> <li> `ClaimGameServer'
 %%
-%% </li> <li> `DescribeGameServer`
+%% </li> <li> `DescribeGameServer'
 %%
-%% </li> <li> `UpdateGameServer`
+%% </li> <li> `UpdateGameServer'
 %%
-%% </li> <li> `DeregisterGameServer`
+%% </li> <li> `DeregisterGameServer'
 %%
 %% </li> </ul>
 claim_game_server(Client, Input)
@@ -367,19 +367,19 @@ claim_game_server(Client, Input, Options)
 %% optional description. Each simple alias can point to only one fleet, but a
 %% fleet can have multiple aliases. If successful, a new alias record is
 %% returned, including an alias ID and an ARN. You can reassign an alias to
-%% another fleet by calling `UpdateAlias`.
+%% another fleet by calling `UpdateAlias'.
 %%
-%% <ul> <li> `CreateAlias`
+%% <ul> <li> `CreateAlias'
 %%
-%% </li> <li> `ListAliases`
+%% </li> <li> `ListAliases'
 %%
-%% </li> <li> `DescribeAlias`
+%% </li> <li> `DescribeAlias'
 %%
-%% </li> <li> `UpdateAlias`
+%% </li> <li> `UpdateAlias'
 %%
-%% </li> <li> `DeleteAlias`
+%% </li> <li> `DeleteAlias'
 %%
-%% </li> <li> `ResolveAlias`
+%% </li> <li> `ResolveAlias'
 %%
 %% </li> </ul>
 create_alias(Client, Input)
@@ -400,16 +400,16 @@ create_alias(Client, Input, Options)
 %% uploads your build files from a file directory to a GameLift Amazon S3
 %% location, and (2) it creates a new build resource.
 %%
-%% The `CreateBuild` operation can used in the following scenarios:
+%% The `CreateBuild' operation can used in the following scenarios:
 %%
 %% <ul> <li> To create a new game build with build files that are in an S3
 %% location under an AWS account that you control. To use this option, you
 %% must first give Amazon GameLift access to the S3 bucket. With permissions
-%% in place, call `CreateBuild` and specify a build name, operating system,
+%% in place, call `CreateBuild' and specify a build name, operating system,
 %% and the S3 storage location of your game build.
 %%
 %% </li> <li> To directly upload your build files to a GameLift S3 location.
-%% To use this option, first call `CreateBuild` and specify a build name and
+%% To use this option, first call `CreateBuild' and specify a build name and
 %% operating system. This operation creates a new build resource and also
 %% returns an S3 location with temporary access credentials. Use the
 %% credentials to manually upload your build files to the specified S3
@@ -418,8 +418,8 @@ create_alias(Client, Input, Options)
 %% once only; that can't be updated.
 %%
 %% </li> </ul> If successful, this operation creates a new build resource
-%% with a unique build ID and places it in `INITIALIZED` status. A build must
-%% be in `READY` status before you can create fleets with it.
+%% with a unique build ID and places it in `INITIALIZED' status. A build must
+%% be in `READY' status before you can create fleets with it.
 %%
 %% Learn more
 %%
@@ -429,15 +429,15 @@ create_alias(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateBuild`
+%% <ul> <li> `CreateBuild'
 %%
-%% </li> <li> `ListBuilds`
+%% </li> <li> `ListBuilds'
 %%
-%% </li> <li> `DescribeBuild`
+%% </li> <li> `DescribeBuild'
 %%
-%% </li> <li> `UpdateBuild`
+%% </li> <li> `UpdateBuild'
 %%
-%% </li> <li> `DeleteBuild`
+%% </li> <li> `DeleteBuild'
 %%
 %% </li> </ul>
 create_build(Client, Input)
@@ -461,11 +461,11 @@ create_build(Client, Input, Options)
 %% configuration, which determines how game servers will run on each instance
 %% in the fleet.
 %%
-%% If the `CreateFleet` call is successful, Amazon GameLift performs the
+%% If the `CreateFleet' call is successful, Amazon GameLift performs the
 %% following tasks. You can track the process of a fleet by checking the
 %% fleet status or by monitoring fleet creation events:
 %%
-%% <ul> <li> Creates a fleet resource. Status: `NEW`.
+%% <ul> <li> Creates a fleet resource. Status: `NEW'.
 %%
 %% </li> <li> Begins writing events to the fleet event log, which can be
 %% accessed in the Amazon GameLift console.
@@ -474,14 +474,14 @@ create_build(Client, Input, Options)
 %% which triggers Amazon GameLift to start one new EC2 instance.
 %%
 %% </li> <li> Downloads the game build or Realtime script to the new instance
-%% and installs it. Statuses: `DOWNLOADING`, `VALIDATING`, `BUILDING`.
+%% and installs it. Statuses: `DOWNLOADING', `VALIDATING', `BUILDING'.
 %%
 %% </li> <li> Starts launching server processes on the instance. If the fleet
 %% is configured to run multiple server processes per instance, Amazon
 %% GameLift staggers each process launch by a few seconds. Status:
-%% `ACTIVATING`.
+%% `ACTIVATING'.
 %%
-%% </li> <li> Sets the fleet's status to `ACTIVE` as soon as one server
+%% </li> <li> Sets the fleet's status to `ACTIVE' as soon as one server
 %% process is ready to host a game session.
 %%
 %% </li> </ul> Learn more
@@ -492,17 +492,17 @@ create_build(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateFleet`
+%% <ul> <li> `CreateFleet'
 %%
-%% </li> <li> `ListFleets`
+%% </li> <li> `ListFleets'
 %%
-%% </li> <li> `DeleteFleet`
+%% </li> <li> `DeleteFleet'
 %%
-%% </li> <li> `DescribeFleetAttributes`
+%% </li> <li> `DescribeFleetAttributes'
 %%
-%% </li> <li> `UpdateFleetAttributes`
+%% </li> <li> `UpdateFleetAttributes'
 %%
-%% </li> <li> `StartFleetActions` or `StopFleetActions`
+%% </li> <li> `StartFleetActions' or `StopFleetActions'
 %%
 %% </li> </ul>
 create_fleet(Client, Input)
@@ -556,21 +556,21 @@ create_fleet(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateGameServerGroup`
+%% <ul> <li> `CreateGameServerGroup'
 %%
-%% </li> <li> `ListGameServerGroups`
+%% </li> <li> `ListGameServerGroups'
 %%
-%% </li> <li> `DescribeGameServerGroup`
+%% </li> <li> `DescribeGameServerGroup'
 %%
-%% </li> <li> `UpdateGameServerGroup`
+%% </li> <li> `UpdateGameServerGroup'
 %%
-%% </li> <li> `DeleteGameServerGroup`
+%% </li> <li> `DeleteGameServerGroup'
 %%
-%% </li> <li> `ResumeGameServerGroup`
+%% </li> <li> `ResumeGameServerGroup'
 %%
-%% </li> <li> `SuspendGameServerGroup`
+%% </li> <li> `SuspendGameServerGroup'
 %%
-%% </li> <li> `DescribeGameServerInstances`
+%% </li> <li> `DescribeGameServerInstances'
 %%
 %% </li> </ul>
 create_game_server_group(Client, Input)
@@ -584,12 +584,12 @@ create_game_server_group(Client, Input, Options)
 %%
 %% This operation creates a game session record and assigns an available
 %% server process in the specified fleet to host the game session. A fleet
-%% must have an `ACTIVE` status before a game session can be created in it.
+%% must have an `ACTIVE' status before a game session can be created in it.
 %%
 %% To create a game session, specify either fleet ID or alias ID and indicate
 %% a maximum number of players to allow in the game session. You can also
 %% provide a name and game-specific properties for this game session. If
-%% successful, a `GameSession` object is returned containing the game session
+%% successful, a `GameSession' object is returned containing the game session
 %% properties and other settings you specified.
 %%
 %% Idempotency tokens. You can add a token that uniquely identifies game
@@ -606,34 +606,34 @@ create_game_server_group(Client, Input, Options)
 %%
 %% Player acceptance policy. By default, newly created game sessions are open
 %% to new players. You can restrict new player access by using
-%% `UpdateGameSession` to change the game session's player session creation
+%% `UpdateGameSession' to change the game session's player session creation
 %% policy.
 %%
 %% Game session logs. Logs are retained for all active game sessions for 14
-%% days. To access the logs, call `GetGameSessionLogUrl` to download the log
+%% days. To access the logs, call `GetGameSessionLogUrl' to download the log
 %% files.
 %%
 %% Available in Amazon GameLift Local.
 %%
-%% <ul> <li> `CreateGameSession`
+%% <ul> <li> `CreateGameSession'
 %%
-%% </li> <li> `DescribeGameSessions`
+%% </li> <li> `DescribeGameSessions'
 %%
-%% </li> <li> `DescribeGameSessionDetails`
+%% </li> <li> `DescribeGameSessionDetails'
 %%
-%% </li> <li> `SearchGameSessions`
+%% </li> <li> `SearchGameSessions'
 %%
-%% </li> <li> `UpdateGameSession`
+%% </li> <li> `UpdateGameSession'
 %%
-%% </li> <li> `GetGameSessionLogUrl`
+%% </li> <li> `GetGameSessionLogUrl'
 %%
 %% </li> <li> Game session placements
 %%
-%% <ul> <li> `StartGameSessionPlacement`
+%% <ul> <li> `StartGameSessionPlacement'
 %%
-%% </li> <li> `DescribeGameSessionPlacement`
+%% </li> <li> `DescribeGameSessionPlacement'
 %%
-%% </li> <li> `StopGameSessionPlacement`
+%% </li> <li> `StopGameSessionPlacement'
 %%
 %% </li> </ul> </li> </ul>
 create_game_session(Client, Input)
@@ -650,7 +650,7 @@ create_game_session(Client, Input, Options)
 %% a list of destinations (fleets or aliases) -- and how long requests can
 %% wait in the queue before timing out. You can set up a queue to try to
 %% place game sessions on fleets in multiple Regions. To add placement
-%% requests to a queue, call `StartGameSessionPlacement` and reference the
+%% requests to a queue, call `StartGameSessionPlacement' and reference the
 %% queue name.
 %%
 %% Destination order. When processing a request for a game session, Amazon
@@ -686,13 +686,13 @@ create_game_session(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateGameSessionQueue`
+%% <ul> <li> `CreateGameSessionQueue'
 %%
-%% </li> <li> `DescribeGameSessionQueues`
+%% </li> <li> `DescribeGameSessionQueues'
 %%
-%% </li> <li> `UpdateGameSessionQueue`
+%% </li> <li> `UpdateGameSessionQueue'
 %%
-%% </li> <li> `DeleteGameSessionQueue`
+%% </li> <li> `DeleteGameSessionQueue'
 %%
 %% </li> </ul>
 create_game_session_queue(Client, Input)
@@ -707,7 +707,7 @@ create_game_session_queue(Client, Input, Options)
 %% A matchmaking configuration sets out guidelines for matching players and
 %% getting the matches into games. You can set up multiple matchmaking
 %% configurations to handle the scenarios needed for your game. Each
-%% matchmaking ticket (`StartMatchmaking` or `StartMatchBackfill`) specifies
+%% matchmaking ticket (`StartMatchmaking' or `StartMatchBackfill') specifies
 %% a configuration for the match and provides player attributes to support
 %% the configuration being used.
 %%
@@ -720,7 +720,7 @@ create_game_session_queue(Client, Input, Options)
 %% To track the progress of matchmaking tickets, set up an Amazon Simple
 %% Notification Service (SNS) to receive notifications, and provide the topic
 %% ARN in the matchmaking configuration. An alternative method, continuously
-%% poling ticket status with `DescribeMatchmaking`, should only be used for
+%% poling ticket status with `DescribeMatchmaking', should only be used for
 %% games in development with low matchmaking usage.
 %%
 %% Learn more
@@ -731,21 +731,21 @@ create_game_session_queue(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateMatchmakingConfiguration`
+%% <ul> <li> `CreateMatchmakingConfiguration'
 %%
-%% </li> <li> `DescribeMatchmakingConfigurations`
+%% </li> <li> `DescribeMatchmakingConfigurations'
 %%
-%% </li> <li> `UpdateMatchmakingConfiguration`
+%% </li> <li> `UpdateMatchmakingConfiguration'
 %%
-%% </li> <li> `DeleteMatchmakingConfiguration`
+%% </li> <li> `DeleteMatchmakingConfiguration'
 %%
-%% </li> <li> `CreateMatchmakingRuleSet`
+%% </li> <li> `CreateMatchmakingRuleSet'
 %%
-%% </li> <li> `DescribeMatchmakingRuleSets`
+%% </li> <li> `DescribeMatchmakingRuleSets'
 %%
-%% </li> <li> `ValidateMatchmakingRuleSet`
+%% </li> <li> `ValidateMatchmakingRuleSet'
 %%
-%% </li> <li> `DeleteMatchmakingRuleSet`
+%% </li> <li> `DeleteMatchmakingRuleSet'
 %%
 %% </li> </ul>
 create_matchmaking_configuration(Client, Input)
@@ -760,14 +760,14 @@ create_matchmaking_configuration(Client, Input, Options)
 %% A rule set describes the type of match to create, such as the number and
 %% size of teams. It also sets the parameters for acceptable player matches,
 %% such as minimum skill level or character type. A rule set is used by a
-%% `MatchmakingConfiguration`.
+%% `MatchmakingConfiguration'.
 %%
 %% To create a matchmaking rule set, provide unique rule set name and the
 %% rule set body in JSON format. Rule sets must be defined in the same Region
 %% as the matchmaking configuration they are used with.
 %%
 %% Since matchmaking rule sets cannot be edited, it is a good idea to check
-%% the rule set syntax using `ValidateMatchmakingRuleSet` before creating a
+%% the rule set syntax using `ValidateMatchmakingRuleSet' before creating a
 %% new rule set.
 %%
 %% Learn more
@@ -780,21 +780,21 @@ create_matchmaking_configuration(Client, Input, Options)
 %%
 %% </li> </ul> Related operations
 %%
-%% <ul> <li> `CreateMatchmakingConfiguration`
+%% <ul> <li> `CreateMatchmakingConfiguration'
 %%
-%% </li> <li> `DescribeMatchmakingConfigurations`
+%% </li> <li> `DescribeMatchmakingConfigurations'
 %%
-%% </li> <li> `UpdateMatchmakingConfiguration`
+%% </li> <li> `UpdateMatchmakingConfiguration'
 %%
-%% </li> <li> `DeleteMatchmakingConfiguration`
+%% </li> <li> `DeleteMatchmakingConfiguration'
 %%
-%% </li> <li> `CreateMatchmakingRuleSet`
+%% </li> <li> `CreateMatchmakingRuleSet'
 %%
-%% </li> <li> `DescribeMatchmakingRuleSets`
+%% </li> <li> `DescribeMatchmakingRuleSets'
 %%
-%% </li> <li> `ValidateMatchmakingRuleSet`
+%% </li> <li> `ValidateMatchmakingRuleSet'
 %%
-%% </li> <li> `DeleteMatchmakingRuleSet`
+%% </li> <li> `DeleteMatchmakingRuleSet'
 %%
 %% </li> </ul>
 create_matchmaking_rule_set(Client, Input)
@@ -806,33 +806,33 @@ create_matchmaking_rule_set(Client, Input, Options)
 
 %% @doc Reserves an open player slot in an active game session.
 %%
-%% Before a player can be added, a game session must have an `ACTIVE` status,
-%% have a creation policy of `ALLOW_ALL`, and have an open player slot. To
-%% add a group of players to a game session, use `CreatePlayerSessions`. When
+%% Before a player can be added, a game session must have an `ACTIVE' status,
+%% have a creation policy of `ALLOW_ALL', and have an open player slot. To
+%% add a group of players to a game session, use `CreatePlayerSessions'. When
 %% the player connects to the game server and references a player session ID,
 %% the game server contacts the Amazon GameLift service to validate the
 %% player reservation and accept the player.
 %%
 %% To create a player session, specify a game session ID, player ID, and
 %% optionally a string of player data. If successful, a slot is reserved in
-%% the game session for the player and a new `PlayerSession` object is
+%% the game session for the player and a new `PlayerSession' object is
 %% returned. Player sessions cannot be updated.
 %%
 %% Available in Amazon GameLift Local.
 %%
-%% <ul> <li> `CreatePlayerSession`
+%% <ul> <li> `CreatePlayerSession'
 %%
-%% </li> <li> `CreatePlayerSessions`
+%% </li> <li> `CreatePlayerSessions'
 %%
-%% </li> <li> `DescribePlayerSessions`
+%% </li> <li> `DescribePlayerSessions'
 %%
 %% </li> <li> Game session placements
 %%
-%% <ul> <li> `StartGameSessionPlacement`
+%% <ul> <li> `StartGameSessionPlacement'
 %%
-%% </li> <li> `DescribeGameSessionPlacement`
+%% </li> <li> `DescribeGameSessionPlacement'
 %%
-%% </li> <li> `StopGameSessionPlacement`
+%% </li> <li> `StopGameSessionPlacement'
 %%
 %% </li> </ul> </li> </ul>
 create_player_session(Client, Input)
@@ -844,9 +844,9 @@ create_player_session(Client, Input, Options)
 
 %% @doc Reserves open slots in a game session for a group of players.
 %%
-%% Before players can be added, a game session must have an `ACTIVE` status,
-%% have a creation policy of `ALLOW_ALL`, and have an open player slot. To
-%% add a single player to a game session, use `CreatePlayerSession`. When a
+%% Before players can be added, a game session must have an `ACTIVE' status,
+%% have a creation policy of `ALLOW_ALL', and have an open player slot. To
+%% add a single player to a game session, use `CreatePlayerSession'. When a
 %% player connects to the game server and references a player session ID, the
 %% game server contacts the Amazon GameLift service to validate the player
 %% reservation and accept the player.
@@ -854,23 +854,23 @@ create_player_session(Client, Input, Options)
 %% To create player sessions, specify a game session ID, a list of player
 %% IDs, and optionally a set of player data strings. If successful, a slot is
 %% reserved in the game session for each player and a set of new
-%% `PlayerSession` objects is returned. Player sessions cannot be updated.
+%% `PlayerSession' objects is returned. Player sessions cannot be updated.
 %%
 %% Available in Amazon GameLift Local.
 %%
-%% <ul> <li> `CreatePlayerSession`
+%% <ul> <li> `CreatePlayerSession'
 %%
-%% </li> <li> `CreatePlayerSessions`
+%% </li> <li> `CreatePlayerSessions'
 %%
-%% </li> <li> `DescribePlayerSessions`
+%% </li> <li> `DescribePlayerSessions'
 %%
 %% </li> <li> Game session placements
 %%
-%% <ul> <li> `StartGameSessionPlacement`
+%% <ul> <li> `StartGameSessionPlacement'
 %%
-%% </li> <li> `DescribeGameSessionPlacement`
+%% </li> <li> `DescribeGameSessionPlacement'
 %%
-%% </li> <li> `StopGameSessionPlacement`
+%% </li> <li> `StopGameSessionPlacement'
 %%
 %% </li> </ul> </li> </ul>
 create_player_sessions(Client, Input)
@@ -914,15 +914,15 @@ create_player_sessions(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateScript`
+%% <ul> <li> `CreateScript'
 %%
-%% </li> <li> `ListScripts`
+%% </li> <li> `ListScripts'
 %%
-%% </li> <li> `DescribeScript`
+%% </li> <li> `DescribeScript'
 %%
-%% </li> <li> `UpdateScript`
+%% </li> <li> `UpdateScript'
 %%
-%% </li> <li> `DeleteScript`
+%% </li> <li> `DeleteScript'
 %%
 %% </li> </ul>
 create_script(Client, Input)
@@ -938,7 +938,7 @@ create_script(Client, Input, Options)
 %%
 %% VPC peering enables the game servers on your fleet to communicate directly
 %% with other AWS resources. Once you've received authorization, call
-%% `CreateVpcPeeringConnection` to establish the peering connection. For more
+%% `CreateVpcPeeringConnection' to establish the peering connection. For more
 %% information, see VPC Peering with Amazon GameLift Fleets.
 %%
 %% You can peer with VPCs that are owned by any AWS account you have access
@@ -960,20 +960,20 @@ create_script(Client, Input, Options)
 %% manage Amazon GameLift.
 %%
 %% The authorization remains valid for 24 hours unless it is canceled by a
-%% call to `DeleteVpcPeeringAuthorization`. You must create or delete the
+%% call to `DeleteVpcPeeringAuthorization'. You must create or delete the
 %% peering connection while the authorization is valid.
 %%
-%% <ul> <li> `CreateVpcPeeringAuthorization`
+%% <ul> <li> `CreateVpcPeeringAuthorization'
 %%
-%% </li> <li> `DescribeVpcPeeringAuthorizations`
+%% </li> <li> `DescribeVpcPeeringAuthorizations'
 %%
-%% </li> <li> `DeleteVpcPeeringAuthorization`
+%% </li> <li> `DeleteVpcPeeringAuthorization'
 %%
-%% </li> <li> `CreateVpcPeeringConnection`
+%% </li> <li> `CreateVpcPeeringConnection'
 %%
-%% </li> <li> `DescribeVpcPeeringConnections`
+%% </li> <li> `DescribeVpcPeeringConnections'
 %%
-%% </li> <li> `DeleteVpcPeeringConnection`
+%% </li> <li> `DeleteVpcPeeringConnection'
 %%
 %% </li> </ul>
 create_vpc_peering_authorization(Client, Input)
@@ -994,7 +994,7 @@ create_vpc_peering_authorization(Client, Input, Options)
 %% Fleets.
 %%
 %% Before calling this operation to establish the peering connection, you
-%% first need to call `CreateVpcPeeringAuthorization` and identify the VPC
+%% first need to call `CreateVpcPeeringAuthorization' and identify the VPC
 %% you want to peer with. Once the authorization for the specified VPC is
 %% issued, you have 24 hours to establish the connection. These two
 %% operations handle all tasks necessary to peer the two VPCs, including
@@ -1005,22 +1005,22 @@ create_vpc_peering_authorization(Client, Input, Options)
 %% values: (1) The ID of the fleet you want to be enable a VPC peering
 %% connection for; (2) The AWS account with the VPC that you want to peer
 %% with; and (3) The ID of the VPC you want to peer with. This operation is
-%% asynchronous. If successful, a `VpcPeeringConnection` request is created.
+%% asynchronous. If successful, a `VpcPeeringConnection' request is created.
 %% You can use continuous polling to track the request's status using
-%% `DescribeVpcPeeringConnections`, or by monitoring fleet events for success
-%% or failure using `DescribeFleetEvents`.
+%% `DescribeVpcPeeringConnections', or by monitoring fleet events for success
+%% or failure using `DescribeFleetEvents'.
 %%
-%% <ul> <li> `CreateVpcPeeringAuthorization`
+%% <ul> <li> `CreateVpcPeeringAuthorization'
 %%
-%% </li> <li> `DescribeVpcPeeringAuthorizations`
+%% </li> <li> `DescribeVpcPeeringAuthorizations'
 %%
-%% </li> <li> `DeleteVpcPeeringAuthorization`
+%% </li> <li> `DeleteVpcPeeringAuthorization'
 %%
-%% </li> <li> `CreateVpcPeeringConnection`
+%% </li> <li> `CreateVpcPeeringConnection'
 %%
-%% </li> <li> `DescribeVpcPeeringConnections`
+%% </li> <li> `DescribeVpcPeeringConnections'
 %%
-%% </li> <li> `DeleteVpcPeeringConnection`
+%% </li> <li> `DeleteVpcPeeringConnection'
 %%
 %% </li> </ul>
 create_vpc_peering_connection(Client, Input)
@@ -1036,17 +1036,17 @@ create_vpc_peering_connection(Client, Input, Options)
 %% access a server process using the deleted alias receive an error. To
 %% delete an alias, specify the alias ID to be deleted.
 %%
-%% <ul> <li> `CreateAlias`
+%% <ul> <li> `CreateAlias'
 %%
-%% </li> <li> `ListAliases`
+%% </li> <li> `ListAliases'
 %%
-%% </li> <li> `DescribeAlias`
+%% </li> <li> `DescribeAlias'
 %%
-%% </li> <li> `UpdateAlias`
+%% </li> <li> `UpdateAlias'
 %%
-%% </li> <li> `DeleteAlias`
+%% </li> <li> `DeleteAlias'
 %%
-%% </li> <li> `ResolveAlias`
+%% </li> <li> `ResolveAlias'
 %%
 %% </li> </ul>
 delete_alias(Client, Input)
@@ -1071,15 +1071,15 @@ delete_alias(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateBuild`
+%% <ul> <li> `CreateBuild'
 %%
-%% </li> <li> `ListBuilds`
+%% </li> <li> `ListBuilds'
 %%
-%% </li> <li> `DescribeBuild`
+%% </li> <li> `DescribeBuild'
 %%
-%% </li> <li> `UpdateBuild`
+%% </li> <li> `UpdateBuild'
 %%
-%% </li> <li> `DeleteBuild`
+%% </li> <li> `DeleteBuild'
 %%
 %% </li> </ul>
 delete_build(Client, Input)
@@ -1092,11 +1092,11 @@ delete_build(Client, Input, Options)
 %% @doc Deletes everything related to a fleet.
 %%
 %% Before deleting a fleet, you must set the fleet's desired capacity to
-%% zero. See `UpdateFleetCapacity`.
+%% zero. See `UpdateFleetCapacity'.
 %%
 %% If the fleet being deleted has a VPC peering connection, you first need to
 %% get a valid authorization (good for 24 hours) by calling
-%% `CreateVpcPeeringAuthorization`. You do not need to explicitly delete the
+%% `CreateVpcPeeringAuthorization'. You do not need to explicitly delete the
 %% VPC peering connection--this is done as part of the delete fleet process.
 %%
 %% This operation removes the fleet and its resources. Once a fleet is
@@ -1108,17 +1108,17 @@ delete_build(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateFleet`
+%% <ul> <li> `CreateFleet'
 %%
-%% </li> <li> `ListFleets`
+%% </li> <li> `ListFleets'
 %%
-%% </li> <li> `DeleteFleet`
+%% </li> <li> `DeleteFleet'
 %%
-%% </li> <li> `DescribeFleetAttributes`
+%% </li> <li> `DescribeFleetAttributes'
 %%
-%% </li> <li> `UpdateFleetAttributes`
+%% </li> <li> `UpdateFleetAttributes'
 %%
-%% </li> <li> `StartFleetActions` or `StopFleetActions`
+%% </li> <li> `StartFleetActions' or `StopFleetActions'
 %%
 %% </li> </ul>
 delete_fleet(Client, Input)
@@ -1144,15 +1144,15 @@ delete_fleet(Client, Input, Options)
 %%
 %% </li> </ul> To delete a game server group, identify the game server group
 %% to delete and specify the type of delete operation to initiate. Game
-%% server groups can only be deleted if they are in `ACTIVE` or `ERROR`
+%% server groups can only be deleted if they are in `ACTIVE' or `ERROR'
 %% status.
 %%
 %% If the delete request is successful, a series of operations are kicked
-%% off. The game server group status is changed to `DELETE_SCHEDULED`, which
+%% off. The game server group status is changed to `DELETE_SCHEDULED', which
 %% prevents new game servers from being registered and stops automatic
 %% scaling activity. Once all game servers in the game server group are
 %% deregistered, GameLift FleetIQ can begin deleting resources. If any of the
-%% delete operations fail, the game server group is placed in `ERROR` status.
+%% delete operations fail, the game server group is placed in `ERROR' status.
 %%
 %% GameLift FleetIQ emits delete events to Amazon CloudWatch.
 %%
@@ -1162,21 +1162,21 @@ delete_fleet(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateGameServerGroup`
+%% <ul> <li> `CreateGameServerGroup'
 %%
-%% </li> <li> `ListGameServerGroups`
+%% </li> <li> `ListGameServerGroups'
 %%
-%% </li> <li> `DescribeGameServerGroup`
+%% </li> <li> `DescribeGameServerGroup'
 %%
-%% </li> <li> `UpdateGameServerGroup`
+%% </li> <li> `UpdateGameServerGroup'
 %%
-%% </li> <li> `DeleteGameServerGroup`
+%% </li> <li> `DeleteGameServerGroup'
 %%
-%% </li> <li> `ResumeGameServerGroup`
+%% </li> <li> `ResumeGameServerGroup'
 %%
-%% </li> <li> `SuspendGameServerGroup`
+%% </li> <li> `SuspendGameServerGroup'
 %%
-%% </li> <li> `DescribeGameServerInstances`
+%% </li> <li> `DescribeGameServerInstances'
 %%
 %% </li> </ul>
 delete_game_server_group(Client, Input)
@@ -1189,7 +1189,7 @@ delete_game_server_group(Client, Input, Options)
 %% @doc Deletes a game session queue.
 %%
 %% Once a queue is successfully deleted, unfulfilled
-%% `StartGameSessionPlacement` requests that reference the queue will fail.
+%% `StartGameSessionPlacement' requests that reference the queue will fail.
 %% To delete a queue, specify the queue name.
 %%
 %% Learn more
@@ -1198,13 +1198,13 @@ delete_game_server_group(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateGameSessionQueue`
+%% <ul> <li> `CreateGameSessionQueue'
 %%
-%% </li> <li> `DescribeGameSessionQueues`
+%% </li> <li> `DescribeGameSessionQueues'
 %%
-%% </li> <li> `UpdateGameSessionQueue`
+%% </li> <li> `UpdateGameSessionQueue'
 %%
-%% </li> <li> `DeleteGameSessionQueue`
+%% </li> <li> `DeleteGameSessionQueue'
 %%
 %% </li> </ul>
 delete_game_session_queue(Client, Input)
@@ -1221,21 +1221,21 @@ delete_game_session_queue(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateMatchmakingConfiguration`
+%% <ul> <li> `CreateMatchmakingConfiguration'
 %%
-%% </li> <li> `DescribeMatchmakingConfigurations`
+%% </li> <li> `DescribeMatchmakingConfigurations'
 %%
-%% </li> <li> `UpdateMatchmakingConfiguration`
+%% </li> <li> `UpdateMatchmakingConfiguration'
 %%
-%% </li> <li> `DeleteMatchmakingConfiguration`
+%% </li> <li> `DeleteMatchmakingConfiguration'
 %%
-%% </li> <li> `CreateMatchmakingRuleSet`
+%% </li> <li> `CreateMatchmakingRuleSet'
 %%
-%% </li> <li> `DescribeMatchmakingRuleSets`
+%% </li> <li> `DescribeMatchmakingRuleSets'
 %%
-%% </li> <li> `ValidateMatchmakingRuleSet`
+%% </li> <li> `ValidateMatchmakingRuleSet'
 %%
-%% </li> <li> `DeleteMatchmakingRuleSet`
+%% </li> <li> `DeleteMatchmakingRuleSet'
 %%
 %% </li> </ul>
 delete_matchmaking_configuration(Client, Input)
@@ -1256,21 +1256,21 @@ delete_matchmaking_configuration(Client, Input, Options)
 %%
 %% </li> </ul> Related operations
 %%
-%% <ul> <li> `CreateMatchmakingConfiguration`
+%% <ul> <li> `CreateMatchmakingConfiguration'
 %%
-%% </li> <li> `DescribeMatchmakingConfigurations`
+%% </li> <li> `DescribeMatchmakingConfigurations'
 %%
-%% </li> <li> `UpdateMatchmakingConfiguration`
+%% </li> <li> `UpdateMatchmakingConfiguration'
 %%
-%% </li> <li> `DeleteMatchmakingConfiguration`
+%% </li> <li> `DeleteMatchmakingConfiguration'
 %%
-%% </li> <li> `CreateMatchmakingRuleSet`
+%% </li> <li> `CreateMatchmakingRuleSet'
 %%
-%% </li> <li> `DescribeMatchmakingRuleSets`
+%% </li> <li> `DescribeMatchmakingRuleSets'
 %%
-%% </li> <li> `ValidateMatchmakingRuleSet`
+%% </li> <li> `ValidateMatchmakingRuleSet'
 %%
-%% </li> <li> `DeleteMatchmakingRuleSet`
+%% </li> <li> `DeleteMatchmakingRuleSet'
 %%
 %% </li> </ul>
 delete_matchmaking_rule_set(Client, Input)
@@ -1286,28 +1286,28 @@ delete_matchmaking_rule_set(Client, Input, Options)
 %% record of it. To delete a scaling policy, specify both the scaling policy
 %% name and the fleet ID it is associated with.
 %%
-%% To temporarily suspend scaling policies, call `StopFleetActions`. This
+%% To temporarily suspend scaling policies, call `StopFleetActions'. This
 %% operation suspends all policies for the fleet.
 %%
-%% <ul> <li> `DescribeFleetCapacity`
+%% <ul> <li> `DescribeFleetCapacity'
 %%
-%% </li> <li> `UpdateFleetCapacity`
+%% </li> <li> `UpdateFleetCapacity'
 %%
-%% </li> <li> `DescribeEC2InstanceLimits`
+%% </li> <li> `DescribeEC2InstanceLimits'
 %%
 %% </li> <li> Manage scaling policies:
 %%
-%% <ul> <li> `PutScalingPolicy` (auto-scaling)
+%% <ul> <li> `PutScalingPolicy' (auto-scaling)
 %%
-%% </li> <li> `DescribeScalingPolicies` (auto-scaling)
+%% </li> <li> `DescribeScalingPolicies' (auto-scaling)
 %%
-%% </li> <li> `DeleteScalingPolicy` (auto-scaling)
+%% </li> <li> `DeleteScalingPolicy' (auto-scaling)
 %%
 %% </li> </ul> </li> <li> Manage fleet actions:
 %%
-%% <ul> <li> `StartFleetActions`
+%% <ul> <li> `StartFleetActions'
 %%
-%% </li> <li> `StopFleetActions`
+%% </li> <li> `StopFleetActions'
 %%
 %% </li> </ul> </li> </ul>
 delete_scaling_policy(Client, Input)
@@ -1335,15 +1335,15 @@ delete_scaling_policy(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateScript`
+%% <ul> <li> `CreateScript'
 %%
-%% </li> <li> `ListScripts`
+%% </li> <li> `ListScripts'
 %%
-%% </li> <li> `DescribeScript`
+%% </li> <li> `DescribeScript'
 %%
-%% </li> <li> `UpdateScript`
+%% </li> <li> `UpdateScript'
 %%
-%% </li> <li> `DeleteScript`
+%% </li> <li> `DeleteScript'
 %%
 %% </li> </ul>
 delete_script(Client, Input)
@@ -1356,19 +1356,19 @@ delete_script(Client, Input, Options)
 %% @doc Cancels a pending VPC peering authorization for the specified VPC.
 %%
 %% If you need to delete an existing VPC peering connection, call
-%% `DeleteVpcPeeringConnection`.
+%% `DeleteVpcPeeringConnection'.
 %%
-%% <ul> <li> `CreateVpcPeeringAuthorization`
+%% <ul> <li> `CreateVpcPeeringAuthorization'
 %%
-%% </li> <li> `DescribeVpcPeeringAuthorizations`
+%% </li> <li> `DescribeVpcPeeringAuthorizations'
 %%
-%% </li> <li> `DeleteVpcPeeringAuthorization`
+%% </li> <li> `DeleteVpcPeeringAuthorization'
 %%
-%% </li> <li> `CreateVpcPeeringConnection`
+%% </li> <li> `CreateVpcPeeringConnection'
 %%
-%% </li> <li> `DescribeVpcPeeringConnections`
+%% </li> <li> `DescribeVpcPeeringConnections'
 %%
-%% </li> <li> `DeleteVpcPeeringConnection`
+%% </li> <li> `DeleteVpcPeeringConnection'
 %%
 %% </li> </ul>
 delete_vpc_peering_authorization(Client, Input)
@@ -1382,25 +1382,25 @@ delete_vpc_peering_authorization(Client, Input, Options)
 %%
 %% To delete the connection, you must have a valid authorization for the VPC
 %% peering connection that you want to delete. You can check for an
-%% authorization by calling `DescribeVpcPeeringAuthorizations` or request a
-%% new one using `CreateVpcPeeringAuthorization`.
+%% authorization by calling `DescribeVpcPeeringAuthorizations' or request a
+%% new one using `CreateVpcPeeringAuthorization'.
 %%
 %% Once a valid authorization exists, call this operation from the AWS
 %% account that is used to manage the Amazon GameLift fleets. Identify the
 %% connection to delete by the connection ID and fleet ID. If successful, the
 %% connection is removed.
 %%
-%% <ul> <li> `CreateVpcPeeringAuthorization`
+%% <ul> <li> `CreateVpcPeeringAuthorization'
 %%
-%% </li> <li> `DescribeVpcPeeringAuthorizations`
+%% </li> <li> `DescribeVpcPeeringAuthorizations'
 %%
-%% </li> <li> `DeleteVpcPeeringAuthorization`
+%% </li> <li> `DeleteVpcPeeringAuthorization'
 %%
-%% </li> <li> `CreateVpcPeeringConnection`
+%% </li> <li> `CreateVpcPeeringConnection'
 %%
-%% </li> <li> `DescribeVpcPeeringConnections`
+%% </li> <li> `DescribeVpcPeeringConnections'
 %%
-%% </li> <li> `DeleteVpcPeeringConnection`
+%% </li> <li> `DeleteVpcPeeringConnection'
 %%
 %% </li> </ul>
 delete_vpc_peering_connection(Client, Input)
@@ -1427,17 +1427,17 @@ delete_vpc_peering_connection(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `RegisterGameServer`
+%% <ul> <li> `RegisterGameServer'
 %%
-%% </li> <li> `ListGameServers`
+%% </li> <li> `ListGameServers'
 %%
-%% </li> <li> `ClaimGameServer`
+%% </li> <li> `ClaimGameServer'
 %%
-%% </li> <li> `DescribeGameServer`
+%% </li> <li> `DescribeGameServer'
 %%
-%% </li> <li> `UpdateGameServer`
+%% </li> <li> `UpdateGameServer'
 %%
-%% </li> <li> `DeregisterGameServer`
+%% </li> <li> `DeregisterGameServer'
 %%
 %% </li> </ul>
 deregister_game_server(Client, Input)
@@ -1450,22 +1450,22 @@ deregister_game_server(Client, Input, Options)
 %% @doc Retrieves properties for an alias.
 %%
 %% This operation returns all alias metadata and settings. To get an alias's
-%% target fleet ID only, use `ResolveAlias`.
+%% target fleet ID only, use `ResolveAlias'.
 %%
 %% To get alias properties, specify the alias ID. If successful, the
 %% requested alias record is returned.
 %%
-%% <ul> <li> `CreateAlias`
+%% <ul> <li> `CreateAlias'
 %%
-%% </li> <li> `ListAliases`
+%% </li> <li> `ListAliases'
 %%
-%% </li> <li> `DescribeAlias`
+%% </li> <li> `DescribeAlias'
 %%
-%% </li> <li> `UpdateAlias`
+%% </li> <li> `UpdateAlias'
 %%
-%% </li> <li> `DeleteAlias`
+%% </li> <li> `DeleteAlias'
 %%
-%% </li> <li> `ResolveAlias`
+%% </li> <li> `ResolveAlias'
 %%
 %% </li> </ul>
 describe_alias(Client, Input)
@@ -1486,15 +1486,15 @@ describe_alias(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateBuild`
+%% <ul> <li> `CreateBuild'
 %%
-%% </li> <li> `ListBuilds`
+%% </li> <li> `ListBuilds'
 %%
-%% </li> <li> `DescribeBuild`
+%% </li> <li> `DescribeBuild'
 %%
-%% </li> <li> `UpdateBuild`
+%% </li> <li> `UpdateBuild'
 %%
-%% </li> <li> `DeleteBuild`
+%% </li> <li> `DeleteBuild'
 %%
 %% </li> </ul>
 describe_build(Client, Input)
@@ -1522,17 +1522,17 @@ describe_build(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateFleet`
+%% <ul> <li> `CreateFleet'
 %%
-%% </li> <li> `ListFleets`
+%% </li> <li> `ListFleets'
 %%
-%% </li> <li> `DeleteFleet`
+%% </li> <li> `DeleteFleet'
 %%
-%% </li> <li> `DescribeFleetAttributes`
+%% </li> <li> `DescribeFleetAttributes'
 %%
-%% </li> <li> `UpdateFleetAttributes`
+%% </li> <li> `UpdateFleetAttributes'
 %%
-%% </li> <li> `StartFleetActions` or `StopFleetActions`
+%% </li> <li> `StartFleetActions' or `StopFleetActions'
 %%
 %% </li> </ul>
 describe_e_c2_instance_limits(Client, Input)
@@ -1549,7 +1549,7 @@ describe_e_c2_instance_limits(Client, Input, Options)
 %% fleet ARNs. To get attributes for all fleets, do not specify a fleet
 %% identifier. When requesting attributes for multiple fleets, use the
 %% pagination parameters to retrieve results as a set of sequential pages. If
-%% successful, a `FleetAttributes` object is returned for each fleet
+%% successful, a `FleetAttributes' object is returned for each fleet
 %% requested, unless the fleet identifier is not found.
 %%
 %% Some API operations may limit the number of fleet IDs allowed in one
@@ -1562,31 +1562,31 @@ describe_e_c2_instance_limits(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateFleet`
+%% <ul> <li> `CreateFleet'
 %%
-%% </li> <li> `ListFleets`
+%% </li> <li> `ListFleets'
 %%
-%% </li> <li> `DeleteFleet`
+%% </li> <li> `DeleteFleet'
 %%
 %% </li> <li> Describe fleets:
 %%
-%% <ul> <li> `DescribeFleetAttributes`
+%% <ul> <li> `DescribeFleetAttributes'
 %%
-%% </li> <li> `DescribeFleetCapacity`
+%% </li> <li> `DescribeFleetCapacity'
 %%
-%% </li> <li> `DescribeFleetPortSettings`
+%% </li> <li> `DescribeFleetPortSettings'
 %%
-%% </li> <li> `DescribeFleetUtilization`
+%% </li> <li> `DescribeFleetUtilization'
 %%
-%% </li> <li> `DescribeRuntimeConfiguration`
+%% </li> <li> `DescribeRuntimeConfiguration'
 %%
-%% </li> <li> `DescribeEC2InstanceLimits`
+%% </li> <li> `DescribeEC2InstanceLimits'
 %%
-%% </li> <li> `DescribeFleetEvents`
+%% </li> <li> `DescribeFleetEvents'
 %%
-%% </li> </ul> </li> <li> `UpdateFleetAttributes`
+%% </li> </ul> </li> <li> `UpdateFleetAttributes'
 %%
-%% </li> <li> `StartFleetActions` or `StopFleetActions`
+%% </li> <li> `StartFleetActions' or `StopFleetActions'
 %%
 %% </li> </ul>
 describe_fleet_attributes(Client, Input)
@@ -1600,12 +1600,12 @@ describe_fleet_attributes(Client, Input, Options)
 %%
 %% These statistics present a snapshot of the fleet's instances and provide
 %% insight on current or imminent scaling activity. To get statistics on game
-%% hosting activity in the fleet, see `DescribeFleetUtilization`.
+%% hosting activity in the fleet, see `DescribeFleetUtilization'.
 %%
 %% You can request capacity for all fleets or specify a list of one or more
 %% fleet identifiers. When requesting multiple fleets, use the pagination
 %% parameters to retrieve results as a set of sequential pages. If
-%% successful, a `FleetCapacity` object is returned for each requested fleet
+%% successful, a `FleetCapacity' object is returned for each requested fleet
 %% ID. When a list of fleet IDs is provided, attribute objects are returned
 %% only for fleets that currently exist.
 %%
@@ -1621,31 +1621,31 @@ describe_fleet_attributes(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateFleet`
+%% <ul> <li> `CreateFleet'
 %%
-%% </li> <li> `ListFleets`
+%% </li> <li> `ListFleets'
 %%
-%% </li> <li> `DeleteFleet`
+%% </li> <li> `DeleteFleet'
 %%
 %% </li> <li> Describe fleets:
 %%
-%% <ul> <li> `DescribeFleetAttributes`
+%% <ul> <li> `DescribeFleetAttributes'
 %%
-%% </li> <li> `DescribeFleetCapacity`
+%% </li> <li> `DescribeFleetCapacity'
 %%
-%% </li> <li> `DescribeFleetPortSettings`
+%% </li> <li> `DescribeFleetPortSettings'
 %%
-%% </li> <li> `DescribeFleetUtilization`
+%% </li> <li> `DescribeFleetUtilization'
 %%
-%% </li> <li> `DescribeRuntimeConfiguration`
+%% </li> <li> `DescribeRuntimeConfiguration'
 %%
-%% </li> <li> `DescribeEC2InstanceLimits`
+%% </li> <li> `DescribeEC2InstanceLimits'
 %%
-%% </li> <li> `DescribeFleetEvents`
+%% </li> <li> `DescribeFleetEvents'
 %%
-%% </li> </ul> </li> <li> `UpdateFleetAttributes`
+%% </li> </ul> </li> <li> `UpdateFleetAttributes'
 %%
-%% </li> <li> `StartFleetActions` or `StopFleetActions`
+%% </li> <li> `StartFleetActions' or `StopFleetActions'
 %%
 %% </li> </ul>
 describe_fleet_capacity(Client, Input)
@@ -1668,31 +1668,31 @@ describe_fleet_capacity(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateFleet`
+%% <ul> <li> `CreateFleet'
 %%
-%% </li> <li> `ListFleets`
+%% </li> <li> `ListFleets'
 %%
-%% </li> <li> `DeleteFleet`
+%% </li> <li> `DeleteFleet'
 %%
 %% </li> <li> Describe fleets:
 %%
-%% <ul> <li> `DescribeFleetAttributes`
+%% <ul> <li> `DescribeFleetAttributes'
 %%
-%% </li> <li> `DescribeFleetCapacity`
+%% </li> <li> `DescribeFleetCapacity'
 %%
-%% </li> <li> `DescribeFleetPortSettings`
+%% </li> <li> `DescribeFleetPortSettings'
 %%
-%% </li> <li> `DescribeFleetUtilization`
+%% </li> <li> `DescribeFleetUtilization'
 %%
-%% </li> <li> `DescribeRuntimeConfiguration`
+%% </li> <li> `DescribeRuntimeConfiguration'
 %%
-%% </li> <li> `DescribeEC2InstanceLimits`
+%% </li> <li> `DescribeEC2InstanceLimits'
 %%
-%% </li> <li> `DescribeFleetEvents`
+%% </li> <li> `DescribeFleetEvents'
 %%
-%% </li> </ul> </li> <li> `UpdateFleetAttributes`
+%% </li> </ul> </li> <li> `UpdateFleetAttributes'
 %%
-%% </li> <li> `StartFleetActions` or `StopFleetActions`
+%% </li> <li> `StartFleetActions' or `StopFleetActions'
 %%
 %% </li> </ul>
 describe_fleet_events(Client, Input)
@@ -1710,7 +1710,7 @@ describe_fleet_events(Client, Input, Options)
 %% that fall in this range.
 %%
 %% To get a fleet's inbound connection permissions, specify the fleet's
-%% unique identifier. If successful, a collection of `IpPermission` objects
+%% unique identifier. If successful, a collection of `IpPermission' objects
 %% is returned for the requested fleet ID. If the requested fleet has been
 %% deleted, the result set is empty.
 %%
@@ -1720,31 +1720,31 @@ describe_fleet_events(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateFleet`
+%% <ul> <li> `CreateFleet'
 %%
-%% </li> <li> `ListFleets`
+%% </li> <li> `ListFleets'
 %%
-%% </li> <li> `DeleteFleet`
+%% </li> <li> `DeleteFleet'
 %%
 %% </li> <li> Describe fleets:
 %%
-%% <ul> <li> `DescribeFleetAttributes`
+%% <ul> <li> `DescribeFleetAttributes'
 %%
-%% </li> <li> `DescribeFleetCapacity`
+%% </li> <li> `DescribeFleetCapacity'
 %%
-%% </li> <li> `DescribeFleetPortSettings`
+%% </li> <li> `DescribeFleetPortSettings'
 %%
-%% </li> <li> `DescribeFleetUtilization`
+%% </li> <li> `DescribeFleetUtilization'
 %%
-%% </li> <li> `DescribeRuntimeConfiguration`
+%% </li> <li> `DescribeRuntimeConfiguration'
 %%
-%% </li> <li> `DescribeEC2InstanceLimits`
+%% </li> <li> `DescribeEC2InstanceLimits'
 %%
-%% </li> <li> `DescribeFleetEvents`
+%% </li> <li> `DescribeFleetEvents'
 %%
-%% </li> </ul> </li> <li> `UpdateFleetAttributes`
+%% </li> </ul> </li> <li> `UpdateFleetAttributes'
 %%
-%% </li> <li> `StartFleetActions` or `StopFleetActions`
+%% </li> <li> `StartFleetActions' or `StopFleetActions'
 %%
 %% </li> </ul>
 describe_fleet_port_settings(Client, Input)
@@ -1758,12 +1758,12 @@ describe_fleet_port_settings(Client, Input, Options)
 %%
 %% These statistics provide insight into how available hosting resources are
 %% currently being used. To get statistics on available hosting resources,
-%% see `DescribeFleetCapacity`.
+%% see `DescribeFleetCapacity'.
 %%
 %% You can request utilization data for all fleets, or specify a list of one
 %% or more fleet IDs. When requesting multiple fleets, use the pagination
 %% parameters to retrieve results as a set of sequential pages. If
-%% successful, a `FleetUtilization` object is returned for each requested
+%% successful, a `FleetUtilization' object is returned for each requested
 %% fleet ID, unless the fleet identifier is not found.
 %%
 %% Some API operations may limit the number of fleet IDs allowed in one
@@ -1778,31 +1778,31 @@ describe_fleet_port_settings(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateFleet`
+%% <ul> <li> `CreateFleet'
 %%
-%% </li> <li> `ListFleets`
+%% </li> <li> `ListFleets'
 %%
-%% </li> <li> `DeleteFleet`
+%% </li> <li> `DeleteFleet'
 %%
 %% </li> <li> Describe fleets:
 %%
-%% <ul> <li> `DescribeFleetAttributes`
+%% <ul> <li> `DescribeFleetAttributes'
 %%
-%% </li> <li> `DescribeFleetCapacity`
+%% </li> <li> `DescribeFleetCapacity'
 %%
-%% </li> <li> `DescribeFleetPortSettings`
+%% </li> <li> `DescribeFleetPortSettings'
 %%
-%% </li> <li> `DescribeFleetUtilization`
+%% </li> <li> `DescribeFleetUtilization'
 %%
-%% </li> <li> `DescribeRuntimeConfiguration`
+%% </li> <li> `DescribeRuntimeConfiguration'
 %%
-%% </li> <li> `DescribeEC2InstanceLimits`
+%% </li> <li> `DescribeEC2InstanceLimits'
 %%
-%% </li> <li> `DescribeFleetEvents`
+%% </li> <li> `DescribeFleetEvents'
 %%
-%% </li> </ul> </li> <li> `UpdateFleetAttributes`
+%% </li> </ul> </li> <li> `UpdateFleetAttributes'
 %%
-%% </li> <li> `StartFleetActions` or `StopFleetActions`
+%% </li> <li> `StartFleetActions' or `StopFleetActions'
 %%
 %% </li> </ul>
 describe_fleet_utilization(Client, Input)
@@ -1828,17 +1828,17 @@ describe_fleet_utilization(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `RegisterGameServer`
+%% <ul> <li> `RegisterGameServer'
 %%
-%% </li> <li> `ListGameServers`
+%% </li> <li> `ListGameServers'
 %%
-%% </li> <li> `ClaimGameServer`
+%% </li> <li> `ClaimGameServer'
 %%
-%% </li> <li> `DescribeGameServer`
+%% </li> <li> `DescribeGameServer'
 %%
-%% </li> <li> `UpdateGameServer`
+%% </li> <li> `UpdateGameServer'
 %%
-%% </li> <li> `DeregisterGameServer`
+%% </li> <li> `DeregisterGameServer'
 %%
 %% </li> </ul>
 describe_game_server(Client, Input)
@@ -1858,7 +1858,7 @@ describe_game_server(Client, Input, Options)
 %% group directly.
 %%
 %% To get attributes for a game server group, provide a group name or ARN
-%% value. If successful, a `GameServerGroup` object is returned.
+%% value. If successful, a `GameServerGroup' object is returned.
 %%
 %% Learn more
 %%
@@ -1866,21 +1866,21 @@ describe_game_server(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateGameServerGroup`
+%% <ul> <li> `CreateGameServerGroup'
 %%
-%% </li> <li> `ListGameServerGroups`
+%% </li> <li> `ListGameServerGroups'
 %%
-%% </li> <li> `DescribeGameServerGroup`
+%% </li> <li> `DescribeGameServerGroup'
 %%
-%% </li> <li> `UpdateGameServerGroup`
+%% </li> <li> `UpdateGameServerGroup'
 %%
-%% </li> <li> `DeleteGameServerGroup`
+%% </li> <li> `DeleteGameServerGroup'
 %%
-%% </li> <li> `ResumeGameServerGroup`
+%% </li> <li> `ResumeGameServerGroup'
 %%
-%% </li> <li> `SuspendGameServerGroup`
+%% </li> <li> `SuspendGameServerGroup'
 %%
-%% </li> <li> `DescribeGameServerInstances`
+%% </li> <li> `DescribeGameServerInstances'
 %%
 %% </li> </ul>
 describe_game_server_group(Client, Input)
@@ -1897,14 +1897,14 @@ describe_game_server_group(Client, Input, Options)
 %% with a GameLift FleetIQ game server group. Use this operation to detect
 %% when instances are active or not available to host new game servers. If
 %% you are looking for instance configuration information, call
-%% `DescribeGameServerGroup` or access the corresponding Auto Scaling group
+%% `DescribeGameServerGroup' or access the corresponding Auto Scaling group
 %% properties.
 %%
 %% To request status for all instances in the game server group, provide a
 %% game server group ID only. To request status for specific instances,
 %% provide the game server group ID and one or more instance IDs. Use the
 %% pagination parameters to retrieve results in sequential segments. If
-%% successful, a collection of `GameServerInstance` objects is returned.
+%% successful, a collection of `GameServerInstance' objects is returned.
 %%
 %% This operation is not designed to be called with every game server claim
 %% request; this practice can cause you to exceed your API limit, which
@@ -1917,21 +1917,21 @@ describe_game_server_group(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateGameServerGroup`
+%% <ul> <li> `CreateGameServerGroup'
 %%
-%% </li> <li> `ListGameServerGroups`
+%% </li> <li> `ListGameServerGroups'
 %%
-%% </li> <li> `DescribeGameServerGroup`
+%% </li> <li> `DescribeGameServerGroup'
 %%
-%% </li> <li> `UpdateGameServerGroup`
+%% </li> <li> `UpdateGameServerGroup'
 %%
-%% </li> <li> `DeleteGameServerGroup`
+%% </li> <li> `DeleteGameServerGroup'
 %%
-%% </li> <li> `ResumeGameServerGroup`
+%% </li> <li> `ResumeGameServerGroup'
 %%
-%% </li> <li> `SuspendGameServerGroup`
+%% </li> <li> `SuspendGameServerGroup'
 %%
-%% </li> <li> `DescribeGameServerInstances`
+%% </li> <li> `DescribeGameServerInstances'
 %%
 %% </li> </ul>
 describe_game_server_instances(Client, Input)
@@ -1944,36 +1944,36 @@ describe_game_server_instances(Client, Input, Options)
 %% @doc Retrieves properties, including the protection policy in force, for
 %% one or more game sessions.
 %%
-%% This operation can be used in several ways: (1) provide a `GameSessionId`
-%% or `GameSessionArn` to request details for a specific game session; (2)
-%% provide either a `FleetId` or an `AliasId` to request properties for all
+%% This operation can be used in several ways: (1) provide a `GameSessionId'
+%% or `GameSessionArn' to request details for a specific game session; (2)
+%% provide either a `FleetId' or an `AliasId' to request properties for all
 %% game sessions running on a fleet.
 %%
 %% To get game session record(s), specify just one of the following: game
 %% session ID, fleet ID, or alias ID. You can filter this request by game
 %% session status. Use the pagination parameters to retrieve results as a set
-%% of sequential pages. If successful, a `GameSessionDetail` object is
+%% of sequential pages. If successful, a `GameSessionDetail' object is
 %% returned for each session matching the request.
 %%
-%% <ul> <li> `CreateGameSession`
+%% <ul> <li> `CreateGameSession'
 %%
-%% </li> <li> `DescribeGameSessions`
+%% </li> <li> `DescribeGameSessions'
 %%
-%% </li> <li> `DescribeGameSessionDetails`
+%% </li> <li> `DescribeGameSessionDetails'
 %%
-%% </li> <li> `SearchGameSessions`
+%% </li> <li> `SearchGameSessions'
 %%
-%% </li> <li> `UpdateGameSession`
+%% </li> <li> `UpdateGameSession'
 %%
-%% </li> <li> `GetGameSessionLogUrl`
+%% </li> <li> `GetGameSessionLogUrl'
 %%
 %% </li> <li> Game session placements
 %%
-%% <ul> <li> `StartGameSessionPlacement`
+%% <ul> <li> `StartGameSessionPlacement'
 %%
-%% </li> <li> `DescribeGameSessionPlacement`
+%% </li> <li> `DescribeGameSessionPlacement'
 %%
-%% </li> <li> `StopGameSessionPlacement`
+%% </li> <li> `StopGameSessionPlacement'
 %%
 %% </li> </ul> </li> </ul>
 describe_game_session_details(Client, Input)
@@ -1987,27 +1987,27 @@ describe_game_session_details(Client, Input, Options)
 %% request.
 %%
 %% To get game session placement details, specify the placement ID. If
-%% successful, a `GameSessionPlacement` object is returned.
+%% successful, a `GameSessionPlacement' object is returned.
 %%
-%% <ul> <li> `CreateGameSession`
+%% <ul> <li> `CreateGameSession'
 %%
-%% </li> <li> `DescribeGameSessions`
+%% </li> <li> `DescribeGameSessions'
 %%
-%% </li> <li> `DescribeGameSessionDetails`
+%% </li> <li> `DescribeGameSessionDetails'
 %%
-%% </li> <li> `SearchGameSessions`
+%% </li> <li> `SearchGameSessions'
 %%
-%% </li> <li> `UpdateGameSession`
+%% </li> <li> `UpdateGameSession'
 %%
-%% </li> <li> `GetGameSessionLogUrl`
+%% </li> <li> `GetGameSessionLogUrl'
 %%
 %% </li> <li> Game session placements
 %%
-%% <ul> <li> `StartGameSessionPlacement`
+%% <ul> <li> `StartGameSessionPlacement'
 %%
-%% </li> <li> `DescribeGameSessionPlacement`
+%% </li> <li> `DescribeGameSessionPlacement'
 %%
-%% </li> <li> `StopGameSessionPlacement`
+%% </li> <li> `StopGameSessionPlacement'
 %%
 %% </li> </ul> </li> </ul>
 describe_game_session_placement(Client, Input)
@@ -2020,7 +2020,7 @@ describe_game_session_placement(Client, Input, Options)
 %% @doc Retrieves the properties for one or more game session queues.
 %%
 %% When requesting multiple queues, use the pagination parameters to retrieve
-%% results as a set of sequential pages. If successful, a `GameSessionQueue`
+%% results as a set of sequential pages. If successful, a `GameSessionQueue'
 %% object is returned for each requested queue. When specifying a list of
 %% queues, objects are returned only for queues that currently exist in the
 %% Region.
@@ -2031,13 +2031,13 @@ describe_game_session_placement(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateGameSessionQueue`
+%% <ul> <li> `CreateGameSessionQueue'
 %%
-%% </li> <li> `DescribeGameSessionQueues`
+%% </li> <li> `DescribeGameSessionQueues'
 %%
-%% </li> <li> `UpdateGameSessionQueue`
+%% </li> <li> `UpdateGameSessionQueue'
 %%
-%% </li> <li> `DeleteGameSessionQueue`
+%% </li> <li> `DeleteGameSessionQueue'
 %%
 %% </li> </ul>
 describe_game_session_queues(Client, Input)
@@ -2050,37 +2050,37 @@ describe_game_session_queues(Client, Input, Options)
 %% @doc Retrieves a set of one or more game sessions.
 %%
 %% Request a specific game session or request all game sessions on a fleet.
-%% Alternatively, use `SearchGameSessions` to request a set of active game
+%% Alternatively, use `SearchGameSessions' to request a set of active game
 %% sessions that are filtered by certain criteria. To retrieve protection
-%% policy settings for game sessions, use `DescribeGameSessionDetails`.
+%% policy settings for game sessions, use `DescribeGameSessionDetails'.
 %%
 %% To get game sessions, specify one of the following: game session ID, fleet
 %% ID, or alias ID. You can filter this request by game session status. Use
 %% the pagination parameters to retrieve results as a set of sequential
-%% pages. If successful, a `GameSession` object is returned for each game
+%% pages. If successful, a `GameSession' object is returned for each game
 %% session matching the request.
 %%
 %% Available in Amazon GameLift Local.
 %%
-%% <ul> <li> `CreateGameSession`
+%% <ul> <li> `CreateGameSession'
 %%
-%% </li> <li> `DescribeGameSessions`
+%% </li> <li> `DescribeGameSessions'
 %%
-%% </li> <li> `DescribeGameSessionDetails`
+%% </li> <li> `DescribeGameSessionDetails'
 %%
-%% </li> <li> `SearchGameSessions`
+%% </li> <li> `SearchGameSessions'
 %%
-%% </li> <li> `UpdateGameSession`
+%% </li> <li> `UpdateGameSession'
 %%
-%% </li> <li> `GetGameSessionLogUrl`
+%% </li> <li> `GetGameSessionLogUrl'
 %%
 %% </li> <li> Game session placements
 %%
-%% <ul> <li> `StartGameSessionPlacement`
+%% <ul> <li> `StartGameSessionPlacement'
 %%
-%% </li> <li> `DescribeGameSessionPlacement`
+%% </li> <li> `DescribeGameSessionPlacement'
 %%
-%% </li> <li> `StopGameSessionPlacement`
+%% </li> <li> `StopGameSessionPlacement'
 %%
 %% </li> </ul> </li> </ul>
 describe_game_sessions(Client, Input)
@@ -2099,7 +2099,7 @@ describe_game_sessions(Client, Input, Options)
 %% To get a specific instance, specify fleet ID and instance ID. To get all
 %% instances in a fleet, specify a fleet ID only. Use the pagination
 %% parameters to retrieve results as a set of sequential pages. If
-%% successful, an `Instance` object is returned for each result.
+%% successful, an `Instance' object is returned for each result.
 %%
 %% Learn more
 %%
@@ -2109,9 +2109,9 @@ describe_game_sessions(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `DescribeInstances`
+%% <ul> <li> `DescribeInstances'
 %%
-%% </li> <li> `GetInstanceAccess`
+%% </li> <li> `GetInstanceAccess'
 %%
 %% </li> </ul>
 describe_instances(Client, Input)
@@ -2136,7 +2136,7 @@ describe_instances(Client, Input, Options)
 %% limit, which results in errors. Instead, as a best practice, set up an
 %% Amazon Simple Notification Service (SNS) to receive notifications, and
 %% provide the topic ARN in the matchmaking configuration. Continuously
-%% poling ticket status with `DescribeMatchmaking` should only be used for
+%% poling ticket status with `DescribeMatchmaking' should only be used for
 %% games in development with low matchmaking usage.
 %%
 %% Learn more
@@ -2147,15 +2147,15 @@ describe_instances(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `StartMatchmaking`
+%% <ul> <li> `StartMatchmaking'
 %%
-%% </li> <li> `DescribeMatchmaking`
+%% </li> <li> `DescribeMatchmaking'
 %%
-%% </li> <li> `StopMatchmaking`
+%% </li> <li> `StopMatchmaking'
 %%
-%% </li> <li> `AcceptMatch`
+%% </li> <li> `AcceptMatch'
 %%
-%% </li> <li> `StartMatchBackfill`
+%% </li> <li> `StartMatchBackfill'
 %%
 %% </li> </ul>
 describe_matchmaking(Client, Input)
@@ -2183,21 +2183,21 @@ describe_matchmaking(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateMatchmakingConfiguration`
+%% <ul> <li> `CreateMatchmakingConfiguration'
 %%
-%% </li> <li> `DescribeMatchmakingConfigurations`
+%% </li> <li> `DescribeMatchmakingConfigurations'
 %%
-%% </li> <li> `UpdateMatchmakingConfiguration`
+%% </li> <li> `UpdateMatchmakingConfiguration'
 %%
-%% </li> <li> `DeleteMatchmakingConfiguration`
+%% </li> <li> `DeleteMatchmakingConfiguration'
 %%
-%% </li> <li> `CreateMatchmakingRuleSet`
+%% </li> <li> `CreateMatchmakingRuleSet'
 %%
-%% </li> <li> `DescribeMatchmakingRuleSets`
+%% </li> <li> `DescribeMatchmakingRuleSets'
 %%
-%% </li> <li> `ValidateMatchmakingRuleSet`
+%% </li> <li> `ValidateMatchmakingRuleSet'
 %%
-%% </li> <li> `DeleteMatchmakingRuleSet`
+%% </li> <li> `DeleteMatchmakingRuleSet'
 %%
 %% </li> </ul>
 describe_matchmaking_configurations(Client, Input)
@@ -2220,21 +2220,21 @@ describe_matchmaking_configurations(Client, Input, Options)
 %%
 %% </li> </ul> Related operations
 %%
-%% <ul> <li> `CreateMatchmakingConfiguration`
+%% <ul> <li> `CreateMatchmakingConfiguration'
 %%
-%% </li> <li> `DescribeMatchmakingConfigurations`
+%% </li> <li> `DescribeMatchmakingConfigurations'
 %%
-%% </li> <li> `UpdateMatchmakingConfiguration`
+%% </li> <li> `UpdateMatchmakingConfiguration'
 %%
-%% </li> <li> `DeleteMatchmakingConfiguration`
+%% </li> <li> `DeleteMatchmakingConfiguration'
 %%
-%% </li> <li> `CreateMatchmakingRuleSet`
+%% </li> <li> `CreateMatchmakingRuleSet'
 %%
-%% </li> <li> `DescribeMatchmakingRuleSets`
+%% </li> <li> `DescribeMatchmakingRuleSets'
 %%
-%% </li> <li> `ValidateMatchmakingRuleSet`
+%% </li> <li> `ValidateMatchmakingRuleSet'
 %%
-%% </li> <li> `DeleteMatchmakingRuleSet`
+%% </li> <li> `DeleteMatchmakingRuleSet'
 %%
 %% </li> </ul>
 describe_matchmaking_rule_sets(Client, Input)
@@ -2247,32 +2247,32 @@ describe_matchmaking_rule_sets(Client, Input, Options)
 %% @doc Retrieves properties for one or more player sessions.
 %%
 %% This operation can be used in several ways: (1) provide a
-%% `PlayerSessionId` to request properties for a specific player session; (2)
-%% provide a `GameSessionId` to request properties for all player sessions in
-%% the specified game session; (3) provide a `PlayerId` to request properties
+%% `PlayerSessionId' to request properties for a specific player session; (2)
+%% provide a `GameSessionId' to request properties for all player sessions in
+%% the specified game session; (3) provide a `PlayerId' to request properties
 %% for all player sessions of a specified player.
 %%
 %% To get game session record(s), specify only one of the following: a player
 %% session ID, a game session ID, or a player ID. You can filter this request
 %% by player session status. Use the pagination parameters to retrieve
-%% results as a set of sequential pages. If successful, a `PlayerSession`
+%% results as a set of sequential pages. If successful, a `PlayerSession'
 %% object is returned for each session matching the request.
 %%
 %% Available in Amazon GameLift Local.
 %%
-%% <ul> <li> `CreatePlayerSession`
+%% <ul> <li> `CreatePlayerSession'
 %%
-%% </li> <li> `CreatePlayerSessions`
+%% </li> <li> `CreatePlayerSessions'
 %%
-%% </li> <li> `DescribePlayerSessions`
+%% </li> <li> `DescribePlayerSessions'
 %%
 %% </li> <li> Game session placements
 %%
-%% <ul> <li> `StartGameSessionPlacement`
+%% <ul> <li> `StartGameSessionPlacement'
 %%
-%% </li> <li> `DescribeGameSessionPlacement`
+%% </li> <li> `DescribeGameSessionPlacement'
 %%
-%% </li> <li> `StopGameSessionPlacement`
+%% </li> <li> `StopGameSessionPlacement'
 %%
 %% </li> </ul> </li> </ul>
 describe_player_sessions(Client, Input)
@@ -2288,7 +2288,7 @@ describe_player_sessions(Client, Input, Options)
 %% run (and how) on each instance in the fleet.
 %%
 %% To get a runtime configuration, specify the fleet's unique identifier. If
-%% successful, a `RuntimeConfiguration` object is returned for the requested
+%% successful, a `RuntimeConfiguration' object is returned for the requested
 %% fleet. If the requested fleet has been deleted, the result set is empty.
 %%
 %% Learn more
@@ -2299,31 +2299,31 @@ describe_player_sessions(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateFleet`
+%% <ul> <li> `CreateFleet'
 %%
-%% </li> <li> `ListFleets`
+%% </li> <li> `ListFleets'
 %%
-%% </li> <li> `DeleteFleet`
+%% </li> <li> `DeleteFleet'
 %%
 %% </li> <li> Describe fleets:
 %%
-%% <ul> <li> `DescribeFleetAttributes`
+%% <ul> <li> `DescribeFleetAttributes'
 %%
-%% </li> <li> `DescribeFleetCapacity`
+%% </li> <li> `DescribeFleetCapacity'
 %%
-%% </li> <li> `DescribeFleetPortSettings`
+%% </li> <li> `DescribeFleetPortSettings'
 %%
-%% </li> <li> `DescribeFleetUtilization`
+%% </li> <li> `DescribeFleetUtilization'
 %%
-%% </li> <li> `DescribeRuntimeConfiguration`
+%% </li> <li> `DescribeRuntimeConfiguration'
 %%
-%% </li> <li> `DescribeEC2InstanceLimits`
+%% </li> <li> `DescribeEC2InstanceLimits'
 %%
-%% </li> <li> `DescribeFleetEvents`
+%% </li> <li> `DescribeFleetEvents'
 %%
-%% </li> </ul> </li> <li> `UpdateFleetAttributes`
+%% </li> </ul> </li> <li> `UpdateFleetAttributes'
 %%
-%% </li> <li> `StartFleetActions` or `StopFleetActions`
+%% </li> <li> `StartFleetActions' or `StopFleetActions'
 %%
 %% </li> </ul>
 describe_runtime_configuration(Client, Input)
@@ -2338,34 +2338,34 @@ describe_runtime_configuration(Client, Input, Options)
 %% To get a fleet's scaling policies, specify the fleet ID. You can filter
 %% this request by policy status, such as to retrieve only active scaling
 %% policies. Use the pagination parameters to retrieve results as a set of
-%% sequential pages. If successful, set of `ScalingPolicy` objects is
+%% sequential pages. If successful, set of `ScalingPolicy' objects is
 %% returned for the fleet.
 %%
 %% A fleet may have all of its scaling policies suspended
-%% (`StopFleetActions`). This operation does not affect the status of the
+%% (`StopFleetActions'). This operation does not affect the status of the
 %% scaling policies, which remains ACTIVE. To see whether a fleet's scaling
-%% policies are in force or suspended, call `DescribeFleetAttributes` and
+%% policies are in force or suspended, call `DescribeFleetAttributes' and
 %% check the stopped actions.
 %%
-%% <ul> <li> `DescribeFleetCapacity`
+%% <ul> <li> `DescribeFleetCapacity'
 %%
-%% </li> <li> `UpdateFleetCapacity`
+%% </li> <li> `UpdateFleetCapacity'
 %%
-%% </li> <li> `DescribeEC2InstanceLimits`
+%% </li> <li> `DescribeEC2InstanceLimits'
 %%
 %% </li> <li> Manage scaling policies:
 %%
-%% <ul> <li> `PutScalingPolicy` (auto-scaling)
+%% <ul> <li> `PutScalingPolicy' (auto-scaling)
 %%
-%% </li> <li> `DescribeScalingPolicies` (auto-scaling)
+%% </li> <li> `DescribeScalingPolicies' (auto-scaling)
 %%
-%% </li> <li> `DeleteScalingPolicy` (auto-scaling)
+%% </li> <li> `DeleteScalingPolicy' (auto-scaling)
 %%
 %% </li> </ul> </li> <li> Manage fleet actions:
 %%
-%% <ul> <li> `StartFleetActions`
+%% <ul> <li> `StartFleetActions'
 %%
-%% </li> <li> `StopFleetActions`
+%% </li> <li> `StopFleetActions'
 %%
 %% </li> </ul> </li> </ul>
 describe_scaling_policies(Client, Input)
@@ -2386,15 +2386,15 @@ describe_scaling_policies(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateScript`
+%% <ul> <li> `CreateScript'
 %%
-%% </li> <li> `ListScripts`
+%% </li> <li> `ListScripts'
 %%
-%% </li> <li> `DescribeScript`
+%% </li> <li> `DescribeScript'
 %%
-%% </li> <li> `UpdateScript`
+%% </li> <li> `UpdateScript'
 %%
-%% </li> <li> `DeleteScript`
+%% </li> <li> `DeleteScript'
 %%
 %% </li> </ul>
 describe_script(Client, Input)
@@ -2410,17 +2410,17 @@ describe_script(Client, Input, Options)
 %% This operation returns all VPC peering authorizations and requests for
 %% peering. This includes those initiated and received by this account.
 %%
-%% <ul> <li> `CreateVpcPeeringAuthorization`
+%% <ul> <li> `CreateVpcPeeringAuthorization'
 %%
-%% </li> <li> `DescribeVpcPeeringAuthorizations`
+%% </li> <li> `DescribeVpcPeeringAuthorizations'
 %%
-%% </li> <li> `DeleteVpcPeeringAuthorization`
+%% </li> <li> `DeleteVpcPeeringAuthorization'
 %%
-%% </li> <li> `CreateVpcPeeringConnection`
+%% </li> <li> `CreateVpcPeeringConnection'
 %%
-%% </li> <li> `DescribeVpcPeeringConnections`
+%% </li> <li> `DescribeVpcPeeringConnections'
 %%
-%% </li> <li> `DeleteVpcPeeringConnection`
+%% </li> <li> `DeleteVpcPeeringConnection'
 %%
 %% </li> </ul>
 describe_vpc_peering_authorizations(Client, Input)
@@ -2442,17 +2442,17 @@ describe_vpc_peering_authorizations(Client, Input, Options)
 %% connections. Active connections identify the IpV4 CIDR block that the VPC
 %% uses to connect.
 %%
-%% <ul> <li> `CreateVpcPeeringAuthorization`
+%% <ul> <li> `CreateVpcPeeringAuthorization'
 %%
-%% </li> <li> `DescribeVpcPeeringAuthorizations`
+%% </li> <li> `DescribeVpcPeeringAuthorizations'
 %%
-%% </li> <li> `DeleteVpcPeeringAuthorization`
+%% </li> <li> `DeleteVpcPeeringAuthorization'
 %%
-%% </li> <li> `CreateVpcPeeringConnection`
+%% </li> <li> `CreateVpcPeeringConnection'
 %%
-%% </li> <li> `DescribeVpcPeeringConnections`
+%% </li> <li> `DescribeVpcPeeringConnections'
 %%
-%% </li> <li> `DeleteVpcPeeringConnection`
+%% </li> <li> `DeleteVpcPeeringConnection'
 %%
 %% </li> </ul>
 describe_vpc_peering_connections(Client, Input)
@@ -2472,25 +2472,25 @@ describe_vpc_peering_connections(Client, Input, Options)
 %% See the AWS Service Limits page for maximum log file sizes. Log files that
 %% exceed this limit are not saved.
 %%
-%% <ul> <li> `CreateGameSession`
+%% <ul> <li> `CreateGameSession'
 %%
-%% </li> <li> `DescribeGameSessions`
+%% </li> <li> `DescribeGameSessions'
 %%
-%% </li> <li> `DescribeGameSessionDetails`
+%% </li> <li> `DescribeGameSessionDetails'
 %%
-%% </li> <li> `SearchGameSessions`
+%% </li> <li> `SearchGameSessions'
 %%
-%% </li> <li> `UpdateGameSession`
+%% </li> <li> `UpdateGameSession'
 %%
-%% </li> <li> `GetGameSessionLogUrl`
+%% </li> <li> `GetGameSessionLogUrl'
 %%
 %% </li> <li> Game session placements
 %%
-%% <ul> <li> `StartGameSessionPlacement`
+%% <ul> <li> `StartGameSessionPlacement'
 %%
-%% </li> <li> `DescribeGameSessionPlacement`
+%% </li> <li> `DescribeGameSessionPlacement'
 %%
-%% </li> <li> `StopGameSessionPlacement`
+%% </li> <li> `StopGameSessionPlacement'
 %%
 %% </li> </ul> </li> </ul>
 get_game_session_log_url(Client, Input)
@@ -2510,14 +2510,14 @@ get_game_session_log_url(Client, Input, Options)
 %% returns a user name and password as strings for use with a Windows Remote
 %% Desktop client. For a Linux instance, Amazon GameLift returns a user name
 %% and RSA private key, also as strings, for use with an SSH client. The
-%% private key must be saved in the proper format to a `.pem` file before
+%% private key must be saved in the proper format to a `.pem' file before
 %% using. If you're making this request using the AWS CLI, saving the secret
 %% can be handled as part of the GetInstanceAccess request, as shown in one
 %% of the examples for this operation.
 %%
 %% To request access to a specific instance, specify the IDs of both the
 %% instance and the fleet it belongs to. You can retrieve a fleet's instance
-%% IDs by calling `DescribeInstances`. If successful, an `InstanceAccess`
+%% IDs by calling `DescribeInstances'. If successful, an `InstanceAccess'
 %% object is returned that contains the instance's IP address and a set of
 %% credentials.
 %%
@@ -2529,9 +2529,9 @@ get_game_session_log_url(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `DescribeInstances`
+%% <ul> <li> `DescribeInstances'
 %%
-%% </li> <li> `GetInstanceAccess`
+%% </li> <li> `GetInstanceAccess'
 %%
 %% </li> </ul>
 get_instance_access(Client, Input)
@@ -2548,17 +2548,17 @@ get_instance_access(Client, Input, Options)
 %%
 %% Returned aliases are not listed in any particular order.
 %%
-%% <ul> <li> `CreateAlias`
+%% <ul> <li> `CreateAlias'
 %%
-%% </li> <li> `ListAliases`
+%% </li> <li> `ListAliases'
 %%
-%% </li> <li> `DescribeAlias`
+%% </li> <li> `DescribeAlias'
 %%
-%% </li> <li> `UpdateAlias`
+%% </li> <li> `UpdateAlias'
 %%
-%% </li> <li> `DeleteAlias`
+%% </li> <li> `DeleteAlias'
 %%
-%% </li> <li> `ResolveAlias`
+%% </li> <li> `ResolveAlias'
 %%
 %% </li> </ul>
 list_aliases(Client, Input)
@@ -2572,7 +2572,7 @@ list_aliases(Client, Input, Options)
 %% account in use.
 %%
 %% You can limit results to builds that are in a specific status by using the
-%% `Status` parameter. Use the pagination parameters to retrieve results in a
+%% `Status' parameter. Use the pagination parameters to retrieve results in a
 %% set of sequential pages.
 %%
 %% Build resources are not listed in any particular order.
@@ -2583,15 +2583,15 @@ list_aliases(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateBuild`
+%% <ul> <li> `CreateBuild'
 %%
-%% </li> <li> `ListBuilds`
+%% </li> <li> `ListBuilds'
 %%
-%% </li> <li> `DescribeBuild`
+%% </li> <li> `DescribeBuild'
 %%
-%% </li> <li> `UpdateBuild`
+%% </li> <li> `UpdateBuild'
 %%
-%% </li> <li> `DeleteBuild`
+%% </li> <li> `DeleteBuild'
 %%
 %% </li> </ul>
 list_builds(Client, Input)
@@ -2615,17 +2615,17 @@ list_builds(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateFleet`
+%% <ul> <li> `CreateFleet'
 %%
-%% </li> <li> `ListFleets`
+%% </li> <li> `ListFleets'
 %%
-%% </li> <li> `DeleteFleet`
+%% </li> <li> `DeleteFleet'
 %%
-%% </li> <li> `DescribeFleetAttributes`
+%% </li> <li> `DescribeFleetAttributes'
 %%
-%% </li> <li> `UpdateFleetAttributes`
+%% </li> <li> `UpdateFleetAttributes'
 %%
-%% </li> <li> `StartFleetActions` or `StopFleetActions`
+%% </li> <li> `StartFleetActions' or `StopFleetActions'
 %%
 %% </li> </ul>
 list_fleets(Client, Input)
@@ -2648,21 +2648,21 @@ list_fleets(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateGameServerGroup`
+%% <ul> <li> `CreateGameServerGroup'
 %%
-%% </li> <li> `ListGameServerGroups`
+%% </li> <li> `ListGameServerGroups'
 %%
-%% </li> <li> `DescribeGameServerGroup`
+%% </li> <li> `DescribeGameServerGroup'
 %%
-%% </li> <li> `UpdateGameServerGroup`
+%% </li> <li> `UpdateGameServerGroup'
 %%
-%% </li> <li> `DeleteGameServerGroup`
+%% </li> <li> `DeleteGameServerGroup'
 %%
-%% </li> <li> `ResumeGameServerGroup`
+%% </li> <li> `ResumeGameServerGroup'
 %%
-%% </li> <li> `SuspendGameServerGroup`
+%% </li> <li> `SuspendGameServerGroup'
 %%
-%% </li> <li> `DescribeGameServerInstances`
+%% </li> <li> `DescribeGameServerInstances'
 %%
 %% </li> </ul>
 list_game_server_groups(Client, Input)
@@ -2686,17 +2686,17 @@ list_game_server_groups(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `RegisterGameServer`
+%% <ul> <li> `RegisterGameServer'
 %%
-%% </li> <li> `ListGameServers`
+%% </li> <li> `ListGameServers'
 %%
-%% </li> <li> `ClaimGameServer`
+%% </li> <li> `ClaimGameServer'
 %%
-%% </li> <li> `DescribeGameServer`
+%% </li> <li> `DescribeGameServer'
 %%
-%% </li> <li> `UpdateGameServer`
+%% </li> <li> `UpdateGameServer'
 %%
-%% </li> <li> `DeregisterGameServer`
+%% </li> <li> `DeregisterGameServer'
 %%
 %% </li> </ul>
 list_game_servers(Client, Input)
@@ -2715,15 +2715,15 @@ list_game_servers(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateScript`
+%% <ul> <li> `CreateScript'
 %%
-%% </li> <li> `ListScripts`
+%% </li> <li> `ListScripts'
 %%
-%% </li> <li> `DescribeScript`
+%% </li> <li> `DescribeScript'
 %%
-%% </li> <li> `UpdateScript`
+%% </li> <li> `UpdateScript'
 %%
-%% </li> <li> `DeleteScript`
+%% </li> <li> `DeleteScript'
 %%
 %% </li> </ul>
 list_scripts(Client, Input)
@@ -2764,11 +2764,11 @@ list_scripts(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `TagResource`
+%% <ul> <li> `TagResource'
 %%
-%% </li> <li> `UntagResource`
+%% </li> <li> `UntagResource'
 %%
-%% </li> <li> `ListTagsForResource`
+%% </li> <li> `ListTagsForResource'
 %%
 %% </li> </ul>
 list_tags_for_resource(Client, Input)
@@ -2795,10 +2795,10 @@ list_tags_for_resource(Client, Input, Options)
 %% because multiple auto-scaling policies can have unintended consequences.
 %%
 %% You can temporarily suspend all scaling policies for a fleet by calling
-%% `StopFleetActions` with the fleet action AUTO_SCALING. To resume scaling
-%% policies, call `StartFleetActions` with the same fleet action. To stop
+%% `StopFleetActions' with the fleet action AUTO_SCALING. To resume scaling
+%% policies, call `StartFleetActions' with the same fleet action. To stop
 %% just one scaling policy--or to permanently remove it, you must delete the
-%% policy with `DeleteScalingPolicy`.
+%% policy with `DeleteScalingPolicy'.
 %%
 %% Learn more about how to work with auto-scaling in Set Up Fleet Automatic
 %% Scaling.
@@ -2822,7 +2822,7 @@ list_tags_for_resource(Client, Input, Options)
 %%
 %% To create or update a target-based policy, specify a fleet ID and name,
 %% and set the policy type to "TargetBased". Specify the metric to track
-%% (PercentAvailableGameSessions) and reference a `TargetConfiguration`
+%% (PercentAvailableGameSessions) and reference a `TargetConfiguration'
 %% object with your desired buffer value. Exclude all other parameters. On a
 %% successful request, the policy name is returned. The scaling policy is
 %% automatically in force as soon as it's successfully created. If the
@@ -2843,14 +2843,14 @@ list_tags_for_resource(Client, Input, Options)
 %%
 %% A policy's rule statement has the following structure:
 %%
-%% If `[MetricName]` is `[ComparisonOperator]` `[Threshold]` for
-%% `[EvaluationPeriods]` minutes, then `[ScalingAdjustmentType]` to/by
-%% `[ScalingAdjustment]`.
+%% If `[MetricName]' is `[ComparisonOperator]' `[Threshold]' for
+%% `[EvaluationPeriods]' minutes, then `[ScalingAdjustmentType]' to/by
+%% `[ScalingAdjustment]'.
 %%
 %% To implement the example, the rule statement would look like this:
 %%
-%% If `[PercentIdleInstances]` is `[GreaterThanThreshold]` `[20]` for `[15]`
-%% minutes, then `[PercentChangeInCapacity]` to/by `[10]`.
+%% If `[PercentIdleInstances]' is `[GreaterThanThreshold]' `[20]' for `[15]'
+%% minutes, then `[PercentChangeInCapacity]' to/by `[10]'.
 %%
 %% To create or update a scaling policy, specify a unique combination of name
 %% and fleet ID, and set the policy type to "RuleBased". Specify the
@@ -2860,25 +2860,25 @@ list_tags_for_resource(Client, Input, Options)
 %% are temporarily suspended, the new policy will be in force once the fleet
 %% actions are restarted.
 %%
-%% <ul> <li> `DescribeFleetCapacity`
+%% <ul> <li> `DescribeFleetCapacity'
 %%
-%% </li> <li> `UpdateFleetCapacity`
+%% </li> <li> `UpdateFleetCapacity'
 %%
-%% </li> <li> `DescribeEC2InstanceLimits`
+%% </li> <li> `DescribeEC2InstanceLimits'
 %%
 %% </li> <li> Manage scaling policies:
 %%
-%% <ul> <li> `PutScalingPolicy` (auto-scaling)
+%% <ul> <li> `PutScalingPolicy' (auto-scaling)
 %%
-%% </li> <li> `DescribeScalingPolicies` (auto-scaling)
+%% </li> <li> `DescribeScalingPolicies' (auto-scaling)
 %%
-%% </li> <li> `DeleteScalingPolicy` (auto-scaling)
+%% </li> <li> `DeleteScalingPolicy' (auto-scaling)
 %%
 %% </li> </ul> </li> <li> Manage fleet actions:
 %%
-%% <ul> <li> `StartFleetActions`
+%% <ul> <li> `StartFleetActions'
 %%
-%% </li> <li> `StopFleetActions`
+%% </li> <li> `StopFleetActions'
 %%
 %% </li> </ul> </li> </ul>
 put_scaling_policy(Client, Input)
@@ -2902,10 +2902,10 @@ put_scaling_policy(Client, Input, Options)
 %% where the game server is running, and provide a unique identifier for the
 %% game server. You can also include connection and game server data. When a
 %% game client or service requests a game server by calling
-%% `ClaimGameServer`, this information is returned in the response.
+%% `ClaimGameServer', this information is returned in the response.
 %%
 %% Once a game server is successfully registered, it is put in status
-%% `AVAILABLE`. A request to register a game server may fail if the instance
+%% `AVAILABLE'. A request to register a game server may fail if the instance
 %% it is running on is in the process of shutting down as part of instance
 %% balancing or scale-down activity.
 %%
@@ -2915,17 +2915,17 @@ put_scaling_policy(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `RegisterGameServer`
+%% <ul> <li> `RegisterGameServer'
 %%
-%% </li> <li> `ListGameServers`
+%% </li> <li> `ListGameServers'
 %%
-%% </li> <li> `ClaimGameServer`
+%% </li> <li> `ClaimGameServer'
 %%
-%% </li> <li> `DescribeGameServer`
+%% </li> <li> `DescribeGameServer'
 %%
-%% </li> <li> `UpdateGameServer`
+%% </li> <li> `UpdateGameServer'
 %%
-%% </li> <li> `DeregisterGameServer`
+%% </li> <li> `DeregisterGameServer'
 %%
 %% </li> </ul>
 register_game_server(Client, Input)
@@ -2938,10 +2938,10 @@ register_game_server(Client, Input, Options)
 %% @doc Retrieves a fresh set of credentials for use when uploading a new set
 %% of game build files to Amazon GameLift's Amazon S3.
 %%
-%% This is done as part of the build creation process; see `CreateBuild`.
+%% This is done as part of the build creation process; see `CreateBuild'.
 %%
 %% To request new credentials, specify the build ID as returned with an
-%% initial `CreateBuild` request. If successful, a new set of credentials are
+%% initial `CreateBuild' request. If successful, a new set of credentials are
 %% returned, along with the S3 storage location associated with the build ID.
 %%
 %% Learn more
@@ -2950,15 +2950,15 @@ register_game_server(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateBuild`
+%% <ul> <li> `CreateBuild'
 %%
-%% </li> <li> `ListBuilds`
+%% </li> <li> `ListBuilds'
 %%
-%% </li> <li> `DescribeBuild`
+%% </li> <li> `DescribeBuild'
 %%
-%% </li> <li> `UpdateBuild`
+%% </li> <li> `UpdateBuild'
 %%
-%% </li> <li> `DeleteBuild`
+%% </li> <li> `DeleteBuild'
 %%
 %% </li> </ul>
 request_upload_credentials(Client, Input)
@@ -2970,17 +2970,17 @@ request_upload_credentials(Client, Input, Options)
 
 %% @doc Retrieves the fleet ID that an alias is currently pointing to.
 %%
-%% <ul> <li> `CreateAlias`
+%% <ul> <li> `CreateAlias'
 %%
-%% </li> <li> `ListAliases`
+%% </li> <li> `ListAliases'
 %%
-%% </li> <li> `DescribeAlias`
+%% </li> <li> `DescribeAlias'
 %%
-%% </li> <li> `UpdateAlias`
+%% </li> <li> `UpdateAlias'
 %%
-%% </li> <li> `DeleteAlias`
+%% </li> <li> `DeleteAlias'
 %%
-%% </li> <li> `ResolveAlias`
+%% </li> <li> `ResolveAlias'
 %%
 %% </li> </ul>
 resolve_alias(Client, Input)
@@ -2994,7 +2994,7 @@ resolve_alias(Client, Input, Options)
 %% game server groups.
 %%
 %% Reinstates activity on a game server group after it has been suspended. A
-%% game server group might be suspended by the`SuspendGameServerGroup`
+%% game server group might be suspended by the`SuspendGameServerGroup'
 %% operation, or it might be suspended involuntarily due to a configuration
 %% problem. In the second case, you can manually resume activity on the group
 %% once the configuration problem has been resolved. Refer to the game server
@@ -3002,9 +3002,9 @@ resolve_alias(Client, Input, Options)
 %% is suspended.
 %%
 %% To resume activity, specify a game server group ARN and the type of
-%% activity to be resumed. If successful, a `GameServerGroup` object is
+%% activity to be resumed. If successful, a `GameServerGroup' object is
 %% returned showing that the resumed activity is no longer listed in
-%% `SuspendedActions`.
+%% `SuspendedActions'.
 %%
 %% Learn more
 %%
@@ -3012,21 +3012,21 @@ resolve_alias(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateGameServerGroup`
+%% <ul> <li> `CreateGameServerGroup'
 %%
-%% </li> <li> `ListGameServerGroups`
+%% </li> <li> `ListGameServerGroups'
 %%
-%% </li> <li> `DescribeGameServerGroup`
+%% </li> <li> `DescribeGameServerGroup'
 %%
-%% </li> <li> `UpdateGameServerGroup`
+%% </li> <li> `UpdateGameServerGroup'
 %%
-%% </li> <li> `DeleteGameServerGroup`
+%% </li> <li> `DeleteGameServerGroup'
 %%
-%% </li> <li> `ResumeGameServerGroup`
+%% </li> <li> `ResumeGameServerGroup'
 %%
-%% </li> <li> `SuspendGameServerGroup`
+%% </li> <li> `SuspendGameServerGroup'
 %%
-%% </li> <li> `DescribeGameServerInstances`
+%% </li> <li> `DescribeGameServerInstances'
 %%
 %% </li> </ul>
 resume_game_server_group(Client, Input)
@@ -3042,24 +3042,24 @@ resume_game_server_group(Client, Input, Options)
 %% You can search or sort by the following game session attributes:
 %%
 %% <ul> <li> gameSessionId -- A unique identifier for the game session. You
-%% can use either a `GameSessionId` or `GameSessionArn` value.
+%% can use either a `GameSessionId' or `GameSessionArn' value.
 %%
 %% </li> <li> gameSessionName -- Name assigned to a game session. This value
-%% is set when requesting a new game session with `CreateGameSession` or
-%% updating with `UpdateGameSession`. Game session names do not need to be
+%% is set when requesting a new game session with `CreateGameSession' or
+%% updating with `UpdateGameSession'. Game session names do not need to be
 %% unique to a game session.
 %%
 %% </li> <li> gameSessionProperties -- Custom data defined in a game
-%% session's `GameProperty` parameter. `GameProperty` values are stored as
+%% session's `GameProperty' parameter. `GameProperty' values are stored as
 %% key:value pairs; the filter expression must indicate the key and a string
 %% to search the data values for. For example, to search for game sessions
 %% with custom data containing the key:value pair "gameMode:brawl", specify
-%% the following: `gameSessionProperties.gameMode = "brawl"`. All custom data
+%% the following: `gameSessionProperties.gameMode = "brawl"'. All custom data
 %% values are searched as strings.
 %%
 %% </li> <li> maximumSessions -- Maximum number of player sessions allowed
 %% for a game session. This value is set when requesting a new game session
-%% with `CreateGameSession` or updating with `UpdateGameSession`.
+%% with `CreateGameSession' or updating with `UpdateGameSession'.
 %%
 %% </li> <li> creationTimeMillis -- Value indicating when a game session was
 %% created. It is expressed in Unix time as milliseconds.
@@ -3074,43 +3074,43 @@ resume_game_server_group(Client, Input, Options)
 %% optimize search performance and return only sessions that players can
 %% join.
 %%
-%% </li> </ul> Returned values for `playerSessionCount` and
-%% `hasAvailablePlayerSessions` change quickly as players join sessions and
+%% </li> </ul> Returned values for `playerSessionCount' and
+%% `hasAvailablePlayerSessions' change quickly as players join sessions and
 %% others drop out. Results should be considered a snapshot in time. Be sure
 %% to refresh search results often, and handle sessions that fill up before a
 %% player can join.
 %%
 %% To search or sort, specify either a fleet ID or an alias ID, and provide a
 %% search filter expression, a sort expression, or both. If successful, a
-%% collection of `GameSession` objects matching the request is returned. Use
+%% collection of `GameSession' objects matching the request is returned. Use
 %% the pagination parameters to retrieve results as a set of sequential
 %% pages.
 %%
 %% You can search for game sessions one fleet at a time only. To find game
 %% sessions across multiple fleets, you must search each fleet separately and
 %% combine the results. This search feature finds only game sessions that are
-%% in `ACTIVE` status. To locate games in statuses other than active, use
-%% `DescribeGameSessionDetails`.
+%% in `ACTIVE' status. To locate games in statuses other than active, use
+%% `DescribeGameSessionDetails'.
 %%
-%% <ul> <li> `CreateGameSession`
+%% <ul> <li> `CreateGameSession'
 %%
-%% </li> <li> `DescribeGameSessions`
+%% </li> <li> `DescribeGameSessions'
 %%
-%% </li> <li> `DescribeGameSessionDetails`
+%% </li> <li> `DescribeGameSessionDetails'
 %%
-%% </li> <li> `SearchGameSessions`
+%% </li> <li> `SearchGameSessions'
 %%
-%% </li> <li> `UpdateGameSession`
+%% </li> <li> `UpdateGameSession'
 %%
-%% </li> <li> `GetGameSessionLogUrl`
+%% </li> <li> `GetGameSessionLogUrl'
 %%
 %% </li> <li> Game session placements
 %%
-%% <ul> <li> `StartGameSessionPlacement`
+%% <ul> <li> `StartGameSessionPlacement'
 %%
-%% </li> <li> `DescribeGameSessionPlacement`
+%% </li> <li> `DescribeGameSessionPlacement'
 %%
-%% </li> <li> `StopGameSessionPlacement`
+%% </li> <li> `StopGameSessionPlacement'
 %%
 %% </li> </ul> </li> </ul>
 search_game_sessions(Client, Input)
@@ -3121,7 +3121,7 @@ search_game_sessions(Client, Input, Options)
     request(Client, <<"SearchGameSessions">>, Input, Options).
 
 %% @doc Resumes activity on a fleet that was suspended with
-%% `StopFleetActions`.
+%% `StopFleetActions'.
 %%
 %% Currently, this operation is used to restart a fleet's auto-scaling
 %% activity.
@@ -3131,7 +3131,7 @@ search_game_sessions(Client, Input, Options)
 %% once again initiates scaling events as triggered by the fleet's scaling
 %% policies. If actions on the fleet were never stopped, this operation will
 %% have no effect. You can view a fleet's stopped actions using
-%% `DescribeFleetAttributes`.
+%% `DescribeFleetAttributes'.
 %%
 %% Learn more
 %%
@@ -3139,17 +3139,17 @@ search_game_sessions(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateFleet`
+%% <ul> <li> `CreateFleet'
 %%
-%% </li> <li> `ListFleets`
+%% </li> <li> `ListFleets'
 %%
-%% </li> <li> `DeleteFleet`
+%% </li> <li> `DeleteFleet'
 %%
-%% </li> <li> `DescribeFleetAttributes`
+%% </li> <li> `DescribeFleetAttributes'
 %%
-%% </li> <li> `UpdateFleetAttributes`
+%% </li> <li> `UpdateFleetAttributes'
 %%
-%% </li> <li> `StartFleetActions` or `StopFleetActions`
+%% </li> <li> `StartFleetActions' or `StopFleetActions'
 %%
 %% </li> </ul>
 start_fleet_actions(Client, Input)
@@ -3160,7 +3160,7 @@ start_fleet_actions(Client, Input, Options)
     request(Client, <<"StartFleetActions">>, Input, Options).
 
 %% @doc Places a request for a new game session in a queue (see
-%% `CreateGameSessionQueue`).
+%% `CreateGameSessionQueue').
 %%
 %% When processing a placement request, Amazon GameLift searches for
 %% available resources on the queue's destinations, scanning each until it
@@ -3201,30 +3201,30 @@ start_fleet_actions(Client, Input, Options)
 %% </li> </ul> If successful, a new game session placement is created.
 %%
 %% To track the status of a placement request, call
-%% `DescribeGameSessionPlacement` and check the request's status. If the
-%% status is `FULFILLED`, a new game session has been created and a game
+%% `DescribeGameSessionPlacement' and check the request's status. If the
+%% status is `FULFILLED', a new game session has been created and a game
 %% session ARN and Region are referenced. If the placement request times out,
 %% you can resubmit the request or retry it with a different queue.
 %%
-%% <ul> <li> `CreateGameSession`
+%% <ul> <li> `CreateGameSession'
 %%
-%% </li> <li> `DescribeGameSessions`
+%% </li> <li> `DescribeGameSessions'
 %%
-%% </li> <li> `DescribeGameSessionDetails`
+%% </li> <li> `DescribeGameSessionDetails'
 %%
-%% </li> <li> `SearchGameSessions`
+%% </li> <li> `SearchGameSessions'
 %%
-%% </li> <li> `UpdateGameSession`
+%% </li> <li> `UpdateGameSession'
 %%
-%% </li> <li> `GetGameSessionLogUrl`
+%% </li> <li> `GetGameSessionLogUrl'
 %%
 %% </li> <li> Game session placements
 %%
-%% <ul> <li> `StartGameSessionPlacement`
+%% <ul> <li> `StartGameSessionPlacement'
 %%
-%% </li> <li> `DescribeGameSessionPlacement`
+%% </li> <li> `DescribeGameSessionPlacement'
 %%
-%% </li> <li> `StopGameSessionPlacement`
+%% </li> <li> `StopGameSessionPlacement'
 %%
 %% </li> </ul> </li> </ul>
 start_game_session_placement(Client, Input)
@@ -3256,7 +3256,7 @@ start_game_session_placement(Client, Input, Options)
 %% ticket per potential match. Once the a match is formed, the matchmaker
 %% creates player sessions for the new players. All tickets in the match are
 %% updated with the game session's connection information, and the
-%% `GameSession` object is updated to include matchmaker data on the new
+%% `GameSession' object is updated to include matchmaker data on the new
 %% players. For more detail on how match backfill requests are processed, see
 %% How Amazon GameLift FlexMatch Works.
 %%
@@ -3268,15 +3268,15 @@ start_game_session_placement(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `StartMatchmaking`
+%% <ul> <li> `StartMatchmaking'
 %%
-%% </li> <li> `DescribeMatchmaking`
+%% </li> <li> `DescribeMatchmaking'
 %%
-%% </li> <li> `StopMatchmaking`
+%% </li> <li> `StopMatchmaking'
 %%
-%% </li> <li> `AcceptMatch`
+%% </li> <li> `AcceptMatch'
 %%
-%% </li> <li> `StartMatchBackfill`
+%% </li> <li> `StartMatchBackfill'
 %%
 %% </li> </ul>
 start_match_backfill(Client, Input)
@@ -3296,13 +3296,13 @@ start_match_backfill(Client, Input, Options)
 %% single player or a group of players who want to play together. FlexMatch
 %% finds additional players as needed to fill the match. Match type, rules,
 %% and the queue used to place a new game session are defined in a
-%% `MatchmakingConfiguration`.
+%% `MatchmakingConfiguration'.
 %%
 %% To start matchmaking, provide a unique ticket ID, specify a matchmaking
 %% configuration, and include the players to be matched. You must also
 %% include a set of player attributes relevant for the matchmaking
 %% configuration. If successful, a matchmaking ticket is returned with status
-%% set to `QUEUED`.
+%% set to `QUEUED'.
 %%
 %% Track the status of the ticket to respond as needed and acquire game
 %% session connection information for successfully completed matches. Ticket
@@ -3313,7 +3313,7 @@ start_match_backfill(Client, Input, Options)
 %% Processing a matchmaking request -- FlexMatch handles a matchmaking
 %% request as follows:
 %%
-%% <ol> <li> Your client code submits a `StartMatchmaking` request for one or
+%% <ol> <li> Your client code submits a `StartMatchmaking' request for one or
 %% more players and tracks the status of the request ticket.
 %%
 %% </li> <li> FlexMatch uses this ticket and others in process to build an
@@ -3321,20 +3321,20 @@ start_match_backfill(Client, Input, Options)
 %% proposed match are advanced to the next status.
 %%
 %% </li> <li> If the match requires player acceptance (set in the matchmaking
-%% configuration), the tickets move into status `REQUIRES_ACCEPTANCE`. This
+%% configuration), the tickets move into status `REQUIRES_ACCEPTANCE'. This
 %% status triggers your client code to solicit acceptance from all players in
-%% every ticket involved in the match, and then call `AcceptMatch` for each
+%% every ticket involved in the match, and then call `AcceptMatch' for each
 %% player. If any player rejects or fails to accept the match before a
-%% specified timeout, the proposed match is dropped (see `AcceptMatch` for
+%% specified timeout, the proposed match is dropped (see `AcceptMatch' for
 %% more details).
 %%
 %% </li> <li> Once a match is proposed and accepted, the matchmaking tickets
-%% move into status `PLACING`. FlexMatch locates resources for a new game
+%% move into status `PLACING'. FlexMatch locates resources for a new game
 %% session using the game session queue (set in the matchmaking
 %% configuration) and creates the game session based on the match data.
 %%
 %% </li> <li> When the match is successfully placed, the matchmaking tickets
-%% move into `COMPLETED` status. Connection information (including game
+%% move into `COMPLETED' status. Connection information (including game
 %% session endpoint and player session) is added to the matchmaking tickets.
 %% Matched players can use the connection information to join the game.
 %%
@@ -3350,15 +3350,15 @@ start_match_backfill(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `StartMatchmaking`
+%% <ul> <li> `StartMatchmaking'
 %%
-%% </li> <li> `DescribeMatchmaking`
+%% </li> <li> `DescribeMatchmaking'
 %%
-%% </li> <li> `StopMatchmaking`
+%% </li> <li> `StopMatchmaking'
 %%
-%% </li> <li> `AcceptMatch`
+%% </li> <li> `AcceptMatch'
 %%
-%% </li> <li> `StartMatchBackfill`
+%% </li> <li> `StartMatchBackfill'
 %%
 %% </li> </ul>
 start_matchmaking(Client, Input)
@@ -3373,13 +3373,13 @@ start_matchmaking(Client, Input, Options)
 %% Currently, this operation is used to stop a fleet's auto-scaling activity.
 %% It is used to temporarily stop triggering scaling events. The policies can
 %% be retained and auto-scaling activity can be restarted using
-%% `StartFleetActions`. You can view a fleet's stopped actions using
-%% `DescribeFleetAttributes`.
+%% `StartFleetActions'. You can view a fleet's stopped actions using
+%% `DescribeFleetAttributes'.
 %%
 %% To stop fleet actions, specify the fleet ID and the type of actions to
 %% suspend. When auto-scaling fleet actions are stopped, Amazon GameLift no
 %% longer initiates scaling events except in response to manual changes using
-%% `UpdateFleetCapacity`.
+%% `UpdateFleetCapacity'.
 %%
 %% Learn more
 %%
@@ -3387,17 +3387,17 @@ start_matchmaking(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateFleet`
+%% <ul> <li> `CreateFleet'
 %%
-%% </li> <li> `ListFleets`
+%% </li> <li> `ListFleets'
 %%
-%% </li> <li> `DeleteFleet`
+%% </li> <li> `DeleteFleet'
 %%
-%% </li> <li> `DescribeFleetAttributes`
+%% </li> <li> `DescribeFleetAttributes'
 %%
-%% </li> <li> `UpdateFleetAttributes`
+%% </li> <li> `UpdateFleetAttributes'
 %%
-%% </li> <li> `StartFleetActions` or `StopFleetActions`
+%% </li> <li> `StartFleetActions' or `StopFleetActions'
 %%
 %% </li> </ul>
 stop_fleet_actions(Client, Input)
@@ -3407,30 +3407,30 @@ stop_fleet_actions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopFleetActions">>, Input, Options).
 
-%% @doc Cancels a game session placement that is in `PENDING` status.
+%% @doc Cancels a game session placement that is in `PENDING' status.
 %%
 %% To stop a placement, provide the placement ID values. If successful, the
-%% placement is moved to `CANCELLED` status.
+%% placement is moved to `CANCELLED' status.
 %%
-%% <ul> <li> `CreateGameSession`
+%% <ul> <li> `CreateGameSession'
 %%
-%% </li> <li> `DescribeGameSessions`
+%% </li> <li> `DescribeGameSessions'
 %%
-%% </li> <li> `DescribeGameSessionDetails`
+%% </li> <li> `DescribeGameSessionDetails'
 %%
-%% </li> <li> `SearchGameSessions`
+%% </li> <li> `SearchGameSessions'
 %%
-%% </li> <li> `UpdateGameSession`
+%% </li> <li> `UpdateGameSession'
 %%
-%% </li> <li> `GetGameSessionLogUrl`
+%% </li> <li> `GetGameSessionLogUrl'
 %%
 %% </li> <li> Game session placements
 %%
-%% <ul> <li> `StartGameSessionPlacement`
+%% <ul> <li> `StartGameSessionPlacement'
 %%
-%% </li> <li> `DescribeGameSessionPlacement`
+%% </li> <li> `DescribeGameSessionPlacement'
 %%
-%% </li> <li> `StopGameSessionPlacement`
+%% </li> <li> `StopGameSessionPlacement'
 %%
 %% </li> </ul> </li> </ul>
 stop_game_session_placement(Client, Input)
@@ -3445,12 +3445,12 @@ stop_game_session_placement(Client, Input, Options)
 %%
 %% To stop the matchmaking operation, specify the ticket ID. If successful,
 %% work on the ticket is stopped, and the ticket status is changed to
-%% `CANCELLED`.
+%% `CANCELLED'.
 %%
 %% This call is also used to turn off automatic backfill for an individual
 %% game session. This is for game sessions that are created with a
 %% matchmaking configuration that has automatic backfill enabled. The ticket
-%% ID is included in the `MatchmakerData` of an updated game session object,
+%% ID is included in the `MatchmakerData' of an updated game session object,
 %% which is provided to the game server.
 %%
 %% If the operation is successful, the service sends back an empty JSON
@@ -3462,15 +3462,15 @@ stop_game_session_placement(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `StartMatchmaking`
+%% <ul> <li> `StartMatchmaking'
 %%
-%% </li> <li> `DescribeMatchmaking`
+%% </li> <li> `DescribeMatchmaking'
 %%
-%% </li> <li> `StopMatchmaking`
+%% </li> <li> `StopMatchmaking'
 %%
-%% </li> <li> `AcceptMatch`
+%% </li> <li> `AcceptMatch'
 %%
-%% </li> <li> `StartMatchBackfill`
+%% </li> <li> `StartMatchBackfill'
 %%
 %% </li> </ul>
 stop_matchmaking(Client, Input)
@@ -3485,7 +3485,7 @@ stop_matchmaking(Client, Input, Options)
 %%
 %% Temporarily stops activity on a game server group without terminating
 %% instances or the game server group. You can restart activity by calling
-%% `ResumeGameServerGroup`. You can suspend the following activity:
+%% `ResumeGameServerGroup'. You can suspend the following activity:
 %%
 %% <ul> <li> Instance type replacement - This activity evaluates the current
 %% game hosting viability of all Spot instance types that are defined for the
@@ -3498,9 +3498,9 @@ stop_matchmaking(Client, Input, Options)
 %% to be active.
 %%
 %% </li> </ul> To suspend activity, specify a game server group ARN and the
-%% type of activity to be suspended. If successful, a `GameServerGroup`
+%% type of activity to be suspended. If successful, a `GameServerGroup'
 %% object is returned showing that the activity is listed in
-%% `SuspendedActions`.
+%% `SuspendedActions'.
 %%
 %% Learn more
 %%
@@ -3508,21 +3508,21 @@ stop_matchmaking(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateGameServerGroup`
+%% <ul> <li> `CreateGameServerGroup'
 %%
-%% </li> <li> `ListGameServerGroups`
+%% </li> <li> `ListGameServerGroups'
 %%
-%% </li> <li> `DescribeGameServerGroup`
+%% </li> <li> `DescribeGameServerGroup'
 %%
-%% </li> <li> `UpdateGameServerGroup`
+%% </li> <li> `UpdateGameServerGroup'
 %%
-%% </li> <li> `DeleteGameServerGroup`
+%% </li> <li> `DeleteGameServerGroup'
 %%
-%% </li> <li> `ResumeGameServerGroup`
+%% </li> <li> `ResumeGameServerGroup'
 %%
-%% </li> <li> `SuspendGameServerGroup`
+%% </li> <li> `SuspendGameServerGroup'
 %%
-%% </li> <li> `DescribeGameServerInstances`
+%% </li> <li> `DescribeGameServerInstances'
 %%
 %% </li> </ul>
 suspend_game_server_group(Client, Input)
@@ -3567,11 +3567,11 @@ suspend_game_server_group(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `TagResource`
+%% <ul> <li> `TagResource'
 %%
-%% </li> <li> `UntagResource`
+%% </li> <li> `UntagResource'
 %%
-%% </li> <li> `ListTagsForResource`
+%% </li> <li> `ListTagsForResource'
 %%
 %% </li> </ul>
 tag_resource(Client, Input)
@@ -3614,11 +3614,11 @@ tag_resource(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `TagResource`
+%% <ul> <li> `TagResource'
 %%
-%% </li> <li> `UntagResource`
+%% </li> <li> `UntagResource'
 %%
-%% </li> <li> `ListTagsForResource`
+%% </li> <li> `ListTagsForResource'
 %%
 %% </li> </ul>
 untag_resource(Client, Input)
@@ -3635,17 +3635,17 @@ untag_resource(Client, Input, Options)
 %% an updated routing strategy. If successful, the updated alias record is
 %% returned.
 %%
-%% <ul> <li> `CreateAlias`
+%% <ul> <li> `CreateAlias'
 %%
-%% </li> <li> `ListAliases`
+%% </li> <li> `ListAliases'
 %%
-%% </li> <li> `DescribeAlias`
+%% </li> <li> `DescribeAlias'
 %%
-%% </li> <li> `UpdateAlias`
+%% </li> <li> `UpdateAlias'
 %%
-%% </li> <li> `DeleteAlias`
+%% </li> <li> `DeleteAlias'
 %%
-%% </li> <li> `ResolveAlias`
+%% </li> <li> `ResolveAlias'
 %%
 %% </li> </ul>
 update_alias(Client, Input)
@@ -3668,15 +3668,15 @@ update_alias(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateBuild`
+%% <ul> <li> `CreateBuild'
 %%
-%% </li> <li> `ListBuilds`
+%% </li> <li> `ListBuilds'
 %%
-%% </li> <li> `DescribeBuild`
+%% </li> <li> `DescribeBuild'
 %%
-%% </li> <li> `UpdateBuild`
+%% </li> <li> `UpdateBuild'
 %%
-%% </li> <li> `DeleteBuild`
+%% </li> <li> `DeleteBuild'
 %%
 %% </li> </ul>
 update_build(Client, Input)
@@ -3699,25 +3699,25 @@ update_build(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateFleet`
+%% <ul> <li> `CreateFleet'
 %%
-%% </li> <li> `ListFleets`
+%% </li> <li> `ListFleets'
 %%
-%% </li> <li> `DeleteFleet`
+%% </li> <li> `DeleteFleet'
 %%
-%% </li> <li> `DescribeFleetAttributes`
+%% </li> <li> `DescribeFleetAttributes'
 %%
 %% </li> <li> Update fleets:
 %%
-%% <ul> <li> `UpdateFleetAttributes`
+%% <ul> <li> `UpdateFleetAttributes'
 %%
-%% </li> <li> `UpdateFleetCapacity`
+%% </li> <li> `UpdateFleetCapacity'
 %%
-%% </li> <li> `UpdateFleetPortSettings`
+%% </li> <li> `UpdateFleetPortSettings'
 %%
-%% </li> <li> `UpdateRuntimeConfiguration`
+%% </li> <li> `UpdateRuntimeConfiguration'
 %%
-%% </li> </ul> </li> <li> `StartFleetActions` or `StopFleetActions`
+%% </li> </ul> </li> <li> `StartFleetActions' or `StopFleetActions'
 %%
 %% </li> </ul>
 update_fleet_attributes(Client, Input)
@@ -3731,12 +3731,12 @@ update_fleet_attributes(Client, Input, Options)
 %%
 %% Use this operation to specify the number of EC2 instances (hosts) that you
 %% want this fleet to contain. Before calling this operation, you may want to
-%% call `DescribeEC2InstanceLimits` to get the maximum capacity based on the
+%% call `DescribeEC2InstanceLimits' to get the maximum capacity based on the
 %% fleet's EC2 instance type.
 %%
 %% Specify minimum and maximum number of instances. Amazon GameLift will not
 %% change fleet capacity to values fall outside of this range. This is
-%% particularly important when using auto-scaling (see `PutScalingPolicy`) to
+%% particularly important when using auto-scaling (see `PutScalingPolicy') to
 %% allow capacity to adjust based on player demand while imposing limits on
 %% automatic adjustments.
 %%
@@ -3744,7 +3744,7 @@ update_fleet_attributes(Client, Input, Options)
 %% you want the fleet to host. If successful, Amazon GameLift starts or
 %% terminates instances so that the fleet's active instance count matches the
 %% desired instance count. You can view a fleet's current capacity
-%% information by calling `DescribeFleetCapacity`. If the desired instance
+%% information by calling `DescribeFleetCapacity'. If the desired instance
 %% count is higher than the instance type's limit, the "Limit Exceeded"
 %% exception occurs.
 %%
@@ -3754,25 +3754,25 @@ update_fleet_attributes(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateFleet`
+%% <ul> <li> `CreateFleet'
 %%
-%% </li> <li> `ListFleets`
+%% </li> <li> `ListFleets'
 %%
-%% </li> <li> `DeleteFleet`
+%% </li> <li> `DeleteFleet'
 %%
-%% </li> <li> `DescribeFleetAttributes`
+%% </li> <li> `DescribeFleetAttributes'
 %%
 %% </li> <li> Update fleets:
 %%
-%% <ul> <li> `UpdateFleetAttributes`
+%% <ul> <li> `UpdateFleetAttributes'
 %%
-%% </li> <li> `UpdateFleetCapacity`
+%% </li> <li> `UpdateFleetCapacity'
 %%
-%% </li> <li> `UpdateFleetPortSettings`
+%% </li> <li> `UpdateFleetPortSettings'
 %%
-%% </li> <li> `UpdateRuntimeConfiguration`
+%% </li> <li> `UpdateRuntimeConfiguration'
 %%
-%% </li> </ul> </li> <li> `StartFleetActions` or `StopFleetActions`
+%% </li> </ul> </li> <li> `StartFleetActions' or `StopFleetActions'
 %%
 %% </li> </ul>
 update_fleet_capacity(Client, Input)
@@ -3786,8 +3786,8 @@ update_fleet_capacity(Client, Input, Options)
 %%
 %% To update settings, specify the fleet ID to be updated and list the
 %% permissions you want to update. List the permissions you want to add in
-%% `InboundPermissionAuthorizations`, and permissions you want to remove in
-%% `InboundPermissionRevocations`. Permissions to be removed must match
+%% `InboundPermissionAuthorizations', and permissions you want to remove in
+%% `InboundPermissionRevocations'. Permissions to be removed must match
 %% existing fleet permissions. If successful, the fleet ID for the updated
 %% fleet is returned.
 %%
@@ -3797,25 +3797,25 @@ update_fleet_capacity(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateFleet`
+%% <ul> <li> `CreateFleet'
 %%
-%% </li> <li> `ListFleets`
+%% </li> <li> `ListFleets'
 %%
-%% </li> <li> `DeleteFleet`
+%% </li> <li> `DeleteFleet'
 %%
-%% </li> <li> `DescribeFleetAttributes`
+%% </li> <li> `DescribeFleetAttributes'
 %%
 %% </li> <li> Update fleets:
 %%
-%% <ul> <li> `UpdateFleetAttributes`
+%% <ul> <li> `UpdateFleetAttributes'
 %%
-%% </li> <li> `UpdateFleetCapacity`
+%% </li> <li> `UpdateFleetCapacity'
 %%
-%% </li> <li> `UpdateFleetPortSettings`
+%% </li> <li> `UpdateFleetPortSettings'
 %%
-%% </li> <li> `UpdateRuntimeConfiguration`
+%% </li> <li> `UpdateRuntimeConfiguration'
 %%
-%% </li> </ul> </li> <li> `StartFleetActions` or `StopFleetActions`
+%% </li> </ul> </li> <li> `StartFleetActions' or `StopFleetActions'
 %%
 %% </li> </ul>
 update_fleet_port_settings(Client, Input)
@@ -3841,7 +3841,7 @@ update_fleet_port_settings(Client, Input, Options)
 %% hosting games and when they are available to be claimed.
 %%
 %% </li> <li> To report health status, identify the game server and game
-%% server group and set health check to `HEALTHY`. If a game server does not
+%% server group and set health check to `HEALTHY'. If a game server does not
 %% report health status for a certain length of time, the game server is no
 %% longer considered healthy. As a result, it will be eventually deregistered
 %% from the game server group to avoid affecting utilization metrics. The
@@ -3859,17 +3859,17 @@ update_fleet_port_settings(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `RegisterGameServer`
+%% <ul> <li> `RegisterGameServer'
 %%
-%% </li> <li> `ListGameServers`
+%% </li> <li> `ListGameServers'
 %%
-%% </li> <li> `ClaimGameServer`
+%% </li> <li> `ClaimGameServer'
 %%
-%% </li> <li> `DescribeGameServer`
+%% </li> <li> `DescribeGameServer'
 %%
-%% </li> <li> `UpdateGameServer`
+%% </li> <li> `UpdateGameServer'
 %%
-%% </li> <li> `DeregisterGameServer`
+%% </li> <li> `DeregisterGameServer'
 %%
 %% </li> </ul>
 update_game_server(Client, Input)
@@ -3890,7 +3890,7 @@ update_game_server(Client, Input, Options)
 %% To update the game server group, specify the game server group ID and
 %% provide the updated values. Before applying the updates, the new values
 %% are validated to ensure that GameLift FleetIQ can continue to perform
-%% instance balancing activity. If successful, a `GameServerGroup` object is
+%% instance balancing activity. If successful, a `GameServerGroup' object is
 %% returned.
 %%
 %% Learn more
@@ -3899,21 +3899,21 @@ update_game_server(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateGameServerGroup`
+%% <ul> <li> `CreateGameServerGroup'
 %%
-%% </li> <li> `ListGameServerGroups`
+%% </li> <li> `ListGameServerGroups'
 %%
-%% </li> <li> `DescribeGameServerGroup`
+%% </li> <li> `DescribeGameServerGroup'
 %%
-%% </li> <li> `UpdateGameServerGroup`
+%% </li> <li> `UpdateGameServerGroup'
 %%
-%% </li> <li> `DeleteGameServerGroup`
+%% </li> <li> `DeleteGameServerGroup'
 %%
-%% </li> <li> `ResumeGameServerGroup`
+%% </li> <li> `ResumeGameServerGroup'
 %%
-%% </li> <li> `SuspendGameServerGroup`
+%% </li> <li> `SuspendGameServerGroup'
 %%
-%% </li> <li> `DescribeGameServerInstances`
+%% </li> <li> `DescribeGameServerInstances'
 %%
 %% </li> </ul>
 update_game_server_group(Client, Input)
@@ -3930,27 +3930,27 @@ update_game_server_group(Client, Input, Options)
 %% during a scale-down event, and the player session creation policy, which
 %% controls whether or not new players can join the session. To update a game
 %% session, specify the game session ID and the values you want to change. If
-%% successful, an updated `GameSession` object is returned.
+%% successful, an updated `GameSession' object is returned.
 %%
-%% <ul> <li> `CreateGameSession`
+%% <ul> <li> `CreateGameSession'
 %%
-%% </li> <li> `DescribeGameSessions`
+%% </li> <li> `DescribeGameSessions'
 %%
-%% </li> <li> `DescribeGameSessionDetails`
+%% </li> <li> `DescribeGameSessionDetails'
 %%
-%% </li> <li> `SearchGameSessions`
+%% </li> <li> `SearchGameSessions'
 %%
-%% </li> <li> `UpdateGameSession`
+%% </li> <li> `UpdateGameSession'
 %%
-%% </li> <li> `GetGameSessionLogUrl`
+%% </li> <li> `GetGameSessionLogUrl'
 %%
 %% </li> <li> Game session placements
 %%
-%% <ul> <li> `StartGameSessionPlacement`
+%% <ul> <li> `StartGameSessionPlacement'
 %%
-%% </li> <li> `DescribeGameSessionPlacement`
+%% </li> <li> `DescribeGameSessionPlacement'
 %%
-%% </li> <li> `StopGameSessionPlacement`
+%% </li> <li> `StopGameSessionPlacement'
 %%
 %% </li> </ul> </li> </ul>
 update_game_session(Client, Input)
@@ -3973,13 +3973,13 @@ update_game_session(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateGameSessionQueue`
+%% <ul> <li> `CreateGameSessionQueue'
 %%
-%% </li> <li> `DescribeGameSessionQueues`
+%% </li> <li> `DescribeGameSessionQueues'
 %%
-%% </li> <li> `UpdateGameSessionQueue`
+%% </li> <li> `UpdateGameSessionQueue'
 %%
-%% </li> <li> `DeleteGameSessionQueue`
+%% </li> <li> `DeleteGameSessionQueue'
 %%
 %% </li> </ul>
 update_game_session_queue(Client, Input)
@@ -4001,21 +4001,21 @@ update_game_session_queue(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateMatchmakingConfiguration`
+%% <ul> <li> `CreateMatchmakingConfiguration'
 %%
-%% </li> <li> `DescribeMatchmakingConfigurations`
+%% </li> <li> `DescribeMatchmakingConfigurations'
 %%
-%% </li> <li> `UpdateMatchmakingConfiguration`
+%% </li> <li> `UpdateMatchmakingConfiguration'
 %%
-%% </li> <li> `DeleteMatchmakingConfiguration`
+%% </li> <li> `DeleteMatchmakingConfiguration'
 %%
-%% </li> <li> `CreateMatchmakingRuleSet`
+%% </li> <li> `CreateMatchmakingRuleSet'
 %%
-%% </li> <li> `DescribeMatchmakingRuleSets`
+%% </li> <li> `DescribeMatchmakingRuleSets'
 %%
-%% </li> <li> `ValidateMatchmakingRuleSet`
+%% </li> <li> `ValidateMatchmakingRuleSet'
 %%
-%% </li> <li> `DeleteMatchmakingRuleSet`
+%% </li> <li> `DeleteMatchmakingRuleSet'
 %%
 %% </li> </ul>
 update_matchmaking_configuration(Client, Input)
@@ -4030,10 +4030,10 @@ update_matchmaking_configuration(Client, Input, Options)
 %% the fleet.
 %%
 %% You can update a fleet's runtime configuration at any time after the fleet
-%% is created; it does not need to be in an `ACTIVE` status.
+%% is created; it does not need to be in an `ACTIVE' status.
 %%
 %% To update runtime configuration, specify the fleet ID and provide a
-%% `RuntimeConfiguration` object with an updated set of server process
+%% `RuntimeConfiguration' object with an updated set of server process
 %% configurations.
 %%
 %% Each instance in a Amazon GameLift fleet checks regularly for an updated
@@ -4049,25 +4049,25 @@ update_matchmaking_configuration(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateFleet`
+%% <ul> <li> `CreateFleet'
 %%
-%% </li> <li> `ListFleets`
+%% </li> <li> `ListFleets'
 %%
-%% </li> <li> `DeleteFleet`
+%% </li> <li> `DeleteFleet'
 %%
-%% </li> <li> `DescribeFleetAttributes`
+%% </li> <li> `DescribeFleetAttributes'
 %%
 %% </li> <li> Update fleets:
 %%
-%% <ul> <li> `UpdateFleetAttributes`
+%% <ul> <li> `UpdateFleetAttributes'
 %%
-%% </li> <li> `UpdateFleetCapacity`
+%% </li> <li> `UpdateFleetCapacity'
 %%
-%% </li> <li> `UpdateFleetPortSettings`
+%% </li> <li> `UpdateFleetPortSettings'
 %%
-%% </li> <li> `UpdateRuntimeConfiguration`
+%% </li> <li> `UpdateRuntimeConfiguration'
 %%
-%% </li> </ul> </li> <li> `StartFleetActions` or `StopFleetActions`
+%% </li> </ul> </li> <li> `StartFleetActions' or `StopFleetActions'
 %%
 %% </li> </ul>
 update_runtime_configuration(Client, Input)
@@ -4098,15 +4098,15 @@ update_runtime_configuration(Client, Input, Options)
 %%
 %% Related operations
 %%
-%% <ul> <li> `CreateScript`
+%% <ul> <li> `CreateScript'
 %%
-%% </li> <li> `ListScripts`
+%% </li> <li> `ListScripts'
 %%
-%% </li> <li> `DescribeScript`
+%% </li> <li> `DescribeScript'
 %%
-%% </li> <li> `UpdateScript`
+%% </li> <li> `UpdateScript'
 %%
-%% </li> <li> `DeleteScript`
+%% </li> <li> `DeleteScript'
 %%
 %% </li> </ul>
 update_script(Client, Input)
@@ -4128,21 +4128,21 @@ update_script(Client, Input, Options)
 %%
 %% </li> </ul> Related operations
 %%
-%% <ul> <li> `CreateMatchmakingConfiguration`
+%% <ul> <li> `CreateMatchmakingConfiguration'
 %%
-%% </li> <li> `DescribeMatchmakingConfigurations`
+%% </li> <li> `DescribeMatchmakingConfigurations'
 %%
-%% </li> <li> `UpdateMatchmakingConfiguration`
+%% </li> <li> `UpdateMatchmakingConfiguration'
 %%
-%% </li> <li> `DeleteMatchmakingConfiguration`
+%% </li> <li> `DeleteMatchmakingConfiguration'
 %%
-%% </li> <li> `CreateMatchmakingRuleSet`
+%% </li> <li> `CreateMatchmakingRuleSet'
 %%
-%% </li> <li> `DescribeMatchmakingRuleSets`
+%% </li> <li> `DescribeMatchmakingRuleSets'
 %%
-%% </li> <li> `ValidateMatchmakingRuleSet`
+%% </li> <li> `ValidateMatchmakingRuleSet'
 %%
-%% </li> <li> `DeleteMatchmakingRuleSet`
+%% </li> <li> `DeleteMatchmakingRuleSet'
 %%
 %% </li> </ul>
 validate_matchmaking_rule_set(Client, Input)

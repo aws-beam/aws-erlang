@@ -72,8 +72,8 @@
 %%
 %% </li> </ul> Chef Versions
 %%
-%% When you call `CreateStack`, `CloneStack`, or `UpdateStack` we recommend
-%% you use the `ConfigurationManager` parameter to specify the Chef version.
+%% When you call `CreateStack', `CloneStack', or `UpdateStack' we recommend
+%% you use the `ConfigurationManager' parameter to specify the Chef version.
 %% The recommended and default value for Linux stacks is currently 12.
 %% Windows stacks use Chef 12.2. For more information, see Chef Versions.
 %%
@@ -262,8 +262,8 @@ assign_instance(Client, Input, Options)
 %% specified instance.
 %%
 %% The volume must first be registered with the stack by calling
-%% `RegisterVolume`. After you register the volume, you must call
-%% `UpdateVolume` to specify a mount point before calling `AssignVolume`. For
+%% `RegisterVolume'. After you register the volume, you must call
+%% `UpdateVolume' to specify a mount point before calling `AssignVolume'. For
 %% more information, see Resource Management.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
@@ -281,7 +281,7 @@ assign_volume(Client, Input, Options)
 %% specified instance.
 %%
 %% The address must first be registered with the stack by calling
-%% `RegisterElasticIp`. For more information, see Resource Management.
+%% `RegisterElasticIp'. For more information, see Resource Management.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
 %% permissions level for the stack, or an attached policy that explicitly
@@ -579,7 +579,7 @@ deregister_volume(Client, Input, Options)
 %% @doc Describes the available AWS OpsWorks Stacks agent versions.
 %%
 %% You must specify a stack ID or a configuration manager.
-%% `DescribeAgentVersions` returns a list of available agent versions for the
+%% `DescribeAgentVersions' returns a list of available agent versions for the
 %% specified stack or configuration manager.
 describe_agent_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -635,8 +635,8 @@ describe_deployments(Client, Input, Options)
 
 %% @doc Describes Amazon ECS clusters that are registered with a stack.
 %%
-%% If you specify only a stack ID, you can use the `MaxResults` and
-%% `NextToken` parameters to paginate the response. However, AWS OpsWorks
+%% If you specify only a stack ID, you can use the `MaxResults' and
+%% `NextToken' parameters to paginate the response. However, AWS OpsWorks
 %% Stacks currently supports only one cluster per layer, so the result set
 %% has a maximum of one element.
 %%
@@ -823,7 +823,7 @@ describe_stack_provisioning_parameters(Client, Input, Options)
     request(Client, <<"DescribeStackProvisioningParameters">>, Input, Options).
 
 %% @doc Describes the number of layers and apps in a specified stack, and the
-%% number of instances in each state, such as `running_setup` or `online`.
+%% number of instances in each state, such as `running_setup' or `online'.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Show,
 %% Deploy, or Manage permissions level for the stack, or an attached policy
@@ -990,7 +990,7 @@ register_ecs_cluster(Client, Input, Options)
 %%
 %% An address can be registered with only one stack at a time. If the address
 %% is already registered, you must first deregister it by calling
-%% `DeregisterElasticIp`. For more information, see Resource Management.
+%% `DeregisterElasticIp'. For more information, see Resource Management.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
 %% permissions level for the stack, or an attached policy that explicitly
@@ -1009,13 +1009,13 @@ register_elastic_ip(Client, Input, Options)
 %% We do not recommend using this action to register instances. The complete
 %% registration operation includes two tasks: installing the AWS OpsWorks
 %% Stacks agent on the instance, and registering the instance with the stack.
-%% `RegisterInstance` handles only the second step. You should instead use
-%% the AWS CLI `register` command, which performs the entire registration
+%% `RegisterInstance' handles only the second step. You should instead use
+%% the AWS CLI `register' command, which performs the entire registration
 %% operation. For more information, see Registering an Instance with an AWS
 %% OpsWorks Stacks Stack.
 %%
 %% Registered instances have the same requirements as instances that are
-%% created by using the `CreateInstance` API. For example, registered
+%% created by using the `CreateInstance' API. For example, registered
 %% instances must be running a supported Linux-based operating system, and
 %% they must have a supported instance type. For more information about
 %% requirements for instances that you want to register, see Preparing the
@@ -1049,7 +1049,7 @@ register_rds_db_instance(Client, Input, Options)
 %%
 %% A volume can be registered with only one stack at a time. If the volume is
 %% already registered, you must first deregister it by calling
-%% `DeregisterVolume`. For more information, see Resource Management.
+%% `DeregisterVolume'. For more information, see Resource Management.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
 %% permissions level for the stack, or an attached policy that explicitly

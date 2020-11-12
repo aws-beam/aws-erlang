@@ -114,7 +114,7 @@
 %% @doc Adds IP addresses to an inbound or an outbound Resolver endpoint.
 %%
 %% If you want to add more than one IP address, submit one
-%% `AssociateResolverEndpointIpAddress` request for each IP address.
+%% `AssociateResolverEndpointIpAddress' request for each IP address.
 %%
 %% To remove an IP address from an endpoint, see
 %% DisassociateResolverEndpointIpAddress.
@@ -131,7 +131,7 @@ associate_resolver_endpoint_ip_address(Client, Input, Options)
 %% Route 53 Resolver logs DNS queries that originate in all of the Amazon
 %% VPCs that are associated with a specified query logging configuration. To
 %% associate more than one VPC with a configuration, submit one
-%% `AssociateResolverQueryLogConfig` request for each VPC.
+%% `AssociateResolverQueryLogConfig' request for each VPC.
 %%
 %% The VPCs that you associate with a query logging configuration must be in
 %% the same Region as the configuration.
@@ -184,7 +184,7 @@ create_resolver_endpoint(Client, Input, Options)
 %% query logging configuration.
 %%
 %% To specify which VPCs you want to log queries for, you use
-%% `AssociateResolverQueryLogConfig`. For more information, see
+%% `AssociateResolverQueryLogConfig'. For more information, see
 %% AssociateResolverQueryLogConfig.
 %%
 %% You can optionally use AWS Resource Access Manager (AWS RAM) to share a
@@ -271,7 +271,7 @@ delete_resolver_rule(Client, Input, Options)
 %% endpoint.
 %%
 %% If you want to remove more than one IP address, submit one
-%% `DisassociateResolverEndpointIpAddress` request for each IP address.
+%% `DisassociateResolverEndpointIpAddress' request for each IP address.
 %%
 %% To add an IP address to an endpoint, see
 %% AssociateResolverEndpointIpAddress.
@@ -497,7 +497,7 @@ update_resolver_endpoint(Client, Input, Options)
 
 %% @doc Updates settings for a specified Resolver rule.
 %%
-%% `ResolverRuleId` is required, and all other parameters are optional. If
+%% `ResolverRuleId' is required, and all other parameters are optional. If
 %% you don't specify a parameter, it retains its current value.
 update_resolver_rule(Client, Input)
   when is_map(Client), is_map(Input) ->

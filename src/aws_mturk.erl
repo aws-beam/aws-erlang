@@ -89,13 +89,13 @@
 %% API
 %%====================================================================
 
-%% @doc The `AcceptQualificationRequest` operation approves a Worker's
+%% @doc The `AcceptQualificationRequest' operation approves a Worker's
 %% request for a Qualification.
 %%
 %% Only the owner of the Qualification type can grant a Qualification request
 %% for that type.
 %%
-%% A successful request for the `AcceptQualificationRequest` operation
+%% A successful request for the `AcceptQualificationRequest' operation
 %% returns with no errors and an empty body.
 accept_qualification_request(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -104,7 +104,7 @@ accept_qualification_request(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AcceptQualificationRequest">>, Input, Options).
 
-%% @doc The `ApproveAssignment` operation approves the results of a completed
+%% @doc The `ApproveAssignment' operation approves the results of a completed
 %% assignment.
 %%
 %% Approving an assignment initiates two payments from the Requester's
@@ -133,23 +133,23 @@ approve_assignment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ApproveAssignment">>, Input, Options).
 
-%% @doc The `AssociateQualificationWithWorker` operation gives a Worker a
+%% @doc The `AssociateQualificationWithWorker' operation gives a Worker a
 %% Qualification.
 %%
-%% `AssociateQualificationWithWorker` does not require that the Worker submit
+%% `AssociateQualificationWithWorker' does not require that the Worker submit
 %% a Qualification request. It gives the Qualification directly to the
 %% Worker.
 %%
 %% You can only assign a Qualification of a Qualification type that you
-%% created (using the `CreateQualificationType` operation).
+%% created (using the `CreateQualificationType' operation).
 %%
-%% Note: `AssociateQualificationWithWorker` does not affect any pending
+%% Note: `AssociateQualificationWithWorker' does not affect any pending
 %% Qualification requests for the Qualification by the Worker. If you assign
 %% a Qualification to a Worker, then later grant a Qualification request made
 %% by the Worker, the granting of the request may modify the Qualification
 %% score. To resolve a pending Qualification request without affecting the
 %% Qualification the Worker already has, reject the request with the
-%% `RejectQualificationRequest` operation.
+%% `RejectQualificationRequest' operation.
 associate_qualification_with_worker(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_qualification_with_worker(Client, Input, []).
@@ -157,7 +157,7 @@ associate_qualification_with_worker(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateQualificationWithWorker">>, Input, Options).
 
-%% @doc The `CreateAdditionalAssignmentsForHIT` operation increases the
+%% @doc The `CreateAdditionalAssignmentsForHIT' operation increases the
 %% maximum number of assignments of an existing HIT.
 %%
 %% To extend the maximum number of assignments, specify the number of
@@ -167,11 +167,11 @@ associate_qualification_with_worker(Client, Input, Options)
 %% or more assignments. Attempting to add assignments in a way that brings
 %% the total number of assignments for a HIT from fewer than 10 assignments
 %% to 10 or more assignments will result in an
-%% `AWS.MechanicalTurk.InvalidMaximumAssignmentsIncrease` exception.
+%% `AWS.MechanicalTurk.InvalidMaximumAssignmentsIncrease' exception.
 %%
 %% HITs that were created before July 22, 2015 cannot be extended. Attempting
 %% to extend HITs that were created before July 22, 2015 will result in an
-%% `AWS.MechanicalTurk.HITTooOldForExtension` exception.
+%% `AWS.MechanicalTurk.HITTooOldForExtension' exception.
 create_additional_assignments_for_h_i_t(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_additional_assignments_for_h_i_t(Client, Input, []).
@@ -179,7 +179,7 @@ create_additional_assignments_for_h_i_t(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAdditionalAssignmentsForHIT">>, Input, Options).
 
-%% @doc The `CreateHIT` operation creates a new Human Intelligence Task
+%% @doc The `CreateHIT' operation creates a new Human Intelligence Task
 %% (HIT).
 %%
 %% The new HIT is made available for Workers to find and accept on the Amazon
@@ -187,20 +187,20 @@ create_additional_assignments_for_h_i_t(Client, Input, Options)
 %%
 %% This operation allows you to specify a new HIT by passing in values for
 %% the properties of the HIT, such as its title, reward amount and number of
-%% assignments. When you pass these values to `CreateHIT`, a new HIT is
-%% created for you, with a new `HITTypeID`. The HITTypeID can be used to
+%% assignments. When you pass these values to `CreateHIT', a new HIT is
+%% created for you, with a new `HITTypeID'. The HITTypeID can be used to
 %% create additional HITs in the future without needing to specify common
 %% parameters such as the title, description and reward amount each time.
 %%
 %% An alternative way to create HITs is to first generate a HITTypeID using
-%% the `CreateHITType` operation and then call the `CreateHITWithHITType`
+%% the `CreateHITType' operation and then call the `CreateHITWithHITType'
 %% operation. This is the recommended best practice for Requesters who are
 %% creating large numbers of HITs.
 %%
 %% CreateHIT also supports several ways to provide question data: by
-%% providing a value for the `Question` parameter that fully specifies the
-%% contents of the HIT, or by providing a `HitLayoutId` and associated
-%% `HitLayoutParameters`.
+%% providing a value for the `Question' parameter that fully specifies the
+%% contents of the HIT, or by providing a `HitLayoutId' and associated
+%% `HitLayoutParameters'.
 %%
 %% If a HIT is created with 10 or more maximum assignments, there is an
 %% additional fee. For more information, see Amazon Mechanical Turk Pricing.
@@ -211,7 +211,7 @@ create_h_i_t(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHIT">>, Input, Options).
 
-%% @doc The `CreateHITType` operation creates a new HIT type.
+%% @doc The `CreateHITType' operation creates a new HIT type.
 %%
 %% This operation allows you to define a standard set of HIT properties to
 %% use when creating HITs. If you register a HIT type with values that match
@@ -224,18 +224,18 @@ create_h_i_t_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHITType">>, Input, Options).
 
-%% @doc The `CreateHITWithHITType` operation creates a new Human Intelligence
-%% Task (HIT) using an existing HITTypeID generated by the `CreateHITType`
+%% @doc The `CreateHITWithHITType' operation creates a new Human Intelligence
+%% Task (HIT) using an existing HITTypeID generated by the `CreateHITType'
 %% operation.
 %%
-%% This is an alternative way to create HITs from the `CreateHIT` operation.
+%% This is an alternative way to create HITs from the `CreateHIT' operation.
 %% This is the recommended best practice for Requesters who are creating
 %% large numbers of HITs.
 %%
 %% CreateHITWithHITType also supports several ways to provide question data:
-%% by providing a value for the `Question` parameter that fully specifies the
-%% contents of the HIT, or by providing a `HitLayoutId` and associated
-%% `HitLayoutParameters`.
+%% by providing a value for the `Question' parameter that fully specifies the
+%% contents of the HIT, or by providing a `HitLayoutId' and associated
+%% `HitLayoutParameters'.
 %%
 %% If a HIT is created with 10 or more maximum assignments, there is an
 %% additional fee. For more information, see Amazon Mechanical Turk Pricing.
@@ -246,8 +246,8 @@ create_h_i_t_with_h_i_t_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHITWithHITType">>, Input, Options).
 
-%% @doc The `CreateQualificationType` operation creates a new Qualification
-%% type, which is represented by a `QualificationType` data structure.
+%% @doc The `CreateQualificationType' operation creates a new Qualification
+%% type, which is represented by a `QualificationType' data structure.
 create_qualification_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_qualification_type(Client, Input, []).
@@ -255,7 +255,7 @@ create_qualification_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateQualificationType">>, Input, Options).
 
-%% @doc The `CreateWorkerBlock` operation allows you to prevent a Worker from
+%% @doc The `CreateWorkerBlock' operation allows you to prevent a Worker from
 %% working on your HITs.
 %%
 %% For example, you can block a Worker who is producing poor quality work.
@@ -267,14 +267,14 @@ create_worker_block(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWorkerBlock">>, Input, Options).
 
-%% @doc The `DeleteHIT` operation is used to delete HIT that is no longer
+%% @doc The `DeleteHIT' operation is used to delete HIT that is no longer
 %% needed.
 %%
 %% Only the Requester who created the HIT can delete it.
 %%
-%% You can only dispose of HITs that are in the `Reviewable` state, with all
+%% You can only dispose of HITs that are in the `Reviewable' state, with all
 %% of their submitted assignments already either approved or rejected. If you
-%% call the DeleteHIT operation on a HIT that is not in the `Reviewable`
+%% call the DeleteHIT operation on a HIT that is not in the `Reviewable'
 %% state (for example, that has not expired, or still has active
 %% assignments), or on a HIT that is Reviewable but without all of its
 %% submitted assignments already approved or rejected, the service will
@@ -296,7 +296,7 @@ delete_h_i_t(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteHIT">>, Input, Options).
 
-%% @doc The `DeleteQualificationType` deletes a Qualification type and
+%% @doc The `DeleteQualificationType' deletes a Qualification type and
 %% deletes any HIT types that are associated with the Qualification type.
 %%
 %% This operation does not revoke Qualifications already assigned to Workers
@@ -316,7 +316,7 @@ delete_qualification_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteQualificationType">>, Input, Options).
 
-%% @doc The `DeleteWorkerBlock` operation allows you to reinstate a blocked
+%% @doc The `DeleteWorkerBlock' operation allows you to reinstate a blocked
 %% Worker to work on your HITs.
 %%
 %% This operation reverses the effects of the CreateWorkerBlock operation.
@@ -331,7 +331,7 @@ delete_worker_block(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWorkerBlock">>, Input, Options).
 
-%% @doc The `DisassociateQualificationFromWorker` revokes a previously
+%% @doc The `DisassociateQualificationFromWorker' revokes a previously
 %% granted Qualification from a user.
 %%
 %% You can provide a text message explaining why the Qualification was
@@ -343,7 +343,7 @@ disassociate_qualification_from_worker(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateQualificationFromWorker">>, Input, Options).
 
-%% @doc The `GetAccountBalance` operation retrieves the amount of money in
+%% @doc The `GetAccountBalance' operation retrieves the amount of money in
 %% your Amazon Mechanical Turk account.
 get_account_balance(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -352,7 +352,7 @@ get_account_balance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAccountBalance">>, Input, Options).
 
-%% @doc The `GetAssignment` operation retrieves the details of the specified
+%% @doc The `GetAssignment' operation retrieves the details of the specified
 %% Assignment.
 get_assignment(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -361,7 +361,7 @@ get_assignment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAssignment">>, Input, Options).
 
-%% @doc The `GetFileUploadURL` operation generates and returns a temporary
+%% @doc The `GetFileUploadURL' operation generates and returns a temporary
 %% URL.
 %%
 %% You use the temporary URL to retrieve a file uploaded by a Worker as an
@@ -371,7 +371,7 @@ get_assignment(Client, Input, Options)
 %% until the HIT is disposed. After the HIT is disposed, any uploaded files
 %% are deleted, and cannot be retrieved. Pending Deprecation on December 12,
 %% 2017. The Answer Specification structure will no longer support the
-%% `FileUploadAnswer` element to be used for the QuestionForm data structure.
+%% `FileUploadAnswer' element to be used for the QuestionForm data structure.
 %% Instead, we recommend that Requesters who want to create HITs asking
 %% Workers to upload files to use Amazon S3.
 get_file_upload_u_r_l(Client, Input)
@@ -381,7 +381,7 @@ get_file_upload_u_r_l(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetFileUploadURL">>, Input, Options).
 
-%% @doc The `GetHIT` operation retrieves the details of the specified HIT.
+%% @doc The `GetHIT' operation retrieves the details of the specified HIT.
 get_h_i_t(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_h_i_t(Client, Input, []).
@@ -389,12 +389,12 @@ get_h_i_t(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetHIT">>, Input, Options).
 
-%% @doc The `GetQualificationScore` operation returns the value of a Worker's
+%% @doc The `GetQualificationScore' operation returns the value of a Worker's
 %% Qualification for a given Qualification type.
 %%
 %% To get a Worker's Qualification, you must know the Worker's ID. The
 %% Worker's ID is included in the assignment data returned by the
-%% `ListAssignmentsForHIT` operation.
+%% `ListAssignmentsForHIT' operation.
 %%
 %% Only the owner of a Qualification type can query the value of a Worker's
 %% Qualification of that type.
@@ -405,7 +405,7 @@ get_qualification_score(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetQualificationScore">>, Input, Options).
 
-%% @doc The `GetQualificationType`operation retrieves information about a
+%% @doc The `GetQualificationType'operation retrieves information about a
 %% Qualification type using its ID.
 get_qualification_type(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -414,7 +414,7 @@ get_qualification_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetQualificationType">>, Input, Options).
 
-%% @doc The `ListAssignmentsForHIT` operation retrieves completed assignments
+%% @doc The `ListAssignmentsForHIT' operation retrieves completed assignments
 %% for a HIT.
 %%
 %% You can use this operation to retrieve the results for a HIT.
@@ -444,7 +444,7 @@ list_assignments_for_h_i_t(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAssignmentsForHIT">>, Input, Options).
 
-%% @doc The `ListBonusPayments` operation retrieves the amounts of bonuses
+%% @doc The `ListBonusPayments' operation retrieves the amounts of bonuses
 %% you have paid to Workers for a given HIT or assignment.
 list_bonus_payments(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -453,7 +453,7 @@ list_bonus_payments(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListBonusPayments">>, Input, Options).
 
-%% @doc The `ListHITs` operation returns all of a Requester's HITs.
+%% @doc The `ListHITs' operation returns all of a Requester's HITs.
 %%
 %% The operation returns HITs of any status, except for HITs that have been
 %% deleted of with the DeleteHIT operation or that have been auto-deleted.
@@ -464,11 +464,11 @@ list_h_i_ts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListHITs">>, Input, Options).
 
-%% @doc The `ListHITsForQualificationType` operation returns the HITs that
+%% @doc The `ListHITsForQualificationType' operation returns the HITs that
 %% use the given Qualification type for a Qualification requirement.
 %%
 %% The operation returns HITs of any status, except for HITs that have been
-%% deleted with the `DeleteHIT` operation or that have been auto-deleted.
+%% deleted with the `DeleteHIT' operation or that have been auto-deleted.
 list_h_i_ts_for_qualification_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_h_i_ts_for_qualification_type(Client, Input, []).
@@ -476,7 +476,7 @@ list_h_i_ts_for_qualification_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListHITsForQualificationType">>, Input, Options).
 
-%% @doc The `ListQualificationRequests` operation retrieves requests for
+%% @doc The `ListQualificationRequests' operation retrieves requests for
 %% Qualifications of a particular Qualification type.
 %%
 %% The owner of the Qualification type calls this operation to poll for
@@ -489,7 +489,7 @@ list_qualification_requests(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListQualificationRequests">>, Input, Options).
 
-%% @doc The `ListQualificationTypes` operation returns a list of
+%% @doc The `ListQualificationTypes' operation returns a list of
 %% Qualification types, filtered by an optional search term.
 list_qualification_types(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -498,7 +498,7 @@ list_qualification_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListQualificationTypes">>, Input, Options).
 
-%% @doc The `ListReviewPolicyResultsForHIT` operation retrieves the computed
+%% @doc The `ListReviewPolicyResultsForHIT' operation retrieves the computed
 %% results and the actions taken in the course of executing your Review
 %% Policies for a given HIT.
 %%
@@ -513,7 +513,7 @@ list_review_policy_results_for_h_i_t(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListReviewPolicyResultsForHIT">>, Input, Options).
 
-%% @doc The `ListReviewableHITs` operation retrieves the HITs with Status
+%% @doc The `ListReviewableHITs' operation retrieves the HITs with Status
 %% equal to Reviewable or Status equal to Reviewing that belong to the
 %% Requester calling the operation.
 list_reviewable_h_i_ts(Client, Input)
@@ -523,7 +523,7 @@ list_reviewable_h_i_ts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListReviewableHITs">>, Input, Options).
 
-%% @doc The `ListWorkersBlocks` operation retrieves a list of Workers who are
+%% @doc The `ListWorkersBlocks' operation retrieves a list of Workers who are
 %% blocked from working on your HITs.
 list_worker_blocks(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -532,7 +532,7 @@ list_worker_blocks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWorkerBlocks">>, Input, Options).
 
-%% @doc The `ListWorkersWithQualificationType` operation returns all of the
+%% @doc The `ListWorkersWithQualificationType' operation returns all of the
 %% Workers that have been associated with a given Qualification type.
 list_workers_with_qualification_type(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -541,7 +541,7 @@ list_workers_with_qualification_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWorkersWithQualificationType">>, Input, Options).
 
-%% @doc The `NotifyWorkers` operation sends an email to one or more Workers
+%% @doc The `NotifyWorkers' operation sends an email to one or more Workers
 %% that you specify with the Worker ID.
 %%
 %% You can specify up to 100 Worker IDs to send the same message with a
@@ -555,7 +555,7 @@ notify_workers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"NotifyWorkers">>, Input, Options).
 
-%% @doc The `RejectAssignment` operation rejects the results of a completed
+%% @doc The `RejectAssignment' operation rejects the results of a completed
 %% assignment.
 %%
 %% You can include an optional feedback message with the rejection, which the
@@ -573,7 +573,7 @@ reject_assignment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RejectAssignment">>, Input, Options).
 
-%% @doc The `RejectQualificationRequest` operation rejects a user's request
+%% @doc The `RejectQualificationRequest' operation rejects a user's request
 %% for a Qualification.
 %%
 %% You can provide a text message explaining why the request was rejected.
@@ -585,7 +585,7 @@ reject_qualification_request(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RejectQualificationRequest">>, Input, Options).
 
-%% @doc The `SendBonus` operation issues a payment of money from your account
+%% @doc The `SendBonus' operation issues a payment of money from your account
 %% to a Worker.
 %%
 %% This payment happens separately from the reward you pay to the Worker when
@@ -603,7 +603,7 @@ send_bonus(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendBonus">>, Input, Options).
 
-%% @doc The `SendTestEventNotification` operation causes Amazon Mechanical
+%% @doc The `SendTestEventNotification' operation causes Amazon Mechanical
 %% Turk to send a notification message as if a HIT event occurred, according
 %% to the provided notification specification.
 %%
@@ -618,7 +618,7 @@ send_test_event_notification(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendTestEventNotification">>, Input, Options).
 
-%% @doc The `UpdateExpirationForHIT` operation allows you update the
+%% @doc The `UpdateExpirationForHIT' operation allows you update the
 %% expiration time of a HIT.
 %%
 %% If you update it to a time in the past, the HIT will be immediately
@@ -630,7 +630,7 @@ update_expiration_for_h_i_t(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateExpirationForHIT">>, Input, Options).
 
-%% @doc The `UpdateHITReviewStatus` operation updates the status of a HIT.
+%% @doc The `UpdateHITReviewStatus' operation updates the status of a HIT.
 %%
 %% If the status is Reviewable, this operation can update the status to
 %% Reviewing, or it can revert a Reviewing HIT back to the Reviewable status.
@@ -641,7 +641,7 @@ update_h_i_t_review_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateHITReviewStatus">>, Input, Options).
 
-%% @doc The `UpdateHITTypeOfHIT` operation allows you to change the HITType
+%% @doc The `UpdateHITTypeOfHIT' operation allows you to change the HITType
 %% properties of a HIT.
 %%
 %% This operation disassociates the HIT from its old HITType properties and
@@ -654,7 +654,7 @@ update_h_i_t_type_of_h_i_t(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateHITTypeOfHIT">>, Input, Options).
 
-%% @doc The `UpdateNotificationSettings` operation creates, updates, disables
+%% @doc The `UpdateNotificationSettings' operation creates, updates, disables
 %% or re-enables notifications for a HIT type.
 %%
 %% If you call the UpdateNotificationSettings operation for a HIT type that
@@ -665,7 +665,7 @@ update_h_i_t_type_of_h_i_t(Client, Input, Options)
 %% updates to the Active status without specifying a new notification
 %% specification. To change the Active status of a HIT type's notifications,
 %% the HIT type must already have a notification specification, or one must
-%% be provided in the same call to `UpdateNotificationSettings`.
+%% be provided in the same call to `UpdateNotificationSettings'.
 update_notification_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_notification_settings(Client, Input, []).
@@ -673,7 +673,7 @@ update_notification_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateNotificationSettings">>, Input, Options).
 
-%% @doc The `UpdateQualificationType` operation modifies the attributes of an
+%% @doc The `UpdateQualificationType' operation modifies the attributes of an
 %% existing Qualification type, which is represented by a QualificationType
 %% data structure.
 %%

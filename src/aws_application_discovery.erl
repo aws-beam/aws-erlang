@@ -71,16 +71,16 @@
 %%
 %% You must make API calls for write actions (create, notify, associate,
 %% disassociate, import, or put) while in your home region, or a
-%% `HomeRegionNotSetException` error is returned.
+%% `HomeRegionNotSetException' error is returned.
 %%
 %% API calls for read actions (list, describe, stop, and delete) are
 %% permitted outside of your home region.
 %%
 %% Although it is unlikely, the Migration Hub home region could change. If
-%% you call APIs outside the home region, an `InvalidInputException` is
+%% you call APIs outside the home region, an `InvalidInputException' is
 %% returned.
 %%
-%% You must call `GetHomeRegion` to obtain the latest Migration Hub home
+%% You must call `GetHomeRegion' to obtain the latest Migration Hub home
 %% region.
 %%
 %% This guide is intended for use with the AWS Application Discovery Service
@@ -216,7 +216,7 @@ delete_tags(Client, Input, Options)
 %% @doc Lists agents or connectors as specified by ID or other filters.
 %%
 %% All agents/connectors associated with your user account can be listed if
-%% you call `DescribeAgents` as is without passing any parameters.
+%% you call `DescribeAgents' as is without passing any parameters.
 describe_agents(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_agents(Client, Input, []).
@@ -255,7 +255,7 @@ describe_configurations(Client, Input, Options)
 %% @doc Lists exports as specified by ID.
 %%
 %% All continuous exports associated with your user account can be listed if
-%% you call `DescribeContinuousExports` as is without passing any parameters.
+%% you call `DescribeContinuousExports' as is without passing any parameters.
 describe_continuous_exports(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_continuous_exports(Client, Input, []).
@@ -263,7 +263,7 @@ describe_continuous_exports(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeContinuousExports">>, Input, Options).
 
-%% @doc `DescribeExportConfigurations` is deprecated.
+%% @doc `DescribeExportConfigurations' is deprecated.
 %%
 %% Use DescribeImportTasks, instead.
 describe_export_configurations(Client, Input)
@@ -295,7 +295,7 @@ describe_import_tasks(Client, Input, Options)
 
 %% @doc Retrieves a list of configuration items that have tags as specified
 %% by the key-value pairs, name and value, passed to the optional parameter
-%% `filters`.
+%% `filters'.
 %%
 %% There are three valid tag filter names:
 %%
@@ -306,7 +306,7 @@ describe_import_tasks(Client, Input, Options)
 %% </li> <li> configurationId
 %%
 %% </li> </ul> Also, all configuration items associated with your user
-%% account that have tags can be listed if you call `DescribeTags` as is
+%% account that have tags can be listed if you call `DescribeTags' as is
 %% without passing any parameters.
 describe_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -325,7 +325,7 @@ disassociate_configuration_items_from_application(Client, Input, Options)
 
 %% @doc Deprecated.
 %%
-%% Use `StartExportTask` instead.
+%% Use `StartExportTask' instead.
 %%
 %% Exports all discovered configuration data to an Amazon S3 bucket or an
 %% application that enables you to view and evaluate the data. Data includes
@@ -352,7 +352,7 @@ get_discovery_summary(Client, Input, Options)
     request(Client, <<"GetDiscoverySummary">>, Input, Options).
 
 %% @doc Retrieves a list of configuration items as specified by the value
-%% passed to the required parameter `configurationType`.
+%% passed to the required parameter `configurationType'.
 %%
 %% Optional filtering may be applied to refine search results.
 list_configurations(Client, Input)
@@ -391,13 +391,13 @@ start_data_collection_by_agent_ids(Client, Input, Options)
 
 %% @doc Begins the export of discovered data to an S3 bucket.
 %%
-%% If you specify `agentIds` in a filter, the task exports up to 72 hours of
+%% If you specify `agentIds' in a filter, the task exports up to 72 hours of
 %% detailed data collected by the identified Application Discovery Agent,
 %% including network, process, and performance details. A time range for
-%% exported agent data may be set by using `startTime` and `endTime`. Export
+%% exported agent data may be set by using `startTime' and `endTime'. Export
 %% of detailed agent data is limited to five concurrently running exports.
 %%
-%% If you do not include an `agentIds` filter, summary data is exported that
+%% If you do not include an `agentIds' filter, summary data is exported that
 %% includes both AWS Agentless Discovery Connector data and summary data from
 %% AWS Discovery Agents. Export of summary data is limited to two exports per
 %% day.
@@ -428,7 +428,7 @@ start_export_task(Client, Input, Options)
 %% </li> <li> Upload your import file to an Amazon S3 bucket, and make a note
 %% of it's Object URL. Your import file must be in the CSV format.
 %%
-%% </li> <li> Use the console or the `StartImportTask` command with the AWS
+%% </li> <li> Use the console or the `StartImportTask' command with the AWS
 %% CLI or one of the AWS SDKs to import the records from your file.
 %%
 %% </li> </ol> For more information, including step-by-step procedures, see

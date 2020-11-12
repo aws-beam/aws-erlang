@@ -51,7 +51,7 @@
 
 %% @doc Creates a signaling channel.
 %%
-%% `CreateSignalingChannel` is an asynchronous operation.
+%% `CreateSignalingChannel' is an asynchronous operation.
 create_signaling_channel(Client, Input) ->
     create_signaling_channel(Client, Input, []).
 create_signaling_channel(Client, Input0, Options) ->
@@ -73,11 +73,11 @@ create_signaling_channel(Client, Input0, Options) ->
 %% number. When you change the stream's metadata, Kinesis Video Streams
 %% updates the version.
 %%
-%% `CreateStream` is an asynchronous operation.
+%% `CreateStream' is an asynchronous operation.
 %%
 %% For information about how the service works, see How it Works.
 %%
-%% You must have permissions for the `KinesisVideo:CreateStream` action.
+%% You must have permissions for the `KinesisVideo:CreateStream' action.
 create_stream(Client, Input) ->
     create_stream(Client, Input, []).
 create_stream(Client, Input0, Options) ->
@@ -95,7 +95,7 @@ create_stream(Client, Input0, Options) ->
 
 %% @doc Deletes a specified signaling channel.
 %%
-%% `DeleteSignalingChannel` is an asynchronous operation. If you don't
+%% `DeleteSignalingChannel' is an asynchronous operation. If you don't
 %% specify the channel's current version, the most recent version is deleted.
 delete_signaling_channel(Client, Input) ->
     delete_signaling_channel(Client, Input, []).
@@ -121,9 +121,9 @@ delete_signaling_channel(Client, Input0, Options) ->
 %% it, you can specify the stream version. Kinesis Video Streams assigns a
 %% version to each stream. When you update a stream, Kinesis Video Streams
 %% assigns a new version number. To get the latest stream version, use the
-%% `DescribeStream` API.
+%% `DescribeStream' API.
 %%
-%% This operation requires permission for the `KinesisVideo:DeleteStream`
+%% This operation requires permission for the `KinesisVideo:DeleteStream'
 %% action.
 delete_stream(Client, Input) ->
     delete_stream(Client, Input, []).
@@ -161,7 +161,7 @@ describe_signaling_channel(Client, Input0, Options) ->
 
 %% @doc Returns the most current information about the specified stream.
 %%
-%% You must specify either the `StreamName` or the `StreamARN`.
+%% You must specify either the `StreamName' or the `StreamARN'.
 describe_stream(Client, Input) ->
     describe_stream(Client, Input, []).
 describe_stream(Client, Input0, Options) ->
@@ -181,13 +181,13 @@ describe_stream(Client, Input0, Options) ->
 %% writing.
 %%
 %% Use this endpoint in your application to read from the specified stream
-%% (using the `GetMedia` or `GetMediaForFragmentList` operations) or write to
-%% it (using the `PutMedia` operation).
+%% (using the `GetMedia' or `GetMediaForFragmentList' operations) or write to
+%% it (using the `PutMedia' operation).
 %%
 %% The returned endpoint does not have the API name appended. The client
 %% needs to add the API name to the returned endpoint.
 %%
-%% In the request, specify the stream either by `StreamName` or `StreamARN`.
+%% In the request, specify the stream either by `StreamName' or `StreamARN'.
 get_data_endpoint(Client, Input) ->
     get_data_endpoint(Client, Input, []).
 get_data_endpoint(Client, Input0, Options) ->
@@ -206,19 +206,19 @@ get_data_endpoint(Client, Input0, Options) ->
 %% @doc Provides an endpoint for the specified signaling channel to send and
 %% receive messages.
 %%
-%% This API uses the `SingleMasterChannelEndpointConfiguration` input
-%% parameter, which consists of the `Protocols` and `Role` properties.
+%% This API uses the `SingleMasterChannelEndpointConfiguration' input
+%% parameter, which consists of the `Protocols' and `Role' properties.
 %%
-%% `Protocols` is used to determine the communication mechanism. For example,
-%% if you specify `WSS` as the protocol, this API produces a secure websocket
-%% endpoint. If you specify `HTTPS` as the protocol, this API generates an
+%% `Protocols' is used to determine the communication mechanism. For example,
+%% if you specify `WSS' as the protocol, this API produces a secure websocket
+%% endpoint. If you specify `HTTPS' as the protocol, this API generates an
 %% HTTPS endpoint.
 %%
-%% `Role` determines the messaging permissions. A `MASTER` role results in
+%% `Role' determines the messaging permissions. A `MASTER' role results in
 %% this API generating an endpoint that a client can use to communicate with
-%% any of the viewers on the channel. A `VIEWER` role results in this API
+%% any of the viewers on the channel. A `VIEWER' role results in this API
 %% generating an endpoint that a client can use to communicate only with a
-%% `MASTER`.
+%% `MASTER'.
 get_signaling_channel_endpoint(Client, Input) ->
     get_signaling_channel_endpoint(Client, Input, []).
 get_signaling_channel_endpoint(Client, Input0, Options) ->
@@ -234,11 +234,11 @@ get_signaling_channel_endpoint(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns an array of `ChannelInfo` objects.
+%% @doc Returns an array of `ChannelInfo' objects.
 %%
 %% Each object describes a signaling channel. To retrieve only those channels
 %% that satisfy a specific condition, you can specify a
-%% `ChannelNameCondition`.
+%% `ChannelNameCondition'.
 list_signaling_channels(Client, Input) ->
     list_signaling_channels(Client, Input, []).
 list_signaling_channels(Client, Input0, Options) ->
@@ -254,10 +254,10 @@ list_signaling_channels(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns an array of `StreamInfo` objects.
+%% @doc Returns an array of `StreamInfo' objects.
 %%
 %% Each object describes a stream. To retrieve only streams that satisfy a
-%% specific condition, you can specify a `StreamNameCondition`.
+%% specific condition, you can specify a `StreamNameCondition'.
 list_streams(Client, Input) ->
     list_streams(Client, Input, []).
 list_streams(Client, Input0, Options) ->
@@ -292,8 +292,8 @@ list_tags_for_resource(Client, Input0, Options) ->
 
 %% @doc Returns a list of tags associated with the specified stream.
 %%
-%% In the request, you must specify either the `StreamName` or the
-%% `StreamARN`.
+%% In the request, you must specify either the `StreamName' or the
+%% `StreamARN'.
 list_tags_for_stream(Client, Input) ->
     list_tags_for_stream(Client, Input, []).
 list_tags_for_stream(Client, Input0, Options) ->
@@ -339,9 +339,9 @@ tag_resource(Client, Input0, Options) ->
 %% information, see Using Cost Allocation Tags in the AWS Billing and Cost
 %% Management User Guide.
 %%
-%% You must provide either the `StreamName` or the `StreamARN`.
+%% You must provide either the `StreamName' or the `StreamARN'.
 %%
-%% This operation requires permission for the `KinesisVideo:TagStream`
+%% This operation requires permission for the `KinesisVideo:TagStream'
 %% action.
 %%
 %% Kinesis video streams support up to 50 tags.
@@ -384,7 +384,7 @@ untag_resource(Client, Input0, Options) ->
 %% In the request, specify only a tag key or keys; don't specify the value.
 %% If you specify a tag key that does not exist, it's ignored.
 %%
-%% In the request, you must provide the `StreamName` or `StreamARN`.
+%% In the request, you must provide the `StreamName' or `StreamARN'.
 untag_stream(Client, Input) ->
     untag_stream(Client, Input, []).
 untag_stream(Client, Input0, Options) ->
@@ -404,13 +404,13 @@ untag_stream(Client, Input0, Options) ->
 %% value that you specify.
 %%
 %% To indicate whether you want to increase or decrease the data retention
-%% period, specify the `Operation` parameter in the request body. In the
-%% request, you must specify either the `StreamName` or the `StreamARN`.
+%% period, specify the `Operation' parameter in the request body. In the
+%% request, you must specify either the `StreamName' or the `StreamARN'.
 %%
 %% The retention period that you specify replaces the current value.
 %%
 %% This operation requires permission for the
-%% `KinesisVideo:UpdateDataRetention` action.
+%% `KinesisVideo:UpdateDataRetention' action.
 %%
 %% Changing the data retention period affects the data in the stream as
 %% follows:
@@ -446,10 +446,10 @@ update_data_retention(Client, Input0, Options) ->
 %%
 %% This is an asynchronous operation and takes time to complete.
 %%
-%% If the `MessageTtlSeconds` value is updated (either increased or reduced),
+%% If the `MessageTtlSeconds' value is updated (either increased or reduced),
 %% it only applies to new messages sent via this channel after it's been
 %% updated. Existing messages are still expired as per the previous
-%% `MessageTtlSeconds` value.
+%% `MessageTtlSeconds' value.
 update_signaling_channel(Client, Input) ->
     update_signaling_channel(Client, Input, []).
 update_signaling_channel(Client, Input0, Options) ->
@@ -474,9 +474,9 @@ update_signaling_channel(Client, Input0, Options) ->
 %% updating it, you can specify the stream version. Kinesis Video Streams
 %% assigns a version to each stream. When you update a stream, Kinesis Video
 %% Streams assigns a new version number. To get the latest stream version,
-%% use the `DescribeStream` API.
+%% use the `DescribeStream' API.
 %%
-%% `UpdateStream` is an asynchronous operation, and takes time to complete.
+%% `UpdateStream' is an asynchronous operation, and takes time to complete.
 update_stream(Client, Input) ->
     update_stream(Client, Input, []).
 update_stream(Client, Input0, Options) ->

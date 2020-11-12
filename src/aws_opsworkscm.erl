@@ -22,8 +22,8 @@
 %% to run until they are deleted.
 %%
 %% </li> <li> Engine: The engine is the specific configuration manager that
-%% you want to use. Valid values in this release include `ChefAutomate` and
-%% `Puppet`.
+%% you want to use. Valid values in this release include `ChefAutomate' and
+%% `Puppet'.
 %%
 %% </li> <li> Backup: This is an application-level backup of the data that
 %% the configuration manager stores. AWS OpsWorks CM creates an S3 bucket for
@@ -121,26 +121,26 @@
 %% @doc Associates a new node with the server.
 %%
 %% For more information about how to disassociate a node, see
-%% `DisassociateNode`.
+%% `DisassociateNode'.
 %%
-%% On a Chef server: This command is an alternative to `knife bootstrap`.
+%% On a Chef server: This command is an alternative to `knife bootstrap'.
 %%
 %% Example (Chef): `aws opsworks-cm associate-node --server-name MyServer
 %% --node-name MyManagedNode --engine-attributes
 %% "Name=CHEF_ORGANIZATION,Value=default"
-%% "Name=CHEF_NODE_PUBLIC_KEY,Value=public-key-pem"`
+%% "Name=CHEF_NODE_PUBLIC_KEY,Value=public-key-pem"'
 %%
 %% On a Puppet server, this command is an alternative to the `puppet cert
-%% sign` command that signs a Puppet node CSR.
+%% sign' command that signs a Puppet node CSR.
 %%
 %% Example (Puppet): `aws opsworks-cm associate-node --server-name MyServer
 %% --node-name MyManagedNode --engine-attributes
-%% "Name=PUPPET_NODE_CSR,Value=csr-pem"`
+%% "Name=PUPPET_NODE_CSR,Value=csr-pem"'
 %%
-%% A node can can only be associated with servers that are in a `HEALTHY`
-%% state. Otherwise, an `InvalidStateException` is thrown. A
-%% `ResourceNotFoundException` is thrown when the server does not exist. A
-%% `ValidationException` is raised when parameters of the request are not
+%% A node can can only be associated with servers that are in a `HEALTHY'
+%% state. Otherwise, an `InvalidStateException' is thrown. A
+%% `ResourceNotFoundException' is thrown when the server does not exist. A
+%% `ValidationException' is raised when parameters of the request are not
 %% valid. The AssociateNode API call can be integrated into Auto Scaling
 %% configurations, AWS Cloudformation templates, or the user data of a
 %% server's instance.
@@ -153,20 +153,20 @@ associate_node(Client, Input, Options)
 
 %% @doc Creates an application-level backup of a server.
 %%
-%% While the server is in the `BACKING_UP` state, the server cannot be
+%% While the server is in the `BACKING_UP' state, the server cannot be
 %% changed, and no additional backup can be created.
 %%
-%% Backups can be created for servers in `RUNNING`, `HEALTHY`, and
-%% `UNHEALTHY` states. By default, you can create a maximum of 50 manual
+%% Backups can be created for servers in `RUNNING', `HEALTHY', and
+%% `UNHEALTHY' states. By default, you can create a maximum of 50 manual
 %% backups.
 %%
 %% This operation is asynchronous.
 %%
-%% A `LimitExceededException` is thrown when the maximum number of manual
-%% backups is reached. An `InvalidStateException` is thrown when the server
+%% A `LimitExceededException' is thrown when the maximum number of manual
+%% backups is reached. An `InvalidStateException' is thrown when the server
 %% is not in any of the following states: RUNNING, HEALTHY, or UNHEALTHY. A
-%% `ResourceNotFoundException` is thrown when the server is not found. A
-%% `ValidationException` is thrown when parameters of the request are not
+%% `ResourceNotFoundException' is thrown when the server is not found. A
+%% `ValidationException' is thrown when parameters of the request are not
 %% valid.
 create_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -177,19 +177,19 @@ create_backup(Client, Input, Options)
 
 %% @doc Creates and immedately starts a new server.
 %%
-%% The server is ready to use when it is in the `HEALTHY` state. By default,
+%% The server is ready to use when it is in the `HEALTHY' state. By default,
 %% you can create a maximum of 10 servers.
 %%
 %% This operation is asynchronous.
 %%
-%% A `LimitExceededException` is thrown when you have created the maximum
-%% number of servers (10). A `ResourceAlreadyExistsException` is thrown when
+%% A `LimitExceededException' is thrown when you have created the maximum
+%% number of servers (10). A `ResourceAlreadyExistsException' is thrown when
 %% a server with the same name already exists in the account. A
-%% `ResourceNotFoundException` is thrown when you specify a backup ID that is
-%% not valid or is for a backup that does not exist. A `ValidationException`
+%% `ResourceNotFoundException' is thrown when you specify a backup ID that is
+%% not valid or is for a backup that does not exist. A `ValidationException'
 %% is thrown when parameters of the request are not valid.
 %%
-%% If you do not specify a security group by adding the `SecurityGroupIds`
+%% If you do not specify a security group by adding the `SecurityGroupIds'
 %% parameter, AWS OpsWorks creates a new security group.
 %%
 %% Chef Automate: The default security group opens the Chef server to the
@@ -207,7 +207,7 @@ create_backup(Client, Input, Options)
 %%
 %% To specify your own domain for a server, and provide your own self-signed
 %% or CA-signed certificate and private key, specify values for
-%% `CustomDomain`, `CustomCertificate`, and `CustomPrivateKey`.
+%% `CustomDomain', `CustomCertificate', and `CustomPrivateKey'.
 create_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_server(Client, Input, []).
@@ -220,9 +220,9 @@ create_server(Client, Input, Options)
 %% You can delete both manual and automated backups. This operation is
 %% asynchronous.
 %%
-%% An `InvalidStateException` is thrown when a backup deletion is already in
-%% progress. A `ResourceNotFoundException` is thrown when the backup does not
-%% exist. A `ValidationException` is thrown when parameters of the request
+%% An `InvalidStateException' is thrown when a backup deletion is already in
+%% progress. A `ResourceNotFoundException' is thrown when the backup does not
+%% exist. A `ValidationException' is thrown when parameters of the request
 %% are not valid.
 delete_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -234,16 +234,16 @@ delete_backup(Client, Input, Options)
 %% @doc Deletes the server and the underlying AWS CloudFormation stacks
 %% (including the server's EC2 instance).
 %%
-%% When you run this command, the server state is updated to `DELETING`.
-%% After the server is deleted, it is no longer returned by `DescribeServer`
+%% When you run this command, the server state is updated to `DELETING'.
+%% After the server is deleted, it is no longer returned by `DescribeServer'
 %% requests. If the AWS CloudFormation stack cannot be deleted, the server
 %% cannot be deleted.
 %%
 %% This operation is asynchronous.
 %%
-%% An `InvalidStateException` is thrown when a server deletion is already in
-%% progress. A `ResourceNotFoundException` is thrown when the server does not
-%% exist. A `ValidationException` is raised when parameters of the request
+%% An `InvalidStateException' is thrown when a server deletion is already in
+%% progress. A `ResourceNotFoundException' is thrown when the server does not
+%% exist. A `ValidationException' is raised when parameters of the request
 %% are not valid.
 delete_server(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -269,8 +269,8 @@ describe_account_attributes(Client, Input, Options)
 %%
 %% This operation is synchronous.
 %%
-%% A `ResourceNotFoundException` is thrown when the backup does not exist. A
-%% `ValidationException` is raised when parameters of the request are not
+%% A `ResourceNotFoundException' is thrown when the backup does not exist. A
+%% `ValidationException' is raised when parameters of the request are not
 %% valid.
 describe_backups(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -285,8 +285,8 @@ describe_backups(Client, Input, Options)
 %%
 %% This operation is synchronous.
 %%
-%% A `ResourceNotFoundException` is thrown when the server does not exist. A
-%% `ValidationException` is raised when parameters of the request are not
+%% A `ResourceNotFoundException' is thrown when the server does not exist. A
+%% `ValidationException' is raised when parameters of the request are not
 %% valid.
 describe_events(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -298,9 +298,9 @@ describe_events(Client, Input, Options)
 %% @doc Returns the current status of an existing association or
 %% disassociation request.
 %%
-%% A `ResourceNotFoundException` is thrown when no recent association or
+%% A `ResourceNotFoundException' is thrown when no recent association or
 %% disassociation request with the specified token is found, or when the
-%% server does not exist. A `ValidationException` is raised when parameters
+%% server does not exist. A `ValidationException' is raised when parameters
 %% of the request are not valid.
 describe_node_association_status(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -317,8 +317,8 @@ describe_node_association_status(Client, Input, Options)
 %%
 %% This operation is synchronous.
 %%
-%% A `ResourceNotFoundException` is thrown when the server does not exist. A
-%% `ValidationException` is raised when parameters of the request are not
+%% A `ResourceNotFoundException' is thrown when the server does not exist. A
+%% `ValidationException' is raised when parameters of the request are not
 %% valid.
 describe_servers(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -332,12 +332,12 @@ describe_servers(Client, Input, Options)
 %%
 %% After a node is disassociated, the node key pair is no longer valid for
 %% accessing the configuration manager's API. For more information about how
-%% to associate a node, see `AssociateNode`.
+%% to associate a node, see `AssociateNode'.
 %%
-%% A node can can only be disassociated from a server that is in a `HEALTHY`
-%% state. Otherwise, an `InvalidStateException` is thrown. A
-%% `ResourceNotFoundException` is thrown when the server does not exist. A
-%% `ValidationException` is raised when parameters of the request are not
+%% A node can can only be disassociated from a server that is in a `HEALTHY'
+%% state. Otherwise, an `InvalidStateException' is thrown. A
+%% `ResourceNotFoundException' is thrown when the server does not exist. A
+%% `ValidationException' is raised when parameters of the request are not
 %% valid.
 disassociate_node(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -354,9 +354,9 @@ disassociate_node(Client, Input, Options)
 %%
 %% This operation is synchronous.
 %%
-%% A `ValidationException` is raised when parameters of the request are not
-%% valid. A `ResourceNotFoundException` is thrown when the server does not
-%% exist. An `InvalidStateException` is thrown when the server is in any of
+%% A `ValidationException' is raised when parameters of the request are not
+%% valid. A `ResourceNotFoundException' is thrown when the server does not
+%% exist. An `InvalidStateException' is thrown when the server is in any of
 %% the following states: CREATING, TERMINATED, FAILED or DELETING.
 export_server_engine_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -375,8 +375,8 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
-%% @doc Restores a backup to a server that is in a `CONNECTION_LOST`,
-%% `HEALTHY`, `RUNNING`, `UNHEALTHY`, or `TERMINATED` state.
+%% @doc Restores a backup to a server that is in a `CONNECTION_LOST',
+%% `HEALTHY', `RUNNING', `UNHEALTHY', or `TERMINATED' state.
 %%
 %% When you run RestoreServer, the server's EC2 instance is deleted, and a
 %% new EC2 instance is configured. RestoreServer maintains the existing
@@ -384,16 +384,16 @@ list_tags_for_resource(Client, Input, Options)
 %% devices (nodes) should continue to work.
 %%
 %% Restoring from a backup is performed by creating a new EC2 instance. If
-%% restoration is successful, and the server is in a `HEALTHY` state, AWS
+%% restoration is successful, and the server is in a `HEALTHY' state, AWS
 %% OpsWorks CM switches traffic over to the new instance. After restoration
-%% is finished, the old EC2 instance is maintained in a `Running` or
-%% `Stopped` state, but is eventually terminated.
+%% is finished, the old EC2 instance is maintained in a `Running' or
+%% `Stopped' state, but is eventually terminated.
 %%
 %% This operation is asynchronous.
 %%
-%% An `InvalidStateException` is thrown when the server is not in a valid
-%% state. A `ResourceNotFoundException` is thrown when the server does not
-%% exist. A `ValidationException` is raised when parameters of the request
+%% An `InvalidStateException' is thrown when the server is not in a valid
+%% state. A `ResourceNotFoundException' is thrown when the server does not
+%% exist. A `ValidationException' is raised when parameters of the request
 %% are not valid.
 restore_server(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -406,12 +406,12 @@ restore_server(Client, Input, Options)
 %%
 %% This command can be useful if an earlier maintenance attempt failed, and
 %% the underlying cause of maintenance failure has been resolved. The server
-%% is in an `UNDER_MAINTENANCE` state while maintenance is in progress.
+%% is in an `UNDER_MAINTENANCE' state while maintenance is in progress.
 %%
-%% Maintenance can only be started on servers in `HEALTHY` and `UNHEALTHY`
-%% states. Otherwise, an `InvalidStateException` is thrown. A
-%% `ResourceNotFoundException` is thrown when the server does not exist. A
-%% `ValidationException` is raised when parameters of the request are not
+%% Maintenance can only be started on servers in `HEALTHY' and `UNHEALTHY'
+%% states. Otherwise, an `InvalidStateException' is thrown. A
+%% `ResourceNotFoundException' is thrown when the server does not exist. A
+%% `ValidationException' is raised when parameters of the request are not
 %% valid.
 start_maintenance(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -449,17 +449,17 @@ update_server(Client, Input, Options)
 
 %% @doc Updates engine-specific attributes on a specified server.
 %%
-%% The server enters the `MODIFYING` state when this operation is in
+%% The server enters the `MODIFYING' state when this operation is in
 %% progress. Only one update can occur at a time. You can use this command to
-%% reset a Chef server's public key (`CHEF_PIVOTAL_KEY`) or a Puppet server's
-%% admin password (`PUPPET_ADMIN_PASSWORD`).
+%% reset a Chef server's public key (`CHEF_PIVOTAL_KEY') or a Puppet server's
+%% admin password (`PUPPET_ADMIN_PASSWORD').
 %%
 %% This operation is asynchronous.
 %%
-%% This operation can only be called for servers in `HEALTHY` or `UNHEALTHY`
-%% states. Otherwise, an `InvalidStateException` is raised. A
-%% `ResourceNotFoundException` is thrown when the server does not exist. A
-%% `ValidationException` is raised when parameters of the request are not
+%% This operation can only be called for servers in `HEALTHY' or `UNHEALTHY'
+%% states. Otherwise, an `InvalidStateException' is raised. A
+%% `ResourceNotFoundException' is thrown when the server does not exist. A
+%% `ValidationException' is raised when parameters of the request are not
 %% valid.
 update_server_engine_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->

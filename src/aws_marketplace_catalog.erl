@@ -33,7 +33,7 @@
 
 %% @doc Used to cancel an open change request.
 %%
-%% Must be sent before the status of the request changes to `APPLYING`, the
+%% Must be sent before the status of the request changes to `APPLYING', the
 %% final stage of completing your change request. You can describe a change
 %% during the 60-day request history retention period for API calls.
 cancel_change_set(Client, Input) ->
@@ -96,8 +96,8 @@ describe_entity(Client, Catalog, EntityId, Options)
 %% @doc Returns the list of change sets owned by the account being used to
 %% make the call.
 %%
-%% You can filter this list by providing any combination of `entityId`,
-%% `ChangeSetName`, and status. If you provide more than one filter, the API
+%% You can filter this list by providing any combination of `entityId',
+%% `ChangeSetName', and status. If you provide more than one filter, the API
 %% operation applies a logical AND between the filters.
 %%
 %% You can describe a change during the 60-day request history retention
@@ -140,11 +140,11 @@ list_entities(Client, Input0, Options) ->
 %% all the entities targeted by the different changes are locked until the
 %% ChangeSet has completed (either succeeded, cancelled, or failed). If you
 %% try to start a ChangeSet containing a change against an entity that is
-%% already locked, you will receive a `ResourceInUseException`.
+%% already locked, you will receive a `ResourceInUseException'.
 %%
 %% For example, you cannot start the ChangeSet described in the example below
 %% because it contains two changes to execute the same change type
-%% (`AddRevisions`) against the same entity (`entity-id@1)`.
+%% (`AddRevisions') against the same entity (`entity-id@1)'.
 start_change_set(Client, Input) ->
     start_change_set(Client, Input, []).
 start_change_set(Client, Input0, Options) ->

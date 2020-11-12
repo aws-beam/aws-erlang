@@ -18,29 +18,29 @@
 %% make the same change in other Regions, execute the same command for each
 %% Region to apply the change to.
 %%
-%% For example, if your Region is set to `us-west-2`, when you use `
-%% `CreateMembers` ` to add a member account to Security Hub, the association
+%% For example, if your Region is set to `us-west-2', when you use `
+%% `CreateMembers' ' to add a member account to Security Hub, the association
 %% of the member account with the master account is created only in the
-%% `us-west-2` Region. Security Hub must be enabled for the member account in
+%% `us-west-2' Region. Security Hub must be enabled for the member account in
 %% the same Region that the invitation was sent from.
 %%
 %% The following throttling limits apply to using Security Hub API
 %% operations.
 %%
-%% <ul> <li> ` `BatchEnableStandards` ` - `RateLimit` of 1 request per
-%% second, `BurstLimit` of 1 request per second.
+%% <ul> <li> ` `BatchEnableStandards' ' - `RateLimit' of 1 request per
+%% second, `BurstLimit' of 1 request per second.
 %%
-%% </li> <li> ` `GetFindings` ` - `RateLimit` of 3 requests per second.
-%% `BurstLimit` of 6 requests per second.
+%% </li> <li> ` `GetFindings' ' - `RateLimit' of 3 requests per second.
+%% `BurstLimit' of 6 requests per second.
 %%
-%% </li> <li> ` `UpdateFindings` ` - `RateLimit` of 1 request per second.
-%% `BurstLimit` of 5 requests per second.
+%% </li> <li> ` `UpdateFindings' ' - `RateLimit' of 1 request per second.
+%% `BurstLimit' of 5 requests per second.
 %%
-%% </li> <li> ` `UpdateStandardsControl` ` - `RateLimit` of 1 request per
-%% second, `BurstLimit` of 5 requests per second.
+%% </li> <li> ` `UpdateStandardsControl' ' - `RateLimit' of 1 request per
+%% second, `BurstLimit' of 5 requests per second.
 %%
-%% </li> <li> All other operations - `RateLimit` of 10 requests per second.
-%% `BurstLimit` of 30 requests per second.
+%% </li> <li> All other operations - `RateLimit' of 10 requests per second.
+%% `BurstLimit' of 30 requests per second.
 %%
 %% </li> </ul>
 -module(aws_securityhub).
@@ -159,7 +159,7 @@ accept_invitation(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disables the standards specified by the provided
-%% `StandardsSubscriptionArns`.
+%% `StandardsSubscriptionArns'.
 %%
 %% For more information, see Security Standards section of the AWS Security
 %% Hub User Guide.
@@ -178,9 +178,9 @@ batch_disable_standards(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Enables the standards specified by the provided `StandardsArn`.
+%% @doc Enables the standards specified by the provided `StandardsArn'.
 %%
-%% To obtain the ARN for a standard, use the ` `DescribeStandards` `
+%% To obtain the ARN for a standard, use the ` `DescribeStandards' '
 %% operation.
 %%
 %% For more information, see the Security Standards section of the AWS
@@ -209,27 +209,27 @@ batch_enable_standards(Client, Input0, Options) ->
 %% The maximum allowed size for a finding is 240 Kb. An error is returned for
 %% any finding larger than 240 Kb.
 %%
-%% After a finding is created, `BatchImportFindings` cannot be used to update
+%% After a finding is created, `BatchImportFindings' cannot be used to update
 %% the following finding fields and objects, which Security Hub customers use
 %% to manage their investigation workflow.
 %%
-%% <ul> <li> `Confidence`
+%% <ul> <li> `Confidence'
 %%
-%% </li> <li> `Criticality`
+%% </li> <li> `Criticality'
 %%
-%% </li> <li> `Note`
+%% </li> <li> `Note'
 %%
-%% </li> <li> `RelatedFindings`
+%% </li> <li> `RelatedFindings'
 %%
-%% </li> <li> `Severity`
+%% </li> <li> `Severity'
 %%
-%% </li> <li> `Types`
+%% </li> <li> `Types'
 %%
-%% </li> <li> `UserDefinedFields`
+%% </li> <li> `UserDefinedFields'
 %%
-%% </li> <li> `VerificationState`
+%% </li> <li> `VerificationState'
 %%
-%% </li> <li> `Workflow`
+%% </li> <li> `Workflow'
 %%
 %% </li> </ul>
 batch_import_findings(Client, Input) ->
@@ -254,29 +254,29 @@ batch_import_findings(Client, Input0, Options) ->
 %% update findings for their account and their member accounts. Member
 %% accounts can update findings for their account.
 %%
-%% Updates from `BatchUpdateFindings` do not affect the value of `UpdatedAt`
+%% Updates from `BatchUpdateFindings' do not affect the value of `UpdatedAt'
 %% for a finding.
 %%
-%% Master and member accounts can use `BatchUpdateFindings` to update the
+%% Master and member accounts can use `BatchUpdateFindings' to update the
 %% following finding fields and objects.
 %%
-%% <ul> <li> `Confidence`
+%% <ul> <li> `Confidence'
 %%
-%% </li> <li> `Criticality`
+%% </li> <li> `Criticality'
 %%
-%% </li> <li> `Note`
+%% </li> <li> `Note'
 %%
-%% </li> <li> `RelatedFindings`
+%% </li> <li> `RelatedFindings'
 %%
-%% </li> <li> `Severity`
+%% </li> <li> `Severity'
 %%
-%% </li> <li> `Types`
+%% </li> <li> `Types'
 %%
-%% </li> <li> `UserDefinedFields`
+%% </li> <li> `UserDefinedFields'
 %%
-%% </li> <li> `VerificationState`
+%% </li> <li> `VerificationState'
 %%
-%% </li> <li> `Workflow`
+%% </li> <li> `Workflow'
 %%
 %% </li> </ul> You can configure IAM policies to restrict access to fields
 %% and field values. For example, you might not want member accounts to be
@@ -321,7 +321,7 @@ create_action_target(Client, Input0, Options) ->
 %% An insight is a consolidation of findings that relate to a security issue
 %% that requires attention or remediation.
 %%
-%% To group the related findings in the insight, use the `GroupByAttribute`.
+%% To group the related findings in the insight, use the `GroupByAttribute'.
 create_insight(Client, Input) ->
     create_insight(Client, Input, []).
 create_insight(Client, Input0, Options) ->
@@ -343,10 +343,10 @@ create_insight(Client, Input0, Options) ->
 %%
 %% To successfully create a member, you must use this action from an account
 %% that already has Security Hub enabled. To enable Security Hub, you can use
-%% the ` `EnableSecurityHub` ` operation.
+%% the ` `EnableSecurityHub' ' operation.
 %%
-%% After you use `CreateMembers` to create member account associations in
-%% Security Hub, you must use the ` `InviteMembers` ` operation to invite the
+%% After you use `CreateMembers' to create member account associations in
+%% Security Hub, you must use the ` `InviteMembers' ' operation to invite the
 %% accounts to enable Security Hub and become member accounts in Security
 %% Hub.
 %%
@@ -357,7 +357,7 @@ create_insight(Client, Input0, Options) ->
 %% to both the member and master accounts.
 %%
 %% To remove the association between the master and member accounts, use the
-%% ` `DisassociateFromMasterAccount` ` or ` `DisassociateMembers` `
+%% ` `DisassociateFromMasterAccount' ' or ` `DisassociateMembers' '
 %% operation.
 create_members(Client, Input) ->
     create_members(Client, Input, []).
@@ -410,7 +410,7 @@ delete_action_target(Client, ActionTargetArn, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the insight specified by the `InsightArn`.
+%% @doc Deletes the insight specified by the `InsightArn'.
 delete_insight(Client, InsightArn, Input) ->
     delete_insight(Client, InsightArn, Input, []).
 delete_insight(Client, InsightArn, Input0, Options) ->
@@ -477,7 +477,7 @@ describe_action_targets(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns details about the Hub resource in your account, including the
-%% `HubArn` and the time when you enabled Security Hub.
+%% `HubArn' and the time when you enabled Security Hub.
 describe_hub(Client, HubArn)
   when is_map(Client) ->
     describe_hub(Client, HubArn, []).
@@ -675,7 +675,7 @@ enable_import_findings_for_product(Client, Input0, Options) ->
 %% necessary to gather findings from other services that are integrated with
 %% Security Hub.
 %%
-%% When you use the `EnableSecurityHub` operation to enable Security Hub, you
+%% When you use the `EnableSecurityHub' operation to enable Security Hub, you
 %% also automatically enable the following standards.
 %%
 %% <ul> <li> CIS AWS Foundations
@@ -686,11 +686,11 @@ enable_import_findings_for_product(Client, Input0, Options) ->
 %% Standard (PCI DSS) standard.
 %%
 %% To not enable the automatically enabled standards, set
-%% `EnableDefaultStandards` to `false`.
+%% `EnableDefaultStandards' to `false'.
 %%
 %% After you enable Security Hub, to enable a standard, use the `
-%% `BatchEnableStandards` ` operation. To disable a standard, use the `
-%% `BatchDisableStandards` ` operation.
+%% `BatchEnableStandards' ' operation. To disable a standard, use the `
+%% `BatchDisableStandards' ' operation.
 %%
 %% To learn more, see Setting Up AWS Security Hub in the AWS Security Hub
 %% User Guide.
@@ -827,7 +827,7 @@ get_members(Client, Input0, Options) ->
 %% Hub master account that the invitation is sent from.
 %%
 %% Before you can use this action to invite a member, you must first use the
-%% ` `CreateMembers` ` action to create the member account in Security Hub.
+%% ` `CreateMembers' ' action to create the member account in Security Hub.
 %%
 %% When the account owner accepts the invitation to become a member account
 %% and enables Security Hub, the master account can view the findings
@@ -976,11 +976,11 @@ update_action_target(Client, ActionTargetArn, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc `UpdateFindings` is deprecated.
+%% @doc `UpdateFindings' is deprecated.
 %%
-%% Instead of `UpdateFindings`, use `BatchUpdateFindings`.
+%% Instead of `UpdateFindings', use `BatchUpdateFindings'.
 %%
-%% Updates the `Note` and `RecordState` of the Security Hub-aggregated
+%% Updates the `Note' and `RecordState' of the Security Hub-aggregated
 %% findings that the filter attributes specify. Any member account that can
 %% view the finding also sees the update to the finding.
 update_findings(Client, Input) ->

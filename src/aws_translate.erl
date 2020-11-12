@@ -94,12 +94,12 @@ list_text_translation_jobs(Client, Input, Options)
 %% @doc Starts an asynchronous batch translation job.
 %%
 %% Batch translation jobs can be used to translate large volumes of text
-%% across multiple documents at once. For more information, see `async`.
+%% across multiple documents at once. For more information, see `async'.
 %%
 %% Batch translation jobs can be described with the
-%% `DescribeTextTranslationJob` operation, listed with the
-%% `ListTextTranslationJobs` operation, and stopped with the
-%% `StopTextTranslationJob` operation.
+%% `DescribeTextTranslationJob' operation, listed with the
+%% `ListTextTranslationJobs' operation, and stopped with the
+%% `StopTextTranslationJob' operation.
 %%
 %% Amazon Translate does not support batch translation of multiple source
 %% languages at once.
@@ -112,15 +112,15 @@ start_text_translation_job(Client, Input, Options)
 
 %% @doc Stops an asynchronous batch translation job that is in progress.
 %%
-%% If the job's state is `IN_PROGRESS`, the job will be marked for
-%% termination and put into the `STOP_REQUESTED` state. If the job completes
-%% before it can be stopped, it is put into the `COMPLETED` state. Otherwise,
-%% the job is put into the `STOPPED` state.
+%% If the job's state is `IN_PROGRESS', the job will be marked for
+%% termination and put into the `STOP_REQUESTED' state. If the job completes
+%% before it can be stopped, it is put into the `COMPLETED' state. Otherwise,
+%% the job is put into the `STOPPED' state.
 %%
 %% Asynchronous batch translation jobs are started with the
-%% `StartTextTranslationJob` operation. You can use the
-%% `DescribeTextTranslationJob` or `ListTextTranslationJobs` operations to
-%% get a batch translation job's `JobId`.
+%% `StartTextTranslationJob' operation. You can use the
+%% `DescribeTextTranslationJob' or `ListTextTranslationJobs' operations to
+%% get a batch translation job's `JobId'.
 stop_text_translation_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_text_translation_job(Client, Input, []).
@@ -132,7 +132,7 @@ stop_text_translation_job(Client, Input, Options)
 %% language.
 %%
 %% For a list of available languages and language codes, see
-%% `what-is-languages`.
+%% `what-is-languages'.
 translate_text(Client, Input)
   when is_map(Client), is_map(Input) ->
     translate_text(Client, Input, []).

@@ -209,7 +209,7 @@ create_dedicated_ip_pool(Client, Input0, Options) ->
 %% that contains the content that you plan to send to your customers. Amazon
 %% Pinpoint then sends that message to special email addresses spread across
 %% several major email providers. After about 24 hours, the test is complete,
-%% and you can use the `GetDeliverabilityTestReport` operation to view the
+%% and you can use the `GetDeliverabilityTestReport' operation to view the
 %% results of the test.
 create_deliverability_test_report(Client, Input) ->
     create_deliverability_test_report(Client, Input, []).
@@ -505,7 +505,7 @@ get_deliverability_test_report(Client, ReportId, Options)
 %%
 %% This data is available for a campaign only if the campaign sent email by
 %% using a domain that the Deliverability dashboard is enabled for
-%% (`PutDeliverabilityDashboardOption` operation).
+%% (`PutDeliverabilityDashboardOption' operation).
 get_domain_deliverability_campaign(Client, CampaignId)
   when is_map(Client) ->
     get_domain_deliverability_campaign(Client, CampaignId, []).
@@ -610,7 +610,7 @@ list_dedicated_ip_pools(Client, NextToken, PageSize, Options)
 %% performed, regardless of their statuses.
 %%
 %% For predictive inbox placement tests that are complete, you can use the
-%% `GetDeliverabilityTestReport` operation to view the results.
+%% `GetDeliverabilityTestReport' operation to view the results.
 list_deliverability_test_reports(Client, NextToken, PageSize)
   when is_map(Client) ->
     list_deliverability_test_reports(Client, NextToken, PageSize, []).
@@ -634,7 +634,7 @@ list_deliverability_test_reports(Client, NextToken, PageSize, Options)
 %% specific domain to send email during a specified time range.
 %%
 %% This data is available for a domain only if you enabled the Deliverability
-%% dashboard (`PutDeliverabilityDashboardOption` operation) for the domain.
+%% dashboard (`PutDeliverabilityDashboardOption' operation) for the domain.
 list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, NextToken, PageSize, StartDate)
   when is_map(Client) ->
     list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, NextToken, PageSize, StartDate, []).
@@ -815,7 +815,7 @@ put_configuration_set_tracking_options(Client, ConfigurationSetName, Input0, Opt
 %% associated with your Amazon Pinpoint account.
 %%
 %% The dedicated IP pool you specify must already exist. You can create a new
-%% pool by using the `CreateDedicatedIpPool` operation.
+%% pool by using the `CreateDedicatedIpPool' operation.
 put_dedicated_ip_in_pool(Client, Ip, Input) ->
     put_dedicated_ip_in_pool(Client, Ip, Input, []).
 put_dedicated_ip_in_pool(Client, Ip, Input0, Options) ->

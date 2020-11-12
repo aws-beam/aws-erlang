@@ -122,9 +122,9 @@ create_flow_template(Client, Input, Options)
 %%
 %% This action validates the system instance, prepares the deployment-related
 %% resources. For Greengrass deployments, it updates the Greengrass group
-%% that is specified by the `greengrassGroupName` parameter. It also adds a
-%% file to the S3 bucket specified by the `s3BucketName` parameter. You need
-%% to call `DeploySystemInstance` after running this action.
+%% that is specified by the `greengrassGroupName' parameter. It also adds a
+%% file to the S3 bucket specified by the `s3BucketName' parameter. You need
+%% to call `DeploySystemInstance' after running this action.
 %%
 %% For Greengrass deployments, since this action modifies and adds resources
 %% to a Greengrass group and an S3 bucket on the caller's behalf, the calling
@@ -132,7 +132,7 @@ create_flow_template(Client, Input, Options)
 %% group and S3 bucket. Otherwise, the call will fail with an authorization
 %% error.
 %%
-%% For cloud deployments, this action requires a `flowActionsRoleArn` value.
+%% For cloud deployments, this action requires a `flowActionsRoleArn' value.
 %% This is an IAM role that has permissions to access AWS services, such as
 %% AWS Lambda and AWS IoT, that the flow uses when it executes.
 %%
@@ -211,7 +211,7 @@ delete_system_template(Client, Input, Options)
 %% @doc Greengrass and Cloud Deployments
 %%
 %% Deploys the system instance to the target specified in
-%% `CreateSystemInstance`.
+%% `CreateSystemInstance'.
 %%
 %% Greengrass Deployments
 %%
@@ -306,8 +306,8 @@ get_entities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEntities">>, Input, Options).
 
-%% @doc Gets the latest version of the `DefinitionDocument` and
-%% `FlowTemplateSummary` for the specified workflow.
+%% @doc Gets the latest version of the `DefinitionDocument' and
+%% `FlowTemplateSummary' for the specified workflow.
 get_flow_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_flow_template(Client, Input, []).
@@ -440,8 +440,8 @@ search_system_templates(Client, Input, Options)
 %%
 %% For example, if two different devices, camera1 and camera2, implement the
 %% camera device model, the user can associate thing1 to camera1 and thing2
-%% to camera2. `SearchThings(camera2)` will return only thing2, but
-%% `SearchThings(camera)` will return both thing1 and thing2.
+%% to camera2. `SearchThings(camera2)' will return only thing2, but
+%% `SearchThings(camera)' will return both thing1 and thing2.
 %%
 %% This action searches for exact matches and doesn't perform partial text
 %% matching.
@@ -505,28 +505,28 @@ update_system_template(Client, Input, Options)
 %% @doc Asynchronously uploads one or more entity definitions to the user's
 %% namespace.
 %%
-%% The `document` parameter is required if `syncWithPublicNamespace` and
-%% `deleteExistingEntites` are false. If the `syncWithPublicNamespace`
-%% parameter is set to `true`, the user's namespace will synchronize with the
-%% latest version of the public namespace. If `deprecateExistingEntities` is
+%% The `document' parameter is required if `syncWithPublicNamespace' and
+%% `deleteExistingEntites' are false. If the `syncWithPublicNamespace'
+%% parameter is set to `true', the user's namespace will synchronize with the
+%% latest version of the public namespace. If `deprecateExistingEntities' is
 %% set to true, all entities in the latest version will be deleted before the
-%% new `DefinitionDocument` is uploaded.
+%% new `DefinitionDocument' is uploaded.
 %%
 %% When a user uploads entity definitions for the first time, the service
 %% creates a new namespace for the user. The new namespace tracks the public
 %% namespace. Currently users can have only one namespace. The namespace
 %% version increments whenever a user uploads entity definitions that are
 %% backwards-incompatible and whenever a user sets the
-%% `syncWithPublicNamespace` parameter or the `deprecateExistingEntities`
-%% parameter to `true`.
+%% `syncWithPublicNamespace' parameter or the `deprecateExistingEntities'
+%% parameter to `true'.
 %%
 %% The IDs for all of the entities should be in URN format. Each entity must
 %% be in the user's namespace. Users can't create entities in the public
 %% namespace, but entity definitions can refer to entities in the public
 %% namespace.
 %%
-%% Valid entities are `Device`, `DeviceModel`, `Service`, `Capability`,
-%% `State`, `Action`, `Event`, `Property`, `Mapping`, `Enum`.
+%% Valid entities are `Device', `DeviceModel', `Service', `Capability',
+%% `State', `Action', `Event', `Property', `Mapping', `Enum'.
 upload_entity_definitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     upload_entity_definitions(Client, Input, []).

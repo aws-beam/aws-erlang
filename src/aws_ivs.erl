@@ -22,29 +22,29 @@
 %%
 %% Region name: US West (Oregon)
 %%
-%% <ul> <li> Region: `us-west-2`
+%% <ul> <li> Region: `us-west-2'
 %%
-%% </li> <li> Endpoint: `ivs.us-west-2.amazonaws.com`
+%% </li> <li> Endpoint: `ivs.us-west-2.amazonaws.com'
 %%
 %% </li> </ul> Region name: US East (Virginia)
 %%
-%% <ul> <li> Region: `us-east-1`
+%% <ul> <li> Region: `us-east-1'
 %%
-%% </li> <li> Endpoint: `ivs.us-east-1.amazonaws.com`
+%% </li> <li> Endpoint: `ivs.us-east-1.amazonaws.com'
 %%
 %% </li> </ul> Region name: EU West (Dublin)
 %%
-%% <ul> <li> Region: `eu-west-1`
+%% <ul> <li> Region: `eu-west-1'
 %%
-%% </li> <li> Endpoint: `ivs.eu-west-1.amazonaws.com`
+%% </li> <li> Endpoint: `ivs.eu-west-1.amazonaws.com'
 %%
 %% </li> </ul> Allowed Header Values
 %%
-%% <ul> <li> ` Accept: ` application/json
+%% <ul> <li> ` Accept: ' application/json
 %%
-%% </li> <li> ` Accept-Encoding: ` gzip, deflate
+%% </li> <li> ` Accept-Encoding: ' gzip, deflate
 %%
-%% </li> <li> ` Content-Type: `application/json
+%% </li> <li> ` Content-Type: 'application/json
 %%
 %% </li> </ul> Resources
 %%
@@ -70,7 +70,7 @@
 %%
 %% A tag is a metadata label that you assign to an AWS resource. A tag
 %% comprises a key and a value, both set by you. For example, you might set a
-%% tag as `topic:nature` to label a particular video category. See Tagging
+%% tag as `topic:nature' to label a particular video category. See Tagging
 %% AWS Resources for more information, including restrictions that apply to
 %% tags.
 %%
@@ -78,92 +78,92 @@
 %% you can use the same tag for different resources to indicate that they are
 %% related. You can also use tags to manage access (see Access Tags).
 %%
-%% The Amazon IVS API has these tag-related endpoints: `TagResource`,
-%% `UntagResource`, and `ListTagsForResource`. The following resources
+%% The Amazon IVS API has these tag-related endpoints: `TagResource',
+%% `UntagResource', and `ListTagsForResource'. The following resources
 %% support tagging: Channels, Stream Keys, and Playback Key Pairs.
 %%
 %% Channel Endpoints
 %%
-%% <ul> <li> `CreateChannel` — Creates a new channel and an associated stream
+%% <ul> <li> `CreateChannel' — Creates a new channel and an associated stream
 %% key to start streaming.
 %%
-%% </li> <li> `GetChannel` — Gets the channel configuration for the specified
+%% </li> <li> `GetChannel' — Gets the channel configuration for the specified
 %% channel ARN (Amazon Resource Name).
 %%
-%% </li> <li> `BatchGetChannel` — Performs `GetChannel` on multiple ARNs
+%% </li> <li> `BatchGetChannel' — Performs `GetChannel' on multiple ARNs
 %% simultaneously.
 %%
-%% </li> <li> `ListChannels` — Gets summary information about all channels in
+%% </li> <li> `ListChannels' — Gets summary information about all channels in
 %% your account, in the AWS region where the API request is processed. This
 %% list can be filtered to match a specified string.
 %%
-%% </li> <li> `UpdateChannel` — Updates a channel's configuration. This does
+%% </li> <li> `UpdateChannel' — Updates a channel's configuration. This does
 %% not affect an ongoing stream of this channel. You must stop and restart
 %% the stream for the changes to take effect.
 %%
-%% </li> <li> `DeleteChannel` — Deletes the specified channel.
+%% </li> <li> `DeleteChannel' — Deletes the specified channel.
 %%
 %% </li> </ul> StreamKey Endpoints
 %%
-%% <ul> <li> `CreateStreamKey` — Creates a stream key, used to initiate a
+%% <ul> <li> `CreateStreamKey' — Creates a stream key, used to initiate a
 %% stream, for the specified channel ARN.
 %%
-%% </li> <li> `GetStreamKey` — Gets stream key information for the specified
+%% </li> <li> `GetStreamKey' — Gets stream key information for the specified
 %% ARN.
 %%
-%% </li> <li> `BatchGetStreamKey` — Performs `GetStreamKey` on multiple ARNs
+%% </li> <li> `BatchGetStreamKey' — Performs `GetStreamKey' on multiple ARNs
 %% simultaneously.
 %%
-%% </li> <li> `ListStreamKeys` — Gets summary information about stream keys
+%% </li> <li> `ListStreamKeys' — Gets summary information about stream keys
 %% for the specified channel.
 %%
-%% </li> <li> `DeleteStreamKey` — Deletes the stream key for the specified
+%% </li> <li> `DeleteStreamKey' — Deletes the stream key for the specified
 %% ARN, so it can no longer be used to stream.
 %%
 %% </li> </ul> Stream Endpoints
 %%
-%% <ul> <li> `GetStream` — Gets information about the active (live) stream on
+%% <ul> <li> `GetStream' — Gets information about the active (live) stream on
 %% a specified channel.
 %%
-%% </li> <li> `ListStreams` — Gets summary information about live streams in
+%% </li> <li> `ListStreams' — Gets summary information about live streams in
 %% your account, in the AWS region where the API request is processed.
 %%
-%% </li> <li> `StopStream` — Disconnects the incoming RTMPS stream for the
-%% specified channel. Can be used in conjunction with `DeleteStreamKey` to
+%% </li> <li> `StopStream' — Disconnects the incoming RTMPS stream for the
+%% specified channel. Can be used in conjunction with `DeleteStreamKey' to
 %% prevent further streaming to a channel.
 %%
-%% </li> <li> `PutMetadata` — Inserts metadata into an RTMPS stream for the
+%% </li> <li> `PutMetadata' — Inserts metadata into an RTMPS stream for the
 %% specified channel. A maximum of 5 requests per second per channel is
 %% allowed, each with a maximum 1KB payload.
 %%
 %% </li> </ul> PlaybackKeyPair Endpoints
 %%
-%% <ul> <li> `ImportPlaybackKeyPair` — Imports the public portion of a new
-%% key pair and returns its `arn` and `fingerprint`. The `privateKey` can
+%% <ul> <li> `ImportPlaybackKeyPair' — Imports the public portion of a new
+%% key pair and returns its `arn' and `fingerprint'. The `privateKey' can
 %% then be used to generate viewer authorization tokens, to grant viewers
 %% access to authorized channels.
 %%
-%% </li> <li> `GetPlaybackKeyPair` — Gets a specified playback authorization
-%% key pair and returns the `arn` and `fingerprint`. The `privateKey` held by
+%% </li> <li> `GetPlaybackKeyPair' — Gets a specified playback authorization
+%% key pair and returns the `arn' and `fingerprint'. The `privateKey' held by
 %% the caller can be used to generate viewer authorization tokens, to grant
 %% viewers access to authorized channels.
 %%
-%% </li> <li> `ListPlaybackKeyPairs` — Gets summary information about
+%% </li> <li> `ListPlaybackKeyPairs' — Gets summary information about
 %% playback key pairs.
 %%
-%% </li> <li> `DeletePlaybackKeyPair` — Deletes a specified authorization key
+%% </li> <li> `DeletePlaybackKeyPair' — Deletes a specified authorization key
 %% pair. This invalidates future viewer tokens generated using the key pair’s
-%% `privateKey`.
+%% `privateKey'.
 %%
 %% </li> </ul> AWS Tags Endpoints
 %%
-%% <ul> <li> `TagResource` — Adds or updates tags for the AWS resource with
+%% <ul> <li> `TagResource' — Adds or updates tags for the AWS resource with
 %% the specified ARN.
 %%
-%% </li> <li> `UntagResource` — Removes tags from the resource with the
+%% </li> <li> `UntagResource' — Removes tags from the resource with the
 %% specified ARN.
 %%
-%% </li> <li> `ListTagsForResource` — Gets information about AWS tags for the
+%% </li> <li> `ListTagsForResource' — Gets information about AWS tags for the
 %% specified ARN.
 %%
 %% </li> </ul>
@@ -220,7 +220,7 @@
 %% API
 %%====================================================================
 
-%% @doc Performs `GetChannel` on multiple ARNs simultaneously.
+%% @doc Performs `GetChannel' on multiple ARNs simultaneously.
 batch_get_channel(Client, Input) ->
     batch_get_channel(Client, Input, []).
 batch_get_channel(Client, Input0, Options) ->
@@ -236,7 +236,7 @@ batch_get_channel(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Performs `GetStreamKey` on multiple ARNs simultaneously.
+%% @doc Performs `GetStreamKey' on multiple ARNs simultaneously.
 batch_get_stream_key(Client, Input) ->
     batch_get_stream_key(Client, Input, []).
 batch_get_stream_key(Client, Input0, Options) ->
@@ -272,10 +272,10 @@ create_channel(Client, Input0, Options) ->
 %% @doc Creates a stream key, used to initiate a stream, for the specified
 %% channel ARN.
 %%
-%% Note that `CreateChannel` creates a stream key. If you subsequently use
+%% Note that `CreateChannel' creates a stream key. If you subsequently use
 %% CreateStreamKey on the same channel, it will fail because a stream key
 %% already exists and there is a limit of 1 stream key per channel. To reset
-%% the stream key on a channel, use `DeleteStreamKey` and then
+%% the stream key on a channel, use `DeleteStreamKey' and then
 %% CreateStreamKey.
 create_stream_key(Client, Input) ->
     create_stream_key(Client, Input, []).
@@ -311,7 +311,7 @@ delete_channel(Client, Input0, Options) ->
 %% @doc Deletes a specified authorization key pair.
 %%
 %% This invalidates future viewer tokens generated using the key pair’s
-%% `privateKey`.
+%% `privateKey'.
 delete_playback_key_pair(Client, Input) ->
     delete_playback_key_pair(Client, Input, []).
 delete_playback_key_pair(Client, Input0, Options) ->
@@ -346,7 +346,7 @@ delete_stream_key(Client, Input0, Options) ->
 
 %% @doc Gets the channel configuration for the specified channel ARN.
 %%
-%% See also `BatchGetChannel`.
+%% See also `BatchGetChannel'.
 get_channel(Client, Input) ->
     get_channel(Client, Input, []).
 get_channel(Client, Input0, Options) ->
@@ -363,9 +363,9 @@ get_channel(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets a specified playback authorization key pair and returns the
-%% `arn` and `fingerprint`.
+%% `arn' and `fingerprint'.
 %%
-%% The `privateKey` held by the caller can be used to generate viewer
+%% The `privateKey' held by the caller can be used to generate viewer
 %% authorization tokens, to grant viewers access to authorized channels.
 get_playback_key_pair(Client, Input) ->
     get_playback_key_pair(Client, Input, []).
@@ -415,10 +415,10 @@ get_stream_key(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Imports the public portion of a new key pair and returns its `arn`
-%% and `fingerprint`.
+%% @doc Imports the public portion of a new key pair and returns its `arn'
+%% and `fingerprint'.
 %%
-%% The `privateKey` can then be used to generate viewer authorization tokens,
+%% The `privateKey' can then be used to generate viewer authorization tokens,
 %% to grant viewers access to authorized channels.
 import_playback_key_pair(Client, Input) ->
     import_playback_key_pair(Client, Input, []).
@@ -539,12 +539,12 @@ put_metadata(Client, Input0, Options) ->
 
 %% @doc Disconnects the incoming RTMPS stream for the specified channel.
 %%
-%% Can be used in conjunction with `DeleteStreamKey` to prevent further
+%% Can be used in conjunction with `DeleteStreamKey' to prevent further
 %% streaming to a channel.
 %%
 %% Many streaming client-software libraries automatically reconnect a dropped
 %% RTMPS session, so to stop the stream permanently, you may want to first
-%% revoke the `streamKey` attached to the channel.
+%% revoke the `streamKey' attached to the channel.
 stop_stream(Client, Input) ->
     stop_stream(Client, Input, []).
 stop_stream(Client, Input0, Options) ->

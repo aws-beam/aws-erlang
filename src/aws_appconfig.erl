@@ -198,9 +198,9 @@ create_deployment_strategy(Client, Input0, Options) ->
 %% @doc For each application, you define one or more environments.
 %%
 %% An environment is a logical deployment group of AppConfig targets, such as
-%% applications in a `Beta` or `Production` environment. You can also define
-%% environments for application subcomponents such as the `Web`, `Mobile` and
-%% `Back-end` components for your application. You can configure Amazon
+%% applications in a `Beta' or `Production' environment. You can also define
+%% environments for application subcomponents such as the `Web', `Mobile' and
+%% `Back-end' components for your application. You can configure Amazon
 %% CloudWatch alarms for each environment. The system monitors alarms during
 %% a configuration deployment. If an alarm is triggered, the system rolls
 %% back the configuration.
@@ -367,17 +367,17 @@ get_application(Client, ApplicationId, Options)
 
 %% @doc Receive information about a configuration.
 %%
-%% AWS AppConfig uses the value of the `ClientConfigurationVersion` parameter
+%% AWS AppConfig uses the value of the `ClientConfigurationVersion' parameter
 %% to identify the configuration version on your clients. If you don’t send
-%% `ClientConfigurationVersion` with each call to `GetConfiguration`, your
+%% `ClientConfigurationVersion' with each call to `GetConfiguration', your
 %% clients receive the current configuration. You are charged each time your
 %% clients receive a configuration.
 %%
 %% To avoid excess charges, we recommend that you include the
-%% `ClientConfigurationVersion` value with every call to `GetConfiguration`.
+%% `ClientConfigurationVersion' value with every call to `GetConfiguration'.
 %% This value must be saved on your client. Subsequent calls to
-%% `GetConfiguration` must pass this value by using the
-%% `ClientConfigurationVersion` parameter.
+%% `GetConfiguration' must pass this value by using the
+%% `ClientConfigurationVersion' parameter.
 get_configuration(Client, Application, Configuration, Environment, ClientConfigurationVersion, ClientId)
   when is_map(Client) ->
     get_configuration(Client, Application, Configuration, Environment, ClientConfigurationVersion, ClientId, []).
@@ -468,7 +468,7 @@ get_deployment_strategy(Client, DeploymentStrategyId, Options)
 %% @doc Retrieve information about an environment.
 %%
 %% An environment is a logical deployment group of AppConfig applications,
-%% such as applications in a `Production` environment or in an `EU_Region`
+%% such as applications in a `Production' environment or in an `EU_Region'
 %% environment. Each configuration deployment targets an environment. You can
 %% enable one or more Amazon CloudWatch alarms for an environment. If an
 %% alarm is triggered during a deployment, AppConfig roles back the
@@ -677,8 +677,8 @@ start_deployment(Client, ApplicationId, EnvironmentId, Input0, Options) ->
 %% @doc Stops a deployment.
 %%
 %% This API action works only on deployments that have a status of
-%% `DEPLOYING`. This action moves the deployment to a status of
-%% `ROLLED_BACK`.
+%% `DEPLOYING'. This action moves the deployment to a status of
+%% `ROLLED_BACK'.
 stop_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, Input) ->
     stop_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, Input, []).
 stop_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, Input0, Options) ->

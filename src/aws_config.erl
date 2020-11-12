@@ -195,7 +195,7 @@
 %%
 %% The operation also returns a list of resources that are not processed in
 %% the current request. If there are no unprocessed resources, the operation
-%% returns an empty `unprocessedResourceIdentifiers` list.
+%% returns an empty `unprocessedResourceIdentifiers' list.
 %%
 %% The API does not return results for deleted resources.
 %%
@@ -238,12 +238,12 @@ delete_aggregation_authorization(Client, Input, Options)
 %% @doc Deletes the specified AWS Config rule and all of its evaluation
 %% results.
 %%
-%% AWS Config sets the state of a rule to `DELETING` until the deletion is
+%% AWS Config sets the state of a rule to `DELETING' until the deletion is
 %% complete. You cannot update a rule while it is in this state. If you make
-%% a `PutConfigRule` or `DeleteConfigRule` request for the rule, you will
-%% receive a `ResourceInUseException`.
+%% a `PutConfigRule' or `DeleteConfigRule' request for the rule, you will
+%% receive a `ResourceInUseException'.
 %%
-%% You can check the state of a rule by using the `DescribeConfigRules`
+%% You can check the state of a rule by using the `DescribeConfigRules'
 %% request.
 delete_config_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -269,7 +269,7 @@ delete_configuration_aggregator(Client, Input, Options)
 %%
 %% This action does not delete the configuration information that was
 %% previously recorded. You will be able to access the previously recorded
-%% information by using the `GetResourceConfigHistory` action, but you will
+%% information by using the `GetResourceConfigHistory' action, but you will
 %% not be able to access this information in the AWS Config console until you
 %% create a new configuration recorder.
 delete_configuration_recorder(Client, Input)
@@ -283,7 +283,7 @@ delete_configuration_recorder(Client, Input, Options)
 %% remediation actions, and all evaluation results within that conformance
 %% pack.
 %%
-%% AWS Config sets the conformance pack to `DELETE_IN_PROGRESS` until the
+%% AWS Config sets the conformance pack to `DELETE_IN_PROGRESS' until the
 %% deletion is complete. You cannot update a conformance pack while it is in
 %% this state.
 delete_conformance_pack(Client, Input)
@@ -296,7 +296,7 @@ delete_conformance_pack(Client, Input, Options)
 %% @doc Deletes the delivery channel.
 %%
 %% Before you can delete the delivery channel, you must stop the
-%% configuration recorder by using the `StopConfigurationRecorder` action.
+%% configuration recorder by using the `StopConfigurationRecorder' action.
 delete_delivery_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_delivery_channel(Client, Input, []).
@@ -307,7 +307,7 @@ delete_delivery_channel(Client, Input, Options)
 %% @doc Deletes the evaluation results for the specified AWS Config rule.
 %%
 %% You can specify one AWS Config rule per request. After you delete the
-%% evaluation results, you can call the `StartConfigRulesEvaluation` API to
+%% evaluation results, you can call the `StartConfigRulesEvaluation' API to
 %% start evaluating your AWS resources against the rule.
 delete_evaluation_results(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -322,7 +322,7 @@ delete_evaluation_results(Client, Input, Options)
 %% Only a master account and a delegated administrator account can delete an
 %% organization config rule. When calling this API with a delegated
 %% administrator, you must ensure AWS Organizations
-%% `ListDelegatedAdministrator` permissions are added.
+%% `ListDelegatedAdministrator' permissions are added.
 %%
 %% AWS Config sets the state of a rule to DELETE_IN_PROGRESS until the
 %% deletion is complete. You cannot update a rule while it is in this state.
@@ -340,7 +340,7 @@ delete_organization_config_rule(Client, Input, Options)
 %% Only a master account or a delegated administrator account can delete an
 %% organization conformance pack. When calling this API with a delegated
 %% administrator, you must ensure AWS Organizations
-%% `ListDelegatedAdministrator` permissions are added.
+%% `ListDelegatedAdministrator' permissions are added.
 %%
 %% AWS Config sets the state of a conformance pack to DELETE_IN_PROGRESS
 %% until the deletion is complete. You cannot update a conformance pack while
@@ -428,7 +428,7 @@ deliver_config_snapshot(Client, Input, Options)
 %% resources for compliant and noncompliant rules.
 %%
 %% The results can return an empty result page, but if you have a
-%% `nextToken`, the results are displayed on the next page.
+%% `nextToken', the results are displayed on the next page.
 describe_aggregate_compliance_by_config_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_aggregate_compliance_by_config_rules(Client, Input, []).
@@ -454,20 +454,20 @@ describe_aggregation_authorizations(Client, Input, Options)
 %% is noncompliant if any of these resources do not comply.
 %%
 %% If AWS Config has no current evaluation results for the rule, it returns
-%% `INSUFFICIENT_DATA`. This result might indicate one of the following
+%% `INSUFFICIENT_DATA'. This result might indicate one of the following
 %% conditions:
 %%
 %% <ul> <li> AWS Config has never invoked an evaluation for the rule. To
-%% check whether it has, use the `DescribeConfigRuleEvaluationStatus` action
-%% to get the `LastSuccessfulInvocationTime` and `LastFailedInvocationTime`.
+%% check whether it has, use the `DescribeConfigRuleEvaluationStatus' action
+%% to get the `LastSuccessfulInvocationTime' and `LastFailedInvocationTime'.
 %%
 %% </li> <li> The rule's AWS Lambda function is failing to send evaluation
 %% results to AWS Config. Verify that the role you assigned to your
-%% configuration recorder includes the `config:PutEvaluations` permission. If
+%% configuration recorder includes the `config:PutEvaluations' permission. If
 %% the rule is a custom rule, verify that the AWS Lambda execution role
-%% includes the `config:PutEvaluations` permission.
+%% includes the `config:PutEvaluations' permission.
 %%
-%% </li> <li> The rule's AWS Lambda function has returned `NOT_APPLICABLE`
+%% </li> <li> The rule's AWS Lambda function has returned `NOT_APPLICABLE'
 %% for all evaluation results. This can occur if the resources were deleted
 %% or removed from the rule's scope.
 %%
@@ -489,20 +489,20 @@ describe_compliance_by_config_rule(Client, Input, Options)
 %% these rules.
 %%
 %% If AWS Config has no current evaluation results for the resource, it
-%% returns `INSUFFICIENT_DATA`. This result might indicate one of the
+%% returns `INSUFFICIENT_DATA'. This result might indicate one of the
 %% following conditions about the rules that evaluate the resource:
 %%
 %% <ul> <li> AWS Config has never invoked an evaluation for the rule. To
-%% check whether it has, use the `DescribeConfigRuleEvaluationStatus` action
-%% to get the `LastSuccessfulInvocationTime` and `LastFailedInvocationTime`.
+%% check whether it has, use the `DescribeConfigRuleEvaluationStatus' action
+%% to get the `LastSuccessfulInvocationTime' and `LastFailedInvocationTime'.
 %%
 %% </li> <li> The rule's AWS Lambda function is failing to send evaluation
 %% results to AWS Config. Verify that the role that you assigned to your
-%% configuration recorder includes the `config:PutEvaluations` permission. If
+%% configuration recorder includes the `config:PutEvaluations' permission. If
 %% the rule is a custom rule, verify that the AWS Lambda execution role
-%% includes the `config:PutEvaluations` permission.
+%% includes the `config:PutEvaluations' permission.
 %%
-%% </li> <li> The rule's AWS Lambda function has returned `NOT_APPLICABLE`
+%% </li> <li> The rule's AWS Lambda function has returned `NOT_APPLICABLE'
 %% for all evaluation results. This can occur if the resources were deleted
 %% or removed from the rule's scope.
 %%
@@ -646,7 +646,7 @@ describe_delivery_channels(Client, Input, Options)
 %%
 %% Only a master account and a delegated administrator account can call this
 %% API. When calling this API with a delegated administrator, you must ensure
-%% AWS Organizations `ListDelegatedAdministrator` permissions are added.
+%% AWS Organizations `ListDelegatedAdministrator' permissions are added.
 %%
 %% The status is not considered successful until organization config rule is
 %% successfully deployed in all the member accounts with an exception of
@@ -667,7 +667,7 @@ describe_organization_config_rule_statuses(Client, Input, Options)
 %%
 %% Only a master account and a delegated administrator account can call this
 %% API. When calling this API with a delegated administrator, you must ensure
-%% AWS Organizations `ListDelegatedAdministrator` permissions are added.
+%% AWS Organizations `ListDelegatedAdministrator' permissions are added.
 %%
 %% When you specify the limit and the next token, you receive a paginated
 %% response. Limit and next token are not applicable if you specify
@@ -685,7 +685,7 @@ describe_organization_config_rules(Client, Input, Options)
 %%
 %% Only a master account and a delegated administrator account can call this
 %% API. When calling this API with a delegated administrator, you must ensure
-%% AWS Organizations `ListDelegatedAdministrator` permissions are added.
+%% AWS Organizations `ListDelegatedAdministrator' permissions are added.
 %%
 %% The status is not considered successful until organization conformance
 %% pack is successfully deployed in all the member accounts with an exception
@@ -706,7 +706,7 @@ describe_organization_conformance_pack_statuses(Client, Input, Options)
 %%
 %% Only a master account and a delegated administrator account can call this
 %% API. When calling this API with a delegated administrator, you must ensure
-%% AWS Organizations `ListDelegatedAdministrator` permissions are added.
+%% AWS Organizations `ListDelegatedAdministrator' permissions are added.
 %%
 %% When you specify the limit and the next token, you receive a paginated
 %% response.
@@ -795,7 +795,7 @@ describe_retention_configurations(Client, Input, Options)
 %% the rule.
 %%
 %% The results can return an empty result page. But if you have a
-%% `nextToken`, the results are displayed on the next page.
+%% `nextToken', the results are displayed on the next page.
 get_aggregate_compliance_details_by_config_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_aggregate_compliance_details_by_config_rule(Client, Input, []).
@@ -914,7 +914,7 @@ get_conformance_pack_compliance_summary(Client, Input, Options)
 %% (Ohio) Region for your account: 25 EC2 instances, 20 IAM users, and 15 S3
 %% buckets.
 %%
-%% </li> <li> You make a call to the `GetDiscoveredResourceCounts` action and
+%% </li> <li> You make a call to the `GetDiscoveredResourceCounts' action and
 %% specify that you want all resource types.
 %%
 %% </li> <li> AWS Config returns the following:
@@ -926,12 +926,12 @@ get_conformance_pack_compliance_summary(Client, Input, Options)
 %% </li> <li> The total number of all resources (60).
 %%
 %% </li> </ul> </li> </ol> The response is paginated. By default, AWS Config
-%% lists 100 `ResourceCount` objects on each page. You can customize this
-%% number with the `limit` parameter. The response includes a `nextToken`
+%% lists 100 `ResourceCount' objects on each page. You can customize this
+%% number with the `limit' parameter. The response includes a `nextToken'
 %% string. To get the next page of results, run the request again and specify
-%% the string for the `nextToken` parameter.
+%% the string for the `nextToken' parameter.
 %%
-%% If you make a call to the `GetDiscoveredResourceCounts` action, you might
+%% If you make a call to the `GetDiscoveredResourceCounts' action, you might
 %% not immediately receive resource counts in the following situations:
 %%
 %% You are a new AWS Config customer.
@@ -940,7 +940,7 @@ get_conformance_pack_compliance_summary(Client, Input, Options)
 %%
 %% It might take a few minutes for AWS Config to record and count your
 %% resources. Wait a few minutes and then retry the
-%% `GetDiscoveredResourceCounts` action.
+%% `GetDiscoveredResourceCounts' action.
 get_discovered_resource_counts(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_discovered_resource_counts(Client, Input, []).
@@ -953,7 +953,7 @@ get_discovered_resource_counts(Client, Input, Options)
 %%
 %% Only a master account and a delegated administrator account can call this
 %% API. When calling this API with a delegated administrator, you must ensure
-%% AWS Organizations `ListDelegatedAdministrator` permissions are added.
+%% AWS Organizations `ListDelegatedAdministrator' permissions are added.
 get_organization_config_rule_detailed_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_organization_config_rule_detailed_status(Client, Input, []).
@@ -966,7 +966,7 @@ get_organization_config_rule_detailed_status(Client, Input, Options)
 %%
 %% Only a master account and a delegated administrator account can call this
 %% API. When calling this API with a delegated administrator, you must ensure
-%% AWS Organizations `ListDelegatedAdministrator` permissions are added.
+%% AWS Organizations `ListDelegatedAdministrator' permissions are added.
 get_organization_conformance_pack_detailed_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_organization_conformance_pack_detailed_status(Client, Input, []).
@@ -978,19 +978,19 @@ get_organization_conformance_pack_detailed_status(Client, Input, Options)
 %%
 %% The list contains details about each state of the resource during the
 %% specified time interval. If you specified a retention period to retain
-%% your `ConfigurationItems` between a minimum of 30 days and a maximum of 7
-%% years (2557 days), AWS Config returns the `ConfigurationItems` for the
+%% your `ConfigurationItems' between a minimum of 30 days and a maximum of 7
+%% years (2557 days), AWS Config returns the `ConfigurationItems' for the
 %% specified retention period.
 %%
 %% The response is paginated. By default, AWS Config returns a limit of 10
 %% configuration items per page. You can customize this number with the
-%% `limit` parameter. The response includes a `nextToken` string. To get the
+%% `limit' parameter. The response includes a `nextToken' string. To get the
 %% next page of results, run the request again and specify the string for the
-%% `nextToken` parameter.
+%% `nextToken' parameter.
 %%
 %% Each call to the API is limited to span a duration of seven days. It is
 %% likely that the number of records returned is smaller than the specified
-%% `limit`. In such cases, you can make another call, using the `nextToken`.
+%% `limit'. In such cases, you can make another call, using the `nextToken'.
 get_resource_config_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_config_history(Client, Input, []).
@@ -1008,7 +1008,7 @@ get_resource_config_history(Client, Input, Options)
 %% a resource name, or source account ID, or source region.
 %%
 %% For example, if the input consists of accountID 12345678910 and the region
-%% is us-east-1 for resource type `AWS::EC2::Instance` then the API returns
+%% is us-east-1 for resource type `AWS::EC2::Instance' then the API returns
 %% all the EC2 instance identifiers of accountID 12345678910 and region
 %% us-east-1.
 list_aggregate_discovered_resources(Client, Input)
@@ -1031,10 +1031,10 @@ list_aggregate_discovered_resources(Client, Input, Options)
 %% the same request.
 %%
 %% The response is paginated. By default, AWS Config lists 100 resource
-%% identifiers on each page. You can customize this number with the `limit`
-%% parameter. The response includes a `nextToken` string. To get the next
+%% identifiers on each page. You can customize this number with the `limit'
+%% parameter. The response includes a `nextToken' string. To get the next
 %% page of results, run the request again and specify the string for the
-%% `nextToken` parameter.
+%% `nextToken' parameter.
 list_discovered_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_discovered_resources(Client, Input, []).
@@ -1069,22 +1069,22 @@ put_aggregation_authorization(Client, Input, Options)
 %%
 %% If you are adding a new custom AWS Config rule, you must first create the
 %% AWS Lambda function that the rule invokes to evaluate your resources. When
-%% you use the `PutConfigRule` action to add the rule to AWS Config, you must
+%% you use the `PutConfigRule' action to add the rule to AWS Config, you must
 %% specify the Amazon Resource Name (ARN) that AWS Lambda assigns to the
-%% function. Specify the ARN for the `SourceIdentifier` key. This key is part
-%% of the `Source` object, which is part of the `ConfigRule` object.
+%% function. Specify the ARN for the `SourceIdentifier' key. This key is part
+%% of the `Source' object, which is part of the `ConfigRule' object.
 %%
 %% If you are adding an AWS managed Config rule, specify the rule's
-%% identifier for the `SourceIdentifier` key. To reference AWS managed Config
+%% identifier for the `SourceIdentifier' key. To reference AWS managed Config
 %% rule identifiers, see About AWS Managed Config Rules.
 %%
-%% For any new rule that you add, specify the `ConfigRuleName` in the
-%% `ConfigRule` object. Do not specify the `ConfigRuleArn` or the
-%% `ConfigRuleId`. These values are generated by AWS Config for new rules.
+%% For any new rule that you add, specify the `ConfigRuleName' in the
+%% `ConfigRule' object. Do not specify the `ConfigRuleArn' or the
+%% `ConfigRuleId'. These values are generated by AWS Config for new rules.
 %%
 %% If you are updating a rule that you added previously, you can specify the
-%% rule by `ConfigRuleName`, `ConfigRuleId`, or `ConfigRuleArn` in the
-%% `ConfigRule` data type that you use in this request.
+%% rule by `ConfigRuleName', `ConfigRuleId', or `ConfigRuleArn' in the
+%% `ConfigRule' data type that you use in this request.
 %%
 %% The maximum number of rules that AWS Config supports is 150.
 %%
@@ -1111,7 +1111,7 @@ put_config_rule(Client, Input, Options)
 %%
 %% If your source type is an organization, you must be signed in to the
 %% master account and all features must be enabled in your organization. AWS
-%% Config calls `EnableAwsServiceAccess` API to enable integration between
+%% Config calls `EnableAwsServiceAccess' API to enable integration between
 %% AWS Config and AWS Organizations.
 put_configuration_aggregator(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1123,14 +1123,14 @@ put_configuration_aggregator(Client, Input, Options)
 %% @doc Creates a new configuration recorder to record the selected resource
 %% configurations.
 %%
-%% You can use this action to change the role `roleARN` or the
-%% `recordingGroup` of an existing recorder. To change the role, call the
+%% You can use this action to change the role `roleARN' or the
+%% `recordingGroup' of an existing recorder. To change the role, call the
 %% action on the existing configuration recorder and specify a role.
 %%
 %% Currently, you can specify only one configuration recorder per region in
 %% your account.
 %%
-%% If `ConfigurationRecorder` does not have the recordingGroup parameter
+%% If `ConfigurationRecorder' does not have the recordingGroup parameter
 %% specified, the default is to record all supported resource types.
 put_configuration_recorder(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1144,13 +1144,13 @@ put_configuration_recorder(Client, Input, Options)
 %% A conformance pack is a collection of AWS Config rules that can be easily
 %% deployed in an account and a region and across AWS Organization.
 %%
-%% This API creates a service linked role `AWSServiceRoleForConfigConforms`
+%% This API creates a service linked role `AWSServiceRoleForConfigConforms'
 %% in your account. The service linked role is created only when the role
 %% does not exist in your account.
 %%
-%% You must specify either the `TemplateS3Uri` or the `TemplateBody`
+%% You must specify either the `TemplateS3Uri' or the `TemplateBody'
 %% parameter, but not both. If you provide both AWS Config uses the
-%% `TemplateS3Uri` parameter and ignores the `TemplateBody` parameter.
+%% `TemplateS3Uri' parameter and ignores the `TemplateBody' parameter.
 put_conformance_pack(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_conformance_pack(Client, Input, []).
@@ -1198,37 +1198,37 @@ put_evaluations(Client, Input, Options)
 %% Only a master account and a delegated administrator can create or update
 %% an organization config rule. When calling this API with a delegated
 %% administrator, you must ensure AWS Organizations
-%% `ListDelegatedAdministrator` permissions are added.
+%% `ListDelegatedAdministrator' permissions are added.
 %%
 %% This API enables organization service access through the
-%% `EnableAWSServiceAccess` action and creates a service linked role
-%% `AWSServiceRoleForConfigMultiAccountSetup` in the master or delegated
+%% `EnableAWSServiceAccess' action and creates a service linked role
+%% `AWSServiceRoleForConfigMultiAccountSetup' in the master or delegated
 %% administrator account of your organization. The service linked role is
 %% created only when the role does not exist in the caller account. AWS
-%% Config verifies the existence of role with `GetRole` action.
+%% Config verifies the existence of role with `GetRole' action.
 %%
 %% To use this API with delegated administrator, register a delegated
 %% administrator by calling AWS Organization
-%% `register-delegated-administrator` for
-%% `config-multiaccountsetup.amazonaws.com`.
+%% `register-delegated-administrator' for
+%% `config-multiaccountsetup.amazonaws.com'.
 %%
 %% You can use this action to create both custom AWS Config rules and AWS
 %% managed Config rules. If you are adding a new custom AWS Config rule, you
 %% must first create AWS Lambda function in the master account or a delegated
 %% administrator that the rule invokes to evaluate your resources. When you
-%% use the `PutOrganizationConfigRule` action to add the rule to AWS Config,
+%% use the `PutOrganizationConfigRule' action to add the rule to AWS Config,
 %% you must specify the Amazon Resource Name (ARN) that AWS Lambda assigns to
 %% the function. If you are adding an AWS managed Config rule, specify the
-%% rule's identifier for the `RuleIdentifier` key.
+%% rule's identifier for the `RuleIdentifier' key.
 %%
 %% The maximum number of organization config rules that AWS Config supports
 %% is 150 and 3 delegated administrator per organization.
 %%
-%% Prerequisite: Ensure you call `EnableAllFeatures` API to enable all
+%% Prerequisite: Ensure you call `EnableAllFeatures' API to enable all
 %% features in an organization.
 %%
-%% Specify either `OrganizationCustomRuleMetadata` or
-%% `OrganizationManagedRuleMetadata`.
+%% Specify either `OrganizationCustomRuleMetadata' or
+%% `OrganizationManagedRuleMetadata'.
 put_organization_config_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_organization_config_rule(Client, Input, []).
@@ -1241,24 +1241,24 @@ put_organization_config_rule(Client, Input, Options)
 %%
 %% Only a master account and a delegated administrator can call this API.
 %% When calling this API with a delegated administrator, you must ensure AWS
-%% Organizations `ListDelegatedAdministrator` permissions are added.
+%% Organizations `ListDelegatedAdministrator' permissions are added.
 %%
 %% This API enables organization service access for
-%% `config-multiaccountsetup.amazonaws.com` through the
-%% `EnableAWSServiceAccess` action and creates a service linked role
-%% `AWSServiceRoleForConfigMultiAccountSetup` in the master or delegated
+%% `config-multiaccountsetup.amazonaws.com' through the
+%% `EnableAWSServiceAccess' action and creates a service linked role
+%% `AWSServiceRoleForConfigMultiAccountSetup' in the master or delegated
 %% administrator account of your organization. The service linked role is
 %% created only when the role does not exist in the caller account. To use
 %% this API with delegated administrator, register a delegated administrator
-%% by calling AWS Organization `register-delegate-admin` for
-%% `config-multiaccountsetup.amazonaws.com`.
+%% by calling AWS Organization `register-delegate-admin' for
+%% `config-multiaccountsetup.amazonaws.com'.
 %%
-%% Prerequisite: Ensure you call `EnableAllFeatures` API to enable all
+%% Prerequisite: Ensure you call `EnableAllFeatures' API to enable all
 %% features in an organization.
 %%
-%% You must specify either the `TemplateS3Uri` or the `TemplateBody`
+%% You must specify either the `TemplateS3Uri' or the `TemplateBody'
 %% parameter, but not both. If you provide both AWS Config uses the
-%% `TemplateS3Uri` parameter and ignores the `TemplateBody` parameter.
+%% `TemplateS3Uri' parameter and ignores the `TemplateBody' parameter.
 %%
 %% AWS Config sets the state of a conformance pack to CREATE_IN_PROGRESS and
 %% UPDATE_IN_PROGRESS until the conformance pack is created or updated. You
@@ -1276,7 +1276,7 @@ put_organization_conformance_pack(Client, Input, Options)
 %% @doc Adds or updates the remediation configuration with a specific AWS
 %% Config rule with the selected target or action.
 %%
-%% The API creates the `RemediationConfiguration` object for the AWS Config
+%% The API creates the `RemediationConfiguration' object for the AWS Config
 %% rule. The AWS Config rule must already exist for you to add a remediation
 %% configuration. The target (SSM document) must exist and have permissions
 %% to use the target.
@@ -1334,8 +1334,8 @@ put_resource_config(Client, Input, Options)
 %% retention period (number of days) that AWS Config stores your historical
 %% information.
 %%
-%% The API creates the `RetentionConfiguration` object and names the object
-%% as default. When you have a `RetentionConfiguration` object named default,
+%% The API creates the `RetentionConfiguration' object and names the object
+%% as default. When you have a `RetentionConfiguration' object named default,
 %% calling the API modifies the default object.
 %%
 %% Currently, AWS Config supports only one retention configuration per region
@@ -1361,7 +1361,7 @@ select_aggregate_resource_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SelectAggregateResourceConfig">>, Input, Options).
 
-%% @doc Accepts a structured query language (SQL) `SELECT` command, performs
+%% @doc Accepts a structured query language (SQL) `SELECT' command, performs
 %% the corresponding search, and returns resource configurations matching the
 %% properties.
 %%
@@ -1377,23 +1377,23 @@ select_resource_config(Client, Input, Options)
 %% @doc Runs an on-demand evaluation for the specified AWS Config rules
 %% against the last known configuration state of the resources.
 %%
-%% Use `StartConfigRulesEvaluation` when you want to test that a rule you
-%% updated is working as expected. `StartConfigRulesEvaluation` does not
+%% Use `StartConfigRulesEvaluation' when you want to test that a rule you
+%% updated is working as expected. `StartConfigRulesEvaluation' does not
 %% re-record the latest configuration state for your resources. It re-runs an
 %% evaluation against the last known state of your resources.
 %%
 %% You can specify up to 25 AWS Config rules per request.
 %%
-%% An existing `StartConfigRulesEvaluation` call for the specified rules must
+%% An existing `StartConfigRulesEvaluation' call for the specified rules must
 %% complete before you can call the API again. If you chose to have AWS
 %% Config stream to an Amazon SNS topic, you will receive a
-%% `ConfigRuleEvaluationStarted` notification when the evaluation starts.
+%% `ConfigRuleEvaluationStarted' notification when the evaluation starts.
 %%
-%% You don't need to call the `StartConfigRulesEvaluation` API to run an
+%% You don't need to call the `StartConfigRulesEvaluation' API to run an
 %% evaluation for a new rule. When you create a rule, AWS Config evaluates
 %% your resources against the rule automatically.
 %%
-%% The `StartConfigRulesEvaluation` API is useful if you want to run
+%% The `StartConfigRulesEvaluation' API is useful if you want to run
 %% on-demand evaluations, such as the following example:
 %%
 %% <ol> <li> You have a custom rule that evaluates your IAM resources every
@@ -1403,7 +1403,7 @@ select_resource_config(Client, Input, Options)
 %% your rule.
 %%
 %% </li> <li> Instead of waiting for the next periodic evaluation, you call
-%% the `StartConfigRulesEvaluation` API.
+%% the `StartConfigRulesEvaluation' API.
 %%
 %% </li> <li> AWS Config invokes your Lambda function and evaluates your IAM
 %% resources.

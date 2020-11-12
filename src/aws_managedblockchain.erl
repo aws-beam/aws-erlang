@@ -130,11 +130,11 @@ create_proposal(Client, NetworkId, Input0, Options) ->
 %% @doc Deletes a member.
 %%
 %% Deleting a member removes the member and all associated resources from the
-%% network. `DeleteMember` can only be called for a specified `MemberId` if
+%% network. `DeleteMember' can only be called for a specified `MemberId' if
 %% the principal performing the action is associated with the AWS account
-%% that owns the member. In all other cases, the `DeleteMember` action is
+%% that owns the member. In all other cases, the `DeleteMember' action is
 %% carried out as the result of an approved proposal to remove a member. If
-%% `MemberId` is the last member in a network specified by the last AWS
+%% `MemberId' is the last member in a network specified by the last AWS
 %% account, the network is deleted also.
 delete_member(Client, MemberId, NetworkId, Input) ->
     delete_member(Client, MemberId, NetworkId, Input, []).
@@ -411,9 +411,9 @@ update_node(Client, MemberId, NetworkId, NodeId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Casts a vote for a specified `ProposalId` on behalf of a member.
+%% @doc Casts a vote for a specified `ProposalId' on behalf of a member.
 %%
-%% The member to vote as, specified by `VoterMemberId`, must be in the same
+%% The member to vote as, specified by `VoterMemberId', must be in the same
 %% AWS account as the principal that calls the action.
 vote_on_proposal(Client, NetworkId, ProposalId, Input) ->
     vote_on_proposal(Client, NetworkId, ProposalId, Input, []).

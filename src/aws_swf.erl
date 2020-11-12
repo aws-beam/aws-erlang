@@ -112,28 +112,28 @@
 %% You can use IAM policies to control this action's access to Amazon SWF
 %% resources as follows:
 %%
-%% <ul> <li> Use a `Resource` element with the domain name to limit the
+%% <ul> <li> Use a `Resource' element with the domain name to limit the
 %% action to only specified domains.
 %%
-%% </li> <li> Use an `Action` element to allow or deny permission to call
+%% </li> <li> Use an `Action' element to allow or deny permission to call
 %% this action.
 %%
-%% </li> <li> Constrain the following parameters by using a `Condition`
+%% </li> <li> Constrain the following parameters by using a `Condition'
 %% element with the appropriate keys.
 %%
-%% <ul> <li> `tagFilter.tag`: String constraint. The key is
-%% `swf:tagFilter.tag`.
+%% <ul> <li> `tagFilter.tag': String constraint. The key is
+%% `swf:tagFilter.tag'.
 %%
-%% </li> <li> `typeFilter.name`: String constraint. The key is
-%% `swf:typeFilter.name`.
+%% </li> <li> `typeFilter.name': String constraint. The key is
+%% `swf:typeFilter.name'.
 %%
-%% </li> <li> `typeFilter.version`: String constraint. The key is
-%% `swf:typeFilter.version`.
+%% </li> <li> `typeFilter.version': String constraint. The key is
+%% `swf:typeFilter.version'.
 %%
 %% </li> </ul> </li> </ul> If the caller doesn't have sufficient permissions
 %% to invoke the action, or the parameter values fall outside the specified
-%% constraints, the action fails. The associated event attribute's `cause`
-%% parameter is set to `OPERATION_NOT_PERMITTED`. For details and example IAM
+%% constraints, the action fails. The associated event attribute's `cause'
+%% parameter is set to `OPERATION_NOT_PERMITTED'. For details and example IAM
 %% policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
 %% Amazon SWF Developer Guide.
 count_closed_workflow_executions(Client, Input)
@@ -154,28 +154,28 @@ count_closed_workflow_executions(Client, Input, Options)
 %% You can use IAM policies to control this action's access to Amazon SWF
 %% resources as follows:
 %%
-%% <ul> <li> Use a `Resource` element with the domain name to limit the
+%% <ul> <li> Use a `Resource' element with the domain name to limit the
 %% action to only specified domains.
 %%
-%% </li> <li> Use an `Action` element to allow or deny permission to call
+%% </li> <li> Use an `Action' element to allow or deny permission to call
 %% this action.
 %%
-%% </li> <li> Constrain the following parameters by using a `Condition`
+%% </li> <li> Constrain the following parameters by using a `Condition'
 %% element with the appropriate keys.
 %%
-%% <ul> <li> `tagFilter.tag`: String constraint. The key is
-%% `swf:tagFilter.tag`.
+%% <ul> <li> `tagFilter.tag': String constraint. The key is
+%% `swf:tagFilter.tag'.
 %%
-%% </li> <li> `typeFilter.name`: String constraint. The key is
-%% `swf:typeFilter.name`.
+%% </li> <li> `typeFilter.name': String constraint. The key is
+%% `swf:typeFilter.name'.
 %%
-%% </li> <li> `typeFilter.version`: String constraint. The key is
-%% `swf:typeFilter.version`.
+%% </li> <li> `typeFilter.version': String constraint. The key is
+%% `swf:typeFilter.version'.
 %%
 %% </li> </ul> </li> </ul> If the caller doesn't have sufficient permissions
 %% to invoke the action, or the parameter values fall outside the specified
-%% constraints, the action fails. The associated event attribute's `cause`
-%% parameter is set to `OPERATION_NOT_PERMITTED`. For details and example IAM
+%% constraints, the action fails. The associated event attribute's `cause'
+%% parameter is set to `OPERATION_NOT_PERMITTED'. For details and example IAM
 %% policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
 %% Amazon SWF Developer Guide.
 count_open_workflow_executions(Client, Input)
@@ -190,27 +190,27 @@ count_open_workflow_executions(Client, Input, Options)
 %%
 %% The count returned is an approximation and isn't guaranteed to be exact.
 %% If you specify a task list that no activity task was ever scheduled in
-%% then `0` is returned.
+%% then `0' is returned.
 %%
 %% Access Control
 %%
 %% You can use IAM policies to control this action's access to Amazon SWF
 %% resources as follows:
 %%
-%% <ul> <li> Use a `Resource` element with the domain name to limit the
+%% <ul> <li> Use a `Resource' element with the domain name to limit the
 %% action to only specified domains.
 %%
-%% </li> <li> Use an `Action` element to allow or deny permission to call
+%% </li> <li> Use an `Action' element to allow or deny permission to call
 %% this action.
 %%
-%% </li> <li> Constrain the `taskList.name` parameter by using a `Condition`
-%% element with the `swf:taskList.name` key to allow the action to access
+%% </li> <li> Constrain the `taskList.name' parameter by using a `Condition'
+%% element with the `swf:taskList.name' key to allow the action to access
 %% only certain task lists.
 %%
 %% </li> </ul> If the caller doesn't have sufficient permissions to invoke
 %% the action, or the parameter values fall outside the specified
-%% constraints, the action fails. The associated event attribute's `cause`
-%% parameter is set to `OPERATION_NOT_PERMITTED`. For details and example IAM
+%% constraints, the action fails. The associated event attribute's `cause'
+%% parameter is set to `OPERATION_NOT_PERMITTED'. For details and example IAM
 %% policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
 %% Amazon SWF Developer Guide.
 count_pending_activity_tasks(Client, Input)
@@ -225,27 +225,27 @@ count_pending_activity_tasks(Client, Input, Options)
 %%
 %% The count returned is an approximation and isn't guaranteed to be exact.
 %% If you specify a task list that no decision task was ever scheduled in
-%% then `0` is returned.
+%% then `0' is returned.
 %%
 %% Access Control
 %%
 %% You can use IAM policies to control this action's access to Amazon SWF
 %% resources as follows:
 %%
-%% <ul> <li> Use a `Resource` element with the domain name to limit the
+%% <ul> <li> Use a `Resource' element with the domain name to limit the
 %% action to only specified domains.
 %%
-%% </li> <li> Use an `Action` element to allow or deny permission to call
+%% </li> <li> Use an `Action' element to allow or deny permission to call
 %% this action.
 %%
-%% </li> <li> Constrain the `taskList.name` parameter by using a `Condition`
-%% element with the `swf:taskList.name` key to allow the action to access
+%% </li> <li> Constrain the `taskList.name' parameter by using a `Condition'
+%% element with the `swf:taskList.name' key to allow the action to access
 %% only certain task lists.
 %%
 %% </li> </ul> If the caller doesn't have sufficient permissions to invoke
 %% the action, or the parameter values fall outside the specified
-%% constraints, the action fails. The associated event attribute's `cause`
-%% parameter is set to `OPERATION_NOT_PERMITTED`. For details and example IAM
+%% constraints, the action fails. The associated event attribute's `cause'
+%% parameter is set to `OPERATION_NOT_PERMITTED'. For details and example IAM
 %% policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
 %% Amazon SWF Developer Guide.
 count_pending_decision_tasks(Client, Input)
@@ -269,25 +269,25 @@ count_pending_decision_tasks(Client, Input, Options)
 %% You can use IAM policies to control this action's access to Amazon SWF
 %% resources as follows:
 %%
-%% <ul> <li> Use a `Resource` element with the domain name to limit the
+%% <ul> <li> Use a `Resource' element with the domain name to limit the
 %% action to only specified domains.
 %%
-%% </li> <li> Use an `Action` element to allow or deny permission to call
+%% </li> <li> Use an `Action' element to allow or deny permission to call
 %% this action.
 %%
-%% </li> <li> Constrain the following parameters by using a `Condition`
+%% </li> <li> Constrain the following parameters by using a `Condition'
 %% element with the appropriate keys.
 %%
-%% <ul> <li> `activityType.name`: String constraint. The key is
-%% `swf:activityType.name`.
+%% <ul> <li> `activityType.name': String constraint. The key is
+%% `swf:activityType.name'.
 %%
-%% </li> <li> `activityType.version`: String constraint. The key is
-%% `swf:activityType.version`.
+%% </li> <li> `activityType.version': String constraint. The key is
+%% `swf:activityType.version'.
 %%
 %% </li> </ul> </li> </ul> If the caller doesn't have sufficient permissions
 %% to invoke the action, or the parameter values fall outside the specified
-%% constraints, the action fails. The associated event attribute's `cause`
-%% parameter is set to `OPERATION_NOT_PERMITTED`. For details and example IAM
+%% constraints, the action fails. The associated event attribute's `cause'
+%% parameter is set to `OPERATION_NOT_PERMITTED'. For details and example IAM
 %% policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
 %% Amazon SWF Developer Guide.
 deprecate_activity_type(Client, Input)
@@ -313,10 +313,10 @@ deprecate_activity_type(Client, Input, Options)
 %% You can use IAM policies to control this action's access to Amazon SWF
 %% resources as follows:
 %%
-%% <ul> <li> Use a `Resource` element with the domain name to limit the
+%% <ul> <li> Use a `Resource' element with the domain name to limit the
 %% action to only specified domains.
 %%
-%% </li> <li> Use an `Action` element to allow or deny permission to call
+%% </li> <li> Use an `Action' element to allow or deny permission to call
 %% this action.
 %%
 %% </li> <li> You cannot use an IAM policy to constrain this action's
@@ -324,8 +324,8 @@ deprecate_activity_type(Client, Input, Options)
 %%
 %% </li> </ul> If the caller doesn't have sufficient permissions to invoke
 %% the action, or the parameter values fall outside the specified
-%% constraints, the action fails. The associated event attribute's `cause`
-%% parameter is set to `OPERATION_NOT_PERMITTED`. For details and example IAM
+%% constraints, the action fails. The associated event attribute's `cause'
+%% parameter is set to `OPERATION_NOT_PERMITTED'. For details and example IAM
 %% policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
 %% Amazon SWF Developer Guide.
 deprecate_domain(Client, Input)
@@ -350,25 +350,25 @@ deprecate_domain(Client, Input, Options)
 %% You can use IAM policies to control this action's access to Amazon SWF
 %% resources as follows:
 %%
-%% <ul> <li> Use a `Resource` element with the domain name to limit the
+%% <ul> <li> Use a `Resource' element with the domain name to limit the
 %% action to only specified domains.
 %%
-%% </li> <li> Use an `Action` element to allow or deny permission to call
+%% </li> <li> Use an `Action' element to allow or deny permission to call
 %% this action.
 %%
-%% </li> <li> Constrain the following parameters by using a `Condition`
+%% </li> <li> Constrain the following parameters by using a `Condition'
 %% element with the appropriate keys.
 %%
-%% <ul> <li> `workflowType.name`: String constraint. The key is
-%% `swf:workflowType.name`.
+%% <ul> <li> `workflowType.name': String constraint. The key is
+%% `swf:workflowType.name'.
 %%
-%% </li> <li> `workflowType.version`: String constraint. The key is
-%% `swf:workflowType.version`.
+%% </li> <li> `workflowType.version': String constraint. The key is
+%% `swf:workflowType.version'.
 %%
 %% </li> </ul> </li> </ul> If the caller doesn't have sufficient permissions
 %% to invoke the action, or the parameter values fall outside the specified
-%% constraints, the action fails. The associated event attribute's `cause`
-%% parameter is set to `OPERATION_NOT_PERMITTED`. For details and example IAM
+%% constraints, the action fails. The associated event attribute's `cause'
+%% parameter is set to `OPERATION_NOT_PERMITTED'. For details and example IAM
 %% policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
 %% Amazon SWF Developer Guide.
 deprecate_workflow_type(Client, Input)
@@ -388,25 +388,25 @@ deprecate_workflow_type(Client, Input, Options)
 %% You can use IAM policies to control this action's access to Amazon SWF
 %% resources as follows:
 %%
-%% <ul> <li> Use a `Resource` element with the domain name to limit the
+%% <ul> <li> Use a `Resource' element with the domain name to limit the
 %% action to only specified domains.
 %%
-%% </li> <li> Use an `Action` element to allow or deny permission to call
+%% </li> <li> Use an `Action' element to allow or deny permission to call
 %% this action.
 %%
-%% </li> <li> Constrain the following parameters by using a `Condition`
+%% </li> <li> Constrain the following parameters by using a `Condition'
 %% element with the appropriate keys.
 %%
-%% <ul> <li> `activityType.name`: String constraint. The key is
-%% `swf:activityType.name`.
+%% <ul> <li> `activityType.name': String constraint. The key is
+%% `swf:activityType.name'.
 %%
-%% </li> <li> `activityType.version`: String constraint. The key is
-%% `swf:activityType.version`.
+%% </li> <li> `activityType.version': String constraint. The key is
+%% `swf:activityType.version'.
 %%
 %% </li> </ul> </li> </ul> If the caller doesn't have sufficient permissions
 %% to invoke the action, or the parameter values fall outside the specified
-%% constraints, the action fails. The associated event attribute's `cause`
-%% parameter is set to `OPERATION_NOT_PERMITTED`. For details and example IAM
+%% constraints, the action fails. The associated event attribute's `cause'
+%% parameter is set to `OPERATION_NOT_PERMITTED'. For details and example IAM
 %% policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
 %% Amazon SWF Developer Guide.
 describe_activity_type(Client, Input)
@@ -424,10 +424,10 @@ describe_activity_type(Client, Input, Options)
 %% You can use IAM policies to control this action's access to Amazon SWF
 %% resources as follows:
 %%
-%% <ul> <li> Use a `Resource` element with the domain name to limit the
+%% <ul> <li> Use a `Resource' element with the domain name to limit the
 %% action to only specified domains.
 %%
-%% </li> <li> Use an `Action` element to allow or deny permission to call
+%% </li> <li> Use an `Action' element to allow or deny permission to call
 %% this action.
 %%
 %% </li> <li> You cannot use an IAM policy to constrain this action's
@@ -435,8 +435,8 @@ describe_activity_type(Client, Input, Options)
 %%
 %% </li> </ul> If the caller doesn't have sufficient permissions to invoke
 %% the action, or the parameter values fall outside the specified
-%% constraints, the action fails. The associated event attribute's `cause`
-%% parameter is set to `OPERATION_NOT_PERMITTED`. For details and example IAM
+%% constraints, the action fails. The associated event attribute's `cause'
+%% parameter is set to `OPERATION_NOT_PERMITTED'. For details and example IAM
 %% policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
 %% Amazon SWF Developer Guide.
 describe_domain(Client, Input)
@@ -457,10 +457,10 @@ describe_domain(Client, Input, Options)
 %% You can use IAM policies to control this action's access to Amazon SWF
 %% resources as follows:
 %%
-%% <ul> <li> Use a `Resource` element with the domain name to limit the
+%% <ul> <li> Use a `Resource' element with the domain name to limit the
 %% action to only specified domains.
 %%
-%% </li> <li> Use an `Action` element to allow or deny permission to call
+%% </li> <li> Use an `Action' element to allow or deny permission to call
 %% this action.
 %%
 %% </li> <li> You cannot use an IAM policy to constrain this action's
@@ -468,8 +468,8 @@ describe_domain(Client, Input, Options)
 %%
 %% </li> </ul> If the caller doesn't have sufficient permissions to invoke
 %% the action, or the parameter values fall outside the specified
-%% constraints, the action fails. The associated event attribute's `cause`
-%% parameter is set to `OPERATION_NOT_PERMITTED`. For details and example IAM
+%% constraints, the action fails. The associated event attribute's `cause'
+%% parameter is set to `OPERATION_NOT_PERMITTED'. For details and example IAM
 %% policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
 %% Amazon SWF Developer Guide.
 describe_workflow_execution(Client, Input)
@@ -490,25 +490,25 @@ describe_workflow_execution(Client, Input, Options)
 %% You can use IAM policies to control this action's access to Amazon SWF
 %% resources as follows:
 %%
-%% <ul> <li> Use a `Resource` element with the domain name to limit the
+%% <ul> <li> Use a `Resource' element with the domain name to limit the
 %% action to only specified domains.
 %%
-%% </li> <li> Use an `Action` element to allow or deny permission to call
+%% </li> <li> Use an `Action' element to allow or deny permission to call
 %% this action.
 %%
-%% </li> <li> Constrain the following parameters by using a `Condition`
+%% </li> <li> Constrain the following parameters by using a `Condition'
 %% element with the appropriate keys.
 %%
-%% <ul> <li> `workflowType.name`: String constraint. The key is
-%% `swf:workflowType.name`.
+%% <ul> <li> `workflowType.name': String constraint. The key is
+%% `swf:workflowType.name'.
 %%
-%% </li> <li> `workflowType.version`: String constraint. The key is
-%% `swf:workflowType.version`.
+%% </li> <li> `workflowType.version': String constraint. The key is
+%% `swf:workflowType.version'.
 %%
 %% </li> </ul> </li> </ul> If the caller doesn't have sufficient permissions
 %% to invoke the action, or the parameter values fall outside the specified
-%% constraints, the action fails. The associated event attribute's `cause`
-%% parameter is set to `OPERATION_NOT_PERMITTED`. For details and example IAM
+%% constraints, the action fails. The associated event attribute's `cause'
+%% parameter is set to `OPERATION_NOT_PERMITTED'. For details and example IAM
 %% policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
 %% Amazon SWF Developer Guide.
 describe_workflow_type(Client, Input)
@@ -521,7 +521,7 @@ describe_workflow_type(Client, Input, Options)
 %% @doc Returns the history of the specified workflow execution.
 %%
 %% The results may be split into multiple pages. To retrieve subsequent
-%% pages, make the call again using the `nextPageToken` returned by the
+%% pages, make the call again using the `nextPageToken' returned by the
 %% initial call.
 %%
 %% This operation is eventually consistent. The results are best effort and
@@ -532,10 +532,10 @@ describe_workflow_type(Client, Input, Options)
 %% You can use IAM policies to control this action's access to Amazon SWF
 %% resources as follows:
 %%
-%% <ul> <li> Use a `Resource` element with the domain name to limit the
+%% <ul> <li> Use a `Resource' element with the domain name to limit the
 %% action to only specified domains.
 %%
-%% </li> <li> Use an `Action` element to allow or deny permission to call
+%% </li> <li> Use an `Action' element to allow or deny permission to call
 %% this action.
 %%
 %% </li> <li> You cannot use an IAM policy to constrain this action's
@@ -543,8 +543,8 @@ describe_workflow_type(Client, Input, Options)
 %%
 %% </li> </ul> If the caller doesn't have sufficient permissions to invoke
 %% the action, or the parameter values fall outside the specified
-%% constraints, the action fails. The associated event attribute's `cause`
-%% parameter is set to `OPERATION_NOT_PERMITTED`. For details and example IAM
+%% constraints, the action fails. The associated event attribute's `cause'
+%% parameter is set to `OPERATION_NOT_PERMITTED'. For details and example IAM
 %% policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
 %% Amazon SWF Developer Guide.
 get_workflow_execution_history(Client, Input)
@@ -559,7 +559,7 @@ get_workflow_execution_history(Client, Input, Options)
 %%
 %% The result includes information like creation date, current status of the
 %% activity, etc. The results may be split into multiple pages. To retrieve
-%% subsequent pages, make the call again using the `nextPageToken` returned
+%% subsequent pages, make the call again using the `nextPageToken' returned
 %% by the initial call.
 %%
 %% Access Control
@@ -567,10 +567,10 @@ get_workflow_execution_history(Client, Input, Options)
 %% You can use IAM policies to control this action's access to Amazon SWF
 %% resources as follows:
 %%
-%% <ul> <li> Use a `Resource` element with the domain name to limit the
+%% <ul> <li> Use a `Resource' element with the domain name to limit the
 %% action to only specified domains.
 %%
-%% </li> <li> Use an `Action` element to allow or deny permission to call
+%% </li> <li> Use an `Action' element to allow or deny permission to call
 %% this action.
 %%
 %% </li> <li> You cannot use an IAM policy to constrain this action's
@@ -578,8 +578,8 @@ get_workflow_execution_history(Client, Input, Options)
 %%
 %% </li> </ul> If the caller doesn't have sufficient permissions to invoke
 %% the action, or the parameter values fall outside the specified
-%% constraints, the action fails. The associated event attribute's `cause`
-%% parameter is set to `OPERATION_NOT_PERMITTED`. For details and example IAM
+%% constraints, the action fails. The associated event attribute's `cause'
+%% parameter is set to `OPERATION_NOT_PERMITTED'. For details and example IAM
 %% policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
 %% Amazon SWF Developer Guide.
 list_activity_types(Client, Input)
@@ -604,28 +604,28 @@ list_activity_types(Client, Input, Options)
 %% You can use IAM policies to control this action's access to Amazon SWF
 %% resources as follows:
 %%
-%% <ul> <li> Use a `Resource` element with the domain name to limit the
+%% <ul> <li> Use a `Resource' element with the domain name to limit the
 %% action to only specified domains.
 %%
-%% </li> <li> Use an `Action` element to allow or deny permission to call
+%% </li> <li> Use an `Action' element to allow or deny permission to call
 %% this action.
 %%
-%% </li> <li> Constrain the following parameters by using a `Condition`
+%% </li> <li> Constrain the following parameters by using a `Condition'
 %% element with the appropriate keys.
 %%
-%% <ul> <li> `tagFilter.tag`: String constraint. The key is
-%% `swf:tagFilter.tag`.
+%% <ul> <li> `tagFilter.tag': String constraint. The key is
+%% `swf:tagFilter.tag'.
 %%
-%% </li> <li> `typeFilter.name`: String constraint. The key is
-%% `swf:typeFilter.name`.
+%% </li> <li> `typeFilter.name': String constraint. The key is
+%% `swf:typeFilter.name'.
 %%
-%% </li> <li> `typeFilter.version`: String constraint. The key is
-%% `swf:typeFilter.version`.
+%% </li> <li> `typeFilter.version': String constraint. The key is
+%% `swf:typeFilter.version'.
 %%
 %% </li> </ul> </li> </ul> If the caller doesn't have sufficient permissions
 %% to invoke the action, or the parameter values fall outside the specified
-%% constraints, the action fails. The associated event attribute's `cause`
-%% parameter is set to `OPERATION_NOT_PERMITTED`. For details and example IAM
+%% constraints, the action fails. The associated event attribute's `cause'
+%% parameter is set to `OPERATION_NOT_PERMITTED'. For details and example IAM
 %% policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
 %% Amazon SWF Developer Guide.
 list_closed_workflow_executions(Client, Input)
@@ -649,12 +649,12 @@ list_closed_workflow_executions(Client, Input, Options)
 %% You can use IAM policies to control this action's access to Amazon SWF
 %% resources as follows:
 %%
-%% <ul> <li> Use a `Resource` element with the domain name to limit the
+%% <ul> <li> Use a `Resource' element with the domain name to limit the
 %% action to only specified domains. The element must be set to
-%% `arn:aws:swf::AccountID:domain/*`, where AccountID is the account ID, with
+%% `arn:aws:swf::AccountID:domain/*', where AccountID is the account ID, with
 %% no dashes.
 %%
-%% </li> <li> Use an `Action` element to allow or deny permission to call
+%% </li> <li> Use an `Action' element to allow or deny permission to call
 %% this action.
 %%
 %% </li> <li> You cannot use an IAM policy to constrain this action's
@@ -662,8 +662,8 @@ list_closed_workflow_executions(Client, Input, Options)
 %%
 %% </li> </ul> If the caller doesn't have sufficient permissions to invoke
 %% the action, or the parameter values fall outside the specified
-%% constraints, the action fails. The associated event attribute's `cause`
-%% parameter is set to `OPERATION_NOT_PERMITTED`. For details and example IAM
+%% constraints, the action fails. The associated event attribute's `cause'
+%% parameter is set to `OPERATION_NOT_PERMITTED'. For details and example IAM
 %% policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
 %% Amazon SWF Developer Guide.
 list_domains(Client, Input)
@@ -688,28 +688,28 @@ list_domains(Client, Input, Options)
 %% You can use IAM policies to control this action's access to Amazon SWF
 %% resources as follows:
 %%
-%% <ul> <li> Use a `Resource` element with the domain name to limit the
+%% <ul> <li> Use a `Resource' element with the domain name to limit the
 %% action to only specified domains.
 %%
-%% </li> <li> Use an `Action` element to allow or deny permission to call
+%% </li> <li> Use an `Action' element to allow or deny permission to call
 %% this action.
 %%
-%% </li> <li> Constrain the following parameters by using a `Condition`
+%% </li> <li> Constrain the following parameters by using a `Condition'
 %% element with the appropriate keys.
 %%
-%% <ul> <li> `tagFilter.tag`: String constraint. The key is
-%% `swf:tagFilter.tag`.
+%% <ul> <li> `tagFilter.tag': String constraint. The key is
+%% `swf:tagFilter.tag'.
 %%
-%% </li> <li> `typeFilter.name`: String constraint. The key is
-%% `swf:typeFilter.name`.
+%% </li> <li> `typeFilter.name': String constraint. The key is
+%% `swf:typeFilter.name'.
 %%
-%% </li> <li> `typeFilter.version`: String constraint. The key is
-%% `swf:typeFilter.version`.
+%% </li> <li> `typeFilter.version': String constraint. The key is
+%% `swf:typeFilter.version'.
 %%
 %% </li> </ul> </li> </ul> If the caller doesn't have sufficient permissions
 %% to invoke the action, or the parameter values fall outside the specified
-%% constraints, the action fails. The associated event attribute's `cause`
-%% parameter is set to `OPERATION_NOT_PERMITTED`. For details and example IAM
+%% constraints, the action fails. The associated event attribute's `cause'
+%% parameter is set to `OPERATION_NOT_PERMITTED'. For details and example IAM
 %% policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
 %% Amazon SWF Developer Guide.
 list_open_workflow_executions(Client, Input)
@@ -737,10 +737,10 @@ list_tags_for_resource(Client, Input, Options)
 %% You can use IAM policies to control this action's access to Amazon SWF
 %% resources as follows:
 %%
-%% <ul> <li> Use a `Resource` element with the domain name to limit the
+%% <ul> <li> Use a `Resource' element with the domain name to limit the
 %% action to only specified domains.
 %%
-%% </li> <li> Use an `Action` element to allow or deny permission to call
+%% </li> <li> Use an `Action' element to allow or deny permission to call
 %% this action.
 %%
 %% </li> <li> You cannot use an IAM policy to constrain this action's
@@ -748,8 +748,8 @@ list_tags_for_resource(Client, Input, Options)
 %%
 %% </li> </ul> If the caller doesn't have sufficient permissions to invoke
 %% the action, or the parameter values fall outside the specified
-%% constraints, the action fails. The associated event attribute's `cause`
-%% parameter is set to `OPERATION_NOT_PERMITTED`. For details and example IAM
+%% constraints, the action fails. The associated event attribute's `cause'
+%% parameter is set to `OPERATION_NOT_PERMITTED'. For details and example IAM
 %% policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
 %% Amazon SWF Developer Guide.
 list_workflow_types(Client, Input)
@@ -759,8 +759,8 @@ list_workflow_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWorkflowTypes">>, Input, Options).
 
-%% @doc Used by workers to get an `ActivityTask` from the specified activity
-%% `taskList`.
+%% @doc Used by workers to get an `ActivityTask' from the specified activity
+%% `taskList'.
 %%
 %% This initiates a long poll, where the service holds the HTTP connection
 %% open and responds as soon as a task becomes available. The maximum time
@@ -779,20 +779,20 @@ list_workflow_types(Client, Input, Options)
 %% You can use IAM policies to control this action's access to Amazon SWF
 %% resources as follows:
 %%
-%% <ul> <li> Use a `Resource` element with the domain name to limit the
+%% <ul> <li> Use a `Resource' element with the domain name to limit the
 %% action to only specified domains.
 %%
-%% </li> <li> Use an `Action` element to allow or deny permission to call
+%% </li> <li> Use an `Action' element to allow or deny permission to call
 %% this action.
 %%
-%% </li> <li> Constrain the `taskList.name` parameter by using a `Condition`
-%% element with the `swf:taskList.name` key to allow the action to access
+%% </li> <li> Constrain the `taskList.name' parameter by using a `Condition'
+%% element with the `swf:taskList.name' key to allow the action to access
 %% only certain task lists.
 %%
 %% </li> </ul> If the caller doesn't have sufficient permissions to invoke
 %% the action, or the parameter values fall outside the specified
-%% constraints, the action fails. The associated event attribute's `cause`
-%% parameter is set to `OPERATION_NOT_PERMITTED`. For details and example IAM
+%% constraints, the action fails. The associated event attribute's `cause'
+%% parameter is set to `OPERATION_NOT_PERMITTED'. For details and example IAM
 %% policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
 %% Amazon SWF Developer Guide.
 poll_for_activity_task(Client, Input)
@@ -802,8 +802,8 @@ poll_for_activity_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PollForActivityTask">>, Input, Options).
 
-%% @doc Used by deciders to get a `DecisionTask` from the specified decision
-%% `taskList`.
+%% @doc Used by deciders to get a `DecisionTask' from the specified decision
+%% `taskList'.
 %%
 %% A decision task may be returned for any open workflow execution that is
 %% using the specified task list. The task includes a paginated view of the
@@ -823,29 +823,29 @@ poll_for_activity_task(Client, Input, Options)
 %% Because the number of workflow history events for a single workflow
 %% execution might be very large, the result returned might be split up
 %% across a number of pages. To retrieve subsequent pages, make additional
-%% calls to `PollForDecisionTask` using the `nextPageToken` returned by the
-%% initial call. Note that you do not call `GetWorkflowExecutionHistory` with
-%% this `nextPageToken`. Instead, call `PollForDecisionTask` again.
+%% calls to `PollForDecisionTask' using the `nextPageToken' returned by the
+%% initial call. Note that you do not call `GetWorkflowExecutionHistory' with
+%% this `nextPageToken'. Instead, call `PollForDecisionTask' again.
 %%
 %% Access Control
 %%
 %% You can use IAM policies to control this action's access to Amazon SWF
 %% resources as follows:
 %%
-%% <ul> <li> Use a `Resource` element with the domain name to limit the
+%% <ul> <li> Use a `Resource' element with the domain name to limit the
 %% action to only specified domains.
 %%
-%% </li> <li> Use an `Action` element to allow or deny permission to call
+%% </li> <li> Use an `Action' element to allow or deny permission to call
 %% this action.
 %%
-%% </li> <li> Constrain the `taskList.name` parameter by using a `Condition`
-%% element with the `swf:taskList.name` key to allow the action to access
+%% </li> <li> Constrain the `taskList.name' parameter by using a `Condition'
+%% element with the `swf:taskList.name' key to allow the action to access
 %% only certain task lists.
 %%
 %% </li> </ul> If the caller doesn't have sufficient permissions to invoke
 %% the action, or the parameter values fall outside the specified
-%% constraints, the action fails. The associated event attribute's `cause`
-%% parameter is set to `OPERATION_NOT_PERMITTED`. For details and example IAM
+%% constraints, the action fails. The associated event attribute's `cause'
+%% parameter is set to `OPERATION_NOT_PERMITTED'. For details and example IAM
 %% policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
 %% Amazon SWF Developer Guide.
 poll_for_decision_task(Client, Input)
@@ -856,36 +856,36 @@ poll_for_decision_task(Client, Input, Options)
     request(Client, <<"PollForDecisionTask">>, Input, Options).
 
 %% @doc Used by activity workers to report to the service that the
-%% `ActivityTask` represented by the specified `taskToken` is still making
+%% `ActivityTask' represented by the specified `taskToken' is still making
 %% progress.
 %%
 %% The worker can also specify details of the progress, for example percent
-%% complete, using the `details` parameter. This action can also be used by
+%% complete, using the `details' parameter. This action can also be used by
 %% the worker as a mechanism to check if cancellation is being requested for
 %% the activity task. If a cancellation is being attempted for the specified
-%% task, then the boolean `cancelRequested` flag returned by the service is
-%% set to `true`.
+%% task, then the boolean `cancelRequested' flag returned by the service is
+%% set to `true'.
 %%
-%% This action resets the `taskHeartbeatTimeout` clock. The
-%% `taskHeartbeatTimeout` is specified in `RegisterActivityType`.
+%% This action resets the `taskHeartbeatTimeout' clock. The
+%% `taskHeartbeatTimeout' is specified in `RegisterActivityType'.
 %%
 %% This action doesn't in itself create an event in the workflow execution
 %% history. However, if the task times out, the workflow execution history
-%% contains a `ActivityTaskTimedOut` event that contains the information from
+%% contains a `ActivityTaskTimedOut' event that contains the information from
 %% the last heartbeat generated by the activity worker.
 %%
-%% The `taskStartToCloseTimeout` of an activity type is the maximum duration
+%% The `taskStartToCloseTimeout' of an activity type is the maximum duration
 %% of an activity task, regardless of the number of
-%% `RecordActivityTaskHeartbeat` requests received. The
-%% `taskStartToCloseTimeout` is also specified in `RegisterActivityType`.
+%% `RecordActivityTaskHeartbeat' requests received. The
+%% `taskStartToCloseTimeout' is also specified in `RegisterActivityType'.
 %%
 %% This operation is only useful for long-lived activities to report
 %% liveliness of the task and to determine if a cancellation is being
 %% attempted.
 %%
-%% If the `cancelRequested` flag returns `true`, a cancellation is being
+%% If the `cancelRequested' flag returns `true', a cancellation is being
 %% attempted. If the worker can cancel the activity, it should respond with
-%% `RespondActivityTaskCanceled`. Otherwise, it should ignore the
+%% `RespondActivityTaskCanceled'. Otherwise, it should ignore the
 %% cancellation request.
 %%
 %% Access Control
@@ -893,10 +893,10 @@ poll_for_decision_task(Client, Input, Options)
 %% You can use IAM policies to control this action's access to Amazon SWF
 %% resources as follows:
 %%
-%% <ul> <li> Use a `Resource` element with the domain name to limit the
+%% <ul> <li> Use a `Resource' element with the domain name to limit the
 %% action to only specified domains.
 %%
-%% </li> <li> Use an `Action` element to allow or deny permission to call
+%% </li> <li> Use an `Action' element to allow or deny permission to call
 %% this action.
 %%
 %% </li> <li> You cannot use an IAM policy to constrain this action's
@@ -904,8 +904,8 @@ poll_for_decision_task(Client, Input, Options)
 %%
 %% </li> </ul> If the caller doesn't have sufficient permissions to invoke
 %% the action, or the parameter values fall outside the specified
-%% constraints, the action fails. The associated event attribute's `cause`
-%% parameter is set to `OPERATION_NOT_PERMITTED`. For details and example IAM
+%% constraints, the action fails. The associated event attribute's `cause'
+%% parameter is set to `OPERATION_NOT_PERMITTED'. For details and example IAM
 %% policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
 %% Amazon SWF Developer Guide.
 record_activity_task_heartbeat(Client, Input)
@@ -918,7 +918,7 @@ record_activity_task_heartbeat(Client, Input, Options)
 %% @doc Registers a new activity type along with its configuration settings
 %% in the specified domain.
 %%
-%% A `TypeAlreadyExists` fault is returned if the type already exists in the
+%% A `TypeAlreadyExists' fault is returned if the type already exists in the
 %% domain. You cannot change any configuration settings of the type after its
 %% registration, and it must be registered as a new version.
 %%
@@ -927,26 +927,26 @@ record_activity_task_heartbeat(Client, Input, Options)
 %% You can use IAM policies to control this action's access to Amazon SWF
 %% resources as follows:
 %%
-%% <ul> <li> Use a `Resource` element with the domain name to limit the
+%% <ul> <li> Use a `Resource' element with the domain name to limit the
 %% action to only specified domains.
 %%
-%% </li> <li> Use an `Action` element to allow or deny permission to call
+%% </li> <li> Use an `Action' element to allow or deny permission to call
 %% this action.
 %%
-%% </li> <li> Constrain the following parameters by using a `Condition`
+%% </li> <li> Constrain the following parameters by using a `Condition'
 %% element with the appropriate keys.
 %%
-%% <ul> <li> `defaultTaskList.name`: String constraint. The key is
-%% `swf:defaultTaskList.name`.
+%% <ul> <li> `defaultTaskList.name': String constraint. The key is
+%% `swf:defaultTaskList.name'.
 %%
-%% </li> <li> `name`: String constraint. The key is `swf:name`.
+%% </li> <li> `name': String constraint. The key is `swf:name'.
 %%
-%% </li> <li> `version`: String constraint. The key is `swf:version`.
+%% </li> <li> `version': String constraint. The key is `swf:version'.
 %%
 %% </li> </ul> </li> </ul> If the caller doesn't have sufficient permissions
 %% to invoke the action, or the parameter values fall outside the specified
-%% constraints, the action fails. The associated event attribute's `cause`
-%% parameter is set to `OPERATION_NOT_PERMITTED`. For details and example IAM
+%% constraints, the action fails. The associated event attribute's `cause'
+%% parameter is set to `OPERATION_NOT_PERMITTED'. For details and example IAM
 %% policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
 %% Amazon SWF Developer Guide.
 register_activity_type(Client, Input)
@@ -967,7 +967,7 @@ register_activity_type(Client, Input, Options)
 %% action. The name of the domain being registered is available as the
 %% resource of this action.
 %%
-%% </li> <li> Use an `Action` element to allow or deny permission to call
+%% </li> <li> Use an `Action' element to allow or deny permission to call
 %% this action.
 %%
 %% </li> <li> You cannot use an IAM policy to constrain this action's
@@ -975,8 +975,8 @@ register_activity_type(Client, Input, Options)
 %%
 %% </li> </ul> If the caller doesn't have sufficient permissions to invoke
 %% the action, or the parameter values fall outside the specified
-%% constraints, the action fails. The associated event attribute's `cause`
-%% parameter is set to `OPERATION_NOT_PERMITTED`. For details and example IAM
+%% constraints, the action fails. The associated event attribute's `cause'
+%% parameter is set to `OPERATION_NOT_PERMITTED'. For details and example IAM
 %% policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
 %% Amazon SWF Developer Guide.
 register_domain(Client, Input)
@@ -990,9 +990,9 @@ register_domain(Client, Input, Options)
 %% specified domain.
 %%
 %% The retention period for the workflow history is set by the
-%% `RegisterDomain` action.
+%% `RegisterDomain' action.
 %%
-%% If the type already exists, then a `TypeAlreadyExists` fault is returned.
+%% If the type already exists, then a `TypeAlreadyExists' fault is returned.
 %% You cannot change the configuration settings of a workflow type once it is
 %% registered and it must be registered as a new version.
 %%
@@ -1001,26 +1001,26 @@ register_domain(Client, Input, Options)
 %% You can use IAM policies to control this action's access to Amazon SWF
 %% resources as follows:
 %%
-%% <ul> <li> Use a `Resource` element with the domain name to limit the
+%% <ul> <li> Use a `Resource' element with the domain name to limit the
 %% action to only specified domains.
 %%
-%% </li> <li> Use an `Action` element to allow or deny permission to call
+%% </li> <li> Use an `Action' element to allow or deny permission to call
 %% this action.
 %%
-%% </li> <li> Constrain the following parameters by using a `Condition`
+%% </li> <li> Constrain the following parameters by using a `Condition'
 %% element with the appropriate keys.
 %%
-%% <ul> <li> `defaultTaskList.name`: String constraint. The key is
-%% `swf:defaultTaskList.name`.
+%% <ul> <li> `defaultTaskList.name': String constraint. The key is
+%% `swf:defaultTaskList.name'.
 %%
-%% </li> <li> `name`: String constraint. The key is `swf:name`.
+%% </li> <li> `name': String constraint. The key is `swf:name'.
 %%
-%% </li> <li> `version`: String constraint. The key is `swf:version`.
+%% </li> <li> `version': String constraint. The key is `swf:version'.
 %%
 %% </li> </ul> </li> </ul> If the caller doesn't have sufficient permissions
 %% to invoke the action, or the parameter values fall outside the specified
-%% constraints, the action fails. The associated event attribute's `cause`
-%% parameter is set to `OPERATION_NOT_PERMITTED`. For details and example IAM
+%% constraints, the action fails. The associated event attribute's `cause'
+%% parameter is set to `OPERATION_NOT_PERMITTED'. For details and example IAM
 %% policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
 %% Amazon SWF Developer Guide.
 register_workflow_type(Client, Input)
@@ -1030,7 +1030,7 @@ register_workflow_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterWorkflowType">>, Input, Options).
 
-%% @doc Records a `WorkflowExecutionCancelRequested` event in the currently
+%% @doc Records a `WorkflowExecutionCancelRequested' event in the currently
 %% running workflow execution identified by the given domain, workflowId, and
 %% runId.
 %%
@@ -1038,23 +1038,23 @@ register_workflow_type(Client, Input, Options)
 %% whole. It is up to the decider to take appropriate actions when it
 %% receives an execution history with this event.
 %%
-%% If the runId isn't specified, the `WorkflowExecutionCancelRequested` event
+%% If the runId isn't specified, the `WorkflowExecutionCancelRequested' event
 %% is recorded in the history of the current open workflow execution with the
 %% specified workflowId in the domain.
 %%
 %% Because this action allows the workflow to properly clean up and
 %% gracefully close, it should be used instead of
-%% `TerminateWorkflowExecution` when possible.
+%% `TerminateWorkflowExecution' when possible.
 %%
 %% Access Control
 %%
 %% You can use IAM policies to control this action's access to Amazon SWF
 %% resources as follows:
 %%
-%% <ul> <li> Use a `Resource` element with the domain name to limit the
+%% <ul> <li> Use a `Resource' element with the domain name to limit the
 %% action to only specified domains.
 %%
-%% </li> <li> Use an `Action` element to allow or deny permission to call
+%% </li> <li> Use an `Action' element to allow or deny permission to call
 %% this action.
 %%
 %% </li> <li> You cannot use an IAM policy to constrain this action's
@@ -1062,8 +1062,8 @@ register_workflow_type(Client, Input, Options)
 %%
 %% </li> </ul> If the caller doesn't have sufficient permissions to invoke
 %% the action, or the parameter values fall outside the specified
-%% constraints, the action fails. The associated event attribute's `cause`
-%% parameter is set to `OPERATION_NOT_PERMITTED`. For details and example IAM
+%% constraints, the action fails. The associated event attribute's `cause'
+%% parameter is set to `OPERATION_NOT_PERMITTED'. For details and example IAM
 %% policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
 %% Amazon SWF Developer Guide.
 request_cancel_workflow_execution(Client, Input)
@@ -1073,33 +1073,33 @@ request_cancel_workflow_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RequestCancelWorkflowExecution">>, Input, Options).
 
-%% @doc Used by workers to tell the service that the `ActivityTask`
-%% identified by the `taskToken` was successfully canceled.
+%% @doc Used by workers to tell the service that the `ActivityTask'
+%% identified by the `taskToken' was successfully canceled.
 %%
-%% Additional `details` can be provided using the `details` argument.
+%% Additional `details' can be provided using the `details' argument.
 %%
-%% These `details` (if provided) appear in the `ActivityTaskCanceled` event
+%% These `details' (if provided) appear in the `ActivityTaskCanceled' event
 %% added to the workflow history.
 %%
-%% Only use this operation if the `canceled` flag of a
-%% `RecordActivityTaskHeartbeat` request returns `true` and if the activity
+%% Only use this operation if the `canceled' flag of a
+%% `RecordActivityTaskHeartbeat' request returns `true' and if the activity
 %% can be safely undone or abandoned.
 %%
 %% A task is considered open from the time that it is scheduled until it is
 %% closed. Therefore a task is reported as open while a worker is processing
 %% it. A task is closed after it has been specified in a call to
-%% `RespondActivityTaskCompleted`, RespondActivityTaskCanceled,
-%% `RespondActivityTaskFailed`, or the task has timed out.
+%% `RespondActivityTaskCompleted', RespondActivityTaskCanceled,
+%% `RespondActivityTaskFailed', or the task has timed out.
 %%
 %% Access Control
 %%
 %% You can use IAM policies to control this action's access to Amazon SWF
 %% resources as follows:
 %%
-%% <ul> <li> Use a `Resource` element with the domain name to limit the
+%% <ul> <li> Use a `Resource' element with the domain name to limit the
 %% action to only specified domains.
 %%
-%% </li> <li> Use an `Action` element to allow or deny permission to call
+%% </li> <li> Use an `Action' element to allow or deny permission to call
 %% this action.
 %%
 %% </li> <li> You cannot use an IAM policy to constrain this action's
@@ -1107,8 +1107,8 @@ request_cancel_workflow_execution(Client, Input, Options)
 %%
 %% </li> </ul> If the caller doesn't have sufficient permissions to invoke
 %% the action, or the parameter values fall outside the specified
-%% constraints, the action fails. The associated event attribute's `cause`
-%% parameter is set to `OPERATION_NOT_PERMITTED`. For details and example IAM
+%% constraints, the action fails. The associated event attribute's `cause'
+%% parameter is set to `OPERATION_NOT_PERMITTED'. For details and example IAM
 %% policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
 %% Amazon SWF Developer Guide.
 respond_activity_task_canceled(Client, Input)
@@ -1118,34 +1118,34 @@ respond_activity_task_canceled(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RespondActivityTaskCanceled">>, Input, Options).
 
-%% @doc Used by workers to tell the service that the `ActivityTask`
-%% identified by the `taskToken` completed successfully with a `result` (if
+%% @doc Used by workers to tell the service that the `ActivityTask'
+%% identified by the `taskToken' completed successfully with a `result' (if
 %% provided).
 %%
-%% The `result` appears in the `ActivityTaskCompleted` event in the workflow
+%% The `result' appears in the `ActivityTaskCompleted' event in the workflow
 %% history.
 %%
 %% If the requested task doesn't complete successfully, use
-%% `RespondActivityTaskFailed` instead. If the worker finds that the task is
-%% canceled through the `canceled` flag returned by
-%% `RecordActivityTaskHeartbeat`, it should cancel the task, clean up and
-%% then call `RespondActivityTaskCanceled`.
+%% `RespondActivityTaskFailed' instead. If the worker finds that the task is
+%% canceled through the `canceled' flag returned by
+%% `RecordActivityTaskHeartbeat', it should cancel the task, clean up and
+%% then call `RespondActivityTaskCanceled'.
 %%
 %% A task is considered open from the time that it is scheduled until it is
 %% closed. Therefore a task is reported as open while a worker is processing
 %% it. A task is closed after it has been specified in a call to
-%% RespondActivityTaskCompleted, `RespondActivityTaskCanceled`,
-%% `RespondActivityTaskFailed`, or the task has timed out.
+%% RespondActivityTaskCompleted, `RespondActivityTaskCanceled',
+%% `RespondActivityTaskFailed', or the task has timed out.
 %%
 %% Access Control
 %%
 %% You can use IAM policies to control this action's access to Amazon SWF
 %% resources as follows:
 %%
-%% <ul> <li> Use a `Resource` element with the domain name to limit the
+%% <ul> <li> Use a `Resource' element with the domain name to limit the
 %% action to only specified domains.
 %%
-%% </li> <li> Use an `Action` element to allow or deny permission to call
+%% </li> <li> Use an `Action' element to allow or deny permission to call
 %% this action.
 %%
 %% </li> <li> You cannot use an IAM policy to constrain this action's
@@ -1153,8 +1153,8 @@ respond_activity_task_canceled(Client, Input, Options)
 %%
 %% </li> </ul> If the caller doesn't have sufficient permissions to invoke
 %% the action, or the parameter values fall outside the specified
-%% constraints, the action fails. The associated event attribute's `cause`
-%% parameter is set to `OPERATION_NOT_PERMITTED`. For details and example IAM
+%% constraints, the action fails. The associated event attribute's `cause'
+%% parameter is set to `OPERATION_NOT_PERMITTED'. For details and example IAM
 %% policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
 %% Amazon SWF Developer Guide.
 respond_activity_task_completed(Client, Input)
@@ -1164,16 +1164,16 @@ respond_activity_task_completed(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RespondActivityTaskCompleted">>, Input, Options).
 
-%% @doc Used by workers to tell the service that the `ActivityTask`
-%% identified by the `taskToken` has failed with `reason` (if specified).
+%% @doc Used by workers to tell the service that the `ActivityTask'
+%% identified by the `taskToken' has failed with `reason' (if specified).
 %%
-%% The `reason` and `details` appear in the `ActivityTaskFailed` event added
+%% The `reason' and `details' appear in the `ActivityTaskFailed' event added
 %% to the workflow history.
 %%
 %% A task is considered open from the time that it is scheduled until it is
 %% closed. Therefore a task is reported as open while a worker is processing
 %% it. A task is closed after it has been specified in a call to
-%% `RespondActivityTaskCompleted`, `RespondActivityTaskCanceled`,
+%% `RespondActivityTaskCompleted', `RespondActivityTaskCanceled',
 %% RespondActivityTaskFailed, or the task has timed out.
 %%
 %% Access Control
@@ -1181,10 +1181,10 @@ respond_activity_task_completed(Client, Input, Options)
 %% You can use IAM policies to control this action's access to Amazon SWF
 %% resources as follows:
 %%
-%% <ul> <li> Use a `Resource` element with the domain name to limit the
+%% <ul> <li> Use a `Resource' element with the domain name to limit the
 %% action to only specified domains.
 %%
-%% </li> <li> Use an `Action` element to allow or deny permission to call
+%% </li> <li> Use an `Action' element to allow or deny permission to call
 %% this action.
 %%
 %% </li> <li> You cannot use an IAM policy to constrain this action's
@@ -1192,8 +1192,8 @@ respond_activity_task_completed(Client, Input, Options)
 %%
 %% </li> </ul> If the caller doesn't have sufficient permissions to invoke
 %% the action, or the parameter values fall outside the specified
-%% constraints, the action fails. The associated event attribute's `cause`
-%% parameter is set to `OPERATION_NOT_PERMITTED`. For details and example IAM
+%% constraints, the action fails. The associated event attribute's `cause'
+%% parameter is set to `OPERATION_NOT_PERMITTED'. For details and example IAM
 %% policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
 %% Amazon SWF Developer Guide.
 respond_activity_task_failed(Client, Input)
@@ -1203,20 +1203,20 @@ respond_activity_task_failed(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RespondActivityTaskFailed">>, Input, Options).
 
-%% @doc Used by deciders to tell the service that the `DecisionTask`
-%% identified by the `taskToken` has successfully completed.
+%% @doc Used by deciders to tell the service that the `DecisionTask'
+%% identified by the `taskToken' has successfully completed.
 %%
-%% The `decisions` argument specifies the list of decisions made while
+%% The `decisions' argument specifies the list of decisions made while
 %% processing the task.
 %%
-%% A `DecisionTaskCompleted` event is added to the workflow history. The
-%% `executionContext` specified is attached to the event in the workflow
+%% A `DecisionTaskCompleted' event is added to the workflow history. The
+%% `executionContext' specified is attached to the event in the workflow
 %% execution history.
 %%
 %% Access Control
 %%
-%% If an IAM policy grants permission to use `RespondDecisionTaskCompleted`,
-%% it can express permissions for the list of decisions in the `decisions`
+%% If an IAM policy grants permission to use `RespondDecisionTaskCompleted',
+%% it can express permissions for the list of decisions in the `decisions'
 %% parameter. Each of the decisions has one or more parameters, much like a
 %% regular API call. To allow for policies to be as readable as possible, you
 %% can express permissions on decisions as if they were actual API calls,
@@ -1230,29 +1230,29 @@ respond_decision_task_completed(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RespondDecisionTaskCompleted">>, Input, Options).
 
-%% @doc Records a `WorkflowExecutionSignaled` event in the workflow execution
+%% @doc Records a `WorkflowExecutionSignaled' event in the workflow execution
 %% history and creates a decision task for the workflow execution identified
 %% by the given domain, workflowId and runId.
 %%
 %% The event is recorded with the specified user defined signalName and input
 %% (if provided).
 %%
-%% If a runId isn't specified, then the `WorkflowExecutionSignaled` event is
+%% If a runId isn't specified, then the `WorkflowExecutionSignaled' event is
 %% recorded in the history of the current open workflow with the matching
 %% workflowId in the domain.
 %%
 %% If the specified workflow execution isn't open, this method fails with
-%% `UnknownResource`.
+%% `UnknownResource'.
 %%
 %% Access Control
 %%
 %% You can use IAM policies to control this action's access to Amazon SWF
 %% resources as follows:
 %%
-%% <ul> <li> Use a `Resource` element with the domain name to limit the
+%% <ul> <li> Use a `Resource' element with the domain name to limit the
 %% action to only specified domains.
 %%
-%% </li> <li> Use an `Action` element to allow or deny permission to call
+%% </li> <li> Use an `Action' element to allow or deny permission to call
 %% this action.
 %%
 %% </li> <li> You cannot use an IAM policy to constrain this action's
@@ -1260,8 +1260,8 @@ respond_decision_task_completed(Client, Input, Options)
 %%
 %% </li> </ul> If the caller doesn't have sufficient permissions to invoke
 %% the action, or the parameter values fall outside the specified
-%% constraints, the action fails. The associated event attribute's `cause`
-%% parameter is set to `OPERATION_NOT_PERMITTED`. For details and example IAM
+%% constraints, the action fails. The associated event attribute's `cause'
+%% parameter is set to `OPERATION_NOT_PERMITTED'. For details and example IAM
 %% policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
 %% Amazon SWF Developer Guide.
 signal_workflow_execution(Client, Input)
@@ -1272,7 +1272,7 @@ signal_workflow_execution(Client, Input, Options)
     request(Client, <<"SignalWorkflowExecution">>, Input, Options).
 
 %% @doc Starts an execution of the workflow type in the specified domain
-%% using the provided `workflowId` and input data.
+%% using the provided `workflowId' and input data.
 %%
 %% This action returns the newly started workflow execution.
 %%
@@ -1281,37 +1281,37 @@ signal_workflow_execution(Client, Input, Options)
 %% You can use IAM policies to control this action's access to Amazon SWF
 %% resources as follows:
 %%
-%% <ul> <li> Use a `Resource` element with the domain name to limit the
+%% <ul> <li> Use a `Resource' element with the domain name to limit the
 %% action to only specified domains.
 %%
-%% </li> <li> Use an `Action` element to allow or deny permission to call
+%% </li> <li> Use an `Action' element to allow or deny permission to call
 %% this action.
 %%
-%% </li> <li> Constrain the following parameters by using a `Condition`
+%% </li> <li> Constrain the following parameters by using a `Condition'
 %% element with the appropriate keys.
 %%
-%% <ul> <li> `tagList.member.0`: The key is `swf:tagList.member.0`.
+%% <ul> <li> `tagList.member.0': The key is `swf:tagList.member.0'.
 %%
-%% </li> <li> `tagList.member.1`: The key is `swf:tagList.member.1`.
+%% </li> <li> `tagList.member.1': The key is `swf:tagList.member.1'.
 %%
-%% </li> <li> `tagList.member.2`: The key is `swf:tagList.member.2`.
+%% </li> <li> `tagList.member.2': The key is `swf:tagList.member.2'.
 %%
-%% </li> <li> `tagList.member.3`: The key is `swf:tagList.member.3`.
+%% </li> <li> `tagList.member.3': The key is `swf:tagList.member.3'.
 %%
-%% </li> <li> `tagList.member.4`: The key is `swf:tagList.member.4`.
+%% </li> <li> `tagList.member.4': The key is `swf:tagList.member.4'.
 %%
-%% </li> <li> `taskList`: String constraint. The key is `swf:taskList.name`.
+%% </li> <li> `taskList': String constraint. The key is `swf:taskList.name'.
 %%
-%% </li> <li> `workflowType.name`: String constraint. The key is
-%% `swf:workflowType.name`.
+%% </li> <li> `workflowType.name': String constraint. The key is
+%% `swf:workflowType.name'.
 %%
-%% </li> <li> `workflowType.version`: String constraint. The key is
-%% `swf:workflowType.version`.
+%% </li> <li> `workflowType.version': String constraint. The key is
+%% `swf:workflowType.version'.
 %%
 %% </li> </ul> </li> </ul> If the caller doesn't have sufficient permissions
 %% to invoke the action, or the parameter values fall outside the specified
-%% constraints, the action fails. The associated event attribute's `cause`
-%% parameter is set to `OPERATION_NOT_PERMITTED`. For details and example IAM
+%% constraints, the action fails. The associated event attribute's `cause'
+%% parameter is set to `OPERATION_NOT_PERMITTED'. For details and example IAM
 %% policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
 %% Amazon SWF Developer Guide.
 start_workflow_execution(Client, Input)
@@ -1331,7 +1331,7 @@ tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
-%% @doc Records a `WorkflowExecutionTerminated` event and forces closure of
+%% @doc Records a `WorkflowExecutionTerminated' event and forces closure of
 %% the workflow execution identified by the given domain, runId, and
 %% workflowId.
 %%
@@ -1342,23 +1342,23 @@ tag_resource(Client, Input, Options)
 %% If the identified workflow execution was in progress, it is terminated
 %% immediately.
 %%
-%% If a runId isn't specified, then the `WorkflowExecutionTerminated` event
+%% If a runId isn't specified, then the `WorkflowExecutionTerminated' event
 %% is recorded in the history of the current open workflow with the matching
 %% workflowId in the domain.
 %%
-%% You should consider using `RequestCancelWorkflowExecution` action instead
+%% You should consider using `RequestCancelWorkflowExecution' action instead
 %% because it allows the workflow to gracefully close while
-%% `TerminateWorkflowExecution` doesn't.
+%% `TerminateWorkflowExecution' doesn't.
 %%
 %% Access Control
 %%
 %% You can use IAM policies to control this action's access to Amazon SWF
 %% resources as follows:
 %%
-%% <ul> <li> Use a `Resource` element with the domain name to limit the
+%% <ul> <li> Use a `Resource' element with the domain name to limit the
 %% action to only specified domains.
 %%
-%% </li> <li> Use an `Action` element to allow or deny permission to call
+%% </li> <li> Use an `Action' element to allow or deny permission to call
 %% this action.
 %%
 %% </li> <li> You cannot use an IAM policy to constrain this action's
@@ -1366,8 +1366,8 @@ tag_resource(Client, Input, Options)
 %%
 %% </li> </ul> If the caller doesn't have sufficient permissions to invoke
 %% the action, or the parameter values fall outside the specified
-%% constraints, the action fails. The associated event attribute's `cause`
-%% parameter is set to `OPERATION_NOT_PERMITTED`. For details and example IAM
+%% constraints, the action fails. The associated event attribute's `cause'
+%% parameter is set to `OPERATION_NOT_PERMITTED'. For details and example IAM
 %% policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
 %% Amazon SWF Developer Guide.
 terminate_workflow_execution(Client, Input)
@@ -1390,25 +1390,25 @@ terminate_workflow_execution(Client, Input, Options)
 %% You can use IAM policies to control this action's access to Amazon SWF
 %% resources as follows:
 %%
-%% <ul> <li> Use a `Resource` element with the domain name to limit the
+%% <ul> <li> Use a `Resource' element with the domain name to limit the
 %% action to only specified domains.
 %%
-%% </li> <li> Use an `Action` element to allow or deny permission to call
+%% </li> <li> Use an `Action' element to allow or deny permission to call
 %% this action.
 %%
-%% </li> <li> Constrain the following parameters by using a `Condition`
+%% </li> <li> Constrain the following parameters by using a `Condition'
 %% element with the appropriate keys.
 %%
-%% <ul> <li> `activityType.name`: String constraint. The key is
-%% `swf:activityType.name`.
+%% <ul> <li> `activityType.name': String constraint. The key is
+%% `swf:activityType.name'.
 %%
-%% </li> <li> `activityType.version`: String constraint. The key is
-%% `swf:activityType.version`.
+%% </li> <li> `activityType.version': String constraint. The key is
+%% `swf:activityType.version'.
 %%
 %% </li> </ul> </li> </ul> If the caller doesn't have sufficient permissions
 %% to invoke the action, or the parameter values fall outside the specified
-%% constraints, the action fails. The associated event attribute's `cause`
-%% parameter is set to `OPERATION_NOT_PERMITTED`. For details and example IAM
+%% constraints, the action fails. The associated event attribute's `cause'
+%% parameter is set to `OPERATION_NOT_PERMITTED'. For details and example IAM
 %% policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
 %% Amazon SWF Developer Guide.
 undeprecate_activity_type(Client, Input)
@@ -1431,10 +1431,10 @@ undeprecate_activity_type(Client, Input, Options)
 %% You can use IAM policies to control this action's access to Amazon SWF
 %% resources as follows:
 %%
-%% <ul> <li> Use a `Resource` element with the domain name to limit the
+%% <ul> <li> Use a `Resource' element with the domain name to limit the
 %% action to only specified domains.
 %%
-%% </li> <li> Use an `Action` element to allow or deny permission to call
+%% </li> <li> Use an `Action' element to allow or deny permission to call
 %% this action.
 %%
 %% </li> <li> You cannot use an IAM policy to constrain this action's
@@ -1442,8 +1442,8 @@ undeprecate_activity_type(Client, Input, Options)
 %%
 %% </li> </ul> If the caller doesn't have sufficient permissions to invoke
 %% the action, or the parameter values fall outside the specified
-%% constraints, the action fails. The associated event attribute's `cause`
-%% parameter is set to `OPERATION_NOT_PERMITTED`. For details and example IAM
+%% constraints, the action fails. The associated event attribute's `cause'
+%% parameter is set to `OPERATION_NOT_PERMITTED'. For details and example IAM
 %% policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
 %% Amazon SWF Developer Guide.
 undeprecate_domain(Client, Input)
@@ -1466,25 +1466,25 @@ undeprecate_domain(Client, Input, Options)
 %% You can use IAM policies to control this action's access to Amazon SWF
 %% resources as follows:
 %%
-%% <ul> <li> Use a `Resource` element with the domain name to limit the
+%% <ul> <li> Use a `Resource' element with the domain name to limit the
 %% action to only specified domains.
 %%
-%% </li> <li> Use an `Action` element to allow or deny permission to call
+%% </li> <li> Use an `Action' element to allow or deny permission to call
 %% this action.
 %%
-%% </li> <li> Constrain the following parameters by using a `Condition`
+%% </li> <li> Constrain the following parameters by using a `Condition'
 %% element with the appropriate keys.
 %%
-%% <ul> <li> `workflowType.name`: String constraint. The key is
-%% `swf:workflowType.name`.
+%% <ul> <li> `workflowType.name': String constraint. The key is
+%% `swf:workflowType.name'.
 %%
-%% </li> <li> `workflowType.version`: String constraint. The key is
-%% `swf:workflowType.version`.
+%% </li> <li> `workflowType.version': String constraint. The key is
+%% `swf:workflowType.version'.
 %%
 %% </li> </ul> </li> </ul> If the caller doesn't have sufficient permissions
 %% to invoke the action, or the parameter values fall outside the specified
-%% constraints, the action fails. The associated event attribute's `cause`
-%% parameter is set to `OPERATION_NOT_PERMITTED`. For details and example IAM
+%% constraints, the action fails. The associated event attribute's `cause'
+%% parameter is set to `OPERATION_NOT_PERMITTED'. For details and example IAM
 %% policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
 %% Amazon SWF Developer Guide.
 undeprecate_workflow_type(Client, Input)

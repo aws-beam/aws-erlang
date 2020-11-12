@@ -82,9 +82,9 @@ cancel_contact(Client, ContactId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a `Config` with the specified `configData` parameters.
+%% @doc Creates a `Config' with the specified `configData' parameters.
 %%
-%% Only one type of `configData` can be specified.
+%% Only one type of `configData' can be specified.
 create_config(Client, Input) ->
     create_config(Client, Input, []).
 create_config(Client, Input0, Options) ->
@@ -100,15 +100,15 @@ create_config(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a `DataflowEndpoint` group containing the specified list of
-%% `DataflowEndpoint` objects.
+%% @doc Creates a `DataflowEndpoint' group containing the specified list of
+%% `DataflowEndpoint' objects.
 %%
-%% The `name` field in each endpoint is used in your mission profile
-%% `DataflowEndpointConfig` to specify which endpoints to use during a
+%% The `name' field in each endpoint is used in your mission profile
+%% `DataflowEndpointConfig' to specify which endpoints to use during a
 %% contact.
 %%
-%% When a contact uses multiple `DataflowEndpointConfig` objects, each
-%% `Config` must match a `DataflowEndpoint` in the same group.
+%% When a contact uses multiple `DataflowEndpointConfig' objects, each
+%% `Config' must match a `DataflowEndpoint' in the same group.
 create_dataflow_endpoint_group(Client, Input) ->
     create_dataflow_endpoint_group(Client, Input, []).
 create_dataflow_endpoint_group(Client, Input0, Options) ->
@@ -126,7 +126,7 @@ create_dataflow_endpoint_group(Client, Input0, Options) ->
 
 %% @doc Creates a mission profile.
 %%
-%% `dataflowEdges` is a list of lists of strings. Each lower level list of
+%% `dataflowEdges' is a list of lists of strings. Each lower level list of
 %% strings has two elements: a from ARN and a to ARN.
 create_mission_profile(Client, Input) ->
     create_mission_profile(Client, Input, []).
@@ -143,7 +143,7 @@ create_mission_profile(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a `Config`.
+%% @doc Deletes a `Config'.
 delete_config(Client, ConfigId, ConfigType, Input) ->
     delete_config(Client, ConfigId, ConfigType, Input, []).
 delete_config(Client, ConfigId, ConfigType, Input0, Options) ->
@@ -206,9 +206,9 @@ describe_contact(Client, ContactId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns `Config` information.
+%% @doc Returns `Config' information.
 %%
-%% Only one `Config` response can be returned.
+%% Only one `Config' response can be returned.
 get_config(Client, ConfigId, ConfigType)
   when is_map(Client) ->
     get_config(Client, ConfigId, ConfigType, []).
@@ -284,7 +284,7 @@ get_satellite(Client, SatelliteId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of `Config` objects.
+%% @doc Returns a list of `Config' objects.
 list_configs(Client, MaxResults, NextToken)
   when is_map(Client) ->
     list_configs(Client, MaxResults, NextToken, []).
@@ -306,8 +306,8 @@ list_configs(Client, MaxResults, NextToken, Options)
 
 %% @doc Returns a list of contacts.
 %%
-%% If `statusList` contains AVAILABLE, the request must include
-%% `groundStation`, `missionprofileArn`, and `satelliteArn`.
+%% If `statusList' contains AVAILABLE, the request must include
+%% `groundStation', `missionprofileArn', and `satelliteArn'.
 list_contacts(Client, Input) ->
     list_contacts(Client, Input, []).
 list_contacts(Client, Input0, Options) ->
@@ -323,7 +323,7 @@ list_contacts(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of `DataflowEndpoint` groups.
+%% @doc Returns a list of `DataflowEndpoint' groups.
 list_dataflow_endpoint_groups(Client, MaxResults, NextToken)
   when is_map(Client) ->
     list_dataflow_endpoint_groups(Client, MaxResults, NextToken, []).
@@ -468,10 +468,10 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the `Config` used when scheduling contacts.
+%% @doc Updates the `Config' used when scheduling contacts.
 %%
-%% Updating a `Config` will not update the execution parameters for existing
-%% future contacts scheduled with this `Config`.
+%% Updating a `Config' will not update the execution parameters for existing
+%% future contacts scheduled with this `Config'.
 update_config(Client, ConfigId, ConfigType, Input) ->
     update_config(Client, ConfigId, ConfigType, Input, []).
 update_config(Client, ConfigId, ConfigType, Input0, Options) ->

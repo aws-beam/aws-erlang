@@ -120,7 +120,7 @@ create_certificate_authority_audit_report(Client, Input, Options)
     request(Client, <<"CreateCertificateAuthorityAuditReport">>, Input, Options).
 
 %% @doc Grants one or more permissions on a private CA to the AWS Certificate
-%% Manager (ACM) service principal (`acm.amazonaws.com`).
+%% Manager (ACM) service principal (`acm.amazonaws.com').
 %%
 %% These permissions allow ACM to issue and renew ACM certificates that
 %% reside in the same AWS account as the CA.
@@ -131,7 +131,7 @@ create_certificate_authority_audit_report(Client, Input, Options)
 %% == About Permissions ==
 %%
 %% <ul> <li> If the private CA and the certificates it issues reside in the
-%% same account, you can use `CreatePermission` to grant permissions for ACM
+%% same account, you can use `CreatePermission' to grant permissions for ACM
 %% to carry out automatic certificate renewals.
 %%
 %% </li> <li> For automatic certificate renewal to succeed, the ACM service
@@ -162,21 +162,21 @@ create_permission(Client, Input, Options)
 %%
 %% Before you can delete a CA that you have created and activated, you must
 %% disable it. To do this, call the UpdateCertificateAuthority action and set
-%% the CertificateAuthorityStatus parameter to `DISABLED`.
+%% the CertificateAuthorityStatus parameter to `DISABLED'.
 %%
 %% Additionally, you can delete a CA if you are waiting for it to be created
-%% (that is, the status of the CA is `CREATING`). You can also delete it if
+%% (that is, the status of the CA is `CREATING'). You can also delete it if
 %% the CA has been created but you haven't yet imported the signed
 %% certificate into ACM Private CA (that is, the status of the CA is
-%% `PENDING_CERTIFICATE`).
+%% `PENDING_CERTIFICATE').
 %%
 %% When you successfully call DeleteCertificateAuthority, the CA's status
-%% changes to `DELETED`. However, the CA won't be permanently deleted until
+%% changes to `DELETED'. However, the CA won't be permanently deleted until
 %% the restoration period has passed. By default, if you do not set the
-%% `PermanentDeletionTimeInDays` parameter, the CA remains restorable for 30
+%% `PermanentDeletionTimeInDays' parameter, the CA remains restorable for 30
 %% days. You can set the parameter from 7 to 30 days. The
 %% DescribeCertificateAuthority action returns the time remaining in the
-%% restoration window of a private CA in the `DELETED` state. To restore an
+%% restoration window of a private CA in the `DELETED' state. To restore an
 %% eligible CA, call the RestoreCertificateAuthority action.
 delete_certificate_authority(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -198,7 +198,7 @@ delete_certificate_authority(Client, Input, Options)
 %% == About Permissions ==
 %%
 %% <ul> <li> If the private CA and the certificates it issues reside in the
-%% same account, you can use `CreatePermission` to grant permissions for ACM
+%% same account, you can use `CreatePermission' to grant permissions for ACM
 %% to carry out automatic certificate renewals.
 %%
 %% </li> <li> For automatic certificate renewal to succeed, the ACM service
@@ -266,25 +266,25 @@ delete_policy(Client, Input, Options)
 %% You specify the private CA on input by its ARN (Amazon Resource Name). The
 %% output contains the status of your CA. This can be any of the following:
 %%
-%% <ul> <li> `CREATING` - ACM Private CA is creating your private certificate
+%% <ul> <li> `CREATING' - ACM Private CA is creating your private certificate
 %% authority.
 %%
-%% </li> <li> `PENDING_CERTIFICATE` - The certificate is pending. You must
+%% </li> <li> `PENDING_CERTIFICATE' - The certificate is pending. You must
 %% use your ACM Private CA-hosted or on-premises root or subordinate CA to
 %% sign your private CA CSR and then import it into PCA.
 %%
-%% </li> <li> `ACTIVE` - Your private CA is active.
+%% </li> <li> `ACTIVE' - Your private CA is active.
 %%
-%% </li> <li> `DISABLED` - Your private CA has been disabled.
+%% </li> <li> `DISABLED' - Your private CA has been disabled.
 %%
-%% </li> <li> `EXPIRED` - Your private CA certificate has expired.
+%% </li> <li> `EXPIRED' - Your private CA certificate has expired.
 %%
-%% </li> <li> `FAILED` - Your private CA has failed. Your CA can fail because
+%% </li> <li> `FAILED' - Your private CA has failed. Your CA can fail because
 %% of problems such a network outage or backend AWS failure or other errors.
 %% A failed CA can never return to the pending state. You must create a new
 %% CA.
 %%
-%% </li> <li> `DELETED` - Your private CA is within the restoration period,
+%% </li> <li> `DELETED' - Your private CA is within the restoration period,
 %% after which it is permanently deleted. The length of time remaining in the
 %% CA's restoration period is also included in this action's output.
 %%
@@ -357,7 +357,7 @@ get_certificate_authority_csr(Client, Input, Options)
 %% @doc Retrieves the resource-based policy attached to a private CA.
 %%
 %% If either the private CA resource or the policy cannot be found, this
-%% action returns a `ResourceNotFoundException`.
+%% action returns a `ResourceNotFoundException'.
 %%
 %% The policy can be attached or updated with PutPolicy and removed with
 %% DeletePolicy.
@@ -522,7 +522,7 @@ list_certificate_authorities(Client, Input, Options)
 %% == About Permissions ==
 %%
 %% <ul> <li> If the private CA and the certificates it issues reside in the
-%% same account, you can use `CreatePermission` to grant permissions for ACM
+%% same account, you can use `CreatePermission' to grant permissions for ACM
 %% to carry out automatic certificate renewals.
 %%
 %% </li> <li> For automatic certificate renewal to succeed, the ACM service
@@ -591,19 +591,19 @@ put_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutPolicy">>, Input, Options).
 
-%% @doc Restores a certificate authority (CA) that is in the `DELETED` state.
+%% @doc Restores a certificate authority (CA) that is in the `DELETED' state.
 %%
 %% You can restore a CA during the period that you defined in the
 %% PermanentDeletionTimeInDays parameter of the DeleteCertificateAuthority
 %% action. Currently, you can specify 7 to 30 days. If you did not specify a
 %% PermanentDeletionTimeInDays value, by default you can restore the CA at
 %% any time in a 30 day period. You can check the time remaining in the
-%% restoration period of a private CA in the `DELETED` state by calling the
+%% restoration period of a private CA in the `DELETED' state by calling the
 %% DescribeCertificateAuthority or ListCertificateAuthorities actions. The
 %% status of a restored CA is set to its pre-deletion status when the
 %% RestoreCertificateAuthority action returns. To change its status to
-%% `ACTIVE`, call the UpdateCertificateAuthority action. If the private CA
-%% was in the `PENDING_CERTIFICATE` state at deletion, you must use the
+%% `ACTIVE', call the UpdateCertificateAuthority action. If the private CA
+%% was in the `PENDING_CERTIFICATE' state at deletion, you must use the
 %% ImportCertificateAuthorityCertificate action to import a certificate
 %% authority into the private CA before it can be activated. You cannot
 %% restore a CA after the restoration period has ended.
@@ -622,8 +622,8 @@ restore_certificate_authority(Client, Input, Options)
 %% you specify. A CRL is typically updated approximately 30 minutes after a
 %% certificate is revoked. If for any reason the CRL update fails, ACM
 %% Private CA attempts makes further attempts every 15 minutes. With Amazon
-%% CloudWatch, you can create alarms for the metrics `CRLGenerated` and
-%% `MisconfiguredCRLBucket`. For more information, see Supported CloudWatch
+%% CloudWatch, you can create alarms for the metrics `CRLGenerated' and
+%% `MisconfiguredCRLBucket'. For more information, see Supported CloudWatch
 %% Metrics.
 %%
 %% Both PCA and the IAM principal must have permission to write to the S3
@@ -678,9 +678,9 @@ untag_certificate_authority(Client, Input, Options)
 %% @doc Updates the status or configuration of a private certificate
 %% authority (CA).
 %%
-%% Your private CA must be in the `ACTIVE` or `DISABLED` state before you can
-%% update it. You can disable a private CA that is in the `ACTIVE` state or
-%% make a CA that is in the `DISABLED` state active again.
+%% Your private CA must be in the `ACTIVE' or `DISABLED' state before you can
+%% update it. You can disable a private CA that is in the `ACTIVE' state or
+%% make a CA that is in the `DISABLED' state active again.
 %%
 %% Both PCA and the IAM principal must have permission to write to the S3
 %% bucket that you specify. If the IAM principal making the call does not

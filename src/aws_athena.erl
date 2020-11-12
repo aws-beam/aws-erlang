@@ -87,12 +87,12 @@
 %% queries, which you provide as an array of query ID strings.
 %%
 %% Requires you to have access to the workgroup in which the queries were
-%% saved. Use `ListNamedQueriesInput` to get the list of named query IDs in
+%% saved. Use `ListNamedQueriesInput' to get the list of named query IDs in
 %% the specified workgroup. If information could not be retrieved for a
 %% submitted query ID, information about the query ID submitted is listed
-%% under `UnprocessedNamedQueryId`. Named queries differ from executed
-%% queries. Use `BatchGetQueryExecutionInput` to get details about each
-%% unique query execution, and `ListQueryExecutionsInput` to get a list of
+%% under `UnprocessedNamedQueryId'. Named queries differ from executed
+%% queries. Use `BatchGetQueryExecutionInput' to get details about each
+%% unique query execution, and `ListQueryExecutionsInput' to get a list of
 %% query execution IDs.
 batch_get_named_query(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -107,8 +107,8 @@ batch_get_named_query(Client, Input, Options)
 %%
 %% Requires you to have access to the workgroup in which the queries ran. To
 %% get a list of query execution IDs, use
-%% `ListQueryExecutionsInput$WorkGroup`. Query executions differ from named
-%% (saved) queries. Use `BatchGetNamedQueryInput` to get details about named
+%% `ListQueryExecutionsInput$WorkGroup'. Query executions differ from named
+%% (saved) queries. Use `BatchGetNamedQueryInput' to get details about named
 %% queries.
 batch_get_query_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -219,19 +219,19 @@ get_query_execution(Client, Input, Options)
     request(Client, <<"GetQueryExecution">>, Input, Options).
 
 %% @doc Streams the results of a single query execution specified by
-%% `QueryExecutionId` from the Athena query results location in Amazon S3.
+%% `QueryExecutionId' from the Athena query results location in Amazon S3.
 %%
 %% For more information, see Query Results in the Amazon Athena User Guide.
 %% This request does not execute the query but returns results. Use
-%% `StartQueryExecution` to run a query.
+%% `StartQueryExecution' to run a query.
 %%
 %% To stream query results successfully, the IAM principal with permission to
-%% call `GetQueryResults` also must have permissions to the Amazon S3
-%% `GetObject` action for the Athena query results location.
+%% call `GetQueryResults' also must have permissions to the Amazon S3
+%% `GetObject' action for the Athena query results location.
 %%
-%% IAM principals with permission to the Amazon S3 `GetObject` action for the
+%% IAM principals with permission to the Amazon S3 `GetObject' action for the
 %% query results location are able to retrieve query results from Amazon S3
-%% even if permission to the `GetQueryResults` action is denied. To restrict
+%% even if permission to the `GetQueryResults' action is denied. To restrict
 %% user or role access, ensure that Amazon S3 permissions to the Athena query
 %% location are denied.
 get_query_results(Client, Input)
@@ -331,10 +331,10 @@ list_work_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWorkGroups">>, Input, Options).
 
-%% @doc Runs the SQL query statements contained in the `Query`.
+%% @doc Runs the SQL query statements contained in the `Query'.
 %%
 %% Requires you to have access to the workgroup in which the query ran.
-%% Running queries against an external catalog requires `GetDataCatalog`
+%% Running queries against an external catalog requires `GetDataCatalog'
 %% permission to the catalog. For code samples using the AWS SDK for Java,
 %% see Examples and Code Samples in the Amazon Athena User Guide.
 start_query_execution(Client, Input)

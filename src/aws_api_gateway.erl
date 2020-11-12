@@ -258,7 +258,7 @@
 %% API
 %%====================================================================
 
-%% @doc Create an `ApiKey` resource.
+%% @doc Create an `ApiKey' resource.
 %%
 %% See also: AWS CLI
 create_api_key(Client, Input) ->
@@ -276,7 +276,7 @@ create_api_key(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds a new `Authorizer` resource to an existing `RestApi` resource.
+%% @doc Adds a new `Authorizer' resource to an existing `RestApi' resource.
 %%
 %% See also: AWS CLI
 create_authorizer(Client, RestApiId, Input) ->
@@ -294,7 +294,7 @@ create_authorizer(Client, RestApiId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new `BasePathMapping` resource.
+%% @doc Creates a new `BasePathMapping' resource.
 create_base_path_mapping(Client, DomainName, Input) ->
     create_base_path_mapping(Client, DomainName, Input, []).
 create_base_path_mapping(Client, DomainName, Input0, Options) ->
@@ -310,7 +310,7 @@ create_base_path_mapping(Client, DomainName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a `Deployment` resource, which makes a specified `RestApi`
+%% @doc Creates a `Deployment' resource, which makes a specified `RestApi'
 %% callable over the internet.
 create_deployment(Client, RestApiId, Input) ->
     create_deployment(Client, RestApiId, Input, []).
@@ -375,7 +375,7 @@ create_domain_name(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds a new `Model` resource to an existing `RestApi` resource.
+%% @doc Adds a new `Model' resource to an existing `RestApi' resource.
 create_model(Client, RestApiId, Input) ->
     create_model(Client, RestApiId, Input, []).
 create_model(Client, RestApiId, Input0, Options) ->
@@ -391,7 +391,7 @@ create_model(Client, RestApiId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a `ReqeustValidator` of a given `RestApi`.
+%% @doc Creates a `ReqeustValidator' of a given `RestApi'.
 create_request_validator(Client, RestApiId, Input) ->
     create_request_validator(Client, RestApiId, Input, []).
 create_request_validator(Client, RestApiId, Input0, Options) ->
@@ -407,7 +407,7 @@ create_request_validator(Client, RestApiId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a `Resource` resource.
+%% @doc Creates a `Resource' resource.
 create_resource(Client, ParentId, RestApiId, Input) ->
     create_resource(Client, ParentId, RestApiId, Input, []).
 create_resource(Client, ParentId, RestApiId, Input0, Options) ->
@@ -423,7 +423,7 @@ create_resource(Client, ParentId, RestApiId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new `RestApi` resource.
+%% @doc Creates a new `RestApi' resource.
 create_rest_api(Client, Input) ->
     create_rest_api(Client, Input, []).
 create_rest_api(Client, Input0, Options) ->
@@ -439,8 +439,8 @@ create_rest_api(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new `Stage` resource that references a pre-existing
-%% `Deployment` for the API.
+%% @doc Creates a new `Stage' resource that references a pre-existing
+%% `Deployment' for the API.
 create_stage(Client, RestApiId, Input) ->
     create_stage(Client, RestApiId, Input, []).
 create_stage(Client, RestApiId, Input0, Options) ->
@@ -511,7 +511,7 @@ create_vpc_link(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the `ApiKey` resource.
+%% @doc Deletes the `ApiKey' resource.
 delete_api_key(Client, ApiKey, Input) ->
     delete_api_key(Client, ApiKey, Input, []).
 delete_api_key(Client, ApiKey, Input0, Options) ->
@@ -527,7 +527,7 @@ delete_api_key(Client, ApiKey, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an existing `Authorizer` resource.
+%% @doc Deletes an existing `Authorizer' resource.
 %%
 %% See also: AWS CLI
 delete_authorizer(Client, AuthorizerId, RestApiId, Input) ->
@@ -545,7 +545,7 @@ delete_authorizer(Client, AuthorizerId, RestApiId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the `BasePathMapping` resource.
+%% @doc Deletes the `BasePathMapping' resource.
 delete_base_path_mapping(Client, BasePath, DomainName, Input) ->
     delete_base_path_mapping(Client, BasePath, DomainName, Input, []).
 delete_base_path_mapping(Client, BasePath, DomainName, Input0, Options) ->
@@ -561,7 +561,7 @@ delete_base_path_mapping(Client, BasePath, DomainName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the `ClientCertificate` resource.
+%% @doc Deletes the `ClientCertificate' resource.
 delete_client_certificate(Client, ClientCertificateId, Input) ->
     delete_client_certificate(Client, ClientCertificateId, Input, []).
 delete_client_certificate(Client, ClientCertificateId, Input0, Options) ->
@@ -577,9 +577,9 @@ delete_client_certificate(Client, ClientCertificateId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a `Deployment` resource.
+%% @doc Deletes a `Deployment' resource.
 %%
-%% Deleting a deployment will only succeed if there are no `Stage` resources
+%% Deleting a deployment will only succeed if there are no `Stage' resources
 %% associated with it.
 delete_deployment(Client, DeploymentId, RestApiId, Input) ->
     delete_deployment(Client, DeploymentId, RestApiId, Input, []).
@@ -628,7 +628,7 @@ delete_documentation_version(Client, DocumentationVersion, RestApiId, Input0, Op
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the `DomainName` resource.
+%% @doc Deletes the `DomainName' resource.
 delete_domain_name(Client, DomainName, Input) ->
     delete_domain_name(Client, DomainName, Input, []).
 delete_domain_name(Client, DomainName, Input0, Options) ->
@@ -644,8 +644,8 @@ delete_domain_name(Client, DomainName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Clears any customization of a `GatewayResponse` of a specified
-%% response type on the given `RestApi` and resets it with the default
+%% @doc Clears any customization of a `GatewayResponse' of a specified
+%% response type on the given `RestApi' and resets it with the default
 %% settings.
 delete_gateway_response(Client, ResponseType, RestApiId, Input) ->
     delete_gateway_response(Client, ResponseType, RestApiId, Input, []).
@@ -694,7 +694,7 @@ delete_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCod
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an existing `Method` resource.
+%% @doc Deletes an existing `Method' resource.
 delete_method(Client, HttpMethod, ResourceId, RestApiId, Input) ->
     delete_method(Client, HttpMethod, ResourceId, RestApiId, Input, []).
 delete_method(Client, HttpMethod, ResourceId, RestApiId, Input0, Options) ->
@@ -710,7 +710,7 @@ delete_method(Client, HttpMethod, ResourceId, RestApiId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an existing `MethodResponse` resource.
+%% @doc Deletes an existing `MethodResponse' resource.
 delete_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input) ->
     delete_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input, []).
 delete_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input0, Options) ->
@@ -742,7 +742,7 @@ delete_model(Client, ModelName, RestApiId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a `RequestValidator` of a given `RestApi`.
+%% @doc Deletes a `RequestValidator' of a given `RestApi'.
 delete_request_validator(Client, RequestValidatorId, RestApiId, Input) ->
     delete_request_validator(Client, RequestValidatorId, RestApiId, Input, []).
 delete_request_validator(Client, RequestValidatorId, RestApiId, Input0, Options) ->
@@ -758,7 +758,7 @@ delete_request_validator(Client, RequestValidatorId, RestApiId, Input0, Options)
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a `Resource` resource.
+%% @doc Deletes a `Resource' resource.
 delete_resource(Client, ResourceId, RestApiId, Input) ->
     delete_resource(Client, ResourceId, RestApiId, Input, []).
 delete_resource(Client, ResourceId, RestApiId, Input0, Options) ->
@@ -790,7 +790,7 @@ delete_rest_api(Client, RestApiId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a `Stage` resource.
+%% @doc Deletes a `Stage' resource.
 delete_stage(Client, RestApiId, StageName, Input) ->
     delete_stage(Client, RestApiId, StageName, Input, []).
 delete_stage(Client, RestApiId, StageName, Input0, Options) ->
@@ -839,7 +839,7 @@ delete_usage_plan_key(Client, KeyId, UsagePlanId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an existing `VpcLink` of a specified identifier.
+%% @doc Deletes an existing `VpcLink' of a specified identifier.
 delete_vpc_link(Client, VpcLinkId, Input) ->
     delete_vpc_link(Client, VpcLinkId, Input, []).
 delete_vpc_link(Client, VpcLinkId, Input0, Options) ->
@@ -887,7 +887,7 @@ flush_stage_cache(Client, RestApiId, StageName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Generates a `ClientCertificate` resource.
+%% @doc Generates a `ClientCertificate' resource.
 generate_client_certificate(Client, Input) ->
     generate_client_certificate(Client, Input, []).
 generate_client_certificate(Client, Input0, Options) ->
@@ -903,7 +903,7 @@ generate_client_certificate(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Gets information about the current `Account` resource.
+%% @doc Gets information about the current `Account' resource.
 get_account(Client)
   when is_map(Client) ->
     get_account(Client, []).
@@ -918,7 +918,7 @@ get_account(Client, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets information about the current `ApiKey` resource.
+%% @doc Gets information about the current `ApiKey' resource.
 get_api_key(Client, ApiKey, IncludeValue)
   when is_map(Client) ->
     get_api_key(Client, ApiKey, IncludeValue, []).
@@ -937,7 +937,7 @@ get_api_key(Client, ApiKey, IncludeValue, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets information about the current `ApiKeys` resource.
+%% @doc Gets information about the current `ApiKeys' resource.
 get_api_keys(Client, CustomerId, IncludeValues, Limit, NameQuery, Position)
   when is_map(Client) ->
     get_api_keys(Client, CustomerId, IncludeValues, Limit, NameQuery, Position, []).
@@ -960,7 +960,7 @@ get_api_keys(Client, CustomerId, IncludeValues, Limit, NameQuery, Position, Opti
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describe an existing `Authorizer` resource.
+%% @doc Describe an existing `Authorizer' resource.
 %%
 %% See also: AWS CLI
 get_authorizer(Client, AuthorizerId, RestApiId)
@@ -977,7 +977,7 @@ get_authorizer(Client, AuthorizerId, RestApiId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describe an existing `Authorizers` resource.
+%% @doc Describe an existing `Authorizers' resource.
 %%
 %% See also: AWS CLI
 get_authorizers(Client, RestApiId, Limit, Position)
@@ -999,7 +999,7 @@ get_authorizers(Client, RestApiId, Limit, Position, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describe a `BasePathMapping` resource.
+%% @doc Describe a `BasePathMapping' resource.
 get_base_path_mapping(Client, BasePath, DomainName)
   when is_map(Client) ->
     get_base_path_mapping(Client, BasePath, DomainName, []).
@@ -1014,7 +1014,7 @@ get_base_path_mapping(Client, BasePath, DomainName, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Represents a collection of `BasePathMapping` resources.
+%% @doc Represents a collection of `BasePathMapping' resources.
 get_base_path_mappings(Client, DomainName, Limit, Position)
   when is_map(Client) ->
     get_base_path_mappings(Client, DomainName, Limit, Position, []).
@@ -1034,7 +1034,7 @@ get_base_path_mappings(Client, DomainName, Limit, Position, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets information about the current `ClientCertificate` resource.
+%% @doc Gets information about the current `ClientCertificate' resource.
 get_client_certificate(Client, ClientCertificateId)
   when is_map(Client) ->
     get_client_certificate(Client, ClientCertificateId, []).
@@ -1049,7 +1049,7 @@ get_client_certificate(Client, ClientCertificateId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets a collection of `ClientCertificate` resources.
+%% @doc Gets a collection of `ClientCertificate' resources.
 get_client_certificates(Client, Limit, Position)
   when is_map(Client) ->
     get_client_certificates(Client, Limit, Position, []).
@@ -1069,7 +1069,7 @@ get_client_certificates(Client, Limit, Position, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets information about a `Deployment` resource.
+%% @doc Gets information about a `Deployment' resource.
 get_deployment(Client, DeploymentId, RestApiId, Embed)
   when is_map(Client) ->
     get_deployment(Client, DeploymentId, RestApiId, Embed, []).
@@ -1088,7 +1088,7 @@ get_deployment(Client, DeploymentId, RestApiId, Embed, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets information about a `Deployments` collection.
+%% @doc Gets information about a `Deployments' collection.
 get_deployments(Client, RestApiId, Limit, Position)
   when is_map(Client) ->
     get_deployments(Client, RestApiId, Limit, Position, []).
@@ -1198,7 +1198,7 @@ get_domain_name(Client, DomainName, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Represents a collection of `DomainName` resources.
+%% @doc Represents a collection of `DomainName' resources.
 get_domain_names(Client, Limit, Position)
   when is_map(Client) ->
     get_domain_names(Client, Limit, Position, []).
@@ -1218,7 +1218,7 @@ get_domain_names(Client, Limit, Position, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Exports a deployed version of a `RestApi` in a specified format.
+%% @doc Exports a deployed version of a `RestApi' in a specified format.
 get_export(Client, ExportType, RestApiId, StageName, Parameters, Accepts)
   when is_map(Client) ->
     get_export(Client, ExportType, RestApiId, StageName, Parameters, Accepts, []).
@@ -1258,8 +1258,8 @@ get_export(Client, ExportType, RestApiId, StageName, Parameters, Accepts, Option
         Result
     end.
 
-%% @doc Gets a `GatewayResponse` of a specified response type on the given
-%% `RestApi`.
+%% @doc Gets a `GatewayResponse' of a specified response type on the given
+%% `RestApi'.
 get_gateway_response(Client, ResponseType, RestApiId)
   when is_map(Client) ->
     get_gateway_response(Client, ResponseType, RestApiId, []).
@@ -1274,10 +1274,10 @@ get_gateway_response(Client, ResponseType, RestApiId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets the `GatewayResponses` collection on the given `RestApi`.
+%% @doc Gets the `GatewayResponses' collection on the given `RestApi'.
 %%
 %% If an API developer has not added any definitions for gateway responses,
-%% the result will be the API Gateway-generated default `GatewayResponses`
+%% the result will be the API Gateway-generated default `GatewayResponses'
 %% collection for the supported response types.
 get_gateway_responses(Client, RestApiId, Limit, Position)
   when is_map(Client) ->
@@ -1328,7 +1328,7 @@ get_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, 
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describe an existing `Method` resource.
+%% @doc Describe an existing `Method' resource.
 get_method(Client, HttpMethod, ResourceId, RestApiId)
   when is_map(Client) ->
     get_method(Client, HttpMethod, ResourceId, RestApiId, []).
@@ -1343,7 +1343,7 @@ get_method(Client, HttpMethod, ResourceId, RestApiId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describes a `MethodResponse` resource.
+%% @doc Describes a `MethodResponse' resource.
 get_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode)
   when is_map(Client) ->
     get_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, []).
@@ -1358,7 +1358,7 @@ get_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Optio
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describes an existing model defined for a `RestApi` resource.
+%% @doc Describes an existing model defined for a `RestApi' resource.
 get_model(Client, ModelName, RestApiId, Flatten)
   when is_map(Client) ->
     get_model(Client, ModelName, RestApiId, Flatten, []).
@@ -1393,7 +1393,7 @@ get_model_template(Client, ModelName, RestApiId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describes existing `Models` defined for a `RestApi` resource.
+%% @doc Describes existing `Models' defined for a `RestApi' resource.
 get_models(Client, RestApiId, Limit, Position)
   when is_map(Client) ->
     get_models(Client, RestApiId, Limit, Position, []).
@@ -1413,7 +1413,7 @@ get_models(Client, RestApiId, Limit, Position, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets a `RequestValidator` of a given `RestApi`.
+%% @doc Gets a `RequestValidator' of a given `RestApi'.
 get_request_validator(Client, RequestValidatorId, RestApiId)
   when is_map(Client) ->
     get_request_validator(Client, RequestValidatorId, RestApiId, []).
@@ -1428,7 +1428,7 @@ get_request_validator(Client, RequestValidatorId, RestApiId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets the `RequestValidators` collection of a given `RestApi`.
+%% @doc Gets the `RequestValidators' collection of a given `RestApi'.
 get_request_validators(Client, RestApiId, Limit, Position)
   when is_map(Client) ->
     get_request_validators(Client, RestApiId, Limit, Position, []).
@@ -1467,7 +1467,7 @@ get_resource(Client, ResourceId, RestApiId, Embed, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists information about a collection of `Resource` resources.
+%% @doc Lists information about a collection of `Resource' resources.
 get_resources(Client, RestApiId, Embed, Limit, Position)
   when is_map(Client) ->
     get_resources(Client, RestApiId, Embed, Limit, Position, []).
@@ -1488,7 +1488,7 @@ get_resources(Client, RestApiId, Embed, Limit, Position, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the `RestApi` resource in the collection.
+%% @doc Lists the `RestApi' resource in the collection.
 get_rest_api(Client, RestApiId)
   when is_map(Client) ->
     get_rest_api(Client, RestApiId, []).
@@ -1503,7 +1503,7 @@ get_rest_api(Client, RestApiId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the `RestApis` resources for your collection.
+%% @doc Lists the `RestApis' resources for your collection.
 get_rest_apis(Client, Limit, Position)
   when is_map(Client) ->
     get_rest_apis(Client, Limit, Position, []).
@@ -1523,7 +1523,7 @@ get_rest_apis(Client, Limit, Position, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Generates a client SDK for a `RestApi` and `Stage`.
+%% @doc Generates a client SDK for a `RestApi' and `Stage'.
 get_sdk(Client, RestApiId, SdkType, StageName, Parameters)
   when is_map(Client) ->
     get_sdk(Client, RestApiId, SdkType, StageName, Parameters, []).
@@ -1594,7 +1594,7 @@ get_sdk_types(Client, Limit, Position, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets information about a `Stage` resource.
+%% @doc Gets information about a `Stage' resource.
 get_stage(Client, RestApiId, StageName)
   when is_map(Client) ->
     get_stage(Client, RestApiId, StageName, []).
@@ -1609,7 +1609,7 @@ get_stage(Client, RestApiId, StageName, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets information about one or more `Stage` resources.
+%% @doc Gets information about one or more `Stage' resources.
 get_stages(Client, RestApiId, DeploymentId)
   when is_map(Client) ->
     get_stages(Client, RestApiId, DeploymentId, []).
@@ -1628,7 +1628,7 @@ get_stages(Client, RestApiId, DeploymentId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets the `Tags` collection for a given resource.
+%% @doc Gets the `Tags' collection for a given resource.
 get_tags(Client, ResourceArn, Limit, Position)
   when is_map(Client) ->
     get_tags(Client, ResourceArn, Limit, Position, []).
@@ -1759,7 +1759,7 @@ get_vpc_link(Client, VpcLinkId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets the `VpcLinks` collection under the caller's account in a
+%% @doc Gets the `VpcLinks' collection under the caller's account in a
 %% selected region.
 get_vpc_links(Client, Limit, Position)
   when is_map(Client) ->
@@ -1836,8 +1836,8 @@ import_rest_api(Client, Input0, Options) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a customization of a `GatewayResponse` of a specified
-%% response type and status code on the given `RestApi`.
+%% @doc Creates a customization of a `GatewayResponse' of a specified
+%% response type and status code on the given `RestApi'.
 put_gateway_response(Client, ResponseType, RestApiId, Input) ->
     put_gateway_response(Client, ResponseType, RestApiId, Input, []).
 put_gateway_response(Client, ResponseType, RestApiId, Input0, Options) ->
@@ -1885,7 +1885,7 @@ put_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, 
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Add a method to an existing `Resource` resource.
+%% @doc Add a method to an existing `Resource' resource.
 put_method(Client, HttpMethod, ResourceId, RestApiId, Input) ->
     put_method(Client, HttpMethod, ResourceId, RestApiId, Input, []).
 put_method(Client, HttpMethod, ResourceId, RestApiId, Input0, Options) ->
@@ -1901,7 +1901,7 @@ put_method(Client, HttpMethod, ResourceId, RestApiId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds a `MethodResponse` to an existing `Method` resource.
+%% @doc Adds a `MethodResponse' to an existing `Method' resource.
 put_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input) ->
     put_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input, []).
 put_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input0, Options) ->
@@ -1956,7 +1956,7 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Simulate the execution of an `Authorizer` in your `RestApi` with
+%% @doc Simulate the execution of an `Authorizer' in your `RestApi' with
 %% headers, parameters, and an incoming request body.
 %%
 %% See also: Use Lambda Function as Authorizer Use Cognito User Pool as
@@ -1976,7 +1976,7 @@ test_invoke_authorizer(Client, AuthorizerId, RestApiId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Simulate the execution of a `Method` in your `RestApi` with headers,
+%% @doc Simulate the execution of a `Method' in your `RestApi' with headers,
 %% parameters, and an incoming request body.
 test_invoke_method(Client, HttpMethod, ResourceId, RestApiId, Input) ->
     test_invoke_method(Client, HttpMethod, ResourceId, RestApiId, Input, []).
@@ -2010,7 +2010,7 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Changes information about the current `Account` resource.
+%% @doc Changes information about the current `Account' resource.
 update_account(Client, Input) ->
     update_account(Client, Input, []).
 update_account(Client, Input0, Options) ->
@@ -2026,7 +2026,7 @@ update_account(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Changes information about an `ApiKey` resource.
+%% @doc Changes information about an `ApiKey' resource.
 update_api_key(Client, ApiKey, Input) ->
     update_api_key(Client, ApiKey, Input, []).
 update_api_key(Client, ApiKey, Input0, Options) ->
@@ -2042,7 +2042,7 @@ update_api_key(Client, ApiKey, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing `Authorizer` resource.
+%% @doc Updates an existing `Authorizer' resource.
 %%
 %% See also: AWS CLI
 update_authorizer(Client, AuthorizerId, RestApiId, Input) ->
@@ -2060,7 +2060,7 @@ update_authorizer(Client, AuthorizerId, RestApiId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Changes information about the `BasePathMapping` resource.
+%% @doc Changes information about the `BasePathMapping' resource.
 update_base_path_mapping(Client, BasePath, DomainName, Input) ->
     update_base_path_mapping(Client, BasePath, DomainName, Input, []).
 update_base_path_mapping(Client, BasePath, DomainName, Input0, Options) ->
@@ -2076,7 +2076,7 @@ update_base_path_mapping(Client, BasePath, DomainName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Changes information about an `ClientCertificate` resource.
+%% @doc Changes information about an `ClientCertificate' resource.
 update_client_certificate(Client, ClientCertificateId, Input) ->
     update_client_certificate(Client, ClientCertificateId, Input, []).
 update_client_certificate(Client, ClientCertificateId, Input0, Options) ->
@@ -2092,7 +2092,7 @@ update_client_certificate(Client, ClientCertificateId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Changes information about a `Deployment` resource.
+%% @doc Changes information about a `Deployment' resource.
 update_deployment(Client, DeploymentId, RestApiId, Input) ->
     update_deployment(Client, DeploymentId, RestApiId, Input, []).
 update_deployment(Client, DeploymentId, RestApiId, Input0, Options) ->
@@ -2140,7 +2140,7 @@ update_documentation_version(Client, DocumentationVersion, RestApiId, Input0, Op
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Changes information about the `DomainName` resource.
+%% @doc Changes information about the `DomainName' resource.
 update_domain_name(Client, DomainName, Input) ->
     update_domain_name(Client, DomainName, Input, []).
 update_domain_name(Client, DomainName, Input0, Options) ->
@@ -2156,8 +2156,8 @@ update_domain_name(Client, DomainName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a `GatewayResponse` of a specified response type on the given
-%% `RestApi`.
+%% @doc Updates a `GatewayResponse' of a specified response type on the given
+%% `RestApi'.
 update_gateway_response(Client, ResponseType, RestApiId, Input) ->
     update_gateway_response(Client, ResponseType, RestApiId, Input, []).
 update_gateway_response(Client, ResponseType, RestApiId, Input0, Options) ->
@@ -2205,7 +2205,7 @@ update_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCod
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing `Method` resource.
+%% @doc Updates an existing `Method' resource.
 update_method(Client, HttpMethod, ResourceId, RestApiId, Input) ->
     update_method(Client, HttpMethod, ResourceId, RestApiId, Input, []).
 update_method(Client, HttpMethod, ResourceId, RestApiId, Input0, Options) ->
@@ -2221,7 +2221,7 @@ update_method(Client, HttpMethod, ResourceId, RestApiId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing `MethodResponse` resource.
+%% @doc Updates an existing `MethodResponse' resource.
 update_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input) ->
     update_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input, []).
 update_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input0, Options) ->
@@ -2253,7 +2253,7 @@ update_model(Client, ModelName, RestApiId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a `RequestValidator` of a given `RestApi`.
+%% @doc Updates a `RequestValidator' of a given `RestApi'.
 update_request_validator(Client, RequestValidatorId, RestApiId, Input) ->
     update_request_validator(Client, RequestValidatorId, RestApiId, Input, []).
 update_request_validator(Client, RequestValidatorId, RestApiId, Input0, Options) ->
@@ -2269,7 +2269,7 @@ update_request_validator(Client, RequestValidatorId, RestApiId, Input0, Options)
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Changes information about a `Resource` resource.
+%% @doc Changes information about a `Resource' resource.
 update_resource(Client, ResourceId, RestApiId, Input) ->
     update_resource(Client, ResourceId, RestApiId, Input, []).
 update_resource(Client, ResourceId, RestApiId, Input0, Options) ->
@@ -2301,7 +2301,7 @@ update_rest_api(Client, RestApiId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Changes information about a `Stage` resource.
+%% @doc Changes information about a `Stage' resource.
 update_stage(Client, RestApiId, StageName, Input) ->
     update_stage(Client, RestApiId, StageName, Input, []).
 update_stage(Client, RestApiId, StageName, Input0, Options) ->
@@ -2350,7 +2350,7 @@ update_usage_plan(Client, UsagePlanId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing `VpcLink` of a specified identifier.
+%% @doc Updates an existing `VpcLink' of a specified identifier.
 update_vpc_link(Client, VpcLinkId, Input) ->
     update_vpc_link(Client, VpcLinkId, Input, []).
 update_vpc_link(Client, VpcLinkId, Input0, Options) ->

@@ -69,7 +69,7 @@
 %%
 %% </dd> <dt>DNS name</dt> <dd> Global Accelerator assigns each accelerator a
 %% default Domain Name System (DNS) name, similar to
-%% `a1234567890abcdef.awsglobalaccelerator.com`, that points to your Global
+%% `a1234567890abcdef.awsglobalaccelerator.com', that points to your Global
 %% Accelerator static IP addresses. Depending on the use case, you can use
 %% your accelerator's static IP addresses or DNS name to route traffic to
 %% your accelerator, or set up DNS records to route traffic using your own
@@ -236,7 +236,7 @@ create_listener(Client, Input, Options)
 %%
 %% Before you can delete an accelerator, you must disable it and remove all
 %% dependent resources (listeners and endpoint groups). To disable the
-%% accelerator, update the accelerator to set `Enabled` to false.
+%% accelerator, update the accelerator to set `Enabled' to false.
 %%
 %% When you create an accelerator, by default, Global Accelerator provides
 %% you with a set of two static IP addresses. Alternatively, you can bring

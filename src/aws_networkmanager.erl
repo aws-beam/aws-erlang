@@ -80,7 +80,7 @@
 %% gateways that are connected to the transit gateway are automatically
 %% included in the global network. To list customer gateways that are
 %% connected to a transit gateway, use the DescribeVpnConnections EC2 API and
-%% filter by `transit-gateway-id`.
+%% filter by `transit-gateway-id'.
 %%
 %% You cannot associate a customer gateway with more than one device and
 %% link.
@@ -283,9 +283,9 @@ deregister_transit_gateway(Client, GlobalNetworkId, TransitGatewayArn, Input0, O
 %% @doc Describes one or more global networks.
 %%
 %% By default, all global networks are described. To describe the objects in
-%% your global network, you must use the appropriate `Get*` action. For
+%% your global network, you must use the appropriate `Get*' action. For
 %% example, to list the transit gateways in your global network, use
-%% `GetTransitGatewayRegistrations`.
+%% `GetTransitGatewayRegistrations'.
 describe_global_networks(Client, GlobalNetworkIds, MaxResults, NextToken)
   when is_map(Client) ->
     describe_global_networks(Client, GlobalNetworkIds, MaxResults, NextToken, []).

@@ -208,8 +208,8 @@ untag_resource(Client, Input, Options)
 %% @doc Modifies the KMS key for an existing database.
 %%
 %% While updating the database, you must specify the database name and the
-%% identifier of the new KMS key to be used (`KmsKeyId`). If there are any
-%% concurrent `UpdateDatabase` requests, first writer wins.
+%% identifier of the new KMS key to be used (`KmsKeyId'). If there are any
+%% concurrent `UpdateDatabase' requests, first writer wins.
 update_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_database(Client, Input, []).

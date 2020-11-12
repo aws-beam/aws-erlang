@@ -16,12 +16,12 @@
 %% @doc Retrieves a forecast for a single item, filtered by the supplied
 %% criteria.
 %%
-%% The criteria is a key-value pair. The key is either `item_id` (or the
-%% equivalent non-timestamp, non-target field) from the `TARGET_TIME_SERIES`
+%% The criteria is a key-value pair. The key is either `item_id' (or the
+%% equivalent non-timestamp, non-target field) from the `TARGET_TIME_SERIES'
 %% dataset, or one of the forecast dimensions specified as part of the
-%% `FeaturizationConfig` object.
+%% `FeaturizationConfig' object.
 %%
-%% By default, `QueryForecast` returns the complete date range for the
+%% By default, `QueryForecast' returns the complete date range for the
 %% filtered forecast. You can request a specific date range.
 %%
 %% To get the full forecast, use the CreateForecastExportJob operation.

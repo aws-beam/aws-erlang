@@ -101,9 +101,9 @@
 
 %% @doc Creates a budget and, if included, notifications and subscribers.
 %%
-%% Only one of `BudgetLimit` or `PlannedBudgetLimits` can be present in the
+%% Only one of `BudgetLimit' or `PlannedBudgetLimits' can be present in the
 %% syntax at one time. Use the syntax that matches your case. The Request
-%% Syntax section shows the `BudgetLimit` syntax. For `PlannedBudgetLimits`,
+%% Syntax section shows the `BudgetLimit' syntax. For `PlannedBudgetLimits',
 %% see the Examples section.
 create_budget(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -186,8 +186,8 @@ delete_subscriber(Client, Input, Options)
 
 %% @doc Describes a budget.
 %%
-%% The Request Syntax section shows the `BudgetLimit` syntax. For
-%% `PlannedBudgetLimits`, see the Examples section.
+%% The Request Syntax section shows the `BudgetLimit' syntax. For
+%% `PlannedBudgetLimits', see the Examples section.
 describe_budget(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_budget(Client, Input, []).
@@ -227,10 +227,10 @@ describe_budget_actions_for_budget(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBudgetActionsForBudget">>, Input, Options).
 
-%% @doc Describes the history for `DAILY`, `MONTHLY`, and `QUARTERLY`
+%% @doc Describes the history for `DAILY', `MONTHLY', and `QUARTERLY'
 %% budgets.
 %%
-%% Budget history isn't available for `ANNUAL` budgets.
+%% Budget history isn't available for `ANNUAL' budgets.
 describe_budget_performance_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_budget_performance_history(Client, Input, []).
@@ -240,8 +240,8 @@ describe_budget_performance_history(Client, Input, Options)
 
 %% @doc Lists the budgets that are associated with an account.
 %%
-%% The Request Syntax section shows the `BudgetLimit` syntax. For
-%% `PlannedBudgetLimits`, see the Examples section.
+%% The Request Syntax section shows the `BudgetLimit' syntax. For
+%% `PlannedBudgetLimits', see the Examples section.
 describe_budgets(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_budgets(Client, Input, []).
@@ -275,13 +275,13 @@ execute_budget_action(Client, Input, Options)
 
 %% @doc Updates a budget.
 %%
-%% You can change every part of a budget except for the `budgetName` and the
-%% `calculatedSpend`. When you modify a budget, the `calculatedSpend` drops
+%% You can change every part of a budget except for the `budgetName' and the
+%% `calculatedSpend'. When you modify a budget, the `calculatedSpend' drops
 %% to zero until AWS has new usage data to use for forecasting.
 %%
-%% Only one of `BudgetLimit` or `PlannedBudgetLimits` can be present in the
+%% Only one of `BudgetLimit' or `PlannedBudgetLimits' can be present in the
 %% syntax at one time. Use the syntax that matches your case. The Request
-%% Syntax section shows the `BudgetLimit` syntax. For `PlannedBudgetLimits`,
+%% Syntax section shows the `BudgetLimit' syntax. For `PlannedBudgetLimits',
 %% see the Examples section.
 update_budget(Client, Input)
   when is_map(Client), is_map(Input) ->

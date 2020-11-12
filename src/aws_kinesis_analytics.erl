@@ -99,7 +99,7 @@ add_application_cloud_watch_logging_option(Client, Input, Options)
 %% DescribeApplication operation to find the current application version.
 %%
 %% This operation requires permissions to perform the
-%% `kinesisanalytics:AddApplicationInput` action.
+%% `kinesisanalytics:AddApplicationInput' action.
 add_application_input(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_application_input(Client, Input, []).
@@ -154,7 +154,7 @@ add_application_input_processing_configuration(Client, Input, Options)
 %% configure, see Limits.
 %%
 %% This operation requires permissions to perform the
-%% `kinesisanalytics:AddApplicationOutput` action.
+%% `kinesisanalytics:AddApplicationOutput' action.
 add_application_output(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_application_output(Client, Input, []).
@@ -182,7 +182,7 @@ add_application_output(Client, Input, Options)
 %% limits on data sources you can add to your application, see Limits.
 %%
 %% This operation requires permissions to perform the
-%% `kinesisanalytics:AddApplicationOutput` action.
+%% `kinesisanalytics:AddApplicationOutput' action.
 add_application_reference_data_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_application_reference_data_source(Client, Input, []).
@@ -220,7 +220,7 @@ add_application_reference_data_source(Client, Input, Options)
 %% To read data from your source stream or write data to destination streams,
 %% Amazon Kinesis Analytics needs your permissions. You grant these
 %% permissions by creating IAM roles. This operation requires permissions to
-%% perform the `kinesisanalytics:CreateApplication` action.
+%% perform the `kinesisanalytics:CreateApplication' action.
 %%
 %% For introductory exercises to create an Amazon Kinesis Analytics
 %% application, see Getting Started.
@@ -244,7 +244,7 @@ create_application(Client, Input, Options)
 %% and application code).
 %%
 %% This operation requires permissions to perform the
-%% `kinesisanalytics:DeleteApplication` action.
+%% `kinesisanalytics:DeleteApplication' action.
 delete_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application(Client, Input, []).
@@ -296,7 +296,7 @@ delete_application_input_processing_configuration(Client, Input, Options)
 %% corresponding in-application stream to the external output destination.
 %%
 %% This operation requires permissions to perform the
-%% `kinesisanalytics:DeleteApplicationOutput` action.
+%% `kinesisanalytics:DeleteApplicationOutput' action.
 delete_application_output(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application_output(Client, Input, []).
@@ -319,7 +319,7 @@ delete_application_output(Client, Input, Options)
 %% AddApplicationReferenceDataSource operation.
 %%
 %% This operation requires permissions to perform the
-%% `kinesisanalytics.DeleteApplicationReferenceDataSource` action.
+%% `kinesisanalytics.DeleteApplicationReferenceDataSource' action.
 delete_application_reference_data_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application_reference_data_source(Client, Input, []).
@@ -340,9 +340,9 @@ delete_application_reference_data_source(Client, Input, Options)
 %% the ListApplications operation.
 %%
 %% This operation requires permissions to perform the
-%% `kinesisanalytics:DescribeApplication` action. You can use
-%% `DescribeApplication` to get the current application versionId, which you
-%% need to call other operations such as `Update`.
+%% `kinesisanalytics:DescribeApplication' action. You can use
+%% `DescribeApplication' to get the current application versionId, which you
+%% need to call other operations such as `Update'.
 describe_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_application(Client, Input, []).
@@ -369,7 +369,7 @@ describe_application(Client, Input, Options)
 %% show it in the console user interface.
 %%
 %% This operation requires permissions to perform the
-%% `kinesisanalytics:DiscoverInputSchema` action.
+%% `kinesisanalytics:DiscoverInputSchema' action.
 discover_input_schema(Client, Input)
   when is_map(Client), is_map(Input) ->
     discover_input_schema(Client, Input, []).
@@ -387,15 +387,15 @@ discover_input_schema(Client, Input, Options)
 %% Returns a list of Amazon Kinesis Analytics applications in your account.
 %% For each application, the response includes the application name, Amazon
 %% Resource Name (ARN), and status. If the response returns the
-%% `HasMoreApplications` value as true, you can send another request by
-%% adding the `ExclusiveStartApplicationName` in the request body, and set
+%% `HasMoreApplications' value as true, you can send another request by
+%% adding the `ExclusiveStartApplicationName' in the request body, and set
 %% the value of this to the last application name from the previous response.
 %%
 %% If you want detailed information about a specific application, use
 %% DescribeApplication.
 %%
 %% This operation requires permissions to perform the
-%% `kinesisanalytics:ListApplications` action.
+%% `kinesisanalytics:ListApplications' action.
 list_applications(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_applications(Client, Input, []).
@@ -427,7 +427,7 @@ list_tags_for_resource(Client, Input, Options)
 %% After the application starts, it begins consuming the input data,
 %% processes it, and writes the output to the configured destination.
 %%
-%% The application status must be `READY` for you to start an application.
+%% The application status must be `READY' for you to start an application.
 %% You can get the application status in the console or using the
 %% DescribeApplication operation.
 %%
@@ -435,7 +435,7 @@ list_tags_for_resource(Client, Input, Options)
 %% processing the input by calling the StopApplication operation.
 %%
 %% This operation requires permissions to perform the
-%% `kinesisanalytics:StartApplication` action.
+%% `kinesisanalytics:StartApplication' action.
 start_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_application(Client, Input, []).
@@ -458,7 +458,7 @@ start_application(Client, Input, Options)
 %% written to the destination.
 %%
 %% This operation requires permissions to perform the
-%% `kinesisanalytics:StopApplication` action.
+%% `kinesisanalytics:StopApplication' action.
 stop_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_application(Client, Input, []).
@@ -500,10 +500,10 @@ untag_resource(Client, Input, Options)
 %% configuration.
 %%
 %% Note that Amazon Kinesis Analytics updates the
-%% `CurrentApplicationVersionId` each time you update your application.
+%% `CurrentApplicationVersionId' each time you update your application.
 %%
 %% This operation requires permission for the
-%% `kinesisanalytics:UpdateApplication` action.
+%% `kinesisanalytics:UpdateApplication' action.
 update_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_application(Client, Input, []).

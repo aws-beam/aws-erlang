@@ -38,8 +38,8 @@
 %% @doc Deletes the specified pronunciation lexicon stored in an AWS Region.
 %%
 %% A lexicon which has been deleted is not available for speech synthesis,
-%% nor is it possible to retrieve it using either the `GetLexicon` or
-%% `ListLexicon` APIs.
+%% nor is it possible to retrieve it using either the `GetLexicon' or
+%% `ListLexicon' APIs.
 %%
 %% For more information, see Managing Lexicons.
 delete_lexicon(Client, Name, Input) ->
@@ -63,20 +63,20 @@ delete_lexicon(Client, Name, Input0, Options) ->
 %% Each voice speaks a specified language, is either male or female, and is
 %% identified by an ID, which is the ASCII version of the voice name.
 %%
-%% When synthesizing speech ( `SynthesizeSpeech` ), you provide the voice ID
+%% When synthesizing speech ( `SynthesizeSpeech' ), you provide the voice ID
 %% for the voice you want from the list of voices returned by
-%% `DescribeVoices`.
+%% `DescribeVoices'.
 %%
 %% For example, you want your news reader application to read news in a
 %% specific language, but giving a user the option to choose the voice. Using
-%% the `DescribeVoices` operation you can provide the user with a list of
+%% the `DescribeVoices' operation you can provide the user with a list of
 %% available voices to select from.
 %%
 %% You can optionally specify a language code to filter the available voices.
-%% For example, if you specify `en-US`, the operation returns a list of all
+%% For example, if you specify `en-US', the operation returns a list of all
 %% available US English voices.
 %%
-%% This operation requires permissions to perform the `polly:DescribeVoices`
+%% This operation requires permissions to perform the `polly:DescribeVoices'
 %% action.
 describe_voices(Client, Engine, IncludeAdditionalLanguageCodes, LanguageCode, NextToken)
   when is_map(Client) ->
@@ -206,7 +206,7 @@ put_lexicon(Client, Name, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Allows the creation of an asynchronous synthesis task, by starting a
-%% new `SpeechSynthesisTask`.
+%% new `SpeechSynthesisTask'.
 %%
 %% This operation requires all the standard information needed for speech
 %% synthesis, plus the name of an Amazon S3 bucket for the service to store

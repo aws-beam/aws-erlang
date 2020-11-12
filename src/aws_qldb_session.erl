@@ -8,8 +8,8 @@
 %% ledger.
 %%
 %% If you are working with an AWS SDK, use the QLDB Driver. The driver
-%% provides a high-level abstraction layer above this `qldbsession` data
-%% plane and manages `SendCommand` API calls for you. For information and a
+%% provides a high-level abstraction layer above this `qldbsession' data
+%% plane and manages `SendCommand' API calls for you. For information and a
 %% list of supported programming languages, see Getting started with the
 %% driver in the Amazon QLDB Developer Guide.
 %%
@@ -35,8 +35,8 @@
 %% ledger.
 %%
 %% If you are working with an AWS SDK, use the QLDB Driver. The driver
-%% provides a high-level abstraction layer above this `qldbsession` data
-%% plane and manages `SendCommand` API calls for you. For information and a
+%% provides a high-level abstraction layer above this `qldbsession' data
+%% plane and manages `SendCommand' API calls for you. For information and a
 %% list of supported programming languages, see Getting started with the
 %% driver in the Amazon QLDB Developer Guide.
 %%

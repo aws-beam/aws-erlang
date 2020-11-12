@@ -159,10 +159,10 @@ create_channel(Client, Input0, Options) ->
 %% @doc Creates a dataset.
 %%
 %% A dataset stores data retrieved from a data store by applying a
-%% `queryAction` (a SQL query) or a `containerAction` (executing a
+%% `queryAction' (a SQL query) or a `containerAction' (executing a
 %% containerized application). This operation creates the skeleton of a
 %% dataset. The dataset can be populated manually by calling
-%% `CreateDatasetContent` or automatically according to a trigger you
+%% `CreateDatasetContent' or automatically according to a trigger you
 %% specify.
 create_dataset(Client, Input) ->
     create_dataset(Client, Input, []).
@@ -179,8 +179,8 @@ create_dataset(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates the content of a data set by applying a `queryAction` (a SQL
-%% query) or a `containerAction` (executing a containerized application).
+%% @doc Creates the content of a data set by applying a `queryAction' (a SQL
+%% query) or a `containerAction' (executing a containerized application).
 create_dataset_content(Client, DatasetName, Input) ->
     create_dataset_content(Client, DatasetName, Input, []).
 create_dataset_content(Client, DatasetName, Input0, Options) ->
@@ -216,8 +216,8 @@ create_datastore(Client, Input0, Options) ->
 %%
 %% A pipeline consumes messages from a channel and allows you to process the
 %% messages before storing them in a data store. You must specify both a
-%% `channel` and a `datastore` activity and, optionally, as many as 23
-%% additional activities in the `pipelineActivities` array.
+%% `channel' and a `datastore' activity and, optionally, as many as 23
+%% additional activities in the `pipelineActivities' array.
 create_pipeline(Client, Input) ->
     create_pipeline(Client, Input, []).
 create_pipeline(Client, Input0, Options) ->
@@ -543,9 +543,9 @@ list_tags_for_resource(Client, ResourceArn, Options)
 
 %% @doc Sets or updates the AWS IoT Analytics logging options.
 %%
-%% If you update the value of any `loggingOptions` field, it takes up to one
+%% If you update the value of any `loggingOptions' field, it takes up to one
 %% minute for the change to take effect. Also, if you change the policy
-%% attached to the role you specified in the `roleArn` field (for example, to
+%% attached to the role you specified in the `roleArn' field (for example, to
 %% correct an invalid policy), it takes up to five minutes for that change to
 %% take effect.
 put_logging_options(Client, Input) ->
@@ -707,9 +707,9 @@ update_datastore(Client, DatastoreName, Input0, Options) ->
 
 %% @doc Updates the settings of a pipeline.
 %%
-%% You must specify both a `channel` and a `datastore` activity and,
+%% You must specify both a `channel' and a `datastore' activity and,
 %% optionally, as many as 23 additional activities in the
-%% `pipelineActivities` array.
+%% `pipelineActivities' array.
 update_pipeline(Client, PipelineName, Input) ->
     update_pipeline(Client, PipelineName, Input, []).
 update_pipeline(Client, PipelineName, Input0, Options) ->

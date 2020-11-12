@@ -329,7 +329,7 @@ create_dedicated_ip_pool(Client, Input0, Options) ->
 %% that contains the content that you plan to send to your customers. Amazon
 %% SES then sends that message to special email addresses spread across
 %% several major email providers. After about 24 hours, the test is complete,
-%% and you can use the `GetDeliverabilityTestReport` operation to view the
+%% and you can use the `GetDeliverabilityTestReport' operation to view the
 %% results of the test.
 create_deliverability_test_report(Client, Input) ->
     create_deliverability_test_report(Client, Input, []).
@@ -358,7 +358,7 @@ create_deliverability_test_report(Client, Input0, Options) ->
 %% address. Your email address is verified as soon as you follow the link in
 %% the verification email.
 %%
-%% When you verify a domain without specifying the `DkimSigningAttributes`
+%% When you verify a domain without specifying the `DkimSigningAttributes'
 %% object, this operation provides a set of DKIM tokens. You can convert
 %% these tokens into CNAME records, which you then add to the DNS
 %% configuration for your domain. Your domain is verified when Amazon SES
@@ -368,7 +368,7 @@ create_deliverability_test_report(Client, Input0, Options) ->
 %% Alternatively, you can perform the verification process by providing your
 %% own public-private key pair. This verification method is known as Bring
 %% Your Own DKIM (BYODKIM). To use BYODKIM, your call to the
-%% `CreateEmailIdentity` operation has to include the `DkimSigningAttributes`
+%% `CreateEmailIdentity' operation has to include the `DkimSigningAttributes'
 %% object. When you specify this object, you provide a selector (a component
 %% of the DNS record name that identifies the public key that you want to use
 %% for DKIM authentication) and a private key.
@@ -1112,7 +1112,7 @@ list_dedicated_ip_pools(Client, NextToken, PageSize, Options)
 %% performed, regardless of their statuses.
 %%
 %% For predictive inbox placement tests that are complete, you can use the
-%% `GetDeliverabilityTestReport` operation to view the results.
+%% `GetDeliverabilityTestReport' operation to view the results.
 list_deliverability_test_reports(Client, NextToken, PageSize)
   when is_map(Client) ->
     list_deliverability_test_reports(Client, NextToken, PageSize, []).
@@ -1434,7 +1434,7 @@ put_configuration_set_tracking_options(Client, ConfigurationSetName, Input0, Opt
 %% associated with your AWS account.
 %%
 %% The dedicated IP pool you specify must already exist. You can create a new
-%% pool by using the `CreateDedicatedIpPool` operation.
+%% pool by using the `CreateDedicatedIpPool' operation.
 put_dedicated_ip_in_pool(Client, Ip, Input) ->
     put_dedicated_ip_in_pool(Client, Ip, Input, []).
 put_dedicated_ip_in_pool(Client, Ip, Input0, Options) ->
@@ -1545,9 +1545,9 @@ put_email_identity_dkim_signing_attributes(Client, EmailIdentity, Input0, Option
 %% This setting determines what happens when an identity is used to send an
 %% email that results in a bounce or complaint event.
 %%
-%% If the value is `true`, you receive email notifications when bounce or
+%% If the value is `true', you receive email notifications when bounce or
 %% complaint events occur. These notifications are sent to the address that
-%% you specified in the `Return-Path` header of the original email.
+%% you specified in the `Return-Path' header of the original email.
 %%
 %% You're required to have a method of tracking bounces and complaints. If
 %% you haven't set up another mechanism for receiving bounce or complaint

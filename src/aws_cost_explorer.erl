@@ -13,7 +13,7 @@
 %%
 %% The Cost Explorer API provides the following endpoint:
 %%
-%% <ul> <li> `https://ce.us-east-1.amazonaws.com`
+%% <ul> <li> `https://ce.us-east-1.amazonaws.com'
 %%
 %% </li> </ul> For information about costs associated with the Cost Explorer
 %% API, see AWS Cost Management Pricing.
@@ -143,10 +143,10 @@ delete_cost_category_definition(Client, Input, Options)
 %% @doc Returns the name, ARN, rules, definition, and effective dates of a
 %% Cost Category that's defined in the account.
 %%
-%% You have the option to use `EffectiveOn` to return a Cost Category that is
-%% active on a specific date. If there is no `EffectiveOn` specified, you’ll
+%% You have the option to use `EffectiveOn' to return a Cost Category that is
+%% active on a specific date. If there is no `EffectiveOn' specified, you’ll
 %% see a Cost Category that is effective on the current date. If Cost
-%% Category is still effective, `EffectiveEnd` is omitted in the response.
+%% Category is still effective, `EffectiveEnd' is omitted in the response.
 describe_cost_category_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cost_category_definition(Client, Input, []).
@@ -155,7 +155,7 @@ describe_cost_category_definition(Client, Input, Options)
     request(Client, <<"DescribeCostCategoryDefinition">>, Input, Options).
 
 %% @doc Retrieves all of the cost anomalies detected on your account, during
-%% the time period specified by the `DateInterval` object.
+%% the time period specified by the `DateInterval' object.
 get_anomalies(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_anomalies(Client, Input, []).
@@ -188,9 +188,9 @@ get_anomaly_subscriptions(Client, Input, Options)
 %% @doc Retrieves cost and usage metrics for your account.
 %%
 %% You can specify which cost and usage-related metric, such as
-%% `BlendedCosts` or `UsageQuantity`, that you want the request to return.
+%% `BlendedCosts' or `UsageQuantity', that you want the request to return.
 %% You can also filter and group your data by various dimensions, such as
-%% `SERVICE` or `AZ`, in a specific time range. For a complete list of valid
+%% `SERVICE' or `AZ', in a specific time range. For a complete list of valid
 %% dimensions, see the GetDimensionValues operation. Master account in an
 %% organization in AWS Organizations have access to all member accounts.
 get_cost_and_usage(Client, Input)
@@ -203,9 +203,9 @@ get_cost_and_usage(Client, Input, Options)
 %% @doc Retrieves cost and usage metrics with resources for your account.
 %%
 %% You can specify which cost and usage-related metric, such as
-%% `BlendedCosts` or `UsageQuantity`, that you want the request to return.
+%% `BlendedCosts' or `UsageQuantity', that you want the request to return.
 %% You can also filter and group your data by various dimensions, such as
-%% `SERVICE` or `AZ`, in a specific time range. For a complete list of valid
+%% `SERVICE' or `AZ', in a specific time range. For a complete list of valid
 %% dimensions, see the GetDimensionValues operation. Master account in an
 %% organization in AWS Organizations have access to all member accounts. This
 %% API is currently available for the Amazon Elastic Compute Cloud – Compute
@@ -277,7 +277,7 @@ get_dimension_values(Client, Input, Options)
 %% </li> <li> TENANCY
 %%
 %% </li> </ul> To determine valid values for a dimension, use the
-%% `GetDimensionValues` operation.
+%% `GetDimensionValues' operation.
 get_reservation_coverage(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_reservation_coverage(Client, Input, []).
@@ -305,7 +305,7 @@ get_reservation_coverage(Client, Input, Options)
 %% This makes it easier to purchase a size-flexible RI. AWS also shows the
 %% equal number of normalized units so that you can purchase any instance
 %% size that you want. For this example, your RI recommendation would be for
-%% `c4.large` because that is the smallest size instance in the c4 instance
+%% `c4.large' because that is the smallest size instance in the c4 instance
 %% family.
 get_reservation_purchase_recommendation(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -318,8 +318,8 @@ get_reservation_purchase_recommendation(Client, Input, Options)
 %%
 %% Master account in an organization have access to member accounts. You can
 %% filter data by dimensions in a time period. You can use
-%% `GetDimensionValues` to determine the possible dimension values.
-%% Currently, you can group only by `SUBSCRIPTION_ID`.
+%% `GetDimensionValues' to determine the possible dimension values.
+%% Currently, you can group only by `SUBSCRIPTION_ID'.
 get_reservation_utilization(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_reservation_utilization(Client, Input, []).
@@ -349,16 +349,16 @@ get_rightsizing_recommendation(Client, Input, Options)
 %% nested expressions. For any time period, you can filter data for Savings
 %% Plans usage with the following dimensions:
 %%
-%% <ul> <li> `LINKED_ACCOUNT`
+%% <ul> <li> `LINKED_ACCOUNT'
 %%
-%% </li> <li> `REGION`
+%% </li> <li> `REGION'
 %%
-%% </li> <li> `SERVICE`
+%% </li> <li> `SERVICE'
 %%
-%% </li> <li> `INSTANCE_FAMILY`
+%% </li> <li> `INSTANCE_FAMILY'
 %%
 %% </li> </ul> To determine valid values for a dimension, use the
-%% `GetDimensionValues` operation.
+%% `GetDimensionValues' operation.
 get_savings_plans_coverage(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_savings_plans_coverage(Client, Input, []).
@@ -379,10 +379,10 @@ get_savings_plans_purchase_recommendation(Client, Input, Options)
 %% ranges with daily or monthly granularity.
 %%
 %% Master account in an organization have access to member accounts. You can
-%% use `GetDimensionValues` in `SAVINGS_PLANS` to determine the possible
+%% use `GetDimensionValues' in `SAVINGS_PLANS' to determine the possible
 %% dimension values.
 %%
-%% You cannot group by any dimension values for `GetSavingsPlansUtilization`.
+%% You cannot group by any dimension values for `GetSavingsPlansUtilization'.
 get_savings_plans_utilization(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_savings_plans_utilization(Client, Input, []).
@@ -395,13 +395,13 @@ get_savings_plans_utilization(Client, Input, Options)
 %%
 %% This doesn't support granular or grouped data (daily/monthly) in response.
 %% You can't retrieve data by dates in a single response similar to
-%% `GetSavingsPlanUtilization`, but you have the option to make multiple
-%% calls to `GetSavingsPlanUtilizationDetails` by providing individual dates.
-%% You can use `GetDimensionValues` in `SAVINGS_PLANS` to determine the
+%% `GetSavingsPlanUtilization', but you have the option to make multiple
+%% calls to `GetSavingsPlanUtilizationDetails' by providing individual dates.
+%% You can use `GetDimensionValues' in `SAVINGS_PLANS' to determine the
 %% possible dimension values.
 %%
-%% `GetSavingsPlanUtilizationDetails` internally groups data by
-%% `SavingsPlansArn`.
+%% `GetSavingsPlanUtilizationDetails' internally groups data by
+%% `SavingsPlansArn'.
 get_savings_plans_utilization_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_savings_plans_utilization_details(Client, Input, []).
@@ -429,15 +429,15 @@ get_usage_forecast(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUsageForecast">>, Input, Options).
 
-%% @doc Returns the name, ARN, `NumberOfRules` and effective dates of all
+%% @doc Returns the name, ARN, `NumberOfRules' and effective dates of all
 %% Cost Categories defined in the account.
 %%
-%% You have the option to use `EffectiveOn` to return a list of Cost
+%% You have the option to use `EffectiveOn' to return a list of Cost
 %% Categories that were active on a specific date. If there is no
-%% `EffectiveOn` specified, you’ll see Cost Categories that are effective on
-%% the current date. If Cost Category is still effective, `EffectiveEnd` is
-%% omitted in the response. `ListCostCategoryDefinitions` supports
-%% pagination. The request can have a `MaxResults` range up to 100.
+%% `EffectiveOn' specified, you’ll see Cost Categories that are effective on
+%% the current date. If Cost Category is still effective, `EffectiveEnd' is
+%% omitted in the response. `ListCostCategoryDefinitions' supports
+%% pagination. The request can have a `MaxResults' range up to 100.
 list_cost_category_definitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_cost_category_definitions(Client, Input, []).

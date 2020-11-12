@@ -10,39 +10,39 @@
 %%
 %% AWS Cloud9 supports these operations:
 %%
-%% <ul> <li> `CreateEnvironmentEC2`: Creates an AWS Cloud9 development
+%% <ul> <li> `CreateEnvironmentEC2': Creates an AWS Cloud9 development
 %% environment, launches an Amazon EC2 instance, and then connects from the
 %% instance to the environment.
 %%
-%% </li> <li> `CreateEnvironmentMembership`: Adds an environment member to an
+%% </li> <li> `CreateEnvironmentMembership': Adds an environment member to an
 %% environment.
 %%
-%% </li> <li> `DeleteEnvironment`: Deletes an environment. If an Amazon EC2
+%% </li> <li> `DeleteEnvironment': Deletes an environment. If an Amazon EC2
 %% instance is connected to the environment, also terminates the instance.
 %%
-%% </li> <li> `DeleteEnvironmentMembership`: Deletes an environment member
+%% </li> <li> `DeleteEnvironmentMembership': Deletes an environment member
 %% from an environment.
 %%
-%% </li> <li> `DescribeEnvironmentMemberships`: Gets information about
+%% </li> <li> `DescribeEnvironmentMemberships': Gets information about
 %% environment members for an environment.
 %%
-%% </li> <li> `DescribeEnvironments`: Gets information about environments.
+%% </li> <li> `DescribeEnvironments': Gets information about environments.
 %%
-%% </li> <li> `DescribeEnvironmentStatus`: Gets status information for an
+%% </li> <li> `DescribeEnvironmentStatus': Gets status information for an
 %% environment.
 %%
-%% </li> <li> `ListEnvironments`: Gets a list of environment identifiers.
+%% </li> <li> `ListEnvironments': Gets a list of environment identifiers.
 %%
-%% </li> <li> `ListTagsForResource`: Gets the tags for an environment.
+%% </li> <li> `ListTagsForResource': Gets the tags for an environment.
 %%
-%% </li> <li> `TagResource`: Adds tags to an environment.
+%% </li> <li> `TagResource': Adds tags to an environment.
 %%
-%% </li> <li> `UntagResource`: Removes tags from an environment.
+%% </li> <li> `UntagResource': Removes tags from an environment.
 %%
-%% </li> <li> `UpdateEnvironment`: Changes the settings of an existing
+%% </li> <li> `UpdateEnvironment': Changes the settings of an existing
 %% environment.
 %%
-%% </li> <li> `UpdateEnvironmentMembership`: Changes the settings of an
+%% </li> <li> `UpdateEnvironmentMembership': Changes the settings of an
 %% existing environment member for an environment.
 %%
 %% </li> </ul>

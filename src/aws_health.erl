@@ -12,7 +12,7 @@
 %% You must have a Business or Enterprise support plan from AWS Support to
 %% use the AWS Health API. If you call the AWS Health API from an AWS account
 %% that doesn't have a Business or Enterprise support plan, you receive a
-%% `SubscriptionRequiredException` error.
+%% `SubscriptionRequiredException' error.
 %%
 %% AWS Health has a single endpoint: health.us-east-1.amazonaws.com (HTTPS).
 %% Use this endpoint to call the AWS Health API operations.
@@ -36,9 +36,9 @@
 %% events that are public or account-specific.
 %%
 %% Use pagination to view all events from the response. For example, if you
-%% call the `DescribeEventsForOrganization` operation to get all events in
+%% call the `DescribeEventsForOrganization' operation to get all events in
 %% your organization, you might receive several page results. Specify the
-%% `nextToken` in the next request to return more results.
+%% `nextToken' in the next request to return more results.
 -module(aws_health).
 
 -export([describe_affected_accounts_for_organization/2,
@@ -85,7 +85,7 @@
 %% EnableHealthServiceAccessForOrganization operation from your
 %% organization's master account.
 %%
-%% This API operation uses pagination. Specify the `nextToken` parameter in
+%% This API operation uses pagination. Specify the `nextToken' parameter in
 %% the next request to return more results.
 describe_affected_accounts_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -103,9 +103,9 @@ describe_affected_accounts_for_organization(Client, Input, Options)
 %% of impact is unknown, include at least one entity indicating this.
 %%
 %% At least one event ARN is required. Results are sorted by the
-%% `lastUpdatedTime` of the entity, starting with the most recent.
+%% `lastUpdatedTime' of the entity, starting with the most recent.
 %%
-%% This API operation uses pagination. Specify the `nextToken` parameter in
+%% This API operation uses pagination. Specify the `nextToken' parameter in
 %% the next request to return more results.
 describe_affected_entities(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -122,7 +122,7 @@ describe_affected_entities(Client, Input, Options)
 %% resources, or any other construct, depending on the AWS service.
 %%
 %% At least one event Amazon Resource Name (ARN) and account ID are required.
-%% Results are sorted by the `lastUpdatedTime` of the entity, starting with
+%% Results are sorted by the `lastUpdatedTime' of the entity, starting with
 %% the most recent.
 %%
 %% Before you can call this operation, you must first enable AWS Health to
@@ -130,7 +130,7 @@ describe_affected_entities(Client, Input, Options)
 %% EnableHealthServiceAccessForOrganization operation from your
 %% organization's master account.
 %%
-%% This API operation uses pagination. Specify the `nextToken` parameter in
+%% This API operation uses pagination. Specify the `nextToken' parameter in
 %% the next request to return more results.
 describe_affected_entities_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -157,7 +157,7 @@ describe_entity_aggregates(Client, Input, Options)
 %% If no filter is specified, the counts of all events in each category are
 %% returned.
 %%
-%% This API operation uses pagination. Specify the `nextToken` parameter in
+%% This API operation uses pagination. Specify the `nextToken' parameter in
 %% the next request to return more results.
 describe_event_aggregates(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -197,17 +197,17 @@ describe_event_details(Client, Input, Options)
 %% EnableHealthServiceAccessForOrganization operation from your
 %% organization's master account.
 %%
-%% When you call the `DescribeEventDetailsForOrganization` operation, you
-%% specify the `organizationEventDetailFilters` object in the request.
+%% When you call the `DescribeEventDetailsForOrganization' operation, you
+%% specify the `organizationEventDetailFilters' object in the request.
 %% Depending on the AWS Health event type, note the following differences:
 %%
-%% <ul> <li> If the event is public, the `awsAccountId` parameter must be
+%% <ul> <li> If the event is public, the `awsAccountId' parameter must be
 %% empty. If you specify an account ID for a public event, then an error
 %% message is returned. That's because the event might apply to all AWS
 %% accounts and isn't specific to an account in your organization.
 %%
 %% </li> <li> If the event is specific to an account, then you must specify
-%% the `awsAccountId` parameter in the request. If you don't specify an
+%% the `awsAccountId' parameter in the request. If you don't specify an
 %% account ID, an error message returns because the event is specific to an
 %% AWS account in your organization.
 %%
@@ -224,7 +224,7 @@ describe_event_details_for_organization(Client, Input, Options)
 %% If no filter criteria are specified, all event types are returned, in no
 %% particular order.
 %%
-%% This API operation uses pagination. Specify the `nextToken` parameter in
+%% This API operation uses pagination. Specify the `nextToken' parameter in
 %% the next request to return more results.
 describe_event_types(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -242,18 +242,18 @@ describe_event_types(Client, Input, Options)
 %% DescribeEventDetails and DescribeAffectedEntities operations.
 %%
 %% If no filter criteria are specified, all events are returned. Results are
-%% sorted by `lastModifiedTime`, starting with the most recent event.
+%% sorted by `lastModifiedTime', starting with the most recent event.
 %%
-%% When you call the `DescribeEvents` operation and specify an entity for the
-%% `entityValues` parameter, AWS Health might return public events that
+%% When you call the `DescribeEvents' operation and specify an entity for the
+%% `entityValues' parameter, AWS Health might return public events that
 %% aren't specific to that resource. For example, if you call
-%% `DescribeEvents` and specify an ID for an Amazon Elastic Compute Cloud
+%% `DescribeEvents' and specify an ID for an Amazon Elastic Compute Cloud
 %% (Amazon EC2) instance, AWS Health might return events that aren't specific
 %% to that resource or service. To get events that are specific to a service,
-%% use the `services` parameter in the `filter` object. For more information,
+%% use the `services' parameter in the `filter' object. For more information,
 %% see Event.
 %%
-%% This API operation uses pagination. Specify the `nextToken` parameter in
+%% This API operation uses pagination. Specify the `nextToken' parameter in
 %% the next request to return more results.
 describe_events(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -265,7 +265,7 @@ describe_events(Client, Input, Options)
 %% @doc Returns information about events across your organization in AWS
 %% Organizations.
 %%
-%% You can use the`filters` parameter to specify the events that you want to
+%% You can use the`filters' parameter to specify the events that you want to
 %% return. Events are returned in a summary form and don't include the
 %% affected accounts, detailed description, any additional metadata that
 %% depends on the event type, or any affected resources. To retrieve that
@@ -277,9 +277,9 @@ describe_events(Client, Input, Options)
 %%
 %% </li> <li> DescribeAffectedEntitiesForOrganization
 %%
-%% </li> </ul> If you don't specify a `filter`, the
-%% `DescribeEventsForOrganizations` returns all events across your
-%% organization. Results are sorted by `lastModifiedTime`, starting with the
+%% </li> </ul> If you don't specify a `filter', the
+%% `DescribeEventsForOrganizations' returns all events across your
+%% organization. Results are sorted by `lastModifiedTime', starting with the
 %% most recent event.
 %%
 %% For more information about the different types of AWS Health events, see
@@ -290,7 +290,7 @@ describe_events(Client, Input, Options)
 %% EnableHealthServiceAccessForOrganization operation from your
 %% organization's master AWS account.
 %%
-%% This API operation uses pagination. Specify the `nextToken` parameter in
+%% This API operation uses pagination. Specify the `nextToken' parameter in
 %% the next request to return more results.
 describe_events_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->

@@ -270,7 +270,7 @@ get_replication_runs(Client, Input, Options)
 %% @doc Describes the servers in your server catalog.
 %%
 %% Before you can describe your servers, you must import them using
-%% `ImportServerCatalog`.
+%% `ImportServerCatalog'.
 get_servers(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_servers(Client, Input, []).

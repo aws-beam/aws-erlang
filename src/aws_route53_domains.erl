@@ -77,7 +77,7 @@
 %% Use either ListOperations or GetOperationDetail to determine whether the
 %% operation succeeded. GetOperationDetail provides additional information,
 %% for example, `Domain Transfer from Aws Account 111122223333 has been
-%% cancelled`.
+%% cancelled'.
 accept_domain_transfer_from_another_aws_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     accept_domain_transfer_from_another_aws_account(Client, Input, []).
@@ -97,7 +97,7 @@ accept_domain_transfer_from_another_aws_account(Client, Input, Options)
 %% Use either ListOperations or GetOperationDetail to determine whether the
 %% operation succeeded. GetOperationDetail provides additional information,
 %% for example, `Domain Transfer from Aws Account 111122223333 has been
-%% cancelled`.
+%% cancelled'.
 cancel_domain_transfer_to_another_aws_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_domain_transfer_to_another_aws_account(Client, Input, []).
@@ -145,7 +145,7 @@ disable_domain_auto_renew(Client, Input, Options)
     request(Client, <<"DisableDomainAutoRenew">>, Input, Options).
 
 %% @doc This operation removes the transfer lock on the domain (specifically
-%% the `clientTransferProhibited` status) to allow domain transfers.
+%% the `clientTransferProhibited' status) to allow domain transfers.
 %%
 %% We recommend you refrain from performing this action unless you intend to
 %% transfer the domain to a different registrar. Successful submission
@@ -178,7 +178,7 @@ enable_domain_auto_renew(Client, Input, Options)
     request(Client, <<"EnableDomainAutoRenew">>, Input, Options).
 
 %% @doc This operation sets the transfer lock on the domain (specifically the
-%% `clientTransferProhibited` status) to prevent domain transfers.
+%% `clientTransferProhibited' status) to prevent domain transfers.
 %%
 %% Successful submission returns an operation ID that you can use to track
 %% the progress and completion of the action. If the request is not completed
@@ -196,7 +196,7 @@ enable_domain_transfer_lock(Client, Input, Options)
 %% responded.
 %%
 %% If you want us to resend the email, use the
-%% `ResendContactReachabilityEmail` operation.
+%% `ResendContactReachabilityEmail' operation.
 get_contact_reachability_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_contact_reachability_status(Client, Input, []).
@@ -312,7 +312,7 @@ register_domain(Client, Input, Options)
 %% Use either ListOperations or GetOperationDetail to determine whether the
 %% operation succeeded. GetOperationDetail provides additional information,
 %% for example, `Domain Transfer from Aws Account 111122223333 has been
-%% cancelled`.
+%% cancelled'.
 reject_domain_transfer_from_another_aws_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     reject_domain_transfer_from_another_aws_account(Client, Input, []).
@@ -429,7 +429,7 @@ transfer_domain(Client, Input, Options)
 %% Use either ListOperations or GetOperationDetail to determine whether the
 %% operation succeeded. GetOperationDetail provides additional information,
 %% for example, `Domain Transfer from Aws Account 111122223333 has been
-%% cancelled`.
+%% cancelled'.
 transfer_domain_to_another_aws_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     transfer_domain_to_another_aws_account(Client, Input, []).
@@ -474,7 +474,7 @@ update_domain_contact(Client, Input, Options)
 %% database. You certify that you are the registrant of this domain name and
 %% have the authority to make this decision. You may withdraw your consent at
 %% any time by enabling privacy protection using either
-%% `UpdateDomainContactPrivacy` or the Route 53 console. Enabling privacy
+%% `UpdateDomainContactPrivacy' or the Route 53 console. Enabling privacy
 %% protection removes the contact information provided for this domain from
 %% the WHOIS database. For more information on our privacy practices, see
 %% [https://aws.amazon.com/privacy/].

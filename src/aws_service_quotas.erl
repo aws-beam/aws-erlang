@@ -89,10 +89,10 @@ delete_service_quota_increase_request_from_template(Client, Input, Options)
 %% Related operations
 %%
 %% <ul> <li> To enable the quota template, call
-%% `AssociateServiceQuotaTemplate`.
+%% `AssociateServiceQuotaTemplate'.
 %%
 %% </li> <li> To delete a specific service quota from the template, use
-%% `DeleteServiceQuotaIncreaseRequestFromTemplate`.
+%% `DeleteServiceQuotaIncreaseRequestFromTemplate'.
 %%
 %% </li> </ul>
 disassociate_service_quota_template(Client, Input)
@@ -113,7 +113,7 @@ get_a_w_s_default_service_quota(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAWSDefaultServiceQuota">>, Input, Options).
 
-%% @doc Retrieves the `ServiceQuotaTemplateAssociationStatus` value from the
+%% @doc Retrieves the `ServiceQuotaTemplateAssociationStatus' value from the
 %% service.
 %%
 %% Use this action to determine if the Service Quota template is associated,
@@ -136,8 +136,8 @@ get_requested_service_quota_change(Client, Input, Options)
 %% @doc Returns the details for the specified service quota.
 %%
 %% This operation provides a different Value than the
-%% `GetAWSDefaultServiceQuota` operation. This operation returns the applied
-%% value for each quota. `GetAWSDefaultServiceQuota` returns the default AWS
+%% `GetAWSDefaultServiceQuota' operation. This operation returns the applied
+%% value for each quota. `GetAWSDefaultServiceQuota' returns the default AWS
 %% value for each quota.
 get_service_quota(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -158,17 +158,17 @@ get_service_quota_increase_request_from_template(Client, Input, Options)
 %% @doc Lists all default service quotas for the specified AWS service or all
 %% AWS services.
 %%
-%% ListAWSDefaultServiceQuotas is similar to `ListServiceQuotas` except for
+%% ListAWSDefaultServiceQuotas is similar to `ListServiceQuotas' except for
 %% the Value object. The Value object returned by
-%% `ListAWSDefaultServiceQuotas` is the default value assigned by AWS. This
+%% `ListAWSDefaultServiceQuotas' is the default value assigned by AWS. This
 %% request returns a list of all service quotas for the specified service.
 %% The listing of each you'll see the default values are the values that AWS
 %% provides for the quotas.
 %%
-%% Always check the `NextToken` response parameter when calling any of the
-%% `List*` operations. These operations can return an unexpected list of
+%% Always check the `NextToken' response parameter when calling any of the
+%% `List*' operations. These operations can return an unexpected list of
 %% results, even when there are more results available. When this happens,
-%% the `NextToken` response parameter contains a value to pass the next call
+%% the `NextToken' response parameter contains a value to pass the next call
 %% to the same API to request the next part of the list.
 list_a_w_s_default_service_quotas(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -188,8 +188,8 @@ list_requested_service_quota_change_history(Client, Input, Options)
 %% @doc Requests a list of the changes to specific service quotas.
 %%
 %% This command provides additional granularity over the
-%% `ListRequestedServiceQuotaChangeHistory` command. Once a quota change
-%% request has reached `CASE_CLOSED, APPROVED,` or `DENIED`, the history has
+%% `ListRequestedServiceQuotaChangeHistory' command. Once a quota change
+%% request has reached `CASE_CLOSED, APPROVED,' or `DENIED', the history has
 %% been kept for 90 days.
 list_requested_service_quota_change_history_by_quota(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -212,10 +212,10 @@ list_service_quota_increase_requests_in_template(Client, Input, Options)
 %% service. you'll see the default values are the values that AWS provides
 %% for the quotas.
 %%
-%% Always check the `NextToken` response parameter when calling any of the
-%% `List*` operations. These operations can return an unexpected list of
+%% Always check the `NextToken' response parameter when calling any of the
+%% `List*' operations. These operations can return an unexpected list of
 %% results, even when there are more results available. When this happens,
-%% the `NextToken` response parameter contains a value to pass the next call
+%% the `NextToken' response parameter contains a value to pass the next call
 %% to the same API to request the next part of the list.
 list_service_quotas(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -228,7 +228,7 @@ list_service_quotas(Client, Input, Options)
 %%
 %% Not all AWS services are available in Service Quotas. To list the see the
 %% list of the service quotas for a specific service, use
-%% `ListServiceQuotas`.
+%% `ListServiceQuotas'.
 list_services(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_services(Client, Input, []).
@@ -238,9 +238,9 @@ list_services(Client, Input, Options)
 
 %% @doc Defines and adds a quota to the service quota template.
 %%
-%% To add a quota to the template, you must provide the `ServiceCode`,
-%% `QuotaCode`, `AwsRegion`, and `DesiredValue`. Once you add a quota to the
-%% template, use `ListServiceQuotaIncreaseRequestsInTemplate` to see the list
+%% To add a quota to the template, you must provide the `ServiceCode',
+%% `QuotaCode', `AwsRegion', and `DesiredValue'. Once you add a quota to the
+%% template, use `ListServiceQuotaIncreaseRequestsInTemplate' to see the list
 %% of quotas in the template.
 put_service_quota_increase_request_into_template(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -252,7 +252,7 @@ put_service_quota_increase_request_into_template(Client, Input, Options)
 %% @doc Retrieves the details of a service quota increase request.
 %%
 %% The response to this command provides the details in the
-%% `RequestedServiceQuotaChange` object.
+%% `RequestedServiceQuotaChange' object.
 request_service_quota_increase(Client, Input)
   when is_map(Client), is_map(Input) ->
     request_service_quota_increase(Client, Input, []).

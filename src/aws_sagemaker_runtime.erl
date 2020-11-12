@@ -23,7 +23,7 @@
 %% API. Amazon SageMaker might add additional headers. You should not rely on
 %% the behavior of headers outside those enumerated in the request syntax.
 %%
-%% Calls to `InvokeEndpoint` are authenticated by using AWS Signature Version
+%% Calls to `InvokeEndpoint' are authenticated by using AWS Signature Version
 %% 4. For information, see Authenticating Requests (AWS Signature Version 4)
 %% in the Amazon S3 API Reference.
 %%

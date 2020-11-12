@@ -87,7 +87,7 @@ get_data_lake_settings(Client, Input, Options)
 %% @doc Returns the Lake Formation permissions for a specified table or
 %% database resource located at a path in Amazon S3.
 %%
-%% `GetEffectivePermissionsForPath` will not return databases and tables if
+%% `GetEffectivePermissionsForPath' will not return databases and tables if
 %% the catalog is encrypted.
 get_effective_permissions_for_path(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -165,12 +165,12 @@ put_data_lake_settings(Client, Input, Options)
 %% Formation permission to use the service-linked role to access that
 %% location.
 %%
-%% `ResourceArn = arn:aws:s3:::my-bucket UseServiceLinkedRole = true`
+%% `ResourceArn = arn:aws:s3:::my-bucket UseServiceLinkedRole = true'
 %%
-%% If `UseServiceLinkedRole` is not set to true, you must provide or set the
-%% `RoleArn`:
+%% If `UseServiceLinkedRole' is not set to true, you must provide or set the
+%% `RoleArn':
 %%
-%% `arn:aws:iam::12345:role/my-data-access-role`
+%% `arn:aws:iam::12345:role/my-data-access-role'
 register_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_resource(Client, Input, []).

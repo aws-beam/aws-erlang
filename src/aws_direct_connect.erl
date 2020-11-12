@@ -144,7 +144,7 @@ accept_direct_connect_gateway_association_proposal(Client, Input, Options)
 
 %% @doc Deprecated.
 %%
-%% Use `AllocateHostedConnection` instead.
+%% Use `AllocateHostedConnection' instead.
 %%
 %% Creates a hosted connection on an interconnect.
 %%
@@ -180,8 +180,8 @@ allocate_hosted_connection(Client, Input, Options)
 %% AWS account.
 %%
 %% Virtual interfaces created using this action must be confirmed by the
-%% owner using `ConfirmPrivateVirtualInterface`. Until then, the virtual
-%% interface is in the `Confirming` state and is not available to handle
+%% owner using `ConfirmPrivateVirtualInterface'. Until then, the virtual
+%% interface is in the `Confirming' state and is not available to handle
 %% traffic.
 allocate_private_virtual_interface(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -197,8 +197,8 @@ allocate_private_virtual_interface(Client, Input, Options)
 %% virtual interface to be owned by the specified AWS account.
 %%
 %% Virtual interfaces created using this function must be confirmed by the
-%% owner using `ConfirmPublicVirtualInterface`. Until this step has been
-%% completed, the virtual interface is in the `confirming` state and is not
+%% owner using `ConfirmPublicVirtualInterface'. Until this step has been
+%% completed, the virtual interface is in the `confirming' state and is not
 %% available to handle traffic.
 %%
 %% When creating an IPv6 public virtual interface, omit the Amazon address
@@ -221,8 +221,8 @@ allocate_public_virtual_interface(Client, Input, Options)
 %% owned by the specified AWS account.
 %%
 %% After you create a transit virtual interface, it must be confirmed by the
-%% owner using `ConfirmTransitVirtualInterface`. Until this step has been
-%% completed, the transit virtual interface is in the `requested` state and
+%% owner using `ConfirmTransitVirtualInterface'. Until this step has been
+%% completed, the transit virtual interface is in the `requested' state and
 %% is not available to handle traffic.
 allocate_transit_virtual_interface(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -284,7 +284,7 @@ associate_hosted_connection(Client, Input, Options)
 %%
 %% Virtual interfaces associated with a hosted connection cannot be
 %% associated with a LAG; hosted connections must be migrated along with
-%% their virtual interfaces using `AssociateHostedConnection`.
+%% their virtual interfaces using `AssociateHostedConnection'.
 %%
 %% To reassociate a virtual interface to a new connection or LAG, the
 %% requester must own either the virtual interface itself or the connection
@@ -300,7 +300,7 @@ associate_virtual_interface(Client, Input, Options)
 %% @doc Confirms the creation of the specified hosted connection on an
 %% interconnect.
 %%
-%% Upon creation, the hosted connection is initially in the `Ordering` state,
+%% Upon creation, the hosted connection is initially in the `Ordering' state,
 %% and remains in this state until the owner confirms creation of the hosted
 %% connection.
 confirm_connection(Client, Input)
@@ -378,7 +378,7 @@ create_bgp_peer(Client, Input, Options)
 %% over a standard Ethernet fiber-optic cable. One end of the cable is
 %% connected to your router, the other to an AWS Direct Connect router.
 %%
-%% To find the locations for your Region, use `DescribeLocations`.
+%% To find the locations for your Region, use `DescribeLocations'.
 %%
 %% You can automatically add the new connection to a link aggregation group
 %% (LAG) by specifying a LAG ID in the request. This ensures that the new
@@ -451,7 +451,7 @@ create_direct_connect_gateway_association_proposal(Client, Input, Options)
 %% the request fails and no interconnect is created.
 %%
 %% For each end customer, the AWS Direct Connect Partner provisions a
-%% connection on their interconnect by calling `AllocateHostedConnection`.
+%% connection on their interconnect by calling `AllocateHostedConnection'.
 %% The end customer can then connect to AWS resources by creating a virtual
 %% interface on their connection, using the VLAN assigned to them by the AWS
 %% Direct Connect Partner.
@@ -514,8 +514,8 @@ create_lag(Client, Input, Options)
 %% support jumbo frames. Updating the connection disrupts network
 %% connectivity for all virtual interfaces associated with the connection for
 %% up to 30 seconds. To check whether your connection supports jumbo frames,
-%% call `DescribeConnections`. To check whether your virtual interface
-%% supports jumbo frames, call `DescribeVirtualInterfaces`.
+%% call `DescribeConnections'. To check whether your virtual interface
+%% supports jumbo frames, call `DescribeVirtualInterfaces'.
 create_private_virtual_interface(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_private_virtual_interface(Client, Input, []).
@@ -529,8 +529,8 @@ create_private_virtual_interface(Client, Input, Options)
 %% traffic. A public virtual interface supports sending traffic to public
 %% services of AWS such as Amazon S3.
 %%
-%% When creating an IPv6 public virtual interface (`addressFamily` is
-%% `ipv6`), leave the `customer` and `amazon` address fields blank to use
+%% When creating an IPv6 public virtual interface (`addressFamily' is
+%% `ipv6'), leave the `customer' and `amazon' address fields blank to use
 %% auto-assigned IPv6 space. Custom IPv6 addresses are not supported.
 create_public_virtual_interface(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -557,8 +557,8 @@ create_public_virtual_interface(Client, Input, Options)
 %% support jumbo frames. Updating the connection disrupts network
 %% connectivity for all virtual interfaces associated with the connection for
 %% up to 30 seconds. To check whether your connection supports jumbo frames,
-%% call `DescribeConnections`. To check whether your virtual interface
-%% supports jumbo frames, call `DescribeVirtualInterfaces`.
+%% call `DescribeConnections'. To check whether your virtual interface
+%% supports jumbo frames, call `DescribeVirtualInterfaces'.
 create_transit_virtual_interface(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_transit_virtual_interface(Client, Input, []).
@@ -605,10 +605,10 @@ delete_direct_connect_gateway(Client, Input, Options)
 %% @doc Deletes the association between the specified Direct Connect gateway
 %% and virtual private gateway.
 %%
-%% We recommend that you specify the `associationID` to delete the
+%% We recommend that you specify the `associationID' to delete the
 %% association. Alternatively, if you own virtual gateway and a Direct
-%% Connect gateway association, you can specify the `virtualGatewayId` and
-%% `directConnectGatewayId` to delete an association.
+%% Connect gateway association, you can specify the `virtualGatewayId' and
+%% `directConnectGatewayId' to delete an association.
 delete_direct_connect_gateway_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_direct_connect_gateway_association(Client, Input, []).
@@ -656,7 +656,7 @@ delete_virtual_interface(Client, Input, Options)
 
 %% @doc Deprecated.
 %%
-%% Use `DescribeLoa` instead.
+%% Use `DescribeLoa' instead.
 %%
 %% Gets the LOA-CFA for a connection.
 %%
@@ -682,7 +682,7 @@ describe_connections(Client, Input, Options)
 
 %% @doc Deprecated.
 %%
-%% Use `DescribeHostedConnections` instead.
+%% Use `DescribeHostedConnections' instead.
 %%
 %% Lists the connections that have been provisioned on the specified
 %% interconnect.
@@ -762,7 +762,7 @@ describe_hosted_connections(Client, Input, Options)
 
 %% @doc Deprecated.
 %%
-%% Use `DescribeLoa` instead.
+%% Use `DescribeLoa' instead.
 %%
 %% Gets the LOA-CFA for the specified interconnect.
 %%
@@ -812,7 +812,7 @@ describe_loa(Client, Input, Options)
 %% @doc Lists the AWS Direct Connect locations in the current AWS Region.
 %%
 %% These are the locations that can be selected when calling
-%% `CreateConnection` or `CreateInterconnect`.
+%% `CreateConnection' or `CreateInterconnect'.
 describe_locations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_locations(Client, Input, []).
@@ -861,7 +861,7 @@ describe_virtual_interfaces(Client, Input, Options)
 %%
 %% The connection is interrupted and re-established as a standalone
 %% connection (the connection is not deleted; to delete the connection, use
-%% the `DeleteConnection` request). If the LAG has associated virtual
+%% the `DeleteConnection' request). If the LAG has associated virtual
 %% interfaces or hosted connections, they remain associated with the LAG. A
 %% disassociated connection owned by an AWS Direct Connect Partner is
 %% automatically converted to an interconnect.
@@ -979,8 +979,8 @@ update_lag(Client, Input, Options)
 %% support jumbo frames. Updating the connection disrupts network
 %% connectivity for all virtual interfaces associated with the connection for
 %% up to 30 seconds. To check whether your connection supports jumbo frames,
-%% call `DescribeConnections`. To check whether your virtual q interface
-%% supports jumbo frames, call `DescribeVirtualInterfaces`.
+%% call `DescribeConnections'. To check whether your virtual q interface
+%% supports jumbo frames, call `DescribeVirtualInterfaces'.
 update_virtual_interface_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_virtual_interface_attributes(Client, Input, []).

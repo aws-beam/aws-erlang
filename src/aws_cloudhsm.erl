@@ -107,14 +107,14 @@ create_hapg(Client, Input, Options)
 %% Creates an uninitialized HSM instance.
 %%
 %% There is an upfront fee charged for each HSM instance that you create with
-%% the `CreateHsm` operation. If you accidentally provision an HSM and want
-%% to request a refund, delete the instance using the `DeleteHsm` operation,
+%% the `CreateHsm' operation. If you accidentally provision an HSM and want
+%% to request a refund, delete the instance using the `DeleteHsm' operation,
 %% go to the AWS Support Center, create a new case, and select Account and
 %% Billing Support.
 %%
 %% It can take up to 20 minutes to create and provision an HSM. You can
-%% monitor the status of the HSM with the `DescribeHsm` operation. The HSM is
-%% ready to be initialized when the status changes to `RUNNING`.
+%% monitor the status of the HSM with the `DescribeHsm' operation. The HSM is
+%% ready to be initialized when the status changes to `RUNNING'.
 create_hsm(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_hsm(Client, Input, []).
@@ -279,9 +279,9 @@ list_available_zones(Client, Input, Options)
 %%
 %% Lists the high-availability partition groups for the account.
 %%
-%% This operation supports pagination with the use of the `NextToken` member.
-%% If more results are available, the `NextToken` member of the response
-%% contains a token that you pass in the next call to `ListHapgs` to retrieve
+%% This operation supports pagination with the use of the `NextToken' member.
+%% If more results are available, the `NextToken' member of the response
+%% contains a token that you pass in the next call to `ListHapgs' to retrieve
 %% the next set of items.
 list_hapgs(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -301,9 +301,9 @@ list_hapgs(Client, Input, Options)
 %% Retrieves the identifiers of all of the HSMs provisioned for the current
 %% customer.
 %%
-%% This operation supports pagination with the use of the `NextToken` member.
-%% If more results are available, the `NextToken` member of the response
-%% contains a token that you pass in the next call to `ListHsms` to retrieve
+%% This operation supports pagination with the use of the `NextToken' member.
+%% If more results are available, the `NextToken' member of the response
+%% contains a token that you pass in the next call to `ListHsms' to retrieve
 %% the next set of items.
 list_hsms(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -322,9 +322,9 @@ list_hsms(Client, Input, Options)
 %%
 %% Lists all of the clients.
 %%
-%% This operation supports pagination with the use of the `NextToken` member.
-%% If more results are available, the `NextToken` member of the response
-%% contains a token that you pass in the next call to `ListLunaClients` to
+%% This operation supports pagination with the use of the `NextToken' member.
+%% If more results are available, the `NextToken' member of the response
+%% contains a token that you pass in the next call to `ListLunaClients' to
 %% retrieve the next set of items.
 list_luna_clients(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -417,7 +417,7 @@ modify_luna_client(Client, Input, Options)
 %% Removes one or more tags from the specified AWS CloudHSM resource.
 %%
 %% To remove a tag, specify only the tag key to remove (not the value). To
-%% overwrite the value for an existing tag, use `AddTagsToResource`.
+%% overwrite the value for an existing tag, use `AddTagsToResource'.
 remove_tags_from_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags_from_resource(Client, Input, []).

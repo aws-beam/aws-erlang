@@ -338,7 +338,7 @@ add_role_to_d_b_cluster(Client, Input, Options)
 %% instance.
 %%
 %% To add a role to a DB instance, the status of the DB instance must be
-%% `available`.
+%% `available'.
 add_role_to_d_b_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_role_to_d_b_instance(Client, Input, []).
@@ -439,67 +439,67 @@ copy_d_b_cluster_parameter_group(Client, Input, Options)
 %% @doc Copies a snapshot of a DB cluster.
 %%
 %% To copy a DB cluster snapshot from a shared manual DB cluster snapshot,
-%% `SourceDBClusterSnapshotIdentifier` must be the Amazon Resource Name (ARN)
+%% `SourceDBClusterSnapshotIdentifier' must be the Amazon Resource Name (ARN)
 %% of the shared DB cluster snapshot.
 %%
 %% You can copy an encrypted DB cluster snapshot from another AWS Region. In
-%% that case, the AWS Region where you call the `CopyDBClusterSnapshot`
+%% that case, the AWS Region where you call the `CopyDBClusterSnapshot'
 %% action is the destination AWS Region for the encrypted DB cluster snapshot
 %% to be copied to. To copy an encrypted DB cluster snapshot from another AWS
 %% Region, you must provide the following values:
 %%
-%% <ul> <li> `KmsKeyId` - The AWS Key Management System (AWS KMS) key
+%% <ul> <li> `KmsKeyId' - The AWS Key Management System (AWS KMS) key
 %% identifier for the key to use to encrypt the copy of the DB cluster
 %% snapshot in the destination AWS Region.
 %%
-%% </li> <li> `PreSignedUrl` - A URL that contains a Signature Version 4
-%% signed request for the `CopyDBClusterSnapshot` action to be called in the
+%% </li> <li> `PreSignedUrl' - A URL that contains a Signature Version 4
+%% signed request for the `CopyDBClusterSnapshot' action to be called in the
 %% source AWS Region where the DB cluster snapshot is copied from. The
-%% pre-signed URL must be a valid request for the `CopyDBClusterSnapshot` API
+%% pre-signed URL must be a valid request for the `CopyDBClusterSnapshot' API
 %% action that can be executed in the source AWS Region that contains the
 %% encrypted DB cluster snapshot to be copied.
 %%
 %% The pre-signed URL request must contain the following parameter values:
 %%
-%% <ul> <li> `KmsKeyId` - The KMS key identifier for the key to use to
+%% <ul> <li> `KmsKeyId' - The KMS key identifier for the key to use to
 %% encrypt the copy of the DB cluster snapshot in the destination AWS Region.
-%% This is the same identifier for both the `CopyDBClusterSnapshot` action
+%% This is the same identifier for both the `CopyDBClusterSnapshot' action
 %% that is called in the destination AWS Region, and the action contained in
 %% the pre-signed URL.
 %%
-%% </li> <li> `DestinationRegion` - The name of the AWS Region that the DB
+%% </li> <li> `DestinationRegion' - The name of the AWS Region that the DB
 %% cluster snapshot is to be created in.
 %%
-%% </li> <li> `SourceDBClusterSnapshotIdentifier` - The DB cluster snapshot
+%% </li> <li> `SourceDBClusterSnapshotIdentifier' - The DB cluster snapshot
 %% identifier for the encrypted DB cluster snapshot to be copied. This
 %% identifier must be in the Amazon Resource Name (ARN) format for the source
 %% AWS Region. For example, if you are copying an encrypted DB cluster
 %% snapshot from the us-west-2 AWS Region, then your
-%% `SourceDBClusterSnapshotIdentifier` looks like the following example:
-%% `arn:aws:rds:us-west-2:123456789012:cluster-snapshot:aurora-cluster1-snapshot-20161115`.
+%% `SourceDBClusterSnapshotIdentifier' looks like the following example:
+%% `arn:aws:rds:us-west-2:123456789012:cluster-snapshot:aurora-cluster1-snapshot-20161115'.
 %%
 %% </li> </ul> To learn how to generate a Signature Version 4 signed request,
 %% see Authenticating Requests: Using Query Parameters (AWS Signature Version
 %% 4) and Signature Version 4 Signing Process.
 %%
 %% If you are using an AWS SDK tool or the AWS CLI, you can specify
-%% `SourceRegion` (or `--source-region` for the AWS CLI) instead of
-%% specifying `PreSignedUrl` manually. Specifying `SourceRegion`
+%% `SourceRegion' (or `--source-region' for the AWS CLI) instead of
+%% specifying `PreSignedUrl' manually. Specifying `SourceRegion'
 %% autogenerates a pre-signed URL that is a valid request for the operation
 %% that can be executed in the source AWS Region.
 %%
-%% </li> <li> `TargetDBClusterSnapshotIdentifier` - The identifier for the
+%% </li> <li> `TargetDBClusterSnapshotIdentifier' - The identifier for the
 %% new copy of the DB cluster snapshot in the destination AWS Region.
 %%
-%% </li> <li> `SourceDBClusterSnapshotIdentifier` - The DB cluster snapshot
+%% </li> <li> `SourceDBClusterSnapshotIdentifier' - The DB cluster snapshot
 %% identifier for the encrypted DB cluster snapshot to be copied. This
 %% identifier must be in the ARN format for the source AWS Region and is the
-%% same value as the `SourceDBClusterSnapshotIdentifier` in the pre-signed
+%% same value as the `SourceDBClusterSnapshotIdentifier' in the pre-signed
 %% URL.
 %%
 %% </li> </ul> To cancel the copy operation once it is in progress, delete
 %% the target DB cluster snapshot identified by
-%% `TargetDBClusterSnapshotIdentifier` while that DB cluster snapshot is in
+%% `TargetDBClusterSnapshotIdentifier' while that DB cluster snapshot is in
 %% "copying" status.
 %%
 %% For more information on copying encrypted DB cluster snapshots from one
@@ -527,10 +527,10 @@ copy_d_b_parameter_group(Client, Input, Options)
 
 %% @doc Copies the specified DB snapshot.
 %%
-%% The source DB snapshot must be in the `available` state.
+%% The source DB snapshot must be in the `available' state.
 %%
 %% You can copy a snapshot from one AWS Region to another. In that case, the
-%% AWS Region where you call the `CopyDBSnapshot` action is the destination
+%% AWS Region where you call the `CopyDBSnapshot' action is the destination
 %% AWS Region for the DB snapshot copy.
 %%
 %% For more information about copying snapshots, see Copying a DB Snapshot in
@@ -566,11 +566,11 @@ create_custom_availability_zone(Client, Input, Options)
 
 %% @doc Creates a new Amazon Aurora DB cluster.
 %%
-%% You can use the `ReplicationSourceIdentifier` parameter to create the DB
+%% You can use the `ReplicationSourceIdentifier' parameter to create the DB
 %% cluster as a read replica of another DB cluster or Amazon RDS MySQL DB
 %% instance. For cross-region replication where the DB cluster identified by
-%% `ReplicationSourceIdentifier` is encrypted, you must also specify the
-%% `PreSignedUrl` parameter.
+%% `ReplicationSourceIdentifier' is encrypted, you must also specify the
+%% `PreSignedUrl' parameter.
 %%
 %% For more information on Amazon Aurora, see What Is Amazon Aurora? in the
 %% Amazon Aurora User Guide.
@@ -602,9 +602,9 @@ create_d_b_cluster_endpoint(Client, Input, Options)
 %% A DB cluster parameter group is initially created with the default
 %% parameters for the database engine used by instances in the DB cluster. To
 %% provide custom values for any of the parameters, you must modify the group
-%% after creating it using `ModifyDBClusterParameterGroup`. Once you've
+%% after creating it using `ModifyDBClusterParameterGroup'. Once you've
 %% created a DB cluster parameter group, you need to associate it with your
-%% DB cluster using `ModifyDBCluster`. When you associate a new DB cluster
+%% DB cluster using `ModifyDBCluster'. When you associate a new DB cluster
 %% parameter group with a running DB cluster, you need to reboot the DB
 %% instances in the DB cluster without failover for the new DB cluster
 %% parameter group and associated settings to take effect.
@@ -616,8 +616,8 @@ create_d_b_cluster_endpoint(Client, Input, Options)
 %% used as the default for a new DB cluster. This is especially important for
 %% parameters that are critical when creating the default database for a DB
 %% cluster, such as the character set for the default database defined by the
-%% `character_set_database` parameter. You can use the Parameter Groups
-%% option of the Amazon RDS console or the `DescribeDBClusterParameters`
+%% `character_set_database' parameter. You can use the Parameter Groups
+%% option of the Amazon RDS console or the `DescribeDBClusterParameters'
 %% action to verify that your DB cluster parameter group has been created or
 %% modified.
 %%
@@ -660,7 +660,7 @@ create_d_b_instance(Client, Input, Options)
 %% Oracle, PostgreSQL, or SQL Server. For more information, see Working with
 %% Read Replicas in the Amazon RDS User Guide.
 %%
-%% Amazon Aurora doesn't support this action. Call the `CreateDBInstance`
+%% Amazon Aurora doesn't support this action. Call the `CreateDBInstance'
 %% action to create a DB instance for an Aurora DB cluster.
 %%
 %% All read replica DB instances are created with backups disabled. All other
@@ -693,7 +693,7 @@ create_d_b_instance_read_replica(Client, Input, Options)
 %% new DB instance. This is especially important for parameters that are
 %% critical when creating the default database for a DB instance, such as the
 %% character set for the default database defined by the
-%% `character_set_database` parameter. You can use the Parameter Groups
+%% `character_set_database' parameter. You can use the Parameter Groups
 %% option of the Amazon RDS console or the DescribeDBParameters command to
 %% verify that your DB parameter group has been created or modified.
 create_d_b_parameter_group(Client, Input)
@@ -726,8 +726,8 @@ create_d_b_security_group(Client, Input, Options)
 
 %% @doc Creates a snapshot of a DB instance.
 %%
-%% The source DB instance must be in the `available` or
-%% `storage-optimization`state.
+%% The source DB instance must be in the `available' or
+%% `storage-optimization'state.
 create_d_b_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_d_b_snapshot(Client, Input, []).
@@ -753,20 +753,20 @@ create_d_b_subnet_group(Client, Input, Options)
 %% SNS, you must create a topic in Amazon SNS and subscribe to the topic. The
 %% ARN is displayed in the SNS console.
 %%
-%% You can specify the type of source (`SourceType`) that you want to be
-%% notified of and provide a list of RDS sources (`SourceIds`) that triggers
+%% You can specify the type of source (`SourceType') that you want to be
+%% notified of and provide a list of RDS sources (`SourceIds') that triggers
 %% the events. You can also provide a list of event categories
-%% (`EventCategories`) for events that you want to be notified of. For
-%% example, you can specify `SourceType` = `db-instance`, `SourceIds` =
-%% `mydbinstance1`, `mydbinstance2` and `EventCategories` = `Availability`,
-%% `Backup`.
+%% (`EventCategories') for events that you want to be notified of. For
+%% example, you can specify `SourceType' = `db-instance', `SourceIds' =
+%% `mydbinstance1', `mydbinstance2' and `EventCategories' = `Availability',
+%% `Backup'.
 %%
-%% If you specify both the `SourceType` and `SourceIds`, such as `SourceType`
-%% = `db-instance` and `SourceIdentifier` = `myDBInstance1`, you are notified
-%% of all the `db-instance` events for the specified source. If you specify a
-%% `SourceType` but do not specify a `SourceIdentifier`, you receive notice
+%% If you specify both the `SourceType' and `SourceIds', such as `SourceType'
+%% = `db-instance' and `SourceIdentifier' = `myDBInstance1', you are notified
+%% of all the `db-instance' events for the specified source. If you specify a
+%% `SourceType' but do not specify a `SourceIdentifier', you receive notice
 %% of the events for that source type for all your RDS sources. If you don't
-%% specify either the SourceType or the `SourceIdentifier`, you are notified
+%% specify either the SourceType or the `SourceIdentifier', you are notified
 %% of events generated from all RDS sources belonging to your customer
 %% account.
 %%
@@ -873,7 +873,7 @@ delete_d_b_cluster_parameter_group(Client, Input, Options)
 %%
 %% If the snapshot is being copied, the copy operation is terminated.
 %%
-%% The DB cluster snapshot must be in the `available` state to be deleted.
+%% The DB cluster snapshot must be in the `available' state to be deleted.
 %%
 %% For more information on Amazon Aurora, see What Is Amazon Aurora? in the
 %% Amazon Aurora User Guide.
@@ -891,16 +891,16 @@ delete_d_b_cluster_snapshot(Client, Input, Options)
 %%
 %% When you delete a DB instance, all automated backups for that instance are
 %% deleted and can't be recovered. Manual DB snapshots of the DB instance to
-%% be deleted by `DeleteDBInstance` are not deleted.
+%% be deleted by `DeleteDBInstance' are not deleted.
 %%
 %% If you request a final DB snapshot the status of the Amazon RDS DB
-%% instance is `deleting` until the DB snapshot is created. The API action
-%% `DescribeDBInstance` is used to monitor the status of this operation. The
+%% instance is `deleting' until the DB snapshot is created. The API action
+%% `DescribeDBInstance' is used to monitor the status of this operation. The
 %% action can't be canceled or reverted once submitted.
 %%
-%% When a DB instance is in a failure state and has a status of `failed`,
-%% `incompatible-restore`, or `incompatible-network`, you can only delete it
-%% when you skip creation of the final snapshot with the `SkipFinalSnapshot`
+%% When a DB instance is in a failure state and has a status of `failed',
+%% `incompatible-restore', or `incompatible-network', you can only delete it
+%% when you skip creation of the final snapshot with the `SkipFinalSnapshot'
 %% parameter.
 %%
 %% If the specified DB instance is part of an Amazon Aurora DB cluster, you
@@ -912,9 +912,9 @@ delete_d_b_cluster_snapshot(Client, Input, Options)
 %% </li> <li> The DB instance is the only instance in the DB cluster.
 %%
 %% </li> </ul> To delete a DB instance in this case, first call the
-%% `PromoteReadReplicaDBCluster` API action to promote the DB cluster so it's
+%% `PromoteReadReplicaDBCluster' API action to promote the DB cluster so it's
 %% no longer a read replica. After the promotion completes, then call the
-%% `DeleteDBInstance` API action to delete the final instance in the DB
+%% `DeleteDBInstance' API action to delete the final instance in the DB
 %% cluster.
 delete_d_b_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -924,7 +924,7 @@ delete_d_b_instance(Client, Input, Options)
     request(Client, <<"DeleteDBInstance">>, Input, Options).
 
 %% @doc Deletes automated backups based on the source instance's
-%% `DbiResourceId` value or the restorable instance's resource ID.
+%% `DbiResourceId' value or the restorable instance's resource ID.
 delete_d_b_instance_automated_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_d_b_instance_automated_backup(Client, Input, []).
@@ -966,7 +966,7 @@ delete_d_b_security_group(Client, Input, Options)
 %%
 %% If the snapshot is being copied, the copy operation is terminated.
 %%
-%% The DB snapshot must be in the `available` state to be deleted.
+%% The DB snapshot must be in the `available' state to be deleted.
 delete_d_b_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_d_b_snapshot(Client, Input, []).
@@ -1023,8 +1023,8 @@ delete_option_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteOptionGroup">>, Input, Options).
 
-%% @doc Remove the association between one or more `DBProxyTarget` data
-%% structures and a `DBProxyTargetGroup`.
+%% @doc Remove the association between one or more `DBProxyTarget' data
+%% structures and a `DBProxyTargetGroup'.
 deregister_d_b_proxy_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_d_b_proxy_targets(Client, Input, []).
@@ -1093,9 +1093,9 @@ describe_d_b_cluster_endpoints(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBClusterEndpoints">>, Input, Options).
 
-%% @doc Returns a list of `DBClusterParameterGroup` descriptions.
+%% @doc Returns a list of `DBClusterParameterGroup' descriptions.
 %%
-%% If a `DBClusterParameterGroupName` parameter is specified, the list will
+%% If a `DBClusterParameterGroupName' parameter is specified, the list will
 %% contain only the description of the specified DB cluster parameter group.
 %%
 %% For more information on Amazon Aurora, see What Is Amazon Aurora? in the
@@ -1127,15 +1127,15 @@ describe_d_b_cluster_parameters(Client, Input, Options)
 %% a manual DB cluster snapshot.
 %%
 %% When sharing snapshots with other AWS accounts,
-%% `DescribeDBClusterSnapshotAttributes` returns the `restore` attribute and
+%% `DescribeDBClusterSnapshotAttributes' returns the `restore' attribute and
 %% a list of IDs for the AWS accounts that are authorized to copy or restore
-%% the manual DB cluster snapshot. If `all` is included in the list of values
-%% for the `restore` attribute, then the manual DB cluster snapshot is public
+%% the manual DB cluster snapshot. If `all' is included in the list of values
+%% for the `restore' attribute, then the manual DB cluster snapshot is public
 %% and can be copied or restored by all AWS accounts.
 %%
 %% To add or remove access for an AWS account to copy or restore a manual DB
 %% cluster snapshot, or to make the manual DB cluster snapshot public or
-%% private, use the `ModifyDBClusterSnapshotAttribute` API action.
+%% private, use the `ModifyDBClusterSnapshotAttribute' API action.
 %%
 %% This action only applies to Aurora DB clusters.
 describe_d_b_cluster_snapshot_attributes(Client, Input)
@@ -1189,7 +1189,7 @@ describe_d_b_engine_versions(Client, Input, Options)
 %% For example, use this operation to find details about automated backups
 %% for previously deleted instances. Current instances with retention periods
 %% greater than zero (0) are returned for both the
-%% `DescribeDBInstanceAutomatedBackups` and `DescribeDBInstances` operations.
+%% `DescribeDBInstanceAutomatedBackups' and `DescribeDBInstances' operations.
 %%
 %% All parameters are optional.
 describe_d_b_instance_automated_backups(Client, Input)
@@ -1220,9 +1220,9 @@ describe_d_b_log_files(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBLogFiles">>, Input, Options).
 
-%% @doc Returns a list of `DBParameterGroup` descriptions.
+%% @doc Returns a list of `DBParameterGroup' descriptions.
 %%
-%% If a `DBParameterGroupName` is specified, the list will contain only the
+%% If a `DBParameterGroupName' is specified, the list will contain only the
 %% description of the specified DB parameter group.
 describe_d_b_parameter_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1249,7 +1249,7 @@ describe_d_b_proxies(Client, Input, Options)
     request(Client, <<"DescribeDBProxies">>, Input, Options).
 
 %% @doc Returns information about DB proxy target groups, represented by
-%% `DBProxyTargetGroup` data structures.
+%% `DBProxyTargetGroup' data structures.
 describe_d_b_proxy_target_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_d_b_proxy_target_groups(Client, Input, []).
@@ -1257,7 +1257,7 @@ describe_d_b_proxy_target_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBProxyTargetGroups">>, Input, Options).
 
-%% @doc Returns information about `DBProxyTarget` objects.
+%% @doc Returns information about `DBProxyTarget' objects.
 %%
 %% This API supports pagination.
 describe_d_b_proxy_targets(Client, Input)
@@ -1267,9 +1267,9 @@ describe_d_b_proxy_targets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBProxyTargets">>, Input, Options).
 
-%% @doc Returns a list of `DBSecurityGroup` descriptions.
+%% @doc Returns a list of `DBSecurityGroup' descriptions.
 %%
-%% If a `DBSecurityGroupName` is specified, the list will contain only the
+%% If a `DBSecurityGroupName' is specified, the list will contain only the
 %% descriptions of the specified DB security group.
 describe_d_b_security_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1282,15 +1282,15 @@ describe_d_b_security_groups(Client, Input, Options)
 %% DB snapshot.
 %%
 %% When sharing snapshots with other AWS accounts,
-%% `DescribeDBSnapshotAttributes` returns the `restore` attribute and a list
+%% `DescribeDBSnapshotAttributes' returns the `restore' attribute and a list
 %% of IDs for the AWS accounts that are authorized to copy or restore the
-%% manual DB snapshot. If `all` is included in the list of values for the
-%% `restore` attribute, then the manual DB snapshot is public and can be
+%% manual DB snapshot. If `all' is included in the list of values for the
+%% `restore' attribute, then the manual DB snapshot is public and can be
 %% copied or restored by all AWS accounts.
 %%
 %% To add or remove access for an AWS account to copy or restore a manual DB
 %% snapshot, or to make the manual DB snapshot public or private, use the
-%% `ModifyDBSnapshotAttribute` API action.
+%% `ModifyDBSnapshotAttribute' API action.
 describe_d_b_snapshot_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_d_b_snapshot_attributes(Client, Input, []).
@@ -1356,11 +1356,11 @@ describe_event_categories(Client, Input, Options)
 
 %% @doc Lists all the subscription descriptions for a customer account.
 %%
-%% The description for a subscription includes `SubscriptionName`,
-%% `SNSTopicARN`, `CustomerID`, `SourceType`, `SourceID`, `CreationTime`, and
-%% `Status`.
+%% The description for a subscription includes `SubscriptionName',
+%% `SNSTopicARN', `CustomerID', `SourceType', `SourceID', `CreationTime', and
+%% `Status'.
 %%
-%% If you specify a `SubscriptionName`, lists the description for that
+%% If you specify a `SubscriptionName', lists the description for that
 %% subscription.
 describe_event_subscriptions(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1482,10 +1482,10 @@ describe_source_regions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSourceRegions">>, Input, Options).
 
-%% @doc You can call `DescribeValidDBInstanceModifications` to learn what
+%% @doc You can call `DescribeValidDBInstanceModifications' to learn what
 %% modifications you can make to your DB instance.
 %%
-%% You can use this information when you call `ModifyDBInstance`.
+%% You can use this information when you call `ModifyDBInstance'.
 describe_valid_d_b_instance_modifications(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_valid_d_b_instance_modifications(Client, Input, []).
@@ -1588,7 +1588,7 @@ modify_certificates(Client, Input, Options)
 %% Aurora Serverless scales seamlessly based on the workload on the DB
 %% cluster. In some cases, the capacity might not scale fast enough to meet a
 %% sudden change in workload, such as a large number of new transactions.
-%% Call `ModifyCurrentDBClusterCapacity` to set the capacity explicitly.
+%% Call `ModifyCurrentDBClusterCapacity' to set the capacity explicitly.
 %%
 %% After this call sets the DB cluster capacity, Aurora Serverless can
 %% automatically scale the DB cluster based on the cooldown period for
@@ -1597,8 +1597,8 @@ modify_certificates(Client, Input, Options)
 %% For more information about Aurora Serverless, see Using Amazon Aurora
 %% Serverless in the Amazon Aurora User Guide.
 %%
-%% If you call `ModifyCurrentDBClusterCapacity` with the default
-%% `TimeoutAction`, connections that prevent Aurora Serverless from finding a
+%% If you call `ModifyCurrentDBClusterCapacity' with the default
+%% `TimeoutAction', connections that prevent Aurora Serverless from finding a
 %% scaling point might be dropped. For more information about scaling points,
 %% see Autoscaling for Aurora Serverless in the Amazon Aurora User Guide.
 %%
@@ -1639,7 +1639,7 @@ modify_d_b_cluster_endpoint(Client, Input, Options)
 %% @doc Modifies the parameters of a DB cluster parameter group.
 %%
 %% To modify more than one parameter, submit a list of the following:
-%% `ParameterName`, `ParameterValue`, and `ApplyMethod`. A maximum of 20
+%% `ParameterName', `ParameterValue', and `ApplyMethod'. A maximum of 20
 %% parameters can be modified in a single request.
 %%
 %% For more information on Amazon Aurora, see What Is Amazon Aurora? in the
@@ -1656,8 +1656,8 @@ modify_d_b_cluster_endpoint(Client, Input, Options)
 %% default for a new DB cluster. This is especially important for parameters
 %% that are critical when creating the default database for a DB cluster,
 %% such as the character set for the default database defined by the
-%% `character_set_database` parameter. You can use the Parameter Groups
-%% option of the Amazon RDS console or the `DescribeDBClusterParameters`
+%% `character_set_database' parameter. You can use the Parameter Groups
+%% option of the Amazon RDS console or the `DescribeDBClusterParameters'
 %% action to verify that your DB cluster parameter group has been created or
 %% modified.
 %%
@@ -1679,23 +1679,23 @@ modify_d_b_cluster_parameter_group(Client, Input, Options)
 %% from, a manual DB cluster snapshot.
 %%
 %% To share a manual DB cluster snapshot with other AWS accounts, specify
-%% `restore` as the `AttributeName` and use the `ValuesToAdd` parameter to
+%% `restore' as the `AttributeName' and use the `ValuesToAdd' parameter to
 %% add a list of IDs of the AWS accounts that are authorized to restore the
-%% manual DB cluster snapshot. Use the value `all` to make the manual DB
+%% manual DB cluster snapshot. Use the value `all' to make the manual DB
 %% cluster snapshot public, which means that it can be copied or restored by
 %% all AWS accounts.
 %%
-%% Don't add the `all` value for any manual DB cluster snapshots that contain
+%% Don't add the `all' value for any manual DB cluster snapshots that contain
 %% private information that you don't want available to all AWS accounts.
 %%
 %% If a manual DB cluster snapshot is encrypted, it can be shared, but only
-%% by specifying a list of authorized AWS account IDs for the `ValuesToAdd`
-%% parameter. You can't use `all` as a value for that parameter in this case.
+%% by specifying a list of authorized AWS account IDs for the `ValuesToAdd'
+%% parameter. You can't use `all' as a value for that parameter in this case.
 %%
 %% To view which AWS accounts have access to copy or restore a manual DB
 %% cluster snapshot, or whether a manual DB cluster snapshot is public or
-%% private, use the `DescribeDBClusterSnapshotAttributes` API action. The
-%% accounts are returned as values for the `restore` attribute.
+%% private, use the `DescribeDBClusterSnapshotAttributes' API action. The
+%% accounts are returned as values for the `restore' attribute.
 %%
 %% This action only applies to Aurora DB clusters.
 modify_d_b_cluster_snapshot_attribute(Client, Input)
@@ -1710,7 +1710,7 @@ modify_d_b_cluster_snapshot_attribute(Client, Input, Options)
 %% You can change one or more database configuration parameters by specifying
 %% these parameters and the new values in the request. To learn what
 %% modifications you can make to your DB instance, call
-%% `DescribeValidDBInstanceModifications` before you call `ModifyDBInstance`.
+%% `DescribeValidDBInstanceModifications' before you call `ModifyDBInstance'.
 modify_d_b_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_d_b_instance(Client, Input, []).
@@ -1721,7 +1721,7 @@ modify_d_b_instance(Client, Input, Options)
 %% @doc Modifies the parameters of a DB parameter group.
 %%
 %% To modify more than one parameter, submit a list of the following:
-%% `ParameterName`, `ParameterValue`, and `ApplyMethod`. A maximum of 20
+%% `ParameterName', `ParameterValue', and `ApplyMethod'. A maximum of 20
 %% parameters can be modified in a single request.
 %%
 %% Changes to dynamic parameters are applied immediately. Changes to static
@@ -1735,7 +1735,7 @@ modify_d_b_instance(Client, Input, Options)
 %% new DB instance. This is especially important for parameters that are
 %% critical when creating the default database for a DB instance, such as the
 %% character set for the default database defined by the
-%% `character_set_database` parameter. You can use the Parameter Groups
+%% `character_set_database' parameter. You can use the Parameter Groups
 %% option of the Amazon RDS console or the DescribeDBParameters command to
 %% verify that your DB parameter group has been created or modified.
 modify_d_b_parameter_group(Client, Input)
@@ -1753,7 +1753,7 @@ modify_d_b_proxy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBProxy">>, Input, Options).
 
-%% @doc Modifies the properties of a `DBProxyTargetGroup`.
+%% @doc Modifies the properties of a `DBProxyTargetGroup'.
 modify_d_b_proxy_target_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_d_b_proxy_target_group(Client, Input, []).
@@ -1777,23 +1777,23 @@ modify_d_b_snapshot(Client, Input, Options)
 %% @doc Adds an attribute and values to, or removes an attribute and values
 %% from, a manual DB snapshot.
 %%
-%% To share a manual DB snapshot with other AWS accounts, specify `restore`
-%% as the `AttributeName` and use the `ValuesToAdd` parameter to add a list
+%% To share a manual DB snapshot with other AWS accounts, specify `restore'
+%% as the `AttributeName' and use the `ValuesToAdd' parameter to add a list
 %% of IDs of the AWS accounts that are authorized to restore the manual DB
-%% snapshot. Uses the value `all` to make the manual DB snapshot public,
+%% snapshot. Uses the value `all' to make the manual DB snapshot public,
 %% which means it can be copied or restored by all AWS accounts.
 %%
-%% Don't add the `all` value for any manual DB snapshots that contain private
+%% Don't add the `all' value for any manual DB snapshots that contain private
 %% information that you don't want available to all AWS accounts.
 %%
 %% If the manual DB snapshot is encrypted, it can be shared, but only by
-%% specifying a list of authorized AWS account IDs for the `ValuesToAdd`
-%% parameter. You can't use `all` as a value for that parameter in this case.
+%% specifying a list of authorized AWS account IDs for the `ValuesToAdd'
+%% parameter. You can't use `all' as a value for that parameter in this case.
 %%
 %% To view which AWS accounts have access to copy or restore a manual DB
 %% snapshot, or whether a manual DB snapshot public or private, use the
-%% `DescribeDBSnapshotAttributes` API action. The accounts are returned as
-%% values for the `restore` attribute.
+%% `DescribeDBSnapshotAttributes' API action. The accounts are returned as
+%% values for the `restore' attribute.
 modify_d_b_snapshot_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_d_b_snapshot_attribute(Client, Input, []).
@@ -1816,12 +1816,12 @@ modify_d_b_subnet_group(Client, Input, Options)
 %%
 %% You can't modify the source identifiers using this call. To change source
 %% identifiers for a subscription, use the
-%% `AddSourceIdentifierToSubscription` and
-%% `RemoveSourceIdentifierFromSubscription` calls.
+%% `AddSourceIdentifierToSubscription' and
+%% `RemoveSourceIdentifierFromSubscription' calls.
 %%
 %% You can see a list of the event categories for a given source type
-%% (`SourceType`) in Events in the Amazon RDS User Guide or by using the
-%% `DescribeEventCategories` operation.
+%% (`SourceType') in Events in the Amazon RDS User Guide or by using the
+%% `DescribeEventCategories' operation.
 modify_event_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_event_subscription(Client, Input, []).
@@ -1858,7 +1858,7 @@ modify_option_group(Client, Input, Options)
 %% since the previous backup. If you plan to promote a read replica to a
 %% standalone instance, we recommend that you enable backups and complete at
 %% least one backup prior to promotion. In addition, a read replica cannot be
-%% promoted to a standalone instance when it is in the `backing-up` status.
+%% promoted to a standalone instance when it is in the `backing-up' status.
 %% If you have enabled backups on your read replica, configure the automated
 %% backup window so that daily backups do not interfere with read replica
 %% promotion.
@@ -1909,8 +1909,8 @@ reboot_d_b_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RebootDBInstance">>, Input, Options).
 
-%% @doc Associate one or more `DBProxyTarget` data structures with a
-%% `DBProxyTargetGroup`.
+%% @doc Associate one or more `DBProxyTarget' data structures with a
+%% `DBProxyTargetGroup'.
 register_d_b_proxy_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_d_b_proxy_targets(Client, Input, []).
@@ -1980,14 +1980,14 @@ remove_tags_from_resource(Client, Input, Options)
 %% default value.
 %%
 %% To reset specific parameters submit a list of the following:
-%% `ParameterName` and `ApplyMethod`. To reset the entire DB cluster
-%% parameter group, specify the `DBClusterParameterGroupName` and
-%% `ResetAllParameters` parameters.
+%% `ParameterName' and `ApplyMethod'. To reset the entire DB cluster
+%% parameter group, specify the `DBClusterParameterGroupName' and
+%% `ResetAllParameters' parameters.
 %%
 %% When resetting the entire group, dynamic parameters are updated
-%% immediately and static parameters are set to `pending-reboot` to take
-%% effect on the next DB instance restart or `RebootDBInstance` request. You
-%% must call `RebootDBInstance` for every DB instance in your DB cluster that
+%% immediately and static parameters are set to `pending-reboot' to take
+%% effect on the next DB instance restart or `RebootDBInstance' request. You
+%% must call `RebootDBInstance' for every DB instance in your DB cluster that
 %% you want the updated static parameter to apply to.
 %%
 %% For more information on Amazon Aurora, see What Is Amazon Aurora? in the
@@ -2005,11 +2005,11 @@ reset_d_b_cluster_parameter_group(Client, Input, Options)
 %% default value.
 %%
 %% To reset specific parameters, provide a list of the following:
-%% `ParameterName` and `ApplyMethod`. To reset the entire DB parameter group,
-%% specify the `DBParameterGroup` name and `ResetAllParameters` parameters.
+%% `ParameterName' and `ApplyMethod'. To reset the entire DB parameter group,
+%% specify the `DBParameterGroup' name and `ResetAllParameters' parameters.
 %% When resetting the entire group, dynamic parameters are updated
-%% immediately and static parameters are set to `pending-reboot` to take
-%% effect on the next DB instance restart or `RebootDBInstance` request.
+%% immediately and static parameters are set to `pending-reboot' to take
+%% effect on the next DB instance restart or `RebootDBInstance' request.
 reset_d_b_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_d_b_parameter_group(Client, Input, []).
@@ -2026,10 +2026,10 @@ reset_d_b_parameter_group(Client, Input, Options)
 %% Aurora User Guide.
 %%
 %% This action only restores the DB cluster, not the DB instances for that DB
-%% cluster. You must invoke the `CreateDBInstance` action to create DB
+%% cluster. You must invoke the `CreateDBInstance' action to create DB
 %% instances for the restored DB cluster, specifying the identifier of the
-%% restored DB cluster in `DBClusterIdentifier`. You can create DB instances
-%% only after the `RestoreDBClusterFromS3` action has completed and the DB
+%% restored DB cluster in `DBClusterIdentifier'. You can create DB instances
+%% only after the `RestoreDBClusterFromS3' action has completed and the DB
 %% cluster is available.
 %%
 %% For more information on Amazon Aurora, see What Is Amazon Aurora? in the
@@ -2053,10 +2053,10 @@ restore_d_b_cluster_from_s3(Client, Input, Options)
 %% is associated with the default security group.
 %%
 %% This action only restores the DB cluster, not the DB instances for that DB
-%% cluster. You must invoke the `CreateDBInstance` action to create DB
+%% cluster. You must invoke the `CreateDBInstance' action to create DB
 %% instances for the restored DB cluster, specifying the identifier of the
-%% restored DB cluster in `DBClusterIdentifier`. You can create DB instances
-%% only after the `RestoreDBClusterFromSnapshot` action has completed and the
+%% restored DB cluster in `DBClusterIdentifier'. You can create DB instances
+%% only after the `RestoreDBClusterFromSnapshot' action has completed and the
 %% DB cluster is available.
 %%
 %% For more information on Amazon Aurora, see What Is Amazon Aurora? in the
@@ -2072,17 +2072,17 @@ restore_d_b_cluster_from_snapshot(Client, Input, Options)
 
 %% @doc Restores a DB cluster to an arbitrary point in time.
 %%
-%% Users can restore to any point in time before `LatestRestorableTime` for
-%% up to `BackupRetentionPeriod` days. The target DB cluster is created from
+%% Users can restore to any point in time before `LatestRestorableTime' for
+%% up to `BackupRetentionPeriod' days. The target DB cluster is created from
 %% the source DB cluster with the same configuration as the original DB
 %% cluster, except that the new DB cluster is created with the default DB
 %% security group.
 %%
 %% This action only restores the DB cluster, not the DB instances for that DB
-%% cluster. You must invoke the `CreateDBInstance` action to create DB
+%% cluster. You must invoke the `CreateDBInstance' action to create DB
 %% instances for the restored DB cluster, specifying the identifier of the
-%% restored DB cluster in `DBClusterIdentifier`. You can create DB instances
-%% only after the `RestoreDBClusterToPointInTime` action has completed and
+%% restored DB cluster in `DBClusterIdentifier'. You can create DB instances
+%% only after the `RestoreDBClusterToPointInTime' action has completed and
 %% the DB cluster is available.
 %%
 %% For more information on Amazon Aurora, see What Is Amazon Aurora? in the
@@ -2117,10 +2117,10 @@ restore_d_b_cluster_to_point_in_time(Client, Input, Options)
 %% snapshot.
 %%
 %% If you are restoring from a shared manual DB snapshot, the
-%% `DBSnapshotIdentifier` must be the ARN of the shared DB snapshot.
+%% `DBSnapshotIdentifier' must be the ARN of the shared DB snapshot.
 %%
 %% This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
-%% Aurora, use `RestoreDBClusterFromSnapshot`.
+%% Aurora, use `RestoreDBClusterFromSnapshot'.
 restore_d_b_instance_from_d_b_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_d_b_instance_from_d_b_snapshot(Client, Input, []).
@@ -2158,7 +2158,7 @@ restore_d_b_instance_from_s3(Client, Input, Options)
 %% mirrored deployment and not a single-AZ deployment.
 %%
 %% This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
-%% Aurora, use `RestoreDBClusterToPointInTime`.
+%% Aurora, use `RestoreDBClusterToPointInTime'.
 restore_d_b_instance_to_point_in_time(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_d_b_instance_to_point_in_time(Client, Input, []).
@@ -2213,7 +2213,7 @@ start_d_b_cluster(Client, Input, Options)
 %% Previously Stopped in the Amazon RDS User Guide.
 %%
 %% This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
-%% Aurora DB clusters, use `StartDBCluster` instead.
+%% Aurora DB clusters, use `StartDBCluster' instead.
 start_d_b_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_d_b_instance(Client, Input, []).
@@ -2232,8 +2232,8 @@ start_export_task(Client, Input, Options)
     request(Client, <<"StartExportTask">>, Input, Options).
 
 %% @doc Stops a database activity stream that was started using the AWS
-%% console, the `start-activity-stream` AWS CLI command, or the
-%% `StartActivityStream` action.
+%% console, the `start-activity-stream' AWS CLI command, or the
+%% `StartActivityStream' action.
 %%
 %% For more information, see Database Activity Streams in the Amazon Aurora
 %% User Guide.
@@ -2272,7 +2272,7 @@ stop_d_b_cluster(Client, Input, Options)
 %% in the Amazon RDS User Guide.
 %%
 %% This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
-%% Aurora clusters, use `StopDBCluster` instead.
+%% Aurora clusters, use `StopDBCluster' instead.
 stop_d_b_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_d_b_instance(Client, Input, []).

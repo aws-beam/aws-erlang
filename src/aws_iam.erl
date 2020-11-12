@@ -324,7 +324,7 @@ add_client_i_d_to_open_i_d_connect_provider(Client, Input, Options)
 %% associate the instance profile, or you can stop your instance and then
 %% restart it.
 %%
-%% The caller of this API must be granted the `PassRole` permission on the
+%% The caller of this API must be granted the `PassRole' permission on the
 %% IAM role by a permissions policy.
 %%
 %% For more information about roles, go to Working with Roles. For more
@@ -347,7 +347,7 @@ add_user_to_group(Client, Input, Options)
 %% @doc Attaches the specified managed policy to the specified IAM group.
 %%
 %% You use this API to attach a managed policy to a group. To embed an inline
-%% policy in a group, use `PutGroupPolicy`.
+%% policy in a group, use `PutGroupPolicy'.
 %%
 %% For more information about policies, see Managed Policies and Inline
 %% Policies in the IAM User Guide.
@@ -364,11 +364,11 @@ attach_group_policy(Client, Input, Options)
 %% part of the role's permission (access) policy.
 %%
 %% You cannot use a managed policy as the role's trust policy. The role's
-%% trust policy is created at the same time as the role, using `CreateRole`.
-%% You can update a role's trust policy using `UpdateAssumeRolePolicy`.
+%% trust policy is created at the same time as the role, using `CreateRole'.
+%% You can update a role's trust policy using `UpdateAssumeRolePolicy'.
 %%
 %% Use this API to attach a managed policy to a role. To embed an inline
-%% policy in a role, use `PutRolePolicy`. For more information about
+%% policy in a role, use `PutRolePolicy'. For more information about
 %% policies, see Managed Policies and Inline Policies in the IAM User Guide.
 attach_role_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -380,7 +380,7 @@ attach_role_policy(Client, Input, Options)
 %% @doc Attaches the specified managed policy to the specified user.
 %%
 %% You use this API to attach a managed policy to a user. To embed an inline
-%% policy in a user, use `PutUserPolicy`.
+%% policy in a user, use `PutUserPolicy'.
 %%
 %% For more information about policies, see Managed Policies and Inline
 %% Policies in the IAM User Guide.
@@ -395,7 +395,7 @@ attach_user_policy(Client, Input, Options)
 %%
 %% The AWS account root user password is not affected by this operation.
 %%
-%% To change the password for a different user, see `UpdateLoginProfile`. For
+%% To change the password for a different user, see `UpdateLoginProfile'. For
 %% more information about modifying passwords, see Managing Passwords in the
 %% IAM User Guide.
 change_password(Client, Input)
@@ -408,7 +408,7 @@ change_password(Client, Input, Options)
 %% @doc Creates a new AWS secret access key and corresponding AWS access key
 %% ID for the specified user.
 %%
-%% The default status for new keys is `Active`.
+%% The default status for new keys is `Active'.
 %%
 %% If you do not specify a user name, IAM determines the user name implicitly
 %% based on the AWS access key ID signing the request. This operation works
@@ -501,7 +501,7 @@ create_login_profile(Client, Input, Options)
 %%
 %% The trust for the OIDC provider is derived from the IAM provider that this
 %% operation creates. Therefore, it is best to limit access to the
-%% `CreateOpenIDConnectProvider` operation to highly privileged users.
+%% `CreateOpenIDConnectProvider' operation to highly privileged users.
 create_open_i_d_connect_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_open_i_d_connect_provider(Client, Input, []).
@@ -511,7 +511,7 @@ create_open_i_d_connect_provider(Client, Input, Options)
 
 %% @doc Creates a new managed policy for your AWS account.
 %%
-%% This operation creates a policy version with a version identifier of `v1`
+%% This operation creates a policy version with a version identifier of `v1'
 %% and sets v1 as the policy's default version. For more information about
 %% policy versions, see Versioning for Managed Policies in the IAM User
 %% Guide.
@@ -529,7 +529,7 @@ create_policy(Client, Input, Options)
 %%
 %% To update a managed policy, you create a new policy version. A managed
 %% policy can have up to five versions. If the policy has five versions, you
-%% must delete an existing version using `DeletePolicyVersion` before you
+%% must delete an existing version using `DeletePolicyVersion' before you
 %% create a new version.
 %%
 %% Optionally, you can set the new version as the policy's default version.
@@ -616,7 +616,7 @@ create_service_linked_role(Client, Input, Options)
 %% The only supported service at this time is AWS CodeCommit.
 %%
 %% You can reset the password to a new service-generated value by calling
-%% `ResetServiceSpecificCredential`.
+%% `ResetServiceSpecificCredential'.
 %%
 %% For more information about service-specific credentials, see Using IAM
 %% with AWS CodeCommit: Git Credentials, SSH Keys, and AWS Access Keys in the
@@ -641,7 +641,7 @@ create_user(Client, Input, Options)
 
 %% @doc Creates a new virtual MFA device for the AWS account.
 %%
-%% After creating the virtual MFA, use `EnableMFADevice` to attach the MFA
+%% After creating the virtual MFA, use `EnableMFADevice' to attach the MFA
 %% device to an IAM user. For more information about creating and working
 %% with virtual MFA devices, go to Using a Virtual MFA Device in the IAM User
 %% Guide.
@@ -723,7 +723,7 @@ delete_group(Client, Input, Options)
 %% IAM group.
 %%
 %% A group can also have managed policies attached to it. To detach a managed
-%% policy from a group, use `DetachGroupPolicy`. For more information about
+%% policy from a group, use `DetachGroupPolicy'. For more information about
 %% policies, refer to Managed Policies and Inline Policies in the IAM User
 %% Guide.
 delete_group_policy(Client, Input)
@@ -758,7 +758,7 @@ delete_instance_profile(Client, Input, Options)
 %% through the command line interface or the API. To prevent all user access,
 %% you must also either make any access keys inactive or delete them. For
 %% more information about making keys inactive or deleting them, see
-%% `UpdateAccessKey` and `DeleteAccessKey`.
+%% `UpdateAccessKey' and `DeleteAccessKey'.
 delete_login_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_login_profile(Client, Input, []).
@@ -790,13 +790,13 @@ delete_open_i_d_connect_provider(Client, Input, Options)
 %% process for deleting a managed policy:
 %%
 %% <ul> <li> Detach the policy from all users, groups, and roles that the
-%% policy is attached to, using the `DetachUserPolicy`, `DetachGroupPolicy`,
-%% or `DetachRolePolicy` API operations. To list all the users, groups, and
-%% roles that a policy is attached to, use `ListEntitiesForPolicy`.
+%% policy is attached to, using the `DetachUserPolicy', `DetachGroupPolicy',
+%% or `DetachRolePolicy' API operations. To list all the users, groups, and
+%% roles that a policy is attached to, use `ListEntitiesForPolicy'.
 %%
-%% </li> <li> Delete all versions of the policy using `DeletePolicyVersion`.
-%% To list the policy's versions, use `ListPolicyVersions`. You cannot use
-%% `DeletePolicyVersion` to delete the version that is marked as the default
+%% </li> <li> Delete all versions of the policy using `DeletePolicyVersion'.
+%% To list the policy's versions, use `ListPolicyVersions'. You cannot use
+%% `DeletePolicyVersion' to delete the version that is marked as the default
 %% version. You delete the policy's default version in the next step of the
 %% process.
 %%
@@ -815,9 +815,9 @@ delete_policy(Client, Input, Options)
 %% @doc Deletes the specified version from the specified managed policy.
 %%
 %% You cannot delete the default version from a policy using this API. To
-%% delete the default version from a policy, use `DeletePolicy`. To find out
+%% delete the default version from a policy, use `DeletePolicy'. To find out
 %% which version of a policy is marked as the default version, use
-%% `ListPolicyVersions`.
+%% `ListPolicyVersions'.
 %%
 %% For information about versions for managed policies, see Versioning for
 %% Managed Policies in the IAM User Guide.
@@ -860,7 +860,7 @@ delete_role_permissions_boundary(Client, Input, Options)
 %% IAM role.
 %%
 %% A role can also have managed policies attached to it. To detach a managed
-%% policy from a role, use `DetachRolePolicy`. For more information about
+%% policy from a role, use `DetachRolePolicy'. For more information about
 %% policies, refer to Managed Policies and Inline Policies in the IAM User
 %% Guide.
 delete_role_policy(Client, Input)
@@ -922,17 +922,17 @@ delete_server_certificate(Client, Input, Options)
     request(Client, <<"DeleteServerCertificate">>, Input, Options).
 
 %% @doc Submits a service-linked role deletion request and returns a
-%% `DeletionTaskId`, which you can use to check the status of the deletion.
+%% `DeletionTaskId', which you can use to check the status of the deletion.
 %%
 %% Before you call this operation, confirm that the role has no active
 %% sessions and that any resources used by the role in the linked service are
 %% deleted. If you call this operation more than once for the same
 %% service-linked role and an earlier deletion task is not complete, then the
-%% `DeletionTaskId` of the earlier request is returned.
+%% `DeletionTaskId' of the earlier request is returned.
 %%
 %% If you submit a deletion request for a service-linked role whose linked
 %% service is still accessing a resource, then the deletion task fails. If it
-%% fails, the `GetServiceLinkedRoleDeletionStatus` API operation returns the
+%% fails, the `GetServiceLinkedRoleDeletionStatus' API operation returns the
 %% reason for the failure, usually including the resources that must be
 %% deleted. To delete the service-linked role, you must first remove those
 %% resources from the linked service and then submit the deletion request
@@ -978,24 +978,24 @@ delete_signing_certificate(Client, Input, Options)
 %% or the deletion fails. For more information, see Deleting an IAM User.
 %% Before attempting to delete a user, remove the following items:
 %%
-%% <ul> <li> Password (`DeleteLoginProfile`)
+%% <ul> <li> Password (`DeleteLoginProfile')
 %%
-%% </li> <li> Access keys (`DeleteAccessKey`)
+%% </li> <li> Access keys (`DeleteAccessKey')
 %%
-%% </li> <li> Signing certificate (`DeleteSigningCertificate`)
+%% </li> <li> Signing certificate (`DeleteSigningCertificate')
 %%
-%% </li> <li> SSH public key (`DeleteSSHPublicKey`)
+%% </li> <li> SSH public key (`DeleteSSHPublicKey')
 %%
-%% </li> <li> Git credentials (`DeleteServiceSpecificCredential`)
+%% </li> <li> Git credentials (`DeleteServiceSpecificCredential')
 %%
 %% </li> <li> Multi-factor authentication (MFA) device
-%% (`DeactivateMFADevice`, `DeleteVirtualMFADevice`)
+%% (`DeactivateMFADevice', `DeleteVirtualMFADevice')
 %%
-%% </li> <li> Inline policies (`DeleteUserPolicy`)
+%% </li> <li> Inline policies (`DeleteUserPolicy')
 %%
-%% </li> <li> Attached managed policies (`DetachUserPolicy`)
+%% </li> <li> Attached managed policies (`DetachUserPolicy')
 %%
-%% </li> <li> Group memberships (`RemoveUserFromGroup`)
+%% </li> <li> Group memberships (`RemoveUserFromGroup')
 %%
 %% </li> </ul>
 delete_user(Client, Input)
@@ -1021,7 +1021,7 @@ delete_user_permissions_boundary(Client, Input, Options)
 %% IAM user.
 %%
 %% A user can also have managed policies attached to it. To detach a managed
-%% policy from a user, use `DetachUserPolicy`. For more information about
+%% policy from a user, use `DetachUserPolicy'. For more information about
 %% policies, refer to Managed Policies and Inline Policies in the IAM User
 %% Guide.
 delete_user_policy(Client, Input)
@@ -1034,7 +1034,7 @@ delete_user_policy(Client, Input, Options)
 %% @doc Deletes a virtual MFA device.
 %%
 %% You must deactivate a user's virtual MFA device before you can delete it.
-%% For information about deactivating MFA devices, see `DeactivateMFADevice`.
+%% For information about deactivating MFA devices, see `DeactivateMFADevice'.
 delete_virtual_m_f_a_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_virtual_m_f_a_device(Client, Input, []).
@@ -1045,7 +1045,7 @@ delete_virtual_m_f_a_device(Client, Input, Options)
 %% @doc Removes the specified managed policy from the specified IAM group.
 %%
 %% A group can also have inline policies embedded with it. To delete an
-%% inline policy, use the `DeleteGroupPolicy` API. For information about
+%% inline policy, use the `DeleteGroupPolicy' API. For information about
 %% policies, see Managed Policies and Inline Policies in the IAM User Guide.
 detach_group_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1057,7 +1057,7 @@ detach_group_policy(Client, Input, Options)
 %% @doc Removes the specified managed policy from the specified role.
 %%
 %% A role can also have inline policies embedded with it. To delete an inline
-%% policy, use the `DeleteRolePolicy` API. For information about policies,
+%% policy, use the `DeleteRolePolicy' API. For information about policies,
 %% see Managed Policies and Inline Policies in the IAM User Guide.
 detach_role_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1069,7 +1069,7 @@ detach_role_policy(Client, Input, Options)
 %% @doc Removes the specified managed policy from the specified user.
 %%
 %% A user can also have inline policies embedded with it. To delete an inline
-%% policy, use the `DeleteUserPolicy` API. For information about policies,
+%% policy, use the `DeleteUserPolicy' API. For information about policies,
 %% see Managed Policies and Inline Policies in the IAM User Guide.
 detach_user_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1141,11 +1141,11 @@ generate_credential_report(Client, Input, Options)
 %% access. For more information, see Logging IAM Events with CloudTrail in
 %% the IAM User Guide.
 %%
-%% This operation returns a `JobId`. Use this parameter in the `
-%% `GetOrganizationsAccessReport` ` operation to check the status of the
-%% report generation. To check the status of this request, use the `JobId`
-%% parameter in the ` `GetOrganizationsAccessReport` ` operation and test the
-%% `JobStatus` response parameter. When the job is complete, you can retrieve
+%% This operation returns a `JobId'. Use this parameter in the `
+%% `GetOrganizationsAccessReport' ' operation to check the status of the
+%% report generation. To check the status of this request, use the `JobId'
+%% parameter in the ` `GetOrganizationsAccessReport' ' operation and test the
+%% `JobStatus' response parameter. When the job is complete, you can retrieve
 %% the report.
 %%
 %% To generate a service last accessed data report for entities, specify an
@@ -1248,30 +1248,30 @@ generate_organizations_access_report(Client, Input, Options)
 %% whether they were successful or denied access. For more information,
 %% see Logging IAM Events with CloudTrail in the IAM User Guide.
 %%
-%% The `GenerateServiceLastAccessedDetails` operation returns a `JobId`. Use
+%% The `GenerateServiceLastAccessedDetails' operation returns a `JobId'. Use
 %% this parameter in the following operations to retrieve the following
 %% details from your report:
 %%
-%% <ul> <li> `GetServiceLastAccessedDetails` – Use this operation for users,
+%% <ul> <li> `GetServiceLastAccessedDetails' – Use this operation for users,
 %% groups, roles, or policies to list every AWS service that the resource
 %% could access using permissions policies. For each service, the response
 %% includes information about the most recent access attempt.
 %%
-%% The `JobId` returned by `GenerateServiceLastAccessedDetail` must be used
+%% The `JobId' returned by `GenerateServiceLastAccessedDetail' must be used
 %% by the same role within a session, or by the same user when used to call
-%% `GetServiceLastAccessedDetail`.
+%% `GetServiceLastAccessedDetail'.
 %%
-%% </li> <li> `GetServiceLastAccessedDetailsWithEntities` – Use this
+%% </li> <li> `GetServiceLastAccessedDetailsWithEntities' – Use this
 %% operation for groups and policies to list information about the associated
 %% entities (users or roles) that attempted to access a specific AWS service.
 %%
 %% </li> </ul> To check the status of the
-%% `GenerateServiceLastAccessedDetails` request, use the `JobId` parameter in
-%% the same operations and test the `JobStatus` response parameter.
+%% `GenerateServiceLastAccessedDetails' request, use the `JobId' parameter in
+%% the same operations and test the `JobStatus' response parameter.
 %%
 %% For additional information about the permissions policies that allow an
 %% identity (user, group, or role) to access specific services, use the
-%% `ListPoliciesGrantingServiceAccess` operation.
+%% `ListPoliciesGrantingServiceAccess' operation.
 %%
 %% Service last accessed data does not use other policy types when
 %% determining whether a resource could access a service. These other policy
@@ -1313,12 +1313,12 @@ get_access_key_last_used(Client, Input, Options)
 %%
 %% Policies returned by this API are URL-encoded compliant with RFC 3986. You
 %% can use a URL decoding method to convert the policy back to plain JSON
-%% text. For example, if you use Java, you can use the `decode` method of the
-%% `java.net.URLDecoder` utility class in the Java SDK. Other languages and
+%% text. For example, if you use Java, you can use the `decode' method of the
+%% `java.net.URLDecoder' utility class in the Java SDK. Other languages and
 %% SDKs provide similar functionality.
 %%
-%% You can optionally filter the results using the `Filter` parameter. You
-%% can paginate the results using the `MaxItems` and `Marker` parameters.
+%% You can optionally filter the results using the `Filter' parameter. You
+%% can paginate the results using the `MaxItems' and `Marker' parameters.
 get_account_authorization_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_account_authorization_details(Client, Input, []).
@@ -1354,13 +1354,13 @@ get_account_summary(Client, Input, Options)
 %%
 %% The policies are supplied as a list of one or more strings. To get the
 %% context keys from policies associated with an IAM user, group, or role,
-%% use `GetContextKeysForPrincipalPolicy`.
+%% use `GetContextKeysForPrincipalPolicy'.
 %%
 %% Context keys are variables maintained by AWS and its services that provide
 %% details about the context of an API query request. Context keys can be
 %% evaluated by testing against a value specified in an IAM policy. Use
-%% `GetContextKeysForCustomPolicy` to understand what key names and values
-%% you must supply when you call `SimulateCustomPolicy`. Note that all
+%% `GetContextKeysForCustomPolicy' to understand what key names and values
+%% you must supply when you call `SimulateCustomPolicy'. Note that all
 %% parameters are shown in unencoded form here for clarity but must be URL
 %% encoded to be included as a part of a real HTML request.
 get_context_keys_for_custom_policy(Client, Input)
@@ -1379,18 +1379,18 @@ get_context_keys_for_custom_policy(Client, Input, Options)
 %%
 %% You can optionally include a list of one or more additional policies,
 %% specified as strings. If you want to include only a list of policies by
-%% string, use `GetContextKeysForCustomPolicy` instead.
+%% string, use `GetContextKeysForCustomPolicy' instead.
 %%
 %% Note: This API discloses information about the permissions granted to
 %% other users. If you do not want users to see other user's permissions,
-%% then consider allowing them to use `GetContextKeysForCustomPolicy`
+%% then consider allowing them to use `GetContextKeysForCustomPolicy'
 %% instead.
 %%
 %% Context keys are variables maintained by AWS and its services that provide
 %% details about the context of an API query request. Context keys can be
 %% evaluated by testing against a value in an IAM policy. Use
-%% `GetContextKeysForPrincipalPolicy` to understand what key names and values
-%% you must supply when you call `SimulatePrincipalPolicy`.
+%% `GetContextKeysForPrincipalPolicy' to understand what key names and values
+%% you must supply when you call `SimulatePrincipalPolicy'.
 get_context_keys_for_principal_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_context_keys_for_principal_policy(Client, Input, []).
@@ -1411,7 +1411,7 @@ get_credential_report(Client, Input, Options)
 
 %% @doc Returns a list of IAM users that are in the specified IAM group.
 %%
-%% You can paginate the results using the `MaxItems` and `Marker` parameters.
+%% You can paginate the results using the `MaxItems' and `Marker' parameters.
 get_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_group(Client, Input, []).
@@ -1424,13 +1424,13 @@ get_group(Client, Input, Options)
 %%
 %% Policies returned by this API are URL-encoded compliant with RFC 3986. You
 %% can use a URL decoding method to convert the policy back to plain JSON
-%% text. For example, if you use Java, you can use the `decode` method of the
-%% `java.net.URLDecoder` utility class in the Java SDK. Other languages and
+%% text. For example, if you use Java, you can use the `decode' method of the
+%% `java.net.URLDecoder' utility class in the Java SDK. Other languages and
 %% SDKs provide similar functionality.
 %%
 %% An IAM group can also have managed policies attached to it. To retrieve a
-%% managed policy document that is attached to a group, use `GetPolicy` to
-%% determine the policy's default version, then use `GetPolicyVersion` to
+%% managed policy document that is attached to a group, use `GetPolicy' to
+%% determine the policy's default version, then use `GetPolicyVersion' to
 %% retrieve the policy document.
 %%
 %% For more information about policies, see Managed Policies and Inline
@@ -1458,7 +1458,7 @@ get_instance_profile(Client, Input, Options)
 %% IAM user.
 %%
 %% If the user has not been assigned a password, the operation returns a 404
-%% (`NoSuchEntity`) error.
+%% (`NoSuchEntity') error.
 get_login_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_login_profile(Client, Input, []).
@@ -1477,14 +1477,14 @@ get_open_i_d_connect_provider(Client, Input, Options)
 
 %% @doc Retrieves the service last accessed data report for AWS Organizations
 %% that was previously generated using the `
-%% `GenerateOrganizationsAccessReport` ` operation.
+%% `GenerateOrganizationsAccessReport' ' operation.
 %%
 %% This operation retrieves the status of your report job and the report
 %% contents.
 %%
 %% Depending on the parameters that you passed when you generated the report,
 %% the data returned could include different information. For details, see
-%% `GenerateOrganizationsAccessReport`.
+%% `GenerateOrganizationsAccessReport'.
 %%
 %% To call this operation, you must be signed in to the master account in
 %% your organization. SCPs must be enabled for your organization root. You
@@ -1511,14 +1511,14 @@ get_organizations_access_report(Client, Input, Options)
 %% and roles to which the policy is attached.
 %%
 %% To retrieve the list of the specific users, groups, and roles that the
-%% policy is attached to, use the `ListEntitiesForPolicy` API. This API
+%% policy is attached to, use the `ListEntitiesForPolicy' API. This API
 %% returns metadata about the policy. To retrieve the actual policy document
-%% for a specific version of the policy, use `GetPolicyVersion`.
+%% for a specific version of the policy, use `GetPolicyVersion'.
 %%
 %% This API retrieves information about managed policies. To retrieve
 %% information about an inline policy that is embedded with an IAM user,
-%% group, or role, use the `GetUserPolicy`, `GetGroupPolicy`, or
-%% `GetRolePolicy` API.
+%% group, or role, use the `GetUserPolicy', `GetGroupPolicy', or
+%% `GetRolePolicy' API.
 %%
 %% For more information about policies, see Managed Policies and Inline
 %% Policies in the IAM User Guide.
@@ -1534,15 +1534,15 @@ get_policy(Client, Input, Options)
 %%
 %% Policies returned by this API are URL-encoded compliant with RFC 3986. You
 %% can use a URL decoding method to convert the policy back to plain JSON
-%% text. For example, if you use Java, you can use the `decode` method of the
-%% `java.net.URLDecoder` utility class in the Java SDK. Other languages and
+%% text. For example, if you use Java, you can use the `decode' method of the
+%% `java.net.URLDecoder' utility class in the Java SDK. Other languages and
 %% SDKs provide similar functionality.
 %%
-%% To list the available versions for a policy, use `ListPolicyVersions`.
+%% To list the available versions for a policy, use `ListPolicyVersions'.
 %%
 %% This API retrieves information about managed policies. To retrieve
 %% information about an inline policy that is embedded in a user, group, or
-%% role, use the `GetUserPolicy`, `GetGroupPolicy`, or `GetRolePolicy` API.
+%% role, use the `GetUserPolicy', `GetGroupPolicy', or `GetRolePolicy' API.
 %%
 %% For more information about the types of policies, see Managed Policies and
 %% Inline Policies in the IAM User Guide.
@@ -1564,8 +1564,8 @@ get_policy_version(Client, Input, Options)
 %%
 %% Policies returned by this API are URL-encoded compliant with RFC 3986. You
 %% can use a URL decoding method to convert the policy back to plain JSON
-%% text. For example, if you use Java, you can use the `decode` method of the
-%% `java.net.URLDecoder` utility class in the Java SDK. Other languages and
+%% text. For example, if you use Java, you can use the `decode' method of the
+%% `java.net.URLDecoder' utility class in the Java SDK. Other languages and
 %% SDKs provide similar functionality.
 get_role(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1579,13 +1579,13 @@ get_role(Client, Input, Options)
 %%
 %% Policies returned by this API are URL-encoded compliant with RFC 3986. You
 %% can use a URL decoding method to convert the policy back to plain JSON
-%% text. For example, if you use Java, you can use the `decode` method of the
-%% `java.net.URLDecoder` utility class in the Java SDK. Other languages and
+%% text. For example, if you use Java, you can use the `decode' method of the
+%% `java.net.URLDecoder' utility class in the Java SDK. Other languages and
 %% SDKs provide similar functionality.
 %%
 %% An IAM role can also have managed policies attached to it. To retrieve a
-%% managed policy document that is attached to a role, use `GetPolicy` to
-%% determine the policy's default version, then use `GetPolicyVersion` to
+%% managed policy document that is attached to a role, use `GetPolicy' to
+%% determine the policy's default version, then use `GetPolicyVersion' to
 %% retrieve the policy document.
 %%
 %% For more information about policies, see Managed Policies and Inline
@@ -1641,9 +1641,9 @@ get_server_certificate(Client, Input, Options)
     request(Client, <<"GetServerCertificate">>, Input, Options).
 
 %% @doc Retrieves a service last accessed report that was created using the
-%% `GenerateServiceLastAccessedDetails` operation.
+%% `GenerateServiceLastAccessedDetails' operation.
 %%
-%% You can use the `JobId` parameter in `GetServiceLastAccessedDetails` to
+%% You can use the `JobId' parameter in `GetServiceLastAccessedDetails' to
 %% retrieve the status of your report job. When the report is complete, you
 %% can retrieve the generated report. The report includes a list of AWS
 %% services that the resource (user, group, role, or managed policy) can
@@ -1661,10 +1661,10 @@ get_server_certificate(Client, Input, Options)
 %% policies, the operation returns details about the most recent access
 %% attempt. If there was no attempt, the service is listed without details
 %% about the most recent attempt to access the service. If the operation
-%% fails, the `GetServiceLastAccessedDetails` operation returns the reason
+%% fails, the `GetServiceLastAccessedDetails' operation returns the reason
 %% that it failed.
 %%
-%% The `GetServiceLastAccessedDetails` operation returns a list of services.
+%% The `GetServiceLastAccessedDetails' operation returns a list of services.
 %% This list includes the number of entities that have attempted to access
 %% the service and the date and time of the last attempt. It also returns the
 %% ARN of the following entity, depending on the resource ARN that you used
@@ -1683,7 +1683,7 @@ get_server_certificate(Client, Input, Options)
 %%
 %% </li> </ul> By default, the list is sorted by service namespace.
 %%
-%% If you specified `ACTION_LEVEL` granularity when you generated the report,
+%% If you specified `ACTION_LEVEL' granularity when you generated the report,
 %% this operation returns service and action last accessed data. This
 %% includes the most recent access attempt for each tracked action within a
 %% service. Otherwise, this operation returns only service data.
@@ -1699,8 +1699,8 @@ get_service_last_accessed_details(Client, Input, Options)
     request(Client, <<"GetServiceLastAccessedDetails">>, Input, Options).
 
 %% @doc After you generate a group or policy report using the
-%% `GenerateServiceLastAccessedDetails` operation, you can use the `JobId`
-%% parameter in `GetServiceLastAccessedDetailsWithEntities`.
+%% `GenerateServiceLastAccessedDetails' operation, you can use the `JobId'
+%% parameter in `GetServiceLastAccessedDetailsWithEntities'.
 %%
 %% This operation retrieves the status of your report job and a list of
 %% entities that could have used group or policy permissions to access the
@@ -1717,7 +1717,7 @@ get_service_last_accessed_details(Client, Input, Options)
 %% </li> </ul> You can also use this operation for user or role reports to
 %% retrieve details about those entities.
 %%
-%% If the operation fails, the `GetServiceLastAccessedDetailsWithEntities`
+%% If the operation fails, the `GetServiceLastAccessedDetailsWithEntities'
 %% operation returns the reason that it failed.
 %%
 %% By default, the list of associated entities is sorted by date, with the
@@ -1731,9 +1731,9 @@ get_service_last_accessed_details_with_entities(Client, Input, Options)
 
 %% @doc Retrieves the status of your service-linked role deletion.
 %%
-%% After you use the `DeleteServiceLinkedRole` API operation to submit a
-%% service-linked role for deletion, you can use the `DeletionTaskId`
-%% parameter in `GetServiceLinkedRoleDeletionStatus` to check the status of
+%% After you use the `DeleteServiceLinkedRole' API operation to submit a
+%% service-linked role for deletion, you can use the `DeletionTaskId'
+%% parameter in `GetServiceLinkedRoleDeletionStatus' to check the status of
 %% the deletion. If the deletion fails, this operation returns the reason
 %% that it failed, if that information is returned by the service.
 get_service_linked_role_deletion_status(Client, Input)
@@ -1760,13 +1760,13 @@ get_user(Client, Input, Options)
 %%
 %% Policies returned by this API are URL-encoded compliant with RFC 3986. You
 %% can use a URL decoding method to convert the policy back to plain JSON
-%% text. For example, if you use Java, you can use the `decode` method of the
-%% `java.net.URLDecoder` utility class in the Java SDK. Other languages and
+%% text. For example, if you use Java, you can use the `decode' method of the
+%% `java.net.URLDecoder' utility class in the Java SDK. Other languages and
 %% SDKs provide similar functionality.
 %%
 %% An IAM user can also have managed policies attached to it. To retrieve a
-%% managed policy document that is attached to a user, use `GetPolicy` to
-%% determine the policy's default version. Then use `GetPolicyVersion` to
+%% managed policy document that is attached to a user, use `GetPolicy' to
+%% determine the policy's default version. Then use `GetPolicyVersion' to
 %% retrieve the policy document.
 %%
 %% For more information about policies, see Managed Policies and Inline
@@ -1784,9 +1784,9 @@ get_user_policy(Client, Input, Options)
 %% If there is none, the operation returns an empty list.
 %%
 %% Although each user is limited to a small number of keys, you can still
-%% paginate the results using the `MaxItems` and `Marker` parameters.
+%% paginate the results using the `MaxItems' and `Marker' parameters.
 %%
-%% If the `UserName` field is not specified, the user name is determined
+%% If the `UserName' field is not specified, the user name is determined
 %% implicitly based on the AWS access key ID used to sign the request. This
 %% operation works for access keys under the AWS account. Consequently, you
 %% can use this operation to manage AWS account root user credentials even if
@@ -1817,12 +1817,12 @@ list_account_aliases(Client, Input, Options)
 %% group.
 %%
 %% An IAM group can also have inline policies embedded with it. To list the
-%% inline policies for a group, use the `ListGroupPolicies` API. For
+%% inline policies for a group, use the `ListGroupPolicies' API. For
 %% information about policies, see Managed Policies and Inline Policies in
 %% the IAM User Guide.
 %%
-%% You can paginate the results using the `MaxItems` and `Marker` parameters.
-%% You can use the `PathPrefix` parameter to limit the list of policies to
+%% You can paginate the results using the `MaxItems' and `Marker' parameters.
+%% You can use the `PathPrefix' parameter to limit the list of policies to
 %% only those matching the specified path prefix. If there are no policies
 %% attached to the specified group (or none that match the specified path
 %% prefix), the operation returns an empty list.
@@ -1837,12 +1837,12 @@ list_attached_group_policies(Client, Input, Options)
 %% role.
 %%
 %% An IAM role can also have inline policies embedded with it. To list the
-%% inline policies for a role, use the `ListRolePolicies` API. For
+%% inline policies for a role, use the `ListRolePolicies' API. For
 %% information about policies, see Managed Policies and Inline Policies in
 %% the IAM User Guide.
 %%
-%% You can paginate the results using the `MaxItems` and `Marker` parameters.
-%% You can use the `PathPrefix` parameter to limit the list of policies to
+%% You can paginate the results using the `MaxItems' and `Marker' parameters.
+%% You can use the `PathPrefix' parameter to limit the list of policies to
 %% only those matching the specified path prefix. If there are no policies
 %% attached to the specified role (or none that match the specified path
 %% prefix), the operation returns an empty list.
@@ -1857,12 +1857,12 @@ list_attached_role_policies(Client, Input, Options)
 %% user.
 %%
 %% An IAM user can also have inline policies embedded with it. To list the
-%% inline policies for a user, use the `ListUserPolicies` API. For
+%% inline policies for a user, use the `ListUserPolicies' API. For
 %% information about policies, see Managed Policies and Inline Policies in
 %% the IAM User Guide.
 %%
-%% You can paginate the results using the `MaxItems` and `Marker` parameters.
-%% You can use the `PathPrefix` parameter to limit the list of policies to
+%% You can paginate the results using the `MaxItems' and `Marker' parameters.
+%% You can use the `PathPrefix' parameter to limit the list of policies to
 %% only those matching the specified path prefix. If there are no policies
 %% attached to the specified group (or none that match the specified path
 %% prefix), the operation returns an empty list.
@@ -1876,12 +1876,12 @@ list_attached_user_policies(Client, Input, Options)
 %% @doc Lists all IAM users, groups, and roles that the specified managed
 %% policy is attached to.
 %%
-%% You can use the optional `EntityFilter` parameter to limit the results to
+%% You can use the optional `EntityFilter' parameter to limit the results to
 %% a particular type of entity (users, groups, or roles). For example, to
 %% list only the roles that are attached to the specified policy, set
-%% `EntityFilter` to `Role`.
+%% `EntityFilter' to `Role'.
 %%
-%% You can paginate the results using the `MaxItems` and `Marker` parameters.
+%% You can paginate the results using the `MaxItems' and `Marker' parameters.
 list_entities_for_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_entities_for_policy(Client, Input, []).
@@ -1894,10 +1894,10 @@ list_entities_for_policy(Client, Input, Options)
 %%
 %% An IAM group can also have managed policies attached to it. To list the
 %% managed policies that are attached to a group, use
-%% `ListAttachedGroupPolicies`. For more information about policies, see
+%% `ListAttachedGroupPolicies'. For more information about policies, see
 %% Managed Policies and Inline Policies in the IAM User Guide.
 %%
-%% You can paginate the results using the `MaxItems` and `Marker` parameters.
+%% You can paginate the results using the `MaxItems' and `Marker' parameters.
 %% If there are no inline policies embedded with the specified group, the
 %% operation returns an empty list.
 list_group_policies(Client, Input)
@@ -1909,7 +1909,7 @@ list_group_policies(Client, Input, Options)
 
 %% @doc Lists the IAM groups that have the specified path prefix.
 %%
-%% You can paginate the results using the `MaxItems` and `Marker` parameters.
+%% You can paginate the results using the `MaxItems' and `Marker' parameters.
 list_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_groups(Client, Input, []).
@@ -1919,7 +1919,7 @@ list_groups(Client, Input, Options)
 
 %% @doc Lists the IAM groups that the specified IAM user belongs to.
 %%
-%% You can paginate the results using the `MaxItems` and `Marker` parameters.
+%% You can paginate the results using the `MaxItems' and `Marker' parameters.
 list_groups_for_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_groups_for_user(Client, Input, []).
@@ -1932,7 +1932,7 @@ list_groups_for_user(Client, Input, Options)
 %% If there are none, the operation returns an empty list. For more
 %% information about instance profiles, go to About Instance Profiles.
 %%
-%% You can paginate the results using the `MaxItems` and `Marker` parameters.
+%% You can paginate the results using the `MaxItems' and `Marker' parameters.
 list_instance_profiles(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_instance_profiles(Client, Input, []).
@@ -1946,7 +1946,7 @@ list_instance_profiles(Client, Input, Options)
 %% If there are none, the operation returns an empty list. For more
 %% information about instance profiles, go to About Instance Profiles.
 %%
-%% You can paginate the results using the `MaxItems` and `Marker` parameters.
+%% You can paginate the results using the `MaxItems' and `Marker' parameters.
 list_instance_profiles_for_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_instance_profiles_for_role(Client, Input, []).
@@ -1961,7 +1961,7 @@ list_instance_profiles_for_role(Client, Input, Options)
 %% user name, IAM determines the user name implicitly based on the AWS access
 %% key ID signing the request for this API.
 %%
-%% You can paginate the results using the `MaxItems` and `Marker` parameters.
+%% You can paginate the results using the `MaxItems' and `Marker' parameters.
 list_m_f_a_devices(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_m_f_a_devices(Client, Input, []).
@@ -1983,11 +1983,11 @@ list_open_i_d_connect_providers(Client, Input, Options)
 %% managed policies.
 %%
 %% You can filter the list of policies that is returned using the optional
-%% `OnlyAttached`, `Scope`, and `PathPrefix` parameters. For example, to list
-%% only the customer managed policies in your AWS account, set `Scope` to
-%% `Local`. To list only AWS managed policies, set `Scope` to `AWS`.
+%% `OnlyAttached', `Scope', and `PathPrefix' parameters. For example, to list
+%% only the customer managed policies in your AWS account, set `Scope' to
+%% `Local'. To list only AWS managed policies, set `Scope' to `AWS'.
 %%
-%% You can paginate the results using the `MaxItems` and `Marker` parameters.
+%% You can paginate the results using the `MaxItems' and `Marker' parameters.
 %%
 %% For more information about managed policies, see Managed Policies and
 %% Inline Policies in the IAM User Guide.
@@ -2031,8 +2031,8 @@ list_policies(Client, Input, Options)
 %%
 %% Policies that are attached to users and roles as permissions boundaries
 %% are not returned. To view which managed policy is currently used to set
-%% the permissions boundary for a user or role, use the `GetUser` or
-%% `GetRole` operations.
+%% the permissions boundary for a user or role, use the `GetUser' or
+%% `GetRole' operations.
 list_policies_granting_service_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_policies_granting_service_access(Client, Input, []).
@@ -2058,10 +2058,10 @@ list_policy_versions(Client, Input, Options)
 %%
 %% An IAM role can also have managed policies attached to it. To list the
 %% managed policies that are attached to a role, use
-%% `ListAttachedRolePolicies`. For more information about policies, see
+%% `ListAttachedRolePolicies'. For more information about policies, see
 %% Managed Policies and Inline Policies in the IAM User Guide.
 %%
-%% You can paginate the results using the `MaxItems` and `Marker` parameters.
+%% You can paginate the results using the `MaxItems' and `Marker' parameters.
 %% If there are no inline policies embedded with the specified role, the
 %% operation returns an empty list.
 list_role_policies(Client, Input)
@@ -2087,7 +2087,7 @@ list_role_tags(Client, Input, Options)
 %% If there are none, the operation returns an empty list. For more
 %% information about roles, go to Working with Roles.
 %%
-%% You can paginate the results using the `MaxItems` and `Marker` parameters.
+%% You can paginate the results using the `MaxItems' and `Marker' parameters.
 list_roles(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_roles(Client, Input, []).
@@ -2118,7 +2118,7 @@ list_s_a_m_l_providers(Client, Input, Options)
 %% CodeCommit User Guide.
 %%
 %% Although each user is limited to a small number of keys, you can still
-%% paginate the results using the `MaxItems` and `Marker` parameters.
+%% paginate the results using the `MaxItems' and `Marker' parameters.
 list_s_s_h_public_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_s_s_h_public_keys(Client, Input, []).
@@ -2131,7 +2131,7 @@ list_s_s_h_public_keys(Client, Input, Options)
 %%
 %% If none exist, the operation returns an empty list.
 %%
-%% You can paginate the results using the `MaxItems` and `Marker` parameters.
+%% You can paginate the results using the `MaxItems' and `Marker' parameters.
 %%
 %% For more information about working with server certificates, see Working
 %% with Server Certificates in the IAM User Guide. This topic also includes a
@@ -2165,10 +2165,10 @@ list_service_specific_credentials(Client, Input, Options)
 %% If none exists, the operation returns an empty list.
 %%
 %% Although each user is limited to a small number of signing certificates,
-%% you can still paginate the results using the `MaxItems` and `Marker`
+%% you can still paginate the results using the `MaxItems' and `Marker'
 %% parameters.
 %%
-%% If the `UserName` field is not specified, the user name is determined
+%% If the `UserName' field is not specified, the user name is determined
 %% implicitly based on the AWS access key ID used to sign the request for
 %% this API. This operation works for access keys under the AWS account.
 %% Consequently, you can use this operation to manage AWS account root user
@@ -2185,10 +2185,10 @@ list_signing_certificates(Client, Input, Options)
 %%
 %% An IAM user can also have managed policies attached to it. To list the
 %% managed policies that are attached to a user, use
-%% `ListAttachedUserPolicies`. For more information about policies, see
+%% `ListAttachedUserPolicies'. For more information about policies, see
 %% Managed Policies and Inline Policies in the IAM User Guide.
 %%
-%% You can paginate the results using the `MaxItems` and `Marker` parameters.
+%% You can paginate the results using the `MaxItems' and `Marker' parameters.
 %% If there are no inline policies embedded with the specified user, the
 %% operation returns an empty list.
 list_user_policies(Client, Input)
@@ -2214,7 +2214,7 @@ list_user_tags(Client, Input, Options)
 %% If no path prefix is specified, the operation returns all users in the AWS
 %% account. If there are none, the operation returns an empty list.
 %%
-%% You can paginate the results using the `MaxItems` and `Marker` parameters.
+%% You can paginate the results using the `MaxItems' and `Marker' parameters.
 list_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_users(Client, Input, []).
@@ -2226,10 +2226,10 @@ list_users(Client, Input, Options)
 %% assignment status.
 %%
 %% If you do not specify an assignment status, the operation returns a list
-%% of all virtual MFA devices. Assignment status can be `Assigned`,
-%% `Unassigned`, or `Any`.
+%% of all virtual MFA devices. Assignment status can be `Assigned',
+%% `Unassigned', or `Any'.
 %%
-%% You can paginate the results using the `MaxItems` and `Marker` parameters.
+%% You can paginate the results using the `MaxItems' and `Marker' parameters.
 list_virtual_m_f_a_devices(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_virtual_m_f_a_devices(Client, Input, []).
@@ -2241,15 +2241,15 @@ list_virtual_m_f_a_devices(Client, Input, Options)
 %% specified IAM group.
 %%
 %% A user can also have managed policies attached to it. To attach a managed
-%% policy to a group, use `AttachGroupPolicy`. To create a new managed
-%% policy, use `CreatePolicy`. For information about policies, see Managed
+%% policy to a group, use `AttachGroupPolicy'. To create a new managed
+%% policy, use `CreatePolicy'. For information about policies, see Managed
 %% Policies and Inline Policies in the IAM User Guide.
 %%
 %% For information about limits on the number of inline policies that you can
 %% embed in a group, see Limitations on IAM Entities in the IAM User Guide.
 %%
 %% Because policy documents can be large, you should use POST rather than GET
-%% when calling `PutGroupPolicy`. For general information about using the
+%% when calling `PutGroupPolicy'. For general information about using the
 %% Query API with IAM, go to Making Query Requests in the IAM User Guide.
 put_group_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -2284,21 +2284,21 @@ put_role_permissions_boundary(Client, Input, Options)
 %%
 %% When you embed an inline policy in a role, the inline policy is used as
 %% part of the role's access (permissions) policy. The role's trust policy is
-%% created at the same time as the role, using `CreateRole`. You can update a
-%% role's trust policy using `UpdateAssumeRolePolicy`. For more information
+%% created at the same time as the role, using `CreateRole'. You can update a
+%% role's trust policy using `UpdateAssumeRolePolicy'. For more information
 %% about IAM roles, go to Using Roles to Delegate Permissions and Federate
 %% Identities.
 %%
 %% A role can also have a managed policy attached to it. To attach a managed
-%% policy to a role, use `AttachRolePolicy`. To create a new managed policy,
-%% use `CreatePolicy`. For information about policies, see Managed Policies
+%% policy to a role, use `AttachRolePolicy'. To create a new managed policy,
+%% use `CreatePolicy'. For information about policies, see Managed Policies
 %% and Inline Policies in the IAM User Guide.
 %%
 %% For information about limits on the number of inline policies that you can
 %% embed with a role, see Limitations on IAM Entities in the IAM User Guide.
 %%
 %% Because policy documents can be large, you should use POST rather than GET
-%% when calling `PutRolePolicy`. For general information about using the
+%% when calling `PutRolePolicy'. For general information about using the
 %% Query API with IAM, go to Making Query Requests in the IAM User Guide.
 put_role_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -2330,15 +2330,15 @@ put_user_permissions_boundary(Client, Input, Options)
 %% specified IAM user.
 %%
 %% An IAM user can also have a managed policy attached to it. To attach a
-%% managed policy to a user, use `AttachUserPolicy`. To create a new managed
-%% policy, use `CreatePolicy`. For information about policies, see Managed
+%% managed policy to a user, use `AttachUserPolicy'. To create a new managed
+%% policy, use `CreatePolicy'. For information about policies, see Managed
 %% Policies and Inline Policies in the IAM User Guide.
 %%
 %% For information about limits on the number of inline policies that you can
 %% embed in a user, see Limitations on IAM Entities in the IAM User Guide.
 %%
 %% Because policy documents can be large, you should use POST rather than GET
-%% when calling `PutUserPolicy`. For general information about using the
+%% when calling `PutUserPolicy'. For general information about using the
 %% Query API with IAM, go to Making Query Requests in the IAM User Guide.
 put_user_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -2414,7 +2414,7 @@ resync_m_f_a_device(Client, Input, Options)
 %%
 %% This operation affects all users, groups, and roles that the policy is
 %% attached to. To list the users, groups, and roles that the policy is
-%% attached to, use the `ListEntitiesForPolicy` API.
+%% attached to, use the `ListEntitiesForPolicy' API.
 %%
 %% For information about managed policies, see Managed Policies and Inline
 %% Policies in the IAM User Guide.
@@ -2430,7 +2430,7 @@ set_default_policy_version(Client, Input, Options)
 %%
 %% By default, AWS Security Token Service (STS) is available as a global
 %% service, and all STS requests go to a single endpoint at
-%% `https://sts.amazonaws.com`. AWS recommends using Regional STS endpoints
+%% `https://sts.amazonaws.com'. AWS recommends using Regional STS endpoints
 %% to reduce latency, build in redundancy, and increase session token
 %% availability. For information about Regional endpoints for STS, see AWS
 %% Regions and Endpoints in the AWS General Reference.
@@ -2446,8 +2446,8 @@ set_default_policy_version(Client, Input, Options)
 %% Guide.
 %%
 %% To view the current session token version, see the
-%% `GlobalEndpointTokenVersion` entry in the response of the
-%% `GetAccountSummary` operation.
+%% `GlobalEndpointTokenVersion' entry in the response of the
+%% `GetAccountSummary' operation.
 set_security_token_service_preferences(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_security_token_service_preferences(Client, Input, []).
@@ -2466,15 +2466,15 @@ set_security_token_service_preferences(Client, Input, Options)
 %% operations.
 %%
 %% If you want to simulate existing policies that are attached to an IAM
-%% user, group, or role, use `SimulatePrincipalPolicy` instead.
+%% user, group, or role, use `SimulatePrincipalPolicy' instead.
 %%
 %% Context keys are variables that are maintained by AWS and its services and
 %% which provide details about the context of an API query request. You can
-%% use the `Condition` element of an IAM policy to evaluate context keys. To
+%% use the `Condition' element of an IAM policy to evaluate context keys. To
 %% get the list of context keys that the policies require for correct
-%% simulation, use `GetContextKeysForCustomPolicy`.
+%% simulation, use `GetContextKeysForCustomPolicy'.
 %%
-%% If the output is long, you can use `MaxItems` and `Marker` parameters to
+%% If the output is long, you can use `MaxItems' and `Marker' parameters to
 %% paginate the results.
 simulate_custom_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -2493,7 +2493,7 @@ simulate_custom_policy(Client, Input, Options)
 %%
 %% You can optionally include a list of one or more additional policies
 %% specified as strings to include in the simulation. If you want to simulate
-%% only policies specified as strings, use `SimulateCustomPolicy` instead.
+%% only policies specified as strings, use `SimulateCustomPolicy' instead.
 %%
 %% You can also optionally include one resource-based policy to be evaluated
 %% with each of the resources included in the simulation.
@@ -2504,15 +2504,15 @@ simulate_custom_policy(Client, Input, Options)
 %%
 %% Note: This API discloses information about the permissions granted to
 %% other users. If you do not want users to see other user's permissions,
-%% then consider allowing them to use `SimulateCustomPolicy` instead.
+%% then consider allowing them to use `SimulateCustomPolicy' instead.
 %%
 %% Context keys are variables maintained by AWS and its services that provide
 %% details about the context of an API query request. You can use the
-%% `Condition` element of an IAM policy to evaluate context keys. To get the
+%% `Condition' element of an IAM policy to evaluate context keys. To get the
 %% list of context keys that the policies require for correct simulation, use
-%% `GetContextKeysForPrincipalPolicy`.
+%% `GetContextKeysForPrincipalPolicy'.
 %%
-%% If the output is long, you can use the `MaxItems` and `Marker` parameters
+%% If the output is long, you can use the `MaxItems' and `Marker' parameters
 %% to paginate the results.
 simulate_principal_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -2550,7 +2550,7 @@ simulate_principal_policy(Client, Input, Options)
 %% exceed the allowed number of tags per role. In either case, the entire
 %% request fails and no tags are added to the role.
 %%
-%% AWS always interprets the tag `Value` as a single string. If you need to
+%% AWS always interprets the tag `Value' as a single string. If you need to
 %% store an array, you can store comma-separated values in the string.
 %% However, you must interpret the value in your code.
 %%
@@ -2591,7 +2591,7 @@ tag_role(Client, Input, Options)
 %% exceed the allowed number of tags per role. In either case, the entire
 %% request fails and no tags are added to the role.
 %%
-%% AWS always interprets the tag `Value` as a single string. If you need to
+%% AWS always interprets the tag `Value' as a single string. If you need to
 %% store an array, you can store comma-separated values in the string.
 %% However, you must interpret the value in your code.
 %%
@@ -2632,7 +2632,7 @@ untag_user(Client, Input, Options)
 %% This operation can be used to disable a user's key as part of a key
 %% rotation workflow.
 %%
-%% If the `UserName` is not specified, the user name is determined implicitly
+%% If the `UserName' is not specified, the user name is determined implicitly
 %% based on the AWS access key ID used to sign the request. This operation
 %% works for access keys under the AWS account. Consequently, you can use
 %% this operation to manage AWS account root user credentials even if the AWS
@@ -2685,9 +2685,9 @@ update_assume_role_policy(Client, Input, Options)
 %%
 %% The person making the request (the principal), must have permission to
 %% change the role group with the old name and the new name. For example, to
-%% change the group named `Managers` to `MGRs`, the principal must have a
+%% change the group named `Managers' to `MGRs', the principal must have a
 %% policy that allows them to update both groups. If the principal has
-%% permission to update the `Managers` group, but not the `MGRs` group, then
+%% permission to update the `Managers' group, but not the `MGRs' group, then
 %% the update fails. For more information about permissions, see Access
 %% Management.
 update_group(Client, Input)
@@ -2699,7 +2699,7 @@ update_group(Client, Input, Options)
 
 %% @doc Changes the password for the specified IAM user.
 %%
-%% IAM users can change their own passwords by calling `ChangePassword`. For
+%% IAM users can change their own passwords by calling `ChangePassword'. For
 %% more information about modifying passwords, see Managing Passwords in the
 %% IAM User Guide.
 update_login_profile(Client, Input)
@@ -2724,7 +2724,7 @@ update_login_profile(Client, Input, Options)
 %%
 %% Trust for the OIDC provider is derived from the provider's certificate and
 %% is validated by the thumbprint. Therefore, it is best to limit access to
-%% the `UpdateOpenIDConnectProviderThumbprint` operation to highly privileged
+%% the `UpdateOpenIDConnectProviderThumbprint' operation to highly privileged
 %% users.
 update_open_i_d_connect_provider_thumbprint(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -2742,10 +2742,10 @@ update_role(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRole">>, Input, Options).
 
-%% @doc Use `UpdateRole` instead.
+%% @doc Use `UpdateRole' instead.
 %%
 %% Modifies only the description of a role. This operation performs the same
-%% function as the `Description` parameter in the `UpdateRole` operation.
+%% function as the `Description' parameter in the `UpdateRole' operation.
 update_role_description(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_role_description(Client, Input, []).
@@ -2797,10 +2797,10 @@ update_s_s_h_public_key(Client, Input, Options)
 %%
 %% The person making the request (the principal), must have permission to
 %% change the server certificate with the old name and the new name. For
-%% example, to change the certificate named `ProductionCert` to `ProdCert`,
+%% example, to change the certificate named `ProductionCert' to `ProdCert',
 %% the principal must have a policy that allows them to update both
 %% certificates. If the principal has permission to update the
-%% `ProductionCert` group, but not the `ProdCert` certificate, then the
+%% `ProductionCert' group, but not the `ProdCert' certificate, then the
 %% update fails. For more information about permissions, see Access
 %% Management in the IAM User Guide.
 update_server_certificate(Client, Input)
@@ -2810,8 +2810,8 @@ update_server_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateServerCertificate">>, Input, Options).
 
-%% @doc Sets the status of a service-specific credential to `Active` or
-%% `Inactive`.
+%% @doc Sets the status of a service-specific credential to `Active' or
+%% `Inactive'.
 %%
 %% Service-specific credentials that are inactive cannot be used for
 %% authentication to the service. This operation can be used to disable a
@@ -2830,7 +2830,7 @@ update_service_specific_credential(Client, Input, Options)
 %% This operation can be used to disable an IAM user's signing certificate as
 %% part of a certificate rotation work flow.
 %%
-%% If the `UserName` field is not specified, the user name is determined
+%% If the `UserName' field is not specified, the user name is determined
 %% implicitly based on the AWS access key ID used to sign the request. This
 %% operation works for access keys under the AWS account. Consequently, you
 %% can use this operation to manage AWS account root user credentials even if
@@ -2896,7 +2896,7 @@ upload_s_s_h_public_key(Client, Input, Options)
 %%
 %% Because the body of the public key certificate, private key, and the
 %% certificate chain can be large, you should use POST rather than GET when
-%% calling `UploadServerCertificate`. For information about setting up
+%% calling `UploadServerCertificate'. For information about setting up
 %% signatures and authorization through the API, go to Signing AWS API
 %% Requests in the AWS General Reference. For general information about using
 %% the Query API with IAM, go to Calling the API by Making HTTP Query
@@ -2913,16 +2913,16 @@ upload_server_certificate(Client, Input, Options)
 %%
 %% Some AWS services use X.509 signing certificates to validate requests that
 %% are signed with a corresponding private key. When you upload the
-%% certificate, its default status is `Active`.
+%% certificate, its default status is `Active'.
 %%
-%% If the `UserName` is not specified, the IAM user name is determined
+%% If the `UserName' is not specified, the IAM user name is determined
 %% implicitly based on the AWS access key ID used to sign the request. This
 %% operation works for access keys under the AWS account. Consequently, you
 %% can use this operation to manage AWS account root user credentials even if
 %% the AWS account has no associated users.
 %%
 %% Because the body of an X.509 certificate can be large, you should use POST
-%% rather than GET when calling `UploadSigningCertificate`. For information
+%% rather than GET when calling `UploadSigningCertificate'. For information
 %% about setting up signatures and authorization through the API, go to
 %% Signing AWS API Requests in the AWS General Reference. For general
 %% information about using the Query API with IAM, go to Making Query

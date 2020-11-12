@@ -20,7 +20,7 @@
 %% information, see <a
 %% href="https://docs.aws.amazon.com/codeguru/latest/profiler-ug/what-is-codeguru-profiler.html">What
 %% is Amazon CodeGuru Profiler</a> in the <i>Amazon CodeGuru Profiler User
-%% Guide</i>. </p> `</pre>
+%% Guide</i>. </p> '</pre>
 -module(aws_codeguruprofiler).
 
 -export([add_notification_channels/3,
@@ -116,7 +116,7 @@ batch_get_frame_metric_data(Client, ProfilingGroupName, Input0, Options) ->
 %% @doc Used by profiler agents to report their current state and to receive
 %% remote configuration updates.
 %%
-%% For example, `ConfigureAgent` can be used to tell and agent whether to
+%% For example, `ConfigureAgent' can be used to tell and agent whether to
 %% profile or not and for how long to return profiling data.
 configure_agent(Client, ProfilingGroupName, Input) ->
     configure_agent(Client, ProfilingGroupName, Input, []).
@@ -166,7 +166,7 @@ delete_profiling_group(Client, ProfilingGroupName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a `ProfilingGroupDescription` object that contains
+%% @doc Returns a `ProfilingGroupDescription' object that contains
 %% information about the requested profiling group.
 describe_profiling_group(Client, ProfilingGroupName)
   when is_map(Client) ->
@@ -182,7 +182,7 @@ describe_profiling_group(Client, ProfilingGroupName, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of `FindingsReportSummary` objects that contain
+%% @doc Returns a list of `FindingsReportSummary' objects that contain
 %% analysis results for all profiling groups in your AWS account.
 get_findings_report_account_summary(Client, DailyReportsOnly, MaxResults, NextToken)
   when is_map(Client) ->
@@ -274,7 +274,7 @@ get_policy(Client, ProfilingGroupName, Options)
 %% profiles for a smaller time range are returned. For example, if the
 %% requested time range is from 00:00 to 00:20, and the existing aggregated
 %% profiles are from 00:15 and 00:25, then the aggregated profiles from 00:15
-%% to 00:20 are returned. </p> </li> </ol> `</pre>
+%% to 00:20 are returned. </p> </li> </ol> '</pre>
 get_profile(Client, ProfilingGroupName, EndTime, MaxDepth, Period, StartTime, Accept)
   when is_map(Client) ->
     get_profile(Client, ProfilingGroupName, EndTime, MaxDepth, Period, StartTime, Accept, []).
@@ -317,10 +317,10 @@ get_profile(Client, ProfilingGroupName, EndTime, MaxDepth, Period, StartTime, Ac
         Result
     end.
 
-%% @doc Returns a list of `Recommendation` objects that contain
+%% @doc Returns a list of `Recommendation' objects that contain
 %% recommendations for a profiling group for a given time period.
 %%
-%% A list of `Anomaly` objects that contains details about anomalies detected
+%% A list of `Anomaly' objects that contains details about anomalies detected
 %% in the profiling group for the same time period is also returned.
 get_recommendations(Client, ProfilingGroupName, EndTime, Locale, StartTime)
   when is_map(Client) ->
@@ -393,7 +393,7 @@ list_profile_times(Client, ProfilingGroupName, EndTime, MaxResults, NextToken, O
 
 %% @doc Returns a list of profiling groups.
 %%
-%% The profiling groups are returned as `ProfilingGroupDescription` objects.
+%% The profiling groups are returned as `ProfilingGroupDescription' objects.
 list_profiling_groups(Client, IncludeDescription, MaxResults, NextToken)
   when is_map(Client) ->
     list_profiling_groups(Client, IncludeDescription, MaxResults, NextToken, []).
@@ -432,7 +432,7 @@ list_tags_for_resource(Client, ResourceArn, Options)
 %% @doc Submits profiling data to an aggregated profile of a profiling group.
 %%
 %% To get an aggregated profile that is created with this profiling data, use
-%% `GetProfile` .
+%% `GetProfile' .
 post_agent_profile(Client, ProfilingGroupName, Input) ->
     post_agent_profile(Client, ProfilingGroupName, Input, []).
 post_agent_profile(Client, ProfilingGroupName, Input0, Options) ->
@@ -456,7 +456,7 @@ post_agent_profile(Client, ProfilingGroupName, Input0, Options) ->
 %%
 %% If a profiling group doesn't have a resource-based policy, one is created
 %% for it using the permissions in the action group and the roles and users
-%% in the `principals` parameter.
+%% in the `principals' parameter.
 %%
 %% <pre>` <p> The one supported action group that can be added is
 %% <code>agentPermission</code> which grants <code>ConfigureAgent</code> and
@@ -473,7 +473,7 @@ post_agent_profile(Client, ProfilingGroupName, Input0, Options) ->
 %% Subsequent calls must provide a <code>revisionId</code> to specify which
 %% revision of the resource-based policy to add the permissions to. </p> <p>
 %% The response contains the profiling group's JSON-formatted resource
-%% policy. </p> `</pre>
+%% policy. </p> '</pre>
 put_permission(Client, ActionGroup, ProfilingGroupName, Input) ->
     put_permission(Client, ActionGroup, ProfilingGroupName, Input, []).
 put_permission(Client, ActionGroup, ProfilingGroupName, Input0, Options) ->
@@ -508,11 +508,11 @@ remove_notification_channel(Client, ChannelId, ProfilingGroupName, Input0, Optio
 %% @doc Removes permissions from a profiling group's resource-based policy
 %% that are provided using an action group.
 %%
-%% The one supported action group that can be removed is `agentPermission`
-%% which grants `ConfigureAgent` and `PostAgent` permissions. For more
+%% The one supported action group that can be removed is `agentPermission'
+%% which grants `ConfigureAgent' and `PostAgent' permissions. For more
 %% information, see Resource-based policies in CodeGuru Profiler in the
-%% Amazon CodeGuru Profiler User Guide, `ConfigureAgent` , and
-%% `PostAgentProfile` .
+%% Amazon CodeGuru Profiler User Guide, `ConfigureAgent' , and
+%% `PostAgentProfile' .
 remove_permission(Client, ActionGroup, ProfilingGroupName, Input) ->
     remove_permission(Client, ActionGroup, ProfilingGroupName, Input, []).
 remove_permission(Client, ActionGroup, ProfilingGroupName, Input0, Options) ->

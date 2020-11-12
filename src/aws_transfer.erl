@@ -66,7 +66,7 @@
 %% transfer protocol in AWS.
 %%
 %% When you make updates to your file transfer protocol-enabled server or
-%% when you work with users, use the service-generated `ServerId` property
+%% when you work with users, use the service-generated `ServerId' property
 %% that is assigned to the newly created server.
 create_server(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -79,8 +79,8 @@ create_server(Client, Input, Options)
 %% protocol-enabled server.
 %%
 %% You can only create and associate users with servers that have the
-%% `IdentityProviderType` set to `SERVICE_MANAGED`. Using parameters for
-%% `CreateUser`, you can specify the user name, set the home directory, store
+%% `IdentityProviderType' set to `SERVICE_MANAGED'. Using parameters for
+%% `CreateUser', you can specify the user name, set the home directory, store
 %% the user's public key, and assign the user's AWS Identity and Access
 %% Management (IAM) role. You can also optionally add a scope-down policy,
 %% and assign metadata with tags that can be used to group and search for
@@ -139,10 +139,10 @@ describe_security_policy(Client, Input, Options)
     request(Client, <<"DescribeSecurityPolicy">>, Input, Options).
 
 %% @doc Describes a file transfer protocol-enabled server that you specify by
-%% passing the `ServerId` parameter.
+%% passing the `ServerId' parameter.
 %%
 %% The response contains a description of a server's properties. When you set
-%% `EndpointType` to VPC, the response will contain the `EndpointDetails`.
+%% `EndpointType' to VPC, the response will contain the `EndpointDetails'.
 describe_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_server(Client, Input, []).
@@ -151,10 +151,10 @@ describe_server(Client, Input, Options)
     request(Client, <<"DescribeServer">>, Input, Options).
 
 %% @doc Describes the user assigned to the specific file transfer
-%% protocol-enabled server, as identified by its `ServerId` property.
+%% protocol-enabled server, as identified by its `ServerId' property.
 %%
 %% The response from this call returns the properties of the user associated
-%% with the `ServerId` value that was specified.
+%% with the `ServerId' value that was specified.
 describe_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_user(Client, Input, []).
@@ -163,11 +163,11 @@ describe_user(Client, Input, Options)
     request(Client, <<"DescribeUser">>, Input, Options).
 
 %% @doc Adds a Secure Shell (SSH) public key to a user account identified by
-%% a `UserName` value assigned to the specific file transfer protocol-enabled
-%% server, identified by `ServerId`.
+%% a `UserName' value assigned to the specific file transfer protocol-enabled
+%% server, identified by `ServerId'.
 %%
-%% The response returns the `UserName` value, the `ServerId` value, and the
-%% name of the `SshPublicKeyId`.
+%% The response returns the `UserName' value, the `ServerId' value, and the
+%% name of the `SshPublicKeyId'.
 import_ssh_public_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_ssh_public_key(Client, Input, []).
@@ -205,7 +205,7 @@ list_tags_for_resource(Client, Input, Options)
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc Lists the users for a file transfer protocol-enabled server that you
-%% specify by passing the `ServerId` parameter.
+%% specify by passing the `ServerId' parameter.
 list_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_users(Client, Input, []).
@@ -214,14 +214,14 @@ list_users(Client, Input, Options)
     request(Client, <<"ListUsers">>, Input, Options).
 
 %% @doc Changes the state of a file transfer protocol-enabled server from
-%% `OFFLINE` to `ONLINE`.
+%% `OFFLINE' to `ONLINE'.
 %%
-%% It has no impact on a server that is already `ONLINE`. An `ONLINE` server
+%% It has no impact on a server that is already `ONLINE'. An `ONLINE' server
 %% can accept and process file transfer jobs.
 %%
-%% The state of `STARTING` indicates that the server is in an intermediate
+%% The state of `STARTING' indicates that the server is in an intermediate
 %% state, either not fully able to respond, or not fully online. The values
-%% of `START_FAILED` can indicate an error condition.
+%% of `START_FAILED' can indicate an error condition.
 %%
 %% No response is returned from this call.
 start_server(Client, Input)
@@ -232,18 +232,18 @@ start_server(Client, Input, Options)
     request(Client, <<"StartServer">>, Input, Options).
 
 %% @doc Changes the state of a file transfer protocol-enabled server from
-%% `ONLINE` to `OFFLINE`.
+%% `ONLINE' to `OFFLINE'.
 %%
-%% An `OFFLINE` server cannot accept and process file transfer jobs.
+%% An `OFFLINE' server cannot accept and process file transfer jobs.
 %% Information tied to your server, such as server and user properties, are
 %% not affected by stopping your server.
 %%
 %% Stopping the server will not reduce or impact your file transfer protocol
 %% endpoint billing; you must delete the server to stop being billed.
 %%
-%% The state of `STOPPING` indicates that the server is in an intermediate
+%% The state of `STOPPING' indicates that the server is in an intermediate
 %% state, either not fully able to respond, or not fully offline. The values
-%% of `STOP_FAILED` can indicate an error condition.
+%% of `STOP_FAILED' can indicate an error condition.
 %%
 %% No response is returned from this call.
 stop_server(Client, Input)
@@ -266,8 +266,8 @@ tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
-%% @doc If the `IdentityProviderType` of a file transfer protocol-enabled
-%% server is `API_Gateway`, tests whether your API Gateway is set up
+%% @doc If the `IdentityProviderType' of a file transfer protocol-enabled
+%% server is `API_Gateway', tests whether your API Gateway is set up
 %% successfully.
 %%
 %% We highly recommend that you call this operation to test your
@@ -297,7 +297,7 @@ untag_resource(Client, Input, Options)
 %% @doc Updates the file transfer protocol-enabled server's properties after
 %% that server has been created.
 %%
-%% The `UpdateServer` call returns the `ServerId` of the server you updated.
+%% The `UpdateServer' call returns the `ServerId' of the server you updated.
 update_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_server(Client, Input, []).
@@ -308,9 +308,9 @@ update_server(Client, Input, Options)
 %% @doc Assigns new properties to a user.
 %%
 %% Parameters you pass modify any or all of the following: the home
-%% directory, role, and policy for the `UserName` and `ServerId` you specify.
+%% directory, role, and policy for the `UserName' and `ServerId' you specify.
 %%
-%% The response returns the `ServerId` and the `UserName` for the updated
+%% The response returns the `ServerId' and the `UserName' for the updated
 %% user.
 update_user(Client, Input)
   when is_map(Client), is_map(Input) ->

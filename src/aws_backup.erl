@@ -118,8 +118,8 @@
 %% A backup plan is a document that contains information that AWS Backup uses
 %% to schedule tasks that create recovery points for resources.
 %%
-%% If you call `CreateBackupPlan` with a plan that already exists, an
-%% `AlreadyExistsException` is returned.
+%% If you call `CreateBackupPlan' with a plan that already exists, an
+%% `AlreadyExistsException' is returned.
 create_backup_plan(Client, Input) ->
     create_backup_plan(Client, Input, []).
 create_backup_plan(Client, Input0, Options) ->
@@ -138,28 +138,28 @@ create_backup_plan(Client, Input0, Options) ->
 %% @doc Creates a JSON document that specifies a set of resources to assign
 %% to a backup plan.
 %%
-%% Resources can be included by specifying patterns for a `ListOfTags` and
-%% selected `Resources`.
+%% Resources can be included by specifying patterns for a `ListOfTags' and
+%% selected `Resources'.
 %%
 %% For example, consider the following patterns:
 %%
-%% <ul> <li> `Resources: "arn:aws:ec2:region:account-id:volume/volume-id"`
+%% <ul> <li> `Resources: "arn:aws:ec2:region:account-id:volume/volume-id"'
 %%
-%% </li> <li> `ConditionKey:"department"`
+%% </li> <li> `ConditionKey:"department"'
 %%
-%% `ConditionValue:"finance"`
+%% `ConditionValue:"finance"'
 %%
-%% `ConditionType:"StringEquals"`
+%% `ConditionType:"StringEquals"'
 %%
-%% </li> <li> `ConditionKey:"importance"`
+%% </li> <li> `ConditionKey:"importance"'
 %%
-%% `ConditionValue:"critical"`
+%% `ConditionValue:"critical"'
 %%
-%% `ConditionType:"StringEquals"`
+%% `ConditionType:"StringEquals"'
 %%
 %% </li> </ul> Using these patterns would back up all Amazon Elastic Block
-%% Store (Amazon EBS) volumes that are tagged as `"department=finance"`,
-%% `"importance=critical"`, in addition to an EBS volume with the specified
+%% Store (Amazon EBS) volumes that are tagged as `"department=finance"',
+%% `"importance=critical"', in addition to an EBS volume with the specified
 %% volume ID.
 %%
 %% Resources and conditions are additive in that all resources that match the
@@ -184,7 +184,7 @@ create_backup_selection(Client, BackupPlanId, Input0, Options) ->
 
 %% @doc Creates a logical container where backups are stored.
 %%
-%% A `CreateBackupVault` request includes a name, optionally one or more
+%% A `CreateBackupVault' request includes a name, optionally one or more
 %% resource tags, an encryption key, and a request ID.
 %%
 %% Sensitive data, such as passport numbers, should not be included the name
@@ -225,7 +225,7 @@ delete_backup_plan(Client, BackupPlanId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the resource selection associated with a backup plan that is
-%% specified by the `SelectionId`.
+%% specified by the `SelectionId'.
 delete_backup_selection(Client, BackupPlanId, SelectionId, Input) ->
     delete_backup_selection(Client, BackupPlanId, SelectionId, Input, []).
 delete_backup_selection(Client, BackupPlanId, SelectionId, Input0, Options) ->
@@ -308,7 +308,7 @@ delete_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input0, Options
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns backup job details for the specified `BackupJobId`.
+%% @doc Returns backup job details for the specified `BackupJobId'.
 describe_backup_job(Client, BackupJobId)
   when is_map(Client) ->
     describe_backup_job(Client, BackupJobId, []).
@@ -388,9 +388,9 @@ describe_recovery_point(Client, BackupVaultName, RecoveryPointArn, Options)
 
 %% @doc Returns the current service opt-in settings for the Region.
 %%
-%% If the service has a value set to `true`, AWS Backup tries to protect that
+%% If the service has a value set to `true', AWS Backup tries to protect that
 %% service's resources in this Region, when included in an on-demand backup
-%% or scheduled backup plan. If the value is set to `false` for a service,
+%% or scheduled backup plan. If the value is set to `false' for a service,
 %% AWS Backup does not try to protect that service's resources in this
 %% Region.
 describe_region_settings(Client)
@@ -439,7 +439,7 @@ export_backup_plan_template(Client, BackupPlanId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns `BackupPlan` details for the specified `BackupPlanId`.
+%% @doc Returns `BackupPlan' details for the specified `BackupPlanId'.
 %%
 %% Returns the body of a backup plan in JSON format, in addition to plan
 %% metadata.
@@ -477,7 +477,7 @@ get_backup_plan_from_j_s_o_n(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns the template specified by its `templateId` as a backup plan.
+%% @doc Returns the template specified by its `templateId' as a backup plan.
 get_backup_plan_from_template(Client, BackupPlanTemplateId)
   when is_map(Client) ->
     get_backup_plan_from_template(Client, BackupPlanTemplateId, []).
@@ -832,7 +832,7 @@ list_restore_jobs(Client, ByAccountId, ByCreatedAfter, ByCreatedBefore, ByStatus
 %% @doc Returns a list of key-value pairs assigned to a target recovery
 %% point, backup plan, or backup vault.
 %%
-%% `ListTags` are currently only supported with Amazon EFS backups.
+%% `ListTags' are currently only supported with Amazon EFS backups.
 list_tags(Client, ResourceArn, MaxResults, NextToken)
   when is_map(Client) ->
     list_tags(Client, ResourceArn, MaxResults, NextToken, []).
@@ -987,10 +987,10 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing backup plan identified by its `backupPlanId` with
+%% @doc Updates an existing backup plan identified by its `backupPlanId' with
 %% the input document in JSON format.
 %%
-%% The new version is uniquely identified by a `VersionId`.
+%% The new version is uniquely identified by a `VersionId'.
 update_backup_plan(Client, BackupPlanId, Input) ->
     update_backup_plan(Client, BackupPlanId, Input, []).
 update_backup_plan(Client, BackupPlanId, Input0, Options) ->
@@ -1034,9 +1034,9 @@ update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input
 
 %% @doc Updates the current service opt-in settings for the Region.
 %%
-%% If the service has a value set to `true`, AWS Backup tries to protect that
+%% If the service has a value set to `true', AWS Backup tries to protect that
 %% service's resources in this Region, when included in an on-demand backup
-%% or scheduled backup plan. If the value is set to `false` for a service,
+%% or scheduled backup plan. If the value is set to `false' for a service,
 %% AWS Backup does not try to protect that service's resources in this
 %% Region.
 update_region_settings(Client, Input) ->

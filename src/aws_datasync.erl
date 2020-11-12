@@ -153,7 +153,7 @@ create_location_nfs(Client, Input, Options)
 %% @doc Creates an endpoint for a self-managed object storage bucket.
 %%
 %% For more information about self-managed object storage locations, see
-%% `create-object-location`.
+%% `create-object-location'.
 create_location_object_storage(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_object_storage(Client, Input, []).
@@ -279,7 +279,7 @@ describe_location_nfs(Client, Input, Options)
 %% @doc Returns metadata about a self-managed object storage server location.
 %%
 %% For more information about self-managed object storage locations, see
-%% `create-object-location`.
+%% `create-object-location'.
 describe_location_object_storage(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_object_storage(Client, Input, []).
@@ -380,10 +380,10 @@ list_tasks(Client, Input, Options)
 
 %% @doc Starts a specific invocation of a task.
 %%
-%% A `TaskExecution` value represents an individual run of a task. Each task
-%% can have at most one `TaskExecution` at a time.
+%% A `TaskExecution' value represents an individual run of a task. Each task
+%% can have at most one `TaskExecution' at a time.
 %%
-%% `TaskExecution` has the following transition phases: INITIALIZING |
+%% `TaskExecution' has the following transition phases: INITIALIZING |
 %% PREPARING | TRANSFERRING | VERIFYING | SUCCESS/FAILURE.
 %%
 %% For detailed information, see the Task Execution section in the Components
@@ -433,8 +433,8 @@ update_task(Client, Input, Options)
 %% or queued. For more information, see Adjusting Bandwidth Throttling for a
 %% Task Execution.
 %%
-%% The only `Option` that can be modified by `UpdateTaskExecution` is `
-%% BytesPerSecond `.
+%% The only `Option' that can be modified by `UpdateTaskExecution' is `
+%% BytesPerSecond '.
 update_task_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_task_execution(Client, Input, []).

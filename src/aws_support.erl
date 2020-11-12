@@ -13,7 +13,7 @@
 %% API.
 %%
 %% If you call the AWS Support API from an account that does not have a
-%% Business or Enterprise support plan, the `SubscriptionRequiredException`
+%% Business or Enterprise support plan, the `SubscriptionRequiredException'
 %% error message appears. For information about changing your support plan,
 %% see AWS Support.
 %%
@@ -25,37 +25,37 @@
 %% The following list describes the AWS Support case management operations:
 %%
 %% <ul> <li> Service names, issue categories, and available severity levels.
-%% The `DescribeServices` and `DescribeSeverityLevels` operations return AWS
+%% The `DescribeServices' and `DescribeSeverityLevels' operations return AWS
 %% service names, service codes, service categories, and problem severity
-%% levels. You use these values when you call the `CreateCase` operation.
+%% levels. You use these values when you call the `CreateCase' operation.
 %%
 %% </li> <li> Case creation, case details, and case resolution. The
-%% `CreateCase`, `DescribeCases`, `DescribeAttachment`, and `ResolveCase`
+%% `CreateCase', `DescribeCases', `DescribeAttachment', and `ResolveCase'
 %% operations create AWS Support cases, retrieve information about cases, and
 %% resolve cases.
 %%
-%% </li> <li> Case communication. The `DescribeCommunications`,
-%% `AddCommunicationToCase`, and `AddAttachmentsToSet` operations retrieve
+%% </li> <li> Case communication. The `DescribeCommunications',
+%% `AddCommunicationToCase', and `AddAttachmentsToSet' operations retrieve
 %% and add communications and attachments to AWS Support cases.
 %%
 %% </li> </ul> The following list describes the operations available from the
 %% AWS Support service for Trusted Advisor:
 %%
-%% <ul> <li> `DescribeTrustedAdvisorChecks` returns the list of checks that
+%% <ul> <li> `DescribeTrustedAdvisorChecks' returns the list of checks that
 %% run against your AWS resources.
 %%
-%% </li> <li> Using the `checkId` for a specific check returned by
-%% `DescribeTrustedAdvisorChecks`, you can call
-%% `DescribeTrustedAdvisorCheckResult` to obtain the results for the check
+%% </li> <li> Using the `checkId' for a specific check returned by
+%% `DescribeTrustedAdvisorChecks', you can call
+%% `DescribeTrustedAdvisorCheckResult' to obtain the results for the check
 %% that you specified.
 %%
-%% </li> <li> `DescribeTrustedAdvisorCheckSummaries` returns summarized
+%% </li> <li> `DescribeTrustedAdvisorCheckSummaries' returns summarized
 %% results for one or more Trusted Advisor checks.
 %%
-%% </li> <li> `RefreshTrustedAdvisorCheck` requests that Trusted Advisor
+%% </li> <li> `RefreshTrustedAdvisorCheck' requests that Trusted Advisor
 %% rerun a specified check.
 %%
-%% </li> <li> `DescribeTrustedAdvisorCheckRefreshStatuses` reports the
+%% </li> <li> `DescribeTrustedAdvisorCheckRefreshStatuses' reports the
 %% refresh status of one or more checks.
 %%
 %% </li> </ul> For authentication of requests, AWS Support uses Signature
@@ -106,14 +106,14 @@
 %%
 %% An attachment set is a temporary container for attachments that you add to
 %% a case or case communication. The set is available for 1 hour after it's
-%% created. The `expiryTime` returned in the response is when the set
+%% created. The `expiryTime' returned in the response is when the set
 %% expires.
 %%
 %% You must have a Business or Enterprise support plan to use the AWS Support
 %% API.
 %%
 %% If you call the AWS Support API from an account that does not have a
-%% Business or Enterprise support plan, the `SubscriptionRequiredException`
+%% Business or Enterprise support plan, the `SubscriptionRequiredException'
 %% error message appears. For information about changing your support plan,
 %% see AWS Support.
 add_attachments_to_set(Client, Input)
@@ -125,16 +125,16 @@ add_attachments_to_set(Client, Input, Options)
 
 %% @doc Adds additional customer communication to an AWS Support case.
 %%
-%% Use the `caseId` parameter to identify the case to which to add
+%% Use the `caseId' parameter to identify the case to which to add
 %% communication. You can list a set of email addresses to copy on the
-%% communication by using the `ccEmailAddresses` parameter. The
-%% `communicationBody` value contains the text of the communication.
+%% communication by using the `ccEmailAddresses' parameter. The
+%% `communicationBody' value contains the text of the communication.
 %%
 %% You must have a Business or Enterprise support plan to use the AWS Support
 %% API.
 %%
 %% If you call the AWS Support API from an account that does not have a
-%% Business or Enterprise support plan, the `SubscriptionRequiredException`
+%% Business or Enterprise support plan, the `SubscriptionRequiredException'
 %% error message appears. For information about changing your support plan,
 %% see AWS Support.
 add_communication_to_case(Client, Input)
@@ -156,20 +156,20 @@ add_communication_to_case(Client, Input, Options)
 %%
 %% </li> <li> Use the Service Quotas RequestServiceQuotaIncrease operation.
 %%
-%% </li> </ul> A successful `CreateCase` request returns an AWS Support case
-%% number. You can use the `DescribeCases` operation and specify the case
+%% </li> </ul> A successful `CreateCase' request returns an AWS Support case
+%% number. You can use the `DescribeCases' operation and specify the case
 %% number to get existing AWS Support cases. After you create a case, use the
-%% `AddCommunicationToCase` operation to add additional communication or
+%% `AddCommunicationToCase' operation to add additional communication or
 %% attachments to an existing case.
 %%
-%% The `caseId` is separate from the `displayId` that appears in the AWS
-%% Support Center. Use the `DescribeCases` operation to get the `displayId`.
+%% The `caseId' is separate from the `displayId' that appears in the AWS
+%% Support Center. Use the `DescribeCases' operation to get the `displayId'.
 %%
 %% You must have a Business or Enterprise support plan to use the AWS Support
 %% API.
 %%
 %% If you call the AWS Support API from an account that does not have a
-%% Business or Enterprise support plan, the `SubscriptionRequiredException`
+%% Business or Enterprise support plan, the `SubscriptionRequiredException'
 %% error message appears. For information about changing your support plan,
 %% see AWS Support.
 create_case(Client, Input)
@@ -184,14 +184,14 @@ create_case(Client, Input, Options)
 %% Attachments can include screenshots, error logs, or other files that
 %% describe your issue. Attachment IDs are generated by the case management
 %% system when you add an attachment to a case or case communication.
-%% Attachment IDs are returned in the `AttachmentDetails` objects that are
-%% returned by the `DescribeCommunications` operation.
+%% Attachment IDs are returned in the `AttachmentDetails' objects that are
+%% returned by the `DescribeCommunications' operation.
 %%
 %% You must have a Business or Enterprise support plan to use the AWS Support
 %% API.
 %%
 %% If you call the AWS Support API from an account that does not have a
-%% Business or Enterprise support plan, the `SubscriptionRequiredException`
+%% Business or Enterprise support plan, the `SubscriptionRequiredException'
 %% error message appears. For information about changing your support plan,
 %% see AWS Support.
 describe_attachment(Client, Input)
@@ -204,17 +204,17 @@ describe_attachment(Client, Input, Options)
 %% @doc Returns a list of cases that you specify by passing one or more case
 %% IDs.
 %%
-%% You can use the `afterTime` and `beforeTime` parameters to filter the
-%% cases by date. You can set values for the `includeResolvedCases` and
-%% `includeCommunications` parameters to specify how much information to
+%% You can use the `afterTime' and `beforeTime' parameters to filter the
+%% cases by date. You can set values for the `includeResolvedCases' and
+%% `includeCommunications' parameters to specify how much information to
 %% return.
 %%
 %% The response returns the following in JSON format:
 %%
 %% <ul> <li> One or more CaseDetails data types.
 %%
-%% </li> <li> One or more `nextToken` values, which specify where to paginate
-%% the returned records represented by the `CaseDetails` objects.
+%% </li> <li> One or more `nextToken' values, which specify where to paginate
+%% the returned records represented by the `CaseDetails' objects.
 %%
 %% </li> </ul> Case data is available for 12 months after creation. If a case
 %% was created more than 12 months ago, a request might return an error.
@@ -223,7 +223,7 @@ describe_attachment(Client, Input, Options)
 %% API.
 %%
 %% If you call the AWS Support API from an account that does not have a
-%% Business or Enterprise support plan, the `SubscriptionRequiredException`
+%% Business or Enterprise support plan, the `SubscriptionRequiredException'
 %% error message appears. For information about changing your support plan,
 %% see AWS Support.
 describe_cases(Client, Input)
@@ -235,22 +235,22 @@ describe_cases(Client, Input, Options)
 
 %% @doc Returns communications and attachments for one or more support cases.
 %%
-%% Use the `afterTime` and `beforeTime` parameters to filter by date. You can
-%% use the `caseId` parameter to restrict the results to a specific case.
+%% Use the `afterTime' and `beforeTime' parameters to filter by date. You can
+%% use the `caseId' parameter to restrict the results to a specific case.
 %%
 %% Case data is available for 12 months after creation. If a case was created
 %% more than 12 months ago, a request for data might cause an error.
 %%
-%% You can use the `maxResults` and `nextToken` parameters to control the
-%% pagination of the results. Set `maxResults` to the number of cases that
-%% you want to display on each page, and use `nextToken` to specify the
+%% You can use the `maxResults' and `nextToken' parameters to control the
+%% pagination of the results. Set `maxResults' to the number of cases that
+%% you want to display on each page, and use `nextToken' to specify the
 %% resumption of pagination.
 %%
 %% You must have a Business or Enterprise support plan to use the AWS Support
 %% API.
 %%
 %% If you call the AWS Support API from an account that does not have a
-%% Business or Enterprise support plan, the `SubscriptionRequiredException`
+%% Business or Enterprise support plan, the `SubscriptionRequiredException'
 %% error message appears. For information about changing your support plan,
 %% see AWS Support.
 describe_communications(Client, Input)
@@ -263,14 +263,14 @@ describe_communications(Client, Input, Options)
 %% @doc Returns the current list of AWS services and a list of service
 %% categories for each service.
 %%
-%% You then use service names and categories in your `CreateCase` requests.
+%% You then use service names and categories in your `CreateCase' requests.
 %% Each AWS service has its own set of categories.
 %%
 %% The service codes and category codes correspond to the values that appear
 %% in the Service and Category lists on the AWS Support Center Create Case
 %% page. The values in those fields don't necessarily match the service codes
-%% and categories returned by the `DescribeServices` operation. Always use
-%% the service codes and categories that the `DescribeServices` operation
+%% and categories returned by the `DescribeServices' operation. Always use
+%% the service codes and categories that the `DescribeServices' operation
 %% returns, so that you have the most recent set of service and category
 %% codes.
 %%
@@ -278,7 +278,7 @@ describe_communications(Client, Input, Options)
 %% API.
 %%
 %% If you call the AWS Support API from an account that does not have a
-%% Business or Enterprise support plan, the `SubscriptionRequiredException`
+%% Business or Enterprise support plan, the `SubscriptionRequiredException'
 %% error message appears. For information about changing your support plan,
 %% see AWS Support.
 describe_services(Client, Input)
@@ -291,14 +291,14 @@ describe_services(Client, Input, Options)
 %% @doc Returns the list of severity levels that you can assign to an AWS
 %% Support case.
 %%
-%% The severity level for a case is also a field in the `CaseDetails` data
-%% type that you include for a `CreateCase` request.
+%% The severity level for a case is also a field in the `CaseDetails' data
+%% type that you include for a `CreateCase' request.
 %%
 %% You must have a Business or Enterprise support plan to use the AWS Support
 %% API.
 %%
 %% If you call the AWS Support API from an account that does not have a
-%% Business or Enterprise support plan, the `SubscriptionRequiredException`
+%% Business or Enterprise support plan, the `SubscriptionRequiredException'
 %% error message appears. For information about changing your support plan,
 %% see AWS Support.
 describe_severity_levels(Client, Input)
@@ -311,19 +311,19 @@ describe_severity_levels(Client, Input, Options)
 %% @doc Returns the refresh status of the AWS Trusted Advisor checks that
 %% have the specified check IDs.
 %%
-%% You can get the check IDs by calling the `DescribeTrustedAdvisorChecks`
+%% You can get the check IDs by calling the `DescribeTrustedAdvisorChecks'
 %% operation.
 %%
 %% Some checks are refreshed automatically, and you can't return their
-%% refresh statuses by using the `DescribeTrustedAdvisorCheckRefreshStatuses`
+%% refresh statuses by using the `DescribeTrustedAdvisorCheckRefreshStatuses'
 %% operation. If you call this operation for these checks, you might see an
-%% `InvalidParameterValue` error.
+%% `InvalidParameterValue' error.
 %%
 %% You must have a Business or Enterprise support plan to use the AWS Support
 %% API.
 %%
 %% If you call the AWS Support API from an account that does not have a
-%% Business or Enterprise support plan, the `SubscriptionRequiredException`
+%% Business or Enterprise support plan, the `SubscriptionRequiredException'
 %% error message appears. For information about changing your support plan,
 %% see AWS Support.
 describe_trusted_advisor_check_refresh_statuses(Client, Input)
@@ -336,17 +336,17 @@ describe_trusted_advisor_check_refresh_statuses(Client, Input, Options)
 %% @doc Returns the results of the AWS Trusted Advisor check that has the
 %% specified check ID.
 %%
-%% You can get the check IDs by calling the `DescribeTrustedAdvisorChecks`
+%% You can get the check IDs by calling the `DescribeTrustedAdvisorChecks'
 %% operation.
 %%
-%% The response contains a `TrustedAdvisorCheckResult` object, which contains
+%% The response contains a `TrustedAdvisorCheckResult' object, which contains
 %% these three objects:
 %%
-%% <ul> <li> `TrustedAdvisorCategorySpecificSummary`
+%% <ul> <li> `TrustedAdvisorCategorySpecificSummary'
 %%
-%% </li> <li> `TrustedAdvisorResourceDetail`
+%% </li> <li> `TrustedAdvisorResourceDetail'
 %%
-%% </li> <li> `TrustedAdvisorResourcesSummary`
+%% </li> <li> `TrustedAdvisorResourcesSummary'
 %%
 %% </li> </ul> In addition, the response contains these fields:
 %%
@@ -361,7 +361,7 @@ describe_trusted_advisor_check_refresh_statuses(Client, Input, Options)
 %% AWS Support API.
 %%
 %% If you call the AWS Support API from an account that does not have a
-%% Business or Enterprise support plan, the `SubscriptionRequiredException`
+%% Business or Enterprise support plan, the `SubscriptionRequiredException'
 %% error message appears. For information about changing your support plan,
 %% see AWS Support.
 describe_trusted_advisor_check_result(Client, Input)
@@ -374,16 +374,16 @@ describe_trusted_advisor_check_result(Client, Input, Options)
 %% @doc Returns the results for the AWS Trusted Advisor check summaries for
 %% the check IDs that you specified.
 %%
-%% You can get the check IDs by calling the `DescribeTrustedAdvisorChecks`
+%% You can get the check IDs by calling the `DescribeTrustedAdvisorChecks'
 %% operation.
 %%
-%% The response contains an array of `TrustedAdvisorCheckSummary` objects.
+%% The response contains an array of `TrustedAdvisorCheckSummary' objects.
 %%
 %% You must have a Business or Enterprise support plan to use the AWS Support
 %% API.
 %%
 %% If you call the AWS Support API from an account that does not have a
-%% Business or Enterprise support plan, the `SubscriptionRequiredException`
+%% Business or Enterprise support plan, the `SubscriptionRequiredException'
 %% error message appears. For information about changing your support plan,
 %% see AWS Support.
 describe_trusted_advisor_check_summaries(Client, Input)
@@ -398,14 +398,14 @@ describe_trusted_advisor_check_summaries(Client, Input, Options)
 %%
 %% You must specify a language code. The AWS Support API currently supports
 %% English ("en") and Japanese ("ja"). The response contains a
-%% `TrustedAdvisorCheckDescription` object for each check. You must set the
+%% `TrustedAdvisorCheckDescription' object for each check. You must set the
 %% AWS Region to us-east-1.
 %%
 %% You must have a Business or Enterprise support plan to use the AWS Support
 %% API.
 %%
 %% If you call the AWS Support API from an account that does not have a
-%% Business or Enterprise support plan, the `SubscriptionRequiredException`
+%% Business or Enterprise support plan, the `SubscriptionRequiredException'
 %% error message appears. For information about changing your support plan,
 %% see AWS Support.
 describe_trusted_advisor_checks(Client, Input)
@@ -418,20 +418,20 @@ describe_trusted_advisor_checks(Client, Input, Options)
 %% @doc Refreshes the AWS Trusted Advisor check that you specify using the
 %% check ID.
 %%
-%% You can get the check IDs by calling the `DescribeTrustedAdvisorChecks`
+%% You can get the check IDs by calling the `DescribeTrustedAdvisorChecks'
 %% operation.
 %%
 %% Some checks are refreshed automatically. If you call the
-%% `RefreshTrustedAdvisorCheck` operation to refresh them, you might see the
-%% `InvalidParameterValue` error.
+%% `RefreshTrustedAdvisorCheck' operation to refresh them, you might see the
+%% `InvalidParameterValue' error.
 %%
-%% The response contains a `TrustedAdvisorCheckRefreshStatus` object.
+%% The response contains a `TrustedAdvisorCheckRefreshStatus' object.
 %%
 %% You must have a Business or Enterprise support plan to use the AWS Support
 %% API.
 %%
 %% If you call the AWS Support API from an account that does not have a
-%% Business or Enterprise support plan, the `SubscriptionRequiredException`
+%% Business or Enterprise support plan, the `SubscriptionRequiredException'
 %% error message appears. For information about changing your support plan,
 %% see AWS Support.
 refresh_trusted_advisor_check(Client, Input)
@@ -443,14 +443,14 @@ refresh_trusted_advisor_check(Client, Input, Options)
 
 %% @doc Resolves a support case.
 %%
-%% This operation takes a `caseId` and returns the initial and final state of
+%% This operation takes a `caseId' and returns the initial and final state of
 %% the case.
 %%
 %% You must have a Business or Enterprise support plan to use the AWS Support
 %% API.
 %%
 %% If you call the AWS Support API from an account that does not have a
-%% Business or Enterprise support plan, the `SubscriptionRequiredException`
+%% Business or Enterprise support plan, the `SubscriptionRequiredException'
 %% error message appears. For information about changing your support plan,
 %% see AWS Support.
 resolve_case(Client, Input)

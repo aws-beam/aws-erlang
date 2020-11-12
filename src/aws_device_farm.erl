@@ -9,7 +9,7 @@
 %% Device Farm makes it possible for you to test your web applications on
 %% desktop browsers using Selenium.
 %%
-%% The APIs for desktop browser testing contain `TestGrid` in their names.
+%% The APIs for desktop browser testing contain `TestGrid' in their names.
 %% For more information, see Testing Web Applications on Selenium with Device
 %% Farm.
 %%
@@ -226,7 +226,7 @@ create_remote_access_session(Client, Input, Options)
 
 %% @doc Creates a Selenium testing project.
 %%
-%% Projects are used to track `TestGridSession` instances.
+%% Projects are used to track `TestGridSession' instances.
 create_test_grid_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_test_grid_project(Client, Input, []).
@@ -235,7 +235,7 @@ create_test_grid_project(Client, Input, Options)
     request(Client, <<"CreateTestGridProject">>, Input, Options).
 
 %% @doc Creates a signed, short-term URL that can be passed to a Selenium
-%% `RemoteWebDriver` constructor.
+%% `RemoteWebDriver' constructor.
 create_test_grid_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_test_grid_url(Client, Input, []).
@@ -416,7 +416,7 @@ get_network_profile(Client, Input, Options)
 %%
 %% The response indicates how many offerings are currently available and the
 %% offerings that will be available in the next period. The API returns a
-%% `NotEligible` error if the user is not permitted to invoke the operation.
+%% `NotEligible' error if the user is not permitted to invoke the operation.
 %% If you must be able to invoke this operation, contact
 %% aws-devicefarm-support@amazon.com.
 get_offering_status(Client, Input)
@@ -475,15 +475,15 @@ get_test_grid_project(Client, Input, Options)
     request(Client, <<"GetTestGridProject">>, Input, Options).
 
 %% @doc A session is an instance of a browser created through a
-%% `RemoteWebDriver` with the URL from `CreateTestGridUrlResult$url`.
+%% `RemoteWebDriver' with the URL from `CreateTestGridUrlResult$url'.
 %%
 %% You can use the following to look up sessions:
 %%
-%% <ul> <li> The session ARN (`GetTestGridSessionRequest$sessionArn`).
+%% <ul> <li> The session ARN (`GetTestGridSessionRequest$sessionArn').
 %%
 %% </li> <li> The project ARN and a session ID
-%% (`GetTestGridSessionRequest$projectArn` and
-%% `GetTestGridSessionRequest$sessionId`).
+%% (`GetTestGridSessionRequest$projectArn' and
+%% `GetTestGridSessionRequest$sessionId').
 %%
 %% </li> </ul>
 get_test_grid_session(Client, Input)
@@ -582,7 +582,7 @@ list_network_profiles(Client, Input, Options)
 %% @doc Returns a list of offering promotions.
 %%
 %% Each offering promotion record contains the ID and description of the
-%% promotion. The API returns a `NotEligible` error if the caller is not
+%% promotion. The API returns a `NotEligible' error if the caller is not
 %% permitted to invoke the operation. Contact
 %% aws-devicefarm-support@amazon.com if you must be able to invoke this
 %% operation.
@@ -597,7 +597,7 @@ list_offering_promotions(Client, Input, Options)
 %% renewal transactions for an AWS account.
 %%
 %% The list is paginated and ordered by a descending timestamp (most recent
-%% transactions are first). The API returns a `NotEligible` error if the user
+%% transactions are first). The API returns a `NotEligible' error if the user
 %% is not permitted to invoke the operation. If you must be able to invoke
 %% this operation, contact aws-devicefarm-support@amazon.com.
 list_offering_transactions(Client, Input)
@@ -611,7 +611,7 @@ list_offering_transactions(Client, Input, Options)
 %% through the API.
 %%
 %% Each offering record indicates the recurring price per unit and the
-%% frequency for that offering. The API returns a `NotEligible` error if the
+%% frequency for that offering. The API returns a `NotEligible' error if the
 %% user is not permitted to invoke the operation. If you must be able to
 %% invoke this operation, contact aws-devicefarm-support@amazon.com.
 list_offerings(Client, Input)
@@ -677,7 +677,7 @@ list_test_grid_projects(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTestGridProjects">>, Input, Options).
 
-%% @doc Returns a list of the actions taken in a `TestGridSession`.
+%% @doc Returns a list of the actions taken in a `TestGridSession'.
 list_test_grid_session_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_test_grid_session_actions(Client, Input, []).
@@ -693,7 +693,7 @@ list_test_grid_session_artifacts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTestGridSessionArtifacts">>, Input, Options).
 
-%% @doc Retrieves a list of sessions for a `TestGridProject`.
+%% @doc Retrieves a list of sessions for a `TestGridProject'.
 list_test_grid_sessions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_test_grid_sessions(Client, Input, []).
@@ -714,8 +714,8 @@ list_tests(Client, Input, Options)
 %%
 %% Unique problems are defined as a single instance of an error across a run,
 %% job, or suite. For example, if a call in your application consistently
-%% raises an exception (`OutOfBoundsException in MyActivity.java:386`),
-%% `ListUniqueProblems` returns a single entry instead of many individual
+%% raises an exception (`OutOfBoundsException in MyActivity.java:386'),
+%% `ListUniqueProblems' returns a single entry instead of many individual
 %% entries for that exception.
 list_unique_problems(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -744,7 +744,7 @@ list_v_p_c_e_configurations(Client, Input, Options)
 %% @doc Immediately purchases offerings for an AWS account.
 %%
 %% Offerings renew with the latest total purchased quantity for an offering,
-%% unless the renewal was overridden. The API returns a `NotEligible` error
+%% unless the renewal was overridden. The API returns a `NotEligible' error
 %% if the user is not permitted to invoke the operation. If you must be able
 %% to invoke this operation, contact aws-devicefarm-support@amazon.com.
 purchase_offering(Client, Input)
@@ -755,9 +755,9 @@ purchase_offering(Client, Input, Options)
     request(Client, <<"PurchaseOffering">>, Input, Options).
 
 %% @doc Explicitly sets the quantity of devices to renew for an offering,
-%% starting from the `effectiveDate` of the next period.
+%% starting from the `effectiveDate' of the next period.
 %%
-%% The API returns a `NotEligible` error if the user is not permitted to
+%% The API returns a `NotEligible' error if the user is not permitted to
 %% invoke the operation. If you must be able to invoke this operation,
 %% contact aws-devicefarm-support@amazon.com.
 renew_offering(Client, Input)
@@ -812,7 +812,7 @@ stop_run(Client, Input, Options)
     request(Client, <<"StopRun">>, Input, Options).
 
 %% @doc Associates the specified tags to a resource with the specified
-%% `resourceArn`.
+%% `resourceArn'.
 %%
 %% If existing tags on a resource are not specified in the request
 %% parameters, they are not changed. When a resource is deleted, the tags

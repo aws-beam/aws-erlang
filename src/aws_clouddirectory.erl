@@ -152,7 +152,7 @@
 %% API
 %%====================================================================
 
-%% @doc Adds a new `Facet` to an object.
+%% @doc Adds a new `Facet' to an object.
 %%
 %% An object can have more than one facet applied on it.
 add_facet_to_object(Client, Input) ->
@@ -173,7 +173,7 @@ add_facet_to_object(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Copies the input published schema, at the specified version, into the
-%% `Directory` with the same name and version as that of the published
+%% `Directory' with the same name and version as that of the published
 %% schema.
 apply_schema(Client, Input) ->
     apply_schema(Client, Input, []).
@@ -198,7 +198,7 @@ apply_schema(Client, Input0, Options) ->
 %%
 %% <ol> <li> Using the path
 %%
-%% </li> <li> Using `ObjectIdentifier`
+%% </li> <li> Using `ObjectIdentifier'
 %%
 %% </li> </ol>
 attach_object(Client, Input) ->
@@ -315,13 +315,13 @@ batch_write(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a `Directory` by copying the published schema into the
+%% @doc Creates a `Directory' by copying the published schema into the
 %% directory.
 %%
 %% A directory cannot be created without a schema.
 %%
 %% You can also quickly create a directory using a managed schema, called the
-%% `QuickStartSchema`. For more information, see Managed Schema in the Amazon
+%% `QuickStartSchema'. For more information, see Managed Schema in the Amazon
 %% Cloud Directory Developer Guide.
 create_directory(Client, Input) ->
     create_directory(Client, Input, []).
@@ -340,7 +340,7 @@ create_directory(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new `Facet` in a schema.
+%% @doc Creates a new `Facet' in a schema.
 %%
 %% Facet creation is allowed only in development or applied schemas.
 create_facet(Client, Input) ->
@@ -380,10 +380,10 @@ create_index(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an object in a `Directory`.
+%% @doc Creates an object in a `Directory'.
 %%
 %% Additionally attaches the object to a parent, if a parent reference and
-%% `LinkName` is specified. An object is simply a collection of `Facet`
+%% `LinkName' is specified. An object is simply a collection of `Facet'
 %% attributes. You can also use this API call to create a policy object, if
 %% the facet from which you create the object is a policy facet.
 create_object(Client, Input) ->
@@ -435,7 +435,7 @@ create_schema(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a `TypedLinkFacet`.
+%% @doc Creates a `TypedLinkFacet'.
 %%
 %% For more information, see Typed Links.
 create_typed_link_facet(Client, Input) ->
@@ -476,9 +476,9 @@ delete_directory(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a given `Facet`.
+%% @doc Deletes a given `Facet'.
 %%
-%% All attributes and `Rule`s that are associated with the facet will be
+%% All attributes and `Rule's that are associated with the facet will be
 %% deleted. Only development schema facets are allowed deletion.
 delete_facet(Client, Input) ->
     delete_facet(Client, Input, []).
@@ -539,7 +539,7 @@ delete_schema(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a `TypedLinkFacet`.
+%% @doc Deletes a `TypedLinkFacet'.
 %%
 %% For more information, see Typed Links.
 delete_typed_link_facet(Client, Input) ->
@@ -713,8 +713,8 @@ get_directory(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Gets details of the `Facet`, such as facet name, attributes, `Rule`s,
-%% or `ObjectType`.
+%% @doc Gets details of the `Facet', such as facet name, attributes, `Rule's,
+%% or `ObjectType'.
 %%
 %% You can call this on all kinds of schema facets -- published, development,
 %% or applied.
@@ -812,7 +812,7 @@ get_schema_as_json(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns the identity attribute order for a specific `TypedLinkFacet`.
+%% @doc Returns the identity attribute order for a specific `TypedLinkFacet'.
 %%
 %% For more information, see Typed Links.
 get_typed_link_facet_information(Client, Input) ->
@@ -834,7 +834,7 @@ get_typed_link_facet_information(Client, Input0, Options) ->
 
 %% @doc Lists schema major versions applied to a directory.
 %%
-%% If `SchemaArn` is provided, lists the minor version.
+%% If `SchemaArn' is provided, lists the minor version.
 list_applied_schema_arns(Client, Input) ->
     list_applied_schema_arns(Client, Input, []).
 list_applied_schema_arns(Client, Input0, Options) ->
@@ -938,7 +938,7 @@ list_facet_names(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a paginated list of all the incoming `TypedLinkSpecifier`
+%% @doc Returns a paginated list of all the incoming `TypedLinkSpecifier'
 %% information for an object.
 %%
 %% It also supports filtering by typed link facet and identity attributes.
@@ -1044,7 +1044,7 @@ list_object_children(Client, Input0, Options) ->
 %%
 %% Use this API to evaluate all parents for an object. The call returns all
 %% objects from the root of the directory up to the requested object. The API
-%% returns the number of paths based on user-defined `MaxResults`, in case
+%% returns the number of paths based on user-defined `MaxResults', in case
 %% there are multiple paths to the parent. The order of the paths and nodes
 %% returned is consistent among multiple API calls unless the objects are
 %% deleted or moved. Paths not leading to the directory root are ignored from
@@ -1105,7 +1105,7 @@ list_object_policies(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a paginated list of all the outgoing `TypedLinkSpecifier`
+%% @doc Returns a paginated list of all the outgoing `TypedLinkSpecifier'
 %% information for an object.
 %%
 %% It also supports filtering by typed link facet and identity attributes.
@@ -1127,7 +1127,7 @@ list_outgoing_typed_links(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns all of the `ObjectIdentifiers` to which a given policy is
+%% @doc Returns all of the `ObjectIdentifiers' to which a given policy is
 %% attached.
 list_policy_attachments(Client, Input) ->
     list_policy_attachments(Client, Input, []).
@@ -1149,7 +1149,7 @@ list_policy_attachments(Client, Input0, Options) ->
 
 %% @doc Lists the major version families of each published schema.
 %%
-%% If a major version ARN is provided as `SchemaArn`, the minor version
+%% If a major version ARN is provided as `SchemaArn', the minor version
 %% revisions in that family are listed instead.
 list_published_schema_arns(Client, Input) ->
     list_published_schema_arns(Client, Input, []).
@@ -1187,7 +1187,7 @@ list_tags_for_resource(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a paginated list of all attribute definitions for a
-%% particular `TypedLinkFacet`.
+%% particular `TypedLinkFacet'.
 %%
 %% For more information, see Typed Links.
 list_typed_link_facet_attributes(Client, Input) ->
@@ -1207,7 +1207,7 @@ list_typed_link_facet_attributes(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a paginated list of `TypedLink` facet names for a particular
+%% @doc Returns a paginated list of `TypedLink' facet names for a particular
 %% schema.
 %%
 %% For more information, see Typed Links.
@@ -1228,13 +1228,13 @@ list_typed_link_facet_names(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists all policies from the root of the `Directory` to the object
+%% @doc Lists all policies from the root of the `Directory' to the object
 %% specified.
 %%
 %% If there are no policies present, an empty list is returned. If policies
 %% are present, and if some objects don't have the policies attached, it
-%% returns the `ObjectIdentifier` for such objects. If policies are present,
-%% it returns `ObjectIdentifier`, `policyId`, and `policyType`. Paths that
+%% returns the `ObjectIdentifier' for such objects. If policies are present,
+%% it returns `ObjectIdentifier', `policyId', and `policyType'. Paths that
 %% don't lead to the root from the target object are ignored. For more
 %% information, see Policies.
 lookup_policy(Client, Input) ->
@@ -1346,11 +1346,11 @@ untag_resource(Client, Input0, Options) ->
 
 %% @doc Does the following:
 %%
-%% <ol> <li> Adds new `Attributes`, `Rules`, or `ObjectTypes`.
+%% <ol> <li> Adds new `Attributes', `Rules', or `ObjectTypes'.
 %%
-%% </li> <li> Updates existing `Attributes`, `Rules`, or `ObjectTypes`.
+%% </li> <li> Updates existing `Attributes', `Rules', or `ObjectTypes'.
 %%
-%% </li> <li> Deletes existing `Attributes`, `Rules`, or `ObjectTypes`.
+%% </li> <li> Deletes existing `Attributes', `Rules', or `ObjectTypes'.
 %%
 %% </li> </ol>
 update_facet(Client, Input) ->
@@ -1373,7 +1373,7 @@ update_facet(Client, Input0, Options) ->
 %% @doc Updates a given typed link’s attributes.
 %%
 %% Attributes to be updated must not contribute to the typed link’s identity,
-%% as defined by its `IdentityAttributeOrder`.
+%% as defined by its `IdentityAttributeOrder'.
 update_link_attributes(Client, Input) ->
     update_link_attributes(Client, Input, []).
 update_link_attributes(Client, Input0, Options) ->
@@ -1429,7 +1429,7 @@ update_schema(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a `TypedLinkFacet`.
+%% @doc Updates a `TypedLinkFacet'.
 %%
 %% For more information, see Typed Links.
 update_typed_link_facet(Client, Input) ->
@@ -1449,8 +1449,8 @@ update_typed_link_facet(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Upgrades a single directory in-place using the `PublishedSchemaArn`
-%% with schema updates found in `MinorVersion`.
+%% @doc Upgrades a single directory in-place using the `PublishedSchemaArn'
+%% with schema updates found in `MinorVersion'.
 %%
 %% Backwards-compatible minor version upgrades are instantaneously available
 %% for readers on all objects in the directory. Note: This is a synchronous
@@ -1473,7 +1473,7 @@ upgrade_applied_schema(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Upgrades a published schema under a new minor version revision using
-%% the current contents of `DevelopmentSchemaArn`.
+%% the current contents of `DevelopmentSchemaArn'.
 upgrade_published_schema(Client, Input) ->
     upgrade_published_schema(Client, Input, []).
 upgrade_published_schema(Client, Input0, Options) ->

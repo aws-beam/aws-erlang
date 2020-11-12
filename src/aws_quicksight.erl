@@ -235,7 +235,7 @@ cancel_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options) 
 %% @doc Creates Amazon QuickSight customizations the current AWS Region.
 %%
 %% Currently, you can add a custom default theme by using the
-%% `CreateAccountCustomization` or `UpdateAccountCustomization` API
+%% `CreateAccountCustomization' or `UpdateAccountCustomization' API
 %% operation. To further customize QuickSight by removing QuickSight sample
 %% assets and videos for all new users, see Customizing QuickSight in the
 %% Amazon QuickSight User Guide.
@@ -244,15 +244,15 @@ cancel_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options) 
 %% namespace, for a QuickSight namespace instead. Customizations that apply
 %% to a namespace always override customizations that apply to an AWS
 %% account. To find out which customizations apply, use the
-%% `DescribeAccountCustomization` API operation.
+%% `DescribeAccountCustomization' API operation.
 %%
-%% Before you use the `CreateAccountCustomization` API operation to add a
+%% Before you use the `CreateAccountCustomization' API operation to add a
 %% theme as the namespace default, make sure that you first share the theme
 %% with the namespace. If you don't share it with the namespace, the theme
 %% isn't visible to your users even if you make it the default theme. To
 %% check if the theme is shared, view the current permissions by using the `
-%% `DescribeThemePermissions` ` API operation. To share the theme, grant
-%% permissions by using the ` `UpdateThemePermissions` ` API operation.
+%% `DescribeThemePermissions' ' API operation. To share the theme, grant
+%% permissions by using the ` `UpdateThemePermissions' ' API operation.
 create_account_customization(Client, AwsAccountId, Input) ->
     create_account_customization(Client, AwsAccountId, Input, []).
 create_account_customization(Client, AwsAccountId, Input0, Options) ->
@@ -287,7 +287,7 @@ create_analysis(Client, AnalysisId, AwsAccountId, Input0, Options) ->
 
 %% @doc Creates a dashboard from a template.
 %%
-%% To first create a template, see the ` `CreateTemplate` ` API operation.
+%% To first create a template, see the ` `CreateTemplate' ' API operation.
 %%
 %% A dashboard is an entity in QuickSight that identifies QuickSight reports,
 %% created from analyses. You can share QuickSight dashboards. With the right
@@ -345,7 +345,7 @@ create_data_source(Client, AwsAccountId, Input0, Options) ->
 %%
 %% The permissions resource is
 %% `arn:aws:quicksight:us-east-1:<relevant-aws-account-id>:group/default/<group-name>
-%% `.
+%% '.
 %%
 %% The response is a group object.
 create_group(Client, AwsAccountId, Namespace, Input) ->
@@ -548,12 +548,12 @@ delete_account_customization(Client, AwsAccountId, Input0, Options) ->
 %%
 %% You can optionally include a recovery window during which you can restore
 %% the analysis. If you don't specify a recovery window value, the operation
-%% defaults to 30 days. QuickSight attaches a `DeletionTime` stamp to the
+%% defaults to 30 days. QuickSight attaches a `DeletionTime' stamp to the
 %% response that specifies the end of the recovery window. At the end of the
 %% recovery window, QuickSight deletes the analysis permanently.
 %%
-%% At any time before recovery window ends, you can use the `RestoreAnalysis`
-%% API operation to remove the `DeletionTime` stamp and cancel the deletion
+%% At any time before recovery window ends, you can use the `RestoreAnalysis'
+%% API operation to remove the `DeletionTime' stamp and cancel the deletion
 %% of the analysis. The analysis remains visible in the API until it's
 %% deleted, so you can describe it but you can't make a template from it.
 %%
@@ -812,18 +812,18 @@ delete_user_by_principal_id(Client, AwsAccountId, Namespace, PrincipalId, Input0
 %% and Amazon QuickSight namespace in an AWS Region.
 %%
 %% The QuickSight console evaluates which customizations to apply by running
-%% this API operation with the `Resolved` flag included.
+%% this API operation with the `Resolved' flag included.
 %%
 %% To determine what customizations display when you run this command, it can
 %% help to visualize the relationship of the entities involved.
 %%
-%% <ul> <li> `AWS Account` - The AWS account exists at the top of the
+%% <ul> <li> `AWS Account' - The AWS account exists at the top of the
 %% hierarchy. It has the potential to use all of the AWS Regions and AWS
 %% Services. When you subscribe to QuickSight, you choose one AWS Region to
 %% use as your home Region. That's where your free SPICE capacity is located.
 %% You can use QuickSight in any supported AWS Region.
 %%
-%% </li> <li> `AWS Region` - In each AWS Region where you sign in to
+%% </li> <li> `AWS Region' - In each AWS Region where you sign in to
 %% QuickSight at least once, QuickSight acts as a separate instance of the
 %% same service. If you have a user directory, it resides in us-east-1, which
 %% is the US East (N. Virginia). Generally speaking, these users have access
@@ -838,22 +838,22 @@ delete_user_by_principal_id(Client, AwsAccountId, Namespace, PrincipalId, Input0
 %%
 %% </li> <li> Use named profiles.
 %%
-%% </li> <li> Run `aws configure` to change your default AWS Region. Use
+%% </li> <li> Run `aws configure' to change your default AWS Region. Use
 %% Enter to key the same settings for your keys. For more information, see
 %% Configuring the AWS CLI.
 %%
-%% </li> </ul> </li> <li> `Namespace` - A QuickSight namespace is a partition
+%% </li> </ul> </li> <li> `Namespace' - A QuickSight namespace is a partition
 %% that contains users and assets (data sources, datasets, dashboards, and so
 %% on). To access assets that are in a specific namespace, users and groups
 %% must also be part of the same namespace. People who share a namespace are
 %% completely isolated from users and assets in other namespaces, even if
 %% they are in the same AWS account and AWS Region.
 %%
-%% </li> <li> `Applied customizations` - Within an AWS Region, a set of
+%% </li> <li> `Applied customizations' - Within an AWS Region, a set of
 %% QuickSight customizations can apply to an AWS account or to a namespace.
 %% Settings that you apply to a namespace override settings that you apply to
 %% an AWS account. All settings are isolated to a single AWS Region. To apply
-%% them in other AWS Regions, run the `CreateAccountCustomization` command in
+%% them in other AWS Regions, run the `CreateAccountCustomization' command in
 %% each AWS Region where you want to apply the same customizations.
 %%
 %% </li> </ul>
@@ -975,7 +975,7 @@ describe_data_set(Client, AwsAccountId, DataSetId, Options)
 %% @doc Describes the permissions on a dataset.
 %%
 %% The permissions resource is
-%% `arn:aws:quicksight:region:aws-account-id:dataset/data-set-id`.
+%% `arn:aws:quicksight:region:aws-account-id:dataset/data-set-id'.
 describe_data_set_permissions(Client, AwsAccountId, DataSetId)
   when is_map(Client) ->
     describe_data_set_permissions(Client, AwsAccountId, DataSetId, []).
@@ -1203,7 +1203,7 @@ describe_user(Client, AwsAccountId, Namespace, UserName, Options)
 %% Before you use this command, make sure that you have configured the
 %% dashboards and permissions.
 %%
-%% Currently, you can use `GetDashboardEmbedURL` only from the server, not
+%% Currently, you can use `GetDashboardEmbedURL' only from the server, not
 %% from the user's browser. The following rules apply to the combination of
 %% URL and authorization code:
 %%
@@ -1242,12 +1242,12 @@ get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, ResetDi
 %% @doc Generates a session URL and authorization code that you can use to
 %% embed the Amazon QuickSight console in your web server code.
 %%
-%% Use `GetSessionEmbedUrl` where you want to provide an authoring portal
+%% Use `GetSessionEmbedUrl' where you want to provide an authoring portal
 %% that allows users to create data sources, datasets, analyses, and
 %% dashboards. The users who access an embedded QuickSight console need
 %% belong to the author or admin security cohort. If you want to restrict
 %% permissions to some of these features, add a custom permissions profile to
-%% the user with the ` `UpdateUser` ` API operation. Use ` `RegisterUser` `
+%% the user with the ` `UpdateUser' ' API operation. Use ` `RegisterUser' '
 %% API operation to add a new user with a custom permission profile attached.
 %% For more information, see the following sections in the Amazon QuickSight
 %% User Guide:
@@ -1343,7 +1343,7 @@ list_dashboards(Client, AwsAccountId, MaxResults, NextToken, Options)
 %% AWS Region.
 %%
 %% The permissions resource is
-%% `arn:aws:quicksight:region:aws-account-id:dataset/*`.
+%% `arn:aws:quicksight:region:aws-account-id:dataset/*'.
 list_data_sets(Client, AwsAccountId, MaxResults, NextToken)
   when is_map(Client) ->
     list_data_sets(Client, AwsAccountId, MaxResults, NextToken, []).
@@ -1759,7 +1759,7 @@ search_dashboards(Client, AwsAccountId, Input0, Options) ->
 %% Tags can help you organize and categorize your resources. You can also use
 %% them to scope user permissions, by granting a user permission to access or
 %% change only resources with certain tag values. You can use the
-%% `TagResource` operation with a resource that already has tags. If you
+%% `TagResource' operation with a resource that already has tags. If you
 %% specify a new tag key for the resource, this tag is appended to the list
 %% of tags associated with the resource. If you specify a tag key that is
 %% already associated with the resource, the new tag value that you specify
@@ -1819,7 +1819,7 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 %% namespace, for a QuickSight namespace instead. Customizations that apply
 %% to a namespace override customizations that apply to an AWS account. To
 %% find out which customizations apply, use the
-%% `DescribeAccountCustomization` API operation.
+%% `DescribeAccountCustomization' API operation.
 update_account_customization(Client, AwsAccountId, Input) ->
     update_account_customization(Client, AwsAccountId, Input, []).
 update_account_customization(Client, AwsAccountId, Input0, Options) ->
@@ -1951,7 +1951,7 @@ update_data_set(Client, AwsAccountId, DataSetId, Input0, Options) ->
 %% @doc Updates the permissions on a dataset.
 %%
 %% The permissions resource is
-%% `arn:aws:quicksight:region:aws-account-id:dataset/data-set-id`.
+%% `arn:aws:quicksight:region:aws-account-id:dataset/data-set-id'.
 update_data_set_permissions(Client, AwsAccountId, DataSetId, Input) ->
     update_data_set_permissions(Client, AwsAccountId, DataSetId, Input, []).
 update_data_set_permissions(Client, AwsAccountId, DataSetId, Input0, Options) ->
@@ -2019,7 +2019,7 @@ update_group(Client, AwsAccountId, GroupName, Namespace, Input0, Options) ->
 %%
 %% This operation updates only the optional parameter or parameters that are
 %% specified in the request. This overwrites all of the users included in
-%% `Identities`.
+%% `Identities'.
 update_i_a_m_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input) ->
     update_i_a_m_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input, []).
 update_i_a_m_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input0, Options) ->
@@ -2119,7 +2119,7 @@ update_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options) ->
 %% @doc Updates the resource permissions for a theme.
 %%
 %% Permissions apply to the action to grant or revoke permissions on, for
-%% example `"quicksight:DescribeTheme"`.
+%% example `"quicksight:DescribeTheme"'.
 %%
 %% Theme permissions apply in groupings. Valid groupings include the
 %% following for the three levels of permissions, which are user, owner, or
@@ -2127,37 +2127,37 @@ update_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options) ->
 %%
 %% <ul> <li> User
 %%
-%% <ul> <li> `"quicksight:DescribeTheme"`
+%% <ul> <li> `"quicksight:DescribeTheme"'
 %%
-%% </li> <li> `"quicksight:DescribeThemeAlias"`
+%% </li> <li> `"quicksight:DescribeThemeAlias"'
 %%
-%% </li> <li> `"quicksight:ListThemeAliases"`
+%% </li> <li> `"quicksight:ListThemeAliases"'
 %%
-%% </li> <li> `"quicksight:ListThemeVersions"`
+%% </li> <li> `"quicksight:ListThemeVersions"'
 %%
 %% </li> </ul> </li> <li> Owner
 %%
-%% <ul> <li> `"quicksight:DescribeTheme"`
+%% <ul> <li> `"quicksight:DescribeTheme"'
 %%
-%% </li> <li> `"quicksight:DescribeThemeAlias"`
+%% </li> <li> `"quicksight:DescribeThemeAlias"'
 %%
-%% </li> <li> `"quicksight:ListThemeAliases"`
+%% </li> <li> `"quicksight:ListThemeAliases"'
 %%
-%% </li> <li> `"quicksight:ListThemeVersions"`
+%% </li> <li> `"quicksight:ListThemeVersions"'
 %%
-%% </li> <li> `"quicksight:DeleteTheme"`
+%% </li> <li> `"quicksight:DeleteTheme"'
 %%
-%% </li> <li> `"quicksight:UpdateTheme"`
+%% </li> <li> `"quicksight:UpdateTheme"'
 %%
-%% </li> <li> `"quicksight:CreateThemeAlias"`
+%% </li> <li> `"quicksight:CreateThemeAlias"'
 %%
-%% </li> <li> `"quicksight:DeleteThemeAlias"`
+%% </li> <li> `"quicksight:DeleteThemeAlias"'
 %%
-%% </li> <li> `"quicksight:UpdateThemeAlias"`
+%% </li> <li> `"quicksight:UpdateThemeAlias"'
 %%
-%% </li> <li> `"quicksight:UpdateThemePermissions"`
+%% </li> <li> `"quicksight:UpdateThemePermissions"'
 %%
-%% </li> <li> `"quicksight:DescribeThemePermissions"`
+%% </li> <li> `"quicksight:DescribeThemePermissions"'
 %%
 %% </li> </ul> </li> <li> To specify no permissions, omit the permissions
 %% list.

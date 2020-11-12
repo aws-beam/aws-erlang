@@ -129,7 +129,7 @@ deregister_scalable_target(Client, Input, Options)
 %% @doc Gets information about the scalable targets in the specified
 %% namespace.
 %%
-%% You can filter the results using `ResourceIds` and `ScalableDimension`.
+%% You can filter the results using `ResourceIds' and `ScalableDimension'.
 describe_scalable_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scalable_targets(Client, Input, []).
@@ -140,7 +140,7 @@ describe_scalable_targets(Client, Input, Options)
 %% @doc Provides descriptive information about the scaling activities in the
 %% specified namespace from the previous six weeks.
 %%
-%% You can filter the results using `ResourceId` and `ScalableDimension`.
+%% You can filter the results using `ResourceId' and `ScalableDimension'.
 describe_scaling_activities(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scaling_activities(Client, Input, []).
@@ -151,8 +151,8 @@ describe_scaling_activities(Client, Input, Options)
 %% @doc Describes the Application Auto Scaling scaling policies for the
 %% specified service namespace.
 %%
-%% You can filter the results using `ResourceId`, `ScalableDimension`, and
-%% `PolicyNames`.
+%% You can filter the results using `ResourceId', `ScalableDimension', and
+%% `PolicyNames'.
 %%
 %% For more information, see Target Tracking Scaling Policies and Step
 %% Scaling Policies in the Application Auto Scaling User Guide.
@@ -166,8 +166,8 @@ describe_scaling_policies(Client, Input, Options)
 %% @doc Describes the Application Auto Scaling scheduled actions for the
 %% specified service namespace.
 %%
-%% You can filter the results using the `ResourceId`, `ScalableDimension`,
-%% and `ScheduledActionNames` parameters.
+%% You can filter the results using the `ResourceId', `ScalableDimension',
+%% and `ScheduledActionNames' parameters.
 %%
 %% For more information, see Scheduled Scaling in the Application Auto
 %% Scaling User Guide.

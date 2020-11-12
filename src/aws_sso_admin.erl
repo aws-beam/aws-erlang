@@ -68,7 +68,7 @@
 %% @doc Attaches an IAM managed policy ARN to a permission set.
 %%
 %% If the permission set is already referenced by one or more account
-%% assignments, you will need to call ` `ProvisionPermissionSet` ` after this
+%% assignments, you will need to call ` `ProvisionPermissionSet' ' after this
 %% action to apply the corresponding IAM policy updates to all assigned
 %% accounts.
 attach_managed_policy_to_permission_set(Client, Input)
@@ -84,12 +84,12 @@ attach_managed_policy_to_permission_set(Client, Input, Options)
 %% The term principal here refers to a user or group that is defined in AWS
 %% SSO.
 %%
-%% As part of a successful `CreateAccountAssignment` call, the specified
+%% As part of a successful `CreateAccountAssignment' call, the specified
 %% permission set will automatically be provisioned to the account in the
 %% form of an IAM policy attached to the SSO-created IAM role. If the
 %% permission set is subsequently updated, the corresponding IAM policies
 %% attached to roles in your accounts will not be updated automatically. In
-%% this case, you will need to call ` `ProvisionPermissionSet` ` to make
+%% this case, you will need to call ` `ProvisionPermissionSet' ' to make
 %% these updates.
 create_account_assignment(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -101,7 +101,7 @@ create_account_assignment(Client, Input, Options)
 %% @doc Creates a permission set within a specified SSO instance.
 %%
 %% To grant users and groups access to AWS account resources, use `
-%% `CreateAccountAssignment` `.
+%% `CreateAccountAssignment' '.
 create_permission_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_permission_set(Client, Input, []).
@@ -246,7 +246,7 @@ list_permission_set_provisioning_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPermissionSetProvisioningStatus">>, Input, Options).
 
-%% @doc Lists the `PermissionSet`s in an SSO instance.
+%% @doc Lists the `PermissionSet's in an SSO instance.
 list_permission_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_permission_sets(Client, Input, []).
@@ -283,7 +283,7 @@ provision_permission_set(Client, Input, Options)
 %% @doc Attaches an IAM inline policy to a permission set.
 %%
 %% If the permission set is already referenced by one or more account
-%% assignments, you will need to call ` `ProvisionPermissionSet` ` after this
+%% assignments, you will need to call ` `ProvisionPermissionSet' ' after this
 %% action to apply the corresponding IAM policy updates to all assigned
 %% accounts.
 put_inline_policy_to_permission_set(Client, Input)

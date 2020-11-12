@@ -46,7 +46,7 @@
 %% @doc Adds one or more tags to an ACM certificate.
 %%
 %% Tags are labels that you can use to identify and organize your AWS
-%% resources. Each tag consists of a `key` and an optional `value`. You
+%% resources. Each tag consists of a `key' and an optional `value'. You
 %% specify the certificate on input by its Amazon Resource Name (ARN). You
 %% specify the tag by using a key-value pair.
 %%
@@ -60,9 +60,9 @@
 %% used by the same website. For more information, see Tagging ACM
 %% certificates.
 %%
-%% To remove one or more tags, use the `RemoveTagsFromCertificate` action. To
+%% To remove one or more tags, use the `RemoveTagsFromCertificate' action. To
 %% view all of the tags that have been applied to the certificate, use the
-%% `ListTagsForCertificate` action.
+%% `ListTagsForCertificate' action.
 add_tags_to_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags_to_certificate(Client, Input, []).
@@ -73,8 +73,8 @@ add_tags_to_certificate(Client, Input, Options)
 %% @doc Deletes a certificate and its associated private key.
 %%
 %% If this action succeeds, the certificate no longer appears in the list
-%% that can be displayed by calling the `ListCertificates` action or be
-%% retrieved by calling the `GetCertificate` action. The certificate will not
+%% that can be displayed by calling the `ListCertificates' action or be
+%% retrieved by calling the `GetCertificate' action. The certificate will not
 %% be available for use by AWS services integrated with ACM.
 %%
 %% You cannot delete an ACM certificate that is being used by another AWS
@@ -154,23 +154,23 @@ get_certificate(Client, Input, Options)
 %% </li> <li> The certificate, private key, and certificate chain must be
 %% PEM-encoded.
 %%
-%% </li> <li> The current time must be between the `Not Before` and `Not
-%% After` certificate fields.
+%% </li> <li> The current time must be between the `Not Before' and `Not
+%% After' certificate fields.
 %%
-%% </li> <li> The `Issuer` field must not be empty.
+%% </li> <li> The `Issuer' field must not be empty.
 %%
 %% </li> <li> The OCSP authority URL, if present, must not exceed 1000
 %% characters.
 %%
-%% </li> <li> To import a new certificate, omit the `CertificateArn`
+%% </li> <li> To import a new certificate, omit the `CertificateArn'
 %% argument. Include this argument only when you want to replace a previously
 %% imported certifica
 %%
 %% </li> <li> When you import a certificate by using the CLI, you must
 %% specify the certificate, the certificate chain, and the private key by
-%% their file names preceded by `file://`. For example, you can specify a
-%% certificate saved in the `C:\temp` folder as
-%% `file://C:\temp\certificate_to_import.pem`. If you are making an HTTP or
+%% their file names preceded by `file://'. For example, you can specify a
+%% certificate saved in the `C:\temp' folder as
+%% `file://C:\temp\certificate_to_import.pem'. If you are making an HTTP or
 %% HTTPS Query request, include these arguments as BLOBs.
 %%
 %% </li> <li> When you import a certificate by using an SDK, you must specify
@@ -194,8 +194,8 @@ import_certificate(Client, Input, Options)
 %%
 %% You can request that only certificates that match a specific status be
 %% listed. You can also filter by specific attributes of the certificate.
-%% Default filtering returns only `RSA_2048` certificates. For more
-%% information, see `Filters`.
+%% Default filtering returns only `RSA_2048' certificates. For more
+%% information, see `Filters'.
 list_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_certificates(Client, Input, []).
@@ -207,8 +207,8 @@ list_certificates(Client, Input, Options)
 %%
 %% Use the certificate's Amazon Resource Name (ARN) to specify the
 %% certificate. To add a tag to an ACM certificate, use the
-%% `AddTagsToCertificate` action. To delete a tag, use the
-%% `RemoveTagsFromCertificate` action.
+%% `AddTagsToCertificate' action. To delete a tag, use the
+%% `RemoveTagsFromCertificate' action.
 list_tags_for_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_certificate(Client, Input, []).
@@ -223,9 +223,9 @@ list_tags_for_certificate(Client, Input, Options)
 %% regardless of value. If you specify a value, the tag is removed only if it
 %% is associated with the specified value.
 %%
-%% To add tags to a certificate, use the `AddTagsToCertificate` action. To
+%% To add tags to a certificate, use the `AddTagsToCertificate' action. To
 %% view all of the tags that have been applied to a specific ACM certificate,
-%% use the `ListTagsForCertificate` action.
+%% use the `ListTagsForCertificate' action.
 remove_tags_from_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags_from_certificate(Client, Input, []).
@@ -249,8 +249,8 @@ renew_certificate(Client, Input, Options)
 %% @doc Requests an ACM certificate for use with other AWS services.
 %%
 %% To request an ACM certificate, you must specify a fully qualified domain
-%% name (FQDN) in the `DomainName` parameter. You can also specify additional
-%% FQDNs in the `SubjectAlternativeNames` parameter.
+%% name (FQDN) in the `DomainName' parameter. You can also specify additional
+%% FQDNs in the `SubjectAlternativeNames' parameter.
 %%
 %% If you are requesting a private certificate, domain validation is not
 %% required. If you are requesting a public certificate, each domain name

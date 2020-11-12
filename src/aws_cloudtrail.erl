@@ -98,7 +98,7 @@ create_trail(Client, Input, Options)
 %% @doc Deletes a trail.
 %%
 %% This operation must be called from the region in which the trail was
-%% created. `DeleteTrail` cannot be called on the shadow trails (replicated
+%% created. `DeleteTrail' cannot be called on the shadow trails (replicated
 %% trails in other regions) of a trail that is enabled in all regions.
 delete_trail(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -142,11 +142,11 @@ get_event_selectors(Client, Input, Options)
 %% @doc Describes the settings for the Insights event selectors that you
 %% configured for your trail.
 %%
-%% `GetInsightSelectors` shows if CloudTrail Insights event logging is
+%% `GetInsightSelectors' shows if CloudTrail Insights event logging is
 %% enabled on the trail, and if it is, which insight types are enabled. If
-%% you run `GetInsightSelectors` on a trail that does not have Insights
+%% you run `GetInsightSelectors' on a trail that does not have Insights
 %% events enabled, the operation throws the exception
-%% `InsightNotEnabledException`
+%% `InsightNotEnabledException'
 %%
 %% For more information, see Logging CloudTrail Insights Events for Trails in
 %% the AWS CloudTrail User Guide.
@@ -272,21 +272,21 @@ lookup_events(Client, Input, Options)
 %% <ol> <li> You create an event selector for a trail and specify that you
 %% want write-only events.
 %%
-%% </li> <li> The EC2 `GetConsoleOutput` and `RunInstances` API operations
+%% </li> <li> The EC2 `GetConsoleOutput' and `RunInstances' API operations
 %% occur in your account.
 %%
 %% </li> <li> CloudTrail evaluates whether the events match your event
 %% selectors.
 %%
-%% </li> <li> The `RunInstances` is a write-only event and it matches your
+%% </li> <li> The `RunInstances' is a write-only event and it matches your
 %% event selector. The trail logs the event.
 %%
-%% </li> <li> The `GetConsoleOutput` is a read-only event but it doesn't
+%% </li> <li> The `GetConsoleOutput' is a read-only event but it doesn't
 %% match your event selector. The trail doesn't log the event.
 %%
-%% </li> </ol> The `PutEventSelectors` operation must be called from the
+%% </li> </ol> The `PutEventSelectors' operation must be called from the
 %% region in which the trail was created; otherwise, an
-%% `InvalidHomeRegionException` is thrown.
+%% `InvalidHomeRegionException' is thrown.
 %%
 %% You can configure up to five event selectors for each trail. For more
 %% information, see Logging Data and Management Events for Trails and Limits
@@ -301,9 +301,9 @@ put_event_selectors(Client, Input, Options)
 %% @doc Lets you enable Insights event logging by specifying the Insights
 %% selectors that you want to enable on an existing trail.
 %%
-%% You also use `PutInsightSelectors` to turn off Insights event logging, by
+%% You also use `PutInsightSelectors' to turn off Insights event logging, by
 %% passing an empty list of insight types. In this release, only
-%% `ApiCallRateInsight` is supported as an Insights selector.
+%% `ApiCallRateInsight' is supported as an Insights selector.
 put_insight_selectors(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_insight_selectors(Client, Input, []).
@@ -340,7 +340,7 @@ start_logging(Client, Input, Options)
 %% update a trail without stopping it first. This action is the only way to
 %% stop recording. For a trail enabled in all regions, this operation must be
 %% called from the region in which the trail was created, or an
-%% `InvalidHomeRegionException` will occur. This operation cannot be called
+%% `InvalidHomeRegionException' will occur. This operation cannot be called
 %% on the shadow trails (replicated trails in other regions) of a trail
 %% enabled in all regions.
 stop_logging(Client, Input)
@@ -355,9 +355,9 @@ stop_logging(Client, Input, Options)
 %% Changes to a trail do not require stopping the CloudTrail service. Use
 %% this action to designate an existing bucket for log delivery. If the
 %% existing bucket has previously been a target for CloudTrail log files, an
-%% IAM policy exists for the bucket. `UpdateTrail` must be called from the
+%% IAM policy exists for the bucket. `UpdateTrail' must be called from the
 %% region in which the trail was created; otherwise, an
-%% `InvalidHomeRegionException` is thrown.
+%% `InvalidHomeRegionException' is thrown.
 update_trail(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_trail(Client, Input, []).

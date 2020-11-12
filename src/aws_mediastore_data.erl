@@ -79,7 +79,7 @@ describe_object(Client, Path, Input0, Options) ->
 
 %% @doc Downloads the object at the specified path.
 %%
-%% If the object’s upload availability is set to `streaming`, AWS Elemental
+%% If the object’s upload availability is set to `streaming', AWS Elemental
 %% MediaStore downloads the object even if it’s still uploading the object.
 get_object(Client, Path, Range)
   when is_map(Client) ->

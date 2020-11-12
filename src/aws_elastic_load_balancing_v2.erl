@@ -134,7 +134,7 @@ add_listener_certificates(Client, Input, Options)
 %% Gateway Load Balancers, target groups, listeners, and rules.
 %%
 %% Each tag consists of a key and an optional value. If a resource already
-%% has a tag with the same key, `AddTags` updates its value.
+%% has a tag with the same key, `AddTags' updates its value.
 add_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags(Client, Input, []).
@@ -312,8 +312,8 @@ describe_account_limits(Client, Input, Options)
 %% specified HTTPS or TLS listener.
 %%
 %% If the default certificate is also in the certificate list, it appears
-%% twice in the results (once with `IsDefault` set to true and once with
-%% `IsDefault` set to false).
+%% twice in the results (once with `IsDefault' set to true and once with
+%% `IsDefault' set to false).
 %%
 %% For more information, see SSL certificates in the Application Load
 %% Balancers Guide or Server certificates in the Network Load Balancers
@@ -504,7 +504,7 @@ modify_target_group_attributes(Client, Input, Options)
 
 %% @doc Registers the specified targets with the specified target group.
 %%
-%% If the target is an EC2 instance, it must be in the `running` state when
+%% If the target is an EC2 instance, it must be in the `running' state when
 %% you register it.
 %%
 %% By default, the load balancer routes requests to registered targets using

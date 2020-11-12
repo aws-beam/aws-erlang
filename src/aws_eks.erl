@@ -69,7 +69,7 @@
 %% @doc Creates an Amazon EKS control plane.
 %%
 %% The Amazon EKS control plane consists of control plane instances that run
-%% the Kubernetes software, such as `etcd` and the API server. The control
+%% the Kubernetes software, such as `etcd' and the API server. The control
 %% plane runs in an account managed by AWS, and the Kubernetes API is exposed
 %% via the Amazon EKS API server endpoint. Each Amazon EKS cluster control
 %% plane is single-tenant and unique and runs on its own set of Amazon EC2
@@ -79,20 +79,20 @@
 %% Zones and fronted by an Elastic Load Balancing Network Load Balancer.
 %% Amazon EKS also provisions elastic network interfaces in your VPC subnets
 %% to provide connectivity from the control plane instances to the worker
-%% nodes (for example, to support `kubectl exec`, `logs`, and `proxy` data
+%% nodes (for example, to support `kubectl exec', `logs', and `proxy' data
 %% flows).
 %%
 %% Amazon EKS worker nodes run in your AWS account and connect to your
 %% cluster's control plane via the Kubernetes API server endpoint and a
 %% certificate file that is created for your cluster.
 %%
-%% You can use the `endpointPublicAccess` and `endpointPrivateAccess`
+%% You can use the `endpointPublicAccess' and `endpointPrivateAccess'
 %% parameters to enable or disable public and private access to your
 %% cluster's Kubernetes API server endpoint. By default, public access is
 %% enabled, and private access is disabled. For more information, see Amazon
 %% EKS Cluster Endpoint Access Control in the Amazon EKS User Guide .
 %%
-%% You can use the `logging` parameter to enable or disable exporting the
+%% You can use the `logging' parameter to enable or disable exporting the
 %% Kubernetes control plane logs for your cluster to CloudWatch Logs. By
 %% default, cluster control plane logs aren't exported to CloudWatch Logs.
 %% For more information, see Amazon EKS Cluster Control Plane Logs in the
@@ -139,7 +139,7 @@ create_cluster(Client, Input0, Options) ->
 %% When you create a Fargate profile, you must specify a pod execution role
 %% to use with the pods that are scheduled with the profile. This role is
 %% added to the cluster's Kubernetes Role Based Access Control (RBAC) for
-%% authorization so that the `kubelet` that is running on the Fargate
+%% authorization so that the `kubelet' that is running on the Fargate
 %% infrastructure can register with your Amazon EKS cluster so that it can
 %% appear in your cluster as a node. The pod execution role also provides IAM
 %% permissions to the Fargate infrastructure to allow read access to Amazon
@@ -150,7 +150,7 @@ create_cluster(Client, Input0, Options) ->
 %% profile to replace an existing profile and then delete the original after
 %% the updated profile has finished creating.
 %%
-%% If any Fargate profiles in a cluster are in the `DELETING` status, you
+%% If any Fargate profiles in a cluster are in the `DELETING' status, you
 %% must wait for that Fargate profile to finish deleting before you can
 %% create any other profiles in that cluster.
 %%
@@ -211,7 +211,7 @@ create_nodegroup(Client, ClusterName, Input0, Options) ->
 %%
 %% If you have managed node groups or Fargate profiles attached to the
 %% cluster, you must delete them first. For more information, see
-%% `DeleteNodegroup` and `DeleteFargateProfile`.
+%% `DeleteNodegroup' and `DeleteFargateProfile'.
 delete_cluster(Client, Name, Input) ->
     delete_cluster(Client, Name, Input, []).
 delete_cluster(Client, Name, Input0, Options) ->
@@ -235,7 +235,7 @@ delete_cluster(Client, Name, Input0, Options) ->
 %% longer match any Fargate profiles, then they are not scheduled on Fargate
 %% and they may remain in a pending state.
 %%
-%% Only one Fargate profile in a cluster can be in the `DELETING` status at a
+%% Only one Fargate profile in a cluster can be in the `DELETING' status at a
 %% time. You must wait for a Fargate profile to finish deleting before you
 %% can delete any other profiles in that cluster.
 delete_fargate_profile(Client, ClusterName, FargateProfileName, Input) ->
@@ -272,12 +272,12 @@ delete_nodegroup(Client, ClusterName, NodegroupName, Input0, Options) ->
 %% @doc Returns descriptive information about an Amazon EKS cluster.
 %%
 %% The API server endpoint and certificate authority data returned by this
-%% operation are required for `kubelet` and `kubectl` to communicate with
+%% operation are required for `kubelet' and `kubectl' to communicate with
 %% your Kubernetes API server. For more information, see Create a kubeconfig
 %% for Amazon EKS.
 %%
 %% The API server endpoint and certificate authority data aren't available
-%% until the cluster reaches the `ACTIVE` state.
+%% until the cluster reaches the `ACTIVE' state.
 describe_cluster(Client, Name)
   when is_map(Client) ->
     describe_cluster(Client, Name, []).
@@ -325,8 +325,8 @@ describe_nodegroup(Client, ClusterName, NodegroupName, Options)
 %% @doc Returns descriptive information about an update against your Amazon
 %% EKS cluster or associated managed node group.
 %%
-%% When the status of the update is `Succeeded`, the update is complete. If
-%% an update fails, the status is `Failed`, and an error detail explains the
+%% When the status of the update is `Succeeded', the update is complete. If
+%% an update fails, the status is `Failed', and an error detail explains the
 %% reason for the failure.
 describe_update(Client, Name, UpdateId, NodegroupName)
   when is_map(Client) ->
@@ -449,7 +449,7 @@ list_updates(Client, Name, MaxResults, NextToken, NodegroupName, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Associates the specified tags to a resource with the specified
-%% `resourceArn`.
+%% `resourceArn'.
 %%
 %% If existing tags on a resource are not specified in the request
 %% parameters, they are not changed. When a resource is deleted, the tags
@@ -494,7 +494,7 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 %%
 %% Your cluster continues to function during the update. The response output
 %% includes an update ID that you can use to track the status of your cluster
-%% update with the `DescribeUpdate` API operation.
+%% update with the `DescribeUpdate' API operation.
 %%
 %% You can use this API operation to enable or disable exporting the
 %% Kubernetes control plane logs for your cluster to CloudWatch Logs. By
@@ -516,9 +516,9 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 %% existing cluster.
 %%
 %% Cluster updates are asynchronous, and they should finish within a few
-%% minutes. During an update, the cluster status moves to `UPDATING` (this
+%% minutes. During an update, the cluster status moves to `UPDATING' (this
 %% status transition is eventually consistent). When the update is complete
-%% (either `Failed` or `Successful`), the cluster status moves to `Active`.
+%% (either `Failed' or `Successful'), the cluster status moves to `Active'.
 update_cluster_config(Client, Name, Input) ->
     update_cluster_config(Client, Name, Input, []).
 update_cluster_config(Client, Name, Input0, Options) ->
@@ -538,12 +538,12 @@ update_cluster_config(Client, Name, Input0, Options) ->
 %%
 %% Your cluster continues to function during the update. The response output
 %% includes an update ID that you can use to track the status of your cluster
-%% update with the `DescribeUpdate` API operation.
+%% update with the `DescribeUpdate' API operation.
 %%
 %% Cluster updates are asynchronous, and they should finish within a few
-%% minutes. During an update, the cluster status moves to `UPDATING` (this
+%% minutes. During an update, the cluster status moves to `UPDATING' (this
 %% status transition is eventually consistent). When the update is complete
-%% (either `Failed` or `Successful`), the cluster status moves to `Active`.
+%% (either `Failed' or `Successful'), the cluster status moves to `Active'.
 %%
 %% If your cluster has managed node groups attached to it, all of your node
 %% groups’ Kubernetes versions must match the cluster’s Kubernetes version in
@@ -567,7 +567,7 @@ update_cluster_version(Client, Name, Input0, Options) ->
 %%
 %% Your node group continues to function during the update. The response
 %% output includes an update ID that you can use to track the status of your
-%% node group update with the `DescribeUpdate` API operation. Currently you
+%% node group update with the `DescribeUpdate' API operation. Currently you
 %% can update the Kubernetes labels for a node group or the scaling
 %% configuration.
 update_nodegroup_config(Client, ClusterName, NodegroupName, Input) ->
@@ -609,7 +609,7 @@ update_nodegroup_config(Client, ClusterName, NodegroupName, Input0, Options) ->
 %% When a node in a managed node group is terminated due to a scaling action
 %% or update, the pods in that node are drained first. Amazon EKS attempts to
 %% drain the nodes gracefully and will fail if it is unable to do so. You can
-%% `force` the update if Amazon EKS is unable to drain the nodes as a result
+%% `force' the update if Amazon EKS is unable to drain the nodes as a result
 %% of a pod disruption budget issue.
 update_nodegroup_version(Client, ClusterName, NodegroupName, Input) ->
     update_nodegroup_version(Client, ClusterName, NodegroupName, Input, []).

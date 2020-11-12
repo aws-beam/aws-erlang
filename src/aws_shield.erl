@@ -70,7 +70,7 @@
 %%
 %% You can associate up to 10 Amazon S3 buckets with your subscription.
 %%
-%% To use the services of the DRT and make an `AssociateDRTLogBucket`
+%% To use the services of the DRT and make an `AssociateDRTLogBucket'
 %% request, you must be subscribed to the Business Support plan or the
 %% Enterprise Support plan.
 associate_d_r_t_log_bucket(Client, Input)
@@ -87,15 +87,15 @@ associate_d_r_t_log_bucket(Client, Input, Options)
 %% This enables the DRT to inspect your AWS WAF configuration and create or
 %% update AWS WAF rules and web ACLs.
 %%
-%% You can associate only one `RoleArn` with your subscription. If you submit
-%% an `AssociateDRTRole` request for an account that already has an
-%% associated role, the new `RoleArn` will replace the existing `RoleArn`.
+%% You can associate only one `RoleArn' with your subscription. If you submit
+%% an `AssociateDRTRole' request for an account that already has an
+%% associated role, the new `RoleArn' will replace the existing `RoleArn'.
 %%
-%% Prior to making the `AssociateDRTRole` request, you must attach the
+%% Prior to making the `AssociateDRTRole' request, you must attach the
 %% AWSShieldDRTAccessPolicy managed policy to the role you will specify in
 %% the request. For more information see Attaching and Detaching IAM
 %% Policies. The role must also trust the service principal `
-%% drt.shield.amazonaws.com`. For more information, see IAM JSON Policy
+%% drt.shield.amazonaws.com'. For more information, see IAM JSON Policy
 %% Elements: Principal.
 %%
 %% The DRT will have access only to your AWS WAF and Shield resources. By
@@ -104,11 +104,11 @@ associate_d_r_t_log_bucket(Client, Input, Options)
 %% your behalf. The DRT takes these actions only if explicitly authorized by
 %% you.
 %%
-%% You must have the `iam:PassRole` permission to make an `AssociateDRTRole`
+%% You must have the `iam:PassRole' permission to make an `AssociateDRTRole'
 %% request. For more information, see Granting a User Permissions to Pass a
 %% Role to an AWS Service.
 %%
-%% To use the services of the DRT and make an `AssociateDRTRole` request, you
+%% To use the services of the DRT and make an `AssociateDRTRole' request, you
 %% must be subscribed to the Business Support plan or the Enterprise Support
 %% plan.
 associate_d_r_t_role(Client, Input)
@@ -142,7 +142,7 @@ associate_health_check(Client, Input, Options)
 %%
 %% After you have initialized proactive engagement using this call, to
 %% disable or enable proactive engagement, use the calls
-%% `DisableProactiveEngagement` and `EnableProactiveEngagement`.
+%% `DisableProactiveEngagement' and `EnableProactiveEngagement'.
 %%
 %% This call defines the list of email addresses and phone numbers that the
 %% DDoS Response Team (DRT) can use to contact you for escalations to the DRT
@@ -150,7 +150,7 @@ associate_health_check(Client, Input, Options)
 %%
 %% The contacts that you provide in the request replace any contacts that
 %% were already defined. If you already have contacts defined and want to use
-%% them, retrieve the list using `DescribeEmergencyContactSettings` and then
+%% them, retrieve the list using `DescribeEmergencyContactSettings' and then
 %% provide it to this call.
 associate_proactive_engagement_details(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -181,7 +181,7 @@ create_protection(Client, Input, Options)
 %%
 %% When you initally create a subscription, your subscription is set to be
 %% automatically renewed at the end of the existing subscription period. You
-%% can change this by submitting an `UpdateSubscription` request.
+%% can change this by submitting an `UpdateSubscription' request.
 create_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_subscription(Client, Input, []).
@@ -189,7 +189,7 @@ create_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSubscription">>, Input, Options).
 
-%% @doc Deletes an AWS Shield Advanced `Protection`.
+%% @doc Deletes an AWS Shield Advanced `Protection'.
 delete_protection(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_protection(Client, Input, []).
@@ -237,7 +237,7 @@ describe_emergency_contact_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEmergencyContactSettings">>, Input, Options).
 
-%% @doc Lists the details of a `Protection` object.
+%% @doc Lists the details of a `Protection' object.
 describe_protection(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_protection(Client, Input, []).
@@ -267,11 +267,11 @@ disable_proactive_engagement(Client, Input, Options)
 %% @doc Removes the DDoS Response Team's (DRT) access to the specified Amazon
 %% S3 bucket containing your AWS WAF logs.
 %%
-%% To make a `DisassociateDRTLogBucket` request, you must be subscribed to
+%% To make a `DisassociateDRTLogBucket' request, you must be subscribed to
 %% the Business Support plan or the Enterprise Support plan. However, if you
 %% are not subscribed to one of these support plans, but had been previously
 %% and had granted the DRT access to your account, you can submit a
-%% `DisassociateDRTLogBucket` request to remove this access.
+%% `DisassociateDRTLogBucket' request to remove this access.
 disassociate_d_r_t_log_bucket(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_d_r_t_log_bucket(Client, Input, []).
@@ -281,11 +281,11 @@ disassociate_d_r_t_log_bucket(Client, Input, Options)
 
 %% @doc Removes the DDoS Response Team's (DRT) access to your AWS account.
 %%
-%% To make a `DisassociateDRTRole` request, you must be subscribed to the
+%% To make a `DisassociateDRTRole' request, you must be subscribed to the
 %% Business Support plan or the Enterprise Support plan. However, if you are
 %% not subscribed to one of these support plans, but had been previously and
 %% had granted the DRT access to your account, you can submit a
-%% `DisassociateDRTRole` request to remove this access.
+%% `DisassociateDRTRole' request to remove this access.
 disassociate_d_r_t_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_d_r_t_role(Client, Input, []).
@@ -321,7 +321,7 @@ enable_proactive_engagement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableProactiveEngagement">>, Input, Options).
 
-%% @doc Returns the `SubscriptionState`, either `Active` or `Inactive`.
+%% @doc Returns the `SubscriptionState', either `Active' or `Inactive'.
 get_subscription_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_subscription_state(Client, Input, []).
@@ -338,7 +338,7 @@ list_attacks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAttacks">>, Input, Options).
 
-%% @doc Lists all `Protection` objects for the account.
+%% @doc Lists all `Protection' objects for the account.
 list_protections(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_protections(Client, Input, []).

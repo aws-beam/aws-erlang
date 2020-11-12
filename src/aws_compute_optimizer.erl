@@ -44,9 +44,9 @@
 
 %% @doc Describes recommendation export jobs created in the last seven days.
 %%
-%% Use the `ExportAutoScalingGroupRecommendations` or
-%% `ExportEC2InstanceRecommendations` actions to request an export of your
-%% recommendations. Then use the `DescribeRecommendationExportJobs` action to
+%% Use the `ExportAutoScalingGroupRecommendations' or
+%% `ExportEC2InstanceRecommendations' actions to request an export of your
+%% recommendations. Then use the `DescribeRecommendationExportJobs' action to
 %% view your export jobs.
 describe_recommendation_export_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -118,8 +118,8 @@ get_e_c2_instance_recommendations(Client, Input, Options)
 %% @doc Returns the projected utilization metrics of Amazon EC2 instance
 %% recommendations.
 %%
-%% The `Cpu` and `Memory` metrics are the only projected utilization metrics
-%% returned when you run this action. Additionally, the `Memory` metric is
+%% The `Cpu' and `Memory' metrics are the only projected utilization metrics
+%% returned when you run this action. Additionally, the `Memory' metric is
 %% returned only for resources that have the unified CloudWatch agent
 %% installed on them. For more information, see Enabling Memory Utilization
 %% with the CloudWatch Agent.

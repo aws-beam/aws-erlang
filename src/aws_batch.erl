@@ -70,10 +70,10 @@
 
 %% @doc Cancels a job in an AWS Batch job queue.
 %%
-%% Jobs that are in the `SUBMITTED`, `PENDING`, or `RUNNABLE` state are
-%% cancelled. Jobs that have progressed to `STARTING` or `RUNNING` are not
+%% Jobs that are in the `SUBMITTED', `PENDING', or `RUNNABLE' state are
+%% cancelled. Jobs that have progressed to `STARTING' or `RUNNING' are not
 %% cancelled (but the API operation still succeeds, even if no job is
-%% cancelled); these jobs must be terminated with the `TerminateJob`
+%% cancelled); these jobs must be terminated with the `TerminateJob'
 %% operation.
 cancel_job(Client, Input) ->
     cancel_job(Client, Input, []).
@@ -92,7 +92,7 @@ cancel_job(Client, Input0, Options) ->
 
 %% @doc Creates an AWS Batch compute environment.
 %%
-%% You can create `MANAGED` or `UNMANAGED` compute environments.
+%% You can create `MANAGED' or `UNMANAGED' compute environments.
 %%
 %% In a managed compute environment, AWS Batch manages the capacity and
 %% instance types of the compute resources within the environment. This is
@@ -111,7 +111,7 @@ cancel_job(Client, Input0, Options) ->
 %% ECS container instance AMI specification. For more information, see
 %% Container Instance AMIs in the Amazon Elastic Container Service Developer
 %% Guide. After you have created your unmanaged compute environment, you can
-%% use the `DescribeComputeEnvironments` operation to find the Amazon ECS
+%% use the `DescribeComputeEnvironments' operation to find the Amazon ECS
 %% cluster that is associated with it. Then, manually launch your container
 %% instances into that Amazon ECS cluster. For more information, see
 %% Launching an Amazon ECS Container Instance in the Amazon Elastic Container
@@ -175,8 +175,8 @@ create_job_queue(Client, Input0, Options) ->
 %% @doc Deletes an AWS Batch compute environment.
 %%
 %% Before you can delete a compute environment, you must set its state to
-%% `DISABLED` with the `UpdateComputeEnvironment` API operation and
-%% disassociate it from any job queues with the `UpdateJobQueue` API
+%% `DISABLED' with the `UpdateComputeEnvironment' API operation and
+%% disassociate it from any job queues with the `UpdateJobQueue' API
 %% operation.
 delete_compute_environment(Client, Input) ->
     delete_compute_environment(Client, Input, []).
@@ -195,12 +195,12 @@ delete_compute_environment(Client, Input0, Options) ->
 
 %% @doc Deletes the specified job queue.
 %%
-%% You must first disable submissions for a queue with the `UpdateJobQueue`
+%% You must first disable submissions for a queue with the `UpdateJobQueue'
 %% operation. All jobs in the queue are terminated when you delete a job
 %% queue.
 %%
 %% It is not necessary to disassociate compute environments from a queue
-%% before submitting a `DeleteJobQueue` request.
+%% before submitting a `DeleteJobQueue' request.
 delete_job_queue(Client, Input) ->
     delete_job_queue(Client, Input, []).
 delete_job_queue(Client, Input0, Options) ->
@@ -237,7 +237,7 @@ deregister_job_definition(Client, Input0, Options) ->
 %% @doc Describes one or more of your compute environments.
 %%
 %% If you are using an unmanaged compute environment, you can use the
-%% `DescribeComputeEnvironment` operation to determine the `ecsClusterArn`
+%% `DescribeComputeEnvironment' operation to determine the `ecsClusterArn'
 %% that you should launch your Amazon ECS container instances into.
 describe_compute_environments(Client, Input) ->
     describe_compute_environments(Client, Input, []).
@@ -256,7 +256,7 @@ describe_compute_environments(Client, Input0, Options) ->
 
 %% @doc Describes a list of job definitions.
 %%
-%% You can specify a `status` (such as `ACTIVE`) to only return job
+%% You can specify a `status' (such as `ACTIVE') to only return job
 %% definitions that match that status.
 describe_job_definitions(Client, Input) ->
     describe_job_definitions(Client, Input, []).
@@ -316,8 +316,8 @@ describe_jobs(Client, Input0, Options) ->
 %%
 %% </li> <li> an array job ID to return a list of that job's children
 %%
-%% </li> </ul> You can filter the results by job status with the `jobStatus`
-%% parameter. If you do not specify a status, only `RUNNING` jobs are
+%% </li> </ul> You can filter the results by job status with the `jobStatus'
+%% parameter. If you do not specify a status, only `RUNNING' jobs are
 %% returned.
 list_jobs(Client, Input) ->
     list_jobs(Client, Input, []).
@@ -371,7 +371,7 @@ register_job_definition(Client, Input0, Options) ->
 
 %% @doc Submits an AWS Batch job from a job definition.
 %%
-%% Parameters specified during `SubmitJob` override parameters defined in the
+%% Parameters specified during `SubmitJob' override parameters defined in the
 %% job definition.
 submit_job(Client, Input) ->
     submit_job(Client, Input, []).
@@ -389,7 +389,7 @@ submit_job(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Associates the specified tags to a resource with the specified
-%% `resourceArn`.
+%% `resourceArn'.
 %%
 %% If existing tags on a resource are not specified in the request
 %% parameters, they are not changed. When a resource is deleted, the tags
@@ -414,9 +414,9 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 
 %% @doc Terminates a job in a job queue.
 %%
-%% Jobs that are in the `STARTING` or `RUNNING` state are terminated, which
-%% causes them to transition to `FAILED`. Jobs that have not progressed to
-%% the `STARTING` state are cancelled.
+%% Jobs that are in the `STARTING' or `RUNNING' state are terminated, which
+%% causes them to transition to `FAILED'. Jobs that have not progressed to
+%% the `STARTING' state are cancelled.
 terminate_job(Client, Input) ->
     terminate_job(Client, Input, []).
 terminate_job(Client, Input0, Options) ->

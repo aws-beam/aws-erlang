@@ -12,275 +12,275 @@
 %%
 %% Repositories, by calling the following:
 %%
-%% <ul> <li> `BatchGetRepositories`, which returns information about one or
+%% <ul> <li> `BatchGetRepositories', which returns information about one or
 %% more repositories associated with your AWS account.
 %%
-%% </li> <li> `CreateRepository`, which creates an AWS CodeCommit repository.
+%% </li> <li> `CreateRepository', which creates an AWS CodeCommit repository.
 %%
-%% </li> <li> `DeleteRepository`, which deletes an AWS CodeCommit repository.
+%% </li> <li> `DeleteRepository', which deletes an AWS CodeCommit repository.
 %%
-%% </li> <li> `GetRepository`, which returns information about a specified
+%% </li> <li> `GetRepository', which returns information about a specified
 %% repository.
 %%
-%% </li> <li> `ListRepositories`, which lists all AWS CodeCommit repositories
+%% </li> <li> `ListRepositories', which lists all AWS CodeCommit repositories
 %% associated with your AWS account.
 %%
-%% </li> <li> `UpdateRepositoryDescription`, which sets or updates the
+%% </li> <li> `UpdateRepositoryDescription', which sets or updates the
 %% description of the repository.
 %%
-%% </li> <li> `UpdateRepositoryName`, which changes the name of the
+%% </li> <li> `UpdateRepositoryName', which changes the name of the
 %% repository. If you change the name of a repository, no other users of that
 %% repository can access it until you send them the new HTTPS or SSH URL to
 %% use.
 %%
 %% </li> </ul> Branches, by calling the following:
 %%
-%% <ul> <li> `CreateBranch`, which creates a branch in a specified
+%% <ul> <li> `CreateBranch', which creates a branch in a specified
 %% repository.
 %%
-%% </li> <li> `DeleteBranch`, which deletes the specified branch in a
+%% </li> <li> `DeleteBranch', which deletes the specified branch in a
 %% repository unless it is the default branch.
 %%
-%% </li> <li> `GetBranch`, which returns information about a specified
+%% </li> <li> `GetBranch', which returns information about a specified
 %% branch.
 %%
-%% </li> <li> `ListBranches`, which lists all branches for a specified
+%% </li> <li> `ListBranches', which lists all branches for a specified
 %% repository.
 %%
-%% </li> <li> `UpdateDefaultBranch`, which changes the default branch for a
+%% </li> <li> `UpdateDefaultBranch', which changes the default branch for a
 %% repository.
 %%
 %% </li> </ul> Files, by calling the following:
 %%
-%% <ul> <li> `DeleteFile`, which deletes the content of a specified file from
+%% <ul> <li> `DeleteFile', which deletes the content of a specified file from
 %% a specified branch.
 %%
-%% </li> <li> `GetBlob`, which returns the base-64 encoded content of an
+%% </li> <li> `GetBlob', which returns the base-64 encoded content of an
 %% individual Git blob object in a repository.
 %%
-%% </li> <li> `GetFile`, which returns the base-64 encoded content of a
+%% </li> <li> `GetFile', which returns the base-64 encoded content of a
 %% specified file.
 %%
-%% </li> <li> `GetFolder`, which returns the contents of a specified folder
+%% </li> <li> `GetFolder', which returns the contents of a specified folder
 %% or directory.
 %%
-%% </li> <li> `PutFile`, which adds or modifies a single file in a specified
+%% </li> <li> `PutFile', which adds or modifies a single file in a specified
 %% repository and branch.
 %%
 %% </li> </ul> Commits, by calling the following:
 %%
-%% <ul> <li> `BatchGetCommits`, which returns information about one or more
+%% <ul> <li> `BatchGetCommits', which returns information about one or more
 %% commits in a repository.
 %%
-%% </li> <li> `CreateCommit`, which creates a commit for changes to a
+%% </li> <li> `CreateCommit', which creates a commit for changes to a
 %% repository.
 %%
-%% </li> <li> `GetCommit`, which returns information about a commit,
+%% </li> <li> `GetCommit', which returns information about a commit,
 %% including commit messages and author and committer information.
 %%
-%% </li> <li> `GetDifferences`, which returns information about the
+%% </li> <li> `GetDifferences', which returns information about the
 %% differences in a valid commit specifier (such as a branch, tag, HEAD,
 %% commit ID, or other fully qualified reference).
 %%
 %% </li> </ul> Merges, by calling the following:
 %%
-%% <ul> <li> `BatchDescribeMergeConflicts`, which returns information about
+%% <ul> <li> `BatchDescribeMergeConflicts', which returns information about
 %% conflicts in a merge between commits in a repository.
 %%
-%% </li> <li> `CreateUnreferencedMergeCommit`, which creates an unreferenced
+%% </li> <li> `CreateUnreferencedMergeCommit', which creates an unreferenced
 %% commit between two branches or commits for the purpose of comparing them
 %% and identifying any potential conflicts.
 %%
-%% </li> <li> `DescribeMergeConflicts`, which returns information about merge
+%% </li> <li> `DescribeMergeConflicts', which returns information about merge
 %% conflicts between the base, source, and destination versions of a file in
 %% a potential merge.
 %%
-%% </li> <li> `GetMergeCommit`, which returns information about the merge
+%% </li> <li> `GetMergeCommit', which returns information about the merge
 %% between a source and destination commit.
 %%
-%% </li> <li> `GetMergeConflicts`, which returns information about merge
+%% </li> <li> `GetMergeConflicts', which returns information about merge
 %% conflicts between the source and destination branch in a pull request.
 %%
-%% </li> <li> `GetMergeOptions`, which returns information about the
+%% </li> <li> `GetMergeOptions', which returns information about the
 %% available merge options between two branches or commit specifiers.
 %%
-%% </li> <li> `MergeBranchesByFastForward`, which merges two branches using
+%% </li> <li> `MergeBranchesByFastForward', which merges two branches using
 %% the fast-forward merge option.
 %%
-%% </li> <li> `MergeBranchesBySquash`, which merges two branches using the
+%% </li> <li> `MergeBranchesBySquash', which merges two branches using the
 %% squash merge option.
 %%
-%% </li> <li> `MergeBranchesByThreeWay`, which merges two branches using the
+%% </li> <li> `MergeBranchesByThreeWay', which merges two branches using the
 %% three-way merge option.
 %%
 %% </li> </ul> Pull requests, by calling the following:
 %%
-%% <ul> <li> `CreatePullRequest`, which creates a pull request in a specified
+%% <ul> <li> `CreatePullRequest', which creates a pull request in a specified
 %% repository.
 %%
-%% </li> <li> `CreatePullRequestApprovalRule`, which creates an approval rule
+%% </li> <li> `CreatePullRequestApprovalRule', which creates an approval rule
 %% for a specified pull request.
 %%
-%% </li> <li> `DeletePullRequestApprovalRule`, which deletes an approval rule
+%% </li> <li> `DeletePullRequestApprovalRule', which deletes an approval rule
 %% for a specified pull request.
 %%
-%% </li> <li> `DescribePullRequestEvents`, which returns information about
+%% </li> <li> `DescribePullRequestEvents', which returns information about
 %% one or more pull request events.
 %%
-%% </li> <li> `EvaluatePullRequestApprovalRules`, which evaluates whether a
+%% </li> <li> `EvaluatePullRequestApprovalRules', which evaluates whether a
 %% pull request has met all the conditions specified in its associated
 %% approval rules.
 %%
-%% </li> <li> `GetCommentsForPullRequest`, which returns information about
+%% </li> <li> `GetCommentsForPullRequest', which returns information about
 %% comments on a specified pull request.
 %%
-%% </li> <li> `GetPullRequest`, which returns information about a specified
+%% </li> <li> `GetPullRequest', which returns information about a specified
 %% pull request.
 %%
-%% </li> <li> `GetPullRequestApprovalStates`, which returns information about
+%% </li> <li> `GetPullRequestApprovalStates', which returns information about
 %% the approval states for a specified pull request.
 %%
-%% </li> <li> `GetPullRequestOverrideState`, which returns information about
+%% </li> <li> `GetPullRequestOverrideState', which returns information about
 %% whether approval rules have been set aside (overriden) for a pull request,
 %% and if so, the Amazon Resource Name (ARN) of the user or identity that
 %% overrode the rules and their requirements for the pull request.
 %%
-%% </li> <li> `ListPullRequests`, which lists all pull requests for a
+%% </li> <li> `ListPullRequests', which lists all pull requests for a
 %% repository.
 %%
-%% </li> <li> `MergePullRequestByFastForward`, which merges the source
+%% </li> <li> `MergePullRequestByFastForward', which merges the source
 %% destination branch of a pull request into the specified destination branch
 %% for that pull request using the fast-forward merge option.
 %%
-%% </li> <li> `MergePullRequestBySquash`, which merges the source destination
+%% </li> <li> `MergePullRequestBySquash', which merges the source destination
 %% branch of a pull request into the specified destination branch for that
 %% pull request using the squash merge option.
 %%
-%% </li> <li> `MergePullRequestByThreeWay`. which merges the source
+%% </li> <li> `MergePullRequestByThreeWay'. which merges the source
 %% destination branch of a pull request into the specified destination branch
 %% for that pull request using the three-way merge option.
 %%
-%% </li> <li> `OverridePullRequestApprovalRules`, which sets aside all
+%% </li> <li> `OverridePullRequestApprovalRules', which sets aside all
 %% approval rule requirements for a pull request.
 %%
-%% </li> <li> `PostCommentForPullRequest`, which posts a comment to a pull
+%% </li> <li> `PostCommentForPullRequest', which posts a comment to a pull
 %% request at the specified line, file, or request.
 %%
-%% </li> <li> `UpdatePullRequestApprovalRuleContent`, which updates the
+%% </li> <li> `UpdatePullRequestApprovalRuleContent', which updates the
 %% structure of an approval rule for a pull request.
 %%
-%% </li> <li> `UpdatePullRequestApprovalState`, which updates the state of an
+%% </li> <li> `UpdatePullRequestApprovalState', which updates the state of an
 %% approval on a pull request.
 %%
-%% </li> <li> `UpdatePullRequestDescription`, which updates the description
+%% </li> <li> `UpdatePullRequestDescription', which updates the description
 %% of a pull request.
 %%
-%% </li> <li> `UpdatePullRequestStatus`, which updates the status of a pull
+%% </li> <li> `UpdatePullRequestStatus', which updates the status of a pull
 %% request.
 %%
-%% </li> <li> `UpdatePullRequestTitle`, which updates the title of a pull
+%% </li> <li> `UpdatePullRequestTitle', which updates the title of a pull
 %% request.
 %%
 %% </li> </ul> Approval rule templates, by calling the following:
 %%
-%% <ul> <li> `AssociateApprovalRuleTemplateWithRepository`, which associates
+%% <ul> <li> `AssociateApprovalRuleTemplateWithRepository', which associates
 %% a template with a specified repository. After the template is associated
 %% with a repository, AWS CodeCommit creates approval rules that match the
 %% template conditions on every pull request created in the specified
 %% repository.
 %%
-%% </li> <li> `BatchAssociateApprovalRuleTemplateWithRepositories`, which
+%% </li> <li> `BatchAssociateApprovalRuleTemplateWithRepositories', which
 %% associates a template with one or more specified repositories. After the
 %% template is associated with a repository, AWS CodeCommit creates approval
 %% rules that match the template conditions on every pull request created in
 %% the specified repositories.
 %%
-%% </li> <li> `BatchDisassociateApprovalRuleTemplateFromRepositories`, which
+%% </li> <li> `BatchDisassociateApprovalRuleTemplateFromRepositories', which
 %% removes the association between a template and specified repositories so
 %% that approval rules based on the template are not automatically created
 %% when pull requests are created in those repositories.
 %%
-%% </li> <li> `CreateApprovalRuleTemplate`, which creates a template for
+%% </li> <li> `CreateApprovalRuleTemplate', which creates a template for
 %% approval rules that can then be associated with one or more repositories
 %% in your AWS account.
 %%
-%% </li> <li> `DeleteApprovalRuleTemplate`, which deletes the specified
+%% </li> <li> `DeleteApprovalRuleTemplate', which deletes the specified
 %% template. It does not remove approval rules on pull requests already
 %% created with the template.
 %%
-%% </li> <li> `DisassociateApprovalRuleTemplateFromRepository`, which removes
+%% </li> <li> `DisassociateApprovalRuleTemplateFromRepository', which removes
 %% the association between a template and a repository so that approval rules
 %% based on the template are not automatically created when pull requests are
 %% created in the specified repository.
 %%
-%% </li> <li> `GetApprovalRuleTemplate`, which returns information about an
+%% </li> <li> `GetApprovalRuleTemplate', which returns information about an
 %% approval rule template.
 %%
-%% </li> <li> `ListApprovalRuleTemplates`, which lists all approval rule
+%% </li> <li> `ListApprovalRuleTemplates', which lists all approval rule
 %% templates in the AWS Region in your AWS account.
 %%
-%% </li> <li> `ListAssociatedApprovalRuleTemplatesForRepository`, which lists
+%% </li> <li> `ListAssociatedApprovalRuleTemplatesForRepository', which lists
 %% all approval rule templates that are associated with a specified
 %% repository.
 %%
-%% </li> <li> `ListRepositoriesForApprovalRuleTemplate`, which lists all
+%% </li> <li> `ListRepositoriesForApprovalRuleTemplate', which lists all
 %% repositories associated with the specified approval rule template.
 %%
-%% </li> <li> `UpdateApprovalRuleTemplateDescription`, which updates the
+%% </li> <li> `UpdateApprovalRuleTemplateDescription', which updates the
 %% description of an approval rule template.
 %%
-%% </li> <li> `UpdateApprovalRuleTemplateName`, which updates the name of an
+%% </li> <li> `UpdateApprovalRuleTemplateName', which updates the name of an
 %% approval rule template.
 %%
-%% </li> <li> `UpdateApprovalRuleTemplateContent`, which updates the content
+%% </li> <li> `UpdateApprovalRuleTemplateContent', which updates the content
 %% of an approval rule template.
 %%
 %% </li> </ul> Comments in a repository, by calling the following:
 %%
-%% <ul> <li> `DeleteCommentContent`, which deletes the content of a comment
+%% <ul> <li> `DeleteCommentContent', which deletes the content of a comment
 %% on a commit in a repository.
 %%
-%% </li> <li> `GetComment`, which returns information about a comment on a
+%% </li> <li> `GetComment', which returns information about a comment on a
 %% commit.
 %%
-%% </li> <li> `GetCommentReactions`, which returns information about emoji
+%% </li> <li> `GetCommentReactions', which returns information about emoji
 %% reactions to comments.
 %%
-%% </li> <li> `GetCommentsForComparedCommit`, which returns information about
+%% </li> <li> `GetCommentsForComparedCommit', which returns information about
 %% comments on the comparison between two commit specifiers in a repository.
 %%
-%% </li> <li> `PostCommentForComparedCommit`, which creates a comment on the
+%% </li> <li> `PostCommentForComparedCommit', which creates a comment on the
 %% comparison between two commit specifiers in a repository.
 %%
-%% </li> <li> `PostCommentReply`, which creates a reply to a comment.
+%% </li> <li> `PostCommentReply', which creates a reply to a comment.
 %%
-%% </li> <li> `PutCommentReaction`, which creates or updates an emoji
+%% </li> <li> `PutCommentReaction', which creates or updates an emoji
 %% reaction to a comment.
 %%
-%% </li> <li> `UpdateComment`, which updates the content of a comment on a
+%% </li> <li> `UpdateComment', which updates the content of a comment on a
 %% commit in a repository.
 %%
 %% </li> </ul> Tags used to tag resources in AWS CodeCommit (not Git tags),
 %% by calling the following:
 %%
-%% <ul> <li> `ListTagsForResource`, which gets information about AWS tags for
+%% <ul> <li> `ListTagsForResource', which gets information about AWS tags for
 %% a specified Amazon Resource Name (ARN) in AWS CodeCommit.
 %%
-%% </li> <li> `TagResource`, which adds or updates tags for a resource in AWS
+%% </li> <li> `TagResource', which adds or updates tags for a resource in AWS
 %% CodeCommit.
 %%
-%% </li> <li> `UntagResource`, which removes tags for a resource in AWS
+%% </li> <li> `UntagResource', which removes tags for a resource in AWS
 %% CodeCommit.
 %%
 %% </li> </ul> Triggers, by calling the following:
 %%
-%% <ul> <li> `GetRepositoryTriggers`, which returns information about
+%% <ul> <li> `GetRepositoryTriggers', which returns information about
 %% triggers configured for a repository.
 %%
-%% </li> <li> `PutRepositoryTriggers`, which replaces all triggers for a
+%% </li> <li> `PutRepositoryTriggers', which replaces all triggers for a
 %% repository and can be used to create or delete triggers.
 %%
-%% </li> <li> `TestRepositoryTriggers`, which tests the functionality of a
+%% </li> <li> `TestRepositoryTriggers', which tests the functionality of a
 %% repository trigger by sending data to the trigger target.
 %%
 %% </li> </ul> For information about how to use AWS CodeCommit, see the AWS
@@ -523,7 +523,7 @@ batch_get_repositories(Client, Input, Options)
 %% When you associate a template with a repository, AWS CodeCommit creates an
 %% approval rule that matches the conditions of the template for all pull
 %% requests that meet the conditions of the template. For more information,
-%% see `AssociateApprovalRuleTemplateWithRepository`.
+%% see `AssociateApprovalRuleTemplateWithRepository'.
 create_approval_rule_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_approval_rule_template(Client, Input, []).

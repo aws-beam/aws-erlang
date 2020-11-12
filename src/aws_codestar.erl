@@ -12,52 +12,52 @@
 %%
 %% Projects and their resources, by calling the following:
 %%
-%% <ul> <li> `DeleteProject`, which deletes a project.
+%% <ul> <li> `DeleteProject', which deletes a project.
 %%
-%% </li> <li> `DescribeProject`, which lists the attributes of a project.
+%% </li> <li> `DescribeProject', which lists the attributes of a project.
 %%
-%% </li> <li> `ListProjects`, which lists all projects associated with your
+%% </li> <li> `ListProjects', which lists all projects associated with your
 %% AWS account.
 %%
-%% </li> <li> `ListResources`, which lists the resources associated with a
+%% </li> <li> `ListResources', which lists the resources associated with a
 %% project.
 %%
-%% </li> <li> `ListTagsForProject`, which lists the tags associated with a
+%% </li> <li> `ListTagsForProject', which lists the tags associated with a
 %% project.
 %%
-%% </li> <li> `TagProject`, which adds tags to a project.
+%% </li> <li> `TagProject', which adds tags to a project.
 %%
-%% </li> <li> `UntagProject`, which removes tags from a project.
+%% </li> <li> `UntagProject', which removes tags from a project.
 %%
-%% </li> <li> `UpdateProject`, which updates the attributes of a project.
+%% </li> <li> `UpdateProject', which updates the attributes of a project.
 %%
 %% </li> </ul> Teams and team members, by calling the following:
 %%
-%% <ul> <li> `AssociateTeamMember`, which adds an IAM user to the team for a
+%% <ul> <li> `AssociateTeamMember', which adds an IAM user to the team for a
 %% project.
 %%
-%% </li> <li> `DisassociateTeamMember`, which removes an IAM user from the
+%% </li> <li> `DisassociateTeamMember', which removes an IAM user from the
 %% team for a project.
 %%
-%% </li> <li> `ListTeamMembers`, which lists all the IAM users in the team
+%% </li> <li> `ListTeamMembers', which lists all the IAM users in the team
 %% for a project, including their roles and attributes.
 %%
-%% </li> <li> `UpdateTeamMember`, which updates a team member's attributes in
+%% </li> <li> `UpdateTeamMember', which updates a team member's attributes in
 %% a project.
 %%
 %% </li> </ul> Users, by calling the following:
 %%
-%% <ul> <li> `CreateUserProfile`, which creates a user profile that contains
+%% <ul> <li> `CreateUserProfile', which creates a user profile that contains
 %% data associated with the user across all projects.
 %%
-%% </li> <li> `DeleteUserProfile`, which deletes all user profile information
+%% </li> <li> `DeleteUserProfile', which deletes all user profile information
 %% across all projects.
 %%
-%% </li> <li> `DescribeUserProfile`, which describes the profile of a user.
+%% </li> <li> `DescribeUserProfile', which describes the profile of a user.
 %%
-%% </li> <li> `ListUserProfiles`, which lists all user profiles.
+%% </li> <li> `ListUserProfiles', which lists all user profiles.
 %%
-%% </li> <li> `UpdateUserProfile`, which updates the profile for a user.
+%% </li> <li> `UpdateUserProfile', which updates the profile for a user.
 %%
 %% </li> </ul>
 -module(aws_codestar).

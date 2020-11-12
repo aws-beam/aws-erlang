@@ -5,7 +5,7 @@
 %% stream or click data, and use it for model training either alone or
 %% combined with historical data.
 %%
-%% For more information see `recording-events`.
+%% For more information see `recording-events'.
 -module(aws_personalize_events).
 
 -export([put_events/2,
@@ -23,7 +23,7 @@
 
 %% @doc Records user interaction event data.
 %%
-%% For more information see `event-record-api`.
+%% For more information see `event-record-api'.
 put_events(Client, Input) ->
     put_events(Client, Input, []).
 put_events(Client, Input0, Options) ->
@@ -41,7 +41,7 @@ put_events(Client, Input0, Options) ->
 
 %% @doc Adds one or more items to an Items dataset.
 %%
-%% For more information see `importing-items`.
+%% For more information see `importing-items'.
 put_items(Client, Input) ->
     put_items(Client, Input, []).
 put_items(Client, Input0, Options) ->
@@ -59,7 +59,7 @@ put_items(Client, Input0, Options) ->
 
 %% @doc Adds one or more users to a Users dataset.
 %%
-%% For more information see `importing-users`.
+%% For more information see `importing-users'.
 put_users(Client, Input) ->
     put_users(Client, Input, []).
 put_users(Client, Input0, Options) ->

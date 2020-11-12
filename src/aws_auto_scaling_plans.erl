@@ -48,7 +48,7 @@ create_scaling_plan(Client, Input, Options)
 
 %% @doc Deletes the specified scaling plan.
 %%
-%% Deleting a scaling plan deletes the underlying `ScalingInstruction` for
+%% Deleting a scaling plan deletes the underlying `ScalingInstruction' for
 %% all of the scalable resources that are covered by the plan.
 %%
 %% If the plan has launched resources or has scaling activities in progress,

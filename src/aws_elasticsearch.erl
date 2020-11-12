@@ -156,8 +156,8 @@ associate_package(Client, DomainName, PackageID, Input0, Options) ->
 
 %% @doc Cancels a scheduled service software update for an Amazon ES domain.
 %%
-%% You can only perform this operation before the `AutomatedUpdateDate` and
-%% when the `UpdateStatus` is in the `PENDING_UPDATE` state.
+%% You can only perform this operation before the `AutomatedUpdateDate' and
+%% when the `UpdateStatus' is in the `PENDING_UPDATE' state.
 cancel_elasticsearch_service_software_update(Client, Input) ->
     cancel_elasticsearch_service_software_update(Client, Input, []).
 cancel_elasticsearch_service_software_update(Client, Input0, Options) ->
@@ -371,7 +371,7 @@ describe_elasticsearch_domains(Client, Input0, Options) ->
 %% @doc Describe Elasticsearch Limits for a given InstanceType and
 %% ElasticsearchVersion.
 %%
-%% When modifying existing Domain, specify the ` `DomainName` ` to know what
+%% When modifying existing Domain, specify the ` `DomainName' ' to know what
 %% Limits are supported for modifying.
 describe_elasticsearch_instance_type_limits(Client, ElasticsearchVersion, InstanceType, DomainName)
   when is_map(Client) ->
@@ -505,7 +505,7 @@ dissociate_package(Client, DomainName, PackageID, Input0, Options) ->
 
 %% @doc Returns a list of upgrade compatible Elastisearch versions.
 %%
-%% You can optionally pass a ` `DomainName` ` to get all upgrade compatible
+%% You can optionally pass a ` `DomainName' ' to get all upgrade compatible
 %% Elasticsearch versions for that specific domain.
 get_compatible_elasticsearch_versions(Client, DomainName)
   when is_map(Client) ->

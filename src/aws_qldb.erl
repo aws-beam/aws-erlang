@@ -51,7 +51,7 @@
 
 %% @doc Ends a given Amazon QLDB journal stream.
 %%
-%% Before a stream can be canceled, its current status must be `ACTIVE`.
+%% Before a stream can be canceled, its current status must be `ACTIVE'.
 %%
 %% You can't restart a stream after you cancel it. Canceled QLDB stream
 %% resources are subject to a 7-day retention period, so they are
@@ -93,8 +93,8 @@ create_ledger(Client, Input0, Options) ->
 %%
 %% If deletion protection is enabled, you must first disable it before you
 %% can delete the ledger using the QLDB API or the AWS Command Line Interface
-%% (AWS CLI). You can disable it by calling the `UpdateLedger` operation to
-%% set the flag to `false`. The QLDB console disables deletion protection for
+%% (AWS CLI). You can disable it by calling the `UpdateLedger' operation to
+%% set the flag to `false'. The QLDB console disables deletion protection for
 %% you when you use it to delete a ledger.
 delete_ledger(Client, Name, Input) ->
     delete_ledger(Client, Name, Input, []).
@@ -138,11 +138,11 @@ describe_journal_kinesis_stream(Client, LedgerName, StreamId, Options)
 %% This action does not return any expired export jobs. For more information,
 %% see Export Job Expiration in the Amazon QLDB Developer Guide.
 %%
-%% If the export job with the given `ExportId` doesn't exist, then throws
-%% `ResourceNotFoundException`.
+%% If the export job with the given `ExportId' doesn't exist, then throws
+%% `ResourceNotFoundException'.
 %%
-%% If the ledger with the given `Name` doesn't exist, then throws
-%% `ResourceNotFoundException`.
+%% If the ledger with the given `Name' doesn't exist, then throws
+%% `ResourceNotFoundException'.
 describe_journal_s3_export(Client, ExportId, Name)
   when is_map(Client) ->
     describe_journal_s3_export(Client, ExportId, Name, []).
@@ -178,15 +178,15 @@ describe_ledger(Client, Name, Options)
 %%
 %% The data is written as files in Amazon Ion format.
 %%
-%% If the ledger with the given `Name` doesn't exist, then throws
-%% `ResourceNotFoundException`.
+%% If the ledger with the given `Name' doesn't exist, then throws
+%% `ResourceNotFoundException'.
 %%
-%% If the ledger with the given `Name` is in `CREATING` status, then throws
-%% `ResourcePreconditionNotMetException`.
+%% If the ledger with the given `Name' is in `CREATING' status, then throws
+%% `ResourcePreconditionNotMetException'.
 %%
 %% You can initiate up to two concurrent journal export requests for each
 %% ledger. Beyond this limit, journal export requests throw
-%% `LimitExceededException`.
+%% `LimitExceededException'.
 export_journal_to_s3(Client, Name, Input) ->
     export_journal_to_s3(Client, Name, Input, []).
 export_journal_to_s3(Client, Name, Input0, Options) ->
@@ -205,19 +205,19 @@ export_journal_to_s3(Client, Name, Input0, Options) ->
 %% @doc Returns a block object at a specified address in a journal.
 %%
 %% Also returns a proof of the specified block for verification if
-%% `DigestTipAddress` is provided.
+%% `DigestTipAddress' is provided.
 %%
 %% For information about the data contents in a block, see Journal contents
 %% in the Amazon QLDB Developer Guide.
 %%
-%% If the specified ledger doesn't exist or is in `DELETING` status, then
-%% throws `ResourceNotFoundException`.
+%% If the specified ledger doesn't exist or is in `DELETING' status, then
+%% throws `ResourceNotFoundException'.
 %%
-%% If the specified ledger is in `CREATING` status, then throws
-%% `ResourcePreconditionNotMetException`.
+%% If the specified ledger is in `CREATING' status, then throws
+%% `ResourcePreconditionNotMetException'.
 %%
 %% If no block exists with the specified address, then throws
-%% `InvalidParameterException`.
+%% `InvalidParameterException'.
 get_block(Client, Name, Input) ->
     get_block(Client, Name, Input, []).
 get_block(Client, Name, Input0, Options) ->
@@ -256,7 +256,7 @@ get_digest(Client, Name, Input0, Options) ->
 %% address.
 %%
 %% Also returns a proof of the specified revision for verification if
-%% `DigestTipAddress` is provided.
+%% `DigestTipAddress' is provided.
 get_revision(Client, Name, Input) ->
     get_revision(Client, Name, Input, []).
 get_revision(Client, Name, Input0, Options) ->
@@ -276,11 +276,11 @@ get_revision(Client, Name, Input0, Options) ->
 %% given ledger.
 %%
 %% The output of each stream descriptor includes the same details that are
-%% returned by `DescribeJournalKinesisStream`.
+%% returned by `DescribeJournalKinesisStream'.
 %%
-%% This action returns a maximum of `MaxResults` items. It is paginated so
+%% This action returns a maximum of `MaxResults' items. It is paginated so
 %% that you can retrieve all the items by calling
-%% `ListJournalKinesisStreamsForLedger` multiple times.
+%% `ListJournalKinesisStreamsForLedger' multiple times.
 list_journal_kinesis_streams_for_ledger(Client, LedgerName, MaxResults, NextToken)
   when is_map(Client) ->
     list_journal_kinesis_streams_for_ledger(Client, LedgerName, MaxResults, NextToken, []).
@@ -303,8 +303,8 @@ list_journal_kinesis_streams_for_ledger(Client, LedgerName, MaxResults, NextToke
 %% @doc Returns an array of journal export job descriptions for all ledgers
 %% that are associated with the current AWS account and Region.
 %%
-%% This action returns a maximum of `MaxResults` items, and is paginated so
-%% that you can retrieve all the items by calling `ListJournalS3Exports`
+%% This action returns a maximum of `MaxResults' items, and is paginated so
+%% that you can retrieve all the items by calling `ListJournalS3Exports'
 %% multiple times.
 %%
 %% This action does not return any expired export jobs. For more information,
@@ -331,9 +331,9 @@ list_journal_s3_exports(Client, MaxResults, NextToken, Options)
 %% @doc Returns an array of journal export job descriptions for a specified
 %% ledger.
 %%
-%% This action returns a maximum of `MaxResults` items, and is paginated so
+%% This action returns a maximum of `MaxResults' items, and is paginated so
 %% that you can retrieve all the items by calling
-%% `ListJournalS3ExportsForLedger` multiple times.
+%% `ListJournalS3ExportsForLedger' multiple times.
 %%
 %% This action does not return any expired export jobs. For more information,
 %% see Export Job Expiration in the Amazon QLDB Developer Guide.
@@ -360,7 +360,7 @@ list_journal_s3_exports_for_ledger(Client, Name, MaxResults, NextToken, Options)
 %% current AWS account and Region.
 %%
 %% This action returns a maximum of 100 items and is paginated so that you
-%% can retrieve all the items by calling `ListLedgers` multiple times.
+%% can retrieve all the items by calling `ListLedgers' multiple times.
 list_ledgers(Client, MaxResults, NextToken)
   when is_map(Client) ->
     list_ledgers(Client, MaxResults, NextToken, []).

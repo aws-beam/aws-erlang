@@ -222,10 +222,10 @@ complete_migration(Client, Input, Options)
 %%
 %% This operation is valid for Redis only.
 %%
-%% Users or groups that have permissions to use the `CopySnapshot` operation
+%% Users or groups that have permissions to use the `CopySnapshot' operation
 %% can create their own Amazon S3 buckets and copy snapshots to it. To
 %% control access to your snapshots, use an IAM policy to control who has the
-%% ability to use the `CopySnapshot` operation. For more information about
+%% ability to use the `CopySnapshot' operation. For more information about
 %% using IAM to control the use of ElastiCache operations, see Exporting
 %% Snapshots and Authentication & Access Control.
 %%
@@ -260,9 +260,9 @@ complete_migration(Client, Input, Options)
 %% </li> <li> Error Message: The S3 bucket %s already contains an object with
 %% key %s.
 %%
-%% Solution: Give the `TargetSnapshotName` a new and unique value. If
+%% Solution: Give the `TargetSnapshotName' a new and unique value. If
 %% exporting a snapshot, you could alternatively create a new Amazon S3
-%% bucket and use this same value for `TargetSnapshotName`.
+%% bucket and use this same value for `TargetSnapshotName'.
 %%
 %% </li> <li> Error Message: ElastiCache has not been granted READ
 %% permissions %s on the S3 Bucket.
@@ -464,7 +464,7 @@ decrease_replica_count(Client, Input, Options)
 
 %% @doc Deletes a previously provisioned cluster.
 %%
-%% `DeleteCacheCluster` deletes all associated cache nodes, node endpoints
+%% `DeleteCacheCluster' deletes all associated cache nodes, node endpoints
 %% and the cluster itself. When you receive a successful response from this
 %% operation, Amazon ElastiCache immediately begins deleting the cluster; you
 %% cannot cancel or revert this operation.
@@ -479,7 +479,7 @@ decrease_replica_count(Client, Input, Options)
 %%
 %% </li> <li> A cluster from a Redis (cluster mode enabled) replication group
 %%
-%% </li> <li> A cluster that is not in the `available` state
+%% </li> <li> A cluster that is not in the `available' state
 %%
 %% </li> </ul>
 delete_cache_cluster(Client, Input)
@@ -524,7 +524,7 @@ delete_cache_subnet_group(Client, Input, Options)
 
 %% @doc Deleting a Global Datastore is a two-step process:
 %%
-%% <ul> <li> First, you must `DisassociateGlobalReplicationGroup` to remove
+%% <ul> <li> First, you must `DisassociateGlobalReplicationGroup' to remove
 %% the secondary clusters in the Global Datastore.
 %%
 %% </li> <li> Once the Global Datastore contains only the primary cluster,
@@ -533,7 +533,7 @@ delete_cache_subnet_group(Client, Input, Options)
 %%
 %% </li> </ul> Since the Global Datastore has only a primary cluster, you can
 %% delete the Global Datastore while retaining the primary by setting
-%% `RetainPrimaryCluster=true`.
+%% `RetainPrimaryCluster=true'.
 %%
 %% When you receive a successful response from this operation, Amazon
 %% ElastiCache immediately begins deleting the selected resources; you cannot
@@ -551,7 +551,7 @@ delete_global_replication_group(Client, Input, Options)
 %% the primary/primaries and all of the read replicas. If the replication
 %% group has only one primary, you can optionally delete only the read
 %% replicas, while retaining the primary by setting
-%% `RetainPrimaryCluster=true`.
+%% `RetainPrimaryCluster=true'.
 %%
 %% When you receive a successful response from this operation, Amazon
 %% ElastiCache immediately begins deleting the selected resources; you cannot
@@ -722,7 +722,7 @@ describe_global_replication_groups(Client, Input, Options)
 
 %% @doc Returns information about a particular replication group.
 %%
-%% If no identifier is specified, `DescribeReplicationGroups` returns
+%% If no identifier is specified, `DescribeReplicationGroups' returns
 %% information about all replication groups.
 %%
 %% This operation is valid for Redis only.
@@ -760,7 +760,7 @@ describe_service_updates(Client, Input, Options)
 
 %% @doc Returns information about cluster or replication group snapshots.
 %%
-%% By default, `DescribeSnapshots` lists all of your snapshots; it can
+%% By default, `DescribeSnapshots' lists all of your snapshots; it can
 %% optionally describe a single snapshot, or just the snapshots associated
 %% with a particular cache cluster.
 %%
@@ -842,9 +842,9 @@ increase_replica_count(Client, Input, Options)
 %% @doc Lists all available node types that you can scale your Redis
 %% cluster's or replication group's current node type.
 %%
-%% When you use the `ModifyCacheCluster` or `ModifyReplicationGroup`
+%% When you use the `ModifyCacheCluster' or `ModifyReplicationGroup'
 %% operations to scale your cluster or replication group, the value of the
-%% `CacheNodeType` parameter must be one of the node types returned by this
+%% `CacheNodeType' parameter must be one of the node types returned by this
 %% operation.
 list_allowed_node_type_modifications(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -855,11 +855,11 @@ list_allowed_node_type_modifications(Client, Input, Options)
 
 %% @doc Lists all cost allocation tags currently on the named resource.
 %%
-%% A `cost allocation tag` is a key-value pair where the key is
+%% A `cost allocation tag' is a key-value pair where the key is
 %% case-sensitive and the value is optional. You can use cost allocation tags
 %% to categorize and track your AWS costs.
 %%
-%% If the cluster is not in the available state, `ListTagsForResource`
+%% If the cluster is not in the available state, `ListTagsForResource'
 %% returns an error.
 %%
 %% You can have a maximum of 50 cost allocation tags on an ElastiCache
@@ -995,7 +995,7 @@ reboot_cache_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RebootCacheCluster">>, Input, Options).
 
-%% @doc Removes the tags identified by the `TagKeys` list from the named
+%% @doc Removes the tags identified by the `TagKeys' list from the named
 %% resource.
 remove_tags_from_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1009,7 +1009,7 @@ remove_tags_from_resource(Client, Input, Options)
 %%
 %% You can reset specific parameters by submitting a list of parameter names.
 %% To reset the entire cache parameter group, specify the
-%% `ResetAllParameters` and `CacheParameterGroupName` parameters.
+%% `ResetAllParameters' and `CacheParameterGroupName' parameters.
 reset_cache_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_cache_parameter_group(Client, Input, []).
@@ -1036,7 +1036,7 @@ start_migration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartMigration">>, Input, Options).
 
-%% @doc Represents the input of a `TestFailover` operation which test
+%% @doc Represents the input of a `TestFailover' operation which test
 %% automatic failover on a specified node group (called shard in the console)
 %% in a replication group (called cluster in the console).
 %%
@@ -1060,18 +1060,18 @@ start_migration(Client, Input, Options)
 %% listed here in order of occurrance:
 %%
 %% <ol> <li> Replication group message: `Test Failover API called for node
-%% group <node-group-id>`
+%% group <node-group-id>'
 %%
 %% </li> <li> Cache cluster message: `Failover from primary node
-%% <primary-node-id> to replica node <node-id> completed`
+%% <primary-node-id> to replica node <node-id> completed'
 %%
 %% </li> <li> Replication group message: `Failover from primary node
-%% <primary-node-id> to replica node <node-id> completed`
+%% <primary-node-id> to replica node <node-id> completed'
 %%
-%% </li> <li> Cache cluster message: `Recovering cache nodes <node-id>`
+%% </li> <li> Cache cluster message: `Recovering cache nodes <node-id>'
 %%
 %% </li> <li> Cache cluster message: `Finished recovery for cache nodes
-%% <node-id>`
+%% <node-id>'
 %%
 %% </li> </ol> For more information see:
 %%

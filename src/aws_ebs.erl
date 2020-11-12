@@ -52,7 +52,7 @@
 %% @doc Seals and completes the snapshot after all of the required blocks of
 %% data have been written to it.
 %%
-%% Completing the snapshot changes the status to `completed`. You cannot
+%% Completing the snapshot changes the status to `completed'. You cannot
 %% write new blocks to a snapshot after it has been completed.
 complete_snapshot(Client, SnapshotId, Input) ->
     complete_snapshot(Client, SnapshotId, Input, []).
@@ -160,7 +160,7 @@ list_snapshot_blocks(Client, SnapshotId, MaxResults, NextToken, StartingBlockInd
 %% @doc Writes a block of data to a snapshot.
 %%
 %% If the specified block contains data, the existing data is overwritten.
-%% The target snapshot must be in the `pending` state.
+%% The target snapshot must be in the `pending' state.
 %%
 %% Data written to a snapshot must be aligned with 512-byte sectors.
 put_snapshot_block(Client, BlockIndex, SnapshotId, Input) ->
@@ -202,7 +202,7 @@ put_snapshot_block(Client, BlockIndex, SnapshotId, Input0, Options) ->
 
 %% @doc Creates a new Amazon EBS snapshot.
 %%
-%% The new snapshot enters the `pending` state after the request completes.
+%% The new snapshot enters the `pending' state after the request completes.
 %%
 %% After creating the snapshot, use PutSnapshotBlock to write blocks of data
 %% to the snapshot.

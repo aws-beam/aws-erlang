@@ -139,7 +139,7 @@ get_group(Client, Input0, Options) ->
 %% AWS Resource Groups supports configurations for the following resource
 %% group types:
 %%
-%% <ul> <li> `AWS::EC2::CapacityReservationPool` - Amazon EC2 capacity
+%% <ul> <li> `AWS::EC2::CapacityReservationPool' - Amazon EC2 capacity
 %% reservation pools. For more information, see Working with capacity
 %% reservation groups in the EC2 Users Guide.
 %%

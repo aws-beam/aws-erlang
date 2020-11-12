@@ -15,7 +15,7 @@
 %% Find the endpoint address for actions in the AWS IoT data plane by running
 %% this CLI command:
 %%
-%% `aws iot describe-endpoint --endpoint-type iot:Data-ATS`
+%% `aws iot describe-endpoint --endpoint-type iot:Data-ATS'
 %%
 %% The service name used by AWS Signature Version 4 to sign requests is:
 %% iotdevicegateway.

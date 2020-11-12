@@ -95,20 +95,20 @@
 %% API
 %%====================================================================
 
-%% @doc Creates a new version of the bot based on the `$LATEST` version.
+%% @doc Creates a new version of the bot based on the `$LATEST' version.
 %%
-%% If the `$LATEST` version of this resource hasn't changed since you created
+%% If the `$LATEST' version of this resource hasn't changed since you created
 %% the last version, Amazon Lex doesn't create a new version. It returns the
 %% last created version.
 %%
-%% You can update only the `$LATEST` version of the bot. You can't update the
-%% numbered versions that you create with the `CreateBotVersion` operation.
+%% You can update only the `$LATEST' version of the bot. You can't update the
+%% numbered versions that you create with the `CreateBotVersion' operation.
 %%
 %% When you create the first version of a bot, Amazon Lex sets the version to
 %% 1. Subsequent versions increment by 1. For more information, see
-%% `versioning-intro`.
+%% `versioning-intro'.
 %%
-%% This operation requires permission for the `lex:CreateBotVersion` action.
+%% This operation requires permission for the `lex:CreateBotVersion' action.
 create_bot_version(Client, Name, Input) ->
     create_bot_version(Client, Name, Input, []).
 create_bot_version(Client, Name, Input0, Options) ->
@@ -124,23 +124,23 @@ create_bot_version(Client, Name, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new version of an intent based on the `$LATEST` version of
+%% @doc Creates a new version of an intent based on the `$LATEST' version of
 %% the intent.
 %%
-%% If the `$LATEST` version of this intent hasn't changed since you last
+%% If the `$LATEST' version of this intent hasn't changed since you last
 %% updated it, Amazon Lex doesn't create a new version. It returns the last
 %% version you created.
 %%
-%% You can update only the `$LATEST` version of the intent. You can't update
-%% the numbered versions that you create with the `CreateIntentVersion`
+%% You can update only the `$LATEST' version of the intent. You can't update
+%% the numbered versions that you create with the `CreateIntentVersion'
 %% operation.
 %%
 %% When you create a version of an intent, Amazon Lex sets the version to 1.
 %% Subsequent versions increment by 1. For more information, see
-%% `versioning-intro`.
+%% `versioning-intro'.
 %%
 %% This operation requires permissions to perform the
-%% `lex:CreateIntentVersion` action.
+%% `lex:CreateIntentVersion' action.
 create_intent_version(Client, Name, Input) ->
     create_intent_version(Client, Name, Input, []).
 create_intent_version(Client, Name, Input0, Options) ->
@@ -156,22 +156,22 @@ create_intent_version(Client, Name, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new version of a slot type based on the `$LATEST` version
+%% @doc Creates a new version of a slot type based on the `$LATEST' version
 %% of the specified slot type.
 %%
-%% If the `$LATEST` version of this resource has not changed since the last
+%% If the `$LATEST' version of this resource has not changed since the last
 %% version that you created, Amazon Lex doesn't create a new version. It
 %% returns the last version that you created.
 %%
-%% You can update only the `$LATEST` version of a slot type. You can't update
-%% the numbered versions that you create with the `CreateSlotTypeVersion`
+%% You can update only the `$LATEST' version of a slot type. You can't update
+%% the numbered versions that you create with the `CreateSlotTypeVersion'
 %% operation.
 %%
 %% When you create a version of a slot type, Amazon Lex sets the version to
 %% 1. Subsequent versions increment by 1. For more information, see
-%% `versioning-intro`.
+%% `versioning-intro'.
 %%
-%% This operation requires permissions for the `lex:CreateSlotTypeVersion`
+%% This operation requires permissions for the `lex:CreateSlotTypeVersion'
 %% action.
 create_slot_type_version(Client, Name, Input) ->
     create_slot_type_version(Client, Name, Input, []).
@@ -188,24 +188,24 @@ create_slot_type_version(Client, Name, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes all versions of the bot, including the `$LATEST` version.
+%% @doc Deletes all versions of the bot, including the `$LATEST' version.
 %%
-%% To delete a specific version of the bot, use the `DeleteBotVersion`
-%% operation. The `DeleteBot` operation doesn't immediately remove the bot
+%% To delete a specific version of the bot, use the `DeleteBotVersion'
+%% operation. The `DeleteBot' operation doesn't immediately remove the bot
 %% schema. Instead, it is marked for deletion and removed later.
 %%
 %% Amazon Lex stores utterances indefinitely for improving the ability of
 %% your bot to respond to user inputs. These utterances are not removed when
-%% the bot is deleted. To remove the utterances, use the `DeleteUtterances`
+%% the bot is deleted. To remove the utterances, use the `DeleteUtterances'
 %% operation.
 %%
-%% If a bot has an alias, you can't delete it. Instead, the `DeleteBot`
-%% operation returns a `ResourceInUseException` exception that includes a
+%% If a bot has an alias, you can't delete it. Instead, the `DeleteBot'
+%% operation returns a `ResourceInUseException' exception that includes a
 %% reference to the alias that refers to the bot. To remove the reference to
 %% the bot, delete the alias. If you get the same exception again, delete the
-%% referring alias until the `DeleteBot` operation is successful.
+%% referring alias until the `DeleteBot' operation is successful.
 %%
-%% This operation requires permissions for the `lex:DeleteBot` action.
+%% This operation requires permissions for the `lex:DeleteBot' action.
 delete_bot(Client, Name, Input) ->
     delete_bot(Client, Name, Input, []).
 delete_bot(Client, Name, Input0, Options) ->
@@ -225,11 +225,11 @@ delete_bot(Client, Name, Input0, Options) ->
 %%
 %% You can't delete an alias that is used in the association between a bot
 %% and a messaging channel. If an alias is used in a channel association, the
-%% `DeleteBot` operation returns a `ResourceInUseException` exception that
+%% `DeleteBot' operation returns a `ResourceInUseException' exception that
 %% includes a reference to the channel association that refers to the bot.
 %% You can remove the reference to the alias by deleting the channel
 %% association. If you get the same exception again, delete the referring
-%% association until the `DeleteBotAlias` operation is successful.
+%% association until the `DeleteBotAlias' operation is successful.
 delete_bot_alias(Client, BotName, Name, Input) ->
     delete_bot_alias(Client, BotName, Name, Input, []).
 delete_bot_alias(Client, BotName, Name, Input0, Options) ->
@@ -249,7 +249,7 @@ delete_bot_alias(Client, BotName, Name, Input0, Options) ->
 %% platform.
 %%
 %% This operation requires permission for the
-%% `lex:DeleteBotChannelAssociation` action.
+%% `lex:DeleteBotChannelAssociation' action.
 delete_bot_channel_association(Client, BotAlias, BotName, Name, Input) ->
     delete_bot_channel_association(Client, BotAlias, BotName, Name, Input, []).
 delete_bot_channel_association(Client, BotAlias, BotName, Name, Input0, Options) ->
@@ -267,9 +267,9 @@ delete_bot_channel_association(Client, BotAlias, BotName, Name, Input0, Options)
 
 %% @doc Deletes a specific version of a bot.
 %%
-%% To delete all versions of a bot, use the `DeleteBot` operation.
+%% To delete all versions of a bot, use the `DeleteBot' operation.
 %%
-%% This operation requires permissions for the `lex:DeleteBotVersion` action.
+%% This operation requires permissions for the `lex:DeleteBotVersion' action.
 delete_bot_version(Client, Name, Version, Input) ->
     delete_bot_version(Client, Name, Version, Input, []).
 delete_bot_version(Client, Name, Version, Input0, Options) ->
@@ -285,23 +285,23 @@ delete_bot_version(Client, Name, Version, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes all versions of the intent, including the `$LATEST` version.
+%% @doc Deletes all versions of the intent, including the `$LATEST' version.
 %%
-%% To delete a specific version of the intent, use the `DeleteIntentVersion`
+%% To delete a specific version of the intent, use the `DeleteIntentVersion'
 %% operation.
 %%
 %% You can delete a version of an intent only if it is not referenced. To
 %% delete an intent that is referred to in one or more bots (see
-%% `how-it-works`), you must remove those references first.
+%% `how-it-works'), you must remove those references first.
 %%
-%% If you get the `ResourceInUseException` exception, it provides an example
+%% If you get the `ResourceInUseException' exception, it provides an example
 %% reference that shows where the intent is referenced. To remove the
 %% reference to the intent, either update the bot or delete it. If you get
 %% the same exception when you attempt to delete the intent again, repeat
-%% until the intent has no references and the call to `DeleteIntent` is
+%% until the intent has no references and the call to `DeleteIntent' is
 %% successful.
 %%
-%% This operation requires permission for the `lex:DeleteIntent` action.
+%% This operation requires permission for the `lex:DeleteIntent' action.
 delete_intent(Client, Name, Input) ->
     delete_intent(Client, Name, Input, []).
 delete_intent(Client, Name, Input0, Options) ->
@@ -319,9 +319,9 @@ delete_intent(Client, Name, Input0, Options) ->
 
 %% @doc Deletes a specific version of an intent.
 %%
-%% To delete all versions of a intent, use the `DeleteIntent` operation.
+%% To delete all versions of a intent, use the `DeleteIntent' operation.
 %%
-%% This operation requires permissions for the `lex:DeleteIntentVersion`
+%% This operation requires permissions for the `lex:DeleteIntentVersion'
 %% action.
 delete_intent_version(Client, Name, Version, Input) ->
     delete_intent_version(Client, Name, Version, Input, []).
@@ -338,24 +338,24 @@ delete_intent_version(Client, Name, Version, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes all versions of the slot type, including the `$LATEST`
+%% @doc Deletes all versions of the slot type, including the `$LATEST'
 %% version.
 %%
 %% To delete a specific version of the slot type, use the
-%% `DeleteSlotTypeVersion` operation.
+%% `DeleteSlotTypeVersion' operation.
 %%
 %% You can delete a version of a slot type only if it is not referenced. To
 %% delete a slot type that is referred to in one or more intents, you must
 %% remove those references first.
 %%
-%% If you get the `ResourceInUseException` exception, the exception provides
+%% If you get the `ResourceInUseException' exception, the exception provides
 %% an example reference that shows the intent where the slot type is
 %% referenced. To remove the reference to the slot type, either update the
 %% intent or delete it. If you get the same exception when you attempt to
 %% delete the slot type again, repeat until the slot type has no references
-%% and the `DeleteSlotType` call is successful.
+%% and the `DeleteSlotType' call is successful.
 %%
-%% This operation requires permission for the `lex:DeleteSlotType` action.
+%% This operation requires permission for the `lex:DeleteSlotType' action.
 delete_slot_type(Client, Name, Input) ->
     delete_slot_type(Client, Name, Input, []).
 delete_slot_type(Client, Name, Input0, Options) ->
@@ -373,9 +373,9 @@ delete_slot_type(Client, Name, Input0, Options) ->
 
 %% @doc Deletes a specific version of a slot type.
 %%
-%% To delete all versions of a slot type, use the `DeleteSlotType` operation.
+%% To delete all versions of a slot type, use the `DeleteSlotType' operation.
 %%
-%% This operation requires permissions for the `lex:DeleteSlotTypeVersion`
+%% This operation requires permissions for the `lex:DeleteSlotTypeVersion'
 %% action.
 delete_slot_type_version(Client, Name, Version, Input) ->
     delete_slot_type_version(Client, Name, Version, Input, []).
@@ -395,17 +395,17 @@ delete_slot_type_version(Client, Name, Version, Input0, Options) ->
 %% @doc Deletes stored utterances.
 %%
 %% Amazon Lex stores the utterances that users send to your bot. Utterances
-%% are stored for 15 days for use with the `GetUtterancesView` operation, and
+%% are stored for 15 days for use with the `GetUtterancesView' operation, and
 %% then stored indefinitely for use in improving the ability of your bot to
 %% respond to user input.
 %%
-%% Use the `DeleteUtterances` operation to manually delete stored utterances
-%% for a specific user. When you use the `DeleteUtterances` operation,
+%% Use the `DeleteUtterances' operation to manually delete stored utterances
+%% for a specific user. When you use the `DeleteUtterances' operation,
 %% utterances stored for improving your bot's ability to respond to user
 %% input are deleted immediately. Utterances stored for use with the
-%% `GetUtterancesView` operation are deleted after 15 days.
+%% `GetUtterancesView' operation are deleted after 15 days.
 %%
-%% This operation requires permissions for the `lex:DeleteUtterances` action.
+%% This operation requires permissions for the `lex:DeleteUtterances' action.
 delete_utterances(Client, BotName, UserId, Input) ->
     delete_utterances(Client, BotName, UserId, Input, []).
 delete_utterances(Client, BotName, UserId, Input0, Options) ->
@@ -425,7 +425,7 @@ delete_utterances(Client, BotName, UserId, Input0, Options) ->
 %%
 %% You must provide the bot name and the bot version or alias.
 %%
-%% This operation requires permissions for the `lex:GetBot` action.
+%% This operation requires permissions for the `lex:GetBot' action.
 get_bot(Client, Name, VersionOrAlias)
   when is_map(Client) ->
     get_bot(Client, Name, VersionOrAlias, []).
@@ -442,9 +442,9 @@ get_bot(Client, Name, VersionOrAlias, Options)
 
 %% @doc Returns information about an Amazon Lex bot alias.
 %%
-%% For more information about aliases, see `versioning-aliases`.
+%% For more information about aliases, see `versioning-aliases'.
 %%
-%% This operation requires permissions for the `lex:GetBotAlias` action.
+%% This operation requires permissions for the `lex:GetBotAlias' action.
 get_bot_alias(Client, BotName, Name)
   when is_map(Client) ->
     get_bot_alias(Client, BotName, Name, []).
@@ -461,7 +461,7 @@ get_bot_alias(Client, BotName, Name, Options)
 
 %% @doc Returns a list of aliases for a specified Amazon Lex bot.
 %%
-%% This operation requires permissions for the `lex:GetBotAliases` action.
+%% This operation requires permissions for the `lex:GetBotAliases' action.
 get_bot_aliases(Client, BotName, MaxResults, NameContains, NextToken)
   when is_map(Client) ->
     get_bot_aliases(Client, BotName, MaxResults, NameContains, NextToken, []).
@@ -485,7 +485,7 @@ get_bot_aliases(Client, BotName, MaxResults, NameContains, NextToken, Options)
 %% @doc Returns information about the association between an Amazon Lex bot
 %% and a messaging platform.
 %%
-%% This operation requires permissions for the `lex:GetBotChannelAssociation`
+%% This operation requires permissions for the `lex:GetBotChannelAssociation'
 %% action.
 get_bot_channel_association(Client, BotAlias, BotName, Name)
   when is_map(Client) ->
@@ -504,8 +504,8 @@ get_bot_channel_association(Client, BotAlias, BotName, Name, Options)
 %% @doc Returns a list of all of the channels associated with the specified
 %% bot.
 %%
-%% The `GetBotChannelAssociations` operation requires permissions for the
-%% `lex:GetBotChannelAssociations` action.
+%% The `GetBotChannelAssociations' operation requires permissions for the
+%% `lex:GetBotChannelAssociations' action.
 get_bot_channel_associations(Client, BotAlias, BotName, MaxResults, NameContains, NextToken)
   when is_map(Client) ->
     get_bot_channel_associations(Client, BotAlias, BotName, MaxResults, NameContains, NextToken, []).
@@ -528,15 +528,15 @@ get_bot_channel_associations(Client, BotAlias, BotName, MaxResults, NameContains
 
 %% @doc Gets information about all of the versions of a bot.
 %%
-%% The `GetBotVersions` operation returns a `BotMetadata` object for each
+%% The `GetBotVersions' operation returns a `BotMetadata' object for each
 %% version of a bot. For example, if a bot has three numbered versions, the
-%% `GetBotVersions` operation returns four `BotMetadata` objects in the
-%% response, one for each numbered version and one for the `$LATEST` version.
+%% `GetBotVersions' operation returns four `BotMetadata' objects in the
+%% response, one for each numbered version and one for the `$LATEST' version.
 %%
-%% The `GetBotVersions` operation always returns at least one version, the
-%% `$LATEST` version.
+%% The `GetBotVersions' operation always returns at least one version, the
+%% `$LATEST' version.
 %%
-%% This operation requires permissions for the `lex:GetBotVersions` action.
+%% This operation requires permissions for the `lex:GetBotVersions' action.
 get_bot_versions(Client, Name, MaxResults, NextToken)
   when is_map(Client) ->
     get_bot_versions(Client, Name, MaxResults, NextToken, []).
@@ -558,14 +558,14 @@ get_bot_versions(Client, Name, MaxResults, NextToken, Options)
 
 %% @doc Returns bot information as follows:
 %%
-%% <ul> <li> If you provide the `nameContains` field, the response includes
-%% information for the `$LATEST` version of all bots whose name contains the
+%% <ul> <li> If you provide the `nameContains' field, the response includes
+%% information for the `$LATEST' version of all bots whose name contains the
 %% specified string.
 %%
-%% </li> <li> If you don't specify the `nameContains` field, the operation
-%% returns information about the `$LATEST` version of all of your bots.
+%% </li> <li> If you don't specify the `nameContains' field, the operation
+%% returns information about the `$LATEST' version of all of your bots.
 %%
-%% </li> </ul> This operation requires permission for the `lex:GetBots`
+%% </li> </ul> This operation requires permission for the `lex:GetBots'
 %% action.
 get_bots(Client, MaxResults, NameContains, NextToken)
   when is_map(Client) ->
@@ -589,7 +589,7 @@ get_bots(Client, MaxResults, NameContains, NextToken, Options)
 
 %% @doc Returns information about a built-in intent.
 %%
-%% This operation requires permission for the `lex:GetBuiltinIntent` action.
+%% This operation requires permission for the `lex:GetBuiltinIntent' action.
 get_builtin_intent(Client, Signature)
   when is_map(Client) ->
     get_builtin_intent(Client, Signature, []).
@@ -606,7 +606,7 @@ get_builtin_intent(Client, Signature, Options)
 
 %% @doc Gets a list of built-in intents that meet the specified criteria.
 %%
-%% This operation requires permission for the `lex:GetBuiltinIntents` action.
+%% This operation requires permission for the `lex:GetBuiltinIntents' action.
 get_builtin_intents(Client, Locale, MaxResults, NextToken, SignatureContains)
   when is_map(Client) ->
     get_builtin_intents(Client, Locale, MaxResults, NextToken, SignatureContains, []).
@@ -633,7 +633,7 @@ get_builtin_intents(Client, Locale, MaxResults, NextToken, SignatureContains, Op
 %% For a list of built-in slot types, see Slot Type Reference in the Alexa
 %% Skills Kit.
 %%
-%% This operation requires permission for the `lex:GetBuiltInSlotTypes`
+%% This operation requires permission for the `lex:GetBuiltInSlotTypes'
 %% action.
 get_builtin_slot_types(Client, Locale, MaxResults, NextToken, SignatureContains)
   when is_map(Client) ->
@@ -678,7 +678,7 @@ get_export(Client, ExportType, Name, ResourceType, Version, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets information about an import job started with the `StartImport`
+%% @doc Gets information about an import job started with the `StartImport'
 %% operation.
 get_import(Client, ImportId)
   when is_map(Client) ->
@@ -698,7 +698,7 @@ get_import(Client, ImportId, Options)
 %%
 %% In addition to the intent name, you must specify the intent version.
 %%
-%% This operation requires permissions to perform the `lex:GetIntent` action.
+%% This operation requires permissions to perform the `lex:GetIntent' action.
 get_intent(Client, Name, Version)
   when is_map(Client) ->
     get_intent(Client, Name, Version, []).
@@ -715,16 +715,16 @@ get_intent(Client, Name, Version, Options)
 
 %% @doc Gets information about all of the versions of an intent.
 %%
-%% The `GetIntentVersions` operation returns an `IntentMetadata` object for
+%% The `GetIntentVersions' operation returns an `IntentMetadata' object for
 %% each version of an intent. For example, if an intent has three numbered
-%% versions, the `GetIntentVersions` operation returns four `IntentMetadata`
+%% versions, the `GetIntentVersions' operation returns four `IntentMetadata'
 %% objects in the response, one for each numbered version and one for the
-%% `$LATEST` version.
+%% `$LATEST' version.
 %%
-%% The `GetIntentVersions` operation always returns at least one version, the
-%% `$LATEST` version.
+%% The `GetIntentVersions' operation always returns at least one version, the
+%% `$LATEST' version.
 %%
-%% This operation requires permissions for the `lex:GetIntentVersions`
+%% This operation requires permissions for the `lex:GetIntentVersions'
 %% action.
 get_intent_versions(Client, Name, MaxResults, NextToken)
   when is_map(Client) ->
@@ -747,13 +747,13 @@ get_intent_versions(Client, Name, MaxResults, NextToken, Options)
 
 %% @doc Returns intent information as follows:
 %%
-%% <ul> <li> If you specify the `nameContains` field, returns the `$LATEST`
+%% <ul> <li> If you specify the `nameContains' field, returns the `$LATEST'
 %% version of all intents that contain the specified string.
 %%
-%% </li> <li> If you don't specify the `nameContains` field, returns
-%% information about the `$LATEST` version of all intents.
+%% </li> <li> If you don't specify the `nameContains' field, returns
+%% information about the `$LATEST' version of all intents.
 %%
-%% </li> </ul> The operation requires permission for the `lex:GetIntents`
+%% </li> </ul> The operation requires permission for the `lex:GetIntents'
 %% action.
 get_intents(Client, MaxResults, NameContains, NextToken)
   when is_map(Client) ->
@@ -780,7 +780,7 @@ get_intents(Client, MaxResults, NameContains, NextToken, Options)
 %% In addition to specifying the slot type name, you must specify the slot
 %% type version.
 %%
-%% This operation requires permissions for the `lex:GetSlotType` action.
+%% This operation requires permissions for the `lex:GetSlotType' action.
 get_slot_type(Client, Name, Version)
   when is_map(Client) ->
     get_slot_type(Client, Name, Version, []).
@@ -797,16 +797,16 @@ get_slot_type(Client, Name, Version, Options)
 
 %% @doc Gets information about all versions of a slot type.
 %%
-%% The `GetSlotTypeVersions` operation returns a `SlotTypeMetadata` object
+%% The `GetSlotTypeVersions' operation returns a `SlotTypeMetadata' object
 %% for each version of a slot type. For example, if a slot type has three
-%% numbered versions, the `GetSlotTypeVersions` operation returns four
-%% `SlotTypeMetadata` objects in the response, one for each numbered version
-%% and one for the `$LATEST` version.
+%% numbered versions, the `GetSlotTypeVersions' operation returns four
+%% `SlotTypeMetadata' objects in the response, one for each numbered version
+%% and one for the `$LATEST' version.
 %%
-%% The `GetSlotTypeVersions` operation always returns at least one version,
-%% the `$LATEST` version.
+%% The `GetSlotTypeVersions' operation always returns at least one version,
+%% the `$LATEST' version.
 %%
-%% This operation requires permissions for the `lex:GetSlotTypeVersions`
+%% This operation requires permissions for the `lex:GetSlotTypeVersions'
 %% action.
 get_slot_type_versions(Client, Name, MaxResults, NextToken)
   when is_map(Client) ->
@@ -829,13 +829,13 @@ get_slot_type_versions(Client, Name, MaxResults, NextToken, Options)
 
 %% @doc Returns slot type information as follows:
 %%
-%% <ul> <li> If you specify the `nameContains` field, returns the `$LATEST`
+%% <ul> <li> If you specify the `nameContains' field, returns the `$LATEST'
 %% version of all slot types that contain the specified string.
 %%
-%% </li> <li> If you don't specify the `nameContains` field, returns
-%% information about the `$LATEST` version of all slot types.
+%% </li> <li> If you don't specify the `nameContains' field, returns
+%% information about the `$LATEST' version of all slot types.
 %%
-%% </li> </ul> The operation requires permission for the `lex:GetSlotTypes`
+%% </li> </ul> The operation requires permission for the `lex:GetSlotTypes'
 %% action.
 get_slot_types(Client, MaxResults, NameContains, NextToken)
   when is_map(Client) ->
@@ -857,16 +857,16 @@ get_slot_types(Client, MaxResults, NameContains, NextToken, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Use the `GetUtterancesView` operation to get information about the
+%% @doc Use the `GetUtterancesView' operation to get information about the
 %% utterances that your users have made to your bot.
 %%
 %% You can use this list to tune the utterances that your bot responds to.
 %%
 %% For example, say that you have created a bot to order flowers. After your
-%% users have used your bot for a while, use the `GetUtterancesView`
+%% users have used your bot for a while, use the `GetUtterancesView'
 %% operation to see the requests that they have made and whether they have
 %% been successful. You might find that the utterance "I want flowers" is not
-%% being recognized. You could add this utterance to the `OrderFlowers`
+%% being recognized. You could add this utterance to the `OrderFlowers'
 %% intent so that your bot recognizes that utterance.
 %%
 %% After you publish a new version of a bot, you can get information about
@@ -879,11 +879,11 @@ get_slot_types(Client, MaxResults, NameContains, NextToken, Options)
 %% by the bot in the last 15 days. The response contains information about a
 %% maximum of 100 utterances for each version.
 %%
-%% If you set `childDirected` field to true when you created your bot, or if
+%% If you set `childDirected' field to true when you created your bot, or if
 %% you opted out of participating in improving Amazon Lex, utterances are not
 %% available.
 %%
-%% This operation requires permissions for the `lex:GetUtterancesView`
+%% This operation requires permissions for the `lex:GetUtterancesView'
 %% action.
 get_utterances_view(Client, BotName, BotVersions, StatusType)
   when is_map(Client) ->
@@ -928,22 +928,22 @@ list_tags_for_resource(Client, ResourceArn, Options)
 %% locale, and whether the bot is directed toward children under age 13. You
 %% can use this to add intents later, or to remove intents from an existing
 %% bot. When you create a bot with the minimum information, the bot is
-%% created or updated but Amazon Lex returns the ` response `FAILED`. You can
+%% created or updated but Amazon Lex returns the ` response `FAILED'. You can
 %% build the bot after you add one or more intents. For more information
-%% about Amazon Lex bots, see `how-it-works`. `
+%% about Amazon Lex bots, see `how-it-works'. '
 %%
 %% ```
 %% If you specify the name of an existing bot, the fields in the request
-%% replace the existing values in the `$LATEST` version of the bot. Amazon
+%% replace the existing values in the `$LATEST' version of the bot. Amazon
 %% Lex removes any fields that you don't provide values for in the request,
-%% except for the `idleTTLInSeconds` and `privacySettings` fields, which are
+%% except for the `idleTTLInSeconds' and `privacySettings' fields, which are
 %% set to their default values. If you don't specify values for required
 %% fields, Amazon Lex throws an exception.
 %%
-%% This operation requires permissions for the `lex:PutBot` action. For more
-%% information, see `security-iam`.
+%% This operation requires permissions for the `lex:PutBot' action. For more
+%% information, see `security-iam'.
 %%
-%% ```
+%% '''
 put_bot(Client, Name, Input) ->
     put_bot(Client, Name, Input, []).
 put_bot(Client, Name, Input0, Options) ->
@@ -963,9 +963,9 @@ put_bot(Client, Name, Input0, Options) ->
 %% alias for the specified bot.
 %%
 %% To change the version of the bot that the alias points to, replace the
-%% alias. For more information about aliases, see `versioning-aliases`.
+%% alias. For more information about aliases, see `versioning-aliases'.
 %%
-%% This operation requires permissions for the `lex:PutBotAlias` action.
+%% This operation requires permissions for the `lex:PutBotAlias' action.
 put_bot_alias(Client, BotName, Name, Input) ->
     put_bot_alias(Client, BotName, Name, Input, []).
 put_bot_alias(Client, BotName, Name, Input0, Options) ->
@@ -985,12 +985,12 @@ put_bot_alias(Client, BotName, Name, Input0, Options) ->
 %%
 %% To define the interaction between the user and your bot, you use one or
 %% more intents. For a pizza ordering bot, for example, you would create an
-%% `OrderPizza` intent.
+%% `OrderPizza' intent.
 %%
 %% To create an intent or replace an existing intent, you must provide the
 %% following:
 %%
-%% <ul> <li> Intent name. For example, `OrderPizza`.
+%% <ul> <li> Intent name. For example, `OrderPizza'.
 %%
 %% </li> <li> Sample utterances. For example, "Can I order a pizza, please."
 %% and "I want to order a pizza."
@@ -1020,16 +1020,16 @@ put_bot_alias(Client, BotName, Name, Input0, Options) ->
 %% For example, asking "Do you want to order a drink with your pizza?"
 %%
 %% </li> </ul> If you specify an existing intent name to update the intent,
-%% Amazon Lex replaces the values in the `$LATEST` version of the intent with
+%% Amazon Lex replaces the values in the `$LATEST' version of the intent with
 %% the values in the request. Amazon Lex removes fields that you don't
 %% provide in the request. If you don't specify the required fields, Amazon
-%% Lex throws an exception. When you update the `$LATEST` version of an
-%% intent, the `status` field of any bot that uses the `$LATEST` version of
-%% the intent is set to `NOT_BUILT`.
+%% Lex throws an exception. When you update the `$LATEST' version of an
+%% intent, the `status' field of any bot that uses the `$LATEST' version of
+%% the intent is set to `NOT_BUILT'.
 %%
-%% For more information, see `how-it-works`.
+%% For more information, see `how-it-works'.
 %%
-%% This operation requires permissions for the `lex:PutIntent` action.
+%% This operation requires permissions for the `lex:PutIntent' action.
 put_intent(Client, Name, Input) ->
     put_intent(Client, Name, Input, []).
 put_intent(Client, Name, Input0, Options) ->
@@ -1049,17 +1049,17 @@ put_intent(Client, Name, Input0, Options) ->
 %%
 %% To create a custom slot type, specify a name for the slot type and a set
 %% of enumeration values, which are the values that a slot of this type can
-%% assume. For more information, see `how-it-works`.
+%% assume. For more information, see `how-it-works'.
 %%
 %% If you specify the name of an existing slot type, the fields in the
-%% request replace the existing values in the `$LATEST` version of the slot
+%% request replace the existing values in the `$LATEST' version of the slot
 %% type. Amazon Lex removes the fields that you don't provide in the request.
 %% If you don't specify required fields, Amazon Lex throws an exception. When
-%% you update the `$LATEST` version of a slot type, if a bot uses the
-%% `$LATEST` version of an intent that contains the slot type, the bot's
-%% `status` field is set to `NOT_BUILT`.
+%% you update the `$LATEST' version of a slot type, if a bot uses the
+%% `$LATEST' version of an intent that contains the slot type, the bot's
+%% `status' field is set to `NOT_BUILT'.
 %%
-%% This operation requires permissions for the `lex:PutSlotType` action.
+%% This operation requires permissions for the `lex:PutSlotType' action.
 put_slot_type(Client, Name, Input) ->
     put_slot_type(Client, Name, Input, []).
 put_slot_type(Client, Name, Input0, Options) ->

@@ -82,7 +82,7 @@
 %%
 %% The request provides the ARN of behavior graph.
 %%
-%% The member account status in the graph must be `INVITED`.
+%% The member account status in the graph must be `INVITED'.
 accept_invitation(Client, Input) ->
     accept_invitation(Client, Input, []).
 accept_invitation(Client, Input0, Options) ->
@@ -113,11 +113,11 @@ accept_invitation(Client, Input0, Options) ->
 %% The operation also enables Detective for the calling account in the
 %% currently selected Region. It returns the ARN of the new behavior graph.
 %%
-%% `CreateGraph` triggers a process to create the corresponding data tables
+%% `CreateGraph' triggers a process to create the corresponding data tables
 %% for the new behavior graph.
 %%
 %% An account can only be the master account for one behavior graph within a
-%% Region. If the same account calls `CreateGraph` with the same master
+%% Region. If the same account calls `CreateGraph' with the same master
 %% account, it always returns the same behavior graph ARN. It does not create
 %% a new behavior graph.
 create_graph(Client, Input) ->
@@ -141,7 +141,7 @@ create_graph(Client, Input0, Options) ->
 %% This operation can only be called by the master account for a behavior
 %% graph.
 %%
-%% `CreateMembers` verifies the accounts and then sends invitations to the
+%% `CreateMembers' verifies the accounts and then sends invitations to the
 %% verified accounts.
 %%
 %% The request provides the behavior graph ARN and the list of accounts to
@@ -149,12 +149,12 @@ create_graph(Client, Input0, Options) ->
 %%
 %% The response separates the requested accounts into two lists:
 %%
-%% <ul> <li> The accounts that `CreateMembers` was able to start the
+%% <ul> <li> The accounts that `CreateMembers' was able to start the
 %% verification for. This list includes member accounts that are being
 %% verified, that have passed verification and are being sent an invitation,
 %% and that have failed verification.
 %%
-%% </li> <li> The accounts that `CreateMembers` was unable to process. This
+%% </li> <li> The accounts that `CreateMembers' was unable to process. This
 %% list includes accounts that were already invited to be member accounts in
 %% the behavior graph.
 %%
@@ -179,7 +179,7 @@ create_members(Client, Input0, Options) ->
 %% This operation removes the graph from each member account's list of
 %% behavior graphs.
 %%
-%% `DeleteGraph` can only be called by the master account for a behavior
+%% `DeleteGraph' can only be called by the master account for a behavior
 %% graph.
 delete_graph(Client, Input) ->
     delete_graph(Client, Input, []).
@@ -200,9 +200,9 @@ delete_graph(Client, Input0, Options) ->
 %% graph.
 %%
 %% This operation can only be called by a Detective master account. That
-%% account cannot use `DeleteMembers` to delete their own account from the
+%% account cannot use `DeleteMembers' to delete their own account from the
 %% behavior graph. To disable a behavior graph, the master account uses the
-%% `DeleteGraph` API method.
+%% `DeleteGraph' API method.
 delete_members(Client, Input) ->
     delete_members(Client, Input, []).
 delete_members(Client, Input0, Options) ->
@@ -221,7 +221,7 @@ delete_members(Client, Input0, Options) ->
 %% @doc Removes the member account from the specified behavior graph.
 %%
 %% This operation can only be called by a member account that has the
-%% `ENABLED` status.
+%% `ENABLED' status.
 disassociate_membership(Client, Input) ->
     disassociate_membership(Client, Input, []).
 disassociate_membership(Client, Input0, Options) ->
@@ -323,7 +323,7 @@ list_members(Client, Input0, Options) ->
 %% @doc Rejects an invitation to contribute the account data to a behavior
 %% graph.
 %%
-%% This operation must be called by a member account that has the `INVITED`
+%% This operation must be called by a member account that has the `INVITED'
 %% status.
 reject_invitation(Client, Input) ->
     reject_invitation(Client, Input, []).
@@ -341,15 +341,15 @@ reject_invitation(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sends a request to enable data ingest for a member account that has a
-%% status of `ACCEPTED_BUT_DISABLED`.
+%% status of `ACCEPTED_BUT_DISABLED'.
 %%
 %% For valid member accounts, the status is updated as follows.
 %%
 %% <ul> <li> If Detective enabled the member account, then the new status is
-%% `ENABLED`.
+%% `ENABLED'.
 %%
 %% </li> <li> If Detective cannot enable the member account, the status
-%% remains `ACCEPTED_BUT_DISABLED`.
+%% remains `ACCEPTED_BUT_DISABLED'.
 %%
 %% </li> </ul>
 start_monitoring_member(Client, Input) ->

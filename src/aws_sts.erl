@@ -38,14 +38,14 @@
 %% access AWS resources that you might not normally have access to.
 %%
 %% These temporary credentials consist of an access key ID, a secret access
-%% key, and a security token. Typically, you use `AssumeRole` within your
-%% account or for cross-account access. For a comparison of `AssumeRole` with
+%% key, and a security token. Typically, you use `AssumeRole' within your
+%% account or for cross-account access. For a comparison of `AssumeRole' with
 %% other API operations that produce temporary credentials, see Requesting
 %% Temporary Security Credentials and Comparing the AWS STS API operations in
 %% the IAM User Guide.
 %%
-%% You cannot use AWS account root user credentials to call `AssumeRole`. You
-%% must use credentials for an IAM user or an IAM role to call `AssumeRole`.
+%% You cannot use AWS account root user credentials to call `AssumeRole'. You
+%% must use credentials for an IAM user or an IAM role to call `AssumeRole'.
 %%
 %% For cross-account access, imagine that you own multiple accounts and need
 %% to access resources in each account. You could create long-term
@@ -58,23 +58,23 @@
 %%
 %% Session Duration
 %%
-%% By default, the temporary security credentials created by `AssumeRole`
-%% last for one hour. However, you can use the optional `DurationSeconds`
+%% By default, the temporary security credentials created by `AssumeRole'
+%% last for one hour. However, you can use the optional `DurationSeconds'
 %% parameter to specify the duration of your session. You can provide a value
 %% from 900 seconds (15 minutes) up to the maximum session duration setting
 %% for the role. This setting can have a value from 1 hour to 12 hours. To
 %% learn how to view the maximum value for your role, see View the Maximum
 %% Session Duration Setting for a Role in the IAM User Guide. The maximum
-%% session duration limit applies when you use the `AssumeRole*` API
-%% operations or the `assume-role*` CLI commands. However the limit does not
+%% session duration limit applies when you use the `AssumeRole*' API
+%% operations or the `assume-role*' CLI commands. However the limit does not
 %% apply when you use those operations to create a console URL. For more
 %% information, see Using IAM Roles in the IAM User Guide.
 %%
 %% Permissions
 %%
-%% The temporary security credentials created by `AssumeRole` can be used to
+%% The temporary security credentials created by `AssumeRole' can be used to
 %% make API calls to any AWS service with the following exception: You cannot
-%% call the AWS STS `GetFederationToken` or `GetSessionToken` API operations.
+%% call the AWS STS `GetFederationToken' or `GetSessionToken' API operations.
 %%
 %% (Optional) You can pass inline or managed session policies to this
 %% operation. You can pass a single JSON policy document to use as an inline
@@ -98,7 +98,7 @@
 %% A user who wants to access a role in a different account must also have
 %% permissions that are delegated from the user account administrator. The
 %% administrator must attach a policy that allows the user to call
-%% `AssumeRole` for the ARN of the role in the other account. If the user is
+%% `AssumeRole' for the ARN of the role in the other account. If the user is
 %% in the same account as the role, then you can do either of the following:
 %%
 %% <ul> <li> Attach a policy to the user (identical to the previous user in a
@@ -130,7 +130,7 @@
 %% Using MFA with AssumeRole
 %%
 %% (Optional) You can include multi-factor authentication (MFA) information
-%% when you call `AssumeRole`. This is useful for cross-account scenarios to
+%% when you call `AssumeRole'. This is useful for cross-account scenarios to
 %% ensure that the user that assumes the role has been authenticated with an
 %% AWS MFA device. In that scenario, the trust policy of the role being
 %% assumed includes a condition that tests for MFA authentication. If the
@@ -138,14 +138,14 @@
 %% role is denied. The condition in a trust policy that tests for MFA
 %% authentication might look like the following example.
 %%
-%% `"Condition": {"Bool": {"aws:MultiFactorAuthPresent": true}}`
+%% `"Condition": {"Bool": {"aws:MultiFactorAuthPresent": true}}'
 %%
 %% For more information, see Configuring MFA-Protected API Access in the IAM
 %% User Guide guide.
 %%
-%% To use MFA with `AssumeRole`, you pass values for the `SerialNumber` and
-%% `TokenCode` parameters. The `SerialNumber` value identifies the user's
-%% hardware or virtual MFA device. The `TokenCode` is the time-based one-time
+%% To use MFA with `AssumeRole', you pass values for the `SerialNumber' and
+%% `TokenCode' parameters. The `SerialNumber' value identifies the user's
+%% hardware or virtual MFA device. The `TokenCode' is the time-based one-time
 %% password (TOTP) that the MFA device produces.
 assume_role(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -159,7 +159,7 @@ assume_role(Client, Input, Options)
 %%
 %% This operation provides a mechanism for tying an enterprise identity store
 %% or directory to role-based AWS access without user-specific credentials or
-%% configuration. For a comparison of `AssumeRoleWithSAML` with the other API
+%% configuration. For a comparison of `AssumeRoleWithSAML' with the other API
 %% operations that produce temporary credentials, see Requesting Temporary
 %% Security Credentials and Comparing the AWS STS API operations in the IAM
 %% User Guide.
@@ -172,25 +172,25 @@ assume_role(Client, Input, Options)
 %% Session Duration
 %%
 %% By default, the temporary security credentials created by
-%% `AssumeRoleWithSAML` last for one hour. However, you can use the optional
-%% `DurationSeconds` parameter to specify the duration of your session. Your
+%% `AssumeRoleWithSAML' last for one hour. However, you can use the optional
+%% `DurationSeconds' parameter to specify the duration of your session. Your
 %% role session lasts for the duration that you specify, or until the time
-%% specified in the SAML authentication response's `SessionNotOnOrAfter`
-%% value, whichever is shorter. You can provide a `DurationSeconds` value
+%% specified in the SAML authentication response's `SessionNotOnOrAfter'
+%% value, whichever is shorter. You can provide a `DurationSeconds' value
 %% from 900 seconds (15 minutes) up to the maximum session duration setting
 %% for the role. This setting can have a value from 1 hour to 12 hours. To
 %% learn how to view the maximum value for your role, see View the Maximum
 %% Session Duration Setting for a Role in the IAM User Guide. The maximum
-%% session duration limit applies when you use the `AssumeRole*` API
-%% operations or the `assume-role*` CLI commands. However the limit does not
+%% session duration limit applies when you use the `AssumeRole*' API
+%% operations or the `assume-role*' CLI commands. However the limit does not
 %% apply when you use those operations to create a console URL. For more
 %% information, see Using IAM Roles in the IAM User Guide.
 %%
 %% Permissions
 %%
-%% The temporary security credentials created by `AssumeRoleWithSAML` can be
+%% The temporary security credentials created by `AssumeRoleWithSAML' can be
 %% used to make API calls to any AWS service with the following exception:
-%% you cannot call the STS `GetFederationToken` or `GetSessionToken` API
+%% you cannot call the STS `GetFederationToken' or `GetSessionToken' API
 %% operations.
 %%
 %% (Optional) You can pass inline or managed session policies to this
@@ -207,17 +207,17 @@ assume_role(Client, Input, Options)
 %% that is being assumed. For more information, see Session Policies in the
 %% IAM User Guide.
 %%
-%% Calling `AssumeRoleWithSAML` does not require the use of AWS security
+%% Calling `AssumeRoleWithSAML' does not require the use of AWS security
 %% credentials. The identity of the caller is validated by using keys in the
 %% metadata document that is uploaded for the SAML provider entity for your
 %% identity provider.
 %%
-%% Calling `AssumeRoleWithSAML` can result in an entry in your AWS CloudTrail
-%% logs. The entry includes the value in the `NameID` element of the SAML
-%% assertion. We recommend that you use a `NameIDType` that is not associated
+%% Calling `AssumeRoleWithSAML' can result in an entry in your AWS CloudTrail
+%% logs. The entry includes the value in the `NameID' element of the SAML
+%% assertion. We recommend that you use a `NameIDType' that is not associated
 %% with any personally identifiable information (PII). For example, you could
 %% instead use the persistent identifier
-%% (`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`).
+%% (`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent').
 %%
 %% Tags
 %%
@@ -234,7 +234,7 @@ assume_role(Client, Input, Options)
 %% An AWS conversion compresses the passed session policies and session tags
 %% into a packed binary format that has a separate limit. Your request can
 %% fail for this limit even if your plain text meets the other requirements.
-%% The `PackedPolicySize` response element indicates by percentage how close
+%% The `PackedPolicySize' response element indicates by percentage how close
 %% the policies and tags for your request are to the upper size limit.
 %%
 %% You can pass a session tag with the same key as a tag that is attached to
@@ -252,7 +252,7 @@ assume_role(Client, Input, Options)
 %%
 %% SAML Configuration
 %%
-%% Before your application can call `AssumeRoleWithSAML`, you must configure
+%% Before your application can call `AssumeRoleWithSAML', you must configure
 %% your SAML identity provider (IdP) to issue the claims required by AWS.
 %% Additionally, you must use AWS Identity and Access Management (IAM) to
 %% create a SAML provider entity in your AWS account that represents your
@@ -294,14 +294,14 @@ assume_role_with_s_a_m_l(Client, Input, Options)
 %% for Android Developer Guide and Amazon Cognito Overview in the AWS SDK for
 %% iOS Developer Guide.
 %%
-%% Calling `AssumeRoleWithWebIdentity` does not require the use of AWS
+%% Calling `AssumeRoleWithWebIdentity' does not require the use of AWS
 %% security credentials. Therefore, you can distribute an application (for
 %% example, on mobile devices) that requests temporary security credentials
 %% without including long-term AWS credentials in the application. You also
 %% don't need to deploy server-based proxy services that use long-term AWS
 %% credentials. Instead, the identity of the caller is validated by using a
 %% token from the web identity provider. For a comparison of
-%% `AssumeRoleWithWebIdentity` with the other API operations that produce
+%% `AssumeRoleWithWebIdentity' with the other API operations that produce
 %% temporary credentials, see Requesting Temporary Security Credentials and
 %% Comparing the AWS STS API operations in the IAM User Guide.
 %%
@@ -313,24 +313,24 @@ assume_role_with_s_a_m_l(Client, Input, Options)
 %% Session Duration
 %%
 %% By default, the temporary security credentials created by
-%% `AssumeRoleWithWebIdentity` last for one hour. However, you can use the
-%% optional `DurationSeconds` parameter to specify the duration of your
+%% `AssumeRoleWithWebIdentity' last for one hour. However, you can use the
+%% optional `DurationSeconds' parameter to specify the duration of your
 %% session. You can provide a value from 900 seconds (15 minutes) up to the
 %% maximum session duration setting for the role. This setting can have a
 %% value from 1 hour to 12 hours. To learn how to view the maximum value for
 %% your role, see View the Maximum Session Duration Setting for a Role in the
 %% IAM User Guide. The maximum session duration limit applies when you use
-%% the `AssumeRole*` API operations or the `assume-role*` CLI commands.
+%% the `AssumeRole*' API operations or the `assume-role*' CLI commands.
 %% However the limit does not apply when you use those operations to create a
 %% console URL. For more information, see Using IAM Roles in the IAM User
 %% Guide.
 %%
 %% Permissions
 %%
-%% The temporary security credentials created by `AssumeRoleWithWebIdentity`
+%% The temporary security credentials created by `AssumeRoleWithWebIdentity'
 %% can be used to make API calls to any AWS service with the following
-%% exception: you cannot call the STS `GetFederationToken` or
-%% `GetSessionToken` API operations.
+%% exception: you cannot call the STS `GetFederationToken' or
+%% `GetSessionToken' API operations.
 %%
 %% (Optional) You can pass inline or managed session policies to this
 %% operation. You can pass a single JSON policy document to use as an inline
@@ -361,7 +361,7 @@ assume_role_with_s_a_m_l(Client, Input, Options)
 %% An AWS conversion compresses the passed session policies and session tags
 %% into a packed binary format that has a separate limit. Your request can
 %% fail for this limit even if your plain text meets the other requirements.
-%% The `PackedPolicySize` response element indicates by percentage how close
+%% The `PackedPolicySize' response element indicates by percentage how close
 %% the policies and tags for your request are to the upper size limit.
 %%
 %% You can pass a session tag with the same key as a tag that is attached to
@@ -379,14 +379,14 @@ assume_role_with_s_a_m_l(Client, Input, Options)
 %%
 %% Identities
 %%
-%% Before your application can call `AssumeRoleWithWebIdentity`, you must
+%% Before your application can call `AssumeRoleWithWebIdentity', you must
 %% have an identity token from a supported identity provider and create a
 %% role that the application can assume. The role that your application
 %% assumes must trust the identity provider that is associated with the
 %% identity token. In other words, the identity provider must be specified in
 %% the role's trust policy.
 %%
-%% Calling `AssumeRoleWithWebIdentity` can result in an entry in your AWS
+%% Calling `AssumeRoleWithWebIdentity' can result in an entry in your AWS
 %% CloudTrail logs. The entry includes the Subject of the provided Web
 %% Identity Token. We recommend that you avoid using any personally
 %% identifiable information (PII) in this field. For example, you could
@@ -394,7 +394,7 @@ assume_role_with_s_a_m_l(Client, Input, Options)
 %% specification.
 %%
 %% For more information about how to use web identity federation and the
-%% `AssumeRoleWithWebIdentity` API, see the following resources:
+%% `AssumeRoleWithWebIdentity' API, see the following resources:
 %%
 %% <ul> <li> Using Web Identity Federation API Operations for Mobile Apps and
 %% Federation Through a Web-based Identity Provider.
@@ -426,7 +426,7 @@ assume_role_with_web_identity(Client, Input, Options)
 %% request from an encoded message returned in response to an AWS request.
 %%
 %% For example, if a user is not authorized to perform an operation that he
-%% or she has requested, the request returns a `Client.UnauthorizedOperation`
+%% or she has requested, the request returns a `Client.UnauthorizedOperation'
 %% response (an HTTP 403 response). Some AWS operations additionally return
 %% an encoded message that can provide details about this authorization
 %% failure.
@@ -439,7 +439,7 @@ assume_role_with_web_identity(Client, Input, Options)
 %% constitute privileged information that the user who requested the
 %% operation should not see. To decode an authorization status message, a
 %% user must be granted permissions via an IAM policy to request the
-%% `DecodeAuthorizationMessage` (`sts:DecodeAuthorizationMessage`) action.
+%% `DecodeAuthorizationMessage' (`sts:DecodeAuthorizationMessage') action.
 %%
 %% The decoded message includes the following type of information:
 %%
@@ -467,18 +467,18 @@ decode_authorization_message(Client, Input, Options)
 %% @doc Returns the account identifier for the specified access key ID.
 %%
 %% Access keys consist of two parts: an access key ID (for example,
-%% `AKIAIOSFODNN7EXAMPLE`) and a secret access key (for example,
-%% `wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY`). For more information about
+%% `AKIAIOSFODNN7EXAMPLE') and a secret access key (for example,
+%% `wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY'). For more information about
 %% access keys, see Managing Access Keys for IAM Users in the IAM User Guide.
 %%
 %% When you pass an access key ID to this operation, it returns the ID of the
-%% AWS account to which the keys belong. Access key IDs beginning with `AKIA`
+%% AWS account to which the keys belong. Access key IDs beginning with `AKIA'
 %% are long-term credentials for an IAM user or the AWS account root user.
-%% Access key IDs beginning with `ASIA` are temporary credentials that are
+%% Access key IDs beginning with `ASIA' are temporary credentials that are
 %% created using STS operations. If the account in the response belongs to
 %% you, you can sign in as the root user and review your root user access
 %% keys. Then, you can pull a credentials report to learn which IAM user owns
-%% the keys. To learn who requested the temporary credentials for an `ASIA`
+%% the keys. To learn who requested the temporary credentials for an `ASIA'
 %% access key, view the STS events in your CloudTrail logs in the IAM User
 %% Guide.
 %%
@@ -498,7 +498,7 @@ get_access_key_info(Client, Input, Options)
 %%
 %% No permissions are required to perform this operation. If an administrator
 %% adds a policy to your IAM user or role that explicitly denies access to
-%% the `sts:GetCallerIdentity` action, you can still perform this operation.
+%% the `sts:GetCallerIdentity' action, you can still perform this operation.
 %% Permissions are not required because the same information is returned when
 %% an IAM user or role is denied access. To view an example response, see I
 %% Am Not Authorized to Perform: iam:DeleteVirtualMFADevice in the IAM User
@@ -516,22 +516,22 @@ get_caller_identity(Client, Input, Options)
 %%
 %% A typical use is in a proxy application that gets temporary security
 %% credentials on behalf of distributed applications inside a corporate
-%% network. You must call the `GetFederationToken` operation using the
+%% network. You must call the `GetFederationToken' operation using the
 %% long-term security credentials of an IAM user. As a result, this call is
 %% appropriate in contexts where those credentials can be safely stored,
 %% usually in a server-based application. For a comparison of
-%% `GetFederationToken` with the other API operations that produce temporary
+%% `GetFederationToken' with the other API operations that produce temporary
 %% credentials, see Requesting Temporary Security Credentials and Comparing
 %% the AWS STS API operations in the IAM User Guide.
 %%
 %% You can create a mobile-based or browser-based app that can authenticate
 %% users using a web identity provider like Login with Amazon, Facebook,
 %% Google, or an OpenID Connect-compatible identity provider. In this case,
-%% we recommend that you use Amazon Cognito or `AssumeRoleWithWebIdentity`.
+%% we recommend that you use Amazon Cognito or `AssumeRoleWithWebIdentity'.
 %% For more information, see Federation Through a Web-based Identity Provider
 %% in the IAM User Guide.
 %%
-%% You can also call `GetFederationToken` using the security credentials of
+%% You can also call `GetFederationToken' using the security credentials of
 %% an AWS account root user, but we do not recommend it. Instead, we
 %% recommend that you create an IAM user for the purpose of the proxy
 %% application. Then attach a policy to the IAM user that limits federated
@@ -548,13 +548,13 @@ get_caller_identity(Client, Input, Options)
 %%
 %% Permissions
 %%
-%% You can use the temporary credentials created by `GetFederationToken` in
+%% You can use the temporary credentials created by `GetFederationToken' in
 %% any AWS service except the following:
 %%
 %% <ul> <li> You cannot call any IAM operations using the AWS CLI or the AWS
 %% API.
 %%
-%% </li> <li> You cannot call any STS operations except `GetCallerIdentity`.
+%% </li> <li> You cannot call any STS operations except `GetCallerIdentity'.
 %%
 %% </li> </ul> You must pass an inline or managed session policy to this
 %% operation. You can pass a single JSON policy document to use as an inline
@@ -570,12 +570,12 @@ get_caller_identity(Client, Input, Options)
 %% cannot use session policies to grant more permissions than those that are
 %% defined in the permissions policy of the IAM user. For more information,
 %% see Session Policies in the IAM User Guide. For information about using
-%% `GetFederationToken` to create temporary security credentials, see
+%% `GetFederationToken' to create temporary security credentials, see
 %% GetFederationToken—Federation Through a Custom Identity Broker.
 %%
 %% You can use the credentials to access a resource that has a resource-based
 %% policy. If that policy specifically references the federated user session
-%% in the `Principal` element of the policy, the session has the permissions
+%% in the `Principal' element of the policy, the session has the permissions
 %% allowed by the policy. These permissions are granted in addition to the
 %% permissions granted by the session policies.
 %%
@@ -591,10 +591,10 @@ get_caller_identity(Client, Input, Options)
 %% Using Tags for Attribute-Based Access Control in the IAM User Guide.
 %%
 %% Tag key–value pairs are not case sensitive, but case is preserved. This
-%% means that you cannot have separate `Department` and `department` tag
+%% means that you cannot have separate `Department' and `department' tag
 %% keys. Assume that the user that you are federating has the
-%% `Department`=`Marketing` tag and you pass the `department`=`engineering`
-%% session tag. `Department` and `department` are not saved as separate tags,
+%% `Department'=`Marketing' tag and you pass the `department'=`engineering'
+%% session tag. `Department' and `department' are not saved as separate tags,
 %% and the session tag passed in the request takes precedence over the user
 %% tag.
 get_federation_token(Client, Input)
@@ -608,21 +608,21 @@ get_federation_token(Client, Input, Options)
 %% user.
 %%
 %% The credentials consist of an access key ID, a secret access key, and a
-%% security token. Typically, you use `GetSessionToken` if you want to use
+%% security token. Typically, you use `GetSessionToken' if you want to use
 %% MFA to protect programmatic calls to specific AWS API operations like
-%% Amazon EC2 `StopInstances`. MFA-enabled IAM users would need to call
-%% `GetSessionToken` and submit an MFA code that is associated with their MFA
+%% Amazon EC2 `StopInstances'. MFA-enabled IAM users would need to call
+%% `GetSessionToken' and submit an MFA code that is associated with their MFA
 %% device. Using the temporary security credentials that are returned from
 %% the call, IAM users can then make programmatic calls to API operations
 %% that require MFA authentication. If you do not supply a correct MFA code,
 %% then the API returns an access denied error. For a comparison of
-%% `GetSessionToken` with the other API operations that produce temporary
+%% `GetSessionToken' with the other API operations that produce temporary
 %% credentials, see Requesting Temporary Security Credentials and Comparing
 %% the AWS STS API operations in the IAM User Guide.
 %%
 %% Session Duration
 %%
-%% The `GetSessionToken` operation must be called by using the long-term AWS
+%% The `GetSessionToken' operation must be called by using the long-term AWS
 %% security credentials of the AWS account root user or an IAM user.
 %% Credentials that are created by IAM users are valid for the duration that
 %% you specify. This duration can range from 900 seconds (15 minutes) up to a
@@ -633,28 +633,28 @@ get_federation_token(Client, Input, Options)
 %%
 %% Permissions
 %%
-%% The temporary security credentials created by `GetSessionToken` can be
+%% The temporary security credentials created by `GetSessionToken' can be
 %% used to make API calls to any AWS service with the following exceptions:
 %%
 %% <ul> <li> You cannot call any IAM API operations unless MFA authentication
 %% information is included in the request.
 %%
-%% </li> <li> You cannot call any STS API except `AssumeRole` or
-%% `GetCallerIdentity`.
+%% </li> <li> You cannot call any STS API except `AssumeRole' or
+%% `GetCallerIdentity'.
 %%
-%% </li> </ul> We recommend that you do not call `GetSessionToken` with AWS
+%% </li> </ul> We recommend that you do not call `GetSessionToken' with AWS
 %% account root user credentials. Instead, follow our best practices by
 %% creating one or more IAM users, giving them the necessary permissions, and
 %% using IAM users for everyday interaction with AWS.
 %%
-%% The credentials that are returned by `GetSessionToken` are based on
+%% The credentials that are returned by `GetSessionToken' are based on
 %% permissions associated with the user whose credentials were used to call
-%% the operation. If `GetSessionToken` is called using AWS account root user
+%% the operation. If `GetSessionToken' is called using AWS account root user
 %% credentials, the temporary credentials have root user permissions.
-%% Similarly, if `GetSessionToken` is called using the credentials of an IAM
+%% Similarly, if `GetSessionToken' is called using the credentials of an IAM
 %% user, the temporary credentials have the same permissions as the IAM user.
 %%
-%% For more information about using `GetSessionToken` to create temporary
+%% For more information about using `GetSessionToken' to create temporary
 %% credentials, go to Temporary Credentials for Users in Untrusted
 %% Environments in the IAM User Guide.
 get_session_token(Client, Input)

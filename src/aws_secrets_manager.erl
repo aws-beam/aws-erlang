@@ -114,27 +114,27 @@
 %% @doc Disables automatic scheduled rotation and cancels the rotation of a
 %% secret if currently in progress.
 %%
-%% To re-enable scheduled rotation, call `RotateSecret` with
-%% `AutomaticallyRotateAfterDays` set to a value greater than 0. This
+%% To re-enable scheduled rotation, call `RotateSecret' with
+%% `AutomaticallyRotateAfterDays' set to a value greater than 0. This
 %% immediately rotates your secret and then enables the automatic schedule.
 %%
 %% If you cancel a rotation while in progress, it can leave the
-%% `VersionStage` labels in an unexpected state. Depending on the step of the
+%% `VersionStage' labels in an unexpected state. Depending on the step of the
 %% rotation in progress, you might need to remove the staging label
-%% `AWSPENDING` from the partially created version, specified by the
-%% `VersionId` response value. You should also evaluate the partially rotated
+%% `AWSPENDING' from the partially created version, specified by the
+%% `VersionId' response value. You should also evaluate the partially rotated
 %% new version to see if it should be deleted, which you can do by removing
-%% all staging labels from the new version `VersionStage` field.
+%% all staging labels from the new version `VersionStage' field.
 %%
-%% To successfully start a rotation, the staging label `AWSPENDING` must be
+%% To successfully start a rotation, the staging label `AWSPENDING' must be
 %% in one of the following states:
 %%
 %% <ul> <li> Not attached to any version at all
 %%
-%% </li> <li> Attached to the same version as the staging label `AWSCURRENT`
+%% </li> <li> Attached to the same version as the staging label `AWSCURRENT'
 %%
-%% </li> </ul> If the staging label `AWSPENDING` attached to a different
-%% version than the version with `AWSCURRENT` then the attempt to rotate
+%% </li> </ul> If the staging label `AWSPENDING' attached to a different
+%% version than the version with `AWSCURRENT' then the attempt to rotate
 %% fails.
 %%
 %% Minimum permissions
@@ -146,16 +146,16 @@
 %% </li> </ul> Related operations
 %%
 %% <ul> <li> To configure rotation for a secret or to manually trigger a
-%% rotation, use `RotateSecret`.
+%% rotation, use `RotateSecret'.
 %%
 %% </li> <li> To get the rotation configuration details for a secret, use
-%% `DescribeSecret`.
+%% `DescribeSecret'.
 %%
 %% </li> <li> To list all of the currently available secrets, use
-%% `ListSecrets`.
+%% `ListSecrets'.
 %%
 %% </li> <li> To list all of the versions currently associated with a secret,
-%% use `ListSecretVersionIds`.
+%% use `ListSecretVersionIds'.
 %%
 %% </li> </ul>
 cancel_rotate_secret(Client, Input)
@@ -174,21 +174,21 @@ cancel_rotate_secret(Client, Input, Options)
 %% "versions" associated with the secret. Each version contains a copy of the
 %% encrypted secret data. Each version is associated with one or more
 %% "staging labels" that identify where the version is in the rotation cycle.
-%% The `SecretVersionsToStages` field of the secret contains the mapping of
+%% The `SecretVersionsToStages' field of the secret contains the mapping of
 %% staging labels to the active versions of the secret. Versions without a
 %% staging label are considered deprecated and not included in the list.
 %%
 %% You provide the secret data to be encrypted by putting text in either the
-%% `SecretString` parameter or binary data in the `SecretBinary` parameter,
-%% but not both. If you include `SecretString` or `SecretBinary` then Secrets
+%% `SecretString' parameter or binary data in the `SecretBinary' parameter,
+%% but not both. If you include `SecretString' or `SecretBinary' then Secrets
 %% Manager also creates an initial secret version and automatically attaches
-%% the staging label `AWSCURRENT` to the new version.
+%% the staging label `AWSCURRENT' to the new version.
 %%
-%% If you call an operation to encrypt or decrypt the `SecretString` or
-%% `SecretBinary` for a secret in the same account as the calling user and
+%% If you call an operation to encrypt or decrypt the `SecretString' or
+%% `SecretBinary' for a secret in the same account as the calling user and
 %% that secret doesn't specify a AWS KMS encryption key, Secrets Manager uses
 %% the account's default AWS managed customer master key (CMK) with the alias
-%% `aws/secretsmanager`. If this key doesn't already exist in your account
+%% `aws/secretsmanager'. If this key doesn't already exist in your account
 %% then Secrets Manager creates it for you automatically. All users and roles
 %% in the same AWS account automatically have access to use the default CMK.
 %% Note that if an Secrets Manager API call results in AWS creating the
@@ -200,8 +200,8 @@ cancel_rotate_secret(Client, Input, Options)
 %% then you must create and use a custom AWS KMS CMK because you can't access
 %% the default CMK for the account using credentials from a different AWS
 %% account. Store the ARN of the CMK in the secret when you create the secret
-%% or when you update it by including it in the `KMSKeyId`. If you call an
-%% API that must encrypt or decrypt `SecretString` or `SecretBinary` using
+%% or when you update it by including it in the `KMSKeyId'. If you call an
+%% API that must encrypt or decrypt `SecretString' or `SecretBinary' using
 %% credentials from a different account then the AWS KMS key policy must
 %% grant cross-account access to that other account's user or role for both
 %% the kms:GenerateDataKey and kms:Decrypt operations.
@@ -221,26 +221,26 @@ cancel_rotate_secret(Client, Input, Options)
 %% account default AWS managed CMK for Secrets Manager.
 %%
 %% </li> <li> secretsmanager:TagResource - needed only if you include the
-%% `Tags` parameter.
+%% `Tags' parameter.
 %%
 %% </li> </ul> Related operations
 %%
-%% <ul> <li> To delete a secret, use `DeleteSecret`.
+%% <ul> <li> To delete a secret, use `DeleteSecret'.
 %%
-%% </li> <li> To modify an existing secret, use `UpdateSecret`.
+%% </li> <li> To modify an existing secret, use `UpdateSecret'.
 %%
-%% </li> <li> To create a new version of a secret, use `PutSecretValue`.
+%% </li> <li> To create a new version of a secret, use `PutSecretValue'.
 %%
 %% </li> <li> To retrieve the encrypted secure string and secure binary
-%% values, use `GetSecretValue`.
+%% values, use `GetSecretValue'.
 %%
 %% </li> <li> To retrieve all other details for a secret, use
-%% `DescribeSecret`. This does not include the encrypted secure string and
+%% `DescribeSecret'. This does not include the encrypted secure string and
 %% secure binary values.
 %%
 %% </li> <li> To retrieve the list of secret versions associated with the
-%% current secret, use `DescribeSecret` and examine the
-%% `SecretVersionsToStages` response value.
+%% current secret, use `DescribeSecret' and examine the
+%% `SecretVersionsToStages' response value.
 %%
 %% </li> </ul>
 create_secret(Client, Input)
@@ -261,13 +261,13 @@ create_secret(Client, Input, Options)
 %% </li> </ul> Related operations
 %%
 %% <ul> <li> To attach a resource policy to a secret, use
-%% `PutResourcePolicy`.
+%% `PutResourcePolicy'.
 %%
 %% </li> <li> To retrieve the current resource-based policy that's attached
-%% to a secret, use `GetResourcePolicy`.
+%% to a secret, use `GetResourcePolicy'.
 %%
 %% </li> <li> To list all of the currently available secrets, use
-%% `ListSecrets`.
+%% `ListSecrets'.
 %%
 %% </li> </ul>
 delete_resource_policy(Client, Input)
@@ -281,23 +281,23 @@ delete_resource_policy(Client, Input, Options)
 %%
 %% You can optionally include a recovery window during which you can restore
 %% the secret. If you don't specify a recovery window value, the operation
-%% defaults to 30 days. Secrets Manager attaches a `DeletionDate` stamp to
+%% defaults to 30 days. Secrets Manager attaches a `DeletionDate' stamp to
 %% the secret that specifies the end of the recovery window. At the end of
 %% the recovery window, Secrets Manager deletes the secret permanently.
 %%
-%% At any time before recovery window ends, you can use `RestoreSecret` to
-%% remove the `DeletionDate` and cancel the deletion of the secret.
+%% At any time before recovery window ends, you can use `RestoreSecret' to
+%% remove the `DeletionDate' and cancel the deletion of the secret.
 %%
 %% You cannot access the encrypted secret information in any secret that is
 %% scheduled for deletion. If you need to access that information, you must
-%% cancel the deletion with `RestoreSecret` and then retrieve the
+%% cancel the deletion with `RestoreSecret' and then retrieve the
 %% information.
 %%
 %% There is no explicit operation to delete a version of a secret. Instead,
-%% remove all staging labels from the `VersionStage` field of a version. That
+%% remove all staging labels from the `VersionStage' field of a version. That
 %% marks the version as deprecated and allows Secrets Manager to delete it as
 %% needed. Versions that do not have any staging labels do not show up in
-%% `ListSecretVersionIds` unless you specify `IncludeDeprecated`.
+%% `ListSecretVersionIds' unless you specify `IncludeDeprecated'.
 %%
 %% The permanent secret deletion at the end of the waiting period is
 %% performed as a background task with low priority. There is no guarantee of
@@ -312,10 +312,10 @@ delete_resource_policy(Client, Input, Options)
 %%
 %% </li> </ul> Related operations
 %%
-%% <ul> <li> To create a secret, use `CreateSecret`.
+%% <ul> <li> To create a secret, use `CreateSecret'.
 %%
 %% </li> <li> To cancel deletion of a version of a secret before the recovery
-%% window has expired, use `RestoreSecret`.
+%% window has expired, use `RestoreSecret'.
 %%
 %% </li> </ul>
 delete_secret(Client, Input)
@@ -338,15 +338,15 @@ delete_secret(Client, Input, Options)
 %%
 %% </li> </ul> Related operations
 %%
-%% <ul> <li> To create a secret, use `CreateSecret`.
+%% <ul> <li> To create a secret, use `CreateSecret'.
 %%
-%% </li> <li> To modify a secret, use `UpdateSecret`.
+%% </li> <li> To modify a secret, use `UpdateSecret'.
 %%
 %% </li> <li> To retrieve the encrypted secret information in a version of
-%% the secret, use `GetSecretValue`.
+%% the secret, use `GetSecretValue'.
 %%
 %% </li> <li> To list all of the secrets in the AWS account, use
-%% `ListSecrets`.
+%% `ListSecrets'.
 %%
 %% </li> </ul>
 describe_secret(Client, Input)
@@ -393,13 +393,13 @@ get_random_password(Client, Input, Options)
 %% </li> </ul> Related operations
 %%
 %% <ul> <li> To attach a resource policy to a secret, use
-%% `PutResourcePolicy`.
+%% `PutResourcePolicy'.
 %%
 %% </li> <li> To delete the resource-based policy attached to a secret, use
-%% `DeleteResourcePolicy`.
+%% `DeleteResourcePolicy'.
 %%
 %% </li> <li> To list all of the currently available secrets, use
-%% `ListSecrets`.
+%% `ListSecrets'.
 %%
 %% </li> </ul>
 get_resource_policy(Client, Input)
@@ -409,8 +409,8 @@ get_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResourcePolicy">>, Input, Options).
 
-%% @doc Retrieves the contents of the encrypted fields `SecretString` or
-%% `SecretBinary` from the specified version of a secret, whichever contains
+%% @doc Retrieves the contents of the encrypted fields `SecretString' or
+%% `SecretBinary' from the specified version of a secret, whichever contains
 %% content.
 %%
 %% Minimum permissions
@@ -426,10 +426,10 @@ get_resource_policy(Client, Input, Options)
 %% </li> </ul> Related operations
 %%
 %% <ul> <li> To create a new version of the secret with different encrypted
-%% information, use `PutSecretValue`.
+%% information, use `PutSecretValue'.
 %%
 %% </li> <li> To retrieve the non-encrypted details for the secret, use
-%% `DescribeSecret`.
+%% `DescribeSecret'.
 %%
 %% </li> </ul>
 get_secret_value(Client, Input)
@@ -441,14 +441,14 @@ get_secret_value(Client, Input, Options)
 
 %% @doc Lists all of the versions attached to the specified secret.
 %%
-%% The output does not include the `SecretString` or `SecretBinary` fields.
+%% The output does not include the `SecretString' or `SecretBinary' fields.
 %% By default, the list includes only versions that have at least one staging
-%% label in `VersionStage` attached.
+%% label in `VersionStage' attached.
 %%
-%% Always check the `NextToken` response parameter when calling any of the
-%% `List*` operations. These operations can occasionally return an empty or
+%% Always check the `NextToken' response parameter when calling any of the
+%% `List*' operations. These operations can occasionally return an empty or
 %% shorter than expected list of results even when there more results become
-%% available. When this happens, the `NextToken` response parameter contains
+%% available. When this happens, the `NextToken' response parameter contains
 %% a value to pass to the next call to the same API to request the next part
 %% of the list.
 %%
@@ -460,7 +460,7 @@ get_secret_value(Client, Input, Options)
 %%
 %% </li> </ul> Related operations
 %%
-%% <ul> <li> To list the secrets in an account, use `ListSecrets`.
+%% <ul> <li> To list the secrets in an account, use `ListSecrets'.
 %%
 %% </li> </ul>
 list_secret_version_ids(Client, Input)
@@ -474,14 +474,14 @@ list_secret_version_ids(Client, Input, Options)
 %% AWS account.
 %%
 %% To list the versions currently stored for a specific secret, use
-%% `ListSecretVersionIds`. The encrypted fields `SecretString` and
-%% `SecretBinary` are not included in the output. To get that information,
-%% call the `GetSecretValue` operation.
+%% `ListSecretVersionIds'. The encrypted fields `SecretString' and
+%% `SecretBinary' are not included in the output. To get that information,
+%% call the `GetSecretValue' operation.
 %%
-%% Always check the `NextToken` response parameter when calling any of the
-%% `List*` operations. These operations can occasionally return an empty or
+%% Always check the `NextToken' response parameter when calling any of the
+%% `List*' operations. These operations can occasionally return an empty or
 %% shorter than expected list of results even when there more results become
-%% available. When this happens, the `NextToken` response parameter contains
+%% available. When this happens, the `NextToken' response parameter contains
 %% a value to pass to the next call to the same API to request the next part
 %% of the list.
 %%
@@ -494,7 +494,7 @@ list_secret_version_ids(Client, Input, Options)
 %% </li> </ul> Related operations
 %%
 %% <ul> <li> To list the versions attached to a secret, use
-%% `ListSecretVersionIds`.
+%% `ListSecretVersionIds'.
 %%
 %% </li> </ul>
 list_secrets(Client, Input)
@@ -509,7 +509,7 @@ list_secrets(Client, Input, Options)
 %%
 %% A resource-based policy is optional. Alternatively, you can use IAM
 %% identity-based policies that specify the secret's Amazon Resource Name
-%% (ARN) in the policy statement's `Resources` element. You can also use a
+%% (ARN) in the policy statement's `Resources' element. You can also use a
 %% combination of both identity-based and resource-based policies. The
 %% affected users and roles receive the permissions that are permitted by all
 %% of the relevant policies. For more information, see Using Resource-Based
@@ -526,13 +526,13 @@ list_secrets(Client, Input, Options)
 %% </li> </ul> Related operations
 %%
 %% <ul> <li> To retrieve the resource policy attached to a secret, use
-%% `GetResourcePolicy`.
+%% `GetResourcePolicy'.
 %%
 %% </li> <li> To delete the resource-based policy that's attached to a
-%% secret, use `DeleteResourcePolicy`.
+%% secret, use `DeleteResourcePolicy'.
 %%
 %% </li> <li> To list all of the currently available secrets, use
-%% `ListSecrets`.
+%% `ListSecrets'.
 %%
 %% </li> </ul>
 put_resource_policy(Client, Input)
@@ -545,40 +545,40 @@ put_resource_policy(Client, Input, Options)
 %% @doc Stores a new encrypted secret value in the specified secret.
 %%
 %% To do this, the operation creates a new version and attaches it to the
-%% secret. The version can contain a new `SecretString` value or a new
-%% `SecretBinary` value. You can also specify the staging labels that are
+%% secret. The version can contain a new `SecretString' value or a new
+%% `SecretBinary' value. You can also specify the staging labels that are
 %% initially attached to the new version.
 %%
-%% The Secrets Manager console uses only the `SecretString` field. To add
-%% binary data to a secret with the `SecretBinary` field you must use the AWS
+%% The Secrets Manager console uses only the `SecretString' field. To add
+%% binary data to a secret with the `SecretBinary' field you must use the AWS
 %% CLI or one of the AWS SDKs.
 %%
 %% <ul> <li> If this operation creates the first version for the secret then
-%% Secrets Manager automatically attaches the staging label `AWSCURRENT` to
+%% Secrets Manager automatically attaches the staging label `AWSCURRENT' to
 %% the new version.
 %%
 %% </li> <li> If another version of this secret already exists, then this
 %% operation does not automatically move any staging labels other than those
-%% that you explicitly specify in the `VersionStages` parameter.
+%% that you explicitly specify in the `VersionStages' parameter.
 %%
-%% </li> <li> If this operation moves the staging label `AWSCURRENT` from
+%% </li> <li> If this operation moves the staging label `AWSCURRENT' from
 %% another version to this version (because you included it in the
-%% `StagingLabels` parameter) then Secrets Manager also automatically moves
-%% the staging label `AWSPREVIOUS` to the version that `AWSCURRENT` was
+%% `StagingLabels' parameter) then Secrets Manager also automatically moves
+%% the staging label `AWSPREVIOUS' to the version that `AWSCURRENT' was
 %% removed from.
 %%
-%% </li> <li> This operation is idempotent. If a version with a `VersionId`
-%% with the same value as the `ClientRequestToken` parameter already exists
+%% </li> <li> This operation is idempotent. If a version with a `VersionId'
+%% with the same value as the `ClientRequestToken' parameter already exists
 %% and you specify the same secret data, the operation succeeds but does
 %% nothing. However, if the secret data is different, then the operation
 %% fails because you cannot modify an existing version; you can only create
 %% new ones.
 %%
 %% </li> </ul> If you call an operation to encrypt or decrypt the
-%% `SecretString` or `SecretBinary` for a secret in the same account as the
+%% `SecretString' or `SecretBinary' for a secret in the same account as the
 %% calling user and that secret doesn't specify a AWS KMS encryption key,
 %% Secrets Manager uses the account's default AWS managed customer master key
-%% (CMK) with the alias `aws/secretsmanager`. If this key doesn't already
+%% (CMK) with the alias `aws/secretsmanager'. If this key doesn't already
 %% exist in your account then Secrets Manager creates it for you
 %% automatically. All users and roles in the same AWS account automatically
 %% have access to use the default CMK. Note that if an Secrets Manager API
@@ -590,8 +590,8 @@ put_resource_policy(Client, Input, Options)
 %% then you must create and use a custom AWS KMS CMK because you can't access
 %% the default CMK for the account using credentials from a different AWS
 %% account. Store the ARN of the CMK in the secret when you create the secret
-%% or when you update it by including it in the `KMSKeyId`. If you call an
-%% API that must encrypt or decrypt `SecretString` or `SecretBinary` using
+%% or when you update it by including it in the `KMSKeyId'. If you call an
+%% API that must encrypt or decrypt `SecretString' or `SecretBinary' using
 %% credentials from a different account then the AWS KMS key policy must
 %% grant cross-account access to that other account's user or role for both
 %% the kms:GenerateDataKey and kms:Decrypt operations.
@@ -609,14 +609,14 @@ put_resource_policy(Client, Input, Options)
 %% </li> </ul> Related operations
 %%
 %% <ul> <li> To retrieve the encrypted value you store in the version of a
-%% secret, use `GetSecretValue`.
+%% secret, use `GetSecretValue'.
 %%
-%% </li> <li> To create a secret, use `CreateSecret`.
+%% </li> <li> To create a secret, use `CreateSecret'.
 %%
-%% </li> <li> To get the details for a secret, use `DescribeSecret`.
+%% </li> <li> To get the details for a secret, use `DescribeSecret'.
 %%
 %% </li> <li> To list the versions attached to a secret, use
-%% `ListSecretVersionIds`.
+%% `ListSecretVersionIds'.
 %%
 %% </li> </ul>
 put_secret_value(Client, Input)
@@ -627,7 +627,7 @@ put_secret_value(Client, Input, Options)
     request(Client, <<"PutSecretValue">>, Input, Options).
 
 %% @doc Cancels the scheduled deletion of a secret by removing the
-%% `DeletedDate` time stamp.
+%% `DeletedDate' time stamp.
 %%
 %% This makes the secret accessible to query once again.
 %%
@@ -639,7 +639,7 @@ put_secret_value(Client, Input, Options)
 %%
 %% </li> </ul> Related operations
 %%
-%% <ul> <li> To delete a secret, use `DeleteSecret`.
+%% <ul> <li> To delete a secret, use `DeleteSecret'.
 %%
 %% </li> </ul>
 restore_secret(Client, Input)
@@ -664,7 +664,7 @@ restore_secret(Client, Input, Options)
 %% function creates a new version of the secret and creates or updates the
 %% credentials on the protected service to match. After testing the new
 %% credentials, the function marks the new secret with the staging label
-%% `AWSCURRENT` so that your clients all immediately begin to use the new
+%% `AWSCURRENT' so that your clients all immediately begin to use the new
 %% version. For more information about rotating secrets and how to configure
 %% a Lambda function to rotate the secrets for your protected service, see
 %% Rotating Secrets in AWS Secrets Manager in the AWS Secrets Manager User
@@ -680,15 +680,15 @@ restore_secret(Client, Input, Options)
 %% The rotation function must end with the versions of the secret in one of
 %% two states:
 %%
-%% <ul> <li> The `AWSPENDING` and `AWSCURRENT` staging labels are attached to
+%% <ul> <li> The `AWSPENDING' and `AWSCURRENT' staging labels are attached to
 %% the same version of the secret, or
 %%
-%% </li> <li> The `AWSPENDING` staging label is not attached to any version
+%% </li> <li> The `AWSPENDING' staging label is not attached to any version
 %% of the secret.
 %%
-%% </li> </ul> If the `AWSPENDING` staging label is present but not attached
-%% to the same version as `AWSCURRENT` then any later invocation of
-%% `RotateSecret` assumes that a previous rotation request is still in
+%% </li> </ul> If the `AWSPENDING' staging label is present but not attached
+%% to the same version as `AWSCURRENT' then any later invocation of
+%% `RotateSecret' assumes that a previous rotation request is still in
 %% progress and returns an error.
 %%
 %% Minimum permissions
@@ -702,15 +702,15 @@ restore_secret(Client, Input, Options)
 %%
 %% </li> </ul> Related operations
 %%
-%% <ul> <li> To list the secrets in your account, use `ListSecrets`.
+%% <ul> <li> To list the secrets in your account, use `ListSecrets'.
 %%
 %% </li> <li> To get the details for a version of a secret, use
-%% `DescribeSecret`.
+%% `DescribeSecret'.
 %%
-%% </li> <li> To create a new version of a secret, use `CreateSecret`.
+%% </li> <li> To create a new version of a secret, use `CreateSecret'.
 %%
 %% </li> <li> To attach staging labels to or remove staging labels from a
-%% version of a secret, use `UpdateSecretVersionStage`.
+%% version of a secret, use `UpdateSecretVersionStage'.
 %%
 %% </li> </ul>
 rotate_secret(Client, Input)
@@ -726,7 +726,7 @@ rotate_secret(Client, Input, Options)
 %% Tags are part of the secret's overall metadata, and are not associated
 %% with any specific version of the secret. This operation only appends tags
 %% to the existing list of tags. To remove tags, you must use
-%% `UntagResource`.
+%% `UntagResource'.
 %%
 %% The following basic restrictions apply to tags:
 %%
@@ -738,7 +738,7 @@ rotate_secret(Client, Input, Options)
 %%
 %% </li> <li> Tag keys and values are case sensitive.
 %%
-%% </li> <li> Do not use the `aws:` prefix in your tag names or values
+%% </li> <li> Do not use the `aws:' prefix in your tag names or values
 %% because AWS reserves it for AWS use. You can't edit or delete tag names or
 %% values with this prefix. Tags with this prefix do not count against your
 %% tags per secret limit.
@@ -763,10 +763,10 @@ rotate_secret(Client, Input, Options)
 %% </li> </ul> Related operations
 %%
 %% <ul> <li> To remove one or more tags from the collection attached to a
-%% secret, use `UntagResource`.
+%% secret, use `UntagResource'.
 %%
 %% </li> <li> To view the list of tags attached to a secret, use
-%% `DescribeSecret`.
+%% `DescribeSecret'.
 %%
 %% </li> </ul>
 tag_resource(Client, Input)
@@ -795,10 +795,10 @@ tag_resource(Client, Input, Options)
 %% </li> </ul> Related operations
 %%
 %% <ul> <li> To add one or more tags to the collection attached to a secret,
-%% use `TagResource`.
+%% use `TagResource'.
 %%
 %% </li> <li> To view the list of tags attached to a secret, use
-%% `DescribeSecret`.
+%% `DescribeSecret'.
 %%
 %% </li> </ul>
 untag_resource(Client, Input)
@@ -810,31 +810,31 @@ untag_resource(Client, Input, Options)
 
 %% @doc Modifies many of the details of the specified secret.
 %%
-%% If you include a `ClientRequestToken` and either `SecretString` or
-%% `SecretBinary` then it also creates a new version attached to the secret.
+%% If you include a `ClientRequestToken' and either `SecretString' or
+%% `SecretBinary' then it also creates a new version attached to the secret.
 %%
-%% To modify the rotation configuration of a secret, use `RotateSecret`
+%% To modify the rotation configuration of a secret, use `RotateSecret'
 %% instead.
 %%
-%% The Secrets Manager console uses only the `SecretString` parameter and
+%% The Secrets Manager console uses only the `SecretString' parameter and
 %% therefore limits you to encrypting and storing only a text string. To
 %% encrypt and store binary data as part of the version of a secret, you must
 %% use either the AWS CLI or one of the AWS SDKs.
 %%
-%% <ul> <li> If a version with a `VersionId` with the same value as the
-%% `ClientRequestToken` parameter already exists, the operation results in an
+%% <ul> <li> If a version with a `VersionId' with the same value as the
+%% `ClientRequestToken' parameter already exists, the operation results in an
 %% error. You cannot modify an existing version, you can only create a new
 %% version.
 %%
-%% </li> <li> If you include `SecretString` or `SecretBinary` to create a new
+%% </li> <li> If you include `SecretString' or `SecretBinary' to create a new
 %% secret version, Secrets Manager automatically attaches the staging label
-%% `AWSCURRENT` to the new version.
+%% `AWSCURRENT' to the new version.
 %%
 %% </li> </ul> If you call an operation to encrypt or decrypt the
-%% `SecretString` or `SecretBinary` for a secret in the same account as the
+%% `SecretString' or `SecretBinary' for a secret in the same account as the
 %% calling user and that secret doesn't specify a AWS KMS encryption key,
 %% Secrets Manager uses the account's default AWS managed customer master key
-%% (CMK) with the alias `aws/secretsmanager`. If this key doesn't already
+%% (CMK) with the alias `aws/secretsmanager'. If this key doesn't already
 %% exist in your account then Secrets Manager creates it for you
 %% automatically. All users and roles in the same AWS account automatically
 %% have access to use the default CMK. Note that if an Secrets Manager API
@@ -846,8 +846,8 @@ untag_resource(Client, Input, Options)
 %% then you must create and use a custom AWS KMS CMK because you can't access
 %% the default CMK for the account using credentials from a different AWS
 %% account. Store the ARN of the CMK in the secret when you create the secret
-%% or when you update it by including it in the `KMSKeyId`. If you call an
-%% API that must encrypt or decrypt `SecretString` or `SecretBinary` using
+%% or when you update it by including it in the `KMSKeyId'. If you call an
+%% API that must encrypt or decrypt `SecretString' or `SecretBinary' using
 %% credentials from a different account then the AWS KMS key policy must
 %% grant cross-account access to that other account's user or role for both
 %% the kms:GenerateDataKey and kms:Decrypt operations.
@@ -868,15 +868,15 @@ untag_resource(Client, Input, Options)
 %%
 %% </li> </ul> Related operations
 %%
-%% <ul> <li> To create a new secret, use `CreateSecret`.
+%% <ul> <li> To create a new secret, use `CreateSecret'.
 %%
 %% </li> <li> To add only a new version to an existing secret, use
-%% `PutSecretValue`.
+%% `PutSecretValue'.
 %%
-%% </li> <li> To get the details for a secret, use `DescribeSecret`.
+%% </li> <li> To get the details for a secret, use `DescribeSecret'.
 %%
 %% </li> <li> To list the versions contained in a secret, use
-%% `ListSecretVersionIds`.
+%% `ListSecretVersionIds'.
 %%
 %% </li> </ul>
 update_secret(Client, Input)
@@ -895,14 +895,14 @@ update_secret(Client, Input, Options)
 %% version first and then attached to this one. For more information about
 %% staging labels, see Staging Labels in the AWS Secrets Manager User Guide.
 %%
-%% The staging labels that you specify in the `VersionStage` parameter are
+%% The staging labels that you specify in the `VersionStage' parameter are
 %% added to the existing list of staging labels--they don't replace it.
 %%
-%% You can move the `AWSCURRENT` staging label to this version by including
+%% You can move the `AWSCURRENT' staging label to this version by including
 %% it in this call.
 %%
-%% Whenever you move `AWSCURRENT`, Secrets Manager automatically moves the
-%% label `AWSPREVIOUS` to the version that `AWSCURRENT` was removed from.
+%% Whenever you move `AWSCURRENT', Secrets Manager automatically moves the
+%% label `AWSPREVIOUS' to the version that `AWSCURRENT' was removed from.
 %%
 %% If this action results in the last label being removed from a version,
 %% then the version is considered to be 'deprecated' and can be deleted by
@@ -917,8 +917,8 @@ update_secret(Client, Input, Options)
 %% </li> </ul> Related operations
 %%
 %% <ul> <li> To get the list of staging labels that are currently associated
-%% with a version of a secret, use ` `DescribeSecret` ` and examine the
-%% `SecretVersionsToStages` response value.
+%% with a version of a secret, use ` `DescribeSecret' ' and examine the
+%% `SecretVersionsToStages' response value.
 %%
 %% </li> </ul>
 update_secret_version_stage(Client, Input)

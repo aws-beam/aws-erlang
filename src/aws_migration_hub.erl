@@ -6,7 +6,7 @@
 %% migration tool by providing a programmatic interface to Migration Hub.
 %%
 %% Remember that you must set your AWS Migration Hub home region before you
-%% call any of these APIs, or a `HomeRegionNotSetException` error will be
+%% call any of these APIs, or a `HomeRegionNotSetException' error will be
 %% returned. Also, you must make the API calls while in your home region.
 -module(aws_migration_hub).
 
@@ -57,14 +57,14 @@
 %%
 %% This API has the following traits:
 %%
-%% <ul> <li> Migration tools can call the `AssociateCreatedArtifact`
+%% <ul> <li> Migration tools can call the `AssociateCreatedArtifact'
 %% operation to indicate which AWS artifact is associated with a migration
 %% task.
 %%
 %% </li> <li> The created artifact name must be provided in ARN (Amazon
 %% Resource Name) format which will contain information about type and
 %% region; for example:
-%% `arn:aws:ec2:us-east-1:488216288981:image/ami-6d0ba87b`.
+%% `arn:aws:ec2:us-east-1:488216288981:image/ami-6d0ba87b'.
 %%
 %% </li> <li> Examples of the AWS resource behind the created artifact are,
 %% AMI's, EC2 instance, or DMS endpoint, etc.
@@ -105,23 +105,23 @@ create_progress_update_stream(Client, Input, Options)
 %%
 %% This API has the following traits:
 %%
-%% <ul> <li> The only parameter needed for `DeleteProgressUpdateStream` is
-%% the stream name (same as a `CreateProgressUpdateStream` call).
+%% <ul> <li> The only parameter needed for `DeleteProgressUpdateStream' is
+%% the stream name (same as a `CreateProgressUpdateStream' call).
 %%
 %% </li> <li> The call will return, and a background process will
 %% asynchronously delete the stream and all of its resources (tasks,
 %% associated resources, resource attributes, created artifacts).
 %%
 %% </li> <li> If the stream takes time to be deleted, it might still show up
-%% on a `ListProgressUpdateStreams` call.
+%% on a `ListProgressUpdateStreams' call.
 %%
-%% </li> <li> `CreateProgressUpdateStream`, `ImportMigrationTask`,
-%% `NotifyMigrationTaskState`, and all Associate[*] APIs related to the tasks
+%% </li> <li> `CreateProgressUpdateStream', `ImportMigrationTask',
+%% `NotifyMigrationTaskState', and all Associate[*] APIs related to the tasks
 %% belonging to the stream will throw "InvalidInputException" if the stream
 %% of the same name is in the process of being deleted.
 %%
 %% </li> <li> Once the stream and all of its resources are deleted,
-%% `CreateProgressUpdateStream` for a stream of the same name will succeed,
+%% `CreateProgressUpdateStream' for a stream of the same name will succeed,
 %% and that stream will be an entirely new logical resource (without any
 %% resources associated with the old stream).
 %%
@@ -155,13 +155,13 @@ describe_migration_task(Client, Input, Options)
 %%
 %% This API has the following traits:
 %%
-%% <ul> <li> A migration user can call the `DisassociateCreatedArtifacts`
+%% <ul> <li> A migration user can call the `DisassociateCreatedArtifacts'
 %% operation to disassociate a created AWS Artifact from a migration task.
 %%
 %% </li> <li> The created artifact name must be provided in ARN (Amazon
 %% Resource Name) format which will contain information about type and
 %% region; for example:
-%% `arn:aws:ec2:us-east-1:488216288981:image/ami-6d0ba87b`.
+%% `arn:aws:ec2:us-east-1:488216288981:image/ami-6d0ba87b'.
 %%
 %% </li> <li> Examples of the AWS resource behind the created artifact are,
 %% AMI's, EC2 instance, or RDS instance, etc.
@@ -186,7 +186,7 @@ disassociate_discovered_resource(Client, Input, Options)
 %% @doc Registers a new migration task which represents a server, database,
 %% etc., being migrated to AWS by a migration tool.
 %%
-%% This API is a prerequisite to calling the `NotifyMigrationTaskState` API
+%% This API is a prerequisite to calling the `NotifyMigrationTaskState' API
 %% as the migration tool must first register the migration task with
 %% Migration Hub.
 import_migration_task(Client, Input)
@@ -198,7 +198,7 @@ import_migration_task(Client, Input, Options)
 
 %% @doc Lists all the migration statuses for your applications.
 %%
-%% If you use the optional `ApplicationIds` parameter, only the migration
+%% If you use the optional `ApplicationIds' parameter, only the migration
 %% statuses for those applications will be returned.
 list_application_states(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -216,7 +216,7 @@ list_application_states(Client, Input, Options)
 %% place.
 %%
 %% </li> <li> Shows the artifacts created by the migration tool that was
-%% associated by the `AssociateCreatedArtifact` API.
+%% associated by the `AssociateCreatedArtifact' API.
 %%
 %% </li> <li> Lists created artifacts in a paginated interface.
 %%
@@ -228,7 +228,7 @@ list_created_artifacts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCreatedArtifacts">>, Input, Options).
 
-%% @doc Lists discovered resources associated with the given `MigrationTask`.
+%% @doc Lists discovered resources associated with the given `MigrationTask'.
 list_discovered_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_discovered_resources(Client, Input, []).
@@ -267,9 +267,9 @@ list_progress_update_streams(Client, Input, Options)
 
 %% @doc Sets the migration state of an application.
 %%
-%% For a given application identified by the value passed to `ApplicationId`,
-%% its status is set or updated by passing one of three values to `Status`:
-%% `NOT_STARTED | IN_PROGRESS | COMPLETED`.
+%% For a given application identified by the value passed to `ApplicationId',
+%% its status is set or updated by passing one of three values to `Status':
+%% `NOT_STARTED | IN_PROGRESS | COMPLETED'.
 notify_application_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     notify_application_state(Client, Input, []).
@@ -282,13 +282,13 @@ notify_application_state(Client, Input, Options)
 %%
 %% This API has the following traits:
 %%
-%% <ul> <li> Migration tools will call the `NotifyMigrationTaskState` API to
+%% <ul> <li> Migration tools will call the `NotifyMigrationTaskState' API to
 %% share the latest progress and status.
 %%
-%% </li> <li> `MigrationTaskName` is used for addressing updates to the
+%% </li> <li> `MigrationTaskName' is used for addressing updates to the
 %% correct target.
 %%
-%% </li> <li> `ProgressUpdateStream` is used for access control and to
+%% </li> <li> `ProgressUpdateStream' is used for access control and to
 %% provide a namespace for each migration tool.
 %%
 %% </li> </ul>
@@ -302,7 +302,7 @@ notify_migration_task_state(Client, Input, Options)
 %% @doc Provides identifying details of the resource being migrated so that
 %% it can be associated in the Application Discovery Service repository.
 %%
-%% This association occurs asynchronously after `PutResourceAttributes`
+%% This association occurs asynchronously after `PutResourceAttributes'
 %% returns.
 %%
 %% Keep in mind that subsequent calls to PutResourceAttributes will override
@@ -312,11 +312,11 @@ notify_migration_task_state(Client, Input, Options)
 %% overriding the MAC address.
 %%
 %% Note the instructions regarding the special use case of the
-%% `ResourceAttributeList` parameter when specifying any "VM" related value.
+%% `ResourceAttributeList' parameter when specifying any "VM" related value.
 %%
 %% Because this is an asynchronous call, it will always return 200, whether
 %% an association occurs or not. To confirm if an association was found based
-%% on the provided details, call `ListDiscoveredResources`.
+%% on the provided details, call `ListDiscoveredResources'.
 put_resource_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_attributes(Client, Input, []).

@@ -260,7 +260,7 @@ batch_disassociate_service_action_from_provisioning_artifact(Client, Input, Opti
 %% copy a product to the same region or another region.
 %%
 %% This operation is performed asynchronously. To track the progress of the
-%% operation, use `DescribeCopyProductStatus`.
+%% operation, use `DescribeCopyProductStatus'.
 copy_product(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_product(Client, Input, []).
@@ -299,7 +299,7 @@ create_portfolio(Client, Input, Options)
 %% Note that if a delegated admin is de-registered, they can no longer create
 %% portfolio shares.
 %%
-%% `AWSOrganizationsAccess` must be enabled in order to create a portfolio
+%% `AWSOrganizationsAccess' must be enabled in order to create a portfolio
 %% share to an organization node.
 %%
 %% You can't share a shared resource. This includes portfolios that contain a
@@ -332,8 +332,8 @@ create_product(Client, Input, Options)
 %% TAINTED.
 %%
 %% To view the resource changes in the change set, use
-%% `DescribeProvisionedProductPlan`. To create or modify the provisioned
-%% product, use `ExecuteProvisionedProductPlan`.
+%% `DescribeProvisionedProductPlan'. To create or modify the provisioned
+%% product, use `ExecuteProvisionedProductPlan'.
 create_provisioned_product_plan(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_provisioned_product_plan(Client, Input, []).
@@ -554,10 +554,10 @@ describe_provisioning_artifact(Client, Input, Options)
 %% If the output contains a TagOption key with an empty list of values, there
 %% is a TagOption conflict for that key. The end user cannot take action to
 %% fix the conflict, and launch is not blocked. In subsequent calls to
-%% `ProvisionProduct`, do not include conflicted TagOption keys as tags, or
+%% `ProvisionProduct', do not include conflicted TagOption keys as tags, or
 %% this causes the error "Parameter validation failed: Missing required
 %% parameter in Tags[N]:Value". Tag the provisioned product with the value
-%% `sc-tagoption-conflict-portfolioId-productId`.
+%% `sc-tagoption-conflict-portfolioId-productId'.
 describe_provisioning_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_provisioning_parameters(Client, Input, []).
@@ -568,14 +568,14 @@ describe_provisioning_parameters(Client, Input, Options)
 %% @doc Gets information about the specified request operation.
 %%
 %% Use this operation after calling a request operation (for example,
-%% `ProvisionProduct`, `TerminateProvisionedProduct`, or
-%% `UpdateProvisionedProduct`).
+%% `ProvisionProduct', `TerminateProvisionedProduct', or
+%% `UpdateProvisionedProduct').
 %%
 %% If a provisioned product was transferred to a new owner using
-%% `UpdateProvisionedProductProperties`, the new owner will be able to
+%% `UpdateProvisionedProductProperties', the new owner will be able to
 %% describe all past records for that product. The previous owner will no
 %% longer be able to describe the records, but will be able to use
-%% `ListRecordHistory` to see the product's history from when he was the
+%% `ListRecordHistory' to see the product's history from when he was the
 %% owner.
 describe_record(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -621,7 +621,7 @@ describe_tag_option(Client, Input, Options)
 %% the organization.
 %%
 %% Note that a delegated administrator is not authorized to invoke
-%% `DisableAWSOrganizationsAccess`.
+%% `DisableAWSOrganizationsAccess'.
 disable_a_w_s_organizations_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_a_w_s_organizations_access(Client, Input, []).
@@ -684,7 +684,7 @@ disassociate_tag_option_from_resource(Client, Input, Options)
 %% can be in sync with any changes in your AWS Organizations structure.
 %%
 %% Note that a delegated administrator is not authorized to invoke
-%% `EnableAWSOrganizationsAccess`.
+%% `EnableAWSOrganizationsAccess'.
 enable_a_w_s_organizations_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_a_w_s_organizations_access(Client, Input, []).
@@ -720,8 +720,8 @@ get_a_w_s_organizations_access_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAWSOrganizationsAccessStatus">>, Input, Options).
 
-%% @doc This API takes either a `ProvisonedProductId` or a
-%% `ProvisionedProductName`, along with a list of one or more output keys,
+%% @doc This API takes either a `ProvisonedProductId' or a
+%% `ProvisionedProductName', along with a list of one or more output keys,
 %% and responds with the key/value pairs of those outputs.
 get_provisioned_product_outputs(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -878,7 +878,7 @@ list_service_actions_for_provisioning_artifact(Client, Input, Options)
     request(Client, <<"ListServiceActionsForProvisioningArtifact">>, Input, Options).
 
 %% @doc Returns summary information about stack instances that are associated
-%% with the specified `CFN_STACKSET` type provisioned product.
+%% with the specified `CFN_STACKSET' type provisioned product.
 %%
 %% You can filter for stack instances that are associated with a specific AWS
 %% account name or region.
@@ -902,7 +902,7 @@ list_tag_options(Client, Input, Options)
 %% A provisioned product is a resourced instance of a product. For example,
 %% provisioning a product based on a CloudFormation template launches a
 %% CloudFormation stack and its underlying resources. You can check the
-%% status of this request using `DescribeRecord`.
+%% status of this request using `DescribeRecord'.
 %%
 %% If the request contains a tag key with an empty list of values, there is a
 %% tag conflict for that key. Do not include conflicted keys as tags, or this
@@ -925,7 +925,7 @@ reject_portfolio_share(Client, Input, Options)
 
 %% @doc Lists the provisioned products that are available (not terminated).
 %%
-%% To use additional filtering, see `SearchProvisionedProducts`.
+%% To use additional filtering, see `SearchProvisionedProducts'.
 scan_provisioned_products(Client, Input)
   when is_map(Client), is_map(Input) ->
     scan_provisioned_products(Client, Input, []).
@@ -964,7 +964,7 @@ search_provisioned_products(Client, Input, Options)
 %% This operation does not delete any records associated with the provisioned
 %% product.
 %%
-%% You can check the status of this request using `DescribeRecord`.
+%% You can check the status of this request using `DescribeRecord'.
 terminate_provisioned_product(Client, Input)
   when is_map(Client), is_map(Input) ->
     terminate_provisioned_product(Client, Input, []).
@@ -1006,7 +1006,7 @@ update_product(Client, Input, Options)
 %% update with no interruption, with some interruption, or replace the
 %% provisioned product entirely.
 %%
-%% You can check the status of this request using `DescribeRecord`.
+%% You can check the status of this request using `DescribeRecord'.
 update_provisioned_product(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_provisioned_product(Client, Input, []).

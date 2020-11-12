@@ -4,9 +4,9 @@
 %% @doc You use the AmazonCloudSearch2013 API to upload documents to a search
 %% domain and search those documents.
 %%
-%% The endpoints for submitting `UploadDocuments`, `Search`, and `Suggest`
+%% The endpoints for submitting `UploadDocuments', `Search', and `Suggest'
 %% requests are domain-specific. To get the endpoints for your domain, use
-%% the Amazon CloudSearch configuration service `DescribeDomains` action. The
+%% the Amazon CloudSearch configuration service `DescribeDomains' action. The
 %% domain endpoints are also displayed on the domain dashboard in the Amazon
 %% CloudSearch console. You submit suggest requests to the search endpoint.
 %%
@@ -32,21 +32,21 @@
 %% How you specify the search criteria depends on which query parser you use.
 %% Amazon CloudSearch supports four query parsers:
 %%
-%% <ul> <li>`simple`: search all `text` and `text-array` fields for the
+%% <ul> <li>`simple': search all `text' and `text-array' fields for the
 %% specified string. Search for phrases, individual terms, and prefixes.
-%% </li> <li>`structured`: search specific fields, construct compound queries
+%% </li> <li>`structured': search specific fields, construct compound queries
 %% using Boolean operators, and use advanced features such as term boosting
-%% and proximity searching.</li> <li>`lucene`: specify search criteria using
-%% the Apache Lucene query parser syntax.</li> <li>`dismax`: specify search
+%% and proximity searching.</li> <li>`lucene': specify search criteria using
+%% the Apache Lucene query parser syntax.</li> <li>`dismax': specify search
 %% criteria using the simplified subset of the Apache Lucene query parser
 %% syntax defined by the DisMax query parser.</li> </ul> For more
 %% information, see Searching Your Data in the Amazon CloudSearch Developer
 %% Guide.
 %%
-%% The endpoint for submitting `Search` requests is domain-specific. You
+%% The endpoint for submitting `Search' requests is domain-specific. You
 %% submit search requests to a domain's search endpoint. To get the search
 %% endpoint for your domain, use the Amazon CloudSearch configuration service
-%% `DescribeDomains` action. A domain's endpoints are also displayed on the
+%% `DescribeDomains' action. A domain's endpoints are also displayed on the
 %% domain dashboard in the Amazon CloudSearch console.
 search(Client, Cursor, Expr, Facet, FilterQuery, Highlight, Partial, Query, QueryOptions, QueryParser, Return, Size, Sort, Start, Stats)
   when is_map(Client) ->
@@ -92,10 +92,10 @@ search(Client, Cursor, Expr, Facet, FilterQuery, Highlight, Partial, Query, Quer
 %% suggestions, see Getting Suggestions in the Amazon CloudSearch Developer
 %% Guide.
 %%
-%% The endpoint for submitting `Suggest` requests is domain-specific. You
+%% The endpoint for submitting `Suggest' requests is domain-specific. You
 %% submit suggest requests to a domain's search endpoint. To get the search
 %% endpoint for your domain, use the Amazon CloudSearch configuration service
-%% `DescribeDomains` action. A domain's endpoints are also displayed on the
+%% `DescribeDomains' action. A domain's endpoints are also displayed on the
 %% domain dashboard in the Amazon CloudSearch console.
 suggest(Client, Query, Size, Suggester)
   when is_map(Client) ->
@@ -131,9 +131,9 @@ suggest(Client, Query, Size, Suggester, Options)
 %% 5 MB limit. Submitting a large volume of single-document batches can
 %% overload a domain's document service.
 %%
-%% The endpoint for submitting `UploadDocuments` requests is domain-specific.
+%% The endpoint for submitting `UploadDocuments' requests is domain-specific.
 %% To get the document endpoint for your domain, use the Amazon CloudSearch
-%% configuration service `DescribeDomains` action. A domain's endpoints are
+%% configuration service `DescribeDomains' action. A domain's endpoints are
 %% also displayed on the domain dashboard in the Amazon CloudSearch console.
 %%
 %% For more information about formatting your data for Amazon CloudSearch,

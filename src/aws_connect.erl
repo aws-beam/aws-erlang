@@ -669,10 +669,10 @@ resume_contact_recording(Client, Input0, Options) ->
 %% A 429 error occurs in two situations:
 %%
 %% <ul> <li> API rate limit is exceeded. API TPS throttling returns a
-%% `TooManyRequests` exception from the API Gateway.
+%% `TooManyRequests' exception from the API Gateway.
 %%
 %% </li> <li> The quota for concurrent active chats is exceeded. Active chat
-%% throttling returns a `LimitExceededException`.
+%% throttling returns a `LimitExceededException'.
 %%
 %% </li> </ul> For more information about how chat works, see Chat in the
 %% Amazon Connect Administrator Guide.
@@ -723,7 +723,7 @@ start_contact_recording(Client, Input0, Options) ->
 %% contact flow.
 %%
 %% It performs the actions in the contact flow that's specified (in
-%% `ContactFlowId`).
+%% `ContactFlowId').
 %%
 %% Agents are not involved in initiating the outbound API (that is, dialing
 %% the contact). If the contact flow places an outbound call to a contact,
@@ -968,8 +968,8 @@ update_routing_profile_default_outbound_queue(Client, InstanceId, RoutingProfile
 
 %% @doc Updates the name and description of a routing profile.
 %%
-%% The request accepts the following data in JSON format. At least `Name` or
-%% `Description` must be provided.
+%% The request accepts the following data in JSON format. At least `Name' or
+%% `Description' must be provided.
 update_routing_profile_name(Client, InstanceId, RoutingProfileId, Input) ->
     update_routing_profile_name(Client, InstanceId, RoutingProfileId, Input, []).
 update_routing_profile_name(Client, InstanceId, RoutingProfileId, Input0, Options) ->
@@ -1020,12 +1020,12 @@ update_user_hierarchy(Client, InstanceId, UserId, Input0, Options) ->
 
 %% @doc Updates the identity information for the specified user.
 %%
-%% Someone with the ability to invoke `UpdateUserIndentityInfo` can change
+%% Someone with the ability to invoke `UpdateUserIndentityInfo' can change
 %% the login credentials of other users by changing their email address. This
 %% poses a security risk to your organization. They can change the email
 %% address of a user to the attacker's email address, and then reset the
 %% password through email. We strongly recommend limiting who has the ability
-%% to invoke `UpdateUserIndentityInfo`. For more information, see Best
+%% to invoke `UpdateUserIndentityInfo'. For more information, see Best
 %% Practices for Security Profiles in the Amazon Connect Administrator Guide.
 update_user_identity_info(Client, InstanceId, UserId, Input) ->
     update_user_identity_info(Client, InstanceId, UserId, Input, []).

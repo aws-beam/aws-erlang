@@ -68,7 +68,7 @@
 %% @doc Creates an HTTP namespace.
 %%
 %% Service instances that you register using an HTTP namespace can be
-%% discovered using a `DiscoverInstances` request but can't be discovered
+%% discovered using a `DiscoverInstances' request but can't be discovered
 %% using DNS.
 %%
 %% For the current quota on the number of namespaces that you can create
@@ -85,8 +85,8 @@ create_http_namespace(Client, Input, Options)
 %% inside a specified Amazon VPC.
 %%
 %% The namespace defines your service naming scheme. For example, if you name
-%% your namespace `example.com` and name your service `backend`, the
-%% resulting DNS name for the service will be `backend.example.com`. For the
+%% your namespace `example.com' and name your service `backend', the
+%% resulting DNS name for the service will be `backend.example.com'. For the
 %% current quota on the number of namespaces that you can create using the
 %% same AWS account, see AWS Cloud Map Limits in the AWS Cloud Map Developer
 %% Guide.
@@ -101,8 +101,8 @@ create_private_dns_namespace(Client, Input, Options)
 %% internet.
 %%
 %% The namespace defines your service naming scheme. For example, if you name
-%% your namespace `example.com` and name your service `backend`, the
-%% resulting DNS name for the service will be `backend.example.com`. For the
+%% your namespace `example.com' and name your service `backend', the
+%% resulting DNS name for the service will be `backend.example.com'. For the
 %% current quota on the number of namespaces that you can create using the
 %% same AWS account, see AWS Cloud Map Limits in the AWS Cloud Map Developer
 %% Guide.
@@ -119,15 +119,15 @@ create_public_dns_namespace(Client, Input, Options)
 %% <ul> <li> For public and private DNS namespaces, one of the following
 %% combinations of DNS records in Amazon Route 53:
 %%
-%% <ul> <li> `A`
+%% <ul> <li> `A'
 %%
-%% </li> <li> `AAAA`
+%% </li> <li> `AAAA'
 %%
-%% </li> <li> `A` and `AAAA`
+%% </li> <li> `A' and `AAAA'
 %%
-%% </li> <li> `SRV`
+%% </li> <li> `SRV'
 %%
-%% </li> <li> `CNAME`
+%% </li> <li> `CNAME'
 %%
 %% </li> </ul> </li> <li> Optionally, a health check
 %%
@@ -177,7 +177,7 @@ deregister_instance(Client, Input, Options)
 
 %% @doc Discovers registered instances for a specified namespace and service.
 %%
-%% You can use `DiscoverInstances` to discover instances for any type of
+%% You can use `DiscoverInstances' to discover instances for any type of
 %% namespace. For public and private DNS namespaces, you can also use DNS
 %% queries to discover instances.
 discover_instances(Client, Input)
@@ -195,7 +195,7 @@ get_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetInstance">>, Input, Options).
 
-%% @doc Gets the current health status (`Healthy`, `Unhealthy`, or `Unknown`)
+%% @doc Gets the current health status (`Healthy', `Unhealthy', or `Unknown')
 %% of one or more instances that are associated with a specified service.
 %%
 %% There is a brief delay between when you register an instance and when the
@@ -216,7 +216,7 @@ get_namespace(Client, Input, Options)
     request(Client, <<"GetNamespace">>, Input, Options).
 
 %% @doc Gets information about any operation that returns an operation ID in
-%% the response, such as a `CreateService` request.
+%% the response, such as a `CreateService' request.
 %%
 %% To get a list of operations that match specified criteria, see
 %% ListOperations.
@@ -281,19 +281,19 @@ list_tags_for_resource(Client, Input, Options)
 %% @doc Creates or updates one or more records and, optionally, creates a
 %% health check based on the settings in a specified service.
 %%
-%% When you submit a `RegisterInstance` request, the following occurs:
+%% When you submit a `RegisterInstance' request, the following occurs:
 %%
 %% <ul> <li> For each DNS record that you define in the service that is
-%% specified by `ServiceId`, a record is created or updated in the hosted
+%% specified by `ServiceId', a record is created or updated in the hosted
 %% zone that is associated with the corresponding namespace.
 %%
-%% </li> <li> If the service includes `HealthCheckConfig`, a health check is
+%% </li> <li> If the service includes `HealthCheckConfig', a health check is
 %% created based on the settings in the health check configuration.
 %%
 %% </li> <li> The health check, if any, is associated with each of the new or
 %% updated records.
 %%
-%% </li> </ul> One `RegisterInstance` request must complete before you can
+%% </li> </ul> One `RegisterInstance' request must complete before you can
 %% submit another request and specify the same service ID and instance ID.
 %%
 %% For more information, see CreateService.
@@ -338,10 +338,10 @@ untag_resource(Client, Input, Options)
 %% @doc Submits a request to change the health status of a custom health
 %% check to healthy or unhealthy.
 %%
-%% You can use `UpdateInstanceCustomHealthStatus` to change the status only
-%% for custom health checks, which you define using `HealthCheckCustomConfig`
+%% You can use `UpdateInstanceCustomHealthStatus' to change the status only
+%% for custom health checks, which you define using `HealthCheckCustomConfig'
 %% when you create a service. You can't use it to change the status for
-%% Route 53 health checks, which you define using `HealthCheckConfig`.
+%% Route 53 health checks, which you define using `HealthCheckConfig'.
 %%
 %% For more information, see HealthCheckCustomConfig.
 update_instance_custom_health_status(Client, Input)
@@ -353,22 +353,22 @@ update_instance_custom_health_status(Client, Input, Options)
 
 %% @doc Submits a request to perform the following operations:
 %%
-%% <ul> <li> Update the TTL setting for existing `DnsRecords` configurations
+%% <ul> <li> Update the TTL setting for existing `DnsRecords' configurations
 %%
-%% </li> <li> Add, update, or delete `HealthCheckConfig` for a specified
+%% </li> <li> Add, update, or delete `HealthCheckConfig' for a specified
 %% service
 %%
-%% You can't add, update, or delete a `HealthCheckCustomConfig`
+%% You can't add, update, or delete a `HealthCheckCustomConfig'
 %% configuration.
 %%
 %% </li> </ul> For public and private DNS namespaces, note the following:
 %%
-%% <ul> <li> If you omit any existing `DnsRecords` or `HealthCheckConfig`
-%% configurations from an `UpdateService` request, the configurations are
+%% <ul> <li> If you omit any existing `DnsRecords' or `HealthCheckConfig'
+%% configurations from an `UpdateService' request, the configurations are
 %% deleted from the service.
 %%
-%% </li> <li> If you omit an existing `HealthCheckCustomConfig` configuration
-%% from an `UpdateService` request, the configuration is not deleted from the
+%% </li> <li> If you omit an existing `HealthCheckCustomConfig' configuration
+%% from an `UpdateService' request, the configuration is not deleted from the
 %% service.
 %%
 %% </li> </ul> When you update settings for a service, AWS Cloud Map also

@@ -315,8 +315,8 @@ batch_delete_partition(Client, Input, Options)
 %% discretion of the service.
 %%
 %% To ensure the immediate deletion of all related resources, before calling
-%% `BatchDeleteTable`, use `DeleteTableVersion` or `BatchDeleteTableVersion`,
-%% and `DeletePartition` or `BatchDeletePartition`, to delete any resources
+%% `BatchDeleteTable', use `DeleteTableVersion' or `BatchDeleteTableVersion',
+%% and `DeletePartition' or `BatchDeletePartition', to delete any resources
 %% that belong to the table.
 batch_delete_table(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -336,7 +336,7 @@ batch_delete_table_version(Client, Input, Options)
 %% @doc Returns a list of resource metadata for a given list of crawler
 %% names.
 %%
-%% After calling the `ListCrawlers` operation, you can call this operation to
+%% After calling the `ListCrawlers' operation, you can call this operation to
 %% access the data to which you have been granted permissions. This operation
 %% supports all IAM permissions, including permission conditions that uses
 %% tags.
@@ -350,7 +350,7 @@ batch_get_crawlers(Client, Input, Options)
 %% @doc Returns a list of resource metadata for a given list of development
 %% endpoint names.
 %%
-%% After calling the `ListDevEndpoints` operation, you can call this
+%% After calling the `ListDevEndpoints' operation, you can call this
 %% operation to access the data to which you have been granted permissions.
 %% This operation supports all IAM permissions, including permission
 %% conditions that uses tags.
@@ -363,7 +363,7 @@ batch_get_dev_endpoints(Client, Input, Options)
 
 %% @doc Returns a list of resource metadata for a given list of job names.
 %%
-%% After calling the `ListJobs` operation, you can call this operation to
+%% After calling the `ListJobs' operation, you can call this operation to
 %% access the data to which you have been granted permissions. This operation
 %% supports all IAM permissions, including permission conditions that uses
 %% tags.
@@ -385,7 +385,7 @@ batch_get_partition(Client, Input, Options)
 %% @doc Returns a list of resource metadata for a given list of trigger
 %% names.
 %%
-%% After calling the `ListTriggers` operation, you can call this operation to
+%% After calling the `ListTriggers' operation, you can call this operation to
 %% access the data to which you have been granted permissions. This operation
 %% supports all IAM permissions, including permission conditions that uses
 %% tags.
@@ -399,7 +399,7 @@ batch_get_triggers(Client, Input, Options)
 %% @doc Returns a list of resource metadata for a given list of workflow
 %% names.
 %%
-%% After calling the `ListWorkflows` operation, you can call this operation
+%% After calling the `ListWorkflows' operation, you can call this operation
 %% to access the data to which you have been granted permissions. This
 %% operation supports all IAM permissions, including permission conditions
 %% that uses tags.
@@ -430,9 +430,9 @@ batch_update_partition(Client, Input, Options)
 %%
 %% Machine learning task runs are asynchronous tasks that AWS Glue runs on
 %% your behalf as part of various machine learning workflows. You can cancel
-%% a machine learning task run at any time by calling `CancelMLTaskRun` with
-%% a task run's parent transform's `TransformID` and the task run's
-%% `TaskRunId`.
+%% a machine learning task run at any time by calling `CancelMLTaskRun' with
+%% a task run's parent transform's `TransformID' and the task run's
+%% `TaskRunId'.
 cancel_m_l_task_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_m_l_task_run(Client, Input, []).
@@ -442,8 +442,8 @@ cancel_m_l_task_run(Client, Input, Options)
 
 %% @doc Creates a classifier in the user's account.
 %%
-%% This can be a `GrokClassifier`, an `XMLClassifier`, a `JsonClassifier`, or
-%% a `CsvClassifier`, depending on which field of the request is present.
+%% This can be a `GrokClassifier', an `XMLClassifier', a `JsonClassifier', or
+%% a `CsvClassifier', depending on which field of the request is present.
 create_classifier(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_classifier(Client, Input, []).
@@ -462,8 +462,8 @@ create_connection(Client, Input, Options)
 %% @doc Creates a new crawler with specified targets, role, configuration,
 %% and optional schedule.
 %%
-%% At least one crawl target must be specified, in the `s3Targets` field, the
-%% `jdbcTargets` field, or the `DynamoDBTargets` field.
+%% At least one crawl target must be specified, in the `s3Targets' field, the
+%% `jdbcTargets' field, or the `DynamoDBTargets' field.
 create_crawler(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_crawler(Client, Input, []).
@@ -501,14 +501,14 @@ create_job(Client, Input, Options)
 %% train it.
 %%
 %% Call this operation as the first step in the process of using a machine
-%% learning transform (such as the `FindMatches` transform) for deduplicating
-%% data. You can provide an optional `Description`, in addition to the
+%% learning transform (such as the `FindMatches' transform) for deduplicating
+%% data. You can provide an optional `Description', in addition to the
 %% parameters that you want to use for your algorithm.
 %%
 %% You must also specify certain parameters for the tasks that AWS Glue runs
 %% on your behalf as part of learning from your data and creating a
-%% high-quality machine learning transform. These parameters include `Role`,
-%% and optionally, `AllocatedCapacity`, `Timeout`, and `MaxRetries`. For more
+%% high-quality machine learning transform. These parameters include `Role',
+%% and optionally, `AllocatedCapacity', `Timeout', and `MaxRetries'. For more
 %% information, see Jobs.
 create_m_l_transform(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -589,7 +589,7 @@ delete_classifier(Client, Input, Options)
 %% @doc Delete the partition column statistics of a column.
 %%
 %% The Identity and Access Management (IAM) permission required for this
-%% operation is `DeletePartition`.
+%% operation is `DeletePartition'.
 delete_column_statistics_for_partition(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_column_statistics_for_partition(Client, Input, []).
@@ -600,7 +600,7 @@ delete_column_statistics_for_partition(Client, Input, Options)
 %% @doc Retrieves table statistics of columns.
 %%
 %% The Identity and Access Management (IAM) permission required for this
-%% operation is `DeleteTable`.
+%% operation is `DeleteTable'.
 delete_column_statistics_for_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_column_statistics_for_table(Client, Input, []).
@@ -617,7 +617,7 @@ delete_connection(Client, Input, Options)
     request(Client, <<"DeleteConnection">>, Input, Options).
 
 %% @doc Removes a specified crawler from the AWS Glue Data Catalog, unless
-%% the crawler state is `RUNNING`.
+%% the crawler state is `RUNNING'.
 delete_crawler(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_crawler(Client, Input, []).
@@ -634,9 +634,9 @@ delete_crawler(Client, Input, Options)
 %% discretion of the service.
 %%
 %% To ensure the immediate deletion of all related resources, before calling
-%% `DeleteDatabase`, use `DeleteTableVersion` or `BatchDeleteTableVersion`,
-%% `DeletePartition` or `BatchDeletePartition`, `DeleteUserDefinedFunction`,
-%% and `DeleteTable` or `BatchDeleteTable`, to delete any resources that
+%% `DeleteDatabase', use `DeleteTableVersion' or `BatchDeleteTableVersion',
+%% `DeletePartition' or `BatchDeletePartition', `DeleteUserDefinedFunction',
+%% and `DeleteTable' or `BatchDeleteTable', to delete any resources that
 %% belong to the database.
 delete_database(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -669,7 +669,7 @@ delete_job(Client, Input, Options)
 %% machine learning to learn the details of the transformation to be
 %% performed by learning from examples provided by humans. These
 %% transformations are then saved by AWS Glue. If you no longer need a
-%% transform, you can delete it by calling `DeleteMLTransforms`. However, any
+%% transform, you can delete it by calling `DeleteMLTransforms'. However, any
 %% AWS Glue jobs that still reference the deleted transform will no longer
 %% succeed.
 delete_m_l_transform(Client, Input)
@@ -711,8 +711,8 @@ delete_security_configuration(Client, Input, Options)
 %% discretion of the service.
 %%
 %% To ensure the immediate deletion of all related resources, before calling
-%% `DeleteTable`, use `DeleteTableVersion` or `BatchDeleteTableVersion`, and
-%% `DeletePartition` or `BatchDeletePartition`, to delete any resources that
+%% `DeleteTable', use `DeleteTableVersion' or `BatchDeleteTableVersion', and
+%% `DeletePartition' or `BatchDeletePartition', to delete any resources that
 %% belong to the table.
 delete_table(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -782,7 +782,7 @@ get_classifiers(Client, Input, Options)
 %% @doc Retrieves partition statistics of columns.
 %%
 %% The Identity and Access Management (IAM) permission required for this
-%% operation is `GetPartition`.
+%% operation is `GetPartition'.
 get_column_statistics_for_partition(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_column_statistics_for_partition(Client, Input, []).
@@ -793,7 +793,7 @@ get_column_statistics_for_partition(Client, Input, Options)
 %% @doc Retrieves table statistics of columns.
 %%
 %% The Identity and Access Management (IAM) permission required for this
-%% operation is `GetTable`.
+%% operation is `GetTable'.
 get_column_statistics_for_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_column_statistics_for_table(Client, Input, []).
@@ -943,8 +943,8 @@ get_jobs(Client, Input, Options)
 %%
 %% Machine learning task runs are asynchronous tasks that AWS Glue runs on
 %% your behalf as part of various machine learning workflows. You can check
-%% the stats of any task run by calling `GetMLTaskRun` with the `TaskRunID`
-%% and its parent transform's `TransformID`.
+%% the stats of any task run by calling `GetMLTaskRun' with the `TaskRunID'
+%% and its parent transform's `TransformID'.
 get_m_l_task_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_m_l_task_run(Client, Input, []).
@@ -957,7 +957,7 @@ get_m_l_task_run(Client, Input, Options)
 %% Machine learning task runs are asynchronous tasks that AWS Glue runs on
 %% your behalf as part of various machine learning workflows. You can get a
 %% sortable, filterable list of machine learning task runs by calling
-%% `GetMLTaskRuns` with their parent transform's `TransformID` and other
+%% `GetMLTaskRuns' with their parent transform's `TransformID' and other
 %% optional parameters as documented in this section.
 %%
 %% This operation returns a list of historic runs and must be paginated.
@@ -975,7 +975,7 @@ get_m_l_task_runs(Client, Input, Options)
 %% machine learning to learn the details of the transformation to be
 %% performed by learning from examples provided by humans. These
 %% transformations are then saved by AWS Glue. You can retrieve their
-%% metadata by calling `GetMLTransform`.
+%% metadata by calling `GetMLTransform'.
 get_m_l_transform(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_m_l_transform(Client, Input, []).
@@ -990,7 +990,7 @@ get_m_l_transform(Client, Input, Options)
 %% machine learning to learn the details of the transformation to be
 %% performed by learning from examples provided by humans. These
 %% transformations are then saved by AWS Glue, and you can retrieve their
-%% metadata by calling `GetMLTransforms`.
+%% metadata by calling `GetMLTransforms'.
 get_m_l_transforms(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_m_l_transforms(Client, Input, []).
@@ -1076,7 +1076,7 @@ get_security_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSecurityConfigurations">>, Input, Options).
 
-%% @doc Retrieves the `Table` definition in a Data Catalog for a specified
+%% @doc Retrieves the `Table' definition in a Data Catalog for a specified
 %% table.
 get_table(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1103,7 +1103,7 @@ get_table_versions(Client, Input, Options)
     request(Client, <<"GetTableVersions">>, Input, Options).
 
 %% @doc Retrieves the definitions of some or all of the tables in a given
-%% `Database`.
+%% `Database'.
 get_tables(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_tables(Client, Input, []).
@@ -1197,7 +1197,7 @@ import_catalog_to_glue(Client, Input, Options)
 %% This operation allows you to see which resources are available in your
 %% account, and their names.
 %%
-%% This operation takes the optional `Tags` field, which you can use as a
+%% This operation takes the optional `Tags' field, which you can use as a
 %% filter on the response so that tagged resources can be retrieved as a
 %% group. If you choose to use tags filtering, only resources with the tag
 %% are retrieved.
@@ -1208,13 +1208,13 @@ list_crawlers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCrawlers">>, Input, Options).
 
-%% @doc Retrieves the names of all `DevEndpoint` resources in this AWS
+%% @doc Retrieves the names of all `DevEndpoint' resources in this AWS
 %% account, or the resources with the specified tag.
 %%
 %% This operation allows you to see which resources are available in your
 %% account, and their names.
 %%
-%% This operation takes the optional `Tags` field, which you can use as a
+%% This operation takes the optional `Tags' field, which you can use as a
 %% filter on the response so that tagged resources can be retrieved as a
 %% group. If you choose to use tags filtering, only resources with the tag
 %% are retrieved.
@@ -1231,7 +1231,7 @@ list_dev_endpoints(Client, Input, Options)
 %% This operation allows you to see which resources are available in your
 %% account, and their names.
 %%
-%% This operation takes the optional `Tags` field, which you can use as a
+%% This operation takes the optional `Tags' field, which you can use as a
 %% filter on the response so that tagged resources can be retrieved as a
 %% group. If you choose to use tags filtering, only resources with the tag
 %% are retrieved.
@@ -1246,7 +1246,7 @@ list_jobs(Client, Input, Options)
 %% learning transforms in this AWS account, or the resources with the
 %% specified tag.
 %%
-%% This operation takes the optional `Tags` field, which you can use as a
+%% This operation takes the optional `Tags' field, which you can use as a
 %% filter of the responses so that tagged resources can be retrieved as a
 %% group. If you choose to use tag filtering, only resources with the tags
 %% are retrieved.
@@ -1263,7 +1263,7 @@ list_m_l_transforms(Client, Input, Options)
 %% This operation allows you to see which resources are available in your
 %% account, and their names.
 %%
-%% This operation takes the optional `Tags` field, which you can use as a
+%% This operation takes the optional `Tags' field, which you can use as a
 %% filter on the response so that tagged resources can be retrieved as a
 %% group. If you choose to use tags filtering, only resources with the tag
 %% are retrieved.
@@ -1363,9 +1363,9 @@ start_crawler(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartCrawler">>, Input, Options).
 
-%% @doc Changes the schedule state of the specified crawler to `SCHEDULED`,
+%% @doc Changes the schedule state of the specified crawler to `SCHEDULED',
 %% unless the crawler is already running or the schedule state is already
-%% `SCHEDULED`.
+%% `SCHEDULED'.
 start_crawler_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_crawler_schedule(Client, Input, []).
@@ -1378,13 +1378,13 @@ start_crawler_schedule(Client, Input, Options)
 %%
 %% This task is the only label-related API call that is not part of the
 %% typical active learning workflow. You typically use
-%% `StartExportLabelsTaskRun` when you want to work with all of your existing
+%% `StartExportLabelsTaskRun' when you want to work with all of your existing
 %% labels at the same time, such as when you want to remove or change labels
 %% that were previously submitted as truth. This API operation accepts the
-%% `TransformId` whose labels you want to export and an Amazon Simple Storage
+%% `TransformId' whose labels you want to export and an Amazon Simple Storage
 %% Service (Amazon S3) path to export the labels to. The operation returns a
-%% `TaskRunId`. You can check on the status of your task run by calling the
-%% `GetMLTaskRun` API.
+%% `TaskRunId'. You can check on the status of your task run by calling the
+%% `GetMLTaskRun' API.
 start_export_labels_task_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_export_labels_task_run(Client, Input, []).
@@ -1396,30 +1396,30 @@ start_export_labels_task_run(Client, Input, Options)
 %% used to teach the machine learning transform and improve its quality.
 %%
 %% This API operation is generally used as part of the active learning
-%% workflow that starts with the `StartMLLabelingSetGenerationTaskRun` call
+%% workflow that starts with the `StartMLLabelingSetGenerationTaskRun' call
 %% and that ultimately results in improving the quality of your machine
 %% learning transform.
 %%
-%% After the `StartMLLabelingSetGenerationTaskRun` finishes, AWS Glue machine
+%% After the `StartMLLabelingSetGenerationTaskRun' finishes, AWS Glue machine
 %% learning will have generated a series of questions for humans to answer.
 %% (Answering these questions is often called 'labeling' in the machine
-%% learning workflows). In the case of the `FindMatches` transform, these
+%% learning workflows). In the case of the `FindMatches' transform, these
 %% questions are of the form, “What is the correct way to group these rows
 %% together into groups composed entirely of matching records?” After the
 %% labeling process is finished, users upload their answers/labels with a
-%% call to `StartImportLabelsTaskRun`. After `StartImportLabelsTaskRun`
+%% call to `StartImportLabelsTaskRun'. After `StartImportLabelsTaskRun'
 %% finishes, all future runs of the machine learning transform use the new
 %% and improved labels and perform a higher-quality transformation.
 %%
-%% By default, `StartMLLabelingSetGenerationTaskRun` continually learns from
-%% and combines all labels that you upload unless you set `Replace` to true.
-%% If you set `Replace` to true, `StartImportLabelsTaskRun` deletes and
+%% By default, `StartMLLabelingSetGenerationTaskRun' continually learns from
+%% and combines all labels that you upload unless you set `Replace' to true.
+%% If you set `Replace' to true, `StartImportLabelsTaskRun' deletes and
 %% forgets all previously uploaded labels and learns only from the exact set
 %% that you upload. Replacing labels can be helpful if you realize that you
 %% previously uploaded incorrect labels, and you believe that they are having
 %% a negative effect on your transform quality.
 %%
-%% You can check on the status of your task run by calling the `GetMLTaskRun`
+%% You can check on the status of your task run by calling the `GetMLTaskRun'
 %% operation.
 start_import_labels_task_run(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1442,8 +1442,8 @@ start_job_run(Client, Input, Options)
 %% learning uses some of those examples to learn from them. The rest of the
 %% labels are used as a test to estimate quality.
 %%
-%% Returns a unique identifier for the run. You can call `GetMLTaskRun` to
-%% get more information about the stats of the `EvaluationTaskRun`.
+%% Returns a unique identifier for the run. You can call `GetMLTaskRun' to
+%% get more information about the stats of the `EvaluationTaskRun'.
 start_m_l_evaluation_task_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_m_l_evaluation_task_run(Client, Input, []).
@@ -1455,16 +1455,16 @@ start_m_l_evaluation_task_run(Client, Input, Options)
 %% transform to improve the transform's quality by generating label sets and
 %% adding labels.
 %%
-%% When the `StartMLLabelingSetGenerationTaskRun` finishes, AWS Glue will
+%% When the `StartMLLabelingSetGenerationTaskRun' finishes, AWS Glue will
 %% have generated a "labeling set" or a set of questions for humans to
 %% answer.
 %%
-%% In the case of the `FindMatches` transform, these questions are of the
+%% In the case of the `FindMatches' transform, these questions are of the
 %% form, “What is the correct way to group these rows together into groups
 %% composed entirely of matching records?”
 %%
 %% After the labeling process is finished, you can upload your labels with a
-%% call to `StartImportLabelsTaskRun`. After `StartImportLabelsTaskRun`
+%% call to `StartImportLabelsTaskRun'. After `StartImportLabelsTaskRun'
 %% finishes, all future runs of the machine learning transform will use the
 %% new and improved labels and perform a higher-quality transformation.
 start_m_l_labeling_set_generation_task_run(Client, Input)
@@ -1501,7 +1501,7 @@ stop_crawler(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopCrawler">>, Input, Options).
 
-%% @doc Sets the schedule state of the specified crawler to `NOT_SCHEDULED`,
+%% @doc Sets the schedule state of the specified crawler to `NOT_SCHEDULED',
 %% but does not stop the crawler if it is already running.
 stop_crawler_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1546,8 +1546,8 @@ untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
-%% @doc Modifies an existing classifier (a `GrokClassifier`, an
-%% `XMLClassifier`, a `JsonClassifier`, or a `CsvClassifier`, depending on
+%% @doc Modifies an existing classifier (a `GrokClassifier', an
+%% `XMLClassifier', a `JsonClassifier', or a `CsvClassifier', depending on
 %% which field is present).
 update_classifier(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1559,7 +1559,7 @@ update_classifier(Client, Input, Options)
 %% @doc Creates or updates partition statistics of columns.
 %%
 %% The Identity and Access Management (IAM) permission required for this
-%% operation is `UpdatePartition`.
+%% operation is `UpdatePartition'.
 update_column_statistics_for_partition(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_column_statistics_for_partition(Client, Input, []).
@@ -1570,7 +1570,7 @@ update_column_statistics_for_partition(Client, Input, Options)
 %% @doc Creates or updates table statistics of columns.
 %%
 %% The Identity and Access Management (IAM) permission required for this
-%% operation is `UpdateTable`.
+%% operation is `UpdateTable'.
 update_column_statistics_for_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_column_statistics_for_table(Client, Input, []).
@@ -1588,7 +1588,7 @@ update_connection(Client, Input, Options)
 
 %% @doc Updates a crawler.
 %%
-%% If a crawler is running, you must stop it using `StopCrawler` before
+%% If a crawler is running, you must stop it using `StopCrawler' before
 %% updating it.
 update_crawler(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1597,7 +1597,7 @@ update_crawler(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCrawler">>, Input, Options).
 
-%% @doc Updates the schedule of a crawler using a `cron` expression.
+%% @doc Updates the schedule of a crawler using a `cron' expression.
 update_crawler_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_crawler_schedule(Client, Input, []).
@@ -1634,7 +1634,7 @@ update_job(Client, Input, Options)
 %% Call this operation to tune the algorithm parameters to achieve better
 %% results.
 %%
-%% After calling this operation, you can call the `StartMLEvaluationTaskRun`
+%% After calling this operation, you can call the `StartMLEvaluationTaskRun'
 %% operation to assess how well your new parameters achieved your goals (such
 %% as improving the quality of your machine learning transform, or making it
 %% more cost-effective).

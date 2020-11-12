@@ -220,11 +220,11 @@ batch_get_deployment_groups(Client, Input, Options)
 
 %% @doc This method works, but is deprecated.
 %%
-%% Use `BatchGetDeploymentTargets` instead.
+%% Use `BatchGetDeploymentTargets' instead.
 %%
 %% Returns an array of one or more instances associated with a deployment.
 %% This method works with EC2/On-premises and AWS Lambda compute platforms.
-%% The newer `BatchGetDeploymentTargets` works with all compute platforms.
+%% The newer `BatchGetDeploymentTargets' works with all compute platforms.
 %% The maximum number of instances that can be returned is 25.
 batch_get_deployment_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -236,7 +236,7 @@ batch_get_deployment_instances(Client, Input, Options)
 %% @doc Returns an array of one or more targets associated with a deployment.
 %%
 %% This method works with all compute types and should be used instead of the
-%% deprecated `BatchGetDeploymentInstances`. The maximum number of targets
+%% deprecated `BatchGetDeploymentInstances'. The maximum number of targets
 %% that can be returned is 25.
 %%
 %% The type of targets returned depends on the deployment's compute platform
@@ -396,9 +396,9 @@ get_application_revision(Client, Input, Options)
 
 %% @doc Gets information about a deployment.
 %%
-%% The `content` property of the `appSpecContent` object in the returned
-%% revision is always null. Use `GetApplicationRevision` and the `sha256`
-%% property of the returned `appSpecContent` object to get the content of the
+%% The `content' property of the `appSpecContent' object in the returned
+%% revision is always null. Use `GetApplicationRevision' and the `sha256'
+%% property of the returned `appSpecContent' object to get the content of the
 %% deployment’s AppSpec file.
 get_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -480,10 +480,10 @@ list_deployment_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDeploymentGroups">>, Input, Options).
 
-%% @doc The newer `BatchGetDeploymentTargets` should be used instead because
+%% @doc The newer `BatchGetDeploymentTargets' should be used instead because
 %% it works with all compute types.
 %%
-%% `ListDeploymentInstances` throws an exception if it is used with a compute
+%% `ListDeploymentInstances' throws an exception if it is used with a compute
 %% platform other than EC2/On-premises or AWS Lambda.
 %%
 %% Lists the instance for a deployment associated with the IAM user or AWS
@@ -547,11 +547,11 @@ list_tags_for_resource(Client, Input, Options)
 %%
 %% The function validates lifecycle hooks during a deployment that uses the
 %% AWS Lambda or Amazon ECS compute platform. For AWS Lambda deployments, the
-%% available lifecycle hooks are `BeforeAllowTraffic` and
-%% `AfterAllowTraffic`. For Amazon ECS deployments, the available lifecycle
-%% hooks are `BeforeInstall`, `AfterInstall`, `AfterAllowTestTraffic`,
-%% `BeforeAllowTraffic`, and `AfterAllowTraffic`. Lambda validation functions
-%% return `Succeeded` or `Failed`. For more information, see AppSpec 'hooks'
+%% available lifecycle hooks are `BeforeAllowTraffic' and
+%% `AfterAllowTraffic'. For Amazon ECS deployments, the available lifecycle
+%% hooks are `BeforeInstall', `AfterInstall', `AfterAllowTestTraffic',
+%% `BeforeAllowTraffic', and `AfterAllowTraffic'. Lambda validation functions
+%% return `Succeeded' or `Failed'. For more information, see AppSpec 'hooks'
 %% Section for an AWS Lambda Deployment and AppSpec 'hooks' Section for an
 %% Amazon ECS Deployment.
 put_lifecycle_event_hook_execution_status(Client, Input)
@@ -607,8 +607,8 @@ stop_deployment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopDeployment">>, Input, Options).
 
-%% @doc Associates the list of tags in the input `Tags` parameter with the
-%% resource identified by the `ResourceArn` input parameter.
+%% @doc Associates the list of tags in the input `Tags' parameter with the
+%% resource identified by the `ResourceArn' input parameter.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -618,8 +618,8 @@ tag_resource(Client, Input, Options)
 
 %% @doc Disassociates a resource from a list of tags.
 %%
-%% The resource is identified by the `ResourceArn` input parameter. The tags
-%% are identified by the list of keys in the `TagKeys` input parameter.
+%% The resource is identified by the `ResourceArn' input parameter. The tags
+%% are identified by the list of keys in the `TagKeys' input parameter.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).

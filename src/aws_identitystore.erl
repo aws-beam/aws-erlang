@@ -19,7 +19,7 @@
 %% API
 %%====================================================================
 
-%% @doc Retrieves the group metadata and attributes from `GroupId` in an
+%% @doc Retrieves the group metadata and attributes from `GroupId' in an
 %% identity store.
 describe_group(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -28,7 +28,7 @@ describe_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGroup">>, Input, Options).
 
-%% @doc Retrieves the user metadata and attributes from `UserId` in an
+%% @doc Retrieves the user metadata and attributes from `UserId' in an
 %% identity store.
 describe_user(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -40,9 +40,9 @@ describe_user(Client, Input, Options)
 %% @doc Lists the attribute name and value of the group that you specified in
 %% the search.
 %%
-%% We only support `DisplayName` as a valid filter attribute path currently,
+%% We only support `DisplayName' as a valid filter attribute path currently,
 %% and filter is required. This API returns minimum attributes, including
-%% `GroupId` and group `DisplayName` in the response.
+%% `GroupId' and group `DisplayName' in the response.
 list_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_groups(Client, Input, []).
@@ -53,9 +53,9 @@ list_groups(Client, Input, Options)
 %% @doc Lists the attribute name and value of the user that you specified in
 %% the search.
 %%
-%% We only support `UserName` as a valid filter attribute path currently, and
+%% We only support `UserName' as a valid filter attribute path currently, and
 %% filter is required. This API returns minimum attributes, including
-%% `UserId` and `UserName` in the response.
+%% `UserId' and `UserName' in the response.
 list_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_users(Client, Input, []).

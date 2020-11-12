@@ -68,7 +68,7 @@ create_container(Client, Input, Options)
 
 %% @doc Deletes the specified container.
 %%
-%% Before you make a `DeleteContainer` request, delete any objects in the
+%% Before you make a `DeleteContainer' request, delete any objects in the
 %% container or in any folders in the container. You can delete only empty
 %% containers.
 delete_container(Client, Input)
@@ -91,7 +91,7 @@ delete_container_policy(Client, Input, Options)
 %% information that is set for the container.
 %%
 %% To use this operation, you must have permission to perform the
-%% `MediaStore:DeleteCorsPolicy` action. The container owner has this
+%% `MediaStore:DeleteCorsPolicy' action. The container owner has this
 %% permission by default and can grant this permission to others.
 delete_cors_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -127,9 +127,9 @@ delete_metric_policy(Client, Input, Options)
 %% This request is commonly used to retrieve the endpoint of a container. An
 %% endpoint is a value assigned by the service when a new container is
 %% created. A container's endpoint does not change after it has been
-%% assigned. The `DescribeContainer` request returns a single `Container`
-%% object based on `ContainerName`. To return all `Container` objects that
-%% are associated with a specified AWS account, use `ListContainers`.
+%% assigned. The `DescribeContainer' request returns a single `Container'
+%% object based on `ContainerName'. To return all `Container' objects that
+%% are associated with a specified AWS account, use `ListContainers'.
 describe_container(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_container(Client, Input, []).
@@ -152,7 +152,7 @@ get_container_policy(Client, Input, Options)
 %% information that is set for the container.
 %%
 %% To use this operation, you must have permission to perform the
-%% `MediaStore:GetCorsPolicy` action. By default, the container owner has
+%% `MediaStore:GetCorsPolicy' action. By default, the container owner has
 %% this permission and can grant it to others.
 get_cors_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -181,14 +181,14 @@ get_metric_policy(Client, Input, Options)
 %% @doc Lists the properties of all containers in AWS Elemental MediaStore.
 %%
 %% You can query to receive all the containers in one response. Or you can
-%% include the `MaxResults` parameter to receive a limited number of
+%% include the `MaxResults' parameter to receive a limited number of
 %% containers in each response. In this case, the response includes a token.
 %% To get the next set of containers, send the command again, this time with
-%% the `NextToken` parameter (with the returned token as its value). The next
+%% the `NextToken' parameter (with the returned token as its value). The next
 %% set of responses appears, with a token if there are still more containers
 %% to receive.
 %%
-%% See also `DescribeContainer`, which gets the properties of one container.
+%% See also `DescribeContainer', which gets the properties of one container.
 list_containers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_containers(Client, Input, []).
@@ -211,7 +211,7 @@ list_tags_for_resource(Client, Input, Options)
 %% the AWS Identity and Access Management User Guide.
 %%
 %% For this release of the REST API, you can create only one policy for a
-%% container. If you enter `PutContainerPolicy` twice, the second command
+%% container. If you enter `PutContainerPolicy' twice, the second command
 %% modifies the existing policy.
 put_container_policy(Client, Input)
   when is_map(Client), is_map(Input) ->

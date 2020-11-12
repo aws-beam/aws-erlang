@@ -125,7 +125,7 @@
 %% grant permission to a single account, all AWS accounts, or all accounts in
 %% an organization.
 %%
-%% To revoke permission, call `RemoveLayerVersionPermission` with the
+%% To revoke permission, call `RemoveLayerVersionPermission' with the
 %% statement ID that you specified when you added it.
 add_layer_version_permission(Client, LayerName, VersionNumber, Input) ->
     add_layer_version_permission(Client, LayerName, VersionNumber, Input, []).
@@ -152,10 +152,10 @@ add_layer_version_permission(Client, LayerName, VersionNumber, Input0, Options) 
 %% alias to invoke the function.
 %%
 %% To grant permission to another account, specify the account ID as the
-%% `Principal`. For AWS services, the principal is a domain-style identifier
-%% defined by the service, like `s3.amazonaws.com` or `sns.amazonaws.com`.
+%% `Principal'. For AWS services, the principal is a domain-style identifier
+%% defined by the service, like `s3.amazonaws.com' or `sns.amazonaws.com'.
 %% For AWS services, you can also specify the ARN of the associated resource
-%% as the `SourceArn`. If you grant permission to a service principal without
+%% as the `SourceArn'. If you grant permission to a service principal without
 %% specifying the source, other accounts could potentially configure
 %% resources in their account to invoke your Lambda function.
 %%
@@ -184,7 +184,7 @@ add_permission(Client, FunctionName, Input0, Options) ->
 %% update to invoke a different version.
 %%
 %% You can also map an alias to split invocation requests between two
-%% versions. Use the `RoutingConfig` parameter to specify a second version
+%% versions. Use the `RoutingConfig' parameter to specify a second version
 %% and the percentage of invocation requests that it receives.
 create_alias(Client, FunctionName, Input) ->
     create_alias(Client, FunctionName, Input, []).
@@ -218,21 +218,21 @@ create_alias(Client, FunctionName, Input0, Options) ->
 %% </li> </ul> The following error handling options are only available for
 %% stream sources (DynamoDB and Kinesis):
 %%
-%% <ul> <li> `BisectBatchOnFunctionError` - If the function returns an error,
+%% <ul> <li> `BisectBatchOnFunctionError' - If the function returns an error,
 %% split the batch in two and retry.
 %%
-%% </li> <li> `DestinationConfig` - Send discarded records to an Amazon SQS
+%% </li> <li> `DestinationConfig' - Send discarded records to an Amazon SQS
 %% queue or Amazon SNS topic.
 %%
-%% </li> <li> `MaximumRecordAgeInSeconds` - Discard records older than the
+%% </li> <li> `MaximumRecordAgeInSeconds' - Discard records older than the
 %% specified age. The default value is infinite (-1). When set to infinite
 %% (-1), failed records are retried until the record expires
 %%
-%% </li> <li> `MaximumRetryAttempts` - Discard records after the specified
+%% </li> <li> `MaximumRetryAttempts' - Discard records after the specified
 %% number of retries. The default value is infinite (-1). When set to
 %% infinite (-1), failed records are retried until the record expires.
 %%
-%% </li> <li> `ParallelizationFactor` - Process multiple batches from each
+%% </li> <li> `ParallelizationFactor' - Process multiple batches from each
 %% shard concurrently.
 %%
 %% </li> </ul>
@@ -261,8 +261,8 @@ create_event_source_mapping(Client, Input0, Options) ->
 %% When you create a function, Lambda provisions an instance of the function
 %% and its supporting resources. If your function connects to a VPC, this
 %% process can take a minute or so. During this time, you can't invoke or
-%% modify the function. The `State`, `StateReason`, and `StateReasonCode`
-%% fields in the response from `GetFunctionConfiguration` indicate when the
+%% modify the function. The `State', `StateReason', and `StateReasonCode'
+%% fields in the response from `GetFunctionConfiguration' indicate when the
 %% function is ready to invoke. For more information, see Function States.
 %%
 %% A function has an unpublished version, and can have published versions and
@@ -270,24 +270,24 @@ create_event_source_mapping(Client, Input0, Options) ->
 %% code and configuration. A published version is a snapshot of your function
 %% code and configuration that can't be changed. An alias is a named resource
 %% that maps to a version, and can be changed to map to a different version.
-%% Use the `Publish` parameter to create version `1` of your function from
+%% Use the `Publish' parameter to create version `1' of your function from
 %% its initial configuration.
 %%
 %% The other parameters let you configure version-specific and function-level
 %% settings. You can modify version-specific settings later with
-%% `UpdateFunctionConfiguration`. Function-level settings apply to both the
+%% `UpdateFunctionConfiguration'. Function-level settings apply to both the
 %% unpublished and published versions of the function, and include tags
-%% (`TagResource`) and per-function concurrency limits
-%% (`PutFunctionConcurrency`).
+%% (`TagResource') and per-function concurrency limits
+%% (`PutFunctionConcurrency').
 %%
 %% If another account or an AWS service invokes your function, use
-%% `AddPermission` to grant permission by creating a resource-based IAM
+%% `AddPermission' to grant permission by creating a resource-based IAM
 %% policy. You can grant permissions at the function level, on a version, or
 %% on an alias.
 %%
-%% To invoke your function directly, use `Invoke`. To invoke your function in
+%% To invoke your function directly, use `Invoke'. To invoke your function in
 %% response to events in other AWS services, create an event source mapping
-%% (`CreateEventSourceMapping`), or configure a function trigger in the other
+%% (`CreateEventSourceMapping'), or configure a function trigger in the other
 %% service. For more information, see Invoking Functions.
 create_function(Client, Input) ->
     create_function(Client, Input, []).
@@ -323,9 +323,9 @@ delete_alias(Client, FunctionName, Name, Input0, Options) ->
 %% @doc Deletes an event source mapping.
 %%
 %% You can get the identifier of a mapping from the output of
-%% `ListEventSourceMappings`.
+%% `ListEventSourceMappings'.
 %%
-%% When you delete an event source mapping, it enters a `Deleting` state and
+%% When you delete an event source mapping, it enters a `Deleting' state and
 %% might not be completely deleted for several seconds.
 delete_event_source_mapping(Client, UUID, Input) ->
     delete_event_source_mapping(Client, UUID, Input, []).
@@ -344,11 +344,11 @@ delete_event_source_mapping(Client, UUID, Input0, Options) ->
 
 %% @doc Deletes a Lambda function.
 %%
-%% To delete a specific function version, use the `Qualifier` parameter.
+%% To delete a specific function version, use the `Qualifier' parameter.
 %% Otherwise, all versions and aliases are deleted.
 %%
 %% To delete Lambda event source mappings that invoke a function, use
-%% `DeleteEventSourceMapping`. For AWS services and resources that invoke
+%% `DeleteEventSourceMapping'. For AWS services and resources that invoke
 %% your function directly, delete the trigger in the service where you
 %% originally configured it.
 delete_function(Client, FunctionName, Input) ->
@@ -387,7 +387,7 @@ delete_function_concurrency(Client, FunctionName, Input0, Options) ->
 %% version, or alias.
 %%
 %% To configure options for asynchronous invocation, use
-%% `PutFunctionEventInvokeConfig`.
+%% `PutFunctionEventInvokeConfig'.
 delete_function_event_invoke_config(Client, FunctionName, Input) ->
     delete_function_event_invoke_config(Client, FunctionName, Input, []).
 delete_function_event_invoke_config(Client, FunctionName, Input0, Options) ->
@@ -475,7 +475,7 @@ get_alias(Client, FunctionName, Name, Options)
 %% @doc Returns details about an event source mapping.
 %%
 %% You can get the identifier of a mapping from the output of
-%% `ListEventSourceMappings`.
+%% `ListEventSourceMappings'.
 get_event_source_mapping(Client, UUID)
   when is_map(Client) ->
     get_event_source_mapping(Client, UUID, []).
@@ -516,7 +516,7 @@ get_function(Client, FunctionName, Qualifier, Options)
 %% @doc Returns details about the reserved concurrency configuration for a
 %% function.
 %%
-%% To set a concurrency limit for a function, use `PutFunctionConcurrency`.
+%% To set a concurrency limit for a function, use `PutFunctionConcurrency'.
 get_function_concurrency(Client, FunctionName)
   when is_map(Client) ->
     get_function_concurrency(Client, FunctionName, []).
@@ -535,10 +535,10 @@ get_function_concurrency(Client, FunctionName, Options)
 %% version.
 %%
 %% The output includes only options that can vary between versions of a
-%% function. To modify these settings, use `UpdateFunctionConfiguration`.
+%% function. To modify these settings, use `UpdateFunctionConfiguration'.
 %%
 %% To get all of a function's details, including function-level settings, use
-%% `GetFunction`.
+%% `GetFunction'.
 get_function_configuration(Client, FunctionName, Qualifier)
   when is_map(Client) ->
     get_function_configuration(Client, FunctionName, Qualifier, []).
@@ -561,7 +561,7 @@ get_function_configuration(Client, FunctionName, Qualifier, Options)
 %% function, version, or alias.
 %%
 %% To configure options for asynchronous invocation, use
-%% `PutFunctionEventInvokeConfig`.
+%% `PutFunctionEventInvokeConfig'.
 get_function_event_invoke_config(Client, FunctionName, Qualifier)
   when is_map(Client) ->
     get_function_event_invoke_config(Client, FunctionName, Qualifier, []).
@@ -618,7 +618,7 @@ get_layer_version_by_arn(Client, Arn, Options)
 
 %% @doc Returns the permission policy for a version of an AWS Lambda layer.
 %%
-%% For more information, see `AddLayerVersionPermission`.
+%% For more information, see `AddLayerVersionPermission'.
 get_layer_version_policy(Client, LayerName, VersionNumber)
   when is_map(Client) ->
     get_layer_version_policy(Client, LayerName, VersionNumber, []).
@@ -676,8 +676,8 @@ get_provisioned_concurrency_config(Client, FunctionName, Qualifier, Options)
 %% @doc Invokes a Lambda function.
 %%
 %% You can invoke a function synchronously (and wait for the response), or
-%% asynchronously. To invoke a function asynchronously, set `InvocationType`
-%% to `Event`.
+%% asynchronously. To invoke a function asynchronously, set `InvocationType'
+%% to `Event'.
 %%
 %% For synchronous invocation, details about the function response, including
 %% errors, are included in the response body and headers. For either
@@ -701,10 +701,10 @@ get_provisioned_concurrency_config(Client, FunctionName, Qualifier, Options)
 %% codes are reserved for errors that prevent your function from executing,
 %% such as permissions errors, limit errors, or issues with your function's
 %% code and configuration. For example, Lambda returns
-%% `TooManyRequestsException` if executing the function would cause you to
+%% `TooManyRequestsException' if executing the function would cause you to
 %% exceed a concurrency limit at either the account level
-%% (`ConcurrentInvocationLimitExceeded`) or function level
-%% (`ReservedFunctionConcurrentInvocationLimitExceeded`).
+%% (`ConcurrentInvocationLimitExceeded') or function level
+%% (`ReservedFunctionConcurrentInvocationLimitExceeded').
 %%
 %% For functions with a long timeout, your client might be disconnected
 %% during synchronous invocation while it waits for a response. Configure
@@ -750,7 +750,7 @@ invoke(Client, FunctionName, Input0, Options) ->
         Result
     end.
 
-%% @doc For asynchronous function invocation, use `Invoke`.
+%% @doc For asynchronous function invocation, use `Invoke'.
 %%
 %% Invokes a function asynchronously.
 invoke_async(Client, FunctionName, Input) ->
@@ -791,7 +791,7 @@ list_aliases(Client, FunctionName, FunctionVersion, Marker, MaxItems, Options)
 
 %% @doc Lists event source mappings.
 %%
-%% Specify an `EventSourceArn` to only show event source mappings for a
+%% Specify an `EventSourceArn' to only show event source mappings for a
 %% single event source.
 list_event_source_mappings(Client, EventSourceArn, FunctionName, Marker, MaxItems)
   when is_map(Client) ->
@@ -818,7 +818,7 @@ list_event_source_mappings(Client, EventSourceArn, FunctionName, Marker, MaxItem
 %% function.
 %%
 %% To configure options for asynchronous invocation, use
-%% `PutFunctionEventInvokeConfig`.
+%% `PutFunctionEventInvokeConfig'.
 list_function_event_invoke_configs(Client, FunctionName, Marker, MaxItems)
   when is_map(Client) ->
     list_function_event_invoke_configs(Client, FunctionName, Marker, MaxItems, []).
@@ -843,9 +843,9 @@ list_function_event_invoke_configs(Client, FunctionName, Marker, MaxItems, Optio
 %%
 %% Lambda returns up to 50 functions per call.
 %%
-%% Set `FunctionVersion` to `ALL` to include all published versions of each
+%% Set `FunctionVersion' to `ALL' to include all published versions of each
 %% function in addition to the unpublished version. To get more information
-%% about a function or version, use `GetFunction`.
+%% about a function or version, use `GetFunction'.
 list_functions(Client, FunctionVersion, Marker, MasterRegion, MaxItems)
   when is_map(Client) ->
     list_functions(Client, FunctionVersion, Marker, MasterRegion, MaxItems, []).
@@ -940,7 +940,7 @@ list_provisioned_concurrency_configs(Client, FunctionName, Marker, MaxItems, Opt
 
 %% @doc Returns a function's tags.
 %%
-%% You can also view tags with `GetFunction`.
+%% You can also view tags with `GetFunction'.
 list_tags(Client, Resource)
   when is_map(Client) ->
     list_tags(Client, Resource, []).
@@ -980,11 +980,11 @@ list_versions_by_function(Client, FunctionName, Marker, MaxItems, Options)
 
 %% @doc Creates an AWS Lambda layer from a ZIP archive.
 %%
-%% Each time you call `PublishLayerVersion` with the same layer name, a new
+%% Each time you call `PublishLayerVersion' with the same layer name, a new
 %% version is created.
 %%
-%% Add layers to your function with `CreateFunction` or
-%% `UpdateFunctionConfiguration`.
+%% Add layers to your function with `CreateFunction' or
+%% `UpdateFunctionConfiguration'.
 publish_layer_version(Client, LayerName, Input) ->
     publish_layer_version(Client, LayerName, Input, []).
 publish_layer_version(Client, LayerName, Input0, Options) ->
@@ -1007,12 +1007,12 @@ publish_layer_version(Client, LayerName, Input0, Options) ->
 %% that doesn't change.
 %%
 %% AWS Lambda doesn't publish a version if the function's configuration and
-%% code haven't changed since the last version. Use `UpdateFunctionCode` or
-%% `UpdateFunctionConfiguration` to update the function before publishing a
+%% code haven't changed since the last version. Use `UpdateFunctionCode' or
+%% `UpdateFunctionConfiguration' to update the function before publishing a
 %% version.
 %%
 %% Clients can invoke versions directly or with an alias. To create an alias,
-%% use `CreateAlias`.
+%% use `CreateAlias'.
 publish_version(Client, FunctionName, Input) ->
     publish_version(Client, FunctionName, Input, []).
 publish_version(Client, FunctionName, Input0, Options) ->
@@ -1035,9 +1035,9 @@ publish_version(Client, FunctionName, Input0, Options) ->
 %% published versions and the unpublished version. Reserving concurrency both
 %% ensures that your function has capacity to process the specified number of
 %% events simultaneously, and prevents it from scaling beyond that level. Use
-%% `GetFunction` to see the current setting for a function.
+%% `GetFunction' to see the current setting for a function.
 %%
-%% Use `GetAccountSettings` to see your Regional concurrency limit. You can
+%% Use `GetAccountSettings' to see your Regional concurrency limit. You can
 %% reserve concurrency for as many functions as you like, as long as you
 %% leave at least 100 simultaneous executions unreserved for functions that
 %% aren't configured with a per-function limit. For more information, see
@@ -1063,14 +1063,14 @@ put_function_concurrency(Client, FunctionName, Input0, Options) ->
 %% If a configuration already exists for a function, version, or alias, this
 %% operation overwrites it. If you exclude any settings, they are removed. To
 %% set one option without affecting existing settings for other options, use
-%% `UpdateFunctionEventInvokeConfig`.
+%% `UpdateFunctionEventInvokeConfig'.
 %%
 %% By default, Lambda retries an asynchronous invocation twice if the
 %% function returns an error. It retains events in a queue for up to six
 %% hours. When an event fails all processing attempts or stays in the
 %% asynchronous invocation queue for too long, Lambda discards it. To retain
 %% discarded events, configure a dead-letter queue with
-%% `UpdateFunctionConfiguration`.
+%% `UpdateFunctionConfiguration'.
 %%
 %% To send an invocation record to a queue, topic, function, or event bus,
 %% specify a destination. You can configure separate destinations for
@@ -1114,7 +1114,7 @@ put_provisioned_concurrency_config(Client, FunctionName, Input0, Options) ->
 %% @doc Removes a statement from the permissions policy for a version of an
 %% AWS Lambda layer.
 %%
-%% For more information, see `AddLayerVersionPermission`.
+%% For more information, see `AddLayerVersionPermission'.
 remove_layer_version_permission(Client, LayerName, StatementId, VersionNumber, Input) ->
     remove_layer_version_permission(Client, LayerName, StatementId, VersionNumber, Input, []).
 remove_layer_version_permission(Client, LayerName, StatementId, VersionNumber, Input0, Options) ->
@@ -1134,7 +1134,7 @@ remove_layer_version_permission(Client, LayerName, StatementId, VersionNumber, I
 %% @doc Revokes function-use permission from an AWS service or another
 %% account.
 %%
-%% You can get the ID of the statement from the output of `GetPolicy`.
+%% You can get the ID of the statement from the output of `GetPolicy'.
 remove_permission(Client, FunctionName, StatementId, Input) ->
     remove_permission(Client, FunctionName, StatementId, Input, []).
 remove_permission(Client, FunctionName, StatementId, Input0, Options) ->
@@ -1209,21 +1209,21 @@ update_alias(Client, FunctionName, Name, Input0, Options) ->
 %% The following error handling options are only available for stream sources
 %% (DynamoDB and Kinesis):
 %%
-%% <ul> <li> `BisectBatchOnFunctionError` - If the function returns an error,
+%% <ul> <li> `BisectBatchOnFunctionError' - If the function returns an error,
 %% split the batch in two and retry.
 %%
-%% </li> <li> `DestinationConfig` - Send discarded records to an Amazon SQS
+%% </li> <li> `DestinationConfig' - Send discarded records to an Amazon SQS
 %% queue or Amazon SNS topic.
 %%
-%% </li> <li> `MaximumRecordAgeInSeconds` - Discard records older than the
+%% </li> <li> `MaximumRecordAgeInSeconds' - Discard records older than the
 %% specified age. The default value is infinite (-1). When set to infinite
 %% (-1), failed records are retried until the record expires
 %%
-%% </li> <li> `MaximumRetryAttempts` - Discard records after the specified
+%% </li> <li> `MaximumRetryAttempts' - Discard records after the specified
 %% number of retries. The default value is infinite (-1). When set to
 %% infinite (-1), failed records are retried until the record expires.
 %%
-%% </li> <li> `ParallelizationFactor` - Process multiple batches from each
+%% </li> <li> `ParallelizationFactor' - Process multiple batches from each
 %% shard concurrently.
 %%
 %% </li> </ul>
@@ -1266,9 +1266,9 @@ update_function_code(Client, FunctionName, Input0, Options) ->
 %% When you update a function, Lambda provisions an instance of the function
 %% and its supporting resources. If your function connects to a VPC, this
 %% process can take a minute. During this time, you can't modify the
-%% function, but you can still invoke it. The `LastUpdateStatus`,
-%% `LastUpdateStatusReason`, and `LastUpdateStatusReasonCode` fields in the
-%% response from `GetFunctionConfiguration` indicate when the update is
+%% function, but you can still invoke it. The `LastUpdateStatus',
+%% `LastUpdateStatusReason', and `LastUpdateStatusReasonCode' fields in the
+%% response from `GetFunctionConfiguration' indicate when the update is
 %% complete and the function is processing events with the new configuration.
 %% For more information, see Function States.
 %%
@@ -1276,8 +1276,8 @@ update_function_code(Client, FunctionName, Input0, Options) ->
 %% you publish a version. You can't modify the configuration of a published
 %% version, only the unpublished version.
 %%
-%% To configure function concurrency, use `PutFunctionConcurrency`. To grant
-%% invoke permissions to an account or AWS service, use `AddPermission`.
+%% To configure function concurrency, use `PutFunctionConcurrency'. To grant
+%% invoke permissions to an account or AWS service, use `AddPermission'.
 update_function_configuration(Client, FunctionName, Input) ->
     update_function_configuration(Client, FunctionName, Input, []).
 update_function_configuration(Client, FunctionName, Input0, Options) ->
@@ -1297,7 +1297,7 @@ update_function_configuration(Client, FunctionName, Input0, Options) ->
 %% version, or alias.
 %%
 %% To configure options for asynchronous invocation, use
-%% `PutFunctionEventInvokeConfig`.
+%% `PutFunctionEventInvokeConfig'.
 update_function_event_invoke_config(Client, FunctionName, Input) ->
     update_function_event_invoke_config(Client, FunctionName, Input, []).
 update_function_event_invoke_config(Client, FunctionName, Input0, Options) ->

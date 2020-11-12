@@ -98,7 +98,7 @@
 %% @doc Adds metadata tags to an Amazon DocumentDB resource.
 %%
 %% You can use these tags with cost allocation reporting to track costs that
-%% are associated with Amazon DocumentDB resources. or in a `Condition`
+%% are associated with Amazon DocumentDB resources. or in a `Condition'
 %% statement in an AWS Identity and Access Management (IAM) policy for Amazon
 %% DocumentDB.
 add_tags_to_resource(Client, Input)
@@ -128,12 +128,12 @@ copy_d_b_cluster_parameter_group(Client, Input, Options)
 %% @doc Copies a snapshot of a cluster.
 %%
 %% To copy a cluster snapshot from a shared manual cluster snapshot,
-%% `SourceDBClusterSnapshotIdentifier` must be the Amazon Resource Name (ARN)
+%% `SourceDBClusterSnapshotIdentifier' must be the Amazon Resource Name (ARN)
 %% of the shared cluster snapshot. You can only copy a shared DB cluster
 %% snapshot, whether encrypted or not, in the same AWS Region.
 %%
 %% To cancel the copy operation after it is in progress, delete the target
-%% cluster snapshot identified by `TargetDBClusterSnapshotIdentifier` while
+%% cluster snapshot identified by `TargetDBClusterSnapshotIdentifier' while
 %% that cluster snapshot is in the copying status.
 copy_d_b_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -158,7 +158,7 @@ create_d_b_cluster(Client, Input, Options)
 %% A cluster parameter group is initially created with the default parameters
 %% for the database engine used by instances in the cluster. In Amazon
 %% DocumentDB, you cannot make modifications directly to the
-%% `default.docdb3.6` cluster parameter group. If your Amazon DocumentDB
+%% `default.docdb3.6' cluster parameter group. If your Amazon DocumentDB
 %% cluster is using the default cluster parameter group and you want to
 %% modify a value in it, you must first create a new parameter group or copy
 %% an existing parameter group, modify it, and then apply the modified
@@ -227,7 +227,7 @@ delete_d_b_cluster_parameter_group(Client, Input, Options)
 %%
 %% If the snapshot is being copied, the copy operation is terminated.
 %%
-%% The cluster snapshot must be in the `available` state to be deleted.
+%% The cluster snapshot must be in the `available' state to be deleted.
 delete_d_b_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_d_b_cluster_snapshot(Client, Input, []).
@@ -263,9 +263,9 @@ describe_certificates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCertificates">>, Input, Options).
 
-%% @doc Returns a list of `DBClusterParameterGroup` descriptions.
+%% @doc Returns a list of `DBClusterParameterGroup' descriptions.
 %%
-%% If a `DBClusterParameterGroupName` parameter is specified, the list
+%% If a `DBClusterParameterGroupName' parameter is specified, the list
 %% contains only the description of the specified cluster parameter group.
 describe_d_b_cluster_parameter_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -287,10 +287,10 @@ describe_d_b_cluster_parameters(Client, Input, Options)
 %% manual DB cluster snapshot.
 %%
 %% When you share snapshots with other AWS accounts,
-%% `DescribeDBClusterSnapshotAttributes` returns the `restore` attribute and
+%% `DescribeDBClusterSnapshotAttributes' returns the `restore' attribute and
 %% a list of IDs for the AWS accounts that are authorized to copy or restore
-%% the manual cluster snapshot. If `all` is included in the list of values
-%% for the `restore` attribute, then the manual cluster snapshot is public
+%% the manual cluster snapshot. If `all' is included in the list of values
+%% for the `restore' attribute, then the manual cluster snapshot is public
 %% and can be copied or restored by all AWS accounts.
 describe_d_b_cluster_snapshot_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -314,7 +314,7 @@ describe_d_b_cluster_snapshots(Client, Input, Options)
 %% This API operation supports pagination. For certain management features
 %% such as cluster and instance lifecycle management, Amazon DocumentDB
 %% leverages operational technology that is shared with Amazon RDS and Amazon
-%% Neptune. Use the `filterName=engine,Values=docdb` filter parameter to
+%% Neptune. Use the `filterName=engine,Values=docdb' filter parameter to
 %% return only Amazon DocumentDB clusters.
 describe_d_b_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -341,10 +341,10 @@ describe_d_b_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBInstances">>, Input, Options).
 
-%% @doc Returns a list of `DBSubnetGroup` descriptions.
+%% @doc Returns a list of `DBSubnetGroup' descriptions.
 %%
-%% If a `DBSubnetGroupName` is specified, the list will contain only the
-%% descriptions of the specified `DBSubnetGroup`.
+%% If a `DBSubnetGroupName' is specified, the list will contain only the
+%% descriptions of the specified `DBSubnetGroup'.
 describe_d_b_subnet_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_d_b_subnet_groups(Client, Input, []).
@@ -439,7 +439,7 @@ modify_d_b_cluster(Client, Input, Options)
 %% @doc Modifies the parameters of a cluster parameter group.
 %%
 %% To modify more than one parameter, submit a list of the following:
-%% `ParameterName`, `ParameterValue`, and `ApplyMethod`. A maximum of 20
+%% `ParameterName', `ParameterValue', and `ApplyMethod'. A maximum of 20
 %% parameters can be modified in a single request.
 %%
 %% Changes to dynamic parameters are applied immediately. Changes to static
@@ -453,7 +453,7 @@ modify_d_b_cluster(Client, Input, Options)
 %% is used as the default for a new cluster. This step is especially
 %% important for parameters that are critical when creating the default
 %% database for a cluster, such as the character set for the default database
-%% defined by the `character_set_database` parameter.
+%% defined by the `character_set_database' parameter.
 modify_d_b_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_d_b_cluster_parameter_group(Client, Input, []).
@@ -465,15 +465,15 @@ modify_d_b_cluster_parameter_group(Client, Input, Options)
 %% from, a manual DB cluster snapshot.
 %%
 %% To share a manual cluster snapshot with other AWS accounts, specify
-%% `restore` as the `AttributeName`, and use the `ValuesToAdd` parameter to
+%% `restore' as the `AttributeName', and use the `ValuesToAdd' parameter to
 %% add a list of IDs of the AWS accounts that are authorized to restore the
-%% manual cluster snapshot. Use the value `all` to make the manual cluster
+%% manual cluster snapshot. Use the value `all' to make the manual cluster
 %% snapshot public, which means that it can be copied or restored by all AWS
-%% accounts. Do not add the `all` value for any manual DB cluster snapshots
+%% accounts. Do not add the `all' value for any manual DB cluster snapshots
 %% that contain private information that you don't want available to all AWS
 %% accounts. If a manual cluster snapshot is encrypted, it can be shared, but
 %% only by specifying a list of authorized AWS account IDs for the
-%% `ValuesToAdd` parameter. You can't use `all` as a value for that parameter
+%% `ValuesToAdd' parameter. You can't use `all' as a value for that parameter
 %% in this case.
 modify_d_b_cluster_snapshot_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -533,12 +533,12 @@ remove_tags_from_resource(Client, Input, Options)
 %% value.
 %%
 %% To reset specific parameters, submit a list of the following:
-%% `ParameterName` and `ApplyMethod`. To reset the entire cluster parameter
-%% group, specify the `DBClusterParameterGroupName` and `ResetAllParameters`
+%% `ParameterName' and `ApplyMethod'. To reset the entire cluster parameter
+%% group, specify the `DBClusterParameterGroupName' and `ResetAllParameters'
 %% parameters.
 %%
 %% When you reset the entire group, dynamic parameters are updated
-%% immediately and static parameters are set to `pending-reboot` to take
+%% immediately and static parameters are set to `pending-reboot' to take
 %% effect on the next DB instance reboot.
 reset_d_b_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -565,8 +565,8 @@ restore_d_b_cluster_from_snapshot(Client, Input, Options)
 
 %% @doc Restores a cluster to an arbitrary point in time.
 %%
-%% Users can restore to any point in time before `LatestRestorableTime` for
-%% up to `BackupRetentionPeriod` days. The target cluster is created from the
+%% Users can restore to any point in time before `LatestRestorableTime' for
+%% up to `BackupRetentionPeriod' days. The target cluster is created from the
 %% source cluster with the same configuration as the original cluster, except
 %% that the new cluster is created with the default security group.
 restore_d_b_cluster_to_point_in_time(Client, Input)
@@ -577,7 +577,7 @@ restore_d_b_cluster_to_point_in_time(Client, Input, Options)
     request(Client, <<"RestoreDBClusterToPointInTime">>, Input, Options).
 
 %% @doc Restarts the stopped cluster that is specified by
-%% `DBClusterIdentifier`.
+%% `DBClusterIdentifier'.
 %%
 %% For more information, see Stopping and Starting an Amazon DocumentDB
 %% Cluster.
@@ -588,7 +588,7 @@ start_d_b_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartDBCluster">>, Input, Options).
 
-%% @doc Stops the running cluster that is specified by `DBClusterIdentifier`.
+%% @doc Stops the running cluster that is specified by `DBClusterIdentifier'.
 %%
 %% The cluster must be in the available state. For more information, see
 %% Stopping and Starting an Amazon DocumentDB Cluster.

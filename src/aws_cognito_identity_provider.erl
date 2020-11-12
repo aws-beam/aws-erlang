@@ -253,20 +253,20 @@ admin_confirm_sign_up(Client, Input, Options)
 
 %% @doc Creates a new user in the specified user pool.
 %%
-%% If `MessageAction` is not set, the default is to send a welcome message
+%% If `MessageAction' is not set, the default is to send a welcome message
 %% via email or phone (SMS).
 %%
 %% This message is based on a template that you configured in your call to
 %% create or update a user pool. This template includes your custom sign-up
 %% instructions and placeholders for user name and temporary password.
 %%
-%% Alternatively, you can call `AdminCreateUser` with “SUPPRESS” for the
-%% `MessageAction` parameter, and Amazon Cognito will not send any email.
+%% Alternatively, you can call `AdminCreateUser' with “SUPPRESS” for the
+%% `MessageAction' parameter, and Amazon Cognito will not send any email.
 %%
-%% In either case, the user will be in the `FORCE_CHANGE_PASSWORD` state
+%% In either case, the user will be in the `FORCE_CHANGE_PASSWORD' state
 %% until they sign in and change their password.
 %%
-%% `AdminCreateUser` requires developer credentials.
+%% `AdminCreateUser' requires developer credentials.
 admin_create_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_create_user(Client, Input, []).
@@ -305,33 +305,33 @@ admin_delete_user_attributes(Client, Input, Options)
 %% user, they are not permitted to use their password to sign-in. If the user
 %% to disable is a linked external IdP user, any link between that user and
 %% an existing user is removed. The next time the external user (no longer
-%% attached to the previously linked `DestinationUser`) signs in, they must
+%% attached to the previously linked `DestinationUser') signs in, they must
 %% create a new user account. See AdminLinkProviderForUser.
 %%
 %% This action is enabled only for admin access and requires developer
 %% credentials.
 %%
-%% The `ProviderName` must match the value specified when creating an IdP for
+%% The `ProviderName' must match the value specified when creating an IdP for
 %% the pool.
 %%
-%% To disable a native username + password user, the `ProviderName` value
-%% must be `Cognito` and the `ProviderAttributeName` must be
-%% `Cognito_Subject`, with the `ProviderAttributeValue` being the name that
+%% To disable a native username + password user, the `ProviderName' value
+%% must be `Cognito' and the `ProviderAttributeName' must be
+%% `Cognito_Subject', with the `ProviderAttributeValue' being the name that
 %% is used in the user pool for the user.
 %%
-%% The `ProviderAttributeName` must always be `Cognito_Subject` for social
-%% identity providers. The `ProviderAttributeValue` must always be the exact
+%% The `ProviderAttributeName' must always be `Cognito_Subject' for social
+%% identity providers. The `ProviderAttributeValue' must always be the exact
 %% subject that was used when the user was originally linked as a source
 %% user.
 %%
 %% For de-linking a SAML identity, there are two scenarios. If the linked
-%% identity has not yet been used to sign-in, the `ProviderAttributeName` and
-%% `ProviderAttributeValue` must be the same values that were used for the
-%% `SourceUser` when the identities were originally linked using `
-%% AdminLinkProviderForUser` call. (If the linking was done with
-%% `ProviderAttributeName` set to `Cognito_Subject`, the same applies here).
-%% However, if the user has already signed in, the `ProviderAttributeName`
-%% must be `Cognito_Subject` and `ProviderAttributeValue` must be the subject
+%% identity has not yet been used to sign-in, the `ProviderAttributeName' and
+%% `ProviderAttributeValue' must be the same values that were used for the
+%% `SourceUser' when the identities were originally linked using `
+%% AdminLinkProviderForUser' call. (If the linking was done with
+%% `ProviderAttributeName' set to `Cognito_Subject', the same applies here).
+%% However, if the user has already signed in, the `ProviderAttributeName'
+%% must be `Cognito_Subject' and `ProviderAttributeValue' must be the subject
 %% of the SAML assertion.
 admin_disable_provider_for_user(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -405,8 +405,8 @@ admin_initiate_auth(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminInitiateAuth">>, Input, Options).
 
-%% @doc Links an existing user account in a user pool (`DestinationUser`) to
-%% an identity from an external identity provider (`SourceUser`) based on a
+%% @doc Links an existing user account in a user pool (`DestinationUser') to
+%% an identity from an external identity provider (`SourceUser') based on a
 %% specified attribute name and value from the external identity provider.
 %%
 %% This allows you to create a link from the existing user account to an
@@ -527,14 +527,14 @@ admin_set_user_m_f_a_preference(Client, Input, Options)
 %% Works on any user.
 %%
 %% The password can be temporary or permanent. If it is temporary, the user
-%% status will be placed into the `FORCE_CHANGE_PASSWORD` state. When the
+%% status will be placed into the `FORCE_CHANGE_PASSWORD' state. When the
 %% user next tries to sign in, the InitiateAuth/AdminInitiateAuth response
-%% will contain the `NEW_PASSWORD_REQUIRED` challenge. If the user does not
+%% will contain the `NEW_PASSWORD_REQUIRED' challenge. If the user does not
 %% sign in before it expires, the user will not be able to sign in and their
 %% password will need to be reset by an administrator.
 %%
 %% Once the user has set a new password, or the password is permanent, the
-%% user status will be set to `Confirmed`.
+%% user status will be set to `Confirmed'.
 admin_set_user_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_set_user_password(Client, Input, []).
@@ -581,7 +581,7 @@ admin_update_device_status(Client, Input, Options)
 %%
 %% Works on any user.
 %%
-%% For custom attributes, you must prepend the `custom:` prefix to the
+%% For custom attributes, you must prepend the `custom:' prefix to the
 %% attribute name.
 %%
 %% In addition to updating user attributes, this API can also be used to mark
@@ -853,11 +853,11 @@ forget_device(Client, Input, Options)
 %% @doc Calling this API causes a message to be sent to the end user with a
 %% confirmation code that is required to change the user's password.
 %%
-%% For the `Username` parameter, you can use the username or user alias. The
+%% For the `Username' parameter, you can use the username or user alias. The
 %% method used to send the confirmation code is sent according to the
 %% specified AccountRecoverySetting. For more information, see Recovering
 %% User Accounts in the Amazon Cognito Developer Guide. If neither a verified
-%% phone number nor a verified email exists, an `InvalidParameterException`
+%% phone number nor a verified email exists, an `InvalidParameterException'
 %% is thrown. To use the confirmation code for resetting the password, call
 %% ConfirmForgotPassword.
 forgot_password(Client, Input)
@@ -915,7 +915,7 @@ get_signing_certificate(Client, Input, Options)
 %% app UI, if there is something set.
 %%
 %% If nothing is set for the particular client, but there is an existing pool
-%% level customization (app `clientId` will be `ALL`), then that is returned.
+%% level customization (app `clientId' will be `ALL'), then that is returned.
 %% If nothing is present, then an empty shape is returned.
 get_u_i_customization(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1078,11 +1078,11 @@ respond_to_auth_challenge(Client, Input, Options)
 
 %% @doc Configures actions on detected risks.
 %%
-%% To delete the risk configuration for `UserPoolId` or `ClientId`, pass null
+%% To delete the risk configuration for `UserPoolId' or `ClientId', pass null
 %% values for all four configuration types.
 %%
 %% To enable Amazon Cognito advanced security features, update the user pool
-%% to include the `UserPoolAddOns` key`AdvancedSecurityMode`.
+%% to include the `UserPoolAddOns' key`AdvancedSecurityMode'.
 set_risk_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_risk_configuration(Client, Input, []).
@@ -1094,11 +1094,11 @@ set_risk_configuration(Client, Input, Options)
 %% UI.
 %%
 %% You can specify app UI customization settings for a single client (with a
-%% specific `clientId`) or for all clients (by setting the `clientId` to
-%% `ALL`). If you specify `ALL`, the default configuration will be used for
+%% specific `clientId') or for all clients (by setting the `clientId' to
+%% `ALL'). If you specify `ALL', the default configuration will be used for
 %% every client that has no UI customization set previously. If you specify
 %% UI customization settings for a particular client, it will no longer fall
-%% back to the `ALL` configuration.
+%% back to the `ALL' configuration.
 %%
 %% To use this API, your user pool must have a domain associated with it.
 %% Otherwise, there is no place to host the app's pages, and the service will
@@ -1177,8 +1177,8 @@ stop_user_import_job(Client, Input, Options)
 %% Each tag consists of a key and value, both of which you define. A key is a
 %% general category for more specific values. For example, if you have two
 %% versions of a user pool, one for testing and another for production, you
-%% might assign an `Environment` tag key to both user pools. The value of
-%% this key might be `Test` for one user pool and `Production` for the other.
+%% might assign an `Environment' tag key to both user pools. The value of
+%% this key might be `Test' for one user pool and `Production' for the other.
 %%
 %% Tags are useful for cost tracking and access control. You can activate
 %% your tags so that they appear on the Billing and Cost Management console,

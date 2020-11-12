@@ -49,9 +49,9 @@
 
 %% @doc The CancelJob operation cancels an unfinished job.
 %%
-%% You can only cancel a job that has a status of `Submitted`. To prevent a
+%% You can only cancel a job that has a status of `Submitted'. To prevent a
 %% pipeline from starting to process a job while you're getting the job
-%% identifier, use `UpdatePipelineStatus` to temporarily pause the pipeline.
+%% identifier, use `UpdatePipelineStatus' to temporarily pause the pipeline.
 cancel_job(Client, Id, Input) ->
     cancel_job(Client, Id, Input, []).
 cancel_job(Client, Id, Input0, Options) ->
@@ -114,7 +114,7 @@ create_pipeline(Client, Input0, Options) ->
 %% meet Elastic Transcoder requirements and to determine whether they comply
 %% with H.264 standards. If your settings are not valid for Elastic
 %% Transcoder, Elastic Transcoder returns an HTTP 400 response
-%% (`ValidationException`) and does not create the preset. If the settings
+%% (`ValidationException') and does not create the preset. If the settings
 %% are valid for Elastic Transcoder but aren't strictly compliant with the
 %% H.264 standard, Elastic Transcoder creates the preset and returns a
 %% warning message in the response. This helps you determine whether your
@@ -144,7 +144,7 @@ create_preset(Client, Input0, Options) ->
 %%
 %% You can only delete a pipeline that has never been used or that is not
 %% currently in use (doesn't contain any active jobs). If the pipeline is
-%% currently in use, `DeletePipeline` returns an error.
+%% currently in use, `DeletePipeline' returns an error.
 delete_pipeline(Client, Id, Input) ->
     delete_pipeline(Client, Id, Input, []).
 delete_pipeline(Client, Id, Input0, Options) ->
@@ -321,7 +321,7 @@ read_preset(Client, Id, Options)
 %% @doc The TestRole operation tests the IAM role used to create the
 %% pipeline.
 %%
-%% The `TestRole` action lets you determine whether the IAM role you are
+%% The `TestRole' action lets you determine whether the IAM role you are
 %% using has sufficient permissions to let Elastic Transcoder perform tasks
 %% associated with the transcoding process. The action attempts to assume the
 %% specified IAM role, checks read access to the input and output buckets,
@@ -342,7 +342,7 @@ test_role(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Use the `UpdatePipeline` operation to update settings for a pipeline.
+%% @doc Use the `UpdatePipeline' operation to update settings for a pipeline.
 %%
 %% When you change pipeline settings, your changes take effect immediately.
 %% Jobs that you have already submitted and that Elastic Transcoder has not
@@ -390,7 +390,7 @@ update_pipeline_notifications(Client, Id, Input0, Options) ->
 %% jobs. You can't cancel jobs after Elastic Transcoder has started
 %% processing them; if you pause the pipeline to which you submitted the
 %% jobs, you have more time to get the job IDs for the jobs that you want to
-%% cancel, and to send a `CancelJob` request.
+%% cancel, and to send a `CancelJob' request.
 update_pipeline_status(Client, Id, Input) ->
     update_pipeline_status(Client, Id, Input, []).
 update_pipeline_status(Client, Id, Input0, Options) ->

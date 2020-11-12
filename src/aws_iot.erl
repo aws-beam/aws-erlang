@@ -461,7 +461,7 @@
 %%
 %% The default state of the certificate is INACTIVE.
 %%
-%% To check for pending certificate transfers, call `ListCertificates` to
+%% To check for pending certificate transfers, call `ListCertificates' to
 %% enumerate your certificates.
 accept_certificate_transfer(Client, CertificateId, Input) ->
     accept_certificate_transfer(Client, CertificateId, Input, []).
@@ -515,7 +515,7 @@ add_thing_to_thing_group(Client, Input0, Options) ->
 %%
 %% The following criteria must be met:
 %%
-%% <ul> <li> The job must have been created with the `targetSelection` field
+%% <ul> <li> The job must have been created with the `targetSelection' field
 %% set to "CONTINUOUS".
 %%
 %% </li> <li> The job status must currently be "IN_PROGRESS".
@@ -559,7 +559,7 @@ attach_policy(Client, PolicyName, Input0, Options) ->
 %% @doc Attaches the specified policy to the specified principal (certificate
 %% or other credential).
 %%
-%% Note: This API is deprecated. Please use `AttachPolicy` instead.
+%% Note: This API is deprecated. Please use `AttachPolicy' instead.
 attach_principal_policy(Client, PolicyName, Input) ->
     attach_principal_policy(Client, PolicyName, Input, []).
 attach_principal_policy(Client, PolicyName, Input0, Options) ->
@@ -659,7 +659,7 @@ cancel_audit_task(Client, TaskId, Input0, Options) ->
 %% @doc Cancels a pending transfer for the specified certificate.
 %%
 %% Note Only the transfer source account can use this operation to cancel a
-%% transfer. (Transfer destinations can use `RejectCertificateTransfer`
+%% transfer. (Transfer destinations can use `RejectCertificateTransfer'
 %% instead.) After transfer, AWS IoT returns the certificate to the source
 %% account in the INACTIVE state. After the destination account has accepted
 %% the transfer, the transfer cannot be cancelled.
@@ -736,7 +736,7 @@ clear_default_authorizer(Client, Input0, Options) ->
 %% When you create a rule requiring a destination, AWS IoT sends a
 %% confirmation message to the endpoint or base address you specify. The
 %% message includes a token which you pass back when calling
-%% `ConfirmTopicRuleDestination` to confirm that you own or have access to
+%% `ConfirmTopicRuleDestination' to confirm that you own or have access to
 %% the endpoint.
 confirm_topic_rule_destination(Client, ConfirmationToken)
   when is_map(Client) ->
@@ -864,7 +864,7 @@ create_certificate_from_csr(Client, Input0, Options) ->
 %% @doc Create a dimension that you can use to limit the scope of a metric
 %% used in a security profile for AWS IoT Device Defender.
 %%
-%% For example, using a `TOPIC_FILTER` dimension, you can narrow down the
+%% For example, using a `TOPIC_FILTER' dimension, you can narrow down the
 %% scope of the metric only to MQTT topics whose name match the pattern
 %% specified in the dimension.
 create_dimension(Client, Name, Input) ->
@@ -936,7 +936,7 @@ create_job(Client, JobId, Input0, Options) ->
 %% @doc Creates a 2048-bit RSA key pair and issues an X.509 certificate using
 %% the issued public key.
 %%
-%% You can also call `CreateKeysAndCertificate` over MQTT from a device, for
+%% You can also call `CreateKeysAndCertificate' over MQTT from a device, for
 %% more information, see Provisioning MQTT API.
 %%
 %% Note This is the only time AWS IoT issues the private key for this
@@ -1018,7 +1018,7 @@ create_policy(Client, PolicyName, Input0, Options) ->
 %%
 %% To update a policy, create a new policy version. A managed policy can have
 %% up to five versions. If the policy has five versions, you must use
-%% `DeletePolicyVersion` to delete an existing version before you create a
+%% `DeletePolicyVersion' to delete an existing version before you create a
 %% new one.
 %%
 %% Optionally, you can set the new version as the policy's default version.
@@ -1162,7 +1162,7 @@ create_stream(Client, StreamId, Input0, Options) ->
 %%
 %% If this call is made multiple times using the same thing name and
 %% configuration, the call will succeed. If this call is made with the same
-%% thing name but different configuration a `ResourceAlreadyExistsException`
+%% thing name but different configuration a `ResourceAlreadyExistsException'
 %% is thrown.
 %%
 %% This is a control plane operation. See Authorization for information about
@@ -1347,8 +1347,8 @@ delete_c_a_certificate(Client, CertificateId, Input0, Options) ->
 %%
 %% A certificate cannot be deleted if it has a policy or IoT thing attached
 %% to it or if its status is set to ACTIVE. To delete a certificate, first
-%% use the `DetachPrincipalPolicy` API to detach all policies. Next, use the
-%% `UpdateCertificate` API to set the certificate to the INACTIVE status.
+%% use the `DetachPrincipalPolicy' API to detach all policies. Next, use the
+%% `UpdateCertificate' API to set the certificate to the INACTIVE status.
 delete_certificate(Client, CertificateId, Input) ->
     delete_certificate(Client, CertificateId, Input, []).
 delete_certificate(Client, CertificateId, Input0, Options) ->
@@ -1526,7 +1526,7 @@ delete_policy(Client, PolicyName, Input0, Options) ->
 %% @doc Deletes the specified version of the specified policy.
 %%
 %% You cannot delete the default version of a policy using this API. To
-%% delete the default version of a policy, use `DeletePolicy`. To find out
+%% delete the default version of a policy, use `DeletePolicy'. To find out
 %% which version of a policy is marked as the default version, use
 %% ListPolicyVersions.
 delete_policy_version(Client, PolicyName, PolicyVersionId, Input) ->
@@ -1698,9 +1698,9 @@ delete_thing_group(Client, ThingGroupName, Input0, Options) ->
 %%
 %% You cannot delete a thing type if it has things associated with it. To
 %% delete a thing type, first mark it as deprecated by calling
-%% `DeprecateThingType`, then remove any associated things by calling
-%% `UpdateThing` to change the thing type on any associated thing, and
-%% finally use `DeleteThingType` to delete the thing type.
+%% `DeprecateThingType', then remove any associated things by calling
+%% `UpdateThing' to change the thing type on any associated thing, and
+%% finally use `DeleteThingType' to delete the thing type.
 delete_thing_type(Client, ThingTypeName, Input) ->
     delete_thing_type(Client, ThingTypeName, Input, []).
 delete_thing_type(Client, ThingTypeName, Input0, Options) ->
@@ -2247,7 +2247,7 @@ detach_policy(Client, PolicyName, Input0, Options) ->
 
 %% @doc Removes the specified policy from the specified certificate.
 %%
-%% Note: This API is deprecated. Please use `DetachPolicy` instead.
+%% Note: This API is deprecated. Please use `DetachPolicy' instead.
 detach_principal_policy(Client, PolicyName, Input) ->
     detach_principal_policy(Client, PolicyName, Input, []).
 detach_principal_policy(Client, PolicyName, Input0, Options) ->
@@ -2406,7 +2406,7 @@ get_job_document(Client, JobId, Options)
 
 %% @doc Gets the logging options.
 %%
-%% NOTE: use of this command is not recommended. Use `GetV2LoggingOptions`
+%% NOTE: use of this command is not recommended. Use `GetV2LoggingOptions'
 %% instead.
 get_logging_options(Client)
   when is_map(Client) ->
@@ -2441,7 +2441,7 @@ get_o_t_a_update(Client, OtaUpdateId, Options)
 %% groupings.
 %%
 %% The default percentile groupings are: 1,5,25,50,75,95,99, although you can
-%% specify your own when you call `GetPercentiles`. This function returns a
+%% specify your own when you call `GetPercentiles'. This function returns a
 %% value for each percentile group specified (or the default percentile
 %% groupings). The percentile group "1" contains the aggregated field value
 %% that occurs in approximately one percent of the values that match the
@@ -2514,7 +2514,7 @@ get_registration_code(Client, Options)
 %% @doc Returns the count, average, sum, minimum, maximum, sum of squares,
 %% variance, and standard deviation for the specified aggregated field.
 %%
-%% If the aggregation field is of type `String`, only the count statistic is
+%% If the aggregation field is of type `String', only the count statistic is
 %% returned.
 get_statistics(Client, Input) ->
     get_statistics(Client, Input, []).
@@ -3060,7 +3060,7 @@ list_policies(Client, AscendingOrder, Marker, PageSize, Options)
 
 %% @doc Lists the principals associated with the specified policy.
 %%
-%% Note: This API is deprecated. Please use `ListTargetsForPolicy` instead.
+%% Note: This API is deprecated. Please use `ListTargetsForPolicy' instead.
 list_policy_principals(Client, AscendingOrder, Marker, PageSize, PolicyName)
   when is_map(Client) ->
     list_policy_principals(Client, AscendingOrder, Marker, PageSize, PolicyName, []).
@@ -3106,7 +3106,7 @@ list_policy_versions(Client, PolicyName, Options)
 %% If you use an Cognito identity, the ID must be in AmazonCognito Identity
 %% format.
 %%
-%% Note: This API is deprecated. Please use `ListAttachedPolicies` instead.
+%% Note: This API is deprecated. Please use `ListAttachedPolicies' instead.
 list_principal_policies(Client, AscendingOrder, Marker, PageSize, Principal)
   when is_map(Client) ->
     list_principal_policies(Client, AscendingOrder, Marker, PageSize, Principal, []).
@@ -3498,11 +3498,11 @@ list_thing_types(Client, MaxResults, NextToken, ThingTypeName, Options)
 %% @doc Lists your things.
 %%
 %% Use the attributeName and attributeValue parameters to filter your things.
-%% For example, calling `ListThings` with attributeName=Color and
+%% For example, calling `ListThings' with attributeName=Color and
 %% attributeValue=Red retrieves all things in the registry that contain an
 %% attribute Color with the value Red.
 %%
-%% You will not be charged for calling this API if an `Access denied` error
+%% You will not be charged for calling this API if an `Access denied' error
 %% is returned. You will also not be charged if no attributes or pagination
 %% token was provided in request and no pagination token and no results were
 %% returned.
@@ -3750,7 +3750,7 @@ register_thing(Client, Input0, Options) ->
 %% After AWS IoT rejects a certificate transfer, the certificate status
 %% changes from PENDING_TRANSFER to INACTIVE.
 %%
-%% To check for pending certificate transfers, call `ListCertificates` to
+%% To check for pending certificate transfers, call `ListCertificates' to
 %% enumerate your certificates.
 %%
 %% This operation can only be called by the transfer destination. After it is
@@ -3789,8 +3789,8 @@ remove_thing_from_billing_group(Client, Input0, Options) ->
 
 %% @doc Remove the specified thing from the specified group.
 %%
-%% You must specify either a `thingGroupArn` or a `thingGroupName` to
-%% identify the thing group and either a `thingArn` or a `thingName` to
+%% You must specify either a `thingGroupArn' or a `thingGroupName' to
+%% identify the thing group and either a `thingArn' or a `thingName' to
 %% identify the thing to remove from the thing group.
 remove_thing_from_thing_group(Client, Input) ->
     remove_thing_from_thing_group(Client, Input, []).
@@ -3885,7 +3885,7 @@ set_default_policy_version(Client, PolicyName, PolicyVersionId, Input0, Options)
 
 %% @doc Sets the logging options.
 %%
-%% NOTE: use of this command is not recommended. Use `SetV2LoggingOptions`
+%% NOTE: use of this command is not recommended. Use `SetV2LoggingOptions'
 %% instead.
 set_logging_options(Client, Input) ->
     set_logging_options(Client, Input, []).

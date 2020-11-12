@@ -33,7 +33,7 @@
 
 %% @doc Closes a tunnel identified by the unique tunnel id.
 %%
-%% When a `CloseTunnel` request is received, we close the WebSocket
+%% When a `CloseTunnel' request is received, we close the WebSocket
 %% connections between the client and proxy server so no data can be
 %% transmitted.
 close_tunnel(Client, Input)

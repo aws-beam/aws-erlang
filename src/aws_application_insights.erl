@@ -99,7 +99,7 @@ create_component(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateComponent">>, Input, Options).
 
-%% @doc Adds an log pattern to a `LogPatternSet`.
+%% @doc Adds an log pattern to a `LogPatternSet'.
 create_log_pattern(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_log_pattern(Client, Input, []).
@@ -129,7 +129,7 @@ delete_component(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteComponent">>, Input, Options).
 
-%% @doc Removes the specified log pattern from a `LogPatternSet`.
+%% @doc Removes the specified log pattern from a `LogPatternSet'.
 delete_log_pattern(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_log_pattern(Client, Input, []).
@@ -170,7 +170,7 @@ describe_component_configuration_recommendation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeComponentConfigurationRecommendation">>, Input, Options).
 
-%% @doc Describe a specific log pattern from a `LogPatternSet`.
+%% @doc Describe a specific log pattern from a `LogPatternSet'.
 describe_log_pattern(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_log_pattern(Client, Input, []).
@@ -248,7 +248,7 @@ list_log_pattern_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLogPatternSets">>, Input, Options).
 
-%% @doc Lists the log patterns in the specific log `LogPatternSet`.
+%% @doc Lists the log patterns in the specific log `LogPatternSet'.
 list_log_patterns(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_log_patterns(Client, Input, []).
@@ -326,7 +326,7 @@ update_component(Client, Input, Options)
 %%
 %% The configuration input parameter is an escaped JSON of the configuration
 %% and should match the schema of what is returned by
-%% `DescribeComponentConfigurationRecommendation`.
+%% `DescribeComponentConfigurationRecommendation'.
 update_component_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_component_configuration(Client, Input, []).
@@ -334,7 +334,7 @@ update_component_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateComponentConfiguration">>, Input, Options).
 
-%% @doc Adds a log pattern to a `LogPatternSet`.
+%% @doc Adds a log pattern to a `LogPatternSet'.
 update_log_pattern(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_log_pattern(Client, Input, []).

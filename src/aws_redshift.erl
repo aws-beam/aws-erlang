@@ -336,7 +336,7 @@ create_cluster(Client, Input, Options)
 %% Creating parameter groups is independent of creating clusters. You can
 %% associate a cluster with a parameter group when you create the cluster.
 %% You can also associate an existing cluster with a parameter group after
-%% the cluster is created by using `ModifyCluster`.
+%% the cluster is created by using `ModifyCluster'.
 %%
 %% Parameters in the parameter group define specific behavior that applies to
 %% the databases you create on the cluster. For more information about
@@ -364,7 +364,7 @@ create_cluster_security_group(Client, Input, Options)
 
 %% @doc Creates a manual snapshot of the specified cluster.
 %%
-%% The cluster must be in the `available` state.
+%% The cluster must be in the `available' state.
 %%
 %% For more information about working with snapshots, go to Amazon Redshift
 %% Snapshots in the Amazon Redshift Cluster Management Guide.
@@ -459,7 +459,7 @@ create_hsm_configuration(Client, Input, Options)
 %% @doc Creates a scheduled action.
 %%
 %% A scheduled action contains a schedule and an Amazon Redshift API action.
-%% For example, you can create a schedule of when to run the `ResizeCluster`
+%% For example, you can create a schedule of when to run the `ResizeCluster'
 %% API operation.
 create_scheduled_action(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -520,13 +520,13 @@ create_usage_limit(Client, Input, Options)
 %% being created.
 %%
 %% A successful response from the web service indicates that the request was
-%% received correctly. Use `DescribeClusters` to monitor the status of the
+%% received correctly. Use `DescribeClusters' to monitor the status of the
 %% deletion. The delete operation cannot be canceled or reverted once
 %% submitted. For more information about managing clusters, go to Amazon
 %% Redshift Clusters in the Amazon Redshift Cluster Management Guide.
 %%
 %% If you want to shut down the cluster and retain it for future use, set
-%% SkipFinalClusterSnapshot to `false` and specify a name for
+%% SkipFinalClusterSnapshot to `false' and specify a name for
 %% FinalClusterSnapshotIdentifier. You can later restore this snapshot to
 %% resume using the cluster. If a final cluster snapshot is requested, the
 %% status of the cluster will be "final-snapshot" while the snapshot is being
@@ -568,7 +568,7 @@ delete_cluster_security_group(Client, Input, Options)
 
 %% @doc Deletes the specified manual snapshot.
 %%
-%% The snapshot must be in the `available` state, with no other users
+%% The snapshot must be in the `available' state, with no other users
 %% authorized to access the snapshot.
 %%
 %% Unlike automated snapshots, manual snapshots are retained even after you
@@ -666,7 +666,7 @@ describe_account_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccountAttributes">>, Input, Options).
 
-%% @doc Returns an array of `ClusterDbRevision` objects.
+%% @doc Returns an array of `ClusterDbRevision' objects.
 describe_cluster_db_revisions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cluster_db_revisions(Client, Input, []).
@@ -686,8 +686,8 @@ describe_cluster_db_revisions(Client, Input, Options)
 %%
 %% If you specify both tag keys and tag values in the same request, Amazon
 %% Redshift returns all parameter groups that match any combination of the
-%% specified keys and values. For example, if you have `owner` and
-%% `environment` for tag keys, and `admin` and `test` for tag values, all
+%% specified keys and values. For example, if you have `owner' and
+%% `environment' for tag keys, and `admin' and `test' for tag values, all
 %% parameter groups that have any combination of those values are returned.
 %%
 %% If both tag keys and values are omitted from the request, parameter groups
@@ -709,7 +709,7 @@ describe_cluster_parameter_groups(Client, Input, Options)
 %%
 %% You can specify source filter to retrieve parameters of only specific
 %% type. For example, to retrieve parameters that were modified by a user
-%% action such as from `ModifyClusterParameterGroup`, you can specify source
+%% action such as from `ModifyClusterParameterGroup', you can specify source
 %% equal to user.
 %%
 %% For more information about parameters and parameter groups, go to Amazon
@@ -731,8 +731,8 @@ describe_cluster_parameters(Client, Input, Options)
 %%
 %% If you specify both tag keys and tag values in the same request, Amazon
 %% Redshift returns all security groups that match any combination of the
-%% specified keys and values. For example, if you have `owner` and
-%% `environment` for tag keys, and `admin` and `test` for tag values, all
+%% specified keys and values. For example, if you have `owner' and
+%% `environment' for tag keys, and `admin' and `test' for tag values, all
 %% security groups that have any combination of those values are returned.
 %%
 %% If both tag keys and values are omitted from the request, security groups
@@ -754,8 +754,8 @@ describe_cluster_security_groups(Client, Input, Options)
 %%
 %% If you specify both tag keys and tag values in the same request, Amazon
 %% Redshift returns all snapshots that match any combination of the specified
-%% keys and values. For example, if you have `owner` and `environment` for
-%% tag keys, and `admin` and `test` for tag values, all snapshots that have
+%% keys and values. For example, if you have `owner' and `environment' for
+%% tag keys, and `admin' and `test' for tag values, all snapshots that have
 %% any combination of those values are returned. Only snapshots that you own
 %% are returned in the response; shared snapshots are not returned with the
 %% tag key and tag value request parameters.
@@ -778,8 +778,8 @@ describe_cluster_snapshots(Client, Input, Options)
 %%
 %% If you specify both tag keys and tag values in the same request, Amazon
 %% Redshift returns all subnet groups that match any combination of the
-%% specified keys and values. For example, if you have `owner` and
-%% `environment` for tag keys, and `admin` and `test` for tag values, all
+%% specified keys and values. For example, if you have `owner' and
+%% `environment' for tag keys, and `admin' and `test' for tag values, all
 %% subnet groups that have any combination of those values are returned.
 %%
 %% If both tag keys and values are omitted from the request, subnet groups
@@ -824,8 +824,8 @@ describe_cluster_versions(Client, Input, Options)
 %%
 %% If you specify both tag keys and tag values in the same request, Amazon
 %% Redshift returns all clusters that match any combination of the specified
-%% keys and values. For example, if you have `owner` and `environment` for
-%% tag keys, and `admin` and `test` for tag values, all clusters that have
+%% keys and values. For example, if you have `owner' and `environment' for
+%% tag keys, and `admin' and `test' for tag values, all clusters that have
 %% any combination of those values are returned.
 %%
 %% If both tag keys and values are omitted from the request, clusters are
@@ -871,7 +871,7 @@ describe_event_categories(Client, Input, Options)
 %% If you specify both tag keys and tag values in the same request, Amazon
 %% Redshift returns all event notification subscriptions that match any
 %% combination of the specified keys and values. For example, if you have
-%% `owner` and `environment` for tag keys, and `admin` and `test` for tag
+%% `owner' and `environment' for tag keys, and `admin' and `test' for tag
 %% values, all subscriptions that have any combination of those values are
 %% returned.
 %%
@@ -905,8 +905,8 @@ describe_events(Client, Input, Options)
 %%
 %% If you specify both tag keys and tag values in the same request, Amazon
 %% Redshift returns all HSM client certificates that match any combination of
-%% the specified keys and values. For example, if you have `owner` and
-%% `environment` for tag keys, and `admin` and `test` for tag values, all HSM
+%% the specified keys and values. For example, if you have `owner' and
+%% `environment' for tag keys, and `admin' and `test' for tag values, all HSM
 %% client certificates that have any combination of those values are
 %% returned.
 %%
@@ -928,8 +928,8 @@ describe_hsm_client_certificates(Client, Input, Options)
 %%
 %% If you specify both tag keys and tag values in the same request, Amazon
 %% Redshift returns all HSM connections that match any combination of the
-%% specified keys and values. For example, if you have `owner` and
-%% `environment` for tag keys, and `admin` and `test` for tag values, all HSM
+%% specified keys and values. For example, if you have `owner' and
+%% `environment' for tag keys, and `admin' and `test' for tag values, all HSM
 %% connections that have any combination of those values are returned.
 %%
 %% If both tag keys and values are omitted from the request, HSM connections
@@ -984,7 +984,7 @@ describe_orderable_cluster_options(Client, Input, Options)
 %%
 %% These descriptions help you determine which reserve node offering you want
 %% to purchase. You then use the unique offering ID in you call to
-%% `PurchaseReservedNodeOffering` to reserve one or more nodes for your
+%% `PurchaseReservedNodeOffering' to reserve one or more nodes for your
 %% Amazon Redshift cluster.
 %%
 %% For more information about reserved node offerings, go to Purchasing
@@ -1008,11 +1008,11 @@ describe_reserved_nodes(Client, Input, Options)
 %% cluster.
 %%
 %% If no resize operation has ever been initiated for the specified cluster,
-%% a `HTTP 404` error is returned. If a resize operation was initiated and
-%% completed, the status of the resize remains as `SUCCEEDED` until the next
+%% a `HTTP 404' error is returned. If a resize operation was initiated and
+%% completed, the status of the resize remains as `SUCCEEDED' until the next
 %% resize.
 %%
-%% A resize operation can be requested using `ModifyCluster` and specifying a
+%% A resize operation can be requested using `ModifyCluster' and specifying a
 %% different number or type of nodes for the cluster.
 describe_resize(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1059,13 +1059,13 @@ describe_storage(Client, Input, Options)
     request(Client, <<"DescribeStorage">>, Input, Options).
 
 %% @doc Lists the status of one or more table restore requests made using the
-%% `RestoreTableFromClusterSnapshot` API action.
+%% `RestoreTableFromClusterSnapshot' API action.
 %%
-%% If you don't specify a value for the `TableRestoreRequestId` parameter,
-%% then `DescribeTableRestoreStatus` returns the status of all table restore
+%% If you don't specify a value for the `TableRestoreRequestId' parameter,
+%% then `DescribeTableRestoreStatus' returns the status of all table restore
 %% requests ordered by the date and time of the request in ascending order.
-%% Otherwise `DescribeTableRestoreStatus` returns the status of the table
-%% specified by `TableRestoreRequestId`.
+%% Otherwise `DescribeTableRestoreStatus' returns the status of the table
+%% specified by `TableRestoreRequestId'.
 describe_table_restore_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_table_restore_status(Client, Input, []).
@@ -1079,21 +1079,21 @@ describe_table_restore_status(Client, Input, Options)
 %% can return all tags for a given type of resource, such as clusters,
 %% snapshots, and so on.
 %%
-%% The following are limitations for `DescribeTags`:
+%% The following are limitations for `DescribeTags':
 %%
 %% <ul> <li> You cannot specify an ARN and a resource-type value together in
 %% the same request.
 %%
-%% </li> <li> You cannot use the `MaxRecords` and `Marker` parameters
+%% </li> <li> You cannot use the `MaxRecords' and `Marker' parameters
 %% together with the ARN parameter.
 %%
-%% </li> <li> The `MaxRecords` parameter can be a range from 10 to 50 results
+%% </li> <li> The `MaxRecords' parameter can be a range from 10 to 50 results
 %% to return in a request.
 %%
 %% </li> </ul> If you specify both tag keys and tag values in the same
 %% request, Amazon Redshift returns all resources that match any combination
-%% of the specified keys and values. For example, if you have `owner` and
-%% `environment` for tag keys, and `admin` and `test` for tag values, all
+%% of the specified keys and values. For example, if you have `owner' and
+%% `environment' for tag keys, and `admin' and `test' for tag values, all
 %% resources that have any combination of those values are returned.
 %%
 %% If both tag keys and values are omitted from the request, resources are
@@ -1146,7 +1146,7 @@ disable_logging(Client, Input, Options)
 %% another region for a specified cluster.
 %%
 %% If your cluster and its snapshots are encrypted using a customer master
-%% key (CMK) from AWS KMS, use `DeleteSnapshotCopyGrant` to delete the grant
+%% key (CMK) from AWS KMS, use `DeleteSnapshotCopyGrant' to delete the grant
 %% that grants Amazon Redshift permission to the CMK in the destination
 %% region.
 disable_snapshot_copy(Client, Input)
@@ -1177,8 +1177,8 @@ enable_snapshot_copy(Client, Input, Options)
 %% @doc Returns a database user name and temporary password with temporary
 %% authorization to log on to an Amazon Redshift database.
 %%
-%% The action returns the database user name prefixed with `IAM:` if
-%% `AutoCreate` is `False` or `IAMA:` if `AutoCreate` is `True`. You can
+%% The action returns the database user name prefixed with `IAM:' if
+%% `AutoCreate' is `False' or `IAMA:' if `AutoCreate' is `True'. You can
 %% optionally specify one or more database user groups that the user will
 %% join at log on. By default, the temporary credentials expire in 900
 %% seconds. You can optionally specify a duration between 900 seconds (15
@@ -1192,14 +1192,14 @@ enable_snapshot_copy(Client, Input, Options)
 %% permissions, see Resource Policies for GetClusterCredentials in the Amazon
 %% Redshift Cluster Management Guide.
 %%
-%% If the `DbGroups` parameter is specified, the IAM policy must allow the
-%% `redshift:JoinGroup` action with access to the listed `dbgroups`.
+%% If the `DbGroups' parameter is specified, the IAM policy must allow the
+%% `redshift:JoinGroup' action with access to the listed `dbgroups'.
 %%
-%% In addition, if the `AutoCreate` parameter is set to `True`, then the
-%% policy must include the `redshift:CreateClusterUser` privilege.
+%% In addition, if the `AutoCreate' parameter is set to `True', then the
+%% policy must include the `redshift:CreateClusterUser' privilege.
 %%
-%% If the `DbName` parameter is specified, the IAM policy must allow access
-%% to the resource `dbname` for the specified database name.
+%% If the `DbName' parameter is specified, the IAM policy must allow access
+%% to the resource `dbname' for the specified database name.
 get_cluster_credentials(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_cluster_credentials(Client, Input, []).
@@ -1371,7 +1371,7 @@ pause_cluster(Client, Input, Options)
 %%
 %% Amazon Redshift offers a predefined set of reserved node offerings. You
 %% can purchase one or more of the offerings. You can call the
-%% `DescribeReservedNodeOfferings` API to obtain the available reserved node
+%% `DescribeReservedNodeOfferings' API to obtain the available reserved node
 %% offerings. You can call this API by providing a specific reserved node
 %% offering and the number of nodes you want to reserve.
 %%
@@ -1387,9 +1387,9 @@ purchase_reserved_node_offering(Client, Input, Options)
 %% @doc Reboots a cluster.
 %%
 %% This action is taken as soon as possible. It results in a momentary outage
-%% to the cluster, during which the cluster status is set to `rebooting`. A
+%% to the cluster, during which the cluster status is set to `rebooting'. A
 %% cluster event is created when the reboot is completed. Any pending cluster
-%% modifications (see `ModifyCluster`) are applied at this reboot. For more
+%% modifications (see `ModifyCluster') are applied at this reboot. For more
 %% information about managing clusters, go to Amazon Redshift Clusters in the
 %% Amazon Redshift Cluster Management Guide.
 reboot_cluster(Client, Input)
@@ -1457,7 +1457,7 @@ resize_cluster(Client, Input, Options)
 %% configuration as the original cluster from which the snapshot was created,
 %% except that the new cluster is created with the default cluster security
 %% and parameter groups. After Amazon Redshift creates the cluster, you can
-%% use the `ModifyCluster` API to associate a different security group and
+%% use the `ModifyCluster' API to associate a different security group and
 %% different parameter group with the restored cluster. If you are using a DS
 %% node type, you can also choose to change to another DS node type of the
 %% same size during restore.
@@ -1480,15 +1480,15 @@ restore_from_cluster_snapshot(Client, Input, Options)
 %% You must create the new table within the Amazon Redshift cluster that the
 %% snapshot was taken from.
 %%
-%% You cannot use `RestoreTableFromClusterSnapshot` to restore a table with
+%% You cannot use `RestoreTableFromClusterSnapshot' to restore a table with
 %% the same name as an existing table in an Amazon Redshift cluster. That is,
 %% you cannot overwrite an existing table in a cluster with a restored table.
 %% If you want to replace your original table with a new, restored table,
 %% then rename or drop your original table before you call
-%% `RestoreTableFromClusterSnapshot`. When you have renamed your original
+%% `RestoreTableFromClusterSnapshot'. When you have renamed your original
 %% table, then you can pass the original name of the table as the
-%% `NewTableName` parameter value in the call to
-%% `RestoreTableFromClusterSnapshot`. This way, you can replace the original
+%% `NewTableName' parameter value in the call to
+%% `RestoreTableFromClusterSnapshot'. This way, you can replace the original
 %% table with the table created from the snapshot.
 restore_table_from_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1508,7 +1508,7 @@ resume_cluster(Client, Input, Options)
 %% @doc Revokes an ingress rule in an Amazon Redshift security group for a
 %% previously authorized IP range or Amazon EC2 security group.
 %%
-%% To add an ingress rule, see `AuthorizeClusterSecurityGroupIngress`. For
+%% To add an ingress rule, see `AuthorizeClusterSecurityGroupIngress'. For
 %% information about managing security groups, go to Amazon Redshift Cluster
 %% Security Groups in the Amazon Redshift Cluster Management Guide.
 revoke_cluster_security_group_ingress(Client, Input)

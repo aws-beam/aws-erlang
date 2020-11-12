@@ -82,11 +82,11 @@ add_application_cloud_watch_logging_option(Client, Input, Options)
 %%
 %% You can add a streaming source when you create an application, or you can
 %% use this operation to add a streaming source after you create an
-%% application. For more information, see `CreateApplication`.
+%% application. For more information, see `CreateApplication'.
 %%
 %% Any configuration update, including adding a streaming source using this
 %% operation, results in a new version of the application. You can use the
-%% `DescribeApplication` operation to find the current application version.
+%% `DescribeApplication' operation to find the current application version.
 add_application_input(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_application_input(Client, Input, []).
@@ -94,7 +94,7 @@ add_application_input(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddApplicationInput">>, Input, Options).
 
-%% @doc Adds an `InputProcessingConfiguration` to a SQL-based Kinesis Data
+%% @doc Adds an `InputProcessingConfiguration' to a SQL-based Kinesis Data
 %% Analytics application.
 %%
 %% An input processor pre-processes records on the input stream before the
@@ -124,7 +124,7 @@ add_application_input_processing_configuration(Client, Input, Options)
 %%
 %% Any configuration update, including adding a streaming source using this
 %% operation, results in a new version of the application. You can use the
-%% `DescribeApplication` operation to find the current application version.
+%% `DescribeApplication' operation to find the current application version.
 add_application_output(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_application_output(Client, Input, []).
@@ -209,7 +209,7 @@ delete_application_cloud_watch_logging_option(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteApplicationCloudWatchLoggingOption">>, Input, Options).
 
-%% @doc Deletes an `InputProcessingConfiguration` from an input.
+%% @doc Deletes an `InputProcessingConfiguration' from an input.
 delete_application_input_processing_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application_input_processing_configuration(Client, Input, []).
@@ -234,7 +234,7 @@ delete_application_output(Client, Input, Options)
 %%
 %% If the application is running, Kinesis Data Analytics immediately removes
 %% the in-application table that you created using the
-%% `AddApplicationReferenceDataSource` operation.
+%% `AddApplicationReferenceDataSource' operation.
 delete_application_reference_data_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application_reference_data_source(Client, Input, []).
@@ -263,7 +263,7 @@ delete_application_vpc_configuration(Client, Input, Options)
 %% application.
 %%
 %% If you want to retrieve a list of all applications in your account, use
-%% the `ListApplications` operation.
+%% the `ListApplications' operation.
 describe_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_application(Client, Input, []).
@@ -312,7 +312,7 @@ list_application_snapshots(Client, Input, Options)
 %% Resource Name (ARN), and status.
 %%
 %% If you want detailed information about a specific application, use
-%% `DescribeApplication`.
+%% `DescribeApplication'.
 list_applications(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_applications(Client, Input, []).
@@ -344,7 +344,7 @@ start_application(Client, Input, Options)
 %% @doc Stops the application from processing data.
 %%
 %% You can stop an application only if it is in the running state. You can
-%% use the `DescribeApplication` operation to find the application state.
+%% use the `DescribeApplication' operation to find the application state.
 stop_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_application(Client, Input, []).
@@ -380,11 +380,11 @@ untag_resource(Client, Input, Options)
 %% Using this operation, you can update application code, input
 %% configuration, and output configuration.
 %%
-%% Kinesis Data Analytics updates the `ApplicationVersionId` each time you
+%% Kinesis Data Analytics updates the `ApplicationVersionId' each time you
 %% update your application.
 %%
-%% You cannot update the `RuntimeEnvironment` of an existing application. If
-%% you need to update an application's `RuntimeEnvironment`, you must delete
+%% You cannot update the `RuntimeEnvironment' of an existing application. If
+%% you need to update an application's `RuntimeEnvironment', you must delete
 %% the application and create it again.
 update_application(Client, Input)
   when is_map(Client), is_map(Input) ->

@@ -15,7 +15,7 @@
 %% App Mesh supports microservice applications that use service discovery
 %% naming for their components. For more information about service discovery
 %% on Amazon ECS, see Service Discovery in the Amazon Elastic Container
-%% Service Developer Guide. Kubernetes `kube-dns` and `coredns` are
+%% Service Developer Guide. Kubernetes `kube-dns' and `coredns' are
 %% supported. For more information, see DNS for Services and Pods in the
 %% Kubernetes documentation.
 -module(aws_app_mesh).
@@ -206,27 +206,27 @@ create_virtual_gateway(Client, MeshName, Input0, Options) ->
 %% task group, and whether the proxy running in a task group will communicate
 %% with other proxies using Transport Layer Security (TLS).
 %%
-%% You define a `listener` for any inbound traffic that your virtual node
+%% You define a `listener' for any inbound traffic that your virtual node
 %% expects. Any virtual service that your virtual node expects to communicate
-%% to is specified as a `backend`.
+%% to is specified as a `backend'.
 %%
-%% The response metadata for your new virtual node contains the `arn` that is
+%% The response metadata for your new virtual node contains the `arn' that is
 %% associated with the virtual node. Set this value to the full ARN; for
 %% example,
-%% `arn:aws:appmesh:us-west-2:123456789012:myMesh/default/virtualNode/myApp`)
-%% as the `APPMESH_RESOURCE_ARN` environment variable for your task group's
+%% `arn:aws:appmesh:us-west-2:123456789012:myMesh/default/virtualNode/myApp')
+%% as the `APPMESH_RESOURCE_ARN' environment variable for your task group's
 %% Envoy proxy container in your task definition or pod spec. This is then
-%% mapped to the `node.id` and `node.cluster` Envoy parameters.
+%% mapped to the `node.id' and `node.cluster' Envoy parameters.
 %%
 %% By default, App Mesh uses the name of the resource you specified in
-%% `APPMESH_RESOURCE_ARN` when Envoy is referring to itself in metrics and
+%% `APPMESH_RESOURCE_ARN' when Envoy is referring to itself in metrics and
 %% traces. You can override this behavior by setting the
-%% `APPMESH_RESOURCE_CLUSTER` environment variable with your own name.
+%% `APPMESH_RESOURCE_CLUSTER' environment variable with your own name.
 %%
 %% AWS Cloud Map is not available in the eu-south-1 Region.
 %%
 %% For more information about virtual nodes, see Virtual nodes. You must be
-%% using `1.15.0` or later of the Envoy image when setting these variables.
+%% using `1.15.0' or later of the Envoy image when setting these variables.
 %% For more information about App Mesh Envoy variables, see Envoy image in
 %% the AWS App Mesh User Guide.
 create_virtual_node(Client, MeshName, Input) ->
@@ -247,7 +247,7 @@ create_virtual_node(Client, MeshName, Input0, Options) ->
 
 %% @doc Creates a virtual router within a service mesh.
 %%
-%% Specify a `listener` for any inbound traffic that your virtual router
+%% Specify a `listener' for any inbound traffic that your virtual router
 %% receives. Create a virtual router for each protocol and port that you need
 %% to route. Virtual routers handle traffic for one or more virtual services
 %% within your mesh. After you create your virtual router, create and
@@ -275,7 +275,7 @@ create_virtual_router(Client, MeshName, Input0, Options) ->
 %%
 %% A virtual service is an abstraction of a real service that is provided by
 %% a virtual node directly or indirectly by means of a virtual router.
-%% Dependent services call your virtual service by its `virtualServiceName`,
+%% Dependent services call your virtual service by its `virtualServiceName',
 %% and those requests are routed to the virtual node or virtual router that
 %% is specified as the provider for the virtual service.
 %%
@@ -729,7 +729,7 @@ list_virtual_services(Client, MeshName, Limit, MeshOwner, NextToken, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Associates the specified tags to a resource with the specified
-%% `resourceArn`.
+%% `resourceArn'.
 %%
 %% If existing tags on a resource aren't specified in the request parameters,
 %% they aren't changed. When a resource is deleted, the tags associated with

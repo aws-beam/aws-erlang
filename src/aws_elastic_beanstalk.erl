@@ -132,9 +132,9 @@ abort_environment_update(Client, Input, Options)
 
 %% @doc Applies a scheduled managed action immediately.
 %%
-%% A managed action can be applied only if its status is `Scheduled`. Get the
+%% A managed action can be applied only if its status is `Scheduled'. Get the
 %% status and action ID of a managed action with
-%% `DescribeEnvironmentManagedActions`.
+%% `DescribeEnvironmentManagedActions'.
 apply_environment_managed_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     apply_environment_managed_action(Client, Input, []).
@@ -169,7 +169,7 @@ check_d_n_s_availability(Client, Input, Options)
 %% Takes a list of version labels that specify application source bundles for
 %% each of the environments to create or update. The name of each environment
 %% and other required information must be included in the source bundles in
-%% an environment manifest named `env.yaml`. See Compose Environments for
+%% an environment manifest named `env.yaml'. See Compose Environments for
 %% details.
 compose_environments(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -179,7 +179,7 @@ compose_environments(Client, Input, Options)
     request(Client, <<"ComposeEnvironments">>, Input, Options).
 
 %% @doc Creates an application that has one configuration template named
-%% `default` and no application versions.
+%% `default' and no application versions.
 create_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_application(Client, Input, []).
@@ -194,14 +194,14 @@ create_application(Client, Input, Options)
 %% follows:
 %%
 %% Specify a commit in an AWS CodeCommit repository with
-%% `SourceBuildInformation`.
+%% `SourceBuildInformation'.
 %%
-%% Specify a build in an AWS CodeBuild with `SourceBuildInformation` and
-%% `BuildConfiguration`.
+%% Specify a build in an AWS CodeBuild with `SourceBuildInformation' and
+%% `BuildConfiguration'.
 %%
-%% Specify a source bundle in S3 with `SourceBundle`
+%% Specify a source bundle in S3 with `SourceBundle'
 %%
-%% Omit both `SourceBuildInformation` and `SourceBundle` to use the default
+%% Omit both `SourceBuildInformation' and `SourceBundle' to use the default
 %% sample application.
 %%
 %% After you create an application version with a specified Amazon S3 bucket
@@ -222,16 +222,16 @@ create_application_version(Client, Input, Options)
 %% You can then use the configuration template to deploy different versions
 %% of the application with the same configuration settings.
 %%
-%% Templates aren't associated with any environment. The `EnvironmentName`
-%% response element is always `null`.
+%% Templates aren't associated with any environment. The `EnvironmentName'
+%% response element is always `null'.
 %%
 %% Related Topics
 %%
-%% <ul> <li> `DescribeConfigurationOptions`
+%% <ul> <li> `DescribeConfigurationOptions'
 %%
-%% </li> <li> `DescribeConfigurationSettings`
+%% </li> <li> `DescribeConfigurationSettings'
 %%
-%% </li> <li> `ListAvailableSolutionStacks`
+%% </li> <li> `ListAvailableSolutionStacks'
 %%
 %% </li> </ul>
 create_configuration_template(Client, Input)
@@ -263,7 +263,7 @@ create_platform_version(Client, Input, Options)
 %%
 %% The Elastic Beanstalk console and EB CLI call this API the first time you
 %% create an environment in a region. If the storage location already exists,
-%% `CreateStorageLocation` still returns the bucket name but does not create
+%% `CreateStorageLocation' still returns the bucket name but does not create
 %% a new bucket.
 create_storage_location(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -314,8 +314,8 @@ delete_configuration_template(Client, Input, Options)
 %%
 %% Updating a running environment with any configuration changes creates a
 %% draft configuration set. You can get the draft configuration using
-%% `DescribeConfigurationSettings` while the update is in progress or if the
-%% update fails. The `DeploymentStatus` for the draft configuration indicates
+%% `DescribeConfigurationSettings' while the update is in progress or if the
+%% update fails. The `DeploymentStatus' for the draft configuration indicates
 %% whether the deployment is in process or has failed. The draft
 %% configuration remains in existence until it is deleted with this action.
 delete_environment_configuration(Client, Input)
@@ -386,7 +386,7 @@ describe_configuration_options(Client, Input, Options)
 %%
 %% Related Topics
 %%
-%% <ul> <li> `DeleteEnvironmentConfiguration`
+%% <ul> <li> `DeleteEnvironmentConfiguration'
 %%
 %% </li> </ul>
 describe_configuration_settings(Client, Input)
@@ -444,7 +444,7 @@ describe_environments(Client, Input, Options)
 %% weeks.
 %%
 %% This action returns the most recent 1,000 events from the specified
-%% `NextToken`.
+%% `NextToken'.
 describe_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_events(Client, Input, []).
@@ -465,7 +465,7 @@ describe_instances_health(Client, Input, Options)
 
 %% @doc Describes a platform version.
 %%
-%% Provides full details. Compare to `ListPlatformVersions`, which provides
+%% Provides full details. Compare to `ListPlatformVersions', which provides
 %% summary information about a list of platform versions.
 %%
 %% For definitions of platform version and other platform-related terms, see
@@ -517,7 +517,7 @@ list_platform_branches(Client, Input, Options)
 %% Region.
 %%
 %% Provides summary information about each platform version. Compare to
-%% `DescribePlatformVersion`, which provides full details about a single
+%% `DescribePlatformVersion', which provides full details about a single
 %% platform version.
 %%
 %% For definitions of platform version and other platform-related terms, see
@@ -555,19 +555,19 @@ rebuild_environment(Client, Input, Options)
 %% @doc Initiates a request to compile the specified type of information of
 %% the deployed environment.
 %%
-%% Setting the `InfoType` to `tail` compiles the last lines from the
+%% Setting the `InfoType' to `tail' compiles the last lines from the
 %% application server log files of every Amazon EC2 instance in your
 %% environment.
 %%
-%% Setting the `InfoType` to `bundle` compresses the application server log
-%% files for every Amazon EC2 instance into a `.zip` file. Legacy and .NET
+%% Setting the `InfoType' to `bundle' compresses the application server log
+%% files for every Amazon EC2 instance into a `.zip' file. Legacy and .NET
 %% containers do not support bundle logs.
 %%
-%% Use `RetrieveEnvironmentInfo` to obtain the set of logs.
+%% Use `RetrieveEnvironmentInfo' to obtain the set of logs.
 %%
 %% Related Topics
 %%
-%% <ul> <li> `RetrieveEnvironmentInfo`
+%% <ul> <li> `RetrieveEnvironmentInfo'
 %%
 %% </li> </ul>
 request_environment_info(Client, Input)
@@ -586,12 +586,12 @@ restart_app_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestartAppServer">>, Input, Options).
 
-%% @doc Retrieves the compiled information from a `RequestEnvironmentInfo`
+%% @doc Retrieves the compiled information from a `RequestEnvironmentInfo'
 %% request.
 %%
 %% Related Topics
 %%
-%% <ul> <li> `RequestEnvironmentInfo`
+%% <ul> <li> `RequestEnvironmentInfo'
 %%
 %% </li> </ul>
 retrieve_environment_info(Client, Input)
@@ -619,7 +619,7 @@ terminate_environment(Client, Input, Options)
 
 %% @doc Updates the specified application to have the specified properties.
 %%
-%% If a property (for example, `description`) is not provided, the value
+%% If a property (for example, `description') is not provided, the value
 %% remains unchanged. To clear these properties, specify an empty string.
 update_application(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -639,7 +639,7 @@ update_application_resource_lifecycle(Client, Input, Options)
 %% @doc Updates the specified application version to have the specified
 %% properties.
 %%
-%% If a property (for example, `description`) is not provided, the value
+%% If a property (for example, `description') is not provided, the value
 %% remains unchanged. To clear properties, specify an empty string.
 update_application_version(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -651,12 +651,12 @@ update_application_version(Client, Input, Options)
 %% @doc Updates the specified configuration template to have the specified
 %% properties or configuration option values.
 %%
-%% If a property (for example, `ApplicationName`) is not provided, its value
+%% If a property (for example, `ApplicationName') is not provided, its value
 %% remains unchanged. To clear such properties, specify an empty string.
 %%
 %% Related Topics
 %%
-%% <ul> <li> `DescribeConfigurationOptions`
+%% <ul> <li> `DescribeConfigurationOptions'
 %%
 %% </li> </ul>
 update_configuration_template(Client, Input)
@@ -672,12 +672,12 @@ update_configuration_template(Client, Input, Options)
 %% the running environment.
 %%
 %% Attempting to update both the release and configuration is not allowed and
-%% AWS Elastic Beanstalk returns an `InvalidParameterCombination` error.
+%% AWS Elastic Beanstalk returns an `InvalidParameterCombination' error.
 %%
 %% When updating the configuration settings to a new template or individual
 %% settings, a draft configuration is created and
-%% `DescribeConfigurationSettings` for this environment returns two setting
-%% descriptions with different `DeploymentStatus` values.
+%% `DescribeConfigurationSettings' for this environment returns two setting
+%% descriptions with different `DeploymentStatus' values.
 update_environment(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_environment(Client, Input, []).
@@ -687,8 +687,8 @@ update_environment(Client, Input, Options)
 
 %% @doc Update the list of tags applied to an AWS Elastic Beanstalk resource.
 %%
-%% Two lists can be passed: `TagsToAdd` for tags to add or update, and
-%% `TagsToRemove`.
+%% Two lists can be passed: `TagsToAdd' for tags to add or update, and
+%% `TagsToRemove'.
 %%
 %% Elastic Beanstalk supports tagging of all of its resources. For details
 %% about resource tagging, see Tagging Application Resources.
@@ -698,12 +698,12 @@ update_environment(Client, Input, Options)
 %% instead of the API operation name:
 %%
 %% <dl> <dt>elasticbeanstalk:AddTags</dt> <dd> Controls permission to call
-%% `UpdateTagsForResource` and pass a list of tags to add in the `TagsToAdd`
+%% `UpdateTagsForResource' and pass a list of tags to add in the `TagsToAdd'
 %% parameter.
 %%
 %% </dd> <dt>elasticbeanstalk:RemoveTags</dt> <dd> Controls permission to
-%% call `UpdateTagsForResource` and pass a list of tag keys to remove in the
-%% `TagsToRemove` parameter.
+%% call `UpdateTagsForResource' and pass a list of tag keys to remove in the
+%% `TagsToRemove' parameter.
 %%
 %% </dd> </dl> For details about creating a custom user policy, see Creating
 %% a Custom User Policy.

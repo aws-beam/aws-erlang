@@ -135,8 +135,8 @@
 %% If you want to associate a VPC that was created by using one AWS account
 %% with a private hosted zone that was created by using a different account,
 %% the AWS account that created the private hosted zone must first submit a
-%% `CreateVPCAssociationAuthorization` request. Then the account that created
-%% the VPC must submit an `AssociateVPCWithHostedZone` request.
+%% `CreateVPCAssociationAuthorization' request. Then the account that created
+%% the VPC must submit an `AssociateVPCWithHostedZone' request.
 associate_v_p_c_with_hosted_zone(Client, HostedZoneId, Input) ->
     associate_v_p_c_with_hosted_zone(Client, HostedZoneId, Input, []).
 associate_v_p_c_with_hosted_zone(Client, HostedZoneId, Input0, Options) ->
@@ -156,7 +156,7 @@ associate_v_p_c_with_hosted_zone(Client, HostedZoneId, Input0, Options) ->
 %% authoritative DNS information for a specified domain name or subdomain
 %% name.
 %%
-%% For example, you can use `ChangeResourceRecordSets` to create a resource
+%% For example, you can use `ChangeResourceRecordSets' to create a resource
 %% record set that routes traffic for test.example.com to a web server that
 %% has an IP address of 192.0.2.44.
 %%
@@ -168,7 +168,7 @@ associate_v_p_c_with_hosted_zone(Client, HostedZoneId, Input0, Options) ->
 %% Change Batches and Transactional Changes
 %%
 %% The request body must include a document with a
-%% `ChangeResourceRecordSetsRequest` element. The request body contains a
+%% `ChangeResourceRecordSetsRequest' element. The request body contains a
 %% list of change items, known as a change batch. Change batches are
 %% considered transactional changes. Route 53 validates the changes in the
 %% request and then either makes all or none of the changes in the change
@@ -176,15 +176,15 @@ associate_v_p_c_with_hosted_zone(Client, HostedZoneId, Input0, Options) ->
 %% partial changes to the resource record sets in a hosted zone.
 %%
 %% For example, suppose a change batch request contains two changes: it
-%% deletes the `CNAME` resource record set for www.example.com and creates an
+%% deletes the `CNAME' resource record set for www.example.com and creates an
 %% alias resource record set for www.example.com. If validation for both
 %% records succeeds, Route 53 deletes the first resource record set and
 %% creates the second resource record set in a single operation. If
-%% validation for either the `DELETE` or the `CREATE` action fails, then the
-%% request is canceled, and the original `CNAME` record continues to exist.
+%% validation for either the `DELETE' or the `CREATE' action fails, then the
+%% request is canceled, and the original `CNAME' record continues to exist.
 %%
 %% If you try to delete the same resource record set more than once in a
-%% single change batch, Route 53 returns an `InvalidChangeBatch` error.
+%% single change batch, Route 53 returns an `InvalidChangeBatch' error.
 %%
 %% Traffic Flow
 %%
@@ -200,15 +200,15 @@ associate_v_p_c_with_hosted_zone(Client, HostedZoneId, Input0, Options) ->
 %%
 %% Create, Delete, and Upsert
 %%
-%% Use `ChangeResourceRecordsSetsRequest` to perform the following actions:
+%% Use `ChangeResourceRecordsSetsRequest' to perform the following actions:
 %%
-%% <ul> <li> `CREATE`: Creates a resource record set that has the specified
+%% <ul> <li> `CREATE': Creates a resource record set that has the specified
 %% values.
 %%
-%% </li> <li> `DELETE`: Deletes an existing resource record set that has the
+%% </li> <li> `DELETE': Deletes an existing resource record set that has the
 %% specified values.
 %%
-%% </li> <li> `UPSERT`: If a resource record set does not already exist, AWS
+%% </li> <li> `UPSERT': If a resource record set does not already exist, AWS
 %% creates it. If a resource set does exist, Route 53 updates it with the
 %% values in the request.
 %%
@@ -224,20 +224,20 @@ associate_v_p_c_with_hosted_zone(Client, HostedZoneId, Input0, Options) ->
 %%
 %% Don't refer to the syntax in the "Parameter Syntax" section, which
 %% includes all of the elements for every kind of resource record set that
-%% you can create, delete, or update by using `ChangeResourceRecordSets`.
+%% you can create, delete, or update by using `ChangeResourceRecordSets'.
 %%
 %% Change Propagation to Route 53 DNS Servers
 %%
-%% When you submit a `ChangeResourceRecordSets` request, Route 53 propagates
+%% When you submit a `ChangeResourceRecordSets' request, Route 53 propagates
 %% your changes to all of the Route 53 authoritative DNS servers. While your
-%% changes are propagating, `GetChange` returns a status of `PENDING`. When
-%% propagation is complete, `GetChange` returns a status of `INSYNC`. Changes
+%% changes are propagating, `GetChange' returns a status of `PENDING'. When
+%% propagation is complete, `GetChange' returns a status of `INSYNC'. Changes
 %% generally propagate to all Route 53 name servers within 60 seconds. For
 %% more information, see GetChange.
 %%
 %% Limits on ChangeResourceRecordSets Requests
 %%
-%% For information about the limits on a `ChangeResourceRecordSets` request,
+%% For information about the limits on a `ChangeResourceRecordSets' request,
 %% see Limits in the Amazon Route 53 Developer Guide.
 change_resource_record_sets(Client, HostedZoneId, Input) ->
     change_resource_record_sets(Client, HostedZoneId, Input, []).
@@ -301,7 +301,7 @@ change_tags_for_resource(Client, ResourceId, ResourceType, Input0, Options) ->
 %% </li> <li> You can create a CloudWatch metric, associate an alarm with the
 %% metric, and then create a health check that is based on the state of the
 %% alarm. For example, you might create a CloudWatch metric that checks the
-%% status of the Amazon EC2 `StatusCheckFailed` metric, add an alarm to the
+%% status of the Amazon EC2 `StatusCheckFailed' metric, add an alarm to the
 %% metric, and then create a health check that is based on the state of the
 %% alarm. For information about creating CloudWatch metrics and alarms by
 %% using the CloudWatch console, see the Amazon CloudWatch User Guide.
@@ -366,7 +366,7 @@ create_health_check(Client, Input0, Options) ->
 %%
 %% If you want to use the same name servers for multiple public hosted zones,
 %% you can optionally associate a reusable delegation set with the hosted
-%% zone. See the `DelegationSetId` element.
+%% zone. See the `DelegationSetId' element.
 %%
 %% </li> <li> If your domain is registered with a registrar other than Route
 %% 53, you must update the name servers with your registrar to make Route 53
@@ -374,11 +374,11 @@ create_health_check(Client, Input0, Options) ->
 %% Service for an Existing Domain to Amazon Route 53 in the Amazon Route 53
 %% Developer Guide.
 %%
-%% </li> </ul> When you submit a `CreateHostedZone` request, the initial
-%% status of the hosted zone is `PENDING`. For public hosted zones, this
+%% </li> </ul> When you submit a `CreateHostedZone' request, the initial
+%% status of the hosted zone is `PENDING'. For public hosted zones, this
 %% means that the NS and SOA records are not yet available on all Route 53
 %% DNS servers. When the NS and SOA records are available, the status of the
-%% zone changes to `INSYNC`.
+%% zone changes to `INSYNC'.
 create_hosted_zone(Client, Input) ->
     create_hosted_zone(Client, Input, []).
 create_hosted_zone(Client, Input0, Options) ->
@@ -424,7 +424,7 @@ create_hosted_zone(Client, Input0, Options) ->
 %%
 %% </li> <li> DNS record type, such as A or AAAA
 %%
-%% </li> <li> DNS response code, such as `NoError` or `ServFail`
+%% </li> <li> DNS response code, such as `NoError' or `ServFail'
 %%
 %% </li> </ul> <dl> <dt>Log Group and Resource Policy</dt> <dd> Before you
 %% create a query logging configuration, perform the following operations.
@@ -444,7 +444,7 @@ create_hosted_zone(Client, Input0, Options) ->
 %% </li> <li> When you create log groups for query logging, we recommend that
 %% you use a consistent prefix, for example:
 %%
-%% `/aws/route53/hosted zone name `
+%% `/aws/route53/hosted zone name '
 %%
 %% In the next step, you'll create a resource policy, which controls access
 %% to one or more log groups and the associated AWS resources, such as Route
@@ -455,13 +455,13 @@ create_hosted_zone(Client, Input0, Options) ->
 %%
 %% </li> </ul> </li> <li> Create a CloudWatch Logs resource policy, and give
 %% it the permissions that Route 53 needs to create log streams and to send
-%% query logs to log streams. For the value of `Resource`, specify the ARN
+%% query logs to log streams. For the value of `Resource', specify the ARN
 %% for the log group that you created in the previous step. To use the same
 %% resource policy for all the CloudWatch Logs log groups that you created
-%% for query logging configurations, replace the hosted zone name with `*`,
+%% for query logging configurations, replace the hosted zone name with `*',
 %% for example:
 %%
-%% `arn:aws:logs:us-east-1:123412341234:log-group:/aws/route53/*`
+%% `arn:aws:logs:us-east-1:123412341234:log-group:/aws/route53/*'
 %%
 %% You can't use the CloudWatch console to create or edit a resource policy.
 %% You must use the CloudWatch API, one of the AWS SDKs, or the AWS CLI.
@@ -479,7 +479,7 @@ create_hosted_zone(Client, Input0, Options) ->
 %%
 %% </li> </ul> The name of each log stream is in the following format:
 %%
-%% ` hosted zone ID/edge location code `
+%% ` hosted zone ID/edge location code '
 %%
 %% The edge location code is a three-letter code and an arbitrarily assigned
 %% number, for example, DFW3. The three-letter code typically corresponds
@@ -549,7 +549,7 @@ create_query_logging_config(Client, Input0, Options) ->
 %%
 %% You can also create a reusable delegation set that uses the four name
 %% servers that are associated with an existing hosted zone. Specify the
-%% hosted zone ID in the `CreateReusableDelegationSet` request.
+%% hosted zone ID in the `CreateReusableDelegationSet' request.
 %%
 %% You can't associate a reusable delegation set with a private hosted zone.
 %%
@@ -662,11 +662,11 @@ create_traffic_policy(Client, Input0, Options) ->
 %% @doc Creates resource record sets in a specified hosted zone based on the
 %% settings in a specified traffic policy version.
 %%
-%% In addition, `CreateTrafficPolicyInstance` associates the resource record
+%% In addition, `CreateTrafficPolicyInstance' associates the resource record
 %% sets with a specified domain name (such as example.com) or subdomain name
 %% (such as www.example.com). Amazon Route 53 responds to DNS queries for the
 %% domain or subdomain name by using the resource record sets that
-%% `CreateTrafficPolicyInstance` created.
+%% `CreateTrafficPolicyInstance' created.
 create_traffic_policy_instance(Client, Input) ->
     create_traffic_policy_instance(Client, Input, []).
 create_traffic_policy_instance(Client, Input0, Options) ->
@@ -740,13 +740,13 @@ create_traffic_policy_version(Client, Id, Input0, Options) ->
     end.
 
 %% @doc Authorizes the AWS account that created a specified VPC to submit an
-%% `AssociateVPCWithHostedZone` request to associate the VPC with a specified
+%% `AssociateVPCWithHostedZone' request to associate the VPC with a specified
 %% hosted zone that was created by a different account.
 %%
-%% To submit a `CreateVPCAssociationAuthorization` request, you must use the
+%% To submit a `CreateVPCAssociationAuthorization' request, you must use the
 %% account that created the hosted zone. After you authorize the association,
 %% use the account that created the VPC to submit an
-%% `AssociateVPCWithHostedZone` request.
+%% `AssociateVPCWithHostedZone' request.
 %%
 %% If you want to associate multiple VPCs that you created by using one
 %% account with a hosted zone that you created by using a different account,
@@ -778,7 +778,7 @@ create_v_p_c_association_authorization(Client, HostedZoneId, Input0, Options) ->
 %%
 %% If you're using AWS Cloud Map and you configured Cloud Map to create a
 %% Route 53 health check when you register an instance, you can't use the
-%% Route 53 `DeleteHealthCheck` command to delete the health check. The
+%% Route 53 `DeleteHealthCheck' command to delete the health check. The
 %% health check is deleted automatically when you deregister the instance;
 %% there can be a delay of several hours before the health check is deleted
 %% from Route 53.
@@ -833,15 +833,15 @@ delete_health_check(Client, HealthCheckId, Input0, Options) ->
 %% resource record sets, you must delete them before you can delete the
 %% hosted zone. If you try to delete a hosted zone that contains other
 %% resource record sets, the request fails, and Route 53 returns a
-%% `HostedZoneNotEmpty` error. For information about deleting records from
+%% `HostedZoneNotEmpty' error. For information about deleting records from
 %% your hosted zone, see ChangeResourceRecordSets.
 %%
 %% To verify that the hosted zone has been deleted, do one of the following:
 %%
-%% <ul> <li> Use the `GetHostedZone` action to request information about the
+%% <ul> <li> Use the `GetHostedZone' action to request information about the
 %% hosted zone.
 %%
-%% </li> <li> Use the `ListHostedZones` action to get a list of the hosted
+%% </li> <li> Use the `ListHostedZones' action to get a list of the hosted
 %% zones associated with the current AWS account.
 %%
 %% </li> </ul>
@@ -956,19 +956,19 @@ delete_traffic_policy_instance(Client, Id, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes authorization to submit an `AssociateVPCWithHostedZone`
+%% @doc Removes authorization to submit an `AssociateVPCWithHostedZone'
 %% request to associate a specified VPC with a hosted zone that was created
 %% by a different account.
 %%
 %% You must use the account that created the hosted zone to submit a
-%% `DeleteVPCAssociationAuthorization` request.
+%% `DeleteVPCAssociationAuthorization' request.
 %%
 %% Sending this request only prevents the AWS account that created the VPC
 %% from associating the VPC with the Amazon Route 53 hosted zone in the
 %% future. If the VPC is already associated with the hosted zone,
-%% `DeleteVPCAssociationAuthorization` won't disassociate the VPC from the
+%% `DeleteVPCAssociationAuthorization' won't disassociate the VPC from the
 %% hosted zone. If you want to delete an existing association, use
-%% `DisassociateVPCFromHostedZone`.
+%% `DisassociateVPCFromHostedZone'.
 delete_v_p_c_association_authorization(Client, HostedZoneId, Input) ->
     delete_v_p_c_association_authorization(Client, HostedZoneId, Input, []).
 delete_v_p_c_association_authorization(Client, HostedZoneId, Input0, Options) ->
@@ -995,7 +995,7 @@ delete_v_p_c_association_authorization(Client, HostedZoneId, Input0, Options) ->
 %% </li> <li> You can't convert a private hosted zone into a public hosted
 %% zone.
 %%
-%% </li> <li> You can submit a `DisassociateVPCFromHostedZone` request using
+%% </li> <li> You can submit a `DisassociateVPCFromHostedZone' request using
 %% either the account that created the hosted zone or the account that
 %% created the Amazon VPC.
 %%
@@ -1006,9 +1006,9 @@ delete_v_p_c_association_authorization(Client, HostedZoneId, Input0, Options) ->
 %% zone only if the service created the hosted zone using your account.
 %%
 %% When you run DisassociateVPCFromHostedZone, if the hosted zone has a value
-%% for `OwningAccount`, you can use `DisassociateVPCFromHostedZone`. If the
-%% hosted zone has a value for `OwningService`, you can't use
-%% `DisassociateVPCFromHostedZone`.
+%% for `OwningAccount', you can use `DisassociateVPCFromHostedZone'. If the
+%% hosted zone has a value for `OwningService', you can't use
+%% `DisassociateVPCFromHostedZone'.
 %%
 %% </li> </ul>
 disassociate_v_p_c_from_hosted_zone(Client, HostedZoneId, Input) ->
@@ -1054,11 +1054,11 @@ get_account_limit(Client, Type, Options)
 %%
 %% The status is one of the following values:
 %%
-%% <ul> <li> `PENDING` indicates that the changes in this request have not
+%% <ul> <li> `PENDING' indicates that the changes in this request have not
 %% propagated to all Amazon Route 53 DNS servers. This is the initial status
 %% of all change batch requests.
 %%
-%% </li> <li> `INSYNC` indicates that the changes have propagated to all
+%% </li> <li> `INSYNC' indicates that the changes have propagated to all
 %% Route 53 DNS servers.
 %%
 %% </li> </ul>
@@ -1076,7 +1076,7 @@ get_change(Client, Id, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc `GetCheckerIpRanges` still works, but we recommend that you download
+%% @doc `GetCheckerIpRanges' still works, but we recommend that you download
 %% ip-ranges.json, which includes IP address ranges for all AWS services.
 %%
 %% For more information, see IP Address Ranges of Amazon Route 53 Servers in
@@ -1102,18 +1102,18 @@ get_checker_ip_ranges(Client, Options)
 %% geolocation:
 %%
 %% `GET /2013-04-01/geolocation?continentcode=two-letter abbreviation for a
-%% continent `
+%% continent '
 %%
 %% Use the following syntax to determine whether a country is supported for
 %% geolocation:
 %%
-%% `GET /2013-04-01/geolocation?countrycode=two-character country code `
+%% `GET /2013-04-01/geolocation?countrycode=two-character country code '
 %%
 %% Use the following syntax to determine whether a subdivision of a country
 %% is supported for geolocation:
 %%
 %% `GET /2013-04-01/geolocation?countrycode=two-character country
-%% code&subdivisioncode=subdivision code `
+%% code&subdivisioncode=subdivision code '
 get_geo_location(Client, ContinentCode, CountryCode, SubdivisionCode)
   when is_map(Client) ->
     get_geo_location(Client, ContinentCode, CountryCode, SubdivisionCode, []).
@@ -1303,7 +1303,7 @@ get_reusable_delegation_set_limit(Client, DelegationSetId, Type, Options)
 %% @doc Gets information about a specific traffic policy version.
 %%
 %% For information about how of deleting a traffic policy affects the
-%% response from `GetTrafficPolicy`, see DeleteTrafficPolicy.
+%% response from `GetTrafficPolicy', see DeleteTrafficPolicy.
 get_traffic_policy(Client, Id, Version)
   when is_map(Client) ->
     get_traffic_policy(Client, Id, Version, []).
@@ -1320,10 +1320,10 @@ get_traffic_policy(Client, Id, Version, Options)
 
 %% @doc Gets information about a specified traffic policy instance.
 %%
-%% After you submit a `CreateTrafficPolicyInstance` or an
-%% `UpdateTrafficPolicyInstance` request, there's a brief delay while Amazon
+%% After you submit a `CreateTrafficPolicyInstance' or an
+%% `UpdateTrafficPolicyInstance' request, there's a brief delay while Amazon
 %% Route 53 creates the resource record sets that are specified in the
-%% traffic policy definition. For more information, see the `State` response
+%% traffic policy definition. For more information, see the `State' response
 %% element.
 %%
 %% In the Route 53 console, traffic policy instances are known as policy
@@ -1411,10 +1411,10 @@ list_health_checks(Client, Marker, MaxItems, Options)
 %% @doc Retrieves a list of the public and private hosted zones that are
 %% associated with the current AWS account.
 %%
-%% The response includes a `HostedZones` child element for each hosted zone.
+%% The response includes a `HostedZones' child element for each hosted zone.
 %%
 %% Amazon Route 53 returns a maximum of 100 items in each response. If you
-%% have a lot of hosted zones, you can use the `maxitems` parameter to list
+%% have a lot of hosted zones, you can use the `maxitems' parameter to list
 %% them in groups of up to 100.
 list_hosted_zones(Client, DelegationSetId, Marker, MaxItems)
   when is_map(Client) ->
@@ -1438,25 +1438,25 @@ list_hosted_zones(Client, DelegationSetId, Marker, MaxItems, Options)
 
 %% @doc Retrieves a list of your hosted zones in lexicographic order.
 %%
-%% The response includes a `HostedZones` child element for each hosted zone
+%% The response includes a `HostedZones' child element for each hosted zone
 %% created by the current AWS account.
 %%
-%% `ListHostedZonesByName` sorts hosted zones by name with the labels
+%% `ListHostedZonesByName' sorts hosted zones by name with the labels
 %% reversed. For example:
 %%
-%% `com.example.www.`
+%% `com.example.www.'
 %%
 %% Note the trailing dot, which can change the sort order in some
 %% circumstances.
 %%
 %% If the domain name includes escape characters or Punycode,
-%% `ListHostedZonesByName` alphabetizes the domain name using the escaped or
+%% `ListHostedZonesByName' alphabetizes the domain name using the escaped or
 %% Punycoded value, which is the format that Amazon Route 53 saves in its
 %% database. For example, to create a hosted zone for exämple.com, you
-%% specify ex\344mple.com for the domain name. `ListHostedZonesByName`
+%% specify ex\344mple.com for the domain name. `ListHostedZonesByName'
 %% alphabetizes it as:
 %%
-%% `com.ex\344mple.`
+%% `com.ex\344mple.'
 %%
 %% The labels are reversed and alphabetized using the escaped value. For more
 %% information about valid domain name formats, including internationalized
@@ -1464,31 +1464,31 @@ list_hosted_zones(Client, DelegationSetId, Marker, MaxItems, Options)
 %% Guide.
 %%
 %% Route 53 returns up to 100 items in each response. If you have a lot of
-%% hosted zones, use the `MaxItems` parameter to list them in groups of up to
+%% hosted zones, use the `MaxItems' parameter to list them in groups of up to
 %% 100. The response includes values that help navigate from one group of
-%% `MaxItems` hosted zones to the next:
+%% `MaxItems' hosted zones to the next:
 %%
-%% <ul> <li> The `DNSName` and `HostedZoneId` elements in the response
-%% contain the values, if any, specified for the `dnsname` and `hostedzoneid`
+%% <ul> <li> The `DNSName' and `HostedZoneId' elements in the response
+%% contain the values, if any, specified for the `dnsname' and `hostedzoneid'
 %% parameters in the request that produced the current response.
 %%
-%% </li> <li> The `MaxItems` element in the response contains the value, if
-%% any, that you specified for the `maxitems` parameter in the request that
+%% </li> <li> The `MaxItems' element in the response contains the value, if
+%% any, that you specified for the `maxitems' parameter in the request that
 %% produced the current response.
 %%
-%% </li> <li> If the value of `IsTruncated` in the response is true, there
+%% </li> <li> If the value of `IsTruncated' in the response is true, there
 %% are more hosted zones associated with the current AWS account.
 %%
-%% If `IsTruncated` is false, this response includes the last hosted zone
-%% that is associated with the current account. The `NextDNSName` element and
-%% `NextHostedZoneId` elements are omitted from the response.
+%% If `IsTruncated' is false, this response includes the last hosted zone
+%% that is associated with the current account. The `NextDNSName' element and
+%% `NextHostedZoneId' elements are omitted from the response.
 %%
-%% </li> <li> The `NextDNSName` and `NextHostedZoneId` elements in the
+%% </li> <li> The `NextDNSName' and `NextHostedZoneId' elements in the
 %% response contain the domain name and the hosted zone ID of the next hosted
 %% zone that is associated with the current AWS account. If you want to list
-%% more hosted zones, make another call to `ListHostedZonesByName`, and
-%% specify the value of `NextDNSName` and `NextHostedZoneId` in the `dnsname`
-%% and `hostedzoneid` parameters, respectively.
+%% more hosted zones, make another call to `ListHostedZonesByName', and
+%% specify the value of `NextDNSName' and `NextHostedZoneId' in the `dnsname'
+%% and `hostedzoneid' parameters, respectively.
 %%
 %% </li> </ul>
 list_hosted_zones_by_name(Client, DNSName, HostedZoneId, MaxItems)
@@ -1515,17 +1515,17 @@ list_hosted_zones_by_name(Client, DNSName, HostedZoneId, MaxItems, Options)
 %% with, regardless of which AWS account or AWS service owns the hosted
 %% zones.
 %%
-%% The `HostedZoneOwner` structure in the response contains one of the
+%% The `HostedZoneOwner' structure in the response contains one of the
 %% following values:
 %%
-%% <ul> <li> An `OwningAccount` element, which contains the account number of
+%% <ul> <li> An `OwningAccount' element, which contains the account number of
 %% either the current AWS account or another AWS account. Some services, such
 %% as AWS Cloud Map, create hosted zones using the current account.
 %%
-%% </li> <li> An `OwningService` element, which identifies the AWS service
+%% </li> <li> An `OwningService' element, which identifies the AWS service
 %% that created and owns the hosted zone. For example, if a hosted zone was
-%% created by Amazon Elastic File System (Amazon EFS), the value of `Owner`
-%% is `efs.amazonaws.com`.
+%% created by Amazon Elastic File System (Amazon EFS), the value of `Owner'
+%% is `efs.amazonaws.com'.
 %%
 %% </li> </ul>
 list_hosted_zones_by_v_p_c(Client, MaxItems, NextToken, VPCId, VPCRegion)
@@ -1578,22 +1578,22 @@ list_query_logging_configs(Client, HostedZoneId, MaxResults, NextToken, Options)
 
 %% @doc Lists the resource record sets in a specified hosted zone.
 %%
-%% `ListResourceRecordSets` returns up to 100 resource record sets at a time
-%% in ASCII order, beginning at a position specified by the `name` and `type`
+%% `ListResourceRecordSets' returns up to 100 resource record sets at a time
+%% in ASCII order, beginning at a position specified by the `name' and `type'
 %% elements.
 %%
 %% Sort order
 %%
-%% `ListResourceRecordSets` sorts results first by DNS name with the labels
+%% `ListResourceRecordSets' sorts results first by DNS name with the labels
 %% reversed, for example:
 %%
-%% `com.example.www.`
+%% `com.example.www.'
 %%
 %% Note the trailing dot, which can change the sort order when the record
-%% name contains characters that appear before `.` (decimal 46) in the ASCII
-%% table. These characters include the following: `! " # $ % & ' ( ) * + , -`
+%% name contains characters that appear before `.' (decimal 46) in the ASCII
+%% table. These characters include the following: `! " # $ % & ' ( ) * + , -'
 %%
-%% When multiple records have the same DNS name, `ListResourceRecordSets`
+%% When multiple records have the same DNS name, `ListResourceRecordSets'
 %% sorts results by the record type.
 %%
 %% Specifying where to start listing records
@@ -1606,38 +1606,38 @@ list_query_logging_configs(Client, HostedZoneId, MaxResults, NextToken, Options)
 %%
 %% </dd> <dt>If you specify Name but not Type</dt> <dd> The results begin
 %% with the first resource record set in the list whose name is greater than
-%% or equal to `Name`.
+%% or equal to `Name'.
 %%
 %% </dd> <dt>If you specify Type but not Name</dt> <dd> Amazon Route 53
-%% returns the `InvalidInput` error.
+%% returns the `InvalidInput' error.
 %%
 %% </dd> <dt>If you specify both Name and Type</dt> <dd> The results begin
 %% with the first resource record set in the list whose name is greater than
-%% or equal to `Name`, and whose type is greater than or equal to `Type`.
+%% or equal to `Name', and whose type is greater than or equal to `Type'.
 %%
 %% </dd> </dl> Resource record sets that are PENDING
 %%
 %% This action returns the most current version of the records. This includes
-%% records that are `PENDING`, and that are not yet available on all Route 53
+%% records that are `PENDING', and that are not yet available on all Route 53
 %% DNS servers.
 %%
 %% Changing resource record sets
 %%
 %% To ensure that you get an accurate listing of the resource record sets for
 %% a hosted zone at a point in time, do not submit a
-%% `ChangeResourceRecordSets` request while you're paging through the results
-%% of a `ListResourceRecordSets` request. If you do, some pages may display
+%% `ChangeResourceRecordSets' request while you're paging through the results
+%% of a `ListResourceRecordSets' request. If you do, some pages may display
 %% results without the latest changes while other pages display results with
 %% the latest changes.
 %%
 %% Displaying the next page of results
 %%
-%% If a `ListResourceRecordSets` command returns more than one page of
-%% results, the value of `IsTruncated` is `true`. To display the next page of
-%% results, get the values of `NextRecordName`, `NextRecordType`, and
-%% `NextRecordIdentifier` (if any) from the response. Then submit another
-%% `ListResourceRecordSets` request, and specify those values for
-%% `StartRecordName`, `StartRecordType`, and `StartRecordIdentifier`.
+%% If a `ListResourceRecordSets' command returns more than one page of
+%% results, the value of `IsTruncated' is `true'. To display the next page of
+%% results, get the values of `NextRecordName', `NextRecordType', and
+%% `NextRecordIdentifier' (if any) from the response. Then submit another
+%% `ListResourceRecordSets' request, and specify those values for
+%% `StartRecordName', `StartRecordType', and `StartRecordIdentifier'.
 list_resource_record_sets(Client, HostedZoneId, MaxItems, StartRecordIdentifier, StartRecordName, StartRecordType)
   when is_map(Client) ->
     list_resource_record_sets(Client, HostedZoneId, MaxItems, StartRecordIdentifier, StartRecordName, StartRecordType, []).
@@ -1723,7 +1723,7 @@ list_tags_for_resources(Client, ResourceType, Input0, Options) ->
 %% Policies are listed in the order that they were created in.
 %%
 %% For information about how of deleting a traffic policy affects the
-%% response from `ListTrafficPolicies`, see DeleteTrafficPolicy.
+%% response from `ListTrafficPolicies', see DeleteTrafficPolicy.
 list_traffic_policies(Client, MaxItems, TrafficPolicyIdMarker)
   when is_map(Client) ->
     list_traffic_policies(Client, MaxItems, TrafficPolicyIdMarker, []).
@@ -1746,13 +1746,13 @@ list_traffic_policies(Client, MaxItems, TrafficPolicyIdMarker, Options)
 %% @doc Gets information about the traffic policy instances that you created
 %% by using the current AWS account.
 %%
-%% After you submit an `UpdateTrafficPolicyInstance` request, there's a brief
+%% After you submit an `UpdateTrafficPolicyInstance' request, there's a brief
 %% delay while Amazon Route 53 creates the resource record sets that are
 %% specified in the traffic policy definition. For more information, see the
-%% `State` response element.
+%% `State' response element.
 %%
 %% Route 53 returns a maximum of 100 items in each response. If you have a
-%% lot of traffic policy instances, you can use the `MaxItems` parameter to
+%% lot of traffic policy instances, you can use the `MaxItems' parameter to
 %% list them in groups of up to 100.
 list_traffic_policy_instances(Client, HostedZoneIdMarker, MaxItems, TrafficPolicyInstanceNameMarker, TrafficPolicyInstanceTypeMarker)
   when is_map(Client) ->
@@ -1778,14 +1778,14 @@ list_traffic_policy_instances(Client, HostedZoneIdMarker, MaxItems, TrafficPolic
 %% @doc Gets information about the traffic policy instances that you created
 %% in a specified hosted zone.
 %%
-%% After you submit a `CreateTrafficPolicyInstance` or an
-%% `UpdateTrafficPolicyInstance` request, there's a brief delay while Amazon
+%% After you submit a `CreateTrafficPolicyInstance' or an
+%% `UpdateTrafficPolicyInstance' request, there's a brief delay while Amazon
 %% Route 53 creates the resource record sets that are specified in the
-%% traffic policy definition. For more information, see the `State` response
+%% traffic policy definition. For more information, see the `State' response
 %% element.
 %%
 %% Route 53 returns a maximum of 100 items in each response. If you have a
-%% lot of traffic policy instances, you can use the `MaxItems` parameter to
+%% lot of traffic policy instances, you can use the `MaxItems' parameter to
 %% list them in groups of up to 100.
 list_traffic_policy_instances_by_hosted_zone(Client, HostedZoneId, MaxItems, TrafficPolicyInstanceNameMarker, TrafficPolicyInstanceTypeMarker)
   when is_map(Client) ->
@@ -1811,14 +1811,14 @@ list_traffic_policy_instances_by_hosted_zone(Client, HostedZoneId, MaxItems, Tra
 %% @doc Gets information about the traffic policy instances that you created
 %% by using a specify traffic policy version.
 %%
-%% After you submit a `CreateTrafficPolicyInstance` or an
-%% `UpdateTrafficPolicyInstance` request, there's a brief delay while Amazon
+%% After you submit a `CreateTrafficPolicyInstance' or an
+%% `UpdateTrafficPolicyInstance' request, there's a brief delay while Amazon
 %% Route 53 creates the resource record sets that are specified in the
-%% traffic policy definition. For more information, see the `State` response
+%% traffic policy definition. For more information, see the `State' response
 %% element.
 %%
 %% Route 53 returns a maximum of 100 items in each response. If you have a
-%% lot of traffic policy instances, you can use the `MaxItems` parameter to
+%% lot of traffic policy instances, you can use the `MaxItems' parameter to
 %% list them in groups of up to 100.
 list_traffic_policy_instances_by_policy(Client, HostedZoneIdMarker, MaxItems, TrafficPolicyId, TrafficPolicyInstanceNameMarker, TrafficPolicyInstanceTypeMarker, TrafficPolicyVersion)
   when is_map(Client) ->
@@ -1846,7 +1846,7 @@ list_traffic_policy_instances_by_policy(Client, HostedZoneIdMarker, MaxItems, Tr
 %% @doc Gets information about all of the versions for a specified traffic
 %% policy.
 %%
-%% Traffic policy versions are listed in numerical order by `VersionNumber`.
+%% Traffic policy versions are listed in numerical order by `VersionNumber'.
 list_traffic_policy_versions(Client, Id, MaxItems, TrafficPolicyVersionMarker)
   when is_map(Client) ->
     list_traffic_policy_versions(Client, Id, MaxItems, TrafficPolicyVersionMarker, []).
@@ -1868,9 +1868,9 @@ list_traffic_policy_versions(Client, Id, MaxItems, TrafficPolicyVersionMarker, O
 
 %% @doc Gets a list of the VPCs that were created by other accounts and that
 %% can be associated with a specified hosted zone because you've submitted
-%% one or more `CreateVPCAssociationAuthorization` requests.
+%% one or more `CreateVPCAssociationAuthorization' requests.
 %%
-%% The response includes a `VPCs` element with a `VPC` child element for each
+%% The response includes a `VPCs' element with a `VPC' child element for each
 %% VPC that can be associated with the hosted zone.
 list_v_p_c_association_authorizations(Client, HostedZoneId, MaxResults, NextToken)
   when is_map(Client) ->

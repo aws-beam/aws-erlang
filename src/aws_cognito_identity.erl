@@ -75,18 +75,18 @@
 %% @doc Creates a new identity pool.
 %%
 %% The identity pool is a store of user identity information that is specific
-%% to your AWS account. The keys for `SupportedLoginProviders` are as
+%% to your AWS account. The keys for `SupportedLoginProviders' are as
 %% follows:
 %%
-%% <ul> <li> Facebook: `graph.facebook.com`
+%% <ul> <li> Facebook: `graph.facebook.com'
 %%
-%% </li> <li> Google: `accounts.google.com`
+%% </li> <li> Google: `accounts.google.com'
 %%
-%% </li> <li> Amazon: `www.amazon.com`
+%% </li> <li> Amazon: `www.amazon.com'
 %%
-%% </li> <li> Twitter: `api.twitter.com`
+%% </li> <li> Twitter: `api.twitter.com'
 %%
-%% </li> <li> Digits: `www.digits.com`
+%% </li> <li> Digits: `www.digits.com'
 %%
 %% </li> </ul> You must use AWS Developer credentials to call this API.
 create_identity_pool(Client, Input)
@@ -182,7 +182,7 @@ get_identity_pool_roles(Client, Input, Options)
 
 %% @doc Gets an OpenID token, using a known Cognito ID.
 %%
-%% This known Cognito ID is returned by `GetId`. You can optionally add
+%% This known Cognito ID is returned by `GetId'. You can optionally add
 %% additional logins for the identity. Supplying multiple logins creates an
 %% implicit link.
 %%
@@ -196,21 +196,21 @@ get_open_id_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOpenIdToken">>, Input, Options).
 
-%% @doc Registers (or retrieves) a Cognito `IdentityId` and an OpenID Connect
+%% @doc Registers (or retrieves) a Cognito `IdentityId' and an OpenID Connect
 %% token for a user authenticated by your backend authentication process.
 %%
 %% Supplying multiple logins will create an implicit linked account. You can
-%% only specify one developer provider as part of the `Logins` map, which is
+%% only specify one developer provider as part of the `Logins' map, which is
 %% linked to the identity pool. The developer provider is the "domain" by
 %% which Cognito will refer to your users.
 %%
-%% You can use `GetOpenIdTokenForDeveloperIdentity` to create a new identity
+%% You can use `GetOpenIdTokenForDeveloperIdentity' to create a new identity
 %% and to link new logins (that is, user credentials issued by a public
 %% provider or developer provider) to an existing identity. When you want to
-%% create a new identity, the `IdentityId` should be null. When you want to
+%% create a new identity, the `IdentityId' should be null. When you want to
 %% associate a new login with an existing authenticated/unauthenticated
-%% identity, you can do so by providing the existing `IdentityId`. This API
-%% will create the identity in the specified `IdentityPoolId`.
+%% identity, you can do so by providing the existing `IdentityId'. This API
+%% will create the identity in the specified `IdentityPoolId'.
 %%
 %% You must use AWS Developer credentials to call this API.
 get_open_id_token_for_developer_identity(Client, Input)
@@ -254,23 +254,23 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
-%% @doc Retrieves the `IdentityID` associated with a
-%% `DeveloperUserIdentifier` or the list of `DeveloperUserIdentifier` values
-%% associated with an `IdentityId` for an existing identity.
+%% @doc Retrieves the `IdentityID' associated with a
+%% `DeveloperUserIdentifier' or the list of `DeveloperUserIdentifier' values
+%% associated with an `IdentityId' for an existing identity.
 %%
-%% Either `IdentityID` or `DeveloperUserIdentifier` must not be null. If you
+%% Either `IdentityID' or `DeveloperUserIdentifier' must not be null. If you
 %% supply only one of these values, the other value will be searched in the
 %% database and returned as a part of the response. If you supply both,
-%% `DeveloperUserIdentifier` will be matched against `IdentityID`. If the
+%% `DeveloperUserIdentifier' will be matched against `IdentityID'. If the
 %% values are verified against the database, the response returns both values
-%% and is the same as the request. Otherwise a `ResourceConflictException` is
+%% and is the same as the request. Otherwise a `ResourceConflictException' is
 %% thrown.
 %%
-%% `LookupDeveloperIdentity` is intended for low-throughput control plane
+%% `LookupDeveloperIdentity' is intended for low-throughput control plane
 %% operations: for example, to enable customer service to locate an identity
 %% ID by username. If you are using it for higher-volume operations such as
 %% user authentication, your requests are likely to be throttled.
-%% `GetOpenIdTokenForDeveloperIdentity` is a better option for higher-volume
+%% `GetOpenIdTokenForDeveloperIdentity' is a better option for higher-volume
 %% operations for user authentication.
 %%
 %% You must use AWS Developer credentials to call this API.
@@ -281,19 +281,19 @@ lookup_developer_identity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"LookupDeveloperIdentity">>, Input, Options).
 
-%% @doc Merges two users having different `IdentityId`s, existing in the same
+%% @doc Merges two users having different `IdentityId's, existing in the same
 %% identity pool, and identified by the same developer provider.
 %%
 %% You can use this action to request that discrete users be merged and
 %% identified as a single user in the Cognito environment. Cognito associates
-%% the given source user (`SourceUserIdentifier`) with the `IdentityId` of
-%% the `DestinationUserIdentifier`. Only developer-authenticated users can be
+%% the given source user (`SourceUserIdentifier') with the `IdentityId' of
+%% the `DestinationUserIdentifier'. Only developer-authenticated users can be
 %% merged. If the users to be merged are associated with the same public
 %% provider, but as two different users, an exception will be thrown.
 %%
 %% The number of linked logins is limited to 20. So, the number of linked
-%% logins for the source user, `SourceUserIdentifier`, and the destination
-%% user, `DestinationUserIdentifier`, together should not be larger than 20.
+%% logins for the source user, `SourceUserIdentifier', and the destination
+%% user, `DestinationUserIdentifier', together should not be larger than 20.
 %% Otherwise, an exception will be thrown.
 %%
 %% You must use AWS Developer credentials to call this API.
@@ -306,7 +306,7 @@ merge_developer_identities(Client, Input, Options)
 
 %% @doc Sets the roles for an identity pool.
 %%
-%% These roles are used when making calls to `GetCredentialsForIdentity`
+%% These roles are used when making calls to `GetCredentialsForIdentity'
 %% action.
 %%
 %% You must use AWS Developer credentials to call this API.
@@ -326,8 +326,8 @@ set_identity_pool_roles(Client, Input, Options)
 %% Each tag consists of a key and value, both of which you define. A key is a
 %% general category for more specific values. For example, if you have two
 %% versions of an identity pool, one for testing and another for production,
-%% you might assign an `Environment` tag key to both identity pools. The
-%% value of this key might be `Test` for one identity pool and `Production`
+%% you might assign an `Environment' tag key to both identity pools. The
+%% value of this key might be `Test' for one identity pool and `Production'
 %% for the other.
 %%
 %% Tags are useful for cost tracking and access control. You can activate
@@ -345,7 +345,7 @@ tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
-%% @doc Unlinks a `DeveloperUserIdentifier` from an existing identity.
+%% @doc Unlinks a `DeveloperUserIdentifier' from an existing identity.
 %%
 %% Unlinked developer users will be considered new identities next time they
 %% are seen. If, for a given Cognito identity, you remove all federated

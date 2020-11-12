@@ -9,15 +9,15 @@
 %%
 %% <ul> <li> You must make API calls for write actions (create, notify,
 %% associate, disassociate, import, or put) while in your home region, or a
-%% `HomeRegionNotSetException` error is returned.
+%% `HomeRegionNotSetException' error is returned.
 %%
 %% </li> <li> API calls for read actions (list, describe, stop, and delete)
 %% are permitted outside of your home region.
 %%
 %% </li> <li> If you call a write API outside the home region, an
-%% `InvalidInputException` is returned.
+%% `InvalidInputException' is returned.
 %%
-%% </li> <li> You can call `GetHomeRegion` action to obtain the account's
+%% </li> <li> You can call `GetHomeRegion' action to obtain the account's
 %% Migration Hub home region.
 %%
 %% </li> </ul> For specific API usage, see the sections that follow in this
@@ -45,7 +45,7 @@ create_home_region_control(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHomeRegionControl">>, Input, Options).
 
-%% @doc This API permits filtering on the `ControlId` and `HomeRegion`
+%% @doc This API permits filtering on the `ControlId' and `HomeRegion'
 %% fields.
 describe_home_region_controls(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -58,7 +58,7 @@ describe_home_region_controls(Client, Input, Options)
 %%
 %% This API is used by other AWS services to determine the regional endpoint
 %% for calling AWS Application Discovery Service and Migration Hub. You must
-%% call `GetHomeRegion` at least once before you call any other AWS
+%% call `GetHomeRegion' at least once before you call any other AWS
 %% Application Discovery Service and AWS Migration Hub APIs, to obtain the
 %% account's Migration Hub home region.
 get_home_region(Client, Input)

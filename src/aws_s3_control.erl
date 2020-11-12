@@ -103,7 +103,7 @@
 %% Outposts endpoint hostname prefix and the outpost-id derived using the
 %% access point ARN, see the Example section below.
 %%
-%% The following actions are related to `CreateAccessPoint`:
+%% The following actions are related to `CreateAccessPoint':
 %%
 %% <ul> <li> GetAccessPoint
 %%
@@ -157,7 +157,7 @@ create_access_point(Client, Name, Input0, Options) ->
 %% that uses the S3 on Outposts endpoint hostname prefix and outpost-id in
 %% your API request, see the Example section below.
 %%
-%% The following actions are related to `CreateBucket` for Amazon S3 on
+%% The following actions are related to `CreateBucket' for Amazon S3 on
 %% Outposts:
 %%
 %% <ul> <li> PutObject
@@ -257,7 +257,7 @@ create_job(Client, Input0, Options) ->
 %% Outposts endpoint hostname prefix and the outpost-id derived using the
 %% access point ARN, see the ARN, see the Example section below.
 %%
-%% The following actions are related to `DeleteAccessPoint`:
+%% The following actions are related to `DeleteAccessPoint':
 %%
 %% <ul> <li> CreateAccessPoint
 %%
@@ -292,7 +292,7 @@ delete_access_point(Client, Name, Input0, Options) ->
 %% Outposts endpoint hostname prefix and the outpost-id derived using the
 %% access point ARN, see the Example section below.
 %%
-%% The following actions are related to `DeleteAccessPointPolicy`:
+%% The following actions are related to `DeleteAccessPointPolicy':
 %%
 %% <ul> <li> PutAccessPointPolicy
 %%
@@ -374,7 +374,7 @@ delete_bucket(Client, Bucket, Input0, Options) ->
 %% Amazon Simple Storage Service Developer Guide.
 %%
 %% To use this operation, you must have permission to perform the
-%% `s3outposts:DeleteLifecycleConfiguration` action. By default, the bucket
+%% `s3outposts:DeleteLifecycleConfiguration' action. By default, the bucket
 %% owner has this permission and the Outposts bucket owner can grant this
 %% permission to others.
 %%
@@ -421,15 +421,15 @@ delete_bucket_lifecycle_configuration(Client, Bucket, Input0, Options) ->
 %% delete the policy of a specified Amazon S3 on Outposts bucket. If you are
 %% using an identity other than the root user of the AWS account that owns
 %% the bucket, the calling identity must have the
-%% `s3outposts:DeleteBucketPolicy` permissions on the specified Outposts
+%% `s3outposts:DeleteBucketPolicy' permissions on the specified Outposts
 %% bucket and belong to the bucket owner's account to use this operation. For
 %% more information, see Using Amazon S3 on Outposts in Amazon Simple Storage
 %% Service Developer Guide.
 %%
-%% If you don't have `DeleteBucketPolicy` permissions, Amazon S3 returns a
-%% `403 Access Denied` error. If you have the correct permissions, but you're
+%% If you don't have `DeleteBucketPolicy' permissions, Amazon S3 returns a
+%% `403 Access Denied' error. If you have the correct permissions, but you're
 %% not using an identity that belongs to the bucket owner's account, Amazon
-%% S3 returns a `405 Method Not Allowed` error.
+%% S3 returns a `405 Method Not Allowed' error.
 %%
 %% As a security precaution, the root user of the AWS account that owns a
 %% bucket can always use this operation, even if the policy explicitly denies
@@ -445,7 +445,7 @@ delete_bucket_lifecycle_configuration(Client, Bucket, Input0, Options) ->
 %% Outposts endpoint hostname prefix and the outpost-id derived using the
 %% access point ARN, see the Example section below.
 %%
-%% The following actions are related to `DeleteBucketPolicy`:
+%% The following actions are related to `DeleteBucketPolicy':
 %%
 %% <ul> <li> GetBucketPolicy
 %%
@@ -478,7 +478,7 @@ delete_bucket_policy(Client, Bucket, Input0, Options) ->
 %% Amazon S3 on Outposts in Amazon Simple Storage Service Developer Guide.
 %%
 %% To use this operation, you must have permission to perform the
-%% `PutBucketTagging` action. By default, the bucket owner has this
+%% `PutBucketTagging' action. By default, the bucket owner has this
 %% permission and can grant this permission to others.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
@@ -488,7 +488,7 @@ delete_bucket_policy(Client, Bucket, Input0, Options) ->
 %% Outposts endpoint hostname prefix and the outpost-id derived using the
 %% access point ARN, see the Example section below.
 %%
-%% The following actions are related to `DeleteBucketTagging`:
+%% The following actions are related to `DeleteBucketTagging':
 %%
 %% <ul> <li> GetBucketTagging
 %%
@@ -516,7 +516,7 @@ delete_bucket_tagging(Client, Bucket, Input0, Options) ->
 %% job.
 %%
 %% To use this operation, you must have permission to perform the
-%% `s3:DeleteJobTagging` action. For more information, see Controlling access
+%% `s3:DeleteJobTagging' action. For more information, see Controlling access
 %% and labeling jobs using tags in the Amazon Simple Storage Service
 %% Developer Guide.
 %%
@@ -546,7 +546,7 @@ delete_job_tagging(Client, JobId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes the `PublicAccessBlock` configuration for an AWS account.
+%% @doc Removes the `PublicAccessBlock' configuration for an AWS account.
 %%
 %% For more information, see Using Amazon S3 block public access.
 %%
@@ -618,7 +618,7 @@ describe_job(Client, JobId, AccountId, Options)
 %% Outposts endpoint hostname prefix and the outpost-id derived using the
 %% access point ARN, see the Example section below.
 %%
-%% The following actions are related to `GetAccessPoint`:
+%% The following actions are related to `GetAccessPoint':
 %%
 %% <ul> <li> CreateAccessPoint
 %%
@@ -648,7 +648,7 @@ get_access_point(Client, Name, AccountId, Options)
 %% @doc Returns the access point policy associated with the specified access
 %% point.
 %%
-%% The following actions are related to `GetAccessPointPolicy`:
+%% The following actions are related to `GetAccessPointPolicy':
 %%
 %% <ul> <li> PutAccessPointPolicy
 %%
@@ -702,7 +702,7 @@ get_access_point_policy_status(Client, Name, AccountId, Options)
 %% For more information, see Using Amazon S3 on Outposts in the Amazon Simple
 %% Storage Service Developer Guide.
 %%
-%% The following actions are related to `GetBucket` for Amazon S3 on
+%% The following actions are related to `GetBucket' for Amazon S3 on
 %% Outposts:
 %%
 %% <ul> <li> PutObject
@@ -742,7 +742,7 @@ get_bucket(Client, Bucket, AccountId, Options)
 %% in Amazon Simple Storage Service Developer Guide.
 %%
 %% To use this operation, you must have permission to perform the
-%% `s3outposts:GetLifecycleConfiguration` action. The Outposts bucket owner
+%% `s3outposts:GetLifecycleConfiguration' action. The Outposts bucket owner
 %% has this permission, by default. The bucket owner can grant this
 %% permission to others. For more information about permissions, see
 %% Permissions Related to Bucket Subresource Operations and Managing Access
@@ -755,9 +755,9 @@ get_bucket(Client, Bucket, AccountId, Options)
 %% Outposts endpoint hostname prefix and the outpost-id derived using the
 %% access point ARN, see the Example section below.
 %%
-%% `GetBucketLifecycleConfiguration` has the following special error:
+%% `GetBucketLifecycleConfiguration' has the following special error:
 %%
-%% <ul> <li> Error code: `NoSuchLifecycleConfiguration`
+%% <ul> <li> Error code: `NoSuchLifecycleConfiguration'
 %%
 %% <ul> <li> Description: The lifecycle configuration does not exist.
 %%
@@ -766,7 +766,7 @@ get_bucket(Client, Bucket, AccountId, Options)
 %% </li> <li> SOAP Fault Code Prefix: Client
 %%
 %% </li> </ul> </li> </ul> The following actions are related to
-%% `GetBucketLifecycleConfiguration`:
+%% `GetBucketLifecycleConfiguration':
 %%
 %% <ul> <li> PutBucketLifecycleConfiguration
 %%
@@ -802,14 +802,14 @@ get_bucket_lifecycle_configuration(Client, Bucket, AccountId, Options)
 %% Developer Guide.
 %%
 %% If you are using an identity other than the root user of the AWS account
-%% that owns the bucket, the calling identity must have the `GetBucketPolicy`
+%% that owns the bucket, the calling identity must have the `GetBucketPolicy'
 %% permissions on the specified bucket and belong to the bucket owner's
 %% account in order to use this operation.
 %%
-%% If you don't have `s3outposts:GetBucketPolicy` permissions, Amazon S3
-%% returns a `403 Access Denied` error. If you have the correct permissions,
+%% If you don't have `s3outposts:GetBucketPolicy' permissions, Amazon S3
+%% returns a `403 Access Denied' error. If you have the correct permissions,
 %% but you're not using an identity that belongs to the bucket owner's
-%% account, Amazon S3 returns a `405 Method Not Allowed` error.
+%% account, Amazon S3 returns a `405 Method Not Allowed' error.
 %%
 %% As a security precaution, the root user of the AWS account that owns a
 %% bucket can always use this operation, even if the policy explicitly denies
@@ -825,7 +825,7 @@ get_bucket_lifecycle_configuration(Client, Bucket, AccountId, Options)
 %% Outposts endpoint hostname prefix and the outpost-id derived using the
 %% access point ARN, see the Example section below.
 %%
-%% The following actions are related to `GetBucketPolicy`:
+%% The following actions are related to `GetBucketPolicy':
 %%
 %% <ul> <li> GetObject
 %%
@@ -862,12 +862,12 @@ get_bucket_policy(Client, Bucket, AccountId, Options)
 %% Service Developer Guide.
 %%
 %% To use this operation, you must have permission to perform the
-%% `GetBucketTagging` action. By default, the bucket owner has this
+%% `GetBucketTagging' action. By default, the bucket owner has this
 %% permission and can grant this permission to others.
 %%
-%% `GetBucketTagging` has the following special error:
+%% `GetBucketTagging' has the following special error:
 %%
-%% <ul> <li> Error code: `NoSuchTagSetError`
+%% <ul> <li> Error code: `NoSuchTagSetError'
 %%
 %% <ul> <li> Description: There is no tag set associated with the bucket.
 %%
@@ -878,7 +878,7 @@ get_bucket_policy(Client, Bucket, AccountId, Options)
 %% that uses the S3 on Outposts endpoint hostname prefix and the outpost-id
 %% derived using the access point ARN, see the Example section below.
 %%
-%% The following actions are related to `GetBucketTagging`:
+%% The following actions are related to `GetBucketTagging':
 %%
 %% <ul> <li> PutBucketTagging
 %%
@@ -906,7 +906,7 @@ get_bucket_tagging(Client, Bucket, AccountId, Options)
 %% @doc Returns the tags on an S3 Batch Operations job.
 %%
 %% To use this operation, you must have permission to perform the
-%% `s3:GetJobTagging` action. For more information, see Controlling access
+%% `s3:GetJobTagging' action. For more information, see Controlling access
 %% and labeling jobs using tags in the Amazon Simple Storage Service
 %% Developer Guide.
 %%
@@ -937,7 +937,7 @@ get_job_tagging(Client, JobId, AccountId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves the `PublicAccessBlock` configuration for an AWS account.
+%% @doc Retrieves the `PublicAccessBlock' configuration for an AWS account.
 %%
 %% For more information, see Using Amazon S3 block public access.
 %%
@@ -971,7 +971,7 @@ get_public_access_block(Client, AccountId, Options)
 %%
 %% You can retrieve up to 1000 access points per call. If the specified
 %% bucket has more than 1,000 access points (or the number specified in
-%% `maxResults`, whichever is less), the response will include a continuation
+%% `maxResults', whichever is less), the response will include a continuation
 %% token that you can use to list the additional access points.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
@@ -981,7 +981,7 @@ get_public_access_block(Client, AccountId, Options)
 %% Outposts endpoint hostname prefix and the outpost-id derived using the
 %% access point ARN, see the Example section below.
 %%
-%% The following actions are related to `ListAccessPoints`:
+%% The following actions are related to `ListAccessPoints':
 %%
 %% <ul> <li> CreateAccessPoint
 %%
@@ -1100,7 +1100,7 @@ list_regional_buckets(Client, MaxResults, NextToken, AccountId, OutpostId, Optio
 %% Outposts endpoint hostname prefix and the outpost-id derived using the
 %% access point ARN, see the Example section below.
 %%
-%% The following actions are related to `PutAccessPointPolicy`:
+%% The following actions are related to `PutAccessPointPolicy':
 %%
 %% <ul> <li> GetAccessPointPolicy
 %%
@@ -1142,7 +1142,7 @@ put_access_point_policy(Client, Name, Input0, Options) ->
 %% Outposts endpoint hostname prefix and the outpost-id derived using the
 %% access point ARN, see the Example section below.
 %%
-%% The following actions are related to `PutBucketLifecycleConfiguration`:
+%% The following actions are related to `PutBucketLifecycleConfiguration':
 %%
 %% <ul> <li> GetBucketLifecycleConfiguration
 %%
@@ -1178,13 +1178,13 @@ put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options) ->
 %%
 %% If you are using an identity other than the root user of the AWS account
 %% that owns the Outposts bucket, the calling identity must have the
-%% `PutBucketPolicy` permissions on the specified Outposts bucket and belong
+%% `PutBucketPolicy' permissions on the specified Outposts bucket and belong
 %% to the bucket owner's account in order to use this operation.
 %%
-%% If you don't have `PutBucketPolicy` permissions, Amazon S3 returns a `403
-%% Access Denied` error. If you have the correct permissions, but you're not
+%% If you don't have `PutBucketPolicy' permissions, Amazon S3 returns a `403
+%% Access Denied' error. If you have the correct permissions, but you're not
 %% using an identity that belongs to the bucket owner's account, Amazon S3
-%% returns a `405 Method Not Allowed` error.
+%% returns a `405 Method Not Allowed' error.
 %%
 %% As a security precaution, the root user of the AWS account that owns a
 %% bucket can always use this operation, even if the policy explicitly denies
@@ -1200,7 +1200,7 @@ put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options) ->
 %% Outposts endpoint hostname prefix and the outpost-id derived using the
 %% access point ARN, see the Example section below.
 %%
-%% The following actions are related to `PutBucketPolicy`:
+%% The following actions are related to `PutBucketPolicy':
 %%
 %% <ul> <li> GetBucketPolicy
 %%
@@ -1248,31 +1248,31 @@ put_bucket_policy(Client, Bucket, Input0, Options) ->
 %% Using Cost Allocation in Amazon S3 Bucket Tags.
 %%
 %% To use this operation, you must have permissions to perform the
-%% `s3outposts:PutBucketTagging` action. The Outposts bucket owner has this
+%% `s3outposts:PutBucketTagging' action. The Outposts bucket owner has this
 %% permission by default and can grant this permission to others. For more
 %% information about permissions, see Permissions Related to Bucket
 %% Subresource Operations and Managing Access Permissions to Your Amazon S3
 %% Resources.
 %%
-%% `PutBucketTagging` has the following special errors:
+%% `PutBucketTagging' has the following special errors:
 %%
-%% <ul> <li> Error code: `InvalidTagError`
+%% <ul> <li> Error code: `InvalidTagError'
 %%
 %% <ul> <li> Description: The tag provided was not a valid tag. This error
 %% can occur if the tag did not pass input validation. For information about
 %% tag restrictions, see User-Defined Tag Restrictions and AWS-Generated Cost
 %% Allocation Tag Restrictions.
 %%
-%% </li> </ul> </li> <li> Error code: `MalformedXMLError`
+%% </li> </ul> </li> <li> Error code: `MalformedXMLError'
 %%
 %% <ul> <li> Description: The XML provided does not match the schema.
 %%
-%% </li> </ul> </li> <li> Error code: `OperationAbortedError `
+%% </li> </ul> </li> <li> Error code: `OperationAbortedError '
 %%
 %% <ul> <li> Description: A conflicting conditional operation is currently in
 %% progress against this resource. Try again.
 %%
-%% </li> </ul> </li> <li> Error code: `InternalError`
+%% </li> </ul> </li> <li> Error code: `InternalError'
 %%
 %% <ul> <li> Description: The service was unable to apply the provided tag to
 %% the bucket.
@@ -1284,7 +1284,7 @@ put_bucket_policy(Client, Bucket, Input0, Options) ->
 %% that uses the S3 on Outposts endpoint hostname prefix and the outpost-id
 %% derived using the access point ARN, see the Example section below.
 %%
-%% The following actions are related to `PutBucketTagging`:
+%% The following actions are related to `PutBucketTagging':
 %%
 %% <ul> <li> GetBucketTagging
 %%
@@ -1347,7 +1347,7 @@ put_bucket_tagging(Client, Bucket, Input0, Options) ->
 %% </li> </ul> </li> </ul>
 %%
 %% To use this operation, you must have permission to perform the
-%% `s3:PutJobTagging` action.
+%% `s3:PutJobTagging' action.
 %%
 %% Related actions include:
 %%
@@ -1375,7 +1375,7 @@ put_job_tagging(Client, JobId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates or modifies the `PublicAccessBlock` configuration for an AWS
+%% @doc Creates or modifies the `PublicAccessBlock' configuration for an AWS
 %% account.
 %%
 %% For more information, see Using Amazon S3 block public access.

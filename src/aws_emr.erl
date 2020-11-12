@@ -159,7 +159,7 @@ add_tags(Client, Input, Options)
 %% 5.0.0. A maximum of 256 steps are allowed in each CancelSteps request.
 %% CancelSteps is idempotent but asynchronous; it does not guarantee a step
 %% will be canceled, even if the request is successfully submitted. You can
-%% only cancel steps that are in a `PENDING` state.
+%% only cancel steps that are in a `PENDING' state.
 cancel_steps(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_steps(Client, Input, []).
@@ -195,8 +195,8 @@ describe_cluster(Client, Input, Options)
 
 %% @doc This API is deprecated and will eventually be removed.
 %%
-%% We recommend you use `ListClusters`, `DescribeCluster`, `ListSteps`,
-%% `ListInstanceGroups` and `ListBootstrapActions` instead.
+%% We recommend you use `ListClusters', `DescribeCluster', `ListSteps',
+%% `ListInstanceGroups' and `ListBootstrapActions' instead.
 %%
 %% DescribeJobFlows returns a list of job flows that match all of the
 %% supplied parameters. The parameters can include a list of job flow IDs,
@@ -211,7 +211,7 @@ describe_cluster(Client, Input, Options)
 %% <ul> <li> Job flows created and completed in the last two weeks
 %%
 %% </li> <li> Job flows created within the last two months that are in one of
-%% the following states: `RUNNING`, `WAITING`, `SHUTTING_DOWN`, `STARTING`
+%% the following states: `RUNNING', `WAITING', `SHUTTING_DOWN', `STARTING'
 %%
 %% </li> </ul> Amazon EMR can return a maximum of 512 job flow descriptions.
 describe_job_flows(Client, Input)
@@ -326,7 +326,7 @@ list_instances(Client, Input, Options)
 %% You can filter the list based on multiple criteria such as status, time
 %% range, and editor id. Returns a maximum of 50 notebook executions and a
 %% marker to track the paging of a longer notebook execution list across
-%% multiple `ListNotebookExecution` calls.
+%% multiple `ListNotebookExecution' calls.
 list_notebook_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_notebook_executions(Client, Input, []).
@@ -348,9 +348,9 @@ list_security_configurations(Client, Input, Options)
     request(Client, <<"ListSecurityConfigurations">>, Input, Options).
 
 %% @doc Provides a list of steps for the cluster in reverse order unless you
-%% specify `stepIds` with the request of filter by `StepStates`.
+%% specify `stepIds' with the request of filter by `StepStates'.
 %%
-%% You can specify a maximum of ten `stepIDs`.
+%% You can specify a maximum of ten `stepIDs'.
 list_steps(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_steps(Client, Input, []).
@@ -471,12 +471,12 @@ remove_tags(Client, Input, Options)
 %% The cluster runs the steps specified. After the steps complete, the
 %% cluster stops and the HDFS partition is lost. To prevent loss of data,
 %% configure the last step of the job flow to store results in Amazon S3. If
-%% the `JobFlowInstancesConfig` `KeepJobFlowAliveWhenNoSteps` parameter is
-%% set to `TRUE`, the cluster transitions to the WAITING state rather than
+%% the `JobFlowInstancesConfig' `KeepJobFlowAliveWhenNoSteps' parameter is
+%% set to `TRUE', the cluster transitions to the WAITING state rather than
 %% shutting down after the steps have completed.
 %%
-%% For additional protection, you can set the `JobFlowInstancesConfig`
-%% `TerminationProtected` parameter to `TRUE` to lock the cluster and prevent
+%% For additional protection, you can set the `JobFlowInstancesConfig'
+%% `TerminationProtected' parameter to `TRUE' to lock the cluster and prevent
 %% it from being terminated by API call, user intervention, or in the event
 %% of a job flow error.
 %%
@@ -509,18 +509,18 @@ run_job_flow(Client, Input, Options)
 %% call, or in the event of a job-flow error.
 %%
 %% The cluster still terminates upon successful completion of the job flow.
-%% Calling `SetTerminationProtection` on a cluster is similar to calling the
-%% Amazon EC2 `DisableAPITermination` API on all EC2 instances in a cluster.
+%% Calling `SetTerminationProtection' on a cluster is similar to calling the
+%% Amazon EC2 `DisableAPITermination' API on all EC2 instances in a cluster.
 %%
-%% `SetTerminationProtection` is used to prevent accidental termination of a
+%% `SetTerminationProtection' is used to prevent accidental termination of a
 %% cluster and to ensure that in the event of an error, the instances persist
 %% so that you can recover any data stored in their ephemeral instance
 %% storage.
 %%
 %% To terminate a cluster that has been locked by setting
-%% `SetTerminationProtection` to `true`, you must first unlock the job flow
-%% by a subsequent call to `SetTerminationProtection` in which you set the
-%% value to `false`.
+%% `SetTerminationProtection' to `true', you must first unlock the job flow
+%% by a subsequent call to `SetTerminationProtection' in which you set the
+%% value to `false'.
 %%
 %% For more information, seeManaging Cluster Termination in the Amazon EMR
 %% Management Guide.
@@ -531,17 +531,17 @@ set_termination_protection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetTerminationProtection">>, Input, Options).
 
-%% @doc Sets the `Cluster$VisibleToAllUsers` value, which determines whether
+%% @doc Sets the `Cluster$VisibleToAllUsers' value, which determines whether
 %% the cluster is visible to all IAM users of the AWS account associated with
 %% the cluster.
 %%
 %% Only the IAM user who created the cluster or the AWS account root user can
-%% call this action. The default value, `true`, indicates that all IAM users
+%% call this action. The default value, `true', indicates that all IAM users
 %% in the AWS account can perform cluster actions if they have the proper IAM
-%% policy permissions. If set to `false`, only the IAM user that created the
+%% policy permissions. If set to `false', only the IAM user that created the
 %% cluster can perform actions. This action works on running clusters. You
-%% can override the default `true` setting when you create a cluster by using
-%% the `VisibleToAllUsers` parameter with `RunJobFlow`.
+%% can override the default `true' setting when you create a cluster by using
+%% the `VisibleToAllUsers' parameter with `RunJobFlow'.
 set_visible_to_all_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_visible_to_all_users(Client, Input, []).
@@ -573,7 +573,7 @@ stop_notebook_execution(Client, Input, Options)
 %% specified when the cluster was created.
 %%
 %% The maximum number of clusters allowed is 10. The call to
-%% `TerminateJobFlows` is asynchronous. Depending on the configuration of the
+%% `TerminateJobFlows' is asynchronous. Depending on the configuration of the
 %% cluster, it may take up to 1-5 minutes for the cluster to completely
 %% terminate and release allocated resources, such as Amazon EC2 instances.
 terminate_job_flows(Client, Input)

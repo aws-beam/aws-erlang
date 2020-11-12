@@ -91,8 +91,8 @@ create_subnet_group(Client, Input, Options)
 
 %% @doc Removes one or more nodes from a DAX cluster.
 %%
-%% You cannot use `DecreaseReplicationFactor` to remove the last node in a
-%% DAX cluster. If you need to do this, use `DeleteCluster` instead.
+%% You cannot use `DecreaseReplicationFactor' to remove the last node in a
+%% DAX cluster. If you need to do this, use `DeleteCluster' instead.
 decrease_replication_factor(Client, Input)
   when is_map(Client), is_map(Input) ->
     decrease_replication_factor(Client, Input, []).
@@ -223,7 +223,7 @@ increase_replication_factor(Client, Input, Options)
 
 %% @doc List all of the tags for a DAX cluster.
 %%
-%% You can call `ListTags` up to 10 times per second, per account.
+%% You can call `ListTags' up to 10 times per second, per account.
 list_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags(Client, Input, []).
@@ -236,7 +236,7 @@ list_tags(Client, Input, Options)
 %% The reboot action takes place as soon as possible. During the reboot, the
 %% node status is set to REBOOTING.
 %%
-%% `RebootNode` restarts the DAX engine process and does not remove the
+%% `RebootNode' restarts the DAX engine process and does not remove the
 %% contents of the cache.
 reboot_node(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -247,7 +247,7 @@ reboot_node(Client, Input, Options)
 
 %% @doc Associates a set of tags with a DAX resource.
 %%
-%% You can call `TagResource` up to 5 times per second, per account.
+%% You can call `TagResource' up to 5 times per second, per account.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -257,7 +257,7 @@ tag_resource(Client, Input, Options)
 
 %% @doc Removes the association of tags from a DAX resource.
 %%
-%% You can call `UntagResource` up to 5 times per second, per account.
+%% You can call `UntagResource' up to 5 times per second, per account.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).

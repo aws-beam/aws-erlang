@@ -311,7 +311,7 @@ update_placement(Client, PlacementName, ProjectName, Input0, Options) ->
 %% With the exception of device template names, you can pass just the values
 %% that need to be updated because the update request will change only the
 %% values that are provided. To clear a value, pass the empty string (i.e.,
-%% `""`).
+%% `""').
 update_project(Client, ProjectName, Input) ->
     update_project(Client, ProjectName, Input, []).
 update_project(Client, ProjectName, Input0, Options) ->

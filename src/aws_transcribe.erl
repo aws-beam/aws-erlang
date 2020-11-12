@@ -172,9 +172,9 @@ describe_language_model(Client, Input, Options)
 %% @doc Returns information about a transcription job from Amazon Transcribe
 %% Medical.
 %%
-%% To see the status of the job, check the `TranscriptionJobStatus` field. If
-%% the status is `COMPLETED`, the job is finished. You find the results of
-%% the completed job in the `TranscriptFileUri` field.
+%% To see the status of the job, check the `TranscriptionJobStatus' field. If
+%% the status is `COMPLETED', the job is finished. You find the results of
+%% the completed job in the `TranscriptFileUri' field.
 get_medical_transcription_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_medical_transcription_job(Client, Input, []).
@@ -192,11 +192,11 @@ get_medical_vocabulary(Client, Input, Options)
 
 %% @doc Returns information about a transcription job.
 %%
-%% To see the status of the job, check the `TranscriptionJobStatus` field. If
-%% the status is `COMPLETED`, the job is finished and you can find the
-%% results at the location specified in the `TranscriptFileUri` field. If you
+%% To see the status of the job, check the `TranscriptionJobStatus' field. If
+%% the status is `COMPLETED', the job is finished and you can find the
+%% results at the location specified in the `TranscriptFileUri' field. If you
 %% enable content redaction, the redacted transcript appears in
-%% `RedactedTranscriptFileUri`.
+%% `RedactedTranscriptFileUri'.
 get_transcription_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_transcription_job(Client, Input, []).
@@ -298,7 +298,7 @@ start_transcription_job(Client, Input, Options)
 %% @doc Updates a vocabulary with new values that you provide in a different
 %% text file from the one you used to create the vocabulary.
 %%
-%% The `UpdateMedicalVocabulary` operation overwrites all of the existing
+%% The `UpdateMedicalVocabulary' operation overwrites all of the existing
 %% information with the values that you provide in the request.
 update_medical_vocabulary(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -309,7 +309,7 @@ update_medical_vocabulary(Client, Input, Options)
 
 %% @doc Updates an existing vocabulary with new values.
 %%
-%% The `UpdateVocabulary` operation overwrites all of the existing
+%% The `UpdateVocabulary' operation overwrites all of the existing
 %% information with the values that you provide in the request.
 update_vocabulary(Client, Input)
   when is_map(Client), is_map(Input) ->

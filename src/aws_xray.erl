@@ -69,7 +69,7 @@
 %% @doc Retrieves a list of traces specified by ID.
 %%
 %% Each trace is a collection of segment documents that originates from a
-%% single request. Use `GetTraceSummaries` to get a list of trace IDs.
+%% single request. Use `GetTraceSummaries' to get a list of trace IDs.
 batch_get_traces(Client, Input) ->
     batch_get_traces(Client, Input, []).
 batch_get_traces(Client, Input0, Options) ->
@@ -104,10 +104,10 @@ create_group(Client, Input0, Options) ->
 %% @doc Creates a rule to control sampling behavior for instrumented
 %% applications.
 %%
-%% Services retrieve rules with `GetSamplingRules`, and evaluate each rule in
+%% Services retrieve rules with `GetSamplingRules', and evaluate each rule in
 %% ascending order of priority for each request. If a rule matches, the
 %% service records a trace, borrowing it from the reservoir size. After 10
-%% seconds, the service reports back to X-Ray with `GetSamplingTargets` to
+%% seconds, the service reports back to X-Ray with `GetSamplingTargets' to
 %% get updated versions of each in-use rule. The updated rule contains a
 %% trace quota that the service can use instead of borrowing from the
 %% reservoir.
@@ -391,19 +391,19 @@ get_trace_graph(Client, Input0, Options) ->
 %% @doc Retrieves IDs and annotations for traces available for a specified
 %% time frame using an optional filter.
 %%
-%% To get the full traces, pass the trace IDs to `BatchGetTraces`.
+%% To get the full traces, pass the trace IDs to `BatchGetTraces'.
 %%
 %% A filter expression can target traced requests that hit specific service
 %% nodes or edges, have errors, or come from a known user. For example, the
 %% following filter expression targets traces that pass through
-%% `api.example.com`:
+%% `api.example.com':
 %%
-%% `service("api.example.com")`
+%% `service("api.example.com")'
 %%
 %% This filter expression finds traces that have an annotation named
-%% `account` with the value `12345`:
+%% `account' with the value `12345':
 %%
-%% `annotation.account = "12345"`
+%% `annotation.account = "12345"'
 %%
 %% For a full list of indexed fields and keywords that you can use in filter
 %% expressions, see Using Filter Expressions in the AWS X-Ray Developer
@@ -483,39 +483,39 @@ put_telemetry_records(Client, Input0, Options) ->
 %%
 %% == Required segment document fields ==
 %%
-%% <ul> <li> `name` - The name of the service that handled the request.
+%% <ul> <li> `name' - The name of the service that handled the request.
 %%
-%% </li> <li> `id` - A 64-bit identifier for the segment, unique among
+%% </li> <li> `id' - A 64-bit identifier for the segment, unique among
 %% segments in the same trace, in 16 hexadecimal digits.
 %%
-%% </li> <li> `trace_id` - A unique identifier that connects all segments and
+%% </li> <li> `trace_id' - A unique identifier that connects all segments and
 %% subsegments originating from a single client request.
 %%
-%% </li> <li> `start_time` - Time the segment or subsegment was created, in
+%% </li> <li> `start_time' - Time the segment or subsegment was created, in
 %% floating point seconds in epoch time, accurate to milliseconds. For
-%% example, `1480615200.010` or `1.480615200010E9`.
+%% example, `1480615200.010' or `1.480615200010E9'.
 %%
-%% </li> <li> `end_time` - Time the segment or subsegment was closed. For
-%% example, `1480615200.090` or `1.480615200090E9`. Specify either an
-%% `end_time` or `in_progress`.
+%% </li> <li> `end_time' - Time the segment or subsegment was closed. For
+%% example, `1480615200.090' or `1.480615200090E9'. Specify either an
+%% `end_time' or `in_progress'.
 %%
-%% </li> <li> `in_progress` - Set to `true` instead of specifying an
-%% `end_time` to record that a segment has been started, but is not complete.
+%% </li> <li> `in_progress' - Set to `true' instead of specifying an
+%% `end_time' to record that a segment has been started, but is not complete.
 %% Send an in-progress segment when your application receives a request that
 %% will take a long time to serve, to trace that the request was received.
 %% When the response is sent, send the complete segment to overwrite the
 %% in-progress segment.
 %%
-%% </li> </ul> A `trace_id` consists of three numbers separated by hyphens.
+%% </li> </ul> A `trace_id' consists of three numbers separated by hyphens.
 %% For example, 1-58406520-a006649127e371903a2de979. This includes:
 %%
 %% == Trace ID Format ==
 %%
-%% <ul> <li> The version number, for instance, `1`.
+%% <ul> <li> The version number, for instance, `1'.
 %%
 %% </li> <li> The time of the original request, in Unix epoch time, in 8
 %% hexadecimal digits. For example, 10:00AM December 2nd, 2016 PST in epoch
-%% time is `1480615200` seconds, or `58406520` in hexadecimal.
+%% time is `1480615200' seconds, or `58406520' in hexadecimal.
 %%
 %% </li> <li> A 96-bit identifier for the trace, globally unique, in 24
 %% hexadecimal digits.
@@ -554,7 +554,7 @@ tag_resource(Client, Input0, Options) ->
 
 %% @doc Removes tags from an AWS X-Ray group or sampling rule.
 %%
-%% You cannot edit or delete system tags (those with an `aws:` prefix).
+%% You cannot edit or delete system tags (those with an `aws:' prefix).
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 untag_resource(Client, Input0, Options) ->

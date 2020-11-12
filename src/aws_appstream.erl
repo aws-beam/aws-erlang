@@ -191,8 +191,8 @@ create_fleet(Client, Input, Options)
 %%
 %% An image builder is a virtual machine that is used to create an image.
 %%
-%% The initial state of the builder is `PENDING`. When it is ready, the state
-%% is `RUNNING`.
+%% The initial state of the builder is `PENDING'. When it is ready, the state
+%% is `RUNNING'.
 create_image_builder(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_image_builder(Client, Input, []).
@@ -554,8 +554,8 @@ stop_image_builder(Client, Input, Options)
 %% Each tag consists of a key and an optional value. If a resource already
 %% has a tag with the same key, this operation updates its value.
 %%
-%% To list the current tags for your resources, use `ListTagsForResource`. To
-%% disassociate tags from your resources, use `UntagResource`.
+%% To list the current tags for your resources, use `ListTagsForResource'. To
+%% disassociate tags from your resources, use `UntagResource'.
 %%
 %% For more information about tags, see Tagging Your Resources in the Amazon
 %% AppStream 2.0 Administration Guide.
@@ -569,7 +569,7 @@ tag_resource(Client, Input, Options)
 %% @doc Disassociates one or more specified tags from the specified AppStream
 %% 2.0 resource.
 %%
-%% To list the current tags for your resources, use `ListTagsForResource`.
+%% To list the current tags for your resources, use `ListTagsForResource'.
 %%
 %% For more information about tags, see Tagging Your Resources in the Amazon
 %% AppStream 2.0 Administration Guide.
@@ -593,11 +593,11 @@ update_directory_config(Client, Input, Options)
 
 %% @doc Updates the specified fleet.
 %%
-%% If the fleet is in the `STOPPED` state, you can update any attribute
-%% except the fleet name. If the fleet is in the `RUNNING` state, you can
-%% update the `DisplayName`, `ComputeCapacity`, `ImageARN`, `ImageName`,
-%% `IdleDisconnectTimeoutInSeconds`, and `DisconnectTimeoutInSeconds`
-%% attributes. If the fleet is in the `STARTING` or `STOPPING` state, you
+%% If the fleet is in the `STOPPED' state, you can update any attribute
+%% except the fleet name. If the fleet is in the `RUNNING' state, you can
+%% update the `DisplayName', `ComputeCapacity', `ImageARN', `ImageName',
+%% `IdleDisconnectTimeoutInSeconds', and `DisconnectTimeoutInSeconds'
+%% attributes. If the fleet is in the `STARTING' or `STOPPING' state, you
 %% can't update it.
 update_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->

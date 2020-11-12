@@ -244,9 +244,9 @@ cancel_world_generation_job(Client, Input0, Options) ->
 %% @doc Deploys a specific version of a robot application to robots in a
 %% fleet.
 %%
-%% The robot application must have a numbered `applicationVersion` for
+%% The robot application must have a numbered `applicationVersion' for
 %% consistency reasons. To create a new version, use
-%% `CreateRobotApplicationVersion` or see Creating a Robot Application
+%% `CreateRobotApplicationVersion' or see Creating a Robot Application
 %% Version.
 %%
 %% After 90 days, deployment jobs expire and will be deleted. They will no
@@ -960,7 +960,7 @@ restart_simulation_job(Client, Input0, Options) ->
 
 %% @doc Starts a new simulation job batch.
 %%
-%% The batch is defined using one or more `SimulationJobRequest` objects.
+%% The batch is defined using one or more `SimulationJobRequest' objects.
 start_simulation_job_batch(Client, Input) ->
     start_simulation_job_batch(Client, Input, []).
 start_simulation_job_batch(Client, Input0, Options) ->
@@ -1020,7 +1020,7 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Removes the specified tags from the specified AWS RoboMaker resource.
 %%
 %% To remove a tag, specify the tag key. To change the tag value of an
-%% existing tag key, use `TagResource` .
+%% existing tag key, use `TagResource' .
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->

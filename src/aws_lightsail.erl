@@ -298,13 +298,13 @@ allocate_static_ip(Client, Input, Options)
 %% After the certificate is attached, your distribution accepts HTTPS traffic
 %% for all of the domains that are associated with the certificate.
 %%
-%% Use the `CreateCertificate` action to create a certificate that you can
+%% Use the `CreateCertificate' action to create a certificate that you can
 %% attach to your distribution.
 %%
-%% Only certificates created in the `us-east-1` AWS Region can be attached to
+%% Only certificates created in the `us-east-1' AWS Region can be attached to
 %% Lightsail distributions. Lightsail distributions are global resources that
 %% can reference an origin in any AWS Region, and distribute its content
-%% globally. However, all distributions are located in the `us-east-1`
+%% globally. However, all distributions are located in the `us-east-1'
 %% Region.
 attach_certificate_to_distribution(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -316,8 +316,8 @@ attach_certificate_to_distribution(Client, Input, Options)
 %% @doc Attaches a block storage disk to a running or stopped Lightsail
 %% instance and exposes it to the instance with the specified disk name.
 %%
-%% The `attach disk` operation supports tag-based access control via resource
-%% tags applied to the resource identified by `disk name`. For more
+%% The `attach disk' operation supports tag-based access control via resource
+%% tags applied to the resource identified by `disk name'. For more
 %% information, see the Lightsail Dev Guide.
 attach_disk(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -331,9 +331,9 @@ attach_disk(Client, Input, Options)
 %% After some time, the instances are attached to the load balancer and the
 %% health check status is available.
 %%
-%% The `attach instances to load balancer` operation supports tag-based
+%% The `attach instances to load balancer' operation supports tag-based
 %% access control via resource tags applied to the resource identified by
-%% `load balancer name`. For more information, see the Lightsail Dev Guide.
+%% `load balancer name'. For more information, see the Lightsail Dev Guide.
 attach_instances_to_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_instances_to_load_balancer(Client, Input, []).
@@ -348,13 +348,13 @@ attach_instances_to_load_balancer(Client, Input, Options)
 %%
 %% Once you create and validate your certificate, you can attach it to your
 %% load balancer. You can also use this API to rotate the certificates on
-%% your account. Use the `AttachLoadBalancerTlsCertificate` action with the
+%% your account. Use the `AttachLoadBalancerTlsCertificate' action with the
 %% non-attached certificate, and it will replace the existing one and become
 %% the attached certificate.
 %%
-%% The `AttachLoadBalancerTlsCertificate` operation supports tag-based access
+%% The `AttachLoadBalancerTlsCertificate' operation supports tag-based access
 %% control via resource tags applied to the resource identified by `load
-%% balancer name`. For more information, see the Lightsail Dev Guide.
+%% balancer name'. For more information, see the Lightsail Dev Guide.
 attach_load_balancer_tls_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_load_balancer_tls_certificate(Client, Input, []).
@@ -372,8 +372,8 @@ attach_static_ip(Client, Input, Options)
 
 %% @doc Closes ports for a specific Amazon Lightsail instance.
 %%
-%% The `CloseInstancePublicPorts` action supports tag-based access control
-%% via resource tags applied to the resource identified by `instanceName`.
+%% The `CloseInstancePublicPorts' action supports tag-based access control
+%% via resource tags applied to the resource identified by `instanceName'.
 %% For more information, see the Lightsail Dev Guide.
 close_instance_public_ports(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -389,12 +389,12 @@ close_instance_public_ports(Client, Input, Options)
 %% This operation can also be used to copy a manual or automatic snapshot of
 %% an instance or a disk from one AWS Region to another in Amazon Lightsail.
 %%
-%% When copying a manual snapshot, be sure to define the `source region`,
-%% `source snapshot name`, and `target snapshot name` parameters.
+%% When copying a manual snapshot, be sure to define the `source region',
+%% `source snapshot name', and `target snapshot name' parameters.
 %%
-%% When copying an automatic snapshot, be sure to define the `source region`,
-%% `source resource name`, `target snapshot name`, and either the `restore
-%% date` or the `use latest restorable auto snapshot` parameters.
+%% When copying an automatic snapshot, be sure to define the `source region',
+%% `source resource name', `target snapshot name', and either the `restore
+%% date' or the `use latest restorable auto snapshot' parameters.
 copy_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_snapshot(Client, Input, []).
@@ -406,13 +406,13 @@ copy_snapshot(Client, Input, Options)
 %% delivery network (CDN) distribution.
 %%
 %% After the certificate is created, use the
-%% `AttachCertificateToDistribution` action to attach the certificate to your
+%% `AttachCertificateToDistribution' action to attach the certificate to your
 %% distribution.
 %%
-%% Only certificates created in the `us-east-1` AWS Region can be attached to
+%% Only certificates created in the `us-east-1' AWS Region can be attached to
 %% Lightsail distributions. Lightsail distributions are global resources that
 %% can reference an origin in any AWS Region, and distribute its content
-%% globally. However, all distributions are located in the `us-east-1`
+%% globally. However, all distributions are located in the `us-east-1'
 %% Region.
 create_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -426,11 +426,11 @@ create_certificate(Client, Input, Options)
 %%
 %% This operation results in a CloudFormation stack record that can be used
 %% to track the AWS CloudFormation stack created. Use the `get cloud
-%% formation stack records` operation to get a list of the CloudFormation
+%% formation stack records' operation to get a list of the CloudFormation
 %% stacks created.
 %%
 %% Wait until after your new Amazon EC2 instance is created before running
-%% the `create cloud formation stack` operation again with the same export
+%% the `create cloud formation stack' operation again with the same export
 %% snapshot record.
 create_cloud_formation_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -455,9 +455,9 @@ create_contact_method(Client, Input, Options)
     request(Client, <<"CreateContactMethod">>, Input, Options).
 
 %% @doc Creates a block storage disk that can be attached to an Amazon
-%% Lightsail instance in the same Availability Zone (e.g., `us-east-2a`).
+%% Lightsail instance in the same Availability Zone (e.g., `us-east-2a').
 %%
-%% The `create disk` operation supports tag-based access control via request
+%% The `create disk' operation supports tag-based access control via request
 %% tags. For more information, see the Lightsail Dev Guide.
 create_disk(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -470,11 +470,11 @@ create_disk(Client, Input, Options)
 %% disk.
 %%
 %% The resulting disk can be attached to an Amazon Lightsail instance in the
-%% same Availability Zone (e.g., `us-east-2a`).
+%% same Availability Zone (e.g., `us-east-2a').
 %%
-%% The `create disk from snapshot` operation supports tag-based access
+%% The `create disk from snapshot' operation supports tag-based access
 %% control via request tags and resource tags applied to the resource
-%% identified by `disk snapshot name`. For more information, see the
+%% identified by `disk snapshot name'. For more information, see the
 %% Lightsail Dev Guide.
 create_disk_from_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -503,13 +503,13 @@ create_disk_from_snapshot(Client, Input, Options)
 %% system volume. You might want to do this, for example, to recover data
 %% from the system volume of a botched instance or to create a backup of the
 %% system volume like you would for a block storage disk. To create a
-%% snapshot of a system volume, just define the `instance name` parameter
+%% snapshot of a system volume, just define the `instance name' parameter
 %% when issuing the snapshot command, and a snapshot of the defined
 %% instance's system volume will be created. After the snapshot is available,
 %% you can create a block storage disk from the snapshot and attach it to a
 %% running instance to access the data on the disk.
 %%
-%% The `create disk snapshot` operation supports tag-based access control via
+%% The `create disk snapshot' operation supports tag-based access control via
 %% request tags. For more information, see the Lightsail Dev Guide.
 create_disk_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -535,7 +535,7 @@ create_distribution(Client, Input, Options)
 %% @doc Creates a domain resource for the specified domain (e.g.,
 %% example.com).
 %%
-%% The `create domain` operation supports tag-based access control via
+%% The `create domain' operation supports tag-based access control via
 %% request tags. For more information, see the Lightsail Dev Guide.
 create_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -549,8 +549,8 @@ create_domain(Client, Input, Options)
 %% server (NS), start of authority (SOA), service locator (SRV), or text
 %% (TXT).
 %%
-%% The `create domain entry` operation supports tag-based access control via
-%% resource tags applied to the resource identified by `domain name`. For
+%% The `create domain entry' operation supports tag-based access control via
+%% resource tags applied to the resource identified by `domain name'. For
 %% more information, see the Lightsail Dev Guide.
 create_domain_entry(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -564,7 +564,7 @@ create_domain_entry(Client, Input, Options)
 %% You can use a snapshot to create a new instance that is based on that
 %% snapshot.
 %%
-%% The `create instance snapshot` operation supports tag-based access control
+%% The `create instance snapshot' operation supports tag-based access control
 %% via request tags. For more information, see the Lightsail Dev Guide.
 create_instance_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -575,7 +575,7 @@ create_instance_snapshot(Client, Input, Options)
 
 %% @doc Creates one or more Amazon Lightsail instances.
 %%
-%% The `create instances` operation supports tag-based access control via
+%% The `create instances' operation supports tag-based access control via
 %% request tags. For more information, see the Lightsail Dev Guide.
 create_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -587,9 +587,9 @@ create_instances(Client, Input, Options)
 %% @doc Creates one or more new instances from a manual or automatic snapshot
 %% of an instance.
 %%
-%% The `create instances from snapshot` operation supports tag-based access
+%% The `create instances from snapshot' operation supports tag-based access
 %% control via request tags and resource tags applied to the resource
-%% identified by `instance snapshot name`. For more information, see the
+%% identified by `instance snapshot name'. For more information, see the
 %% Lightsail Dev Guide.
 create_instances_from_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -600,7 +600,7 @@ create_instances_from_snapshot(Client, Input, Options)
 
 %% @doc Creates an SSH key pair.
 %%
-%% The `create key pair` operation supports tag-based access control via
+%% The `create key pair' operation supports tag-based access control via
 %% request tags. For more information, see the Lightsail Dev Guide.
 create_key_pair(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -617,9 +617,9 @@ create_key_pair(Client, Input, Options)
 %%
 %% When you create a load balancer, you can specify a unique name and port
 %% settings. To change additional load balancer settings, use the
-%% `UpdateLoadBalancerAttribute` operation.
+%% `UpdateLoadBalancerAttribute' operation.
 %%
-%% The `create load balancer` operation supports tag-based access control via
+%% The `create load balancer' operation supports tag-based access control via
 %% request tags. For more information, see the Lightsail Dev Guide.
 create_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -632,9 +632,9 @@ create_load_balancer(Client, Input, Options)
 %%
 %% TLS is just an updated, more secure version of Secure Socket Layer (SSL).
 %%
-%% The `CreateLoadBalancerTlsCertificate` operation supports tag-based access
+%% The `CreateLoadBalancerTlsCertificate' operation supports tag-based access
 %% control via resource tags applied to the resource identified by `load
-%% balancer name`. For more information, see the Lightsail Dev Guide.
+%% balancer name'. For more information, see the Lightsail Dev Guide.
 create_load_balancer_tls_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_load_balancer_tls_certificate(Client, Input, []).
@@ -644,7 +644,7 @@ create_load_balancer_tls_certificate(Client, Input, Options)
 
 %% @doc Creates a new database in Amazon Lightsail.
 %%
-%% The `create relational database` operation supports tag-based access
+%% The `create relational database' operation supports tag-based access
 %% control via request tags. For more information, see the Lightsail Dev
 %% Guide.
 create_relational_database(Client, Input)
@@ -661,7 +661,7 @@ create_relational_database(Client, Input, Options)
 %% with your original database, or to change it to a different plan, such as
 %% a high availability or standard plan.
 %%
-%% The `create relational database from snapshot` operation supports
+%% The `create relational database from snapshot' operation supports
 %% tag-based access control via request tags and resource tags applied to the
 %% resource identified by relationalDatabaseSnapshotName. For more
 %% information, see the Lightsail Dev Guide.
@@ -677,7 +677,7 @@ create_relational_database_from_snapshot(Client, Input, Options)
 %% You can use snapshots for backups, to make copies of a database, and to
 %% save data before deleting a database.
 %%
-%% The `create relational database snapshot` operation supports tag-based
+%% The `create relational database snapshot' operation supports tag-based
 %% access control via request tags. For more information, see the Lightsail
 %% Dev Guide.
 create_relational_database_snapshot(Client, Input)
@@ -714,7 +714,7 @@ delete_auto_snapshot(Client, Input, Options)
 %% delivery network (CDN) distribution.
 %%
 %% Certificates that are currently attached to a distribution cannot be
-%% deleted. Use the `DetachCertificateFromDistribution` action to detach a
+%% deleted. Use the `DetachCertificateFromDistribution' action to detach a
 %% certificate from a distribution.
 delete_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -740,13 +740,13 @@ delete_contact_method(Client, Input, Options)
 
 %% @doc Deletes the specified block storage disk.
 %%
-%% The disk must be in the `available` state (not attached to a Lightsail
+%% The disk must be in the `available' state (not attached to a Lightsail
 %% instance).
 %%
-%% The disk may remain in the `deleting` state for several minutes.
+%% The disk may remain in the `deleting' state for several minutes.
 %%
-%% The `delete disk` operation supports tag-based access control via resource
-%% tags applied to the resource identified by `disk name`. For more
+%% The `delete disk' operation supports tag-based access control via resource
+%% tags applied to the resource identified by `disk name'. For more
 %% information, see the Lightsail Dev Guide.
 delete_disk(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -764,8 +764,8 @@ delete_disk(Client, Input, Options)
 %% which prior snapshots have been deleted, all active snapshots will have
 %% access to all the information needed to restore the disk.
 %%
-%% The `delete disk snapshot` operation supports tag-based access control via
-%% resource tags applied to the resource identified by `disk snapshot name`.
+%% The `delete disk snapshot' operation supports tag-based access control via
+%% resource tags applied to the resource identified by `disk snapshot name'.
 %% For more information, see the Lightsail Dev Guide.
 delete_disk_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -785,8 +785,8 @@ delete_distribution(Client, Input, Options)
 
 %% @doc Deletes the specified domain recordset and all of its domain records.
 %%
-%% The `delete domain` operation supports tag-based access control via
-%% resource tags applied to the resource identified by `domain name`. For
+%% The `delete domain' operation supports tag-based access control via
+%% resource tags applied to the resource identified by `domain name'. For
 %% more information, see the Lightsail Dev Guide.
 delete_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -797,8 +797,8 @@ delete_domain(Client, Input, Options)
 
 %% @doc Deletes a specific domain entry.
 %%
-%% The `delete domain entry` operation supports tag-based access control via
-%% resource tags applied to the resource identified by `domain name`. For
+%% The `delete domain entry' operation supports tag-based access control via
+%% resource tags applied to the resource identified by `domain name'. For
 %% more information, see the Lightsail Dev Guide.
 delete_domain_entry(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -809,8 +809,8 @@ delete_domain_entry(Client, Input, Options)
 
 %% @doc Deletes an Amazon Lightsail instance.
 %%
-%% The `delete instance` operation supports tag-based access control via
-%% resource tags applied to the resource identified by `instance name`. For
+%% The `delete instance' operation supports tag-based access control via
+%% resource tags applied to the resource identified by `instance name'. For
 %% more information, see the Lightsail Dev Guide.
 delete_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -822,9 +822,9 @@ delete_instance(Client, Input, Options)
 %% @doc Deletes a specific snapshot of a virtual private server (or
 %% instance).
 %%
-%% The `delete instance snapshot` operation supports tag-based access control
+%% The `delete instance snapshot' operation supports tag-based access control
 %% via resource tags applied to the resource identified by `instance snapshot
-%% name`. For more information, see the Lightsail Dev Guide.
+%% name'. For more information, see the Lightsail Dev Guide.
 delete_instance_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_instance_snapshot(Client, Input, []).
@@ -834,8 +834,8 @@ delete_instance_snapshot(Client, Input, Options)
 
 %% @doc Deletes a specific SSH key pair.
 %%
-%% The `delete key pair` operation supports tag-based access control via
-%% resource tags applied to the resource identified by `key pair name`. For
+%% The `delete key pair' operation supports tag-based access control via
+%% resource tags applied to the resource identified by `key pair name'. For
 %% more information, see the Lightsail Dev Guide.
 delete_key_pair(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -868,8 +868,8 @@ delete_known_host_keys(Client, Input, Options)
 %% Once the load balancer is deleted, you will need to create a new load
 %% balancer, create a new certificate, and verify domain ownership again.
 %%
-%% The `delete load balancer` operation supports tag-based access control via
-%% resource tags applied to the resource identified by `load balancer name`.
+%% The `delete load balancer' operation supports tag-based access control via
+%% resource tags applied to the resource identified by `load balancer name'.
 %% For more information, see the Lightsail Dev Guide.
 delete_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -881,9 +881,9 @@ delete_load_balancer(Client, Input, Options)
 %% @doc Deletes an SSL/TLS certificate associated with a Lightsail load
 %% balancer.
 %%
-%% The `DeleteLoadBalancerTlsCertificate` operation supports tag-based access
+%% The `DeleteLoadBalancerTlsCertificate' operation supports tag-based access
 %% control via resource tags applied to the resource identified by `load
-%% balancer name`. For more information, see the Lightsail Dev Guide.
+%% balancer name'. For more information, see the Lightsail Dev Guide.
 delete_load_balancer_tls_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_load_balancer_tls_certificate(Client, Input, []).
@@ -893,7 +893,7 @@ delete_load_balancer_tls_certificate(Client, Input, Options)
 
 %% @doc Deletes a database in Amazon Lightsail.
 %%
-%% The `delete relational database` operation supports tag-based access
+%% The `delete relational database' operation supports tag-based access
 %% control via resource tags applied to the resource identified by
 %% relationalDatabaseName. For more information, see the Lightsail Dev Guide.
 delete_relational_database(Client, Input)
@@ -905,7 +905,7 @@ delete_relational_database(Client, Input, Options)
 
 %% @doc Deletes a database snapshot in Amazon Lightsail.
 %%
-%% The `delete relational database snapshot` operation supports tag-based
+%% The `delete relational database snapshot' operation supports tag-based
 %% access control via resource tags applied to the resource identified by
 %% relationalDatabaseName. For more information, see the Lightsail Dev Guide.
 delete_relational_database_snapshot(Client, Input)
@@ -932,8 +932,8 @@ detach_certificate_from_distribution(Client, Input, Options)
 %% Make sure to unmount any file systems on the device within your operating
 %% system before stopping the instance and detaching the disk.
 %%
-%% The `detach disk` operation supports tag-based access control via resource
-%% tags applied to the resource identified by `disk name`. For more
+%% The `detach disk' operation supports tag-based access control via resource
+%% tags applied to the resource identified by `disk name'. For more
 %% information, see the Lightsail Dev Guide.
 detach_disk(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -947,9 +947,9 @@ detach_disk(Client, Input, Options)
 %% This operation waits until the instances are no longer needed before they
 %% are detached from the load balancer.
 %%
-%% The `detach instances from load balancer` operation supports tag-based
+%% The `detach instances from load balancer' operation supports tag-based
 %% access control via resource tags applied to the resource identified by
-%% `load balancer name`. For more information, see the Lightsail Dev Guide.
+%% `load balancer name'. For more information, see the Lightsail Dev Guide.
 detach_instances_from_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_instances_from_load_balancer(Client, Input, []).
@@ -998,7 +998,7 @@ enable_add_on(Client, Input, Options)
 %% to Amazon Elastic Compute Cloud (Amazon EC2).
 %%
 %% This operation results in an export snapshot record that can be used with
-%% the `create cloud formation stack` operation to create new Amazon EC2
+%% the `create cloud formation stack' operation to create new Amazon EC2
 %% instances.
 %%
 %% Exported instance snapshots appear in Amazon EC2 as Amazon Machine Images
@@ -1007,11 +1007,11 @@ enable_add_on(Client, Input, Options)
 %% Amazon EBS volumes. Snapshots are exported to the same Amazon Web Services
 %% Region in Amazon EC2 as the source Lightsail snapshot.
 %%
-%% The `export snapshot` operation supports tag-based access control via
+%% The `export snapshot' operation supports tag-based access control via
 %% resource tags applied to the resource identified by `source snapshot
-%% name`. For more information, see the Lightsail Dev Guide.
+%% name'. For more information, see the Lightsail Dev Guide.
 %%
-%% Use the `get instance snapshots` or `get disk snapshots` operations to get
+%% Use the `get instance snapshots' or `get disk snapshots' operations to get
 %% a list of snapshots that you can export to Amazon EC2.
 export_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1088,7 +1088,7 @@ get_bundles(Client, Input, Options)
 %% @doc Returns information about one or more Amazon Lightsail SSL/TLS
 %% certificates.
 %%
-%% To get a summary of a certificate, ommit `includeCertificateDetails` from
+%% To get a summary of a certificate, ommit `includeCertificateDetails' from
 %% your request. The response will include only the certificate Amazon
 %% Resource Name (ARN), certificate name, domain name, and tags.
 get_certificates(Client, Input)
@@ -1099,7 +1099,7 @@ get_certificates(Client, Input, Options)
     request(Client, <<"GetCertificates">>, Input, Options).
 
 %% @doc Returns the CloudFormation stack record created as a result of the
-%% `create cloud formation stack` operation.
+%% `create cloud formation stack' operation.
 %%
 %% An AWS CloudFormation stack is used to create a new Amazon EC2 instance
 %% from an exported Lightsail snapshot.
@@ -1222,10 +1222,10 @@ get_domains(Client, Input, Options)
     request(Client, <<"GetDomains">>, Input, Options).
 
 %% @doc Returns the export snapshot record created as a result of the `export
-%% snapshot` operation.
+%% snapshot' operation.
 %%
 %% An export snapshot record can be used to create a new Amazon EC2 instance
-%% and its related resources with the `create cloud formation stack`
+%% and its related resources with the `create cloud formation stack'
 %% operation.
 get_export_snapshot_records(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1246,9 +1246,9 @@ get_instance(Client, Input, Options)
 %% @doc Returns temporary SSH keys you can use to connect to a specific
 %% virtual private server, or instance.
 %%
-%% The `get instance access details` operation supports tag-based access
+%% The `get instance access details' operation supports tag-based access
 %% control via resource tags applied to the resource identified by `instance
-%% name`. For more information, see the Lightsail Dev Guide.
+%% name'. For more information, see the Lightsail Dev Guide.
 get_instance_access_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_instance_access_details(Client, Input, []).
@@ -1387,8 +1387,8 @@ get_operation(Client, Input, Options)
 %% @doc Returns information about all operations.
 %%
 %% Results are returned from oldest to newest, up to a maximum of 200.
-%% Results can be paged by making each subsequent call to `GetOperations` use
-%% the maximum (last) `statusChangedAt` value from the previous request.
+%% Results can be paged by making each subsequent call to `GetOperations' use
+%% the maximum (last) `statusChangedAt' value from the previous request.
 get_operations(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_operations(Client, Input, []).
@@ -1407,7 +1407,7 @@ get_operations_for_resource(Client, Input, Options)
 
 %% @doc Returns a list of all valid regions for Amazon Lightsail.
 %%
-%% Use the `include availability zones` parameter to also return the
+%% Use the `include availability zones' parameter to also return the
 %% Availability Zones in a region.
 get_regions(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1478,7 +1478,7 @@ get_relational_database_log_streams(Client, Input, Options)
 %% @doc Returns the current, previous, or pending versions of the master user
 %% password for a Lightsail database.
 %%
-%% The `GetRelationalDatabaseMasterUserPassword` operation supports tag-based
+%% The `GetRelationalDatabaseMasterUserPassword' operation supports tag-based
 %% access control via resource tags applied to the resource identified by
 %% relationalDatabaseName.
 get_relational_database_master_user_password(Client, Input)
@@ -1578,8 +1578,8 @@ is_vpc_peered(Client, Input, Options)
 %% the IP addresses allowed to connect to the instance through the ports, and
 %% the protocol.
 %%
-%% The `OpenInstancePublicPorts` action supports tag-based access control via
-%% resource tags applied to the resource identified by `instanceName`. For
+%% The `OpenInstancePublicPorts' action supports tag-based access control via
+%% resource tags applied to the resource identified by `instanceName'. For
 %% more information, see the Lightsail Dev Guide.
 open_instance_public_ports(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1605,7 +1605,7 @@ peer_vpc(Client, Input, Options)
 %% more information, see Alarms in Amazon Lightsail.
 %%
 %% When this action creates an alarm, the alarm state is immediately set to
-%% `INSUFFICIENT_DATA`. The alarm is then evaluated and its state is set
+%% `INSUFFICIENT_DATA'. The alarm is then evaluated and its state is set
 %% appropriately. Any actions associated with the new state are then
 %% executed.
 %%
@@ -1625,12 +1625,12 @@ put_alarm(Client, Input, Options)
 %%
 %% This action also closes all currently open ports that are not included in
 %% the request. Include all of the ports and the protocols you want to open
-%% in your `PutInstancePublicPorts`request. Or use the
-%% `OpenInstancePublicPorts` action to open ports without closing currently
+%% in your `PutInstancePublicPorts'request. Or use the
+%% `OpenInstancePublicPorts' action to open ports without closing currently
 %% open ports.
 %%
-%% The `PutInstancePublicPorts` action supports tag-based access control via
-%% resource tags applied to the resource identified by `instanceName`. For
+%% The `PutInstancePublicPorts' action supports tag-based access control via
+%% resource tags applied to the resource identified by `instanceName'. For
 %% more information, see the Lightsail Dev Guide.
 put_instance_public_ports(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1641,8 +1641,8 @@ put_instance_public_ports(Client, Input, Options)
 
 %% @doc Restarts a specific instance.
 %%
-%% The `reboot instance` operation supports tag-based access control via
-%% resource tags applied to the resource identified by `instance name`. For
+%% The `reboot instance' operation supports tag-based access control via
+%% resource tags applied to the resource identified by `instance name'. For
 %% more information, see the Lightsail Dev Guide.
 reboot_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1653,7 +1653,7 @@ reboot_instance(Client, Input, Options)
 
 %% @doc Restarts a specific database in Amazon Lightsail.
 %%
-%% The `reboot relational database` operation supports tag-based access
+%% The `reboot relational database' operation supports tag-based access
 %% control via resource tags applied to the resource identified by
 %% relationalDatabaseName. For more information, see the Lightsail Dev Guide.
 reboot_relational_database(Client, Input)
@@ -1710,15 +1710,15 @@ send_contact_method_verification(Client, Input, Options)
 
 %% @doc Starts a specific Amazon Lightsail instance from a stopped state.
 %%
-%% To restart an instance, use the `reboot instance` operation.
+%% To restart an instance, use the `reboot instance' operation.
 %%
 %% When you start a stopped instance, Lightsail assigns a new public IP
 %% address to the instance. To use the same IP address after stopping and
 %% starting an instance, create a static IP address and attach it to the
 %% instance. For more information, see the Lightsail Dev Guide.
 %%
-%% The `start instance` operation supports tag-based access control via
-%% resource tags applied to the resource identified by `instance name`. For
+%% The `start instance' operation supports tag-based access control via
+%% resource tags applied to the resource identified by `instance name'. For
 %% more information, see the Lightsail Dev Guide.
 start_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1729,9 +1729,9 @@ start_instance(Client, Input, Options)
 
 %% @doc Starts a specific database from a stopped state in Amazon Lightsail.
 %%
-%% To restart a database, use the `reboot relational database` operation.
+%% To restart a database, use the `reboot relational database' operation.
 %%
-%% The `start relational database` operation supports tag-based access
+%% The `start relational database' operation supports tag-based access
 %% control via resource tags applied to the resource identified by
 %% relationalDatabaseName. For more information, see the Lightsail Dev Guide.
 start_relational_database(Client, Input)
@@ -1748,8 +1748,8 @@ start_relational_database(Client, Input, Options)
 %% starting an instance, create a static IP address and attach it to the
 %% instance. For more information, see the Lightsail Dev Guide.
 %%
-%% The `stop instance` operation supports tag-based access control via
-%% resource tags applied to the resource identified by `instance name`. For
+%% The `stop instance' operation supports tag-based access control via
+%% resource tags applied to the resource identified by `instance name'. For
 %% more information, see the Lightsail Dev Guide.
 stop_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1761,7 +1761,7 @@ stop_instance(Client, Input, Options)
 %% @doc Stops a specific database that is currently running in Amazon
 %% Lightsail.
 %%
-%% The `stop relational database` operation supports tag-based access control
+%% The `stop relational database' operation supports tag-based access control
 %% via resource tags applied to the resource identified by
 %% relationalDatabaseName. For more information, see the Lightsail Dev Guide.
 stop_relational_database(Client, Input)
@@ -1777,9 +1777,9 @@ stop_relational_database(Client, Input, Options)
 %% and an optional value. Tag keys must be unique per resource. For more
 %% information about tags, see the Lightsail Dev Guide.
 %%
-%% The `tag resource` operation supports tag-based access control via request
+%% The `tag resource' operation supports tag-based access control via request
 %% tags and resource tags applied to the resource identified by `resource
-%% name`. For more information, see the Lightsail Dev Guide.
+%% name'. For more information, see the Lightsail Dev Guide.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -1791,8 +1791,8 @@ tag_resource(Client, Input, Options)
 %% console.
 %%
 %% If a notification trigger is configured for the specified alarm, the test
-%% also sends a notification to the notification protocol (`Email` and/or
-%% `SMS`) configured for the alarm.
+%% also sends a notification to the notification protocol (`Email' and/or
+%% `SMS') configured for the alarm.
 %%
 %% An alarm is used to monitor a single metric for one of your resources.
 %% When a metric condition is met, the alarm can notify you by email, SMS
@@ -1816,9 +1816,9 @@ unpeer_vpc(Client, Input, Options)
 %% @doc Deletes the specified set of tag keys and their values from the
 %% specified Amazon Lightsail resource.
 %%
-%% The `untag resource` operation supports tag-based access control via
+%% The `untag resource' operation supports tag-based access control via
 %% request tags and resource tags applied to the resource identified by
-%% `resource name`. For more information, see the Lightsail Dev Guide.
+%% `resource name'. For more information, see the Lightsail Dev Guide.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -1848,8 +1848,8 @@ update_distribution(Client, Input, Options)
 %%
 %% You can update your distribution's bundle only one time within your
 %% monthly AWS billing cycle. To determine if you can update your
-%% distribution's bundle, use the `GetDistributions` action. The
-%% `ableToUpdateBundle` parameter in the result will indicate whether you can
+%% distribution's bundle, use the `GetDistributions' action. The
+%% `ableToUpdateBundle' parameter in the result will indicate whether you can
 %% currently update your distribution's bundle.
 update_distribution_bundle(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1860,8 +1860,8 @@ update_distribution_bundle(Client, Input, Options)
 
 %% @doc Updates a domain recordset after it is created.
 %%
-%% The `update domain entry` operation supports tag-based access control via
-%% resource tags applied to the resource identified by `domain name`. For
+%% The `update domain entry' operation supports tag-based access control via
+%% resource tags applied to the resource identified by `domain name'. For
 %% more information, see the Lightsail Dev Guide.
 update_domain_entry(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1874,9 +1874,9 @@ update_domain_entry(Client, Input, Options)
 %%
 %% You can only update one attribute at a time.
 %%
-%% The `update load balancer attribute` operation supports tag-based access
+%% The `update load balancer attribute' operation supports tag-based access
 %% control via resource tags applied to the resource identified by `load
-%% balancer name`. For more information, see the Lightsail Dev Guide.
+%% balancer name'. For more information, see the Lightsail Dev Guide.
 update_load_balancer_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_load_balancer_attribute(Client, Input, []).
@@ -1891,7 +1891,7 @@ update_load_balancer_attribute(Client, Input, Options)
 %% result in an outage, are applied during the database's predefined
 %% maintenance window.
 %%
-%% The `update relational database` operation supports tag-based access
+%% The `update relational database' operation supports tag-based access
 %% control via resource tags applied to the resource identified by
 %% relationalDatabaseName. For more information, see the Lightsail Dev Guide.
 update_relational_database(Client, Input)
@@ -1906,13 +1906,13 @@ update_relational_database(Client, Input, Options)
 %%
 %% Parameter updates don't cause outages; therefore, their application is not
 %% subject to the preferred maintenance window. However, there are two ways
-%% in which parameter updates are applied: `dynamic` or `pending-reboot`.
-%% Parameters marked with a `dynamic` apply type are applied immediately.
-%% Parameters marked with a `pending-reboot` apply type are applied only
-%% after the database is rebooted using the `reboot relational database`
+%% in which parameter updates are applied: `dynamic' or `pending-reboot'.
+%% Parameters marked with a `dynamic' apply type are applied immediately.
+%% Parameters marked with a `pending-reboot' apply type are applied only
+%% after the database is rebooted using the `reboot relational database'
 %% operation.
 %%
-%% The `update relational database parameters` operation supports tag-based
+%% The `update relational database parameters' operation supports tag-based
 %% access control via resource tags applied to the resource identified by
 %% relationalDatabaseName. For more information, see the Lightsail Dev Guide.
 update_relational_database_parameters(Client, Input)

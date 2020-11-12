@@ -55,8 +55,8 @@
 %% improvements:
 %%
 %% <ul> <li> You use one API for both global and regional applications. Where
-%% you need to distinguish the scope, you specify a `Scope` parameter and set
-%% it to `CLOUDFRONT` or `REGIONAL`.
+%% you need to distinguish the scope, you specify a `Scope' parameter and set
+%% it to `CLOUDFRONT' or `REGIONAL'.
 %%
 %% </li> <li> You can define a Web ACL or rule group with a single call, and
 %% update it with a single call. You define all rule specifications in JSON
@@ -169,7 +169,7 @@
 %%
 %% For AWS CloudFront, don't use this call. Instead, use your CloudFront
 %% distribution configuration. To associate a Web ACL, in the CloudFront call
-%% `UpdateDistribution`, set the web ACL ID to the Amazon Resource Name (ARN)
+%% `UpdateDistribution', set the web ACL ID to the Amazon Resource Name (ARN)
 %% of the Web ACL. For information, see UpdateDistribution.
 associate_web_a_c_l(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -186,7 +186,7 @@ associate_web_a_c_l(Client, Input, Options)
 %%
 %% Returns the web ACL capacity unit (WCU) requirements for a specified scope
 %% and set of rules. You can use this to check the capacity requirements for
-%% the rules you want to use in a `RuleGroup` or `WebACL`.
+%% the rules you want to use in a `RuleGroup' or `WebACL'.
 %%
 %% AWS WAF uses WCUs to calculate and control the operating resources that
 %% are used to run your rules, rule groups, and web ACLs. AWS WAF calculates
@@ -208,7 +208,7 @@ check_capacity(Client, Input, Options)
 %% For information, including how to migrate your AWS WAF resources from the
 %% prior release, see the AWS WAF Developer Guide.
 %%
-%% Creates an `IPSet`, which you use to identify web requests that originate
+%% Creates an `IPSet', which you use to identify web requests that originate
 %% from specific IP addresses or ranges of IP addresses. For example, if
 %% you're receiving a lot of requests from a ranges of IP addresses, you can
 %% configure AWS WAF to block them using an IPSet that lists those IP
@@ -226,8 +226,8 @@ create_i_p_set(Client, Input, Options)
 %% For information, including how to migrate your AWS WAF resources from the
 %% prior release, see the AWS WAF Developer Guide.
 %%
-%% Creates a `RegexPatternSet`, which you reference in a
-%% `RegexPatternSetReferenceStatement`, to have AWS WAF inspect a web request
+%% Creates a `RegexPatternSet', which you reference in a
+%% `RegexPatternSetReferenceStatement', to have AWS WAF inspect a web request
 %% component for the specified patterns.
 create_regex_pattern_set(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -242,10 +242,10 @@ create_regex_pattern_set(Client, Input, Options)
 %% For information, including how to migrate your AWS WAF resources from the
 %% prior release, see the AWS WAF Developer Guide.
 %%
-%% Creates a `RuleGroup` per the specifications provided.
+%% Creates a `RuleGroup' per the specifications provided.
 %%
 %% A rule group defines a collection of rules to inspect and control web
-%% requests that you can use in a `WebACL`. When you create a rule group, you
+%% requests that you can use in a `WebACL'. When you create a rule group, you
 %% define an immutable capacity limit. If you update a rule group, you must
 %% stay within the capacity. This allows others to reuse the rule group with
 %% confidence in its capacity requirements.
@@ -262,14 +262,14 @@ create_rule_group(Client, Input, Options)
 %% For information, including how to migrate your AWS WAF resources from the
 %% prior release, see the AWS WAF Developer Guide.
 %%
-%% Creates a `WebACL` per the specifications provided.
+%% Creates a `WebACL' per the specifications provided.
 %%
 %% A Web ACL defines a collection of rules to use to inspect and control web
 %% requests. Each rule has an action defined (allow, block, or count) for
 %% requests that match the statement of the rule. In the Web ACL, you assign
 %% a default action to take (allow, block) for any request that does not
 %% match any of the rules. The rules in a Web ACL can be a combination of the
-%% types `Rule`, `RuleGroup`, and managed rule group. You can associate a Web
+%% types `Rule', `RuleGroup', and managed rule group. You can associate a Web
 %% ACL with one or more AWS resources to protect. The resources can be Amazon
 %% CloudFront, an Amazon API Gateway REST API, an Application Load Balancer,
 %% or an AWS AppSync GraphQL API.
@@ -283,8 +283,8 @@ create_web_a_c_l(Client, Input, Options)
 %% @doc Deletes all rule groups that are managed by AWS Firewall Manager for
 %% the specified web ACL.
 %%
-%% You can only use this if `ManagedByFirewallManager` is false in the
-%% specified `WebACL`.
+%% You can only use this if `ManagedByFirewallManager' is false in the
+%% specified `WebACL'.
 delete_firewall_manager_rule_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_firewall_manager_rule_groups(Client, Input, []).
@@ -298,7 +298,7 @@ delete_firewall_manager_rule_groups(Client, Input, Options)
 %% For information, including how to migrate your AWS WAF resources from the
 %% prior release, see the AWS WAF Developer Guide.
 %%
-%% Deletes the specified `IPSet`.
+%% Deletes the specified `IPSet'.
 delete_i_p_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_i_p_set(Client, Input, []).
@@ -312,7 +312,7 @@ delete_i_p_set(Client, Input, Options)
 %% For information, including how to migrate your AWS WAF resources from the
 %% prior release, see the AWS WAF Developer Guide.
 %%
-%% Deletes the `LoggingConfiguration` from the specified web ACL.
+%% Deletes the `LoggingConfiguration' from the specified web ACL.
 delete_logging_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_logging_configuration(Client, Input, []).
@@ -336,7 +336,7 @@ delete_permission_policy(Client, Input, Options)
 %% For information, including how to migrate your AWS WAF resources from the
 %% prior release, see the AWS WAF Developer Guide.
 %%
-%% Deletes the specified `RegexPatternSet`.
+%% Deletes the specified `RegexPatternSet'.
 delete_regex_pattern_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_regex_pattern_set(Client, Input, []).
@@ -350,7 +350,7 @@ delete_regex_pattern_set(Client, Input, Options)
 %% For information, including how to migrate your AWS WAF resources from the
 %% prior release, see the AWS WAF Developer Guide.
 %%
-%% Deletes the specified `RuleGroup`.
+%% Deletes the specified `RuleGroup'.
 delete_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_rule_group(Client, Input, []).
@@ -364,10 +364,10 @@ delete_rule_group(Client, Input, Options)
 %% For information, including how to migrate your AWS WAF resources from the
 %% prior release, see the AWS WAF Developer Guide.
 %%
-%% Deletes the specified `WebACL`.
+%% Deletes the specified `WebACL'.
 %%
-%% You can only use this if `ManagedByFirewallManager` is false in the
-%% specified `WebACL`.
+%% You can only use this if `ManagedByFirewallManager' is false in the
+%% specified `WebACL'.
 delete_web_a_c_l(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_web_a_c_l(Client, Input, []).
@@ -402,7 +402,7 @@ describe_managed_rule_group(Client, Input, Options)
 %%
 %% For AWS CloudFront, don't use this call. Instead, use your CloudFront
 %% distribution configuration. To disassociate a Web ACL, provide an empty
-%% web ACL ID in the CloudFront call `UpdateDistribution`. For information,
+%% web ACL ID in the CloudFront call `UpdateDistribution'. For information,
 %% see UpdateDistribution.
 disassociate_web_a_c_l(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -417,7 +417,7 @@ disassociate_web_a_c_l(Client, Input, Options)
 %% For information, including how to migrate your AWS WAF resources from the
 %% prior release, see the AWS WAF Developer Guide.
 %%
-%% Retrieves the specified `IPSet`.
+%% Retrieves the specified `IPSet'.
 get_i_p_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_i_p_set(Client, Input, []).
@@ -431,7 +431,7 @@ get_i_p_set(Client, Input, Options)
 %% For information, including how to migrate your AWS WAF resources from the
 %% prior release, see the AWS WAF Developer Guide.
 %%
-%% Returns the `LoggingConfiguration` for the specified web ACL.
+%% Returns the `LoggingConfiguration' for the specified web ACL.
 get_logging_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_logging_configuration(Client, Input, []).
@@ -472,7 +472,7 @@ get_rate_based_statement_managed_keys(Client, Input, Options)
 %% For information, including how to migrate your AWS WAF resources from the
 %% prior release, see the AWS WAF Developer Guide.
 %%
-%% Retrieves the specified `RegexPatternSet`.
+%% Retrieves the specified `RegexPatternSet'.
 get_regex_pattern_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_regex_pattern_set(Client, Input, []).
@@ -486,7 +486,7 @@ get_regex_pattern_set(Client, Input, Options)
 %% For information, including how to migrate your AWS WAF resources from the
 %% prior release, see the AWS WAF Developer Guide.
 %%
-%% Retrieves the specified `RuleGroup`.
+%% Retrieves the specified `RuleGroup'.
 get_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_rule_group(Client, Input, []).
@@ -506,10 +506,10 @@ get_rule_group(Client, Input, Options)
 %% can specify a sample size of up to 500 requests, and you can specify any
 %% time range in the previous three hours.
 %%
-%% `GetSampledRequests` returns a time range, which is usually the time range
+%% `GetSampledRequests' returns a time range, which is usually the time range
 %% that you specified. However, if your resource (such as a CloudFront
 %% distribution) received 5,000 requests before the specified time range
-%% elapsed, `GetSampledRequests` returns an updated time range. This new time
+%% elapsed, `GetSampledRequests' returns an updated time range. This new time
 %% range indicates the actual period during which AWS WAF selected the
 %% requests in the sample.
 get_sampled_requests(Client, Input)
@@ -525,7 +525,7 @@ get_sampled_requests(Client, Input, Options)
 %% For information, including how to migrate your AWS WAF resources from the
 %% prior release, see the AWS WAF Developer Guide.
 %%
-%% Retrieves the specified `WebACL`.
+%% Retrieves the specified `WebACL'.
 get_web_a_c_l(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_web_a_c_l(Client, Input, []).
@@ -539,7 +539,7 @@ get_web_a_c_l(Client, Input, Options)
 %% For information, including how to migrate your AWS WAF resources from the
 %% prior release, see the AWS WAF Developer Guide.
 %%
-%% Retrieves the `WebACL` for the specified resource.
+%% Retrieves the `WebACL' for the specified resource.
 get_web_a_c_l_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_web_a_c_l_for_resource(Client, Input, []).
@@ -569,7 +569,7 @@ list_available_managed_rule_groups(Client, Input, Options)
 %% For information, including how to migrate your AWS WAF resources from the
 %% prior release, see the AWS WAF Developer Guide.
 %%
-%% Retrieves an array of `IPSetSummary` objects for the IP sets that you
+%% Retrieves an array of `IPSetSummary' objects for the IP sets that you
 %% manage.
 list_i_p_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -584,7 +584,7 @@ list_i_p_sets(Client, Input, Options)
 %% For information, including how to migrate your AWS WAF resources from the
 %% prior release, see the AWS WAF Developer Guide.
 %%
-%% Retrieves an array of your `LoggingConfiguration` objects.
+%% Retrieves an array of your `LoggingConfiguration' objects.
 list_logging_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_logging_configurations(Client, Input, []).
@@ -598,7 +598,7 @@ list_logging_configurations(Client, Input, Options)
 %% For information, including how to migrate your AWS WAF resources from the
 %% prior release, see the AWS WAF Developer Guide.
 %%
-%% Retrieves an array of `RegexPatternSetSummary` objects for the regex
+%% Retrieves an array of `RegexPatternSetSummary' objects for the regex
 %% pattern sets that you manage.
 list_regex_pattern_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -616,7 +616,7 @@ list_regex_pattern_sets(Client, Input, Options)
 %% Retrieves an array of the Amazon Resource Names (ARNs) for the regional
 %% resources that are associated with the specified web ACL. If you want the
 %% list of AWS CloudFront resources, use the AWS CloudFront call
-%% `ListDistributionsByWebACLId`.
+%% `ListDistributionsByWebACLId'.
 list_resources_for_web_a_c_l(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resources_for_web_a_c_l(Client, Input, []).
@@ -630,7 +630,7 @@ list_resources_for_web_a_c_l(Client, Input, Options)
 %% For information, including how to migrate your AWS WAF resources from the
 %% prior release, see the AWS WAF Developer Guide.
 %%
-%% Retrieves an array of `RuleGroupSummary` objects for the rule groups that
+%% Retrieves an array of `RuleGroupSummary' objects for the rule groups that
 %% you manage.
 list_rule_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -645,7 +645,7 @@ list_rule_groups(Client, Input, Options)
 %% For information, including how to migrate your AWS WAF resources from the
 %% prior release, see the AWS WAF Developer Guide.
 %%
-%% Retrieves the `TagInfoForResource` for the specified resource. Tags are
+%% Retrieves the `TagInfoForResource' for the specified resource. Tags are
 %% key:value pairs that you can use to categorize and manage your resources,
 %% for purposes like billing. For example, you might set the tag key to
 %% "customer" and the value to the customer name or ID. You can specify one
@@ -667,7 +667,7 @@ list_tags_for_resource(Client, Input, Options)
 %% For information, including how to migrate your AWS WAF resources from the
 %% prior release, see the AWS WAF Developer Guide.
 %%
-%% Retrieves an array of `WebACLSummary` objects for the web ACLs that you
+%% Retrieves an array of `WebACLSummary' objects for the web ACLs that you
 %% manage.
 list_web_a_c_ls(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -682,7 +682,7 @@ list_web_a_c_ls(Client, Input, Options)
 %% For information, including how to migrate your AWS WAF resources from the
 %% prior release, see the AWS WAF Developer Guide.
 %%
-%% Enables the specified `LoggingConfiguration`, to start logging from a web
+%% Enables the specified `LoggingConfiguration', to start logging from a web
 %% ACL, according to the configuration provided.
 %%
 %% You can access information about all traffic that AWS WAF inspects using
@@ -694,16 +694,16 @@ list_web_a_c_ls(Client, Input, Options)
 %% operating. If you are capturing logs for Amazon CloudFront, always create
 %% the firehose in US East (N. Virginia).
 %%
-%% Give the data firehose a name that starts with the prefix `aws-waf-logs-`.
-%% For example, `aws-waf-logs-us-east-2-analytics`.
+%% Give the data firehose a name that starts with the prefix `aws-waf-logs-'.
+%% For example, `aws-waf-logs-us-east-2-analytics'.
 %%
-%% Do not create the data firehose using a `Kinesis stream` as your source.
+%% Do not create the data firehose using a `Kinesis stream' as your source.
 %%
 %% </li> <li> Associate that firehose to your web ACL using a
-%% `PutLoggingConfiguration` request.
+%% `PutLoggingConfiguration' request.
 %%
 %% </li> </ol> When you successfully enable logging using a
-%% `PutLoggingConfiguration` request, AWS WAF will create a service linked
+%% `PutLoggingConfiguration' request, AWS WAF will create a service linked
 %% role with the necessary permissions to write logs to the Amazon Kinesis
 %% Data Firehose. For more information, see Logging Web ACL Traffic
 %% Information in the AWS WAF Developer Guide.
@@ -722,10 +722,10 @@ put_logging_configuration(Client, Input, Options)
 %%
 %% This action is subject to the following restrictions:
 %%
-%% <ul> <li> You can attach only one policy with each `PutPermissionPolicy`
+%% <ul> <li> You can attach only one policy with each `PutPermissionPolicy'
 %% request.
 %%
-%% </li> <li> The ARN in the request must be a valid WAF `RuleGroup` ARN and
+%% </li> <li> The ARN in the request must be a valid WAF `RuleGroup' ARN and
 %% the rule group must exist in the same region.
 %%
 %% </li> <li> The user making the request must be the owner of the rule
@@ -785,7 +785,7 @@ untag_resource(Client, Input, Options)
 %% For information, including how to migrate your AWS WAF resources from the
 %% prior release, see the AWS WAF Developer Guide.
 %%
-%% Updates the specified `IPSet`.
+%% Updates the specified `IPSet'.
 update_i_p_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_i_p_set(Client, Input, []).
@@ -799,7 +799,7 @@ update_i_p_set(Client, Input, Options)
 %% For information, including how to migrate your AWS WAF resources from the
 %% prior release, see the AWS WAF Developer Guide.
 %%
-%% Updates the specified `RegexPatternSet`.
+%% Updates the specified `RegexPatternSet'.
 update_regex_pattern_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_regex_pattern_set(Client, Input, []).
@@ -813,10 +813,10 @@ update_regex_pattern_set(Client, Input, Options)
 %% For information, including how to migrate your AWS WAF resources from the
 %% prior release, see the AWS WAF Developer Guide.
 %%
-%% Updates the specified `RuleGroup`.
+%% Updates the specified `RuleGroup'.
 %%
 %% A rule group defines a collection of rules to inspect and control web
-%% requests that you can use in a `WebACL`. When you create a rule group, you
+%% requests that you can use in a `WebACL'. When you create a rule group, you
 %% define an immutable capacity limit. If you update a rule group, you must
 %% stay within the capacity. This allows others to reuse the rule group with
 %% confidence in its capacity requirements.
@@ -833,14 +833,14 @@ update_rule_group(Client, Input, Options)
 %% For information, including how to migrate your AWS WAF resources from the
 %% prior release, see the AWS WAF Developer Guide.
 %%
-%% Updates the specified `WebACL`.
+%% Updates the specified `WebACL'.
 %%
 %% A Web ACL defines a collection of rules to use to inspect and control web
 %% requests. Each rule has an action defined (allow, block, or count) for
 %% requests that match the statement of the rule. In the Web ACL, you assign
 %% a default action to take (allow, block) for any request that does not
 %% match any of the rules. The rules in a Web ACL can be a combination of the
-%% types `Rule`, `RuleGroup`, and managed rule group. You can associate a Web
+%% types `Rule', `RuleGroup', and managed rule group. You can associate a Web
 %% ACL with one or more AWS resources to protect. The resources can be Amazon
 %% CloudFront, an Amazon API Gateway REST API, an Application Load Balancer,
 %% or an AWS AppSync GraphQL API.

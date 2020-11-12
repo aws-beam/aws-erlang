@@ -175,7 +175,7 @@ create_alias(Client, Input, Options)
     request(Client, <<"CreateAlias">>, Input, Options).
 
 %% @doc Creates a group that can be used in Amazon WorkMail by calling the
-%% `RegisterToWorkMail` operation.
+%% `RegisterToWorkMail' operation.
 create_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_group(Client, Input, []).
@@ -219,7 +219,7 @@ create_resource(Client, Input, Options)
     request(Client, <<"CreateResource">>, Input, Options).
 
 %% @doc Creates a user who can be used in Amazon WorkMail by calling the
-%% `RegisterToWorkMail` operation.
+%% `RegisterToWorkMail' operation.
 create_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user(Client, Input, []).
@@ -293,8 +293,8 @@ delete_retention_policy(Client, Input, Options)
 
 %% @doc Deletes a user from Amazon WorkMail and all subsequent systems.
 %%
-%% Before you can delete a user, the user state must be `DISABLED`. Use the
-%% `DescribeUser` action to confirm the user state.
+%% Before you can delete a user, the user state must be `DISABLED'. Use the
+%% `DescribeUser' action to confirm the user state.
 %%
 %% Deleting a user is permanent and cannot be undone. WorkMail archives user
 %% mailboxes for 30 days before they are permanently removed.
@@ -535,9 +535,9 @@ put_retention_policy(Client, Input, Options)
 %% accumulation of costs. For more information, see Pricing. The equivalent
 %% console functionality for this operation is Enable.
 %%
-%% Users can either be created by calling the `CreateUser` API operation or
+%% Users can either be created by calling the `CreateUser' API operation or
 %% they can be synchronized from your directory. For more information, see
-%% `DeregisterFromWorkMail`.
+%% `DeregisterFromWorkMail'.
 register_to_work_mail(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_to_work_mail(Client, Input, []).
@@ -608,8 +608,8 @@ update_primary_email_address(Client, Input, Options)
 %% @doc Updates data for the resource.
 %%
 %% To have the latest information, it must be preceded by a
-%% `DescribeResource` call. The dataset in the request should be the one
-%% expected when performing another `DescribeResource` call.
+%% `DescribeResource' call. The dataset in the request should be the one
+%% expected when performing another `DescribeResource' call.
 update_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_resource(Client, Input, []).

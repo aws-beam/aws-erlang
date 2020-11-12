@@ -404,12 +404,12 @@ create_document(Client, Input, Options)
 
 %% @doc Creates a new maintenance window.
 %%
-%% The value you specify for `Duration` determines the specific end time for
+%% The value you specify for `Duration' determines the specific end time for
 %% the maintenance window based on the time it begins. No maintenance window
 %% tasks are permitted to start after the resulting endtime minus the number
-%% of hours you specify for `Cutoff`. For example, if the maintenance window
+%% of hours you specify for `Cutoff'. For example, if the maintenance window
 %% starts at 3 PM, the duration is three hours, and the value you specify for
-%% `Cutoff` is one hour, no maintenance window tasks can start after 5 PM.
+%% `Cutoff' is one hour, no maintenance window tasks can start after 5 PM.
 create_maintenance_window(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_maintenance_window(Client, Input, []).
@@ -436,7 +436,7 @@ create_ops_item(Client, Input, Options)
 
 %% @doc Creates a patch baseline.
 %%
-%% For information about valid key and value pairs in `PatchFilters` for each
+%% For information about valid key and value pairs in `PatchFilters' for each
 %% supported operating system type, see PatchFilter.
 create_patch_baseline(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -449,25 +449,25 @@ create_patch_baseline(Client, Input, Options)
 %% single location.
 %%
 %% Systems Manager offers two types of resource data sync:
-%% `SyncToDestination` and `SyncFromSource`.
+%% `SyncToDestination' and `SyncFromSource'.
 %%
-%% You can configure Systems Manager Inventory to use the `SyncToDestination`
+%% You can configure Systems Manager Inventory to use the `SyncToDestination'
 %% type to synchronize Inventory data from multiple AWS Regions to a single
 %% S3 bucket. For more information, see Configuring Resource Data Sync for
 %% Inventory in the AWS Systems Manager User Guide.
 %%
-%% You can configure Systems Manager Explorer to use the `SyncFromSource`
+%% You can configure Systems Manager Explorer to use the `SyncFromSource'
 %% type to synchronize operational work items (OpsItems) and operational data
 %% (OpsData) from multiple AWS Regions to a single S3 bucket. This type can
 %% synchronize OpsItems and OpsData from multiple AWS accounts and Regions or
-%% `EntireOrganization` by using AWS Organizations. For more information, see
+%% `EntireOrganization' by using AWS Organizations. For more information, see
 %% Setting up Systems Manager Explorer to display data from multiple accounts
 %% and Regions in the AWS Systems Manager User Guide.
 %%
 %% A resource data sync is an asynchronous operation that returns
 %% immediately. After a successful initial sync is completed, the system
 %% continuously syncs data. To check the status of a sync, use the
-%% `ListResourceDataSync`.
+%% `ListResourceDataSync'.
 %%
 %% By default, data is not encrypted in Amazon S3. We strongly recommend that
 %% you enable encryption in Amazon S3 to ensure secure data storage. We also
@@ -511,7 +511,7 @@ delete_association(Client, Input, Options)
 %% the document.
 %%
 %% Before you delete the document, we recommend that you use
-%% `DeleteAssociation` to disassociate all instances that are associated with
+%% `DeleteAssociation' to disassociate all instances that are associated with
 %% the document.
 delete_document(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -625,7 +625,7 @@ describe_activations(Client, Input, Options)
 
 %% @doc Describes the association for the specified target or instance.
 %%
-%% If you created the association by using the `Targets` parameter, then you
+%% If you created the association by using the `Targets' parameter, then you
 %% must retrieve the association by using the association ID. If you created
 %% the association by specifying an instance ID and a Systems Manager
 %% document, then you retrieve the association by specifying the document
@@ -873,12 +873,12 @@ describe_ops_items(Client, Input, Options)
 %% @doc Get information about a parameter.
 %%
 %% Request results are returned on a best-effort basis. If you specify
-%% `MaxResults` in the request, the response includes information up to the
+%% `MaxResults' in the request, the response includes information up to the
 %% limit specified. The number of items returned, however, can be between
-%% zero and the value of `MaxResults`. If the service reaches an internal
+%% zero and the value of `MaxResults'. If the service reaches an internal
 %% limit while processing the results, it stops the operation and returns the
-%% matching values up to that point and a `NextToken`. You can specify the
-%% `NextToken` in a subsequent call to get the next set of results.
+%% matching values up to that point and a `NextToken'. You can specify the
+%% `NextToken' in a subsequent call to get the next set of results.
 describe_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_parameters(Client, Input, []).
@@ -917,8 +917,8 @@ describe_patch_groups(Client, Input, Options)
 %% available patches.
 %%
 %% You can use the reported properties in the filters you specify in requests
-%% for actions such as `CreatePatchBaseline`, `UpdatePatchBaseline`,
-%% `DescribeAvailablePatches`, and `DescribePatchBaselines`.
+%% for actions such as `CreatePatchBaseline', `UpdatePatchBaseline',
+%% `DescribeAvailablePatches', and `DescribePatchBaselines'.
 %%
 %% The following section lists the properties that can be used in filters for
 %% each major operating system type:
@@ -976,16 +976,16 @@ get_automation_execution(Client, Input, Options)
 %% @doc Gets the state of the AWS Systems Manager Change Calendar at an
 %% optional, specified time.
 %%
-%% If you specify a time, `GetCalendarState` returns the state of the
+%% If you specify a time, `GetCalendarState' returns the state of the
 %% calendar at a specific time, and returns the next time that the Change
 %% Calendar state will transition. If you do not specify a time,
-%% `GetCalendarState` assumes the current time. Change Calendar entries have
-%% two possible states: `OPEN` or `CLOSED`.
+%% `GetCalendarState' assumes the current time. Change Calendar entries have
+%% two possible states: `OPEN' or `CLOSED'.
 %%
 %% If you specify more than one calendar in a request, the command returns
-%% the status of `OPEN` only if all calendars in the request are open. If one
+%% the status of `OPEN' only if all calendars in the request are open. If one
 %% or more calendars in the request are closed, the status returned is
-%% `CLOSED`.
+%% `CLOSED'.
 %%
 %% For more information about Systems Manager Change Calendar, see AWS
 %% Systems Manager Change Calendar in the AWS Systems Manager User Guide.
@@ -1137,7 +1137,7 @@ get_ops_summary(Client, Input, Options)
 
 %% @doc Get information about a parameter by using the parameter name.
 %%
-%% Don't confuse this API action with the `GetParameters` API action.
+%% Don't confuse this API action with the `GetParameters' API action.
 get_parameter(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_parameter(Client, Input, []).
@@ -1155,7 +1155,7 @@ get_parameter_history(Client, Input, Options)
 
 %% @doc Get details of a parameter.
 %%
-%% Don't confuse this API action with the `GetParameter` API action.
+%% Don't confuse this API action with the `GetParameter' API action.
 get_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_parameters(Client, Input, []).
@@ -1167,12 +1167,12 @@ get_parameters(Client, Input, Options)
 %% hierarchy.
 %%
 %% Request results are returned on a best-effort basis. If you specify
-%% `MaxResults` in the request, the response includes information up to the
+%% `MaxResults' in the request, the response includes information up to the
 %% limit specified. The number of items returned, however, can be between
-%% zero and the value of `MaxResults`. If the service reaches an internal
+%% zero and the value of `MaxResults'. If the service reaches an internal
 %% limit while processing the results, it stops the operation and returns the
-%% matching values up to that point and a `NextToken`. You can specify the
-%% `NextToken` in a subsequent call to get the next set of results.
+%% matching values up to that point and a `NextToken'. You can specify the
+%% `NextToken' in a subsequent call to get the next set of results.
 get_parameters_by_path(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_parameters_by_path(Client, Input, []).
@@ -1197,7 +1197,7 @@ get_patch_baseline_for_patch_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPatchBaselineForPatchGroup">>, Input, Options).
 
-%% @doc `ServiceSetting` is an account-level setting for an AWS service.
+%% @doc `ServiceSetting' is an account-level setting for an AWS service.
 %%
 %% This setting defines how a user interacts with or uses a service or a
 %% feature of a service. For example, if an AWS service charges money to the
@@ -1206,12 +1206,12 @@ get_patch_baseline_for_patch_group(Client, Input, Options)
 %% feature unless they change the setting to "true" and intentionally opt in
 %% for a paid feature.
 %%
-%% Services map a `SettingId` object to a setting value. AWS services teams
-%% define the default value for a `SettingId`. You can't create a new
-%% `SettingId`, but you can overwrite the default value if you have the
-%% `ssm:UpdateServiceSetting` permission for the setting. Use the
-%% `UpdateServiceSetting` API action to change the default setting. Or use
-%% the `ResetServiceSetting` to change the value back to the original value
+%% Services map a `SettingId' object to a setting value. AWS services teams
+%% define the default value for a `SettingId'. You can't create a new
+%% `SettingId', but you can overwrite the default value if you have the
+%% `ssm:UpdateServiceSetting' permission for the setting. Use the
+%% `UpdateServiceSetting' API action to change the default setting. Or use
+%% the `ResetServiceSetting' to change the value back to the original value
 %% defined by the AWS service team.
 %%
 %% Query the current service setting for the account.
@@ -1377,11 +1377,11 @@ list_resource_compliance_summaries(Client, Input, Options)
 %% last sync status, and the last time a sync successfully completed.
 %%
 %% The number of sync configurations might be too large to return using a
-%% single call to `ListResourceDataSync`. You can limit the number of sync
-%% configurations returned by using the `MaxResults` parameter. To determine
+%% single call to `ListResourceDataSync'. You can limit the number of sync
+%% configurations returned by using the `MaxResults' parameter. To determine
 %% whether there are more sync configurations to list, check the value of
-%% `NextToken` in the output. If there are more sync configurations to list,
-%% you can request them by specifying the `NextToken` returned in the call to
+%% `NextToken' in the output. If there are more sync configurations to list,
+%% you can request them by specifying the `NextToken' returned in the call to
 %% the parameter of a subsequent call.
 list_resource_data_sync(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1423,7 +1423,7 @@ modify_document_permission(Client, Input, Options)
 %% <ul> <li> ExecutionId: The execution ID when the patch, association, or
 %% custom compliance item was applied.
 %%
-%% </li> <li> ExecutionType: Specify patch, association, or Custom:`string`.
+%% </li> <li> ExecutionType: Specify patch, association, or Custom:`string'.
 %%
 %% </li> <li> ExecutionTime. The time the patch, association, or custom
 %% compliance item was applied to the instance.
@@ -1433,9 +1433,9 @@ modify_document_permission(Client, Input, Options)
 %% </li> <li> Title: A title.
 %%
 %% </li> <li> Status: The status of the compliance item. For example,
-%% `approved` for patches, or `Failed` for associations.
+%% `approved' for patches, or `Failed' for associations.
 %%
-%% </li> <li> Severity: A patch severity. For example, `critical`.
+%% </li> <li> Severity: A patch severity. For example, `critical'.
 %%
 %% </li> <li> DocumentName: A SSM document name. For example,
 %% AWS-RunPatchBaseline.
@@ -1444,14 +1444,14 @@ modify_document_permission(Client, Input, Options)
 %% 4.
 %%
 %% </li> <li> Classification: A patch classification. For example, `security
-%% updates`.
+%% updates'.
 %%
 %% </li> <li> PatchBaselineId: A patch baseline ID.
 %%
-%% </li> <li> PatchSeverity: A patch severity. For example, `Critical`.
+%% </li> <li> PatchSeverity: A patch severity. For example, `Critical'.
 %%
 %% </li> <li> PatchState: A patch state. For example,
-%% `InstancesWithFailedPatches`.
+%% `InstancesWithFailedPatches'.
 %%
 %% </li> <li> PatchGroup: The name of a patch group.
 %%
@@ -1491,8 +1491,8 @@ put_parameter(Client, Input, Options)
 %% To reset the AWS predefined patch baseline as the default, specify the
 %% full patch baseline ARN as the baseline ID value. For example, for CentOS,
 %% specify
-%% `arn:aws:ssm:us-east-2:733109147000:patchbaseline/pb-0574b43a65ea646ed`
-%% instead of `pb-0574b43a65ea646ed`.
+%% `arn:aws:ssm:us-east-2:733109147000:patchbaseline/pb-0574b43a65ea646ed'
+%% instead of `pb-0574b43a65ea646ed'.
 register_default_patch_baseline(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_default_patch_baseline(Client, Input, []).
@@ -1532,7 +1532,7 @@ remove_tags_from_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTagsFromResource">>, Input, Options).
 
-%% @doc `ServiceSetting` is an account-level setting for an AWS service.
+%% @doc `ServiceSetting' is an account-level setting for an AWS service.
 %%
 %% This setting defines how a user interacts with or uses a service or a
 %% feature of a service. For example, if an AWS service charges money to the
@@ -1541,12 +1541,12 @@ remove_tags_from_resource(Client, Input, Options)
 %% feature unless they change the setting to "true" and intentionally opt in
 %% for a paid feature.
 %%
-%% Services map a `SettingId` object to a setting value. AWS services teams
-%% define the default value for a `SettingId`. You can't create a new
-%% `SettingId`, but you can overwrite the default value if you have the
-%% `ssm:UpdateServiceSetting` permission for the setting. Use the
-%% `GetServiceSetting` API action to view the current value. Use the
-%% `UpdateServiceSetting` API action to change the default setting.
+%% Services map a `SettingId' object to a setting value. AWS services teams
+%% define the default value for a `SettingId'. You can't create a new
+%% `SettingId', but you can overwrite the default value if you have the
+%% `ssm:UpdateServiceSetting' permission for the setting. Use the
+%% `GetServiceSetting' API action to view the current value. Use the
+%% `UpdateServiceSetting' API action to change the default setting.
 %%
 %% Reset the service setting for the account to the default value as
 %% provisioned by the AWS service team.
@@ -1614,7 +1614,7 @@ start_automation_execution(Client, Input, Options)
 %% Returns a URL and token that can be used to open a WebSocket connection
 %% for sending input and receiving outputs.
 %%
-%% AWS CLI usage: `start-session` is an interactive command that requires the
+%% AWS CLI usage: `start-session' is an interactive command that requires the
 %% Session Manager plugin to be installed on the client machine making the
 %% call. For information, see Install the Session Manager plugin for the AWS
 %% CLI in the AWS Systems Manager User Guide.
@@ -1653,12 +1653,12 @@ terminate_session(Client, Input, Options)
 %% schedule, parameters, and Amazon S3 output.
 %%
 %% In order to call this API action, your IAM user account, group, or role
-%% must be configured with permission to call the `DescribeAssociation` API
+%% must be configured with permission to call the `DescribeAssociation' API
 %% action. If you don't have permission to call DescribeAssociation, then you
 %% receive the following error: `An error occurred (AccessDeniedException)
 %% when calling the UpdateAssociation operation: User: <user_arn> is not
 %% authorized to perform: ssm:DescribeAssociation on resource:
-%% <resource_arn>`
+%% <resource_arn>'
 %%
 %% When you update an association, the association immediately runs against
 %% the specified targets.
@@ -1698,12 +1698,12 @@ update_document_default_version(Client, Input, Options)
 %%
 %% Only specified parameters are modified.
 %%
-%% The value you specify for `Duration` determines the specific end time for
+%% The value you specify for `Duration' determines the specific end time for
 %% the maintenance window based on the time it begins. No maintenance window
 %% tasks are permitted to start after the resulting endtime minus the number
-%% of hours you specify for `Cutoff`. For example, if the maintenance window
+%% of hours you specify for `Cutoff'. For example, if the maintenance window
 %% starts at 3 PM, the duration is three hours, and the value you specify for
-%% `Cutoff` is one hour, no maintenance window tasks can start after 5 PM.
+%% `Cutoff' is one hour, no maintenance window tasks can start after 5 PM.
 update_maintenance_window(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_maintenance_window(Client, Input, []).
@@ -1727,7 +1727,7 @@ update_maintenance_window(Client, Input, Options)
 %%
 %% </li> <li> From any supported tag type to another. The three supported tag
 %% types are ID target, Tag target, and resource group. For more information,
-%% see `Target`.
+%% see `Target'.
 %%
 %% </li> </ul> If a parameter is null, then the corresponding field is not
 %% modified.
@@ -1755,21 +1755,21 @@ update_maintenance_window_target(Client, Input, Options)
 %%
 %% </li> <li> MaxErrors
 %%
-%% </li> </ul> If the value for a parameter in `UpdateMaintenanceWindowTask`
+%% </li> </ul> If the value for a parameter in `UpdateMaintenanceWindowTask'
 %% is null, then the corresponding field is not modified. If you set
-%% `Replace` to true, then all fields required by the
-%% `RegisterTaskWithMaintenanceWindow` action are required for this request.
+%% `Replace' to true, then all fields required by the
+%% `RegisterTaskWithMaintenanceWindow' action are required for this request.
 %% Optional fields that aren't specified are set to null.
 %%
 %% When you update a maintenance window task that has options specified in
-%% `TaskInvocationParameters`, you must provide again all the
-%% `TaskInvocationParameters` values that you want to retain. The values you
+%% `TaskInvocationParameters', you must provide again all the
+%% `TaskInvocationParameters' values that you want to retain. The values you
 %% do not specify again are removed. For example, suppose that when you
-%% registered a Run Command task, you specified `TaskInvocationParameters`
-%% values for `Comment`, `NotificationConfig`, and `OutputS3BucketName`. If
+%% registered a Run Command task, you specified `TaskInvocationParameters'
+%% values for `Comment', `NotificationConfig', and `OutputS3BucketName'. If
 %% you update the maintenance window task and specify only a different
-%% `OutputS3BucketName` value, the values for `Comment` and
-%% `NotificationConfig` are removed.
+%% `OutputS3BucketName' value, the values for `Comment' and
+%% `NotificationConfig' are removed.
 update_maintenance_window_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_maintenance_window_task(Client, Input, []).
@@ -1781,7 +1781,7 @@ update_maintenance_window_task(Client, Input, Options)
 %% assigned to the on-premises instance or virtual machines (VM).
 %%
 %% IAM roles are first assigned to these hybrid instances during the
-%% activation process. For more information, see `CreateActivation`.
+%% activation process. For more information, see `CreateActivation'.
 update_managed_instance_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_managed_instance_role(Client, Input, []).
@@ -1810,7 +1810,7 @@ update_ops_item(Client, Input, Options)
 %%
 %% Fields not specified in the request are left unchanged.
 %%
-%% For information about valid key and value pairs in `PatchFilters` for each
+%% For information about valid key and value pairs in `PatchFilters' for each
 %% supported operating system type, see PatchFilter.
 update_patch_baseline(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1829,7 +1829,7 @@ update_patch_baseline(Client, Input, Options)
 %% delete the first resource data sync, and create a new one.
 %%
 %% This API action only supports a resource data sync that was created with a
-%% SyncFromSource `SyncType`.
+%% SyncFromSource `SyncType'.
 update_resource_data_sync(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_resource_data_sync(Client, Input, []).
@@ -1837,7 +1837,7 @@ update_resource_data_sync(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateResourceDataSync">>, Input, Options).
 
-%% @doc `ServiceSetting` is an account-level setting for an AWS service.
+%% @doc `ServiceSetting' is an account-level setting for an AWS service.
 %%
 %% This setting defines how a user interacts with or uses a service or a
 %% feature of a service. For example, if an AWS service charges money to the
@@ -1846,12 +1846,12 @@ update_resource_data_sync(Client, Input, Options)
 %% feature unless they change the setting to "true" and intentionally opt in
 %% for a paid feature.
 %%
-%% Services map a `SettingId` object to a setting value. AWS services teams
-%% define the default value for a `SettingId`. You can't create a new
-%% `SettingId`, but you can overwrite the default value if you have the
-%% `ssm:UpdateServiceSetting` permission for the setting. Use the
-%% `GetServiceSetting` API action to view the current value. Or, use the
-%% `ResetServiceSetting` to change the value back to the original value
+%% Services map a `SettingId' object to a setting value. AWS services teams
+%% define the default value for a `SettingId'. You can't create a new
+%% `SettingId', but you can overwrite the default value if you have the
+%% `ssm:UpdateServiceSetting' permission for the setting. Use the
+%% `GetServiceSetting' API action to view the current value. Or, use the
+%% `ResetServiceSetting' to change the value back to the original value
 %% defined by the AWS service team.
 %%
 %% Update the service setting for the account.

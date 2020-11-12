@@ -125,7 +125,7 @@ delete_protocols_list(Client, Input, Options)
 %% Manager administrator account.
 %%
 %% To set a different account as the administrator account, you must submit
-%% an `AssociateAdminAccount` request.
+%% an `AssociateAdminAccount' request.
 disassociate_admin_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_admin_account(Client, Input, []).
@@ -213,7 +213,7 @@ get_violation_details(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetViolationDetails">>, Input, Options).
 
-%% @doc Returns an array of `AppsListDataSummary` objects.
+%% @doc Returns an array of `AppsListDataSummary' objects.
 list_apps_lists(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_apps_lists(Client, Input, []).
@@ -221,9 +221,9 @@ list_apps_lists(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAppsLists">>, Input, Options).
 
-%% @doc Returns an array of `PolicyComplianceStatus` objects.
+%% @doc Returns an array of `PolicyComplianceStatus' objects.
 %%
-%% Use `PolicyComplianceStatus` to get a summary of which member accounts are
+%% Use `PolicyComplianceStatus' to get a summary of which member accounts are
 %% protected by the specified policy.
 list_compliance_status(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -232,10 +232,10 @@ list_compliance_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListComplianceStatus">>, Input, Options).
 
-%% @doc Returns a `MemberAccounts` object that lists the member accounts in
+%% @doc Returns a `MemberAccounts' object that lists the member accounts in
 %% the administrator's AWS organization.
 %%
-%% The `ListMemberAccounts` must be submitted by the account that is set as
+%% The `ListMemberAccounts' must be submitted by the account that is set as
 %% the AWS Firewall Manager administrator.
 list_member_accounts(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -244,7 +244,7 @@ list_member_accounts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMemberAccounts">>, Input, Options).
 
-%% @doc Returns an array of `PolicySummary` objects.
+%% @doc Returns an array of `PolicySummary' objects.
 list_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_policies(Client, Input, []).
@@ -252,7 +252,7 @@ list_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPolicies">>, Input, Options).
 
-%% @doc Returns an array of `ProtocolsListDataSummary` objects.
+%% @doc Returns an array of `ProtocolsListDataSummary' objects.
 list_protocols_lists(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_protocols_lists(Client, Input, []).

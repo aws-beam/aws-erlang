@@ -249,14 +249,14 @@ create_i_p_set(Client, DetectorId, Input0, Options) ->
 %% This step is a prerequisite for managing the associated member accounts
 %% either by invitation or through an organization.
 %%
-%% When using `Create Members` as an organizations delegated administrator
+%% When using `Create Members' as an organizations delegated administrator
 %% this action will enable GuardDuty in the added member accounts, with the
 %% exception of the organization master account, which must enable GuardDuty
 %% prior to being added as a member.
 %%
 %% If you are adding accounts by invitation use this action after GuardDuty
 %% has been enabled in potential member accounts and before using `Invite
-%% Members` .
+%% Members' .
 create_members(Client, DetectorId, Input) ->
     create_members(Client, DetectorId, Input, []).
 create_members(Client, DetectorId, Input0, Options) ->
@@ -294,7 +294,7 @@ create_publishing_destination(Client, DetectorId, Input0, Options) ->
 %% @doc Generates example findings of types specified by the list of finding
 %% types.
 %%
-%% If 'NULL' is specified for `findingTypes`, the API generates example
+%% If 'NULL' is specified for `findingTypes', the API generates example
 %% findings of all supported finding types.
 create_sample_findings(Client, DetectorId, Input) ->
     create_sample_findings(Client, DetectorId, Input, []).
@@ -381,7 +381,7 @@ delete_filter(Client, DetectorId, FilterName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the IPSet specified by the `ipSetId`.
+%% @doc Deletes the IPSet specified by the `ipSetId'.
 %%
 %% IPSets are called trusted IP lists in the console user interface.
 delete_i_p_set(Client, DetectorId, IpSetId, Input) ->
@@ -433,7 +433,7 @@ delete_members(Client, DetectorId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the publishing definition with the specified `destinationId`.
+%% @doc Deletes the publishing definition with the specified `destinationId'.
 delete_publishing_destination(Client, DestinationId, DetectorId, Input) ->
     delete_publishing_destination(Client, DestinationId, DetectorId, Input, []).
 delete_publishing_destination(Client, DestinationId, DetectorId, Input0, Options) ->
@@ -482,7 +482,7 @@ describe_organization_configuration(Client, DetectorId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about the publishing destination specified by the
-%% provided `destinationId`.
+%% provided `destinationId'.
 describe_publishing_destination(Client, DestinationId, DetectorId)
   when is_map(Client) ->
     describe_publishing_destination(Client, DestinationId, DetectorId, []).
@@ -628,7 +628,7 @@ get_findings_statistics(Client, DetectorId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves the IPSet specified by the `ipSetId`.
+%% @doc Retrieves the IPSet specified by the `ipSetId'.
 get_i_p_set(Client, DetectorId, IpSetId)
   when is_map(Client) ->
     get_i_p_set(Client, DetectorId, IpSetId, []).
@@ -913,7 +913,7 @@ list_organization_admin_accounts(Client, MaxResults, NextToken, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of publishing destinations associated with the
-%% specified `dectectorId`.
+%% specified `dectectorId'.
 list_publishing_destinations(Client, DetectorId, MaxResults, NextToken)
   when is_map(Client) ->
     list_publishing_destinations(Client, DetectorId, MaxResults, NextToken, []).
@@ -979,7 +979,7 @@ list_threat_intel_sets(Client, DetectorId, MaxResults, NextToken, Options)
 %% @doc Turns on GuardDuty monitoring of the specified member accounts.
 %%
 %% Use this operation to restart monitoring of accounts that you stopped
-%% monitoring with the `StopMonitoringMembers` operation.
+%% monitoring with the `StopMonitoringMembers' operation.
 start_monitoring_members(Client, DetectorId, Input) ->
     start_monitoring_members(Client, DetectorId, Input, []).
 start_monitoring_members(Client, DetectorId, Input0, Options) ->
@@ -997,7 +997,7 @@ start_monitoring_members(Client, DetectorId, Input0, Options) ->
 
 %% @doc Stops GuardDuty monitoring for the specified member accounts.
 %%
-%% Use the `StartMonitoringMembers` operation to restart monitoring for those
+%% Use the `StartMonitoringMembers' operation to restart monitoring for those
 %% accounts.
 stop_monitoring_members(Client, DetectorId, Input) ->
     stop_monitoring_members(Client, DetectorId, Input, []).
@@ -1030,7 +1030,7 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Unarchives GuardDuty findings specified by the `findingIds`.
+%% @doc Unarchives GuardDuty findings specified by the `findingIds'.
 unarchive_findings(Client, DetectorId, Input) ->
     unarchive_findings(Client, DetectorId, Input, []).
 unarchive_findings(Client, DetectorId, Input0, Options) ->
@@ -1160,7 +1160,7 @@ update_organization_configuration(Client, DetectorId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates information about the publishing destination specified by the
-%% `destinationId`.
+%% `destinationId'.
 update_publishing_destination(Client, DestinationId, DetectorId, Input) ->
     update_publishing_destination(Client, DestinationId, DetectorId, Input, []).
 update_publishing_destination(Client, DestinationId, DetectorId, Input0, Options) ->

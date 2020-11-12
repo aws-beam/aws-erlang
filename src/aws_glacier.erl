@@ -116,7 +116,7 @@
 %% Aborting a completed upload fails. However, aborting an already-aborted
 %% upload will succeed, for a short time. For more information about
 %% uploading a part and completing a multipart upload, see
-%% `UploadMultipartPart` and `CompleteMultipartUpload`.
+%% `UploadMultipartPart' and `CompleteMultipartUpload'.
 %%
 %% This operation is idempotent.
 %%
@@ -145,22 +145,22 @@ abort_multipart_upload(Client, AccountId, UploadId, VaultName, Input0, Options) 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This operation aborts the vault locking process if the vault lock is
-%% not in the `Locked` state.
+%% not in the `Locked' state.
 %%
-%% If the vault lock is in the `Locked` state when this operation is
-%% requested, the operation returns an `AccessDeniedException` error.
+%% If the vault lock is in the `Locked' state when this operation is
+%% requested, the operation returns an `AccessDeniedException' error.
 %% Aborting the vault locking process removes the vault lock policy from the
 %% specified vault.
 %%
-%% A vault lock is put into the `InProgress` state by calling
-%% `InitiateVaultLock`. A vault lock is put into the `Locked` state by
-%% calling `CompleteVaultLock`. You can get the state of a vault lock by
-%% calling `GetVaultLock`. For more information about the vault locking
+%% A vault lock is put into the `InProgress' state by calling
+%% `InitiateVaultLock'. A vault lock is put into the `Locked' state by
+%% calling `CompleteVaultLock'. You can get the state of a vault lock by
+%% calling `GetVaultLock'. For more information about the vault locking
 %% process, see Amazon Glacier Vault Lock. For more information about vault
 %% lock policies, see Amazon Glacier Access Control with Vault Lock Policies.
 %%
 %% This operation is idempotent. You can successfully invoke this operation
-%% multiple times, if the vault lock is in the `InProgress` state or if there
+%% multiple times, if the vault lock is in the `InProgress' state or if there
 %% is no policy associated with the vault.
 abort_vault_lock(Client, AccountId, VaultName, Input) ->
     abort_vault_lock(Client, AccountId, VaultName, Input, []).
@@ -181,7 +181,7 @@ abort_vault_lock(Client, AccountId, VaultName, Input0, Options) ->
 %%
 %% Each tag is composed of a key and a value. Each vault can have up to 10
 %% tags. If your request would cause the tag limit for the vault to be
-%% exceeded, the operation throws the `LimitExceededException` error. If a
+%% exceeded, the operation throws the `LimitExceededException' error. If a
 %% tag already exists on the vault under a specified key, the existing key
 %% value will be overwritten. For more information about tags, see Tagging
 %% Amazon S3 Glacier Resources.
@@ -209,14 +209,14 @@ add_tags_to_vault(Client, AccountId, VaultName, Input0, Options) ->
 %% can then access the archive. After you upload an archive, you should save
 %% the archive ID returned to retrieve the archive at a later point. You can
 %% also get the vault inventory to obtain a list of archive IDs in a vault.
-%% For more information, see `InitiateJob`.
+%% For more information, see `InitiateJob'.
 %%
 %% In the request, you must include the computed SHA256 tree hash of the
 %% entire archive you have uploaded. For information about computing a SHA256
 %% tree hash, see Computing Checksums. On the server side, Glacier also
 %% constructs the SHA256 tree hash of the assembled archive. If the values
 %% match, Glacier saves the archive to the vault; otherwise, it returns an
-%% error, and the operation fails. The `ListParts` operation returns a list
+%% error, and the operation fails. The `ListParts' operation returns a list
 %% of parts uploaded for a specific multipart upload. It includes checksum
 %% information for each uploaded part that can be used to debug a bad
 %% checksum issue.
@@ -282,22 +282,22 @@ complete_multipart_upload(Client, AccountId, UploadId, VaultName, Input0, Option
     end.
 
 %% @doc This operation completes the vault locking process by transitioning
-%% the vault lock from the `InProgress` state to the `Locked` state, which
+%% the vault lock from the `InProgress' state to the `Locked' state, which
 %% causes the vault lock policy to become unchangeable.
 %%
-%% A vault lock is put into the `InProgress` state by calling
-%% `InitiateVaultLock`. You can obtain the state of the vault lock by calling
-%% `GetVaultLock`. For more information about the vault locking process,
+%% A vault lock is put into the `InProgress' state by calling
+%% `InitiateVaultLock'. You can obtain the state of the vault lock by calling
+%% `GetVaultLock'. For more information about the vault locking process,
 %% Amazon Glacier Vault Lock.
 %%
 %% This operation is idempotent. This request is always successful if the
-%% vault lock is in the `Locked` state and the provided lock ID matches the
+%% vault lock is in the `Locked' state and the provided lock ID matches the
 %% lock ID originally used to lock the vault.
 %%
 %% If an invalid lock ID is passed in the request when the vault lock is in
-%% the `Locked` state, the operation returns an `AccessDeniedException`
+%% the `Locked' state, the operation returns an `AccessDeniedException'
 %% error. If an invalid lock ID is passed in the request when the vault lock
-%% is in the `InProgress` state, the operation throws an `InvalidParameter`
+%% is in the `InProgress' state, the operation throws an `InvalidParameter'
 %% error.
 complete_vault_lock(Client, AccountId, LockId, VaultName, Input) ->
     complete_vault_lock(Client, AccountId, LockId, VaultName, Input, []).
@@ -415,7 +415,7 @@ delete_archive(Client, AccountId, ArchiveId, VaultName, Input0, Options) ->
 %% vault as of the last inventory and there have been no writes to the vault
 %% since the last inventory. If either of these conditions is not satisfied,
 %% the vault deletion fails (that is, the vault is not removed) and Amazon S3
-%% Glacier returns an error. You can use `DescribeVault` to return the number
+%% Glacier returns an error. You can use `DescribeVault' to return the number
 %% of archives in a vault, and you can use Initiate a Job (POST jobs) to
 %% initiate a new inventory retrieval for a vault. The inventory contains the
 %% archive IDs you use to delete archives using Delete Archive (DELETE
@@ -511,7 +511,7 @@ delete_vault_notifications(Client, AccountId, VaultName, Input0, Options) ->
 %% job, the job status code/message and the Amazon SNS topic to notify after
 %% Amazon S3 Glacier (Glacier) completes the job.
 %%
-%% For more information about initiating a job, see `InitiateJob`.
+%% For more information about initiating a job, see `InitiateJob'.
 %%
 %% This operation enables you to check the status of your job. However, it is
 %% strongly recommended that you set up an Amazon SNS topic and specify it in
@@ -553,7 +553,7 @@ describe_job(Client, AccountId, JobId, VaultName, Options)
 %% generation. This means that if you add or remove an archive from a vault,
 %% and then immediately use Describe Vault, the change in contents will not
 %% be immediately reflected. If you want to retrieve the latest inventory of
-%% the vault, use `InitiateJob`. Amazon S3 Glacier generates vault
+%% the vault, use `InitiateJob'. Amazon S3 Glacier generates vault
 %% inventories approximately daily. For more information, see Downloading a
 %% Vault Inventory in Amazon S3 Glacier.
 %%
@@ -600,7 +600,7 @@ get_data_retrieval_policy(Client, AccountId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc This operation downloads the output of the job you initiated using
-%% `InitiateJob`.
+%% `InitiateJob'.
 %%
 %% Depending on the job type you specified when you initiated the job, the
 %% output will be either the content of an archive or a vault inventory.
@@ -620,7 +620,7 @@ get_data_retrieval_policy(Client, AccountId, Options)
 %% For archive retrieval jobs, you should also verify that the size is what
 %% you expected. If you download a portion of the output, the expected size
 %% is based on the range of bytes you specified. For example, if you specify
-%% a range of `bytes=0-1048575`, you should verify your download size is
+%% a range of `bytes=0-1048575', you should verify your download size is
 %% 1,048,576 bytes. If you download an entire archive, the expected size is
 %% the size of the archive when you uploaded it to Amazon S3 Glacier The
 %% expected size is also returned in the headers from the Get Job Output
@@ -682,12 +682,12 @@ get_job_output(Client, AccountId, JobId, VaultName, Range, Options)
         Result
     end.
 
-%% @doc This operation retrieves the `access-policy` subresource set on the
+%% @doc This operation retrieves the `access-policy' subresource set on the
 %% vault; for more information on setting this subresource, see Set Vault
 %% Access Policy (PUT access-policy).
 %%
 %% If there is no access policy set on the vault, the operation returns a
-%% `404 Not found` error. For more information about vault access policies,
+%% `404 Not found' error. For more information about vault access policies,
 %% see Amazon Glacier Access Control with Vault Access Policies.
 get_vault_access_policy(Client, AccountId, VaultName)
   when is_map(Client) ->
@@ -704,27 +704,27 @@ get_vault_access_policy(Client, AccountId, VaultName, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc This operation retrieves the following attributes from the
-%% `lock-policy` subresource set on the specified vault:
+%% `lock-policy' subresource set on the specified vault:
 %%
 %% <ul> <li> The vault lock policy set on the vault.
 %%
-%% </li> <li> The state of the vault lock, which is either `InProgess` or
-%% `Locked`.
+%% </li> <li> The state of the vault lock, which is either `InProgess' or
+%% `Locked'.
 %%
 %% </li> <li> When the lock ID expires. The lock ID is used to complete the
 %% vault locking process.
 %%
-%% </li> <li> When the vault lock was initiated and put into the `InProgress`
+%% </li> <li> When the vault lock was initiated and put into the `InProgress'
 %% state.
 %%
-%% </li> </ul> A vault lock is put into the `InProgress` state by calling
-%% `InitiateVaultLock`. A vault lock is put into the `Locked` state by
-%% calling `CompleteVaultLock`. You can abort the vault locking process by
-%% calling `AbortVaultLock`. For more information about the vault locking
+%% </li> </ul> A vault lock is put into the `InProgress' state by calling
+%% `InitiateVaultLock'. A vault lock is put into the `Locked' state by
+%% calling `CompleteVaultLock'. You can abort the vault locking process by
+%% calling `AbortVaultLock'. For more information about the vault locking
 %% process, Amazon Glacier Vault Lock.
 %%
 %% If there is no vault lock policy set on the vault, the operation returns a
-%% `404 Not found` error. For more information about vault lock policies,
+%% `404 Not found' error. For more information about vault lock policies,
 %% Amazon Glacier Access Control with Vault Lock Policies.
 get_vault_lock(Client, AccountId, VaultName)
   when is_map(Client) ->
@@ -740,12 +740,12 @@ get_vault_lock(Client, AccountId, VaultName, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This operation retrieves the `notification-configuration` subresource
+%% @doc This operation retrieves the `notification-configuration' subresource
 %% of the specified vault.
 %%
 %% For information about setting a notification configuration on a vault, see
-%% `SetVaultNotifications`. If a notification configuration for a vault is
-%% not set, the operation returns a `404 Not Found` error. For more
+%% `SetVaultNotifications'. If a notification configuration for a vault is
+%% not set, the operation returns a `404 Not Found' error. For more
 %% information about vault notifications, see Configuring Vault Notifications
 %% in Amazon S3 Glacier.
 %%
@@ -814,7 +814,7 @@ initiate_job(Client, AccountId, VaultName, Input0, Options) ->
 %%
 %% Amazon S3 Glacier creates a multipart upload resource and returns its ID
 %% in the response. The multipart upload ID is used in subsequent requests to
-%% upload parts of an archive (see `UploadMultipartPart`).
+%% upload parts of an archive (see `UploadMultipartPart').
 %%
 %% When you initiate a multipart upload, you specify the part size in number
 %% of bytes. The part size must be a megabyte (1024 KB) multiplied by a power
@@ -822,7 +822,7 @@ initiate_job(Client, AccountId, VaultName, Input0, Options) ->
 %% (8 MB), and so on. The minimum allowable part size is 1 MB, and the
 %% maximum is 4 GB.
 %%
-%% Every part you upload to this resource (see `UploadMultipartPart`), except
+%% Every part you upload to this resource (see `UploadMultipartPart'), except
 %% the last one, must have the same size. The last one can be the same size
 %% or smaller. For example, suppose you want to upload a 16.2 MB file. If you
 %% initiate the multipart upload with a part size of 4 MB, you will upload
@@ -886,7 +886,7 @@ initiate_multipart_upload(Client, AccountId, VaultName, Input0, Options) ->
 %%
 %% <ul> <li> Installing a vault lock policy on the specified vault.
 %%
-%% </li> <li> Setting the lock state of vault lock to `InProgress`.
+%% </li> <li> Setting the lock state of vault lock to `InProgress'.
 %%
 %% </li> <li> Returning a lock ID, which is used to complete the vault
 %% locking process.
@@ -896,22 +896,22 @@ initiate_multipart_upload(Client, AccountId, VaultName, Input0, Options) ->
 %% policies, see Amazon Glacier Access Control with Vault Lock Policies.
 %%
 %% You must complete the vault locking process within 24 hours after the
-%% vault lock enters the `InProgress` state. After the 24 hour window ends,
-%% the lock ID expires, the vault automatically exits the `InProgress` state,
+%% vault lock enters the `InProgress' state. After the 24 hour window ends,
+%% the lock ID expires, the vault automatically exits the `InProgress' state,
 %% and the vault lock policy is removed from the vault. You call
-%% `CompleteVaultLock` to complete the vault locking process by setting the
-%% state of the vault lock to `Locked`.
+%% `CompleteVaultLock' to complete the vault locking process by setting the
+%% state of the vault lock to `Locked'.
 %%
-%% After a vault lock is in the `Locked` state, you cannot initiate a new
+%% After a vault lock is in the `Locked' state, you cannot initiate a new
 %% vault lock for the vault.
 %%
-%% You can abort the vault locking process by calling `AbortVaultLock`. You
-%% can get the state of the vault lock by calling `GetVaultLock`. For more
+%% You can abort the vault locking process by calling `AbortVaultLock'. You
+%% can get the state of the vault lock by calling `GetVaultLock'. For more
 %% information about the vault locking process, Amazon Glacier Vault Lock.
 %%
-%% If this operation is called when the vault lock is in the `InProgress`
-%% state, the operation returns an `AccessDeniedException` error. When the
-%% vault lock is in the `InProgress` state you must call `AbortVaultLock`
+%% If this operation is called when the vault lock is in the `InProgress'
+%% state, the operation returns an `AccessDeniedException' error. When the
+%% vault lock is in the `InProgress' state you must call `AbortVaultLock'
 %% before you can initiate a new vault lock policy.
 initiate_vault_lock(Client, AccountId, VaultName, Input) ->
     initiate_vault_lock(Client, AccountId, VaultName, Input, []).
@@ -961,24 +961,24 @@ initiate_vault_lock(Client, AccountId, VaultName, Input0, Options) ->
 %% download the archive while the job exists.
 %%
 %% The List Jobs operation supports pagination. You should always check the
-%% response `Marker` field. If there are no more jobs to list, the `Marker`
-%% field is set to `null`. If there are more jobs to list, the `Marker` field
+%% response `Marker' field. If there are no more jobs to list, the `Marker'
+%% field is set to `null'. If there are more jobs to list, the `Marker' field
 %% is set to a non-null value, which you can use to continue the pagination
 %% of the list. To return a list of jobs that begins at a specific job, set
-%% the marker request parameter to the `Marker` value for that job that you
+%% the marker request parameter to the `Marker' value for that job that you
 %% obtained from a previous List Jobs request.
 %%
 %% You can set a maximum limit for the number of jobs returned in the
-%% response by specifying the `limit` parameter in the request. The default
+%% response by specifying the `limit' parameter in the request. The default
 %% limit is 50. The number of jobs returned might be fewer than the limit,
 %% but the number of returned jobs never exceeds the limit.
 %%
 %% Additionally, you can filter the jobs list returned by specifying the
-%% optional `statuscode` parameter or `completed` parameter, or both. Using
-%% the `statuscode` parameter, you can specify to return only jobs that match
-%% either the `InProgress`, `Succeeded`, or `Failed` status. Using the
-%% `completed` parameter, you can specify to return only jobs that were
-%% completed (`true`) or jobs that were not completed (`false`).
+%% optional `statuscode' parameter or `completed' parameter, or both. Using
+%% the `statuscode' parameter, you can specify to return only jobs that match
+%% either the `InProgress', `Succeeded', or `Failed' status. Using the
+%% `completed' parameter, you can specify to return only jobs that were
+%% completed (`true') or jobs that were not completed (`false').
 %%
 %% For more information about using this operation, see the documentation for
 %% the underlying REST API List Jobs.
@@ -1007,21 +1007,21 @@ list_jobs(Client, AccountId, VaultName, Completed, Limit, Marker, Statuscode, Op
 %% vault.
 %%
 %% An in-progress multipart upload is a multipart upload that has been
-%% initiated by an `InitiateMultipartUpload` request, but has not yet been
+%% initiated by an `InitiateMultipartUpload' request, but has not yet been
 %% completed or aborted. The list returned in the List Multipart Upload
 %% response has no guaranteed order.
 %%
 %% The List Multipart Uploads operation supports pagination. By default, this
 %% operation returns up to 50 multipart uploads in the response. You should
-%% always check the response for a `marker` at which to continue the list; if
-%% there are no more items the `marker` is `null`. To return a list of
-%% multipart uploads that begins at a specific upload, set the `marker`
+%% always check the response for a `marker' at which to continue the list; if
+%% there are no more items the `marker' is `null'. To return a list of
+%% multipart uploads that begins at a specific upload, set the `marker'
 %% request parameter to the value you obtained from a previous List Multipart
 %% Upload request. You can also limit the number of uploads returned in the
-%% response by specifying the `limit` parameter in the request.
+%% response by specifying the `limit' parameter in the request.
 %%
 %% Note the difference between this operation and listing parts
-%% (`ListParts`). The List Multipart Uploads operation lists all multipart
+%% (`ListParts'). The List Multipart Uploads operation lists all multipart
 %% uploads for a vault and does not require a multipart upload ID. The List
 %% Parts operation requires a multipart upload ID since parts are associated
 %% with a single upload.
@@ -1058,17 +1058,17 @@ list_multipart_uploads(Client, AccountId, VaultName, Limit, Marker, Options)
 %% in a specific multipart upload.
 %%
 %% You can make this request at any time during an in-progress multipart
-%% upload before you complete the upload (see `CompleteMultipartUpload`. List
+%% upload before you complete the upload (see `CompleteMultipartUpload'. List
 %% Parts returns an error for completed uploads. The list returned in the
 %% List Parts response is sorted by part range.
 %%
 %% The List Parts operation supports pagination. By default, this operation
 %% returns up to 50 uploaded parts in the response. You should always check
-%% the response for a `marker` at which to continue the list; if there are no
-%% more items the `marker` is `null`. To return a list of parts that begins
-%% at a specific part, set the `marker` request parameter to the value you
+%% the response for a `marker' at which to continue the list; if there are no
+%% more items the `marker' is `null'. To return a list of parts that begins
+%% at a specific part, set the `marker' request parameter to the value you
 %% obtained from a previous List Parts request. You can also limit the number
-%% of parts returned in the response by specifying the `limit` parameter in
+%% of parts returned in the response by specifying the `limit' parameter in
 %% the request.
 %%
 %% An AWS account has full permission to perform all operations (actions).
@@ -1138,13 +1138,13 @@ list_tags_for_vault(Client, AccountId, VaultName, Options)
 %% The list returned in the response is ASCII-sorted by vault name.
 %%
 %% By default, this operation returns up to 10 items. If there are more
-%% vaults to list, the response `marker` field contains the vault Amazon
+%% vaults to list, the response `marker' field contains the vault Amazon
 %% Resource Name (ARN) at which to continue the list with a new List Vaults
-%% request; otherwise, the `marker` field is `null`. To return a list of
-%% vaults that begins at a specific vault, set the `marker` request parameter
+%% request; otherwise, the `marker' field is `null'. To return a list of
+%% vaults that begins at a specific vault, set the `marker' request parameter
 %% to the vault ARN you obtained from a previous List Vaults request. You can
 %% also limit the number of vaults returned in the response by specifying the
-%% `limit` parameter in the request.
+%% `limit' parameter in the request.
 %%
 %% An AWS account has full permission to perform all operations (actions).
 %% However, AWS Identity and Access Management (IAM) users don't have any
@@ -1256,7 +1256,7 @@ set_data_retrieval_policy(Client, AccountId, Input0, Options) ->
 %% overwrite an existing policy.
 %%
 %% To configure a vault access policy, send a PUT request to the
-%% `access-policy` subresource of the vault. An access policy is specific to
+%% `access-policy' subresource of the vault. An access policy is specific to
 %% a vault and is also called a vault subresource. You can set one access
 %% policy per vault and the policy can be up to 20 KB in size. For more
 %% information about vault access policies, see Amazon Glacier Access Control
@@ -1282,7 +1282,7 @@ set_vault_access_policy(Client, AccountId, VaultName, Input0, Options) ->
 %% By default, you don't get any notifications.
 %%
 %% To configure vault notifications, send a PUT request to the
-%% `notification-configuration` subresource of the vault. The request should
+%% `notification-configuration' subresource of the vault. The request should
 %% include a JSON document that provides an Amazon SNS topic and specific
 %% events for which you want Amazon S3 Glacier to send notifications to the
 %% topic.
@@ -1292,16 +1292,16 @@ set_vault_access_policy(Client, AccountId, VaultName, Input0, Options) ->
 %% notification for the following vault events:
 %%
 %% <ul> <li> ArchiveRetrievalCompleted This event occurs when a job that was
-%% initiated for an archive retrieval is completed (`InitiateJob`). The
+%% initiated for an archive retrieval is completed (`InitiateJob'). The
 %% status of the completed job can be "Succeeded" or "Failed". The
 %% notification sent to the SNS topic is the same output as returned from
-%% `DescribeJob`.
+%% `DescribeJob'.
 %%
 %% </li> <li> InventoryRetrievalCompleted This event occurs when a job that
-%% was initiated for an inventory retrieval is completed (`InitiateJob`). The
+%% was initiated for an inventory retrieval is completed (`InitiateJob'). The
 %% status of the completed job can be "Succeeded" or "Failed". The
 %% notification sent to the SNS topic is the same output as returned from
-%% `DescribeJob`.
+%% `DescribeJob'.
 %%
 %% </li> </ul> An AWS account has full permission to perform all operations
 %% (actions). However, AWS Identity and Access Management (IAM) users don't
@@ -1331,7 +1331,7 @@ set_vault_notifications(Client, AccountId, VaultName, Input0, Options) ->
 %%
 %% This is a synchronous operation, and for a successful upload, your data is
 %% durably persisted. Amazon S3 Glacier returns the archive ID in the
-%% `x-amz-archive-id` header of the response.
+%% `x-amz-archive-id' header of the response.
 %%
 %% You must use the archive ID to access your data in Amazon S3 Glacier.
 %% After you upload an archive, you should save the archive ID returned so
@@ -1341,7 +1341,7 @@ set_vault_notifications(Client, AccountId, VaultName, Input0, Options) ->
 %% to specify how the archive is referred to in an external index of
 %% archives, such as you might create in Amazon DynamoDB. You can also get
 %% the vault inventory to obtain a list of archive IDs in a vault. For more
-%% information, see `InitiateJob`.
+%% information, see `InitiateJob'.
 %%
 %% You must provide a SHA256 tree hash of the data you are uploading. For
 %% information about computing a SHA256 tree hash, see Computing Checksums.
@@ -1349,7 +1349,7 @@ set_vault_notifications(Client, AccountId, VaultName, Input0, Options) ->
 %% You can optionally specify an archive description of up to 1,024 printable
 %% ASCII characters. You can get the archive description when you either
 %% retrieve the archive or get the vault inventory. For more information, see
-%% `InitiateJob`. Amazon Glacier does not interpret the description in any
+%% `InitiateJob'. Amazon Glacier does not interpret the description in any
 %% way. An archive description does not need to be unique. You cannot use the
 %% description to retrieve or sort the archive list.
 %%
@@ -1418,7 +1418,7 @@ upload_archive(Client, AccountId, VaultName, Input0, Options) ->
 %%
 %% </li> <li> Part size does not matchThe size of each part except the last
 %% must match the size specified in the corresponding
-%% `InitiateMultipartUpload` request. The size of the last part must be the
+%% `InitiateMultipartUpload' request. The size of the last part must be the
 %% same size as, or smaller than, the specified size.
 %%
 %% If you upload a part whose size is smaller than the part size you

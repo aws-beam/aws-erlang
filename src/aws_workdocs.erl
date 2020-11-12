@@ -127,7 +127,7 @@
 %%====================================================================
 
 %% @doc Aborts the upload of the specified document version that was
-%% previously initiated by `InitiateDocumentVersionUpload`.
+%% previously initiated by `InitiateDocumentVersionUpload'.
 %%
 %% The client should make this call only when it no longer intends to upload
 %% the document version, or fails to do so.
@@ -665,10 +665,10 @@ describe_resource_permissions(Client, ResourceId, Limit, Marker, PrincipalId, Au
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describes the current user's special folders; the `RootFolder` and
-%% the `RecycleBin`.
+%% @doc Describes the current user's special folders; the `RootFolder' and
+%% the `RecycleBin'.
 %%
-%% `RootFolder` is the root of user's files and folders and `RecycleBin` is
+%% `RootFolder' is the root of user's files and folders and `RecycleBin' is
 %% the root of recycled items. This is not a valid action for SigV4
 %% (administrative API) clients.
 %%
@@ -898,7 +898,7 @@ get_folder_path(Client, FolderId, Fields, Limit, Marker, AuthenticationToken, Op
 
 %% @doc Retrieves a collection of resources, including folders and documents.
 %%
-%% The only `CollectionType` supported is `SHARED_WITH_ME`.
+%% The only `CollectionType' supported is `SHARED_WITH_ME'.
 get_resources(Client, CollectionType, Limit, Marker, UserId, AuthenticationToken)
   when is_map(Client) ->
     get_resources(Client, CollectionType, Limit, Marker, UserId, AuthenticationToken, []).
@@ -930,9 +930,9 @@ get_resources(Client, CollectionType, Limit, Marker, UserId, AuthenticationToken
 %% upload. The ID is optionally specified when creating a new version of an
 %% existing document. This is the first step to upload a document. Next,
 %% upload the document to the URL returned from the call, and then call
-%% `UpdateDocumentVersion`.
+%% `UpdateDocumentVersion'.
 %%
-%% To cancel the document upload, call `AbortDocumentVersionUpload`.
+%% To cancel the document upload, call `AbortDocumentVersionUpload'.
 initiate_document_version_upload(Client, Input) ->
     initiate_document_version_upload(Client, Input, []).
 initiate_document_version_upload(Client, Input0, Options) ->
@@ -1013,7 +1013,7 @@ update_document(Client, DocumentId, Input0, Options) ->
 %%
 %% Amazon WorkDocs also sets its document container to ACTIVE. This is the
 %% last step in a document upload, after the client uploads the document to
-%% an S3-presigned URL returned by `InitiateDocumentVersionUpload`.
+%% an S3-presigned URL returned by `InitiateDocumentVersionUpload'.
 update_document_version(Client, DocumentId, VersionId, Input) ->
     update_document_version(Client, DocumentId, VersionId, Input, []).
 update_document_version(Client, DocumentId, VersionId, Input0, Options) ->

@@ -127,7 +127,7 @@ create_api_key(Client, ApiId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a `DataSource` object.
+%% @doc Creates a `DataSource' object.
 create_data_source(Client, ApiId, Input) ->
     create_data_source(Client, ApiId, Input, []).
 create_data_source(Client, ApiId, Input0, Options) ->
@@ -143,7 +143,7 @@ create_data_source(Client, ApiId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a `Function` object.
+%% @doc Creates a `Function' object.
 %%
 %% A function is a reusable entity. Multiple functions can be used to compose
 %% the resolver logic.
@@ -162,7 +162,7 @@ create_function(Client, ApiId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a `GraphqlApi` object.
+%% @doc Creates a `GraphqlApi' object.
 create_graphql_api(Client, Input) ->
     create_graphql_api(Client, Input, []).
 create_graphql_api(Client, Input0, Options) ->
@@ -178,7 +178,7 @@ create_graphql_api(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a `Resolver` object.
+%% @doc Creates a `Resolver' object.
 %%
 %% A resolver converts incoming requests into a format that a data source can
 %% understand and converts the data source's responses into GraphQL.
@@ -197,7 +197,7 @@ create_resolver(Client, ApiId, TypeName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a `Type` object.
+%% @doc Creates a `Type' object.
 create_type(Client, ApiId, Input) ->
     create_type(Client, ApiId, Input, []).
 create_type(Client, ApiId, Input0, Options) ->
@@ -213,7 +213,7 @@ create_type(Client, ApiId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an `ApiCache` object.
+%% @doc Deletes an `ApiCache' object.
 delete_api_cache(Client, ApiId, Input) ->
     delete_api_cache(Client, ApiId, Input, []).
 delete_api_cache(Client, ApiId, Input0, Options) ->
@@ -245,7 +245,7 @@ delete_api_key(Client, ApiId, Id, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a `DataSource` object.
+%% @doc Deletes a `DataSource' object.
 delete_data_source(Client, ApiId, Name, Input) ->
     delete_data_source(Client, ApiId, Name, Input, []).
 delete_data_source(Client, ApiId, Name, Input0, Options) ->
@@ -261,7 +261,7 @@ delete_data_source(Client, ApiId, Name, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a `Function`.
+%% @doc Deletes a `Function'.
 delete_function(Client, ApiId, FunctionId, Input) ->
     delete_function(Client, ApiId, FunctionId, Input, []).
 delete_function(Client, ApiId, FunctionId, Input0, Options) ->
@@ -277,7 +277,7 @@ delete_function(Client, ApiId, FunctionId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a `GraphqlApi` object.
+%% @doc Deletes a `GraphqlApi' object.
 delete_graphql_api(Client, ApiId, Input) ->
     delete_graphql_api(Client, ApiId, Input, []).
 delete_graphql_api(Client, ApiId, Input0, Options) ->
@@ -293,7 +293,7 @@ delete_graphql_api(Client, ApiId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a `Resolver` object.
+%% @doc Deletes a `Resolver' object.
 delete_resolver(Client, ApiId, FieldName, TypeName, Input) ->
     delete_resolver(Client, ApiId, FieldName, TypeName, Input, []).
 delete_resolver(Client, ApiId, FieldName, TypeName, Input0, Options) ->
@@ -309,7 +309,7 @@ delete_resolver(Client, ApiId, FieldName, TypeName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a `Type` object.
+%% @doc Deletes a `Type' object.
 delete_type(Client, ApiId, TypeName, Input) ->
     delete_type(Client, ApiId, TypeName, Input, []).
 delete_type(Client, ApiId, TypeName, Input0, Options) ->
@@ -325,7 +325,7 @@ delete_type(Client, ApiId, TypeName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Flushes an `ApiCache` object.
+%% @doc Flushes an `ApiCache' object.
 flush_api_cache(Client, ApiId, Input) ->
     flush_api_cache(Client, ApiId, Input, []).
 flush_api_cache(Client, ApiId, Input0, Options) ->
@@ -341,7 +341,7 @@ flush_api_cache(Client, ApiId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves an `ApiCache` object.
+%% @doc Retrieves an `ApiCache' object.
 get_api_cache(Client, ApiId)
   when is_map(Client) ->
     get_api_cache(Client, ApiId, []).
@@ -356,7 +356,7 @@ get_api_cache(Client, ApiId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves a `DataSource` object.
+%% @doc Retrieves a `DataSource' object.
 get_data_source(Client, ApiId, Name)
   when is_map(Client) ->
     get_data_source(Client, ApiId, Name, []).
@@ -371,7 +371,7 @@ get_data_source(Client, ApiId, Name, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Get a `Function`.
+%% @doc Get a `Function'.
 get_function(Client, ApiId, FunctionId)
   when is_map(Client) ->
     get_function(Client, ApiId, FunctionId, []).
@@ -386,7 +386,7 @@ get_function(Client, ApiId, FunctionId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves a `GraphqlApi` object.
+%% @doc Retrieves a `GraphqlApi' object.
 get_graphql_api(Client, ApiId)
   when is_map(Client) ->
     get_graphql_api(Client, ApiId, []).
@@ -421,7 +421,7 @@ get_introspection_schema(Client, ApiId, Format, IncludeDirectives, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves a `Resolver` object.
+%% @doc Retrieves a `Resolver' object.
 get_resolver(Client, ApiId, FieldName, TypeName)
   when is_map(Client) ->
     get_resolver(Client, ApiId, FieldName, TypeName, []).
@@ -451,7 +451,7 @@ get_schema_creation_status(Client, ApiId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves a `Type` object.
+%% @doc Retrieves a `Type' object.
 get_type(Client, ApiId, TypeName, Format)
   when is_map(Client) ->
     get_type(Client, ApiId, TypeName, Format, []).
@@ -474,7 +474,7 @@ get_type(Client, ApiId, TypeName, Format, Options)
 %%
 %% API keys are deleted automatically 60 days after they expire. However,
 %% they may still be included in the response until they have actually been
-%% deleted. You can safely call `DeleteApiKey` to manually delete a key
+%% deleted. You can safely call `DeleteApiKey' to manually delete a key
 %% before it's automatically deleted.
 list_api_keys(Client, ApiId, MaxResults, NextToken)
   when is_map(Client) ->
@@ -716,7 +716,7 @@ update_api_key(Client, ApiId, Id, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a `DataSource` object.
+%% @doc Updates a `DataSource' object.
 update_data_source(Client, ApiId, Name, Input) ->
     update_data_source(Client, ApiId, Name, Input, []).
 update_data_source(Client, ApiId, Name, Input0, Options) ->
@@ -732,7 +732,7 @@ update_data_source(Client, ApiId, Name, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a `Function` object.
+%% @doc Updates a `Function' object.
 update_function(Client, ApiId, FunctionId, Input) ->
     update_function(Client, ApiId, FunctionId, Input, []).
 update_function(Client, ApiId, FunctionId, Input0, Options) ->
@@ -748,7 +748,7 @@ update_function(Client, ApiId, FunctionId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a `GraphqlApi` object.
+%% @doc Updates a `GraphqlApi' object.
 update_graphql_api(Client, ApiId, Input) ->
     update_graphql_api(Client, ApiId, Input, []).
 update_graphql_api(Client, ApiId, Input0, Options) ->
@@ -764,7 +764,7 @@ update_graphql_api(Client, ApiId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a `Resolver` object.
+%% @doc Updates a `Resolver' object.
 update_resolver(Client, ApiId, FieldName, TypeName, Input) ->
     update_resolver(Client, ApiId, FieldName, TypeName, Input, []).
 update_resolver(Client, ApiId, FieldName, TypeName, Input0, Options) ->
@@ -780,7 +780,7 @@ update_resolver(Client, ApiId, FieldName, TypeName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a `Type` object.
+%% @doc Updates a `Type' object.
 update_type(Client, ApiId, TypeName, Input) ->
     update_type(Client, ApiId, TypeName, Input, []).
 update_type(Client, ApiId, TypeName, Input0, Options) ->

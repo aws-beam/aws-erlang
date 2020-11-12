@@ -87,7 +87,7 @@
 %%
 %% This operation is used by the Amazon ECR proxy and is not generally used
 %% by customers for pulling and pushing images. In most cases, you should use
-%% the `docker` CLI to pull, tag, and push images.
+%% the `docker' CLI to pull, tag, and push images.
 batch_check_layer_availability(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_check_layer_availability(Client, Input, []).
@@ -97,7 +97,7 @@ batch_check_layer_availability(Client, Input, Options)
 
 %% @doc Deletes a list of specified images within a repository.
 %%
-%% Images are specified with either an `imageTag` or `imageDigest`.
+%% Images are specified with either an `imageTag' or `imageDigest'.
 %%
 %% You can remove a tag from an image by specifying the image's tag in your
 %% request. When you remove the last tag from an image, the image is deleted
@@ -114,7 +114,7 @@ batch_delete_image(Client, Input, Options)
 
 %% @doc Gets detailed information for an image.
 %%
-%% Images are specified with either an `imageTag` or `imageDigest`.
+%% Images are specified with either an `imageTag' or `imageDigest'.
 %%
 %% When an image is pulled, the BatchGetImage API is called once to retrieve
 %% the image manifest.
@@ -128,7 +128,7 @@ batch_get_image(Client, Input, Options)
 %% @doc Informs Amazon ECR that the image layer upload has completed for a
 %% specified registry, repository name, and upload ID.
 %%
-%% You can optionally provide a `sha256` digest of the image layer for data
+%% You can optionally provide a `sha256' digest of the image layer for data
 %% validation purposes.
 %%
 %% When an image is pushed, the CompleteLayerUpload API is called once per
@@ -136,7 +136,7 @@ batch_get_image(Client, Input, Options)
 %%
 %% This operation is used by the Amazon ECR proxy and is not generally used
 %% by customers for pulling and pushing images. In most cases, you should use
-%% the `docker` CLI to pull, tag, and push images.
+%% the `docker' CLI to pull, tag, and push images.
 complete_layer_upload(Client, Input)
   when is_map(Client), is_map(Input) ->
     complete_layer_upload(Client, Input, []).
@@ -167,7 +167,7 @@ delete_lifecycle_policy(Client, Input, Options)
 %% @doc Deletes a repository.
 %%
 %% If the repository contains images, you must either delete all images in
-%% the repository or use the `force` option to delete the repository.
+%% the repository or use the `force' option to delete the repository.
 delete_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_repository(Client, Input, []).
@@ -196,9 +196,9 @@ describe_image_scan_findings(Client, Input, Options)
 %%
 %% Beginning with Docker version 1.9, the Docker client compresses image
 %% layers before pushing them to a V2 Docker registry. The output of the
-%% `docker images` command shows the uncompressed image size, so it may
+%% `docker images' command shows the uncompressed image size, so it may
 %% return a larger image size than the image sizes returned by
-%% `DescribeImages`.
+%% `DescribeImages'.
 describe_images(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_images(Client, Input, []).
@@ -220,9 +220,9 @@ describe_repositories(Client, Input, Options)
 %% can be used to access any Amazon ECR registry that your IAM principal has
 %% access to. The authorization token is valid for 12 hours.
 %%
-%% The `authorizationToken` returned is a base64 encoded string that can be
-%% decoded and used in a `docker login` command to authenticate to a
-%% registry. The AWS CLI offers an `get-login-password` command that
+%% The `authorizationToken' returned is a base64 encoded string that can be
+%% decoded and used in a `docker login' command to authenticate to a
+%% registry. The AWS CLI offers an `get-login-password' command that
 %% simplifies the login process. For more information, see Registry
 %% Authentication in the Amazon Elastic Container Registry User Guide.
 get_authorization_token(Client, Input)
@@ -242,7 +242,7 @@ get_authorization_token(Client, Input, Options)
 %%
 %% This operation is used by the Amazon ECR proxy and is not generally used
 %% by customers for pulling and pushing images. In most cases, you should use
-%% the `docker` CLI to pull, tag, and push images.
+%% the `docker' CLI to pull, tag, and push images.
 get_download_url_for_layer(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_download_url_for_layer(Client, Input, []).
@@ -284,7 +284,7 @@ get_repository_policy(Client, Input, Options)
 %%
 %% This operation is used by the Amazon ECR proxy and is not generally used
 %% by customers for pulling and pushing images. In most cases, you should use
-%% the `docker` CLI to pull, tag, and push images.
+%% the `docker' CLI to pull, tag, and push images.
 initiate_layer_upload(Client, Input)
   when is_map(Client), is_map(Input) ->
     initiate_layer_upload(Client, Input, []).
@@ -295,10 +295,10 @@ initiate_layer_upload(Client, Input, Options)
 %% @doc Lists all the image IDs for the specified repository.
 %%
 %% You can filter images based on whether or not they are tagged by using the
-%% `tagStatus` filter and specifying either `TAGGED`, `UNTAGGED` or `ANY`.
-%% For example, you can filter your results to return only `UNTAGGED` images
-%% and then pipe that result to a `BatchDeleteImage` operation to delete
-%% them. Or, you can filter your results to return only `TAGGED` images to
+%% `tagStatus' filter and specifying either `TAGGED', `UNTAGGED' or `ANY'.
+%% For example, you can filter your results to return only `UNTAGGED' images
+%% and then pipe that result to a `BatchDeleteImage' operation to delete
+%% them. Or, you can filter your results to return only `TAGGED' images to
 %% list all of the tags in your repository.
 list_images(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -324,7 +324,7 @@ list_tags_for_resource(Client, Input, Options)
 %%
 %% This operation is used by the Amazon ECR proxy and is not generally used
 %% by customers for pulling and pushing images. In most cases, you should use
-%% the `docker` CLI to pull, tag, and push images.
+%% the `docker' CLI to pull, tag, and push images.
 put_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_image(Client, Input, []).
@@ -427,7 +427,7 @@ untag_resource(Client, Input, Options)
 %%
 %% This operation is used by the Amazon ECR proxy and is not generally used
 %% by customers for pulling and pushing images. In most cases, you should use
-%% the `docker` CLI to pull, tag, and push images.
+%% the `docker' CLI to pull, tag, and push images.
 upload_layer_part(Client, Input)
   when is_map(Client), is_map(Input) ->
     upload_layer_part(Client, Input, []).

@@ -134,7 +134,7 @@
 %%
 %% These tags can also be used with cost allocation reporting to track cost
 %% associated with DMS resources, or used in a Condition statement in an IAM
-%% policy for DMS. For more information, see `Tag` data type description.
+%% policy for DMS. For more information, see `Tag' data type description.
 add_tags_to_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags_to_resource(Client, Input, []).
@@ -173,16 +173,16 @@ create_endpoint(Client, Input, Options)
 
 %% @doc Creates an AWS DMS event notification subscription.
 %%
-%% You can specify the type of source (`SourceType`) you want to be notified
-%% of, provide a list of AWS DMS source IDs (`SourceIds`) that triggers the
-%% events, and provide a list of event categories (`EventCategories`) for
-%% events you want to be notified of. If you specify both the `SourceType`
-%% and `SourceIds`, such as `SourceType = replication-instance` and
-%% `SourceIdentifier = my-replinstance`, you will be notified of all the
+%% You can specify the type of source (`SourceType') you want to be notified
+%% of, provide a list of AWS DMS source IDs (`SourceIds') that triggers the
+%% events, and provide a list of event categories (`EventCategories') for
+%% events you want to be notified of. If you specify both the `SourceType'
+%% and `SourceIds', such as `SourceType = replication-instance' and
+%% `SourceIdentifier = my-replinstance', you will be notified of all the
 %% replication instance events for the specified source. If you specify a
-%% `SourceType` but don't specify a `SourceIdentifier`, you receive notice of
+%% `SourceType' but don't specify a `SourceIdentifier', you receive notice of
 %% the events for that source type for all your AWS DMS sources. If you don't
-%% specify either `SourceType` nor `SourceIdentifier`, you will be notified
+%% specify either `SourceType' nor `SourceIdentifier', you will be notified
 %% of events generated from all AWS DMS sources belonging to your customer
 %% account.
 %%
@@ -399,11 +399,11 @@ describe_event_categories(Client, Input, Options)
 
 %% @doc Lists all the event subscriptions for a customer account.
 %%
-%% The description of a subscription includes `SubscriptionName`,
-%% `SNSTopicARN`, `CustomerID`, `SourceType`, `SourceID`, `CreationTime`, and
-%% `Status`.
+%% The description of a subscription includes `SubscriptionName',
+%% `SNSTopicARN', `CustomerID', `SourceType', `SourceID', `CreationTime', and
+%% `Status'.
 %%
-%% If you specify `SubscriptionName`, this action lists the description for
+%% If you specify `SubscriptionName', this action lists the description for
 %% that subscription.
 describe_event_subscriptions(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -493,7 +493,7 @@ describe_replication_task_assessment_results(Client, Input, Options)
 %%
 %% This operation doesn't return information about individual assessments.
 %% For this information, see the
-%% `DescribeReplicationTaskIndividualAssessments` operation.
+%% `DescribeReplicationTaskIndividualAssessments' operation.
 describe_replication_task_assessment_runs(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_replication_task_assessment_runs(Client, Input, []).
@@ -554,7 +554,7 @@ import_certificate(Client, Input, Options)
 %% @doc Lists all metadata tags attached to an AWS DMS resource, including
 %% replication instance, endpoint, security group, and migration task.
 %%
-%% For more information, see `Tag` data type description.
+%% For more information, see `Tag' data type description.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -647,7 +647,7 @@ reload_tables(Client, Input, Options)
 %% @doc Removes metadata tags from an AWS DMS resource, including replication
 %% instance, endpoint, security group, and migration task.
 %%
-%% For more information, see `Tag` data type description.
+%% For more information, see `Tag' data type description.
 remove_tags_from_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags_from_resource(Client, Input, []).

@@ -134,7 +134,7 @@ describe_recommendation_feedback(Client, CodeReviewArn, RecommendationId, UserId
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a `RepositoryAssociation` object that contains information
+%% @doc Returns a `RepositoryAssociation' object that contains information
 %% about the requested repository association.
 describe_repository_association(Client, AssociationArn)
   when is_map(Client) ->
@@ -192,7 +192,7 @@ list_code_reviews(Client, MaxResults, NextToken, ProviderTypes, RepositoryNames,
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of `RecommendationFeedbackSummary` objects that
+%% @doc Returns a list of `RecommendationFeedbackSummary' objects that
 %% contain customer recommendation feedback for all CodeGuru Reviewer users.
 list_recommendation_feedback(Client, CodeReviewArn, MaxResults, NextToken, RecommendationIds, UserIds)
   when is_map(Client) ->
@@ -235,11 +235,11 @@ list_recommendations(Client, CodeReviewArn, MaxResults, NextToken, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of `RepositoryAssociationSummary` objects that contain
+%% @doc Returns a list of `RepositoryAssociationSummary' objects that contain
 %% summary information about a repository association.
 %%
-%% You can filter the returned list by `ProviderType` , `Name` , `State` ,
-%% and `Owner` .
+%% You can filter the returned list by `ProviderType' , `Name' , `State' ,
+%% and `Owner' .
 list_repository_associations(Client, MaxResults, Names, NextToken, Owners, ProviderTypes, States)
   when is_map(Client) ->
     list_repository_associations(Client, MaxResults, Names, NextToken, Owners, ProviderTypes, States, []).

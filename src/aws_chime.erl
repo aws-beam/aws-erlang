@@ -32,8 +32,8 @@
 %% supports signature version 4. For more information, see Signature Version
 %% 4 Signing Process in the Amazon Web Services General Reference.
 %%
-%% When making REST API calls, use the service name `chime` and REST endpoint
-%% `https://service.chime.aws.amazon.com`.
+%% When making REST API calls, use the service name `chime' and REST endpoint
+%% `https://service.chime.aws.amazon.com'.
 %%
 %% </dd> </dl> Administrative permissions are controlled using AWS Identity
 %% and Access Management (IAM). For more information, see Identity and Access
@@ -414,23 +414,23 @@ batch_delete_phone_number(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Suspends up to 50 users from a `Team` or `EnterpriseLWA` Amazon Chime
+%% @doc Suspends up to 50 users from a `Team' or `EnterpriseLWA' Amazon Chime
 %% account.
 %%
 %% For more information about different account types, see Managing Your
 %% Amazon Chime Accounts in the Amazon Chime Administration Guide.
 %%
-%% Users suspended from a `Team` account are disassociated from the account,
+%% Users suspended from a `Team' account are disassociated from the account,
 %% but they can continue to use Amazon Chime as free users. To remove the
-%% suspension from suspended `Team` account users, invite them to the `Team`
-%% account again. You can use the `InviteUsers` action to do so.
+%% suspension from suspended `Team' account users, invite them to the `Team'
+%% account again. You can use the `InviteUsers' action to do so.
 %%
-%% Users suspended from an `EnterpriseLWA` account are immediately signed out
+%% Users suspended from an `EnterpriseLWA' account are immediately signed out
 %% of Amazon Chime and can no longer sign in. To remove the suspension from
-%% suspended `EnterpriseLWA` account users, use the `BatchUnsuspendUser`
+%% suspended `EnterpriseLWA' account users, use the `BatchUnsuspendUser'
 %% action.
 %%
-%% To sign out users without suspending them, use the `LogoutUser` action.
+%% To sign out users without suspending them, use the `LogoutUser' action.
 batch_suspend_user(Client, AccountId, Input) ->
     batch_suspend_user(Client, AccountId, Input, []).
 batch_suspend_user(Client, AccountId, Input0, Options) ->
@@ -447,14 +447,14 @@ batch_suspend_user(Client, AccountId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the suspension from up to 50 previously suspended users for
-%% the specified Amazon Chime `EnterpriseLWA` account.
+%% the specified Amazon Chime `EnterpriseLWA' account.
 %%
-%% Only users on `EnterpriseLWA` accounts can be unsuspended using this
+%% Only users on `EnterpriseLWA' accounts can be unsuspended using this
 %% action. For more information about different account types, see Managing
 %% Your Amazon Chime Accounts in the Amazon Chime Administration Guide.
 %%
 %% Previously suspended users who are unsuspended using this action are
-%% returned to `Registered` status. Users who are not previously suspended
+%% returned to `Registered' status. Users who are not previously suspended
 %% are ignored.
 batch_unsuspend_user(Client, AccountId, Input) ->
     batch_unsuspend_user(Client, AccountId, Input, []).
@@ -474,7 +474,7 @@ batch_unsuspend_user(Client, AccountId, Input0, Options) ->
 %% @doc Updates phone number product types or calling names.
 %%
 %% You can update one attribute at a time for each
-%% `UpdatePhoneNumberRequestItem`. For example, you can update either the
+%% `UpdatePhoneNumberRequestItem'. For example, you can update either the
 %% product type or the calling name.
 %%
 %% For product types, choose from Amazon Chime Business Calling and Amazon
@@ -499,10 +499,10 @@ batch_update_phone_number(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates user details within the `UpdateUserRequestItem` object for up
+%% @doc Updates user details within the `UpdateUserRequestItem' object for up
 %% to 20 users for the specified Amazon Chime account.
 %%
-%% Currently, only `LicenseType` updates are supported for this action.
+%% Currently, only `LicenseType' updates are supported for this action.
 batch_update_user(Client, AccountId, Input) ->
     batch_update_user(Client, AccountId, Input, []).
 batch_update_user(Client, AccountId, Input0, Options) ->
@@ -521,7 +521,7 @@ batch_update_user(Client, AccountId, Input0, Options) ->
 %% @doc Creates an Amazon Chime account under the administrator's AWS
 %% account.
 %%
-%% Only `Team` account types are currently supported for this action. For
+%% Only `Team' account types are currently supported for this action. For
 %% more information about different account types, see Managing Your Amazon
 %% Chime Accounts in the Amazon Chime Administration Guide.
 create_account(Client, Input) ->
@@ -713,7 +713,7 @@ create_user(Client, AccountId, Input0, Options) ->
 %% You can choose to create an Amazon Chime Voice Connector in a specific AWS
 %% Region.
 %%
-%% Enabling `CreateVoiceConnectorRequest$RequireEncryption` configures your
+%% Enabling `CreateVoiceConnectorRequest$RequireEncryption' configures your
 %% Amazon Chime Voice Connector to use TLS transport for SIP signaling and
 %% Secure RTP (SRTP) for media. Inbound calls use TLS transport, and
 %% unencrypted outbound calls are blocked.
@@ -736,7 +736,7 @@ create_voice_connector(Client, Input0, Options) ->
 %% administrator's AWS account.
 %%
 %% You can associate Amazon Chime Voice Connectors with the Amazon Chime
-%% Voice Connector group by including `VoiceConnectorItems` in the request.
+%% Voice Connector group by including `VoiceConnectorItems' in the request.
 %%
 %% You can include Amazon Chime Voice Connectors from different AWS Regions
 %% in your group. This creates a fault tolerant mechanism for fallback in
@@ -758,19 +758,19 @@ create_voice_connector_group(Client, Input0, Options) ->
 
 %% @doc Deletes the specified Amazon Chime account.
 %%
-%% You must suspend all users before deleting a `Team` account. You can use
-%% the `BatchSuspendUser` action to do so.
+%% You must suspend all users before deleting a `Team' account. You can use
+%% the `BatchSuspendUser' action to do so.
 %%
-%% For `EnterpriseLWA` and `EnterpriseAD` accounts, you must release the
+%% For `EnterpriseLWA' and `EnterpriseAD' accounts, you must release the
 %% claimed domains for your Amazon Chime account before deletion. As soon as
 %% you release the domain, all users under that account are suspended.
 %%
-%% Deleted accounts appear in your `Disabled` accounts list for 90 days. To
-%% restore a deleted account from your `Disabled` accounts list, you must
+%% Deleted accounts appear in your `Disabled' accounts list for 90 days. To
+%% restore a deleted account from your `Disabled' accounts list, you must
 %% contact AWS Support.
 %%
 %% After 90 days, deleted accounts are permanently removed from your
-%% `Disabled` accounts list.
+%% `Disabled' accounts list.
 delete_account(Client, AccountId, Input) ->
     delete_account(Client, AccountId, Input, []).
 delete_account(Client, AccountId, Input0, Options) ->
@@ -787,7 +787,7 @@ delete_account(Client, AccountId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an attendee from the specified Amazon Chime SDK meeting and
-%% deletes their `JoinToken`.
+%% deletes their `JoinToken'.
 %%
 %% Attendees are automatically deleted when a Amazon Chime SDK meeting is
 %% deleted. For more information about the Amazon Chime SDK, see Using the
@@ -954,7 +954,7 @@ delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId,
 
 %% @doc Deletes the specified Amazon Chime Voice Connector group.
 %%
-%% Any `VoiceConnectorItems` and phone numbers associated with the group must
+%% Any `VoiceConnectorItems' and phone numbers associated with the group must
 %% be removed before it can be deleted.
 delete_voice_connector_group(Client, VoiceConnectorGroupId, Input) ->
     delete_voice_connector_group(Client, VoiceConnectorGroupId, Input, []).
@@ -1356,7 +1356,7 @@ get_room(Client, AccountId, RoomId, Options)
 %% address, license type, and personal meeting PIN.
 %%
 %% To retrieve user details with an email address instead of a user ID, use
-%% the `ListUsers` action, and then filter by email address.
+%% the `ListUsers' action, and then filter by email address.
 get_user(Client, AccountId, UserId)
   when is_map(Client) ->
     get_user(Client, AccountId, UserId, []).
@@ -1420,7 +1420,7 @@ get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves details for the specified Amazon Chime Voice Connector
-%% group, such as timestamps, name, and associated `VoiceConnectorItems`.
+%% group, such as timestamps, name, and associated `VoiceConnectorItems'.
 get_voice_connector_group(Client, VoiceConnectorGroupId)
   when is_map(Client) ->
     get_voice_connector_group(Client, VoiceConnectorGroupId, []).
@@ -1521,7 +1521,7 @@ get_voice_connector_termination(Client, VoiceConnectorId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves information about the last time a SIP `OPTIONS` ping was
+%% @doc Retrieves information about the last time a SIP `OPTIONS' ping was
 %% received from your SIP infrastructure for the specified Amazon Chime Voice
 %% Connector.
 get_voice_connector_termination_health(Client, VoiceConnectorId)
@@ -1539,9 +1539,9 @@ get_voice_connector_termination_health(Client, VoiceConnectorId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Sends email to a maximum of 50 users, inviting them to the specified
-%% Amazon Chime `Team` account.
+%% Amazon Chime `Team' account.
 %%
-%% Only `Team` account types are currently supported for this action.
+%% Only `Team' account types are currently supported for this action.
 invite_users(Client, AccountId, Input) ->
     invite_users(Client, AccountId, Input, []).
 invite_users(Client, AccountId, Input0, Options) ->
@@ -1920,7 +1920,7 @@ logout_user(Client, AccountId, UserId, Input0, Options) ->
 %% events sent by Amazon Chime.
 %%
 %% Choose either an HTTPS endpoint or a Lambda function ARN. For more
-%% information, see `Bot`.
+%% information, see `Bot'.
 put_events_configuration(Client, AccountId, BotId, Input) ->
     put_events_configuration(Client, AccountId, BotId, Input, []).
 put_events_configuration(Client, AccountId, BotId, Input0, Options) ->
@@ -2151,7 +2151,7 @@ regenerate_security_token(Client, AccountId, BotId, Input0, Options) ->
 %% @doc Resets the personal meeting PIN for the specified user on an Amazon
 %% Chime account.
 %%
-%% Returns the `User` object with the updated personal meeting PIN.
+%% Returns the `User' object with the updated personal meeting PIN.
 reset_personal_p_i_n(Client, AccountId, UserId, Input) ->
     reset_personal_p_i_n(Client, AccountId, UserId, Input, []).
 reset_personal_p_i_n(Client, AccountId, UserId, Input0, Options) ->
@@ -2486,7 +2486,7 @@ update_room_membership(Client, AccountId, MemberId, RoomId, Input0, Options) ->
 
 %% @doc Updates user details for a specified user ID.
 %%
-%% Currently, only `LicenseType` updates are supported for this action.
+%% Currently, only `LicenseType' updates are supported for this action.
 update_user(Client, AccountId, UserId, Input) ->
     update_user(Client, AccountId, UserId, Input, []).
 update_user(Client, AccountId, UserId, Input0, Options) ->

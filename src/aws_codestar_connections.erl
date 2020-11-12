@@ -30,40 +30,40 @@
 %%
 %% You can work with connections by calling:
 %%
-%% <ul> <li> `CreateConnection`, which creates a uniquely named connection
+%% <ul> <li> `CreateConnection', which creates a uniquely named connection
 %% that can be referenced by services such as CodePipeline.
 %%
-%% </li> <li> `DeleteConnection`, which deletes the specified connection.
+%% </li> <li> `DeleteConnection', which deletes the specified connection.
 %%
-%% </li> <li> `GetConnection`, which returns information about the
+%% </li> <li> `GetConnection', which returns information about the
 %% connection, including the connection status.
 %%
-%% </li> <li> `ListConnections`, which lists the connections associated with
+%% </li> <li> `ListConnections', which lists the connections associated with
 %% your account.
 %%
 %% </li> </ul> You can work with hosts by calling:
 %%
-%% <ul> <li> `CreateHost`, which creates a host that represents the
+%% <ul> <li> `CreateHost', which creates a host that represents the
 %% infrastructure where your provider is installed.
 %%
-%% </li> <li> `DeleteHost`, which deletes the specified host.
+%% </li> <li> `DeleteHost', which deletes the specified host.
 %%
-%% </li> <li> `GetHost`, which returns information about the host, including
+%% </li> <li> `GetHost', which returns information about the host, including
 %% the setup status.
 %%
-%% </li> <li> `ListHosts`, which lists the hosts associated with your
+%% </li> <li> `ListHosts', which lists the hosts associated with your
 %% account.
 %%
 %% </li> </ul> You can work with tags in AWS CodeStar Connections by calling
 %% the following:
 %%
-%% <ul> <li> `ListTagsForResource`, which gets information about AWS tags for
+%% <ul> <li> `ListTagsForResource', which gets information about AWS tags for
 %% a specified Amazon Resource Name (ARN) in AWS CodeStar Connections.
 %%
-%% </li> <li> `TagResource`, which adds or updates tags for a resource in AWS
+%% </li> <li> `TagResource', which adds or updates tags for a resource in AWS
 %% CodeStar Connections.
 %%
-%% </li> <li> `UntagResource`, which removes tags for a resource in AWS
+%% </li> <li> `UntagResource', which removes tags for a resource in AWS
 %% CodeStar Connections.
 %%
 %% </li> </ul> For information about how to use AWS CodeStar Connections, see

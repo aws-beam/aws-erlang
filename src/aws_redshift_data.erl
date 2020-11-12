@@ -68,7 +68,7 @@ describe_statement(Client, Input, Options)
 %%
 %% </li> <li> Temporary credentials - specify the cluster identifier, the
 %% database name, and the database user name. Permission to call the
-%% `redshift:GetClusterCredentials` operation is required to use this method.
+%% `redshift:GetClusterCredentials' operation is required to use this method.
 %%
 %% </li> </ul>
 describe_table(Client, Input)
@@ -91,7 +91,7 @@ describe_table(Client, Input, Options)
 %%
 %% </li> <li> Temporary credentials - specify the cluster identifier, the
 %% database name, and the database user name. Permission to call the
-%% `redshift:GetClusterCredentials` operation is required to use this method.
+%% `redshift:GetClusterCredentials' operation is required to use this method.
 %%
 %% </li> </ul>
 execute_statement(Client, Input)
@@ -123,7 +123,7 @@ get_statement_result(Client, Input, Options)
 %%
 %% </li> <li> Temporary credentials - specify the cluster identifier, the
 %% database name, and the database user name. Permission to call the
-%% `redshift:GetClusterCredentials` operation is required to use this method.
+%% `redshift:GetClusterCredentials' operation is required to use this method.
 %%
 %% </li> </ul>
 list_databases(Client, Input)
@@ -145,7 +145,7 @@ list_databases(Client, Input, Options)
 %%
 %% </li> <li> Temporary credentials - specify the cluster identifier, the
 %% database name, and the database user name. Permission to call the
-%% `redshift:GetClusterCredentials` operation is required to use this method.
+%% `redshift:GetClusterCredentials' operation is required to use this method.
 %%
 %% </li> </ul>
 list_schemas(Client, Input)
@@ -168,7 +168,7 @@ list_statements(Client, Input, Options)
 
 %% @doc List the tables in a database.
 %%
-%% If neither `SchemaPattern` nor `TablePattern` are specified, then all
+%% If neither `SchemaPattern' nor `TablePattern' are specified, then all
 %% tables in the database are returned. A token is returned to page through
 %% the table list. Depending on the authorization method, use one of the
 %% following combinations of request parameters:
@@ -179,7 +179,7 @@ list_statements(Client, Input, Options)
 %%
 %% </li> <li> Temporary credentials - specify the cluster identifier, the
 %% database name, and the database user name. Permission to call the
-%% `redshift:GetClusterCredentials` operation is required to use this method.
+%% `redshift:GetClusterCredentials' operation is required to use this method.
 %%
 %% </li> </ul>
 list_tables(Client, Input)

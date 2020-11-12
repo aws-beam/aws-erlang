@@ -62,12 +62,12 @@
 %% screenshots of the UI, logs, and metrics. You can set up a canary to run
 %% continuously or just once.
 %%
-%% Do not use `CreateCanary` to modify an existing canary. Use UpdateCanary
+%% Do not use `CreateCanary' to modify an existing canary. Use UpdateCanary
 %% instead.
 %%
-%% To create canaries, you must have the `CloudWatchSyntheticsFullAccess`
+%% To create canaries, you must have the `CloudWatchSyntheticsFullAccess'
 %% policy. If you are creating a new IAM role for the canary, you also need
-%% the the `iam:CreateRole`, `iam:CreatePolicy` and `iam:AttachRolePolicy`
+%% the the `iam:CreateRole', `iam:CreatePolicy' and `iam:AttachRolePolicy'
 %% permissions. For more information, see Necessary Roles and Permissions.
 %%
 %% Do not include secrets or proprietary information in your canary names.
@@ -96,22 +96,22 @@ create_canary(Client, Input0, Options) ->
 %% use again, you should also delete the following:
 %%
 %% <ul> <li> The Lambda functions and layers used by this canary. These have
-%% the prefix `cwsyn-MyCanaryName `.
+%% the prefix `cwsyn-MyCanaryName '.
 %%
 %% </li> <li> The CloudWatch alarms created for this canary. These alarms
-%% have a name of `Synthetics-SharpDrop-Alarm-MyCanaryName `.
+%% have a name of `Synthetics-SharpDrop-Alarm-MyCanaryName '.
 %%
 %% </li> <li> Amazon S3 objects and buckets, such as the canary's artifact
 %% location.
 %%
 %% </li> <li> IAM roles created for the canary. If they were created in the
 %% console, these roles have the name `
-%% role/service-role/CloudWatchSyntheticsRole-MyCanaryName `.
+%% role/service-role/CloudWatchSyntheticsRole-MyCanaryName '.
 %%
 %% </li> <li> CloudWatch Logs log groups created for the canary. These logs
-%% groups have the name `/aws/lambda/cwsyn-MyCanaryName `.
+%% groups have the name `/aws/lambda/cwsyn-MyCanaryName '.
 %%
-%% </li> </ul> Before you delete a canary, you might want to use `GetCanary`
+%% </li> </ul> Before you delete a canary, you might want to use `GetCanary'
 %% to display the information about this canary. Make note of the information
 %% returned by this operation so that you can delete these resources after
 %% you delete the canary.
@@ -134,7 +134,7 @@ delete_canary(Client, Name, Input0, Options) ->
 %% with full details about each canary.
 %%
 %% This operation does not have resource-level authorization, so if a user is
-%% able to use `DescribeCanaries`, the user can see all of the canaries in
+%% able to use `DescribeCanaries', the user can see all of the canaries in
 %% the account. A deny policy can only be used to restrict access to all
 %% canaries. It cannot be used on specific resources.
 describe_canaries(Client, Input) ->
@@ -239,7 +239,7 @@ list_tags_for_resource(Client, ResourceArn, Options)
 %% @doc Use this operation to run a canary that has already been created.
 %%
 %% The frequency of the canary runs is determined by the value of the
-%% canary's `Schedule`. To see a canary's schedule, use GetCanary.
+%% canary's `Schedule'. To see a canary's schedule, use GetCanary.
 start_canary(Client, Name, Input) ->
     start_canary(Client, Name, Input, []).
 start_canary(Client, Name, Input0, Options) ->
@@ -262,7 +262,7 @@ start_canary(Client, Name, Input0, Options) ->
 %% progress completes on its own, publishes metrics, and uploads artifacts,
 %% but it is not recorded in Synthetics as a completed run.
 %%
-%% You can use `StartCanary` to start it running again with the canary’s
+%% You can use `StartCanary' to start it running again with the canary’s
 %% current schedule at any point in the future.
 stop_canary(Client, Name, Input) ->
     stop_canary(Client, Name, Input, []).
@@ -288,7 +288,7 @@ stop_canary(Client, Name, Input0, Options) ->
 %% Tags don't have any semantic meaning to AWS and are interpreted strictly
 %% as strings of characters.
 %%
-%% You can use the `TagResource` action with a canary that already has tags.
+%% You can use the `TagResource' action with a canary that already has tags.
 %% If you specify a new tag key for the alarm, this tag is appended to the
 %% list of tags associated with the alarm. If you specify a tag key that is
 %% already associated with the alarm, the new tag value that you specify

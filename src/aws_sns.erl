@@ -107,7 +107,7 @@ add_permission(Client, Input, Options)
 %% You cannot send SMS messages to a number that is opted out.
 %%
 %% To resume sending messages, you can opt in the number by using the
-%% `OptInPhoneNumber` action.
+%% `OptInPhoneNumber' action.
 check_if_phone_number_is_opted_out(Client, Input)
   when is_map(Client), is_map(Input) ->
     check_if_phone_number_is_opted_out(Client, Input, []).
@@ -116,11 +116,11 @@ check_if_phone_number_is_opted_out(Client, Input, Options)
     request(Client, <<"CheckIfPhoneNumberIsOptedOut">>, Input, Options).
 
 %% @doc Verifies an endpoint owner's intent to receive messages by validating
-%% the token sent to the endpoint by an earlier `Subscribe` action.
+%% the token sent to the endpoint by an earlier `Subscribe' action.
 %%
 %% If the token is valid, the action creates a new subscription and returns
 %% its Amazon Resource Name (ARN). This call requires an AWS signature only
-%% when the `AuthenticateOnUnsubscribe` flag is set to "true".
+%% when the `AuthenticateOnUnsubscribe' flag is set to "true".
 confirm_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     confirm_subscription(Client, Input, []).
@@ -132,32 +132,32 @@ confirm_subscription(Client, Input, Options)
 %% notification services, such as APNS and GCM (Firebase Cloud Messaging), to
 %% which devices and mobile apps may register.
 %%
-%% You must specify `PlatformPrincipal` and `PlatformCredential` attributes
-%% when using the `CreatePlatformApplication` action.
+%% You must specify `PlatformPrincipal' and `PlatformCredential' attributes
+%% when using the `CreatePlatformApplication' action.
 %%
-%% `PlatformPrincipal` and `PlatformCredential` are received from the
+%% `PlatformPrincipal' and `PlatformCredential' are received from the
 %% notification service.
 %%
-%% <ul> <li> For `ADM`, `PlatformPrincipal` is `client id` and
-%% `PlatformCredential` is `client secret`.
+%% <ul> <li> For `ADM', `PlatformPrincipal' is `client id' and
+%% `PlatformCredential' is `client secret'.
 %%
-%% </li> <li> For `Baidu`, `PlatformPrincipal` is `API key` and
-%% `PlatformCredential` is `secret key`.
+%% </li> <li> For `Baidu', `PlatformPrincipal' is `API key' and
+%% `PlatformCredential' is `secret key'.
 %%
-%% </li> <li> For `APNS` and `APNS_SANDBOX`, `PlatformPrincipal` is `SSL
-%% certificate` and `PlatformCredential` is `private key`.
+%% </li> <li> For `APNS' and `APNS_SANDBOX', `PlatformPrincipal' is `SSL
+%% certificate' and `PlatformCredential' is `private key'.
 %%
-%% </li> <li> For `GCM` (Firebase Cloud Messaging), there is no
-%% `PlatformPrincipal` and the `PlatformCredential` is `API key`.
+%% </li> <li> For `GCM' (Firebase Cloud Messaging), there is no
+%% `PlatformPrincipal' and the `PlatformCredential' is `API key'.
 %%
-%% </li> <li> For `MPNS`, `PlatformPrincipal` is `TLS certificate` and
-%% `PlatformCredential` is `private key`.
+%% </li> <li> For `MPNS', `PlatformPrincipal' is `TLS certificate' and
+%% `PlatformCredential' is `private key'.
 %%
-%% </li> <li> For `WNS`, `PlatformPrincipal` is `Package Security Identifier`
-%% and `PlatformCredential` is `secret key`.
+%% </li> <li> For `WNS', `PlatformPrincipal' is `Package Security Identifier'
+%% and `PlatformCredential' is `secret key'.
 %%
-%% </li> </ul> You can use the returned `PlatformApplicationArn` as an
-%% attribute for the `CreatePlatformEndpoint` action.
+%% </li> </ul> You can use the returned `PlatformApplicationArn' as an
+%% attribute for the `CreatePlatformEndpoint' action.
 create_platform_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_platform_application(Client, Input, []).
@@ -169,16 +169,16 @@ create_platform_application(Client, Input, Options)
 %% supported push notification services, such as GCM (Firebase Cloud
 %% Messaging) and APNS.
 %%
-%% `CreatePlatformEndpoint` requires the `PlatformApplicationArn` that is
-%% returned from `CreatePlatformApplication`. You can use the returned
-%% `EndpointArn` to send a message to a mobile app or by the `Subscribe`
-%% action for subscription to a topic. The `CreatePlatformEndpoint` action is
+%% `CreatePlatformEndpoint' requires the `PlatformApplicationArn' that is
+%% returned from `CreatePlatformApplication'. You can use the returned
+%% `EndpointArn' to send a message to a mobile app or by the `Subscribe'
+%% action for subscription to a topic. The `CreatePlatformEndpoint' action is
 %% idempotent, so if the requester already owns an endpoint with the same
 %% device token and attributes, that endpoint's ARN is returned without
 %% creating a new endpoint. For more information, see Using Amazon SNS Mobile
 %% Push Notifications.
 %%
-%% When using `CreatePlatformEndpoint` with Baidu, two attributes must be
+%% When using `CreatePlatformEndpoint' with Baidu, two attributes must be
 %% provided: ChannelId and UserId. The token field must also contain the
 %% ChannelId. For more information, see Creating an Amazon SNS Endpoint for
 %% Baidu.
@@ -265,7 +265,7 @@ get_platform_application_attributes(Client, Input, Options)
 
 %% @doc Returns the settings for sending SMS messages from your account.
 %%
-%% These settings are set with the `SetSMSAttributes` action.
+%% These settings are set with the `SetSMSAttributes' action.
 get_s_m_s_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_s_m_s_attributes(Client, Input, []).
@@ -296,11 +296,11 @@ get_topic_attributes(Client, Input, Options)
 %% supported push notification service, such as GCM (Firebase Cloud
 %% Messaging) and APNS.
 %%
-%% The results for `ListEndpointsByPlatformApplication` are paginated and
+%% The results for `ListEndpointsByPlatformApplication' are paginated and
 %% return a limited list of endpoints, up to 100. If additional records are
 %% available after the first page results, then a NextToken string will be
 %% returned. To receive the next page, you call
-%% `ListEndpointsByPlatformApplication` again using the NextToken string
+%% `ListEndpointsByPlatformApplication' again using the NextToken string
 %% received from the previous call. When there are no more records to return,
 %% NextToken will be null. For more information, see Using Amazon SNS Mobile
 %% Push Notifications.
@@ -316,12 +316,12 @@ list_endpoints_by_platform_application(Client, Input, Options)
 %% @doc Returns a list of phone numbers that are opted out, meaning you
 %% cannot send SMS messages to them.
 %%
-%% The results for `ListPhoneNumbersOptedOut` are paginated, and each page
+%% The results for `ListPhoneNumbersOptedOut' are paginated, and each page
 %% returns up to 100 phone numbers. If additional phone numbers are available
-%% after the first page of results, then a `NextToken` string will be
-%% returned. To receive the next page, you call `ListPhoneNumbersOptedOut`
-%% again using the `NextToken` string received from the previous call. When
-%% there are no more records to return, `NextToken` will be null.
+%% after the first page of results, then a `NextToken' string will be
+%% returned. To receive the next page, you call `ListPhoneNumbersOptedOut'
+%% again using the `NextToken' string received from the previous call. When
+%% there are no more records to return, `NextToken' will be null.
 list_phone_numbers_opted_out(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_phone_numbers_opted_out(Client, Input, []).
@@ -332,12 +332,12 @@ list_phone_numbers_opted_out(Client, Input, Options)
 %% @doc Lists the platform application objects for the supported push
 %% notification services, such as APNS and GCM (Firebase Cloud Messaging).
 %%
-%% The results for `ListPlatformApplications` are paginated and return a
+%% The results for `ListPlatformApplications' are paginated and return a
 %% limited list of applications, up to 100. If additional records are
 %% available after the first page results, then a NextToken string will be
-%% returned. To receive the next page, you call `ListPlatformApplications`
+%% returned. To receive the next page, you call `ListPlatformApplications'
 %% using the NextToken string received from the previous call. When there are
-%% no more records to return, `NextToken` will be null. For more information,
+%% no more records to return, `NextToken' will be null. For more information,
 %% see Using Amazon SNS Mobile Push Notifications.
 %%
 %% This action is throttled at 15 transactions per second (TPS).
@@ -351,8 +351,8 @@ list_platform_applications(Client, Input, Options)
 %% @doc Returns a list of the requester's subscriptions.
 %%
 %% Each call returns a limited list of subscriptions, up to 100. If there are
-%% more subscriptions, a `NextToken` is also returned. Use the `NextToken`
-%% parameter in a new `ListSubscriptions` call to get further results.
+%% more subscriptions, a `NextToken' is also returned. Use the `NextToken'
+%% parameter in a new `ListSubscriptions' call to get further results.
 %%
 %% This action is throttled at 30 transactions per second (TPS).
 list_subscriptions(Client, Input)
@@ -365,8 +365,8 @@ list_subscriptions(Client, Input, Options)
 %% @doc Returns a list of the subscriptions to a specific topic.
 %%
 %% Each call returns a limited list of subscriptions, up to 100. If there are
-%% more subscriptions, a `NextToken` is also returned. Use the `NextToken`
-%% parameter in a new `ListSubscriptionsByTopic` call to get further results.
+%% more subscriptions, a `NextToken' is also returned. Use the `NextToken'
+%% parameter in a new `ListSubscriptionsByTopic' call to get further results.
 %%
 %% This action is throttled at 30 transactions per second (TPS).
 list_subscriptions_by_topic(Client, Input)
@@ -390,8 +390,8 @@ list_tags_for_resource(Client, Input, Options)
 %% @doc Returns a list of the requester's topics.
 %%
 %% Each call returns a limited list of topics, up to 100. If there are more
-%% topics, a `NextToken` is also returned. Use the `NextToken` parameter in a
-%% new `ListTopics` call to get further results.
+%% topics, a `NextToken' is also returned. Use the `NextToken' parameter in a
+%% new `ListTopics' call to get further results.
 %%
 %% This action is throttled at 30 transactions per second (TPS).
 list_topics(Client, Input)
@@ -414,19 +414,19 @@ opt_in_phone_number(Client, Input, Options)
 
 %% @doc Sends a message to an Amazon SNS topic, a text message (SMS message)
 %% directly to a phone number, or a message to a mobile platform endpoint
-%% (when you specify the `TargetArn`).
+%% (when you specify the `TargetArn').
 %%
 %% If you send a message to a topic, Amazon SNS delivers the message to each
 %% endpoint that is subscribed to the topic. The format of the message
 %% depends on the notification protocol for each subscribed endpoint.
 %%
-%% When a `messageId` is returned, the message has been saved and Amazon SNS
+%% When a `messageId' is returned, the message has been saved and Amazon SNS
 %% will attempt to deliver it shortly.
 %%
-%% To use the `Publish` action for sending a message to a mobile endpoint,
+%% To use the `Publish' action for sending a message to a mobile endpoint,
 %% such as an app on a Kindle device or mobile phone, you must specify the
 %% EndpointArn for the TargetArn parameter. The EndpointArn is returned when
-%% making a call with the `CreatePlatformEndpoint` action.
+%% making a call with the `CreatePlatformEndpoint' action.
 %%
 %% For more information about formatting messages, see Send Custom
 %% Platform-Specific Payloads in Messages to Mobile Devices.
@@ -478,7 +478,7 @@ set_platform_application_attributes(Client, Input, Options)
 %% and receiving daily SMS usage reports.
 %%
 %% You can override some of these settings for a single message when you use
-%% the `Publish` action with the `MessageAttributes.entry.N` parameter. For
+%% the `Publish' action with the `MessageAttributes.entry.N' parameter. For
 %% more information, see Publishing to a mobile phone in the Amazon SNS
 %% Developer Guide.
 set_s_m_s_attributes(Client, Input)
@@ -509,9 +509,9 @@ set_topic_attributes(Client, Input, Options)
 %%
 %% If the endpoint type is HTTP/S or email, or if the endpoint and the topic
 %% are not in the same AWS account, the endpoint owner must the
-%% `ConfirmSubscription` action to confirm the subscription.
+%% `ConfirmSubscription' action to confirm the subscription.
 %%
-%% You call the `ConfirmSubscription` action with the token from the
+%% You call the `ConfirmSubscription' action with the token from the
 %% subscription response. Confirmation tokens are valid for three days.
 %%
 %% This action is throttled at 100 transactions per second (TPS).
@@ -554,10 +554,10 @@ tag_resource(Client, Input, Options)
 %%
 %% If the subscription requires authentication for deletion, only the owner
 %% of the subscription or the topic's owner can unsubscribe, and an AWS
-%% signature is required. If the `Unsubscribe` call does not require
+%% signature is required. If the `Unsubscribe' call does not require
 %% authentication and the requester is not the subscription owner, a final
 %% cancellation message is delivered to the endpoint, so that the endpoint
-%% owner can easily resubscribe to the topic if the `Unsubscribe` request was
+%% owner can easily resubscribe to the topic if the `Unsubscribe' request was
 %% unintended.
 %%
 %% This action is throttled at 100 transactions per second (TPS).

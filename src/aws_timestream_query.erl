@@ -22,7 +22,7 @@
 %% Cancellation is guaranteed only if the query has not completed execution
 %% before the cancellation request was issued. Because cancellation is an
 %% idempotent operation, subsequent cancellation requests will return a
-%% `CancellationMessage`, indicating that the query has already been
+%% `CancellationMessage', indicating that the query has already been
 %% canceled.
 cancel_query(Client, Input)
   when is_map(Client), is_map(Input) ->
