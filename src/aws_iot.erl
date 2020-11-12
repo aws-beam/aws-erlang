@@ -467,7 +467,7 @@ accept_certificate_transfer(Client, CertificateId, Input) ->
     accept_certificate_transfer(Client, CertificateId, Input, []).
 accept_certificate_transfer(Client, CertificateId, Input0, Options) ->
     Method = patch,
-    Path = ["/accept-certificate-transfer/", http_uri:encode(CertificateId), ""],
+    Path = ["/accept-certificate-transfer/", aws_util:encode_uri(CertificateId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -528,7 +528,7 @@ associate_targets_with_job(Client, JobId, Input) ->
     associate_targets_with_job(Client, JobId, Input, []).
 associate_targets_with_job(Client, JobId, Input0, Options) ->
     Method = post,
-    Path = ["/jobs/", http_uri:encode(JobId), "/targets"],
+    Path = ["/jobs/", aws_util:encode_uri(JobId), "/targets"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -545,7 +545,7 @@ attach_policy(Client, PolicyName, Input) ->
     attach_policy(Client, PolicyName, Input, []).
 attach_policy(Client, PolicyName, Input0, Options) ->
     Method = put,
-    Path = ["/target-policies/", http_uri:encode(PolicyName), ""],
+    Path = ["/target-policies/", aws_util:encode_uri(PolicyName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -564,7 +564,7 @@ attach_principal_policy(Client, PolicyName, Input) ->
     attach_principal_policy(Client, PolicyName, Input, []).
 attach_principal_policy(Client, PolicyName, Input0, Options) ->
     Method = put,
-    Path = ["/principal-policies/", http_uri:encode(PolicyName), ""],
+    Path = ["/principal-policies/", aws_util:encode_uri(PolicyName), ""],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -586,7 +586,7 @@ attach_security_profile(Client, SecurityProfileName, Input) ->
     attach_security_profile(Client, SecurityProfileName, Input, []).
 attach_security_profile(Client, SecurityProfileName, Input0, Options) ->
     Method = put,
-    Path = ["/security-profiles/", http_uri:encode(SecurityProfileName), "/targets"],
+    Path = ["/security-profiles/", aws_util:encode_uri(SecurityProfileName), "/targets"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -606,7 +606,7 @@ attach_thing_principal(Client, ThingName, Input) ->
     attach_thing_principal(Client, ThingName, Input, []).
 attach_thing_principal(Client, ThingName, Input0, Options) ->
     Method = put,
-    Path = ["/things/", http_uri:encode(ThingName), "/principals"],
+    Path = ["/things/", aws_util:encode_uri(ThingName), "/principals"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -626,7 +626,7 @@ cancel_audit_mitigation_actions_task(Client, TaskId, Input) ->
     cancel_audit_mitigation_actions_task(Client, TaskId, Input, []).
 cancel_audit_mitigation_actions_task(Client, TaskId, Input0, Options) ->
     Method = put,
-    Path = ["/audit/mitigationactions/tasks/", http_uri:encode(TaskId), "/cancel"],
+    Path = ["/audit/mitigationactions/tasks/", aws_util:encode_uri(TaskId), "/cancel"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -645,7 +645,7 @@ cancel_audit_task(Client, TaskId, Input) ->
     cancel_audit_task(Client, TaskId, Input, []).
 cancel_audit_task(Client, TaskId, Input0, Options) ->
     Method = put,
-    Path = ["/audit/tasks/", http_uri:encode(TaskId), "/cancel"],
+    Path = ["/audit/tasks/", aws_util:encode_uri(TaskId), "/cancel"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -670,7 +670,7 @@ cancel_certificate_transfer(Client, CertificateId, Input) ->
     cancel_certificate_transfer(Client, CertificateId, Input, []).
 cancel_certificate_transfer(Client, CertificateId, Input0, Options) ->
     Method = patch,
-    Path = ["/cancel-certificate-transfer/", http_uri:encode(CertificateId), ""],
+    Path = ["/cancel-certificate-transfer/", aws_util:encode_uri(CertificateId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -686,7 +686,7 @@ cancel_job(Client, JobId, Input) ->
     cancel_job(Client, JobId, Input, []).
 cancel_job(Client, JobId, Input0, Options) ->
     Method = put,
-    Path = ["/jobs/", http_uri:encode(JobId), "/cancel"],
+    Path = ["/jobs/", aws_util:encode_uri(JobId), "/cancel"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -703,7 +703,7 @@ cancel_job_execution(Client, JobId, ThingName, Input) ->
     cancel_job_execution(Client, JobId, ThingName, Input, []).
 cancel_job_execution(Client, JobId, ThingName, Input0, Options) ->
     Method = put,
-    Path = ["/things/", http_uri:encode(ThingName), "/jobs/", http_uri:encode(JobId), "/cancel"],
+    Path = ["/things/", aws_util:encode_uri(ThingName), "/jobs/", aws_util:encode_uri(JobId), "/cancel"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -743,7 +743,7 @@ confirm_topic_rule_destination(Client, ConfirmationToken)
     confirm_topic_rule_destination(Client, ConfirmationToken, []).
 confirm_topic_rule_destination(Client, ConfirmationToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/confirmdestination/", aws_util:encode_uri(ConfirmationToken, true), ""],
+    Path = ["/confirmdestination/", aws_util:encode_multi_segment_uri(ConfirmationToken), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -773,7 +773,7 @@ create_authorizer(Client, AuthorizerName, Input) ->
     create_authorizer(Client, AuthorizerName, Input, []).
 create_authorizer(Client, AuthorizerName, Input0, Options) ->
     Method = post,
-    Path = ["/authorizer/", http_uri:encode(AuthorizerName), ""],
+    Path = ["/authorizer/", aws_util:encode_uri(AuthorizerName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -789,7 +789,7 @@ create_billing_group(Client, BillingGroupName, Input) ->
     create_billing_group(Client, BillingGroupName, Input, []).
 create_billing_group(Client, BillingGroupName, Input0, Options) ->
     Method = post,
-    Path = ["/billing-groups/", http_uri:encode(BillingGroupName), ""],
+    Path = ["/billing-groups/", aws_util:encode_uri(BillingGroupName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -871,7 +871,7 @@ create_dimension(Client, Name, Input) ->
     create_dimension(Client, Name, Input, []).
 create_dimension(Client, Name, Input0, Options) ->
     Method = post,
-    Path = ["/dimensions/", http_uri:encode(Name), ""],
+    Path = ["/dimensions/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -890,7 +890,7 @@ create_domain_configuration(Client, DomainConfigurationName, Input) ->
     create_domain_configuration(Client, DomainConfigurationName, Input, []).
 create_domain_configuration(Client, DomainConfigurationName, Input0, Options) ->
     Method = post,
-    Path = ["/domainConfigurations/", http_uri:encode(DomainConfigurationName), ""],
+    Path = ["/domainConfigurations/", aws_util:encode_uri(DomainConfigurationName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -906,7 +906,7 @@ create_dynamic_thing_group(Client, ThingGroupName, Input) ->
     create_dynamic_thing_group(Client, ThingGroupName, Input, []).
 create_dynamic_thing_group(Client, ThingGroupName, Input0, Options) ->
     Method = post,
-    Path = ["/dynamic-thing-groups/", http_uri:encode(ThingGroupName), ""],
+    Path = ["/dynamic-thing-groups/", aws_util:encode_uri(ThingGroupName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -922,7 +922,7 @@ create_job(Client, JobId, Input) ->
     create_job(Client, JobId, Input, []).
 create_job(Client, JobId, Input0, Options) ->
     Method = put,
-    Path = ["/jobs/", http_uri:encode(JobId), ""],
+    Path = ["/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -967,7 +967,7 @@ create_mitigation_action(Client, ActionName, Input) ->
     create_mitigation_action(Client, ActionName, Input, []).
 create_mitigation_action(Client, ActionName, Input0, Options) ->
     Method = post,
-    Path = ["/mitigationactions/actions/", http_uri:encode(ActionName), ""],
+    Path = ["/mitigationactions/actions/", aws_util:encode_uri(ActionName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -983,7 +983,7 @@ create_o_t_a_update(Client, OtaUpdateId, Input) ->
     create_o_t_a_update(Client, OtaUpdateId, Input, []).
 create_o_t_a_update(Client, OtaUpdateId, Input0, Options) ->
     Method = post,
-    Path = ["/otaUpdates/", http_uri:encode(OtaUpdateId), ""],
+    Path = ["/otaUpdates/", aws_util:encode_uri(OtaUpdateId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1003,7 +1003,7 @@ create_policy(Client, PolicyName, Input) ->
     create_policy(Client, PolicyName, Input, []).
 create_policy(Client, PolicyName, Input0, Options) ->
     Method = post,
-    Path = ["/policies/", http_uri:encode(PolicyName), ""],
+    Path = ["/policies/", aws_util:encode_uri(PolicyName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1028,7 +1028,7 @@ create_policy_version(Client, PolicyName, Input) ->
     create_policy_version(Client, PolicyName, Input, []).
 create_policy_version(Client, PolicyName, Input0, Options) ->
     Method = post,
-    Path = ["/policies/", http_uri:encode(PolicyName), "/version"],
+    Path = ["/policies/", aws_util:encode_uri(PolicyName), "/version"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1045,7 +1045,7 @@ create_provisioning_claim(Client, TemplateName, Input) ->
     create_provisioning_claim(Client, TemplateName, Input, []).
 create_provisioning_claim(Client, TemplateName, Input0, Options) ->
     Method = post,
-    Path = ["/provisioning-templates/", http_uri:encode(TemplateName), "/provisioning-claim"],
+    Path = ["/provisioning-templates/", aws_util:encode_uri(TemplateName), "/provisioning-claim"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1077,7 +1077,7 @@ create_provisioning_template_version(Client, TemplateName, Input) ->
     create_provisioning_template_version(Client, TemplateName, Input, []).
 create_provisioning_template_version(Client, TemplateName, Input0, Options) ->
     Method = post,
-    Path = ["/provisioning-templates/", http_uri:encode(TemplateName), "/versions"],
+    Path = ["/provisioning-templates/", aws_util:encode_uri(TemplateName), "/versions"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1094,7 +1094,7 @@ create_role_alias(Client, RoleAlias, Input) ->
     create_role_alias(Client, RoleAlias, Input, []).
 create_role_alias(Client, RoleAlias, Input0, Options) ->
     Method = post,
-    Path = ["/role-aliases/", http_uri:encode(RoleAlias), ""],
+    Path = ["/role-aliases/", aws_util:encode_uri(RoleAlias), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1110,7 +1110,7 @@ create_scheduled_audit(Client, ScheduledAuditName, Input) ->
     create_scheduled_audit(Client, ScheduledAuditName, Input, []).
 create_scheduled_audit(Client, ScheduledAuditName, Input0, Options) ->
     Method = post,
-    Path = ["/audit/scheduledaudits/", http_uri:encode(ScheduledAuditName), ""],
+    Path = ["/audit/scheduledaudits/", aws_util:encode_uri(ScheduledAuditName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1126,7 +1126,7 @@ create_security_profile(Client, SecurityProfileName, Input) ->
     create_security_profile(Client, SecurityProfileName, Input, []).
 create_security_profile(Client, SecurityProfileName, Input0, Options) ->
     Method = post,
-    Path = ["/security-profiles/", http_uri:encode(SecurityProfileName), ""],
+    Path = ["/security-profiles/", aws_util:encode_uri(SecurityProfileName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1147,7 +1147,7 @@ create_stream(Client, StreamId, Input) ->
     create_stream(Client, StreamId, Input, []).
 create_stream(Client, StreamId, Input0, Options) ->
     Method = post,
-    Path = ["/streams/", http_uri:encode(StreamId), ""],
+    Path = ["/streams/", aws_util:encode_uri(StreamId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1171,7 +1171,7 @@ create_thing(Client, ThingName, Input) ->
     create_thing(Client, ThingName, Input, []).
 create_thing(Client, ThingName, Input0, Options) ->
     Method = post,
-    Path = ["/things/", http_uri:encode(ThingName), ""],
+    Path = ["/things/", aws_util:encode_uri(ThingName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1190,7 +1190,7 @@ create_thing_group(Client, ThingGroupName, Input) ->
     create_thing_group(Client, ThingGroupName, Input, []).
 create_thing_group(Client, ThingGroupName, Input0, Options) ->
     Method = post,
-    Path = ["/thing-groups/", http_uri:encode(ThingGroupName), ""],
+    Path = ["/thing-groups/", aws_util:encode_uri(ThingGroupName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1206,7 +1206,7 @@ create_thing_type(Client, ThingTypeName, Input) ->
     create_thing_type(Client, ThingTypeName, Input, []).
 create_thing_type(Client, ThingTypeName, Input0, Options) ->
     Method = post,
-    Path = ["/thing-types/", http_uri:encode(ThingTypeName), ""],
+    Path = ["/thing-types/", aws_util:encode_uri(ThingTypeName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1226,7 +1226,7 @@ create_topic_rule(Client, RuleName, Input) ->
     create_topic_rule(Client, RuleName, Input, []).
 create_topic_rule(Client, RuleName, Input0, Options) ->
     Method = post,
-    Path = ["/rules/", http_uri:encode(RuleName), ""],
+    Path = ["/rules/", aws_util:encode_uri(RuleName), ""],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -1299,7 +1299,7 @@ delete_authorizer(Client, AuthorizerName, Input) ->
     delete_authorizer(Client, AuthorizerName, Input, []).
 delete_authorizer(Client, AuthorizerName, Input0, Options) ->
     Method = delete,
-    Path = ["/authorizer/", http_uri:encode(AuthorizerName), ""],
+    Path = ["/authorizer/", aws_util:encode_uri(AuthorizerName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1315,7 +1315,7 @@ delete_billing_group(Client, BillingGroupName, Input) ->
     delete_billing_group(Client, BillingGroupName, Input, []).
 delete_billing_group(Client, BillingGroupName, Input0, Options) ->
     Method = delete,
-    Path = ["/billing-groups/", http_uri:encode(BillingGroupName), ""],
+    Path = ["/billing-groups/", aws_util:encode_uri(BillingGroupName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1332,7 +1332,7 @@ delete_c_a_certificate(Client, CertificateId, Input) ->
     delete_c_a_certificate(Client, CertificateId, Input, []).
 delete_c_a_certificate(Client, CertificateId, Input0, Options) ->
     Method = delete,
-    Path = ["/cacertificate/", http_uri:encode(CertificateId), ""],
+    Path = ["/cacertificate/", aws_util:encode_uri(CertificateId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1353,7 +1353,7 @@ delete_certificate(Client, CertificateId, Input) ->
     delete_certificate(Client, CertificateId, Input, []).
 delete_certificate(Client, CertificateId, Input0, Options) ->
     Method = delete,
-    Path = ["/certificates/", http_uri:encode(CertificateId), ""],
+    Path = ["/certificates/", aws_util:encode_uri(CertificateId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1370,7 +1370,7 @@ delete_dimension(Client, Name, Input) ->
     delete_dimension(Client, Name, Input, []).
 delete_dimension(Client, Name, Input0, Options) ->
     Method = delete,
-    Path = ["/dimensions/", http_uri:encode(Name), ""],
+    Path = ["/dimensions/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1389,7 +1389,7 @@ delete_domain_configuration(Client, DomainConfigurationName, Input) ->
     delete_domain_configuration(Client, DomainConfigurationName, Input, []).
 delete_domain_configuration(Client, DomainConfigurationName, Input0, Options) ->
     Method = delete,
-    Path = ["/domainConfigurations/", http_uri:encode(DomainConfigurationName), ""],
+    Path = ["/domainConfigurations/", aws_util:encode_uri(DomainConfigurationName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1405,7 +1405,7 @@ delete_dynamic_thing_group(Client, ThingGroupName, Input) ->
     delete_dynamic_thing_group(Client, ThingGroupName, Input, []).
 delete_dynamic_thing_group(Client, ThingGroupName, Input0, Options) ->
     Method = delete,
-    Path = ["/dynamic-thing-groups/", http_uri:encode(ThingGroupName), ""],
+    Path = ["/dynamic-thing-groups/", aws_util:encode_uri(ThingGroupName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1431,7 +1431,7 @@ delete_job(Client, JobId, Input) ->
     delete_job(Client, JobId, Input, []).
 delete_job(Client, JobId, Input0, Options) ->
     Method = delete,
-    Path = ["/jobs/", http_uri:encode(JobId), ""],
+    Path = ["/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1449,7 +1449,7 @@ delete_job_execution(Client, ExecutionNumber, JobId, ThingName, Input) ->
     delete_job_execution(Client, ExecutionNumber, JobId, ThingName, Input, []).
 delete_job_execution(Client, ExecutionNumber, JobId, ThingName, Input0, Options) ->
     Method = delete,
-    Path = ["/things/", http_uri:encode(ThingName), "/jobs/", http_uri:encode(JobId), "/executionNumber/", http_uri:encode(ExecutionNumber), ""],
+    Path = ["/things/", aws_util:encode_uri(ThingName), "/jobs/", aws_util:encode_uri(JobId), "/executionNumber/", aws_util:encode_uri(ExecutionNumber), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1467,7 +1467,7 @@ delete_mitigation_action(Client, ActionName, Input) ->
     delete_mitigation_action(Client, ActionName, Input, []).
 delete_mitigation_action(Client, ActionName, Input0, Options) ->
     Method = delete,
-    Path = ["/mitigationactions/actions/", http_uri:encode(ActionName), ""],
+    Path = ["/mitigationactions/actions/", aws_util:encode_uri(ActionName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1483,7 +1483,7 @@ delete_o_t_a_update(Client, OtaUpdateId, Input) ->
     delete_o_t_a_update(Client, OtaUpdateId, Input, []).
 delete_o_t_a_update(Client, OtaUpdateId, Input0, Options) ->
     Method = delete,
-    Path = ["/otaUpdates/", http_uri:encode(OtaUpdateId), ""],
+    Path = ["/otaUpdates/", aws_util:encode_uri(OtaUpdateId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1512,7 +1512,7 @@ delete_policy(Client, PolicyName, Input) ->
     delete_policy(Client, PolicyName, Input, []).
 delete_policy(Client, PolicyName, Input0, Options) ->
     Method = delete,
-    Path = ["/policies/", http_uri:encode(PolicyName), ""],
+    Path = ["/policies/", aws_util:encode_uri(PolicyName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1533,7 +1533,7 @@ delete_policy_version(Client, PolicyName, PolicyVersionId, Input) ->
     delete_policy_version(Client, PolicyName, PolicyVersionId, Input, []).
 delete_policy_version(Client, PolicyName, PolicyVersionId, Input0, Options) ->
     Method = delete,
-    Path = ["/policies/", http_uri:encode(PolicyName), "/version/", http_uri:encode(PolicyVersionId), ""],
+    Path = ["/policies/", aws_util:encode_uri(PolicyName), "/version/", aws_util:encode_uri(PolicyVersionId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1549,7 +1549,7 @@ delete_provisioning_template(Client, TemplateName, Input) ->
     delete_provisioning_template(Client, TemplateName, Input, []).
 delete_provisioning_template(Client, TemplateName, Input0, Options) ->
     Method = delete,
-    Path = ["/provisioning-templates/", http_uri:encode(TemplateName), ""],
+    Path = ["/provisioning-templates/", aws_util:encode_uri(TemplateName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1565,7 +1565,7 @@ delete_provisioning_template_version(Client, TemplateName, VersionId, Input) ->
     delete_provisioning_template_version(Client, TemplateName, VersionId, Input, []).
 delete_provisioning_template_version(Client, TemplateName, VersionId, Input0, Options) ->
     Method = delete,
-    Path = ["/provisioning-templates/", http_uri:encode(TemplateName), "/versions/", http_uri:encode(VersionId), ""],
+    Path = ["/provisioning-templates/", aws_util:encode_uri(TemplateName), "/versions/", aws_util:encode_uri(VersionId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1597,7 +1597,7 @@ delete_role_alias(Client, RoleAlias, Input) ->
     delete_role_alias(Client, RoleAlias, Input, []).
 delete_role_alias(Client, RoleAlias, Input0, Options) ->
     Method = delete,
-    Path = ["/role-aliases/", http_uri:encode(RoleAlias), ""],
+    Path = ["/role-aliases/", aws_util:encode_uri(RoleAlias), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1613,7 +1613,7 @@ delete_scheduled_audit(Client, ScheduledAuditName, Input) ->
     delete_scheduled_audit(Client, ScheduledAuditName, Input, []).
 delete_scheduled_audit(Client, ScheduledAuditName, Input0, Options) ->
     Method = delete,
-    Path = ["/audit/scheduledaudits/", http_uri:encode(ScheduledAuditName), ""],
+    Path = ["/audit/scheduledaudits/", aws_util:encode_uri(ScheduledAuditName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1629,7 +1629,7 @@ delete_security_profile(Client, SecurityProfileName, Input) ->
     delete_security_profile(Client, SecurityProfileName, Input, []).
 delete_security_profile(Client, SecurityProfileName, Input0, Options) ->
     Method = delete,
-    Path = ["/security-profiles/", http_uri:encode(SecurityProfileName), ""],
+    Path = ["/security-profiles/", aws_util:encode_uri(SecurityProfileName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1646,7 +1646,7 @@ delete_stream(Client, StreamId, Input) ->
     delete_stream(Client, StreamId, Input, []).
 delete_stream(Client, StreamId, Input0, Options) ->
     Method = delete,
-    Path = ["/streams/", http_uri:encode(StreamId), ""],
+    Path = ["/streams/", aws_util:encode_uri(StreamId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1665,7 +1665,7 @@ delete_thing(Client, ThingName, Input) ->
     delete_thing(Client, ThingName, Input, []).
 delete_thing(Client, ThingName, Input0, Options) ->
     Method = delete,
-    Path = ["/things/", http_uri:encode(ThingName), ""],
+    Path = ["/things/", aws_util:encode_uri(ThingName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1682,7 +1682,7 @@ delete_thing_group(Client, ThingGroupName, Input) ->
     delete_thing_group(Client, ThingGroupName, Input, []).
 delete_thing_group(Client, ThingGroupName, Input0, Options) ->
     Method = delete,
-    Path = ["/thing-groups/", http_uri:encode(ThingGroupName), ""],
+    Path = ["/thing-groups/", aws_util:encode_uri(ThingGroupName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1705,7 +1705,7 @@ delete_thing_type(Client, ThingTypeName, Input) ->
     delete_thing_type(Client, ThingTypeName, Input, []).
 delete_thing_type(Client, ThingTypeName, Input0, Options) ->
     Method = delete,
-    Path = ["/thing-types/", http_uri:encode(ThingTypeName), ""],
+    Path = ["/thing-types/", aws_util:encode_uri(ThingTypeName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1721,7 +1721,7 @@ delete_topic_rule(Client, RuleName, Input) ->
     delete_topic_rule(Client, RuleName, Input, []).
 delete_topic_rule(Client, RuleName, Input0, Options) ->
     Method = delete,
-    Path = ["/rules/", http_uri:encode(RuleName), ""],
+    Path = ["/rules/", aws_util:encode_uri(RuleName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1737,7 +1737,7 @@ delete_topic_rule_destination(Client, Arn, Input) ->
     delete_topic_rule_destination(Client, Arn, Input, []).
 delete_topic_rule_destination(Client, Arn, Input0, Options) ->
     Method = delete,
-    Path = ["/destinations/", aws_util:encode_uri(Arn, true), ""],
+    Path = ["/destinations/", aws_util:encode_multi_segment_uri(Arn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1773,7 +1773,7 @@ deprecate_thing_type(Client, ThingTypeName, Input) ->
     deprecate_thing_type(Client, ThingTypeName, Input, []).
 deprecate_thing_type(Client, ThingTypeName, Input0, Options) ->
     Method = post,
-    Path = ["/thing-types/", http_uri:encode(ThingTypeName), "/deprecate"],
+    Path = ["/thing-types/", aws_util:encode_uri(ThingTypeName), "/deprecate"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1812,7 +1812,7 @@ describe_audit_finding(Client, FindingId)
     describe_audit_finding(Client, FindingId, []).
 describe_audit_finding(Client, FindingId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/audit/findings/", http_uri:encode(FindingId), ""],
+    Path = ["/audit/findings/", aws_util:encode_uri(FindingId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1831,7 +1831,7 @@ describe_audit_mitigation_actions_task(Client, TaskId)
     describe_audit_mitigation_actions_task(Client, TaskId, []).
 describe_audit_mitigation_actions_task(Client, TaskId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/audit/mitigationactions/tasks/", http_uri:encode(TaskId), ""],
+    Path = ["/audit/mitigationactions/tasks/", aws_util:encode_uri(TaskId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1862,7 +1862,7 @@ describe_audit_task(Client, TaskId)
     describe_audit_task(Client, TaskId, []).
 describe_audit_task(Client, TaskId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/audit/tasks/", http_uri:encode(TaskId), ""],
+    Path = ["/audit/tasks/", aws_util:encode_uri(TaskId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1877,7 +1877,7 @@ describe_authorizer(Client, AuthorizerName)
     describe_authorizer(Client, AuthorizerName, []).
 describe_authorizer(Client, AuthorizerName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/authorizer/", http_uri:encode(AuthorizerName), ""],
+    Path = ["/authorizer/", aws_util:encode_uri(AuthorizerName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1892,7 +1892,7 @@ describe_billing_group(Client, BillingGroupName)
     describe_billing_group(Client, BillingGroupName, []).
 describe_billing_group(Client, BillingGroupName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/billing-groups/", http_uri:encode(BillingGroupName), ""],
+    Path = ["/billing-groups/", aws_util:encode_uri(BillingGroupName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1907,7 +1907,7 @@ describe_c_a_certificate(Client, CertificateId)
     describe_c_a_certificate(Client, CertificateId, []).
 describe_c_a_certificate(Client, CertificateId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/cacertificate/", http_uri:encode(CertificateId), ""],
+    Path = ["/cacertificate/", aws_util:encode_uri(CertificateId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1922,7 +1922,7 @@ describe_certificate(Client, CertificateId)
     describe_certificate(Client, CertificateId, []).
 describe_certificate(Client, CertificateId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/certificates/", http_uri:encode(CertificateId), ""],
+    Path = ["/certificates/", aws_util:encode_uri(CertificateId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1953,7 +1953,7 @@ describe_dimension(Client, Name)
     describe_dimension(Client, Name, []).
 describe_dimension(Client, Name, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/dimensions/", http_uri:encode(Name), ""],
+    Path = ["/dimensions/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1971,7 +1971,7 @@ describe_domain_configuration(Client, DomainConfigurationName)
     describe_domain_configuration(Client, DomainConfigurationName, []).
 describe_domain_configuration(Client, DomainConfigurationName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/domainConfigurations/", http_uri:encode(DomainConfigurationName), ""],
+    Path = ["/domainConfigurations/", aws_util:encode_uri(DomainConfigurationName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2021,7 +2021,7 @@ describe_index(Client, IndexName)
     describe_index(Client, IndexName, []).
 describe_index(Client, IndexName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/indices/", http_uri:encode(IndexName), ""],
+    Path = ["/indices/", aws_util:encode_uri(IndexName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2036,7 +2036,7 @@ describe_job(Client, JobId)
     describe_job(Client, JobId, []).
 describe_job(Client, JobId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/jobs/", http_uri:encode(JobId), ""],
+    Path = ["/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2051,7 +2051,7 @@ describe_job_execution(Client, JobId, ThingName, ExecutionNumber)
     describe_job_execution(Client, JobId, ThingName, ExecutionNumber, []).
 describe_job_execution(Client, JobId, ThingName, ExecutionNumber, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/things/", http_uri:encode(ThingName), "/jobs/", http_uri:encode(JobId), ""],
+    Path = ["/things/", aws_util:encode_uri(ThingName), "/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2070,7 +2070,7 @@ describe_mitigation_action(Client, ActionName)
     describe_mitigation_action(Client, ActionName, []).
 describe_mitigation_action(Client, ActionName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/mitigationactions/actions/", http_uri:encode(ActionName), ""],
+    Path = ["/mitigationactions/actions/", aws_util:encode_uri(ActionName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2085,7 +2085,7 @@ describe_provisioning_template(Client, TemplateName)
     describe_provisioning_template(Client, TemplateName, []).
 describe_provisioning_template(Client, TemplateName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/provisioning-templates/", http_uri:encode(TemplateName), ""],
+    Path = ["/provisioning-templates/", aws_util:encode_uri(TemplateName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2100,7 +2100,7 @@ describe_provisioning_template_version(Client, TemplateName, VersionId)
     describe_provisioning_template_version(Client, TemplateName, VersionId, []).
 describe_provisioning_template_version(Client, TemplateName, VersionId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/provisioning-templates/", http_uri:encode(TemplateName), "/versions/", http_uri:encode(VersionId), ""],
+    Path = ["/provisioning-templates/", aws_util:encode_uri(TemplateName), "/versions/", aws_util:encode_uri(VersionId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2115,7 +2115,7 @@ describe_role_alias(Client, RoleAlias)
     describe_role_alias(Client, RoleAlias, []).
 describe_role_alias(Client, RoleAlias, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/role-aliases/", http_uri:encode(RoleAlias), ""],
+    Path = ["/role-aliases/", aws_util:encode_uri(RoleAlias), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2130,7 +2130,7 @@ describe_scheduled_audit(Client, ScheduledAuditName)
     describe_scheduled_audit(Client, ScheduledAuditName, []).
 describe_scheduled_audit(Client, ScheduledAuditName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/audit/scheduledaudits/", http_uri:encode(ScheduledAuditName), ""],
+    Path = ["/audit/scheduledaudits/", aws_util:encode_uri(ScheduledAuditName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2145,7 +2145,7 @@ describe_security_profile(Client, SecurityProfileName)
     describe_security_profile(Client, SecurityProfileName, []).
 describe_security_profile(Client, SecurityProfileName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/security-profiles/", http_uri:encode(SecurityProfileName), ""],
+    Path = ["/security-profiles/", aws_util:encode_uri(SecurityProfileName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2160,7 +2160,7 @@ describe_stream(Client, StreamId)
     describe_stream(Client, StreamId, []).
 describe_stream(Client, StreamId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/streams/", http_uri:encode(StreamId), ""],
+    Path = ["/streams/", aws_util:encode_uri(StreamId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2175,7 +2175,7 @@ describe_thing(Client, ThingName)
     describe_thing(Client, ThingName, []).
 describe_thing(Client, ThingName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/things/", http_uri:encode(ThingName), ""],
+    Path = ["/things/", aws_util:encode_uri(ThingName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2190,7 +2190,7 @@ describe_thing_group(Client, ThingGroupName)
     describe_thing_group(Client, ThingGroupName, []).
 describe_thing_group(Client, ThingGroupName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/thing-groups/", http_uri:encode(ThingGroupName), ""],
+    Path = ["/thing-groups/", aws_util:encode_uri(ThingGroupName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2205,7 +2205,7 @@ describe_thing_registration_task(Client, TaskId)
     describe_thing_registration_task(Client, TaskId, []).
 describe_thing_registration_task(Client, TaskId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/thing-registration-tasks/", http_uri:encode(TaskId), ""],
+    Path = ["/thing-registration-tasks/", aws_util:encode_uri(TaskId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2220,7 +2220,7 @@ describe_thing_type(Client, ThingTypeName)
     describe_thing_type(Client, ThingTypeName, []).
 describe_thing_type(Client, ThingTypeName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/thing-types/", http_uri:encode(ThingTypeName), ""],
+    Path = ["/thing-types/", aws_util:encode_uri(ThingTypeName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2234,7 +2234,7 @@ detach_policy(Client, PolicyName, Input) ->
     detach_policy(Client, PolicyName, Input, []).
 detach_policy(Client, PolicyName, Input0, Options) ->
     Method = post,
-    Path = ["/target-policies/", http_uri:encode(PolicyName), ""],
+    Path = ["/target-policies/", aws_util:encode_uri(PolicyName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2252,7 +2252,7 @@ detach_principal_policy(Client, PolicyName, Input) ->
     detach_principal_policy(Client, PolicyName, Input, []).
 detach_principal_policy(Client, PolicyName, Input0, Options) ->
     Method = delete,
-    Path = ["/principal-policies/", http_uri:encode(PolicyName), ""],
+    Path = ["/principal-policies/", aws_util:encode_uri(PolicyName), ""],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -2271,7 +2271,7 @@ detach_security_profile(Client, SecurityProfileName, Input) ->
     detach_security_profile(Client, SecurityProfileName, Input, []).
 detach_security_profile(Client, SecurityProfileName, Input0, Options) ->
     Method = delete,
-    Path = ["/security-profiles/", http_uri:encode(SecurityProfileName), "/targets"],
+    Path = ["/security-profiles/", aws_util:encode_uri(SecurityProfileName), "/targets"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2294,7 +2294,7 @@ detach_thing_principal(Client, ThingName, Input) ->
     detach_thing_principal(Client, ThingName, Input, []).
 detach_thing_principal(Client, ThingName, Input0, Options) ->
     Method = delete,
-    Path = ["/things/", http_uri:encode(ThingName), "/principals"],
+    Path = ["/things/", aws_util:encode_uri(ThingName), "/principals"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -2312,7 +2312,7 @@ disable_topic_rule(Client, RuleName, Input) ->
     disable_topic_rule(Client, RuleName, Input, []).
 disable_topic_rule(Client, RuleName, Input0, Options) ->
     Method = post,
-    Path = ["/rules/", http_uri:encode(RuleName), "/disable"],
+    Path = ["/rules/", aws_util:encode_uri(RuleName), "/disable"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2328,7 +2328,7 @@ enable_topic_rule(Client, RuleName, Input) ->
     enable_topic_rule(Client, RuleName, Input, []).
 enable_topic_rule(Client, RuleName, Input0, Options) ->
     Method = post,
-    Path = ["/rules/", http_uri:encode(RuleName), "/enable"],
+    Path = ["/rules/", aws_util:encode_uri(RuleName), "/enable"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2395,7 +2395,7 @@ get_job_document(Client, JobId)
     get_job_document(Client, JobId, []).
 get_job_document(Client, JobId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/jobs/", http_uri:encode(JobId), "/job-document"],
+    Path = ["/jobs/", aws_util:encode_uri(JobId), "/job-document"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2428,7 +2428,7 @@ get_o_t_a_update(Client, OtaUpdateId)
     get_o_t_a_update(Client, OtaUpdateId, []).
 get_o_t_a_update(Client, OtaUpdateId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/otaUpdates/", http_uri:encode(OtaUpdateId), ""],
+    Path = ["/otaUpdates/", aws_util:encode_uri(OtaUpdateId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2471,7 +2471,7 @@ get_policy(Client, PolicyName)
     get_policy(Client, PolicyName, []).
 get_policy(Client, PolicyName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/policies/", http_uri:encode(PolicyName), ""],
+    Path = ["/policies/", aws_util:encode_uri(PolicyName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2486,7 +2486,7 @@ get_policy_version(Client, PolicyName, PolicyVersionId)
     get_policy_version(Client, PolicyName, PolicyVersionId, []).
 get_policy_version(Client, PolicyName, PolicyVersionId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/policies/", http_uri:encode(PolicyName), "/version/", http_uri:encode(PolicyVersionId), ""],
+    Path = ["/policies/", aws_util:encode_uri(PolicyName), "/version/", aws_util:encode_uri(PolicyVersionId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2537,7 +2537,7 @@ get_topic_rule(Client, RuleName)
     get_topic_rule(Client, RuleName, []).
 get_topic_rule(Client, RuleName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/rules/", http_uri:encode(RuleName), ""],
+    Path = ["/rules/", aws_util:encode_uri(RuleName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2552,7 +2552,7 @@ get_topic_rule_destination(Client, Arn)
     get_topic_rule_destination(Client, Arn, []).
 get_topic_rule_destination(Client, Arn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/destinations/", aws_util:encode_uri(Arn, true), ""],
+    Path = ["/destinations/", aws_util:encode_multi_segment_uri(Arn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2604,7 +2604,7 @@ list_attached_policies(Client, Target, Input) ->
     list_attached_policies(Client, Target, Input, []).
 list_attached_policies(Client, Target, Input0, Options) ->
     Method = post,
-    Path = ["/attached-policies/", http_uri:encode(Target), ""],
+    Path = ["/attached-policies/", aws_util:encode_uri(Target), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2824,7 +2824,7 @@ list_certificates_by_c_a(Client, CaCertificateId, AscendingOrder, Marker, PageSi
     list_certificates_by_c_a(Client, CaCertificateId, AscendingOrder, Marker, PageSize, []).
 list_certificates_by_c_a(Client, CaCertificateId, AscendingOrder, Marker, PageSize, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/certificates-by-ca/", http_uri:encode(CaCertificateId), ""],
+    Path = ["/certificates-by-ca/", aws_util:encode_uri(CaCertificateId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2911,7 +2911,7 @@ list_job_executions_for_job(Client, JobId, MaxResults, NextToken, Status)
     list_job_executions_for_job(Client, JobId, MaxResults, NextToken, Status, []).
 list_job_executions_for_job(Client, JobId, MaxResults, NextToken, Status, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/jobs/", http_uri:encode(JobId), "/things"],
+    Path = ["/jobs/", aws_util:encode_uri(JobId), "/things"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2932,7 +2932,7 @@ list_job_executions_for_thing(Client, ThingName, MaxResults, NamespaceId, NextTo
     list_job_executions_for_thing(Client, ThingName, MaxResults, NamespaceId, NextToken, Status, []).
 list_job_executions_for_thing(Client, ThingName, MaxResults, NamespaceId, NextToken, Status, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/things/", http_uri:encode(ThingName), "/jobs"],
+    Path = ["/things/", aws_util:encode_uri(ThingName), "/jobs"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -3092,7 +3092,7 @@ list_policy_versions(Client, PolicyName)
     list_policy_versions(Client, PolicyName, []).
 list_policy_versions(Client, PolicyName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/policies/", http_uri:encode(PolicyName), "/version"],
+    Path = ["/policies/", aws_util:encode_uri(PolicyName), "/version"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -3164,7 +3164,7 @@ list_provisioning_template_versions(Client, TemplateName, MaxResults, NextToken)
     list_provisioning_template_versions(Client, TemplateName, MaxResults, NextToken, []).
 list_provisioning_template_versions(Client, TemplateName, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/provisioning-templates/", http_uri:encode(TemplateName), "/versions"],
+    Path = ["/provisioning-templates/", aws_util:encode_uri(TemplateName), "/versions"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -3332,7 +3332,7 @@ list_targets_for_policy(Client, PolicyName, Input) ->
     list_targets_for_policy(Client, PolicyName, Input, []).
 list_targets_for_policy(Client, PolicyName, Input0, Options) ->
     Method = post,
-    Path = ["/policy-targets/", http_uri:encode(PolicyName), ""],
+    Path = ["/policy-targets/", aws_util:encode_uri(PolicyName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -3352,7 +3352,7 @@ list_targets_for_security_profile(Client, SecurityProfileName, MaxResults, NextT
     list_targets_for_security_profile(Client, SecurityProfileName, MaxResults, NextToken, []).
 list_targets_for_security_profile(Client, SecurityProfileName, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/security-profiles/", http_uri:encode(SecurityProfileName), "/targets"],
+    Path = ["/security-profiles/", aws_util:encode_uri(SecurityProfileName), "/targets"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -3395,7 +3395,7 @@ list_thing_groups_for_thing(Client, ThingName, MaxResults, NextToken)
     list_thing_groups_for_thing(Client, ThingName, MaxResults, NextToken, []).
 list_thing_groups_for_thing(Client, ThingName, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/things/", http_uri:encode(ThingName), "/thing-groups"],
+    Path = ["/things/", aws_util:encode_uri(ThingName), "/thing-groups"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -3418,7 +3418,7 @@ list_thing_principals(Client, ThingName, MaxResults, NextToken)
     list_thing_principals(Client, ThingName, MaxResults, NextToken, []).
 list_thing_principals(Client, ThingName, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/things/", http_uri:encode(ThingName), "/principals"],
+    Path = ["/things/", aws_util:encode_uri(ThingName), "/principals"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -3438,7 +3438,7 @@ list_thing_registration_task_reports(Client, TaskId, MaxResults, NextToken, Repo
     list_thing_registration_task_reports(Client, TaskId, MaxResults, NextToken, ReportType, []).
 list_thing_registration_task_reports(Client, TaskId, MaxResults, NextToken, ReportType, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/thing-registration-tasks/", http_uri:encode(TaskId), "/reports"],
+    Path = ["/thing-registration-tasks/", aws_util:encode_uri(TaskId), "/reports"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -3534,7 +3534,7 @@ list_things_in_billing_group(Client, BillingGroupName, MaxResults, NextToken)
     list_things_in_billing_group(Client, BillingGroupName, MaxResults, NextToken, []).
 list_things_in_billing_group(Client, BillingGroupName, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/billing-groups/", http_uri:encode(BillingGroupName), "/things"],
+    Path = ["/billing-groups/", aws_util:encode_uri(BillingGroupName), "/things"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -3554,7 +3554,7 @@ list_things_in_thing_group(Client, ThingGroupName, MaxResults, NextToken, Recurs
     list_things_in_thing_group(Client, ThingGroupName, MaxResults, NextToken, Recursive, []).
 list_things_in_thing_group(Client, ThingGroupName, MaxResults, NextToken, Recursive, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/thing-groups/", http_uri:encode(ThingGroupName), "/things"],
+    Path = ["/thing-groups/", aws_util:encode_uri(ThingGroupName), "/things"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -3760,7 +3760,7 @@ reject_certificate_transfer(Client, CertificateId, Input) ->
     reject_certificate_transfer(Client, CertificateId, Input, []).
 reject_certificate_transfer(Client, CertificateId, Input0, Options) ->
     Method = patch,
-    Path = ["/reject-certificate-transfer/", http_uri:encode(CertificateId), ""],
+    Path = ["/reject-certificate-transfer/", aws_util:encode_uri(CertificateId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -3816,7 +3816,7 @@ replace_topic_rule(Client, RuleName, Input) ->
     replace_topic_rule(Client, RuleName, Input, []).
 replace_topic_rule(Client, RuleName, Input0, Options) ->
     Method = patch,
-    Path = ["/rules/", http_uri:encode(RuleName), ""],
+    Path = ["/rules/", aws_util:encode_uri(RuleName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -3872,7 +3872,7 @@ set_default_policy_version(Client, PolicyName, PolicyVersionId, Input) ->
     set_default_policy_version(Client, PolicyName, PolicyVersionId, Input, []).
 set_default_policy_version(Client, PolicyName, PolicyVersionId, Input0, Options) ->
     Method = patch,
-    Path = ["/policies/", http_uri:encode(PolicyName), "/version/", http_uri:encode(PolicyVersionId), ""],
+    Path = ["/policies/", aws_util:encode_uri(PolicyName), "/version/", aws_util:encode_uri(PolicyVersionId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -3940,7 +3940,7 @@ start_audit_mitigation_actions_task(Client, TaskId, Input) ->
     start_audit_mitigation_actions_task(Client, TaskId, Input, []).
 start_audit_mitigation_actions_task(Client, TaskId, Input0, Options) ->
     Method = post,
-    Path = ["/audit/mitigationactions/tasks/", http_uri:encode(TaskId), ""],
+    Path = ["/audit/mitigationactions/tasks/", aws_util:encode_uri(TaskId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -3988,7 +3988,7 @@ stop_thing_registration_task(Client, TaskId, Input) ->
     stop_thing_registration_task(Client, TaskId, Input, []).
 stop_thing_registration_task(Client, TaskId, Input0, Options) ->
     Method = put,
-    Path = ["/thing-registration-tasks/", http_uri:encode(TaskId), "/cancel"],
+    Path = ["/thing-registration-tasks/", aws_util:encode_uri(TaskId), "/cancel"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -4047,7 +4047,7 @@ test_invoke_authorizer(Client, AuthorizerName, Input) ->
     test_invoke_authorizer(Client, AuthorizerName, Input, []).
 test_invoke_authorizer(Client, AuthorizerName, Input0, Options) ->
     Method = post,
-    Path = ["/authorizer/", http_uri:encode(AuthorizerName), "/test"],
+    Path = ["/authorizer/", aws_util:encode_uri(AuthorizerName), "/test"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -4074,7 +4074,7 @@ transfer_certificate(Client, CertificateId, Input) ->
     transfer_certificate(Client, CertificateId, Input, []).
 transfer_certificate(Client, CertificateId, Input0, Options) ->
     Method = patch,
-    Path = ["/transfer-certificate/", http_uri:encode(CertificateId), ""],
+    Path = ["/transfer-certificate/", aws_util:encode_uri(CertificateId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -4143,7 +4143,7 @@ update_authorizer(Client, AuthorizerName, Input) ->
     update_authorizer(Client, AuthorizerName, Input, []).
 update_authorizer(Client, AuthorizerName, Input0, Options) ->
     Method = put,
-    Path = ["/authorizer/", http_uri:encode(AuthorizerName), ""],
+    Path = ["/authorizer/", aws_util:encode_uri(AuthorizerName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -4159,7 +4159,7 @@ update_billing_group(Client, BillingGroupName, Input) ->
     update_billing_group(Client, BillingGroupName, Input, []).
 update_billing_group(Client, BillingGroupName, Input0, Options) ->
     Method = patch,
-    Path = ["/billing-groups/", http_uri:encode(BillingGroupName), ""],
+    Path = ["/billing-groups/", aws_util:encode_uri(BillingGroupName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -4175,7 +4175,7 @@ update_c_a_certificate(Client, CertificateId, Input) ->
     update_c_a_certificate(Client, CertificateId, Input, []).
 update_c_a_certificate(Client, CertificateId, Input0, Options) ->
     Method = put,
-    Path = ["/cacertificate/", http_uri:encode(CertificateId), ""],
+    Path = ["/cacertificate/", aws_util:encode_uri(CertificateId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -4203,7 +4203,7 @@ update_certificate(Client, CertificateId, Input) ->
     update_certificate(Client, CertificateId, Input, []).
 update_certificate(Client, CertificateId, Input0, Options) ->
     Method = put,
-    Path = ["/certificates/", http_uri:encode(CertificateId), ""],
+    Path = ["/certificates/", aws_util:encode_uri(CertificateId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -4223,7 +4223,7 @@ update_dimension(Client, Name, Input) ->
     update_dimension(Client, Name, Input, []).
 update_dimension(Client, Name, Input0, Options) ->
     Method = patch,
-    Path = ["/dimensions/", http_uri:encode(Name), ""],
+    Path = ["/dimensions/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -4244,7 +4244,7 @@ update_domain_configuration(Client, DomainConfigurationName, Input) ->
     update_domain_configuration(Client, DomainConfigurationName, Input, []).
 update_domain_configuration(Client, DomainConfigurationName, Input0, Options) ->
     Method = put,
-    Path = ["/domainConfigurations/", http_uri:encode(DomainConfigurationName), ""],
+    Path = ["/domainConfigurations/", aws_util:encode_uri(DomainConfigurationName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -4260,7 +4260,7 @@ update_dynamic_thing_group(Client, ThingGroupName, Input) ->
     update_dynamic_thing_group(Client, ThingGroupName, Input, []).
 update_dynamic_thing_group(Client, ThingGroupName, Input0, Options) ->
     Method = patch,
-    Path = ["/dynamic-thing-groups/", http_uri:encode(ThingGroupName), ""],
+    Path = ["/dynamic-thing-groups/", aws_util:encode_uri(ThingGroupName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -4308,7 +4308,7 @@ update_job(Client, JobId, Input) ->
     update_job(Client, JobId, Input, []).
 update_job(Client, JobId, Input0, Options) ->
     Method = patch,
-    Path = ["/jobs/", http_uri:encode(JobId), ""],
+    Path = ["/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -4325,7 +4325,7 @@ update_mitigation_action(Client, ActionName, Input) ->
     update_mitigation_action(Client, ActionName, Input, []).
 update_mitigation_action(Client, ActionName, Input0, Options) ->
     Method = patch,
-    Path = ["/mitigationactions/actions/", http_uri:encode(ActionName), ""],
+    Path = ["/mitigationactions/actions/", aws_util:encode_uri(ActionName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -4341,7 +4341,7 @@ update_provisioning_template(Client, TemplateName, Input) ->
     update_provisioning_template(Client, TemplateName, Input, []).
 update_provisioning_template(Client, TemplateName, Input0, Options) ->
     Method = patch,
-    Path = ["/provisioning-templates/", http_uri:encode(TemplateName), ""],
+    Path = ["/provisioning-templates/", aws_util:encode_uri(TemplateName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -4357,7 +4357,7 @@ update_role_alias(Client, RoleAlias, Input) ->
     update_role_alias(Client, RoleAlias, Input, []).
 update_role_alias(Client, RoleAlias, Input0, Options) ->
     Method = put,
-    Path = ["/role-aliases/", http_uri:encode(RoleAlias), ""],
+    Path = ["/role-aliases/", aws_util:encode_uri(RoleAlias), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -4374,7 +4374,7 @@ update_scheduled_audit(Client, ScheduledAuditName, Input) ->
     update_scheduled_audit(Client, ScheduledAuditName, Input, []).
 update_scheduled_audit(Client, ScheduledAuditName, Input0, Options) ->
     Method = patch,
-    Path = ["/audit/scheduledaudits/", http_uri:encode(ScheduledAuditName), ""],
+    Path = ["/audit/scheduledaudits/", aws_util:encode_uri(ScheduledAuditName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -4390,7 +4390,7 @@ update_security_profile(Client, SecurityProfileName, Input) ->
     update_security_profile(Client, SecurityProfileName, Input, []).
 update_security_profile(Client, SecurityProfileName, Input0, Options) ->
     Method = patch,
-    Path = ["/security-profiles/", http_uri:encode(SecurityProfileName), ""],
+    Path = ["/security-profiles/", aws_util:encode_uri(SecurityProfileName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -4409,7 +4409,7 @@ update_stream(Client, StreamId, Input) ->
     update_stream(Client, StreamId, Input, []).
 update_stream(Client, StreamId, Input0, Options) ->
     Method = put,
-    Path = ["/streams/", http_uri:encode(StreamId), ""],
+    Path = ["/streams/", aws_util:encode_uri(StreamId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -4425,7 +4425,7 @@ update_thing(Client, ThingName, Input) ->
     update_thing(Client, ThingName, Input, []).
 update_thing(Client, ThingName, Input0, Options) ->
     Method = patch,
-    Path = ["/things/", http_uri:encode(ThingName), ""],
+    Path = ["/things/", aws_util:encode_uri(ThingName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -4441,7 +4441,7 @@ update_thing_group(Client, ThingGroupName, Input) ->
     update_thing_group(Client, ThingGroupName, Input, []).
 update_thing_group(Client, ThingGroupName, Input0, Options) ->
     Method = patch,
-    Path = ["/thing-groups/", http_uri:encode(ThingGroupName), ""],
+    Path = ["/thing-groups/", aws_util:encode_uri(ThingGroupName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],

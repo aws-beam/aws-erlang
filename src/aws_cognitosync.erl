@@ -78,7 +78,7 @@ bulk_publish(Client, IdentityPoolId, Input) ->
     bulk_publish(Client, IdentityPoolId, Input, []).
 bulk_publish(Client, IdentityPoolId, Input0, Options) ->
     Method = post,
-    Path = ["/identitypools/", http_uri:encode(IdentityPoolId), "/bulkpublish"],
+    Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/bulkpublish"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -102,7 +102,7 @@ delete_dataset(Client, DatasetName, IdentityId, IdentityPoolId, Input) ->
     delete_dataset(Client, DatasetName, IdentityId, IdentityPoolId, Input, []).
 delete_dataset(Client, DatasetName, IdentityId, IdentityPoolId, Input0, Options) ->
     Method = delete,
-    Path = ["/identitypools/", http_uri:encode(IdentityPoolId), "/identities/", http_uri:encode(IdentityId), "/datasets/", http_uri:encode(DatasetName), ""],
+    Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/identities/", aws_util:encode_uri(IdentityId), "/datasets/", aws_util:encode_uri(DatasetName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -127,7 +127,7 @@ describe_dataset(Client, DatasetName, IdentityId, IdentityPoolId)
     describe_dataset(Client, DatasetName, IdentityId, IdentityPoolId, []).
 describe_dataset(Client, DatasetName, IdentityId, IdentityPoolId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/identitypools/", http_uri:encode(IdentityPoolId), "/identities/", http_uri:encode(IdentityId), "/datasets/", http_uri:encode(DatasetName), ""],
+    Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/identities/", aws_util:encode_uri(IdentityId), "/datasets/", aws_util:encode_uri(DatasetName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -146,7 +146,7 @@ describe_identity_pool_usage(Client, IdentityPoolId)
     describe_identity_pool_usage(Client, IdentityPoolId, []).
 describe_identity_pool_usage(Client, IdentityPoolId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/identitypools/", http_uri:encode(IdentityPoolId), ""],
+    Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -165,7 +165,7 @@ describe_identity_usage(Client, IdentityId, IdentityPoolId)
     describe_identity_usage(Client, IdentityId, IdentityPoolId, []).
 describe_identity_usage(Client, IdentityId, IdentityPoolId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/identitypools/", http_uri:encode(IdentityPoolId), "/identities/", http_uri:encode(IdentityId), ""],
+    Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/identities/", aws_util:encode_uri(IdentityId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -183,7 +183,7 @@ get_bulk_publish_details(Client, IdentityPoolId, Input) ->
     get_bulk_publish_details(Client, IdentityPoolId, Input, []).
 get_bulk_publish_details(Client, IdentityPoolId, Input0, Options) ->
     Method = post,
-    Path = ["/identitypools/", http_uri:encode(IdentityPoolId), "/getBulkPublishDetails"],
+    Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/getBulkPublishDetails"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -204,7 +204,7 @@ get_cognito_events(Client, IdentityPoolId)
     get_cognito_events(Client, IdentityPoolId, []).
 get_cognito_events(Client, IdentityPoolId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/identitypools/", http_uri:encode(IdentityPoolId), "/events"],
+    Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/events"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -222,7 +222,7 @@ get_identity_pool_configuration(Client, IdentityPoolId)
     get_identity_pool_configuration(Client, IdentityPoolId, []).
 get_identity_pool_configuration(Client, IdentityPoolId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/identitypools/", http_uri:encode(IdentityPoolId), "/configuration"],
+    Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/configuration"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -245,7 +245,7 @@ list_datasets(Client, IdentityId, IdentityPoolId, MaxResults, NextToken)
     list_datasets(Client, IdentityId, IdentityPoolId, MaxResults, NextToken, []).
 list_datasets(Client, IdentityId, IdentityPoolId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/identitypools/", http_uri:encode(IdentityPoolId), "/identities/", http_uri:encode(IdentityId), "/datasets"],
+    Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/identities/", aws_util:encode_uri(IdentityId), "/datasets"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -298,7 +298,7 @@ list_records(Client, DatasetName, IdentityId, IdentityPoolId, LastSyncCount, Max
     list_records(Client, DatasetName, IdentityId, IdentityPoolId, LastSyncCount, MaxResults, NextToken, SyncSessionToken, []).
 list_records(Client, DatasetName, IdentityId, IdentityPoolId, LastSyncCount, MaxResults, NextToken, SyncSessionToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/identitypools/", http_uri:encode(IdentityPoolId), "/identities/", http_uri:encode(IdentityId), "/datasets/", http_uri:encode(DatasetName), "/records"],
+    Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/identities/", aws_util:encode_uri(IdentityId), "/datasets/", aws_util:encode_uri(DatasetName), "/records"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -322,7 +322,7 @@ register_device(Client, IdentityId, IdentityPoolId, Input) ->
     register_device(Client, IdentityId, IdentityPoolId, Input, []).
 register_device(Client, IdentityId, IdentityPoolId, Input0, Options) ->
     Method = post,
-    Path = ["/identitypools/", http_uri:encode(IdentityPoolId), "/identity/", http_uri:encode(IdentityId), "/device"],
+    Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/identity/", aws_util:encode_uri(IdentityId), "/device"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -346,7 +346,7 @@ set_cognito_events(Client, IdentityPoolId, Input) ->
     set_cognito_events(Client, IdentityPoolId, Input, []).
 set_cognito_events(Client, IdentityPoolId, Input0, Options) ->
     Method = post,
-    Path = ["/identitypools/", http_uri:encode(IdentityPoolId), "/events"],
+    Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/events"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -365,7 +365,7 @@ set_identity_pool_configuration(Client, IdentityPoolId, Input) ->
     set_identity_pool_configuration(Client, IdentityPoolId, Input, []).
 set_identity_pool_configuration(Client, IdentityPoolId, Input0, Options) ->
     Method = post,
-    Path = ["/identitypools/", http_uri:encode(IdentityPoolId), "/configuration"],
+    Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/configuration"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -385,7 +385,7 @@ subscribe_to_dataset(Client, DatasetName, DeviceId, IdentityId, IdentityPoolId, 
     subscribe_to_dataset(Client, DatasetName, DeviceId, IdentityId, IdentityPoolId, Input, []).
 subscribe_to_dataset(Client, DatasetName, DeviceId, IdentityId, IdentityPoolId, Input0, Options) ->
     Method = post,
-    Path = ["/identitypools/", http_uri:encode(IdentityPoolId), "/identities/", http_uri:encode(IdentityId), "/datasets/", http_uri:encode(DatasetName), "/subscriptions/", http_uri:encode(DeviceId), ""],
+    Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/identities/", aws_util:encode_uri(IdentityId), "/datasets/", aws_util:encode_uri(DatasetName), "/subscriptions/", aws_util:encode_uri(DeviceId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -405,7 +405,7 @@ unsubscribe_from_dataset(Client, DatasetName, DeviceId, IdentityId, IdentityPool
     unsubscribe_from_dataset(Client, DatasetName, DeviceId, IdentityId, IdentityPoolId, Input, []).
 unsubscribe_from_dataset(Client, DatasetName, DeviceId, IdentityId, IdentityPoolId, Input0, Options) ->
     Method = delete,
-    Path = ["/identitypools/", http_uri:encode(IdentityPoolId), "/identities/", http_uri:encode(IdentityId), "/datasets/", http_uri:encode(DatasetName), "/subscriptions/", http_uri:encode(DeviceId), ""],
+    Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/identities/", aws_util:encode_uri(IdentityId), "/datasets/", aws_util:encode_uri(DatasetName), "/subscriptions/", aws_util:encode_uri(DeviceId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -438,7 +438,7 @@ update_records(Client, DatasetName, IdentityId, IdentityPoolId, Input) ->
     update_records(Client, DatasetName, IdentityId, IdentityPoolId, Input, []).
 update_records(Client, DatasetName, IdentityId, IdentityPoolId, Input0, Options) ->
     Method = post,
-    Path = ["/identitypools/", http_uri:encode(IdentityPoolId), "/identities/", http_uri:encode(IdentityId), "/datasets/", http_uri:encode(DatasetName), ""],
+    Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/identities/", aws_util:encode_uri(IdentityId), "/datasets/", aws_util:encode_uri(DatasetName), ""],
     SuccessStatusCode = 200,
 
     HeadersMapping = [

@@ -40,7 +40,7 @@ invoke_endpoint(Client, EndpointName, Input) ->
     invoke_endpoint(Client, EndpointName, Input, []).
 invoke_endpoint(Client, EndpointName, Input0, Options) ->
     Method = post,
-    Path = ["/endpoints/", http_uri:encode(EndpointName), "/invocations"],
+    Path = ["/endpoints/", aws_util:encode_uri(EndpointName), "/invocations"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [

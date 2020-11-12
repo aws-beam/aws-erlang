@@ -153,7 +153,7 @@ accept_invitation(Client, DetectorId, Input) ->
     accept_invitation(Client, DetectorId, Input, []).
 accept_invitation(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/master"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/master"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -173,7 +173,7 @@ archive_findings(Client, DetectorId, Input) ->
     archive_findings(Client, DetectorId, Input, []).
 archive_findings(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/findings/archive"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings/archive"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -210,7 +210,7 @@ create_filter(Client, DetectorId, Input) ->
     create_filter(Client, DetectorId, Input, []).
 create_filter(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/filter"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/filter"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -232,7 +232,7 @@ create_i_p_set(Client, DetectorId, Input) ->
     create_i_p_set(Client, DetectorId, Input, []).
 create_i_p_set(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/ipset"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -261,7 +261,7 @@ create_members(Client, DetectorId, Input) ->
     create_members(Client, DetectorId, Input, []).
 create_members(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/member"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -280,7 +280,7 @@ create_publishing_destination(Client, DetectorId, Input) ->
     create_publishing_destination(Client, DetectorId, Input, []).
 create_publishing_destination(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/publishingDestination"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/publishingDestination"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -300,7 +300,7 @@ create_sample_findings(Client, DetectorId, Input) ->
     create_sample_findings(Client, DetectorId, Input, []).
 create_sample_findings(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/findings/create"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings/create"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -320,7 +320,7 @@ create_threat_intel_set(Client, DetectorId, Input) ->
     create_threat_intel_set(Client, DetectorId, Input, []).
 create_threat_intel_set(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/threatintelset"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/threatintelset"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -354,7 +354,7 @@ delete_detector(Client, DetectorId, Input) ->
     delete_detector(Client, DetectorId, Input, []).
 delete_detector(Client, DetectorId, Input0, Options) ->
     Method = delete,
-    Path = ["/detector/", http_uri:encode(DetectorId), ""],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -370,7 +370,7 @@ delete_filter(Client, DetectorId, FilterName, Input) ->
     delete_filter(Client, DetectorId, FilterName, Input, []).
 delete_filter(Client, DetectorId, FilterName, Input0, Options) ->
     Method = delete,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/filter/", http_uri:encode(FilterName), ""],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/filter/", aws_util:encode_uri(FilterName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -388,7 +388,7 @@ delete_i_p_set(Client, DetectorId, IpSetId, Input) ->
     delete_i_p_set(Client, DetectorId, IpSetId, Input, []).
 delete_i_p_set(Client, DetectorId, IpSetId, Input0, Options) ->
     Method = delete,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/ipset/", http_uri:encode(IpSetId), ""],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset/", aws_util:encode_uri(IpSetId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -422,7 +422,7 @@ delete_members(Client, DetectorId, Input) ->
     delete_members(Client, DetectorId, Input, []).
 delete_members(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/member/delete"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/delete"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -438,7 +438,7 @@ delete_publishing_destination(Client, DestinationId, DetectorId, Input) ->
     delete_publishing_destination(Client, DestinationId, DetectorId, Input, []).
 delete_publishing_destination(Client, DestinationId, DetectorId, Input0, Options) ->
     Method = delete,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/publishingDestination/", http_uri:encode(DestinationId), ""],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/publishingDestination/", aws_util:encode_uri(DestinationId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -454,7 +454,7 @@ delete_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input) ->
     delete_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input, []).
 delete_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input0, Options) ->
     Method = delete,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/threatintelset/", http_uri:encode(ThreatIntelSetId), ""],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/threatintelset/", aws_util:encode_uri(ThreatIntelSetId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -472,7 +472,7 @@ describe_organization_configuration(Client, DetectorId)
     describe_organization_configuration(Client, DetectorId, []).
 describe_organization_configuration(Client, DetectorId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/detector/", http_uri:encode(DetectorId), "/admin"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/admin"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -488,7 +488,7 @@ describe_publishing_destination(Client, DestinationId, DetectorId)
     describe_publishing_destination(Client, DestinationId, DetectorId, []).
 describe_publishing_destination(Client, DestinationId, DetectorId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/detector/", http_uri:encode(DetectorId), "/publishingDestination/", http_uri:encode(DestinationId), ""],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/publishingDestination/", aws_util:encode_uri(DestinationId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -520,7 +520,7 @@ disassociate_from_master_account(Client, DetectorId, Input) ->
     disassociate_from_master_account(Client, DetectorId, Input, []).
 disassociate_from_master_account(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/master/disassociate"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/master/disassociate"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -537,7 +537,7 @@ disassociate_members(Client, DetectorId, Input) ->
     disassociate_members(Client, DetectorId, Input, []).
 disassociate_members(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/member/disassociate"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/disassociate"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -571,7 +571,7 @@ get_detector(Client, DetectorId)
     get_detector(Client, DetectorId, []).
 get_detector(Client, DetectorId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/detector/", http_uri:encode(DetectorId), ""],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -586,7 +586,7 @@ get_filter(Client, DetectorId, FilterName)
     get_filter(Client, DetectorId, FilterName, []).
 get_filter(Client, DetectorId, FilterName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/detector/", http_uri:encode(DetectorId), "/filter/", http_uri:encode(FilterName), ""],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/filter/", aws_util:encode_uri(FilterName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -600,7 +600,7 @@ get_findings(Client, DetectorId, Input) ->
     get_findings(Client, DetectorId, Input, []).
 get_findings(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/findings/get"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings/get"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -617,7 +617,7 @@ get_findings_statistics(Client, DetectorId, Input) ->
     get_findings_statistics(Client, DetectorId, Input, []).
 get_findings_statistics(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/findings/statistics"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings/statistics"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -634,7 +634,7 @@ get_i_p_set(Client, DetectorId, IpSetId)
     get_i_p_set(Client, DetectorId, IpSetId, []).
 get_i_p_set(Client, DetectorId, IpSetId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/detector/", http_uri:encode(DetectorId), "/ipset/", http_uri:encode(IpSetId), ""],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset/", aws_util:encode_uri(IpSetId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -667,7 +667,7 @@ get_master_account(Client, DetectorId)
     get_master_account(Client, DetectorId, []).
 get_master_account(Client, DetectorId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/detector/", http_uri:encode(DetectorId), "/master"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/master"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -682,7 +682,7 @@ get_member_detectors(Client, DetectorId, Input) ->
     get_member_detectors(Client, DetectorId, Input, []).
 get_member_detectors(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/member/detector/get"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/detector/get"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -699,7 +699,7 @@ get_members(Client, DetectorId, Input) ->
     get_members(Client, DetectorId, Input, []).
 get_members(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/member/get"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/get"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -717,7 +717,7 @@ get_threat_intel_set(Client, DetectorId, ThreatIntelSetId)
     get_threat_intel_set(Client, DetectorId, ThreatIntelSetId, []).
 get_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/detector/", http_uri:encode(DetectorId), "/threatintelset/", http_uri:encode(ThreatIntelSetId), ""],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/threatintelset/", aws_util:encode_uri(ThreatIntelSetId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -738,7 +738,7 @@ get_usage_statistics(Client, DetectorId, Input) ->
     get_usage_statistics(Client, DetectorId, Input, []).
 get_usage_statistics(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/usage/statistics"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/usage/statistics"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -757,7 +757,7 @@ invite_members(Client, DetectorId, Input) ->
     invite_members(Client, DetectorId, Input, []).
 invite_members(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/member/invite"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/invite"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -795,7 +795,7 @@ list_filters(Client, DetectorId, MaxResults, NextToken)
     list_filters(Client, DetectorId, MaxResults, NextToken, []).
 list_filters(Client, DetectorId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/detector/", http_uri:encode(DetectorId), "/filter"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/filter"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -814,7 +814,7 @@ list_findings(Client, DetectorId, Input) ->
     list_findings(Client, DetectorId, Input, []).
 list_findings(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/findings"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -835,7 +835,7 @@ list_i_p_sets(Client, DetectorId, MaxResults, NextToken)
     list_i_p_sets(Client, DetectorId, MaxResults, NextToken, []).
 list_i_p_sets(Client, DetectorId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/detector/", http_uri:encode(DetectorId), "/ipset"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -877,7 +877,7 @@ list_members(Client, DetectorId, MaxResults, NextToken, OnlyAssociated)
     list_members(Client, DetectorId, MaxResults, NextToken, OnlyAssociated, []).
 list_members(Client, DetectorId, MaxResults, NextToken, OnlyAssociated, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/detector/", http_uri:encode(DetectorId), "/member"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -919,7 +919,7 @@ list_publishing_destinations(Client, DetectorId, MaxResults, NextToken)
     list_publishing_destinations(Client, DetectorId, MaxResults, NextToken, []).
 list_publishing_destinations(Client, DetectorId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/detector/", http_uri:encode(DetectorId), "/publishingDestination"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/publishingDestination"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -943,7 +943,7 @@ list_tags_for_resource(Client, ResourceArn)
     list_tags_for_resource(Client, ResourceArn, []).
 list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -962,7 +962,7 @@ list_threat_intel_sets(Client, DetectorId, MaxResults, NextToken)
     list_threat_intel_sets(Client, DetectorId, MaxResults, NextToken, []).
 list_threat_intel_sets(Client, DetectorId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/detector/", http_uri:encode(DetectorId), "/threatintelset"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/threatintelset"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -984,7 +984,7 @@ start_monitoring_members(Client, DetectorId, Input) ->
     start_monitoring_members(Client, DetectorId, Input, []).
 start_monitoring_members(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/member/start"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/start"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1003,7 +1003,7 @@ stop_monitoring_members(Client, DetectorId, Input) ->
     stop_monitoring_members(Client, DetectorId, Input, []).
 stop_monitoring_members(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/member/stop"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/stop"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1019,7 +1019,7 @@ tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -1035,7 +1035,7 @@ unarchive_findings(Client, DetectorId, Input) ->
     unarchive_findings(Client, DetectorId, Input, []).
 unarchive_findings(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/findings/unarchive"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings/unarchive"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1051,7 +1051,7 @@ untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -1068,7 +1068,7 @@ update_detector(Client, DetectorId, Input) ->
     update_detector(Client, DetectorId, Input, []).
 update_detector(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), ""],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1084,7 +1084,7 @@ update_filter(Client, DetectorId, FilterName, Input) ->
     update_filter(Client, DetectorId, FilterName, Input, []).
 update_filter(Client, DetectorId, FilterName, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/filter/", http_uri:encode(FilterName), ""],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/filter/", aws_util:encode_uri(FilterName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1100,7 +1100,7 @@ update_findings_feedback(Client, DetectorId, Input) ->
     update_findings_feedback(Client, DetectorId, Input, []).
 update_findings_feedback(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/findings/feedback"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings/feedback"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1116,7 +1116,7 @@ update_i_p_set(Client, DetectorId, IpSetId, Input) ->
     update_i_p_set(Client, DetectorId, IpSetId, Input, []).
 update_i_p_set(Client, DetectorId, IpSetId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/ipset/", http_uri:encode(IpSetId), ""],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset/", aws_util:encode_uri(IpSetId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1132,7 +1132,7 @@ update_member_detectors(Client, DetectorId, Input) ->
     update_member_detectors(Client, DetectorId, Input, []).
 update_member_detectors(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/member/detector/update"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/detector/update"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1148,7 +1148,7 @@ update_organization_configuration(Client, DetectorId, Input) ->
     update_organization_configuration(Client, DetectorId, Input, []).
 update_organization_configuration(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/admin"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/admin"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1165,7 +1165,7 @@ update_publishing_destination(Client, DestinationId, DetectorId, Input) ->
     update_publishing_destination(Client, DestinationId, DetectorId, Input, []).
 update_publishing_destination(Client, DestinationId, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/publishingDestination/", http_uri:encode(DestinationId), ""],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/publishingDestination/", aws_util:encode_uri(DestinationId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1181,7 +1181,7 @@ update_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input) ->
     update_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input, []).
 update_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/threatintelset/", http_uri:encode(ThreatIntelSetId), ""],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/threatintelset/", aws_util:encode_uri(ThreatIntelSetId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],

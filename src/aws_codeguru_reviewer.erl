@@ -104,7 +104,7 @@ describe_code_review(Client, CodeReviewArn)
     describe_code_review(Client, CodeReviewArn, []).
 describe_code_review(Client, CodeReviewArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/codereviews/", http_uri:encode(CodeReviewArn), ""],
+    Path = ["/codereviews/", aws_util:encode_uri(CodeReviewArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -120,7 +120,7 @@ describe_recommendation_feedback(Client, CodeReviewArn, RecommendationId, UserId
     describe_recommendation_feedback(Client, CodeReviewArn, RecommendationId, UserId, []).
 describe_recommendation_feedback(Client, CodeReviewArn, RecommendationId, UserId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/feedback/", http_uri:encode(CodeReviewArn), ""],
+    Path = ["/feedback/", aws_util:encode_uri(CodeReviewArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -141,7 +141,7 @@ describe_repository_association(Client, AssociationArn)
     describe_repository_association(Client, AssociationArn, []).
 describe_repository_association(Client, AssociationArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/associations/", http_uri:encode(AssociationArn), ""],
+    Path = ["/associations/", aws_util:encode_uri(AssociationArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -156,7 +156,7 @@ disassociate_repository(Client, AssociationArn, Input) ->
     disassociate_repository(Client, AssociationArn, Input, []).
 disassociate_repository(Client, AssociationArn, Input0, Options) ->
     Method = delete,
-    Path = ["/associations/", http_uri:encode(AssociationArn), ""],
+    Path = ["/associations/", aws_util:encode_uri(AssociationArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -199,7 +199,7 @@ list_recommendation_feedback(Client, CodeReviewArn, MaxResults, NextToken, Recom
     list_recommendation_feedback(Client, CodeReviewArn, MaxResults, NextToken, RecommendationIds, UserIds, []).
 list_recommendation_feedback(Client, CodeReviewArn, MaxResults, NextToken, RecommendationIds, UserIds, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/feedback/", http_uri:encode(CodeReviewArn), "/RecommendationFeedback"],
+    Path = ["/feedback/", aws_util:encode_uri(CodeReviewArn), "/RecommendationFeedback"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -221,7 +221,7 @@ list_recommendations(Client, CodeReviewArn, MaxResults, NextToken)
     list_recommendations(Client, CodeReviewArn, MaxResults, NextToken, []).
 list_recommendations(Client, CodeReviewArn, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/codereviews/", http_uri:encode(CodeReviewArn), "/Recommendations"],
+    Path = ["/codereviews/", aws_util:encode_uri(CodeReviewArn), "/Recommendations"],
     SuccessStatusCode = undefined,
 
     Headers = [],

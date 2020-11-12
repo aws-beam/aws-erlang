@@ -283,7 +283,7 @@ create_authorizer(Client, RestApiId, Input) ->
     create_authorizer(Client, RestApiId, Input, []).
 create_authorizer(Client, RestApiId, Input0, Options) ->
     Method = post,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/authorizers"],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/authorizers"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -299,7 +299,7 @@ create_base_path_mapping(Client, DomainName, Input) ->
     create_base_path_mapping(Client, DomainName, Input, []).
 create_base_path_mapping(Client, DomainName, Input0, Options) ->
     Method = post,
-    Path = ["/domainnames/", http_uri:encode(DomainName), "/basepathmappings"],
+    Path = ["/domainnames/", aws_util:encode_uri(DomainName), "/basepathmappings"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -316,7 +316,7 @@ create_deployment(Client, RestApiId, Input) ->
     create_deployment(Client, RestApiId, Input, []).
 create_deployment(Client, RestApiId, Input0, Options) ->
     Method = post,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/deployments"],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/deployments"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -332,7 +332,7 @@ create_documentation_part(Client, RestApiId, Input) ->
     create_documentation_part(Client, RestApiId, Input, []).
 create_documentation_part(Client, RestApiId, Input0, Options) ->
     Method = post,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/documentation/parts"],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/documentation/parts"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -348,7 +348,7 @@ create_documentation_version(Client, RestApiId, Input) ->
     create_documentation_version(Client, RestApiId, Input, []).
 create_documentation_version(Client, RestApiId, Input0, Options) ->
     Method = post,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/documentation/versions"],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/documentation/versions"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -380,7 +380,7 @@ create_model(Client, RestApiId, Input) ->
     create_model(Client, RestApiId, Input, []).
 create_model(Client, RestApiId, Input0, Options) ->
     Method = post,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/models"],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/models"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -396,7 +396,7 @@ create_request_validator(Client, RestApiId, Input) ->
     create_request_validator(Client, RestApiId, Input, []).
 create_request_validator(Client, RestApiId, Input0, Options) ->
     Method = post,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/requestvalidators"],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/requestvalidators"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -412,7 +412,7 @@ create_resource(Client, ParentId, RestApiId, Input) ->
     create_resource(Client, ParentId, RestApiId, Input, []).
 create_resource(Client, ParentId, RestApiId, Input0, Options) ->
     Method = post,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/resources/", http_uri:encode(ParentId), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ParentId), ""],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -445,7 +445,7 @@ create_stage(Client, RestApiId, Input) ->
     create_stage(Client, RestApiId, Input, []).
 create_stage(Client, RestApiId, Input0, Options) ->
     Method = post,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/stages"],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/stages"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -479,7 +479,7 @@ create_usage_plan_key(Client, UsagePlanId, Input) ->
     create_usage_plan_key(Client, UsagePlanId, Input, []).
 create_usage_plan_key(Client, UsagePlanId, Input0, Options) ->
     Method = post,
-    Path = ["/usageplans/", http_uri:encode(UsagePlanId), "/keys"],
+    Path = ["/usageplans/", aws_util:encode_uri(UsagePlanId), "/keys"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -516,7 +516,7 @@ delete_api_key(Client, ApiKey, Input) ->
     delete_api_key(Client, ApiKey, Input, []).
 delete_api_key(Client, ApiKey, Input0, Options) ->
     Method = delete,
-    Path = ["/apikeys/", http_uri:encode(ApiKey), ""],
+    Path = ["/apikeys/", aws_util:encode_uri(ApiKey), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -534,7 +534,7 @@ delete_authorizer(Client, AuthorizerId, RestApiId, Input) ->
     delete_authorizer(Client, AuthorizerId, RestApiId, Input, []).
 delete_authorizer(Client, AuthorizerId, RestApiId, Input0, Options) ->
     Method = delete,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/authorizers/", http_uri:encode(AuthorizerId), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/authorizers/", aws_util:encode_uri(AuthorizerId), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -550,7 +550,7 @@ delete_base_path_mapping(Client, BasePath, DomainName, Input) ->
     delete_base_path_mapping(Client, BasePath, DomainName, Input, []).
 delete_base_path_mapping(Client, BasePath, DomainName, Input0, Options) ->
     Method = delete,
-    Path = ["/domainnames/", http_uri:encode(DomainName), "/basepathmappings/", http_uri:encode(BasePath), ""],
+    Path = ["/domainnames/", aws_util:encode_uri(DomainName), "/basepathmappings/", aws_util:encode_uri(BasePath), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -566,7 +566,7 @@ delete_client_certificate(Client, ClientCertificateId, Input) ->
     delete_client_certificate(Client, ClientCertificateId, Input, []).
 delete_client_certificate(Client, ClientCertificateId, Input0, Options) ->
     Method = delete,
-    Path = ["/clientcertificates/", http_uri:encode(ClientCertificateId), ""],
+    Path = ["/clientcertificates/", aws_util:encode_uri(ClientCertificateId), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -585,7 +585,7 @@ delete_deployment(Client, DeploymentId, RestApiId, Input) ->
     delete_deployment(Client, DeploymentId, RestApiId, Input, []).
 delete_deployment(Client, DeploymentId, RestApiId, Input0, Options) ->
     Method = delete,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/deployments/", http_uri:encode(DeploymentId), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/deployments/", aws_util:encode_uri(DeploymentId), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -601,7 +601,7 @@ delete_documentation_part(Client, DocumentationPartId, RestApiId, Input) ->
     delete_documentation_part(Client, DocumentationPartId, RestApiId, Input, []).
 delete_documentation_part(Client, DocumentationPartId, RestApiId, Input0, Options) ->
     Method = delete,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/documentation/parts/", http_uri:encode(DocumentationPartId), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/documentation/parts/", aws_util:encode_uri(DocumentationPartId), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -617,7 +617,7 @@ delete_documentation_version(Client, DocumentationVersion, RestApiId, Input) ->
     delete_documentation_version(Client, DocumentationVersion, RestApiId, Input, []).
 delete_documentation_version(Client, DocumentationVersion, RestApiId, Input0, Options) ->
     Method = delete,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/documentation/versions/", http_uri:encode(DocumentationVersion), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/documentation/versions/", aws_util:encode_uri(DocumentationVersion), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -633,7 +633,7 @@ delete_domain_name(Client, DomainName, Input) ->
     delete_domain_name(Client, DomainName, Input, []).
 delete_domain_name(Client, DomainName, Input0, Options) ->
     Method = delete,
-    Path = ["/domainnames/", http_uri:encode(DomainName), ""],
+    Path = ["/domainnames/", aws_util:encode_uri(DomainName), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -651,7 +651,7 @@ delete_gateway_response(Client, ResponseType, RestApiId, Input) ->
     delete_gateway_response(Client, ResponseType, RestApiId, Input, []).
 delete_gateway_response(Client, ResponseType, RestApiId, Input0, Options) ->
     Method = delete,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/gatewayresponses/", http_uri:encode(ResponseType), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/gatewayresponses/", aws_util:encode_uri(ResponseType), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -667,7 +667,7 @@ delete_integration(Client, HttpMethod, ResourceId, RestApiId, Input) ->
     delete_integration(Client, HttpMethod, ResourceId, RestApiId, Input, []).
 delete_integration(Client, HttpMethod, ResourceId, RestApiId, Input0, Options) ->
     Method = delete,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/resources/", http_uri:encode(ResourceId), "/methods/", http_uri:encode(HttpMethod), "/integration"],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), "/integration"],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -683,7 +683,7 @@ delete_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCod
     delete_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input, []).
 delete_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input0, Options) ->
     Method = delete,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/resources/", http_uri:encode(ResourceId), "/methods/", http_uri:encode(HttpMethod), "/integration/responses/", http_uri:encode(StatusCode), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), "/integration/responses/", aws_util:encode_uri(StatusCode), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -699,7 +699,7 @@ delete_method(Client, HttpMethod, ResourceId, RestApiId, Input) ->
     delete_method(Client, HttpMethod, ResourceId, RestApiId, Input, []).
 delete_method(Client, HttpMethod, ResourceId, RestApiId, Input0, Options) ->
     Method = delete,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/resources/", http_uri:encode(ResourceId), "/methods/", http_uri:encode(HttpMethod), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -715,7 +715,7 @@ delete_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, In
     delete_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input, []).
 delete_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input0, Options) ->
     Method = delete,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/resources/", http_uri:encode(ResourceId), "/methods/", http_uri:encode(HttpMethod), "/responses/", http_uri:encode(StatusCode), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), "/responses/", aws_util:encode_uri(StatusCode), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -731,7 +731,7 @@ delete_model(Client, ModelName, RestApiId, Input) ->
     delete_model(Client, ModelName, RestApiId, Input, []).
 delete_model(Client, ModelName, RestApiId, Input0, Options) ->
     Method = delete,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/models/", http_uri:encode(ModelName), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/models/", aws_util:encode_uri(ModelName), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -747,7 +747,7 @@ delete_request_validator(Client, RequestValidatorId, RestApiId, Input) ->
     delete_request_validator(Client, RequestValidatorId, RestApiId, Input, []).
 delete_request_validator(Client, RequestValidatorId, RestApiId, Input0, Options) ->
     Method = delete,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/requestvalidators/", http_uri:encode(RequestValidatorId), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/requestvalidators/", aws_util:encode_uri(RequestValidatorId), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -763,7 +763,7 @@ delete_resource(Client, ResourceId, RestApiId, Input) ->
     delete_resource(Client, ResourceId, RestApiId, Input, []).
 delete_resource(Client, ResourceId, RestApiId, Input0, Options) ->
     Method = delete,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/resources/", http_uri:encode(ResourceId), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -779,7 +779,7 @@ delete_rest_api(Client, RestApiId, Input) ->
     delete_rest_api(Client, RestApiId, Input, []).
 delete_rest_api(Client, RestApiId, Input0, Options) ->
     Method = delete,
-    Path = ["/restapis/", http_uri:encode(RestApiId), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -795,7 +795,7 @@ delete_stage(Client, RestApiId, StageName, Input) ->
     delete_stage(Client, RestApiId, StageName, Input, []).
 delete_stage(Client, RestApiId, StageName, Input0, Options) ->
     Method = delete,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/stages/", http_uri:encode(StageName), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/stages/", aws_util:encode_uri(StageName), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -811,7 +811,7 @@ delete_usage_plan(Client, UsagePlanId, Input) ->
     delete_usage_plan(Client, UsagePlanId, Input, []).
 delete_usage_plan(Client, UsagePlanId, Input0, Options) ->
     Method = delete,
-    Path = ["/usageplans/", http_uri:encode(UsagePlanId), ""],
+    Path = ["/usageplans/", aws_util:encode_uri(UsagePlanId), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -828,7 +828,7 @@ delete_usage_plan_key(Client, KeyId, UsagePlanId, Input) ->
     delete_usage_plan_key(Client, KeyId, UsagePlanId, Input, []).
 delete_usage_plan_key(Client, KeyId, UsagePlanId, Input0, Options) ->
     Method = delete,
-    Path = ["/usageplans/", http_uri:encode(UsagePlanId), "/keys/", http_uri:encode(KeyId), ""],
+    Path = ["/usageplans/", aws_util:encode_uri(UsagePlanId), "/keys/", aws_util:encode_uri(KeyId), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -844,7 +844,7 @@ delete_vpc_link(Client, VpcLinkId, Input) ->
     delete_vpc_link(Client, VpcLinkId, Input, []).
 delete_vpc_link(Client, VpcLinkId, Input0, Options) ->
     Method = delete,
-    Path = ["/vpclinks/", http_uri:encode(VpcLinkId), ""],
+    Path = ["/vpclinks/", aws_util:encode_uri(VpcLinkId), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -860,7 +860,7 @@ flush_stage_authorizers_cache(Client, RestApiId, StageName, Input) ->
     flush_stage_authorizers_cache(Client, RestApiId, StageName, Input, []).
 flush_stage_authorizers_cache(Client, RestApiId, StageName, Input0, Options) ->
     Method = delete,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/stages/", http_uri:encode(StageName), "/cache/authorizers"],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/stages/", aws_util:encode_uri(StageName), "/cache/authorizers"],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -876,7 +876,7 @@ flush_stage_cache(Client, RestApiId, StageName, Input) ->
     flush_stage_cache(Client, RestApiId, StageName, Input, []).
 flush_stage_cache(Client, RestApiId, StageName, Input0, Options) ->
     Method = delete,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/stages/", http_uri:encode(StageName), "/cache/data"],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/stages/", aws_util:encode_uri(StageName), "/cache/data"],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -924,7 +924,7 @@ get_api_key(Client, ApiKey, IncludeValue)
     get_api_key(Client, ApiKey, IncludeValue, []).
 get_api_key(Client, ApiKey, IncludeValue, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/apikeys/", http_uri:encode(ApiKey), ""],
+    Path = ["/apikeys/", aws_util:encode_uri(ApiKey), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -968,7 +968,7 @@ get_authorizer(Client, AuthorizerId, RestApiId)
     get_authorizer(Client, AuthorizerId, RestApiId, []).
 get_authorizer(Client, AuthorizerId, RestApiId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/authorizers/", http_uri:encode(AuthorizerId), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/authorizers/", aws_util:encode_uri(AuthorizerId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -985,7 +985,7 @@ get_authorizers(Client, RestApiId, Limit, Position)
     get_authorizers(Client, RestApiId, Limit, Position, []).
 get_authorizers(Client, RestApiId, Limit, Position, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/authorizers"],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/authorizers"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1005,7 +1005,7 @@ get_base_path_mapping(Client, BasePath, DomainName)
     get_base_path_mapping(Client, BasePath, DomainName, []).
 get_base_path_mapping(Client, BasePath, DomainName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/domainnames/", http_uri:encode(DomainName), "/basepathmappings/", http_uri:encode(BasePath), ""],
+    Path = ["/domainnames/", aws_util:encode_uri(DomainName), "/basepathmappings/", aws_util:encode_uri(BasePath), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1020,7 +1020,7 @@ get_base_path_mappings(Client, DomainName, Limit, Position)
     get_base_path_mappings(Client, DomainName, Limit, Position, []).
 get_base_path_mappings(Client, DomainName, Limit, Position, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/domainnames/", http_uri:encode(DomainName), "/basepathmappings"],
+    Path = ["/domainnames/", aws_util:encode_uri(DomainName), "/basepathmappings"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1040,7 +1040,7 @@ get_client_certificate(Client, ClientCertificateId)
     get_client_certificate(Client, ClientCertificateId, []).
 get_client_certificate(Client, ClientCertificateId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/clientcertificates/", http_uri:encode(ClientCertificateId), ""],
+    Path = ["/clientcertificates/", aws_util:encode_uri(ClientCertificateId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1075,7 +1075,7 @@ get_deployment(Client, DeploymentId, RestApiId, Embed)
     get_deployment(Client, DeploymentId, RestApiId, Embed, []).
 get_deployment(Client, DeploymentId, RestApiId, Embed, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/deployments/", http_uri:encode(DeploymentId), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/deployments/", aws_util:encode_uri(DeploymentId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1094,7 +1094,7 @@ get_deployments(Client, RestApiId, Limit, Position)
     get_deployments(Client, RestApiId, Limit, Position, []).
 get_deployments(Client, RestApiId, Limit, Position, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/deployments"],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/deployments"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1114,7 +1114,7 @@ get_documentation_part(Client, DocumentationPartId, RestApiId)
     get_documentation_part(Client, DocumentationPartId, RestApiId, []).
 get_documentation_part(Client, DocumentationPartId, RestApiId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/documentation/parts/", http_uri:encode(DocumentationPartId), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/documentation/parts/", aws_util:encode_uri(DocumentationPartId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1129,7 +1129,7 @@ get_documentation_parts(Client, RestApiId, Limit, LocationStatus, NameQuery, Pat
     get_documentation_parts(Client, RestApiId, Limit, LocationStatus, NameQuery, Path, Position, Type, []).
 get_documentation_parts(Client, RestApiId, Limit, LocationStatus, NameQuery, Path, Position, Type, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/documentation/parts"],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/documentation/parts"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1153,7 +1153,7 @@ get_documentation_version(Client, DocumentationVersion, RestApiId)
     get_documentation_version(Client, DocumentationVersion, RestApiId, []).
 get_documentation_version(Client, DocumentationVersion, RestApiId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/documentation/versions/", http_uri:encode(DocumentationVersion), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/documentation/versions/", aws_util:encode_uri(DocumentationVersion), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1168,7 +1168,7 @@ get_documentation_versions(Client, RestApiId, Limit, Position)
     get_documentation_versions(Client, RestApiId, Limit, Position, []).
 get_documentation_versions(Client, RestApiId, Limit, Position, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/documentation/versions"],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/documentation/versions"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1189,7 +1189,7 @@ get_domain_name(Client, DomainName)
     get_domain_name(Client, DomainName, []).
 get_domain_name(Client, DomainName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/domainnames/", http_uri:encode(DomainName), ""],
+    Path = ["/domainnames/", aws_util:encode_uri(DomainName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1224,7 +1224,7 @@ get_export(Client, ExportType, RestApiId, StageName, Parameters, Accepts)
     get_export(Client, ExportType, RestApiId, StageName, Parameters, Accepts, []).
 get_export(Client, ExportType, RestApiId, StageName, Parameters, Accepts, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/stages/", http_uri:encode(StageName), "/exports/", http_uri:encode(ExportType), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/stages/", aws_util:encode_uri(StageName), "/exports/", aws_util:encode_uri(ExportType), ""],
     SuccessStatusCode = 200,
 
     Headers0 =
@@ -1265,7 +1265,7 @@ get_gateway_response(Client, ResponseType, RestApiId)
     get_gateway_response(Client, ResponseType, RestApiId, []).
 get_gateway_response(Client, ResponseType, RestApiId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/gatewayresponses/", http_uri:encode(ResponseType), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/gatewayresponses/", aws_util:encode_uri(ResponseType), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1284,7 +1284,7 @@ get_gateway_responses(Client, RestApiId, Limit, Position)
     get_gateway_responses(Client, RestApiId, Limit, Position, []).
 get_gateway_responses(Client, RestApiId, Limit, Position, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/gatewayresponses"],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/gatewayresponses"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1304,7 +1304,7 @@ get_integration(Client, HttpMethod, ResourceId, RestApiId)
     get_integration(Client, HttpMethod, ResourceId, RestApiId, []).
 get_integration(Client, HttpMethod, ResourceId, RestApiId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/resources/", http_uri:encode(ResourceId), "/methods/", http_uri:encode(HttpMethod), "/integration"],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), "/integration"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1319,7 +1319,7 @@ get_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode)
     get_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, []).
 get_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/resources/", http_uri:encode(ResourceId), "/methods/", http_uri:encode(HttpMethod), "/integration/responses/", http_uri:encode(StatusCode), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), "/integration/responses/", aws_util:encode_uri(StatusCode), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1334,7 +1334,7 @@ get_method(Client, HttpMethod, ResourceId, RestApiId)
     get_method(Client, HttpMethod, ResourceId, RestApiId, []).
 get_method(Client, HttpMethod, ResourceId, RestApiId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/resources/", http_uri:encode(ResourceId), "/methods/", http_uri:encode(HttpMethod), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1349,7 +1349,7 @@ get_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode)
     get_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, []).
 get_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/resources/", http_uri:encode(ResourceId), "/methods/", http_uri:encode(HttpMethod), "/responses/", http_uri:encode(StatusCode), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), "/responses/", aws_util:encode_uri(StatusCode), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1364,7 +1364,7 @@ get_model(Client, ModelName, RestApiId, Flatten)
     get_model(Client, ModelName, RestApiId, Flatten, []).
 get_model(Client, ModelName, RestApiId, Flatten, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/models/", http_uri:encode(ModelName), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/models/", aws_util:encode_uri(ModelName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1384,7 +1384,7 @@ get_model_template(Client, ModelName, RestApiId)
     get_model_template(Client, ModelName, RestApiId, []).
 get_model_template(Client, ModelName, RestApiId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/models/", http_uri:encode(ModelName), "/default_template"],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/models/", aws_util:encode_uri(ModelName), "/default_template"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1399,7 +1399,7 @@ get_models(Client, RestApiId, Limit, Position)
     get_models(Client, RestApiId, Limit, Position, []).
 get_models(Client, RestApiId, Limit, Position, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/models"],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/models"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1419,7 +1419,7 @@ get_request_validator(Client, RequestValidatorId, RestApiId)
     get_request_validator(Client, RequestValidatorId, RestApiId, []).
 get_request_validator(Client, RequestValidatorId, RestApiId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/requestvalidators/", http_uri:encode(RequestValidatorId), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/requestvalidators/", aws_util:encode_uri(RequestValidatorId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1434,7 +1434,7 @@ get_request_validators(Client, RestApiId, Limit, Position)
     get_request_validators(Client, RestApiId, Limit, Position, []).
 get_request_validators(Client, RestApiId, Limit, Position, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/requestvalidators"],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/requestvalidators"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1454,7 +1454,7 @@ get_resource(Client, ResourceId, RestApiId, Embed)
     get_resource(Client, ResourceId, RestApiId, Embed, []).
 get_resource(Client, ResourceId, RestApiId, Embed, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/resources/", http_uri:encode(ResourceId), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1473,7 +1473,7 @@ get_resources(Client, RestApiId, Embed, Limit, Position)
     get_resources(Client, RestApiId, Embed, Limit, Position, []).
 get_resources(Client, RestApiId, Embed, Limit, Position, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/resources"],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1494,7 +1494,7 @@ get_rest_api(Client, RestApiId)
     get_rest_api(Client, RestApiId, []).
 get_rest_api(Client, RestApiId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/restapis/", http_uri:encode(RestApiId), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1529,7 +1529,7 @@ get_sdk(Client, RestApiId, SdkType, StageName, Parameters)
     get_sdk(Client, RestApiId, SdkType, StageName, Parameters, []).
 get_sdk(Client, RestApiId, SdkType, StageName, Parameters, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/stages/", http_uri:encode(StageName), "/sdks/", http_uri:encode(SdkType), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/stages/", aws_util:encode_uri(StageName), "/sdks/", aws_util:encode_uri(SdkType), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1565,7 +1565,7 @@ get_sdk_type(Client, Id)
     get_sdk_type(Client, Id, []).
 get_sdk_type(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/sdktypes/", http_uri:encode(Id), ""],
+    Path = ["/sdktypes/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1600,7 +1600,7 @@ get_stage(Client, RestApiId, StageName)
     get_stage(Client, RestApiId, StageName, []).
 get_stage(Client, RestApiId, StageName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/stages/", http_uri:encode(StageName), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/stages/", aws_util:encode_uri(StageName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1615,7 +1615,7 @@ get_stages(Client, RestApiId, DeploymentId)
     get_stages(Client, RestApiId, DeploymentId, []).
 get_stages(Client, RestApiId, DeploymentId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/stages"],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/stages"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1634,7 +1634,7 @@ get_tags(Client, ResourceArn, Limit, Position)
     get_tags(Client, ResourceArn, Limit, Position, []).
 get_tags(Client, ResourceArn, Limit, Position, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1654,7 +1654,7 @@ get_usage(Client, UsagePlanId, EndDate, KeyId, Limit, Position, StartDate)
     get_usage(Client, UsagePlanId, EndDate, KeyId, Limit, Position, StartDate, []).
 get_usage(Client, UsagePlanId, EndDate, KeyId, Limit, Position, StartDate, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/usageplans/", http_uri:encode(UsagePlanId), "/usage"],
+    Path = ["/usageplans/", aws_util:encode_uri(UsagePlanId), "/usage"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1677,7 +1677,7 @@ get_usage_plan(Client, UsagePlanId)
     get_usage_plan(Client, UsagePlanId, []).
 get_usage_plan(Client, UsagePlanId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/usageplans/", http_uri:encode(UsagePlanId), ""],
+    Path = ["/usageplans/", aws_util:encode_uri(UsagePlanId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1692,7 +1692,7 @@ get_usage_plan_key(Client, KeyId, UsagePlanId)
     get_usage_plan_key(Client, KeyId, UsagePlanId, []).
 get_usage_plan_key(Client, KeyId, UsagePlanId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/usageplans/", http_uri:encode(UsagePlanId), "/keys/", http_uri:encode(KeyId), ""],
+    Path = ["/usageplans/", aws_util:encode_uri(UsagePlanId), "/keys/", aws_util:encode_uri(KeyId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1708,7 +1708,7 @@ get_usage_plan_keys(Client, UsagePlanId, Limit, NameQuery, Position)
     get_usage_plan_keys(Client, UsagePlanId, Limit, NameQuery, Position, []).
 get_usage_plan_keys(Client, UsagePlanId, Limit, NameQuery, Position, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/usageplans/", http_uri:encode(UsagePlanId), "/keys"],
+    Path = ["/usageplans/", aws_util:encode_uri(UsagePlanId), "/keys"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1750,7 +1750,7 @@ get_vpc_link(Client, VpcLinkId)
     get_vpc_link(Client, VpcLinkId, []).
 get_vpc_link(Client, VpcLinkId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/vpclinks/", http_uri:encode(VpcLinkId), ""],
+    Path = ["/vpclinks/", aws_util:encode_uri(VpcLinkId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1804,7 +1804,7 @@ import_documentation_parts(Client, RestApiId, Input) ->
     import_documentation_parts(Client, RestApiId, Input, []).
 import_documentation_parts(Client, RestApiId, Input0, Options) ->
     Method = put,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/documentation/parts"],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/documentation/parts"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1842,7 +1842,7 @@ put_gateway_response(Client, ResponseType, RestApiId, Input) ->
     put_gateway_response(Client, ResponseType, RestApiId, Input, []).
 put_gateway_response(Client, ResponseType, RestApiId, Input0, Options) ->
     Method = put,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/gatewayresponses/", http_uri:encode(ResponseType), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/gatewayresponses/", aws_util:encode_uri(ResponseType), ""],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -1858,7 +1858,7 @@ put_integration(Client, HttpMethod, ResourceId, RestApiId, Input) ->
     put_integration(Client, HttpMethod, ResourceId, RestApiId, Input, []).
 put_integration(Client, HttpMethod, ResourceId, RestApiId, Input0, Options) ->
     Method = put,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/resources/", http_uri:encode(ResourceId), "/methods/", http_uri:encode(HttpMethod), "/integration"],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), "/integration"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -1874,7 +1874,7 @@ put_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, 
     put_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input, []).
 put_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input0, Options) ->
     Method = put,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/resources/", http_uri:encode(ResourceId), "/methods/", http_uri:encode(HttpMethod), "/integration/responses/", http_uri:encode(StatusCode), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), "/integration/responses/", aws_util:encode_uri(StatusCode), ""],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -1890,7 +1890,7 @@ put_method(Client, HttpMethod, ResourceId, RestApiId, Input) ->
     put_method(Client, HttpMethod, ResourceId, RestApiId, Input, []).
 put_method(Client, HttpMethod, ResourceId, RestApiId, Input0, Options) ->
     Method = put,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/resources/", http_uri:encode(ResourceId), "/methods/", http_uri:encode(HttpMethod), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), ""],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -1906,7 +1906,7 @@ put_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input
     put_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input, []).
 put_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input0, Options) ->
     Method = put,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/resources/", http_uri:encode(ResourceId), "/methods/", http_uri:encode(HttpMethod), "/responses/", http_uri:encode(StatusCode), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), "/responses/", aws_util:encode_uri(StatusCode), ""],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -1926,7 +1926,7 @@ put_rest_api(Client, RestApiId, Input) ->
     put_rest_api(Client, RestApiId, Input, []).
 put_rest_api(Client, RestApiId, Input0, Options) ->
     Method = put,
-    Path = ["/restapis/", http_uri:encode(RestApiId), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1945,7 +1945,7 @@ tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = put,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -1965,7 +1965,7 @@ test_invoke_authorizer(Client, AuthorizerId, RestApiId, Input) ->
     test_invoke_authorizer(Client, AuthorizerId, RestApiId, Input, []).
 test_invoke_authorizer(Client, AuthorizerId, RestApiId, Input0, Options) ->
     Method = post,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/authorizers/", http_uri:encode(AuthorizerId), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/authorizers/", aws_util:encode_uri(AuthorizerId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1982,7 +1982,7 @@ test_invoke_method(Client, HttpMethod, ResourceId, RestApiId, Input) ->
     test_invoke_method(Client, HttpMethod, ResourceId, RestApiId, Input, []).
 test_invoke_method(Client, HttpMethod, ResourceId, RestApiId, Input0, Options) ->
     Method = post,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/resources/", http_uri:encode(ResourceId), "/methods/", http_uri:encode(HttpMethod), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1998,7 +1998,7 @@ untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -2031,7 +2031,7 @@ update_api_key(Client, ApiKey, Input) ->
     update_api_key(Client, ApiKey, Input, []).
 update_api_key(Client, ApiKey, Input0, Options) ->
     Method = patch,
-    Path = ["/apikeys/", http_uri:encode(ApiKey), ""],
+    Path = ["/apikeys/", aws_util:encode_uri(ApiKey), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2049,7 +2049,7 @@ update_authorizer(Client, AuthorizerId, RestApiId, Input) ->
     update_authorizer(Client, AuthorizerId, RestApiId, Input, []).
 update_authorizer(Client, AuthorizerId, RestApiId, Input0, Options) ->
     Method = patch,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/authorizers/", http_uri:encode(AuthorizerId), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/authorizers/", aws_util:encode_uri(AuthorizerId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2065,7 +2065,7 @@ update_base_path_mapping(Client, BasePath, DomainName, Input) ->
     update_base_path_mapping(Client, BasePath, DomainName, Input, []).
 update_base_path_mapping(Client, BasePath, DomainName, Input0, Options) ->
     Method = patch,
-    Path = ["/domainnames/", http_uri:encode(DomainName), "/basepathmappings/", http_uri:encode(BasePath), ""],
+    Path = ["/domainnames/", aws_util:encode_uri(DomainName), "/basepathmappings/", aws_util:encode_uri(BasePath), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2081,7 +2081,7 @@ update_client_certificate(Client, ClientCertificateId, Input) ->
     update_client_certificate(Client, ClientCertificateId, Input, []).
 update_client_certificate(Client, ClientCertificateId, Input0, Options) ->
     Method = patch,
-    Path = ["/clientcertificates/", http_uri:encode(ClientCertificateId), ""],
+    Path = ["/clientcertificates/", aws_util:encode_uri(ClientCertificateId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2097,7 +2097,7 @@ update_deployment(Client, DeploymentId, RestApiId, Input) ->
     update_deployment(Client, DeploymentId, RestApiId, Input, []).
 update_deployment(Client, DeploymentId, RestApiId, Input0, Options) ->
     Method = patch,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/deployments/", http_uri:encode(DeploymentId), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/deployments/", aws_util:encode_uri(DeploymentId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2113,7 +2113,7 @@ update_documentation_part(Client, DocumentationPartId, RestApiId, Input) ->
     update_documentation_part(Client, DocumentationPartId, RestApiId, Input, []).
 update_documentation_part(Client, DocumentationPartId, RestApiId, Input0, Options) ->
     Method = patch,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/documentation/parts/", http_uri:encode(DocumentationPartId), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/documentation/parts/", aws_util:encode_uri(DocumentationPartId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2129,7 +2129,7 @@ update_documentation_version(Client, DocumentationVersion, RestApiId, Input) ->
     update_documentation_version(Client, DocumentationVersion, RestApiId, Input, []).
 update_documentation_version(Client, DocumentationVersion, RestApiId, Input0, Options) ->
     Method = patch,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/documentation/versions/", http_uri:encode(DocumentationVersion), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/documentation/versions/", aws_util:encode_uri(DocumentationVersion), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2145,7 +2145,7 @@ update_domain_name(Client, DomainName, Input) ->
     update_domain_name(Client, DomainName, Input, []).
 update_domain_name(Client, DomainName, Input0, Options) ->
     Method = patch,
-    Path = ["/domainnames/", http_uri:encode(DomainName), ""],
+    Path = ["/domainnames/", aws_util:encode_uri(DomainName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2162,7 +2162,7 @@ update_gateway_response(Client, ResponseType, RestApiId, Input) ->
     update_gateway_response(Client, ResponseType, RestApiId, Input, []).
 update_gateway_response(Client, ResponseType, RestApiId, Input0, Options) ->
     Method = patch,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/gatewayresponses/", http_uri:encode(ResponseType), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/gatewayresponses/", aws_util:encode_uri(ResponseType), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2178,7 +2178,7 @@ update_integration(Client, HttpMethod, ResourceId, RestApiId, Input) ->
     update_integration(Client, HttpMethod, ResourceId, RestApiId, Input, []).
 update_integration(Client, HttpMethod, ResourceId, RestApiId, Input0, Options) ->
     Method = patch,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/resources/", http_uri:encode(ResourceId), "/methods/", http_uri:encode(HttpMethod), "/integration"],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), "/integration"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2194,7 +2194,7 @@ update_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCod
     update_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input, []).
 update_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input0, Options) ->
     Method = patch,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/resources/", http_uri:encode(ResourceId), "/methods/", http_uri:encode(HttpMethod), "/integration/responses/", http_uri:encode(StatusCode), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), "/integration/responses/", aws_util:encode_uri(StatusCode), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2210,7 +2210,7 @@ update_method(Client, HttpMethod, ResourceId, RestApiId, Input) ->
     update_method(Client, HttpMethod, ResourceId, RestApiId, Input, []).
 update_method(Client, HttpMethod, ResourceId, RestApiId, Input0, Options) ->
     Method = patch,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/resources/", http_uri:encode(ResourceId), "/methods/", http_uri:encode(HttpMethod), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2226,7 +2226,7 @@ update_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, In
     update_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input, []).
 update_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input0, Options) ->
     Method = patch,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/resources/", http_uri:encode(ResourceId), "/methods/", http_uri:encode(HttpMethod), "/responses/", http_uri:encode(StatusCode), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), "/responses/", aws_util:encode_uri(StatusCode), ""],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -2242,7 +2242,7 @@ update_model(Client, ModelName, RestApiId, Input) ->
     update_model(Client, ModelName, RestApiId, Input, []).
 update_model(Client, ModelName, RestApiId, Input0, Options) ->
     Method = patch,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/models/", http_uri:encode(ModelName), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/models/", aws_util:encode_uri(ModelName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2258,7 +2258,7 @@ update_request_validator(Client, RequestValidatorId, RestApiId, Input) ->
     update_request_validator(Client, RequestValidatorId, RestApiId, Input, []).
 update_request_validator(Client, RequestValidatorId, RestApiId, Input0, Options) ->
     Method = patch,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/requestvalidators/", http_uri:encode(RequestValidatorId), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/requestvalidators/", aws_util:encode_uri(RequestValidatorId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2274,7 +2274,7 @@ update_resource(Client, ResourceId, RestApiId, Input) ->
     update_resource(Client, ResourceId, RestApiId, Input, []).
 update_resource(Client, ResourceId, RestApiId, Input0, Options) ->
     Method = patch,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/resources/", http_uri:encode(ResourceId), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2290,7 +2290,7 @@ update_rest_api(Client, RestApiId, Input) ->
     update_rest_api(Client, RestApiId, Input, []).
 update_rest_api(Client, RestApiId, Input0, Options) ->
     Method = patch,
-    Path = ["/restapis/", http_uri:encode(RestApiId), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2306,7 +2306,7 @@ update_stage(Client, RestApiId, StageName, Input) ->
     update_stage(Client, RestApiId, StageName, Input, []).
 update_stage(Client, RestApiId, StageName, Input0, Options) ->
     Method = patch,
-    Path = ["/restapis/", http_uri:encode(RestApiId), "/stages/", http_uri:encode(StageName), ""],
+    Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/stages/", aws_util:encode_uri(StageName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2323,7 +2323,7 @@ update_usage(Client, KeyId, UsagePlanId, Input) ->
     update_usage(Client, KeyId, UsagePlanId, Input, []).
 update_usage(Client, KeyId, UsagePlanId, Input0, Options) ->
     Method = patch,
-    Path = ["/usageplans/", http_uri:encode(UsagePlanId), "/keys/", http_uri:encode(KeyId), "/usage"],
+    Path = ["/usageplans/", aws_util:encode_uri(UsagePlanId), "/keys/", aws_util:encode_uri(KeyId), "/usage"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2339,7 +2339,7 @@ update_usage_plan(Client, UsagePlanId, Input) ->
     update_usage_plan(Client, UsagePlanId, Input, []).
 update_usage_plan(Client, UsagePlanId, Input0, Options) ->
     Method = patch,
-    Path = ["/usageplans/", http_uri:encode(UsagePlanId), ""],
+    Path = ["/usageplans/", aws_util:encode_uri(UsagePlanId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2355,7 +2355,7 @@ update_vpc_link(Client, VpcLinkId, Input) ->
     update_vpc_link(Client, VpcLinkId, Input, []).
 update_vpc_link(Client, VpcLinkId, Input0, Options) ->
     Method = patch,
-    Path = ["/vpclinks/", http_uri:encode(VpcLinkId), ""],
+    Path = ["/vpclinks/", aws_util:encode_uri(VpcLinkId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],

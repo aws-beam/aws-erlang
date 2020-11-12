@@ -290,7 +290,7 @@ associate_phone_number_with_user(Client, AccountId, UserId, Input) ->
     associate_phone_number_with_user(Client, AccountId, UserId, Input, []).
 associate_phone_number_with_user(Client, AccountId, UserId, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AccountId), "/users/", http_uri:encode(UserId), "?operation=associate-phone-number"],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), "?operation=associate-phone-number"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -307,7 +307,7 @@ associate_phone_numbers_with_voice_connector(Client, VoiceConnectorId, Input) ->
     associate_phone_numbers_with_voice_connector(Client, VoiceConnectorId, Input, []).
 associate_phone_numbers_with_voice_connector(Client, VoiceConnectorId, Input0, Options) ->
     Method = post,
-    Path = ["/voice-connectors/", http_uri:encode(VoiceConnectorId), "?operation=associate-phone-numbers"],
+    Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "?operation=associate-phone-numbers"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -324,7 +324,7 @@ associate_phone_numbers_with_voice_connector_group(Client, VoiceConnectorGroupId
     associate_phone_numbers_with_voice_connector_group(Client, VoiceConnectorGroupId, Input, []).
 associate_phone_numbers_with_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options) ->
     Method = post,
-    Path = ["/voice-connector-groups/", http_uri:encode(VoiceConnectorGroupId), "?operation=associate-phone-numbers"],
+    Path = ["/voice-connector-groups/", aws_util:encode_uri(VoiceConnectorGroupId), "?operation=associate-phone-numbers"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -341,7 +341,7 @@ associate_signin_delegate_groups_with_account(Client, AccountId, Input) ->
     associate_signin_delegate_groups_with_account(Client, AccountId, Input, []).
 associate_signin_delegate_groups_with_account(Client, AccountId, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AccountId), "?operation=associate-signin-delegate-groups"],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), "?operation=associate-signin-delegate-groups"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -361,7 +361,7 @@ batch_create_attendee(Client, MeetingId, Input) ->
     batch_create_attendee(Client, MeetingId, Input, []).
 batch_create_attendee(Client, MeetingId, Input0, Options) ->
     Method = post,
-    Path = ["/meetings/", http_uri:encode(MeetingId), "/attendees?operation=batch-create"],
+    Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees?operation=batch-create"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -381,7 +381,7 @@ batch_create_room_membership(Client, AccountId, RoomId, Input) ->
     batch_create_room_membership(Client, AccountId, RoomId, Input, []).
 batch_create_room_membership(Client, AccountId, RoomId, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AccountId), "/rooms/", http_uri:encode(RoomId), "/memberships?operation=batch-create"],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), "/memberships?operation=batch-create"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -435,7 +435,7 @@ batch_suspend_user(Client, AccountId, Input) ->
     batch_suspend_user(Client, AccountId, Input, []).
 batch_suspend_user(Client, AccountId, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AccountId), "/users?operation=suspend"],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users?operation=suspend"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -460,7 +460,7 @@ batch_unsuspend_user(Client, AccountId, Input) ->
     batch_unsuspend_user(Client, AccountId, Input, []).
 batch_unsuspend_user(Client, AccountId, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AccountId), "/users?operation=unsuspend"],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users?operation=unsuspend"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -507,7 +507,7 @@ batch_update_user(Client, AccountId, Input) ->
     batch_update_user(Client, AccountId, Input, []).
 batch_update_user(Client, AccountId, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AccountId), "/users"],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -547,7 +547,7 @@ create_attendee(Client, MeetingId, Input) ->
     create_attendee(Client, MeetingId, Input, []).
 create_attendee(Client, MeetingId, Input0, Options) ->
     Method = post,
-    Path = ["/meetings/", http_uri:encode(MeetingId), "/attendees"],
+    Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -563,7 +563,7 @@ create_bot(Client, AccountId, Input) ->
     create_bot(Client, AccountId, Input, []).
 create_bot(Client, AccountId, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AccountId), "/bots"],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -644,7 +644,7 @@ create_proxy_session(Client, VoiceConnectorId, Input) ->
     create_proxy_session(Client, VoiceConnectorId, Input, []).
 create_proxy_session(Client, VoiceConnectorId, Input0, Options) ->
     Method = post,
-    Path = ["/voice-connectors/", http_uri:encode(VoiceConnectorId), "/proxy-sessions"],
+    Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/proxy-sessions"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -661,7 +661,7 @@ create_room(Client, AccountId, Input) ->
     create_room(Client, AccountId, Input, []).
 create_room(Client, AccountId, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AccountId), "/rooms"],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -680,7 +680,7 @@ create_room_membership(Client, AccountId, RoomId, Input) ->
     create_room_membership(Client, AccountId, RoomId, Input, []).
 create_room_membership(Client, AccountId, RoomId, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AccountId), "/rooms/", http_uri:encode(RoomId), "/memberships"],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), "/memberships"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -696,7 +696,7 @@ create_user(Client, AccountId, Input) ->
     create_user(Client, AccountId, Input, []).
 create_user(Client, AccountId, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AccountId), "/users?operation=create"],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users?operation=create"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -775,7 +775,7 @@ delete_account(Client, AccountId, Input) ->
     delete_account(Client, AccountId, Input, []).
 delete_account(Client, AccountId, Input0, Options) ->
     Method = delete,
-    Path = ["/accounts/", http_uri:encode(AccountId), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -796,7 +796,7 @@ delete_attendee(Client, AttendeeId, MeetingId, Input) ->
     delete_attendee(Client, AttendeeId, MeetingId, Input, []).
 delete_attendee(Client, AttendeeId, MeetingId, Input0, Options) ->
     Method = delete,
-    Path = ["/meetings/", http_uri:encode(MeetingId), "/attendees/", http_uri:encode(AttendeeId), ""],
+    Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees/", aws_util:encode_uri(AttendeeId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -813,7 +813,7 @@ delete_events_configuration(Client, AccountId, BotId, Input) ->
     delete_events_configuration(Client, AccountId, BotId, Input, []).
 delete_events_configuration(Client, AccountId, BotId, Input0, Options) ->
     Method = delete,
-    Path = ["/accounts/", http_uri:encode(AccountId), "/bots/", http_uri:encode(BotId), "/events-configuration"],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots/", aws_util:encode_uri(BotId), "/events-configuration"],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -833,7 +833,7 @@ delete_meeting(Client, MeetingId, Input) ->
     delete_meeting(Client, MeetingId, Input, []).
 delete_meeting(Client, MeetingId, Input0, Options) ->
     Method = delete,
-    Path = ["/meetings/", http_uri:encode(MeetingId), ""],
+    Path = ["/meetings/", aws_util:encode_uri(MeetingId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -855,7 +855,7 @@ delete_phone_number(Client, PhoneNumberId, Input) ->
     delete_phone_number(Client, PhoneNumberId, Input, []).
 delete_phone_number(Client, PhoneNumberId, Input0, Options) ->
     Method = delete,
-    Path = ["/phone-numbers/", http_uri:encode(PhoneNumberId), ""],
+    Path = ["/phone-numbers/", aws_util:encode_uri(PhoneNumberId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -872,7 +872,7 @@ delete_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input) ->
     delete_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input, []).
 delete_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input0, Options) ->
     Method = delete,
-    Path = ["/voice-connectors/", http_uri:encode(VoiceConnectorId), "/proxy-sessions/", http_uri:encode(ProxySessionId), ""],
+    Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/proxy-sessions/", aws_util:encode_uri(ProxySessionId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -888,7 +888,7 @@ delete_room(Client, AccountId, RoomId, Input) ->
     delete_room(Client, AccountId, RoomId, Input, []).
 delete_room(Client, AccountId, RoomId, Input0, Options) ->
     Method = delete,
-    Path = ["/accounts/", http_uri:encode(AccountId), "/rooms/", http_uri:encode(RoomId), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -905,7 +905,7 @@ delete_room_membership(Client, AccountId, MemberId, RoomId, Input) ->
     delete_room_membership(Client, AccountId, MemberId, RoomId, Input, []).
 delete_room_membership(Client, AccountId, MemberId, RoomId, Input0, Options) ->
     Method = delete,
-    Path = ["/accounts/", http_uri:encode(AccountId), "/rooms/", http_uri:encode(RoomId), "/memberships/", http_uri:encode(MemberId), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), "/memberships/", aws_util:encode_uri(MemberId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -924,7 +924,7 @@ delete_voice_connector(Client, VoiceConnectorId, Input) ->
     delete_voice_connector(Client, VoiceConnectorId, Input, []).
 delete_voice_connector(Client, VoiceConnectorId, Input0, Options) ->
     Method = delete,
-    Path = ["/voice-connectors/", http_uri:encode(VoiceConnectorId), ""],
+    Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -941,7 +941,7 @@ delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId,
     delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input, []).
 delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input0, Options) ->
     Method = delete,
-    Path = ["/voice-connectors/", http_uri:encode(VoiceConnectorId), "/emergency-calling-configuration"],
+    Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/emergency-calling-configuration"],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -960,7 +960,7 @@ delete_voice_connector_group(Client, VoiceConnectorGroupId, Input) ->
     delete_voice_connector_group(Client, VoiceConnectorGroupId, Input, []).
 delete_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options) ->
     Method = delete,
-    Path = ["/voice-connector-groups/", http_uri:encode(VoiceConnectorGroupId), ""],
+    Path = ["/voice-connector-groups/", aws_util:encode_uri(VoiceConnectorGroupId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -980,7 +980,7 @@ delete_voice_connector_origination(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_origination(Client, VoiceConnectorId, Input, []).
 delete_voice_connector_origination(Client, VoiceConnectorId, Input0, Options) ->
     Method = delete,
-    Path = ["/voice-connectors/", http_uri:encode(VoiceConnectorId), "/origination"],
+    Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/origination"],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -997,7 +997,7 @@ delete_voice_connector_proxy(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_proxy(Client, VoiceConnectorId, Input, []).
 delete_voice_connector_proxy(Client, VoiceConnectorId, Input0, Options) ->
     Method = delete,
-    Path = ["/voice-connectors/", http_uri:encode(VoiceConnectorId), "/programmable-numbers/proxy"],
+    Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/programmable-numbers/proxy"],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -1014,7 +1014,7 @@ delete_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input) 
     delete_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input, []).
 delete_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input0, Options) ->
     Method = delete,
-    Path = ["/voice-connectors/", http_uri:encode(VoiceConnectorId), "/streaming-configuration"],
+    Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/streaming-configuration"],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -1034,7 +1034,7 @@ delete_voice_connector_termination(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_termination(Client, VoiceConnectorId, Input, []).
 delete_voice_connector_termination(Client, VoiceConnectorId, Input0, Options) ->
     Method = delete,
-    Path = ["/voice-connectors/", http_uri:encode(VoiceConnectorId), "/termination"],
+    Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination"],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -1051,7 +1051,7 @@ delete_voice_connector_termination_credentials(Client, VoiceConnectorId, Input) 
     delete_voice_connector_termination_credentials(Client, VoiceConnectorId, Input, []).
 delete_voice_connector_termination_credentials(Client, VoiceConnectorId, Input0, Options) ->
     Method = post,
-    Path = ["/voice-connectors/", http_uri:encode(VoiceConnectorId), "/termination/credentials?operation=delete"],
+    Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination/credentials?operation=delete"],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -1068,7 +1068,7 @@ disassociate_phone_number_from_user(Client, AccountId, UserId, Input) ->
     disassociate_phone_number_from_user(Client, AccountId, UserId, Input, []).
 disassociate_phone_number_from_user(Client, AccountId, UserId, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AccountId), "/users/", http_uri:encode(UserId), "?operation=disassociate-phone-number"],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), "?operation=disassociate-phone-number"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1085,7 +1085,7 @@ disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input)
     disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input, []).
 disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input0, Options) ->
     Method = post,
-    Path = ["/voice-connectors/", http_uri:encode(VoiceConnectorId), "?operation=disassociate-phone-numbers"],
+    Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "?operation=disassociate-phone-numbers"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1102,7 +1102,7 @@ disassociate_phone_numbers_from_voice_connector_group(Client, VoiceConnectorGrou
     disassociate_phone_numbers_from_voice_connector_group(Client, VoiceConnectorGroupId, Input, []).
 disassociate_phone_numbers_from_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options) ->
     Method = post,
-    Path = ["/voice-connector-groups/", http_uri:encode(VoiceConnectorGroupId), "?operation=disassociate-phone-numbers"],
+    Path = ["/voice-connector-groups/", aws_util:encode_uri(VoiceConnectorGroupId), "?operation=disassociate-phone-numbers"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1119,7 +1119,7 @@ disassociate_signin_delegate_groups_from_account(Client, AccountId, Input) ->
     disassociate_signin_delegate_groups_from_account(Client, AccountId, Input, []).
 disassociate_signin_delegate_groups_from_account(Client, AccountId, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AccountId), "?operation=disassociate-signin-delegate-groups"],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), "?operation=disassociate-signin-delegate-groups"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1137,7 +1137,7 @@ get_account(Client, AccountId)
     get_account(Client, AccountId, []).
 get_account(Client, AccountId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AccountId), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1156,7 +1156,7 @@ get_account_settings(Client, AccountId)
     get_account_settings(Client, AccountId, []).
 get_account_settings(Client, AccountId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AccountId), "/settings"],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), "/settings"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1175,7 +1175,7 @@ get_attendee(Client, AttendeeId, MeetingId)
     get_attendee(Client, AttendeeId, MeetingId, []).
 get_attendee(Client, AttendeeId, MeetingId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/meetings/", http_uri:encode(MeetingId), "/attendees/", http_uri:encode(AttendeeId), ""],
+    Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees/", aws_util:encode_uri(AttendeeId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1191,7 +1191,7 @@ get_bot(Client, AccountId, BotId)
     get_bot(Client, AccountId, BotId, []).
 get_bot(Client, AccountId, BotId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AccountId), "/bots/", http_uri:encode(BotId), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots/", aws_util:encode_uri(BotId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1207,7 +1207,7 @@ get_events_configuration(Client, AccountId, BotId)
     get_events_configuration(Client, AccountId, BotId, []).
 get_events_configuration(Client, AccountId, BotId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AccountId), "/bots/", http_uri:encode(BotId), "/events-configuration"],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots/", aws_util:encode_uri(BotId), "/events-configuration"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1243,7 +1243,7 @@ get_meeting(Client, MeetingId)
     get_meeting(Client, MeetingId, []).
 get_meeting(Client, MeetingId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/meetings/", http_uri:encode(MeetingId), ""],
+    Path = ["/meetings/", aws_util:encode_uri(MeetingId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1259,7 +1259,7 @@ get_phone_number(Client, PhoneNumberId)
     get_phone_number(Client, PhoneNumberId, []).
 get_phone_number(Client, PhoneNumberId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/phone-numbers/", http_uri:encode(PhoneNumberId), ""],
+    Path = ["/phone-numbers/", aws_util:encode_uri(PhoneNumberId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1276,7 +1276,7 @@ get_phone_number_order(Client, PhoneNumberOrderId)
     get_phone_number_order(Client, PhoneNumberOrderId, []).
 get_phone_number_order(Client, PhoneNumberOrderId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/phone-number-orders/", http_uri:encode(PhoneNumberOrderId), ""],
+    Path = ["/phone-number-orders/", aws_util:encode_uri(PhoneNumberOrderId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1308,7 +1308,7 @@ get_proxy_session(Client, ProxySessionId, VoiceConnectorId)
     get_proxy_session(Client, ProxySessionId, VoiceConnectorId, []).
 get_proxy_session(Client, ProxySessionId, VoiceConnectorId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/voice-connectors/", http_uri:encode(VoiceConnectorId), "/proxy-sessions/", http_uri:encode(ProxySessionId), ""],
+    Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/proxy-sessions/", aws_util:encode_uri(ProxySessionId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1327,7 +1327,7 @@ get_retention_settings(Client, AccountId)
     get_retention_settings(Client, AccountId, []).
 get_retention_settings(Client, AccountId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AccountId), "/retention-settings"],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), "/retention-settings"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1343,7 +1343,7 @@ get_room(Client, AccountId, RoomId)
     get_room(Client, AccountId, RoomId, []).
 get_room(Client, AccountId, RoomId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AccountId), "/rooms/", http_uri:encode(RoomId), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1362,7 +1362,7 @@ get_user(Client, AccountId, UserId)
     get_user(Client, AccountId, UserId, []).
 get_user(Client, AccountId, UserId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AccountId), "/users/", http_uri:encode(UserId), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1378,7 +1378,7 @@ get_user_settings(Client, AccountId, UserId)
     get_user_settings(Client, AccountId, UserId, []).
 get_user_settings(Client, AccountId, UserId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AccountId), "/users/", http_uri:encode(UserId), "/settings"],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), "/settings"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1394,7 +1394,7 @@ get_voice_connector(Client, VoiceConnectorId)
     get_voice_connector(Client, VoiceConnectorId, []).
 get_voice_connector(Client, VoiceConnectorId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/voice-connectors/", http_uri:encode(VoiceConnectorId), ""],
+    Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1410,7 +1410,7 @@ get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId)
     get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, []).
 get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/voice-connectors/", http_uri:encode(VoiceConnectorId), "/emergency-calling-configuration"],
+    Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/emergency-calling-configuration"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1426,7 +1426,7 @@ get_voice_connector_group(Client, VoiceConnectorGroupId)
     get_voice_connector_group(Client, VoiceConnectorGroupId, []).
 get_voice_connector_group(Client, VoiceConnectorGroupId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/voice-connector-groups/", http_uri:encode(VoiceConnectorGroupId), ""],
+    Path = ["/voice-connector-groups/", aws_util:encode_uri(VoiceConnectorGroupId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1445,7 +1445,7 @@ get_voice_connector_logging_configuration(Client, VoiceConnectorId)
     get_voice_connector_logging_configuration(Client, VoiceConnectorId, []).
 get_voice_connector_logging_configuration(Client, VoiceConnectorId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/voice-connectors/", http_uri:encode(VoiceConnectorId), "/logging-configuration"],
+    Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/logging-configuration"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1461,7 +1461,7 @@ get_voice_connector_origination(Client, VoiceConnectorId)
     get_voice_connector_origination(Client, VoiceConnectorId, []).
 get_voice_connector_origination(Client, VoiceConnectorId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/voice-connectors/", http_uri:encode(VoiceConnectorId), "/origination"],
+    Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/origination"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1477,7 +1477,7 @@ get_voice_connector_proxy(Client, VoiceConnectorId)
     get_voice_connector_proxy(Client, VoiceConnectorId, []).
 get_voice_connector_proxy(Client, VoiceConnectorId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/voice-connectors/", http_uri:encode(VoiceConnectorId), "/programmable-numbers/proxy"],
+    Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/programmable-numbers/proxy"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1496,7 +1496,7 @@ get_voice_connector_streaming_configuration(Client, VoiceConnectorId)
     get_voice_connector_streaming_configuration(Client, VoiceConnectorId, []).
 get_voice_connector_streaming_configuration(Client, VoiceConnectorId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/voice-connectors/", http_uri:encode(VoiceConnectorId), "/streaming-configuration"],
+    Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/streaming-configuration"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1512,7 +1512,7 @@ get_voice_connector_termination(Client, VoiceConnectorId)
     get_voice_connector_termination(Client, VoiceConnectorId, []).
 get_voice_connector_termination(Client, VoiceConnectorId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/voice-connectors/", http_uri:encode(VoiceConnectorId), "/termination"],
+    Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1529,7 +1529,7 @@ get_voice_connector_termination_health(Client, VoiceConnectorId)
     get_voice_connector_termination_health(Client, VoiceConnectorId, []).
 get_voice_connector_termination_health(Client, VoiceConnectorId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/voice-connectors/", http_uri:encode(VoiceConnectorId), "/termination/health"],
+    Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination/health"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1546,7 +1546,7 @@ invite_users(Client, AccountId, Input) ->
     invite_users(Client, AccountId, Input, []).
 invite_users(Client, AccountId, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AccountId), "/users?operation=add"],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users?operation=add"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -1590,7 +1590,7 @@ list_attendee_tags(Client, AttendeeId, MeetingId)
     list_attendee_tags(Client, AttendeeId, MeetingId, []).
 list_attendee_tags(Client, AttendeeId, MeetingId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/meetings/", http_uri:encode(MeetingId), "/attendees/", http_uri:encode(AttendeeId), "/tags"],
+    Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees/", aws_util:encode_uri(AttendeeId), "/tags"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1608,7 +1608,7 @@ list_attendees(Client, MeetingId, MaxResults, NextToken)
     list_attendees(Client, MeetingId, MaxResults, NextToken, []).
 list_attendees(Client, MeetingId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/meetings/", http_uri:encode(MeetingId), "/attendees"],
+    Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1629,7 +1629,7 @@ list_bots(Client, AccountId, MaxResults, NextToken)
     list_bots(Client, AccountId, MaxResults, NextToken, []).
 list_bots(Client, AccountId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AccountId), "/bots"],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1649,7 +1649,7 @@ list_meeting_tags(Client, MeetingId)
     list_meeting_tags(Client, MeetingId, []).
 list_meeting_tags(Client, MeetingId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/meetings/", http_uri:encode(MeetingId), "/tags"],
+    Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/tags"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1735,7 +1735,7 @@ list_proxy_sessions(Client, VoiceConnectorId, MaxResults, NextToken, Status)
     list_proxy_sessions(Client, VoiceConnectorId, MaxResults, NextToken, Status, []).
 list_proxy_sessions(Client, VoiceConnectorId, MaxResults, NextToken, Status, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/voice-connectors/", http_uri:encode(VoiceConnectorId), "/proxy-sessions"],
+    Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/proxy-sessions"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1758,7 +1758,7 @@ list_room_memberships(Client, AccountId, RoomId, MaxResults, NextToken)
     list_room_memberships(Client, AccountId, RoomId, MaxResults, NextToken, []).
 list_room_memberships(Client, AccountId, RoomId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AccountId), "/rooms/", http_uri:encode(RoomId), "/memberships"],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), "/memberships"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1782,7 +1782,7 @@ list_rooms(Client, AccountId, MaxResults, MemberId, NextToken)
     list_rooms(Client, AccountId, MaxResults, MemberId, NextToken, []).
 list_rooms(Client, AccountId, MaxResults, MemberId, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AccountId), "/rooms"],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1825,7 +1825,7 @@ list_users(Client, AccountId, MaxResults, NextToken, UserEmail, UserType)
     list_users(Client, AccountId, MaxResults, NextToken, UserEmail, UserType, []).
 list_users(Client, AccountId, MaxResults, NextToken, UserEmail, UserType, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AccountId), "/users"],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1869,7 +1869,7 @@ list_voice_connector_termination_credentials(Client, VoiceConnectorId)
     list_voice_connector_termination_credentials(Client, VoiceConnectorId, []).
 list_voice_connector_termination_credentials(Client, VoiceConnectorId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/voice-connectors/", http_uri:encode(VoiceConnectorId), "/termination/credentials"],
+    Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination/credentials"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1905,7 +1905,7 @@ logout_user(Client, AccountId, UserId, Input) ->
     logout_user(Client, AccountId, UserId, Input, []).
 logout_user(Client, AccountId, UserId, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AccountId), "/users/", http_uri:encode(UserId), "?operation=logout"],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), "?operation=logout"],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -1925,7 +1925,7 @@ put_events_configuration(Client, AccountId, BotId, Input) ->
     put_events_configuration(Client, AccountId, BotId, Input, []).
 put_events_configuration(Client, AccountId, BotId, Input0, Options) ->
     Method = put,
-    Path = ["/accounts/", http_uri:encode(AccountId), "/bots/", http_uri:encode(BotId), "/events-configuration"],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots/", aws_util:encode_uri(BotId), "/events-configuration"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -1951,7 +1951,7 @@ put_retention_settings(Client, AccountId, Input) ->
     put_retention_settings(Client, AccountId, Input, []).
 put_retention_settings(Client, AccountId, Input0, Options) ->
     Method = put,
-    Path = ["/accounts/", http_uri:encode(AccountId), "/retention-settings"],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), "/retention-settings"],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -1972,7 +1972,7 @@ put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, In
     put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input, []).
 put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input0, Options) ->
     Method = put,
-    Path = ["/voice-connectors/", http_uri:encode(VoiceConnectorId), "/emergency-calling-configuration"],
+    Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/emergency-calling-configuration"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1992,7 +1992,7 @@ put_voice_connector_logging_configuration(Client, VoiceConnectorId, Input) ->
     put_voice_connector_logging_configuration(Client, VoiceConnectorId, Input, []).
 put_voice_connector_logging_configuration(Client, VoiceConnectorId, Input0, Options) ->
     Method = put,
-    Path = ["/voice-connectors/", http_uri:encode(VoiceConnectorId), "/logging-configuration"],
+    Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/logging-configuration"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -2012,7 +2012,7 @@ put_voice_connector_origination(Client, VoiceConnectorId, Input) ->
     put_voice_connector_origination(Client, VoiceConnectorId, Input, []).
 put_voice_connector_origination(Client, VoiceConnectorId, Input0, Options) ->
     Method = put,
-    Path = ["/voice-connectors/", http_uri:encode(VoiceConnectorId), "/origination"],
+    Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/origination"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -2029,7 +2029,7 @@ put_voice_connector_proxy(Client, VoiceConnectorId, Input) ->
     put_voice_connector_proxy(Client, VoiceConnectorId, Input, []).
 put_voice_connector_proxy(Client, VoiceConnectorId, Input0, Options) ->
     Method = put,
-    Path = ["/voice-connectors/", http_uri:encode(VoiceConnectorId), "/programmable-numbers/proxy"],
+    Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/programmable-numbers/proxy"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2050,7 +2050,7 @@ put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input) ->
     put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input, []).
 put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input0, Options) ->
     Method = put,
-    Path = ["/voice-connectors/", http_uri:encode(VoiceConnectorId), "/streaming-configuration"],
+    Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/streaming-configuration"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -2070,7 +2070,7 @@ put_voice_connector_termination(Client, VoiceConnectorId, Input) ->
     put_voice_connector_termination(Client, VoiceConnectorId, Input, []).
 put_voice_connector_termination(Client, VoiceConnectorId, Input0, Options) ->
     Method = put,
-    Path = ["/voice-connectors/", http_uri:encode(VoiceConnectorId), "/termination"],
+    Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -2087,7 +2087,7 @@ put_voice_connector_termination_credentials(Client, VoiceConnectorId, Input) ->
     put_voice_connector_termination_credentials(Client, VoiceConnectorId, Input, []).
 put_voice_connector_termination_credentials(Client, VoiceConnectorId, Input0, Options) ->
     Method = post,
-    Path = ["/voice-connectors/", http_uri:encode(VoiceConnectorId), "/termination/credentials?operation=put"],
+    Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination/credentials?operation=put"],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -2104,7 +2104,7 @@ redact_conversation_message(Client, AccountId, ConversationId, MessageId, Input)
     redact_conversation_message(Client, AccountId, ConversationId, MessageId, Input, []).
 redact_conversation_message(Client, AccountId, ConversationId, MessageId, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AccountId), "/conversations/", http_uri:encode(ConversationId), "/messages/", http_uri:encode(MessageId), "?operation=redact"],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), "/conversations/", aws_util:encode_uri(ConversationId), "/messages/", aws_util:encode_uri(MessageId), "?operation=redact"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -2121,7 +2121,7 @@ redact_room_message(Client, AccountId, MessageId, RoomId, Input) ->
     redact_room_message(Client, AccountId, MessageId, RoomId, Input, []).
 redact_room_message(Client, AccountId, MessageId, RoomId, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AccountId), "/rooms/", http_uri:encode(RoomId), "/messages/", http_uri:encode(MessageId), "?operation=redact"],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), "/messages/", aws_util:encode_uri(MessageId), "?operation=redact"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -2137,7 +2137,7 @@ regenerate_security_token(Client, AccountId, BotId, Input) ->
     regenerate_security_token(Client, AccountId, BotId, Input, []).
 regenerate_security_token(Client, AccountId, BotId, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AccountId), "/bots/", http_uri:encode(BotId), "?operation=regenerate-security-token"],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots/", aws_util:encode_uri(BotId), "?operation=regenerate-security-token"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -2156,7 +2156,7 @@ reset_personal_p_i_n(Client, AccountId, UserId, Input) ->
     reset_personal_p_i_n(Client, AccountId, UserId, Input, []).
 reset_personal_p_i_n(Client, AccountId, UserId, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AccountId), "/users/", http_uri:encode(UserId), "?operation=reset-personal-pin"],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), "?operation=reset-personal-pin"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -2173,7 +2173,7 @@ restore_phone_number(Client, PhoneNumberId, Input) ->
     restore_phone_number(Client, PhoneNumberId, Input, []).
 restore_phone_number(Client, PhoneNumberId, Input0, Options) ->
     Method = post,
-    Path = ["/phone-numbers/", http_uri:encode(PhoneNumberId), "?operation=restore"],
+    Path = ["/phone-numbers/", aws_util:encode_uri(PhoneNumberId), "?operation=restore"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -2215,7 +2215,7 @@ tag_attendee(Client, AttendeeId, MeetingId, Input) ->
     tag_attendee(Client, AttendeeId, MeetingId, Input, []).
 tag_attendee(Client, AttendeeId, MeetingId, Input0, Options) ->
     Method = post,
-    Path = ["/meetings/", http_uri:encode(MeetingId), "/attendees/", http_uri:encode(AttendeeId), "/tags?operation=add"],
+    Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees/", aws_util:encode_uri(AttendeeId), "/tags?operation=add"],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -2231,7 +2231,7 @@ tag_meeting(Client, MeetingId, Input) ->
     tag_meeting(Client, MeetingId, Input, []).
 tag_meeting(Client, MeetingId, Input0, Options) ->
     Method = post,
-    Path = ["/meetings/", http_uri:encode(MeetingId), "/tags?operation=add"],
+    Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/tags?operation=add"],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -2265,7 +2265,7 @@ untag_attendee(Client, AttendeeId, MeetingId, Input) ->
     untag_attendee(Client, AttendeeId, MeetingId, Input, []).
 untag_attendee(Client, AttendeeId, MeetingId, Input0, Options) ->
     Method = post,
-    Path = ["/meetings/", http_uri:encode(MeetingId), "/attendees/", http_uri:encode(AttendeeId), "/tags?operation=delete"],
+    Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees/", aws_util:encode_uri(AttendeeId), "/tags?operation=delete"],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -2282,7 +2282,7 @@ untag_meeting(Client, MeetingId, Input) ->
     untag_meeting(Client, MeetingId, Input, []).
 untag_meeting(Client, MeetingId, Input0, Options) ->
     Method = post,
-    Path = ["/meetings/", http_uri:encode(MeetingId), "/tags?operation=delete"],
+    Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/tags?operation=delete"],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -2317,7 +2317,7 @@ update_account(Client, AccountId, Input) ->
     update_account(Client, AccountId, Input, []).
 update_account(Client, AccountId, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AccountId), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -2337,7 +2337,7 @@ update_account_settings(Client, AccountId, Input) ->
     update_account_settings(Client, AccountId, Input, []).
 update_account_settings(Client, AccountId, Input0, Options) ->
     Method = put,
-    Path = ["/accounts/", http_uri:encode(AccountId), "/settings"],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), "/settings"],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -2354,7 +2354,7 @@ update_bot(Client, AccountId, BotId, Input) ->
     update_bot(Client, AccountId, BotId, Input, []).
 update_bot(Client, AccountId, BotId, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AccountId), "/bots/", http_uri:encode(BotId), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots/", aws_util:encode_uri(BotId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -2398,7 +2398,7 @@ update_phone_number(Client, PhoneNumberId, Input) ->
     update_phone_number(Client, PhoneNumberId, Input, []).
 update_phone_number(Client, PhoneNumberId, Input0, Options) ->
     Method = post,
-    Path = ["/phone-numbers/", http_uri:encode(PhoneNumberId), ""],
+    Path = ["/phone-numbers/", aws_util:encode_uri(PhoneNumberId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -2435,7 +2435,7 @@ update_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input) ->
     update_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input, []).
 update_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input0, Options) ->
     Method = post,
-    Path = ["/voice-connectors/", http_uri:encode(VoiceConnectorId), "/proxy-sessions/", http_uri:encode(ProxySessionId), ""],
+    Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/proxy-sessions/", aws_util:encode_uri(ProxySessionId), ""],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -2452,7 +2452,7 @@ update_room(Client, AccountId, RoomId, Input) ->
     update_room(Client, AccountId, RoomId, Input, []).
 update_room(Client, AccountId, RoomId, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AccountId), "/rooms/", http_uri:encode(RoomId), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -2473,7 +2473,7 @@ update_room_membership(Client, AccountId, MemberId, RoomId, Input) ->
     update_room_membership(Client, AccountId, MemberId, RoomId, Input, []).
 update_room_membership(Client, AccountId, MemberId, RoomId, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AccountId), "/rooms/", http_uri:encode(RoomId), "/memberships/", http_uri:encode(MemberId), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), "/memberships/", aws_util:encode_uri(MemberId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -2491,7 +2491,7 @@ update_user(Client, AccountId, UserId, Input) ->
     update_user(Client, AccountId, UserId, Input, []).
 update_user(Client, AccountId, UserId, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AccountId), "/users/", http_uri:encode(UserId), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -2508,7 +2508,7 @@ update_user_settings(Client, AccountId, UserId, Input) ->
     update_user_settings(Client, AccountId, UserId, Input, []).
 update_user_settings(Client, AccountId, UserId, Input0, Options) ->
     Method = put,
-    Path = ["/accounts/", http_uri:encode(AccountId), "/users/", http_uri:encode(UserId), "/settings"],
+    Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), "/settings"],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -2524,7 +2524,7 @@ update_voice_connector(Client, VoiceConnectorId, Input) ->
     update_voice_connector(Client, VoiceConnectorId, Input, []).
 update_voice_connector(Client, VoiceConnectorId, Input0, Options) ->
     Method = put,
-    Path = ["/voice-connectors/", http_uri:encode(VoiceConnectorId), ""],
+    Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -2541,7 +2541,7 @@ update_voice_connector_group(Client, VoiceConnectorGroupId, Input) ->
     update_voice_connector_group(Client, VoiceConnectorGroupId, Input, []).
 update_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options) ->
     Method = put,
-    Path = ["/voice-connector-groups/", http_uri:encode(VoiceConnectorGroupId), ""],
+    Path = ["/voice-connector-groups/", aws_util:encode_uri(VoiceConnectorGroupId), ""],
     SuccessStatusCode = 202,
 
     Headers = [],

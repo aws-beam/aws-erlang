@@ -46,7 +46,7 @@ delete_thing_shadow(Client, ThingName, Input) ->
     delete_thing_shadow(Client, ThingName, Input, []).
 delete_thing_shadow(Client, ThingName, Input0, Options) ->
     Method = delete,
-    Path = ["/things/", http_uri:encode(ThingName), "/shadow"],
+    Path = ["/things/", aws_util:encode_uri(ThingName), "/shadow"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -66,7 +66,7 @@ get_thing_shadow(Client, ThingName, ShadowName)
     get_thing_shadow(Client, ThingName, ShadowName, []).
 get_thing_shadow(Client, ThingName, ShadowName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/things/", http_uri:encode(ThingName), "/shadow"],
+    Path = ["/things/", aws_util:encode_uri(ThingName), "/shadow"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -85,7 +85,7 @@ list_named_shadows_for_thing(Client, ThingName, NextToken, PageSize)
     list_named_shadows_for_thing(Client, ThingName, NextToken, PageSize, []).
 list_named_shadows_for_thing(Client, ThingName, NextToken, PageSize, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/api/things/shadow/ListNamedShadowsForThing/", http_uri:encode(ThingName), ""],
+    Path = ["/api/things/shadow/ListNamedShadowsForThing/", aws_util:encode_uri(ThingName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -106,7 +106,7 @@ publish(Client, Topic, Input) ->
     publish(Client, Topic, Input, []).
 publish(Client, Topic, Input0, Options) ->
     Method = post,
-    Path = ["/topics/", http_uri:encode(Topic), ""],
+    Path = ["/topics/", aws_util:encode_uri(Topic), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -126,7 +126,7 @@ update_thing_shadow(Client, ThingName, Input) ->
     update_thing_shadow(Client, ThingName, Input, []).
 update_thing_shadow(Client, ThingName, Input0, Options) ->
     Method = post,
-    Path = ["/things/", http_uri:encode(ThingName), "/shadow"],
+    Path = ["/things/", aws_util:encode_uri(ThingName), "/shadow"],
     SuccessStatusCode = undefined,
 
     Headers = [],

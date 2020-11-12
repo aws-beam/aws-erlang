@@ -88,7 +88,7 @@ associate_customer_gateway(Client, GlobalNetworkId, Input) ->
     associate_customer_gateway(Client, GlobalNetworkId, Input, []).
 associate_customer_gateway(Client, GlobalNetworkId, Input0, Options) ->
     Method = post,
-    Path = ["/global-networks/", http_uri:encode(GlobalNetworkId), "/customer-gateway-associations"],
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/customer-gateway-associations"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -108,7 +108,7 @@ associate_link(Client, GlobalNetworkId, Input) ->
     associate_link(Client, GlobalNetworkId, Input, []).
 associate_link(Client, GlobalNetworkId, Input0, Options) ->
     Method = post,
-    Path = ["/global-networks/", http_uri:encode(GlobalNetworkId), "/link-associations"],
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/link-associations"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -127,7 +127,7 @@ create_device(Client, GlobalNetworkId, Input) ->
     create_device(Client, GlobalNetworkId, Input, []).
 create_device(Client, GlobalNetworkId, Input0, Options) ->
     Method = post,
-    Path = ["/global-networks/", http_uri:encode(GlobalNetworkId), "/devices"],
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/devices"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -159,7 +159,7 @@ create_link(Client, GlobalNetworkId, Input) ->
     create_link(Client, GlobalNetworkId, Input, []).
 create_link(Client, GlobalNetworkId, Input0, Options) ->
     Method = post,
-    Path = ["/global-networks/", http_uri:encode(GlobalNetworkId), "/links"],
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/links"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -175,7 +175,7 @@ create_site(Client, GlobalNetworkId, Input) ->
     create_site(Client, GlobalNetworkId, Input, []).
 create_site(Client, GlobalNetworkId, Input0, Options) ->
     Method = post,
-    Path = ["/global-networks/", http_uri:encode(GlobalNetworkId), "/sites"],
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/sites"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -194,7 +194,7 @@ delete_device(Client, DeviceId, GlobalNetworkId, Input) ->
     delete_device(Client, DeviceId, GlobalNetworkId, Input, []).
 delete_device(Client, DeviceId, GlobalNetworkId, Input0, Options) ->
     Method = delete,
-    Path = ["/global-networks/", http_uri:encode(GlobalNetworkId), "/devices/", http_uri:encode(DeviceId), ""],
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/devices/", aws_util:encode_uri(DeviceId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -213,7 +213,7 @@ delete_global_network(Client, GlobalNetworkId, Input) ->
     delete_global_network(Client, GlobalNetworkId, Input, []).
 delete_global_network(Client, GlobalNetworkId, Input0, Options) ->
     Method = delete,
-    Path = ["/global-networks/", http_uri:encode(GlobalNetworkId), ""],
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -232,7 +232,7 @@ delete_link(Client, GlobalNetworkId, LinkId, Input) ->
     delete_link(Client, GlobalNetworkId, LinkId, Input, []).
 delete_link(Client, GlobalNetworkId, LinkId, Input0, Options) ->
     Method = delete,
-    Path = ["/global-networks/", http_uri:encode(GlobalNetworkId), "/links/", http_uri:encode(LinkId), ""],
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/links/", aws_util:encode_uri(LinkId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -250,7 +250,7 @@ delete_site(Client, GlobalNetworkId, SiteId, Input) ->
     delete_site(Client, GlobalNetworkId, SiteId, Input, []).
 delete_site(Client, GlobalNetworkId, SiteId, Input0, Options) ->
     Method = delete,
-    Path = ["/global-networks/", http_uri:encode(GlobalNetworkId), "/sites/", http_uri:encode(SiteId), ""],
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/sites/", aws_util:encode_uri(SiteId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -269,7 +269,7 @@ deregister_transit_gateway(Client, GlobalNetworkId, TransitGatewayArn, Input) ->
     deregister_transit_gateway(Client, GlobalNetworkId, TransitGatewayArn, Input, []).
 deregister_transit_gateway(Client, GlobalNetworkId, TransitGatewayArn, Input0, Options) ->
     Method = delete,
-    Path = ["/global-networks/", http_uri:encode(GlobalNetworkId), "/transit-gateway-registrations/", http_uri:encode(TransitGatewayArn), ""],
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/transit-gateway-registrations/", aws_util:encode_uri(TransitGatewayArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -311,7 +311,7 @@ disassociate_customer_gateway(Client, CustomerGatewayArn, GlobalNetworkId, Input
     disassociate_customer_gateway(Client, CustomerGatewayArn, GlobalNetworkId, Input, []).
 disassociate_customer_gateway(Client, CustomerGatewayArn, GlobalNetworkId, Input0, Options) ->
     Method = delete,
-    Path = ["/global-networks/", http_uri:encode(GlobalNetworkId), "/customer-gateway-associations/", http_uri:encode(CustomerGatewayArn), ""],
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/customer-gateway-associations/", aws_util:encode_uri(CustomerGatewayArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -330,7 +330,7 @@ disassociate_link(Client, GlobalNetworkId, Input) ->
     disassociate_link(Client, GlobalNetworkId, Input, []).
 disassociate_link(Client, GlobalNetworkId, Input0, Options) ->
     Method = delete,
-    Path = ["/global-networks/", http_uri:encode(GlobalNetworkId), "/link-associations"],
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/link-associations"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -350,7 +350,7 @@ get_customer_gateway_associations(Client, GlobalNetworkId, CustomerGatewayArns, 
     get_customer_gateway_associations(Client, GlobalNetworkId, CustomerGatewayArns, MaxResults, NextToken, []).
 get_customer_gateway_associations(Client, GlobalNetworkId, CustomerGatewayArns, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/global-networks/", http_uri:encode(GlobalNetworkId), "/customer-gateway-associations"],
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/customer-gateway-associations"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -372,7 +372,7 @@ get_devices(Client, GlobalNetworkId, DeviceIds, MaxResults, NextToken, SiteId)
     get_devices(Client, GlobalNetworkId, DeviceIds, MaxResults, NextToken, SiteId, []).
 get_devices(Client, GlobalNetworkId, DeviceIds, MaxResults, NextToken, SiteId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/global-networks/", http_uri:encode(GlobalNetworkId), "/devices"],
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/devices"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -396,7 +396,7 @@ get_link_associations(Client, GlobalNetworkId, DeviceId, LinkId, MaxResults, Nex
     get_link_associations(Client, GlobalNetworkId, DeviceId, LinkId, MaxResults, NextToken, []).
 get_link_associations(Client, GlobalNetworkId, DeviceId, LinkId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/global-networks/", http_uri:encode(GlobalNetworkId), "/link-associations"],
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/link-associations"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -422,7 +422,7 @@ get_links(Client, GlobalNetworkId, LinkIds, MaxResults, NextToken, Provider, Sit
     get_links(Client, GlobalNetworkId, LinkIds, MaxResults, NextToken, Provider, SiteId, Type, []).
 get_links(Client, GlobalNetworkId, LinkIds, MaxResults, NextToken, Provider, SiteId, Type, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/global-networks/", http_uri:encode(GlobalNetworkId), "/links"],
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/links"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -446,7 +446,7 @@ get_sites(Client, GlobalNetworkId, MaxResults, NextToken, SiteIds)
     get_sites(Client, GlobalNetworkId, MaxResults, NextToken, SiteIds, []).
 get_sites(Client, GlobalNetworkId, MaxResults, NextToken, SiteIds, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/global-networks/", http_uri:encode(GlobalNetworkId), "/sites"],
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/sites"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -468,7 +468,7 @@ get_transit_gateway_registrations(Client, GlobalNetworkId, MaxResults, NextToken
     get_transit_gateway_registrations(Client, GlobalNetworkId, MaxResults, NextToken, TransitGatewayArns, []).
 get_transit_gateway_registrations(Client, GlobalNetworkId, MaxResults, NextToken, TransitGatewayArns, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/global-networks/", http_uri:encode(GlobalNetworkId), "/transit-gateway-registrations"],
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/transit-gateway-registrations"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -489,7 +489,7 @@ list_tags_for_resource(Client, ResourceArn)
     list_tags_for_resource(Client, ResourceArn, []).
 list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -507,7 +507,7 @@ register_transit_gateway(Client, GlobalNetworkId, Input) ->
     register_transit_gateway(Client, GlobalNetworkId, Input, []).
 register_transit_gateway(Client, GlobalNetworkId, Input0, Options) ->
     Method = post,
-    Path = ["/global-networks/", http_uri:encode(GlobalNetworkId), "/transit-gateway-registrations"],
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/transit-gateway-registrations"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -523,7 +523,7 @@ tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -539,7 +539,7 @@ untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -558,7 +558,7 @@ update_device(Client, DeviceId, GlobalNetworkId, Input) ->
     update_device(Client, DeviceId, GlobalNetworkId, Input, []).
 update_device(Client, DeviceId, GlobalNetworkId, Input0, Options) ->
     Method = patch,
-    Path = ["/global-networks/", http_uri:encode(GlobalNetworkId), "/devices/", http_uri:encode(DeviceId), ""],
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/devices/", aws_util:encode_uri(DeviceId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -576,7 +576,7 @@ update_global_network(Client, GlobalNetworkId, Input) ->
     update_global_network(Client, GlobalNetworkId, Input, []).
 update_global_network(Client, GlobalNetworkId, Input0, Options) ->
     Method = patch,
-    Path = ["/global-networks/", http_uri:encode(GlobalNetworkId), ""],
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -594,7 +594,7 @@ update_link(Client, GlobalNetworkId, LinkId, Input) ->
     update_link(Client, GlobalNetworkId, LinkId, Input, []).
 update_link(Client, GlobalNetworkId, LinkId, Input0, Options) ->
     Method = patch,
-    Path = ["/global-networks/", http_uri:encode(GlobalNetworkId), "/links/", http_uri:encode(LinkId), ""],
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/links/", aws_util:encode_uri(LinkId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -612,7 +612,7 @@ update_site(Client, GlobalNetworkId, SiteId, Input) ->
     update_site(Client, GlobalNetworkId, SiteId, Input, []).
 update_site(Client, GlobalNetworkId, SiteId, Input0, Options) ->
     Method = patch,
-    Path = ["/global-networks/", http_uri:encode(GlobalNetworkId), "/sites/", http_uri:encode(SiteId), ""],
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/sites/", aws_util:encode_uri(SiteId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],

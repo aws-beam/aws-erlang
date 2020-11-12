@@ -42,7 +42,7 @@ describe_job_execution(Client, JobId, ThingName, ExecutionNumber, IncludeJobDocu
     describe_job_execution(Client, JobId, ThingName, ExecutionNumber, IncludeJobDocument, []).
 describe_job_execution(Client, JobId, ThingName, ExecutionNumber, IncludeJobDocument, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/things/", http_uri:encode(ThingName), "/jobs/", http_uri:encode(JobId), ""],
+    Path = ["/things/", aws_util:encode_uri(ThingName), "/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -63,7 +63,7 @@ get_pending_job_executions(Client, ThingName)
     get_pending_job_executions(Client, ThingName, []).
 get_pending_job_executions(Client, ThingName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/things/", http_uri:encode(ThingName), "/jobs"],
+    Path = ["/things/", aws_util:encode_uri(ThingName), "/jobs"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -78,7 +78,7 @@ start_next_pending_job_execution(Client, ThingName, Input) ->
     start_next_pending_job_execution(Client, ThingName, Input, []).
 start_next_pending_job_execution(Client, ThingName, Input0, Options) ->
     Method = put,
-    Path = ["/things/", http_uri:encode(ThingName), "/jobs/$next"],
+    Path = ["/things/", aws_util:encode_uri(ThingName), "/jobs/$next"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -94,7 +94,7 @@ update_job_execution(Client, JobId, ThingName, Input) ->
     update_job_execution(Client, JobId, ThingName, Input, []).
 update_job_execution(Client, JobId, ThingName, Input0, Options) ->
     Method = post,
-    Path = ["/things/", http_uri:encode(ThingName), "/jobs/", http_uri:encode(JobId), ""],
+    Path = ["/things/", aws_util:encode_uri(ThingName), "/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],

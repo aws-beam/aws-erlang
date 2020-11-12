@@ -46,7 +46,7 @@ delete_lexicon(Client, Name, Input) ->
     delete_lexicon(Client, Name, Input, []).
 delete_lexicon(Client, Name, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/lexicons/", http_uri:encode(Name), ""],
+    Path = ["/v1/lexicons/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -108,7 +108,7 @@ get_lexicon(Client, Name)
     get_lexicon(Client, Name, []).
 get_lexicon(Client, Name, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/lexicons/", http_uri:encode(Name), ""],
+    Path = ["/v1/lexicons/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -127,7 +127,7 @@ get_speech_synthesis_task(Client, TaskId)
     get_speech_synthesis_task(Client, TaskId, []).
 get_speech_synthesis_task(Client, TaskId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/synthesisTasks/", http_uri:encode(TaskId), ""],
+    Path = ["/v1/synthesisTasks/", aws_util:encode_uri(TaskId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -194,7 +194,7 @@ put_lexicon(Client, Name, Input) ->
     put_lexicon(Client, Name, Input, []).
 put_lexicon(Client, Name, Input0, Options) ->
     Method = put,
-    Path = ["/v1/lexicons/", http_uri:encode(Name), ""],
+    Path = ["/v1/lexicons/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
 
     Headers = [],

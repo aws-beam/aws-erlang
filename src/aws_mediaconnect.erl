@@ -72,7 +72,7 @@ add_flow_outputs(Client, FlowArn, Input) ->
     add_flow_outputs(Client, FlowArn, Input, []).
 add_flow_outputs(Client, FlowArn, Input0, Options) ->
     Method = post,
-    Path = ["/v1/flows/", http_uri:encode(FlowArn), "/outputs"],
+    Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/outputs"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -88,7 +88,7 @@ add_flow_sources(Client, FlowArn, Input) ->
     add_flow_sources(Client, FlowArn, Input, []).
 add_flow_sources(Client, FlowArn, Input0, Options) ->
     Method = post,
-    Path = ["/v1/flows/", http_uri:encode(FlowArn), "/source"],
+    Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/source"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -104,7 +104,7 @@ add_flow_vpc_interfaces(Client, FlowArn, Input) ->
     add_flow_vpc_interfaces(Client, FlowArn, Input, []).
 add_flow_vpc_interfaces(Client, FlowArn, Input0, Options) ->
     Method = post,
-    Path = ["/v1/flows/", http_uri:encode(FlowArn), "/vpcInterfaces"],
+    Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/vpcInterfaces"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -141,7 +141,7 @@ delete_flow(Client, FlowArn, Input) ->
     delete_flow(Client, FlowArn, Input, []).
 delete_flow(Client, FlowArn, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/flows/", http_uri:encode(FlowArn), ""],
+    Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -161,7 +161,7 @@ describe_flow(Client, FlowArn)
     describe_flow(Client, FlowArn, []).
 describe_flow(Client, FlowArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/flows/", http_uri:encode(FlowArn), ""],
+    Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -179,7 +179,7 @@ describe_offering(Client, OfferingArn)
     describe_offering(Client, OfferingArn, []).
 describe_offering(Client, OfferingArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/offerings/", http_uri:encode(OfferingArn), ""],
+    Path = ["/v1/offerings/", aws_util:encode_uri(OfferingArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -198,7 +198,7 @@ describe_reservation(Client, ReservationArn)
     describe_reservation(Client, ReservationArn, []).
 describe_reservation(Client, ReservationArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/reservations/", http_uri:encode(ReservationArn), ""],
+    Path = ["/v1/reservations/", aws_util:encode_uri(ReservationArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -212,7 +212,7 @@ grant_flow_entitlements(Client, FlowArn, Input) ->
     grant_flow_entitlements(Client, FlowArn, Input, []).
 grant_flow_entitlements(Client, FlowArn, Input0, Options) ->
     Method = post,
-    Path = ["/v1/flows/", http_uri:encode(FlowArn), "/entitlements"],
+    Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/entitlements"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -323,7 +323,7 @@ list_tags_for_resource(Client, ResourceArn)
     list_tags_for_resource(Client, ResourceArn, []).
 list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -340,7 +340,7 @@ purchase_offering(Client, OfferingArn, Input) ->
     purchase_offering(Client, OfferingArn, Input, []).
 purchase_offering(Client, OfferingArn, Input0, Options) ->
     Method = post,
-    Path = ["/v1/offerings/", http_uri:encode(OfferingArn), ""],
+    Path = ["/v1/offerings/", aws_util:encode_uri(OfferingArn), ""],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -361,7 +361,7 @@ remove_flow_output(Client, FlowArn, OutputArn, Input) ->
     remove_flow_output(Client, FlowArn, OutputArn, Input, []).
 remove_flow_output(Client, FlowArn, OutputArn, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/flows/", http_uri:encode(FlowArn), "/outputs/", http_uri:encode(OutputArn), ""],
+    Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/outputs/", aws_util:encode_uri(OutputArn), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -380,7 +380,7 @@ remove_flow_source(Client, FlowArn, SourceArn, Input) ->
     remove_flow_source(Client, FlowArn, SourceArn, Input, []).
 remove_flow_source(Client, FlowArn, SourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/flows/", http_uri:encode(FlowArn), "/source/", http_uri:encode(SourceArn), ""],
+    Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/source/", aws_util:encode_uri(SourceArn), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -401,7 +401,7 @@ remove_flow_vpc_interface(Client, FlowArn, VpcInterfaceName, Input) ->
     remove_flow_vpc_interface(Client, FlowArn, VpcInterfaceName, Input, []).
 remove_flow_vpc_interface(Client, FlowArn, VpcInterfaceName, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/flows/", http_uri:encode(FlowArn), "/vpcInterfaces/", http_uri:encode(VpcInterfaceName), ""],
+    Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/vpcInterfaces/", aws_util:encode_uri(VpcInterfaceName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -420,7 +420,7 @@ revoke_flow_entitlement(Client, EntitlementArn, FlowArn, Input) ->
     revoke_flow_entitlement(Client, EntitlementArn, FlowArn, Input, []).
 revoke_flow_entitlement(Client, EntitlementArn, FlowArn, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/flows/", http_uri:encode(FlowArn), "/entitlements/", http_uri:encode(EntitlementArn), ""],
+    Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/entitlements/", aws_util:encode_uri(EntitlementArn), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -436,7 +436,7 @@ start_flow(Client, FlowArn, Input) ->
     start_flow(Client, FlowArn, Input, []).
 start_flow(Client, FlowArn, Input0, Options) ->
     Method = post,
-    Path = ["/v1/flows/start/", http_uri:encode(FlowArn), ""],
+    Path = ["/v1/flows/start/", aws_util:encode_uri(FlowArn), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -452,7 +452,7 @@ stop_flow(Client, FlowArn, Input) ->
     stop_flow(Client, FlowArn, Input, []).
 stop_flow(Client, FlowArn, Input0, Options) ->
     Method = post,
-    Path = ["/v1/flows/stop/", http_uri:encode(FlowArn), ""],
+    Path = ["/v1/flows/stop/", aws_util:encode_uri(FlowArn), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -473,7 +473,7 @@ tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -489,7 +489,7 @@ untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -506,7 +506,7 @@ update_flow(Client, FlowArn, Input) ->
     update_flow(Client, FlowArn, Input, []).
 update_flow(Client, FlowArn, Input0, Options) ->
     Method = put,
-    Path = ["/v1/flows/", http_uri:encode(FlowArn), ""],
+    Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -526,7 +526,7 @@ update_flow_entitlement(Client, EntitlementArn, FlowArn, Input) ->
     update_flow_entitlement(Client, EntitlementArn, FlowArn, Input, []).
 update_flow_entitlement(Client, EntitlementArn, FlowArn, Input0, Options) ->
     Method = put,
-    Path = ["/v1/flows/", http_uri:encode(FlowArn), "/entitlements/", http_uri:encode(EntitlementArn), ""],
+    Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/entitlements/", aws_util:encode_uri(EntitlementArn), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -542,7 +542,7 @@ update_flow_output(Client, FlowArn, OutputArn, Input) ->
     update_flow_output(Client, FlowArn, OutputArn, Input, []).
 update_flow_output(Client, FlowArn, OutputArn, Input0, Options) ->
     Method = put,
-    Path = ["/v1/flows/", http_uri:encode(FlowArn), "/outputs/", http_uri:encode(OutputArn), ""],
+    Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/outputs/", aws_util:encode_uri(OutputArn), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -558,7 +558,7 @@ update_flow_source(Client, FlowArn, SourceArn, Input) ->
     update_flow_source(Client, FlowArn, SourceArn, Input, []).
 update_flow_source(Client, FlowArn, SourceArn, Input0, Options) ->
     Method = put,
-    Path = ["/v1/flows/", http_uri:encode(FlowArn), "/source/", http_uri:encode(SourceArn), ""],
+    Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/source/", aws_util:encode_uri(SourceArn), ""],
     SuccessStatusCode = 202,
 
     Headers = [],

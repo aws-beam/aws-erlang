@@ -119,7 +119,7 @@ delete_canary(Client, Name, Input) ->
     delete_canary(Client, Name, Input, []).
 delete_canary(Client, Name, Input0, Options) ->
     Method = delete,
-    Path = ["/canary/", http_uri:encode(Name), ""],
+    Path = ["/canary/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -196,7 +196,7 @@ get_canary(Client, Name)
     get_canary(Client, Name, []).
 get_canary(Client, Name, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/canary/", http_uri:encode(Name), ""],
+    Path = ["/canary/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -210,7 +210,7 @@ get_canary_runs(Client, Name, Input) ->
     get_canary_runs(Client, Name, Input, []).
 get_canary_runs(Client, Name, Input0, Options) ->
     Method = post,
-    Path = ["/canary/", http_uri:encode(Name), "/runs"],
+    Path = ["/canary/", aws_util:encode_uri(Name), "/runs"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -227,7 +227,7 @@ list_tags_for_resource(Client, ResourceArn)
     list_tags_for_resource(Client, ResourceArn, []).
 list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -244,7 +244,7 @@ start_canary(Client, Name, Input) ->
     start_canary(Client, Name, Input, []).
 start_canary(Client, Name, Input0, Options) ->
     Method = post,
-    Path = ["/canary/", http_uri:encode(Name), "/start"],
+    Path = ["/canary/", aws_util:encode_uri(Name), "/start"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -268,7 +268,7 @@ stop_canary(Client, Name, Input) ->
     stop_canary(Client, Name, Input, []).
 stop_canary(Client, Name, Input0, Options) ->
     Method = post,
-    Path = ["/canary/", http_uri:encode(Name), "/stop"],
+    Path = ["/canary/", aws_util:encode_uri(Name), "/stop"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -299,7 +299,7 @@ tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -315,7 +315,7 @@ untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -336,7 +336,7 @@ update_canary(Client, Name, Input) ->
     update_canary(Client, Name, Input, []).
 update_canary(Client, Name, Input0, Options) ->
     Method = patch,
-    Path = ["/canary/", http_uri:encode(Name), ""],
+    Path = ["/canary/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],

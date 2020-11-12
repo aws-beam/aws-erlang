@@ -102,7 +102,7 @@ create_archive_rule(Client, AnalyzerName, Input) ->
     create_archive_rule(Client, AnalyzerName, Input, []).
 create_archive_rule(Client, AnalyzerName, Input0, Options) ->
     Method = put,
-    Path = ["/analyzer/", http_uri:encode(AnalyzerName), "/archive-rule"],
+    Path = ["/analyzer/", aws_util:encode_uri(AnalyzerName), "/archive-rule"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -122,7 +122,7 @@ delete_analyzer(Client, AnalyzerName, Input) ->
     delete_analyzer(Client, AnalyzerName, Input, []).
 delete_analyzer(Client, AnalyzerName, Input0, Options) ->
     Method = delete,
-    Path = ["/analyzer/", http_uri:encode(AnalyzerName), ""],
+    Path = ["/analyzer/", aws_util:encode_uri(AnalyzerName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -139,7 +139,7 @@ delete_archive_rule(Client, AnalyzerName, RuleName, Input) ->
     delete_archive_rule(Client, AnalyzerName, RuleName, Input, []).
 delete_archive_rule(Client, AnalyzerName, RuleName, Input0, Options) ->
     Method = delete,
-    Path = ["/analyzer/", http_uri:encode(AnalyzerName), "/archive-rule/", http_uri:encode(RuleName), ""],
+    Path = ["/analyzer/", aws_util:encode_uri(AnalyzerName), "/archive-rule/", aws_util:encode_uri(RuleName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -177,7 +177,7 @@ get_analyzer(Client, AnalyzerName)
     get_analyzer(Client, AnalyzerName, []).
 get_analyzer(Client, AnalyzerName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/analyzer/", http_uri:encode(AnalyzerName), ""],
+    Path = ["/analyzer/", aws_util:encode_uri(AnalyzerName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -195,7 +195,7 @@ get_archive_rule(Client, AnalyzerName, RuleName)
     get_archive_rule(Client, AnalyzerName, RuleName, []).
 get_archive_rule(Client, AnalyzerName, RuleName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/analyzer/", http_uri:encode(AnalyzerName), "/archive-rule/", http_uri:encode(RuleName), ""],
+    Path = ["/analyzer/", aws_util:encode_uri(AnalyzerName), "/archive-rule/", aws_util:encode_uri(RuleName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -210,7 +210,7 @@ get_finding(Client, Id, AnalyzerArn)
     get_finding(Client, Id, AnalyzerArn, []).
 get_finding(Client, Id, AnalyzerArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/finding/", http_uri:encode(Id), ""],
+    Path = ["/finding/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -267,7 +267,7 @@ list_archive_rules(Client, AnalyzerName, MaxResults, NextToken)
     list_archive_rules(Client, AnalyzerName, MaxResults, NextToken, []).
 list_archive_rules(Client, AnalyzerName, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/analyzer/", http_uri:encode(AnalyzerName), "/archive-rule"],
+    Path = ["/analyzer/", aws_util:encode_uri(AnalyzerName), "/archive-rule"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -306,7 +306,7 @@ list_tags_for_resource(Client, ResourceArn)
     list_tags_for_resource(Client, ResourceArn, []).
 list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -337,7 +337,7 @@ tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -353,7 +353,7 @@ untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -370,7 +370,7 @@ update_archive_rule(Client, AnalyzerName, RuleName, Input) ->
     update_archive_rule(Client, AnalyzerName, RuleName, Input, []).
 update_archive_rule(Client, AnalyzerName, RuleName, Input0, Options) ->
     Method = put,
-    Path = ["/analyzer/", http_uri:encode(AnalyzerName), "/archive-rule/", http_uri:encode(RuleName), ""],
+    Path = ["/analyzer/", aws_util:encode_uri(AnalyzerName), "/archive-rule/", aws_util:encode_uri(RuleName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],

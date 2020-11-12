@@ -234,7 +234,7 @@ abort_multipart_upload(Client, Bucket, Key, Input) ->
     abort_multipart_upload(Client, Bucket, Key, Input, []).
 abort_multipart_upload(Client, Bucket, Key, Input0, Options) ->
     Method = delete,
-    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), ""],
+    Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), ""],
     SuccessStatusCode = 204,
 
     HeadersMapping = [
@@ -346,7 +346,7 @@ complete_multipart_upload(Client, Bucket, Key, Input) ->
     complete_multipart_upload(Client, Bucket, Key, Input, []).
 complete_multipart_upload(Client, Bucket, Key, Input0, Options) ->
     Method = post,
-    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), ""],
+    Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), ""],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -537,7 +537,7 @@ copy_object(Client, Bucket, Key, Input) ->
     copy_object(Client, Bucket, Key, Input, []).
 copy_object(Client, Bucket, Key, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), ""],
+    Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), ""],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -705,7 +705,7 @@ create_bucket(Client, Bucket, Input) ->
     create_bucket(Client, Bucket, Input, []).
 create_bucket(Client, Bucket, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(Bucket), ""],
+    Path = ["/", aws_util:encode_uri(Bucket), ""],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -947,7 +947,7 @@ create_multipart_upload(Client, Bucket, Key, Input) ->
     create_multipart_upload(Client, Bucket, Key, Input, []).
 create_multipart_upload(Client, Bucket, Key, Input0, Options) ->
     Method = post,
-    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), "?uploads"],
+    Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?uploads"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -1023,7 +1023,7 @@ delete_bucket(Client, Bucket, Input) ->
     delete_bucket(Client, Bucket, Input, []).
 delete_bucket(Client, Bucket, Input0, Options) ->
     Method = delete,
-    Path = ["/", http_uri:encode(Bucket), ""],
+    Path = ["/", aws_util:encode_uri(Bucket), ""],
     SuccessStatusCode = 204,
 
     HeadersMapping = [
@@ -1063,7 +1063,7 @@ delete_bucket_analytics_configuration(Client, Bucket, Input) ->
     delete_bucket_analytics_configuration(Client, Bucket, Input, []).
 delete_bucket_analytics_configuration(Client, Bucket, Input0, Options) ->
     Method = delete,
-    Path = ["/", http_uri:encode(Bucket), "?analytics"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?analytics"],
     SuccessStatusCode = 204,
 
     HeadersMapping = [
@@ -1097,7 +1097,7 @@ delete_bucket_cors(Client, Bucket, Input) ->
     delete_bucket_cors(Client, Bucket, Input, []).
 delete_bucket_cors(Client, Bucket, Input0, Options) ->
     Method = delete,
-    Path = ["/", http_uri:encode(Bucket), "?cors"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?cors"],
     SuccessStatusCode = 204,
 
     HeadersMapping = [
@@ -1135,7 +1135,7 @@ delete_bucket_encryption(Client, Bucket, Input) ->
     delete_bucket_encryption(Client, Bucket, Input, []).
 delete_bucket_encryption(Client, Bucket, Input0, Options) ->
     Method = delete,
-    Path = ["/", http_uri:encode(Bucket), "?encryption"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?encryption"],
     SuccessStatusCode = 204,
 
     HeadersMapping = [
@@ -1182,7 +1182,7 @@ delete_bucket_intelligent_tiering_configuration(Client, Bucket, Input) ->
     delete_bucket_intelligent_tiering_configuration(Client, Bucket, Input, []).
 delete_bucket_intelligent_tiering_configuration(Client, Bucket, Input0, Options) ->
     Method = delete,
-    Path = ["/", http_uri:encode(Bucket), "?intelligent-tiering"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?intelligent-tiering"],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -1220,7 +1220,7 @@ delete_bucket_inventory_configuration(Client, Bucket, Input) ->
     delete_bucket_inventory_configuration(Client, Bucket, Input, []).
 delete_bucket_inventory_configuration(Client, Bucket, Input0, Options) ->
     Method = delete,
-    Path = ["/", http_uri:encode(Bucket), "?inventory"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?inventory"],
     SuccessStatusCode = 204,
 
     HeadersMapping = [
@@ -1262,7 +1262,7 @@ delete_bucket_lifecycle(Client, Bucket, Input) ->
     delete_bucket_lifecycle(Client, Bucket, Input, []).
 delete_bucket_lifecycle(Client, Bucket, Input0, Options) ->
     Method = delete,
-    Path = ["/", http_uri:encode(Bucket), "?lifecycle"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?lifecycle"],
     SuccessStatusCode = 204,
 
     HeadersMapping = [
@@ -1306,7 +1306,7 @@ delete_bucket_metrics_configuration(Client, Bucket, Input) ->
     delete_bucket_metrics_configuration(Client, Bucket, Input, []).
 delete_bucket_metrics_configuration(Client, Bucket, Input0, Options) ->
     Method = delete,
-    Path = ["/", http_uri:encode(Bucket), "?metrics"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?metrics"],
     SuccessStatusCode = 204,
 
     HeadersMapping = [
@@ -1340,7 +1340,7 @@ delete_bucket_ownership_controls(Client, Bucket, Input) ->
     delete_bucket_ownership_controls(Client, Bucket, Input, []).
 delete_bucket_ownership_controls(Client, Bucket, Input0, Options) ->
     Method = delete,
-    Path = ["/", http_uri:encode(Bucket), "?ownershipControls"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?ownershipControls"],
     SuccessStatusCode = 204,
 
     HeadersMapping = [
@@ -1384,7 +1384,7 @@ delete_bucket_policy(Client, Bucket, Input) ->
     delete_bucket_policy(Client, Bucket, Input, []).
 delete_bucket_policy(Client, Bucket, Input0, Options) ->
     Method = delete,
-    Path = ["/", http_uri:encode(Bucket), "?policy"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?policy"],
     SuccessStatusCode = 204,
 
     HeadersMapping = [
@@ -1422,7 +1422,7 @@ delete_bucket_replication(Client, Bucket, Input) ->
     delete_bucket_replication(Client, Bucket, Input, []).
 delete_bucket_replication(Client, Bucket, Input0, Options) ->
     Method = delete,
-    Path = ["/", http_uri:encode(Bucket), "?replication"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?replication"],
     SuccessStatusCode = 204,
 
     HeadersMapping = [
@@ -1452,7 +1452,7 @@ delete_bucket_tagging(Client, Bucket, Input) ->
     delete_bucket_tagging(Client, Bucket, Input, []).
 delete_bucket_tagging(Client, Bucket, Input0, Options) ->
     Method = delete,
-    Path = ["/", http_uri:encode(Bucket), "?tagging"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?tagging"],
     SuccessStatusCode = 204,
 
     HeadersMapping = [
@@ -1493,7 +1493,7 @@ delete_bucket_website(Client, Bucket, Input) ->
     delete_bucket_website(Client, Bucket, Input, []).
 delete_bucket_website(Client, Bucket, Input0, Options) ->
     Method = delete,
-    Path = ["/", http_uri:encode(Bucket), "?website"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?website"],
     SuccessStatusCode = 204,
 
     HeadersMapping = [
@@ -1540,7 +1540,7 @@ delete_object(Client, Bucket, Key, Input) ->
     delete_object(Client, Bucket, Key, Input, []).
 delete_object(Client, Bucket, Key, Input0, Options) ->
     Method = delete,
-    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), ""],
+    Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), ""],
     SuccessStatusCode = 204,
 
     HeadersMapping = [
@@ -1598,7 +1598,7 @@ delete_object_tagging(Client, Bucket, Key, Input) ->
     delete_object_tagging(Client, Bucket, Key, Input, []).
 delete_object_tagging(Client, Bucket, Key, Input0, Options) ->
     Method = delete,
-    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), "?tagging"],
+    Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?tagging"],
     SuccessStatusCode = 204,
 
     HeadersMapping = [
@@ -1679,7 +1679,7 @@ delete_objects(Client, Bucket, Input) ->
     delete_objects(Client, Bucket, Input, []).
 delete_objects(Client, Bucket, Input0, Options) ->
     Method = post,
-    Path = ["/", http_uri:encode(Bucket), "?delete"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?delete"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -1734,7 +1734,7 @@ delete_public_access_block(Client, Bucket, Input) ->
     delete_public_access_block(Client, Bucket, Input, []).
 delete_public_access_block(Client, Bucket, Input0, Options) ->
     Method = delete,
-    Path = ["/", http_uri:encode(Bucket), "?publicAccessBlock"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?publicAccessBlock"],
     SuccessStatusCode = 204,
 
     HeadersMapping = [
@@ -1781,7 +1781,7 @@ get_bucket_accelerate_configuration(Client, Bucket, ExpectedBucketOwner)
     get_bucket_accelerate_configuration(Client, Bucket, ExpectedBucketOwner, []).
 get_bucket_accelerate_configuration(Client, Bucket, ExpectedBucketOwner, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "?accelerate"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?accelerate"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -1812,7 +1812,7 @@ get_bucket_acl(Client, Bucket, ExpectedBucketOwner)
     get_bucket_acl(Client, Bucket, ExpectedBucketOwner, []).
 get_bucket_acl(Client, Bucket, ExpectedBucketOwner, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "?acl"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?acl"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -1854,7 +1854,7 @@ get_bucket_analytics_configuration(Client, Bucket, Id, ExpectedBucketOwner)
     get_bucket_analytics_configuration(Client, Bucket, Id, ExpectedBucketOwner, []).
 get_bucket_analytics_configuration(Client, Bucket, Id, ExpectedBucketOwner, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "?analytics"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?analytics"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -1892,7 +1892,7 @@ get_bucket_cors(Client, Bucket, ExpectedBucketOwner)
     get_bucket_cors(Client, Bucket, ExpectedBucketOwner, []).
 get_bucket_cors(Client, Bucket, ExpectedBucketOwner, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "?cors"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?cors"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -1929,7 +1929,7 @@ get_bucket_encryption(Client, Bucket, ExpectedBucketOwner)
     get_bucket_encryption(Client, Bucket, ExpectedBucketOwner, []).
 get_bucket_encryption(Client, Bucket, ExpectedBucketOwner, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "?encryption"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?encryption"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -1976,7 +1976,7 @@ get_bucket_intelligent_tiering_configuration(Client, Bucket, Id)
     get_bucket_intelligent_tiering_configuration(Client, Bucket, Id, []).
 get_bucket_intelligent_tiering_configuration(Client, Bucket, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "?intelligent-tiering"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?intelligent-tiering"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2016,7 +2016,7 @@ get_bucket_inventory_configuration(Client, Bucket, Id, ExpectedBucketOwner)
     get_bucket_inventory_configuration(Client, Bucket, Id, ExpectedBucketOwner, []).
 get_bucket_inventory_configuration(Client, Bucket, Id, ExpectedBucketOwner, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "?inventory"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?inventory"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -2076,7 +2076,7 @@ get_bucket_lifecycle(Client, Bucket, ExpectedBucketOwner)
     get_bucket_lifecycle(Client, Bucket, ExpectedBucketOwner, []).
 get_bucket_lifecycle(Client, Bucket, ExpectedBucketOwner, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "?lifecycle"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?lifecycle"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -2135,7 +2135,7 @@ get_bucket_lifecycle_configuration(Client, Bucket, ExpectedBucketOwner)
     get_bucket_lifecycle_configuration(Client, Bucket, ExpectedBucketOwner, []).
 get_bucket_lifecycle_configuration(Client, Bucket, ExpectedBucketOwner, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "?lifecycle"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?lifecycle"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -2168,7 +2168,7 @@ get_bucket_location(Client, Bucket, ExpectedBucketOwner)
     get_bucket_location(Client, Bucket, ExpectedBucketOwner, []).
 get_bucket_location(Client, Bucket, ExpectedBucketOwner, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "?location"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?location"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -2198,7 +2198,7 @@ get_bucket_logging(Client, Bucket, ExpectedBucketOwner)
     get_bucket_logging(Client, Bucket, ExpectedBucketOwner, []).
 get_bucket_logging(Client, Bucket, ExpectedBucketOwner, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "?logging"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?logging"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -2242,7 +2242,7 @@ get_bucket_metrics_configuration(Client, Bucket, Id, ExpectedBucketOwner)
     get_bucket_metrics_configuration(Client, Bucket, Id, ExpectedBucketOwner, []).
 get_bucket_metrics_configuration(Client, Bucket, Id, ExpectedBucketOwner, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "?metrics"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?metrics"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -2265,7 +2265,7 @@ get_bucket_notification(Client, Bucket, ExpectedBucketOwner)
     get_bucket_notification(Client, Bucket, ExpectedBucketOwner, []).
 get_bucket_notification(Client, Bucket, ExpectedBucketOwner, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "?notification"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?notification"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -2302,7 +2302,7 @@ get_bucket_notification_configuration(Client, Bucket, ExpectedBucketOwner)
     get_bucket_notification_configuration(Client, Bucket, ExpectedBucketOwner, []).
 get_bucket_notification_configuration(Client, Bucket, ExpectedBucketOwner, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "?notification"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?notification"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -2336,7 +2336,7 @@ get_bucket_ownership_controls(Client, Bucket, ExpectedBucketOwner)
     get_bucket_ownership_controls(Client, Bucket, ExpectedBucketOwner, []).
 get_bucket_ownership_controls(Client, Bucket, ExpectedBucketOwner, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "?ownershipControls"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?ownershipControls"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -2378,7 +2378,7 @@ get_bucket_policy(Client, Bucket, ExpectedBucketOwner)
     get_bucket_policy(Client, Bucket, ExpectedBucketOwner, []).
 get_bucket_policy(Client, Bucket, ExpectedBucketOwner, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "?policy"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?policy"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -2417,7 +2417,7 @@ get_bucket_policy_status(Client, Bucket, ExpectedBucketOwner)
     get_bucket_policy_status(Client, Bucket, ExpectedBucketOwner, []).
 get_bucket_policy_status(Client, Bucket, ExpectedBucketOwner, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "?policyStatus"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?policyStatus"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -2462,7 +2462,7 @@ get_bucket_replication(Client, Bucket, ExpectedBucketOwner)
     get_bucket_replication(Client, Bucket, ExpectedBucketOwner, []).
 get_bucket_replication(Client, Bucket, ExpectedBucketOwner, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "?replication"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?replication"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -2490,7 +2490,7 @@ get_bucket_request_payment(Client, Bucket, ExpectedBucketOwner)
     get_bucket_request_payment(Client, Bucket, ExpectedBucketOwner, []).
 get_bucket_request_payment(Client, Bucket, ExpectedBucketOwner, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "?requestPayment"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?requestPayment"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -2528,7 +2528,7 @@ get_bucket_tagging(Client, Bucket, ExpectedBucketOwner)
     get_bucket_tagging(Client, Bucket, ExpectedBucketOwner, []).
 get_bucket_tagging(Client, Bucket, ExpectedBucketOwner, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "?tagging"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?tagging"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -2564,7 +2564,7 @@ get_bucket_versioning(Client, Bucket, ExpectedBucketOwner)
     get_bucket_versioning(Client, Bucket, ExpectedBucketOwner, []).
 get_bucket_versioning(Client, Bucket, ExpectedBucketOwner, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "?versioning"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?versioning"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -2601,7 +2601,7 @@ get_bucket_website(Client, Bucket, ExpectedBucketOwner)
     get_bucket_website(Client, Bucket, ExpectedBucketOwner, []).
 get_bucket_website(Client, Bucket, ExpectedBucketOwner, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "?website"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?website"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -2754,7 +2754,7 @@ get_object(Client, Bucket, Key, PartNumber, ResponseCacheControl, ResponseConten
     get_object(Client, Bucket, Key, PartNumber, ResponseCacheControl, ResponseContentDisposition, ResponseContentEncoding, ResponseContentLanguage, ResponseContentType, ResponseExpires, VersionId, ExpectedBucketOwner, IfMatch, IfModifiedSince, IfNoneMatch, IfUnmodifiedSince, Range, RequestPayer, SSECustomerAlgorithm, SSECustomerKey, SSECustomerKeyMD5, []).
 get_object(Client, Bucket, Key, PartNumber, ResponseCacheControl, ResponseContentDisposition, ResponseContentEncoding, ResponseContentLanguage, ResponseContentType, ResponseExpires, VersionId, ExpectedBucketOwner, IfMatch, IfModifiedSince, IfNoneMatch, IfUnmodifiedSince, Range, RequestPayer, SSECustomerAlgorithm, SSECustomerKey, SSECustomerKeyMD5, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), ""],
+    Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), ""],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -2857,7 +2857,7 @@ get_object_acl(Client, Bucket, Key, VersionId, ExpectedBucketOwner, RequestPayer
     get_object_acl(Client, Bucket, Key, VersionId, ExpectedBucketOwner, RequestPayer, []).
 get_object_acl(Client, Bucket, Key, VersionId, ExpectedBucketOwner, RequestPayer, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), "?acl"],
+    Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?acl"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -2901,7 +2901,7 @@ get_object_legal_hold(Client, Bucket, Key, VersionId, ExpectedBucketOwner, Reque
     get_object_legal_hold(Client, Bucket, Key, VersionId, ExpectedBucketOwner, RequestPayer, []).
 get_object_legal_hold(Client, Bucket, Key, VersionId, ExpectedBucketOwner, RequestPayer, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), "?legal-hold"],
+    Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?legal-hold"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -2929,7 +2929,7 @@ get_object_lock_configuration(Client, Bucket, ExpectedBucketOwner)
     get_object_lock_configuration(Client, Bucket, ExpectedBucketOwner, []).
 get_object_lock_configuration(Client, Bucket, ExpectedBucketOwner, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "?object-lock"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?object-lock"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -2952,7 +2952,7 @@ get_object_retention(Client, Bucket, Key, VersionId, ExpectedBucketOwner, Reques
     get_object_retention(Client, Bucket, Key, VersionId, ExpectedBucketOwner, RequestPayer, []).
 get_object_retention(Client, Bucket, Key, VersionId, ExpectedBucketOwner, RequestPayer, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), "?retention"],
+    Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?retention"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -2998,7 +2998,7 @@ get_object_tagging(Client, Bucket, Key, VersionId, ExpectedBucketOwner)
     get_object_tagging(Client, Bucket, Key, VersionId, ExpectedBucketOwner, []).
 get_object_tagging(Client, Bucket, Key, VersionId, ExpectedBucketOwner, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), "?tagging"],
+    Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?tagging"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -3055,7 +3055,7 @@ get_object_torrent(Client, Bucket, Key, ExpectedBucketOwner, RequestPayer)
     get_object_torrent(Client, Bucket, Key, ExpectedBucketOwner, RequestPayer, []).
 get_object_torrent(Client, Bucket, Key, ExpectedBucketOwner, RequestPayer, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), "?torrent"],
+    Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?torrent"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -3118,7 +3118,7 @@ get_public_access_block(Client, Bucket, ExpectedBucketOwner)
     get_public_access_block(Client, Bucket, ExpectedBucketOwner, []).
 get_public_access_block(Client, Bucket, ExpectedBucketOwner, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "?publicAccessBlock"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?publicAccessBlock"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -3147,7 +3147,7 @@ head_bucket(Client, Bucket, Input) ->
     head_bucket(Client, Bucket, Input, []).
 head_bucket(Client, Bucket, Input0, Options) ->
     Method = head,
-    Path = ["/", http_uri:encode(Bucket), ""],
+    Path = ["/", aws_util:encode_uri(Bucket), ""],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -3237,7 +3237,7 @@ head_object(Client, Bucket, Key, Input) ->
     head_object(Client, Bucket, Key, Input, []).
 head_object(Client, Bucket, Key, Input0, Options) ->
     Method = head,
-    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), ""],
+    Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), ""],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -3342,7 +3342,7 @@ list_bucket_analytics_configurations(Client, Bucket, ContinuationToken, Expected
     list_bucket_analytics_configurations(Client, Bucket, ContinuationToken, ExpectedBucketOwner, []).
 list_bucket_analytics_configurations(Client, Bucket, ContinuationToken, ExpectedBucketOwner, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "?analytics"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?analytics"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -3394,7 +3394,7 @@ list_bucket_intelligent_tiering_configurations(Client, Bucket, ContinuationToken
     list_bucket_intelligent_tiering_configurations(Client, Bucket, ContinuationToken, []).
 list_bucket_intelligent_tiering_configurations(Client, Bucket, ContinuationToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "?intelligent-tiering"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?intelligent-tiering"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -3445,7 +3445,7 @@ list_bucket_inventory_configurations(Client, Bucket, ContinuationToken, Expected
     list_bucket_inventory_configurations(Client, Bucket, ContinuationToken, ExpectedBucketOwner, []).
 list_bucket_inventory_configurations(Client, Bucket, ContinuationToken, ExpectedBucketOwner, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "?inventory"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?inventory"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -3501,7 +3501,7 @@ list_bucket_metrics_configurations(Client, Bucket, ContinuationToken, ExpectedBu
     list_bucket_metrics_configurations(Client, Bucket, ContinuationToken, ExpectedBucketOwner, []).
 list_bucket_metrics_configurations(Client, Bucket, ContinuationToken, ExpectedBucketOwner, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "?metrics"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?metrics"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -3578,7 +3578,7 @@ list_multipart_uploads(Client, Bucket, Delimiter, EncodingType, KeyMarker, MaxUp
     list_multipart_uploads(Client, Bucket, Delimiter, EncodingType, KeyMarker, MaxUploads, Prefix, UploadIdMarker, ExpectedBucketOwner, []).
 list_multipart_uploads(Client, Bucket, Delimiter, EncodingType, KeyMarker, MaxUploads, Prefix, UploadIdMarker, ExpectedBucketOwner, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "?uploads"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?uploads"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -3629,7 +3629,7 @@ list_object_versions(Client, Bucket, Delimiter, EncodingType, KeyMarker, MaxKeys
     list_object_versions(Client, Bucket, Delimiter, EncodingType, KeyMarker, MaxKeys, Prefix, VersionIdMarker, ExpectedBucketOwner, []).
 list_object_versions(Client, Bucket, Delimiter, EncodingType, KeyMarker, MaxKeys, Prefix, VersionIdMarker, ExpectedBucketOwner, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "?versions"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?versions"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -3680,7 +3680,7 @@ list_objects(Client, Bucket, Delimiter, EncodingType, Marker, MaxKeys, Prefix, E
     list_objects(Client, Bucket, Delimiter, EncodingType, Marker, MaxKeys, Prefix, ExpectedBucketOwner, RequestPayer, []).
 list_objects(Client, Bucket, Delimiter, EncodingType, Marker, MaxKeys, Prefix, ExpectedBucketOwner, RequestPayer, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), ""],
+    Path = ["/", aws_util:encode_uri(Bucket), ""],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -3739,7 +3739,7 @@ list_objects_v2(Client, Bucket, ContinuationToken, Delimiter, EncodingType, Fetc
     list_objects_v2(Client, Bucket, ContinuationToken, Delimiter, EncodingType, FetchOwner, MaxKeys, Prefix, StartAfter, ExpectedBucketOwner, RequestPayer, []).
 list_objects_v2(Client, Bucket, ContinuationToken, Delimiter, EncodingType, FetchOwner, MaxKeys, Prefix, StartAfter, ExpectedBucketOwner, RequestPayer, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "?list-type=2"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?list-type=2"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -3801,7 +3801,7 @@ list_parts(Client, Bucket, Key, MaxParts, PartNumberMarker, UploadId, ExpectedBu
     list_parts(Client, Bucket, Key, MaxParts, PartNumberMarker, UploadId, ExpectedBucketOwner, RequestPayer, []).
 list_parts(Client, Bucket, Key, MaxParts, PartNumberMarker, UploadId, ExpectedBucketOwner, RequestPayer, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), ""],
+    Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), ""],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -3883,7 +3883,7 @@ put_bucket_accelerate_configuration(Client, Bucket, Input) ->
     put_bucket_accelerate_configuration(Client, Bucket, Input, []).
 put_bucket_accelerate_configuration(Client, Bucket, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(Bucket), "?accelerate"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?accelerate"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -4041,7 +4041,7 @@ put_bucket_acl(Client, Bucket, Input) ->
     put_bucket_acl(Client, Bucket, Input, []).
 put_bucket_acl(Client, Bucket, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(Bucket), "?acl"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?acl"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -4124,7 +4124,7 @@ put_bucket_analytics_configuration(Client, Bucket, Input) ->
     put_bucket_analytics_configuration(Client, Bucket, Input, []).
 put_bucket_analytics_configuration(Client, Bucket, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(Bucket), "?analytics"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?analytics"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -4191,7 +4191,7 @@ put_bucket_cors(Client, Bucket, Input) ->
     put_bucket_cors(Client, Bucket, Input, []).
 put_bucket_cors(Client, Bucket, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(Bucket), "?cors"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?cors"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -4235,7 +4235,7 @@ put_bucket_encryption(Client, Bucket, Input) ->
     put_bucket_encryption(Client, Bucket, Input, []).
 put_bucket_encryption(Client, Bucket, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(Bucket), "?encryption"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?encryption"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -4281,7 +4281,7 @@ put_bucket_intelligent_tiering_configuration(Client, Bucket, Input) ->
     put_bucket_intelligent_tiering_configuration(Client, Bucket, Input, []).
 put_bucket_intelligent_tiering_configuration(Client, Bucket, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(Bucket), "?intelligent-tiering"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?intelligent-tiering"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -4360,7 +4360,7 @@ put_bucket_inventory_configuration(Client, Bucket, Input) ->
     put_bucket_inventory_configuration(Client, Bucket, Input, []).
 put_bucket_inventory_configuration(Client, Bucket, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(Bucket), "?inventory"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?inventory"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -4433,7 +4433,7 @@ put_bucket_lifecycle(Client, Bucket, Input) ->
     put_bucket_lifecycle(Client, Bucket, Input, []).
 put_bucket_lifecycle(Client, Bucket, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(Bucket), "?lifecycle"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?lifecycle"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -4519,7 +4519,7 @@ put_bucket_lifecycle_configuration(Client, Bucket, Input) ->
     put_bucket_lifecycle_configuration(Client, Bucket, Input, []).
 put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(Bucket), "?lifecycle"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?lifecycle"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -4597,7 +4597,7 @@ put_bucket_logging(Client, Bucket, Input) ->
     put_bucket_logging(Client, Bucket, Input, []).
 put_bucket_logging(Client, Bucket, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(Bucket), "?logging"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?logging"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -4651,7 +4651,7 @@ put_bucket_metrics_configuration(Client, Bucket, Input) ->
     put_bucket_metrics_configuration(Client, Bucket, Input, []).
 put_bucket_metrics_configuration(Client, Bucket, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(Bucket), "?metrics"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?metrics"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -4670,7 +4670,7 @@ put_bucket_notification(Client, Bucket, Input) ->
     put_bucket_notification(Client, Bucket, Input, []).
 put_bucket_notification(Client, Bucket, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(Bucket), "?notification"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?notification"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -4748,7 +4748,7 @@ put_bucket_notification_configuration(Client, Bucket, Input) ->
     put_bucket_notification_configuration(Client, Bucket, Input, []).
 put_bucket_notification_configuration(Client, Bucket, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(Bucket), "?notification"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?notification"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -4781,7 +4781,7 @@ put_bucket_ownership_controls(Client, Bucket, Input) ->
     put_bucket_ownership_controls(Client, Bucket, Input, []).
 put_bucket_ownership_controls(Client, Bucket, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(Bucket), "?ownershipControls"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?ownershipControls"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -4825,7 +4825,7 @@ put_bucket_policy(Client, Bucket, Input) ->
     put_bucket_policy(Client, Bucket, Input, []).
 put_bucket_policy(Client, Bucket, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(Bucket), "?policy"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?policy"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -4906,7 +4906,7 @@ put_bucket_replication(Client, Bucket, Input) ->
     put_bucket_replication(Client, Bucket, Input, []).
 put_bucket_replication(Client, Bucket, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(Bucket), "?replication"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?replication"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -4939,7 +4939,7 @@ put_bucket_request_payment(Client, Bucket, Input) ->
     put_bucket_request_payment(Client, Bucket, Input, []).
 put_bucket_request_payment(Client, Bucket, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(Bucket), "?requestPayment"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?requestPayment"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -5009,7 +5009,7 @@ put_bucket_tagging(Client, Bucket, Input) ->
     put_bucket_tagging(Client, Bucket, Input, []).
 put_bucket_tagging(Client, Bucket, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(Bucket), "?tagging"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?tagging"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -5065,7 +5065,7 @@ put_bucket_versioning(Client, Bucket, Input) ->
     put_bucket_versioning(Client, Bucket, Input, []).
 put_bucket_versioning(Client, Bucket, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(Bucket), "?versioning"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?versioning"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -5153,7 +5153,7 @@ put_bucket_website(Client, Bucket, Input) ->
     put_bucket_website(Client, Bucket, Input, []).
 put_bucket_website(Client, Bucket, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(Bucket), "?website"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?website"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -5239,7 +5239,7 @@ put_object(Client, Bucket, Key, Input) ->
     put_object(Client, Bucket, Key, Input, []).
 put_object(Client, Bucket, Key, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), ""],
+    Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), ""],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -5445,7 +5445,7 @@ put_object_acl(Client, Bucket, Key, Input) ->
     put_object_acl(Client, Bucket, Key, Input, []).
 put_object_acl(Client, Bucket, Key, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), "?acl"],
+    Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?acl"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -5496,7 +5496,7 @@ put_object_legal_hold(Client, Bucket, Key, Input) ->
     put_object_legal_hold(Client, Bucket, Key, Input, []).
 put_object_legal_hold(Client, Bucket, Key, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), "?legal-hold"],
+    Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?legal-hold"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -5545,7 +5545,7 @@ put_object_lock_configuration(Client, Bucket, Input) ->
     put_object_lock_configuration(Client, Bucket, Input, []).
 put_object_lock_configuration(Client, Bucket, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(Bucket), "?object-lock"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?object-lock"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -5590,7 +5590,7 @@ put_object_retention(Client, Bucket, Key, Input) ->
     put_object_retention(Client, Bucket, Key, Input, []).
 put_object_retention(Client, Bucket, Key, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), "?retention"],
+    Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?retention"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -5676,7 +5676,7 @@ put_object_tagging(Client, Bucket, Key, Input) ->
     put_object_tagging(Client, Bucket, Key, Input, []).
 put_object_tagging(Client, Bucket, Key, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), "?tagging"],
+    Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?tagging"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -5739,7 +5739,7 @@ put_public_access_block(Client, Bucket, Input) ->
     put_public_access_block(Client, Bucket, Input, []).
 put_public_access_block(Client, Bucket, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(Bucket), "?publicAccessBlock"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?publicAccessBlock"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -5976,7 +5976,7 @@ restore_object(Client, Bucket, Key, Input) ->
     restore_object(Client, Bucket, Key, Input, []).
 restore_object(Client, Bucket, Key, Input0, Options) ->
     Method = post,
-    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), "?restore"],
+    Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?restore"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -6108,7 +6108,7 @@ select_object_content(Client, Bucket, Key, Input) ->
     select_object_content(Client, Bucket, Key, Input, []).
 select_object_content(Client, Bucket, Key, Input0, Options) ->
     Method = post,
-    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), "?select&select-type=2"],
+    Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?select&select-type=2"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -6223,7 +6223,7 @@ upload_part(Client, Bucket, Key, Input) ->
     upload_part(Client, Bucket, Key, Input, []).
 upload_part(Client, Bucket, Key, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), ""],
+    Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), ""],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -6380,7 +6380,7 @@ upload_part_copy(Client, Bucket, Key, Input) ->
     upload_part_copy(Client, Bucket, Key, Input, []).
 upload_part_copy(Client, Bucket, Key, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(Bucket), "/", aws_util:encode_uri(Key, true), ""],
+    Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), ""],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [

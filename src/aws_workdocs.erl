@@ -135,7 +135,7 @@ abort_document_version_upload(Client, DocumentId, VersionId, Input) ->
     abort_document_version_upload(Client, DocumentId, VersionId, Input, []).
 abort_document_version_upload(Client, DocumentId, VersionId, Input0, Options) ->
     Method = delete,
-    Path = ["/api/v1/documents/", http_uri:encode(DocumentId), "/versions/", http_uri:encode(VersionId), ""],
+    Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), "/versions/", aws_util:encode_uri(VersionId), ""],
     SuccessStatusCode = 204,
 
     HeadersMapping = [
@@ -155,7 +155,7 @@ activate_user(Client, UserId, Input) ->
     activate_user(Client, UserId, Input, []).
 activate_user(Client, UserId, Input0, Options) ->
     Method = post,
-    Path = ["/api/v1/users/", http_uri:encode(UserId), "/activation"],
+    Path = ["/api/v1/users/", aws_util:encode_uri(UserId), "/activation"],
     SuccessStatusCode = 200,
 
     HeadersMapping = [
@@ -176,7 +176,7 @@ add_resource_permissions(Client, ResourceId, Input) ->
     add_resource_permissions(Client, ResourceId, Input, []).
 add_resource_permissions(Client, ResourceId, Input0, Options) ->
     Method = post,
-    Path = ["/api/v1/resources/", http_uri:encode(ResourceId), "/permissions"],
+    Path = ["/api/v1/resources/", aws_util:encode_uri(ResourceId), "/permissions"],
     SuccessStatusCode = 201,
 
     HeadersMapping = [
@@ -194,7 +194,7 @@ create_comment(Client, DocumentId, VersionId, Input) ->
     create_comment(Client, DocumentId, VersionId, Input, []).
 create_comment(Client, DocumentId, VersionId, Input0, Options) ->
     Method = post,
-    Path = ["/api/v1/documents/", http_uri:encode(DocumentId), "/versions/", http_uri:encode(VersionId), "/comment"],
+    Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), "/versions/", aws_util:encode_uri(VersionId), "/comment"],
     SuccessStatusCode = 201,
 
     HeadersMapping = [
@@ -213,7 +213,7 @@ create_custom_metadata(Client, ResourceId, Input) ->
     create_custom_metadata(Client, ResourceId, Input, []).
 create_custom_metadata(Client, ResourceId, Input0, Options) ->
     Method = put,
-    Path = ["/api/v1/resources/", http_uri:encode(ResourceId), "/customMetadata"],
+    Path = ["/api/v1/resources/", aws_util:encode_uri(ResourceId), "/customMetadata"],
     SuccessStatusCode = 200,
 
     HeadersMapping = [
@@ -251,7 +251,7 @@ create_labels(Client, ResourceId, Input) ->
     create_labels(Client, ResourceId, Input, []).
 create_labels(Client, ResourceId, Input0, Options) ->
     Method = put,
-    Path = ["/api/v1/resources/", http_uri:encode(ResourceId), "/labels"],
+    Path = ["/api/v1/resources/", aws_util:encode_uri(ResourceId), "/labels"],
     SuccessStatusCode = 200,
 
     HeadersMapping = [
@@ -275,7 +275,7 @@ create_notification_subscription(Client, OrganizationId, Input) ->
     create_notification_subscription(Client, OrganizationId, Input, []).
 create_notification_subscription(Client, OrganizationId, Input0, Options) ->
     Method = post,
-    Path = ["/api/v1/organizations/", http_uri:encode(OrganizationId), "/subscriptions"],
+    Path = ["/api/v1/organizations/", aws_util:encode_uri(OrganizationId), "/subscriptions"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -313,7 +313,7 @@ deactivate_user(Client, UserId, Input) ->
     deactivate_user(Client, UserId, Input, []).
 deactivate_user(Client, UserId, Input0, Options) ->
     Method = delete,
-    Path = ["/api/v1/users/", http_uri:encode(UserId), "/activation"],
+    Path = ["/api/v1/users/", aws_util:encode_uri(UserId), "/activation"],
     SuccessStatusCode = 204,
 
     HeadersMapping = [
@@ -331,7 +331,7 @@ delete_comment(Client, CommentId, DocumentId, VersionId, Input) ->
     delete_comment(Client, CommentId, DocumentId, VersionId, Input, []).
 delete_comment(Client, CommentId, DocumentId, VersionId, Input0, Options) ->
     Method = delete,
-    Path = ["/api/v1/documents/", http_uri:encode(DocumentId), "/versions/", http_uri:encode(VersionId), "/comment/", http_uri:encode(CommentId), ""],
+    Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), "/versions/", aws_util:encode_uri(VersionId), "/comment/", aws_util:encode_uri(CommentId), ""],
     SuccessStatusCode = 204,
 
     HeadersMapping = [
@@ -349,7 +349,7 @@ delete_custom_metadata(Client, ResourceId, Input) ->
     delete_custom_metadata(Client, ResourceId, Input, []).
 delete_custom_metadata(Client, ResourceId, Input0, Options) ->
     Method = delete,
-    Path = ["/api/v1/resources/", http_uri:encode(ResourceId), "/customMetadata"],
+    Path = ["/api/v1/resources/", aws_util:encode_uri(ResourceId), "/customMetadata"],
     SuccessStatusCode = 200,
 
     HeadersMapping = [
@@ -371,7 +371,7 @@ delete_document(Client, DocumentId, Input) ->
     delete_document(Client, DocumentId, Input, []).
 delete_document(Client, DocumentId, Input0, Options) ->
     Method = delete,
-    Path = ["/api/v1/documents/", http_uri:encode(DocumentId), ""],
+    Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), ""],
     SuccessStatusCode = 204,
 
     HeadersMapping = [
@@ -389,7 +389,7 @@ delete_folder(Client, FolderId, Input) ->
     delete_folder(Client, FolderId, Input, []).
 delete_folder(Client, FolderId, Input0, Options) ->
     Method = delete,
-    Path = ["/api/v1/folders/", http_uri:encode(FolderId), ""],
+    Path = ["/api/v1/folders/", aws_util:encode_uri(FolderId), ""],
     SuccessStatusCode = 204,
 
     HeadersMapping = [
@@ -407,7 +407,7 @@ delete_folder_contents(Client, FolderId, Input) ->
     delete_folder_contents(Client, FolderId, Input, []).
 delete_folder_contents(Client, FolderId, Input0, Options) ->
     Method = delete,
-    Path = ["/api/v1/folders/", http_uri:encode(FolderId), "/contents"],
+    Path = ["/api/v1/folders/", aws_util:encode_uri(FolderId), "/contents"],
     SuccessStatusCode = 204,
 
     HeadersMapping = [
@@ -425,7 +425,7 @@ delete_labels(Client, ResourceId, Input) ->
     delete_labels(Client, ResourceId, Input, []).
 delete_labels(Client, ResourceId, Input0, Options) ->
     Method = delete,
-    Path = ["/api/v1/resources/", http_uri:encode(ResourceId), "/labels"],
+    Path = ["/api/v1/resources/", aws_util:encode_uri(ResourceId), "/labels"],
     SuccessStatusCode = 200,
 
     HeadersMapping = [
@@ -445,7 +445,7 @@ delete_notification_subscription(Client, OrganizationId, SubscriptionId, Input) 
     delete_notification_subscription(Client, OrganizationId, SubscriptionId, Input, []).
 delete_notification_subscription(Client, OrganizationId, SubscriptionId, Input0, Options) ->
     Method = delete,
-    Path = ["/api/v1/organizations/", http_uri:encode(OrganizationId), "/subscriptions/", http_uri:encode(SubscriptionId), ""],
+    Path = ["/api/v1/organizations/", aws_util:encode_uri(OrganizationId), "/subscriptions/", aws_util:encode_uri(SubscriptionId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -462,7 +462,7 @@ delete_user(Client, UserId, Input) ->
     delete_user(Client, UserId, Input, []).
 delete_user(Client, UserId, Input0, Options) ->
     Method = delete,
-    Path = ["/api/v1/users/", http_uri:encode(UserId), ""],
+    Path = ["/api/v1/users/", aws_util:encode_uri(UserId), ""],
     SuccessStatusCode = 204,
 
     HeadersMapping = [
@@ -512,7 +512,7 @@ describe_comments(Client, DocumentId, VersionId, Limit, Marker, AuthenticationTo
     describe_comments(Client, DocumentId, VersionId, Limit, Marker, AuthenticationToken, []).
 describe_comments(Client, DocumentId, VersionId, Limit, Marker, AuthenticationToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/api/v1/documents/", http_uri:encode(DocumentId), "/versions/", http_uri:encode(VersionId), "/comments"],
+    Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), "/versions/", aws_util:encode_uri(VersionId), "/comments"],
     SuccessStatusCode = 200,
 
     Headers0 =
@@ -538,7 +538,7 @@ describe_document_versions(Client, DocumentId, Fields, Include, Limit, Marker, A
     describe_document_versions(Client, DocumentId, Fields, Include, Limit, Marker, AuthenticationToken, []).
 describe_document_versions(Client, DocumentId, Fields, Include, Limit, Marker, AuthenticationToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/api/v1/documents/", http_uri:encode(DocumentId), "/versions"],
+    Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), "/versions"],
     SuccessStatusCode = 200,
 
     Headers0 =
@@ -570,7 +570,7 @@ describe_folder_contents(Client, FolderId, Include, Limit, Marker, Order, Sort, 
     describe_folder_contents(Client, FolderId, Include, Limit, Marker, Order, Sort, Type, AuthenticationToken, []).
 describe_folder_contents(Client, FolderId, Include, Limit, Marker, Order, Sort, Type, AuthenticationToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/api/v1/folders/", http_uri:encode(FolderId), "/contents"],
+    Path = ["/api/v1/folders/", aws_util:encode_uri(FolderId), "/contents"],
     SuccessStatusCode = 200,
 
     Headers0 =
@@ -626,7 +626,7 @@ describe_notification_subscriptions(Client, OrganizationId, Limit, Marker)
     describe_notification_subscriptions(Client, OrganizationId, Limit, Marker, []).
 describe_notification_subscriptions(Client, OrganizationId, Limit, Marker, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/api/v1/organizations/", http_uri:encode(OrganizationId), "/subscriptions"],
+    Path = ["/api/v1/organizations/", aws_util:encode_uri(OrganizationId), "/subscriptions"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -646,7 +646,7 @@ describe_resource_permissions(Client, ResourceId, Limit, Marker, PrincipalId, Au
     describe_resource_permissions(Client, ResourceId, Limit, Marker, PrincipalId, AuthenticationToken, []).
 describe_resource_permissions(Client, ResourceId, Limit, Marker, PrincipalId, AuthenticationToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/api/v1/resources/", http_uri:encode(ResourceId), "/permissions"],
+    Path = ["/api/v1/resources/", aws_util:encode_uri(ResourceId), "/permissions"],
     SuccessStatusCode = 200,
 
     Headers0 =
@@ -770,7 +770,7 @@ get_document(Client, DocumentId, IncludeCustomMetadata, AuthenticationToken)
     get_document(Client, DocumentId, IncludeCustomMetadata, AuthenticationToken, []).
 get_document(Client, DocumentId, IncludeCustomMetadata, AuthenticationToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/api/v1/documents/", http_uri:encode(DocumentId), ""],
+    Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), ""],
     SuccessStatusCode = 200,
 
     Headers0 =
@@ -799,7 +799,7 @@ get_document_path(Client, DocumentId, Fields, Limit, Marker, AuthenticationToken
     get_document_path(Client, DocumentId, Fields, Limit, Marker, AuthenticationToken, []).
 get_document_path(Client, DocumentId, Fields, Limit, Marker, AuthenticationToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/api/v1/documents/", http_uri:encode(DocumentId), "/path"],
+    Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), "/path"],
     SuccessStatusCode = 200,
 
     Headers0 =
@@ -824,7 +824,7 @@ get_document_version(Client, DocumentId, VersionId, Fields, IncludeCustomMetadat
     get_document_version(Client, DocumentId, VersionId, Fields, IncludeCustomMetadata, AuthenticationToken, []).
 get_document_version(Client, DocumentId, VersionId, Fields, IncludeCustomMetadata, AuthenticationToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/api/v1/documents/", http_uri:encode(DocumentId), "/versions/", http_uri:encode(VersionId), ""],
+    Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), "/versions/", aws_util:encode_uri(VersionId), ""],
     SuccessStatusCode = 200,
 
     Headers0 =
@@ -848,7 +848,7 @@ get_folder(Client, FolderId, IncludeCustomMetadata, AuthenticationToken)
     get_folder(Client, FolderId, IncludeCustomMetadata, AuthenticationToken, []).
 get_folder(Client, FolderId, IncludeCustomMetadata, AuthenticationToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/api/v1/folders/", http_uri:encode(FolderId), ""],
+    Path = ["/api/v1/folders/", aws_util:encode_uri(FolderId), ""],
     SuccessStatusCode = 200,
 
     Headers0 =
@@ -877,7 +877,7 @@ get_folder_path(Client, FolderId, Fields, Limit, Marker, AuthenticationToken)
     get_folder_path(Client, FolderId, Fields, Limit, Marker, AuthenticationToken, []).
 get_folder_path(Client, FolderId, Fields, Limit, Marker, AuthenticationToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/api/v1/folders/", http_uri:encode(FolderId), "/path"],
+    Path = ["/api/v1/folders/", aws_util:encode_uri(FolderId), "/path"],
     SuccessStatusCode = 200,
 
     Headers0 =
@@ -955,7 +955,7 @@ remove_all_resource_permissions(Client, ResourceId, Input) ->
     remove_all_resource_permissions(Client, ResourceId, Input, []).
 remove_all_resource_permissions(Client, ResourceId, Input0, Options) ->
     Method = delete,
-    Path = ["/api/v1/resources/", http_uri:encode(ResourceId), "/permissions"],
+    Path = ["/api/v1/resources/", aws_util:encode_uri(ResourceId), "/permissions"],
     SuccessStatusCode = 204,
 
     HeadersMapping = [
@@ -974,7 +974,7 @@ remove_resource_permission(Client, PrincipalId, ResourceId, Input) ->
     remove_resource_permission(Client, PrincipalId, ResourceId, Input, []).
 remove_resource_permission(Client, PrincipalId, ResourceId, Input0, Options) ->
     Method = delete,
-    Path = ["/api/v1/resources/", http_uri:encode(ResourceId), "/permissions/", http_uri:encode(PrincipalId), ""],
+    Path = ["/api/v1/resources/", aws_util:encode_uri(ResourceId), "/permissions/", aws_util:encode_uri(PrincipalId), ""],
     SuccessStatusCode = 204,
 
     HeadersMapping = [
@@ -996,7 +996,7 @@ update_document(Client, DocumentId, Input) ->
     update_document(Client, DocumentId, Input, []).
 update_document(Client, DocumentId, Input0, Options) ->
     Method = patch,
-    Path = ["/api/v1/documents/", http_uri:encode(DocumentId), ""],
+    Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), ""],
     SuccessStatusCode = 200,
 
     HeadersMapping = [
@@ -1018,7 +1018,7 @@ update_document_version(Client, DocumentId, VersionId, Input) ->
     update_document_version(Client, DocumentId, VersionId, Input, []).
 update_document_version(Client, DocumentId, VersionId, Input0, Options) ->
     Method = patch,
-    Path = ["/api/v1/documents/", http_uri:encode(DocumentId), "/versions/", http_uri:encode(VersionId), ""],
+    Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), "/versions/", aws_util:encode_uri(VersionId), ""],
     SuccessStatusCode = 200,
 
     HeadersMapping = [
@@ -1039,7 +1039,7 @@ update_folder(Client, FolderId, Input) ->
     update_folder(Client, FolderId, Input, []).
 update_folder(Client, FolderId, Input0, Options) ->
     Method = patch,
-    Path = ["/api/v1/folders/", http_uri:encode(FolderId), ""],
+    Path = ["/api/v1/folders/", aws_util:encode_uri(FolderId), ""],
     SuccessStatusCode = 200,
 
     HeadersMapping = [
@@ -1058,7 +1058,7 @@ update_user(Client, UserId, Input) ->
     update_user(Client, UserId, Input, []).
 update_user(Client, UserId, Input0, Options) ->
     Method = patch,
-    Path = ["/api/v1/users/", http_uri:encode(UserId), ""],
+    Path = ["/api/v1/users/", aws_util:encode_uri(UserId), ""],
     SuccessStatusCode = 200,
 
     HeadersMapping = [

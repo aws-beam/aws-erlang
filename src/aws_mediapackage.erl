@@ -54,7 +54,7 @@ configure_logs(Client, Id, Input) ->
     configure_logs(Client, Id, Input, []).
 configure_logs(Client, Id, Input0, Options) ->
     Method = put,
-    Path = ["/channels/", http_uri:encode(Id), "/configure_logs"],
+    Path = ["/channels/", aws_util:encode_uri(Id), "/configure_logs"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -118,7 +118,7 @@ delete_channel(Client, Id, Input) ->
     delete_channel(Client, Id, Input, []).
 delete_channel(Client, Id, Input0, Options) ->
     Method = delete,
-    Path = ["/channels/", http_uri:encode(Id), ""],
+    Path = ["/channels/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -134,7 +134,7 @@ delete_origin_endpoint(Client, Id, Input) ->
     delete_origin_endpoint(Client, Id, Input, []).
 delete_origin_endpoint(Client, Id, Input0, Options) ->
     Method = delete,
-    Path = ["/origin_endpoints/", http_uri:encode(Id), ""],
+    Path = ["/origin_endpoints/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -151,7 +151,7 @@ describe_channel(Client, Id)
     describe_channel(Client, Id, []).
 describe_channel(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/channels/", http_uri:encode(Id), ""],
+    Path = ["/channels/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -166,7 +166,7 @@ describe_harvest_job(Client, Id)
     describe_harvest_job(Client, Id, []).
 describe_harvest_job(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/harvest_jobs/", http_uri:encode(Id), ""],
+    Path = ["/harvest_jobs/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -181,7 +181,7 @@ describe_origin_endpoint(Client, Id)
     describe_origin_endpoint(Client, Id, []).
 describe_origin_endpoint(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/origin_endpoints/", http_uri:encode(Id), ""],
+    Path = ["/origin_endpoints/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -259,7 +259,7 @@ list_tags_for_resource(Client, ResourceArn)
     list_tags_for_resource(Client, ResourceArn, []).
 list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -276,7 +276,7 @@ rotate_channel_credentials(Client, Id, Input) ->
     rotate_channel_credentials(Client, Id, Input, []).
 rotate_channel_credentials(Client, Id, Input0, Options) ->
     Method = put,
-    Path = ["/channels/", http_uri:encode(Id), "/credentials"],
+    Path = ["/channels/", aws_util:encode_uri(Id), "/credentials"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -293,7 +293,7 @@ rotate_ingest_endpoint_credentials(Client, Id, IngestEndpointId, Input) ->
     rotate_ingest_endpoint_credentials(Client, Id, IngestEndpointId, Input, []).
 rotate_ingest_endpoint_credentials(Client, Id, IngestEndpointId, Input0, Options) ->
     Method = put,
-    Path = ["/channels/", http_uri:encode(Id), "/ingest_endpoints/", http_uri:encode(IngestEndpointId), "/credentials"],
+    Path = ["/channels/", aws_util:encode_uri(Id), "/ingest_endpoints/", aws_util:encode_uri(IngestEndpointId), "/credentials"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -309,7 +309,7 @@ tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -325,7 +325,7 @@ untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -342,7 +342,7 @@ update_channel(Client, Id, Input) ->
     update_channel(Client, Id, Input, []).
 update_channel(Client, Id, Input0, Options) ->
     Method = put,
-    Path = ["/channels/", http_uri:encode(Id), ""],
+    Path = ["/channels/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -358,7 +358,7 @@ update_origin_endpoint(Client, Id, Input) ->
     update_origin_endpoint(Client, Id, Input, []).
 update_origin_endpoint(Client, Id, Input0, Options) ->
     Method = put,
-    Path = ["/origin_endpoints/", http_uri:encode(Id), ""],
+    Path = ["/origin_endpoints/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
     Headers = [],

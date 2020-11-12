@@ -119,8 +119,8 @@ create_dataset(Client, Input, Options)
 %% To get a list of all your datasets groups, use the `ListDatasetGroups`
 %% operation.
 %%
-%% The `Status` of a dataset group must be `ACTIVE` before you can create use
-%% the dataset group to create a predictor. To get the status, use the
+%% The `Status` of a dataset group must be `ACTIVE` before you can use the
+%% dataset group to create a predictor. To get the status, use the
 %% `DescribeDatasetGroup` operation.
 create_dataset_group(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -222,24 +222,20 @@ create_forecast_export_job(Client, Input, Options)
 
 %% @doc Creates an Amazon Forecast predictor.
 %%
-%% In the request, you provide a dataset group and either specify an
-%% algorithm or let Amazon Forecast choose the algorithm for you using
-%% AutoML. If you specify an algorithm, you also can override
-%% algorithm-specific hyperparameters.
+%% In the request, provide a dataset group and either specify an algorithm or
+%% let Amazon Forecast choose an algorithm for you using AutoML. If you
+%% specify an algorithm, you also can override algorithm-specific
+%% hyperparameters.
 %%
-%% Amazon Forecast uses the chosen algorithm to train a model using the
-%% latest version of the datasets in the specified dataset group. The result
-%% is called a predictor. You then generate a forecast using the
-%% `CreateForecast` operation.
+%% Amazon Forecast uses the algorithm to train a predictor using the latest
+%% version of the datasets in the specified dataset group. You can then
+%% generate a forecast using the `CreateForecast` operation.
 %%
-%% After training a model, the `CreatePredictor` operation also evaluates it.
 %% To see the evaluation metrics, use the `GetAccuracyMetrics` operation.
-%% Always review the evaluation metrics before deciding to use the predictor
-%% to generate a forecast.
 %%
-%% Optionally, you can specify a featurization configuration to fill and
-%% aggregate the data fields in the `TARGET_TIME_SERIES` dataset to improve
-%% model training. For more information, see `FeaturizationConfig`.
+%% You can specify a featurization configuration to fill and aggregate the
+%% data fields in the `TARGET_TIME_SERIES` dataset to improve model training.
+%% For more information, see `FeaturizationConfig`.
 %%
 %% For RELATED_TIME_SERIES datasets, `CreatePredictor` verifies that the
 %% `DataFrequency` specified when the dataset was created matches the
@@ -247,12 +243,17 @@ create_forecast_export_job(Client, Input, Options)
 %% restriction. Amazon Forecast also verifies the delimiter and timestamp
 %% format. For more information, see `howitworks-datasets-groups`.
 %%
+%% By default, predictors are trained and evaluated at the 0.1 (P10), 0.5
+%% (P50), and 0.9 (P90) quantiles. You can choose custom forecast types to
+%% train and evaluate your predictor by setting the `ForecastTypes`.
+%%
 %% AutoML
 %%
 %% If you want Amazon Forecast to evaluate each algorithm and choose the one
 %% that minimizes the `objective function`, set `PerformAutoML` to `true`.
-%% The `objective function` is defined as the mean of the weighted p10, p50,
-%% and p90 quantile losses. For more information, see `EvaluationResult`.
+%% The `objective function` is defined as the mean of the weighted losses
+%% over the forecast types. By default, these are the p10, p50, and p90
+%% quantile losses. For more information, see `EvaluationResult`.
 %%
 %% When AutoML is enabled, the following properties are disallowed:
 %%
@@ -508,7 +509,7 @@ describe_predictor(Client, Input, Options)
 %%
 %% Use metrics to see how well the model performed and to decide whether to
 %% use the predictor to generate a forecast. For more information, see
-%% `metrics`.
+%% Predictor Metrics.
 %%
 %% This operation generates metrics for each backtest window that was
 %% evaluated. The number of backtest windows (`NumberOfBacktestWindows`) is

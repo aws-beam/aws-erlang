@@ -35,7 +35,7 @@ cancel_quantum_task(Client, QuantumTaskArn, Input) ->
     cancel_quantum_task(Client, QuantumTaskArn, Input, []).
 cancel_quantum_task(Client, QuantumTaskArn, Input0, Options) ->
     Method = put,
-    Path = ["/quantum-task/", http_uri:encode(QuantumTaskArn), "/cancel"],
+    Path = ["/quantum-task/", aws_util:encode_uri(QuantumTaskArn), "/cancel"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -68,7 +68,7 @@ get_device(Client, DeviceArn)
     get_device(Client, DeviceArn, []).
 get_device(Client, DeviceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/device/", http_uri:encode(DeviceArn), ""],
+    Path = ["/device/", aws_util:encode_uri(DeviceArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -83,7 +83,7 @@ get_quantum_task(Client, QuantumTaskArn)
     get_quantum_task(Client, QuantumTaskArn, []).
 get_quantum_task(Client, QuantumTaskArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/quantum-task/", http_uri:encode(QuantumTaskArn), ""],
+    Path = ["/quantum-task/", aws_util:encode_uri(QuantumTaskArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -98,7 +98,7 @@ list_tags_for_resource(Client, ResourceArn)
     list_tags_for_resource(Client, ResourceArn, []).
 list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -144,7 +144,7 @@ tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -160,7 +160,7 @@ untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],

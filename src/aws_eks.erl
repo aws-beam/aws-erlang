@@ -160,7 +160,7 @@ create_fargate_profile(Client, ClusterName, Input) ->
     create_fargate_profile(Client, ClusterName, Input, []).
 create_fargate_profile(Client, ClusterName, Input0, Options) ->
     Method = post,
-    Path = ["/clusters/", http_uri:encode(ClusterName), "/fargate-profiles"],
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/fargate-profiles"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -189,7 +189,7 @@ create_nodegroup(Client, ClusterName, Input) ->
     create_nodegroup(Client, ClusterName, Input, []).
 create_nodegroup(Client, ClusterName, Input0, Options) ->
     Method = post,
-    Path = ["/clusters/", http_uri:encode(ClusterName), "/node-groups"],
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/node-groups"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -216,7 +216,7 @@ delete_cluster(Client, Name, Input) ->
     delete_cluster(Client, Name, Input, []).
 delete_cluster(Client, Name, Input0, Options) ->
     Method = delete,
-    Path = ["/clusters/", http_uri:encode(Name), ""],
+    Path = ["/clusters/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -242,7 +242,7 @@ delete_fargate_profile(Client, ClusterName, FargateProfileName, Input) ->
     delete_fargate_profile(Client, ClusterName, FargateProfileName, Input, []).
 delete_fargate_profile(Client, ClusterName, FargateProfileName, Input0, Options) ->
     Method = delete,
-    Path = ["/clusters/", http_uri:encode(ClusterName), "/fargate-profiles/", http_uri:encode(FargateProfileName), ""],
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/fargate-profiles/", aws_util:encode_uri(FargateProfileName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -258,7 +258,7 @@ delete_nodegroup(Client, ClusterName, NodegroupName, Input) ->
     delete_nodegroup(Client, ClusterName, NodegroupName, Input, []).
 delete_nodegroup(Client, ClusterName, NodegroupName, Input0, Options) ->
     Method = delete,
-    Path = ["/clusters/", http_uri:encode(ClusterName), "/node-groups/", http_uri:encode(NodegroupName), ""],
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/node-groups/", aws_util:encode_uri(NodegroupName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -283,7 +283,7 @@ describe_cluster(Client, Name)
     describe_cluster(Client, Name, []).
 describe_cluster(Client, Name, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/clusters/", http_uri:encode(Name), ""],
+    Path = ["/clusters/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -298,7 +298,7 @@ describe_fargate_profile(Client, ClusterName, FargateProfileName)
     describe_fargate_profile(Client, ClusterName, FargateProfileName, []).
 describe_fargate_profile(Client, ClusterName, FargateProfileName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/clusters/", http_uri:encode(ClusterName), "/fargate-profiles/", http_uri:encode(FargateProfileName), ""],
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/fargate-profiles/", aws_util:encode_uri(FargateProfileName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -313,7 +313,7 @@ describe_nodegroup(Client, ClusterName, NodegroupName)
     describe_nodegroup(Client, ClusterName, NodegroupName, []).
 describe_nodegroup(Client, ClusterName, NodegroupName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/clusters/", http_uri:encode(ClusterName), "/node-groups/", http_uri:encode(NodegroupName), ""],
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/node-groups/", aws_util:encode_uri(NodegroupName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -333,7 +333,7 @@ describe_update(Client, Name, UpdateId, NodegroupName)
     describe_update(Client, Name, UpdateId, NodegroupName, []).
 describe_update(Client, Name, UpdateId, NodegroupName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/clusters/", http_uri:encode(Name), "/updates/", http_uri:encode(UpdateId), ""],
+    Path = ["/clusters/", aws_util:encode_uri(Name), "/updates/", aws_util:encode_uri(UpdateId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -374,7 +374,7 @@ list_fargate_profiles(Client, ClusterName, MaxResults, NextToken)
     list_fargate_profiles(Client, ClusterName, MaxResults, NextToken, []).
 list_fargate_profiles(Client, ClusterName, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/clusters/", http_uri:encode(ClusterName), "/fargate-profiles"],
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/fargate-profiles"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -397,7 +397,7 @@ list_nodegroups(Client, ClusterName, MaxResults, NextToken)
     list_nodegroups(Client, ClusterName, MaxResults, NextToken, []).
 list_nodegroups(Client, ClusterName, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/clusters/", http_uri:encode(ClusterName), "/node-groups"],
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/node-groups"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -417,7 +417,7 @@ list_tags_for_resource(Client, ResourceArn)
     list_tags_for_resource(Client, ResourceArn, []).
 list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -433,7 +433,7 @@ list_updates(Client, Name, MaxResults, NextToken, NodegroupName)
     list_updates(Client, Name, MaxResults, NextToken, NodegroupName, []).
 list_updates(Client, Name, MaxResults, NextToken, NodegroupName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/clusters/", http_uri:encode(Name), "/updates"],
+    Path = ["/clusters/", aws_util:encode_uri(Name), "/updates"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -462,7 +462,7 @@ tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -478,7 +478,7 @@ untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -523,7 +523,7 @@ update_cluster_config(Client, Name, Input) ->
     update_cluster_config(Client, Name, Input, []).
 update_cluster_config(Client, Name, Input0, Options) ->
     Method = post,
-    Path = ["/clusters/", http_uri:encode(Name), "/update-config"],
+    Path = ["/clusters/", aws_util:encode_uri(Name), "/update-config"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -552,7 +552,7 @@ update_cluster_version(Client, Name, Input) ->
     update_cluster_version(Client, Name, Input, []).
 update_cluster_version(Client, Name, Input0, Options) ->
     Method = post,
-    Path = ["/clusters/", http_uri:encode(Name), "/updates"],
+    Path = ["/clusters/", aws_util:encode_uri(Name), "/updates"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -574,7 +574,7 @@ update_nodegroup_config(Client, ClusterName, NodegroupName, Input) ->
     update_nodegroup_config(Client, ClusterName, NodegroupName, Input, []).
 update_nodegroup_config(Client, ClusterName, NodegroupName, Input0, Options) ->
     Method = post,
-    Path = ["/clusters/", http_uri:encode(ClusterName), "/node-groups/", http_uri:encode(NodegroupName), "/update-config"],
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/node-groups/", aws_util:encode_uri(NodegroupName), "/update-config"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -615,7 +615,7 @@ update_nodegroup_version(Client, ClusterName, NodegroupName, Input) ->
     update_nodegroup_version(Client, ClusterName, NodegroupName, Input, []).
 update_nodegroup_version(Client, ClusterName, NodegroupName, Input0, Options) ->
     Method = post,
-    Path = ["/clusters/", http_uri:encode(ClusterName), "/node-groups/", http_uri:encode(NodegroupName), "/update-version"],
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/node-groups/", aws_util:encode_uri(NodegroupName), "/update-version"],
     SuccessStatusCode = undefined,
 
     Headers = [],

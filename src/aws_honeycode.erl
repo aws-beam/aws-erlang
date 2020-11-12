@@ -49,7 +49,7 @@ invoke_screen_automation(Client, AppId, ScreenAutomationId, ScreenId, WorkbookId
     invoke_screen_automation(Client, AppId, ScreenAutomationId, ScreenId, WorkbookId, Input, []).
 invoke_screen_automation(Client, AppId, ScreenAutomationId, ScreenId, WorkbookId, Input0, Options) ->
     Method = post,
-    Path = ["/workbooks/", http_uri:encode(WorkbookId), "/apps/", http_uri:encode(AppId), "/screens/", http_uri:encode(ScreenId), "/automations/", http_uri:encode(ScreenAutomationId), ""],
+    Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/apps/", aws_util:encode_uri(AppId), "/screens/", aws_util:encode_uri(ScreenId), "/automations/", aws_util:encode_uri(ScreenAutomationId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],

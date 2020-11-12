@@ -183,7 +183,7 @@ get_tags(Client, Arn)
     get_tags(Client, Arn, []).
 get_tags(Client, Arn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/resources/", http_uri:encode(Arn), "/tags"],
+    Path = ["/resources/", aws_util:encode_uri(Arn), "/tags"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -276,7 +276,7 @@ tag(Client, Arn, Input) ->
     tag(Client, Arn, Input, []).
 tag(Client, Arn, Input0, Options) ->
     Method = put,
-    Path = ["/resources/", http_uri:encode(Arn), "/tags"],
+    Path = ["/resources/", aws_util:encode_uri(Arn), "/tags"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -308,7 +308,7 @@ untag(Client, Arn, Input) ->
     untag(Client, Arn, Input, []).
 untag(Client, Arn, Input0, Options) ->
     Method = patch,
-    Path = ["/resources/", http_uri:encode(Arn), "/tags"],
+    Path = ["/resources/", aws_util:encode_uri(Arn), "/tags"],
     SuccessStatusCode = undefined,
 
     Headers = [],

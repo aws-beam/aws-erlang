@@ -176,7 +176,7 @@ create_api_mapping(Client, DomainName, Input) ->
     create_api_mapping(Client, DomainName, Input, []).
 create_api_mapping(Client, DomainName, Input0, Options) ->
     Method = post,
-    Path = ["/v2/domainnames/", http_uri:encode(DomainName), "/apimappings"],
+    Path = ["/v2/domainnames/", aws_util:encode_uri(DomainName), "/apimappings"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -192,7 +192,7 @@ create_authorizer(Client, ApiId, Input) ->
     create_authorizer(Client, ApiId, Input, []).
 create_authorizer(Client, ApiId, Input0, Options) ->
     Method = post,
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/authorizers"],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/authorizers"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -208,7 +208,7 @@ create_deployment(Client, ApiId, Input) ->
     create_deployment(Client, ApiId, Input, []).
 create_deployment(Client, ApiId, Input0, Options) ->
     Method = post,
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/deployments"],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/deployments"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -240,7 +240,7 @@ create_integration(Client, ApiId, Input) ->
     create_integration(Client, ApiId, Input, []).
 create_integration(Client, ApiId, Input0, Options) ->
     Method = post,
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/integrations"],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/integrations"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -256,7 +256,7 @@ create_integration_response(Client, ApiId, IntegrationId, Input) ->
     create_integration_response(Client, ApiId, IntegrationId, Input, []).
 create_integration_response(Client, ApiId, IntegrationId, Input0, Options) ->
     Method = post,
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/integrations/", http_uri:encode(IntegrationId), "/integrationresponses"],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/integrations/", aws_util:encode_uri(IntegrationId), "/integrationresponses"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -272,7 +272,7 @@ create_model(Client, ApiId, Input) ->
     create_model(Client, ApiId, Input, []).
 create_model(Client, ApiId, Input0, Options) ->
     Method = post,
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/models"],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/models"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -288,7 +288,7 @@ create_route(Client, ApiId, Input) ->
     create_route(Client, ApiId, Input, []).
 create_route(Client, ApiId, Input0, Options) ->
     Method = post,
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/routes"],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -304,7 +304,7 @@ create_route_response(Client, ApiId, RouteId, Input) ->
     create_route_response(Client, ApiId, RouteId, Input, []).
 create_route_response(Client, ApiId, RouteId, Input0, Options) ->
     Method = post,
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/routes/", http_uri:encode(RouteId), "/routeresponses"],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes/", aws_util:encode_uri(RouteId), "/routeresponses"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -320,7 +320,7 @@ create_stage(Client, ApiId, Input) ->
     create_stage(Client, ApiId, Input, []).
 create_stage(Client, ApiId, Input0, Options) ->
     Method = post,
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/stages"],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/stages"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -354,7 +354,7 @@ delete_access_log_settings(Client, ApiId, StageName, Input) ->
     delete_access_log_settings(Client, ApiId, StageName, Input, []).
 delete_access_log_settings(Client, ApiId, StageName, Input0, Options) ->
     Method = delete,
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/stages/", http_uri:encode(StageName), "/accesslogsettings"],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/stages/", aws_util:encode_uri(StageName), "/accesslogsettings"],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -370,7 +370,7 @@ delete_api(Client, ApiId, Input) ->
     delete_api(Client, ApiId, Input, []).
 delete_api(Client, ApiId, Input0, Options) ->
     Method = delete,
-    Path = ["/v2/apis/", http_uri:encode(ApiId), ""],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -386,7 +386,7 @@ delete_api_mapping(Client, ApiMappingId, DomainName, Input) ->
     delete_api_mapping(Client, ApiMappingId, DomainName, Input, []).
 delete_api_mapping(Client, ApiMappingId, DomainName, Input0, Options) ->
     Method = delete,
-    Path = ["/v2/domainnames/", http_uri:encode(DomainName), "/apimappings/", http_uri:encode(ApiMappingId), ""],
+    Path = ["/v2/domainnames/", aws_util:encode_uri(DomainName), "/apimappings/", aws_util:encode_uri(ApiMappingId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -402,7 +402,7 @@ delete_authorizer(Client, ApiId, AuthorizerId, Input) ->
     delete_authorizer(Client, ApiId, AuthorizerId, Input, []).
 delete_authorizer(Client, ApiId, AuthorizerId, Input0, Options) ->
     Method = delete,
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/authorizers/", http_uri:encode(AuthorizerId), ""],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/authorizers/", aws_util:encode_uri(AuthorizerId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -418,7 +418,7 @@ delete_cors_configuration(Client, ApiId, Input) ->
     delete_cors_configuration(Client, ApiId, Input, []).
 delete_cors_configuration(Client, ApiId, Input0, Options) ->
     Method = delete,
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/cors"],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/cors"],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -434,7 +434,7 @@ delete_deployment(Client, ApiId, DeploymentId, Input) ->
     delete_deployment(Client, ApiId, DeploymentId, Input, []).
 delete_deployment(Client, ApiId, DeploymentId, Input0, Options) ->
     Method = delete,
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/deployments/", http_uri:encode(DeploymentId), ""],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/deployments/", aws_util:encode_uri(DeploymentId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -450,7 +450,7 @@ delete_domain_name(Client, DomainName, Input) ->
     delete_domain_name(Client, DomainName, Input, []).
 delete_domain_name(Client, DomainName, Input0, Options) ->
     Method = delete,
-    Path = ["/v2/domainnames/", http_uri:encode(DomainName), ""],
+    Path = ["/v2/domainnames/", aws_util:encode_uri(DomainName), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -466,7 +466,7 @@ delete_integration(Client, ApiId, IntegrationId, Input) ->
     delete_integration(Client, ApiId, IntegrationId, Input, []).
 delete_integration(Client, ApiId, IntegrationId, Input0, Options) ->
     Method = delete,
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/integrations/", http_uri:encode(IntegrationId), ""],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/integrations/", aws_util:encode_uri(IntegrationId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -482,7 +482,7 @@ delete_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId,
     delete_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, Input, []).
 delete_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, Input0, Options) ->
     Method = delete,
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/integrations/", http_uri:encode(IntegrationId), "/integrationresponses/", http_uri:encode(IntegrationResponseId), ""],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/integrations/", aws_util:encode_uri(IntegrationId), "/integrationresponses/", aws_util:encode_uri(IntegrationResponseId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -498,7 +498,7 @@ delete_model(Client, ApiId, ModelId, Input) ->
     delete_model(Client, ApiId, ModelId, Input, []).
 delete_model(Client, ApiId, ModelId, Input0, Options) ->
     Method = delete,
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/models/", http_uri:encode(ModelId), ""],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/models/", aws_util:encode_uri(ModelId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -514,7 +514,7 @@ delete_route(Client, ApiId, RouteId, Input) ->
     delete_route(Client, ApiId, RouteId, Input, []).
 delete_route(Client, ApiId, RouteId, Input0, Options) ->
     Method = delete,
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/routes/", http_uri:encode(RouteId), ""],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes/", aws_util:encode_uri(RouteId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -530,7 +530,7 @@ delete_route_request_parameter(Client, ApiId, RequestParameterKey, RouteId, Inpu
     delete_route_request_parameter(Client, ApiId, RequestParameterKey, RouteId, Input, []).
 delete_route_request_parameter(Client, ApiId, RequestParameterKey, RouteId, Input0, Options) ->
     Method = delete,
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/routes/", http_uri:encode(RouteId), "/requestparameters/", http_uri:encode(RequestParameterKey), ""],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes/", aws_util:encode_uri(RouteId), "/requestparameters/", aws_util:encode_uri(RequestParameterKey), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -546,7 +546,7 @@ delete_route_response(Client, ApiId, RouteId, RouteResponseId, Input) ->
     delete_route_response(Client, ApiId, RouteId, RouteResponseId, Input, []).
 delete_route_response(Client, ApiId, RouteId, RouteResponseId, Input0, Options) ->
     Method = delete,
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/routes/", http_uri:encode(RouteId), "/routeresponses/", http_uri:encode(RouteResponseId), ""],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes/", aws_util:encode_uri(RouteId), "/routeresponses/", aws_util:encode_uri(RouteResponseId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -562,7 +562,7 @@ delete_route_settings(Client, ApiId, RouteKey, StageName, Input) ->
     delete_route_settings(Client, ApiId, RouteKey, StageName, Input, []).
 delete_route_settings(Client, ApiId, RouteKey, StageName, Input0, Options) ->
     Method = delete,
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/stages/", http_uri:encode(StageName), "/routesettings/", http_uri:encode(RouteKey), ""],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/stages/", aws_util:encode_uri(StageName), "/routesettings/", aws_util:encode_uri(RouteKey), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -578,7 +578,7 @@ delete_stage(Client, ApiId, StageName, Input) ->
     delete_stage(Client, ApiId, StageName, Input, []).
 delete_stage(Client, ApiId, StageName, Input0, Options) ->
     Method = delete,
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/stages/", http_uri:encode(StageName), ""],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/stages/", aws_util:encode_uri(StageName), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -594,7 +594,7 @@ delete_vpc_link(Client, VpcLinkId, Input) ->
     delete_vpc_link(Client, VpcLinkId, Input, []).
 delete_vpc_link(Client, VpcLinkId, Input0, Options) ->
     Method = delete,
-    Path = ["/v2/vpclinks/", http_uri:encode(VpcLinkId), ""],
+    Path = ["/v2/vpclinks/", aws_util:encode_uri(VpcLinkId), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -612,7 +612,7 @@ export_api(Client, ApiId, Specification, ExportVersion, IncludeExtensions, Outpu
     export_api(Client, ApiId, Specification, ExportVersion, IncludeExtensions, OutputType, StageName, []).
 export_api(Client, ApiId, Specification, ExportVersion, IncludeExtensions, OutputType, StageName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/exports/", http_uri:encode(Specification), ""],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/exports/", aws_util:encode_uri(Specification), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -634,7 +634,7 @@ get_api(Client, ApiId)
     get_api(Client, ApiId, []).
 get_api(Client, ApiId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v2/apis/", http_uri:encode(ApiId), ""],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -649,7 +649,7 @@ get_api_mapping(Client, ApiMappingId, DomainName)
     get_api_mapping(Client, ApiMappingId, DomainName, []).
 get_api_mapping(Client, ApiMappingId, DomainName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v2/domainnames/", http_uri:encode(DomainName), "/apimappings/", http_uri:encode(ApiMappingId), ""],
+    Path = ["/v2/domainnames/", aws_util:encode_uri(DomainName), "/apimappings/", aws_util:encode_uri(ApiMappingId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -664,7 +664,7 @@ get_api_mappings(Client, DomainName, MaxResults, NextToken)
     get_api_mappings(Client, DomainName, MaxResults, NextToken, []).
 get_api_mappings(Client, DomainName, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v2/domainnames/", http_uri:encode(DomainName), "/apimappings"],
+    Path = ["/v2/domainnames/", aws_util:encode_uri(DomainName), "/apimappings"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -704,7 +704,7 @@ get_authorizer(Client, ApiId, AuthorizerId)
     get_authorizer(Client, ApiId, AuthorizerId, []).
 get_authorizer(Client, ApiId, AuthorizerId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/authorizers/", http_uri:encode(AuthorizerId), ""],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/authorizers/", aws_util:encode_uri(AuthorizerId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -719,7 +719,7 @@ get_authorizers(Client, ApiId, MaxResults, NextToken)
     get_authorizers(Client, ApiId, MaxResults, NextToken, []).
 get_authorizers(Client, ApiId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/authorizers"],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/authorizers"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -739,7 +739,7 @@ get_deployment(Client, ApiId, DeploymentId)
     get_deployment(Client, ApiId, DeploymentId, []).
 get_deployment(Client, ApiId, DeploymentId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/deployments/", http_uri:encode(DeploymentId), ""],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/deployments/", aws_util:encode_uri(DeploymentId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -754,7 +754,7 @@ get_deployments(Client, ApiId, MaxResults, NextToken)
     get_deployments(Client, ApiId, MaxResults, NextToken, []).
 get_deployments(Client, ApiId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/deployments"],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/deployments"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -774,7 +774,7 @@ get_domain_name(Client, DomainName)
     get_domain_name(Client, DomainName, []).
 get_domain_name(Client, DomainName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v2/domainnames/", http_uri:encode(DomainName), ""],
+    Path = ["/v2/domainnames/", aws_util:encode_uri(DomainName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -809,7 +809,7 @@ get_integration(Client, ApiId, IntegrationId)
     get_integration(Client, ApiId, IntegrationId, []).
 get_integration(Client, ApiId, IntegrationId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/integrations/", http_uri:encode(IntegrationId), ""],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/integrations/", aws_util:encode_uri(IntegrationId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -824,7 +824,7 @@ get_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId)
     get_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, []).
 get_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/integrations/", http_uri:encode(IntegrationId), "/integrationresponses/", http_uri:encode(IntegrationResponseId), ""],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/integrations/", aws_util:encode_uri(IntegrationId), "/integrationresponses/", aws_util:encode_uri(IntegrationResponseId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -839,7 +839,7 @@ get_integration_responses(Client, ApiId, IntegrationId, MaxResults, NextToken)
     get_integration_responses(Client, ApiId, IntegrationId, MaxResults, NextToken, []).
 get_integration_responses(Client, ApiId, IntegrationId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/integrations/", http_uri:encode(IntegrationId), "/integrationresponses"],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/integrations/", aws_util:encode_uri(IntegrationId), "/integrationresponses"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -859,7 +859,7 @@ get_integrations(Client, ApiId, MaxResults, NextToken)
     get_integrations(Client, ApiId, MaxResults, NextToken, []).
 get_integrations(Client, ApiId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/integrations"],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/integrations"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -879,7 +879,7 @@ get_model(Client, ApiId, ModelId)
     get_model(Client, ApiId, ModelId, []).
 get_model(Client, ApiId, ModelId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/models/", http_uri:encode(ModelId), ""],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/models/", aws_util:encode_uri(ModelId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -894,7 +894,7 @@ get_model_template(Client, ApiId, ModelId)
     get_model_template(Client, ApiId, ModelId, []).
 get_model_template(Client, ApiId, ModelId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/models/", http_uri:encode(ModelId), "/template"],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/models/", aws_util:encode_uri(ModelId), "/template"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -909,7 +909,7 @@ get_models(Client, ApiId, MaxResults, NextToken)
     get_models(Client, ApiId, MaxResults, NextToken, []).
 get_models(Client, ApiId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/models"],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/models"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -929,7 +929,7 @@ get_route(Client, ApiId, RouteId)
     get_route(Client, ApiId, RouteId, []).
 get_route(Client, ApiId, RouteId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/routes/", http_uri:encode(RouteId), ""],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes/", aws_util:encode_uri(RouteId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -944,7 +944,7 @@ get_route_response(Client, ApiId, RouteId, RouteResponseId)
     get_route_response(Client, ApiId, RouteId, RouteResponseId, []).
 get_route_response(Client, ApiId, RouteId, RouteResponseId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/routes/", http_uri:encode(RouteId), "/routeresponses/", http_uri:encode(RouteResponseId), ""],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes/", aws_util:encode_uri(RouteId), "/routeresponses/", aws_util:encode_uri(RouteResponseId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -959,7 +959,7 @@ get_route_responses(Client, ApiId, RouteId, MaxResults, NextToken)
     get_route_responses(Client, ApiId, RouteId, MaxResults, NextToken, []).
 get_route_responses(Client, ApiId, RouteId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/routes/", http_uri:encode(RouteId), "/routeresponses"],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes/", aws_util:encode_uri(RouteId), "/routeresponses"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -979,7 +979,7 @@ get_routes(Client, ApiId, MaxResults, NextToken)
     get_routes(Client, ApiId, MaxResults, NextToken, []).
 get_routes(Client, ApiId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/routes"],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -999,7 +999,7 @@ get_stage(Client, ApiId, StageName)
     get_stage(Client, ApiId, StageName, []).
 get_stage(Client, ApiId, StageName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/stages/", http_uri:encode(StageName), ""],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/stages/", aws_util:encode_uri(StageName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1014,7 +1014,7 @@ get_stages(Client, ApiId, MaxResults, NextToken)
     get_stages(Client, ApiId, MaxResults, NextToken, []).
 get_stages(Client, ApiId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/stages"],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/stages"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1034,7 +1034,7 @@ get_tags(Client, ResourceArn)
     get_tags(Client, ResourceArn, []).
 get_tags(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v2/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/v2/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1049,7 +1049,7 @@ get_vpc_link(Client, VpcLinkId)
     get_vpc_link(Client, VpcLinkId, []).
 get_vpc_link(Client, VpcLinkId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v2/vpclinks/", http_uri:encode(VpcLinkId), ""],
+    Path = ["/v2/vpclinks/", aws_util:encode_uri(VpcLinkId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1101,7 +1101,7 @@ reimport_api(Client, ApiId, Input) ->
     reimport_api(Client, ApiId, Input, []).
 reimport_api(Client, ApiId, Input0, Options) ->
     Method = put,
-    Path = ["/v2/apis/", http_uri:encode(ApiId), ""],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), ""],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -1121,7 +1121,7 @@ reset_authorizers_cache(Client, ApiId, StageName, Input) ->
     reset_authorizers_cache(Client, ApiId, StageName, Input, []).
 reset_authorizers_cache(Client, ApiId, StageName, Input0, Options) ->
     Method = delete,
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/stages/", http_uri:encode(StageName), "/cache/authorizers"],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/stages/", aws_util:encode_uri(StageName), "/cache/authorizers"],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -1137,7 +1137,7 @@ tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/v2/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/v2/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -1153,7 +1153,7 @@ untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/v2/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/v2/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -1170,7 +1170,7 @@ update_api(Client, ApiId, Input) ->
     update_api(Client, ApiId, Input, []).
 update_api(Client, ApiId, Input0, Options) ->
     Method = patch,
-    Path = ["/v2/apis/", http_uri:encode(ApiId), ""],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1186,7 +1186,7 @@ update_api_mapping(Client, ApiMappingId, DomainName, Input) ->
     update_api_mapping(Client, ApiMappingId, DomainName, Input, []).
 update_api_mapping(Client, ApiMappingId, DomainName, Input0, Options) ->
     Method = patch,
-    Path = ["/v2/domainnames/", http_uri:encode(DomainName), "/apimappings/", http_uri:encode(ApiMappingId), ""],
+    Path = ["/v2/domainnames/", aws_util:encode_uri(DomainName), "/apimappings/", aws_util:encode_uri(ApiMappingId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1202,7 +1202,7 @@ update_authorizer(Client, ApiId, AuthorizerId, Input) ->
     update_authorizer(Client, ApiId, AuthorizerId, Input, []).
 update_authorizer(Client, ApiId, AuthorizerId, Input0, Options) ->
     Method = patch,
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/authorizers/", http_uri:encode(AuthorizerId), ""],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/authorizers/", aws_util:encode_uri(AuthorizerId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1218,7 +1218,7 @@ update_deployment(Client, ApiId, DeploymentId, Input) ->
     update_deployment(Client, ApiId, DeploymentId, Input, []).
 update_deployment(Client, ApiId, DeploymentId, Input0, Options) ->
     Method = patch,
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/deployments/", http_uri:encode(DeploymentId), ""],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/deployments/", aws_util:encode_uri(DeploymentId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1234,7 +1234,7 @@ update_domain_name(Client, DomainName, Input) ->
     update_domain_name(Client, DomainName, Input, []).
 update_domain_name(Client, DomainName, Input0, Options) ->
     Method = patch,
-    Path = ["/v2/domainnames/", http_uri:encode(DomainName), ""],
+    Path = ["/v2/domainnames/", aws_util:encode_uri(DomainName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1250,7 +1250,7 @@ update_integration(Client, ApiId, IntegrationId, Input) ->
     update_integration(Client, ApiId, IntegrationId, Input, []).
 update_integration(Client, ApiId, IntegrationId, Input0, Options) ->
     Method = patch,
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/integrations/", http_uri:encode(IntegrationId), ""],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/integrations/", aws_util:encode_uri(IntegrationId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1266,7 +1266,7 @@ update_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId,
     update_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, Input, []).
 update_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, Input0, Options) ->
     Method = patch,
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/integrations/", http_uri:encode(IntegrationId), "/integrationresponses/", http_uri:encode(IntegrationResponseId), ""],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/integrations/", aws_util:encode_uri(IntegrationId), "/integrationresponses/", aws_util:encode_uri(IntegrationResponseId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1282,7 +1282,7 @@ update_model(Client, ApiId, ModelId, Input) ->
     update_model(Client, ApiId, ModelId, Input, []).
 update_model(Client, ApiId, ModelId, Input0, Options) ->
     Method = patch,
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/models/", http_uri:encode(ModelId), ""],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/models/", aws_util:encode_uri(ModelId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1298,7 +1298,7 @@ update_route(Client, ApiId, RouteId, Input) ->
     update_route(Client, ApiId, RouteId, Input, []).
 update_route(Client, ApiId, RouteId, Input0, Options) ->
     Method = patch,
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/routes/", http_uri:encode(RouteId), ""],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes/", aws_util:encode_uri(RouteId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1314,7 +1314,7 @@ update_route_response(Client, ApiId, RouteId, RouteResponseId, Input) ->
     update_route_response(Client, ApiId, RouteId, RouteResponseId, Input, []).
 update_route_response(Client, ApiId, RouteId, RouteResponseId, Input0, Options) ->
     Method = patch,
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/routes/", http_uri:encode(RouteId), "/routeresponses/", http_uri:encode(RouteResponseId), ""],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes/", aws_util:encode_uri(RouteId), "/routeresponses/", aws_util:encode_uri(RouteResponseId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1330,7 +1330,7 @@ update_stage(Client, ApiId, StageName, Input) ->
     update_stage(Client, ApiId, StageName, Input, []).
 update_stage(Client, ApiId, StageName, Input0, Options) ->
     Method = patch,
-    Path = ["/v2/apis/", http_uri:encode(ApiId), "/stages/", http_uri:encode(StageName), ""],
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/stages/", aws_util:encode_uri(StageName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1346,7 +1346,7 @@ update_vpc_link(Client, VpcLinkId, Input) ->
     update_vpc_link(Client, VpcLinkId, Input, []).
 update_vpc_link(Client, VpcLinkId, Input0, Options) ->
     Method = patch,
-    Path = ["/v2/vpclinks/", http_uri:encode(VpcLinkId), ""],
+    Path = ["/v2/vpclinks/", aws_util:encode_uri(VpcLinkId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],

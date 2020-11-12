@@ -221,7 +221,7 @@ cancel_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input) ->
     cancel_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input, []).
 cancel_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options) ->
     Method = delete,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/data-sets/", http_uri:encode(DataSetId), "/ingestions/", http_uri:encode(IngestionId), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/ingestions/", aws_util:encode_uri(IngestionId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -257,7 +257,7 @@ create_account_customization(Client, AwsAccountId, Input) ->
     create_account_customization(Client, AwsAccountId, Input, []).
 create_account_customization(Client, AwsAccountId, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/customizations"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/customizations"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -274,7 +274,7 @@ create_analysis(Client, AnalysisId, AwsAccountId, Input) ->
     create_analysis(Client, AnalysisId, AwsAccountId, Input, []).
 create_analysis(Client, AnalysisId, AwsAccountId, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/analyses/", http_uri:encode(AnalysisId), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses/", aws_util:encode_uri(AnalysisId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -298,7 +298,7 @@ create_dashboard(Client, AwsAccountId, DashboardId, Input) ->
     create_dashboard(Client, AwsAccountId, DashboardId, Input, []).
 create_dashboard(Client, AwsAccountId, DashboardId, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/dashboards/", http_uri:encode(DashboardId), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -314,7 +314,7 @@ create_data_set(Client, AwsAccountId, Input) ->
     create_data_set(Client, AwsAccountId, Input, []).
 create_data_set(Client, AwsAccountId, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/data-sets"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -330,7 +330,7 @@ create_data_source(Client, AwsAccountId, Input) ->
     create_data_source(Client, AwsAccountId, Input, []).
 create_data_source(Client, AwsAccountId, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/data-sources"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -352,7 +352,7 @@ create_group(Client, AwsAccountId, Namespace, Input) ->
     create_group(Client, AwsAccountId, Namespace, Input, []).
 create_group(Client, AwsAccountId, Namespace, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/namespaces/", http_uri:encode(Namespace), "/groups"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -368,7 +368,7 @@ create_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, 
     create_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, Input, []).
 create_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, Input0, Options) ->
     Method = put,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/namespaces/", http_uri:encode(Namespace), "/groups/", http_uri:encode(GroupName), "/members/", http_uri:encode(MemberName), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups/", aws_util:encode_uri(GroupName), "/members/", aws_util:encode_uri(MemberName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -382,13 +382,15 @@ create_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, 
 %% @doc Creates an assignment with one specified IAM policy, identified by
 %% its Amazon Resource Name (ARN).
 %%
-%% This policy will be assigned to specified groups or users of Amazon
-%% QuickSight. The users and groups need to be in the same namespace.
+%% This policy assignment is attached to the specified groups or users of
+%% Amazon QuickSight. Assignment names are unique per AWS account. To avoid
+%% overwriting rules in other namespaces, use assignment names that are
+%% unique.
 create_i_a_m_policy_assignment(Client, AwsAccountId, Namespace, Input) ->
     create_i_a_m_policy_assignment(Client, AwsAccountId, Namespace, Input, []).
 create_i_a_m_policy_assignment(Client, AwsAccountId, Namespace, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/namespaces/", http_uri:encode(Namespace), "/iam-policy-assignments/"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/iam-policy-assignments/"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -411,7 +413,7 @@ create_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input) ->
     create_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input, []).
 create_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options) ->
     Method = put,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/data-sets/", http_uri:encode(DataSetId), "/ingestions/", http_uri:encode(IngestionId), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/ingestions/", aws_util:encode_uri(IngestionId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -436,7 +438,7 @@ create_namespace(Client, AwsAccountId, Input) ->
     create_namespace(Client, AwsAccountId, Input, []).
 create_namespace(Client, AwsAccountId, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -461,7 +463,7 @@ create_template(Client, AwsAccountId, TemplateId, Input) ->
     create_template(Client, AwsAccountId, TemplateId, Input, []).
 create_template(Client, AwsAccountId, TemplateId, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/templates/", http_uri:encode(TemplateId), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -477,7 +479,7 @@ create_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input) ->
     create_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input, []).
 create_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/templates/", http_uri:encode(TemplateId), "/aliases/", http_uri:encode(AliasName), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/aliases/", aws_util:encode_uri(AliasName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -497,7 +499,7 @@ create_theme(Client, AwsAccountId, ThemeId, Input) ->
     create_theme(Client, AwsAccountId, ThemeId, Input, []).
 create_theme(Client, AwsAccountId, ThemeId, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/themes/", http_uri:encode(ThemeId), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -513,7 +515,7 @@ create_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input) ->
     create_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input, []).
 create_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/themes/", http_uri:encode(ThemeId), "/aliases/", http_uri:encode(AliasName), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/aliases/", aws_util:encode_uri(AliasName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -530,7 +532,7 @@ delete_account_customization(Client, AwsAccountId, Input) ->
     delete_account_customization(Client, AwsAccountId, Input, []).
 delete_account_customization(Client, AwsAccountId, Input0, Options) ->
     Method = delete,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/customizations"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/customizations"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -562,7 +564,7 @@ delete_analysis(Client, AnalysisId, AwsAccountId, Input) ->
     delete_analysis(Client, AnalysisId, AwsAccountId, Input, []).
 delete_analysis(Client, AnalysisId, AwsAccountId, Input0, Options) ->
     Method = delete,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/analyses/", http_uri:encode(AnalysisId), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses/", aws_util:encode_uri(AnalysisId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -580,7 +582,7 @@ delete_dashboard(Client, AwsAccountId, DashboardId, Input) ->
     delete_dashboard(Client, AwsAccountId, DashboardId, Input, []).
 delete_dashboard(Client, AwsAccountId, DashboardId, Input0, Options) ->
     Method = delete,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/dashboards/", http_uri:encode(DashboardId), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -597,7 +599,7 @@ delete_data_set(Client, AwsAccountId, DataSetId, Input) ->
     delete_data_set(Client, AwsAccountId, DataSetId, Input, []).
 delete_data_set(Client, AwsAccountId, DataSetId, Input0, Options) ->
     Method = delete,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/data-sets/", http_uri:encode(DataSetId), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -616,7 +618,7 @@ delete_data_source(Client, AwsAccountId, DataSourceId, Input) ->
     delete_data_source(Client, AwsAccountId, DataSourceId, Input, []).
 delete_data_source(Client, AwsAccountId, DataSourceId, Input0, Options) ->
     Method = delete,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/data-sources/", http_uri:encode(DataSourceId), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources/", aws_util:encode_uri(DataSourceId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -632,7 +634,7 @@ delete_group(Client, AwsAccountId, GroupName, Namespace, Input) ->
     delete_group(Client, AwsAccountId, GroupName, Namespace, Input, []).
 delete_group(Client, AwsAccountId, GroupName, Namespace, Input0, Options) ->
     Method = delete,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/namespaces/", http_uri:encode(Namespace), "/groups/", http_uri:encode(GroupName), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups/", aws_util:encode_uri(GroupName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -649,7 +651,7 @@ delete_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, 
     delete_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, Input, []).
 delete_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, Input0, Options) ->
     Method = delete,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/namespaces/", http_uri:encode(Namespace), "/groups/", http_uri:encode(GroupName), "/members/", http_uri:encode(MemberName), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups/", aws_util:encode_uri(GroupName), "/members/", aws_util:encode_uri(MemberName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -665,7 +667,7 @@ delete_i_a_m_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, 
     delete_i_a_m_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input, []).
 delete_i_a_m_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input0, Options) ->
     Method = delete,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/namespace/", http_uri:encode(Namespace), "/iam-policy-assignments/", http_uri:encode(AssignmentName), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespace/", aws_util:encode_uri(Namespace), "/iam-policy-assignments/", aws_util:encode_uri(AssignmentName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -686,7 +688,7 @@ delete_namespace(Client, AwsAccountId, Namespace, Input) ->
     delete_namespace(Client, AwsAccountId, Namespace, Input, []).
 delete_namespace(Client, AwsAccountId, Namespace, Input0, Options) ->
     Method = delete,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/namespaces/", http_uri:encode(Namespace), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -702,7 +704,7 @@ delete_template(Client, AwsAccountId, TemplateId, Input) ->
     delete_template(Client, AwsAccountId, TemplateId, Input, []).
 delete_template(Client, AwsAccountId, TemplateId, Input0, Options) ->
     Method = delete,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/templates/", http_uri:encode(TemplateId), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -722,7 +724,7 @@ delete_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input) ->
     delete_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input, []).
 delete_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input0, Options) ->
     Method = delete,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/templates/", http_uri:encode(TemplateId), "/aliases/", http_uri:encode(AliasName), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/aliases/", aws_util:encode_uri(AliasName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -738,7 +740,7 @@ delete_theme(Client, AwsAccountId, ThemeId, Input) ->
     delete_theme(Client, AwsAccountId, ThemeId, Input, []).
 delete_theme(Client, AwsAccountId, ThemeId, Input0, Options) ->
     Method = delete,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/themes/", http_uri:encode(ThemeId), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -759,7 +761,7 @@ delete_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input) ->
     delete_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input, []).
 delete_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options) ->
     Method = delete,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/themes/", http_uri:encode(ThemeId), "/aliases/", http_uri:encode(AliasName), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/aliases/", aws_util:encode_uri(AliasName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -779,7 +781,7 @@ delete_user(Client, AwsAccountId, Namespace, UserName, Input) ->
     delete_user(Client, AwsAccountId, Namespace, UserName, Input, []).
 delete_user(Client, AwsAccountId, Namespace, UserName, Input0, Options) ->
     Method = delete,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/namespaces/", http_uri:encode(Namespace), "/users/", http_uri:encode(UserName), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users/", aws_util:encode_uri(UserName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -795,7 +797,7 @@ delete_user_by_principal_id(Client, AwsAccountId, Namespace, PrincipalId, Input)
     delete_user_by_principal_id(Client, AwsAccountId, Namespace, PrincipalId, Input, []).
 delete_user_by_principal_id(Client, AwsAccountId, Namespace, PrincipalId, Input0, Options) ->
     Method = delete,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/namespaces/", http_uri:encode(Namespace), "/user-principals/", http_uri:encode(PrincipalId), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/user-principals/", aws_util:encode_uri(PrincipalId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -860,7 +862,7 @@ describe_account_customization(Client, AwsAccountId, Namespace, Resolved)
     describe_account_customization(Client, AwsAccountId, Namespace, Resolved, []).
 describe_account_customization(Client, AwsAccountId, Namespace, Resolved, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/customizations"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/customizations"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -881,7 +883,7 @@ describe_account_settings(Client, AwsAccountId)
     describe_account_settings(Client, AwsAccountId, []).
 describe_account_settings(Client, AwsAccountId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/settings"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/settings"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -896,7 +898,7 @@ describe_analysis(Client, AnalysisId, AwsAccountId)
     describe_analysis(Client, AnalysisId, AwsAccountId, []).
 describe_analysis(Client, AnalysisId, AwsAccountId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/analyses/", http_uri:encode(AnalysisId), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses/", aws_util:encode_uri(AnalysisId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -911,7 +913,7 @@ describe_analysis_permissions(Client, AnalysisId, AwsAccountId)
     describe_analysis_permissions(Client, AnalysisId, AwsAccountId, []).
 describe_analysis_permissions(Client, AnalysisId, AwsAccountId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/analyses/", http_uri:encode(AnalysisId), "/permissions"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses/", aws_util:encode_uri(AnalysisId), "/permissions"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -926,7 +928,7 @@ describe_dashboard(Client, AwsAccountId, DashboardId, AliasName, VersionNumber)
     describe_dashboard(Client, AwsAccountId, DashboardId, AliasName, VersionNumber, []).
 describe_dashboard(Client, AwsAccountId, DashboardId, AliasName, VersionNumber, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/dashboards/", http_uri:encode(DashboardId), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -946,7 +948,7 @@ describe_dashboard_permissions(Client, AwsAccountId, DashboardId)
     describe_dashboard_permissions(Client, AwsAccountId, DashboardId, []).
 describe_dashboard_permissions(Client, AwsAccountId, DashboardId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/dashboards/", http_uri:encode(DashboardId), "/permissions"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/permissions"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -961,7 +963,7 @@ describe_data_set(Client, AwsAccountId, DataSetId)
     describe_data_set(Client, AwsAccountId, DataSetId, []).
 describe_data_set(Client, AwsAccountId, DataSetId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/data-sets/", http_uri:encode(DataSetId), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -979,7 +981,7 @@ describe_data_set_permissions(Client, AwsAccountId, DataSetId)
     describe_data_set_permissions(Client, AwsAccountId, DataSetId, []).
 describe_data_set_permissions(Client, AwsAccountId, DataSetId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/data-sets/", http_uri:encode(DataSetId), "/permissions"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/permissions"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -994,7 +996,7 @@ describe_data_source(Client, AwsAccountId, DataSourceId)
     describe_data_source(Client, AwsAccountId, DataSourceId, []).
 describe_data_source(Client, AwsAccountId, DataSourceId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/data-sources/", http_uri:encode(DataSourceId), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources/", aws_util:encode_uri(DataSourceId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1009,7 +1011,7 @@ describe_data_source_permissions(Client, AwsAccountId, DataSourceId)
     describe_data_source_permissions(Client, AwsAccountId, DataSourceId, []).
 describe_data_source_permissions(Client, AwsAccountId, DataSourceId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/data-sources/", http_uri:encode(DataSourceId), "/permissions"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources/", aws_util:encode_uri(DataSourceId), "/permissions"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1025,7 +1027,7 @@ describe_group(Client, AwsAccountId, GroupName, Namespace)
     describe_group(Client, AwsAccountId, GroupName, Namespace, []).
 describe_group(Client, AwsAccountId, GroupName, Namespace, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/namespaces/", http_uri:encode(Namespace), "/groups/", http_uri:encode(GroupName), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups/", aws_util:encode_uri(GroupName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1041,7 +1043,7 @@ describe_i_a_m_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace
     describe_i_a_m_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, []).
 describe_i_a_m_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/namespaces/", http_uri:encode(Namespace), "/iam-policy-assignments/", http_uri:encode(AssignmentName), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/iam-policy-assignments/", aws_util:encode_uri(AssignmentName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1056,7 +1058,7 @@ describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId)
     describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId, []).
 describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/data-sets/", http_uri:encode(DataSetId), "/ingestions/", http_uri:encode(IngestionId), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/ingestions/", aws_util:encode_uri(IngestionId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1071,7 +1073,7 @@ describe_namespace(Client, AwsAccountId, Namespace)
     describe_namespace(Client, AwsAccountId, Namespace, []).
 describe_namespace(Client, AwsAccountId, Namespace, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/namespaces/", http_uri:encode(Namespace), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1086,7 +1088,7 @@ describe_template(Client, AwsAccountId, TemplateId, AliasName, VersionNumber)
     describe_template(Client, AwsAccountId, TemplateId, AliasName, VersionNumber, []).
 describe_template(Client, AwsAccountId, TemplateId, AliasName, VersionNumber, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/templates/", http_uri:encode(TemplateId), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1106,7 +1108,7 @@ describe_template_alias(Client, AliasName, AwsAccountId, TemplateId)
     describe_template_alias(Client, AliasName, AwsAccountId, TemplateId, []).
 describe_template_alias(Client, AliasName, AwsAccountId, TemplateId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/templates/", http_uri:encode(TemplateId), "/aliases/", http_uri:encode(AliasName), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/aliases/", aws_util:encode_uri(AliasName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1121,7 +1123,7 @@ describe_template_permissions(Client, AwsAccountId, TemplateId)
     describe_template_permissions(Client, AwsAccountId, TemplateId, []).
 describe_template_permissions(Client, AwsAccountId, TemplateId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/templates/", http_uri:encode(TemplateId), "/permissions"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/permissions"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1136,7 +1138,7 @@ describe_theme(Client, AwsAccountId, ThemeId, AliasName, VersionNumber)
     describe_theme(Client, AwsAccountId, ThemeId, AliasName, VersionNumber, []).
 describe_theme(Client, AwsAccountId, ThemeId, AliasName, VersionNumber, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/themes/", http_uri:encode(ThemeId), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1156,7 +1158,7 @@ describe_theme_alias(Client, AliasName, AwsAccountId, ThemeId)
     describe_theme_alias(Client, AliasName, AwsAccountId, ThemeId, []).
 describe_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/themes/", http_uri:encode(ThemeId), "/aliases/", http_uri:encode(AliasName), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/aliases/", aws_util:encode_uri(AliasName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1171,7 +1173,7 @@ describe_theme_permissions(Client, AwsAccountId, ThemeId)
     describe_theme_permissions(Client, AwsAccountId, ThemeId, []).
 describe_theme_permissions(Client, AwsAccountId, ThemeId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/themes/", http_uri:encode(ThemeId), "/permissions"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/permissions"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1186,7 +1188,7 @@ describe_user(Client, AwsAccountId, Namespace, UserName)
     describe_user(Client, AwsAccountId, Namespace, UserName, []).
 describe_user(Client, AwsAccountId, Namespace, UserName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/namespaces/", http_uri:encode(Namespace), "/users/", http_uri:encode(UserName), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users/", aws_util:encode_uri(UserName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1220,7 +1222,7 @@ get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, ResetDi
     get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, ResetDisabled, SessionLifetimeInMinutes, UndoRedoDisabled, UserArn, []).
 get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, ResetDisabled, SessionLifetimeInMinutes, UndoRedoDisabled, UserArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/dashboards/", http_uri:encode(DashboardId), "/embed-url"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/embed-url"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1260,7 +1262,7 @@ get_session_embed_url(Client, AwsAccountId, EntryPoint, SessionLifetimeInMinutes
     get_session_embed_url(Client, AwsAccountId, EntryPoint, SessionLifetimeInMinutes, UserArn, []).
 get_session_embed_url(Client, AwsAccountId, EntryPoint, SessionLifetimeInMinutes, UserArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/session-embed-url"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/session-embed-url"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1282,7 +1284,7 @@ list_analyses(Client, AwsAccountId, MaxResults, NextToken)
     list_analyses(Client, AwsAccountId, MaxResults, NextToken, []).
 list_analyses(Client, AwsAccountId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/analyses"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1303,7 +1305,7 @@ list_dashboard_versions(Client, AwsAccountId, DashboardId, MaxResults, NextToken
     list_dashboard_versions(Client, AwsAccountId, DashboardId, MaxResults, NextToken, []).
 list_dashboard_versions(Client, AwsAccountId, DashboardId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/dashboards/", http_uri:encode(DashboardId), "/versions"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/versions"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1323,7 +1325,7 @@ list_dashboards(Client, AwsAccountId, MaxResults, NextToken)
     list_dashboards(Client, AwsAccountId, MaxResults, NextToken, []).
 list_dashboards(Client, AwsAccountId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/dashboards"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1347,7 +1349,7 @@ list_data_sets(Client, AwsAccountId, MaxResults, NextToken)
     list_data_sets(Client, AwsAccountId, MaxResults, NextToken, []).
 list_data_sets(Client, AwsAccountId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/data-sets"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1368,7 +1370,7 @@ list_data_sources(Client, AwsAccountId, MaxResults, NextToken)
     list_data_sources(Client, AwsAccountId, MaxResults, NextToken, []).
 list_data_sources(Client, AwsAccountId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/data-sources"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1388,7 +1390,7 @@ list_group_memberships(Client, AwsAccountId, GroupName, Namespace, MaxResults, N
     list_group_memberships(Client, AwsAccountId, GroupName, Namespace, MaxResults, NextToken, []).
 list_group_memberships(Client, AwsAccountId, GroupName, Namespace, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/namespaces/", http_uri:encode(Namespace), "/groups/", http_uri:encode(GroupName), "/members"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups/", aws_util:encode_uri(GroupName), "/members"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1408,7 +1410,7 @@ list_groups(Client, AwsAccountId, Namespace, MaxResults, NextToken)
     list_groups(Client, AwsAccountId, Namespace, MaxResults, NextToken, []).
 list_groups(Client, AwsAccountId, Namespace, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/namespaces/", http_uri:encode(Namespace), "/groups"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1429,7 +1431,7 @@ list_i_a_m_policy_assignments(Client, AwsAccountId, Namespace, MaxResults, NextT
     list_i_a_m_policy_assignments(Client, AwsAccountId, Namespace, MaxResults, NextToken, []).
 list_i_a_m_policy_assignments(Client, AwsAccountId, Namespace, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/namespaces/", http_uri:encode(Namespace), "/iam-policy-assignments"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/iam-policy-assignments"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1451,7 +1453,7 @@ list_i_a_m_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName
     list_i_a_m_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, MaxResults, NextToken, []).
 list_i_a_m_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/namespaces/", http_uri:encode(Namespace), "/users/", http_uri:encode(UserName), "/iam-policy-assignments"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users/", aws_util:encode_uri(UserName), "/iam-policy-assignments"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1471,7 +1473,7 @@ list_ingestions(Client, AwsAccountId, DataSetId, MaxResults, NextToken)
     list_ingestions(Client, AwsAccountId, DataSetId, MaxResults, NextToken, []).
 list_ingestions(Client, AwsAccountId, DataSetId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/data-sets/", http_uri:encode(DataSetId), "/ingestions"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/ingestions"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1491,7 +1493,7 @@ list_namespaces(Client, AwsAccountId, MaxResults, NextToken)
     list_namespaces(Client, AwsAccountId, MaxResults, NextToken, []).
 list_namespaces(Client, AwsAccountId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/namespaces"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1511,7 +1513,7 @@ list_tags_for_resource(Client, ResourceArn)
     list_tags_for_resource(Client, ResourceArn, []).
 list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/resources/", http_uri:encode(ResourceArn), "/tags"],
+    Path = ["/resources/", aws_util:encode_uri(ResourceArn), "/tags"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1526,7 +1528,7 @@ list_template_aliases(Client, AwsAccountId, TemplateId, MaxResults, NextToken)
     list_template_aliases(Client, AwsAccountId, TemplateId, MaxResults, NextToken, []).
 list_template_aliases(Client, AwsAccountId, TemplateId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/templates/", http_uri:encode(TemplateId), "/aliases"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/aliases"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1547,7 +1549,7 @@ list_template_versions(Client, AwsAccountId, TemplateId, MaxResults, NextToken)
     list_template_versions(Client, AwsAccountId, TemplateId, MaxResults, NextToken, []).
 list_template_versions(Client, AwsAccountId, TemplateId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/templates/", http_uri:encode(TemplateId), "/versions"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/versions"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1567,7 +1569,7 @@ list_templates(Client, AwsAccountId, MaxResults, NextToken)
     list_templates(Client, AwsAccountId, MaxResults, NextToken, []).
 list_templates(Client, AwsAccountId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/templates"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1587,7 +1589,7 @@ list_theme_aliases(Client, AwsAccountId, ThemeId, MaxResults, NextToken)
     list_theme_aliases(Client, AwsAccountId, ThemeId, MaxResults, NextToken, []).
 list_theme_aliases(Client, AwsAccountId, ThemeId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/themes/", http_uri:encode(ThemeId), "/aliases"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/aliases"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1607,7 +1609,7 @@ list_theme_versions(Client, AwsAccountId, ThemeId, MaxResults, NextToken)
     list_theme_versions(Client, AwsAccountId, ThemeId, MaxResults, NextToken, []).
 list_theme_versions(Client, AwsAccountId, ThemeId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/themes/", http_uri:encode(ThemeId), "/versions"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/versions"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1627,7 +1629,7 @@ list_themes(Client, AwsAccountId, MaxResults, NextToken, Type)
     list_themes(Client, AwsAccountId, MaxResults, NextToken, Type, []).
 list_themes(Client, AwsAccountId, MaxResults, NextToken, Type, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/themes"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1649,7 +1651,7 @@ list_user_groups(Client, AwsAccountId, Namespace, UserName, MaxResults, NextToke
     list_user_groups(Client, AwsAccountId, Namespace, UserName, MaxResults, NextToken, []).
 list_user_groups(Client, AwsAccountId, Namespace, UserName, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/namespaces/", http_uri:encode(Namespace), "/users/", http_uri:encode(UserName), "/groups"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users/", aws_util:encode_uri(UserName), "/groups"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1670,7 +1672,7 @@ list_users(Client, AwsAccountId, Namespace, MaxResults, NextToken)
     list_users(Client, AwsAccountId, Namespace, MaxResults, NextToken, []).
 list_users(Client, AwsAccountId, Namespace, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/namespaces/", http_uri:encode(Namespace), "/users"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1691,7 +1693,7 @@ register_user(Client, AwsAccountId, Namespace, Input) ->
     register_user(Client, AwsAccountId, Namespace, Input, []).
 register_user(Client, AwsAccountId, Namespace, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/namespaces/", http_uri:encode(Namespace), "/users"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1707,7 +1709,7 @@ restore_analysis(Client, AnalysisId, AwsAccountId, Input) ->
     restore_analysis(Client, AnalysisId, AwsAccountId, Input, []).
 restore_analysis(Client, AnalysisId, AwsAccountId, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/restore/analyses/", http_uri:encode(AnalysisId), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/restore/analyses/", aws_util:encode_uri(AnalysisId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1724,7 +1726,7 @@ search_analyses(Client, AwsAccountId, Input) ->
     search_analyses(Client, AwsAccountId, Input, []).
 search_analyses(Client, AwsAccountId, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/search/analyses"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/search/analyses"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1740,7 +1742,7 @@ search_dashboards(Client, AwsAccountId, Input) ->
     search_dashboards(Client, AwsAccountId, Input, []).
 search_dashboards(Client, AwsAccountId, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/search/dashboards"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/search/dashboards"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1781,7 +1783,7 @@ tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/resources/", http_uri:encode(ResourceArn), "/tags"],
+    Path = ["/resources/", aws_util:encode_uri(ResourceArn), "/tags"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1797,7 +1799,7 @@ untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/resources/", http_uri:encode(ResourceArn), "/tags"],
+    Path = ["/resources/", aws_util:encode_uri(ResourceArn), "/tags"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1822,7 +1824,7 @@ update_account_customization(Client, AwsAccountId, Input) ->
     update_account_customization(Client, AwsAccountId, Input, []).
 update_account_customization(Client, AwsAccountId, Input0, Options) ->
     Method = put,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/customizations"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/customizations"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1839,7 +1841,7 @@ update_account_settings(Client, AwsAccountId, Input) ->
     update_account_settings(Client, AwsAccountId, Input, []).
 update_account_settings(Client, AwsAccountId, Input0, Options) ->
     Method = put,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/settings"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/settings"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1855,7 +1857,7 @@ update_analysis(Client, AnalysisId, AwsAccountId, Input) ->
     update_analysis(Client, AnalysisId, AwsAccountId, Input, []).
 update_analysis(Client, AnalysisId, AwsAccountId, Input0, Options) ->
     Method = put,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/analyses/", http_uri:encode(AnalysisId), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses/", aws_util:encode_uri(AnalysisId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1871,7 +1873,7 @@ update_analysis_permissions(Client, AnalysisId, AwsAccountId, Input) ->
     update_analysis_permissions(Client, AnalysisId, AwsAccountId, Input, []).
 update_analysis_permissions(Client, AnalysisId, AwsAccountId, Input0, Options) ->
     Method = put,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/analyses/", http_uri:encode(AnalysisId), "/permissions"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses/", aws_util:encode_uri(AnalysisId), "/permissions"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1887,7 +1889,7 @@ update_dashboard(Client, AwsAccountId, DashboardId, Input) ->
     update_dashboard(Client, AwsAccountId, DashboardId, Input, []).
 update_dashboard(Client, AwsAccountId, DashboardId, Input0, Options) ->
     Method = put,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/dashboards/", http_uri:encode(DashboardId), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1903,7 +1905,7 @@ update_dashboard_permissions(Client, AwsAccountId, DashboardId, Input) ->
     update_dashboard_permissions(Client, AwsAccountId, DashboardId, Input, []).
 update_dashboard_permissions(Client, AwsAccountId, DashboardId, Input0, Options) ->
     Method = put,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/dashboards/", http_uri:encode(DashboardId), "/permissions"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/permissions"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1919,7 +1921,7 @@ update_dashboard_published_version(Client, AwsAccountId, DashboardId, VersionNum
     update_dashboard_published_version(Client, AwsAccountId, DashboardId, VersionNumber, Input, []).
 update_dashboard_published_version(Client, AwsAccountId, DashboardId, VersionNumber, Input0, Options) ->
     Method = put,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/dashboards/", http_uri:encode(DashboardId), "/versions/", http_uri:encode(VersionNumber), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/versions/", aws_util:encode_uri(VersionNumber), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1935,7 +1937,7 @@ update_data_set(Client, AwsAccountId, DataSetId, Input) ->
     update_data_set(Client, AwsAccountId, DataSetId, Input, []).
 update_data_set(Client, AwsAccountId, DataSetId, Input0, Options) ->
     Method = put,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/data-sets/", http_uri:encode(DataSetId), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1954,7 +1956,7 @@ update_data_set_permissions(Client, AwsAccountId, DataSetId, Input) ->
     update_data_set_permissions(Client, AwsAccountId, DataSetId, Input, []).
 update_data_set_permissions(Client, AwsAccountId, DataSetId, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/data-sets/", http_uri:encode(DataSetId), "/permissions"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/permissions"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1970,7 +1972,7 @@ update_data_source(Client, AwsAccountId, DataSourceId, Input) ->
     update_data_source(Client, AwsAccountId, DataSourceId, Input, []).
 update_data_source(Client, AwsAccountId, DataSourceId, Input0, Options) ->
     Method = put,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/data-sources/", http_uri:encode(DataSourceId), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources/", aws_util:encode_uri(DataSourceId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1986,7 +1988,7 @@ update_data_source_permissions(Client, AwsAccountId, DataSourceId, Input) ->
     update_data_source_permissions(Client, AwsAccountId, DataSourceId, Input, []).
 update_data_source_permissions(Client, AwsAccountId, DataSourceId, Input0, Options) ->
     Method = post,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/data-sources/", http_uri:encode(DataSourceId), "/permissions"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources/", aws_util:encode_uri(DataSourceId), "/permissions"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2002,7 +2004,7 @@ update_group(Client, AwsAccountId, GroupName, Namespace, Input) ->
     update_group(Client, AwsAccountId, GroupName, Namespace, Input, []).
 update_group(Client, AwsAccountId, GroupName, Namespace, Input0, Options) ->
     Method = put,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/namespaces/", http_uri:encode(Namespace), "/groups/", http_uri:encode(GroupName), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups/", aws_util:encode_uri(GroupName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2016,12 +2018,13 @@ update_group(Client, AwsAccountId, GroupName, Namespace, Input0, Options) ->
 %% @doc Updates an existing IAM policy assignment.
 %%
 %% This operation updates only the optional parameter or parameters that are
-%% specified in the request.
+%% specified in the request. This overwrites all of the users included in
+%% `Identities`.
 update_i_a_m_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input) ->
     update_i_a_m_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input, []).
 update_i_a_m_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input0, Options) ->
     Method = put,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/namespaces/", http_uri:encode(Namespace), "/iam-policy-assignments/", http_uri:encode(AssignmentName), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/iam-policy-assignments/", aws_util:encode_uri(AssignmentName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2038,7 +2041,7 @@ update_template(Client, AwsAccountId, TemplateId, Input) ->
     update_template(Client, AwsAccountId, TemplateId, Input, []).
 update_template(Client, AwsAccountId, TemplateId, Input0, Options) ->
     Method = put,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/templates/", http_uri:encode(TemplateId), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2054,7 +2057,7 @@ update_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input) ->
     update_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input, []).
 update_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input0, Options) ->
     Method = put,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/templates/", http_uri:encode(TemplateId), "/aliases/", http_uri:encode(AliasName), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/aliases/", aws_util:encode_uri(AliasName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2070,7 +2073,7 @@ update_template_permissions(Client, AwsAccountId, TemplateId, Input) ->
     update_template_permissions(Client, AwsAccountId, TemplateId, Input, []).
 update_template_permissions(Client, AwsAccountId, TemplateId, Input0, Options) ->
     Method = put,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/templates/", http_uri:encode(TemplateId), "/permissions"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/permissions"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2086,7 +2089,7 @@ update_theme(Client, AwsAccountId, ThemeId, Input) ->
     update_theme(Client, AwsAccountId, ThemeId, Input, []).
 update_theme(Client, AwsAccountId, ThemeId, Input0, Options) ->
     Method = put,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/themes/", http_uri:encode(ThemeId), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2102,7 +2105,7 @@ update_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input) ->
     update_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input, []).
 update_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options) ->
     Method = put,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/themes/", http_uri:encode(ThemeId), "/aliases/", http_uri:encode(AliasName), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/aliases/", aws_util:encode_uri(AliasName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2164,7 +2167,7 @@ update_theme_permissions(Client, AwsAccountId, ThemeId, Input) ->
     update_theme_permissions(Client, AwsAccountId, ThemeId, Input, []).
 update_theme_permissions(Client, AwsAccountId, ThemeId, Input0, Options) ->
     Method = put,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/themes/", http_uri:encode(ThemeId), "/permissions"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/permissions"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2180,7 +2183,7 @@ update_user(Client, AwsAccountId, Namespace, UserName, Input) ->
     update_user(Client, AwsAccountId, Namespace, UserName, Input, []).
 update_user(Client, AwsAccountId, Namespace, UserName, Input0, Options) ->
     Method = put,
-    Path = ["/accounts/", http_uri:encode(AwsAccountId), "/namespaces/", http_uri:encode(Namespace), "/users/", http_uri:encode(UserName), ""],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users/", aws_util:encode_uri(UserName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],

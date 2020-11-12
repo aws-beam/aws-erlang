@@ -48,7 +48,7 @@ associate_device_with_placement(Client, DeviceTemplateName, PlacementName, Proje
     associate_device_with_placement(Client, DeviceTemplateName, PlacementName, ProjectName, Input, []).
 associate_device_with_placement(Client, DeviceTemplateName, PlacementName, ProjectName, Input0, Options) ->
     Method = put,
-    Path = ["/projects/", http_uri:encode(ProjectName), "/placements/", http_uri:encode(PlacementName), "/devices/", http_uri:encode(DeviceTemplateName), ""],
+    Path = ["/projects/", aws_util:encode_uri(ProjectName), "/placements/", aws_util:encode_uri(PlacementName), "/devices/", aws_util:encode_uri(DeviceTemplateName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -64,7 +64,7 @@ create_placement(Client, ProjectName, Input) ->
     create_placement(Client, ProjectName, Input, []).
 create_placement(Client, ProjectName, Input0, Options) ->
     Method = post,
-    Path = ["/projects/", http_uri:encode(ProjectName), "/placements"],
+    Path = ["/projects/", aws_util:encode_uri(ProjectName), "/placements"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -103,7 +103,7 @@ delete_placement(Client, PlacementName, ProjectName, Input) ->
     delete_placement(Client, PlacementName, ProjectName, Input, []).
 delete_placement(Client, PlacementName, ProjectName, Input0, Options) ->
     Method = delete,
-    Path = ["/projects/", http_uri:encode(ProjectName), "/placements/", http_uri:encode(PlacementName), ""],
+    Path = ["/projects/", aws_util:encode_uri(ProjectName), "/placements/", aws_util:encode_uri(PlacementName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -123,7 +123,7 @@ delete_project(Client, ProjectName, Input) ->
     delete_project(Client, ProjectName, Input, []).
 delete_project(Client, ProjectName, Input0, Options) ->
     Method = delete,
-    Path = ["/projects/", http_uri:encode(ProjectName), ""],
+    Path = ["/projects/", aws_util:encode_uri(ProjectName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -140,7 +140,7 @@ describe_placement(Client, PlacementName, ProjectName)
     describe_placement(Client, PlacementName, ProjectName, []).
 describe_placement(Client, PlacementName, ProjectName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/projects/", http_uri:encode(ProjectName), "/placements/", http_uri:encode(PlacementName), ""],
+    Path = ["/projects/", aws_util:encode_uri(ProjectName), "/placements/", aws_util:encode_uri(PlacementName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -155,7 +155,7 @@ describe_project(Client, ProjectName)
     describe_project(Client, ProjectName, []).
 describe_project(Client, ProjectName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/projects/", http_uri:encode(ProjectName), ""],
+    Path = ["/projects/", aws_util:encode_uri(ProjectName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -169,7 +169,7 @@ disassociate_device_from_placement(Client, DeviceTemplateName, PlacementName, Pr
     disassociate_device_from_placement(Client, DeviceTemplateName, PlacementName, ProjectName, Input, []).
 disassociate_device_from_placement(Client, DeviceTemplateName, PlacementName, ProjectName, Input0, Options) ->
     Method = delete,
-    Path = ["/projects/", http_uri:encode(ProjectName), "/placements/", http_uri:encode(PlacementName), "/devices/", http_uri:encode(DeviceTemplateName), ""],
+    Path = ["/projects/", aws_util:encode_uri(ProjectName), "/placements/", aws_util:encode_uri(PlacementName), "/devices/", aws_util:encode_uri(DeviceTemplateName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -186,7 +186,7 @@ get_devices_in_placement(Client, PlacementName, ProjectName)
     get_devices_in_placement(Client, PlacementName, ProjectName, []).
 get_devices_in_placement(Client, PlacementName, ProjectName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/projects/", http_uri:encode(ProjectName), "/placements/", http_uri:encode(PlacementName), "/devices"],
+    Path = ["/projects/", aws_util:encode_uri(ProjectName), "/placements/", aws_util:encode_uri(PlacementName), "/devices"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -201,7 +201,7 @@ list_placements(Client, ProjectName, MaxResults, NextToken)
     list_placements(Client, ProjectName, MaxResults, NextToken, []).
 list_placements(Client, ProjectName, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/projects/", http_uri:encode(ProjectName), "/placements"],
+    Path = ["/projects/", aws_util:encode_uri(ProjectName), "/placements"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -243,7 +243,7 @@ list_tags_for_resource(Client, ResourceArn)
     list_tags_for_resource(Client, ResourceArn, []).
 list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -260,7 +260,7 @@ tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -276,7 +276,7 @@ untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -295,7 +295,7 @@ update_placement(Client, PlacementName, ProjectName, Input) ->
     update_placement(Client, PlacementName, ProjectName, Input, []).
 update_placement(Client, PlacementName, ProjectName, Input0, Options) ->
     Method = put,
-    Path = ["/projects/", http_uri:encode(ProjectName), "/placements/", http_uri:encode(PlacementName), ""],
+    Path = ["/projects/", aws_util:encode_uri(ProjectName), "/placements/", aws_util:encode_uri(PlacementName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -316,7 +316,7 @@ update_project(Client, ProjectName, Input) ->
     update_project(Client, ProjectName, Input, []).
 update_project(Client, ProjectName, Input0, Options) ->
     Method = put,
-    Path = ["/projects/", http_uri:encode(ProjectName), ""],
+    Path = ["/projects/", aws_util:encode_uri(ProjectName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],

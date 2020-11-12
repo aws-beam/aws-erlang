@@ -85,7 +85,7 @@ cancel_job(Client, Id, Input) ->
     cancel_job(Client, Id, Input, []).
 cancel_job(Client, Id, Input0, Options) ->
     Method = delete,
-    Path = ["/2017-08-29/jobs/", http_uri:encode(Id), ""],
+    Path = ["/2017-08-29/jobs/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -177,7 +177,7 @@ delete_job_template(Client, Name, Input) ->
     delete_job_template(Client, Name, Input, []).
 delete_job_template(Client, Name, Input0, Options) ->
     Method = delete,
-    Path = ["/2017-08-29/jobTemplates/", http_uri:encode(Name), ""],
+    Path = ["/2017-08-29/jobTemplates/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -193,7 +193,7 @@ delete_preset(Client, Name, Input) ->
     delete_preset(Client, Name, Input, []).
 delete_preset(Client, Name, Input0, Options) ->
     Method = delete,
-    Path = ["/2017-08-29/presets/", http_uri:encode(Name), ""],
+    Path = ["/2017-08-29/presets/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -209,7 +209,7 @@ delete_queue(Client, Name, Input) ->
     delete_queue(Client, Name, Input, []).
 delete_queue(Client, Name, Input0, Options) ->
     Method = delete,
-    Path = ["/2017-08-29/queues/", http_uri:encode(Name), ""],
+    Path = ["/2017-08-29/queues/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -244,7 +244,7 @@ disassociate_certificate(Client, Arn, Input) ->
     disassociate_certificate(Client, Arn, Input, []).
 disassociate_certificate(Client, Arn, Input0, Options) ->
     Method = delete,
-    Path = ["/2017-08-29/certificates/", http_uri:encode(Arn), ""],
+    Path = ["/2017-08-29/certificates/", aws_util:encode_uri(Arn), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -261,7 +261,7 @@ get_job(Client, Id)
     get_job(Client, Id, []).
 get_job(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2017-08-29/jobs/", http_uri:encode(Id), ""],
+    Path = ["/2017-08-29/jobs/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -276,7 +276,7 @@ get_job_template(Client, Name)
     get_job_template(Client, Name, []).
 get_job_template(Client, Name, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2017-08-29/jobTemplates/", http_uri:encode(Name), ""],
+    Path = ["/2017-08-29/jobTemplates/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -291,7 +291,7 @@ get_preset(Client, Name)
     get_preset(Client, Name, []).
 get_preset(Client, Name, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2017-08-29/presets/", http_uri:encode(Name), ""],
+    Path = ["/2017-08-29/presets/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -306,7 +306,7 @@ get_queue(Client, Name)
     get_queue(Client, Name, []).
 get_queue(Client, Name, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2017-08-29/queues/", http_uri:encode(Name), ""],
+    Path = ["/2017-08-29/queues/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -430,7 +430,7 @@ list_tags_for_resource(Client, Arn)
     list_tags_for_resource(Client, Arn, []).
 list_tags_for_resource(Client, Arn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2017-08-29/tags/", http_uri:encode(Arn), ""],
+    Path = ["/2017-08-29/tags/", aws_util:encode_uri(Arn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -466,7 +466,7 @@ untag_resource(Client, Arn, Input) ->
     untag_resource(Client, Arn, Input, []).
 untag_resource(Client, Arn, Input0, Options) ->
     Method = put,
-    Path = ["/2017-08-29/tags/", http_uri:encode(Arn), ""],
+    Path = ["/2017-08-29/tags/", aws_util:encode_uri(Arn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -482,7 +482,7 @@ update_job_template(Client, Name, Input) ->
     update_job_template(Client, Name, Input, []).
 update_job_template(Client, Name, Input0, Options) ->
     Method = put,
-    Path = ["/2017-08-29/jobTemplates/", http_uri:encode(Name), ""],
+    Path = ["/2017-08-29/jobTemplates/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -498,7 +498,7 @@ update_preset(Client, Name, Input) ->
     update_preset(Client, Name, Input, []).
 update_preset(Client, Name, Input0, Options) ->
     Method = put,
-    Path = ["/2017-08-29/presets/", http_uri:encode(Name), ""],
+    Path = ["/2017-08-29/presets/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -514,7 +514,7 @@ update_queue(Client, Name, Input) ->
     update_queue(Client, Name, Input, []).
 update_queue(Client, Name, Input0, Options) ->
     Method = put,
-    Path = ["/2017-08-29/queues/", http_uri:encode(Name), ""],
+    Path = ["/2017-08-29/queues/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
 
     Headers = [],

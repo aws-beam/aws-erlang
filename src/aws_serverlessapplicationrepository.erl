@@ -106,7 +106,7 @@ create_application_version(Client, ApplicationId, SemanticVersion, Input) ->
     create_application_version(Client, ApplicationId, SemanticVersion, Input, []).
 create_application_version(Client, ApplicationId, SemanticVersion, Input0, Options) ->
     Method = put,
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/versions/", http_uri:encode(SemanticVersion), ""],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/versions/", aws_util:encode_uri(SemanticVersion), ""],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -122,7 +122,7 @@ create_cloud_formation_change_set(Client, ApplicationId, Input) ->
     create_cloud_formation_change_set(Client, ApplicationId, Input, []).
 create_cloud_formation_change_set(Client, ApplicationId, Input0, Options) ->
     Method = post,
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/changesets"],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/changesets"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -138,7 +138,7 @@ create_cloud_formation_template(Client, ApplicationId, Input) ->
     create_cloud_formation_template(Client, ApplicationId, Input, []).
 create_cloud_formation_template(Client, ApplicationId, Input0, Options) ->
     Method = post,
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/templates"],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/templates"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -154,7 +154,7 @@ delete_application(Client, ApplicationId, Input) ->
     delete_application(Client, ApplicationId, Input, []).
 delete_application(Client, ApplicationId, Input0, Options) ->
     Method = delete,
-    Path = ["/applications/", http_uri:encode(ApplicationId), ""],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -171,7 +171,7 @@ get_application(Client, ApplicationId, SemanticVersion)
     get_application(Client, ApplicationId, SemanticVersion, []).
 get_application(Client, ApplicationId, SemanticVersion, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/applications/", http_uri:encode(ApplicationId), ""],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -190,7 +190,7 @@ get_application_policy(Client, ApplicationId)
     get_application_policy(Client, ApplicationId, []).
 get_application_policy(Client, ApplicationId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/policy"],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/policy"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -205,7 +205,7 @@ get_cloud_formation_template(Client, ApplicationId, TemplateId)
     get_cloud_formation_template(Client, ApplicationId, TemplateId, []).
 get_cloud_formation_template(Client, ApplicationId, TemplateId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/templates/", http_uri:encode(TemplateId), ""],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/templates/", aws_util:encode_uri(TemplateId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -221,7 +221,7 @@ list_application_dependencies(Client, ApplicationId, MaxItems, NextToken, Semant
     list_application_dependencies(Client, ApplicationId, MaxItems, NextToken, SemanticVersion, []).
 list_application_dependencies(Client, ApplicationId, MaxItems, NextToken, SemanticVersion, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/dependencies"],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/dependencies"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -242,7 +242,7 @@ list_application_versions(Client, ApplicationId, MaxItems, NextToken)
     list_application_versions(Client, ApplicationId, MaxItems, NextToken, []).
 list_application_versions(Client, ApplicationId, MaxItems, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/versions"],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/versions"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -286,7 +286,7 @@ put_application_policy(Client, ApplicationId, Input) ->
     put_application_policy(Client, ApplicationId, Input, []).
 put_application_policy(Client, ApplicationId, Input0, Options) ->
     Method = put,
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/policy"],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/policy"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -304,7 +304,7 @@ unshare_application(Client, ApplicationId, Input) ->
     unshare_application(Client, ApplicationId, Input, []).
 unshare_application(Client, ApplicationId, Input0, Options) ->
     Method = post,
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/unshare"],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/unshare"],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -320,7 +320,7 @@ update_application(Client, ApplicationId, Input) ->
     update_application(Client, ApplicationId, Input, []).
 update_application(Client, ApplicationId, Input0, Options) ->
     Method = patch,
-    Path = ["/applications/", http_uri:encode(ApplicationId), ""],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],

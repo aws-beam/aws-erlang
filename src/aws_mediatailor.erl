@@ -42,7 +42,7 @@ delete_playback_configuration(Client, Name, Input) ->
     delete_playback_configuration(Client, Name, Input, []).
 delete_playback_configuration(Client, Name, Input0, Options) ->
     Method = delete,
-    Path = ["/playbackConfiguration/", http_uri:encode(Name), ""],
+    Path = ["/playbackConfiguration/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -59,7 +59,7 @@ get_playback_configuration(Client, Name)
     get_playback_configuration(Client, Name, []).
 get_playback_configuration(Client, Name, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/playbackConfiguration/", http_uri:encode(Name), ""],
+    Path = ["/playbackConfiguration/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -102,7 +102,7 @@ list_tags_for_resource(Client, ResourceArn)
     list_tags_for_resource(Client, ResourceArn, []).
 list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -134,7 +134,7 @@ tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -152,7 +152,7 @@ untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],

@@ -171,7 +171,7 @@ create_backup_selection(Client, BackupPlanId, Input) ->
     create_backup_selection(Client, BackupPlanId, Input, []).
 create_backup_selection(Client, BackupPlanId, Input0, Options) ->
     Method = put,
-    Path = ["/backup/plans/", http_uri:encode(BackupPlanId), "/selections/"],
+    Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/selections/"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -193,7 +193,7 @@ create_backup_vault(Client, BackupVaultName, Input) ->
     create_backup_vault(Client, BackupVaultName, Input, []).
 create_backup_vault(Client, BackupVaultName, Input0, Options) ->
     Method = put,
-    Path = ["/backup-vaults/", http_uri:encode(BackupVaultName), ""],
+    Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -213,7 +213,7 @@ delete_backup_plan(Client, BackupPlanId, Input) ->
     delete_backup_plan(Client, BackupPlanId, Input, []).
 delete_backup_plan(Client, BackupPlanId, Input0, Options) ->
     Method = delete,
-    Path = ["/backup/plans/", http_uri:encode(BackupPlanId), ""],
+    Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -230,7 +230,7 @@ delete_backup_selection(Client, BackupPlanId, SelectionId, Input) ->
     delete_backup_selection(Client, BackupPlanId, SelectionId, Input, []).
 delete_backup_selection(Client, BackupPlanId, SelectionId, Input0, Options) ->
     Method = delete,
-    Path = ["/backup/plans/", http_uri:encode(BackupPlanId), "/selections/", http_uri:encode(SelectionId), ""],
+    Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/selections/", aws_util:encode_uri(SelectionId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -248,7 +248,7 @@ delete_backup_vault(Client, BackupVaultName, Input) ->
     delete_backup_vault(Client, BackupVaultName, Input, []).
 delete_backup_vault(Client, BackupVaultName, Input0, Options) ->
     Method = delete,
-    Path = ["/backup-vaults/", http_uri:encode(BackupVaultName), ""],
+    Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -265,7 +265,7 @@ delete_backup_vault_access_policy(Client, BackupVaultName, Input) ->
     delete_backup_vault_access_policy(Client, BackupVaultName, Input, []).
 delete_backup_vault_access_policy(Client, BackupVaultName, Input0, Options) ->
     Method = delete,
-    Path = ["/backup-vaults/", http_uri:encode(BackupVaultName), "/access-policy"],
+    Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/access-policy"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -281,7 +281,7 @@ delete_backup_vault_notifications(Client, BackupVaultName, Input) ->
     delete_backup_vault_notifications(Client, BackupVaultName, Input, []).
 delete_backup_vault_notifications(Client, BackupVaultName, Input0, Options) ->
     Method = delete,
-    Path = ["/backup-vaults/", http_uri:encode(BackupVaultName), "/notification-configuration"],
+    Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/notification-configuration"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -297,7 +297,7 @@ delete_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input) ->
     delete_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input, []).
 delete_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input0, Options) ->
     Method = delete,
-    Path = ["/backup-vaults/", http_uri:encode(BackupVaultName), "/recovery-points/", http_uri:encode(RecoveryPointArn), ""],
+    Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/", aws_util:encode_uri(RecoveryPointArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -314,7 +314,7 @@ describe_backup_job(Client, BackupJobId)
     describe_backup_job(Client, BackupJobId, []).
 describe_backup_job(Client, BackupJobId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/backup-jobs/", http_uri:encode(BackupJobId), ""],
+    Path = ["/backup-jobs/", aws_util:encode_uri(BackupJobId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -329,7 +329,7 @@ describe_backup_vault(Client, BackupVaultName)
     describe_backup_vault(Client, BackupVaultName, []).
 describe_backup_vault(Client, BackupVaultName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/backup-vaults/", http_uri:encode(BackupVaultName), ""],
+    Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -344,7 +344,7 @@ describe_copy_job(Client, CopyJobId)
     describe_copy_job(Client, CopyJobId, []).
 describe_copy_job(Client, CopyJobId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/copy-jobs/", http_uri:encode(CopyJobId), ""],
+    Path = ["/copy-jobs/", aws_util:encode_uri(CopyJobId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -361,7 +361,7 @@ describe_protected_resource(Client, ResourceArn)
     describe_protected_resource(Client, ResourceArn, []).
 describe_protected_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/resources/", http_uri:encode(ResourceArn), ""],
+    Path = ["/resources/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -377,7 +377,7 @@ describe_recovery_point(Client, BackupVaultName, RecoveryPointArn)
     describe_recovery_point(Client, BackupVaultName, RecoveryPointArn, []).
 describe_recovery_point(Client, BackupVaultName, RecoveryPointArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/backup-vaults/", http_uri:encode(BackupVaultName), "/recovery-points/", http_uri:encode(RecoveryPointArn), ""],
+    Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/", aws_util:encode_uri(RecoveryPointArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -414,7 +414,7 @@ describe_restore_job(Client, RestoreJobId)
     describe_restore_job(Client, RestoreJobId, []).
 describe_restore_job(Client, RestoreJobId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/restore-jobs/", http_uri:encode(RestoreJobId), ""],
+    Path = ["/restore-jobs/", aws_util:encode_uri(RestoreJobId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -430,7 +430,7 @@ export_backup_plan_template(Client, BackupPlanId)
     export_backup_plan_template(Client, BackupPlanId, []).
 export_backup_plan_template(Client, BackupPlanId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/backup/plans/", http_uri:encode(BackupPlanId), "/toTemplate/"],
+    Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/toTemplate/"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -448,7 +448,7 @@ get_backup_plan(Client, BackupPlanId, VersionId)
     get_backup_plan(Client, BackupPlanId, VersionId, []).
 get_backup_plan(Client, BackupPlanId, VersionId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/backup/plans/", http_uri:encode(BackupPlanId), "/"],
+    Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -483,7 +483,7 @@ get_backup_plan_from_template(Client, BackupPlanTemplateId)
     get_backup_plan_from_template(Client, BackupPlanTemplateId, []).
 get_backup_plan_from_template(Client, BackupPlanTemplateId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/backup/template/plans/", http_uri:encode(BackupPlanTemplateId), "/toPlan"],
+    Path = ["/backup/template/plans/", aws_util:encode_uri(BackupPlanTemplateId), "/toPlan"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -499,7 +499,7 @@ get_backup_selection(Client, BackupPlanId, SelectionId)
     get_backup_selection(Client, BackupPlanId, SelectionId, []).
 get_backup_selection(Client, BackupPlanId, SelectionId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/backup/plans/", http_uri:encode(BackupPlanId), "/selections/", http_uri:encode(SelectionId), ""],
+    Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/selections/", aws_util:encode_uri(SelectionId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -515,7 +515,7 @@ get_backup_vault_access_policy(Client, BackupVaultName)
     get_backup_vault_access_policy(Client, BackupVaultName, []).
 get_backup_vault_access_policy(Client, BackupVaultName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/backup-vaults/", http_uri:encode(BackupVaultName), "/access-policy"],
+    Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/access-policy"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -530,7 +530,7 @@ get_backup_vault_notifications(Client, BackupVaultName)
     get_backup_vault_notifications(Client, BackupVaultName, []).
 get_backup_vault_notifications(Client, BackupVaultName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/backup-vaults/", http_uri:encode(BackupVaultName), "/notification-configuration"],
+    Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/notification-configuration"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -546,7 +546,7 @@ get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn)
     get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn, []).
 get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/backup-vaults/", http_uri:encode(BackupVaultName), "/recovery-points/", http_uri:encode(RecoveryPointArn), "/restore-metadata"],
+    Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/", aws_util:encode_uri(RecoveryPointArn), "/restore-metadata"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -626,7 +626,7 @@ list_backup_plan_versions(Client, BackupPlanId, MaxResults, NextToken)
     list_backup_plan_versions(Client, BackupPlanId, MaxResults, NextToken, []).
 list_backup_plan_versions(Client, BackupPlanId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/backup/plans/", http_uri:encode(BackupPlanId), "/versions/"],
+    Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/versions/"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -673,7 +673,7 @@ list_backup_selections(Client, BackupPlanId, MaxResults, NextToken)
     list_backup_selections(Client, BackupPlanId, MaxResults, NextToken, []).
 list_backup_selections(Client, BackupPlanId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/backup/plans/", http_uri:encode(BackupPlanId), "/selections/"],
+    Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/selections/"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -764,7 +764,7 @@ list_recovery_points_by_backup_vault(Client, BackupVaultName, ByBackupPlanId, By
     list_recovery_points_by_backup_vault(Client, BackupVaultName, ByBackupPlanId, ByCreatedAfter, ByCreatedBefore, ByResourceArn, ByResourceType, MaxResults, NextToken, []).
 list_recovery_points_by_backup_vault(Client, BackupVaultName, ByBackupPlanId, ByCreatedAfter, ByCreatedBefore, ByResourceArn, ByResourceType, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/backup-vaults/", http_uri:encode(BackupVaultName), "/recovery-points/"],
+    Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -790,7 +790,7 @@ list_recovery_points_by_resource(Client, ResourceArn, MaxResults, NextToken)
     list_recovery_points_by_resource(Client, ResourceArn, MaxResults, NextToken, []).
 list_recovery_points_by_resource(Client, ResourceArn, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/resources/", http_uri:encode(ResourceArn), "/recovery-points/"],
+    Path = ["/resources/", aws_util:encode_uri(ResourceArn), "/recovery-points/"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -838,7 +838,7 @@ list_tags(Client, ResourceArn, MaxResults, NextToken)
     list_tags(Client, ResourceArn, MaxResults, NextToken, []).
 list_tags(Client, ResourceArn, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/tags/", http_uri:encode(ResourceArn), "/"],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), "/"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -860,7 +860,7 @@ put_backup_vault_access_policy(Client, BackupVaultName, Input) ->
     put_backup_vault_access_policy(Client, BackupVaultName, Input, []).
 put_backup_vault_access_policy(Client, BackupVaultName, Input0, Options) ->
     Method = put,
-    Path = ["/backup-vaults/", http_uri:encode(BackupVaultName), "/access-policy"],
+    Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/access-policy"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -877,7 +877,7 @@ put_backup_vault_notifications(Client, BackupVaultName, Input) ->
     put_backup_vault_notifications(Client, BackupVaultName, Input, []).
 put_backup_vault_notifications(Client, BackupVaultName, Input0, Options) ->
     Method = put,
-    Path = ["/backup-vaults/", http_uri:encode(BackupVaultName), "/notification-configuration"],
+    Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/notification-configuration"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -942,7 +942,7 @@ stop_backup_job(Client, BackupJobId, Input) ->
     stop_backup_job(Client, BackupJobId, Input, []).
 stop_backup_job(Client, BackupJobId, Input0, Options) ->
     Method = post,
-    Path = ["/backup-jobs/", http_uri:encode(BackupJobId), ""],
+    Path = ["/backup-jobs/", aws_util:encode_uri(BackupJobId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -959,7 +959,7 @@ tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -976,7 +976,7 @@ untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/untag/", http_uri:encode(ResourceArn), ""],
+    Path = ["/untag/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -995,7 +995,7 @@ update_backup_plan(Client, BackupPlanId, Input) ->
     update_backup_plan(Client, BackupPlanId, Input, []).
 update_backup_plan(Client, BackupPlanId, Input0, Options) ->
     Method = post,
-    Path = ["/backup/plans/", http_uri:encode(BackupPlanId), ""],
+    Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1021,7 +1021,7 @@ update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input
     update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input, []).
 update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input0, Options) ->
     Method = post,
-    Path = ["/backup-vaults/", http_uri:encode(BackupVaultName), "/recovery-points/", http_uri:encode(RecoveryPointArn), ""],
+    Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/", aws_util:encode_uri(RecoveryPointArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],

@@ -133,7 +133,7 @@ associate_assets(Client, AssetId, Input) ->
     associate_assets(Client, AssetId, Input, []).
 associate_assets(Client, AssetId, Input0, Options) ->
     Method = post,
-    Path = ["/assets/", http_uri:encode(AssetId), "/associate"],
+    Path = ["/assets/", aws_util:encode_uri(AssetId), "/associate"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -150,7 +150,7 @@ batch_associate_project_assets(Client, ProjectId, Input) ->
     batch_associate_project_assets(Client, ProjectId, Input, []).
 batch_associate_project_assets(Client, ProjectId, Input0, Options) ->
     Method = post,
-    Path = ["/projects/", http_uri:encode(ProjectId), "/assets/associate"],
+    Path = ["/projects/", aws_util:encode_uri(ProjectId), "/assets/associate"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -167,7 +167,7 @@ batch_disassociate_project_assets(Client, ProjectId, Input) ->
     batch_disassociate_project_assets(Client, ProjectId, Input, []).
 batch_disassociate_project_assets(Client, ProjectId, Input0, Options) ->
     Method = post,
-    Path = ["/projects/", http_uri:encode(ProjectId), "/assets/disassociate"],
+    Path = ["/projects/", aws_util:encode_uri(ProjectId), "/assets/disassociate"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -365,7 +365,7 @@ delete_access_policy(Client, AccessPolicyId, Input) ->
     delete_access_policy(Client, AccessPolicyId, Input, []).
 delete_access_policy(Client, AccessPolicyId, Input0, Options) ->
     Method = delete,
-    Path = ["/access-policies/", http_uri:encode(AccessPolicyId), ""],
+    Path = ["/access-policies/", aws_util:encode_uri(AccessPolicyId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -388,7 +388,7 @@ delete_asset(Client, AssetId, Input) ->
     delete_asset(Client, AssetId, Input, []).
 delete_asset(Client, AssetId, Input0, Options) ->
     Method = delete,
-    Path = ["/assets/", http_uri:encode(AssetId), ""],
+    Path = ["/assets/", aws_util:encode_uri(AssetId), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -412,7 +412,7 @@ delete_asset_model(Client, AssetModelId, Input) ->
     delete_asset_model(Client, AssetModelId, Input, []).
 delete_asset_model(Client, AssetModelId, Input0, Options) ->
     Method = delete,
-    Path = ["/asset-models/", http_uri:encode(AssetModelId), ""],
+    Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -429,7 +429,7 @@ delete_dashboard(Client, DashboardId, Input) ->
     delete_dashboard(Client, DashboardId, Input, []).
 delete_dashboard(Client, DashboardId, Input0, Options) ->
     Method = delete,
-    Path = ["/dashboards/", http_uri:encode(DashboardId), ""],
+    Path = ["/dashboards/", aws_util:encode_uri(DashboardId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -449,7 +449,7 @@ delete_gateway(Client, GatewayId, Input) ->
     delete_gateway(Client, GatewayId, Input, []).
 delete_gateway(Client, GatewayId, Input0, Options) ->
     Method = delete,
-    Path = ["/20200301/gateways/", http_uri:encode(GatewayId), ""],
+    Path = ["/20200301/gateways/", aws_util:encode_uri(GatewayId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -465,7 +465,7 @@ delete_portal(Client, PortalId, Input) ->
     delete_portal(Client, PortalId, Input, []).
 delete_portal(Client, PortalId, Input0, Options) ->
     Method = delete,
-    Path = ["/portals/", http_uri:encode(PortalId), ""],
+    Path = ["/portals/", aws_util:encode_uri(PortalId), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -482,7 +482,7 @@ delete_project(Client, ProjectId, Input) ->
     delete_project(Client, ProjectId, Input, []).
 delete_project(Client, ProjectId, Input0, Options) ->
     Method = delete,
-    Path = ["/projects/", http_uri:encode(ProjectId), ""],
+    Path = ["/projects/", aws_util:encode_uri(ProjectId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -501,7 +501,7 @@ describe_access_policy(Client, AccessPolicyId)
     describe_access_policy(Client, AccessPolicyId, []).
 describe_access_policy(Client, AccessPolicyId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/access-policies/", http_uri:encode(AccessPolicyId), ""],
+    Path = ["/access-policies/", aws_util:encode_uri(AccessPolicyId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -516,7 +516,7 @@ describe_asset(Client, AssetId)
     describe_asset(Client, AssetId, []).
 describe_asset(Client, AssetId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/assets/", http_uri:encode(AssetId), ""],
+    Path = ["/assets/", aws_util:encode_uri(AssetId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -531,7 +531,7 @@ describe_asset_model(Client, AssetModelId)
     describe_asset_model(Client, AssetModelId, []).
 describe_asset_model(Client, AssetModelId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/asset-models/", http_uri:encode(AssetModelId), ""],
+    Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -554,7 +554,7 @@ describe_asset_property(Client, AssetId, PropertyId)
     describe_asset_property(Client, AssetId, PropertyId, []).
 describe_asset_property(Client, AssetId, PropertyId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/assets/", http_uri:encode(AssetId), "/properties/", http_uri:encode(PropertyId), ""],
+    Path = ["/assets/", aws_util:encode_uri(AssetId), "/properties/", aws_util:encode_uri(PropertyId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -569,7 +569,7 @@ describe_dashboard(Client, DashboardId)
     describe_dashboard(Client, DashboardId, []).
 describe_dashboard(Client, DashboardId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/dashboards/", http_uri:encode(DashboardId), ""],
+    Path = ["/dashboards/", aws_util:encode_uri(DashboardId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -584,7 +584,7 @@ describe_gateway(Client, GatewayId)
     describe_gateway(Client, GatewayId, []).
 describe_gateway(Client, GatewayId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/20200301/gateways/", http_uri:encode(GatewayId), ""],
+    Path = ["/20200301/gateways/", aws_util:encode_uri(GatewayId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -605,7 +605,7 @@ describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId
     describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId, []).
 describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/20200301/gateways/", http_uri:encode(GatewayId), "/capability/", http_uri:encode(CapabilityNamespace), ""],
+    Path = ["/20200301/gateways/", aws_util:encode_uri(GatewayId), "/capability/", aws_util:encode_uri(CapabilityNamespace), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -635,7 +635,7 @@ describe_portal(Client, PortalId)
     describe_portal(Client, PortalId, []).
 describe_portal(Client, PortalId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/portals/", http_uri:encode(PortalId), ""],
+    Path = ["/portals/", aws_util:encode_uri(PortalId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -650,7 +650,7 @@ describe_project(Client, ProjectId)
     describe_project(Client, ProjectId, []).
 describe_project(Client, ProjectId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/projects/", http_uri:encode(ProjectId), ""],
+    Path = ["/projects/", aws_util:encode_uri(ProjectId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -665,7 +665,7 @@ disassociate_assets(Client, AssetId, Input) ->
     disassociate_assets(Client, AssetId, Input, []).
 disassociate_assets(Client, AssetId, Input0, Options) ->
     Method = post,
-    Path = ["/assets/", http_uri:encode(AssetId), "/disassociate"],
+    Path = ["/assets/", aws_util:encode_uri(AssetId), "/disassociate"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -887,7 +887,7 @@ list_associated_assets(Client, AssetId, HierarchyId, MaxResults, NextToken, Trav
     list_associated_assets(Client, AssetId, HierarchyId, MaxResults, NextToken, TraversalDirection, []).
 list_associated_assets(Client, AssetId, HierarchyId, MaxResults, NextToken, TraversalDirection, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/assets/", http_uri:encode(AssetId), "/hierarchies"],
+    Path = ["/assets/", aws_util:encode_uri(AssetId), "/hierarchies"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -972,7 +972,7 @@ list_project_assets(Client, ProjectId, MaxResults, NextToken)
     list_project_assets(Client, ProjectId, MaxResults, NextToken, []).
 list_project_assets(Client, ProjectId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/projects/", http_uri:encode(ProjectId), "/assets"],
+    Path = ["/projects/", aws_util:encode_uri(ProjectId), "/assets"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1087,7 +1087,7 @@ update_access_policy(Client, AccessPolicyId, Input) ->
     update_access_policy(Client, AccessPolicyId, Input, []).
 update_access_policy(Client, AccessPolicyId, Input0, Options) ->
     Method = put,
-    Path = ["/access-policies/", http_uri:encode(AccessPolicyId), ""],
+    Path = ["/access-policies/", aws_util:encode_uri(AccessPolicyId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1106,7 +1106,7 @@ update_asset(Client, AssetId, Input) ->
     update_asset(Client, AssetId, Input, []).
 update_asset(Client, AssetId, Input0, Options) ->
     Method = put,
-    Path = ["/assets/", http_uri:encode(AssetId), ""],
+    Path = ["/assets/", aws_util:encode_uri(AssetId), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -1138,7 +1138,7 @@ update_asset_model(Client, AssetModelId, Input) ->
     update_asset_model(Client, AssetModelId, Input, []).
 update_asset_model(Client, AssetModelId, Input0, Options) ->
     Method = put,
-    Path = ["/asset-models/", http_uri:encode(AssetModelId), ""],
+    Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -1159,7 +1159,7 @@ update_asset_property(Client, AssetId, PropertyId, Input) ->
     update_asset_property(Client, AssetId, PropertyId, Input, []).
 update_asset_property(Client, AssetId, PropertyId, Input0, Options) ->
     Method = put,
-    Path = ["/assets/", http_uri:encode(AssetId), "/properties/", http_uri:encode(PropertyId), ""],
+    Path = ["/assets/", aws_util:encode_uri(AssetId), "/properties/", aws_util:encode_uri(PropertyId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1175,7 +1175,7 @@ update_dashboard(Client, DashboardId, Input) ->
     update_dashboard(Client, DashboardId, Input, []).
 update_dashboard(Client, DashboardId, Input0, Options) ->
     Method = put,
-    Path = ["/dashboards/", http_uri:encode(DashboardId), ""],
+    Path = ["/dashboards/", aws_util:encode_uri(DashboardId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1191,7 +1191,7 @@ update_gateway(Client, GatewayId, Input) ->
     update_gateway(Client, GatewayId, Input, []).
 update_gateway(Client, GatewayId, Input0, Options) ->
     Method = put,
-    Path = ["/20200301/gateways/", http_uri:encode(GatewayId), ""],
+    Path = ["/20200301/gateways/", aws_util:encode_uri(GatewayId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1214,7 +1214,7 @@ update_gateway_capability_configuration(Client, GatewayId, Input) ->
     update_gateway_capability_configuration(Client, GatewayId, Input, []).
 update_gateway_capability_configuration(Client, GatewayId, Input0, Options) ->
     Method = post,
-    Path = ["/20200301/gateways/", http_uri:encode(GatewayId), "/capability"],
+    Path = ["/20200301/gateways/", aws_util:encode_uri(GatewayId), "/capability"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -1230,7 +1230,7 @@ update_portal(Client, PortalId, Input) ->
     update_portal(Client, PortalId, Input, []).
 update_portal(Client, PortalId, Input0, Options) ->
     Method = put,
-    Path = ["/portals/", http_uri:encode(PortalId), ""],
+    Path = ["/portals/", aws_util:encode_uri(PortalId), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -1246,7 +1246,7 @@ update_project(Client, ProjectId, Input) ->
     update_project(Client, ProjectId, Input, []).
 update_project(Client, ProjectId, Input0, Options) ->
     Method = put,
-    Path = ["/projects/", http_uri:encode(ProjectId), ""],
+    Path = ["/projects/", aws_util:encode_uri(ProjectId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],

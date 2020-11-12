@@ -126,7 +126,7 @@ associate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input) ->
     associate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input, []).
 associate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0, Options) ->
     Method = post,
-    Path = ["/routing-profiles/", http_uri:encode(InstanceId), "/", http_uri:encode(RoutingProfileId), "/associate-queues"],
+    Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/associate-queues"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -145,7 +145,7 @@ create_contact_flow(Client, InstanceId, Input) ->
     create_contact_flow(Client, InstanceId, Input, []).
 create_contact_flow(Client, InstanceId, Input0, Options) ->
     Method = put,
-    Path = ["/contact-flows/", http_uri:encode(InstanceId), ""],
+    Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -161,7 +161,7 @@ create_routing_profile(Client, InstanceId, Input) ->
     create_routing_profile(Client, InstanceId, Input, []).
 create_routing_profile(Client, InstanceId, Input0, Options) ->
     Method = put,
-    Path = ["/routing-profiles/", http_uri:encode(InstanceId), ""],
+    Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -180,7 +180,7 @@ create_user(Client, InstanceId, Input) ->
     create_user(Client, InstanceId, Input, []).
 create_user(Client, InstanceId, Input0, Options) ->
     Method = put,
-    Path = ["/users/", http_uri:encode(InstanceId), ""],
+    Path = ["/users/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -200,7 +200,7 @@ delete_user(Client, InstanceId, UserId, Input) ->
     delete_user(Client, InstanceId, UserId, Input, []).
 delete_user(Client, InstanceId, UserId, Input0, Options) ->
     Method = delete,
-    Path = ["/users/", http_uri:encode(InstanceId), "/", http_uri:encode(UserId), ""],
+    Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -220,7 +220,7 @@ describe_contact_flow(Client, ContactFlowId, InstanceId)
     describe_contact_flow(Client, ContactFlowId, InstanceId, []).
 describe_contact_flow(Client, ContactFlowId, InstanceId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/contact-flows/", http_uri:encode(InstanceId), "/", http_uri:encode(ContactFlowId), ""],
+    Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -235,7 +235,7 @@ describe_routing_profile(Client, InstanceId, RoutingProfileId)
     describe_routing_profile(Client, InstanceId, RoutingProfileId, []).
 describe_routing_profile(Client, InstanceId, RoutingProfileId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/routing-profiles/", http_uri:encode(InstanceId), "/", http_uri:encode(RoutingProfileId), ""],
+    Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -254,7 +254,7 @@ describe_user(Client, InstanceId, UserId)
     describe_user(Client, InstanceId, UserId, []).
 describe_user(Client, InstanceId, UserId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/users/", http_uri:encode(InstanceId), "/", http_uri:encode(UserId), ""],
+    Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -269,7 +269,7 @@ describe_user_hierarchy_group(Client, HierarchyGroupId, InstanceId)
     describe_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, []).
 describe_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/user-hierarchy-groups/", http_uri:encode(InstanceId), "/", http_uri:encode(HierarchyGroupId), ""],
+    Path = ["/user-hierarchy-groups/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(HierarchyGroupId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -285,7 +285,7 @@ describe_user_hierarchy_structure(Client, InstanceId)
     describe_user_hierarchy_structure(Client, InstanceId, []).
 describe_user_hierarchy_structure(Client, InstanceId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/user-hierarchy-structure/", http_uri:encode(InstanceId), ""],
+    Path = ["/user-hierarchy-structure/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -299,7 +299,7 @@ disassociate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input)
     disassociate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input, []).
 disassociate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0, Options) ->
     Method = post,
-    Path = ["/routing-profiles/", http_uri:encode(InstanceId), "/", http_uri:encode(RoutingProfileId), "/disassociate-queues"],
+    Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/disassociate-queues"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -316,7 +316,7 @@ get_contact_attributes(Client, InitialContactId, InstanceId)
     get_contact_attributes(Client, InitialContactId, InstanceId, []).
 get_contact_attributes(Client, InitialContactId, InstanceId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/contact/attributes/", http_uri:encode(InstanceId), "/", http_uri:encode(InitialContactId), ""],
+    Path = ["/contact/attributes/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(InitialContactId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -334,7 +334,7 @@ get_current_metric_data(Client, InstanceId, Input) ->
     get_current_metric_data(Client, InstanceId, Input, []).
 get_current_metric_data(Client, InstanceId, Input0, Options) ->
     Method = post,
-    Path = ["/metrics/current/", http_uri:encode(InstanceId), ""],
+    Path = ["/metrics/current/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -351,7 +351,7 @@ get_federation_token(Client, InstanceId)
     get_federation_token(Client, InstanceId, []).
 get_federation_token(Client, InstanceId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/user/federate/", http_uri:encode(InstanceId), ""],
+    Path = ["/user/federate/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -369,7 +369,7 @@ get_metric_data(Client, InstanceId, Input) ->
     get_metric_data(Client, InstanceId, Input, []).
 get_metric_data(Client, InstanceId, Input0, Options) ->
     Method = post,
-    Path = ["/metrics/historical/", http_uri:encode(InstanceId), ""],
+    Path = ["/metrics/historical/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -393,7 +393,7 @@ list_contact_flows(Client, InstanceId, ContactFlowTypes, MaxResults, NextToken)
     list_contact_flows(Client, InstanceId, ContactFlowTypes, MaxResults, NextToken, []).
 list_contact_flows(Client, InstanceId, ContactFlowTypes, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/contact-flows-summary/", http_uri:encode(InstanceId), ""],
+    Path = ["/contact-flows-summary/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -418,7 +418,7 @@ list_hours_of_operations(Client, InstanceId, MaxResults, NextToken)
     list_hours_of_operations(Client, InstanceId, MaxResults, NextToken, []).
 list_hours_of_operations(Client, InstanceId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/hours-of-operations-summary/", http_uri:encode(InstanceId), ""],
+    Path = ["/hours-of-operations-summary/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -442,7 +442,7 @@ list_phone_numbers(Client, InstanceId, MaxResults, NextToken, PhoneNumberCountry
     list_phone_numbers(Client, InstanceId, MaxResults, NextToken, PhoneNumberCountryCodes, PhoneNumberTypes, []).
 list_phone_numbers(Client, InstanceId, MaxResults, NextToken, PhoneNumberCountryCodes, PhoneNumberTypes, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/phone-numbers-summary/", http_uri:encode(InstanceId), ""],
+    Path = ["/phone-numbers-summary/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -465,7 +465,7 @@ list_prompts(Client, InstanceId, MaxResults, NextToken)
     list_prompts(Client, InstanceId, MaxResults, NextToken, []).
 list_prompts(Client, InstanceId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/prompts-summary/", http_uri:encode(InstanceId), ""],
+    Path = ["/prompts-summary/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -489,7 +489,7 @@ list_queues(Client, InstanceId, MaxResults, NextToken, QueueTypes)
     list_queues(Client, InstanceId, MaxResults, NextToken, QueueTypes, []).
 list_queues(Client, InstanceId, MaxResults, NextToken, QueueTypes, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/queues-summary/", http_uri:encode(InstanceId), ""],
+    Path = ["/queues-summary/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -510,7 +510,7 @@ list_routing_profile_queues(Client, InstanceId, RoutingProfileId, MaxResults, Ne
     list_routing_profile_queues(Client, InstanceId, RoutingProfileId, MaxResults, NextToken, []).
 list_routing_profile_queues(Client, InstanceId, RoutingProfileId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/routing-profiles/", http_uri:encode(InstanceId), "/", http_uri:encode(RoutingProfileId), "/queues"],
+    Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/queues"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -534,7 +534,7 @@ list_routing_profiles(Client, InstanceId, MaxResults, NextToken)
     list_routing_profiles(Client, InstanceId, MaxResults, NextToken, []).
 list_routing_profiles(Client, InstanceId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/routing-profiles-summary/", http_uri:encode(InstanceId), ""],
+    Path = ["/routing-profiles-summary/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -558,7 +558,7 @@ list_security_profiles(Client, InstanceId, MaxResults, NextToken)
     list_security_profiles(Client, InstanceId, MaxResults, NextToken, []).
 list_security_profiles(Client, InstanceId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/security-profiles-summary/", http_uri:encode(InstanceId), ""],
+    Path = ["/security-profiles-summary/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -581,7 +581,7 @@ list_tags_for_resource(Client, ResourceArn)
     list_tags_for_resource(Client, ResourceArn, []).
 list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -600,7 +600,7 @@ list_user_hierarchy_groups(Client, InstanceId, MaxResults, NextToken)
     list_user_hierarchy_groups(Client, InstanceId, MaxResults, NextToken, []).
 list_user_hierarchy_groups(Client, InstanceId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/user-hierarchy-groups-summary/", http_uri:encode(InstanceId), ""],
+    Path = ["/user-hierarchy-groups-summary/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -621,7 +621,7 @@ list_users(Client, InstanceId, MaxResults, NextToken)
     list_users(Client, InstanceId, MaxResults, NextToken, []).
 list_users(Client, InstanceId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/users-summary/", http_uri:encode(InstanceId), ""],
+    Path = ["/users-summary/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -830,7 +830,7 @@ tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -846,7 +846,7 @@ untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -906,7 +906,7 @@ update_contact_flow_content(Client, ContactFlowId, InstanceId, Input) ->
     update_contact_flow_content(Client, ContactFlowId, InstanceId, Input, []).
 update_contact_flow_content(Client, ContactFlowId, InstanceId, Input0, Options) ->
     Method = post,
-    Path = ["/contact-flows/", http_uri:encode(InstanceId), "/", http_uri:encode(ContactFlowId), "/content"],
+    Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowId), "/content"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -922,7 +922,7 @@ update_contact_flow_name(Client, ContactFlowId, InstanceId, Input) ->
     update_contact_flow_name(Client, ContactFlowId, InstanceId, Input, []).
 update_contact_flow_name(Client, ContactFlowId, InstanceId, Input0, Options) ->
     Method = post,
-    Path = ["/contact-flows/", http_uri:encode(InstanceId), "/", http_uri:encode(ContactFlowId), "/name"],
+    Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowId), "/name"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -939,7 +939,7 @@ update_routing_profile_concurrency(Client, InstanceId, RoutingProfileId, Input) 
     update_routing_profile_concurrency(Client, InstanceId, RoutingProfileId, Input, []).
 update_routing_profile_concurrency(Client, InstanceId, RoutingProfileId, Input0, Options) ->
     Method = post,
-    Path = ["/routing-profiles/", http_uri:encode(InstanceId), "/", http_uri:encode(RoutingProfileId), "/concurrency"],
+    Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/concurrency"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -955,7 +955,7 @@ update_routing_profile_default_outbound_queue(Client, InstanceId, RoutingProfile
     update_routing_profile_default_outbound_queue(Client, InstanceId, RoutingProfileId, Input, []).
 update_routing_profile_default_outbound_queue(Client, InstanceId, RoutingProfileId, Input0, Options) ->
     Method = post,
-    Path = ["/routing-profiles/", http_uri:encode(InstanceId), "/", http_uri:encode(RoutingProfileId), "/default-outbound-queue"],
+    Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/default-outbound-queue"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -974,7 +974,7 @@ update_routing_profile_name(Client, InstanceId, RoutingProfileId, Input) ->
     update_routing_profile_name(Client, InstanceId, RoutingProfileId, Input, []).
 update_routing_profile_name(Client, InstanceId, RoutingProfileId, Input0, Options) ->
     Method = post,
-    Path = ["/routing-profiles/", http_uri:encode(InstanceId), "/", http_uri:encode(RoutingProfileId), "/name"],
+    Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/name"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -991,7 +991,7 @@ update_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input) ->
     update_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input, []).
 update_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0, Options) ->
     Method = post,
-    Path = ["/routing-profiles/", http_uri:encode(InstanceId), "/", http_uri:encode(RoutingProfileId), "/queues"],
+    Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/queues"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1007,7 +1007,7 @@ update_user_hierarchy(Client, InstanceId, UserId, Input) ->
     update_user_hierarchy(Client, InstanceId, UserId, Input, []).
 update_user_hierarchy(Client, InstanceId, UserId, Input0, Options) ->
     Method = post,
-    Path = ["/users/", http_uri:encode(InstanceId), "/", http_uri:encode(UserId), "/hierarchy"],
+    Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/hierarchy"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1031,7 +1031,7 @@ update_user_identity_info(Client, InstanceId, UserId, Input) ->
     update_user_identity_info(Client, InstanceId, UserId, Input, []).
 update_user_identity_info(Client, InstanceId, UserId, Input0, Options) ->
     Method = post,
-    Path = ["/users/", http_uri:encode(InstanceId), "/", http_uri:encode(UserId), "/identity-info"],
+    Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/identity-info"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1047,7 +1047,7 @@ update_user_phone_config(Client, InstanceId, UserId, Input) ->
     update_user_phone_config(Client, InstanceId, UserId, Input, []).
 update_user_phone_config(Client, InstanceId, UserId, Input0, Options) ->
     Method = post,
-    Path = ["/users/", http_uri:encode(InstanceId), "/", http_uri:encode(UserId), "/phone-config"],
+    Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/phone-config"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1063,7 +1063,7 @@ update_user_routing_profile(Client, InstanceId, UserId, Input) ->
     update_user_routing_profile(Client, InstanceId, UserId, Input, []).
 update_user_routing_profile(Client, InstanceId, UserId, Input0, Options) ->
     Method = post,
-    Path = ["/users/", http_uri:encode(InstanceId), "/", http_uri:encode(UserId), "/routing-profile"],
+    Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/routing-profile"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1079,7 +1079,7 @@ update_user_security_profiles(Client, InstanceId, UserId, Input) ->
     update_user_security_profiles(Client, InstanceId, UserId, Input, []).
 update_user_security_profiles(Client, InstanceId, UserId, Input0, Options) ->
     Method = post,
-    Path = ["/users/", http_uri:encode(InstanceId), "/", http_uri:encode(UserId), "/security-profiles"],
+    Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/security-profiles"],
     SuccessStatusCode = undefined,
 
     Headers = [],

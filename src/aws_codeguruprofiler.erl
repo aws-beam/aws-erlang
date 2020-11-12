@@ -81,7 +81,7 @@ add_notification_channels(Client, ProfilingGroupName, Input) ->
     add_notification_channels(Client, ProfilingGroupName, Input, []).
 add_notification_channels(Client, ProfilingGroupName, Input0, Options) ->
     Method = post,
-    Path = ["/profilingGroups/", http_uri:encode(ProfilingGroupName), "/notificationConfiguration"],
+    Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/notificationConfiguration"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -98,7 +98,7 @@ batch_get_frame_metric_data(Client, ProfilingGroupName, Input) ->
     batch_get_frame_metric_data(Client, ProfilingGroupName, Input, []).
 batch_get_frame_metric_data(Client, ProfilingGroupName, Input0, Options) ->
     Method = post,
-    Path = ["/profilingGroups/", http_uri:encode(ProfilingGroupName), "/frames/-/metrics"],
+    Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/frames/-/metrics"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -122,7 +122,7 @@ configure_agent(Client, ProfilingGroupName, Input) ->
     configure_agent(Client, ProfilingGroupName, Input, []).
 configure_agent(Client, ProfilingGroupName, Input0, Options) ->
     Method = post,
-    Path = ["/profilingGroups/", http_uri:encode(ProfilingGroupName), "/configureAgent"],
+    Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/configureAgent"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -155,7 +155,7 @@ delete_profiling_group(Client, ProfilingGroupName, Input) ->
     delete_profiling_group(Client, ProfilingGroupName, Input, []).
 delete_profiling_group(Client, ProfilingGroupName, Input0, Options) ->
     Method = delete,
-    Path = ["/profilingGroups/", http_uri:encode(ProfilingGroupName), ""],
+    Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -173,7 +173,7 @@ describe_profiling_group(Client, ProfilingGroupName)
     describe_profiling_group(Client, ProfilingGroupName, []).
 describe_profiling_group(Client, ProfilingGroupName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/profilingGroups/", http_uri:encode(ProfilingGroupName), ""],
+    Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -211,7 +211,7 @@ get_notification_configuration(Client, ProfilingGroupName)
     get_notification_configuration(Client, ProfilingGroupName, []).
 get_notification_configuration(Client, ProfilingGroupName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/profilingGroups/", http_uri:encode(ProfilingGroupName), "/notificationConfiguration"],
+    Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/notificationConfiguration"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -227,7 +227,7 @@ get_policy(Client, ProfilingGroupName)
     get_policy(Client, ProfilingGroupName, []).
 get_policy(Client, ProfilingGroupName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/profilingGroups/", http_uri:encode(ProfilingGroupName), "/policy"],
+    Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/policy"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -280,7 +280,7 @@ get_profile(Client, ProfilingGroupName, EndTime, MaxDepth, Period, StartTime, Ac
     get_profile(Client, ProfilingGroupName, EndTime, MaxDepth, Period, StartTime, Accept, []).
 get_profile(Client, ProfilingGroupName, EndTime, MaxDepth, Period, StartTime, Accept, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/profilingGroups/", http_uri:encode(ProfilingGroupName), "/profile"],
+    Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/profile"],
     SuccessStatusCode = 200,
 
     Headers0 =
@@ -327,7 +327,7 @@ get_recommendations(Client, ProfilingGroupName, EndTime, Locale, StartTime)
     get_recommendations(Client, ProfilingGroupName, EndTime, Locale, StartTime, []).
 get_recommendations(Client, ProfilingGroupName, EndTime, Locale, StartTime, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/internal/profilingGroups/", http_uri:encode(ProfilingGroupName), "/recommendations"],
+    Path = ["/internal/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/recommendations"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -349,7 +349,7 @@ list_findings_reports(Client, ProfilingGroupName, DailyReportsOnly, EndTime, Max
     list_findings_reports(Client, ProfilingGroupName, DailyReportsOnly, EndTime, MaxResults, NextToken, StartTime, []).
 list_findings_reports(Client, ProfilingGroupName, DailyReportsOnly, EndTime, MaxResults, NextToken, StartTime, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/internal/profilingGroups/", http_uri:encode(ProfilingGroupName), "/findingsReports"],
+    Path = ["/internal/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/findingsReports"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -373,7 +373,7 @@ list_profile_times(Client, ProfilingGroupName, EndTime, MaxResults, NextToken, O
     list_profile_times(Client, ProfilingGroupName, EndTime, MaxResults, NextToken, OrderBy, Period, StartTime, []).
 list_profile_times(Client, ProfilingGroupName, EndTime, MaxResults, NextToken, OrderBy, Period, StartTime, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/profilingGroups/", http_uri:encode(ProfilingGroupName), "/profileTimes"],
+    Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/profileTimes"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -420,7 +420,7 @@ list_tags_for_resource(Client, ResourceArn)
     list_tags_for_resource(Client, ResourceArn, []).
 list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -437,7 +437,7 @@ post_agent_profile(Client, ProfilingGroupName, Input) ->
     post_agent_profile(Client, ProfilingGroupName, Input, []).
 post_agent_profile(Client, ProfilingGroupName, Input0, Options) ->
     Method = post,
-    Path = ["/profilingGroups/", http_uri:encode(ProfilingGroupName), "/agentProfile"],
+    Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/agentProfile"],
     SuccessStatusCode = 204,
 
     HeadersMapping = [
@@ -478,7 +478,7 @@ put_permission(Client, ActionGroup, ProfilingGroupName, Input) ->
     put_permission(Client, ActionGroup, ProfilingGroupName, Input, []).
 put_permission(Client, ActionGroup, ProfilingGroupName, Input0, Options) ->
     Method = put,
-    Path = ["/profilingGroups/", http_uri:encode(ProfilingGroupName), "/policy/", http_uri:encode(ActionGroup), ""],
+    Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/policy/", aws_util:encode_uri(ActionGroup), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -494,7 +494,7 @@ remove_notification_channel(Client, ChannelId, ProfilingGroupName, Input) ->
     remove_notification_channel(Client, ChannelId, ProfilingGroupName, Input, []).
 remove_notification_channel(Client, ChannelId, ProfilingGroupName, Input0, Options) ->
     Method = delete,
-    Path = ["/profilingGroups/", http_uri:encode(ProfilingGroupName), "/notificationConfiguration/", http_uri:encode(ChannelId), ""],
+    Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/notificationConfiguration/", aws_util:encode_uri(ChannelId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -517,7 +517,7 @@ remove_permission(Client, ActionGroup, ProfilingGroupName, Input) ->
     remove_permission(Client, ActionGroup, ProfilingGroupName, Input, []).
 remove_permission(Client, ActionGroup, ProfilingGroupName, Input0, Options) ->
     Method = delete,
-    Path = ["/profilingGroups/", http_uri:encode(ProfilingGroupName), "/policy/", http_uri:encode(ActionGroup), ""],
+    Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/policy/", aws_util:encode_uri(ActionGroup), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -535,7 +535,7 @@ submit_feedback(Client, AnomalyInstanceId, ProfilingGroupName, Input) ->
     submit_feedback(Client, AnomalyInstanceId, ProfilingGroupName, Input, []).
 submit_feedback(Client, AnomalyInstanceId, ProfilingGroupName, Input0, Options) ->
     Method = post,
-    Path = ["/internal/profilingGroups/", http_uri:encode(ProfilingGroupName), "/anomalies/", http_uri:encode(AnomalyInstanceId), "/feedback"],
+    Path = ["/internal/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/anomalies/", aws_util:encode_uri(AnomalyInstanceId), "/feedback"],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -551,7 +551,7 @@ tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -567,7 +567,7 @@ untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -584,7 +584,7 @@ update_profiling_group(Client, ProfilingGroupName, Input) ->
     update_profiling_group(Client, ProfilingGroupName, Input, []).
 update_profiling_group(Client, ProfilingGroupName, Input0, Options) ->
     Method = put,
-    Path = ["/profilingGroups/", http_uri:encode(ProfilingGroupName), ""],
+    Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],

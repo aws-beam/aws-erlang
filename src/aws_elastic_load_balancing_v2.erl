@@ -17,17 +17,21 @@
 %% checking the health status of the targets.
 %%
 %% Elastic Load Balancing supports the following types of load balancers:
-%% Application Load Balancers, Network Load Balancers, and Classic Load
-%% Balancers. This reference covers Application Load Balancers and Network
-%% Load Balancers.
+%% Application Load Balancers, Network Load Balancers, Gateway Load
+%% Balancers, and Classic Load Balancers. This reference covers the following
+%% load balancer types:
 %%
-%% An Application Load Balancer makes routing and load balancing decisions at
-%% the application layer (HTTP/HTTPS). A Network Load Balancer makes routing
-%% and load balancing decisions at the transport layer (TCP/TLS). Both
-%% Application Load Balancers and Network Load Balancers can route requests
-%% to one or more ports on each EC2 instance or container instance in your
-%% virtual private cloud (VPC). For more information, see the Elastic Load
-%% Balancing User Guide.
+%% <ul> <li> Application Load Balancer - Operates at the application layer
+%% (layer 7) and supports HTTP and HTTPS.
+%%
+%% </li> <li> Network Load Balancer - Operates at the transport layer (layer
+%% 4) and supports TCP, TLS, and UDP.
+%%
+%% </li> <li> Gateway Load Balancer - Operates at the network layer (layer
+%% 3).
+%%
+%% </li> </ul> For more information, see the Elastic Load Balancing User
+%% Guide.
 %%
 %% All Elastic Load Balancing operations are idempotent, which means that
 %% they complete at most one time. If you repeat an operation, it succeeds.
@@ -114,13 +118,8 @@
 %% If the certificate in already in the certificate list, the call is
 %% successful but the certificate is not added again.
 %%
-%% To get the certificate list for a listener, use
-%% `DescribeListenerCertificates`. To remove certificates from the
-%% certificate list for a listener, use `RemoveListenerCertificates`. To
-%% replace the default certificate for a listener, use `ModifyListener`.
-%%
-%% For more information, see SSL Certificates in the Application Load
-%% Balancers Guide.
+%% For more information, see HTTPS listeners in the Application Load
+%% Balancers Guide or TLS listeners in the Network Load Balancers Guide.
 add_listener_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_listener_certificates(Client, Input, []).
@@ -132,13 +131,10 @@ add_listener_certificates(Client, Input, Options)
 %% resource.
 %%
 %% You can tag your Application Load Balancers, Network Load Balancers,
-%% target groups, listeners, and rules.
+%% Gateway Load Balancers, target groups, listeners, and rules.
 %%
 %% Each tag consists of a key and an optional value. If a resource already
 %% has a tag with the same key, `AddTags` updates its value.
-%%
-%% To list the current tags for your resources, use `DescribeTags`. To remove
-%% tags from your resources, use `RemoveTags`.
 add_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags(Client, Input, []).
@@ -146,21 +142,22 @@ add_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddTags">>, Input, Options).
 
-%% @doc Creates a listener for the specified Application Load Balancer or
+%% @doc Creates a listener for the specified Application Load Balancer,
 %% Network Load Balancer.
 %%
-%% To update a listener, use `ModifyListener`. When you are finished with a
-%% listener, you can delete it using `DeleteListener`. If you are finished
-%% with both the listener and the load balancer, you can delete them both
-%% using `DeleteLoadBalancer`.
+%% or Gateway Load Balancer.
 %%
-%% This operation is idempotent, which means that it completes at most one
-%% time. If you attempt to create multiple listeners with the same settings,
-%% each call succeeds.
+%% For more information, see the following:
 %%
-%% For more information, see Listeners for Your Application Load Balancers in
-%% the Application Load Balancers Guide and Listeners for Your Network Load
-%% Balancers in the Network Load Balancers Guide.
+%% <ul> <li> Listeners for your Application Load Balancers
+%%
+%% </li> <li> Listeners for your Network Load Balancers
+%%
+%% </li> <li> Listeners for your Gateway Load Balancers
+%%
+%% </li> </ul> This operation is idempotent, which means that it completes at
+%% most one time. If you attempt to create multiple listeners with the same
+%% settings, each call succeeds.
 create_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_listener(Client, Input, []).
@@ -168,28 +165,20 @@ create_listener(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateListener">>, Input, Options).
 
-%% @doc Creates an Application Load Balancer or a Network Load Balancer.
+%% @doc Creates an Application Load Balancer, Network Load Balancer, or
+%% Gateway Load Balancer.
 %%
-%% When you create a load balancer, you can specify security groups, public
-%% subnets, IP address type, and tags. Otherwise, you could do so later using
-%% `SetSecurityGroups`, `SetSubnets`, `SetIpAddressType`, and `AddTags`.
+%% For more information, see the following:
 %%
-%% To create listeners for your load balancer, use `CreateListener`. To
-%% describe your current load balancers, see `DescribeLoadBalancers`. When
-%% you are finished with a load balancer, you can delete it using
-%% `DeleteLoadBalancer`.
+%% <ul> <li> Application Load Balancers
 %%
-%% For limit information, see Limits for Your Application Load Balancer in
-%% the Application Load Balancers Guide and Limits for Your Network Load
-%% Balancer in the Network Load Balancers Guide.
+%% </li> <li> Network Load Balancers
 %%
-%% This operation is idempotent, which means that it completes at most one
-%% time. If you attempt to create multiple load balancers with the same
-%% settings, each call succeeds.
+%% </li> <li> Gateway Load Balancers
 %%
-%% For more information, see Application Load Balancers in the Application
-%% Load Balancers Guide and Network Load Balancers in the Network Load
-%% Balancers Guide.
+%% </li> </ul> This operation is idempotent, which means that it completes at
+%% most one time. If you attempt to create multiple load balancers with the
+%% same settings, each call succeeds.
 create_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_load_balancer(Client, Input, []).
@@ -205,12 +194,8 @@ create_load_balancer(Client, Input, Options)
 %% conditions. Rules are evaluated in priority order, from the lowest value
 %% to the highest value. When the conditions for a rule are met, its actions
 %% are performed. If the conditions for no rules are met, the actions for the
-%% default rule are performed. For more information, see Listener Rules in
+%% default rule are performed. For more information, see Listener rules in
 %% the Application Load Balancers Guide.
-%%
-%% To view your current rules, use `DescribeRules`. To update a rule, use
-%% `ModifyRule`. To set the priorities of your rules, use
-%% `SetRulePriorities`. To delete a rule, use `DeleteRule`.
 create_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_rule(Client, Input, []).
@@ -220,23 +205,17 @@ create_rule(Client, Input, Options)
 
 %% @doc Creates a target group.
 %%
-%% To register targets with the target group, use `RegisterTargets`. To
-%% update the health check settings for the target group, use
-%% `ModifyTargetGroup`. To monitor the health of targets in the target group,
-%% use `DescribeTargetHealth`.
+%% For more information, see the following:
 %%
-%% To route traffic to the targets in a target group, specify the target
-%% group in an action using `CreateListener` or `CreateRule`.
+%% <ul> <li> Target groups for your Application Load Balancers
 %%
-%% To delete a target group, use `DeleteTargetGroup`.
+%% </li> <li> Target groups for your Network Load Balancers
 %%
-%% This operation is idempotent, which means that it completes at most one
-%% time. If you attempt to create multiple target groups with the same
-%% settings, each call succeeds.
+%% </li> <li> Target groups for your Gateway Load Balancers
 %%
-%% For more information, see Target Groups for Your Application Load
-%% Balancers in the Application Load Balancers Guide or Target Groups for
-%% Your Network Load Balancers in the Network Load Balancers Guide.
+%% </li> </ul> This operation is idempotent, which means that it completes at
+%% most one time. If you attempt to create multiple target groups with the
+%% same settings, each call succeeds.
 create_target_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_target_group(Client, Input, []).
@@ -247,7 +226,7 @@ create_target_group(Client, Input, Options)
 %% @doc Deletes the specified listener.
 %%
 %% Alternatively, your listener is deleted when you delete the load balancer
-%% to which it is attached, using `DeleteLoadBalancer`.
+%% to which it is attached.
 delete_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_listener(Client, Input, []).
@@ -255,8 +234,10 @@ delete_listener(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteListener">>, Input, Options).
 
-%% @doc Deletes the specified Application Load Balancer or Network Load
-%% Balancer and its attached listeners.
+%% @doc Deletes the specified Application Load Balancer, Network Load
+%% Balancer, or Gateway Load Balancer.
+%%
+%% Deleting a load balancer also deletes its listeners.
 %%
 %% You can't delete a load balancer if deletion protection is enabled. If the
 %% load balancer does not exist or has already been deleted, the call
@@ -287,6 +268,9 @@ delete_rule(Client, Input, Options)
 %%
 %% You can delete a target group if it is not referenced by any actions.
 %% Deleting a target group also deletes any associated health checks.
+%% Deleting a target group does not affect its registered targets. For
+%% example, any EC2 instances continue to run until you stop or terminate
+%% them.
 delete_target_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_target_group(Client, Input, []).
@@ -308,9 +292,15 @@ deregister_targets(Client, Input, Options)
 %% @doc Describes the current Elastic Load Balancing resource limits for your
 %% AWS account.
 %%
-%% For more information, see Limits for Your Application Load Balancers in
-%% the Application Load Balancer Guide or Limits for Your Network Load
-%% Balancers in the Network Load Balancers Guide.
+%% For more information, see the following:
+%%
+%% <ul> <li> Quotas for your Application Load Balancers
+%%
+%% </li> <li> Quotas for your Network Load Balancers
+%%
+%% </li> <li> Quotas for your Gateway Load Balancers
+%%
+%% </li> </ul>
 describe_account_limits(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_account_limits(Client, Input, []).
@@ -325,8 +315,9 @@ describe_account_limits(Client, Input, Options)
 %% twice in the results (once with `IsDefault` set to true and once with
 %% `IsDefault` set to false).
 %%
-%% For more information, see SSL Certificates in the Application Load
-%% Balancers Guide.
+%% For more information, see SSL certificates in the Application Load
+%% Balancers Guide or Server certificates in the Network Load Balancers
+%% Guide.
 describe_listener_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_listener_certificates(Client, Input, []).
@@ -335,13 +326,10 @@ describe_listener_certificates(Client, Input, Options)
     request(Client, <<"DescribeListenerCertificates">>, Input, Options).
 
 %% @doc Describes the specified listeners or the listeners for the specified
-%% Application Load Balancer or Network Load Balancer.
+%% Application Load Balancer, Network Load Balancer, or Gateway Load
+%% Balancer.
 %%
 %% You must specify either a load balancer or one or more listeners.
-%%
-%% For an HTTPS or TLS listener, the output includes the default certificate
-%% for the listener. To describe the certificate list for the listener, use
-%% `DescribeListenerCertificates`.
 describe_listeners(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_listeners(Client, Input, []).
@@ -349,12 +337,18 @@ describe_listeners(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeListeners">>, Input, Options).
 
-%% @doc Describes the attributes for the specified Application Load Balancer
-%% or Network Load Balancer.
+%% @doc Describes the attributes for the specified Application Load Balancer,
+%% Network Load Balancer, or Gateway Load Balancer.
 %%
-%% For more information, see Load Balancer Attributes in the Application Load
-%% Balancers Guide or Load Balancer Attributes in the Network Load Balancers
-%% Guide.
+%% For more information, see the following:
+%%
+%% <ul> <li> Load balancer attributes in the Application Load Balancers Guide
+%%
+%% </li> <li> Load balancer attributes in the Network Load Balancers Guide
+%%
+%% </li> <li> Load balancer attributes in the Gateway Load Balancers Guide
+%%
+%% </li> </ul>
 describe_load_balancer_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_load_balancer_attributes(Client, Input, []).
@@ -363,10 +357,6 @@ describe_load_balancer_attributes(Client, Input, Options)
     request(Client, <<"DescribeLoadBalancerAttributes">>, Input, Options).
 
 %% @doc Describes the specified load balancers or all of your load balancers.
-%%
-%% To describe the listeners for a load balancer, use `DescribeListeners`. To
-%% describe the attributes for a load balancer, use
-%% `DescribeLoadBalancerAttributes`.
 describe_load_balancers(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_load_balancers(Client, Input, []).
@@ -388,8 +378,8 @@ describe_rules(Client, Input, Options)
 %% @doc Describes the specified policies or all policies used for SSL
 %% negotiation.
 %%
-%% For more information, see Security Policies in the Application Load
-%% Balancers Guide.
+%% For more information, see Security policies in the Application Load
+%% Balancers Guide or Security policies in the Network Load Balancers Guide.
 describe_s_s_l_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_s_s_l_policies(Client, Input, []).
@@ -401,7 +391,8 @@ describe_s_s_l_policies(Client, Input, Options)
 %% resources.
 %%
 %% You can describe the tags for one or more Application Load Balancers,
-%% Network Load Balancers, target groups, listeners, or rules.
+%% Network Load Balancers, Gateway Load Balancers, target groups, listeners,
+%% or rules.
 describe_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tags(Client, Input, []).
@@ -411,9 +402,15 @@ describe_tags(Client, Input, Options)
 
 %% @doc Describes the attributes for the specified target group.
 %%
-%% For more information, see Target Group Attributes in the Application Load
-%% Balancers Guide or Target Group Attributes in the Network Load Balancers
-%% Guide.
+%% For more information, see the following:
+%%
+%% <ul> <li> Target group attributes in the Application Load Balancers Guide
+%%
+%% </li> <li> Target group attributes in the Network Load Balancers Guide
+%%
+%% </li> <li> Target group attributes in the Gateway Load Balancers Guide
+%%
+%% </li> </ul>
 describe_target_group_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_target_group_attributes(Client, Input, []).
@@ -427,10 +424,6 @@ describe_target_group_attributes(Client, Input, Options)
 %% specify one of the following to filter the results: the ARN of the load
 %% balancer, the names of one or more target groups, or the ARNs of one or
 %% more target groups.
-%%
-%% To describe the targets for a target group, use `DescribeTargetHealth`. To
-%% describe the attributes of a target group, use
-%% `DescribeTargetGroupAttributes`.
 describe_target_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_target_groups(Client, Input, []).
@@ -466,7 +459,7 @@ modify_listener(Client, Input, Options)
     request(Client, <<"ModifyListener">>, Input, Options).
 
 %% @doc Modifies the specified attributes of the specified Application Load
-%% Balancer or Network Load Balancer.
+%% Balancer, Network Load Balancer, or Gateway Load Balancer.
 %%
 %% If any of the specified attributes can't be modified as requested, the
 %% call fails. Any existing attributes that you do not modify retain their
@@ -485,8 +478,6 @@ modify_load_balancer_attributes(Client, Input, Options)
 %% To add an item to a list, remove an item from a list, or update an item in
 %% a list, you must provide the entire list. For example, to add an action,
 %% specify a list with the current actions plus the new action.
-%%
-%% To modify the actions for the default rule, use `ModifyListener`.
 modify_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_rule(Client, Input, []).
@@ -496,8 +487,6 @@ modify_rule(Client, Input, Options)
 
 %% @doc Modifies the health checks used when evaluating the health state of
 %% the targets in the specified target group.
-%%
-%% To monitor the health of the targets, use `DescribeTargetHealth`.
 modify_target_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_target_group(Client, Input, []).
@@ -528,8 +517,6 @@ modify_target_group_attributes(Client, Input, Options)
 %% if they have the following instance types: C1, CC1, CC2, CG1, CG2, CR1,
 %% CS1, G1, G2, HI1, HS1, M1, M2, M3, and T1. You can register instances of
 %% these types by IP address.
-%%
-%% To remove a target from a target group, use `DeregisterTargets`.
 register_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_targets(Client, Input, []).
@@ -539,12 +526,6 @@ register_targets(Client, Input, Options)
 
 %% @doc Removes the specified certificate from the certificate list for the
 %% specified HTTPS or TLS listener.
-%%
-%% You can't remove the default certificate for a listener. To replace the
-%% default certificate, call `ModifyListener`.
-%%
-%% To list the certificates for your listener, use
-%% `DescribeListenerCertificates`.
 remove_listener_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_listener_certificates(Client, Input, []).
@@ -556,9 +537,8 @@ remove_listener_certificates(Client, Input, Options)
 %% resources.
 %%
 %% You can remove the tags for one or more Application Load Balancers,
-%% Network Load Balancers, target groups, listeners, or rules.
-%%
-%% To list the current tags for your resources, use `DescribeTags`.
+%% Network Load Balancers, Gateway Load Balancers, target groups, listeners,
+%% or rules.
 remove_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags(Client, Input, []).
@@ -593,7 +573,8 @@ set_rule_priorities(Client, Input, Options)
 %% The specified security groups override the previously associated security
 %% groups.
 %%
-%% You can't specify a security group for a Network Load Balancer.
+%% You can't specify a security group for a Network Load Balancer or Gateway
+%% Load Balancer.
 set_security_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_security_groups(Client, Input, []).
@@ -602,7 +583,7 @@ set_security_groups(Client, Input, Options)
     request(Client, <<"SetSecurityGroups">>, Input, Options).
 
 %% @doc Enables the Availability Zones for the specified public subnets for
-%% the specified load balancer.
+%% the specified Application Load Balancer or Network Load Balancer.
 %%
 %% The specified subnets replace the previously enabled subnets.
 %%

@@ -49,7 +49,7 @@ claim_devices_by_claim_code(Client, ClaimCode, Input) ->
     claim_devices_by_claim_code(Client, ClaimCode, Input, []).
 claim_devices_by_claim_code(Client, ClaimCode, Input0, Options) ->
     Method = put,
-    Path = ["/claims/", http_uri:encode(ClaimCode), ""],
+    Path = ["/claims/", aws_util:encode_uri(ClaimCode), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -68,7 +68,7 @@ describe_device(Client, DeviceId)
     describe_device(Client, DeviceId, []).
 describe_device(Client, DeviceId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/devices/", http_uri:encode(DeviceId), ""],
+    Path = ["/devices/", aws_util:encode_uri(DeviceId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -88,7 +88,7 @@ finalize_device_claim(Client, DeviceId, Input) ->
     finalize_device_claim(Client, DeviceId, Input, []).
 finalize_device_claim(Client, DeviceId, Input0, Options) ->
     Method = put,
-    Path = ["/devices/", http_uri:encode(DeviceId), "/finalize-claim"],
+    Path = ["/devices/", aws_util:encode_uri(DeviceId), "/finalize-claim"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -106,7 +106,7 @@ get_device_methods(Client, DeviceId)
     get_device_methods(Client, DeviceId, []).
 get_device_methods(Client, DeviceId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/devices/", http_uri:encode(DeviceId), "/methods"],
+    Path = ["/devices/", aws_util:encode_uri(DeviceId), "/methods"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -126,7 +126,7 @@ initiate_device_claim(Client, DeviceId, Input) ->
     initiate_device_claim(Client, DeviceId, Input, []).
 initiate_device_claim(Client, DeviceId, Input0, Options) ->
     Method = put,
-    Path = ["/devices/", http_uri:encode(DeviceId), "/initiate-claim"],
+    Path = ["/devices/", aws_util:encode_uri(DeviceId), "/initiate-claim"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -146,7 +146,7 @@ invoke_device_method(Client, DeviceId, Input) ->
     invoke_device_method(Client, DeviceId, Input, []).
 invoke_device_method(Client, DeviceId, Input0, Options) ->
     Method = post,
-    Path = ["/devices/", http_uri:encode(DeviceId), "/methods"],
+    Path = ["/devices/", aws_util:encode_uri(DeviceId), "/methods"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -165,7 +165,7 @@ list_device_events(Client, DeviceId, FromTimeStamp, MaxResults, NextToken, ToTim
     list_device_events(Client, DeviceId, FromTimeStamp, MaxResults, NextToken, ToTimeStamp, []).
 list_device_events(Client, DeviceId, FromTimeStamp, MaxResults, NextToken, ToTimeStamp, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/devices/", http_uri:encode(DeviceId), "/events"],
+    Path = ["/devices/", aws_util:encode_uri(DeviceId), "/events"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -209,7 +209,7 @@ list_tags_for_resource(Client, ResourceArn)
     list_tags_for_resource(Client, ResourceArn, []).
 list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -227,7 +227,7 @@ tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -243,7 +243,7 @@ unclaim_device(Client, DeviceId, Input) ->
     unclaim_device(Client, DeviceId, Input, []).
 unclaim_device(Client, DeviceId, Input0, Options) ->
     Method = put,
-    Path = ["/devices/", http_uri:encode(DeviceId), "/unclaim"],
+    Path = ["/devices/", aws_util:encode_uri(DeviceId), "/unclaim"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -261,7 +261,7 @@ untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -279,7 +279,7 @@ update_device_state(Client, DeviceId, Input) ->
     update_device_state(Client, DeviceId, Input, []).
 update_device_state(Client, DeviceId, Input0, Options) ->
     Method = put,
-    Path = ["/devices/", http_uri:encode(DeviceId), "/state"],
+    Path = ["/devices/", aws_util:encode_uri(DeviceId), "/state"],
     SuccessStatusCode = 200,
 
     Headers = [],

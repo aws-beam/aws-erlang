@@ -60,7 +60,7 @@ cancel_journal_kinesis_stream(Client, LedgerName, StreamId, Input) ->
     cancel_journal_kinesis_stream(Client, LedgerName, StreamId, Input, []).
 cancel_journal_kinesis_stream(Client, LedgerName, StreamId, Input0, Options) ->
     Method = delete,
-    Path = ["/ledgers/", http_uri:encode(LedgerName), "/journal-kinesis-streams/", http_uri:encode(StreamId), ""],
+    Path = ["/ledgers/", aws_util:encode_uri(LedgerName), "/journal-kinesis-streams/", aws_util:encode_uri(StreamId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -100,7 +100,7 @@ delete_ledger(Client, Name, Input) ->
     delete_ledger(Client, Name, Input, []).
 delete_ledger(Client, Name, Input0, Options) ->
     Method = delete,
-    Path = ["/ledgers/", http_uri:encode(Name), ""],
+    Path = ["/ledgers/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -122,7 +122,7 @@ describe_journal_kinesis_stream(Client, LedgerName, StreamId)
     describe_journal_kinesis_stream(Client, LedgerName, StreamId, []).
 describe_journal_kinesis_stream(Client, LedgerName, StreamId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/ledgers/", http_uri:encode(LedgerName), "/journal-kinesis-streams/", http_uri:encode(StreamId), ""],
+    Path = ["/ledgers/", aws_util:encode_uri(LedgerName), "/journal-kinesis-streams/", aws_util:encode_uri(StreamId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -148,7 +148,7 @@ describe_journal_s3_export(Client, ExportId, Name)
     describe_journal_s3_export(Client, ExportId, Name, []).
 describe_journal_s3_export(Client, ExportId, Name, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/ledgers/", http_uri:encode(Name), "/journal-s3-exports/", http_uri:encode(ExportId), ""],
+    Path = ["/ledgers/", aws_util:encode_uri(Name), "/journal-s3-exports/", aws_util:encode_uri(ExportId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -164,7 +164,7 @@ describe_ledger(Client, Name)
     describe_ledger(Client, Name, []).
 describe_ledger(Client, Name, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/ledgers/", http_uri:encode(Name), ""],
+    Path = ["/ledgers/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -191,7 +191,7 @@ export_journal_to_s3(Client, Name, Input) ->
     export_journal_to_s3(Client, Name, Input, []).
 export_journal_to_s3(Client, Name, Input0, Options) ->
     Method = post,
-    Path = ["/ledgers/", http_uri:encode(Name), "/journal-s3-exports"],
+    Path = ["/ledgers/", aws_util:encode_uri(Name), "/journal-s3-exports"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -222,7 +222,7 @@ get_block(Client, Name, Input) ->
     get_block(Client, Name, Input, []).
 get_block(Client, Name, Input0, Options) ->
     Method = post,
-    Path = ["/ledgers/", http_uri:encode(Name), "/block"],
+    Path = ["/ledgers/", aws_util:encode_uri(Name), "/block"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -241,7 +241,7 @@ get_digest(Client, Name, Input) ->
     get_digest(Client, Name, Input, []).
 get_digest(Client, Name, Input0, Options) ->
     Method = post,
-    Path = ["/ledgers/", http_uri:encode(Name), "/digest"],
+    Path = ["/ledgers/", aws_util:encode_uri(Name), "/digest"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -261,7 +261,7 @@ get_revision(Client, Name, Input) ->
     get_revision(Client, Name, Input, []).
 get_revision(Client, Name, Input0, Options) ->
     Method = post,
-    Path = ["/ledgers/", http_uri:encode(Name), "/revision"],
+    Path = ["/ledgers/", aws_util:encode_uri(Name), "/revision"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -286,7 +286,7 @@ list_journal_kinesis_streams_for_ledger(Client, LedgerName, MaxResults, NextToke
     list_journal_kinesis_streams_for_ledger(Client, LedgerName, MaxResults, NextToken, []).
 list_journal_kinesis_streams_for_ledger(Client, LedgerName, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/ledgers/", http_uri:encode(LedgerName), "/journal-kinesis-streams"],
+    Path = ["/ledgers/", aws_util:encode_uri(LedgerName), "/journal-kinesis-streams"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -342,7 +342,7 @@ list_journal_s3_exports_for_ledger(Client, Name, MaxResults, NextToken)
     list_journal_s3_exports_for_ledger(Client, Name, MaxResults, NextToken, []).
 list_journal_s3_exports_for_ledger(Client, Name, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/ledgers/", http_uri:encode(Name), "/journal-s3-exports"],
+    Path = ["/ledgers/", aws_util:encode_uri(Name), "/journal-s3-exports"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -386,7 +386,7 @@ list_tags_for_resource(Client, ResourceArn)
     list_tags_for_resource(Client, ResourceArn, []).
 list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -404,7 +404,7 @@ stream_journal_to_kinesis(Client, LedgerName, Input) ->
     stream_journal_to_kinesis(Client, LedgerName, Input, []).
 stream_journal_to_kinesis(Client, LedgerName, Input0, Options) ->
     Method = post,
-    Path = ["/ledgers/", http_uri:encode(LedgerName), "/journal-kinesis-streams"],
+    Path = ["/ledgers/", aws_util:encode_uri(LedgerName), "/journal-kinesis-streams"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -423,7 +423,7 @@ tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -441,7 +441,7 @@ untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -458,7 +458,7 @@ update_ledger(Client, Name, Input) ->
     update_ledger(Client, Name, Input, []).
 update_ledger(Client, Name, Input0, Options) ->
     Method = patch,
-    Path = ["/ledgers/", http_uri:encode(Name), ""],
+    Path = ["/ledgers/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],

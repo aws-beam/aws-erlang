@@ -71,7 +71,7 @@ cancel_contact(Client, ContactId, Input) ->
     cancel_contact(Client, ContactId, Input, []).
 cancel_contact(Client, ContactId, Input0, Options) ->
     Method = delete,
-    Path = ["/contact/", http_uri:encode(ContactId), ""],
+    Path = ["/contact/", aws_util:encode_uri(ContactId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -148,7 +148,7 @@ delete_config(Client, ConfigId, ConfigType, Input) ->
     delete_config(Client, ConfigId, ConfigType, Input, []).
 delete_config(Client, ConfigId, ConfigType, Input0, Options) ->
     Method = delete,
-    Path = ["/config/", http_uri:encode(ConfigType), "/", http_uri:encode(ConfigId), ""],
+    Path = ["/config/", aws_util:encode_uri(ConfigType), "/", aws_util:encode_uri(ConfigId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -164,7 +164,7 @@ delete_dataflow_endpoint_group(Client, DataflowEndpointGroupId, Input) ->
     delete_dataflow_endpoint_group(Client, DataflowEndpointGroupId, Input, []).
 delete_dataflow_endpoint_group(Client, DataflowEndpointGroupId, Input0, Options) ->
     Method = delete,
-    Path = ["/dataflowEndpointGroup/", http_uri:encode(DataflowEndpointGroupId), ""],
+    Path = ["/dataflowEndpointGroup/", aws_util:encode_uri(DataflowEndpointGroupId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -180,7 +180,7 @@ delete_mission_profile(Client, MissionProfileId, Input) ->
     delete_mission_profile(Client, MissionProfileId, Input, []).
 delete_mission_profile(Client, MissionProfileId, Input0, Options) ->
     Method = delete,
-    Path = ["/missionprofile/", http_uri:encode(MissionProfileId), ""],
+    Path = ["/missionprofile/", aws_util:encode_uri(MissionProfileId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -197,7 +197,7 @@ describe_contact(Client, ContactId)
     describe_contact(Client, ContactId, []).
 describe_contact(Client, ContactId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/contact/", http_uri:encode(ContactId), ""],
+    Path = ["/contact/", aws_util:encode_uri(ContactId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -214,7 +214,7 @@ get_config(Client, ConfigId, ConfigType)
     get_config(Client, ConfigId, ConfigType, []).
 get_config(Client, ConfigId, ConfigType, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/config/", http_uri:encode(ConfigType), "/", http_uri:encode(ConfigId), ""],
+    Path = ["/config/", aws_util:encode_uri(ConfigType), "/", aws_util:encode_uri(ConfigId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -229,7 +229,7 @@ get_dataflow_endpoint_group(Client, DataflowEndpointGroupId)
     get_dataflow_endpoint_group(Client, DataflowEndpointGroupId, []).
 get_dataflow_endpoint_group(Client, DataflowEndpointGroupId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/dataflowEndpointGroup/", http_uri:encode(DataflowEndpointGroupId), ""],
+    Path = ["/dataflowEndpointGroup/", aws_util:encode_uri(DataflowEndpointGroupId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -260,7 +260,7 @@ get_mission_profile(Client, MissionProfileId)
     get_mission_profile(Client, MissionProfileId, []).
 get_mission_profile(Client, MissionProfileId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/missionprofile/", http_uri:encode(MissionProfileId), ""],
+    Path = ["/missionprofile/", aws_util:encode_uri(MissionProfileId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -275,7 +275,7 @@ get_satellite(Client, SatelliteId)
     get_satellite(Client, SatelliteId, []).
 get_satellite(Client, SatelliteId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/satellite/", http_uri:encode(SatelliteId), ""],
+    Path = ["/satellite/", aws_util:encode_uri(SatelliteId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -410,7 +410,7 @@ list_tags_for_resource(Client, ResourceArn)
     list_tags_for_resource(Client, ResourceArn, []).
 list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -440,7 +440,7 @@ tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -456,7 +456,7 @@ untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -476,7 +476,7 @@ update_config(Client, ConfigId, ConfigType, Input) ->
     update_config(Client, ConfigId, ConfigType, Input, []).
 update_config(Client, ConfigId, ConfigType, Input0, Options) ->
     Method = put,
-    Path = ["/config/", http_uri:encode(ConfigType), "/", http_uri:encode(ConfigId), ""],
+    Path = ["/config/", aws_util:encode_uri(ConfigType), "/", aws_util:encode_uri(ConfigId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -495,7 +495,7 @@ update_mission_profile(Client, MissionProfileId, Input) ->
     update_mission_profile(Client, MissionProfileId, Input, []).
 update_mission_profile(Client, MissionProfileId, Input0, Options) ->
     Method = put,
-    Path = ["/missionprofile/", http_uri:encode(MissionProfileId), ""],
+    Path = ["/missionprofile/", aws_util:encode_uri(MissionProfileId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],

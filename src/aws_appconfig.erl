@@ -163,7 +163,7 @@ create_configuration_profile(Client, ApplicationId, Input) ->
     create_configuration_profile(Client, ApplicationId, Input, []).
 create_configuration_profile(Client, ApplicationId, Input0, Options) ->
     Method = post,
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/configurationprofiles"],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -208,7 +208,7 @@ create_environment(Client, ApplicationId, Input) ->
     create_environment(Client, ApplicationId, Input, []).
 create_environment(Client, ApplicationId, Input0, Options) ->
     Method = post,
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/environments"],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -224,7 +224,7 @@ create_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileI
     create_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, Input, []).
 create_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, Input0, Options) ->
     Method = post,
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/configurationprofiles/", http_uri:encode(ConfigurationProfileId), "/hostedconfigurationversions"],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), "/hostedconfigurationversions"],
     SuccessStatusCode = 201,
 
     HeadersMapping = [
@@ -266,7 +266,7 @@ delete_application(Client, ApplicationId, Input) ->
     delete_application(Client, ApplicationId, Input, []).
 delete_application(Client, ApplicationId, Input0, Options) ->
     Method = delete,
-    Path = ["/applications/", http_uri:encode(ApplicationId), ""],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -285,7 +285,7 @@ delete_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Inpu
     delete_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Input, []).
 delete_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Input0, Options) ->
     Method = delete,
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/configurationprofiles/", http_uri:encode(ConfigurationProfileId), ""],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -304,7 +304,7 @@ delete_deployment_strategy(Client, DeploymentStrategyId, Input) ->
     delete_deployment_strategy(Client, DeploymentStrategyId, Input, []).
 delete_deployment_strategy(Client, DeploymentStrategyId, Input0, Options) ->
     Method = delete,
-    Path = ["/deployementstrategies/", http_uri:encode(DeploymentStrategyId), ""],
+    Path = ["/deployementstrategies/", aws_util:encode_uri(DeploymentStrategyId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -322,7 +322,7 @@ delete_environment(Client, ApplicationId, EnvironmentId, Input) ->
     delete_environment(Client, ApplicationId, EnvironmentId, Input, []).
 delete_environment(Client, ApplicationId, EnvironmentId, Input0, Options) ->
     Method = delete,
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/environments/", http_uri:encode(EnvironmentId), ""],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -339,7 +339,7 @@ delete_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileI
     delete_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, Input, []).
 delete_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, Input0, Options) ->
     Method = delete,
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/configurationprofiles/", http_uri:encode(ConfigurationProfileId), "/hostedconfigurationversions/", http_uri:encode(VersionNumber), ""],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), "/hostedconfigurationversions/", aws_util:encode_uri(VersionNumber), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -356,7 +356,7 @@ get_application(Client, ApplicationId)
     get_application(Client, ApplicationId, []).
 get_application(Client, ApplicationId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/applications/", http_uri:encode(ApplicationId), ""],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -383,7 +383,7 @@ get_configuration(Client, Application, Configuration, Environment, ClientConfigu
     get_configuration(Client, Application, Configuration, Environment, ClientConfigurationVersion, ClientId, []).
 get_configuration(Client, Application, Configuration, Environment, ClientConfigurationVersion, ClientId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/applications/", http_uri:encode(Application), "/environments/", http_uri:encode(Environment), "/configurations/", http_uri:encode(Configuration), ""],
+    Path = ["/applications/", aws_util:encode_uri(Application), "/environments/", aws_util:encode_uri(Environment), "/configurations/", aws_util:encode_uri(Configuration), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -420,7 +420,7 @@ get_configuration_profile(Client, ApplicationId, ConfigurationProfileId)
     get_configuration_profile(Client, ApplicationId, ConfigurationProfileId, []).
 get_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/configurationprofiles/", http_uri:encode(ConfigurationProfileId), ""],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -435,7 +435,7 @@ get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId)
     get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, []).
 get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/environments/", http_uri:encode(EnvironmentId), "/deployments/", http_uri:encode(DeploymentNumber), ""],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), "/deployments/", aws_util:encode_uri(DeploymentNumber), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -456,7 +456,7 @@ get_deployment_strategy(Client, DeploymentStrategyId)
     get_deployment_strategy(Client, DeploymentStrategyId, []).
 get_deployment_strategy(Client, DeploymentStrategyId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/deploymentstrategies/", http_uri:encode(DeploymentStrategyId), ""],
+    Path = ["/deploymentstrategies/", aws_util:encode_uri(DeploymentStrategyId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -478,7 +478,7 @@ get_environment(Client, ApplicationId, EnvironmentId)
     get_environment(Client, ApplicationId, EnvironmentId, []).
 get_environment(Client, ApplicationId, EnvironmentId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/environments/", http_uri:encode(EnvironmentId), ""],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -493,7 +493,7 @@ get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, 
     get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, []).
 get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/configurationprofiles/", http_uri:encode(ConfigurationProfileId), "/hostedconfigurationversions/", http_uri:encode(VersionNumber), ""],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), "/hostedconfigurationversions/", aws_util:encode_uri(VersionNumber), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -548,7 +548,7 @@ list_configuration_profiles(Client, ApplicationId, MaxResults, NextToken)
     list_configuration_profiles(Client, ApplicationId, MaxResults, NextToken, []).
 list_configuration_profiles(Client, ApplicationId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/configurationprofiles"],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -588,7 +588,7 @@ list_deployments(Client, ApplicationId, EnvironmentId, MaxResults, NextToken)
     list_deployments(Client, ApplicationId, EnvironmentId, MaxResults, NextToken, []).
 list_deployments(Client, ApplicationId, EnvironmentId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/environments/", http_uri:encode(EnvironmentId), "/deployments"],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), "/deployments"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -608,7 +608,7 @@ list_environments(Client, ApplicationId, MaxResults, NextToken)
     list_environments(Client, ApplicationId, MaxResults, NextToken, []).
 list_environments(Client, ApplicationId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/environments"],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -629,7 +629,7 @@ list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId
     list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId, MaxResults, NextToken, []).
 list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/configurationprofiles/", http_uri:encode(ConfigurationProfileId), "/hostedconfigurationversions"],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), "/hostedconfigurationversions"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -649,7 +649,7 @@ list_tags_for_resource(Client, ResourceArn)
     list_tags_for_resource(Client, ResourceArn, []).
 list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -663,7 +663,7 @@ start_deployment(Client, ApplicationId, EnvironmentId, Input) ->
     start_deployment(Client, ApplicationId, EnvironmentId, Input, []).
 start_deployment(Client, ApplicationId, EnvironmentId, Input0, Options) ->
     Method = post,
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/environments/", http_uri:encode(EnvironmentId), "/deployments"],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), "/deployments"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -683,7 +683,7 @@ stop_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, Input) -
     stop_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, Input, []).
 stop_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, Input0, Options) ->
     Method = delete,
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/environments/", http_uri:encode(EnvironmentId), "/deployments/", http_uri:encode(DeploymentNumber), ""],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), "/deployments/", aws_util:encode_uri(DeploymentNumber), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -703,7 +703,7 @@ tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -719,7 +719,7 @@ untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -736,7 +736,7 @@ update_application(Client, ApplicationId, Input) ->
     update_application(Client, ApplicationId, Input, []).
 update_application(Client, ApplicationId, Input0, Options) ->
     Method = patch,
-    Path = ["/applications/", http_uri:encode(ApplicationId), ""],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -752,7 +752,7 @@ update_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Inpu
     update_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Input, []).
 update_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Input0, Options) ->
     Method = patch,
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/configurationprofiles/", http_uri:encode(ConfigurationProfileId), ""],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -768,7 +768,7 @@ update_deployment_strategy(Client, DeploymentStrategyId, Input) ->
     update_deployment_strategy(Client, DeploymentStrategyId, Input, []).
 update_deployment_strategy(Client, DeploymentStrategyId, Input0, Options) ->
     Method = patch,
-    Path = ["/deploymentstrategies/", http_uri:encode(DeploymentStrategyId), ""],
+    Path = ["/deploymentstrategies/", aws_util:encode_uri(DeploymentStrategyId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -784,7 +784,7 @@ update_environment(Client, ApplicationId, EnvironmentId, Input) ->
     update_environment(Client, ApplicationId, EnvironmentId, Input, []).
 update_environment(Client, ApplicationId, EnvironmentId, Input0, Options) ->
     Method = patch,
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/environments/", http_uri:encode(EnvironmentId), ""],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -801,7 +801,7 @@ validate_configuration(Client, ApplicationId, ConfigurationProfileId, Input) ->
     validate_configuration(Client, ApplicationId, ConfigurationProfileId, Input, []).
 validate_configuration(Client, ApplicationId, ConfigurationProfileId, Input0, Options) ->
     Method = post,
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/configurationprofiles/", http_uri:encode(ConfigurationProfileId), "/validators"],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), "/validators"],
     SuccessStatusCode = 204,
 
     Headers = [],

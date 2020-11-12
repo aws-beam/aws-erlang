@@ -102,7 +102,7 @@ create_tags(Client, ResourceArn, Input) ->
     create_tags(Client, ResourceArn, Input, []).
 create_tags(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/v1/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -118,7 +118,7 @@ create_user(Client, BrokerId, Username, Input) ->
     create_user(Client, BrokerId, Username, Input, []).
 create_user(Client, BrokerId, Username, Input0, Options) ->
     Method = post,
-    Path = ["/v1/brokers/", http_uri:encode(BrokerId), "/users/", http_uri:encode(Username), ""],
+    Path = ["/v1/brokers/", aws_util:encode_uri(BrokerId), "/users/", aws_util:encode_uri(Username), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -136,7 +136,7 @@ delete_broker(Client, BrokerId, Input) ->
     delete_broker(Client, BrokerId, Input, []).
 delete_broker(Client, BrokerId, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/brokers/", http_uri:encode(BrokerId), ""],
+    Path = ["/v1/brokers/", aws_util:encode_uri(BrokerId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -152,7 +152,7 @@ delete_tags(Client, ResourceArn, Input) ->
     delete_tags(Client, ResourceArn, Input, []).
 delete_tags(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -169,7 +169,7 @@ delete_user(Client, BrokerId, Username, Input) ->
     delete_user(Client, BrokerId, Username, Input, []).
 delete_user(Client, BrokerId, Username, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/brokers/", http_uri:encode(BrokerId), "/users/", http_uri:encode(Username), ""],
+    Path = ["/v1/brokers/", aws_util:encode_uri(BrokerId), "/users/", aws_util:encode_uri(Username), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -186,7 +186,7 @@ describe_broker(Client, BrokerId)
     describe_broker(Client, BrokerId, []).
 describe_broker(Client, BrokerId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/brokers/", http_uri:encode(BrokerId), ""],
+    Path = ["/v1/brokers/", aws_util:encode_uri(BrokerId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -245,7 +245,7 @@ describe_configuration(Client, ConfigurationId)
     describe_configuration(Client, ConfigurationId, []).
 describe_configuration(Client, ConfigurationId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/configurations/", http_uri:encode(ConfigurationId), ""],
+    Path = ["/v1/configurations/", aws_util:encode_uri(ConfigurationId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -261,7 +261,7 @@ describe_configuration_revision(Client, ConfigurationId, ConfigurationRevision)
     describe_configuration_revision(Client, ConfigurationId, ConfigurationRevision, []).
 describe_configuration_revision(Client, ConfigurationId, ConfigurationRevision, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/configurations/", http_uri:encode(ConfigurationId), "/revisions/", http_uri:encode(ConfigurationRevision), ""],
+    Path = ["/v1/configurations/", aws_util:encode_uri(ConfigurationId), "/revisions/", aws_util:encode_uri(ConfigurationRevision), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -276,7 +276,7 @@ describe_user(Client, BrokerId, Username)
     describe_user(Client, BrokerId, Username, []).
 describe_user(Client, BrokerId, Username, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/brokers/", http_uri:encode(BrokerId), "/users/", http_uri:encode(Username), ""],
+    Path = ["/v1/brokers/", aws_util:encode_uri(BrokerId), "/users/", aws_util:encode_uri(Username), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -311,7 +311,7 @@ list_configuration_revisions(Client, ConfigurationId, MaxResults, NextToken)
     list_configuration_revisions(Client, ConfigurationId, MaxResults, NextToken, []).
 list_configuration_revisions(Client, ConfigurationId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/configurations/", http_uri:encode(ConfigurationId), "/revisions"],
+    Path = ["/v1/configurations/", aws_util:encode_uri(ConfigurationId), "/revisions"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -351,7 +351,7 @@ list_tags(Client, ResourceArn)
     list_tags(Client, ResourceArn, []).
 list_tags(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -366,7 +366,7 @@ list_users(Client, BrokerId, MaxResults, NextToken)
     list_users(Client, BrokerId, MaxResults, NextToken, []).
 list_users(Client, BrokerId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/brokers/", http_uri:encode(BrokerId), "/users"],
+    Path = ["/v1/brokers/", aws_util:encode_uri(BrokerId), "/users"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -387,7 +387,7 @@ reboot_broker(Client, BrokerId, Input) ->
     reboot_broker(Client, BrokerId, Input, []).
 reboot_broker(Client, BrokerId, Input0, Options) ->
     Method = post,
-    Path = ["/v1/brokers/", http_uri:encode(BrokerId), "/reboot"],
+    Path = ["/v1/brokers/", aws_util:encode_uri(BrokerId), "/reboot"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -403,7 +403,7 @@ update_broker(Client, BrokerId, Input) ->
     update_broker(Client, BrokerId, Input, []).
 update_broker(Client, BrokerId, Input0, Options) ->
     Method = put,
-    Path = ["/v1/brokers/", http_uri:encode(BrokerId), ""],
+    Path = ["/v1/brokers/", aws_util:encode_uri(BrokerId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -419,7 +419,7 @@ update_configuration(Client, ConfigurationId, Input) ->
     update_configuration(Client, ConfigurationId, Input, []).
 update_configuration(Client, ConfigurationId, Input0, Options) ->
     Method = put,
-    Path = ["/v1/configurations/", http_uri:encode(ConfigurationId), ""],
+    Path = ["/v1/configurations/", aws_util:encode_uri(ConfigurationId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -435,7 +435,7 @@ update_user(Client, BrokerId, Username, Input) ->
     update_user(Client, BrokerId, Username, Input, []).
 update_user(Client, BrokerId, Username, Input0, Options) ->
     Method = put,
-    Path = ["/v1/brokers/", http_uri:encode(BrokerId), "/users/", http_uri:encode(Username), ""],
+    Path = ["/v1/brokers/", aws_util:encode_uri(BrokerId), "/users/", aws_util:encode_uri(Username), ""],
     SuccessStatusCode = 200,
 
     Headers = [],

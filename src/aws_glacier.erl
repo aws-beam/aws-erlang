@@ -133,7 +133,7 @@ abort_multipart_upload(Client, AccountId, UploadId, VaultName, Input) ->
     abort_multipart_upload(Client, AccountId, UploadId, VaultName, Input, []).
 abort_multipart_upload(Client, AccountId, UploadId, VaultName, Input0, Options) ->
     Method = delete,
-    Path = ["/", http_uri:encode(AccountId), "/vaults/", http_uri:encode(VaultName), "/multipart-uploads/", http_uri:encode(UploadId), ""],
+    Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/multipart-uploads/", aws_util:encode_uri(UploadId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -166,7 +166,7 @@ abort_vault_lock(Client, AccountId, VaultName, Input) ->
     abort_vault_lock(Client, AccountId, VaultName, Input, []).
 abort_vault_lock(Client, AccountId, VaultName, Input0, Options) ->
     Method = delete,
-    Path = ["/", http_uri:encode(AccountId), "/vaults/", http_uri:encode(VaultName), "/lock-policy"],
+    Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/lock-policy"],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -189,7 +189,7 @@ add_tags_to_vault(Client, AccountId, VaultName, Input) ->
     add_tags_to_vault(Client, AccountId, VaultName, Input, []).
 add_tags_to_vault(Client, AccountId, VaultName, Input0, Options) ->
     Method = post,
-    Path = ["/", http_uri:encode(AccountId), "/vaults/", http_uri:encode(VaultName), "/tags?operation=add"],
+    Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/tags?operation=add"],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -249,7 +249,7 @@ complete_multipart_upload(Client, AccountId, UploadId, VaultName, Input) ->
     complete_multipart_upload(Client, AccountId, UploadId, VaultName, Input, []).
 complete_multipart_upload(Client, AccountId, UploadId, VaultName, Input0, Options) ->
     Method = post,
-    Path = ["/", http_uri:encode(AccountId), "/vaults/", http_uri:encode(VaultName), "/multipart-uploads/", http_uri:encode(UploadId), ""],
+    Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/multipart-uploads/", aws_util:encode_uri(UploadId), ""],
     SuccessStatusCode = 201,
 
     HeadersMapping = [
@@ -303,7 +303,7 @@ complete_vault_lock(Client, AccountId, LockId, VaultName, Input) ->
     complete_vault_lock(Client, AccountId, LockId, VaultName, Input, []).
 complete_vault_lock(Client, AccountId, LockId, VaultName, Input0, Options) ->
     Method = post,
-    Path = ["/", http_uri:encode(AccountId), "/vaults/", http_uri:encode(VaultName), "/lock-policy/", http_uri:encode(LockId), ""],
+    Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/lock-policy/", aws_util:encode_uri(LockId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -341,7 +341,7 @@ create_vault(Client, AccountId, VaultName, Input) ->
     create_vault(Client, AccountId, VaultName, Input, []).
 create_vault(Client, AccountId, VaultName, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(AccountId), "/vaults/", http_uri:encode(VaultName), ""],
+    Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), ""],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -398,7 +398,7 @@ delete_archive(Client, AccountId, ArchiveId, VaultName, Input) ->
     delete_archive(Client, AccountId, ArchiveId, VaultName, Input, []).
 delete_archive(Client, AccountId, ArchiveId, VaultName, Input0, Options) ->
     Method = delete,
-    Path = ["/", http_uri:encode(AccountId), "/vaults/", http_uri:encode(VaultName), "/archives/", http_uri:encode(ArchiveId), ""],
+    Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/archives/", aws_util:encode_uri(ArchiveId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -436,7 +436,7 @@ delete_vault(Client, AccountId, VaultName, Input) ->
     delete_vault(Client, AccountId, VaultName, Input, []).
 delete_vault(Client, AccountId, VaultName, Input0, Options) ->
     Method = delete,
-    Path = ["/", http_uri:encode(AccountId), "/vaults/", http_uri:encode(VaultName), ""],
+    Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -463,7 +463,7 @@ delete_vault_access_policy(Client, AccountId, VaultName, Input) ->
     delete_vault_access_policy(Client, AccountId, VaultName, Input, []).
 delete_vault_access_policy(Client, AccountId, VaultName, Input0, Options) ->
     Method = delete,
-    Path = ["/", http_uri:encode(AccountId), "/vaults/", http_uri:encode(VaultName), "/access-policy"],
+    Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/access-policy"],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -495,7 +495,7 @@ delete_vault_notifications(Client, AccountId, VaultName, Input) ->
     delete_vault_notifications(Client, AccountId, VaultName, Input, []).
 delete_vault_notifications(Client, AccountId, VaultName, Input0, Options) ->
     Method = delete,
-    Path = ["/", http_uri:encode(AccountId), "/vaults/", http_uri:encode(VaultName), "/notification-configuration"],
+    Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/notification-configuration"],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -535,7 +535,7 @@ describe_job(Client, AccountId, JobId, VaultName)
     describe_job(Client, AccountId, JobId, VaultName, []).
 describe_job(Client, AccountId, JobId, VaultName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(AccountId), "/vaults/", http_uri:encode(VaultName), "/jobs/", http_uri:encode(JobId), ""],
+    Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -571,7 +571,7 @@ describe_vault(Client, AccountId, VaultName)
     describe_vault(Client, AccountId, VaultName, []).
 describe_vault(Client, AccountId, VaultName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(AccountId), "/vaults/", http_uri:encode(VaultName), ""],
+    Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -590,7 +590,7 @@ get_data_retrieval_policy(Client, AccountId)
     get_data_retrieval_policy(Client, AccountId, []).
 get_data_retrieval_policy(Client, AccountId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(AccountId), "/policies/data-retrieval"],
+    Path = ["/", aws_util:encode_uri(AccountId), "/policies/data-retrieval"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -649,7 +649,7 @@ get_job_output(Client, AccountId, JobId, VaultName, Range)
     get_job_output(Client, AccountId, JobId, VaultName, Range, []).
 get_job_output(Client, AccountId, JobId, VaultName, Range, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(AccountId), "/vaults/", http_uri:encode(VaultName), "/jobs/", http_uri:encode(JobId), "/output"],
+    Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/jobs/", aws_util:encode_uri(JobId), "/output"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -694,7 +694,7 @@ get_vault_access_policy(Client, AccountId, VaultName)
     get_vault_access_policy(Client, AccountId, VaultName, []).
 get_vault_access_policy(Client, AccountId, VaultName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(AccountId), "/vaults/", http_uri:encode(VaultName), "/access-policy"],
+    Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/access-policy"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -731,7 +731,7 @@ get_vault_lock(Client, AccountId, VaultName)
     get_vault_lock(Client, AccountId, VaultName, []).
 get_vault_lock(Client, AccountId, VaultName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(AccountId), "/vaults/", http_uri:encode(VaultName), "/lock-policy"],
+    Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/lock-policy"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -763,7 +763,7 @@ get_vault_notifications(Client, AccountId, VaultName)
     get_vault_notifications(Client, AccountId, VaultName, []).
 get_vault_notifications(Client, AccountId, VaultName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(AccountId), "/vaults/", http_uri:encode(VaultName), "/notification-configuration"],
+    Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/notification-configuration"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -781,7 +781,7 @@ initiate_job(Client, AccountId, VaultName, Input) ->
     initiate_job(Client, AccountId, VaultName, Input, []).
 initiate_job(Client, AccountId, VaultName, Input0, Options) ->
     Method = post,
-    Path = ["/", http_uri:encode(AccountId), "/vaults/", http_uri:encode(VaultName), "/jobs"],
+    Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/jobs"],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -850,7 +850,7 @@ initiate_multipart_upload(Client, AccountId, VaultName, Input) ->
     initiate_multipart_upload(Client, AccountId, VaultName, Input, []).
 initiate_multipart_upload(Client, AccountId, VaultName, Input0, Options) ->
     Method = post,
-    Path = ["/", http_uri:encode(AccountId), "/vaults/", http_uri:encode(VaultName), "/multipart-uploads"],
+    Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/multipart-uploads"],
     SuccessStatusCode = 201,
 
     HeadersMapping = [
@@ -917,7 +917,7 @@ initiate_vault_lock(Client, AccountId, VaultName, Input) ->
     initiate_vault_lock(Client, AccountId, VaultName, Input, []).
 initiate_vault_lock(Client, AccountId, VaultName, Input0, Options) ->
     Method = post,
-    Path = ["/", http_uri:encode(AccountId), "/vaults/", http_uri:encode(VaultName), "/lock-policy"],
+    Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/lock-policy"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -987,7 +987,7 @@ list_jobs(Client, AccountId, VaultName, Completed, Limit, Marker, Statuscode)
     list_jobs(Client, AccountId, VaultName, Completed, Limit, Marker, Statuscode, []).
 list_jobs(Client, AccountId, VaultName, Completed, Limit, Marker, Statuscode, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(AccountId), "/vaults/", http_uri:encode(VaultName), "/jobs"],
+    Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/jobs"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1040,7 +1040,7 @@ list_multipart_uploads(Client, AccountId, VaultName, Limit, Marker)
     list_multipart_uploads(Client, AccountId, VaultName, Limit, Marker, []).
 list_multipart_uploads(Client, AccountId, VaultName, Limit, Marker, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(AccountId), "/vaults/", http_uri:encode(VaultName), "/multipart-uploads"],
+    Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/multipart-uploads"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1085,7 +1085,7 @@ list_parts(Client, AccountId, UploadId, VaultName, Limit, Marker)
     list_parts(Client, AccountId, UploadId, VaultName, Limit, Marker, []).
 list_parts(Client, AccountId, UploadId, VaultName, Limit, Marker, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(AccountId), "/vaults/", http_uri:encode(VaultName), "/multipart-uploads/", http_uri:encode(UploadId), ""],
+    Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/multipart-uploads/", aws_util:encode_uri(UploadId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1106,7 +1106,7 @@ list_provisioned_capacity(Client, AccountId)
     list_provisioned_capacity(Client, AccountId, []).
 list_provisioned_capacity(Client, AccountId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(AccountId), "/provisioned-capacity"],
+    Path = ["/", aws_util:encode_uri(AccountId), "/provisioned-capacity"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1124,7 +1124,7 @@ list_tags_for_vault(Client, AccountId, VaultName)
     list_tags_for_vault(Client, AccountId, VaultName, []).
 list_tags_for_vault(Client, AccountId, VaultName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(AccountId), "/vaults/", http_uri:encode(VaultName), "/tags"],
+    Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/tags"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1160,7 +1160,7 @@ list_vaults(Client, AccountId, Limit, Marker)
     list_vaults(Client, AccountId, Limit, Marker, []).
 list_vaults(Client, AccountId, Limit, Marker, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", http_uri:encode(AccountId), "/vaults"],
+    Path = ["/", aws_util:encode_uri(AccountId), "/vaults"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1180,7 +1180,7 @@ purchase_provisioned_capacity(Client, AccountId, Input) ->
     purchase_provisioned_capacity(Client, AccountId, Input, []).
 purchase_provisioned_capacity(Client, AccountId, Input0, Options) ->
     Method = post,
-    Path = ["/", http_uri:encode(AccountId), "/provisioned-capacity"],
+    Path = ["/", aws_util:encode_uri(AccountId), "/provisioned-capacity"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -1217,7 +1217,7 @@ remove_tags_from_vault(Client, AccountId, VaultName, Input) ->
     remove_tags_from_vault(Client, AccountId, VaultName, Input, []).
 remove_tags_from_vault(Client, AccountId, VaultName, Input0, Options) ->
     Method = post,
-    Path = ["/", http_uri:encode(AccountId), "/vaults/", http_uri:encode(VaultName), "/tags?operation=remove"],
+    Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/tags?operation=remove"],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -1241,7 +1241,7 @@ set_data_retrieval_policy(Client, AccountId, Input) ->
     set_data_retrieval_policy(Client, AccountId, Input, []).
 set_data_retrieval_policy(Client, AccountId, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(AccountId), "/policies/data-retrieval"],
+    Path = ["/", aws_util:encode_uri(AccountId), "/policies/data-retrieval"],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -1265,7 +1265,7 @@ set_vault_access_policy(Client, AccountId, VaultName, Input) ->
     set_vault_access_policy(Client, AccountId, VaultName, Input, []).
 set_vault_access_policy(Client, AccountId, VaultName, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(AccountId), "/vaults/", http_uri:encode(VaultName), "/access-policy"],
+    Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/access-policy"],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -1316,7 +1316,7 @@ set_vault_notifications(Client, AccountId, VaultName, Input) ->
     set_vault_notifications(Client, AccountId, VaultName, Input, []).
 set_vault_notifications(Client, AccountId, VaultName, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(AccountId), "/vaults/", http_uri:encode(VaultName), "/notification-configuration"],
+    Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/notification-configuration"],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -1369,7 +1369,7 @@ upload_archive(Client, AccountId, VaultName, Input) ->
     upload_archive(Client, AccountId, VaultName, Input, []).
 upload_archive(Client, AccountId, VaultName, Input0, Options) ->
     Method = post,
-    Path = ["/", http_uri:encode(AccountId), "/vaults/", http_uri:encode(VaultName), "/archives"],
+    Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/archives"],
     SuccessStatusCode = 201,
 
     HeadersMapping = [
@@ -1450,7 +1450,7 @@ upload_multipart_part(Client, AccountId, UploadId, VaultName, Input) ->
     upload_multipart_part(Client, AccountId, UploadId, VaultName, Input, []).
 upload_multipart_part(Client, AccountId, UploadId, VaultName, Input0, Options) ->
     Method = put,
-    Path = ["/", http_uri:encode(AccountId), "/vaults/", http_uri:encode(VaultName), "/multipart-uploads/", http_uri:encode(UploadId), ""],
+    Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/multipart-uploads/", aws_util:encode_uri(UploadId), ""],
     SuccessStatusCode = 204,
 
     HeadersMapping = [

@@ -96,7 +96,7 @@ delete_asset(Client, Id, Input) ->
     delete_asset(Client, Id, Input, []).
 delete_asset(Client, Id, Input0, Options) ->
     Method = delete,
-    Path = ["/assets/", http_uri:encode(Id), ""],
+    Path = ["/assets/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -112,7 +112,7 @@ delete_packaging_configuration(Client, Id, Input) ->
     delete_packaging_configuration(Client, Id, Input, []).
 delete_packaging_configuration(Client, Id, Input0, Options) ->
     Method = delete,
-    Path = ["/packaging_configurations/", http_uri:encode(Id), ""],
+    Path = ["/packaging_configurations/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -128,7 +128,7 @@ delete_packaging_group(Client, Id, Input) ->
     delete_packaging_group(Client, Id, Input, []).
 delete_packaging_group(Client, Id, Input0, Options) ->
     Method = delete,
-    Path = ["/packaging_groups/", http_uri:encode(Id), ""],
+    Path = ["/packaging_groups/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -145,7 +145,7 @@ describe_asset(Client, Id)
     describe_asset(Client, Id, []).
 describe_asset(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/assets/", http_uri:encode(Id), ""],
+    Path = ["/assets/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -161,7 +161,7 @@ describe_packaging_configuration(Client, Id)
     describe_packaging_configuration(Client, Id, []).
 describe_packaging_configuration(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/packaging_configurations/", http_uri:encode(Id), ""],
+    Path = ["/packaging_configurations/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -176,7 +176,7 @@ describe_packaging_group(Client, Id)
     describe_packaging_group(Client, Id, []).
 describe_packaging_group(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/packaging_groups/", http_uri:encode(Id), ""],
+    Path = ["/packaging_groups/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -254,7 +254,7 @@ list_tags_for_resource(Client, ResourceArn)
     list_tags_for_resource(Client, ResourceArn, []).
 list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -270,7 +270,7 @@ tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -288,7 +288,7 @@ untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -308,7 +308,7 @@ update_packaging_group(Client, Id, Input) ->
     update_packaging_group(Client, Id, Input, []).
 update_packaging_group(Client, Id, Input0, Options) ->
     Method = put,
-    Path = ["/packaging_groups/", http_uri:encode(Id), ""],
+    Path = ["/packaging_groups/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
     Headers = [],

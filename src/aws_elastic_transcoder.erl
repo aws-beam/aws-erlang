@@ -56,7 +56,7 @@ cancel_job(Client, Id, Input) ->
     cancel_job(Client, Id, Input, []).
 cancel_job(Client, Id, Input0, Options) ->
     Method = delete,
-    Path = ["/2012-09-25/jobs/", http_uri:encode(Id), ""],
+    Path = ["/2012-09-25/jobs/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -149,7 +149,7 @@ delete_pipeline(Client, Id, Input) ->
     delete_pipeline(Client, Id, Input, []).
 delete_pipeline(Client, Id, Input0, Options) ->
     Method = delete,
-    Path = ["/2012-09-25/pipelines/", http_uri:encode(Id), ""],
+    Path = ["/2012-09-25/pipelines/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -169,7 +169,7 @@ delete_preset(Client, Id, Input) ->
     delete_preset(Client, Id, Input, []).
 delete_preset(Client, Id, Input0, Options) ->
     Method = delete,
-    Path = ["/2012-09-25/presets/", http_uri:encode(Id), ""],
+    Path = ["/2012-09-25/presets/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -191,7 +191,7 @@ list_jobs_by_pipeline(Client, PipelineId, Ascending, PageToken)
     list_jobs_by_pipeline(Client, PipelineId, Ascending, PageToken, []).
 list_jobs_by_pipeline(Client, PipelineId, Ascending, PageToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2012-09-25/jobsByPipeline/", http_uri:encode(PipelineId), ""],
+    Path = ["/2012-09-25/jobsByPipeline/", aws_util:encode_uri(PipelineId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -215,7 +215,7 @@ list_jobs_by_status(Client, Status, Ascending, PageToken)
     list_jobs_by_status(Client, Status, Ascending, PageToken, []).
 list_jobs_by_status(Client, Status, Ascending, PageToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2012-09-25/jobsByStatus/", http_uri:encode(Status), ""],
+    Path = ["/2012-09-25/jobsByStatus/", aws_util:encode_uri(Status), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -278,7 +278,7 @@ read_job(Client, Id)
     read_job(Client, Id, []).
 read_job(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2012-09-25/jobs/", http_uri:encode(Id), ""],
+    Path = ["/2012-09-25/jobs/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -294,7 +294,7 @@ read_pipeline(Client, Id)
     read_pipeline(Client, Id, []).
 read_pipeline(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2012-09-25/pipelines/", http_uri:encode(Id), ""],
+    Path = ["/2012-09-25/pipelines/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -309,7 +309,7 @@ read_preset(Client, Id)
     read_preset(Client, Id, []).
 read_preset(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2012-09-25/presets/", http_uri:encode(Id), ""],
+    Path = ["/2012-09-25/presets/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -352,7 +352,7 @@ update_pipeline(Client, Id, Input) ->
     update_pipeline(Client, Id, Input, []).
 update_pipeline(Client, Id, Input0, Options) ->
     Method = put,
-    Path = ["/2012-09-25/pipelines/", http_uri:encode(Id), ""],
+    Path = ["/2012-09-25/pipelines/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -372,7 +372,7 @@ update_pipeline_notifications(Client, Id, Input) ->
     update_pipeline_notifications(Client, Id, Input, []).
 update_pipeline_notifications(Client, Id, Input0, Options) ->
     Method = post,
-    Path = ["/2012-09-25/pipelines/", http_uri:encode(Id), "/notifications"],
+    Path = ["/2012-09-25/pipelines/", aws_util:encode_uri(Id), "/notifications"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -395,7 +395,7 @@ update_pipeline_status(Client, Id, Input) ->
     update_pipeline_status(Client, Id, Input, []).
 update_pipeline_status(Client, Id, Input0, Options) ->
     Method = post,
-    Path = ["/2012-09-25/pipelines/", http_uri:encode(Id), "/status"],
+    Path = ["/2012-09-25/pipelines/", aws_util:encode_uri(Id), "/status"],
     SuccessStatusCode = undefined,
 
     Headers = [],

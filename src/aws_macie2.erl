@@ -275,7 +275,7 @@ delete_custom_data_identifier(Client, Id, Input) ->
     delete_custom_data_identifier(Client, Id, Input, []).
 delete_custom_data_identifier(Client, Id, Input0, Options) ->
     Method = delete,
-    Path = ["/custom-data-identifiers/", http_uri:encode(Id), ""],
+    Path = ["/custom-data-identifiers/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -291,7 +291,7 @@ delete_findings_filter(Client, Id, Input) ->
     delete_findings_filter(Client, Id, Input, []).
 delete_findings_filter(Client, Id, Input0, Options) ->
     Method = delete,
-    Path = ["/findingsfilters/", http_uri:encode(Id), ""],
+    Path = ["/findingsfilters/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -325,7 +325,7 @@ delete_member(Client, Id, Input) ->
     delete_member(Client, Id, Input, []).
 delete_member(Client, Id, Input0, Options) ->
     Method = delete,
-    Path = ["/members/", http_uri:encode(Id), ""],
+    Path = ["/members/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -359,7 +359,7 @@ describe_classification_job(Client, JobId)
     describe_classification_job(Client, JobId, []).
 describe_classification_job(Client, JobId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/jobs/", http_uri:encode(JobId), ""],
+    Path = ["/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -440,7 +440,7 @@ disassociate_member(Client, Id, Input) ->
     disassociate_member(Client, Id, Input, []).
 disassociate_member(Client, Id, Input0, Options) ->
     Method = post,
-    Path = ["/members/disassociate/", http_uri:encode(Id), ""],
+    Path = ["/members/disassociate/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -525,7 +525,7 @@ get_custom_data_identifier(Client, Id)
     get_custom_data_identifier(Client, Id, []).
 get_custom_data_identifier(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/custom-data-identifiers/", http_uri:encode(Id), ""],
+    Path = ["/custom-data-identifiers/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -572,7 +572,7 @@ get_findings_filter(Client, Id)
     get_findings_filter(Client, Id, []).
 get_findings_filter(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/findingsfilters/", http_uri:encode(Id), ""],
+    Path = ["/findingsfilters/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -636,7 +636,7 @@ get_member(Client, Id)
     get_member(Client, Id, []).
 get_member(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/members/", http_uri:encode(Id), ""],
+    Path = ["/members/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -820,7 +820,7 @@ list_tags_for_resource(Client, ResourceArn)
     list_tags_for_resource(Client, ResourceArn, []).
 list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -853,7 +853,7 @@ tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -886,7 +886,7 @@ untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -903,7 +903,7 @@ update_classification_job(Client, JobId, Input) ->
     update_classification_job(Client, JobId, Input, []).
 update_classification_job(Client, JobId, Input0, Options) ->
     Method = patch,
-    Path = ["/jobs/", http_uri:encode(JobId), ""],
+    Path = ["/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -919,7 +919,7 @@ update_findings_filter(Client, Id, Input) ->
     update_findings_filter(Client, Id, Input, []).
 update_findings_filter(Client, Id, Input0, Options) ->
     Method = patch,
-    Path = ["/findingsfilters/", http_uri:encode(Id), ""],
+    Path = ["/findingsfilters/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -953,7 +953,7 @@ update_member_session(Client, Id, Input) ->
     update_member_session(Client, Id, Input, []).
 update_member_session(Client, Id, Input0, Options) ->
     Method = patch,
-    Path = ["/macie/members/", http_uri:encode(Id), ""],
+    Path = ["/macie/members/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
     Headers = [],

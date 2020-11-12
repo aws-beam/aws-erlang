@@ -399,7 +399,7 @@ delete_action_target(Client, ActionTargetArn, Input) ->
     delete_action_target(Client, ActionTargetArn, Input, []).
 delete_action_target(Client, ActionTargetArn, Input0, Options) ->
     Method = delete,
-    Path = ["/actionTargets/", aws_util:encode_uri(ActionTargetArn, true), ""],
+    Path = ["/actionTargets/", aws_util:encode_multi_segment_uri(ActionTargetArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -415,7 +415,7 @@ delete_insight(Client, InsightArn, Input) ->
     delete_insight(Client, InsightArn, Input, []).
 delete_insight(Client, InsightArn, Input0, Options) ->
     Method = delete,
-    Path = ["/insights/", aws_util:encode_uri(InsightArn, true), ""],
+    Path = ["/insights/", aws_util:encode_multi_segment_uri(InsightArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -550,7 +550,7 @@ describe_standards_controls(Client, StandardsSubscriptionArn, MaxResults, NextTo
     describe_standards_controls(Client, StandardsSubscriptionArn, MaxResults, NextToken, []).
 describe_standards_controls(Client, StandardsSubscriptionArn, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/standards/controls/", aws_util:encode_uri(StandardsSubscriptionArn, true), ""],
+    Path = ["/standards/controls/", aws_util:encode_multi_segment_uri(StandardsSubscriptionArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -572,7 +572,7 @@ disable_import_findings_for_product(Client, ProductSubscriptionArn, Input) ->
     disable_import_findings_for_product(Client, ProductSubscriptionArn, Input, []).
 disable_import_findings_for_product(Client, ProductSubscriptionArn, Input0, Options) ->
     Method = delete,
-    Path = ["/productSubscriptions/", aws_util:encode_uri(ProductSubscriptionArn, true), ""],
+    Path = ["/productSubscriptions/", aws_util:encode_multi_segment_uri(ProductSubscriptionArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -748,7 +748,7 @@ get_insight_results(Client, InsightArn)
     get_insight_results(Client, InsightArn, []).
 get_insight_results(Client, InsightArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/insights/results/", aws_util:encode_uri(InsightArn, true), ""],
+    Path = ["/insights/results/", aws_util:encode_multi_segment_uri(InsightArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -917,7 +917,7 @@ list_tags_for_resource(Client, ResourceArn)
     list_tags_for_resource(Client, ResourceArn, []).
 list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -931,7 +931,7 @@ tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -947,7 +947,7 @@ untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -965,7 +965,7 @@ update_action_target(Client, ActionTargetArn, Input) ->
     update_action_target(Client, ActionTargetArn, Input, []).
 update_action_target(Client, ActionTargetArn, Input0, Options) ->
     Method = patch,
-    Path = ["/actionTargets/", aws_util:encode_uri(ActionTargetArn, true), ""],
+    Path = ["/actionTargets/", aws_util:encode_multi_segment_uri(ActionTargetArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1004,7 +1004,7 @@ update_insight(Client, InsightArn, Input) ->
     update_insight(Client, InsightArn, Input, []).
 update_insight(Client, InsightArn, Input0, Options) ->
     Method = patch,
-    Path = ["/insights/", aws_util:encode_uri(InsightArn, true), ""],
+    Path = ["/insights/", aws_util:encode_multi_segment_uri(InsightArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1037,7 +1037,7 @@ update_standards_control(Client, StandardsControlArn, Input) ->
     update_standards_control(Client, StandardsControlArn, Input, []).
 update_standards_control(Client, StandardsControlArn, Input0, Options) ->
     Method = patch,
-    Path = ["/standards/control/", aws_util:encode_uri(StandardsControlArn, true), ""],
+    Path = ["/standards/control/", aws_util:encode_multi_segment_uri(StandardsControlArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],

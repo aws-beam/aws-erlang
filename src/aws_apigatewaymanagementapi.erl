@@ -29,7 +29,7 @@ delete_connection(Client, ConnectionId, Input) ->
     delete_connection(Client, ConnectionId, Input, []).
 delete_connection(Client, ConnectionId, Input0, Options) ->
     Method = delete,
-    Path = ["/@connections/", http_uri:encode(ConnectionId), ""],
+    Path = ["/@connections/", aws_util:encode_uri(ConnectionId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -46,7 +46,7 @@ get_connection(Client, ConnectionId)
     get_connection(Client, ConnectionId, []).
 get_connection(Client, ConnectionId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/@connections/", http_uri:encode(ConnectionId), ""],
+    Path = ["/@connections/", aws_util:encode_uri(ConnectionId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -60,7 +60,7 @@ post_to_connection(Client, ConnectionId, Input) ->
     post_to_connection(Client, ConnectionId, Input, []).
 post_to_connection(Client, ConnectionId, Input0, Options) ->
     Method = post,
-    Path = ["/@connections/", http_uri:encode(ConnectionId), ""],
+    Path = ["/@connections/", aws_util:encode_uri(ConnectionId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],

@@ -107,7 +107,7 @@ accept_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnect
     accept_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input, []).
 accept_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input0, Options) ->
     Method = put,
-    Path = ["/2015-01-01/es/ccs/inboundConnection/", http_uri:encode(CrossClusterSearchConnectionId), "/accept"],
+    Path = ["/2015-01-01/es/ccs/inboundConnection/", aws_util:encode_uri(CrossClusterSearchConnectionId), "/accept"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -143,7 +143,7 @@ associate_package(Client, DomainName, PackageID, Input) ->
     associate_package(Client, DomainName, PackageID, Input, []).
 associate_package(Client, DomainName, PackageID, Input0, Options) ->
     Method = post,
-    Path = ["/2015-01-01/packages/associate/", http_uri:encode(PackageID), "/", http_uri:encode(DomainName), ""],
+    Path = ["/2015-01-01/packages/associate/", aws_util:encode_uri(PackageID), "/", aws_util:encode_uri(DomainName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -233,7 +233,7 @@ delete_elasticsearch_domain(Client, DomainName, Input) ->
     delete_elasticsearch_domain(Client, DomainName, Input, []).
 delete_elasticsearch_domain(Client, DomainName, Input0, Options) ->
     Method = delete,
-    Path = ["/2015-01-01/es/domain/", http_uri:encode(DomainName), ""],
+    Path = ["/2015-01-01/es/domain/", aws_util:encode_uri(DomainName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -272,7 +272,7 @@ delete_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnect
     delete_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input, []).
 delete_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input0, Options) ->
     Method = delete,
-    Path = ["/2015-01-01/es/ccs/inboundConnection/", http_uri:encode(CrossClusterSearchConnectionId), ""],
+    Path = ["/2015-01-01/es/ccs/inboundConnection/", aws_util:encode_uri(CrossClusterSearchConnectionId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -289,7 +289,7 @@ delete_outbound_cross_cluster_search_connection(Client, CrossClusterSearchConnec
     delete_outbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input, []).
 delete_outbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input0, Options) ->
     Method = delete,
-    Path = ["/2015-01-01/es/ccs/outboundConnection/", http_uri:encode(CrossClusterSearchConnectionId), ""],
+    Path = ["/2015-01-01/es/ccs/outboundConnection/", aws_util:encode_uri(CrossClusterSearchConnectionId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -305,7 +305,7 @@ delete_package(Client, PackageID, Input) ->
     delete_package(Client, PackageID, Input, []).
 delete_package(Client, PackageID, Input0, Options) ->
     Method = delete,
-    Path = ["/2015-01-01/packages/", http_uri:encode(PackageID), ""],
+    Path = ["/2015-01-01/packages/", aws_util:encode_uri(PackageID), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -324,7 +324,7 @@ describe_elasticsearch_domain(Client, DomainName)
     describe_elasticsearch_domain(Client, DomainName, []).
 describe_elasticsearch_domain(Client, DomainName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2015-01-01/es/domain/", http_uri:encode(DomainName), ""],
+    Path = ["/2015-01-01/es/domain/", aws_util:encode_uri(DomainName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -341,7 +341,7 @@ describe_elasticsearch_domain_config(Client, DomainName)
     describe_elasticsearch_domain_config(Client, DomainName, []).
 describe_elasticsearch_domain_config(Client, DomainName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2015-01-01/es/domain/", http_uri:encode(DomainName), "/config"],
+    Path = ["/2015-01-01/es/domain/", aws_util:encode_uri(DomainName), "/config"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -378,7 +378,7 @@ describe_elasticsearch_instance_type_limits(Client, ElasticsearchVersion, Instan
     describe_elasticsearch_instance_type_limits(Client, ElasticsearchVersion, InstanceType, DomainName, []).
 describe_elasticsearch_instance_type_limits(Client, ElasticsearchVersion, InstanceType, DomainName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2015-01-01/es/instanceTypeLimits/", http_uri:encode(ElasticsearchVersion), "/", http_uri:encode(InstanceType), ""],
+    Path = ["/2015-01-01/es/instanceTypeLimits/", aws_util:encode_uri(ElasticsearchVersion), "/", aws_util:encode_uri(InstanceType), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -492,7 +492,7 @@ dissociate_package(Client, DomainName, PackageID, Input) ->
     dissociate_package(Client, DomainName, PackageID, Input, []).
 dissociate_package(Client, DomainName, PackageID, Input0, Options) ->
     Method = post,
-    Path = ["/2015-01-01/packages/dissociate/", http_uri:encode(PackageID), "/", http_uri:encode(DomainName), ""],
+    Path = ["/2015-01-01/packages/dissociate/", aws_util:encode_uri(PackageID), "/", aws_util:encode_uri(DomainName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -532,7 +532,7 @@ get_package_version_history(Client, PackageID, MaxResults, NextToken)
     get_package_version_history(Client, PackageID, MaxResults, NextToken, []).
 get_package_version_history(Client, PackageID, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2015-01-01/packages/", http_uri:encode(PackageID), "/history"],
+    Path = ["/2015-01-01/packages/", aws_util:encode_uri(PackageID), "/history"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -553,7 +553,7 @@ get_upgrade_history(Client, DomainName, MaxResults, NextToken)
     get_upgrade_history(Client, DomainName, MaxResults, NextToken, []).
 get_upgrade_history(Client, DomainName, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2015-01-01/es/upgradeDomain/", http_uri:encode(DomainName), "/history"],
+    Path = ["/2015-01-01/es/upgradeDomain/", aws_util:encode_uri(DomainName), "/history"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -574,7 +574,7 @@ get_upgrade_status(Client, DomainName)
     get_upgrade_status(Client, DomainName, []).
 get_upgrade_status(Client, DomainName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2015-01-01/es/upgradeDomain/", http_uri:encode(DomainName), "/status"],
+    Path = ["/2015-01-01/es/upgradeDomain/", aws_util:encode_uri(DomainName), "/status"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -605,7 +605,7 @@ list_domains_for_package(Client, PackageID, MaxResults, NextToken)
     list_domains_for_package(Client, PackageID, MaxResults, NextToken, []).
 list_domains_for_package(Client, PackageID, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2015-01-01/packages/", http_uri:encode(PackageID), "/domains"],
+    Path = ["/2015-01-01/packages/", aws_util:encode_uri(PackageID), "/domains"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -626,7 +626,7 @@ list_elasticsearch_instance_types(Client, ElasticsearchVersion, DomainName, MaxR
     list_elasticsearch_instance_types(Client, ElasticsearchVersion, DomainName, MaxResults, NextToken, []).
 list_elasticsearch_instance_types(Client, ElasticsearchVersion, DomainName, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2015-01-01/es/instanceTypes/", http_uri:encode(ElasticsearchVersion), ""],
+    Path = ["/2015-01-01/es/instanceTypes/", aws_util:encode_uri(ElasticsearchVersion), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -667,7 +667,7 @@ list_packages_for_domain(Client, DomainName, MaxResults, NextToken)
     list_packages_for_domain(Client, DomainName, MaxResults, NextToken, []).
 list_packages_for_domain(Client, DomainName, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2015-01-01/domain/", http_uri:encode(DomainName), "/packages"],
+    Path = ["/2015-01-01/domain/", aws_util:encode_uri(DomainName), "/packages"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -722,7 +722,7 @@ reject_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnect
     reject_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input, []).
 reject_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input0, Options) ->
     Method = put,
-    Path = ["/2015-01-01/es/ccs/inboundConnection/", http_uri:encode(CrossClusterSearchConnectionId), "/reject"],
+    Path = ["/2015-01-01/es/ccs/inboundConnection/", aws_util:encode_uri(CrossClusterSearchConnectionId), "/reject"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -772,7 +772,7 @@ update_elasticsearch_domain_config(Client, DomainName, Input) ->
     update_elasticsearch_domain_config(Client, DomainName, Input, []).
 update_elasticsearch_domain_config(Client, DomainName, Input0, Options) ->
     Method = post,
-    Path = ["/2015-01-01/es/domain/", http_uri:encode(DomainName), "/config"],
+    Path = ["/2015-01-01/es/domain/", aws_util:encode_uri(DomainName), "/config"],
     SuccessStatusCode = undefined,
 
     Headers = [],

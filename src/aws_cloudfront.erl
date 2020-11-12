@@ -411,7 +411,7 @@ create_invalidation(Client, DistributionId, Input) ->
     create_invalidation(Client, DistributionId, Input, []).
 create_invalidation(Client, DistributionId, Input0, Options) ->
     Method = post,
-    Path = ["/2020-05-31/distribution/", http_uri:encode(DistributionId), "/invalidation"],
+    Path = ["/2020-05-31/distribution/", aws_util:encode_uri(DistributionId), "/invalidation"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -493,7 +493,7 @@ create_monitoring_subscription(Client, DistributionId, Input) ->
     create_monitoring_subscription(Client, DistributionId, Input, []).
 create_monitoring_subscription(Client, DistributionId, Input0, Options) ->
     Method = post,
-    Path = ["/2020-05-31/distributions/", http_uri:encode(DistributionId), "/monitoring-subscription"],
+    Path = ["/2020-05-31/distributions/", aws_util:encode_uri(DistributionId), "/monitoring-subscription"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -726,7 +726,7 @@ delete_cache_policy(Client, Id, Input) ->
     delete_cache_policy(Client, Id, Input, []).
 delete_cache_policy(Client, Id, Input0, Options) ->
     Method = delete,
-    Path = ["/2020-05-31/cache-policy/", http_uri:encode(Id), ""],
+    Path = ["/2020-05-31/cache-policy/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
 
     HeadersMapping = [
@@ -744,7 +744,7 @@ delete_cloud_front_origin_access_identity(Client, Id, Input) ->
     delete_cloud_front_origin_access_identity(Client, Id, Input, []).
 delete_cloud_front_origin_access_identity(Client, Id, Input0, Options) ->
     Method = delete,
-    Path = ["/2020-05-31/origin-access-identity/cloudfront/", http_uri:encode(Id), ""],
+    Path = ["/2020-05-31/origin-access-identity/cloudfront/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
 
     HeadersMapping = [
@@ -762,7 +762,7 @@ delete_distribution(Client, Id, Input) ->
     delete_distribution(Client, Id, Input, []).
 delete_distribution(Client, Id, Input0, Options) ->
     Method = delete,
-    Path = ["/2020-05-31/distribution/", http_uri:encode(Id), ""],
+    Path = ["/2020-05-31/distribution/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
 
     HeadersMapping = [
@@ -780,7 +780,7 @@ delete_field_level_encryption_config(Client, Id, Input) ->
     delete_field_level_encryption_config(Client, Id, Input, []).
 delete_field_level_encryption_config(Client, Id, Input0, Options) ->
     Method = delete,
-    Path = ["/2020-05-31/field-level-encryption/", http_uri:encode(Id), ""],
+    Path = ["/2020-05-31/field-level-encryption/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
 
     HeadersMapping = [
@@ -798,7 +798,7 @@ delete_field_level_encryption_profile(Client, Id, Input) ->
     delete_field_level_encryption_profile(Client, Id, Input, []).
 delete_field_level_encryption_profile(Client, Id, Input0, Options) ->
     Method = delete,
-    Path = ["/2020-05-31/field-level-encryption-profile/", http_uri:encode(Id), ""],
+    Path = ["/2020-05-31/field-level-encryption-profile/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
 
     HeadersMapping = [
@@ -824,7 +824,7 @@ delete_key_group(Client, Id, Input) ->
     delete_key_group(Client, Id, Input, []).
 delete_key_group(Client, Id, Input0, Options) ->
     Method = delete,
-    Path = ["/2020-05-31/key-group/", http_uri:encode(Id), ""],
+    Path = ["/2020-05-31/key-group/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
 
     HeadersMapping = [
@@ -843,7 +843,7 @@ delete_monitoring_subscription(Client, DistributionId, Input) ->
     delete_monitoring_subscription(Client, DistributionId, Input, []).
 delete_monitoring_subscription(Client, DistributionId, Input0, Options) ->
     Method = delete,
-    Path = ["/2020-05-31/distributions/", http_uri:encode(DistributionId), "/monitoring-subscription"],
+    Path = ["/2020-05-31/distributions/", aws_util:encode_uri(DistributionId), "/monitoring-subscription"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -867,7 +867,7 @@ delete_origin_request_policy(Client, Id, Input) ->
     delete_origin_request_policy(Client, Id, Input, []).
 delete_origin_request_policy(Client, Id, Input0, Options) ->
     Method = delete,
-    Path = ["/2020-05-31/origin-request-policy/", http_uri:encode(Id), ""],
+    Path = ["/2020-05-31/origin-request-policy/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
 
     HeadersMapping = [
@@ -885,7 +885,7 @@ delete_public_key(Client, Id, Input) ->
     delete_public_key(Client, Id, Input, []).
 delete_public_key(Client, Id, Input0, Options) ->
     Method = delete,
-    Path = ["/2020-05-31/public-key/", http_uri:encode(Id), ""],
+    Path = ["/2020-05-31/public-key/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
 
     HeadersMapping = [
@@ -969,7 +969,7 @@ delete_streaming_distribution(Client, Id, Input) ->
     delete_streaming_distribution(Client, Id, Input, []).
 delete_streaming_distribution(Client, Id, Input0, Options) ->
     Method = delete,
-    Path = ["/2020-05-31/streaming-distribution/", http_uri:encode(Id), ""],
+    Path = ["/2020-05-31/streaming-distribution/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
 
     HeadersMapping = [
@@ -998,7 +998,7 @@ get_cache_policy(Client, Id)
     get_cache_policy(Client, Id, []).
 get_cache_policy(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2020-05-31/cache-policy/", http_uri:encode(Id), ""],
+    Path = ["/2020-05-31/cache-policy/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1035,7 +1035,7 @@ get_cache_policy_config(Client, Id)
     get_cache_policy_config(Client, Id, []).
 get_cache_policy_config(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2020-05-31/cache-policy/", http_uri:encode(Id), "/config"],
+    Path = ["/2020-05-31/cache-policy/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1066,7 +1066,7 @@ get_cloud_front_origin_access_identity(Client, Id)
     get_cloud_front_origin_access_identity(Client, Id, []).
 get_cloud_front_origin_access_identity(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2020-05-31/origin-access-identity/cloudfront/", http_uri:encode(Id), ""],
+    Path = ["/2020-05-31/origin-access-identity/cloudfront/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1097,7 +1097,7 @@ get_cloud_front_origin_access_identity_config(Client, Id)
     get_cloud_front_origin_access_identity_config(Client, Id, []).
 get_cloud_front_origin_access_identity_config(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2020-05-31/origin-access-identity/cloudfront/", http_uri:encode(Id), "/config"],
+    Path = ["/2020-05-31/origin-access-identity/cloudfront/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1128,7 +1128,7 @@ get_distribution(Client, Id)
     get_distribution(Client, Id, []).
 get_distribution(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2020-05-31/distribution/", http_uri:encode(Id), ""],
+    Path = ["/2020-05-31/distribution/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1159,7 +1159,7 @@ get_distribution_config(Client, Id)
     get_distribution_config(Client, Id, []).
 get_distribution_config(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2020-05-31/distribution/", http_uri:encode(Id), "/config"],
+    Path = ["/2020-05-31/distribution/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1190,7 +1190,7 @@ get_field_level_encryption(Client, Id)
     get_field_level_encryption(Client, Id, []).
 get_field_level_encryption(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2020-05-31/field-level-encryption/", http_uri:encode(Id), ""],
+    Path = ["/2020-05-31/field-level-encryption/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1221,7 +1221,7 @@ get_field_level_encryption_config(Client, Id)
     get_field_level_encryption_config(Client, Id, []).
 get_field_level_encryption_config(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2020-05-31/field-level-encryption/", http_uri:encode(Id), "/config"],
+    Path = ["/2020-05-31/field-level-encryption/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1252,7 +1252,7 @@ get_field_level_encryption_profile(Client, Id)
     get_field_level_encryption_profile(Client, Id, []).
 get_field_level_encryption_profile(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2020-05-31/field-level-encryption-profile/", http_uri:encode(Id), ""],
+    Path = ["/2020-05-31/field-level-encryption-profile/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1283,7 +1283,7 @@ get_field_level_encryption_profile_config(Client, Id)
     get_field_level_encryption_profile_config(Client, Id, []).
 get_field_level_encryption_profile_config(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2020-05-31/field-level-encryption-profile/", http_uri:encode(Id), "/config"],
+    Path = ["/2020-05-31/field-level-encryption-profile/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1314,7 +1314,7 @@ get_invalidation(Client, DistributionId, Id)
     get_invalidation(Client, DistributionId, Id, []).
 get_invalidation(Client, DistributionId, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2020-05-31/distribution/", http_uri:encode(DistributionId), "/invalidation/", http_uri:encode(Id), ""],
+    Path = ["/2020-05-31/distribution/", aws_util:encode_uri(DistributionId), "/invalidation/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1336,7 +1336,7 @@ get_key_group(Client, Id)
     get_key_group(Client, Id, []).
 get_key_group(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2020-05-31/key-group/", http_uri:encode(Id), ""],
+    Path = ["/2020-05-31/key-group/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1373,7 +1373,7 @@ get_key_group_config(Client, Id)
     get_key_group_config(Client, Id, []).
 get_key_group_config(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2020-05-31/key-group/", http_uri:encode(Id), "/config"],
+    Path = ["/2020-05-31/key-group/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1405,7 +1405,7 @@ get_monitoring_subscription(Client, DistributionId)
     get_monitoring_subscription(Client, DistributionId, []).
 get_monitoring_subscription(Client, DistributionId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2020-05-31/distributions/", http_uri:encode(DistributionId), "/monitoring-subscription"],
+    Path = ["/2020-05-31/distributions/", aws_util:encode_uri(DistributionId), "/monitoring-subscription"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1431,7 +1431,7 @@ get_origin_request_policy(Client, Id)
     get_origin_request_policy(Client, Id, []).
 get_origin_request_policy(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2020-05-31/origin-request-policy/", http_uri:encode(Id), ""],
+    Path = ["/2020-05-31/origin-request-policy/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1469,7 +1469,7 @@ get_origin_request_policy_config(Client, Id)
     get_origin_request_policy_config(Client, Id, []).
 get_origin_request_policy_config(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2020-05-31/origin-request-policy/", http_uri:encode(Id), "/config"],
+    Path = ["/2020-05-31/origin-request-policy/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1500,7 +1500,7 @@ get_public_key(Client, Id)
     get_public_key(Client, Id, []).
 get_public_key(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2020-05-31/public-key/", http_uri:encode(Id), ""],
+    Path = ["/2020-05-31/public-key/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1531,7 +1531,7 @@ get_public_key_config(Client, Id)
     get_public_key_config(Client, Id, []).
 get_public_key_config(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2020-05-31/public-key/", http_uri:encode(Id), "/config"],
+    Path = ["/2020-05-31/public-key/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1584,7 +1584,7 @@ get_streaming_distribution(Client, Id)
     get_streaming_distribution(Client, Id, []).
 get_streaming_distribution(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2020-05-31/streaming-distribution/", http_uri:encode(Id), ""],
+    Path = ["/2020-05-31/streaming-distribution/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1615,7 +1615,7 @@ get_streaming_distribution_config(Client, Id)
     get_streaming_distribution_config(Client, Id, []).
 get_streaming_distribution_config(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2020-05-31/streaming-distribution/", http_uri:encode(Id), "/config"],
+    Path = ["/2020-05-31/streaming-distribution/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1725,7 +1725,7 @@ list_distributions_by_cache_policy_id(Client, CachePolicyId, Marker, MaxItems)
     list_distributions_by_cache_policy_id(Client, CachePolicyId, Marker, MaxItems, []).
 list_distributions_by_cache_policy_id(Client, CachePolicyId, Marker, MaxItems, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2020-05-31/distributionsByCachePolicyId/", http_uri:encode(CachePolicyId), ""],
+    Path = ["/2020-05-31/distributionsByCachePolicyId/", aws_util:encode_uri(CachePolicyId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1753,7 +1753,7 @@ list_distributions_by_key_group(Client, KeyGroupId, Marker, MaxItems)
     list_distributions_by_key_group(Client, KeyGroupId, Marker, MaxItems, []).
 list_distributions_by_key_group(Client, KeyGroupId, Marker, MaxItems, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2020-05-31/distributionsByKeyGroupId/", http_uri:encode(KeyGroupId), ""],
+    Path = ["/2020-05-31/distributionsByKeyGroupId/", aws_util:encode_uri(KeyGroupId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1781,7 +1781,7 @@ list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, Ma
     list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, Marker, MaxItems, []).
 list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, Marker, MaxItems, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2020-05-31/distributionsByOriginRequestPolicyId/", http_uri:encode(OriginRequestPolicyId), ""],
+    Path = ["/2020-05-31/distributionsByOriginRequestPolicyId/", aws_util:encode_uri(OriginRequestPolicyId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1831,7 +1831,7 @@ list_distributions_by_web_a_c_l_id(Client, WebACLId, Marker, MaxItems)
     list_distributions_by_web_a_c_l_id(Client, WebACLId, Marker, MaxItems, []).
 list_distributions_by_web_a_c_l_id(Client, WebACLId, Marker, MaxItems, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2020-05-31/distributionsByWebACLId/", http_uri:encode(WebACLId), ""],
+    Path = ["/2020-05-31/distributionsByWebACLId/", aws_util:encode_uri(WebACLId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1893,7 +1893,7 @@ list_invalidations(Client, DistributionId, Marker, MaxItems)
     list_invalidations(Client, DistributionId, Marker, MaxItems, []).
 list_invalidations(Client, DistributionId, Marker, MaxItems, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2020-05-31/distribution/", http_uri:encode(DistributionId), "/invalidation"],
+    Path = ["/2020-05-31/distribution/", aws_util:encode_uri(DistributionId), "/invalidation"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2106,7 +2106,7 @@ update_cache_policy(Client, Id, Input) ->
     update_cache_policy(Client, Id, Input, []).
 update_cache_policy(Client, Id, Input0, Options) ->
     Method = put,
-    Path = ["/2020-05-31/cache-policy/", http_uri:encode(Id), ""],
+    Path = ["/2020-05-31/cache-policy/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -2140,7 +2140,7 @@ update_cloud_front_origin_access_identity(Client, Id, Input) ->
     update_cloud_front_origin_access_identity(Client, Id, Input, []).
 update_cloud_front_origin_access_identity(Client, Id, Input0, Options) ->
     Method = put,
-    Path = ["/2020-05-31/origin-access-identity/cloudfront/", http_uri:encode(Id), "/config"],
+    Path = ["/2020-05-31/origin-access-identity/cloudfront/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -2240,7 +2240,7 @@ update_distribution(Client, Id, Input) ->
     update_distribution(Client, Id, Input, []).
 update_distribution(Client, Id, Input0, Options) ->
     Method = put,
-    Path = ["/2020-05-31/distribution/", http_uri:encode(Id), "/config"],
+    Path = ["/2020-05-31/distribution/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -2274,7 +2274,7 @@ update_field_level_encryption_config(Client, Id, Input) ->
     update_field_level_encryption_config(Client, Id, Input, []).
 update_field_level_encryption_config(Client, Id, Input0, Options) ->
     Method = put,
-    Path = ["/2020-05-31/field-level-encryption/", http_uri:encode(Id), "/config"],
+    Path = ["/2020-05-31/field-level-encryption/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -2308,7 +2308,7 @@ update_field_level_encryption_profile(Client, Id, Input) ->
     update_field_level_encryption_profile(Client, Id, Input, []).
 update_field_level_encryption_profile(Client, Id, Input0, Options) ->
     Method = put,
-    Path = ["/2020-05-31/field-level-encryption-profile/", http_uri:encode(Id), "/config"],
+    Path = ["/2020-05-31/field-level-encryption-profile/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -2357,7 +2357,7 @@ update_key_group(Client, Id, Input) ->
     update_key_group(Client, Id, Input, []).
 update_key_group(Client, Id, Input0, Options) ->
     Method = put,
-    Path = ["/2020-05-31/key-group/", http_uri:encode(Id), ""],
+    Path = ["/2020-05-31/key-group/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -2408,7 +2408,7 @@ update_origin_request_policy(Client, Id, Input) ->
     update_origin_request_policy(Client, Id, Input, []).
 update_origin_request_policy(Client, Id, Input0, Options) ->
     Method = put,
-    Path = ["/2020-05-31/origin-request-policy/", http_uri:encode(Id), ""],
+    Path = ["/2020-05-31/origin-request-policy/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -2444,7 +2444,7 @@ update_public_key(Client, Id, Input) ->
     update_public_key(Client, Id, Input, []).
 update_public_key(Client, Id, Input0, Options) ->
     Method = put,
-    Path = ["/2020-05-31/public-key/", http_uri:encode(Id), "/config"],
+    Path = ["/2020-05-31/public-key/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -2511,7 +2511,7 @@ update_streaming_distribution(Client, Id, Input) ->
     update_streaming_distribution(Client, Id, Input, []).
 update_streaming_distribution(Client, Id, Input0, Options) ->
     Method = put,
-    Path = ["/2020-05-31/streaming-distribution/", http_uri:encode(Id), "/config"],
+    Path = ["/2020-05-31/streaming-distribution/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [

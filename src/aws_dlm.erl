@@ -62,7 +62,7 @@ delete_lifecycle_policy(Client, PolicyId, Input) ->
     delete_lifecycle_policy(Client, PolicyId, Input, []).
 delete_lifecycle_policy(Client, PolicyId, Input0, Options) ->
     Method = delete,
-    Path = ["/policies/", http_uri:encode(PolicyId), "/"],
+    Path = ["/policies/", aws_util:encode_uri(PolicyId), "/"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -105,7 +105,7 @@ get_lifecycle_policy(Client, PolicyId)
     get_lifecycle_policy(Client, PolicyId, []).
 get_lifecycle_policy(Client, PolicyId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/policies/", http_uri:encode(PolicyId), "/"],
+    Path = ["/policies/", aws_util:encode_uri(PolicyId), "/"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -120,7 +120,7 @@ list_tags_for_resource(Client, ResourceArn)
     list_tags_for_resource(Client, ResourceArn, []).
 list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -134,7 +134,7 @@ tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -150,7 +150,7 @@ untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -167,7 +167,7 @@ update_lifecycle_policy(Client, PolicyId, Input) ->
     update_lifecycle_policy(Client, PolicyId, Input, []).
 update_lifecycle_policy(Client, PolicyId, Input0, Options) ->
     Method = patch,
-    Path = ["/policies/", http_uri:encode(PolicyId), ""],
+    Path = ["/policies/", aws_util:encode_uri(PolicyId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],

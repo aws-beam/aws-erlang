@@ -62,7 +62,7 @@ cancel_job(Client, JobId, Input) ->
     cancel_job(Client, JobId, Input, []).
 cancel_job(Client, JobId, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/jobs/", http_uri:encode(JobId), ""],
+    Path = ["/v1/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -110,7 +110,7 @@ create_revision(Client, DataSetId, Input) ->
     create_revision(Client, DataSetId, Input, []).
 create_revision(Client, DataSetId, Input0, Options) ->
     Method = post,
-    Path = ["/v1/data-sets/", http_uri:encode(DataSetId), "/revisions"],
+    Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), "/revisions"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -126,7 +126,7 @@ delete_asset(Client, AssetId, DataSetId, RevisionId, Input) ->
     delete_asset(Client, AssetId, DataSetId, RevisionId, Input, []).
 delete_asset(Client, AssetId, DataSetId, RevisionId, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/data-sets/", http_uri:encode(DataSetId), "/revisions/", http_uri:encode(RevisionId), "/assets/", http_uri:encode(AssetId), ""],
+    Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), "/revisions/", aws_util:encode_uri(RevisionId), "/assets/", aws_util:encode_uri(AssetId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -142,7 +142,7 @@ delete_data_set(Client, DataSetId, Input) ->
     delete_data_set(Client, DataSetId, Input, []).
 delete_data_set(Client, DataSetId, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/data-sets/", http_uri:encode(DataSetId), ""],
+    Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -158,7 +158,7 @@ delete_revision(Client, DataSetId, RevisionId, Input) ->
     delete_revision(Client, DataSetId, RevisionId, Input, []).
 delete_revision(Client, DataSetId, RevisionId, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/data-sets/", http_uri:encode(DataSetId), "/revisions/", http_uri:encode(RevisionId), ""],
+    Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), "/revisions/", aws_util:encode_uri(RevisionId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -175,7 +175,7 @@ get_asset(Client, AssetId, DataSetId, RevisionId)
     get_asset(Client, AssetId, DataSetId, RevisionId, []).
 get_asset(Client, AssetId, DataSetId, RevisionId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/data-sets/", http_uri:encode(DataSetId), "/revisions/", http_uri:encode(RevisionId), "/assets/", http_uri:encode(AssetId), ""],
+    Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), "/revisions/", aws_util:encode_uri(RevisionId), "/assets/", aws_util:encode_uri(AssetId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -190,7 +190,7 @@ get_data_set(Client, DataSetId)
     get_data_set(Client, DataSetId, []).
 get_data_set(Client, DataSetId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/data-sets/", http_uri:encode(DataSetId), ""],
+    Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -205,7 +205,7 @@ get_job(Client, JobId)
     get_job(Client, JobId, []).
 get_job(Client, JobId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/jobs/", http_uri:encode(JobId), ""],
+    Path = ["/v1/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -220,7 +220,7 @@ get_revision(Client, DataSetId, RevisionId)
     get_revision(Client, DataSetId, RevisionId, []).
 get_revision(Client, DataSetId, RevisionId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/data-sets/", http_uri:encode(DataSetId), "/revisions/", http_uri:encode(RevisionId), ""],
+    Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), "/revisions/", aws_util:encode_uri(RevisionId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -236,7 +236,7 @@ list_data_set_revisions(Client, DataSetId, MaxResults, NextToken)
     list_data_set_revisions(Client, DataSetId, MaxResults, NextToken, []).
 list_data_set_revisions(Client, DataSetId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/data-sets/", http_uri:encode(DataSetId), "/revisions"],
+    Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), "/revisions"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -305,7 +305,7 @@ list_revision_assets(Client, DataSetId, RevisionId, MaxResults, NextToken)
     list_revision_assets(Client, DataSetId, RevisionId, MaxResults, NextToken, []).
 list_revision_assets(Client, DataSetId, RevisionId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/data-sets/", http_uri:encode(DataSetId), "/revisions/", http_uri:encode(RevisionId), "/assets"],
+    Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), "/revisions/", aws_util:encode_uri(RevisionId), "/assets"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -325,7 +325,7 @@ list_tags_for_resource(Client, ResourceArn)
     list_tags_for_resource(Client, ResourceArn, []).
 list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -339,7 +339,7 @@ start_job(Client, JobId, Input) ->
     start_job(Client, JobId, Input, []).
 start_job(Client, JobId, Input0, Options) ->
     Method = patch,
-    Path = ["/v1/jobs/", http_uri:encode(JobId), ""],
+    Path = ["/v1/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -355,7 +355,7 @@ tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -371,7 +371,7 @@ untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -388,7 +388,7 @@ update_asset(Client, AssetId, DataSetId, RevisionId, Input) ->
     update_asset(Client, AssetId, DataSetId, RevisionId, Input, []).
 update_asset(Client, AssetId, DataSetId, RevisionId, Input0, Options) ->
     Method = patch,
-    Path = ["/v1/data-sets/", http_uri:encode(DataSetId), "/revisions/", http_uri:encode(RevisionId), "/assets/", http_uri:encode(AssetId), ""],
+    Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), "/revisions/", aws_util:encode_uri(RevisionId), "/assets/", aws_util:encode_uri(AssetId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -404,7 +404,7 @@ update_data_set(Client, DataSetId, Input) ->
     update_data_set(Client, DataSetId, Input, []).
 update_data_set(Client, DataSetId, Input0, Options) ->
     Method = patch,
-    Path = ["/v1/data-sets/", http_uri:encode(DataSetId), ""],
+    Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -420,7 +420,7 @@ update_revision(Client, DataSetId, RevisionId, Input) ->
     update_revision(Client, DataSetId, RevisionId, Input, []).
 update_revision(Client, DataSetId, RevisionId, Input0, Options) ->
     Method = patch,
-    Path = ["/v1/data-sets/", http_uri:encode(DataSetId), "/revisions/", http_uri:encode(RevisionId), ""],
+    Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), "/revisions/", aws_util:encode_uri(RevisionId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],

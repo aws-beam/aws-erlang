@@ -68,7 +68,7 @@ describe_detector(Client, DetectorModelName, KeyValue)
     describe_detector(Client, DetectorModelName, KeyValue, []).
 describe_detector(Client, DetectorModelName, KeyValue, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/detectors/", http_uri:encode(DetectorModelName), "/keyValues/"],
+    Path = ["/detectors/", aws_util:encode_uri(DetectorModelName), "/keyValues/"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -87,7 +87,7 @@ list_detectors(Client, DetectorModelName, MaxResults, NextToken, StateName)
     list_detectors(Client, DetectorModelName, MaxResults, NextToken, StateName, []).
 list_detectors(Client, DetectorModelName, MaxResults, NextToken, StateName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/detectors/", http_uri:encode(DetectorModelName), ""],
+    Path = ["/detectors/", aws_util:encode_uri(DetectorModelName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],

@@ -52,7 +52,7 @@ delete_outpost(Client, OutpostId, Input) ->
     delete_outpost(Client, OutpostId, Input, []).
 delete_outpost(Client, OutpostId, Input0, Options) ->
     Method = delete,
-    Path = ["/outposts/", http_uri:encode(OutpostId), ""],
+    Path = ["/outposts/", aws_util:encode_uri(OutpostId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -68,7 +68,7 @@ delete_site(Client, SiteId, Input) ->
     delete_site(Client, SiteId, Input, []).
 delete_site(Client, SiteId, Input0, Options) ->
     Method = delete,
-    Path = ["/sites/", http_uri:encode(SiteId), ""],
+    Path = ["/sites/", aws_util:encode_uri(SiteId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -85,7 +85,7 @@ get_outpost(Client, OutpostId)
     get_outpost(Client, OutpostId, []).
 get_outpost(Client, OutpostId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/outposts/", http_uri:encode(OutpostId), ""],
+    Path = ["/outposts/", aws_util:encode_uri(OutpostId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -100,7 +100,7 @@ get_outpost_instance_types(Client, OutpostId, MaxResults, NextToken)
     get_outpost_instance_types(Client, OutpostId, MaxResults, NextToken, []).
 get_outpost_instance_types(Client, OutpostId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/outposts/", http_uri:encode(OutpostId), "/instanceTypes"],
+    Path = ["/outposts/", aws_util:encode_uri(OutpostId), "/instanceTypes"],
     SuccessStatusCode = undefined,
 
     Headers = [],

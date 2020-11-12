@@ -38,7 +38,7 @@ delete_session(Client, BotAlias, BotName, UserId, Input) ->
     delete_session(Client, BotAlias, BotName, UserId, Input, []).
 delete_session(Client, BotAlias, BotName, UserId, Input0, Options) ->
     Method = delete,
-    Path = ["/bot/", http_uri:encode(BotName), "/alias/", http_uri:encode(BotAlias), "/user/", http_uri:encode(UserId), "/session"],
+    Path = ["/bot/", aws_util:encode_uri(BotName), "/alias/", aws_util:encode_uri(BotAlias), "/user/", aws_util:encode_uri(UserId), "/session"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -55,7 +55,7 @@ get_session(Client, BotAlias, BotName, UserId, CheckpointLabelFilter)
     get_session(Client, BotAlias, BotName, UserId, CheckpointLabelFilter, []).
 get_session(Client, BotAlias, BotName, UserId, CheckpointLabelFilter, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/bot/", http_uri:encode(BotName), "/alias/", http_uri:encode(BotAlias), "/user/", http_uri:encode(UserId), "/session/"],
+    Path = ["/bot/", aws_util:encode_uri(BotName), "/alias/", aws_util:encode_uri(BotAlias), "/user/", aws_util:encode_uri(UserId), "/session/"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -130,7 +130,7 @@ post_content(Client, BotAlias, BotName, UserId, Input) ->
     post_content(Client, BotAlias, BotName, UserId, Input, []).
 post_content(Client, BotAlias, BotName, UserId, Input0, Options) ->
     Method = post,
-    Path = ["/bot/", http_uri:encode(BotName), "/alias/", http_uri:encode(BotAlias), "/user/", http_uri:encode(UserId), "/content"],
+    Path = ["/bot/", aws_util:encode_uri(BotName), "/alias/", aws_util:encode_uri(BotAlias), "/user/", aws_util:encode_uri(UserId), "/content"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -233,7 +233,7 @@ post_text(Client, BotAlias, BotName, UserId, Input) ->
     post_text(Client, BotAlias, BotName, UserId, Input, []).
 post_text(Client, BotAlias, BotName, UserId, Input0, Options) ->
     Method = post,
-    Path = ["/bot/", http_uri:encode(BotName), "/alias/", http_uri:encode(BotAlias), "/user/", http_uri:encode(UserId), "/text"],
+    Path = ["/bot/", aws_util:encode_uri(BotName), "/alias/", aws_util:encode_uri(BotAlias), "/user/", aws_util:encode_uri(UserId), "/text"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -254,7 +254,7 @@ put_session(Client, BotAlias, BotName, UserId, Input) ->
     put_session(Client, BotAlias, BotName, UserId, Input, []).
 put_session(Client, BotAlias, BotName, UserId, Input0, Options) ->
     Method = post,
-    Path = ["/bot/", http_uri:encode(BotName), "/alias/", http_uri:encode(BotAlias), "/user/", http_uri:encode(UserId), "/session"],
+    Path = ["/bot/", aws_util:encode_uri(BotName), "/alias/", aws_util:encode_uri(BotAlias), "/user/", aws_util:encode_uri(UserId), "/session"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [

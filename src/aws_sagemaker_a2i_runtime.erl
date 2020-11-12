@@ -59,7 +59,7 @@ delete_human_loop(Client, HumanLoopName, Input) ->
     delete_human_loop(Client, HumanLoopName, Input, []).
 delete_human_loop(Client, HumanLoopName, Input0, Options) ->
     Method = delete,
-    Path = ["/human-loops/", http_uri:encode(HumanLoopName), ""],
+    Path = ["/human-loops/", aws_util:encode_uri(HumanLoopName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -76,7 +76,7 @@ describe_human_loop(Client, HumanLoopName)
     describe_human_loop(Client, HumanLoopName, []).
 describe_human_loop(Client, HumanLoopName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/human-loops/", http_uri:encode(HumanLoopName), ""],
+    Path = ["/human-loops/", aws_util:encode_uri(HumanLoopName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],

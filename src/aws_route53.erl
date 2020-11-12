@@ -141,7 +141,7 @@ associate_v_p_c_with_hosted_zone(Client, HostedZoneId, Input) ->
     associate_v_p_c_with_hosted_zone(Client, HostedZoneId, Input, []).
 associate_v_p_c_with_hosted_zone(Client, HostedZoneId, Input0, Options) ->
     Method = post,
-    Path = ["/2013-04-01/hostedzone/", http_uri:encode(HostedZoneId), "/associatevpc"],
+    Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/associatevpc"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -243,7 +243,7 @@ change_resource_record_sets(Client, HostedZoneId, Input) ->
     change_resource_record_sets(Client, HostedZoneId, Input, []).
 change_resource_record_sets(Client, HostedZoneId, Input0, Options) ->
     Method = post,
-    Path = ["/2013-04-01/hostedzone/", http_uri:encode(HostedZoneId), "/rrset/"],
+    Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/rrset/"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -262,7 +262,7 @@ change_tags_for_resource(Client, ResourceId, ResourceType, Input) ->
     change_tags_for_resource(Client, ResourceId, ResourceType, Input, []).
 change_tags_for_resource(Client, ResourceId, ResourceType, Input0, Options) ->
     Method = post,
-    Path = ["/2013-04-01/tags/", http_uri:encode(ResourceType), "/", http_uri:encode(ResourceId), ""],
+    Path = ["/2013-04-01/tags/", aws_util:encode_uri(ResourceType), "/", aws_util:encode_uri(ResourceId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -712,7 +712,7 @@ create_traffic_policy_version(Client, Id, Input) ->
     create_traffic_policy_version(Client, Id, Input, []).
 create_traffic_policy_version(Client, Id, Input0, Options) ->
     Method = post,
-    Path = ["/2013-04-01/trafficpolicy/", http_uri:encode(Id), ""],
+    Path = ["/2013-04-01/trafficpolicy/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -755,7 +755,7 @@ create_v_p_c_association_authorization(Client, HostedZoneId, Input) ->
     create_v_p_c_association_authorization(Client, HostedZoneId, Input, []).
 create_v_p_c_association_authorization(Client, HostedZoneId, Input0, Options) ->
     Method = post,
-    Path = ["/2013-04-01/hostedzone/", http_uri:encode(HostedZoneId), "/authorizevpcassociation"],
+    Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/authorizevpcassociation"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -786,7 +786,7 @@ delete_health_check(Client, HealthCheckId, Input) ->
     delete_health_check(Client, HealthCheckId, Input, []).
 delete_health_check(Client, HealthCheckId, Input0, Options) ->
     Method = delete,
-    Path = ["/2013-04-01/healthcheck/", http_uri:encode(HealthCheckId), ""],
+    Path = ["/2013-04-01/healthcheck/", aws_util:encode_uri(HealthCheckId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -849,7 +849,7 @@ delete_hosted_zone(Client, Id, Input) ->
     delete_hosted_zone(Client, Id, Input, []).
 delete_hosted_zone(Client, Id, Input0, Options) ->
     Method = delete,
-    Path = ["/2013-04-01/hostedzone/", http_uri:encode(Id), ""],
+    Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -871,7 +871,7 @@ delete_query_logging_config(Client, Id, Input) ->
     delete_query_logging_config(Client, Id, Input, []).
 delete_query_logging_config(Client, Id, Input0, Options) ->
     Method = delete,
-    Path = ["/2013-04-01/queryloggingconfig/", http_uri:encode(Id), ""],
+    Path = ["/2013-04-01/queryloggingconfig/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -894,7 +894,7 @@ delete_reusable_delegation_set(Client, Id, Input) ->
     delete_reusable_delegation_set(Client, Id, Input, []).
 delete_reusable_delegation_set(Client, Id, Input0, Options) ->
     Method = delete,
-    Path = ["/2013-04-01/delegationset/", http_uri:encode(Id), ""],
+    Path = ["/2013-04-01/delegationset/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -925,7 +925,7 @@ delete_traffic_policy(Client, Id, Version, Input) ->
     delete_traffic_policy(Client, Id, Version, Input, []).
 delete_traffic_policy(Client, Id, Version, Input0, Options) ->
     Method = delete,
-    Path = ["/2013-04-01/trafficpolicy/", http_uri:encode(Id), "/", http_uri:encode(Version), ""],
+    Path = ["/2013-04-01/trafficpolicy/", aws_util:encode_uri(Id), "/", aws_util:encode_uri(Version), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -945,7 +945,7 @@ delete_traffic_policy_instance(Client, Id, Input) ->
     delete_traffic_policy_instance(Client, Id, Input, []).
 delete_traffic_policy_instance(Client, Id, Input0, Options) ->
     Method = delete,
-    Path = ["/2013-04-01/trafficpolicyinstance/", http_uri:encode(Id), ""],
+    Path = ["/2013-04-01/trafficpolicyinstance/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -973,7 +973,7 @@ delete_v_p_c_association_authorization(Client, HostedZoneId, Input) ->
     delete_v_p_c_association_authorization(Client, HostedZoneId, Input, []).
 delete_v_p_c_association_authorization(Client, HostedZoneId, Input0, Options) ->
     Method = post,
-    Path = ["/2013-04-01/hostedzone/", http_uri:encode(HostedZoneId), "/deauthorizevpcassociation"],
+    Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/deauthorizevpcassociation"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1015,7 +1015,7 @@ disassociate_v_p_c_from_hosted_zone(Client, HostedZoneId, Input) ->
     disassociate_v_p_c_from_hosted_zone(Client, HostedZoneId, Input, []).
 disassociate_v_p_c_from_hosted_zone(Client, HostedZoneId, Input0, Options) ->
     Method = post,
-    Path = ["/2013-04-01/hostedzone/", http_uri:encode(HostedZoneId), "/disassociatevpc"],
+    Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/disassociatevpc"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1041,7 +1041,7 @@ get_account_limit(Client, Type)
     get_account_limit(Client, Type, []).
 get_account_limit(Client, Type, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2013-04-01/accountlimit/", http_uri:encode(Type), ""],
+    Path = ["/2013-04-01/accountlimit/", aws_util:encode_uri(Type), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1067,7 +1067,7 @@ get_change(Client, Id)
     get_change(Client, Id, []).
 get_change(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2013-04-01/change/", http_uri:encode(Id), ""],
+    Path = ["/2013-04-01/change/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1140,7 +1140,7 @@ get_health_check(Client, HealthCheckId)
     get_health_check(Client, HealthCheckId, []).
 get_health_check(Client, HealthCheckId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2013-04-01/healthcheck/", http_uri:encode(HealthCheckId), ""],
+    Path = ["/2013-04-01/healthcheck/", aws_util:encode_uri(HealthCheckId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1171,7 +1171,7 @@ get_health_check_last_failure_reason(Client, HealthCheckId)
     get_health_check_last_failure_reason(Client, HealthCheckId, []).
 get_health_check_last_failure_reason(Client, HealthCheckId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2013-04-01/healthcheck/", http_uri:encode(HealthCheckId), "/lastfailurereason"],
+    Path = ["/2013-04-01/healthcheck/", aws_util:encode_uri(HealthCheckId), "/lastfailurereason"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1186,7 +1186,7 @@ get_health_check_status(Client, HealthCheckId)
     get_health_check_status(Client, HealthCheckId, []).
 get_health_check_status(Client, HealthCheckId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2013-04-01/healthcheck/", http_uri:encode(HealthCheckId), "/status"],
+    Path = ["/2013-04-01/healthcheck/", aws_util:encode_uri(HealthCheckId), "/status"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1202,7 +1202,7 @@ get_hosted_zone(Client, Id)
     get_hosted_zone(Client, Id, []).
 get_hosted_zone(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2013-04-01/hostedzone/", http_uri:encode(Id), ""],
+    Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1237,7 +1237,7 @@ get_hosted_zone_limit(Client, HostedZoneId, Type)
     get_hosted_zone_limit(Client, HostedZoneId, Type, []).
 get_hosted_zone_limit(Client, HostedZoneId, Type, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2013-04-01/hostedzonelimit/", http_uri:encode(HostedZoneId), "/", http_uri:encode(Type), ""],
+    Path = ["/2013-04-01/hostedzonelimit/", aws_util:encode_uri(HostedZoneId), "/", aws_util:encode_uri(Type), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1256,7 +1256,7 @@ get_query_logging_config(Client, Id)
     get_query_logging_config(Client, Id, []).
 get_query_logging_config(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2013-04-01/queryloggingconfig/", http_uri:encode(Id), ""],
+    Path = ["/2013-04-01/queryloggingconfig/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1272,7 +1272,7 @@ get_reusable_delegation_set(Client, Id)
     get_reusable_delegation_set(Client, Id, []).
 get_reusable_delegation_set(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2013-04-01/delegationset/", http_uri:encode(Id), ""],
+    Path = ["/2013-04-01/delegationset/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1291,7 +1291,7 @@ get_reusable_delegation_set_limit(Client, DelegationSetId, Type)
     get_reusable_delegation_set_limit(Client, DelegationSetId, Type, []).
 get_reusable_delegation_set_limit(Client, DelegationSetId, Type, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2013-04-01/reusabledelegationsetlimit/", http_uri:encode(DelegationSetId), "/", http_uri:encode(Type), ""],
+    Path = ["/2013-04-01/reusabledelegationsetlimit/", aws_util:encode_uri(DelegationSetId), "/", aws_util:encode_uri(Type), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1309,7 +1309,7 @@ get_traffic_policy(Client, Id, Version)
     get_traffic_policy(Client, Id, Version, []).
 get_traffic_policy(Client, Id, Version, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2013-04-01/trafficpolicy/", http_uri:encode(Id), "/", http_uri:encode(Version), ""],
+    Path = ["/2013-04-01/trafficpolicy/", aws_util:encode_uri(Id), "/", aws_util:encode_uri(Version), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1333,7 +1333,7 @@ get_traffic_policy_instance(Client, Id)
     get_traffic_policy_instance(Client, Id, []).
 get_traffic_policy_instance(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2013-04-01/trafficpolicyinstance/", http_uri:encode(Id), ""],
+    Path = ["/2013-04-01/trafficpolicyinstance/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1643,7 +1643,7 @@ list_resource_record_sets(Client, HostedZoneId, MaxItems, StartRecordIdentifier,
     list_resource_record_sets(Client, HostedZoneId, MaxItems, StartRecordIdentifier, StartRecordName, StartRecordType, []).
 list_resource_record_sets(Client, HostedZoneId, MaxItems, StartRecordIdentifier, StartRecordName, StartRecordType, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2013-04-01/hostedzone/", http_uri:encode(HostedZoneId), "/rrset"],
+    Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/rrset"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1689,7 +1689,7 @@ list_tags_for_resource(Client, ResourceId, ResourceType)
     list_tags_for_resource(Client, ResourceId, ResourceType, []).
 list_tags_for_resource(Client, ResourceId, ResourceType, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2013-04-01/tags/", http_uri:encode(ResourceType), "/", http_uri:encode(ResourceId), ""],
+    Path = ["/2013-04-01/tags/", aws_util:encode_uri(ResourceType), "/", aws_util:encode_uri(ResourceId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1706,7 +1706,7 @@ list_tags_for_resources(Client, ResourceType, Input) ->
     list_tags_for_resources(Client, ResourceType, Input, []).
 list_tags_for_resources(Client, ResourceType, Input0, Options) ->
     Method = post,
-    Path = ["/2013-04-01/tags/", http_uri:encode(ResourceType), ""],
+    Path = ["/2013-04-01/tags/", aws_util:encode_uri(ResourceType), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1852,7 +1852,7 @@ list_traffic_policy_versions(Client, Id, MaxItems, TrafficPolicyVersionMarker)
     list_traffic_policy_versions(Client, Id, MaxItems, TrafficPolicyVersionMarker, []).
 list_traffic_policy_versions(Client, Id, MaxItems, TrafficPolicyVersionMarker, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2013-04-01/trafficpolicies/", http_uri:encode(Id), "/versions"],
+    Path = ["/2013-04-01/trafficpolicies/", aws_util:encode_uri(Id), "/versions"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1877,7 +1877,7 @@ list_v_p_c_association_authorizations(Client, HostedZoneId, MaxResults, NextToke
     list_v_p_c_association_authorizations(Client, HostedZoneId, MaxResults, NextToken, []).
 list_v_p_c_association_authorizations(Client, HostedZoneId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2013-04-01/hostedzone/", http_uri:encode(HostedZoneId), "/authorizevpcassociation"],
+    Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/authorizevpcassociation"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1929,7 +1929,7 @@ update_health_check(Client, HealthCheckId, Input) ->
     update_health_check(Client, HealthCheckId, Input, []).
 update_health_check(Client, HealthCheckId, Input0, Options) ->
     Method = post,
-    Path = ["/2013-04-01/healthcheck/", http_uri:encode(HealthCheckId), ""],
+    Path = ["/2013-04-01/healthcheck/", aws_util:encode_uri(HealthCheckId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1945,7 +1945,7 @@ update_hosted_zone_comment(Client, Id, Input) ->
     update_hosted_zone_comment(Client, Id, Input, []).
 update_hosted_zone_comment(Client, Id, Input0, Options) ->
     Method = post,
-    Path = ["/2013-04-01/hostedzone/", http_uri:encode(Id), ""],
+    Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1961,7 +1961,7 @@ update_traffic_policy_comment(Client, Id, Version, Input) ->
     update_traffic_policy_comment(Client, Id, Version, Input, []).
 update_traffic_policy_comment(Client, Id, Version, Input0, Options) ->
     Method = post,
-    Path = ["/2013-04-01/trafficpolicy/", http_uri:encode(Id), "/", http_uri:encode(Version), ""],
+    Path = ["/2013-04-01/trafficpolicy/", aws_util:encode_uri(Id), "/", aws_util:encode_uri(Version), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1997,7 +1997,7 @@ update_traffic_policy_instance(Client, Id, Input) ->
     update_traffic_policy_instance(Client, Id, Input, []).
 update_traffic_policy_instance(Client, Id, Input0, Options) ->
     Method = post,
-    Path = ["/2013-04-01/trafficpolicyinstance/", http_uri:encode(Id), ""],
+    Path = ["/2013-04-01/trafficpolicyinstance/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],

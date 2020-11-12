@@ -86,7 +86,7 @@ delete_detector_model(Client, DetectorModelName, Input) ->
     delete_detector_model(Client, DetectorModelName, Input, []).
 delete_detector_model(Client, DetectorModelName, Input0, Options) ->
     Method = delete,
-    Path = ["/detector-models/", http_uri:encode(DetectorModelName), ""],
+    Path = ["/detector-models/", aws_util:encode_uri(DetectorModelName), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -102,7 +102,7 @@ delete_input(Client, InputName, Input) ->
     delete_input(Client, InputName, Input, []).
 delete_input(Client, InputName, Input0, Options) ->
     Method = delete,
-    Path = ["/inputs/", http_uri:encode(InputName), ""],
+    Path = ["/inputs/", aws_util:encode_uri(InputName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -122,7 +122,7 @@ describe_detector_model(Client, DetectorModelName, DetectorModelVersion)
     describe_detector_model(Client, DetectorModelName, DetectorModelVersion, []).
 describe_detector_model(Client, DetectorModelName, DetectorModelVersion, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/detector-models/", http_uri:encode(DetectorModelName), ""],
+    Path = ["/detector-models/", aws_util:encode_uri(DetectorModelName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -141,7 +141,7 @@ describe_input(Client, InputName)
     describe_input(Client, InputName, []).
 describe_input(Client, InputName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/inputs/", http_uri:encode(InputName), ""],
+    Path = ["/inputs/", aws_util:encode_uri(InputName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -173,7 +173,7 @@ list_detector_model_versions(Client, DetectorModelName, MaxResults, NextToken)
     list_detector_model_versions(Client, DetectorModelName, MaxResults, NextToken, []).
 list_detector_model_versions(Client, DetectorModelName, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/detector-models/", http_uri:encode(DetectorModelName), "/versions"],
+    Path = ["/detector-models/", aws_util:encode_uri(DetectorModelName), "/versions"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -315,7 +315,7 @@ update_detector_model(Client, DetectorModelName, Input) ->
     update_detector_model(Client, DetectorModelName, Input, []).
 update_detector_model(Client, DetectorModelName, Input0, Options) ->
     Method = post,
-    Path = ["/detector-models/", http_uri:encode(DetectorModelName), ""],
+    Path = ["/detector-models/", aws_util:encode_uri(DetectorModelName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -331,7 +331,7 @@ update_input(Client, InputName, Input) ->
     update_input(Client, InputName, Input, []).
 update_input(Client, InputName, Input0, Options) ->
     Method = put,
-    Path = ["/inputs/", http_uri:encode(InputName), ""],
+    Path = ["/inputs/", aws_util:encode_uri(InputName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],

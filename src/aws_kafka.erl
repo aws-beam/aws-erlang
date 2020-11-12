@@ -74,7 +74,7 @@ batch_associate_scram_secret(Client, ClusterArn, Input) ->
     batch_associate_scram_secret(Client, ClusterArn, Input, []).
 batch_associate_scram_secret(Client, ClusterArn, Input0, Options) ->
     Method = post,
-    Path = ["/v1/clusters/", http_uri:encode(ClusterArn), "/scram-secrets"],
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/scram-secrets"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -90,7 +90,7 @@ batch_disassociate_scram_secret(Client, ClusterArn, Input) ->
     batch_disassociate_scram_secret(Client, ClusterArn, Input, []).
 batch_disassociate_scram_secret(Client, ClusterArn, Input0, Options) ->
     Method = patch,
-    Path = ["/v1/clusters/", http_uri:encode(ClusterArn), "/scram-secrets"],
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/scram-secrets"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -139,7 +139,7 @@ delete_cluster(Client, ClusterArn, Input) ->
     delete_cluster(Client, ClusterArn, Input, []).
 delete_cluster(Client, ClusterArn, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/clusters/", http_uri:encode(ClusterArn), ""],
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -158,7 +158,7 @@ delete_configuration(Client, Arn, Input) ->
     delete_configuration(Client, Arn, Input, []).
 delete_configuration(Client, Arn, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/configurations/", http_uri:encode(Arn), ""],
+    Path = ["/v1/configurations/", aws_util:encode_uri(Arn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -176,7 +176,7 @@ describe_cluster(Client, ClusterArn)
     describe_cluster(Client, ClusterArn, []).
 describe_cluster(Client, ClusterArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/clusters/", http_uri:encode(ClusterArn), ""],
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -191,7 +191,7 @@ describe_cluster_operation(Client, ClusterOperationArn)
     describe_cluster_operation(Client, ClusterOperationArn, []).
 describe_cluster_operation(Client, ClusterOperationArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/operations/", http_uri:encode(ClusterOperationArn), ""],
+    Path = ["/v1/operations/", aws_util:encode_uri(ClusterOperationArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -206,7 +206,7 @@ describe_configuration(Client, Arn)
     describe_configuration(Client, Arn, []).
 describe_configuration(Client, Arn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/configurations/", http_uri:encode(Arn), ""],
+    Path = ["/v1/configurations/", aws_util:encode_uri(Arn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -221,7 +221,7 @@ describe_configuration_revision(Client, Arn, Revision)
     describe_configuration_revision(Client, Arn, Revision, []).
 describe_configuration_revision(Client, Arn, Revision, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/configurations/", http_uri:encode(Arn), "/revisions/", http_uri:encode(Revision), ""],
+    Path = ["/v1/configurations/", aws_util:encode_uri(Arn), "/revisions/", aws_util:encode_uri(Revision), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -236,7 +236,7 @@ get_bootstrap_brokers(Client, ClusterArn)
     get_bootstrap_brokers(Client, ClusterArn, []).
 get_bootstrap_brokers(Client, ClusterArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/clusters/", http_uri:encode(ClusterArn), "/bootstrap-brokers"],
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/bootstrap-brokers"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -272,7 +272,7 @@ list_cluster_operations(Client, ClusterArn, MaxResults, NextToken)
     list_cluster_operations(Client, ClusterArn, MaxResults, NextToken, []).
 list_cluster_operations(Client, ClusterArn, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/clusters/", http_uri:encode(ClusterArn), "/operations"],
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/operations"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -313,7 +313,7 @@ list_configuration_revisions(Client, Arn, MaxResults, NextToken)
     list_configuration_revisions(Client, Arn, MaxResults, NextToken, []).
 list_configuration_revisions(Client, Arn, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/configurations/", http_uri:encode(Arn), "/revisions"],
+    Path = ["/v1/configurations/", aws_util:encode_uri(Arn), "/revisions"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -373,7 +373,7 @@ list_nodes(Client, ClusterArn, MaxResults, NextToken)
     list_nodes(Client, ClusterArn, MaxResults, NextToken, []).
 list_nodes(Client, ClusterArn, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/clusters/", http_uri:encode(ClusterArn), "/nodes"],
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/nodes"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -394,7 +394,7 @@ list_scram_secrets(Client, ClusterArn, MaxResults, NextToken)
     list_scram_secrets(Client, ClusterArn, MaxResults, NextToken, []).
 list_scram_secrets(Client, ClusterArn, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/clusters/", http_uri:encode(ClusterArn), "/scram-secrets"],
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/scram-secrets"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -414,7 +414,7 @@ list_tags_for_resource(Client, ResourceArn)
     list_tags_for_resource(Client, ResourceArn, []).
 list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -428,7 +428,7 @@ reboot_broker(Client, ClusterArn, Input) ->
     reboot_broker(Client, ClusterArn, Input, []).
 reboot_broker(Client, ClusterArn, Input0, Options) ->
     Method = put,
-    Path = ["/v1/clusters/", http_uri:encode(ClusterArn), "/reboot-broker"],
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/reboot-broker"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -444,7 +444,7 @@ tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/v1/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -461,7 +461,7 @@ untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -481,7 +481,7 @@ update_broker_count(Client, ClusterArn, Input) ->
     update_broker_count(Client, ClusterArn, Input, []).
 update_broker_count(Client, ClusterArn, Input0, Options) ->
     Method = put,
-    Path = ["/v1/clusters/", http_uri:encode(ClusterArn), "/nodes/count"],
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/nodes/count"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -497,7 +497,7 @@ update_broker_storage(Client, ClusterArn, Input) ->
     update_broker_storage(Client, ClusterArn, Input, []).
 update_broker_storage(Client, ClusterArn, Input0, Options) ->
     Method = put,
-    Path = ["/v1/clusters/", http_uri:encode(ClusterArn), "/nodes/storage"],
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/nodes/storage"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -514,7 +514,7 @@ update_cluster_configuration(Client, ClusterArn, Input) ->
     update_cluster_configuration(Client, ClusterArn, Input, []).
 update_cluster_configuration(Client, ClusterArn, Input0, Options) ->
     Method = put,
-    Path = ["/v1/clusters/", http_uri:encode(ClusterArn), "/configuration"],
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/configuration"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -530,7 +530,7 @@ update_cluster_kafka_version(Client, ClusterArn, Input) ->
     update_cluster_kafka_version(Client, ClusterArn, Input, []).
 update_cluster_kafka_version(Client, ClusterArn, Input0, Options) ->
     Method = put,
-    Path = ["/v1/clusters/", http_uri:encode(ClusterArn), "/version"],
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/version"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -548,7 +548,7 @@ update_configuration(Client, Arn, Input) ->
     update_configuration(Client, Arn, Input, []).
 update_configuration(Client, Arn, Input0, Options) ->
     Method = put,
-    Path = ["/v1/configurations/", http_uri:encode(Arn), ""],
+    Path = ["/v1/configurations/", aws_util:encode_uri(Arn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -568,7 +568,7 @@ update_monitoring(Client, ClusterArn, Input) ->
     update_monitoring(Client, ClusterArn, Input, []).
 update_monitoring(Client, ClusterArn, Input0, Options) ->
     Method = put,
-    Path = ["/v1/clusters/", http_uri:encode(ClusterArn), "/monitoring"],
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/monitoring"],
     SuccessStatusCode = 200,
 
     Headers = [],

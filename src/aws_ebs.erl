@@ -58,7 +58,7 @@ complete_snapshot(Client, SnapshotId, Input) ->
     complete_snapshot(Client, SnapshotId, Input, []).
 complete_snapshot(Client, SnapshotId, Input0, Options) ->
     Method = post,
-    Path = ["/snapshots/completion/", http_uri:encode(SnapshotId), ""],
+    Path = ["/snapshots/completion/", aws_util:encode_uri(SnapshotId), ""],
     SuccessStatusCode = 202,
 
     HeadersMapping = [
@@ -81,7 +81,7 @@ get_snapshot_block(Client, BlockIndex, SnapshotId, BlockToken)
     get_snapshot_block(Client, BlockIndex, SnapshotId, BlockToken, []).
 get_snapshot_block(Client, BlockIndex, SnapshotId, BlockToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/snapshots/", http_uri:encode(SnapshotId), "/blocks/", http_uri:encode(BlockIndex), ""],
+    Path = ["/snapshots/", aws_util:encode_uri(SnapshotId), "/blocks/", aws_util:encode_uri(BlockIndex), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -119,7 +119,7 @@ list_changed_blocks(Client, SecondSnapshotId, FirstSnapshotId, MaxResults, NextT
     list_changed_blocks(Client, SecondSnapshotId, FirstSnapshotId, MaxResults, NextToken, StartingBlockIndex, []).
 list_changed_blocks(Client, SecondSnapshotId, FirstSnapshotId, MaxResults, NextToken, StartingBlockIndex, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/snapshots/", http_uri:encode(SecondSnapshotId), "/changedblocks"],
+    Path = ["/snapshots/", aws_util:encode_uri(SecondSnapshotId), "/changedblocks"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -142,7 +142,7 @@ list_snapshot_blocks(Client, SnapshotId, MaxResults, NextToken, StartingBlockInd
     list_snapshot_blocks(Client, SnapshotId, MaxResults, NextToken, StartingBlockIndex, []).
 list_snapshot_blocks(Client, SnapshotId, MaxResults, NextToken, StartingBlockIndex, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/snapshots/", http_uri:encode(SnapshotId), "/blocks"],
+    Path = ["/snapshots/", aws_util:encode_uri(SnapshotId), "/blocks"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -167,7 +167,7 @@ put_snapshot_block(Client, BlockIndex, SnapshotId, Input) ->
     put_snapshot_block(Client, BlockIndex, SnapshotId, Input, []).
 put_snapshot_block(Client, BlockIndex, SnapshotId, Input0, Options) ->
     Method = put,
-    Path = ["/snapshots/", http_uri:encode(SnapshotId), "/blocks/", http_uri:encode(BlockIndex), ""],
+    Path = ["/snapshots/", aws_util:encode_uri(SnapshotId), "/blocks/", aws_util:encode_uri(BlockIndex), ""],
     SuccessStatusCode = 201,
 
     HeadersMapping = [

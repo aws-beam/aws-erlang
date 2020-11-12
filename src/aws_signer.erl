@@ -52,7 +52,7 @@ cancel_signing_profile(Client, ProfileName, Input) ->
     cancel_signing_profile(Client, ProfileName, Input, []).
 cancel_signing_profile(Client, ProfileName, Input0, Options) ->
     Method = delete,
-    Path = ["/signing-profiles/", http_uri:encode(ProfileName), ""],
+    Path = ["/signing-profiles/", aws_util:encode_uri(ProfileName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -72,7 +72,7 @@ describe_signing_job(Client, JobId)
     describe_signing_job(Client, JobId, []).
 describe_signing_job(Client, JobId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/signing-jobs/", http_uri:encode(JobId), ""],
+    Path = ["/signing-jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -87,7 +87,7 @@ get_signing_platform(Client, PlatformId)
     get_signing_platform(Client, PlatformId, []).
 get_signing_platform(Client, PlatformId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/signing-platforms/", http_uri:encode(PlatformId), ""],
+    Path = ["/signing-platforms/", aws_util:encode_uri(PlatformId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -102,7 +102,7 @@ get_signing_profile(Client, ProfileName)
     get_signing_profile(Client, ProfileName, []).
 get_signing_profile(Client, ProfileName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/signing-profiles/", http_uri:encode(ProfileName), ""],
+    Path = ["/signing-profiles/", aws_util:encode_uri(ProfileName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -209,7 +209,7 @@ list_tags_for_resource(Client, ResourceArn)
     list_tags_for_resource(Client, ResourceArn, []).
 list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -227,7 +227,7 @@ put_signing_profile(Client, ProfileName, Input) ->
     put_signing_profile(Client, ProfileName, Input, []).
 put_signing_profile(Client, ProfileName, Input0, Options) ->
     Method = put,
-    Path = ["/signing-profiles/", http_uri:encode(ProfileName), ""],
+    Path = ["/signing-profiles/", aws_util:encode_uri(ProfileName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -287,7 +287,7 @@ tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -305,7 +305,7 @@ untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],

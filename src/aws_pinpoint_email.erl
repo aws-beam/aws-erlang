@@ -168,7 +168,7 @@ create_configuration_set_event_destination(Client, ConfigurationSetName, Input) 
     create_configuration_set_event_destination(Client, ConfigurationSetName, Input, []).
 create_configuration_set_event_destination(Client, ConfigurationSetName, Input0, Options) ->
     Method = post,
-    Path = ["/v1/email/configuration-sets/", http_uri:encode(ConfigurationSetName), "/event-destinations"],
+    Path = ["/v1/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/event-destinations"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -270,7 +270,7 @@ delete_configuration_set(Client, ConfigurationSetName, Input) ->
     delete_configuration_set(Client, ConfigurationSetName, Input, []).
 delete_configuration_set(Client, ConfigurationSetName, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/email/configuration-sets/", http_uri:encode(ConfigurationSetName), ""],
+    Path = ["/v1/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -293,7 +293,7 @@ delete_configuration_set_event_destination(Client, ConfigurationSetName, EventDe
     delete_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input, []).
 delete_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/email/configuration-sets/", http_uri:encode(ConfigurationSetName), "/event-destinations/", http_uri:encode(EventDestinationName), ""],
+    Path = ["/v1/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/event-destinations/", aws_util:encode_uri(EventDestinationName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -309,7 +309,7 @@ delete_dedicated_ip_pool(Client, PoolName, Input) ->
     delete_dedicated_ip_pool(Client, PoolName, Input, []).
 delete_dedicated_ip_pool(Client, PoolName, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/email/dedicated-ip-pools/", http_uri:encode(PoolName), ""],
+    Path = ["/v1/email/dedicated-ip-pools/", aws_util:encode_uri(PoolName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -328,7 +328,7 @@ delete_email_identity(Client, EmailIdentity, Input) ->
     delete_email_identity(Client, EmailIdentity, Input, []).
 delete_email_identity(Client, EmailIdentity, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/email/identities/", http_uri:encode(EmailIdentity), ""],
+    Path = ["/v1/email/identities/", aws_util:encode_uri(EmailIdentity), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -389,7 +389,7 @@ get_configuration_set(Client, ConfigurationSetName)
     get_configuration_set(Client, ConfigurationSetName, []).
 get_configuration_set(Client, ConfigurationSetName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/email/configuration-sets/", http_uri:encode(ConfigurationSetName), ""],
+    Path = ["/v1/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -412,7 +412,7 @@ get_configuration_set_event_destinations(Client, ConfigurationSetName)
     get_configuration_set_event_destinations(Client, ConfigurationSetName, []).
 get_configuration_set_event_destinations(Client, ConfigurationSetName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/email/configuration-sets/", http_uri:encode(ConfigurationSetName), "/event-destinations"],
+    Path = ["/v1/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/event-destinations"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -429,7 +429,7 @@ get_dedicated_ip(Client, Ip)
     get_dedicated_ip(Client, Ip, []).
 get_dedicated_ip(Client, Ip, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/email/dedicated-ips/", http_uri:encode(Ip), ""],
+    Path = ["/v1/email/dedicated-ips/", aws_util:encode_uri(Ip), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -492,7 +492,7 @@ get_deliverability_test_report(Client, ReportId)
     get_deliverability_test_report(Client, ReportId, []).
 get_deliverability_test_report(Client, ReportId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/email/deliverability-dashboard/test-reports/", http_uri:encode(ReportId), ""],
+    Path = ["/v1/email/deliverability-dashboard/test-reports/", aws_util:encode_uri(ReportId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -511,7 +511,7 @@ get_domain_deliverability_campaign(Client, CampaignId)
     get_domain_deliverability_campaign(Client, CampaignId, []).
 get_domain_deliverability_campaign(Client, CampaignId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/email/deliverability-dashboard/campaigns/", http_uri:encode(CampaignId), ""],
+    Path = ["/v1/email/deliverability-dashboard/campaigns/", aws_util:encode_uri(CampaignId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -527,7 +527,7 @@ get_domain_statistics_report(Client, Domain, EndDate, StartDate)
     get_domain_statistics_report(Client, Domain, EndDate, StartDate, []).
 get_domain_statistics_report(Client, Domain, EndDate, StartDate, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/email/deliverability-dashboard/statistics-report/", http_uri:encode(Domain), ""],
+    Path = ["/v1/email/deliverability-dashboard/statistics-report/", aws_util:encode_uri(Domain), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -549,7 +549,7 @@ get_email_identity(Client, EmailIdentity)
     get_email_identity(Client, EmailIdentity, []).
 get_email_identity(Client, EmailIdentity, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/email/identities/", http_uri:encode(EmailIdentity), ""],
+    Path = ["/v1/email/identities/", aws_util:encode_uri(EmailIdentity), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -640,7 +640,7 @@ list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, NextToke
     list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, NextToken, PageSize, StartDate, []).
 list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, NextToken, PageSize, StartDate, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/email/deliverability-dashboard/domains/", http_uri:encode(SubscribedDomain), "/campaigns"],
+    Path = ["/v1/email/deliverability-dashboard/domains/", aws_util:encode_uri(SubscribedDomain), "/campaigns"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -747,7 +747,7 @@ put_configuration_set_delivery_options(Client, ConfigurationSetName, Input) ->
     put_configuration_set_delivery_options(Client, ConfigurationSetName, Input, []).
 put_configuration_set_delivery_options(Client, ConfigurationSetName, Input0, Options) ->
     Method = put,
-    Path = ["/v1/email/configuration-sets/", http_uri:encode(ConfigurationSetName), "/delivery-options"],
+    Path = ["/v1/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/delivery-options"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -764,7 +764,7 @@ put_configuration_set_reputation_options(Client, ConfigurationSetName, Input) ->
     put_configuration_set_reputation_options(Client, ConfigurationSetName, Input, []).
 put_configuration_set_reputation_options(Client, ConfigurationSetName, Input0, Options) ->
     Method = put,
-    Path = ["/v1/email/configuration-sets/", http_uri:encode(ConfigurationSetName), "/reputation-options"],
+    Path = ["/v1/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/reputation-options"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -781,7 +781,7 @@ put_configuration_set_sending_options(Client, ConfigurationSetName, Input) ->
     put_configuration_set_sending_options(Client, ConfigurationSetName, Input, []).
 put_configuration_set_sending_options(Client, ConfigurationSetName, Input0, Options) ->
     Method = put,
-    Path = ["/v1/email/configuration-sets/", http_uri:encode(ConfigurationSetName), "/sending"],
+    Path = ["/v1/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/sending"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -798,7 +798,7 @@ put_configuration_set_tracking_options(Client, ConfigurationSetName, Input) ->
     put_configuration_set_tracking_options(Client, ConfigurationSetName, Input, []).
 put_configuration_set_tracking_options(Client, ConfigurationSetName, Input0, Options) ->
     Method = put,
-    Path = ["/v1/email/configuration-sets/", http_uri:encode(ConfigurationSetName), "/tracking-options"],
+    Path = ["/v1/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/tracking-options"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -820,7 +820,7 @@ put_dedicated_ip_in_pool(Client, Ip, Input) ->
     put_dedicated_ip_in_pool(Client, Ip, Input, []).
 put_dedicated_ip_in_pool(Client, Ip, Input0, Options) ->
     Method = put,
-    Path = ["/v1/email/dedicated-ips/", http_uri:encode(Ip), "/pool"],
+    Path = ["/v1/email/dedicated-ips/", aws_util:encode_uri(Ip), "/pool"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -836,7 +836,7 @@ put_dedicated_ip_warmup_attributes(Client, Ip, Input) ->
     put_dedicated_ip_warmup_attributes(Client, Ip, Input, []).
 put_dedicated_ip_warmup_attributes(Client, Ip, Input0, Options) ->
     Method = put,
-    Path = ["/v1/email/dedicated-ips/", http_uri:encode(Ip), "/warmup"],
+    Path = ["/v1/email/dedicated-ips/", aws_util:encode_uri(Ip), "/warmup"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -879,7 +879,7 @@ put_email_identity_dkim_attributes(Client, EmailIdentity, Input) ->
     put_email_identity_dkim_attributes(Client, EmailIdentity, Input, []).
 put_email_identity_dkim_attributes(Client, EmailIdentity, Input0, Options) ->
     Method = put,
-    Path = ["/v1/email/identities/", http_uri:encode(EmailIdentity), "/dkim"],
+    Path = ["/v1/email/identities/", aws_util:encode_uri(EmailIdentity), "/dkim"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -910,7 +910,7 @@ put_email_identity_feedback_attributes(Client, EmailIdentity, Input) ->
     put_email_identity_feedback_attributes(Client, EmailIdentity, Input, []).
 put_email_identity_feedback_attributes(Client, EmailIdentity, Input0, Options) ->
     Method = put,
-    Path = ["/v1/email/identities/", http_uri:encode(EmailIdentity), "/feedback"],
+    Path = ["/v1/email/identities/", aws_util:encode_uri(EmailIdentity), "/feedback"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -927,7 +927,7 @@ put_email_identity_mail_from_attributes(Client, EmailIdentity, Input) ->
     put_email_identity_mail_from_attributes(Client, EmailIdentity, Input, []).
 put_email_identity_mail_from_attributes(Client, EmailIdentity, Input0, Options) ->
     Method = put,
-    Path = ["/v1/email/identities/", http_uri:encode(EmailIdentity), "/mail-from"],
+    Path = ["/v1/email/identities/", aws_util:encode_uri(EmailIdentity), "/mail-from"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1025,7 +1025,7 @@ update_configuration_set_event_destination(Client, ConfigurationSetName, EventDe
     update_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input, []).
 update_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input0, Options) ->
     Method = put,
-    Path = ["/v1/email/configuration-sets/", http_uri:encode(ConfigurationSetName), "/event-destinations/", http_uri:encode(EventDestinationName), ""],
+    Path = ["/v1/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/event-destinations/", aws_util:encode_uri(EventDestinationName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],

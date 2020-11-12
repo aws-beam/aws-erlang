@@ -299,7 +299,7 @@ create_tags(Client, FileSystemId, Input) ->
     create_tags(Client, FileSystemId, Input, []).
 create_tags(Client, FileSystemId, Input0, Options) ->
     Method = post,
-    Path = ["/2015-02-01/create-tags/", http_uri:encode(FileSystemId), ""],
+    Path = ["/2015-02-01/create-tags/", aws_util:encode_uri(FileSystemId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -322,7 +322,7 @@ delete_access_point(Client, AccessPointId, Input) ->
     delete_access_point(Client, AccessPointId, Input, []).
 delete_access_point(Client, AccessPointId, Input0, Options) ->
     Method = delete,
-    Path = ["/2015-02-01/access-points/", http_uri:encode(AccessPointId), ""],
+    Path = ["/2015-02-01/access-points/", aws_util:encode_uri(AccessPointId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -355,7 +355,7 @@ delete_file_system(Client, FileSystemId, Input) ->
     delete_file_system(Client, FileSystemId, Input, []).
 delete_file_system(Client, FileSystemId, Input0, Options) ->
     Method = delete,
-    Path = ["/2015-02-01/file-systems/", http_uri:encode(FileSystemId), ""],
+    Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(FileSystemId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -378,7 +378,7 @@ delete_file_system_policy(Client, FileSystemId, Input) ->
     delete_file_system_policy(Client, FileSystemId, Input, []).
 delete_file_system_policy(Client, FileSystemId, Input0, Options) ->
     Method = delete,
-    Path = ["/2015-02-01/file-systems/", http_uri:encode(FileSystemId), "/policy"],
+    Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(FileSystemId), "/policy"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -421,7 +421,7 @@ delete_mount_target(Client, MountTargetId, Input) ->
     delete_mount_target(Client, MountTargetId, Input, []).
 delete_mount_target(Client, MountTargetId, Input0, Options) ->
     Method = delete,
-    Path = ["/2015-02-01/mount-targets/", http_uri:encode(MountTargetId), ""],
+    Path = ["/2015-02-01/mount-targets/", aws_util:encode_uri(MountTargetId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -445,7 +445,7 @@ delete_tags(Client, FileSystemId, Input) ->
     delete_tags(Client, FileSystemId, Input, []).
 delete_tags(Client, FileSystemId, Input0, Options) ->
     Method = post,
-    Path = ["/2015-02-01/delete-tags/", http_uri:encode(FileSystemId), ""],
+    Path = ["/2015-02-01/delete-tags/", aws_util:encode_uri(FileSystemId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -492,7 +492,7 @@ describe_backup_policy(Client, FileSystemId)
     describe_backup_policy(Client, FileSystemId, []).
 describe_backup_policy(Client, FileSystemId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2015-02-01/file-systems/", http_uri:encode(FileSystemId), "/backup-policy"],
+    Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(FileSystemId), "/backup-policy"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -510,7 +510,7 @@ describe_file_system_policy(Client, FileSystemId)
     describe_file_system_policy(Client, FileSystemId, []).
 describe_file_system_policy(Client, FileSystemId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2015-02-01/file-systems/", http_uri:encode(FileSystemId), "/policy"],
+    Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(FileSystemId), "/policy"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -581,7 +581,7 @@ describe_lifecycle_configuration(Client, FileSystemId)
     describe_lifecycle_configuration(Client, FileSystemId, []).
 describe_lifecycle_configuration(Client, FileSystemId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2015-02-01/file-systems/", http_uri:encode(FileSystemId), "/lifecycle-configuration"],
+    Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(FileSystemId), "/lifecycle-configuration"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -609,7 +609,7 @@ describe_mount_target_security_groups(Client, MountTargetId)
     describe_mount_target_security_groups(Client, MountTargetId, []).
 describe_mount_target_security_groups(Client, MountTargetId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2015-02-01/mount-targets/", http_uri:encode(MountTargetId), "/security-groups"],
+    Path = ["/2015-02-01/mount-targets/", aws_util:encode_uri(MountTargetId), "/security-groups"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -663,7 +663,7 @@ describe_tags(Client, FileSystemId, Marker, MaxItems)
     describe_tags(Client, FileSystemId, Marker, MaxItems, []).
 describe_tags(Client, FileSystemId, Marker, MaxItems, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2015-02-01/tags/", http_uri:encode(FileSystemId), "/"],
+    Path = ["/2015-02-01/tags/", aws_util:encode_uri(FileSystemId), "/"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -689,7 +689,7 @@ list_tags_for_resource(Client, ResourceId, MaxResults, NextToken)
     list_tags_for_resource(Client, ResourceId, MaxResults, NextToken, []).
 list_tags_for_resource(Client, ResourceId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2015-02-01/resource-tags/", http_uri:encode(ResourceId), ""],
+    Path = ["/2015-02-01/resource-tags/", aws_util:encode_uri(ResourceId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -726,7 +726,7 @@ modify_mount_target_security_groups(Client, MountTargetId, Input) ->
     modify_mount_target_security_groups(Client, MountTargetId, Input, []).
 modify_mount_target_security_groups(Client, MountTargetId, Input0, Options) ->
     Method = put,
-    Path = ["/2015-02-01/mount-targets/", http_uri:encode(MountTargetId), "/security-groups"],
+    Path = ["/2015-02-01/mount-targets/", aws_util:encode_uri(MountTargetId), "/security-groups"],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -744,7 +744,7 @@ put_backup_policy(Client, FileSystemId, Input) ->
     put_backup_policy(Client, FileSystemId, Input, []).
 put_backup_policy(Client, FileSystemId, Input0, Options) ->
     Method = put,
-    Path = ["/2015-02-01/file-systems/", http_uri:encode(FileSystemId), "/backup-policy"],
+    Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(FileSystemId), "/backup-policy"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -771,7 +771,7 @@ put_file_system_policy(Client, FileSystemId, Input) ->
     put_file_system_policy(Client, FileSystemId, Input, []).
 put_file_system_policy(Client, FileSystemId, Input0, Options) ->
     Method = put,
-    Path = ["/2015-02-01/file-systems/", http_uri:encode(FileSystemId), "/policy"],
+    Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(FileSystemId), "/policy"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -817,7 +817,7 @@ put_lifecycle_configuration(Client, FileSystemId, Input) ->
     put_lifecycle_configuration(Client, FileSystemId, Input, []).
 put_lifecycle_configuration(Client, FileSystemId, Input0, Options) ->
     Method = put,
-    Path = ["/2015-02-01/file-systems/", http_uri:encode(FileSystemId), "/lifecycle-configuration"],
+    Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(FileSystemId), "/lifecycle-configuration"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -839,7 +839,7 @@ tag_resource(Client, ResourceId, Input) ->
     tag_resource(Client, ResourceId, Input, []).
 tag_resource(Client, ResourceId, Input0, Options) ->
     Method = post,
-    Path = ["/2015-02-01/resource-tags/", http_uri:encode(ResourceId), ""],
+    Path = ["/2015-02-01/resource-tags/", aws_util:encode_uri(ResourceId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -861,7 +861,7 @@ untag_resource(Client, ResourceId, Input) ->
     untag_resource(Client, ResourceId, Input, []).
 untag_resource(Client, ResourceId, Input0, Options) ->
     Method = delete,
-    Path = ["/2015-02-01/resource-tags/", http_uri:encode(ResourceId), ""],
+    Path = ["/2015-02-01/resource-tags/", aws_util:encode_uri(ResourceId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -879,7 +879,7 @@ update_file_system(Client, FileSystemId, Input) ->
     update_file_system(Client, FileSystemId, Input, []).
 update_file_system(Client, FileSystemId, Input0, Options) ->
     Method = put,
-    Path = ["/2015-02-01/file-systems/", http_uri:encode(FileSystemId), ""],
+    Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(FileSystemId), ""],
     SuccessStatusCode = 202,
 
     Headers = [],

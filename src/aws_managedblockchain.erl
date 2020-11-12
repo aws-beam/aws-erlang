@@ -64,7 +64,7 @@ create_member(Client, NetworkId, Input) ->
     create_member(Client, NetworkId, Input, []).
 create_member(Client, NetworkId, Input0, Options) ->
     Method = post,
-    Path = ["/networks/", http_uri:encode(NetworkId), "/members"],
+    Path = ["/networks/", aws_util:encode_uri(NetworkId), "/members"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -96,7 +96,7 @@ create_node(Client, MemberId, NetworkId, Input) ->
     create_node(Client, MemberId, NetworkId, Input, []).
 create_node(Client, MemberId, NetworkId, Input0, Options) ->
     Method = post,
-    Path = ["/networks/", http_uri:encode(NetworkId), "/members/", http_uri:encode(MemberId), "/nodes"],
+    Path = ["/networks/", aws_util:encode_uri(NetworkId), "/members/", aws_util:encode_uri(MemberId), "/nodes"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -116,7 +116,7 @@ create_proposal(Client, NetworkId, Input) ->
     create_proposal(Client, NetworkId, Input, []).
 create_proposal(Client, NetworkId, Input0, Options) ->
     Method = post,
-    Path = ["/networks/", http_uri:encode(NetworkId), "/proposals"],
+    Path = ["/networks/", aws_util:encode_uri(NetworkId), "/proposals"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -140,7 +140,7 @@ delete_member(Client, MemberId, NetworkId, Input) ->
     delete_member(Client, MemberId, NetworkId, Input, []).
 delete_member(Client, MemberId, NetworkId, Input0, Options) ->
     Method = delete,
-    Path = ["/networks/", http_uri:encode(NetworkId), "/members/", http_uri:encode(MemberId), ""],
+    Path = ["/networks/", aws_util:encode_uri(NetworkId), "/members/", aws_util:encode_uri(MemberId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -158,7 +158,7 @@ delete_node(Client, MemberId, NetworkId, NodeId, Input) ->
     delete_node(Client, MemberId, NetworkId, NodeId, Input, []).
 delete_node(Client, MemberId, NetworkId, NodeId, Input0, Options) ->
     Method = delete,
-    Path = ["/networks/", http_uri:encode(NetworkId), "/members/", http_uri:encode(MemberId), "/nodes/", http_uri:encode(NodeId), ""],
+    Path = ["/networks/", aws_util:encode_uri(NetworkId), "/members/", aws_util:encode_uri(MemberId), "/nodes/", aws_util:encode_uri(NodeId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -175,7 +175,7 @@ get_member(Client, MemberId, NetworkId)
     get_member(Client, MemberId, NetworkId, []).
 get_member(Client, MemberId, NetworkId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/networks/", http_uri:encode(NetworkId), "/members/", http_uri:encode(MemberId), ""],
+    Path = ["/networks/", aws_util:encode_uri(NetworkId), "/members/", aws_util:encode_uri(MemberId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -190,7 +190,7 @@ get_network(Client, NetworkId)
     get_network(Client, NetworkId, []).
 get_network(Client, NetworkId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/networks/", http_uri:encode(NetworkId), ""],
+    Path = ["/networks/", aws_util:encode_uri(NetworkId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -205,7 +205,7 @@ get_node(Client, MemberId, NetworkId, NodeId)
     get_node(Client, MemberId, NetworkId, NodeId, []).
 get_node(Client, MemberId, NetworkId, NodeId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/networks/", http_uri:encode(NetworkId), "/members/", http_uri:encode(MemberId), "/nodes/", http_uri:encode(NodeId), ""],
+    Path = ["/networks/", aws_util:encode_uri(NetworkId), "/members/", aws_util:encode_uri(MemberId), "/nodes/", aws_util:encode_uri(NodeId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -220,7 +220,7 @@ get_proposal(Client, NetworkId, ProposalId)
     get_proposal(Client, NetworkId, ProposalId, []).
 get_proposal(Client, NetworkId, ProposalId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/networks/", http_uri:encode(NetworkId), "/proposals/", http_uri:encode(ProposalId), ""],
+    Path = ["/networks/", aws_util:encode_uri(NetworkId), "/proposals/", aws_util:encode_uri(ProposalId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -256,7 +256,7 @@ list_members(Client, NetworkId, IsOwned, MaxResults, Name, NextToken, Status)
     list_members(Client, NetworkId, IsOwned, MaxResults, Name, NextToken, Status, []).
 list_members(Client, NetworkId, IsOwned, MaxResults, Name, NextToken, Status, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/networks/", http_uri:encode(NetworkId), "/members"],
+    Path = ["/networks/", aws_util:encode_uri(NetworkId), "/members"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -303,7 +303,7 @@ list_nodes(Client, MemberId, NetworkId, MaxResults, NextToken, Status)
     list_nodes(Client, MemberId, NetworkId, MaxResults, NextToken, Status, []).
 list_nodes(Client, MemberId, NetworkId, MaxResults, NextToken, Status, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/networks/", http_uri:encode(NetworkId), "/members/", http_uri:encode(MemberId), "/nodes"],
+    Path = ["/networks/", aws_util:encode_uri(NetworkId), "/members/", aws_util:encode_uri(MemberId), "/nodes"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -326,7 +326,7 @@ list_proposal_votes(Client, NetworkId, ProposalId, MaxResults, NextToken)
     list_proposal_votes(Client, NetworkId, ProposalId, MaxResults, NextToken, []).
 list_proposal_votes(Client, NetworkId, ProposalId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/networks/", http_uri:encode(NetworkId), "/proposals/", http_uri:encode(ProposalId), "/votes"],
+    Path = ["/networks/", aws_util:encode_uri(NetworkId), "/proposals/", aws_util:encode_uri(ProposalId), "/votes"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -346,7 +346,7 @@ list_proposals(Client, NetworkId, MaxResults, NextToken)
     list_proposals(Client, NetworkId, MaxResults, NextToken, []).
 list_proposals(Client, NetworkId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/networks/", http_uri:encode(NetworkId), "/proposals"],
+    Path = ["/networks/", aws_util:encode_uri(NetworkId), "/proposals"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -368,7 +368,7 @@ reject_invitation(Client, InvitationId, Input) ->
     reject_invitation(Client, InvitationId, Input, []).
 reject_invitation(Client, InvitationId, Input0, Options) ->
     Method = delete,
-    Path = ["/invitations/", http_uri:encode(InvitationId), ""],
+    Path = ["/invitations/", aws_util:encode_uri(InvitationId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -384,7 +384,7 @@ update_member(Client, MemberId, NetworkId, Input) ->
     update_member(Client, MemberId, NetworkId, Input, []).
 update_member(Client, MemberId, NetworkId, Input0, Options) ->
     Method = patch,
-    Path = ["/networks/", http_uri:encode(NetworkId), "/members/", http_uri:encode(MemberId), ""],
+    Path = ["/networks/", aws_util:encode_uri(NetworkId), "/members/", aws_util:encode_uri(MemberId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -400,7 +400,7 @@ update_node(Client, MemberId, NetworkId, NodeId, Input) ->
     update_node(Client, MemberId, NetworkId, NodeId, Input, []).
 update_node(Client, MemberId, NetworkId, NodeId, Input0, Options) ->
     Method = patch,
-    Path = ["/networks/", http_uri:encode(NetworkId), "/members/", http_uri:encode(MemberId), "/nodes/", http_uri:encode(NodeId), ""],
+    Path = ["/networks/", aws_util:encode_uri(NetworkId), "/members/", aws_util:encode_uri(MemberId), "/nodes/", aws_util:encode_uri(NodeId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -419,7 +419,7 @@ vote_on_proposal(Client, NetworkId, ProposalId, Input) ->
     vote_on_proposal(Client, NetworkId, ProposalId, Input, []).
 vote_on_proposal(Client, NetworkId, ProposalId, Input0, Options) ->
     Method = post,
-    Path = ["/networks/", http_uri:encode(NetworkId), "/proposals/", http_uri:encode(ProposalId), "/votes"],
+    Path = ["/networks/", aws_util:encode_uri(NetworkId), "/proposals/", aws_util:encode_uri(ProposalId), "/votes"],
     SuccessStatusCode = undefined,
 
     Headers = [],

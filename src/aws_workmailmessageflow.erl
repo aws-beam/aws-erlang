@@ -21,7 +21,7 @@ get_raw_message_content(Client, MessageId)
     get_raw_message_content(Client, MessageId, []).
 get_raw_message_content(Client, MessageId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/messages/", http_uri:encode(MessageId), ""],
+    Path = ["/messages/", aws_util:encode_uri(MessageId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],

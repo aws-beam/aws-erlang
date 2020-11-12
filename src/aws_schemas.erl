@@ -94,7 +94,7 @@ create_registry(Client, RegistryName, Input) ->
     create_registry(Client, RegistryName, Input, []).
 create_registry(Client, RegistryName, Input0, Options) ->
     Method = post,
-    Path = ["/v1/registries/name/", http_uri:encode(RegistryName), ""],
+    Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), ""],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -112,7 +112,7 @@ create_schema(Client, RegistryName, SchemaName, Input) ->
     create_schema(Client, RegistryName, SchemaName, Input, []).
 create_schema(Client, RegistryName, SchemaName, Input0, Options) ->
     Method = post,
-    Path = ["/v1/registries/name/", http_uri:encode(RegistryName), "/schemas/name/", http_uri:encode(SchemaName), ""],
+    Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas/name/", aws_util:encode_uri(SchemaName), ""],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -128,7 +128,7 @@ delete_discoverer(Client, DiscovererId, Input) ->
     delete_discoverer(Client, DiscovererId, Input, []).
 delete_discoverer(Client, DiscovererId, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/discoverers/id/", http_uri:encode(DiscovererId), ""],
+    Path = ["/v1/discoverers/id/", aws_util:encode_uri(DiscovererId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -144,7 +144,7 @@ delete_registry(Client, RegistryName, Input) ->
     delete_registry(Client, RegistryName, Input, []).
 delete_registry(Client, RegistryName, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/registries/name/", http_uri:encode(RegistryName), ""],
+    Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -177,7 +177,7 @@ delete_schema(Client, RegistryName, SchemaName, Input) ->
     delete_schema(Client, RegistryName, SchemaName, Input, []).
 delete_schema(Client, RegistryName, SchemaName, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/registries/name/", http_uri:encode(RegistryName), "/schemas/name/", http_uri:encode(SchemaName), ""],
+    Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas/name/", aws_util:encode_uri(SchemaName), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -193,7 +193,7 @@ delete_schema_version(Client, RegistryName, SchemaName, SchemaVersion, Input) ->
     delete_schema_version(Client, RegistryName, SchemaName, SchemaVersion, Input, []).
 delete_schema_version(Client, RegistryName, SchemaName, SchemaVersion, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/registries/name/", http_uri:encode(RegistryName), "/schemas/name/", http_uri:encode(SchemaName), "/version/", http_uri:encode(SchemaVersion), ""],
+    Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas/name/", aws_util:encode_uri(SchemaName), "/version/", aws_util:encode_uri(SchemaVersion), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -210,7 +210,7 @@ describe_code_binding(Client, Language, RegistryName, SchemaName, SchemaVersion)
     describe_code_binding(Client, Language, RegistryName, SchemaName, SchemaVersion, []).
 describe_code_binding(Client, Language, RegistryName, SchemaName, SchemaVersion, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/registries/name/", http_uri:encode(RegistryName), "/schemas/name/", http_uri:encode(SchemaName), "/language/", http_uri:encode(Language), ""],
+    Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas/name/", aws_util:encode_uri(SchemaName), "/language/", aws_util:encode_uri(Language), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -229,7 +229,7 @@ describe_discoverer(Client, DiscovererId)
     describe_discoverer(Client, DiscovererId, []).
 describe_discoverer(Client, DiscovererId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/discoverers/id/", http_uri:encode(DiscovererId), ""],
+    Path = ["/v1/discoverers/id/", aws_util:encode_uri(DiscovererId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -244,7 +244,7 @@ describe_registry(Client, RegistryName)
     describe_registry(Client, RegistryName, []).
 describe_registry(Client, RegistryName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/registries/name/", http_uri:encode(RegistryName), ""],
+    Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -259,7 +259,7 @@ describe_schema(Client, RegistryName, SchemaName, SchemaVersion)
     describe_schema(Client, RegistryName, SchemaName, SchemaVersion, []).
 describe_schema(Client, RegistryName, SchemaName, SchemaVersion, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/registries/name/", http_uri:encode(RegistryName), "/schemas/name/", http_uri:encode(SchemaName), ""],
+    Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas/name/", aws_util:encode_uri(SchemaName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -278,7 +278,7 @@ export_schema(Client, RegistryName, SchemaName, SchemaVersion, Type)
     export_schema(Client, RegistryName, SchemaName, SchemaVersion, Type, []).
 export_schema(Client, RegistryName, SchemaName, SchemaVersion, Type, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/registries/name/", http_uri:encode(RegistryName), "/schemas/name/", http_uri:encode(SchemaName), "/export"],
+    Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas/name/", aws_util:encode_uri(SchemaName), "/export"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -298,7 +298,7 @@ get_code_binding_source(Client, Language, RegistryName, SchemaName, SchemaVersio
     get_code_binding_source(Client, Language, RegistryName, SchemaName, SchemaVersion, []).
 get_code_binding_source(Client, Language, RegistryName, SchemaName, SchemaVersion, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/registries/name/", http_uri:encode(RegistryName), "/schemas/name/", http_uri:encode(SchemaName), "/language/", http_uri:encode(Language), "/source"],
+    Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas/name/", aws_util:encode_uri(SchemaName), "/language/", aws_util:encode_uri(Language), "/source"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -396,7 +396,7 @@ list_schema_versions(Client, RegistryName, SchemaName, Limit, NextToken)
     list_schema_versions(Client, RegistryName, SchemaName, Limit, NextToken, []).
 list_schema_versions(Client, RegistryName, SchemaName, Limit, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/registries/name/", http_uri:encode(RegistryName), "/schemas/name/", http_uri:encode(SchemaName), "/versions"],
+    Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas/name/", aws_util:encode_uri(SchemaName), "/versions"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -416,7 +416,7 @@ list_schemas(Client, RegistryName, Limit, NextToken, SchemaNamePrefix)
     list_schemas(Client, RegistryName, Limit, NextToken, SchemaNamePrefix, []).
 list_schemas(Client, RegistryName, Limit, NextToken, SchemaNamePrefix, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/registries/name/", http_uri:encode(RegistryName), "/schemas"],
+    Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -437,7 +437,7 @@ list_tags_for_resource(Client, ResourceArn)
     list_tags_for_resource(Client, ResourceArn, []).
 list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -451,7 +451,7 @@ put_code_binding(Client, Language, RegistryName, SchemaName, Input) ->
     put_code_binding(Client, Language, RegistryName, SchemaName, Input, []).
 put_code_binding(Client, Language, RegistryName, SchemaName, Input0, Options) ->
     Method = post,
-    Path = ["/v1/registries/name/", http_uri:encode(RegistryName), "/schemas/name/", http_uri:encode(SchemaName), "/language/", http_uri:encode(Language), ""],
+    Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas/name/", aws_util:encode_uri(SchemaName), "/language/", aws_util:encode_uri(Language), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -486,7 +486,7 @@ search_schemas(Client, RegistryName, Keywords, Limit, NextToken)
     search_schemas(Client, RegistryName, Keywords, Limit, NextToken, []).
 search_schemas(Client, RegistryName, Keywords, Limit, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/registries/name/", http_uri:encode(RegistryName), "/schemas/search"],
+    Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas/search"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -506,7 +506,7 @@ start_discoverer(Client, DiscovererId, Input) ->
     start_discoverer(Client, DiscovererId, Input, []).
 start_discoverer(Client, DiscovererId, Input0, Options) ->
     Method = post,
-    Path = ["/v1/discoverers/id/", http_uri:encode(DiscovererId), "/start"],
+    Path = ["/v1/discoverers/id/", aws_util:encode_uri(DiscovererId), "/start"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -522,7 +522,7 @@ stop_discoverer(Client, DiscovererId, Input) ->
     stop_discoverer(Client, DiscovererId, Input, []).
 stop_discoverer(Client, DiscovererId, Input0, Options) ->
     Method = post,
-    Path = ["/v1/discoverers/id/", http_uri:encode(DiscovererId), "/stop"],
+    Path = ["/v1/discoverers/id/", aws_util:encode_uri(DiscovererId), "/stop"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -538,7 +538,7 @@ tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -554,7 +554,7 @@ untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -571,7 +571,7 @@ update_discoverer(Client, DiscovererId, Input) ->
     update_discoverer(Client, DiscovererId, Input, []).
 update_discoverer(Client, DiscovererId, Input0, Options) ->
     Method = put,
-    Path = ["/v1/discoverers/id/", http_uri:encode(DiscovererId), ""],
+    Path = ["/v1/discoverers/id/", aws_util:encode_uri(DiscovererId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -587,7 +587,7 @@ update_registry(Client, RegistryName, Input) ->
     update_registry(Client, RegistryName, Input, []).
 update_registry(Client, RegistryName, Input0, Options) ->
     Method = put,
-    Path = ["/v1/registries/name/", http_uri:encode(RegistryName), ""],
+    Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -605,7 +605,7 @@ update_schema(Client, RegistryName, SchemaName, Input) ->
     update_schema(Client, RegistryName, SchemaName, Input, []).
 update_schema(Client, RegistryName, SchemaName, Input0, Options) ->
     Method = put,
-    Path = ["/v1/registries/name/", http_uri:encode(RegistryName), "/schemas/name/", http_uri:encode(SchemaName), ""],
+    Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas/name/", aws_util:encode_uri(SchemaName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],

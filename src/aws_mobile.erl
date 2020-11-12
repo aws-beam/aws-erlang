@@ -56,7 +56,7 @@ delete_project(Client, ProjectId, Input) ->
     delete_project(Client, ProjectId, Input, []).
 delete_project(Client, ProjectId, Input0, Options) ->
     Method = delete,
-    Path = ["/projects/", http_uri:encode(ProjectId), ""],
+    Path = ["/projects/", aws_util:encode_uri(ProjectId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -73,7 +73,7 @@ describe_bundle(Client, BundleId)
     describe_bundle(Client, BundleId, []).
 describe_bundle(Client, BundleId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/bundles/", http_uri:encode(BundleId), ""],
+    Path = ["/bundles/", aws_util:encode_uri(BundleId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -109,7 +109,7 @@ export_bundle(Client, BundleId, Input) ->
     export_bundle(Client, BundleId, Input, []).
 export_bundle(Client, BundleId, Input0, Options) ->
     Method = post,
-    Path = ["/bundles/", http_uri:encode(BundleId), ""],
+    Path = ["/bundles/", aws_util:encode_uri(BundleId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -131,7 +131,7 @@ export_project(Client, ProjectId, Input) ->
     export_project(Client, ProjectId, Input, []).
 export_project(Client, ProjectId, Input0, Options) ->
     Method = post,
-    Path = ["/exports/", http_uri:encode(ProjectId), ""],
+    Path = ["/exports/", aws_util:encode_uri(ProjectId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],

@@ -126,7 +126,7 @@ cancel_pipeline_reprocessing(Client, PipelineName, ReprocessingId, Input) ->
     cancel_pipeline_reprocessing(Client, PipelineName, ReprocessingId, Input, []).
 cancel_pipeline_reprocessing(Client, PipelineName, ReprocessingId, Input0, Options) ->
     Method = delete,
-    Path = ["/pipelines/", http_uri:encode(PipelineName), "/reprocessing/", http_uri:encode(ReprocessingId), ""],
+    Path = ["/pipelines/", aws_util:encode_uri(PipelineName), "/reprocessing/", aws_util:encode_uri(ReprocessingId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -185,7 +185,7 @@ create_dataset_content(Client, DatasetName, Input) ->
     create_dataset_content(Client, DatasetName, Input, []).
 create_dataset_content(Client, DatasetName, Input0, Options) ->
     Method = post,
-    Path = ["/datasets/", http_uri:encode(DatasetName), "/content"],
+    Path = ["/datasets/", aws_util:encode_uri(DatasetName), "/content"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -238,7 +238,7 @@ delete_channel(Client, ChannelName, Input) ->
     delete_channel(Client, ChannelName, Input, []).
 delete_channel(Client, ChannelName, Input0, Options) ->
     Method = delete,
-    Path = ["/channels/", http_uri:encode(ChannelName), ""],
+    Path = ["/channels/", aws_util:encode_uri(ChannelName), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -257,7 +257,7 @@ delete_dataset(Client, DatasetName, Input) ->
     delete_dataset(Client, DatasetName, Input, []).
 delete_dataset(Client, DatasetName, Input0, Options) ->
     Method = delete,
-    Path = ["/datasets/", http_uri:encode(DatasetName), ""],
+    Path = ["/datasets/", aws_util:encode_uri(DatasetName), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -273,7 +273,7 @@ delete_dataset_content(Client, DatasetName, Input) ->
     delete_dataset_content(Client, DatasetName, Input, []).
 delete_dataset_content(Client, DatasetName, Input0, Options) ->
     Method = delete,
-    Path = ["/datasets/", http_uri:encode(DatasetName), "/content"],
+    Path = ["/datasets/", aws_util:encode_uri(DatasetName), "/content"],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -290,7 +290,7 @@ delete_datastore(Client, DatastoreName, Input) ->
     delete_datastore(Client, DatastoreName, Input, []).
 delete_datastore(Client, DatastoreName, Input0, Options) ->
     Method = delete,
-    Path = ["/datastores/", http_uri:encode(DatastoreName), ""],
+    Path = ["/datastores/", aws_util:encode_uri(DatastoreName), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -306,7 +306,7 @@ delete_pipeline(Client, PipelineName, Input) ->
     delete_pipeline(Client, PipelineName, Input, []).
 delete_pipeline(Client, PipelineName, Input0, Options) ->
     Method = delete,
-    Path = ["/pipelines/", http_uri:encode(PipelineName), ""],
+    Path = ["/pipelines/", aws_util:encode_uri(PipelineName), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -323,7 +323,7 @@ describe_channel(Client, ChannelName, IncludeStatistics)
     describe_channel(Client, ChannelName, IncludeStatistics, []).
 describe_channel(Client, ChannelName, IncludeStatistics, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/channels/", http_uri:encode(ChannelName), ""],
+    Path = ["/channels/", aws_util:encode_uri(ChannelName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -342,7 +342,7 @@ describe_dataset(Client, DatasetName)
     describe_dataset(Client, DatasetName, []).
 describe_dataset(Client, DatasetName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/datasets/", http_uri:encode(DatasetName), ""],
+    Path = ["/datasets/", aws_util:encode_uri(DatasetName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -357,7 +357,7 @@ describe_datastore(Client, DatastoreName, IncludeStatistics)
     describe_datastore(Client, DatastoreName, IncludeStatistics, []).
 describe_datastore(Client, DatastoreName, IncludeStatistics, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/datastores/", http_uri:encode(DatastoreName), ""],
+    Path = ["/datastores/", aws_util:encode_uri(DatastoreName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -392,7 +392,7 @@ describe_pipeline(Client, PipelineName)
     describe_pipeline(Client, PipelineName, []).
 describe_pipeline(Client, PipelineName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/pipelines/", http_uri:encode(PipelineName), ""],
+    Path = ["/pipelines/", aws_util:encode_uri(PipelineName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -407,7 +407,7 @@ get_dataset_content(Client, DatasetName, VersionId)
     get_dataset_content(Client, DatasetName, VersionId, []).
 get_dataset_content(Client, DatasetName, VersionId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/datasets/", http_uri:encode(DatasetName), "/content"],
+    Path = ["/datasets/", aws_util:encode_uri(DatasetName), "/content"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -446,7 +446,7 @@ list_dataset_contents(Client, DatasetName, MaxResults, NextToken, ScheduledBefor
     list_dataset_contents(Client, DatasetName, MaxResults, NextToken, ScheduledBefore, ScheduledOnOrAfter, []).
 list_dataset_contents(Client, DatasetName, MaxResults, NextToken, ScheduledBefore, ScheduledOnOrAfter, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/datasets/", http_uri:encode(DatasetName), "/contents"],
+    Path = ["/datasets/", aws_util:encode_uri(DatasetName), "/contents"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -589,7 +589,7 @@ sample_channel_data(Client, ChannelName, EndTime, MaxMessages, StartTime)
     sample_channel_data(Client, ChannelName, EndTime, MaxMessages, StartTime, []).
 sample_channel_data(Client, ChannelName, EndTime, MaxMessages, StartTime, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/channels/", http_uri:encode(ChannelName), "/sample"],
+    Path = ["/channels/", aws_util:encode_uri(ChannelName), "/sample"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -609,7 +609,7 @@ start_pipeline_reprocessing(Client, PipelineName, Input) ->
     start_pipeline_reprocessing(Client, PipelineName, Input, []).
 start_pipeline_reprocessing(Client, PipelineName, Input0, Options) ->
     Method = post,
-    Path = ["/pipelines/", http_uri:encode(PipelineName), "/reprocessing"],
+    Path = ["/pipelines/", aws_util:encode_uri(PipelineName), "/reprocessing"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -662,7 +662,7 @@ update_channel(Client, ChannelName, Input) ->
     update_channel(Client, ChannelName, Input, []).
 update_channel(Client, ChannelName, Input0, Options) ->
     Method = put,
-    Path = ["/channels/", http_uri:encode(ChannelName), ""],
+    Path = ["/channels/", aws_util:encode_uri(ChannelName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -678,7 +678,7 @@ update_dataset(Client, DatasetName, Input) ->
     update_dataset(Client, DatasetName, Input, []).
 update_dataset(Client, DatasetName, Input0, Options) ->
     Method = put,
-    Path = ["/datasets/", http_uri:encode(DatasetName), ""],
+    Path = ["/datasets/", aws_util:encode_uri(DatasetName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -694,7 +694,7 @@ update_datastore(Client, DatastoreName, Input) ->
     update_datastore(Client, DatastoreName, Input, []).
 update_datastore(Client, DatastoreName, Input0, Options) ->
     Method = put,
-    Path = ["/datastores/", http_uri:encode(DatastoreName), ""],
+    Path = ["/datastores/", aws_util:encode_uri(DatastoreName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -714,7 +714,7 @@ update_pipeline(Client, PipelineName, Input) ->
     update_pipeline(Client, PipelineName, Input, []).
 update_pipeline(Client, PipelineName, Input0, Options) ->
     Method = put,
-    Path = ["/pipelines/", http_uri:encode(PipelineName), ""],
+    Path = ["/pipelines/", aws_util:encode_uri(PipelineName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],

@@ -30,7 +30,7 @@ delete_object(Client, Path, Input) ->
     delete_object(Client, Path, Input, []).
 delete_object(Client, Path, Input0, Options) ->
     Method = delete,
-    Path = ["/", aws_util:encode_uri(Path, true), ""],
+    Path = ["/", aws_util:encode_multi_segment_uri(Path), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -46,7 +46,7 @@ describe_object(Client, Path, Input) ->
     describe_object(Client, Path, Input, []).
 describe_object(Client, Path, Input0, Options) ->
     Method = head,
-    Path = ["/", aws_util:encode_uri(Path, true), ""],
+    Path = ["/", aws_util:encode_multi_segment_uri(Path), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -86,7 +86,7 @@ get_object(Client, Path, Range)
     get_object(Client, Path, Range, []).
 get_object(Client, Path, Range, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", aws_util:encode_uri(Path, true), ""],
+    Path = ["/", aws_util:encode_multi_segment_uri(Path), ""],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -150,7 +150,7 @@ put_object(Client, Path, Input) ->
     put_object(Client, Path, Input, []).
 put_object(Client, Path, Input0, Options) ->
     Method = put,
-    Path = ["/", aws_util:encode_uri(Path, true), ""],
+    Path = ["/", aws_util:encode_multi_segment_uri(Path), ""],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [

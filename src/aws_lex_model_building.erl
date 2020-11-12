@@ -113,7 +113,7 @@ create_bot_version(Client, Name, Input) ->
     create_bot_version(Client, Name, Input, []).
 create_bot_version(Client, Name, Input0, Options) ->
     Method = post,
-    Path = ["/bots/", http_uri:encode(Name), "/versions"],
+    Path = ["/bots/", aws_util:encode_uri(Name), "/versions"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -145,7 +145,7 @@ create_intent_version(Client, Name, Input) ->
     create_intent_version(Client, Name, Input, []).
 create_intent_version(Client, Name, Input0, Options) ->
     Method = post,
-    Path = ["/intents/", http_uri:encode(Name), "/versions"],
+    Path = ["/intents/", aws_util:encode_uri(Name), "/versions"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -177,7 +177,7 @@ create_slot_type_version(Client, Name, Input) ->
     create_slot_type_version(Client, Name, Input, []).
 create_slot_type_version(Client, Name, Input0, Options) ->
     Method = post,
-    Path = ["/slottypes/", http_uri:encode(Name), "/versions"],
+    Path = ["/slottypes/", aws_util:encode_uri(Name), "/versions"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -210,7 +210,7 @@ delete_bot(Client, Name, Input) ->
     delete_bot(Client, Name, Input, []).
 delete_bot(Client, Name, Input0, Options) ->
     Method = delete,
-    Path = ["/bots/", http_uri:encode(Name), ""],
+    Path = ["/bots/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -234,7 +234,7 @@ delete_bot_alias(Client, BotName, Name, Input) ->
     delete_bot_alias(Client, BotName, Name, Input, []).
 delete_bot_alias(Client, BotName, Name, Input0, Options) ->
     Method = delete,
-    Path = ["/bots/", http_uri:encode(BotName), "/aliases/", http_uri:encode(Name), ""],
+    Path = ["/bots/", aws_util:encode_uri(BotName), "/aliases/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -254,7 +254,7 @@ delete_bot_channel_association(Client, BotAlias, BotName, Name, Input) ->
     delete_bot_channel_association(Client, BotAlias, BotName, Name, Input, []).
 delete_bot_channel_association(Client, BotAlias, BotName, Name, Input0, Options) ->
     Method = delete,
-    Path = ["/bots/", http_uri:encode(BotName), "/aliases/", http_uri:encode(BotAlias), "/channels/", http_uri:encode(Name), ""],
+    Path = ["/bots/", aws_util:encode_uri(BotName), "/aliases/", aws_util:encode_uri(BotAlias), "/channels/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -274,7 +274,7 @@ delete_bot_version(Client, Name, Version, Input) ->
     delete_bot_version(Client, Name, Version, Input, []).
 delete_bot_version(Client, Name, Version, Input0, Options) ->
     Method = delete,
-    Path = ["/bots/", http_uri:encode(Name), "/versions/", http_uri:encode(Version), ""],
+    Path = ["/bots/", aws_util:encode_uri(Name), "/versions/", aws_util:encode_uri(Version), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -306,7 +306,7 @@ delete_intent(Client, Name, Input) ->
     delete_intent(Client, Name, Input, []).
 delete_intent(Client, Name, Input0, Options) ->
     Method = delete,
-    Path = ["/intents/", http_uri:encode(Name), ""],
+    Path = ["/intents/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -327,7 +327,7 @@ delete_intent_version(Client, Name, Version, Input) ->
     delete_intent_version(Client, Name, Version, Input, []).
 delete_intent_version(Client, Name, Version, Input0, Options) ->
     Method = delete,
-    Path = ["/intents/", http_uri:encode(Name), "/versions/", http_uri:encode(Version), ""],
+    Path = ["/intents/", aws_util:encode_uri(Name), "/versions/", aws_util:encode_uri(Version), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -360,7 +360,7 @@ delete_slot_type(Client, Name, Input) ->
     delete_slot_type(Client, Name, Input, []).
 delete_slot_type(Client, Name, Input0, Options) ->
     Method = delete,
-    Path = ["/slottypes/", http_uri:encode(Name), ""],
+    Path = ["/slottypes/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -381,7 +381,7 @@ delete_slot_type_version(Client, Name, Version, Input) ->
     delete_slot_type_version(Client, Name, Version, Input, []).
 delete_slot_type_version(Client, Name, Version, Input0, Options) ->
     Method = delete,
-    Path = ["/slottypes/", http_uri:encode(Name), "/version/", http_uri:encode(Version), ""],
+    Path = ["/slottypes/", aws_util:encode_uri(Name), "/version/", aws_util:encode_uri(Version), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -410,7 +410,7 @@ delete_utterances(Client, BotName, UserId, Input) ->
     delete_utterances(Client, BotName, UserId, Input, []).
 delete_utterances(Client, BotName, UserId, Input0, Options) ->
     Method = delete,
-    Path = ["/bots/", http_uri:encode(BotName), "/utterances/", http_uri:encode(UserId), ""],
+    Path = ["/bots/", aws_util:encode_uri(BotName), "/utterances/", aws_util:encode_uri(UserId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -431,7 +431,7 @@ get_bot(Client, Name, VersionOrAlias)
     get_bot(Client, Name, VersionOrAlias, []).
 get_bot(Client, Name, VersionOrAlias, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/bots/", http_uri:encode(Name), "/versions/", http_uri:encode(VersionOrAlias), ""],
+    Path = ["/bots/", aws_util:encode_uri(Name), "/versions/", aws_util:encode_uri(VersionOrAlias), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -450,7 +450,7 @@ get_bot_alias(Client, BotName, Name)
     get_bot_alias(Client, BotName, Name, []).
 get_bot_alias(Client, BotName, Name, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/bots/", http_uri:encode(BotName), "/aliases/", http_uri:encode(Name), ""],
+    Path = ["/bots/", aws_util:encode_uri(BotName), "/aliases/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -467,7 +467,7 @@ get_bot_aliases(Client, BotName, MaxResults, NameContains, NextToken)
     get_bot_aliases(Client, BotName, MaxResults, NameContains, NextToken, []).
 get_bot_aliases(Client, BotName, MaxResults, NameContains, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/bots/", http_uri:encode(BotName), "/aliases/"],
+    Path = ["/bots/", aws_util:encode_uri(BotName), "/aliases/"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -492,7 +492,7 @@ get_bot_channel_association(Client, BotAlias, BotName, Name)
     get_bot_channel_association(Client, BotAlias, BotName, Name, []).
 get_bot_channel_association(Client, BotAlias, BotName, Name, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/bots/", http_uri:encode(BotName), "/aliases/", http_uri:encode(BotAlias), "/channels/", http_uri:encode(Name), ""],
+    Path = ["/bots/", aws_util:encode_uri(BotName), "/aliases/", aws_util:encode_uri(BotAlias), "/channels/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -511,7 +511,7 @@ get_bot_channel_associations(Client, BotAlias, BotName, MaxResults, NameContains
     get_bot_channel_associations(Client, BotAlias, BotName, MaxResults, NameContains, NextToken, []).
 get_bot_channel_associations(Client, BotAlias, BotName, MaxResults, NameContains, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/bots/", http_uri:encode(BotName), "/aliases/", http_uri:encode(BotAlias), "/channels/"],
+    Path = ["/bots/", aws_util:encode_uri(BotName), "/aliases/", aws_util:encode_uri(BotAlias), "/channels/"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -542,7 +542,7 @@ get_bot_versions(Client, Name, MaxResults, NextToken)
     get_bot_versions(Client, Name, MaxResults, NextToken, []).
 get_bot_versions(Client, Name, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/bots/", http_uri:encode(Name), "/versions/"],
+    Path = ["/bots/", aws_util:encode_uri(Name), "/versions/"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -595,7 +595,7 @@ get_builtin_intent(Client, Signature)
     get_builtin_intent(Client, Signature, []).
 get_builtin_intent(Client, Signature, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/builtins/intents/", http_uri:encode(Signature), ""],
+    Path = ["/builtins/intents/", aws_util:encode_uri(Signature), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -685,7 +685,7 @@ get_import(Client, ImportId)
     get_import(Client, ImportId, []).
 get_import(Client, ImportId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/imports/", http_uri:encode(ImportId), ""],
+    Path = ["/imports/", aws_util:encode_uri(ImportId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -704,7 +704,7 @@ get_intent(Client, Name, Version)
     get_intent(Client, Name, Version, []).
 get_intent(Client, Name, Version, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/intents/", http_uri:encode(Name), "/versions/", http_uri:encode(Version), ""],
+    Path = ["/intents/", aws_util:encode_uri(Name), "/versions/", aws_util:encode_uri(Version), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -731,7 +731,7 @@ get_intent_versions(Client, Name, MaxResults, NextToken)
     get_intent_versions(Client, Name, MaxResults, NextToken, []).
 get_intent_versions(Client, Name, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/intents/", http_uri:encode(Name), "/versions/"],
+    Path = ["/intents/", aws_util:encode_uri(Name), "/versions/"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -786,7 +786,7 @@ get_slot_type(Client, Name, Version)
     get_slot_type(Client, Name, Version, []).
 get_slot_type(Client, Name, Version, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/slottypes/", http_uri:encode(Name), "/versions/", http_uri:encode(Version), ""],
+    Path = ["/slottypes/", aws_util:encode_uri(Name), "/versions/", aws_util:encode_uri(Version), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -813,7 +813,7 @@ get_slot_type_versions(Client, Name, MaxResults, NextToken)
     get_slot_type_versions(Client, Name, MaxResults, NextToken, []).
 get_slot_type_versions(Client, Name, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/slottypes/", http_uri:encode(Name), "/versions/"],
+    Path = ["/slottypes/", aws_util:encode_uri(Name), "/versions/"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -890,7 +890,7 @@ get_utterances_view(Client, BotName, BotVersions, StatusType)
     get_utterances_view(Client, BotName, BotVersions, StatusType, []).
 get_utterances_view(Client, BotName, BotVersions, StatusType, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/bots/", http_uri:encode(BotName), "/utterances?view=aggregation"],
+    Path = ["/bots/", aws_util:encode_uri(BotName), "/utterances?view=aggregation"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -913,7 +913,7 @@ list_tags_for_resource(Client, ResourceArn)
     list_tags_for_resource(Client, ResourceArn, []).
 list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -948,7 +948,7 @@ put_bot(Client, Name, Input) ->
     put_bot(Client, Name, Input, []).
 put_bot(Client, Name, Input0, Options) ->
     Method = put,
-    Path = ["/bots/", http_uri:encode(Name), "/versions/$LATEST"],
+    Path = ["/bots/", aws_util:encode_uri(Name), "/versions/$LATEST"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -970,7 +970,7 @@ put_bot_alias(Client, BotName, Name, Input) ->
     put_bot_alias(Client, BotName, Name, Input, []).
 put_bot_alias(Client, BotName, Name, Input0, Options) ->
     Method = put,
-    Path = ["/bots/", http_uri:encode(BotName), "/aliases/", http_uri:encode(Name), ""],
+    Path = ["/bots/", aws_util:encode_uri(BotName), "/aliases/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1034,7 +1034,7 @@ put_intent(Client, Name, Input) ->
     put_intent(Client, Name, Input, []).
 put_intent(Client, Name, Input0, Options) ->
     Method = put,
-    Path = ["/intents/", http_uri:encode(Name), "/versions/$LATEST"],
+    Path = ["/intents/", aws_util:encode_uri(Name), "/versions/$LATEST"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1064,7 +1064,7 @@ put_slot_type(Client, Name, Input) ->
     put_slot_type(Client, Name, Input, []).
 put_slot_type(Client, Name, Input0, Options) ->
     Method = put,
-    Path = ["/slottypes/", http_uri:encode(Name), "/versions/$LATEST"],
+    Path = ["/slottypes/", aws_util:encode_uri(Name), "/versions/$LATEST"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1099,7 +1099,7 @@ tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -1115,7 +1115,7 @@ untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],

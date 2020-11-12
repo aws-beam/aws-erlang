@@ -114,7 +114,7 @@ create_gateway_route(Client, MeshName, VirtualGatewayName, Input) ->
     create_gateway_route(Client, MeshName, VirtualGatewayName, Input, []).
 create_gateway_route(Client, MeshName, VirtualGatewayName, Input0, Options) ->
     Method = put,
-    Path = ["/v20190125/meshes/", http_uri:encode(MeshName), "/virtualGateway/", http_uri:encode(VirtualGatewayName), "/gatewayRoutes"],
+    Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualGateway/", aws_util:encode_uri(VirtualGatewayName), "/gatewayRoutes"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -160,7 +160,7 @@ create_route(Client, MeshName, VirtualRouterName, Input) ->
     create_route(Client, MeshName, VirtualRouterName, Input, []).
 create_route(Client, MeshName, VirtualRouterName, Input0, Options) ->
     Method = put,
-    Path = ["/v20190125/meshes/", http_uri:encode(MeshName), "/virtualRouter/", http_uri:encode(VirtualRouterName), "/routes"],
+    Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualRouter/", aws_util:encode_uri(VirtualRouterName), "/routes"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -186,7 +186,7 @@ create_virtual_gateway(Client, MeshName, Input) ->
     create_virtual_gateway(Client, MeshName, Input, []).
 create_virtual_gateway(Client, MeshName, Input0, Options) ->
     Method = put,
-    Path = ["/v20190125/meshes/", http_uri:encode(MeshName), "/virtualGateways"],
+    Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualGateways"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -233,7 +233,7 @@ create_virtual_node(Client, MeshName, Input) ->
     create_virtual_node(Client, MeshName, Input, []).
 create_virtual_node(Client, MeshName, Input0, Options) ->
     Method = put,
-    Path = ["/v20190125/meshes/", http_uri:encode(MeshName), "/virtualNodes"],
+    Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualNodes"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -259,7 +259,7 @@ create_virtual_router(Client, MeshName, Input) ->
     create_virtual_router(Client, MeshName, Input, []).
 create_virtual_router(Client, MeshName, Input0, Options) ->
     Method = put,
-    Path = ["/v20190125/meshes/", http_uri:encode(MeshName), "/virtualRouters"],
+    Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualRouters"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -284,7 +284,7 @@ create_virtual_service(Client, MeshName, Input) ->
     create_virtual_service(Client, MeshName, Input, []).
 create_virtual_service(Client, MeshName, Input0, Options) ->
     Method = put,
-    Path = ["/v20190125/meshes/", http_uri:encode(MeshName), "/virtualServices"],
+    Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualServices"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -301,7 +301,7 @@ delete_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, Inp
     delete_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, Input, []).
 delete_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, Input0, Options) ->
     Method = delete,
-    Path = ["/v20190125/meshes/", http_uri:encode(MeshName), "/virtualGateway/", http_uri:encode(VirtualGatewayName), "/gatewayRoutes/", http_uri:encode(GatewayRouteName), ""],
+    Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualGateway/", aws_util:encode_uri(VirtualGatewayName), "/gatewayRoutes/", aws_util:encode_uri(GatewayRouteName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -322,7 +322,7 @@ delete_mesh(Client, MeshName, Input) ->
     delete_mesh(Client, MeshName, Input, []).
 delete_mesh(Client, MeshName, Input0, Options) ->
     Method = delete,
-    Path = ["/v20190125/meshes/", http_uri:encode(MeshName), ""],
+    Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -338,7 +338,7 @@ delete_route(Client, MeshName, RouteName, VirtualRouterName, Input) ->
     delete_route(Client, MeshName, RouteName, VirtualRouterName, Input, []).
 delete_route(Client, MeshName, RouteName, VirtualRouterName, Input0, Options) ->
     Method = delete,
-    Path = ["/v20190125/meshes/", http_uri:encode(MeshName), "/virtualRouter/", http_uri:encode(VirtualRouterName), "/routes/", http_uri:encode(RouteName), ""],
+    Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualRouter/", aws_util:encode_uri(VirtualRouterName), "/routes/", aws_util:encode_uri(RouteName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -358,7 +358,7 @@ delete_virtual_gateway(Client, MeshName, VirtualGatewayName, Input) ->
     delete_virtual_gateway(Client, MeshName, VirtualGatewayName, Input, []).
 delete_virtual_gateway(Client, MeshName, VirtualGatewayName, Input0, Options) ->
     Method = delete,
-    Path = ["/v20190125/meshes/", http_uri:encode(MeshName), "/virtualGateways/", http_uri:encode(VirtualGatewayName), ""],
+    Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualGateways/", aws_util:encode_uri(VirtualGatewayName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -378,7 +378,7 @@ delete_virtual_node(Client, MeshName, VirtualNodeName, Input) ->
     delete_virtual_node(Client, MeshName, VirtualNodeName, Input, []).
 delete_virtual_node(Client, MeshName, VirtualNodeName, Input0, Options) ->
     Method = delete,
-    Path = ["/v20190125/meshes/", http_uri:encode(MeshName), "/virtualNodes/", http_uri:encode(VirtualNodeName), ""],
+    Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualNodes/", aws_util:encode_uri(VirtualNodeName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -398,7 +398,7 @@ delete_virtual_router(Client, MeshName, VirtualRouterName, Input) ->
     delete_virtual_router(Client, MeshName, VirtualRouterName, Input, []).
 delete_virtual_router(Client, MeshName, VirtualRouterName, Input0, Options) ->
     Method = delete,
-    Path = ["/v20190125/meshes/", http_uri:encode(MeshName), "/virtualRouters/", http_uri:encode(VirtualRouterName), ""],
+    Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualRouters/", aws_util:encode_uri(VirtualRouterName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -415,7 +415,7 @@ delete_virtual_service(Client, MeshName, VirtualServiceName, Input) ->
     delete_virtual_service(Client, MeshName, VirtualServiceName, Input, []).
 delete_virtual_service(Client, MeshName, VirtualServiceName, Input0, Options) ->
     Method = delete,
-    Path = ["/v20190125/meshes/", http_uri:encode(MeshName), "/virtualServices/", http_uri:encode(VirtualServiceName), ""],
+    Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualServices/", aws_util:encode_uri(VirtualServiceName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -433,7 +433,7 @@ describe_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, M
     describe_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, MeshOwner, []).
 describe_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, MeshOwner, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v20190125/meshes/", http_uri:encode(MeshName), "/virtualGateway/", http_uri:encode(VirtualGatewayName), "/gatewayRoutes/", http_uri:encode(GatewayRouteName), ""],
+    Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualGateway/", aws_util:encode_uri(VirtualGatewayName), "/gatewayRoutes/", aws_util:encode_uri(GatewayRouteName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -452,7 +452,7 @@ describe_mesh(Client, MeshName, MeshOwner)
     describe_mesh(Client, MeshName, MeshOwner, []).
 describe_mesh(Client, MeshName, MeshOwner, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v20190125/meshes/", http_uri:encode(MeshName), ""],
+    Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -471,7 +471,7 @@ describe_route(Client, MeshName, RouteName, VirtualRouterName, MeshOwner)
     describe_route(Client, MeshName, RouteName, VirtualRouterName, MeshOwner, []).
 describe_route(Client, MeshName, RouteName, VirtualRouterName, MeshOwner, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v20190125/meshes/", http_uri:encode(MeshName), "/virtualRouter/", http_uri:encode(VirtualRouterName), "/routes/", http_uri:encode(RouteName), ""],
+    Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualRouter/", aws_util:encode_uri(VirtualRouterName), "/routes/", aws_util:encode_uri(RouteName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -490,7 +490,7 @@ describe_virtual_gateway(Client, MeshName, VirtualGatewayName, MeshOwner)
     describe_virtual_gateway(Client, MeshName, VirtualGatewayName, MeshOwner, []).
 describe_virtual_gateway(Client, MeshName, VirtualGatewayName, MeshOwner, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v20190125/meshes/", http_uri:encode(MeshName), "/virtualGateways/", http_uri:encode(VirtualGatewayName), ""],
+    Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualGateways/", aws_util:encode_uri(VirtualGatewayName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -509,7 +509,7 @@ describe_virtual_node(Client, MeshName, VirtualNodeName, MeshOwner)
     describe_virtual_node(Client, MeshName, VirtualNodeName, MeshOwner, []).
 describe_virtual_node(Client, MeshName, VirtualNodeName, MeshOwner, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v20190125/meshes/", http_uri:encode(MeshName), "/virtualNodes/", http_uri:encode(VirtualNodeName), ""],
+    Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualNodes/", aws_util:encode_uri(VirtualNodeName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -528,7 +528,7 @@ describe_virtual_router(Client, MeshName, VirtualRouterName, MeshOwner)
     describe_virtual_router(Client, MeshName, VirtualRouterName, MeshOwner, []).
 describe_virtual_router(Client, MeshName, VirtualRouterName, MeshOwner, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v20190125/meshes/", http_uri:encode(MeshName), "/virtualRouters/", http_uri:encode(VirtualRouterName), ""],
+    Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualRouters/", aws_util:encode_uri(VirtualRouterName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -547,7 +547,7 @@ describe_virtual_service(Client, MeshName, VirtualServiceName, MeshOwner)
     describe_virtual_service(Client, MeshName, VirtualServiceName, MeshOwner, []).
 describe_virtual_service(Client, MeshName, VirtualServiceName, MeshOwner, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v20190125/meshes/", http_uri:encode(MeshName), "/virtualServices/", http_uri:encode(VirtualServiceName), ""],
+    Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualServices/", aws_util:encode_uri(VirtualServiceName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -567,7 +567,7 @@ list_gateway_routes(Client, MeshName, VirtualGatewayName, Limit, MeshOwner, Next
     list_gateway_routes(Client, MeshName, VirtualGatewayName, Limit, MeshOwner, NextToken, []).
 list_gateway_routes(Client, MeshName, VirtualGatewayName, Limit, MeshOwner, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v20190125/meshes/", http_uri:encode(MeshName), "/virtualGateway/", http_uri:encode(VirtualGatewayName), "/gatewayRoutes"],
+    Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualGateway/", aws_util:encode_uri(VirtualGatewayName), "/gatewayRoutes"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -608,7 +608,7 @@ list_routes(Client, MeshName, VirtualRouterName, Limit, MeshOwner, NextToken)
     list_routes(Client, MeshName, VirtualRouterName, Limit, MeshOwner, NextToken, []).
 list_routes(Client, MeshName, VirtualRouterName, Limit, MeshOwner, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v20190125/meshes/", http_uri:encode(MeshName), "/virtualRouter/", http_uri:encode(VirtualRouterName), "/routes"],
+    Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualRouter/", aws_util:encode_uri(VirtualRouterName), "/routes"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -650,7 +650,7 @@ list_virtual_gateways(Client, MeshName, Limit, MeshOwner, NextToken)
     list_virtual_gateways(Client, MeshName, Limit, MeshOwner, NextToken, []).
 list_virtual_gateways(Client, MeshName, Limit, MeshOwner, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v20190125/meshes/", http_uri:encode(MeshName), "/virtualGateways"],
+    Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualGateways"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -671,7 +671,7 @@ list_virtual_nodes(Client, MeshName, Limit, MeshOwner, NextToken)
     list_virtual_nodes(Client, MeshName, Limit, MeshOwner, NextToken, []).
 list_virtual_nodes(Client, MeshName, Limit, MeshOwner, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v20190125/meshes/", http_uri:encode(MeshName), "/virtualNodes"],
+    Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualNodes"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -692,7 +692,7 @@ list_virtual_routers(Client, MeshName, Limit, MeshOwner, NextToken)
     list_virtual_routers(Client, MeshName, Limit, MeshOwner, NextToken, []).
 list_virtual_routers(Client, MeshName, Limit, MeshOwner, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v20190125/meshes/", http_uri:encode(MeshName), "/virtualRouters"],
+    Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualRouters"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -713,7 +713,7 @@ list_virtual_services(Client, MeshName, Limit, MeshOwner, NextToken)
     list_virtual_services(Client, MeshName, Limit, MeshOwner, NextToken, []).
 list_virtual_services(Client, MeshName, Limit, MeshOwner, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v20190125/meshes/", http_uri:encode(MeshName), "/virtualServices"],
+    Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualServices"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -773,7 +773,7 @@ update_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, Inp
     update_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, Input, []).
 update_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, Input0, Options) ->
     Method = put,
-    Path = ["/v20190125/meshes/", http_uri:encode(MeshName), "/virtualGateway/", http_uri:encode(VirtualGatewayName), "/gatewayRoutes/", http_uri:encode(GatewayRouteName), ""],
+    Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualGateway/", aws_util:encode_uri(VirtualGatewayName), "/gatewayRoutes/", aws_util:encode_uri(GatewayRouteName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -790,7 +790,7 @@ update_mesh(Client, MeshName, Input) ->
     update_mesh(Client, MeshName, Input, []).
 update_mesh(Client, MeshName, Input0, Options) ->
     Method = put,
-    Path = ["/v20190125/meshes/", http_uri:encode(MeshName), ""],
+    Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -807,7 +807,7 @@ update_route(Client, MeshName, RouteName, VirtualRouterName, Input) ->
     update_route(Client, MeshName, RouteName, VirtualRouterName, Input, []).
 update_route(Client, MeshName, RouteName, VirtualRouterName, Input0, Options) ->
     Method = put,
-    Path = ["/v20190125/meshes/", http_uri:encode(MeshName), "/virtualRouter/", http_uri:encode(VirtualRouterName), "/routes/", http_uri:encode(RouteName), ""],
+    Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualRouter/", aws_util:encode_uri(VirtualRouterName), "/routes/", aws_util:encode_uri(RouteName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -824,7 +824,7 @@ update_virtual_gateway(Client, MeshName, VirtualGatewayName, Input) ->
     update_virtual_gateway(Client, MeshName, VirtualGatewayName, Input, []).
 update_virtual_gateway(Client, MeshName, VirtualGatewayName, Input0, Options) ->
     Method = put,
-    Path = ["/v20190125/meshes/", http_uri:encode(MeshName), "/virtualGateways/", http_uri:encode(VirtualGatewayName), ""],
+    Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualGateways/", aws_util:encode_uri(VirtualGatewayName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -841,7 +841,7 @@ update_virtual_node(Client, MeshName, VirtualNodeName, Input) ->
     update_virtual_node(Client, MeshName, VirtualNodeName, Input, []).
 update_virtual_node(Client, MeshName, VirtualNodeName, Input0, Options) ->
     Method = put,
-    Path = ["/v20190125/meshes/", http_uri:encode(MeshName), "/virtualNodes/", http_uri:encode(VirtualNodeName), ""],
+    Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualNodes/", aws_util:encode_uri(VirtualNodeName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -858,7 +858,7 @@ update_virtual_router(Client, MeshName, VirtualRouterName, Input) ->
     update_virtual_router(Client, MeshName, VirtualRouterName, Input, []).
 update_virtual_router(Client, MeshName, VirtualRouterName, Input0, Options) ->
     Method = put,
-    Path = ["/v20190125/meshes/", http_uri:encode(MeshName), "/virtualRouters/", http_uri:encode(VirtualRouterName), ""],
+    Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualRouters/", aws_util:encode_uri(VirtualRouterName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -875,7 +875,7 @@ update_virtual_service(Client, MeshName, VirtualServiceName, Input) ->
     update_virtual_service(Client, MeshName, VirtualServiceName, Input, []).
 update_virtual_service(Client, MeshName, VirtualServiceName, Input0, Options) ->
     Method = put,
-    Path = ["/v20190125/meshes/", http_uri:encode(MeshName), "/virtualServices/", http_uri:encode(VirtualServiceName), ""],
+    Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualServices/", aws_util:encode_uri(VirtualServiceName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],

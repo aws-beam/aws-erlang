@@ -257,7 +257,7 @@ create_campaign(Client, ApplicationId, Input) ->
     create_campaign(Client, ApplicationId, Input, []).
 create_campaign(Client, ApplicationId, Input0, Options) ->
     Method = post,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/campaigns"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/campaigns"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -274,7 +274,7 @@ create_email_template(Client, TemplateName, Input) ->
     create_email_template(Client, TemplateName, Input, []).
 create_email_template(Client, TemplateName, Input0, Options) ->
     Method = post,
-    Path = ["/v1/templates/", http_uri:encode(TemplateName), "/email"],
+    Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/email"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -290,7 +290,7 @@ create_export_job(Client, ApplicationId, Input) ->
     create_export_job(Client, ApplicationId, Input, []).
 create_export_job(Client, ApplicationId, Input0, Options) ->
     Method = post,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/jobs/export"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/jobs/export"],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -306,7 +306,7 @@ create_import_job(Client, ApplicationId, Input) ->
     create_import_job(Client, ApplicationId, Input, []).
 create_import_job(Client, ApplicationId, Input0, Options) ->
     Method = post,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/jobs/import"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/jobs/import"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -322,7 +322,7 @@ create_journey(Client, ApplicationId, Input) ->
     create_journey(Client, ApplicationId, Input, []).
 create_journey(Client, ApplicationId, Input0, Options) ->
     Method = post,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/journeys"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/journeys"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -339,7 +339,7 @@ create_push_template(Client, TemplateName, Input) ->
     create_push_template(Client, TemplateName, Input, []).
 create_push_template(Client, TemplateName, Input0, Options) ->
     Method = post,
-    Path = ["/v1/templates/", http_uri:encode(TemplateName), "/push"],
+    Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/push"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -373,7 +373,7 @@ create_segment(Client, ApplicationId, Input) ->
     create_segment(Client, ApplicationId, Input, []).
 create_segment(Client, ApplicationId, Input0, Options) ->
     Method = post,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/segments"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/segments"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -390,7 +390,7 @@ create_sms_template(Client, TemplateName, Input) ->
     create_sms_template(Client, TemplateName, Input, []).
 create_sms_template(Client, TemplateName, Input0, Options) ->
     Method = post,
-    Path = ["/v1/templates/", http_uri:encode(TemplateName), "/sms"],
+    Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/sms"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -407,7 +407,7 @@ create_voice_template(Client, TemplateName, Input) ->
     create_voice_template(Client, TemplateName, Input, []).
 create_voice_template(Client, TemplateName, Input0, Options) ->
     Method = post,
-    Path = ["/v1/templates/", http_uri:encode(TemplateName), "/voice"],
+    Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/voice"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -424,7 +424,7 @@ delete_adm_channel(Client, ApplicationId, Input) ->
     delete_adm_channel(Client, ApplicationId, Input, []).
 delete_adm_channel(Client, ApplicationId, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/channels/adm"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/adm"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -441,7 +441,7 @@ delete_apns_channel(Client, ApplicationId, Input) ->
     delete_apns_channel(Client, ApplicationId, Input, []).
 delete_apns_channel(Client, ApplicationId, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/channels/apns"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/apns"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -458,7 +458,7 @@ delete_apns_sandbox_channel(Client, ApplicationId, Input) ->
     delete_apns_sandbox_channel(Client, ApplicationId, Input, []).
 delete_apns_sandbox_channel(Client, ApplicationId, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/channels/apns_sandbox"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/apns_sandbox"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -475,7 +475,7 @@ delete_apns_voip_channel(Client, ApplicationId, Input) ->
     delete_apns_voip_channel(Client, ApplicationId, Input, []).
 delete_apns_voip_channel(Client, ApplicationId, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/channels/apns_voip"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/apns_voip"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -492,7 +492,7 @@ delete_apns_voip_sandbox_channel(Client, ApplicationId, Input) ->
     delete_apns_voip_sandbox_channel(Client, ApplicationId, Input, []).
 delete_apns_voip_sandbox_channel(Client, ApplicationId, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/channels/apns_voip_sandbox"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/apns_voip_sandbox"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -508,7 +508,7 @@ delete_app(Client, ApplicationId, Input) ->
     delete_app(Client, ApplicationId, Input, []).
 delete_app(Client, ApplicationId, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), ""],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -525,7 +525,7 @@ delete_baidu_channel(Client, ApplicationId, Input) ->
     delete_baidu_channel(Client, ApplicationId, Input, []).
 delete_baidu_channel(Client, ApplicationId, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/channels/baidu"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/baidu"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -541,7 +541,7 @@ delete_campaign(Client, ApplicationId, CampaignId, Input) ->
     delete_campaign(Client, ApplicationId, CampaignId, Input, []).
 delete_campaign(Client, ApplicationId, CampaignId, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/campaigns/", http_uri:encode(CampaignId), ""],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/campaigns/", aws_util:encode_uri(CampaignId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -558,7 +558,7 @@ delete_email_channel(Client, ApplicationId, Input) ->
     delete_email_channel(Client, ApplicationId, Input, []).
 delete_email_channel(Client, ApplicationId, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/channels/email"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/email"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -575,7 +575,7 @@ delete_email_template(Client, TemplateName, Input) ->
     delete_email_template(Client, TemplateName, Input, []).
 delete_email_template(Client, TemplateName, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/templates/", http_uri:encode(TemplateName), "/email"],
+    Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/email"],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -592,7 +592,7 @@ delete_endpoint(Client, ApplicationId, EndpointId, Input) ->
     delete_endpoint(Client, ApplicationId, EndpointId, Input, []).
 delete_endpoint(Client, ApplicationId, EndpointId, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/endpoints/", http_uri:encode(EndpointId), ""],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/endpoints/", aws_util:encode_uri(EndpointId), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -608,7 +608,7 @@ delete_event_stream(Client, ApplicationId, Input) ->
     delete_event_stream(Client, ApplicationId, Input, []).
 delete_event_stream(Client, ApplicationId, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/eventstream"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/eventstream"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -625,7 +625,7 @@ delete_gcm_channel(Client, ApplicationId, Input) ->
     delete_gcm_channel(Client, ApplicationId, Input, []).
 delete_gcm_channel(Client, ApplicationId, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/channels/gcm"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/gcm"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -641,7 +641,7 @@ delete_journey(Client, ApplicationId, JourneyId, Input) ->
     delete_journey(Client, ApplicationId, JourneyId, Input, []).
 delete_journey(Client, ApplicationId, JourneyId, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/journeys/", http_uri:encode(JourneyId), ""],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/journeys/", aws_util:encode_uri(JourneyId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -658,7 +658,7 @@ delete_push_template(Client, TemplateName, Input) ->
     delete_push_template(Client, TemplateName, Input, []).
 delete_push_template(Client, TemplateName, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/templates/", http_uri:encode(TemplateName), "/push"],
+    Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/push"],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -675,7 +675,7 @@ delete_recommender_configuration(Client, RecommenderId, Input) ->
     delete_recommender_configuration(Client, RecommenderId, Input, []).
 delete_recommender_configuration(Client, RecommenderId, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/recommenders/", http_uri:encode(RecommenderId), ""],
+    Path = ["/v1/recommenders/", aws_util:encode_uri(RecommenderId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -691,7 +691,7 @@ delete_segment(Client, ApplicationId, SegmentId, Input) ->
     delete_segment(Client, ApplicationId, SegmentId, Input, []).
 delete_segment(Client, ApplicationId, SegmentId, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/segments/", http_uri:encode(SegmentId), ""],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/segments/", aws_util:encode_uri(SegmentId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -708,7 +708,7 @@ delete_sms_channel(Client, ApplicationId, Input) ->
     delete_sms_channel(Client, ApplicationId, Input, []).
 delete_sms_channel(Client, ApplicationId, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/channels/sms"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/sms"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -725,7 +725,7 @@ delete_sms_template(Client, TemplateName, Input) ->
     delete_sms_template(Client, TemplateName, Input, []).
 delete_sms_template(Client, TemplateName, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/templates/", http_uri:encode(TemplateName), "/sms"],
+    Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/sms"],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -743,7 +743,7 @@ delete_user_endpoints(Client, ApplicationId, UserId, Input) ->
     delete_user_endpoints(Client, ApplicationId, UserId, Input, []).
 delete_user_endpoints(Client, ApplicationId, UserId, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/users/", http_uri:encode(UserId), ""],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/users/", aws_util:encode_uri(UserId), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -760,7 +760,7 @@ delete_voice_channel(Client, ApplicationId, Input) ->
     delete_voice_channel(Client, ApplicationId, Input, []).
 delete_voice_channel(Client, ApplicationId, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/channels/voice"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/voice"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -777,7 +777,7 @@ delete_voice_template(Client, TemplateName, Input) ->
     delete_voice_template(Client, TemplateName, Input, []).
 delete_voice_template(Client, TemplateName, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/templates/", http_uri:encode(TemplateName), "/voice"],
+    Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/voice"],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -796,7 +796,7 @@ get_adm_channel(Client, ApplicationId)
     get_adm_channel(Client, ApplicationId, []).
 get_adm_channel(Client, ApplicationId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/channels/adm"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/adm"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -812,7 +812,7 @@ get_apns_channel(Client, ApplicationId)
     get_apns_channel(Client, ApplicationId, []).
 get_apns_channel(Client, ApplicationId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/channels/apns"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/apns"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -828,7 +828,7 @@ get_apns_sandbox_channel(Client, ApplicationId)
     get_apns_sandbox_channel(Client, ApplicationId, []).
 get_apns_sandbox_channel(Client, ApplicationId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/channels/apns_sandbox"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/apns_sandbox"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -844,7 +844,7 @@ get_apns_voip_channel(Client, ApplicationId)
     get_apns_voip_channel(Client, ApplicationId, []).
 get_apns_voip_channel(Client, ApplicationId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/channels/apns_voip"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/apns_voip"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -860,7 +860,7 @@ get_apns_voip_sandbox_channel(Client, ApplicationId)
     get_apns_voip_sandbox_channel(Client, ApplicationId, []).
 get_apns_voip_sandbox_channel(Client, ApplicationId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/channels/apns_voip_sandbox"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/apns_voip_sandbox"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -875,7 +875,7 @@ get_app(Client, ApplicationId)
     get_app(Client, ApplicationId, []).
 get_app(Client, ApplicationId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), ""],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -891,7 +891,7 @@ get_application_date_range_kpi(Client, ApplicationId, KpiName, EndTime, NextToke
     get_application_date_range_kpi(Client, ApplicationId, KpiName, EndTime, NextToken, PageSize, StartTime, []).
 get_application_date_range_kpi(Client, ApplicationId, KpiName, EndTime, NextToken, PageSize, StartTime, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/kpis/daterange/", http_uri:encode(KpiName), ""],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/kpis/daterange/", aws_util:encode_uri(KpiName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -913,7 +913,7 @@ get_application_settings(Client, ApplicationId)
     get_application_settings(Client, ApplicationId, []).
 get_application_settings(Client, ApplicationId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/settings"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/settings"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -950,7 +950,7 @@ get_baidu_channel(Client, ApplicationId)
     get_baidu_channel(Client, ApplicationId, []).
 get_baidu_channel(Client, ApplicationId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/channels/baidu"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/baidu"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -966,7 +966,7 @@ get_campaign(Client, ApplicationId, CampaignId)
     get_campaign(Client, ApplicationId, CampaignId, []).
 get_campaign(Client, ApplicationId, CampaignId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/campaigns/", http_uri:encode(CampaignId), ""],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/campaigns/", aws_util:encode_uri(CampaignId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -981,7 +981,7 @@ get_campaign_activities(Client, ApplicationId, CampaignId, PageSize, Token)
     get_campaign_activities(Client, ApplicationId, CampaignId, PageSize, Token, []).
 get_campaign_activities(Client, ApplicationId, CampaignId, PageSize, Token, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/campaigns/", http_uri:encode(CampaignId), "/activities"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/campaigns/", aws_util:encode_uri(CampaignId), "/activities"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1002,7 +1002,7 @@ get_campaign_date_range_kpi(Client, ApplicationId, CampaignId, KpiName, EndTime,
     get_campaign_date_range_kpi(Client, ApplicationId, CampaignId, KpiName, EndTime, NextToken, PageSize, StartTime, []).
 get_campaign_date_range_kpi(Client, ApplicationId, CampaignId, KpiName, EndTime, NextToken, PageSize, StartTime, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/campaigns/", http_uri:encode(CampaignId), "/kpis/daterange/", http_uri:encode(KpiName), ""],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/campaigns/", aws_util:encode_uri(CampaignId), "/kpis/daterange/", aws_util:encode_uri(KpiName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1025,7 +1025,7 @@ get_campaign_version(Client, ApplicationId, CampaignId, Version)
     get_campaign_version(Client, ApplicationId, CampaignId, Version, []).
 get_campaign_version(Client, ApplicationId, CampaignId, Version, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/campaigns/", http_uri:encode(CampaignId), "/versions/", http_uri:encode(Version), ""],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/campaigns/", aws_util:encode_uri(CampaignId), "/versions/", aws_util:encode_uri(Version), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1041,7 +1041,7 @@ get_campaign_versions(Client, ApplicationId, CampaignId, PageSize, Token)
     get_campaign_versions(Client, ApplicationId, CampaignId, PageSize, Token, []).
 get_campaign_versions(Client, ApplicationId, CampaignId, PageSize, Token, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/campaigns/", http_uri:encode(CampaignId), "/versions"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/campaigns/", aws_util:encode_uri(CampaignId), "/versions"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1062,7 +1062,7 @@ get_campaigns(Client, ApplicationId, PageSize, Token)
     get_campaigns(Client, ApplicationId, PageSize, Token, []).
 get_campaigns(Client, ApplicationId, PageSize, Token, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/campaigns"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/campaigns"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1083,7 +1083,7 @@ get_channels(Client, ApplicationId)
     get_channels(Client, ApplicationId, []).
 get_channels(Client, ApplicationId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/channels"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1099,7 +1099,7 @@ get_email_channel(Client, ApplicationId)
     get_email_channel(Client, ApplicationId, []).
 get_email_channel(Client, ApplicationId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/channels/email"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/email"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1115,7 +1115,7 @@ get_email_template(Client, TemplateName, Version)
     get_email_template(Client, TemplateName, Version, []).
 get_email_template(Client, TemplateName, Version, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/templates/", http_uri:encode(TemplateName), "/email"],
+    Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/email"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1135,7 +1135,7 @@ get_endpoint(Client, ApplicationId, EndpointId)
     get_endpoint(Client, ApplicationId, EndpointId, []).
 get_endpoint(Client, ApplicationId, EndpointId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/endpoints/", http_uri:encode(EndpointId), ""],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/endpoints/", aws_util:encode_uri(EndpointId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1151,7 +1151,7 @@ get_event_stream(Client, ApplicationId)
     get_event_stream(Client, ApplicationId, []).
 get_event_stream(Client, ApplicationId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/eventstream"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/eventstream"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1167,7 +1167,7 @@ get_export_job(Client, ApplicationId, JobId)
     get_export_job(Client, ApplicationId, JobId, []).
 get_export_job(Client, ApplicationId, JobId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/jobs/export/", http_uri:encode(JobId), ""],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/jobs/export/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1183,7 +1183,7 @@ get_export_jobs(Client, ApplicationId, PageSize, Token)
     get_export_jobs(Client, ApplicationId, PageSize, Token, []).
 get_export_jobs(Client, ApplicationId, PageSize, Token, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/jobs/export"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/jobs/export"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1204,7 +1204,7 @@ get_gcm_channel(Client, ApplicationId)
     get_gcm_channel(Client, ApplicationId, []).
 get_gcm_channel(Client, ApplicationId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/channels/gcm"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/gcm"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1220,7 +1220,7 @@ get_import_job(Client, ApplicationId, JobId)
     get_import_job(Client, ApplicationId, JobId, []).
 get_import_job(Client, ApplicationId, JobId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/jobs/import/", http_uri:encode(JobId), ""],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/jobs/import/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1236,7 +1236,7 @@ get_import_jobs(Client, ApplicationId, PageSize, Token)
     get_import_jobs(Client, ApplicationId, PageSize, Token, []).
 get_import_jobs(Client, ApplicationId, PageSize, Token, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/jobs/import"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/jobs/import"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1257,7 +1257,7 @@ get_journey(Client, ApplicationId, JourneyId)
     get_journey(Client, ApplicationId, JourneyId, []).
 get_journey(Client, ApplicationId, JourneyId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/journeys/", http_uri:encode(JourneyId), ""],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/journeys/", aws_util:encode_uri(JourneyId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1273,7 +1273,7 @@ get_journey_date_range_kpi(Client, ApplicationId, JourneyId, KpiName, EndTime, N
     get_journey_date_range_kpi(Client, ApplicationId, JourneyId, KpiName, EndTime, NextToken, PageSize, StartTime, []).
 get_journey_date_range_kpi(Client, ApplicationId, JourneyId, KpiName, EndTime, NextToken, PageSize, StartTime, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/journeys/", http_uri:encode(JourneyId), "/kpis/daterange/", http_uri:encode(KpiName), ""],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/journeys/", aws_util:encode_uri(JourneyId), "/kpis/daterange/", aws_util:encode_uri(KpiName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1296,7 +1296,7 @@ get_journey_execution_activity_metrics(Client, ApplicationId, JourneyActivityId,
     get_journey_execution_activity_metrics(Client, ApplicationId, JourneyActivityId, JourneyId, NextToken, PageSize, []).
 get_journey_execution_activity_metrics(Client, ApplicationId, JourneyActivityId, JourneyId, NextToken, PageSize, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/journeys/", http_uri:encode(JourneyId), "/activities/", http_uri:encode(JourneyActivityId), "/execution-metrics"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/journeys/", aws_util:encode_uri(JourneyId), "/activities/", aws_util:encode_uri(JourneyActivityId), "/execution-metrics"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1317,7 +1317,7 @@ get_journey_execution_metrics(Client, ApplicationId, JourneyId, NextToken, PageS
     get_journey_execution_metrics(Client, ApplicationId, JourneyId, NextToken, PageSize, []).
 get_journey_execution_metrics(Client, ApplicationId, JourneyId, NextToken, PageSize, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/journeys/", http_uri:encode(JourneyId), "/execution-metrics"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/journeys/", aws_util:encode_uri(JourneyId), "/execution-metrics"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1338,7 +1338,7 @@ get_push_template(Client, TemplateName, Version)
     get_push_template(Client, TemplateName, Version, []).
 get_push_template(Client, TemplateName, Version, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/templates/", http_uri:encode(TemplateName), "/push"],
+    Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/push"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1358,7 +1358,7 @@ get_recommender_configuration(Client, RecommenderId)
     get_recommender_configuration(Client, RecommenderId, []).
 get_recommender_configuration(Client, RecommenderId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/recommenders/", http_uri:encode(RecommenderId), ""],
+    Path = ["/v1/recommenders/", aws_util:encode_uri(RecommenderId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1395,7 +1395,7 @@ get_segment(Client, ApplicationId, SegmentId)
     get_segment(Client, ApplicationId, SegmentId, []).
 get_segment(Client, ApplicationId, SegmentId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/segments/", http_uri:encode(SegmentId), ""],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/segments/", aws_util:encode_uri(SegmentId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1411,7 +1411,7 @@ get_segment_export_jobs(Client, ApplicationId, SegmentId, PageSize, Token)
     get_segment_export_jobs(Client, ApplicationId, SegmentId, PageSize, Token, []).
 get_segment_export_jobs(Client, ApplicationId, SegmentId, PageSize, Token, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/segments/", http_uri:encode(SegmentId), "/jobs/export"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/segments/", aws_util:encode_uri(SegmentId), "/jobs/export"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1432,7 +1432,7 @@ get_segment_import_jobs(Client, ApplicationId, SegmentId, PageSize, Token)
     get_segment_import_jobs(Client, ApplicationId, SegmentId, PageSize, Token, []).
 get_segment_import_jobs(Client, ApplicationId, SegmentId, PageSize, Token, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/segments/", http_uri:encode(SegmentId), "/jobs/import"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/segments/", aws_util:encode_uri(SegmentId), "/jobs/import"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1454,7 +1454,7 @@ get_segment_version(Client, ApplicationId, SegmentId, Version)
     get_segment_version(Client, ApplicationId, SegmentId, Version, []).
 get_segment_version(Client, ApplicationId, SegmentId, Version, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/segments/", http_uri:encode(SegmentId), "/versions/", http_uri:encode(Version), ""],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/segments/", aws_util:encode_uri(SegmentId), "/versions/", aws_util:encode_uri(Version), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1471,7 +1471,7 @@ get_segment_versions(Client, ApplicationId, SegmentId, PageSize, Token)
     get_segment_versions(Client, ApplicationId, SegmentId, PageSize, Token, []).
 get_segment_versions(Client, ApplicationId, SegmentId, PageSize, Token, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/segments/", http_uri:encode(SegmentId), "/versions"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/segments/", aws_util:encode_uri(SegmentId), "/versions"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1492,7 +1492,7 @@ get_segments(Client, ApplicationId, PageSize, Token)
     get_segments(Client, ApplicationId, PageSize, Token, []).
 get_segments(Client, ApplicationId, PageSize, Token, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/segments"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/segments"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1513,7 +1513,7 @@ get_sms_channel(Client, ApplicationId)
     get_sms_channel(Client, ApplicationId, []).
 get_sms_channel(Client, ApplicationId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/channels/sms"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/sms"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1529,7 +1529,7 @@ get_sms_template(Client, TemplateName, Version)
     get_sms_template(Client, TemplateName, Version, []).
 get_sms_template(Client, TemplateName, Version, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/templates/", http_uri:encode(TemplateName), "/sms"],
+    Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/sms"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1549,7 +1549,7 @@ get_user_endpoints(Client, ApplicationId, UserId)
     get_user_endpoints(Client, ApplicationId, UserId, []).
 get_user_endpoints(Client, ApplicationId, UserId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/users/", http_uri:encode(UserId), ""],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/users/", aws_util:encode_uri(UserId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1565,7 +1565,7 @@ get_voice_channel(Client, ApplicationId)
     get_voice_channel(Client, ApplicationId, []).
 get_voice_channel(Client, ApplicationId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/channels/voice"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/voice"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1581,7 +1581,7 @@ get_voice_template(Client, TemplateName, Version)
     get_voice_template(Client, TemplateName, Version, []).
 get_voice_template(Client, TemplateName, Version, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/templates/", http_uri:encode(TemplateName), "/voice"],
+    Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/voice"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1601,7 +1601,7 @@ list_journeys(Client, ApplicationId, PageSize, Token)
     list_journeys(Client, ApplicationId, PageSize, Token, []).
 list_journeys(Client, ApplicationId, PageSize, Token, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/journeys"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/journeys"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1622,7 +1622,7 @@ list_tags_for_resource(Client, ResourceArn)
     list_tags_for_resource(Client, ResourceArn, []).
 list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1638,7 +1638,7 @@ list_template_versions(Client, TemplateName, TemplateType, NextToken, PageSize)
     list_template_versions(Client, TemplateName, TemplateType, NextToken, PageSize, []).
 list_template_versions(Client, TemplateName, TemplateType, NextToken, PageSize, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/templates/", http_uri:encode(TemplateName), "/", http_uri:encode(TemplateType), "/versions"],
+    Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/", aws_util:encode_uri(TemplateType), "/versions"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1697,7 +1697,7 @@ put_event_stream(Client, ApplicationId, Input) ->
     put_event_stream(Client, ApplicationId, Input, []).
 put_event_stream(Client, ApplicationId, Input0, Options) ->
     Method = post,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/eventstream"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/eventstream"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1714,7 +1714,7 @@ put_events(Client, ApplicationId, Input) ->
     put_events(Client, ApplicationId, Input, []).
 put_events(Client, ApplicationId, Input0, Options) ->
     Method = post,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/events"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/events"],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -1731,7 +1731,7 @@ remove_attributes(Client, ApplicationId, AttributeType, Input) ->
     remove_attributes(Client, ApplicationId, AttributeType, Input, []).
 remove_attributes(Client, ApplicationId, AttributeType, Input0, Options) ->
     Method = put,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/attributes/", http_uri:encode(AttributeType), ""],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/attributes/", aws_util:encode_uri(AttributeType), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1747,7 +1747,7 @@ send_messages(Client, ApplicationId, Input) ->
     send_messages(Client, ApplicationId, Input, []).
 send_messages(Client, ApplicationId, Input0, Options) ->
     Method = post,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/messages"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/messages"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1763,7 +1763,7 @@ send_users_messages(Client, ApplicationId, Input) ->
     send_users_messages(Client, ApplicationId, Input, []).
 send_users_messages(Client, ApplicationId, Input0, Options) ->
     Method = post,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/users-messages"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/users-messages"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1780,7 +1780,7 @@ tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/v1/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -1797,7 +1797,7 @@ untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -1815,7 +1815,7 @@ update_adm_channel(Client, ApplicationId, Input) ->
     update_adm_channel(Client, ApplicationId, Input, []).
 update_adm_channel(Client, ApplicationId, Input0, Options) ->
     Method = put,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/channels/adm"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/adm"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1832,7 +1832,7 @@ update_apns_channel(Client, ApplicationId, Input) ->
     update_apns_channel(Client, ApplicationId, Input, []).
 update_apns_channel(Client, ApplicationId, Input0, Options) ->
     Method = put,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/channels/apns"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/apns"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1849,7 +1849,7 @@ update_apns_sandbox_channel(Client, ApplicationId, Input) ->
     update_apns_sandbox_channel(Client, ApplicationId, Input, []).
 update_apns_sandbox_channel(Client, ApplicationId, Input0, Options) ->
     Method = put,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/channels/apns_sandbox"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/apns_sandbox"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1866,7 +1866,7 @@ update_apns_voip_channel(Client, ApplicationId, Input) ->
     update_apns_voip_channel(Client, ApplicationId, Input, []).
 update_apns_voip_channel(Client, ApplicationId, Input0, Options) ->
     Method = put,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/channels/apns_voip"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/apns_voip"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1884,7 +1884,7 @@ update_apns_voip_sandbox_channel(Client, ApplicationId, Input) ->
     update_apns_voip_sandbox_channel(Client, ApplicationId, Input, []).
 update_apns_voip_sandbox_channel(Client, ApplicationId, Input0, Options) ->
     Method = put,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/channels/apns_voip_sandbox"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/apns_voip_sandbox"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1900,7 +1900,7 @@ update_application_settings(Client, ApplicationId, Input) ->
     update_application_settings(Client, ApplicationId, Input, []).
 update_application_settings(Client, ApplicationId, Input0, Options) ->
     Method = put,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/settings"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/settings"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1917,7 +1917,7 @@ update_baidu_channel(Client, ApplicationId, Input) ->
     update_baidu_channel(Client, ApplicationId, Input, []).
 update_baidu_channel(Client, ApplicationId, Input0, Options) ->
     Method = put,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/channels/baidu"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/baidu"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1933,7 +1933,7 @@ update_campaign(Client, ApplicationId, CampaignId, Input) ->
     update_campaign(Client, ApplicationId, CampaignId, Input, []).
 update_campaign(Client, ApplicationId, CampaignId, Input0, Options) ->
     Method = put,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/campaigns/", http_uri:encode(CampaignId), ""],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/campaigns/", aws_util:encode_uri(CampaignId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1950,7 +1950,7 @@ update_email_channel(Client, ApplicationId, Input) ->
     update_email_channel(Client, ApplicationId, Input, []).
 update_email_channel(Client, ApplicationId, Input0, Options) ->
     Method = put,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/channels/email"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/email"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1967,7 +1967,7 @@ update_email_template(Client, TemplateName, Input) ->
     update_email_template(Client, TemplateName, Input, []).
 update_email_template(Client, TemplateName, Input0, Options) ->
     Method = put,
-    Path = ["/v1/templates/", http_uri:encode(TemplateName), "/email"],
+    Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/email"],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -1991,7 +1991,7 @@ update_endpoint(Client, ApplicationId, EndpointId, Input) ->
     update_endpoint(Client, ApplicationId, EndpointId, Input, []).
 update_endpoint(Client, ApplicationId, EndpointId, Input0, Options) ->
     Method = put,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/endpoints/", http_uri:encode(EndpointId), ""],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/endpoints/", aws_util:encode_uri(EndpointId), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -2014,7 +2014,7 @@ update_endpoints_batch(Client, ApplicationId, Input) ->
     update_endpoints_batch(Client, ApplicationId, Input, []).
 update_endpoints_batch(Client, ApplicationId, Input0, Options) ->
     Method = put,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/endpoints"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/endpoints"],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -2031,7 +2031,7 @@ update_gcm_channel(Client, ApplicationId, Input) ->
     update_gcm_channel(Client, ApplicationId, Input, []).
 update_gcm_channel(Client, ApplicationId, Input0, Options) ->
     Method = put,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/channels/gcm"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/gcm"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -2047,7 +2047,7 @@ update_journey(Client, ApplicationId, JourneyId, Input) ->
     update_journey(Client, ApplicationId, JourneyId, Input, []).
 update_journey(Client, ApplicationId, JourneyId, Input0, Options) ->
     Method = put,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/journeys/", http_uri:encode(JourneyId), ""],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/journeys/", aws_util:encode_uri(JourneyId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -2063,7 +2063,7 @@ update_journey_state(Client, ApplicationId, JourneyId, Input) ->
     update_journey_state(Client, ApplicationId, JourneyId, Input, []).
 update_journey_state(Client, ApplicationId, JourneyId, Input0, Options) ->
     Method = put,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/journeys/", http_uri:encode(JourneyId), "/state"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/journeys/", aws_util:encode_uri(JourneyId), "/state"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -2080,7 +2080,7 @@ update_push_template(Client, TemplateName, Input) ->
     update_push_template(Client, TemplateName, Input, []).
 update_push_template(Client, TemplateName, Input0, Options) ->
     Method = put,
-    Path = ["/v1/templates/", http_uri:encode(TemplateName), "/push"],
+    Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/push"],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -2098,7 +2098,7 @@ update_recommender_configuration(Client, RecommenderId, Input) ->
     update_recommender_configuration(Client, RecommenderId, Input, []).
 update_recommender_configuration(Client, RecommenderId, Input0, Options) ->
     Method = put,
-    Path = ["/v1/recommenders/", http_uri:encode(RecommenderId), ""],
+    Path = ["/v1/recommenders/", aws_util:encode_uri(RecommenderId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -2116,7 +2116,7 @@ update_segment(Client, ApplicationId, SegmentId, Input) ->
     update_segment(Client, ApplicationId, SegmentId, Input, []).
 update_segment(Client, ApplicationId, SegmentId, Input0, Options) ->
     Method = put,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/segments/", http_uri:encode(SegmentId), ""],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/segments/", aws_util:encode_uri(SegmentId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -2133,7 +2133,7 @@ update_sms_channel(Client, ApplicationId, Input) ->
     update_sms_channel(Client, ApplicationId, Input, []).
 update_sms_channel(Client, ApplicationId, Input0, Options) ->
     Method = put,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/channels/sms"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/sms"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -2150,7 +2150,7 @@ update_sms_template(Client, TemplateName, Input) ->
     update_sms_template(Client, TemplateName, Input, []).
 update_sms_template(Client, TemplateName, Input0, Options) ->
     Method = put,
-    Path = ["/v1/templates/", http_uri:encode(TemplateName), "/sms"],
+    Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/sms"],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -2169,7 +2169,7 @@ update_template_active_version(Client, TemplateName, TemplateType, Input) ->
     update_template_active_version(Client, TemplateName, TemplateType, Input, []).
 update_template_active_version(Client, TemplateName, TemplateType, Input0, Options) ->
     Method = put,
-    Path = ["/v1/templates/", http_uri:encode(TemplateName), "/", http_uri:encode(TemplateType), "/active-version"],
+    Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/", aws_util:encode_uri(TemplateType), "/active-version"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -2186,7 +2186,7 @@ update_voice_channel(Client, ApplicationId, Input) ->
     update_voice_channel(Client, ApplicationId, Input, []).
 update_voice_channel(Client, ApplicationId, Input0, Options) ->
     Method = put,
-    Path = ["/v1/apps/", http_uri:encode(ApplicationId), "/channels/voice"],
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/voice"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -2203,7 +2203,7 @@ update_voice_template(Client, TemplateName, Input) ->
     update_voice_template(Client, TemplateName, Input, []).
 update_voice_template(Client, TemplateName, Input0, Options) ->
     Method = put,
-    Path = ["/v1/templates/", http_uri:encode(TemplateName), "/voice"],
+    Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/voice"],
     SuccessStatusCode = 202,
 
     Headers = [],

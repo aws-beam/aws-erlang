@@ -116,7 +116,7 @@ create_access_point(Client, Name, Input) ->
     create_access_point(Client, Name, Input, []).
 create_access_point(Client, Name, Input0, Options) ->
     Method = put,
-    Path = ["/v20180820/accesspoint/", http_uri:encode(Name), ""],
+    Path = ["/v20180820/accesspoint/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -175,7 +175,7 @@ create_bucket(Client, Bucket, Input) ->
     create_bucket(Client, Bucket, Input, []).
 create_bucket(Client, Bucket, Input0, Options) ->
     Method = put,
-    Path = ["/v20180820/bucket/", http_uri:encode(Bucket), ""],
+    Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), ""],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -270,7 +270,7 @@ delete_access_point(Client, Name, Input) ->
     delete_access_point(Client, Name, Input, []).
 delete_access_point(Client, Name, Input0, Options) ->
     Method = delete,
-    Path = ["/v20180820/accesspoint/", http_uri:encode(Name), ""],
+    Path = ["/v20180820/accesspoint/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -303,7 +303,7 @@ delete_access_point_policy(Client, Name, Input) ->
     delete_access_point_policy(Client, Name, Input, []).
 delete_access_point_policy(Client, Name, Input0, Options) ->
     Method = delete,
-    Path = ["/v20180820/accesspoint/", http_uri:encode(Name), "/policy"],
+    Path = ["/v20180820/accesspoint/", aws_util:encode_uri(Name), "/policy"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -346,7 +346,7 @@ delete_bucket(Client, Bucket, Input) ->
     delete_bucket(Client, Bucket, Input, []).
 delete_bucket(Client, Bucket, Input0, Options) ->
     Method = delete,
-    Path = ["/v20180820/bucket/", http_uri:encode(Bucket), ""],
+    Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), ""],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -399,7 +399,7 @@ delete_bucket_lifecycle_configuration(Client, Bucket, Input) ->
     delete_bucket_lifecycle_configuration(Client, Bucket, Input, []).
 delete_bucket_lifecycle_configuration(Client, Bucket, Input0, Options) ->
     Method = delete,
-    Path = ["/v20180820/bucket/", http_uri:encode(Bucket), "/lifecycleconfiguration"],
+    Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/lifecycleconfiguration"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -456,7 +456,7 @@ delete_bucket_policy(Client, Bucket, Input) ->
     delete_bucket_policy(Client, Bucket, Input, []).
 delete_bucket_policy(Client, Bucket, Input0, Options) ->
     Method = delete,
-    Path = ["/v20180820/bucket/", http_uri:encode(Bucket), "/policy"],
+    Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/policy"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -499,7 +499,7 @@ delete_bucket_tagging(Client, Bucket, Input) ->
     delete_bucket_tagging(Client, Bucket, Input, []).
 delete_bucket_tagging(Client, Bucket, Input0, Options) ->
     Method = delete,
-    Path = ["/v20180820/bucket/", http_uri:encode(Bucket), "/tagging"],
+    Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/tagging"],
     SuccessStatusCode = 204,
 
     HeadersMapping = [
@@ -533,7 +533,7 @@ delete_job_tagging(Client, JobId, Input) ->
     delete_job_tagging(Client, JobId, Input, []).
 delete_job_tagging(Client, JobId, Input0, Options) ->
     Method = delete,
-    Path = ["/v20180820/jobs/", http_uri:encode(JobId), "/tagging"],
+    Path = ["/v20180820/jobs/", aws_util:encode_uri(JobId), "/tagging"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -596,7 +596,7 @@ describe_job(Client, JobId, AccountId)
     describe_job(Client, JobId, AccountId, []).
 describe_job(Client, JobId, AccountId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v20180820/jobs/", http_uri:encode(JobId), ""],
+    Path = ["/v20180820/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -632,7 +632,7 @@ get_access_point(Client, Name, AccountId)
     get_access_point(Client, Name, AccountId, []).
 get_access_point(Client, Name, AccountId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v20180820/accesspoint/", http_uri:encode(Name), ""],
+    Path = ["/v20180820/accesspoint/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -660,7 +660,7 @@ get_access_point_policy(Client, Name, AccountId)
     get_access_point_policy(Client, Name, AccountId, []).
 get_access_point_policy(Client, Name, AccountId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v20180820/accesspoint/", http_uri:encode(Name), "/policy"],
+    Path = ["/v20180820/accesspoint/", aws_util:encode_uri(Name), "/policy"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -684,7 +684,7 @@ get_access_point_policy_status(Client, Name, AccountId)
     get_access_point_policy_status(Client, Name, AccountId, []).
 get_access_point_policy_status(Client, Name, AccountId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v20180820/accesspoint/", http_uri:encode(Name), "/policyStatus"],
+    Path = ["/v20180820/accesspoint/", aws_util:encode_uri(Name), "/policyStatus"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -717,7 +717,7 @@ get_bucket(Client, Bucket, AccountId)
     get_bucket(Client, Bucket, AccountId, []).
 get_bucket(Client, Bucket, AccountId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v20180820/bucket/", http_uri:encode(Bucket), ""],
+    Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), ""],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -778,7 +778,7 @@ get_bucket_lifecycle_configuration(Client, Bucket, AccountId)
     get_bucket_lifecycle_configuration(Client, Bucket, AccountId, []).
 get_bucket_lifecycle_configuration(Client, Bucket, AccountId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v20180820/bucket/", http_uri:encode(Bucket), "/lifecycleconfiguration"],
+    Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/lifecycleconfiguration"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -839,7 +839,7 @@ get_bucket_policy(Client, Bucket, AccountId)
     get_bucket_policy(Client, Bucket, AccountId, []).
 get_bucket_policy(Client, Bucket, AccountId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v20180820/bucket/", http_uri:encode(Bucket), "/policy"],
+    Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/policy"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -890,7 +890,7 @@ get_bucket_tagging(Client, Bucket, AccountId)
     get_bucket_tagging(Client, Bucket, AccountId, []).
 get_bucket_tagging(Client, Bucket, AccountId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v20180820/bucket/", http_uri:encode(Bucket), "/tagging"],
+    Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/tagging"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -924,7 +924,7 @@ get_job_tagging(Client, JobId, AccountId)
     get_job_tagging(Client, JobId, AccountId, []).
 get_job_tagging(Client, JobId, AccountId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v20180820/jobs/", http_uri:encode(JobId), "/tagging"],
+    Path = ["/v20180820/jobs/", aws_util:encode_uri(JobId), "/tagging"],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -1111,7 +1111,7 @@ put_access_point_policy(Client, Name, Input) ->
     put_access_point_policy(Client, Name, Input, []).
 put_access_point_policy(Client, Name, Input0, Options) ->
     Method = put,
-    Path = ["/v20180820/accesspoint/", http_uri:encode(Name), "/policy"],
+    Path = ["/v20180820/accesspoint/", aws_util:encode_uri(Name), "/policy"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -1153,7 +1153,7 @@ put_bucket_lifecycle_configuration(Client, Bucket, Input) ->
     put_bucket_lifecycle_configuration(Client, Bucket, Input, []).
 put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options) ->
     Method = put,
-    Path = ["/v20180820/bucket/", http_uri:encode(Bucket), "/lifecycleconfiguration"],
+    Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/lifecycleconfiguration"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -1211,7 +1211,7 @@ put_bucket_policy(Client, Bucket, Input) ->
     put_bucket_policy(Client, Bucket, Input, []).
 put_bucket_policy(Client, Bucket, Input0, Options) ->
     Method = put,
-    Path = ["/v20180820/bucket/", http_uri:encode(Bucket), "/policy"],
+    Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/policy"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -1295,7 +1295,7 @@ put_bucket_tagging(Client, Bucket, Input) ->
     put_bucket_tagging(Client, Bucket, Input, []).
 put_bucket_tagging(Client, Bucket, Input0, Options) ->
     Method = put,
-    Path = ["/v20180820/bucket/", http_uri:encode(Bucket), "/tagging"],
+    Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/tagging"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -1362,7 +1362,7 @@ put_job_tagging(Client, JobId, Input) ->
     put_job_tagging(Client, JobId, Input, []).
 put_job_tagging(Client, JobId, Input0, Options) ->
     Method = put,
-    Path = ["/v20180820/jobs/", http_uri:encode(JobId), "/tagging"],
+    Path = ["/v20180820/jobs/", aws_util:encode_uri(JobId), "/tagging"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -1424,7 +1424,7 @@ update_job_priority(Client, JobId, Input) ->
     update_job_priority(Client, JobId, Input, []).
 update_job_priority(Client, JobId, Input0, Options) ->
     Method = post,
-    Path = ["/v20180820/jobs/", http_uri:encode(JobId), "/priority"],
+    Path = ["/v20180820/jobs/", aws_util:encode_uri(JobId), "/priority"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -1459,7 +1459,7 @@ update_job_status(Client, JobId, Input) ->
     update_job_status(Client, JobId, Input, []).
 update_job_status(Client, JobId, Input0, Options) ->
     Method = post,
-    Path = ["/v20180820/jobs/", http_uri:encode(JobId), "/status"],
+    Path = ["/v20180820/jobs/", aws_util:encode_uri(JobId), "/status"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [

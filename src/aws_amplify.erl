@@ -113,7 +113,7 @@ create_backend_environment(Client, AppId, Input) ->
     create_backend_environment(Client, AppId, Input, []).
 create_backend_environment(Client, AppId, Input0, Options) ->
     Method = post,
-    Path = ["/apps/", http_uri:encode(AppId), "/backendenvironments"],
+    Path = ["/apps/", aws_util:encode_uri(AppId), "/backendenvironments"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -129,7 +129,7 @@ create_branch(Client, AppId, Input) ->
     create_branch(Client, AppId, Input, []).
 create_branch(Client, AppId, Input0, Options) ->
     Method = post,
-    Path = ["/apps/", http_uri:encode(AppId), "/branches"],
+    Path = ["/apps/", aws_util:encode_uri(AppId), "/branches"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -147,7 +147,7 @@ create_deployment(Client, AppId, BranchName, Input) ->
     create_deployment(Client, AppId, BranchName, Input, []).
 create_deployment(Client, AppId, BranchName, Input0, Options) ->
     Method = post,
-    Path = ["/apps/", http_uri:encode(AppId), "/branches/", http_uri:encode(BranchName), "/deployments"],
+    Path = ["/apps/", aws_util:encode_uri(AppId), "/branches/", aws_util:encode_uri(BranchName), "/deployments"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -165,7 +165,7 @@ create_domain_association(Client, AppId, Input) ->
     create_domain_association(Client, AppId, Input, []).
 create_domain_association(Client, AppId, Input0, Options) ->
     Method = post,
-    Path = ["/apps/", http_uri:encode(AppId), "/domains"],
+    Path = ["/apps/", aws_util:encode_uri(AppId), "/domains"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -181,7 +181,7 @@ create_webhook(Client, AppId, Input) ->
     create_webhook(Client, AppId, Input, []).
 create_webhook(Client, AppId, Input0, Options) ->
     Method = post,
-    Path = ["/apps/", http_uri:encode(AppId), "/webhooks"],
+    Path = ["/apps/", aws_util:encode_uri(AppId), "/webhooks"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -197,7 +197,7 @@ delete_app(Client, AppId, Input) ->
     delete_app(Client, AppId, Input, []).
 delete_app(Client, AppId, Input0, Options) ->
     Method = delete,
-    Path = ["/apps/", http_uri:encode(AppId), ""],
+    Path = ["/apps/", aws_util:encode_uri(AppId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -213,7 +213,7 @@ delete_backend_environment(Client, AppId, EnvironmentName, Input) ->
     delete_backend_environment(Client, AppId, EnvironmentName, Input, []).
 delete_backend_environment(Client, AppId, EnvironmentName, Input0, Options) ->
     Method = delete,
-    Path = ["/apps/", http_uri:encode(AppId), "/backendenvironments/", http_uri:encode(EnvironmentName), ""],
+    Path = ["/apps/", aws_util:encode_uri(AppId), "/backendenvironments/", aws_util:encode_uri(EnvironmentName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -229,7 +229,7 @@ delete_branch(Client, AppId, BranchName, Input) ->
     delete_branch(Client, AppId, BranchName, Input, []).
 delete_branch(Client, AppId, BranchName, Input0, Options) ->
     Method = delete,
-    Path = ["/apps/", http_uri:encode(AppId), "/branches/", http_uri:encode(BranchName), ""],
+    Path = ["/apps/", aws_util:encode_uri(AppId), "/branches/", aws_util:encode_uri(BranchName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -245,7 +245,7 @@ delete_domain_association(Client, AppId, DomainName, Input) ->
     delete_domain_association(Client, AppId, DomainName, Input, []).
 delete_domain_association(Client, AppId, DomainName, Input0, Options) ->
     Method = delete,
-    Path = ["/apps/", http_uri:encode(AppId), "/domains/", http_uri:encode(DomainName), ""],
+    Path = ["/apps/", aws_util:encode_uri(AppId), "/domains/", aws_util:encode_uri(DomainName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -261,7 +261,7 @@ delete_job(Client, AppId, BranchName, JobId, Input) ->
     delete_job(Client, AppId, BranchName, JobId, Input, []).
 delete_job(Client, AppId, BranchName, JobId, Input0, Options) ->
     Method = delete,
-    Path = ["/apps/", http_uri:encode(AppId), "/branches/", http_uri:encode(BranchName), "/jobs/", http_uri:encode(JobId), ""],
+    Path = ["/apps/", aws_util:encode_uri(AppId), "/branches/", aws_util:encode_uri(BranchName), "/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -277,7 +277,7 @@ delete_webhook(Client, WebhookId, Input) ->
     delete_webhook(Client, WebhookId, Input, []).
 delete_webhook(Client, WebhookId, Input0, Options) ->
     Method = delete,
-    Path = ["/webhooks/", http_uri:encode(WebhookId), ""],
+    Path = ["/webhooks/", aws_util:encode_uri(WebhookId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -294,7 +294,7 @@ generate_access_logs(Client, AppId, Input) ->
     generate_access_logs(Client, AppId, Input, []).
 generate_access_logs(Client, AppId, Input0, Options) ->
     Method = post,
-    Path = ["/apps/", http_uri:encode(AppId), "/accesslogs"],
+    Path = ["/apps/", aws_util:encode_uri(AppId), "/accesslogs"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -311,7 +311,7 @@ get_app(Client, AppId)
     get_app(Client, AppId, []).
 get_app(Client, AppId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/apps/", http_uri:encode(AppId), ""],
+    Path = ["/apps/", aws_util:encode_uri(AppId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -326,7 +326,7 @@ get_artifact_url(Client, ArtifactId)
     get_artifact_url(Client, ArtifactId, []).
 get_artifact_url(Client, ArtifactId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/artifacts/", http_uri:encode(ArtifactId), ""],
+    Path = ["/artifacts/", aws_util:encode_uri(ArtifactId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -341,7 +341,7 @@ get_backend_environment(Client, AppId, EnvironmentName)
     get_backend_environment(Client, AppId, EnvironmentName, []).
 get_backend_environment(Client, AppId, EnvironmentName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/apps/", http_uri:encode(AppId), "/backendenvironments/", http_uri:encode(EnvironmentName), ""],
+    Path = ["/apps/", aws_util:encode_uri(AppId), "/backendenvironments/", aws_util:encode_uri(EnvironmentName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -356,7 +356,7 @@ get_branch(Client, AppId, BranchName)
     get_branch(Client, AppId, BranchName, []).
 get_branch(Client, AppId, BranchName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/apps/", http_uri:encode(AppId), "/branches/", http_uri:encode(BranchName), ""],
+    Path = ["/apps/", aws_util:encode_uri(AppId), "/branches/", aws_util:encode_uri(BranchName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -371,7 +371,7 @@ get_domain_association(Client, AppId, DomainName)
     get_domain_association(Client, AppId, DomainName, []).
 get_domain_association(Client, AppId, DomainName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/apps/", http_uri:encode(AppId), "/domains/", http_uri:encode(DomainName), ""],
+    Path = ["/apps/", aws_util:encode_uri(AppId), "/domains/", aws_util:encode_uri(DomainName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -386,7 +386,7 @@ get_job(Client, AppId, BranchName, JobId)
     get_job(Client, AppId, BranchName, JobId, []).
 get_job(Client, AppId, BranchName, JobId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/apps/", http_uri:encode(AppId), "/branches/", http_uri:encode(BranchName), "/jobs/", http_uri:encode(JobId), ""],
+    Path = ["/apps/", aws_util:encode_uri(AppId), "/branches/", aws_util:encode_uri(BranchName), "/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -402,7 +402,7 @@ get_webhook(Client, WebhookId)
     get_webhook(Client, WebhookId, []).
 get_webhook(Client, WebhookId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/webhooks/", http_uri:encode(WebhookId), ""],
+    Path = ["/webhooks/", aws_util:encode_uri(WebhookId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -437,7 +437,7 @@ list_artifacts(Client, AppId, BranchName, JobId, MaxResults, NextToken)
     list_artifacts(Client, AppId, BranchName, JobId, MaxResults, NextToken, []).
 list_artifacts(Client, AppId, BranchName, JobId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/apps/", http_uri:encode(AppId), "/branches/", http_uri:encode(BranchName), "/jobs/", http_uri:encode(JobId), "/artifacts"],
+    Path = ["/apps/", aws_util:encode_uri(AppId), "/branches/", aws_util:encode_uri(BranchName), "/jobs/", aws_util:encode_uri(JobId), "/artifacts"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -457,7 +457,7 @@ list_backend_environments(Client, AppId, EnvironmentName, MaxResults, NextToken)
     list_backend_environments(Client, AppId, EnvironmentName, MaxResults, NextToken, []).
 list_backend_environments(Client, AppId, EnvironmentName, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/apps/", http_uri:encode(AppId), "/backendenvironments"],
+    Path = ["/apps/", aws_util:encode_uri(AppId), "/backendenvironments"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -478,7 +478,7 @@ list_branches(Client, AppId, MaxResults, NextToken)
     list_branches(Client, AppId, MaxResults, NextToken, []).
 list_branches(Client, AppId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/apps/", http_uri:encode(AppId), "/branches"],
+    Path = ["/apps/", aws_util:encode_uri(AppId), "/branches"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -498,7 +498,7 @@ list_domain_associations(Client, AppId, MaxResults, NextToken)
     list_domain_associations(Client, AppId, MaxResults, NextToken, []).
 list_domain_associations(Client, AppId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/apps/", http_uri:encode(AppId), "/domains"],
+    Path = ["/apps/", aws_util:encode_uri(AppId), "/domains"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -518,7 +518,7 @@ list_jobs(Client, AppId, BranchName, MaxResults, NextToken)
     list_jobs(Client, AppId, BranchName, MaxResults, NextToken, []).
 list_jobs(Client, AppId, BranchName, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/apps/", http_uri:encode(AppId), "/branches/", http_uri:encode(BranchName), "/jobs"],
+    Path = ["/apps/", aws_util:encode_uri(AppId), "/branches/", aws_util:encode_uri(BranchName), "/jobs"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -538,7 +538,7 @@ list_tags_for_resource(Client, ResourceArn)
     list_tags_for_resource(Client, ResourceArn, []).
 list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -553,7 +553,7 @@ list_webhooks(Client, AppId, MaxResults, NextToken)
     list_webhooks(Client, AppId, MaxResults, NextToken, []).
 list_webhooks(Client, AppId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/apps/", http_uri:encode(AppId), "/webhooks"],
+    Path = ["/apps/", aws_util:encode_uri(AppId), "/webhooks"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -574,7 +574,7 @@ start_deployment(Client, AppId, BranchName, Input) ->
     start_deployment(Client, AppId, BranchName, Input, []).
 start_deployment(Client, AppId, BranchName, Input0, Options) ->
     Method = post,
-    Path = ["/apps/", http_uri:encode(AppId), "/branches/", http_uri:encode(BranchName), "/deployments/start"],
+    Path = ["/apps/", aws_util:encode_uri(AppId), "/branches/", aws_util:encode_uri(BranchName), "/deployments/start"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -590,7 +590,7 @@ start_job(Client, AppId, BranchName, Input) ->
     start_job(Client, AppId, BranchName, Input, []).
 start_job(Client, AppId, BranchName, Input0, Options) ->
     Method = post,
-    Path = ["/apps/", http_uri:encode(AppId), "/branches/", http_uri:encode(BranchName), "/jobs"],
+    Path = ["/apps/", aws_util:encode_uri(AppId), "/branches/", aws_util:encode_uri(BranchName), "/jobs"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -606,7 +606,7 @@ stop_job(Client, AppId, BranchName, JobId, Input) ->
     stop_job(Client, AppId, BranchName, JobId, Input, []).
 stop_job(Client, AppId, BranchName, JobId, Input0, Options) ->
     Method = delete,
-    Path = ["/apps/", http_uri:encode(AppId), "/branches/", http_uri:encode(BranchName), "/jobs/", http_uri:encode(JobId), "/stop"],
+    Path = ["/apps/", aws_util:encode_uri(AppId), "/branches/", aws_util:encode_uri(BranchName), "/jobs/", aws_util:encode_uri(JobId), "/stop"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -622,7 +622,7 @@ tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -638,7 +638,7 @@ untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -655,7 +655,7 @@ update_app(Client, AppId, Input) ->
     update_app(Client, AppId, Input, []).
 update_app(Client, AppId, Input0, Options) ->
     Method = post,
-    Path = ["/apps/", http_uri:encode(AppId), ""],
+    Path = ["/apps/", aws_util:encode_uri(AppId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -671,7 +671,7 @@ update_branch(Client, AppId, BranchName, Input) ->
     update_branch(Client, AppId, BranchName, Input, []).
 update_branch(Client, AppId, BranchName, Input0, Options) ->
     Method = post,
-    Path = ["/apps/", http_uri:encode(AppId), "/branches/", http_uri:encode(BranchName), ""],
+    Path = ["/apps/", aws_util:encode_uri(AppId), "/branches/", aws_util:encode_uri(BranchName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -687,7 +687,7 @@ update_domain_association(Client, AppId, DomainName, Input) ->
     update_domain_association(Client, AppId, DomainName, Input, []).
 update_domain_association(Client, AppId, DomainName, Input0, Options) ->
     Method = post,
-    Path = ["/apps/", http_uri:encode(AppId), "/domains/", http_uri:encode(DomainName), ""],
+    Path = ["/apps/", aws_util:encode_uri(AppId), "/domains/", aws_util:encode_uri(DomainName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -703,7 +703,7 @@ update_webhook(Client, WebhookId, Input) ->
     update_webhook(Client, WebhookId, Input, []).
 update_webhook(Client, WebhookId, Input0, Options) ->
     Method = post,
-    Path = ["/webhooks/", http_uri:encode(WebhookId), ""],
+    Path = ["/webhooks/", aws_util:encode_uri(WebhookId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],

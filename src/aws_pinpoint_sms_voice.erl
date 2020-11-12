@@ -51,7 +51,7 @@ create_configuration_set_event_destination(Client, ConfigurationSetName, Input) 
     create_configuration_set_event_destination(Client, ConfigurationSetName, Input, []).
 create_configuration_set_event_destination(Client, ConfigurationSetName, Input0, Options) ->
     Method = post,
-    Path = ["/v1/sms-voice/configuration-sets/", http_uri:encode(ConfigurationSetName), "/event-destinations"],
+    Path = ["/v1/sms-voice/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/event-destinations"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -67,7 +67,7 @@ delete_configuration_set(Client, ConfigurationSetName, Input) ->
     delete_configuration_set(Client, ConfigurationSetName, Input, []).
 delete_configuration_set(Client, ConfigurationSetName, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/sms-voice/configuration-sets/", http_uri:encode(ConfigurationSetName), ""],
+    Path = ["/v1/sms-voice/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -83,7 +83,7 @@ delete_configuration_set_event_destination(Client, ConfigurationSetName, EventDe
     delete_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input, []).
 delete_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/sms-voice/configuration-sets/", http_uri:encode(ConfigurationSetName), "/event-destinations/", http_uri:encode(EventDestinationName), ""],
+    Path = ["/v1/sms-voice/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/event-destinations/", aws_util:encode_uri(EventDestinationName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -102,7 +102,7 @@ get_configuration_set_event_destinations(Client, ConfigurationSetName)
     get_configuration_set_event_destinations(Client, ConfigurationSetName, []).
 get_configuration_set_event_destinations(Client, ConfigurationSetName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/sms-voice/configuration-sets/", http_uri:encode(ConfigurationSetName), "/event-destinations"],
+    Path = ["/v1/sms-voice/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/event-destinations"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -157,7 +157,7 @@ update_configuration_set_event_destination(Client, ConfigurationSetName, EventDe
     update_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input, []).
 update_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input0, Options) ->
     Method = put,
-    Path = ["/v1/sms-voice/configuration-sets/", http_uri:encode(ConfigurationSetName), "/event-destinations/", http_uri:encode(EventDestinationName), ""],
+    Path = ["/v1/sms-voice/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/event-destinations/", aws_util:encode_uri(EventDestinationName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],

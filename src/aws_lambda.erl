@@ -131,7 +131,7 @@ add_layer_version_permission(Client, LayerName, VersionNumber, Input) ->
     add_layer_version_permission(Client, LayerName, VersionNumber, Input, []).
 add_layer_version_permission(Client, LayerName, VersionNumber, Input0, Options) ->
     Method = post,
-    Path = ["/2018-10-31/layers/", http_uri:encode(LayerName), "/versions/", http_uri:encode(VersionNumber), "/policy"],
+    Path = ["/2018-10-31/layers/", aws_util:encode_uri(LayerName), "/versions/", aws_util:encode_uri(VersionNumber), "/policy"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -166,7 +166,7 @@ add_permission(Client, FunctionName, Input) ->
     add_permission(Client, FunctionName, Input, []).
 add_permission(Client, FunctionName, Input0, Options) ->
     Method = post,
-    Path = ["/2015-03-31/functions/", http_uri:encode(FunctionName), "/policy"],
+    Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/policy"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -190,7 +190,7 @@ create_alias(Client, FunctionName, Input) ->
     create_alias(Client, FunctionName, Input, []).
 create_alias(Client, FunctionName, Input0, Options) ->
     Method = post,
-    Path = ["/2015-03-31/functions/", http_uri:encode(FunctionName), "/aliases"],
+    Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/aliases"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -309,7 +309,7 @@ delete_alias(Client, FunctionName, Name, Input) ->
     delete_alias(Client, FunctionName, Name, Input, []).
 delete_alias(Client, FunctionName, Name, Input0, Options) ->
     Method = delete,
-    Path = ["/2015-03-31/functions/", http_uri:encode(FunctionName), "/aliases/", http_uri:encode(Name), ""],
+    Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/aliases/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -331,7 +331,7 @@ delete_event_source_mapping(Client, UUID, Input) ->
     delete_event_source_mapping(Client, UUID, Input, []).
 delete_event_source_mapping(Client, UUID, Input0, Options) ->
     Method = delete,
-    Path = ["/2015-03-31/event-source-mappings/", http_uri:encode(UUID), ""],
+    Path = ["/2015-03-31/event-source-mappings/", aws_util:encode_uri(UUID), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -355,7 +355,7 @@ delete_function(Client, FunctionName, Input) ->
     delete_function(Client, FunctionName, Input, []).
 delete_function(Client, FunctionName, Input0, Options) ->
     Method = delete,
-    Path = ["/2015-03-31/functions/", http_uri:encode(FunctionName), ""],
+    Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -372,7 +372,7 @@ delete_function_concurrency(Client, FunctionName, Input) ->
     delete_function_concurrency(Client, FunctionName, Input, []).
 delete_function_concurrency(Client, FunctionName, Input0, Options) ->
     Method = delete,
-    Path = ["/2017-10-31/functions/", http_uri:encode(FunctionName), "/concurrency"],
+    Path = ["/2017-10-31/functions/", aws_util:encode_uri(FunctionName), "/concurrency"],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -392,7 +392,7 @@ delete_function_event_invoke_config(Client, FunctionName, Input) ->
     delete_function_event_invoke_config(Client, FunctionName, Input, []).
 delete_function_event_invoke_config(Client, FunctionName, Input0, Options) ->
     Method = delete,
-    Path = ["/2019-09-25/functions/", http_uri:encode(FunctionName), "/event-invoke-config"],
+    Path = ["/2019-09-25/functions/", aws_util:encode_uri(FunctionName), "/event-invoke-config"],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -413,7 +413,7 @@ delete_layer_version(Client, LayerName, VersionNumber, Input) ->
     delete_layer_version(Client, LayerName, VersionNumber, Input, []).
 delete_layer_version(Client, LayerName, VersionNumber, Input0, Options) ->
     Method = delete,
-    Path = ["/2018-10-31/layers/", http_uri:encode(LayerName), "/versions/", http_uri:encode(VersionNumber), ""],
+    Path = ["/2018-10-31/layers/", aws_util:encode_uri(LayerName), "/versions/", aws_util:encode_uri(VersionNumber), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -429,7 +429,7 @@ delete_provisioned_concurrency_config(Client, FunctionName, Input) ->
     delete_provisioned_concurrency_config(Client, FunctionName, Input, []).
 delete_provisioned_concurrency_config(Client, FunctionName, Input0, Options) ->
     Method = delete,
-    Path = ["/2019-09-30/functions/", http_uri:encode(FunctionName), "/provisioned-concurrency"],
+    Path = ["/2019-09-30/functions/", aws_util:encode_uri(FunctionName), "/provisioned-concurrency"],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -463,7 +463,7 @@ get_alias(Client, FunctionName, Name)
     get_alias(Client, FunctionName, Name, []).
 get_alias(Client, FunctionName, Name, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2015-03-31/functions/", http_uri:encode(FunctionName), "/aliases/", http_uri:encode(Name), ""],
+    Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/aliases/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -481,7 +481,7 @@ get_event_source_mapping(Client, UUID)
     get_event_source_mapping(Client, UUID, []).
 get_event_source_mapping(Client, UUID, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2015-03-31/event-source-mappings/", http_uri:encode(UUID), ""],
+    Path = ["/2015-03-31/event-source-mappings/", aws_util:encode_uri(UUID), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -500,7 +500,7 @@ get_function(Client, FunctionName, Qualifier)
     get_function(Client, FunctionName, Qualifier, []).
 get_function(Client, FunctionName, Qualifier, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2015-03-31/functions/", http_uri:encode(FunctionName), ""],
+    Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -522,7 +522,7 @@ get_function_concurrency(Client, FunctionName)
     get_function_concurrency(Client, FunctionName, []).
 get_function_concurrency(Client, FunctionName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2019-09-30/functions/", http_uri:encode(FunctionName), "/concurrency"],
+    Path = ["/2019-09-30/functions/", aws_util:encode_uri(FunctionName), "/concurrency"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -544,7 +544,7 @@ get_function_configuration(Client, FunctionName, Qualifier)
     get_function_configuration(Client, FunctionName, Qualifier, []).
 get_function_configuration(Client, FunctionName, Qualifier, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2015-03-31/functions/", http_uri:encode(FunctionName), "/configuration"],
+    Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/configuration"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -567,7 +567,7 @@ get_function_event_invoke_config(Client, FunctionName, Qualifier)
     get_function_event_invoke_config(Client, FunctionName, Qualifier, []).
 get_function_event_invoke_config(Client, FunctionName, Qualifier, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2019-09-25/functions/", http_uri:encode(FunctionName), "/event-invoke-config"],
+    Path = ["/2019-09-25/functions/", aws_util:encode_uri(FunctionName), "/event-invoke-config"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -587,7 +587,7 @@ get_layer_version(Client, LayerName, VersionNumber)
     get_layer_version(Client, LayerName, VersionNumber, []).
 get_layer_version(Client, LayerName, VersionNumber, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2018-10-31/layers/", http_uri:encode(LayerName), "/versions/", http_uri:encode(VersionNumber), ""],
+    Path = ["/2018-10-31/layers/", aws_util:encode_uri(LayerName), "/versions/", aws_util:encode_uri(VersionNumber), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -624,7 +624,7 @@ get_layer_version_policy(Client, LayerName, VersionNumber)
     get_layer_version_policy(Client, LayerName, VersionNumber, []).
 get_layer_version_policy(Client, LayerName, VersionNumber, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2018-10-31/layers/", http_uri:encode(LayerName), "/versions/", http_uri:encode(VersionNumber), "/policy"],
+    Path = ["/2018-10-31/layers/", aws_util:encode_uri(LayerName), "/versions/", aws_util:encode_uri(VersionNumber), "/policy"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -640,7 +640,7 @@ get_policy(Client, FunctionName, Qualifier)
     get_policy(Client, FunctionName, Qualifier, []).
 get_policy(Client, FunctionName, Qualifier, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2015-03-31/functions/", http_uri:encode(FunctionName), "/policy"],
+    Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/policy"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -660,7 +660,7 @@ get_provisioned_concurrency_config(Client, FunctionName, Qualifier)
     get_provisioned_concurrency_config(Client, FunctionName, Qualifier, []).
 get_provisioned_concurrency_config(Client, FunctionName, Qualifier, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2019-09-30/functions/", http_uri:encode(FunctionName), "/provisioned-concurrency"],
+    Path = ["/2019-09-30/functions/", aws_util:encode_uri(FunctionName), "/provisioned-concurrency"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -716,7 +716,7 @@ invoke(Client, FunctionName, Input) ->
     invoke(Client, FunctionName, Input, []).
 invoke(Client, FunctionName, Input0, Options) ->
     Method = post,
-    Path = ["/2015-03-31/functions/", http_uri:encode(FunctionName), "/invocations"],
+    Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/invocations"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -757,7 +757,7 @@ invoke_async(Client, FunctionName, Input) ->
     invoke_async(Client, FunctionName, Input, []).
 invoke_async(Client, FunctionName, Input0, Options) ->
     Method = post,
-    Path = ["/2014-11-13/functions/", http_uri:encode(FunctionName), "/invoke-async/"],
+    Path = ["/2014-11-13/functions/", aws_util:encode_uri(FunctionName), "/invoke-async/"],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -774,7 +774,7 @@ list_aliases(Client, FunctionName, FunctionVersion, Marker, MaxItems)
     list_aliases(Client, FunctionName, FunctionVersion, Marker, MaxItems, []).
 list_aliases(Client, FunctionName, FunctionVersion, Marker, MaxItems, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2015-03-31/functions/", http_uri:encode(FunctionName), "/aliases"],
+    Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/aliases"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -824,7 +824,7 @@ list_function_event_invoke_configs(Client, FunctionName, Marker, MaxItems)
     list_function_event_invoke_configs(Client, FunctionName, Marker, MaxItems, []).
 list_function_event_invoke_configs(Client, FunctionName, Marker, MaxItems, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2019-09-25/functions/", http_uri:encode(FunctionName), "/event-invoke-config/list"],
+    Path = ["/2019-09-25/functions/", aws_util:encode_uri(FunctionName), "/event-invoke-config/list"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -877,7 +877,7 @@ list_layer_versions(Client, LayerName, CompatibleRuntime, Marker, MaxItems)
     list_layer_versions(Client, LayerName, CompatibleRuntime, Marker, MaxItems, []).
 list_layer_versions(Client, LayerName, CompatibleRuntime, Marker, MaxItems, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2018-10-31/layers/", http_uri:encode(LayerName), "/versions"],
+    Path = ["/2018-10-31/layers/", aws_util:encode_uri(LayerName), "/versions"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -924,7 +924,7 @@ list_provisioned_concurrency_configs(Client, FunctionName, Marker, MaxItems)
     list_provisioned_concurrency_configs(Client, FunctionName, Marker, MaxItems, []).
 list_provisioned_concurrency_configs(Client, FunctionName, Marker, MaxItems, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2019-09-30/functions/", http_uri:encode(FunctionName), "/provisioned-concurrency?List=ALL"],
+    Path = ["/2019-09-30/functions/", aws_util:encode_uri(FunctionName), "/provisioned-concurrency?List=ALL"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -946,7 +946,7 @@ list_tags(Client, Resource)
     list_tags(Client, Resource, []).
 list_tags(Client, Resource, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2017-03-31/tags/", http_uri:encode(Resource), ""],
+    Path = ["/2017-03-31/tags/", aws_util:encode_uri(Resource), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -964,7 +964,7 @@ list_versions_by_function(Client, FunctionName, Marker, MaxItems)
     list_versions_by_function(Client, FunctionName, Marker, MaxItems, []).
 list_versions_by_function(Client, FunctionName, Marker, MaxItems, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/2015-03-31/functions/", http_uri:encode(FunctionName), "/versions"],
+    Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/versions"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -989,7 +989,7 @@ publish_layer_version(Client, LayerName, Input) ->
     publish_layer_version(Client, LayerName, Input, []).
 publish_layer_version(Client, LayerName, Input0, Options) ->
     Method = post,
-    Path = ["/2018-10-31/layers/", http_uri:encode(LayerName), "/versions"],
+    Path = ["/2018-10-31/layers/", aws_util:encode_uri(LayerName), "/versions"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -1017,7 +1017,7 @@ publish_version(Client, FunctionName, Input) ->
     publish_version(Client, FunctionName, Input, []).
 publish_version(Client, FunctionName, Input0, Options) ->
     Method = post,
-    Path = ["/2015-03-31/functions/", http_uri:encode(FunctionName), "/versions"],
+    Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/versions"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -1046,7 +1046,7 @@ put_function_concurrency(Client, FunctionName, Input) ->
     put_function_concurrency(Client, FunctionName, Input, []).
 put_function_concurrency(Client, FunctionName, Input0, Options) ->
     Method = put,
-    Path = ["/2017-10-31/functions/", http_uri:encode(FunctionName), "/concurrency"],
+    Path = ["/2017-10-31/functions/", aws_util:encode_uri(FunctionName), "/concurrency"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1081,7 +1081,7 @@ put_function_event_invoke_config(Client, FunctionName, Input) ->
     put_function_event_invoke_config(Client, FunctionName, Input, []).
 put_function_event_invoke_config(Client, FunctionName, Input0, Options) ->
     Method = put,
-    Path = ["/2019-09-25/functions/", http_uri:encode(FunctionName), "/event-invoke-config"],
+    Path = ["/2019-09-25/functions/", aws_util:encode_uri(FunctionName), "/event-invoke-config"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1099,7 +1099,7 @@ put_provisioned_concurrency_config(Client, FunctionName, Input) ->
     put_provisioned_concurrency_config(Client, FunctionName, Input, []).
 put_provisioned_concurrency_config(Client, FunctionName, Input0, Options) ->
     Method = put,
-    Path = ["/2019-09-30/functions/", http_uri:encode(FunctionName), "/provisioned-concurrency"],
+    Path = ["/2019-09-30/functions/", aws_util:encode_uri(FunctionName), "/provisioned-concurrency"],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -1119,7 +1119,7 @@ remove_layer_version_permission(Client, LayerName, StatementId, VersionNumber, I
     remove_layer_version_permission(Client, LayerName, StatementId, VersionNumber, Input, []).
 remove_layer_version_permission(Client, LayerName, StatementId, VersionNumber, Input0, Options) ->
     Method = delete,
-    Path = ["/2018-10-31/layers/", http_uri:encode(LayerName), "/versions/", http_uri:encode(VersionNumber), "/policy/", http_uri:encode(StatementId), ""],
+    Path = ["/2018-10-31/layers/", aws_util:encode_uri(LayerName), "/versions/", aws_util:encode_uri(VersionNumber), "/policy/", aws_util:encode_uri(StatementId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -1139,7 +1139,7 @@ remove_permission(Client, FunctionName, StatementId, Input) ->
     remove_permission(Client, FunctionName, StatementId, Input, []).
 remove_permission(Client, FunctionName, StatementId, Input0, Options) ->
     Method = delete,
-    Path = ["/2015-03-31/functions/", http_uri:encode(FunctionName), "/policy/", http_uri:encode(StatementId), ""],
+    Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/policy/", aws_util:encode_uri(StatementId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -1157,7 +1157,7 @@ tag_resource(Client, Resource, Input) ->
     tag_resource(Client, Resource, Input, []).
 tag_resource(Client, Resource, Input0, Options) ->
     Method = post,
-    Path = ["/2017-03-31/tags/", http_uri:encode(Resource), ""],
+    Path = ["/2017-03-31/tags/", aws_util:encode_uri(Resource), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -1173,7 +1173,7 @@ untag_resource(Client, Resource, Input) ->
     untag_resource(Client, Resource, Input, []).
 untag_resource(Client, Resource, Input0, Options) ->
     Method = delete,
-    Path = ["/2017-03-31/tags/", http_uri:encode(Resource), ""],
+    Path = ["/2017-03-31/tags/", aws_util:encode_uri(Resource), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -1190,7 +1190,7 @@ update_alias(Client, FunctionName, Name, Input) ->
     update_alias(Client, FunctionName, Name, Input, []).
 update_alias(Client, FunctionName, Name, Input0, Options) ->
     Method = put,
-    Path = ["/2015-03-31/functions/", http_uri:encode(FunctionName), "/aliases/", http_uri:encode(Name), ""],
+    Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/aliases/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1231,7 +1231,7 @@ update_event_source_mapping(Client, UUID, Input) ->
     update_event_source_mapping(Client, UUID, Input, []).
 update_event_source_mapping(Client, UUID, Input0, Options) ->
     Method = put,
-    Path = ["/2015-03-31/event-source-mappings/", http_uri:encode(UUID), ""],
+    Path = ["/2015-03-31/event-source-mappings/", aws_util:encode_uri(UUID), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -1250,7 +1250,7 @@ update_function_code(Client, FunctionName, Input) ->
     update_function_code(Client, FunctionName, Input, []).
 update_function_code(Client, FunctionName, Input0, Options) ->
     Method = put,
-    Path = ["/2015-03-31/functions/", http_uri:encode(FunctionName), "/code"],
+    Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/code"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1282,7 +1282,7 @@ update_function_configuration(Client, FunctionName, Input) ->
     update_function_configuration(Client, FunctionName, Input, []).
 update_function_configuration(Client, FunctionName, Input0, Options) ->
     Method = put,
-    Path = ["/2015-03-31/functions/", http_uri:encode(FunctionName), "/configuration"],
+    Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/configuration"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1302,7 +1302,7 @@ update_function_event_invoke_config(Client, FunctionName, Input) ->
     update_function_event_invoke_config(Client, FunctionName, Input, []).
 update_function_event_invoke_config(Client, FunctionName, Input0, Options) ->
     Method = post,
-    Path = ["/2019-09-25/functions/", http_uri:encode(FunctionName), "/event-invoke-config"],
+    Path = ["/2019-09-25/functions/", aws_util:encode_uri(FunctionName), "/event-invoke-config"],
     SuccessStatusCode = 200,
 
     Headers = [],
