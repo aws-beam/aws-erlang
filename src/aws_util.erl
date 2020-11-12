@@ -38,7 +38,8 @@ hmac_sha256_hexdigest(Key, Message) ->
 
 %% @doc Create an HMAC-SHA256 hexdigest for Key and Message.
 hmac_sha256(Key, Message) ->
-    crypto:mac(hmac, sha256, Key, Message).
+    %% @todo Use `crypto:mac/4` when OTP 24 arrives.
+    crypto:hmac(sha256, Key, Message).
 
 %% @doc Create a SHA256 hexdigest for Value.
 sha256_hexdigest(Value) ->
