@@ -1,10 +1,8 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc For more information about AWS CloudHSM, see <a
-%% href="http://aws.amazon.com/cloudhsm/">AWS CloudHSM</a> and the <a
-%% href="https://docs.aws.amazon.com/cloudhsm/latest/userguide/">AWS CloudHSM
-%% User Guide</a>.
+%% @doc For more information about AWS CloudHSM, see AWS CloudHSM and the AWS
+%% CloudHSM User Guide.
 -module(aws_cloudhsm_v2).
 
 -export([copy_backup_to_region/2,
@@ -65,9 +63,10 @@ create_hsm(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHsm">>, Input, Options).
 
-%% @doc Deletes a specified AWS CloudHSM backup. A backup can be restored up
-%% to 7 days after the DeleteBackup request is made. For more information on
-%% restoring a backup, see <a>RestoreBackup</a>.
+%% @doc Deletes a specified AWS CloudHSM backup.
+%%
+%% A backup can be restored up to 7 days after the DeleteBackup request is
+%% made. For more information on restoring a backup, see `RestoreBackup'.
 delete_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_backup(Client, Input, []).
@@ -75,10 +74,11 @@ delete_backup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteBackup">>, Input, Options).
 
-%% @doc Deletes the specified AWS CloudHSM cluster. Before you can delete a
-%% cluster, you must delete all HSMs in the cluster. To see if the cluster
-%% contains any HSMs, use <a>DescribeClusters</a>. To delete an HSM, use
-%% <a>DeleteHsm</a>.
+%% @doc Deletes the specified AWS CloudHSM cluster.
+%%
+%% Before you can delete a cluster, you must delete all HSMs in the cluster.
+%% To see if the cluster contains any HSMs, use `DescribeClusters'. To delete
+%% an HSM, use `DeleteHsm'.
 delete_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cluster(Client, Input, []).
@@ -86,10 +86,12 @@ delete_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCluster">>, Input, Options).
 
-%% @doc Deletes the specified HSM. To specify an HSM, you can use its
-%% identifier (ID), the IP address of the HSM's elastic network interface
-%% (ENI), or the ID of the HSM's ENI. You need to specify only one of these
-%% values. To find these values, use <a>DescribeClusters</a>.
+%% @doc Deletes the specified HSM.
+%%
+%% To specify an HSM, you can use its identifier (ID), the IP address of the
+%% HSM's elastic network interface (ENI), or the ID of the HSM's ENI. You
+%% need to specify only one of these values. To find these values, use
+%% `DescribeClusters'.
 delete_hsm(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_hsm(Client, Input, []).
@@ -101,10 +103,10 @@ delete_hsm(Client, Input, Options)
 %%
 %% This is a paginated operation, which means that each response might
 %% contain only a subset of all the backups. When the response contains only
-%% a subset of backups, it includes a <code>NextToken</code> value. Use this
-%% value in a subsequent <code>DescribeBackups</code> request to get more
-%% backups. When you receive a response with no <code>NextToken</code> (or an
-%% empty or null value), that means there are no more backups to get.
+%% a subset of backups, it includes a `NextToken' value. Use this value in a
+%% subsequent `DescribeBackups' request to get more backups. When you receive
+%% a response with no `NextToken' (or an empty or null value), that means
+%% there are no more backups to get.
 describe_backups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_backups(Client, Input, []).
@@ -116,10 +118,10 @@ describe_backups(Client, Input, Options)
 %%
 %% This is a paginated operation, which means that each response might
 %% contain only a subset of all the clusters. When the response contains only
-%% a subset of clusters, it includes a <code>NextToken</code> value. Use this
-%% value in a subsequent <code>DescribeClusters</code> request to get more
-%% clusters. When you receive a response with no <code>NextToken</code> (or
-%% an empty or null value), that means there are no more clusters to get.
+%% a subset of clusters, it includes a `NextToken' value. Use this value in a
+%% subsequent `DescribeClusters' request to get more clusters. When you
+%% receive a response with no `NextToken' (or an empty or null value), that
+%% means there are no more clusters to get.
 describe_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_clusters(Client, Input, []).
@@ -129,9 +131,11 @@ describe_clusters(Client, Input, Options)
 
 %% @doc Claims an AWS CloudHSM cluster by submitting the cluster certificate
 %% issued by your issuing certificate authority (CA) and the CA's root
-%% certificate. Before you can claim a cluster, you must sign the cluster's
-%% certificate signing request (CSR) with your issuing CA. To get the
-%% cluster's CSR, use <a>DescribeClusters</a>.
+%% certificate.
+%%
+%% Before you can claim a cluster, you must sign the cluster's certificate
+%% signing request (CSR) with your issuing CA. To get the cluster's CSR, use
+%% `DescribeClusters'.
 initialize_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     initialize_cluster(Client, Input, []).
@@ -143,10 +147,10 @@ initialize_cluster(Client, Input, Options)
 %%
 %% This is a paginated operation, which means that each response might
 %% contain only a subset of all the tags. When the response contains only a
-%% subset of tags, it includes a <code>NextToken</code> value. Use this value
-%% in a subsequent <code>ListTags</code> request to get more tags. When you
-%% receive a response with no <code>NextToken</code> (or an empty or null
-%% value), that means there are no more tags to get.
+%% subset of tags, it includes a `NextToken' value. Use this value in a
+%% subsequent `ListTags' request to get more tags. When you receive a
+%% response with no `NextToken' (or an empty or null value), that means there
+%% are no more tags to get.
 list_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags(Client, Input, []).
@@ -155,8 +159,9 @@ list_tags(Client, Input, Options)
     request(Client, <<"ListTags">>, Input, Options).
 
 %% @doc Restores a specified AWS CloudHSM backup that is in the
-%% <code>PENDING_DELETION</code> state. For mor information on deleting a
-%% backup, see <a>DeleteBackup</a>.
+%% `PENDING_DELETION' state.
+%%
+%% For mor information on deleting a backup, see `DeleteBackup'.
 restore_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_backup(Client, Input, []).
@@ -224,6 +229,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
 handle_response({error, Reason}) ->
     {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

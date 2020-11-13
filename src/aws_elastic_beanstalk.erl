@@ -1,27 +1,23 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc <fullname>AWS Elastic Beanstalk</fullname>
+%% @doc AWS Elastic Beanstalk
 %%
 %% AWS Elastic Beanstalk makes it easy for you to create, deploy, and manage
 %% scalable, fault-tolerant applications running on the Amazon Web Services
 %% cloud.
 %%
-%% For more information about this product, go to the <a
-%% href="http://aws.amazon.com/elasticbeanstalk/">AWS Elastic Beanstalk</a>
-%% details page. The location of the latest AWS Elastic Beanstalk WSDL is <a
-%% href="https://elasticbeanstalk.s3.amazonaws.com/doc/2010-12-01/AWSElasticBeanstalk.wsdl">https://elasticbeanstalk.s3.amazonaws.com/doc/2010-12-01/AWSElasticBeanstalk.wsdl</a>.
+%% For more information about this product, go to the AWS Elastic Beanstalk
+%% details page. The location of the latest AWS Elastic Beanstalk WSDL is
+%% [https://elasticbeanstalk.s3.amazonaws.com/doc/2010-12-01/AWSElasticBeanstalk.wsdl].
 %% To install the Software Development Kits (SDKs), Integrated Development
 %% Environment (IDE) Toolkits, and command line tools that enable you to
-%% access the API, go to <a href="http://aws.amazon.com/tools/">Tools for
-%% Amazon Web Services</a>.
+%% access the API, go to Tools for Amazon Web Services.
 %%
-%% <b>Endpoints</b>
+%% Endpoints
 %%
 %% For a list of region-specific endpoints that AWS Elastic Beanstalk
-%% supports, go to <a
-%% href="https://docs.aws.amazon.com/general/latest/gr/rande.html#elasticbeanstalk_region">Regions
-%% and Endpoints</a> in the <i>Amazon Web Services Glossary</i>.
+%% supports, go to Regions and Endpoints in the Amazon Web Services Glossary.
 -module(aws_elastic_beanstalk).
 
 -export([abort_environment_update/2,
@@ -134,10 +130,11 @@ abort_environment_update(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AbortEnvironmentUpdate">>, Input, Options).
 
-%% @doc Applies a scheduled managed action immediately. A managed action can
-%% be applied only if its status is <code>Scheduled</code>. Get the status
-%% and action ID of a managed action with
-%% <a>DescribeEnvironmentManagedActions</a>.
+%% @doc Applies a scheduled managed action immediately.
+%%
+%% A managed action can be applied only if its status is `Scheduled'. Get the
+%% status and action ID of a managed action with
+%% `DescribeEnvironmentManagedActions'.
 apply_environment_managed_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     apply_environment_managed_action(Client, Input, []).
@@ -145,12 +142,12 @@ apply_environment_managed_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ApplyEnvironmentManagedAction">>, Input, Options).
 
-%% @doc Add or change the operations role used by an environment. After this
-%% call is made, Elastic Beanstalk uses the associated operations role for
-%% permissions to downstream services during subsequent calls acting on this
-%% environment. For more information, see <a
-%% href="https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/iam-operationsrole.html">Operations
-%% roles</a> in the <i>AWS Elastic Beanstalk Developer Guide</i>.
+%% @doc Add or change the operations role used by an environment.
+%%
+%% After this call is made, Elastic Beanstalk uses the associated operations
+%% role for permissions to downstream services during subsequent calls acting
+%% on this environment. For more information, see Operations roles in the AWS
+%% Elastic Beanstalk Developer Guide.
 associate_environment_operations_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_environment_operations_role(Client, Input, []).
@@ -167,13 +164,13 @@ check_d_n_s_availability(Client, Input, Options)
     request(Client, <<"CheckDNSAvailability">>, Input, Options).
 
 %% @doc Create or update a group of environments that each run a separate
-%% component of a single application. Takes a list of version labels that
-%% specify application source bundles for each of the environments to create
-%% or update. The name of each environment and other required information
-%% must be included in the source bundles in an environment manifest named
-%% <code>env.yaml</code>. See <a
-%% href="https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-mgmt-compose.html">Compose
-%% Environments</a> for details.
+%% component of a single application.
+%%
+%% Takes a list of version labels that specify application source bundles for
+%% each of the environments to create or update. The name of each environment
+%% and other required information must be included in the source bundles in
+%% an environment manifest named `env.yaml'. See Compose Environments for
+%% details.
 compose_environments(Client, Input)
   when is_map(Client), is_map(Input) ->
     compose_environments(Client, Input, []).
@@ -182,7 +179,7 @@ compose_environments(Client, Input, Options)
     request(Client, <<"ComposeEnvironments">>, Input, Options).
 
 %% @doc Creates an application that has one configuration template named
-%% <code>default</code> and no application versions.
+%% `default' and no application versions.
 create_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_application(Client, Input, []).
@@ -190,27 +187,27 @@ create_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateApplication">>, Input, Options).
 
-%% @doc Creates an application version for the specified application. You can
-%% create an application version from a source bundle in Amazon S3, a commit
-%% in AWS CodeCommit, or the output of an AWS CodeBuild build as follows:
+%% @doc Creates an application version for the specified application.
+%%
+%% You can create an application version from a source bundle in Amazon S3, a
+%% commit in AWS CodeCommit, or the output of an AWS CodeBuild build as
+%% follows:
 %%
 %% Specify a commit in an AWS CodeCommit repository with
-%% <code>SourceBuildInformation</code>.
+%% `SourceBuildInformation'.
 %%
-%% Specify a build in an AWS CodeBuild with
-%% <code>SourceBuildInformation</code> and <code>BuildConfiguration</code>.
+%% Specify a build in an AWS CodeBuild with `SourceBuildInformation' and
+%% `BuildConfiguration'.
 %%
-%% Specify a source bundle in S3 with <code>SourceBundle</code>
+%% Specify a source bundle in S3 with `SourceBundle'
 %%
-%% Omit both <code>SourceBuildInformation</code> and
-%% <code>SourceBundle</code> to use the default sample application.
+%% Omit both `SourceBuildInformation' and `SourceBundle' to use the default
+%% sample application.
 %%
-%% <note> After you create an application version with a specified Amazon S3
-%% bucket and key location, you can't change that Amazon S3 location. If you
-%% change the Amazon S3 location, you receive an exception when you attempt
-%% to launch an environment from the application version.
-%%
-%% </note>
+%% After you create an application version with a specified Amazon S3 bucket
+%% and key location, you can't change that Amazon S3 location. If you change
+%% the Amazon S3 location, you receive an exception when you attempt to
+%% launch an environment from the application version.
 create_application_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_application_version(Client, Input, []).
@@ -219,21 +216,22 @@ create_application_version(Client, Input, Options)
     request(Client, <<"CreateApplicationVersion">>, Input, Options).
 
 %% @doc Creates an AWS Elastic Beanstalk configuration template, associated
-%% with a specific Elastic Beanstalk application. You define application
-%% configuration settings in a configuration template. You can then use the
-%% configuration template to deploy different versions of the application
-%% with the same configuration settings.
+%% with a specific Elastic Beanstalk application.
 %%
-%% Templates aren't associated with any environment. The
-%% <code>EnvironmentName</code> response element is always <code>null</code>.
+%% You define application configuration settings in a configuration template.
+%% You can then use the configuration template to deploy different versions
+%% of the application with the same configuration settings.
+%%
+%% Templates aren't associated with any environment. The `EnvironmentName'
+%% response element is always `null'.
 %%
 %% Related Topics
 %%
-%% <ul> <li> <a>DescribeConfigurationOptions</a>
+%% <ul> <li> `DescribeConfigurationOptions'
 %%
-%% </li> <li> <a>DescribeConfigurationSettings</a>
+%% </li> <li> `DescribeConfigurationSettings'
 %%
-%% </li> <li> <a>ListAvailableSolutionStacks</a>
+%% </li> <li> `ListAvailableSolutionStacks'
 %%
 %% </li> </ul>
 create_configuration_template(Client, Input)
@@ -261,11 +259,12 @@ create_platform_version(Client, Input, Options)
     request(Client, <<"CreatePlatformVersion">>, Input, Options).
 
 %% @doc Creates a bucket in Amazon S3 to store application versions, logs,
-%% and other files used by Elastic Beanstalk environments. The Elastic
-%% Beanstalk console and EB CLI call this API the first time you create an
-%% environment in a region. If the storage location already exists,
-%% <code>CreateStorageLocation</code> still returns the bucket name but does
-%% not create a new bucket.
+%% and other files used by Elastic Beanstalk environments.
+%%
+%% The Elastic Beanstalk console and EB CLI call this API the first time you
+%% create an environment in a region. If the storage location already exists,
+%% `CreateStorageLocation' still returns the bucket name but does not create
+%% a new bucket.
 create_storage_location(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_storage_location(Client, Input, []).
@@ -274,12 +273,11 @@ create_storage_location(Client, Input, Options)
     request(Client, <<"CreateStorageLocation">>, Input, Options).
 
 %% @doc Deletes the specified application along with all associated versions
-%% and configurations. The application versions will not be deleted from your
-%% Amazon S3 bucket.
+%% and configurations.
 %%
-%% <note> You cannot delete an application that has a running environment.
+%% The application versions will not be deleted from your Amazon S3 bucket.
 %%
-%% </note>
+%% You cannot delete an application that has a running environment.
 delete_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application(Client, Input, []).
@@ -289,10 +287,8 @@ delete_application(Client, Input, Options)
 
 %% @doc Deletes the specified version from the specified application.
 %%
-%% <note> You cannot delete an application version that is associated with a
-%% running environment.
-%%
-%% </note>
+%% You cannot delete an application version that is associated with a running
+%% environment.
 delete_application_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application_version(Client, Input, []).
@@ -302,12 +298,10 @@ delete_application_version(Client, Input, Options)
 
 %% @doc Deletes the specified configuration template.
 %%
-%% <note> When you launch an environment using a configuration template, the
+%% When you launch an environment using a configuration template, the
 %% environment gets a copy of the template. You can delete or modify the
 %% environment's copy of the template without affecting the running
 %% environment.
-%%
-%% </note>
 delete_configuration_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_configuration_template(Client, Input, []).
@@ -320,11 +314,10 @@ delete_configuration_template(Client, Input, Options)
 %%
 %% Updating a running environment with any configuration changes creates a
 %% draft configuration set. You can get the draft configuration using
-%% <a>DescribeConfigurationSettings</a> while the update is in progress or if
-%% the update fails. The <code>DeploymentStatus</code> for the draft
-%% configuration indicates whether the deployment is in process or has
-%% failed. The draft configuration remains in existence until it is deleted
-%% with this action.
+%% `DescribeConfigurationSettings' while the update is in progress or if the
+%% update fails. The `DeploymentStatus' for the draft configuration indicates
+%% whether the deployment is in process or has failed. The draft
+%% configuration remains in existence until it is deleted with this action.
 delete_environment_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_environment_configuration(Client, Input, []).
@@ -369,9 +362,11 @@ describe_applications(Client, Input, Options)
 
 %% @doc Describes the configuration options that are used in a particular
 %% configuration template or environment, or that a specified solution stack
-%% defines. The description includes the values the options, their default
-%% values, and an indication of the required action on a running environment
-%% if an option value is changed.
+%% defines.
+%%
+%% The description includes the values the options, their default values, and
+%% an indication of the required action on a running environment if an option
+%% value is changed.
 describe_configuration_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_configuration_options(Client, Input, []).
@@ -391,7 +386,7 @@ describe_configuration_options(Client, Input, Options)
 %%
 %% Related Topics
 %%
-%% <ul> <li> <a>DeleteEnvironmentConfiguration</a>
+%% <ul> <li> `DeleteEnvironmentConfiguration'
 %%
 %% </li> </ul>
 describe_configuration_settings(Client, Input)
@@ -402,8 +397,10 @@ describe_configuration_settings(Client, Input, Options)
     request(Client, <<"DescribeConfigurationSettings">>, Input, Options).
 
 %% @doc Returns information about the overall health of the specified
-%% environment. The <b>DescribeEnvironmentHealth</b> operation is only
-%% available with AWS Elastic Beanstalk Enhanced Health.
+%% environment.
+%%
+%% The DescribeEnvironmentHealth operation is only available with AWS Elastic
+%% Beanstalk Enhanced Health.
 describe_environment_health(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_environment_health(Client, Input, []).
@@ -446,10 +443,8 @@ describe_environments(Client, Input, Options)
 %% @doc Returns list of event descriptions matching criteria up to the last 6
 %% weeks.
 %%
-%% <note> This action returns the most recent 1,000 events from the specified
-%% <code>NextToken</code>.
-%%
-%% </note>
+%% This action returns the most recent 1,000 events from the specified
+%% `NextToken'.
 describe_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_events(Client, Input, []).
@@ -458,9 +453,9 @@ describe_events(Client, Input, Options)
     request(Client, <<"DescribeEvents">>, Input, Options).
 
 %% @doc Retrieves detailed information about the health of instances in your
-%% AWS Elastic Beanstalk. This operation requires <a
-%% href="https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced.html">enhanced
-%% health reporting</a>.
+%% AWS Elastic Beanstalk.
+%%
+%% This operation requires enhanced health reporting.
 describe_instances_health(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instances_health(Client, Input, []).
@@ -468,14 +463,13 @@ describe_instances_health(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInstancesHealth">>, Input, Options).
 
-%% @doc Describes a platform version. Provides full details. Compare to
-%% <a>ListPlatformVersions</a>, which provides summary information about a
-%% list of platform versions.
+%% @doc Describes a platform version.
+%%
+%% Provides full details. Compare to `ListPlatformVersions', which provides
+%% summary information about a list of platform versions.
 %%
 %% For definitions of platform version and other platform-related terms, see
-%% <a
-%% href="https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/platforms-glossary.html">AWS
-%% Elastic Beanstalk Platforms Glossary</a>.
+%% AWS Elastic Beanstalk Platforms Glossary.
 describe_platform_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_platform_version(Client, Input, []).
@@ -483,12 +477,12 @@ describe_platform_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePlatformVersion">>, Input, Options).
 
-%% @doc Disassociate the operations role from an environment. After this call
-%% is made, Elastic Beanstalk uses the caller's permissions for permissions
-%% to downstream services during subsequent calls acting on this environment.
-%% For more information, see <a
-%% href="https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/iam-operationsrole.html">Operations
-%% roles</a> in the <i>AWS Elastic Beanstalk Developer Guide</i>.
+%% @doc Disassociate the operations role from an environment.
+%%
+%% After this call is made, Elastic Beanstalk uses the caller's permissions
+%% for permissions to downstream services during subsequent calls acting on
+%% this environment. For more information, see Operations roles in the AWS
+%% Elastic Beanstalk Developer Guide.
 disassociate_environment_operations_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_environment_operations_role(Client, Input, []).
@@ -506,12 +500,12 @@ list_available_solution_stacks(Client, Input, Options)
     request(Client, <<"ListAvailableSolutionStacks">>, Input, Options).
 
 %% @doc Lists the platform branches available for your account in an AWS
-%% Region. Provides summary information about each platform branch.
+%% Region.
+%%
+%% Provides summary information about each platform branch.
 %%
 %% For definitions of platform branch and other platform-related terms, see
-%% <a
-%% href="https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/platforms-glossary.html">AWS
-%% Elastic Beanstalk Platforms Glossary</a>.
+%% AWS Elastic Beanstalk Platforms Glossary.
 list_platform_branches(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_platform_branches(Client, Input, []).
@@ -520,14 +514,14 @@ list_platform_branches(Client, Input, Options)
     request(Client, <<"ListPlatformBranches">>, Input, Options).
 
 %% @doc Lists the platform versions available for your account in an AWS
-%% Region. Provides summary information about each platform version. Compare
-%% to <a>DescribePlatformVersion</a>, which provides full details about a
-%% single platform version.
+%% Region.
+%%
+%% Provides summary information about each platform version. Compare to
+%% `DescribePlatformVersion', which provides full details about a single
+%% platform version.
 %%
 %% For definitions of platform version and other platform-related terms, see
-%% <a
-%% href="https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/platforms-glossary.html">AWS
-%% Elastic Beanstalk Platforms Glossary</a>.
+%% AWS Elastic Beanstalk Platforms Glossary.
 list_platform_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_platform_versions(Client, Input, []).
@@ -535,13 +529,12 @@ list_platform_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPlatformVersions">>, Input, Options).
 
-%% @doc Return the tags applied to an AWS Elastic Beanstalk resource. The
-%% response contains a list of tag key-value pairs.
+%% @doc Return the tags applied to an AWS Elastic Beanstalk resource.
+%%
+%% The response contains a list of tag key-value pairs.
 %%
 %% Elastic Beanstalk supports tagging of all of its resources. For details
-%% about resource tagging, see <a
-%% href="https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/applications-tagging-resources.html">Tagging
-%% Application Resources</a>.
+%% about resource tagging, see Tagging Application Resources.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -562,20 +555,19 @@ rebuild_environment(Client, Input, Options)
 %% @doc Initiates a request to compile the specified type of information of
 %% the deployed environment.
 %%
-%% Setting the <code>InfoType</code> to <code>tail</code> compiles the last
-%% lines from the application server log files of every Amazon EC2 instance
-%% in your environment.
+%% Setting the `InfoType' to `tail' compiles the last lines from the
+%% application server log files of every Amazon EC2 instance in your
+%% environment.
 %%
-%% Setting the <code>InfoType</code> to <code>bundle</code> compresses the
-%% application server log files for every Amazon EC2 instance into a
-%% <code>.zip</code> file. Legacy and .NET containers do not support bundle
-%% logs.
+%% Setting the `InfoType' to `bundle' compresses the application server log
+%% files for every Amazon EC2 instance into a `.zip' file. Legacy and .NET
+%% containers do not support bundle logs.
 %%
-%% Use <a>RetrieveEnvironmentInfo</a> to obtain the set of logs.
+%% Use `RetrieveEnvironmentInfo' to obtain the set of logs.
 %%
 %% Related Topics
 %%
-%% <ul> <li> <a>RetrieveEnvironmentInfo</a>
+%% <ul> <li> `RetrieveEnvironmentInfo'
 %%
 %% </li> </ul>
 request_environment_info(Client, Input)
@@ -594,12 +586,12 @@ restart_app_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestartAppServer">>, Input, Options).
 
-%% @doc Retrieves the compiled information from a
-%% <a>RequestEnvironmentInfo</a> request.
+%% @doc Retrieves the compiled information from a `RequestEnvironmentInfo'
+%% request.
 %%
 %% Related Topics
 %%
-%% <ul> <li> <a>RequestEnvironmentInfo</a>
+%% <ul> <li> `RequestEnvironmentInfo'
 %%
 %% </li> </ul>
 retrieve_environment_info(Client, Input)
@@ -627,11 +619,8 @@ terminate_environment(Client, Input, Options)
 
 %% @doc Updates the specified application to have the specified properties.
 %%
-%% <note> If a property (for example, <code>description</code>) is not
-%% provided, the value remains unchanged. To clear these properties, specify
-%% an empty string.
-%%
-%% </note>
+%% If a property (for example, `description') is not provided, the value
+%% remains unchanged. To clear these properties, specify an empty string.
 update_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_application(Client, Input, []).
@@ -650,11 +639,8 @@ update_application_resource_lifecycle(Client, Input, Options)
 %% @doc Updates the specified application version to have the specified
 %% properties.
 %%
-%% <note> If a property (for example, <code>description</code>) is not
-%% provided, the value remains unchanged. To clear properties, specify an
-%% empty string.
-%%
-%% </note>
+%% If a property (for example, `description') is not provided, the value
+%% remains unchanged. To clear properties, specify an empty string.
 update_application_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_application_version(Client, Input, []).
@@ -665,13 +651,12 @@ update_application_version(Client, Input, Options)
 %% @doc Updates the specified configuration template to have the specified
 %% properties or configuration option values.
 %%
-%% <note> If a property (for example, <code>ApplicationName</code>) is not
-%% provided, its value remains unchanged. To clear such properties, specify
-%% an empty string.
+%% If a property (for example, `ApplicationName') is not provided, its value
+%% remains unchanged. To clear such properties, specify an empty string.
 %%
-%% </note> Related Topics
+%% Related Topics
 %%
-%% <ul> <li> <a>DescribeConfigurationOptions</a>
+%% <ul> <li> `DescribeConfigurationOptions'
 %%
 %% </li> </ul>
 update_configuration_template(Client, Input)
@@ -687,13 +672,12 @@ update_configuration_template(Client, Input, Options)
 %% the running environment.
 %%
 %% Attempting to update both the release and configuration is not allowed and
-%% AWS Elastic Beanstalk returns an <code>InvalidParameterCombination</code>
-%% error.
+%% AWS Elastic Beanstalk returns an `InvalidParameterCombination' error.
 %%
 %% When updating the configuration settings to a new template or individual
 %% settings, a draft configuration is created and
-%% <a>DescribeConfigurationSettings</a> for this environment returns two
-%% setting descriptions with different <code>DeploymentStatus</code> values.
+%% `DescribeConfigurationSettings' for this environment returns two setting
+%% descriptions with different `DeploymentStatus' values.
 update_environment(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_environment(Client, Input, []).
@@ -702,29 +686,27 @@ update_environment(Client, Input, Options)
     request(Client, <<"UpdateEnvironment">>, Input, Options).
 
 %% @doc Update the list of tags applied to an AWS Elastic Beanstalk resource.
-%% Two lists can be passed: <code>TagsToAdd</code> for tags to add or update,
-%% and <code>TagsToRemove</code>.
+%%
+%% Two lists can be passed: `TagsToAdd' for tags to add or update, and
+%% `TagsToRemove'.
 %%
 %% Elastic Beanstalk supports tagging of all of its resources. For details
-%% about resource tagging, see <a
-%% href="https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/applications-tagging-resources.html">Tagging
-%% Application Resources</a>.
+%% about resource tagging, see Tagging Application Resources.
 %%
 %% If you create a custom IAM user policy to control permission to this
 %% operation, specify one of the following two virtual actions (or both)
 %% instead of the API operation name:
 %%
 %% <dl> <dt>elasticbeanstalk:AddTags</dt> <dd> Controls permission to call
-%% <code>UpdateTagsForResource</code> and pass a list of tags to add in the
-%% <code>TagsToAdd</code> parameter.
+%% `UpdateTagsForResource' and pass a list of tags to add in the `TagsToAdd'
+%% parameter.
 %%
 %% </dd> <dt>elasticbeanstalk:RemoveTags</dt> <dd> Controls permission to
-%% call <code>UpdateTagsForResource</code> and pass a list of tag keys to
-%% remove in the <code>TagsToRemove</code> parameter.
+%% call `UpdateTagsForResource' and pass a list of tag keys to remove in the
+%% `TagsToRemove' parameter.
 %%
-%% </dd> </dl> For details about creating a custom user policy, see <a
-%% href="https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html#AWSHowTo.iam.policies">Creating
-%% a Custom User Policy</a>.
+%% </dd> </dl> For details about creating a custom user policy, see Creating
+%% a Custom User Policy.
 update_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_tags_for_resource(Client, Input, []).
@@ -787,6 +769,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
 handle_response({error, Reason}) ->
     {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

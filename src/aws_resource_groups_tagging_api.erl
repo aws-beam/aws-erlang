@@ -1,7 +1,7 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc <fullname>Resource Groups Tagging API</fullname>
+%% @doc Resource Groups Tagging API
 %%
 %% This guide describes the API operations for the resource groups tagging.
 %%
@@ -11,13 +11,13 @@
 %% value of "Stack" might be "Testing" for one and "Production" for the
 %% other.
 %%
-%% <important> Do not store personally identifiable information (PII) or
-%% other confidential or sensitive information in tags. We use tags to
-%% provide you with billing and administration services. Tags are not
-%% intended to be used for private or sensitive data.
+%% Do not store personally identifiable information (PII) or other
+%% confidential or sensitive information in tags. We use tags to provide you
+%% with billing and administration services. Tags are not intended to be used
+%% for private or sensitive data.
 %%
-%% </important> Tagging can help you organize your resources and enables you
-%% to simplify resource management, access management and cost allocation.
+%% Tagging can help you organize your resources and enables you to simplify
+%% resource management, access management and cost allocation.
 %%
 %% You can use the resource groups tagging API operations to complete the
 %% following tasks:
@@ -37,360 +37,274 @@
 %% </li> </ul> To use resource groups tagging API operations, you must add
 %% the following permissions to your IAM policy:
 %%
-%% <ul> <li> <code>tag:GetResources</code>
+%% <ul> <li> `tag:GetResources'
 %%
-%% </li> <li> <code>tag:TagResources</code>
+%% </li> <li> `tag:TagResources'
 %%
-%% </li> <li> <code>tag:UntagResources</code>
+%% </li> <li> `tag:UntagResources'
 %%
-%% </li> <li> <code>tag:GetTagKeys</code>
+%% </li> <li> `tag:GetTagKeys'
 %%
-%% </li> <li> <code>tag:GetTagValues</code>
+%% </li> <li> `tag:GetTagValues'
 %%
 %% </li> </ul> You'll also need permissions to access the resources of
 %% individual services so that you can tag and untag those resources.
 %%
-%% For more information on IAM policies, see <a
-%% href="http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage.html">Managing
-%% IAM Policies</a> in the <i>IAM User Guide</i>.
+%% For more information on IAM policies, see Managing IAM Policies in the IAM
+%% User Guide.
 %%
-%% <i> <b>Services that support the Resource Groups Tagging API</b> </i>
+%% Services that support the Resource Groups Tagging API
 %%
 %% You can use the Resource Groups Tagging API to tag resources for the
 %% following AWS services.
 %%
-%% <ul> <li> <a href="https://docs.aws.amazon.com/a4b">Alexa for Business
-%% (a4b)</a>
+%% <ul> <li> Alexa for Business (a4b)
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/apigateway">API
-%% Gateway</a>
+%% </li> <li> API Gateway
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/appstream2">Amazon
-%% AppStream</a>
+%% </li> <li> Amazon AppStream
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/appsync">AWS AppSync</a>
+%% </li> <li> AWS AppSync
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/app-mesh">AWS App Mesh</a>
+%% </li> <li> AWS App Mesh
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/athena">Amazon Athena</a>
+%% </li> <li> Amazon Athena
 %%
-%% </li> <li> <a
-%% href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide">Amazon
-%% Aurora</a>
+%% </li> <li> Amazon Aurora
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/aws-backup">AWS Backup</a>
+%% </li> <li> AWS Backup
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/acm">AWS Certificate
-%% Manager</a>
+%% </li> <li> AWS Certificate Manager
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/acm">AWS Certificate
-%% Manager Private CA</a>
+%% </li> <li> AWS Certificate Manager Private CA
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/clouddirectory">Amazon
-%% Cloud Directory</a>
+%% </li> <li> Amazon Cloud Directory
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/cloud-map">AWS Cloud
-%% Map</a>
+%% </li> <li> AWS Cloud Map
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/cloudformation">AWS
-%% CloudFormation</a>
+%% </li> <li> AWS CloudFormation
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/cloudfront">Amazon
-%% CloudFront</a>
+%% </li> <li> Amazon CloudFront
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/cloudhsm">AWS CloudHSM</a>
+%% </li> <li> AWS CloudHSM
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/cloudtrail">AWS
-%% CloudTrail</a>
+%% </li> <li> AWS CloudTrail
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/cloudwatch">Amazon
-%% CloudWatch (alarms only)</a>
+%% </li> <li> Amazon CloudWatch (alarms only)
 %%
-%% </li> <li> <a
-%% href="https://docs.aws.amazon.com/cloudwatch/?id=docs_gateway#amazon-cloudwatch-events">Amazon
-%% CloudWatch Events</a>
+%% </li> <li> Amazon CloudWatch Events
 %%
-%% </li> <li> <a
-%% href="https://docs.aws.amazon.com/cloudwatch/?id=docs_gateway#amazon-cloudwatch-logs">Amazon
-%% CloudWatch Logs</a>
+%% </li> <li> Amazon CloudWatch Logs
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/cloudwatch">Amazon
-%% Cloudwatch Synthetics</a>
+%% </li> <li> Amazon Cloudwatch Synthetics
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/codebuild">AWS
-%% CodeBuild</a>
+%% </li> <li> AWS CodeBuild
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/codecommit">AWS
-%% CodeCommit</a>
+%% </li> <li> AWS CodeCommit
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/codepipeline">AWS
-%% CodePipeline</a>
+%% </li> <li> AWS CodeGuru Profiler
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/codestar">AWS CodeStar</a>
+%% </li> <li> AWS CodePipeline
 %%
-%% </li> <li> <a
-%% href="https://docs.aws.amazon.com/codestar-connections/latest/APIReference/">AWS
-%% CodeStar Connections</a>
+%% </li> <li> AWS CodeStar
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/cognito">Amazon Cognito
-%% Identity</a>
+%% </li> <li> AWS CodeStar Connections
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/cognito">Amazon Cognito
-%% User Pools</a>
+%% </li> <li> Amazon Cognito Identity
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/comprehend">Amazon
-%% Comprehend</a>
+%% </li> <li> Amazon Cognito User Pools
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/config">AWS Config</a>
+%% </li> <li> Amazon Comprehend
 %%
-%% </li> <li> <a
-%% href="http://aws.amazon.com/connect/resources/?whats-new-cards#Documentation">Amazon
-%% Connect</a>
+%% </li> <li> AWS Config
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/data-exchange">AWS Data
-%% Exchange</a>
+%% </li> <li> Amazon Connect
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/data-pipeline">AWS Data
-%% Pipeline</a>
+%% </li> <li> AWS Data Exchange
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/dms">AWS Database
-%% Migration Service</a>
+%% </li> <li> AWS Data Pipeline
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/datasync">AWS DataSync</a>
+%% </li> <li> AWS Database Migration Service
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/devicefarm">AWS Device
-%% Farm</a>
+%% </li> <li> AWS DataSync
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/directconnect">AWS Direct
-%% Connect</a>
+%% </li> <li> AWS Device Farm
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/directory-service">AWS
-%% Directory Service</a>
+%% </li> <li> AWS Direct Connect
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/dynamodb">Amazon
-%% DynamoDB</a>
+%% </li> <li> AWS Directory Service
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/ebs">Amazon EBS</a>
+%% </li> <li> Amazon DynamoDB
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/ec2">Amazon EC2</a>
+%% </li> <li> Amazon EBS
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/imagebuilder">EC2 Image
-%% Builder</a>
+%% </li> <li> Amazon EC2
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/ecr">Amazon ECR</a>
+%% </li> <li> EC2 Image Builder
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/ecs">Amazon ECS</a>
+%% </li> <li> Amazon ECR
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/eks">Amazon EKS</a>
+%% </li> <li> Amazon ECS
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/elastic-beanstalk">AWS
-%% Elastic Beanstalk</a>
+%% </li> <li> Amazon EKS
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/efs">Amazon Elastic File
-%% System</a>
+%% </li> <li> AWS Elastic Beanstalk
 %%
-%% </li> <li> <a
-%% href="https://docs.aws.amazon.com/elasticloadbalancing">Elastic Load
-%% Balancing</a>
+%% </li> <li> Amazon Elastic File System
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/elasticache">Amazon
-%% ElastiCache</a>
+%% </li> <li> Elastic Load Balancing
 %%
-%% </li> <li> <a
-%% href="https://docs.aws.amazon.com/elasticsearch-service">Amazon
-%% Elasticsearch Service</a>
+%% </li> <li> Amazon Elastic Inference
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/medialive">AWS Elemental
-%% MediaLive</a>
+%% </li> <li> Amazon ElastiCache
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/mediapackage">AWS
-%% Elemental MediaPackage</a>
+%% </li> <li> Amazon Elasticsearch Service
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/mediapackage">AWS
-%% Elemental MediaPackage VoD</a>
+%% </li> <li> AWS Elemental MediaLive
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/mediatailor">AWS Elemental
-%% MediaTailor</a>
+%% </li> <li> AWS Elemental MediaPackage
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/emr">Amazon EMR</a>
+%% </li> <li> AWS Elemental MediaPackage VoD
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/eventbridge">Amazon
-%% EventBridge Schema</a>
+%% </li> <li> AWS Elemental MediaTailor
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/firewall-manager">AWS
-%% Firewall Manager</a>
+%% </li> <li> Amazon EMR
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/frauddetector">Amazon
-%% Fraud Detector</a>
+%% </li> <li> Amazon EventBridge Schema
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/fsx">Amazon FSx</a>
+%% </li> <li> AWS Firewall Manager
 %%
-%% </li> <li> <a
-%% href="https://docs.aws.amazon.com/s3/?id=docs_gateway#amazon-s3-glacier">Amazon
-%% S3 Glacier</a>
+%% </li> <li> Amazon Forecast
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/global-accelerator">AWS
-%% Global Accelerator</a>
+%% </li> <li> Amazon Fraud Detector
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/ground-station">AWS Ground
-%% Station</a>
+%% </li> <li> Amazon FSx
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/glue">AWS Glue</a>
+%% </li> <li> Amazon S3 Glacier
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/guardduty">Amazon
-%% GuardDuty</a>
+%% </li> <li> AWS Global Accelerator
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/inspector">Amazon
-%% Inspector</a>
+%% </li> <li> AWS Ground Station
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/iotanalytics">AWS IoT
-%% Analytics</a>
+%% </li> <li> AWS Glue
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/iot">AWS IoT Core</a>
+%% </li> <li> Amazon GuardDuty
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/iot-device-defender">AWS
-%% IoT Device Defender</a>
+%% </li> <li> Amazon Inspector
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/iot-device-management">AWS
-%% IoT Device Management</a>
+%% </li> <li> Amazon Interactive Video Service
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/iotevents">AWS IoT
-%% Events</a>
+%% </li> <li> AWS IoT Analytics
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/greengrass">AWS IoT
-%% Greengrass</a>
+%% </li> <li> AWS IoT Core
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/iot-1-click">AWS IoT
-%% 1-Click</a>
+%% </li> <li> AWS IoT Device Defender
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/iot-sitewise">AWS IoT
-%% Sitewise</a>
+%% </li> <li> AWS IoT Device Management
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/thingsgraph">AWS IoT
-%% Things Graph</a>
+%% </li> <li> AWS IoT Events
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/kendra">Amazon Kendra</a>
+%% </li> <li> AWS IoT Greengrass
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/kms">AWS Key Management
-%% Service</a>
+%% </li> <li> AWS IoT 1-Click
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/kinesis">Amazon
-%% Kinesis</a>
+%% </li> <li> AWS IoT Sitewise
 %%
-%% </li> <li> <a
-%% href="https://docs.aws.amazon.com/kinesis/?id=docs_gateway#amazon-kinesis-data-analytics">Amazon
-%% Kinesis Data Analytics</a>
+%% </li> <li> AWS IoT Things Graph
 %%
-%% </li> <li> <a
-%% href="https://docs.aws.amazon.com/kinesis/?id=docs_gateway#amazon-kinesis-data-firehose">Amazon
-%% Kinesis Data Firehose</a>
+%% </li> <li> Amazon Kendra
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/lambda">AWS Lambda</a>
+%% </li> <li> AWS Key Management Service
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/lex">Amazon Lex</a>
+%% </li> <li> Amazon Kinesis
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/license-manager">AWS
-%% License Manager</a>
+%% </li> <li> Amazon Kinesis Data Analytics
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/macie">Amazon Macie</a>
+%% </li> <li> Amazon Kinesis Data Firehose
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/machine-learning">Amazon
-%% Machine Learning</a>
+%% </li> <li> AWS Lambda
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/amazon-mq">Amazon MQ</a>
+%% </li> <li> Amazon Lex
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/msk">Amazon MSK</a>
+%% </li> <li> AWS License Manager
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/neptune">Amazon
-%% Neptune</a>
+%% </li> <li> Amazon Lightsail
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/opsworks">AWS OpsWorks</a>
+%% </li> <li> Amazon Macie
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/opsworks">AWS OpsWorks
-%% CM</a>
+%% </li> <li> Amazon Machine Learning
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/organizations">AWS
-%% Organizations</a>
+%% </li> <li> Amazon MQ
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/pinpoint">Amazon
-%% Pinpoint</a>
+%% </li> <li> Amazon MSK
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/qldb">Amazon Quantum
-%% Ledger Database (QLDB)</a>
+%% </li> <li> Amazon MSK
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/rds">Amazon RDS</a>
+%% </li> <li> Amazon Neptune
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/redshift">Amazon
-%% Redshift</a>
+%% </li> <li> AWS Network Manager
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/ram">AWS Resource Access
-%% Manager</a>
+%% </li> <li> AWS OpsWorks
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/ARG">AWS Resource
-%% Groups</a>
+%% </li> <li> AWS OpsWorks CM
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/robomaker">AWS
-%% RoboMaker</a>
+%% </li> <li> AWS Organizations
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/route53">Amazon Route
-%% 53</a>
+%% </li> <li> Amazon Pinpoint
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/route53">Amazon Route 53
-%% Resolver</a>
+%% </li> <li> Amazon Quantum Ledger Database (QLDB)
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/s3">Amazon S3 (buckets
-%% only)</a>
+%% </li> <li> Amazon RDS
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/sagemaker">Amazon
-%% SageMaker</a>
+%% </li> <li> Amazon Redshift
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/savingsplans">Savings
-%% Plans</a>
+%% </li> <li> AWS Resource Access Manager
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/secretsmanager">AWS
-%% Secrets Manager</a>
+%% </li> <li> AWS Resource Groups
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/securityhub">AWS Security
-%% Hub</a>
+%% </li> <li> AWS RoboMaker
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/servicecatalog">AWS
-%% Service Catalog</a>
+%% </li> <li> Amazon Route 53
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/ses">Amazon Simple Email
-%% Service (SES)</a>
+%% </li> <li> Amazon Route 53 Resolver
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/sns">Amazon Simple
-%% Notification Service (SNS)</a>
+%% </li> <li> Amazon S3 (buckets only)
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/sqs">Amazon Simple Queue
-%% Service (SQS)</a>
+%% </li> <li> Amazon SageMaker
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/swf">Amazon Simple
-%% Workflow Service</a>
+%% </li> <li> Savings Plans
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/step-functions">AWS Step
-%% Functions</a>
+%% </li> <li> AWS Secrets Manager
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/storagegateway">AWS
-%% Storage Gateway</a>
+%% </li> <li> AWS Security Hub
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/systems-manager">AWS
-%% Systems Manager</a>
+%% </li> <li> AWS Service Catalog
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/transfer">AWS Transfer for
-%% SFTP</a>
+%% </li> <li> Amazon Simple Email Service (SES)
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/vpc">Amazon VPC</a>
+%% </li> <li> Amazon Simple Notification Service (SNS)
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/waf">AWS WAFv2</a>
+%% </li> <li> Amazon Simple Queue Service (SQS)
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/waf">AWS WAF Regional</a>
+%% </li> <li> Amazon Simple Workflow Service
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/worklink">Amazon
-%% WorkLink</a>
+%% </li> <li> AWS Step Functions
 %%
-%% </li> <li> <a href="https://docs.aws.amazon.com/workspaces">Amazon
-%% WorkSpaces</a>
+%% </li> <li> AWS Storage Gateway
+%%
+%% </li> <li> AWS Systems Manager
+%%
+%% </li> <li> AWS Transfer for SFTP
+%%
+%% </li> <li> Amazon VPC
+%%
+%% </li> <li> AWS WAF
+%%
+%% </li> <li> AWS WAF Regional
+%%
+%% </li> <li> Amazon WorkLink
+%%
+%% </li> <li> Amazon WorkSpaces
 %%
 %% </li> </ul>
 -module(aws_resource_groups_tagging_api).
@@ -418,8 +332,7 @@
 %% API
 %%====================================================================
 
-%% @doc Describes the status of the <code>StartReportCreation</code>
-%% operation.
+%% @doc Describes the status of the `StartReportCreation' operation.
 %%
 %% You can call this operation only from the organization's master account
 %% and from the us-east-1 Region.
@@ -433,9 +346,8 @@ describe_report_creation(Client, Input, Options)
 %% @doc Returns a table that shows counts of resources that are noncompliant
 %% with their tag policies.
 %%
-%% For more information on tag policies, see <a
-%% href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html">Tag
-%% Policies</a> in the <i>AWS Organizations User Guide.</i>
+%% For more information on tag policies, see Tag Policies in the AWS
+%% Organizations User Guide.
 %%
 %% You can call this operation only from the organization's master account
 %% and from the us-east-1 Region.
@@ -452,22 +364,18 @@ get_compliance_summary(Client, Input, Options)
 %% Depending on what information you want returned, you can also specify the
 %% following:
 %%
-%% <ul> <li> <i>Filters</i> that specify what tags and resource types you
-%% want returned. The response includes all tags that are associated with the
+%% <ul> <li> Filters that specify what tags and resource types you want
+%% returned. The response includes all tags that are associated with the
 %% requested resources.
 %%
 %% </li> <li> Information about compliance with the account's effective tag
-%% policy. For more information on tag policies, see <a
-%% href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html">Tag
-%% Policies</a> in the <i>AWS Organizations User Guide.</i>
+%% policy. For more information on tag policies, see Tag Policies in the AWS
+%% Organizations User Guide.
 %%
-%% </li> </ul> <note> You can check the <code>PaginationToken</code> response
-%% parameter to determine if a query is complete. Queries occasionally return
-%% fewer results on a page than allowed. The <code>PaginationToken</code>
-%% response parameter value is <code>null</code> <i>only</i> when there are
-%% no more results to display.
-%%
-%% </note>
+%% </li> </ul> You can check the `PaginationToken' response parameter to
+%% determine if a query is complete. Queries occasionally return fewer
+%% results on a page than allowed. The `PaginationToken' response parameter
+%% value is `null' only when there are no more results to display.
 get_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resources(Client, Input, []).
@@ -494,11 +402,13 @@ get_tag_values(Client, Input, Options)
 
 %% @doc Generates a report that lists all tagged resources in accounts across
 %% your organization and tells whether each resource is compliant with the
-%% effective tag policy. Compliance data is refreshed daily.
+%% effective tag policy.
+%%
+%% Compliance data is refreshed daily.
 %%
 %% The generated report is saved to the following location:
 %%
-%% <code>s3://example-bucket/AwsTagPolicies/o-exampleorgid/YYYY-MM-ddTHH:mm:ssZ/report.csv</code>
+%% `s3://example-bucket/AwsTagPolicies/o-exampleorgid/YYYY-MM-ddTHH:mm:ssZ/report.csv'
 %%
 %% You can call this operation only from the organization's master account
 %% and from the us-east-1 Region.
@@ -509,33 +419,27 @@ start_report_creation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartReportCreation">>, Input, Options).
 
-%% @doc Applies one or more tags to the specified resources. Note the
-%% following:
+%% @doc Applies one or more tags to the specified resources.
+%%
+%% Note the following:
 %%
 %% <ul> <li> Not all resources can have tags. For a list of services that
-%% support tagging, see <a
-%% href="http://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html">this
-%% list</a>.
+%% support tagging, see this list.
 %%
-%% </li> <li> Each resource can have up to 50 tags. For other limits, see <a
-%% href="http://docs.aws.amazon.com/general/latest/gr/aws_tagging.html#tag-conventions">Tag
-%% Naming and Usage Conventions</a> in the <i>AWS General Reference.</i>
+%% </li> <li> Each resource can have up to 50 tags. For other limits, see Tag
+%% Naming and Usage Conventions in the AWS General Reference.
 %%
 %% </li> <li> You can only tag resources that are located in the specified
 %% Region for the AWS account.
 %%
 %% </li> <li> To add tags to a resource, you need the necessary permissions
 %% for the service that the resource belongs to as well as permissions for
-%% adding tags. For more information, see <a
-%% href="http://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html">this
-%% list</a>.
+%% adding tags. For more information, see this list.
 %%
-%% </li> </ul> <important> Do not store personally identifiable information
-%% (PII) or other confidential or sensitive information in tags. We use tags
-%% to provide you with billing and administration services. Tags are not
+%% </li> </ul> Do not store personally identifiable information (PII) or
+%% other confidential or sensitive information in tags. We use tags to
+%% provide you with billing and administration services. Tags are not
 %% intended to be used for private or sensitive data.
-%%
-%% </important>
 tag_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resources(Client, Input, []).
@@ -543,16 +447,15 @@ tag_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResources">>, Input, Options).
 
-%% @doc Removes the specified tags from the specified resources. When you
-%% specify a tag key, the action removes both that key and its associated
-%% value. The operation succeeds even if you attempt to remove tags from a
-%% resource that were already removed. Note the following:
+%% @doc Removes the specified tags from the specified resources.
+%%
+%% When you specify a tag key, the action removes both that key and its
+%% associated value. The operation succeeds even if you attempt to remove
+%% tags from a resource that were already removed. Note the following:
 %%
 %% <ul> <li> To remove tags from a resource, you need the necessary
 %% permissions for the service that the resource belongs to as well as
-%% permissions for removing tags. For more information, see <a
-%% href="http://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html">this
-%% list</a>.
+%% permissions for removing tags. For more information, see this list.
 %%
 %% </li> <li> You can only tag resources that are located in the specified
 %% Region for the AWS account.
@@ -607,6 +510,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
 handle_response({error, Reason}) ->
     {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

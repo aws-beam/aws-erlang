@@ -3,11 +3,12 @@
 
 %% @doc AWS IoT Greengrass seamlessly extends AWS onto physical devices so
 %% they can act locally on the data they generate, while still using the
-%% cloud for management, analytics, and durable storage. AWS IoT Greengrass
-%% ensures your devices can respond quickly to local events and operate with
-%% intermittent connectivity. AWS IoT Greengrass minimizes the cost of
-%% transmitting data to the cloud by allowing you to author AWS Lambda
-%% functions that execute locally.
+%% cloud for management, analytics, and durable storage.
+%%
+%% AWS IoT Greengrass ensures your devices can respond quickly to local
+%% events and operate with intermittent connectivity. AWS IoT Greengrass
+%% minimizes the cost of transmitting data to the cloud by allowing you to
+%% author AWS Lambda functions that execute locally.
 -module(aws_greengrass).
 
 -export([associate_role_to_group/3,
@@ -118,6 +119,8 @@
          get_subscription_definition/3,
          get_subscription_definition_version/4,
          get_subscription_definition_version/5,
+         get_thing_runtime_configuration/2,
+         get_thing_runtime_configuration/3,
          list_bulk_deployment_detailed_reports/4,
          list_bulk_deployment_detailed_reports/5,
          list_bulk_deployments/3,
@@ -189,7 +192,9 @@
          update_resource_definition/3,
          update_resource_definition/4,
          update_subscription_definition/3,
-         update_subscription_definition/4]).
+         update_subscription_definition/4,
+         update_thing_runtime_configuration/3,
+         update_thing_runtime_configuration/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -197,14 +202,16 @@
 %% API
 %%====================================================================
 
-%% @doc Associates a role with a group. Your Greengrass core will use the
-%% role to access AWS cloud services. The role's permissions should allow
-%% Greengrass core Lambda functions to perform actions against the cloud.
+%% @doc Associates a role with a group.
+%%
+%% Your Greengrass core will use the role to access AWS cloud services. The
+%% role's permissions should allow Greengrass core Lambda functions to
+%% perform actions against the cloud.
 associate_role_to_group(Client, GroupId, Input) ->
     associate_role_to_group(Client, GroupId, Input, []).
 associate_role_to_group(Client, GroupId, Input0, Options) ->
     Method = put,
-    Path = ["/greengrass/groups/", http_uri:encode(GroupId), "/role"],
+    Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/role"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -215,10 +222,12 @@ associate_role_to_group(Client, GroupId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Associates a role with your account. AWS IoT Greengrass will use the
-%% role to access your Lambda functions and AWS IoT resources. This is
-%% necessary for deployments to succeed. The role must have at least minimum
-%% permissions in the policy ''AWSGreengrassResourceAccessRolePolicy''.
+%% @doc Associates a role with your account.
+%%
+%% AWS IoT Greengrass will use the role to access your Lambda functions and
+%% AWS IoT resources. This is necessary for deployments to succeed. The role
+%% must have at least minimum permissions in the policy
+%% ''AWSGreengrassResourceAccessRolePolicy''.
 associate_service_role_to_account(Client, Input) ->
     associate_service_role_to_account(Client, Input, []).
 associate_service_role_to_account(Client, Input0, Options) ->
@@ -234,8 +243,9 @@ associate_service_role_to_account(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a connector definition. You may provide the initial version
-%% of the connector definition now or use
+%% @doc Creates a connector definition.
+%%
+%% You may provide the initial version of the connector definition now or use
 %% ''CreateConnectorDefinitionVersion'' at a later time.
 create_connector_definition(Client, Input) ->
     create_connector_definition(Client, Input, []).
@@ -260,7 +270,7 @@ create_connector_definition_version(Client, ConnectorDefinitionId, Input) ->
     create_connector_definition_version(Client, ConnectorDefinitionId, Input, []).
 create_connector_definition_version(Client, ConnectorDefinitionId, Input0, Options) ->
     Method = post,
-    Path = ["/greengrass/definition/connectors/", http_uri:encode(ConnectorDefinitionId), "/versions"],
+    Path = ["/greengrass/definition/connectors/", aws_util:encode_uri(ConnectorDefinitionId), "/versions"],
     SuccessStatusCode = 200,
 
     HeadersMapping = [
@@ -273,9 +283,11 @@ create_connector_definition_version(Client, ConnectorDefinitionId, Input0, Optio
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a core definition. You may provide the initial version of the
-%% core definition now or use ''CreateCoreDefinitionVersion'' at a later
-%% time. Greengrass groups must each contain exactly one Greengrass core.
+%% @doc Creates a core definition.
+%%
+%% You may provide the initial version of the core definition now or use
+%% ''CreateCoreDefinitionVersion'' at a later time. Greengrass groups must
+%% each contain exactly one Greengrass core.
 create_core_definition(Client, Input) ->
     create_core_definition(Client, Input, []).
 create_core_definition(Client, Input0, Options) ->
@@ -294,12 +306,13 @@ create_core_definition(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a version of a core definition that has already been defined.
+%%
 %% Greengrass groups must each contain exactly one Greengrass core.
 create_core_definition_version(Client, CoreDefinitionId, Input) ->
     create_core_definition_version(Client, CoreDefinitionId, Input, []).
 create_core_definition_version(Client, CoreDefinitionId, Input0, Options) ->
     Method = post,
-    Path = ["/greengrass/definition/cores/", http_uri:encode(CoreDefinitionId), "/versions"],
+    Path = ["/greengrass/definition/cores/", aws_util:encode_uri(CoreDefinitionId), "/versions"],
     SuccessStatusCode = 200,
 
     HeadersMapping = [
@@ -312,14 +325,15 @@ create_core_definition_version(Client, CoreDefinitionId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a deployment. ''CreateDeployment'' requests are idempotent
-%% with respect to the ''X-Amzn-Client-Token'' token and the request
-%% parameters.
+%% @doc Creates a deployment.
+%%
+%% ''CreateDeployment'' requests are idempotent with respect to the
+%% ''X-Amzn-Client-Token'' token and the request parameters.
 create_deployment(Client, GroupId, Input) ->
     create_deployment(Client, GroupId, Input, []).
 create_deployment(Client, GroupId, Input0, Options) ->
     Method = post,
-    Path = ["/greengrass/groups/", http_uri:encode(GroupId), "/deployments"],
+    Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/deployments"],
     SuccessStatusCode = 200,
 
     HeadersMapping = [
@@ -332,9 +346,10 @@ create_deployment(Client, GroupId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a device definition. You may provide the initial version of
-%% the device definition now or use ''CreateDeviceDefinitionVersion'' at a
-%% later time.
+%% @doc Creates a device definition.
+%%
+%% You may provide the initial version of the device definition now or use
+%% ''CreateDeviceDefinitionVersion'' at a later time.
 create_device_definition(Client, Input) ->
     create_device_definition(Client, Input, []).
 create_device_definition(Client, Input0, Options) ->
@@ -358,7 +373,7 @@ create_device_definition_version(Client, DeviceDefinitionId, Input) ->
     create_device_definition_version(Client, DeviceDefinitionId, Input, []).
 create_device_definition_version(Client, DeviceDefinitionId, Input0, Options) ->
     Method = post,
-    Path = ["/greengrass/definition/devices/", http_uri:encode(DeviceDefinitionId), "/versions"],
+    Path = ["/greengrass/definition/devices/", aws_util:encode_uri(DeviceDefinitionId), "/versions"],
     SuccessStatusCode = 200,
 
     HeadersMapping = [
@@ -372,9 +387,10 @@ create_device_definition_version(Client, DeviceDefinitionId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a Lambda function definition which contains a list of Lambda
-%% functions and their configurations to be used in a group. You can create
-%% an initial version of the definition by providing a list of Lambda
-%% functions and their configurations now, or use
+%% functions and their configurations to be used in a group.
+%%
+%% You can create an initial version of the definition by providing a list of
+%% Lambda functions and their configurations now, or use
 %% ''CreateFunctionDefinitionVersion'' later.
 create_function_definition(Client, Input) ->
     create_function_definition(Client, Input, []).
@@ -399,7 +415,7 @@ create_function_definition_version(Client, FunctionDefinitionId, Input) ->
     create_function_definition_version(Client, FunctionDefinitionId, Input, []).
 create_function_definition_version(Client, FunctionDefinitionId, Input0, Options) ->
     Method = post,
-    Path = ["/greengrass/definition/functions/", http_uri:encode(FunctionDefinitionId), "/versions"],
+    Path = ["/greengrass/definition/functions/", aws_util:encode_uri(FunctionDefinitionId), "/versions"],
     SuccessStatusCode = 200,
 
     HeadersMapping = [
@@ -412,8 +428,10 @@ create_function_definition_version(Client, FunctionDefinitionId, Input0, Options
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a group. You may provide the initial version of the group or
-%% use ''CreateGroupVersion'' at a later time. Tip: You can use the
+%% @doc Creates a group.
+%%
+%% You may provide the initial version of the group or use
+%% ''CreateGroupVersion'' at a later time. Tip: You can use the
 %% ''gg_group_setup'' package
 %% (https://github.com/awslabs/aws-greengrass-group-setup) as a library or
 %% command-line application to create and deploy Greengrass groups.
@@ -434,13 +452,14 @@ create_group(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a CA for the group. If a CA already exists, it will rotate
-%% the existing CA.
+%% @doc Creates a CA for the group.
+%%
+%% If a CA already exists, it will rotate the existing CA.
 create_group_certificate_authority(Client, GroupId, Input) ->
     create_group_certificate_authority(Client, GroupId, Input, []).
 create_group_certificate_authority(Client, GroupId, Input0, Options) ->
     Method = post,
-    Path = ["/greengrass/groups/", http_uri:encode(GroupId), "/certificateauthorities"],
+    Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/certificateauthorities"],
     SuccessStatusCode = 200,
 
     HeadersMapping = [
@@ -458,7 +477,7 @@ create_group_version(Client, GroupId, Input) ->
     create_group_version(Client, GroupId, Input, []).
 create_group_version(Client, GroupId, Input0, Options) ->
     Method = post,
-    Path = ["/greengrass/groups/", http_uri:encode(GroupId), "/versions"],
+    Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/versions"],
     SuccessStatusCode = 200,
 
     HeadersMapping = [
@@ -471,9 +490,10 @@ create_group_version(Client, GroupId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a logger definition. You may provide the initial version of
-%% the logger definition now or use ''CreateLoggerDefinitionVersion'' at a
-%% later time.
+%% @doc Creates a logger definition.
+%%
+%% You may provide the initial version of the logger definition now or use
+%% ''CreateLoggerDefinitionVersion'' at a later time.
 create_logger_definition(Client, Input) ->
     create_logger_definition(Client, Input, []).
 create_logger_definition(Client, Input0, Options) ->
@@ -497,7 +517,7 @@ create_logger_definition_version(Client, LoggerDefinitionId, Input) ->
     create_logger_definition_version(Client, LoggerDefinitionId, Input, []).
 create_logger_definition_version(Client, LoggerDefinitionId, Input0, Options) ->
     Method = post,
-    Path = ["/greengrass/definition/loggers/", http_uri:encode(LoggerDefinitionId), "/versions"],
+    Path = ["/greengrass/definition/loggers/", aws_util:encode_uri(LoggerDefinitionId), "/versions"],
     SuccessStatusCode = 200,
 
     HeadersMapping = [
@@ -511,9 +531,10 @@ create_logger_definition_version(Client, LoggerDefinitionId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a resource definition which contains a list of resources to
-%% be used in a group. You can create an initial version of the definition by
-%% providing a list of resources now, or use
-%% ''CreateResourceDefinitionVersion'' later.
+%% be used in a group.
+%%
+%% You can create an initial version of the definition by providing a list of
+%% resources now, or use ''CreateResourceDefinitionVersion'' later.
 create_resource_definition(Client, Input) ->
     create_resource_definition(Client, Input, []).
 create_resource_definition(Client, Input0, Options) ->
@@ -537,7 +558,7 @@ create_resource_definition_version(Client, ResourceDefinitionId, Input) ->
     create_resource_definition_version(Client, ResourceDefinitionId, Input, []).
 create_resource_definition_version(Client, ResourceDefinitionId, Input0, Options) ->
     Method = post,
-    Path = ["/greengrass/definition/resources/", http_uri:encode(ResourceDefinitionId), "/versions"],
+    Path = ["/greengrass/definition/resources/", aws_util:encode_uri(ResourceDefinitionId), "/versions"],
     SuccessStatusCode = 200,
 
     HeadersMapping = [
@@ -552,9 +573,10 @@ create_resource_definition_version(Client, ResourceDefinitionId, Input0, Options
 
 %% @doc Creates a software update for a core or group of cores (specified as
 %% an IoT thing group.) Use this to update the OTA Agent as well as the
-%% Greengrass core software. It makes use of the IoT Jobs feature which
-%% provides additional commands to manage a Greengrass core software update
-%% job.
+%% Greengrass core software.
+%%
+%% It makes use of the IoT Jobs feature which provides additional commands to
+%% manage a Greengrass core software update job.
 create_software_update_job(Client, Input) ->
     create_software_update_job(Client, Input, []).
 create_software_update_job(Client, Input0, Options) ->
@@ -572,9 +594,10 @@ create_software_update_job(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a subscription definition. You may provide the initial
-%% version of the subscription definition now or use
-%% ''CreateSubscriptionDefinitionVersion'' at a later time.
+%% @doc Creates a subscription definition.
+%%
+%% You may provide the initial version of the subscription definition now or
+%% use ''CreateSubscriptionDefinitionVersion'' at a later time.
 create_subscription_definition(Client, Input) ->
     create_subscription_definition(Client, Input, []).
 create_subscription_definition(Client, Input0, Options) ->
@@ -598,7 +621,7 @@ create_subscription_definition_version(Client, SubscriptionDefinitionId, Input) 
     create_subscription_definition_version(Client, SubscriptionDefinitionId, Input, []).
 create_subscription_definition_version(Client, SubscriptionDefinitionId, Input0, Options) ->
     Method = post,
-    Path = ["/greengrass/definition/subscriptions/", http_uri:encode(SubscriptionDefinitionId), "/versions"],
+    Path = ["/greengrass/definition/subscriptions/", aws_util:encode_uri(SubscriptionDefinitionId), "/versions"],
     SuccessStatusCode = 200,
 
     HeadersMapping = [
@@ -616,7 +639,7 @@ delete_connector_definition(Client, ConnectorDefinitionId, Input) ->
     delete_connector_definition(Client, ConnectorDefinitionId, Input, []).
 delete_connector_definition(Client, ConnectorDefinitionId, Input0, Options) ->
     Method = delete,
-    Path = ["/greengrass/definition/connectors/", http_uri:encode(ConnectorDefinitionId), ""],
+    Path = ["/greengrass/definition/connectors/", aws_util:encode_uri(ConnectorDefinitionId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -632,7 +655,7 @@ delete_core_definition(Client, CoreDefinitionId, Input) ->
     delete_core_definition(Client, CoreDefinitionId, Input, []).
 delete_core_definition(Client, CoreDefinitionId, Input0, Options) ->
     Method = delete,
-    Path = ["/greengrass/definition/cores/", http_uri:encode(CoreDefinitionId), ""],
+    Path = ["/greengrass/definition/cores/", aws_util:encode_uri(CoreDefinitionId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -648,7 +671,7 @@ delete_device_definition(Client, DeviceDefinitionId, Input) ->
     delete_device_definition(Client, DeviceDefinitionId, Input, []).
 delete_device_definition(Client, DeviceDefinitionId, Input0, Options) ->
     Method = delete,
-    Path = ["/greengrass/definition/devices/", http_uri:encode(DeviceDefinitionId), ""],
+    Path = ["/greengrass/definition/devices/", aws_util:encode_uri(DeviceDefinitionId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -664,7 +687,7 @@ delete_function_definition(Client, FunctionDefinitionId, Input) ->
     delete_function_definition(Client, FunctionDefinitionId, Input, []).
 delete_function_definition(Client, FunctionDefinitionId, Input0, Options) ->
     Method = delete,
-    Path = ["/greengrass/definition/functions/", http_uri:encode(FunctionDefinitionId), ""],
+    Path = ["/greengrass/definition/functions/", aws_util:encode_uri(FunctionDefinitionId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -680,7 +703,7 @@ delete_group(Client, GroupId, Input) ->
     delete_group(Client, GroupId, Input, []).
 delete_group(Client, GroupId, Input0, Options) ->
     Method = delete,
-    Path = ["/greengrass/groups/", http_uri:encode(GroupId), ""],
+    Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -696,7 +719,7 @@ delete_logger_definition(Client, LoggerDefinitionId, Input) ->
     delete_logger_definition(Client, LoggerDefinitionId, Input, []).
 delete_logger_definition(Client, LoggerDefinitionId, Input0, Options) ->
     Method = delete,
-    Path = ["/greengrass/definition/loggers/", http_uri:encode(LoggerDefinitionId), ""],
+    Path = ["/greengrass/definition/loggers/", aws_util:encode_uri(LoggerDefinitionId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -712,7 +735,7 @@ delete_resource_definition(Client, ResourceDefinitionId, Input) ->
     delete_resource_definition(Client, ResourceDefinitionId, Input, []).
 delete_resource_definition(Client, ResourceDefinitionId, Input0, Options) ->
     Method = delete,
-    Path = ["/greengrass/definition/resources/", http_uri:encode(ResourceDefinitionId), ""],
+    Path = ["/greengrass/definition/resources/", aws_util:encode_uri(ResourceDefinitionId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -728,7 +751,7 @@ delete_subscription_definition(Client, SubscriptionDefinitionId, Input) ->
     delete_subscription_definition(Client, SubscriptionDefinitionId, Input, []).
 delete_subscription_definition(Client, SubscriptionDefinitionId, Input0, Options) ->
     Method = delete,
-    Path = ["/greengrass/definition/subscriptions/", http_uri:encode(SubscriptionDefinitionId), ""],
+    Path = ["/greengrass/definition/subscriptions/", aws_util:encode_uri(SubscriptionDefinitionId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -744,7 +767,7 @@ disassociate_role_from_group(Client, GroupId, Input) ->
     disassociate_role_from_group(Client, GroupId, Input, []).
 disassociate_role_from_group(Client, GroupId, Input0, Options) ->
     Method = delete,
-    Path = ["/greengrass/groups/", http_uri:encode(GroupId), "/role"],
+    Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/role"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -755,8 +778,9 @@ disassociate_role_from_group(Client, GroupId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Disassociates the service role from your account. Without a service
-%% role, deployments will not work.
+%% @doc Disassociates the service role from your account.
+%%
+%% Without a service role, deployments will not work.
 disassociate_service_role_from_account(Client, Input) ->
     disassociate_service_role_from_account(Client, Input, []).
 disassociate_service_role_from_account(Client, Input0, Options) ->
@@ -778,7 +802,7 @@ get_associated_role(Client, GroupId)
     get_associated_role(Client, GroupId, []).
 get_associated_role(Client, GroupId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/greengrass/groups/", http_uri:encode(GroupId), "/role"],
+    Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/role"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -793,7 +817,7 @@ get_bulk_deployment_status(Client, BulkDeploymentId)
     get_bulk_deployment_status(Client, BulkDeploymentId, []).
 get_bulk_deployment_status(Client, BulkDeploymentId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/greengrass/bulk/deployments/", http_uri:encode(BulkDeploymentId), "/status"],
+    Path = ["/greengrass/bulk/deployments/", aws_util:encode_uri(BulkDeploymentId), "/status"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -808,7 +832,7 @@ get_connectivity_info(Client, ThingName)
     get_connectivity_info(Client, ThingName, []).
 get_connectivity_info(Client, ThingName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/greengrass/things/", http_uri:encode(ThingName), "/connectivityInfo"],
+    Path = ["/greengrass/things/", aws_util:encode_uri(ThingName), "/connectivityInfo"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -823,7 +847,7 @@ get_connector_definition(Client, ConnectorDefinitionId)
     get_connector_definition(Client, ConnectorDefinitionId, []).
 get_connector_definition(Client, ConnectorDefinitionId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/greengrass/definition/connectors/", http_uri:encode(ConnectorDefinitionId), ""],
+    Path = ["/greengrass/definition/connectors/", aws_util:encode_uri(ConnectorDefinitionId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -833,15 +857,16 @@ get_connector_definition(Client, ConnectorDefinitionId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a connector definition version, including
-%% the connectors that the version contains. Connectors are prebuilt modules
-%% that interact with local infrastructure, device protocols, AWS, and other
-%% cloud services.
+%% the connectors that the version contains.
+%%
+%% Connectors are prebuilt modules that interact with local infrastructure,
+%% device protocols, AWS, and other cloud services.
 get_connector_definition_version(Client, ConnectorDefinitionId, ConnectorDefinitionVersionId, NextToken)
   when is_map(Client) ->
     get_connector_definition_version(Client, ConnectorDefinitionId, ConnectorDefinitionVersionId, NextToken, []).
 get_connector_definition_version(Client, ConnectorDefinitionId, ConnectorDefinitionVersionId, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/greengrass/definition/connectors/", http_uri:encode(ConnectorDefinitionId), "/versions/", http_uri:encode(ConnectorDefinitionVersionId), ""],
+    Path = ["/greengrass/definition/connectors/", aws_util:encode_uri(ConnectorDefinitionId), "/versions/", aws_util:encode_uri(ConnectorDefinitionVersionId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -860,7 +885,7 @@ get_core_definition(Client, CoreDefinitionId)
     get_core_definition(Client, CoreDefinitionId, []).
 get_core_definition(Client, CoreDefinitionId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/greengrass/definition/cores/", http_uri:encode(CoreDefinitionId), ""],
+    Path = ["/greengrass/definition/cores/", aws_util:encode_uri(CoreDefinitionId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -875,7 +900,7 @@ get_core_definition_version(Client, CoreDefinitionId, CoreDefinitionVersionId)
     get_core_definition_version(Client, CoreDefinitionId, CoreDefinitionVersionId, []).
 get_core_definition_version(Client, CoreDefinitionId, CoreDefinitionVersionId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/greengrass/definition/cores/", http_uri:encode(CoreDefinitionId), "/versions/", http_uri:encode(CoreDefinitionVersionId), ""],
+    Path = ["/greengrass/definition/cores/", aws_util:encode_uri(CoreDefinitionId), "/versions/", aws_util:encode_uri(CoreDefinitionVersionId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -890,7 +915,7 @@ get_deployment_status(Client, DeploymentId, GroupId)
     get_deployment_status(Client, DeploymentId, GroupId, []).
 get_deployment_status(Client, DeploymentId, GroupId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/greengrass/groups/", http_uri:encode(GroupId), "/deployments/", http_uri:encode(DeploymentId), "/status"],
+    Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/deployments/", aws_util:encode_uri(DeploymentId), "/status"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -905,7 +930,7 @@ get_device_definition(Client, DeviceDefinitionId)
     get_device_definition(Client, DeviceDefinitionId, []).
 get_device_definition(Client, DeviceDefinitionId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/greengrass/definition/devices/", http_uri:encode(DeviceDefinitionId), ""],
+    Path = ["/greengrass/definition/devices/", aws_util:encode_uri(DeviceDefinitionId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -920,7 +945,7 @@ get_device_definition_version(Client, DeviceDefinitionId, DeviceDefinitionVersio
     get_device_definition_version(Client, DeviceDefinitionId, DeviceDefinitionVersionId, NextToken, []).
 get_device_definition_version(Client, DeviceDefinitionId, DeviceDefinitionVersionId, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/greengrass/definition/devices/", http_uri:encode(DeviceDefinitionId), "/versions/", http_uri:encode(DeviceDefinitionVersionId), ""],
+    Path = ["/greengrass/definition/devices/", aws_util:encode_uri(DeviceDefinitionId), "/versions/", aws_util:encode_uri(DeviceDefinitionVersionId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -940,7 +965,7 @@ get_function_definition(Client, FunctionDefinitionId)
     get_function_definition(Client, FunctionDefinitionId, []).
 get_function_definition(Client, FunctionDefinitionId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/greengrass/definition/functions/", http_uri:encode(FunctionDefinitionId), ""],
+    Path = ["/greengrass/definition/functions/", aws_util:encode_uri(FunctionDefinitionId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -957,7 +982,7 @@ get_function_definition_version(Client, FunctionDefinitionId, FunctionDefinition
     get_function_definition_version(Client, FunctionDefinitionId, FunctionDefinitionVersionId, NextToken, []).
 get_function_definition_version(Client, FunctionDefinitionId, FunctionDefinitionVersionId, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/greengrass/definition/functions/", http_uri:encode(FunctionDefinitionId), "/versions/", http_uri:encode(FunctionDefinitionVersionId), ""],
+    Path = ["/greengrass/definition/functions/", aws_util:encode_uri(FunctionDefinitionId), "/versions/", aws_util:encode_uri(FunctionDefinitionVersionId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -976,7 +1001,7 @@ get_group(Client, GroupId)
     get_group(Client, GroupId, []).
 get_group(Client, GroupId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/greengrass/groups/", http_uri:encode(GroupId), ""],
+    Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -985,14 +1010,15 @@ get_group(Client, GroupId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retreives the CA associated with a group. Returns the public key of
-%% the CA.
+%% @doc Retreives the CA associated with a group.
+%%
+%% Returns the public key of the CA.
 get_group_certificate_authority(Client, CertificateAuthorityId, GroupId)
   when is_map(Client) ->
     get_group_certificate_authority(Client, CertificateAuthorityId, GroupId, []).
 get_group_certificate_authority(Client, CertificateAuthorityId, GroupId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/greengrass/groups/", http_uri:encode(GroupId), "/certificateauthorities/", http_uri:encode(CertificateAuthorityId), ""],
+    Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/certificateauthorities/", aws_util:encode_uri(CertificateAuthorityId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1007,7 +1033,7 @@ get_group_certificate_configuration(Client, GroupId)
     get_group_certificate_configuration(Client, GroupId, []).
 get_group_certificate_configuration(Client, GroupId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/greengrass/groups/", http_uri:encode(GroupId), "/certificateauthorities/configuration/expiry"],
+    Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/certificateauthorities/configuration/expiry"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1022,7 +1048,7 @@ get_group_version(Client, GroupId, GroupVersionId)
     get_group_version(Client, GroupId, GroupVersionId, []).
 get_group_version(Client, GroupId, GroupVersionId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/greengrass/groups/", http_uri:encode(GroupId), "/versions/", http_uri:encode(GroupVersionId), ""],
+    Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/versions/", aws_util:encode_uri(GroupVersionId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1037,7 +1063,7 @@ get_logger_definition(Client, LoggerDefinitionId)
     get_logger_definition(Client, LoggerDefinitionId, []).
 get_logger_definition(Client, LoggerDefinitionId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/greengrass/definition/loggers/", http_uri:encode(LoggerDefinitionId), ""],
+    Path = ["/greengrass/definition/loggers/", aws_util:encode_uri(LoggerDefinitionId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1052,7 +1078,7 @@ get_logger_definition_version(Client, LoggerDefinitionId, LoggerDefinitionVersio
     get_logger_definition_version(Client, LoggerDefinitionId, LoggerDefinitionVersionId, NextToken, []).
 get_logger_definition_version(Client, LoggerDefinitionId, LoggerDefinitionVersionId, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/greengrass/definition/loggers/", http_uri:encode(LoggerDefinitionId), "/versions/", http_uri:encode(LoggerDefinitionVersionId), ""],
+    Path = ["/greengrass/definition/loggers/", aws_util:encode_uri(LoggerDefinitionId), "/versions/", aws_util:encode_uri(LoggerDefinitionVersionId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1072,7 +1098,7 @@ get_resource_definition(Client, ResourceDefinitionId)
     get_resource_definition(Client, ResourceDefinitionId, []).
 get_resource_definition(Client, ResourceDefinitionId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/greengrass/definition/resources/", http_uri:encode(ResourceDefinitionId), ""],
+    Path = ["/greengrass/definition/resources/", aws_util:encode_uri(ResourceDefinitionId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1088,7 +1114,7 @@ get_resource_definition_version(Client, ResourceDefinitionId, ResourceDefinition
     get_resource_definition_version(Client, ResourceDefinitionId, ResourceDefinitionVersionId, []).
 get_resource_definition_version(Client, ResourceDefinitionId, ResourceDefinitionVersionId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/greengrass/definition/resources/", http_uri:encode(ResourceDefinitionId), "/versions/", http_uri:encode(ResourceDefinitionVersionId), ""],
+    Path = ["/greengrass/definition/resources/", aws_util:encode_uri(ResourceDefinitionId), "/versions/", aws_util:encode_uri(ResourceDefinitionVersionId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1118,7 +1144,7 @@ get_subscription_definition(Client, SubscriptionDefinitionId)
     get_subscription_definition(Client, SubscriptionDefinitionId, []).
 get_subscription_definition(Client, SubscriptionDefinitionId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/greengrass/definition/subscriptions/", http_uri:encode(SubscriptionDefinitionId), ""],
+    Path = ["/greengrass/definition/subscriptions/", aws_util:encode_uri(SubscriptionDefinitionId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1133,7 +1159,7 @@ get_subscription_definition_version(Client, SubscriptionDefinitionId, Subscripti
     get_subscription_definition_version(Client, SubscriptionDefinitionId, SubscriptionDefinitionVersionId, NextToken, []).
 get_subscription_definition_version(Client, SubscriptionDefinitionId, SubscriptionDefinitionVersionId, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/greengrass/definition/subscriptions/", http_uri:encode(SubscriptionDefinitionId), "/versions/", http_uri:encode(SubscriptionDefinitionVersionId), ""],
+    Path = ["/greengrass/definition/subscriptions/", aws_util:encode_uri(SubscriptionDefinitionId), "/versions/", aws_util:encode_uri(SubscriptionDefinitionVersionId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1146,6 +1172,21 @@ get_subscription_definition_version(Client, SubscriptionDefinitionId, Subscripti
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Get the runtime configuration of a thing.
+get_thing_runtime_configuration(Client, ThingName)
+  when is_map(Client) ->
+    get_thing_runtime_configuration(Client, ThingName, []).
+get_thing_runtime_configuration(Client, ThingName, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/greengrass/things/", aws_util:encode_uri(ThingName), "/runtimeconfig"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets a paginated list of the deployments that have been started in a
 %% bulk deployment operation, and their current deployment status.
 list_bulk_deployment_detailed_reports(Client, BulkDeploymentId, MaxResults, NextToken)
@@ -1153,7 +1194,7 @@ list_bulk_deployment_detailed_reports(Client, BulkDeploymentId, MaxResults, Next
     list_bulk_deployment_detailed_reports(Client, BulkDeploymentId, MaxResults, NextToken, []).
 list_bulk_deployment_detailed_reports(Client, BulkDeploymentId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/greengrass/bulk/deployments/", http_uri:encode(BulkDeploymentId), "/detailed-reports"],
+    Path = ["/greengrass/bulk/deployments/", aws_util:encode_uri(BulkDeploymentId), "/detailed-reports"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1188,15 +1229,17 @@ list_bulk_deployments(Client, MaxResults, NextToken, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the versions of a connector definition, which are containers
-%% for connectors. Connectors run on the Greengrass core and contain built-in
-%% integration with local infrastructure, device protocols, AWS, and other
-%% cloud services.
+%% for connectors.
+%%
+%% Connectors run on the Greengrass core and contain built-in integration
+%% with local infrastructure, device protocols, AWS, and other cloud
+%% services.
 list_connector_definition_versions(Client, ConnectorDefinitionId, MaxResults, NextToken)
   when is_map(Client) ->
     list_connector_definition_versions(Client, ConnectorDefinitionId, MaxResults, NextToken, []).
 list_connector_definition_versions(Client, ConnectorDefinitionId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/greengrass/definition/connectors/", http_uri:encode(ConnectorDefinitionId), "/versions"],
+    Path = ["/greengrass/definition/connectors/", aws_util:encode_uri(ConnectorDefinitionId), "/versions"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1236,7 +1279,7 @@ list_core_definition_versions(Client, CoreDefinitionId, MaxResults, NextToken)
     list_core_definition_versions(Client, CoreDefinitionId, MaxResults, NextToken, []).
 list_core_definition_versions(Client, CoreDefinitionId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/greengrass/definition/cores/", http_uri:encode(CoreDefinitionId), "/versions"],
+    Path = ["/greengrass/definition/cores/", aws_util:encode_uri(CoreDefinitionId), "/versions"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1276,7 +1319,7 @@ list_deployments(Client, GroupId, MaxResults, NextToken)
     list_deployments(Client, GroupId, MaxResults, NextToken, []).
 list_deployments(Client, GroupId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/greengrass/groups/", http_uri:encode(GroupId), "/deployments"],
+    Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/deployments"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1296,7 +1339,7 @@ list_device_definition_versions(Client, DeviceDefinitionId, MaxResults, NextToke
     list_device_definition_versions(Client, DeviceDefinitionId, MaxResults, NextToken, []).
 list_device_definition_versions(Client, DeviceDefinitionId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/greengrass/definition/devices/", http_uri:encode(DeviceDefinitionId), "/versions"],
+    Path = ["/greengrass/definition/devices/", aws_util:encode_uri(DeviceDefinitionId), "/versions"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1336,7 +1379,7 @@ list_function_definition_versions(Client, FunctionDefinitionId, MaxResults, Next
     list_function_definition_versions(Client, FunctionDefinitionId, MaxResults, NextToken, []).
 list_function_definition_versions(Client, FunctionDefinitionId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/greengrass/definition/functions/", http_uri:encode(FunctionDefinitionId), "/versions"],
+    Path = ["/greengrass/definition/functions/", aws_util:encode_uri(FunctionDefinitionId), "/versions"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1376,7 +1419,7 @@ list_group_certificate_authorities(Client, GroupId)
     list_group_certificate_authorities(Client, GroupId, []).
 list_group_certificate_authorities(Client, GroupId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/greengrass/groups/", http_uri:encode(GroupId), "/certificateauthorities"],
+    Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/certificateauthorities"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1391,7 +1434,7 @@ list_group_versions(Client, GroupId, MaxResults, NextToken)
     list_group_versions(Client, GroupId, MaxResults, NextToken, []).
 list_group_versions(Client, GroupId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/greengrass/groups/", http_uri:encode(GroupId), "/versions"],
+    Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/versions"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1431,7 +1474,7 @@ list_logger_definition_versions(Client, LoggerDefinitionId, MaxResults, NextToke
     list_logger_definition_versions(Client, LoggerDefinitionId, MaxResults, NextToken, []).
 list_logger_definition_versions(Client, LoggerDefinitionId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/greengrass/definition/loggers/", http_uri:encode(LoggerDefinitionId), "/versions"],
+    Path = ["/greengrass/definition/loggers/", aws_util:encode_uri(LoggerDefinitionId), "/versions"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1471,7 +1514,7 @@ list_resource_definition_versions(Client, ResourceDefinitionId, MaxResults, Next
     list_resource_definition_versions(Client, ResourceDefinitionId, MaxResults, NextToken, []).
 list_resource_definition_versions(Client, ResourceDefinitionId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/greengrass/definition/resources/", http_uri:encode(ResourceDefinitionId), "/versions"],
+    Path = ["/greengrass/definition/resources/", aws_util:encode_uri(ResourceDefinitionId), "/versions"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1511,7 +1554,7 @@ list_subscription_definition_versions(Client, SubscriptionDefinitionId, MaxResul
     list_subscription_definition_versions(Client, SubscriptionDefinitionId, MaxResults, NextToken, []).
 list_subscription_definition_versions(Client, SubscriptionDefinitionId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/greengrass/definition/subscriptions/", http_uri:encode(SubscriptionDefinitionId), "/versions"],
+    Path = ["/greengrass/definition/subscriptions/", aws_util:encode_uri(SubscriptionDefinitionId), "/versions"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1551,7 +1594,7 @@ list_tags_for_resource(Client, ResourceArn)
     list_tags_for_resource(Client, ResourceArn, []).
 list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1565,7 +1608,7 @@ reset_deployments(Client, GroupId, Input) ->
     reset_deployments(Client, GroupId, Input, []).
 reset_deployments(Client, GroupId, Input0, Options) ->
     Method = post,
-    Path = ["/greengrass/groups/", http_uri:encode(GroupId), "/deployments/$reset"],
+    Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/deployments/$reset"],
     SuccessStatusCode = 200,
 
     HeadersMapping = [
@@ -1578,12 +1621,14 @@ reset_deployments(Client, GroupId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deploys multiple groups in one operation. This action starts the bulk
-%% deployment of a specified set of group versions. Each group version
-%% deployment will be triggered with an adaptive rate that has a fixed upper
-%% limit. We recommend that you include an ''X-Amzn-Client-Token'' token in
-%% every ''StartBulkDeployment'' request. These requests are idempotent with
-%% respect to the token and the request parameters.
+%% @doc Deploys multiple groups in one operation.
+%%
+%% This action starts the bulk deployment of a specified set of group
+%% versions. Each group version deployment will be triggered with an adaptive
+%% rate that has a fixed upper limit. We recommend that you include an
+%% ''X-Amzn-Client-Token'' token in every ''StartBulkDeployment'' request.
+%% These requests are idempotent with respect to the token and the request
+%% parameters.
 start_bulk_deployment(Client, Input) ->
     start_bulk_deployment(Client, Input, []).
 start_bulk_deployment(Client, Input0, Options) ->
@@ -1601,16 +1646,17 @@ start_bulk_deployment(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Stops the execution of a bulk deployment. This action returns a
-%% status of ''Stopping'' until the deployment is stopped. You cannot start a
-%% new bulk deployment while a previous deployment is in the ''Stopping''
-%% state. This action doesn't rollback completed deployments or cancel
-%% pending deployments.
+%% @doc Stops the execution of a bulk deployment.
+%%
+%% This action returns a status of ''Stopping'' until the deployment is
+%% stopped. You cannot start a new bulk deployment while a previous
+%% deployment is in the ''Stopping'' state. This action doesn't rollback
+%% completed deployments or cancel pending deployments.
 stop_bulk_deployment(Client, BulkDeploymentId, Input) ->
     stop_bulk_deployment(Client, BulkDeploymentId, Input, []).
 stop_bulk_deployment(Client, BulkDeploymentId, Input0, Options) ->
     Method = put,
-    Path = ["/greengrass/bulk/deployments/", http_uri:encode(BulkDeploymentId), "/$stop"],
+    Path = ["/greengrass/bulk/deployments/", aws_util:encode_uri(BulkDeploymentId), "/$stop"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1621,15 +1667,16 @@ stop_bulk_deployment(Client, BulkDeploymentId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds tags to a Greengrass resource. Valid resources are 'Group',
-%% 'ConnectorDefinition', 'CoreDefinition', 'DeviceDefinition',
-%% 'FunctionDefinition', 'LoggerDefinition', 'SubscriptionDefinition',
-%% 'ResourceDefinition', and 'BulkDeployment'.
+%% @doc Adds tags to a Greengrass resource.
+%%
+%% Valid resources are 'Group', 'ConnectorDefinition', 'CoreDefinition',
+%% 'DeviceDefinition', 'FunctionDefinition', 'LoggerDefinition',
+%% 'SubscriptionDefinition', 'ResourceDefinition', and 'BulkDeployment'.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -1645,7 +1692,7 @@ untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -1657,14 +1704,15 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the connectivity information for the core. Any devices that
-%% belong to the group which has this core will receive this information in
-%% order to find the location of the core and connect to it.
+%% @doc Updates the connectivity information for the core.
+%%
+%% Any devices that belong to the group which has this core will receive this
+%% information in order to find the location of the core and connect to it.
 update_connectivity_info(Client, ThingName, Input) ->
     update_connectivity_info(Client, ThingName, Input, []).
 update_connectivity_info(Client, ThingName, Input0, Options) ->
     Method = put,
-    Path = ["/greengrass/things/", http_uri:encode(ThingName), "/connectivityInfo"],
+    Path = ["/greengrass/things/", aws_util:encode_uri(ThingName), "/connectivityInfo"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1680,7 +1728,7 @@ update_connector_definition(Client, ConnectorDefinitionId, Input) ->
     update_connector_definition(Client, ConnectorDefinitionId, Input, []).
 update_connector_definition(Client, ConnectorDefinitionId, Input0, Options) ->
     Method = put,
-    Path = ["/greengrass/definition/connectors/", http_uri:encode(ConnectorDefinitionId), ""],
+    Path = ["/greengrass/definition/connectors/", aws_util:encode_uri(ConnectorDefinitionId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1696,7 +1744,7 @@ update_core_definition(Client, CoreDefinitionId, Input) ->
     update_core_definition(Client, CoreDefinitionId, Input, []).
 update_core_definition(Client, CoreDefinitionId, Input0, Options) ->
     Method = put,
-    Path = ["/greengrass/definition/cores/", http_uri:encode(CoreDefinitionId), ""],
+    Path = ["/greengrass/definition/cores/", aws_util:encode_uri(CoreDefinitionId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1712,7 +1760,7 @@ update_device_definition(Client, DeviceDefinitionId, Input) ->
     update_device_definition(Client, DeviceDefinitionId, Input, []).
 update_device_definition(Client, DeviceDefinitionId, Input0, Options) ->
     Method = put,
-    Path = ["/greengrass/definition/devices/", http_uri:encode(DeviceDefinitionId), ""],
+    Path = ["/greengrass/definition/devices/", aws_util:encode_uri(DeviceDefinitionId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1728,7 +1776,7 @@ update_function_definition(Client, FunctionDefinitionId, Input) ->
     update_function_definition(Client, FunctionDefinitionId, Input, []).
 update_function_definition(Client, FunctionDefinitionId, Input0, Options) ->
     Method = put,
-    Path = ["/greengrass/definition/functions/", http_uri:encode(FunctionDefinitionId), ""],
+    Path = ["/greengrass/definition/functions/", aws_util:encode_uri(FunctionDefinitionId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1744,7 +1792,7 @@ update_group(Client, GroupId, Input) ->
     update_group(Client, GroupId, Input, []).
 update_group(Client, GroupId, Input0, Options) ->
     Method = put,
-    Path = ["/greengrass/groups/", http_uri:encode(GroupId), ""],
+    Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1760,7 +1808,7 @@ update_group_certificate_configuration(Client, GroupId, Input) ->
     update_group_certificate_configuration(Client, GroupId, Input, []).
 update_group_certificate_configuration(Client, GroupId, Input0, Options) ->
     Method = put,
-    Path = ["/greengrass/groups/", http_uri:encode(GroupId), "/certificateauthorities/configuration/expiry"],
+    Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/certificateauthorities/configuration/expiry"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1776,7 +1824,7 @@ update_logger_definition(Client, LoggerDefinitionId, Input) ->
     update_logger_definition(Client, LoggerDefinitionId, Input, []).
 update_logger_definition(Client, LoggerDefinitionId, Input0, Options) ->
     Method = put,
-    Path = ["/greengrass/definition/loggers/", http_uri:encode(LoggerDefinitionId), ""],
+    Path = ["/greengrass/definition/loggers/", aws_util:encode_uri(LoggerDefinitionId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1792,7 +1840,7 @@ update_resource_definition(Client, ResourceDefinitionId, Input) ->
     update_resource_definition(Client, ResourceDefinitionId, Input, []).
 update_resource_definition(Client, ResourceDefinitionId, Input0, Options) ->
     Method = put,
-    Path = ["/greengrass/definition/resources/", http_uri:encode(ResourceDefinitionId), ""],
+    Path = ["/greengrass/definition/resources/", aws_util:encode_uri(ResourceDefinitionId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1808,7 +1856,23 @@ update_subscription_definition(Client, SubscriptionDefinitionId, Input) ->
     update_subscription_definition(Client, SubscriptionDefinitionId, Input, []).
 update_subscription_definition(Client, SubscriptionDefinitionId, Input0, Options) ->
     Method = put,
-    Path = ["/greengrass/definition/subscriptions/", http_uri:encode(SubscriptionDefinitionId), ""],
+    Path = ["/greengrass/definition/subscriptions/", aws_util:encode_uri(SubscriptionDefinitionId), ""],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the runtime configuration of a thing.
+update_thing_runtime_configuration(Client, ThingName, Input) ->
+    update_thing_runtime_configuration(Client, ThingName, Input, []).
+update_thing_runtime_configuration(Client, ThingName, Input0, Options) ->
+    Method = put,
+    Path = ["/greengrass/things/", aws_util:encode_uri(ThingName), "/runtimeconfig"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1865,6 +1929,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

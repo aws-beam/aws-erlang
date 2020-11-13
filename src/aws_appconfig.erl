@@ -1,14 +1,15 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc <fullname>AWS AppConfig</fullname>
+%% @doc AWS AppConfig
 %%
 %% Use AWS AppConfig, a capability of AWS Systems Manager, to create, manage,
-%% and quickly deploy application configurations. AppConfig supports
-%% controlled deployments to applications of any size and includes built-in
-%% validation checks and monitoring. You can use AppConfig with applications
-%% hosted on Amazon EC2 instances, AWS Lambda, containers, mobile
-%% applications, or IoT devices.
+%% and quickly deploy application configurations.
+%%
+%% AppConfig supports controlled deployments to applications of any size and
+%% includes built-in validation checks and monitoring. You can use AppConfig
+%% with applications hosted on Amazon EC2 instances, AWS Lambda, containers,
+%% mobile applications, or IoT devices.
 %%
 %% To prevent errors when deploying application configurations, especially
 %% for production systems where a simple typo could cause an unexpected
@@ -30,24 +31,20 @@
 %%
 %% AppConfig supports multiple use cases. Here are some examples.
 %%
-%% <ul> <li> <b>Application tuning</b>: Use AppConfig to carefully introduce
-%% changes to your application that can only be tested with production
-%% traffic.
+%% <ul> <li> Application tuning: Use AppConfig to carefully introduce changes
+%% to your application that can only be tested with production traffic.
 %%
-%% </li> <li> <b>Feature toggle</b>: Use AppConfig to turn on new features
-%% that require a timely deployment, such as a product launch or
-%% announcement.
+%% </li> <li> Feature toggle: Use AppConfig to turn on new features that
+%% require a timely deployment, such as a product launch or announcement.
 %%
-%% </li> <li> <b>Allow list</b>: Use AppConfig to allow premium subscribers
-%% to access paid content.
+%% </li> <li> Allow list: Use AppConfig to allow premium subscribers to
+%% access paid content.
 %%
-%% </li> <li> <b>Operational issues</b>: Use AppConfig to reduce stress on
-%% your application when a dependency or other external factor impacts the
-%% system.
+%% </li> <li> Operational issues: Use AppConfig to reduce stress on your
+%% application when a dependency or other external factor impacts the system.
 %%
-%% </li> </ul> This reference is intended to be used with the <a
-%% href="http://docs.aws.amazon.com/systems-manager/latest/userguide/appconfig.html">AWS
-%% AppConfig User Guide</a>.
+%% </li> </ul> This reference is intended to be used with the AWS AppConfig
+%% User Guide.
 -module(aws_appconfig).
 
 -export([create_application/2,
@@ -124,10 +121,12 @@
 %%====================================================================
 
 %% @doc An application in AppConfig is a logical unit of code that provides
-%% capabilities for your customers. For example, an application can be a
-%% microservice that runs on Amazon EC2 instances, a mobile application
-%% installed by your users, a serverless application using Amazon API Gateway
-%% and AWS Lambda, or any system you run on behalf of others.
+%% capabilities for your customers.
+%%
+%% For example, an application can be a microservice that runs on Amazon EC2
+%% instances, a mobile application installed by your users, a serverless
+%% application using Amazon API Gateway and AWS Lambda, or any system you run
+%% on behalf of others.
 create_application(Client, Input) ->
     create_application(Client, Input, []).
 create_application(Client, Input0, Options) ->
@@ -144,9 +143,11 @@ create_application(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Information that enables AppConfig to access the configuration
-%% source. Valid configuration sources include Systems Manager (SSM)
-%% documents, SSM Parameter Store parameters, and Amazon S3 objects. A
-%% configuration profile includes the following information.
+%% source.
+%%
+%% Valid configuration sources include Systems Manager (SSM) documents, SSM
+%% Parameter Store parameters, and Amazon S3 objects. A configuration profile
+%% includes the following information.
 %%
 %% <ul> <li> The Uri location of the configuration data.
 %%
@@ -156,15 +157,13 @@ create_application(Client, Input0, Options) ->
 %% </li> <li> A validator for the configuration data. Available validators
 %% include either a JSON Schema or an AWS Lambda function.
 %%
-%% </li> </ul> For more information, see <a
-%% href="http://docs.aws.amazon.com/systems-manager/latest/userguide/appconfig-creating-configuration-and-profile.html">Create
-%% a Configuration and a Configuration Profile</a> in the <i>AWS AppConfig
-%% User Guide</i>.
+%% </li> </ul> For more information, see Create a Configuration and a
+%% Configuration Profile in the AWS AppConfig User Guide.
 create_configuration_profile(Client, ApplicationId, Input) ->
     create_configuration_profile(Client, ApplicationId, Input, []).
 create_configuration_profile(Client, ApplicationId, Input0, Options) ->
     Method = post,
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/configurationprofiles"],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -176,10 +175,11 @@ create_configuration_profile(Client, ApplicationId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc A deployment strategy defines important criteria for rolling out your
-%% configuration to the designated targets. A deployment strategy includes:
-%% the overall duration required, a percentage of targets to receive the
-%% deployment during each interval, an algorithm that defines how percentage
-%% grows, and bake time.
+%% configuration to the designated targets.
+%%
+%% A deployment strategy includes: the overall duration required, a
+%% percentage of targets to receive the deployment during each interval, an
+%% algorithm that defines how percentage grows, and bake time.
 create_deployment_strategy(Client, Input) ->
     create_deployment_strategy(Client, Input, []).
 create_deployment_strategy(Client, Input0, Options) ->
@@ -195,20 +195,20 @@ create_deployment_strategy(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc For each application, you define one or more environments. An
-%% environment is a logical deployment group of AppConfig targets, such as
-%% applications in a <code>Beta</code> or <code>Production</code>
-%% environment. You can also define environments for application
-%% subcomponents such as the <code>Web</code>, <code>Mobile</code> and
-%% <code>Back-end</code> components for your application. You can configure
-%% Amazon CloudWatch alarms for each environment. The system monitors alarms
-%% during a configuration deployment. If an alarm is triggered, the system
-%% rolls back the configuration.
+%% @doc For each application, you define one or more environments.
+%%
+%% An environment is a logical deployment group of AppConfig targets, such as
+%% applications in a `Beta' or `Production' environment. You can also define
+%% environments for application subcomponents such as the `Web', `Mobile' and
+%% `Back-end' components for your application. You can configure Amazon
+%% CloudWatch alarms for each environment. The system monitors alarms during
+%% a configuration deployment. If an alarm is triggered, the system rolls
+%% back the configuration.
 create_environment(Client, ApplicationId, Input) ->
     create_environment(Client, ApplicationId, Input, []).
 create_environment(Client, ApplicationId, Input0, Options) ->
     Method = post,
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/environments"],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -224,7 +224,7 @@ create_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileI
     create_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, Input, []).
 create_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, Input0, Options) ->
     Method = post,
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/configurationprofiles/", http_uri:encode(ConfigurationProfileId), "/hostedconfigurationversions"],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), "/hostedconfigurationversions"],
     SuccessStatusCode = 201,
 
     HeadersMapping = [
@@ -259,13 +259,14 @@ create_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileI
         Result
     end.
 
-%% @doc Delete an application. Deleting an application does not delete a
-%% configuration from a host.
+%% @doc Delete an application.
+%%
+%% Deleting an application does not delete a configuration from a host.
 delete_application(Client, ApplicationId, Input) ->
     delete_application(Client, ApplicationId, Input, []).
 delete_application(Client, ApplicationId, Input0, Options) ->
     Method = delete,
-    Path = ["/applications/", http_uri:encode(ApplicationId), ""],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -276,13 +277,15 @@ delete_application(Client, ApplicationId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Delete a configuration profile. Deleting a configuration profile does
-%% not delete a configuration from a host.
+%% @doc Delete a configuration profile.
+%%
+%% Deleting a configuration profile does not delete a configuration from a
+%% host.
 delete_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Input) ->
     delete_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Input, []).
 delete_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Input0, Options) ->
     Method = delete,
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/configurationprofiles/", http_uri:encode(ConfigurationProfileId), ""],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -293,13 +296,15 @@ delete_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Inpu
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Delete a deployment strategy. Deleting a deployment strategy does not
-%% delete a configuration from a host.
+%% @doc Delete a deployment strategy.
+%%
+%% Deleting a deployment strategy does not delete a configuration from a
+%% host.
 delete_deployment_strategy(Client, DeploymentStrategyId, Input) ->
     delete_deployment_strategy(Client, DeploymentStrategyId, Input, []).
 delete_deployment_strategy(Client, DeploymentStrategyId, Input0, Options) ->
     Method = delete,
-    Path = ["/deployementstrategies/", http_uri:encode(DeploymentStrategyId), ""],
+    Path = ["/deployementstrategies/", aws_util:encode_uri(DeploymentStrategyId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -310,13 +315,14 @@ delete_deployment_strategy(Client, DeploymentStrategyId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Delete an environment. Deleting an environment does not delete a
-%% configuration from a host.
+%% @doc Delete an environment.
+%%
+%% Deleting an environment does not delete a configuration from a host.
 delete_environment(Client, ApplicationId, EnvironmentId, Input) ->
     delete_environment(Client, ApplicationId, EnvironmentId, Input, []).
 delete_environment(Client, ApplicationId, EnvironmentId, Input0, Options) ->
     Method = delete,
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/environments/", http_uri:encode(EnvironmentId), ""],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -333,7 +339,7 @@ delete_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileI
     delete_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, Input, []).
 delete_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, Input0, Options) ->
     Method = delete,
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/configurationprofiles/", http_uri:encode(ConfigurationProfileId), "/hostedconfigurationversions/", http_uri:encode(VersionNumber), ""],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), "/hostedconfigurationversions/", aws_util:encode_uri(VersionNumber), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -350,7 +356,7 @@ get_application(Client, ApplicationId)
     get_application(Client, ApplicationId, []).
 get_application(Client, ApplicationId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/applications/", http_uri:encode(ApplicationId), ""],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -361,27 +367,23 @@ get_application(Client, ApplicationId, Options)
 
 %% @doc Receive information about a configuration.
 %%
-%% <important> AWS AppConfig uses the value of the
-%% <code>ClientConfigurationVersion</code> parameter to identify the
-%% configuration version on your clients. If you don’t send
-%% <code>ClientConfigurationVersion</code> with each call to
-%% <code>GetConfiguration</code>, your clients receive the current
-%% configuration. You are charged each time your clients receive a
-%% configuration.
+%% AWS AppConfig uses the value of the `ClientConfigurationVersion' parameter
+%% to identify the configuration version on your clients. If you don’t send
+%% `ClientConfigurationVersion' with each call to `GetConfiguration', your
+%% clients receive the current configuration. You are charged each time your
+%% clients receive a configuration.
 %%
 %% To avoid excess charges, we recommend that you include the
-%% <code>ClientConfigurationVersion</code> value with every call to
-%% <code>GetConfiguration</code>. This value must be saved on your client.
-%% Subsequent calls to <code>GetConfiguration</code> must pass this value by
-%% using the <code>ClientConfigurationVersion</code> parameter.
-%%
-%% </important>
+%% `ClientConfigurationVersion' value with every call to `GetConfiguration'.
+%% This value must be saved on your client. Subsequent calls to
+%% `GetConfiguration' must pass this value by using the
+%% `ClientConfigurationVersion' parameter.
 get_configuration(Client, Application, Configuration, Environment, ClientConfigurationVersion, ClientId)
   when is_map(Client) ->
     get_configuration(Client, Application, Configuration, Environment, ClientConfigurationVersion, ClientId, []).
 get_configuration(Client, Application, Configuration, Environment, ClientConfigurationVersion, ClientId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/applications/", http_uri:encode(Application), "/environments/", http_uri:encode(Environment), "/configurations/", http_uri:encode(Configuration), ""],
+    Path = ["/applications/", aws_util:encode_uri(Application), "/environments/", aws_util:encode_uri(Environment), "/configurations/", aws_util:encode_uri(Configuration), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -418,7 +420,7 @@ get_configuration_profile(Client, ApplicationId, ConfigurationProfileId)
     get_configuration_profile(Client, ApplicationId, ConfigurationProfileId, []).
 get_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/configurationprofiles/", http_uri:encode(ConfigurationProfileId), ""],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -433,7 +435,7 @@ get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId)
     get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, []).
 get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/environments/", http_uri:encode(EnvironmentId), "/deployments/", http_uri:encode(DeploymentNumber), ""],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), "/deployments/", aws_util:encode_uri(DeploymentNumber), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -442,18 +444,19 @@ get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieve information about a deployment strategy. A deployment
-%% strategy defines important criteria for rolling out your configuration to
-%% the designated targets. A deployment strategy includes: the overall
-%% duration required, a percentage of targets to receive the deployment
-%% during each interval, an algorithm that defines how percentage grows, and
-%% bake time.
+%% @doc Retrieve information about a deployment strategy.
+%%
+%% A deployment strategy defines important criteria for rolling out your
+%% configuration to the designated targets. A deployment strategy includes:
+%% the overall duration required, a percentage of targets to receive the
+%% deployment during each interval, an algorithm that defines how percentage
+%% grows, and bake time.
 get_deployment_strategy(Client, DeploymentStrategyId)
   when is_map(Client) ->
     get_deployment_strategy(Client, DeploymentStrategyId, []).
 get_deployment_strategy(Client, DeploymentStrategyId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/deploymentstrategies/", http_uri:encode(DeploymentStrategyId), ""],
+    Path = ["/deploymentstrategies/", aws_util:encode_uri(DeploymentStrategyId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -462,9 +465,10 @@ get_deployment_strategy(Client, DeploymentStrategyId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieve information about an environment. An environment is a
-%% logical deployment group of AppConfig applications, such as applications
-%% in a <code>Production</code> environment or in an <code>EU_Region</code>
+%% @doc Retrieve information about an environment.
+%%
+%% An environment is a logical deployment group of AppConfig applications,
+%% such as applications in a `Production' environment or in an `EU_Region'
 %% environment. Each configuration deployment targets an environment. You can
 %% enable one or more Amazon CloudWatch alarms for an environment. If an
 %% alarm is triggered during a deployment, AppConfig roles back the
@@ -474,7 +478,7 @@ get_environment(Client, ApplicationId, EnvironmentId)
     get_environment(Client, ApplicationId, EnvironmentId, []).
 get_environment(Client, ApplicationId, EnvironmentId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/environments/", http_uri:encode(EnvironmentId), ""],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -489,7 +493,7 @@ get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, 
     get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, []).
 get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/configurationprofiles/", http_uri:encode(ConfigurationProfileId), "/hostedconfigurationversions/", http_uri:encode(VersionNumber), ""],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), "/hostedconfigurationversions/", aws_util:encode_uri(VersionNumber), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -544,7 +548,7 @@ list_configuration_profiles(Client, ApplicationId, MaxResults, NextToken)
     list_configuration_profiles(Client, ApplicationId, MaxResults, NextToken, []).
 list_configuration_profiles(Client, ApplicationId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/configurationprofiles"],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -584,7 +588,7 @@ list_deployments(Client, ApplicationId, EnvironmentId, MaxResults, NextToken)
     list_deployments(Client, ApplicationId, EnvironmentId, MaxResults, NextToken, []).
 list_deployments(Client, ApplicationId, EnvironmentId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/environments/", http_uri:encode(EnvironmentId), "/deployments"],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), "/deployments"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -604,7 +608,7 @@ list_environments(Client, ApplicationId, MaxResults, NextToken)
     list_environments(Client, ApplicationId, MaxResults, NextToken, []).
 list_environments(Client, ApplicationId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/environments"],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -625,7 +629,7 @@ list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId
     list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId, MaxResults, NextToken, []).
 list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/configurationprofiles/", http_uri:encode(ConfigurationProfileId), "/hostedconfigurationversions"],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), "/hostedconfigurationversions"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -645,7 +649,7 @@ list_tags_for_resource(Client, ResourceArn)
     list_tags_for_resource(Client, ResourceArn, []).
 list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -659,7 +663,7 @@ start_deployment(Client, ApplicationId, EnvironmentId, Input) ->
     start_deployment(Client, ApplicationId, EnvironmentId, Input, []).
 start_deployment(Client, ApplicationId, EnvironmentId, Input0, Options) ->
     Method = post,
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/environments/", http_uri:encode(EnvironmentId), "/deployments"],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), "/deployments"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -670,14 +674,16 @@ start_deployment(Client, ApplicationId, EnvironmentId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Stops a deployment. This API action works only on deployments that
-%% have a status of <code>DEPLOYING</code>. This action moves the deployment
-%% to a status of <code>ROLLED_BACK</code>.
+%% @doc Stops a deployment.
+%%
+%% This API action works only on deployments that have a status of
+%% `DEPLOYING'. This action moves the deployment to a status of
+%% `ROLLED_BACK'.
 stop_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, Input) ->
     stop_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, Input, []).
 stop_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, Input0, Options) ->
     Method = delete,
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/environments/", http_uri:encode(EnvironmentId), "/deployments/", http_uri:encode(DeploymentNumber), ""],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), "/deployments/", aws_util:encode_uri(DeploymentNumber), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -688,15 +694,16 @@ stop_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, Input0, 
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Metadata to assign to an AppConfig resource. Tags help organize and
-%% categorize your AppConfig resources. Each tag consists of a key and an
-%% optional value, both of which you define. You can specify a maximum of 50
-%% tags for a resource.
+%% @doc Metadata to assign to an AppConfig resource.
+%%
+%% Tags help organize and categorize your AppConfig resources. Each tag
+%% consists of a key and an optional value, both of which you define. You can
+%% specify a maximum of 50 tags for a resource.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -712,7 +719,7 @@ untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -729,7 +736,7 @@ update_application(Client, ApplicationId, Input) ->
     update_application(Client, ApplicationId, Input, []).
 update_application(Client, ApplicationId, Input0, Options) ->
     Method = patch,
-    Path = ["/applications/", http_uri:encode(ApplicationId), ""],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -745,7 +752,7 @@ update_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Inpu
     update_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Input, []).
 update_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Input0, Options) ->
     Method = patch,
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/configurationprofiles/", http_uri:encode(ConfigurationProfileId), ""],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -761,7 +768,7 @@ update_deployment_strategy(Client, DeploymentStrategyId, Input) ->
     update_deployment_strategy(Client, DeploymentStrategyId, Input, []).
 update_deployment_strategy(Client, DeploymentStrategyId, Input0, Options) ->
     Method = patch,
-    Path = ["/deploymentstrategies/", http_uri:encode(DeploymentStrategyId), ""],
+    Path = ["/deploymentstrategies/", aws_util:encode_uri(DeploymentStrategyId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -777,7 +784,7 @@ update_environment(Client, ApplicationId, EnvironmentId, Input) ->
     update_environment(Client, ApplicationId, EnvironmentId, Input, []).
 update_environment(Client, ApplicationId, EnvironmentId, Input0, Options) ->
     Method = patch,
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/environments/", http_uri:encode(EnvironmentId), ""],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -794,7 +801,7 @@ validate_configuration(Client, ApplicationId, ConfigurationProfileId, Input) ->
     validate_configuration(Client, ApplicationId, ConfigurationProfileId, Input, []).
 validate_configuration(Client, ApplicationId, ConfigurationProfileId, Input0, Options) ->
     Method = post,
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/configurationprofiles/", http_uri:encode(ConfigurationProfileId), "/validators"],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), "/validators"],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -852,6 +859,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

@@ -21,6 +21,14 @@
          get_group/3,
          get_groups/2,
          get_groups/3,
+         get_insight/2,
+         get_insight/3,
+         get_insight_events/2,
+         get_insight_events/3,
+         get_insight_impact_graph/2,
+         get_insight_impact_graph/3,
+         get_insight_summaries/2,
+         get_insight_summaries/3,
          get_sampling_rules/2,
          get_sampling_rules/3,
          get_sampling_statistic_summaries/2,
@@ -35,12 +43,18 @@
          get_trace_graph/3,
          get_trace_summaries/2,
          get_trace_summaries/3,
+         list_tags_for_resource/2,
+         list_tags_for_resource/3,
          put_encryption_config/2,
          put_encryption_config/3,
          put_telemetry_records/2,
          put_telemetry_records/3,
          put_trace_segments/2,
          put_trace_segments/3,
+         tag_resource/2,
+         tag_resource/3,
+         untag_resource/2,
+         untag_resource/3,
          update_group/2,
          update_group/3,
          update_sampling_rule/2,
@@ -52,9 +66,10 @@
 %% API
 %%====================================================================
 
-%% @doc Retrieves a list of traces specified by ID. Each trace is a
-%% collection of segment documents that originates from a single request. Use
-%% <code>GetTraceSummaries</code> to get a list of trace IDs.
+%% @doc Retrieves a list of traces specified by ID.
+%%
+%% Each trace is a collection of segment documents that originates from a
+%% single request. Use `GetTraceSummaries' to get a list of trace IDs.
 batch_get_traces(Client, Input) ->
     batch_get_traces(Client, Input, []).
 batch_get_traces(Client, Input0, Options) ->
@@ -87,13 +102,15 @@ create_group(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a rule to control sampling behavior for instrumented
-%% applications. Services retrieve rules with <a>GetSamplingRules</a>, and
-%% evaluate each rule in ascending order of <i>priority</i> for each request.
-%% If a rule matches, the service records a trace, borrowing it from the
-%% reservoir size. After 10 seconds, the service reports back to X-Ray with
-%% <a>GetSamplingTargets</a> to get updated versions of each in-use rule. The
-%% updated rule contains a trace quota that the service can use instead of
-%% borrowing from the reservoir.
+%% applications.
+%%
+%% Services retrieve rules with `GetSamplingRules', and evaluate each rule in
+%% ascending order of priority for each request. If a rule matches, the
+%% service records a trace, borrowing it from the reservoir size. After 10
+%% seconds, the service reports back to X-Ray with `GetSamplingTargets' to
+%% get updated versions of each in-use rule. The updated rule contains a
+%% trace quota that the service can use instead of borrowing from the
+%% reservoir.
 create_sampling_rule(Client, Input) ->
     create_sampling_rule(Client, Input, []).
 create_sampling_rule(Client, Input0, Options) ->
@@ -189,6 +206,83 @@ get_groups(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Retrieves the summary information of an insight.
+%%
+%% This includes impact to clients and root cause services, the top anomalous
+%% services, the category, the state of the insight, and the start and end
+%% time of the insight.
+get_insight(Client, Input) ->
+    get_insight(Client, Input, []).
+get_insight(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/Insight"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc X-Ray reevaluates insights periodically until they're resolved, and
+%% records each intermediate state as an event.
+%%
+%% You can review an insight's events in the Impact Timeline on the Inspect
+%% page in the X-Ray console.
+get_insight_events(Client, Input) ->
+    get_insight_events(Client, Input, []).
+get_insight_events(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/InsightEvents"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves a service graph structure filtered by the specified
+%% insight.
+%%
+%% The service graph is limited to only structural information. For a
+%% complete service graph, use this API with the GetServiceGraph API.
+get_insight_impact_graph(Client, Input) ->
+    get_insight_impact_graph(Client, Input, []).
+get_insight_impact_graph(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/InsightImpactGraph"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves the summaries of all insights in the specified group
+%% matching the provided filter values.
+get_insight_summaries(Client, Input) ->
+    get_insight_summaries(Client, Input, []).
+get_insight_summaries(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/InsightSummaries"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Retrieves all sampling rules.
 get_sampling_rules(Client, Input) ->
     get_sampling_rules(Client, Input, []).
@@ -240,10 +334,10 @@ get_sampling_targets(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a document that describes services that process incoming
-%% requests, and downstream services that they call as a result. Root
-%% services process incoming requests and make calls to downstream services.
-%% Root services are applications that use the <a
-%% href="https://docs.aws.amazon.com/xray/index.html">AWS X-Ray SDK</a>.
+%% requests, and downstream services that they call as a result.
+%%
+%% Root services process incoming requests and make calls to downstream
+%% services. Root services are applications that use the AWS X-Ray SDK.
 %% Downstream services can be other applications, AWS resources, HTTP web
 %% APIs, or SQL databases.
 get_service_graph(Client, Input) ->
@@ -295,30 +389,47 @@ get_trace_graph(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves IDs and annotations for traces available for a specified
-%% time frame using an optional filter. To get the full traces, pass the
-%% trace IDs to <code>BatchGetTraces</code>.
+%% time frame using an optional filter.
+%%
+%% To get the full traces, pass the trace IDs to `BatchGetTraces'.
 %%
 %% A filter expression can target traced requests that hit specific service
 %% nodes or edges, have errors, or come from a known user. For example, the
 %% following filter expression targets traces that pass through
-%% <code>api.example.com</code>:
+%% `api.example.com':
 %%
-%% <code>service("api.example.com")</code>
+%% `service("api.example.com")'
 %%
 %% This filter expression finds traces that have an annotation named
-%% <code>account</code> with the value <code>12345</code>:
+%% `account' with the value `12345':
 %%
-%% <code>annotation.account = "12345"</code>
+%% `annotation.account = "12345"'
 %%
 %% For a full list of indexed fields and keywords that you can use in filter
-%% expressions, see <a
-%% href="https://docs.aws.amazon.com/xray/latest/devguide/xray-console-filters.html">Using
-%% Filter Expressions</a> in the <i>AWS X-Ray Developer Guide</i>.
+%% expressions, see Using Filter Expressions in the AWS X-Ray Developer
+%% Guide.
 get_trace_summaries(Client, Input) ->
     get_trace_summaries(Client, Input, []).
 get_trace_summaries(Client, Input0, Options) ->
     Method = post,
     Path = ["/TraceSummaries"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a list of tags that are applied to the specified AWS X-Ray
+%% group or sampling rule.
+list_tags_for_resource(Client, Input) ->
+    list_tags_for_resource(Client, Input, []).
+list_tags_for_resource(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/ListTagsForResource"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -361,56 +472,50 @@ put_telemetry_records(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Uploads segment documents to AWS X-Ray. The <a
-%% href="https://docs.aws.amazon.com/xray/index.html">X-Ray SDK</a> generates
-%% segment documents and sends them to the X-Ray daemon, which uploads them
-%% in batches. A segment document can be a completed segment, an in-progress
-%% segment, or an array of subsegments.
+%% @doc Uploads segment documents to AWS X-Ray.
+%%
+%% The X-Ray SDK generates segment documents and sends them to the X-Ray
+%% daemon, which uploads them in batches. A segment document can be a
+%% completed segment, an in-progress segment, or an array of subsegments.
 %%
 %% Segments must include the following fields. For the full segment document
-%% schema, see <a
-%% href="https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html">AWS
-%% X-Ray Segment Documents</a> in the <i>AWS X-Ray Developer Guide</i>.
+%% schema, see AWS X-Ray Segment Documents in the AWS X-Ray Developer Guide.
 %%
-%% <p class="title"> <b>Required Segment Document Fields</b>
+%% == Required segment document fields ==
 %%
-%% <ul> <li> <code>name</code> - The name of the service that handled the
-%% request.
+%% <ul> <li> `name' - The name of the service that handled the request.
 %%
-%% </li> <li> <code>id</code> - A 64-bit identifier for the segment, unique
-%% among segments in the same trace, in 16 hexadecimal digits.
+%% </li> <li> `id' - A 64-bit identifier for the segment, unique among
+%% segments in the same trace, in 16 hexadecimal digits.
 %%
-%% </li> <li> <code>trace_id</code> - A unique identifier that connects all
-%% segments and subsegments originating from a single client request.
+%% </li> <li> `trace_id' - A unique identifier that connects all segments and
+%% subsegments originating from a single client request.
 %%
-%% </li> <li> <code>start_time</code> - Time the segment or subsegment was
-%% created, in floating point seconds in epoch time, accurate to
-%% milliseconds. For example, <code>1480615200.010</code> or
-%% <code>1.480615200010E9</code>.
+%% </li> <li> `start_time' - Time the segment or subsegment was created, in
+%% floating point seconds in epoch time, accurate to milliseconds. For
+%% example, `1480615200.010' or `1.480615200010E9'.
 %%
-%% </li> <li> <code>end_time</code> - Time the segment or subsegment was
-%% closed. For example, <code>1480615200.090</code> or
-%% <code>1.480615200090E9</code>. Specify either an <code>end_time</code> or
-%% <code>in_progress</code>.
+%% </li> <li> `end_time' - Time the segment or subsegment was closed. For
+%% example, `1480615200.090' or `1.480615200090E9'. Specify either an
+%% `end_time' or `in_progress'.
 %%
-%% </li> <li> <code>in_progress</code> - Set to <code>true</code> instead of
-%% specifying an <code>end_time</code> to record that a segment has been
-%% started, but is not complete. Send an in progress segment when your
-%% application receives a request that will take a long time to serve, to
-%% trace the fact that the request was received. When the response is sent,
-%% send the complete segment to overwrite the in-progress segment.
+%% </li> <li> `in_progress' - Set to `true' instead of specifying an
+%% `end_time' to record that a segment has been started, but is not complete.
+%% Send an in-progress segment when your application receives a request that
+%% will take a long time to serve, to trace that the request was received.
+%% When the response is sent, send the complete segment to overwrite the
+%% in-progress segment.
 %%
-%% </li> </ul> A <code>trace_id</code> consists of three numbers separated by
-%% hyphens. For example, 1-58406520-a006649127e371903a2de979. This includes:
+%% </li> </ul> A `trace_id' consists of three numbers separated by hyphens.
+%% For example, 1-58406520-a006649127e371903a2de979. This includes:
 %%
-%% <p class="title"> <b>Trace ID Format</b>
+%% == Trace ID Format ==
 %%
-%% <ul> <li> The version number, i.e. <code>1</code>.
+%% <ul> <li> The version number, for instance, `1'.
 %%
 %% </li> <li> The time of the original request, in Unix epoch time, in 8
 %% hexadecimal digits. For example, 10:00AM December 2nd, 2016 PST in epoch
-%% time is <code>1480615200</code> seconds, or <code>58406520</code> in
-%% hexadecimal.
+%% time is `1480615200' seconds, or `58406520' in hexadecimal.
 %%
 %% </li> <li> A 96-bit identifier for the trace, globally unique, in 24
 %% hexadecimal digits.
@@ -421,6 +526,40 @@ put_trace_segments(Client, Input) ->
 put_trace_segments(Client, Input0, Options) ->
     Method = post,
     Path = ["/TraceSegments"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Applies tags to an existing AWS X-Ray group or sampling rule.
+tag_resource(Client, Input) ->
+    tag_resource(Client, Input, []).
+tag_resource(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/TagResource"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes tags from an AWS X-Ray group or sampling rule.
+%%
+%% You cannot edit or delete system tags (those with an `aws:' prefix).
+untag_resource(Client, Input) ->
+    untag_resource(Client, Input, []).
+untag_resource(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/UntagResource"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -509,6 +648,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

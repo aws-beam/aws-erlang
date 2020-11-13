@@ -1,22 +1,18 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc <fullname>Amazon RDS Data Service</fullname>
+%% @doc Amazon RDS Data Service
 %%
 %% Amazon RDS provides an HTTP endpoint to run SQL statements on an Amazon
-%% Aurora Serverless DB cluster. To run these statements, you work with the
-%% Data Service API.
+%% Aurora Serverless DB cluster.
 %%
-%% For more information about the Data Service API, see <a
-%% href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html">Using
-%% the Data API for Aurora Serverless</a> in the <i>Amazon Aurora User
-%% Guide</i>.
+%% To run these statements, you work with the Data Service API.
 %%
-%% <note> If you have questions or comments related to the Data API, send
-%% email to <a
-%% href="mailto:Rds-data-api-feedback@amazon.com">Rds-data-api-feedback@amazon.com</a>.
+%% For more information about the Data Service API, see Using the Data API
+%% for Aurora Serverless in the Amazon Aurora User Guide.
 %%
-%% </note>
+%% If you have questions or comments related to the Data API, send email to
+%% Rds-data-api-feedback@amazon.com.
 -module(aws_rds_data).
 
 -export([batch_execute_statement/2,
@@ -45,11 +41,9 @@
 %% significant performance improvement over individual insert and update
 %% operations.
 %%
-%% <important> If a call isn't part of a transaction because it doesn't
-%% include the <code>transactionID</code> parameter, changes that result from
-%% the call are committed automatically.
-%%
-%% </important>
+%% If a call isn't part of a transaction because it doesn't include the
+%% `transactionID' parameter, changes that result from the call are committed
+%% automatically.
 batch_execute_statement(Client, Input) ->
     batch_execute_statement(Client, Input, []).
 batch_execute_statement(Client, Input0, Options) ->
@@ -67,16 +61,14 @@ batch_execute_statement(Client, Input0, Options) ->
 
 %% @doc Starts a SQL transaction.
 %%
-%% <pre><code> &lt;important&gt; &lt;p&gt;A transaction can run for a maximum
-%% of 24 hours. A transaction is terminated and rolled back automatically
-%% after 24 hours.&lt;/p&gt; &lt;p&gt;A transaction times out if no calls use
-%% its transaction ID in three minutes. If a transaction times out before
-%% it's committed, it's rolled back automatically.&lt;/p&gt; &lt;p&gt;DDL
-%% statements inside a transaction cause an implicit commit. We recommend
-%% that you run each DDL statement in a separate
-%% &lt;code&gt;ExecuteStatement&lt;/code&gt; call with
-%% &lt;code&gt;continueAfterTimeout&lt;/code&gt; enabled.&lt;/p&gt;
-%% &lt;/important&gt; </code></pre>
+%% <important> <p>A transaction can run for a maximum of 24 hours. A
+%% transaction is terminated and rolled back automatically after 24
+%% hours.</p> <p>A transaction times out if no calls use its transaction ID
+%% in three minutes. If a transaction times out before it's committed, it's
+%% rolled back automatically.</p> <p>DDL statements inside a transaction
+%% cause an implicit commit. We recommend that you run each DDL statement in
+%% a separate <code>ExecuteStatement</code> call with
+%% <code>continueAfterTimeout</code> enabled.</p> </important>
 begin_transaction(Client, Input) ->
     begin_transaction(Client, Input, []).
 begin_transaction(Client, Input0, Options) ->
@@ -92,8 +84,8 @@ begin_transaction(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Ends a SQL transaction started with the <code>BeginTransaction</code>
-%% operation and commits the changes.
+%% @doc Ends a SQL transaction started with the `BeginTransaction' operation
+%% and commits the changes.
 commit_transaction(Client, Input) ->
     commit_transaction(Client, Input, []).
 commit_transaction(Client, Input0, Options) ->
@@ -111,11 +103,8 @@ commit_transaction(Client, Input0, Options) ->
 
 %% @doc Runs one or more SQL statements.
 %%
-%% <important> This operation is deprecated. Use the
-%% <code>BatchExecuteStatement</code> or <code>ExecuteStatement</code>
-%% operation.
-%%
-%% </important>
+%% This operation is deprecated. Use the `BatchExecuteStatement' or
+%% `ExecuteStatement' operation.
 execute_sql(Client, Input) ->
     execute_sql(Client, Input, []).
 execute_sql(Client, Input0, Options) ->
@@ -133,12 +122,12 @@ execute_sql(Client, Input0, Options) ->
 
 %% @doc Runs a SQL statement against a database.
 %%
-%% <important> If a call isn't part of a transaction because it doesn't
-%% include the <code>transactionID</code> parameter, changes that result from
-%% the call are committed automatically.
+%% If a call isn't part of a transaction because it doesn't include the
+%% `transactionID' parameter, changes that result from the call are committed
+%% automatically.
 %%
-%% </important> The response size limit is 1 MB. If the call returns more
-%% than 1 MB of response data, the call is terminated.
+%% The response size limit is 1 MB. If the call returns more than 1 MB of
+%% response data, the call is terminated.
 execute_statement(Client, Input) ->
     execute_statement(Client, Input, []).
 execute_statement(Client, Input0, Options) ->
@@ -154,8 +143,9 @@ execute_statement(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Performs a rollback of a transaction. Rolling back a transaction
-%% cancels its changes.
+%% @doc Performs a rollback of a transaction.
+%%
+%% Rolling back a transaction cancels its changes.
 rollback_transaction(Client, Input) ->
     rollback_transaction(Client, Input, []).
 rollback_transaction(Client, Input0, Options) ->
@@ -217,6 +207,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

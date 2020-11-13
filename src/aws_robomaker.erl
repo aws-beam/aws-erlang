@@ -5,7 +5,9 @@
 %% operations.
 -module(aws_robomaker).
 
--export([batch_describe_simulation_job/2,
+-export([batch_delete_worlds/2,
+         batch_delete_worlds/3,
+         batch_describe_simulation_job/2,
          batch_describe_simulation_job/3,
          cancel_deployment_job/2,
          cancel_deployment_job/3,
@@ -13,6 +15,10 @@
          cancel_simulation_job/3,
          cancel_simulation_job_batch/2,
          cancel_simulation_job_batch/3,
+         cancel_world_export_job/2,
+         cancel_world_export_job/3,
+         cancel_world_generation_job/2,
+         cancel_world_generation_job/3,
          create_deployment_job/2,
          create_deployment_job/3,
          create_fleet/2,
@@ -29,6 +35,12 @@
          create_simulation_application_version/3,
          create_simulation_job/2,
          create_simulation_job/3,
+         create_world_export_job/2,
+         create_world_export_job/3,
+         create_world_generation_job/2,
+         create_world_generation_job/3,
+         create_world_template/2,
+         create_world_template/3,
          delete_fleet/2,
          delete_fleet/3,
          delete_robot/2,
@@ -37,6 +49,8 @@
          delete_robot_application/3,
          delete_simulation_application/2,
          delete_simulation_application/3,
+         delete_world_template/2,
+         delete_world_template/3,
          deregister_robot/2,
          deregister_robot/3,
          describe_deployment_job/2,
@@ -53,6 +67,16 @@
          describe_simulation_job/3,
          describe_simulation_job_batch/2,
          describe_simulation_job_batch/3,
+         describe_world/2,
+         describe_world/3,
+         describe_world_export_job/2,
+         describe_world_export_job/3,
+         describe_world_generation_job/2,
+         describe_world_generation_job/3,
+         describe_world_template/2,
+         describe_world_template/3,
+         get_world_template_body/2,
+         get_world_template_body/3,
          list_deployment_jobs/2,
          list_deployment_jobs/3,
          list_fleets/2,
@@ -69,6 +93,14 @@
          list_simulation_jobs/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         list_world_export_jobs/2,
+         list_world_export_jobs/3,
+         list_world_generation_jobs/2,
+         list_world_generation_jobs/3,
+         list_world_templates/2,
+         list_world_templates/3,
+         list_worlds/2,
+         list_worlds/3,
          register_robot/2,
          register_robot/3,
          restart_simulation_job/2,
@@ -84,13 +116,31 @@
          update_robot_application/2,
          update_robot_application/3,
          update_simulation_application/2,
-         update_simulation_application/3]).
+         update_simulation_application/3,
+         update_world_template/2,
+         update_world_template/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Deletes one or more worlds in a batch operation.
+batch_delete_worlds(Client, Input) ->
+    batch_delete_worlds(Client, Input, []).
+batch_delete_worlds(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/batchDeleteWorlds"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes one or more simulation jobs.
 batch_describe_simulation_job(Client, Input) ->
@@ -140,9 +190,10 @@ cancel_simulation_job(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Cancels a simulation job batch. When you cancel a simulation job
-%% batch, you are also cancelling all of the active simulation jobs created
-%% as part of the batch.
+%% @doc Cancels a simulation job batch.
+%%
+%% When you cancel a simulation job batch, you are also cancelling all of the
+%% active simulation jobs created as part of the batch.
 cancel_simulation_job_batch(Client, Input) ->
     cancel_simulation_job_batch(Client, Input, []).
 cancel_simulation_job_batch(Client, Input0, Options) ->
@@ -158,19 +209,48 @@ cancel_simulation_job_batch(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Cancels the specified export job.
+cancel_world_export_job(Client, Input) ->
+    cancel_world_export_job(Client, Input, []).
+cancel_world_export_job(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/cancelWorldExportJob"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Cancels the specified world generator job.
+cancel_world_generation_job(Client, Input) ->
+    cancel_world_generation_job(Client, Input, []).
+cancel_world_generation_job(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/cancelWorldGenerationJob"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deploys a specific version of a robot application to robots in a
 %% fleet.
 %%
-%% The robot application must have a numbered <code>applicationVersion</code>
-%% for consistency reasons. To create a new version, use
-%% <code>CreateRobotApplicationVersion</code> or see <a
-%% href="https://docs.aws.amazon.com/robomaker/latest/dg/create-robot-application-version.html">Creating
-%% a Robot Application Version</a>.
+%% The robot application must have a numbered `applicationVersion' for
+%% consistency reasons. To create a new version, use
+%% `CreateRobotApplicationVersion' or see Creating a Robot Application
+%% Version.
 %%
-%% <note> After 90 days, deployment jobs expire and will be deleted. They
-%% will no longer be accessible.
-%%
-%% </note>
+%% After 90 days, deployment jobs expire and will be deleted. They will no
+%% longer be accessible.
 create_deployment_job(Client, Input) ->
     create_deployment_job(Client, Input, []).
 create_deployment_job(Client, Input0, Options) ->
@@ -285,15 +365,61 @@ create_simulation_application_version(Client, Input0, Options) ->
 
 %% @doc Creates a simulation job.
 %%
-%% <note> After 90 days, simulation jobs expire and will be deleted. They
-%% will no longer be accessible.
-%%
-%% </note>
+%% After 90 days, simulation jobs expire and will be deleted. They will no
+%% longer be accessible.
 create_simulation_job(Client, Input) ->
     create_simulation_job(Client, Input, []).
 create_simulation_job(Client, Input0, Options) ->
     Method = post,
     Path = ["/createSimulationJob"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a world export job.
+create_world_export_job(Client, Input) ->
+    create_world_export_job(Client, Input, []).
+create_world_export_job(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/createWorldExportJob"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates worlds using the specified template.
+create_world_generation_job(Client, Input) ->
+    create_world_generation_job(Client, Input, []).
+create_world_generation_job(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/createWorldGenerationJob"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a world template.
+create_world_template(Client, Input) ->
+    create_world_template(Client, Input, []).
+create_world_template(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/createWorldTemplate"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -358,6 +484,22 @@ delete_simulation_application(Client, Input) ->
 delete_simulation_application(Client, Input0, Options) ->
     Method = post,
     Path = ["/deleteSimulationApplication"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a world template.
+delete_world_template(Client, Input) ->
+    delete_world_template(Client, Input, []).
+delete_world_template(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/deleteWorldTemplate"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -496,8 +638,89 @@ describe_simulation_job_batch(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of deployment jobs for a fleet. You can optionally
-%% provide filters to retrieve specific deployment jobs.
+%% @doc Describes a world.
+describe_world(Client, Input) ->
+    describe_world(Client, Input, []).
+describe_world(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/describeWorld"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Describes a world export job.
+describe_world_export_job(Client, Input) ->
+    describe_world_export_job(Client, Input, []).
+describe_world_export_job(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/describeWorldExportJob"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Describes a world generation job.
+describe_world_generation_job(Client, Input) ->
+    describe_world_generation_job(Client, Input, []).
+describe_world_generation_job(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/describeWorldGenerationJob"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Describes a world template.
+describe_world_template(Client, Input) ->
+    describe_world_template(Client, Input, []).
+describe_world_template(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/describeWorldTemplate"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets the world template body.
+get_world_template_body(Client, Input) ->
+    get_world_template_body(Client, Input, []).
+get_world_template_body(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/getWorldTemplateBody"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a list of deployment jobs for a fleet.
+%%
+%% You can optionally provide filters to retrieve specific deployment jobs.
 list_deployment_jobs(Client, Input) ->
     list_deployment_jobs(Client, Input, []).
 list_deployment_jobs(Client, Input0, Options) ->
@@ -513,8 +736,9 @@ list_deployment_jobs(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of fleets. You can optionally provide filters to
-%% retrieve specific fleets.
+%% @doc Returns a list of fleets.
+%%
+%% You can optionally provide filters to retrieve specific fleets.
 list_fleets(Client, Input) ->
     list_fleets(Client, Input, []).
 list_fleets(Client, Input0, Options) ->
@@ -530,8 +754,10 @@ list_fleets(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of robot application. You can optionally provide
-%% filters to retrieve specific robot applications.
+%% @doc Returns a list of robot application.
+%%
+%% You can optionally provide filters to retrieve specific robot
+%% applications.
 list_robot_applications(Client, Input) ->
     list_robot_applications(Client, Input, []).
 list_robot_applications(Client, Input0, Options) ->
@@ -547,8 +773,9 @@ list_robot_applications(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of robots. You can optionally provide filters to
-%% retrieve specific robots.
+%% @doc Returns a list of robots.
+%%
+%% You can optionally provide filters to retrieve specific robots.
 list_robots(Client, Input) ->
     list_robots(Client, Input, []).
 list_robots(Client, Input0, Options) ->
@@ -564,8 +791,10 @@ list_robots(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of simulation applications. You can optionally provide
-%% filters to retrieve specific simulation applications.
+%% @doc Returns a list of simulation applications.
+%%
+%% You can optionally provide filters to retrieve specific simulation
+%% applications.
 list_simulation_applications(Client, Input) ->
     list_simulation_applications(Client, Input, []).
 list_simulation_applications(Client, Input0, Options) ->
@@ -581,8 +810,10 @@ list_simulation_applications(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list simulation job batches. You can optionally provide
-%% filters to retrieve specific simulation batch jobs.
+%% @doc Returns a list simulation job batches.
+%%
+%% You can optionally provide filters to retrieve specific simulation batch
+%% jobs.
 list_simulation_job_batches(Client, Input) ->
     list_simulation_job_batches(Client, Input, []).
 list_simulation_job_batches(Client, Input0, Options) ->
@@ -598,8 +829,9 @@ list_simulation_job_batches(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of simulation jobs. You can optionally provide filters
-%% to retrieve specific simulation jobs.
+%% @doc Returns a list of simulation jobs.
+%%
+%% You can optionally provide filters to retrieve specific simulation jobs.
 list_simulation_jobs(Client, Input) ->
     list_simulation_jobs(Client, Input, []).
 list_simulation_jobs(Client, Input0, Options) ->
@@ -621,7 +853,7 @@ list_tags_for_resource(Client, ResourceArn)
     list_tags_for_resource(Client, ResourceArn, []).
 list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -629,6 +861,70 @@ list_tags_for_resource(Client, ResourceArn, Options)
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists world export jobs.
+list_world_export_jobs(Client, Input) ->
+    list_world_export_jobs(Client, Input, []).
+list_world_export_jobs(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/listWorldExportJobs"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists world generator jobs.
+list_world_generation_jobs(Client, Input) ->
+    list_world_generation_jobs(Client, Input, []).
+list_world_generation_jobs(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/listWorldGenerationJobs"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists world templates.
+list_world_templates(Client, Input) ->
+    list_world_templates(Client, Input, []).
+list_world_templates(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/listWorldTemplates"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists worlds.
+list_worlds(Client, Input) ->
+    list_worlds(Client, Input, []).
+list_worlds(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/listWorlds"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Registers a robot with a fleet.
 register_robot(Client, Input) ->
@@ -662,8 +958,9 @@ restart_simulation_job(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Starts a new simulation job batch. The batch is defined using one or
-%% more <code>SimulationJobRequest</code> objects.
+%% @doc Starts a new simulation job batch.
+%%
+%% The batch is defined using one or more `SimulationJobRequest' objects.
 start_simulation_job_batch(Client, Input) ->
     start_simulation_job_batch(Client, Input, []).
 start_simulation_job_batch(Client, Input0, Options) ->
@@ -679,8 +976,9 @@ start_simulation_job_batch(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Syncrhonizes robots in a fleet to the latest deployment. This is
-%% helpful if robots were added after a deployment.
+%% @doc Syncrhonizes robots in a fleet to the latest deployment.
+%%
+%% This is helpful if robots were added after a deployment.
 sync_deployment_job(Client, Input) ->
     sync_deployment_job(Client, Input, []).
 sync_deployment_job(Client, Input0, Options) ->
@@ -702,15 +1000,13 @@ sync_deployment_job(Client, Input0, Options) ->
 %% are both required, but tag values can be empty strings.
 %%
 %% For information about the rules that apply to tag keys and tag values, see
-%% <a
-%% href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html">User-Defined
-%% Tag Restrictions</a> in the <i>AWS Billing and Cost Management User
-%% Guide</i>.
+%% User-Defined Tag Restrictions in the AWS Billing and Cost Management User
+%% Guide.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -724,14 +1020,12 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Removes the specified tags from the specified AWS RoboMaker resource.
 %%
 %% To remove a tag, specify the tag key. To change the tag value of an
-%% existing tag key, use <a
-%% href="https://docs.aws.amazon.com/robomaker/latest/dg/API_TagResource.html">
-%% <code>TagResource</code> </a>.
+%% existing tag key, use `TagResource' .
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -765,6 +1059,22 @@ update_simulation_application(Client, Input) ->
 update_simulation_application(Client, Input0, Options) ->
     Method = post,
     Path = ["/updateSimulationApplication"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a world template.
+update_world_template(Client, Input) ->
+    update_world_template(Client, Input, []).
+update_world_template(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/updateWorldTemplate"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -821,6 +1131,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

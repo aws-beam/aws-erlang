@@ -1,16 +1,17 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc <fullname>Amazon Data Lifecycle Manager</fullname>
+%% @doc Amazon Data Lifecycle Manager
 %%
 %% With Amazon Data Lifecycle Manager, you can manage the lifecycle of your
-%% AWS resources. You create lifecycle policies, which are used to automate
-%% operations on the specified resources.
+%% AWS resources.
+%%
+%% You create lifecycle policies, which are used to automate operations on
+%% the specified resources.
 %%
 %% Amazon DLM supports Amazon EBS volumes and snapshots. For information
-%% about using Amazon DLM with Amazon EBS, see <a
-%% href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshot-lifecycle.html">Automating
-%% the Amazon EBS Snapshot Lifecycle</a> in the <i>Amazon EC2 User Guide</i>.
+%% about using Amazon DLM with Amazon EBS, see Automating the Amazon EBS
+%% Snapshot Lifecycle in the Amazon EC2 User Guide.
 -module(aws_dlm).
 
 -export([create_lifecycle_policy/2,
@@ -37,7 +38,9 @@
 %%====================================================================
 
 %% @doc Creates a policy to manage the lifecycle of the specified AWS
-%% resources. You can create up to 100 lifecycle policies.
+%% resources.
+%%
+%% You can create up to 100 lifecycle policies.
 create_lifecycle_policy(Client, Input) ->
     create_lifecycle_policy(Client, Input, []).
 create_lifecycle_policy(Client, Input0, Options) ->
@@ -59,7 +62,7 @@ delete_lifecycle_policy(Client, PolicyId, Input) ->
     delete_lifecycle_policy(Client, PolicyId, Input, []).
 delete_lifecycle_policy(Client, PolicyId, Input0, Options) ->
     Method = delete,
-    Path = ["/policies/", http_uri:encode(PolicyId), "/"],
+    Path = ["/policies/", aws_util:encode_uri(PolicyId), "/"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -73,7 +76,7 @@ delete_lifecycle_policy(Client, PolicyId, Input0, Options) ->
 %% @doc Gets summary information about all or the specified data lifecycle
 %% policies.
 %%
-%% To get complete information about a policy, use <a>GetLifecyclePolicy</a>.
+%% To get complete information about a policy, use `GetLifecyclePolicy'.
 get_lifecycle_policies(Client, PolicyIds, ResourceTypes, State, TagsToAdd, TargetTags)
   when is_map(Client) ->
     get_lifecycle_policies(Client, PolicyIds, ResourceTypes, State, TagsToAdd, TargetTags, []).
@@ -102,7 +105,7 @@ get_lifecycle_policy(Client, PolicyId)
     get_lifecycle_policy(Client, PolicyId, []).
 get_lifecycle_policy(Client, PolicyId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/policies/", http_uri:encode(PolicyId), "/"],
+    Path = ["/policies/", aws_util:encode_uri(PolicyId), "/"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -117,7 +120,7 @@ list_tags_for_resource(Client, ResourceArn)
     list_tags_for_resource(Client, ResourceArn, []).
 list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -131,7 +134,7 @@ tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -147,7 +150,7 @@ untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -164,7 +167,7 @@ update_lifecycle_policy(Client, PolicyId, Input) ->
     update_lifecycle_policy(Client, PolicyId, Input, []).
 update_lifecycle_policy(Client, PolicyId, Input0, Options) ->
     Method = patch,
-    Path = ["/policies/", http_uri:encode(PolicyId), ""],
+    Path = ["/policies/", aws_util:encode_uri(PolicyId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -221,6 +224,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

@@ -56,7 +56,7 @@ delete_project(Client, ProjectId, Input) ->
     delete_project(Client, ProjectId, Input, []).
 delete_project(Client, ProjectId, Input0, Options) ->
     Method = delete,
-    Path = ["/projects/", http_uri:encode(ProjectId), ""],
+    Path = ["/projects/", aws_util:encode_uri(ProjectId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -73,7 +73,7 @@ describe_bundle(Client, BundleId)
     describe_bundle(Client, BundleId, []).
 describe_bundle(Client, BundleId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/bundles/", http_uri:encode(BundleId), ""],
+    Path = ["/bundles/", aws_util:encode_uri(BundleId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -109,7 +109,7 @@ export_bundle(Client, BundleId, Input) ->
     export_bundle(Client, BundleId, Input, []).
 export_bundle(Client, BundleId, Input0, Options) ->
     Method = post,
-    Path = ["/bundles/", http_uri:encode(BundleId), ""],
+    Path = ["/bundles/", aws_util:encode_uri(BundleId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -123,14 +123,15 @@ export_bundle(Client, BundleId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Exports project configuration to a snapshot which can be downloaded
-%% and shared. Note that mobile app push credentials are encrypted in
-%% exported projects, so they can only be shared successfully within the same
-%% AWS account.
+%% and shared.
+%%
+%% Note that mobile app push credentials are encrypted in exported projects,
+%% so they can only be shared successfully within the same AWS account.
 export_project(Client, ProjectId, Input) ->
     export_project(Client, ProjectId, Input, []).
 export_project(Client, ProjectId, Input0, Options) ->
     Method = post,
-    Path = ["/exports/", http_uri:encode(ProjectId), ""],
+    Path = ["/exports/", aws_util:encode_uri(ProjectId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -244,6 +245,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

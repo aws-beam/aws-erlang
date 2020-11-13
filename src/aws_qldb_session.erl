@@ -3,25 +3,20 @@
 
 %% @doc The transactional data APIs for Amazon QLDB
 %%
-%% <note> Instead of interacting directly with this API, we recommend that
-%% you use the Amazon QLDB Driver or the QLDB Shell to execute data
-%% transactions on a ledger.
+%% Instead of interacting directly with this API, we recommend that you use
+%% the Amazon QLDB Driver or the QLDB Shell to execute data transactions on a
+%% ledger.
 %%
-%% <ul> <li> If you are working with an AWS SDK, use the QLDB Driver. The
-%% driver provides a high-level abstraction layer above this
-%% <code>qldbsession</code> data plane and manages <code>SendCommand</code>
-%% API calls for you. For information and a list of supported programming
-%% languages, see <a
-%% href="https://docs.aws.amazon.com/qldb/latest/developerguide/getting-started-driver.html">Getting
-%% started with the driver</a> in the <i>Amazon QLDB Developer Guide</i>.
+%% If you are working with an AWS SDK, use the QLDB Driver. The driver
+%% provides a high-level abstraction layer above this `qldbsession' data
+%% plane and manages `SendCommand' API calls for you. For information and a
+%% list of supported programming languages, see Getting started with the
+%% driver in the Amazon QLDB Developer Guide.
 %%
-%% </li> <li> If you are working with the AWS Command Line Interface (AWS
-%% CLI), use the QLDB Shell. The shell is a command line interface that uses
-%% the QLDB Driver to interact with a ledger. For information, see <a
-%% href="https://docs.aws.amazon.com/qldb/latest/developerguide/data-shell.html">Accessing
-%% Amazon QLDB using the QLDB Shell</a>.
-%%
-%% </li> </ul> </note>
+%% If you are working with the AWS Command Line Interface (AWS CLI), use the
+%% QLDB Shell. The shell is a command line interface that uses the QLDB
+%% Driver to interact with a ledger. For information, see Accessing Amazon
+%% QLDB using the QLDB Shell.
 -module(aws_qldb_session).
 
 -export([send_command/2,
@@ -35,25 +30,20 @@
 
 %% @doc Sends a command to an Amazon QLDB ledger.
 %%
-%% <note> Instead of interacting directly with this API, we recommend that
-%% you use the Amazon QLDB Driver or the QLDB Shell to execute data
-%% transactions on a ledger.
+%% Instead of interacting directly with this API, we recommend that you use
+%% the Amazon QLDB Driver or the QLDB Shell to execute data transactions on a
+%% ledger.
 %%
-%% <ul> <li> If you are working with an AWS SDK, use the QLDB Driver. The
-%% driver provides a high-level abstraction layer above this
-%% <code>qldbsession</code> data plane and manages <code>SendCommand</code>
-%% API calls for you. For information and a list of supported programming
-%% languages, see <a
-%% href="https://docs.aws.amazon.com/qldb/latest/developerguide/getting-started-driver.html">Getting
-%% started with the driver</a> in the <i>Amazon QLDB Developer Guide</i>.
+%% If you are working with an AWS SDK, use the QLDB Driver. The driver
+%% provides a high-level abstraction layer above this `qldbsession' data
+%% plane and manages `SendCommand' API calls for you. For information and a
+%% list of supported programming languages, see Getting started with the
+%% driver in the Amazon QLDB Developer Guide.
 %%
-%% </li> <li> If you are working with the AWS Command Line Interface (AWS
-%% CLI), use the QLDB Shell. The shell is a command line interface that uses
-%% the QLDB Driver to interact with a ledger. For information, see <a
-%% href="https://docs.aws.amazon.com/qldb/latest/developerguide/data-shell.html">Accessing
-%% Amazon QLDB using the QLDB Shell</a>.
-%%
-%% </li> </ul> </note>
+%% If you are working with the AWS Command Line Interface (AWS CLI), use the
+%% QLDB Shell. The shell is a command line interface that uses the QLDB
+%% Driver to interact with a ledger. For information, see Accessing Amazon
+%% QLDB using the QLDB Shell.
 send_command(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_command(Client, Input, []).
@@ -103,6 +93,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
 handle_response({error, Reason}) ->
     {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

@@ -2,12 +2,13 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon WorkMail is a secure, managed business email and calendaring
-%% service with support for existing desktop and mobile email clients. You
-%% can access your email, contacts, and calendars using Microsoft Outlook,
-%% your browser, or other native iOS and Android email applications. You can
-%% integrate WorkMail with your existing corporate directory and control both
-%% the keys that encrypt your data and the location in which your data is
-%% stored.
+%% service with support for existing desktop and mobile email clients.
+%%
+%% You can access your email, contacts, and calendars using Microsoft
+%% Outlook, your browser, or other native iOS and Android email applications.
+%% You can integrate WorkMail with your existing corporate directory and
+%% control both the keys that encrypt your data and the location in which
+%% your data is stored.
 %%
 %% The WorkMail API is designed for the following scenarios:
 %%
@@ -36,10 +37,14 @@
          associate_delegate_to_resource/3,
          associate_member_to_group/2,
          associate_member_to_group/3,
+         cancel_mailbox_export_job/2,
+         cancel_mailbox_export_job/3,
          create_alias/2,
          create_alias/3,
          create_group/2,
          create_group/3,
+         create_organization/2,
+         create_organization/3,
          create_resource/2,
          create_resource/3,
          create_user/2,
@@ -52,6 +57,8 @@
          delete_group/3,
          delete_mailbox_permissions/2,
          delete_mailbox_permissions/3,
+         delete_organization/2,
+         delete_organization/3,
          delete_resource/2,
          delete_resource/3,
          delete_retention_policy/2,
@@ -62,6 +69,8 @@
          deregister_from_work_mail/3,
          describe_group/2,
          describe_group/3,
+         describe_mailbox_export_job/2,
+         describe_mailbox_export_job/3,
          describe_organization/2,
          describe_organization/3,
          describe_resource/2,
@@ -86,6 +95,8 @@
          list_group_members/3,
          list_groups/2,
          list_groups/3,
+         list_mailbox_export_jobs/2,
+         list_mailbox_export_jobs/3,
          list_mailbox_permissions/2,
          list_mailbox_permissions/3,
          list_organizations/2,
@@ -108,6 +119,8 @@
          register_to_work_mail/3,
          reset_password/2,
          reset_password/3,
+         start_mailbox_export_job/2,
+         start_mailbox_export_job/3,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
@@ -141,6 +154,17 @@ associate_member_to_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateMemberToGroup">>, Input, Options).
 
+%% @doc Cancels a mailbox export job.
+%%
+%% If the mailbox export job is near completion, it might not be possible to
+%% cancel it.
+cancel_mailbox_export_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    cancel_mailbox_export_job(Client, Input, []).
+cancel_mailbox_export_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CancelMailboxExportJob">>, Input, Options).
+
 %% @doc Adds an alias to the set of a given member (user or group) of Amazon
 %% WorkMail.
 create_alias(Client, Input)
@@ -151,13 +175,40 @@ create_alias(Client, Input, Options)
     request(Client, <<"CreateAlias">>, Input, Options).
 
 %% @doc Creates a group that can be used in Amazon WorkMail by calling the
-%% <a>RegisterToWorkMail</a> operation.
+%% `RegisterToWorkMail' operation.
 create_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_group(Client, Input, []).
 create_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateGroup">>, Input, Options).
+
+%% @doc Creates a new Amazon WorkMail organization.
+%%
+%% Optionally, you can choose to associate an existing AWS Directory Service
+%% directory with your organization. If an AWS Directory Service directory ID
+%% is specified, the organization alias must match the directory alias. If
+%% you choose not to associate an existing directory with your organization,
+%% then we create a new Amazon WorkMail directory for you. For more
+%% information, see Adding an organization in the Amazon WorkMail
+%% Administrator Guide.
+%%
+%% You can associate multiple email domains with an organization, then set
+%% your default email domain from the Amazon WorkMail console. You can also
+%% associate a domain that is managed in an Amazon Route 53 public hosted
+%% zone. For more information, see Adding a domain and Choosing the default
+%% domain in the Amazon WorkMail Administrator Guide.
+%%
+%% Optionally, you can use a customer managed master key from AWS Key
+%% Management Service (AWS KMS) to encrypt email for your organization. If
+%% you don't associate an AWS KMS key, Amazon WorkMail creates a default AWS
+%% managed master key for you.
+create_organization(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_organization(Client, Input, []).
+create_organization(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateOrganization">>, Input, Options).
 
 %% @doc Creates a new Amazon WorkMail resource.
 create_resource(Client, Input)
@@ -168,7 +219,7 @@ create_resource(Client, Input, Options)
     request(Client, <<"CreateResource">>, Input, Options).
 
 %% @doc Creates a user who can be used in Amazon WorkMail by calling the
-%% <a>RegisterToWorkMail</a> operation.
+%% `RegisterToWorkMail' operation.
 create_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user(Client, Input, []).
@@ -210,6 +261,19 @@ delete_mailbox_permissions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMailboxPermissions">>, Input, Options).
 
+%% @doc Deletes an Amazon WorkMail organization and all underlying AWS
+%% resources managed by Amazon WorkMail as part of the organization.
+%%
+%% You can choose whether to delete the associated directory. For more
+%% information, see Removing an organization in the Amazon WorkMail
+%% Administrator Guide.
+delete_organization(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_organization(Client, Input, []).
+delete_organization(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteOrganization">>, Input, Options).
+
 %% @doc Deletes the specified resource.
 delete_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -228,9 +292,9 @@ delete_retention_policy(Client, Input, Options)
     request(Client, <<"DeleteRetentionPolicy">>, Input, Options).
 
 %% @doc Deletes a user from Amazon WorkMail and all subsequent systems.
-%% Before you can delete a user, the user state must be
-%% <code>DISABLED</code>. Use the <a>DescribeUser</a> action to confirm the
-%% user state.
+%%
+%% Before you can delete a user, the user state must be `DISABLED'. Use the
+%% `DescribeUser' action to confirm the user state.
 %%
 %% Deleting a user is permanent and cannot be undone. WorkMail archives user
 %% mailboxes for 30 days before they are permanently removed.
@@ -242,9 +306,10 @@ delete_user(Client, Input, Options)
     request(Client, <<"DeleteUser">>, Input, Options).
 
 %% @doc Mark a user, group, or resource as no longer used in Amazon WorkMail.
+%%
 %% This action disassociates the mailbox and schedules it for clean-up.
 %% WorkMail keeps mailboxes for 30 days before they are permanently removed.
-%% The functionality in the console is <i>Disable</i>.
+%% The functionality in the console is Disable.
 deregister_from_work_mail(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_from_work_mail(Client, Input, []).
@@ -259,6 +324,14 @@ describe_group(Client, Input)
 describe_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGroup">>, Input, Options).
+
+%% @doc Describes the current status of a mailbox export job.
+describe_mailbox_export_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_mailbox_export_job(Client, Input, []).
+describe_mailbox_export_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeMailboxExportJob">>, Input, Options).
 
 %% @doc Provides more information regarding a given organization based on its
 %% identifier.
@@ -345,8 +418,9 @@ list_aliases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAliases">>, Input, Options).
 
-%% @doc Returns an overview of the members of a group. Users and groups can
-%% be members of a group.
+%% @doc Returns an overview of the members of a group.
+%%
+%% Users and groups can be members of a group.
 list_group_members(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_group_members(Client, Input, []).
@@ -361,6 +435,15 @@ list_groups(Client, Input)
 list_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGroups">>, Input, Options).
+
+%% @doc Lists the mailbox export jobs started for the specified organization
+%% within the last seven days.
+list_mailbox_export_jobs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_mailbox_export_jobs(Client, Input, []).
+list_mailbox_export_jobs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListMailboxExportJobs">>, Input, Options).
 
 %% @doc Lists the mailbox permissions associated with a user, group, or
 %% resource mailbox.
@@ -379,8 +462,10 @@ list_organizations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListOrganizations">>, Input, Options).
 
-%% @doc Lists the delegates associated with a resource. Users and groups can
-%% be resource delegates and answer requests on behalf of the resource.
+%% @doc Lists the delegates associated with a resource.
+%%
+%% Users and groups can be resource delegates and answer requests on behalf
+%% of the resource.
 list_resource_delegates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resource_delegates(Client, Input, []).
@@ -412,10 +497,11 @@ list_users(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUsers">>, Input, Options).
 
-%% @doc Adds a new access control rule for the specified organization. The
-%% rule allows or denies access to the organization for the specified IPv4
-%% addresses, access protocol actions, and user IDs. Adding a new rule with
-%% the same name as an existing rule replaces the older rule.
+%% @doc Adds a new access control rule for the specified organization.
+%%
+%% The rule allows or denies access to the organization for the specified
+%% IPv4 addresses, access protocol actions, and user IDs. Adding a new rule
+%% with the same name as an existing rule replaces the older rule.
 put_access_control_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_access_control_rule(Client, Input, []).
@@ -423,8 +509,9 @@ put_access_control_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutAccessControlRule">>, Input, Options).
 
-%% @doc Sets permissions for a user, group, or resource. This replaces any
-%% pre-existing permissions.
+%% @doc Sets permissions for a user, group, or resource.
+%%
+%% This replaces any pre-existing permissions.
 put_mailbox_permissions(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_mailbox_permissions(Client, Input, []).
@@ -442,15 +529,15 @@ put_retention_policy(Client, Input, Options)
 
 %% @doc Registers an existing and disabled user, group, or resource for
 %% Amazon WorkMail use by associating a mailbox and calendaring capabilities.
+%%
 %% It performs no change if the user, group, or resource is enabled and fails
 %% if the user, group, or resource is deleted. This operation results in the
-%% accumulation of costs. For more information, see <a
-%% href="https://aws.amazon.com/workmail/pricing">Pricing</a>. The equivalent
-%% console functionality for this operation is <i>Enable</i>.
+%% accumulation of costs. For more information, see Pricing. The equivalent
+%% console functionality for this operation is Enable.
 %%
-%% Users can either be created by calling the <a>CreateUser</a> API operation
-%% or they can be synchronized from your directory. For more information, see
-%% <a>DeregisterFromWorkMail</a>.
+%% Users can either be created by calling the `CreateUser' API operation or
+%% they can be synchronized from your directory. For more information, see
+%% `DeregisterFromWorkMail'.
 register_to_work_mail(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_to_work_mail(Client, Input, []).
@@ -465,6 +552,19 @@ reset_password(Client, Input)
 reset_password(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResetPassword">>, Input, Options).
+
+%% @doc Starts a mailbox export job to export MIME-format email messages and
+%% calendar items from the specified mailbox to the specified Amazon Simple
+%% Storage Service (Amazon S3) bucket.
+%%
+%% For more information, see Exporting mailbox content in the Amazon WorkMail
+%% Administrator Guide.
+start_mailbox_export_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_mailbox_export_job(Client, Input, []).
+start_mailbox_export_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartMailboxExportJob">>, Input, Options).
 
 %% @doc Applies the specified tags to the specified Amazon WorkMail
 %% organization resource.
@@ -493,10 +593,11 @@ update_mailbox_quota(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateMailboxQuota">>, Input, Options).
 
-%% @doc Updates the primary email for a user, group, or resource. The current
-%% email is moved into the list of aliases (or swapped between an existing
-%% alias and the current primary email), and the email provided in the input
-%% is promoted as the primary.
+%% @doc Updates the primary email for a user, group, or resource.
+%%
+%% The current email is moved into the list of aliases (or swapped between an
+%% existing alias and the current primary email), and the email provided in
+%% the input is promoted as the primary.
 update_primary_email_address(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_primary_email_address(Client, Input, []).
@@ -504,10 +605,11 @@ update_primary_email_address(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePrimaryEmailAddress">>, Input, Options).
 
-%% @doc Updates data for the resource. To have the latest information, it
-%% must be preceded by a <a>DescribeResource</a> call. The dataset in the
-%% request should be the one expected when performing another
-%% <code>DescribeResource</code> call.
+%% @doc Updates data for the resource.
+%%
+%% To have the latest information, it must be preceded by a
+%% `DescribeResource' call. The dataset in the request should be the one
+%% expected when performing another `DescribeResource' call.
 update_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_resource(Client, Input, []).
@@ -557,6 +659,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
 handle_response({error, Reason}) ->
     {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

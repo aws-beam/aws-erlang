@@ -35,10 +35,13 @@ start_stream_transcription(Client, Input0, Options) ->
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
+                       {<<"x-amzn-transcribe-enable-channel-identification">>, <<"EnableChannelIdentification">>},
                        {<<"x-amzn-transcribe-language-code">>, <<"LanguageCode">>},
                        {<<"x-amzn-transcribe-media-encoding">>, <<"MediaEncoding">>},
                        {<<"x-amzn-transcribe-sample-rate">>, <<"MediaSampleRateHertz">>},
+                       {<<"x-amzn-transcribe-number-of-channels">>, <<"NumberOfChannels">>},
                        {<<"x-amzn-transcribe-session-id">>, <<"SessionId">>},
+                       {<<"x-amzn-transcribe-show-speaker-label">>, <<"ShowSpeakerLabel">>},
                        {<<"x-amzn-transcribe-vocabulary-filter-method">>, <<"VocabularyFilterMethod">>},
                        {<<"x-amzn-transcribe-vocabulary-filter-name">>, <<"VocabularyFilterName">>},
                        {<<"x-amzn-transcribe-vocabulary-name">>, <<"VocabularyName">>}
@@ -52,11 +55,14 @@ start_stream_transcription(Client, Input0, Options) ->
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
+            {<<"x-amzn-transcribe-enable-channel-identification">>, <<"EnableChannelIdentification">>},
             {<<"x-amzn-transcribe-language-code">>, <<"LanguageCode">>},
             {<<"x-amzn-transcribe-media-encoding">>, <<"MediaEncoding">>},
             {<<"x-amzn-transcribe-sample-rate">>, <<"MediaSampleRateHertz">>},
+            {<<"x-amzn-transcribe-number-of-channels">>, <<"NumberOfChannels">>},
             {<<"x-amzn-request-id">>, <<"RequestId">>},
             {<<"x-amzn-transcribe-session-id">>, <<"SessionId">>},
+            {<<"x-amzn-transcribe-show-speaker-label">>, <<"ShowSpeakerLabel">>},
             {<<"x-amzn-transcribe-vocabulary-filter-method">>, <<"VocabularyFilterMethod">>},
             {<<"x-amzn-transcribe-vocabulary-filter-name">>, <<"VocabularyFilterName">>},
             {<<"x-amzn-transcribe-vocabulary-name">>, <<"VocabularyName">>}
@@ -119,6 +125,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

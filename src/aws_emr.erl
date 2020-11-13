@@ -2,10 +2,11 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon EMR is a web service that makes it easy to process large
-%% amounts of data efficiently. Amazon EMR uses Hadoop processing combined
-%% with several AWS products to do tasks such as web indexing, data mining,
-%% log file analysis, machine learning, scientific simulation, and data
-%% warehousing.
+%% amounts of data efficiently.
+%%
+%% Amazon EMR uses Hadoop processing combined with several AWS products to do
+%% tasks such as web indexing, data mining, log file analysis, machine
+%% learning, scientific simulation, and data warehousing.
 -module(aws_emr).
 
 -export([add_instance_fleet/2,
@@ -26,6 +27,8 @@
          describe_cluster/3,
          describe_job_flows/2,
          describe_job_flows/3,
+         describe_notebook_execution/2,
+         describe_notebook_execution/3,
          describe_security_configuration/2,
          describe_security_configuration/3,
          describe_step/2,
@@ -44,6 +47,8 @@
          list_instance_groups/3,
          list_instances/2,
          list_instances/3,
+         list_notebook_executions/2,
+         list_notebook_executions/3,
          list_security_configurations/2,
          list_security_configurations/3,
          list_steps/2,
@@ -72,6 +77,10 @@
          set_termination_protection/3,
          set_visible_to_all_users/2,
          set_visible_to_all_users/3,
+         start_notebook_execution/2,
+         start_notebook_execution/3,
+         stop_notebook_execution/2,
+         stop_notebook_execution/3,
          terminate_job_flows/2,
          terminate_job_flows/3]).
 
@@ -83,10 +92,8 @@
 
 %% @doc Adds an instance fleet to a running cluster.
 %%
-%% <note> The instance fleet configuration is available only in Amazon EMR
-%% versions 4.8.0 and later, excluding 5.0.x.
-%%
-%% </note>
+%% The instance fleet configuration is available only in Amazon EMR versions
+%% 4.8.0 and later, excluding 5.0.x.
 add_instance_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_instance_fleet(Client, Input, []).
@@ -102,18 +109,17 @@ add_instance_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddInstanceGroups">>, Input, Options).
 
-%% @doc AddJobFlowSteps adds new steps to a running cluster. A maximum of 256
-%% steps are allowed in each job flow.
+%% @doc AddJobFlowSteps adds new steps to a running cluster.
+%%
+%% A maximum of 256 steps are allowed in each job flow.
 %%
 %% If your cluster is long-running (such as a Hive data warehouse) or
 %% complex, you may require more than 256 steps to process your data. You can
 %% bypass the 256-step limitation in various ways, including using SSH to
 %% connect to the master node and submitting queries directly to the software
 %% running on the master node, such as Hive and Hadoop. For more information
-%% on how to do this, see <a
-%% href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/AddMoreThan256Steps.html">Add
-%% More than 256 Steps to a Cluster</a> in the <i>Amazon EMR Management
-%% Guide</i>.
+%% on how to do this, see Add More than 256 Steps to a Cluster in the Amazon
+%% EMR Management Guide.
 %%
 %% A step specifies the location of a JAR file stored either on the master
 %% node of the cluster or in Amazon S3. Each step is performed by the main
@@ -135,11 +141,11 @@ add_job_flow_steps(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddJobFlowSteps">>, Input, Options).
 
-%% @doc Adds tags to an Amazon EMR resource. Tags make it easier to associate
-%% clusters in various ways, such as grouping clusters to track your Amazon
-%% EMR resource allocation costs. For more information, see <a
-%% href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html">Tag
-%% Clusters</a>.
+%% @doc Adds tags to an Amazon EMR resource.
+%%
+%% Tags make it easier to associate clusters in various ways, such as
+%% grouping clusters to track your Amazon EMR resource allocation costs. For
+%% more information, see Tag Clusters.
 add_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags(Client, Input, []).
@@ -147,12 +153,13 @@ add_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddTags">>, Input, Options).
 
-%% @doc Cancels a pending step or steps in a running cluster. Available only
-%% in Amazon EMR versions 4.8.0 and later, excluding version 5.0.0. A maximum
-%% of 256 steps are allowed in each CancelSteps request. CancelSteps is
-%% idempotent but asynchronous; it does not guarantee a step will be
-%% canceled, even if the request is successfully submitted. You can only
-%% cancel steps that are in a <code>PENDING</code> state.
+%% @doc Cancels a pending step or steps in a running cluster.
+%%
+%% Available only in Amazon EMR versions 4.8.0 and later, excluding version
+%% 5.0.0. A maximum of 256 steps are allowed in each CancelSteps request.
+%% CancelSteps is idempotent but asynchronous; it does not guarantee a step
+%% will be canceled, even if the request is successfully submitted. You can
+%% only cancel steps that are in a `PENDING' state.
 cancel_steps(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_steps(Client, Input, []).
@@ -186,9 +193,10 @@ describe_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCluster">>, Input, Options).
 
-%% @doc This API is deprecated and will eventually be removed. We recommend
-%% you use <a>ListClusters</a>, <a>DescribeCluster</a>, <a>ListSteps</a>,
-%% <a>ListInstanceGroups</a> and <a>ListBootstrapActions</a> instead.
+%% @doc This API is deprecated and will eventually be removed.
+%%
+%% We recommend you use `ListClusters', `DescribeCluster', `ListSteps',
+%% `ListInstanceGroups' and `ListBootstrapActions' instead.
 %%
 %% DescribeJobFlows returns a list of job flows that match all of the
 %% supplied parameters. The parameters can include a list of job flow IDs,
@@ -203,8 +211,7 @@ describe_cluster(Client, Input, Options)
 %% <ul> <li> Job flows created and completed in the last two weeks
 %%
 %% </li> <li> Job flows created within the last two months that are in one of
-%% the following states: <code>RUNNING</code>, <code>WAITING</code>,
-%% <code>SHUTTING_DOWN</code>, <code>STARTING</code>
+%% the following states: `RUNNING', `WAITING', `SHUTTING_DOWN', `STARTING'
 %%
 %% </li> </ul> Amazon EMR can return a maximum of 512 job flow descriptions.
 describe_job_flows(Client, Input)
@@ -213,6 +220,14 @@ describe_job_flows(Client, Input)
 describe_job_flows(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeJobFlows">>, Input, Options).
+
+%% @doc Provides details of a notebook execution.
+describe_notebook_execution(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_notebook_execution(Client, Input, []).
+describe_notebook_execution(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeNotebookExecution">>, Input, Options).
 
 %% @doc Provides the details of a security configuration by returning the
 %% configuration JSON.
@@ -232,10 +247,10 @@ describe_step(Client, Input, Options)
     request(Client, <<"DescribeStep">>, Input, Options).
 
 %% @doc Returns the Amazon EMR block public access configuration for your AWS
-%% account in the current Region. For more information see <a
-%% href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/configure-block-public-access.html">Configure
-%% Block Public Access for Amazon EMR</a> in the <i>Amazon EMR Management
-%% Guide</i>.
+%% account in the current Region.
+%%
+%% For more information see Configure Block Public Access for Amazon EMR in
+%% the Amazon EMR Management Guide.
 get_block_public_access_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_block_public_access_configuration(Client, Input, []).
@@ -262,6 +277,7 @@ list_bootstrap_actions(Client, Input, Options)
     request(Client, <<"ListBootstrapActions">>, Input, Options).
 
 %% @doc Provides the status of all clusters visible to this AWS account.
+%%
 %% Allows you to filter the list of clusters based on certain criteria; for
 %% example, filtering by cluster creation date and time or by status. This
 %% call returns a maximum of 50 clusters per call, but returns a marker to
@@ -275,10 +291,8 @@ list_clusters(Client, Input, Options)
 
 %% @doc Lists all available details about the instance fleets in a cluster.
 %%
-%% <note> The instance fleet configuration is available only in Amazon EMR
-%% versions 4.8.0 and later, excluding 5.0.x versions.
-%%
-%% </note>
+%% The instance fleet configuration is available only in Amazon EMR versions
+%% 4.8.0 and later, excluding 5.0.x versions.
 list_instance_fleets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_instance_fleets(Client, Input, []).
@@ -296,9 +310,10 @@ list_instance_groups(Client, Input, Options)
     request(Client, <<"ListInstanceGroups">>, Input, Options).
 
 %% @doc Provides information for all active EC2 instances and EC2 instances
-%% terminated in the last 30 days, up to a maximum of 2,000. EC2 instances in
-%% any of the following states are considered active: AWAITING_FULFILLMENT,
-%% PROVISIONING, BOOTSTRAPPING, RUNNING.
+%% terminated in the last 30 days, up to a maximum of 2,000.
+%%
+%% EC2 instances in any of the following states are considered active:
+%% AWAITING_FULFILLMENT, PROVISIONING, BOOTSTRAPPING, RUNNING.
 list_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_instances(Client, Input, []).
@@ -306,11 +321,25 @@ list_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListInstances">>, Input, Options).
 
+%% @doc Provides summaries of all notebook executions.
+%%
+%% You can filter the list based on multiple criteria such as status, time
+%% range, and editor id. Returns a maximum of 50 notebook executions and a
+%% marker to track the paging of a longer notebook execution list across
+%% multiple `ListNotebookExecution' calls.
+list_notebook_executions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_notebook_executions(Client, Input, []).
+list_notebook_executions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListNotebookExecutions">>, Input, Options).
+
 %% @doc Lists all the security configurations visible to this account,
-%% providing their creation dates and times, and their names. This call
-%% returns a maximum of 50 clusters per call, but returns a marker to track
-%% the paging of the cluster list across multiple ListSecurityConfigurations
-%% calls.
+%% providing their creation dates and times, and their names.
+%%
+%% This call returns a maximum of 50 clusters per call, but returns a marker
+%% to track the paging of the cluster list across multiple
+%% ListSecurityConfigurations calls.
 list_security_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_security_configurations(Client, Input, []).
@@ -319,9 +348,9 @@ list_security_configurations(Client, Input, Options)
     request(Client, <<"ListSecurityConfigurations">>, Input, Options).
 
 %% @doc Provides a list of steps for the cluster in reverse order unless you
-%% specify <code>stepIds</code> with the request of filter by
-%% <code>StepStates</code>. You can specify a maximum of ten
-%% <code>stepIDs</code>.
+%% specify `stepIds' with the request of filter by `StepStates'.
+%%
+%% You can specify a maximum of ten `stepIDs'.
 list_steps(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_steps(Client, Input, []).
@@ -340,12 +369,12 @@ modify_cluster(Client, Input, Options)
 
 %% @doc Modifies the target On-Demand and target Spot capacities for the
 %% instance fleet with the specified InstanceFleetID within the cluster
-%% specified using ClusterID. The call either succeeds or fails atomically.
+%% specified using ClusterID.
 %%
-%% <note> The instance fleet configuration is available only in Amazon EMR
-%% versions 4.8.0 and later, excluding 5.0.x versions.
+%% The call either succeeds or fails atomically.
 %%
-%% </note>
+%% The instance fleet configuration is available only in Amazon EMR versions
+%% 4.8.0 and later, excluding 5.0.x versions.
 modify_instance_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_instance_fleet(Client, Input, []).
@@ -354,9 +383,11 @@ modify_instance_fleet(Client, Input, Options)
     request(Client, <<"ModifyInstanceFleet">>, Input, Options).
 
 %% @doc ModifyInstanceGroups modifies the number of nodes and configuration
-%% settings of an instance group. The input parameters include the new target
-%% instance count for the group and the instance group ID. The call will
-%% either succeed or fail atomically.
+%% settings of an instance group.
+%%
+%% The input parameters include the new target instance count for the group
+%% and the instance group ID. The call will either succeed or fail
+%% atomically.
 modify_instance_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_instance_groups(Client, Input, []).
@@ -365,9 +396,11 @@ modify_instance_groups(Client, Input, Options)
     request(Client, <<"ModifyInstanceGroups">>, Input, Options).
 
 %% @doc Creates or updates an automatic scaling policy for a core instance
-%% group or task instance group in an Amazon EMR cluster. The automatic
-%% scaling policy defines how an instance group dynamically adds and
-%% terminates EC2 instances in response to the value of a CloudWatch metric.
+%% group or task instance group in an Amazon EMR cluster.
+%%
+%% The automatic scaling policy defines how an instance group dynamically
+%% adds and terminates EC2 instances in response to the value of a CloudWatch
+%% metric.
 put_auto_scaling_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_auto_scaling_policy(Client, Input, []).
@@ -376,10 +409,10 @@ put_auto_scaling_policy(Client, Input, Options)
     request(Client, <<"PutAutoScalingPolicy">>, Input, Options).
 
 %% @doc Creates or updates an Amazon EMR block public access configuration
-%% for your AWS account in the current Region. For more information see <a
-%% href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/configure-block-public-access.html">Configure
-%% Block Public Access for Amazon EMR</a> in the <i>Amazon EMR Management
-%% Guide</i>.
+%% for your AWS account in the current Region.
+%%
+%% For more information see Configure Block Public Access for Amazon EMR in
+%% the Amazon EMR Management Guide.
 put_block_public_access_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_block_public_access_configuration(Client, Input, []).
@@ -388,10 +421,12 @@ put_block_public_access_configuration(Client, Input, Options)
     request(Client, <<"PutBlockPublicAccessConfiguration">>, Input, Options).
 
 %% @doc Creates or updates a managed scaling policy for an Amazon EMR
-%% cluster. The managed scaling policy defines the limits for resources, such
-%% as EC2 instances that can be added or terminated from a cluster. The
-%% policy only applies to the core and task nodes. The master node cannot be
-%% scaled after initial configuration.
+%% cluster.
+%%
+%% The managed scaling policy defines the limits for resources, such as EC2
+%% instances that can be added or terminated from a cluster. The policy only
+%% applies to the core and task nodes. The master node cannot be scaled after
+%% initial configuration.
 put_managed_scaling_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_managed_scaling_policy(Client, Input, []).
@@ -416,11 +451,11 @@ remove_managed_scaling_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveManagedScalingPolicy">>, Input, Options).
 
-%% @doc Removes tags from an Amazon EMR resource. Tags make it easier to
-%% associate clusters in various ways, such as grouping clusters to track
-%% your Amazon EMR resource allocation costs. For more information, see <a
-%% href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html">Tag
-%% Clusters</a>.
+%% @doc Removes tags from an Amazon EMR resource.
+%%
+%% Tags make it easier to associate clusters in various ways, such as
+%% grouping clusters to track your Amazon EMR resource allocation costs. For
+%% more information, see Tag Clusters.
 %%
 %% The following example removes the stack tag with value Prod from a
 %% cluster:
@@ -431,18 +466,19 @@ remove_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTags">>, Input, Options).
 
-%% @doc RunJobFlow creates and starts running a new cluster (job flow). The
-%% cluster runs the steps specified. After the steps complete, the cluster
-%% stops and the HDFS partition is lost. To prevent loss of data, configure
-%% the last step of the job flow to store results in Amazon S3. If the
-%% <a>JobFlowInstancesConfig</a> <code>KeepJobFlowAliveWhenNoSteps</code>
-%% parameter is set to <code>TRUE</code>, the cluster transitions to the
-%% WAITING state rather than shutting down after the steps have completed.
+%% @doc RunJobFlow creates and starts running a new cluster (job flow).
 %%
-%% For additional protection, you can set the <a>JobFlowInstancesConfig</a>
-%% <code>TerminationProtected</code> parameter to <code>TRUE</code> to lock
-%% the cluster and prevent it from being terminated by API call, user
-%% intervention, or in the event of a job flow error.
+%% The cluster runs the steps specified. After the steps complete, the
+%% cluster stops and the HDFS partition is lost. To prevent loss of data,
+%% configure the last step of the job flow to store results in Amazon S3. If
+%% the `JobFlowInstancesConfig' `KeepJobFlowAliveWhenNoSteps' parameter is
+%% set to `TRUE', the cluster transitions to the WAITING state rather than
+%% shutting down after the steps have completed.
+%%
+%% For additional protection, you can set the `JobFlowInstancesConfig'
+%% `TerminationProtected' parameter to `TRUE' to lock the cluster and prevent
+%% it from being terminated by API call, user intervention, or in the event
+%% of a job flow error.
 %%
 %% A maximum of 256 steps are allowed in each job flow.
 %%
@@ -451,20 +487,16 @@ remove_tags(Client, Input, Options)
 %% bypass the 256-step limitation in various ways, including using the SSH
 %% shell to connect to the master node and submitting queries directly to the
 %% software running on the master node, such as Hive and Hadoop. For more
-%% information on how to do this, see <a
-%% href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/AddMoreThan256Steps.html">Add
-%% More than 256 Steps to a Cluster</a> in the <i>Amazon EMR Management
-%% Guide</i>.
+%% information on how to do this, see Add More than 256 Steps to a Cluster in
+%% the Amazon EMR Management Guide.
 %%
 %% For long running clusters, we recommend that you periodically store your
 %% results.
 %%
-%% <note> The instance fleets configuration is available only in Amazon EMR
-%% versions 4.8.0 and later, excluding 5.0.x versions. The RunJobFlow request
-%% can contain InstanceFleets parameters or InstanceGroups parameters, but
-%% not both.
-%%
-%% </note>
+%% The instance fleets configuration is available only in Amazon EMR versions
+%% 4.8.0 and later, excluding 5.0.x versions. The RunJobFlow request can
+%% contain InstanceFleets parameters or InstanceGroups parameters, but not
+%% both.
 run_job_flow(Client, Input)
   when is_map(Client), is_map(Input) ->
     run_job_flow(Client, Input, []).
@@ -474,26 +506,24 @@ run_job_flow(Client, Input, Options)
 
 %% @doc SetTerminationProtection locks a cluster (job flow) so the EC2
 %% instances in the cluster cannot be terminated by user intervention, an API
-%% call, or in the event of a job-flow error. The cluster still terminates
-%% upon successful completion of the job flow. Calling
-%% <code>SetTerminationProtection</code> on a cluster is similar to calling
-%% the Amazon EC2 <code>DisableAPITermination</code> API on all EC2 instances
-%% in a cluster.
+%% call, or in the event of a job-flow error.
 %%
-%% <code>SetTerminationProtection</code> is used to prevent accidental
-%% termination of a cluster and to ensure that in the event of an error, the
-%% instances persist so that you can recover any data stored in their
-%% ephemeral instance storage.
+%% The cluster still terminates upon successful completion of the job flow.
+%% Calling `SetTerminationProtection' on a cluster is similar to calling the
+%% Amazon EC2 `DisableAPITermination' API on all EC2 instances in a cluster.
+%%
+%% `SetTerminationProtection' is used to prevent accidental termination of a
+%% cluster and to ensure that in the event of an error, the instances persist
+%% so that you can recover any data stored in their ephemeral instance
+%% storage.
 %%
 %% To terminate a cluster that has been locked by setting
-%% <code>SetTerminationProtection</code> to <code>true</code>, you must first
-%% unlock the job flow by a subsequent call to
-%% <code>SetTerminationProtection</code> in which you set the value to
-%% <code>false</code>.
+%% `SetTerminationProtection' to `true', you must first unlock the job flow
+%% by a subsequent call to `SetTerminationProtection' in which you set the
+%% value to `false'.
 %%
-%% For more information, see<a
-%% href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/UsingEMR_TerminationProtection.html">Managing
-%% Cluster Termination</a> in the <i>Amazon EMR Management Guide</i>.
+%% For more information, seeManaging Cluster Termination in the Amazon EMR
+%% Management Guide.
 set_termination_protection(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_termination_protection(Client, Input, []).
@@ -501,16 +531,17 @@ set_termination_protection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetTerminationProtection">>, Input, Options).
 
-%% @doc Sets the <a>Cluster$VisibleToAllUsers</a> value, which determines
-%% whether the cluster is visible to all IAM users of the AWS account
-%% associated with the cluster. Only the IAM user who created the cluster or
-%% the AWS account root user can call this action. The default value,
-%% <code>true</code>, indicates that all IAM users in the AWS account can
-%% perform cluster actions if they have the proper IAM policy permissions. If
-%% set to <code>false</code>, only the IAM user that created the cluster can
-%% perform actions. This action works on running clusters. You can override
-%% the default <code>true</code> setting when you create a cluster by using
-%% the <code>VisibleToAllUsers</code> parameter with <code>RunJobFlow</code>.
+%% @doc Sets the `Cluster$VisibleToAllUsers' value, which determines whether
+%% the cluster is visible to all IAM users of the AWS account associated with
+%% the cluster.
+%%
+%% Only the IAM user who created the cluster or the AWS account root user can
+%% call this action. The default value, `true', indicates that all IAM users
+%% in the AWS account can perform cluster actions if they have the proper IAM
+%% policy permissions. If set to `false', only the IAM user that created the
+%% cluster can perform actions. This action works on running clusters. You
+%% can override the default `true' setting when you create a cluster by using
+%% the `VisibleToAllUsers' parameter with `RunJobFlow'.
 set_visible_to_all_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_visible_to_all_users(Client, Input, []).
@@ -518,17 +549,33 @@ set_visible_to_all_users(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetVisibleToAllUsers">>, Input, Options).
 
-%% @doc TerminateJobFlows shuts a list of clusters (job flows) down. When a
-%% job flow is shut down, any step not yet completed is canceled and the EC2
-%% instances on which the cluster is running are stopped. Any log files not
-%% already saved are uploaded to Amazon S3 if a LogUri was specified when the
-%% cluster was created.
+%% @doc Starts a notebook execution.
+start_notebook_execution(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_notebook_execution(Client, Input, []).
+start_notebook_execution(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartNotebookExecution">>, Input, Options).
+
+%% @doc Stops a notebook execution.
+stop_notebook_execution(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_notebook_execution(Client, Input, []).
+stop_notebook_execution(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopNotebookExecution">>, Input, Options).
+
+%% @doc TerminateJobFlows shuts a list of clusters (job flows) down.
+%%
+%% When a job flow is shut down, any step not yet completed is canceled and
+%% the EC2 instances on which the cluster is running are stopped. Any log
+%% files not already saved are uploaded to Amazon S3 if a LogUri was
+%% specified when the cluster was created.
 %%
 %% The maximum number of clusters allowed is 10. The call to
-%% <code>TerminateJobFlows</code> is asynchronous. Depending on the
-%% configuration of the cluster, it may take up to 1-5 minutes for the
-%% cluster to completely terminate and release allocated resources, such as
-%% Amazon EC2 instances.
+%% `TerminateJobFlows' is asynchronous. Depending on the configuration of the
+%% cluster, it may take up to 1-5 minutes for the cluster to completely
+%% terminate and release allocated resources, such as Amazon EC2 instances.
 terminate_job_flows(Client, Input)
   when is_map(Client), is_map(Input) ->
     terminate_job_flows(Client, Input, []).
@@ -578,6 +625,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
 handle_response({error, Reason}) ->
     {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

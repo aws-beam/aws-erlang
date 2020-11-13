@@ -2,3 +2,4 @@ _build/
 .rebar3/
 doc/
 ebin/
+edoc/

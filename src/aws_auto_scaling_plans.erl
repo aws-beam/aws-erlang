@@ -1,22 +1,22 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc <fullname>AWS Auto Scaling</fullname>
+%% @doc AWS Auto Scaling
 %%
 %% Use AWS Auto Scaling to quickly discover all the scalable AWS resources
 %% for your application and configure dynamic scaling and predictive scaling
-%% for your resources using scaling plans. Use this service in conjunction
-%% with the Amazon EC2 Auto Scaling, Application Auto Scaling, Amazon
-%% CloudWatch, and AWS CloudFormation services.
+%% for your resources using scaling plans.
+%%
+%% Use this service in conjunction with the Amazon EC2 Auto Scaling,
+%% Application Auto Scaling, Amazon CloudWatch, and AWS CloudFormation
+%% services.
 %%
 %% Currently, predictive scaling is only available for Amazon EC2 Auto
 %% Scaling groups.
 %%
 %% For more information about AWS Auto Scaling, including information about
 %% granting IAM users required permissions for AWS Auto Scaling actions, see
-%% the <a
-%% href="https://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-aws-auto-scaling.html">AWS
-%% Auto Scaling User Guide</a>.
+%% the AWS Auto Scaling User Guide.
 -module(aws_auto_scaling_plans).
 
 -export([create_scaling_plan/2,
@@ -48,8 +48,8 @@ create_scaling_plan(Client, Input, Options)
 
 %% @doc Deletes the specified scaling plan.
 %%
-%% Deleting a scaling plan deletes the underlying <a>ScalingInstruction</a>
-%% for all of the scalable resources that are covered by the plan.
+%% Deleting a scaling plan deletes the underlying `ScalingInstruction' for
+%% all of the scalable resources that are covered by the plan.
 %%
 %% If the plan has launched resources or has scaling activities in progress,
 %% you must delete those resources separately.
@@ -141,6 +141,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
 handle_response({error, Reason}) ->
     {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

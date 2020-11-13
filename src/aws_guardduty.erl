@@ -3,13 +3,15 @@
 
 %% @doc Amazon GuardDuty is a continuous security monitoring service that
 %% analyzes and processes the following data sources: VPC Flow Logs, AWS
-%% CloudTrail event logs, and DNS logs. It uses threat intelligence feeds
-%% (such as lists of malicious IPs and domains) and machine learning to
-%% identify unexpected, potentially unauthorized, and malicious activity
-%% within your AWS environment. This can include issues like escalations of
-%% privileges, uses of exposed credentials, or communication with malicious
-%% IPs, URLs, or domains. For example, GuardDuty can detect compromised EC2
-%% instances that serve malware or mine bitcoin.
+%% CloudTrail event logs, and DNS logs.
+%%
+%% It uses threat intelligence feeds (such as lists of malicious IPs and
+%% domains) and machine learning to identify unexpected, potentially
+%% unauthorized, and malicious activity within your AWS environment. This can
+%% include issues like escalations of privileges, uses of exposed
+%% credentials, or communication with malicious IPs, URLs, or domains. For
+%% example, GuardDuty can detect compromised EC2 instances that serve malware
+%% or mine bitcoin.
 %%
 %% GuardDuty also monitors AWS account access behavior for signs of
 %% compromise. Some examples of this are unauthorized infrastructure
@@ -19,9 +21,8 @@
 %%
 %% GuardDuty informs you of the status of your AWS environment by producing
 %% security findings that you can view in the GuardDuty console or through
-%% Amazon CloudWatch events. For more information, see the <i> <a
-%% href="https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html">Amazon
-%% GuardDuty User Guide</a> </i>.
+%% Amazon CloudWatch events. For more information, see the Amazon GuardDuty
+%% User Guide .
 -module(aws_guardduty).
 
 -export([accept_invitation/3,
@@ -152,7 +153,7 @@ accept_invitation(Client, DetectorId, Input) ->
     accept_invitation(Client, DetectorId, Input, []).
 accept_invitation(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/master"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/master"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -166,15 +167,13 @@ accept_invitation(Client, DetectorId, Input0, Options) ->
 %% @doc Archives GuardDuty findings that are specified by the list of finding
 %% IDs.
 %%
-%% <note> Only the master account can archive findings. Member accounts don't
-%% have permission to archive findings from their accounts.
-%%
-%% </note>
+%% Only the master account can archive findings. Member accounts don't have
+%% permission to archive findings from their accounts.
 archive_findings(Client, DetectorId, Input) ->
     archive_findings(Client, DetectorId, Input, []).
 archive_findings(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/findings/archive"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings/archive"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -185,11 +184,12 @@ archive_findings(Client, DetectorId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a single Amazon GuardDuty detector. A detector is a resource
-%% that represents the GuardDuty service. To start using GuardDuty, you must
-%% create a detector in each Region where you enable the service. You can
-%% have only one detector per account per Region. All data sources are
-%% enabled in a new detector by default.
+%% @doc Creates a single Amazon GuardDuty detector.
+%%
+%% A detector is a resource that represents the GuardDuty service. To start
+%% using GuardDuty, you must create a detector in each Region where you
+%% enable the service. You can have only one detector per account per Region.
+%% All data sources are enabled in a new detector by default.
 create_detector(Client, Input) ->
     create_detector(Client, Input, []).
 create_detector(Client, Input0, Options) ->
@@ -210,7 +210,7 @@ create_filter(Client, DetectorId, Input) ->
     create_filter(Client, DetectorId, Input, []).
 create_filter(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/filter"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/filter"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -222,15 +222,17 @@ create_filter(Client, DetectorId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new IPSet, which is called a trusted IP list in the console
-%% user interface. An IPSet is a list of IP addresses that are trusted for
-%% secure communication with AWS infrastructure and applications. GuardDuty
-%% doesn't generate findings for IP addresses that are included in IPSets.
-%% Only users from the master account can use this operation.
+%% user interface.
+%%
+%% An IPSet is a list of IP addresses that are trusted for secure
+%% communication with AWS infrastructure and applications. GuardDuty doesn't
+%% generate findings for IP addresses that are included in IPSets. Only users
+%% from the master account can use this operation.
 create_i_p_set(Client, DetectorId, Input) ->
     create_i_p_set(Client, DetectorId, Input, []).
 create_i_p_set(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/ipset"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -242,24 +244,24 @@ create_i_p_set(Client, DetectorId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates member accounts of the current AWS account by specifying a
-%% list of AWS account IDs. This step is a prerequisite for managing the
-%% associated member accounts either by invitation or through an
-%% organization.
+%% list of AWS account IDs.
 %%
-%% When using <code>Create Members</code> as an organizations delegated
-%% administrator this action will enable GuardDuty in the added member
-%% accounts, with the exception of the organization master account, which
-%% must enable GuardDuty prior to being added as a member.
+%% This step is a prerequisite for managing the associated member accounts
+%% either by invitation or through an organization.
+%%
+%% When using `Create Members' as an organizations delegated administrator
+%% this action will enable GuardDuty in the added member accounts, with the
+%% exception of the organization master account, which must enable GuardDuty
+%% prior to being added as a member.
 %%
 %% If you are adding accounts by invitation use this action after GuardDuty
-%% has been enabled in potential member accounts and before using <a
-%% href="https://docs.aws.amazon.com/guardduty/latest/APIReference/API_InviteMembers.html">
-%% <code>Invite Members</code> </a>.
+%% has been enabled in potential member accounts and before using `Invite
+%% Members' .
 create_members(Client, DetectorId, Input) ->
     create_members(Client, DetectorId, Input, []).
 create_members(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/member"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -270,13 +272,15 @@ create_members(Client, DetectorId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a publishing destination to export findings to. The resource
-%% to export findings to must exist before you use this operation.
+%% @doc Creates a publishing destination to export findings to.
+%%
+%% The resource to export findings to must exist before you use this
+%% operation.
 create_publishing_destination(Client, DetectorId, Input) ->
     create_publishing_destination(Client, DetectorId, Input, []).
 create_publishing_destination(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/publishingDestination"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/publishingDestination"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -288,13 +292,15 @@ create_publishing_destination(Client, DetectorId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Generates example findings of types specified by the list of finding
-%% types. If 'NULL' is specified for <code>findingTypes</code>, the API
-%% generates example findings of all supported finding types.
+%% types.
+%%
+%% If 'NULL' is specified for `findingTypes', the API generates example
+%% findings of all supported finding types.
 create_sample_findings(Client, DetectorId, Input) ->
     create_sample_findings(Client, DetectorId, Input, []).
 create_sample_findings(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/findings/create"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings/create"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -305,14 +311,16 @@ create_sample_findings(Client, DetectorId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new ThreatIntelSet. ThreatIntelSets consist of known
-%% malicious IP addresses. GuardDuty generates findings based on
-%% ThreatIntelSets. Only users of the master account can use this operation.
+%% @doc Creates a new ThreatIntelSet.
+%%
+%% ThreatIntelSets consist of known malicious IP addresses. GuardDuty
+%% generates findings based on ThreatIntelSets. Only users of the master
+%% account can use this operation.
 create_threat_intel_set(Client, DetectorId, Input) ->
     create_threat_intel_set(Client, DetectorId, Input, []).
 create_threat_intel_set(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/threatintelset"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/threatintelset"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -346,7 +354,7 @@ delete_detector(Client, DetectorId, Input) ->
     delete_detector(Client, DetectorId, Input, []).
 delete_detector(Client, DetectorId, Input0, Options) ->
     Method = delete,
-    Path = ["/detector/", http_uri:encode(DetectorId), ""],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -362,7 +370,7 @@ delete_filter(Client, DetectorId, FilterName, Input) ->
     delete_filter(Client, DetectorId, FilterName, Input, []).
 delete_filter(Client, DetectorId, FilterName, Input0, Options) ->
     Method = delete,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/filter/", http_uri:encode(FilterName), ""],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/filter/", aws_util:encode_uri(FilterName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -373,13 +381,14 @@ delete_filter(Client, DetectorId, FilterName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the IPSet specified by the <code>ipSetId</code>. IPSets are
-%% called trusted IP lists in the console user interface.
+%% @doc Deletes the IPSet specified by the `ipSetId'.
+%%
+%% IPSets are called trusted IP lists in the console user interface.
 delete_i_p_set(Client, DetectorId, IpSetId, Input) ->
     delete_i_p_set(Client, DetectorId, IpSetId, Input, []).
 delete_i_p_set(Client, DetectorId, IpSetId, Input0, Options) ->
     Method = delete,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/ipset/", http_uri:encode(IpSetId), ""],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset/", aws_util:encode_uri(IpSetId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -413,7 +422,7 @@ delete_members(Client, DetectorId, Input) ->
     delete_members(Client, DetectorId, Input, []).
 delete_members(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/member/delete"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/delete"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -424,13 +433,12 @@ delete_members(Client, DetectorId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the publishing definition with the specified
-%% <code>destinationId</code>.
+%% @doc Deletes the publishing definition with the specified `destinationId'.
 delete_publishing_destination(Client, DestinationId, DetectorId, Input) ->
     delete_publishing_destination(Client, DestinationId, DetectorId, Input, []).
 delete_publishing_destination(Client, DestinationId, DetectorId, Input0, Options) ->
     Method = delete,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/publishingDestination/", http_uri:encode(DestinationId), ""],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/publishingDestination/", aws_util:encode_uri(DestinationId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -446,7 +454,7 @@ delete_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input) ->
     delete_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input, []).
 delete_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input0, Options) ->
     Method = delete,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/threatintelset/", http_uri:encode(ThreatIntelSetId), ""],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/threatintelset/", aws_util:encode_uri(ThreatIntelSetId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -464,7 +472,7 @@ describe_organization_configuration(Client, DetectorId)
     describe_organization_configuration(Client, DetectorId, []).
 describe_organization_configuration(Client, DetectorId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/detector/", http_uri:encode(DetectorId), "/admin"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/admin"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -474,13 +482,13 @@ describe_organization_configuration(Client, DetectorId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about the publishing destination specified by the
-%% provided <code>destinationId</code>.
+%% provided `destinationId'.
 describe_publishing_destination(Client, DestinationId, DetectorId)
   when is_map(Client) ->
     describe_publishing_destination(Client, DestinationId, DetectorId, []).
 describe_publishing_destination(Client, DestinationId, DetectorId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/detector/", http_uri:encode(DetectorId), "/publishingDestination/", http_uri:encode(DestinationId), ""],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/publishingDestination/", aws_util:encode_uri(DestinationId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -512,7 +520,7 @@ disassociate_from_master_account(Client, DetectorId, Input) ->
     disassociate_from_master_account(Client, DetectorId, Input, []).
 disassociate_from_master_account(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/master/disassociate"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/master/disassociate"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -529,7 +537,7 @@ disassociate_members(Client, DetectorId, Input) ->
     disassociate_members(Client, DetectorId, Input, []).
 disassociate_members(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/member/disassociate"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/disassociate"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -563,7 +571,7 @@ get_detector(Client, DetectorId)
     get_detector(Client, DetectorId, []).
 get_detector(Client, DetectorId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/detector/", http_uri:encode(DetectorId), ""],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -578,7 +586,7 @@ get_filter(Client, DetectorId, FilterName)
     get_filter(Client, DetectorId, FilterName, []).
 get_filter(Client, DetectorId, FilterName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/detector/", http_uri:encode(DetectorId), "/filter/", http_uri:encode(FilterName), ""],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/filter/", aws_util:encode_uri(FilterName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -592,7 +600,7 @@ get_findings(Client, DetectorId, Input) ->
     get_findings(Client, DetectorId, Input, []).
 get_findings(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/findings/get"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings/get"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -609,7 +617,7 @@ get_findings_statistics(Client, DetectorId, Input) ->
     get_findings_statistics(Client, DetectorId, Input, []).
 get_findings_statistics(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/findings/statistics"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings/statistics"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -620,13 +628,13 @@ get_findings_statistics(Client, DetectorId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves the IPSet specified by the <code>ipSetId</code>.
+%% @doc Retrieves the IPSet specified by the `ipSetId'.
 get_i_p_set(Client, DetectorId, IpSetId)
   when is_map(Client) ->
     get_i_p_set(Client, DetectorId, IpSetId, []).
 get_i_p_set(Client, DetectorId, IpSetId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/detector/", http_uri:encode(DetectorId), "/ipset/", http_uri:encode(IpSetId), ""],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset/", aws_util:encode_uri(IpSetId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -659,7 +667,7 @@ get_master_account(Client, DetectorId)
     get_master_account(Client, DetectorId, []).
 get_master_account(Client, DetectorId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/detector/", http_uri:encode(DetectorId), "/master"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/master"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -674,7 +682,7 @@ get_member_detectors(Client, DetectorId, Input) ->
     get_member_detectors(Client, DetectorId, Input, []).
 get_member_detectors(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/member/detector/get"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/detector/get"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -691,7 +699,7 @@ get_members(Client, DetectorId, Input) ->
     get_members(Client, DetectorId, Input, []).
 get_members(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/member/get"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/get"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -709,7 +717,7 @@ get_threat_intel_set(Client, DetectorId, ThreatIntelSetId)
     get_threat_intel_set(Client, DetectorId, ThreatIntelSetId, []).
 get_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/detector/", http_uri:encode(DetectorId), "/threatintelset/", http_uri:encode(ThreatIntelSetId), ""],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/threatintelset/", aws_util:encode_uri(ThreatIntelSetId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -719,17 +727,18 @@ get_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists Amazon GuardDuty usage statistics over the last 30 days for the
-%% specified detector ID. For newly enabled detectors or data sources the
-%% cost returned will include only the usage so far under 30 days, this may
-%% differ from the cost metrics in the console, which projects usage over 30
-%% days to provide a monthly cost estimate. For more information see <a
-%% href="https://docs.aws.amazon.com/guardduty/latest/ug/monitoring_costs.html#usage-calculations">Understanding
-%% How Usage Costs are Calculated</a>.
+%% specified detector ID.
+%%
+%% For newly enabled detectors or data sources the cost returned will include
+%% only the usage so far under 30 days, this may differ from the cost metrics
+%% in the console, which projects usage over 30 days to provide a monthly
+%% cost estimate. For more information see Understanding How Usage Costs are
+%% Calculated.
 get_usage_statistics(Client, DetectorId, Input) ->
     get_usage_statistics(Client, DetectorId, Input, []).
 get_usage_statistics(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/usage/statistics"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/usage/statistics"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -748,7 +757,7 @@ invite_members(Client, DetectorId, Input) ->
     invite_members(Client, DetectorId, Input, []).
 invite_members(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/member/invite"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/invite"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -786,7 +795,7 @@ list_filters(Client, DetectorId, MaxResults, NextToken)
     list_filters(Client, DetectorId, MaxResults, NextToken, []).
 list_filters(Client, DetectorId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/detector/", http_uri:encode(DetectorId), "/filter"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/filter"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -805,7 +814,7 @@ list_findings(Client, DetectorId, Input) ->
     list_findings(Client, DetectorId, Input, []).
 list_findings(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/findings"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -817,14 +826,16 @@ list_findings(Client, DetectorId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the IPSets of the GuardDuty service specified by the detector
-%% ID. If you use this operation from a member account, the IPSets returned
-%% are the IPSets from the associated master account.
+%% ID.
+%%
+%% If you use this operation from a member account, the IPSets returned are
+%% the IPSets from the associated master account.
 list_i_p_sets(Client, DetectorId, MaxResults, NextToken)
   when is_map(Client) ->
     list_i_p_sets(Client, DetectorId, MaxResults, NextToken, []).
 list_i_p_sets(Client, DetectorId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/detector/", http_uri:encode(DetectorId), "/ipset"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -866,7 +877,7 @@ list_members(Client, DetectorId, MaxResults, NextToken, OnlyAssociated)
     list_members(Client, DetectorId, MaxResults, NextToken, OnlyAssociated, []).
 list_members(Client, DetectorId, MaxResults, NextToken, OnlyAssociated, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/detector/", http_uri:encode(DetectorId), "/member"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -902,13 +913,13 @@ list_organization_admin_accounts(Client, MaxResults, NextToken, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of publishing destinations associated with the
-%% specified <code>dectectorId</code>.
+%% specified `dectectorId'.
 list_publishing_destinations(Client, DetectorId, MaxResults, NextToken)
   when is_map(Client) ->
     list_publishing_destinations(Client, DetectorId, MaxResults, NextToken, []).
 list_publishing_destinations(Client, DetectorId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/detector/", http_uri:encode(DetectorId), "/publishingDestination"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/publishingDestination"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -922,16 +933,17 @@ list_publishing_destinations(Client, DetectorId, MaxResults, NextToken, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists tags for a resource. Tagging is currently supported for
-%% detectors, finding filters, IP sets, and threat intel sets, with a limit
-%% of 50 tags per resource. When invoked, this operation returns all assigned
-%% tags for a given resource.
+%% @doc Lists tags for a resource.
+%%
+%% Tagging is currently supported for detectors, finding filters, IP sets,
+%% and threat intel sets, with a limit of 50 tags per resource. When invoked,
+%% this operation returns all assigned tags for a given resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, []).
 list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -941,14 +953,16 @@ list_tags_for_resource(Client, ResourceArn, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the ThreatIntelSets of the GuardDuty service specified by the
-%% detector ID. If you use this operation from a member account, the
-%% ThreatIntelSets associated with the master account are returned.
+%% detector ID.
+%%
+%% If you use this operation from a member account, the ThreatIntelSets
+%% associated with the master account are returned.
 list_threat_intel_sets(Client, DetectorId, MaxResults, NextToken)
   when is_map(Client) ->
     list_threat_intel_sets(Client, DetectorId, MaxResults, NextToken, []).
 list_threat_intel_sets(Client, DetectorId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/detector/", http_uri:encode(DetectorId), "/threatintelset"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/threatintelset"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -962,14 +976,15 @@ list_threat_intel_sets(Client, DetectorId, MaxResults, NextToken, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Turns on GuardDuty monitoring of the specified member accounts. Use
-%% this operation to restart monitoring of accounts that you stopped
-%% monitoring with the <code>StopMonitoringMembers</code> operation.
+%% @doc Turns on GuardDuty monitoring of the specified member accounts.
+%%
+%% Use this operation to restart monitoring of accounts that you stopped
+%% monitoring with the `StopMonitoringMembers' operation.
 start_monitoring_members(Client, DetectorId, Input) ->
     start_monitoring_members(Client, DetectorId, Input, []).
 start_monitoring_members(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/member/start"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/start"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -980,14 +995,15 @@ start_monitoring_members(Client, DetectorId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Stops GuardDuty monitoring for the specified member accounts. Use the
-%% <code>StartMonitoringMembers</code> operation to restart monitoring for
-%% those accounts.
+%% @doc Stops GuardDuty monitoring for the specified member accounts.
+%%
+%% Use the `StartMonitoringMembers' operation to restart monitoring for those
+%% accounts.
 stop_monitoring_members(Client, DetectorId, Input) ->
     stop_monitoring_members(Client, DetectorId, Input, []).
 stop_monitoring_members(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/member/stop"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/stop"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1003,7 +1019,7 @@ tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -1014,13 +1030,12 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Unarchives GuardDuty findings specified by the
-%% <code>findingIds</code>.
+%% @doc Unarchives GuardDuty findings specified by the `findingIds'.
 unarchive_findings(Client, DetectorId, Input) ->
     unarchive_findings(Client, DetectorId, Input, []).
 unarchive_findings(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/findings/unarchive"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings/unarchive"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1036,7 +1051,7 @@ untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -1053,7 +1068,7 @@ update_detector(Client, DetectorId, Input) ->
     update_detector(Client, DetectorId, Input, []).
 update_detector(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), ""],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1069,7 +1084,7 @@ update_filter(Client, DetectorId, FilterName, Input) ->
     update_filter(Client, DetectorId, FilterName, Input, []).
 update_filter(Client, DetectorId, FilterName, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/filter/", http_uri:encode(FilterName), ""],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/filter/", aws_util:encode_uri(FilterName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1085,7 +1100,7 @@ update_findings_feedback(Client, DetectorId, Input) ->
     update_findings_feedback(Client, DetectorId, Input, []).
 update_findings_feedback(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/findings/feedback"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings/feedback"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1101,7 +1116,7 @@ update_i_p_set(Client, DetectorId, IpSetId, Input) ->
     update_i_p_set(Client, DetectorId, IpSetId, Input, []).
 update_i_p_set(Client, DetectorId, IpSetId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/ipset/", http_uri:encode(IpSetId), ""],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset/", aws_util:encode_uri(IpSetId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1117,7 +1132,7 @@ update_member_detectors(Client, DetectorId, Input) ->
     update_member_detectors(Client, DetectorId, Input, []).
 update_member_detectors(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/member/detector/update"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/detector/update"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1133,7 +1148,7 @@ update_organization_configuration(Client, DetectorId, Input) ->
     update_organization_configuration(Client, DetectorId, Input, []).
 update_organization_configuration(Client, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/admin"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/admin"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1145,12 +1160,12 @@ update_organization_configuration(Client, DetectorId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates information about the publishing destination specified by the
-%% <code>destinationId</code>.
+%% `destinationId'.
 update_publishing_destination(Client, DestinationId, DetectorId, Input) ->
     update_publishing_destination(Client, DestinationId, DetectorId, Input, []).
 update_publishing_destination(Client, DestinationId, DetectorId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/publishingDestination/", http_uri:encode(DestinationId), ""],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/publishingDestination/", aws_util:encode_uri(DestinationId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1166,7 +1181,7 @@ update_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input) ->
     update_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input, []).
 update_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input0, Options) ->
     Method = post,
-    Path = ["/detector/", http_uri:encode(DetectorId), "/threatintelset/", http_uri:encode(ThreatIntelSetId), ""],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/threatintelset/", aws_util:encode_uri(ThreatIntelSetId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1223,6 +1238,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

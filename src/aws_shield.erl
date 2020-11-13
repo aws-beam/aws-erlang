@@ -1,15 +1,15 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc <fullname>AWS Shield Advanced</fullname>
+%% @doc AWS Shield Advanced
 %%
-%% This is the <i>AWS Shield Advanced API Reference</i>. This guide is for
-%% developers who need detailed information about the AWS Shield Advanced API
-%% actions, data types, and errors. For detailed information about AWS WAF
-%% and AWS Shield Advanced features and an overview of how to use the AWS WAF
-%% and AWS Shield Advanced APIs, see the <a
-%% href="https://docs.aws.amazon.com/waf/latest/developerguide/">AWS WAF and
-%% AWS Shield Developer Guide</a>.
+%% This is the AWS Shield Advanced API Reference.
+%%
+%% This guide is for developers who need detailed information about the AWS
+%% Shield Advanced API actions, data types, and errors. For detailed
+%% information about AWS WAF and AWS Shield Advanced features and an overview
+%% of how to use the AWS WAF and AWS Shield Advanced APIs, see the AWS WAF
+%% and AWS Shield Developer Guide.
 -module(aws_shield).
 
 -export([associate_d_r_t_log_bucket/2,
@@ -66,15 +66,13 @@
 %%====================================================================
 
 %% @doc Authorizes the DDoS Response Team (DRT) to access the specified
-%% Amazon S3 bucket containing your AWS WAF logs. You can associate up to 10
-%% Amazon S3 buckets with your subscription.
+%% Amazon S3 bucket containing your AWS WAF logs.
 %%
-%% To use the services of the DRT and make an
-%% <code>AssociateDRTLogBucket</code> request, you must be subscribed to the
-%% <a href="https://aws.amazon.com/premiumsupport/business-support/">Business
-%% Support plan</a> or the <a
-%% href="https://aws.amazon.com/premiumsupport/enterprise-support/">Enterprise
-%% Support plan</a>.
+%% You can associate up to 10 Amazon S3 buckets with your subscription.
+%%
+%% To use the services of the DRT and make an `AssociateDRTLogBucket'
+%% request, you must be subscribed to the Business Support plan or the
+%% Enterprise Support plan.
 associate_d_r_t_log_bucket(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_d_r_t_log_bucket(Client, Input, []).
@@ -84,25 +82,21 @@ associate_d_r_t_log_bucket(Client, Input, Options)
 
 %% @doc Authorizes the DDoS Response Team (DRT), using the specified role, to
 %% access your AWS account to assist with DDoS attack mitigation during
-%% potential attacks. This enables the DRT to inspect your AWS WAF
-%% configuration and create or update AWS WAF rules and web ACLs.
+%% potential attacks.
 %%
-%% You can associate only one <code>RoleArn</code> with your subscription. If
-%% you submit an <code>AssociateDRTRole</code> request for an account that
-%% already has an associated role, the new <code>RoleArn</code> will replace
-%% the existing <code>RoleArn</code>.
+%% This enables the DRT to inspect your AWS WAF configuration and create or
+%% update AWS WAF rules and web ACLs.
 %%
-%% Prior to making the <code>AssociateDRTRole</code> request, you must attach
-%% the <a
-%% href="https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/service-role/AWSShieldDRTAccessPolicy">AWSShieldDRTAccessPolicy</a>
-%% managed policy to the role you will specify in the request. For more
-%% information see <a href="
-%% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html">Attaching
-%% and Detaching IAM Policies</a>. The role must also trust the service
-%% principal <code> drt.shield.amazonaws.com</code>. For more information,
-%% see <a
-%% href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html">IAM
-%% JSON Policy Elements: Principal</a>.
+%% You can associate only one `RoleArn' with your subscription. If you submit
+%% an `AssociateDRTRole' request for an account that already has an
+%% associated role, the new `RoleArn' will replace the existing `RoleArn'.
+%%
+%% Prior to making the `AssociateDRTRole' request, you must attach the
+%% AWSShieldDRTAccessPolicy managed policy to the role you will specify in
+%% the request. For more information see Attaching and Detaching IAM
+%% Policies. The role must also trust the service principal `
+%% drt.shield.amazonaws.com'. For more information, see IAM JSON Policy
+%% Elements: Principal.
 %%
 %% The DRT will have access only to your AWS WAF and Shield resources. By
 %% submitting this request, you authorize the DRT to inspect your AWS WAF and
@@ -110,17 +104,13 @@ associate_d_r_t_log_bucket(Client, Input, Options)
 %% your behalf. The DRT takes these actions only if explicitly authorized by
 %% you.
 %%
-%% You must have the <code>iam:PassRole</code> permission to make an
-%% <code>AssociateDRTRole</code> request. For more information, see <a
-%% href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html">Granting
-%% a User Permissions to Pass a Role to an AWS Service</a>.
+%% You must have the `iam:PassRole' permission to make an `AssociateDRTRole'
+%% request. For more information, see Granting a User Permissions to Pass a
+%% Role to an AWS Service.
 %%
-%% To use the services of the DRT and make an <code>AssociateDRTRole</code>
-%% request, you must be subscribed to the <a
-%% href="https://aws.amazon.com/premiumsupport/business-support/">Business
-%% Support plan</a> or the <a
-%% href="https://aws.amazon.com/premiumsupport/enterprise-support/">Enterprise
-%% Support plan</a>.
+%% To use the services of the DRT and make an `AssociateDRTRole' request, you
+%% must be subscribed to the Business Support plan or the Enterprise Support
+%% plan.
 associate_d_r_t_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_d_r_t_role(Client, Input, []).
@@ -129,16 +119,15 @@ associate_d_r_t_role(Client, Input, Options)
     request(Client, <<"AssociateDRTRole">>, Input, Options).
 
 %% @doc Adds health-based detection to the Shield Advanced protection for a
-%% resource. Shield Advanced health-based detection uses the health of your
-%% AWS resource to improve responsiveness and accuracy in attack detection
-%% and mitigation.
+%% resource.
+%%
+%% Shield Advanced health-based detection uses the health of your AWS
+%% resource to improve responsiveness and accuracy in attack detection and
+%% mitigation.
 %%
 %% You define the health check in Route 53 and then associate it with your
-%% Shield Advanced protection. For more information, see <a
-%% href="https://docs.aws.amazon.com/waf/latest/developerguide/ddos-overview.html#ddos-advanced-health-check-option">Shield
-%% Advanced Health-Based Detection</a> in the <a
-%% href="https://docs.aws.amazon.com/waf/latest/developerguide/">AWS WAF and
-%% AWS Shield Developer Guide</a>.
+%% Shield Advanced protection. For more information, see Shield Advanced
+%% Health-Based Detection in the AWS WAF and AWS Shield Developer Guide.
 associate_health_check(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_health_check(Client, Input, []).
@@ -147,25 +136,22 @@ associate_health_check(Client, Input, Options)
     request(Client, <<"AssociateHealthCheck">>, Input, Options).
 
 %% @doc Initializes proactive engagement and sets the list of contacts for
-%% the DDoS Response Team (DRT) to use. You must provide at least one phone
-%% number in the emergency contact list.
+%% the DDoS Response Team (DRT) to use.
+%%
+%% You must provide at least one phone number in the emergency contact list.
 %%
 %% After you have initialized proactive engagement using this call, to
 %% disable or enable proactive engagement, use the calls
-%% <code>DisableProactiveEngagement</code> and
-%% <code>EnableProactiveEngagement</code>.
+%% `DisableProactiveEngagement' and `EnableProactiveEngagement'.
 %%
-%% <note> This call defines the list of email addresses and phone numbers
-%% that the DDoS Response Team (DRT) can use to contact you for escalations
-%% to the DRT and to initiate proactive customer support.
+%% This call defines the list of email addresses and phone numbers that the
+%% DDoS Response Team (DRT) can use to contact you for escalations to the DRT
+%% and to initiate proactive customer support.
 %%
 %% The contacts that you provide in the request replace any contacts that
 %% were already defined. If you already have contacts defined and want to use
-%% them, retrieve the list using
-%% <code>DescribeEmergencyContactSettings</code> and then provide it to this
-%% call.
-%%
-%% </note>
+%% them, retrieve the list using `DescribeEmergencyContactSettings' and then
+%% provide it to this call.
 associate_proactive_engagement_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_proactive_engagement_details(Client, Input, []).
@@ -173,20 +159,17 @@ associate_proactive_engagement_details(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateProactiveEngagementDetails">>, Input, Options).
 
-%% @doc Enables AWS Shield Advanced for a specific AWS resource. The resource
-%% can be an Amazon CloudFront distribution, Elastic Load Balancing load
-%% balancer, AWS Global Accelerator accelerator, Elastic IP Address, or an
-%% Amazon Route 53 hosted zone.
+%% @doc Enables AWS Shield Advanced for a specific AWS resource.
+%%
+%% The resource can be an Amazon CloudFront distribution, Elastic Load
+%% Balancing load balancer, AWS Global Accelerator accelerator, Elastic IP
+%% Address, or an Amazon Route 53 hosted zone.
 %%
 %% You can add protection to only a single resource with each
 %% CreateProtection request. If you want to add protection to multiple
-%% resources at once, use the <a
-%% href="https://console.aws.amazon.com/waf/">AWS WAF console</a>. For more
-%% information see <a
-%% href="https://docs.aws.amazon.com/waf/latest/developerguide/getting-started-ddos.html">Getting
-%% Started with AWS Shield Advanced</a> and <a
-%% href="https://docs.aws.amazon.com/waf/latest/developerguide/configure-new-protection.html">Add
-%% AWS Shield Advanced Protection to more AWS Resources</a>.
+%% resources at once, use the AWS WAF console. For more information see
+%% Getting Started with AWS Shield Advanced and Add AWS Shield Advanced
+%% Protection to more AWS Resources.
 create_protection(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_protection(Client, Input, []).
@@ -198,7 +181,7 @@ create_protection(Client, Input, Options)
 %%
 %% When you initally create a subscription, your subscription is set to be
 %% automatically renewed at the end of the existing subscription period. You
-%% can change this by submitting an <code>UpdateSubscription</code> request.
+%% can change this by submitting an `UpdateSubscription' request.
 create_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_subscription(Client, Input, []).
@@ -206,7 +189,7 @@ create_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSubscription">>, Input, Options).
 
-%% @doc Deletes an AWS Shield Advanced <a>Protection</a>.
+%% @doc Deletes an AWS Shield Advanced `Protection'.
 delete_protection(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_protection(Client, Input, []).
@@ -214,9 +197,10 @@ delete_protection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteProtection">>, Input, Options).
 
-%% @doc Removes AWS Shield Advanced from an account. AWS Shield Advanced
-%% requires a 1-year subscription commitment. You cannot delete a
-%% subscription prior to the completion of that commitment.
+%% @doc Removes AWS Shield Advanced from an account.
+%%
+%% AWS Shield Advanced requires a 1-year subscription commitment. You cannot
+%% delete a subscription prior to the completion of that commitment.
 delete_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_subscription(Client, Input, []).
@@ -253,7 +237,7 @@ describe_emergency_contact_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEmergencyContactSettings">>, Input, Options).
 
-%% @doc Lists the details of a <a>Protection</a> object.
+%% @doc Lists the details of a `Protection' object.
 describe_protection(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_protection(Client, Input, []).
@@ -283,15 +267,11 @@ disable_proactive_engagement(Client, Input, Options)
 %% @doc Removes the DDoS Response Team's (DRT) access to the specified Amazon
 %% S3 bucket containing your AWS WAF logs.
 %%
-%% To make a <code>DisassociateDRTLogBucket</code> request, you must be
-%% subscribed to the <a
-%% href="https://aws.amazon.com/premiumsupport/business-support/">Business
-%% Support plan</a> or the <a
-%% href="https://aws.amazon.com/premiumsupport/enterprise-support/">Enterprise
-%% Support plan</a>. However, if you are not subscribed to one of these
-%% support plans, but had been previously and had granted the DRT access to
-%% your account, you can submit a <code>DisassociateDRTLogBucket</code>
-%% request to remove this access.
+%% To make a `DisassociateDRTLogBucket' request, you must be subscribed to
+%% the Business Support plan or the Enterprise Support plan. However, if you
+%% are not subscribed to one of these support plans, but had been previously
+%% and had granted the DRT access to your account, you can submit a
+%% `DisassociateDRTLogBucket' request to remove this access.
 disassociate_d_r_t_log_bucket(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_d_r_t_log_bucket(Client, Input, []).
@@ -301,15 +281,11 @@ disassociate_d_r_t_log_bucket(Client, Input, Options)
 
 %% @doc Removes the DDoS Response Team's (DRT) access to your AWS account.
 %%
-%% To make a <code>DisassociateDRTRole</code> request, you must be subscribed
-%% to the <a
-%% href="https://aws.amazon.com/premiumsupport/business-support/">Business
-%% Support plan</a> or the <a
-%% href="https://aws.amazon.com/premiumsupport/enterprise-support/">Enterprise
-%% Support plan</a>. However, if you are not subscribed to one of these
-%% support plans, but had been previously and had granted the DRT access to
-%% your account, you can submit a <code>DisassociateDRTRole</code> request to
-%% remove this access.
+%% To make a `DisassociateDRTRole' request, you must be subscribed to the
+%% Business Support plan or the Enterprise Support plan. However, if you are
+%% not subscribed to one of these support plans, but had been previously and
+%% had granted the DRT access to your account, you can submit a
+%% `DisassociateDRTRole' request to remove this access.
 disassociate_d_r_t_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_d_r_t_role(Client, Input, []).
@@ -318,16 +294,16 @@ disassociate_d_r_t_role(Client, Input, Options)
     request(Client, <<"DisassociateDRTRole">>, Input, Options).
 
 %% @doc Removes health-based detection from the Shield Advanced protection
-%% for a resource. Shield Advanced health-based detection uses the health of
-%% your AWS resource to improve responsiveness and accuracy in attack
-%% detection and mitigation.
+%% for a resource.
+%%
+%% Shield Advanced health-based detection uses the health of your AWS
+%% resource to improve responsiveness and accuracy in attack detection and
+%% mitigation.
 %%
 %% You define the health check in Route 53 and then associate or disassociate
-%% it with your Shield Advanced protection. For more information, see <a
-%% href="https://docs.aws.amazon.com/waf/latest/developerguide/ddos-overview.html#ddos-advanced-health-check-option">Shield
-%% Advanced Health-Based Detection</a> in the <a
-%% href="https://docs.aws.amazon.com/waf/latest/developerguide/">AWS WAF and
-%% AWS Shield Developer Guide</a>.
+%% it with your Shield Advanced protection. For more information, see Shield
+%% Advanced Health-Based Detection in the AWS WAF and AWS Shield Developer
+%% Guide.
 disassociate_health_check(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_health_check(Client, Input, []).
@@ -345,8 +321,7 @@ enable_proactive_engagement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableProactiveEngagement">>, Input, Options).
 
-%% @doc Returns the <code>SubscriptionState</code>, either
-%% <code>Active</code> or <code>Inactive</code>.
+%% @doc Returns the `SubscriptionState', either `Active' or `Inactive'.
 get_subscription_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_subscription_state(Client, Input, []).
@@ -363,7 +338,7 @@ list_attacks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAttacks">>, Input, Options).
 
-%% @doc Lists all <a>Protection</a> objects for the account.
+%% @doc Lists all `Protection' objects for the account.
 list_protections(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_protections(Client, Input, []).
@@ -382,8 +357,10 @@ update_emergency_contact_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateEmergencyContactSettings">>, Input, Options).
 
-%% @doc Updates the details of an existing subscription. Only enter values
-%% for parameters you want to change. Empty parameters are not updated.
+%% @doc Updates the details of an existing subscription.
+%%
+%% Only enter values for parameters you want to change. Empty parameters are
+%% not updated.
 update_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_subscription(Client, Input, []).
@@ -434,6 +411,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
 handle_response({error, Reason}) ->
     {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{endpoint := Endpoint}) ->

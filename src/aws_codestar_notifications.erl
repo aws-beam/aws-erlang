@@ -3,55 +3,54 @@
 
 %% @doc This AWS CodeStar Notifications API Reference provides descriptions
 %% and usage examples of the operations and data types for the AWS CodeStar
-%% Notifications API. You can use the AWS CodeStar Notifications API to work
-%% with the following objects:
+%% Notifications API.
+%%
+%% You can use the AWS CodeStar Notifications API to work with the following
+%% objects:
 %%
 %% Notification rules, by calling the following:
 %%
-%% <ul> <li> <a>CreateNotificationRule</a>, which creates a notification rule
-%% for a resource in your account.
+%% <ul> <li> `CreateNotificationRule', which creates a notification rule for
+%% a resource in your account.
 %%
-%% </li> <li> <a>DeleteNotificationRule</a>, which deletes a notification
-%% rule.
+%% </li> <li> `DeleteNotificationRule', which deletes a notification rule.
 %%
-%% </li> <li> <a>DescribeNotificationRule</a>, which provides information
-%% about a notification rule.
+%% </li> <li> `DescribeNotificationRule', which provides information about a
+%% notification rule.
 %%
-%% </li> <li> <a>ListNotificationRules</a>, which lists the notification
-%% rules associated with your account.
+%% </li> <li> `ListNotificationRules', which lists the notification rules
+%% associated with your account.
 %%
-%% </li> <li> <a>UpdateNotificationRule</a>, which changes the name, events,
-%% or targets associated with a notification rule.
+%% </li> <li> `UpdateNotificationRule', which changes the name, events, or
+%% targets associated with a notification rule.
 %%
-%% </li> <li> <a>Subscribe</a>, which subscribes a target to a notification
-%% rule.
+%% </li> <li> `Subscribe', which subscribes a target to a notification rule.
 %%
-%% </li> <li> <a>Unsubscribe</a>, which removes a target from a notification
-%% rule.
+%% </li> <li> `Unsubscribe', which removes a target from a notification rule.
 %%
 %% </li> </ul> Targets, by calling the following:
 %%
-%% <ul> <li> <a>DeleteTarget</a>, which removes a notification rule target
-%% (SNS topic) from a notification rule.
+%% <ul> <li> `DeleteTarget', which removes a notification rule target (SNS
+%% topic) from a notification rule.
 %%
-%% </li> <li> <a>ListTargets</a>, which lists the targets associated with a
+%% </li> <li> `ListTargets', which lists the targets associated with a
 %% notification rule.
 %%
 %% </li> </ul> Events, by calling the following:
 %%
-%% <ul> <li> <a>ListEventTypes</a>, which lists the event types you can
-%% include in a notification rule.
+%% <ul> <li> `ListEventTypes', which lists the event types you can include in
+%% a notification rule.
 %%
 %% </li> </ul> Tags, by calling the following:
 %%
-%% <ul> <li> <a>ListTagsForResource</a>, which lists the tags already
-%% associated with a notification rule in your account.
+%% <ul> <li> `ListTagsForResource', which lists the tags already associated
+%% with a notification rule in your account.
 %%
-%% </li> <li> <a>TagResource</a>, which associates a tag you provide with a
+%% </li> <li> `TagResource', which associates a tag you provide with a
 %% notification rule in your account.
 %%
-%% </li> <li> <a>UntagResource</a>, which removes a tag from a notification
-%% rule in your account.
+%% </li> <li> `UntagResource', which removes a tag from a notification rule
+%% in your account.
 %%
 %% </li> </ul> For information about how to use AWS CodeStar Notifications,
 %% see link in the CodeStarNotifications User Guide.
@@ -90,9 +89,10 @@
 %% API
 %%====================================================================
 
-%% @doc Creates a notification rule for a resource. The rule specifies the
-%% events you want notifications about and the targets (such as SNS topics)
-%% where you want to receive them.
+%% @doc Creates a notification rule for a resource.
+%%
+%% The rule specifies the events you want notifications about and the targets
+%% (such as SNS topics) where you want to receive them.
 create_notification_rule(Client, Input) ->
     create_notification_rule(Client, Input, []).
 create_notification_rule(Client, Input0, Options) ->
@@ -290,14 +290,13 @@ untag_resource(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a notification rule for a resource. You can change the events
-%% that trigger the notification rule, the status of the rule, and the
-%% targets that receive the notifications.
+%% @doc Updates a notification rule for a resource.
 %%
-%% <note> To add or remove tags for a notification rule, you must use
-%% <a>TagResource</a> and <a>UntagResource</a>.
+%% You can change the events that trigger the notification rule, the status
+%% of the rule, and the targets that receive the notifications.
 %%
-%% </note>
+%% To add or remove tags for a notification rule, you must use `TagResource'
+%% and `UntagResource'.
 update_notification_rule(Client, Input) ->
     update_notification_rule(Client, Input, []).
 update_notification_rule(Client, Input0, Options) ->
@@ -359,6 +358,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

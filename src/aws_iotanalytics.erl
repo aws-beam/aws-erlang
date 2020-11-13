@@ -2,10 +2,12 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc AWS IoT Analytics allows you to collect large amounts of device data,
-%% process messages, and store them. You can then query the data and run
-%% sophisticated analytics on it. AWS IoT Analytics enables advanced data
-%% exploration through integration with Jupyter Notebooks and data
-%% visualization through integration with Amazon QuickSight.
+%% process messages, and store them.
+%%
+%% You can then query the data and run sophisticated analytics on it. AWS IoT
+%% Analytics enables advanced data exploration through integration with
+%% Jupyter Notebooks and data visualization through integration with Amazon
+%% QuickSight.
 %%
 %% Traditional analytics and business intelligence tools are designed to
 %% process structured data. IoT data often comes from devices that record
@@ -124,7 +126,7 @@ cancel_pipeline_reprocessing(Client, PipelineName, ReprocessingId, Input) ->
     cancel_pipeline_reprocessing(Client, PipelineName, ReprocessingId, Input, []).
 cancel_pipeline_reprocessing(Client, PipelineName, ReprocessingId, Input0, Options) ->
     Method = delete,
-    Path = ["/pipelines/", http_uri:encode(PipelineName), "/reprocessing/", http_uri:encode(ReprocessingId), ""],
+    Path = ["/pipelines/", aws_util:encode_uri(PipelineName), "/reprocessing/", aws_util:encode_uri(ReprocessingId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -135,9 +137,10 @@ cancel_pipeline_reprocessing(Client, PipelineName, ReprocessingId, Input0, Optio
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a channel. A channel collects data from an MQTT topic and
-%% archives the raw, unprocessed messages before publishing the data to a
-%% pipeline.
+%% @doc Creates a channel.
+%%
+%% A channel collects data from an MQTT topic and archives the raw,
+%% unprocessed messages before publishing the data to a pipeline.
 create_channel(Client, Input) ->
     create_channel(Client, Input, []).
 create_channel(Client, Input0, Options) ->
@@ -153,11 +156,13 @@ create_channel(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a data set. A data set stores data retrieved from a data
-%% store by applying a "queryAction" (a SQL query) or a "containerAction"
-%% (executing a containerized application). This operation creates the
-%% skeleton of a data set. The data set can be populated manually by calling
-%% "CreateDatasetContent" or automatically according to a "trigger" you
+%% @doc Creates a dataset.
+%%
+%% A dataset stores data retrieved from a data store by applying a
+%% `queryAction' (a SQL query) or a `containerAction' (executing a
+%% containerized application). This operation creates the skeleton of a
+%% dataset. The dataset can be populated manually by calling
+%% `CreateDatasetContent' or automatically according to a trigger you
 %% specify.
 create_dataset(Client, Input) ->
     create_dataset(Client, Input, []).
@@ -174,13 +179,13 @@ create_dataset(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates the content of a data set by applying a "queryAction" (a SQL
-%% query) or a "containerAction" (executing a containerized application).
+%% @doc Creates the content of a data set by applying a `queryAction' (a SQL
+%% query) or a `containerAction' (executing a containerized application).
 create_dataset_content(Client, DatasetName, Input) ->
     create_dataset_content(Client, DatasetName, Input, []).
 create_dataset_content(Client, DatasetName, Input0, Options) ->
     Method = post,
-    Path = ["/datasets/", http_uri:encode(DatasetName), "/content"],
+    Path = ["/datasets/", aws_util:encode_uri(DatasetName), "/content"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -207,11 +212,12 @@ create_datastore(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a pipeline. A pipeline consumes messages from a channel and
-%% allows you to process the messages before storing them in a data store.
-%% You must specify both a <code>channel</code> and a <code>datastore</code>
-%% activity and, optionally, as many as 23 additional activities in the
-%% <code>pipelineActivities</code> array.
+%% @doc Creates a pipeline.
+%%
+%% A pipeline consumes messages from a channel and allows you to process the
+%% messages before storing them in a data store. You must specify both a
+%% `channel' and a `datastore' activity and, optionally, as many as 23
+%% additional activities in the `pipelineActivities' array.
 create_pipeline(Client, Input) ->
     create_pipeline(Client, Input, []).
 create_pipeline(Client, Input0, Options) ->
@@ -232,7 +238,7 @@ delete_channel(Client, ChannelName, Input) ->
     delete_channel(Client, ChannelName, Input, []).
 delete_channel(Client, ChannelName, Input0, Options) ->
     Method = delete,
-    Path = ["/channels/", http_uri:encode(ChannelName), ""],
+    Path = ["/channels/", aws_util:encode_uri(ChannelName), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -243,15 +249,15 @@ delete_channel(Client, ChannelName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the specified data set.
+%% @doc Deletes the specified dataset.
 %%
-%% You do not have to delete the content of the data set before you perform
+%% You do not have to delete the content of the dataset before you perform
 %% this operation.
 delete_dataset(Client, DatasetName, Input) ->
     delete_dataset(Client, DatasetName, Input, []).
 delete_dataset(Client, DatasetName, Input0, Options) ->
     Method = delete,
-    Path = ["/datasets/", http_uri:encode(DatasetName), ""],
+    Path = ["/datasets/", aws_util:encode_uri(DatasetName), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -262,12 +268,12 @@ delete_dataset(Client, DatasetName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the content of the specified data set.
+%% @doc Deletes the content of the specified dataset.
 delete_dataset_content(Client, DatasetName, Input) ->
     delete_dataset_content(Client, DatasetName, Input, []).
 delete_dataset_content(Client, DatasetName, Input0, Options) ->
     Method = delete,
-    Path = ["/datasets/", http_uri:encode(DatasetName), "/content"],
+    Path = ["/datasets/", aws_util:encode_uri(DatasetName), "/content"],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -284,7 +290,7 @@ delete_datastore(Client, DatastoreName, Input) ->
     delete_datastore(Client, DatastoreName, Input, []).
 delete_datastore(Client, DatastoreName, Input0, Options) ->
     Method = delete,
-    Path = ["/datastores/", http_uri:encode(DatastoreName), ""],
+    Path = ["/datastores/", aws_util:encode_uri(DatastoreName), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -300,7 +306,7 @@ delete_pipeline(Client, PipelineName, Input) ->
     delete_pipeline(Client, PipelineName, Input, []).
 delete_pipeline(Client, PipelineName, Input0, Options) ->
     Method = delete,
-    Path = ["/pipelines/", http_uri:encode(PipelineName), ""],
+    Path = ["/pipelines/", aws_util:encode_uri(PipelineName), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -317,7 +323,7 @@ describe_channel(Client, ChannelName, IncludeStatistics)
     describe_channel(Client, ChannelName, IncludeStatistics, []).
 describe_channel(Client, ChannelName, IncludeStatistics, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/channels/", http_uri:encode(ChannelName), ""],
+    Path = ["/channels/", aws_util:encode_uri(ChannelName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -330,13 +336,13 @@ describe_channel(Client, ChannelName, IncludeStatistics, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves information about a data set.
+%% @doc Retrieves information about a dataset.
 describe_dataset(Client, DatasetName)
   when is_map(Client) ->
     describe_dataset(Client, DatasetName, []).
 describe_dataset(Client, DatasetName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/datasets/", http_uri:encode(DatasetName), ""],
+    Path = ["/datasets/", aws_util:encode_uri(DatasetName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -351,7 +357,7 @@ describe_datastore(Client, DatastoreName, IncludeStatistics)
     describe_datastore(Client, DatastoreName, IncludeStatistics, []).
 describe_datastore(Client, DatastoreName, IncludeStatistics, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/datastores/", http_uri:encode(DatastoreName), ""],
+    Path = ["/datastores/", aws_util:encode_uri(DatastoreName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -386,7 +392,7 @@ describe_pipeline(Client, PipelineName)
     describe_pipeline(Client, PipelineName, []).
 describe_pipeline(Client, PipelineName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/pipelines/", http_uri:encode(PipelineName), ""],
+    Path = ["/pipelines/", aws_util:encode_uri(PipelineName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -395,13 +401,13 @@ describe_pipeline(Client, PipelineName, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves the contents of a data set as pre-signed URIs.
+%% @doc Retrieves the contents of a data set as presigned URIs.
 get_dataset_content(Client, DatasetName, VersionId)
   when is_map(Client) ->
     get_dataset_content(Client, DatasetName, VersionId, []).
 get_dataset_content(Client, DatasetName, VersionId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/datasets/", http_uri:encode(DatasetName), "/content"],
+    Path = ["/datasets/", aws_util:encode_uri(DatasetName), "/content"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -440,7 +446,7 @@ list_dataset_contents(Client, DatasetName, MaxResults, NextToken, ScheduledBefor
     list_dataset_contents(Client, DatasetName, MaxResults, NextToken, ScheduledBefore, ScheduledOnOrAfter, []).
 list_dataset_contents(Client, DatasetName, MaxResults, NextToken, ScheduledBefore, ScheduledOnOrAfter, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/datasets/", http_uri:encode(DatasetName), "/contents"],
+    Path = ["/datasets/", aws_util:encode_uri(DatasetName), "/contents"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -516,7 +522,7 @@ list_pipelines(Client, MaxResults, NextToken, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the tags (metadata) which you have assigned to the resource.
+%% @doc Lists the tags (metadata) that you have assigned to the resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, []).
@@ -537,11 +543,11 @@ list_tags_for_resource(Client, ResourceArn, Options)
 
 %% @doc Sets or updates the AWS IoT Analytics logging options.
 %%
-%% Note that if you update the value of any <code>loggingOptions</code>
-%% field, it takes up to one minute for the change to take effect. Also, if
-%% you change the policy attached to the role you specified in the roleArn
-%% field (for example, to correct an invalid policy) it takes up to 5 minutes
-%% for that change to take effect.
+%% If you update the value of any `loggingOptions' field, it takes up to one
+%% minute for the change to take effect. Also, if you change the policy
+%% attached to the role you specified in the `roleArn' field (for example, to
+%% correct an invalid policy), it takes up to five minutes for that change to
+%% take effect.
 put_logging_options(Client, Input) ->
     put_logging_options(Client, Input, []).
 put_logging_options(Client, Input0, Options) ->
@@ -575,13 +581,15 @@ run_pipeline_activity(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a sample of messages from the specified channel ingested
-%% during the specified timeframe. Up to 10 messages can be retrieved.
+%% during the specified timeframe.
+%%
+%% Up to 10 messages can be retrieved.
 sample_channel_data(Client, ChannelName, EndTime, MaxMessages, StartTime)
   when is_map(Client) ->
     sample_channel_data(Client, ChannelName, EndTime, MaxMessages, StartTime, []).
 sample_channel_data(Client, ChannelName, EndTime, MaxMessages, StartTime, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/channels/", http_uri:encode(ChannelName), "/sample"],
+    Path = ["/channels/", aws_util:encode_uri(ChannelName), "/sample"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -601,7 +609,7 @@ start_pipeline_reprocessing(Client, PipelineName, Input) ->
     start_pipeline_reprocessing(Client, PipelineName, Input, []).
 start_pipeline_reprocessing(Client, PipelineName, Input0, Options) ->
     Method = post,
-    Path = ["/pipelines/", http_uri:encode(PipelineName), "/reprocessing"],
+    Path = ["/pipelines/", aws_util:encode_uri(PipelineName), "/reprocessing"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -612,8 +620,9 @@ start_pipeline_reprocessing(Client, PipelineName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds to or modifies the tags of the given resource. Tags are metadata
-%% which can be used to manage a resource.
+%% @doc Adds to or modifies the tags of the given resource.
+%%
+%% Tags are metadata that can be used to manage a resource.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 tag_resource(Client, Input0, Options) ->
@@ -653,7 +662,7 @@ update_channel(Client, ChannelName, Input) ->
     update_channel(Client, ChannelName, Input, []).
 update_channel(Client, ChannelName, Input0, Options) ->
     Method = put,
-    Path = ["/channels/", http_uri:encode(ChannelName), ""],
+    Path = ["/channels/", aws_util:encode_uri(ChannelName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -669,7 +678,7 @@ update_dataset(Client, DatasetName, Input) ->
     update_dataset(Client, DatasetName, Input, []).
 update_dataset(Client, DatasetName, Input0, Options) ->
     Method = put,
-    Path = ["/datasets/", http_uri:encode(DatasetName), ""],
+    Path = ["/datasets/", aws_util:encode_uri(DatasetName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -685,7 +694,7 @@ update_datastore(Client, DatastoreName, Input) ->
     update_datastore(Client, DatastoreName, Input, []).
 update_datastore(Client, DatastoreName, Input0, Options) ->
     Method = put,
-    Path = ["/datastores/", http_uri:encode(DatastoreName), ""],
+    Path = ["/datastores/", aws_util:encode_uri(DatastoreName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -696,15 +705,16 @@ update_datastore(Client, DatastoreName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the settings of a pipeline. You must specify both a
-%% <code>channel</code> and a <code>datastore</code> activity and,
+%% @doc Updates the settings of a pipeline.
+%%
+%% You must specify both a `channel' and a `datastore' activity and,
 %% optionally, as many as 23 additional activities in the
-%% <code>pipelineActivities</code> array.
+%% `pipelineActivities' array.
 update_pipeline(Client, PipelineName, Input) ->
     update_pipeline(Client, PipelineName, Input, []).
 update_pipeline(Client, PipelineName, Input0, Options) ->
     Method = put,
-    Path = ["/pipelines/", http_uri:encode(PipelineName), ""],
+    Path = ["/pipelines/", aws_util:encode_uri(PipelineName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -761,6 +771,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

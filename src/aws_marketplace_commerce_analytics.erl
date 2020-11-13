@@ -17,9 +17,10 @@
 
 %% @doc Given a data set type and data set publication date, asynchronously
 %% publishes the requested data set to the specified S3 bucket and notifies
-%% the specified SNS topic once the data is available. Returns a unique
-%% request identifier that can be used to correlate requests with
-%% notifications from the SNS topic. Data sets will be published in
+%% the specified SNS topic once the data is available.
+%%
+%% Returns a unique request identifier that can be used to correlate requests
+%% with notifications from the SNS topic. Data sets will be published in
 %% comma-separated values (CSV) format with the file name
 %% {data_set_type}_YYYY-MM-DD.csv. If a file with the same name already
 %% exists (e.g. if the same data set is requested twice), the original file
@@ -36,9 +37,10 @@ generate_data_set(Client, Input, Options)
 
 %% @doc Given a data set type and a from date, asynchronously publishes the
 %% requested customer support data to the specified S3 bucket and notifies
-%% the specified SNS topic once the data is available. Returns a unique
-%% request identifier that can be used to correlate requests with
-%% notifications from the SNS topic. Data sets will be published in
+%% the specified SNS topic once the data is available.
+%%
+%% Returns a unique request identifier that can be used to correlate requests
+%% with notifications from the SNS topic. Data sets will be published in
 %% comma-separated values (CSV) format with the file name
 %% {data_set_type}_YYYY-MM-DD'T'HH-mm-ss'Z'.csv. If a file with the same name
 %% already exists (e.g. if the same data set is requested twice), the
@@ -95,6 +97,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
 handle_response({error, Reason}) ->
     {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

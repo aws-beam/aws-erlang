@@ -3,9 +3,10 @@
 
 %% @doc Amazon Elastic Kubernetes Service (Amazon EKS) is a managed service
 %% that makes it easy for you to run Kubernetes on AWS without needing to
-%% stand up or maintain your own Kubernetes control plane. Kubernetes is an
-%% open-source system for automating the deployment, scaling, and management
-%% of containerized applications.
+%% stand up or maintain your own Kubernetes control plane.
+%%
+%% Kubernetes is an open-source system for automating the deployment,
+%% scaling, and management of containerized applications.
 %%
 %% Amazon EKS runs up-to-date versions of the open-source Kubernetes
 %% software, so you can use all the existing plugins and tooling from the
@@ -68,53 +69,44 @@
 %% @doc Creates an Amazon EKS control plane.
 %%
 %% The Amazon EKS control plane consists of control plane instances that run
-%% the Kubernetes software, such as <code>etcd</code> and the API server. The
-%% control plane runs in an account managed by AWS, and the Kubernetes API is
-%% exposed via the Amazon EKS API server endpoint. Each Amazon EKS cluster
-%% control plane is single-tenant and unique and runs on its own set of
-%% Amazon EC2 instances.
+%% the Kubernetes software, such as `etcd' and the API server. The control
+%% plane runs in an account managed by AWS, and the Kubernetes API is exposed
+%% via the Amazon EKS API server endpoint. Each Amazon EKS cluster control
+%% plane is single-tenant and unique and runs on its own set of Amazon EC2
+%% instances.
 %%
 %% The cluster control plane is provisioned across multiple Availability
 %% Zones and fronted by an Elastic Load Balancing Network Load Balancer.
 %% Amazon EKS also provisions elastic network interfaces in your VPC subnets
 %% to provide connectivity from the control plane instances to the worker
-%% nodes (for example, to support <code>kubectl exec</code>,
-%% <code>logs</code>, and <code>proxy</code> data flows).
+%% nodes (for example, to support `kubectl exec', `logs', and `proxy' data
+%% flows).
 %%
 %% Amazon EKS worker nodes run in your AWS account and connect to your
 %% cluster's control plane via the Kubernetes API server endpoint and a
 %% certificate file that is created for your cluster.
 %%
-%% You can use the <code>endpointPublicAccess</code> and
-%% <code>endpointPrivateAccess</code> parameters to enable or disable public
-%% and private access to your cluster's Kubernetes API server endpoint. By
-%% default, public access is enabled, and private access is disabled. For
-%% more information, see <a
-%% href="https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html">Amazon
-%% EKS Cluster Endpoint Access Control</a> in the <i> <i>Amazon EKS User
-%% Guide</i> </i>.
+%% You can use the `endpointPublicAccess' and `endpointPrivateAccess'
+%% parameters to enable or disable public and private access to your
+%% cluster's Kubernetes API server endpoint. By default, public access is
+%% enabled, and private access is disabled. For more information, see Amazon
+%% EKS Cluster Endpoint Access Control in the Amazon EKS User Guide .
 %%
-%% You can use the <code>logging</code> parameter to enable or disable
-%% exporting the Kubernetes control plane logs for your cluster to CloudWatch
-%% Logs. By default, cluster control plane logs aren't exported to CloudWatch
-%% Logs. For more information, see <a
-%% href="https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html">Amazon
-%% EKS Cluster Control Plane Logs</a> in the <i> <i>Amazon EKS User Guide</i>
-%% </i>.
+%% You can use the `logging' parameter to enable or disable exporting the
+%% Kubernetes control plane logs for your cluster to CloudWatch Logs. By
+%% default, cluster control plane logs aren't exported to CloudWatch Logs.
+%% For more information, see Amazon EKS Cluster Control Plane Logs in the
+%% Amazon EKS User Guide .
 %%
-%% <note> CloudWatch Logs ingestion, archive storage, and data scanning rates
-%% apply to exported control plane logs. For more information, see <a
-%% href="http://aws.amazon.com/cloudwatch/pricing/">Amazon CloudWatch
-%% Pricing</a>.
+%% CloudWatch Logs ingestion, archive storage, and data scanning rates apply
+%% to exported control plane logs. For more information, see Amazon
+%% CloudWatch Pricing.
 %%
-%% </note> Cluster creation typically takes between 10 and 15 minutes. After
-%% you create an Amazon EKS cluster, you must configure your Kubernetes
-%% tooling to communicate with the API server and launch worker nodes into
-%% your cluster. For more information, see <a
-%% href="https://docs.aws.amazon.com/eks/latest/userguide/managing-auth.html">Managing
-%% Cluster Authentication</a> and <a
-%% href="https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html">Launching
-%% Amazon EKS Worker Nodes</a> in the <i>Amazon EKS User Guide</i>.
+%% Cluster creation typically takes between 10 and 15 minutes. After you
+%% create an Amazon EKS cluster, you must configure your Kubernetes tooling
+%% to communicate with the API server and launch worker nodes into your
+%% cluster. For more information, see Managing Cluster Authentication and
+%% Launching Amazon EKS Worker Nodes in the Amazon EKS User Guide.
 create_cluster(Client, Input) ->
     create_cluster(Client, Input, []).
 create_cluster(Client, Input0, Options) ->
@@ -130,9 +122,10 @@ create_cluster(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an AWS Fargate profile for your Amazon EKS cluster. You must
-%% have at least one Fargate profile in a cluster to be able to run pods on
-%% Fargate.
+%% @doc Creates an AWS Fargate profile for your Amazon EKS cluster.
+%%
+%% You must have at least one Fargate profile in a cluster to be able to run
+%% pods on Fargate.
 %%
 %% The Fargate profile allows an administrator to declare which pods run on
 %% Fargate and specify which pods run on which Fargate profile. This
@@ -145,33 +138,29 @@ create_cluster(Client, Input0, Options) ->
 %%
 %% When you create a Fargate profile, you must specify a pod execution role
 %% to use with the pods that are scheduled with the profile. This role is
-%% added to the cluster's Kubernetes <a
-%% href="https://kubernetes.io/docs/admin/authorization/rbac/">Role Based
-%% Access Control</a> (RBAC) for authorization so that the
-%% <code>kubelet</code> that is running on the Fargate infrastructure can
-%% register with your Amazon EKS cluster so that it can appear in your
-%% cluster as a node. The pod execution role also provides IAM permissions to
-%% the Fargate infrastructure to allow read access to Amazon ECR image
-%% repositories. For more information, see <a
-%% href="https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html">Pod
-%% Execution Role</a> in the <i>Amazon EKS User Guide</i>.
+%% added to the cluster's Kubernetes Role Based Access Control (RBAC) for
+%% authorization so that the `kubelet' that is running on the Fargate
+%% infrastructure can register with your Amazon EKS cluster so that it can
+%% appear in your cluster as a node. The pod execution role also provides IAM
+%% permissions to the Fargate infrastructure to allow read access to Amazon
+%% ECR image repositories. For more information, see Pod Execution Role in
+%% the Amazon EKS User Guide.
 %%
 %% Fargate profiles are immutable. However, you can create a new updated
 %% profile to replace an existing profile and then delete the original after
 %% the updated profile has finished creating.
 %%
-%% If any Fargate profiles in a cluster are in the <code>DELETING</code>
-%% status, you must wait for that Fargate profile to finish deleting before
-%% you can create any other profiles in that cluster.
+%% If any Fargate profiles in a cluster are in the `DELETING' status, you
+%% must wait for that Fargate profile to finish deleting before you can
+%% create any other profiles in that cluster.
 %%
-%% For more information, see <a
-%% href="https://docs.aws.amazon.com/eks/latest/userguide/fargate-profile.html">AWS
-%% Fargate Profile</a> in the <i>Amazon EKS User Guide</i>.
+%% For more information, see AWS Fargate Profile in the Amazon EKS User
+%% Guide.
 create_fargate_profile(Client, ClusterName, Input) ->
     create_fargate_profile(Client, ClusterName, Input, []).
 create_fargate_profile(Client, ClusterName, Input0, Options) ->
     Method = post,
-    Path = ["/clusters/", http_uri:encode(ClusterName), "/fargate-profiles"],
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/fargate-profiles"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -182,23 +171,25 @@ create_fargate_profile(Client, ClusterName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a managed worker node group for an Amazon EKS cluster. You
-%% can only create a node group for your cluster that is equal to the current
-%% Kubernetes version for the cluster. All node groups are created with the
-%% latest AMI release version for the respective minor Kubernetes version of
-%% the cluster.
+%% @doc Creates a managed worker node group for an Amazon EKS cluster.
+%%
+%% You can only create a node group for your cluster that is equal to the
+%% current Kubernetes version for the cluster. All node groups are created
+%% with the latest AMI release version for the respective minor Kubernetes
+%% version of the cluster, unless you deploy a custom AMI using a launch
+%% template. For more information about using launch templates, see Launch
+%% template support.
 %%
 %% An Amazon EKS managed node group is an Amazon EC2 Auto Scaling group and
 %% associated Amazon EC2 instances that are managed by AWS for an Amazon EKS
 %% cluster. Each node group uses a version of the Amazon EKS-optimized Amazon
-%% Linux 2 AMI. For more information, see <a
-%% href="https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html">Managed
-%% Node Groups</a> in the <i>Amazon EKS User Guide</i>.
+%% Linux 2 AMI. For more information, see Managed Node Groups in the Amazon
+%% EKS User Guide.
 create_nodegroup(Client, ClusterName, Input) ->
     create_nodegroup(Client, ClusterName, Input, []).
 create_nodegroup(Client, ClusterName, Input0, Options) ->
     Method = post,
-    Path = ["/clusters/", http_uri:encode(ClusterName), "/node-groups"],
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/node-groups"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -215,18 +206,17 @@ create_nodegroup(Client, ClusterName, Input0, Options) ->
 %% load balancer, you must delete those services before deleting the cluster
 %% so that the load balancers are deleted properly. Otherwise, you can have
 %% orphaned resources in your VPC that prevent you from being able to delete
-%% the VPC. For more information, see <a
-%% href="https://docs.aws.amazon.com/eks/latest/userguide/delete-cluster.html">Deleting
-%% a Cluster</a> in the <i>Amazon EKS User Guide</i>.
+%% the VPC. For more information, see Deleting a Cluster in the Amazon EKS
+%% User Guide.
 %%
 %% If you have managed node groups or Fargate profiles attached to the
 %% cluster, you must delete them first. For more information, see
-%% <a>DeleteNodegroup</a> and <a>DeleteFargateProfile</a>.
+%% `DeleteNodegroup' and `DeleteFargateProfile'.
 delete_cluster(Client, Name, Input) ->
     delete_cluster(Client, Name, Input, []).
 delete_cluster(Client, Name, Input0, Options) ->
     Method = delete,
-    Path = ["/clusters/", http_uri:encode(Name), ""],
+    Path = ["/clusters/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -245,14 +235,14 @@ delete_cluster(Client, Name, Input0, Options) ->
 %% longer match any Fargate profiles, then they are not scheduled on Fargate
 %% and they may remain in a pending state.
 %%
-%% Only one Fargate profile in a cluster can be in the <code>DELETING</code>
-%% status at a time. You must wait for a Fargate profile to finish deleting
-%% before you can delete any other profiles in that cluster.
+%% Only one Fargate profile in a cluster can be in the `DELETING' status at a
+%% time. You must wait for a Fargate profile to finish deleting before you
+%% can delete any other profiles in that cluster.
 delete_fargate_profile(Client, ClusterName, FargateProfileName, Input) ->
     delete_fargate_profile(Client, ClusterName, FargateProfileName, Input, []).
 delete_fargate_profile(Client, ClusterName, FargateProfileName, Input0, Options) ->
     Method = delete,
-    Path = ["/clusters/", http_uri:encode(ClusterName), "/fargate-profiles/", http_uri:encode(FargateProfileName), ""],
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/fargate-profiles/", aws_util:encode_uri(FargateProfileName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -268,7 +258,7 @@ delete_nodegroup(Client, ClusterName, NodegroupName, Input) ->
     delete_nodegroup(Client, ClusterName, NodegroupName, Input, []).
 delete_nodegroup(Client, ClusterName, NodegroupName, Input0, Options) ->
     Method = delete,
-    Path = ["/clusters/", http_uri:encode(ClusterName), "/node-groups/", http_uri:encode(NodegroupName), ""],
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/node-groups/", aws_util:encode_uri(NodegroupName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -282,22 +272,18 @@ delete_nodegroup(Client, ClusterName, NodegroupName, Input0, Options) ->
 %% @doc Returns descriptive information about an Amazon EKS cluster.
 %%
 %% The API server endpoint and certificate authority data returned by this
-%% operation are required for <code>kubelet</code> and <code>kubectl</code>
-%% to communicate with your Kubernetes API server. For more information, see
-%% <a
-%% href="https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html">Create
-%% a kubeconfig for Amazon EKS</a>.
+%% operation are required for `kubelet' and `kubectl' to communicate with
+%% your Kubernetes API server. For more information, see Create a kubeconfig
+%% for Amazon EKS.
 %%
-%% <note> The API server endpoint and certificate authority data aren't
-%% available until the cluster reaches the <code>ACTIVE</code> state.
-%%
-%% </note>
+%% The API server endpoint and certificate authority data aren't available
+%% until the cluster reaches the `ACTIVE' state.
 describe_cluster(Client, Name)
   when is_map(Client) ->
     describe_cluster(Client, Name, []).
 describe_cluster(Client, Name, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/clusters/", http_uri:encode(Name), ""],
+    Path = ["/clusters/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -312,7 +298,7 @@ describe_fargate_profile(Client, ClusterName, FargateProfileName)
     describe_fargate_profile(Client, ClusterName, FargateProfileName, []).
 describe_fargate_profile(Client, ClusterName, FargateProfileName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/clusters/", http_uri:encode(ClusterName), "/fargate-profiles/", http_uri:encode(FargateProfileName), ""],
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/fargate-profiles/", aws_util:encode_uri(FargateProfileName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -327,7 +313,7 @@ describe_nodegroup(Client, ClusterName, NodegroupName)
     describe_nodegroup(Client, ClusterName, NodegroupName, []).
 describe_nodegroup(Client, ClusterName, NodegroupName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/clusters/", http_uri:encode(ClusterName), "/node-groups/", http_uri:encode(NodegroupName), ""],
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/node-groups/", aws_util:encode_uri(NodegroupName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -339,15 +325,15 @@ describe_nodegroup(Client, ClusterName, NodegroupName, Options)
 %% @doc Returns descriptive information about an update against your Amazon
 %% EKS cluster or associated managed node group.
 %%
-%% When the status of the update is <code>Succeeded</code>, the update is
-%% complete. If an update fails, the status is <code>Failed</code>, and an
-%% error detail explains the reason for the failure.
+%% When the status of the update is `Succeeded', the update is complete. If
+%% an update fails, the status is `Failed', and an error detail explains the
+%% reason for the failure.
 describe_update(Client, Name, UpdateId, NodegroupName)
   when is_map(Client) ->
     describe_update(Client, Name, UpdateId, NodegroupName, []).
 describe_update(Client, Name, UpdateId, NodegroupName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/clusters/", http_uri:encode(Name), "/updates/", http_uri:encode(UpdateId), ""],
+    Path = ["/clusters/", aws_util:encode_uri(Name), "/updates/", aws_util:encode_uri(UpdateId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -388,7 +374,7 @@ list_fargate_profiles(Client, ClusterName, MaxResults, NextToken)
     list_fargate_profiles(Client, ClusterName, MaxResults, NextToken, []).
 list_fargate_profiles(Client, ClusterName, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/clusters/", http_uri:encode(ClusterName), "/fargate-profiles"],
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/fargate-profiles"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -404,13 +390,14 @@ list_fargate_profiles(Client, ClusterName, MaxResults, NextToken, Options)
 
 %% @doc Lists the Amazon EKS managed node groups associated with the
 %% specified cluster in your AWS account in the specified Region.
+%%
 %% Self-managed node groups are not listed.
 list_nodegroups(Client, ClusterName, MaxResults, NextToken)
   when is_map(Client) ->
     list_nodegroups(Client, ClusterName, MaxResults, NextToken, []).
 list_nodegroups(Client, ClusterName, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/clusters/", http_uri:encode(ClusterName), "/node-groups"],
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/node-groups"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -430,7 +417,7 @@ list_tags_for_resource(Client, ResourceArn)
     list_tags_for_resource(Client, ResourceArn, []).
 list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -446,7 +433,7 @@ list_updates(Client, Name, MaxResults, NextToken, NodegroupName)
     list_updates(Client, Name, MaxResults, NextToken, NodegroupName, []).
 list_updates(Client, Name, MaxResults, NextToken, NodegroupName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/clusters/", http_uri:encode(Name), "/updates"],
+    Path = ["/clusters/", aws_util:encode_uri(Name), "/updates"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -462,18 +449,20 @@ list_updates(Client, Name, MaxResults, NextToken, NodegroupName, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Associates the specified tags to a resource with the specified
-%% <code>resourceArn</code>. If existing tags on a resource are not specified
-%% in the request parameters, they are not changed. When a resource is
-%% deleted, the tags associated with that resource are deleted as well. Tags
-%% that you create for Amazon EKS resources do not propagate to any other
-%% resources associated with the cluster. For example, if you tag a cluster
-%% with this operation, that tag does not automatically propagate to the
-%% subnets and worker nodes associated with the cluster.
+%% `resourceArn'.
+%%
+%% If existing tags on a resource are not specified in the request
+%% parameters, they are not changed. When a resource is deleted, the tags
+%% associated with that resource are deleted as well. Tags that you create
+%% for Amazon EKS resources do not propagate to any other resources
+%% associated with the cluster. For example, if you tag a cluster with this
+%% operation, that tag does not automatically propagate to the subnets and
+%% worker nodes associated with the cluster.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -489,7 +478,7 @@ untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -501,45 +490,40 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an Amazon EKS cluster configuration. Your cluster continues
-%% to function during the update. The response output includes an update ID
-%% that you can use to track the status of your cluster update with the
-%% <a>DescribeUpdate</a> API operation.
+%% @doc Updates an Amazon EKS cluster configuration.
+%%
+%% Your cluster continues to function during the update. The response output
+%% includes an update ID that you can use to track the status of your cluster
+%% update with the `DescribeUpdate' API operation.
 %%
 %% You can use this API operation to enable or disable exporting the
 %% Kubernetes control plane logs for your cluster to CloudWatch Logs. By
 %% default, cluster control plane logs aren't exported to CloudWatch Logs.
-%% For more information, see <a
-%% href="https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html">Amazon
-%% EKS Cluster Control Plane Logs</a> in the <i> <i>Amazon EKS User Guide</i>
-%% </i>.
+%% For more information, see Amazon EKS Cluster Control Plane Logs in the
+%% Amazon EKS User Guide .
 %%
-%% <note> CloudWatch Logs ingestion, archive storage, and data scanning rates
-%% apply to exported control plane logs. For more information, see <a
-%% href="http://aws.amazon.com/cloudwatch/pricing/">Amazon CloudWatch
-%% Pricing</a>.
+%% CloudWatch Logs ingestion, archive storage, and data scanning rates apply
+%% to exported control plane logs. For more information, see Amazon
+%% CloudWatch Pricing.
 %%
-%% </note> You can also use this API operation to enable or disable public
-%% and private access to your cluster's Kubernetes API server endpoint. By
+%% You can also use this API operation to enable or disable public and
+%% private access to your cluster's Kubernetes API server endpoint. By
 %% default, public access is enabled, and private access is disabled. For
-%% more information, see <a
-%% href="https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html">Amazon
-%% EKS Cluster Endpoint Access Control</a> in the <i> <i>Amazon EKS User
-%% Guide</i> </i>.
+%% more information, see Amazon EKS Cluster Endpoint Access Control in the
+%% Amazon EKS User Guide .
 %%
-%% <important> At this time, you can not update the subnets or security group
-%% IDs for an existing cluster.
+%% At this time, you can not update the subnets or security group IDs for an
+%% existing cluster.
 %%
-%% </important> Cluster updates are asynchronous, and they should finish
-%% within a few minutes. During an update, the cluster status moves to
-%% <code>UPDATING</code> (this status transition is eventually consistent).
-%% When the update is complete (either <code>Failed</code> or
-%% <code>Successful</code>), the cluster status moves to <code>Active</code>.
+%% Cluster updates are asynchronous, and they should finish within a few
+%% minutes. During an update, the cluster status moves to `UPDATING' (this
+%% status transition is eventually consistent). When the update is complete
+%% (either `Failed' or `Successful'), the cluster status moves to `Active'.
 update_cluster_config(Client, Name, Input) ->
     update_cluster_config(Client, Name, Input, []).
 update_cluster_config(Client, Name, Input0, Options) ->
     Method = post,
-    Path = ["/clusters/", http_uri:encode(Name), "/update-config"],
+    Path = ["/clusters/", aws_util:encode_uri(Name), "/update-config"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -551,15 +535,15 @@ update_cluster_config(Client, Name, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an Amazon EKS cluster to the specified Kubernetes version.
+%%
 %% Your cluster continues to function during the update. The response output
 %% includes an update ID that you can use to track the status of your cluster
-%% update with the <a>DescribeUpdate</a> API operation.
+%% update with the `DescribeUpdate' API operation.
 %%
 %% Cluster updates are asynchronous, and they should finish within a few
-%% minutes. During an update, the cluster status moves to
-%% <code>UPDATING</code> (this status transition is eventually consistent).
-%% When the update is complete (either <code>Failed</code> or
-%% <code>Successful</code>), the cluster status moves to <code>Active</code>.
+%% minutes. During an update, the cluster status moves to `UPDATING' (this
+%% status transition is eventually consistent). When the update is complete
+%% (either `Failed' or `Successful'), the cluster status moves to `Active'.
 %%
 %% If your cluster has managed node groups attached to it, all of your node
 %% groups’ Kubernetes versions must match the cluster’s Kubernetes version in
@@ -568,7 +552,7 @@ update_cluster_version(Client, Name, Input) ->
     update_cluster_version(Client, Name, Input, []).
 update_cluster_version(Client, Name, Input0, Options) ->
     Method = post,
-    Path = ["/clusters/", http_uri:encode(Name), "/updates"],
+    Path = ["/clusters/", aws_util:encode_uri(Name), "/updates"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -579,17 +563,18 @@ update_cluster_version(Client, Name, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an Amazon EKS managed node group configuration. Your node
-%% group continues to function during the update. The response output
-%% includes an update ID that you can use to track the status of your node
-%% group update with the <a>DescribeUpdate</a> API operation. Currently you
+%% @doc Updates an Amazon EKS managed node group configuration.
+%%
+%% Your node group continues to function during the update. The response
+%% output includes an update ID that you can use to track the status of your
+%% node group update with the `DescribeUpdate' API operation. Currently you
 %% can update the Kubernetes labels for a node group or the scaling
 %% configuration.
 update_nodegroup_config(Client, ClusterName, NodegroupName, Input) ->
     update_nodegroup_config(Client, ClusterName, NodegroupName, Input, []).
 update_nodegroup_config(Client, ClusterName, NodegroupName, Input0, Options) ->
     Method = post,
-    Path = ["/clusters/", http_uri:encode(ClusterName), "/node-groups/", http_uri:encode(NodegroupName), "/update-config"],
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/node-groups/", aws_util:encode_uri(NodegroupName), "/update-config"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -603,13 +588,20 @@ update_nodegroup_config(Client, ClusterName, NodegroupName, Input0, Options) ->
 %% @doc Updates the Kubernetes version or AMI version of an Amazon EKS
 %% managed node group.
 %%
-%% You can update to the latest available AMI version of a node group's
-%% current Kubernetes version by not specifying a Kubernetes version in the
-%% request. You can update to the latest AMI version of your cluster's
-%% current Kubernetes version by specifying your cluster's Kubernetes version
-%% in the request. For more information, see <a
-%% href="https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html">Amazon
-%% EKS-Optimized Linux AMI Versions</a> in the <i>Amazon EKS User Guide</i>.
+%% You can update a node group using a launch template only if the node group
+%% was originally deployed with a launch template. If you need to update a
+%% custom AMI in a node group that was deployed with a launch template, then
+%% update your custom AMI, specify the new ID in a new version of the launch
+%% template, and then update the node group to the new version of the launch
+%% template.
+%%
+%% If you update without a launch template, then you can update to the latest
+%% available AMI version of a node group's current Kubernetes version by not
+%% specifying a Kubernetes version in the request. You can update to the
+%% latest AMI version of your cluster's current Kubernetes version by
+%% specifying your cluster's Kubernetes version in the request. For more
+%% information, see Amazon EKS-Optimized Linux AMI Versions in the Amazon EKS
+%% User Guide.
 %%
 %% You cannot roll back a node group to an earlier Kubernetes version or AMI
 %% version.
@@ -617,13 +609,13 @@ update_nodegroup_config(Client, ClusterName, NodegroupName, Input0, Options) ->
 %% When a node in a managed node group is terminated due to a scaling action
 %% or update, the pods in that node are drained first. Amazon EKS attempts to
 %% drain the nodes gracefully and will fail if it is unable to do so. You can
-%% <code>force</code> the update if Amazon EKS is unable to drain the nodes
-%% as a result of a pod disruption budget issue.
+%% `force' the update if Amazon EKS is unable to drain the nodes as a result
+%% of a pod disruption budget issue.
 update_nodegroup_version(Client, ClusterName, NodegroupName, Input) ->
     update_nodegroup_version(Client, ClusterName, NodegroupName, Input, []).
 update_nodegroup_version(Client, ClusterName, NodegroupName, Input0, Options) ->
     Method = post,
-    Path = ["/clusters/", http_uri:encode(ClusterName), "/node-groups/", http_uri:encode(NodegroupName), "/update-version"],
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/node-groups/", aws_util:encode_uri(NodegroupName), "/update-version"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -680,6 +672,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

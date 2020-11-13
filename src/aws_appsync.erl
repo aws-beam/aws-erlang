@@ -99,7 +99,7 @@ create_api_cache(Client, ApiId, Input) ->
     create_api_cache(Client, ApiId, Input, []).
 create_api_cache(Client, ApiId, Input0, Options) ->
     Method = post,
-    Path = ["/v1/apis/", http_uri:encode(ApiId), "/ApiCaches"],
+    Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/ApiCaches"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -116,7 +116,7 @@ create_api_key(Client, ApiId, Input) ->
     create_api_key(Client, ApiId, Input, []).
 create_api_key(Client, ApiId, Input0, Options) ->
     Method = post,
-    Path = ["/v1/apis/", http_uri:encode(ApiId), "/apikeys"],
+    Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/apikeys"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -127,12 +127,12 @@ create_api_key(Client, ApiId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a <code>DataSource</code> object.
+%% @doc Creates a `DataSource' object.
 create_data_source(Client, ApiId, Input) ->
     create_data_source(Client, ApiId, Input, []).
 create_data_source(Client, ApiId, Input0, Options) ->
     Method = post,
-    Path = ["/v1/apis/", http_uri:encode(ApiId), "/datasources"],
+    Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/datasources"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -143,7 +143,7 @@ create_data_source(Client, ApiId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a <code>Function</code> object.
+%% @doc Creates a `Function' object.
 %%
 %% A function is a reusable entity. Multiple functions can be used to compose
 %% the resolver logic.
@@ -151,7 +151,7 @@ create_function(Client, ApiId, Input) ->
     create_function(Client, ApiId, Input, []).
 create_function(Client, ApiId, Input0, Options) ->
     Method = post,
-    Path = ["/v1/apis/", http_uri:encode(ApiId), "/functions"],
+    Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/functions"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -162,7 +162,7 @@ create_function(Client, ApiId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a <code>GraphqlApi</code> object.
+%% @doc Creates a `GraphqlApi' object.
 create_graphql_api(Client, Input) ->
     create_graphql_api(Client, Input, []).
 create_graphql_api(Client, Input0, Options) ->
@@ -178,7 +178,7 @@ create_graphql_api(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a <code>Resolver</code> object.
+%% @doc Creates a `Resolver' object.
 %%
 %% A resolver converts incoming requests into a format that a data source can
 %% understand and converts the data source's responses into GraphQL.
@@ -186,7 +186,7 @@ create_resolver(Client, ApiId, TypeName, Input) ->
     create_resolver(Client, ApiId, TypeName, Input, []).
 create_resolver(Client, ApiId, TypeName, Input0, Options) ->
     Method = post,
-    Path = ["/v1/apis/", http_uri:encode(ApiId), "/types/", http_uri:encode(TypeName), "/resolvers"],
+    Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), "/resolvers"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -197,12 +197,12 @@ create_resolver(Client, ApiId, TypeName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a <code>Type</code> object.
+%% @doc Creates a `Type' object.
 create_type(Client, ApiId, Input) ->
     create_type(Client, ApiId, Input, []).
 create_type(Client, ApiId, Input0, Options) ->
     Method = post,
-    Path = ["/v1/apis/", http_uri:encode(ApiId), "/types"],
+    Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -213,12 +213,12 @@ create_type(Client, ApiId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an <code>ApiCache</code> object.
+%% @doc Deletes an `ApiCache' object.
 delete_api_cache(Client, ApiId, Input) ->
     delete_api_cache(Client, ApiId, Input, []).
 delete_api_cache(Client, ApiId, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/apis/", http_uri:encode(ApiId), "/ApiCaches"],
+    Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/ApiCaches"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -234,7 +234,7 @@ delete_api_key(Client, ApiId, Id, Input) ->
     delete_api_key(Client, ApiId, Id, Input, []).
 delete_api_key(Client, ApiId, Id, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/apis/", http_uri:encode(ApiId), "/apikeys/", http_uri:encode(Id), ""],
+    Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/apikeys/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -245,12 +245,12 @@ delete_api_key(Client, ApiId, Id, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a <code>DataSource</code> object.
+%% @doc Deletes a `DataSource' object.
 delete_data_source(Client, ApiId, Name, Input) ->
     delete_data_source(Client, ApiId, Name, Input, []).
 delete_data_source(Client, ApiId, Name, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/apis/", http_uri:encode(ApiId), "/datasources/", http_uri:encode(Name), ""],
+    Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/datasources/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -261,12 +261,12 @@ delete_data_source(Client, ApiId, Name, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a <code>Function</code>.
+%% @doc Deletes a `Function'.
 delete_function(Client, ApiId, FunctionId, Input) ->
     delete_function(Client, ApiId, FunctionId, Input, []).
 delete_function(Client, ApiId, FunctionId, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/apis/", http_uri:encode(ApiId), "/functions/", http_uri:encode(FunctionId), ""],
+    Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/functions/", aws_util:encode_uri(FunctionId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -277,12 +277,12 @@ delete_function(Client, ApiId, FunctionId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a <code>GraphqlApi</code> object.
+%% @doc Deletes a `GraphqlApi' object.
 delete_graphql_api(Client, ApiId, Input) ->
     delete_graphql_api(Client, ApiId, Input, []).
 delete_graphql_api(Client, ApiId, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/apis/", http_uri:encode(ApiId), ""],
+    Path = ["/v1/apis/", aws_util:encode_uri(ApiId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -293,12 +293,12 @@ delete_graphql_api(Client, ApiId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a <code>Resolver</code> object.
+%% @doc Deletes a `Resolver' object.
 delete_resolver(Client, ApiId, FieldName, TypeName, Input) ->
     delete_resolver(Client, ApiId, FieldName, TypeName, Input, []).
 delete_resolver(Client, ApiId, FieldName, TypeName, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/apis/", http_uri:encode(ApiId), "/types/", http_uri:encode(TypeName), "/resolvers/", http_uri:encode(FieldName), ""],
+    Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), "/resolvers/", aws_util:encode_uri(FieldName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -309,12 +309,12 @@ delete_resolver(Client, ApiId, FieldName, TypeName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a <code>Type</code> object.
+%% @doc Deletes a `Type' object.
 delete_type(Client, ApiId, TypeName, Input) ->
     delete_type(Client, ApiId, TypeName, Input, []).
 delete_type(Client, ApiId, TypeName, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/apis/", http_uri:encode(ApiId), "/types/", http_uri:encode(TypeName), ""],
+    Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -325,12 +325,12 @@ delete_type(Client, ApiId, TypeName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Flushes an <code>ApiCache</code> object.
+%% @doc Flushes an `ApiCache' object.
 flush_api_cache(Client, ApiId, Input) ->
     flush_api_cache(Client, ApiId, Input, []).
 flush_api_cache(Client, ApiId, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/apis/", http_uri:encode(ApiId), "/FlushCache"],
+    Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/FlushCache"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -341,13 +341,13 @@ flush_api_cache(Client, ApiId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves an <code>ApiCache</code> object.
+%% @doc Retrieves an `ApiCache' object.
 get_api_cache(Client, ApiId)
   when is_map(Client) ->
     get_api_cache(Client, ApiId, []).
 get_api_cache(Client, ApiId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apis/", http_uri:encode(ApiId), "/ApiCaches"],
+    Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/ApiCaches"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -356,13 +356,13 @@ get_api_cache(Client, ApiId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves a <code>DataSource</code> object.
+%% @doc Retrieves a `DataSource' object.
 get_data_source(Client, ApiId, Name)
   when is_map(Client) ->
     get_data_source(Client, ApiId, Name, []).
 get_data_source(Client, ApiId, Name, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apis/", http_uri:encode(ApiId), "/datasources/", http_uri:encode(Name), ""],
+    Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/datasources/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -371,13 +371,13 @@ get_data_source(Client, ApiId, Name, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Get a <code>Function</code>.
+%% @doc Get a `Function'.
 get_function(Client, ApiId, FunctionId)
   when is_map(Client) ->
     get_function(Client, ApiId, FunctionId, []).
 get_function(Client, ApiId, FunctionId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apis/", http_uri:encode(ApiId), "/functions/", http_uri:encode(FunctionId), ""],
+    Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/functions/", aws_util:encode_uri(FunctionId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -386,13 +386,13 @@ get_function(Client, ApiId, FunctionId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves a <code>GraphqlApi</code> object.
+%% @doc Retrieves a `GraphqlApi' object.
 get_graphql_api(Client, ApiId)
   when is_map(Client) ->
     get_graphql_api(Client, ApiId, []).
 get_graphql_api(Client, ApiId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apis/", http_uri:encode(ApiId), ""],
+    Path = ["/v1/apis/", aws_util:encode_uri(ApiId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -407,7 +407,7 @@ get_introspection_schema(Client, ApiId, Format, IncludeDirectives)
     get_introspection_schema(Client, ApiId, Format, IncludeDirectives, []).
 get_introspection_schema(Client, ApiId, Format, IncludeDirectives, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apis/", http_uri:encode(ApiId), "/schema"],
+    Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/schema"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -421,13 +421,13 @@ get_introspection_schema(Client, ApiId, Format, IncludeDirectives, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves a <code>Resolver</code> object.
+%% @doc Retrieves a `Resolver' object.
 get_resolver(Client, ApiId, FieldName, TypeName)
   when is_map(Client) ->
     get_resolver(Client, ApiId, FieldName, TypeName, []).
 get_resolver(Client, ApiId, FieldName, TypeName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apis/", http_uri:encode(ApiId), "/types/", http_uri:encode(TypeName), "/resolvers/", http_uri:encode(FieldName), ""],
+    Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), "/resolvers/", aws_util:encode_uri(FieldName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -442,7 +442,7 @@ get_schema_creation_status(Client, ApiId)
     get_schema_creation_status(Client, ApiId, []).
 get_schema_creation_status(Client, ApiId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apis/", http_uri:encode(ApiId), "/schemacreation"],
+    Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/schemacreation"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -451,13 +451,13 @@ get_schema_creation_status(Client, ApiId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves a <code>Type</code> object.
+%% @doc Retrieves a `Type' object.
 get_type(Client, ApiId, TypeName, Format)
   when is_map(Client) ->
     get_type(Client, ApiId, TypeName, Format, []).
 get_type(Client, ApiId, TypeName, Format, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apis/", http_uri:encode(ApiId), "/types/", http_uri:encode(TypeName), ""],
+    Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -472,18 +472,16 @@ get_type(Client, ApiId, TypeName, Format, Options)
 
 %% @doc Lists the API keys for a given API.
 %%
-%% <note> API keys are deleted automatically sometime after they expire.
-%% However, they may still be included in the response until they have
-%% actually been deleted. You can safely call <code>DeleteApiKey</code> to
-%% manually delete a key before it's automatically deleted.
-%%
-%% </note>
+%% API keys are deleted automatically 60 days after they expire. However,
+%% they may still be included in the response until they have actually been
+%% deleted. You can safely call `DeleteApiKey' to manually delete a key
+%% before it's automatically deleted.
 list_api_keys(Client, ApiId, MaxResults, NextToken)
   when is_map(Client) ->
     list_api_keys(Client, ApiId, MaxResults, NextToken, []).
 list_api_keys(Client, ApiId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apis/", http_uri:encode(ApiId), "/apikeys"],
+    Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/apikeys"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -503,7 +501,7 @@ list_data_sources(Client, ApiId, MaxResults, NextToken)
     list_data_sources(Client, ApiId, MaxResults, NextToken, []).
 list_data_sources(Client, ApiId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apis/", http_uri:encode(ApiId), "/datasources"],
+    Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/datasources"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -523,7 +521,7 @@ list_functions(Client, ApiId, MaxResults, NextToken)
     list_functions(Client, ApiId, MaxResults, NextToken, []).
 list_functions(Client, ApiId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apis/", http_uri:encode(ApiId), "/functions"],
+    Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/functions"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -563,7 +561,7 @@ list_resolvers(Client, ApiId, TypeName, MaxResults, NextToken)
     list_resolvers(Client, ApiId, TypeName, MaxResults, NextToken, []).
 list_resolvers(Client, ApiId, TypeName, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apis/", http_uri:encode(ApiId), "/types/", http_uri:encode(TypeName), "/resolvers"],
+    Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), "/resolvers"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -583,7 +581,7 @@ list_resolvers_by_function(Client, ApiId, FunctionId, MaxResults, NextToken)
     list_resolvers_by_function(Client, ApiId, FunctionId, MaxResults, NextToken, []).
 list_resolvers_by_function(Client, ApiId, FunctionId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apis/", http_uri:encode(ApiId), "/functions/", http_uri:encode(FunctionId), "/resolvers"],
+    Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/functions/", aws_util:encode_uri(FunctionId), "/resolvers"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -603,7 +601,7 @@ list_tags_for_resource(Client, ResourceArn)
     list_tags_for_resource(Client, ResourceArn, []).
 list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -618,7 +616,7 @@ list_types(Client, ApiId, Format, MaxResults, NextToken)
     list_types(Client, ApiId, Format, MaxResults, NextToken, []).
 list_types(Client, ApiId, Format, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/apis/", http_uri:encode(ApiId), "/types"],
+    Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -640,7 +638,7 @@ start_schema_creation(Client, ApiId, Input) ->
     start_schema_creation(Client, ApiId, Input, []).
 start_schema_creation(Client, ApiId, Input0, Options) ->
     Method = post,
-    Path = ["/v1/apis/", http_uri:encode(ApiId), "/schemacreation"],
+    Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/schemacreation"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -656,7 +654,7 @@ tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/v1/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -672,7 +670,7 @@ untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -689,7 +687,7 @@ update_api_cache(Client, ApiId, Input) ->
     update_api_cache(Client, ApiId, Input, []).
 update_api_cache(Client, ApiId, Input0, Options) ->
     Method = post,
-    Path = ["/v1/apis/", http_uri:encode(ApiId), "/ApiCaches/update"],
+    Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/ApiCaches/update"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -701,11 +699,13 @@ update_api_cache(Client, ApiId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an API key.
+%%
+%% The key can be updated while it is not deleted.
 update_api_key(Client, ApiId, Id, Input) ->
     update_api_key(Client, ApiId, Id, Input, []).
 update_api_key(Client, ApiId, Id, Input0, Options) ->
     Method = post,
-    Path = ["/v1/apis/", http_uri:encode(ApiId), "/apikeys/", http_uri:encode(Id), ""],
+    Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/apikeys/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -716,12 +716,12 @@ update_api_key(Client, ApiId, Id, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a <code>DataSource</code> object.
+%% @doc Updates a `DataSource' object.
 update_data_source(Client, ApiId, Name, Input) ->
     update_data_source(Client, ApiId, Name, Input, []).
 update_data_source(Client, ApiId, Name, Input0, Options) ->
     Method = post,
-    Path = ["/v1/apis/", http_uri:encode(ApiId), "/datasources/", http_uri:encode(Name), ""],
+    Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/datasources/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -732,12 +732,12 @@ update_data_source(Client, ApiId, Name, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a <code>Function</code> object.
+%% @doc Updates a `Function' object.
 update_function(Client, ApiId, FunctionId, Input) ->
     update_function(Client, ApiId, FunctionId, Input, []).
 update_function(Client, ApiId, FunctionId, Input0, Options) ->
     Method = post,
-    Path = ["/v1/apis/", http_uri:encode(ApiId), "/functions/", http_uri:encode(FunctionId), ""],
+    Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/functions/", aws_util:encode_uri(FunctionId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -748,12 +748,12 @@ update_function(Client, ApiId, FunctionId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a <code>GraphqlApi</code> object.
+%% @doc Updates a `GraphqlApi' object.
 update_graphql_api(Client, ApiId, Input) ->
     update_graphql_api(Client, ApiId, Input, []).
 update_graphql_api(Client, ApiId, Input0, Options) ->
     Method = post,
-    Path = ["/v1/apis/", http_uri:encode(ApiId), ""],
+    Path = ["/v1/apis/", aws_util:encode_uri(ApiId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -764,12 +764,12 @@ update_graphql_api(Client, ApiId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a <code>Resolver</code> object.
+%% @doc Updates a `Resolver' object.
 update_resolver(Client, ApiId, FieldName, TypeName, Input) ->
     update_resolver(Client, ApiId, FieldName, TypeName, Input, []).
 update_resolver(Client, ApiId, FieldName, TypeName, Input0, Options) ->
     Method = post,
-    Path = ["/v1/apis/", http_uri:encode(ApiId), "/types/", http_uri:encode(TypeName), "/resolvers/", http_uri:encode(FieldName), ""],
+    Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), "/resolvers/", aws_util:encode_uri(FieldName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -780,12 +780,12 @@ update_resolver(Client, ApiId, FieldName, TypeName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a <code>Type</code> object.
+%% @doc Updates a `Type' object.
 update_type(Client, ApiId, TypeName, Input) ->
     update_type(Client, ApiId, TypeName, Input, []).
 update_type(Client, ApiId, TypeName, Input0, Options) ->
     Method = post,
-    Path = ["/v1/apis/", http_uri:encode(ApiId), "/types/", http_uri:encode(TypeName), ""],
+    Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -842,6 +842,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

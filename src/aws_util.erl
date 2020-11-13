@@ -6,7 +6,8 @@
          hmac_sha256_hexdigest/2,
          sha256_hexdigest/1,
          encode_query/1,
-         encode_uri/2,
+         encode_uri/1,
+         encode_multi_segment_uri/1,
          encode_xml/1,
          decode_xml/1,
          get_in/2,
@@ -37,6 +38,7 @@ hmac_sha256_hexdigest(Key, Message) ->
 
 %% @doc Create an HMAC-SHA256 hexdigest for Key and Message.
 hmac_sha256(Key, Message) ->
+    %% @todo Use `crypto:mac/4` when OTP 24 arrives.
     crypto:hmac(sha256, Key, Message).
 
 %% @doc Create a SHA256 hexdigest for Value.
@@ -45,13 +47,16 @@ sha256_hexdigest(Value) ->
 
 %% @doc Encode URI taking into account if it contains more than one
 %% segment.
-encode_uri(Value, false = _MultiSegment) ->
-    http_uri:encode(Value);
-encode_uri(Value, true = _MultiSegment) ->
-    Encoded = [ http_uri:encode(Segment)
+encode_multi_segment_uri(Value) ->
+    Encoded = [ encode_uri(Segment)
                 || Segment <- binary:split(Value, <<"/">>, [global])
               ],
     binary_join(Encoded, <<"/">>).
+
+%% @doc Encode URI into a percent-encoding string.
+encode_uri(Value) ->
+  %% @todo Replace with uri_string module.
+  http_uri:encode(Value).
 
 %% @doc Encode the map's key/value pairs as a querystring.
 encode_query(List) when is_list(List) ->
@@ -293,5 +298,15 @@ get_in_test() ->
     ?assertEqual(<<"Message">>, get_in(MessagePath, Map)),
     ?assertEqual(undefined, get_in(FooPath, Map)),
     ?assertEqual(default, get_in(FooPath, Map, default)).
+
+%% encode_uri correctly encode segment of an URI
+encode_uri_test() ->
+  Segment = <<"hello world!">>,
+  ?assertEqual(<<"hello%20world!">>, encode_uri(Segment)).
+
+%% encode_multi_segment_uri correctly encode each segment of an URI
+encode_multi_segment_uri_test() ->
+  MultiSegment = <<"hello /world!">>,
+  ?assertEqual(<<"hello%20/world!">>, encode_multi_segment_uri(MultiSegment)).
 
 -endif.

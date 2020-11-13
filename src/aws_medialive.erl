@@ -4,8 +4,18 @@
 %% @doc API for AWS Elemental MediaLive
 -module(aws_medialive).
 
--export([batch_update_schedule/3,
+-export([accept_input_device_transfer/3,
+         accept_input_device_transfer/4,
+         batch_delete/2,
+         batch_delete/3,
+         batch_start/2,
+         batch_start/3,
+         batch_stop/2,
+         batch_stop/3,
+         batch_update_schedule/3,
          batch_update_schedule/4,
+         cancel_input_device_transfer/3,
+         cancel_input_device_transfer/4,
          create_channel/2,
          create_channel/3,
          create_input/2,
@@ -56,6 +66,8 @@
          describe_schedule/5,
          list_channels/3,
          list_channels/4,
+         list_input_device_transfers/4,
+         list_input_device_transfers/5,
          list_input_devices/3,
          list_input_devices/4,
          list_input_security_groups/3,
@@ -74,6 +86,8 @@
          list_tags_for_resource/3,
          purchase_offering/3,
          purchase_offering/4,
+         reject_input_device_transfer/3,
+         reject_input_device_transfer/4,
          start_channel/3,
          start_channel/4,
          start_multiplex/3,
@@ -82,6 +96,8 @@
          stop_channel/4,
          stop_multiplex/3,
          stop_multiplex/4,
+         transfer_input_device/3,
+         transfer_input_device/4,
          update_channel/3,
          update_channel/4,
          update_channel_class/3,
@@ -105,12 +121,94 @@
 %% API
 %%====================================================================
 
+%% @doc Accept an incoming input device transfer.
+%%
+%% The ownership of the device will transfer to your AWS account.
+accept_input_device_transfer(Client, InputDeviceId, Input) ->
+    accept_input_device_transfer(Client, InputDeviceId, Input, []).
+accept_input_device_transfer(Client, InputDeviceId, Input0, Options) ->
+    Method = post,
+    Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), "/accept"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts delete of resources.
+batch_delete(Client, Input) ->
+    batch_delete(Client, Input, []).
+batch_delete(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/prod/batch/delete"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts existing resources
+batch_start(Client, Input) ->
+    batch_start(Client, Input, []).
+batch_start(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/prod/batch/start"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Stops running resources
+batch_stop(Client, Input) ->
+    batch_stop(Client, Input, []).
+batch_stop(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/prod/batch/stop"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Update a channel schedule
 batch_update_schedule(Client, ChannelId, Input) ->
     batch_update_schedule(Client, ChannelId, Input, []).
 batch_update_schedule(Client, ChannelId, Input0, Options) ->
     Method = put,
-    Path = ["/prod/channels/", http_uri:encode(ChannelId), "/schedule"],
+    Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), "/schedule"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Cancel an input device transfer that you have requested.
+cancel_input_device_transfer(Client, InputDeviceId, Input) ->
+    cancel_input_device_transfer(Client, InputDeviceId, Input, []).
+cancel_input_device_transfer(Client, InputDeviceId, Input0, Options) ->
+    Method = post,
+    Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), "/cancel"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -190,7 +288,7 @@ create_multiplex_program(Client, MultiplexId, Input) ->
     create_multiplex_program(Client, MultiplexId, Input, []).
 create_multiplex_program(Client, MultiplexId, Input0, Options) ->
     Method = post,
-    Path = ["/prod/multiplexes/", http_uri:encode(MultiplexId), "/programs"],
+    Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), "/programs"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -206,7 +304,7 @@ create_tags(Client, ResourceArn, Input) ->
     create_tags(Client, ResourceArn, Input, []).
 create_tags(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/prod/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/prod/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -217,12 +315,14 @@ create_tags(Client, ResourceArn, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Starts deletion of channel. The associated outputs are also deleted.
+%% @doc Starts deletion of channel.
+%%
+%% The associated outputs are also deleted.
 delete_channel(Client, ChannelId, Input) ->
     delete_channel(Client, ChannelId, Input, []).
 delete_channel(Client, ChannelId, Input0, Options) ->
     Method = delete,
-    Path = ["/prod/channels/", http_uri:encode(ChannelId), ""],
+    Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -238,7 +338,7 @@ delete_input(Client, InputId, Input) ->
     delete_input(Client, InputId, Input, []).
 delete_input(Client, InputId, Input0, Options) ->
     Method = delete,
-    Path = ["/prod/inputs/", http_uri:encode(InputId), ""],
+    Path = ["/prod/inputs/", aws_util:encode_uri(InputId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -254,7 +354,7 @@ delete_input_security_group(Client, InputSecurityGroupId, Input) ->
     delete_input_security_group(Client, InputSecurityGroupId, Input, []).
 delete_input_security_group(Client, InputSecurityGroupId, Input0, Options) ->
     Method = delete,
-    Path = ["/prod/inputSecurityGroups/", http_uri:encode(InputSecurityGroupId), ""],
+    Path = ["/prod/inputSecurityGroups/", aws_util:encode_uri(InputSecurityGroupId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -265,12 +365,14 @@ delete_input_security_group(Client, InputSecurityGroupId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Delete a multiplex. The multiplex must be idle.
+%% @doc Delete a multiplex.
+%%
+%% The multiplex must be idle.
 delete_multiplex(Client, MultiplexId, Input) ->
     delete_multiplex(Client, MultiplexId, Input, []).
 delete_multiplex(Client, MultiplexId, Input0, Options) ->
     Method = delete,
-    Path = ["/prod/multiplexes/", http_uri:encode(MultiplexId), ""],
+    Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), ""],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -286,7 +388,7 @@ delete_multiplex_program(Client, MultiplexId, ProgramName, Input) ->
     delete_multiplex_program(Client, MultiplexId, ProgramName, Input, []).
 delete_multiplex_program(Client, MultiplexId, ProgramName, Input0, Options) ->
     Method = delete,
-    Path = ["/prod/multiplexes/", http_uri:encode(MultiplexId), "/programs/", http_uri:encode(ProgramName), ""],
+    Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), "/programs/", aws_util:encode_uri(ProgramName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -302,7 +404,7 @@ delete_reservation(Client, ReservationId, Input) ->
     delete_reservation(Client, ReservationId, Input, []).
 delete_reservation(Client, ReservationId, Input0, Options) ->
     Method = delete,
-    Path = ["/prod/reservations/", http_uri:encode(ReservationId), ""],
+    Path = ["/prod/reservations/", aws_util:encode_uri(ReservationId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -318,7 +420,7 @@ delete_schedule(Client, ChannelId, Input) ->
     delete_schedule(Client, ChannelId, Input, []).
 delete_schedule(Client, ChannelId, Input0, Options) ->
     Method = delete,
-    Path = ["/prod/channels/", http_uri:encode(ChannelId), "/schedule"],
+    Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), "/schedule"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -334,7 +436,7 @@ delete_tags(Client, ResourceArn, Input) ->
     delete_tags(Client, ResourceArn, Input, []).
 delete_tags(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/prod/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/prod/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -352,7 +454,7 @@ describe_channel(Client, ChannelId)
     describe_channel(Client, ChannelId, []).
 describe_channel(Client, ChannelId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/prod/channels/", http_uri:encode(ChannelId), ""],
+    Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -367,7 +469,7 @@ describe_input(Client, InputId)
     describe_input(Client, InputId, []).
 describe_input(Client, InputId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/prod/inputs/", http_uri:encode(InputId), ""],
+    Path = ["/prod/inputs/", aws_util:encode_uri(InputId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -382,7 +484,7 @@ describe_input_device(Client, InputDeviceId)
     describe_input_device(Client, InputDeviceId, []).
 describe_input_device(Client, InputDeviceId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/prod/inputDevices/", http_uri:encode(InputDeviceId), ""],
+    Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -397,7 +499,7 @@ describe_input_device_thumbnail(Client, InputDeviceId, Accept)
     describe_input_device_thumbnail(Client, InputDeviceId, Accept, []).
 describe_input_device_thumbnail(Client, InputDeviceId, Accept, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/prod/inputDevices/", http_uri:encode(InputDeviceId), "/thumbnailData"],
+    Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), "/thumbnailData"],
     SuccessStatusCode = 200,
 
     Headers0 =
@@ -435,7 +537,7 @@ describe_input_security_group(Client, InputSecurityGroupId)
     describe_input_security_group(Client, InputSecurityGroupId, []).
 describe_input_security_group(Client, InputSecurityGroupId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/prod/inputSecurityGroups/", http_uri:encode(InputSecurityGroupId), ""],
+    Path = ["/prod/inputSecurityGroups/", aws_util:encode_uri(InputSecurityGroupId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -450,7 +552,7 @@ describe_multiplex(Client, MultiplexId)
     describe_multiplex(Client, MultiplexId, []).
 describe_multiplex(Client, MultiplexId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/prod/multiplexes/", http_uri:encode(MultiplexId), ""],
+    Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -465,7 +567,7 @@ describe_multiplex_program(Client, MultiplexId, ProgramName)
     describe_multiplex_program(Client, MultiplexId, ProgramName, []).
 describe_multiplex_program(Client, MultiplexId, ProgramName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/prod/multiplexes/", http_uri:encode(MultiplexId), "/programs/", http_uri:encode(ProgramName), ""],
+    Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), "/programs/", aws_util:encode_uri(ProgramName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -480,7 +582,7 @@ describe_offering(Client, OfferingId)
     describe_offering(Client, OfferingId, []).
 describe_offering(Client, OfferingId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/prod/offerings/", http_uri:encode(OfferingId), ""],
+    Path = ["/prod/offerings/", aws_util:encode_uri(OfferingId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -495,7 +597,7 @@ describe_reservation(Client, ReservationId)
     describe_reservation(Client, ReservationId, []).
 describe_reservation(Client, ReservationId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/prod/reservations/", http_uri:encode(ReservationId), ""],
+    Path = ["/prod/reservations/", aws_util:encode_uri(ReservationId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -510,7 +612,7 @@ describe_schedule(Client, ChannelId, MaxResults, NextToken)
     describe_schedule(Client, ChannelId, MaxResults, NextToken, []).
 describe_schedule(Client, ChannelId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/prod/channels/", http_uri:encode(ChannelId), "/schedule"],
+    Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), "/schedule"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -539,6 +641,30 @@ list_channels(Client, MaxResults, NextToken, Options)
       [
         {<<"maxResults">>, MaxResults},
         {<<"nextToken">>, NextToken}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc List input devices that are currently being transferred.
+%%
+%% List input devices that you are transferring from your AWS account or
+%% input devices that another AWS account is transferring to you.
+list_input_device_transfers(Client, MaxResults, NextToken, TransferType)
+  when is_map(Client) ->
+    list_input_device_transfers(Client, MaxResults, NextToken, TransferType, []).
+list_input_device_transfers(Client, MaxResults, NextToken, TransferType, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/prod/inputDeviceTransfers"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken},
+        {<<"transferType">>, TransferType}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -610,7 +736,7 @@ list_multiplex_programs(Client, MultiplexId, MaxResults, NextToken)
     list_multiplex_programs(Client, MultiplexId, MaxResults, NextToken, []).
 list_multiplex_programs(Client, MultiplexId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/prod/multiplexes/", http_uri:encode(MultiplexId), "/programs"],
+    Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), "/programs"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -708,7 +834,7 @@ list_tags_for_resource(Client, ResourceArn)
     list_tags_for_resource(Client, ResourceArn, []).
 list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/prod/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/prod/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -722,8 +848,25 @@ purchase_offering(Client, OfferingId, Input) ->
     purchase_offering(Client, OfferingId, Input, []).
 purchase_offering(Client, OfferingId, Input0, Options) ->
     Method = post,
-    Path = ["/prod/offerings/", http_uri:encode(OfferingId), "/purchase"],
+    Path = ["/prod/offerings/", aws_util:encode_uri(OfferingId), "/purchase"],
     SuccessStatusCode = 201,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Reject the transfer of the specified input device to your AWS
+%% account.
+reject_input_device_transfer(Client, InputDeviceId, Input) ->
+    reject_input_device_transfer(Client, InputDeviceId, Input, []).
+reject_input_device_transfer(Client, InputDeviceId, Input0, Options) ->
+    Method = post,
+    Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), "/reject"],
+    SuccessStatusCode = 200,
 
     Headers = [],
     Input1 = Input0,
@@ -738,7 +881,7 @@ start_channel(Client, ChannelId, Input) ->
     start_channel(Client, ChannelId, Input, []).
 start_channel(Client, ChannelId, Input0, Options) ->
     Method = post,
-    Path = ["/prod/channels/", http_uri:encode(ChannelId), "/start"],
+    Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), "/start"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -749,13 +892,15 @@ start_channel(Client, ChannelId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Start (run) the multiplex. Starting the multiplex does not start the
-%% channels. You must explicitly start each channel.
+%% @doc Start (run) the multiplex.
+%%
+%% Starting the multiplex does not start the channels. You must explicitly
+%% start each channel.
 start_multiplex(Client, MultiplexId, Input) ->
     start_multiplex(Client, MultiplexId, Input, []).
 start_multiplex(Client, MultiplexId, Input0, Options) ->
     Method = post,
-    Path = ["/prod/multiplexes/", http_uri:encode(MultiplexId), "/start"],
+    Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), "/start"],
     SuccessStatusCode = 202,
 
     Headers = [],
@@ -771,7 +916,7 @@ stop_channel(Client, ChannelId, Input) ->
     stop_channel(Client, ChannelId, Input, []).
 stop_channel(Client, ChannelId, Input0, Options) ->
     Method = post,
-    Path = ["/prod/channels/", http_uri:encode(ChannelId), "/stop"],
+    Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), "/stop"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -782,14 +927,34 @@ stop_channel(Client, ChannelId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Stops a running multiplex. If the multiplex isn't running, this
-%% action has no effect.
+%% @doc Stops a running multiplex.
+%%
+%% If the multiplex isn't running, this action has no effect.
 stop_multiplex(Client, MultiplexId, Input) ->
     stop_multiplex(Client, MultiplexId, Input, []).
 stop_multiplex(Client, MultiplexId, Input0, Options) ->
     Method = post,
-    Path = ["/prod/multiplexes/", http_uri:encode(MultiplexId), "/stop"],
+    Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), "/stop"],
     SuccessStatusCode = 202,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Start an input device transfer to another AWS account.
+%%
+%% After you make the request, the other account must accept or reject the
+%% transfer.
+transfer_input_device(Client, InputDeviceId, Input) ->
+    transfer_input_device(Client, InputDeviceId, Input, []).
+transfer_input_device(Client, InputDeviceId, Input0, Options) ->
+    Method = post,
+    Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), "/transfer"],
+    SuccessStatusCode = 200,
 
     Headers = [],
     Input1 = Input0,
@@ -804,7 +969,7 @@ update_channel(Client, ChannelId, Input) ->
     update_channel(Client, ChannelId, Input, []).
 update_channel(Client, ChannelId, Input0, Options) ->
     Method = put,
-    Path = ["/prod/channels/", http_uri:encode(ChannelId), ""],
+    Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -820,7 +985,7 @@ update_channel_class(Client, ChannelId, Input) ->
     update_channel_class(Client, ChannelId, Input, []).
 update_channel_class(Client, ChannelId, Input0, Options) ->
     Method = put,
-    Path = ["/prod/channels/", http_uri:encode(ChannelId), "/channelClass"],
+    Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), "/channelClass"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -836,7 +1001,7 @@ update_input(Client, InputId, Input) ->
     update_input(Client, InputId, Input, []).
 update_input(Client, InputId, Input0, Options) ->
     Method = put,
-    Path = ["/prod/inputs/", http_uri:encode(InputId), ""],
+    Path = ["/prod/inputs/", aws_util:encode_uri(InputId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -852,7 +1017,7 @@ update_input_device(Client, InputDeviceId, Input) ->
     update_input_device(Client, InputDeviceId, Input, []).
 update_input_device(Client, InputDeviceId, Input0, Options) ->
     Method = put,
-    Path = ["/prod/inputDevices/", http_uri:encode(InputDeviceId), ""],
+    Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -868,7 +1033,7 @@ update_input_security_group(Client, InputSecurityGroupId, Input) ->
     update_input_security_group(Client, InputSecurityGroupId, Input, []).
 update_input_security_group(Client, InputSecurityGroupId, Input0, Options) ->
     Method = put,
-    Path = ["/prod/inputSecurityGroups/", http_uri:encode(InputSecurityGroupId), ""],
+    Path = ["/prod/inputSecurityGroups/", aws_util:encode_uri(InputSecurityGroupId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -884,7 +1049,7 @@ update_multiplex(Client, MultiplexId, Input) ->
     update_multiplex(Client, MultiplexId, Input, []).
 update_multiplex(Client, MultiplexId, Input0, Options) ->
     Method = put,
-    Path = ["/prod/multiplexes/", http_uri:encode(MultiplexId), ""],
+    Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -900,7 +1065,7 @@ update_multiplex_program(Client, MultiplexId, ProgramName, Input) ->
     update_multiplex_program(Client, MultiplexId, ProgramName, Input, []).
 update_multiplex_program(Client, MultiplexId, ProgramName, Input0, Options) ->
     Method = put,
-    Path = ["/prod/multiplexes/", http_uri:encode(MultiplexId), "/programs/", http_uri:encode(ProgramName), ""],
+    Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), "/programs/", aws_util:encode_uri(ProgramName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -916,7 +1081,7 @@ update_reservation(Client, ReservationId, Input) ->
     update_reservation(Client, ReservationId, Input, []).
 update_reservation(Client, ReservationId, Input0, Options) ->
     Method = put,
-    Path = ["/prod/reservations/", http_uri:encode(ReservationId), ""],
+    Path = ["/prod/reservations/", aws_util:encode_uri(ReservationId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -973,6 +1138,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

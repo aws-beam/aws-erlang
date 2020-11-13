@@ -27,8 +27,10 @@
 %% API
 %%====================================================================
 
-%% @doc Create a new configuration set. After you create the configuration
-%% set, you can add one or more event destinations to it.
+%% @doc Create a new configuration set.
+%%
+%% After you create the configuration set, you can add one or more event
+%% destinations to it.
 create_configuration_set(Client, Input) ->
     create_configuration_set(Client, Input, []).
 create_configuration_set(Client, Input0, Options) ->
@@ -49,7 +51,7 @@ create_configuration_set_event_destination(Client, ConfigurationSetName, Input) 
     create_configuration_set_event_destination(Client, ConfigurationSetName, Input, []).
 create_configuration_set_event_destination(Client, ConfigurationSetName, Input0, Options) ->
     Method = post,
-    Path = ["/v1/sms-voice/configuration-sets/", http_uri:encode(ConfigurationSetName), "/event-destinations"],
+    Path = ["/v1/sms-voice/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/event-destinations"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -65,7 +67,7 @@ delete_configuration_set(Client, ConfigurationSetName, Input) ->
     delete_configuration_set(Client, ConfigurationSetName, Input, []).
 delete_configuration_set(Client, ConfigurationSetName, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/sms-voice/configuration-sets/", http_uri:encode(ConfigurationSetName), ""],
+    Path = ["/v1/sms-voice/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -81,7 +83,7 @@ delete_configuration_set_event_destination(Client, ConfigurationSetName, EventDe
     delete_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input, []).
 delete_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input0, Options) ->
     Method = delete,
-    Path = ["/v1/sms-voice/configuration-sets/", http_uri:encode(ConfigurationSetName), "/event-destinations/", http_uri:encode(EventDestinationName), ""],
+    Path = ["/v1/sms-voice/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/event-destinations/", aws_util:encode_uri(EventDestinationName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -100,7 +102,7 @@ get_configuration_set_event_destinations(Client, ConfigurationSetName)
     get_configuration_set_event_destinations(Client, ConfigurationSetName, []).
 get_configuration_set_event_destinations(Client, ConfigurationSetName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v1/sms-voice/configuration-sets/", http_uri:encode(ConfigurationSetName), "/event-destinations"],
+    Path = ["/v1/sms-voice/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/event-destinations"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -146,15 +148,16 @@ send_voice_message(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Update an event destination in a configuration set. An event
-%% destination is a location that you publish information about your voice
-%% calls to. For example, you can log an event to an Amazon CloudWatch
+%% @doc Update an event destination in a configuration set.
+%%
+%% An event destination is a location that you publish information about your
+%% voice calls to. For example, you can log an event to an Amazon CloudWatch
 %% destination when a call fails.
 update_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input) ->
     update_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input, []).
 update_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input0, Options) ->
     Method = put,
-    Path = ["/v1/sms-voice/configuration-sets/", http_uri:encode(ConfigurationSetName), "/event-destinations/", http_uri:encode(EventDestinationName), ""],
+    Path = ["/v1/sms-voice/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/event-destinations/", aws_util:encode_uri(EventDestinationName), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -211,6 +214,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

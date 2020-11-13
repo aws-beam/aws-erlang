@@ -2,9 +2,10 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc AWS IoT Events monitors your equipment or device fleets for failures
-%% or changes in operation, and triggers actions when such events occur. You
-%% can use AWS IoT Events API operations to create, read, update, and delete
-%% inputs and detector models, and to list their versions.
+%% or changes in operation, and triggers actions when such events occur.
+%%
+%% You can use AWS IoT Events API operations to create, read, update, and
+%% delete inputs and detector models, and to list their versions.
 -module(aws_iot_events).
 
 -export([create_detector_model/2,
@@ -78,13 +79,14 @@ create_input(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a detector model. Any active instances of the detector model
-%% are also deleted.
+%% @doc Deletes a detector model.
+%%
+%% Any active instances of the detector model are also deleted.
 delete_detector_model(Client, DetectorModelName, Input) ->
     delete_detector_model(Client, DetectorModelName, Input, []).
 delete_detector_model(Client, DetectorModelName, Input0, Options) ->
     Method = delete,
-    Path = ["/detector-models/", http_uri:encode(DetectorModelName), ""],
+    Path = ["/detector-models/", aws_util:encode_uri(DetectorModelName), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -100,7 +102,7 @@ delete_input(Client, InputName, Input) ->
     delete_input(Client, InputName, Input, []).
 delete_input(Client, InputName, Input0, Options) ->
     Method = delete,
-    Path = ["/inputs/", http_uri:encode(InputName), ""],
+    Path = ["/inputs/", aws_util:encode_uri(InputName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -111,14 +113,16 @@ delete_input(Client, InputName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Describes a detector model. If the <code>version</code> parameter is
-%% not specified, information about the latest version is returned.
+%% @doc Describes a detector model.
+%%
+%% If the `version' parameter is not specified, information about the latest
+%% version is returned.
 describe_detector_model(Client, DetectorModelName, DetectorModelVersion)
   when is_map(Client) ->
     describe_detector_model(Client, DetectorModelName, DetectorModelVersion, []).
 describe_detector_model(Client, DetectorModelName, DetectorModelVersion, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/detector-models/", http_uri:encode(DetectorModelName), ""],
+    Path = ["/detector-models/", aws_util:encode_uri(DetectorModelName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -137,7 +141,7 @@ describe_input(Client, InputName)
     describe_input(Client, InputName, []).
 describe_input(Client, InputName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/inputs/", http_uri:encode(InputName), ""],
+    Path = ["/inputs/", aws_util:encode_uri(InputName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -161,14 +165,15 @@ describe_logging_options(Client, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all the versions of a detector model. Only the metadata
-%% associated with each detector model version is returned.
+%% @doc Lists all the versions of a detector model.
+%%
+%% Only the metadata associated with each detector model version is returned.
 list_detector_model_versions(Client, DetectorModelName, MaxResults, NextToken)
   when is_map(Client) ->
     list_detector_model_versions(Client, DetectorModelName, MaxResults, NextToken, []).
 list_detector_model_versions(Client, DetectorModelName, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/detector-models/", http_uri:encode(DetectorModelName), "/versions"],
+    Path = ["/detector-models/", aws_util:encode_uri(DetectorModelName), "/versions"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -182,8 +187,9 @@ list_detector_model_versions(Client, DetectorModelName, MaxResults, NextToken, O
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the detector models you have created. Only the metadata
-%% associated with each detector model is returned.
+%% @doc Lists the detector models you have created.
+%%
+%% Only the metadata associated with each detector model is returned.
 list_detector_models(Client, MaxResults, NextToken)
   when is_map(Client) ->
     list_detector_models(Client, MaxResults, NextToken, []).
@@ -244,11 +250,11 @@ list_tags_for_resource(Client, ResourceArn, Options)
 
 %% @doc Sets or updates the AWS IoT Events logging options.
 %%
-%% If you update the value of any <code>loggingOptions</code> field, it takes
-%% up to one minute for the change to take effect. If you change the policy
-%% attached to the role you specified in the <code>roleArn</code> field (for
-%% example, to correct an invalid policy), it takes up to five minutes for
-%% that change to take effect.
+%% If you update the value of any `loggingOptions' field, it takes up to one
+%% minute for the change to take effect. If you change the policy attached to
+%% the role you specified in the `roleArn' field (for example, to correct an
+%% invalid policy), it takes up to five minutes for that change to take
+%% effect.
 put_logging_options(Client, Input) ->
     put_logging_options(Client, Input, []).
 put_logging_options(Client, Input0, Options) ->
@@ -264,8 +270,9 @@ put_logging_options(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds to or modifies the tags of the given resource. Tags are metadata
-%% that can be used to manage a resource.
+%% @doc Adds to or modifies the tags of the given resource.
+%%
+%% Tags are metadata that can be used to manage a resource.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 tag_resource(Client, Input0, Options) ->
@@ -300,13 +307,15 @@ untag_resource(Client, Input0, Options) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a detector model. Detectors (instances) spawned by the
-%% previous version are deleted and then re-created as new inputs arrive.
+%% @doc Updates a detector model.
+%%
+%% Detectors (instances) spawned by the previous version are deleted and then
+%% re-created as new inputs arrive.
 update_detector_model(Client, DetectorModelName, Input) ->
     update_detector_model(Client, DetectorModelName, Input, []).
 update_detector_model(Client, DetectorModelName, Input0, Options) ->
     Method = post,
-    Path = ["/detector-models/", http_uri:encode(DetectorModelName), ""],
+    Path = ["/detector-models/", aws_util:encode_uri(DetectorModelName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -322,7 +331,7 @@ update_input(Client, InputName, Input) ->
     update_input(Client, InputName, Input, []).
 update_input(Client, InputName, Input0, Options) ->
     Method = put,
-    Path = ["/inputs/", http_uri:encode(InputName), ""],
+    Path = ["/inputs/", aws_util:encode_uri(InputName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -379,6 +388,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

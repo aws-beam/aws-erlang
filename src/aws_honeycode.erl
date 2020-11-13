@@ -2,9 +2,10 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon Honeycode is a fully managed service that allows you to
-%% quickly build mobile and web apps for teams—without programming. Build
-%% Honeycode apps for managing almost anything, like projects, customers,
-%% operations, approvals, resources, and even your team.
+%% quickly build mobile and web apps for teams—without programming.
+%%
+%% Build Honeycode apps for managing almost anything, like projects,
+%% customers, operations, approvals, resources, and even your team.
 -module(aws_honeycode).
 
 -export([get_screen_data/2,
@@ -19,8 +20,10 @@
 %%====================================================================
 
 %% @doc The GetScreenData API allows retrieval of data from a screen in a
-%% Honeycode app. The API allows setting local variables in the screen to
-%% filter, sort or otherwise affect what will be displayed on the screen.
+%% Honeycode app.
+%%
+%% The API allows setting local variables in the screen to filter, sort or
+%% otherwise affect what will be displayed on the screen.
 get_screen_data(Client, Input) ->
     get_screen_data(Client, Input, []).
 get_screen_data(Client, Input0, Options) ->
@@ -37,15 +40,16 @@ get_screen_data(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The InvokeScreenAutomation API allows invoking an action defined in a
-%% screen in a Honeycode app. The API allows setting local variables, which
-%% can then be used in the automation being invoked. This allows automating
-%% the Honeycode app interactions to write, update or delete data in the
-%% workbook.
+%% screen in a Honeycode app.
+%%
+%% The API allows setting local variables, which can then be used in the
+%% automation being invoked. This allows automating the Honeycode app
+%% interactions to write, update or delete data in the workbook.
 invoke_screen_automation(Client, AppId, ScreenAutomationId, ScreenId, WorkbookId, Input) ->
     invoke_screen_automation(Client, AppId, ScreenAutomationId, ScreenId, WorkbookId, Input, []).
 invoke_screen_automation(Client, AppId, ScreenAutomationId, ScreenId, WorkbookId, Input0, Options) ->
     Method = post,
-    Path = ["/workbooks/", http_uri:encode(WorkbookId), "/apps/", http_uri:encode(AppId), "/screens/", http_uri:encode(ScreenId), "/automations/", http_uri:encode(ScreenAutomationId), ""],
+    Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/apps/", aws_util:encode_uri(AppId), "/screens/", aws_util:encode_uri(ScreenId), "/automations/", aws_util:encode_uri(ScreenAutomationId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -102,6 +106,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

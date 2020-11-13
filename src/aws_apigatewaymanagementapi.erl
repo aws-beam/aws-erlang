@@ -2,9 +2,10 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc The Amazon API Gateway Management API allows you to directly manage
-%% runtime aspects of your deployed APIs. To use it, you must explicitly set
-%% the SDK's endpoint to point to the endpoint of your deployed API. The
-%% endpoint will be of the form
+%% runtime aspects of your deployed APIs.
+%%
+%% To use it, you must explicitly set the SDK's endpoint to point to the
+%% endpoint of your deployed API. The endpoint will be of the form
 %% https://{api-id}.execute-api.{region}.amazonaws.com/{stage}, or will be
 %% the endpoint corresponding to your API's custom domain and base path, if
 %% applicable.
@@ -28,7 +29,7 @@ delete_connection(Client, ConnectionId, Input) ->
     delete_connection(Client, ConnectionId, Input, []).
 delete_connection(Client, ConnectionId, Input0, Options) ->
     Method = delete,
-    Path = ["/@connections/", http_uri:encode(ConnectionId), ""],
+    Path = ["/@connections/", aws_util:encode_uri(ConnectionId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -45,7 +46,7 @@ get_connection(Client, ConnectionId)
     get_connection(Client, ConnectionId, []).
 get_connection(Client, ConnectionId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/@connections/", http_uri:encode(ConnectionId), ""],
+    Path = ["/@connections/", aws_util:encode_uri(ConnectionId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -59,7 +60,7 @@ post_to_connection(Client, ConnectionId, Input) ->
     post_to_connection(Client, ConnectionId, Input, []).
 post_to_connection(Client, ConnectionId, Input0, Options) ->
     Method = post,
-    Path = ["/@connections/", http_uri:encode(ConnectionId), ""],
+    Path = ["/@connections/", aws_util:encode_uri(ConnectionId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -116,6 +117,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

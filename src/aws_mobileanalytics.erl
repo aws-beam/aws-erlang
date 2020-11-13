@@ -14,10 +14,11 @@
 %% API
 %%====================================================================
 
-%% @doc The PutEvents operation records one or more events. You can have up
-%% to 1,500 unique custom events per app, any combination of up to 40
-%% attributes and metrics per custom event, and any number of attribute or
-%% metric values.
+%% @doc The PutEvents operation records one or more events.
+%%
+%% You can have up to 1,500 unique custom events per app, any combination of
+%% up to 40 attributes and metrics per custom event, and any number of
+%% attribute or metric values.
 put_events(Client, Input) ->
     put_events(Client, Input, []).
 put_events(Client, Input0, Options) ->
@@ -82,6 +83,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

@@ -21,7 +21,7 @@ get_raw_message_content(Client, MessageId)
     get_raw_message_content(Client, MessageId, []).
 get_raw_message_content(Client, MessageId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/messages/", http_uri:encode(MessageId), ""],
+    Path = ["/messages/", aws_util:encode_uri(MessageId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -76,6 +76,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

@@ -3,13 +3,14 @@
 
 %% @doc Amazon Macie is a fully managed data security and data privacy
 %% service that uses machine learning and pattern matching to discover and
-%% protect your sensitive data in AWS. Macie automates the discovery of
-%% sensitive data, such as PII and intellectual property, to provide you with
-%% insight into the data that your organization stores in AWS. Macie also
-%% provides an inventory of your Amazon S3 buckets, which it continually
-%% monitors for you. If Macie detects sensitive data or potential data access
-%% issues, it generates detailed findings for you to review and act upon as
-%% necessary.
+%% protect your sensitive data in AWS.
+%%
+%% Macie automates the discovery of sensitive data, such as PII and
+%% intellectual property, to provide you with insight into the data that your
+%% organization stores in AWS. Macie also provides an inventory of your
+%% Amazon S3 buckets, which it continually monitors for you. If Macie detects
+%% sensitive data or potential data access issues, it generates detailed
+%% findings for you to review and act upon as necessary.
 -module(aws_macie2).
 
 -export([accept_invitation/2,
@@ -274,7 +275,7 @@ delete_custom_data_identifier(Client, Id, Input) ->
     delete_custom_data_identifier(Client, Id, Input, []).
 delete_custom_data_identifier(Client, Id, Input0, Options) ->
     Method = delete,
-    Path = ["/custom-data-identifiers/", http_uri:encode(Id), ""],
+    Path = ["/custom-data-identifiers/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -290,7 +291,7 @@ delete_findings_filter(Client, Id, Input) ->
     delete_findings_filter(Client, Id, Input, []).
 delete_findings_filter(Client, Id, Input0, Options) ->
     Method = delete,
-    Path = ["/findingsfilters/", http_uri:encode(Id), ""],
+    Path = ["/findingsfilters/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -324,7 +325,7 @@ delete_member(Client, Id, Input) ->
     delete_member(Client, Id, Input, []).
 delete_member(Client, Id, Input0, Options) ->
     Method = delete,
-    Path = ["/members/", http_uri:encode(Id), ""],
+    Path = ["/members/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -352,14 +353,13 @@ describe_buckets(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves information about the status and settings for a
-%% classification job.
+%% @doc Retrieves the status and settings for a classification job.
 describe_classification_job(Client, JobId)
   when is_map(Client) ->
     describe_classification_job(Client, JobId, []).
 describe_classification_job(Client, JobId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/jobs/", http_uri:encode(JobId), ""],
+    Path = ["/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -368,8 +368,8 @@ describe_classification_job(Client, JobId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves information about the Amazon Macie configuration settings
-%% for an AWS organization.
+%% @doc Retrieves the Amazon Macie configuration settings for an AWS
+%% organization.
 describe_organization_configuration(Client)
   when is_map(Client) ->
     describe_organization_configuration(Client, []).
@@ -401,8 +401,8 @@ disable_macie(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Disables an account as a delegated administrator of Amazon Macie for
-%% an AWS organization.
+%% @doc Disables an account as the delegated Amazon Macie administrator
+%% account for an AWS organization.
 disable_organization_admin_account(Client, Input) ->
     disable_organization_admin_account(Client, Input, []).
 disable_organization_admin_account(Client, Input0, Options) ->
@@ -440,7 +440,7 @@ disassociate_member(Client, Id, Input) ->
     disassociate_member(Client, Id, Input, []).
 disassociate_member(Client, Id, Input0, Options) ->
     Method = post,
-    Path = ["/members/disassociate/", http_uri:encode(Id), ""],
+    Path = ["/members/disassociate/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -468,8 +468,8 @@ enable_macie(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Enables an account as a delegated administrator of Amazon Macie for
-%% an AWS organization.
+%% @doc Designates an account as the delegated Amazon Macie administrator
+%% account for an AWS organization.
 enable_organization_admin_account(Client, Input) ->
     enable_organization_admin_account(Client, Input, []).
 enable_organization_admin_account(Client, Input0, Options) ->
@@ -518,14 +518,14 @@ get_classification_export_configuration(Client, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves information about the criteria and other settings for a
-%% custom data identifier.
+%% @doc Retrieves the criteria and other settings for a custom data
+%% identifier.
 get_custom_data_identifier(Client, Id)
   when is_map(Client) ->
     get_custom_data_identifier(Client, Id, []).
 get_custom_data_identifier(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/custom-data-identifiers/", http_uri:encode(Id), ""],
+    Path = ["/custom-data-identifiers/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -550,7 +550,7 @@ get_finding_statistics(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves information about one or more findings.
+%% @doc Retrieves the details of one or more findings.
 get_findings(Client, Input) ->
     get_findings(Client, Input, []).
 get_findings(Client, Input0, Options) ->
@@ -566,14 +566,13 @@ get_findings(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves information about the criteria and other settings for a
-%% findings filter.
+%% @doc Retrieves the criteria and other settings for a findings filter.
 get_findings_filter(Client, Id)
   when is_map(Client) ->
     get_findings_filter(Client, Id, []).
 get_findings_filter(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/findingsfilters/", http_uri:encode(Id), ""],
+    Path = ["/findingsfilters/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -598,8 +597,8 @@ get_invitations_count(Client, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves information about the current status and configuration
-%% settings for an Amazon Macie account.
+%% @doc Retrieves the current status and configuration settings for an Amazon
+%% Macie account.
 get_macie_session(Client)
   when is_map(Client) ->
     get_macie_session(Client, []).
@@ -637,7 +636,7 @@ get_member(Client, Id)
     get_member(Client, Id, []).
 get_member(Client, Id, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/members/", http_uri:encode(Id), ""],
+    Path = ["/members/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -792,8 +791,8 @@ list_members(Client, MaxResults, NextToken, OnlyAssociated, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves information about the account that's designated as the
-%% delegated administrator of Amazon Macie for an AWS organization.
+%% @doc Retrieves information about the delegated Amazon Macie administrator
+%% account for an AWS organization.
 list_organization_admin_accounts(Client, MaxResults, NextToken)
   when is_map(Client) ->
     list_organization_admin_accounts(Client, MaxResults, NextToken, []).
@@ -821,7 +820,7 @@ list_tags_for_resource(Client, ResourceArn)
     list_tags_for_resource(Client, ResourceArn, []).
 list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -854,7 +853,7 @@ tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -887,7 +886,7 @@ untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -899,12 +898,12 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Cancels a classification job.
+%% @doc Changes the status of a classification job.
 update_classification_job(Client, JobId, Input) ->
     update_classification_job(Client, JobId, Input, []).
 update_classification_job(Client, JobId, Input0, Options) ->
     Method = patch,
-    Path = ["/jobs/", http_uri:encode(JobId), ""],
+    Path = ["/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -920,7 +919,7 @@ update_findings_filter(Client, Id, Input) ->
     update_findings_filter(Client, Id, Input, []).
 update_findings_filter(Client, Id, Input0, Options) ->
     Method = patch,
-    Path = ["/findingsfilters/", http_uri:encode(Id), ""],
+    Path = ["/findingsfilters/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -954,7 +953,7 @@ update_member_session(Client, Id, Input) ->
     update_member_session(Client, Id, Input, []).
 update_member_session(Client, Id, Input0, Options) ->
     Method = patch,
-    Path = ["/macie/members/", http_uri:encode(Id), ""],
+    Path = ["/macie/members/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -965,7 +964,8 @@ update_member_session(Client, Id, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates Amazon Macie configuration settings for an AWS organization.
+%% @doc Updates the Amazon Macie configuration settings for an AWS
+%% organization.
 update_organization_configuration(Client, Input) ->
     update_organization_configuration(Client, Input, []).
 update_organization_configuration(Client, Input0, Options) ->
@@ -1027,6 +1027,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

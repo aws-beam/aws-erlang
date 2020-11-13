@@ -3,65 +3,49 @@
 
 %% @doc The AWS Serverless Application Repository makes it easy for
 %% developers and enterprises to quickly find
+%% and deploy serverless applications in the AWS Cloud.
 %%
-%% and deploy serverless applications in the AWS Cloud. For more information
-%% about serverless applications,
-%%
+%% For more information about serverless applications,
 %% see Serverless Computing and Applications on the AWS website.
 %%
 %% The AWS Serverless Application Repository is deeply integrated with the
 %% AWS Lambda console, so that developers of
-%%
 %% all levels can get started with serverless computing without needing to
 %% learn anything new. You can use category
-%%
 %% keywords to browse for applications such as web and mobile backends, data
 %% processing applications, or chatbots.
-%%
 %% You can also search for applications by name, publisher, or event source.
 %% To use an application, you simply choose it,
-%%
 %% configure any required fields, and deploy it with a few clicks.
 %%
 %% You can also easily publish applications, sharing them publicly with the
 %% community at large, or privately
-%%
 %% within your team or across your organization. To publish a serverless
 %% application (or app), you can use the
-%%
 %% AWS Management Console, AWS Command Line Interface (AWS CLI), or AWS SDKs
 %% to upload the code. Along with the
-%%
 %% code, you upload a simple manifest file, also known as the AWS Serverless
 %% Application Model (AWS SAM) template.
-%%
 %% For more information about AWS SAM, see AWS Serverless Application Model
 %% (AWS SAM) on the AWS Labs
-%%
 %% GitHub repository.
 %%
 %% The AWS Serverless Application Repository Developer Guide contains more
 %% information about the two developer
-%%
 %% experiences available:
 %%
 %% <ul>
-%%
 %% <li>
-%%
 %% Consuming Applications – Browse for applications and view information
 %% about them, including
-%%
 %% source code and readme files. Also install, configure, and deploy
 %% applications of your choosing.
 %%
 %% Publishing Applications – Configure and upload applications to make them
 %% available to other
-%%
 %% developers, and publish new versions of applications.
 %%
 %% </li>
-%%
 %% </ul>
 -module(aws_serverlessapplicationrepository).
 
@@ -122,7 +106,7 @@ create_application_version(Client, ApplicationId, SemanticVersion, Input) ->
     create_application_version(Client, ApplicationId, SemanticVersion, Input, []).
 create_application_version(Client, ApplicationId, SemanticVersion, Input0, Options) ->
     Method = put,
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/versions/", http_uri:encode(SemanticVersion), ""],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/versions/", aws_util:encode_uri(SemanticVersion), ""],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -138,7 +122,7 @@ create_cloud_formation_change_set(Client, ApplicationId, Input) ->
     create_cloud_formation_change_set(Client, ApplicationId, Input, []).
 create_cloud_formation_change_set(Client, ApplicationId, Input0, Options) ->
     Method = post,
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/changesets"],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/changesets"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -154,7 +138,7 @@ create_cloud_formation_template(Client, ApplicationId, Input) ->
     create_cloud_formation_template(Client, ApplicationId, Input, []).
 create_cloud_formation_template(Client, ApplicationId, Input0, Options) ->
     Method = post,
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/templates"],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/templates"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -170,7 +154,7 @@ delete_application(Client, ApplicationId, Input) ->
     delete_application(Client, ApplicationId, Input, []).
 delete_application(Client, ApplicationId, Input0, Options) ->
     Method = delete,
-    Path = ["/applications/", http_uri:encode(ApplicationId), ""],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -187,7 +171,7 @@ get_application(Client, ApplicationId, SemanticVersion)
     get_application(Client, ApplicationId, SemanticVersion, []).
 get_application(Client, ApplicationId, SemanticVersion, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/applications/", http_uri:encode(ApplicationId), ""],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -206,7 +190,7 @@ get_application_policy(Client, ApplicationId)
     get_application_policy(Client, ApplicationId, []).
 get_application_policy(Client, ApplicationId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/policy"],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/policy"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -221,7 +205,7 @@ get_cloud_formation_template(Client, ApplicationId, TemplateId)
     get_cloud_formation_template(Client, ApplicationId, TemplateId, []).
 get_cloud_formation_template(Client, ApplicationId, TemplateId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/templates/", http_uri:encode(TemplateId), ""],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/templates/", aws_util:encode_uri(TemplateId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -237,7 +221,7 @@ list_application_dependencies(Client, ApplicationId, MaxItems, NextToken, Semant
     list_application_dependencies(Client, ApplicationId, MaxItems, NextToken, SemanticVersion, []).
 list_application_dependencies(Client, ApplicationId, MaxItems, NextToken, SemanticVersion, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/dependencies"],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/dependencies"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -258,7 +242,7 @@ list_application_versions(Client, ApplicationId, MaxItems, NextToken)
     list_application_versions(Client, ApplicationId, MaxItems, NextToken, []).
 list_application_versions(Client, ApplicationId, MaxItems, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/versions"],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/versions"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -292,20 +276,17 @@ list_applications(Client, MaxItems, NextToken, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Sets the permission policy for an application. For the list of
-%% actions supported for this operation, see
+%% @doc Sets the permission policy for an application.
 %%
-%% <a
-%% href="https://docs.aws.amazon.com/serverlessrepo/latest/devguide/access-control-resource-based.html#application-permissions">Application
-%%
-%% Permissions</a>
-%%
+%% For the list of actions supported for this operation, see
+%% Application
+%% Permissions
 %% .
 put_application_policy(Client, ApplicationId, Input) ->
     put_application_policy(Client, ApplicationId, Input, []).
 put_application_policy(Client, ApplicationId, Input0, Options) ->
     Method = put,
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/policy"],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/policy"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -323,7 +304,7 @@ unshare_application(Client, ApplicationId, Input) ->
     unshare_application(Client, ApplicationId, Input, []).
 unshare_application(Client, ApplicationId, Input0, Options) ->
     Method = post,
-    Path = ["/applications/", http_uri:encode(ApplicationId), "/unshare"],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/unshare"],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -339,7 +320,7 @@ update_application(Client, ApplicationId, Input) ->
     update_application(Client, ApplicationId, Input, []).
 update_application(Client, ApplicationId, Input0, Options) ->
     Method = patch,
-    Path = ["/applications/", http_uri:encode(ApplicationId), ""],
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -396,6 +377,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

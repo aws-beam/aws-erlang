@@ -2,8 +2,10 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc An AWS Elemental MediaStore asset is an object, similar to an object
-%% in the Amazon S3 service. Objects are the fundamental entities that are
-%% stored in AWS Elemental MediaStore.
+%% in the Amazon S3 service.
+%%
+%% Objects are the fundamental entities that are stored in AWS Elemental
+%% MediaStore.
 -module(aws_mediastore_data).
 
 -export([delete_object/3,
@@ -28,7 +30,7 @@ delete_object(Client, Path, Input) ->
     delete_object(Client, Path, Input, []).
 delete_object(Client, Path, Input0, Options) ->
     Method = delete,
-    Path = ["/", aws_util:encode_uri(Path, true), ""],
+    Path = ["/", aws_util:encode_multi_segment_uri(Path), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -44,7 +46,7 @@ describe_object(Client, Path, Input) ->
     describe_object(Client, Path, Input, []).
 describe_object(Client, Path, Input0, Options) ->
     Method = head,
-    Path = ["/", aws_util:encode_uri(Path, true), ""],
+    Path = ["/", aws_util:encode_multi_segment_uri(Path), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -75,15 +77,16 @@ describe_object(Client, Path, Input0, Options) ->
         Result
     end.
 
-%% @doc Downloads the object at the specified path. If the object’s upload
-%% availability is set to <code>streaming</code>, AWS Elemental MediaStore
-%% downloads the object even if it’s still uploading the object.
+%% @doc Downloads the object at the specified path.
+%%
+%% If the object’s upload availability is set to `streaming', AWS Elemental
+%% MediaStore downloads the object even if it’s still uploading the object.
 get_object(Client, Path, Range)
   when is_map(Client) ->
     get_object(Client, Path, Range, []).
 get_object(Client, Path, Range, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/", aws_util:encode_uri(Path, true), ""],
+    Path = ["/", aws_util:encode_multi_segment_uri(Path), ""],
     SuccessStatusCode = undefined,
 
     Headers0 =
@@ -139,14 +142,15 @@ list_items(Client, MaxResults, NextToken, Path, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Uploads an object to the specified path. Object sizes are limited to
-%% 25 MB for standard upload availability and 10 MB for streaming upload
-%% availability.
+%% @doc Uploads an object to the specified path.
+%%
+%% Object sizes are limited to 25 MB for standard upload availability and 10
+%% MB for streaming upload availability.
 put_object(Client, Path, Input) ->
     put_object(Client, Path, Input, []).
 put_object(Client, Path, Input0, Options) ->
     Method = put,
-    Path = ["/", aws_util:encode_uri(Path, true), ""],
+    Path = ["/", aws_util:encode_multi_segment_uri(Path), ""],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
@@ -208,6 +212,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

@@ -49,8 +49,9 @@
 %% API
 %%====================================================================
 
-%% @doc Ends a given Amazon QLDB journal stream. Before a stream can be
-%% canceled, its current status must be <code>ACTIVE</code>.
+%% @doc Ends a given Amazon QLDB journal stream.
+%%
+%% Before a stream can be canceled, its current status must be `ACTIVE'.
 %%
 %% You can't restart a stream after you cancel it. Canceled QLDB stream
 %% resources are subject to a 7-day retention period, so they are
@@ -59,7 +60,7 @@ cancel_journal_kinesis_stream(Client, LedgerName, StreamId, Input) ->
     cancel_journal_kinesis_stream(Client, LedgerName, StreamId, Input, []).
 cancel_journal_kinesis_stream(Client, LedgerName, StreamId, Input0, Options) ->
     Method = delete,
-    Path = ["/ledgers/", http_uri:encode(LedgerName), "/journal-kinesis-streams/", http_uri:encode(StreamId), ""],
+    Path = ["/ledgers/", aws_util:encode_uri(LedgerName), "/journal-kinesis-streams/", aws_util:encode_uri(StreamId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -86,19 +87,20 @@ create_ledger(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a ledger and all of its contents. This action is
-%% irreversible.
+%% @doc Deletes a ledger and all of its contents.
+%%
+%% This action is irreversible.
 %%
 %% If deletion protection is enabled, you must first disable it before you
 %% can delete the ledger using the QLDB API or the AWS Command Line Interface
-%% (AWS CLI). You can disable it by calling the <code>UpdateLedger</code>
-%% operation to set the flag to <code>false</code>. The QLDB console disables
-%% deletion protection for you when you use it to delete a ledger.
+%% (AWS CLI). You can disable it by calling the `UpdateLedger' operation to
+%% set the flag to `false'. The QLDB console disables deletion protection for
+%% you when you use it to delete a ledger.
 delete_ledger(Client, Name, Input) ->
     delete_ledger(Client, Name, Input, []).
 delete_ledger(Client, Name, Input0, Options) ->
     Method = delete,
-    Path = ["/ledgers/", http_uri:encode(Name), ""],
+    Path = ["/ledgers/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -110,15 +112,17 @@ delete_ledger(Client, Name, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns detailed information about a given Amazon QLDB journal
-%% stream. The output includes the Amazon Resource Name (ARN), stream name,
-%% current status, creation time, and the parameters of your original stream
-%% creation request.
+%% stream.
+%%
+%% The output includes the Amazon Resource Name (ARN), stream name, current
+%% status, creation time, and the parameters of your original stream creation
+%% request.
 describe_journal_kinesis_stream(Client, LedgerName, StreamId)
   when is_map(Client) ->
     describe_journal_kinesis_stream(Client, LedgerName, StreamId, []).
 describe_journal_kinesis_stream(Client, LedgerName, StreamId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/ledgers/", http_uri:encode(LedgerName), "/journal-kinesis-streams/", http_uri:encode(StreamId), ""],
+    Path = ["/ledgers/", aws_util:encode_uri(LedgerName), "/journal-kinesis-streams/", aws_util:encode_uri(StreamId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -132,21 +136,19 @@ describe_journal_kinesis_stream(Client, LedgerName, StreamId, Options)
 %% end time export parameters.
 %%
 %% This action does not return any expired export jobs. For more information,
-%% see <a
-%% href="https://docs.aws.amazon.com/qldb/latest/developerguide/export-journal.request.html#export-journal.request.expiration">Export
-%% Job Expiration</a> in the <i>Amazon QLDB Developer Guide</i>.
+%% see Export Job Expiration in the Amazon QLDB Developer Guide.
 %%
-%% If the export job with the given <code>ExportId</code> doesn't exist, then
-%% throws <code>ResourceNotFoundException</code>.
+%% If the export job with the given `ExportId' doesn't exist, then throws
+%% `ResourceNotFoundException'.
 %%
-%% If the ledger with the given <code>Name</code> doesn't exist, then throws
-%% <code>ResourceNotFoundException</code>.
+%% If the ledger with the given `Name' doesn't exist, then throws
+%% `ResourceNotFoundException'.
 describe_journal_s3_export(Client, ExportId, Name)
   when is_map(Client) ->
     describe_journal_s3_export(Client, ExportId, Name, []).
 describe_journal_s3_export(Client, ExportId, Name, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/ledgers/", http_uri:encode(Name), "/journal-s3-exports/", http_uri:encode(ExportId), ""],
+    Path = ["/ledgers/", aws_util:encode_uri(Name), "/journal-s3-exports/", aws_util:encode_uri(ExportId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -162,7 +164,7 @@ describe_ledger(Client, Name)
     describe_ledger(Client, Name, []).
 describe_ledger(Client, Name, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/ledgers/", http_uri:encode(Name), ""],
+    Path = ["/ledgers/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -172,23 +174,24 @@ describe_ledger(Client, Name, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Exports journal contents within a date and time range from a ledger
-%% into a specified Amazon Simple Storage Service (Amazon S3) bucket. The
-%% data is written as files in Amazon Ion format.
+%% into a specified Amazon Simple Storage Service (Amazon S3) bucket.
 %%
-%% If the ledger with the given <code>Name</code> doesn't exist, then throws
-%% <code>ResourceNotFoundException</code>.
+%% The data is written as files in Amazon Ion format.
 %%
-%% If the ledger with the given <code>Name</code> is in <code>CREATING</code>
-%% status, then throws <code>ResourcePreconditionNotMetException</code>.
+%% If the ledger with the given `Name' doesn't exist, then throws
+%% `ResourceNotFoundException'.
+%%
+%% If the ledger with the given `Name' is in `CREATING' status, then throws
+%% `ResourcePreconditionNotMetException'.
 %%
 %% You can initiate up to two concurrent journal export requests for each
 %% ledger. Beyond this limit, journal export requests throw
-%% <code>LimitExceededException</code>.
+%% `LimitExceededException'.
 export_journal_to_s3(Client, Name, Input) ->
     export_journal_to_s3(Client, Name, Input, []).
 export_journal_to_s3(Client, Name, Input0, Options) ->
     Method = post,
-    Path = ["/ledgers/", http_uri:encode(Name), "/journal-s3-exports"],
+    Path = ["/ledgers/", aws_util:encode_uri(Name), "/journal-s3-exports"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -199,27 +202,27 @@ export_journal_to_s3(Client, Name, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a block object at a specified address in a journal. Also
-%% returns a proof of the specified block for verification if
-%% <code>DigestTipAddress</code> is provided.
+%% @doc Returns a block object at a specified address in a journal.
 %%
-%% For information about the data contents in a block, see <a
-%% href="https://docs.aws.amazon.com/qldb/latest/developerguide/journal-contents.html">Journal
-%% contents</a> in the <i>Amazon QLDB Developer Guide</i>.
+%% Also returns a proof of the specified block for verification if
+%% `DigestTipAddress' is provided.
 %%
-%% If the specified ledger doesn't exist or is in <code>DELETING</code>
-%% status, then throws <code>ResourceNotFoundException</code>.
+%% For information about the data contents in a block, see Journal contents
+%% in the Amazon QLDB Developer Guide.
 %%
-%% If the specified ledger is in <code>CREATING</code> status, then throws
-%% <code>ResourcePreconditionNotMetException</code>.
+%% If the specified ledger doesn't exist or is in `DELETING' status, then
+%% throws `ResourceNotFoundException'.
+%%
+%% If the specified ledger is in `CREATING' status, then throws
+%% `ResourcePreconditionNotMetException'.
 %%
 %% If no block exists with the specified address, then throws
-%% <code>InvalidParameterException</code>.
+%% `InvalidParameterException'.
 get_block(Client, Name, Input) ->
     get_block(Client, Name, Input, []).
 get_block(Client, Name, Input0, Options) ->
     Method = post,
-    Path = ["/ledgers/", http_uri:encode(Name), "/block"],
+    Path = ["/ledgers/", aws_util:encode_uri(Name), "/block"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -231,12 +234,14 @@ get_block(Client, Name, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns the digest of a ledger at the latest committed block in the
-%% journal. The response includes a 256-bit hash value and a block address.
+%% journal.
+%%
+%% The response includes a 256-bit hash value and a block address.
 get_digest(Client, Name, Input) ->
     get_digest(Client, Name, Input, []).
 get_digest(Client, Name, Input0, Options) ->
     Method = post,
-    Path = ["/ledgers/", http_uri:encode(Name), "/digest"],
+    Path = ["/ledgers/", aws_util:encode_uri(Name), "/digest"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -248,13 +253,15 @@ get_digest(Client, Name, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a revision data object for a specified document ID and block
-%% address. Also returns a proof of the specified revision for verification
-%% if <code>DigestTipAddress</code> is provided.
+%% address.
+%%
+%% Also returns a proof of the specified revision for verification if
+%% `DigestTipAddress' is provided.
 get_revision(Client, Name, Input) ->
     get_revision(Client, Name, Input, []).
 get_revision(Client, Name, Input0, Options) ->
     Method = post,
-    Path = ["/ledgers/", http_uri:encode(Name), "/revision"],
+    Path = ["/ledgers/", aws_util:encode_uri(Name), "/revision"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -266,18 +273,20 @@ get_revision(Client, Name, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns an array of all Amazon QLDB journal stream descriptors for a
-%% given ledger. The output of each stream descriptor includes the same
-%% details that are returned by <code>DescribeJournalKinesisStream</code>.
+%% given ledger.
 %%
-%% This action returns a maximum of <code>MaxResults</code> items. It is
-%% paginated so that you can retrieve all the items by calling
-%% <code>ListJournalKinesisStreamsForLedger</code> multiple times.
+%% The output of each stream descriptor includes the same details that are
+%% returned by `DescribeJournalKinesisStream'.
+%%
+%% This action returns a maximum of `MaxResults' items. It is paginated so
+%% that you can retrieve all the items by calling
+%% `ListJournalKinesisStreamsForLedger' multiple times.
 list_journal_kinesis_streams_for_ledger(Client, LedgerName, MaxResults, NextToken)
   when is_map(Client) ->
     list_journal_kinesis_streams_for_ledger(Client, LedgerName, MaxResults, NextToken, []).
 list_journal_kinesis_streams_for_ledger(Client, LedgerName, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/ledgers/", http_uri:encode(LedgerName), "/journal-kinesis-streams"],
+    Path = ["/ledgers/", aws_util:encode_uri(LedgerName), "/journal-kinesis-streams"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -294,14 +303,12 @@ list_journal_kinesis_streams_for_ledger(Client, LedgerName, MaxResults, NextToke
 %% @doc Returns an array of journal export job descriptions for all ledgers
 %% that are associated with the current AWS account and Region.
 %%
-%% This action returns a maximum of <code>MaxResults</code> items, and is
-%% paginated so that you can retrieve all the items by calling
-%% <code>ListJournalS3Exports</code> multiple times.
+%% This action returns a maximum of `MaxResults' items, and is paginated so
+%% that you can retrieve all the items by calling `ListJournalS3Exports'
+%% multiple times.
 %%
 %% This action does not return any expired export jobs. For more information,
-%% see <a
-%% href="https://docs.aws.amazon.com/qldb/latest/developerguide/export-journal.request.html#export-journal.request.expiration">Export
-%% Job Expiration</a> in the <i>Amazon QLDB Developer Guide</i>.
+%% see Export Job Expiration in the Amazon QLDB Developer Guide.
 list_journal_s3_exports(Client, MaxResults, NextToken)
   when is_map(Client) ->
     list_journal_s3_exports(Client, MaxResults, NextToken, []).
@@ -324,20 +331,18 @@ list_journal_s3_exports(Client, MaxResults, NextToken, Options)
 %% @doc Returns an array of journal export job descriptions for a specified
 %% ledger.
 %%
-%% This action returns a maximum of <code>MaxResults</code> items, and is
-%% paginated so that you can retrieve all the items by calling
-%% <code>ListJournalS3ExportsForLedger</code> multiple times.
+%% This action returns a maximum of `MaxResults' items, and is paginated so
+%% that you can retrieve all the items by calling
+%% `ListJournalS3ExportsForLedger' multiple times.
 %%
 %% This action does not return any expired export jobs. For more information,
-%% see <a
-%% href="https://docs.aws.amazon.com/qldb/latest/developerguide/export-journal.request.html#export-journal.request.expiration">Export
-%% Job Expiration</a> in the <i>Amazon QLDB Developer Guide</i>.
+%% see Export Job Expiration in the Amazon QLDB Developer Guide.
 list_journal_s3_exports_for_ledger(Client, Name, MaxResults, NextToken)
   when is_map(Client) ->
     list_journal_s3_exports_for_ledger(Client, Name, MaxResults, NextToken, []).
 list_journal_s3_exports_for_ledger(Client, Name, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/ledgers/", http_uri:encode(Name), "/journal-s3-exports"],
+    Path = ["/ledgers/", aws_util:encode_uri(Name), "/journal-s3-exports"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -355,8 +360,7 @@ list_journal_s3_exports_for_ledger(Client, Name, MaxResults, NextToken, Options)
 %% current AWS account and Region.
 %%
 %% This action returns a maximum of 100 items and is paginated so that you
-%% can retrieve all the items by calling <code>ListLedgers</code> multiple
-%% times.
+%% can retrieve all the items by calling `ListLedgers' multiple times.
 list_ledgers(Client, MaxResults, NextToken)
   when is_map(Client) ->
     list_ledgers(Client, MaxResults, NextToken, []).
@@ -382,7 +386,7 @@ list_tags_for_resource(Client, ResourceArn)
     list_tags_for_resource(Client, ResourceArn, []).
 list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -391,14 +395,16 @@ list_tags_for_resource(Client, ResourceArn, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Creates a journal stream for a given Amazon QLDB ledger. The stream
-%% captures every document revision that is committed to the ledger's journal
-%% and delivers the data to a specified Amazon Kinesis Data Streams resource.
+%% @doc Creates a journal stream for a given Amazon QLDB ledger.
+%%
+%% The stream captures every document revision that is committed to the
+%% ledger's journal and delivers the data to a specified Amazon Kinesis Data
+%% Streams resource.
 stream_journal_to_kinesis(Client, LedgerName, Input) ->
     stream_journal_to_kinesis(Client, LedgerName, Input, []).
 stream_journal_to_kinesis(Client, LedgerName, Input0, Options) ->
     Method = post,
-    Path = ["/ledgers/", http_uri:encode(LedgerName), "/journal-kinesis-streams"],
+    Path = ["/ledgers/", aws_util:encode_uri(LedgerName), "/journal-kinesis-streams"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -417,7 +423,7 @@ tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -428,13 +434,14 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes one or more tags from a specified Amazon QLDB resource. You
-%% can specify up to 50 tag keys to remove.
+%% @doc Removes one or more tags from a specified Amazon QLDB resource.
+%%
+%% You can specify up to 50 tag keys to remove.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -451,7 +458,7 @@ update_ledger(Client, Name, Input) ->
     update_ledger(Client, Name, Input, []).
 update_ledger(Client, Name, Input0, Options) ->
     Method = patch,
-    Path = ["/ledgers/", http_uri:encode(Name), ""],
+    Path = ["/ledgers/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -508,6 +515,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

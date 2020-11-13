@@ -2,14 +2,18 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Use the AWS Elemental MediaTailor SDK to configure scalable ad
-%% insertion for your live and VOD content. With AWS Elemental MediaTailor,
-%% you can serve targeted ads to viewers while maintaining broadcast quality
-%% in over-the-top (OTT) video applications. For information about using the
-%% service, including detailed information about the settings covered in this
-%% guide, see the AWS Elemental MediaTailor User Guide.Through the SDK, you
-%% manage AWS Elemental MediaTailor configurations the same as you do through
-%% the console. For example, you specify ad insertion behavior and mapping
-%% information for the origin server and the ad decision server (ADS).
+%% insertion for your live and VOD content.
+%%
+%% With AWS Elemental MediaTailor, you can serve targeted ads to viewers
+%% while maintaining broadcast quality in over-the-top (OTT) video
+%% applications. For information about using the service, including detailed
+%% information about the settings covered in this guide, see the AWS
+%% Elemental MediaTailor User Guide.
+%%
+%% Through the SDK, you manage AWS Elemental MediaTailor configurations the
+%% same as you do through the console. For example, you specify ad insertion
+%% behavior and mapping information for the origin server and the ad decision
+%% server (ADS).
 -module(aws_mediatailor).
 
 -export([delete_playback_configuration/3,
@@ -38,7 +42,7 @@ delete_playback_configuration(Client, Name, Input) ->
     delete_playback_configuration(Client, Name, Input, []).
 delete_playback_configuration(Client, Name, Input0, Options) ->
     Method = delete,
-    Path = ["/playbackConfiguration/", http_uri:encode(Name), ""],
+    Path = ["/playbackConfiguration/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -55,7 +59,7 @@ get_playback_configuration(Client, Name)
     get_playback_configuration(Client, Name, []).
 get_playback_configuration(Client, Name, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/playbackConfiguration/", http_uri:encode(Name), ""],
+    Path = ["/playbackConfiguration/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -65,11 +69,13 @@ get_playback_configuration(Client, Name, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of the playback configurations defined in AWS
-%% Elemental MediaTailor. You can specify a maximum number of configurations
-%% to return at a time. The default maximum is 50. Results are returned in
-%% pagefuls. If MediaTailor has more configurations than the specified
-%% maximum, it provides parameters in the response that you can use to
-%% retrieve the next pageful.
+%% Elemental MediaTailor.
+%%
+%% You can specify a maximum number of configurations to return at a time.
+%% The default maximum is 50. Results are returned in pagefuls. If
+%% MediaTailor has more configurations than the specified maximum, it
+%% provides parameters in the response that you can use to retrieve the next
+%% pageful.
 list_playback_configurations(Client, MaxResults, NextToken)
   when is_map(Client) ->
     list_playback_configurations(Client, MaxResults, NextToken, []).
@@ -96,7 +102,7 @@ list_tags_for_resource(Client, ResourceArn)
     list_tags_for_resource(Client, ResourceArn, []).
 list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -121,13 +127,14 @@ put_playback_configuration(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds tags to the specified playback configuration resource. You can
-%% specify one or more tags to add.
+%% @doc Adds tags to the specified playback configuration resource.
+%%
+%% You can specify one or more tags to add.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -138,13 +145,14 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes tags from the specified playback configuration resource. You
-%% can specify one or more tags to remove.
+%% @doc Removes tags from the specified playback configuration resource.
+%%
+%% You can specify one or more tags to remove.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -202,6 +210,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

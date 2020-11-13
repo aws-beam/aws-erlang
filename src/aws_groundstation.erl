@@ -1,11 +1,12 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Welcome to the AWS Ground Station API Reference. AWS Ground Station
-%% is a fully managed service that enables you to control satellite
-%% communications, downlink and process satellite data, and scale your
-%% satellite operations efficiently and cost-effectively without having to
-%% build or manage your own ground station infrastructure.
+%% @doc Welcome to the AWS Ground Station API Reference.
+%%
+%% AWS Ground Station is a fully managed service that enables you to control
+%% satellite communications, downlink and process satellite data, and scale
+%% your satellite operations efficiently and cost-effectively without having
+%% to build or manage your own ground station infrastructure.
 -module(aws_groundstation).
 
 -export([cancel_contact/3,
@@ -70,7 +71,7 @@ cancel_contact(Client, ContactId, Input) ->
     cancel_contact(Client, ContactId, Input, []).
 cancel_contact(Client, ContactId, Input0, Options) ->
     Method = delete,
-    Path = ["/contact/", http_uri:encode(ContactId), ""],
+    Path = ["/contact/", aws_util:encode_uri(ContactId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -81,10 +82,9 @@ cancel_contact(Client, ContactId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a <code>Config</code> with the specified
-%% <code>configData</code> parameters.
+%% @doc Creates a `Config' with the specified `configData' parameters.
 %%
-%% Only one type of <code>configData</code> can be specified.
+%% Only one type of `configData' can be specified.
 create_config(Client, Input) ->
     create_config(Client, Input, []).
 create_config(Client, Input0, Options) ->
@@ -100,16 +100,15 @@ create_config(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a <code>DataflowEndpoint</code> group containing the
-%% specified list of <code>DataflowEndpoint</code> objects.
+%% @doc Creates a `DataflowEndpoint' group containing the specified list of
+%% `DataflowEndpoint' objects.
 %%
-%% The <code>name</code> field in each endpoint is used in your mission
-%% profile <code>DataflowEndpointConfig</code> to specify which endpoints to
-%% use during a contact.
+%% The `name' field in each endpoint is used in your mission profile
+%% `DataflowEndpointConfig' to specify which endpoints to use during a
+%% contact.
 %%
-%% When a contact uses multiple <code>DataflowEndpointConfig</code> objects,
-%% each <code>Config</code> must match a <code>DataflowEndpoint</code> in the
-%% same group.
+%% When a contact uses multiple `DataflowEndpointConfig' objects, each
+%% `Config' must match a `DataflowEndpoint' in the same group.
 create_dataflow_endpoint_group(Client, Input) ->
     create_dataflow_endpoint_group(Client, Input, []).
 create_dataflow_endpoint_group(Client, Input0, Options) ->
@@ -127,8 +126,8 @@ create_dataflow_endpoint_group(Client, Input0, Options) ->
 
 %% @doc Creates a mission profile.
 %%
-%% <code>dataflowEdges</code> is a list of lists of strings. Each lower level
-%% list of strings has two elements: a <i>from</i> ARN and a <i>to</i> ARN.
+%% `dataflowEdges' is a list of lists of strings. Each lower level list of
+%% strings has two elements: a from ARN and a to ARN.
 create_mission_profile(Client, Input) ->
     create_mission_profile(Client, Input, []).
 create_mission_profile(Client, Input0, Options) ->
@@ -144,12 +143,12 @@ create_mission_profile(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a <code>Config</code>.
+%% @doc Deletes a `Config'.
 delete_config(Client, ConfigId, ConfigType, Input) ->
     delete_config(Client, ConfigId, ConfigType, Input, []).
 delete_config(Client, ConfigId, ConfigType, Input0, Options) ->
     Method = delete,
-    Path = ["/config/", http_uri:encode(ConfigType), "/", http_uri:encode(ConfigId), ""],
+    Path = ["/config/", aws_util:encode_uri(ConfigType), "/", aws_util:encode_uri(ConfigId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -165,7 +164,7 @@ delete_dataflow_endpoint_group(Client, DataflowEndpointGroupId, Input) ->
     delete_dataflow_endpoint_group(Client, DataflowEndpointGroupId, Input, []).
 delete_dataflow_endpoint_group(Client, DataflowEndpointGroupId, Input0, Options) ->
     Method = delete,
-    Path = ["/dataflowEndpointGroup/", http_uri:encode(DataflowEndpointGroupId), ""],
+    Path = ["/dataflowEndpointGroup/", aws_util:encode_uri(DataflowEndpointGroupId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -181,7 +180,7 @@ delete_mission_profile(Client, MissionProfileId, Input) ->
     delete_mission_profile(Client, MissionProfileId, Input, []).
 delete_mission_profile(Client, MissionProfileId, Input0, Options) ->
     Method = delete,
-    Path = ["/missionprofile/", http_uri:encode(MissionProfileId), ""],
+    Path = ["/missionprofile/", aws_util:encode_uri(MissionProfileId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -198,7 +197,7 @@ describe_contact(Client, ContactId)
     describe_contact(Client, ContactId, []).
 describe_contact(Client, ContactId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/contact/", http_uri:encode(ContactId), ""],
+    Path = ["/contact/", aws_util:encode_uri(ContactId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -207,15 +206,15 @@ describe_contact(Client, ContactId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns <code>Config</code> information.
+%% @doc Returns `Config' information.
 %%
-%% Only one <code>Config</code> response can be returned.
+%% Only one `Config' response can be returned.
 get_config(Client, ConfigId, ConfigType)
   when is_map(Client) ->
     get_config(Client, ConfigId, ConfigType, []).
 get_config(Client, ConfigId, ConfigType, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/config/", http_uri:encode(ConfigType), "/", http_uri:encode(ConfigId), ""],
+    Path = ["/config/", aws_util:encode_uri(ConfigType), "/", aws_util:encode_uri(ConfigId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -230,7 +229,7 @@ get_dataflow_endpoint_group(Client, DataflowEndpointGroupId)
     get_dataflow_endpoint_group(Client, DataflowEndpointGroupId, []).
 get_dataflow_endpoint_group(Client, DataflowEndpointGroupId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/dataflowEndpointGroup/", http_uri:encode(DataflowEndpointGroupId), ""],
+    Path = ["/dataflowEndpointGroup/", aws_util:encode_uri(DataflowEndpointGroupId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -261,7 +260,7 @@ get_mission_profile(Client, MissionProfileId)
     get_mission_profile(Client, MissionProfileId, []).
 get_mission_profile(Client, MissionProfileId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/missionprofile/", http_uri:encode(MissionProfileId), ""],
+    Path = ["/missionprofile/", aws_util:encode_uri(MissionProfileId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -276,7 +275,7 @@ get_satellite(Client, SatelliteId)
     get_satellite(Client, SatelliteId, []).
 get_satellite(Client, SatelliteId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/satellite/", http_uri:encode(SatelliteId), ""],
+    Path = ["/satellite/", aws_util:encode_uri(SatelliteId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -285,7 +284,7 @@ get_satellite(Client, SatelliteId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of <code>Config</code> objects.
+%% @doc Returns a list of `Config' objects.
 list_configs(Client, MaxResults, NextToken)
   when is_map(Client) ->
     list_configs(Client, MaxResults, NextToken, []).
@@ -307,9 +306,8 @@ list_configs(Client, MaxResults, NextToken, Options)
 
 %% @doc Returns a list of contacts.
 %%
-%% If <code>statusList</code> contains AVAILABLE, the request must include
-%% <code>groundStation</code>, <code>missionprofileArn</code>, and
-%% <code>satelliteArn</code>.
+%% If `statusList' contains AVAILABLE, the request must include
+%% `groundStation', `missionprofileArn', and `satelliteArn'.
 list_contacts(Client, Input) ->
     list_contacts(Client, Input, []).
 list_contacts(Client, Input0, Options) ->
@@ -325,7 +323,7 @@ list_contacts(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of <code>DataflowEndpoint</code> groups.
+%% @doc Returns a list of `DataflowEndpoint' groups.
 list_dataflow_endpoint_groups(Client, MaxResults, NextToken)
   when is_map(Client) ->
     list_dataflow_endpoint_groups(Client, MaxResults, NextToken, []).
@@ -412,7 +410,7 @@ list_tags_for_resource(Client, ResourceArn)
     list_tags_for_resource(Client, ResourceArn, []).
 list_tags_for_resource(Client, ResourceArn, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -442,7 +440,7 @@ tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
     Method = post,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -458,7 +456,7 @@ untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options) ->
     Method = delete,
-    Path = ["/tags/", http_uri:encode(ResourceArn), ""],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -470,15 +468,15 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the <code>Config</code> used when scheduling contacts.
+%% @doc Updates the `Config' used when scheduling contacts.
 %%
-%% Updating a <code>Config</code> will not update the execution parameters
-%% for existing future contacts scheduled with this <code>Config</code>.
+%% Updating a `Config' will not update the execution parameters for existing
+%% future contacts scheduled with this `Config'.
 update_config(Client, ConfigId, ConfigType, Input) ->
     update_config(Client, ConfigId, ConfigType, Input, []).
 update_config(Client, ConfigId, ConfigType, Input0, Options) ->
     Method = put,
-    Path = ["/config/", http_uri:encode(ConfigType), "/", http_uri:encode(ConfigId), ""],
+    Path = ["/config/", aws_util:encode_uri(ConfigType), "/", aws_util:encode_uri(ConfigId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -497,7 +495,7 @@ update_mission_profile(Client, MissionProfileId, Input) ->
     update_mission_profile(Client, MissionProfileId, Input, []).
 update_mission_profile(Client, MissionProfileId, Input0, Options) ->
     Method = put,
-    Path = ["/missionprofile/", http_uri:encode(MissionProfileId), ""],
+    Path = ["/missionprofile/", aws_util:encode_uri(MissionProfileId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -554,6 +552,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

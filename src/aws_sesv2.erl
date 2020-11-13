@@ -1,30 +1,27 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc <fullname>Amazon SES API v2</fullname>
+%% @doc Amazon SES API v2
 %%
-%% Welcome to the Amazon SES API v2 Reference. This guide provides
-%% information about the Amazon SES API v2, including supported operations,
-%% data types, parameters, and schemas.
+%% Welcome to the Amazon SES API v2 Reference.
 %%
-%% <a href="https://aws.amazon.com/pinpoint">Amazon SES</a> is an AWS service
-%% that you can use to send email messages to your customers.
+%% This guide provides information about the Amazon SES API v2, including
+%% supported operations, data types, parameters, and schemas.
+%%
+%% Amazon SES is an AWS service that you can use to send email messages to
+%% your customers.
 %%
 %% If you're new to Amazon SES API v2, you might find it helpful to also
-%% review the <a
-%% href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/">Amazon
-%% Simple Email Service Developer Guide</a>. The <i>Amazon SES Developer
-%% Guide</i> provides information and code samples that demonstrate how to
-%% use Amazon SES API v2 features programmatically.
+%% review the Amazon Simple Email Service Developer Guide. The Amazon SES
+%% Developer Guide provides information and code samples that demonstrate how
+%% to use Amazon SES API v2 features programmatically.
 %%
 %% The Amazon SES API v2 is available in several AWS Regions and it provides
 %% an endpoint for each of these Regions. For a list of all the Regions and
-%% endpoints where the API is currently available, see <a
-%% href="https://docs.aws.amazon.com/general/latest/gr/rande.html#ses_region">AWS
-%% Service Endpoints</a> in the <i>Amazon Web Services General Reference</i>.
-%% To learn more about AWS Regions, see <a
-%% href="https://docs.aws.amazon.com/general/latest/gr/rande-manage.html">Managing
-%% AWS Regions</a> in the <i>Amazon Web Services General Reference</i>.
+%% endpoints where the API is currently available, see AWS Service Endpoints
+%% in the Amazon Web Services General Reference. To learn more about AWS
+%% Regions, see Managing AWS Regions in the Amazon Web Services General
+%% Reference.
 %%
 %% In each Region, AWS maintains multiple Availability Zones. These
 %% Availability Zones are physically isolated from each other, but are united
@@ -32,15 +29,17 @@
 %% connections. These Availability Zones enable us to provide very high
 %% levels of availability and redundancy, while also minimizing latency. To
 %% learn more about the number of Availability Zones that are available in
-%% each Region, see <a
-%% href="http://aws.amazon.com/about-aws/global-infrastructure/">AWS Global
-%% Infrastructure</a>.
+%% each Region, see AWS Global Infrastructure.
 -module(aws_sesv2).
 
 -export([create_configuration_set/2,
          create_configuration_set/3,
          create_configuration_set_event_destination/3,
          create_configuration_set_event_destination/4,
+         create_contact/3,
+         create_contact/4,
+         create_contact_list/2,
+         create_contact_list/3,
          create_custom_verification_email_template/2,
          create_custom_verification_email_template/3,
          create_dedicated_ip_pool/2,
@@ -53,10 +52,16 @@
          create_email_identity_policy/5,
          create_email_template/2,
          create_email_template/3,
+         create_import_job/2,
+         create_import_job/3,
          delete_configuration_set/3,
          delete_configuration_set/4,
          delete_configuration_set_event_destination/4,
          delete_configuration_set_event_destination/5,
+         delete_contact/4,
+         delete_contact/5,
+         delete_contact_list/3,
+         delete_contact_list/4,
          delete_custom_verification_email_template/3,
          delete_custom_verification_email_template/4,
          delete_dedicated_ip_pool/3,
@@ -77,6 +82,10 @@
          get_configuration_set/3,
          get_configuration_set_event_destinations/2,
          get_configuration_set_event_destinations/3,
+         get_contact/3,
+         get_contact/4,
+         get_contact_list/2,
+         get_contact_list/3,
          get_custom_verification_email_template/2,
          get_custom_verification_email_template/3,
          get_dedicated_ip/2,
@@ -97,10 +106,16 @@
          get_email_identity_policies/3,
          get_email_template/2,
          get_email_template/3,
+         get_import_job/2,
+         get_import_job/3,
          get_suppressed_destination/2,
          get_suppressed_destination/3,
          list_configuration_sets/3,
          list_configuration_sets/4,
+         list_contact_lists/3,
+         list_contact_lists/4,
+         list_contacts/4,
+         list_contacts/5,
          list_custom_verification_email_templates/3,
          list_custom_verification_email_templates/4,
          list_dedicated_ip_pools/3,
@@ -113,6 +128,8 @@
          list_email_identities/4,
          list_email_templates/3,
          list_email_templates/4,
+         list_import_jobs/3,
+         list_import_jobs/4,
          list_suppressed_destinations/6,
          list_suppressed_destinations/7,
          list_tags_for_resource/2,
@@ -165,6 +182,10 @@
          untag_resource/3,
          update_configuration_set_event_destination/4,
          update_configuration_set_event_destination/5,
+         update_contact/4,
+         update_contact/5,
+         update_contact_list/3,
+         update_contact_list/4,
          update_custom_verification_email_template/3,
          update_custom_verification_email_template/4,
          update_email_identity_policy/4,
@@ -178,12 +199,13 @@
 %% API
 %%====================================================================
 
-%% @doc Create a configuration set. <i>Configuration sets</i> are groups of
-%% rules that you can apply to the emails that you send. You apply a
-%% configuration set to an email by specifying the name of the configuration
-%% set when you call the Amazon SES API v2. When you apply a configuration
-%% set to an email, all of the rules in that configuration set are applied to
-%% the email.
+%% @doc Create a configuration set.
+%%
+%% Configuration sets are groups of rules that you can apply to the emails
+%% that you send. You apply a configuration set to an email by specifying the
+%% name of the configuration set when you call the Amazon SES API v2. When
+%% you apply a configuration set to an email, all of the rules in that
+%% configuration set are applied to the email.
 create_configuration_set(Client, Input) ->
     create_configuration_set(Client, Input, []).
 create_configuration_set(Client, Input0, Options) ->
@@ -199,20 +221,54 @@ create_configuration_set(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Create an event destination. <i>Events</i> include message sends,
-%% deliveries, opens, clicks, bounces, and complaints. <i>Event
-%% destinations</i> are places that you can send information about these
-%% events to. For example, you can send event data to Amazon SNS to receive
-%% notifications when you receive bounces or complaints, or you can use
-%% Amazon Kinesis Data Firehose to stream data to Amazon S3 for long-term
-%% storage.
+%% @doc Create an event destination.
+%%
+%% Events include message sends, deliveries, opens, clicks, bounces, and
+%% complaints. Event destinations are places that you can send information
+%% about these events to. For example, you can send event data to Amazon SNS
+%% to receive notifications when you receive bounces or complaints, or you
+%% can use Amazon Kinesis Data Firehose to stream data to Amazon S3 for
+%% long-term storage.
 %%
 %% A single configuration set can include more than one event destination.
 create_configuration_set_event_destination(Client, ConfigurationSetName, Input) ->
     create_configuration_set_event_destination(Client, ConfigurationSetName, Input, []).
 create_configuration_set_event_destination(Client, ConfigurationSetName, Input0, Options) ->
     Method = post,
-    Path = ["/v2/email/configuration-sets/", http_uri:encode(ConfigurationSetName), "/event-destinations"],
+    Path = ["/v2/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/event-destinations"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a contact, which is an end-user who is receiving the email,
+%% and adds them to a contact list.
+create_contact(Client, ContactListName, Input) ->
+    create_contact(Client, ContactListName, Input, []).
+create_contact(Client, ContactListName, Input0, Options) ->
+    Method = post,
+    Path = ["/v2/email/contact-lists/", aws_util:encode_uri(ContactListName), "/contacts"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a contact list.
+create_contact_list(Client, Input) ->
+    create_contact_list(Client, Input, []).
+create_contact_list(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/v2/email/contact-lists"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -225,10 +281,8 @@ create_configuration_set_event_destination(Client, ConfigurationSetName, Input0,
 
 %% @doc Creates a new custom verification email template.
 %%
-%% For more information about custom verification email templates, see <a
-%% href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html">Using
-%% Custom Verification Email Templates</a> in the <i>Amazon SES Developer
-%% Guide</i>.
+%% For more information about custom verification email templates, see Using
+%% Custom Verification Email Templates in the Amazon SES Developer Guide.
 %%
 %% You can execute this operation no more than once per second.
 create_custom_verification_email_template(Client, Input) ->
@@ -246,11 +300,12 @@ create_custom_verification_email_template(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Create a new pool of dedicated IP addresses. A pool can include one
-%% or more dedicated IP addresses that are associated with your AWS account.
-%% You can associate a pool with a configuration set. When you send an email
-%% that uses that configuration set, the message is sent from one of the
-%% addresses in the associated pool.
+%% @doc Create a new pool of dedicated IP addresses.
+%%
+%% A pool can include one or more dedicated IP addresses that are associated
+%% with your AWS account. You can associate a pool with a configuration set.
+%% When you send an email that uses that configuration set, the message is
+%% sent from one of the addresses in the associated pool.
 create_dedicated_ip_pool(Client, Input) ->
     create_dedicated_ip_pool(Client, Input, []).
 create_dedicated_ip_pool(Client, Input0, Options) ->
@@ -266,15 +321,16 @@ create_dedicated_ip_pool(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Create a new predictive inbox placement test. Predictive inbox
-%% placement tests can help you predict how your messages will be handled by
-%% various email providers around the world. When you perform a predictive
-%% inbox placement test, you provide a sample message that contains the
-%% content that you plan to send to your customers. Amazon SES then sends
-%% that message to special email addresses spread across several major email
-%% providers. After about 24 hours, the test is complete, and you can use the
-%% <code>GetDeliverabilityTestReport</code> operation to view the results of
-%% the test.
+%% @doc Create a new predictive inbox placement test.
+%%
+%% Predictive inbox placement tests can help you predict how your messages
+%% will be handled by various email providers around the world. When you
+%% perform a predictive inbox placement test, you provide a sample message
+%% that contains the content that you plan to send to your customers. Amazon
+%% SES then sends that message to special email addresses spread across
+%% several major email providers. After about 24 hours, the test is complete,
+%% and you can use the `GetDeliverabilityTestReport' operation to view the
+%% results of the test.
 create_deliverability_test_report(Client, Input) ->
     create_deliverability_test_report(Client, Input, []).
 create_deliverability_test_report(Client, Input0, Options) ->
@@ -290,34 +346,32 @@ create_deliverability_test_report(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Starts the process of verifying an email identity. An <i>identity</i>
-%% is an email address or domain that you use when you send email. Before you
-%% can use an identity to send email, you first have to verify it. By
-%% verifying an identity, you demonstrate that you're the owner of the
-%% identity, and that you've given Amazon SES API v2 permission to send email
-%% from the identity.
+%% @doc Starts the process of verifying an email identity.
+%%
+%% An identity is an email address or domain that you use when you send
+%% email. Before you can use an identity to send email, you first have to
+%% verify it. By verifying an identity, you demonstrate that you're the owner
+%% of the identity, and that you've given Amazon SES API v2 permission to
+%% send email from the identity.
 %%
 %% When you verify an email address, Amazon SES sends an email to the
 %% address. Your email address is verified as soon as you follow the link in
 %% the verification email.
 %%
-%% When you verify a domain without specifying the
-%% <code>DkimSigningAttributes</code> object, this operation provides a set
-%% of DKIM tokens. You can convert these tokens into CNAME records, which you
-%% then add to the DNS configuration for your domain. Your domain is verified
-%% when Amazon SES detects these records in the DNS configuration for your
-%% domain. This verification method is known as <a
-%% href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html">Easy
-%% DKIM</a>.
+%% When you verify a domain without specifying the `DkimSigningAttributes'
+%% object, this operation provides a set of DKIM tokens. You can convert
+%% these tokens into CNAME records, which you then add to the DNS
+%% configuration for your domain. Your domain is verified when Amazon SES
+%% detects these records in the DNS configuration for your domain. This
+%% verification method is known as Easy DKIM.
 %%
 %% Alternatively, you can perform the verification process by providing your
 %% own public-private key pair. This verification method is known as Bring
 %% Your Own DKIM (BYODKIM). To use BYODKIM, your call to the
-%% <code>CreateEmailIdentity</code> operation has to include the
-%% <code>DkimSigningAttributes</code> object. When you specify this object,
-%% you provide a selector (a component of the DNS record name that identifies
-%% the public key that you want to use for DKIM authentication) and a private
-%% key.
+%% `CreateEmailIdentity' operation has to include the `DkimSigningAttributes'
+%% object. When you specify this object, you provide a selector (a component
+%% of the DNS record name that identifies the public key that you want to use
+%% for DKIM authentication) and a private key.
 create_email_identity(Client, Input) ->
     create_email_identity(Client, Input, []).
 create_email_identity(Client, Input0, Options) ->
@@ -336,21 +390,19 @@ create_email_identity(Client, Input0, Options) ->
 %% @doc Creates the specified sending authorization policy for the given
 %% identity (an email address or a domain).
 %%
-%% <note> This API is for the identity owner only. If you have not verified
-%% the identity, this API will return an error.
+%% This API is for the identity owner only. If you have not verified the
+%% identity, this API will return an error.
 %%
-%% </note> Sending authorization is a feature that enables an identity owner
-%% to authorize other senders to use its identities. For information about
-%% using sending authorization, see the <a
-%% href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon
-%% SES Developer Guide</a>.
+%% Sending authorization is a feature that enables an identity owner to
+%% authorize other senders to use its identities. For information about using
+%% sending authorization, see the Amazon SES Developer Guide.
 %%
 %% You can execute this operation no more than once per second.
 create_email_identity_policy(Client, EmailIdentity, PolicyName, Input) ->
     create_email_identity_policy(Client, EmailIdentity, PolicyName, Input, []).
 create_email_identity_policy(Client, EmailIdentity, PolicyName, Input0, Options) ->
     Method = post,
-    Path = ["/v2/email/identities/", http_uri:encode(EmailIdentity), "/policies/", http_uri:encode(PolicyName), ""],
+    Path = ["/v2/email/identities/", aws_util:encode_uri(EmailIdentity), "/policies/", aws_util:encode_uri(PolicyName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -361,11 +413,11 @@ create_email_identity_policy(Client, EmailIdentity, PolicyName, Input0, Options)
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an email template. Email templates enable you to send
-%% personalized email to one or more destinations in a single API operation.
-%% For more information, see the <a
-%% href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html">Amazon
-%% SES Developer Guide</a>.
+%% @doc Creates an email template.
+%%
+%% Email templates enable you to send personalized email to one or more
+%% destinations in a single API operation. For more information, see the
+%% Amazon SES Developer Guide.
 %%
 %% You can execute this operation no more than once per second.
 create_email_template(Client, Input) ->
@@ -383,10 +435,26 @@ create_email_template(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates an import job for a data destination.
+create_import_job(Client, Input) ->
+    create_import_job(Client, Input, []).
+create_import_job(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/v2/email/import-jobs"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Delete an existing configuration set.
 %%
-%% <i>Configuration sets</i> are groups of rules that you can apply to the
-%% emails you send. You apply a configuration set to an email by including a
+%% Configuration sets are groups of rules that you can apply to the emails
+%% you send. You apply a configuration set to an email by including a
 %% reference to the configuration set in the headers of the email. When you
 %% apply a configuration set to an email, all of the rules in that
 %% configuration set are applied to the email.
@@ -394,7 +462,7 @@ delete_configuration_set(Client, ConfigurationSetName, Input) ->
     delete_configuration_set(Client, ConfigurationSetName, Input, []).
 delete_configuration_set(Client, ConfigurationSetName, Input0, Options) ->
     Method = delete,
-    Path = ["/v2/email/configuration-sets/", http_uri:encode(ConfigurationSetName), ""],
+    Path = ["/v2/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -407,17 +475,49 @@ delete_configuration_set(Client, ConfigurationSetName, Input0, Options) ->
 
 %% @doc Delete an event destination.
 %%
-%% <i>Events</i> include message sends, deliveries, opens, clicks, bounces,
-%% and complaints. <i>Event destinations</i> are places that you can send
-%% information about these events to. For example, you can send event data to
-%% Amazon SNS to receive notifications when you receive bounces or
-%% complaints, or you can use Amazon Kinesis Data Firehose to stream data to
-%% Amazon S3 for long-term storage.
+%% Events include message sends, deliveries, opens, clicks, bounces, and
+%% complaints. Event destinations are places that you can send information
+%% about these events to. For example, you can send event data to Amazon SNS
+%% to receive notifications when you receive bounces or complaints, or you
+%% can use Amazon Kinesis Data Firehose to stream data to Amazon S3 for
+%% long-term storage.
 delete_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input) ->
     delete_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input, []).
 delete_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input0, Options) ->
     Method = delete,
-    Path = ["/v2/email/configuration-sets/", http_uri:encode(ConfigurationSetName), "/event-destinations/", http_uri:encode(EventDestinationName), ""],
+    Path = ["/v2/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/event-destinations/", aws_util:encode_uri(EventDestinationName), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes a contact from a contact list.
+delete_contact(Client, ContactListName, EmailAddress, Input) ->
+    delete_contact(Client, ContactListName, EmailAddress, Input, []).
+delete_contact(Client, ContactListName, EmailAddress, Input0, Options) ->
+    Method = delete,
+    Path = ["/v2/email/contact-lists/", aws_util:encode_uri(ContactListName), "/contacts/", aws_util:encode_uri(EmailAddress), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a contact list and all of the contacts on that list.
+delete_contact_list(Client, ContactListName, Input) ->
+    delete_contact_list(Client, ContactListName, Input, []).
+delete_contact_list(Client, ContactListName, Input0, Options) ->
+    Method = delete,
+    Path = ["/v2/email/contact-lists/", aws_util:encode_uri(ContactListName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -430,17 +530,15 @@ delete_configuration_set_event_destination(Client, ConfigurationSetName, EventDe
 
 %% @doc Deletes an existing custom verification email template.
 %%
-%% For more information about custom verification email templates, see <a
-%% href="https://docs.aws.amazon.com/es/latest/DeveloperGuide/send-email-verify-address-custom.html">Using
-%% Custom Verification Email Templates</a> in the <i>Amazon SES Developer
-%% Guide</i>.
+%% For more information about custom verification email templates, see Using
+%% Custom Verification Email Templates in the Amazon SES Developer Guide.
 %%
 %% You can execute this operation no more than once per second.
 delete_custom_verification_email_template(Client, TemplateName, Input) ->
     delete_custom_verification_email_template(Client, TemplateName, Input, []).
 delete_custom_verification_email_template(Client, TemplateName, Input0, Options) ->
     Method = delete,
-    Path = ["/v2/email/custom-verification-email-templates/", http_uri:encode(TemplateName), ""],
+    Path = ["/v2/email/custom-verification-email-templates/", aws_util:encode_uri(TemplateName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -456,7 +554,7 @@ delete_dedicated_ip_pool(Client, PoolName, Input) ->
     delete_dedicated_ip_pool(Client, PoolName, Input, []).
 delete_dedicated_ip_pool(Client, PoolName, Input0, Options) ->
     Method = delete,
-    Path = ["/v2/email/dedicated-ip-pools/", http_uri:encode(PoolName), ""],
+    Path = ["/v2/email/dedicated-ip-pools/", aws_util:encode_uri(PoolName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -467,13 +565,14 @@ delete_dedicated_ip_pool(Client, PoolName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an email identity. An identity can be either an email address
-%% or a domain name.
+%% @doc Deletes an email identity.
+%%
+%% An identity can be either an email address or a domain name.
 delete_email_identity(Client, EmailIdentity, Input) ->
     delete_email_identity(Client, EmailIdentity, Input, []).
 delete_email_identity(Client, EmailIdentity, Input0, Options) ->
     Method = delete,
-    Path = ["/v2/email/identities/", http_uri:encode(EmailIdentity), ""],
+    Path = ["/v2/email/identities/", aws_util:encode_uri(EmailIdentity), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -485,24 +584,24 @@ delete_email_identity(Client, EmailIdentity, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified sending authorization policy for the given
-%% identity (an email address or a domain). This API returns successfully
-%% even if a policy with the specified name does not exist.
+%% identity (an email address or a domain).
 %%
-%% <note> This API is for the identity owner only. If you have not verified
-%% the identity, this API will return an error.
+%% This API returns successfully even if a policy with the specified name
+%% does not exist.
 %%
-%% </note> Sending authorization is a feature that enables an identity owner
-%% to authorize other senders to use its identities. For information about
-%% using sending authorization, see the <a
-%% href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon
-%% SES Developer Guide</a>.
+%% This API is for the identity owner only. If you have not verified the
+%% identity, this API will return an error.
+%%
+%% Sending authorization is a feature that enables an identity owner to
+%% authorize other senders to use its identities. For information about using
+%% sending authorization, see the Amazon SES Developer Guide.
 %%
 %% You can execute this operation no more than once per second.
 delete_email_identity_policy(Client, EmailIdentity, PolicyName, Input) ->
     delete_email_identity_policy(Client, EmailIdentity, PolicyName, Input, []).
 delete_email_identity_policy(Client, EmailIdentity, PolicyName, Input0, Options) ->
     Method = delete,
-    Path = ["/v2/email/identities/", http_uri:encode(EmailIdentity), "/policies/", http_uri:encode(PolicyName), ""],
+    Path = ["/v2/email/identities/", aws_util:encode_uri(EmailIdentity), "/policies/", aws_util:encode_uri(PolicyName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -520,7 +619,7 @@ delete_email_template(Client, TemplateName, Input) ->
     delete_email_template(Client, TemplateName, Input, []).
 delete_email_template(Client, TemplateName, Input0, Options) ->
     Method = delete,
-    Path = ["/v2/email/templates/", http_uri:encode(TemplateName), ""],
+    Path = ["/v2/email/templates/", aws_util:encode_uri(TemplateName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -536,7 +635,7 @@ delete_suppressed_destination(Client, EmailAddress, Input) ->
     delete_suppressed_destination(Client, EmailAddress, Input, []).
 delete_suppressed_destination(Client, EmailAddress, Input0, Options) ->
     Method = delete,
-    Path = ["/v2/email/suppression/addresses/", http_uri:encode(EmailAddress), ""],
+    Path = ["/v2/email/suppression/addresses/", aws_util:encode_uri(EmailAddress), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -587,8 +686,8 @@ get_blacklist_reports(Client, BlacklistItemNames, Options)
 %% dedicated IP pool that it's associated with, whether or not it's enabled
 %% for sending email, and more.
 %%
-%% <i>Configuration sets</i> are groups of rules that you can apply to the
-%% emails you send. You apply a configuration set to an email by including a
+%% Configuration sets are groups of rules that you can apply to the emails
+%% you send. You apply a configuration set to an email by including a
 %% reference to the configuration set in the headers of the email. When you
 %% apply a configuration set to an email, all of the rules in that
 %% configuration set are applied to the email.
@@ -597,7 +696,7 @@ get_configuration_set(Client, ConfigurationSetName)
     get_configuration_set(Client, ConfigurationSetName, []).
 get_configuration_set(Client, ConfigurationSetName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v2/email/configuration-sets/", http_uri:encode(ConfigurationSetName), ""],
+    Path = ["/v2/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -609,18 +708,50 @@ get_configuration_set(Client, ConfigurationSetName, Options)
 %% @doc Retrieve a list of event destinations that are associated with a
 %% configuration set.
 %%
-%% <i>Events</i> include message sends, deliveries, opens, clicks, bounces,
-%% and complaints. <i>Event destinations</i> are places that you can send
-%% information about these events to. For example, you can send event data to
-%% Amazon SNS to receive notifications when you receive bounces or
-%% complaints, or you can use Amazon Kinesis Data Firehose to stream data to
-%% Amazon S3 for long-term storage.
+%% Events include message sends, deliveries, opens, clicks, bounces, and
+%% complaints. Event destinations are places that you can send information
+%% about these events to. For example, you can send event data to Amazon SNS
+%% to receive notifications when you receive bounces or complaints, or you
+%% can use Amazon Kinesis Data Firehose to stream data to Amazon S3 for
+%% long-term storage.
 get_configuration_set_event_destinations(Client, ConfigurationSetName)
   when is_map(Client) ->
     get_configuration_set_event_destinations(Client, ConfigurationSetName, []).
 get_configuration_set_event_destinations(Client, ConfigurationSetName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v2/email/configuration-sets/", http_uri:encode(ConfigurationSetName), "/event-destinations"],
+    Path = ["/v2/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/event-destinations"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a contact from a contact list.
+get_contact(Client, ContactListName, EmailAddress)
+  when is_map(Client) ->
+    get_contact(Client, ContactListName, EmailAddress, []).
+get_contact(Client, ContactListName, EmailAddress, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/v2/email/contact-lists/", aws_util:encode_uri(ContactListName), "/contacts/", aws_util:encode_uri(EmailAddress), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns contact list metadata.
+%%
+%% It does not return any information about the contacts present in the list.
+get_contact_list(Client, ContactListName)
+  when is_map(Client) ->
+    get_contact_list(Client, ContactListName, []).
+get_contact_list(Client, ContactListName, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/v2/email/contact-lists/", aws_util:encode_uri(ContactListName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -632,10 +763,8 @@ get_configuration_set_event_destinations(Client, ConfigurationSetName, Options)
 %% @doc Returns the custom email verification template for the template name
 %% you specify.
 %%
-%% For more information about custom verification email templates, see <a
-%% href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html">Using
-%% Custom Verification Email Templates</a> in the <i>Amazon SES Developer
-%% Guide</i>.
+%% For more information about custom verification email templates, see Using
+%% Custom Verification Email Templates in the Amazon SES Developer Guide.
 %%
 %% You can execute this operation no more than once per second.
 get_custom_verification_email_template(Client, TemplateName)
@@ -643,7 +772,7 @@ get_custom_verification_email_template(Client, TemplateName)
     get_custom_verification_email_template(Client, TemplateName, []).
 get_custom_verification_email_template(Client, TemplateName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v2/email/custom-verification-email-templates/", http_uri:encode(TemplateName), ""],
+    Path = ["/v2/email/custom-verification-email-templates/", aws_util:encode_uri(TemplateName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -660,7 +789,7 @@ get_dedicated_ip(Client, Ip)
     get_dedicated_ip(Client, Ip, []).
 get_dedicated_ip(Client, Ip, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v2/email/dedicated-ips/", http_uri:encode(Ip), ""],
+    Path = ["/v2/email/dedicated-ips/", aws_util:encode_uri(Ip), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -692,16 +821,17 @@ get_dedicated_ips(Client, NextToken, PageSize, PoolName, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieve information about the status of the Deliverability dashboard
-%% for your account. When the Deliverability dashboard is enabled, you gain
-%% access to reputation, deliverability, and other metrics for the domains
-%% that you use to send email. You also gain the ability to perform
-%% predictive inbox placement tests.
+%% for your account.
+%%
+%% When the Deliverability dashboard is enabled, you gain access to
+%% reputation, deliverability, and other metrics for the domains that you use
+%% to send email. You also gain the ability to perform predictive inbox
+%% placement tests.
 %%
 %% When you use the Deliverability dashboard, you pay a monthly subscription
 %% charge, in addition to any other fees that you accrue by using Amazon SES
 %% and other AWS services. For more information about the features and cost
-%% of a Deliverability dashboard subscription, see <a
-%% href="http://aws.amazon.com/ses/pricing/">Amazon SES Pricing</a>.
+%% of a Deliverability dashboard subscription, see Amazon SES Pricing.
 get_deliverability_dashboard_options(Client)
   when is_map(Client) ->
     get_deliverability_dashboard_options(Client, []).
@@ -722,7 +852,7 @@ get_deliverability_test_report(Client, ReportId)
     get_deliverability_test_report(Client, ReportId, []).
 get_deliverability_test_report(Client, ReportId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v2/email/deliverability-dashboard/test-reports/", http_uri:encode(ReportId), ""],
+    Path = ["/v2/email/deliverability-dashboard/test-reports/", aws_util:encode_uri(ReportId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -731,15 +861,16 @@ get_deliverability_test_report(Client, ReportId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieve all the deliverability data for a specific campaign. This
-%% data is available for a campaign only if the campaign sent email by using
-%% a domain that the Deliverability dashboard is enabled for.
+%% @doc Retrieve all the deliverability data for a specific campaign.
+%%
+%% This data is available for a campaign only if the campaign sent email by
+%% using a domain that the Deliverability dashboard is enabled for.
 get_domain_deliverability_campaign(Client, CampaignId)
   when is_map(Client) ->
     get_domain_deliverability_campaign(Client, CampaignId, []).
 get_domain_deliverability_campaign(Client, CampaignId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v2/email/deliverability-dashboard/campaigns/", http_uri:encode(CampaignId), ""],
+    Path = ["/v2/email/deliverability-dashboard/campaigns/", aws_util:encode_uri(CampaignId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -755,7 +886,7 @@ get_domain_statistics_report(Client, Domain, EndDate, StartDate)
     get_domain_statistics_report(Client, Domain, EndDate, StartDate, []).
 get_domain_statistics_report(Client, Domain, EndDate, StartDate, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v2/email/deliverability-dashboard/statistics-report/", http_uri:encode(Domain), ""],
+    Path = ["/v2/email/deliverability-dashboard/statistics-report/", aws_util:encode_uri(Domain), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -777,7 +908,7 @@ get_email_identity(Client, EmailIdentity)
     get_email_identity(Client, EmailIdentity, []).
 get_email_identity(Client, EmailIdentity, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v2/email/identities/", http_uri:encode(EmailIdentity), ""],
+    Path = ["/v2/email/identities/", aws_util:encode_uri(EmailIdentity), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -787,18 +918,17 @@ get_email_identity(Client, EmailIdentity, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the requested sending authorization policies for the given
-%% identity (an email address or a domain). The policies are returned as a
-%% map of policy names to policy contents. You can retrieve a maximum of 20
-%% policies at a time.
+%% identity (an email address or a domain).
 %%
-%% <note> This API is for the identity owner only. If you have not verified
-%% the identity, this API will return an error.
+%% The policies are returned as a map of policy names to policy contents. You
+%% can retrieve a maximum of 20 policies at a time.
 %%
-%% </note> Sending authorization is a feature that enables an identity owner
-%% to authorize other senders to use its identities. For information about
-%% using sending authorization, see the <a
-%% href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon
-%% SES Developer Guide</a>.
+%% This API is for the identity owner only. If you have not verified the
+%% identity, this API will return an error.
+%%
+%% Sending authorization is a feature that enables an identity owner to
+%% authorize other senders to use its identities. For information about using
+%% sending authorization, see the Amazon SES Developer Guide.
 %%
 %% You can execute this operation no more than once per second.
 get_email_identity_policies(Client, EmailIdentity)
@@ -806,7 +936,7 @@ get_email_identity_policies(Client, EmailIdentity)
     get_email_identity_policies(Client, EmailIdentity, []).
 get_email_identity_policies(Client, EmailIdentity, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v2/email/identities/", http_uri:encode(EmailIdentity), "/policies"],
+    Path = ["/v2/email/identities/", aws_util:encode_uri(EmailIdentity), "/policies"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -824,7 +954,22 @@ get_email_template(Client, TemplateName)
     get_email_template(Client, TemplateName, []).
 get_email_template(Client, TemplateName, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v2/email/templates/", http_uri:encode(TemplateName), ""],
+    Path = ["/v2/email/templates/", aws_util:encode_uri(TemplateName), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Provides information about an import job.
+get_import_job(Client, JobId)
+  when is_map(Client) ->
+    get_import_job(Client, JobId, []).
+get_import_job(Client, JobId, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/v2/email/import-jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -840,7 +985,7 @@ get_suppressed_destination(Client, EmailAddress)
     get_suppressed_destination(Client, EmailAddress, []).
 get_suppressed_destination(Client, EmailAddress, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v2/email/suppression/addresses/", http_uri:encode(EmailAddress), ""],
+    Path = ["/v2/email/suppression/addresses/", aws_util:encode_uri(EmailAddress), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -852,8 +997,8 @@ get_suppressed_destination(Client, EmailAddress, Options)
 %% @doc List all of the configuration sets associated with your account in
 %% the current region.
 %%
-%% <i>Configuration sets</i> are groups of rules that you can apply to the
-%% emails you send. You apply a configuration set to an email by including a
+%% Configuration sets are groups of rules that you can apply to the emails
+%% you send. You apply a configuration set to an email by including a
 %% reference to the configuration set in the headers of the email. When you
 %% apply a configuration set to an email, all of the rules in that
 %% configuration set are applied to the email.
@@ -876,13 +1021,51 @@ list_configuration_sets(Client, NextToken, PageSize, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists all of the contact lists available.
+list_contact_lists(Client, NextToken, PageSize)
+  when is_map(Client) ->
+    list_contact_lists(Client, NextToken, PageSize, []).
+list_contact_lists(Client, NextToken, PageSize, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/v2/email/contact-lists"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"NextToken">>, NextToken},
+        {<<"PageSize">>, PageSize}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the contacts present in a specific contact list.
+list_contacts(Client, ContactListName, NextToken, PageSize)
+  when is_map(Client) ->
+    list_contacts(Client, ContactListName, NextToken, PageSize, []).
+list_contacts(Client, ContactListName, NextToken, PageSize, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/v2/email/contact-lists/", aws_util:encode_uri(ContactListName), "/contacts"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"NextToken">>, NextToken},
+        {<<"PageSize">>, PageSize}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the existing custom verification email templates for your
 %% account in the current AWS Region.
 %%
-%% For more information about custom verification email templates, see <a
-%% href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html">Using
-%% Custom Verification Email Templates</a> in the <i>Amazon SES Developer
-%% Guide</i>.
+%% For more information about custom verification email templates, see Using
+%% Custom Verification Email Templates in the Amazon SES Developer Guide.
 %%
 %% You can execute this operation no more than once per second.
 list_custom_verification_email_templates(Client, NextToken, PageSize)
@@ -926,9 +1109,10 @@ list_dedicated_ip_pools(Client, NextToken, PageSize, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Show a list of the predictive inbox placement tests that you've
-%% performed, regardless of their statuses. For predictive inbox placement
-%% tests that are complete, you can use the
-%% <code>GetDeliverabilityTestReport</code> operation to view the results.
+%% performed, regardless of their statuses.
+%%
+%% For predictive inbox placement tests that are complete, you can use the
+%% `GetDeliverabilityTestReport' operation to view the results.
 list_deliverability_test_reports(Client, NextToken, PageSize)
   when is_map(Client) ->
     list_deliverability_test_reports(Client, NextToken, PageSize, []).
@@ -949,15 +1133,16 @@ list_deliverability_test_reports(Client, NextToken, PageSize, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieve deliverability data for all the campaigns that used a
-%% specific domain to send email during a specified time range. This data is
-%% available for a domain only if you enabled the Deliverability dashboard
-%% for the domain.
+%% specific domain to send email during a specified time range.
+%%
+%% This data is available for a domain only if you enabled the Deliverability
+%% dashboard for the domain.
 list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, NextToken, PageSize, StartDate)
   when is_map(Client) ->
     list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, NextToken, PageSize, StartDate, []).
 list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, NextToken, PageSize, StartDate, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/v2/email/deliverability-dashboard/domains/", http_uri:encode(SubscribedDomain), "/campaigns"],
+    Path = ["/v2/email/deliverability-dashboard/domains/", aws_util:encode_uri(SubscribedDomain), "/campaigns"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -974,10 +1159,12 @@ list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, NextToke
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all of the email identities that are associated
-%% with your AWS account. An identity can be either an email address or a
-%% domain. This operation returns identities that are verified as well as
-%% those that aren't. This operation returns identities that are associated
-%% with Amazon SES and Amazon Pinpoint.
+%% with your AWS account.
+%%
+%% An identity can be either an email address or a domain. This operation
+%% returns identities that are verified as well as those that aren't. This
+%% operation returns identities that are associated with Amazon SES and
+%% Amazon Pinpoint.
 list_email_identities(Client, NextToken, PageSize)
   when is_map(Client) ->
     list_email_identities(Client, NextToken, PageSize, []).
@@ -1020,6 +1207,26 @@ list_email_templates(Client, NextToken, PageSize, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists all of the import jobs.
+list_import_jobs(Client, NextToken, PageSize)
+  when is_map(Client) ->
+    list_import_jobs(Client, NextToken, PageSize, []).
+list_import_jobs(Client, NextToken, PageSize, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/v2/email/import-jobs"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"NextToken">>, NextToken},
+        {<<"PageSize">>, PageSize}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves a list of email addresses that are on the suppression list
 %% for your account.
 list_suppressed_destinations(Client, EndDate, NextToken, PageSize, Reasons, StartDate)
@@ -1045,11 +1252,12 @@ list_suppressed_destinations(Client, EndDate, NextToken, PageSize, Reasons, Star
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieve a list of the tags (keys and values) that are associated
-%% with a specified resource. A <i>tag</i> is a label that you optionally
-%% define and associate with a resource. Each tag consists of a
-%% required <i>tag key</i> and an optional associated <i>tag value</i>. A tag
-%% key is a general label that acts as a category for more specific tag
-%% values. A tag value acts as a descriptor within a tag key.
+%% with a specified resource.
+%%
+%% A tag is a label that you optionally define and associate with a resource.
+%% Each tag consists of a required tag key and an optional associated tag
+%% value. A tag key is a general label that acts as a category for more
+%% specific tag values. A tag value acts as a descriptor within a tag key.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, []).
@@ -1133,14 +1341,15 @@ put_account_suppression_attributes(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Associate a configuration set with a dedicated IP pool. You can use
-%% dedicated IP pools to create groups of dedicated IP addresses for sending
-%% specific types of email.
+%% @doc Associate a configuration set with a dedicated IP pool.
+%%
+%% You can use dedicated IP pools to create groups of dedicated IP addresses
+%% for sending specific types of email.
 put_configuration_set_delivery_options(Client, ConfigurationSetName, Input) ->
     put_configuration_set_delivery_options(Client, ConfigurationSetName, Input, []).
 put_configuration_set_delivery_options(Client, ConfigurationSetName, Input0, Options) ->
     Method = put,
-    Path = ["/v2/email/configuration-sets/", http_uri:encode(ConfigurationSetName), "/delivery-options"],
+    Path = ["/v2/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/delivery-options"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1157,7 +1366,7 @@ put_configuration_set_reputation_options(Client, ConfigurationSetName, Input) ->
     put_configuration_set_reputation_options(Client, ConfigurationSetName, Input, []).
 put_configuration_set_reputation_options(Client, ConfigurationSetName, Input0, Options) ->
     Method = put,
-    Path = ["/v2/email/configuration-sets/", http_uri:encode(ConfigurationSetName), "/reputation-options"],
+    Path = ["/v2/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/reputation-options"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1174,7 +1383,7 @@ put_configuration_set_sending_options(Client, ConfigurationSetName, Input) ->
     put_configuration_set_sending_options(Client, ConfigurationSetName, Input, []).
 put_configuration_set_sending_options(Client, ConfigurationSetName, Input0, Options) ->
     Method = put,
-    Path = ["/v2/email/configuration-sets/", http_uri:encode(ConfigurationSetName), "/sending"],
+    Path = ["/v2/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/sending"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1191,7 +1400,7 @@ put_configuration_set_suppression_options(Client, ConfigurationSetName, Input) -
     put_configuration_set_suppression_options(Client, ConfigurationSetName, Input, []).
 put_configuration_set_suppression_options(Client, ConfigurationSetName, Input0, Options) ->
     Method = put,
-    Path = ["/v2/email/configuration-sets/", http_uri:encode(ConfigurationSetName), "/suppression-options"],
+    Path = ["/v2/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/suppression-options"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1208,7 +1417,7 @@ put_configuration_set_tracking_options(Client, ConfigurationSetName, Input) ->
     put_configuration_set_tracking_options(Client, ConfigurationSetName, Input, []).
 put_configuration_set_tracking_options(Client, ConfigurationSetName, Input0, Options) ->
     Method = put,
-    Path = ["/v2/email/configuration-sets/", http_uri:encode(ConfigurationSetName), "/tracking-options"],
+    Path = ["/v2/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/tracking-options"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1221,18 +1430,16 @@ put_configuration_set_tracking_options(Client, ConfigurationSetName, Input0, Opt
 
 %% @doc Move a dedicated IP address to an existing dedicated IP pool.
 %%
-%% <note> The dedicated IP address that you specify must already exist, and
-%% must be associated with your AWS account.
+%% The dedicated IP address that you specify must already exist, and must be
+%% associated with your AWS account.
 %%
 %% The dedicated IP pool you specify must already exist. You can create a new
-%% pool by using the <code>CreateDedicatedIpPool</code> operation.
-%%
-%% </note>
+%% pool by using the `CreateDedicatedIpPool' operation.
 put_dedicated_ip_in_pool(Client, Ip, Input) ->
     put_dedicated_ip_in_pool(Client, Ip, Input, []).
 put_dedicated_ip_in_pool(Client, Ip, Input0, Options) ->
     Method = put,
-    Path = ["/v2/email/dedicated-ips/", http_uri:encode(Ip), "/pool"],
+    Path = ["/v2/email/dedicated-ips/", aws_util:encode_uri(Ip), "/pool"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1243,12 +1450,12 @@ put_dedicated_ip_in_pool(Client, Ip, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc <p/>
+%% @doc
 put_dedicated_ip_warmup_attributes(Client, Ip, Input) ->
     put_dedicated_ip_warmup_attributes(Client, Ip, Input, []).
 put_dedicated_ip_warmup_attributes(Client, Ip, Input0, Options) ->
     Method = put,
-    Path = ["/v2/email/dedicated-ips/", http_uri:encode(Ip), "/warmup"],
+    Path = ["/v2/email/dedicated-ips/", aws_util:encode_uri(Ip), "/warmup"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1259,16 +1466,17 @@ put_dedicated_ip_warmup_attributes(Client, Ip, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Enable or disable the Deliverability dashboard. When you enable the
-%% Deliverability dashboard, you gain access to reputation, deliverability,
-%% and other metrics for the domains that you use to send email. You also
-%% gain the ability to perform predictive inbox placement tests.
+%% @doc Enable or disable the Deliverability dashboard.
+%%
+%% When you enable the Deliverability dashboard, you gain access to
+%% reputation, deliverability, and other metrics for the domains that you use
+%% to send email. You also gain the ability to perform predictive inbox
+%% placement tests.
 %%
 %% When you use the Deliverability dashboard, you pay a monthly subscription
 %% charge, in addition to any other fees that you accrue by using Amazon SES
 %% and other AWS services. For more information about the features and cost
-%% of a Deliverability dashboard subscription, see <a
-%% href="http://aws.amazon.com/ses/pricing/">Amazon SES Pricing</a>.
+%% of a Deliverability dashboard subscription, see Amazon SES Pricing.
 put_deliverability_dashboard_option(Client, Input) ->
     put_deliverability_dashboard_option(Client, Input, []).
 put_deliverability_dashboard_option(Client, Input0, Options) ->
@@ -1289,7 +1497,7 @@ put_email_identity_dkim_attributes(Client, EmailIdentity, Input) ->
     put_email_identity_dkim_attributes(Client, EmailIdentity, Input, []).
 put_email_identity_dkim_attributes(Client, EmailIdentity, Input0, Options) ->
     Method = put,
-    Path = ["/v2/email/identities/", http_uri:encode(EmailIdentity), "/dkim"],
+    Path = ["/v2/email/identities/", aws_util:encode_uri(EmailIdentity), "/dkim"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1301,8 +1509,9 @@ put_email_identity_dkim_attributes(Client, EmailIdentity, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Used to configure or change the DKIM authentication settings for an
-%% email domain identity. You can use this operation to do any of the
-%% following:
+%% email domain identity.
+%%
+%% You can use this operation to do any of the following:
 %%
 %% <ul> <li> Update the signing attributes for an identity that uses Bring
 %% Your Own DKIM (BYODKIM).
@@ -1320,7 +1529,7 @@ put_email_identity_dkim_signing_attributes(Client, EmailIdentity, Input) ->
     put_email_identity_dkim_signing_attributes(Client, EmailIdentity, Input, []).
 put_email_identity_dkim_signing_attributes(Client, EmailIdentity, Input0, Options) ->
     Method = put,
-    Path = ["/v1/email/identities/", http_uri:encode(EmailIdentity), "/dkim/signing"],
+    Path = ["/v1/email/identities/", aws_util:encode_uri(EmailIdentity), "/dkim/signing"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1331,14 +1540,14 @@ put_email_identity_dkim_signing_attributes(Client, EmailIdentity, Input0, Option
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Used to enable or disable feedback forwarding for an identity. This
-%% setting determines what happens when an identity is used to send an email
-%% that results in a bounce or complaint event.
+%% @doc Used to enable or disable feedback forwarding for an identity.
 %%
-%% If the value is <code>true</code>, you receive email notifications when
-%% bounce or complaint events occur. These notifications are sent to the
-%% address that you specified in the <code>Return-Path</code> header of the
-%% original email.
+%% This setting determines what happens when an identity is used to send an
+%% email that results in a bounce or complaint event.
+%%
+%% If the value is `true', you receive email notifications when bounce or
+%% complaint events occur. These notifications are sent to the address that
+%% you specified in the `Return-Path' header of the original email.
 %%
 %% You're required to have a method of tracking bounces and complaints. If
 %% you haven't set up another mechanism for receiving bounce or complaint
@@ -1349,7 +1558,7 @@ put_email_identity_feedback_attributes(Client, EmailIdentity, Input) ->
     put_email_identity_feedback_attributes(Client, EmailIdentity, Input, []).
 put_email_identity_feedback_attributes(Client, EmailIdentity, Input0, Options) ->
     Method = put,
-    Path = ["/v2/email/identities/", http_uri:encode(EmailIdentity), "/feedback"],
+    Path = ["/v2/email/identities/", aws_util:encode_uri(EmailIdentity), "/feedback"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1366,7 +1575,7 @@ put_email_identity_mail_from_attributes(Client, EmailIdentity, Input) ->
     put_email_identity_mail_from_attributes(Client, EmailIdentity, Input, []).
 put_email_identity_mail_from_attributes(Client, EmailIdentity, Input0, Options) ->
     Method = put,
-    Path = ["/v2/email/identities/", http_uri:encode(EmailIdentity), "/mail-from"],
+    Path = ["/v2/email/identities/", aws_util:encode_uri(EmailIdentity), "/mail-from"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1410,16 +1619,15 @@ send_bulk_email(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds an email address to the list of identities for your Amazon SES
-%% account in the current AWS Region and attempts to verify it. As a result
-%% of executing this operation, a customized verification email is sent to
-%% the specified address.
+%% account in the current AWS Region and attempts to verify it.
+%%
+%% As a result of executing this operation, a customized verification email
+%% is sent to the specified address.
 %%
 %% To use this operation, you must first create a custom verification email
 %% template. For more information about creating and using custom
-%% verification email templates, see <a
-%% href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html">Using
-%% Custom Verification Email Templates</a> in the <i>Amazon SES Developer
-%% Guide</i>.
+%% verification email templates, see Using Custom Verification Email
+%% Templates in the Amazon SES Developer Guide.
 %%
 %% You can execute this operation no more than once per second.
 send_custom_verification_email(Client, Input) ->
@@ -1437,22 +1645,23 @@ send_custom_verification_email(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Sends an email message. You can use the Amazon SES API v2 to send two
-%% types of messages:
+%% @doc Sends an email message.
 %%
-%% <ul> <li> <b>Simple</b> – A standard email message. When you create this
-%% type of message, you specify the sender, the recipient, and the message
-%% body, and Amazon SES assembles the message for you.
+%% You can use the Amazon SES API v2 to send two types of messages:
 %%
-%% </li> <li> <b>Raw</b> – A raw, MIME-formatted email message. When you send
-%% this type of email, you have to specify all of the message headers, as
-%% well as the message body. You can use this message type to send messages
-%% that contain attachments. The message that you specify has to be a valid
-%% MIME message.
+%% <ul> <li> Simple – A standard email message. When you create this type of
+%% message, you specify the sender, the recipient, and the message body, and
+%% Amazon SES assembles the message for you.
 %%
-%% </li> <li> <b>Templated</b> – A message that contains personalization
-%% tags. When you send this type of email, Amazon SES API v2 automatically
-%% replaces the tags with values that you specify.
+%% </li> <li> Raw – A raw, MIME-formatted email message. When you send this
+%% type of email, you have to specify all of the message headers, as well as
+%% the message body. You can use this message type to send messages that
+%% contain attachments. The message that you specify has to be a valid MIME
+%% message.
+%%
+%% </li> <li> Templated – A message that contains personalization tags. When
+%% you send this type of email, Amazon SES API v2 automatically replaces the
+%% tags with values that you specify.
 %%
 %% </li> </ul>
 send_email(Client, Input) ->
@@ -1470,16 +1679,17 @@ send_email(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Add one or more tags (keys and values) to a specified resource. A
-%% <i>tag</i> is a label that you optionally define and associate with a
-%% resource. Tags can help you categorize and manage resources in different
-%% ways, such as by purpose, owner, environment, or other criteria. A
-%% resource can have as many as 50 tags.
+%% @doc Add one or more tags (keys and values) to a specified resource.
 %%
-%% Each tag consists of a required <i>tag key</i> and an associated <i>tag
-%% value</i>, both of which you define. A tag key is a general label that
-%% acts as a category for more specific tag values. A tag value acts as a
-%% descriptor within a tag key.
+%% A tag is a label that you optionally define and associate with a resource.
+%% Tags can help you categorize and manage resources in different ways, such
+%% as by purpose, owner, environment, or other criteria. A resource can have
+%% as many as 50 tags.
+%%
+%% Each tag consists of a required tag key and an associated tag value, both
+%% of which you define. A tag key is a general label that acts as a category
+%% for more specific tag values. A tag value acts as a descriptor within a
+%% tag key.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 tag_resource(Client, Input0, Options) ->
@@ -1503,7 +1713,7 @@ test_render_email_template(Client, TemplateName, Input) ->
     test_render_email_template(Client, TemplateName, Input, []).
 test_render_email_template(Client, TemplateName, Input0, Options) ->
     Method = post,
-    Path = ["/v2/email/templates/", http_uri:encode(TemplateName), "/render"],
+    Path = ["/v2/email/templates/", aws_util:encode_uri(TemplateName), "/render"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1535,17 +1745,54 @@ untag_resource(Client, Input0, Options) ->
 %% @doc Update the configuration of an event destination for a configuration
 %% set.
 %%
-%% <i>Events</i> include message sends, deliveries, opens, clicks, bounces,
-%% and complaints. <i>Event destinations</i> are places that you can send
-%% information about these events to. For example, you can send event data to
-%% Amazon SNS to receive notifications when you receive bounces or
-%% complaints, or you can use Amazon Kinesis Data Firehose to stream data to
-%% Amazon S3 for long-term storage.
+%% Events include message sends, deliveries, opens, clicks, bounces, and
+%% complaints. Event destinations are places that you can send information
+%% about these events to. For example, you can send event data to Amazon SNS
+%% to receive notifications when you receive bounces or complaints, or you
+%% can use Amazon Kinesis Data Firehose to stream data to Amazon S3 for
+%% long-term storage.
 update_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input) ->
     update_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input, []).
 update_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input0, Options) ->
     Method = put,
-    Path = ["/v2/email/configuration-sets/", http_uri:encode(ConfigurationSetName), "/event-destinations/", http_uri:encode(EventDestinationName), ""],
+    Path = ["/v2/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/event-destinations/", aws_util:encode_uri(EventDestinationName), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a contact's preferences for a list.
+%%
+%% It is not necessary to specify all existing topic preferences in the
+%% TopicPreferences object, just the ones that need updating.
+update_contact(Client, ContactListName, EmailAddress, Input) ->
+    update_contact(Client, ContactListName, EmailAddress, Input, []).
+update_contact(Client, ContactListName, EmailAddress, Input0, Options) ->
+    Method = put,
+    Path = ["/v2/email/contact-lists/", aws_util:encode_uri(ContactListName), "/contacts/", aws_util:encode_uri(EmailAddress), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates contact list metadata.
+%%
+%% This operation does a complete replacement.
+update_contact_list(Client, ContactListName, Input) ->
+    update_contact_list(Client, ContactListName, Input, []).
+update_contact_list(Client, ContactListName, Input0, Options) ->
+    Method = put,
+    Path = ["/v2/email/contact-lists/", aws_util:encode_uri(ContactListName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1558,17 +1805,15 @@ update_configuration_set_event_destination(Client, ConfigurationSetName, EventDe
 
 %% @doc Updates an existing custom verification email template.
 %%
-%% For more information about custom verification email templates, see <a
-%% href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html">Using
-%% Custom Verification Email Templates</a> in the <i>Amazon SES Developer
-%% Guide</i>.
+%% For more information about custom verification email templates, see Using
+%% Custom Verification Email Templates in the Amazon SES Developer Guide.
 %%
 %% You can execute this operation no more than once per second.
 update_custom_verification_email_template(Client, TemplateName, Input) ->
     update_custom_verification_email_template(Client, TemplateName, Input, []).
 update_custom_verification_email_template(Client, TemplateName, Input0, Options) ->
     Method = put,
-    Path = ["/v2/email/custom-verification-email-templates/", http_uri:encode(TemplateName), ""],
+    Path = ["/v2/email/custom-verification-email-templates/", aws_util:encode_uri(TemplateName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1580,24 +1825,24 @@ update_custom_verification_email_template(Client, TemplateName, Input0, Options)
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the specified sending authorization policy for the given
-%% identity (an email address or a domain). This API returns successfully
-%% even if a policy with the specified name does not exist.
+%% identity (an email address or a domain).
 %%
-%% <note> This API is for the identity owner only. If you have not verified
-%% the identity, this API will return an error.
+%% This API returns successfully even if a policy with the specified name
+%% does not exist.
 %%
-%% </note> Sending authorization is a feature that enables an identity owner
-%% to authorize other senders to use its identities. For information about
-%% using sending authorization, see the <a
-%% href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon
-%% SES Developer Guide</a>.
+%% This API is for the identity owner only. If you have not verified the
+%% identity, this API will return an error.
+%%
+%% Sending authorization is a feature that enables an identity owner to
+%% authorize other senders to use its identities. For information about using
+%% sending authorization, see the Amazon SES Developer Guide.
 %%
 %% You can execute this operation no more than once per second.
 update_email_identity_policy(Client, EmailIdentity, PolicyName, Input) ->
     update_email_identity_policy(Client, EmailIdentity, PolicyName, Input, []).
 update_email_identity_policy(Client, EmailIdentity, PolicyName, Input0, Options) ->
     Method = put,
-    Path = ["/v2/email/identities/", http_uri:encode(EmailIdentity), "/policies/", http_uri:encode(PolicyName), ""],
+    Path = ["/v2/email/identities/", aws_util:encode_uri(EmailIdentity), "/policies/", aws_util:encode_uri(PolicyName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1608,18 +1853,18 @@ update_email_identity_policy(Client, EmailIdentity, PolicyName, Input0, Options)
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an email template. Email templates enable you to send
-%% personalized email to one or more destinations in a single API operation.
-%% For more information, see the <a
-%% href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html">Amazon
-%% SES Developer Guide</a>.
+%% @doc Updates an email template.
+%%
+%% Email templates enable you to send personalized email to one or more
+%% destinations in a single API operation. For more information, see the
+%% Amazon SES Developer Guide.
 %%
 %% You can execute this operation no more than once per second.
 update_email_template(Client, TemplateName, Input) ->
     update_email_template(Client, TemplateName, Input, []).
 update_email_template(Client, TemplateName, Input0, Options) ->
     Method = put,
-    Path = ["/v2/email/templates/", http_uri:encode(TemplateName), ""],
+    Path = ["/v2/email/templates/", aws_util:encode_uri(TemplateName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1676,6 +1921,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
 handle_response({error, Reason}, _) ->
   {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

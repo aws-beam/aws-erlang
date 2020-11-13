@@ -7,17 +7,17 @@
 %% <ul> <li> Testing on desktop browsers
 %%
 %% Device Farm makes it possible for you to test your web applications on
-%% desktop browsers using Selenium. The APIs for desktop browser testing
-%% contain <code>TestGrid</code> in their names. For more information, see <a
-%% href="https://docs.aws.amazon.com/devicefarm/latest/testgrid/">Testing Web
-%% Applications on Selenium with Device Farm</a>.
+%% desktop browsers using Selenium.
+%%
+%% The APIs for desktop browser testing contain `TestGrid' in their names.
+%% For more information, see Testing Web Applications on Selenium with Device
+%% Farm.
 %%
 %% </li> <li> Testing on real mobile devices
 %%
 %% Device Farm makes it possible for you to test apps on physical phones,
-%% tablets, and other devices in the cloud. For more information, see the <a
-%% href="https://docs.aws.amazon.com/devicefarm/latest/developerguide/">Device
-%% Farm Developer Guide</a>.
+%% tablets, and other devices in the cloud. For more information, see the
+%% Device Farm Developer Guide.
 %%
 %% </li> </ul>
 -module(aws_device_farm).
@@ -224,8 +224,9 @@ create_remote_access_session(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRemoteAccessSession">>, Input, Options).
 
-%% @doc Creates a Selenium testing project. Projects are used to track
-%% <a>TestGridSession</a> instances.
+%% @doc Creates a Selenium testing project.
+%%
+%% Projects are used to track `TestGridSession' instances.
 create_test_grid_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_test_grid_project(Client, Input, []).
@@ -234,7 +235,7 @@ create_test_grid_project(Client, Input, Options)
     request(Client, <<"CreateTestGridProject">>, Input, Options).
 
 %% @doc Creates a signed, short-term URL that can be passed to a Selenium
-%% <code>RemoteWebDriver</code> constructor.
+%% `RemoteWebDriver' constructor.
 create_test_grid_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_test_grid_url(Client, Input, []).
@@ -259,8 +260,9 @@ create_v_p_c_e_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateVPCEConfiguration">>, Input, Options).
 
-%% @doc Deletes a device pool given the pool ARN. Does not allow deletion of
-%% curated pools owned by the system.
+%% @doc Deletes a device pool given the pool ARN.
+%%
+%% Does not allow deletion of curated pools owned by the system.
 delete_device_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_device_pool(Client, Input, []).
@@ -316,11 +318,9 @@ delete_run(Client, Input, Options)
 %% @doc Deletes a Selenium testing project and all content generated under
 %% it.
 %%
-%% <important> You cannot undo this operation.
+%% You cannot undo this operation.
 %%
-%% </important> <note> You cannot delete a project if it has active sessions.
-%%
-%% </note>
+%% You cannot delete a project if it has active sessions.
 delete_test_grid_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_test_grid_project(Client, Input, []).
@@ -412,12 +412,13 @@ get_network_profile(Client, Input, Options)
     request(Client, <<"GetNetworkProfile">>, Input, Options).
 
 %% @doc Gets the current status and future status of all offerings purchased
-%% by an AWS account. The response indicates how many offerings are currently
-%% available and the offerings that will be available in the next period. The
-%% API returns a <code>NotEligible</code> error if the user is not permitted
-%% to invoke the operation. If you must be able to invoke this operation,
-%% contact <a
-%% href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a>.
+%% by an AWS account.
+%%
+%% The response indicates how many offerings are currently available and the
+%% offerings that will be available in the next period. The API returns a
+%% `NotEligible' error if the user is not permitted to invoke the operation.
+%% If you must be able to invoke this operation, contact
+%% aws-devicefarm-support@amazon.com.
 get_offering_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_offering_status(Client, Input, []).
@@ -474,17 +475,17 @@ get_test_grid_project(Client, Input, Options)
     request(Client, <<"GetTestGridProject">>, Input, Options).
 
 %% @doc A session is an instance of a browser created through a
-%% <code>RemoteWebDriver</code> with the URL from
-%% <a>CreateTestGridUrlResult$url</a>. You can use the following to look up
-%% sessions:
+%% `RemoteWebDriver' with the URL from `CreateTestGridUrlResult$url'.
 %%
-%% <ul> <li> The session ARN (<a>GetTestGridSessionRequest$sessionArn</a>).
+%% You can use the following to look up sessions:
+%%
+%% <ul> <li> The session ARN (`GetTestGridSessionRequest$sessionArn').
 %%
 %% </li> <li> The project ARN and a session ID
-%% (<a>GetTestGridSessionRequest$projectArn</a> and
-%% <a>GetTestGridSessionRequest$sessionId</a>).
+%% (`GetTestGridSessionRequest$projectArn' and
+%% `GetTestGridSessionRequest$sessionId').
 %%
-%% </li> </ul> <p/>
+%% </li> </ul>
 get_test_grid_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_test_grid_session(Client, Input, []).
@@ -509,8 +510,9 @@ get_v_p_c_e_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetVPCEConfiguration">>, Input, Options).
 
-%% @doc Installs an application to the device in a remote access session. For
-%% Android applications, the file must be in .apk format. For iOS
+%% @doc Installs an application to the device in a remote access session.
+%%
+%% For Android applications, the file must be in .apk format. For iOS
 %% applications, the file must be in .ipa format.
 install_to_remote_access_session(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -577,12 +579,13 @@ list_network_profiles(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListNetworkProfiles">>, Input, Options).
 
-%% @doc Returns a list of offering promotions. Each offering promotion record
-%% contains the ID and description of the promotion. The API returns a
-%% <code>NotEligible</code> error if the caller is not permitted to invoke
-%% the operation. Contact <a
-%% href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a>
-%% if you must be able to invoke this operation.
+%% @doc Returns a list of offering promotions.
+%%
+%% Each offering promotion record contains the ID and description of the
+%% promotion. The API returns a `NotEligible' error if the caller is not
+%% permitted to invoke the operation. Contact
+%% aws-devicefarm-support@amazon.com if you must be able to invoke this
+%% operation.
 list_offering_promotions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_offering_promotions(Client, Input, []).
@@ -591,12 +594,12 @@ list_offering_promotions(Client, Input, Options)
     request(Client, <<"ListOfferingPromotions">>, Input, Options).
 
 %% @doc Returns a list of all historical purchases, renewals, and system
-%% renewal transactions for an AWS account. The list is paginated and ordered
-%% by a descending timestamp (most recent transactions are first). The API
-%% returns a <code>NotEligible</code> error if the user is not permitted to
-%% invoke the operation. If you must be able to invoke this operation,
-%% contact <a
-%% href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a>.
+%% renewal transactions for an AWS account.
+%%
+%% The list is paginated and ordered by a descending timestamp (most recent
+%% transactions are first). The API returns a `NotEligible' error if the user
+%% is not permitted to invoke the operation. If you must be able to invoke
+%% this operation, contact aws-devicefarm-support@amazon.com.
 list_offering_transactions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_offering_transactions(Client, Input, []).
@@ -605,11 +608,12 @@ list_offering_transactions(Client, Input, Options)
     request(Client, <<"ListOfferingTransactions">>, Input, Options).
 
 %% @doc Returns a list of products or offerings that the user can manage
-%% through the API. Each offering record indicates the recurring price per
-%% unit and the frequency for that offering. The API returns a
-%% <code>NotEligible</code> error if the user is not permitted to invoke the
-%% operation. If you must be able to invoke this operation, contact <a
-%% href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a>.
+%% through the API.
+%%
+%% Each offering record indicates the recurring price per unit and the
+%% frequency for that offering. The API returns a `NotEligible' error if the
+%% user is not permitted to invoke the operation. If you must be able to
+%% invoke this operation, contact aws-devicefarm-support@amazon.com.
 list_offerings(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_offerings(Client, Input, []).
@@ -673,7 +677,7 @@ list_test_grid_projects(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTestGridProjects">>, Input, Options).
 
-%% @doc Returns a list of the actions taken in a <a>TestGridSession</a>.
+%% @doc Returns a list of the actions taken in a `TestGridSession'.
 list_test_grid_session_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_test_grid_session_actions(Client, Input, []).
@@ -689,7 +693,7 @@ list_test_grid_session_artifacts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTestGridSessionArtifacts">>, Input, Options).
 
-%% @doc Retrieves a list of sessions for a <a>TestGridProject</a>.
+%% @doc Retrieves a list of sessions for a `TestGridProject'.
 list_test_grid_sessions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_test_grid_sessions(Client, Input, []).
@@ -710,9 +714,9 @@ list_tests(Client, Input, Options)
 %%
 %% Unique problems are defined as a single instance of an error across a run,
 %% job, or suite. For example, if a call in your application consistently
-%% raises an exception (<code>OutOfBoundsException in
-%% MyActivity.java:386</code>), <code>ListUniqueProblems</code> returns a
-%% single entry instead of many individual entries for that exception.
+%% raises an exception (`OutOfBoundsException in MyActivity.java:386'),
+%% `ListUniqueProblems' returns a single entry instead of many individual
+%% entries for that exception.
 list_unique_problems(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_unique_problems(Client, Input, []).
@@ -737,12 +741,12 @@ list_v_p_c_e_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListVPCEConfigurations">>, Input, Options).
 
-%% @doc Immediately purchases offerings for an AWS account. Offerings renew
-%% with the latest total purchased quantity for an offering, unless the
-%% renewal was overridden. The API returns a <code>NotEligible</code> error
+%% @doc Immediately purchases offerings for an AWS account.
+%%
+%% Offerings renew with the latest total purchased quantity for an offering,
+%% unless the renewal was overridden. The API returns a `NotEligible' error
 %% if the user is not permitted to invoke the operation. If you must be able
-%% to invoke this operation, contact <a
-%% href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a>.
+%% to invoke this operation, contact aws-devicefarm-support@amazon.com.
 purchase_offering(Client, Input)
   when is_map(Client), is_map(Input) ->
     purchase_offering(Client, Input, []).
@@ -751,11 +755,11 @@ purchase_offering(Client, Input, Options)
     request(Client, <<"PurchaseOffering">>, Input, Options).
 
 %% @doc Explicitly sets the quantity of devices to renew for an offering,
-%% starting from the <code>effectiveDate</code> of the next period. The API
-%% returns a <code>NotEligible</code> error if the user is not permitted to
+%% starting from the `effectiveDate' of the next period.
+%%
+%% The API returns a `NotEligible' error if the user is not permitted to
 %% invoke the operation. If you must be able to invoke this operation,
-%% contact <a
-%% href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a>.
+%% contact aws-devicefarm-support@amazon.com.
 renew_offering(Client, Input)
   when is_map(Client), is_map(Input) ->
     renew_offering(Client, Input, []).
@@ -771,12 +775,13 @@ schedule_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ScheduleRun">>, Input, Options).
 
-%% @doc Initiates a stop request for the current job. AWS Device Farm
-%% immediately stops the job on the device where tests have not started. You
-%% are not billed for this device. On the device where tests have started,
-%% setup suite and teardown suite tests run to completion on the device. You
-%% are billed for setup, teardown, and any tests that were in progress or
-%% already completed.
+%% @doc Initiates a stop request for the current job.
+%%
+%% AWS Device Farm immediately stops the job on the device where tests have
+%% not started. You are not billed for this device. On the device where tests
+%% have started, setup suite and teardown suite tests run to completion on
+%% the device. You are billed for setup, teardown, and any tests that were in
+%% progress or already completed.
 stop_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_job(Client, Input, []).
@@ -792,12 +797,13 @@ stop_remote_access_session(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopRemoteAccessSession">>, Input, Options).
 
-%% @doc Initiates a stop request for the current test run. AWS Device Farm
-%% immediately stops the run on devices where tests have not started. You are
-%% not billed for these devices. On devices where tests have started
-%% executing, setup suite and teardown suite tests run to completion on those
-%% devices. You are billed for setup, teardown, and any tests that were in
-%% progress or already completed.
+%% @doc Initiates a stop request for the current test run.
+%%
+%% AWS Device Farm immediately stops the run on devices where tests have not
+%% started. You are not billed for these devices. On devices where tests have
+%% started executing, setup suite and teardown suite tests run to completion
+%% on those devices. You are billed for setup, teardown, and any tests that
+%% were in progress or already completed.
 stop_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_run(Client, Input, []).
@@ -806,9 +812,11 @@ stop_run(Client, Input, Options)
     request(Client, <<"StopRun">>, Input, Options).
 
 %% @doc Associates the specified tags to a resource with the specified
-%% <code>resourceArn</code>. If existing tags on a resource are not specified
-%% in the request parameters, they are not changed. When a resource is
-%% deleted, the tags associated with that resource are also deleted.
+%% `resourceArn'.
+%%
+%% If existing tags on a resource are not specified in the request
+%% parameters, they are not changed. When a resource is deleted, the tags
+%% associated with that resource are also deleted.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -833,8 +841,10 @@ update_device_instance(Client, Input, Options)
     request(Client, <<"UpdateDeviceInstance">>, Input, Options).
 
 %% @doc Modifies the name, description, and rules in a device pool given the
-%% attributes and the pool ARN. Rule updates are all-or-nothing, meaning they
-%% can only be updated as a whole (or not at all).
+%% attributes and the pool ARN.
+%%
+%% Rule updates are all-or-nothing, meaning they can only be updated as a
+%% whole (or not at all).
 update_device_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_device_pool(Client, Input, []).
@@ -935,6 +945,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
 handle_response({error, Reason}) ->
     {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

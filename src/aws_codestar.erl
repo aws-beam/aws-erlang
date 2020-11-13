@@ -1,66 +1,63 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc <fullname>AWS CodeStar</fullname>
+%% @doc AWS CodeStar
 %%
-%% This is the API reference for AWS CodeStar. This reference provides
-%% descriptions of the operations and data types for the AWS CodeStar API
-%% along with usage examples.
+%% This is the API reference for AWS CodeStar.
+%%
+%% This reference provides descriptions of the operations and data types for
+%% the AWS CodeStar API along with usage examples.
 %%
 %% You can use the AWS CodeStar API to work with:
 %%
 %% Projects and their resources, by calling the following:
 %%
-%% <ul> <li> <code>DeleteProject</code>, which deletes a project.
+%% <ul> <li> `DeleteProject', which deletes a project.
 %%
-%% </li> <li> <code>DescribeProject</code>, which lists the attributes of a
+%% </li> <li> `DescribeProject', which lists the attributes of a project.
+%%
+%% </li> <li> `ListProjects', which lists all projects associated with your
+%% AWS account.
+%%
+%% </li> <li> `ListResources', which lists the resources associated with a
 %% project.
 %%
-%% </li> <li> <code>ListProjects</code>, which lists all projects associated
-%% with your AWS account.
-%%
-%% </li> <li> <code>ListResources</code>, which lists the resources
-%% associated with a project.
-%%
-%% </li> <li> <code>ListTagsForProject</code>, which lists the tags
-%% associated with a project.
-%%
-%% </li> <li> <code>TagProject</code>, which adds tags to a project.
-%%
-%% </li> <li> <code>UntagProject</code>, which removes tags from a project.
-%%
-%% </li> <li> <code>UpdateProject</code>, which updates the attributes of a
+%% </li> <li> `ListTagsForProject', which lists the tags associated with a
 %% project.
+%%
+%% </li> <li> `TagProject', which adds tags to a project.
+%%
+%% </li> <li> `UntagProject', which removes tags from a project.
+%%
+%% </li> <li> `UpdateProject', which updates the attributes of a project.
 %%
 %% </li> </ul> Teams and team members, by calling the following:
 %%
-%% <ul> <li> <code>AssociateTeamMember</code>, which adds an IAM user to the
+%% <ul> <li> `AssociateTeamMember', which adds an IAM user to the team for a
+%% project.
+%%
+%% </li> <li> `DisassociateTeamMember', which removes an IAM user from the
 %% team for a project.
 %%
-%% </li> <li> <code>DisassociateTeamMember</code>, which removes an IAM user
-%% from the team for a project.
+%% </li> <li> `ListTeamMembers', which lists all the IAM users in the team
+%% for a project, including their roles and attributes.
 %%
-%% </li> <li> <code>ListTeamMembers</code>, which lists all the IAM users in
-%% the team for a project, including their roles and attributes.
-%%
-%% </li> <li> <code>UpdateTeamMember</code>, which updates a team member's
-%% attributes in a project.
+%% </li> <li> `UpdateTeamMember', which updates a team member's attributes in
+%% a project.
 %%
 %% </li> </ul> Users, by calling the following:
 %%
-%% <ul> <li> <code>CreateUserProfile</code>, which creates a user profile
-%% that contains data associated with the user across all projects.
+%% <ul> <li> `CreateUserProfile', which creates a user profile that contains
+%% data associated with the user across all projects.
 %%
-%% </li> <li> <code>DeleteUserProfile</code>, which deletes all user profile
-%% information across all projects.
+%% </li> <li> `DeleteUserProfile', which deletes all user profile information
+%% across all projects.
 %%
-%% </li> <li> <code>DescribeUserProfile</code>, which describes the profile
-%% of a user.
+%% </li> <li> `DescribeUserProfile', which describes the profile of a user.
 %%
-%% </li> <li> <code>ListUserProfiles</code>, which lists all user profiles.
+%% </li> <li> `ListUserProfiles', which lists all user profiles.
 %%
-%% </li> <li> <code>UpdateUserProfile</code>, which updates the profile for a
-%% user.
+%% </li> <li> `UpdateUserProfile', which updates the profile for a user.
 %%
 %% </li> </ul>
 -module(aws_codestar).
@@ -116,10 +113,12 @@ associate_team_member(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateTeamMember">>, Input, Options).
 
-%% @doc Creates a project, including project resources. This action creates a
-%% project based on a submitted project request. A set of source code files
-%% and a toolchain template file can be included with the project request. If
-%% these are not provided, an empty project is created.
+%% @doc Creates a project, including project resources.
+%%
+%% This action creates a project based on a submitted project request. A set
+%% of source code files and a toolchain template file can be included with
+%% the project request. If these are not provided, an empty project is
+%% created.
 create_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_project(Client, Input, []).
@@ -129,9 +128,11 @@ create_project(Client, Input, Options)
 
 %% @doc Creates a profile for a user that includes user preferences, such as
 %% the display name and email address assocciated with the user, in AWS
-%% CodeStar. The user profile is not project-specific. Information in the
-%% user profile is displayed wherever the user's information appears to other
-%% users in AWS CodeStar.
+%% CodeStar.
+%%
+%% The user profile is not project-specific. Information in the user profile
+%% is displayed wherever the user's information appears to other users in AWS
+%% CodeStar.
 create_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user_profile(Client, Input, []).
@@ -139,9 +140,10 @@ create_user_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUserProfile">>, Input, Options).
 
-%% @doc Deletes a project, including project resources. Does not delete users
-%% associated with the project, but does delete the IAM roles that allowed
-%% access to the project.
+%% @doc Deletes a project, including project resources.
+%%
+%% Does not delete users associated with the project, but does delete the IAM
+%% roles that allowed access to the project.
 delete_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_project(Client, Input, []).
@@ -151,8 +153,10 @@ delete_project(Client, Input, Options)
 
 %% @doc Deletes a user profile in AWS CodeStar, including all personal
 %% preference data associated with that profile, such as display name and
-%% email address. It does not delete the history of that user, for example
-%% the history of commits made by that user.
+%% email address.
+%%
+%% It does not delete the history of that user, for example the history of
+%% commits made by that user.
 delete_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user_profile(Client, Input, []).
@@ -177,10 +181,12 @@ describe_user_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeUserProfile">>, Input, Options).
 
-%% @doc Removes a user from a project. Removing a user from a project also
-%% removes the IAM policies from that user that allowed access to the project
-%% and its resources. Disassociating a team member does not remove that
-%% user's profile from AWS CodeStar. It does not remove the user from IAM.
+%% @doc Removes a user from a project.
+%%
+%% Removing a user from a project also removes the IAM policies from that
+%% user that allowed access to the project and its resources. Disassociating
+%% a team member does not remove that user's profile from AWS CodeStar. It
+%% does not remove the user from IAM.
 disassociate_team_member(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_team_member(Client, Input, []).
@@ -253,8 +259,9 @@ update_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateProject">>, Input, Options).
 
-%% @doc Updates a team member's attributes in an AWS CodeStar project. For
-%% example, you can change a team member's role in the project, or change
+%% @doc Updates a team member's attributes in an AWS CodeStar project.
+%%
+%% For example, you can change a team member's role in the project, or change
 %% whether they have remote access to project resources.
 update_team_member(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -263,9 +270,11 @@ update_team_member(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTeamMember">>, Input, Options).
 
-%% @doc Updates a user's profile in AWS CodeStar. The user profile is not
-%% project-specific. Information in the user profile is displayed wherever
-%% the user's information appears to other users in AWS CodeStar.
+%% @doc Updates a user's profile in AWS CodeStar.
+%%
+%% The user profile is not project-specific. Information in the user profile
+%% is displayed wherever the user's information appears to other users in AWS
+%% CodeStar.
 update_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user_profile(Client, Input, []).
@@ -315,6 +324,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
 handle_response({error, Reason}) ->
     {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

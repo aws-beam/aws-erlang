@@ -1,33 +1,30 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc <fullname>AWS Systems Manager</fullname>
+%% @doc AWS Systems Manager
 %%
 %% AWS Systems Manager is a collection of capabilities that helps you
 %% automate management tasks such as collecting system inventory, applying
 %% operating system (OS) patches, automating the creation of Amazon Machine
 %% Images (AMIs), and configuring operating systems (OSs) and applications at
-%% scale. Systems Manager lets you remotely and securely manage the
-%% configuration of your managed instances. A <i>managed instance</i> is any
-%% Amazon Elastic Compute Cloud instance (EC2 instance), or any on-premises
-%% server or virtual machine (VM) in your hybrid environment that has been
-%% configured for Systems Manager.
+%% scale.
 %%
-%% This reference is intended to be used with the <a
-%% href="https://docs.aws.amazon.com/systems-manager/latest/userguide/">AWS
-%% Systems Manager User Guide</a>.
+%% Systems Manager lets you remotely and securely manage the configuration of
+%% your managed instances. A managed instance is any Amazon Elastic Compute
+%% Cloud instance (EC2 instance), or any on-premises server or virtual
+%% machine (VM) in your hybrid environment that has been configured for
+%% Systems Manager.
+%%
+%% This reference is intended to be used with the AWS Systems Manager User
+%% Guide.
 %%
 %% To get started, verify prerequisites and configure managed instances. For
-%% more information, see <a
-%% href="https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html">Setting
-%% up AWS Systems Manager</a> in the <i>AWS Systems Manager User Guide</i>.
+%% more information, see Setting up AWS Systems Manager in the AWS Systems
+%% Manager User Guide.
 %%
 %% For information about other API actions you can perform on EC2 instances,
-%% see the <a
-%% href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/">Amazon EC2
-%% API Reference</a>. For information about how to use a Query API, see <a
-%% href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/making-api-requests.html">Making
-%% API requests</a>.
+%% see the Amazon EC2 API Reference. For information about how to use a Query
+%% API, see Making API requests.
 -module(aws_ssm).
 
 -export([add_tags_to_resource/2,
@@ -281,14 +278,15 @@
 %% API
 %%====================================================================
 
-%% @doc Adds or overwrites one or more tags for the specified resource. Tags
-%% are metadata that you can assign to your documents, managed instances,
-%% maintenance windows, Parameter Store parameters, and patch baselines. Tags
-%% enable you to categorize your resources in different ways, for example, by
-%% purpose, owner, or environment. Each tag consists of a key and an optional
-%% value, both of which you define. For example, you could define a set of
-%% tags for your account's managed instances that helps you track each
-%% instance's owner and stack level. For example: Key=Owner and
+%% @doc Adds or overwrites one or more tags for the specified resource.
+%%
+%% Tags are metadata that you can assign to your documents, managed
+%% instances, maintenance windows, Parameter Store parameters, and patch
+%% baselines. Tags enable you to categorize your resources in different ways,
+%% for example, by purpose, owner, or environment. Each tag consists of a key
+%% and an optional value, both of which you define. For example, you could
+%% define a set of tags for your account's managed instances that helps you
+%% track each instance's owner and stack level. For example: Key=Owner and
 %% Value=DbAdmin, SysAdmin, or Dev. Or Key=Stack and Value=Production,
 %% Pre-Production, or Test.
 %%
@@ -300,9 +298,8 @@
 %% based on the tags you add. Tags don't have any semantic meaning to and are
 %% interpreted strictly as a string of characters.
 %%
-%% For more information about using tags with EC2 instances, see <a
-%% href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html">Tagging
-%% your Amazon EC2 resources</a> in the <i>Amazon EC2 User Guide</i>.
+%% For more information about using tags with EC2 instances, see Tagging your
+%% Amazon EC2 resources in the Amazon EC2 User Guide.
 add_tags_to_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags_to_resource(Client, Input, []).
@@ -310,9 +307,10 @@ add_tags_to_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddTagsToResource">>, Input, Options).
 
-%% @doc Attempts to cancel the command specified by the Command ID. There is
-%% no guarantee that the command will be terminated and the underlying
-%% process stopped.
+%% @doc Attempts to cancel the command specified by the Command ID.
+%%
+%% There is no guarantee that the command will be terminated and the
+%% underlying process stopped.
 cancel_command(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_command(Client, Input, []).
@@ -322,6 +320,7 @@ cancel_command(Client, Input, Options)
 
 %% @doc Stops a maintenance window execution that is already in progress and
 %% cancels any tasks in the window that have not already starting running.
+%%
 %% (Tasks already in progress will continue to completion.)
 cancel_maintenance_window_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -332,20 +331,19 @@ cancel_maintenance_window_execution(Client, Input, Options)
 
 %% @doc Generates an activation code and activation ID you can use to
 %% register your on-premises server or virtual machine (VM) with Systems
-%% Manager. Registering these machines with Systems Manager makes it possible
-%% to manage them using Systems Manager capabilities. You use the activation
+%% Manager.
+%%
+%% Registering these machines with Systems Manager makes it possible to
+%% manage them using Systems Manager capabilities. You use the activation
 %% code and ID when installing SSM Agent on machines in your hybrid
 %% environment. For more information about requirements for managing
-%% on-premises instances and VMs using Systems Manager, see <a
-%% href="https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-managedinstances.html">Setting
-%% up AWS Systems Manager for hybrid environments</a> in the <i>AWS Systems
-%% Manager User Guide</i>.
+%% on-premises instances and VMs using Systems Manager, see Setting up AWS
+%% Systems Manager for hybrid environments in the AWS Systems Manager User
+%% Guide.
 %%
-%% <note> On-premises servers or VMs that are registered with Systems Manager
-%% and EC2 instances that you manage with Systems Manager are all called
-%% <i>managed instances</i>.
-%%
-%% </note>
+%% On-premises servers or VMs that are registered with Systems Manager and
+%% EC2 instances that you manage with Systems Manager are all called managed
+%% instances.
 create_activation(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_activation(Client, Input, []).
@@ -354,17 +352,19 @@ create_activation(Client, Input, Options)
     request(Client, <<"CreateActivation">>, Input, Options).
 
 %% @doc A State Manager association defines the state that you want to
-%% maintain on your instances. For example, an association can specify that
-%% anti-virus software must be installed and running on your instances, or
-%% that certain ports must be closed. For static targets, the association
-%% specifies a schedule for when the configuration is reapplied. For dynamic
-%% targets, such as an AWS Resource Group or an AWS Autoscaling Group, State
-%% Manager applies the configuration when new instances are added to the
-%% group. The association also specifies actions to take when applying the
-%% configuration. For example, an association for anti-virus software might
-%% run once a day. If the software is not installed, then State Manager
-%% installs it. If the software is installed, but the service is not running,
-%% then the association might instruct State Manager to start the service.
+%% maintain on your instances.
+%%
+%% For example, an association can specify that anti-virus software must be
+%% installed and running on your instances, or that certain ports must be
+%% closed. For static targets, the association specifies a schedule for when
+%% the configuration is reapplied. For dynamic targets, such as an AWS
+%% Resource Group or an AWS Autoscaling Group, State Manager applies the
+%% configuration when new instances are added to the group. The association
+%% also specifies actions to take when applying the configuration. For
+%% example, an association for anti-virus software might run once a day. If
+%% the software is not installed, then State Manager installs it. If the
+%% software is installed, but the service is not running, then the
+%% association might instruct State Manager to start the service.
 create_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_association(Client, Input, []).
@@ -389,13 +389,12 @@ create_association_batch(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAssociationBatch">>, Input, Options).
 
-%% @doc Creates a Systems Manager (SSM) document. An SSM document defines the
-%% actions that Systems Manager performs on your managed instances. For more
-%% information about SSM documents, including information about supported
-%% schemas, features, and syntax, see <a
-%% href="https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-ssm-docs.html">AWS
-%% Systems Manager Documents</a> in the <i>AWS Systems Manager User
-%% Guide</i>.
+%% @doc Creates a Systems Manager (SSM) document.
+%%
+%% An SSM document defines the actions that Systems Manager performs on your
+%% managed instances. For more information about SSM documents, including
+%% information about supported schemas, features, and syntax, see AWS Systems
+%% Manager Documents in the AWS Systems Manager User Guide.
 create_document(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_document(Client, Input, []).
@@ -405,15 +404,12 @@ create_document(Client, Input, Options)
 
 %% @doc Creates a new maintenance window.
 %%
-%% <note> The value you specify for <code>Duration</code> determines the
-%% specific end time for the maintenance window based on the time it begins.
-%% No maintenance window tasks are permitted to start after the resulting
-%% endtime minus the number of hours you specify for <code>Cutoff</code>. For
-%% example, if the maintenance window starts at 3 PM, the duration is three
-%% hours, and the value you specify for <code>Cutoff</code> is one hour, no
-%% maintenance window tasks can start after 5 PM.
-%%
-%% </note>
+%% The value you specify for `Duration' determines the specific end time for
+%% the maintenance window based on the time it begins. No maintenance window
+%% tasks are permitted to start after the resulting endtime minus the number
+%% of hours you specify for `Cutoff'. For example, if the maintenance window
+%% starts at 3 PM, the duration is three hours, and the value you specify for
+%% `Cutoff' is one hour, no maintenance window tasks can start after 5 PM.
 create_maintenance_window(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_maintenance_window(Client, Input, []).
@@ -421,18 +417,16 @@ create_maintenance_window(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateMaintenanceWindow">>, Input, Options).
 
-%% @doc Creates a new OpsItem. You must have permission in AWS Identity and
-%% Access Management (IAM) to create a new OpsItem. For more information, see
-%% <a
-%% href="https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html">Getting
-%% started with OpsCenter</a> in the <i>AWS Systems Manager User Guide</i>.
+%% @doc Creates a new OpsItem.
+%%
+%% You must have permission in AWS Identity and Access Management (IAM) to
+%% create a new OpsItem. For more information, see Getting started with
+%% OpsCenter in the AWS Systems Manager User Guide.
 %%
 %% Operations engineers and IT professionals use OpsCenter to view,
 %% investigate, and remediate operational issues impacting the performance
-%% and health of their AWS resources. For more information, see <a
-%% href="https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html">AWS
-%% Systems Manager OpsCenter</a> in the <i>AWS Systems Manager User
-%% Guide</i>.
+%% and health of their AWS resources. For more information, see AWS Systems
+%% Manager OpsCenter in the AWS Systems Manager User Guide.
 create_ops_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_ops_item(Client, Input, []).
@@ -442,11 +436,8 @@ create_ops_item(Client, Input, Options)
 
 %% @doc Creates a patch baseline.
 %%
-%% <note> For information about valid key and value pairs in
-%% <code>PatchFilters</code> for each supported operating system type, see <a
-%% href="http://docs.aws.amazon.com/systems-manager/latest/APIReference/API_PatchFilter.html">PatchFilter</a>.
-%%
-%% </note>
+%% For information about valid key and value pairs in `PatchFilters' for each
+%% supported operating system type, see PatchFilter.
 create_patch_baseline(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_patch_baseline(Client, Input, []).
@@ -455,37 +446,33 @@ create_patch_baseline(Client, Input, Options)
     request(Client, <<"CreatePatchBaseline">>, Input, Options).
 
 %% @doc A resource data sync helps you view data from multiple sources in a
-%% single location. Systems Manager offers two types of resource data sync:
-%% <code>SyncToDestination</code> and <code>SyncFromSource</code>.
+%% single location.
 %%
-%% You can configure Systems Manager Inventory to use the
-%% <code>SyncToDestination</code> type to synchronize Inventory data from
-%% multiple AWS Regions to a single S3 bucket. For more information, see <a
-%% href="https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-datasync.html">Configuring
-%% Resource Data Sync for Inventory</a> in the <i>AWS Systems Manager User
-%% Guide</i>.
+%% Systems Manager offers two types of resource data sync:
+%% `SyncToDestination' and `SyncFromSource'.
 %%
-%% You can configure Systems Manager Explorer to use the
-%% <code>SyncFromSource</code> type to synchronize operational work items
-%% (OpsItems) and operational data (OpsData) from multiple AWS Regions to a
-%% single S3 bucket. This type can synchronize OpsItems and OpsData from
-%% multiple AWS accounts and Regions or <code>EntireOrganization</code> by
-%% using AWS Organizations. For more information, see <a
-%% href="https://docs.aws.amazon.com/systems-manager/latest/userguide/Explorer-resource-data-sync.html">Setting
-%% up Systems Manager Explorer to display data from multiple accounts and
-%% Regions</a> in the <i>AWS Systems Manager User Guide</i>.
+%% You can configure Systems Manager Inventory to use the `SyncToDestination'
+%% type to synchronize Inventory data from multiple AWS Regions to a single
+%% S3 bucket. For more information, see Configuring Resource Data Sync for
+%% Inventory in the AWS Systems Manager User Guide.
+%%
+%% You can configure Systems Manager Explorer to use the `SyncFromSource'
+%% type to synchronize operational work items (OpsItems) and operational data
+%% (OpsData) from multiple AWS Regions to a single S3 bucket. This type can
+%% synchronize OpsItems and OpsData from multiple AWS accounts and Regions or
+%% `EntireOrganization' by using AWS Organizations. For more information, see
+%% Setting up Systems Manager Explorer to display data from multiple accounts
+%% and Regions in the AWS Systems Manager User Guide.
 %%
 %% A resource data sync is an asynchronous operation that returns
 %% immediately. After a successful initial sync is completed, the system
 %% continuously syncs data. To check the status of a sync, use the
-%% <a>ListResourceDataSync</a>.
+%% `ListResourceDataSync'.
 %%
-%% <note> By default, data is not encrypted in Amazon S3. We strongly
-%% recommend that you enable encryption in Amazon S3 to ensure secure data
-%% storage. We also recommend that you secure access to the Amazon S3 bucket
-%% by creating a restrictive bucket policy.
-%%
-%% </note>
+%% By default, data is not encrypted in Amazon S3. We strongly recommend that
+%% you enable encryption in Amazon S3 to ensure secure data storage. We also
+%% recommend that you secure access to the Amazon S3 bucket by creating a
+%% restrictive bucket policy.
 create_resource_data_sync(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_resource_data_sync(Client, Input, []).
@@ -493,10 +480,12 @@ create_resource_data_sync(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateResourceDataSync">>, Input, Options).
 
-%% @doc Deletes an activation. You are not required to delete an activation.
-%% If you delete an activation, you can no longer use it to register
-%% additional managed instances. Deleting an activation does not de-register
-%% managed instances. You must manually de-register managed instances.
+%% @doc Deletes an activation.
+%%
+%% You are not required to delete an activation. If you delete an activation,
+%% you can no longer use it to register additional managed instances.
+%% Deleting an activation does not de-register managed instances. You must
+%% manually de-register managed instances.
 delete_activation(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_activation(Client, Input, []).
@@ -522,8 +511,8 @@ delete_association(Client, Input, Options)
 %% the document.
 %%
 %% Before you delete the document, we recommend that you use
-%% <a>DeleteAssociation</a> to disassociate all instances that are associated
-%% with the document.
+%% `DeleteAssociation' to disassociate all instances that are associated with
+%% the document.
 delete_document(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_document(Client, Input, []).
@@ -531,9 +520,11 @@ delete_document(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDocument">>, Input, Options).
 
-%% @doc Delete a custom inventory type, or the data associated with a custom
-%% Inventory type. Deleting a custom inventory type is also referred to as
-%% deleting a custom inventory schema.
+%% @doc Delete a custom inventory type or the data associated with a custom
+%% Inventory type.
+%%
+%% Deleting a custom inventory type is also referred to as deleting a custom
+%% inventory schema.
 delete_inventory(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_inventory(Client, Input, []).
@@ -573,9 +564,11 @@ delete_patch_baseline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePatchBaseline">>, Input, Options).
 
-%% @doc Deletes a Resource Data Sync configuration. After the configuration
-%% is deleted, changes to data on managed instances are no longer synced to
-%% or from the target. Deleting a sync configuration does not delete data.
+%% @doc Deletes a Resource Data Sync configuration.
+%%
+%% After the configuration is deleted, changes to data on managed instances
+%% are no longer synced to or from the target. Deleting a sync configuration
+%% does not delete data.
 delete_resource_data_sync(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_data_sync(Client, Input, []).
@@ -584,9 +577,10 @@ delete_resource_data_sync(Client, Input, Options)
     request(Client, <<"DeleteResourceDataSync">>, Input, Options).
 
 %% @doc Removes the server or virtual machine from the list of registered
-%% servers. You can reregister the instance again at any time. If you don't
-%% plan to use Run Command on the server, we suggest uninstalling SSM Agent
-%% first.
+%% servers.
+%%
+%% You can reregister the instance again at any time. If you don't plan to
+%% use Run Command on the server, we suggest uninstalling SSM Agent first.
 deregister_managed_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_managed_instance(Client, Input, []).
@@ -629,10 +623,11 @@ describe_activations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeActivations">>, Input, Options).
 
-%% @doc Describes the association for the specified target or instance. If
-%% you created the association by using the <code>Targets</code> parameter,
-%% then you must retrieve the association by using the association ID. If you
-%% created the association by specifying an instance ID and a Systems Manager
+%% @doc Describes the association for the specified target or instance.
+%%
+%% If you created the association by using the `Targets' parameter, then you
+%% must retrieve the association by using the association ID. If you created
+%% the association by specifying an instance ID and a Systems Manager
 %% document, then you retrieve the association by specifying the document
 %% name and the instance ID.
 describe_association(Client, Input)
@@ -694,10 +689,11 @@ describe_document(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDocument">>, Input, Options).
 
-%% @doc Describes the permissions for a Systems Manager document. If you
-%% created the document, you are the owner. If a document is shared, it can
-%% either be shared privately (by specifying a user's AWS account ID) or
-%% publicly (<i>All</i>).
+%% @doc Describes the permissions for a Systems Manager document.
+%%
+%% If you created the document, you are the owner. If a document is shared,
+%% it can either be shared privately (by specifying a user's AWS account ID)
+%% or publicly (All).
 describe_document_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_document_permission(Client, Input, []).
@@ -714,8 +710,9 @@ describe_effective_instance_associations(Client, Input, Options)
     request(Client, <<"DescribeEffectiveInstanceAssociations">>, Input, Options).
 
 %% @doc Retrieves the current effective patches (the patch and the approval
-%% state) for the specified patch baseline. Note that this API applies only
-%% to Windows patch baselines.
+%% state) for the specified patch baseline.
+%%
+%% Note that this API applies only to Windows patch baselines.
 describe_effective_patches_for_patch_baseline(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_effective_patches_for_patch_baseline(Client, Input, []).
@@ -740,11 +737,9 @@ describe_instance_associations_status(Client, Input, Options)
 %% all your instances. If you specify an instance ID that is not valid or an
 %% instance that you do not own, you receive an error.
 %%
-%% <note> The IamRole field for this API action is the Amazon Identity and
-%% Access Management (IAM) role assigned to on-premises instances. This call
-%% does not return the IAM role for EC2 instances.
-%%
-%% </note>
+%% The IamRole field for this API action is the Amazon Identity and Access
+%% Management (IAM) role assigned to on-premises instances. This call does
+%% not return the IAM role for EC2 instances.
 describe_instance_information(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_information(Client, Input, []).
@@ -804,10 +799,11 @@ describe_maintenance_window_execution_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMaintenanceWindowExecutionTasks">>, Input, Options).
 
-%% @doc Lists the executions of a maintenance window. This includes
-%% information about when the maintenance window was scheduled to be active,
-%% and information about tasks registered and run with the maintenance
-%% window.
+%% @doc Lists the executions of a maintenance window.
+%%
+%% This includes information about when the maintenance window was scheduled
+%% to be active, and information about tasks registered and run with the
+%% maintenance window.
 describe_maintenance_window_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_maintenance_window_executions(Client, Input, []).
@@ -857,18 +853,16 @@ describe_maintenance_windows_for_target(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMaintenanceWindowsForTarget">>, Input, Options).
 
-%% @doc Query a set of OpsItems. You must have permission in AWS Identity and
-%% Access Management (IAM) to query a list of OpsItems. For more information,
-%% see <a
-%% href="https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html">Getting
-%% started with OpsCenter</a> in the <i>AWS Systems Manager User Guide</i>.
+%% @doc Query a set of OpsItems.
+%%
+%% You must have permission in AWS Identity and Access Management (IAM) to
+%% query a list of OpsItems. For more information, see Getting started with
+%% OpsCenter in the AWS Systems Manager User Guide.
 %%
 %% Operations engineers and IT professionals use OpsCenter to view,
 %% investigate, and remediate operational issues impacting the performance
-%% and health of their AWS resources. For more information, see <a
-%% href="https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html">AWS
-%% Systems Manager OpsCenter</a> in the <i>AWS Systems Manager User
-%% Guide</i>.
+%% and health of their AWS resources. For more information, see AWS Systems
+%% Manager OpsCenter in the AWS Systems Manager User Guide.
 describe_ops_items(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_ops_items(Client, Input, []).
@@ -878,16 +872,13 @@ describe_ops_items(Client, Input, Options)
 
 %% @doc Get information about a parameter.
 %%
-%% <note> Request results are returned on a best-effort basis. If you specify
-%% <code>MaxResults</code> in the request, the response includes information
-%% up to the limit specified. The number of items returned, however, can be
-%% between zero and the value of <code>MaxResults</code>. If the service
-%% reaches an internal limit while processing the results, it stops the
-%% operation and returns the matching values up to that point and a
-%% <code>NextToken</code>. You can specify the <code>NextToken</code> in a
-%% subsequent call to get the next set of results.
-%%
-%% </note>
+%% Request results are returned on a best-effort basis. If you specify
+%% `MaxResults' in the request, the response includes information up to the
+%% limit specified. The number of items returned, however, can be between
+%% zero and the value of `MaxResults'. If the service reaches an internal
+%% limit while processing the results, it stops the operation and returns the
+%% matching values up to that point and a `NextToken'. You can specify the
+%% `NextToken' in a subsequent call to get the next set of results.
 describe_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_parameters(Client, Input, []).
@@ -923,24 +914,28 @@ describe_patch_groups(Client, Input, Options)
 
 %% @doc Lists the properties of available patches organized by product,
 %% product family, classification, severity, and other properties of
-%% available patches. You can use the reported properties in the filters you
-%% specify in requests for actions such as <a>CreatePatchBaseline</a>,
-%% <a>UpdatePatchBaseline</a>, <a>DescribeAvailablePatches</a>, and
-%% <a>DescribePatchBaselines</a>.
+%% available patches.
+%%
+%% You can use the reported properties in the filters you specify in requests
+%% for actions such as `CreatePatchBaseline', `UpdatePatchBaseline',
+%% `DescribeAvailablePatches', and `DescribePatchBaselines'.
 %%
 %% The following section lists the properties that can be used in filters for
 %% each major operating system type:
 %%
-%% <dl> <dt>WINDOWS</dt> <dd> Valid properties: PRODUCT, PRODUCT_FAMILY,
-%% CLASSIFICATION, MSRC_SEVERITY
-%%
-%% </dd> <dt>AMAZON_LINUX</dt> <dd> Valid properties: PRODUCT,
-%% CLASSIFICATION, SEVERITY
+%% <dl> <dt>AMAZON_LINUX</dt> <dd> Valid properties: PRODUCT, CLASSIFICATION,
+%% SEVERITY
 %%
 %% </dd> <dt>AMAZON_LINUX_2</dt> <dd> Valid properties: PRODUCT,
 %% CLASSIFICATION, SEVERITY
 %%
-%% </dd> <dt>UBUNTU </dt> <dd> Valid properties: PRODUCT, PRIORITY
+%% </dd> <dt>CENTOS</dt> <dd> Valid properties: PRODUCT, CLASSIFICATION,
+%% SEVERITY
+%%
+%% </dd> <dt>DEBIAN</dt> <dd> Valid properties: PRODUCT, PRIORITY
+%%
+%% </dd> <dt>ORACLE_LINUX</dt> <dd> Valid properties: PRODUCT,
+%% CLASSIFICATION, SEVERITY
 %%
 %% </dd> <dt>REDHAT_ENTERPRISE_LINUX</dt> <dd> Valid properties: PRODUCT,
 %% CLASSIFICATION, SEVERITY
@@ -948,8 +943,10 @@ describe_patch_groups(Client, Input, Options)
 %% </dd> <dt>SUSE</dt> <dd> Valid properties: PRODUCT, CLASSIFICATION,
 %% SEVERITY
 %%
-%% </dd> <dt>CENTOS</dt> <dd> Valid properties: PRODUCT, CLASSIFICATION,
-%% SEVERITY
+%% </dd> <dt>UBUNTU</dt> <dd> Valid properties: PRODUCT, PRIORITY
+%%
+%% </dd> <dt>WINDOWS</dt> <dd> Valid properties: PRODUCT, PRODUCT_FAMILY,
+%% CLASSIFICATION, MSRC_SEVERITY
 %%
 %% </dd> </dl>
 describe_patch_properties(Client, Input)
@@ -977,17 +974,21 @@ get_automation_execution(Client, Input, Options)
     request(Client, <<"GetAutomationExecution">>, Input, Options).
 
 %% @doc Gets the state of the AWS Systems Manager Change Calendar at an
-%% optional, specified time. If you specify a time,
-%% <code>GetCalendarState</code> returns the state of the calendar at a
-%% specific time, and returns the next time that the Change Calendar state
-%% will transition. If you do not specify a time,
-%% <code>GetCalendarState</code> assumes the current time. Change Calendar
-%% entries have two possible states: <code>OPEN</code> or
-%% <code>CLOSED</code>. For more information about Systems Manager Change
-%% Calendar, see <a
-%% href="https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-change-calendar.html">AWS
-%% Systems Manager Change Calendar</a> in the <i>AWS Systems Manager User
-%% Guide</i>.
+%% optional, specified time.
+%%
+%% If you specify a time, `GetCalendarState' returns the state of the
+%% calendar at a specific time, and returns the next time that the Change
+%% Calendar state will transition. If you do not specify a time,
+%% `GetCalendarState' assumes the current time. Change Calendar entries have
+%% two possible states: `OPEN' or `CLOSED'.
+%%
+%% If you specify more than one calendar in a request, the command returns
+%% the status of `OPEN' only if all calendars in the request are open. If one
+%% or more calendars in the request are closed, the status returned is
+%% `CLOSED'.
+%%
+%% For more information about Systems Manager Change Calendar, see AWS
+%% Systems Manager Change Calendar in the AWS Systems Manager User Guide.
 get_calendar_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_calendar_state(Client, Input, []).
@@ -1014,9 +1015,11 @@ get_connection_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetConnectionStatus">>, Input, Options).
 
-%% @doc Retrieves the default patch baseline. Note that Systems Manager
-%% supports creating multiple default patch baselines. For example, you can
-%% create a default patch baseline for each operating system.
+%% @doc Retrieves the default patch baseline.
+%%
+%% Note that Systems Manager supports creating multiple default patch
+%% baselines. For example, you can create a default patch baseline for each
+%% operating system.
 %%
 %% If you do not specify an operating system value, the default patch
 %% baseline for Windows is returned.
@@ -1028,8 +1031,10 @@ get_default_patch_baseline(Client, Input, Options)
     request(Client, <<"GetDefaultPatchBaseline">>, Input, Options).
 
 %% @doc Retrieves the current snapshot for the patch baseline the instance
-%% uses. This API is primarily used by the AWS-RunPatchBaseline Systems
-%% Manager document.
+%% uses.
+%%
+%% This API is primarily used by the AWS-RunPatchBaseline Systems Manager
+%% document.
 get_deployable_patch_snapshot_for_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_deployable_patch_snapshot_for_instance(Client, Input, []).
@@ -1104,18 +1109,16 @@ get_maintenance_window_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMaintenanceWindowTask">>, Input, Options).
 
-%% @doc Get information about an OpsItem by using the ID. You must have
-%% permission in AWS Identity and Access Management (IAM) to view information
-%% about an OpsItem. For more information, see <a
-%% href="https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html">Getting
-%% started with OpsCenter</a> in the <i>AWS Systems Manager User Guide</i>.
+%% @doc Get information about an OpsItem by using the ID.
+%%
+%% You must have permission in AWS Identity and Access Management (IAM) to
+%% view information about an OpsItem. For more information, see Getting
+%% started with OpsCenter in the AWS Systems Manager User Guide.
 %%
 %% Operations engineers and IT professionals use OpsCenter to view,
 %% investigate, and remediate operational issues impacting the performance
-%% and health of their AWS resources. For more information, see <a
-%% href="https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html">AWS
-%% Systems Manager OpsCenter</a> in the <i>AWS Systems Manager User
-%% Guide</i>.
+%% and health of their AWS resources. For more information, see AWS Systems
+%% Manager OpsCenter in the AWS Systems Manager User Guide.
 get_ops_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ops_item(Client, Input, []).
@@ -1132,8 +1135,9 @@ get_ops_summary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOpsSummary">>, Input, Options).
 
-%% @doc Get information about a parameter by using the parameter name. Don't
-%% confuse this API action with the <a>GetParameters</a> API action.
+%% @doc Get information about a parameter by using the parameter name.
+%%
+%% Don't confuse this API action with the `GetParameters' API action.
 get_parameter(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_parameter(Client, Input, []).
@@ -1141,7 +1145,7 @@ get_parameter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetParameter">>, Input, Options).
 
-%% @doc Query a list of all parameters used by the AWS account.
+%% @doc Retrieves the history of all changes to a parameter.
 get_parameter_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_parameter_history(Client, Input, []).
@@ -1149,8 +1153,9 @@ get_parameter_history(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetParameterHistory">>, Input, Options).
 
-%% @doc Get details of a parameter. Don't confuse this API action with the
-%% <a>GetParameter</a> API action.
+%% @doc Get details of a parameter.
+%%
+%% Don't confuse this API action with the `GetParameter' API action.
 get_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_parameters(Client, Input, []).
@@ -1161,16 +1166,13 @@ get_parameters(Client, Input, Options)
 %% @doc Retrieve information about one or more parameters in a specific
 %% hierarchy.
 %%
-%% <note> Request results are returned on a best-effort basis. If you specify
-%% <code>MaxResults</code> in the request, the response includes information
-%% up to the limit specified. The number of items returned, however, can be
-%% between zero and the value of <code>MaxResults</code>. If the service
-%% reaches an internal limit while processing the results, it stops the
-%% operation and returns the matching values up to that point and a
-%% <code>NextToken</code>. You can specify the <code>NextToken</code> in a
-%% subsequent call to get the next set of results.
-%%
-%% </note>
+%% Request results are returned on a best-effort basis. If you specify
+%% `MaxResults' in the request, the response includes information up to the
+%% limit specified. The number of items returned, however, can be between
+%% zero and the value of `MaxResults'. If the service reaches an internal
+%% limit while processing the results, it stops the operation and returns the
+%% matching values up to that point and a `NextToken'. You can specify the
+%% `NextToken' in a subsequent call to get the next set of results.
 get_parameters_by_path(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_parameters_by_path(Client, Input, []).
@@ -1195,22 +1197,22 @@ get_patch_baseline_for_patch_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPatchBaselineForPatchGroup">>, Input, Options).
 
-%% @doc <code>ServiceSetting</code> is an account-level setting for an AWS
-%% service. This setting defines how a user interacts with or uses a service
-%% or a feature of a service. For example, if an AWS service charges money to
-%% the account based on feature or service usage, then the AWS service team
-%% might create a default setting of "false". This means the user can't use
-%% this feature unless they change the setting to "true" and intentionally
-%% opt in for a paid feature.
+%% @doc `ServiceSetting' is an account-level setting for an AWS service.
 %%
-%% Services map a <code>SettingId</code> object to a setting value. AWS
-%% services teams define the default value for a <code>SettingId</code>. You
-%% can't create a new <code>SettingId</code>, but you can overwrite the
-%% default value if you have the <code>ssm:UpdateServiceSetting</code>
-%% permission for the setting. Use the <a>UpdateServiceSetting</a> API action
-%% to change the default setting. Or use the <a>ResetServiceSetting</a> to
-%% change the value back to the original value defined by the AWS service
-%% team.
+%% This setting defines how a user interacts with or uses a service or a
+%% feature of a service. For example, if an AWS service charges money to the
+%% account based on feature or service usage, then the AWS service team might
+%% create a default setting of "false". This means the user can't use this
+%% feature unless they change the setting to "true" and intentionally opt in
+%% for a paid feature.
+%%
+%% Services map a `SettingId' object to a setting value. AWS services teams
+%% define the default value for a `SettingId'. You can't create a new
+%% `SettingId', but you can overwrite the default value if you have the
+%% `ssm:UpdateServiceSetting' permission for the setting. Use the
+%% `UpdateServiceSetting' API action to change the default setting. Or use
+%% the `ResetServiceSetting' to change the value back to the original value
+%% defined by the AWS service team.
 %%
 %% Query the current service setting for the account.
 get_service_setting(Client, Input)
@@ -1221,10 +1223,11 @@ get_service_setting(Client, Input, Options)
     request(Client, <<"GetServiceSetting">>, Input, Options).
 
 %% @doc A parameter label is a user-defined alias to help you manage
-%% different versions of a parameter. When you modify a parameter, Systems
-%% Manager automatically saves a new version and increments the version
-%% number by one. A label can help you remember the purpose of a parameter
-%% when there are multiple versions.
+%% different versions of a parameter.
+%%
+%% When you modify a parameter, Systems Manager automatically saves a new
+%% version and increments the version number by one. A label can help you
+%% remember the purpose of a parameter when there are multiple versions.
 %%
 %% Parameter labels have the following requirements and restrictions.
 %%
@@ -1272,8 +1275,10 @@ list_association_versions(Client, Input, Options)
     request(Client, <<"ListAssociationVersions">>, Input, Options).
 
 %% @doc Returns all State Manager associations in the current AWS account and
-%% Region. You can limit the results to a specific State Manager association
-%% document or instance by specifying a filter.
+%% Region.
+%%
+%% You can limit the results to a specific State Manager association document
+%% or instance by specifying a filter.
 list_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_associations(Client, Input, []).
@@ -1281,8 +1286,9 @@ list_associations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAssociations">>, Input, Options).
 
-%% @doc An invocation is copy of a command sent to a specific instance. A
-%% command can apply to one or more instances. A command invocation applies
+%% @doc An invocation is copy of a command sent to a specific instance.
+%%
+%% A command can apply to one or more instances. A command invocation applies
 %% to one instance. For example, if a user runs SendCommand against three
 %% instances, then a command invocation is created for each requested
 %% instance ID. ListCommandInvocations provide status about command
@@ -1303,9 +1309,10 @@ list_commands(Client, Input, Options)
     request(Client, <<"ListCommands">>, Input, Options).
 
 %% @doc For a specified resource ID, this API action returns a list of
-%% compliance statuses for different resource types. Currently, you can only
-%% specify one resource ID per call. List results depend on the criteria
-%% specified in the filter.
+%% compliance statuses for different resource types.
+%%
+%% Currently, you can only specify one resource ID per call. List results
+%% depend on the criteria specified in the filter.
 list_compliance_items(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_compliance_items(Client, Input, []).
@@ -1314,9 +1321,10 @@ list_compliance_items(Client, Input, Options)
     request(Client, <<"ListComplianceItems">>, Input, Options).
 
 %% @doc Returns a summary count of compliant and non-compliant resources for
-%% a compliance type. For example, this call can return State Manager
-%% associations, patches, or custom compliance types according to the filter
-%% criteria that you specify.
+%% a compliance type.
+%%
+%% For example, this call can return State Manager associations, patches, or
+%% custom compliance types according to the filter criteria that you specify.
 list_compliance_summaries(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_compliance_summaries(Client, Input, []).
@@ -1333,8 +1341,9 @@ list_document_versions(Client, Input, Options)
     request(Client, <<"ListDocumentVersions">>, Input, Options).
 
 %% @doc Returns all Systems Manager (SSM) documents in the current AWS
-%% account and Region. You can limit the results of this request by using a
-%% filter.
+%% account and Region.
+%%
+%% You can limit the results of this request by using a filter.
 list_documents(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_documents(Client, Input, []).
@@ -1350,10 +1359,11 @@ list_inventory_entries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListInventoryEntries">>, Input, Options).
 
-%% @doc Returns a resource-level summary count. The summary includes
-%% information about compliant and non-compliant statuses and detailed
-%% compliance-item severity counts, according to the filter criteria you
-%% specify.
+%% @doc Returns a resource-level summary count.
+%%
+%% The summary includes information about compliant and non-compliant
+%% statuses and detailed compliance-item severity counts, according to the
+%% filter criteria you specify.
 list_resource_compliance_summaries(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resource_compliance_summaries(Client, Input, []).
@@ -1361,18 +1371,18 @@ list_resource_compliance_summaries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResourceComplianceSummaries">>, Input, Options).
 
-%% @doc Lists your resource data sync configurations. Includes information
-%% about the last time a sync attempted to start, the last sync status, and
-%% the last time a sync successfully completed.
+%% @doc Lists your resource data sync configurations.
+%%
+%% Includes information about the last time a sync attempted to start, the
+%% last sync status, and the last time a sync successfully completed.
 %%
 %% The number of sync configurations might be too large to return using a
-%% single call to <code>ListResourceDataSync</code>. You can limit the number
-%% of sync configurations returned by using the <code>MaxResults</code>
-%% parameter. To determine whether there are more sync configurations to
-%% list, check the value of <code>NextToken</code> in the output. If there
-%% are more sync configurations to list, you can request them by specifying
-%% the <code>NextToken</code> returned in the call to the parameter of a
-%% subsequent call.
+%% single call to `ListResourceDataSync'. You can limit the number of sync
+%% configurations returned by using the `MaxResults' parameter. To determine
+%% whether there are more sync configurations to list, check the value of
+%% `NextToken' in the output. If there are more sync configurations to list,
+%% you can request them by specifying the `NextToken' returned in the call to
+%% the parameter of a subsequent call.
 list_resource_data_sync(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resource_data_sync(Client, Input, []).
@@ -1388,10 +1398,11 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
-%% @doc Shares a Systems Manager document publicly or privately. If you share
-%% a document privately, you must specify the AWS user account IDs for those
-%% people who can use the document. If you share a document publicly, you
-%% must specify <i>All</i> as the account ID.
+%% @doc Shares a Systems Manager document publicly or privately.
+%%
+%% If you share a document privately, you must specify the AWS user account
+%% IDs for those people who can use the document. If you share a document
+%% publicly, you must specify All as the account ID.
 modify_document_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_document_permission(Client, Input, []).
@@ -1400,18 +1411,19 @@ modify_document_permission(Client, Input, Options)
     request(Client, <<"ModifyDocumentPermission">>, Input, Options).
 
 %% @doc Registers a compliance type and other compliance details on a
-%% designated resource. This action lets you register custom compliance
-%% details with a resource. This call overwrites existing compliance
-%% information on the resource, so you must provide a full list of compliance
-%% items each time that you send the request.
+%% designated resource.
+%%
+%% This action lets you register custom compliance details with a resource.
+%% This call overwrites existing compliance information on the resource, so
+%% you must provide a full list of compliance items each time that you send
+%% the request.
 %%
 %% ComplianceType can be one of the following:
 %%
 %% <ul> <li> ExecutionId: The execution ID when the patch, association, or
 %% custom compliance item was applied.
 %%
-%% </li> <li> ExecutionType: Specify patch, association, or
-%% Custom:<code>string</code>.
+%% </li> <li> ExecutionType: Specify patch, association, or Custom:`string'.
 %%
 %% </li> <li> ExecutionTime. The time the patch, association, or custom
 %% compliance item was applied to the instance.
@@ -1421,10 +1433,9 @@ modify_document_permission(Client, Input, Options)
 %% </li> <li> Title: A title.
 %%
 %% </li> <li> Status: The status of the compliance item. For example,
-%% <code>approved</code> for patches, or <code>Failed</code> for
-%% associations.
+%% `approved' for patches, or `Failed' for associations.
 %%
-%% </li> <li> Severity: A patch severity. For example, <code>critical</code>.
+%% </li> <li> Severity: A patch severity. For example, `critical'.
 %%
 %% </li> <li> DocumentName: A SSM document name. For example,
 %% AWS-RunPatchBaseline.
@@ -1432,16 +1443,15 @@ modify_document_permission(Client, Input, Options)
 %% </li> <li> DocumentVersion: An SSM document version number. For example,
 %% 4.
 %%
-%% </li> <li> Classification: A patch classification. For example,
-%% <code>security updates</code>.
+%% </li> <li> Classification: A patch classification. For example, `security
+%% updates'.
 %%
 %% </li> <li> PatchBaselineId: A patch baseline ID.
 %%
-%% </li> <li> PatchSeverity: A patch severity. For example,
-%% <code>Critical</code>.
+%% </li> <li> PatchSeverity: A patch severity. For example, `Critical'.
 %%
 %% </li> <li> PatchState: A patch state. For example,
-%% <code>InstancesWithFailedPatches</code>.
+%% `InstancesWithFailedPatches'.
 %%
 %% </li> <li> PatchGroup: The name of a patch group.
 %%
@@ -1457,9 +1467,10 @@ put_compliance_items(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutComplianceItems">>, Input, Options).
 
-%% @doc Bulk update custom inventory items on one more instance. The request
-%% adds an inventory item, if it doesn't already exist, or updates an
-%% inventory item, if it does exist.
+%% @doc Bulk update custom inventory items on one more instance.
+%%
+%% The request adds an inventory item, if it doesn't already exist, or
+%% updates an inventory item, if it does exist.
 put_inventory(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_inventory(Client, Input, []).
@@ -1480,8 +1491,8 @@ put_parameter(Client, Input, Options)
 %% To reset the AWS predefined patch baseline as the default, specify the
 %% full patch baseline ARN as the baseline ID value. For example, for CentOS,
 %% specify
-%% <code>arn:aws:ssm:us-east-2:733109147000:patchbaseline/pb-0574b43a65ea646ed</code>
-%% instead of <code>pb-0574b43a65ea646ed</code>.
+%% `arn:aws:ssm:us-east-2:733109147000:patchbaseline/pb-0574b43a65ea646ed'
+%% instead of `pb-0574b43a65ea646ed'.
 register_default_patch_baseline(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_default_patch_baseline(Client, Input, []).
@@ -1521,21 +1532,21 @@ remove_tags_from_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTagsFromResource">>, Input, Options).
 
-%% @doc <code>ServiceSetting</code> is an account-level setting for an AWS
-%% service. This setting defines how a user interacts with or uses a service
-%% or a feature of a service. For example, if an AWS service charges money to
-%% the account based on feature or service usage, then the AWS service team
-%% might create a default setting of "false". This means the user can't use
-%% this feature unless they change the setting to "true" and intentionally
-%% opt in for a paid feature.
+%% @doc `ServiceSetting' is an account-level setting for an AWS service.
 %%
-%% Services map a <code>SettingId</code> object to a setting value. AWS
-%% services teams define the default value for a <code>SettingId</code>. You
-%% can't create a new <code>SettingId</code>, but you can overwrite the
-%% default value if you have the <code>ssm:UpdateServiceSetting</code>
-%% permission for the setting. Use the <a>GetServiceSetting</a> API action to
-%% view the current value. Use the <a>UpdateServiceSetting</a> API action to
-%% change the default setting.
+%% This setting defines how a user interacts with or uses a service or a
+%% feature of a service. For example, if an AWS service charges money to the
+%% account based on feature or service usage, then the AWS service team might
+%% create a default setting of "false". This means the user can't use this
+%% feature unless they change the setting to "true" and intentionally opt in
+%% for a paid feature.
+%%
+%% Services map a `SettingId' object to a setting value. AWS services teams
+%% define the default value for a `SettingId'. You can't create a new
+%% `SettingId', but you can overwrite the default value if you have the
+%% `ssm:UpdateServiceSetting' permission for the setting. Use the
+%% `GetServiceSetting' API action to view the current value. Use the
+%% `UpdateServiceSetting' API action to change the default setting.
 %%
 %% Reset the service setting for the account to the default value as
 %% provisioned by the AWS service team.
@@ -1547,14 +1558,13 @@ reset_service_setting(Client, Input, Options)
     request(Client, <<"ResetServiceSetting">>, Input, Options).
 
 %% @doc Reconnects a session to an instance after it has been disconnected.
+%%
 %% Connections can be resumed for disconnected sessions, but not terminated
 %% sessions.
 %%
-%% <note> This command is primarily for use by client machines to
-%% automatically reconnect during intermittent network issues. It is not
-%% intended for any other use.
-%%
-%% </note>
+%% This command is primarily for use by client machines to automatically
+%% reconnect during intermittent network issues. It is not intended for any
+%% other use.
 resume_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     resume_session(Client, Input, []).
@@ -1580,7 +1590,9 @@ send_command(Client, Input, Options)
     request(Client, <<"SendCommand">>, Input, Options).
 
 %% @doc Use this API action to run an association immediately and only one
-%% time. This action can be helpful when troubleshooting associations.
+%% time.
+%%
+%% This action can be helpful when troubleshooting associations.
 start_associations_once(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_associations_once(Client, Input, []).
@@ -1597,20 +1609,18 @@ start_automation_execution(Client, Input, Options)
     request(Client, <<"StartAutomationExecution">>, Input, Options).
 
 %% @doc Initiates a connection to a target (for example, an instance) for a
-%% Session Manager session. Returns a URL and token that can be used to open
-%% a WebSocket connection for sending input and receiving outputs.
+%% Session Manager session.
 %%
-%% <note> AWS CLI usage: <code>start-session</code> is an interactive command
-%% that requires the Session Manager plugin to be installed on the client
-%% machine making the call. For information, see <a
-%% href="https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html">Install
-%% the Session Manager plugin for the AWS CLI</a> in the <i>AWS Systems
-%% Manager User Guide</i>.
+%% Returns a URL and token that can be used to open a WebSocket connection
+%% for sending input and receiving outputs.
+%%
+%% AWS CLI usage: `start-session' is an interactive command that requires the
+%% Session Manager plugin to be installed on the client machine making the
+%% call. For information, see Install the Session Manager plugin for the AWS
+%% CLI in the AWS Systems Manager User Guide.
 %%
 %% AWS Tools for PowerShell usage: Start-SSMSession is not currently
 %% supported by AWS Tools for PowerShell on Windows local machines.
-%%
-%% </note>
 start_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_session(Client, Input, []).
@@ -1627,8 +1637,9 @@ stop_automation_execution(Client, Input, Options)
     request(Client, <<"StopAutomationExecution">>, Input, Options).
 
 %% @doc Permanently ends a session and closes the data connection between the
-%% Session Manager client and SSM Agent on the instance. A terminated session
-%% cannot be resumed.
+%% Session Manager client and SSM Agent on the instance.
+%%
+%% A terminated session cannot be resumed.
 terminate_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     terminate_session(Client, Input, []).
@@ -1636,21 +1647,21 @@ terminate_session(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TerminateSession">>, Input, Options).
 
-%% @doc Updates an association. You can update the association name and
-%% version, the document version, schedule, parameters, and Amazon S3 output.
+%% @doc Updates an association.
+%%
+%% You can update the association name and version, the document version,
+%% schedule, parameters, and Amazon S3 output.
 %%
 %% In order to call this API action, your IAM user account, group, or role
-%% must be configured with permission to call the <a>DescribeAssociation</a>
-%% API action. If you don't have permission to call DescribeAssociation, then
-%% you receive the following error: <code>An error occurred
-%% (AccessDeniedException) when calling the UpdateAssociation operation:
-%% User: &lt;user_arn&gt; is not authorized to perform:
-%% ssm:DescribeAssociation on resource: &lt;resource_arn&gt;</code>
+%% must be configured with permission to call the `DescribeAssociation' API
+%% action. If you don't have permission to call DescribeAssociation, then you
+%% receive the following error: `An error occurred (AccessDeniedException)
+%% when calling the UpdateAssociation operation: User: <user_arn> is not
+%% authorized to perform: ssm:DescribeAssociation on resource:
+%% <resource_arn>'
 %%
-%% <important> When you update an association, the association immediately
-%% runs against the specified targets.
-%%
-%% </important>
+%% When you update an association, the association immediately runs against
+%% the specified targets.
 update_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_association(Client, Input, []).
@@ -1683,18 +1694,16 @@ update_document_default_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDocumentDefaultVersion">>, Input, Options).
 
-%% @doc Updates an existing maintenance window. Only specified parameters are
-%% modified.
+%% @doc Updates an existing maintenance window.
 %%
-%% <note> The value you specify for <code>Duration</code> determines the
-%% specific end time for the maintenance window based on the time it begins.
-%% No maintenance window tasks are permitted to start after the resulting
-%% endtime minus the number of hours you specify for <code>Cutoff</code>. For
-%% example, if the maintenance window starts at 3 PM, the duration is three
-%% hours, and the value you specify for <code>Cutoff</code> is one hour, no
-%% maintenance window tasks can start after 5 PM.
+%% Only specified parameters are modified.
 %%
-%% </note>
+%% The value you specify for `Duration' determines the specific end time for
+%% the maintenance window based on the time it begins. No maintenance window
+%% tasks are permitted to start after the resulting endtime minus the number
+%% of hours you specify for `Cutoff'. For example, if the maintenance window
+%% starts at 3 PM, the duration is three hours, and the value you specify for
+%% `Cutoff' is one hour, no maintenance window tasks can start after 5 PM.
 update_maintenance_window(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_maintenance_window(Client, Input, []).
@@ -1702,8 +1711,9 @@ update_maintenance_window(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateMaintenanceWindow">>, Input, Options).
 
-%% @doc Modifies the target of an existing maintenance window. You can change
-%% the following:
+%% @doc Modifies the target of an existing maintenance window.
+%%
+%% You can change the following:
 %%
 %% <ul> <li> Name
 %%
@@ -1717,12 +1727,10 @@ update_maintenance_window(Client, Input, Options)
 %%
 %% </li> <li> From any supported tag type to another. The three supported tag
 %% types are ID target, Tag target, and resource group. For more information,
-%% see <a>Target</a>.
+%% see `Target'.
 %%
-%% </li> </ul> <note> If a parameter is null, then the corresponding field is
-%% not modified.
-%%
-%% </note>
+%% </li> </ul> If a parameter is null, then the corresponding field is not
+%% modified.
 update_maintenance_window_target(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_maintenance_window_target(Client, Input, []).
@@ -1730,8 +1738,9 @@ update_maintenance_window_target(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateMaintenanceWindowTarget">>, Input, Options).
 
-%% @doc Modifies a task assigned to a maintenance window. You can't change
-%% the task type, but you can change the following values:
+%% @doc Modifies a task assigned to a maintenance window.
+%%
+%% You can't change the task type, but you can change the following values:
 %%
 %% <ul> <li> TaskARN. For example, you can change a RUN_COMMAND task from
 %% AWS-RunPowerShellScript to AWS-RunShellScript.
@@ -1746,10 +1755,21 @@ update_maintenance_window_target(Client, Input, Options)
 %%
 %% </li> <li> MaxErrors
 %%
-%% </li> </ul> If a parameter is null, then the corresponding field is not
-%% modified. Also, if you set Replace to true, then all fields required by
-%% the <a>RegisterTaskWithMaintenanceWindow</a> action are required for this
-%% request. Optional fields that aren't specified are set to null.
+%% </li> </ul> If the value for a parameter in `UpdateMaintenanceWindowTask'
+%% is null, then the corresponding field is not modified. If you set
+%% `Replace' to true, then all fields required by the
+%% `RegisterTaskWithMaintenanceWindow' action are required for this request.
+%% Optional fields that aren't specified are set to null.
+%%
+%% When you update a maintenance window task that has options specified in
+%% `TaskInvocationParameters', you must provide again all the
+%% `TaskInvocationParameters' values that you want to retain. The values you
+%% do not specify again are removed. For example, suppose that when you
+%% registered a Run Command task, you specified `TaskInvocationParameters'
+%% values for `Comment', `NotificationConfig', and `OutputS3BucketName'. If
+%% you update the maintenance window task and specify only a different
+%% `OutputS3BucketName' value, the values for `Comment' and
+%% `NotificationConfig' are removed.
 update_maintenance_window_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_maintenance_window_task(Client, Input, []).
@@ -1758,9 +1778,10 @@ update_maintenance_window_task(Client, Input, Options)
     request(Client, <<"UpdateMaintenanceWindowTask">>, Input, Options).
 
 %% @doc Changes the Amazon Identity and Access Management (IAM) role that is
-%% assigned to the on-premises instance or virtual machines (VM). IAM roles
-%% are first assigned to these hybrid instances during the activation
-%% process. For more information, see <a>CreateActivation</a>.
+%% assigned to the on-premises instance or virtual machines (VM).
+%%
+%% IAM roles are first assigned to these hybrid instances during the
+%% activation process. For more information, see `CreateActivation'.
 update_managed_instance_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_managed_instance_role(Client, Input, []).
@@ -1768,18 +1789,16 @@ update_managed_instance_role(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateManagedInstanceRole">>, Input, Options).
 
-%% @doc Edit or change an OpsItem. You must have permission in AWS Identity
-%% and Access Management (IAM) to update an OpsItem. For more information,
-%% see <a
-%% href="https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html">Getting
-%% started with OpsCenter</a> in the <i>AWS Systems Manager User Guide</i>.
+%% @doc Edit or change an OpsItem.
+%%
+%% You must have permission in AWS Identity and Access Management (IAM) to
+%% update an OpsItem. For more information, see Getting started with
+%% OpsCenter in the AWS Systems Manager User Guide.
 %%
 %% Operations engineers and IT professionals use OpsCenter to view,
 %% investigate, and remediate operational issues impacting the performance
-%% and health of their AWS resources. For more information, see <a
-%% href="https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html">AWS
-%% Systems Manager OpsCenter</a> in the <i>AWS Systems Manager User
-%% Guide</i>.
+%% and health of their AWS resources. For more information, see AWS Systems
+%% Manager OpsCenter in the AWS Systems Manager User Guide.
 update_ops_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_ops_item(Client, Input, []).
@@ -1787,14 +1806,12 @@ update_ops_item(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateOpsItem">>, Input, Options).
 
-%% @doc Modifies an existing patch baseline. Fields not specified in the
-%% request are left unchanged.
+%% @doc Modifies an existing patch baseline.
 %%
-%% <note> For information about valid key and value pairs in
-%% <code>PatchFilters</code> for each supported operating system type, see <a
-%% href="http://docs.aws.amazon.com/systems-manager/latest/APIReference/API_PatchFilter.html">PatchFilter</a>.
+%% Fields not specified in the request are left unchanged.
 %%
-%% </note>
+%% For information about valid key and value pairs in `PatchFilters' for each
+%% supported operating system type, see PatchFilter.
 update_patch_baseline(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_patch_baseline(Client, Input, []).
@@ -1802,18 +1819,17 @@ update_patch_baseline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePatchBaseline">>, Input, Options).
 
-%% @doc Update a resource data sync. After you create a resource data sync
-%% for a Region, you can't change the account options for that sync. For
-%% example, if you create a sync in the us-east-2 (Ohio) Region and you
-%% choose the Include only the current account option, you can't edit that
-%% sync later and choose the Include all accounts from my AWS Organizations
-%% configuration option. Instead, you must delete the first resource data
-%% sync, and create a new one.
+%% @doc Update a resource data sync.
 %%
-%% <note> This API action only supports a resource data sync that was created
-%% with a SyncFromSource <code>SyncType</code>.
+%% After you create a resource data sync for a Region, you can't change the
+%% account options for that sync. For example, if you create a sync in the
+%% us-east-2 (Ohio) Region and you choose the Include only the current
+%% account option, you can't edit that sync later and choose the Include all
+%% accounts from my AWS Organizations configuration option. Instead, you must
+%% delete the first resource data sync, and create a new one.
 %%
-%% </note>
+%% This API action only supports a resource data sync that was created with a
+%% SyncFromSource `SyncType'.
 update_resource_data_sync(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_resource_data_sync(Client, Input, []).
@@ -1821,21 +1837,22 @@ update_resource_data_sync(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateResourceDataSync">>, Input, Options).
 
-%% @doc <code>ServiceSetting</code> is an account-level setting for an AWS
-%% service. This setting defines how a user interacts with or uses a service
-%% or a feature of a service. For example, if an AWS service charges money to
-%% the account based on feature or service usage, then the AWS service team
-%% might create a default setting of "false". This means the user can't use
-%% this feature unless they change the setting to "true" and intentionally
-%% opt in for a paid feature.
+%% @doc `ServiceSetting' is an account-level setting for an AWS service.
 %%
-%% Services map a <code>SettingId</code> object to a setting value. AWS
-%% services teams define the default value for a <code>SettingId</code>. You
-%% can't create a new <code>SettingId</code>, but you can overwrite the
-%% default value if you have the <code>ssm:UpdateServiceSetting</code>
-%% permission for the setting. Use the <a>GetServiceSetting</a> API action to
-%% view the current value. Or, use the <a>ResetServiceSetting</a> to change
-%% the value back to the original value defined by the AWS service team.
+%% This setting defines how a user interacts with or uses a service or a
+%% feature of a service. For example, if an AWS service charges money to the
+%% account based on feature or service usage, then the AWS service team might
+%% create a default setting of "false". This means the user can't use this
+%% feature unless they change the setting to "true" and intentionally opt in
+%% for a paid feature.
+%%
+%% Services map a `SettingId' object to a setting value. AWS services teams
+%% define the default value for a `SettingId'. You can't create a new
+%% `SettingId', but you can overwrite the default value if you have the
+%% `ssm:UpdateServiceSetting' permission for the setting. Use the
+%% `GetServiceSetting' API action to view the current value. Or, use the
+%% `ResetServiceSetting' to change the value back to the original value
+%% defined by the AWS service team.
 %%
 %% Update the service setting for the account.
 update_service_setting(Client, Input)
@@ -1887,6 +1904,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
 handle_response({error, Reason}) ->
     {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

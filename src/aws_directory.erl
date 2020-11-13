@@ -1,27 +1,23 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc <fullname>AWS Directory Service</fullname>
+%% @doc AWS Directory Service
 %%
 %% AWS Directory Service is a web service that makes it easy for you to setup
 %% and run directories in the AWS cloud, or connect your AWS resources with
-%% an existing on-premises Microsoft Active Directory. This guide provides
-%% detailed information about AWS Directory Service operations, data types,
-%% parameters, and errors. For information about AWS Directory Services
-%% features, see <a href="https://aws.amazon.com/directoryservice/">AWS
-%% Directory Service</a> and the <a
-%% href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/what_is.html">AWS
-%% Directory Service Administration Guide</a>.
+%% an existing on-premises Microsoft Active Directory.
 %%
-%% <note> AWS provides SDKs that consist of libraries and sample code for
-%% various programming languages and platforms (Java, Ruby, .Net, iOS,
-%% Android, etc.). The SDKs provide a convenient way to create programmatic
-%% access to AWS Directory Service and other AWS services. For more
-%% information about the AWS SDKs, including how to download and install
-%% them, see <a href="http://aws.amazon.com/tools/">Tools for Amazon Web
-%% Services</a>.
+%% This guide provides detailed information about AWS Directory Service
+%% operations, data types, parameters, and errors. For information about AWS
+%% Directory Services features, see AWS Directory Service and the AWS
+%% Directory Service Administration Guide.
 %%
-%% </note>
+%% AWS provides SDKs that consist of libraries and sample code for various
+%% programming languages and platforms (Java, Ruby, .Net, iOS, Android,
+%% etc.). The SDKs provide a convenient way to create programmatic access to
+%% AWS Directory Service and other AWS services. For more information about
+%% the AWS SDKs, including how to download and install them, see Tools for
+%% Amazon Web Services.
 -module(aws_directory).
 
 -export([accept_shared_directory/2,
@@ -157,17 +153,16 @@ accept_shared_directory(Client, Input, Options)
 %% @doc If the DNS server for your on-premises domain uses a publicly
 %% addressable IP address, you must add a CIDR address block to correctly
 %% route traffic to and from your Microsoft AD on Amazon Web Services.
-%% <i>AddIpRoutes</i> adds this address block. You can also use
-%% <i>AddIpRoutes</i> to facilitate routing traffic that uses public IP
-%% ranges from your Microsoft AD on AWS to a peer VPC.
 %%
-%% Before you call <i>AddIpRoutes</i>, ensure that all of the required
-%% permissions have been explicitly granted through a policy. For details
-%% about what permissions are required to run the <i>AddIpRoutes</i>
-%% operation, see <a
-%% href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html">AWS
+%% AddIpRoutes adds this address block. You can also use AddIpRoutes to
+%% facilitate routing traffic that uses public IP ranges from your Microsoft
+%% AD on AWS to a peer VPC.
+%%
+%% Before you call AddIpRoutes, ensure that all of the required permissions
+%% have been explicitly granted through a policy. For details about what
+%% permissions are required to run the AddIpRoutes operation, see AWS
 %% Directory Service API Permissions: Actions, Resources, and Conditions
-%% Reference</a>.
+%% Reference.
 add_ip_routes(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_ip_routes(Client, Input, []).
@@ -175,9 +170,10 @@ add_ip_routes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddIpRoutes">>, Input, Options).
 
-%% @doc Adds or overwrites one or more tags for the specified directory. Each
-%% directory can have a maximum of 50 tags. Each tag consists of a key and
-%% optional value. Tag keys must be unique to each resource.
+%% @doc Adds or overwrites one or more tags for the specified directory.
+%%
+%% Each directory can have a maximum of 50 tags. Each tag consists of a key
+%% and optional value. Tag keys must be unique to each resource.
 add_tags_to_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags_to_resource(Client, Input, []).
@@ -186,10 +182,11 @@ add_tags_to_resource(Client, Input, Options)
     request(Client, <<"AddTagsToResource">>, Input, Options).
 
 %% @doc Cancels an in-progress schema extension to a Microsoft AD directory.
+%%
 %% Once a schema extension has started replicating to all domain controllers,
 %% the task can no longer be canceled. A schema extension can be canceled
-%% during any of the following states; <code>Initializing</code>,
-%% <code>CreatingSnapshot</code>, and <code>UpdatingSchema</code>.
+%% during any of the following states; `Initializing', `CreatingSnapshot',
+%% and `UpdatingSchema'.
 cancel_schema_extension(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_schema_extension(Client, Input, []).
@@ -199,13 +196,11 @@ cancel_schema_extension(Client, Input, Options)
 
 %% @doc Creates an AD Connector to connect to an on-premises directory.
 %%
-%% Before you call <code>ConnectDirectory</code>, ensure that all of the
-%% required permissions have been explicitly granted through a policy. For
-%% details about what permissions are required to run the
-%% <code>ConnectDirectory</code> operation, see <a
-%% href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html">AWS
-%% Directory Service API Permissions: Actions, Resources, and Conditions
-%% Reference</a>.
+%% Before you call `ConnectDirectory', ensure that all of the required
+%% permissions have been explicitly granted through a policy. For details
+%% about what permissions are required to run the `ConnectDirectory'
+%% operation, see AWS Directory Service API Permissions: Actions, Resources,
+%% and Conditions Reference.
 connect_directory(Client, Input)
   when is_map(Client), is_map(Input) ->
     connect_directory(Client, Input, []).
@@ -214,13 +209,13 @@ connect_directory(Client, Input, Options)
     request(Client, <<"ConnectDirectory">>, Input, Options).
 
 %% @doc Creates an alias for a directory and assigns the alias to the
-%% directory. The alias is used to construct the access URL for the
-%% directory, such as <code>http://&lt;alias&gt;.awsapps.com</code>.
+%% directory.
 %%
-%% <important> After an alias has been created, it cannot be deleted or
-%% reused, so this operation should only be used when absolutely necessary.
+%% The alias is used to construct the access URL for the directory, such as
+%% `http://<alias>.awsapps.com'.
 %%
-%% </important>
+%% After an alias has been created, it cannot be deleted or reused, so this
+%% operation should only be used when absolutely necessary.
 create_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_alias(Client, Input, []).
@@ -238,6 +233,7 @@ create_computer(Client, Input, Options)
     request(Client, <<"CreateComputer">>, Input, Options).
 
 %% @doc Creates a conditional forwarder associated with your AWS directory.
+%%
 %% Conditional forwarders are required in order to set up a trust
 %% relationship with another domain. The conditional forwarder points to the
 %% trusted domain.
@@ -248,17 +244,16 @@ create_conditional_forwarder(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateConditionalForwarder">>, Input, Options).
 
-%% @doc Creates a Simple AD directory. For more information, see <a
-%% href="https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_simple_ad.html">Simple
-%% Active Directory</a> in the <i>AWS Directory Service Admin Guide</i>.
+%% @doc Creates a Simple AD directory.
 %%
-%% Before you call <code>CreateDirectory</code>, ensure that all of the
-%% required permissions have been explicitly granted through a policy. For
-%% details about what permissions are required to run the
-%% <code>CreateDirectory</code> operation, see <a
-%% href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html">AWS
-%% Directory Service API Permissions: Actions, Resources, and Conditions
-%% Reference</a>.
+%% For more information, see Simple Active Directory in the AWS Directory
+%% Service Admin Guide.
+%%
+%% Before you call `CreateDirectory', ensure that all of the required
+%% permissions have been explicitly granted through a policy. For details
+%% about what permissions are required to run the `CreateDirectory'
+%% operation, see AWS Directory Service API Permissions: Actions, Resources,
+%% and Conditions Reference.
 create_directory(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_directory(Client, Input, []).
@@ -276,18 +271,16 @@ create_log_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLogSubscription">>, Input, Options).
 
-%% @doc Creates a Microsoft AD directory in the AWS Cloud. For more
-%% information, see <a
-%% href="https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_microsoft_ad.html">AWS
-%% Managed Microsoft AD</a> in the <i>AWS Directory Service Admin Guide</i>.
+%% @doc Creates a Microsoft AD directory in the AWS Cloud.
 %%
-%% Before you call <i>CreateMicrosoftAD</i>, ensure that all of the required
+%% For more information, see AWS Managed Microsoft AD in the AWS Directory
+%% Service Admin Guide.
+%%
+%% Before you call CreateMicrosoftAD, ensure that all of the required
 %% permissions have been explicitly granted through a policy. For details
-%% about what permissions are required to run the <i>CreateMicrosoftAD</i>
-%% operation, see <a
-%% href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html">AWS
-%% Directory Service API Permissions: Actions, Resources, and Conditions
-%% Reference</a>.
+%% about what permissions are required to run the CreateMicrosoftAD
+%% operation, see AWS Directory Service API Permissions: Actions, Resources,
+%% and Conditions Reference.
 create_microsoft_a_d(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_microsoft_a_d(Client, Input, []).
@@ -298,9 +291,7 @@ create_microsoft_a_d(Client, Input, Options)
 %% @doc Creates a snapshot of a Simple AD or Microsoft AD directory in the
 %% AWS cloud.
 %%
-%% <note> You cannot take snapshots of AD Connector directories.
-%%
-%% </note>
+%% You cannot take snapshots of AD Connector directories.
 create_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_snapshot(Client, Input, []).
@@ -309,11 +300,12 @@ create_snapshot(Client, Input, Options)
     request(Client, <<"CreateSnapshot">>, Input, Options).
 
 %% @doc AWS Directory Service for Microsoft Active Directory allows you to
-%% configure trust relationships. For example, you can establish a trust
-%% between your AWS Managed Microsoft AD directory, and your existing
-%% on-premises Microsoft Active Directory. This would allow you to provide
-%% users and groups access to resources in either domain, with a single set
-%% of credentials.
+%% configure trust relationships.
+%%
+%% For example, you can establish a trust between your AWS Managed Microsoft
+%% AD directory, and your existing on-premises Microsoft Active Directory.
+%% This would allow you to provide users and groups access to resources in
+%% either domain, with a single set of credentials.
 %%
 %% This action initiates the creation of the AWS side of a trust relationship
 %% between an AWS Managed Microsoft AD directory and an external domain. You
@@ -336,13 +328,11 @@ delete_conditional_forwarder(Client, Input, Options)
 
 %% @doc Deletes an AWS Directory Service directory.
 %%
-%% Before you call <code>DeleteDirectory</code>, ensure that all of the
-%% required permissions have been explicitly granted through a policy. For
-%% details about what permissions are required to run the
-%% <code>DeleteDirectory</code> operation, see <a
-%% href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html">AWS
-%% Directory Service API Permissions: Actions, Resources, and Conditions
-%% Reference</a>.
+%% Before you call `DeleteDirectory', ensure that all of the required
+%% permissions have been explicitly granted through a policy. For details
+%% about what permissions are required to run the `DeleteDirectory'
+%% operation, see AWS Directory Service API Permissions: Actions, Resources,
+%% and Conditions Reference.
 delete_directory(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_directory(Client, Input, []).
@@ -418,18 +408,17 @@ describe_conditional_forwarders(Client, Input, Options)
 %% account.
 %%
 %% You can retrieve information about specific directories by passing the
-%% directory identifiers in the <code>DirectoryIds</code> parameter.
-%% Otherwise, all directories that belong to the current account are
-%% returned.
+%% directory identifiers in the `DirectoryIds' parameter. Otherwise, all
+%% directories that belong to the current account are returned.
 %%
-%% This operation supports pagination with the use of the
-%% <code>NextToken</code> request and response parameters. If more results
-%% are available, the <code>DescribeDirectoriesResult.NextToken</code> member
-%% contains a token that you pass in the next call to
-%% <a>DescribeDirectories</a> to retrieve the next set of items.
+%% This operation supports pagination with the use of the `NextToken' request
+%% and response parameters. If more results are available, the
+%% `DescribeDirectoriesResult.NextToken' member contains a token that you
+%% pass in the next call to `DescribeDirectories' to retrieve the next set of
+%% items.
 %%
-%% You can also specify a maximum number of return results with the
-%% <code>Limit</code> parameter.
+%% You can also specify a maximum number of return results with the `Limit'
+%% parameter.
 describe_directories(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_directories(Client, Input, []).
@@ -476,14 +465,13 @@ describe_shared_directories(Client, Input, Options)
 %% @doc Obtains information about the directory snapshots that belong to this
 %% account.
 %%
-%% This operation supports pagination with the use of the <i>NextToken</i>
-%% request and response parameters. If more results are available, the
-%% <i>DescribeSnapshots.NextToken</i> member contains a token that you pass
-%% in the next call to <a>DescribeSnapshots</a> to retrieve the next set of
-%% items.
+%% This operation supports pagination with the use of the NextToken request
+%% and response parameters. If more results are available, the
+%% DescribeSnapshots.NextToken member contains a token that you pass in the
+%% next call to `DescribeSnapshots' to retrieve the next set of items.
 %%
-%% You can also specify a maximum number of return results with the
-%% <i>Limit</i> parameter.
+%% You can also specify a maximum number of return results with the Limit
+%% parameter.
 describe_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_snapshots(Client, Input, []).
@@ -547,9 +535,11 @@ enable_radius(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableRadius">>, Input, Options).
 
-%% @doc Enables single sign-on for a directory. Single sign-on allows users
-%% in your directory to access certain AWS services from a computer joined to
-%% the directory without having to enter their credentials separately.
+%% @doc Enables single sign-on for a directory.
+%%
+%% Single sign-on allows users in your directory to access certain AWS
+%% services from a computer joined to the directory without having to enter
+%% their credentials separately.
 enable_sso(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_sso(Client, Input, []).
@@ -622,12 +612,13 @@ register_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterCertificate">>, Input, Options).
 
-%% @doc Associates a directory with an SNS topic. This establishes the
-%% directory as a publisher to the specified SNS topic. You can then receive
-%% email or text (SMS) messages when the status of your directory changes.
-%% You get notified if your directory goes from an Active status to an
-%% Impaired or Inoperable status. You also receive a notification when the
-%% directory returns to an Active status.
+%% @doc Associates a directory with an SNS topic.
+%%
+%% This establishes the directory as a publisher to the specified SNS topic.
+%% You can then receive email or text (SMS) messages when the status of your
+%% directory changes. You get notified if your directory goes from an Active
+%% status to an Impaired or Inoperable status. You also receive a
+%% notification when the directory returns to an Active status.
 register_event_topic(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_event_topic(Client, Input, []).
@@ -667,16 +658,15 @@ remove_tags_from_resource(Client, Input, Options)
 %% following exceptions:
 %%
 %% <ul> <li> For Simple AD, you cannot reset the password for any user that
-%% is a member of either the <b>Domain Admins</b> or <b>Enterprise Admins</b>
-%% group except for the administrator user.
+%% is a member of either the Domain Admins or Enterprise Admins group except
+%% for the administrator user.
 %%
 %% </li> <li> For AWS Managed Microsoft AD, you can only reset the password
 %% for a user that is in an OU based off of the NetBIOS name that you typed
 %% when you created your directory. For example, you cannot reset the
-%% password for a user in the <b>AWS Reserved</b> OU. For more information
-%% about the OU structure for an AWS Managed Microsoft AD directory, see <a
-%% href="https://docs.aws.amazon.com/directoryservice/latest/admin-guide/ms_ad_getting_started_what_gets_created.html">What
-%% Gets Created</a> in the <i>AWS Directory Service Administration Guide</i>.
+%% password for a user in the AWS Reserved OU. For more information about the
+%% OU structure for an AWS Managed Microsoft AD directory, see What Gets
+%% Created in the AWS Directory Service Administration Guide.
 %%
 %% </li> </ul>
 reset_user_password(Client, Input)
@@ -693,9 +683,9 @@ reset_user_password(Client, Input, Options)
 %%
 %% This action returns as soon as the restore operation is initiated. You can
 %% monitor the progress of the restore operation by calling the
-%% <a>DescribeDirectories</a> operation with the directory identifier. When
-%% the <b>DirectoryDescription.Stage</b> value changes to
-%% <code>Active</code>, the restore operation is complete.
+%% `DescribeDirectories' operation with the directory identifier. When the
+%% DirectoryDescription.Stage value changes to `Active', the restore
+%% operation is complete.
 restore_from_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_from_snapshot(Client, Input, []).
@@ -703,8 +693,9 @@ restore_from_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreFromSnapshot">>, Input, Options).
 
-%% @doc Shares a specified directory (<code>DirectoryId</code>) in your AWS
-%% account (directory owner) with another AWS account (directory consumer).
+%% @doc Shares a specified directory (`DirectoryId') in your AWS account
+%% (directory owner) with another AWS account (directory consumer).
+%%
 %% With this operation you can use your directory from any AWS account and
 %% from any Amazon VPC within an AWS Region.
 %%
@@ -714,15 +705,14 @@ restore_from_snapshot(Client, Input, Options)
 %% within the directory owner account. The shared directory is visible in all
 %% VPCs in the directory consumer account.
 %%
-%% The <code>ShareMethod</code> parameter determines whether the specified
-%% directory can be shared between AWS accounts inside the same AWS
-%% organization (<code>ORGANIZATIONS</code>). It also determines whether you
-%% can share the directory with any other AWS account either inside or
-%% outside of the organization (<code>HANDSHAKE</code>).
+%% The `ShareMethod' parameter determines whether the specified directory can
+%% be shared between AWS accounts inside the same AWS organization
+%% (`ORGANIZATIONS'). It also determines whether you can share the directory
+%% with any other AWS account either inside or outside of the organization
+%% (`HANDSHAKE').
 %%
-%% The <code>ShareNotes</code> parameter is only used when
-%% <code>HANDSHAKE</code> is called, which sends a directory sharing request
-%% to the directory consumer.
+%% The `ShareNotes' parameter is only used when `HANDSHAKE' is called, which
+%% sends a directory sharing request to the directory consumer.
 share_directory(Client, Input)
   when is_map(Client), is_map(Input) ->
     share_directory(Client, Input, []).
@@ -756,12 +746,13 @@ update_conditional_forwarder(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateConditionalForwarder">>, Input, Options).
 
-%% @doc Adds or removes domain controllers to or from the directory. Based on
-%% the difference between current value and new value (provided through this
-%% API call), domain controllers will be added or removed. It may take up to
-%% 45 minutes for any new domain controllers to become fully active once the
-%% requested number of domain controllers is updated. During this time, you
-%% cannot make another update request.
+%% @doc Adds or removes domain controllers to or from the directory.
+%%
+%% Based on the difference between current value and new value (provided
+%% through this API call), domain controllers will be added or removed. It
+%% may take up to 45 minutes for any new domain controllers to become fully
+%% active once the requested number of domain controllers is updated. During
+%% this time, you cannot make another update request.
 update_number_of_domain_controllers(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_number_of_domain_controllers(Client, Input, []).
@@ -841,6 +832,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
 handle_response({error, Reason}) ->
     {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

@@ -1,21 +1,21 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc <fullname>Amazon Redshift</fullname>
+%% @doc Amazon Redshift
 %%
-%% <b>Overview</b>
+%% Overview
 %%
-%% This is an interface reference for Amazon Redshift. It contains
-%% documentation for one of the programming or command line interfaces you
-%% can use to manage Amazon Redshift clusters. Note that Amazon Redshift is
-%% asynchronous, which means that some interfaces may require techniques,
-%% such as polling or asynchronous callback handlers, to determine when a
-%% command has been applied. In this reference, the parameter descriptions
-%% indicate whether a change is applied immediately, on the next instance
-%% reboot, or during the next maintenance window. For a summary of the Amazon
-%% Redshift cluster management interfaces, go to <a
-%% href="https://docs.aws.amazon.com/redshift/latest/mgmt/using-aws-sdk.html">Using
-%% the Amazon Redshift Management Interfaces</a>.
+%% This is an interface reference for Amazon Redshift.
+%%
+%% It contains documentation for one of the programming or command line
+%% interfaces you can use to manage Amazon Redshift clusters. Note that
+%% Amazon Redshift is asynchronous, which means that some interfaces may
+%% require techniques, such as polling or asynchronous callback handlers, to
+%% determine when a command has been applied. In this reference, the
+%% parameter descriptions indicate whether a change is applied immediately,
+%% on the next instance reboot, or during the next maintenance window. For a
+%% summary of the Amazon Redshift cluster management interfaces, go to Using
+%% the Amazon Redshift Management Interfaces.
 %%
 %% Amazon Redshift manages all the work of setting up, operating, and scaling
 %% a data warehouse: provisioning capacity, monitoring and backing up the
@@ -24,14 +24,11 @@
 %% and customers.
 %%
 %% If you are a first-time user of Amazon Redshift, we recommend that you
-%% begin by reading the <a
-%% href="https://docs.aws.amazon.com/redshift/latest/gsg/getting-started.html">Amazon
-%% Redshift Getting Started Guide</a>.
+%% begin by reading the Amazon Redshift Getting Started Guide.
 %%
-%% If you are a database developer, the <a
-%% href="https://docs.aws.amazon.com/redshift/latest/dg/welcome.html">Amazon
-%% Redshift Database Developer Guide</a> explains how to design, build,
-%% query, and maintain the databases that make up your data warehouse.
+%% If you are a database developer, the Amazon Redshift Database Developer
+%% Guide explains how to design, build, query, and maintain the databases
+%% that make up your data warehouse.
 -module(aws_redshift).
 
 -export([accept_reserved_node_exchange/2,
@@ -236,6 +233,7 @@ accept_reserved_node_exchange(Client, Input, Options)
     request(Client, <<"AcceptReservedNodeExchange">>, Input, Options).
 
 %% @doc Adds an inbound (ingress) rule to an Amazon Redshift security group.
+%%
 %% Depending on whether the application accessing your cluster is running on
 %% the Internet or an Amazon EC2 instance, you can authorize inbound access
 %% to either a Classless Interdomain Routing (CIDR)/Internet Protocol (IP)
@@ -243,22 +241,18 @@ accept_reserved_node_exchange(Client, Input, Options)
 %% ingress rules to an Amazon Redshift security group.
 %%
 %% If you authorize access to an Amazon EC2 security group, specify
-%% <i>EC2SecurityGroupName</i> and <i>EC2SecurityGroupOwnerId</i>. The Amazon
-%% EC2 security group and Amazon Redshift cluster must be in the same AWS
-%% Region.
+%% EC2SecurityGroupName and EC2SecurityGroupOwnerId. The Amazon EC2 security
+%% group and Amazon Redshift cluster must be in the same AWS Region.
 %%
-%% If you authorize access to a CIDR/IP address range, specify <i>CIDRIP</i>.
-%% For an overview of CIDR blocks, see the Wikipedia article on <a
-%% href="http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing">Classless
-%% Inter-Domain Routing</a>.
+%% If you authorize access to a CIDR/IP address range, specify CIDRIP. For an
+%% overview of CIDR blocks, see the Wikipedia article on Classless
+%% Inter-Domain Routing.
 %%
 %% You must also associate the security group with a cluster so that clients
 %% running on these IP addresses or the EC2 instance are authorized to
 %% connect to the cluster. For information about managing security groups, go
-%% to <a
-%% href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html">Working
-%% with Security Groups</a> in the <i>Amazon Redshift Cluster Management
-%% Guide</i>.
+%% to Working with Security Groups in the Amazon Redshift Cluster Management
+%% Guide.
 authorize_cluster_security_group_ingress(Client, Input)
   when is_map(Client), is_map(Input) ->
     authorize_cluster_security_group_ingress(Client, Input, []).
@@ -269,10 +263,8 @@ authorize_cluster_security_group_ingress(Client, Input, Options)
 %% @doc Authorizes the specified AWS customer account to restore the
 %% specified snapshot.
 %%
-%% For more information about working with snapshots, go to <a
-%% href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html">Amazon
-%% Redshift Snapshots</a> in the <i>Amazon Redshift Cluster Management
-%% Guide</i>.
+%% For more information about working with snapshots, go to Amazon Redshift
+%% Snapshots in the Amazon Redshift Cluster Management Guide.
 authorize_snapshot_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     authorize_snapshot_access(Client, Input, []).
@@ -305,8 +297,10 @@ cancel_resize(Client, Input, Options)
     request(Client, <<"CancelResize">>, Input, Options).
 
 %% @doc Copies the specified automated cluster snapshot to a new manual
-%% cluster snapshot. The source must be an automated snapshot and it must be
-%% in the available state.
+%% cluster snapshot.
+%%
+%% The source must be an automated snapshot and it must be in the available
+%% state.
 %%
 %% When you delete a cluster, Amazon Redshift deletes any automated snapshots
 %% of the cluster. Also, when the retention period of the snapshot expires,
@@ -314,10 +308,8 @@ cancel_resize(Client, Input, Options)
 %% snapshot for a longer period, you can make a manual copy of the snapshot.
 %% Manual snapshots are retained until you delete them.
 %%
-%% For more information about working with snapshots, go to <a
-%% href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html">Amazon
-%% Redshift Snapshots</a> in the <i>Amazon Redshift Cluster Management
-%% Guide</i>.
+%% For more information about working with snapshots, go to Amazon Redshift
+%% Snapshots in the Amazon Redshift Cluster Management Guide.
 copy_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_cluster_snapshot(Client, Input, []).
@@ -330,10 +322,8 @@ copy_cluster_snapshot(Client, Input, Options)
 %% To create a cluster in Virtual Private Cloud (VPC), you must provide a
 %% cluster subnet group name. The cluster subnet group identifies the subnets
 %% of your VPC that Amazon Redshift uses when creating the cluster. For more
-%% information about managing clusters, go to <a
-%% href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html">Amazon
-%% Redshift Clusters</a> in the <i>Amazon Redshift Cluster Management
-%% Guide</i>.
+%% information about managing clusters, go to Amazon Redshift Clusters in the
+%% Amazon Redshift Cluster Management Guide.
 create_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cluster(Client, Input, []).
@@ -346,14 +336,12 @@ create_cluster(Client, Input, Options)
 %% Creating parameter groups is independent of creating clusters. You can
 %% associate a cluster with a parameter group when you create the cluster.
 %% You can also associate an existing cluster with a parameter group after
-%% the cluster is created by using <a>ModifyCluster</a>.
+%% the cluster is created by using `ModifyCluster'.
 %%
 %% Parameters in the parameter group define specific behavior that applies to
 %% the databases you create on the cluster. For more information about
-%% parameters and parameter groups, go to <a
-%% href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Amazon
-%% Redshift Parameter Groups</a> in the <i>Amazon Redshift Cluster Management
-%% Guide</i>.
+%% parameters and parameter groups, go to Amazon Redshift Parameter Groups in
+%% the Amazon Redshift Cluster Management Guide.
 create_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cluster_parameter_group(Client, Input, []).
@@ -361,13 +349,12 @@ create_cluster_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateClusterParameterGroup">>, Input, Options).
 
-%% @doc Creates a new Amazon Redshift security group. You use security groups
-%% to control access to non-VPC clusters.
+%% @doc Creates a new Amazon Redshift security group.
 %%
-%% For information about managing security groups, go to <a
-%% href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html">Amazon
-%% Redshift Cluster Security Groups</a> in the <i>Amazon Redshift Cluster
-%% Management Guide</i>.
+%% You use security groups to control access to non-VPC clusters.
+%%
+%% For information about managing security groups, go to Amazon Redshift
+%% Cluster Security Groups in the Amazon Redshift Cluster Management Guide.
 create_cluster_security_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cluster_security_group(Client, Input, []).
@@ -375,13 +362,12 @@ create_cluster_security_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateClusterSecurityGroup">>, Input, Options).
 
-%% @doc Creates a manual snapshot of the specified cluster. The cluster must
-%% be in the <code>available</code> state.
+%% @doc Creates a manual snapshot of the specified cluster.
 %%
-%% For more information about working with snapshots, go to <a
-%% href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html">Amazon
-%% Redshift Snapshots</a> in the <i>Amazon Redshift Cluster Management
-%% Guide</i>.
+%% The cluster must be in the `available' state.
+%%
+%% For more information about working with snapshots, go to Amazon Redshift
+%% Snapshots in the Amazon Redshift Cluster Management Guide.
 create_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cluster_snapshot(Client, Input, []).
@@ -389,14 +375,14 @@ create_cluster_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateClusterSnapshot">>, Input, Options).
 
-%% @doc Creates a new Amazon Redshift subnet group. You must provide a list
-%% of one or more subnets in your existing Amazon Virtual Private Cloud
-%% (Amazon VPC) when creating Amazon Redshift subnet group.
+%% @doc Creates a new Amazon Redshift subnet group.
 %%
-%% For information about subnet groups, go to <a
-%% href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-cluster-subnet-groups.html">Amazon
-%% Redshift Cluster Subnet Groups</a> in the <i>Amazon Redshift Cluster
-%% Management Guide</i>.
+%% You must provide a list of one or more subnets in your existing Amazon
+%% Virtual Private Cloud (Amazon VPC) when creating Amazon Redshift subnet
+%% group.
+%%
+%% For information about subnet groups, go to Amazon Redshift Cluster Subnet
+%% Groups in the Amazon Redshift Cluster Management Guide.
 create_cluster_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cluster_subnet_group(Client, Input, []).
@@ -404,8 +390,9 @@ create_cluster_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateClusterSubnetGroup">>, Input, Options).
 
-%% @doc Creates an Amazon Redshift event notification subscription. This
-%% action requires an ARN (Amazon Resource Name) of an Amazon SNS topic
+%% @doc Creates an Amazon Redshift event notification subscription.
+%%
+%% This action requires an ARN (Amazon Resource Name) of an Amazon SNS topic
 %% created by either the Amazon Redshift console, the Amazon SNS console, or
 %% the Amazon SNS API. To obtain an ARN with Amazon SNS, you must create a
 %% topic in Amazon SNS and subscribe to the topic. The ARN is displayed in
@@ -443,9 +430,7 @@ create_event_subscription(Client, Input, Options)
 %% addition to creating the HSM certificate, you must create an Amazon
 %% Redshift HSM configuration that provides a cluster the information needed
 %% to store and use encryption keys in the HSM. For more information, go to
-%% <a
-%% href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-HSM.html">Hardware
-%% Security Modules</a> in the Amazon Redshift Cluster Management Guide.
+%% Hardware Security Modules in the Amazon Redshift Cluster Management Guide.
 create_hsm_client_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_hsm_client_certificate(Client, Input, []).
@@ -455,14 +440,15 @@ create_hsm_client_certificate(Client, Input, Options)
 
 %% @doc Creates an HSM configuration that contains the information required
 %% by an Amazon Redshift cluster to store and use database encryption keys in
-%% a Hardware Security Module (HSM). After creating the HSM configuration,
-%% you can specify it as a parameter when creating a cluster. The cluster
-%% will then store its encryption keys in the HSM.
+%% a Hardware Security Module (HSM).
+%%
+%% After creating the HSM configuration, you can specify it as a parameter
+%% when creating a cluster. The cluster will then store its encryption keys
+%% in the HSM.
 %%
 %% In addition to creating an HSM configuration, you must also create an HSM
-%% client certificate. For more information, go to <a
-%% href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-HSM.html">Hardware
-%% Security Modules</a> in the Amazon Redshift Cluster Management Guide.
+%% client certificate. For more information, go to Hardware Security Modules
+%% in the Amazon Redshift Cluster Management Guide.
 create_hsm_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_hsm_configuration(Client, Input, []).
@@ -470,9 +456,11 @@ create_hsm_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHsmConfiguration">>, Input, Options).
 
-%% @doc Creates a scheduled action. A scheduled action contains a schedule
-%% and an Amazon Redshift API action. For example, you can create a schedule
-%% of when to run the <code>ResizeCluster</code> API operation.
+%% @doc Creates a scheduled action.
+%%
+%% A scheduled action contains a schedule and an Amazon Redshift API action.
+%% For example, you can create a schedule of when to run the `ResizeCluster'
+%% API operation.
 create_scheduled_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_scheduled_action(Client, Input, []).
@@ -484,10 +472,9 @@ create_scheduled_action(Client, Input, Options)
 %% customer master key (CMK) from AWS Key Management Service (AWS KMS) to
 %% encrypt copied snapshots in a destination region.
 %%
-%% For more information about managing snapshot copy grants, go to <a
-%% href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html">Amazon
-%% Redshift Database Encryption</a> in the <i>Amazon Redshift Cluster
-%% Management Guide</i>.
+%% For more information about managing snapshot copy grants, go to Amazon
+%% Redshift Database Encryption in the Amazon Redshift Cluster Management
+%% Guide.
 create_snapshot_copy_grant(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_snapshot_copy_grant(Client, Input, []).
@@ -519,8 +506,9 @@ create_tags(Client, Input, Options)
     request(Client, <<"CreateTags">>, Input, Options).
 
 %% @doc Creates a usage limit for a specified Amazon Redshift feature on a
-%% cluster. The usage limit is identified by the returned usage limit
-%% identifier.
+%% cluster.
+%%
+%% The usage limit is identified by the returned usage limit identifier.
 create_usage_limit(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_usage_limit(Client, Input, []).
@@ -529,27 +517,24 @@ create_usage_limit(Client, Input, Options)
     request(Client, <<"CreateUsageLimit">>, Input, Options).
 
 %% @doc Deletes a previously provisioned cluster without its final snapshot
-%% being created. A successful response from the web service indicates that
-%% the request was received correctly. Use <a>DescribeClusters</a> to monitor
-%% the status of the deletion. The delete operation cannot be canceled or
-%% reverted once submitted. For more information about managing clusters, go
-%% to <a
-%% href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html">Amazon
-%% Redshift Clusters</a> in the <i>Amazon Redshift Cluster Management
-%% Guide</i>.
+%% being created.
+%%
+%% A successful response from the web service indicates that the request was
+%% received correctly. Use `DescribeClusters' to monitor the status of the
+%% deletion. The delete operation cannot be canceled or reverted once
+%% submitted. For more information about managing clusters, go to Amazon
+%% Redshift Clusters in the Amazon Redshift Cluster Management Guide.
 %%
 %% If you want to shut down the cluster and retain it for future use, set
-%% <i>SkipFinalClusterSnapshot</i> to <code>false</code> and specify a name
-%% for <i>FinalClusterSnapshotIdentifier</i>. You can later restore this
-%% snapshot to resume using the cluster. If a final cluster snapshot is
-%% requested, the status of the cluster will be "final-snapshot" while the
-%% snapshot is being taken, then it's "deleting" once Amazon Redshift begins
-%% deleting the cluster.
+%% SkipFinalClusterSnapshot to `false' and specify a name for
+%% FinalClusterSnapshotIdentifier. You can later restore this snapshot to
+%% resume using the cluster. If a final cluster snapshot is requested, the
+%% status of the cluster will be "final-snapshot" while the snapshot is being
+%% taken, then it's "deleting" once Amazon Redshift begins deleting the
+%% cluster.
 %%
-%% For more information about managing clusters, go to <a
-%% href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html">Amazon
-%% Redshift Clusters</a> in the <i>Amazon Redshift Cluster Management
-%% Guide</i>.
+%% For more information about managing clusters, go to Amazon Redshift
+%% Clusters in the Amazon Redshift Cluster Management Guide.
 delete_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cluster(Client, Input, []).
@@ -559,10 +544,7 @@ delete_cluster(Client, Input, Options)
 
 %% @doc Deletes a specified Amazon Redshift parameter group.
 %%
-%% <note> You cannot delete a parameter group if it is associated with a
-%% cluster.
-%%
-%% </note>
+%% You cannot delete a parameter group if it is associated with a cluster.
 delete_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cluster_parameter_group(Client, Input, []).
@@ -572,13 +554,11 @@ delete_cluster_parameter_group(Client, Input, Options)
 
 %% @doc Deletes an Amazon Redshift security group.
 %%
-%% <note> You cannot delete a security group that is associated with any
-%% clusters. You cannot delete the default security group.
+%% You cannot delete a security group that is associated with any clusters.
+%% You cannot delete the default security group.
 %%
-%% </note> For information about managing security groups, go to <a
-%% href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html">Amazon
-%% Redshift Cluster Security Groups</a> in the <i>Amazon Redshift Cluster
-%% Management Guide</i>.
+%% For information about managing security groups, go to Amazon Redshift
+%% Cluster Security Groups in the Amazon Redshift Cluster Management Guide.
 delete_cluster_security_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cluster_security_group(Client, Input, []).
@@ -586,9 +566,10 @@ delete_cluster_security_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteClusterSecurityGroup">>, Input, Options).
 
-%% @doc Deletes the specified manual snapshot. The snapshot must be in the
-%% <code>available</code> state, with no other users authorized to access the
-%% snapshot.
+%% @doc Deletes the specified manual snapshot.
+%%
+%% The snapshot must be in the `available' state, with no other users
+%% authorized to access the snapshot.
 %%
 %% Unlike automated snapshots, manual snapshots are retained even after you
 %% delete your cluster. Amazon Redshift does not delete your manual
@@ -658,8 +639,10 @@ delete_snapshot_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSnapshotSchedule">>, Input, Options).
 
-%% @doc Deletes tags from a resource. You must provide the ARN of the
-%% resource from which you want to delete the tag or tags.
+%% @doc Deletes tags from a resource.
+%%
+%% You must provide the ARN of the resource from which you want to delete the
+%% tag or tags.
 delete_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_tags(Client, Input, []).
@@ -683,7 +666,7 @@ describe_account_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccountAttributes">>, Input, Options).
 
-%% @doc Returns an array of <code>ClusterDbRevision</code> objects.
+%% @doc Returns an array of `ClusterDbRevision' objects.
 describe_cluster_db_revisions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cluster_db_revisions(Client, Input, []).
@@ -692,22 +675,20 @@ describe_cluster_db_revisions(Client, Input, Options)
     request(Client, <<"DescribeClusterDbRevisions">>, Input, Options).
 
 %% @doc Returns a list of Amazon Redshift parameter groups, including
-%% parameter groups you created and the default parameter group. For each
-%% parameter group, the response includes the parameter group name,
+%% parameter groups you created and the default parameter group.
+%%
+%% For each parameter group, the response includes the parameter group name,
 %% description, and parameter group family name. You can optionally specify a
 %% name to retrieve the description of a specific parameter group.
 %%
-%% For more information about parameters and parameter groups, go to <a
-%% href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Amazon
-%% Redshift Parameter Groups</a> in the <i>Amazon Redshift Cluster Management
-%% Guide</i>.
+%% For more information about parameters and parameter groups, go to Amazon
+%% Redshift Parameter Groups in the Amazon Redshift Cluster Management Guide.
 %%
 %% If you specify both tag keys and tag values in the same request, Amazon
 %% Redshift returns all parameter groups that match any combination of the
-%% specified keys and values. For example, if you have <code>owner</code> and
-%% <code>environment</code> for tag keys, and <code>admin</code> and
-%% <code>test</code> for tag values, all parameter groups that have any
-%% combination of those values are returned.
+%% specified keys and values. For example, if you have `owner' and
+%% `environment' for tag keys, and `admin' and `test' for tag values, all
+%% parameter groups that have any combination of those values are returned.
 %%
 %% If both tag keys and values are omitted from the request, parameter groups
 %% are returned regardless of whether they have tag keys or values associated
@@ -720,19 +701,19 @@ describe_cluster_parameter_groups(Client, Input, Options)
     request(Client, <<"DescribeClusterParameterGroups">>, Input, Options).
 
 %% @doc Returns a detailed list of parameters contained within the specified
-%% Amazon Redshift parameter group. For each parameter the response includes
-%% information such as parameter name, description, data type, value, whether
-%% the parameter value is modifiable, and so on.
+%% Amazon Redshift parameter group.
 %%
-%% You can specify <i>source</i> filter to retrieve parameters of only
-%% specific type. For example, to retrieve parameters that were modified by a
-%% user action such as from <a>ModifyClusterParameterGroup</a>, you can
-%% specify <i>source</i> equal to <i>user</i>.
+%% For each parameter the response includes information such as parameter
+%% name, description, data type, value, whether the parameter value is
+%% modifiable, and so on.
 %%
-%% For more information about parameters and parameter groups, go to <a
-%% href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Amazon
-%% Redshift Parameter Groups</a> in the <i>Amazon Redshift Cluster Management
-%% Guide</i>.
+%% You can specify source filter to retrieve parameters of only specific
+%% type. For example, to retrieve parameters that were modified by a user
+%% action such as from `ModifyClusterParameterGroup', you can specify source
+%% equal to user.
+%%
+%% For more information about parameters and parameter groups, go to Amazon
+%% Redshift Parameter Groups in the Amazon Redshift Cluster Management Guide.
 describe_cluster_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cluster_parameters(Client, Input, []).
@@ -740,21 +721,19 @@ describe_cluster_parameters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeClusterParameters">>, Input, Options).
 
-%% @doc Returns information about Amazon Redshift security groups. If the
-%% name of a security group is specified, the response will contain only
-%% information about only that security group.
+%% @doc Returns information about Amazon Redshift security groups.
 %%
-%% For information about managing security groups, go to <a
-%% href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html">Amazon
-%% Redshift Cluster Security Groups</a> in the <i>Amazon Redshift Cluster
-%% Management Guide</i>.
+%% If the name of a security group is specified, the response will contain
+%% only information about only that security group.
+%%
+%% For information about managing security groups, go to Amazon Redshift
+%% Cluster Security Groups in the Amazon Redshift Cluster Management Guide.
 %%
 %% If you specify both tag keys and tag values in the same request, Amazon
 %% Redshift returns all security groups that match any combination of the
-%% specified keys and values. For example, if you have <code>owner</code> and
-%% <code>environment</code> for tag keys, and <code>admin</code> and
-%% <code>test</code> for tag values, all security groups that have any
-%% combination of those values are returned.
+%% specified keys and values. For example, if you have `owner' and
+%% `environment' for tag keys, and `admin' and `test' for tag values, all
+%% security groups that have any combination of those values are returned.
 %%
 %% If both tag keys and values are omitted from the request, security groups
 %% are returned regardless of whether they have tag keys or values associated
@@ -767,19 +746,19 @@ describe_cluster_security_groups(Client, Input, Options)
     request(Client, <<"DescribeClusterSecurityGroups">>, Input, Options).
 
 %% @doc Returns one or more snapshot objects, which contain metadata about
-%% your cluster snapshots. By default, this operation returns information
-%% about all snapshots of all clusters that are owned by you AWS customer
-%% account. No information is returned for snapshots owned by inactive AWS
-%% customer accounts.
+%% your cluster snapshots.
+%%
+%% By default, this operation returns information about all snapshots of all
+%% clusters that are owned by you AWS customer account. No information is
+%% returned for snapshots owned by inactive AWS customer accounts.
 %%
 %% If you specify both tag keys and tag values in the same request, Amazon
 %% Redshift returns all snapshots that match any combination of the specified
-%% keys and values. For example, if you have <code>owner</code> and
-%% <code>environment</code> for tag keys, and <code>admin</code> and
-%% <code>test</code> for tag values, all snapshots that have any combination
-%% of those values are returned. Only snapshots that you own are returned in
-%% the response; shared snapshots are not returned with the tag key and tag
-%% value request parameters.
+%% keys and values. For example, if you have `owner' and `environment' for
+%% tag keys, and `admin' and `test' for tag values, all snapshots that have
+%% any combination of those values are returned. Only snapshots that you own
+%% are returned in the response; shared snapshots are not returned with the
+%% tag key and tag value request parameters.
 %%
 %% If both tag keys and values are omitted from the request, snapshots are
 %% returned regardless of whether they have tag keys or values associated
@@ -792,16 +771,16 @@ describe_cluster_snapshots(Client, Input, Options)
     request(Client, <<"DescribeClusterSnapshots">>, Input, Options).
 
 %% @doc Returns one or more cluster subnet group objects, which contain
-%% metadata about your cluster subnet groups. By default, this operation
-%% returns information about all cluster subnet groups that are defined in
-%% you AWS account.
+%% metadata about your cluster subnet groups.
+%%
+%% By default, this operation returns information about all cluster subnet
+%% groups that are defined in you AWS account.
 %%
 %% If you specify both tag keys and tag values in the same request, Amazon
 %% Redshift returns all subnet groups that match any combination of the
-%% specified keys and values. For example, if you have <code>owner</code> and
-%% <code>environment</code> for tag keys, and <code>admin</code> and
-%% <code>test</code> for tag values, all subnet groups that have any
-%% combination of those values are returned.
+%% specified keys and values. For example, if you have `owner' and
+%% `environment' for tag keys, and `admin' and `test' for tag values, all
+%% subnet groups that have any combination of those values are returned.
 %%
 %% If both tag keys and values are omitted from the request, subnet groups
 %% are returned regardless of whether they have tag keys or values associated
@@ -822,12 +801,12 @@ describe_cluster_tracks(Client, Input, Options)
     request(Client, <<"DescribeClusterTracks">>, Input, Options).
 
 %% @doc Returns descriptions of the available Amazon Redshift cluster
-%% versions. You can call this operation even before creating any clusters to
-%% learn more about the Amazon Redshift versions. For more information about
-%% managing clusters, go to <a
-%% href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html">Amazon
-%% Redshift Clusters</a> in the <i>Amazon Redshift Cluster Management
-%% Guide</i>.
+%% versions.
+%%
+%% You can call this operation even before creating any clusters to learn
+%% more about the Amazon Redshift versions. For more information about
+%% managing clusters, go to Amazon Redshift Clusters in the Amazon Redshift
+%% Cluster Management Guide.
 describe_cluster_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cluster_versions(Client, Input, []).
@@ -837,18 +816,17 @@ describe_cluster_versions(Client, Input, Options)
 
 %% @doc Returns properties of provisioned clusters including general cluster
 %% properties, cluster database properties, maintenance and backup
-%% properties, and security and access properties. This operation supports
-%% pagination. For more information about managing clusters, go to <a
-%% href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html">Amazon
-%% Redshift Clusters</a> in the <i>Amazon Redshift Cluster Management
-%% Guide</i>.
+%% properties, and security and access properties.
+%%
+%% This operation supports pagination. For more information about managing
+%% clusters, go to Amazon Redshift Clusters in the Amazon Redshift Cluster
+%% Management Guide.
 %%
 %% If you specify both tag keys and tag values in the same request, Amazon
 %% Redshift returns all clusters that match any combination of the specified
-%% keys and values. For example, if you have <code>owner</code> and
-%% <code>environment</code> for tag keys, and <code>admin</code> and
-%% <code>test</code> for tag values, all clusters that have any combination
-%% of those values are returned.
+%% keys and values. For example, if you have `owner' and `environment' for
+%% tag keys, and `admin' and `test' for tag values, all clusters that have
+%% any combination of those values are returned.
 %%
 %% If both tag keys and values are omitted from the request, clusters are
 %% returned regardless of whether they have tag keys or values associated
@@ -863,10 +841,8 @@ describe_clusters(Client, Input, Options)
 %% @doc Returns a list of parameter settings for the specified parameter
 %% group family.
 %%
-%% For more information about parameters and parameter groups, go to <a
-%% href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Amazon
-%% Redshift Parameter Groups</a> in the <i>Amazon Redshift Cluster Management
-%% Guide</i>.
+%% For more information about parameters and parameter groups, go to Amazon
+%% Redshift Parameter Groups in the Amazon Redshift Cluster Management Guide.
 describe_default_cluster_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_default_cluster_parameters(Client, Input, []).
@@ -875,10 +851,10 @@ describe_default_cluster_parameters(Client, Input, Options)
     request(Client, <<"DescribeDefaultClusterParameters">>, Input, Options).
 
 %% @doc Displays a list of event categories for all event source types, or
-%% for a specified source type. For a list of the event categories and source
-%% types, go to <a
-%% href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-event-notifications.html">Amazon
-%% Redshift Event Notifications</a>.
+%% for a specified source type.
+%%
+%% For a list of the event categories and source types, go to Amazon Redshift
+%% Event Notifications.
 describe_event_categories(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_categories(Client, Input, []).
@@ -887,15 +863,17 @@ describe_event_categories(Client, Input, Options)
     request(Client, <<"DescribeEventCategories">>, Input, Options).
 
 %% @doc Lists descriptions of all the Amazon Redshift event notification
-%% subscriptions for a customer account. If you specify a subscription name,
-%% lists the description for that subscription.
+%% subscriptions for a customer account.
+%%
+%% If you specify a subscription name, lists the description for that
+%% subscription.
 %%
 %% If you specify both tag keys and tag values in the same request, Amazon
 %% Redshift returns all event notification subscriptions that match any
 %% combination of the specified keys and values. For example, if you have
-%% <code>owner</code> and <code>environment</code> for tag keys, and
-%% <code>admin</code> and <code>test</code> for tag values, all subscriptions
-%% that have any combination of those values are returned.
+%% `owner' and `environment' for tag keys, and `admin' and `test' for tag
+%% values, all subscriptions that have any combination of those values are
+%% returned.
 %%
 %% If both tag keys and values are omitted from the request, subscriptions
 %% are returned regardless of whether they have tag keys or values associated
@@ -908,10 +886,11 @@ describe_event_subscriptions(Client, Input, Options)
     request(Client, <<"DescribeEventSubscriptions">>, Input, Options).
 
 %% @doc Returns events related to clusters, security groups, snapshots, and
-%% parameter groups for the past 14 days. Events specific to a particular
-%% cluster, security group, snapshot or parameter group can be obtained by
-%% providing the name as a parameter. By default, the past hour of events are
-%% returned.
+%% parameter groups for the past 14 days.
+%%
+%% Events specific to a particular cluster, security group, snapshot or
+%% parameter group can be obtained by providing the name as a parameter. By
+%% default, the past hour of events are returned.
 describe_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_events(Client, Input, []).
@@ -919,16 +898,17 @@ describe_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEvents">>, Input, Options).
 
-%% @doc Returns information about the specified HSM client certificate. If no
-%% certificate ID is specified, returns information about all the HSM
+%% @doc Returns information about the specified HSM client certificate.
+%%
+%% If no certificate ID is specified, returns information about all the HSM
 %% certificates owned by your AWS customer account.
 %%
 %% If you specify both tag keys and tag values in the same request, Amazon
 %% Redshift returns all HSM client certificates that match any combination of
-%% the specified keys and values. For example, if you have <code>owner</code>
-%% and <code>environment</code> for tag keys, and <code>admin</code> and
-%% <code>test</code> for tag values, all HSM client certificates that have
-%% any combination of those values are returned.
+%% the specified keys and values. For example, if you have `owner' and
+%% `environment' for tag keys, and `admin' and `test' for tag values, all HSM
+%% client certificates that have any combination of those values are
+%% returned.
 %%
 %% If both tag keys and values are omitted from the request, HSM client
 %% certificates are returned regardless of whether they have tag keys or
@@ -941,15 +921,16 @@ describe_hsm_client_certificates(Client, Input, Options)
     request(Client, <<"DescribeHsmClientCertificates">>, Input, Options).
 
 %% @doc Returns information about the specified Amazon Redshift HSM
-%% configuration. If no configuration ID is specified, returns information
-%% about all the HSM configurations owned by your AWS customer account.
+%% configuration.
+%%
+%% If no configuration ID is specified, returns information about all the HSM
+%% configurations owned by your AWS customer account.
 %%
 %% If you specify both tag keys and tag values in the same request, Amazon
 %% Redshift returns all HSM connections that match any combination of the
-%% specified keys and values. For example, if you have <code>owner</code> and
-%% <code>environment</code> for tag keys, and <code>admin</code> and
-%% <code>test</code> for tag values, all HSM connections that have any
-%% combination of those values are returned.
+%% specified keys and values. For example, if you have `owner' and
+%% `environment' for tag keys, and `admin' and `test' for tag values, all HSM
+%% connections that have any combination of those values are returned.
 %%
 %% If both tag keys and values are omitted from the request, HSM connections
 %% are returned regardless of whether they have tag keys or values associated
@@ -979,17 +960,16 @@ describe_node_configuration_options(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeNodeConfigurationOptions">>, Input, Options).
 
-%% @doc Returns a list of orderable cluster options. Before you create a new
-%% cluster you can use this operation to find what options are available,
-%% such as the EC2 Availability Zones (AZ) in the specific AWS Region that
-%% you can specify, and the node types you can request. The node types differ
-%% by available storage, memory, CPU and price. With the cost involved you
-%% might want to obtain a list of cluster options in the specific region and
-%% specify values when creating a cluster. For more information about
-%% managing clusters, go to <a
-%% href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html">Amazon
-%% Redshift Clusters</a> in the <i>Amazon Redshift Cluster Management
-%% Guide</i>.
+%% @doc Returns a list of orderable cluster options.
+%%
+%% Before you create a new cluster you can use this operation to find what
+%% options are available, such as the EC2 Availability Zones (AZ) in the
+%% specific AWS Region that you can specify, and the node types you can
+%% request. The node types differ by available storage, memory, CPU and
+%% price. With the cost involved you might want to obtain a list of cluster
+%% options in the specific region and specify values when creating a cluster.
+%% For more information about managing clusters, go to Amazon Redshift
+%% Clusters in the Amazon Redshift Cluster Management Guide.
 describe_orderable_cluster_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_orderable_cluster_options(Client, Input, []).
@@ -1000,14 +980,15 @@ describe_orderable_cluster_options(Client, Input, Options)
 %% @doc Returns a list of the available reserved node offerings by Amazon
 %% Redshift with their descriptions including the node type, the fixed and
 %% recurring costs of reserving the node and duration the node will be
-%% reserved for you. These descriptions help you determine which reserve node
-%% offering you want to purchase. You then use the unique offering ID in you
-%% call to <a>PurchaseReservedNodeOffering</a> to reserve one or more nodes
-%% for your Amazon Redshift cluster.
+%% reserved for you.
 %%
-%% For more information about reserved node offerings, go to <a
-%% href="https://docs.aws.amazon.com/redshift/latest/mgmt/purchase-reserved-node-instance.html">Purchasing
-%% Reserved Nodes</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
+%% These descriptions help you determine which reserve node offering you want
+%% to purchase. You then use the unique offering ID in you call to
+%% `PurchaseReservedNodeOffering' to reserve one or more nodes for your
+%% Amazon Redshift cluster.
+%%
+%% For more information about reserved node offerings, go to Purchasing
+%% Reserved Nodes in the Amazon Redshift Cluster Management Guide.
 describe_reserved_node_offerings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_reserved_node_offerings(Client, Input, []).
@@ -1024,13 +1005,15 @@ describe_reserved_nodes(Client, Input, Options)
     request(Client, <<"DescribeReservedNodes">>, Input, Options).
 
 %% @doc Returns information about the last resize operation for the specified
-%% cluster. If no resize operation has ever been initiated for the specified
-%% cluster, a <code>HTTP 404</code> error is returned. If a resize operation
-%% was initiated and completed, the status of the resize remains as
-%% <code>SUCCEEDED</code> until the next resize.
+%% cluster.
 %%
-%% A resize operation can be requested using <a>ModifyCluster</a> and
-%% specifying a different number or type of nodes for the cluster.
+%% If no resize operation has ever been initiated for the specified cluster,
+%% a `HTTP 404' error is returned. If a resize operation was initiated and
+%% completed, the status of the resize remains as `SUCCEEDED' until the next
+%% resize.
+%%
+%% A resize operation can be requested using `ModifyCluster' and specifying a
+%% different number or type of nodes for the cluster.
 describe_resize(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_resize(Client, Input, []).
@@ -1049,10 +1032,9 @@ describe_scheduled_actions(Client, Input, Options)
 %% @doc Returns a list of snapshot copy grants owned by the AWS account in
 %% the destination region.
 %%
-%% For more information about managing snapshot copy grants, go to <a
-%% href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html">Amazon
-%% Redshift Database Encryption</a> in the <i>Amazon Redshift Cluster
-%% Management Guide</i>.
+%% For more information about managing snapshot copy grants, go to Amazon
+%% Redshift Database Encryption in the Amazon Redshift Cluster Management
+%% Guide.
 describe_snapshot_copy_grants(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_snapshot_copy_grants(Client, Input, []).
@@ -1077,12 +1059,13 @@ describe_storage(Client, Input, Options)
     request(Client, <<"DescribeStorage">>, Input, Options).
 
 %% @doc Lists the status of one or more table restore requests made using the
-%% <a>RestoreTableFromClusterSnapshot</a> API action. If you don't specify a
-%% value for the <code>TableRestoreRequestId</code> parameter, then
-%% <code>DescribeTableRestoreStatus</code> returns the status of all table
-%% restore requests ordered by the date and time of the request in ascending
-%% order. Otherwise <code>DescribeTableRestoreStatus</code> returns the
-%% status of the table specified by <code>TableRestoreRequestId</code>.
+%% `RestoreTableFromClusterSnapshot' API action.
+%%
+%% If you don't specify a value for the `TableRestoreRequestId' parameter,
+%% then `DescribeTableRestoreStatus' returns the status of all table restore
+%% requests ordered by the date and time of the request in ascending order.
+%% Otherwise `DescribeTableRestoreStatus' returns the status of the table
+%% specified by `TableRestoreRequestId'.
 describe_table_restore_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_table_restore_status(Client, Input, []).
@@ -1090,27 +1073,28 @@ describe_table_restore_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTableRestoreStatus">>, Input, Options).
 
-%% @doc Returns a list of tags. You can return tags from a specific resource
-%% by specifying an ARN, or you can return all tags for a given type of
-%% resource, such as clusters, snapshots, and so on.
+%% @doc Returns a list of tags.
 %%
-%% The following are limitations for <code>DescribeTags</code>:
+%% You can return tags from a specific resource by specifying an ARN, or you
+%% can return all tags for a given type of resource, such as clusters,
+%% snapshots, and so on.
+%%
+%% The following are limitations for `DescribeTags':
 %%
 %% <ul> <li> You cannot specify an ARN and a resource-type value together in
 %% the same request.
 %%
-%% </li> <li> You cannot use the <code>MaxRecords</code> and
-%% <code>Marker</code> parameters together with the ARN parameter.
+%% </li> <li> You cannot use the `MaxRecords' and `Marker' parameters
+%% together with the ARN parameter.
 %%
-%% </li> <li> The <code>MaxRecords</code> parameter can be a range from 10 to
-%% 50 results to return in a request.
+%% </li> <li> The `MaxRecords' parameter can be a range from 10 to 50 results
+%% to return in a request.
 %%
 %% </li> </ul> If you specify both tag keys and tag values in the same
 %% request, Amazon Redshift returns all resources that match any combination
-%% of the specified keys and values. For example, if you have
-%% <code>owner</code> and <code>environment</code> for tag keys, and
-%% <code>admin</code> and <code>test</code> for tag values, all resources
-%% that have any combination of those values are returned.
+%% of the specified keys and values. For example, if you have `owner' and
+%% `environment' for tag keys, and `admin' and `test' for tag values, all
+%% resources that have any combination of those values are returned.
 %%
 %% If both tag keys and values are omitted from the request, resources are
 %% returned regardless of whether they have tag keys or values associated
@@ -1122,9 +1106,10 @@ describe_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTags">>, Input, Options).
 
-%% @doc Shows usage limits on a cluster. Results are filtered based on the
-%% combination of input usage limit identifier, cluster identifier, and
-%% feature type parameters:
+%% @doc Shows usage limits on a cluster.
+%%
+%% Results are filtered based on the combination of input usage limit
+%% identifier, cluster identifier, and feature type parameters:
 %%
 %% <ul> <li> If usage limit identifier, cluster identifier, and feature type
 %% are not provided, then all usage limit objects for the current account in
@@ -1161,8 +1146,8 @@ disable_logging(Client, Input, Options)
 %% another region for a specified cluster.
 %%
 %% If your cluster and its snapshots are encrypted using a customer master
-%% key (CMK) from AWS KMS, use <a>DeleteSnapshotCopyGrant</a> to delete the
-%% grant that grants Amazon Redshift permission to the CMK in the destination
+%% key (CMK) from AWS KMS, use `DeleteSnapshotCopyGrant' to delete the grant
+%% that grants Amazon Redshift permission to the CMK in the destination
 %% region.
 disable_snapshot_copy(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1190,37 +1175,31 @@ enable_snapshot_copy(Client, Input, Options)
     request(Client, <<"EnableSnapshotCopy">>, Input, Options).
 
 %% @doc Returns a database user name and temporary password with temporary
-%% authorization to log on to an Amazon Redshift database. The action returns
-%% the database user name prefixed with <code>IAM:</code> if
-%% <code>AutoCreate</code> is <code>False</code> or <code>IAMA:</code> if
-%% <code>AutoCreate</code> is <code>True</code>. You can optionally specify
-%% one or more database user groups that the user will join at log on. By
-%% default, the temporary credentials expire in 900 seconds. You can
-%% optionally specify a duration between 900 seconds (15 minutes) and 3600
-%% seconds (60 minutes). For more information, see <a
-%% href="https://docs.aws.amazon.com/redshift/latest/mgmt/generating-user-credentials.html">Using
-%% IAM Authentication to Generate Database User Credentials</a> in the Amazon
+%% authorization to log on to an Amazon Redshift database.
+%%
+%% The action returns the database user name prefixed with `IAM:' if
+%% `AutoCreate' is `False' or `IAMA:' if `AutoCreate' is `True'. You can
+%% optionally specify one or more database user groups that the user will
+%% join at log on. By default, the temporary credentials expire in 900
+%% seconds. You can optionally specify a duration between 900 seconds (15
+%% minutes) and 3600 seconds (60 minutes). For more information, see Using
+%% IAM Authentication to Generate Database User Credentials in the Amazon
 %% Redshift Cluster Management Guide.
 %%
 %% The AWS Identity and Access Management (IAM)user or role that executes
 %% GetClusterCredentials must have an IAM policy attached that allows access
 %% to all necessary actions and resources. For more information about
-%% permissions, see <a
-%% href="https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-identity-based.html#redshift-policy-resources.getclustercredentials-resources">Resource
-%% Policies for GetClusterCredentials</a> in the Amazon Redshift Cluster
-%% Management Guide.
+%% permissions, see Resource Policies for GetClusterCredentials in the Amazon
+%% Redshift Cluster Management Guide.
 %%
-%% If the <code>DbGroups</code> parameter is specified, the IAM policy must
-%% allow the <code>redshift:JoinGroup</code> action with access to the listed
-%% <code>dbgroups</code>.
+%% If the `DbGroups' parameter is specified, the IAM policy must allow the
+%% `redshift:JoinGroup' action with access to the listed `dbgroups'.
 %%
-%% In addition, if the <code>AutoCreate</code> parameter is set to
-%% <code>True</code>, then the policy must include the
-%% <code>redshift:CreateClusterUser</code> privilege.
+%% In addition, if the `AutoCreate' parameter is set to `True', then the
+%% policy must include the `redshift:CreateClusterUser' privilege.
 %%
-%% If the <code>DbName</code> parameter is specified, the IAM policy must
-%% allow access to the resource <code>dbname</code> for the specified
-%% database name.
+%% If the `DbName' parameter is specified, the IAM policy must allow access
+%% to the resource `dbname' for the specified database name.
 get_cluster_credentials(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_cluster_credentials(Client, Input, []).
@@ -1247,10 +1226,8 @@ get_reserved_node_exchange_offerings(Client, Input, Options)
 %% password. Resetting a cluster password or modifying the security groups
 %% associated with a cluster do not need a reboot. However, modifying a
 %% parameter group requires a reboot for parameters to take effect. For more
-%% information about managing clusters, go to <a
-%% href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html">Amazon
-%% Redshift Clusters</a> in the <i>Amazon Redshift Cluster Management
-%% Guide</i>.
+%% information about managing clusters, go to Amazon Redshift Clusters in the
+%% Amazon Redshift Cluster Management Guide.
 modify_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_cluster(Client, Input, []).
@@ -1258,8 +1235,10 @@ modify_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyCluster">>, Input, Options).
 
-%% @doc Modifies the database revision of a cluster. The database revision is
-%% a unique revision of the database running in a cluster.
+%% @doc Modifies the database revision of a cluster.
+%%
+%% The database revision is a unique revision of the database running in a
+%% cluster.
 modify_cluster_db_revision(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_cluster_db_revision(Client, Input, []).
@@ -1288,10 +1267,8 @@ modify_cluster_maintenance(Client, Input, Options)
 
 %% @doc Modifies the parameters of a parameter group.
 %%
-%% For more information about parameters and parameter groups, go to <a
-%% href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Amazon
-%% Redshift Parameter Groups</a> in the <i>Amazon Redshift Cluster Management
-%% Guide</i>.
+%% For more information about parameters and parameter groups, go to Amazon
+%% Redshift Parameter Groups in the Amazon Redshift Cluster Management Guide.
 modify_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_cluster_parameter_group(Client, Input, []).
@@ -1319,8 +1296,10 @@ modify_cluster_snapshot_schedule(Client, Input, Options)
     request(Client, <<"ModifyClusterSnapshotSchedule">>, Input, Options).
 
 %% @doc Modifies a cluster subnet group to include the specified list of VPC
-%% subnets. The operation replaces the existing list of subnets with the new
-%% list of subnets.
+%% subnets.
+%%
+%% The operation replaces the existing list of subnets with the new list of
+%% subnets.
 modify_cluster_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_cluster_subnet_group(Client, Input, []).
@@ -1345,13 +1324,14 @@ modify_scheduled_action(Client, Input, Options)
     request(Client, <<"ModifyScheduledAction">>, Input, Options).
 
 %% @doc Modifies the number of days to retain snapshots in the destination
-%% AWS Region after they are copied from the source AWS Region. By default,
-%% this operation only changes the retention period of copied automated
-%% snapshots. The retention periods for both new and existing copied
-%% automated snapshots are updated with the new retention period. You can set
-%% the manual option to change only the retention periods of copied manual
-%% snapshots. If you set this option, only newly copied manual snapshots have
-%% the new retention period.
+%% AWS Region after they are copied from the source AWS Region.
+%%
+%% By default, this operation only changes the retention period of copied
+%% automated snapshots. The retention periods for both new and existing
+%% copied automated snapshots are updated with the new retention period. You
+%% can set the manual option to change only the retention periods of copied
+%% manual snapshots. If you set this option, only newly copied manual
+%% snapshots have the new retention period.
 modify_snapshot_copy_retention_period(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_snapshot_copy_retention_period(Client, Input, []).
@@ -1359,8 +1339,9 @@ modify_snapshot_copy_retention_period(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifySnapshotCopyRetentionPeriod">>, Input, Options).
 
-%% @doc Modifies a snapshot schedule. Any schedule associated with a cluster
-%% is modified asynchronously.
+%% @doc Modifies a snapshot schedule.
+%%
+%% Any schedule associated with a cluster is modified asynchronously.
 modify_snapshot_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_snapshot_schedule(Client, Input, []).
@@ -1368,8 +1349,9 @@ modify_snapshot_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifySnapshotSchedule">>, Input, Options).
 
-%% @doc Modifies a usage limit in a cluster. You can't modify the feature
-%% type or period of a usage limit.
+%% @doc Modifies a usage limit in a cluster.
+%%
+%% You can't modify the feature type or period of a usage limit.
 modify_usage_limit(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_usage_limit(Client, Input, []).
@@ -1385,16 +1367,16 @@ pause_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PauseCluster">>, Input, Options).
 
-%% @doc Allows you to purchase reserved nodes. Amazon Redshift offers a
-%% predefined set of reserved node offerings. You can purchase one or more of
-%% the offerings. You can call the <a>DescribeReservedNodeOfferings</a> API
-%% to obtain the available reserved node offerings. You can call this API by
-%% providing a specific reserved node offering and the number of nodes you
-%% want to reserve.
+%% @doc Allows you to purchase reserved nodes.
 %%
-%% For more information about reserved node offerings, go to <a
-%% href="https://docs.aws.amazon.com/redshift/latest/mgmt/purchase-reserved-node-instance.html">Purchasing
-%% Reserved Nodes</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
+%% Amazon Redshift offers a predefined set of reserved node offerings. You
+%% can purchase one or more of the offerings. You can call the
+%% `DescribeReservedNodeOfferings' API to obtain the available reserved node
+%% offerings. You can call this API by providing a specific reserved node
+%% offering and the number of nodes you want to reserve.
+%%
+%% For more information about reserved node offerings, go to Purchasing
+%% Reserved Nodes in the Amazon Redshift Cluster Management Guide.
 purchase_reserved_node_offering(Client, Input)
   when is_map(Client), is_map(Input) ->
     purchase_reserved_node_offering(Client, Input, []).
@@ -1402,15 +1384,14 @@ purchase_reserved_node_offering(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PurchaseReservedNodeOffering">>, Input, Options).
 
-%% @doc Reboots a cluster. This action is taken as soon as possible. It
-%% results in a momentary outage to the cluster, during which the cluster
-%% status is set to <code>rebooting</code>. A cluster event is created when
-%% the reboot is completed. Any pending cluster modifications (see
-%% <a>ModifyCluster</a>) are applied at this reboot. For more information
-%% about managing clusters, go to <a
-%% href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html">Amazon
-%% Redshift Clusters</a> in the <i>Amazon Redshift Cluster Management
-%% Guide</i>.
+%% @doc Reboots a cluster.
+%%
+%% This action is taken as soon as possible. It results in a momentary outage
+%% to the cluster, during which the cluster status is set to `rebooting'. A
+%% cluster event is created when the reboot is completed. Any pending cluster
+%% modifications (see `ModifyCluster') are applied at this reboot. For more
+%% information about managing clusters, go to Amazon Redshift Clusters in the
+%% Amazon Redshift Cluster Management Guide.
 reboot_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     reboot_cluster(Client, Input, []).
@@ -1420,9 +1401,11 @@ reboot_cluster(Client, Input, Options)
 
 %% @doc Sets one or more parameters of the specified parameter group to their
 %% default values and sets the source values of the parameters to
-%% "engine-default". To reset the entire parameter group specify the
-%% <i>ResetAllParameters</i> parameter. For parameter changes to take effect
-%% you must reboot any associated clusters.
+%% "engine-default".
+%%
+%% To reset the entire parameter group specify the ResetAllParameters
+%% parameter. For parameter changes to take effect you must reboot any
+%% associated clusters.
 reset_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_cluster_parameter_group(Client, Input, []).
@@ -1430,17 +1413,22 @@ reset_cluster_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResetClusterParameterGroup">>, Input, Options).
 
-%% @doc Changes the size of the cluster. You can change the cluster's type,
-%% or change the number or type of nodes. The default behavior is to use the
-%% elastic resize method. With an elastic resize, your cluster is available
-%% for read and write operations more quickly than with the classic resize
-%% method.
+%% @doc Changes the size of the cluster.
+%%
+%% You can change the cluster's type, or change the number or type of nodes.
+%% The default behavior is to use the elastic resize method. With an elastic
+%% resize, your cluster is available for read and write operations more
+%% quickly than with the classic resize method.
 %%
 %% Elastic resize operations have the following restrictions:
 %%
 %% <ul> <li> You can only resize clusters of the following types:
 %%
-%% <ul> <li> dc2.large
+%% <ul> <li> dc1.large (if your cluster is in a VPC)
+%%
+%% </li> <li> dc1.8xlarge (if your cluster is in a VPC)
+%%
+%% </li> <li> dc2.large
 %%
 %% </li> <li> dc2.8xlarge
 %%
@@ -1463,22 +1451,22 @@ resize_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResizeCluster">>, Input, Options).
 
-%% @doc Creates a new cluster from a snapshot. By default, Amazon Redshift
-%% creates the resulting cluster with the same configuration as the original
-%% cluster from which the snapshot was created, except that the new cluster
-%% is created with the default cluster security and parameter groups. After
-%% Amazon Redshift creates the cluster, you can use the <a>ModifyCluster</a>
-%% API to associate a different security group and different parameter group
-%% with the restored cluster. If you are using a DS node type, you can also
-%% choose to change to another DS node type of the same size during restore.
+%% @doc Creates a new cluster from a snapshot.
+%%
+%% By default, Amazon Redshift creates the resulting cluster with the same
+%% configuration as the original cluster from which the snapshot was created,
+%% except that the new cluster is created with the default cluster security
+%% and parameter groups. After Amazon Redshift creates the cluster, you can
+%% use the `ModifyCluster' API to associate a different security group and
+%% different parameter group with the restored cluster. If you are using a DS
+%% node type, you can also choose to change to another DS node type of the
+%% same size during restore.
 %%
 %% If you restore a cluster into a VPC, you must provide a cluster subnet
 %% group where you want the cluster restored.
 %%
-%% For more information about working with snapshots, go to <a
-%% href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html">Amazon
-%% Redshift Snapshots</a> in the <i>Amazon Redshift Cluster Management
-%% Guide</i>.
+%% For more information about working with snapshots, go to Amazon Redshift
+%% Snapshots in the Amazon Redshift Cluster Management Guide.
 restore_from_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_from_cluster_snapshot(Client, Input, []).
@@ -1487,19 +1475,21 @@ restore_from_cluster_snapshot(Client, Input, Options)
     request(Client, <<"RestoreFromClusterSnapshot">>, Input, Options).
 
 %% @doc Creates a new table from a table in an Amazon Redshift cluster
-%% snapshot. You must create the new table within the Amazon Redshift cluster
-%% that the snapshot was taken from.
+%% snapshot.
 %%
-%% You cannot use <code>RestoreTableFromClusterSnapshot</code> to restore a
-%% table with the same name as an existing table in an Amazon Redshift
-%% cluster. That is, you cannot overwrite an existing table in a cluster with
-%% a restored table. If you want to replace your original table with a new,
-%% restored table, then rename or drop your original table before you call
-%% <code>RestoreTableFromClusterSnapshot</code>. When you have renamed your
-%% original table, then you can pass the original name of the table as the
-%% <code>NewTableName</code> parameter value in the call to
-%% <code>RestoreTableFromClusterSnapshot</code>. This way, you can replace
-%% the original table with the table created from the snapshot.
+%% You must create the new table within the Amazon Redshift cluster that the
+%% snapshot was taken from.
+%%
+%% You cannot use `RestoreTableFromClusterSnapshot' to restore a table with
+%% the same name as an existing table in an Amazon Redshift cluster. That is,
+%% you cannot overwrite an existing table in a cluster with a restored table.
+%% If you want to replace your original table with a new, restored table,
+%% then rename or drop your original table before you call
+%% `RestoreTableFromClusterSnapshot'. When you have renamed your original
+%% table, then you can pass the original name of the table as the
+%% `NewTableName' parameter value in the call to
+%% `RestoreTableFromClusterSnapshot'. This way, you can replace the original
+%% table with the table created from the snapshot.
 restore_table_from_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_table_from_cluster_snapshot(Client, Input, []).
@@ -1516,12 +1506,11 @@ resume_cluster(Client, Input, Options)
     request(Client, <<"ResumeCluster">>, Input, Options).
 
 %% @doc Revokes an ingress rule in an Amazon Redshift security group for a
-%% previously authorized IP range or Amazon EC2 security group. To add an
-%% ingress rule, see <a>AuthorizeClusterSecurityGroupIngress</a>. For
-%% information about managing security groups, go to <a
-%% href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html">Amazon
-%% Redshift Cluster Security Groups</a> in the <i>Amazon Redshift Cluster
-%% Management Guide</i>.
+%% previously authorized IP range or Amazon EC2 security group.
+%%
+%% To add an ingress rule, see `AuthorizeClusterSecurityGroupIngress'. For
+%% information about managing security groups, go to Amazon Redshift Cluster
+%% Security Groups in the Amazon Redshift Cluster Management Guide.
 revoke_cluster_security_group_ingress(Client, Input)
   when is_map(Client), is_map(Input) ->
     revoke_cluster_security_group_ingress(Client, Input, []).
@@ -1530,13 +1519,13 @@ revoke_cluster_security_group_ingress(Client, Input, Options)
     request(Client, <<"RevokeClusterSecurityGroupIngress">>, Input, Options).
 
 %% @doc Removes the ability of the specified AWS customer account to restore
-%% the specified snapshot. If the account is currently restoring the
-%% snapshot, the restore will run to completion.
+%% the specified snapshot.
 %%
-%% For more information about working with snapshots, go to <a
-%% href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html">Amazon
-%% Redshift Snapshots</a> in the <i>Amazon Redshift Cluster Management
-%% Guide</i>.
+%% If the account is currently restoring the snapshot, the restore will run
+%% to completion.
+%%
+%% For more information about working with snapshots, go to Amazon Redshift
+%% Snapshots in the Amazon Redshift Cluster Management Guide.
 revoke_snapshot_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     revoke_snapshot_access(Client, Input, []).
@@ -1595,6 +1584,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
 handle_response({error, Reason}) ->
     {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->

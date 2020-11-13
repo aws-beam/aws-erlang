@@ -2,11 +2,13 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon EventBridge helps you to respond to state changes in your AWS
-%% resources. When your resources change state, they automatically send
-%% events into an event stream. You can create rules that match selected
-%% events in the stream and route them to targets to take action. You can
-%% also use rules to take action on a predetermined schedule. For example,
-%% you can configure rules to:
+%% resources.
+%%
+%% When your resources change state, they automatically send events into an
+%% event stream. You can create rules that match selected events in the
+%% stream and route them to targets to take action. You can also use rules to
+%% take action on a predetermined schedule. For example, you can configure
+%% rules to:
 %%
 %% <ul> <li> Automatically invoke an AWS Lambda function to update DNS
 %% entries when an event notifies you that Amazon EC2 instance enters the
@@ -20,37 +22,47 @@
 %% an Amazon EBS volume.
 %%
 %% </li> </ul> For more information about the features of Amazon EventBridge,
-%% see the <a
-%% href="https://docs.aws.amazon.com/eventbridge/latest/userguide">Amazon
-%% EventBridge User Guide</a>.
+%% see the Amazon EventBridge User Guide.
 -module(aws_cloudwatch_events).
 
 -export([activate_event_source/2,
          activate_event_source/3,
+         cancel_replay/2,
+         cancel_replay/3,
+         create_archive/2,
+         create_archive/3,
          create_event_bus/2,
          create_event_bus/3,
          create_partner_event_source/2,
          create_partner_event_source/3,
          deactivate_event_source/2,
          deactivate_event_source/3,
+         delete_archive/2,
+         delete_archive/3,
          delete_event_bus/2,
          delete_event_bus/3,
          delete_partner_event_source/2,
          delete_partner_event_source/3,
          delete_rule/2,
          delete_rule/3,
+         describe_archive/2,
+         describe_archive/3,
          describe_event_bus/2,
          describe_event_bus/3,
          describe_event_source/2,
          describe_event_source/3,
          describe_partner_event_source/2,
          describe_partner_event_source/3,
+         describe_replay/2,
+         describe_replay/3,
          describe_rule/2,
          describe_rule/3,
          disable_rule/2,
          disable_rule/3,
          enable_rule/2,
          enable_rule/3,
+         list_archives/2,
+         list_archives/3,
          list_event_buses/2,
          list_event_buses/3,
          list_event_sources/2,
@@ -59,6 +71,8 @@
          list_partner_event_source_accounts/3,
          list_partner_event_sources/2,
          list_partner_event_sources/3,
+         list_replays/2,
+         list_replays/3,
          list_rule_names_by_target/2,
          list_rule_names_by_target/3,
          list_rules/2,
@@ -81,12 +95,16 @@
          remove_permission/3,
          remove_targets/2,
          remove_targets/3,
+         start_replay/2,
+         start_replay/3,
          tag_resource/2,
          tag_resource/3,
          test_event_pattern/2,
          test_event_pattern/3,
          untag_resource/2,
-         untag_resource/3]).
+         untag_resource/3,
+         update_archive/2,
+         update_archive/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -94,9 +112,10 @@
 %% API
 %%====================================================================
 
-%% @doc Activates a partner event source that has been deactivated. Once
-%% activated, your matching event bus will start receiving events from the
-%% event source.
+%% @doc Activates a partner event source that has been deactivated.
+%%
+%% Once activated, your matching event bus will start receiving events from
+%% the event source.
 activate_event_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     activate_event_source(Client, Input, []).
@@ -104,10 +123,31 @@ activate_event_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ActivateEventSource">>, Input, Options).
 
-%% @doc Creates a new event bus within your account. This can be a custom
-%% event bus which you can use to receive events from your custom
-%% applications and services, or it can be a partner event bus which can be
-%% matched to a partner event source.
+%% @doc Cancels the specified replay.
+cancel_replay(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    cancel_replay(Client, Input, []).
+cancel_replay(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CancelReplay">>, Input, Options).
+
+%% @doc Creates an archive of events with the specified settings.
+%%
+%% When you create an archive, incoming events might not immediately start
+%% being sent to the archive. Allow a short period of time for changes to
+%% take effect.
+create_archive(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_archive(Client, Input, []).
+create_archive(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateArchive">>, Input, Options).
+
+%% @doc Creates a new event bus within your account.
+%%
+%% This can be a custom event bus which you can use to receive events from
+%% your custom applications and services, or it can be a partner event bus
+%% which can be matched to a partner event source.
 create_event_bus(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_event_bus(Client, Input, []).
@@ -115,8 +155,9 @@ create_event_bus(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEventBus">>, Input, Options).
 
-%% @doc Called by an SaaS partner to create a partner event source. This
-%% operation is not used by AWS customers.
+%% @doc Called by an SaaS partner to create a partner event source.
+%%
+%% This operation is not used by AWS customers.
 %%
 %% Each partner event source can be used by one AWS account to create a
 %% matching partner event bus in that AWS account. A SaaS partner must create
@@ -132,17 +173,15 @@ create_event_bus(Client, Input, Options)
 %%
 %% Partner event source names follow this format:
 %%
-%% <code> <i>partner_name</i>/<i>event_namespace</i>/<i>event_name</i>
-%% </code>
+%% ` partner_name/event_namespace/event_name '
 %%
-%% <i>partner_name</i> is determined during partner registration and
-%% identifies the partner to AWS customers. <i>event_namespace</i> is
-%% determined by the partner and is a way for the partner to categorize their
-%% events. <i>event_name</i> is determined by the partner, and should
-%% uniquely identify an event-generating resource within the partner system.
-%% The combination of <i>event_namespace</i> and <i>event_name</i> should
-%% help AWS customers decide whether to create an event bus to receive these
-%% events.
+%% partner_name is determined during partner registration and identifies the
+%% partner to AWS customers. event_namespace is determined by the partner and
+%% is a way for the partner to categorize their events. event_name is
+%% determined by the partner, and should uniquely identify an
+%% event-generating resource within the partner system. The combination of
+%% event_namespace and event_name should help AWS customers decide whether to
+%% create an event bus to receive these events.
 create_partner_event_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_partner_event_source(Client, Input, []).
@@ -151,14 +190,15 @@ create_partner_event_source(Client, Input, Options)
     request(Client, <<"CreatePartnerEventSource">>, Input, Options).
 
 %% @doc You can use this operation to temporarily stop receiving events from
-%% the specified partner event source. The matching event bus is not deleted.
+%% the specified partner event source.
+%%
+%% The matching event bus is not deleted.
 %%
 %% When you deactivate a partner event source, the source goes into PENDING
 %% state. If it remains in PENDING state for more than two weeks, it is
 %% deleted.
 %%
-%% To activate a deactivated partner event source, use
-%% <a>ActivateEventSource</a>.
+%% To activate a deactivated partner event source, use `ActivateEventSource'.
 deactivate_event_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     deactivate_event_source(Client, Input, []).
@@ -166,9 +206,18 @@ deactivate_event_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeactivateEventSource">>, Input, Options).
 
-%% @doc Deletes the specified custom event bus or partner event bus. All
-%% rules associated with this event bus need to be deleted. You can't delete
-%% your account's default event bus.
+%% @doc Deletes the specified archive.
+delete_archive(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_archive(Client, Input, []).
+delete_archive(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteArchive">>, Input, Options).
+
+%% @doc Deletes the specified custom event bus or partner event bus.
+%%
+%% All rules associated with this event bus need to be deleted. You can't
+%% delete your account's default event bus.
 delete_event_bus(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_event_bus(Client, Input, []).
@@ -177,12 +226,12 @@ delete_event_bus(Client, Input, Options)
     request(Client, <<"DeleteEventBus">>, Input, Options).
 
 %% @doc This operation is used by SaaS partners to delete a partner event
-%% source. This operation is not used by AWS customers.
+%% source.
+%%
+%% This operation is not used by AWS customers.
 %%
 %% When you delete an event source, the status of the corresponding partner
 %% event bus in the AWS customer account becomes DELETED.
-%%
-%% <p/>
 delete_partner_event_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_partner_event_source(Client, Input, []).
@@ -193,7 +242,7 @@ delete_partner_event_source(Client, Input, Options)
 %% @doc Deletes the specified rule.
 %%
 %% Before you can delete the rule, you must remove all targets, using
-%% <a>RemoveTargets</a>.
+%% `RemoveTargets'.
 %%
 %% When you delete a rule, incoming events might continue to match to the
 %% deleted rule. Allow a short period of time for changes to take effect.
@@ -201,8 +250,8 @@ delete_partner_event_source(Client, Input, Options)
 %% Managed rules are rules created and managed by another AWS service on your
 %% behalf. These rules are created by those other AWS services to support
 %% functionality in those services. You can delete these rules using the
-%% <code>Force</code> option, but you should do so only if you are sure the
-%% other service is not still using that rule.
+%% `Force' option, but you should do so only if you are sure the other
+%% service is not still using that rule.
 delete_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_rule(Client, Input, []).
@@ -210,16 +259,25 @@ delete_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRule">>, Input, Options).
 
-%% @doc Displays details about an event bus in your account. This can include
-%% the external AWS accounts that are permitted to write events to your
-%% default event bus, and the associated policy. For custom event buses and
-%% partner event buses, it displays the name, ARN, policy, state, and
-%% creation time.
+%% @doc Retrieves details about an archive.
+describe_archive(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_archive(Client, Input, []).
+describe_archive(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeArchive">>, Input, Options).
+
+%% @doc Displays details about an event bus in your account.
+%%
+%% This can include the external AWS accounts that are permitted to write
+%% events to your default event bus, and the associated policy. For custom
+%% event buses and partner event buses, it displays the name, ARN, policy,
+%% state, and creation time.
 %%
 %% To enable your account to receive events from other accounts on its
-%% default event bus, use <a>PutPermission</a>.
+%% default event bus, use `PutPermission'.
 %%
-%% For more information about partner event buses, see <a>CreateEventBus</a>.
+%% For more information about partner event buses, see `CreateEventBus'.
 describe_event_bus(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_bus(Client, Input, []).
@@ -237,9 +295,11 @@ describe_event_source(Client, Input, Options)
     request(Client, <<"DescribeEventSource">>, Input, Options).
 
 %% @doc An SaaS partner can use this operation to list details about a
-%% partner event source that they have created. AWS customers do not use this
-%% operation. Instead, AWS customers can use <a>DescribeEventSource</a> to
-%% see details about a partner event source that is shared with them.
+%% partner event source that they have created.
+%%
+%% AWS customers do not use this operation. Instead, AWS customers can use
+%% `DescribeEventSource' to see details about a partner event source that is
+%% shared with them.
 describe_partner_event_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_partner_event_source(Client, Input, []).
@@ -247,10 +307,28 @@ describe_partner_event_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePartnerEventSource">>, Input, Options).
 
+%% @doc Retrieves details about a replay.
+%%
+%% Use `DescribeReplay' to determine the progress of a running replay. A
+%% replay processes events to replay based on the time in the event, and
+%% replays them using 1 minute intervals. If you use `StartReplay' and
+%% specify an `EventStartTime' and an `EventEndTime' that covers a 20 minute
+%% time range, the events are replayed from the first minute of that 20
+%% minute range first. Then the events from the second minute are replayed.
+%% You can use `DescribeReplay' to determine the progress of a replay. The
+%% value returned for `EventLastReplayedTime' indicates the time within the
+%% specified time range associated with the last event replayed.
+describe_replay(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_replay(Client, Input, []).
+describe_replay(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeReplay">>, Input, Options).
+
 %% @doc Describes the specified rule.
 %%
 %% DescribeRule does not list the targets of a rule. To see the targets
-%% associated with a rule, use <a>ListTargetsByRule</a>.
+%% associated with a rule, use `ListTargetsByRule'.
 describe_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_rule(Client, Input, []).
@@ -258,8 +336,10 @@ describe_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRule">>, Input, Options).
 
-%% @doc Disables the specified rule. A disabled rule won't match any events,
-%% and won't self-trigger if it has a schedule expression.
+%% @doc Disables the specified rule.
+%%
+%% A disabled rule won't match any events, and won't self-trigger if it has a
+%% schedule expression.
 %%
 %% When you disable a rule, incoming events might continue to match to the
 %% disabled rule. Allow a short period of time for changes to take effect.
@@ -270,8 +350,9 @@ disable_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableRule">>, Input, Options).
 
-%% @doc Enables the specified rule. If the rule does not exist, the operation
-%% fails.
+%% @doc Enables the specified rule.
+%%
+%% If the rule does not exist, the operation fails.
 %%
 %% When you enable a rule, incoming events might not immediately start
 %% matching to a newly enabled rule. Allow a short period of time for changes
@@ -283,6 +364,17 @@ enable_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableRule">>, Input, Options).
 
+%% @doc Lists your archives.
+%%
+%% You can either list all the archives or you can provide a prefix to match
+%% to the archive names. Filter parameters are exclusive.
+list_archives(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_archives(Client, Input, []).
+list_archives(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListArchives">>, Input, Options).
+
 %% @doc Lists all the event buses in your account, including the default
 %% event bus, custom event buses, and partner event buses.
 list_event_buses(Client, Input)
@@ -293,8 +385,9 @@ list_event_buses(Client, Input, Options)
     request(Client, <<"ListEventBuses">>, Input, Options).
 
 %% @doc You can use this to see all the partner event sources that have been
-%% shared with your AWS account. For more information about partner event
-%% sources, see <a>CreateEventBus</a>.
+%% shared with your AWS account.
+%%
+%% For more information about partner event sources, see `CreateEventBus'.
 list_event_sources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_event_sources(Client, Input, []).
@@ -303,8 +396,9 @@ list_event_sources(Client, Input, Options)
     request(Client, <<"ListEventSources">>, Input, Options).
 
 %% @doc An SaaS partner can use this operation to display the AWS account ID
-%% that a particular partner event source name is associated with. This
-%% operation is not used by AWS customers.
+%% that a particular partner event source name is associated with.
+%%
+%% This operation is not used by AWS customers.
 list_partner_event_source_accounts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_partner_event_source_accounts(Client, Input, []).
@@ -313,8 +407,9 @@ list_partner_event_source_accounts(Client, Input, Options)
     request(Client, <<"ListPartnerEventSourceAccounts">>, Input, Options).
 
 %% @doc An SaaS partner can use this operation to list all the partner event
-%% source names that they have created. This operation is not used by AWS
-%% customers.
+%% source names that they have created.
+%%
+%% This operation is not used by AWS customers.
 list_partner_event_sources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_partner_event_sources(Client, Input, []).
@@ -322,8 +417,21 @@ list_partner_event_sources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPartnerEventSources">>, Input, Options).
 
-%% @doc Lists the rules for the specified target. You can see which of the
-%% rules in Amazon EventBridge can invoke a specific target in your account.
+%% @doc Lists your replays.
+%%
+%% You can either list all the replays or you can provide a prefix to match
+%% to the replay names. Filter parameters are exclusive.
+list_replays(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_replays(Client, Input, []).
+list_replays(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListReplays">>, Input, Options).
+
+%% @doc Lists the rules for the specified target.
+%%
+%% You can see which of the rules in Amazon EventBridge can invoke a specific
+%% target in your account.
 list_rule_names_by_target(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rule_names_by_target(Client, Input, []).
@@ -331,11 +439,13 @@ list_rule_names_by_target(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRuleNamesByTarget">>, Input, Options).
 
-%% @doc Lists your Amazon EventBridge rules. You can either list all the
-%% rules or you can provide a prefix to match to the rule names.
+%% @doc Lists your Amazon EventBridge rules.
+%%
+%% You can either list all the rules or you can provide a prefix to match to
+%% the rule names.
 %%
 %% ListRules does not list the targets of a rule. To see the targets
-%% associated with a rule, use <a>ListTargetsByRule</a>.
+%% associated with a rule, use `ListTargetsByRule'.
 list_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rules(Client, Input, []).
@@ -343,8 +453,9 @@ list_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRules">>, Input, Options).
 
-%% @doc Displays the tags associated with an EventBridge resource. In
-%% EventBridge, rules and event buses can be tagged.
+%% @doc Displays the tags associated with an EventBridge resource.
+%%
+%% In EventBridge, rules and event buses can be tagged.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -370,7 +481,9 @@ put_events(Client, Input, Options)
     request(Client, <<"PutEvents">>, Input, Options).
 
 %% @doc This is used by SaaS partners to write events to a customer's partner
-%% event bus. AWS customers do not use this operation.
+%% event bus.
+%%
+%% AWS customers do not use this operation.
 put_partner_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_partner_events(Client, Input, []).
@@ -378,8 +491,9 @@ put_partner_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutPartnerEvents">>, Input, Options).
 
-%% @doc Running <code>PutPermission</code> permits the specified AWS account
-%% or AWS organization to put events to the specified <i>event bus</i>.
+%% @doc Running `PutPermission' permits the specified AWS account or AWS
+%% organization to put events to the specified event bus.
+%%
 %% Amazon EventBridge (CloudWatch Events) rules in your account are triggered
 %% by these events arriving to an event bus in your account.
 %%
@@ -387,19 +501,16 @@ put_partner_events(Client, Input, Options)
 %% must have an EventBridge rule with your account's event bus as a target.
 %%
 %% To enable multiple AWS accounts to put events to your event bus, run
-%% <code>PutPermission</code> once for each of these accounts. Or, if all the
-%% accounts are members of the same AWS organization, you can run
-%% <code>PutPermission</code> once specifying <code>Principal</code> as "*"
-%% and specifying the AWS organization ID in <code>Condition</code>, to grant
-%% permissions to all accounts in that organization.
+%% `PutPermission' once for each of these accounts. Or, if all the accounts
+%% are members of the same AWS organization, you can run `PutPermission' once
+%% specifying `Principal' as "*" and specifying the AWS organization ID in
+%% `Condition', to grant permissions to all accounts in that organization.
 %%
 %% If you grant permissions using an organization, then accounts in that
-%% organization must specify a <code>RoleArn</code> with proper permissions
-%% when they use <code>PutTarget</code> to add your account's event bus as a
-%% target. For more information, see <a
-%% href="https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-cross-account-event-delivery.html">Sending
-%% and Receiving Events Between AWS Accounts</a> in the <i>Amazon EventBridge
-%% User Guide</i>.
+%% organization must specify a `RoleArn' with proper permissions when they
+%% use `PutTarget' to add your account's event bus as a target. For more
+%% information, see Sending and Receiving Events Between AWS Accounts in the
+%% Amazon EventBridge User Guide.
 %%
 %% The permission policy on the default event bus cannot exceed 10 KB in
 %% size.
@@ -410,21 +521,22 @@ put_permission(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutPermission">>, Input, Options).
 
-%% @doc Creates or updates the specified rule. Rules are enabled by default,
-%% or based on value of the state. You can disable a rule using
-%% <a>DisableRule</a>.
+%% @doc Creates or updates the specified rule.
+%%
+%% Rules are enabled by default, or based on value of the state. You can
+%% disable a rule using `DisableRule'.
 %%
 %% A single rule watches for events from a single event bus. Events generated
 %% by AWS services go to your account's default event bus. Events generated
 %% by SaaS partner services or applications go to the matching partner event
 %% bus. If you have custom applications or services, you can specify whether
 %% their events go to your default event bus or a custom event bus that you
-%% have created. For more information, see <a>CreateEventBus</a>.
+%% have created. For more information, see `CreateEventBus'.
 %%
 %% If you are updating an existing rule, the rule is replaced with what you
-%% specify in this <code>PutRule</code> command. If you omit arguments in
-%% <code>PutRule</code>, the old values for those arguments are not kept.
-%% Instead, they are replaced with null values.
+%% specify in this `PutRule' command. If you omit arguments in `PutRule', the
+%% old values for those arguments are not kept. Instead, they are replaced
+%% with null values.
 %%
 %% When you create or update a rule, incoming events might not immediately
 %% start matching to new or updated rules. Allow a short period of time for
@@ -440,13 +552,12 @@ put_permission(Client, Input, Options)
 %% tags to the rule. Tags can help you organize and categorize your
 %% resources. You can also use them to scope user permissions, by granting a
 %% user permission to access or change only rules with certain tag values. To
-%% use the <code>PutRule</code> operation and assign tags, you must have both
-%% the <code>events:PutRule</code> and <code>events:TagResource</code>
-%% permissions.
+%% use the `PutRule' operation and assign tags, you must have both the
+%% `events:PutRule' and `events:TagResource' permissions.
 %%
 %% If you are updating an existing rule, any tags you specify in the
-%% <code>PutRule</code> operation are ignored. To update the tags of an
-%% existing rule, use <a>TagResource</a> and <a>UntagResource</a>.
+%% `PutRule' operation are ignored. To update the tags of an existing rule,
+%% use `TagResource' and `UntagResource'.
 %%
 %% Most services in AWS treat : or / as the same character in Amazon Resource
 %% Names (ARNs). However, EventBridge uses an exact match in event patterns
@@ -466,9 +577,8 @@ put_permission(Client, Input, Options)
 %%
 %% An infinite loop can quickly cause higher than expected charges. We
 %% recommend that you use budgeting, which alerts you when charges exceed
-%% your specified limit. For more information, see <a
-%% href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/budgets-managing-costs.html">Managing
-%% Your Costs with Budgets</a>.
+%% your specified limit. For more information, see Managing Your Costs with
+%% Budgets.
 put_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_rule(Client, Input, []).
@@ -515,91 +625,82 @@ put_rule(Client, Input, Options)
 %%
 %% </li> <li> Amazon API Gateway REST APIs
 %%
-%% </li> </ul> Creating rules with built-in targets is supported only in the
-%% AWS Management Console. The built-in targets are <code>EC2 CreateSnapshot
-%% API call</code>, <code>EC2 RebootInstances API call</code>, <code>EC2
-%% StopInstances API call</code>, and <code>EC2 TerminateInstances API
-%% call</code>.
+%% </li> <li> Redshift Clusters to invoke Data API ExecuteStatement on
 %%
-%% For some target types, <code>PutTargets</code> provides target-specific
-%% parameters. If the target is a Kinesis data stream, you can optionally
-%% specify which shard the event goes to by using the
-%% <code>KinesisParameters</code> argument. To invoke a command on multiple
-%% EC2 instances with one rule, you can use the
-%% <code>RunCommandParameters</code> field.
+%% </li> </ul> Creating rules with built-in targets is supported only in the
+%% AWS Management Console. The built-in targets are `EC2 CreateSnapshot API
+%% call', `EC2 RebootInstances API call', `EC2 StopInstances API call', and
+%% `EC2 TerminateInstances API call'.
+%%
+%% For some target types, `PutTargets' provides target-specific parameters.
+%% If the target is a Kinesis data stream, you can optionally specify which
+%% shard the event goes to by using the `KinesisParameters' argument. To
+%% invoke a command on multiple EC2 instances with one rule, you can use the
+%% `RunCommandParameters' field.
 %%
 %% To be able to make API calls against the resources that you own, Amazon
 %% EventBridge (CloudWatch Events) needs the appropriate permissions. For AWS
 %% Lambda and Amazon SNS resources, EventBridge relies on resource-based
 %% policies. For EC2 instances, Kinesis data streams, AWS Step Functions
 %% state machines and API Gateway REST APIs, EventBridge relies on IAM roles
-%% that you specify in the <code>RoleARN</code> argument in
-%% <code>PutTargets</code>. For more information, see <a
-%% href="https://docs.aws.amazon.com/eventbridge/latest/userguide/auth-and-access-control-eventbridge.html">Authentication
-%% and Access Control</a> in the <i>Amazon EventBridge User Guide</i>.
+%% that you specify in the `RoleARN' argument in `PutTargets'. For more
+%% information, see Authentication and Access Control in the Amazon
+%% EventBridge User Guide.
 %%
 %% If another AWS account is in the same region and has granted you
-%% permission (using <code>PutPermission</code>), you can send events to that
-%% account. Set that account's event bus as a target of the rules in your
-%% account. To send the matched events to the other account, specify that
-%% account's event bus as the <code>Arn</code> value when you run
-%% <code>PutTargets</code>. If your account sends events to another account,
-%% your account is charged for each sent event. Each event sent to another
-%% account is charged as a custom event. The account receiving the event is
-%% not charged. For more information, see <a
-%% href="https://aws.amazon.com/eventbridge/pricing/">Amazon EventBridge
-%% (CloudWatch Events) Pricing</a>.
+%% permission (using `PutPermission'), you can send events to that account.
+%% Set that account's event bus as a target of the rules in your account. To
+%% send the matched events to the other account, specify that account's event
+%% bus as the `Arn' value when you run `PutTargets'. If your account sends
+%% events to another account, your account is charged for each sent event.
+%% Each event sent to another account is charged as a custom event. The
+%% account receiving the event is not charged. For more information, see
+%% Amazon EventBridge (CloudWatch Events) Pricing.
 %%
-%% <note> <code>Input</code>, <code>InputPath</code>, and
-%% <code>InputTransformer</code> are not available with
-%% <code>PutTarget</code> if the target is an event bus of a different AWS
-%% account.
+%% `Input', `InputPath', and `InputTransformer' are not available with
+%% `PutTarget' if the target is an event bus of a different AWS account.
 %%
-%% </note> If you are setting the event bus of another account as the target,
-%% and that account granted permission to your account through an
-%% organization instead of directly by the account ID, then you must specify
-%% a <code>RoleArn</code> with proper permissions in the <code>Target</code>
-%% structure. For more information, see <a
-%% href="https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-cross-account-event-delivery.html">Sending
-%% and Receiving Events Between AWS Accounts</a> in the <i>Amazon EventBridge
-%% User Guide</i>.
+%% If you are setting the event bus of another account as the target, and
+%% that account granted permission to your account through an organization
+%% instead of directly by the account ID, then you must specify a `RoleArn'
+%% with proper permissions in the `Target' structure. For more information,
+%% see Sending and Receiving Events Between AWS Accounts in the Amazon
+%% EventBridge User Guide.
 %%
 %% For more information about enabling cross-account events, see
-%% <a>PutPermission</a>.
+%% `PutPermission'.
 %%
-%% <b>Input</b>, <b>InputPath</b>, and <b>InputTransformer</b> are mutually
-%% exclusive and optional parameters of a target. When a rule is triggered
-%% due to a matched event:
+%% Input, InputPath, and InputTransformer are mutually exclusive and optional
+%% parameters of a target. When a rule is triggered due to a matched event:
 %%
 %% <ul> <li> If none of the following arguments are specified for a target,
 %% then the entire event is passed to the target in JSON format (unless the
 %% target is Amazon EC2 Run Command or Amazon ECS task, in which case nothing
 %% from the event is passed to the target).
 %%
-%% </li> <li> If <b>Input</b> is specified in the form of valid JSON, then
-%% the matched event is overridden with this constant.
+%% </li> <li> If Input is specified in the form of valid JSON, then the
+%% matched event is overridden with this constant.
 %%
-%% </li> <li> If <b>InputPath</b> is specified in the form of JSONPath (for
-%% example, <code>$.detail</code>), then only the part of the event specified
-%% in the path is passed to the target (for example, only the detail part of
-%% the event is passed).
+%% </li> <li> If InputPath is specified in the form of JSONPath (for example,
+%% `$.detail'), then only the part of the event specified in the path is
+%% passed to the target (for example, only the detail part of the event is
+%% passed).
 %%
-%% </li> <li> If <b>InputTransformer</b> is specified, then one or more
-%% specified JSONPaths are extracted from the event and used as values in a
-%% template that you specify as the input to the target.
+%% </li> <li> If InputTransformer is specified, then one or more specified
+%% JSONPaths are extracted from the event and used as values in a template
+%% that you specify as the input to the target.
 %%
-%% </li> </ul> When you specify <code>InputPath</code> or
-%% <code>InputTransformer</code>, you must use JSON dot notation, not bracket
-%% notation.
+%% </li> </ul> When you specify `InputPath' or `InputTransformer', you must
+%% use JSON dot notation, not bracket notation.
 %%
 %% When you add targets to a rule and the associated rule triggers soon
 %% after, new or updated targets might not be immediately invoked. Allow a
 %% short period of time for changes to take effect.
 %%
 %% This action can partially fail if too many requests are made at the same
-%% time. If that happens, <code>FailedEntryCount</code> is non-zero in the
-%% response and each entry in <code>FailedEntries</code> provides the ID of
-%% the failed target and the error code.
+%% time. If that happens, `FailedEntryCount' is non-zero in the response and
+%% each entry in `FailedEntries' provides the ID of the failed target and the
+%% error code.
 put_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_targets(Client, Input, []).
@@ -608,10 +709,12 @@ put_targets(Client, Input, Options)
     request(Client, <<"PutTargets">>, Input, Options).
 
 %% @doc Revokes the permission of another AWS account to be able to put
-%% events to the specified event bus. Specify the account to revoke by the
-%% <code>StatementId</code> value that you associated with the account when
-%% you granted it permission with <code>PutPermission</code>. You can find
-%% the <code>StatementId</code> by using <a>DescribeEventBus</a>.
+%% events to the specified event bus.
+%%
+%% Specify the account to revoke by the `StatementId' value that you
+%% associated with the account when you granted it permission with
+%% `PutPermission'. You can find the `StatementId' by using
+%% `DescribeEventBus'.
 remove_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_permission(Client, Input, []).
@@ -619,17 +722,18 @@ remove_permission(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemovePermission">>, Input, Options).
 
-%% @doc Removes the specified targets from the specified rule. When the rule
-%% is triggered, those targets are no longer be invoked.
+%% @doc Removes the specified targets from the specified rule.
+%%
+%% When the rule is triggered, those targets are no longer be invoked.
 %%
 %% When you remove a target, when the associated rule triggers, removed
 %% targets might continue to be invoked. Allow a short period of time for
 %% changes to take effect.
 %%
 %% This action can partially fail if too many requests are made at the same
-%% time. If that happens, <code>FailedEntryCount</code> is non-zero in the
-%% response and each entry in <code>FailedEntries</code> provides the ID of
-%% the failed target and the error code.
+%% time. If that happens, `FailedEntryCount' is non-zero in the response and
+%% each entry in `FailedEntries' provides the ID of the failed target and the
+%% error code.
 remove_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_targets(Client, Input, []).
@@ -637,20 +741,40 @@ remove_targets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTargets">>, Input, Options).
 
+%% @doc Starts the specified replay.
+%%
+%% Events are not necessarily replayed in the exact same order that they were
+%% added to the archive. A replay processes events to replay based on the
+%% time in the event, and replays them using 1 minute intervals. If you
+%% specify an `EventStartTime' and an `EventEndTime' that covers a 20 minute
+%% time range, the events are replayed from the first minute of that 20
+%% minute range first. Then the events from the second minute are replayed.
+%% You can use `DescribeReplay' to determine the progress of a replay. The
+%% value returned for `EventLastReplayedTime' indicates the time within the
+%% specified time range associated with the last event replayed.
+start_replay(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_replay(Client, Input, []).
+start_replay(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartReplay">>, Input, Options).
+
 %% @doc Assigns one or more tags (key-value pairs) to the specified
-%% EventBridge resource. Tags can help you organize and categorize your
-%% resources. You can also use them to scope user permissions by granting a
-%% user permission to access or change only resources with certain tag
-%% values. In EventBridge, rules and event buses can be tagged.
+%% EventBridge resource.
+%%
+%% Tags can help you organize and categorize your resources. You can also use
+%% them to scope user permissions by granting a user permission to access or
+%% change only resources with certain tag values. In EventBridge, rules and
+%% event buses can be tagged.
 %%
 %% Tags don't have any semantic meaning to AWS and are interpreted strictly
 %% as strings of characters.
 %%
-%% You can use the <code>TagResource</code> action with a resource that
-%% already has tags. If you specify a new tag key, this tag is appended to
-%% the list of tags associated with the resource. If you specify a tag key
-%% that is already associated with the resource, the new tag value that you
-%% specify replaces the previous value for that tag.
+%% You can use the `TagResource' action with a resource that already has
+%% tags. If you specify a new tag key, this tag is appended to the list of
+%% tags associated with the resource. If you specify a tag key that is
+%% already associated with the resource, the new tag value that you specify
+%% replaces the previous value for that tag.
 %%
 %% You can associate as many as 50 tags with a resource.
 tag_resource(Client, Input)
@@ -673,8 +797,9 @@ test_event_pattern(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TestEventPattern">>, Input, Options).
 
-%% @doc Removes one or more tags from the specified EventBridge resource. In
-%% Amazon EventBridge (CloudWatch Events, rules and event buses can be
+%% @doc Removes one or more tags from the specified EventBridge resource.
+%%
+%% In Amazon EventBridge (CloudWatch Events, rules and event buses can be
 %% tagged.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -682,6 +807,14 @@ untag_resource(Client, Input)
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc Updates the specified archive.
+update_archive(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_archive(Client, Input, []).
+update_archive(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateArchive">>, Input, Options).
 
 %%====================================================================
 %% Internal functions
@@ -725,6 +858,8 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
 handle_response({error, Reason}) ->
     {error, Reason}.
 
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
