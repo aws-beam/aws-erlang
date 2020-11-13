@@ -55,10 +55,8 @@ encode_multi_segment_uri(Value) ->
 
 %% @doc Encode URI into a percent-encoding string.
 encode_uri(Value) ->
-  % The space char is treated differently when encoding URLs
-  % and www-form-urlencoded messages.
-  % See: https://developer.mozilla.org/en-US/docs/Glossary/percent-encoding
-  binary:replace(uri_string:compose_query([{Value, true}]), <<"+">>, <<"%20">>).
+  %% @todo Replace with uri_string module.
+  http_uri:encode(Value).
 
 %% @doc Encode the map's key/value pairs as a querystring.
 encode_query(List) when is_list(List) ->
@@ -304,11 +302,11 @@ get_in_test() ->
 %% encode_uri correctly encode segment of an URI
 encode_uri_test() ->
   Segment = <<"hello world!">>,
-  ?assertEqual(<<"hello%20world%21">>, encode_uri(Segment)).
+  ?assertEqual(<<"hello%20world!">>, encode_uri(Segment)).
 
 %% encode_multi_segment_uri correctly encode each segment of an URI
 encode_multi_segment_uri_test() ->
   MultiSegment = <<"hello /world!">>,
-  ?assertEqual(<<"hello%20/world%21">>, encode_multi_segment_uri(MultiSegment)).
+  ?assertEqual(<<"hello%20/world!">>, encode_multi_segment_uri(MultiSegment)).
 
 -endif.
