@@ -173,7 +173,7 @@ split_url(URL) ->
     URI = hackney_url:parse_url(URL),
     %% FIXME(jkakar) Query string name/value pairs should be URL encoded
     %% and sorted alphabetically.
-    {URI#hackney_url.path, URI#hackney_url.qs}.
+    {ensure_path(URI#hackney_url.path), URI#hackney_url.qs}.
 
 %% Convert a list of headers to canonical header format.  Leading and
 %% trailing whitespace around header names and values is stripped, header
@@ -200,6 +200,9 @@ signed_headers(Headers) ->
 %% lowercase.
 signed_header({Name, _}) ->
     list_to_binary(string:strip(string:to_lower(binary_to_list(Name)))).
+
+ensure_path(<<"">>) -> <<"/">>;
+ensure_path(Path) -> Path.
 
 %%====================================================================
 %% Unit tests
