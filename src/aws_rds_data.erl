@@ -61,14 +61,14 @@ batch_execute_statement(Client, Input0, Options) ->
 
 %% @doc Starts a SQL transaction.
 %%
-%% <pre>` <important> <p>A transaction can run for a maximum of 24 hours. A
+%% <important> <p>A transaction can run for a maximum of 24 hours. A
 %% transaction is terminated and rolled back automatically after 24
 %% hours.</p> <p>A transaction times out if no calls use its transaction ID
 %% in three minutes. If a transaction times out before it's committed, it's
 %% rolled back automatically.</p> <p>DDL statements inside a transaction
 %% cause an implicit commit. We recommend that you run each DDL statement in
 %% a separate <code>ExecuteStatement</code> call with
-%% <code>continueAfterTimeout</code> enabled.</p> </important> '</pre>
+%% <code>continueAfterTimeout</code> enabled.</p> </important>
 begin_transaction(Client, Input) ->
     begin_transaction(Client, Input, []).
 begin_transaction(Client, Input0, Options) ->

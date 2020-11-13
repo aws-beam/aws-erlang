@@ -4,8 +4,8 @@
 %% @doc This section provides documentation for the Amazon CodeGuru Profiler
 %% API operations.
 %%
-%% <pre>` <p>Amazon CodeGuru Profiler collects runtime performance data from
-%% your live applications, and provides recommendations that can help you
+%% <p>Amazon CodeGuru Profiler collects runtime performance data from your
+%% live applications, and provides recommendations that can help you
 %% fine-tune your application performance. Using machine learning algorithms,
 %% CodeGuru Profiler can help you find your most expensive lines of code and
 %% suggest ways you can improve efficiency and remove CPU bottlenecks. </p>
@@ -20,7 +20,7 @@
 %% information, see <a
 %% href="https://docs.aws.amazon.com/codeguru/latest/profiler-ug/what-is-codeguru-profiler.html">What
 %% is Amazon CodeGuru Profiler</a> in the <i>Amazon CodeGuru Profiler User
-%% Guide</i>. </p> '</pre>
+%% Guide</i>. </p>
 -module(aws_codeguruprofiler).
 
 -export([add_notification_channels/3,
@@ -242,7 +242,7 @@ get_policy(Client, ProfilingGroupName, Options)
 %% Amazon CodeGuru Profiler collects posted agent profiles for a profiling
 %% group into aggregated profiles.
 %%
-%% <pre>` <note> <p> Because aggregated profiles expire over time
+%% <note> <p> Because aggregated profiles expire over time
 %% <code>GetProfile</code> is not idempotent. </p> </note> <p> Specify the
 %% time range for the requested aggregated profile using 1 or 2 of the
 %% following parameters: <code>startTime</code>, <code>endTime</code>,
@@ -274,7 +274,7 @@ get_policy(Client, ProfilingGroupName, Options)
 %% profiles for a smaller time range are returned. For example, if the
 %% requested time range is from 00:00 to 00:20, and the existing aggregated
 %% profiles are from 00:15 and 00:25, then the aggregated profiles from 00:15
-%% to 00:20 are returned. </p> </li> </ol> '</pre>
+%% to 00:20 are returned. </p> </li> </ol>
 get_profile(Client, ProfilingGroupName, EndTime, MaxDepth, Period, StartTime, Accept)
   when is_map(Client) ->
     get_profile(Client, ProfilingGroupName, EndTime, MaxDepth, Period, StartTime, Accept, []).
@@ -458,7 +458,7 @@ post_agent_profile(Client, ProfilingGroupName, Input0, Options) ->
 %% for it using the permissions in the action group and the roles and users
 %% in the `principals' parameter.
 %%
-%% <pre>` <p> The one supported action group that can be added is
+%% <p> The one supported action group that can be added is
 %% <code>agentPermission</code> which grants <code>ConfigureAgent</code> and
 %% <code>PostAgent</code> permissions. For more information, see <a
 %% href="https://docs.aws.amazon.com/codeguru/latest/profiler-ug/resource-based-policies.html">Resource-based
@@ -473,7 +473,7 @@ post_agent_profile(Client, ProfilingGroupName, Input0, Options) ->
 %% Subsequent calls must provide a <code>revisionId</code> to specify which
 %% revision of the resource-based policy to add the permissions to. </p> <p>
 %% The response contains the profiling group's JSON-formatted resource
-%% policy. </p> '</pre>
+%% policy. </p>
 put_permission(Client, ActionGroup, ProfilingGroupName, Input) ->
     put_permission(Client, ActionGroup, ProfilingGroupName, Input, []).
 put_permission(Client, ActionGroup, ProfilingGroupName, Input0, Options) ->
