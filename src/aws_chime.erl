@@ -27,10 +27,10 @@
 %% Interface User Guide. For a list of available Amazon Chime commands, see
 %% the Amazon Chime commands in the AWS CLI Command Reference.
 %%
-%% </dd> <dt>Using REST API</dt> <dd> If you use REST to make API calls, you
-%% must authenticate your request by providing a signature. Amazon Chime
-%% supports signature version 4. For more information, see Signature Version
-%% 4 Signing Process in the Amazon Web Services General Reference.
+%% </dd> <dt>Using REST</dt> <dd> If you use REST to make API calls, you must
+%% authenticate your request by providing a signature. Amazon Chime supports
+%% Signature Version 4. For more information, see Signature Version 4 Signing
+%% Process in the Amazon Web Services General Reference.
 %%
 %% When making REST API calls, use the service name `chime' and REST endpoint
 %% `https://service.chime.aws.amazon.com'.
@@ -64,12 +64,28 @@
          batch_update_user/4,
          create_account/2,
          create_account/3,
+         create_app_instance/2,
+         create_app_instance/3,
+         create_app_instance_admin/3,
+         create_app_instance_admin/4,
+         create_app_instance_user/2,
+         create_app_instance_user/3,
          create_attendee/3,
          create_attendee/4,
          create_bot/3,
          create_bot/4,
+         create_channel/2,
+         create_channel/3,
+         create_channel_ban/3,
+         create_channel_ban/4,
+         create_channel_membership/3,
+         create_channel_membership/4,
+         create_channel_moderator/3,
+         create_channel_moderator/4,
          create_meeting/2,
          create_meeting/3,
+         create_meeting_dial_out/3,
+         create_meeting_dial_out/4,
          create_meeting_with_attendees/2,
          create_meeting_with_attendees/3,
          create_phone_number_order/2,
@@ -80,6 +96,12 @@
          create_room/4,
          create_room_membership/4,
          create_room_membership/5,
+         create_sip_media_application/2,
+         create_sip_media_application/3,
+         create_sip_media_application_call/3,
+         create_sip_media_application_call/4,
+         create_sip_rule/2,
+         create_sip_rule/3,
          create_user/3,
          create_user/4,
          create_voice_connector/2,
@@ -88,8 +110,26 @@
          create_voice_connector_group/3,
          delete_account/3,
          delete_account/4,
+         delete_app_instance/3,
+         delete_app_instance/4,
+         delete_app_instance_admin/4,
+         delete_app_instance_admin/5,
+         delete_app_instance_streaming_configurations/3,
+         delete_app_instance_streaming_configurations/4,
+         delete_app_instance_user/3,
+         delete_app_instance_user/4,
          delete_attendee/4,
          delete_attendee/5,
+         delete_channel/3,
+         delete_channel/4,
+         delete_channel_ban/4,
+         delete_channel_ban/5,
+         delete_channel_membership/4,
+         delete_channel_membership/5,
+         delete_channel_message/4,
+         delete_channel_message/5,
+         delete_channel_moderator/4,
+         delete_channel_moderator/5,
          delete_events_configuration/4,
          delete_events_configuration/5,
          delete_meeting/3,
@@ -102,6 +142,10 @@
          delete_room/5,
          delete_room_membership/5,
          delete_room_membership/6,
+         delete_sip_media_application/3,
+         delete_sip_media_application/4,
+         delete_sip_rule/3,
+         delete_sip_rule/4,
          delete_voice_connector/3,
          delete_voice_connector/4,
          delete_voice_connector_emergency_calling_configuration/3,
@@ -118,6 +162,24 @@
          delete_voice_connector_termination/4,
          delete_voice_connector_termination_credentials/3,
          delete_voice_connector_termination_credentials/4,
+         describe_app_instance/2,
+         describe_app_instance/3,
+         describe_app_instance_admin/3,
+         describe_app_instance_admin/4,
+         describe_app_instance_user/2,
+         describe_app_instance_user/3,
+         describe_channel/2,
+         describe_channel/3,
+         describe_channel_ban/3,
+         describe_channel_ban/4,
+         describe_channel_membership/3,
+         describe_channel_membership/4,
+         describe_channel_membership_for_app_instance_user/3,
+         describe_channel_membership_for_app_instance_user/4,
+         describe_channel_moderated_by_app_instance_user/3,
+         describe_channel_moderated_by_app_instance_user/4,
+         describe_channel_moderator/3,
+         describe_channel_moderator/4,
          disassociate_phone_number_from_user/4,
          disassociate_phone_number_from_user/5,
          disassociate_phone_numbers_from_voice_connector/3,
@@ -130,16 +192,24 @@
          get_account/3,
          get_account_settings/2,
          get_account_settings/3,
+         get_app_instance_retention_settings/2,
+         get_app_instance_retention_settings/3,
+         get_app_instance_streaming_configurations/2,
+         get_app_instance_streaming_configurations/3,
          get_attendee/3,
          get_attendee/4,
          get_bot/3,
          get_bot/4,
+         get_channel_message/3,
+         get_channel_message/4,
          get_events_configuration/3,
          get_events_configuration/4,
          get_global_settings/1,
          get_global_settings/2,
          get_meeting/2,
          get_meeting/3,
+         get_messaging_session_endpoint/1,
+         get_messaging_session_endpoint/2,
          get_phone_number/2,
          get_phone_number/3,
          get_phone_number_order/2,
@@ -152,6 +222,12 @@
          get_retention_settings/3,
          get_room/3,
          get_room/4,
+         get_sip_media_application/2,
+         get_sip_media_application/3,
+         get_sip_media_application_logging_configuration/2,
+         get_sip_media_application_logging_configuration/3,
+         get_sip_rule/2,
+         get_sip_rule/3,
          get_user/3,
          get_user/4,
          get_user_settings/3,
@@ -178,12 +254,32 @@
          invite_users/4,
          list_accounts/5,
          list_accounts/6,
+         list_app_instance_admins/4,
+         list_app_instance_admins/5,
+         list_app_instance_users/4,
+         list_app_instance_users/5,
+         list_app_instances/3,
+         list_app_instances/4,
          list_attendee_tags/3,
          list_attendee_tags/4,
          list_attendees/4,
          list_attendees/5,
          list_bots/4,
          list_bots/5,
+         list_channel_bans/4,
+         list_channel_bans/5,
+         list_channel_memberships/5,
+         list_channel_memberships/6,
+         list_channel_memberships_for_app_instance_user/4,
+         list_channel_memberships_for_app_instance_user/5,
+         list_channel_messages/7,
+         list_channel_messages/8,
+         list_channel_moderators/4,
+         list_channel_moderators/5,
+         list_channels/5,
+         list_channels/6,
+         list_channels_moderated_by_app_instance_user/4,
+         list_channels_moderated_by_app_instance_user/5,
          list_meeting_tags/2,
          list_meeting_tags/3,
          list_meetings/3,
@@ -198,6 +294,10 @@
          list_room_memberships/6,
          list_rooms/5,
          list_rooms/6,
+         list_sip_media_applications/3,
+         list_sip_media_applications/4,
+         list_sip_rules/4,
+         list_sip_rules/5,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          list_users/6,
@@ -210,10 +310,16 @@
          list_voice_connectors/4,
          logout_user/4,
          logout_user/5,
+         put_app_instance_retention_settings/3,
+         put_app_instance_retention_settings/4,
+         put_app_instance_streaming_configurations/3,
+         put_app_instance_streaming_configurations/4,
          put_events_configuration/4,
          put_events_configuration/5,
          put_retention_settings/3,
          put_retention_settings/4,
+         put_sip_media_application_logging_configuration/3,
+         put_sip_media_application_logging_configuration/4,
          put_voice_connector_emergency_calling_configuration/3,
          put_voice_connector_emergency_calling_configuration/4,
          put_voice_connector_logging_configuration/3,
@@ -228,18 +334,22 @@
          put_voice_connector_termination/4,
          put_voice_connector_termination_credentials/3,
          put_voice_connector_termination_credentials/4,
+         redact_channel_message/4,
+         redact_channel_message/5,
          redact_conversation_message/5,
          redact_conversation_message/6,
          redact_room_message/5,
          redact_room_message/6,
          regenerate_security_token/4,
          regenerate_security_token/5,
-         reset_personal_p_i_n/4,
-         reset_personal_p_i_n/5,
+         reset_personal_pin/4,
+         reset_personal_pin/5,
          restore_phone_number/3,
          restore_phone_number/4,
          search_available_phone_numbers/8,
          search_available_phone_numbers/9,
+         send_channel_message/3,
+         send_channel_message/4,
          tag_attendee/4,
          tag_attendee/5,
          tag_meeting/3,
@@ -256,8 +366,18 @@
          update_account/4,
          update_account_settings/3,
          update_account_settings/4,
+         update_app_instance/3,
+         update_app_instance/4,
+         update_app_instance_user/3,
+         update_app_instance_user/4,
          update_bot/4,
          update_bot/5,
+         update_channel/3,
+         update_channel/4,
+         update_channel_message/4,
+         update_channel_message/5,
+         update_channel_read_marker/3,
+         update_channel_read_marker/4,
          update_global_settings/2,
          update_global_settings/3,
          update_phone_number/3,
@@ -270,6 +390,10 @@
          update_room/5,
          update_room_membership/5,
          update_room_membership/6,
+         update_sip_media_application/3,
+         update_sip_media_application/4,
+         update_sip_rule/3,
+         update_sip_rule/4,
          update_user/4,
          update_user/5,
          update_user_settings/4,
@@ -539,6 +663,71 @@ create_account(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates an Amazon Chime Messaging SDK `AppInstance' under an AWS
+%% Account.
+%%
+%% Only Messaging SDK customers use this API. `CreateAppInstance' supports
+%% `idempotency' behavior as described in the AWS API Standard.
+create_app_instance(Client, Input) ->
+    create_app_instance(Client, Input, []).
+create_app_instance(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/app-instances"],
+    SuccessStatusCode = 201,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Promotes an `AppInstanceUser' to an `AppInstanceAdmin'.
+%%
+%% The promoted user can perform the following actions.
+%%
+%% <ul> <li> `ChannelModerator' actions across all channels in the app
+%% instance.
+%%
+%% </li> <li> `DeleteChannelMessage' actions.
+%%
+%% </li> </ul> Only an `AppInstanceUser' can be promoted to an
+%% `AppInstanceAdmin' role.
+create_app_instance_admin(Client, AppInstanceArn, Input) ->
+    create_app_instance_admin(Client, AppInstanceArn, Input, []).
+create_app_instance_admin(Client, AppInstanceArn, Input0, Options) ->
+    Method = post,
+    Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/admins"],
+    SuccessStatusCode = 201,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a user under an Amazon Chime `AppInstance'.
+%%
+%% The request consists of a unique `appInstanceUserId' and `Name' for that
+%% user.
+create_app_instance_user(Client, Input) ->
+    create_app_instance_user(Client, Input, []).
+create_app_instance_user(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/app-instance-users"],
+    SuccessStatusCode = 201,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a new attendee for an active Amazon Chime SDK meeting.
 %%
 %% For more information about the Amazon Chime SDK, see Using the Amazon
@@ -574,6 +763,116 @@ create_bot(Client, AccountId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a channel to which you can add users and send messages.
+%%
+%% Restriction: You can't change a channel's privacy.
+create_channel(Client, Input) ->
+    create_channel(Client, Input, []).
+create_channel(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/channels"],
+    SuccessStatusCode = 201,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Permanently bans a member from a channel.
+%%
+%% Moderators can't add banned members to a channel. To undo a ban, you first
+%% have to `DeleteChannelBan', and then `CreateChannelMembership'. Bans are
+%% cleaned up when you delete users or channels.
+%%
+%% If you ban a user who is already part of a channel, that user is
+%% automatically kicked from the channel.
+create_channel_ban(Client, ChannelArn, Input) ->
+    create_channel_ban(Client, ChannelArn, Input, []).
+create_channel_ban(Client, ChannelArn, Input0, Options) ->
+    Method = post,
+    Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/bans"],
+    SuccessStatusCode = 201,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Adds a user to a channel.
+%%
+%% The `InvitedBy' response field is derived from the request header. A
+%% channel member can:
+%%
+%% <ul> <li> List messages
+%%
+%% </li> <li> Send messages
+%%
+%% </li> <li> Receive messages
+%%
+%% </li> <li> Edit their own messages
+%%
+%% </li> <li> Leave the channel
+%%
+%% </li> </ul> Privacy settings impact this action as follows:
+%%
+%% <ul> <li> Public Channels: You do not need to be a member to list
+%% messages, but you must be a member to send messages.
+%%
+%% </li> <li> Private Channels: You must be a member to list or send
+%% messages.
+%%
+%% </li> </ul>
+create_channel_membership(Client, ChannelArn, Input) ->
+    create_channel_membership(Client, ChannelArn, Input, []).
+create_channel_membership(Client, ChannelArn, Input0, Options) ->
+    Method = post,
+    Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/memberships"],
+    SuccessStatusCode = 201,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new `ChannelModerator'.
+%%
+%% A channel moderator can:
+%%
+%% <ul> <li> Add and remove other members of the channel.
+%%
+%% </li> <li> Add and remove other moderators of the channel.
+%%
+%% </li> <li> Add and remove user bans for the channel.
+%%
+%% </li> <li> Redact messages in the channel.
+%%
+%% </li> <li> List messages in the channel.
+%%
+%% </li> </ul>
+create_channel_moderator(Client, ChannelArn, Input) ->
+    create_channel_moderator(Client, ChannelArn, Input, []).
+create_channel_moderator(Client, ChannelArn, Input0, Options) ->
+    Method = post,
+    Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/moderators"],
+    SuccessStatusCode = 201,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a new Amazon Chime SDK meeting in the specified media Region
 %% with no initial attendees.
 %%
@@ -586,6 +885,30 @@ create_meeting(Client, Input) ->
 create_meeting(Client, Input0, Options) ->
     Method = post,
     Path = ["/meetings"],
+    SuccessStatusCode = 201,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Uses the join token and call metadata in a meeting request (From
+%% number, To number, and so forth) to initiate an outbound call to a public
+%% switched telephone network (PSTN) and joins them into Chime meeting.
+%%
+%% Also ensures that the From number belongs to the customer.
+%%
+%% To play welcome audio or implement an interactive voice response (IVR),
+%% use the `CreateSipMediaApplicationCall' API with the corresponding SIP
+%% media application ID.
+create_meeting_dial_out(Client, MeetingId, Input) ->
+    create_meeting_dial_out(Client, MeetingId, Input, []).
+create_meeting_dial_out(Client, MeetingId, Input0, Options) ->
+    Method = post,
+    Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/dial-outs"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -691,6 +1014,57 @@ create_room_membership(Client, AccountId, RoomId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a SIP media application.
+create_sip_media_application(Client, Input) ->
+    create_sip_media_application(Client, Input, []).
+create_sip_media_application(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/sip-media-applications"],
+    SuccessStatusCode = 201,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an outbound call to a phone number from the phone number
+%% specified in the request, and it invokes the endpoint of the specified
+%% `sipMediaApplicationId'.
+create_sip_media_application_call(Client, SipMediaApplicationId, Input) ->
+    create_sip_media_application_call(Client, SipMediaApplicationId, Input, []).
+create_sip_media_application_call(Client, SipMediaApplicationId, Input0, Options) ->
+    Method = post,
+    Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), "/calls"],
+    SuccessStatusCode = 201,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a SIP rule which can be used to run a SIP media application
+%% as a target for a specific trigger type.
+create_sip_rule(Client, Input) ->
+    create_sip_rule(Client, Input, []).
+create_sip_rule(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/sip-rules"],
+    SuccessStatusCode = 201,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a user under the specified Amazon Chime account.
 create_user(Client, AccountId, Input) ->
     create_user(Client, AccountId, Input, []).
@@ -786,6 +1160,72 @@ delete_account(Client, AccountId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes an `AppInstance' and all associated data asynchronously.
+delete_app_instance(Client, AppInstanceArn, Input) ->
+    delete_app_instance(Client, AppInstanceArn, Input, []).
+delete_app_instance(Client, AppInstanceArn, Input0, Options) ->
+    Method = delete,
+    Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), ""],
+    SuccessStatusCode = 204,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Demotes an `AppInstanceAdmin' to an `AppInstanceUser'.
+%%
+%% This action does not delete the user.
+delete_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, Input) ->
+    delete_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, Input, []).
+delete_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, Input0, Options) ->
+    Method = delete,
+    Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/admins/", aws_util:encode_uri(AppInstanceAdminArn), ""],
+    SuccessStatusCode = 204,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the streaming configurations of an app instance.
+delete_app_instance_streaming_configurations(Client, AppInstanceArn, Input) ->
+    delete_app_instance_streaming_configurations(Client, AppInstanceArn, Input, []).
+delete_app_instance_streaming_configurations(Client, AppInstanceArn, Input0, Options) ->
+    Method = delete,
+    Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/streaming-configurations"],
+    SuccessStatusCode = 204,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an `AppInstanceUser'.
+delete_app_instance_user(Client, AppInstanceUserArn, Input) ->
+    delete_app_instance_user(Client, AppInstanceUserArn, Input, []).
+delete_app_instance_user(Client, AppInstanceUserArn, Input0, Options) ->
+    Method = delete,
+    Path = ["/app-instance-users/", aws_util:encode_uri(AppInstanceUserArn), ""],
+    SuccessStatusCode = 204,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes an attendee from the specified Amazon Chime SDK meeting and
 %% deletes their `JoinToken'.
 %%
@@ -797,6 +1237,93 @@ delete_attendee(Client, AttendeeId, MeetingId, Input) ->
 delete_attendee(Client, AttendeeId, MeetingId, Input0, Options) ->
     Method = delete,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees/", aws_util:encode_uri(AttendeeId), ""],
+    SuccessStatusCode = 204,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Immediately makes a channel and its memberships inaccessible and
+%% marks them for deletion.
+%%
+%% This is an irreversible process.
+delete_channel(Client, ChannelArn, Input) ->
+    delete_channel(Client, ChannelArn, Input, []).
+delete_channel(Client, ChannelArn, Input0, Options) ->
+    Method = delete,
+    Path = ["/channels/", aws_util:encode_uri(ChannelArn), ""],
+    SuccessStatusCode = 204,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes a user from a channel's ban list.
+delete_channel_ban(Client, ChannelArn, MemberArn, Input) ->
+    delete_channel_ban(Client, ChannelArn, MemberArn, Input, []).
+delete_channel_ban(Client, ChannelArn, MemberArn, Input0, Options) ->
+    Method = delete,
+    Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/bans/", aws_util:encode_uri(MemberArn), ""],
+    SuccessStatusCode = 204,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes a member from a channel.
+delete_channel_membership(Client, ChannelArn, MemberArn, Input) ->
+    delete_channel_membership(Client, ChannelArn, MemberArn, Input, []).
+delete_channel_membership(Client, ChannelArn, MemberArn, Input0, Options) ->
+    Method = delete,
+    Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/memberships/", aws_util:encode_uri(MemberArn), ""],
+    SuccessStatusCode = 204,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a channel message.
+%%
+%% Only admins can perform this action. Deletion makes messages inaccessible
+%% immediately. A background process deletes any revisions created by
+%% `UpdateChannelMessage'.
+delete_channel_message(Client, ChannelArn, MessageId, Input) ->
+    delete_channel_message(Client, ChannelArn, MessageId, Input, []).
+delete_channel_message(Client, ChannelArn, MessageId, Input0, Options) ->
+    Method = delete,
+    Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages/", aws_util:encode_uri(MessageId), ""],
+    SuccessStatusCode = 204,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a channel moderator.
+delete_channel_moderator(Client, ChannelArn, ChannelModeratorArn, Input) ->
+    delete_channel_moderator(Client, ChannelArn, ChannelModeratorArn, Input, []).
+delete_channel_moderator(Client, ChannelArn, ChannelModeratorArn, Input0, Options) ->
+    Method = delete,
+    Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/moderators/", aws_util:encode_uri(ChannelModeratorArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -906,6 +1433,40 @@ delete_room_membership(Client, AccountId, MemberId, RoomId, Input) ->
 delete_room_membership(Client, AccountId, MemberId, RoomId, Input0, Options) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), "/memberships/", aws_util:encode_uri(MemberId), ""],
+    SuccessStatusCode = 204,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a SIP media application.
+delete_sip_media_application(Client, SipMediaApplicationId, Input) ->
+    delete_sip_media_application(Client, SipMediaApplicationId, Input, []).
+delete_sip_media_application(Client, SipMediaApplicationId, Input0, Options) ->
+    Method = delete,
+    Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), ""],
+    SuccessStatusCode = 204,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a SIP rule.
+%%
+%% You must disable a SIP rule before you can delete it.
+delete_sip_rule(Client, SipRuleId, Input) ->
+    delete_sip_rule(Client, SipRuleId, Input, []).
+delete_sip_rule(Client, SipRuleId, Input0, Options) ->
+    Method = delete,
+    Path = ["/sip-rules/", aws_util:encode_uri(SipRuleId), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -1062,6 +1623,152 @@ delete_voice_connector_termination_credentials(Client, VoiceConnectorId, Input0,
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Returns the full details of an `AppInstance'.
+describe_app_instance(Client, AppInstanceArn)
+  when is_map(Client) ->
+    describe_app_instance(Client, AppInstanceArn, []).
+describe_app_instance(Client, AppInstanceArn, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), ""],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the full details of an `AppInstanceAdmin'.
+describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn)
+  when is_map(Client) ->
+    describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, []).
+describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/admins/", aws_util:encode_uri(AppInstanceAdminArn), ""],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the full details of an `AppInstanceUser'.
+describe_app_instance_user(Client, AppInstanceUserArn)
+  when is_map(Client) ->
+    describe_app_instance_user(Client, AppInstanceUserArn, []).
+describe_app_instance_user(Client, AppInstanceUserArn, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/app-instance-users/", aws_util:encode_uri(AppInstanceUserArn), ""],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the full details of a channel in an Amazon Chime app
+%% instance.
+describe_channel(Client, ChannelArn)
+  when is_map(Client) ->
+    describe_channel(Client, ChannelArn, []).
+describe_channel(Client, ChannelArn, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/channels/", aws_util:encode_uri(ChannelArn), ""],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the full details of a channel ban.
+describe_channel_ban(Client, ChannelArn, MemberArn)
+  when is_map(Client) ->
+    describe_channel_ban(Client, ChannelArn, MemberArn, []).
+describe_channel_ban(Client, ChannelArn, MemberArn, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/bans/", aws_util:encode_uri(MemberArn), ""],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the full details of a user's channel membership.
+describe_channel_membership(Client, ChannelArn, MemberArn)
+  when is_map(Client) ->
+    describe_channel_membership(Client, ChannelArn, MemberArn, []).
+describe_channel_membership(Client, ChannelArn, MemberArn, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/memberships/", aws_util:encode_uri(MemberArn), ""],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the details of a channel based on the membership of the
+%% `AppInstanceUser' specified.
+describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanceUserArn)
+  when is_map(Client) ->
+    describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanceUserArn, []).
+describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanceUserArn, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/channels/", aws_util:encode_uri(ChannelArn), "?scope=app-instance-user-membership"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"app-instance-user-arn">>, AppInstanceUserArn}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the full details of a channel moderated by the specified
+%% `AppInstanceUser'.
+describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceUserArn)
+  when is_map(Client) ->
+    describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceUserArn, []).
+describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceUserArn, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/channels/", aws_util:encode_uri(ChannelArn), "?scope=app-instance-user-moderated-channel"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"app-instance-user-arn">>, AppInstanceUserArn}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the full details of a single ChannelModerator.
+describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn)
+  when is_map(Client) ->
+    describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn, []).
+describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/moderators/", aws_util:encode_uri(ChannelModeratorArn), ""],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Disassociates the primary provisioned phone number from the specified
 %% Amazon Chime user.
 disassociate_phone_number_from_user(Client, AccountId, UserId, Input) ->
@@ -1165,6 +1872,36 @@ get_account_settings(Client, AccountId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets the retention settings for an app instance.
+get_app_instance_retention_settings(Client, AppInstanceArn)
+  when is_map(Client) ->
+    get_app_instance_retention_settings(Client, AppInstanceArn, []).
+get_app_instance_retention_settings(Client, AppInstanceArn, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/retention-settings"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets the streaming settings for an app instance.
+get_app_instance_streaming_configurations(Client, AppInstanceArn)
+  when is_map(Client) ->
+    get_app_instance_streaming_configurations(Client, AppInstanceArn, []).
+get_app_instance_streaming_configurations(Client, AppInstanceArn, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/streaming-configurations"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets the Amazon Chime SDK attendee details for a specified meeting ID
 %% and attendee ID.
 %%
@@ -1192,6 +1929,21 @@ get_bot(Client, AccountId, BotId)
 get_bot(Client, AccountId, BotId, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots/", aws_util:encode_uri(BotId), ""],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets the full details of a channel message.
+get_channel_message(Client, ChannelArn, MessageId)
+  when is_map(Client) ->
+    get_channel_message(Client, ChannelArn, MessageId, []).
+get_channel_message(Client, ChannelArn, MessageId, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages/", aws_util:encode_uri(MessageId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1244,6 +1996,21 @@ get_meeting(Client, MeetingId)
 get_meeting(Client, MeetingId, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), ""],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc The endpoint for the messaging session.
+get_messaging_session_endpoint(Client)
+  when is_map(Client) ->
+    get_messaging_session_endpoint(Client, []).
+get_messaging_session_endpoint(Client, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/endpoints/messaging-session"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1352,6 +2119,54 @@ get_room(Client, AccountId, RoomId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves the information for a SIP media application, including
+%% name, AWS Region, and endpoints.
+get_sip_media_application(Client, SipMediaApplicationId)
+  when is_map(Client) ->
+    get_sip_media_application(Client, SipMediaApplicationId, []).
+get_sip_media_application(Client, SipMediaApplicationId, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), ""],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the logging configuration for the specified SIP media
+%% application.
+get_sip_media_application_logging_configuration(Client, SipMediaApplicationId)
+  when is_map(Client) ->
+    get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, []).
+get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), "/logging-configuration"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the details of a SIP rule, such as the rule ID, name,
+%% triggers, and target endpoints.
+get_sip_rule(Client, SipRuleId)
+  when is_map(Client) ->
+    get_sip_rule(Client, SipRuleId, []).
+get_sip_rule(Client, SipRuleId, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/sip-rules/", aws_util:encode_uri(SipRuleId), ""],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves details for the specified user ID, such as primary email
 %% address, license type, and personal meeting PIN.
 %%
@@ -1439,7 +2254,7 @@ get_voice_connector_group(Client, VoiceConnectorGroupId, Options)
 %% Chime Voice Connector.
 %%
 %% Shows whether SIP message logs are enabled for sending to Amazon
-%% CloudWatch Logs.
+%% CloudWatch.
 get_voice_connector_logging_configuration(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_logging_configuration(Client, VoiceConnectorId, []).
@@ -1584,6 +2399,68 @@ list_accounts(Client, MaxResults, Name, NextToken, UserEmail, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns a list of the administrators in the app instance.
+list_app_instance_admins(Client, AppInstanceArn, MaxResults, NextToken)
+  when is_map(Client) ->
+    list_app_instance_admins(Client, AppInstanceArn, MaxResults, NextToken, []).
+list_app_instance_admins(Client, AppInstanceArn, MaxResults, NextToken, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/admins"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, MaxResults},
+        {<<"next-token">>, NextToken}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc List all `AppInstanceUsers' created under a single app instance.
+list_app_instance_users(Client, AppInstanceArn, MaxResults, NextToken)
+  when is_map(Client) ->
+    list_app_instance_users(Client, AppInstanceArn, MaxResults, NextToken, []).
+list_app_instance_users(Client, AppInstanceArn, MaxResults, NextToken, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/app-instance-users"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"app-instance-arn">>, AppInstanceArn},
+        {<<"max-results">>, MaxResults},
+        {<<"next-token">>, NextToken}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all Amazon Chime app instances created under a single AWS
+%% account.
+list_app_instances(Client, MaxResults, NextToken)
+  when is_map(Client) ->
+    list_app_instances(Client, MaxResults, NextToken, []).
+list_app_instances(Client, MaxResults, NextToken, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/app-instances"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, MaxResults},
+        {<<"next-token">>, NextToken}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the tags applied to an Amazon Chime SDK attendee resource.
 list_attendee_tags(Client, AttendeeId, MeetingId)
   when is_map(Client) ->
@@ -1636,6 +2513,177 @@ list_bots(Client, AccountId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
+        {<<"max-results">>, MaxResults},
+        {<<"next-token">>, NextToken}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all the users banned from a particular channel.
+list_channel_bans(Client, ChannelArn, MaxResults, NextToken)
+  when is_map(Client) ->
+    list_channel_bans(Client, ChannelArn, MaxResults, NextToken, []).
+list_channel_bans(Client, ChannelArn, MaxResults, NextToken, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/bans"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, MaxResults},
+        {<<"next-token">>, NextToken}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all channel memberships in a channel.
+list_channel_memberships(Client, ChannelArn, MaxResults, NextToken, Type)
+  when is_map(Client) ->
+    list_channel_memberships(Client, ChannelArn, MaxResults, NextToken, Type, []).
+list_channel_memberships(Client, ChannelArn, MaxResults, NextToken, Type, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/memberships"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, MaxResults},
+        {<<"next-token">>, NextToken},
+        {<<"type">>, Type}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all channels that a particular `AppInstanceUser' is a part of.
+%%
+%% Only an `AppInstanceAdmin' can call the API with a user ARN that is not
+%% their own.
+list_channel_memberships_for_app_instance_user(Client, AppInstanceUserArn, MaxResults, NextToken)
+  when is_map(Client) ->
+    list_channel_memberships_for_app_instance_user(Client, AppInstanceUserArn, MaxResults, NextToken, []).
+list_channel_memberships_for_app_instance_user(Client, AppInstanceUserArn, MaxResults, NextToken, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/channels?scope=app-instance-user-memberships"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"app-instance-user-arn">>, AppInstanceUserArn},
+        {<<"max-results">>, MaxResults},
+        {<<"next-token">>, NextToken}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc List all the messages in a channel.
+%%
+%% Returns a paginated list of `ChannelMessages'. Sorted in descending order
+%% by default, based on the creation timestamp.
+%%
+%% Redacted messages appear in the results as empty, since they are only
+%% redacted, not deleted. Deleted messages do not appear in the results. This
+%% action always returns the latest version of an edited message.
+list_channel_messages(Client, ChannelArn, MaxResults, NextToken, NotAfter, NotBefore, SortOrder)
+  when is_map(Client) ->
+    list_channel_messages(Client, ChannelArn, MaxResults, NextToken, NotAfter, NotBefore, SortOrder, []).
+list_channel_messages(Client, ChannelArn, MaxResults, NextToken, NotAfter, NotBefore, SortOrder, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, MaxResults},
+        {<<"next-token">>, NextToken},
+        {<<"not-after">>, NotAfter},
+        {<<"not-before">>, NotBefore},
+        {<<"sort-order">>, SortOrder}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all the moderators for a channel.
+list_channel_moderators(Client, ChannelArn, MaxResults, NextToken)
+  when is_map(Client) ->
+    list_channel_moderators(Client, ChannelArn, MaxResults, NextToken, []).
+list_channel_moderators(Client, ChannelArn, MaxResults, NextToken, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/moderators"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, MaxResults},
+        {<<"next-token">>, NextToken}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all Channels created under a single Chime App as a paginated
+%% list.
+%%
+%% You can specify filters to narrow results.
+%%
+%% == Functionality & restrictions ==
+%%
+%% <ul> <li> Use privacy = `PUBLIC' to retrieve all public channels in the
+%% account
+%%
+%% </li> <li> Only an `AppInstanceAdmin' can set privacy = `PRIVATE' to list
+%% the private channels in an account.
+%%
+%% </li> </ul>
+list_channels(Client, AppInstanceArn, MaxResults, NextToken, Privacy)
+  when is_map(Client) ->
+    list_channels(Client, AppInstanceArn, MaxResults, NextToken, Privacy, []).
+list_channels(Client, AppInstanceArn, MaxResults, NextToken, Privacy, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/channels"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"app-instance-arn">>, AppInstanceArn},
+        {<<"max-results">>, MaxResults},
+        {<<"next-token">>, NextToken},
+        {<<"privacy">>, Privacy}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc A list of the channels moderated by an app instance user.
+list_channels_moderated_by_app_instance_user(Client, AppInstanceUserArn, MaxResults, NextToken)
+  when is_map(Client) ->
+    list_channels_moderated_by_app_instance_user(Client, AppInstanceUserArn, MaxResults, NextToken, []).
+list_channels_moderated_by_app_instance_user(Client, AppInstanceUserArn, MaxResults, NextToken, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/channels?scope=app-instance-user-moderated-channels"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"app-instance-user-arn">>, AppInstanceUserArn},
         {<<"max-results">>, MaxResults},
         {<<"next-token">>, NextToken}
       ],
@@ -1797,6 +2845,48 @@ list_rooms(Client, AccountId, MaxResults, MemberId, NextToken, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists the SIP media applications under the administrator's AWS
+%% account.
+list_sip_media_applications(Client, MaxResults, NextToken)
+  when is_map(Client) ->
+    list_sip_media_applications(Client, MaxResults, NextToken, []).
+list_sip_media_applications(Client, MaxResults, NextToken, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/sip-media-applications"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, MaxResults},
+        {<<"next-token">>, NextToken}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the SIP rules under the administrator's AWS account.
+list_sip_rules(Client, MaxResults, NextToken, SipMediaApplicationId)
+  when is_map(Client) ->
+    list_sip_rules(Client, MaxResults, NextToken, SipMediaApplicationId, []).
+list_sip_rules(Client, MaxResults, NextToken, SipMediaApplicationId, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/sip-rules"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, MaxResults},
+        {<<"next-token">>, NextToken},
+        {<<"sip-media-application">>, SipMediaApplicationId}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the tags applied to an Amazon Chime SDK meeting resource.
 list_tags_for_resource(Client, ResourceARN)
   when is_map(Client) ->
@@ -1916,6 +3006,39 @@ logout_user(Client, AccountId, UserId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Sets the amount of time in days that a given app instance retains
+%% data.
+put_app_instance_retention_settings(Client, AppInstanceArn, Input) ->
+    put_app_instance_retention_settings(Client, AppInstanceArn, Input, []).
+put_app_instance_retention_settings(Client, AppInstanceArn, Input0, Options) ->
+    Method = put,
+    Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/retention-settings"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc The data streaming configurations of an app instance.
+put_app_instance_streaming_configurations(Client, AppInstanceArn, Input) ->
+    put_app_instance_streaming_configurations(Client, AppInstanceArn, Input, []).
+put_app_instance_streaming_configurations(Client, AppInstanceArn, Input0, Options) ->
+    Method = put,
+    Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/streaming-configurations"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates an events configuration that allows a bot to receive outgoing
 %% events sent by Amazon Chime.
 %%
@@ -1953,6 +3076,23 @@ put_retention_settings(Client, AccountId, Input0, Options) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/retention-settings"],
     SuccessStatusCode = 204,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the logging configuration for the specified SIP media
+%% application.
+put_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Input) ->
+    put_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Input, []).
+put_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Input0, Options) ->
+    Method = put,
+    Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), "/logging-configuration"],
+    SuccessStatusCode = 200,
 
     Headers = [],
     Input1 = Input0,
@@ -2098,6 +3238,25 @@ put_voice_connector_termination_credentials(Client, VoiceConnectorId, Input0, Op
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Redacts message content, but not metadata.
+%%
+%% The message exists in the back end, but the action returns null content,
+%% and the state shows as redacted.
+redact_channel_message(Client, ChannelArn, MessageId, Input) ->
+    redact_channel_message(Client, ChannelArn, MessageId, Input, []).
+redact_channel_message(Client, ChannelArn, MessageId, Input0, Options) ->
+    Method = post,
+    Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages/", aws_util:encode_uri(MessageId), "?operation=redact"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Redacts the specified message from the specified Amazon Chime
 %% conversation.
 redact_conversation_message(Client, AccountId, ConversationId, MessageId, Input) ->
@@ -2115,8 +3274,8 @@ redact_conversation_message(Client, AccountId, ConversationId, MessageId, Input0
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Redacts the specified message from the specified Amazon Chime chat
-%% room.
+%% @doc Redacts the specified message from the specified Amazon Chime
+%% channel.
 redact_room_message(Client, AccountId, MessageId, RoomId, Input) ->
     redact_room_message(Client, AccountId, MessageId, RoomId, Input, []).
 redact_room_message(Client, AccountId, MessageId, RoomId, Input0, Options) ->
@@ -2152,9 +3311,9 @@ regenerate_security_token(Client, AccountId, BotId, Input0, Options) ->
 %% Chime account.
 %%
 %% Returns the `User' object with the updated personal meeting PIN.
-reset_personal_p_i_n(Client, AccountId, UserId, Input) ->
-    reset_personal_p_i_n(Client, AccountId, UserId, Input, []).
-reset_personal_p_i_n(Client, AccountId, UserId, Input0, Options) ->
+reset_personal_pin(Client, AccountId, UserId, Input) ->
+    reset_personal_pin(Client, AccountId, UserId, Input, []).
+reset_personal_pin(Client, AccountId, UserId, Input0, Options) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), "?operation=reset-personal-pin"],
     SuccessStatusCode = 200,
@@ -2208,6 +3367,25 @@ search_available_phone_numbers(Client, AreaCode, City, Country, MaxResults, Next
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Sends a message to a particular channel that the member is a part of.
+%%
+%% `STANDARD' messages can contain 4KB of data and the 1KB of metadata.
+%% `CONTROL' messages can contain 30 bytes of data and no metadata.
+send_channel_message(Client, ChannelArn, Input) ->
+    send_channel_message(Client, ChannelArn, Input, []).
+send_channel_message(Client, ChannelArn, Input0, Options) ->
+    Method = post,
+    Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages"],
+    SuccessStatusCode = 201,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Applies the specified tags to the specified Amazon Chime SDK
 %% attendee.
@@ -2348,6 +3526,40 @@ update_account_settings(Client, AccountId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates `AppInstance' metadata.
+update_app_instance(Client, AppInstanceArn, Input) ->
+    update_app_instance(Client, AppInstanceArn, Input, []).
+update_app_instance(Client, AppInstanceArn, Input0, Options) ->
+    Method = put,
+    Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), ""],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the details for an `AppInstanceUser'.
+%%
+%% You can update names and metadata.
+update_app_instance_user(Client, AppInstanceUserArn, Input) ->
+    update_app_instance_user(Client, AppInstanceUserArn, Input, []).
+update_app_instance_user(Client, AppInstanceUserArn, Input0, Options) ->
+    Method = put,
+    Path = ["/app-instance-users/", aws_util:encode_uri(AppInstanceUserArn), ""],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates the status of the specified bot, such as starting or stopping
 %% the bot from running in your Amazon Chime Enterprise account.
 update_bot(Client, AccountId, BotId, Input) ->
@@ -2355,6 +3567,57 @@ update_bot(Client, AccountId, BotId, Input) ->
 update_bot(Client, AccountId, BotId, Input0, Options) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots/", aws_util:encode_uri(BotId), ""],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Update a channel's attributes.
+%%
+%% Restriction: You can't change a channel's privacy.
+update_channel(Client, ChannelArn, Input) ->
+    update_channel(Client, ChannelArn, Input, []).
+update_channel(Client, ChannelArn, Input0, Options) ->
+    Method = put,
+    Path = ["/channels/", aws_util:encode_uri(ChannelArn), ""],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the content of a message.
+update_channel_message(Client, ChannelArn, MessageId, Input) ->
+    update_channel_message(Client, ChannelArn, MessageId, Input, []).
+update_channel_message(Client, ChannelArn, MessageId, Input0, Options) ->
+    Method = put,
+    Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages/", aws_util:encode_uri(MessageId), ""],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Sets the timestamp to the point when a user last read messages in a
+%% channel.
+update_channel_read_marker(Client, ChannelArn, Input) ->
+    update_channel_read_marker(Client, ChannelArn, Input, []).
+update_channel_read_marker(Client, ChannelArn, Input0, Options) ->
+    Method = put,
+    Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/readMarker"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -2475,6 +3738,38 @@ update_room_membership(Client, AccountId, MemberId, RoomId, Input0, Options) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), "/memberships/", aws_util:encode_uri(MemberId), ""],
     SuccessStatusCode = 200,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the details for the specified SIP media application.
+update_sip_media_application(Client, SipMediaApplicationId, Input) ->
+    update_sip_media_application(Client, SipMediaApplicationId, Input, []).
+update_sip_media_application(Client, SipMediaApplicationId, Input0, Options) ->
+    Method = put,
+    Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), ""],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the details for the specified SIP rule.
+update_sip_rule(Client, SipRuleId, Input) ->
+    update_sip_rule(Client, SipRuleId, Input, []).
+update_sip_rule(Client, SipRuleId, Input0, Options) ->
+    Method = put,
+    Path = ["/sip-rules/", aws_util:encode_uri(SipRuleId), ""],
+    SuccessStatusCode = 202,
 
     Headers = [],
     Input1 = Input0,

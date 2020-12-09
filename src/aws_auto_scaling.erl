@@ -161,15 +161,24 @@ attach_instances(Client, Input, Options)
 %% @doc Attaches one or more target groups to the specified Auto Scaling
 %% group.
 %%
-%% To describe the target groups for an Auto Scaling group, call the
-%% `DescribeLoadBalancerTargetGroups' API. To detach the target group from
-%% the Auto Scaling group, call the `DetachLoadBalancerTargetGroups' API.
+%% This operation is used with the following load balancer types:
 %%
-%% With Application Load Balancers and Network Load Balancers, instances are
-%% registered as targets with a target group. With Classic Load Balancers,
-%% instances are registered with the load balancer. For more information, see
-%% Attaching a load balancer to your Auto Scaling group in the Amazon EC2
-%% Auto Scaling User Guide.
+%% <ul> <li> Application Load Balancer - Operates at the application layer
+%% (layer 7) and supports HTTP and HTTPS.
+%%
+%% </li> <li> Network Load Balancer - Operates at the transport layer (layer
+%% 4) and supports TCP, TLS, and UDP.
+%%
+%% </li> <li> Gateway Load Balancer - Operates at the network layer (layer
+%% 3).
+%%
+%% </li> </ul> To describe the target groups for an Auto Scaling group, call
+%% the `DescribeLoadBalancerTargetGroups' API. To detach the target group
+%% from the Auto Scaling group, call the `DetachLoadBalancerTargetGroups'
+%% API.
+%%
+%% For more information, see Elastic Load Balancing and Amazon EC2 Auto
+%% Scaling in the Amazon EC2 Auto Scaling User Guide.
 attach_load_balancer_target_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_load_balancer_target_groups(Client, Input, []).
@@ -177,8 +186,9 @@ attach_load_balancer_target_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachLoadBalancerTargetGroups">>, Input, Options).
 
-%% @doc To attach an Application Load Balancer or a Network Load Balancer,
-%% use the `AttachLoadBalancerTargetGroups' API operation instead.
+%% @doc To attach an Application Load Balancer, Network Load Balancer, or
+%% Gateway Load Balancer, use the `AttachLoadBalancerTargetGroups' API
+%% operation instead.
 %%
 %% Attaches one or more Classic Load Balancers to the specified Auto Scaling
 %% group. Amazon EC2 Auto Scaling registers the running instances with these
@@ -188,8 +198,8 @@ attach_load_balancer_target_groups(Client, Input, Options)
 %% `DescribeLoadBalancers' API. To detach the load balancer from the Auto
 %% Scaling group, call the `DetachLoadBalancers' API.
 %%
-%% For more information, see Attaching a load balancer to your Auto Scaling
-%% group in the Amazon EC2 Auto Scaling User Guide.
+%% For more information, see Elastic Load Balancing and Amazon EC2 Auto
+%% Scaling in the Amazon EC2 Auto Scaling User Guide.
 attach_load_balancers(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_load_balancers(Client, Input, []).
@@ -539,8 +549,8 @@ describe_load_balancer_target_groups(Client, Input, Options)
 %% @doc Describes the load balancers for the specified Auto Scaling group.
 %%
 %% This operation describes only Classic Load Balancers. If you have
-%% Application Load Balancers or Network Load Balancers, use the
-%% `DescribeLoadBalancerTargetGroups' API instead.
+%% Application Load Balancers, Network Load Balancers, or Gateway Load
+%% Balancers, use the `DescribeLoadBalancerTargetGroups' API instead.
 describe_load_balancers(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_load_balancers(Client, Input, []).
@@ -675,8 +685,8 @@ detach_load_balancer_target_groups(Client, Input, Options)
 %% Scaling group.
 %%
 %% This operation detaches only Classic Load Balancers. If you have
-%% Application Load Balancers or Network Load Balancers, use the
-%% `DetachLoadBalancerTargetGroups' API instead.
+%% Application Load Balancers, Network Load Balancers, or Gateway Load
+%% Balancers, use the `DetachLoadBalancerTargetGroups' API instead.
 %%
 %% When you detach a load balancer, it enters the `Removing' state while
 %% deregistering the instances in the group. When all instances are

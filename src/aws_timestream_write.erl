@@ -91,6 +91,10 @@ create_table(Client, Input, Options)
 %%
 %% All tables in the database must be deleted first, or a ValidationException
 %% error will be thrown.
+%%
+%% Due to the nature of distributed retries, the operation can return either
+%% success or a ResourceNotFoundException. Clients should consider them
+%% equivalent.
 delete_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_database(Client, Input, []).
@@ -102,6 +106,10 @@ delete_database(Client, Input, Options)
 %%
 %% This is an irreversible operation. After a Timestream database table is
 %% deleted, the time series data stored in the table cannot be recovered.
+%%
+%% Due to the nature of distributed retries, the operation can return either
+%% success or a ResourceNotFoundException. Clients should consider them
+%% equivalent.
 delete_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_table(Client, Input, []).

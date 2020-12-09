@@ -9,6 +9,10 @@
 %% Firewall Manager API actions, data types, and errors. For detailed
 %% information about AWS Firewall Manager features, see the AWS Firewall
 %% Manager Developer Guide.
+%%
+%% Some API actions require explicit resource permissions. For information,
+%% see the developer guide topic Firewall Manager required permissions for
+%% API actions.
 -module(aws_fms).
 
 -export([associate_admin_account/2,
@@ -159,7 +163,12 @@ get_apps_list(Client, Input, Options)
 %% Shield Advanced policies if the specified policy has not been applied to
 %% them. Resources are considered noncompliant for security group policies if
 %% they are in scope of the policy, they violate one or more of the policy
-%% rules, and remediation is disabled or not possible.
+%% rules, and remediation is disabled or not possible. Resources are
+%% considered noncompliant for Network Firewall policies if a firewall is
+%% missing in the VPC, if the firewall endpoint isn't set up in an expected
+%% Availability Zone and subnet, if a subnet created by the Firewall Manager
+%% doesn't have the expected route table, and for modifications to a firewall
+%% policy that violate the Firewall Manager policy's rules.
 get_compliance_detail(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_compliance_detail(Client, Input, []).
@@ -278,6 +287,11 @@ put_apps_list(Client, Input, Options)
 
 %% @doc Designates the IAM role and Amazon Simple Notification Service (SNS)
 %% topic that AWS Firewall Manager uses to record SNS logs.
+%%
+%% To perform this action outside of the console, you must configure the SNS
+%% topic to allow the Firewall Manager role `AWSServiceRoleForFMS' to publish
+%% SNS logs. For more information, see Firewall Manager required permissions
+%% for API actions in the AWS Firewall Manager Developer Guide.
 put_notification_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_notification_channel(Client, Input, []).
@@ -289,18 +303,21 @@ put_notification_channel(Client, Input, Options)
 %%
 %% Firewall Manager provides the following types of policies:
 %%
-%% <ul> <li> A Shield Advanced policy, which applies Shield Advanced
-%% protection to specified accounts and resources
-%%
-%% </li> <li> An AWS WAF policy (type WAFV2), which defines rule groups to
-%% run first in the corresponding AWS WAF web ACL and rule groups to run last
-%% in the web ACL.
+%% <ul> <li> An AWS WAF policy (type WAFV2), which defines rule groups to run
+%% first in the corresponding AWS WAF web ACL and rule groups to run last in
+%% the web ACL.
 %%
 %% </li> <li> An AWS WAF Classic policy (type WAF), which defines a rule
 %% group.
 %%
+%% </li> <li> A Shield Advanced policy, which applies Shield Advanced
+%% protection to specified accounts and resources.
+%%
 %% </li> <li> A security group policy, which manages VPC security groups
 %% across your AWS organization.
+%%
+%% </li> <li> An AWS Network Firewall policy, which provides firewall rules
+%% to filter network traffic in specified Amazon VPCs.
 %%
 %% </li> </ul> Each policy is specific to one of the types. If you want to
 %% enforce more than one policy type across accounts, create multiple

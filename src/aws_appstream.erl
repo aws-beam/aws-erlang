@@ -41,12 +41,12 @@
          create_fleet/3,
          create_image_builder/2,
          create_image_builder/3,
-         create_image_builder_streaming_u_r_l/2,
-         create_image_builder_streaming_u_r_l/3,
+         create_image_builder_streaming_url/2,
+         create_image_builder_streaming_url/3,
          create_stack/2,
          create_stack/3,
-         create_streaming_u_r_l/2,
-         create_streaming_u_r_l/3,
+         create_streaming_url/2,
+         create_streaming_url/3,
          create_usage_report_subscription/2,
          create_usage_report_subscription/3,
          create_user/2,
@@ -201,10 +201,10 @@ create_image_builder(Client, Input, Options)
     request(Client, <<"CreateImageBuilder">>, Input, Options).
 
 %% @doc Creates a URL to start an image builder streaming session.
-create_image_builder_streaming_u_r_l(Client, Input)
+create_image_builder_streaming_url(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_image_builder_streaming_u_r_l(Client, Input, []).
-create_image_builder_streaming_u_r_l(Client, Input, Options)
+    create_image_builder_streaming_url(Client, Input, []).
+create_image_builder_streaming_url(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateImageBuilderStreamingURL">>, Input, Options).
 
@@ -224,10 +224,10 @@ create_stack(Client, Input, Options)
 %%
 %% A streaming URL enables application streaming to be tested without user
 %% setup.
-create_streaming_u_r_l(Client, Input)
+create_streaming_url(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_streaming_u_r_l(Client, Input, []).
-create_streaming_u_r_l(Client, Input, Options)
+    create_streaming_url(Client, Input, []).
+create_streaming_url(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateStreamingURL">>, Input, Options).
 

@@ -104,8 +104,8 @@
          describe_alias/3,
          describe_build/2,
          describe_build/3,
-         describe_e_c2_instance_limits/2,
-         describe_e_c2_instance_limits/3,
+         describe_ec2_instance_limits/2,
+         describe_ec2_instance_limits/3,
          describe_fleet_attributes/2,
          describe_fleet_attributes/3,
          describe_fleet_capacity/2,
@@ -704,26 +704,32 @@ create_game_session_queue(Client, Input, Options)
 
 %% @doc Defines a new matchmaking configuration for use with FlexMatch.
 %%
-%% A matchmaking configuration sets out guidelines for matching players and
-%% getting the matches into games. You can set up multiple matchmaking
-%% configurations to handle the scenarios needed for your game. Each
-%% matchmaking ticket (`StartMatchmaking' or `StartMatchBackfill') specifies
-%% a configuration for the match and provides player attributes to support
-%% the configuration being used.
+%% Whether your are using FlexMatch with GameLift hosting or as a standalone
+%% matchmaking service, the matchmaking configuration sets out rules for
+%% matching players and forming teams. If you're also using GameLift hosting,
+%% it defines how to start game sessions for each match. Your matchmaking
+%% system can use multiple configurations to handle different game scenarios.
+%% All matchmaking requests (`StartMatchmaking' or `StartMatchBackfill')
+%% identify the matchmaking configuration to use and provide player
+%% attributes consistent with that configuration.
 %%
-%% To create a matchmaking configuration, at a minimum you must specify the
-%% following: configuration name; a rule set that governs how to evaluate
-%% players and find acceptable matches; a game session queue to use when
-%% placing a new game session for the match; and the maximum time allowed for
-%% a matchmaking attempt.
+%% To create a matchmaking configuration, you must provide the following:
+%% configuration name and FlexMatch mode (with or without GameLift hosting);
+%% a rule set that specifies how to evaluate players and find acceptable
+%% matches; whether player acceptance is required; and the maximum time
+%% allowed for a matchmaking attempt. When using FlexMatch with GameLift
+%% hosting, you also need to identify the game session queue to use when
+%% starting a game session for the match.
 %%
-%% To track the progress of matchmaking tickets, set up an Amazon Simple
-%% Notification Service (SNS) to receive notifications, and provide the topic
-%% ARN in the matchmaking configuration. An alternative method, continuously
-%% poling ticket status with `DescribeMatchmaking', should only be used for
-%% games in development with low matchmaking usage.
+%% In addition, you must set up an Amazon Simple Notification Service (SNS)
+%% to receive matchmaking notifications, and provide the topic ARN in the
+%% matchmaking configuration. An alternative method, continuously polling
+%% ticket status with `DescribeMatchmaking', is only suitable for games in
+%% development with low matchmaking usage.
 %%
 %% Learn more
+%%
+%% FlexMatch Developer Guide
 %%
 %% Design a FlexMatch Matchmaker
 %%
@@ -1535,10 +1541,10 @@ describe_build(Client, Input, Options)
 %% </li> <li> `StartFleetActions' or `StopFleetActions'
 %%
 %% </li> </ul>
-describe_e_c2_instance_limits(Client, Input)
+describe_ec2_instance_limits(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_e_c2_instance_limits(Client, Input, []).
-describe_e_c2_instance_limits(Client, Input, Options)
+    describe_ec2_instance_limits(Client, Input, []).
+describe_ec2_instance_limits(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEC2InstanceLimits">>, Input, Options).
 
@@ -3287,58 +3293,30 @@ start_match_backfill(Client, Input, Options)
     request(Client, <<"StartMatchBackfill">>, Input, Options).
 
 %% @doc Uses FlexMatch to create a game match for a group of players based on
-%% custom matchmaking rules, and starts a new game for the matched players.
+%% custom matchmaking rules.
 %%
-%% Each matchmaking request specifies the type of match to build (team
-%% configuration, rules for an acceptable match, etc.). The request also
-%% specifies the players to find a match for and where to host the new game
-%% session for optimal performance. A matchmaking request might start with a
-%% single player or a group of players who want to play together. FlexMatch
-%% finds additional players as needed to fill the match. Match type, rules,
-%% and the queue used to place a new game session are defined in a
+%% If you're also using GameLift hosting, a new game session is started for
+%% the matched players. Each matchmaking request identifies one or more
+%% players to find a match for, and specifies the type of match to build,
+%% including the team configuration and the rules for an acceptable match.
+%% When a matchmaking request identifies a group of players who want to play
+%% together, FlexMatch finds additional players to fill the match. Match
+%% type, rules, and other features are defined in a
 %% `MatchmakingConfiguration'.
 %%
 %% To start matchmaking, provide a unique ticket ID, specify a matchmaking
-%% configuration, and include the players to be matched. You must also
-%% include a set of player attributes relevant for the matchmaking
-%% configuration. If successful, a matchmaking ticket is returned with status
-%% set to `QUEUED'.
+%% configuration, and include the players to be matched. For each player, you
+%% must also include the player attribute values that are required by the
+%% matchmaking configuration (in the rule set). If successful, a matchmaking
+%% ticket is returned with status set to `QUEUED'.
 %%
-%% Track the status of the ticket to respond as needed and acquire game
-%% session connection information for successfully completed matches. Ticket
-%% status updates are tracked using event notification through Amazon Simple
-%% Notification Service (SNS), which is defined in the matchmaking
-%% configuration.
+%% Track the status of the ticket to respond as needed. If you're also using
+%% GameLift hosting, a successfully completed ticket contains game session
+%% connection information. Ticket status updates are tracked using event
+%% notification through Amazon Simple Notification Service (SNS), which is
+%% defined in the matchmaking configuration.
 %%
-%% Processing a matchmaking request -- FlexMatch handles a matchmaking
-%% request as follows:
-%%
-%% <ol> <li> Your client code submits a `StartMatchmaking' request for one or
-%% more players and tracks the status of the request ticket.
-%%
-%% </li> <li> FlexMatch uses this ticket and others in process to build an
-%% acceptable match. When a potential match is identified, all tickets in the
-%% proposed match are advanced to the next status.
-%%
-%% </li> <li> If the match requires player acceptance (set in the matchmaking
-%% configuration), the tickets move into status `REQUIRES_ACCEPTANCE'. This
-%% status triggers your client code to solicit acceptance from all players in
-%% every ticket involved in the match, and then call `AcceptMatch' for each
-%% player. If any player rejects or fails to accept the match before a
-%% specified timeout, the proposed match is dropped (see `AcceptMatch' for
-%% more details).
-%%
-%% </li> <li> Once a match is proposed and accepted, the matchmaking tickets
-%% move into status `PLACING'. FlexMatch locates resources for a new game
-%% session using the game session queue (set in the matchmaking
-%% configuration) and creates the game session based on the match data.
-%%
-%% </li> <li> When the match is successfully placed, the matchmaking tickets
-%% move into `COMPLETED' status. Connection information (including game
-%% session endpoint and player session) is added to the matchmaking tickets.
-%% Matched players can use the connection information to join the game.
-%%
-%% </li> </ol> Learn more
+%% Learn more
 %%
 %% Add FlexMatch to a Game Client
 %%

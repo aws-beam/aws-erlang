@@ -20,18 +20,42 @@
 %% Working with contact flows? Check out the Amazon Connect Flow language.
 -module(aws_connect).
 
--export([associate_routing_profile_queues/4,
+-export([associate_approved_origin/3,
+         associate_approved_origin/4,
+         associate_instance_storage_config/3,
+         associate_instance_storage_config/4,
+         associate_lambda_function/3,
+         associate_lambda_function/4,
+         associate_lex_bot/3,
+         associate_lex_bot/4,
+         associate_routing_profile_queues/4,
          associate_routing_profile_queues/5,
+         associate_security_key/3,
+         associate_security_key/4,
          create_contact_flow/3,
          create_contact_flow/4,
+         create_instance/2,
+         create_instance/3,
          create_routing_profile/3,
          create_routing_profile/4,
          create_user/3,
          create_user/4,
+         create_user_hierarchy_group/3,
+         create_user_hierarchy_group/4,
+         delete_instance/3,
+         delete_instance/4,
          delete_user/4,
          delete_user/5,
+         delete_user_hierarchy_group/4,
+         delete_user_hierarchy_group/5,
          describe_contact_flow/3,
          describe_contact_flow/4,
+         describe_instance/2,
+         describe_instance/3,
+         describe_instance_attribute/3,
+         describe_instance_attribute/4,
+         describe_instance_storage_config/4,
+         describe_instance_storage_config/5,
          describe_routing_profile/3,
          describe_routing_profile/4,
          describe_user/3,
@@ -40,8 +64,18 @@
          describe_user_hierarchy_group/4,
          describe_user_hierarchy_structure/2,
          describe_user_hierarchy_structure/3,
+         disassociate_approved_origin/3,
+         disassociate_approved_origin/4,
+         disassociate_instance_storage_config/4,
+         disassociate_instance_storage_config/5,
+         disassociate_lambda_function/3,
+         disassociate_lambda_function/4,
+         disassociate_lex_bot/3,
+         disassociate_lex_bot/4,
          disassociate_routing_profile_queues/4,
          disassociate_routing_profile_queues/5,
+         disassociate_security_key/4,
+         disassociate_security_key/5,
          get_contact_attributes/3,
          get_contact_attributes/4,
          get_current_metric_data/3,
@@ -50,10 +84,22 @@
          get_federation_token/3,
          get_metric_data/3,
          get_metric_data/4,
+         list_approved_origins/4,
+         list_approved_origins/5,
          list_contact_flows/5,
          list_contact_flows/6,
          list_hours_of_operations/4,
          list_hours_of_operations/5,
+         list_instance_attributes/4,
+         list_instance_attributes/5,
+         list_instance_storage_configs/5,
+         list_instance_storage_configs/6,
+         list_instances/3,
+         list_instances/4,
+         list_lambda_functions/4,
+         list_lambda_functions/5,
+         list_lex_bots/4,
+         list_lex_bots/5,
          list_phone_numbers/6,
          list_phone_numbers/7,
          list_prompts/4,
@@ -64,6 +110,8 @@
          list_routing_profile_queues/6,
          list_routing_profiles/4,
          list_routing_profiles/5,
+         list_security_keys/4,
+         list_security_keys/5,
          list_security_profiles/4,
          list_security_profiles/5,
          list_tags_for_resource/2,
@@ -96,6 +144,10 @@
          update_contact_flow_content/5,
          update_contact_flow_name/4,
          update_contact_flow_name/5,
+         update_instance_attribute/4,
+         update_instance_attribute/5,
+         update_instance_storage_config/4,
+         update_instance_storage_config/5,
          update_routing_profile_concurrency/4,
          update_routing_profile_concurrency/5,
          update_routing_profile_default_outbound_queue/4,
@@ -106,6 +158,10 @@
          update_routing_profile_queues/5,
          update_user_hierarchy/4,
          update_user_hierarchy/5,
+         update_user_hierarchy_group_name/4,
+         update_user_hierarchy_group_name/5,
+         update_user_hierarchy_structure/3,
+         update_user_hierarchy_structure/4,
          update_user_identity_info/4,
          update_user_identity_info/5,
          update_user_phone_config/4,
@@ -121,12 +177,103 @@
 %% API
 %%====================================================================
 
+%% @doc Associates an approved origin to an Amazon Connect instance.
+associate_approved_origin(Client, InstanceId, Input) ->
+    associate_approved_origin(Client, InstanceId, Input, []).
+associate_approved_origin(Client, InstanceId, Input0, Options) ->
+    Method = put,
+    Path = ["/instance/", aws_util:encode_uri(InstanceId), "/approved-origin"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associates a storage resource type for the first time.
+%%
+%% You can only associate one type of storage configuration in a single call.
+%% This means, for example, that you can't define an instance with multiple
+%% S3 buckets for storing chat transcripts.
+%%
+%% This API does not create a resource that doesn't exist. It only associates
+%% it to the instance. Ensure that the resource being specified in the
+%% storage configuration, like an Amazon S3 bucket, exists when being used
+%% for association.
+associate_instance_storage_config(Client, InstanceId, Input) ->
+    associate_instance_storage_config(Client, InstanceId, Input, []).
+associate_instance_storage_config(Client, InstanceId, Input0, Options) ->
+    Method = put,
+    Path = ["/instance/", aws_util:encode_uri(InstanceId), "/storage-config"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Allows the specified Amazon Connect instance to access the specified
+%% Lambda function.
+associate_lambda_function(Client, InstanceId, Input) ->
+    associate_lambda_function(Client, InstanceId, Input, []).
+associate_lambda_function(Client, InstanceId, Input0, Options) ->
+    Method = put,
+    Path = ["/instance/", aws_util:encode_uri(InstanceId), "/lambda-function"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Allows the specified Amazon Connect instance to access the specified
+%% Amazon Lex bot.
+associate_lex_bot(Client, InstanceId, Input) ->
+    associate_lex_bot(Client, InstanceId, Input, []).
+associate_lex_bot(Client, InstanceId, Input0, Options) ->
+    Method = put,
+    Path = ["/instance/", aws_util:encode_uri(InstanceId), "/lex-bot"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Associates a set of queues with a routing profile.
 associate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input) ->
     associate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input, []).
 associate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0, Options) ->
     Method = post,
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/associate-queues"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associates a security key to the instance.
+associate_security_key(Client, InstanceId, Input) ->
+    associate_security_key(Client, InstanceId, Input, []).
+associate_security_key(Client, InstanceId, Input0, Options) ->
+    Method = put,
+    Path = ["/instance/", aws_util:encode_uri(InstanceId), "/security-key"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -146,6 +293,27 @@ create_contact_flow(Client, InstanceId, Input) ->
 create_contact_flow(Client, InstanceId, Input0, Options) ->
     Method = put,
     Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Initiates an Amazon Connect instance with all the supported channels
+%% enabled.
+%%
+%% It does not attach any storage (such as Amazon S3, or Kinesis) or allow
+%% for any configurations on features such as Contact Lens for Amazon
+%% Connect.
+create_instance(Client, Input) ->
+    create_instance(Client, Input, []).
+create_instance(Client, Input0, Options) ->
+    Method = put,
+    Path = ["/instance"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -191,6 +359,38 @@ create_user(Client, InstanceId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a new user hierarchy group.
+create_user_hierarchy_group(Client, InstanceId, Input) ->
+    create_user_hierarchy_group(Client, InstanceId, Input, []).
+create_user_hierarchy_group(Client, InstanceId, Input0, Options) ->
+    Method = put,
+    Path = ["/user-hierarchy-groups/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the Amazon Connect instance.
+delete_instance(Client, InstanceId, Input) ->
+    delete_instance(Client, InstanceId, Input, []).
+delete_instance(Client, InstanceId, Input0, Options) ->
+    Method = delete,
+    Path = ["/instance/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a user account from the specified Amazon Connect instance.
 %%
 %% For information about what happens to a user's data when their account is
@@ -201,6 +401,24 @@ delete_user(Client, InstanceId, UserId, Input) ->
 delete_user(Client, InstanceId, UserId, Input0, Options) ->
     Method = delete,
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an existing user hierarchy group.
+%%
+%% It must not be associated with any agents or have any active child groups.
+delete_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, Input) ->
+    delete_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, Input, []).
+delete_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, Input0, Options) ->
+    Method = delete,
+    Path = ["/user-hierarchy-groups/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(HierarchyGroupId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -226,6 +444,64 @@ describe_contact_flow(Client, ContactFlowId, InstanceId, Options)
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the current state of the specified instance identifier.
+%%
+%% It tracks the instance while it is being created and returns an error
+%% status if applicable.
+%%
+%% If an instance is not created successfully, the instance status reason
+%% field returns details relevant to the reason. The instance in a failed
+%% state is returned only for 24 hours after the CreateInstance API was
+%% invoked.
+describe_instance(Client, InstanceId)
+  when is_map(Client) ->
+    describe_instance(Client, InstanceId, []).
+describe_instance(Client, InstanceId, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/instance/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes the specified instance attribute.
+describe_instance_attribute(Client, AttributeType, InstanceId)
+  when is_map(Client) ->
+    describe_instance_attribute(Client, AttributeType, InstanceId, []).
+describe_instance_attribute(Client, AttributeType, InstanceId, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/instance/", aws_util:encode_uri(InstanceId), "/attribute/", aws_util:encode_uri(AttributeType), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the current storage configurations for the specified
+%% resource type, association ID, and instance ID.
+describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType)
+  when is_map(Client) ->
+    describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType, []).
+describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/instance/", aws_util:encode_uri(InstanceId), "/storage-config/", aws_util:encode_uri(AssociationId), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"resourceType">>, ResourceType}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -294,12 +570,100 @@ describe_user_hierarchy_structure(Client, InstanceId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Revokes access to integrated applications from Amazon Connect.
+disassociate_approved_origin(Client, InstanceId, Input) ->
+    disassociate_approved_origin(Client, InstanceId, Input, []).
+disassociate_approved_origin(Client, InstanceId, Input0, Options) ->
+    Method = delete,
+    Path = ["/instance/", aws_util:encode_uri(InstanceId), "/approved-origin"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    QueryMapping = [
+                     {<<"origin">>, <<"Origin">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes the storage type configurations for the specified resource
+%% type and association ID.
+disassociate_instance_storage_config(Client, AssociationId, InstanceId, Input) ->
+    disassociate_instance_storage_config(Client, AssociationId, InstanceId, Input, []).
+disassociate_instance_storage_config(Client, AssociationId, InstanceId, Input0, Options) ->
+    Method = delete,
+    Path = ["/instance/", aws_util:encode_uri(InstanceId), "/storage-config/", aws_util:encode_uri(AssociationId), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    QueryMapping = [
+                     {<<"resourceType">>, <<"ResourceType">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Remove the Lambda function from the drop-down options available in
+%% the relevant contact flow blocks.
+disassociate_lambda_function(Client, InstanceId, Input) ->
+    disassociate_lambda_function(Client, InstanceId, Input, []).
+disassociate_lambda_function(Client, InstanceId, Input0, Options) ->
+    Method = delete,
+    Path = ["/instance/", aws_util:encode_uri(InstanceId), "/lambda-function"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    QueryMapping = [
+                     {<<"functionArn">>, <<"FunctionArn">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Revokes authorization from the specified instance to access the
+%% specified Amazon Lex bot.
+disassociate_lex_bot(Client, InstanceId, Input) ->
+    disassociate_lex_bot(Client, InstanceId, Input, []).
+disassociate_lex_bot(Client, InstanceId, Input0, Options) ->
+    Method = delete,
+    Path = ["/instance/", aws_util:encode_uri(InstanceId), "/lex-bot"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    QueryMapping = [
+                     {<<"botName">>, <<"BotName">>},
+                     {<<"lexRegion">>, <<"LexRegion">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Disassociates a set of queues from a routing profile.
 disassociate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input) ->
     disassociate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input, []).
 disassociate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0, Options) ->
     Method = post,
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/disassociate-queues"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the specified security key.
+disassociate_security_key(Client, AssociationId, InstanceId, Input) ->
+    disassociate_security_key(Client, AssociationId, InstanceId, Input, []).
+disassociate_security_key(Client, AssociationId, InstanceId, Input0, Options) ->
+    Method = delete,
+    Path = ["/instance/", aws_util:encode_uri(InstanceId), "/security-key/", aws_util:encode_uri(AssociationId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -380,6 +744,27 @@ get_metric_data(Client, InstanceId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Returns a paginated list of all approved origins associated with the
+%% instance.
+list_approved_origins(Client, InstanceId, MaxResults, NextToken)
+  when is_map(Client) ->
+    list_approved_origins(Client, InstanceId, MaxResults, NextToken, []).
+list_approved_origins(Client, InstanceId, MaxResults, NextToken, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/instance/", aws_util:encode_uri(InstanceId), "/approved-origins"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Provides information about the contact flows for the specified Amazon
 %% Connect instance.
 %%
@@ -419,6 +804,115 @@ list_hours_of_operations(Client, InstanceId, MaxResults, NextToken)
 list_hours_of_operations(Client, InstanceId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/hours-of-operations-summary/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a paginated list of all attribute types for the given
+%% instance.
+list_instance_attributes(Client, InstanceId, MaxResults, NextToken)
+  when is_map(Client) ->
+    list_instance_attributes(Client, InstanceId, MaxResults, NextToken, []).
+list_instance_attributes(Client, InstanceId, MaxResults, NextToken, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/instance/", aws_util:encode_uri(InstanceId), "/attributes"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a paginated list of storage configs for the identified
+%% instance and resource type.
+list_instance_storage_configs(Client, InstanceId, MaxResults, NextToken, ResourceType)
+  when is_map(Client) ->
+    list_instance_storage_configs(Client, InstanceId, MaxResults, NextToken, ResourceType, []).
+list_instance_storage_configs(Client, InstanceId, MaxResults, NextToken, ResourceType, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/instance/", aws_util:encode_uri(InstanceId), "/storage-configs"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken},
+        {<<"resourceType">>, ResourceType}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Return a list of instances which are in active state,
+%% creation-in-progress state, and failed state.
+%%
+%% Instances that aren't successfully created (they are in a failed state)
+%% are returned only for 24 hours after the CreateInstance API was invoked.
+list_instances(Client, MaxResults, NextToken)
+  when is_map(Client) ->
+    list_instances(Client, MaxResults, NextToken, []).
+list_instances(Client, MaxResults, NextToken, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/instance"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a paginated list of all the Lambda functions that show up in
+%% the drop-down options in the relevant contact flow blocks.
+list_lambda_functions(Client, InstanceId, MaxResults, NextToken)
+  when is_map(Client) ->
+    list_lambda_functions(Client, InstanceId, MaxResults, NextToken, []).
+list_lambda_functions(Client, InstanceId, MaxResults, NextToken, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/instance/", aws_util:encode_uri(InstanceId), "/lambda-functions"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a paginated list of all the Amazon Lex bots currently
+%% associated with the instance.
+list_lex_bots(Client, InstanceId, MaxResults, NextToken)
+  when is_map(Client) ->
+    list_lex_bots(Client, InstanceId, MaxResults, NextToken, []).
+list_lex_bots(Client, InstanceId, MaxResults, NextToken, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/instance/", aws_util:encode_uri(InstanceId), "/lex-bots"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -535,6 +1029,27 @@ list_routing_profiles(Client, InstanceId, MaxResults, NextToken)
 list_routing_profiles(Client, InstanceId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/routing-profiles-summary/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a paginated list of all security keys associated with the
+%% instance.
+list_security_keys(Client, InstanceId, MaxResults, NextToken)
+  when is_map(Client) ->
+    list_security_keys(Client, InstanceId, MaxResults, NextToken, []).
+list_security_keys(Client, InstanceId, MaxResults, NextToken, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/instance/", aws_util:encode_uri(InstanceId), "/security-keys"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -873,9 +1388,6 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 %% Contact attributes are available in Amazon Connect for 24 months, and are
 %% then deleted.
 %%
-%% This operation is also available in the Amazon Connect Flow language. See
-%% UpdateContactAttributes.
-%%
 %% Important: You cannot use the operation to update attributes for contacts
 %% that occurred prior to the release of the API, September 12, 2018. You can
 %% update attributes only for contacts that started after the release of the
@@ -918,6 +1430,9 @@ update_contact_flow_content(Client, ContactFlowId, InstanceId, Input0, Options) 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The name of the contact flow.
+%%
+%% You can also create and update contact flows using the Amazon Connect Flow
+%% language.
 update_contact_flow_name(Client, ContactFlowId, InstanceId, Input) ->
     update_contact_flow_name(Client, ContactFlowId, InstanceId, Input, []).
 update_contact_flow_name(Client, ContactFlowId, InstanceId, Input0, Options) ->
@@ -931,6 +1446,41 @@ update_contact_flow_name(Client, ContactFlowId, InstanceId, Input0, Options) ->
     Query_ = [],
     Input = Input1,
 
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the value for the specified attribute type.
+update_instance_attribute(Client, AttributeType, InstanceId, Input) ->
+    update_instance_attribute(Client, AttributeType, InstanceId, Input, []).
+update_instance_attribute(Client, AttributeType, InstanceId, Input0, Options) ->
+    Method = post,
+    Path = ["/instance/", aws_util:encode_uri(InstanceId), "/attribute/", aws_util:encode_uri(AttributeType), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing configuration for a resource type.
+%%
+%% This API is idempotent.
+update_instance_storage_config(Client, AssociationId, InstanceId, Input) ->
+    update_instance_storage_config(Client, AssociationId, InstanceId, Input, []).
+update_instance_storage_config(Client, AssociationId, InstanceId, Input0, Options) ->
+    Method = post,
+    Path = ["/instance/", aws_util:encode_uri(InstanceId), "/storage-config/", aws_util:encode_uri(AssociationId), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    QueryMapping = [
+                     {<<"resourceType">>, <<"ResourceType">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the channels that agents can handle in the Contact Control
@@ -1008,6 +1558,39 @@ update_user_hierarchy(Client, InstanceId, UserId, Input) ->
 update_user_hierarchy(Client, InstanceId, UserId, Input0, Options) ->
     Method = post,
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/hierarchy"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the name of the user hierarchy group.
+update_user_hierarchy_group_name(Client, HierarchyGroupId, InstanceId, Input) ->
+    update_user_hierarchy_group_name(Client, HierarchyGroupId, InstanceId, Input, []).
+update_user_hierarchy_group_name(Client, HierarchyGroupId, InstanceId, Input0, Options) ->
+    Method = post,
+    Path = ["/user-hierarchy-groups/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(HierarchyGroupId), "/name"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the user hierarchy structure: add, remove, and rename user
+%% hierarchy levels.
+update_user_hierarchy_structure(Client, InstanceId, Input) ->
+    update_user_hierarchy_structure(Client, InstanceId, Input, []).
+update_user_hierarchy_structure(Client, InstanceId, Input0, Options) ->
+    Method = post,
+    Path = ["/user-hierarchy-structure/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],

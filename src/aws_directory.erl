@@ -24,6 +24,8 @@
          accept_shared_directory/3,
          add_ip_routes/2,
          add_ip_routes/3,
+         add_region/2,
+         add_region/3,
          add_tags_to_resource/2,
          add_tags_to_resource/3,
          cancel_schema_extension/2,
@@ -40,8 +42,8 @@
          create_directory/3,
          create_log_subscription/2,
          create_log_subscription/3,
-         create_microsoft_a_d/2,
-         create_microsoft_a_d/3,
+         create_microsoft_ad/2,
+         create_microsoft_ad/3,
          create_snapshot/2,
          create_snapshot/3,
          create_trust/2,
@@ -70,22 +72,24 @@
          describe_domain_controllers/3,
          describe_event_topics/2,
          describe_event_topics/3,
-         describe_l_d_a_p_s_settings/2,
-         describe_l_d_a_p_s_settings/3,
+         describe_ldaps_settings/2,
+         describe_ldaps_settings/3,
+         describe_regions/2,
+         describe_regions/3,
          describe_shared_directories/2,
          describe_shared_directories/3,
          describe_snapshots/2,
          describe_snapshots/3,
          describe_trusts/2,
          describe_trusts/3,
-         disable_l_d_a_p_s/2,
-         disable_l_d_a_p_s/3,
+         disable_ldaps/2,
+         disable_ldaps/3,
          disable_radius/2,
          disable_radius/3,
          disable_sso/2,
          disable_sso/3,
-         enable_l_d_a_p_s/2,
-         enable_l_d_a_p_s/3,
+         enable_ldaps/2,
+         enable_ldaps/3,
          enable_radius/2,
          enable_radius/3,
          enable_sso/2,
@@ -112,6 +116,8 @@
          reject_shared_directory/3,
          remove_ip_routes/2,
          remove_ip_routes/3,
+         remove_region/2,
+         remove_region/3,
          remove_tags_from_resource/2,
          remove_tags_from_resource/3,
          reset_user_password/2,
@@ -170,6 +176,15 @@ add_ip_routes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddIpRoutes">>, Input, Options).
 
+%% @doc Adds two domain controllers in the specified Region for the specified
+%% directory.
+add_region(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    add_region(Client, Input, []).
+add_region(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AddRegion">>, Input, Options).
+
 %% @doc Adds or overwrites one or more tags for the specified directory.
 %%
 %% Each directory can have a maximum of 50 tags. Each tag consists of a key
@@ -223,8 +238,8 @@ create_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAlias">>, Input, Options).
 
-%% @doc Creates a computer account in the specified directory, and joins the
-%% computer to the directory.
+%% @doc Creates an Active Directory computer object in the specified
+%% directory.
 create_computer(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_computer(Client, Input, []).
@@ -281,10 +296,10 @@ create_log_subscription(Client, Input, Options)
 %% about what permissions are required to run the CreateMicrosoftAD
 %% operation, see AWS Directory Service API Permissions: Actions, Resources,
 %% and Conditions Reference.
-create_microsoft_a_d(Client, Input)
+create_microsoft_ad(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_microsoft_a_d(Client, Input, []).
-create_microsoft_a_d(Client, Input, Options)
+    create_microsoft_ad(Client, Input, []).
+create_microsoft_ad(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateMicrosoftAD">>, Input, Options).
 
@@ -447,12 +462,21 @@ describe_event_topics(Client, Input, Options)
     request(Client, <<"DescribeEventTopics">>, Input, Options).
 
 %% @doc Describes the status of LDAP security for the specified directory.
-describe_l_d_a_p_s_settings(Client, Input)
+describe_ldaps_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_l_d_a_p_s_settings(Client, Input, []).
-describe_l_d_a_p_s_settings(Client, Input, Options)
+    describe_ldaps_settings(Client, Input, []).
+describe_ldaps_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLDAPSSettings">>, Input, Options).
+
+%% @doc Provides information about the Regions that are configured for
+%% multi-Region replication.
+describe_regions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_regions(Client, Input, []).
+describe_regions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeRegions">>, Input, Options).
 
 %% @doc Returns the shared directories in your account.
 describe_shared_directories(Client, Input)
@@ -491,10 +515,10 @@ describe_trusts(Client, Input, Options)
     request(Client, <<"DescribeTrusts">>, Input, Options).
 
 %% @doc Deactivates LDAP secure calls for the specified directory.
-disable_l_d_a_p_s(Client, Input)
+disable_ldaps(Client, Input)
   when is_map(Client), is_map(Input) ->
-    disable_l_d_a_p_s(Client, Input, []).
-disable_l_d_a_p_s(Client, Input, Options)
+    disable_ldaps(Client, Input, []).
+disable_ldaps(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableLDAPS">>, Input, Options).
 
@@ -518,10 +542,10 @@ disable_sso(Client, Input, Options)
 
 %% @doc Activates the switch for the specific directory to always use LDAP
 %% secure calls.
-enable_l_d_a_p_s(Client, Input)
+enable_ldaps(Client, Input)
   when is_map(Client), is_map(Input) ->
-    enable_l_d_a_p_s(Client, Input, []).
-enable_l_d_a_p_s(Client, Input, Options)
+    enable_ldaps(Client, Input, []).
+enable_ldaps(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableLDAPS">>, Input, Options).
 
@@ -642,6 +666,18 @@ remove_ip_routes(Client, Input)
 remove_ip_routes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveIpRoutes">>, Input, Options).
+
+%% @doc Stops all replication and removes the domain controllers from the
+%% specified Region.
+%%
+%% You cannot remove the primary Region with this operation. Instead, use the
+%% `DeleteDirectory' API.
+remove_region(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    remove_region(Client, Input, []).
+remove_region(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RemoveRegion">>, Input, Options).
 
 %% @doc Removes tags from a directory.
 remove_tags_from_resource(Client, Input)

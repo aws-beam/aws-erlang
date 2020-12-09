@@ -27,8 +27,8 @@
          create_group/5,
          create_group_membership/6,
          create_group_membership/7,
-         create_i_a_m_policy_assignment/4,
-         create_i_a_m_policy_assignment/5,
+         create_iam_policy_assignment/4,
+         create_iam_policy_assignment/5,
          create_ingestion/5,
          create_ingestion/6,
          create_namespace/3,
@@ -55,8 +55,8 @@
          delete_group/6,
          delete_group_membership/6,
          delete_group_membership/7,
-         delete_i_a_m_policy_assignment/5,
-         delete_i_a_m_policy_assignment/6,
+         delete_iam_policy_assignment/5,
+         delete_iam_policy_assignment/6,
          delete_namespace/4,
          delete_namespace/5,
          delete_template/4,
@@ -93,8 +93,8 @@
          describe_data_source_permissions/4,
          describe_group/4,
          describe_group/5,
-         describe_i_a_m_policy_assignment/4,
-         describe_i_a_m_policy_assignment/5,
+         describe_iam_policy_assignment/4,
+         describe_iam_policy_assignment/5,
          describe_ingestion/4,
          describe_ingestion/5,
          describe_namespace/3,
@@ -113,8 +113,8 @@
          describe_theme_permissions/4,
          describe_user/4,
          describe_user/5,
-         get_dashboard_embed_url/8,
-         get_dashboard_embed_url/9,
+         get_dashboard_embed_url/11,
+         get_dashboard_embed_url/12,
          get_session_embed_url/5,
          get_session_embed_url/6,
          list_analyses/4,
@@ -131,10 +131,10 @@
          list_group_memberships/7,
          list_groups/5,
          list_groups/6,
-         list_i_a_m_policy_assignments/5,
-         list_i_a_m_policy_assignments/6,
-         list_i_a_m_policy_assignments_for_user/6,
-         list_i_a_m_policy_assignments_for_user/7,
+         list_iam_policy_assignments/5,
+         list_iam_policy_assignments/6,
+         list_iam_policy_assignments_for_user/6,
+         list_iam_policy_assignments_for_user/7,
          list_ingestions/5,
          list_ingestions/6,
          list_namespaces/4,
@@ -193,8 +193,8 @@
          update_data_source_permissions/5,
          update_group/5,
          update_group/6,
-         update_i_a_m_policy_assignment/5,
-         update_i_a_m_policy_assignment/6,
+         update_iam_policy_assignment/5,
+         update_iam_policy_assignment/6,
          update_template/4,
          update_template/5,
          update_template_alias/5,
@@ -386,9 +386,9 @@ create_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, 
 %% Amazon QuickSight. Assignment names are unique per AWS account. To avoid
 %% overwriting rules in other namespaces, use assignment names that are
 %% unique.
-create_i_a_m_policy_assignment(Client, AwsAccountId, Namespace, Input) ->
-    create_i_a_m_policy_assignment(Client, AwsAccountId, Namespace, Input, []).
-create_i_a_m_policy_assignment(Client, AwsAccountId, Namespace, Input0, Options) ->
+create_iam_policy_assignment(Client, AwsAccountId, Namespace, Input) ->
+    create_iam_policy_assignment(Client, AwsAccountId, Namespace, Input, []).
+create_iam_policy_assignment(Client, AwsAccountId, Namespace, Input0, Options) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/iam-policy-assignments/"],
     SuccessStatusCode = undefined,
@@ -663,9 +663,9 @@ delete_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an existing IAM policy assignment.
-delete_i_a_m_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input) ->
-    delete_i_a_m_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input, []).
-delete_i_a_m_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input0, Options) ->
+delete_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input) ->
+    delete_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input, []).
+delete_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input0, Options) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespace/", aws_util:encode_uri(Namespace), "/iam-policy-assignments/", aws_util:encode_uri(AssignmentName), ""],
     SuccessStatusCode = undefined,
@@ -1038,10 +1038,10 @@ describe_group(Client, AwsAccountId, GroupName, Namespace, Options)
 
 %% @doc Describes an existing IAM policy assignment, as specified by the
 %% assignment name.
-describe_i_a_m_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace)
+describe_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace)
   when is_map(Client) ->
-    describe_i_a_m_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, []).
-describe_i_a_m_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Options)
+    describe_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, []).
+describe_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/iam-policy-assignments/", aws_util:encode_uri(AssignmentName), ""],
     SuccessStatusCode = undefined,
@@ -1217,10 +1217,10 @@ describe_user(Client, AwsAccountId, Namespace, UserName, Options)
 %%
 %% </li> </ul> For more information, see Embedding Amazon QuickSight in the
 %% Amazon QuickSight User Guide .
-get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, ResetDisabled, SessionLifetimeInMinutes, UndoRedoDisabled, UserArn)
+get_dashboard_embed_url(Client, AwsAccountId, DashboardId, AdditionalDashboardIds, IdentityType, Namespace, ResetDisabled, SessionLifetimeInMinutes, StatePersistenceEnabled, UndoRedoDisabled, UserArn)
   when is_map(Client) ->
-    get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, ResetDisabled, SessionLifetimeInMinutes, UndoRedoDisabled, UserArn, []).
-get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, ResetDisabled, SessionLifetimeInMinutes, UndoRedoDisabled, UserArn, Options)
+    get_dashboard_embed_url(Client, AwsAccountId, DashboardId, AdditionalDashboardIds, IdentityType, Namespace, ResetDisabled, SessionLifetimeInMinutes, StatePersistenceEnabled, UndoRedoDisabled, UserArn, []).
+get_dashboard_embed_url(Client, AwsAccountId, DashboardId, AdditionalDashboardIds, IdentityType, Namespace, ResetDisabled, SessionLifetimeInMinutes, StatePersistenceEnabled, UndoRedoDisabled, UserArn, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/embed-url"],
     SuccessStatusCode = undefined,
@@ -1229,9 +1229,12 @@ get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, ResetDi
 
     Query0_ =
       [
+        {<<"additional-dashboard-ids">>, AdditionalDashboardIds},
         {<<"creds-type">>, IdentityType},
+        {<<"namespace">>, Namespace},
         {<<"reset-disabled">>, ResetDisabled},
         {<<"session-lifetime">>, SessionLifetimeInMinutes},
+        {<<"state-persistence-enabled">>, StatePersistenceEnabled},
         {<<"undo-redo-disabled">>, UndoRedoDisabled},
         {<<"user-arn">>, UserArn}
       ],
@@ -1426,10 +1429,10 @@ list_groups(Client, AwsAccountId, Namespace, MaxResults, NextToken, Options)
 
 %% @doc Lists IAM policy assignments in the current Amazon QuickSight
 %% account.
-list_i_a_m_policy_assignments(Client, AwsAccountId, Namespace, MaxResults, NextToken)
+list_iam_policy_assignments(Client, AwsAccountId, Namespace, MaxResults, NextToken)
   when is_map(Client) ->
-    list_i_a_m_policy_assignments(Client, AwsAccountId, Namespace, MaxResults, NextToken, []).
-list_i_a_m_policy_assignments(Client, AwsAccountId, Namespace, MaxResults, NextToken, Options)
+    list_iam_policy_assignments(Client, AwsAccountId, Namespace, MaxResults, NextToken, []).
+list_iam_policy_assignments(Client, AwsAccountId, Namespace, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/iam-policy-assignments"],
     SuccessStatusCode = undefined,
@@ -1448,10 +1451,10 @@ list_i_a_m_policy_assignments(Client, AwsAccountId, Namespace, MaxResults, NextT
 %% @doc Lists all the IAM policy assignments, including the Amazon Resource
 %% Names (ARNs) for the IAM policies assigned to the specified user and group
 %% or groups that the user belongs to.
-list_i_a_m_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, MaxResults, NextToken)
+list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, MaxResults, NextToken)
   when is_map(Client) ->
-    list_i_a_m_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, MaxResults, NextToken, []).
-list_i_a_m_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, MaxResults, NextToken, Options)
+    list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, MaxResults, NextToken, []).
+list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users/", aws_util:encode_uri(UserName), "/iam-policy-assignments"],
     SuccessStatusCode = undefined,
@@ -2020,9 +2023,9 @@ update_group(Client, AwsAccountId, GroupName, Namespace, Input0, Options) ->
 %% This operation updates only the optional parameter or parameters that are
 %% specified in the request. This overwrites all of the users included in
 %% `Identities'.
-update_i_a_m_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input) ->
-    update_i_a_m_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input, []).
-update_i_a_m_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input0, Options) ->
+update_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input) ->
+    update_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input, []).
+update_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input0, Options) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/iam-policy-assignments/", aws_util:encode_uri(AssignmentName), ""],
     SuccessStatusCode = undefined,

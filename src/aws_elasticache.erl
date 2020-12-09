@@ -579,7 +579,7 @@ delete_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSnapshot">>, Input, Options).
 
-%% @doc For Redis engine version 6.04 onwards: Deletes a user.
+%% @doc For Redis engine version 6.x onwards: Deletes a user.
 %%
 %% The user will be removed from all user groups and in turn removed from all
 %% replication groups. For more information, see Using Role Based Access
@@ -591,7 +591,7 @@ delete_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUser">>, Input, Options).
 
-%% @doc For Redis engine version 6.04 onwards: Deletes a ser group.
+%% @doc For Redis engine version 6.x onwards: Deletes a ser group.
 %%
 %% The user group must first be disassociated from the replcation group
 %% before it can be deleted. For more information, see Using Role Based

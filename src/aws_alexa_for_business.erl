@@ -143,8 +143,8 @@
          put_room_skill_parameter/3,
          put_skill_authorization/2,
          put_skill_authorization/3,
-         register_a_v_s_device/2,
-         register_a_v_s_device/3,
+         register_avs_device/2,
+         register_avs_device/3,
          reject_skill/2,
          reject_skill/3,
          resolve_room/2,
@@ -771,10 +771,10 @@ put_skill_authorization(Client, Input, Options)
 
 %% @doc Registers an Alexa-enabled device built by an Original Equipment
 %% Manufacturer (OEM) using Alexa Voice Service (AVS).
-register_a_v_s_device(Client, Input)
+register_avs_device(Client, Input)
   when is_map(Client), is_map(Input) ->
-    register_a_v_s_device(Client, Input, []).
-register_a_v_s_device(Client, Input, Options)
+    register_avs_device(Client, Input, []).
+register_avs_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterAVSDevice">>, Input, Options).
 

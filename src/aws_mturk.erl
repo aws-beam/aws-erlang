@@ -10,20 +10,20 @@
          approve_assignment/3,
          associate_qualification_with_worker/2,
          associate_qualification_with_worker/3,
-         create_additional_assignments_for_h_i_t/2,
-         create_additional_assignments_for_h_i_t/3,
-         create_h_i_t/2,
-         create_h_i_t/3,
-         create_h_i_t_type/2,
-         create_h_i_t_type/3,
-         create_h_i_t_with_h_i_t_type/2,
-         create_h_i_t_with_h_i_t_type/3,
+         create_additional_assignments_for_hit/2,
+         create_additional_assignments_for_hit/3,
+         create_hit/2,
+         create_hit/3,
+         create_hit_type/2,
+         create_hit_type/3,
+         create_hit_with_hit_type/2,
+         create_hit_with_hit_type/3,
          create_qualification_type/2,
          create_qualification_type/3,
          create_worker_block/2,
          create_worker_block/3,
-         delete_h_i_t/2,
-         delete_h_i_t/3,
+         delete_hit/2,
+         delete_hit/3,
          delete_qualification_type/2,
          delete_qualification_type/3,
          delete_worker_block/2,
@@ -34,30 +34,30 @@
          get_account_balance/3,
          get_assignment/2,
          get_assignment/3,
-         get_file_upload_u_r_l/2,
-         get_file_upload_u_r_l/3,
-         get_h_i_t/2,
-         get_h_i_t/3,
+         get_file_upload_url/2,
+         get_file_upload_url/3,
+         get_hit/2,
+         get_hit/3,
          get_qualification_score/2,
          get_qualification_score/3,
          get_qualification_type/2,
          get_qualification_type/3,
-         list_assignments_for_h_i_t/2,
-         list_assignments_for_h_i_t/3,
+         list_assignments_for_hit/2,
+         list_assignments_for_hit/3,
          list_bonus_payments/2,
          list_bonus_payments/3,
-         list_h_i_ts/2,
-         list_h_i_ts/3,
-         list_h_i_ts_for_qualification_type/2,
-         list_h_i_ts_for_qualification_type/3,
+         list_hits/2,
+         list_hits/3,
+         list_hits_for_qualification_type/2,
+         list_hits_for_qualification_type/3,
          list_qualification_requests/2,
          list_qualification_requests/3,
          list_qualification_types/2,
          list_qualification_types/3,
-         list_review_policy_results_for_h_i_t/2,
-         list_review_policy_results_for_h_i_t/3,
-         list_reviewable_h_i_ts/2,
-         list_reviewable_h_i_ts/3,
+         list_review_policy_results_for_hit/2,
+         list_review_policy_results_for_hit/3,
+         list_reviewable_hits/2,
+         list_reviewable_hits/3,
          list_worker_blocks/2,
          list_worker_blocks/3,
          list_workers_with_qualification_type/2,
@@ -72,12 +72,12 @@
          send_bonus/3,
          send_test_event_notification/2,
          send_test_event_notification/3,
-         update_expiration_for_h_i_t/2,
-         update_expiration_for_h_i_t/3,
-         update_h_i_t_review_status/2,
-         update_h_i_t_review_status/3,
-         update_h_i_t_type_of_h_i_t/2,
-         update_h_i_t_type_of_h_i_t/3,
+         update_expiration_for_hit/2,
+         update_expiration_for_hit/3,
+         update_hit_review_status/2,
+         update_hit_review_status/3,
+         update_hit_type_of_hit/2,
+         update_hit_type_of_hit/3,
          update_notification_settings/2,
          update_notification_settings/3,
          update_qualification_type/2,
@@ -172,10 +172,10 @@ associate_qualification_with_worker(Client, Input, Options)
 %% HITs that were created before July 22, 2015 cannot be extended. Attempting
 %% to extend HITs that were created before July 22, 2015 will result in an
 %% `AWS.MechanicalTurk.HITTooOldForExtension' exception.
-create_additional_assignments_for_h_i_t(Client, Input)
+create_additional_assignments_for_hit(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_additional_assignments_for_h_i_t(Client, Input, []).
-create_additional_assignments_for_h_i_t(Client, Input, Options)
+    create_additional_assignments_for_hit(Client, Input, []).
+create_additional_assignments_for_hit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAdditionalAssignmentsForHIT">>, Input, Options).
 
@@ -204,10 +204,10 @@ create_additional_assignments_for_h_i_t(Client, Input, Options)
 %%
 %% If a HIT is created with 10 or more maximum assignments, there is an
 %% additional fee. For more information, see Amazon Mechanical Turk Pricing.
-create_h_i_t(Client, Input)
+create_hit(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_h_i_t(Client, Input, []).
-create_h_i_t(Client, Input, Options)
+    create_hit(Client, Input, []).
+create_hit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHIT">>, Input, Options).
 
@@ -217,10 +217,10 @@ create_h_i_t(Client, Input, Options)
 %% use when creating HITs. If you register a HIT type with values that match
 %% an existing HIT type, the HIT type ID of the existing type will be
 %% returned.
-create_h_i_t_type(Client, Input)
+create_hit_type(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_h_i_t_type(Client, Input, []).
-create_h_i_t_type(Client, Input, Options)
+    create_hit_type(Client, Input, []).
+create_hit_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHITType">>, Input, Options).
 
@@ -239,10 +239,10 @@ create_h_i_t_type(Client, Input, Options)
 %%
 %% If a HIT is created with 10 or more maximum assignments, there is an
 %% additional fee. For more information, see Amazon Mechanical Turk Pricing.
-create_h_i_t_with_h_i_t_type(Client, Input)
+create_hit_with_hit_type(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_h_i_t_with_h_i_t_type(Client, Input, []).
-create_h_i_t_with_h_i_t_type(Client, Input, Options)
+    create_hit_with_hit_type(Client, Input, []).
+create_hit_with_hit_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHITWithHITType">>, Input, Options).
 
@@ -289,10 +289,10 @@ create_worker_block(Client, Input, Options)
 %%
 %% Disposing HITs can improve the performance of operations such as
 %% ListReviewableHITs and ListHITs.
-delete_h_i_t(Client, Input)
+delete_hit(Client, Input)
   when is_map(Client), is_map(Input) ->
-    delete_h_i_t(Client, Input, []).
-delete_h_i_t(Client, Input, Options)
+    delete_hit(Client, Input, []).
+delete_hit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteHIT">>, Input, Options).
 
@@ -374,18 +374,18 @@ get_assignment(Client, Input, Options)
 %% `FileUploadAnswer' element to be used for the QuestionForm data structure.
 %% Instead, we recommend that Requesters who want to create HITs asking
 %% Workers to upload files to use Amazon S3.
-get_file_upload_u_r_l(Client, Input)
+get_file_upload_url(Client, Input)
   when is_map(Client), is_map(Input) ->
-    get_file_upload_u_r_l(Client, Input, []).
-get_file_upload_u_r_l(Client, Input, Options)
+    get_file_upload_url(Client, Input, []).
+get_file_upload_url(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetFileUploadURL">>, Input, Options).
 
 %% @doc The `GetHIT' operation retrieves the details of the specified HIT.
-get_h_i_t(Client, Input)
+get_hit(Client, Input)
   when is_map(Client), is_map(Input) ->
-    get_h_i_t(Client, Input, []).
-get_h_i_t(Client, Input, Options)
+    get_hit(Client, Input, []).
+get_hit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetHIT">>, Input, Options).
 
@@ -437,10 +437,10 @@ get_qualification_type(Client, Input, Options)
 %% Results are sorted and divided into numbered pages and the operation
 %% returns a single page of results. You can use the parameters of the
 %% operation to control sorting and pagination.
-list_assignments_for_h_i_t(Client, Input)
+list_assignments_for_hit(Client, Input)
   when is_map(Client), is_map(Input) ->
-    list_assignments_for_h_i_t(Client, Input, []).
-list_assignments_for_h_i_t(Client, Input, Options)
+    list_assignments_for_hit(Client, Input, []).
+list_assignments_for_hit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAssignmentsForHIT">>, Input, Options).
 
@@ -457,10 +457,10 @@ list_bonus_payments(Client, Input, Options)
 %%
 %% The operation returns HITs of any status, except for HITs that have been
 %% deleted of with the DeleteHIT operation or that have been auto-deleted.
-list_h_i_ts(Client, Input)
+list_hits(Client, Input)
   when is_map(Client), is_map(Input) ->
-    list_h_i_ts(Client, Input, []).
-list_h_i_ts(Client, Input, Options)
+    list_hits(Client, Input, []).
+list_hits(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListHITs">>, Input, Options).
 
@@ -469,10 +469,10 @@ list_h_i_ts(Client, Input, Options)
 %%
 %% The operation returns HITs of any status, except for HITs that have been
 %% deleted with the `DeleteHIT' operation or that have been auto-deleted.
-list_h_i_ts_for_qualification_type(Client, Input)
+list_hits_for_qualification_type(Client, Input)
   when is_map(Client), is_map(Input) ->
-    list_h_i_ts_for_qualification_type(Client, Input, []).
-list_h_i_ts_for_qualification_type(Client, Input, Options)
+    list_hits_for_qualification_type(Client, Input, []).
+list_hits_for_qualification_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListHITsForQualificationType">>, Input, Options).
 
@@ -506,20 +506,20 @@ list_qualification_types(Client, Input, Options)
 %% CreateHIT, see Review Policies. The ListReviewPolicyResultsForHIT
 %% operation can return results for both Assignment-level and HIT-level
 %% review results.
-list_review_policy_results_for_h_i_t(Client, Input)
+list_review_policy_results_for_hit(Client, Input)
   when is_map(Client), is_map(Input) ->
-    list_review_policy_results_for_h_i_t(Client, Input, []).
-list_review_policy_results_for_h_i_t(Client, Input, Options)
+    list_review_policy_results_for_hit(Client, Input, []).
+list_review_policy_results_for_hit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListReviewPolicyResultsForHIT">>, Input, Options).
 
 %% @doc The `ListReviewableHITs' operation retrieves the HITs with Status
 %% equal to Reviewable or Status equal to Reviewing that belong to the
 %% Requester calling the operation.
-list_reviewable_h_i_ts(Client, Input)
+list_reviewable_hits(Client, Input)
   when is_map(Client), is_map(Input) ->
-    list_reviewable_h_i_ts(Client, Input, []).
-list_reviewable_h_i_ts(Client, Input, Options)
+    list_reviewable_hits(Client, Input, []).
+list_reviewable_hits(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListReviewableHITs">>, Input, Options).
 
@@ -623,10 +623,10 @@ send_test_event_notification(Client, Input, Options)
 %%
 %% If you update it to a time in the past, the HIT will be immediately
 %% expired.
-update_expiration_for_h_i_t(Client, Input)
+update_expiration_for_hit(Client, Input)
   when is_map(Client), is_map(Input) ->
-    update_expiration_for_h_i_t(Client, Input, []).
-update_expiration_for_h_i_t(Client, Input, Options)
+    update_expiration_for_hit(Client, Input, []).
+update_expiration_for_hit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateExpirationForHIT">>, Input, Options).
 
@@ -634,10 +634,10 @@ update_expiration_for_h_i_t(Client, Input, Options)
 %%
 %% If the status is Reviewable, this operation can update the status to
 %% Reviewing, or it can revert a Reviewing HIT back to the Reviewable status.
-update_h_i_t_review_status(Client, Input)
+update_hit_review_status(Client, Input)
   when is_map(Client), is_map(Input) ->
-    update_h_i_t_review_status(Client, Input, []).
-update_h_i_t_review_status(Client, Input, Options)
+    update_hit_review_status(Client, Input, []).
+update_hit_review_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateHITReviewStatus">>, Input, Options).
 
@@ -647,10 +647,10 @@ update_h_i_t_review_status(Client, Input, Options)
 %% This operation disassociates the HIT from its old HITType properties and
 %% associates it with the new HITType properties. The HIT takes on the
 %% properties of the new HITType in place of the old ones.
-update_h_i_t_type_of_h_i_t(Client, Input)
+update_hit_type_of_hit(Client, Input)
   when is_map(Client), is_map(Input) ->
-    update_h_i_t_type_of_h_i_t(Client, Input, []).
-update_h_i_t_type_of_h_i_t(Client, Input, Options)
+    update_hit_type_of_hit(Client, Input, []).
+update_hit_type_of_hit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateHITTypeOfHIT">>, Input, Options).
 

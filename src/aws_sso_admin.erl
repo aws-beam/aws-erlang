@@ -8,18 +8,24 @@
          attach_managed_policy_to_permission_set/3,
          create_account_assignment/2,
          create_account_assignment/3,
+         create_instance_access_control_attribute_configuration/2,
+         create_instance_access_control_attribute_configuration/3,
          create_permission_set/2,
          create_permission_set/3,
          delete_account_assignment/2,
          delete_account_assignment/3,
          delete_inline_policy_from_permission_set/2,
          delete_inline_policy_from_permission_set/3,
+         delete_instance_access_control_attribute_configuration/2,
+         delete_instance_access_control_attribute_configuration/3,
          delete_permission_set/2,
          delete_permission_set/3,
          describe_account_assignment_creation_status/2,
          describe_account_assignment_creation_status/3,
          describe_account_assignment_deletion_status/2,
          describe_account_assignment_deletion_status/3,
+         describe_instance_access_control_attribute_configuration/2,
+         describe_instance_access_control_attribute_configuration/3,
          describe_permission_set/2,
          describe_permission_set/3,
          describe_permission_set_provisioning_status/2,
@@ -56,6 +62,8 @@
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
+         update_instance_access_control_attribute_configuration/2,
+         update_instance_access_control_attribute_configuration/3,
          update_permission_set/2,
          update_permission_set/3]).
 
@@ -98,6 +106,19 @@ create_account_assignment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAccountAssignment">>, Input, Options).
 
+%% @doc Enables the attributes-based access control (ABAC) feature for the
+%% specified AWS SSO instance.
+%%
+%% You can also specify new attributes to add to your ABAC configuration
+%% during the enabling process. For more information about ABAC, see
+%% Attribute-Based Access Control in the AWS SSO User Guide.
+create_instance_access_control_attribute_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_instance_access_control_attribute_configuration(Client, Input, []).
+create_instance_access_control_attribute_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateInstanceAccessControlAttributeConfiguration">>, Input, Options).
+
 %% @doc Creates a permission set within a specified SSO instance.
 %%
 %% To grant users and groups access to AWS account resources, use `
@@ -126,6 +147,21 @@ delete_inline_policy_from_permission_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteInlinePolicyFromPermissionSet">>, Input, Options).
 
+%% @doc Disables the attributes-based access control (ABAC) feature for the
+%% specified AWS SSO instance and deletes all of the attribute mappings that
+%% have been configured.
+%%
+%% Once deleted, any attributes that are received from an identity source and
+%% any custom attributes you have previously configured will not be passed.
+%% For more information about ABAC, see Attribute-Based Access Control in the
+%% AWS SSO User Guide.
+delete_instance_access_control_attribute_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_instance_access_control_attribute_configuration(Client, Input, []).
+delete_instance_access_control_attribute_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteInstanceAccessControlAttributeConfiguration">>, Input, Options).
+
 %% @doc Deletes the specified permission set.
 delete_permission_set(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -149,6 +185,20 @@ describe_account_assignment_deletion_status(Client, Input)
 describe_account_assignment_deletion_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccountAssignmentDeletionStatus">>, Input, Options).
+
+%% @doc Returns the list of AWS SSO identity store attributes that have been
+%% configured to work with attributes-based access control (ABAC) for the
+%% specified AWS SSO instance.
+%%
+%% This will not return attributes configured and sent by an external
+%% identity provider. For more information about ABAC, see Attribute-Based
+%% Access Control in the AWS SSO User Guide.
+describe_instance_access_control_attribute_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_instance_access_control_attribute_configuration(Client, Input, []).
+describe_instance_access_control_attribute_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeInstanceAccessControlAttributeConfiguration">>, Input, Options).
 
 %% @doc Gets the details of the permission set.
 describe_permission_set(Client, Input)
@@ -308,6 +358,23 @@ untag_resource(Client, Input)
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc Updates the AWS SSO identity store attributes to use with the AWS SSO
+%% instance for attributes-based access control (ABAC).
+%%
+%% When using an external identity provider as an identity source, you can
+%% pass attributes through the SAML assertion as an alternative to
+%% configuring attributes from the AWS SSO identity store. If a SAML
+%% assertion passes any of these attributes, AWS SSO will replace the
+%% attribute value with the value from the AWS SSO identity store. For more
+%% information about ABAC, see Attribute-Based Access Control in the AWS SSO
+%% User Guide.
+update_instance_access_control_attribute_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_instance_access_control_attribute_configuration(Client, Input, []).
+update_instance_access_control_attribute_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateInstanceAccessControlAttributeConfiguration">>, Input, Options).
 
 %% @doc Updates an existing permission set.
 update_permission_set(Client, Input)

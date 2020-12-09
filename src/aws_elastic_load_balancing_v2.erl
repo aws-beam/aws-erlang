@@ -71,8 +71,8 @@
          describe_load_balancers/3,
          describe_rules/2,
          describe_rules/3,
-         describe_s_s_l_policies/2,
-         describe_s_s_l_policies/3,
+         describe_ssl_policies/2,
+         describe_ssl_policies/3,
          describe_tags/2,
          describe_tags/3,
          describe_target_group_attributes/2,
@@ -380,10 +380,10 @@ describe_rules(Client, Input, Options)
 %%
 %% For more information, see Security policies in the Application Load
 %% Balancers Guide or Security policies in the Network Load Balancers Guide.
-describe_s_s_l_policies(Client, Input)
+describe_ssl_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_s_s_l_policies(Client, Input, []).
-describe_s_s_l_policies(Client, Input, Options)
+    describe_ssl_policies(Client, Input, []).
+describe_ssl_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSSLPolicies">>, Input, Options).
 

@@ -104,6 +104,8 @@
          modify_replication_subnet_group/3,
          modify_replication_task/2,
          modify_replication_task/3,
+         move_replication_task/2,
+         move_replication_task/3,
          reboot_replication_instance/2,
          reboot_replication_instance/3,
          refresh_schemas/2,
@@ -612,6 +614,18 @@ modify_replication_task(Client, Input)
 modify_replication_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyReplicationTask">>, Input, Options).
+
+%% @doc Moves a replication task from its current replication instance to a
+%% different target replication instance using the specified parameters.
+%%
+%% The target replication instance must be created with the same or later AWS
+%% DMS version as the current replication instance.
+move_replication_task(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    move_replication_task(Client, Input, []).
+move_replication_task(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"MoveReplicationTask">>, Input, Options).
 
 %% @doc Reboots a replication instance.
 %%

@@ -246,8 +246,8 @@ list_trails(Client, Input, Options)
 %% returned is 50, with a maximum of 50 possible. The response includes a
 %% token that you can use to get the next page of results.
 %%
-%% The rate of lookup requests is limited to two per second per account. If
-%% this limit is exceeded, a throttling error occurs.
+%% The rate of lookup requests is limited to two per second, per account, per
+%% region. If this limit is exceeded, a throttling error occurs.
 lookup_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     lookup_events(Client, Input, []).

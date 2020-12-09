@@ -135,7 +135,9 @@ cancel_replay(Client, Input, Options)
 %%
 %% When you create an archive, incoming events might not immediately start
 %% being sent to the archive. Allow a short period of time for changes to
-%% take effect.
+%% take effect. If you do not specify a pattern to filter events sent to the
+%% archive, all events are sent to the archive except replayed events.
+%% Replayed events are not sent to an archive.
 create_archive(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_archive(Client, Input, []).

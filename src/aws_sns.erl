@@ -12,6 +12,9 @@
 %% detailed information about Amazon SNS features and their associated API
 %% calls, see the Amazon SNS Developer Guide.
 %%
+%% For information on the permissions you need to use this API, see Identity
+%% and access management in Amazon SNS in the Amazon SNS Developer Guide.
+%%
 %% We also provide SDKs that enable you to access Amazon SNS from your
 %% preferred programming language. The SDKs contain functionality that
 %% automatically takes care of tasks such as: cryptographically signing your
@@ -41,8 +44,8 @@
          get_endpoint_attributes/3,
          get_platform_application_attributes/2,
          get_platform_application_attributes/3,
-         get_s_m_s_attributes/2,
-         get_s_m_s_attributes/3,
+         get_sms_attributes/2,
+         get_sms_attributes/3,
          get_subscription_attributes/2,
          get_subscription_attributes/3,
          get_topic_attributes/2,
@@ -71,8 +74,8 @@
          set_endpoint_attributes/3,
          set_platform_application_attributes/2,
          set_platform_application_attributes/3,
-         set_s_m_s_attributes/2,
-         set_s_m_s_attributes/3,
+         set_sms_attributes/2,
+         set_sms_attributes/3,
          set_subscription_attributes/2,
          set_subscription_attributes/3,
          set_topic_attributes/2,
@@ -266,10 +269,10 @@ get_platform_application_attributes(Client, Input, Options)
 %% @doc Returns the settings for sending SMS messages from your account.
 %%
 %% These settings are set with the `SetSMSAttributes' action.
-get_s_m_s_attributes(Client, Input)
+get_sms_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
-    get_s_m_s_attributes(Client, Input, []).
-get_s_m_s_attributes(Client, Input, Options)
+    get_sms_attributes(Client, Input, []).
+get_sms_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSMSAttributes">>, Input, Options).
 
@@ -481,10 +484,10 @@ set_platform_application_attributes(Client, Input, Options)
 %% the `Publish' action with the `MessageAttributes.entry.N' parameter. For
 %% more information, see Publishing to a mobile phone in the Amazon SNS
 %% Developer Guide.
-set_s_m_s_attributes(Client, Input)
+set_sms_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
-    set_s_m_s_attributes(Client, Input, []).
-set_s_m_s_attributes(Client, Input, Options)
+    set_sms_attributes(Client, Input, []).
+set_sms_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetSMSAttributes">>, Input, Options).
 
@@ -508,7 +511,7 @@ set_topic_attributes(Client, Input, Options)
 %% @doc Subscribes an endpoint to an Amazon SNS topic.
 %%
 %% If the endpoint type is HTTP/S or email, or if the endpoint and the topic
-%% are not in the same AWS account, the endpoint owner must the
+%% are not in the same AWS account, the endpoint owner must run the
 %% `ConfirmSubscription' action to confirm the subscription.
 %%
 %% You call the `ConfirmSubscription' action with the token from the

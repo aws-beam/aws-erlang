@@ -45,6 +45,8 @@
          describe_entities_detection_job/3,
          describe_entity_recognizer/2,
          describe_entity_recognizer/3,
+         describe_events_detection_job/2,
+         describe_events_detection_job/3,
          describe_key_phrases_detection_job/2,
          describe_key_phrases_detection_job/3,
          describe_pii_entities_detection_job/2,
@@ -77,6 +79,8 @@
          list_entities_detection_jobs/3,
          list_entity_recognizers/2,
          list_entity_recognizers/3,
+         list_events_detection_jobs/2,
+         list_events_detection_jobs/3,
          list_key_phrases_detection_jobs/2,
          list_key_phrases_detection_jobs/3,
          list_pii_entities_detection_jobs/2,
@@ -93,6 +97,8 @@
          start_dominant_language_detection_job/3,
          start_entities_detection_job/2,
          start_entities_detection_job/3,
+         start_events_detection_job/2,
+         start_events_detection_job/3,
          start_key_phrases_detection_job/2,
          start_key_phrases_detection_job/3,
          start_pii_entities_detection_job/2,
@@ -105,6 +111,8 @@
          stop_dominant_language_detection_job/3,
          stop_entities_detection_job/2,
          stop_entities_detection_job/3,
+         stop_events_detection_job/2,
+         stop_events_detection_job/3,
          stop_key_phrases_detection_job/2,
          stop_key_phrases_detection_job/3,
          stop_pii_entities_detection_job/2,
@@ -329,6 +337,14 @@ describe_entity_recognizer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEntityRecognizer">>, Input, Options).
 
+%% @doc Gets the status and details of an events detection job.
+describe_events_detection_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_events_detection_job(Client, Input, []).
+describe_events_detection_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeEventsDetectionJob">>, Input, Options).
+
 %% @doc Gets the properties associated with a key phrases detection job.
 %%
 %% Use this operation to get the status of a detection job.
@@ -485,6 +501,14 @@ list_entity_recognizers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEntityRecognizers">>, Input, Options).
 
+%% @doc Gets a list of the events detection jobs that you have submitted.
+list_events_detection_jobs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_events_detection_jobs(Client, Input, []).
+list_events_detection_jobs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListEventsDetectionJobs">>, Input, Options).
+
 %% @doc Get a list of key phrase detection jobs that you have submitted.
 list_key_phrases_detection_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -561,6 +585,15 @@ start_entities_detection_job(Client, Input)
 start_entities_detection_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartEntitiesDetectionJob">>, Input, Options).
+
+%% @doc Starts an asynchronous event detection job for a collection of
+%% documents.
+start_events_detection_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_events_detection_job(Client, Input, []).
+start_events_detection_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartEventsDetectionJob">>, Input, Options).
 
 %% @doc Starts an asynchronous key phrase detection job for a collection of
 %% documents.
@@ -643,6 +676,14 @@ stop_entities_detection_job(Client, Input)
 stop_entities_detection_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopEntitiesDetectionJob">>, Input, Options).
+
+%% @doc Stops an events detection job in progress.
+stop_events_detection_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_events_detection_job(Client, Input, []).
+stop_events_detection_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopEventsDetectionJob">>, Input, Options).
 
 %% @doc Stops a key phrases detection job in progress.
 %%

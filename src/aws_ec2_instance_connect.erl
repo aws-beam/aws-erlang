@@ -7,8 +7,8 @@
 %% permanent authentication option.
 -module(aws_ec2_instance_connect).
 
--export([send_s_s_h_public_key/2,
-         send_s_s_h_public_key/3]).
+-export([send_ssh_public_key/2,
+         send_ssh_public_key/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -18,10 +18,10 @@
 
 %% @doc Pushes an SSH public key to a particular OS user on a given EC2
 %% instance for 60 seconds.
-send_s_s_h_public_key(Client, Input)
+send_ssh_public_key(Client, Input)
   when is_map(Client), is_map(Input) ->
-    send_s_s_h_public_key(Client, Input, []).
-send_s_s_h_public_key(Client, Input, Options)
+    send_ssh_public_key(Client, Input, []).
+send_ssh_public_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendSSHPublicKey">>, Input, Options).
 

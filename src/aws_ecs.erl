@@ -112,6 +112,8 @@
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
+         update_capacity_provider/2,
+         update_capacity_provider/3,
          update_cluster_settings/2,
          update_cluster_settings/3,
          update_container_agent/2,
@@ -885,6 +887,14 @@ untag_resource(Client, Input)
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc Modifies the parameters for a capacity provider.
+update_capacity_provider(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_capacity_provider(Client, Input, []).
+update_capacity_provider(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateCapacityProvider">>, Input, Options).
 
 %% @doc Modifies the settings to use for a cluster.
 update_cluster_settings(Client, Input)

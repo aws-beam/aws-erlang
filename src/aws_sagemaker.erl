@@ -22,8 +22,8 @@
          create_app/3,
          create_app_image_config/2,
          create_app_image_config/3,
-         create_auto_m_l_job/2,
-         create_auto_m_l_job/3,
+         create_auto_ml_job/2,
+         create_auto_ml_job/3,
          create_code_repository/2,
          create_code_repository/3,
          create_compilation_job/2,
@@ -130,8 +130,8 @@
          describe_app/3,
          describe_app_image_config/2,
          describe_app_image_config/3,
-         describe_auto_m_l_job/2,
-         describe_auto_m_l_job/3,
+         describe_auto_ml_job/2,
+         describe_auto_ml_job/3,
          describe_code_repository/2,
          describe_code_repository/3,
          describe_compilation_job/2,
@@ -194,10 +194,10 @@
          list_app_image_configs/3,
          list_apps/2,
          list_apps/3,
-         list_auto_m_l_jobs/2,
-         list_auto_m_l_jobs/3,
-         list_candidates_for_auto_m_l_job/2,
-         list_candidates_for_auto_m_l_job/3,
+         list_auto_ml_jobs/2,
+         list_auto_ml_jobs/3,
+         list_candidates_for_auto_ml_job/2,
+         list_candidates_for_auto_ml_job/3,
          list_code_repositories/2,
          list_code_repositories/3,
          list_compilation_jobs/2,
@@ -266,8 +266,8 @@
          start_monitoring_schedule/3,
          start_notebook_instance/2,
          start_notebook_instance/3,
-         stop_auto_m_l_job/2,
-         stop_auto_m_l_job/3,
+         stop_auto_ml_job/2,
+         stop_auto_ml_job/3,
          stop_compilation_job/2,
          stop_compilation_job/3,
          stop_hyper_parameter_tuning_job/2,
@@ -380,8 +380,11 @@ create_app(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateApp">>, Input, Options).
 
-%% @doc Creates a configuration for running an Amazon SageMaker image as a
+%% @doc Creates a configuration for running a SageMaker image as a
 %% KernelGateway app.
+%%
+%% The configuration specifies the Amazon Elastic File System (EFS) storage
+%% volume on the image, and a list of the kernels in the image.
 create_app_image_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_app_image_config(Client, Input, []).
@@ -397,10 +400,10 @@ create_app_image_config(Client, Input, Options)
 %%
 %% For information about how to use Autopilot, see Automate Model Development
 %% with Amazon SageMaker Autopilot.
-create_auto_m_l_job(Client, Input)
+create_auto_ml_job(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_auto_m_l_job(Client, Input, []).
-create_auto_m_l_job(Client, Input, Options)
+    create_auto_ml_job(Client, Input, []).
+create_auto_ml_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAutoMLJob">>, Input, Options).
 
@@ -552,6 +555,31 @@ create_domain(Client, Input, Options)
 %% for a region, you need to reactivate AWS STS for that region. For more
 %% information, see Activating and Deactivating AWS STS in an AWS Region in
 %% the AWS Identity and Access Management User Guide.
+%%
+%% To add the IAM role policies for using this API operation, go to the IAM
+%% console, and choose Roles in the left navigation pane. Search the IAM role
+%% that you want to grant access to use the `CreateEndpoint' and
+%% `CreateEndpointConfig' API operations, add the following policies to the
+%% role.
+%%
+%% Option 1: For a full Amazon SageMaker access, search and attach the
+%% `AmazonSageMakerFullAccess' policy.
+%%
+%% Option 2: For granting a limited access to an IAM role, paste the
+%% following Action elements manually into the JSON file of the IAM role:
+%%
+%% `"Action": ["sagemaker:CreateEndpoint", "sagemaker:CreateEndpointConfig"]'
+%%
+%% `"Resource": ['
+%%
+%% `"arn:aws:sagemaker:region:account-id:endpoint/endpointName"'
+%%
+%% `"arn:aws:sagemaker:region:account-id:endpoint-config/endpointConfigName"'
+%%
+%% `]'
+%%
+%% For more information, see Amazon SageMaker API Permissions: Actions,
+%% Permissions, and Resources Reference.
 create_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_endpoint(Client, Input, []).
@@ -670,10 +698,11 @@ create_hyper_parameter_tuning_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHyperParameterTuningJob">>, Input, Options).
 
-%% @doc Creates a SageMaker `Image'.
+%% @doc Creates a custom SageMaker image.
 %%
-%% A SageMaker image represents a set of container images. Each of these
-%% container images is represented by a SageMaker `ImageVersion'.
+%% A SageMaker image is a set of image versions. Each image version
+%% represents a container image stored in Amazon Container Registry (ECR).
+%% For more information, see Bring your own SageMaker image.
 create_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_image(Client, Input, []).
@@ -1416,10 +1445,10 @@ describe_app_image_config(Client, Input, Options)
     request(Client, <<"DescribeAppImageConfig">>, Input, Options).
 
 %% @doc Returns information about an Amazon SageMaker job.
-describe_auto_m_l_job(Client, Input)
+describe_auto_ml_job(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_auto_m_l_job(Client, Input, []).
-describe_auto_m_l_job(Client, Input, Options)
+    describe_auto_ml_job(Client, Input, []).
+describe_auto_ml_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAutoMLJob">>, Input, Options).
 
@@ -1718,18 +1747,18 @@ list_apps(Client, Input, Options)
     request(Client, <<"ListApps">>, Input, Options).
 
 %% @doc Request a list of jobs.
-list_auto_m_l_jobs(Client, Input)
+list_auto_ml_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
-    list_auto_m_l_jobs(Client, Input, []).
-list_auto_m_l_jobs(Client, Input, Options)
+    list_auto_ml_jobs(Client, Input, []).
+list_auto_ml_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAutoMLJobs">>, Input, Options).
 
 %% @doc List the Candidates created for the job.
-list_candidates_for_auto_m_l_job(Client, Input)
+list_candidates_for_auto_ml_job(Client, Input)
   when is_map(Client), is_map(Input) ->
-    list_candidates_for_auto_m_l_job(Client, Input, []).
-list_candidates_for_auto_m_l_job(Client, Input, Options)
+    list_candidates_for_auto_ml_job(Client, Input, []).
+list_candidates_for_auto_ml_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCandidatesForAutoMLJob">>, Input, Options).
 
@@ -2067,10 +2096,10 @@ start_notebook_instance(Client, Input, Options)
     request(Client, <<"StartNotebookInstance">>, Input, Options).
 
 %% @doc A method for forcing the termination of a running job.
-stop_auto_m_l_job(Client, Input)
+stop_auto_ml_job(Client, Input)
   when is_map(Client), is_map(Input) ->
-    stop_auto_m_l_job(Client, Input, []).
-stop_auto_m_l_job(Client, Input, Options)
+    stop_auto_ml_job(Client, Input, []).
+stop_auto_ml_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopAutoMLJob">>, Input, Options).
 

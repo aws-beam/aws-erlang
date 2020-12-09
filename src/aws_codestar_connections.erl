@@ -3,13 +3,12 @@
 
 %% @doc AWS CodeStar Connections
 %%
-%% The CodeStar Connections feature is in preview release and is subject to
-%% change.
-%%
 %% This AWS CodeStar Connections API Reference provides descriptions and
 %% usage examples of the operations and data types for the AWS CodeStar
-%% Connections API. You can use the connections API to work with connections
-%% and installations.
+%% Connections API.
+%%
+%% You can use the connections API to work with connections and
+%% installations.
 %%
 %% Connections are configurations that you use to connect AWS resources to
 %% external code repositories. Each connection is a resource that can be
@@ -22,8 +21,8 @@
 %% When you create a connection, the console initiates a third-party
 %% connection handshake. Installations are the apps that are used to conduct
 %% this handshake. For example, the installation for the Bitbucket provider
-%% type is the Bitbucket Cloud app. When you create a connection, you can
-%% choose an existing installation or create one.
+%% type is the Bitbucket app. When you create a connection, you can choose an
+%% existing installation or create one.
 %%
 %% When you want to create a connection to an installed provider type such as
 %% GitHub Enterprise Server, you create a host for your connections.
@@ -91,7 +90,9 @@
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
-         untag_resource/3]).
+         untag_resource/3,
+         update_host/2,
+         update_host/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -210,6 +211,14 @@ untag_resource(Client, Input)
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc Updates a specified host with the provided configurations.
+update_host(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_host(Client, Input, []).
+update_host(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateHost">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

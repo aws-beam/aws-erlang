@@ -103,7 +103,7 @@ cancel_data_repository_task(Client, Input, Options)
 %% </li> </ul> For more information about backing up Amazon FSx for Lustre
 %% file systems, see Working with FSx for Lustre backups.
 %%
-%% For more information about backing up Amazon FSx for Lustre file systems,
+%% For more information about backing up Amazon FSx for Windows file systems,
 %% see Working with FSx for Windows backups.
 %%
 %% If a backup with the specified client request token exists, and the
@@ -145,8 +145,8 @@ create_backup(Client, Input, Options)
 %% your FSx file system to its linked data repository. A
 %% `CreateDataRepositoryTask' operation will fail if a data repository is not
 %% linked to the FSx file system. To learn more about data repository tasks,
-%% see Using Data Repository Tasks. To learn more about linking a data
-%% repository to your file system, see Setting the Export Prefix.
+%% see Data Repository Tasks. To learn more about linking a data repository
+%% to your file system, see Linking your file system to an S3 bucket.
 create_data_repository_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_data_repository_task(Client, Input, []).
@@ -476,6 +476,8 @@ untag_resource(Client, Input, Options)
 %% </li> <li> AutomaticBackupRetentionDays
 %%
 %% </li> <li> DailyAutomaticBackupStartTime
+%%
+%% </li> <li> StorageCapacity
 %%
 %% </li> <li> WeeklyMaintenanceStartTime
 %%

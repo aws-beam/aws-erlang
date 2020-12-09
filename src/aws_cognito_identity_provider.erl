@@ -53,8 +53,8 @@
          admin_reset_user_password/3,
          admin_respond_to_auth_challenge/2,
          admin_respond_to_auth_challenge/3,
-         admin_set_user_m_f_a_preference/2,
-         admin_set_user_m_f_a_preference/3,
+         admin_set_user_mfa_preference/2,
+         admin_set_user_mfa_preference/3,
          admin_set_user_password/2,
          admin_set_user_password/3,
          admin_set_user_settings/2,
@@ -135,8 +135,8 @@
          get_identity_provider_by_identifier/3,
          get_signing_certificate/2,
          get_signing_certificate/3,
-         get_u_i_customization/2,
-         get_u_i_customization/3,
+         get_ui_customization/2,
+         get_ui_customization/3,
          get_user/2,
          get_user/3,
          get_user_attribute_verification_code/2,
@@ -173,10 +173,10 @@
          respond_to_auth_challenge/3,
          set_risk_configuration/2,
          set_risk_configuration/3,
-         set_u_i_customization/2,
-         set_u_i_customization/3,
-         set_user_m_f_a_preference/2,
-         set_user_m_f_a_preference/3,
+         set_ui_customization/2,
+         set_ui_customization/3,
+         set_user_mfa_preference/2,
+         set_user_mfa_preference/3,
          set_user_pool_mfa_config/2,
          set_user_pool_mfa_config/3,
          set_user_settings/2,
@@ -514,10 +514,10 @@ admin_respond_to_auth_challenge(Client, Input, Options)
 %% used to authenticate a user if multiple factors are enabled. If multiple
 %% options are enabled and no preference is set, a challenge to choose an MFA
 %% option will be returned during sign in.
-admin_set_user_m_f_a_preference(Client, Input)
+admin_set_user_mfa_preference(Client, Input)
   when is_map(Client), is_map(Input) ->
-    admin_set_user_m_f_a_preference(Client, Input, []).
-admin_set_user_m_f_a_preference(Client, Input, Options)
+    admin_set_user_mfa_preference(Client, Input, []).
+admin_set_user_mfa_preference(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminSetUserMFAPreference">>, Input, Options).
 
@@ -917,10 +917,10 @@ get_signing_certificate(Client, Input, Options)
 %% If nothing is set for the particular client, but there is an existing pool
 %% level customization (app `clientId' will be `ALL'), then that is returned.
 %% If nothing is present, then an empty shape is returned.
-get_u_i_customization(Client, Input)
+get_ui_customization(Client, Input)
   when is_map(Client), is_map(Input) ->
-    get_u_i_customization(Client, Input, []).
-get_u_i_customization(Client, Input, Options)
+    get_ui_customization(Client, Input, []).
+get_ui_customization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUICustomization">>, Input, Options).
 
@@ -1103,10 +1103,10 @@ set_risk_configuration(Client, Input, Options)
 %% To use this API, your user pool must have a domain associated with it.
 %% Otherwise, there is no place to host the app's pages, and the service will
 %% throw an error.
-set_u_i_customization(Client, Input)
+set_ui_customization(Client, Input)
   when is_map(Client), is_map(Input) ->
-    set_u_i_customization(Client, Input, []).
-set_u_i_customization(Client, Input, Options)
+    set_ui_customization(Client, Input, []).
+set_ui_customization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetUICustomization">>, Input, Options).
 
@@ -1116,11 +1116,16 @@ set_u_i_customization(Client, Input, Options)
 %% Only one factor can be set as preferred. The preferred MFA factor will be
 %% used to authenticate a user if multiple factors are enabled. If multiple
 %% options are enabled and no preference is set, a challenge to choose an MFA
-%% option will be returned during sign in.
-set_user_m_f_a_preference(Client, Input)
+%% option will be returned during sign in. If an MFA type is enabled for a
+%% user, the user will be prompted for MFA during all sign in attempts,
+%% unless device tracking is turned on and the device has been trusted. If
+%% you would like MFA to be applied selectively based on the assessed risk
+%% level of sign in attempts, disable MFA for users and turn on Adaptive
+%% Authentication for the user pool.
+set_user_mfa_preference(Client, Input)
   when is_map(Client), is_map(Input) ->
-    set_user_m_f_a_preference(Client, Input, []).
-set_user_m_f_a_preference(Client, Input, Options)
+    set_user_mfa_preference(Client, Input, []).
+set_user_mfa_preference(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetUserMFAPreference">>, Input, Options).
 

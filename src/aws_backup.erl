@@ -34,6 +34,8 @@
          describe_backup_vault/3,
          describe_copy_job/2,
          describe_copy_job/3,
+         describe_global_settings/1,
+         describe_global_settings/2,
          describe_protected_resource/2,
          describe_protected_resource/3,
          describe_recovery_point/3,
@@ -46,8 +48,8 @@
          export_backup_plan_template/3,
          get_backup_plan/3,
          get_backup_plan/4,
-         get_backup_plan_from_j_s_o_n/2,
-         get_backup_plan_from_j_s_o_n/3,
+         get_backup_plan_from_json/2,
+         get_backup_plan_from_json/3,
          get_backup_plan_from_template/2,
          get_backup_plan_from_template/3,
          get_backup_selection/3,
@@ -102,6 +104,8 @@
          untag_resource/4,
          update_backup_plan/3,
          update_backup_plan/4,
+         update_global_settings/2,
+         update_global_settings/3,
          update_recovery_point_lifecycle/4,
          update_recovery_point_lifecycle/5,
          update_region_settings/2,
@@ -353,6 +357,21 @@ describe_copy_job(Client, CopyJobId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc The current feature settings for the AWS Account.
+describe_global_settings(Client)
+  when is_map(Client) ->
+    describe_global_settings(Client, []).
+describe_global_settings(Client, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/global-settings"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns information about a saved resource, including the last time
 %% it was backed up, its Amazon Resource Name (ARN), and the AWS service type
 %% of the saved resource.
@@ -388,11 +407,11 @@ describe_recovery_point(Client, BackupVaultName, RecoveryPointArn, Options)
 
 %% @doc Returns the current service opt-in settings for the Region.
 %%
-%% If the service has a value set to `true', AWS Backup tries to protect that
-%% service's resources in this Region, when included in an on-demand backup
-%% or scheduled backup plan. If the value is set to `false' for a service,
-%% AWS Backup does not try to protect that service's resources in this
-%% Region.
+%% If service-opt-in is enabled for a service, AWS Backup tries to protect
+%% that service's resources in this Region, when the resource is included in
+%% an on-demand backup or scheduled backup plan. Otherwise, AWS Backup does
+%% not try to protect that service's resources in this Region, AWS Backup
+%% does not try to protect that service's resources in this Region.
 describe_region_settings(Client)
   when is_map(Client) ->
     describe_region_settings(Client, []).
@@ -462,9 +481,9 @@ get_backup_plan(Client, BackupPlanId, VersionId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a valid JSON document specifying a backup plan or an error.
-get_backup_plan_from_j_s_o_n(Client, Input) ->
-    get_backup_plan_from_j_s_o_n(Client, Input, []).
-get_backup_plan_from_j_s_o_n(Client, Input0, Options) ->
+get_backup_plan_from_json(Client, Input) ->
+    get_backup_plan_from_json(Client, Input, []).
+get_backup_plan_from_json(Client, Input0, Options) ->
     Method = post,
     Path = ["/backup/template/json/toPlan"],
     SuccessStatusCode = undefined,
@@ -1006,6 +1025,24 @@ update_backup_plan(Client, BackupPlanId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates the current global settings for the AWS Account.
+%%
+%% Use the `DescribeGlobalSettings' API to determine the current settings.
+update_global_settings(Client, Input) ->
+    update_global_settings(Client, Input, []).
+update_global_settings(Client, Input0, Options) ->
+    Method = put,
+    Path = ["/global-settings"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Sets the transition lifecycle of a recovery point.
 %%
 %% The lifecycle defines when a protected resource is transitioned to cold
@@ -1034,11 +1071,12 @@ update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input
 
 %% @doc Updates the current service opt-in settings for the Region.
 %%
-%% If the service has a value set to `true', AWS Backup tries to protect that
-%% service's resources in this Region, when included in an on-demand backup
-%% or scheduled backup plan. If the value is set to `false' for a service,
-%% AWS Backup does not try to protect that service's resources in this
-%% Region.
+%% If service-opt-in is enabled for a service, AWS Backup tries to protect
+%% that service's resources in this Region, when the resource is included in
+%% an on-demand backup or scheduled backup plan. Otherwise, AWS Backup does
+%% not try to protect that service's resources in this Region. Use the
+%% `DescribeRegionSettings' API to determine the resource types that are
+%% supported.
 update_region_settings(Client, Input) ->
     update_region_settings(Client, Input, []).
 update_region_settings(Client, Input0, Options) ->

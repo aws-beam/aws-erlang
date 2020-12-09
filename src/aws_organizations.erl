@@ -46,26 +46,26 @@
          describe_policy/3,
          detach_policy/2,
          detach_policy/3,
-         disable_a_w_s_service_access/2,
-         disable_a_w_s_service_access/3,
+         disable_aws_service_access/2,
+         disable_aws_service_access/3,
          disable_policy_type/2,
          disable_policy_type/3,
-         enable_a_w_s_service_access/2,
-         enable_a_w_s_service_access/3,
          enable_all_features/2,
          enable_all_features/3,
+         enable_aws_service_access/2,
+         enable_aws_service_access/3,
          enable_policy_type/2,
          enable_policy_type/3,
          invite_account_to_organization/2,
          invite_account_to_organization/3,
          leave_organization/2,
          leave_organization/3,
-         list_a_w_s_service_access_for_organization/2,
-         list_a_w_s_service_access_for_organization/3,
          list_accounts/2,
          list_accounts/3,
          list_accounts_for_parent/2,
          list_accounts_for_parent/3,
+         list_aws_service_access_for_organization/2,
+         list_aws_service_access_for_organization/3,
          list_children/2,
          list_children/3,
          list_create_account_status/2,
@@ -691,10 +691,10 @@ detach_policy(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's management
 %% account.
-disable_a_w_s_service_access(Client, Input)
+disable_aws_service_access(Client, Input)
   when is_map(Client), is_map(Input) ->
-    disable_a_w_s_service_access(Client, Input, []).
-disable_a_w_s_service_access(Client, Input, Options)
+    disable_aws_service_access(Client, Input, []).
+disable_aws_service_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableAWSServiceAccess">>, Input, Options).
 
@@ -723,35 +723,6 @@ disable_policy_type(Client, Input)
 disable_policy_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisablePolicyType">>, Input, Options).
-
-%% @doc Enables the integration of an AWS service (the service that is
-%% specified by `ServicePrincipal') with AWS Organizations.
-%%
-%% When you enable integration, you allow the specified service to create a
-%% service-linked role in all the accounts in your organization. This allows
-%% the service to perform operations on your behalf in your organization and
-%% its accounts.
-%%
-%% We recommend that you enable integration between AWS Organizations and the
-%% specified AWS service by using the console or commands that are provided
-%% by the specified service. Doing so ensures that the service is aware that
-%% it can create the resources that are required for the integration. How the
-%% service creates those resources in the organization's accounts depends on
-%% that service. For more information, see the documentation for the other
-%% AWS service.
-%%
-%% For more information about enabling services to integrate with AWS
-%% Organizations, see Integrating AWS Organizations with Other AWS Services
-%% in the AWS Organizations User Guide.
-%%
-%% This operation can be called only from the organization's management
-%% account and only if the organization has enabled all features.
-enable_a_w_s_service_access(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    enable_a_w_s_service_access(Client, Input, []).
-enable_a_w_s_service_access(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"EnableAWSServiceAccess">>, Input, Options).
 
 %% @doc Enables all features in an organization.
 %%
@@ -793,6 +764,35 @@ enable_all_features(Client, Input)
 enable_all_features(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableAllFeatures">>, Input, Options).
+
+%% @doc Enables the integration of an AWS service (the service that is
+%% specified by `ServicePrincipal') with AWS Organizations.
+%%
+%% When you enable integration, you allow the specified service to create a
+%% service-linked role in all the accounts in your organization. This allows
+%% the service to perform operations on your behalf in your organization and
+%% its accounts.
+%%
+%% We recommend that you enable integration between AWS Organizations and the
+%% specified AWS service by using the console or commands that are provided
+%% by the specified service. Doing so ensures that the service is aware that
+%% it can create the resources that are required for the integration. How the
+%% service creates those resources in the organization's accounts depends on
+%% that service. For more information, see the documentation for the other
+%% AWS service.
+%%
+%% For more information about enabling services to integrate with AWS
+%% Organizations, see Integrating AWS Organizations with Other AWS Services
+%% in the AWS Organizations User Guide.
+%%
+%% This operation can be called only from the organization's management
+%% account and only if the organization has enabled all features.
+enable_aws_service_access(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    enable_aws_service_access(Client, Input, []).
+enable_aws_service_access(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"EnableAWSServiceAccess">>, Input, Options).
 
 %% @doc Enables a policy type in a root.
 %%
@@ -897,28 +897,6 @@ leave_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"LeaveOrganization">>, Input, Options).
 
-%% @doc Returns a list of the AWS services that you enabled to integrate with
-%% your organization.
-%%
-%% After a service on this list creates the resources that it requires for
-%% the integration, it can perform operations on your organization and its
-%% accounts.
-%%
-%% For more information about integrating other services with AWS
-%% Organizations, including the list of services that currently work with
-%% Organizations, see Integrating AWS Organizations with Other AWS Services
-%% in the AWS Organizations User Guide.
-%%
-%% This operation can be called only from the organization's management
-%% account or by a member account that is a delegated administrator for an
-%% AWS service.
-list_a_w_s_service_access_for_organization(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    list_a_w_s_service_access_for_organization(Client, Input, []).
-list_a_w_s_service_access_for_organization(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"ListAWSServiceAccessForOrganization">>, Input, Options).
-
 %% @doc Lists all the accounts in the organization.
 %%
 %% To request only the accounts in a specified root or organizational unit
@@ -963,6 +941,28 @@ list_accounts_for_parent(Client, Input)
 list_accounts_for_parent(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAccountsForParent">>, Input, Options).
+
+%% @doc Returns a list of the AWS services that you enabled to integrate with
+%% your organization.
+%%
+%% After a service on this list creates the resources that it requires for
+%% the integration, it can perform operations on your organization and its
+%% accounts.
+%%
+%% For more information about integrating other services with AWS
+%% Organizations, including the list of services that currently work with
+%% Organizations, see Integrating AWS Organizations with Other AWS Services
+%% in the AWS Organizations User Guide.
+%%
+%% This operation can be called only from the organization's management
+%% account or by a member account that is a delegated administrator for an
+%% AWS service.
+list_aws_service_access_for_organization(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_aws_service_access_for_organization(Client, Input, []).
+list_aws_service_access_for_organization(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAWSServiceAccessForOrganization">>, Input, Options).
 
 %% @doc Lists all of the organizational units (OUs) or accounts that are
 %% contained in the specified parent OU or root.

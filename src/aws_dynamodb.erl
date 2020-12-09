@@ -25,7 +25,9 @@
 %% built-in high availability and data durability.
 -module(aws_dynamodb).
 
--export([batch_get_item/2,
+-export([batch_execute_statement/2,
+         batch_execute_statement/3,
+         batch_get_item/2,
          batch_get_item/3,
          batch_write_item/2,
          batch_write_item/3,
@@ -55,6 +57,8 @@
          describe_global_table/3,
          describe_global_table_settings/2,
          describe_global_table_settings/3,
+         describe_kinesis_streaming_destination/2,
+         describe_kinesis_streaming_destination/3,
          describe_limits/2,
          describe_limits/3,
          describe_table/2,
@@ -63,6 +67,14 @@
          describe_table_replica_auto_scaling/3,
          describe_time_to_live/2,
          describe_time_to_live/3,
+         disable_kinesis_streaming_destination/2,
+         disable_kinesis_streaming_destination/3,
+         enable_kinesis_streaming_destination/2,
+         enable_kinesis_streaming_destination/3,
+         execute_statement/2,
+         execute_statement/3,
+         execute_transaction/2,
+         execute_transaction/3,
          export_table_to_point_in_time/2,
          export_table_to_point_in_time/3,
          get_item/2,
@@ -119,6 +131,15 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc This operation allows you to perform batch reads and writes on data
+%% stored in DynamoDB, using PartiQL.
+batch_execute_statement(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_execute_statement(Client, Input, []).
+batch_execute_statement(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchExecuteStatement">>, Input, Options).
 
 %% @doc The `BatchGetItem' operation returns the attributes of one or more
 %% items from one or more tables.
@@ -529,6 +550,14 @@ describe_global_table_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGlobalTableSettings">>, Input, Options).
 
+%% @doc Returns information about the status of Kinesis streaming.
+describe_kinesis_streaming_destination(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_kinesis_streaming_destination(Client, Input, []).
+describe_kinesis_streaming_destination(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeKinesisStreamingDestination">>, Input, Options).
+
 %% @doc Returns the current provisioned-capacity quotas for your AWS account
 %% in a Region, both for the Region as a whole and for any one DynamoDB table
 %% that you create there.
@@ -631,6 +660,47 @@ describe_time_to_live(Client, Input)
 describe_time_to_live(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTimeToLive">>, Input, Options).
+
+%% @doc Stops replication from the DynamoDB table to the Kinesis data stream.
+%%
+%% This is done without deleting either of the resources.
+disable_kinesis_streaming_destination(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disable_kinesis_streaming_destination(Client, Input, []).
+disable_kinesis_streaming_destination(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisableKinesisStreamingDestination">>, Input, Options).
+
+%% @doc Starts table data replication to the specified Kinesis data stream at
+%% a timestamp chosen during the enable workflow.
+%%
+%% If this operation doesn't return results immediately, use
+%% DescribeKinesisStreamingDestination to check if streaming to the Kinesis
+%% data stream is ACTIVE.
+enable_kinesis_streaming_destination(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    enable_kinesis_streaming_destination(Client, Input, []).
+enable_kinesis_streaming_destination(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"EnableKinesisStreamingDestination">>, Input, Options).
+
+%% @doc This operation allows you to perform reads and singleton writes on
+%% data stored in DynamoDB, using PartiQL.
+execute_statement(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    execute_statement(Client, Input, []).
+execute_statement(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ExecuteStatement">>, Input, Options).
+
+%% @doc This operation allows you to perform transactional reads or writes on
+%% data stored in DynamoDB, using PartiQL.
+execute_transaction(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    execute_transaction(Client, Input, []).
+execute_transaction(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ExecuteTransaction">>, Input, Options).
 
 %% @doc Exports table data to an S3 bucket.
 %%

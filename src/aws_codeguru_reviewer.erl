@@ -13,6 +13,12 @@
 %% overall quality and maintainability of your code base during the code
 %% review stage. For more information about CodeGuru Reviewer, see the Amazon
 %% CodeGuru Reviewer User Guide.
+%%
+%% To improve the security of your CodeGuru Reviewer API calls, you can
+%% establish a private connection between your VPC and CodeGuru Reviewer by
+%% creating an interface VPC endpoint. For more information, see CodeGuru
+%% Reviewer and interface VPC endpoints (AWS PrivateLink) in the Amazon
+%% CodeGuru Reviewer User Guide.
 -module(aws_codeguru_reviewer).
 
 -export([associate_repository/2,
@@ -35,8 +41,14 @@
          list_recommendations/5,
          list_repository_associations/7,
          list_repository_associations/8,
+         list_tags_for_resource/2,
+         list_tags_for_resource/3,
          put_recommendation_feedback/2,
-         put_recommendation_feedback/3]).
+         put_recommendation_feedback/3,
+         tag_resource/3,
+         tag_resource/4,
+         untag_resource/3,
+         untag_resource/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -81,7 +93,12 @@ associate_repository(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Use to create a code review for a repository analysis.
+%% @doc Use to create a code review with a `CodeReviewType' of
+%% `RepositoryAnalysis'.
+%%
+%% This type of code review analyzes all code under a specified branch in an
+%% associated repository. `PullRequest' code reviews are automatically
+%% triggered by a pull request so cannot be created using this method.
 create_code_review(Client, Input) ->
     create_code_review(Client, Input, []).
 create_code_review(Client, Input0, Options) ->
@@ -263,6 +280,22 @@ list_repository_associations(Client, MaxResults, Names, NextToken, Owners, Provi
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns the list of tags associated with an associated repository
+%% resource.
+list_tags_for_resource(Client, ResourceArn)
+  when is_map(Client) ->
+    list_tags_for_resource(Client, ResourceArn, []).
+list_tags_for_resource(Client, ResourceArn, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Stores customer feedback for a CodeGuru Reviewer recommendation.
 %%
 %% When this API is called again with different reactions the previous
@@ -280,6 +313,39 @@ put_recommendation_feedback(Client, Input0, Options) ->
     Query_ = [],
     Input = Input1,
 
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Adds one or more tags to an associated repository.
+tag_resource(Client, ResourceArn, Input) ->
+    tag_resource(Client, ResourceArn, Input, []).
+tag_resource(Client, ResourceArn, Input0, Options) ->
+    Method = post,
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes a tag from an associated repository.
+untag_resource(Client, ResourceArn, Input) ->
+    untag_resource(Client, ResourceArn, Input, []).
+untag_resource(Client, ResourceArn, Input0, Options) ->
+    Method = delete,
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    QueryMapping = [
+                     {<<"tagKeys">>, <<"TagKeys">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %%====================================================================

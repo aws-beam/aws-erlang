@@ -203,6 +203,9 @@ continue_update_rollback(Client, Input, Options)
 %% When you are satisfied with the changes the change set will make, execute
 %% the change set by using the `ExecuteChangeSet' action. AWS CloudFormation
 %% doesn't make changes until you execute the change set.
+%%
+%% To create a change set for the entire stack hierachy, set
+%% `IncludeNestedStacks' to `True'.
 create_change_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_change_set(Client, Input, []).
@@ -249,6 +252,11 @@ create_stack_set(Client, Input, Options)
 %%
 %% If the call successfully completes, AWS CloudFormation successfully
 %% deleted the change set.
+%%
+%% If `IncludeNestedStacks' specifies `True' during the creation of the
+%% nested change set, then `DeleteChangeSet' will delete all change sets that
+%% belong to the stacks hierarchy and will also delete all change sets for
+%% nested stacks with the status of `REVIEW_IN_PROGRESS'.
 delete_change_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_change_set(Client, Input, []).
@@ -630,6 +638,9 @@ estimate_template_cost(Client, Input, Options)
 %% If a stack policy is associated with the stack, AWS CloudFormation
 %% enforces the policy during the update. You can't specify a temporary stack
 %% policy that overrides the current policy.
+%%
+%% To create a change set for the entire stack hierachy,
+%% `IncludeNestedStacks' must have been set to `True'.
 execute_change_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     execute_change_set(Client, Input, []).

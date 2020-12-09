@@ -1,12 +1,12 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon EMR is a web service that makes it easy to process large
+%% @doc Amazon EMR is a web service that makes it easier to process large
 %% amounts of data efficiently.
 %%
-%% Amazon EMR uses Hadoop processing combined with several AWS products to do
+%% Amazon EMR uses Hadoop processing combined with several AWS services to do
 %% tasks such as web indexing, data mining, log file analysis, machine
-%% learning, scientific simulation, and data warehousing.
+%% learning, scientific simulation, and data warehouse management.
 -module(aws_emr).
 
 -export([add_instance_fleet/2,
@@ -21,8 +21,16 @@
          cancel_steps/3,
          create_security_configuration/2,
          create_security_configuration/3,
+         create_studio/2,
+         create_studio/3,
+         create_studio_session_mapping/2,
+         create_studio_session_mapping/3,
          delete_security_configuration/2,
          delete_security_configuration/3,
+         delete_studio/2,
+         delete_studio/3,
+         delete_studio_session_mapping/2,
+         delete_studio_session_mapping/3,
          describe_cluster/2,
          describe_cluster/3,
          describe_job_flows/2,
@@ -33,10 +41,14 @@
          describe_security_configuration/3,
          describe_step/2,
          describe_step/3,
+         describe_studio/2,
+         describe_studio/3,
          get_block_public_access_configuration/2,
          get_block_public_access_configuration/3,
          get_managed_scaling_policy/2,
          get_managed_scaling_policy/3,
+         get_studio_session_mapping/2,
+         get_studio_session_mapping/3,
          list_bootstrap_actions/2,
          list_bootstrap_actions/3,
          list_clusters/2,
@@ -53,6 +65,10 @@
          list_security_configurations/3,
          list_steps/2,
          list_steps/3,
+         list_studio_session_mappings/2,
+         list_studio_session_mappings/3,
+         list_studios/2,
+         list_studios/3,
          modify_cluster/2,
          modify_cluster/3,
          modify_instance_fleet/2,
@@ -82,7 +98,9 @@
          stop_notebook_execution/2,
          stop_notebook_execution/3,
          terminate_job_flows/2,
-         terminate_job_flows/3]).
+         terminate_job_flows/3,
+         update_studio_session_mapping/2,
+         update_studio_session_mapping/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -157,9 +175,9 @@ add_tags(Client, Input, Options)
 %%
 %% Available only in Amazon EMR versions 4.8.0 and later, excluding version
 %% 5.0.0. A maximum of 256 steps are allowed in each CancelSteps request.
-%% CancelSteps is idempotent but asynchronous; it does not guarantee a step
-%% will be canceled, even if the request is successfully submitted. You can
-%% only cancel steps that are in a `PENDING' state.
+%% CancelSteps is idempotent but asynchronous; it does not guarantee that a
+%% step will be canceled, even if the request is successfully submitted. You
+%% can only cancel steps that are in a `PENDING' state.
 cancel_steps(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_steps(Client, Input, []).
@@ -176,6 +194,30 @@ create_security_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSecurityConfiguration">>, Input, Options).
 
+%% @doc The Amazon EMR Studio APIs are in preview release for Amazon EMR and
+%% are subject to change.
+%%
+%% Creates a new Amazon EMR Studio.
+create_studio(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_studio(Client, Input, []).
+create_studio(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateStudio">>, Input, Options).
+
+%% @doc The Amazon EMR Studio APIs are in preview release for Amazon EMR and
+%% are subject to change.
+%%
+%% Maps a user or group to the Amazon EMR Studio specified by `StudioId', and
+%% applies a session policy to refine Studio permissions for that user or
+%% group.
+create_studio_session_mapping(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_studio_session_mapping(Client, Input, []).
+create_studio_session_mapping(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateStudioSessionMapping">>, Input, Options).
+
 %% @doc Deletes a security configuration.
 delete_security_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -183,6 +225,28 @@ delete_security_configuration(Client, Input)
 delete_security_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSecurityConfiguration">>, Input, Options).
+
+%% @doc The Amazon EMR Studio APIs are in preview release for Amazon EMR and
+%% are subject to change.
+%%
+%% Removes an Amazon EMR Studio from the Studio metadata store.
+delete_studio(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_studio(Client, Input, []).
+delete_studio(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteStudio">>, Input, Options).
+
+%% @doc The Amazon EMR Studio APIs are in preview release for Amazon EMR and
+%% are subject to change.
+%%
+%% Removes a user or group from an Amazon EMR Studio.
+delete_studio_session_mapping(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_studio_session_mapping(Client, Input, []).
+delete_studio_session_mapping(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteStudioSessionMapping">>, Input, Options).
 
 %% @doc Provides cluster-level details including status, hardware and
 %% software configuration, VPC settings, and so on.
@@ -193,7 +257,7 @@ describe_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCluster">>, Input, Options).
 
-%% @doc This API is deprecated and will eventually be removed.
+%% @doc This API is no longer supported and will eventually be removed.
 %%
 %% We recommend you use `ListClusters', `DescribeCluster', `ListSteps',
 %% `ListInstanceGroups' and `ListBootstrapActions' instead.
@@ -246,6 +310,18 @@ describe_step(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStep">>, Input, Options).
 
+%% @doc The Amazon EMR Studio APIs are in preview release for Amazon EMR and
+%% are subject to change.
+%%
+%% Returns details for the specified Amazon EMR Studio including ID, Name,
+%% VPC, Studio access URL, and so on.
+describe_studio(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_studio(Client, Input, []).
+describe_studio(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeStudio">>, Input, Options).
+
 %% @doc Returns the Amazon EMR block public access configuration for your AWS
 %% account in the current Region.
 %%
@@ -266,6 +342,18 @@ get_managed_scaling_policy(Client, Input)
 get_managed_scaling_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetManagedScalingPolicy">>, Input, Options).
+
+%% @doc The Amazon EMR Studio APIs are in preview release for Amazon EMR and
+%% are subject to change.
+%%
+%% Fetches mapping details for the specified Amazon EMR Studio and identity
+%% (user or group).
+get_studio_session_mapping(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_studio_session_mapping(Client, Input, []).
+get_studio_session_mapping(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetStudioSessionMapping">>, Input, Options).
 
 %% @doc Provides information about the bootstrap actions associated with a
 %% cluster.
@@ -357,6 +445,31 @@ list_steps(Client, Input)
 list_steps(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSteps">>, Input, Options).
+
+%% @doc The Amazon EMR Studio APIs are in preview release for Amazon EMR and
+%% are subject to change.
+%%
+%% Returns a list of all user or group session mappings for the EMR Studio
+%% specified by `StudioId'.
+list_studio_session_mappings(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_studio_session_mappings(Client, Input, []).
+list_studio_session_mappings(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListStudioSessionMappings">>, Input, Options).
+
+%% @doc The Amazon EMR Studio APIs are in preview release for Amazon EMR and
+%% are subject to change.
+%%
+%% Returns a list of all Amazon EMR Studios associated with the AWS account.
+%% The list includes details such as ID, Studio Access URL, and creation time
+%% for each Studio.
+list_studios(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_studios(Client, Input, []).
+list_studios(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListStudios">>, Input, Options).
 
 %% @doc Modifies the number of steps that can be executed concurrently for
 %% the cluster specified using ClusterID.
@@ -582,6 +695,18 @@ terminate_job_flows(Client, Input)
 terminate_job_flows(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TerminateJobFlows">>, Input, Options).
+
+%% @doc The Amazon EMR Studio APIs are in preview release for Amazon EMR and
+%% are subject to change.
+%%
+%% Updates the session policy attached to the user or group for the specified
+%% Amazon EMR Studio.
+update_studio_session_mapping(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_studio_session_mapping(Client, Input, []).
+update_studio_session_mapping(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateStudioSessionMapping">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

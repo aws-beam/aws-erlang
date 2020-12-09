@@ -63,8 +63,8 @@
          get_event_types/3,
          get_external_models/2,
          get_external_models/3,
-         get_k_m_s_encryption_key/2,
-         get_k_m_s_encryption_key/3,
+         get_kms_encryption_key/2,
+         get_kms_encryption_key/3,
          get_labels/2,
          get_labels/3,
          get_model_version/2,
@@ -87,8 +87,8 @@
          put_event_type/3,
          put_external_model/2,
          put_external_model/3,
-         put_k_m_s_encryption_key/2,
-         put_k_m_s_encryption_key/3,
+         put_kms_encryption_key/2,
+         put_kms_encryption_key/3,
          put_label/2,
          put_label/3,
          put_outcome/2,
@@ -457,10 +457,10 @@ get_external_models(Client, Input, Options)
 %% @doc Gets the encryption key if a Key Management Service (KMS) customer
 %% master key (CMK) has been specified to be used to encrypt content in
 %% Amazon Fraud Detector.
-get_k_m_s_encryption_key(Client, Input)
+get_kms_encryption_key(Client, Input)
   when is_map(Client), is_map(Input) ->
-    get_k_m_s_encryption_key(Client, Input, []).
-get_k_m_s_encryption_key(Client, Input, Options)
+    get_kms_encryption_key(Client, Input, []).
+get_kms_encryption_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetKMSEncryptionKey">>, Input, Options).
 
@@ -616,10 +616,10 @@ put_external_model(Client, Input, Options)
 
 %% @doc Specifies the Key Management Service (KMS) customer master key (CMK)
 %% to be used to encrypt content in Amazon Fraud Detector.
-put_k_m_s_encryption_key(Client, Input)
+put_kms_encryption_key(Client, Input)
   when is_map(Client), is_map(Input) ->
-    put_k_m_s_encryption_key(Client, Input, []).
-put_k_m_s_encryption_key(Client, Input, Options)
+    put_kms_encryption_key(Client, Input, []).
+put_kms_encryption_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutKMSEncryptionKey">>, Input, Options).
 

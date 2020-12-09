@@ -60,6 +60,8 @@
          send_task_success/3,
          start_execution/2,
          start_execution/3,
+         start_sync_execution/2,
+         start_sync_execution/3,
          stop_execution/2,
          stop_execution/3,
          tag_resource/2,
@@ -362,6 +364,14 @@ start_execution(Client, Input)
 start_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartExecution">>, Input, Options).
+
+%% @doc Starts a Synchronous Express state machine execution.
+start_sync_execution(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_sync_execution(Client, Input, []).
+start_sync_execution(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartSyncExecution">>, Input, Options).
 
 %% @doc Stops an execution.
 %%

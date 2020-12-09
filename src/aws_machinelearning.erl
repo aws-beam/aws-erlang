@@ -8,16 +8,16 @@
          add_tags/3,
          create_batch_prediction/2,
          create_batch_prediction/3,
-         create_data_source_from_r_d_s/2,
-         create_data_source_from_r_d_s/3,
+         create_data_source_from_rds/2,
+         create_data_source_from_rds/3,
          create_data_source_from_redshift/2,
          create_data_source_from_redshift/3,
          create_data_source_from_s3/2,
          create_data_source_from_s3/3,
          create_evaluation/2,
          create_evaluation/3,
-         create_m_l_model/2,
-         create_m_l_model/3,
+         create_ml_model/2,
+         create_ml_model/3,
          create_realtime_endpoint/2,
          create_realtime_endpoint/3,
          delete_batch_prediction/2,
@@ -26,8 +26,8 @@
          delete_data_source/3,
          delete_evaluation/2,
          delete_evaluation/3,
-         delete_m_l_model/2,
-         delete_m_l_model/3,
+         delete_ml_model/2,
+         delete_ml_model/3,
          delete_realtime_endpoint/2,
          delete_realtime_endpoint/3,
          delete_tags/2,
@@ -38,8 +38,8 @@
          describe_data_sources/3,
          describe_evaluations/2,
          describe_evaluations/3,
-         describe_m_l_models/2,
-         describe_m_l_models/3,
+         describe_ml_models/2,
+         describe_ml_models/3,
          describe_tags/2,
          describe_tags/3,
          get_batch_prediction/2,
@@ -48,8 +48,8 @@
          get_data_source/3,
          get_evaluation/2,
          get_evaluation/3,
-         get_m_l_model/2,
-         get_m_l_model/3,
+         get_ml_model/2,
+         get_ml_model/3,
          predict/2,
          predict/3,
          update_batch_prediction/2,
@@ -58,8 +58,8 @@
          update_data_source/3,
          update_evaluation/2,
          update_evaluation/3,
-         update_m_l_model/2,
-         update_m_l_model/3]).
+         update_ml_model/2,
+         update_ml_model/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -120,10 +120,10 @@ create_batch_prediction(Client, Input, Options)
 %% If Amazon ML cannot accept the input source, it sets the `Status'
 %% parameter to `FAILED' and includes an error message in the `Message'
 %% attribute of the `GetDataSource' operation response.
-create_data_source_from_r_d_s(Client, Input)
+create_data_source_from_rds(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_data_source_from_r_d_s(Client, Input, []).
-create_data_source_from_r_d_s(Client, Input, Options)
+    create_data_source_from_rds(Client, Input, []).
+create_data_source_from_rds(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDataSourceFromRDS">>, Input, Options).
 
@@ -261,10 +261,10 @@ create_evaluation(Client, Input, Options)
 %% can be created by setting `ComputeStatistics' to `true' in
 %% `CreateDataSourceFromRDS', `CreateDataSourceFromS3', or
 %% `CreateDataSourceFromRedshift' operations.
-create_m_l_model(Client, Input)
+create_ml_model(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_m_l_model(Client, Input, []).
-create_m_l_model(Client, Input, Options)
+    create_ml_model(Client, Input, []).
+create_ml_model(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateMLModel">>, Input, Options).
 
@@ -333,10 +333,10 @@ delete_evaluation(Client, Input, Options)
 %% operation to verify that the status of the `MLModel' changed to DELETED.
 %%
 %% Caution: The result of the `DeleteMLModel' operation is irreversible.
-delete_m_l_model(Client, Input)
+delete_ml_model(Client, Input)
   when is_map(Client), is_map(Input) ->
-    delete_m_l_model(Client, Input, []).
-delete_m_l_model(Client, Input, Options)
+    delete_ml_model(Client, Input, []).
+delete_ml_model(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMLModel">>, Input, Options).
 
@@ -389,10 +389,10 @@ describe_evaluations(Client, Input, Options)
 
 %% @doc Returns a list of `MLModel' that match the search criteria in the
 %% request.
-describe_m_l_models(Client, Input)
+describe_ml_models(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_m_l_models(Client, Input, []).
-describe_m_l_models(Client, Input, Options)
+    describe_ml_models(Client, Input, []).
+describe_ml_models(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMLModels">>, Input, Options).
 
@@ -439,10 +439,10 @@ get_evaluation(Client, Input, Options)
 %% information, and the current status of the `MLModel'.
 %%
 %% `GetMLModel' provides results in normal or verbose format.
-get_m_l_model(Client, Input)
+get_ml_model(Client, Input)
   when is_map(Client), is_map(Input) ->
-    get_m_l_model(Client, Input, []).
-get_m_l_model(Client, Input, Options)
+    get_ml_model(Client, Input, []).
+get_ml_model(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMLModel">>, Input, Options).
 
@@ -495,10 +495,10 @@ update_evaluation(Client, Input, Options)
 %%
 %% You can use the `GetMLModel' operation to view the contents of the updated
 %% data element.
-update_m_l_model(Client, Input)
+update_ml_model(Client, Input)
   when is_map(Client), is_map(Input) ->
-    update_m_l_model(Client, Input, []).
-update_m_l_model(Client, Input, Options)
+    update_ml_model(Client, Input, []).
+update_ml_model(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateMLModel">>, Input, Options).
 

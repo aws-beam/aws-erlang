@@ -19,16 +19,22 @@
          add_permission/4,
          create_alias/3,
          create_alias/4,
+         create_code_signing_config/2,
+         create_code_signing_config/3,
          create_event_source_mapping/2,
          create_event_source_mapping/3,
          create_function/2,
          create_function/3,
          delete_alias/4,
          delete_alias/5,
+         delete_code_signing_config/3,
+         delete_code_signing_config/4,
          delete_event_source_mapping/3,
          delete_event_source_mapping/4,
          delete_function/3,
          delete_function/4,
+         delete_function_code_signing_config/3,
+         delete_function_code_signing_config/4,
          delete_function_concurrency/3,
          delete_function_concurrency/4,
          delete_function_event_invoke_config/3,
@@ -41,10 +47,14 @@
          get_account_settings/2,
          get_alias/3,
          get_alias/4,
+         get_code_signing_config/2,
+         get_code_signing_config/3,
          get_event_source_mapping/2,
          get_event_source_mapping/3,
          get_function/3,
          get_function/4,
+         get_function_code_signing_config/2,
+         get_function_code_signing_config/3,
          get_function_concurrency/2,
          get_function_concurrency/3,
          get_function_configuration/3,
@@ -67,12 +77,16 @@
          invoke_async/4,
          list_aliases/5,
          list_aliases/6,
+         list_code_signing_configs/3,
+         list_code_signing_configs/4,
          list_event_source_mappings/5,
          list_event_source_mappings/6,
          list_function_event_invoke_configs/4,
          list_function_event_invoke_configs/5,
          list_functions/5,
          list_functions/6,
+         list_functions_by_code_signing_config/4,
+         list_functions_by_code_signing_config/5,
          list_layer_versions/5,
          list_layer_versions/6,
          list_layers/4,
@@ -87,6 +101,8 @@
          publish_layer_version/4,
          publish_version/3,
          publish_version/4,
+         put_function_code_signing_config/3,
+         put_function_code_signing_config/4,
          put_function_concurrency/3,
          put_function_concurrency/4,
          put_function_event_invoke_config/3,
@@ -103,6 +119,8 @@
          untag_resource/4,
          update_alias/4,
          update_alias/5,
+         update_code_signing_config/3,
+         update_code_signing_config/4,
          update_event_source_mapping/3,
          update_event_source_mapping/4,
          update_function_code/3,
@@ -201,6 +219,26 @@ create_alias(Client, FunctionName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a code signing configuration.
+%%
+%% A code signing configuration defines a list of allowed signing profiles
+%% and defines the code-signing validation policy (action to be taken if
+%% deployment validation checks fail).
+create_code_signing_config(Client, Input) ->
+    create_code_signing_config(Client, Input, []).
+create_code_signing_config(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/2020-04-22/code-signing-configs/"],
+    SuccessStatusCode = 201,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a mapping between an event source and an AWS Lambda function.
 %%
 %% Lambda reads items from the event source and triggers the function.
@@ -212,6 +250,8 @@ create_alias(Client, FunctionName, Input0, Options) ->
 %% </li> <li> Using AWS Lambda with Amazon Kinesis
 %%
 %% </li> <li> Using AWS Lambda with Amazon SQS
+%%
+%% </li> <li> Using AWS Lambda with Amazon MQ
 %%
 %% </li> <li> Using AWS Lambda with Amazon MSK
 %%
@@ -280,6 +320,13 @@ create_event_source_mapping(Client, Input0, Options) ->
 %% (`TagResource') and per-function concurrency limits
 %% (`PutFunctionConcurrency').
 %%
+%% To enable code signing for this function, specify the ARN of a
+%% code-signing configuration. When a user attempts to deploy a code package
+%% with `UpdateFunctionCode', Lambda checks that the code package has a valid
+%% signature from a trusted publisher. The code-signing configuration
+%% includes set set of signing profiles, which define the trusted publishers
+%% for this function.
+%%
 %% If another account or an AWS service invokes your function, use
 %% `AddPermission' to grant permission by creating a resource-based IAM
 %% policy. You can grant permissions at the function level, on a version, or
@@ -310,6 +357,25 @@ delete_alias(Client, FunctionName, Name, Input) ->
 delete_alias(Client, FunctionName, Name, Input0, Options) ->
     Method = delete,
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/aliases/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = 204,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the code signing configuration.
+%%
+%% You can delete the code signing configuration only if no function is using
+%% it.
+delete_code_signing_config(Client, CodeSigningConfigArn, Input) ->
+    delete_code_signing_config(Client, CodeSigningConfigArn, Input, []).
+delete_code_signing_config(Client, CodeSigningConfigArn, Input0, Options) ->
+    Method = delete,
+    Path = ["/2020-04-22/code-signing-configs/", aws_util:encode_uri(CodeSigningConfigArn), ""],
     SuccessStatusCode = 204,
 
     Headers = [],
@@ -365,6 +431,22 @@ delete_function(Client, FunctionName, Input0, Options) ->
                      {<<"Qualifier">>, <<"Qualifier">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes the code signing configuration from the function.
+delete_function_code_signing_config(Client, FunctionName, Input) ->
+    delete_function_code_signing_config(Client, FunctionName, Input, []).
+delete_function_code_signing_config(Client, FunctionName, Input0, Options) ->
+    Method = delete,
+    Path = ["/2020-06-30/functions/", aws_util:encode_uri(FunctionName), "/code-signing-config"],
+    SuccessStatusCode = 204,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a concurrent execution limit from a function.
@@ -472,6 +554,21 @@ get_alias(Client, FunctionName, Name, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns information about the specified code signing configuration.
+get_code_signing_config(Client, CodeSigningConfigArn)
+  when is_map(Client) ->
+    get_code_signing_config(Client, CodeSigningConfigArn, []).
+get_code_signing_config(Client, CodeSigningConfigArn, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/2020-04-22/code-signing-configs/", aws_util:encode_uri(CodeSigningConfigArn), ""],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns details about an event source mapping.
 %%
 %% You can get the identifier of a mapping from the output of
@@ -510,6 +607,21 @@ get_function(Client, FunctionName, Qualifier, Options)
         {<<"Qualifier">>, Qualifier}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the code signing configuration for the specified function.
+get_function_code_signing_config(Client, FunctionName)
+  when is_map(Client) ->
+    get_function_code_signing_config(Client, FunctionName, []).
+get_function_code_signing_config(Client, FunctionName, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/2020-06-30/functions/", aws_util:encode_uri(FunctionName), "/code-signing-config"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -789,6 +901,30 @@ list_aliases(Client, FunctionName, FunctionVersion, Marker, MaxItems, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns a list of code signing configurations for the specified
+%% function.
+%%
+%% A request returns up to 10,000 configurations per call. You can use the
+%% `MaxItems' parameter to return fewer configurations per call.
+list_code_signing_configs(Client, Marker, MaxItems)
+  when is_map(Client) ->
+    list_code_signing_configs(Client, Marker, MaxItems, []).
+list_code_signing_configs(Client, Marker, MaxItems, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/2020-04-22/code-signing-configs/"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"Marker">>, Marker},
+        {<<"MaxItems">>, MaxItems}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists event source mappings.
 %%
 %% Specify an `EventSourceArn' to only show event source mappings for a
@@ -861,6 +997,29 @@ list_functions(Client, FunctionVersion, Marker, MasterRegion, MaxItems, Options)
         {<<"FunctionVersion">>, FunctionVersion},
         {<<"Marker">>, Marker},
         {<<"MasterRegion">>, MasterRegion},
+        {<<"MaxItems">>, MaxItems}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc List the functions that use the specified code signing configuration.
+%%
+%% You can use this method prior to deleting a code signing configuration, to
+%% verify that no functions are using it.
+list_functions_by_code_signing_config(Client, CodeSigningConfigArn, Marker, MaxItems)
+  when is_map(Client) ->
+    list_functions_by_code_signing_config(Client, CodeSigningConfigArn, Marker, MaxItems, []).
+list_functions_by_code_signing_config(Client, CodeSigningConfigArn, Marker, MaxItems, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/2020-04-22/code-signing-configs/", aws_util:encode_uri(CodeSigningConfigArn), "/functions"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"Marker">>, Marker},
         {<<"MaxItems">>, MaxItems}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
@@ -1019,6 +1178,25 @@ publish_version(Client, FunctionName, Input0, Options) ->
     Method = post,
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/versions"],
     SuccessStatusCode = 201,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Update the code signing configuration for the function.
+%%
+%% Changes to the code signing configuration take effect the next time a user
+%% tries to deploy a code package to the function.
+put_function_code_signing_config(Client, FunctionName, Input) ->
+    put_function_code_signing_config(Client, FunctionName, Input, []).
+put_function_code_signing_config(Client, FunctionName, Input0, Options) ->
+    Method = put,
+    Path = ["/2020-06-30/functions/", aws_util:encode_uri(FunctionName), "/code-signing-config"],
+    SuccessStatusCode = 200,
 
     Headers = [],
     Input1 = Input0,
@@ -1201,6 +1379,25 @@ update_alias(Client, FunctionName, Name, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Update the code signing configuration.
+%%
+%% Changes to the code signing configuration take effect the next time a user
+%% tries to deploy a code package to the function.
+update_code_signing_config(Client, CodeSigningConfigArn, Input) ->
+    update_code_signing_config(Client, CodeSigningConfigArn, Input, []).
+update_code_signing_config(Client, CodeSigningConfigArn, Input0, Options) ->
+    Method = put,
+    Path = ["/2020-04-22/code-signing-configs/", aws_util:encode_uri(CodeSigningConfigArn), ""],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates an event source mapping.
 %%
 %% You can change the function that AWS Lambda invokes, or pause invocation
@@ -1243,6 +1440,10 @@ update_event_source_mapping(Client, UUID, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a Lambda function's code.
+%%
+%% If code signing is enabled for the function, the code package must be
+%% signed by a trusted publisher. For more information, see Configuring code
+%% signing.
 %%
 %% The function's code is locked when you publish a version. You can't modify
 %% the code of a published version, only the unpublished version.

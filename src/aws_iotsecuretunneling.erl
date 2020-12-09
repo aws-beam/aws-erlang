@@ -6,8 +6,8 @@
 %% AWS IoT Secure Tunnling enables you to create remote connections to
 %% devices deployed in the field.
 %%
-%% For more information about how AWS IoT Secure Tunneling works, see the
-%% User Guide.
+%% For more information about how AWS IoT Secure Tunneling works, see AWS IoT
+%% Secure Tunneling.
 -module(aws_iotsecuretunneling).
 
 -export([close_tunnel/2,
@@ -72,8 +72,6 @@ list_tunnels(Client, Input, Options)
 
 %% @doc Creates a new tunnel, and returns two client access tokens for
 %% clients to use to connect to the AWS IoT Secure Tunneling proxy server.
-%%
-%% .
 open_tunnel(Client, Input)
   when is_map(Client), is_map(Input) ->
     open_tunnel(Client, Input, []).

@@ -70,22 +70,22 @@
 %% </li> </ul>
 -module(aws_wafv2).
 
--export([associate_web_a_c_l/2,
-         associate_web_a_c_l/3,
+-export([associate_web_acl/2,
+         associate_web_acl/3,
          check_capacity/2,
          check_capacity/3,
-         create_i_p_set/2,
-         create_i_p_set/3,
+         create_ip_set/2,
+         create_ip_set/3,
          create_regex_pattern_set/2,
          create_regex_pattern_set/3,
          create_rule_group/2,
          create_rule_group/3,
-         create_web_a_c_l/2,
-         create_web_a_c_l/3,
+         create_web_acl/2,
+         create_web_acl/3,
          delete_firewall_manager_rule_groups/2,
          delete_firewall_manager_rule_groups/3,
-         delete_i_p_set/2,
-         delete_i_p_set/3,
+         delete_ip_set/2,
+         delete_ip_set/3,
          delete_logging_configuration/2,
          delete_logging_configuration/3,
          delete_permission_policy/2,
@@ -94,14 +94,14 @@
          delete_regex_pattern_set/3,
          delete_rule_group/2,
          delete_rule_group/3,
-         delete_web_a_c_l/2,
-         delete_web_a_c_l/3,
+         delete_web_acl/2,
+         delete_web_acl/3,
          describe_managed_rule_group/2,
          describe_managed_rule_group/3,
-         disassociate_web_a_c_l/2,
-         disassociate_web_a_c_l/3,
-         get_i_p_set/2,
-         get_i_p_set/3,
+         disassociate_web_acl/2,
+         disassociate_web_acl/3,
+         get_ip_set/2,
+         get_ip_set/3,
          get_logging_configuration/2,
          get_logging_configuration/3,
          get_permission_policy/2,
@@ -114,26 +114,26 @@
          get_rule_group/3,
          get_sampled_requests/2,
          get_sampled_requests/3,
-         get_web_a_c_l/2,
-         get_web_a_c_l/3,
-         get_web_a_c_l_for_resource/2,
-         get_web_a_c_l_for_resource/3,
+         get_web_acl/2,
+         get_web_acl/3,
+         get_web_acl_for_resource/2,
+         get_web_acl_for_resource/3,
          list_available_managed_rule_groups/2,
          list_available_managed_rule_groups/3,
-         list_i_p_sets/2,
-         list_i_p_sets/3,
+         list_ip_sets/2,
+         list_ip_sets/3,
          list_logging_configurations/2,
          list_logging_configurations/3,
          list_regex_pattern_sets/2,
          list_regex_pattern_sets/3,
-         list_resources_for_web_a_c_l/2,
-         list_resources_for_web_a_c_l/3,
+         list_resources_for_web_acl/2,
+         list_resources_for_web_acl/3,
          list_rule_groups/2,
          list_rule_groups/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
-         list_web_a_c_ls/2,
-         list_web_a_c_ls/3,
+         list_web_acls/2,
+         list_web_acls/3,
          put_logging_configuration/2,
          put_logging_configuration/3,
          put_permission_policy/2,
@@ -142,14 +142,14 @@
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
-         update_i_p_set/2,
-         update_i_p_set/3,
+         update_ip_set/2,
+         update_ip_set/3,
          update_regex_pattern_set/2,
          update_regex_pattern_set/3,
          update_rule_group/2,
          update_rule_group/3,
-         update_web_a_c_l/2,
-         update_web_a_c_l/3]).
+         update_web_acl/2,
+         update_web_acl/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -171,10 +171,10 @@
 %% distribution configuration. To associate a Web ACL, in the CloudFront call
 %% `UpdateDistribution', set the web ACL ID to the Amazon Resource Name (ARN)
 %% of the Web ACL. For information, see UpdateDistribution.
-associate_web_a_c_l(Client, Input)
+associate_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
-    associate_web_a_c_l(Client, Input, []).
-associate_web_a_c_l(Client, Input, Options)
+    associate_web_acl(Client, Input, []).
+associate_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateWebACL">>, Input, Options).
 
@@ -213,10 +213,10 @@ check_capacity(Client, Input, Options)
 %% you're receiving a lot of requests from a ranges of IP addresses, you can
 %% configure AWS WAF to block them using an IPSet that lists those IP
 %% addresses.
-create_i_p_set(Client, Input)
+create_ip_set(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_i_p_set(Client, Input, []).
-create_i_p_set(Client, Input, Options)
+    create_ip_set(Client, Input, []).
+create_ip_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateIPSet">>, Input, Options).
 
@@ -273,10 +273,10 @@ create_rule_group(Client, Input, Options)
 %% ACL with one or more AWS resources to protect. The resources can be Amazon
 %% CloudFront, an Amazon API Gateway REST API, an Application Load Balancer,
 %% or an AWS AppSync GraphQL API.
-create_web_a_c_l(Client, Input)
+create_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_web_a_c_l(Client, Input, []).
-create_web_a_c_l(Client, Input, Options)
+    create_web_acl(Client, Input, []).
+create_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWebACL">>, Input, Options).
 
@@ -299,10 +299,10 @@ delete_firewall_manager_rule_groups(Client, Input, Options)
 %% prior release, see the AWS WAF Developer Guide.
 %%
 %% Deletes the specified `IPSet'.
-delete_i_p_set(Client, Input)
+delete_ip_set(Client, Input)
   when is_map(Client), is_map(Input) ->
-    delete_i_p_set(Client, Input, []).
-delete_i_p_set(Client, Input, Options)
+    delete_ip_set(Client, Input, []).
+delete_ip_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteIPSet">>, Input, Options).
 
@@ -368,10 +368,10 @@ delete_rule_group(Client, Input, Options)
 %%
 %% You can only use this if `ManagedByFirewallManager' is false in the
 %% specified `WebACL'.
-delete_web_a_c_l(Client, Input)
+delete_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
-    delete_web_a_c_l(Client, Input, []).
-delete_web_a_c_l(Client, Input, Options)
+    delete_web_acl(Client, Input, []).
+delete_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWebACL">>, Input, Options).
 
@@ -404,10 +404,10 @@ describe_managed_rule_group(Client, Input, Options)
 %% distribution configuration. To disassociate a Web ACL, provide an empty
 %% web ACL ID in the CloudFront call `UpdateDistribution'. For information,
 %% see UpdateDistribution.
-disassociate_web_a_c_l(Client, Input)
+disassociate_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
-    disassociate_web_a_c_l(Client, Input, []).
-disassociate_web_a_c_l(Client, Input, Options)
+    disassociate_web_acl(Client, Input, []).
+disassociate_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateWebACL">>, Input, Options).
 
@@ -418,10 +418,10 @@ disassociate_web_a_c_l(Client, Input, Options)
 %% prior release, see the AWS WAF Developer Guide.
 %%
 %% Retrieves the specified `IPSet'.
-get_i_p_set(Client, Input)
+get_ip_set(Client, Input)
   when is_map(Client), is_map(Input) ->
-    get_i_p_set(Client, Input, []).
-get_i_p_set(Client, Input, Options)
+    get_ip_set(Client, Input, []).
+get_ip_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetIPSet">>, Input, Options).
 
@@ -526,10 +526,10 @@ get_sampled_requests(Client, Input, Options)
 %% prior release, see the AWS WAF Developer Guide.
 %%
 %% Retrieves the specified `WebACL'.
-get_web_a_c_l(Client, Input)
+get_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
-    get_web_a_c_l(Client, Input, []).
-get_web_a_c_l(Client, Input, Options)
+    get_web_acl(Client, Input, []).
+get_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetWebACL">>, Input, Options).
 
@@ -540,10 +540,10 @@ get_web_a_c_l(Client, Input, Options)
 %% prior release, see the AWS WAF Developer Guide.
 %%
 %% Retrieves the `WebACL' for the specified resource.
-get_web_a_c_l_for_resource(Client, Input)
+get_web_acl_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
-    get_web_a_c_l_for_resource(Client, Input, []).
-get_web_a_c_l_for_resource(Client, Input, Options)
+    get_web_acl_for_resource(Client, Input, []).
+get_web_acl_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetWebACLForResource">>, Input, Options).
 
@@ -571,10 +571,10 @@ list_available_managed_rule_groups(Client, Input, Options)
 %%
 %% Retrieves an array of `IPSetSummary' objects for the IP sets that you
 %% manage.
-list_i_p_sets(Client, Input)
+list_ip_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
-    list_i_p_sets(Client, Input, []).
-list_i_p_sets(Client, Input, Options)
+    list_ip_sets(Client, Input, []).
+list_ip_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListIPSets">>, Input, Options).
 
@@ -617,10 +617,10 @@ list_regex_pattern_sets(Client, Input, Options)
 %% resources that are associated with the specified web ACL. If you want the
 %% list of AWS CloudFront resources, use the AWS CloudFront call
 %% `ListDistributionsByWebACLId'.
-list_resources_for_web_a_c_l(Client, Input)
+list_resources_for_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
-    list_resources_for_web_a_c_l(Client, Input, []).
-list_resources_for_web_a_c_l(Client, Input, Options)
+    list_resources_for_web_acl(Client, Input, []).
+list_resources_for_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResourcesForWebACL">>, Input, Options).
 
@@ -669,10 +669,10 @@ list_tags_for_resource(Client, Input, Options)
 %%
 %% Retrieves an array of `WebACLSummary' objects for the web ACLs that you
 %% manage.
-list_web_a_c_ls(Client, Input)
+list_web_acls(Client, Input)
   when is_map(Client), is_map(Input) ->
-    list_web_a_c_ls(Client, Input, []).
-list_web_a_c_ls(Client, Input, Options)
+    list_web_acls(Client, Input, []).
+list_web_acls(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWebACLs">>, Input, Options).
 
@@ -786,10 +786,10 @@ untag_resource(Client, Input, Options)
 %% prior release, see the AWS WAF Developer Guide.
 %%
 %% Updates the specified `IPSet'.
-update_i_p_set(Client, Input)
+update_ip_set(Client, Input)
   when is_map(Client), is_map(Input) ->
-    update_i_p_set(Client, Input, []).
-update_i_p_set(Client, Input, Options)
+    update_ip_set(Client, Input, []).
+update_ip_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateIPSet">>, Input, Options).
 
@@ -844,10 +844,10 @@ update_rule_group(Client, Input, Options)
 %% ACL with one or more AWS resources to protect. The resources can be Amazon
 %% CloudFront, an Amazon API Gateway REST API, an Application Load Balancer,
 %% or an AWS AppSync GraphQL API.
-update_web_a_c_l(Client, Input)
+update_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
-    update_web_a_c_l(Client, Input, []).
-update_web_a_c_l(Client, Input, Options)
+    update_web_acl(Client, Input, []).
+update_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateWebACL">>, Input, Options).
 

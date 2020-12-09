@@ -25,6 +25,10 @@
          initialize_cluster/3,
          list_tags/2,
          list_tags/3,
+         modify_backup_attributes/2,
+         modify_backup_attributes/3,
+         modify_cluster/2,
+         modify_cluster/3,
          restore_backup/2,
          restore_backup/3,
          tag_resource/2,
@@ -157,6 +161,22 @@ list_tags(Client, Input)
 list_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTags">>, Input, Options).
+
+%% @doc Modifies attributes for AWS CloudHSM backup.
+modify_backup_attributes(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_backup_attributes(Client, Input, []).
+modify_backup_attributes(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyBackupAttributes">>, Input, Options).
+
+%% @doc Modifies AWS CloudHSM cluster.
+modify_cluster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_cluster(Client, Input, []).
+modify_cluster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyCluster">>, Input, Options).
 
 %% @doc Restores a specified AWS CloudHSM backup that is in the
 %% `PENDING_DELETION' state.

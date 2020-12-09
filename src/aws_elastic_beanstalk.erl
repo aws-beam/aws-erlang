@@ -26,8 +26,8 @@
          apply_environment_managed_action/3,
          associate_environment_operations_role/2,
          associate_environment_operations_role/3,
-         check_d_n_s_availability/2,
-         check_d_n_s_availability/3,
+         check_dns_availability/2,
+         check_dns_availability/3,
          compose_environments/2,
          compose_environments/3,
          create_application/2,
@@ -96,8 +96,8 @@
          restart_app_server/3,
          retrieve_environment_info/2,
          retrieve_environment_info/3,
-         swap_environment_c_n_a_m_es/2,
-         swap_environment_c_n_a_m_es/3,
+         swap_environment_cnames/2,
+         swap_environment_cnames/3,
          terminate_environment/2,
          terminate_environment/3,
          update_application/2,
@@ -156,10 +156,10 @@ associate_environment_operations_role(Client, Input, Options)
     request(Client, <<"AssociateEnvironmentOperationsRole">>, Input, Options).
 
 %% @doc Checks if the specified CNAME is available.
-check_d_n_s_availability(Client, Input)
+check_dns_availability(Client, Input)
   when is_map(Client), is_map(Input) ->
-    check_d_n_s_availability(Client, Input, []).
-check_d_n_s_availability(Client, Input, Options)
+    check_dns_availability(Client, Input, []).
+check_dns_availability(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CheckDNSAvailability">>, Input, Options).
 
@@ -602,10 +602,10 @@ retrieve_environment_info(Client, Input, Options)
     request(Client, <<"RetrieveEnvironmentInfo">>, Input, Options).
 
 %% @doc Swaps the CNAMEs of two environments.
-swap_environment_c_n_a_m_es(Client, Input)
+swap_environment_cnames(Client, Input)
   when is_map(Client), is_map(Input) ->
-    swap_environment_c_n_a_m_es(Client, Input, []).
-swap_environment_c_n_a_m_es(Client, Input, Options)
+    swap_environment_cnames(Client, Input, []).
+swap_environment_cnames(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SwapEnvironmentCNAMEs">>, Input, Options).
 

@@ -29,6 +29,8 @@
          create_gateway/3,
          create_portal/2,
          create_portal/3,
+         create_presigned_portal_url/3,
+         create_presigned_portal_url/4,
          create_project/2,
          create_project/3,
          delete_access_policy/3,
@@ -55,6 +57,8 @@
          describe_asset_property/4,
          describe_dashboard/2,
          describe_dashboard/3,
+         describe_default_encryption_configuration/1,
+         describe_default_encryption_configuration/2,
          describe_gateway/2,
          describe_gateway/3,
          describe_gateway_capability_configuration/3,
@@ -93,6 +97,8 @@
          list_projects/5,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         put_default_encryption_configuration/2,
+         put_default_encryption_configuration/3,
          put_logging_options/2,
          put_logging_options/3,
          tag_resource/2,
@@ -340,6 +346,30 @@ create_portal(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a pre-signed URL to a portal.
+%%
+%% Use this operation to create URLs to portals that use AWS Identity and
+%% Access Management (IAM) to authenticate users. An IAM user with access to
+%% a portal can call this API to get a URL to that portal. The URL contains
+%% an authentication token that lets the IAM user access the portal.
+create_presigned_portal_url(Client, PortalId, SessionDurationSeconds)
+  when is_map(Client) ->
+    create_presigned_portal_url(Client, PortalId, SessionDurationSeconds, []).
+create_presigned_portal_url(Client, PortalId, SessionDurationSeconds, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/portals/", aws_util:encode_uri(PortalId), "/presigned-url"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"sessionDurationSeconds">>, SessionDurationSeconds}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Creates a project in the specified portal.
 create_project(Client, Input) ->
     create_project(Client, Input, []).
@@ -571,6 +601,25 @@ describe_dashboard(Client, DashboardId, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/dashboards/", aws_util:encode_uri(DashboardId), ""],
     SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about the default encryption configuration for
+%% the AWS account in the default or specified region.
+%%
+%% For more information, see Key management in the AWS IoT SiteWise User
+%% Guide.
+describe_default_encryption_configuration(Client)
+  when is_map(Client) ->
+    describe_default_encryption_configuration(Client, []).
+describe_default_encryption_configuration(Client, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/configuration/account/encryption"],
+    SuccessStatusCode = undefined,
 
     Headers = [],
 
@@ -1026,6 +1075,25 @@ list_tags_for_resource(Client, ResourceArn, Options)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Sets the default encryption configuration for the AWS account.
+%%
+%% For more information, see Key management in the AWS IoT SiteWise User
+%% Guide.
+put_default_encryption_configuration(Client, Input) ->
+    put_default_encryption_configuration(Client, Input, []).
+put_default_encryption_configuration(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/configuration/account/encryption"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sets logging options for AWS IoT SiteWise.
 put_logging_options(Client, Input) ->
