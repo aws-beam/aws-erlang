@@ -75,6 +75,8 @@
          describe_action_targets/3,
          describe_hub/2,
          describe_hub/3,
+         describe_organization_configuration/1,
+         describe_organization_configuration/2,
          describe_products/3,
          describe_products/4,
          describe_standards/3,
@@ -83,6 +85,8 @@
          describe_standards_controls/5,
          disable_import_findings_for_product/3,
          disable_import_findings_for_product/4,
+         disable_organization_admin_account/2,
+         disable_organization_admin_account/3,
          disable_security_hub/2,
          disable_security_hub/3,
          disassociate_from_master_account/2,
@@ -91,6 +95,8 @@
          disassociate_members/3,
          enable_import_findings_for_product/2,
          enable_import_findings_for_product/3,
+         enable_organization_admin_account/2,
+         enable_organization_admin_account/3,
          enable_security_hub/2,
          enable_security_hub/3,
          get_enabled_standards/2,
@@ -115,6 +121,8 @@
          list_invitations/4,
          list_members/4,
          list_members/5,
+         list_organization_admin_accounts/3,
+         list_organization_admin_accounts/4,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          tag_resource/3,
@@ -127,6 +135,8 @@
          update_findings/3,
          update_insight/3,
          update_insight/4,
+         update_organization_configuration/2,
+         update_organization_configuration/3,
          update_security_hub_configuration/2,
          update_security_hub_configuration/3,
          update_standards_control/3,
@@ -140,6 +150,9 @@
 
 %% @doc Accepts the invitation to be a member account and be monitored by the
 %% Security Hub master account that the invitation was sent from.
+%%
+%% This operation is only used by member accounts that are not added through
+%% Organizations.
 %%
 %% When the member account accepts the invitation, permission is granted to
 %% the master account to view findings generated in the member account.
@@ -341,20 +354,38 @@ create_insight(Client, Input0, Options) ->
 %% accounts and the account used to make the request, which is the master
 %% account.
 %%
-%% To successfully create a member, you must use this action from an account
-%% that already has Security Hub enabled. To enable Security Hub, you can use
-%% the ` `EnableSecurityHub' ' operation.
+%% If you are integrated with Organizations, then the master account is the
+%% Security Hub administrator account that is designated by the organization
+%% management account.
 %%
-%% After you use `CreateMembers' to create member account associations in
-%% Security Hub, you must use the ` `InviteMembers' ' operation to invite the
-%% accounts to enable Security Hub and become member accounts in Security
-%% Hub.
+%% `CreateMembers' is always used to add accounts that are not organization
+%% members.
 %%
-%% If the account owner accepts the invitation, the account becomes a member
-%% account in Security Hub. A permissions policy is added that permits the
-%% master account to view the findings generated in the member account. When
-%% Security Hub is enabled in the invited account, findings start to be sent
-%% to both the member and master accounts.
+%% For accounts that are part of an organization, `CreateMembers' is only
+%% used in the following cases:
+%%
+%% <ul> <li> Security Hub is not configured to automatically add new accounts
+%% in an organization.
+%%
+%% </li> <li> The account was disassociated or deleted in Security Hub.
+%%
+%% </li> </ul> This action can only be used by an account that has Security
+%% Hub enabled. To enable Security Hub, you can use the ` `EnableSecurityHub'
+%% ' operation.
+%%
+%% For accounts that are not organization members, you create the account
+%% association and then send an invitation to the member account. To send the
+%% invitation, you use the ` `InviteMembers' ' operation. If the account
+%% owner accepts the invitation, the account becomes a member account in
+%% Security Hub.
+%%
+%% Accounts that are part of an organization do not receive an invitation.
+%% They automatically become a member account in Security Hub.
+%%
+%% A permissions policy is added that permits the master account to view the
+%% findings generated in the member account. When Security Hub is enabled in
+%% a member account, findings are sent to both the member and master
+%% accounts.
 %%
 %% To remove the association between the master and member accounts, use the
 %% ` `DisassociateFromMasterAccount' ' or ` `DisassociateMembers' '
@@ -375,6 +406,9 @@ create_members(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Declines invitations to become a member account.
+%%
+%% This operation is only used by accounts that are not part of an
+%% organization. Organization accounts do not receive invitations.
 decline_invitations(Client, Input) ->
     decline_invitations(Client, Input, []).
 decline_invitations(Client, Input0, Options) ->
@@ -428,6 +462,9 @@ delete_insight(Client, InsightArn, Input0, Options) ->
 
 %% @doc Deletes invitations received by the AWS account to become a member
 %% account.
+%%
+%% This operation is only used by accounts that are not part of an
+%% organization. Organization accounts do not receive invitations.
 delete_invitations(Client, Input) ->
     delete_invitations(Client, Input, []).
 delete_invitations(Client, Input0, Options) ->
@@ -444,6 +481,9 @@ delete_invitations(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified member accounts from Security Hub.
+%%
+%% Can be used to delete member accounts that belong to an organization as
+%% well as member accounts that were invited manually.
 delete_members(Client, Input) ->
     delete_members(Client, Input, []).
 delete_members(Client, Input0, Options) ->
@@ -493,6 +533,24 @@ describe_hub(Client, HubArn, Options)
         {<<"HubArn">>, HubArn}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns information about the Organizations configuration for
+%% Security Hub.
+%%
+%% Can only be called from a Security Hub administrator account.
+describe_organization_configuration(Client)
+  when is_map(Client) ->
+    describe_organization_configuration(Client, []).
+describe_organization_configuration(Client, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/organization/configuration"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -583,6 +641,24 @@ disable_import_findings_for_product(Client, ProductSubscriptionArn, Input0, Opti
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Disables a Security Hub administrator account.
+%%
+%% Can only be called by the organization management account.
+disable_organization_admin_account(Client, Input) ->
+    disable_organization_admin_account(Client, Input, []).
+disable_organization_admin_account(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/organization/admin/disable"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Disables Security Hub in your account only in the current Region.
 %%
 %% To disable Security Hub in all Regions, you must submit one request per
@@ -615,6 +691,10 @@ disable_security_hub(Client, Input0, Options) ->
 
 %% @doc Disassociates the current Security Hub member account from the
 %% associated master account.
+%%
+%% This operation is only used by accounts that are not part of an
+%% organization. For organization accounts, only the master account (the
+%% designated Security Hub administrator) can disassociate a member account.
 disassociate_from_master_account(Client, Input) ->
     disassociate_from_master_account(Client, Input, []).
 disassociate_from_master_account(Client, Input0, Options) ->
@@ -632,6 +712,9 @@ disassociate_from_master_account(Client, Input0, Options) ->
 
 %% @doc Disassociates the specified member accounts from the associated
 %% master account.
+%%
+%% Can be used to disassociate both accounts that are in an organization and
+%% accounts that were invited manually.
 disassociate_members(Client, Input) ->
     disassociate_members(Client, Input, []).
 disassociate_members(Client, Input0, Options) ->
@@ -658,6 +741,25 @@ enable_import_findings_for_product(Client, Input) ->
 enable_import_findings_for_product(Client, Input0, Options) ->
     Method = post,
     Path = ["/productSubscriptions"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Designates the Security Hub administrator account for an
+%% organization.
+%%
+%% Can only be called by the organization management account.
+enable_organization_admin_account(Client, Input) ->
+    enable_organization_admin_account(Client, Input, []).
+enable_organization_admin_account(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/organization/admin/enable"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -792,6 +894,9 @@ get_invitations_count(Client, Options)
 
 %% @doc Provides the details for the Security Hub master account for the
 %% current member account.
+%%
+%% Can be used by both member accounts that are in an organization and
+%% accounts that were invited manually.
 get_master_account(Client)
   when is_map(Client) ->
     get_master_account(Client, []).
@@ -808,6 +913,13 @@ get_master_account(Client, Options)
 
 %% @doc Returns the details for the Security Hub member accounts for the
 %% specified account IDs.
+%%
+%% A master account can be either a delegated Security Hub administrator
+%% account for an organization or a master account that enabled Security Hub
+%% manually.
+%%
+%% The results include both member accounts that are in an organization and
+%% accounts that were invited manually.
 get_members(Client, Input) ->
     get_members(Client, Input, []).
 get_members(Client, Input0, Options) ->
@@ -826,11 +938,14 @@ get_members(Client, Input0, Options) ->
 %% @doc Invites other AWS accounts to become member accounts for the Security
 %% Hub master account that the invitation is sent from.
 %%
+%% This operation is only used to invite accounts that do not belong to an
+%% organization. Organization accounts do not receive invitations.
+%%
 %% Before you can use this action to invite a member, you must first use the
 %% ` `CreateMembers' ' action to create the member account in Security Hub.
 %%
-%% When the account owner accepts the invitation to become a member account
-%% and enables Security Hub, the master account can view the findings
+%% When the account owner enables Security Hub and accepts the invitation to
+%% become a member account, the master account can view the findings
 %% generated from the member account.
 invite_members(Client, Input) ->
     invite_members(Client, Input, []).
@@ -870,6 +985,9 @@ list_enabled_products_for_import(Client, MaxResults, NextToken, Options)
 
 %% @doc Lists all Security Hub membership invitations that were sent to the
 %% current AWS account.
+%%
+%% This operation is only used by accounts that do not belong to an
+%% organization. Organization accounts do not receive invitations.
 list_invitations(Client, MaxResults, NextToken)
   when is_map(Client) ->
     list_invitations(Client, MaxResults, NextToken, []).
@@ -891,6 +1009,9 @@ list_invitations(Client, MaxResults, NextToken, Options)
 
 %% @doc Lists details about all member accounts for the current Security Hub
 %% master account.
+%%
+%% The results include both member accounts that belong to an organization
+%% and member accounts that were invited manually.
 list_members(Client, MaxResults, NextToken, OnlyAssociated)
   when is_map(Client) ->
     list_members(Client, MaxResults, NextToken, OnlyAssociated, []).
@@ -906,6 +1027,28 @@ list_members(Client, MaxResults, NextToken, OnlyAssociated, Options)
         {<<"MaxResults">>, MaxResults},
         {<<"NextToken">>, NextToken},
         {<<"OnlyAssociated">>, OnlyAssociated}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the Security Hub administrator accounts.
+%%
+%% Can only be called by the organization management account.
+list_organization_admin_accounts(Client, MaxResults, NextToken)
+  when is_map(Client) ->
+    list_organization_admin_accounts(Client, MaxResults, NextToken, []).
+list_organization_admin_accounts(Client, MaxResults, NextToken, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/organization/admin"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"MaxResults">>, MaxResults},
+        {<<"NextToken">>, NextToken}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1005,6 +1148,24 @@ update_insight(Client, InsightArn, Input) ->
 update_insight(Client, InsightArn, Input0, Options) ->
     Method = patch,
     Path = ["/insights/", aws_util:encode_multi_segment_uri(InsightArn), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Used to update the configuration related to Organizations.
+%%
+%% Can only be called from a Security Hub administrator account.
+update_organization_configuration(Client, Input) ->
+    update_organization_configuration(Client, Input, []).
+update_organization_configuration(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/organization/configuration"],
     SuccessStatusCode = undefined,
 
     Headers = [],

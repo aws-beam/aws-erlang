@@ -27,74 +27,74 @@
 %% topics from the user guide.
 -module(aws_neptune).
 
--export([add_role_to_d_b_cluster/2,
-         add_role_to_d_b_cluster/3,
+-export([add_role_to_db_cluster/2,
+         add_role_to_db_cluster/3,
          add_source_identifier_to_subscription/2,
          add_source_identifier_to_subscription/3,
          add_tags_to_resource/2,
          add_tags_to_resource/3,
          apply_pending_maintenance_action/2,
          apply_pending_maintenance_action/3,
-         copy_d_b_cluster_parameter_group/2,
-         copy_d_b_cluster_parameter_group/3,
-         copy_d_b_cluster_snapshot/2,
-         copy_d_b_cluster_snapshot/3,
-         copy_d_b_parameter_group/2,
-         copy_d_b_parameter_group/3,
-         create_d_b_cluster/2,
-         create_d_b_cluster/3,
-         create_d_b_cluster_endpoint/2,
-         create_d_b_cluster_endpoint/3,
-         create_d_b_cluster_parameter_group/2,
-         create_d_b_cluster_parameter_group/3,
-         create_d_b_cluster_snapshot/2,
-         create_d_b_cluster_snapshot/3,
-         create_d_b_instance/2,
-         create_d_b_instance/3,
-         create_d_b_parameter_group/2,
-         create_d_b_parameter_group/3,
-         create_d_b_subnet_group/2,
-         create_d_b_subnet_group/3,
+         copy_db_cluster_parameter_group/2,
+         copy_db_cluster_parameter_group/3,
+         copy_db_cluster_snapshot/2,
+         copy_db_cluster_snapshot/3,
+         copy_db_parameter_group/2,
+         copy_db_parameter_group/3,
+         create_db_cluster/2,
+         create_db_cluster/3,
+         create_db_cluster_endpoint/2,
+         create_db_cluster_endpoint/3,
+         create_db_cluster_parameter_group/2,
+         create_db_cluster_parameter_group/3,
+         create_db_cluster_snapshot/2,
+         create_db_cluster_snapshot/3,
+         create_db_instance/2,
+         create_db_instance/3,
+         create_db_parameter_group/2,
+         create_db_parameter_group/3,
+         create_db_subnet_group/2,
+         create_db_subnet_group/3,
          create_event_subscription/2,
          create_event_subscription/3,
-         delete_d_b_cluster/2,
-         delete_d_b_cluster/3,
-         delete_d_b_cluster_endpoint/2,
-         delete_d_b_cluster_endpoint/3,
-         delete_d_b_cluster_parameter_group/2,
-         delete_d_b_cluster_parameter_group/3,
-         delete_d_b_cluster_snapshot/2,
-         delete_d_b_cluster_snapshot/3,
-         delete_d_b_instance/2,
-         delete_d_b_instance/3,
-         delete_d_b_parameter_group/2,
-         delete_d_b_parameter_group/3,
-         delete_d_b_subnet_group/2,
-         delete_d_b_subnet_group/3,
+         delete_db_cluster/2,
+         delete_db_cluster/3,
+         delete_db_cluster_endpoint/2,
+         delete_db_cluster_endpoint/3,
+         delete_db_cluster_parameter_group/2,
+         delete_db_cluster_parameter_group/3,
+         delete_db_cluster_snapshot/2,
+         delete_db_cluster_snapshot/3,
+         delete_db_instance/2,
+         delete_db_instance/3,
+         delete_db_parameter_group/2,
+         delete_db_parameter_group/3,
+         delete_db_subnet_group/2,
+         delete_db_subnet_group/3,
          delete_event_subscription/2,
          delete_event_subscription/3,
-         describe_d_b_cluster_endpoints/2,
-         describe_d_b_cluster_endpoints/3,
-         describe_d_b_cluster_parameter_groups/2,
-         describe_d_b_cluster_parameter_groups/3,
-         describe_d_b_cluster_parameters/2,
-         describe_d_b_cluster_parameters/3,
-         describe_d_b_cluster_snapshot_attributes/2,
-         describe_d_b_cluster_snapshot_attributes/3,
-         describe_d_b_cluster_snapshots/2,
-         describe_d_b_cluster_snapshots/3,
-         describe_d_b_clusters/2,
-         describe_d_b_clusters/3,
-         describe_d_b_engine_versions/2,
-         describe_d_b_engine_versions/3,
-         describe_d_b_instances/2,
-         describe_d_b_instances/3,
-         describe_d_b_parameter_groups/2,
-         describe_d_b_parameter_groups/3,
-         describe_d_b_parameters/2,
-         describe_d_b_parameters/3,
-         describe_d_b_subnet_groups/2,
-         describe_d_b_subnet_groups/3,
+         describe_db_cluster_endpoints/2,
+         describe_db_cluster_endpoints/3,
+         describe_db_cluster_parameter_groups/2,
+         describe_db_cluster_parameter_groups/3,
+         describe_db_cluster_parameters/2,
+         describe_db_cluster_parameters/3,
+         describe_db_cluster_snapshot_attributes/2,
+         describe_db_cluster_snapshot_attributes/3,
+         describe_db_cluster_snapshots/2,
+         describe_db_cluster_snapshots/3,
+         describe_db_clusters/2,
+         describe_db_clusters/3,
+         describe_db_engine_versions/2,
+         describe_db_engine_versions/3,
+         describe_db_instances/2,
+         describe_db_instances/3,
+         describe_db_parameter_groups/2,
+         describe_db_parameter_groups/3,
+         describe_db_parameters/2,
+         describe_db_parameters/3,
+         describe_db_subnet_groups/2,
+         describe_db_subnet_groups/3,
          describe_engine_default_cluster_parameters/2,
          describe_engine_default_cluster_parameters/3,
          describe_engine_default_parameters/2,
@@ -105,54 +105,54 @@
          describe_event_subscriptions/3,
          describe_events/2,
          describe_events/3,
-         describe_orderable_d_b_instance_options/2,
-         describe_orderable_d_b_instance_options/3,
+         describe_orderable_db_instance_options/2,
+         describe_orderable_db_instance_options/3,
          describe_pending_maintenance_actions/2,
          describe_pending_maintenance_actions/3,
-         describe_valid_d_b_instance_modifications/2,
-         describe_valid_d_b_instance_modifications/3,
-         failover_d_b_cluster/2,
-         failover_d_b_cluster/3,
+         describe_valid_db_instance_modifications/2,
+         describe_valid_db_instance_modifications/3,
+         failover_db_cluster/2,
+         failover_db_cluster/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
-         modify_d_b_cluster/2,
-         modify_d_b_cluster/3,
-         modify_d_b_cluster_endpoint/2,
-         modify_d_b_cluster_endpoint/3,
-         modify_d_b_cluster_parameter_group/2,
-         modify_d_b_cluster_parameter_group/3,
-         modify_d_b_cluster_snapshot_attribute/2,
-         modify_d_b_cluster_snapshot_attribute/3,
-         modify_d_b_instance/2,
-         modify_d_b_instance/3,
-         modify_d_b_parameter_group/2,
-         modify_d_b_parameter_group/3,
-         modify_d_b_subnet_group/2,
-         modify_d_b_subnet_group/3,
+         modify_db_cluster/2,
+         modify_db_cluster/3,
+         modify_db_cluster_endpoint/2,
+         modify_db_cluster_endpoint/3,
+         modify_db_cluster_parameter_group/2,
+         modify_db_cluster_parameter_group/3,
+         modify_db_cluster_snapshot_attribute/2,
+         modify_db_cluster_snapshot_attribute/3,
+         modify_db_instance/2,
+         modify_db_instance/3,
+         modify_db_parameter_group/2,
+         modify_db_parameter_group/3,
+         modify_db_subnet_group/2,
+         modify_db_subnet_group/3,
          modify_event_subscription/2,
          modify_event_subscription/3,
-         promote_read_replica_d_b_cluster/2,
-         promote_read_replica_d_b_cluster/3,
-         reboot_d_b_instance/2,
-         reboot_d_b_instance/3,
-         remove_role_from_d_b_cluster/2,
-         remove_role_from_d_b_cluster/3,
+         promote_read_replica_db_cluster/2,
+         promote_read_replica_db_cluster/3,
+         reboot_db_instance/2,
+         reboot_db_instance/3,
+         remove_role_from_db_cluster/2,
+         remove_role_from_db_cluster/3,
          remove_source_identifier_from_subscription/2,
          remove_source_identifier_from_subscription/3,
          remove_tags_from_resource/2,
          remove_tags_from_resource/3,
-         reset_d_b_cluster_parameter_group/2,
-         reset_d_b_cluster_parameter_group/3,
-         reset_d_b_parameter_group/2,
-         reset_d_b_parameter_group/3,
-         restore_d_b_cluster_from_snapshot/2,
-         restore_d_b_cluster_from_snapshot/3,
-         restore_d_b_cluster_to_point_in_time/2,
-         restore_d_b_cluster_to_point_in_time/3,
-         start_d_b_cluster/2,
-         start_d_b_cluster/3,
-         stop_d_b_cluster/2,
-         stop_d_b_cluster/3]).
+         reset_db_cluster_parameter_group/2,
+         reset_db_cluster_parameter_group/3,
+         reset_db_parameter_group/2,
+         reset_db_parameter_group/3,
+         restore_db_cluster_from_snapshot/2,
+         restore_db_cluster_from_snapshot/3,
+         restore_db_cluster_to_point_in_time/2,
+         restore_db_cluster_to_point_in_time/3,
+         start_db_cluster/2,
+         start_db_cluster/3,
+         stop_db_cluster/2,
+         stop_db_cluster/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -162,10 +162,10 @@
 
 %% @doc Associates an Identity and Access Management (IAM) role from an
 %% Neptune DB cluster.
-add_role_to_d_b_cluster(Client, Input)
+add_role_to_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
-    add_role_to_d_b_cluster(Client, Input, []).
-add_role_to_d_b_cluster(Client, Input, Options)
+    add_role_to_db_cluster(Client, Input, []).
+add_role_to_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddRoleToDBCluster">>, Input, Options).
 
@@ -200,10 +200,10 @@ apply_pending_maintenance_action(Client, Input, Options)
     request(Client, <<"ApplyPendingMaintenanceAction">>, Input, Options).
 
 %% @doc Copies the specified DB cluster parameter group.
-copy_d_b_cluster_parameter_group(Client, Input)
+copy_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
-    copy_d_b_cluster_parameter_group(Client, Input, []).
-copy_d_b_cluster_parameter_group(Client, Input, Options)
+    copy_db_cluster_parameter_group(Client, Input, []).
+copy_db_cluster_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CopyDBClusterParameterGroup">>, Input, Options).
 
@@ -212,18 +212,18 @@ copy_d_b_cluster_parameter_group(Client, Input, Options)
 %% To copy a DB cluster snapshot from a shared manual DB cluster snapshot,
 %% `SourceDBClusterSnapshotIdentifier' must be the Amazon Resource Name (ARN)
 %% of the shared DB cluster snapshot.
-copy_d_b_cluster_snapshot(Client, Input)
+copy_db_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
-    copy_d_b_cluster_snapshot(Client, Input, []).
-copy_d_b_cluster_snapshot(Client, Input, Options)
+    copy_db_cluster_snapshot(Client, Input, []).
+copy_db_cluster_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CopyDBClusterSnapshot">>, Input, Options).
 
 %% @doc Copies the specified DB parameter group.
-copy_d_b_parameter_group(Client, Input)
+copy_db_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
-    copy_d_b_parameter_group(Client, Input, []).
-copy_d_b_parameter_group(Client, Input, Options)
+    copy_db_parameter_group(Client, Input, []).
+copy_db_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CopyDBParameterGroup">>, Input, Options).
 
@@ -238,19 +238,19 @@ copy_d_b_parameter_group(Client, Input, Options)
 %% production cluster in the console, deletion protection is enabled by
 %% default). You can only delete a DB cluster if its `DeletionProtection'
 %% field is set to `false'.
-create_d_b_cluster(Client, Input)
+create_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_d_b_cluster(Client, Input, []).
-create_d_b_cluster(Client, Input, Options)
+    create_db_cluster(Client, Input, []).
+create_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDBCluster">>, Input, Options).
 
 %% @doc Creates a new custom endpoint and associates it with an Amazon
 %% Neptune DB cluster.
-create_d_b_cluster_endpoint(Client, Input)
+create_db_cluster_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_d_b_cluster_endpoint(Client, Input, []).
-create_d_b_cluster_endpoint(Client, Input, Options)
+    create_db_cluster_endpoint(Client, Input, []).
+create_db_cluster_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDBClusterEndpoint">>, Input, Options).
 
@@ -280,26 +280,26 @@ create_d_b_cluster_endpoint(Client, Input, Options)
 %% option of the Amazon Neptune console or the `DescribeDBClusterParameters'
 %% command to verify that your DB cluster parameter group has been created or
 %% modified.
-create_d_b_cluster_parameter_group(Client, Input)
+create_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_d_b_cluster_parameter_group(Client, Input, []).
-create_d_b_cluster_parameter_group(Client, Input, Options)
+    create_db_cluster_parameter_group(Client, Input, []).
+create_db_cluster_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDBClusterParameterGroup">>, Input, Options).
 
 %% @doc Creates a snapshot of a DB cluster.
-create_d_b_cluster_snapshot(Client, Input)
+create_db_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_d_b_cluster_snapshot(Client, Input, []).
-create_d_b_cluster_snapshot(Client, Input, Options)
+    create_db_cluster_snapshot(Client, Input, []).
+create_db_cluster_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDBClusterSnapshot">>, Input, Options).
 
 %% @doc Creates a new DB instance.
-create_d_b_instance(Client, Input)
+create_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_d_b_instance(Client, Input, []).
-create_d_b_instance(Client, Input, Options)
+    create_db_instance(Client, Input, []).
+create_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDBInstance">>, Input, Options).
 
@@ -324,10 +324,10 @@ create_d_b_instance(Client, Input, Options)
 %% `character_set_database' parameter. You can use the Parameter Groups
 %% option of the Amazon Neptune console or the DescribeDBParameters command
 %% to verify that your DB parameter group has been created or modified.
-create_d_b_parameter_group(Client, Input)
+create_db_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_d_b_parameter_group(Client, Input, []).
-create_d_b_parameter_group(Client, Input, Options)
+    create_db_parameter_group(Client, Input, []).
+create_db_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDBParameterGroup">>, Input, Options).
 
@@ -335,10 +335,10 @@ create_d_b_parameter_group(Client, Input, Options)
 %%
 %% DB subnet groups must contain at least one subnet in at least two AZs in
 %% the AWS Region.
-create_d_b_subnet_group(Client, Input)
+create_db_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_d_b_subnet_group(Client, Input, []).
-create_d_b_subnet_group(Client, Input, Options)
+    create_db_subnet_group(Client, Input, []).
+create_db_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDBSubnetGroup">>, Input, Options).
 
@@ -381,19 +381,19 @@ create_event_subscription(Client, Input, Options)
 %% Note that the DB Cluster cannot be deleted if deletion protection is
 %% enabled. To delete it, you must first set its `DeletionProtection' field
 %% to `False'.
-delete_d_b_cluster(Client, Input)
+delete_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
-    delete_d_b_cluster(Client, Input, []).
-delete_d_b_cluster(Client, Input, Options)
+    delete_db_cluster(Client, Input, []).
+delete_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBCluster">>, Input, Options).
 
 %% @doc Deletes a custom endpoint and removes it from an Amazon Neptune DB
 %% cluster.
-delete_d_b_cluster_endpoint(Client, Input)
+delete_db_cluster_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
-    delete_d_b_cluster_endpoint(Client, Input, []).
-delete_d_b_cluster_endpoint(Client, Input, Options)
+    delete_db_cluster_endpoint(Client, Input, []).
+delete_db_cluster_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBClusterEndpoint">>, Input, Options).
 
@@ -401,10 +401,10 @@ delete_d_b_cluster_endpoint(Client, Input, Options)
 %%
 %% The DB cluster parameter group to be deleted can't be associated with any
 %% DB clusters.
-delete_d_b_cluster_parameter_group(Client, Input)
+delete_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
-    delete_d_b_cluster_parameter_group(Client, Input, []).
-delete_d_b_cluster_parameter_group(Client, Input, Options)
+    delete_db_cluster_parameter_group(Client, Input, []).
+delete_db_cluster_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBClusterParameterGroup">>, Input, Options).
 
@@ -413,10 +413,10 @@ delete_d_b_cluster_parameter_group(Client, Input, Options)
 %% If the snapshot is being copied, the copy operation is terminated.
 %%
 %% The DB cluster snapshot must be in the `available' state to be deleted.
-delete_d_b_cluster_snapshot(Client, Input)
+delete_db_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
-    delete_d_b_cluster_snapshot(Client, Input, []).
-delete_d_b_cluster_snapshot(Client, Input, Options)
+    delete_db_cluster_snapshot(Client, Input, []).
+delete_db_cluster_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBClusterSnapshot">>, Input, Options).
 
@@ -438,10 +438,10 @@ delete_d_b_cluster_snapshot(Client, Input, Options)
 %%
 %% You can't delete a DB instance if it is the only instance in the DB
 %% cluster, or if it has deletion protection enabled.
-delete_d_b_instance(Client, Input)
+delete_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
-    delete_d_b_instance(Client, Input, []).
-delete_d_b_instance(Client, Input, Options)
+    delete_db_instance(Client, Input, []).
+delete_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBInstance">>, Input, Options).
 
@@ -449,10 +449,10 @@ delete_d_b_instance(Client, Input, Options)
 %%
 %% The DBParameterGroup to be deleted can't be associated with any DB
 %% instances.
-delete_d_b_parameter_group(Client, Input)
+delete_db_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
-    delete_d_b_parameter_group(Client, Input, []).
-delete_d_b_parameter_group(Client, Input, Options)
+    delete_db_parameter_group(Client, Input, []).
+delete_db_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBParameterGroup">>, Input, Options).
 
@@ -460,10 +460,10 @@ delete_d_b_parameter_group(Client, Input, Options)
 %%
 %% The specified database subnet group must not be associated with any DB
 %% instances.
-delete_d_b_subnet_group(Client, Input)
+delete_db_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
-    delete_d_b_subnet_group(Client, Input, []).
-delete_d_b_subnet_group(Client, Input, Options)
+    delete_db_subnet_group(Client, Input, []).
+delete_db_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBSubnetGroup">>, Input, Options).
 
@@ -479,10 +479,10 @@ delete_event_subscription(Client, Input, Options)
 %%
 %% This operation can also return information for Amazon RDS clusters and
 %% Amazon DocDB clusters.
-describe_d_b_cluster_endpoints(Client, Input)
+describe_db_cluster_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_d_b_cluster_endpoints(Client, Input, []).
-describe_d_b_cluster_endpoints(Client, Input, Options)
+    describe_db_cluster_endpoints(Client, Input, []).
+describe_db_cluster_endpoints(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBClusterEndpoints">>, Input, Options).
 
@@ -490,19 +490,19 @@ describe_d_b_cluster_endpoints(Client, Input, Options)
 %%
 %% If a `DBClusterParameterGroupName' parameter is specified, the list will
 %% contain only the description of the specified DB cluster parameter group.
-describe_d_b_cluster_parameter_groups(Client, Input)
+describe_db_cluster_parameter_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_d_b_cluster_parameter_groups(Client, Input, []).
-describe_d_b_cluster_parameter_groups(Client, Input, Options)
+    describe_db_cluster_parameter_groups(Client, Input, []).
+describe_db_cluster_parameter_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBClusterParameterGroups">>, Input, Options).
 
 %% @doc Returns the detailed parameter list for a particular DB cluster
 %% parameter group.
-describe_d_b_cluster_parameters(Client, Input)
+describe_db_cluster_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_d_b_cluster_parameters(Client, Input, []).
-describe_d_b_cluster_parameters(Client, Input, Options)
+    describe_db_cluster_parameters(Client, Input, []).
+describe_db_cluster_parameters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBClusterParameters">>, Input, Options).
 
@@ -519,20 +519,20 @@ describe_d_b_cluster_parameters(Client, Input, Options)
 %% To add or remove access for an AWS account to copy or restore a manual DB
 %% cluster snapshot, or to make the manual DB cluster snapshot public or
 %% private, use the `ModifyDBClusterSnapshotAttribute' API action.
-describe_d_b_cluster_snapshot_attributes(Client, Input)
+describe_db_cluster_snapshot_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_d_b_cluster_snapshot_attributes(Client, Input, []).
-describe_d_b_cluster_snapshot_attributes(Client, Input, Options)
+    describe_db_cluster_snapshot_attributes(Client, Input, []).
+describe_db_cluster_snapshot_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBClusterSnapshotAttributes">>, Input, Options).
 
 %% @doc Returns information about DB cluster snapshots.
 %%
 %% This API action supports pagination.
-describe_d_b_cluster_snapshots(Client, Input)
+describe_db_cluster_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_d_b_cluster_snapshots(Client, Input, []).
-describe_d_b_cluster_snapshots(Client, Input, Options)
+    describe_db_cluster_snapshots(Client, Input, []).
+describe_db_cluster_snapshots(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBClusterSnapshots">>, Input, Options).
 
@@ -541,18 +541,18 @@ describe_d_b_cluster_snapshots(Client, Input, Options)
 %%
 %% This operation can also return information for Amazon RDS clusters and
 %% Amazon DocDB clusters.
-describe_d_b_clusters(Client, Input)
+describe_db_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_d_b_clusters(Client, Input, []).
-describe_d_b_clusters(Client, Input, Options)
+    describe_db_clusters(Client, Input, []).
+describe_db_clusters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBClusters">>, Input, Options).
 
 %% @doc Returns a list of the available DB engines.
-describe_d_b_engine_versions(Client, Input)
+describe_db_engine_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_d_b_engine_versions(Client, Input, []).
-describe_d_b_engine_versions(Client, Input, Options)
+    describe_db_engine_versions(Client, Input, []).
+describe_db_engine_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBEngineVersions">>, Input, Options).
 
@@ -561,10 +561,10 @@ describe_d_b_engine_versions(Client, Input, Options)
 %%
 %% This operation can also return information for Amazon RDS instances and
 %% Amazon DocDB instances.
-describe_d_b_instances(Client, Input)
+describe_db_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_d_b_instances(Client, Input, []).
-describe_d_b_instances(Client, Input, Options)
+    describe_db_instances(Client, Input, []).
+describe_db_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBInstances">>, Input, Options).
 
@@ -572,19 +572,19 @@ describe_d_b_instances(Client, Input, Options)
 %%
 %% If a `DBParameterGroupName' is specified, the list will contain only the
 %% description of the specified DB parameter group.
-describe_d_b_parameter_groups(Client, Input)
+describe_db_parameter_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_d_b_parameter_groups(Client, Input, []).
-describe_d_b_parameter_groups(Client, Input, Options)
+    describe_db_parameter_groups(Client, Input, []).
+describe_db_parameter_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBParameterGroups">>, Input, Options).
 
 %% @doc Returns the detailed parameter list for a particular DB parameter
 %% group.
-describe_d_b_parameters(Client, Input)
+describe_db_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_d_b_parameters(Client, Input, []).
-describe_d_b_parameters(Client, Input, Options)
+    describe_db_parameters(Client, Input, []).
+describe_db_parameters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBParameters">>, Input, Options).
 
@@ -594,10 +594,10 @@ describe_d_b_parameters(Client, Input, Options)
 %% descriptions of the specified DBSubnetGroup.
 %%
 %% For an overview of CIDR ranges, go to the Wikipedia Tutorial.
-describe_d_b_subnet_groups(Client, Input)
+describe_db_subnet_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_d_b_subnet_groups(Client, Input, []).
-describe_d_b_subnet_groups(Client, Input, Options)
+    describe_db_subnet_groups(Client, Input, []).
+describe_db_subnet_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBSubnetGroups">>, Input, Options).
 
@@ -657,10 +657,10 @@ describe_events(Client, Input, Options)
 
 %% @doc Returns a list of orderable DB instance options for the specified
 %% engine.
-describe_orderable_d_b_instance_options(Client, Input)
+describe_orderable_db_instance_options(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_orderable_d_b_instance_options(Client, Input, []).
-describe_orderable_d_b_instance_options(Client, Input, Options)
+    describe_orderable_db_instance_options(Client, Input, []).
+describe_orderable_db_instance_options(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeOrderableDBInstanceOptions">>, Input, Options).
 
@@ -677,10 +677,10 @@ describe_pending_maintenance_actions(Client, Input, Options)
 %% modifications you can make to your DB instance.
 %%
 %% You can use this information when you call `ModifyDBInstance'.
-describe_valid_d_b_instance_modifications(Client, Input)
+describe_valid_db_instance_modifications(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_valid_d_b_instance_modifications(Client, Input, []).
-describe_valid_d_b_instance_modifications(Client, Input, Options)
+    describe_valid_db_instance_modifications(Client, Input, []).
+describe_valid_db_instance_modifications(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeValidDBInstanceModifications">>, Input, Options).
 
@@ -696,10 +696,10 @@ describe_valid_d_b_instance_modifications(Client, Input, Options)
 %% instance in a DB cluster has its own endpoint address, you will need to
 %% clean up and re-establish any existing connections that use those endpoint
 %% addresses when the failover is complete.
-failover_d_b_cluster(Client, Input)
+failover_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
-    failover_d_b_cluster(Client, Input, []).
-failover_d_b_cluster(Client, Input, Options)
+    failover_db_cluster(Client, Input, []).
+failover_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"FailoverDBCluster">>, Input, Options).
 
@@ -715,19 +715,19 @@ list_tags_for_resource(Client, Input, Options)
 %%
 %% You can change one or more database configuration parameters by specifying
 %% these parameters and the new values in the request.
-modify_d_b_cluster(Client, Input)
+modify_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
-    modify_d_b_cluster(Client, Input, []).
-modify_d_b_cluster(Client, Input, Options)
+    modify_db_cluster(Client, Input, []).
+modify_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBCluster">>, Input, Options).
 
 %% @doc Modifies the properties of an endpoint in an Amazon Neptune DB
 %% cluster.
-modify_d_b_cluster_endpoint(Client, Input)
+modify_db_cluster_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
-    modify_d_b_cluster_endpoint(Client, Input, []).
-modify_d_b_cluster_endpoint(Client, Input, Options)
+    modify_db_cluster_endpoint(Client, Input, []).
+modify_db_cluster_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBClusterEndpoint">>, Input, Options).
 
@@ -752,10 +752,10 @@ modify_d_b_cluster_endpoint(Client, Input, Options)
 %% option of the Amazon Neptune console or the `DescribeDBClusterParameters'
 %% command to verify that your DB cluster parameter group has been created or
 %% modified.
-modify_d_b_cluster_parameter_group(Client, Input)
+modify_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
-    modify_d_b_cluster_parameter_group(Client, Input, []).
-modify_d_b_cluster_parameter_group(Client, Input, Options)
+    modify_db_cluster_parameter_group(Client, Input, []).
+modify_db_cluster_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBClusterParameterGroup">>, Input, Options).
 
@@ -777,10 +777,10 @@ modify_d_b_cluster_parameter_group(Client, Input, Options)
 %% To view which AWS accounts have access to copy or restore a manual DB
 %% cluster snapshot, or whether a manual DB cluster snapshot public or
 %% private, use the `DescribeDBClusterSnapshotAttributes' API action.
-modify_d_b_cluster_snapshot_attribute(Client, Input)
+modify_db_cluster_snapshot_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
-    modify_d_b_cluster_snapshot_attribute(Client, Input, []).
-modify_d_b_cluster_snapshot_attribute(Client, Input, Options)
+    modify_db_cluster_snapshot_attribute(Client, Input, []).
+modify_db_cluster_snapshot_attribute(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBClusterSnapshotAttribute">>, Input, Options).
 
@@ -790,10 +790,10 @@ modify_d_b_cluster_snapshot_attribute(Client, Input, Options)
 %% these parameters and the new values in the request. To learn what
 %% modifications you can make to your DB instance, call
 %% `DescribeValidDBInstanceModifications' before you call `ModifyDBInstance'.
-modify_d_b_instance(Client, Input)
+modify_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
-    modify_d_b_instance(Client, Input, []).
-modify_d_b_instance(Client, Input, Options)
+    modify_db_instance(Client, Input, []).
+modify_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBInstance">>, Input, Options).
 
@@ -817,10 +817,10 @@ modify_d_b_instance(Client, Input, Options)
 %% `character_set_database' parameter. You can use the Parameter Groups
 %% option of the Amazon Neptune console or the DescribeDBParameters command
 %% to verify that your DB parameter group has been created or modified.
-modify_d_b_parameter_group(Client, Input)
+modify_db_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
-    modify_d_b_parameter_group(Client, Input, []).
-modify_d_b_parameter_group(Client, Input, Options)
+    modify_db_parameter_group(Client, Input, []).
+modify_db_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBParameterGroup">>, Input, Options).
 
@@ -828,10 +828,10 @@ modify_d_b_parameter_group(Client, Input, Options)
 %%
 %% DB subnet groups must contain at least one subnet in at least two AZs in
 %% the AWS Region.
-modify_d_b_subnet_group(Client, Input)
+modify_db_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
-    modify_d_b_subnet_group(Client, Input, []).
-modify_d_b_subnet_group(Client, Input, Options)
+    modify_db_subnet_group(Client, Input, []).
+modify_db_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBSubnetGroup">>, Input, Options).
 
@@ -852,10 +852,10 @@ modify_event_subscription(Client, Input, Options)
     request(Client, <<"ModifyEventSubscription">>, Input, Options).
 
 %% @doc Not supported.
-promote_read_replica_d_b_cluster(Client, Input)
+promote_read_replica_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
-    promote_read_replica_d_b_cluster(Client, Input, []).
-promote_read_replica_d_b_cluster(Client, Input, Options)
+    promote_read_replica_db_cluster(Client, Input, []).
+promote_read_replica_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PromoteReadReplicaDBCluster">>, Input, Options).
 
@@ -869,19 +869,19 @@ promote_read_replica_d_b_cluster(Client, Input, Options)
 %% Rebooting a DB instance restarts the database engine service. Rebooting a
 %% DB instance results in a momentary outage, during which the DB instance
 %% status is set to rebooting.
-reboot_d_b_instance(Client, Input)
+reboot_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
-    reboot_d_b_instance(Client, Input, []).
-reboot_d_b_instance(Client, Input, Options)
+    reboot_db_instance(Client, Input, []).
+reboot_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RebootDBInstance">>, Input, Options).
 
 %% @doc Disassociates an Identity and Access Management (IAM) role from a DB
 %% cluster.
-remove_role_from_d_b_cluster(Client, Input)
+remove_role_from_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
-    remove_role_from_d_b_cluster(Client, Input, []).
-remove_role_from_d_b_cluster(Client, Input, Options)
+    remove_role_from_db_cluster(Client, Input, []).
+remove_role_from_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveRoleFromDBCluster">>, Input, Options).
 
@@ -915,10 +915,10 @@ remove_tags_from_resource(Client, Input, Options)
 %% effect on the next DB instance restart or `RebootDBInstance' request. You
 %% must call `RebootDBInstance' for every DB instance in your DB cluster that
 %% you want the updated static parameter to apply to.
-reset_d_b_cluster_parameter_group(Client, Input)
+reset_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
-    reset_d_b_cluster_parameter_group(Client, Input, []).
-reset_d_b_cluster_parameter_group(Client, Input, Options)
+    reset_db_cluster_parameter_group(Client, Input, []).
+reset_db_cluster_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResetDBClusterParameterGroup">>, Input, Options).
 
@@ -931,10 +931,10 @@ reset_d_b_cluster_parameter_group(Client, Input, Options)
 %% When resetting the entire group, dynamic parameters are updated
 %% immediately and static parameters are set to `pending-reboot' to take
 %% effect on the next DB instance restart or `RebootDBInstance' request.
-reset_d_b_parameter_group(Client, Input)
+reset_db_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
-    reset_d_b_parameter_group(Client, Input, []).
-reset_d_b_parameter_group(Client, Input, Options)
+    reset_db_parameter_group(Client, Input, []).
+reset_db_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResetDBParameterGroup">>, Input, Options).
 
@@ -948,10 +948,10 @@ reset_d_b_parameter_group(Client, Input, Options)
 %% from the source DB cluster restore point with the same configuration as
 %% the original source DB cluster, except that the new DB cluster is created
 %% with the default security group.
-restore_d_b_cluster_from_snapshot(Client, Input)
+restore_db_cluster_from_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
-    restore_d_b_cluster_from_snapshot(Client, Input, []).
-restore_d_b_cluster_from_snapshot(Client, Input, Options)
+    restore_db_cluster_from_snapshot(Client, Input, []).
+restore_db_cluster_from_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreDBClusterFromSnapshot">>, Input, Options).
 
@@ -969,19 +969,19 @@ restore_d_b_cluster_from_snapshot(Client, Input, Options)
 %% restored DB cluster in `DBClusterIdentifier'. You can create DB instances
 %% only after the `RestoreDBClusterToPointInTime' action has completed and
 %% the DB cluster is available.
-restore_d_b_cluster_to_point_in_time(Client, Input)
+restore_db_cluster_to_point_in_time(Client, Input)
   when is_map(Client), is_map(Input) ->
-    restore_d_b_cluster_to_point_in_time(Client, Input, []).
-restore_d_b_cluster_to_point_in_time(Client, Input, Options)
+    restore_db_cluster_to_point_in_time(Client, Input, []).
+restore_db_cluster_to_point_in_time(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreDBClusterToPointInTime">>, Input, Options).
 
 %% @doc Starts an Amazon Neptune DB cluster that was stopped using the AWS
 %% console, the AWS CLI stop-db-cluster command, or the StopDBCluster API.
-start_d_b_cluster(Client, Input)
+start_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
-    start_d_b_cluster(Client, Input, []).
-start_d_b_cluster(Client, Input, Options)
+    start_db_cluster(Client, Input, []).
+start_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartDBCluster">>, Input, Options).
 
@@ -992,10 +992,10 @@ start_d_b_cluster(Client, Input, Options)
 %%
 %% Neptune also retains the transaction logs so you can do a point-in-time
 %% restore if necessary.
-stop_d_b_cluster(Client, Input)
+stop_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
-    stop_d_b_cluster(Client, Input, []).
-stop_d_b_cluster(Client, Input, Options)
+    stop_db_cluster(Client, Input, []).
+stop_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopDBCluster">>, Input, Options).
 

@@ -83,8 +83,8 @@
          create_cached_iscsi_volume/3,
          create_nfs_file_share/2,
          create_nfs_file_share/3,
-         create_s_m_b_file_share/2,
-         create_s_m_b_file_share/3,
+         create_smb_file_share/2,
+         create_smb_file_share/3,
          create_snapshot/2,
          create_snapshot/3,
          create_snapshot_from_volume_recovery_point/2,
@@ -135,10 +135,10 @@
          describe_maintenance_start_time/3,
          describe_nfs_file_shares/2,
          describe_nfs_file_shares/3,
-         describe_s_m_b_file_shares/2,
-         describe_s_m_b_file_shares/3,
-         describe_s_m_b_settings/2,
-         describe_s_m_b_settings/3,
+         describe_smb_file_shares/2,
+         describe_smb_file_shares/3,
+         describe_smb_settings/2,
+         describe_smb_settings/3,
          describe_snapshot_schedule/2,
          describe_snapshot_schedule/3,
          describe_stored_iscsi_volumes/2,
@@ -195,8 +195,8 @@
          retrieve_tape_recovery_point/3,
          set_local_console_password/2,
          set_local_console_password/3,
-         set_s_m_b_guest_password/2,
-         set_s_m_b_guest_password/3,
+         set_smb_guest_password/2,
+         set_smb_guest_password/3,
          shutdown_gateway/2,
          shutdown_gateway/3,
          start_availability_monitor_test/2,
@@ -219,12 +219,12 @@
          update_maintenance_start_time/3,
          update_nfs_file_share/2,
          update_nfs_file_share/3,
-         update_s_m_b_file_share/2,
-         update_s_m_b_file_share/3,
-         update_s_m_b_file_share_visibility/2,
-         update_s_m_b_file_share_visibility/3,
-         update_s_m_b_security_strategy/2,
-         update_s_m_b_security_strategy/3,
+         update_smb_file_share/2,
+         update_smb_file_share/3,
+         update_smb_file_share_visibility/2,
+         update_smb_file_share_visibility/3,
+         update_smb_security_strategy/2,
+         update_smb_security_strategy/3,
          update_snapshot_schedule/2,
          update_snapshot_schedule/3,
          update_vtl_device_type/2,
@@ -448,10 +448,10 @@ create_nfs_file_share(Client, Input, Options)
 %%
 %% File gateways don't support creating hard or symbolic links on a file
 %% share.
-create_s_m_b_file_share(Client, Input)
+create_smb_file_share(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_s_m_b_file_share(Client, Input, []).
-create_s_m_b_file_share(Client, Input, Options)
+    create_smb_file_share(Client, Input, []).
+create_smb_file_share(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSMBFileShare">>, Input, Options).
 
@@ -864,10 +864,10 @@ describe_nfs_file_shares(Client, Input, Options)
 %% shares from a file gateway.
 %%
 %% This operation is only supported for file gateways.
-describe_s_m_b_file_shares(Client, Input)
+describe_smb_file_shares(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_s_m_b_file_shares(Client, Input, []).
-describe_s_m_b_file_shares(Client, Input, Options)
+    describe_smb_file_shares(Client, Input, []).
+describe_smb_file_shares(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSMBFileShares">>, Input, Options).
 
@@ -875,10 +875,10 @@ describe_s_m_b_file_shares(Client, Input, Options)
 %% settings from a file gateway.
 %%
 %% This operation is only supported for file gateways.
-describe_s_m_b_settings(Client, Input)
+describe_smb_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_s_m_b_settings(Client, Input, []).
-describe_s_m_b_settings(Client, Input, Options)
+    describe_smb_settings(Client, Input, []).
+describe_smb_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSMBSettings">>, Input, Options).
 
@@ -1340,10 +1340,10 @@ set_local_console_password(Client, Input, Options)
 %%
 %% The `smbguest' user is the user when the authentication method for the
 %% file share is set to `GuestAccess'.
-set_s_m_b_guest_password(Client, Input)
+set_smb_guest_password(Client, Input)
   when is_map(Client), is_map(Input) ->
-    set_s_m_b_guest_password(Client, Input, []).
-set_s_m_b_guest_password(Client, Input, Options)
+    set_smb_guest_password(Client, Input, []).
+set_smb_guest_password(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetSMBGuestPassword">>, Input, Options).
 
@@ -1573,19 +1573,19 @@ update_nfs_file_share(Client, Input, Options)
 %%
 %% File gateways don't support creating hard or symbolic links on a file
 %% share.
-update_s_m_b_file_share(Client, Input)
+update_smb_file_share(Client, Input)
   when is_map(Client), is_map(Input) ->
-    update_s_m_b_file_share(Client, Input, []).
-update_s_m_b_file_share(Client, Input, Options)
+    update_smb_file_share(Client, Input, []).
+update_smb_file_share(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSMBFileShare">>, Input, Options).
 
 %% @doc Controls whether the shares on a gateway are visible in a net view or
 %% browse list.
-update_s_m_b_file_share_visibility(Client, Input)
+update_smb_file_share_visibility(Client, Input)
   when is_map(Client), is_map(Input) ->
-    update_s_m_b_file_share_visibility(Client, Input, []).
-update_s_m_b_file_share_visibility(Client, Input, Options)
+    update_smb_file_share_visibility(Client, Input, []).
+update_smb_file_share_visibility(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSMBFileShareVisibility">>, Input, Options).
 
@@ -1596,10 +1596,10 @@ update_s_m_b_file_share_visibility(Client, Input, Options)
 %% This API is called Security level in the User Guide.
 %%
 %% A higher security level can affect performance of the gateway.
-update_s_m_b_security_strategy(Client, Input)
+update_smb_security_strategy(Client, Input)
   when is_map(Client), is_map(Input) ->
-    update_s_m_b_security_strategy(Client, Input, []).
-update_s_m_b_security_strategy(Client, Input, Options)
+    update_smb_security_strategy(Client, Input, []).
+update_smb_security_strategy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSMBSecurityStrategy">>, Input, Options).
 

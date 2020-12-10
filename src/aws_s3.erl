@@ -2639,12 +2639,12 @@ get_bucket_website(Client, Bucket, ExpectedBucketOwner, Options)
 %% using BitTorrent. For more information, see Amazon S3 Torrent. For more
 %% information about returning the ACL of an object, see GetObjectAcl.
 %%
-%% If the object you are retrieving is stored in the S3 Glacier, S3 Glacier
-%% Deep Archive, S3 Intelligent-Tiering Archive, or S3 Intelligent-Tiering
-%% Deep Archive storage classes, before you can retrieve the object you must
-%% first restore a copy using RestoreObject. Otherwise, this operation
-%% returns an `InvalidObjectStateError' error. For information about
-%% restoring archived objects, see Restoring Archived Objects.
+%% If the object you are retrieving is stored in the S3 Glacier or S3 Glacier
+%% Deep Archive storage class, or S3 Intelligent-Tiering Archive or S3
+%% Intelligent-Tiering Deep Archive tiers, before you can retrieve the object
+%% you must first restore a copy using RestoreObject. Otherwise, this
+%% operation returns an `InvalidObjectStateError' error. For information
+%% about restoring archived objects, see Restoring Archived Objects.
 %%
 %% Encryption request headers, like `x-amz-server-side-encryption', should
 %% not be sent for GET requests if your object uses server-side encryption
@@ -4866,13 +4866,9 @@ put_bucket_policy(Client, Bucket, Input0, Options) ->
 %% configuration, you must also add the following elements:
 %% `DeleteMarkerReplication', `Status', and `Priority'.
 %%
-%% The latest version of the replication configuration XML is V2. XML V2
-%% replication configurations are those that contain the `Filter' element for
-%% rules, and rules that specify S3 Replication Time Control (S3 RTC). In XML
-%% V2 replication configurations, Amazon S3 doesn't replicate delete markers.
-%% Therefore, you must set the `DeleteMarkerReplication' element to
-%% `Disabled'. For backward compatibility, Amazon S3 continues to support the
-%% XML V1 replication configuration.
+%% If you are using an earlier version of the replication configuration,
+%% Amazon S3 handles replication of delete markers differently. For more
+%% information, see Backward Compatibility.
 %%
 %% For information about enabling versioning on a bucket, see Using
 %% Versioning.
@@ -5851,17 +5847,18 @@ put_public_access_block(Client, Bucket, Input0, Options) ->
 %% already been restored. A select request doesn’t return error response
 %% `409'.
 %%
-%% </li> </ul> Restoring Archives
+%% </li> </ul> Restoring objects
 %%
-%% Objects that you archive to the S3 Glacier, S3 Glacier Deep Archive, S3
-%% Intelligent-Tiering Archive, or S3 Intelligent-Tiering Deep Archive
-%% storage classes are not accessible in real time. For objects in Archive
-%% Access tier or Deep Archive Access tier you must first initiate a restore
-%% request, and then wait until the object is moved into the Frequent Access
-%% tier. For objects in S3 Glacier or S3 Glacier Deep Archive you must first
-%% initiate a restore request, and then wait until a temporary copy of the
-%% object is available. To access an archived object, you must restore the
-%% object for the duration (number of days) that you specify.
+%% Objects that you archive to the S3 Glacier or S3 Glacier Deep Archive
+%% storage class, and S3 Intelligent-Tiering Archive or S3
+%% Intelligent-Tiering Deep Archive tiers are not accessible in real time.
+%% For objects in Archive Access or Deep Archive Access tiers you must first
+%% initiate a restore request, and then wait until the object is moved into
+%% the Frequent Access tier. For objects in S3 Glacier or S3 Glacier Deep
+%% Archive storage classes you must first initiate a restore request, and
+%% then wait until a temporary copy of the object is available. To access an
+%% archived object, you must restore the object for the duration (number of
+%% days) that you specify.
 %%
 %% To restore a specific object version, you can provide a version ID. If you
 %% don't provide a version ID, Amazon S3 restores the current version.
@@ -5871,31 +5868,33 @@ put_public_access_block(Client, Bucket, Input0, Options) ->
 %% element of the request body:
 %%
 %% <ul> <li> `Expedited' - Expedited retrievals allow you to quickly access
-%% your data stored in the S3 Glacier or S3 Intelligent-Tiering Archive
-%% storage class when occasional urgent requests for a subset of archives are
+%% your data stored in the S3 Glacier storage class or S3 Intelligent-Tiering
+%% Archive tier when occasional urgent requests for a subset of archives are
 %% required. For all but the largest archived objects (250 MB+), data
 %% accessed using Expedited retrievals is typically made available within 1–5
 %% minutes. Provisioned capacity ensures that retrieval capacity for
 %% Expedited retrievals is available when you need it. Expedited retrievals
 %% and provisioned capacity are not available for objects stored in the S3
-%% Glacier Deep Archive or S3 Intelligent-Tiering Deep Archive storage class.
+%% Glacier Deep Archive storage class or S3 Intelligent-Tiering Deep Archive
+%% tier.
 %%
 %% </li> <li> `Standard' - Standard retrievals allow you to access any of
 %% your archived objects within several hours. This is the default option for
 %% retrieval requests that do not specify the retrieval option. Standard
 %% retrievals typically finish within 3–5 hours for objects stored in the S3
-%% Glacier or S3 Intelligent-Tiering Archive storage class. They typically
-%% finish within 12 hours for objects stored in the S3 Glacier Deep Archive
-%% or S3 Intelligent-Tiering Deep Archive storage class. Standard retrievals
-%% are free for objects stored in S3 Intelligent-Tiering.
+%% Glacier storage class or S3 Intelligent-Tiering Archive tier. They
+%% typically finish within 12 hours for objects stored in the S3 Glacier Deep
+%% Archive storage class or S3 Intelligent-Tiering Deep Archive tier.
+%% Standard retrievals are free for objects stored in S3 Intelligent-Tiering.
 %%
 %% </li> <li> `Bulk' - Bulk retrievals are the lowest-cost retrieval option
 %% in S3 Glacier, enabling you to retrieve large amounts, even petabytes, of
 %% data inexpensively. Bulk retrievals typically finish within 5–12 hours for
-%% objects stored in the S3 Glacier or S3 Intelligent-Tiering Archive storage
-%% class. They typically finish within 48 hours for objects stored in the S3
-%% Glacier Deep Archive or S3 Intelligent-Tiering Deep Archive storage class.
-%% Bulk retrievals are free for objects stored in S3 Intelligent-Tiering.
+%% objects stored in the S3 Glacier storage class or S3 Intelligent-Tiering
+%% Archive tier. They typically finish within 48 hours for objects stored in
+%% the S3 Glacier Deep Archive storage class or S3 Intelligent-Tiering Deep
+%% Archive tier. Bulk retrievals are free for objects stored in S3
+%% Intelligent-Tiering.
 %%
 %% </li> </ul> For more information about archive retrieval options and
 %% provisioned capacity for `Expedited' data access, see Restoring Archived

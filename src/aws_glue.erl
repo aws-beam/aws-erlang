@@ -32,8 +32,10 @@
          batch_stop_job_run/3,
          batch_update_partition/2,
          batch_update_partition/3,
-         cancel_m_l_task_run/2,
-         cancel_m_l_task_run/3,
+         cancel_ml_task_run/2,
+         cancel_ml_task_run/3,
+         check_schema_version_validity/2,
+         check_schema_version_validity/3,
          create_classifier/2,
          create_classifier/3,
          create_connection/2,
@@ -46,10 +48,16 @@
          create_dev_endpoint/3,
          create_job/2,
          create_job/3,
-         create_m_l_transform/2,
-         create_m_l_transform/3,
+         create_ml_transform/2,
+         create_ml_transform/3,
          create_partition/2,
          create_partition/3,
+         create_partition_index/2,
+         create_partition_index/3,
+         create_registry/2,
+         create_registry/3,
+         create_schema/2,
+         create_schema/3,
          create_script/2,
          create_script/3,
          create_security_configuration/2,
@@ -78,12 +86,20 @@
          delete_dev_endpoint/3,
          delete_job/2,
          delete_job/3,
-         delete_m_l_transform/2,
-         delete_m_l_transform/3,
+         delete_ml_transform/2,
+         delete_ml_transform/3,
          delete_partition/2,
          delete_partition/3,
+         delete_partition_index/2,
+         delete_partition_index/3,
+         delete_registry/2,
+         delete_registry/3,
          delete_resource_policy/2,
          delete_resource_policy/3,
+         delete_schema/2,
+         delete_schema/3,
+         delete_schema_versions/2,
+         delete_schema_versions/3,
          delete_security_configuration/2,
          delete_security_configuration/3,
          delete_table/2,
@@ -138,16 +154,16 @@
          get_job_runs/3,
          get_jobs/2,
          get_jobs/3,
-         get_m_l_task_run/2,
-         get_m_l_task_run/3,
-         get_m_l_task_runs/2,
-         get_m_l_task_runs/3,
-         get_m_l_transform/2,
-         get_m_l_transform/3,
-         get_m_l_transforms/2,
-         get_m_l_transforms/3,
          get_mapping/2,
          get_mapping/3,
+         get_ml_task_run/2,
+         get_ml_task_run/3,
+         get_ml_task_runs/2,
+         get_ml_task_runs/3,
+         get_ml_transform/2,
+         get_ml_transform/3,
+         get_ml_transforms/2,
+         get_ml_transforms/3,
          get_partition/2,
          get_partition/3,
          get_partition_indexes/2,
@@ -156,10 +172,20 @@
          get_partitions/3,
          get_plan/2,
          get_plan/3,
+         get_registry/2,
+         get_registry/3,
          get_resource_policies/2,
          get_resource_policies/3,
          get_resource_policy/2,
          get_resource_policy/3,
+         get_schema/2,
+         get_schema/3,
+         get_schema_by_definition/2,
+         get_schema_by_definition/3,
+         get_schema_version/2,
+         get_schema_version/3,
+         get_schema_versions_diff/2,
+         get_schema_versions_diff/3,
          get_security_configuration/2,
          get_security_configuration/3,
          get_security_configurations/2,
@@ -198,8 +224,14 @@
          list_dev_endpoints/3,
          list_jobs/2,
          list_jobs/3,
-         list_m_l_transforms/2,
-         list_m_l_transforms/3,
+         list_ml_transforms/2,
+         list_ml_transforms/3,
+         list_registries/2,
+         list_registries/3,
+         list_schema_versions/2,
+         list_schema_versions/3,
+         list_schemas/2,
+         list_schemas/3,
          list_triggers/2,
          list_triggers/3,
          list_workflows/2,
@@ -208,8 +240,16 @@
          put_data_catalog_encryption_settings/3,
          put_resource_policy/2,
          put_resource_policy/3,
+         put_schema_version_metadata/2,
+         put_schema_version_metadata/3,
          put_workflow_run_properties/2,
          put_workflow_run_properties/3,
+         query_schema_version_metadata/2,
+         query_schema_version_metadata/3,
+         register_schema_version/2,
+         register_schema_version/3,
+         remove_schema_version_metadata/2,
+         remove_schema_version_metadata/3,
          reset_job_bookmark/2,
          reset_job_bookmark/3,
          resume_workflow_run/2,
@@ -226,10 +266,10 @@
          start_import_labels_task_run/3,
          start_job_run/2,
          start_job_run/3,
-         start_m_l_evaluation_task_run/2,
-         start_m_l_evaluation_task_run/3,
-         start_m_l_labeling_set_generation_task_run/2,
-         start_m_l_labeling_set_generation_task_run/3,
+         start_ml_evaluation_task_run/2,
+         start_ml_evaluation_task_run/3,
+         start_ml_labeling_set_generation_task_run/2,
+         start_ml_labeling_set_generation_task_run/3,
          start_trigger/2,
          start_trigger/3,
          start_workflow_run/2,
@@ -264,10 +304,14 @@
          update_dev_endpoint/3,
          update_job/2,
          update_job/3,
-         update_m_l_transform/2,
-         update_m_l_transform/3,
+         update_ml_transform/2,
+         update_ml_transform/3,
          update_partition/2,
          update_partition/3,
+         update_registry/2,
+         update_registry/3,
+         update_schema/2,
+         update_schema/3,
          update_table/2,
          update_table/3,
          update_trigger/2,
@@ -433,12 +477,24 @@ batch_update_partition(Client, Input, Options)
 %% a machine learning task run at any time by calling `CancelMLTaskRun' with
 %% a task run's parent transform's `TransformID' and the task run's
 %% `TaskRunId'.
-cancel_m_l_task_run(Client, Input)
+cancel_ml_task_run(Client, Input)
   when is_map(Client), is_map(Input) ->
-    cancel_m_l_task_run(Client, Input, []).
-cancel_m_l_task_run(Client, Input, Options)
+    cancel_ml_task_run(Client, Input, []).
+cancel_ml_task_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelMLTaskRun">>, Input, Options).
+
+%% @doc Validates the supplied schema.
+%%
+%% This call has no side effects, it simply validates using the supplied
+%% schema using `DataFormat' as the format. Since it does not take a schema
+%% set name, no compatibility checks are performed.
+check_schema_version_validity(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    check_schema_version_validity(Client, Input, []).
+check_schema_version_validity(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CheckSchemaVersionValidity">>, Input, Options).
 
 %% @doc Creates a classifier in the user's account.
 %%
@@ -510,10 +566,10 @@ create_job(Client, Input, Options)
 %% high-quality machine learning transform. These parameters include `Role',
 %% and optionally, `AllocatedCapacity', `Timeout', and `MaxRetries'. For more
 %% information, see Jobs.
-create_m_l_transform(Client, Input)
+create_ml_transform(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_m_l_transform(Client, Input, []).
-create_m_l_transform(Client, Input, Options)
+    create_ml_transform(Client, Input, []).
+create_ml_transform(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateMLTransform">>, Input, Options).
 
@@ -524,6 +580,45 @@ create_partition(Client, Input)
 create_partition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePartition">>, Input, Options).
+
+%% @doc Creates a specified partition index in an existing table.
+create_partition_index(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_partition_index(Client, Input, []).
+create_partition_index(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreatePartitionIndex">>, Input, Options).
+
+%% @doc Creates a new registry which may be used to hold a collection of
+%% schemas.
+create_registry(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_registry(Client, Input, []).
+create_registry(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateRegistry">>, Input, Options).
+
+%% @doc Creates a new schema set and registers the schema definition.
+%%
+%% Returns an error if the schema set already exists without actually
+%% registering the version.
+%%
+%% When the schema set is created, a version checkpoint will be set to the
+%% first version. Compatibility mode "DISABLED" restricts any additional
+%% schema versions from being added after the first schema version. For all
+%% other compatibility modes, validation of compatibility settings will be
+%% applied only from the second version onwards when the
+%% `RegisterSchemaVersion' API is used.
+%%
+%% When this API is called without a `RegistryId', this will create an entry
+%% for a "default-registry" in the registry database tables, if it is not
+%% already present.
+create_schema(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_schema(Client, Input, []).
+create_schema(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateSchema">>, Input, Options).
 
 %% @doc Transforms a directed acyclic graph (DAG) into code.
 create_script(Client, Input)
@@ -672,10 +767,10 @@ delete_job(Client, Input, Options)
 %% transform, you can delete it by calling `DeleteMLTransforms'. However, any
 %% AWS Glue jobs that still reference the deleted transform will no longer
 %% succeed.
-delete_m_l_transform(Client, Input)
+delete_ml_transform(Client, Input)
   when is_map(Client), is_map(Input) ->
-    delete_m_l_transform(Client, Input, []).
-delete_m_l_transform(Client, Input, Options)
+    delete_ml_transform(Client, Input, []).
+delete_ml_transform(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMLTransform">>, Input, Options).
 
@@ -687,6 +782,27 @@ delete_partition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePartition">>, Input, Options).
 
+%% @doc Deletes a specified partition index from an existing table.
+delete_partition_index(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_partition_index(Client, Input, []).
+delete_partition_index(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeletePartitionIndex">>, Input, Options).
+
+%% @doc Delete the entire registry including schema and all of its versions.
+%%
+%% To get the status of the delete operation, you can call the `GetRegistry'
+%% API after the asynchronous call. Deleting a registry will disable all
+%% online operations for the registry such as the `UpdateRegistry',
+%% `CreateSchema', `UpdateSchema', and `RegisterSchemaVersion' APIs.
+delete_registry(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_registry(Client, Input, []).
+delete_registry(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteRegistry">>, Input, Options).
+
 %% @doc Deletes a specified policy.
 delete_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -694,6 +810,47 @@ delete_resource_policy(Client, Input)
 delete_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResourcePolicy">>, Input, Options).
+
+%% @doc Deletes the entire schema set, including the schema set and all of
+%% its versions.
+%%
+%% To get the status of the delete operation, you can call `GetSchema' API
+%% after the asynchronous call. Deleting a registry will disable all online
+%% operations for the schema, such as the `GetSchemaByDefinition', and
+%% `RegisterSchemaVersion' APIs.
+delete_schema(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_schema(Client, Input, []).
+delete_schema(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteSchema">>, Input, Options).
+
+%% @doc Remove versions from the specified schema.
+%%
+%% A version number or range may be supplied. If the compatibility mode
+%% forbids deleting of a version that is necessary, such as BACKWARDS_FULL,
+%% an error is returned. Calling the `GetSchemaVersions' API after this call
+%% will list the status of the deleted versions.
+%%
+%% When the range of version numbers contain check pointed version, the API
+%% will return a 409 conflict and will not proceed with the deletion. You
+%% have to remove the checkpoint first using the `DeleteSchemaCheckpoint' API
+%% before using this API.
+%%
+%% You cannot use the `DeleteSchemaVersions' API to delete the first schema
+%% version in the schema set. The first schema version can only be deleted by
+%% the `DeleteSchema' API. This operation will also delete the attached
+%% `SchemaVersionMetadata' under the schema versions. Hard deletes will be
+%% enforced on the database.
+%%
+%% If the compatibility mode forbids deleting of a version that is necessary,
+%% such as BACKWARDS_FULL, an error is returned.
+delete_schema_versions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_schema_versions(Client, Input, []).
+delete_schema_versions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteSchemaVersions">>, Input, Options).
 
 %% @doc Deletes a specified security configuration.
 delete_security_configuration(Client, Input)
@@ -939,16 +1096,24 @@ get_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetJobs">>, Input, Options).
 
+%% @doc Creates mappings.
+get_mapping(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_mapping(Client, Input, []).
+get_mapping(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetMapping">>, Input, Options).
+
 %% @doc Gets details for a specific task run on a machine learning transform.
 %%
 %% Machine learning task runs are asynchronous tasks that AWS Glue runs on
 %% your behalf as part of various machine learning workflows. You can check
 %% the stats of any task run by calling `GetMLTaskRun' with the `TaskRunID'
 %% and its parent transform's `TransformID'.
-get_m_l_task_run(Client, Input)
+get_ml_task_run(Client, Input)
   when is_map(Client), is_map(Input) ->
-    get_m_l_task_run(Client, Input, []).
-get_m_l_task_run(Client, Input, Options)
+    get_ml_task_run(Client, Input, []).
+get_ml_task_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMLTaskRun">>, Input, Options).
 
@@ -961,10 +1126,10 @@ get_m_l_task_run(Client, Input, Options)
 %% optional parameters as documented in this section.
 %%
 %% This operation returns a list of historic runs and must be paginated.
-get_m_l_task_runs(Client, Input)
+get_ml_task_runs(Client, Input)
   when is_map(Client), is_map(Input) ->
-    get_m_l_task_runs(Client, Input, []).
-get_m_l_task_runs(Client, Input, Options)
+    get_ml_task_runs(Client, Input, []).
+get_ml_task_runs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMLTaskRuns">>, Input, Options).
 
@@ -976,10 +1141,10 @@ get_m_l_task_runs(Client, Input, Options)
 %% performed by learning from examples provided by humans. These
 %% transformations are then saved by AWS Glue. You can retrieve their
 %% metadata by calling `GetMLTransform'.
-get_m_l_transform(Client, Input)
+get_ml_transform(Client, Input)
   when is_map(Client), is_map(Input) ->
-    get_m_l_transform(Client, Input, []).
-get_m_l_transform(Client, Input, Options)
+    get_ml_transform(Client, Input, []).
+get_ml_transform(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMLTransform">>, Input, Options).
 
@@ -991,20 +1156,12 @@ get_m_l_transform(Client, Input, Options)
 %% performed by learning from examples provided by humans. These
 %% transformations are then saved by AWS Glue, and you can retrieve their
 %% metadata by calling `GetMLTransforms'.
-get_m_l_transforms(Client, Input)
+get_ml_transforms(Client, Input)
   when is_map(Client), is_map(Input) ->
-    get_m_l_transforms(Client, Input, []).
-get_m_l_transforms(Client, Input, Options)
+    get_ml_transforms(Client, Input, []).
+get_ml_transforms(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMLTransforms">>, Input, Options).
-
-%% @doc Creates mappings.
-get_mapping(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    get_mapping(Client, Input, []).
-get_mapping(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"GetMapping">>, Input, Options).
 
 %% @doc Retrieves information about a specified partition.
 get_partition(Client, Input)
@@ -1038,6 +1195,14 @@ get_plan(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPlan">>, Input, Options).
 
+%% @doc Describes the specified registry in detail.
+get_registry(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_registry(Client, Input, []).
+get_registry(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetRegistry">>, Input, Options).
+
 %% @doc Retrieves the security configurations for the resource policies set
 %% on individual resources, and also the account-level policy.
 %%
@@ -1059,6 +1224,51 @@ get_resource_policy(Client, Input)
 get_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResourcePolicy">>, Input, Options).
+
+%% @doc Describes the specified schema in detail.
+get_schema(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_schema(Client, Input, []).
+get_schema(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetSchema">>, Input, Options).
+
+%% @doc Retrieves a schema by the `SchemaDefinition'.
+%%
+%% The schema definition is sent to the Schema Registry, canonicalized, and
+%% hashed. If the hash is matched within the scope of the `SchemaName' or ARN
+%% (or the default registry, if none is supplied), that schema’s metadata is
+%% returned. Otherwise, a 404 or NotFound error is returned. Schema versions
+%% in `Deleted' statuses will not be included in the results.
+get_schema_by_definition(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_schema_by_definition(Client, Input, []).
+get_schema_by_definition(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetSchemaByDefinition">>, Input, Options).
+
+%% @doc Get the specified schema by its unique ID assigned when a version of
+%% the schema is created or registered.
+%%
+%% Schema versions in Deleted status will not be included in the results.
+get_schema_version(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_schema_version(Client, Input, []).
+get_schema_version(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetSchemaVersion">>, Input, Options).
+
+%% @doc Fetches the schema version difference in the specified difference
+%% type between two stored schema versions in the Schema Registry.
+%%
+%% This API allows you to compare two schema versions between two schema
+%% definitions under the same schema.
+get_schema_versions_diff(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_schema_versions_diff(Client, Input, []).
+get_schema_versions_diff(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetSchemaVersionsDiff">>, Input, Options).
 
 %% @doc Retrieves a specified security configuration.
 get_security_configuration(Client, Input)
@@ -1250,12 +1460,50 @@ list_jobs(Client, Input, Options)
 %% filter of the responses so that tagged resources can be retrieved as a
 %% group. If you choose to use tag filtering, only resources with the tags
 %% are retrieved.
-list_m_l_transforms(Client, Input)
+list_ml_transforms(Client, Input)
   when is_map(Client), is_map(Input) ->
-    list_m_l_transforms(Client, Input, []).
-list_m_l_transforms(Client, Input, Options)
+    list_ml_transforms(Client, Input, []).
+list_ml_transforms(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMLTransforms">>, Input, Options).
+
+%% @doc Returns a list of registries that you have created, with minimal
+%% registry information.
+%%
+%% Registries in the `Deleting' status will not be included in the results.
+%% Empty results will be returned if there are no registries available.
+list_registries(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_registries(Client, Input, []).
+list_registries(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListRegistries">>, Input, Options).
+
+%% @doc Returns a list of schema versions that you have created, with minimal
+%% information.
+%%
+%% Schema versions in Deleted status will not be included in the results.
+%% Empty results will be returned if there are no schema versions available.
+list_schema_versions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_schema_versions(Client, Input, []).
+list_schema_versions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListSchemaVersions">>, Input, Options).
+
+%% @doc Returns a list of schemas with minimal details.
+%%
+%% Schemas in Deleting status will not be included in the results. Empty
+%% results will be returned if there are no schemas available.
+%%
+%% When the `RegistryId' is not provided, all the schemas across registries
+%% will be part of the API response.
+list_schemas(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_schemas(Client, Input, []).
+list_schemas(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListSchemas">>, Input, Options).
 
 %% @doc Retrieves the names of all trigger resources in this AWS account, or
 %% the resources with the specified tag.
@@ -1301,6 +1549,17 @@ put_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutResourcePolicy">>, Input, Options).
 
+%% @doc Puts the metadata key value pair for a specified schema version ID.
+%%
+%% A maximum of 10 key value pairs will be allowed per schema version. They
+%% can be added over one or more calls.
+put_schema_version_metadata(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_schema_version_metadata(Client, Input, []).
+put_schema_version_metadata(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutSchemaVersionMetadata">>, Input, Options).
+
 %% @doc Puts the specified workflow run properties for the given workflow
 %% run.
 %%
@@ -1312,6 +1571,45 @@ put_workflow_run_properties(Client, Input)
 put_workflow_run_properties(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutWorkflowRunProperties">>, Input, Options).
+
+%% @doc Queries for the schema version metadata information.
+query_schema_version_metadata(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    query_schema_version_metadata(Client, Input, []).
+query_schema_version_metadata(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"QuerySchemaVersionMetadata">>, Input, Options).
+
+%% @doc Adds a new version to the existing schema.
+%%
+%% Returns an error if new version of schema does not meet the compatibility
+%% requirements of the schema set. This API will not create a new schema set
+%% and will return a 404 error if the schema set is not already present in
+%% the Schema Registry.
+%%
+%% If this is the first schema definition to be registered in the Schema
+%% Registry, this API will store the schema version and return immediately.
+%% Otherwise, this call has the potential to run longer than other operations
+%% due to compatibility modes. You can call the `GetSchemaVersion' API with
+%% the `SchemaVersionId' to check compatibility modes.
+%%
+%% If the same schema definition is already stored in Schema Registry as a
+%% version, the schema ID of the existing schema is returned to the caller.
+register_schema_version(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    register_schema_version(Client, Input, []).
+register_schema_version(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RegisterSchemaVersion">>, Input, Options).
+
+%% @doc Removes a key value pair from the schema version metadata for the
+%% specified schema version ID.
+remove_schema_version_metadata(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    remove_schema_version_metadata(Client, Input, []).
+remove_schema_version_metadata(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RemoveSchemaVersionMetadata">>, Input, Options).
 
 %% @doc Resets a bookmark entry.
 reset_job_bookmark(Client, Input)
@@ -1444,10 +1742,10 @@ start_job_run(Client, Input, Options)
 %%
 %% Returns a unique identifier for the run. You can call `GetMLTaskRun' to
 %% get more information about the stats of the `EvaluationTaskRun'.
-start_m_l_evaluation_task_run(Client, Input)
+start_ml_evaluation_task_run(Client, Input)
   when is_map(Client), is_map(Input) ->
-    start_m_l_evaluation_task_run(Client, Input, []).
-start_m_l_evaluation_task_run(Client, Input, Options)
+    start_ml_evaluation_task_run(Client, Input, []).
+start_ml_evaluation_task_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartMLEvaluationTaskRun">>, Input, Options).
 
@@ -1467,10 +1765,10 @@ start_m_l_evaluation_task_run(Client, Input, Options)
 %% call to `StartImportLabelsTaskRun'. After `StartImportLabelsTaskRun'
 %% finishes, all future runs of the machine learning transform will use the
 %% new and improved labels and perform a higher-quality transformation.
-start_m_l_labeling_set_generation_task_run(Client, Input)
+start_ml_labeling_set_generation_task_run(Client, Input)
   when is_map(Client), is_map(Input) ->
-    start_m_l_labeling_set_generation_task_run(Client, Input, []).
-start_m_l_labeling_set_generation_task_run(Client, Input, Options)
+    start_ml_labeling_set_generation_task_run(Client, Input, []).
+start_ml_labeling_set_generation_task_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartMLLabelingSetGenerationTaskRun">>, Input, Options).
 
@@ -1638,10 +1936,10 @@ update_job(Client, Input, Options)
 %% operation to assess how well your new parameters achieved your goals (such
 %% as improving the quality of your machine learning transform, or making it
 %% more cost-effective).
-update_m_l_transform(Client, Input)
+update_ml_transform(Client, Input)
   when is_map(Client), is_map(Input) ->
-    update_m_l_transform(Client, Input, []).
-update_m_l_transform(Client, Input, Options)
+    update_ml_transform(Client, Input, []).
+update_ml_transform(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateMLTransform">>, Input, Options).
 
@@ -1652,6 +1950,39 @@ update_partition(Client, Input)
 update_partition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePartition">>, Input, Options).
+
+%% @doc Updates an existing registry which is used to hold a collection of
+%% schemas.
+%%
+%% The updated properties relate to the registry, and do not modify any of
+%% the schemas within the registry.
+update_registry(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_registry(Client, Input, []).
+update_registry(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateRegistry">>, Input, Options).
+
+%% @doc Updates the description, compatibility setting, or version checkpoint
+%% for a schema set.
+%%
+%% For updating the compatibility setting, the call will not validate
+%% compatibility for the entire set of schema versions with the new
+%% compatibility setting. If the value for `Compatibility' is provided, the
+%% `VersionNumber' (a checkpoint) is also required. The API will validate the
+%% checkpoint version number for consistency.
+%%
+%% If the value for the `VersionNumber' (checkpoint) is provided,
+%% `Compatibility' is optional and this can be used to set/reset a checkpoint
+%% for the schema.
+%%
+%% This update will happen only if the schema is in the AVAILABLE state.
+update_schema(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_schema(Client, Input, []).
+update_schema(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateSchema">>, Input, Options).
 
 %% @doc Updates a metadata table in the Data Catalog.
 update_table(Client, Input)

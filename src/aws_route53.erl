@@ -5,8 +5,8 @@
 %% (DNS) web service.
 -module(aws_route53).
 
--export([associate_v_p_c_with_hosted_zone/3,
-         associate_v_p_c_with_hosted_zone/4,
+-export([associate_vpc_with_hosted_zone/3,
+         associate_vpc_with_hosted_zone/4,
          change_resource_record_sets/3,
          change_resource_record_sets/4,
          change_tags_for_resource/4,
@@ -25,8 +25,8 @@
          create_traffic_policy_instance/3,
          create_traffic_policy_version/3,
          create_traffic_policy_version/4,
-         create_v_p_c_association_authorization/3,
-         create_v_p_c_association_authorization/4,
+         create_vpc_association_authorization/3,
+         create_vpc_association_authorization/4,
          delete_health_check/3,
          delete_health_check/4,
          delete_hosted_zone/3,
@@ -39,10 +39,10 @@
          delete_traffic_policy/5,
          delete_traffic_policy_instance/3,
          delete_traffic_policy_instance/4,
-         delete_v_p_c_association_authorization/3,
-         delete_v_p_c_association_authorization/4,
-         disassociate_v_p_c_from_hosted_zone/3,
-         disassociate_v_p_c_from_hosted_zone/4,
+         delete_vpc_association_authorization/3,
+         delete_vpc_association_authorization/4,
+         disassociate_vpc_from_hosted_zone/3,
+         disassociate_vpc_from_hosted_zone/4,
          get_account_limit/2,
          get_account_limit/3,
          get_change/2,
@@ -85,8 +85,8 @@
          list_hosted_zones/5,
          list_hosted_zones_by_name/4,
          list_hosted_zones_by_name/5,
-         list_hosted_zones_by_v_p_c/5,
-         list_hosted_zones_by_v_p_c/6,
+         list_hosted_zones_by_vpc/5,
+         list_hosted_zones_by_vpc/6,
          list_query_logging_configs/4,
          list_query_logging_configs/5,
          list_resource_record_sets/6,
@@ -107,10 +107,10 @@
          list_traffic_policy_instances_by_policy/8,
          list_traffic_policy_versions/4,
          list_traffic_policy_versions/5,
-         list_v_p_c_association_authorizations/4,
-         list_v_p_c_association_authorizations/5,
-         test_d_n_s_answer/7,
-         test_d_n_s_answer/8,
+         list_vpc_association_authorizations/4,
+         list_vpc_association_authorizations/5,
+         test_dns_answer/7,
+         test_dns_answer/8,
          update_health_check/3,
          update_health_check/4,
          update_hosted_zone_comment/3,
@@ -137,9 +137,9 @@
 %% the AWS account that created the private hosted zone must first submit a
 %% `CreateVPCAssociationAuthorization' request. Then the account that created
 %% the VPC must submit an `AssociateVPCWithHostedZone' request.
-associate_v_p_c_with_hosted_zone(Client, HostedZoneId, Input) ->
-    associate_v_p_c_with_hosted_zone(Client, HostedZoneId, Input, []).
-associate_v_p_c_with_hosted_zone(Client, HostedZoneId, Input0, Options) ->
+associate_vpc_with_hosted_zone(Client, HostedZoneId, Input) ->
+    associate_vpc_with_hosted_zone(Client, HostedZoneId, Input, []).
+associate_vpc_with_hosted_zone(Client, HostedZoneId, Input0, Options) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/associatevpc"],
     SuccessStatusCode = undefined,
@@ -751,9 +751,9 @@ create_traffic_policy_version(Client, Id, Input0, Options) ->
 %% If you want to associate multiple VPCs that you created by using one
 %% account with a hosted zone that you created by using a different account,
 %% you must submit one authorization request for each VPC.
-create_v_p_c_association_authorization(Client, HostedZoneId, Input) ->
-    create_v_p_c_association_authorization(Client, HostedZoneId, Input, []).
-create_v_p_c_association_authorization(Client, HostedZoneId, Input0, Options) ->
+create_vpc_association_authorization(Client, HostedZoneId, Input) ->
+    create_vpc_association_authorization(Client, HostedZoneId, Input, []).
+create_vpc_association_authorization(Client, HostedZoneId, Input0, Options) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/authorizevpcassociation"],
     SuccessStatusCode = undefined,
@@ -969,9 +969,9 @@ delete_traffic_policy_instance(Client, Id, Input0, Options) ->
 %% `DeleteVPCAssociationAuthorization' won't disassociate the VPC from the
 %% hosted zone. If you want to delete an existing association, use
 %% `DisassociateVPCFromHostedZone'.
-delete_v_p_c_association_authorization(Client, HostedZoneId, Input) ->
-    delete_v_p_c_association_authorization(Client, HostedZoneId, Input, []).
-delete_v_p_c_association_authorization(Client, HostedZoneId, Input0, Options) ->
+delete_vpc_association_authorization(Client, HostedZoneId, Input) ->
+    delete_vpc_association_authorization(Client, HostedZoneId, Input, []).
+delete_vpc_association_authorization(Client, HostedZoneId, Input0, Options) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/deauthorizevpcassociation"],
     SuccessStatusCode = undefined,
@@ -1011,9 +1011,9 @@ delete_v_p_c_association_authorization(Client, HostedZoneId, Input0, Options) ->
 %% `DisassociateVPCFromHostedZone'.
 %%
 %% </li> </ul>
-disassociate_v_p_c_from_hosted_zone(Client, HostedZoneId, Input) ->
-    disassociate_v_p_c_from_hosted_zone(Client, HostedZoneId, Input, []).
-disassociate_v_p_c_from_hosted_zone(Client, HostedZoneId, Input0, Options) ->
+disassociate_vpc_from_hosted_zone(Client, HostedZoneId, Input) ->
+    disassociate_vpc_from_hosted_zone(Client, HostedZoneId, Input, []).
+disassociate_vpc_from_hosted_zone(Client, HostedZoneId, Input0, Options) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/disassociatevpc"],
     SuccessStatusCode = undefined,
@@ -1528,10 +1528,10 @@ list_hosted_zones_by_name(Client, DNSName, HostedZoneId, MaxItems, Options)
 %% is `efs.amazonaws.com'.
 %%
 %% </li> </ul>
-list_hosted_zones_by_v_p_c(Client, MaxItems, NextToken, VPCId, VPCRegion)
+list_hosted_zones_by_vpc(Client, MaxItems, NextToken, VPCId, VPCRegion)
   when is_map(Client) ->
-    list_hosted_zones_by_v_p_c(Client, MaxItems, NextToken, VPCId, VPCRegion, []).
-list_hosted_zones_by_v_p_c(Client, MaxItems, NextToken, VPCId, VPCRegion, Options)
+    list_hosted_zones_by_vpc(Client, MaxItems, NextToken, VPCId, VPCRegion, []).
+list_hosted_zones_by_vpc(Client, MaxItems, NextToken, VPCId, VPCRegion, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2013-04-01/hostedzonesbyvpc"],
     SuccessStatusCode = undefined,
@@ -1872,10 +1872,10 @@ list_traffic_policy_versions(Client, Id, MaxItems, TrafficPolicyVersionMarker, O
 %%
 %% The response includes a `VPCs' element with a `VPC' child element for each
 %% VPC that can be associated with the hosted zone.
-list_v_p_c_association_authorizations(Client, HostedZoneId, MaxResults, NextToken)
+list_vpc_association_authorizations(Client, HostedZoneId, MaxResults, NextToken)
   when is_map(Client) ->
-    list_v_p_c_association_authorizations(Client, HostedZoneId, MaxResults, NextToken, []).
-list_v_p_c_association_authorizations(Client, HostedZoneId, MaxResults, NextToken, Options)
+    list_vpc_association_authorizations(Client, HostedZoneId, MaxResults, NextToken, []).
+list_vpc_association_authorizations(Client, HostedZoneId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/authorizevpcassociation"],
     SuccessStatusCode = undefined,
@@ -1896,10 +1896,10 @@ list_v_p_c_association_authorizations(Client, HostedZoneId, MaxResults, NextToke
 %%
 %% You can optionally specify the IP address of a DNS resolver, an EDNS0
 %% client subnet IP address, and a subnet mask.
-test_d_n_s_answer(Client, EDNS0ClientSubnetIP, EDNS0ClientSubnetMask, HostedZoneId, RecordName, RecordType, ResolverIP)
+test_dns_answer(Client, EDNS0ClientSubnetIP, EDNS0ClientSubnetMask, HostedZoneId, RecordName, RecordType, ResolverIP)
   when is_map(Client) ->
-    test_d_n_s_answer(Client, EDNS0ClientSubnetIP, EDNS0ClientSubnetMask, HostedZoneId, RecordName, RecordType, ResolverIP, []).
-test_d_n_s_answer(Client, EDNS0ClientSubnetIP, EDNS0ClientSubnetMask, HostedZoneId, RecordName, RecordType, ResolverIP, Options)
+    test_dns_answer(Client, EDNS0ClientSubnetIP, EDNS0ClientSubnetMask, HostedZoneId, RecordName, RecordType, ResolverIP, []).
+test_dns_answer(Client, EDNS0ClientSubnetIP, EDNS0ClientSubnetMask, HostedZoneId, RecordName, RecordType, ResolverIP, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2013-04-01/testdnsanswer"],
     SuccessStatusCode = undefined,

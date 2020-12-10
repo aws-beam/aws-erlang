@@ -6,10 +6,10 @@
 
 -export([get_clip/2,
          get_clip/3,
-         get_d_a_s_h_streaming_session_u_r_l/2,
-         get_d_a_s_h_streaming_session_u_r_l/3,
-         get_h_l_s_streaming_session_u_r_l/2,
-         get_h_l_s_streaming_session_u_r_l/3,
+         get_dash_streaming_session_url/2,
+         get_dash_streaming_session_url/3,
+         get_hls_streaming_session_url/2,
+         get_hls_streaming_session_url/3,
          get_media_for_fragment_list/2,
          get_media_for_fragment_list/3,
          list_fragments/2,
@@ -227,9 +227,9 @@ get_clip(Client, Input0, Options) ->
 %%
 %% For more information, see the Errors section at the bottom of this topic,
 %% as well as Common Errors.
-get_d_a_s_h_streaming_session_u_r_l(Client, Input) ->
-    get_d_a_s_h_streaming_session_u_r_l(Client, Input, []).
-get_d_a_s_h_streaming_session_u_r_l(Client, Input0, Options) ->
+get_dash_streaming_session_url(Client, Input) ->
+    get_dash_streaming_session_url(Client, Input, []).
+get_dash_streaming_session_url(Client, Input0, Options) ->
     Method = post,
     Path = ["/getDASHStreamingSessionURL"],
     SuccessStatusCode = undefined,
@@ -401,9 +401,9 @@ get_d_a_s_h_streaming_session_u_r_l(Client, Input0, Options) ->
 %%
 %% For more information, see the Errors section at the bottom of this topic,
 %% as well as Common Errors.
-get_h_l_s_streaming_session_u_r_l(Client, Input) ->
-    get_h_l_s_streaming_session_u_r_l(Client, Input, []).
-get_h_l_s_streaming_session_u_r_l(Client, Input0, Options) ->
+get_hls_streaming_session_url(Client, Input) ->
+    get_hls_streaming_session_url(Client, Input, []).
+get_hls_streaming_session_url(Client, Input0, Options) ->
     Method = post,
     Path = ["/getHLSStreamingSessionURL"],
     SuccessStatusCode = undefined,

@@ -9,44 +9,44 @@
 
 -export([describe_entities_detection_v2_job/2,
          describe_entities_detection_v2_job/3,
-         describe_i_c_d10_c_m_inference_job/2,
-         describe_i_c_d10_c_m_inference_job/3,
-         describe_p_h_i_detection_job/2,
-         describe_p_h_i_detection_job/3,
+         describe_icd10_cm_inference_job/2,
+         describe_icd10_cm_inference_job/3,
+         describe_phi_detection_job/2,
+         describe_phi_detection_job/3,
          describe_rx_norm_inference_job/2,
          describe_rx_norm_inference_job/3,
          detect_entities/2,
          detect_entities/3,
          detect_entities_v2/2,
          detect_entities_v2/3,
-         detect_p_h_i/2,
-         detect_p_h_i/3,
-         infer_i_c_d10_c_m/2,
-         infer_i_c_d10_c_m/3,
+         detect_phi/2,
+         detect_phi/3,
+         infer_icd10_cm/2,
+         infer_icd10_cm/3,
          infer_rx_norm/2,
          infer_rx_norm/3,
          list_entities_detection_v2_jobs/2,
          list_entities_detection_v2_jobs/3,
-         list_i_c_d10_c_m_inference_jobs/2,
-         list_i_c_d10_c_m_inference_jobs/3,
-         list_p_h_i_detection_jobs/2,
-         list_p_h_i_detection_jobs/3,
+         list_icd10_cm_inference_jobs/2,
+         list_icd10_cm_inference_jobs/3,
+         list_phi_detection_jobs/2,
+         list_phi_detection_jobs/3,
          list_rx_norm_inference_jobs/2,
          list_rx_norm_inference_jobs/3,
          start_entities_detection_v2_job/2,
          start_entities_detection_v2_job/3,
-         start_i_c_d10_c_m_inference_job/2,
-         start_i_c_d10_c_m_inference_job/3,
-         start_p_h_i_detection_job/2,
-         start_p_h_i_detection_job/3,
+         start_icd10_cm_inference_job/2,
+         start_icd10_cm_inference_job/3,
+         start_phi_detection_job/2,
+         start_phi_detection_job/3,
          start_rx_norm_inference_job/2,
          start_rx_norm_inference_job/3,
          stop_entities_detection_v2_job/2,
          stop_entities_detection_v2_job/3,
-         stop_i_c_d10_c_m_inference_job/2,
-         stop_i_c_d10_c_m_inference_job/3,
-         stop_p_h_i_detection_job/2,
-         stop_p_h_i_detection_job/3,
+         stop_icd10_cm_inference_job/2,
+         stop_icd10_cm_inference_job/3,
+         stop_phi_detection_job/2,
+         stop_phi_detection_job/3,
          stop_rx_norm_inference_job/2,
          stop_rx_norm_inference_job/3]).
 
@@ -69,10 +69,10 @@ describe_entities_detection_v2_job(Client, Input, Options)
 %% @doc Gets the properties associated with an InferICD10CM job.
 %%
 %% Use this operation to get the status of an inference job.
-describe_i_c_d10_c_m_inference_job(Client, Input)
+describe_icd10_cm_inference_job(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_i_c_d10_c_m_inference_job(Client, Input, []).
-describe_i_c_d10_c_m_inference_job(Client, Input, Options)
+    describe_icd10_cm_inference_job(Client, Input, []).
+describe_icd10_cm_inference_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeICD10CMInferenceJob">>, Input, Options).
 
@@ -80,10 +80,10 @@ describe_i_c_d10_c_m_inference_job(Client, Input, Options)
 %% (PHI) detection job.
 %%
 %% Use this operation to get the status of a detection job.
-describe_p_h_i_detection_job(Client, Input)
+describe_phi_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_p_h_i_detection_job(Client, Input, []).
-describe_p_h_i_detection_job(Client, Input, Options)
+    describe_phi_detection_job(Client, Input, []).
+describe_phi_detection_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePHIDetectionJob">>, Input, Options).
 
@@ -138,10 +138,10 @@ detect_entities_v2(Client, Input, Options)
 %% for each entity.
 %%
 %% Amazon Comprehend Medical only detects entities in English language texts.
-detect_p_h_i(Client, Input)
+detect_phi(Client, Input)
   when is_map(Client), is_map(Input) ->
-    detect_p_h_i(Client, Input, []).
-detect_p_h_i(Client, Input, Options)
+    detect_phi(Client, Input, []).
+detect_phi(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetectPHI">>, Input, Options).
 
@@ -151,10 +151,10 @@ detect_p_h_i(Client, Input, Options)
 %%
 %% Amazon Comprehend Medical only detects medical entities in English
 %% language texts.
-infer_i_c_d10_c_m(Client, Input)
+infer_icd10_cm(Client, Input)
   when is_map(Client), is_map(Input) ->
-    infer_i_c_d10_c_m(Client, Input, []).
-infer_i_c_d10_c_m(Client, Input, Options)
+    infer_icd10_cm(Client, Input, []).
+infer_icd10_cm(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"InferICD10CM">>, Input, Options).
 
@@ -180,19 +180,19 @@ list_entities_detection_v2_jobs(Client, Input, Options)
     request(Client, <<"ListEntitiesDetectionV2Jobs">>, Input, Options).
 
 %% @doc Gets a list of InferICD10CM jobs that you have submitted.
-list_i_c_d10_c_m_inference_jobs(Client, Input)
+list_icd10_cm_inference_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
-    list_i_c_d10_c_m_inference_jobs(Client, Input, []).
-list_i_c_d10_c_m_inference_jobs(Client, Input, Options)
+    list_icd10_cm_inference_jobs(Client, Input, []).
+list_icd10_cm_inference_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListICD10CMInferenceJobs">>, Input, Options).
 
 %% @doc Gets a list of protected health information (PHI) detection jobs that
 %% you have submitted.
-list_p_h_i_detection_jobs(Client, Input)
+list_phi_detection_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
-    list_p_h_i_detection_jobs(Client, Input, []).
-list_p_h_i_detection_jobs(Client, Input, Options)
+    list_phi_detection_jobs(Client, Input, []).
+list_phi_detection_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPHIDetectionJobs">>, Input, Options).
 
@@ -221,10 +221,10 @@ start_entities_detection_v2_job(Client, Input, Options)
 %%
 %% Use the `DescribeICD10CMInferenceJob' operation to track the status of a
 %% job.
-start_i_c_d10_c_m_inference_job(Client, Input)
+start_icd10_cm_inference_job(Client, Input)
   when is_map(Client), is_map(Input) ->
-    start_i_c_d10_c_m_inference_job(Client, Input, []).
-start_i_c_d10_c_m_inference_job(Client, Input, Options)
+    start_icd10_cm_inference_job(Client, Input, []).
+start_icd10_cm_inference_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartICD10CMInferenceJob">>, Input, Options).
 
@@ -232,10 +232,10 @@ start_i_c_d10_c_m_inference_job(Client, Input, Options)
 %% (PHI).
 %%
 %% Use the `DescribePHIDetectionJob' operation to track the status of a job.
-start_p_h_i_detection_job(Client, Input)
+start_phi_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
-    start_p_h_i_detection_job(Client, Input, []).
-start_p_h_i_detection_job(Client, Input, Options)
+    start_phi_detection_job(Client, Input, []).
+start_phi_detection_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartPHIDetectionJob">>, Input, Options).
 
@@ -260,18 +260,18 @@ stop_entities_detection_v2_job(Client, Input, Options)
     request(Client, <<"StopEntitiesDetectionV2Job">>, Input, Options).
 
 %% @doc Stops an InferICD10CM inference job in progress.
-stop_i_c_d10_c_m_inference_job(Client, Input)
+stop_icd10_cm_inference_job(Client, Input)
   when is_map(Client), is_map(Input) ->
-    stop_i_c_d10_c_m_inference_job(Client, Input, []).
-stop_i_c_d10_c_m_inference_job(Client, Input, Options)
+    stop_icd10_cm_inference_job(Client, Input, []).
+stop_icd10_cm_inference_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopICD10CMInferenceJob">>, Input, Options).
 
 %% @doc Stops a protected health information (PHI) detection job in progress.
-stop_p_h_i_detection_job(Client, Input)
+stop_phi_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
-    stop_p_h_i_detection_job(Client, Input, []).
-stop_p_h_i_detection_job(Client, Input, Options)
+    stop_phi_detection_job(Client, Input, []).
+stop_phi_detection_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopPHIDetectionJob">>, Input, Options).
 

@@ -76,8 +76,8 @@
          create_keys_and_certificate/3,
          create_mitigation_action/3,
          create_mitigation_action/4,
-         create_o_t_a_update/3,
-         create_o_t_a_update/4,
+         create_ota_update/3,
+         create_ota_update/4,
          create_policy/3,
          create_policy/4,
          create_policy_version/3,
@@ -114,8 +114,8 @@
          delete_authorizer/4,
          delete_billing_group/3,
          delete_billing_group/4,
-         delete_c_a_certificate/3,
-         delete_c_a_certificate/4,
+         delete_ca_certificate/3,
+         delete_ca_certificate/4,
          delete_certificate/3,
          delete_certificate/4,
          delete_dimension/3,
@@ -130,8 +130,8 @@
          delete_job_execution/6,
          delete_mitigation_action/3,
          delete_mitigation_action/4,
-         delete_o_t_a_update/3,
-         delete_o_t_a_update/4,
+         delete_ota_update/3,
+         delete_ota_update/4,
          delete_policy/3,
          delete_policy/4,
          delete_policy_version/4,
@@ -178,8 +178,8 @@
          describe_authorizer/3,
          describe_billing_group/2,
          describe_billing_group/3,
-         describe_c_a_certificate/2,
-         describe_c_a_certificate/3,
+         describe_ca_certificate/2,
+         describe_ca_certificate/3,
          describe_certificate/2,
          describe_certificate/3,
          describe_default_authorizer/1,
@@ -242,8 +242,8 @@
          get_job_document/3,
          get_logging_options/1,
          get_logging_options/2,
-         get_o_t_a_update/2,
-         get_o_t_a_update/3,
+         get_ota_update/2,
+         get_ota_update/3,
          get_percentiles/2,
          get_percentiles/3,
          get_policy/2,
@@ -278,12 +278,12 @@
          list_authorizers/6,
          list_billing_groups/4,
          list_billing_groups/5,
-         list_c_a_certificates/4,
-         list_c_a_certificates/5,
+         list_ca_certificates/4,
+         list_ca_certificates/5,
          list_certificates/4,
          list_certificates/5,
-         list_certificates_by_c_a/5,
-         list_certificates_by_c_a/6,
+         list_certificates_by_ca/5,
+         list_certificates_by_ca/6,
          list_dimensions/3,
          list_dimensions/4,
          list_domain_configurations/4,
@@ -298,8 +298,8 @@
          list_jobs/9,
          list_mitigation_actions/4,
          list_mitigation_actions/5,
-         list_o_t_a_updates/4,
-         list_o_t_a_updates/5,
+         list_ota_updates/4,
+         list_ota_updates/5,
          list_outgoing_certificates/4,
          list_outgoing_certificates/5,
          list_policies/4,
@@ -358,12 +358,12 @@
          list_v2_logging_levels/5,
          list_violation_events/7,
          list_violation_events/8,
-         register_c_a_certificate/2,
-         register_c_a_certificate/3,
+         register_ca_certificate/2,
+         register_ca_certificate/3,
          register_certificate/2,
          register_certificate/3,
-         register_certificate_without_c_a/2,
-         register_certificate_without_c_a/3,
+         register_certificate_without_ca/2,
+         register_certificate_without_ca/3,
          register_thing/2,
          register_thing/3,
          reject_certificate_transfer/3,
@@ -412,8 +412,8 @@
          update_authorizer/4,
          update_billing_group/3,
          update_billing_group/4,
-         update_c_a_certificate/3,
-         update_c_a_certificate/4,
+         update_ca_certificate/3,
+         update_ca_certificate/4,
          update_certificate/3,
          update_certificate/4,
          update_dimension/3,
@@ -979,9 +979,9 @@ create_mitigation_action(Client, ActionName, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an AWS IoT OTAUpdate on a target group of things or groups.
-create_o_t_a_update(Client, OtaUpdateId, Input) ->
-    create_o_t_a_update(Client, OtaUpdateId, Input, []).
-create_o_t_a_update(Client, OtaUpdateId, Input0, Options) ->
+create_ota_update(Client, OtaUpdateId, Input) ->
+    create_ota_update(Client, OtaUpdateId, Input, []).
+create_ota_update(Client, OtaUpdateId, Input0, Options) ->
     Method = post,
     Path = ["/otaUpdates/", aws_util:encode_uri(OtaUpdateId), ""],
     SuccessStatusCode = undefined,
@@ -1328,9 +1328,9 @@ delete_billing_group(Client, BillingGroupName, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a registered CA certificate.
-delete_c_a_certificate(Client, CertificateId, Input) ->
-    delete_c_a_certificate(Client, CertificateId, Input, []).
-delete_c_a_certificate(Client, CertificateId, Input0, Options) ->
+delete_ca_certificate(Client, CertificateId, Input) ->
+    delete_ca_certificate(Client, CertificateId, Input, []).
+delete_ca_certificate(Client, CertificateId, Input0, Options) ->
     Method = delete,
     Path = ["/cacertificate/", aws_util:encode_uri(CertificateId), ""],
     SuccessStatusCode = undefined,
@@ -1479,9 +1479,9 @@ delete_mitigation_action(Client, ActionName, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete an OTA update.
-delete_o_t_a_update(Client, OtaUpdateId, Input) ->
-    delete_o_t_a_update(Client, OtaUpdateId, Input, []).
-delete_o_t_a_update(Client, OtaUpdateId, Input0, Options) ->
+delete_ota_update(Client, OtaUpdateId, Input) ->
+    delete_ota_update(Client, OtaUpdateId, Input, []).
+delete_ota_update(Client, OtaUpdateId, Input0, Options) ->
     Method = delete,
     Path = ["/otaUpdates/", aws_util:encode_uri(OtaUpdateId), ""],
     SuccessStatusCode = undefined,
@@ -1902,10 +1902,10 @@ describe_billing_group(Client, BillingGroupName, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes a registered CA certificate.
-describe_c_a_certificate(Client, CertificateId)
+describe_ca_certificate(Client, CertificateId)
   when is_map(Client) ->
-    describe_c_a_certificate(Client, CertificateId, []).
-describe_c_a_certificate(Client, CertificateId, Options)
+    describe_ca_certificate(Client, CertificateId, []).
+describe_ca_certificate(Client, CertificateId, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/cacertificate/", aws_util:encode_uri(CertificateId), ""],
     SuccessStatusCode = undefined,
@@ -2423,10 +2423,10 @@ get_logging_options(Client, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets an OTA update.
-get_o_t_a_update(Client, OtaUpdateId)
+get_ota_update(Client, OtaUpdateId)
   when is_map(Client) ->
-    get_o_t_a_update(Client, OtaUpdateId, []).
-get_o_t_a_update(Client, OtaUpdateId, Options)
+    get_ota_update(Client, OtaUpdateId, []).
+get_ota_update(Client, OtaUpdateId, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/otaUpdates/", aws_util:encode_uri(OtaUpdateId), ""],
     SuccessStatusCode = undefined,
@@ -2774,10 +2774,10 @@ list_billing_groups(Client, MaxResults, NamePrefixFilter, NextToken, Options)
 %%
 %% The results are paginated with a default page size of 25. You can use the
 %% returned marker to retrieve additional results.
-list_c_a_certificates(Client, AscendingOrder, Marker, PageSize)
+list_ca_certificates(Client, AscendingOrder, Marker, PageSize)
   when is_map(Client) ->
-    list_c_a_certificates(Client, AscendingOrder, Marker, PageSize, []).
-list_c_a_certificates(Client, AscendingOrder, Marker, PageSize, Options)
+    list_ca_certificates(Client, AscendingOrder, Marker, PageSize, []).
+list_ca_certificates(Client, AscendingOrder, Marker, PageSize, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/cacertificates"],
     SuccessStatusCode = undefined,
@@ -2819,10 +2819,10 @@ list_certificates(Client, AscendingOrder, Marker, PageSize, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the device certificates signed by the specified CA certificate.
-list_certificates_by_c_a(Client, CaCertificateId, AscendingOrder, Marker, PageSize)
+list_certificates_by_ca(Client, CaCertificateId, AscendingOrder, Marker, PageSize)
   when is_map(Client) ->
-    list_certificates_by_c_a(Client, CaCertificateId, AscendingOrder, Marker, PageSize, []).
-list_certificates_by_c_a(Client, CaCertificateId, AscendingOrder, Marker, PageSize, Options)
+    list_certificates_by_ca(Client, CaCertificateId, AscendingOrder, Marker, PageSize, []).
+list_certificates_by_ca(Client, CaCertificateId, AscendingOrder, Marker, PageSize, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/certificates-by-ca/", aws_util:encode_uri(CaCertificateId), ""],
     SuccessStatusCode = undefined,
@@ -2996,10 +2996,10 @@ list_mitigation_actions(Client, ActionType, MaxResults, NextToken, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists OTA updates.
-list_o_t_a_updates(Client, MaxResults, NextToken, OtaUpdateStatus)
+list_ota_updates(Client, MaxResults, NextToken, OtaUpdateStatus)
   when is_map(Client) ->
-    list_o_t_a_updates(Client, MaxResults, NextToken, OtaUpdateStatus, []).
-list_o_t_a_updates(Client, MaxResults, NextToken, OtaUpdateStatus, Options)
+    list_ota_updates(Client, MaxResults, NextToken, OtaUpdateStatus, []).
+list_ota_updates(Client, MaxResults, NextToken, OtaUpdateStatus, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/otaUpdates"],
     SuccessStatusCode = undefined,
@@ -3669,9 +3669,9 @@ list_violation_events(Client, EndTime, MaxResults, NextToken, SecurityProfileNam
 %% certificates. If you have more than one CA certificate registered, make
 %% sure you pass the CA certificate when you register your device
 %% certificates with the RegisterCertificate API.
-register_c_a_certificate(Client, Input) ->
-    register_c_a_certificate(Client, Input, []).
-register_c_a_certificate(Client, Input0, Options) ->
+register_ca_certificate(Client, Input) ->
+    register_ca_certificate(Client, Input, []).
+register_ca_certificate(Client, Input0, Options) ->
     Method = post,
     Path = ["/cacertificate"],
     SuccessStatusCode = undefined,
@@ -3709,9 +3709,9 @@ register_certificate(Client, Input0, Options) ->
 
 %% @doc Register a certificate that does not have a certificate authority
 %% (CA).
-register_certificate_without_c_a(Client, Input) ->
-    register_certificate_without_c_a(Client, Input, []).
-register_certificate_without_c_a(Client, Input0, Options) ->
+register_certificate_without_ca(Client, Input) ->
+    register_certificate_without_ca(Client, Input, []).
+register_certificate_without_ca(Client, Input0, Options) ->
     Method = post,
     Path = ["/certificate/register-no-ca"],
     SuccessStatusCode = undefined,
@@ -4171,9 +4171,9 @@ update_billing_group(Client, BillingGroupName, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a registered CA certificate.
-update_c_a_certificate(Client, CertificateId, Input) ->
-    update_c_a_certificate(Client, CertificateId, Input, []).
-update_c_a_certificate(Client, CertificateId, Input0, Options) ->
+update_ca_certificate(Client, CertificateId, Input) ->
+    update_ca_certificate(Client, CertificateId, Input, []).
+update_ca_certificate(Client, CertificateId, Input0, Options) ->
     Method = put,
     Path = ["/cacertificate/", aws_util:encode_uri(CertificateId), ""],
     SuccessStatusCode = undefined,

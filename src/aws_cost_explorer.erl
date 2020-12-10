@@ -191,8 +191,11 @@ get_anomaly_subscriptions(Client, Input, Options)
 %% `BlendedCosts' or `UsageQuantity', that you want the request to return.
 %% You can also filter and group your data by various dimensions, such as
 %% `SERVICE' or `AZ', in a specific time range. For a complete list of valid
-%% dimensions, see the GetDimensionValues operation. Master account in an
+%% dimensions, see the GetDimensionValues operation. Management account in an
 %% organization in AWS Organizations have access to all member accounts.
+%%
+%% For information about filter limitations, see Quotas and restrictions in
+%% the Billing and Cost Management User Guide.
 get_cost_and_usage(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_cost_and_usage(Client, Input, []).
@@ -206,7 +209,7 @@ get_cost_and_usage(Client, Input, Options)
 %% `BlendedCosts' or `UsageQuantity', that you want the request to return.
 %% You can also filter and group your data by various dimensions, such as
 %% `SERVICE' or `AZ', in a specific time range. For a complete list of valid
-%% dimensions, see the GetDimensionValues operation. Master account in an
+%% dimensions, see the GetDimensionValues operation. Management account in an
 %% organization in AWS Organizations have access to all member accounts. This
 %% API is currently available for the Amazon Elastic Compute Cloud – Compute
 %% service only.
@@ -247,8 +250,8 @@ get_dimension_values(Client, Input, Options)
 %%
 %% This enables you to see how much of your Amazon Elastic Compute Cloud,
 %% Amazon ElastiCache, Amazon Relational Database Service, or Amazon Redshift
-%% usage is covered by a reservation. An organization's master account can
-%% see the coverage of the associated member accounts. This supports
+%% usage is covered by a reservation. An organization's management account
+%% can see the coverage of the associated member accounts. This supports
 %% dimensions, Cost Categories, and nested expressions. For any time period,
 %% you can filter data about reservation usage by the following dimensions:
 %%
@@ -316,8 +319,8 @@ get_reservation_purchase_recommendation(Client, Input, Options)
 
 %% @doc Retrieves the reservation utilization for your account.
 %%
-%% Master account in an organization have access to member accounts. You can
-%% filter data by dimensions in a time period. You can use
+%% Management account in an organization have access to member accounts. You
+%% can filter data by dimensions in a time period. You can use
 %% `GetDimensionValues' to determine the possible dimension values.
 %% Currently, you can group only by `SUBSCRIPTION_ID'.
 get_reservation_utilization(Client, Input)
@@ -344,7 +347,7 @@ get_rightsizing_recommendation(Client, Input, Options)
 %% @doc Retrieves the Savings Plans covered for your account.
 %%
 %% This enables you to see how much of your cost is covered by a Savings
-%% Plan. An organization’s master account can see the coverage of the
+%% Plan. An organization’s management account can see the coverage of the
 %% associated member accounts. This supports dimensions, Cost Categories, and
 %% nested expressions. For any time period, you can filter data for Savings
 %% Plans usage with the following dimensions:
@@ -378,8 +381,8 @@ get_savings_plans_purchase_recommendation(Client, Input, Options)
 %% @doc Retrieves the Savings Plans utilization for your account across date
 %% ranges with daily or monthly granularity.
 %%
-%% Master account in an organization have access to member accounts. You can
-%% use `GetDimensionValues' in `SAVINGS_PLANS' to determine the possible
+%% Management account in an organization have access to member accounts. You
+%% can use `GetDimensionValues' in `SAVINGS_PLANS' to determine the possible
 %% dimension values.
 %%
 %% You cannot group by any dimension values for `GetSavingsPlansUtilization'.

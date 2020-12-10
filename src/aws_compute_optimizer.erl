@@ -21,14 +21,14 @@
          describe_recommendation_export_jobs/3,
          export_auto_scaling_group_recommendations/2,
          export_auto_scaling_group_recommendations/3,
-         export_e_c2_instance_recommendations/2,
-         export_e_c2_instance_recommendations/3,
+         export_ec2_instance_recommendations/2,
+         export_ec2_instance_recommendations/3,
          get_auto_scaling_group_recommendations/2,
          get_auto_scaling_group_recommendations/3,
-         get_e_c2_instance_recommendations/2,
-         get_e_c2_instance_recommendations/3,
-         get_e_c2_recommendation_projected_metrics/2,
-         get_e_c2_recommendation_projected_metrics/3,
+         get_ec2_instance_recommendations/2,
+         get_ec2_instance_recommendations/3,
+         get_ec2_recommendation_projected_metrics/2,
+         get_ec2_recommendation_projected_metrics/3,
          get_enrollment_status/2,
          get_enrollment_status/3,
          get_recommendation_summaries/2,
@@ -82,10 +82,10 @@ export_auto_scaling_group_recommendations(Client, Input, Options)
 %%
 %% You can have only one Amazon EC2 instance export job in progress per AWS
 %% Region.
-export_e_c2_instance_recommendations(Client, Input)
+export_ec2_instance_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
-    export_e_c2_instance_recommendations(Client, Input, []).
-export_e_c2_instance_recommendations(Client, Input, Options)
+    export_ec2_instance_recommendations(Client, Input, []).
+export_ec2_instance_recommendations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExportEC2InstanceRecommendations">>, Input, Options).
 
@@ -108,10 +108,10 @@ get_auto_scaling_group_recommendations(Client, Input, Options)
 %% Cloud (Amazon EC2) instances that meet a specific set of requirements. For
 %% more information, see the Supported resources and requirements in the AWS
 %% Compute Optimizer User Guide.
-get_e_c2_instance_recommendations(Client, Input)
+get_ec2_instance_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
-    get_e_c2_instance_recommendations(Client, Input, []).
-get_e_c2_instance_recommendations(Client, Input, Options)
+    get_ec2_instance_recommendations(Client, Input, []).
+get_ec2_instance_recommendations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEC2InstanceRecommendations">>, Input, Options).
 
@@ -123,10 +123,10 @@ get_e_c2_instance_recommendations(Client, Input, Options)
 %% returned only for resources that have the unified CloudWatch agent
 %% installed on them. For more information, see Enabling Memory Utilization
 %% with the CloudWatch Agent.
-get_e_c2_recommendation_projected_metrics(Client, Input)
+get_ec2_recommendation_projected_metrics(Client, Input)
   when is_map(Client), is_map(Input) ->
-    get_e_c2_recommendation_projected_metrics(Client, Input, []).
-get_e_c2_recommendation_projected_metrics(Client, Input, Options)
+    get_ec2_recommendation_projected_metrics(Client, Input, []).
+get_ec2_recommendation_projected_metrics(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEC2RecommendationProjectedMetrics">>, Input, Options).
 

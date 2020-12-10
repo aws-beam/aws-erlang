@@ -4,7 +4,9 @@
 %% @doc Operations and objects for transcribing streaming speech to text.
 -module(aws_transcribe_streaming).
 
--export([start_stream_transcription/2,
+-export([start_medical_stream_transcription/2,
+         start_medical_stream_transcription/3,
+         start_stream_transcription/2,
          start_stream_transcription/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
@@ -12,6 +14,61 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Starts a bidirectional HTTP/2 stream where audio is streamed to
+%% Amazon Transcribe Medical and the transcription results are streamed to
+%% your application.
+start_medical_stream_transcription(Client, Input) ->
+    start_medical_stream_transcription(Client, Input, []).
+start_medical_stream_transcription(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/medical-stream-transcription"],
+    SuccessStatusCode = undefined,
+
+    HeadersMapping = [
+                       {<<"x-amzn-transcribe-enable-channel-identification">>, <<"EnableChannelIdentification">>},
+                       {<<"x-amzn-transcribe-language-code">>, <<"LanguageCode">>},
+                       {<<"x-amzn-transcribe-media-encoding">>, <<"MediaEncoding">>},
+                       {<<"x-amzn-transcribe-sample-rate">>, <<"MediaSampleRateHertz">>},
+                       {<<"x-amzn-transcribe-number-of-channels">>, <<"NumberOfChannels">>},
+                       {<<"x-amzn-transcribe-session-id">>, <<"SessionId">>},
+                       {<<"x-amzn-transcribe-show-speaker-label">>, <<"ShowSpeakerLabel">>},
+                       {<<"x-amzn-transcribe-specialty">>, <<"Specialty">>},
+                       {<<"x-amzn-transcribe-type">>, <<"Type">>},
+                       {<<"x-amzn-transcribe-vocabulary-name">>, <<"VocabularyName">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    Query_ = [],
+    Input = Input1,
+
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"x-amzn-transcribe-enable-channel-identification">>, <<"EnableChannelIdentification">>},
+            {<<"x-amzn-transcribe-language-code">>, <<"LanguageCode">>},
+            {<<"x-amzn-transcribe-media-encoding">>, <<"MediaEncoding">>},
+            {<<"x-amzn-transcribe-sample-rate">>, <<"MediaSampleRateHertz">>},
+            {<<"x-amzn-transcribe-number-of-channels">>, <<"NumberOfChannels">>},
+            {<<"x-amzn-request-id">>, <<"RequestId">>},
+            {<<"x-amzn-transcribe-session-id">>, <<"SessionId">>},
+            {<<"x-amzn-transcribe-show-speaker-label">>, <<"ShowSpeakerLabel">>},
+            {<<"x-amzn-transcribe-specialty">>, <<"Specialty">>},
+            {<<"x-amzn-transcribe-type">>, <<"Type">>},
+            {<<"x-amzn-transcribe-vocabulary-name">>, <<"VocabularyName">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
 
 %% @doc Starts a bidirectional HTTP2 stream where audio is streamed to Amazon
 %% Transcribe and the transcription results are streamed to your application.

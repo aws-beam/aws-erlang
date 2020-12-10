@@ -1,35 +1,54 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc With code signing for IoT, you can sign code that you create for any
-%% IoT device that is supported by Amazon Web Services (AWS).
+%% @doc AWS Signer is a fully managed code signing service to help you ensure
+%% the trust and integrity of your code.
 %%
-%% Code signing is available through Amazon FreeRTOS and AWS IoT Device
-%% Management, and integrated with AWS Certificate Manager (ACM). In order to
-%% sign code, you import a third-party code signing certificate with ACM that
-%% is used to sign updates in Amazon FreeRTOS and AWS IoT Device Management.
-%% For general information about using code signing, see the Code Signing for
-%% IoT Developer Guide.
+%% AWS Signer supports the following applications:
+%%
+%% With code signing for AWS Lambda, you can sign AWS Lambda deployment
+%% packages. Integrated support is provided for Amazon S3, Amazon CloudWatch,
+%% and AWS CloudTrail. In order to sign code, you create a signing profile
+%% and then use Signer to sign Lambda zip files in S3.
+%%
+%% With code signing for IoT, you can sign code for any IoT device that is
+%% supported by AWS. IoT code signing is available for Amazon FreeRTOS and
+%% AWS IoT Device Management, and is integrated with AWS Certificate Manager
+%% (ACM). In order to sign code, you import a third-party code signing
+%% certificate using ACM, and use that to sign updates in Amazon FreeRTOS and
+%% AWS IoT Device Management.
+%%
+%% For more information about AWS Signer, see the AWS Signer Developer Guide.
 -module(aws_signer).
 
--export([cancel_signing_profile/3,
+-export([add_profile_permission/3,
+         add_profile_permission/4,
+         cancel_signing_profile/3,
          cancel_signing_profile/4,
          describe_signing_job/2,
          describe_signing_job/3,
          get_signing_platform/2,
          get_signing_platform/3,
-         get_signing_profile/2,
          get_signing_profile/3,
-         list_signing_jobs/6,
-         list_signing_jobs/7,
+         get_signing_profile/4,
+         list_profile_permissions/3,
+         list_profile_permissions/4,
+         list_signing_jobs/10,
+         list_signing_jobs/11,
          list_signing_platforms/6,
          list_signing_platforms/7,
-         list_signing_profiles/4,
-         list_signing_profiles/5,
+         list_signing_profiles/6,
+         list_signing_profiles/7,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          put_signing_profile/3,
          put_signing_profile/4,
+         remove_profile_permission/4,
+         remove_profile_permission/5,
+         revoke_signature/3,
+         revoke_signature/4,
+         revoke_signing_profile/3,
+         revoke_signing_profile/4,
          start_signing_job/2,
          start_signing_job/3,
          tag_resource/3,
@@ -42,6 +61,22 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Adds cross-account permissions to a signing profile.
+add_profile_permission(Client, ProfileName, Input) ->
+    add_profile_permission(Client, ProfileName, Input, []).
+add_profile_permission(Client, ProfileName, Input0, Options) ->
+    Method = post,
+    Path = ["/signing-profiles/", aws_util:encode_uri(ProfileName), "/permissions"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Changes the state of an `ACTIVE' signing profile to `CANCELED'.
 %%
@@ -97,17 +132,41 @@ get_signing_platform(Client, PlatformId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information on a specific signing profile.
-get_signing_profile(Client, ProfileName)
+get_signing_profile(Client, ProfileName, ProfileOwner)
   when is_map(Client) ->
-    get_signing_profile(Client, ProfileName, []).
-get_signing_profile(Client, ProfileName, Options)
+    get_signing_profile(Client, ProfileName, ProfileOwner, []).
+get_signing_profile(Client, ProfileName, ProfileOwner, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/signing-profiles/", aws_util:encode_uri(ProfileName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"profileOwner">>, ProfileOwner}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the cross-account permissions associated with a signing
+%% profile.
+list_profile_permissions(Client, ProfileName, NextToken)
+  when is_map(Client) ->
+    list_profile_permissions(Client, ProfileName, NextToken, []).
+list_profile_permissions(Client, ProfileName, NextToken, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/signing-profiles/", aws_util:encode_uri(ProfileName), "/permissions"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"nextToken">>, NextToken}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -120,10 +179,10 @@ get_signing_profile(Client, ProfileName, Options)
 %% calling `ListSigningJobs' with your `maxResults' parameter and with new
 %% values that code signing returns in the `nextToken' parameter until all of
 %% your signing jobs have been returned.
-list_signing_jobs(Client, MaxResults, NextToken, PlatformId, RequestedBy, Status)
+list_signing_jobs(Client, IsRevoked, JobInvoker, MaxResults, NextToken, PlatformId, RequestedBy, SignatureExpiresAfter, SignatureExpiresBefore, Status)
   when is_map(Client) ->
-    list_signing_jobs(Client, MaxResults, NextToken, PlatformId, RequestedBy, Status, []).
-list_signing_jobs(Client, MaxResults, NextToken, PlatformId, RequestedBy, Status, Options)
+    list_signing_jobs(Client, IsRevoked, JobInvoker, MaxResults, NextToken, PlatformId, RequestedBy, SignatureExpiresAfter, SignatureExpiresBefore, Status, []).
+list_signing_jobs(Client, IsRevoked, JobInvoker, MaxResults, NextToken, PlatformId, RequestedBy, SignatureExpiresAfter, SignatureExpiresBefore, Status, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/signing-jobs"],
     SuccessStatusCode = undefined,
@@ -132,10 +191,14 @@ list_signing_jobs(Client, MaxResults, NextToken, PlatformId, RequestedBy, Status
 
     Query0_ =
       [
+        {<<"isRevoked">>, IsRevoked},
+        {<<"jobInvoker">>, JobInvoker},
         {<<"maxResults">>, MaxResults},
         {<<"nextToken">>, NextToken},
         {<<"platformId">>, PlatformId},
         {<<"requestedBy">>, RequestedBy},
+        {<<"signatureExpiresAfter">>, SignatureExpiresAfter},
+        {<<"signatureExpiresBefore">>, SignatureExpiresBefore},
         {<<"status">>, Status}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
@@ -182,10 +245,10 @@ list_signing_platforms(Client, Category, MaxResults, NextToken, Partner, Target,
 %% calling `ListSigningJobs' with your `maxResults' parameter and with new
 %% values that code signing returns in the `nextToken' parameter until all of
 %% your signing jobs have been returned.
-list_signing_profiles(Client, IncludeCanceled, MaxResults, NextToken)
+list_signing_profiles(Client, IncludeCanceled, MaxResults, NextToken, PlatformId, Statuses)
   when is_map(Client) ->
-    list_signing_profiles(Client, IncludeCanceled, MaxResults, NextToken, []).
-list_signing_profiles(Client, IncludeCanceled, MaxResults, NextToken, Options)
+    list_signing_profiles(Client, IncludeCanceled, MaxResults, NextToken, PlatformId, Statuses, []).
+list_signing_profiles(Client, IncludeCanceled, MaxResults, NextToken, PlatformId, Statuses, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/signing-profiles"],
     SuccessStatusCode = undefined,
@@ -196,7 +259,9 @@ list_signing_profiles(Client, IncludeCanceled, MaxResults, NextToken, Options)
       [
         {<<"includeCanceled">>, IncludeCanceled},
         {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"nextToken">>, NextToken},
+        {<<"platformId">>, PlatformId},
+        {<<"statuses">>, Statuses}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -228,6 +293,60 @@ put_signing_profile(Client, ProfileName, Input) ->
 put_signing_profile(Client, ProfileName, Input0, Options) ->
     Method = put,
     Path = ["/signing-profiles/", aws_util:encode_uri(ProfileName), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes cross-account permissions from a signing profile.
+remove_profile_permission(Client, ProfileName, StatementId, Input) ->
+    remove_profile_permission(Client, ProfileName, StatementId, Input, []).
+remove_profile_permission(Client, ProfileName, StatementId, Input0, Options) ->
+    Method = delete,
+    Path = ["/signing-profiles/", aws_util:encode_uri(ProfileName), "/permissions/", aws_util:encode_uri(StatementId), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    QueryMapping = [
+                     {<<"revisionId">>, <<"revisionId">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Changes the state of a signing job to REVOKED.
+%%
+%% This indicates that the signature is no longer valid.
+revoke_signature(Client, JobId, Input) ->
+    revoke_signature(Client, JobId, Input, []).
+revoke_signature(Client, JobId, Input0, Options) ->
+    Method = put,
+    Path = ["/signing-jobs/", aws_util:encode_uri(JobId), "/revoke"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Changes the state of a signing profile to REVOKED.
+%%
+%% This indicates that signatures generated using the signing profile after
+%% an effective start date are no longer valid.
+revoke_signing_profile(Client, ProfileName, Input) ->
+    revoke_signing_profile(Client, ProfileName, Input, []).
+revoke_signing_profile(Client, ProfileName, Input0, Options) ->
+    Method = put,
+    Path = ["/signing-profiles/", aws_util:encode_uri(ProfileName), "/revoke"],
     SuccessStatusCode = undefined,
 
     Headers = [],

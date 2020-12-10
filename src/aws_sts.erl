@@ -13,8 +13,8 @@
 
 -export([assume_role/2,
          assume_role/3,
-         assume_role_with_s_a_m_l/2,
-         assume_role_with_s_a_m_l/3,
+         assume_role_with_saml/2,
+         assume_role_with_saml/3,
          assume_role_with_web_identity/2,
          assume_role_with_web_identity/3,
          decode_authorization_message/2,
@@ -270,10 +270,10 @@ assume_role(Client, Input, Options)
 %% </li> <li> Creating a Role for SAML 2.0 Federation in the IAM User Guide.
 %%
 %% </li> </ul>
-assume_role_with_s_a_m_l(Client, Input)
+assume_role_with_saml(Client, Input)
   when is_map(Client), is_map(Input) ->
-    assume_role_with_s_a_m_l(Client, Input, []).
-assume_role_with_s_a_m_l(Client, Input, Options)
+    assume_role_with_saml(Client, Input, []).
+assume_role_with_saml(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssumeRoleWithSAML">>, Input, Options).
 

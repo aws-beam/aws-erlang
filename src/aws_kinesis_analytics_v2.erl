@@ -23,6 +23,8 @@
          add_application_vpc_configuration/3,
          create_application/2,
          create_application/3,
+         create_application_presigned_url/2,
+         create_application_presigned_url/3,
          create_application_snapshot/2,
          create_application_snapshot/3,
          delete_application/2,
@@ -180,6 +182,28 @@ create_application(Client, Input)
 create_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateApplication">>, Input, Options).
+
+%% @doc Creates and returns a URL that you can use to connect to an
+%% application's extension.
+%%
+%% Currently, the only available extension is the Apache Flink dashboard.
+%%
+%% The IAM role or user used to call this API defines the permissions to
+%% access the extension. Once the presigned URL is created, no additional
+%% permission is required to access this URL. IAM authorization policies for
+%% this API are also enforced for every HTTP request that attempts to connect
+%% to the extension.
+%%
+%% The URL that you get from a call to CreateApplicationPresignedUrl must be
+%% used within 3 minutes to be valid. If you first try to use the URL after
+%% the 3-minute limit expires, the service returns an HTTP 403 Forbidden
+%% error.
+create_application_presigned_url(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_application_presigned_url(Client, Input, []).
+create_application_presigned_url(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateApplicationPresignedUrl">>, Input, Options).
 
 %% @doc Creates a snapshot of the application's state data.
 create_application_snapshot(Client, Input)
@@ -343,8 +367,14 @@ start_application(Client, Input, Options)
 
 %% @doc Stops the application from processing data.
 %%
-%% You can stop an application only if it is in the running state. You can
-%% use the `DescribeApplication' operation to find the application state.
+%% You can stop an application only if it is in the running status, unless
+%% you set the `Force' parameter to `true'.
+%%
+%% You can use the `DescribeApplication' operation to find the application
+%% status.
+%%
+%% Kinesis Data Analytics takes a snapshot when the application is stopped,
+%% unless `Force' is set to `true'.
 stop_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_application(Client, Input, []).

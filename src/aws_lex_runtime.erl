@@ -135,6 +135,7 @@ post_content(Client, BotAlias, BotName, UserId, Input0, Options) ->
 
     HeadersMapping = [
                        {<<"Accept">>, <<"accept">>},
+                       {<<"x-amz-lex-active-contexts">>, <<"activeContexts">>},
                        {<<"Content-Type">>, <<"contentType">>},
                        {<<"x-amz-lex-request-attributes">>, <<"requestAttributes">>},
                        {<<"x-amz-lex-session-attributes">>, <<"sessionAttributes">>}
@@ -148,6 +149,7 @@ post_content(Client, BotAlias, BotName, UserId, Input0, Options) ->
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
+            {<<"x-amz-lex-active-contexts">>, <<"activeContexts">>},
             {<<"x-amz-lex-alternative-intents">>, <<"alternativeIntents">>},
             {<<"x-amz-lex-bot-version">>, <<"botVersion">>},
             {<<"Content-Type">>, <<"contentType">>},
@@ -269,6 +271,7 @@ put_session(Client, BotAlias, BotName, UserId, Input0, Options) ->
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
+            {<<"x-amz-lex-active-contexts">>, <<"activeContexts">>},
             {<<"Content-Type">>, <<"contentType">>},
             {<<"x-amz-lex-dialog-state">>, <<"dialogState">>},
             {<<"x-amz-lex-intent-name">>, <<"intentName">>},

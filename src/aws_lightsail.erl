@@ -5,11 +5,12 @@
 %% Services (AWS) for developers who need to build websites or web
 %% applications.
 %%
-%% It includes everything you need to launch your project quickly – instances
-%% (virtual private servers), managed databases, SSD-based block storage,
-%% static IP addresses, load balancers, content delivery network (CDN)
-%% distributions, DNS management of registered domains, and snapshots
-%% (backups) – for a low, predictable monthly price.
+%% It includes everything you need to launch your project quickly - instances
+%% (virtual private servers), container services, managed databases,
+%% SSD-based block storage, static IP addresses, load balancers, content
+%% delivery network (CDN) distributions, DNS management of registered
+%% domains, and resource snapshots (backups) - for a low, predictable monthly
+%% price.
 %%
 %% You can manage your Lightsail resources using the Lightsail console,
 %% Lightsail API, AWS Command Line Interface (AWS CLI), or SDKs. For more
@@ -19,8 +20,8 @@
 %% This API Reference provides detailed information about the actions, data
 %% types, parameters, and errors of the Lightsail service. For more
 %% information about the supported AWS Regions, endpoints, and service quotas
-%% for the Lightsail service, see Amazon Lightsail Endpoints and Quotas in
-%% the AWS General Reference.
+%% of the Lightsail service, see Amazon Lightsail Endpoints and Quotas in the
+%% AWS General Reference.
 -module(aws_lightsail).
 
 -export([allocate_static_ip/2,
@@ -45,6 +46,12 @@
          create_cloud_formation_stack/3,
          create_contact_method/2,
          create_contact_method/3,
+         create_container_service/2,
+         create_container_service/3,
+         create_container_service_deployment/2,
+         create_container_service_deployment/3,
+         create_container_service_registry_login/2,
+         create_container_service_registry_login/3,
          create_disk/2,
          create_disk/3,
          create_disk_from_snapshot/2,
@@ -83,6 +90,10 @@
          delete_certificate/3,
          delete_contact_method/2,
          delete_contact_method/3,
+         delete_container_image/2,
+         delete_container_image/3,
+         delete_container_service/2,
+         delete_container_service/3,
          delete_disk/2,
          delete_disk/3,
          delete_disk_snapshot/2,
@@ -141,6 +152,20 @@
          get_cloud_formation_stack_records/3,
          get_contact_methods/2,
          get_contact_methods/3,
+         get_container_api_metadata/2,
+         get_container_api_metadata/3,
+         get_container_images/2,
+         get_container_images/3,
+         get_container_log/2,
+         get_container_log/3,
+         get_container_service_deployments/2,
+         get_container_service_deployments/3,
+         get_container_service_metric_data/2,
+         get_container_service_metric_data/3,
+         get_container_service_powers/2,
+         get_container_service_powers/3,
+         get_container_services/2,
+         get_container_services/3,
          get_disk/2,
          get_disk/3,
          get_disk_snapshot/2,
@@ -243,6 +268,8 @@
          reboot_instance/3,
          reboot_relational_database/2,
          reboot_relational_database/3,
+         register_container_image/2,
+         register_container_image/3,
          release_static_ip/2,
          release_static_ip/3,
          reset_distribution_cache/2,
@@ -265,6 +292,8 @@
          unpeer_vpc/3,
          untag_resource/2,
          untag_resource/3,
+         update_container_service/2,
+         update_container_service/3,
          update_distribution/2,
          update_distribution/3,
          update_distribution_bundle/2,
@@ -454,6 +483,67 @@ create_contact_method(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateContactMethod">>, Input, Options).
 
+%% @doc Creates an Amazon Lightsail container service.
+%%
+%% A Lightsail container service is a compute resource to which you can
+%% deploy containers. For more information, see Container services in Amazon
+%% Lightsail in the Lightsail Dev Guide.
+create_container_service(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_container_service(Client, Input, []).
+create_container_service(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateContainerService">>, Input, Options).
+
+%% @doc Creates a deployment for your Amazon Lightsail container service.
+%%
+%% A deployment specifies the containers that will be launched on the
+%% container service and their settings, such as the ports to open, the
+%% environment variables to apply, and the launch command to run. It also
+%% specifies the container that will serve as the public endpoint of the
+%% deployment and its settings, such as the HTTP or HTTPS port to use, and
+%% the health check configuration.
+%%
+%% You can deploy containers to your container service using container images
+%% from a public registry like Docker Hub, or from your local machine. For
+%% more information, see Creating container images for your Amazon Lightsail
+%% container services in the Lightsail Dev Guide.
+create_container_service_deployment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_container_service_deployment(Client, Input, []).
+create_container_service_deployment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateContainerServiceDeployment">>, Input, Options).
+
+%% @doc Creates a temporary set of log in credentials that you can use to log
+%% in to the Docker process on your local machine.
+%%
+%% After you're logged in, you can use the native Docker commands to push
+%% your local container images to the container image registry of your Amazon
+%% Lightsail account so that you can use them with your Lightsail container
+%% service. The log in credentials expire 12 hours after they are created, at
+%% which point you will need to create a new set of log in credentials.
+%%
+%% You can only push container images to the container service registry of
+%% your Lightsail account. You cannot pull container images perform any other
+%% container image management actions on the container service registry of
+%% your Lightsail account.
+%%
+%% After you push your container images to the container image registry of
+%% your Lightsail account, use the `RegisterContainerImage' action to
+%% register the pushed images to a specific Lightsail container service.
+%%
+%% This action is not required if you install and use the Lightsail Control
+%% (lightsailctl) plugin to push container images to your Lightsail container
+%% service. For more information, see Pushing and managing container images
+%% on your Amazon Lightsail container services in the Lightsail Dev Guide.
+create_container_service_registry_login(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_container_service_registry_login(Client, Input, []).
+create_container_service_registry_login(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateContainerServiceRegistryLogin">>, Input, Options).
+
 %% @doc Creates a block storage disk that can be attached to an Amazon
 %% Lightsail instance in the same Availability Zone (e.g., `us-east-2a').
 %%
@@ -544,9 +634,9 @@ create_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDomain">>, Input, Options).
 
-%% @doc Creates one of the following entry records associated with the
-%% domain: Address (A), canonical name (CNAME), mail exchanger (MX), name
-%% server (NS), start of authority (SOA), service locator (SRV), or text
+%% @doc Creates one of the following domain name system (DNS) records in a
+%% domain DNS zone: Address (A), canonical name (CNAME), mail exchanger (MX),
+%% name server (NS), start of authority (SOA), service locator (SRV), or text
 %% (TXT).
 %%
 %% The `create domain entry' operation supports tag-based access control via
@@ -737,6 +827,23 @@ delete_contact_method(Client, Input)
 delete_contact_method(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteContactMethod">>, Input, Options).
+
+%% @doc Deletes a container image that is registered to your Amazon Lightsail
+%% container service.
+delete_container_image(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_container_image(Client, Input, []).
+delete_container_image(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteContainerImage">>, Input, Options).
+
+%% @doc Deletes your Amazon Lightsail container service.
+delete_container_service(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_container_service(Client, Input, []).
+delete_container_service(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteContainerService">>, Input, Options).
 
 %% @doc Deletes the specified block storage disk.
 %%
@@ -1127,6 +1234,98 @@ get_contact_methods(Client, Input)
 get_contact_methods(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetContactMethods">>, Input, Options).
+
+%% @doc Returns information about Amazon Lightsail containers, such as the
+%% current version of the Lightsail Control (lightsailctl) plugin.
+get_container_api_metadata(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_container_api_metadata(Client, Input, []).
+get_container_api_metadata(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetContainerAPIMetadata">>, Input, Options).
+
+%% @doc Returns the container images that are registered to your Amazon
+%% Lightsail container service.
+%%
+%% If you created a deployment on your Lightsail container service that uses
+%% container images from a public registry like Docker Hub, those images are
+%% not returned as part of this action. Those images are not registered to
+%% your Lightsail container service.
+get_container_images(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_container_images(Client, Input, []).
+get_container_images(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetContainerImages">>, Input, Options).
+
+%% @doc Returns the log events of a container of your Amazon Lightsail
+%% container service.
+%%
+%% If your container service has more than one node (i.e., a scale greater
+%% than 1), then the log events that are returned for the specified container
+%% are merged from all nodes on your container service.
+%%
+%% Container logs are retained for a certain amount of time. For more
+%% information, see Amazon Lightsail endpoints and quotas in the AWS General
+%% Reference.
+get_container_log(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_container_log(Client, Input, []).
+get_container_log(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetContainerLog">>, Input, Options).
+
+%% @doc Returns the deployments for your Amazon Lightsail container service
+%%
+%% A deployment specifies the settings, such as the ports and launch command,
+%% of containers that are deployed to your container service.
+%%
+%% The deployments are ordered by version in ascending order. The newest
+%% version is listed at the top of the response.
+%%
+%% A set number of deployments are kept before the oldest one is replaced
+%% with the newest one. For more information, see Amazon Lightsail endpoints
+%% and quotas in the AWS General Reference.
+get_container_service_deployments(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_container_service_deployments(Client, Input, []).
+get_container_service_deployments(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetContainerServiceDeployments">>, Input, Options).
+
+%% @doc Returns the data points of a specific metric of your Amazon Lightsail
+%% container service.
+%%
+%% Metrics report the utilization of your resources. Monitor and collect
+%% metric data regularly to maintain the reliability, availability, and
+%% performance of your resources.
+get_container_service_metric_data(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_container_service_metric_data(Client, Input, []).
+get_container_service_metric_data(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetContainerServiceMetricData">>, Input, Options).
+
+%% @doc Returns the list of powers that can be specified for your Amazon
+%% Lightsail container services.
+%%
+%% The power specifies the amount of memory, the number of vCPUs, and the
+%% base price of the container service.
+get_container_service_powers(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_container_service_powers(Client, Input, []).
+get_container_service_powers(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetContainerServicePowers">>, Input, Options).
+
+%% @doc Returns information about one or more of your Amazon Lightsail
+%% container services.
+get_container_services(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_container_services(Client, Input, []).
+get_container_services(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetContainerServices">>, Input, Options).
 
 %% @doc Returns information about a specific block storage disk.
 get_disk(Client, Input)
@@ -1663,6 +1862,20 @@ reboot_relational_database(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RebootRelationalDatabase">>, Input, Options).
 
+%% @doc Registers a container image to your Amazon Lightsail container
+%% service.
+%%
+%% This action is not required if you install and use the Lightsail Control
+%% (lightsailctl) plugin to push container images to your Lightsail container
+%% service. For more information, see Pushing and managing container images
+%% on your Amazon Lightsail container services in the Lightsail Dev Guide.
+register_container_image(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    register_container_image(Client, Input, []).
+register_container_image(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RegisterContainerImage">>, Input, Options).
+
 %% @doc Deletes a specific static IP from your account.
 release_static_ip(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1825,6 +2038,15 @@ untag_resource(Client, Input)
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc Updates the configuration of your Amazon Lightsail container service,
+%% such as its power, scale, and public domain names.
+update_container_service(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_container_service(Client, Input, []).
+update_container_service(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateContainerService">>, Input, Options).
 
 %% @doc Updates an existing Amazon Lightsail content delivery network (CDN)
 %% distribution.

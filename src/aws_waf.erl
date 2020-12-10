@@ -24,8 +24,8 @@
          create_byte_match_set/3,
          create_geo_match_set/2,
          create_geo_match_set/3,
-         create_i_p_set/2,
-         create_i_p_set/3,
+         create_ip_set/2,
+         create_ip_set/3,
          create_rate_based_rule/2,
          create_rate_based_rule/3,
          create_regex_match_set/2,
@@ -40,18 +40,18 @@
          create_size_constraint_set/3,
          create_sql_injection_match_set/2,
          create_sql_injection_match_set/3,
-         create_web_a_c_l/2,
-         create_web_a_c_l/3,
-         create_web_a_c_l_migration_stack/2,
-         create_web_a_c_l_migration_stack/3,
+         create_web_acl/2,
+         create_web_acl/3,
+         create_web_acl_migration_stack/2,
+         create_web_acl_migration_stack/3,
          create_xss_match_set/2,
          create_xss_match_set/3,
          delete_byte_match_set/2,
          delete_byte_match_set/3,
          delete_geo_match_set/2,
          delete_geo_match_set/3,
-         delete_i_p_set/2,
-         delete_i_p_set/3,
+         delete_ip_set/2,
+         delete_ip_set/3,
          delete_logging_configuration/2,
          delete_logging_configuration/3,
          delete_permission_policy/2,
@@ -70,8 +70,8 @@
          delete_size_constraint_set/3,
          delete_sql_injection_match_set/2,
          delete_sql_injection_match_set/3,
-         delete_web_a_c_l/2,
-         delete_web_a_c_l/3,
+         delete_web_acl/2,
+         delete_web_acl/3,
          delete_xss_match_set/2,
          delete_xss_match_set/3,
          get_byte_match_set/2,
@@ -82,8 +82,8 @@
          get_change_token_status/3,
          get_geo_match_set/2,
          get_geo_match_set/3,
-         get_i_p_set/2,
-         get_i_p_set/3,
+         get_ip_set/2,
+         get_ip_set/3,
          get_logging_configuration/2,
          get_logging_configuration/3,
          get_permission_policy/2,
@@ -106,8 +106,8 @@
          get_size_constraint_set/3,
          get_sql_injection_match_set/2,
          get_sql_injection_match_set/3,
-         get_web_a_c_l/2,
-         get_web_a_c_l/3,
+         get_web_acl/2,
+         get_web_acl/3,
          get_xss_match_set/2,
          get_xss_match_set/3,
          list_activated_rules_in_rule_group/2,
@@ -116,8 +116,8 @@
          list_byte_match_sets/3,
          list_geo_match_sets/2,
          list_geo_match_sets/3,
-         list_i_p_sets/2,
-         list_i_p_sets/3,
+         list_ip_sets/2,
+         list_ip_sets/3,
          list_logging_configurations/2,
          list_logging_configurations/3,
          list_rate_based_rules/2,
@@ -138,8 +138,8 @@
          list_subscribed_rule_groups/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
-         list_web_a_c_ls/2,
-         list_web_a_c_ls/3,
+         list_web_acls/2,
+         list_web_acls/3,
          list_xss_match_sets/2,
          list_xss_match_sets/3,
          put_logging_configuration/2,
@@ -154,8 +154,8 @@
          update_byte_match_set/3,
          update_geo_match_set/2,
          update_geo_match_set/3,
-         update_i_p_set/2,
-         update_i_p_set/3,
+         update_ip_set/2,
+         update_ip_set/3,
          update_rate_based_rule/2,
          update_rate_based_rule/3,
          update_regex_match_set/2,
@@ -170,8 +170,8 @@
          update_size_constraint_set/3,
          update_sql_injection_match_set/2,
          update_sql_injection_match_set/3,
-         update_web_a_c_l/2,
-         update_web_a_c_l/3,
+         update_web_acl/2,
+         update_web_acl/3,
          update_xss_match_set/2,
          update_xss_match_set/3]).
 
@@ -287,10 +287,10 @@ create_geo_match_set(Client, Input, Options)
 %%
 %% </li> </ol> For more information about how to use the AWS WAF API to allow
 %% or block HTTP requests, see the AWS WAF Developer Guide.
-create_i_p_set(Client, Input)
+create_ip_set(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_i_p_set(Client, Input, []).
-create_i_p_set(Client, Input, Options)
+    create_ip_set(Client, Input, []).
+create_ip_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateIPSet">>, Input, Options).
 
@@ -650,10 +650,10 @@ create_sql_injection_match_set(Client, Input, Options)
 %%
 %% </li> </ol> For more information about how to use the AWS WAF API, see the
 %% AWS WAF Developer Guide.
-create_web_a_c_l(Client, Input)
+create_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_web_a_c_l(Client, Input, []).
-create_web_a_c_l(Client, Input, Options)
+    create_web_acl(Client, Input, []).
+create_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWebACL">>, Input, Options).
 
@@ -669,10 +669,10 @@ create_web_a_c_l(Client, Input, Options)
 %% including caveats and manual steps to complete the migration and switch
 %% over to the new web ACL, see Migrating your AWS WAF Classic resources to
 %% AWS WAF in the AWS WAF Developer Guide.
-create_web_a_c_l_migration_stack(Client, Input)
+create_web_acl_migration_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_web_a_c_l_migration_stack(Client, Input, []).
-create_web_a_c_l_migration_stack(Client, Input, Options)
+    create_web_acl_migration_stack(Client, Input, []).
+create_web_acl_migration_stack(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWebACLMigrationStack">>, Input, Options).
 
@@ -803,10 +803,10 @@ delete_geo_match_set(Client, Input, Options)
 %% </li> <li> Submit a `DeleteIPSet' request.
 %%
 %% </li> </ol>
-delete_i_p_set(Client, Input)
+delete_ip_set(Client, Input)
   when is_map(Client), is_map(Input) ->
-    delete_i_p_set(Client, Input, []).
-delete_i_p_set(Client, Input, Options)
+    delete_ip_set(Client, Input, []).
+delete_ip_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteIPSet">>, Input, Options).
 
@@ -1082,10 +1082,10 @@ delete_sql_injection_match_set(Client, Input, Options)
 %% </li> <li> Submit a `DeleteWebACL' request.
 %%
 %% </li> </ol>
-delete_web_a_c_l(Client, Input)
+delete_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
-    delete_web_a_c_l(Client, Input, []).
-delete_web_a_c_l(Client, Input, Options)
+    delete_web_acl(Client, Input, []).
+delete_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWebACL">>, Input, Options).
 
@@ -1222,10 +1222,10 @@ get_geo_match_set(Client, Input, Options)
 %% endpoints for regional and global use.
 %%
 %% Returns the `IPSet' that is specified by `IPSetId'.
-get_i_p_set(Client, Input)
+get_ip_set(Client, Input)
   when is_map(Client), is_map(Input) ->
-    get_i_p_set(Client, Input, []).
-get_i_p_set(Client, Input, Options)
+    get_ip_set(Client, Input, []).
+get_ip_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetIPSet">>, Input, Options).
 
@@ -1435,10 +1435,10 @@ get_sql_injection_match_set(Client, Input, Options)
 %% endpoints for regional and global use.
 %%
 %% Returns the `WebACL' that is specified by `WebACLId'.
-get_web_a_c_l(Client, Input)
+get_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
-    get_web_a_c_l(Client, Input, []).
-get_web_a_c_l(Client, Input, Options)
+    get_web_acl(Client, Input, []).
+get_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetWebACL">>, Input, Options).
 
@@ -1515,10 +1515,10 @@ list_geo_match_sets(Client, Input, Options)
 %% endpoints for regional and global use.
 %%
 %% Returns an array of `IPSetSummary' objects in the response.
-list_i_p_sets(Client, Input)
+list_ip_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
-    list_i_p_sets(Client, Input, []).
-list_i_p_sets(Client, Input, Options)
+    list_ip_sets(Client, Input, []).
+list_ip_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListIPSets">>, Input, Options).
 
@@ -1700,10 +1700,10 @@ list_tags_for_resource(Client, Input, Options)
 %% endpoints for regional and global use.
 %%
 %% Returns an array of `WebACLSummary' objects in the response.
-list_web_a_c_ls(Client, Input)
+list_web_acls(Client, Input)
   when is_map(Client), is_map(Input) ->
-    list_web_a_c_ls(Client, Input, []).
-list_web_a_c_ls(Client, Input, Options)
+    list_web_acls(Client, Input, []).
+list_web_acls(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWebACLs">>, Input, Options).
 
@@ -2005,10 +2005,10 @@ update_geo_match_set(Client, Input, Options)
 %%
 %% For more information about how to use the AWS WAF API to allow or block
 %% HTTP requests, see the AWS WAF Developer Guide.
-update_i_p_set(Client, Input)
+update_ip_set(Client, Input)
   when is_map(Client), is_map(Input) ->
-    update_i_p_set(Client, Input, []).
-update_i_p_set(Client, Input, Options)
+    update_ip_set(Client, Input, []).
+update_ip_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateIPSet">>, Input, Options).
 
@@ -2446,10 +2446,10 @@ update_sql_injection_match_set(Client, Input, Options)
 %%
 %% For more information about how to use the AWS WAF API to allow or block
 %% HTTP requests, see the AWS WAF Developer Guide.
-update_web_a_c_l(Client, Input)
+update_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
-    update_web_a_c_l(Client, Input, []).
-update_web_a_c_l(Client, Input, Options)
+    update_web_acl(Client, Input, []).
+update_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateWebACL">>, Input, Options).
 

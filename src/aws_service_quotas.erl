@@ -24,18 +24,18 @@
          delete_service_quota_increase_request_from_template/3,
          disassociate_service_quota_template/2,
          disassociate_service_quota_template/3,
-         get_a_w_s_default_service_quota/2,
-         get_a_w_s_default_service_quota/3,
          get_association_for_service_quota_template/2,
          get_association_for_service_quota_template/3,
+         get_aws_default_service_quota/2,
+         get_aws_default_service_quota/3,
          get_requested_service_quota_change/2,
          get_requested_service_quota_change/3,
          get_service_quota/2,
          get_service_quota/3,
          get_service_quota_increase_request_from_template/2,
          get_service_quota_increase_request_from_template/3,
-         list_a_w_s_default_service_quotas/2,
-         list_a_w_s_default_service_quotas/3,
+         list_aws_default_service_quotas/2,
+         list_aws_default_service_quotas/3,
          list_requested_service_quota_change_history/2,
          list_requested_service_quota_change_history/3,
          list_requested_service_quota_change_history_by_quota/2,
@@ -102,17 +102,6 @@ disassociate_service_quota_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateServiceQuotaTemplate">>, Input, Options).
 
-%% @doc Retrieves the default service quotas values.
-%%
-%% The Value returned for each quota is the AWS default value, even if the
-%% quotas have been increased..
-get_a_w_s_default_service_quota(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    get_a_w_s_default_service_quota(Client, Input, []).
-get_a_w_s_default_service_quota(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"GetAWSDefaultServiceQuota">>, Input, Options).
-
 %% @doc Retrieves the `ServiceQuotaTemplateAssociationStatus' value from the
 %% service.
 %%
@@ -124,6 +113,17 @@ get_association_for_service_quota_template(Client, Input)
 get_association_for_service_quota_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAssociationForServiceQuotaTemplate">>, Input, Options).
+
+%% @doc Retrieves the default service quotas values.
+%%
+%% The Value returned for each quota is the AWS default value, even if the
+%% quotas have been increased..
+get_aws_default_service_quota(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_aws_default_service_quota(Client, Input, []).
+get_aws_default_service_quota(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetAWSDefaultServiceQuota">>, Input, Options).
 
 %% @doc Retrieves the details for a particular increase request.
 get_requested_service_quota_change(Client, Input)
@@ -170,10 +170,10 @@ get_service_quota_increase_request_from_template(Client, Input, Options)
 %% results, even when there are more results available. When this happens,
 %% the `NextToken' response parameter contains a value to pass the next call
 %% to the same API to request the next part of the list.
-list_a_w_s_default_service_quotas(Client, Input)
+list_aws_default_service_quotas(Client, Input)
   when is_map(Client), is_map(Input) ->
-    list_a_w_s_default_service_quotas(Client, Input, []).
-list_a_w_s_default_service_quotas(Client, Input, Options)
+    list_aws_default_service_quotas(Client, Input, []).
+list_aws_default_service_quotas(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAWSDefaultServiceQuotas">>, Input, Options).
 

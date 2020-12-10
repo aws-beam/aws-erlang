@@ -26,6 +26,10 @@
          delete_job_tagging/4,
          delete_public_access_block/2,
          delete_public_access_block/3,
+         delete_storage_lens_configuration/3,
+         delete_storage_lens_configuration/4,
+         delete_storage_lens_configuration_tagging/3,
+         delete_storage_lens_configuration_tagging/4,
          describe_job/3,
          describe_job/4,
          get_access_point/3,
@@ -46,12 +50,18 @@
          get_job_tagging/4,
          get_public_access_block/2,
          get_public_access_block/3,
+         get_storage_lens_configuration/3,
+         get_storage_lens_configuration/4,
+         get_storage_lens_configuration_tagging/3,
+         get_storage_lens_configuration_tagging/4,
          list_access_points/5,
          list_access_points/6,
          list_jobs/5,
          list_jobs/6,
          list_regional_buckets/5,
          list_regional_buckets/6,
+         list_storage_lens_configurations/3,
+         list_storage_lens_configurations/4,
          put_access_point_policy/3,
          put_access_point_policy/4,
          put_bucket_lifecycle_configuration/3,
@@ -64,6 +74,10 @@
          put_job_tagging/4,
          put_public_access_block/2,
          put_public_access_block/3,
+         put_storage_lens_configuration/3,
+         put_storage_lens_configuration/4,
+         put_storage_lens_configuration_tagging/3,
+         put_storage_lens_configuration_tagging/4,
          update_job_priority/3,
          update_job_priority/4,
          update_job_status/3,
@@ -97,11 +111,11 @@
 %% Amazon Simple Storage Service Developer Guide .
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
-%% additional parameter of outpost-id to be passed with the request and an S3
-%% on Outposts endpoint hostname prefix instead of s3-control. For an example
-%% of the request syntax for Amazon S3 on Outposts that uses the S3 on
-%% Outposts endpoint hostname prefix and the outpost-id derived using the
-%% access point ARN, see the Example section below.
+%% additional parameter of `x-amz-outpost-id' to be passed with the request
+%% and an S3 on Outposts endpoint hostname prefix instead of `s3-control'.
+%% For an example of the request syntax for Amazon S3 on Outposts that uses
+%% the S3 on Outposts endpoint hostname prefix and the `x-amz-outpost-id'
+%% derived using the access point ARN, see the Examples section.
 %%
 %% The following actions are related to `CreateAccessPoint':
 %%
@@ -154,8 +168,8 @@ create_access_point(Client, Name, Input0, Options) ->
 %% </li> <li> Bucket Location constraint
 %%
 %% </li> </ul> For an example of the request syntax for Amazon S3 on Outposts
-%% that uses the S3 on Outposts endpoint hostname prefix and outpost-id in
-%% your API request, see the Example section below.
+%% that uses the S3 on Outposts endpoint hostname prefix and
+%% `x-amz-outpost-id' in your API request, see the Examples section.
 %%
 %% The following actions are related to `CreateBucket' for Amazon S3 on
 %% Outposts:
@@ -218,7 +232,7 @@ create_bucket(Client, Bucket, Input0, Options) ->
 %% S3 objects that you specify. For more information, see S3 Batch Operations
 %% in the Amazon Simple Storage Service Developer Guide.
 %%
-%% This operation creates a S3 Batch Operations job.
+%% This operation creates an S3 Batch Operations job.
 %%
 %% Related actions include:
 %%
@@ -251,11 +265,11 @@ create_job(Client, Input0, Options) ->
 %% @doc Deletes the specified access point.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
-%% additional parameter of outpost-id to be passed with the request and an S3
-%% on Outposts endpoint hostname prefix instead of s3-control. For an example
-%% of the request syntax for Amazon S3 on Outposts that uses the S3 on
-%% Outposts endpoint hostname prefix and the outpost-id derived using the
-%% access point ARN, see the ARN, see the Example section below.
+%% additional parameter of `x-amz-outpost-id' to be passed with the request
+%% and an S3 on Outposts endpoint hostname prefix instead of `s3-control'.
+%% For an example of the request syntax for Amazon S3 on Outposts that uses
+%% the S3 on Outposts endpoint hostname prefix and the `x-amz-outpost-id'
+%% derived using the access point ARN, see the Examples section.
 %%
 %% The following actions are related to `DeleteAccessPoint':
 %%
@@ -286,11 +300,11 @@ delete_access_point(Client, Name, Input0, Options) ->
 %% @doc Deletes the access point policy for the specified access point.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
-%% additional parameter of outpost-id to be passed with the request and an S3
-%% on Outposts endpoint hostname prefix instead of s3-control. For an example
-%% of the request syntax for Amazon S3 on Outposts that uses the S3 on
-%% Outposts endpoint hostname prefix and the outpost-id derived using the
-%% access point ARN, see the Example section below.
+%% additional parameter of `x-amz-outpost-id' to be passed with the request
+%% and an S3 on Outposts endpoint hostname prefix instead of `s3-control'.
+%% For an example of the request syntax for Amazon S3 on Outposts that uses
+%% the S3 on Outposts endpoint hostname prefix and the `x-amz-outpost-id'
+%% derived using the access point ARN, see the Examples section.
 %%
 %% The following actions are related to `DeleteAccessPointPolicy':
 %%
@@ -327,11 +341,11 @@ delete_access_point_policy(Client, Name, Input0, Options) ->
 %% S3 on Outposts in Amazon Simple Storage Service Developer Guide.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
-%% additional parameter of outpost-id to be passed with the request and an S3
-%% on Outposts endpoint hostname prefix instead of s3-control. For an example
-%% of the request syntax for Amazon S3 on Outposts that uses the S3 on
-%% Outposts endpoint hostname prefix and the outpost-id derived using the
-%% access point ARN, see the Example section below.
+%% additional parameter of `x-amz-outpost-id' to be passed with the request
+%% and an S3 on Outposts endpoint hostname prefix instead of `s3-control'.
+%% For an example of the request syntax for Amazon S3 on Outposts that uses
+%% the S3 on Outposts endpoint hostname prefix and the `x-amz-outpost-id'
+%% derived using the access point ARN, see the Examples section.
 %%
 %% == Related Resources ==
 %%
@@ -374,16 +388,16 @@ delete_bucket(Client, Bucket, Input0, Options) ->
 %% Amazon Simple Storage Service Developer Guide.
 %%
 %% To use this operation, you must have permission to perform the
-%% `s3outposts:DeleteLifecycleConfiguration' action. By default, the bucket
+%% `s3-outposts:DeleteLifecycleConfiguration' action. By default, the bucket
 %% owner has this permission and the Outposts bucket owner can grant this
 %% permission to others.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
-%% additional parameter of outpost-id to be passed with the request and an S3
-%% on Outposts endpoint hostname prefix instead of s3-control. For an example
-%% of the request syntax for Amazon S3 on Outposts that uses the S3 on
-%% Outposts endpoint hostname prefix and the outpost-id derived using the
-%% access point ARN, see the Example section below.
+%% additional parameter of `x-amz-outpost-id' to be passed with the request
+%% and an S3 on Outposts endpoint hostname prefix instead of `s3-control'.
+%% For an example of the request syntax for Amazon S3 on Outposts that uses
+%% the S3 on Outposts endpoint hostname prefix and the `x-amz-outpost-id'
+%% derived using the access point ARN, see the Examples section.
 %%
 %% For more information about object expiration, see Elements to Describe
 %% Lifecycle Actions.
@@ -421,7 +435,7 @@ delete_bucket_lifecycle_configuration(Client, Bucket, Input0, Options) ->
 %% delete the policy of a specified Amazon S3 on Outposts bucket. If you are
 %% using an identity other than the root user of the AWS account that owns
 %% the bucket, the calling identity must have the
-%% `s3outposts:DeleteBucketPolicy' permissions on the specified Outposts
+%% `s3-outposts:DeleteBucketPolicy' permissions on the specified Outposts
 %% bucket and belong to the bucket owner's account to use this operation. For
 %% more information, see Using Amazon S3 on Outposts in Amazon Simple Storage
 %% Service Developer Guide.
@@ -439,11 +453,11 @@ delete_bucket_lifecycle_configuration(Client, Bucket, Input0, Options) ->
 %% User Policies.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
-%% additional parameter of outpost-id to be passed with the request and an S3
-%% on Outposts endpoint hostname prefix instead of s3-control. For an example
-%% of the request syntax for Amazon S3 on Outposts that uses the S3 on
-%% Outposts endpoint hostname prefix and the outpost-id derived using the
-%% access point ARN, see the Example section below.
+%% additional parameter of `x-amz-outpost-id' to be passed with the request
+%% and an S3 on Outposts endpoint hostname prefix instead of `s3-control'.
+%% For an example of the request syntax for Amazon S3 on Outposts that uses
+%% the S3 on Outposts endpoint hostname prefix and the `x-amz-outpost-id'
+%% derived using the access point ARN, see the Examples section.
 %%
 %% The following actions are related to `DeleteBucketPolicy':
 %%
@@ -469,7 +483,7 @@ delete_bucket_policy(Client, Bucket, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API operation deletes an Amazon S3 on Outposts bucket's tags.
+%% @doc This operation deletes an Amazon S3 on Outposts bucket's tags.
 %%
 %% To delete an S3 bucket tags, see DeleteBucketTagging in the Amazon Simple
 %% Storage Service API.
@@ -482,11 +496,11 @@ delete_bucket_policy(Client, Bucket, Input0, Options) ->
 %% permission and can grant this permission to others.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
-%% additional parameter of outpost-id to be passed with the request and an S3
-%% on Outposts endpoint hostname prefix instead of s3-control. For an example
-%% of the request syntax for Amazon S3 on Outposts that uses the S3 on
-%% Outposts endpoint hostname prefix and the outpost-id derived using the
-%% access point ARN, see the Example section below.
+%% additional parameter of `x-amz-outpost-id' to be passed with the request
+%% and an S3 on Outposts endpoint hostname prefix instead of `s3-control'.
+%% For an example of the request syntax for Amazon S3 on Outposts that uses
+%% the S3 on Outposts endpoint hostname prefix and the `x-amz-outpost-id'
+%% derived using the access point ARN, see the Examples section.
 %%
 %% The following actions are related to `DeleteBucketTagging':
 %%
@@ -574,6 +588,58 @@ delete_public_access_block(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes the Amazon S3 Storage Lens configuration.
+%%
+%% For more information about S3 Storage Lens, see Working with Amazon S3
+%% Storage Lens in the Amazon Simple Storage Service Developer Guide.
+%%
+%% To use this action, you must have permission to perform the
+%% `s3:DeleteStorageLensConfiguration' action. For more information, see
+%% Setting permissions to use Amazon S3 Storage Lens in the Amazon Simple
+%% Storage Service Developer Guide.
+delete_storage_lens_configuration(Client, ConfigId, Input) ->
+    delete_storage_lens_configuration(Client, ConfigId, Input, []).
+delete_storage_lens_configuration(Client, ConfigId, Input0, Options) ->
+    Method = delete,
+    Path = ["/v20180820/storagelens/", aws_util:encode_uri(ConfigId), ""],
+    SuccessStatusCode = undefined,
+
+    HeadersMapping = [
+                       {<<"x-amz-account-id">>, <<"AccountId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the Amazon S3 Storage Lens configuration tags.
+%%
+%% For more information about S3 Storage Lens, see Working with Amazon S3
+%% Storage Lens in the Amazon Simple Storage Service Developer Guide.
+%%
+%% To use this action, you must have permission to perform the
+%% `s3:DeleteStorageLensConfigurationTagging' action. For more information,
+%% see Setting permissions to use Amazon S3 Storage Lens in the Amazon Simple
+%% Storage Service Developer Guide.
+delete_storage_lens_configuration_tagging(Client, ConfigId, Input) ->
+    delete_storage_lens_configuration_tagging(Client, ConfigId, Input, []).
+delete_storage_lens_configuration_tagging(Client, ConfigId, Input0, Options) ->
+    Method = delete,
+    Path = ["/v20180820/storagelens/", aws_util:encode_uri(ConfigId), "/tagging"],
+    SuccessStatusCode = undefined,
+
+    HeadersMapping = [
+                       {<<"x-amz-account-id">>, <<"AccountId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Retrieves the configuration parameters and status for a Batch
 %% Operations job.
 %%
@@ -612,11 +678,11 @@ describe_job(Client, JobId, AccountId, Options)
 %% @doc Returns configuration information about the specified access point.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
-%% additional parameter of outpost-id to be passed with the request and an S3
-%% on Outposts endpoint hostname prefix instead of s3-control. For an example
-%% of the request syntax for Amazon S3 on Outposts that uses the S3 on
-%% Outposts endpoint hostname prefix and the outpost-id derived using the
-%% access point ARN, see the Example section below.
+%% additional parameter of `x-amz-outpost-id' to be passed with the request
+%% and an S3 on Outposts endpoint hostname prefix instead of `s3-control'.
+%% For an example of the request syntax for Amazon S3 on Outposts that uses
+%% the S3 on Outposts endpoint hostname prefix and the `x-amz-outpost-id'
+%% derived using the access point ARN, see the Examples section.
 %%
 %% The following actions are related to `GetAccessPoint':
 %%
@@ -702,8 +768,26 @@ get_access_point_policy_status(Client, Name, AccountId, Options)
 %% For more information, see Using Amazon S3 on Outposts in the Amazon Simple
 %% Storage Service Developer Guide.
 %%
+%% If you are using an identity other than the root user of the AWS account
+%% that owns the bucket, the calling identity must have the
+%% `s3-outposts:GetBucket' permissions on the specified bucket and belong to
+%% the bucket owner's account in order to use this operation. Only users from
+%% Outposts bucket owner account with the right permissions can perform
+%% actions on an Outposts bucket.
+%%
+%% If you don't have `s3-outposts:GetBucket' permissions or you're not using
+%% an identity that belongs to the bucket owner's account, Amazon S3 returns
+%% a `403 Access Denied' error.
+%%
 %% The following actions are related to `GetBucket' for Amazon S3 on
 %% Outposts:
+%%
+%% All Amazon S3 on Outposts REST API requests for this action require an
+%% additional parameter of `x-amz-outpost-id' to be passed with the request
+%% and an S3 on Outposts endpoint hostname prefix instead of `s3-control'.
+%% For an example of the request syntax for Amazon S3 on Outposts that uses
+%% the S3 on Outposts endpoint hostname prefix and the `x-amz-outpost-id'
+%% derived using the access point ARN, see the Examples section.
 %%
 %% <ul> <li> PutObject
 %%
@@ -730,7 +814,7 @@ get_bucket(Client, Bucket, AccountId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This API operation gets an Amazon S3 on Outposts bucket's lifecycle
+%% @doc This operation gets an Amazon S3 on Outposts bucket's lifecycle
 %% configuration.
 %%
 %% To get an S3 bucket's lifecycle configuration, see
@@ -742,18 +826,18 @@ get_bucket(Client, Bucket, AccountId, Options)
 %% in Amazon Simple Storage Service Developer Guide.
 %%
 %% To use this operation, you must have permission to perform the
-%% `s3outposts:GetLifecycleConfiguration' action. The Outposts bucket owner
+%% `s3-outposts:GetLifecycleConfiguration' action. The Outposts bucket owner
 %% has this permission, by default. The bucket owner can grant this
 %% permission to others. For more information about permissions, see
 %% Permissions Related to Bucket Subresource Operations and Managing Access
 %% Permissions to Your Amazon S3 Resources.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
-%% additional parameter of outpost-id to be passed with the request and an S3
-%% on Outposts endpoint hostname prefix instead of s3-control. For an example
-%% of the request syntax for Amazon S3 on Outposts that uses the S3 on
-%% Outposts endpoint hostname prefix and the outpost-id derived using the
-%% access point ARN, see the Example section below.
+%% additional parameter of `x-amz-outpost-id' to be passed with the request
+%% and an S3 on Outposts endpoint hostname prefix instead of `s3-control'.
+%% For an example of the request syntax for Amazon S3 on Outposts that uses
+%% the S3 on Outposts endpoint hostname prefix and the `x-amz-outpost-id'
+%% derived using the access point ARN, see the Examples section.
 %%
 %% `GetBucketLifecycleConfiguration' has the following special error:
 %%
@@ -791,8 +875,7 @@ get_bucket_lifecycle_configuration(Client, Bucket, AccountId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This API action gets a bucket policy for an Amazon S3 on Outposts
-%% bucket.
+%% @doc This action gets a bucket policy for an Amazon S3 on Outposts bucket.
 %%
 %% To get a policy for an S3 bucket, see GetBucketPolicy in the Amazon Simple
 %% Storage Service API.
@@ -806,10 +889,11 @@ get_bucket_lifecycle_configuration(Client, Bucket, AccountId, Options)
 %% permissions on the specified bucket and belong to the bucket owner's
 %% account in order to use this operation.
 %%
-%% If you don't have `s3outposts:GetBucketPolicy' permissions, Amazon S3
-%% returns a `403 Access Denied' error. If you have the correct permissions,
-%% but you're not using an identity that belongs to the bucket owner's
-%% account, Amazon S3 returns a `405 Method Not Allowed' error.
+%% Only users from Outposts bucket owner account with the right permissions
+%% can perform actions on an Outposts bucket. If you don't have
+%% `s3-outposts:GetBucketPolicy' permissions or you're not using an identity
+%% that belongs to the bucket owner's account, Amazon S3 returns a `403
+%% Access Denied' error.
 %%
 %% As a security precaution, the root user of the AWS account that owns a
 %% bucket can always use this operation, even if the policy explicitly denies
@@ -819,11 +903,11 @@ get_bucket_lifecycle_configuration(Client, Bucket, AccountId, Options)
 %% User Policies.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
-%% additional parameter of outpost-id to be passed with the request and an S3
-%% on Outposts endpoint hostname prefix instead of s3-control. For an example
-%% of the request syntax for Amazon S3 on Outposts that uses the S3 on
-%% Outposts endpoint hostname prefix and the outpost-id derived using the
-%% access point ARN, see the Example section below.
+%% additional parameter of `x-amz-outpost-id' to be passed with the request
+%% and an S3 on Outposts endpoint hostname prefix instead of `s3-control'.
+%% For an example of the request syntax for Amazon S3 on Outposts that uses
+%% the S3 on Outposts endpoint hostname prefix and the `x-amz-outpost-id'
+%% derived using the access point ARN, see the Examples section.
 %%
 %% The following actions are related to `GetBucketPolicy':
 %%
@@ -852,7 +936,7 @@ get_bucket_policy(Client, Bucket, AccountId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This API operation gets an Amazon S3 on Outposts bucket's tags.
+%% @doc This operation gets an Amazon S3 on Outposts bucket's tags.
 %%
 %% To get an S3 bucket tags, see GetBucketTagging in the Amazon Simple
 %% Storage Service API.
@@ -872,11 +956,12 @@ get_bucket_policy(Client, Bucket, AccountId, Options)
 %% <ul> <li> Description: There is no tag set associated with the bucket.
 %%
 %% </li> </ul> </li> </ul> All Amazon S3 on Outposts REST API requests for
-%% this action require an additional parameter of outpost-id to be passed
-%% with the request and an S3 on Outposts endpoint hostname prefix instead of
-%% s3-control. For an example of the request syntax for Amazon S3 on Outposts
-%% that uses the S3 on Outposts endpoint hostname prefix and the outpost-id
-%% derived using the access point ARN, see the Example section below.
+%% this action require an additional parameter of `x-amz-outpost-id' to be
+%% passed with the request and an S3 on Outposts endpoint hostname prefix
+%% instead of `s3-control'. For an example of the request syntax for Amazon
+%% S3 on Outposts that uses the S3 on Outposts endpoint hostname prefix and
+%% the `x-amz-outpost-id' derived using the access point ARN, see the
+%% Examples section.
 %%
 %% The following actions are related to `GetBucketTagging':
 %%
@@ -966,6 +1051,60 @@ get_public_access_block(Client, AccountId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets the Amazon S3 Storage Lens configuration.
+%%
+%% For more information, see Working with Amazon S3 Storage Lens in the
+%% Amazon Simple Storage Service Developer Guide.
+%%
+%% To use this action, you must have permission to perform the
+%% `s3:GetStorageLensConfiguration' action. For more information, see Setting
+%% permissions to use Amazon S3 Storage Lens in the Amazon Simple Storage
+%% Service Developer Guide.
+get_storage_lens_configuration(Client, ConfigId, AccountId)
+  when is_map(Client) ->
+    get_storage_lens_configuration(Client, ConfigId, AccountId, []).
+get_storage_lens_configuration(Client, ConfigId, AccountId, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/v20180820/storagelens/", aws_util:encode_uri(ConfigId), ""],
+    SuccessStatusCode = undefined,
+
+    Headers0 =
+      [
+        {<<"x-amz-account-id">>, AccountId}
+      ],
+    Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets the tags of Amazon S3 Storage Lens configuration.
+%%
+%% For more information about S3 Storage Lens, see Working with Amazon S3
+%% Storage Lens in the Amazon Simple Storage Service Developer Guide.
+%%
+%% To use this action, you must have permission to perform the
+%% `s3:GetStorageLensConfigurationTagging' action. For more information, see
+%% Setting permissions to use Amazon S3 Storage Lens in the Amazon Simple
+%% Storage Service Developer Guide.
+get_storage_lens_configuration_tagging(Client, ConfigId, AccountId)
+  when is_map(Client) ->
+    get_storage_lens_configuration_tagging(Client, ConfigId, AccountId, []).
+get_storage_lens_configuration_tagging(Client, ConfigId, AccountId, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/v20180820/storagelens/", aws_util:encode_uri(ConfigId), "/tagging"],
+    SuccessStatusCode = undefined,
+
+    Headers0 =
+      [
+        {<<"x-amz-account-id">>, AccountId}
+      ],
+    Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns a list of the access points currently associated with the
 %% specified bucket.
 %%
@@ -975,11 +1114,11 @@ get_public_access_block(Client, AccountId, Options)
 %% token that you can use to list the additional access points.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
-%% additional parameter of outpost-id to be passed with the request and an S3
-%% on Outposts endpoint hostname prefix instead of s3-control. For an example
-%% of the request syntax for Amazon S3 on Outposts that uses the S3 on
-%% Outposts endpoint hostname prefix and the outpost-id derived using the
-%% access point ARN, see the Example section below.
+%% additional parameter of `x-amz-outpost-id' to be passed with the request
+%% and an S3 on Outposts endpoint hostname prefix instead of `s3-control'.
+%% For an example of the request syntax for Amazon S3 on Outposts that uses
+%% the S3 on Outposts endpoint hostname prefix and the `x-amz-outpost-id'
+%% derived using the access point ARN, see the Examples section.
 %%
 %% The following actions are related to `ListAccessPoints':
 %%
@@ -1055,15 +1194,15 @@ list_jobs(Client, JobStatuses, MaxResults, NextToken, AccountId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of all Outposts buckets in an Outposts that are owned
+%% @doc Returns a list of all Outposts buckets in an Outpost that are owned
 %% by the authenticated sender of the request.
 %%
 %% For more information, see Using Amazon S3 on Outposts in the Amazon Simple
 %% Storage Service Developer Guide.
 %%
 %% For an example of the request syntax for Amazon S3 on Outposts that uses
-%% the S3 on Outposts endpoint hostname prefix and outpost-id in your API
-%% request, see the Example section below.
+%% the S3 on Outposts endpoint hostname prefix and `x-amz-outpost-id' in your
+%% request, see the Examples section.
 list_regional_buckets(Client, MaxResults, NextToken, AccountId, OutpostId)
   when is_map(Client) ->
     list_regional_buckets(Client, MaxResults, NextToken, AccountId, OutpostId, []).
@@ -1088,17 +1227,48 @@ list_regional_buckets(Client, MaxResults, NextToken, AccountId, OutpostId, Optio
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets a list of Amazon S3 Storage Lens configurations.
+%%
+%% For more information about S3 Storage Lens, see Working with Amazon S3
+%% Storage Lens in the Amazon Simple Storage Service Developer Guide.
+%%
+%% To use this action, you must have permission to perform the
+%% `s3:ListStorageLensConfigurations' action. For more information, see
+%% Setting permissions to use Amazon S3 Storage Lens in the Amazon Simple
+%% Storage Service Developer Guide.
+list_storage_lens_configurations(Client, NextToken, AccountId)
+  when is_map(Client) ->
+    list_storage_lens_configurations(Client, NextToken, AccountId, []).
+list_storage_lens_configurations(Client, NextToken, AccountId, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/v20180820/storagelens"],
+    SuccessStatusCode = undefined,
+
+    Headers0 =
+      [
+        {<<"x-amz-account-id">>, AccountId}
+      ],
+    Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
+
+    Query0_ =
+      [
+        {<<"nextToken">>, NextToken}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Associates an access policy with the specified access point.
 %%
 %% Each access point can have only one policy, so a request made to this API
 %% replaces any existing policy associated with the specified access point.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
-%% additional parameter of outpost-id to be passed with the request and an S3
-%% on Outposts endpoint hostname prefix instead of s3-control. For an example
-%% of the request syntax for Amazon S3 on Outposts that uses the S3 on
-%% Outposts endpoint hostname prefix and the outpost-id derived using the
-%% access point ARN, see the Example section below.
+%% additional parameter of `x-amz-outpost-id' to be passed with the request
+%% and an S3 on Outposts endpoint hostname prefix instead of `s3-control'.
+%% For an example of the request syntax for Amazon S3 on Outposts that uses
+%% the S3 on Outposts endpoint hostname prefix and the `x-amz-outpost-id'
+%% derived using the access point ARN, see the Examples section.
 %%
 %% The following actions are related to `PutAccessPointPolicy':
 %%
@@ -1124,23 +1294,24 @@ put_access_point_policy(Client, Name, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API action puts a lifecycle configuration to an Amazon S3 on
+%% @doc This action puts a lifecycle configuration to an Amazon S3 on
 %% Outposts bucket.
 %%
 %% To put a lifecycle configuration to an S3 bucket, see
 %% PutBucketLifecycleConfiguration in the Amazon Simple Storage Service API.
 %%
 %% Creates a new lifecycle configuration for the Outposts bucket or replaces
-%% an existing lifecycle configuration. Outposts buckets can only support a
-%% lifecycle that deletes objects after a certain period of time. For more
-%% information, see Managing Lifecycle Permissions for Amazon S3 on Outposts.
+%% an existing lifecycle configuration. Outposts buckets only support
+%% lifecycle configurations that delete/expire objects after a certain period
+%% of time and abort incomplete multipart uploads. For more information, see
+%% Managing Lifecycle Permissions for Amazon S3 on Outposts.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
-%% additional parameter of outpost-id to be passed with the request and an S3
-%% on Outposts endpoint hostname prefix instead of s3-control. For an example
-%% of the request syntax for Amazon S3 on Outposts that uses the S3 on
-%% Outposts endpoint hostname prefix and the outpost-id derived using the
-%% access point ARN, see the Example section below.
+%% additional parameter of `x-amz-outpost-id' to be passed with the request
+%% and an S3 on Outposts endpoint hostname prefix instead of `s3-control'.
+%% For an example of the request syntax for Amazon S3 on Outposts that uses
+%% the S3 on Outposts endpoint hostname prefix and the `x-amz-outpost-id'
+%% derived using the access point ARN, see the Examples section.
 %%
 %% The following actions are related to `PutBucketLifecycleConfiguration':
 %%
@@ -1166,8 +1337,7 @@ put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API action puts a bucket policy to an Amazon S3 on Outposts
-%% bucket.
+%% @doc This action puts a bucket policy to an Amazon S3 on Outposts bucket.
 %%
 %% To put a policy on an S3 bucket, see PutBucketPolicy in the Amazon Simple
 %% Storage Service API.
@@ -1194,11 +1364,11 @@ put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options) ->
 %% User Policies.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
-%% additional parameter of outpost-id to be passed with the request and an S3
-%% on Outposts endpoint hostname prefix instead of s3-control. For an example
-%% of the request syntax for Amazon S3 on Outposts that uses the S3 on
-%% Outposts endpoint hostname prefix and the outpost-id derived using the
-%% access point ARN, see the Example section below.
+%% additional parameter of `x-amz-outpost-id' to be passed with the request
+%% and an S3 on Outposts endpoint hostname prefix instead of `s3-control'.
+%% For an example of the request syntax for Amazon S3 on Outposts that uses
+%% the S3 on Outposts endpoint hostname prefix and the `x-amz-outpost-id'
+%% derived using the access point ARN, see the Examples section.
 %%
 %% The following actions are related to `PutBucketPolicy':
 %%
@@ -1225,7 +1395,7 @@ put_bucket_policy(Client, Bucket, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API action puts tags on an Amazon S3 on Outposts bucket.
+%% @doc This action puts tags on an Amazon S3 on Outposts bucket.
 %%
 %% To put tags on an S3 bucket, see PutBucketTagging in the Amazon Simple
 %% Storage Service API.
@@ -1248,7 +1418,7 @@ put_bucket_policy(Client, Bucket, Input0, Options) ->
 %% Using Cost Allocation in Amazon S3 Bucket Tags.
 %%
 %% To use this operation, you must have permissions to perform the
-%% `s3outposts:PutBucketTagging' action. The Outposts bucket owner has this
+%% `s3-outposts:PutBucketTagging' action. The Outposts bucket owner has this
 %% permission by default and can grant this permission to others. For more
 %% information about permissions, see Permissions Related to Bucket
 %% Subresource Operations and Managing Access Permissions to Your Amazon S3
@@ -1278,11 +1448,12 @@ put_bucket_policy(Client, Bucket, Input0, Options) ->
 %% the bucket.
 %%
 %% </li> </ul> </li> </ul> All Amazon S3 on Outposts REST API requests for
-%% this action require an additional parameter of outpost-id to be passed
-%% with the request and an S3 on Outposts endpoint hostname prefix instead of
-%% s3-control. For an example of the request syntax for Amazon S3 on Outposts
-%% that uses the S3 on Outposts endpoint hostname prefix and the outpost-id
-%% derived using the access point ARN, see the Example section below.
+%% this action require an additional parameter of `x-amz-outpost-id' to be
+%% passed with the request and an S3 on Outposts endpoint hostname prefix
+%% instead of `s3-control'. For an example of the request syntax for Amazon
+%% S3 on Outposts that uses the S3 on Outposts endpoint hostname prefix and
+%% the `x-amz-outpost-id' derived using the access point ARN, see the
+%% Examples section.
 %%
 %% The following actions are related to `PutBucketTagging':
 %%
@@ -1315,9 +1486,9 @@ put_bucket_tagging(Client, Bucket, Input0, Options) ->
 %% associated with the job. To modify the existing tag set, you can either
 %% replace the existing tag set entirely, or make changes within the existing
 %% tag set by retrieving the existing tag set using GetJobTagging, modify
-%% that tag set, and use this API action to replace the tag set with the one
-%% you modified. For more information, see Controlling access and labeling
-%% jobs using tags in the Amazon Simple Storage Service Developer Guide.
+%% that tag set, and use this action to replace the tag set with the one you
+%% modified. For more information, see Controlling access and labeling jobs
+%% using tags in the Amazon Simple Storage Service Developer Guide.
 %%
 %% <ul> <li> If you send this request with an empty tag set, Amazon S3
 %% deletes the existing tag set on the Batch Operations job. If you use this
@@ -1392,6 +1563,59 @@ put_public_access_block(Client, Input) ->
 put_public_access_block(Client, Input0, Options) ->
     Method = put,
     Path = ["/v20180820/configuration/publicAccessBlock"],
+    SuccessStatusCode = undefined,
+
+    HeadersMapping = [
+                       {<<"x-amz-account-id">>, <<"AccountId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Puts an Amazon S3 Storage Lens configuration.
+%%
+%% For more information about S3 Storage Lens, see Working with Amazon S3
+%% Storage Lens in the Amazon Simple Storage Service Developer Guide.
+%%
+%% To use this action, you must have permission to perform the
+%% `s3:PutStorageLensConfiguration' action. For more information, see Setting
+%% permissions to use Amazon S3 Storage Lens in the Amazon Simple Storage
+%% Service Developer Guide.
+put_storage_lens_configuration(Client, ConfigId, Input) ->
+    put_storage_lens_configuration(Client, ConfigId, Input, []).
+put_storage_lens_configuration(Client, ConfigId, Input0, Options) ->
+    Method = put,
+    Path = ["/v20180820/storagelens/", aws_util:encode_uri(ConfigId), ""],
+    SuccessStatusCode = undefined,
+
+    HeadersMapping = [
+                       {<<"x-amz-account-id">>, <<"AccountId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Put or replace tags on an existing Amazon S3 Storage Lens
+%% configuration.
+%%
+%% For more information about S3 Storage Lens, see Working with Amazon S3
+%% Storage Lens in the Amazon Simple Storage Service Developer Guide.
+%%
+%% To use this action, you must have permission to perform the
+%% `s3:PutStorageLensConfigurationTagging' action. For more information, see
+%% Setting permissions to use Amazon S3 Storage Lens in the Amazon Simple
+%% Storage Service Developer Guide.
+put_storage_lens_configuration_tagging(Client, ConfigId, Input) ->
+    put_storage_lens_configuration_tagging(Client, ConfigId, Input, []).
+put_storage_lens_configuration_tagging(Client, ConfigId, Input0, Options) ->
+    Method = put,
+    Path = ["/v20180820/storagelens/", aws_util:encode_uri(ConfigId), "/tagging"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [

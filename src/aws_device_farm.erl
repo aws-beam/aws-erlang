@@ -38,8 +38,8 @@
          create_test_grid_url/3,
          create_upload/2,
          create_upload/3,
-         create_v_p_c_e_configuration/2,
-         create_v_p_c_e_configuration/3,
+         create_vpce_configuration/2,
+         create_vpce_configuration/3,
          delete_device_pool/2,
          delete_device_pool/3,
          delete_instance_profile/2,
@@ -56,8 +56,8 @@
          delete_test_grid_project/3,
          delete_upload/2,
          delete_upload/3,
-         delete_v_p_c_e_configuration/2,
-         delete_v_p_c_e_configuration/3,
+         delete_vpce_configuration/2,
+         delete_vpce_configuration/3,
          get_account_settings/2,
          get_account_settings/3,
          get_device/2,
@@ -92,8 +92,8 @@
          get_test_grid_session/3,
          get_upload/2,
          get_upload/3,
-         get_v_p_c_e_configuration/2,
-         get_v_p_c_e_configuration/3,
+         get_vpce_configuration/2,
+         get_vpce_configuration/3,
          install_to_remote_access_session/2,
          install_to_remote_access_session/3,
          list_artifacts/2,
@@ -142,8 +142,8 @@
          list_unique_problems/3,
          list_uploads/2,
          list_uploads/3,
-         list_v_p_c_e_configurations/2,
-         list_v_p_c_e_configurations/3,
+         list_vpce_configurations/2,
+         list_vpce_configurations/3,
          purchase_offering/2,
          purchase_offering/3,
          renew_offering/2,
@@ -174,8 +174,8 @@
          update_test_grid_project/3,
          update_upload/2,
          update_upload/3,
-         update_v_p_c_e_configuration/2,
-         update_v_p_c_e_configuration/3]).
+         update_vpce_configuration/2,
+         update_vpce_configuration/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -253,10 +253,10 @@ create_upload(Client, Input, Options)
 
 %% @doc Creates a configuration record in Device Farm for your Amazon Virtual
 %% Private Cloud (VPC) endpoint.
-create_v_p_c_e_configuration(Client, Input)
+create_vpce_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_v_p_c_e_configuration(Client, Input, []).
-create_v_p_c_e_configuration(Client, Input, Options)
+    create_vpce_configuration(Client, Input, []).
+create_vpce_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateVPCEConfiguration">>, Input, Options).
 
@@ -338,10 +338,10 @@ delete_upload(Client, Input, Options)
 
 %% @doc Deletes a configuration for your Amazon Virtual Private Cloud (VPC)
 %% endpoint.
-delete_v_p_c_e_configuration(Client, Input)
+delete_vpce_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
-    delete_v_p_c_e_configuration(Client, Input, []).
-delete_v_p_c_e_configuration(Client, Input, Options)
+    delete_vpce_configuration(Client, Input, []).
+delete_vpce_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteVPCEConfiguration">>, Input, Options).
 
@@ -503,10 +503,10 @@ get_upload(Client, Input, Options)
 
 %% @doc Returns information about the configuration settings for your Amazon
 %% Virtual Private Cloud (VPC) endpoint.
-get_v_p_c_e_configuration(Client, Input)
+get_vpce_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
-    get_v_p_c_e_configuration(Client, Input, []).
-get_v_p_c_e_configuration(Client, Input, Options)
+    get_vpce_configuration(Client, Input, []).
+get_vpce_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetVPCEConfiguration">>, Input, Options).
 
@@ -734,10 +734,10 @@ list_uploads(Client, Input, Options)
 
 %% @doc Returns information about all Amazon Virtual Private Cloud (VPC)
 %% endpoint configurations in the AWS account.
-list_v_p_c_e_configurations(Client, Input)
+list_vpce_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
-    list_v_p_c_e_configurations(Client, Input, []).
-list_v_p_c_e_configurations(Client, Input, Options)
+    list_vpce_configurations(Client, Input, []).
+list_vpce_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListVPCEConfigurations">>, Input, Options).
 
@@ -896,10 +896,10 @@ update_upload(Client, Input, Options)
 
 %% @doc Updates information about an Amazon Virtual Private Cloud (VPC)
 %% endpoint configuration.
-update_v_p_c_e_configuration(Client, Input)
+update_vpce_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
-    update_v_p_c_e_configuration(Client, Input, []).
-update_v_p_c_e_configuration(Client, Input, Options)
+    update_vpce_configuration(Client, Input, []).
+update_vpce_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateVPCEConfiguration">>, Input, Options).
 

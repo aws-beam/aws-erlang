@@ -12,38 +12,46 @@
 %% and AWS Shield Developer Guide.
 -module(aws_shield).
 
--export([associate_d_r_t_log_bucket/2,
-         associate_d_r_t_log_bucket/3,
-         associate_d_r_t_role/2,
-         associate_d_r_t_role/3,
+-export([associate_drt_log_bucket/2,
+         associate_drt_log_bucket/3,
+         associate_drt_role/2,
+         associate_drt_role/3,
          associate_health_check/2,
          associate_health_check/3,
          associate_proactive_engagement_details/2,
          associate_proactive_engagement_details/3,
          create_protection/2,
          create_protection/3,
+         create_protection_group/2,
+         create_protection_group/3,
          create_subscription/2,
          create_subscription/3,
          delete_protection/2,
          delete_protection/3,
+         delete_protection_group/2,
+         delete_protection_group/3,
          delete_subscription/2,
          delete_subscription/3,
          describe_attack/2,
          describe_attack/3,
-         describe_d_r_t_access/2,
-         describe_d_r_t_access/3,
+         describe_attack_statistics/2,
+         describe_attack_statistics/3,
+         describe_drt_access/2,
+         describe_drt_access/3,
          describe_emergency_contact_settings/2,
          describe_emergency_contact_settings/3,
          describe_protection/2,
          describe_protection/3,
+         describe_protection_group/2,
+         describe_protection_group/3,
          describe_subscription/2,
          describe_subscription/3,
          disable_proactive_engagement/2,
          disable_proactive_engagement/3,
-         disassociate_d_r_t_log_bucket/2,
-         disassociate_d_r_t_log_bucket/3,
-         disassociate_d_r_t_role/2,
-         disassociate_d_r_t_role/3,
+         disassociate_drt_log_bucket/2,
+         disassociate_drt_log_bucket/3,
+         disassociate_drt_role/2,
+         disassociate_drt_role/3,
          disassociate_health_check/2,
          disassociate_health_check/3,
          enable_proactive_engagement/2,
@@ -52,10 +60,16 @@
          get_subscription_state/3,
          list_attacks/2,
          list_attacks/3,
+         list_protection_groups/2,
+         list_protection_groups/3,
          list_protections/2,
          list_protections/3,
+         list_resources_in_protection_group/2,
+         list_resources_in_protection_group/3,
          update_emergency_contact_settings/2,
          update_emergency_contact_settings/3,
+         update_protection_group/2,
+         update_protection_group/3,
          update_subscription/2,
          update_subscription/3]).
 
@@ -73,10 +87,10 @@
 %% To use the services of the DRT and make an `AssociateDRTLogBucket'
 %% request, you must be subscribed to the Business Support plan or the
 %% Enterprise Support plan.
-associate_d_r_t_log_bucket(Client, Input)
+associate_drt_log_bucket(Client, Input)
   when is_map(Client), is_map(Input) ->
-    associate_d_r_t_log_bucket(Client, Input, []).
-associate_d_r_t_log_bucket(Client, Input, Options)
+    associate_drt_log_bucket(Client, Input, []).
+associate_drt_log_bucket(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateDRTLogBucket">>, Input, Options).
 
@@ -111,10 +125,10 @@ associate_d_r_t_log_bucket(Client, Input, Options)
 %% To use the services of the DRT and make an `AssociateDRTRole' request, you
 %% must be subscribed to the Business Support plan or the Enterprise Support
 %% plan.
-associate_d_r_t_role(Client, Input)
+associate_drt_role(Client, Input)
   when is_map(Client), is_map(Input) ->
-    associate_d_r_t_role(Client, Input, []).
-associate_d_r_t_role(Client, Input, Options)
+    associate_drt_role(Client, Input, []).
+associate_drt_role(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateDRTRole">>, Input, Options).
 
@@ -177,6 +191,18 @@ create_protection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateProtection">>, Input, Options).
 
+%% @doc Creates a grouping of protected resources so they can be handled as a
+%% collective.
+%%
+%% This resource grouping improves the accuracy of detection and reduces
+%% false positives.
+create_protection_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_protection_group(Client, Input, []).
+create_protection_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateProtectionGroup">>, Input, Options).
+
 %% @doc Activates AWS Shield Advanced for an account.
 %%
 %% When you initally create a subscription, your subscription is set to be
@@ -197,6 +223,14 @@ delete_protection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteProtection">>, Input, Options).
 
+%% @doc Removes the specified protection group.
+delete_protection_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_protection_group(Client, Input, []).
+delete_protection_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteProtectionGroup">>, Input, Options).
+
 %% @doc Removes AWS Shield Advanced from an account.
 %%
 %% AWS Shield Advanced requires a 1-year subscription commitment. You cannot
@@ -216,13 +250,35 @@ describe_attack(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAttack">>, Input, Options).
 
+%% @doc Provides information about the number and type of attacks AWS Shield
+%% has detected in the last year for all resources that belong to your
+%% account, regardless of whether you've defined Shield protections for them.
+%%
+%% This operation is available to Shield customers as well as to Shield
+%% Advanced customers.
+%%
+%% The operation returns data for the time range of midnight UTC, one year
+%% ago, to midnight UTC, today. For example, if the current time is
+%% `2020-10-26 15:39:32 PDT', equal to `2020-10-26 22:39:32 UTC', then the
+%% time range for the attack data returned is from `2019-10-26 00:00:00 UTC'
+%% to `2020-10-26 00:00:00 UTC'.
+%%
+%% The time range indicates the period covered by the attack statistics data
+%% items.
+describe_attack_statistics(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_attack_statistics(Client, Input, []).
+describe_attack_statistics(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeAttackStatistics">>, Input, Options).
+
 %% @doc Returns the current role and list of Amazon S3 log buckets used by
 %% the DDoS Response Team (DRT) to access your AWS account while assisting
 %% with attack mitigation.
-describe_d_r_t_access(Client, Input)
+describe_drt_access(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_d_r_t_access(Client, Input, []).
-describe_d_r_t_access(Client, Input, Options)
+    describe_drt_access(Client, Input, []).
+describe_drt_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDRTAccess">>, Input, Options).
 
@@ -244,6 +300,14 @@ describe_protection(Client, Input)
 describe_protection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeProtection">>, Input, Options).
+
+%% @doc Returns the specification for the specified protection group.
+describe_protection_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_protection_group(Client, Input, []).
+describe_protection_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeProtectionGroup">>, Input, Options).
 
 %% @doc Provides details about the AWS Shield Advanced subscription for an
 %% account.
@@ -272,10 +336,10 @@ disable_proactive_engagement(Client, Input, Options)
 %% are not subscribed to one of these support plans, but had been previously
 %% and had granted the DRT access to your account, you can submit a
 %% `DisassociateDRTLogBucket' request to remove this access.
-disassociate_d_r_t_log_bucket(Client, Input)
+disassociate_drt_log_bucket(Client, Input)
   when is_map(Client), is_map(Input) ->
-    disassociate_d_r_t_log_bucket(Client, Input, []).
-disassociate_d_r_t_log_bucket(Client, Input, Options)
+    disassociate_drt_log_bucket(Client, Input, []).
+disassociate_drt_log_bucket(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateDRTLogBucket">>, Input, Options).
 
@@ -286,10 +350,10 @@ disassociate_d_r_t_log_bucket(Client, Input, Options)
 %% not subscribed to one of these support plans, but had been previously and
 %% had granted the DRT access to your account, you can submit a
 %% `DisassociateDRTRole' request to remove this access.
-disassociate_d_r_t_role(Client, Input)
+disassociate_drt_role(Client, Input)
   when is_map(Client), is_map(Input) ->
-    disassociate_d_r_t_role(Client, Input, []).
-disassociate_d_r_t_role(Client, Input, Options)
+    disassociate_drt_role(Client, Input, []).
+disassociate_drt_role(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateDRTRole">>, Input, Options).
 
@@ -338,6 +402,14 @@ list_attacks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAttacks">>, Input, Options).
 
+%% @doc Retrieves the `ProtectionGroup' objects for the account.
+list_protection_groups(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_protection_groups(Client, Input, []).
+list_protection_groups(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListProtectionGroups">>, Input, Options).
+
 %% @doc Lists all `Protection' objects for the account.
 list_protections(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -345,6 +417,14 @@ list_protections(Client, Input)
 list_protections(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListProtections">>, Input, Options).
+
+%% @doc Retrieves the resources that are included in the protection group.
+list_resources_in_protection_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_resources_in_protection_group(Client, Input, []).
+list_resources_in_protection_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListResourcesInProtectionGroup">>, Input, Options).
 
 %% @doc Updates the details of the list of email addresses and phone numbers
 %% that the DDoS Response Team (DRT) can use to contact you if you have
@@ -356,6 +436,18 @@ update_emergency_contact_settings(Client, Input)
 update_emergency_contact_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateEmergencyContactSettings">>, Input, Options).
+
+%% @doc Updates an existing protection group.
+%%
+%% A protection group is a grouping of protected resources so they can be
+%% handled as a collective. This resource grouping improves the accuracy of
+%% detection and reduces false positives.
+update_protection_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_protection_group(Client, Input, []).
+update_protection_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateProtectionGroup">>, Input, Options).
 
 %% @doc Updates the details of an existing subscription.
 %%

@@ -53,56 +53,56 @@
 %% </li> </ul>
 -module(aws_rds).
 
--export([add_role_to_d_b_cluster/2,
-         add_role_to_d_b_cluster/3,
-         add_role_to_d_b_instance/2,
-         add_role_to_d_b_instance/3,
+-export([add_role_to_db_cluster/2,
+         add_role_to_db_cluster/3,
+         add_role_to_db_instance/2,
+         add_role_to_db_instance/3,
          add_source_identifier_to_subscription/2,
          add_source_identifier_to_subscription/3,
          add_tags_to_resource/2,
          add_tags_to_resource/3,
          apply_pending_maintenance_action/2,
          apply_pending_maintenance_action/3,
-         authorize_d_b_security_group_ingress/2,
-         authorize_d_b_security_group_ingress/3,
-         backtrack_d_b_cluster/2,
-         backtrack_d_b_cluster/3,
+         authorize_db_security_group_ingress/2,
+         authorize_db_security_group_ingress/3,
+         backtrack_db_cluster/2,
+         backtrack_db_cluster/3,
          cancel_export_task/2,
          cancel_export_task/3,
-         copy_d_b_cluster_parameter_group/2,
-         copy_d_b_cluster_parameter_group/3,
-         copy_d_b_cluster_snapshot/2,
-         copy_d_b_cluster_snapshot/3,
-         copy_d_b_parameter_group/2,
-         copy_d_b_parameter_group/3,
-         copy_d_b_snapshot/2,
-         copy_d_b_snapshot/3,
+         copy_db_cluster_parameter_group/2,
+         copy_db_cluster_parameter_group/3,
+         copy_db_cluster_snapshot/2,
+         copy_db_cluster_snapshot/3,
+         copy_db_parameter_group/2,
+         copy_db_parameter_group/3,
+         copy_db_snapshot/2,
+         copy_db_snapshot/3,
          copy_option_group/2,
          copy_option_group/3,
          create_custom_availability_zone/2,
          create_custom_availability_zone/3,
-         create_d_b_cluster/2,
-         create_d_b_cluster/3,
-         create_d_b_cluster_endpoint/2,
-         create_d_b_cluster_endpoint/3,
-         create_d_b_cluster_parameter_group/2,
-         create_d_b_cluster_parameter_group/3,
-         create_d_b_cluster_snapshot/2,
-         create_d_b_cluster_snapshot/3,
-         create_d_b_instance/2,
-         create_d_b_instance/3,
-         create_d_b_instance_read_replica/2,
-         create_d_b_instance_read_replica/3,
-         create_d_b_parameter_group/2,
-         create_d_b_parameter_group/3,
-         create_d_b_proxy/2,
-         create_d_b_proxy/3,
-         create_d_b_security_group/2,
-         create_d_b_security_group/3,
-         create_d_b_snapshot/2,
-         create_d_b_snapshot/3,
-         create_d_b_subnet_group/2,
-         create_d_b_subnet_group/3,
+         create_db_cluster/2,
+         create_db_cluster/3,
+         create_db_cluster_endpoint/2,
+         create_db_cluster_endpoint/3,
+         create_db_cluster_parameter_group/2,
+         create_db_cluster_parameter_group/3,
+         create_db_cluster_snapshot/2,
+         create_db_cluster_snapshot/3,
+         create_db_instance/2,
+         create_db_instance/3,
+         create_db_instance_read_replica/2,
+         create_db_instance_read_replica/3,
+         create_db_parameter_group/2,
+         create_db_parameter_group/3,
+         create_db_proxy/2,
+         create_db_proxy/3,
+         create_db_security_group/2,
+         create_db_security_group/3,
+         create_db_snapshot/2,
+         create_db_snapshot/3,
+         create_db_subnet_group/2,
+         create_db_subnet_group/3,
          create_event_subscription/2,
          create_event_subscription/3,
          create_global_cluster/2,
@@ -111,28 +111,28 @@
          create_option_group/3,
          delete_custom_availability_zone/2,
          delete_custom_availability_zone/3,
-         delete_d_b_cluster/2,
-         delete_d_b_cluster/3,
-         delete_d_b_cluster_endpoint/2,
-         delete_d_b_cluster_endpoint/3,
-         delete_d_b_cluster_parameter_group/2,
-         delete_d_b_cluster_parameter_group/3,
-         delete_d_b_cluster_snapshot/2,
-         delete_d_b_cluster_snapshot/3,
-         delete_d_b_instance/2,
-         delete_d_b_instance/3,
-         delete_d_b_instance_automated_backup/2,
-         delete_d_b_instance_automated_backup/3,
-         delete_d_b_parameter_group/2,
-         delete_d_b_parameter_group/3,
-         delete_d_b_proxy/2,
-         delete_d_b_proxy/3,
-         delete_d_b_security_group/2,
-         delete_d_b_security_group/3,
-         delete_d_b_snapshot/2,
-         delete_d_b_snapshot/3,
-         delete_d_b_subnet_group/2,
-         delete_d_b_subnet_group/3,
+         delete_db_cluster/2,
+         delete_db_cluster/3,
+         delete_db_cluster_endpoint/2,
+         delete_db_cluster_endpoint/3,
+         delete_db_cluster_parameter_group/2,
+         delete_db_cluster_parameter_group/3,
+         delete_db_cluster_snapshot/2,
+         delete_db_cluster_snapshot/3,
+         delete_db_instance/2,
+         delete_db_instance/3,
+         delete_db_instance_automated_backup/2,
+         delete_db_instance_automated_backup/3,
+         delete_db_parameter_group/2,
+         delete_db_parameter_group/3,
+         delete_db_proxy/2,
+         delete_db_proxy/3,
+         delete_db_security_group/2,
+         delete_db_security_group/3,
+         delete_db_snapshot/2,
+         delete_db_snapshot/3,
+         delete_db_subnet_group/2,
+         delete_db_subnet_group/3,
          delete_event_subscription/2,
          delete_event_subscription/3,
          delete_global_cluster/2,
@@ -141,54 +141,54 @@
          delete_installation_media/3,
          delete_option_group/2,
          delete_option_group/3,
-         deregister_d_b_proxy_targets/2,
-         deregister_d_b_proxy_targets/3,
+         deregister_db_proxy_targets/2,
+         deregister_db_proxy_targets/3,
          describe_account_attributes/2,
          describe_account_attributes/3,
          describe_certificates/2,
          describe_certificates/3,
          describe_custom_availability_zones/2,
          describe_custom_availability_zones/3,
-         describe_d_b_cluster_backtracks/2,
-         describe_d_b_cluster_backtracks/3,
-         describe_d_b_cluster_endpoints/2,
-         describe_d_b_cluster_endpoints/3,
-         describe_d_b_cluster_parameter_groups/2,
-         describe_d_b_cluster_parameter_groups/3,
-         describe_d_b_cluster_parameters/2,
-         describe_d_b_cluster_parameters/3,
-         describe_d_b_cluster_snapshot_attributes/2,
-         describe_d_b_cluster_snapshot_attributes/3,
-         describe_d_b_cluster_snapshots/2,
-         describe_d_b_cluster_snapshots/3,
-         describe_d_b_clusters/2,
-         describe_d_b_clusters/3,
-         describe_d_b_engine_versions/2,
-         describe_d_b_engine_versions/3,
-         describe_d_b_instance_automated_backups/2,
-         describe_d_b_instance_automated_backups/3,
-         describe_d_b_instances/2,
-         describe_d_b_instances/3,
-         describe_d_b_log_files/2,
-         describe_d_b_log_files/3,
-         describe_d_b_parameter_groups/2,
-         describe_d_b_parameter_groups/3,
-         describe_d_b_parameters/2,
-         describe_d_b_parameters/3,
-         describe_d_b_proxies/2,
-         describe_d_b_proxies/3,
-         describe_d_b_proxy_target_groups/2,
-         describe_d_b_proxy_target_groups/3,
-         describe_d_b_proxy_targets/2,
-         describe_d_b_proxy_targets/3,
-         describe_d_b_security_groups/2,
-         describe_d_b_security_groups/3,
-         describe_d_b_snapshot_attributes/2,
-         describe_d_b_snapshot_attributes/3,
-         describe_d_b_snapshots/2,
-         describe_d_b_snapshots/3,
-         describe_d_b_subnet_groups/2,
-         describe_d_b_subnet_groups/3,
+         describe_db_cluster_backtracks/2,
+         describe_db_cluster_backtracks/3,
+         describe_db_cluster_endpoints/2,
+         describe_db_cluster_endpoints/3,
+         describe_db_cluster_parameter_groups/2,
+         describe_db_cluster_parameter_groups/3,
+         describe_db_cluster_parameters/2,
+         describe_db_cluster_parameters/3,
+         describe_db_cluster_snapshot_attributes/2,
+         describe_db_cluster_snapshot_attributes/3,
+         describe_db_cluster_snapshots/2,
+         describe_db_cluster_snapshots/3,
+         describe_db_clusters/2,
+         describe_db_clusters/3,
+         describe_db_engine_versions/2,
+         describe_db_engine_versions/3,
+         describe_db_instance_automated_backups/2,
+         describe_db_instance_automated_backups/3,
+         describe_db_instances/2,
+         describe_db_instances/3,
+         describe_db_log_files/2,
+         describe_db_log_files/3,
+         describe_db_parameter_groups/2,
+         describe_db_parameter_groups/3,
+         describe_db_parameters/2,
+         describe_db_parameters/3,
+         describe_db_proxies/2,
+         describe_db_proxies/3,
+         describe_db_proxy_target_groups/2,
+         describe_db_proxy_target_groups/3,
+         describe_db_proxy_targets/2,
+         describe_db_proxy_targets/3,
+         describe_db_security_groups/2,
+         describe_db_security_groups/3,
+         describe_db_snapshot_attributes/2,
+         describe_db_snapshot_attributes/3,
+         describe_db_snapshots/2,
+         describe_db_snapshots/3,
+         describe_db_subnet_groups/2,
+         describe_db_subnet_groups/3,
          describe_engine_default_cluster_parameters/2,
          describe_engine_default_cluster_parameters/3,
          describe_engine_default_parameters/2,
@@ -209,52 +209,52 @@
          describe_option_group_options/3,
          describe_option_groups/2,
          describe_option_groups/3,
-         describe_orderable_d_b_instance_options/2,
-         describe_orderable_d_b_instance_options/3,
+         describe_orderable_db_instance_options/2,
+         describe_orderable_db_instance_options/3,
          describe_pending_maintenance_actions/2,
          describe_pending_maintenance_actions/3,
-         describe_reserved_d_b_instances/2,
-         describe_reserved_d_b_instances/3,
-         describe_reserved_d_b_instances_offerings/2,
-         describe_reserved_d_b_instances_offerings/3,
+         describe_reserved_db_instances/2,
+         describe_reserved_db_instances/3,
+         describe_reserved_db_instances_offerings/2,
+         describe_reserved_db_instances_offerings/3,
          describe_source_regions/2,
          describe_source_regions/3,
-         describe_valid_d_b_instance_modifications/2,
-         describe_valid_d_b_instance_modifications/3,
-         download_d_b_log_file_portion/2,
-         download_d_b_log_file_portion/3,
-         failover_d_b_cluster/2,
-         failover_d_b_cluster/3,
+         describe_valid_db_instance_modifications/2,
+         describe_valid_db_instance_modifications/3,
+         download_db_log_file_portion/2,
+         download_db_log_file_portion/3,
+         failover_db_cluster/2,
+         failover_db_cluster/3,
          import_installation_media/2,
          import_installation_media/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          modify_certificates/2,
          modify_certificates/3,
-         modify_current_d_b_cluster_capacity/2,
-         modify_current_d_b_cluster_capacity/3,
-         modify_d_b_cluster/2,
-         modify_d_b_cluster/3,
-         modify_d_b_cluster_endpoint/2,
-         modify_d_b_cluster_endpoint/3,
-         modify_d_b_cluster_parameter_group/2,
-         modify_d_b_cluster_parameter_group/3,
-         modify_d_b_cluster_snapshot_attribute/2,
-         modify_d_b_cluster_snapshot_attribute/3,
-         modify_d_b_instance/2,
-         modify_d_b_instance/3,
-         modify_d_b_parameter_group/2,
-         modify_d_b_parameter_group/3,
-         modify_d_b_proxy/2,
-         modify_d_b_proxy/3,
-         modify_d_b_proxy_target_group/2,
-         modify_d_b_proxy_target_group/3,
-         modify_d_b_snapshot/2,
-         modify_d_b_snapshot/3,
-         modify_d_b_snapshot_attribute/2,
-         modify_d_b_snapshot_attribute/3,
-         modify_d_b_subnet_group/2,
-         modify_d_b_subnet_group/3,
+         modify_current_db_cluster_capacity/2,
+         modify_current_db_cluster_capacity/3,
+         modify_db_cluster/2,
+         modify_db_cluster/3,
+         modify_db_cluster_endpoint/2,
+         modify_db_cluster_endpoint/3,
+         modify_db_cluster_parameter_group/2,
+         modify_db_cluster_parameter_group/3,
+         modify_db_cluster_snapshot_attribute/2,
+         modify_db_cluster_snapshot_attribute/3,
+         modify_db_instance/2,
+         modify_db_instance/3,
+         modify_db_parameter_group/2,
+         modify_db_parameter_group/3,
+         modify_db_proxy/2,
+         modify_db_proxy/3,
+         modify_db_proxy_target_group/2,
+         modify_db_proxy_target_group/3,
+         modify_db_snapshot/2,
+         modify_db_snapshot/3,
+         modify_db_snapshot_attribute/2,
+         modify_db_snapshot_attribute/3,
+         modify_db_subnet_group/2,
+         modify_db_subnet_group/3,
          modify_event_subscription/2,
          modify_event_subscription/3,
          modify_global_cluster/2,
@@ -263,56 +263,56 @@
          modify_option_group/3,
          promote_read_replica/2,
          promote_read_replica/3,
-         promote_read_replica_d_b_cluster/2,
-         promote_read_replica_d_b_cluster/3,
-         purchase_reserved_d_b_instances_offering/2,
-         purchase_reserved_d_b_instances_offering/3,
-         reboot_d_b_instance/2,
-         reboot_d_b_instance/3,
-         register_d_b_proxy_targets/2,
-         register_d_b_proxy_targets/3,
+         promote_read_replica_db_cluster/2,
+         promote_read_replica_db_cluster/3,
+         purchase_reserved_db_instances_offering/2,
+         purchase_reserved_db_instances_offering/3,
+         reboot_db_instance/2,
+         reboot_db_instance/3,
+         register_db_proxy_targets/2,
+         register_db_proxy_targets/3,
          remove_from_global_cluster/2,
          remove_from_global_cluster/3,
-         remove_role_from_d_b_cluster/2,
-         remove_role_from_d_b_cluster/3,
-         remove_role_from_d_b_instance/2,
-         remove_role_from_d_b_instance/3,
+         remove_role_from_db_cluster/2,
+         remove_role_from_db_cluster/3,
+         remove_role_from_db_instance/2,
+         remove_role_from_db_instance/3,
          remove_source_identifier_from_subscription/2,
          remove_source_identifier_from_subscription/3,
          remove_tags_from_resource/2,
          remove_tags_from_resource/3,
-         reset_d_b_cluster_parameter_group/2,
-         reset_d_b_cluster_parameter_group/3,
-         reset_d_b_parameter_group/2,
-         reset_d_b_parameter_group/3,
-         restore_d_b_cluster_from_s3/2,
-         restore_d_b_cluster_from_s3/3,
-         restore_d_b_cluster_from_snapshot/2,
-         restore_d_b_cluster_from_snapshot/3,
-         restore_d_b_cluster_to_point_in_time/2,
-         restore_d_b_cluster_to_point_in_time/3,
-         restore_d_b_instance_from_d_b_snapshot/2,
-         restore_d_b_instance_from_d_b_snapshot/3,
-         restore_d_b_instance_from_s3/2,
-         restore_d_b_instance_from_s3/3,
-         restore_d_b_instance_to_point_in_time/2,
-         restore_d_b_instance_to_point_in_time/3,
-         revoke_d_b_security_group_ingress/2,
-         revoke_d_b_security_group_ingress/3,
+         reset_db_cluster_parameter_group/2,
+         reset_db_cluster_parameter_group/3,
+         reset_db_parameter_group/2,
+         reset_db_parameter_group/3,
+         restore_db_cluster_from_s3/2,
+         restore_db_cluster_from_s3/3,
+         restore_db_cluster_from_snapshot/2,
+         restore_db_cluster_from_snapshot/3,
+         restore_db_cluster_to_point_in_time/2,
+         restore_db_cluster_to_point_in_time/3,
+         restore_db_instance_from_db_snapshot/2,
+         restore_db_instance_from_db_snapshot/3,
+         restore_db_instance_from_s3/2,
+         restore_db_instance_from_s3/3,
+         restore_db_instance_to_point_in_time/2,
+         restore_db_instance_to_point_in_time/3,
+         revoke_db_security_group_ingress/2,
+         revoke_db_security_group_ingress/3,
          start_activity_stream/2,
          start_activity_stream/3,
-         start_d_b_cluster/2,
-         start_d_b_cluster/3,
-         start_d_b_instance/2,
-         start_d_b_instance/3,
+         start_db_cluster/2,
+         start_db_cluster/3,
+         start_db_instance/2,
+         start_db_instance/3,
          start_export_task/2,
          start_export_task/3,
          stop_activity_stream/2,
          stop_activity_stream/3,
-         stop_d_b_cluster/2,
-         stop_d_b_cluster/3,
-         stop_d_b_instance/2,
-         stop_d_b_instance/3]).
+         stop_db_cluster/2,
+         stop_db_cluster/3,
+         stop_db_instance/2,
+         stop_db_instance/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -327,10 +327,10 @@
 %% AWS Services on Your Behalf in the Amazon Aurora User Guide.
 %%
 %% This action only applies to Aurora DB clusters.
-add_role_to_d_b_cluster(Client, Input)
+add_role_to_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
-    add_role_to_d_b_cluster(Client, Input, []).
-add_role_to_d_b_cluster(Client, Input, Options)
+    add_role_to_db_cluster(Client, Input, []).
+add_role_to_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddRoleToDBCluster">>, Input, Options).
 
@@ -339,10 +339,10 @@ add_role_to_d_b_cluster(Client, Input, Options)
 %%
 %% To add a role to a DB instance, the status of the DB instance must be
 %% `available'.
-add_role_to_d_b_instance(Client, Input)
+add_role_to_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
-    add_role_to_d_b_instance(Client, Input, []).
-add_role_to_d_b_instance(Client, Input, Options)
+    add_role_to_db_instance(Client, Input, []).
+add_role_to_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddRoleToDBInstance">>, Input, Options).
 
@@ -394,10 +394,10 @@ apply_pending_maintenance_action(Client, Input, Options)
 %% a VPC security group in one VPC to an Amazon RDS DB instance in another.
 %%
 %% For an overview of CIDR ranges, go to the Wikipedia Tutorial.
-authorize_d_b_security_group_ingress(Client, Input)
+authorize_db_security_group_ingress(Client, Input)
   when is_map(Client), is_map(Input) ->
-    authorize_d_b_security_group_ingress(Client, Input, []).
-authorize_d_b_security_group_ingress(Client, Input, Options)
+    authorize_db_security_group_ingress(Client, Input, []).
+authorize_db_security_group_ingress(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AuthorizeDBSecurityGroupIngress">>, Input, Options).
 
@@ -408,10 +408,10 @@ authorize_d_b_security_group_ingress(Client, Input, Options)
 %% Cluster in the Amazon Aurora User Guide.
 %%
 %% This action only applies to Aurora MySQL DB clusters.
-backtrack_d_b_cluster(Client, Input)
+backtrack_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
-    backtrack_d_b_cluster(Client, Input, []).
-backtrack_d_b_cluster(Client, Input, Options)
+    backtrack_db_cluster(Client, Input, []).
+backtrack_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BacktrackDBCluster">>, Input, Options).
 
@@ -429,10 +429,10 @@ cancel_export_task(Client, Input, Options)
 %% @doc Copies the specified DB cluster parameter group.
 %%
 %% This action only applies to Aurora DB clusters.
-copy_d_b_cluster_parameter_group(Client, Input)
+copy_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
-    copy_d_b_cluster_parameter_group(Client, Input, []).
-copy_d_b_cluster_parameter_group(Client, Input, Options)
+    copy_db_cluster_parameter_group(Client, Input, []).
+copy_db_cluster_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CopyDBClusterParameterGroup">>, Input, Options).
 
@@ -510,18 +510,18 @@ copy_d_b_cluster_parameter_group(Client, Input, Options)
 %% Amazon Aurora User Guide.
 %%
 %% This action only applies to Aurora DB clusters.
-copy_d_b_cluster_snapshot(Client, Input)
+copy_db_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
-    copy_d_b_cluster_snapshot(Client, Input, []).
-copy_d_b_cluster_snapshot(Client, Input, Options)
+    copy_db_cluster_snapshot(Client, Input, []).
+copy_db_cluster_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CopyDBClusterSnapshot">>, Input, Options).
 
 %% @doc Copies the specified DB parameter group.
-copy_d_b_parameter_group(Client, Input)
+copy_db_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
-    copy_d_b_parameter_group(Client, Input, []).
-copy_d_b_parameter_group(Client, Input, Options)
+    copy_db_parameter_group(Client, Input, []).
+copy_db_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CopyDBParameterGroup">>, Input, Options).
 
@@ -535,10 +535,10 @@ copy_d_b_parameter_group(Client, Input, Options)
 %%
 %% For more information about copying snapshots, see Copying a DB Snapshot in
 %% the Amazon RDS User Guide.
-copy_d_b_snapshot(Client, Input)
+copy_db_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
-    copy_d_b_snapshot(Client, Input, []).
-copy_d_b_snapshot(Client, Input, Options)
+    copy_db_snapshot(Client, Input, []).
+copy_db_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CopyDBSnapshot">>, Input, Options).
 
@@ -576,10 +576,10 @@ create_custom_availability_zone(Client, Input, Options)
 %% Amazon Aurora User Guide.
 %%
 %% This action only applies to Aurora DB clusters.
-create_d_b_cluster(Client, Input)
+create_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_d_b_cluster(Client, Input, []).
-create_d_b_cluster(Client, Input, Options)
+    create_db_cluster(Client, Input, []).
+create_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDBCluster">>, Input, Options).
 
@@ -587,10 +587,10 @@ create_d_b_cluster(Client, Input, Options)
 %% DB cluster.
 %%
 %% This action only applies to Aurora DB clusters.
-create_d_b_cluster_endpoint(Client, Input)
+create_db_cluster_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_d_b_cluster_endpoint(Client, Input, []).
-create_d_b_cluster_endpoint(Client, Input, Options)
+    create_db_cluster_endpoint(Client, Input, []).
+create_db_cluster_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDBClusterEndpoint">>, Input, Options).
 
@@ -625,10 +625,10 @@ create_d_b_cluster_endpoint(Client, Input, Options)
 %% Amazon Aurora User Guide.
 %%
 %% This action only applies to Aurora DB clusters.
-create_d_b_cluster_parameter_group(Client, Input)
+create_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_d_b_cluster_parameter_group(Client, Input, []).
-create_d_b_cluster_parameter_group(Client, Input, Options)
+    create_db_cluster_parameter_group(Client, Input, []).
+create_db_cluster_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDBClusterParameterGroup">>, Input, Options).
 
@@ -638,18 +638,18 @@ create_d_b_cluster_parameter_group(Client, Input, Options)
 %% Amazon Aurora User Guide.
 %%
 %% This action only applies to Aurora DB clusters.
-create_d_b_cluster_snapshot(Client, Input)
+create_db_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_d_b_cluster_snapshot(Client, Input, []).
-create_d_b_cluster_snapshot(Client, Input, Options)
+    create_db_cluster_snapshot(Client, Input, []).
+create_db_cluster_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDBClusterSnapshot">>, Input, Options).
 
 %% @doc Creates a new DB instance.
-create_d_b_instance(Client, Input)
+create_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_d_b_instance(Client, Input, []).
-create_d_b_instance(Client, Input, Options)
+    create_db_instance(Client, Input, []).
+create_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDBInstance">>, Input, Options).
 
@@ -668,10 +668,10 @@ create_d_b_instance(Client, Input, Options)
 %% groups) are inherited from the source DB instance, except as specified.
 %%
 %% Your source DB instance must have backup retention enabled.
-create_d_b_instance_read_replica(Client, Input)
+create_db_instance_read_replica(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_d_b_instance_read_replica(Client, Input, []).
-create_d_b_instance_read_replica(Client, Input, Options)
+    create_db_instance_read_replica(Client, Input, []).
+create_db_instance_read_replica(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDBInstanceReadReplica">>, Input, Options).
 
@@ -696,18 +696,18 @@ create_d_b_instance_read_replica(Client, Input, Options)
 %% `character_set_database' parameter. You can use the Parameter Groups
 %% option of the Amazon RDS console or the DescribeDBParameters command to
 %% verify that your DB parameter group has been created or modified.
-create_d_b_parameter_group(Client, Input)
+create_db_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_d_b_parameter_group(Client, Input, []).
-create_d_b_parameter_group(Client, Input, Options)
+    create_db_parameter_group(Client, Input, []).
+create_db_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDBParameterGroup">>, Input, Options).
 
 %% @doc Creates a new DB proxy.
-create_d_b_proxy(Client, Input)
+create_db_proxy(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_d_b_proxy(Client, Input, []).
-create_d_b_proxy(Client, Input, Options)
+    create_db_proxy(Client, Input, []).
+create_db_proxy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDBProxy">>, Input, Options).
 
@@ -717,10 +717,10 @@ create_d_b_proxy(Client, Input, Options)
 %%
 %% A DB security group controls access to EC2-Classic DB instances that are
 %% not in a VPC.
-create_d_b_security_group(Client, Input)
+create_db_security_group(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_d_b_security_group(Client, Input, []).
-create_d_b_security_group(Client, Input, Options)
+    create_db_security_group(Client, Input, []).
+create_db_security_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDBSecurityGroup">>, Input, Options).
 
@@ -728,10 +728,10 @@ create_d_b_security_group(Client, Input, Options)
 %%
 %% The source DB instance must be in the `available' or
 %% `storage-optimization'state.
-create_d_b_snapshot(Client, Input)
+create_db_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_d_b_snapshot(Client, Input, []).
-create_d_b_snapshot(Client, Input, Options)
+    create_db_snapshot(Client, Input, []).
+create_db_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDBSnapshot">>, Input, Options).
 
@@ -739,10 +739,10 @@ create_d_b_snapshot(Client, Input, Options)
 %%
 %% DB subnet groups must contain at least one subnet in at least two AZs in
 %% the AWS Region.
-create_d_b_subnet_group(Client, Input)
+create_db_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_d_b_subnet_group(Client, Input, []).
-create_d_b_subnet_group(Client, Input, Options)
+    create_db_subnet_group(Client, Input, []).
+create_db_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDBSubnetGroup">>, Input, Options).
 
@@ -835,10 +835,10 @@ delete_custom_availability_zone(Client, Input, Options)
 %% Amazon Aurora User Guide.
 %%
 %% This action only applies to Aurora DB clusters.
-delete_d_b_cluster(Client, Input)
+delete_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
-    delete_d_b_cluster(Client, Input, []).
-delete_d_b_cluster(Client, Input, Options)
+    delete_db_cluster(Client, Input, []).
+delete_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBCluster">>, Input, Options).
 
@@ -846,10 +846,10 @@ delete_d_b_cluster(Client, Input, Options)
 %% cluster.
 %%
 %% This action only applies to Aurora DB clusters.
-delete_d_b_cluster_endpoint(Client, Input)
+delete_db_cluster_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
-    delete_d_b_cluster_endpoint(Client, Input, []).
-delete_d_b_cluster_endpoint(Client, Input, Options)
+    delete_db_cluster_endpoint(Client, Input, []).
+delete_db_cluster_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBClusterEndpoint">>, Input, Options).
 
@@ -862,10 +862,10 @@ delete_d_b_cluster_endpoint(Client, Input, Options)
 %% Amazon Aurora User Guide.
 %%
 %% This action only applies to Aurora DB clusters.
-delete_d_b_cluster_parameter_group(Client, Input)
+delete_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
-    delete_d_b_cluster_parameter_group(Client, Input, []).
-delete_d_b_cluster_parameter_group(Client, Input, Options)
+    delete_db_cluster_parameter_group(Client, Input, []).
+delete_db_cluster_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBClusterParameterGroup">>, Input, Options).
 
@@ -879,10 +879,10 @@ delete_d_b_cluster_parameter_group(Client, Input, Options)
 %% Amazon Aurora User Guide.
 %%
 %% This action only applies to Aurora DB clusters.
-delete_d_b_cluster_snapshot(Client, Input)
+delete_db_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
-    delete_d_b_cluster_snapshot(Client, Input, []).
-delete_d_b_cluster_snapshot(Client, Input, Options)
+    delete_db_cluster_snapshot(Client, Input, []).
+delete_db_cluster_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBClusterSnapshot">>, Input, Options).
 
@@ -916,19 +916,19 @@ delete_d_b_cluster_snapshot(Client, Input, Options)
 %% no longer a read replica. After the promotion completes, then call the
 %% `DeleteDBInstance' API action to delete the final instance in the DB
 %% cluster.
-delete_d_b_instance(Client, Input)
+delete_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
-    delete_d_b_instance(Client, Input, []).
-delete_d_b_instance(Client, Input, Options)
+    delete_db_instance(Client, Input, []).
+delete_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBInstance">>, Input, Options).
 
 %% @doc Deletes automated backups based on the source instance's
 %% `DbiResourceId' value or the restorable instance's resource ID.
-delete_d_b_instance_automated_backup(Client, Input)
+delete_db_instance_automated_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
-    delete_d_b_instance_automated_backup(Client, Input, []).
-delete_d_b_instance_automated_backup(Client, Input, Options)
+    delete_db_instance_automated_backup(Client, Input, []).
+delete_db_instance_automated_backup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBInstanceAutomatedBackup">>, Input, Options).
 
@@ -936,18 +936,18 @@ delete_d_b_instance_automated_backup(Client, Input, Options)
 %%
 %% The DB parameter group to be deleted can't be associated with any DB
 %% instances.
-delete_d_b_parameter_group(Client, Input)
+delete_db_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
-    delete_d_b_parameter_group(Client, Input, []).
-delete_d_b_parameter_group(Client, Input, Options)
+    delete_db_parameter_group(Client, Input, []).
+delete_db_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBParameterGroup">>, Input, Options).
 
 %% @doc Deletes an existing proxy.
-delete_d_b_proxy(Client, Input)
+delete_db_proxy(Client, Input)
   when is_map(Client), is_map(Input) ->
-    delete_d_b_proxy(Client, Input, []).
-delete_d_b_proxy(Client, Input, Options)
+    delete_db_proxy(Client, Input, []).
+delete_db_proxy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBProxy">>, Input, Options).
 
@@ -955,10 +955,10 @@ delete_d_b_proxy(Client, Input, Options)
 %%
 %% The specified DB security group must not be associated with any DB
 %% instances.
-delete_d_b_security_group(Client, Input)
+delete_db_security_group(Client, Input)
   when is_map(Client), is_map(Input) ->
-    delete_d_b_security_group(Client, Input, []).
-delete_d_b_security_group(Client, Input, Options)
+    delete_db_security_group(Client, Input, []).
+delete_db_security_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBSecurityGroup">>, Input, Options).
 
@@ -967,10 +967,10 @@ delete_d_b_security_group(Client, Input, Options)
 %% If the snapshot is being copied, the copy operation is terminated.
 %%
 %% The DB snapshot must be in the `available' state to be deleted.
-delete_d_b_snapshot(Client, Input)
+delete_db_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
-    delete_d_b_snapshot(Client, Input, []).
-delete_d_b_snapshot(Client, Input, Options)
+    delete_db_snapshot(Client, Input, []).
+delete_db_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBSnapshot">>, Input, Options).
 
@@ -978,10 +978,10 @@ delete_d_b_snapshot(Client, Input, Options)
 %%
 %% The specified database subnet group must not be associated with any DB
 %% instances.
-delete_d_b_subnet_group(Client, Input)
+delete_db_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
-    delete_d_b_subnet_group(Client, Input, []).
-delete_d_b_subnet_group(Client, Input, Options)
+    delete_db_subnet_group(Client, Input, []).
+delete_db_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBSubnetGroup">>, Input, Options).
 
@@ -1025,10 +1025,10 @@ delete_option_group(Client, Input, Options)
 
 %% @doc Remove the association between one or more `DBProxyTarget' data
 %% structures and a `DBProxyTargetGroup'.
-deregister_d_b_proxy_targets(Client, Input)
+deregister_db_proxy_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
-    deregister_d_b_proxy_targets(Client, Input, []).
-deregister_d_b_proxy_targets(Client, Input, Options)
+    deregister_db_proxy_targets(Client, Input, []).
+deregister_db_proxy_targets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterDBProxyTargets">>, Input, Options).
 
@@ -1076,20 +1076,20 @@ describe_custom_availability_zones(Client, Input, Options)
 %% Amazon Aurora User Guide.
 %%
 %% This action only applies to Aurora MySQL DB clusters.
-describe_d_b_cluster_backtracks(Client, Input)
+describe_db_cluster_backtracks(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_d_b_cluster_backtracks(Client, Input, []).
-describe_d_b_cluster_backtracks(Client, Input, Options)
+    describe_db_cluster_backtracks(Client, Input, []).
+describe_db_cluster_backtracks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBClusterBacktracks">>, Input, Options).
 
 %% @doc Returns information about endpoints for an Amazon Aurora DB cluster.
 %%
 %% This action only applies to Aurora DB clusters.
-describe_d_b_cluster_endpoints(Client, Input)
+describe_db_cluster_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_d_b_cluster_endpoints(Client, Input, []).
-describe_d_b_cluster_endpoints(Client, Input, Options)
+    describe_db_cluster_endpoints(Client, Input, []).
+describe_db_cluster_endpoints(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBClusterEndpoints">>, Input, Options).
 
@@ -1102,10 +1102,10 @@ describe_d_b_cluster_endpoints(Client, Input, Options)
 %% Amazon Aurora User Guide.
 %%
 %% This action only applies to Aurora DB clusters.
-describe_d_b_cluster_parameter_groups(Client, Input)
+describe_db_cluster_parameter_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_d_b_cluster_parameter_groups(Client, Input, []).
-describe_d_b_cluster_parameter_groups(Client, Input, Options)
+    describe_db_cluster_parameter_groups(Client, Input, []).
+describe_db_cluster_parameter_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBClusterParameterGroups">>, Input, Options).
 
@@ -1116,10 +1116,10 @@ describe_d_b_cluster_parameter_groups(Client, Input, Options)
 %% Amazon Aurora User Guide.
 %%
 %% This action only applies to Aurora DB clusters.
-describe_d_b_cluster_parameters(Client, Input)
+describe_db_cluster_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_d_b_cluster_parameters(Client, Input, []).
-describe_d_b_cluster_parameters(Client, Input, Options)
+    describe_db_cluster_parameters(Client, Input, []).
+describe_db_cluster_parameters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBClusterParameters">>, Input, Options).
 
@@ -1138,10 +1138,10 @@ describe_d_b_cluster_parameters(Client, Input, Options)
 %% private, use the `ModifyDBClusterSnapshotAttribute' API action.
 %%
 %% This action only applies to Aurora DB clusters.
-describe_d_b_cluster_snapshot_attributes(Client, Input)
+describe_db_cluster_snapshot_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_d_b_cluster_snapshot_attributes(Client, Input, []).
-describe_d_b_cluster_snapshot_attributes(Client, Input, Options)
+    describe_db_cluster_snapshot_attributes(Client, Input, []).
+describe_db_cluster_snapshot_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBClusterSnapshotAttributes">>, Input, Options).
 
@@ -1153,10 +1153,10 @@ describe_d_b_cluster_snapshot_attributes(Client, Input, Options)
 %% Amazon Aurora User Guide.
 %%
 %% This action only applies to Aurora DB clusters.
-describe_d_b_cluster_snapshots(Client, Input)
+describe_db_cluster_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_d_b_cluster_snapshots(Client, Input, []).
-describe_d_b_cluster_snapshots(Client, Input, Options)
+    describe_db_cluster_snapshots(Client, Input, []).
+describe_db_cluster_snapshots(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBClusterSnapshots">>, Input, Options).
 
@@ -1169,18 +1169,18 @@ describe_d_b_cluster_snapshots(Client, Input, Options)
 %%
 %% This operation can also return information for Amazon Neptune DB instances
 %% and Amazon DocumentDB instances.
-describe_d_b_clusters(Client, Input)
+describe_db_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_d_b_clusters(Client, Input, []).
-describe_d_b_clusters(Client, Input, Options)
+    describe_db_clusters(Client, Input, []).
+describe_db_clusters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBClusters">>, Input, Options).
 
 %% @doc Returns a list of the available DB engines.
-describe_d_b_engine_versions(Client, Input)
+describe_db_engine_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_d_b_engine_versions(Client, Input, []).
-describe_d_b_engine_versions(Client, Input, Options)
+    describe_db_engine_versions(Client, Input, []).
+describe_db_engine_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBEngineVersions">>, Input, Options).
 
@@ -1192,10 +1192,10 @@ describe_d_b_engine_versions(Client, Input, Options)
 %% `DescribeDBInstanceAutomatedBackups' and `DescribeDBInstances' operations.
 %%
 %% All parameters are optional.
-describe_d_b_instance_automated_backups(Client, Input)
+describe_db_instance_automated_backups(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_d_b_instance_automated_backups(Client, Input, []).
-describe_d_b_instance_automated_backups(Client, Input, Options)
+    describe_db_instance_automated_backups(Client, Input, []).
+describe_db_instance_automated_backups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBInstanceAutomatedBackups">>, Input, Options).
 
@@ -1205,18 +1205,18 @@ describe_d_b_instance_automated_backups(Client, Input, Options)
 %%
 %% This operation can also return information for Amazon Neptune DB instances
 %% and Amazon DocumentDB instances.
-describe_d_b_instances(Client, Input)
+describe_db_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_d_b_instances(Client, Input, []).
-describe_d_b_instances(Client, Input, Options)
+    describe_db_instances(Client, Input, []).
+describe_db_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBInstances">>, Input, Options).
 
 %% @doc Returns a list of DB log files for the DB instance.
-describe_d_b_log_files(Client, Input)
+describe_db_log_files(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_d_b_log_files(Client, Input, []).
-describe_d_b_log_files(Client, Input, Options)
+    describe_db_log_files(Client, Input, []).
+describe_db_log_files(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBLogFiles">>, Input, Options).
 
@@ -1224,46 +1224,46 @@ describe_d_b_log_files(Client, Input, Options)
 %%
 %% If a `DBParameterGroupName' is specified, the list will contain only the
 %% description of the specified DB parameter group.
-describe_d_b_parameter_groups(Client, Input)
+describe_db_parameter_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_d_b_parameter_groups(Client, Input, []).
-describe_d_b_parameter_groups(Client, Input, Options)
+    describe_db_parameter_groups(Client, Input, []).
+describe_db_parameter_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBParameterGroups">>, Input, Options).
 
 %% @doc Returns the detailed parameter list for a particular DB parameter
 %% group.
-describe_d_b_parameters(Client, Input)
+describe_db_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_d_b_parameters(Client, Input, []).
-describe_d_b_parameters(Client, Input, Options)
+    describe_db_parameters(Client, Input, []).
+describe_db_parameters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBParameters">>, Input, Options).
 
 %% @doc Returns information about DB proxies.
-describe_d_b_proxies(Client, Input)
+describe_db_proxies(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_d_b_proxies(Client, Input, []).
-describe_d_b_proxies(Client, Input, Options)
+    describe_db_proxies(Client, Input, []).
+describe_db_proxies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBProxies">>, Input, Options).
 
 %% @doc Returns information about DB proxy target groups, represented by
 %% `DBProxyTargetGroup' data structures.
-describe_d_b_proxy_target_groups(Client, Input)
+describe_db_proxy_target_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_d_b_proxy_target_groups(Client, Input, []).
-describe_d_b_proxy_target_groups(Client, Input, Options)
+    describe_db_proxy_target_groups(Client, Input, []).
+describe_db_proxy_target_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBProxyTargetGroups">>, Input, Options).
 
 %% @doc Returns information about `DBProxyTarget' objects.
 %%
 %% This API supports pagination.
-describe_d_b_proxy_targets(Client, Input)
+describe_db_proxy_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_d_b_proxy_targets(Client, Input, []).
-describe_d_b_proxy_targets(Client, Input, Options)
+    describe_db_proxy_targets(Client, Input, []).
+describe_db_proxy_targets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBProxyTargets">>, Input, Options).
 
@@ -1271,10 +1271,10 @@ describe_d_b_proxy_targets(Client, Input, Options)
 %%
 %% If a `DBSecurityGroupName' is specified, the list will contain only the
 %% descriptions of the specified DB security group.
-describe_d_b_security_groups(Client, Input)
+describe_db_security_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_d_b_security_groups(Client, Input, []).
-describe_d_b_security_groups(Client, Input, Options)
+    describe_db_security_groups(Client, Input, []).
+describe_db_security_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBSecurityGroups">>, Input, Options).
 
@@ -1291,20 +1291,20 @@ describe_d_b_security_groups(Client, Input, Options)
 %% To add or remove access for an AWS account to copy or restore a manual DB
 %% snapshot, or to make the manual DB snapshot public or private, use the
 %% `ModifyDBSnapshotAttribute' API action.
-describe_d_b_snapshot_attributes(Client, Input)
+describe_db_snapshot_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_d_b_snapshot_attributes(Client, Input, []).
-describe_d_b_snapshot_attributes(Client, Input, Options)
+    describe_db_snapshot_attributes(Client, Input, []).
+describe_db_snapshot_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBSnapshotAttributes">>, Input, Options).
 
 %% @doc Returns information about DB snapshots.
 %%
 %% This API action supports pagination.
-describe_d_b_snapshots(Client, Input)
+describe_db_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_d_b_snapshots(Client, Input, []).
-describe_d_b_snapshots(Client, Input, Options)
+    describe_db_snapshots(Client, Input, []).
+describe_db_snapshots(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBSnapshots">>, Input, Options).
 
@@ -1314,10 +1314,10 @@ describe_d_b_snapshots(Client, Input, Options)
 %% descriptions of the specified DBSubnetGroup.
 %%
 %% For an overview of CIDR ranges, go to the Wikipedia Tutorial.
-describe_d_b_subnet_groups(Client, Input)
+describe_db_subnet_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_d_b_subnet_groups(Client, Input, []).
-describe_d_b_subnet_groups(Client, Input, Options)
+    describe_db_subnet_groups(Client, Input, []).
+describe_db_subnet_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBSubnetGroups">>, Input, Options).
 
@@ -1438,10 +1438,10 @@ describe_option_groups(Client, Input, Options)
 
 %% @doc Returns a list of orderable DB instance options for the specified
 %% engine.
-describe_orderable_d_b_instance_options(Client, Input)
+describe_orderable_db_instance_options(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_orderable_d_b_instance_options(Client, Input, []).
-describe_orderable_d_b_instance_options(Client, Input, Options)
+    describe_orderable_db_instance_options(Client, Input, []).
+describe_orderable_db_instance_options(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeOrderableDBInstanceOptions">>, Input, Options).
 
@@ -1456,18 +1456,18 @@ describe_pending_maintenance_actions(Client, Input, Options)
 
 %% @doc Returns information about reserved DB instances for this account, or
 %% about a specified reserved DB instance.
-describe_reserved_d_b_instances(Client, Input)
+describe_reserved_db_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_reserved_d_b_instances(Client, Input, []).
-describe_reserved_d_b_instances(Client, Input, Options)
+    describe_reserved_db_instances(Client, Input, []).
+describe_reserved_db_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReservedDBInstances">>, Input, Options).
 
 %% @doc Lists available reserved DB instance offerings.
-describe_reserved_d_b_instances_offerings(Client, Input)
+describe_reserved_db_instances_offerings(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_reserved_d_b_instances_offerings(Client, Input, []).
-describe_reserved_d_b_instances_offerings(Client, Input, Options)
+    describe_reserved_db_instances_offerings(Client, Input, []).
+describe_reserved_db_instances_offerings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReservedDBInstancesOfferings">>, Input, Options).
 
@@ -1486,19 +1486,19 @@ describe_source_regions(Client, Input, Options)
 %% modifications you can make to your DB instance.
 %%
 %% You can use this information when you call `ModifyDBInstance'.
-describe_valid_d_b_instance_modifications(Client, Input)
+describe_valid_db_instance_modifications(Client, Input)
   when is_map(Client), is_map(Input) ->
-    describe_valid_d_b_instance_modifications(Client, Input, []).
-describe_valid_d_b_instance_modifications(Client, Input, Options)
+    describe_valid_db_instance_modifications(Client, Input, []).
+describe_valid_db_instance_modifications(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeValidDBInstanceModifications">>, Input, Options).
 
 %% @doc Downloads all or a portion of the specified log file, up to 1 MB in
 %% size.
-download_d_b_log_file_portion(Client, Input)
+download_db_log_file_portion(Client, Input)
   when is_map(Client), is_map(Input) ->
-    download_d_b_log_file_portion(Client, Input, []).
-download_d_b_log_file_portion(Client, Input, Options)
+    download_db_log_file_portion(Client, Input, []).
+download_db_log_file_portion(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DownloadDBLogFilePortion">>, Input, Options).
 
@@ -1519,10 +1519,10 @@ download_d_b_log_file_portion(Client, Input, Options)
 %% Amazon Aurora User Guide.
 %%
 %% This action only applies to Aurora DB clusters.
-failover_d_b_cluster(Client, Input)
+failover_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
-    failover_d_b_cluster(Client, Input, []).
-failover_d_b_cluster(Client, Input, Options)
+    failover_db_cluster(Client, Input, []).
+failover_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"FailoverDBCluster">>, Input, Options).
 
@@ -1603,10 +1603,10 @@ modify_certificates(Client, Input, Options)
 %% see Autoscaling for Aurora Serverless in the Amazon Aurora User Guide.
 %%
 %% This action only applies to Aurora DB clusters.
-modify_current_d_b_cluster_capacity(Client, Input)
+modify_current_db_cluster_capacity(Client, Input)
   when is_map(Client), is_map(Input) ->
-    modify_current_d_b_cluster_capacity(Client, Input, []).
-modify_current_d_b_cluster_capacity(Client, Input, Options)
+    modify_current_db_cluster_capacity(Client, Input, []).
+modify_current_db_cluster_capacity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyCurrentDBClusterCapacity">>, Input, Options).
 
@@ -1618,10 +1618,10 @@ modify_current_d_b_cluster_capacity(Client, Input, Options)
 %% Guide.
 %%
 %% This action only applies to Aurora DB clusters.
-modify_d_b_cluster(Client, Input)
+modify_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
-    modify_d_b_cluster(Client, Input, []).
-modify_d_b_cluster(Client, Input, Options)
+    modify_db_cluster(Client, Input, []).
+modify_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBCluster">>, Input, Options).
 
@@ -1629,10 +1629,10 @@ modify_d_b_cluster(Client, Input, Options)
 %% cluster.
 %%
 %% This action only applies to Aurora DB clusters.
-modify_d_b_cluster_endpoint(Client, Input)
+modify_db_cluster_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
-    modify_d_b_cluster_endpoint(Client, Input, []).
-modify_d_b_cluster_endpoint(Client, Input, Options)
+    modify_db_cluster_endpoint(Client, Input, []).
+modify_db_cluster_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBClusterEndpoint">>, Input, Options).
 
@@ -1668,10 +1668,10 @@ modify_d_b_cluster_endpoint(Client, Input, Options)
 %% changes took effect.
 %%
 %% This action only applies to Aurora DB clusters.
-modify_d_b_cluster_parameter_group(Client, Input)
+modify_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
-    modify_d_b_cluster_parameter_group(Client, Input, []).
-modify_d_b_cluster_parameter_group(Client, Input, Options)
+    modify_db_cluster_parameter_group(Client, Input, []).
+modify_db_cluster_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBClusterParameterGroup">>, Input, Options).
 
@@ -1698,10 +1698,10 @@ modify_d_b_cluster_parameter_group(Client, Input, Options)
 %% accounts are returned as values for the `restore' attribute.
 %%
 %% This action only applies to Aurora DB clusters.
-modify_d_b_cluster_snapshot_attribute(Client, Input)
+modify_db_cluster_snapshot_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
-    modify_d_b_cluster_snapshot_attribute(Client, Input, []).
-modify_d_b_cluster_snapshot_attribute(Client, Input, Options)
+    modify_db_cluster_snapshot_attribute(Client, Input, []).
+modify_db_cluster_snapshot_attribute(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBClusterSnapshotAttribute">>, Input, Options).
 
@@ -1711,10 +1711,10 @@ modify_d_b_cluster_snapshot_attribute(Client, Input, Options)
 %% these parameters and the new values in the request. To learn what
 %% modifications you can make to your DB instance, call
 %% `DescribeValidDBInstanceModifications' before you call `ModifyDBInstance'.
-modify_d_b_instance(Client, Input)
+modify_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
-    modify_d_b_instance(Client, Input, []).
-modify_d_b_instance(Client, Input, Options)
+    modify_db_instance(Client, Input, []).
+modify_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBInstance">>, Input, Options).
 
@@ -1738,26 +1738,26 @@ modify_d_b_instance(Client, Input, Options)
 %% `character_set_database' parameter. You can use the Parameter Groups
 %% option of the Amazon RDS console or the DescribeDBParameters command to
 %% verify that your DB parameter group has been created or modified.
-modify_d_b_parameter_group(Client, Input)
+modify_db_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
-    modify_d_b_parameter_group(Client, Input, []).
-modify_d_b_parameter_group(Client, Input, Options)
+    modify_db_parameter_group(Client, Input, []).
+modify_db_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBParameterGroup">>, Input, Options).
 
 %% @doc Changes the settings for an existing DB proxy.
-modify_d_b_proxy(Client, Input)
+modify_db_proxy(Client, Input)
   when is_map(Client), is_map(Input) ->
-    modify_d_b_proxy(Client, Input, []).
-modify_d_b_proxy(Client, Input, Options)
+    modify_db_proxy(Client, Input, []).
+modify_db_proxy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBProxy">>, Input, Options).
 
 %% @doc Modifies the properties of a `DBProxyTargetGroup'.
-modify_d_b_proxy_target_group(Client, Input)
+modify_db_proxy_target_group(Client, Input)
   when is_map(Client), is_map(Input) ->
-    modify_d_b_proxy_target_group(Client, Input, []).
-modify_d_b_proxy_target_group(Client, Input, Options)
+    modify_db_proxy_target_group(Client, Input, []).
+modify_db_proxy_target_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBProxyTargetGroup">>, Input, Options).
 
@@ -1767,10 +1767,10 @@ modify_d_b_proxy_target_group(Client, Input, Options)
 %%
 %% Amazon RDS supports upgrading DB snapshots for MySQL, Oracle, and
 %% PostgreSQL.
-modify_d_b_snapshot(Client, Input)
+modify_db_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
-    modify_d_b_snapshot(Client, Input, []).
-modify_d_b_snapshot(Client, Input, Options)
+    modify_db_snapshot(Client, Input, []).
+modify_db_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBSnapshot">>, Input, Options).
 
@@ -1794,10 +1794,10 @@ modify_d_b_snapshot(Client, Input, Options)
 %% snapshot, or whether a manual DB snapshot public or private, use the
 %% `DescribeDBSnapshotAttributes' API action. The accounts are returned as
 %% values for the `restore' attribute.
-modify_d_b_snapshot_attribute(Client, Input)
+modify_db_snapshot_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
-    modify_d_b_snapshot_attribute(Client, Input, []).
-modify_d_b_snapshot_attribute(Client, Input, Options)
+    modify_db_snapshot_attribute(Client, Input, []).
+modify_db_snapshot_attribute(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBSnapshotAttribute">>, Input, Options).
 
@@ -1805,10 +1805,10 @@ modify_d_b_snapshot_attribute(Client, Input, Options)
 %%
 %% DB subnet groups must contain at least one subnet in at least two AZs in
 %% the AWS Region.
-modify_d_b_subnet_group(Client, Input)
+modify_db_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
-    modify_d_b_subnet_group(Client, Input, []).
-modify_d_b_subnet_group(Client, Input, Options)
+    modify_db_subnet_group(Client, Input, []).
+modify_db_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBSubnetGroup">>, Input, Options).
 
@@ -1874,18 +1874,18 @@ promote_read_replica(Client, Input, Options)
 %% @doc Promotes a read replica DB cluster to a standalone DB cluster.
 %%
 %% This action only applies to Aurora DB clusters.
-promote_read_replica_d_b_cluster(Client, Input)
+promote_read_replica_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
-    promote_read_replica_d_b_cluster(Client, Input, []).
-promote_read_replica_d_b_cluster(Client, Input, Options)
+    promote_read_replica_db_cluster(Client, Input, []).
+promote_read_replica_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PromoteReadReplicaDBCluster">>, Input, Options).
 
 %% @doc Purchases a reserved DB instance offering.
-purchase_reserved_d_b_instances_offering(Client, Input)
+purchase_reserved_db_instances_offering(Client, Input)
   when is_map(Client), is_map(Input) ->
-    purchase_reserved_d_b_instances_offering(Client, Input, []).
-purchase_reserved_d_b_instances_offering(Client, Input, Options)
+    purchase_reserved_db_instances_offering(Client, Input, []).
+purchase_reserved_db_instances_offering(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PurchaseReservedDBInstancesOffering">>, Input, Options).
 
@@ -1902,19 +1902,19 @@ purchase_reserved_d_b_instances_offering(Client, Input, Options)
 %%
 %% For more information about rebooting, see Rebooting a DB Instance in the
 %% Amazon RDS User Guide.
-reboot_d_b_instance(Client, Input)
+reboot_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
-    reboot_d_b_instance(Client, Input, []).
-reboot_d_b_instance(Client, Input, Options)
+    reboot_db_instance(Client, Input, []).
+reboot_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RebootDBInstance">>, Input, Options).
 
 %% @doc Associate one or more `DBProxyTarget' data structures with a
 %% `DBProxyTargetGroup'.
-register_d_b_proxy_targets(Client, Input)
+register_db_proxy_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
-    register_d_b_proxy_targets(Client, Input, []).
-register_d_b_proxy_targets(Client, Input, Options)
+    register_db_proxy_targets(Client, Input, []).
+register_db_proxy_targets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterDBProxyTargets">>, Input, Options).
 
@@ -1940,19 +1940,19 @@ remove_from_global_cluster(Client, Input, Options)
 %% AWS Services on Your Behalf in the Amazon Aurora User Guide.
 %%
 %% This action only applies to Aurora DB clusters.
-remove_role_from_d_b_cluster(Client, Input)
+remove_role_from_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
-    remove_role_from_d_b_cluster(Client, Input, []).
-remove_role_from_d_b_cluster(Client, Input, Options)
+    remove_role_from_db_cluster(Client, Input, []).
+remove_role_from_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveRoleFromDBCluster">>, Input, Options).
 
 %% @doc Disassociates an AWS Identity and Access Management (IAM) role from a
 %% DB instance.
-remove_role_from_d_b_instance(Client, Input)
+remove_role_from_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
-    remove_role_from_d_b_instance(Client, Input, []).
-remove_role_from_d_b_instance(Client, Input, Options)
+    remove_role_from_db_instance(Client, Input, []).
+remove_role_from_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveRoleFromDBInstance">>, Input, Options).
 
@@ -1994,10 +1994,10 @@ remove_tags_from_resource(Client, Input, Options)
 %% Amazon Aurora User Guide.
 %%
 %% This action only applies to Aurora DB clusters.
-reset_d_b_cluster_parameter_group(Client, Input)
+reset_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
-    reset_d_b_cluster_parameter_group(Client, Input, []).
-reset_d_b_cluster_parameter_group(Client, Input, Options)
+    reset_db_cluster_parameter_group(Client, Input, []).
+reset_db_cluster_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResetDBClusterParameterGroup">>, Input, Options).
 
@@ -2010,10 +2010,10 @@ reset_d_b_cluster_parameter_group(Client, Input, Options)
 %% When resetting the entire group, dynamic parameters are updated
 %% immediately and static parameters are set to `pending-reboot' to take
 %% effect on the next DB instance restart or `RebootDBInstance' request.
-reset_d_b_parameter_group(Client, Input)
+reset_db_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
-    reset_d_b_parameter_group(Client, Input, []).
-reset_d_b_parameter_group(Client, Input, Options)
+    reset_db_parameter_group(Client, Input, []).
+reset_db_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResetDBParameterGroup">>, Input, Options).
 
@@ -2037,10 +2037,10 @@ reset_d_b_parameter_group(Client, Input, Options)
 %%
 %% This action only applies to Aurora DB clusters. The source DB engine must
 %% be MySQL.
-restore_d_b_cluster_from_s3(Client, Input)
+restore_db_cluster_from_s3(Client, Input)
   when is_map(Client), is_map(Input) ->
-    restore_d_b_cluster_from_s3(Client, Input, []).
-restore_d_b_cluster_from_s3(Client, Input, Options)
+    restore_db_cluster_from_s3(Client, Input, []).
+restore_db_cluster_from_s3(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreDBClusterFromS3">>, Input, Options).
 
@@ -2063,10 +2063,10 @@ restore_d_b_cluster_from_s3(Client, Input, Options)
 %% Amazon Aurora User Guide.
 %%
 %% This action only applies to Aurora DB clusters.
-restore_d_b_cluster_from_snapshot(Client, Input)
+restore_db_cluster_from_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
-    restore_d_b_cluster_from_snapshot(Client, Input, []).
-restore_d_b_cluster_from_snapshot(Client, Input, Options)
+    restore_db_cluster_from_snapshot(Client, Input, []).
+restore_db_cluster_from_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreDBClusterFromSnapshot">>, Input, Options).
 
@@ -2089,10 +2089,10 @@ restore_d_b_cluster_from_snapshot(Client, Input, Options)
 %% Amazon Aurora User Guide.
 %%
 %% This action only applies to Aurora DB clusters.
-restore_d_b_cluster_to_point_in_time(Client, Input)
+restore_db_cluster_to_point_in_time(Client, Input)
   when is_map(Client), is_map(Input) ->
-    restore_d_b_cluster_to_point_in_time(Client, Input, []).
-restore_d_b_cluster_to_point_in_time(Client, Input, Options)
+    restore_db_cluster_to_point_in_time(Client, Input, []).
+restore_db_cluster_to_point_in_time(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreDBClusterToPointInTime">>, Input, Options).
 
@@ -2121,10 +2121,10 @@ restore_d_b_cluster_to_point_in_time(Client, Input, Options)
 %%
 %% This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
 %% Aurora, use `RestoreDBClusterFromSnapshot'.
-restore_d_b_instance_from_d_b_snapshot(Client, Input)
+restore_db_instance_from_db_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
-    restore_d_b_instance_from_d_b_snapshot(Client, Input, []).
-restore_d_b_instance_from_d_b_snapshot(Client, Input, Options)
+    restore_db_instance_from_db_snapshot(Client, Input, []).
+restore_db_instance_from_db_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreDBInstanceFromDBSnapshot">>, Input, Options).
 
@@ -2136,10 +2136,10 @@ restore_d_b_instance_from_d_b_snapshot(Client, Input, Options)
 %% a new Amazon RDS DB instance running MySQL. For more information, see
 %% Importing Data into an Amazon RDS MySQL DB Instance in the Amazon RDS User
 %% Guide.
-restore_d_b_instance_from_s3(Client, Input)
+restore_db_instance_from_s3(Client, Input)
   when is_map(Client), is_map(Input) ->
-    restore_d_b_instance_from_s3(Client, Input, []).
-restore_d_b_instance_from_s3(Client, Input, Options)
+    restore_db_instance_from_s3(Client, Input, []).
+restore_db_instance_from_s3(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreDBInstanceFromS3">>, Input, Options).
 
@@ -2159,10 +2159,10 @@ restore_d_b_instance_from_s3(Client, Input, Options)
 %%
 %% This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
 %% Aurora, use `RestoreDBClusterToPointInTime'.
-restore_d_b_instance_to_point_in_time(Client, Input)
+restore_db_instance_to_point_in_time(Client, Input)
   when is_map(Client), is_map(Input) ->
-    restore_d_b_instance_to_point_in_time(Client, Input, []).
-restore_d_b_instance_to_point_in_time(Client, Input, Options)
+    restore_db_instance_to_point_in_time(Client, Input, []).
+restore_db_instance_to_point_in_time(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreDBInstanceToPointInTime">>, Input, Options).
 
@@ -2172,10 +2172,10 @@ restore_d_b_instance_to_point_in_time(Client, Input, Options)
 %% Required parameters for this API are one of CIDRIP, EC2SecurityGroupId for
 %% VPC, or (EC2SecurityGroupOwnerId and either EC2SecurityGroupName or
 %% EC2SecurityGroupId).
-revoke_d_b_security_group_ingress(Client, Input)
+revoke_db_security_group_ingress(Client, Input)
   when is_map(Client), is_map(Input) ->
-    revoke_d_b_security_group_ingress(Client, Input, []).
-revoke_d_b_security_group_ingress(Client, Input, Options)
+    revoke_db_security_group_ingress(Client, Input, []).
+revoke_db_security_group_ingress(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RevokeDBSecurityGroupIngress">>, Input, Options).
 
@@ -2198,10 +2198,10 @@ start_activity_stream(Client, Input, Options)
 %% Amazon Aurora User Guide.
 %%
 %% This action only applies to Aurora DB clusters.
-start_d_b_cluster(Client, Input)
+start_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
-    start_d_b_cluster(Client, Input, []).
-start_d_b_cluster(Client, Input, Options)
+    start_db_cluster(Client, Input, []).
+start_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartDBCluster">>, Input, Options).
 
@@ -2214,10 +2214,10 @@ start_d_b_cluster(Client, Input, Options)
 %%
 %% This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
 %% Aurora DB clusters, use `StartDBCluster' instead.
-start_d_b_instance(Client, Input)
+start_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
-    start_d_b_instance(Client, Input, []).
-start_d_b_instance(Client, Input, Options)
+    start_db_instance(Client, Input, []).
+start_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartDBInstance">>, Input, Options).
 
@@ -2254,10 +2254,10 @@ stop_activity_stream(Client, Input, Options)
 %% Amazon Aurora User Guide.
 %%
 %% This action only applies to Aurora DB clusters.
-stop_d_b_cluster(Client, Input)
+stop_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
-    stop_d_b_cluster(Client, Input, []).
-stop_d_b_cluster(Client, Input, Options)
+    stop_db_cluster(Client, Input, []).
+stop_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopDBCluster">>, Input, Options).
 
@@ -2273,10 +2273,10 @@ stop_d_b_cluster(Client, Input, Options)
 %%
 %% This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
 %% Aurora clusters, use `StopDBCluster' instead.
-stop_d_b_instance(Client, Input)
+stop_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
-    stop_d_b_instance(Client, Input, []).
-stop_d_b_instance(Client, Input, Options)
+    stop_db_instance(Client, Input, []).
+stop_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopDBInstance">>, Input, Options).
 

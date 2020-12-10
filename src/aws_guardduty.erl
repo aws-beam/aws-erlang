@@ -33,8 +33,8 @@
          create_detector/3,
          create_filter/3,
          create_filter/4,
-         create_i_p_set/3,
-         create_i_p_set/4,
+         create_ip_set/3,
+         create_ip_set/4,
          create_members/3,
          create_members/4,
          create_publishing_destination/3,
@@ -49,10 +49,10 @@
          delete_detector/4,
          delete_filter/4,
          delete_filter/5,
-         delete_i_p_set/4,
-         delete_i_p_set/5,
          delete_invitations/2,
          delete_invitations/3,
+         delete_ip_set/4,
+         delete_ip_set/5,
          delete_members/3,
          delete_members/4,
          delete_publishing_destination/4,
@@ -79,10 +79,10 @@
          get_findings/4,
          get_findings_statistics/3,
          get_findings_statistics/4,
-         get_i_p_set/3,
-         get_i_p_set/4,
          get_invitations_count/1,
          get_invitations_count/2,
+         get_ip_set/3,
+         get_ip_set/4,
          get_master_account/2,
          get_master_account/3,
          get_member_detectors/3,
@@ -101,10 +101,10 @@
          list_filters/5,
          list_findings/3,
          list_findings/4,
-         list_i_p_sets/4,
-         list_i_p_sets/5,
          list_invitations/3,
          list_invitations/4,
+         list_ip_sets/4,
+         list_ip_sets/5,
          list_members/5,
          list_members/6,
          list_organization_admin_accounts/3,
@@ -131,8 +131,8 @@
          update_filter/5,
          update_findings_feedback/3,
          update_findings_feedback/4,
-         update_i_p_set/4,
-         update_i_p_set/5,
+         update_ip_set/4,
+         update_ip_set/5,
          update_member_detectors/3,
          update_member_detectors/4,
          update_organization_configuration/3,
@@ -228,9 +228,9 @@ create_filter(Client, DetectorId, Input0, Options) ->
 %% communication with AWS infrastructure and applications. GuardDuty doesn't
 %% generate findings for IP addresses that are included in IPSets. Only users
 %% from the master account can use this operation.
-create_i_p_set(Client, DetectorId, Input) ->
-    create_i_p_set(Client, DetectorId, Input, []).
-create_i_p_set(Client, DetectorId, Input0, Options) ->
+create_ip_set(Client, DetectorId, Input) ->
+    create_ip_set(Client, DetectorId, Input, []).
+create_ip_set(Client, DetectorId, Input0, Options) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset"],
     SuccessStatusCode = 200,
@@ -381,14 +381,13 @@ delete_filter(Client, DetectorId, FilterName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the IPSet specified by the `ipSetId'.
-%%
-%% IPSets are called trusted IP lists in the console user interface.
-delete_i_p_set(Client, DetectorId, IpSetId, Input) ->
-    delete_i_p_set(Client, DetectorId, IpSetId, Input, []).
-delete_i_p_set(Client, DetectorId, IpSetId, Input0, Options) ->
-    Method = delete,
-    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset/", aws_util:encode_uri(IpSetId), ""],
+%% @doc Deletes invitations sent to the current member account by AWS
+%% accounts specified by their account IDs.
+delete_invitations(Client, Input) ->
+    delete_invitations(Client, Input, []).
+delete_invitations(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/invitation/delete"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -399,13 +398,14 @@ delete_i_p_set(Client, DetectorId, IpSetId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes invitations sent to the current member account by AWS
-%% accounts specified by their account IDs.
-delete_invitations(Client, Input) ->
-    delete_invitations(Client, Input, []).
-delete_invitations(Client, Input0, Options) ->
-    Method = post,
-    Path = ["/invitation/delete"],
+%% @doc Deletes the IPSet specified by the `ipSetId'.
+%%
+%% IPSets are called trusted IP lists in the console user interface.
+delete_ip_set(Client, DetectorId, IpSetId, Input) ->
+    delete_ip_set(Client, DetectorId, IpSetId, Input, []).
+delete_ip_set(Client, DetectorId, IpSetId, Input0, Options) ->
+    Method = delete,
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset/", aws_util:encode_uri(IpSetId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -628,21 +628,6 @@ get_findings_statistics(Client, DetectorId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves the IPSet specified by the `ipSetId'.
-get_i_p_set(Client, DetectorId, IpSetId)
-  when is_map(Client) ->
-    get_i_p_set(Client, DetectorId, IpSetId, []).
-get_i_p_set(Client, DetectorId, IpSetId, Options)
-  when is_map(Client), is_list(Options) ->
-    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset/", aws_util:encode_uri(IpSetId), ""],
-    SuccessStatusCode = 200,
-
-    Headers = [],
-
-    Query_ = [],
-
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
-
 %% @doc Returns the count of all GuardDuty membership invitations that were
 %% sent to the current member account except the currently accepted
 %% invitation.
@@ -652,6 +637,21 @@ get_invitations_count(Client)
 get_invitations_count(Client, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/invitation/count"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the IPSet specified by the `ipSetId'.
+get_ip_set(Client, DetectorId, IpSetId)
+  when is_map(Client) ->
+    get_ip_set(Client, DetectorId, IpSetId, []).
+get_ip_set(Client, DetectorId, IpSetId, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset/", aws_util:encode_uri(IpSetId), ""],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -825,17 +825,14 @@ list_findings(Client, DetectorId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists the IPSets of the GuardDuty service specified by the detector
-%% ID.
-%%
-%% If you use this operation from a member account, the IPSets returned are
-%% the IPSets from the associated master account.
-list_i_p_sets(Client, DetectorId, MaxResults, NextToken)
+%% @doc Lists all GuardDuty membership invitations that were sent to the
+%% current AWS account.
+list_invitations(Client, MaxResults, NextToken)
   when is_map(Client) ->
-    list_i_p_sets(Client, DetectorId, MaxResults, NextToken, []).
-list_i_p_sets(Client, DetectorId, MaxResults, NextToken, Options)
+    list_invitations(Client, MaxResults, NextToken, []).
+list_invitations(Client, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset"],
+    Path = ["/invitation"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -849,14 +846,17 @@ list_i_p_sets(Client, DetectorId, MaxResults, NextToken, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all GuardDuty membership invitations that were sent to the
-%% current AWS account.
-list_invitations(Client, MaxResults, NextToken)
+%% @doc Lists the IPSets of the GuardDuty service specified by the detector
+%% ID.
+%%
+%% If you use this operation from a member account, the IPSets returned are
+%% the IPSets from the associated master account.
+list_ip_sets(Client, DetectorId, MaxResults, NextToken)
   when is_map(Client) ->
-    list_invitations(Client, MaxResults, NextToken, []).
-list_invitations(Client, MaxResults, NextToken, Options)
+    list_ip_sets(Client, DetectorId, MaxResults, NextToken, []).
+list_ip_sets(Client, DetectorId, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/invitation"],
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset"],
     SuccessStatusCode = 200,
 
     Headers = [],
@@ -1112,9 +1112,9 @@ update_findings_feedback(Client, DetectorId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the IPSet specified by the IPSet ID.
-update_i_p_set(Client, DetectorId, IpSetId, Input) ->
-    update_i_p_set(Client, DetectorId, IpSetId, Input, []).
-update_i_p_set(Client, DetectorId, IpSetId, Input0, Options) ->
+update_ip_set(Client, DetectorId, IpSetId, Input) ->
+    update_ip_set(Client, DetectorId, IpSetId, Input, []).
+update_ip_set(Client, DetectorId, IpSetId, Input0, Options) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset/", aws_util:encode_uri(IpSetId), ""],
     SuccessStatusCode = 200,

@@ -4,7 +4,7 @@
 %% @doc AWS Service Catalog
 %%
 %% AWS Service Catalog enables organizations to create and manage catalogs of
-%% IT services that are approved for use on AWS.
+%% IT services that are approved for AWS.
 %%
 %% To get the most out of this documentation, you should be familiar with the
 %% terminology discussed in AWS Service Catalog Concepts.
@@ -90,8 +90,8 @@
          describe_service_action_execution_parameters/3,
          describe_tag_option/2,
          describe_tag_option/3,
-         disable_a_w_s_organizations_access/2,
-         disable_a_w_s_organizations_access/3,
+         disable_aws_organizations_access/2,
+         disable_aws_organizations_access/3,
          disassociate_budget_from_resource/2,
          disassociate_budget_from_resource/3,
          disassociate_principal_from_portfolio/2,
@@ -102,16 +102,18 @@
          disassociate_service_action_from_provisioning_artifact/3,
          disassociate_tag_option_from_resource/2,
          disassociate_tag_option_from_resource/3,
-         enable_a_w_s_organizations_access/2,
-         enable_a_w_s_organizations_access/3,
+         enable_aws_organizations_access/2,
+         enable_aws_organizations_access/3,
          execute_provisioned_product_plan/2,
          execute_provisioned_product_plan/3,
          execute_provisioned_product_service_action/2,
          execute_provisioned_product_service_action/3,
-         get_a_w_s_organizations_access_status/2,
-         get_a_w_s_organizations_access_status/3,
+         get_aws_organizations_access_status/2,
+         get_aws_organizations_access_status/3,
          get_provisioned_product_outputs/2,
          get_provisioned_product_outputs/3,
+         import_as_provisioned_product/2,
+         import_as_provisioned_product/3,
          list_accepted_portfolio_shares/2,
          list_accepted_portfolio_shares/3,
          list_budgets_for_resource/2,
@@ -622,10 +624,10 @@ describe_tag_option(Client, Input, Options)
 %%
 %% Note that a delegated administrator is not authorized to invoke
 %% `DisableAWSOrganizationsAccess'.
-disable_a_w_s_organizations_access(Client, Input)
+disable_aws_organizations_access(Client, Input)
   when is_map(Client), is_map(Input) ->
-    disable_a_w_s_organizations_access(Client, Input, []).
-disable_a_w_s_organizations_access(Client, Input, Options)
+    disable_aws_organizations_access(Client, Input, []).
+disable_aws_organizations_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableAWSOrganizationsAccess">>, Input, Options).
 
@@ -685,10 +687,10 @@ disassociate_tag_option_from_resource(Client, Input, Options)
 %%
 %% Note that a delegated administrator is not authorized to invoke
 %% `EnableAWSOrganizationsAccess'.
-enable_a_w_s_organizations_access(Client, Input)
+enable_aws_organizations_access(Client, Input)
   when is_map(Client), is_map(Input) ->
-    enable_a_w_s_organizations_access(Client, Input, []).
-enable_a_w_s_organizations_access(Client, Input, Options)
+    enable_aws_organizations_access(Client, Input, []).
+enable_aws_organizations_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableAWSOrganizationsAccess">>, Input, Options).
 
@@ -713,10 +715,10 @@ execute_provisioned_product_service_action(Client, Input, Options)
 %%
 %% This API can only be called by the management account in the organization
 %% or by a delegated admin.
-get_a_w_s_organizations_access_status(Client, Input)
+get_aws_organizations_access_status(Client, Input)
   when is_map(Client), is_map(Input) ->
-    get_a_w_s_organizations_access_status(Client, Input, []).
-get_a_w_s_organizations_access_status(Client, Input, Options)
+    get_aws_organizations_access_status(Client, Input, []).
+get_aws_organizations_access_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAWSOrganizationsAccessStatus">>, Input, Options).
 
@@ -729,6 +731,29 @@ get_provisioned_product_outputs(Client, Input)
 get_provisioned_product_outputs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetProvisionedProductOutputs">>, Input, Options).
+
+%% @doc Requests the import of a resource as a Service Catalog provisioned
+%% product that is associated to a Service Catalog product and provisioning
+%% artifact.
+%%
+%% Once imported all supported Service Catalog governance actions are
+%% supported on the provisioned product.
+%%
+%% Resource import only supports CloudFormation stack ARNs. CloudFormation
+%% StackSets and non-root nested stacks are not supported.
+%%
+%% The CloudFormation stack must have one of the following statuses to be
+%% imported: CREATE_COMPLETE, UPDATE_COMPLETE, UPDATE_ROLLBACK_COMPLETE,
+%% IMPORT_COMPLETE, IMPORT_ROLLBACK_COMPLETE.
+%%
+%% Import of the resource requires that the CloudFormation stack template
+%% matches the associated Service Catalog product provisioning artifact.
+import_as_provisioned_product(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    import_as_provisioned_product(Client, Input, []).
+import_as_provisioned_product(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ImportAsProvisionedProduct">>, Input, Options).
 
 %% @doc Lists all portfolios for which sharing was accepted by this account.
 list_accepted_portfolio_shares(Client, Input)

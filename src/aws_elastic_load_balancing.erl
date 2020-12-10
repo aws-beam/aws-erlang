@@ -41,8 +41,8 @@
          configure_health_check/3,
          create_app_cookie_stickiness_policy/2,
          create_app_cookie_stickiness_policy/3,
-         create_l_b_cookie_stickiness_policy/2,
-         create_l_b_cookie_stickiness_policy/3,
+         create_lb_cookie_stickiness_policy/2,
+         create_lb_cookie_stickiness_policy/3,
          create_load_balancer/2,
          create_load_balancer/3,
          create_load_balancer_listeners/2,
@@ -83,8 +83,8 @@
          register_instances_with_load_balancer/3,
          remove_tags/2,
          remove_tags/3,
-         set_load_balancer_listener_s_s_l_certificate/2,
-         set_load_balancer_listener_s_s_l_certificate/3,
+         set_load_balancer_listener_ssl_certificate/2,
+         set_load_balancer_listener_ssl_certificate/3,
          set_load_balancer_policies_for_backend_server/2,
          set_load_balancer_policies_for_backend_server/3,
          set_load_balancer_policies_of_listener/2,
@@ -198,10 +198,10 @@ create_app_cookie_stickiness_policy(Client, Input, Options)
 %%
 %% For more information, see Duration-Based Session Stickiness in the Classic
 %% Load Balancers Guide.
-create_l_b_cookie_stickiness_policy(Client, Input)
+create_lb_cookie_stickiness_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_l_b_cookie_stickiness_policy(Client, Input, []).
-create_l_b_cookie_stickiness_policy(Client, Input, Options)
+    create_lb_cookie_stickiness_policy(Client, Input, []).
+create_lb_cookie_stickiness_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLBCookieStickinessPolicy">>, Input, Options).
 
@@ -523,10 +523,10 @@ remove_tags(Client, Input, Options)
 %% For more information about updating your SSL certificate, see Replace the
 %% SSL Certificate for Your Load Balancer in the Classic Load Balancers
 %% Guide.
-set_load_balancer_listener_s_s_l_certificate(Client, Input)
+set_load_balancer_listener_ssl_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
-    set_load_balancer_listener_s_s_l_certificate(Client, Input, []).
-set_load_balancer_listener_s_s_l_certificate(Client, Input, Options)
+    set_load_balancer_listener_ssl_certificate(Client, Input, []).
+set_load_balancer_listener_ssl_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetLoadBalancerListenerSSLCertificate">>, Input, Options).
 

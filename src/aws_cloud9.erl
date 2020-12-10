@@ -48,8 +48,8 @@
 %% </li> </ul>
 -module(aws_cloud9).
 
--export([create_environment_e_c2/2,
-         create_environment_e_c2/3,
+-export([create_environment_ec2/2,
+         create_environment_ec2/3,
          create_environment_membership/2,
          create_environment_membership/3,
          delete_environment/2,
@@ -84,10 +84,10 @@
 %% @doc Creates an AWS Cloud9 development environment, launches an Amazon
 %% Elastic Compute Cloud (Amazon EC2) instance, and then connects from the
 %% instance to the environment.
-create_environment_e_c2(Client, Input)
+create_environment_ec2(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_environment_e_c2(Client, Input, []).
-create_environment_e_c2(Client, Input, Options)
+    create_environment_ec2(Client, Input, []).
+create_environment_ec2(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEnvironmentEC2">>, Input, Options).
 

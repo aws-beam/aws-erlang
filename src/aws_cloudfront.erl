@@ -116,8 +116,8 @@
          list_distributions_by_origin_request_policy_id/5,
          list_distributions_by_realtime_log_config/2,
          list_distributions_by_realtime_log_config/3,
-         list_distributions_by_web_a_c_l_id/4,
-         list_distributions_by_web_a_c_l_id/5,
+         list_distributions_by_web_acl_id/4,
+         list_distributions_by_web_acl_id/5,
          list_field_level_encryption_configs/3,
          list_field_level_encryption_configs/4,
          list_field_level_encryption_profiles/3,
@@ -1826,10 +1826,10 @@ list_distributions_by_realtime_log_config(Client, Input0, Options) ->
 
 %% @doc List the distributions that are associated with a specified AWS WAF
 %% web ACL.
-list_distributions_by_web_a_c_l_id(Client, WebACLId, Marker, MaxItems)
+list_distributions_by_web_acl_id(Client, WebACLId, Marker, MaxItems)
   when is_map(Client) ->
-    list_distributions_by_web_a_c_l_id(Client, WebACLId, Marker, MaxItems, []).
-list_distributions_by_web_a_c_l_id(Client, WebACLId, Marker, MaxItems, Options)
+    list_distributions_by_web_acl_id(Client, WebACLId, Marker, MaxItems, []).
+list_distributions_by_web_acl_id(Client, WebACLId, Marker, MaxItems, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/2020-05-31/distributionsByWebACLId/", aws_util:encode_uri(WebACLId), ""],
     SuccessStatusCode = undefined,

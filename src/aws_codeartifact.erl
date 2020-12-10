@@ -3,7 +3,7 @@
 
 %% @doc AWS CodeArtifact is a fully managed artifact repository compatible
 %% with language-native package managers and build tools such as npm, Apache
-%% Maven, and pip.
+%% Maven, NuGet, and pip.
 %%
 %% You can use CodeArtifact to share packages with development teams and pull
 %% packages. Packages can be pulled from both public and CodeArtifact
@@ -20,8 +20,8 @@
 %% versions, each of which maps to a set of assets, or files. Repositories
 %% are polyglot, so a single repository can contain packages of any supported
 %% type. Each repository exposes endpoints for fetching and publishing
-%% packages using tools like the `npm' CLI, the Maven CLI ( `mvn' ), and
-%% `pip' .
+%% packages using tools like the `npm' CLI, the `NuGet' CLI, the Maven CLI (
+%% `mvn' ), and `pip' .
 %%
 %% </li> <li> Domain: Repositories are aggregated into a higher-level entity
 %% known as a domain. All package assets and metadata are stored in the
@@ -44,7 +44,7 @@
 %%
 %% </li> <li> Package: A package is a bundle of software and the metadata
 %% required to resolve dependencies and install the software. CodeArtifact
-%% supports npm, PyPI, and Maven package formats.
+%% supports npm, PyPI, Maven, and NuGet package formats.
 %%
 %% In CodeArtifact, a package consists of:
 %%
@@ -144,6 +144,8 @@
 %%
 %% </li> <li> `maven'
 %%
+%% </li> <li> `nuget'
+%%
 %% </li> </ul> </li> <li> `GetRepositoryPermissionsPolicy': Returns the
 %% resource policy that is set on a repository.
 %%
@@ -167,11 +169,18 @@
 %% </li> <li> `ListRepositoriesInDomain': Returns a list of the repositories
 %% in a domain.
 %%
+%% </li> <li> `ListTagsForResource': Returns a list of the tags associated
+%% with a resource.
+%%
 %% </li> <li> `PutDomainPermissionsPolicy': Attaches a resource policy to a
 %% domain.
 %%
 %% </li> <li> `PutRepositoryPermissionsPolicy': Sets the resource policy on a
 %% repository that specifies permissions to access it.
+%%
+%% </li> <li> `TagResource': Adds or updates tags for a resource.
+%%
+%% </li> <li> `UntagResource': Removes a tag from a resource.
 %%
 %% </li> <li> `UpdatePackageVersionsStatus': Updates the status of one or
 %% more versions of a package.
@@ -745,6 +754,8 @@ get_package_version_readme(Client, Domain, DomainOwner, Format, Namespace, Packa
 %% </li> <li> `pypi'
 %%
 %% </li> <li> `maven'
+%%
+%% </li> <li> `nuget'
 %%
 %% </li> </ul>
 get_repository_endpoint(Client, Domain, DomainOwner, Format, Repository)

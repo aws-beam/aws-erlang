@@ -5,14 +5,22 @@
 %% same set of languages.
 -module(aws_translate).
 
--export([delete_terminology/2,
+-export([create_parallel_data/2,
+         create_parallel_data/3,
+         delete_parallel_data/2,
+         delete_parallel_data/3,
+         delete_terminology/2,
          delete_terminology/3,
          describe_text_translation_job/2,
          describe_text_translation_job/3,
+         get_parallel_data/2,
+         get_parallel_data/3,
          get_terminology/2,
          get_terminology/3,
          import_terminology/2,
          import_terminology/3,
+         list_parallel_data/2,
+         list_parallel_data/3,
          list_terminologies/2,
          list_terminologies/3,
          list_text_translation_jobs/2,
@@ -22,13 +30,36 @@
          stop_text_translation_job/2,
          stop_text_translation_job/3,
          translate_text/2,
-         translate_text/3]).
+         translate_text/3,
+         update_parallel_data/2,
+         update_parallel_data/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Creates a parallel data resource in Amazon Translate by importing an
+%% input file from Amazon S3.
+%%
+%% Parallel data files contain examples of source phrases and their
+%% translations from your translation memory. By adding parallel data, you
+%% can influence the style, tone, and word choice in your translation output.
+create_parallel_data(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_parallel_data(Client, Input, []).
+create_parallel_data(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateParallelData">>, Input, Options).
+
+%% @doc Deletes a parallel data resource in Amazon Translate.
+delete_parallel_data(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_parallel_data(Client, Input, []).
+delete_parallel_data(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteParallelData">>, Input, Options).
 
 %% @doc A synchronous action that deletes a custom terminology.
 delete_terminology(Client, Input)
@@ -47,6 +78,14 @@ describe_text_translation_job(Client, Input)
 describe_text_translation_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTextTranslationJob">>, Input, Options).
+
+%% @doc Provides information about a parallel data resource.
+get_parallel_data(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_parallel_data(Client, Input, []).
+get_parallel_data(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetParallelData">>, Input, Options).
 
 %% @doc Retrieves a custom terminology.
 get_terminology(Client, Input)
@@ -74,6 +113,14 @@ import_terminology(Client, Input)
 import_terminology(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportTerminology">>, Input, Options).
+
+%% @doc Provides a list of your parallel data resources in Amazon Translate.
+list_parallel_data(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_parallel_data(Client, Input, []).
+list_parallel_data(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListParallelData">>, Input, Options).
 
 %% @doc Provides a list of custom terminologies associated with your account.
 list_terminologies(Client, Input)
@@ -139,6 +186,15 @@ translate_text(Client, Input)
 translate_text(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TranslateText">>, Input, Options).
+
+%% @doc Updates a previously created parallel data resource by importing a
+%% new input file from Amazon S3.
+update_parallel_data(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_parallel_data(Client, Input, []).
+update_parallel_data(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateParallelData">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

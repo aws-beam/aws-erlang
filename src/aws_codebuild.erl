@@ -158,6 +158,8 @@
          describe_code_coverages/3,
          describe_test_cases/2,
          describe_test_cases/3,
+         get_report_group_trend/2,
+         get_report_group_trend/3,
          get_resource_policy/2,
          get_resource_policy/3,
          import_source_credentials/2,
@@ -381,6 +383,14 @@ describe_test_cases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTestCases">>, Input, Options).
 
+
+get_report_group_trend(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_report_group_trend(Client, Input, []).
+get_report_group_trend(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetReportGroupTrend">>, Input, Options).
+
 %% @doc Gets a resource policy that is identified by its resource ARN.
 get_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -529,7 +539,9 @@ retry_build(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RetryBuild">>, Input, Options).
 
-%% @doc Restarts a batch build.
+%% @doc Restarts a failed batch build.
+%%
+%% Only batch builds that have failed can be retried.
 retry_build_batch(Client, Input)
   when is_map(Client), is_map(Input) ->
     retry_build_batch(Client, Input, []).

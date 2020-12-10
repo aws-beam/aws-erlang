@@ -13,8 +13,8 @@
 %% User Guide.
 -module(aws_iam).
 
--export([add_client_i_d_to_open_i_d_connect_provider/2,
-         add_client_i_d_to_open_i_d_connect_provider/3,
+-export([add_client_id_to_open_id_connect_provider/2,
+         add_client_id_to_open_id_connect_provider/3,
          add_role_to_instance_profile/2,
          add_role_to_instance_profile/3,
          add_user_to_group/2,
@@ -37,26 +37,26 @@
          create_instance_profile/3,
          create_login_profile/2,
          create_login_profile/3,
-         create_open_i_d_connect_provider/2,
-         create_open_i_d_connect_provider/3,
+         create_open_id_connect_provider/2,
+         create_open_id_connect_provider/3,
          create_policy/2,
          create_policy/3,
          create_policy_version/2,
          create_policy_version/3,
          create_role/2,
          create_role/3,
-         create_s_a_m_l_provider/2,
-         create_s_a_m_l_provider/3,
+         create_saml_provider/2,
+         create_saml_provider/3,
          create_service_linked_role/2,
          create_service_linked_role/3,
          create_service_specific_credential/2,
          create_service_specific_credential/3,
          create_user/2,
          create_user/3,
-         create_virtual_m_f_a_device/2,
-         create_virtual_m_f_a_device/3,
-         deactivate_m_f_a_device/2,
-         deactivate_m_f_a_device/3,
+         create_virtual_mfa_device/2,
+         create_virtual_mfa_device/3,
+         deactivate_mfa_device/2,
+         deactivate_mfa_device/3,
          delete_access_key/2,
          delete_access_key/3,
          delete_account_alias/2,
@@ -71,8 +71,8 @@
          delete_instance_profile/3,
          delete_login_profile/2,
          delete_login_profile/3,
-         delete_open_i_d_connect_provider/2,
-         delete_open_i_d_connect_provider/3,
+         delete_open_id_connect_provider/2,
+         delete_open_id_connect_provider/3,
          delete_policy/2,
          delete_policy/3,
          delete_policy_version/2,
@@ -83,10 +83,8 @@
          delete_role_permissions_boundary/3,
          delete_role_policy/2,
          delete_role_policy/3,
-         delete_s_a_m_l_provider/2,
-         delete_s_a_m_l_provider/3,
-         delete_s_s_h_public_key/2,
-         delete_s_s_h_public_key/3,
+         delete_saml_provider/2,
+         delete_saml_provider/3,
          delete_server_certificate/2,
          delete_server_certificate/3,
          delete_service_linked_role/2,
@@ -95,22 +93,24 @@
          delete_service_specific_credential/3,
          delete_signing_certificate/2,
          delete_signing_certificate/3,
+         delete_ssh_public_key/2,
+         delete_ssh_public_key/3,
          delete_user/2,
          delete_user/3,
          delete_user_permissions_boundary/2,
          delete_user_permissions_boundary/3,
          delete_user_policy/2,
          delete_user_policy/3,
-         delete_virtual_m_f_a_device/2,
-         delete_virtual_m_f_a_device/3,
+         delete_virtual_mfa_device/2,
+         delete_virtual_mfa_device/3,
          detach_group_policy/2,
          detach_group_policy/3,
          detach_role_policy/2,
          detach_role_policy/3,
          detach_user_policy/2,
          detach_user_policy/3,
-         enable_m_f_a_device/2,
-         enable_m_f_a_device/3,
+         enable_mfa_device/2,
+         enable_mfa_device/3,
          generate_credential_report/2,
          generate_credential_report/3,
          generate_organizations_access_report/2,
@@ -139,8 +139,8 @@
          get_instance_profile/3,
          get_login_profile/2,
          get_login_profile/3,
-         get_open_i_d_connect_provider/2,
-         get_open_i_d_connect_provider/3,
+         get_open_id_connect_provider/2,
+         get_open_id_connect_provider/3,
          get_organizations_access_report/2,
          get_organizations_access_report/3,
          get_policy/2,
@@ -151,10 +151,8 @@
          get_role/3,
          get_role_policy/2,
          get_role_policy/3,
-         get_s_a_m_l_provider/2,
-         get_s_a_m_l_provider/3,
-         get_s_s_h_public_key/2,
-         get_s_s_h_public_key/3,
+         get_saml_provider/2,
+         get_saml_provider/3,
          get_server_certificate/2,
          get_server_certificate/3,
          get_service_last_accessed_details/2,
@@ -163,6 +161,8 @@
          get_service_last_accessed_details_with_entities/3,
          get_service_linked_role_deletion_status/2,
          get_service_linked_role_deletion_status/3,
+         get_ssh_public_key/2,
+         get_ssh_public_key/3,
          get_user/2,
          get_user/3,
          get_user_policy/2,
@@ -189,10 +189,10 @@
          list_instance_profiles/3,
          list_instance_profiles_for_role/2,
          list_instance_profiles_for_role/3,
-         list_m_f_a_devices/2,
-         list_m_f_a_devices/3,
-         list_open_i_d_connect_providers/2,
-         list_open_i_d_connect_providers/3,
+         list_mfa_devices/2,
+         list_mfa_devices/3,
+         list_open_id_connect_providers/2,
+         list_open_id_connect_providers/3,
          list_policies/2,
          list_policies/3,
          list_policies_granting_service_access/2,
@@ -205,24 +205,24 @@
          list_role_tags/3,
          list_roles/2,
          list_roles/3,
-         list_s_a_m_l_providers/2,
-         list_s_a_m_l_providers/3,
-         list_s_s_h_public_keys/2,
-         list_s_s_h_public_keys/3,
+         list_saml_providers/2,
+         list_saml_providers/3,
          list_server_certificates/2,
          list_server_certificates/3,
          list_service_specific_credentials/2,
          list_service_specific_credentials/3,
          list_signing_certificates/2,
          list_signing_certificates/3,
+         list_ssh_public_keys/2,
+         list_ssh_public_keys/3,
          list_user_policies/2,
          list_user_policies/3,
          list_user_tags/2,
          list_user_tags/3,
          list_users/2,
          list_users/3,
-         list_virtual_m_f_a_devices/2,
-         list_virtual_m_f_a_devices/3,
+         list_virtual_mfa_devices/2,
+         list_virtual_mfa_devices/3,
          put_group_policy/2,
          put_group_policy/3,
          put_role_permissions_boundary/2,
@@ -233,16 +233,16 @@
          put_user_permissions_boundary/3,
          put_user_policy/2,
          put_user_policy/3,
-         remove_client_i_d_from_open_i_d_connect_provider/2,
-         remove_client_i_d_from_open_i_d_connect_provider/3,
+         remove_client_id_from_open_id_connect_provider/2,
+         remove_client_id_from_open_id_connect_provider/3,
          remove_role_from_instance_profile/2,
          remove_role_from_instance_profile/3,
          remove_user_from_group/2,
          remove_user_from_group/3,
          reset_service_specific_credential/2,
          reset_service_specific_credential/3,
-         resync_m_f_a_device/2,
-         resync_m_f_a_device/3,
+         resync_mfa_device/2,
+         resync_mfa_device/3,
          set_default_policy_version/2,
          set_default_policy_version/3,
          set_security_token_service_preferences/2,
@@ -269,30 +269,30 @@
          update_group/3,
          update_login_profile/2,
          update_login_profile/3,
-         update_open_i_d_connect_provider_thumbprint/2,
-         update_open_i_d_connect_provider_thumbprint/3,
+         update_open_id_connect_provider_thumbprint/2,
+         update_open_id_connect_provider_thumbprint/3,
          update_role/2,
          update_role/3,
          update_role_description/2,
          update_role_description/3,
-         update_s_a_m_l_provider/2,
-         update_s_a_m_l_provider/3,
-         update_s_s_h_public_key/2,
-         update_s_s_h_public_key/3,
+         update_saml_provider/2,
+         update_saml_provider/3,
          update_server_certificate/2,
          update_server_certificate/3,
          update_service_specific_credential/2,
          update_service_specific_credential/3,
          update_signing_certificate/2,
          update_signing_certificate/3,
+         update_ssh_public_key/2,
+         update_ssh_public_key/3,
          update_user/2,
          update_user/3,
-         upload_s_s_h_public_key/2,
-         upload_s_s_h_public_key/3,
          upload_server_certificate/2,
          upload_server_certificate/3,
          upload_signing_certificate/2,
-         upload_signing_certificate/3]).
+         upload_signing_certificate/3,
+         upload_ssh_public_key/2,
+         upload_ssh_public_key/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -306,10 +306,10 @@
 %%
 %% This operation is idempotent; it does not fail or return an error if you
 %% add an existing client ID to the provider.
-add_client_i_d_to_open_i_d_connect_provider(Client, Input)
+add_client_id_to_open_id_connect_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
-    add_client_i_d_to_open_i_d_connect_provider(Client, Input, []).
-add_client_i_d_to_open_i_d_connect_provider(Client, Input, Options)
+    add_client_id_to_open_id_connect_provider(Client, Input, []).
+add_client_id_to_open_id_connect_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddClientIDToOpenIDConnectProvider">>, Input, Options).
 
@@ -502,10 +502,10 @@ create_login_profile(Client, Input, Options)
 %% The trust for the OIDC provider is derived from the IAM provider that this
 %% operation creates. Therefore, it is best to limit access to the
 %% `CreateOpenIDConnectProvider' operation to highly privileged users.
-create_open_i_d_connect_provider(Client, Input)
+create_open_id_connect_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_open_i_d_connect_provider(Client, Input, []).
-create_open_i_d_connect_provider(Client, Input, Options)
+    create_open_id_connect_provider(Client, Input, []).
+create_open_id_connect_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateOpenIDConnectProvider">>, Input, Options).
 
@@ -578,10 +578,10 @@ create_role(Client, Input, Options)
 %% For more information, see Enabling SAML 2.0 Federated Users to Access the
 %% AWS Management Console and About SAML 2.0-based Federation in the IAM User
 %% Guide.
-create_s_a_m_l_provider(Client, Input)
+create_saml_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_s_a_m_l_provider(Client, Input, []).
-create_s_a_m_l_provider(Client, Input, Options)
+    create_saml_provider(Client, Input, []).
+create_saml_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSAMLProvider">>, Input, Options).
 
@@ -654,10 +654,10 @@ create_user(Client, Input, Options)
 %% protect the seed information as you would your AWS access keys or your
 %% passwords. After you provision your virtual device, you should ensure that
 %% the information is destroyed following secure procedures.
-create_virtual_m_f_a_device(Client, Input)
+create_virtual_mfa_device(Client, Input)
   when is_map(Client), is_map(Input) ->
-    create_virtual_m_f_a_device(Client, Input, []).
-create_virtual_m_f_a_device(Client, Input, Options)
+    create_virtual_mfa_device(Client, Input, []).
+create_virtual_mfa_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateVirtualMFADevice">>, Input, Options).
 
@@ -667,10 +667,10 @@ create_virtual_m_f_a_device(Client, Input, Options)
 %% For more information about creating and working with virtual MFA devices,
 %% go to Enabling a Virtual Multi-factor Authentication (MFA) Device in the
 %% IAM User Guide.
-deactivate_m_f_a_device(Client, Input)
+deactivate_mfa_device(Client, Input)
   when is_map(Client), is_map(Input) ->
-    deactivate_m_f_a_device(Client, Input, []).
-deactivate_m_f_a_device(Client, Input, Options)
+    deactivate_mfa_device(Client, Input, []).
+deactivate_mfa_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeactivateMFADevice">>, Input, Options).
 
@@ -775,10 +775,10 @@ delete_login_profile(Client, Input, Options)
 %%
 %% This operation is idempotent; it does not fail or return an error if you
 %% call the operation for a provider that does not exist.
-delete_open_i_d_connect_provider(Client, Input)
+delete_open_id_connect_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
-    delete_open_i_d_connect_provider(Client, Input, []).
-delete_open_i_d_connect_provider(Client, Input, Options)
+    delete_open_id_connect_provider(Client, Input, []).
+delete_open_id_connect_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteOpenIDConnectProvider">>, Input, Options).
 
@@ -878,26 +878,12 @@ delete_role_policy(Client, Input, Options)
 %% provider resource ARN fails.
 %%
 %% This operation requires Signature Version 4.
-delete_s_a_m_l_provider(Client, Input)
+delete_saml_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
-    delete_s_a_m_l_provider(Client, Input, []).
-delete_s_a_m_l_provider(Client, Input, Options)
+    delete_saml_provider(Client, Input, []).
+delete_saml_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSAMLProvider">>, Input, Options).
-
-%% @doc Deletes the specified SSH public key.
-%%
-%% The SSH public key deleted by this operation is used only for
-%% authenticating the associated IAM user to an AWS CodeCommit repository.
-%% For more information about using SSH keys to authenticate to an AWS
-%% CodeCommit repository, see Set up AWS CodeCommit for SSH Connections in
-%% the AWS CodeCommit User Guide.
-delete_s_s_h_public_key(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    delete_s_s_h_public_key(Client, Input, []).
-delete_s_s_h_public_key(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"DeleteSSHPublicKey">>, Input, Options).
 
 %% @doc Deletes the specified server certificate.
 %%
@@ -971,6 +957,20 @@ delete_signing_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSigningCertificate">>, Input, Options).
 
+%% @doc Deletes the specified SSH public key.
+%%
+%% The SSH public key deleted by this operation is used only for
+%% authenticating the associated IAM user to an AWS CodeCommit repository.
+%% For more information about using SSH keys to authenticate to an AWS
+%% CodeCommit repository, see Set up AWS CodeCommit for SSH Connections in
+%% the AWS CodeCommit User Guide.
+delete_ssh_public_key(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_ssh_public_key(Client, Input, []).
+delete_ssh_public_key(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteSSHPublicKey">>, Input, Options).
+
 %% @doc Deletes the specified IAM user.
 %%
 %% Unlike the AWS Management Console, when you delete a user
@@ -1035,10 +1035,10 @@ delete_user_policy(Client, Input, Options)
 %%
 %% You must deactivate a user's virtual MFA device before you can delete it.
 %% For information about deactivating MFA devices, see `DeactivateMFADevice'.
-delete_virtual_m_f_a_device(Client, Input)
+delete_virtual_mfa_device(Client, Input)
   when is_map(Client), is_map(Input) ->
-    delete_virtual_m_f_a_device(Client, Input, []).
-delete_virtual_m_f_a_device(Client, Input, Options)
+    delete_virtual_mfa_device(Client, Input, []).
+delete_virtual_mfa_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteVirtualMFADevice">>, Input, Options).
 
@@ -1083,10 +1083,10 @@ detach_user_policy(Client, Input, Options)
 %%
 %% When enabled, the MFA device is required for every subsequent login by the
 %% IAM user associated with the device.
-enable_m_f_a_device(Client, Input)
+enable_mfa_device(Client, Input)
   when is_map(Client), is_map(Input) ->
-    enable_m_f_a_device(Client, Input, []).
-enable_m_f_a_device(Client, Input, Options)
+    enable_mfa_device(Client, Input, []).
+enable_mfa_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableMFADevice">>, Input, Options).
 
@@ -1468,10 +1468,10 @@ get_login_profile(Client, Input, Options)
 
 %% @doc Returns information about the specified OpenID Connect (OIDC)
 %% provider resource object in IAM.
-get_open_i_d_connect_provider(Client, Input)
+get_open_id_connect_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
-    get_open_i_d_connect_provider(Client, Input, []).
-get_open_i_d_connect_provider(Client, Input, Options)
+    get_open_id_connect_provider(Client, Input, []).
+get_open_id_connect_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOpenIDConnectProvider">>, Input, Options).
 
@@ -1604,27 +1604,12 @@ get_role_policy(Client, Input, Options)
 %% SAML provider resource object was created or updated.
 %%
 %% This operation requires Signature Version 4.
-get_s_a_m_l_provider(Client, Input)
+get_saml_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
-    get_s_a_m_l_provider(Client, Input, []).
-get_s_a_m_l_provider(Client, Input, Options)
+    get_saml_provider(Client, Input, []).
+get_saml_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSAMLProvider">>, Input, Options).
-
-%% @doc Retrieves the specified SSH public key, including metadata about the
-%% key.
-%%
-%% The SSH public key retrieved by this operation is used only for
-%% authenticating the associated IAM user to an AWS CodeCommit repository.
-%% For more information about using SSH keys to authenticate to an AWS
-%% CodeCommit repository, see Set up AWS CodeCommit for SSH Connections in
-%% the AWS CodeCommit User Guide.
-get_s_s_h_public_key(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    get_s_s_h_public_key(Client, Input, []).
-get_s_s_h_public_key(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"GetSSHPublicKey">>, Input, Options).
 
 %% @doc Retrieves information about the specified server certificate stored
 %% in IAM.
@@ -1742,6 +1727,21 @@ get_service_linked_role_deletion_status(Client, Input)
 get_service_linked_role_deletion_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetServiceLinkedRoleDeletionStatus">>, Input, Options).
+
+%% @doc Retrieves the specified SSH public key, including metadata about the
+%% key.
+%%
+%% The SSH public key retrieved by this operation is used only for
+%% authenticating the associated IAM user to an AWS CodeCommit repository.
+%% For more information about using SSH keys to authenticate to an AWS
+%% CodeCommit repository, see Set up AWS CodeCommit for SSH Connections in
+%% the AWS CodeCommit User Guide.
+get_ssh_public_key(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_ssh_public_key(Client, Input, []).
+get_ssh_public_key(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetSSHPublicKey">>, Input, Options).
 
 %% @doc Retrieves information about the specified IAM user, including the
 %% user's creation date, path, unique ID, and ARN.
@@ -1962,19 +1962,19 @@ list_instance_profiles_for_role(Client, Input, Options)
 %% key ID signing the request for this API.
 %%
 %% You can paginate the results using the `MaxItems' and `Marker' parameters.
-list_m_f_a_devices(Client, Input)
+list_mfa_devices(Client, Input)
   when is_map(Client), is_map(Input) ->
-    list_m_f_a_devices(Client, Input, []).
-list_m_f_a_devices(Client, Input, Options)
+    list_mfa_devices(Client, Input, []).
+list_mfa_devices(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMFADevices">>, Input, Options).
 
 %% @doc Lists information about the IAM OpenID Connect (OIDC) provider
 %% resource objects defined in the AWS account.
-list_open_i_d_connect_providers(Client, Input)
+list_open_id_connect_providers(Client, Input)
   when is_map(Client), is_map(Input) ->
-    list_open_i_d_connect_providers(Client, Input, []).
-list_open_i_d_connect_providers(Client, Input, Options)
+    list_open_id_connect_providers(Client, Input, []).
+list_open_id_connect_providers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListOpenIDConnectProviders">>, Input, Options).
 
@@ -2099,32 +2099,12 @@ list_roles(Client, Input, Options)
 %% account.
 %%
 %% This operation requires Signature Version 4.
-list_s_a_m_l_providers(Client, Input)
+list_saml_providers(Client, Input)
   when is_map(Client), is_map(Input) ->
-    list_s_a_m_l_providers(Client, Input, []).
-list_s_a_m_l_providers(Client, Input, Options)
+    list_saml_providers(Client, Input, []).
+list_saml_providers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSAMLProviders">>, Input, Options).
-
-%% @doc Returns information about the SSH public keys associated with the
-%% specified IAM user.
-%%
-%% If none exists, the operation returns an empty list.
-%%
-%% The SSH public keys returned by this operation are used only for
-%% authenticating the IAM user to an AWS CodeCommit repository. For more
-%% information about using SSH keys to authenticate to an AWS CodeCommit
-%% repository, see Set up AWS CodeCommit for SSH Connections in the AWS
-%% CodeCommit User Guide.
-%%
-%% Although each user is limited to a small number of keys, you can still
-%% paginate the results using the `MaxItems' and `Marker' parameters.
-list_s_s_h_public_keys(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    list_s_s_h_public_keys(Client, Input, []).
-list_s_s_h_public_keys(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"ListSSHPublicKeys">>, Input, Options).
 
 %% @doc Lists the server certificates stored in IAM that have the specified
 %% path prefix.
@@ -2180,6 +2160,26 @@ list_signing_certificates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSigningCertificates">>, Input, Options).
 
+%% @doc Returns information about the SSH public keys associated with the
+%% specified IAM user.
+%%
+%% If none exists, the operation returns an empty list.
+%%
+%% The SSH public keys returned by this operation are used only for
+%% authenticating the IAM user to an AWS CodeCommit repository. For more
+%% information about using SSH keys to authenticate to an AWS CodeCommit
+%% repository, see Set up AWS CodeCommit for SSH Connections in the AWS
+%% CodeCommit User Guide.
+%%
+%% Although each user is limited to a small number of keys, you can still
+%% paginate the results using the `MaxItems' and `Marker' parameters.
+list_ssh_public_keys(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_ssh_public_keys(Client, Input, []).
+list_ssh_public_keys(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListSSHPublicKeys">>, Input, Options).
+
 %% @doc Lists the names of the inline policies embedded in the specified IAM
 %% user.
 %%
@@ -2230,10 +2230,10 @@ list_users(Client, Input, Options)
 %% `Unassigned', or `Any'.
 %%
 %% You can paginate the results using the `MaxItems' and `Marker' parameters.
-list_virtual_m_f_a_devices(Client, Input)
+list_virtual_mfa_devices(Client, Input)
   when is_map(Client), is_map(Input) ->
-    list_virtual_m_f_a_devices(Client, Input, []).
-list_virtual_m_f_a_devices(Client, Input, Options)
+    list_virtual_mfa_devices(Client, Input, []).
+list_virtual_mfa_devices(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListVirtualMFADevices">>, Input, Options).
 
@@ -2353,10 +2353,10 @@ put_user_policy(Client, Input, Options)
 %%
 %% This operation is idempotent; it does not fail or return an error if you
 %% try to remove a client ID that does not exist.
-remove_client_i_d_from_open_i_d_connect_provider(Client, Input)
+remove_client_id_from_open_id_connect_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
-    remove_client_i_d_from_open_i_d_connect_provider(Client, Input, []).
-remove_client_i_d_from_open_i_d_connect_provider(Client, Input, Options)
+    remove_client_id_from_open_id_connect_provider(Client, Input, []).
+remove_client_id_from_open_id_connect_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveClientIDFromOpenIDConnectProvider">>, Input, Options).
 
@@ -2402,10 +2402,10 @@ reset_service_specific_credential(Client, Input, Options)
 %%
 %% For more information about creating and working with virtual MFA devices,
 %% go to Using a Virtual MFA Device in the IAM User Guide.
-resync_m_f_a_device(Client, Input)
+resync_mfa_device(Client, Input)
   when is_map(Client), is_map(Input) ->
-    resync_m_f_a_device(Client, Input, []).
-resync_m_f_a_device(Client, Input, Options)
+    resync_mfa_device(Client, Input, []).
+resync_mfa_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResyncMFADevice">>, Input, Options).
 
@@ -2726,10 +2726,10 @@ update_login_profile(Client, Input, Options)
 %% is validated by the thumbprint. Therefore, it is best to limit access to
 %% the `UpdateOpenIDConnectProviderThumbprint' operation to highly privileged
 %% users.
-update_open_i_d_connect_provider_thumbprint(Client, Input)
+update_open_id_connect_provider_thumbprint(Client, Input)
   when is_map(Client), is_map(Input) ->
-    update_open_i_d_connect_provider_thumbprint(Client, Input, []).
-update_open_i_d_connect_provider_thumbprint(Client, Input, Options)
+    update_open_id_connect_provider_thumbprint(Client, Input, []).
+update_open_id_connect_provider_thumbprint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateOpenIDConnectProviderThumbprint">>, Input, Options).
 
@@ -2757,31 +2757,12 @@ update_role_description(Client, Input, Options)
 %% object.
 %%
 %% This operation requires Signature Version 4.
-update_s_a_m_l_provider(Client, Input)
+update_saml_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
-    update_s_a_m_l_provider(Client, Input, []).
-update_s_a_m_l_provider(Client, Input, Options)
+    update_saml_provider(Client, Input, []).
+update_saml_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSAMLProvider">>, Input, Options).
-
-%% @doc Sets the status of an IAM user's SSH public key to active or
-%% inactive.
-%%
-%% SSH public keys that are inactive cannot be used for authentication. This
-%% operation can be used to disable a user's SSH public key as part of a key
-%% rotation work flow.
-%%
-%% The SSH public key affected by this operation is used only for
-%% authenticating the associated IAM user to an AWS CodeCommit repository.
-%% For more information about using SSH keys to authenticate to an AWS
-%% CodeCommit repository, see Set up AWS CodeCommit for SSH Connections in
-%% the AWS CodeCommit User Guide.
-update_s_s_h_public_key(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    update_s_s_h_public_key(Client, Input, []).
-update_s_s_h_public_key(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"UpdateSSHPublicKey">>, Input, Options).
 
 %% @doc Updates the name and/or the path of the specified server certificate
 %% stored in IAM.
@@ -2842,6 +2823,25 @@ update_signing_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSigningCertificate">>, Input, Options).
 
+%% @doc Sets the status of an IAM user's SSH public key to active or
+%% inactive.
+%%
+%% SSH public keys that are inactive cannot be used for authentication. This
+%% operation can be used to disable a user's SSH public key as part of a key
+%% rotation work flow.
+%%
+%% The SSH public key affected by this operation is used only for
+%% authenticating the associated IAM user to an AWS CodeCommit repository.
+%% For more information about using SSH keys to authenticate to an AWS
+%% CodeCommit repository, see Set up AWS CodeCommit for SSH Connections in
+%% the AWS CodeCommit User Guide.
+update_ssh_public_key(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_ssh_public_key(Client, Input, []).
+update_ssh_public_key(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateSSHPublicKey">>, Input, Options).
+
 %% @doc Updates the name and/or the path of the specified IAM user.
 %%
 %% You should understand the implications of changing an IAM user's path or
@@ -2859,21 +2859,6 @@ update_user(Client, Input)
 update_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateUser">>, Input, Options).
-
-%% @doc Uploads an SSH public key and associates it with the specified IAM
-%% user.
-%%
-%% The SSH public key uploaded by this operation can be used only for
-%% authenticating the associated IAM user to an AWS CodeCommit repository.
-%% For more information about using SSH keys to authenticate to an AWS
-%% CodeCommit repository, see Set up AWS CodeCommit for SSH Connections in
-%% the AWS CodeCommit User Guide.
-upload_s_s_h_public_key(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    upload_s_s_h_public_key(Client, Input, []).
-upload_s_s_h_public_key(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"UploadSSHPublicKey">>, Input, Options).
 
 %% @doc Uploads a server certificate entity for the AWS account.
 %%
@@ -2933,6 +2918,21 @@ upload_signing_certificate(Client, Input)
 upload_signing_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UploadSigningCertificate">>, Input, Options).
+
+%% @doc Uploads an SSH public key and associates it with the specified IAM
+%% user.
+%%
+%% The SSH public key uploaded by this operation can be used only for
+%% authenticating the associated IAM user to an AWS CodeCommit repository.
+%% For more information about using SSH keys to authenticate to an AWS
+%% CodeCommit repository, see Set up AWS CodeCommit for SSH Connections in
+%% the AWS CodeCommit User Guide.
+upload_ssh_public_key(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    upload_ssh_public_key(Client, Input, []).
+upload_ssh_public_key(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UploadSSHPublicKey">>, Input, Options).
 
 %%====================================================================
 %% Internal functions
