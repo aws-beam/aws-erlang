@@ -2565,8 +2565,8 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Payload =
       case proplists:get_value(should_send_body_as_binary, Options) of
         true ->
-          maps:get_value(<<"Body">>, Input);
-        _ ->
+          maps:get(<<"Body">>, Input, <<"">>);
+        undefined ->
           encode_payload(Input)
       end,
 
