@@ -1094,7 +1094,7 @@ import_api(Client, Input0, Options) ->
                      {<<"failOnWarnings">>, <<"FailOnWarnings">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options ++ [{should_send_body_as_binary, true}], SuccessStatusCode).
 
 %% @doc Puts an Api resource.
 reimport_api(Client, ApiId, Input) ->
@@ -1112,7 +1112,7 @@ reimport_api(Client, ApiId, Input0, Options) ->
                      {<<"failOnWarnings">>, <<"FailOnWarnings">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options ++ [{should_send_body_as_binary, true}], SuccessStatusCode).
 
 %% @doc Resets all authorizer cache entries for the specified stage.
 %%
@@ -1377,7 +1377,15 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
                         ],
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-    Payload = encode_payload(Input),
+
+    Payload =
+      case proplists:get_value(should_send_body_as_binary, Options) of
+        true ->
+          maps:get_value(<<"Body">>, Input);
+        _ ->
+          encode_payload(Input)
+      end,
+
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),

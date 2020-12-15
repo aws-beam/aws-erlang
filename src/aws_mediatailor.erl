@@ -184,7 +184,15 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
                         ],
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-    Payload = encode_payload(Input),
+
+    Payload =
+      case proplists:get_value(should_send_body_as_binary, Options) of
+        true ->
+          maps:get_value(<<"Body">>, Input);
+        _ ->
+          encode_payload(Input)
+      end,
+
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
