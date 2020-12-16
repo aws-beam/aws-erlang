@@ -5272,7 +5272,7 @@ put_object(Client, Bucket, Key, Input0, Options) ->
     Query_ = [],
     Input = Input1,
 
-    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, Headers, Input, Options ++ [{should_send_body_as_binary, true}], SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -6241,7 +6241,7 @@ upload_part(Client, Bucket, Key, Input0, Options) ->
                      {<<"uploadId">>, <<"UploadId">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
-    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, Headers, Input, Options ++ [{should_send_body_as_binary, true}], SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -6449,7 +6449,15 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
                         , {<<"Content-Type">>, <<"text/xml">>}
                         ],
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-    Payload = encode_payload(Input),
+
+    Payload =
+      case proplists:get_value(should_send_body_as_binary, Options) of
+        true ->
+          maps:get(<<"Body">>, Input, <<"">>);
+        undefined ->
+          encode_payload(Input)
+      end,
+
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
