@@ -29,24 +29,38 @@
          activate_event_source/3,
          cancel_replay/2,
          cancel_replay/3,
+         create_api_destination/2,
+         create_api_destination/3,
          create_archive/2,
          create_archive/3,
+         create_connection/2,
+         create_connection/3,
          create_event_bus/2,
          create_event_bus/3,
          create_partner_event_source/2,
          create_partner_event_source/3,
          deactivate_event_source/2,
          deactivate_event_source/3,
+         deauthorize_connection/2,
+         deauthorize_connection/3,
+         delete_api_destination/2,
+         delete_api_destination/3,
          delete_archive/2,
          delete_archive/3,
+         delete_connection/2,
+         delete_connection/3,
          delete_event_bus/2,
          delete_event_bus/3,
          delete_partner_event_source/2,
          delete_partner_event_source/3,
          delete_rule/2,
          delete_rule/3,
+         describe_api_destination/2,
+         describe_api_destination/3,
          describe_archive/2,
          describe_archive/3,
+         describe_connection/2,
+         describe_connection/3,
          describe_event_bus/2,
          describe_event_bus/3,
          describe_event_source/2,
@@ -61,8 +75,12 @@
          disable_rule/3,
          enable_rule/2,
          enable_rule/3,
+         list_api_destinations/2,
+         list_api_destinations/3,
          list_archives/2,
          list_archives/3,
+         list_connections/2,
+         list_connections/3,
          list_event_buses/2,
          list_event_buses/3,
          list_event_sources/2,
@@ -103,8 +121,12 @@
          test_event_pattern/3,
          untag_resource/2,
          untag_resource/3,
+         update_api_destination/2,
+         update_api_destination/3,
          update_archive/2,
-         update_archive/3]).
+         update_archive/3,
+         update_connection/2,
+         update_connection/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -131,6 +153,15 @@ cancel_replay(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelReplay">>, Input, Options).
 
+%% @doc Creates an API destination, which is an HTTP invocation endpoint
+%% configured as a target for events.
+create_api_destination(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_api_destination(Client, Input, []).
+create_api_destination(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateApiDestination">>, Input, Options).
+
 %% @doc Creates an archive of events with the specified settings.
 %%
 %% When you create an archive, incoming events might not immediately start
@@ -144,6 +175,17 @@ create_archive(Client, Input)
 create_archive(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateArchive">>, Input, Options).
+
+%% @doc Creates a connection.
+%%
+%% A connection defines the authorization type and credentials to use for
+%% authorization with an API destination HTTP endpoint.
+create_connection(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_connection(Client, Input, []).
+create_connection(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateConnection">>, Input, Options).
 
 %% @doc Creates a new event bus within your account.
 %%
@@ -208,6 +250,25 @@ deactivate_event_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeactivateEventSource">>, Input, Options).
 
+%% @doc Removes all authorization parameters from the connection.
+%%
+%% This lets you remove the secret from the connection so you can reuse it
+%% without having to create a new connection.
+deauthorize_connection(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    deauthorize_connection(Client, Input, []).
+deauthorize_connection(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeauthorizeConnection">>, Input, Options).
+
+%% @doc Deletes the specified API destination.
+delete_api_destination(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_api_destination(Client, Input, []).
+delete_api_destination(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteApiDestination">>, Input, Options).
+
 %% @doc Deletes the specified archive.
 delete_archive(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -215,6 +276,14 @@ delete_archive(Client, Input)
 delete_archive(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteArchive">>, Input, Options).
+
+%% @doc Deletes a connection.
+delete_connection(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_connection(Client, Input, []).
+delete_connection(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteConnection">>, Input, Options).
 
 %% @doc Deletes the specified custom event bus or partner event bus.
 %%
@@ -261,6 +330,14 @@ delete_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRule">>, Input, Options).
 
+%% @doc Retrieves details about an API destination.
+describe_api_destination(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_api_destination(Client, Input, []).
+describe_api_destination(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeApiDestination">>, Input, Options).
+
 %% @doc Retrieves details about an archive.
 describe_archive(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -268,6 +345,14 @@ describe_archive(Client, Input)
 describe_archive(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeArchive">>, Input, Options).
+
+%% @doc Retrieves details about a connection.
+describe_connection(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_connection(Client, Input, []).
+describe_connection(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeConnection">>, Input, Options).
 
 %% @doc Displays details about an event bus in your account.
 %%
@@ -366,6 +451,15 @@ enable_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableRule">>, Input, Options).
 
+%% @doc Retrieves a list of API destination in the account in the current
+%% Region.
+list_api_destinations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_api_destinations(Client, Input, []).
+list_api_destinations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListApiDestinations">>, Input, Options).
+
 %% @doc Lists your archives.
 %%
 %% You can either list all the archives or you can provide a prefix to match
@@ -376,6 +470,14 @@ list_archives(Client, Input)
 list_archives(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListArchives">>, Input, Options).
+
+%% @doc Retrieves a list of connections from the account.
+list_connections(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_connections(Client, Input, []).
+list_connections(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListConnections">>, Input, Options).
 
 %% @doc Lists all the event buses in your account, including the default
 %% event bus, custom event buses, and partner event buses.
@@ -629,6 +731,8 @@ put_rule(Client, Input, Options)
 %%
 %% </li> <li> Redshift Clusters to invoke Data API ExecuteStatement on
 %%
+%% </li> <li> Custom/SaaS HTTPS APIs via EventBridge API Destinations
+%%
 %% </li> </ul> Creating rules with built-in targets is supported only in the
 %% AWS Management Console. The built-in targets are `EC2 CreateSnapshot API
 %% call', `EC2 RebootInstances API call', `EC2 StopInstances API call', and
@@ -810,6 +914,14 @@ untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
+%% @doc Updates an API destination.
+update_api_destination(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_api_destination(Client, Input, []).
+update_api_destination(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateApiDestination">>, Input, Options).
+
 %% @doc Updates the specified archive.
 update_archive(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -817,6 +929,14 @@ update_archive(Client, Input)
 update_archive(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateArchive">>, Input, Options).
+
+%% @doc Updates settings for a connection.
+update_connection(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_connection(Client, Input, []).
+update_connection(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateConnection">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

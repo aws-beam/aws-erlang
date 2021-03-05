@@ -3,7 +3,7 @@
 
 %% @doc EC2 Image Builder is a fully managed AWS service that makes it easier
 %% to automate the creation, management, and deployment of customized,
-%% secure, and up-to-date “golden” server images that are pre-installed and
+%% secure, and up-to-date "golden" server images that are pre-installed and
 %% pre-configured with software and settings to meet specific IT standards.
 -module(aws_imagebuilder).
 
@@ -11,6 +11,8 @@
          cancel_image_creation/3,
          create_component/2,
          create_component/3,
+         create_container_recipe/2,
+         create_container_recipe/3,
          create_distribution_configuration/2,
          create_distribution_configuration/3,
          create_image/2,
@@ -23,6 +25,8 @@
          create_infrastructure_configuration/3,
          delete_component/2,
          delete_component/3,
+         delete_container_recipe/2,
+         delete_container_recipe/3,
          delete_distribution_configuration/2,
          delete_distribution_configuration/3,
          delete_image/2,
@@ -37,6 +41,10 @@
          get_component/3,
          get_component_policy/2,
          get_component_policy/3,
+         get_container_recipe/2,
+         get_container_recipe/3,
+         get_container_recipe_policy/2,
+         get_container_recipe_policy/3,
          get_distribution_configuration/2,
          get_distribution_configuration/3,
          get_image/2,
@@ -57,10 +65,14 @@
          list_component_build_versions/3,
          list_components/2,
          list_components/3,
+         list_container_recipes/2,
+         list_container_recipes/3,
          list_distribution_configurations/2,
          list_distribution_configurations/3,
          list_image_build_versions/2,
          list_image_build_versions/3,
+         list_image_packages/2,
+         list_image_packages/3,
          list_image_pipeline_images/2,
          list_image_pipeline_images/3,
          list_image_pipelines/2,
@@ -75,6 +87,8 @@
          list_tags_for_resource/3,
          put_component_policy/2,
          put_component_policy/3,
+         put_container_recipe_policy/2,
+         put_container_recipe_policy/3,
          put_image_policy/2,
          put_image_policy/3,
          put_image_recipe_policy/2,
@@ -123,6 +137,24 @@ create_component(Client, Input) ->
 create_component(Client, Input0, Options) ->
     Method = put,
     Path = ["/CreateComponent"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new container recipe.
+%%
+%% Container recipes define how images are configured, tested, and assessed.
+create_container_recipe(Client, Input) ->
+    create_container_recipe(Client, Input, []).
+create_container_recipe(Client, Input0, Options) ->
+    Method = put,
+    Path = ["/CreateContainerRecipe"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -240,6 +272,23 @@ delete_component(Client, Input0, Options) ->
 
     QueryMapping = [
                      {<<"componentBuildVersionArn">>, <<"componentBuildVersionArn">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a container recipe.
+delete_container_recipe(Client, Input) ->
+    delete_container_recipe(Client, Input, []).
+delete_container_recipe(Client, Input0, Options) ->
+    Method = delete,
+    Path = ["/DeleteContainerRecipe"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    QueryMapping = [
+                     {<<"containerRecipeArn">>, <<"containerRecipeArn">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
@@ -362,6 +411,44 @@ get_component_policy(Client, ComponentArn, Options)
     Query0_ =
       [
         {<<"componentArn">>, ComponentArn}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a container recipe.
+get_container_recipe(Client, ContainerRecipeArn)
+  when is_map(Client) ->
+    get_container_recipe(Client, ContainerRecipeArn, []).
+get_container_recipe(Client, ContainerRecipeArn, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/GetContainerRecipe"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"containerRecipeArn">>, ContainerRecipeArn}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the policy for a container recipe.
+get_container_recipe_policy(Client, ContainerRecipeArn)
+  when is_map(Client) ->
+    get_container_recipe_policy(Client, ContainerRecipeArn, []).
+get_container_recipe_policy(Client, ContainerRecipeArn, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/GetContainerRecipePolicy"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"containerRecipeArn">>, ContainerRecipeArn}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -551,6 +638,22 @@ list_components(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Returns a list of container recipes.
+list_container_recipes(Client, Input) ->
+    list_container_recipes(Client, Input, []).
+list_container_recipes(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/ListContainerRecipes"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Returns a list of distribution configurations.
 list_distribution_configurations(Client, Input) ->
     list_distribution_configurations(Client, Input, []).
@@ -573,6 +676,23 @@ list_image_build_versions(Client, Input) ->
 list_image_build_versions(Client, Input0, Options) ->
     Method = post,
     Path = ["/ListImageBuildVersions"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc List the Packages that are associated with an Image Build Version, as
+%% determined by AWS Systems Manager Inventory at build time.
+list_image_packages(Client, Input) ->
+    list_image_packages(Client, Input, []).
+list_image_packages(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/ListImagePackages"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -690,6 +810,31 @@ put_component_policy(Client, Input) ->
 put_component_policy(Client, Input0, Options) ->
     Method = put,
     Path = ["/PutComponentPolicy"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Applies a policy to a container image.
+%%
+%% We recommend that you call the RAM API CreateResourceShare
+%% (https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html)
+%% to share resources. If you call the Image Builder API
+%% `PutContainerImagePolicy', you must also call the RAM API
+%% PromoteResourceShareCreatedFromPolicy
+%% (https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html)
+%% in order for the resource to be visible to all principals with whom the
+%% resource is shared.
+put_container_recipe_policy(Client, Input) ->
+    put_container_recipe_policy(Client, Input, []).
+put_container_recipe_policy(Client, Input0, Options) ->
+    Method = put,
+    Path = ["/PutContainerRecipePolicy"],
     SuccessStatusCode = undefined,
 
     Headers = [],

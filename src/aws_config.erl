@@ -57,6 +57,8 @@
          delete_resource_config/3,
          delete_retention_configuration/2,
          delete_retention_configuration/3,
+         delete_stored_query/2,
+         delete_stored_query/3,
          deliver_config_snapshot/2,
          deliver_config_snapshot/3,
          describe_aggregate_compliance_by_config_rules/2,
@@ -135,10 +137,14 @@
          get_organization_conformance_pack_detailed_status/3,
          get_resource_config_history/2,
          get_resource_config_history/3,
+         get_stored_query/2,
+         get_stored_query/3,
          list_aggregate_discovered_resources/2,
          list_aggregate_discovered_resources/3,
          list_discovered_resources/2,
          list_discovered_resources/3,
+         list_stored_queries/2,
+         list_stored_queries/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          put_aggregation_authorization/2,
@@ -155,6 +161,8 @@
          put_delivery_channel/3,
          put_evaluations/2,
          put_evaluations/3,
+         put_external_evaluation/2,
+         put_external_evaluation/3,
          put_organization_config_rule/2,
          put_organization_config_rule/3,
          put_organization_conformance_pack/2,
@@ -167,6 +175,8 @@
          put_resource_config/3,
          put_retention_configuration/2,
          put_retention_configuration/3,
+         put_stored_query/2,
+         put_stored_query/3,
          select_aggregate_resource_config/2,
          select_aggregate_resource_config/3,
          select_resource_config/2,
@@ -402,6 +412,15 @@ delete_retention_configuration(Client, Input)
 delete_retention_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRetentionConfiguration">>, Input, Options).
+
+%% @doc Deletes the stored query for a single AWS account and a single AWS
+%% Region.
+delete_stored_query(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_stored_query(Client, Input, []).
+delete_stored_query(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteStoredQuery">>, Input, Options).
 
 %% @doc Schedules delivery of a configuration snapshot to the Amazon S3
 %% bucket in the specified delivery channel.
@@ -644,10 +663,6 @@ describe_delivery_channels(Client, Input, Options)
 %% @doc Provides organization config rule deployment status for an
 %% organization.
 %%
-%% Only a master account and a delegated administrator account can call this
-%% API. When calling this API with a delegated administrator, you must ensure
-%% AWS Organizations `ListDelegatedAdministrator' permissions are added.
-%%
 %% The status is not considered successful until organization config rule is
 %% successfully deployed in all the member accounts with an exception of
 %% excluded accounts.
@@ -665,10 +680,6 @@ describe_organization_config_rule_statuses(Client, Input, Options)
 
 %% @doc Returns a list of organization config rules.
 %%
-%% Only a master account and a delegated administrator account can call this
-%% API. When calling this API with a delegated administrator, you must ensure
-%% AWS Organizations `ListDelegatedAdministrator' permissions are added.
-%%
 %% When you specify the limit and the next token, you receive a paginated
 %% response. Limit and next token are not applicable if you specify
 %% organization config rule names. It is only applicable, when you request
@@ -682,10 +693,6 @@ describe_organization_config_rules(Client, Input, Options)
 
 %% @doc Provides organization conformance pack deployment status for an
 %% organization.
-%%
-%% Only a master account and a delegated administrator account can call this
-%% API. When calling this API with a delegated administrator, you must ensure
-%% AWS Organizations `ListDelegatedAdministrator' permissions are added.
 %%
 %% The status is not considered successful until organization conformance
 %% pack is successfully deployed in all the member accounts with an exception
@@ -703,10 +710,6 @@ describe_organization_conformance_pack_statuses(Client, Input, Options)
     request(Client, <<"DescribeOrganizationConformancePackStatuses">>, Input, Options).
 
 %% @doc Returns a list of organization conformance packs.
-%%
-%% Only a master account and a delegated administrator account can call this
-%% API. When calling this API with a delegated administrator, you must ensure
-%% AWS Organizations `ListDelegatedAdministrator' permissions are added.
 %%
 %% When you specify the limit and the next token, you receive a paginated
 %% response.
@@ -950,10 +953,6 @@ get_discovered_resource_counts(Client, Input, Options)
 
 %% @doc Returns detailed status for each member account within an
 %% organization for a given organization config rule.
-%%
-%% Only a master account and a delegated administrator account can call this
-%% API. When calling this API with a delegated administrator, you must ensure
-%% AWS Organizations `ListDelegatedAdministrator' permissions are added.
 get_organization_config_rule_detailed_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_organization_config_rule_detailed_status(Client, Input, []).
@@ -963,10 +962,6 @@ get_organization_config_rule_detailed_status(Client, Input, Options)
 
 %% @doc Returns detailed status for each member account within an
 %% organization for a given organization conformance pack.
-%%
-%% Only a master account and a delegated administrator account can call this
-%% API. When calling this API with a delegated administrator, you must ensure
-%% AWS Organizations `ListDelegatedAdministrator' permissions are added.
 get_organization_conformance_pack_detailed_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_organization_conformance_pack_detailed_status(Client, Input, []).
@@ -997,6 +992,14 @@ get_resource_config_history(Client, Input)
 get_resource_config_history(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResourceConfigHistory">>, Input, Options).
+
+%% @doc Returns the details of a specific stored query.
+get_stored_query(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_stored_query(Client, Input, []).
+get_stored_query(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetStoredQuery">>, Input, Options).
 
 %% @doc Accepts a resource type and returns a list of resource identifiers
 %% that are aggregated for a specific resource type across accounts and
@@ -1041,6 +1044,17 @@ list_discovered_resources(Client, Input)
 list_discovered_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDiscoveredResources">>, Input, Options).
+
+%% @doc Lists the stored queries for a single AWS account and a single AWS
+%% Region.
+%%
+%% The default is 100.
+list_stored_queries(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_stored_queries(Client, Input, []).
+list_stored_queries(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListStoredQueries">>, Input, Options).
 
 %% @doc List the tags for AWS Config resource.
 list_tags_for_resource(Client, Input)
@@ -1106,13 +1120,25 @@ put_config_rule(Client, Input, Options)
 %%
 %% The source account can be individual account(s) or an organization.
 %%
+%% `accountIds' that are passed will be replaced with existing accounts. If
+%% you want to add additional accounts into the aggregator, call
+%% `DescribeAggregator' to get the previous accounts and then append new
+%% ones.
+%%
 %% AWS Config should be enabled in source accounts and regions you want to
 %% aggregate.
 %%
 %% If your source type is an organization, you must be signed in to the
-%% master account and all features must be enabled in your organization. AWS
-%% Config calls `EnableAwsServiceAccess' API to enable integration between
-%% AWS Config and AWS Organizations.
+%% management account or a registered delegated administrator and all the
+%% features must be enabled in your organization. If the caller is a
+%% management account, AWS Config calls `EnableAwsServiceAccess' API to
+%% enable integration between AWS Config and AWS Organizations. If the caller
+%% is a registered delegated administrator, AWS Config calls
+%% `ListDelegatedAdministrators' API to verify whether the caller is a valid
+%% delegated administrator.
+%%
+%% To register a delegated administrator, see Register a Delegated
+%% Administrator in the AWS Config developer guide.
 put_configuration_aggregator(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_configuration_aggregator(Client, Input, []).
@@ -1190,6 +1216,17 @@ put_evaluations(Client, Input)
 put_evaluations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutEvaluations">>, Input, Options).
+
+%% @doc Add or updates the evaluations for process checks.
+%%
+%% This API checks if the rule is a process check when the name of the AWS
+%% Config rule is provided.
+put_external_evaluation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_external_evaluation(Client, Input, []).
+put_external_evaluation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutExternalEvaluation">>, Input, Options).
 
 %% @doc Adds or updates organization config rule for your entire organization
 %% evaluating whether your AWS resources comply with your desired
@@ -1283,6 +1320,11 @@ put_organization_conformance_pack(Client, Input, Options)
 %%
 %% If you make backward incompatible changes to the SSM document, you must
 %% call this again to ensure the remediations can run.
+%%
+%% This API does not support adding remediation configurations for
+%% service-linked AWS Config Rules such as Organization Config rules, the
+%% rules deployed by conformance packs, and rules deployed by AWS Security
+%% Hub.
 put_remediation_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_remediation_configurations(Client, Input, []).
@@ -1293,7 +1335,7 @@ put_remediation_configurations(Client, Input, Options)
 %% @doc A remediation exception is when a specific resource is no longer
 %% considered for auto-remediation.
 %%
-%% This API adds a new exception or updates an exisiting exception for a
+%% This API adds a new exception or updates an existing exception for a
 %% specific resource with a specific AWS Config rule.
 %%
 %% AWS Config generates a remediation exception when a problem occurs
@@ -1346,6 +1388,18 @@ put_retention_configuration(Client, Input)
 put_retention_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRetentionConfiguration">>, Input, Options).
+
+%% @doc Saves a new query or updates an existing saved query.
+%%
+%% The `QueryName' must be unique for a single AWS account and a single AWS
+%% Region. You can create upto 300 queries in a single AWS account and a
+%% single AWS Region.
+put_stored_query(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_stored_query(Client, Input, []).
+put_stored_query(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutStoredQuery">>, Input, Options).
 
 %% @doc Accepts a structured query language (SQL) SELECT command and an
 %% aggregator to query configuration state of AWS resources across multiple

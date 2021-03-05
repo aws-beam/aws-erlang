@@ -4,12 +4,20 @@
 %% @doc Transit Gateway Network Manager (Network Manager) enables you to
 %% create a global network, in which you can monitor your AWS and on-premises
 %% networks that are built around transit gateways.
+%%
+%% The Network Manager APIs are supported in the US West (Oregon) Region
+%% only. You must specify the `us-west-2' Region in all requests made to
+%% Network Manager.
 -module(aws_networkmanager).
 
 -export([associate_customer_gateway/3,
          associate_customer_gateway/4,
          associate_link/3,
          associate_link/4,
+         associate_transit_gateway_connect_peer/3,
+         associate_transit_gateway_connect_peer/4,
+         create_connection/3,
+         create_connection/4,
          create_device/3,
          create_device/4,
          create_global_network/2,
@@ -18,6 +26,8 @@
          create_link/4,
          create_site/3,
          create_site/4,
+         delete_connection/4,
+         delete_connection/5,
          delete_device/4,
          delete_device/5,
          delete_global_network/3,
@@ -34,6 +44,10 @@
          disassociate_customer_gateway/5,
          disassociate_link/3,
          disassociate_link/4,
+         disassociate_transit_gateway_connect_peer/4,
+         disassociate_transit_gateway_connect_peer/5,
+         get_connections/6,
+         get_connections/7,
          get_customer_gateway_associations/5,
          get_customer_gateway_associations/6,
          get_devices/6,
@@ -44,6 +58,8 @@
          get_links/9,
          get_sites/5,
          get_sites/6,
+         get_transit_gateway_connect_peer_associations/5,
+         get_transit_gateway_connect_peer_associations/6,
          get_transit_gateway_registrations/5,
          get_transit_gateway_registrations/6,
          list_tags_for_resource/2,
@@ -54,6 +70,8 @@
          tag_resource/4,
          untag_resource/3,
          untag_resource/4,
+         update_connection/4,
+         update_connection/5,
          update_device/4,
          update_device/5,
          update_global_network/3,
@@ -109,6 +127,51 @@ associate_link(Client, GlobalNetworkId, Input) ->
 associate_link(Client, GlobalNetworkId, Input0, Options) ->
     Method = post,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/link-associations"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associates a transit gateway Connect peer with a device, and
+%% optionally, with a link.
+%%
+%% If you specify a link, it must be associated with the specified device.
+%%
+%% You can only associate transit gateway Connect peers that have been
+%% created on a transit gateway that's registered in your global network.
+%%
+%% You cannot associate a transit gateway Connect peer with more than one
+%% device and link.
+associate_transit_gateway_connect_peer(Client, GlobalNetworkId, Input) ->
+    associate_transit_gateway_connect_peer(Client, GlobalNetworkId, Input, []).
+associate_transit_gateway_connect_peer(Client, GlobalNetworkId, Input0, Options) ->
+    Method = post,
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/transit-gateway-connect-peer-associations"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a connection between two devices.
+%%
+%% The devices can be a physical or virtual appliance that connects to a
+%% third-party appliance in a VPC, or a physical appliance that connects to
+%% another physical appliance in an on-premises network.
+create_connection(Client, GlobalNetworkId, Input) ->
+    create_connection(Client, GlobalNetworkId, Input, []).
+create_connection(Client, GlobalNetworkId, Input0, Options) ->
+    Method = post,
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/connections"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -176,6 +239,22 @@ create_site(Client, GlobalNetworkId, Input) ->
 create_site(Client, GlobalNetworkId, Input0, Options) ->
     Method = post,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/sites"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the specified connection in your global network.
+delete_connection(Client, ConnectionId, GlobalNetworkId, Input) ->
+    delete_connection(Client, ConnectionId, GlobalNetworkId, Input, []).
+delete_connection(Client, ConnectionId, GlobalNetworkId, Input0, Options) ->
+    Method = delete,
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/connections/", aws_util:encode_uri(ConnectionId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -343,6 +422,45 @@ disassociate_link(Client, GlobalNetworkId, Input0, Options) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Disassociates a transit gateway Connect peer from a device and link.
+disassociate_transit_gateway_connect_peer(Client, GlobalNetworkId, TransitGatewayConnectPeerArn, Input) ->
+    disassociate_transit_gateway_connect_peer(Client, GlobalNetworkId, TransitGatewayConnectPeerArn, Input, []).
+disassociate_transit_gateway_connect_peer(Client, GlobalNetworkId, TransitGatewayConnectPeerArn, Input0, Options) ->
+    Method = delete,
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/transit-gateway-connect-peer-associations/", aws_util:encode_uri(TransitGatewayConnectPeerArn), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets information about one or more of your connections in a global
+%% network.
+get_connections(Client, GlobalNetworkId, ConnectionIds, DeviceId, MaxResults, NextToken)
+  when is_map(Client) ->
+    get_connections(Client, GlobalNetworkId, ConnectionIds, DeviceId, MaxResults, NextToken, []).
+get_connections(Client, GlobalNetworkId, ConnectionIds, DeviceId, MaxResults, NextToken, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/connections"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"connectionIds">>, ConnectionIds},
+        {<<"deviceId">>, DeviceId},
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets the association information for customer gateways that are
 %% associated with devices and links in your global network.
 get_customer_gateway_associations(Client, GlobalNetworkId, CustomerGatewayArns, MaxResults, NextToken)
@@ -461,6 +579,28 @@ get_sites(Client, GlobalNetworkId, MaxResults, NextToken, SiteIds, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets information about one or more of your transit gateway Connect
+%% peer associations in a global network.
+get_transit_gateway_connect_peer_associations(Client, GlobalNetworkId, MaxResults, NextToken, TransitGatewayConnectPeerArns)
+  when is_map(Client) ->
+    get_transit_gateway_connect_peer_associations(Client, GlobalNetworkId, MaxResults, NextToken, TransitGatewayConnectPeerArns, []).
+get_transit_gateway_connect_peer_associations(Client, GlobalNetworkId, MaxResults, NextToken, TransitGatewayConnectPeerArns, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/transit-gateway-connect-peer-associations"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken},
+        {<<"transitGatewayConnectPeerArns">>, TransitGatewayConnectPeerArns}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets information about the transit gateway registrations in a
 %% specified global network.
 get_transit_gateway_registrations(Client, GlobalNetworkId, MaxResults, NextToken, TransitGatewayArns)
@@ -549,6 +689,24 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
                      {<<"tagKeys">>, <<"TagKeys">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the information for an existing connection.
+%%
+%% To remove information for any of the parameters, specify an empty string.
+update_connection(Client, ConnectionId, GlobalNetworkId, Input) ->
+    update_connection(Client, ConnectionId, GlobalNetworkId, Input, []).
+update_connection(Client, ConnectionId, GlobalNetworkId, Input0, Options) ->
+    Method = patch,
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/connections/", aws_util:encode_uri(ConnectionId), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the details for an existing device.

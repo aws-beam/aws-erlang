@@ -71,6 +71,12 @@
          untag_resource/3,
          update_agent/2,
          update_agent/3,
+         update_location_nfs/2,
+         update_location_nfs/3,
+         update_location_object_storage/2,
+         update_location_object_storage/3,
+         update_location_smb/2,
+         update_location_smb/3,
          update_task/2,
          update_task/3,
          update_task_execution/2,
@@ -133,7 +139,8 @@ create_location_efs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocationEfs">>, Input, Options).
 
-%% @doc Creates an endpoint for an Amazon FSx for Windows file system.
+%% @doc Creates an endpoint for an Amazon FSx for Windows File Server file
+%% system.
 create_location_fsx_windows(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_fsx_windows(Client, Input, []).
@@ -184,23 +191,24 @@ create_location_smb(Client, Input, Options)
 
 %% @doc Creates a task.
 %%
-%% A task is a set of two locations (source and destination) and a set of
-%% Options that you use to control the behavior of a task. If you don't
-%% specify Options when you create a task, AWS DataSync populates them with
-%% service defaults.
+%% A task includes a source location and a destination location, and a
+%% configuration that specifies how data is transferred. A task always
+%% transfers data from the source location to the destination location. The
+%% configuration specifies options such as task scheduling, bandwidth limits,
+%% etc. A task is the complete definition of a data transfer.
 %%
-%% When you create a task, it first enters the CREATING state. During
-%% CREATING AWS DataSync attempts to mount the on-premises Network File
-%% System (NFS) location. The task transitions to the AVAILABLE state without
-%% waiting for the AWS location to become mounted. If required, AWS DataSync
-%% mounts the AWS location before each task execution.
+%% When you create a task that transfers data between AWS services in
+%% different AWS Regions, one of the two locations that you specify must
+%% reside in the Region where DataSync is being used. The other location must
+%% be specified in a different Region.
 %%
-%% If an agent that is associated with a source (NFS) location goes offline,
-%% the task transitions to the UNAVAILABLE status. If the status of the task
-%% remains in the CREATING status for more than a few minutes, it means that
-%% your agent might be having trouble mounting the source NFS file system.
-%% Check the task's ErrorCode and ErrorDetail. Mount issues are often caused
-%% by either a misconfigured firewall or a mistyped NFS server hostname.
+%% You can transfer data between commercial AWS Regions except for China, or
+%% between AWS GovCloud (US-East and US-West) Regions.
+%%
+%% When you use DataSync to copy files or objects between AWS Regions, you
+%% pay for data transfer between Regions. This is billed as data transfer OUT
+%% from your source Region to your destination Region. For more information,
+%% see Data Transfer pricing.
 create_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_task(Client, Input, []).
@@ -259,7 +267,7 @@ describe_location_efs(Client, Input, Options)
     request(Client, <<"DescribeLocationEfs">>, Input, Options).
 
 %% @doc Returns metadata, such as the path information about an Amazon FSx
-%% for Windows location.
+%% for Windows File Server location.
 describe_location_fsx_windows(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_fsx_windows(Client, Input, []).
@@ -418,6 +426,40 @@ update_agent(Client, Input)
 update_agent(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAgent">>, Input, Options).
+
+%% @doc Updates some of the parameters of a previously created location for
+%% Network File System (NFS) access.
+%%
+%% For information about creating an NFS location, see `create-nfs-location'.
+update_location_nfs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_location_nfs(Client, Input, []).
+update_location_nfs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateLocationNfs">>, Input, Options).
+
+%% @doc Updates some of the parameters of a previously created location for
+%% self-managed object storage server access.
+%%
+%% For information about creating a self-managed object storage location, see
+%% `create-object-location'.
+update_location_object_storage(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_location_object_storage(Client, Input, []).
+update_location_object_storage(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateLocationObjectStorage">>, Input, Options).
+
+%% @doc Updates some of the parameters of a previously created location for
+%% Server Message Block (SMB) file system access.
+%%
+%% For information about creating an SMB location, see `create-smb-location'.
+update_location_smb(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_location_smb(Client, Input, []).
+update_location_smb(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateLocationSmb">>, Input, Options).
 
 %% @doc Updates the metadata associated with a task.
 update_task(Client, Input)

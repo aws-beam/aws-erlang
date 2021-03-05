@@ -90,10 +90,16 @@
          put_resource_policy/3,
          put_secret_value/2,
          put_secret_value/3,
+         remove_regions_from_replication/2,
+         remove_regions_from_replication/3,
+         replicate_secret_to_regions/2,
+         replicate_secret_to_regions/3,
          restore_secret/2,
          restore_secret/3,
          rotate_secret/2,
          rotate_secret/3,
+         stop_replication_to_replica/2,
+         stop_replication_to_replica/3,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
@@ -263,8 +269,8 @@ create_secret(Client, Input, Options)
 %% <ul> <li> To attach a resource policy to a secret, use
 %% `PutResourcePolicy'.
 %%
-%% </li> <li> To retrieve the current resource-based policy that's attached
-%% to a secret, use `GetResourcePolicy'.
+%% </li> <li> To retrieve the current resource-based policy attached to a
+%% secret, use `GetResourcePolicy'.
 %%
 %% </li> <li> To list all of the currently available secrets, use
 %% `ListSecrets'.
@@ -277,7 +283,7 @@ delete_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResourcePolicy">>, Input, Options).
 
-%% @doc Deletes an entire secret and all of its versions.
+%% @doc Deletes an entire secret and all of the versions.
 %%
 %% You can optionally include a recovery window during which you can restore
 %% the secret. If you don't specify a recovery window value, the operation
@@ -288,15 +294,14 @@ delete_resource_policy(Client, Input, Options)
 %% At any time before recovery window ends, you can use `RestoreSecret' to
 %% remove the `DeletionDate' and cancel the deletion of the secret.
 %%
-%% You cannot access the encrypted secret information in any secret that is
-%% scheduled for deletion. If you need to access that information, you must
-%% cancel the deletion with `RestoreSecret' and then retrieve the
-%% information.
+%% You cannot access the encrypted secret information in any secret scheduled
+%% for deletion. If you need to access that information, you must cancel the
+%% deletion with `RestoreSecret' and then retrieve the information.
 %%
 %% There is no explicit operation to delete a version of a secret. Instead,
 %% remove all staging labels from the `VersionStage' field of a version. That
 %% marks the version as deprecated and allows Secrets Manager to delete it as
-%% needed. Versions that do not have any staging labels do not show up in
+%% needed. Versions without any staging labels do not show up in
 %% `ListSecretVersionIds' unless you specify `IncludeDeprecated'.
 %%
 %% The permanent secret deletion at the end of the waiting period is
@@ -528,8 +533,8 @@ list_secrets(Client, Input, Options)
 %% <ul> <li> To retrieve the resource policy attached to a secret, use
 %% `GetResourcePolicy'.
 %%
-%% </li> <li> To delete the resource-based policy that's attached to a
-%% secret, use `DeleteResourcePolicy'.
+%% </li> <li> To delete the resource-based policy attached to a secret, use
+%% `DeleteResourcePolicy'.
 %%
 %% </li> <li> To list all of the currently available secrets, use
 %% `ListSecrets'.
@@ -557,14 +562,13 @@ put_resource_policy(Client, Input, Options)
 %% Secrets Manager automatically attaches the staging label `AWSCURRENT' to
 %% the new version.
 %%
-%% </li> <li> If another version of this secret already exists, then this
-%% operation does not automatically move any staging labels other than those
-%% that you explicitly specify in the `VersionStages' parameter.
+%% </li> <li> If you do not specify a value for VersionStages then Secrets
+%% Manager automatically moves the staging label `AWSCURRENT' to this new
+%% version.
 %%
 %% </li> <li> If this operation moves the staging label `AWSCURRENT' from
-%% another version to this version (because you included it in the
-%% `StagingLabels' parameter) then Secrets Manager also automatically moves
-%% the staging label `AWSPREVIOUS' to the version that `AWSCURRENT' was
+%% another version to this version, then Secrets Manager also automatically
+%% moves the staging label `AWSPREVIOUS' to the version that `AWSCURRENT' was
 %% removed from.
 %%
 %% </li> <li> This operation is idempotent. If a version with a `VersionId'
@@ -625,6 +629,23 @@ put_secret_value(Client, Input)
 put_secret_value(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutSecretValue">>, Input, Options).
+
+%% @doc Remove regions from replication.
+remove_regions_from_replication(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    remove_regions_from_replication(Client, Input, []).
+remove_regions_from_replication(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RemoveRegionsFromReplication">>, Input, Options).
+
+%% @doc Converts an existing secret to a multi-Region secret and begins
+%% replication the secret to a list of new regions.
+replicate_secret_to_regions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    replicate_secret_to_regions(Client, Input, []).
+replicate_secret_to_regions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ReplicateSecretToRegions">>, Input, Options).
 
 %% @doc Cancels the scheduled deletion of a secret by removing the
 %% `DeletedDate' time stamp.
@@ -719,6 +740,15 @@ rotate_secret(Client, Input)
 rotate_secret(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RotateSecret">>, Input, Options).
+
+%% @doc Removes the secret from replication and promotes the secret to a
+%% regional secret in the replica Region.
+stop_replication_to_replica(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_replication_to_replica(Client, Input, []).
+stop_replication_to_replica(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopReplicationToReplica">>, Input, Options).
 
 %% @doc Attaches one or more tags, each consisting of a key name and a value,
 %% to the specified secret.
@@ -928,12 +958,32 @@ update_secret_version_stage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSecretVersionStage">>, Input, Options).
 
-%% @doc Validates the JSON text of the resource-based policy document
-%% attached to the specified secret.
+%% @doc Validates that the resource policy does not grant a wide range of IAM
+%% principals access to your secret.
 %%
 %% The JSON request string input and response output displays formatted code
 %% with white space and line breaks for better readability. Submit your input
-%% as a single line JSON string. A resource-based policy is optional.
+%% as a single line JSON string. A resource-based policy is optional for
+%% secrets.
+%%
+%% The API performs three checks when validating the secret:
+%%
+%% <ul> <li> Sends a call to Zelkova, an automated reasoning engine, to
+%% ensure your Resource Policy does not allow broad access to your secret.
+%%
+%% </li> <li> Checks for correct syntax in a policy.
+%%
+%% </li> <li> Verifies the policy does not lock out a caller.
+%%
+%% </li> </ul> Minimum Permissions
+%%
+%% You must have the permissions required to access the following APIs:
+%%
+%% <ul> <li> `secretsmanager:PutResourcePolicy'
+%%
+%% </li> <li> `secretsmanager:ValidateResourcePolicy'
+%%
+%% </li> </ul>
 validate_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     validate_resource_policy(Client, Input, []).

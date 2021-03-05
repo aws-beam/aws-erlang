@@ -1436,6 +1436,8 @@ reset_cluster_parameter_group(Client, Input, Options)
 %%
 %% </li> <li> ds2.8xlarge
 %%
+%% </li> <li> ra3.xlplus
+%%
 %% </li> <li> ra3.4xlarge
 %%
 %% </li> <li> ra3.16xlarge

@@ -158,6 +158,8 @@
          put_dedicated_ip_warmup_attributes/4,
          put_deliverability_dashboard_option/2,
          put_deliverability_dashboard_option/3,
+         put_email_identity_configuration_set_attributes/3,
+         put_email_identity_configuration_set_attributes/4,
          put_email_identity_dkim_attributes/3,
          put_email_identity_dkim_attributes/4,
          put_email_identity_dkim_signing_attributes/3,
@@ -372,6 +374,16 @@ create_deliverability_test_report(Client, Input0, Options) ->
 %% object. When you specify this object, you provide a selector (a component
 %% of the DNS record name that identifies the public key that you want to use
 %% for DKIM authentication) and a private key.
+%%
+%% When you verify a domain, this operation provides a set of DKIM tokens,
+%% which you can convert into CNAME tokens. You add these CNAME tokens to the
+%% DNS configuration for your domain. Your domain is verified when Amazon SES
+%% detects these records in the DNS configuration for your domain. For some
+%% DNS providers, it can take 72 hours or more to complete the domain
+%% verification process.
+%%
+%% Additionally, you can associate an existing configuration set with the
+%% email identity that you're verifying.
 create_email_identity(Client, Input) ->
     create_email_identity(Client, Input, []).
 create_email_identity(Client, Input0, Options) ->
@@ -1482,6 +1494,22 @@ put_deliverability_dashboard_option(Client, Input) ->
 put_deliverability_dashboard_option(Client, Input0, Options) ->
     Method = put,
     Path = ["/v2/email/deliverability-dashboard"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Used to associate a configuration set with an email identity.
+put_email_identity_configuration_set_attributes(Client, EmailIdentity, Input) ->
+    put_email_identity_configuration_set_attributes(Client, EmailIdentity, Input, []).
+put_email_identity_configuration_set_attributes(Client, EmailIdentity, Input0, Options) ->
+    Method = put,
+    Path = ["/v2/email/identities/", aws_util:encode_uri(EmailIdentity), "/configuration-set"],
     SuccessStatusCode = undefined,
 
     Headers = [],

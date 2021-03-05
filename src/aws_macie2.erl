@@ -49,6 +49,8 @@
          disable_macie/3,
          disable_organization_admin_account/2,
          disable_organization_admin_account/3,
+         disassociate_from_administrator_account/2,
+         disassociate_from_administrator_account/3,
          disassociate_from_master_account/2,
          disassociate_from_master_account/3,
          disassociate_member/3,
@@ -57,6 +59,8 @@
          enable_macie/3,
          enable_organization_admin_account/2,
          enable_organization_admin_account/3,
+         get_administrator_account/1,
+         get_administrator_account/2,
          get_bucket_statistics/2,
          get_bucket_statistics/3,
          get_classification_export_configuration/1,
@@ -79,8 +83,8 @@
          get_member/3,
          get_usage_statistics/2,
          get_usage_statistics/3,
-         get_usage_totals/1,
          get_usage_totals/2,
+         get_usage_totals/3,
          list_classification_jobs/2,
          list_classification_jobs/3,
          list_custom_data_identifiers/2,
@@ -221,7 +225,7 @@ create_invitations(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Associates an account with an Amazon Macie master account.
+%% @doc Associates an account with an Amazon Macie administrator account.
 create_member(Client, Input) ->
     create_member(Client, Input, []).
 create_member(Client, Input0, Options) ->
@@ -319,8 +323,8 @@ delete_invitations(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the association between an Amazon Macie master account and an
-%% account.
+%% @doc Deletes the association between an Amazon Macie administrator account
+%% and an account.
 delete_member(Client, Id, Input) ->
     delete_member(Client, Id, Input, []).
 delete_member(Client, Id, Input0, Options) ->
@@ -419,7 +423,28 @@ disable_organization_admin_account(Client, Input0, Options) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Disassociates a member account from its Amazon Macie master account.
+%% @doc Disassociates a member account from its Amazon Macie administrator
+%% account.
+disassociate_from_administrator_account(Client, Input) ->
+    disassociate_from_administrator_account(Client, Input, []).
+disassociate_from_administrator_account(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/administrator/disassociate"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc (Deprecated) Disassociates a member account from its Amazon Macie
+%% administrator account.
+%%
+%% This operation has been replaced by the
+%% DisassociateFromAdministratorAccount operation.
 disassociate_from_master_account(Client, Input) ->
     disassociate_from_master_account(Client, Input, []).
 disassociate_from_master_account(Client, Input0, Options) ->
@@ -435,7 +460,8 @@ disassociate_from_master_account(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Disassociates an Amazon Macie master account from a member account.
+%% @doc Disassociates an Amazon Macie administrator account from a member
+%% account.
 disassociate_member(Client, Id, Input) ->
     disassociate_member(Client, Id, Input, []).
 disassociate_member(Client, Id, Input0, Options) ->
@@ -484,6 +510,22 @@ enable_organization_admin_account(Client, Input0, Options) ->
     Input = Input1,
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about the Amazon Macie administrator account
+%% for an account.
+get_administrator_account(Client)
+  when is_map(Client) ->
+    get_administrator_account(Client, []).
+get_administrator_account(Client, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/administrator"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves (queries) aggregated statistical data for all the S3
 %% buckets that Amazon Macie monitors and analyzes.
@@ -613,8 +655,10 @@ get_macie_session(Client, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves information about the Amazon Macie master account for an
-%% account.
+%% @doc (Deprecated) Retrieves information about the Amazon Macie
+%% administrator account for an account.
+%%
+%% This operation has been replaced by the GetAdministratorAccount operation.
 get_master_account(Client)
   when is_map(Client) ->
     get_master_account(Client, []).
@@ -629,8 +673,8 @@ get_master_account(Client, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves information about a member account that's associated with
-%% an Amazon Macie master account.
+%% @doc Retrieves information about an account that's associated with an
+%% Amazon Macie administrator account.
 get_member(Client, Id)
   when is_map(Client) ->
     get_member(Client, Id, []).
@@ -663,17 +707,21 @@ get_usage_statistics(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves (queries) aggregated usage data for an account.
-get_usage_totals(Client)
+get_usage_totals(Client, TimeRange)
   when is_map(Client) ->
-    get_usage_totals(Client, []).
-get_usage_totals(Client, Options)
+    get_usage_totals(Client, TimeRange, []).
+get_usage_totals(Client, TimeRange, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/usage"],
     SuccessStatusCode = 200,
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"timeRange">>, TimeRange}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -770,7 +818,7 @@ list_invitations(Client, MaxResults, NextToken, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the accounts that are associated with an
-%% Amazon Macie master account.
+%% Amazon Macie administrator account.
 list_members(Client, MaxResults, NextToken, OnlyAssociated)
   when is_map(Client) ->
     list_members(Client, MaxResults, NextToken, OnlyAssociated, []).
@@ -947,7 +995,7 @@ update_macie_session(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Enables an Amazon Macie master account to suspend or re-enable a
+%% @doc Enables an Amazon Macie administrator to suspend or re-enable a
 %% member account.
 update_member_session(Client, Id, Input) ->
     update_member_session(Client, Id, Input, []).

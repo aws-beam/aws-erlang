@@ -61,6 +61,8 @@
          list_group_resources/3,
          list_groups/2,
          list_groups/3,
+         put_group_configuration/2,
+         put_group_configuration/3,
          search_resources/2,
          search_resources/3,
          tag/3,
@@ -83,6 +85,17 @@
 %% @doc Creates a resource group with the specified name and description.
 %%
 %% You can optionally include a resource query, or a service configuration.
+%% For more information about constructing a resource query, see Create a
+%% tag-based group in Resource Groups. For more information about service
+%% configurations, see Service configurations for resource groups.
+%%
+%% Minimum permissions
+%%
+%% To run this command, you must have the following permissions:
+%%
+%% <ul> <li> `resource-groups:CreateGroup'
+%%
+%% </li> </ul>
 create_group(Client, Input) ->
     create_group(Client, Input, []).
 create_group(Client, Input0, Options) ->
@@ -102,6 +115,14 @@ create_group(Client, Input0, Options) ->
 %%
 %% Deleting a resource group does not delete any resources that are members
 %% of the group; it only deletes the group structure.
+%%
+%% Minimum permissions
+%%
+%% To run this command, you must have the following permissions:
+%%
+%% <ul> <li> `resource-groups:DeleteGroup'
+%%
+%% </li> </ul>
 delete_group(Client, Input) ->
     delete_group(Client, Input, []).
 delete_group(Client, Input0, Options) ->
@@ -118,6 +139,14 @@ delete_group(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns information about a specified resource group.
+%%
+%% Minimum permissions
+%%
+%% To run this command, you must have the following permissions:
+%%
+%% <ul> <li> `resource-groups:GetGroup'
+%%
+%% </li> </ul>
 get_group(Client, Input) ->
     get_group(Client, Input, []).
 get_group(Client, Input0, Options) ->
@@ -136,12 +165,14 @@ get_group(Client, Input0, Options) ->
 %% @doc Returns the service configuration associated with the specified
 %% resource group.
 %%
-%% AWS Resource Groups supports configurations for the following resource
-%% group types:
+%% For details about the service configuration syntax, see Service
+%% configurations for resource groups.
 %%
-%% <ul> <li> `AWS::EC2::CapacityReservationPool' - Amazon EC2 capacity
-%% reservation pools. For more information, see Working with capacity
-%% reservation groups in the EC2 Users Guide.
+%% Minimum permissions
+%%
+%% To run this command, you must have the following permissions:
+%%
+%% <ul> <li> `resource-groups:GetGroupConfiguration'
 %%
 %% </li> </ul>
 get_group_configuration(Client, Input) ->
@@ -161,6 +192,17 @@ get_group_configuration(Client, Input0, Options) ->
 
 %% @doc Retrieves the resource query associated with the specified resource
 %% group.
+%%
+%% For more information about resource queries, see Create a tag-based group
+%% in Resource Groups.
+%%
+%% Minimum permissions
+%%
+%% To run this command, you must have the following permissions:
+%%
+%% <ul> <li> `resource-groups:GetGroupQuery'
+%%
+%% </li> </ul>
 get_group_query(Client, Input) ->
     get_group_query(Client, Input, []).
 get_group_query(Client, Input0, Options) ->
@@ -178,6 +220,14 @@ get_group_query(Client, Input0, Options) ->
 
 %% @doc Returns a list of tags that are associated with a resource group,
 %% specified by an ARN.
+%%
+%% Minimum permissions
+%%
+%% To run this command, you must have the following permissions:
+%%
+%% <ul> <li> `resource-groups:GetTags'
+%%
+%% </li> </ul>
 get_tags(Client, Arn)
   when is_map(Client) ->
     get_tags(Client, Arn, []).
@@ -193,6 +243,14 @@ get_tags(Client, Arn, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Adds the specified resources to the specified group.
+%%
+%% Minimum permissions
+%%
+%% To run this command, you must have the following permissions:
+%%
+%% <ul> <li> `resource-groups:GroupResources'
+%%
+%% </li> </ul>
 group_resources(Client, Input) ->
     group_resources(Client, Input, []).
 group_resources(Client, Input0, Options) ->
@@ -210,6 +268,14 @@ group_resources(Client, Input0, Options) ->
 
 %% @doc Returns a list of ARNs of the resources that are members of a
 %% specified resource group.
+%%
+%% Minimum permissions
+%%
+%% To run this command, you must have the following permissions:
+%%
+%% <ul> <li> `resource-groups:ListGroupResources'
+%%
+%% </li> </ul>
 list_group_resources(Client, Input) ->
     list_group_resources(Client, Input, []).
 list_group_resources(Client, Input0, Options) ->
@@ -226,6 +292,14 @@ list_group_resources(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of existing resource groups in your account.
+%%
+%% Minimum permissions
+%%
+%% To run this command, you must have the following permissions:
+%%
+%% <ul> <li> `resource-groups:ListGroups'
+%%
+%% </li> </ul>
 list_groups(Client, Input) ->
     list_groups(Client, Input, []).
 list_groups(Client, Input0, Options) ->
@@ -243,11 +317,46 @@ list_groups(Client, Input0, Options) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Attaches a service configuration to the specified group.
+%%
+%% This occurs asynchronously, and can take time to complete. You can use
+%% `GetGroupConfiguration' to check the status of the update.
+%%
+%% Minimum permissions
+%%
+%% To run this command, you must have the following permissions:
+%%
+%% <ul> <li> `resource-groups:PutGroupConfiguration'
+%%
+%% </li> </ul>
+put_group_configuration(Client, Input) ->
+    put_group_configuration(Client, Input, []).
+put_group_configuration(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/put-group-configuration"],
+    SuccessStatusCode = 202,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Returns a list of AWS resource identifiers that matches the specified
 %% query.
 %%
 %% The query uses the same format as a resource query in a CreateGroup or
 %% UpdateGroupQuery operation.
+%%
+%% Minimum permissions
+%%
+%% To run this command, you must have the following permissions:
+%%
+%% <ul> <li> `resource-groups:SearchResources'
+%%
+%% </li> </ul>
 search_resources(Client, Input) ->
     search_resources(Client, Input, []).
 search_resources(Client, Input0, Options) ->
@@ -272,6 +381,14 @@ search_resources(Client, Input0, Options) ->
 %% confidential or sensitive information in tags. We use tags to provide you
 %% with billing and administration services. Tags are not intended to be used
 %% for private or sensitive data.
+%%
+%% Minimum permissions
+%%
+%% To run this command, you must have the following permissions:
+%%
+%% <ul> <li> `resource-groups:Tag'
+%%
+%% </li> </ul>
 tag(Client, Arn, Input) ->
     tag(Client, Arn, Input, []).
 tag(Client, Arn, Input0, Options) ->
@@ -288,6 +405,14 @@ tag(Client, Arn, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the specified resources from the specified group.
+%%
+%% Minimum permissions
+%%
+%% To run this command, you must have the following permissions:
+%%
+%% <ul> <li> `resource-groups:UngroupResources'
+%%
+%% </li> </ul>
 ungroup_resources(Client, Input) ->
     ungroup_resources(Client, Input, []).
 ungroup_resources(Client, Input0, Options) ->
@@ -304,6 +429,14 @@ ungroup_resources(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes tags from a specified resource group.
+%%
+%% Minimum permissions
+%%
+%% To run this command, you must have the following permissions:
+%%
+%% <ul> <li> `resource-groups:Untag'
+%%
+%% </li> </ul>
 untag(Client, Arn, Input) ->
     untag(Client, Arn, Input, []).
 untag(Client, Arn, Input0, Options) ->
@@ -322,6 +455,14 @@ untag(Client, Arn, Input0, Options) ->
 %% @doc Updates the description for an existing group.
 %%
 %% You cannot update the name of a resource group.
+%%
+%% Minimum permissions
+%%
+%% To run this command, you must have the following permissions:
+%%
+%% <ul> <li> `resource-groups:UpdateGroup'
+%%
+%% </li> </ul>
 update_group(Client, Input) ->
     update_group(Client, Input, []).
 update_group(Client, Input0, Options) ->
@@ -338,6 +479,17 @@ update_group(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the resource query of a group.
+%%
+%% For more information about resource queries, see Create a tag-based group
+%% in Resource Groups.
+%%
+%% Minimum permissions
+%%
+%% To run this command, you must have the following permissions:
+%%
+%% <ul> <li> `resource-groups:UpdateGroupQuery'
+%%
+%% </li> </ul>
 update_group_query(Client, Input) ->
     update_group_query(Client, Input, []).
 update_group_query(Client, Input0, Options) ->

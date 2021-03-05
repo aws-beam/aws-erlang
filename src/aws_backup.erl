@@ -357,7 +357,8 @@ describe_copy_job(Client, CopyJobId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc The current feature settings for the AWS Account.
+%% @doc Describes the global settings of the AWS account, including whether
+%% it is opted in to cross-account backup.
 describe_global_settings(Client)
   when is_map(Client) ->
     describe_global_settings(Client, []).
@@ -1025,7 +1026,7 @@ update_backup_plan(Client, BackupPlanId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the current global settings for the AWS Account.
+%% @doc Updates the current global settings for the AWS account.
 %%
 %% Use the `DescribeGlobalSettings' API to determine the current settings.
 update_global_settings(Client, Input) ->
@@ -1054,6 +1055,8 @@ update_global_settings(Client, Input0, Options) ->
 %% days greater than the “transition to cold after days” setting. The
 %% “transition to cold after days” setting cannot be changed after a backup
 %% has been transitioned to cold.
+%%
+%% Only Amazon EFS file system backups can be transitioned to cold storage.
 update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input) ->
     update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input, []).
 update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input0, Options) ->

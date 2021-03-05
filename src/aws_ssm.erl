@@ -45,6 +45,8 @@
          create_maintenance_window/3,
          create_ops_item/2,
          create_ops_item/3,
+         create_ops_metadata/2,
+         create_ops_metadata/3,
          create_patch_baseline/2,
          create_patch_baseline/3,
          create_resource_data_sync/2,
@@ -59,6 +61,8 @@
          delete_inventory/3,
          delete_maintenance_window/2,
          delete_maintenance_window/3,
+         delete_ops_metadata/2,
+         delete_ops_metadata/3,
          delete_parameter/2,
          delete_parameter/3,
          delete_parameters/2,
@@ -169,6 +173,8 @@
          get_maintenance_window_task/3,
          get_ops_item/2,
          get_ops_item/3,
+         get_ops_metadata/2,
+         get_ops_metadata/3,
          get_ops_summary/2,
          get_ops_summary/3,
          get_parameter/2,
@@ -199,12 +205,18 @@
          list_compliance_items/3,
          list_compliance_summaries/2,
          list_compliance_summaries/3,
+         list_document_metadata_history/2,
+         list_document_metadata_history/3,
          list_document_versions/2,
          list_document_versions/3,
          list_documents/2,
          list_documents/3,
          list_inventory_entries/2,
          list_inventory_entries/3,
+         list_ops_item_events/2,
+         list_ops_item_events/3,
+         list_ops_metadata/2,
+         list_ops_metadata/3,
          list_resource_compliance_summaries/2,
          list_resource_compliance_summaries/3,
          list_resource_data_sync/2,
@@ -241,6 +253,8 @@
          start_associations_once/3,
          start_automation_execution/2,
          start_automation_execution/3,
+         start_change_request_execution/2,
+         start_change_request_execution/3,
          start_session/2,
          start_session/3,
          stop_automation_execution/2,
@@ -255,6 +269,8 @@
          update_document/3,
          update_document_default_version/2,
          update_document_default_version/3,
+         update_document_metadata/2,
+         update_document_metadata/3,
          update_maintenance_window/2,
          update_maintenance_window/3,
          update_maintenance_window_target/2,
@@ -265,6 +281,8 @@
          update_managed_instance_role/3,
          update_ops_item/2,
          update_ops_item/3,
+         update_ops_metadata/2,
+         update_ops_metadata/3,
          update_patch_baseline/2,
          update_patch_baseline/3,
          update_resource_data_sync/2,
@@ -434,6 +452,16 @@ create_ops_item(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateOpsItem">>, Input, Options).
 
+%% @doc If you create a new application in Application Manager, Systems
+%% Manager calls this API action to specify information about the new
+%% application, including the application type.
+create_ops_metadata(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_ops_metadata(Client, Input, []).
+create_ops_metadata(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateOpsMetadata">>, Input, Options).
+
 %% @doc Creates a patch baseline.
 %%
 %% For information about valid key and value pairs in `PatchFilters' for each
@@ -539,6 +567,14 @@ delete_maintenance_window(Client, Input)
 delete_maintenance_window(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMaintenanceWindow">>, Input, Options).
+
+%% @doc Delete OpsMetadata related to an application.
+delete_ops_metadata(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_ops_metadata(Client, Input, []).
+delete_ops_metadata(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteOpsMetadata">>, Input, Options).
 
 %% @doc Delete a parameter from the system.
 delete_parameter(Client, Input)
@@ -829,6 +865,12 @@ describe_maintenance_window_targets(Client, Input, Options)
     request(Client, <<"DescribeMaintenanceWindowTargets">>, Input, Options).
 
 %% @doc Lists the tasks in a maintenance window.
+%%
+%% For maintenance window tasks without a specified target, you cannot supply
+%% values for `--max-errors' and `--max-concurrency'. Instead, the system
+%% inserts a placeholder value of `1', which may be reported in the response
+%% to this command. These values do not affect the running of your task and
+%% can be ignored.
 describe_maintenance_window_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_maintenance_window_tasks(Client, Input, []).
@@ -933,6 +975,8 @@ describe_patch_groups(Client, Input, Options)
 %% SEVERITY
 %%
 %% </dd> <dt>DEBIAN</dt> <dd> Valid properties: PRODUCT, PRIORITY
+%%
+%% </dd> <dt>MACOS</dt> <dd> Valid properties: PRODUCT, CLASSIFICATION
 %%
 %% </dd> <dt>ORACLE_LINUX</dt> <dd> Valid properties: PRODUCT,
 %% CLASSIFICATION, SEVERITY
@@ -1102,6 +1146,12 @@ get_maintenance_window_execution_task_invocation(Client, Input, Options)
     request(Client, <<"GetMaintenanceWindowExecutionTaskInvocation">>, Input, Options).
 
 %% @doc Lists the tasks in a maintenance window.
+%%
+%% For maintenance window tasks without a specified target, you cannot supply
+%% values for `--max-errors' and `--max-concurrency'. Instead, the system
+%% inserts a placeholder value of `1', which may be reported in the response
+%% to this command. These values do not affect the running of your task and
+%% can be ignored.
 get_maintenance_window_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_maintenance_window_task(Client, Input, []).
@@ -1125,6 +1175,15 @@ get_ops_item(Client, Input)
 get_ops_item(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOpsItem">>, Input, Options).
+
+%% @doc View operational metadata related to an application in Application
+%% Manager.
+get_ops_metadata(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_ops_metadata(Client, Input, []).
+get_ops_metadata(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetOpsMetadata">>, Input, Options).
 
 %% @doc View a summary of OpsItems based on specified filters and
 %% aggregators.
@@ -1332,6 +1391,14 @@ list_compliance_summaries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListComplianceSummaries">>, Input, Options).
 
+%% @doc Information about approval reviews for a version of an SSM document.
+list_document_metadata_history(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_document_metadata_history(Client, Input, []).
+list_document_metadata_history(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListDocumentMetadataHistory">>, Input, Options).
+
 %% @doc List all versions for a document.
 list_document_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1358,6 +1425,27 @@ list_inventory_entries(Client, Input)
 list_inventory_entries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListInventoryEntries">>, Input, Options).
+
+%% @doc Returns a list of all OpsItem events in the current AWS account and
+%% Region.
+%%
+%% You can limit the results to events associated with specific OpsItems by
+%% specifying a filter.
+list_ops_item_events(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_ops_item_events(Client, Input, []).
+list_ops_item_events(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListOpsItemEvents">>, Input, Options).
+
+%% @doc Systems Manager calls this API action when displaying all Application
+%% Manager OpsMetadata objects or blobs.
+list_ops_metadata(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_ops_metadata(Client, Input, []).
+list_ops_metadata(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListOpsMetadata">>, Input, Options).
 
 %% @doc Returns a resource-level summary count.
 %%
@@ -1608,6 +1696,18 @@ start_automation_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartAutomationExecution">>, Input, Options).
 
+%% @doc Creates a change request for Change Manager.
+%%
+%% The runbooks (Automation documents) specified in the change request run
+%% only after all required approvals for the change request have been
+%% received.
+start_change_request_execution(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_change_request_execution(Client, Input, []).
+start_change_request_execution(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartChangeRequestExecution">>, Input, Options).
+
 %% @doc Initiates a connection to a target (for example, an instance) for a
 %% Session Manager session.
 %%
@@ -1694,6 +1794,15 @@ update_document_default_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDocumentDefaultVersion">>, Input, Options).
 
+%% @doc Updates information related to approval reviews for a specific
+%% version of a document.
+update_document_metadata(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_document_metadata(Client, Input, []).
+update_document_metadata(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateDocumentMetadata">>, Input, Options).
+
 %% @doc Updates an existing maintenance window.
 %%
 %% Only specified parameters are modified.
@@ -1755,11 +1864,18 @@ update_maintenance_window_target(Client, Input, Options)
 %%
 %% </li> <li> MaxErrors
 %%
-%% </li> </ul> If the value for a parameter in `UpdateMaintenanceWindowTask'
-%% is null, then the corresponding field is not modified. If you set
-%% `Replace' to true, then all fields required by the
-%% `RegisterTaskWithMaintenanceWindow' action are required for this request.
-%% Optional fields that aren't specified are set to null.
+%% </li> </ul> One or more targets must be specified for maintenance window
+%% Run Command-type tasks. Depending on the task, targets are optional for
+%% other maintenance window task types (Automation, AWS Lambda, and AWS Step
+%% Functions). For more information about running tasks that do not specify
+%% targets, see Registering maintenance window tasks without targets in the
+%% AWS Systems Manager User Guide.
+%%
+%% If the value for a parameter in `UpdateMaintenanceWindowTask' is null,
+%% then the corresponding field is not modified. If you set `Replace' to
+%% true, then all fields required by the `RegisterTaskWithMaintenanceWindow'
+%% action are required for this request. Optional fields that aren't
+%% specified are set to null.
 %%
 %% When you update a maintenance window task that has options specified in
 %% `TaskInvocationParameters', you must provide again all the
@@ -1805,6 +1921,15 @@ update_ops_item(Client, Input)
 update_ops_item(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateOpsItem">>, Input, Options).
+
+%% @doc Systems Manager calls this API action when you edit OpsMetadata in
+%% Application Manager.
+update_ops_metadata(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_ops_metadata(Client, Input, []).
+update_ops_metadata(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateOpsMetadata">>, Input, Options).
 
 %% @doc Modifies an existing patch baseline.
 %%

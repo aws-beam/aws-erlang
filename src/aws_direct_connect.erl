@@ -363,7 +363,7 @@ confirm_transit_virtual_interface(Client, Input, Options)
 %% IPv6 addresses; you cannot specify custom IPv6 addresses.
 %%
 %% For a public virtual interface, the Autonomous System Number (ASN) must be
-%% private or already whitelisted for the virtual interface.
+%% private or already on the allow list for the virtual interface.
 create_bgp_peer(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_bgp_peer(Client, Input, []).
@@ -705,15 +705,34 @@ describe_direct_connect_gateway_association_proposals(Client, Input, Options)
     request(Client, <<"DescribeDirectConnectGatewayAssociationProposals">>, Input, Options).
 
 %% @doc Lists the associations between your Direct Connect gateways and
-%% virtual private gateways.
+%% virtual private gateways and transit gateways.
 %%
-%% You must specify a Direct Connect gateway, a virtual private gateway, or
-%% both. If you specify a Direct Connect gateway, the response contains all
-%% virtual private gateways associated with the Direct Connect gateway. If
-%% you specify a virtual private gateway, the response contains all Direct
-%% Connect gateways associated with the virtual private gateway. If you
-%% specify both, the response contains the association between the Direct
-%% Connect gateway and the virtual private gateway.
+%% You must specify one of the following:
+%%
+%% <ul> <li> A Direct Connect gateway
+%%
+%% The response contains all virtual private gateways and transit gateways
+%% associated with the Direct Connect gateway.
+%%
+%% </li> <li> A virtual private gateway
+%%
+%% The response contains the Direct Connect gateway.
+%%
+%% </li> <li> A transit gateway
+%%
+%% The response contains the Direct Connect gateway.
+%%
+%% </li> <li> A Direct Connect gateway and a virtual private gateway
+%%
+%% The response contains the association between the Direct Connect gateway
+%% and virtual private gateway.
+%%
+%% </li> <li> A Direct Connect gateway and a transit gateway
+%%
+%% The response contains the association between the Direct Connect gateway
+%% and transit gateway.
+%%
+%% </li> </ul>
 describe_direct_connect_gateway_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_direct_connect_gateway_associations(Client, Input, []).

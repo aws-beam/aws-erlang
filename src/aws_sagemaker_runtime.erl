@@ -29,9 +29,8 @@
 %%
 %% A customer's model containers must respond to requests within 60 seconds.
 %% The model itself can have a maximum processing time of 60 seconds before
-%% responding to the /invocations. If your model is going to take 50-60
-%% seconds of processing time, the SDK socket timeout should be set to be 70
-%% seconds.
+%% responding to invocations. If your model is going to take 50-60 seconds of
+%% processing time, the SDK socket timeout should be set to be 70 seconds.
 %%
 %% Endpoints are scoped to an individual account, and are not public. The URL
 %% does not contain the account ID, but Amazon SageMaker determines the
@@ -47,6 +46,8 @@ invoke_endpoint(Client, EndpointName, Input0, Options) ->
                        {<<"Accept">>, <<"Accept">>},
                        {<<"Content-Type">>, <<"ContentType">>},
                        {<<"X-Amzn-SageMaker-Custom-Attributes">>, <<"CustomAttributes">>},
+                       {<<"X-Amzn-SageMaker-Inference-Id">>, <<"InferenceId">>},
+                       {<<"X-Amzn-SageMaker-Target-Container-Hostname">>, <<"TargetContainerHostname">>},
                        {<<"X-Amzn-SageMaker-Target-Model">>, <<"TargetModel">>},
                        {<<"X-Amzn-SageMaker-Target-Variant">>, <<"TargetVariant">>}
                      ],

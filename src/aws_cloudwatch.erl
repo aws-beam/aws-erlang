@@ -163,8 +163,8 @@ describe_alarm_history(Client, Input, Options)
 
 %% @doc Retrieves the specified alarms.
 %%
-%% You can filter the results by specifying a a prefix for the alarm name,
-%% the alarm state, or a prefix for any action.
+%% You can filter the results by specifying a prefix for the alarm name, the
+%% alarm state, or a prefix for any action.
 describe_alarms(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_alarms(Client, Input, []).
@@ -551,6 +551,9 @@ put_anomaly_detector(Client, Input, Options)
 %%
 %% When you update an existing alarm, its state is left unchanged, but the
 %% update completely overwrites the previous configuration of the alarm.
+%%
+%% If you are an IAM user, you must have `iam:CreateServiceLinkedRole' to
+%% create a composite alarm that has Systems Manager OpsItem actions.
 put_composite_alarm(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_composite_alarm(Client, Input, []).
@@ -620,37 +623,18 @@ put_insight_rule(Client, Input, Options)
 %% If you are an IAM user, you must have Amazon EC2 permissions for some
 %% alarm operations:
 %%
-%% <ul> <li> `iam:CreateServiceLinkedRole' for all alarms with EC2 actions
-%%
-%% </li> <li> `ec2:DescribeInstanceStatus' and `ec2:DescribeInstances' for
-%% all alarms on EC2 instance status metrics
-%%
-%% </li> <li> `ec2:StopInstances' for alarms with stop actions
-%%
-%% </li> <li> `ec2:TerminateInstances' for alarms with terminate actions
-%%
-%% </li> <li> No specific permissions are needed for alarms with recover
+%% <ul> <li> The `iam:CreateServiceLinkedRole' for all alarms with EC2
 %% actions
 %%
-%% </li> </ul> If you have read/write permissions for Amazon CloudWatch but
-%% not for Amazon EC2, you can still create an alarm, but the stop or
-%% terminate actions are not performed. However, if you are later granted the
-%% required permissions, the alarm actions that you created earlier are
-%% performed.
+%% </li> <li> The `iam:CreateServiceLinkedRole' to create an alarm with
+%% Systems Manager OpsItem actions.
 %%
-%% If you are using an IAM role (for example, an EC2 instance profile), you
-%% cannot stop or terminate the instance using alarm actions. However, you
-%% can still see the alarm state and perform any other actions such as Amazon
-%% SNS notifications or Auto Scaling policies.
-%%
-%% If you are using temporary security credentials granted using AWS STS, you
-%% cannot stop or terminate an EC2 instance using alarm actions.
-%%
-%% The first time you create an alarm in the AWS Management Console, the CLI,
-%% or by using the PutMetricAlarm API, CloudWatch creates the necessary
-%% service-linked role for you. The service-linked role is called
-%% `AWSServiceRoleForCloudWatchEvents'. For more information, see AWS
-%% service-linked role.
+%% </li> </ul> The first time you create an alarm in the AWS Management
+%% Console, the CLI, or by using the PutMetricAlarm API, CloudWatch creates
+%% the necessary service-linked rolea for you. The service-linked roles are
+%% called `AWSServiceRoleForCloudWatchEvents' and
+%% `AWSServiceRoleForCloudWatchAlarms_ActionSSM'. For more information, see
+%% AWS service-linked role.
 put_metric_alarm(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_metric_alarm(Client, Input, []).

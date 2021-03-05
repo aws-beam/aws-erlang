@@ -26,6 +26,7 @@ start_medical_stream_transcription(Client, Input0, Options) ->
     SuccessStatusCode = undefined,
 
     HeadersMapping = [
+                       {<<"x-amzn-transcribe-content-identification-type">>, <<"ContentIdentificationType">>},
                        {<<"x-amzn-transcribe-enable-channel-identification">>, <<"EnableChannelIdentification">>},
                        {<<"x-amzn-transcribe-language-code">>, <<"LanguageCode">>},
                        {<<"x-amzn-transcribe-media-encoding">>, <<"MediaEncoding">>},
@@ -46,6 +47,7 @@ start_medical_stream_transcription(Client, Input0, Options) ->
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
+            {<<"x-amzn-transcribe-content-identification-type">>, <<"ContentIdentificationType">>},
             {<<"x-amzn-transcribe-enable-channel-identification">>, <<"EnableChannelIdentification">>},
             {<<"x-amzn-transcribe-language-code">>, <<"LanguageCode">>},
             {<<"x-amzn-transcribe-media-encoding">>, <<"MediaEncoding">>},

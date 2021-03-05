@@ -1,21 +1,12 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Service Quotas is a web service that you can use to manage many of
-%% your AWS service quotas.
+%% @doc With Service Quotas, you can view and manage your quotas easily as
+%% your AWS workloads grow.
 %%
-%% Quotas, also referred to as limits, are the maximum values for a resource,
-%% item, or operation. This guide provide descriptions of the Service Quotas
-%% actions that you can call from an API. For the Service Quotas user guide,
-%% which explains how to use Service Quotas from the console, see What is
-%% Service Quotas.
-%%
-%% AWS provides SDKs that consist of libraries and sample code for
-%% programming languages and platforms (Java, Ruby, .NET, iOS, Android,
-%% etc...,). The SDKs provide a convenient way to create programmatic access
-%% to Service Quotas and AWS. For information about the AWS SDKs, including
-%% how to download and install them, see the Tools for Amazon Web Services
-%% page.
+%% Quotas, also referred to as limits, are the maximum number of resources
+%% that you can create in your AWS account. For more information, see the
+%% Service Quotas User Guide.
 -module(aws_service_quotas).
 
 -export([associate_service_quota_template/2,
@@ -46,10 +37,16 @@
          list_service_quotas/3,
          list_services/2,
          list_services/3,
+         list_tags_for_resource/2,
+         list_tags_for_resource/3,
          put_service_quota_increase_request_into_template/2,
          put_service_quota_increase_request_into_template/3,
          request_service_quota_increase/2,
-         request_service_quota_increase/3]).
+         request_service_quota_increase/3,
+         tag_resource/2,
+         tag_resource/3,
+         untag_resource/2,
+         untag_resource/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -57,13 +54,11 @@
 %% API
 %%====================================================================
 
-%% @doc Associates the Service Quotas template with your organization so that
-%% when new accounts are created in your organization, the template submits
-%% increase requests for the specified service quotas.
+%% @doc Associates your quota request template with your organization.
 %%
-%% Use the Service Quotas template to request an increase for any adjustable
-%% quota value. After you define the Service Quotas template, use this
-%% operation to associate, or enable, the template.
+%% When a new account is created in your organization, the quota increase
+%% requests in the template are automatically applied to the account. You can
+%% add a quota increase request for any adjustable quota to your template.
 associate_service_quota_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_service_quota_template(Client, Input, []).
@@ -71,8 +66,8 @@ associate_service_quota_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateServiceQuotaTemplate">>, Input, Options).
 
-%% @doc Removes a service quota increase request from the Service Quotas
-%% template.
+%% @doc Deletes the quota increase request for the specified quota from your
+%% quota request template.
 delete_service_quota_increase_request_from_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_service_quota_increase_request_from_template(Client, Input, []).
@@ -80,21 +75,11 @@ delete_service_quota_increase_request_from_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteServiceQuotaIncreaseRequestFromTemplate">>, Input, Options).
 
-%% @doc Disables the Service Quotas template.
+%% @doc Disables your quota request template.
 %%
-%% Once the template is disabled, it does not request quota increases for new
-%% accounts in your organization. Disabling the quota template does not apply
-%% the quota increase requests from the template.
-%%
-%% Related operations
-%%
-%% <ul> <li> To enable the quota template, call
-%% `AssociateServiceQuotaTemplate'.
-%%
-%% </li> <li> To delete a specific service quota from the template, use
-%% `DeleteServiceQuotaIncreaseRequestFromTemplate'.
-%%
-%% </li> </ul>
+%% After a template is disabled, the quota increase requests in the template
+%% are not applied to new accounts in your organization. Disabling a quota
+%% request template does not apply its quota increase requests.
 disassociate_service_quota_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_service_quota_template(Client, Input, []).
@@ -102,11 +87,8 @@ disassociate_service_quota_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateServiceQuotaTemplate">>, Input, Options).
 
-%% @doc Retrieves the `ServiceQuotaTemplateAssociationStatus' value from the
-%% service.
-%%
-%% Use this action to determine if the Service Quota template is associated,
-%% or enabled.
+%% @doc Retrieves the status of the association for the quota request
+%% template.
 get_association_for_service_quota_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_association_for_service_quota_template(Client, Input, []).
@@ -114,10 +96,9 @@ get_association_for_service_quota_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAssociationForServiceQuotaTemplate">>, Input, Options).
 
-%% @doc Retrieves the default service quotas values.
+%% @doc Retrieves the default value for the specified quota.
 %%
-%% The Value returned for each quota is the AWS default value, even if the
-%% quotas have been increased..
+%% The default value does not reflect any quota increases.
 get_aws_default_service_quota(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_aws_default_service_quota(Client, Input, []).
@@ -125,7 +106,7 @@ get_aws_default_service_quota(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAWSDefaultServiceQuota">>, Input, Options).
 
-%% @doc Retrieves the details for a particular increase request.
+%% @doc Retrieves information about the specified quota increase request.
 get_requested_service_quota_change(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_requested_service_quota_change(Client, Input, []).
@@ -133,12 +114,10 @@ get_requested_service_quota_change(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRequestedServiceQuotaChange">>, Input, Options).
 
-%% @doc Returns the details for the specified service quota.
+%% @doc Retrieves the applied quota value for the specified quota.
 %%
-%% This operation provides a different Value than the
-%% `GetAWSDefaultServiceQuota' operation. This operation returns the applied
-%% value for each quota. `GetAWSDefaultServiceQuota' returns the default AWS
-%% value for each quota.
+%% For some quotas, only the default values are available. If the applied
+%% quota value is not available for a quota, the quota is not retrieved.
 get_service_quota(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service_quota(Client, Input, []).
@@ -146,8 +125,8 @@ get_service_quota(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetServiceQuota">>, Input, Options).
 
-%% @doc Returns the details of the service quota increase request in your
-%% template.
+%% @doc Retrieves information about the specified quota increase request in
+%% your quota request template.
 get_service_quota_increase_request_from_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service_quota_increase_request_from_template(Client, Input, []).
@@ -155,21 +134,10 @@ get_service_quota_increase_request_from_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetServiceQuotaIncreaseRequestFromTemplate">>, Input, Options).
 
-%% @doc Lists all default service quotas for the specified AWS service or all
-%% AWS services.
+%% @doc Lists the default values for the quotas for the specified AWS
+%% service.
 %%
-%% ListAWSDefaultServiceQuotas is similar to `ListServiceQuotas' except for
-%% the Value object. The Value object returned by
-%% `ListAWSDefaultServiceQuotas' is the default value assigned by AWS. This
-%% request returns a list of all service quotas for the specified service.
-%% The listing of each you'll see the default values are the values that AWS
-%% provides for the quotas.
-%%
-%% Always check the `NextToken' response parameter when calling any of the
-%% `List*' operations. These operations can return an unexpected list of
-%% results, even when there are more results available. When this happens,
-%% the `NextToken' response parameter contains a value to pass the next call
-%% to the same API to request the next part of the list.
+%% A default value does not reflect any quota increases.
 list_aws_default_service_quotas(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_aws_default_service_quotas(Client, Input, []).
@@ -177,7 +145,7 @@ list_aws_default_service_quotas(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAWSDefaultServiceQuotas">>, Input, Options).
 
-%% @doc Requests a list of the changes to quotas for a service.
+%% @doc Retrieves the quota increase requests for the specified service.
 list_requested_service_quota_change_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_requested_service_quota_change_history(Client, Input, []).
@@ -185,12 +153,7 @@ list_requested_service_quota_change_history(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRequestedServiceQuotaChangeHistory">>, Input, Options).
 
-%% @doc Requests a list of the changes to specific service quotas.
-%%
-%% This command provides additional granularity over the
-%% `ListRequestedServiceQuotaChangeHistory' command. Once a quota change
-%% request has reached `CASE_CLOSED, APPROVED,' or `DENIED', the history has
-%% been kept for 90 days.
+%% @doc Retrieves the quota increase requests for the specified quota.
 list_requested_service_quota_change_history_by_quota(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_requested_service_quota_change_history_by_quota(Client, Input, []).
@@ -198,7 +161,8 @@ list_requested_service_quota_change_history_by_quota(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRequestedServiceQuotaChangeHistoryByQuota">>, Input, Options).
 
-%% @doc Returns a list of the quota increase requests in the template.
+%% @doc Lists the quota increase requests in the specified quota request
+%% template.
 list_service_quota_increase_requests_in_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_service_quota_increase_requests_in_template(Client, Input, []).
@@ -206,17 +170,10 @@ list_service_quota_increase_requests_in_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServiceQuotaIncreaseRequestsInTemplate">>, Input, Options).
 
-%% @doc Lists all service quotas for the specified AWS service.
+%% @doc Lists the applied quota values for the specified AWS service.
 %%
-%% This request returns a list of the service quotas for the specified
-%% service. you'll see the default values are the values that AWS provides
-%% for the quotas.
-%%
-%% Always check the `NextToken' response parameter when calling any of the
-%% `List*' operations. These operations can return an unexpected list of
-%% results, even when there are more results available. When this happens,
-%% the `NextToken' response parameter contains a value to pass the next call
-%% to the same API to request the next part of the list.
+%% For some quotas, only the default values are available. If the applied
+%% quota value is not available for a quota, the quota is not retrieved.
 list_service_quotas(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_service_quotas(Client, Input, []).
@@ -224,11 +181,8 @@ list_service_quotas(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServiceQuotas">>, Input, Options).
 
-%% @doc Lists the AWS services available in Service Quotas.
-%%
-%% Not all AWS services are available in Service Quotas. To list the see the
-%% list of the service quotas for a specific service, use
-%% `ListServiceQuotas'.
+%% @doc Lists the names and codes for the services integrated with Service
+%% Quotas.
 list_services(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_services(Client, Input, []).
@@ -236,12 +190,15 @@ list_services(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServices">>, Input, Options).
 
-%% @doc Defines and adds a quota to the service quota template.
-%%
-%% To add a quota to the template, you must provide the `ServiceCode',
-%% `QuotaCode', `AwsRegion', and `DesiredValue'. Once you add a quota to the
-%% template, use `ListServiceQuotaIncreaseRequestsInTemplate' to see the list
-%% of quotas in the template.
+%% @doc Returns a list of the tags assigned to the specified applied quota.
+list_tags_for_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_tags_for_resource(Client, Input, []).
+list_tags_for_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTagsForResource">>, Input, Options).
+
+%% @doc Adds a quota increase request to your quota request template.
 put_service_quota_increase_request_into_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_service_quota_increase_request_into_template(Client, Input, []).
@@ -249,16 +206,33 @@ put_service_quota_increase_request_into_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutServiceQuotaIncreaseRequestIntoTemplate">>, Input, Options).
 
-%% @doc Retrieves the details of a service quota increase request.
-%%
-%% The response to this command provides the details in the
-%% `RequestedServiceQuotaChange' object.
+%% @doc Submits a quota increase request for the specified quota.
 request_service_quota_increase(Client, Input)
   when is_map(Client), is_map(Input) ->
     request_service_quota_increase(Client, Input, []).
 request_service_quota_increase(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RequestServiceQuotaIncrease">>, Input, Options).
+
+%% @doc Adds tags to the specified applied quota.
+%%
+%% You can include one or more tags to add to the quota.
+tag_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    tag_resource(Client, Input, []).
+tag_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"TagResource">>, Input, Options).
+
+%% @doc Removes tags from the specified applied quota.
+%%
+%% You can specify one or more tags to remove.
+untag_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    untag_resource(Client, Input, []).
+untag_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UntagResource">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

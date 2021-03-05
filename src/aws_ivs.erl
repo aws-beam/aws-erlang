@@ -298,7 +298,7 @@ delete_channel(Client, Input) ->
 delete_channel(Client, Input0, Options) ->
     Method = post,
     Path = ["/DeleteChannel"],
-    SuccessStatusCode = undefined,
+    SuccessStatusCode = 204,
 
     Headers = [],
     Input1 = Input0,
@@ -334,7 +334,7 @@ delete_stream_key(Client, Input) ->
 delete_stream_key(Client, Input0, Options) ->
     Method = post,
     Path = ["/DeleteStreamKey"],
-    SuccessStatusCode = undefined,
+    SuccessStatusCode = 204,
 
     Headers = [],
     Input1 = Input0,

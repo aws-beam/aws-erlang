@@ -28,7 +28,7 @@
 %% must specify either the StreamName or the StreamARN when invoking this API
 %% operation.
 %%
-%% As a prerequsite to using GetCLip API, you must obtain an endpoint using
+%% As a prerequisite to using GetCLip API, you must obtain an endpoint using
 %% `GetDataEndpoint', specifying GET_CLIP for` the `APIName' parameter. '
 %%
 %% ```

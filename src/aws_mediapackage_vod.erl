@@ -4,7 +4,9 @@
 %% @doc AWS Elemental MediaPackage VOD
 -module(aws_mediapackage_vod).
 
--export([create_asset/2,
+-export([configure_logs/3,
+         configure_logs/4,
+         create_asset/2,
          create_asset/3,
          create_packaging_configuration/2,
          create_packaging_configuration/3,
@@ -42,6 +44,23 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Changes the packaging group's properities to configure log
+%% subscription
+configure_logs(Client, Id, Input) ->
+    configure_logs(Client, Id, Input, []).
+configure_logs(Client, Id, Input0, Options) ->
+    Method = put,
+    Path = ["/packaging_groups/", aws_util:encode_uri(Id), "/configure_logs"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new MediaPackage VOD Asset resource.
 create_asset(Client, Input) ->

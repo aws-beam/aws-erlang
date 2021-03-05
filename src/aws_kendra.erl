@@ -14,18 +14,24 @@
          create_faq/3,
          create_index/2,
          create_index/3,
+         create_thesaurus/2,
+         create_thesaurus/3,
          delete_data_source/2,
          delete_data_source/3,
          delete_faq/2,
          delete_faq/3,
          delete_index/2,
          delete_index/3,
+         delete_thesaurus/2,
+         delete_thesaurus/3,
          describe_data_source/2,
          describe_data_source/3,
          describe_faq/2,
          describe_faq/3,
          describe_index/2,
          describe_index/3,
+         describe_thesaurus/2,
+         describe_thesaurus/3,
          list_data_source_sync_jobs/2,
          list_data_source_sync_jobs/3,
          list_data_sources/2,
@@ -36,6 +42,8 @@
          list_indices/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         list_thesauri/2,
+         list_thesauri/3,
          query/2,
          query/3,
          start_data_source_sync_job/2,
@@ -51,7 +59,9 @@
          update_data_source/2,
          update_data_source/3,
          update_index/2,
-         update_index/3]).
+         update_index/3,
+         update_thesaurus/2,
+         update_thesaurus/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -131,6 +141,16 @@ create_index(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateIndex">>, Input, Options).
 
+%% @doc Creates a thesaurus for an index.
+%%
+%% The thesaurus contains a list of synonyms in Solr format.
+create_thesaurus(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_thesaurus(Client, Input, []).
+create_thesaurus(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateThesaurus">>, Input, Options).
+
 %% @doc Deletes an Amazon Kendra data source.
 %%
 %% An exception is not thrown if the data source is already being deleted.
@@ -164,6 +184,14 @@ delete_index(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteIndex">>, Input, Options).
 
+%% @doc Deletes an existing Amazon Kendra thesaurus.
+delete_thesaurus(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_thesaurus(Client, Input, []).
+delete_thesaurus(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteThesaurus">>, Input, Options).
+
 %% @doc Gets information about a Amazon Kendra data source.
 describe_data_source(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -187,6 +215,14 @@ describe_index(Client, Input)
 describe_index(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeIndex">>, Input, Options).
+
+%% @doc Describes an existing Amazon Kendra thesaurus.
+describe_thesaurus(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_thesaurus(Client, Input, []).
+describe_thesaurus(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeThesaurus">>, Input, Options).
 
 %% @doc Gets statistics about synchronizing Amazon Kendra with a data source.
 list_data_source_sync_jobs(Client, Input)
@@ -229,6 +265,14 @@ list_tags_for_resource(Client, Input)
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
+
+%% @doc Lists the Amazon Kendra thesauri associated with an index.
+list_thesauri(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_thesauri(Client, Input, []).
+list_thesauri(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListThesauri">>, Input, Options).
 
 %% @doc Searches an active index.
 %%
@@ -324,6 +368,14 @@ update_index(Client, Input)
 update_index(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateIndex">>, Input, Options).
+
+%% @doc Updates a thesaurus file associated with an index.
+update_thesaurus(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_thesaurus(Client, Input, []).
+update_thesaurus(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateThesaurus">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

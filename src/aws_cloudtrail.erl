@@ -255,17 +255,19 @@ lookup_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"LookupEvents">>, Input, Options).
 
-%% @doc Configures an event selector for your trail.
+%% @doc Configures an event selector or advanced event selectors for your
+%% trail.
 %%
-%% Use event selectors to further specify the management and data event
-%% settings for your trail. By default, trails created without specific event
-%% selectors will be configured to log all read and write management events,
-%% and no data events.
+%% Use event selectors or advanced event selectors to specify management and
+%% data event settings for your trail. By default, trails created without
+%% specific event selectors are configured to log all read and write
+%% management events, and no data events.
 %%
 %% When an event occurs in your account, CloudTrail evaluates the event
-%% selectors in all trails. For each trail, if the event matches any event
-%% selector, the trail processes and logs the event. If the event doesn't
-%% match any event selector, the trail doesn't log the event.
+%% selectors or advanced event selectors in all trails. For each trail, if
+%% the event matches any event selector, the trail processes and logs the
+%% event. If the event doesn't match any event selector, the trail doesn't
+%% log the event.
 %%
 %% Example
 %%
@@ -281,16 +283,24 @@ lookup_events(Client, Input, Options)
 %% </li> <li> The `RunInstances' is a write-only event and it matches your
 %% event selector. The trail logs the event.
 %%
-%% </li> <li> The `GetConsoleOutput' is a read-only event but it doesn't
-%% match your event selector. The trail doesn't log the event.
+%% </li> <li> The `GetConsoleOutput' is a read-only event that doesn't match
+%% your event selector. The trail doesn't log the event.
 %%
 %% </li> </ol> The `PutEventSelectors' operation must be called from the
 %% region in which the trail was created; otherwise, an
-%% `InvalidHomeRegionException' is thrown.
+%% `InvalidHomeRegionException' exception is thrown.
 %%
 %% You can configure up to five event selectors for each trail. For more
-%% information, see Logging Data and Management Events for Trails and Limits
+%% information, see Logging data and management events for trails and Quotas
 %% in AWS CloudTrail in the AWS CloudTrail User Guide.
+%%
+%% You can add advanced event selectors, and conditions for your advanced
+%% event selectors, up to a maximum of 500 values for all conditions and
+%% selectors on a trail. You can use either `AdvancedEventSelectors' or
+%% `EventSelectors', but not both. If you apply `AdvancedEventSelectors' to a
+%% trail, any existing `EventSelectors' are overwritten. For more information
+%% about advanced event selectors, see Logging data events for trails in the
+%% AWS CloudTrail User Guide.
 put_event_selectors(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_event_selectors(Client, Input, []).

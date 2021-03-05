@@ -26,6 +26,8 @@
          create_multiplex/3,
          create_multiplex_program/3,
          create_multiplex_program/4,
+         create_partner_input/3,
+         create_partner_input/4,
          create_tags/3,
          create_tags/4,
          delete_channel/3,
@@ -289,6 +291,22 @@ create_multiplex_program(Client, MultiplexId, Input) ->
 create_multiplex_program(Client, MultiplexId, Input0, Options) ->
     Method = post,
     Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), "/programs"],
+    SuccessStatusCode = 201,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Create a partner input
+create_partner_input(Client, InputId, Input) ->
+    create_partner_input(Client, InputId, Input, []).
+create_partner_input(Client, InputId, Input0, Options) ->
+    Method = post,
+    Path = ["/prod/inputs/", aws_util:encode_uri(InputId), "/partners"],
     SuccessStatusCode = 201,
 
     Headers = [],

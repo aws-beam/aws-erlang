@@ -148,7 +148,8 @@
 %% API
 %%====================================================================
 
-%% @doc Accepts the invitation to be monitored by a master GuardDuty account.
+%% @doc Accepts the invitation to be monitored by a GuardDuty administrator
+%% account.
 accept_invitation(Client, DetectorId, Input) ->
     accept_invitation(Client, DetectorId, Input, []).
 accept_invitation(Client, DetectorId, Input0, Options) ->
@@ -167,8 +168,8 @@ accept_invitation(Client, DetectorId, Input0, Options) ->
 %% @doc Archives GuardDuty findings that are specified by the list of finding
 %% IDs.
 %%
-%% Only the master account can archive findings. Member accounts don't have
-%% permission to archive findings from their accounts.
+%% Only the administrator account can archive findings. Member accounts don't
+%% have permission to archive findings from their accounts.
 archive_findings(Client, DetectorId, Input) ->
     archive_findings(Client, DetectorId, Input, []).
 archive_findings(Client, DetectorId, Input0, Options) ->
@@ -227,7 +228,7 @@ create_filter(Client, DetectorId, Input0, Options) ->
 %% An IPSet is a list of IP addresses that are trusted for secure
 %% communication with AWS infrastructure and applications. GuardDuty doesn't
 %% generate findings for IP addresses that are included in IPSets. Only users
-%% from the master account can use this operation.
+%% from the administrator account can use this operation.
 create_ip_set(Client, DetectorId, Input) ->
     create_ip_set(Client, DetectorId, Input, []).
 create_ip_set(Client, DetectorId, Input0, Options) ->
@@ -251,8 +252,8 @@ create_ip_set(Client, DetectorId, Input0, Options) ->
 %%
 %% When using `Create Members' as an organizations delegated administrator
 %% this action will enable GuardDuty in the added member accounts, with the
-%% exception of the organization master account, which must enable GuardDuty
-%% prior to being added as a member.
+%% exception of the organization delegated administrator account, which must
+%% enable GuardDuty prior to being added as a member.
 %%
 %% If you are adding accounts by invitation use this action after GuardDuty
 %% has been enabled in potential member accounts and before using `Invite
@@ -314,8 +315,8 @@ create_sample_findings(Client, DetectorId, Input0, Options) ->
 %% @doc Creates a new ThreatIntelSet.
 %%
 %% ThreatIntelSets consist of known malicious IP addresses. GuardDuty
-%% generates findings based on ThreatIntelSets. Only users of the master
-%% account can use this operation.
+%% generates findings based on ThreatIntelSets. Only users of the
+%% administrator account can use this operation.
 create_threat_intel_set(Client, DetectorId, Input) ->
     create_threat_intel_set(Client, DetectorId, Input, []).
 create_threat_intel_set(Client, DetectorId, Input0, Options) ->
@@ -416,8 +417,8 @@ delete_ip_set(Client, DetectorId, IpSetId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes GuardDuty member accounts (to the current GuardDuty master
-%% account) specified by the account IDs.
+%% @doc Deletes GuardDuty member accounts (to the current GuardDuty
+%% administrator account) specified by the account IDs.
 delete_members(Client, DetectorId, Input) ->
     delete_members(Client, DetectorId, Input, []).
 delete_members(Client, DetectorId, Input0, Options) ->
@@ -514,8 +515,8 @@ disable_organization_admin_account(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Disassociates the current GuardDuty member account from its master
-%% account.
+%% @doc Disassociates the current GuardDuty member account from its
+%% administrator account.
 disassociate_from_master_account(Client, DetectorId, Input) ->
     disassociate_from_master_account(Client, DetectorId, Input, []).
 disassociate_from_master_account(Client, DetectorId, Input0, Options) ->
@@ -532,7 +533,7 @@ disassociate_from_master_account(Client, DetectorId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates GuardDuty member accounts (to the current GuardDuty
-%% master account) specified by the account IDs.
+%% administrator account) specified by the account IDs.
 disassociate_members(Client, DetectorId, Input) ->
     disassociate_members(Client, DetectorId, Input, []).
 disassociate_members(Client, DetectorId, Input0, Options) ->
@@ -660,8 +661,8 @@ get_ip_set(Client, DetectorId, IpSetId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Provides the details for the GuardDuty master account associated with
-%% the current GuardDuty member account.
+%% @doc Provides the details for the GuardDuty administrator account
+%% associated with the current GuardDuty member account.
 get_master_account(Client, DetectorId)
   when is_map(Client) ->
     get_master_account(Client, DetectorId, []).
@@ -693,8 +694,8 @@ get_member_detectors(Client, DetectorId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves GuardDuty member accounts (to the current GuardDuty master
-%% account) specified by the account IDs.
+%% @doc Retrieves GuardDuty member accounts (of the current GuardDuty
+%% administrator account) specified by the account IDs.
 get_members(Client, DetectorId, Input) ->
     get_members(Client, DetectorId, Input, []).
 get_members(Client, DetectorId, Input0, Options) ->
@@ -751,8 +752,8 @@ get_usage_statistics(Client, DetectorId, Input0, Options) ->
 
 %% @doc Invites other AWS accounts (created as members of the current AWS
 %% account by CreateMembers) to enable GuardDuty, and allow the current AWS
-%% account to view and manage these accounts' GuardDuty findings on their
-%% behalf as the master account.
+%% account to view and manage these accounts' findings on their behalf as the
+%% GuardDuty administrator account.
 invite_members(Client, DetectorId, Input) ->
     invite_members(Client, DetectorId, Input, []).
 invite_members(Client, DetectorId, Input0, Options) ->
@@ -850,7 +851,7 @@ list_invitations(Client, MaxResults, NextToken, Options)
 %% ID.
 %%
 %% If you use this operation from a member account, the IPSets returned are
-%% the IPSets from the associated master account.
+%% the IPSets from the associated administrator account.
 list_ip_sets(Client, DetectorId, MaxResults, NextToken)
   when is_map(Client) ->
     list_ip_sets(Client, DetectorId, MaxResults, NextToken, []).
@@ -871,7 +872,7 @@ list_ip_sets(Client, DetectorId, MaxResults, NextToken, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists details about all member accounts for the current GuardDuty
-%% master account.
+%% administrator account.
 list_members(Client, DetectorId, MaxResults, NextToken, OnlyAssociated)
   when is_map(Client) ->
     list_members(Client, DetectorId, MaxResults, NextToken, OnlyAssociated, []).
@@ -956,7 +957,7 @@ list_tags_for_resource(Client, ResourceArn, Options)
 %% detector ID.
 %%
 %% If you use this operation from a member account, the ThreatIntelSets
-%% associated with the master account are returned.
+%% associated with the administrator account are returned.
 list_threat_intel_sets(Client, DetectorId, MaxResults, NextToken)
   when is_map(Client) ->
     list_threat_intel_sets(Client, DetectorId, MaxResults, NextToken, []).

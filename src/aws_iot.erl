@@ -48,6 +48,8 @@
          cancel_audit_task/4,
          cancel_certificate_transfer/3,
          cancel_certificate_transfer/4,
+         cancel_detect_mitigation_actions_task/3,
+         cancel_detect_mitigation_actions_task/4,
          cancel_job/3,
          cancel_job/4,
          cancel_job_execution/4,
@@ -64,6 +66,8 @@
          create_billing_group/4,
          create_certificate_from_csr/2,
          create_certificate_from_csr/3,
+         create_custom_metric/3,
+         create_custom_metric/4,
          create_dimension/3,
          create_dimension/4,
          create_domain_configuration/3,
@@ -118,6 +122,8 @@
          delete_ca_certificate/4,
          delete_certificate/3,
          delete_certificate/4,
+         delete_custom_metric/3,
+         delete_custom_metric/4,
          delete_dimension/3,
          delete_dimension/4,
          delete_domain_configuration/3,
@@ -182,8 +188,12 @@
          describe_ca_certificate/3,
          describe_certificate/2,
          describe_certificate/3,
+         describe_custom_metric/2,
+         describe_custom_metric/3,
          describe_default_authorizer/1,
          describe_default_authorizer/2,
+         describe_detect_mitigation_actions_task/2,
+         describe_detect_mitigation_actions_task/3,
          describe_dimension/2,
          describe_dimension/3,
          describe_domain_configuration/2,
@@ -232,6 +242,8 @@
          disable_topic_rule/4,
          enable_topic_rule/3,
          enable_topic_rule/4,
+         get_behavior_model_training_summaries/4,
+         get_behavior_model_training_summaries/5,
          get_cardinality/2,
          get_cardinality/3,
          get_effective_policies/2,
@@ -260,8 +272,8 @@
          get_topic_rule_destination/3,
          get_v2_logging_options/1,
          get_v2_logging_options/2,
-         list_active_violations/5,
-         list_active_violations/6,
+         list_active_violations/7,
+         list_active_violations/8,
          list_attached_policies/3,
          list_attached_policies/4,
          list_audit_findings/2,
@@ -284,6 +296,12 @@
          list_certificates/5,
          list_certificates_by_ca/5,
          list_certificates_by_ca/6,
+         list_custom_metrics/3,
+         list_custom_metrics/4,
+         list_detect_mitigation_actions_executions/8,
+         list_detect_mitigation_actions_executions/9,
+         list_detect_mitigation_actions_tasks/5,
+         list_detect_mitigation_actions_tasks/6,
          list_dimensions/3,
          list_dimensions/4,
          list_domain_configurations/4,
@@ -320,8 +338,8 @@
          list_role_aliases/5,
          list_scheduled_audits/3,
          list_scheduled_audits/4,
-         list_security_profiles/4,
          list_security_profiles/5,
+         list_security_profiles/6,
          list_security_profiles_for_target/5,
          list_security_profiles_for_target/6,
          list_streams/4,
@@ -356,8 +374,8 @@
          list_topic_rules/6,
          list_v2_logging_levels/4,
          list_v2_logging_levels/5,
-         list_violation_events/7,
-         list_violation_events/8,
+         list_violation_events/9,
+         list_violation_events/10,
          register_ca_certificate/2,
          register_ca_certificate/3,
          register_certificate/2,
@@ -388,6 +406,8 @@
          set_v2_logging_options/3,
          start_audit_mitigation_actions_task/3,
          start_audit_mitigation_actions_task/4,
+         start_detect_mitigation_actions_task/3,
+         start_detect_mitigation_actions_task/4,
          start_on_demand_audit_task/2,
          start_on_demand_audit_task/3,
          start_thing_registration_task/2,
@@ -416,6 +436,8 @@
          update_ca_certificate/4,
          update_certificate/3,
          update_certificate/4,
+         update_custom_metric/3,
+         update_custom_metric/4,
          update_dimension/3,
          update_dimension/4,
          update_domain_configuration/3,
@@ -639,7 +661,7 @@ cancel_audit_mitigation_actions_task(Client, TaskId, Input0, Options) ->
 
 %% @doc Cancels an audit that is in progress.
 %%
-%% The audit can be either scheduled or on-demand. If the audit is not in
+%% The audit can be either scheduled or on demand. If the audit isn't in
 %% progress, an "InvalidRequestException" occurs.
 cancel_audit_task(Client, TaskId, Input) ->
     cancel_audit_task(Client, TaskId, Input, []).
@@ -671,6 +693,22 @@ cancel_certificate_transfer(Client, CertificateId, Input) ->
 cancel_certificate_transfer(Client, CertificateId, Input0, Options) ->
     Method = patch,
     Path = ["/cancel-certificate-transfer/", aws_util:encode_uri(CertificateId), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Cancels a Device Defender ML Detect mitigation action.
+cancel_detect_mitigation_actions_task(Client, TaskId, Input) ->
+    cancel_detect_mitigation_actions_task(Client, TaskId, Input, []).
+cancel_detect_mitigation_actions_task(Client, TaskId, Input0, Options) ->
+    Method = put,
+    Path = ["/detect/mitigationactions/tasks/", aws_util:encode_uri(TaskId), "/cancel"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -859,6 +897,23 @@ create_certificate_from_csr(Client, Input0, Options) ->
                      {<<"setAsActive">>, <<"setAsActive">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Use this API to define a Custom Metric published by your devices to
+%% Device Defender.
+create_custom_metric(Client, MetricName, Input) ->
+    create_custom_metric(Client, MetricName, Input, []).
+create_custom_metric(Client, MetricName, Input0, Options) ->
+    Method = post,
+    Path = ["/custom-metric/", aws_util:encode_uri(MetricName), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Create a dimension that you can use to limit the scope of a metric
@@ -1365,6 +1420,29 @@ delete_certificate(Client, CertificateId, Input0, Options) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Before you can delete a custom metric, you must first remove the
+%% custom metric from all security profiles it's a part of.
+%%
+%% The security profile associated with the custom metric can be found using
+%% the ListSecurityProfiles API with `metricName' set to your custom metric
+%% name.
+%%
+%% Deletes a Device Defender detect custom metric.
+delete_custom_metric(Client, MetricName, Input) ->
+    delete_custom_metric(Client, MetricName, Input, []).
+delete_custom_metric(Client, MetricName, Input0, Options) ->
+    Method = delete,
+    Path = ["/custom-metric/", aws_util:encode_uri(MetricName), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Removes the specified dimension from your AWS account.
 delete_dimension(Client, Name, Input) ->
     delete_dimension(Client, Name, Input, []).
@@ -1806,7 +1884,7 @@ describe_account_audit_configuration(Client, Options)
 %% @doc Gets information about a single audit finding.
 %%
 %% Properties include the reason for noncompliance, the severity of the
-%% issue, and when the audit that returned the finding was started.
+%% issue, and the start time when the audit that returned the finding.
 describe_audit_finding(Client, FindingId)
   when is_map(Client) ->
     describe_audit_finding(Client, FindingId, []).
@@ -1931,6 +2009,21 @@ describe_certificate(Client, CertificateId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets information about a Device Defender detect custom metric.
+describe_custom_metric(Client, MetricName)
+  when is_map(Client) ->
+    describe_custom_metric(Client, MetricName, []).
+describe_custom_metric(Client, MetricName, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/custom-metric/", aws_util:encode_uri(MetricName), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Describes the default authorizer.
 describe_default_authorizer(Client)
   when is_map(Client) ->
@@ -1938,6 +2031,21 @@ describe_default_authorizer(Client)
 describe_default_authorizer(Client, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/default-authorizer"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets information about a Device Defender ML Detect mitigation action.
+describe_detect_mitigation_actions_task(Client, TaskId)
+  when is_map(Client) ->
+    describe_detect_mitigation_actions_task(Client, TaskId, []).
+describe_detect_mitigation_actions_task(Client, TaskId, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/detect/mitigationactions/tasks/", aws_util:encode_uri(TaskId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -2339,6 +2447,28 @@ enable_topic_rule(Client, RuleName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Returns a Device Defender's ML Detect Security Profile training
+%% model's status.
+get_behavior_model_training_summaries(Client, MaxResults, NextToken, SecurityProfileName)
+  when is_map(Client) ->
+    get_behavior_model_training_summaries(Client, MaxResults, NextToken, SecurityProfileName, []).
+get_behavior_model_training_summaries(Client, MaxResults, NextToken, SecurityProfileName, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/behavior-model-training/summaries"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken},
+        {<<"securityProfileName">>, SecurityProfileName}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns the approximate count of unique values that match the query.
 get_cardinality(Client, Input) ->
     get_cardinality(Client, Input, []).
@@ -2578,10 +2708,10 @@ get_v2_logging_options(Client, Options)
 
 %% @doc Lists the active violations for a given Device Defender security
 %% profile.
-list_active_violations(Client, MaxResults, NextToken, SecurityProfileName, ThingName)
+list_active_violations(Client, BehaviorCriteriaType, ListSuppressedAlerts, MaxResults, NextToken, SecurityProfileName, ThingName)
   when is_map(Client) ->
-    list_active_violations(Client, MaxResults, NextToken, SecurityProfileName, ThingName, []).
-list_active_violations(Client, MaxResults, NextToken, SecurityProfileName, ThingName, Options)
+    list_active_violations(Client, BehaviorCriteriaType, ListSuppressedAlerts, MaxResults, NextToken, SecurityProfileName, ThingName, []).
+list_active_violations(Client, BehaviorCriteriaType, ListSuppressedAlerts, MaxResults, NextToken, SecurityProfileName, ThingName, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/active-violations"],
     SuccessStatusCode = undefined,
@@ -2590,6 +2720,8 @@ list_active_violations(Client, MaxResults, NextToken, SecurityProfileName, Thing
 
     Query0_ =
       [
+        {<<"behaviorCriteriaType">>, BehaviorCriteriaType},
+        {<<"listSuppressedAlerts">>, ListSuppressedAlerts},
         {<<"maxResults">>, MaxResults},
         {<<"nextToken">>, NextToken},
         {<<"securityProfileName">>, SecurityProfileName},
@@ -2834,6 +2966,74 @@ list_certificates_by_ca(Client, CaCertificateId, AscendingOrder, Marker, PageSiz
         {<<"isAscendingOrder">>, AscendingOrder},
         {<<"marker">>, Marker},
         {<<"pageSize">>, PageSize}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists your Device Defender detect custom metrics.
+list_custom_metrics(Client, MaxResults, NextToken)
+  when is_map(Client) ->
+    list_custom_metrics(Client, MaxResults, NextToken, []).
+list_custom_metrics(Client, MaxResults, NextToken, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/custom-metrics"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists mitigation actions executions for a Device Defender ML Detect
+%% Security Profile.
+list_detect_mitigation_actions_executions(Client, EndTime, MaxResults, NextToken, StartTime, TaskId, ThingName, ViolationId)
+  when is_map(Client) ->
+    list_detect_mitigation_actions_executions(Client, EndTime, MaxResults, NextToken, StartTime, TaskId, ThingName, ViolationId, []).
+list_detect_mitigation_actions_executions(Client, EndTime, MaxResults, NextToken, StartTime, TaskId, ThingName, ViolationId, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/detect/mitigationactions/executions"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"endTime">>, EndTime},
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken},
+        {<<"startTime">>, StartTime},
+        {<<"taskId">>, TaskId},
+        {<<"thingName">>, ThingName},
+        {<<"violationId">>, ViolationId}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc List of Device Defender ML Detect mitigation actions tasks.
+list_detect_mitigation_actions_tasks(Client, EndTime, MaxResults, NextToken, StartTime)
+  when is_map(Client) ->
+    list_detect_mitigation_actions_tasks(Client, EndTime, MaxResults, NextToken, StartTime, []).
+list_detect_mitigation_actions_tasks(Client, EndTime, MaxResults, NextToken, StartTime, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/detect/mitigationactions/tasks"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"endTime">>, EndTime},
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken},
+        {<<"startTime">>, StartTime}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -3239,14 +3439,15 @@ list_scheduled_audits(Client, MaxResults, NextToken, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the Device Defender security profiles you have created.
+%% @doc Lists the Device Defender security profiles you've created.
 %%
-%% You can use filters to list only those security profiles associated with a
-%% thing group or only those associated with your account.
-list_security_profiles(Client, DimensionName, MaxResults, NextToken)
+%% You can filter security profiles by dimension or custom metric.
+%%
+%% `dimensionName' and `metricName' cannot be used in the same request.
+list_security_profiles(Client, DimensionName, MaxResults, MetricName, NextToken)
   when is_map(Client) ->
-    list_security_profiles(Client, DimensionName, MaxResults, NextToken, []).
-list_security_profiles(Client, DimensionName, MaxResults, NextToken, Options)
+    list_security_profiles(Client, DimensionName, MaxResults, MetricName, NextToken, []).
+list_security_profiles(Client, DimensionName, MaxResults, MetricName, NextToken, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/security-profiles"],
     SuccessStatusCode = undefined,
@@ -3257,6 +3458,7 @@ list_security_profiles(Client, DimensionName, MaxResults, NextToken, Options)
       [
         {<<"dimensionName">>, DimensionName},
         {<<"maxResults">>, MaxResults},
+        {<<"metricName">>, MetricName},
         {<<"nextToken">>, NextToken}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
@@ -3637,10 +3839,10 @@ list_v2_logging_levels(Client, MaxResults, NextToken, TargetType, Options)
 %%
 %% You can use filters to limit the results to those alerts issued for a
 %% particular security profile, behavior, or thing (device).
-list_violation_events(Client, EndTime, MaxResults, NextToken, SecurityProfileName, StartTime, ThingName)
+list_violation_events(Client, BehaviorCriteriaType, EndTime, ListSuppressedAlerts, MaxResults, NextToken, SecurityProfileName, StartTime, ThingName)
   when is_map(Client) ->
-    list_violation_events(Client, EndTime, MaxResults, NextToken, SecurityProfileName, StartTime, ThingName, []).
-list_violation_events(Client, EndTime, MaxResults, NextToken, SecurityProfileName, StartTime, ThingName, Options)
+    list_violation_events(Client, BehaviorCriteriaType, EndTime, ListSuppressedAlerts, MaxResults, NextToken, SecurityProfileName, StartTime, ThingName, []).
+list_violation_events(Client, BehaviorCriteriaType, EndTime, ListSuppressedAlerts, MaxResults, NextToken, SecurityProfileName, StartTime, ThingName, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/violation-events"],
     SuccessStatusCode = undefined,
@@ -3649,7 +3851,9 @@ list_violation_events(Client, EndTime, MaxResults, NextToken, SecurityProfileNam
 
     Query0_ =
       [
+        {<<"behaviorCriteriaType">>, BehaviorCriteriaType},
         {<<"endTime">>, EndTime},
+        {<<"listSuppressedAlerts">>, ListSuppressedAlerts},
         {<<"maxResults">>, MaxResults},
         {<<"nextToken">>, NextToken},
         {<<"securityProfileName">>, SecurityProfileName},
@@ -3951,6 +4155,22 @@ start_audit_mitigation_actions_task(Client, TaskId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Starts a Device Defender ML Detect mitigation actions task.
+start_detect_mitigation_actions_task(Client, TaskId, Input) ->
+    start_detect_mitigation_actions_task(Client, TaskId, Input, []).
+start_detect_mitigation_actions_task(Client, TaskId, Input0, Options) ->
+    Method = put,
+    Path = ["/detect/mitigationactions/tasks/", aws_util:encode_uri(TaskId), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Starts an on-demand Device Defender audit.
 start_on_demand_audit_task(Client, Input) ->
     start_on_demand_audit_task(Client, Input, []).
@@ -4215,10 +4435,26 @@ update_certificate(Client, CertificateId, Input0, Options) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates a Device Defender detect custom metric.
+update_custom_metric(Client, MetricName, Input) ->
+    update_custom_metric(Client, MetricName, Input, []).
+update_custom_metric(Client, MetricName, Input0, Options) ->
+    Method = patch,
+    Path = ["/custom-metric/", aws_util:encode_uri(MetricName), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates the definition for a dimension.
 %%
 %% You cannot change the type of a dimension after it is created (you can
-%% delete it and re-create it).
+%% delete it and recreate it).
 update_dimension(Client, Name, Input) ->
     update_dimension(Client, Name, Input, []).
 update_dimension(Client, Name, Input0, Options) ->

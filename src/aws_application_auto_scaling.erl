@@ -28,7 +28,7 @@
 %%
 %% </li> <li> Amazon Keyspaces (for Apache Cassandra) tables
 %%
-%% </li> <li> Amazon Managed Streaming for Apache Kafka cluster storage
+%% </li> <li> Amazon Managed Streaming for Apache Kafka broker storage
 %%
 %% </li> </ul> API Summary
 %%
@@ -91,8 +91,8 @@
 %% does not delete the CloudWatch alarm associated with the scaling policy,
 %% even if it no longer has an associated action.
 %%
-%% For more information, see Delete a Step Scaling Policy and Delete a Target
-%% Tracking Scaling Policy in the Application Auto Scaling User Guide.
+%% For more information, see Delete a step scaling policy and Delete a target
+%% tracking scaling policy in the Application Auto Scaling User Guide.
 delete_scaling_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_scaling_policy(Client, Input, []).
@@ -103,7 +103,7 @@ delete_scaling_policy(Client, Input, Options)
 %% @doc Deletes the specified scheduled action for an Application Auto
 %% Scaling scalable target.
 %%
-%% For more information, see Delete a Scheduled Action in the Application
+%% For more information, see Delete a scheduled action in the Application
 %% Auto Scaling User Guide.
 delete_scheduled_action(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -154,8 +154,8 @@ describe_scaling_activities(Client, Input, Options)
 %% You can filter the results using `ResourceId', `ScalableDimension', and
 %% `PolicyNames'.
 %%
-%% For more information, see Target Tracking Scaling Policies and Step
-%% Scaling Policies in the Application Auto Scaling User Guide.
+%% For more information, see Target tracking scaling policies and Step
+%% scaling policies in the Application Auto Scaling User Guide.
 describe_scaling_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scaling_policies(Client, Input, []).
@@ -169,8 +169,8 @@ describe_scaling_policies(Client, Input, Options)
 %% You can filter the results using the `ResourceId', `ScalableDimension',
 %% and `ScheduledActionNames' parameters.
 %%
-%% For more information, see Scheduled Scaling in the Application Auto
-%% Scaling User Guide.
+%% For more information, see Scheduled scaling and Managing scheduled scaling
+%% in the Application Auto Scaling User Guide.
 describe_scheduled_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scheduled_actions(Client, Input, []).
@@ -205,8 +205,8 @@ describe_scheduled_actions(Client, Input, Options)
 %% activity completes, the target tracking policy could instruct the scalable
 %% target to scale out again.
 %%
-%% For more information, see Target Tracking Scaling Policies and Step
-%% Scaling Policies in the Application Auto Scaling User Guide.
+%% For more information, see Target tracking scaling policies and Step
+%% scaling policies in the Application Auto Scaling User Guide.
 %%
 %% If a scalable target is deregistered, the scalable target is no longer
 %% available to execute scaling policies. Any scaling policies that were
@@ -227,14 +227,14 @@ put_scaling_policy(Client, Input, Options)
 %% until you have registered the resource as a scalable target.
 %%
 %% When start and end times are specified with a recurring schedule using a
-%% cron expression or rates, they form the boundaries of when the recurring
+%% cron expression or rates, they form the boundaries for when the recurring
 %% action starts and stops.
 %%
 %% To update a scheduled action, specify the parameters that you want to
 %% change. If you don't specify start and end times, the old values are
 %% deleted.
 %%
-%% For more information, see Scheduled Scaling in the Application Auto
+%% For more information, see Scheduled scaling in the Application Auto
 %% Scaling User Guide.
 %%
 %% If a scalable target is deregistered, the scalable target is no longer

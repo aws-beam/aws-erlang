@@ -143,9 +143,7 @@ add_tags(Client, Input, Options)
     request(Client, <<"AddTags">>, Input, Options).
 
 %% @doc Creates a listener for the specified Application Load Balancer,
-%% Network Load Balancer.
-%%
-%% or Gateway Load Balancer.
+%% Network Load Balancer, or Gateway Load Balancer.
 %%
 %% For more information, see the following:
 %%

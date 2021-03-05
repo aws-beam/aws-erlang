@@ -157,15 +157,11 @@
 %% API
 %%====================================================================
 
-%% @doc This is the latest version of AWS WAF, named AWS WAFV2, released in
-%% November, 2019.
+%% @doc Associates a Web ACL with a regional application resource, to protect
+%% the resource.
 %%
-%% For information, including how to migrate your AWS WAF resources from the
-%% prior release, see the AWS WAF Developer Guide.
-%%
-%% Associates a Web ACL with a regional application resource, to protect the
-%% resource. A regional application can be an Application Load Balancer
-%% (ALB), an API Gateway REST API, or an AppSync GraphQL API.
+%% A regional application can be an Application Load Balancer (ALB), an API
+%% Gateway REST API, or an AppSync GraphQL API.
 %%
 %% For AWS CloudFront, don't use this call. Instead, use your CloudFront
 %% distribution configuration. To associate a Web ACL, in the CloudFront call
@@ -178,15 +174,11 @@ associate_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateWebACL">>, Input, Options).
 
-%% @doc This is the latest version of AWS WAF, named AWS WAFV2, released in
-%% November, 2019.
+%% @doc Returns the web ACL capacity unit (WCU) requirements for a specified
+%% scope and set of rules.
 %%
-%% For information, including how to migrate your AWS WAF resources from the
-%% prior release, see the AWS WAF Developer Guide.
-%%
-%% Returns the web ACL capacity unit (WCU) requirements for a specified scope
-%% and set of rules. You can use this to check the capacity requirements for
-%% the rules you want to use in a `RuleGroup' or `WebACL'.
+%% You can use this to check the capacity requirements for the rules you want
+%% to use in a `RuleGroup' or `WebACL'.
 %%
 %% AWS WAF uses WCUs to calculate and control the operating resources that
 %% are used to run your rules, rule groups, and web ACLs. AWS WAF calculates
@@ -202,17 +194,12 @@ check_capacity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CheckCapacity">>, Input, Options).
 
-%% @doc This is the latest version of AWS WAF, named AWS WAFV2, released in
-%% November, 2019.
+%% @doc Creates an `IPSet', which you use to identify web requests that
+%% originate from specific IP addresses or ranges of IP addresses.
 %%
-%% For information, including how to migrate your AWS WAF resources from the
-%% prior release, see the AWS WAF Developer Guide.
-%%
-%% Creates an `IPSet', which you use to identify web requests that originate
-%% from specific IP addresses or ranges of IP addresses. For example, if
-%% you're receiving a lot of requests from a ranges of IP addresses, you can
-%% configure AWS WAF to block them using an IPSet that lists those IP
-%% addresses.
+%% For example, if you're receiving a lot of requests from a ranges of IP
+%% addresses, you can configure AWS WAF to block them using an IPSet that
+%% lists those IP addresses.
 create_ip_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_ip_set(Client, Input, []).
@@ -220,13 +207,7 @@ create_ip_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateIPSet">>, Input, Options).
 
-%% @doc This is the latest version of AWS WAF, named AWS WAFV2, released in
-%% November, 2019.
-%%
-%% For information, including how to migrate your AWS WAF resources from the
-%% prior release, see the AWS WAF Developer Guide.
-%%
-%% Creates a `RegexPatternSet', which you reference in a
+%% @doc Creates a `RegexPatternSet', which you reference in a
 %% `RegexPatternSetReferenceStatement', to have AWS WAF inspect a web request
 %% component for the specified patterns.
 create_regex_pattern_set(Client, Input)
@@ -236,13 +217,7 @@ create_regex_pattern_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRegexPatternSet">>, Input, Options).
 
-%% @doc This is the latest version of AWS WAF, named AWS WAFV2, released in
-%% November, 2019.
-%%
-%% For information, including how to migrate your AWS WAF resources from the
-%% prior release, see the AWS WAF Developer Guide.
-%%
-%% Creates a `RuleGroup' per the specifications provided.
+%% @doc Creates a `RuleGroup' per the specifications provided.
 %%
 %% A rule group defines a collection of rules to inspect and control web
 %% requests that you can use in a `WebACL'. When you create a rule group, you
@@ -256,13 +231,7 @@ create_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRuleGroup">>, Input, Options).
 
-%% @doc This is the latest version of AWS WAF, named AWS WAFV2, released in
-%% November, 2019.
-%%
-%% For information, including how to migrate your AWS WAF resources from the
-%% prior release, see the AWS WAF Developer Guide.
-%%
-%% Creates a `WebACL' per the specifications provided.
+%% @doc Creates a `WebACL' per the specifications provided.
 %%
 %% A Web ACL defines a collection of rules to use to inspect and control web
 %% requests. Each rule has an action defined (allow, block, or count) for
@@ -292,13 +261,7 @@ delete_firewall_manager_rule_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFirewallManagerRuleGroups">>, Input, Options).
 
-%% @doc This is the latest version of AWS WAF, named AWS WAFV2, released in
-%% November, 2019.
-%%
-%% For information, including how to migrate your AWS WAF resources from the
-%% prior release, see the AWS WAF Developer Guide.
-%%
-%% Deletes the specified `IPSet'.
+%% @doc Deletes the specified `IPSet'.
 delete_ip_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_ip_set(Client, Input, []).
@@ -306,13 +269,7 @@ delete_ip_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteIPSet">>, Input, Options).
 
-%% @doc This is the latest version of AWS WAF, named AWS WAFV2, released in
-%% November, 2019.
-%%
-%% For information, including how to migrate your AWS WAF resources from the
-%% prior release, see the AWS WAF Developer Guide.
-%%
-%% Deletes the `LoggingConfiguration' from the specified web ACL.
+%% @doc Deletes the `LoggingConfiguration' from the specified web ACL.
 delete_logging_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_logging_configuration(Client, Input, []).
@@ -330,13 +287,7 @@ delete_permission_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePermissionPolicy">>, Input, Options).
 
-%% @doc This is the latest version of AWS WAF, named AWS WAFV2, released in
-%% November, 2019.
-%%
-%% For information, including how to migrate your AWS WAF resources from the
-%% prior release, see the AWS WAF Developer Guide.
-%%
-%% Deletes the specified `RegexPatternSet'.
+%% @doc Deletes the specified `RegexPatternSet'.
 delete_regex_pattern_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_regex_pattern_set(Client, Input, []).
@@ -344,13 +295,7 @@ delete_regex_pattern_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRegexPatternSet">>, Input, Options).
 
-%% @doc This is the latest version of AWS WAF, named AWS WAFV2, released in
-%% November, 2019.
-%%
-%% For information, including how to migrate your AWS WAF resources from the
-%% prior release, see the AWS WAF Developer Guide.
-%%
-%% Deletes the specified `RuleGroup'.
+%% @doc Deletes the specified `RuleGroup'.
 delete_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_rule_group(Client, Input, []).
@@ -358,13 +303,7 @@ delete_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRuleGroup">>, Input, Options).
 
-%% @doc This is the latest version of AWS WAF, named AWS WAFV2, released in
-%% November, 2019.
-%%
-%% For information, including how to migrate your AWS WAF resources from the
-%% prior release, see the AWS WAF Developer Guide.
-%%
-%% Deletes the specified `WebACL'.
+%% @doc Deletes the specified `WebACL'.
 %%
 %% You can only use this if `ManagedByFirewallManager' is false in the
 %% specified `WebACL'.
@@ -375,13 +314,7 @@ delete_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWebACL">>, Input, Options).
 
-%% @doc This is the latest version of AWS WAF, named AWS WAFV2, released in
-%% November, 2019.
-%%
-%% For information, including how to migrate your AWS WAF resources from the
-%% prior release, see the AWS WAF Developer Guide.
-%%
-%% Provides high-level information for a managed rule group, including
+%% @doc Provides high-level information for a managed rule group, including
 %% descriptions of the rules.
 describe_managed_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -390,15 +323,10 @@ describe_managed_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeManagedRuleGroup">>, Input, Options).
 
-%% @doc This is the latest version of AWS WAF, named AWS WAFV2, released in
-%% November, 2019.
+%% @doc Disassociates a Web ACL from a regional application resource.
 %%
-%% For information, including how to migrate your AWS WAF resources from the
-%% prior release, see the AWS WAF Developer Guide.
-%%
-%% Disassociates a Web ACL from a regional application resource. A regional
-%% application can be an Application Load Balancer (ALB), an API Gateway REST
-%% API, or an AppSync GraphQL API.
+%% A regional application can be an Application Load Balancer (ALB), an API
+%% Gateway REST API, or an AppSync GraphQL API.
 %%
 %% For AWS CloudFront, don't use this call. Instead, use your CloudFront
 %% distribution configuration. To disassociate a Web ACL, provide an empty
@@ -411,13 +339,7 @@ disassociate_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateWebACL">>, Input, Options).
 
-%% @doc This is the latest version of AWS WAF, named AWS WAFV2, released in
-%% November, 2019.
-%%
-%% For information, including how to migrate your AWS WAF resources from the
-%% prior release, see the AWS WAF Developer Guide.
-%%
-%% Retrieves the specified `IPSet'.
+%% @doc Retrieves the specified `IPSet'.
 get_ip_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ip_set(Client, Input, []).
@@ -425,13 +347,7 @@ get_ip_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetIPSet">>, Input, Options).
 
-%% @doc This is the latest version of AWS WAF, named AWS WAFV2, released in
-%% November, 2019.
-%%
-%% For information, including how to migrate your AWS WAF resources from the
-%% prior release, see the AWS WAF Developer Guide.
-%%
-%% Returns the `LoggingConfiguration' for the specified web ACL.
+%% @doc Returns the `LoggingConfiguration' for the specified web ACL.
 get_logging_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_logging_configuration(Client, Input, []).
@@ -449,16 +365,11 @@ get_permission_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPermissionPolicy">>, Input, Options).
 
-%% @doc This is the latest version of AWS WAF, named AWS WAFV2, released in
-%% November, 2019.
+%% @doc Retrieves the keys that are currently blocked by a rate-based rule.
 %%
-%% For information, including how to migrate your AWS WAF resources from the
-%% prior release, see the AWS WAF Developer Guide.
-%%
-%% Retrieves the keys that are currently blocked by a rate-based rule. The
-%% maximum number of managed keys that can be blocked for a single rate-based
-%% rule is 10,000. If more than 10,000 addresses exceed the rate limit, those
-%% with the highest rates are blocked.
+%% The maximum number of managed keys that can be blocked for a single
+%% rate-based rule is 10,000. If more than 10,000 addresses exceed the rate
+%% limit, those with the highest rates are blocked.
 get_rate_based_statement_managed_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_rate_based_statement_managed_keys(Client, Input, []).
@@ -466,13 +377,7 @@ get_rate_based_statement_managed_keys(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRateBasedStatementManagedKeys">>, Input, Options).
 
-%% @doc This is the latest version of AWS WAF, named AWS WAFV2, released in
-%% November, 2019.
-%%
-%% For information, including how to migrate your AWS WAF resources from the
-%% prior release, see the AWS WAF Developer Guide.
-%%
-%% Retrieves the specified `RegexPatternSet'.
+%% @doc Retrieves the specified `RegexPatternSet'.
 get_regex_pattern_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_regex_pattern_set(Client, Input, []).
@@ -480,13 +385,7 @@ get_regex_pattern_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRegexPatternSet">>, Input, Options).
 
-%% @doc This is the latest version of AWS WAF, named AWS WAFV2, released in
-%% November, 2019.
-%%
-%% For information, including how to migrate your AWS WAF resources from the
-%% prior release, see the AWS WAF Developer Guide.
-%%
-%% Retrieves the specified `RuleGroup'.
+%% @doc Retrieves the specified `RuleGroup'.
 get_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_rule_group(Client, Input, []).
@@ -494,17 +393,12 @@ get_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRuleGroup">>, Input, Options).
 
-%% @doc This is the latest version of AWS WAF, named AWS WAFV2, released in
-%% November, 2019.
-%%
-%% For information, including how to migrate your AWS WAF resources from the
-%% prior release, see the AWS WAF Developer Guide.
-%%
-%% Gets detailed information about a specified number of requests--a
+%% @doc Gets detailed information about a specified number of requests--a
 %% sample--that AWS WAF randomly selects from among the first 5,000 requests
-%% that your AWS resource received during a time range that you choose. You
-%% can specify a sample size of up to 500 requests, and you can specify any
-%% time range in the previous three hours.
+%% that your AWS resource received during a time range that you choose.
+%%
+%% You can specify a sample size of up to 500 requests, and you can specify
+%% any time range in the previous three hours.
 %%
 %% `GetSampledRequests' returns a time range, which is usually the time range
 %% that you specified. However, if your resource (such as a CloudFront
@@ -519,13 +413,7 @@ get_sampled_requests(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSampledRequests">>, Input, Options).
 
-%% @doc This is the latest version of AWS WAF, named AWS WAFV2, released in
-%% November, 2019.
-%%
-%% For information, including how to migrate your AWS WAF resources from the
-%% prior release, see the AWS WAF Developer Guide.
-%%
-%% Retrieves the specified `WebACL'.
+%% @doc Retrieves the specified `WebACL'.
 get_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_web_acl(Client, Input, []).
@@ -533,13 +421,7 @@ get_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetWebACL">>, Input, Options).
 
-%% @doc This is the latest version of AWS WAF, named AWS WAFV2, released in
-%% November, 2019.
-%%
-%% For information, including how to migrate your AWS WAF resources from the
-%% prior release, see the AWS WAF Developer Guide.
-%%
-%% Retrieves the `WebACL' for the specified resource.
+%% @doc Retrieves the `WebACL' for the specified resource.
 get_web_acl_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_web_acl_for_resource(Client, Input, []).
@@ -547,14 +429,10 @@ get_web_acl_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetWebACLForResource">>, Input, Options).
 
-%% @doc This is the latest version of AWS WAF, named AWS WAFV2, released in
-%% November, 2019.
+%% @doc Retrieves an array of managed rule groups that are available for you
+%% to use.
 %%
-%% For information, including how to migrate your AWS WAF resources from the
-%% prior release, see the AWS WAF Developer Guide.
-%%
-%% Retrieves an array of managed rule groups that are available for you to
-%% use. This list includes all AWS Managed Rules rule groups and the AWS
+%% This list includes all AWS Managed Rules rule groups and the AWS
 %% Marketplace managed rule groups that you're subscribed to.
 list_available_managed_rule_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -563,13 +441,7 @@ list_available_managed_rule_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAvailableManagedRuleGroups">>, Input, Options).
 
-%% @doc This is the latest version of AWS WAF, named AWS WAFV2, released in
-%% November, 2019.
-%%
-%% For information, including how to migrate your AWS WAF resources from the
-%% prior release, see the AWS WAF Developer Guide.
-%%
-%% Retrieves an array of `IPSetSummary' objects for the IP sets that you
+%% @doc Retrieves an array of `IPSetSummary' objects for the IP sets that you
 %% manage.
 list_ip_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -578,13 +450,7 @@ list_ip_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListIPSets">>, Input, Options).
 
-%% @doc This is the latest version of AWS WAF, named AWS WAFV2, released in
-%% November, 2019.
-%%
-%% For information, including how to migrate your AWS WAF resources from the
-%% prior release, see the AWS WAF Developer Guide.
-%%
-%% Retrieves an array of your `LoggingConfiguration' objects.
+%% @doc Retrieves an array of your `LoggingConfiguration' objects.
 list_logging_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_logging_configurations(Client, Input, []).
@@ -592,13 +458,7 @@ list_logging_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLoggingConfigurations">>, Input, Options).
 
-%% @doc This is the latest version of AWS WAF, named AWS WAFV2, released in
-%% November, 2019.
-%%
-%% For information, including how to migrate your AWS WAF resources from the
-%% prior release, see the AWS WAF Developer Guide.
-%%
-%% Retrieves an array of `RegexPatternSetSummary' objects for the regex
+%% @doc Retrieves an array of `RegexPatternSetSummary' objects for the regex
 %% pattern sets that you manage.
 list_regex_pattern_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -607,16 +467,11 @@ list_regex_pattern_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRegexPatternSets">>, Input, Options).
 
-%% @doc This is the latest version of AWS WAF, named AWS WAFV2, released in
-%% November, 2019.
+%% @doc Retrieves an array of the Amazon Resource Names (ARNs) for the
+%% regional resources that are associated with the specified web ACL.
 %%
-%% For information, including how to migrate your AWS WAF resources from the
-%% prior release, see the AWS WAF Developer Guide.
-%%
-%% Retrieves an array of the Amazon Resource Names (ARNs) for the regional
-%% resources that are associated with the specified web ACL. If you want the
-%% list of AWS CloudFront resources, use the AWS CloudFront call
-%% `ListDistributionsByWebACLId'.
+%% If you want the list of AWS CloudFront resources, use the AWS CloudFront
+%% call `ListDistributionsByWebACLId'.
 list_resources_for_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resources_for_web_acl(Client, Input, []).
@@ -624,14 +479,8 @@ list_resources_for_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResourcesForWebACL">>, Input, Options).
 
-%% @doc This is the latest version of AWS WAF, named AWS WAFV2, released in
-%% November, 2019.
-%%
-%% For information, including how to migrate your AWS WAF resources from the
-%% prior release, see the AWS WAF Developer Guide.
-%%
-%% Retrieves an array of `RuleGroupSummary' objects for the rule groups that
-%% you manage.
+%% @doc Retrieves an array of `RuleGroupSummary' objects for the rule groups
+%% that you manage.
 list_rule_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rule_groups(Client, Input, []).
@@ -639,17 +488,13 @@ list_rule_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRuleGroups">>, Input, Options).
 
-%% @doc This is the latest version of AWS WAF, named AWS WAFV2, released in
-%% November, 2019.
+%% @doc Retrieves the `TagInfoForResource' for the specified resource.
 %%
-%% For information, including how to migrate your AWS WAF resources from the
-%% prior release, see the AWS WAF Developer Guide.
-%%
-%% Retrieves the `TagInfoForResource' for the specified resource. Tags are
-%% key:value pairs that you can use to categorize and manage your resources,
-%% for purposes like billing. For example, you might set the tag key to
-%% "customer" and the value to the customer name or ID. You can specify one
-%% or more tags to add to each AWS resource, up to 50 tags for a resource.
+%% Tags are key:value pairs that you can use to categorize and manage your
+%% resources, for purposes like billing. For example, you might set the tag
+%% key to "customer" and the value to the customer name or ID. You can
+%% specify one or more tags to add to each AWS resource, up to 50 tags for a
+%% resource.
 %%
 %% You can tag the AWS resources that you manage through AWS WAF: web ACLs,
 %% rule groups, IP sets, and regex pattern sets. You can't manage or view
@@ -661,14 +506,8 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
-%% @doc This is the latest version of AWS WAF, named AWS WAFV2, released in
-%% November, 2019.
-%%
-%% For information, including how to migrate your AWS WAF resources from the
-%% prior release, see the AWS WAF Developer Guide.
-%%
-%% Retrieves an array of `WebACLSummary' objects for the web ACLs that you
-%% manage.
+%% @doc Retrieves an array of `WebACLSummary' objects for the web ACLs that
+%% you manage.
 list_web_acls(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_web_acls(Client, Input, []).
@@ -676,14 +515,8 @@ list_web_acls(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWebACLs">>, Input, Options).
 
-%% @doc This is the latest version of AWS WAF, named AWS WAFV2, released in
-%% November, 2019.
-%%
-%% For information, including how to migrate your AWS WAF resources from the
-%% prior release, see the AWS WAF Developer Guide.
-%%
-%% Enables the specified `LoggingConfiguration', to start logging from a web
-%% ACL, according to the configuration provided.
+%% @doc Enables the specified `LoggingConfiguration', to start logging from a
+%% web ACL, according to the configuration provided.
 %%
 %% You can access information about all traffic that AWS WAF inspects using
 %% the following steps:
@@ -739,17 +572,13 @@ put_permission_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutPermissionPolicy">>, Input, Options).
 
-%% @doc This is the latest version of AWS WAF, named AWS WAFV2, released in
-%% November, 2019.
+%% @doc Associates tags with the specified AWS resource.
 %%
-%% For information, including how to migrate your AWS WAF resources from the
-%% prior release, see the AWS WAF Developer Guide.
-%%
-%% Associates tags with the specified AWS resource. Tags are key:value pairs
-%% that you can use to categorize and manage your resources, for purposes
-%% like billing. For example, you might set the tag key to "customer" and the
-%% value to the customer name or ID. You can specify one or more tags to add
-%% to each AWS resource, up to 50 tags for a resource.
+%% Tags are key:value pairs that you can use to categorize and manage your
+%% resources, for purposes like billing. For example, you might set the tag
+%% key to "customer" and the value to the customer name or ID. You can
+%% specify one or more tags to add to each AWS resource, up to 50 tags for a
+%% resource.
 %%
 %% You can tag the AWS resources that you manage through AWS WAF: web ACLs,
 %% rule groups, IP sets, and regex pattern sets. You can't manage or view
@@ -761,17 +590,12 @@ tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
-%% @doc This is the latest version of AWS WAF, named AWS WAFV2, released in
-%% November, 2019.
+%% @doc Disassociates tags from an AWS resource.
 %%
-%% For information, including how to migrate your AWS WAF resources from the
-%% prior release, see the AWS WAF Developer Guide.
-%%
-%% Disassociates tags from an AWS resource. Tags are key:value pairs that you
-%% can associate with AWS resources. For example, the tag key might be
-%% "customer" and the tag value might be "companyA." You can specify one or
-%% more tags to add to each container. You can add up to 50 tags to each AWS
-%% resource.
+%% Tags are key:value pairs that you can associate with AWS resources. For
+%% example, the tag key might be "customer" and the tag value might be
+%% "companyA." You can specify one or more tags to add to each container. You
+%% can add up to 50 tags to each AWS resource.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -779,13 +603,7 @@ untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
-%% @doc This is the latest version of AWS WAF, named AWS WAFV2, released in
-%% November, 2019.
-%%
-%% For information, including how to migrate your AWS WAF resources from the
-%% prior release, see the AWS WAF Developer Guide.
-%%
-%% Updates the specified `IPSet'.
+%% @doc Updates the specified `IPSet'.
 update_ip_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_ip_set(Client, Input, []).
@@ -793,13 +611,7 @@ update_ip_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateIPSet">>, Input, Options).
 
-%% @doc This is the latest version of AWS WAF, named AWS WAFV2, released in
-%% November, 2019.
-%%
-%% For information, including how to migrate your AWS WAF resources from the
-%% prior release, see the AWS WAF Developer Guide.
-%%
-%% Updates the specified `RegexPatternSet'.
+%% @doc Updates the specified `RegexPatternSet'.
 update_regex_pattern_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_regex_pattern_set(Client, Input, []).
@@ -807,13 +619,7 @@ update_regex_pattern_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRegexPatternSet">>, Input, Options).
 
-%% @doc This is the latest version of AWS WAF, named AWS WAFV2, released in
-%% November, 2019.
-%%
-%% For information, including how to migrate your AWS WAF resources from the
-%% prior release, see the AWS WAF Developer Guide.
-%%
-%% Updates the specified `RuleGroup'.
+%% @doc Updates the specified `RuleGroup'.
 %%
 %% A rule group defines a collection of rules to inspect and control web
 %% requests that you can use in a `WebACL'. When you create a rule group, you
@@ -827,13 +633,7 @@ update_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRuleGroup">>, Input, Options).
 
-%% @doc This is the latest version of AWS WAF, named AWS WAFV2, released in
-%% November, 2019.
-%%
-%% For information, including how to migrate your AWS WAF resources from the
-%% prior release, see the AWS WAF Developer Guide.
-%%
-%% Updates the specified `WebACL'.
+%% @doc Updates the specified `WebACL'.
 %%
 %% A Web ACL defines a collection of rules to use to inspect and control web
 %% requests. Each rule has an action defined (allow, block, or count) for

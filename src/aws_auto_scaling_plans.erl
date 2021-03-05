@@ -3,20 +3,32 @@
 
 %% @doc AWS Auto Scaling
 %%
-%% Use AWS Auto Scaling to quickly discover all the scalable AWS resources
-%% for your application and configure dynamic scaling and predictive scaling
-%% for your resources using scaling plans.
+%% Use AWS Auto Scaling to create scaling plans for your applications to
+%% automatically scale your scalable AWS resources.
 %%
-%% Use this service in conjunction with the Amazon EC2 Auto Scaling,
-%% Application Auto Scaling, Amazon CloudWatch, and AWS CloudFormation
-%% services.
+%% API Summary
 %%
-%% Currently, predictive scaling is only available for Amazon EC2 Auto
-%% Scaling groups.
+%% You can use the AWS Auto Scaling service API to accomplish the following
+%% tasks:
 %%
-%% For more information about AWS Auto Scaling, including information about
-%% granting IAM users required permissions for AWS Auto Scaling actions, see
-%% the AWS Auto Scaling User Guide.
+%% <ul> <li> Create and manage scaling plans
+%%
+%% </li> <li> Define target tracking scaling policies to dynamically scale
+%% your resources based on utilization
+%%
+%% </li> <li> Scale Amazon EC2 Auto Scaling groups using predictive scaling
+%% and dynamic scaling to scale your Amazon EC2 capacity faster
+%%
+%% </li> <li> Set minimum and maximum capacity limits
+%%
+%% </li> <li> Retrieve information on existing scaling plans
+%%
+%% </li> <li> Access current forecast data and historical forecast data for
+%% up to 56 days previous
+%%
+%% </li> </ul> To learn more about AWS Auto Scaling, including information
+%% about granting IAM users required permissions for AWS Auto Scaling
+%% actions, see the AWS Auto Scaling User Guide.
 -module(aws_auto_scaling_plans).
 
 -export([create_scaling_plan/2,

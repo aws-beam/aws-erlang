@@ -8,7 +8,7 @@
 %%
 %% Applications can use Amazon SNS to easily push real-time notification
 %% messages to interested subscribers over multiple delivery protocols. For
-%% more information about this product see https://aws.amazon.com/sns. For
+%% more information about this product see the Amazon SNS product page. For
 %% detailed information about Amazon SNS features and their associated API
 %% calls, see the Amazon SNS Developer Guide.
 %%
@@ -484,6 +484,9 @@ set_platform_application_attributes(Client, Input, Options)
 %% the `Publish' action with the `MessageAttributes.entry.N' parameter. For
 %% more information, see Publishing to a mobile phone in the Amazon SNS
 %% Developer Guide.
+%%
+%% To use this operation, you must grant the Amazon SNS service principal
+%% (`sns.amazonaws.com') permission to perform the `s3:ListBucket' action.
 set_sms_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_sms_attributes(Client, Input, []).

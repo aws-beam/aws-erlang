@@ -99,6 +99,8 @@
          stop_notebook_execution/3,
          terminate_job_flows/2,
          terminate_job_flows/3,
+         update_studio/2,
+         update_studio/3,
          update_studio_session_mapping/2,
          update_studio_session_mapping/3]).
 
@@ -194,10 +196,7 @@ create_security_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSecurityConfiguration">>, Input, Options).
 
-%% @doc The Amazon EMR Studio APIs are in preview release for Amazon EMR and
-%% are subject to change.
-%%
-%% Creates a new Amazon EMR Studio.
+%% @doc Creates a new Amazon EMR Studio.
 create_studio(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_studio(Client, Input, []).
@@ -205,12 +204,9 @@ create_studio(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateStudio">>, Input, Options).
 
-%% @doc The Amazon EMR Studio APIs are in preview release for Amazon EMR and
-%% are subject to change.
-%%
-%% Maps a user or group to the Amazon EMR Studio specified by `StudioId', and
-%% applies a session policy to refine Studio permissions for that user or
-%% group.
+%% @doc Maps a user or group to the Amazon EMR Studio specified by
+%% `StudioId', and applies a session policy to refine Studio permissions for
+%% that user or group.
 create_studio_session_mapping(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_studio_session_mapping(Client, Input, []).
@@ -226,10 +222,7 @@ delete_security_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSecurityConfiguration">>, Input, Options).
 
-%% @doc The Amazon EMR Studio APIs are in preview release for Amazon EMR and
-%% are subject to change.
-%%
-%% Removes an Amazon EMR Studio from the Studio metadata store.
+%% @doc Removes an Amazon EMR Studio from the Studio metadata store.
 delete_studio(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_studio(Client, Input, []).
@@ -237,10 +230,7 @@ delete_studio(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteStudio">>, Input, Options).
 
-%% @doc The Amazon EMR Studio APIs are in preview release for Amazon EMR and
-%% are subject to change.
-%%
-%% Removes a user or group from an Amazon EMR Studio.
+%% @doc Removes a user or group from an Amazon EMR Studio.
 delete_studio_session_mapping(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_studio_session_mapping(Client, Input, []).
@@ -310,11 +300,8 @@ describe_step(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStep">>, Input, Options).
 
-%% @doc The Amazon EMR Studio APIs are in preview release for Amazon EMR and
-%% are subject to change.
-%%
-%% Returns details for the specified Amazon EMR Studio including ID, Name,
-%% VPC, Studio access URL, and so on.
+%% @doc Returns details for the specified Amazon EMR Studio including ID,
+%% Name, VPC, Studio access URL, and so on.
 describe_studio(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_studio(Client, Input, []).
@@ -343,11 +330,8 @@ get_managed_scaling_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetManagedScalingPolicy">>, Input, Options).
 
-%% @doc The Amazon EMR Studio APIs are in preview release for Amazon EMR and
-%% are subject to change.
-%%
-%% Fetches mapping details for the specified Amazon EMR Studio and identity
-%% (user or group).
+%% @doc Fetches mapping details for the specified Amazon EMR Studio and
+%% identity (user or group).
 get_studio_session_mapping(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_studio_session_mapping(Client, Input, []).
@@ -438,7 +422,7 @@ list_security_configurations(Client, Input, Options)
 %% @doc Provides a list of steps for the cluster in reverse order unless you
 %% specify `stepIds' with the request of filter by `StepStates'.
 %%
-%% You can specify a maximum of ten `stepIDs'.
+%% You can specify a maximum of 10 `stepIDs'.
 list_steps(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_steps(Client, Input, []).
@@ -446,11 +430,8 @@ list_steps(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSteps">>, Input, Options).
 
-%% @doc The Amazon EMR Studio APIs are in preview release for Amazon EMR and
-%% are subject to change.
-%%
-%% Returns a list of all user or group session mappings for the EMR Studio
-%% specified by `StudioId'.
+%% @doc Returns a list of all user or group session mappings for the Amazon
+%% EMR Studio specified by `StudioId'.
 list_studio_session_mappings(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_studio_session_mappings(Client, Input, []).
@@ -458,10 +439,9 @@ list_studio_session_mappings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStudioSessionMappings">>, Input, Options).
 
-%% @doc The Amazon EMR Studio APIs are in preview release for Amazon EMR and
-%% are subject to change.
+%% @doc Returns a list of all Amazon EMR Studios associated with the AWS
+%% account.
 %%
-%% Returns a list of all Amazon EMR Studios associated with the AWS account.
 %% The list includes details such as ID, Studio Access URL, and creation time
 %% for each Studio.
 list_studios(Client, Input)
@@ -696,11 +676,17 @@ terminate_job_flows(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TerminateJobFlows">>, Input, Options).
 
-%% @doc The Amazon EMR Studio APIs are in preview release for Amazon EMR and
-%% are subject to change.
-%%
-%% Updates the session policy attached to the user or group for the specified
-%% Amazon EMR Studio.
+%% @doc Updates an Amazon EMR Studio configuration, including attributes such
+%% as name, description, and subnets.
+update_studio(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_studio(Client, Input, []).
+update_studio(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateStudio">>, Input, Options).
+
+%% @doc Updates the session policy attached to the user or group for the
+%% specified Amazon EMR Studio.
 update_studio_session_mapping(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_studio_session_mapping(Client, Input, []).

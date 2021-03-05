@@ -255,6 +255,8 @@ create_code_signing_config(Client, Input0, Options) ->
 %%
 %% </li> <li> Using AWS Lambda with Amazon MSK
 %%
+%% </li> <li> Using AWS Lambda with Self-Managed Apache Kafka
+%%
 %% </li> </ul> The following error handling options are only available for
 %% stream sources (DynamoDB and Kinesis):
 %%
@@ -294,9 +296,10 @@ create_event_source_mapping(Client, Input0, Options) ->
 %% @doc Creates a Lambda function.
 %%
 %% To create a function, you need a deployment package and an execution role.
-%% The deployment package contains your function code. The execution role
-%% grants the function permission to use AWS services, such as Amazon
-%% CloudWatch Logs for log streaming and AWS X-Ray for request tracing.
+%% The deployment package is a .zip file archive or container image that
+%% contains your function code. The execution role grants the function
+%% permission to use AWS services, such as Amazon CloudWatch Logs for log
+%% streaming and AWS X-Ray for request tracing.
 %%
 %% When you create a function, Lambda provisions an instance of the function
 %% and its supporting resources. If your function connects to a VPC, this
@@ -320,7 +323,8 @@ create_event_source_mapping(Client, Input0, Options) ->
 %% (`TagResource') and per-function concurrency limits
 %% (`PutFunctionConcurrency').
 %%
-%% To enable code signing for this function, specify the ARN of a
+%% You can use code signing if your deployment package is a .zip file
+%% archive. To enable code signing for this function, specify the ARN of a
 %% code-signing configuration. When a user attempts to deploy a code package
 %% with `UpdateFunctionCode', Lambda checks that the code package has a valid
 %% signature from a trusted publisher. The code-signing configuration
@@ -901,8 +905,7 @@ list_aliases(Client, FunctionName, FunctionVersion, Marker, MaxItems, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of code signing configurations for the specified
-%% function.
+%% @doc Returns a list of code signing configurations.
 %%
 %% A request returns up to 10,000 configurations per call. You can use the
 %% `MaxItems' parameter to return fewer configurations per call.
@@ -1447,6 +1450,10 @@ update_event_source_mapping(Client, UUID, Input0, Options) ->
 %%
 %% The function's code is locked when you publish a version. You can't modify
 %% the code of a published version, only the unpublished version.
+%%
+%% For a function defined as a container image, Lambda resolves the image tag
+%% to an image digest. In Amazon ECR, if you update the image tag to a new
+%% image, Lambda does not automatically update the function.
 update_function_code(Client, FunctionName, Input) ->
     update_function_code(Client, FunctionName, Input, []).
 update_function_code(Client, FunctionName, Input0, Options) ->

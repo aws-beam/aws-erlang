@@ -1,9 +1,7 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc
-%%
-%% This is the ACM Private CA API Reference.
+%% @doc This is the ACM Private CA API Reference.
 %%
 %% It provides descriptions, syntax, and usage examples for each of the
 %% actions and data types involved in creating and managing private
@@ -249,8 +247,8 @@ delete_permission(Client, Input, Options)
 %% Service Linked Role with ACM.
 %%
 %% </li> <li> Updates made in AWS Resource Manager (RAM) are reflected in
-%% policies. For more information, see Using AWS Resource Access Manager
-%% (RAM) with ACM Private CA.
+%% policies. For more information, see Attach a Policy for Cross-Account
+%% Access.
 %%
 %% </li> </ul>
 delete_policy(Client, Input)
@@ -280,7 +278,7 @@ delete_policy(Client, Input, Options)
 %% </li> <li> `EXPIRED' - Your private CA certificate has expired.
 %%
 %% </li> <li> `FAILED' - Your private CA has failed. Your CA can fail because
-%% of problems such a network outage or backend AWS failure or other errors.
+%% of problems such a network outage or back-end AWS failure or other errors.
 %% A failed CA can never return to the pending state. You must create a new
 %% CA.
 %%
@@ -379,8 +377,8 @@ get_certificate_authority_csr(Client, Input, Options)
 %% Service Linked Role with ACM.
 %%
 %% </li> <li> Updates made in AWS Resource Manager (RAM) are reflected in
-%% policies. For more information, see Using AWS Resource Access Manager
-%% (RAM) with ACM Private CA.
+%% policies. For more information, see Attach a Policy for Cross-Account
+%% Access.
 %%
 %% </li> </ul>
 get_policy(Client, Input)
@@ -397,8 +395,7 @@ get_policy(Client, Input, Options)
 %% following preparations must in place:
 %%
 %% <ol> <li> In ACM Private CA, call the CreateCertificateAuthority action to
-%% create the private CA that that you plan to back with the imported
-%% certificate.
+%% create the private CA that you plan to back with the imported certificate.
 %%
 %% </li> <li> Call the GetCertificateAuthorityCsr action to generate a
 %% certificate signing request (CSR).
@@ -409,23 +406,32 @@ get_policy(Client, Input, Options)
 %% </li> <li> Create a certificate chain and copy the signed certificate and
 %% the certificate chain to your working directory.
 %%
-%% </li> </ol> The following requirements apply when you import a CA
-%% certificate.
+%% </li> </ol> ACM Private CA supports three scenarios for installing a CA
+%% certificate:
 %%
-%% <ul> <li> You cannot import a non-self-signed certificate for use as a
-%% root CA.
+%% <ul> <li> Installing a certificate for a root CA hosted by ACM Private CA.
 %%
-%% </li> <li> You cannot import a self-signed certificate for use as a
-%% subordinate CA.
+%% </li> <li> Installing a subordinate CA certificate whose parent authority
+%% is hosted by ACM Private CA.
+%%
+%% </li> <li> Installing a subordinate CA certificate whose parent authority
+%% is externally hosted.
+%%
+%% </li> </ul> The following additional requirements apply when you import a
+%% CA certificate.
+%%
+%% <ul> <li> Only a self-signed certificate can be imported as a root CA.
+%%
+%% </li> <li> A self-signed certificate cannot be imported as a subordinate
+%% CA.
 %%
 %% </li> <li> Your certificate chain must not include the private CA
 %% certificate that you are importing.
 %%
-%% </li> <li> Your ACM Private CA-hosted or on-premises CA certificate must
-%% be the last certificate in your chain. The subordinate certificate, if
-%% any, that your root CA signed must be next to last. The subordinate
-%% certificate signed by the preceding subordinate CA must come next, and so
-%% on until your chain is built.
+%% </li> <li> Your root CA must be the last certificate in your chain. The
+%% subordinate certificate, if any, that your root CA signed must be next to
+%% last. The subordinate certificate signed by the preceding subordinate CA
+%% must come next, and so on until your chain is built.
 %%
 %% </li> <li> The chain must be PEM-encoded.
 %%
@@ -559,7 +565,8 @@ list_tags(Client, Input, Options)
 %% @doc Attaches a resource-based policy to a private CA.
 %%
 %% A policy can also be applied by sharing a private CA through AWS Resource
-%% Access Manager (RAM).
+%% Access Manager (RAM). For more information, see Attach a Policy for
+%% Cross-Account Access.
 %%
 %% The policy can be displayed with GetPolicy and removed with DeletePolicy.
 %%
@@ -580,8 +587,8 @@ list_tags(Client, Input, Options)
 %% Service Linked Role with ACM.
 %%
 %% </li> <li> Updates made in AWS Resource Manager (RAM) are reflected in
-%% policies. For more information, see Using AWS Resource Access Manager
-%% (RAM) with ACM Private CA.
+%% policies. For more information, see Attach a Policy for Cross-Account
+%% Access.
 %%
 %% </li> </ul>
 put_policy(Client, Input)

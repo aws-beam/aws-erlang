@@ -297,19 +297,24 @@ delete_stack_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteStackSet">>, Input, Options).
 
-%% @doc Removes a type or type version from active use in the CloudFormation
-%% registry.
+%% @doc Marks an extension or extension version as `DEPRECATED' in the
+%% CloudFormation registry, removing it from active use.
 %%
-%% If a type or type version is deregistered, it cannot be used in
+%% Deprecated extensions or extension versions cannot be used in
 %% CloudFormation operations.
 %%
-%% To deregister a type, you must individually deregister all registered
-%% versions of that type. If a type has only a single registered version,
-%% deregistering that version results in the type itself being deregistered.
+%% To deregister an entire extension, you must individually deregister all
+%% active versions of that extension. If an extension has only a single
+%% active version, deregistering that version results in the extension itself
+%% being deregistered and marked as deprecated in the registry.
 %%
-%% You cannot deregister the default version of a type, unless it is the only
-%% registered version of that type, in which case the type itself is
-%% deregistered as well.
+%% You cannot deregister the default version of an extension if there are
+%% other active version of that extension. If you do deregister the default
+%% version of an extension, the textensionype itself is deregistered as well
+%% and marked as deprecated.
+%%
+%% To view the deprecation status of an extension or extension version, use
+%% DescribeType.
 deregister_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_type(Client, Input, []).
@@ -480,11 +485,12 @@ describe_stacks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStacks">>, Input, Options).
 
-%% @doc Returns detailed information about a type that has been registered.
+%% @doc Returns detailed information about an extension that has been
+%% registered.
 %%
 %% If you specify a `VersionId', `DescribeType' returns information about
-%% that specific type version. Otherwise, it returns information about the
-%% default type version.
+%% that specific extension version. Otherwise, it returns information about
+%% the default extension version.
 describe_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_type(Client, Input, []).
@@ -492,7 +498,7 @@ describe_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeType">>, Input, Options).
 
-%% @doc Returns information about a type's registration, including its
+%% @doc Returns information about an extension's registration, including its
 %% current status and type and version identifiers.
 %%
 %% When you initiate a registration request using ` `RegisterType' ', you can
@@ -500,7 +506,7 @@ describe_type(Client, Input, Options)
 %% registration request.
 %%
 %% Once the registration request has completed, use ` `DescribeType' ' to
-%% return detailed informaiton about a type.
+%% return detailed information about an extension.
 describe_type_registration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_type_registration(Client, Input, []).
@@ -585,7 +591,7 @@ detect_stack_resource_drift(Client, Input, Options)
 %% Once the operation has completed, use the following actions to return
 %% drift information:
 %%
-%% <ul> <li> Use ` `DescribeStackSet' ' to return detailed informaiton about
+%% <ul> <li> Use ` `DescribeStackSet' ' to return detailed information about
 %% the stack set, including detailed information about the last completed
 %% drift operation performed on the stack set. (Information about drift
 %% operations that are in progress is not included.)
@@ -776,6 +782,21 @@ list_stack_set_operations(Client, Input, Options)
 
 %% @doc Returns summary information about stack sets that are associated with
 %% the user.
+%%
+%% <ul> <li> [Self-managed permissions] If you set the `CallAs' parameter to
+%% `SELF' while signed in to your AWS account, `ListStackSets' returns all
+%% self-managed stack sets in your AWS account.
+%%
+%% </li> <li> [Service-managed permissions] If you set the `CallAs' parameter
+%% to `SELF' while signed in to the organization's management account,
+%% `ListStackSets' returns all stack sets in the management account.
+%%
+%% </li> <li> [Service-managed permissions] If you set the `CallAs' parameter
+%% to `DELEGATED_ADMIN' while signed in to your member account,
+%% `ListStackSets' returns all stack sets with service-managed permissions in
+%% the management account.
+%%
+%% </li> </ul>
 list_stack_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_stack_sets(Client, Input, []).
@@ -797,7 +818,7 @@ list_stacks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStacks">>, Input, Options).
 
-%% @doc Returns a list of registration tokens for the specified type(s).
+%% @doc Returns a list of registration tokens for the specified extension(s).
 list_type_registrations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_type_registrations(Client, Input, []).
@@ -805,7 +826,7 @@ list_type_registrations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTypeRegistrations">>, Input, Options).
 
-%% @doc Returns summary information about the versions of a type.
+%% @doc Returns summary information about the versions of an extension.
 list_type_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_type_versions(Client, Input, []).
@@ -813,7 +834,7 @@ list_type_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTypeVersions">>, Input, Options).
 
-%% @doc Returns summary information about types that have been registered
+%% @doc Returns summary information about extension that have been registered
 %% with CloudFormation.
 list_types(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -833,24 +854,25 @@ record_handler_progress(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RecordHandlerProgress">>, Input, Options).
 
-%% @doc Registers a type with the CloudFormation service.
+%% @doc Registers an extension with the CloudFormation service.
 %%
-%% Registering a type makes it available for use in CloudFormation templates
-%% in your AWS account, and includes:
+%% Registering an extension makes it available for use in CloudFormation
+%% templates in your AWS account, and includes:
 %%
-%% <ul> <li> Validating the resource schema
+%% <ul> <li> Validating the extension schema
 %%
-%% </li> <li> Determining which handlers have been specified for the resource
+%% </li> <li> Determining which handlers, if any, have been specified for the
+%% extension
 %%
-%% </li> <li> Making the resource type available for use in your account
+%% </li> <li> Making the extension available for use in your account
 %%
-%% </li> </ul> For more information on how to develop types and ready them
-%% for registeration, see Creating Resource Providers in the CloudFormation
-%% CLI User Guide.
+%% </li> </ul> For more information on how to develop extensions and ready
+%% them for registeration, see Creating Resource Providers in the
+%% CloudFormation CLI User Guide.
 %%
-%% You can have a maximum of 50 resource type versions registered at a time.
-%% This maximum is per account and per region. Use DeregisterType to
-%% deregister specific resource type versions if necessary.
+%% You can have a maximum of 50 resource extension versions registered at a
+%% time. This maximum is per account and per region. Use DeregisterType to
+%% deregister specific extension versions if necessary.
 %%
 %% Once you have initiated a registration request using ` `RegisterType' ',
 %% you can use ` `DescribeTypeRegistration' ' to monitor the progress of the
@@ -870,9 +892,10 @@ set_stack_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetStackPolicy">>, Input, Options).
 
-%% @doc Specify the default version of a type.
+%% @doc Specify the default version of an extension.
 %%
-%% The default version of a type will be used in CloudFormation operations.
+%% The default version of an extension will be used in CloudFormation
+%% operations.
 set_type_default_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_type_default_version(Client, Input, []).

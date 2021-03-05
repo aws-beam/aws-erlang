@@ -10,9 +10,6 @@
 %%
 %% For more information about the Data Service API, see Using the Data API
 %% for Aurora Serverless in the Amazon Aurora User Guide.
-%%
-%% If you have questions or comments related to the Data API, send email to
-%% Rds-data-api-feedback@amazon.com.
 -module(aws_rds_data).
 
 -export([batch_execute_statement/2,

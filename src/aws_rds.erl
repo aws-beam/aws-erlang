@@ -225,6 +225,8 @@
          download_db_log_file_portion/3,
          failover_db_cluster/2,
          failover_db_cluster/3,
+         failover_global_cluster/2,
+         failover_global_cluster/3,
          import_installation_media/2,
          import_installation_media/3,
          list_tags_for_resource/2,
@@ -305,6 +307,8 @@
          start_db_cluster/3,
          start_db_instance/2,
          start_db_instance/3,
+         start_db_instance_automated_backups_replication/2,
+         start_db_instance_automated_backups_replication/3,
          start_export_task/2,
          start_export_task/3,
          stop_activity_stream/2,
@@ -312,7 +316,9 @@
          stop_db_cluster/2,
          stop_db_cluster/3,
          stop_db_instance/2,
-         stop_db_instance/3]).
+         stop_db_instance/3,
+         stop_db_instance_automated_backups_replication/2,
+         stop_db_instance_automated_backups_replication/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -461,11 +467,11 @@ copy_db_cluster_parameter_group(Client, Input, Options)
 %%
 %% The pre-signed URL request must contain the following parameter values:
 %%
-%% <ul> <li> `KmsKeyId' - The KMS key identifier for the key to use to
-%% encrypt the copy of the DB cluster snapshot in the destination AWS Region.
-%% This is the same identifier for both the `CopyDBClusterSnapshot' action
-%% that is called in the destination AWS Region, and the action contained in
-%% the pre-signed URL.
+%% <ul> <li> `KmsKeyId' - The AWS KMS key identifier for the customer master
+%% key (CMK) to use to encrypt the copy of the DB cluster snapshot in the
+%% destination AWS Region. This is the same identifier for both the
+%% `CopyDBClusterSnapshot' action that is called in the destination AWS
+%% Region, and the action contained in the pre-signed URL.
 %%
 %% </li> <li> `DestinationRegion' - The name of the AWS Region that the DB
 %% cluster snapshot is to be created in.
@@ -727,7 +733,7 @@ create_db_security_group(Client, Input, Options)
 %% @doc Creates a snapshot of a DB instance.
 %%
 %% The source DB instance must be in the `available' or
-%% `storage-optimization'state.
+%% `storage-optimization' state.
 create_db_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_snapshot(Client, Input, []).
@@ -923,8 +929,9 @@ delete_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBInstance">>, Input, Options).
 
-%% @doc Deletes automated backups based on the source instance's
-%% `DbiResourceId' value or the restorable instance's resource ID.
+%% @doc Deletes automated backups using the `DbiResourceId' value of the
+%% source DB instance or the Amazon Resource Name (ARN) of the automated
+%% backups.
 delete_db_instance_automated_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_instance_automated_backup(Client, Input, []).
@@ -1472,7 +1479,8 @@ describe_reserved_db_instances_offerings(Client, Input, Options)
     request(Client, <<"DescribeReservedDBInstancesOfferings">>, Input, Options).
 
 %% @doc Returns a list of the source AWS Regions where the current AWS Region
-%% can create a read replica or copy a DB snapshot from.
+%% can create a read replica, copy a DB snapshot from, or replicate automated
+%% backups from.
 %%
 %% This API action supports pagination.
 describe_source_regions(Client, Input)
@@ -1525,6 +1533,31 @@ failover_db_cluster(Client, Input)
 failover_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"FailoverDBCluster">>, Input, Options).
+
+%% @doc Initiates the failover process for an Aurora global database
+%% (`GlobalCluster').
+%%
+%% A failover for an Aurora global database promotes one of secondary
+%% read-only DB clusters to be the primary DB cluster and demotes the primary
+%% DB cluster to being a secondary (read-only) DB cluster. In other words,
+%% the role of the current primary DB cluster and the selected (target) DB
+%% cluster are switched. The selected secondary DB cluster assumes full
+%% read/write capabilities for the Aurora global database.
+%%
+%% For more information about failing over an Amazon Aurora global database,
+%% see Managed planned failover for Amazon Aurora global databases in the
+%% Amazon Aurora User Guide.
+%%
+%% This action applies to `GlobalCluster' (Aurora global databases) only. Use
+%% this action only on healthy Aurora global databases with running Aurora DB
+%% clusters and no Region-wide outages, to test disaster recovery scenarios
+%% or to reconfigure your Aurora global database topology.
+failover_global_cluster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    failover_global_cluster(Client, Input, []).
+failover_global_cluster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"FailoverGlobalCluster">>, Input, Options).
 
 %% @doc Imports the installation media for a DB engine that requires an
 %% on-premises customer provided license, such as SQL Server.
@@ -2099,22 +2132,21 @@ restore_db_cluster_to_point_in_time(Client, Input, Options)
 %% @doc Creates a new DB instance from a DB snapshot.
 %%
 %% The target database is created from the source database restore point with
-%% the most of original configuration with the default security group and the
-%% default DB parameter group. By default, the new DB instance is created as
-%% a single-AZ deployment except when the instance is a SQL Server instance
-%% that has an option group that is associated with mirroring; in this case,
-%% the instance becomes a mirrored AZ deployment and not a single-AZ
+%% most of the source's original configuration, including the default
+%% security group and DB parameter group. By default, the new DB instance is
+%% created as a Single-AZ deployment, except when the instance is a SQL
+%% Server instance that has an option group associated with mirroring. In
+%% this case, the instance becomes a Multi-AZ deployment, not a Single-AZ
 %% deployment.
 %%
-%% If your intent is to replace your original DB instance with the new,
-%% restored DB instance, then rename your original DB instance before you
-%% call the RestoreDBInstanceFromDBSnapshot action. RDS doesn't allow two DB
-%% instances with the same name. Once you have renamed your original DB
-%% instance with a different identifier, then you can pass the original name
-%% of the DB instance as the DBInstanceIdentifier in the call to the
-%% RestoreDBInstanceFromDBSnapshot action. The result is that you will
-%% replace the original DB instance with the DB instance created from the
-%% snapshot.
+%% If you want to replace your original DB instance with the new, restored DB
+%% instance, then rename your original DB instance before you call the
+%% RestoreDBInstanceFromDBSnapshot action. RDS doesn't allow two DB instances
+%% with the same name. After you have renamed your original DB instance with
+%% a different identifier, then you can pass the original name of the DB
+%% instance as the DBInstanceIdentifier in the call to the
+%% RestoreDBInstanceFromDBSnapshot action. The result is that you replace the
+%% original DB instance with the DB instance created from the snapshot.
 %%
 %% If you are restoring from a shared manual DB snapshot, the
 %% `DBSnapshotIdentifier' must be the ARN of the shared DB snapshot.
@@ -2221,6 +2253,17 @@ start_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartDBInstance">>, Input, Options).
 
+%% @doc Enables replication of automated backups to a different AWS Region.
+%%
+%% For more information, see Replicating Automated Backups to Another AWS
+%% Region in the Amazon RDS User Guide.
+start_db_instance_automated_backups_replication(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_db_instance_automated_backups_replication(Client, Input, []).
+start_db_instance_automated_backups_replication(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartDBInstanceAutomatedBackupsReplication">>, Input, Options).
+
 %% @doc Starts an export of a snapshot to Amazon S3.
 %%
 %% The provided IAM role must have access to the S3 bucket.
@@ -2279,6 +2322,17 @@ stop_db_instance(Client, Input)
 stop_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopDBInstance">>, Input, Options).
+
+%% @doc Stops automated backup replication for a DB instance.
+%%
+%% For more information, see Replicating Automated Backups to Another AWS
+%% Region in the Amazon RDS User Guide.
+stop_db_instance_automated_backups_replication(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_db_instance_automated_backups_replication(Client, Input, []).
+stop_db_instance_automated_backups_replication(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopDBInstanceAutomatedBackupsReplication">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

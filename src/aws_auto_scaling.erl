@@ -275,7 +275,11 @@ complete_lifecycle_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CompleteLifecycleAction">>, Input, Options).
 
-%% @doc Creates an Auto Scaling group with the specified name and attributes.
+%% @doc We strongly recommend using a launch template when calling this
+%% operation to ensure full functionality for Amazon EC2 Auto Scaling and
+%% Amazon EC2.
+%%
+%% Creates an Auto Scaling group with the specified name and attributes.
 %%
 %% If you exceed your maximum limit of Auto Scaling groups, the call fails.
 %% To query this limit, call the `DescribeAccountLimits' API. For information
@@ -590,6 +594,12 @@ describe_policies(Client, Input, Options)
 
 %% @doc Describes one or more scaling activities for the specified Auto
 %% Scaling group.
+%%
+%% To view the scaling activities from the Amazon EC2 Auto Scaling console,
+%% choose the Activity tab of the Auto Scaling group. When scaling events
+%% occur, you see scaling activity messages in the Activity history. For more
+%% information, see Verifying a scaling activity for an Auto Scaling group in
+%% the Amazon EC2 Auto Scaling User Guide.
 describe_scaling_activities(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scaling_activities(Client, Input, []).
@@ -1005,7 +1015,11 @@ terminate_instance_in_auto_scaling_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TerminateInstanceInAutoScalingGroup">>, Input, Options).
 
-%% @doc Updates the configuration for the specified Auto Scaling group.
+%% @doc We strongly recommend that all Auto Scaling groups use launch
+%% templates to ensure full functionality for Amazon EC2 Auto Scaling and
+%% Amazon EC2.
+%%
+%% Updates the configuration for the specified Auto Scaling group.
 %%
 %% To update an Auto Scaling group, specify the name of the group and the
 %% parameter that you want to change. Any parameters that you don't specify

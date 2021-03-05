@@ -8,16 +8,152 @@
 %% customers, operations, approvals, resources, and even your team.
 -module(aws_honeycode).
 
--export([get_screen_data/2,
+-export([batch_create_table_rows/4,
+         batch_create_table_rows/5,
+         batch_delete_table_rows/4,
+         batch_delete_table_rows/5,
+         batch_update_table_rows/4,
+         batch_update_table_rows/5,
+         batch_upsert_table_rows/4,
+         batch_upsert_table_rows/5,
+         describe_table_data_import_job/4,
+         describe_table_data_import_job/5,
+         get_screen_data/2,
          get_screen_data/3,
          invoke_screen_automation/6,
-         invoke_screen_automation/7]).
+         invoke_screen_automation/7,
+         list_table_columns/4,
+         list_table_columns/5,
+         list_table_rows/4,
+         list_table_rows/5,
+         list_tables/4,
+         list_tables/5,
+         query_table_rows/4,
+         query_table_rows/5,
+         start_table_data_import_job/4,
+         start_table_data_import_job/5]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc The BatchCreateTableRows API allows you to create one or more rows at
+%% the end of a table in a workbook.
+%%
+%% The API allows you to specify the values to set in some or all of the
+%% columns in the new rows.
+%%
+%% If a column is not explicitly set in a specific row, then the column level
+%% formula specified in the table will be applied to the new row. If there is
+%% no column level formula but the last row of the table has a formula, then
+%% that formula will be copied down to the new row. If there is no column
+%% level formula and no formula in the last row of the table, then that
+%% column will be left blank for the new rows.
+batch_create_table_rows(Client, TableId, WorkbookId, Input) ->
+    batch_create_table_rows(Client, TableId, WorkbookId, Input, []).
+batch_create_table_rows(Client, TableId, WorkbookId, Input0, Options) ->
+    Method = post,
+    Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables/", aws_util:encode_uri(TableId), "/rows/batchcreate"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc The BatchDeleteTableRows API allows you to delete one or more rows
+%% from a table in a workbook.
+%%
+%% You need to specify the ids of the rows that you want to delete from the
+%% table.
+batch_delete_table_rows(Client, TableId, WorkbookId, Input) ->
+    batch_delete_table_rows(Client, TableId, WorkbookId, Input, []).
+batch_delete_table_rows(Client, TableId, WorkbookId, Input0, Options) ->
+    Method = post,
+    Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables/", aws_util:encode_uri(TableId), "/rows/batchdelete"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc The BatchUpdateTableRows API allows you to update one or more rows in
+%% a table in a workbook.
+%%
+%% You can specify the values to set in some or all of the columns in the
+%% table for the specified rows. If a column is not explicitly specified in a
+%% particular row, then that column will not be updated for that row. To
+%% clear out the data in a specific cell, you need to set the value as an
+%% empty string ("").
+batch_update_table_rows(Client, TableId, WorkbookId, Input) ->
+    batch_update_table_rows(Client, TableId, WorkbookId, Input, []).
+batch_update_table_rows(Client, TableId, WorkbookId, Input0, Options) ->
+    Method = post,
+    Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables/", aws_util:encode_uri(TableId), "/rows/batchupdate"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc The BatchUpsertTableRows API allows you to upsert one or more rows in
+%% a table.
+%%
+%% The upsert operation takes a filter expression as input and evaluates it
+%% to find matching rows on the destination table. If matching rows are
+%% found, it will update the cells in the matching rows to new values
+%% specified in the request. If no matching rows are found, a new row is
+%% added at the end of the table and the cells in that row are set to the new
+%% values specified in the request.
+%%
+%% You can specify the values to set in some or all of the columns in the
+%% table for the matching or newly appended rows. If a column is not
+%% explicitly specified for a particular row, then that column will not be
+%% updated for that row. To clear out the data in a specific cell, you need
+%% to set the value as an empty string ("").
+batch_upsert_table_rows(Client, TableId, WorkbookId, Input) ->
+    batch_upsert_table_rows(Client, TableId, WorkbookId, Input, []).
+batch_upsert_table_rows(Client, TableId, WorkbookId, Input0, Options) ->
+    Method = post,
+    Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables/", aws_util:encode_uri(TableId), "/rows/batchupsert"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc The DescribeTableDataImportJob API allows you to retrieve the status
+%% and details of a table data import job.
+describe_table_data_import_job(Client, JobId, TableId, WorkbookId)
+  when is_map(Client) ->
+    describe_table_data_import_job(Client, JobId, TableId, WorkbookId, []).
+describe_table_data_import_job(Client, JobId, TableId, WorkbookId, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables/", aws_util:encode_uri(TableId), "/import/", aws_util:encode_uri(JobId), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc The GetScreenData API allows retrieval of data from a screen in a
 %% Honeycode app.
@@ -50,6 +186,102 @@ invoke_screen_automation(Client, AppId, ScreenAutomationId, ScreenId, WorkbookId
 invoke_screen_automation(Client, AppId, ScreenAutomationId, ScreenId, WorkbookId, Input0, Options) ->
     Method = post,
     Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/apps/", aws_util:encode_uri(AppId), "/screens/", aws_util:encode_uri(ScreenId), "/automations/", aws_util:encode_uri(ScreenAutomationId), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc The ListTableColumns API allows you to retrieve a list of all the
+%% columns in a table in a workbook.
+list_table_columns(Client, TableId, WorkbookId, NextToken)
+  when is_map(Client) ->
+    list_table_columns(Client, TableId, WorkbookId, NextToken, []).
+list_table_columns(Client, TableId, WorkbookId, NextToken, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables/", aws_util:encode_uri(TableId), "/columns"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"nextToken">>, NextToken}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc The ListTableRows API allows you to retrieve a list of all the rows
+%% in a table in a workbook.
+list_table_rows(Client, TableId, WorkbookId, Input) ->
+    list_table_rows(Client, TableId, WorkbookId, Input, []).
+list_table_rows(Client, TableId, WorkbookId, Input0, Options) ->
+    Method = post,
+    Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables/", aws_util:encode_uri(TableId), "/rows/list"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc The ListTables API allows you to retrieve a list of all the tables in
+%% a workbook.
+list_tables(Client, WorkbookId, MaxResults, NextToken)
+  when is_map(Client) ->
+    list_tables(Client, WorkbookId, MaxResults, NextToken, []).
+list_tables(Client, WorkbookId, MaxResults, NextToken, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc The QueryTableRows API allows you to use a filter formula to query
+%% for specific rows in a table.
+query_table_rows(Client, TableId, WorkbookId, Input) ->
+    query_table_rows(Client, TableId, WorkbookId, Input, []).
+query_table_rows(Client, TableId, WorkbookId, Input0, Options) ->
+    Method = post,
+    Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables/", aws_util:encode_uri(TableId), "/rows/query"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc The StartTableDataImportJob API allows you to start an import job on
+%% a table.
+%%
+%% This API will only return the id of the job that was started. To find out
+%% the status of the import request, you need to call the
+%% DescribeTableDataImportJob API.
+start_table_data_import_job(Client, DestinationTableId, WorkbookId, Input) ->
+    start_table_data_import_job(Client, DestinationTableId, WorkbookId, Input, []).
+start_table_data_import_job(Client, DestinationTableId, WorkbookId, Input0, Options) ->
+    Method = post,
+    Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables/", aws_util:encode_uri(DestinationTableId), "/import"],
     SuccessStatusCode = undefined,
 
     Headers = [],
