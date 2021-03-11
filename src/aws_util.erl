@@ -38,8 +38,7 @@ hmac_sha256_hexdigest(Key, Message) ->
 
 %% @doc Create an HMAC-SHA256 hexdigest for Key and Message.
 hmac_sha256(Key, Message) ->
-    %% @todo Use `crypto:mac/4` when OTP 24 arrives.
-    crypto:hmac(sha256, Key, Message).
+    crypto_hmac(sha256, Key, Message).
 
 %% @doc Create a SHA256 hexdigest for Value.
 sha256_hexdigest(Value) ->
@@ -183,6 +182,24 @@ binary_join([], Acc, _) ->
     Acc;
 binary_join([H|T], Acc, Sep) ->
     binary_join(T, <<Acc/binary, Sep/binary, H/binary>>, Sep).
+
+%% this can be simplified if we drop support for OTP < 21
+%% this can be removed if we drop support for OTP < 23
+-ifdef(OTP_RELEASE). % OTP >= 21
+-if(?OTP_RELEASE >= 23).
+-define(USE_CRYPTO_MAC_4, true).
+-else.
+-undef(USE_CRYPTO_MAC_4).
+-endif.
+-else. % OTP < 21
+-undef(USE_CRYPTO_MAC_4).
+-endif.
+
+-ifdef(USE_CRYPTO_MAC_4).
+crypto_hmac(Sha, Key, Data) -> crypto:mac(hmac, Sha, Key, Data).
+-else.
+crypto_hmac(Sha, Key, Data) -> crypto:hmac(Sha, Key, Data).
+-endif.
 
 %%====================================================================
 %% Unit tests
