@@ -40,6 +40,8 @@
          delete_outbound_cross_cluster_search_connection/4,
          delete_package/3,
          delete_package/4,
+         describe_domain_auto_tunes/2,
+         describe_domain_auto_tunes/3,
          describe_elasticsearch_domain/2,
          describe_elasticsearch_domain/3,
          describe_elasticsearch_domain_config/2,
@@ -315,6 +317,23 @@ delete_package(Client, PackageID, Input0, Options) ->
     Input = Input1,
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Provides scheduled Auto-Tune action details for the Elasticsearch
+%% domain, such as Auto-Tune action type, description, severity, and
+%% scheduled date.
+describe_domain_auto_tunes(Client, DomainName)
+  when is_map(Client) ->
+    describe_domain_auto_tunes(Client, DomainName, []).
+describe_domain_auto_tunes(Client, DomainName, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/2015-01-01/es/domain/", aws_util:encode_uri(DomainName), "/autoTunes"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns domain configuration information about the specified
 %% Elasticsearch domain, including the domain ID, domain endpoint, and domain

@@ -1215,8 +1215,8 @@ describe_user(Client, AwsAccountId, Namespace, UserName, Options)
 %%
 %% </li> <li> The resulting user session is valid for 10 hours.
 %%
-%% </li> </ul> For more information, see Embedding Amazon QuickSight in the
-%% Amazon QuickSight User Guide .
+%% </li> </ul> For more information, see Embedded Analytics in the Amazon
+%% QuickSight User Guide.
 get_dashboard_embed_url(Client, AwsAccountId, DashboardId, AdditionalDashboardIds, IdentityType, Namespace, ResetDisabled, SessionLifetimeInMinutes, StatePersistenceEnabled, UndoRedoDisabled, UserArn)
   when is_map(Client) ->
     get_dashboard_embed_url(Client, AwsAccountId, DashboardId, AdditionalDashboardIds, IdentityType, Namespace, ResetDisabled, SessionLifetimeInMinutes, StatePersistenceEnabled, UndoRedoDisabled, UserArn, []).

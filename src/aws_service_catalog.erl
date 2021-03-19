@@ -68,6 +68,8 @@
          describe_portfolio/3,
          describe_portfolio_share_status/2,
          describe_portfolio_share_status/3,
+         describe_portfolio_shares/2,
+         describe_portfolio_shares/3,
          describe_product/2,
          describe_product/3,
          describe_product_as_admin/2,
@@ -168,6 +170,8 @@
          update_constraint/3,
          update_portfolio/2,
          update_portfolio/3,
+         update_portfolio_share/2,
+         update_portfolio_share/3,
          update_product/2,
          update_product/3,
          update_provisioned_product/2,
@@ -304,8 +308,13 @@ create_portfolio(Client, Input, Options)
 %% `AWSOrganizationsAccess' must be enabled in order to create a portfolio
 %% share to an organization node.
 %%
-%% You can't share a shared resource. This includes portfolios that contain a
+%% You can't share a shared resource, including portfolios that contain a
 %% shared product.
+%%
+%% If the portfolio share with the specified account or organization node
+%% already exists, this action will have no effect and will not return an
+%% error. To update an existing share, you must use the `
+%% UpdatePortfolioShare' API instead.
 create_portfolio_share(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_portfolio_share(Client, Input, []).
@@ -316,6 +325,11 @@ create_portfolio_share(Client, Input, Options)
 %% @doc Creates a product.
 %%
 %% A delegated admin is authorized to invoke this command.
+%%
+%% The user or role that performs this operation must have the
+%% `cloudformation:GetTemplate' IAM policy permission. This policy permission
+%% is required when using the `ImportFromPhysicalId' template source in the
+%% information data section.
 create_product(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_product(Client, Input, []).
@@ -348,6 +362,11 @@ create_provisioned_product_plan(Client, Input, Options)
 %%
 %% You cannot create a provisioning artifact for a product that was shared
 %% with you.
+%%
+%% The user or role that performs this operation must have the
+%% `cloudformation:GetTemplate' IAM policy permission. This policy permission
+%% is required when using the `ImportFromPhysicalId' template source in the
+%% information data section.
 create_provisioning_artifact(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_provisioning_artifact(Client, Input, []).
@@ -498,6 +517,21 @@ describe_portfolio_share_status(Client, Input)
 describe_portfolio_share_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePortfolioShareStatus">>, Input, Options).
+
+%% @doc Returns a summary of each of the portfolio shares that were created
+%% for the specified portfolio.
+%%
+%% You can use this API to determine which accounts or organizational nodes
+%% this portfolio have been shared, whether the recipient entity has imported
+%% the share, and whether TagOptions are included with the share.
+%%
+%% The `PortfolioId' and `Type' parameters are both required.
+describe_portfolio_shares(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_portfolio_shares(Client, Input, []).
+describe_portfolio_shares(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribePortfolioShares">>, Input, Options).
 
 %% @doc Gets information about the specified product.
 describe_product(Client, Input)
@@ -736,18 +770,22 @@ get_provisioned_product_outputs(Client, Input, Options)
 %% product that is associated to a Service Catalog product and provisioning
 %% artifact.
 %%
-%% Once imported all supported Service Catalog governance actions are
+%% Once imported, all supported Service Catalog governance actions are
 %% supported on the provisioned product.
 %%
 %% Resource import only supports CloudFormation stack ARNs. CloudFormation
 %% StackSets and non-root nested stacks are not supported.
 %%
 %% The CloudFormation stack must have one of the following statuses to be
-%% imported: CREATE_COMPLETE, UPDATE_COMPLETE, UPDATE_ROLLBACK_COMPLETE,
-%% IMPORT_COMPLETE, IMPORT_ROLLBACK_COMPLETE.
+%% imported: `CREATE_COMPLETE', `UPDATE_COMPLETE',
+%% `UPDATE_ROLLBACK_COMPLETE', `IMPORT_COMPLETE', `IMPORT_ROLLBACK_COMPLETE'.
 %%
 %% Import of the resource requires that the CloudFormation stack template
 %% matches the associated Service Catalog product provisioning artifact.
+%%
+%% The user or role that performs this operation must have the
+%% `cloudformation:GetTemplate' and `cloudformation:DescribeStacks' IAM
+%% policy permissions.
 import_as_provisioned_product(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_as_provisioned_product(Client, Input, []).
@@ -1014,6 +1052,32 @@ update_portfolio(Client, Input)
 update_portfolio(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePortfolio">>, Input, Options).
+
+%% @doc Updates the specified portfolio share.
+%%
+%% You can use this API to enable or disable TagOptions sharing for an
+%% existing portfolio share.
+%%
+%% The portfolio share cannot be updated if the ` CreatePortfolioShare'
+%% operation is `IN_PROGRESS', as the share is not available to recipient
+%% entities. In this case, you must wait for the portfolio share to be
+%% COMPLETED.
+%%
+%% You must provide the `accountId' or organization node in the input, but
+%% not both.
+%%
+%% If the portfolio is shared to both an external account and an organization
+%% node, and both shares need to be updated, you must invoke
+%% `UpdatePortfolioShare' separately for each share type.
+%%
+%% This API cannot be used for removing the portfolio share. You must use
+%% `DeletePortfolioShare' API for that action.
+update_portfolio_share(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_portfolio_share(Client, Input, []).
+update_portfolio_share(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdatePortfolioShare">>, Input, Options).
 
 %% @doc Updates the specified product.
 update_product(Client, Input)

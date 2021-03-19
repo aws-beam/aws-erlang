@@ -17,40 +17,62 @@
 %% to Amazon EKS without any code modification required.
 -module(aws_eks).
 
--export([create_cluster/2,
+-export([associate_encryption_config/3,
+         associate_encryption_config/4,
+         associate_identity_provider_config/3,
+         associate_identity_provider_config/4,
+         create_addon/3,
+         create_addon/4,
+         create_cluster/2,
          create_cluster/3,
          create_fargate_profile/3,
          create_fargate_profile/4,
          create_nodegroup/3,
          create_nodegroup/4,
+         delete_addon/4,
+         delete_addon/5,
          delete_cluster/3,
          delete_cluster/4,
          delete_fargate_profile/4,
          delete_fargate_profile/5,
          delete_nodegroup/4,
          delete_nodegroup/5,
+         describe_addon/3,
+         describe_addon/4,
+         describe_addon_versions/5,
+         describe_addon_versions/6,
          describe_cluster/2,
          describe_cluster/3,
          describe_fargate_profile/3,
          describe_fargate_profile/4,
+         describe_identity_provider_config/3,
+         describe_identity_provider_config/4,
          describe_nodegroup/3,
          describe_nodegroup/4,
-         describe_update/4,
          describe_update/5,
+         describe_update/6,
+         disassociate_identity_provider_config/3,
+         disassociate_identity_provider_config/4,
+         list_addons/4,
+         list_addons/5,
          list_clusters/3,
          list_clusters/4,
          list_fargate_profiles/4,
          list_fargate_profiles/5,
+         list_identity_provider_configs/4,
+         list_identity_provider_configs/5,
          list_nodegroups/4,
          list_nodegroups/5,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
-         list_updates/5,
          list_updates/6,
+         list_updates/7,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
          untag_resource/4,
+         update_addon/4,
+         update_addon/5,
          update_cluster_config/3,
          update_cluster_config/4,
          update_cluster_version/3,
@@ -66,6 +88,74 @@
 %% API
 %%====================================================================
 
+%% @doc Associate encryption configuration to an existing cluster.
+%%
+%% You can use this API to enable encryption on existing clusters which do
+%% not have encryption already enabled. This allows you to implement a
+%% defense-in-depth security strategy without migrating applications to new
+%% EKS clusters.
+associate_encryption_config(Client, ClusterName, Input) ->
+    associate_encryption_config(Client, ClusterName, Input, []).
+associate_encryption_config(Client, ClusterName, Input0, Options) ->
+    Method = post,
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/encryption-config/associate"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associate an identity provider configuration to a cluster.
+%%
+%% If you want to authenticate identities using an identity provider, you can
+%% create an identity provider configuration and associate it to your
+%% cluster. After configuring authentication to your cluster you can create
+%% Kubernetes `roles' and `clusterroles' to assign permissions to the roles,
+%% and then bind the roles to the identities using Kubernetes `rolebindings'
+%% and `clusterrolebindings'. For more information see Using RBAC
+%% Authorization in the Kubernetes documentation.
+associate_identity_provider_config(Client, ClusterName, Input) ->
+    associate_identity_provider_config(Client, ClusterName, Input, []).
+associate_identity_provider_config(Client, ClusterName, Input0, Options) ->
+    Method = post,
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/identity-provider-configs/associate"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an Amazon EKS add-on.
+%%
+%% Amazon EKS add-ons help to automate the provisioning and lifecycle
+%% management of common operational software for Amazon EKS clusters. Amazon
+%% EKS add-ons can only be used with Amazon EKS clusters running version 1.18
+%% with platform version `eks.3' or later because add-ons rely on the
+%% Server-side Apply Kubernetes feature, which is only available in
+%% Kubernetes 1.18 and later.
+create_addon(Client, ClusterName, Input) ->
+    create_addon(Client, ClusterName, Input, []).
+create_addon(Client, ClusterName, Input0, Options) ->
+    Method = post,
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/addons"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates an Amazon EKS control plane.
 %%
 %% The Amazon EKS control plane consists of control plane instances that run
@@ -78,35 +168,18 @@
 %% The cluster control plane is provisioned across multiple Availability
 %% Zones and fronted by an Elastic Load Balancing Network Load Balancer.
 %% Amazon EKS also provisions elastic network interfaces in your VPC subnets
-%% to provide connectivity from the control plane instances to the worker
-%% nodes (for example, to support `kubectl exec', `logs', and `proxy' data
-%% flows).
+%% to provide connectivity from the control plane instances to the nodes (for
+%% example, to support `kubectl exec', `logs', and `proxy' data flows).
 %%
-%% Amazon EKS worker nodes run in your AWS account and connect to your
-%% cluster's control plane via the Kubernetes API server endpoint and a
-%% certificate file that is created for your cluster.
+%% Amazon EKS nodes run in your AWS account and connect to your cluster's
+%% control plane via the Kubernetes API server endpoint and a certificate
+%% file that is created for your cluster.
 %%
-%% You can use the `endpointPublicAccess' and `endpointPrivateAccess'
-%% parameters to enable or disable public and private access to your
-%% cluster's Kubernetes API server endpoint. By default, public access is
-%% enabled, and private access is disabled. For more information, see Amazon
-%% EKS Cluster Endpoint Access Control in the Amazon EKS User Guide .
-%%
-%% You can use the `logging' parameter to enable or disable exporting the
-%% Kubernetes control plane logs for your cluster to CloudWatch Logs. By
-%% default, cluster control plane logs aren't exported to CloudWatch Logs.
-%% For more information, see Amazon EKS Cluster Control Plane Logs in the
-%% Amazon EKS User Guide .
-%%
-%% CloudWatch Logs ingestion, archive storage, and data scanning rates apply
-%% to exported control plane logs. For more information, see Amazon
-%% CloudWatch Pricing.
-%%
-%% Cluster creation typically takes between 10 and 15 minutes. After you
-%% create an Amazon EKS cluster, you must configure your Kubernetes tooling
-%% to communicate with the API server and launch worker nodes into your
-%% cluster. For more information, see Managing Cluster Authentication and
-%% Launching Amazon EKS Worker Nodes in the Amazon EKS User Guide.
+%% Cluster creation typically takes several minutes. After you create an
+%% Amazon EKS cluster, you must configure your Kubernetes tooling to
+%% communicate with the API server and launch nodes into your cluster. For
+%% more information, see Managing Cluster Authentication and Launching Amazon
+%% EKS nodes in the Amazon EKS User Guide.
 create_cluster(Client, Input) ->
     create_cluster(Client, Input, []).
 create_cluster(Client, Input0, Options) ->
@@ -171,7 +244,7 @@ create_fargate_profile(Client, ClusterName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a managed worker node group for an Amazon EKS cluster.
+%% @doc Creates a managed node group for an Amazon EKS cluster.
 %%
 %% You can only create a node group for your cluster that is equal to the
 %% current Kubernetes version for the cluster. All node groups are created
@@ -182,7 +255,7 @@ create_fargate_profile(Client, ClusterName, Input0, Options) ->
 %%
 %% An Amazon EKS managed node group is an Amazon EC2 Auto Scaling group and
 %% associated Amazon EC2 instances that are managed by AWS for an Amazon EKS
-%% cluster. Each node group uses a version of the Amazon EKS-optimized Amazon
+%% cluster. Each node group uses a version of the Amazon EKS optimized Amazon
 %% Linux 2 AMI. For more information, see Managed Node Groups in the Amazon
 %% EKS User Guide.
 create_nodegroup(Client, ClusterName, Input) ->
@@ -190,6 +263,26 @@ create_nodegroup(Client, ClusterName, Input) ->
 create_nodegroup(Client, ClusterName, Input0, Options) ->
     Method = post,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/node-groups"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Delete an Amazon EKS add-on.
+%%
+%% When you remove the add-on, it will also be deleted from the cluster. You
+%% can always manually start an add-on on the cluster using the Kubernetes
+%% API.
+delete_addon(Client, AddonName, ClusterName, Input) ->
+    delete_addon(Client, AddonName, ClusterName, Input, []).
+delete_addon(Client, AddonName, ClusterName, Input0, Options) ->
+    Method = delete,
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/addons/", aws_util:encode_uri(AddonName), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -269,6 +362,43 @@ delete_nodegroup(Client, ClusterName, NodegroupName, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Describes an Amazon EKS add-on.
+describe_addon(Client, AddonName, ClusterName)
+  when is_map(Client) ->
+    describe_addon(Client, AddonName, ClusterName, []).
+describe_addon(Client, AddonName, ClusterName, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/addons/", aws_util:encode_uri(AddonName), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes the Kubernetes versions that the add-on can be used with.
+describe_addon_versions(Client, AddonName, KubernetesVersion, MaxResults, NextToken)
+  when is_map(Client) ->
+    describe_addon_versions(Client, AddonName, KubernetesVersion, MaxResults, NextToken, []).
+describe_addon_versions(Client, AddonName, KubernetesVersion, MaxResults, NextToken, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/addons/supported-versions"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"addonName">>, AddonName},
+        {<<"kubernetesVersion">>, KubernetesVersion},
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns descriptive information about an Amazon EKS cluster.
 %%
 %% The API server endpoint and certificate authority data returned by this
@@ -307,6 +437,23 @@ describe_fargate_profile(Client, ClusterName, FargateProfileName, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns descriptive information about an identity provider
+%% configuration.
+describe_identity_provider_config(Client, ClusterName, Input) ->
+    describe_identity_provider_config(Client, ClusterName, Input, []).
+describe_identity_provider_config(Client, ClusterName, Input0, Options) ->
+    Method = post,
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/identity-provider-configs/describe"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Returns descriptive information about an Amazon EKS node group.
 describe_nodegroup(Client, ClusterName, NodegroupName)
   when is_map(Client) ->
@@ -328,10 +475,10 @@ describe_nodegroup(Client, ClusterName, NodegroupName, Options)
 %% When the status of the update is `Succeeded', the update is complete. If
 %% an update fails, the status is `Failed', and an error detail explains the
 %% reason for the failure.
-describe_update(Client, Name, UpdateId, NodegroupName)
+describe_update(Client, Name, UpdateId, AddonName, NodegroupName)
   when is_map(Client) ->
-    describe_update(Client, Name, UpdateId, NodegroupName, []).
-describe_update(Client, Name, UpdateId, NodegroupName, Options)
+    describe_update(Client, Name, UpdateId, AddonName, NodegroupName, []).
+describe_update(Client, Name, UpdateId, AddonName, NodegroupName, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/clusters/", aws_util:encode_uri(Name), "/updates/", aws_util:encode_uri(UpdateId), ""],
     SuccessStatusCode = undefined,
@@ -340,7 +487,48 @@ describe_update(Client, Name, UpdateId, NodegroupName, Options)
 
     Query0_ =
       [
+        {<<"addonName">>, AddonName},
         {<<"nodegroupName">>, NodegroupName}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Disassociates an identity provider configuration from a cluster.
+%%
+%% If you disassociate an identity provider from your cluster, users included
+%% in the provider can no longer access the cluster. However, you can still
+%% access the cluster with AWS IAM users.
+disassociate_identity_provider_config(Client, ClusterName, Input) ->
+    disassociate_identity_provider_config(Client, ClusterName, Input, []).
+disassociate_identity_provider_config(Client, ClusterName, Input0, Options) ->
+    Method = post,
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/identity-provider-configs/disassociate"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists the available add-ons.
+list_addons(Client, ClusterName, MaxResults, NextToken)
+  when is_map(Client) ->
+    list_addons(Client, ClusterName, MaxResults, NextToken, []).
+list_addons(Client, ClusterName, MaxResults, NextToken, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/addons"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -375,6 +563,26 @@ list_fargate_profiles(Client, ClusterName, MaxResults, NextToken)
 list_fargate_profiles(Client, ClusterName, MaxResults, NextToken, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/fargate-profiles"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc A list of identity provider configurations.
+list_identity_provider_configs(Client, ClusterName, MaxResults, NextToken)
+  when is_map(Client) ->
+    list_identity_provider_configs(Client, ClusterName, MaxResults, NextToken, []).
+list_identity_provider_configs(Client, ClusterName, MaxResults, NextToken, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/identity-provider-configs"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -428,10 +636,10 @@ list_tags_for_resource(Client, ResourceArn, Options)
 
 %% @doc Lists the updates associated with an Amazon EKS cluster or managed
 %% node group in your AWS account, in the specified Region.
-list_updates(Client, Name, MaxResults, NextToken, NodegroupName)
+list_updates(Client, Name, AddonName, MaxResults, NextToken, NodegroupName)
   when is_map(Client) ->
-    list_updates(Client, Name, MaxResults, NextToken, NodegroupName, []).
-list_updates(Client, Name, MaxResults, NextToken, NodegroupName, Options)
+    list_updates(Client, Name, AddonName, MaxResults, NextToken, NodegroupName, []).
+list_updates(Client, Name, AddonName, MaxResults, NextToken, NodegroupName, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/clusters/", aws_util:encode_uri(Name), "/updates"],
     SuccessStatusCode = undefined,
@@ -440,6 +648,7 @@ list_updates(Client, Name, MaxResults, NextToken, NodegroupName, Options)
 
     Query0_ =
       [
+        {<<"addonName">>, AddonName},
         {<<"maxResults">>, MaxResults},
         {<<"nextToken">>, NextToken},
         {<<"nodegroupName">>, NodegroupName}
@@ -457,7 +666,7 @@ list_updates(Client, Name, MaxResults, NextToken, NodegroupName, Options)
 %% for Amazon EKS resources do not propagate to any other resources
 %% associated with the cluster. For example, if you tag a cluster with this
 %% operation, that tag does not automatically propagate to the subnets and
-%% worker nodes associated with the cluster.
+%% nodes associated with the cluster.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options) ->
@@ -488,6 +697,22 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
                      {<<"tagKeys">>, <<"tagKeys">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an Amazon EKS add-on.
+update_addon(Client, AddonName, ClusterName, Input) ->
+    update_addon(Client, AddonName, ClusterName, Input, []).
+update_addon(Client, AddonName, ClusterName, Input0, Options) ->
+    Method = post,
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/addons/", aws_util:encode_uri(AddonName), "/update"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an Amazon EKS cluster configuration.
@@ -600,8 +825,8 @@ update_nodegroup_config(Client, ClusterName, NodegroupName, Input0, Options) ->
 %% specifying a Kubernetes version in the request. You can update to the
 %% latest AMI version of your cluster's current Kubernetes version by
 %% specifying your cluster's Kubernetes version in the request. For more
-%% information, see Amazon EKS-Optimized Linux AMI Versions in the Amazon EKS
-%% User Guide.
+%% information, see Amazon EKS optimized Amazon Linux 2 AMI versions in the
+%% Amazon EKS User Guide.
 %%
 %% You cannot roll back a node group to an earlier Kubernetes version or AMI
 %% version.

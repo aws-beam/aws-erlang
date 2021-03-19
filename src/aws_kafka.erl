@@ -54,6 +54,8 @@
          update_broker_count/4,
          update_broker_storage/3,
          update_broker_storage/4,
+         update_broker_type/3,
+         update_broker_type/4,
          update_cluster_configuration/3,
          update_cluster_configuration/4,
          update_cluster_kafka_version/3,
@@ -498,6 +500,22 @@ update_broker_storage(Client, ClusterArn, Input) ->
 update_broker_storage(Client, ClusterArn, Input0, Options) ->
     Method = put,
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/nodes/storage"],
+    SuccessStatusCode = 200,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates all the brokers in the cluster to the specified type.
+update_broker_type(Client, ClusterArn, Input) ->
+    update_broker_type(Client, ClusterArn, Input, []).
+update_broker_type(Client, ClusterArn, Input0, Options) ->
+    Method = put,
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/nodes/type"],
     SuccessStatusCode = 200,
 
     Headers = [],

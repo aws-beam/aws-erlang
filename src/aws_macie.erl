@@ -11,12 +11,6 @@
 %% dashboards and alerts that give visibility into how this data is being
 %% accessed or moved. For more information, see the Amazon Macie Classic User
 %% Guide.
-%%
-%% A new Amazon Macie is now available with significant design improvements
-%% and additional features, at a lower price and in most AWS Regions. We
-%% encourage you to explore and use the new and improved features, and
-%% benefit from the reduced cost. To learn about features and pricing for the
-%% new Amazon Macie, see Amazon Macie.
 -module(aws_macie).
 
 -export([associate_member_account/2,
@@ -53,9 +47,9 @@ associate_member_account(Client, Input, Options)
 %% monitoring and data classification.
 %%
 %% If memberAccountId isn't specified, the action associates specified S3
-%% resources with Macie Classic for the current master account. If
-%% memberAccountId is specified, the action associates specified S3 resources
-%% with Macie Classic for the specified member account.
+%% resources with Macie Classic for the current Macie Classic administrator
+%% account. If memberAccountId is specified, the action associates specified
+%% S3 resources with Macie Classic for the specified member account.
 associate_s3_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_s3_resources(Client, Input, []).
@@ -75,9 +69,9 @@ disassociate_member_account(Client, Input, Options)
 %% Classic.
 %%
 %% If memberAccountId isn't specified, the action removes specified S3
-%% resources from Macie Classic for the current master account. If
-%% memberAccountId is specified, the action removes specified S3 resources
-%% from Macie Classic for the specified member account.
+%% resources from Macie Classic for the current Macie Classic administrator
+%% account. If memberAccountId is specified, the action removes specified S3
+%% resources from Macie Classic for the specified member account.
 disassociate_s3_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_s3_resources(Client, Input, []).
@@ -85,8 +79,8 @@ disassociate_s3_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateS3Resources">>, Input, Options).
 
-%% @doc Lists all Amazon Macie Classic member accounts for the current Amazon
-%% Macie Classic master account.
+%% @doc Lists all Amazon Macie Classic member accounts for the current Macie
+%% Classic administrator account.
 list_member_accounts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_member_accounts(Client, Input, []).
@@ -97,9 +91,9 @@ list_member_accounts(Client, Input, Options)
 %% @doc Lists all the S3 resources associated with Amazon Macie Classic.
 %%
 %% If memberAccountId isn't specified, the action lists the S3 resources
-%% associated with Amazon Macie Classic for the current master account. If
-%% memberAccountId is specified, the action lists the S3 resources associated
-%% with Amazon Macie Classic for the specified member account.
+%% associated with Macie Classic for the current Macie Classic administrator
+%% account. If memberAccountId is specified, the action lists the S3
+%% resources associated with Macie Classic for the specified member account.
 list_s3_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_s3_resources(Client, Input, []).
@@ -111,9 +105,9 @@ list_s3_resources(Client, Input, Options)
 %%
 %% If memberAccountId isn't specified, the action updates the classification
 %% types of the S3 resources associated with Amazon Macie Classic for the
-%% current master account. If memberAccountId is specified, the action
-%% updates the classification types of the S3 resources associated with
-%% Amazon Macie Classic for the specified member account.
+%% current Macie Classic administrator account. If memberAccountId is
+%% specified, the action updates the classification types of the S3 resources
+%% associated with Macie Classic for the specified member account.
 update_s3_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_s3_resources(Client, Input, []).

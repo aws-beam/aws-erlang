@@ -12,30 +12,46 @@
 %% </li> </ul>
 -module(aws_sagemaker).
 
--export([add_tags/2,
+-export([add_association/2,
+         add_association/3,
+         add_tags/2,
          add_tags/3,
          associate_trial_component/2,
          associate_trial_component/3,
+         create_action/2,
+         create_action/3,
          create_algorithm/2,
          create_algorithm/3,
          create_app/2,
          create_app/3,
          create_app_image_config/2,
          create_app_image_config/3,
+         create_artifact/2,
+         create_artifact/3,
          create_auto_ml_job/2,
          create_auto_ml_job/3,
          create_code_repository/2,
          create_code_repository/3,
          create_compilation_job/2,
          create_compilation_job/3,
+         create_context/2,
+         create_context/3,
+         create_data_quality_job_definition/2,
+         create_data_quality_job_definition/3,
+         create_device_fleet/2,
+         create_device_fleet/3,
          create_domain/2,
          create_domain/3,
+         create_edge_packaging_job/2,
+         create_edge_packaging_job/3,
          create_endpoint/2,
          create_endpoint/3,
          create_endpoint_config/2,
          create_endpoint_config/3,
          create_experiment/2,
          create_experiment/3,
+         create_feature_group/2,
+         create_feature_group/3,
          create_flow_definition/2,
          create_flow_definition/3,
          create_human_task_ui/2,
@@ -50,20 +66,32 @@
          create_labeling_job/3,
          create_model/2,
          create_model/3,
+         create_model_bias_job_definition/2,
+         create_model_bias_job_definition/3,
+         create_model_explainability_job_definition/2,
+         create_model_explainability_job_definition/3,
          create_model_package/2,
          create_model_package/3,
+         create_model_package_group/2,
+         create_model_package_group/3,
+         create_model_quality_job_definition/2,
+         create_model_quality_job_definition/3,
          create_monitoring_schedule/2,
          create_monitoring_schedule/3,
          create_notebook_instance/2,
          create_notebook_instance/3,
          create_notebook_instance_lifecycle_config/2,
          create_notebook_instance_lifecycle_config/3,
+         create_pipeline/2,
+         create_pipeline/3,
          create_presigned_domain_url/2,
          create_presigned_domain_url/3,
          create_presigned_notebook_instance_url/2,
          create_presigned_notebook_instance_url/3,
          create_processing_job/2,
          create_processing_job/3,
+         create_project/2,
+         create_project/3,
          create_training_job/2,
          create_training_job/3,
          create_transform_job/2,
@@ -78,14 +106,26 @@
          create_workforce/3,
          create_workteam/2,
          create_workteam/3,
+         delete_action/2,
+         delete_action/3,
          delete_algorithm/2,
          delete_algorithm/3,
          delete_app/2,
          delete_app/3,
          delete_app_image_config/2,
          delete_app_image_config/3,
+         delete_artifact/2,
+         delete_artifact/3,
+         delete_association/2,
+         delete_association/3,
          delete_code_repository/2,
          delete_code_repository/3,
+         delete_context/2,
+         delete_context/3,
+         delete_data_quality_job_definition/2,
+         delete_data_quality_job_definition/3,
+         delete_device_fleet/2,
+         delete_device_fleet/3,
          delete_domain/2,
          delete_domain/3,
          delete_endpoint/2,
@@ -94,6 +134,8 @@
          delete_endpoint_config/3,
          delete_experiment/2,
          delete_experiment/3,
+         delete_feature_group/2,
+         delete_feature_group/3,
          delete_flow_definition/2,
          delete_flow_definition/3,
          delete_human_task_ui/2,
@@ -104,14 +146,28 @@
          delete_image_version/3,
          delete_model/2,
          delete_model/3,
+         delete_model_bias_job_definition/2,
+         delete_model_bias_job_definition/3,
+         delete_model_explainability_job_definition/2,
+         delete_model_explainability_job_definition/3,
          delete_model_package/2,
          delete_model_package/3,
+         delete_model_package_group/2,
+         delete_model_package_group/3,
+         delete_model_package_group_policy/2,
+         delete_model_package_group_policy/3,
+         delete_model_quality_job_definition/2,
+         delete_model_quality_job_definition/3,
          delete_monitoring_schedule/2,
          delete_monitoring_schedule/3,
          delete_notebook_instance/2,
          delete_notebook_instance/3,
          delete_notebook_instance_lifecycle_config/2,
          delete_notebook_instance_lifecycle_config/3,
+         delete_pipeline/2,
+         delete_pipeline/3,
+         delete_project/2,
+         delete_project/3,
          delete_tags/2,
          delete_tags/3,
          delete_trial/2,
@@ -124,26 +180,44 @@
          delete_workforce/3,
          delete_workteam/2,
          delete_workteam/3,
+         deregister_devices/2,
+         deregister_devices/3,
+         describe_action/2,
+         describe_action/3,
          describe_algorithm/2,
          describe_algorithm/3,
          describe_app/2,
          describe_app/3,
          describe_app_image_config/2,
          describe_app_image_config/3,
+         describe_artifact/2,
+         describe_artifact/3,
          describe_auto_ml_job/2,
          describe_auto_ml_job/3,
          describe_code_repository/2,
          describe_code_repository/3,
          describe_compilation_job/2,
          describe_compilation_job/3,
+         describe_context/2,
+         describe_context/3,
+         describe_data_quality_job_definition/2,
+         describe_data_quality_job_definition/3,
+         describe_device/2,
+         describe_device/3,
+         describe_device_fleet/2,
+         describe_device_fleet/3,
          describe_domain/2,
          describe_domain/3,
+         describe_edge_packaging_job/2,
+         describe_edge_packaging_job/3,
          describe_endpoint/2,
          describe_endpoint/3,
          describe_endpoint_config/2,
          describe_endpoint_config/3,
          describe_experiment/2,
          describe_experiment/3,
+         describe_feature_group/2,
+         describe_feature_group/3,
          describe_flow_definition/2,
          describe_flow_definition/3,
          describe_human_task_ui/2,
@@ -158,16 +232,32 @@
          describe_labeling_job/3,
          describe_model/2,
          describe_model/3,
+         describe_model_bias_job_definition/2,
+         describe_model_bias_job_definition/3,
+         describe_model_explainability_job_definition/2,
+         describe_model_explainability_job_definition/3,
          describe_model_package/2,
          describe_model_package/3,
+         describe_model_package_group/2,
+         describe_model_package_group/3,
+         describe_model_quality_job_definition/2,
+         describe_model_quality_job_definition/3,
          describe_monitoring_schedule/2,
          describe_monitoring_schedule/3,
          describe_notebook_instance/2,
          describe_notebook_instance/3,
          describe_notebook_instance_lifecycle_config/2,
          describe_notebook_instance_lifecycle_config/3,
+         describe_pipeline/2,
+         describe_pipeline/3,
+         describe_pipeline_definition_for_execution/2,
+         describe_pipeline_definition_for_execution/3,
+         describe_pipeline_execution/2,
+         describe_pipeline_execution/3,
          describe_processing_job/2,
          describe_processing_job/3,
+         describe_project/2,
+         describe_project/3,
          describe_subscribed_workteam/2,
          describe_subscribed_workteam/3,
          describe_training_job/2,
@@ -184,16 +274,32 @@
          describe_workforce/3,
          describe_workteam/2,
          describe_workteam/3,
+         disable_sagemaker_servicecatalog_portfolio/2,
+         disable_sagemaker_servicecatalog_portfolio/3,
          disassociate_trial_component/2,
          disassociate_trial_component/3,
+         enable_sagemaker_servicecatalog_portfolio/2,
+         enable_sagemaker_servicecatalog_portfolio/3,
+         get_device_fleet_report/2,
+         get_device_fleet_report/3,
+         get_model_package_group_policy/2,
+         get_model_package_group_policy/3,
+         get_sagemaker_servicecatalog_portfolio_status/2,
+         get_sagemaker_servicecatalog_portfolio_status/3,
          get_search_suggestions/2,
          get_search_suggestions/3,
+         list_actions/2,
+         list_actions/3,
          list_algorithms/2,
          list_algorithms/3,
          list_app_image_configs/2,
          list_app_image_configs/3,
          list_apps/2,
          list_apps/3,
+         list_artifacts/2,
+         list_artifacts/3,
+         list_associations/2,
+         list_associations/3,
          list_auto_ml_jobs/2,
          list_auto_ml_jobs/3,
          list_candidates_for_auto_ml_job/2,
@@ -202,14 +308,26 @@
          list_code_repositories/3,
          list_compilation_jobs/2,
          list_compilation_jobs/3,
+         list_contexts/2,
+         list_contexts/3,
+         list_data_quality_job_definitions/2,
+         list_data_quality_job_definitions/3,
+         list_device_fleets/2,
+         list_device_fleets/3,
+         list_devices/2,
+         list_devices/3,
          list_domains/2,
          list_domains/3,
+         list_edge_packaging_jobs/2,
+         list_edge_packaging_jobs/3,
          list_endpoint_configs/2,
          list_endpoint_configs/3,
          list_endpoints/2,
          list_endpoints/3,
          list_experiments/2,
          list_experiments/3,
+         list_feature_groups/2,
+         list_feature_groups/3,
          list_flow_definitions/2,
          list_flow_definitions/3,
          list_human_task_uis/2,
@@ -224,8 +342,16 @@
          list_labeling_jobs/3,
          list_labeling_jobs_for_workteam/2,
          list_labeling_jobs_for_workteam/3,
+         list_model_bias_job_definitions/2,
+         list_model_bias_job_definitions/3,
+         list_model_explainability_job_definitions/2,
+         list_model_explainability_job_definitions/3,
+         list_model_package_groups/2,
+         list_model_package_groups/3,
          list_model_packages/2,
          list_model_packages/3,
+         list_model_quality_job_definitions/2,
+         list_model_quality_job_definitions/3,
          list_models/2,
          list_models/3,
          list_monitoring_executions/2,
@@ -236,8 +362,18 @@
          list_notebook_instance_lifecycle_configs/3,
          list_notebook_instances/2,
          list_notebook_instances/3,
+         list_pipeline_execution_steps/2,
+         list_pipeline_execution_steps/3,
+         list_pipeline_executions/2,
+         list_pipeline_executions/3,
+         list_pipeline_parameters_for_execution/2,
+         list_pipeline_parameters_for_execution/3,
+         list_pipelines/2,
+         list_pipelines/3,
          list_processing_jobs/2,
          list_processing_jobs/3,
+         list_projects/2,
+         list_projects/3,
          list_subscribed_workteams/2,
          list_subscribed_workteams/3,
          list_tags/2,
@@ -258,6 +394,10 @@
          list_workforces/3,
          list_workteams/2,
          list_workteams/3,
+         put_model_package_group_policy/2,
+         put_model_package_group_policy/3,
+         register_devices/2,
+         register_devices/3,
          render_ui_template/2,
          render_ui_template/3,
          search/2,
@@ -266,10 +406,14 @@
          start_monitoring_schedule/3,
          start_notebook_instance/2,
          start_notebook_instance/3,
+         start_pipeline_execution/2,
+         start_pipeline_execution/3,
          stop_auto_ml_job/2,
          stop_auto_ml_job/3,
          stop_compilation_job/2,
          stop_compilation_job/3,
+         stop_edge_packaging_job/2,
+         stop_edge_packaging_job/3,
          stop_hyper_parameter_tuning_job/2,
          stop_hyper_parameter_tuning_job/3,
          stop_labeling_job/2,
@@ -278,16 +422,28 @@
          stop_monitoring_schedule/3,
          stop_notebook_instance/2,
          stop_notebook_instance/3,
+         stop_pipeline_execution/2,
+         stop_pipeline_execution/3,
          stop_processing_job/2,
          stop_processing_job/3,
          stop_training_job/2,
          stop_training_job/3,
          stop_transform_job/2,
          stop_transform_job/3,
+         update_action/2,
+         update_action/3,
          update_app_image_config/2,
          update_app_image_config/3,
+         update_artifact/2,
+         update_artifact/3,
          update_code_repository/2,
          update_code_repository/3,
+         update_context/2,
+         update_context/3,
+         update_device_fleet/2,
+         update_device_fleet/3,
+         update_devices/2,
+         update_devices/3,
          update_domain/2,
          update_domain/3,
          update_endpoint/2,
@@ -298,12 +454,20 @@
          update_experiment/3,
          update_image/2,
          update_image/3,
+         update_model_package/2,
+         update_model_package/3,
          update_monitoring_schedule/2,
          update_monitoring_schedule/3,
          update_notebook_instance/2,
          update_notebook_instance/3,
          update_notebook_instance_lifecycle_config/2,
          update_notebook_instance_lifecycle_config/3,
+         update_pipeline/2,
+         update_pipeline/3,
+         update_pipeline_execution/2,
+         update_pipeline_execution/3,
+         update_training_job/2,
+         update_training_job/3,
          update_trial/2,
          update_trial/3,
          update_trial_component/2,
@@ -320,6 +484,19 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Creates an association between the source and the destination.
+%%
+%% A source can be associated with multiple destinations, and a destination
+%% can be associated with multiple sources. An association is a lineage
+%% tracking entity. For more information, see Amazon SageMaker ML Lineage
+%% Tracking.
+add_association(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    add_association(Client, Input, []).
+add_association(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AddAssociation">>, Input, Options).
 
 %% @doc Adds or overwrites one or more tags for the specified Amazon
 %% SageMaker resource.
@@ -358,6 +535,19 @@ associate_trial_component(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateTrialComponent">>, Input, Options).
 
+%% @doc Creates an action.
+%%
+%% An action is a lineage tracking entity that represents an action or
+%% activity. For example, a model deployment or an HPO job. Generally, an
+%% action involves at least one input or output artifact. For more
+%% information, see Amazon SageMaker ML Lineage Tracking.
+create_action(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_action(Client, Input, []).
+create_action(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateAction">>, Input, Options).
+
 %% @doc Create a machine learning algorithm that you can use in Amazon
 %% SageMaker and list in the AWS Marketplace.
 create_algorithm(Client, Input)
@@ -391,6 +581,19 @@ create_app_image_config(Client, Input)
 create_app_image_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAppImageConfig">>, Input, Options).
+
+%% @doc Creates an artifact.
+%%
+%% An artifact is a lineage tracking entity that represents a URI addressable
+%% object or data. Some examples are the S3 URI of a dataset and the ECR
+%% registry path of an image. For more information, see Amazon SageMaker ML
+%% Lineage Tracking.
+create_artifact(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_artifact(Client, Input, []).
+create_artifact(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateArtifact">>, Input, Options).
 
 %% @doc Creates an Autopilot job.
 %%
@@ -463,6 +666,37 @@ create_compilation_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCompilationJob">>, Input, Options).
 
+%% @doc Creates a context.
+%%
+%% A context is a lineage tracking entity that represents a logical grouping
+%% of other tracking or experiment entities. Some examples are an endpoint
+%% and a model package. For more information, see Amazon SageMaker ML Lineage
+%% Tracking.
+create_context(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_context(Client, Input, []).
+create_context(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateContext">>, Input, Options).
+
+%% @doc Creates a definition for a job that monitors data quality and drift.
+%%
+%% For information about model monitor, see Amazon SageMaker Model Monitor.
+create_data_quality_job_definition(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_data_quality_job_definition(Client, Input, []).
+create_data_quality_job_definition(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateDataQualityJobDefinition">>, Input, Options).
+
+%% @doc Creates a device fleet.
+create_device_fleet(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_device_fleet(Client, Input, []).
+create_device_fleet(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateDeviceFleet">>, Input, Options).
+
 %% @doc Creates a `Domain' used by Amazon SageMaker Studio.
 %%
 %% A domain consists of an associated Amazon Elastic File System (EFS)
@@ -472,9 +706,16 @@ create_compilation_job(Client, Input, Options)
 %% within a domain can share notebook files and other artifacts with each
 %% other.
 %%
+%% EFS storage
+%%
 %% When a domain is created, an EFS volume is created for use by all of the
 %% users within the domain. Each user receives a private home directory
 %% within the EFS volume for notebooks, Git repositories, and data files.
+%%
+%% SageMaker uses the AWS Key Management Service (AWS KMS) to encrypt the EFS
+%% volume attached to the domain with an AWS managed customer master key
+%% (CMK) by default. For more control, you can specify a customer managed
+%% CMK. For more information, see Protect Data at Rest Using Encryption.
 %%
 %% VPC configuration
 %%
@@ -505,6 +746,18 @@ create_domain(Client, Input)
 create_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDomain">>, Input, Options).
+
+%% @doc Starts a SageMaker Edge Manager model packaging job.
+%%
+%% Edge Manager will use the model artifacts from the Amazon Simple Storage
+%% Service bucket that you specify. After the model has been packaged, Amazon
+%% SageMaker saves the resulting artifacts to an S3 bucket that you specify.
+create_edge_packaging_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_edge_packaging_job(Client, Input, []).
+create_edge_packaging_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateEdgePackagingJob">>, Input, Options).
 
 %% @doc Creates an endpoint using the endpoint configuration specified in the
 %% request.
@@ -664,6 +917,26 @@ create_experiment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateExperiment">>, Input, Options).
 
+%% @doc Create a new `FeatureGroup'.
+%%
+%% A `FeatureGroup' is a group of `Features' defined in the `FeatureStore' to
+%% describe a `Record'.
+%%
+%% The `FeatureGroup' defines the schema and features contained in the
+%% FeatureGroup. A `FeatureGroup' definition is composed of a list of
+%% `Features', a `RecordIdentifierFeatureName', an `EventTimeFeatureName' and
+%% configurations for its `OnlineStore' and `OfflineStore'. Check AWS service
+%% quotas to see the `FeatureGroup's quota for your AWS account.
+%%
+%% You must include at least one of `OnlineStoreConfig' and
+%% `OfflineStoreConfig' to create a `FeatureGroup'.
+create_feature_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_feature_group(Client, Input, []).
+create_feature_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateFeatureGroup">>, Input, Options).
+
 %% @doc Creates a flow definition.
 create_flow_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -752,6 +1025,16 @@ create_image_version(Client, Input, Options)
 %%
 %% The output can be used as the manifest file for another labeling job or as
 %% training data for your machine learning models.
+%%
+%% You can use this operation to create a static labeling job or a streaming
+%% labeling job. A static labeling job stops if all data objects in the input
+%% manifest file identified in `ManifestS3Uri' have been labeled. A streaming
+%% labeling job runs perpetually until it is manually stopped, or remains
+%% idle for 10 days. You can send new data objects to an active
+%% (`InProgress') streaming labeling job in real time. To learn how to create
+%% a static labeling job, see Create a Labeling Job (API) in the Amazon
+%% SageMaker Developer Guide. To learn how to create a streaming labeling
+%% job, see Create a Streaming Labeling Job.
 create_labeling_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_labeling_job(Client, Input, []).
@@ -799,8 +1082,25 @@ create_model(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateModel">>, Input, Options).
 
+%% @doc Creates the definition for a model bias job.
+create_model_bias_job_definition(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_model_bias_job_definition(Client, Input, []).
+create_model_bias_job_definition(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateModelBiasJobDefinition">>, Input, Options).
+
+%% @doc Creates the definition for a model explainability job.
+create_model_explainability_job_definition(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_model_explainability_job_definition(Client, Input, []).
+create_model_explainability_job_definition(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateModelExplainabilityJobDefinition">>, Input, Options).
+
 %% @doc Creates a model package that you can use to create Amazon SageMaker
-%% models or list on AWS Marketplace.
+%% models or list on AWS Marketplace, or a versioned model that is part of a
+%% model group.
 %%
 %% Buyers can subscribe to model packages listed on AWS Marketplace to create
 %% models in Amazon SageMaker.
@@ -810,12 +1110,38 @@ create_model(Client, Input, Options)
 %% provide values for `InferenceSpecification'. To create a model from an
 %% algorithm resource that you created or subscribed to in AWS Marketplace,
 %% provide a value for `SourceAlgorithmSpecification'.
+%%
+%% There are two types of model packages:
+%%
+%% Versioned - a model that is part of a model group in the model registry.
+%%
+%% Unversioned - a model package that is not part of a model group.
 create_model_package(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_model_package(Client, Input, []).
 create_model_package(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateModelPackage">>, Input, Options).
+
+%% @doc Creates a model group.
+%%
+%% A model group contains a group of model versions.
+create_model_package_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_model_package_group(Client, Input, []).
+create_model_package_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateModelPackageGroup">>, Input, Options).
+
+%% @doc Creates a definition for a job that monitors model quality and drift.
+%%
+%% For information about model monitor, see Amazon SageMaker Model Monitor.
+create_model_quality_job_definition(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_model_quality_job_definition(Client, Input, []).
+create_model_quality_job_definition(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateModelQualityJobDefinition">>, Input, Options).
 
 %% @doc Creates a schedule that regularly starts Amazon SageMaker Processing
 %% Jobs to monitor the data captured for an Amazon SageMaker Endoint.
@@ -902,6 +1228,14 @@ create_notebook_instance_lifecycle_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateNotebookInstanceLifecycleConfig">>, Input, Options).
 
+%% @doc Creates a pipeline using a JSON pipeline definition.
+create_pipeline(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_pipeline(Client, Input, []).
+create_pipeline(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreatePipeline">>, Input, Options).
+
 %% @doc Creates a URL for a specified UserProfile in a Domain.
 %%
 %% When accessed in a web browser, the user will be automatically signed in
@@ -910,8 +1244,9 @@ create_notebook_instance_lifecycle_config(Client, Input, Options)
 %% volume. This operation can only be called when the authentication mode
 %% equals IAM.
 %%
-%% The URL that you get from a call to `CreatePresignedDomainUrl' is valid
-%% only for 5 minutes. If you try to use the URL after the 5-minute limit
+%% The URL that you get from a call to `CreatePresignedDomainUrl' has a
+%% default timeout of 5 minutes. You can configure this value using
+%% `ExpiresInSeconds'. If you try to use the URL after the timeout limit
 %% expires, you are directed to the AWS console sign-in page.
 create_presigned_domain_url(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -958,6 +1293,16 @@ create_processing_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateProcessingJob">>, Input, Options).
 
+%% @doc Creates a machine learning (ML) project that can contain one or more
+%% templates that set up an ML pipeline from training to deploying an
+%% approved model.
+create_project(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_project(Client, Input, []).
+create_project(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateProject">>, Input, Options).
+
 %% @doc Starts a model training job.
 %%
 %% After training completes, Amazon SageMaker saves the resulting model
@@ -966,7 +1311,7 @@ create_processing_job(Client, Input, Options)
 %% If you choose to host your model using Amazon SageMaker hosting services,
 %% you can use the resulting model artifacts as part of the model. You can
 %% also use the artifacts in a machine learning service other than Amazon
-%% SageMaker, provided that you know how to use them for inferences.
+%% SageMaker, provided that you know how to use them for inference.
 %%
 %% In the request body, you provide the following:
 %%
@@ -993,7 +1338,7 @@ create_processing_job(Client, Input, Options)
 %% machine learning models by up to 80% by using Amazon EC2 Spot instances.
 %% For more information, see Managed Spot Training.
 %%
-%% </li> <li> `RoleARN' - The Amazon Resource Number (ARN) that Amazon
+%% </li> <li> `RoleArn' - The Amazon Resource Name (ARN) that Amazon
 %% SageMaker assumes to perform tasks on your behalf during model training.
 %% You must grant this role the necessary permissions so that Amazon
 %% SageMaker can successfully complete model training.
@@ -1155,6 +1500,14 @@ create_workteam(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWorkteam">>, Input, Options).
 
+%% @doc Deletes an action.
+delete_action(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_action(Client, Input, []).
+delete_action(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteAction">>, Input, Options).
+
 %% @doc Removes the specified algorithm from your account.
 delete_algorithm(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1179,6 +1532,24 @@ delete_app_image_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAppImageConfig">>, Input, Options).
 
+%% @doc Deletes an artifact.
+%%
+%% Either `ArtifactArn' or `Source' must be specified.
+delete_artifact(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_artifact(Client, Input, []).
+delete_artifact(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteArtifact">>, Input, Options).
+
+%% @doc Deletes an association.
+delete_association(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_association(Client, Input, []).
+delete_association(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteAssociation">>, Input, Options).
+
 %% @doc Deletes the specified Git repository from your account.
 delete_code_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1186,6 +1557,30 @@ delete_code_repository(Client, Input)
 delete_code_repository(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCodeRepository">>, Input, Options).
+
+%% @doc Deletes an context.
+delete_context(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_context(Client, Input, []).
+delete_context(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteContext">>, Input, Options).
+
+%% @doc Deletes a data quality monitoring job definition.
+delete_data_quality_job_definition(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_data_quality_job_definition(Client, Input, []).
+delete_data_quality_job_definition(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteDataQualityJobDefinition">>, Input, Options).
+
+%% @doc Deletes a fleet.
+delete_device_fleet(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_device_fleet(Client, Input, []).
+delete_device_fleet(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteDeviceFleet">>, Input, Options).
 
 %% @doc Used to delete a domain.
 %%
@@ -1244,6 +1639,22 @@ delete_experiment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteExperiment">>, Input, Options).
 
+%% @doc Delete the `FeatureGroup' and any data that was written to the
+%% `OnlineStore' of the `FeatureGroup'.
+%%
+%% Data cannot be accessed from the `OnlineStore' immediately after
+%% `DeleteFeatureGroup' is called.
+%%
+%% Data written into the `OfflineStore' will not be deleted. The AWS Glue
+%% database and tables that are automatically created for your `OfflineStore'
+%% are not deleted.
+delete_feature_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_feature_group(Client, Input, []).
+delete_feature_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteFeatureGroup">>, Input, Options).
+
 %% @doc Deletes the specified flow definition.
 delete_flow_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1298,6 +1709,22 @@ delete_model(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteModel">>, Input, Options).
 
+%% @doc Deletes an Amazon SageMaker model bias job definition.
+delete_model_bias_job_definition(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_model_bias_job_definition(Client, Input, []).
+delete_model_bias_job_definition(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteModelBiasJobDefinition">>, Input, Options).
+
+%% @doc Deletes an Amazon SageMaker model explainability job definition.
+delete_model_explainability_job_definition(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_model_explainability_job_definition(Client, Input, []).
+delete_model_explainability_job_definition(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteModelExplainabilityJobDefinition">>, Input, Options).
+
 %% @doc Deletes a model package.
 %%
 %% A model package is used to create Amazon SageMaker models or list on AWS
@@ -1309,6 +1736,30 @@ delete_model_package(Client, Input)
 delete_model_package(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteModelPackage">>, Input, Options).
+
+%% @doc Deletes the specified model group.
+delete_model_package_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_model_package_group(Client, Input, []).
+delete_model_package_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteModelPackageGroup">>, Input, Options).
+
+%% @doc Deletes a model group resource policy.
+delete_model_package_group_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_model_package_group_policy(Client, Input, []).
+delete_model_package_group_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteModelPackageGroupPolicy">>, Input, Options).
+
+%% @doc Deletes the secified model quality monitoring job definition.
+delete_model_quality_job_definition(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_model_quality_job_definition(Client, Input, []).
+delete_model_quality_job_definition(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteModelQualityJobDefinition">>, Input, Options).
 
 %% @doc Deletes a monitoring schedule.
 %%
@@ -1343,6 +1794,22 @@ delete_notebook_instance_lifecycle_config(Client, Input)
 delete_notebook_instance_lifecycle_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteNotebookInstanceLifecycleConfig">>, Input, Options).
+
+%% @doc Deletes a pipeline if there are no in-progress executions.
+delete_pipeline(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_pipeline(Client, Input, []).
+delete_pipeline(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeletePipeline">>, Input, Options).
+
+%% @doc Delete the specified project.
+delete_project(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_project(Client, Input, []).
+delete_project(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteProject">>, Input, Options).
 
 %% @doc Deletes the specified tags from an Amazon SageMaker resource.
 %%
@@ -1419,6 +1886,24 @@ delete_workteam(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWorkteam">>, Input, Options).
 
+%% @doc Deregisters the specified devices.
+%%
+%% After you deregister a device, you will need to re-register the devices.
+deregister_devices(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    deregister_devices(Client, Input, []).
+deregister_devices(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeregisterDevices">>, Input, Options).
+
+%% @doc Describes an action.
+describe_action(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_action(Client, Input, []).
+describe_action(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeAction">>, Input, Options).
+
 %% @doc Returns a description of the specified algorithm that is in your
 %% account.
 describe_algorithm(Client, Input)
@@ -1443,6 +1928,14 @@ describe_app_image_config(Client, Input)
 describe_app_image_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAppImageConfig">>, Input, Options).
+
+%% @doc Describes an artifact.
+describe_artifact(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_artifact(Client, Input, []).
+describe_artifact(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeArtifact">>, Input, Options).
 
 %% @doc Returns information about an Amazon SageMaker job.
 describe_auto_ml_job(Client, Input)
@@ -1472,6 +1965,38 @@ describe_compilation_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCompilationJob">>, Input, Options).
 
+%% @doc Describes a context.
+describe_context(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_context(Client, Input, []).
+describe_context(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeContext">>, Input, Options).
+
+%% @doc Gets the details of a data quality monitoring job definition.
+describe_data_quality_job_definition(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_data_quality_job_definition(Client, Input, []).
+describe_data_quality_job_definition(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeDataQualityJobDefinition">>, Input, Options).
+
+%% @doc Describes the device.
+describe_device(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_device(Client, Input, []).
+describe_device(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeDevice">>, Input, Options).
+
+%% @doc A description of the fleet the device belongs to.
+describe_device_fleet(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_device_fleet(Client, Input, []).
+describe_device_fleet(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeDeviceFleet">>, Input, Options).
+
 %% @doc The description of the domain.
 describe_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1479,6 +2004,14 @@ describe_domain(Client, Input)
 describe_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDomain">>, Input, Options).
+
+%% @doc A description of edge packaging jobs.
+describe_edge_packaging_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_edge_packaging_job(Client, Input, []).
+describe_edge_packaging_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeEdgePackagingJob">>, Input, Options).
 
 %% @doc Returns the description of an endpoint.
 describe_endpoint(Client, Input)
@@ -1504,6 +2037,17 @@ describe_experiment(Client, Input)
 describe_experiment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeExperiment">>, Input, Options).
+
+%% @doc Use this operation to describe a `FeatureGroup'.
+%%
+%% The response includes information on the creation time, `FeatureGroup'
+%% name, the unique identifier for each `FeatureGroup', and more.
+describe_feature_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_feature_group(Client, Input, []).
+describe_feature_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeFeatureGroup">>, Input, Options).
 
 %% @doc Returns information about the specified flow definition.
 describe_flow_definition(Client, Input)
@@ -1562,6 +2106,22 @@ describe_model(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeModel">>, Input, Options).
 
+%% @doc Returns a description of a model bias job definition.
+describe_model_bias_job_definition(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_model_bias_job_definition(Client, Input, []).
+describe_model_bias_job_definition(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeModelBiasJobDefinition">>, Input, Options).
+
+%% @doc Returns a description of a model explainability job definition.
+describe_model_explainability_job_definition(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_model_explainability_job_definition(Client, Input, []).
+describe_model_explainability_job_definition(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeModelExplainabilityJobDefinition">>, Input, Options).
+
 %% @doc Returns a description of the specified model package, which is used
 %% to create Amazon SageMaker models or list them on AWS Marketplace.
 %%
@@ -1573,6 +2133,22 @@ describe_model_package(Client, Input)
 describe_model_package(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeModelPackage">>, Input, Options).
+
+%% @doc Gets a description for the specified model group.
+describe_model_package_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_model_package_group(Client, Input, []).
+describe_model_package_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeModelPackageGroup">>, Input, Options).
+
+%% @doc Returns a description of a model quality job definition.
+describe_model_quality_job_definition(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_model_quality_job_definition(Client, Input, []).
+describe_model_quality_job_definition(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeModelQualityJobDefinition">>, Input, Options).
 
 %% @doc Describes the schedule for a monitoring job.
 describe_monitoring_schedule(Client, Input)
@@ -1601,6 +2177,30 @@ describe_notebook_instance_lifecycle_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeNotebookInstanceLifecycleConfig">>, Input, Options).
 
+%% @doc Describes the details of a pipeline.
+describe_pipeline(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_pipeline(Client, Input, []).
+describe_pipeline(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribePipeline">>, Input, Options).
+
+%% @doc Describes the details of an execution's pipeline definition.
+describe_pipeline_definition_for_execution(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_pipeline_definition_for_execution(Client, Input, []).
+describe_pipeline_definition_for_execution(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribePipelineDefinitionForExecution">>, Input, Options).
+
+%% @doc Describes the details of a pipeline execution.
+describe_pipeline_execution(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_pipeline_execution(Client, Input, []).
+describe_pipeline_execution(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribePipelineExecution">>, Input, Options).
+
 %% @doc Returns a description of a processing job.
 describe_processing_job(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1608,6 +2208,14 @@ describe_processing_job(Client, Input)
 describe_processing_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeProcessingJob">>, Input, Options).
+
+%% @doc Describes the details of a project.
+describe_project(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_project(Client, Input, []).
+describe_project(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeProject">>, Input, Options).
 
 %% @doc Gets information about a work team provided by a vendor.
 %%
@@ -1621,6 +2229,12 @@ describe_subscribed_workteam(Client, Input, Options)
     request(Client, <<"DescribeSubscribedWorkteam">>, Input, Options).
 
 %% @doc Returns information about a training job.
+%%
+%% Some of the attributes below only appear if the training job successfully
+%% starts. If the training job fails, `TrainingJobStatus' is `Failed' and,
+%% depending on the `FailureReason', attributes like `TrainingStartTime',
+%% `TrainingTimeInSeconds', `TrainingEndTime', and `BillableTimeInSeconds'
+%% may not be present in the response.
 describe_training_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_training_job(Client, Input, []).
@@ -1688,6 +2302,16 @@ describe_workteam(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeWorkteam">>, Input, Options).
 
+%% @doc Disables using Service Catalog in SageMaker.
+%%
+%% Service Catalog is used to create SageMaker projects.
+disable_sagemaker_servicecatalog_portfolio(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disable_sagemaker_servicecatalog_portfolio(Client, Input, []).
+disable_sagemaker_servicecatalog_portfolio(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisableSagemakerServicecatalogPortfolio">>, Input, Options).
+
 %% @doc Disassociates a trial component from a trial.
 %%
 %% This doesn't effect other trials the component is associated with. Before
@@ -1706,6 +2330,46 @@ disassociate_trial_component(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateTrialComponent">>, Input, Options).
 
+%% @doc Enables using Service Catalog in SageMaker.
+%%
+%% Service Catalog is used to create SageMaker projects.
+enable_sagemaker_servicecatalog_portfolio(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    enable_sagemaker_servicecatalog_portfolio(Client, Input, []).
+enable_sagemaker_servicecatalog_portfolio(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"EnableSagemakerServicecatalogPortfolio">>, Input, Options).
+
+%% @doc Describes a fleet.
+get_device_fleet_report(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_device_fleet_report(Client, Input, []).
+get_device_fleet_report(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDeviceFleetReport">>, Input, Options).
+
+%% @doc Gets a resource policy that manages access for a model group.
+%%
+%% For information about resource policies, see Identity-based policies and
+%% resource-based policies in the AWS Identity and Access Management User
+%% Guide..
+get_model_package_group_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_model_package_group_policy(Client, Input, []).
+get_model_package_group_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetModelPackageGroupPolicy">>, Input, Options).
+
+%% @doc Gets the status of Service Catalog in SageMaker.
+%%
+%% Service Catalog is used to create SageMaker projects.
+get_sagemaker_servicecatalog_portfolio_status(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_sagemaker_servicecatalog_portfolio_status(Client, Input, []).
+get_sagemaker_servicecatalog_portfolio_status(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetSagemakerServicecatalogPortfolioStatus">>, Input, Options).
+
 %% @doc An auto-complete API for the search functionality in the Amazon
 %% SageMaker console.
 %%
@@ -1718,6 +2382,14 @@ get_search_suggestions(Client, Input)
 get_search_suggestions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSearchSuggestions">>, Input, Options).
+
+%% @doc Lists the actions in your account and their properties.
+list_actions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_actions(Client, Input, []).
+list_actions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListActions">>, Input, Options).
 
 %% @doc Lists the machine learning algorithms that have been created.
 list_algorithms(Client, Input)
@@ -1745,6 +2417,22 @@ list_apps(Client, Input)
 list_apps(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListApps">>, Input, Options).
+
+%% @doc Lists the artifacts in your account and their properties.
+list_artifacts(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_artifacts(Client, Input, []).
+list_artifacts(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListArtifacts">>, Input, Options).
+
+%% @doc Lists the associations in your account and their properties.
+list_associations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_associations(Client, Input, []).
+list_associations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAssociations">>, Input, Options).
 
 %% @doc Request a list of jobs.
 list_auto_ml_jobs(Client, Input)
@@ -1782,6 +2470,38 @@ list_compilation_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCompilationJobs">>, Input, Options).
 
+%% @doc Lists the contexts in your account and their properties.
+list_contexts(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_contexts(Client, Input, []).
+list_contexts(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListContexts">>, Input, Options).
+
+%% @doc Lists the data quality job definitions in your account.
+list_data_quality_job_definitions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_data_quality_job_definitions(Client, Input, []).
+list_data_quality_job_definitions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListDataQualityJobDefinitions">>, Input, Options).
+
+%% @doc Returns a list of devices in the fleet.
+list_device_fleets(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_device_fleets(Client, Input, []).
+list_device_fleets(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListDeviceFleets">>, Input, Options).
+
+%% @doc A list of devices.
+list_devices(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_devices(Client, Input, []).
+list_devices(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListDevices">>, Input, Options).
+
 %% @doc Lists the domains.
 list_domains(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1789,6 +2509,14 @@ list_domains(Client, Input)
 list_domains(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDomains">>, Input, Options).
+
+%% @doc Returns a list of edge packaging jobs.
+list_edge_packaging_jobs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_edge_packaging_jobs(Client, Input, []).
+list_edge_packaging_jobs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListEdgePackagingJobs">>, Input, Options).
 
 %% @doc Lists endpoint configurations.
 list_endpoint_configs(Client, Input)
@@ -1817,6 +2545,14 @@ list_experiments(Client, Input)
 list_experiments(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListExperiments">>, Input, Options).
+
+%% @doc List `FeatureGroup's based on given filter and order.
+list_feature_groups(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_feature_groups(Client, Input, []).
+list_feature_groups(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListFeatureGroups">>, Input, Options).
 
 %% @doc Returns information about the flow definitions in your account.
 list_flow_definitions(Client, Input)
@@ -1881,6 +2617,31 @@ list_labeling_jobs_for_workteam(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLabelingJobsForWorkteam">>, Input, Options).
 
+%% @doc Lists model bias jobs definitions that satisfy various filters.
+list_model_bias_job_definitions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_model_bias_job_definitions(Client, Input, []).
+list_model_bias_job_definitions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListModelBiasJobDefinitions">>, Input, Options).
+
+%% @doc Lists model explainability job definitions that satisfy various
+%% filters.
+list_model_explainability_job_definitions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_model_explainability_job_definitions(Client, Input, []).
+list_model_explainability_job_definitions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListModelExplainabilityJobDefinitions">>, Input, Options).
+
+%% @doc Gets a list of the model groups in your AWS account.
+list_model_package_groups(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_model_package_groups(Client, Input, []).
+list_model_package_groups(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListModelPackageGroups">>, Input, Options).
+
 %% @doc Lists the model packages that have been created.
 list_model_packages(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1888,6 +2649,15 @@ list_model_packages(Client, Input)
 list_model_packages(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListModelPackages">>, Input, Options).
+
+%% @doc Gets a list of model quality monitoring job definitions in your
+%% account.
+list_model_quality_job_definitions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_model_quality_job_definitions(Client, Input, []).
+list_model_quality_job_definitions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListModelQualityJobDefinitions">>, Input, Options).
 
 %% @doc Lists models created with the `CreateModel' API.
 list_models(Client, Input)
@@ -1931,6 +2701,38 @@ list_notebook_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListNotebookInstances">>, Input, Options).
 
+%% @doc Gets a list of `PipeLineExecutionStep' objects.
+list_pipeline_execution_steps(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_pipeline_execution_steps(Client, Input, []).
+list_pipeline_execution_steps(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListPipelineExecutionSteps">>, Input, Options).
+
+%% @doc Gets a list of the pipeline executions.
+list_pipeline_executions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_pipeline_executions(Client, Input, []).
+list_pipeline_executions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListPipelineExecutions">>, Input, Options).
+
+%% @doc Gets a list of parameters for a pipeline execution.
+list_pipeline_parameters_for_execution(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_pipeline_parameters_for_execution(Client, Input, []).
+list_pipeline_parameters_for_execution(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListPipelineParametersForExecution">>, Input, Options).
+
+%% @doc Gets a list of pipelines.
+list_pipelines(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_pipelines(Client, Input, []).
+list_pipelines(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListPipelines">>, Input, Options).
+
 %% @doc Lists processing jobs that satisfy various filters.
 list_processing_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1938,6 +2740,14 @@ list_processing_jobs(Client, Input)
 list_processing_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListProcessingJobs">>, Input, Options).
+
+%% @doc Gets a list of the projects in an AWS account.
+list_projects(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_projects(Client, Input, []).
+list_projects(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListProjects">>, Input, Options).
 
 %% @doc Gets a list of the work teams that you are subscribed to in the AWS
 %% Marketplace.
@@ -1960,6 +2770,23 @@ list_tags(Client, Input, Options)
     request(Client, <<"ListTags">>, Input, Options).
 
 %% @doc Lists training jobs.
+%%
+%% When `StatusEquals' and `MaxResults' are set at the same time, the
+%% `MaxResults' number of training jobs are first retrieved ignoring the
+%% `StatusEquals' parameter and then they are filtered by the `StatusEquals'
+%% parameter, which is returned as a response. For example, if
+%% `ListTrainingJobs' is invoked with the following parameters:
+%%
+%% `{ ... MaxResults: 100, StatusEquals: InProgress ... }'
+%%
+%% Then, 100 trainings jobs with any status including those other than
+%% `InProgress' are selected first (sorted according the creation time, from
+%% the latest to the oldest) and those with status `InProgress' are returned.
+%%
+%% You can quickly test the API using the following AWS CLI code.
+%%
+%% `aws sagemaker list-training-jobs --max-results 100 --status-equals
+%% InProgress'
 list_training_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_training_jobs(Client, Input, []).
@@ -2048,6 +2875,26 @@ list_workteams(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWorkteams">>, Input, Options).
 
+%% @doc Adds a resouce policy to control access to a model group.
+%%
+%% For information about resoure policies, see Identity-based policies and
+%% resource-based policies in the AWS Identity and Access Management User
+%% Guide..
+put_model_package_group_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_model_package_group_policy(Client, Input, []).
+put_model_package_group_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutModelPackageGroupPolicy">>, Input, Options).
+
+%% @doc Register devices.
+register_devices(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    register_devices(Client, Input, []).
+register_devices(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RegisterDevices">>, Input, Options).
+
 %% @doc Renders the UI template so that you can preview the worker's
 %% experience.
 render_ui_template(Client, Input)
@@ -2074,7 +2921,8 @@ search(Client, Input, Options)
 
 %% @doc Starts a previously stopped monitoring schedule.
 %%
-%% New monitoring schedules are immediately started after creation.
+%% By default, when you successfully create a new schedule, the status of a
+%% monitoring schedule is `scheduled'.
 start_monitoring_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_monitoring_schedule(Client, Input, []).
@@ -2094,6 +2942,14 @@ start_notebook_instance(Client, Input)
 start_notebook_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartNotebookInstance">>, Input, Options).
+
+%% @doc Starts a pipeline execution.
+start_pipeline_execution(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_pipeline_execution(Client, Input, []).
+start_pipeline_execution(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartPipelineExecution">>, Input, Options).
 
 %% @doc A method for forcing the termination of a running job.
 stop_auto_ml_job(Client, Input)
@@ -2119,6 +2975,14 @@ stop_compilation_job(Client, Input)
 stop_compilation_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopCompilationJob">>, Input, Options).
+
+%% @doc Request to stop an edge packaging job.
+stop_edge_packaging_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_edge_packaging_job(Client, Input, []).
+stop_edge_packaging_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopEdgePackagingJob">>, Input, Options).
 
 %% @doc Stops a running hyperparameter tuning job and all running training
 %% jobs that the tuning job launched.
@@ -2173,6 +3037,14 @@ stop_notebook_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopNotebookInstance">>, Input, Options).
 
+%% @doc Stops a pipeline execution.
+stop_pipeline_execution(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_pipeline_execution(Client, Input, []).
+stop_pipeline_execution(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopPipelineExecution">>, Input, Options).
+
 %% @doc Stops a processing job.
 stop_processing_job(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -2211,6 +3083,14 @@ stop_transform_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopTransformJob">>, Input, Options).
 
+%% @doc Updates an action.
+update_action(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_action(Client, Input, []).
+update_action(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateAction">>, Input, Options).
+
 %% @doc Updates the properties of an AppImageConfig.
 update_app_image_config(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -2219,6 +3099,14 @@ update_app_image_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAppImageConfig">>, Input, Options).
 
+%% @doc Updates an artifact.
+update_artifact(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_artifact(Client, Input, []).
+update_artifact(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateArtifact">>, Input, Options).
+
 %% @doc Updates the specified Git repository with the specified values.
 update_code_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -2226,6 +3114,30 @@ update_code_repository(Client, Input)
 update_code_repository(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCodeRepository">>, Input, Options).
+
+%% @doc Updates a context.
+update_context(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_context(Client, Input, []).
+update_context(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateContext">>, Input, Options).
+
+%% @doc Updates a fleet of devices.
+update_device_fleet(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_device_fleet(Client, Input, []).
+update_device_fleet(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateDeviceFleet">>, Input, Options).
+
+%% @doc Updates one or more devices in a fleet.
+update_devices(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_devices(Client, Input, []).
+update_devices(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateDevices">>, Input, Options).
 
 %% @doc Updates the default settings for new user profiles in the domain.
 update_domain(Client, Input)
@@ -2296,6 +3208,14 @@ update_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateImage">>, Input, Options).
 
+%% @doc Updates a versioned model.
+update_model_package(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_model_package(Client, Input, []).
+update_model_package(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateModelPackage">>, Input, Options).
+
 %% @doc Updates a previously created schedule.
 update_monitoring_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -2324,6 +3244,31 @@ update_notebook_instance_lifecycle_config(Client, Input)
 update_notebook_instance_lifecycle_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateNotebookInstanceLifecycleConfig">>, Input, Options).
+
+%% @doc Updates a pipeline.
+update_pipeline(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_pipeline(Client, Input, []).
+update_pipeline(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdatePipeline">>, Input, Options).
+
+%% @doc Updates a pipeline execution.
+update_pipeline_execution(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_pipeline_execution(Client, Input, []).
+update_pipeline_execution(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdatePipelineExecution">>, Input, Options).
+
+%% @doc Update a model training job to request a new Debugger profiling
+%% configuration.
+update_training_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_training_job(Client, Input, []).
+update_training_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateTrainingJob">>, Input, Options).
 
 %% @doc Updates the display name of a trial.
 update_trial(Client, Input)

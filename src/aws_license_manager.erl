@@ -7,28 +7,76 @@
 %% vendors across multiple AWS accounts and on-premises servers.
 -module(aws_license_manager).
 
--export([create_license_configuration/2,
+-export([accept_grant/2,
+         accept_grant/3,
+         check_in_license/2,
+         check_in_license/3,
+         checkout_borrow_license/2,
+         checkout_borrow_license/3,
+         checkout_license/2,
+         checkout_license/3,
+         create_grant/2,
+         create_grant/3,
+         create_grant_version/2,
+         create_grant_version/3,
+         create_license/2,
+         create_license/3,
+         create_license_configuration/2,
          create_license_configuration/3,
+         create_license_version/2,
+         create_license_version/3,
+         create_token/2,
+         create_token/3,
+         delete_grant/2,
+         delete_grant/3,
+         delete_license/2,
+         delete_license/3,
          delete_license_configuration/2,
          delete_license_configuration/3,
+         delete_token/2,
+         delete_token/3,
+         extend_license_consumption/2,
+         extend_license_consumption/3,
+         get_access_token/2,
+         get_access_token/3,
+         get_grant/2,
+         get_grant/3,
+         get_license/2,
+         get_license/3,
          get_license_configuration/2,
          get_license_configuration/3,
+         get_license_usage/2,
+         get_license_usage/3,
          get_service_settings/2,
          get_service_settings/3,
          list_associations_for_license_configuration/2,
          list_associations_for_license_configuration/3,
+         list_distributed_grants/2,
+         list_distributed_grants/3,
          list_failures_for_license_configuration_operations/2,
          list_failures_for_license_configuration_operations/3,
          list_license_configurations/2,
          list_license_configurations/3,
          list_license_specifications_for_resource/2,
          list_license_specifications_for_resource/3,
+         list_license_versions/2,
+         list_license_versions/3,
+         list_licenses/2,
+         list_licenses/3,
+         list_received_grants/2,
+         list_received_grants/3,
+         list_received_licenses/2,
+         list_received_licenses/3,
          list_resource_inventory/2,
          list_resource_inventory/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         list_tokens/2,
+         list_tokens/3,
          list_usage_for_license_configuration/2,
          list_usage_for_license_configuration/3,
+         reject_grant/2,
+         reject_grant/3,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
@@ -46,6 +94,66 @@
 %% API
 %%====================================================================
 
+%% @doc Accepts the specified grant.
+accept_grant(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    accept_grant(Client, Input, []).
+accept_grant(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AcceptGrant">>, Input, Options).
+
+%% @doc Checks in the specified license.
+%%
+%% Check in a license when it is no longer in use.
+check_in_license(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    check_in_license(Client, Input, []).
+check_in_license(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CheckInLicense">>, Input, Options).
+
+%% @doc Checks out the specified license for offline use.
+checkout_borrow_license(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    checkout_borrow_license(Client, Input, []).
+checkout_borrow_license(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CheckoutBorrowLicense">>, Input, Options).
+
+%% @doc Checks out the specified license.
+checkout_license(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    checkout_license(Client, Input, []).
+checkout_license(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CheckoutLicense">>, Input, Options).
+
+%% @doc Creates a grant for the specified license.
+%%
+%% A grant shares the use of license entitlements with specific AWS accounts.
+create_grant(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_grant(Client, Input, []).
+create_grant(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateGrant">>, Input, Options).
+
+%% @doc Creates a new version of the specified grant.
+create_grant_version(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_grant_version(Client, Input, []).
+create_grant_version(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateGrantVersion">>, Input, Options).
+
+%% @doc Creates a license.
+create_license(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_license(Client, Input, []).
+create_license(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateLicense">>, Input, Options).
+
 %% @doc Creates a license configuration.
 %%
 %% A license configuration is an abstraction of a customer license agreement
@@ -61,6 +169,42 @@ create_license_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLicenseConfiguration">>, Input, Options).
 
+%% @doc Creates a new version of the specified license.
+create_license_version(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_license_version(Client, Input, []).
+create_license_version(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateLicenseVersion">>, Input, Options).
+
+%% @doc Creates a long-lived token.
+%%
+%% A refresh token is a JWT token used to get an access token. With an access
+%% token, you can call AssumeRoleWithWebIdentity to get role credentials that
+%% you can use to call License Manager to manage the specified license.
+create_token(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_token(Client, Input, []).
+create_token(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateToken">>, Input, Options).
+
+%% @doc Deletes the specified grant.
+delete_grant(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_grant(Client, Input, []).
+delete_grant(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteGrant">>, Input, Options).
+
+%% @doc Deletes the specified license.
+delete_license(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_license(Client, Input, []).
+delete_license(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteLicense">>, Input, Options).
+
 %% @doc Deletes the specified license configuration.
 %%
 %% You cannot delete a license configuration that is in use.
@@ -71,6 +215,50 @@ delete_license_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLicenseConfiguration">>, Input, Options).
 
+%% @doc Deletes the specified token.
+%%
+%% Must be called in the license home Region.
+delete_token(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_token(Client, Input, []).
+delete_token(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteToken">>, Input, Options).
+
+%% @doc Extends the expiration date for license consumption.
+extend_license_consumption(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    extend_license_consumption(Client, Input, []).
+extend_license_consumption(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ExtendLicenseConsumption">>, Input, Options).
+
+%% @doc Gets a temporary access token to use with AssumeRoleWithWebIdentity.
+%%
+%% Access tokens are valid for one hour.
+get_access_token(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_access_token(Client, Input, []).
+get_access_token(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetAccessToken">>, Input, Options).
+
+%% @doc Gets detailed information about the specified grant.
+get_grant(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_grant(Client, Input, []).
+get_grant(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetGrant">>, Input, Options).
+
+%% @doc Gets detailed information about the specified license.
+get_license(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_license(Client, Input, []).
+get_license(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetLicense">>, Input, Options).
+
 %% @doc Gets detailed information about the specified license configuration.
 get_license_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -78,6 +266,14 @@ get_license_configuration(Client, Input)
 get_license_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLicenseConfiguration">>, Input, Options).
+
+%% @doc Gets detailed information about the usage of the specified license.
+get_license_usage(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_license_usage(Client, Input, []).
+get_license_usage(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetLicenseUsage">>, Input, Options).
 
 %% @doc Gets the License Manager settings for the current Region.
 get_service_settings(Client, Input)
@@ -99,6 +295,14 @@ list_associations_for_license_configuration(Client, Input)
 list_associations_for_license_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAssociationsForLicenseConfiguration">>, Input, Options).
+
+%% @doc Lists the grants distributed for the specified license.
+list_distributed_grants(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_distributed_grants(Client, Input, []).
+list_distributed_grants(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListDistributedGrants">>, Input, Options).
 
 %% @doc Lists the license configuration operations that failed.
 list_failures_for_license_configuration_operations(Client, Input)
@@ -124,6 +328,38 @@ list_license_specifications_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLicenseSpecificationsForResource">>, Input, Options).
 
+%% @doc Lists all versions of the specified license.
+list_license_versions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_license_versions(Client, Input, []).
+list_license_versions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListLicenseVersions">>, Input, Options).
+
+%% @doc Lists the licenses for your account.
+list_licenses(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_licenses(Client, Input, []).
+list_licenses(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListLicenses">>, Input, Options).
+
+%% @doc Lists grants that are received but not accepted.
+list_received_grants(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_received_grants(Client, Input, []).
+list_received_grants(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListReceivedGrants">>, Input, Options).
+
+%% @doc Lists received licenses.
+list_received_licenses(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_received_licenses(Client, Input, []).
+list_received_licenses(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListReceivedLicenses">>, Input, Options).
+
 %% @doc Lists resources managed using Systems Manager inventory.
 list_resource_inventory(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -140,6 +376,14 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
+%% @doc Lists your tokens.
+list_tokens(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_tokens(Client, Input, []).
+list_tokens(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTokens">>, Input, Options).
+
 %% @doc Lists all license usage records for a license configuration,
 %% displaying license consumption details by resource at a selected point in
 %% time.
@@ -152,6 +396,14 @@ list_usage_for_license_configuration(Client, Input)
 list_usage_for_license_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUsageForLicenseConfiguration">>, Input, Options).
+
+%% @doc Rejects the specified grant.
+reject_grant(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    reject_grant(Client, Input, []).
+reject_grant(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RejectGrant">>, Input, Options).
 
 %% @doc Adds the specified tags to the specified license configuration.
 tag_resource(Client, Input)

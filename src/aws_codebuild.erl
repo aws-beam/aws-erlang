@@ -14,112 +14,6 @@
 %% tools. AWS CodeBuild scales automatically to meet peak build requests. You
 %% pay only for the build time you consume. For more information about AWS
 %% CodeBuild, see the AWS CodeBuild User Guide.
-%%
-%% AWS CodeBuild supports these operations:
-%%
-%% <ul> <li> `BatchDeleteBuilds': Deletes one or more builds.
-%%
-%% </li> <li> `BatchGetBuilds': Gets information about one or more builds.
-%%
-%% </li> <li> `BatchGetProjects': Gets information about one or more build
-%% projects. A build project defines how AWS CodeBuild runs a build. This
-%% includes information such as where to get the source code to build, the
-%% build environment to use, the build commands to run, and where to store
-%% the build output. A build environment is a representation of operating
-%% system, programming language runtime, and tools that AWS CodeBuild uses to
-%% run a build. You can add tags to build projects to help manage your
-%% resources and costs.
-%%
-%% </li> <li> `BatchGetReportGroups': Returns an array of report groups.
-%%
-%% </li> <li> `BatchGetReports': Returns an array of reports.
-%%
-%% </li> <li> `CreateProject': Creates a build project.
-%%
-%% </li> <li> `CreateReportGroup': Creates a report group. A report group
-%% contains a collection of reports.
-%%
-%% </li> <li> `CreateWebhook': For an existing AWS CodeBuild build project
-%% that has its source code stored in a GitHub or Bitbucket repository,
-%% enables AWS CodeBuild to start rebuilding the source code every time a
-%% code change is pushed to the repository.
-%%
-%% </li> <li> `DeleteProject': Deletes a build project.
-%%
-%% </li> <li> `DeleteReport': Deletes a report.
-%%
-%% </li> <li> `DeleteReportGroup': Deletes a report group.
-%%
-%% </li> <li> `DeleteResourcePolicy': Deletes a resource policy that is
-%% identified by its resource ARN.
-%%
-%% </li> <li> `DeleteSourceCredentials': Deletes a set of GitHub, GitHub
-%% Enterprise, or Bitbucket source credentials.
-%%
-%% </li> <li> `DeleteWebhook': For an existing AWS CodeBuild build project
-%% that has its source code stored in a GitHub or Bitbucket repository, stops
-%% AWS CodeBuild from rebuilding the source code every time a code change is
-%% pushed to the repository.
-%%
-%% </li> <li> `DescribeTestCases': Returns a list of details about test cases
-%% for a report.
-%%
-%% </li> <li> `GetResourcePolicy': Gets a resource policy that is identified
-%% by its resource ARN.
-%%
-%% </li> <li> `ImportSourceCredentials': Imports the source repository
-%% credentials for an AWS CodeBuild project that has its source code stored
-%% in a GitHub, GitHub Enterprise, or Bitbucket repository.
-%%
-%% </li> <li> `InvalidateProjectCache': Resets the cache for a project.
-%%
-%% </li> <li> `ListBuilds': Gets a list of build IDs, with each build ID
-%% representing a single build.
-%%
-%% </li> <li> `ListBuildsForProject': Gets a list of build IDs for the
-%% specified build project, with each build ID representing a single build.
-%%
-%% </li> <li> `ListCuratedEnvironmentImages': Gets information about Docker
-%% images that are managed by AWS CodeBuild.
-%%
-%% </li> <li> `ListProjects': Gets a list of build project names, with each
-%% build project name representing a single build project.
-%%
-%% </li> <li> `ListReportGroups': Gets a list ARNs for the report groups in
-%% the current AWS account.
-%%
-%% </li> <li> `ListReports': Gets a list ARNs for the reports in the current
-%% AWS account.
-%%
-%% </li> <li> `ListReportsForReportGroup': Returns a list of ARNs for the
-%% reports that belong to a `ReportGroup'.
-%%
-%% </li> <li> `ListSharedProjects': Gets a list of ARNs associated with
-%% projects shared with the current AWS account or user.
-%%
-%% </li> <li> `ListSharedReportGroups': Gets a list of ARNs associated with
-%% report groups shared with the current AWS account or user
-%%
-%% </li> <li> `ListSourceCredentials': Returns a list of
-%% `SourceCredentialsInfo' objects. Each `SourceCredentialsInfo' object
-%% includes the authentication type, token ARN, and type of source provider
-%% for one set of credentials.
-%%
-%% </li> <li> `PutResourcePolicy': Stores a resource policy for the ARN of a
-%% `Project' or `ReportGroup' object.
-%%
-%% </li> <li> `StartBuild': Starts running a build.
-%%
-%% </li> <li> `StopBuild': Attempts to stop running a build.
-%%
-%% </li> <li> `UpdateProject': Changes the settings of an existing build
-%% project.
-%%
-%% </li> <li> `UpdateReportGroup': Changes a report group.
-%%
-%% </li> <li> `UpdateWebhook': Changes the settings of an existing webhook.
-%%
-%% </li> </ul>
 -module(aws_codebuild).
 
 -export([batch_delete_builds/2,
@@ -383,7 +277,8 @@ describe_test_cases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTestCases">>, Input, Options).
 
-
+%% @doc Analyzes and accumulates test report values for the specified test
+%% reports.
 get_report_group_trend(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_report_group_trend(Client, Input, []).
@@ -444,8 +339,8 @@ list_builds(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListBuilds">>, Input, Options).
 
-%% @doc Gets a list of build IDs for the specified build project, with each
-%% build ID representing a single build.
+%% @doc Gets a list of build identifiers for the specified build project,
+%% with each build identifier representing a single build.
 list_builds_for_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_builds_for_project(Client, Input, []).

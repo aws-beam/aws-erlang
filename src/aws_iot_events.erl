@@ -18,10 +18,14 @@
          delete_input/4,
          describe_detector_model/3,
          describe_detector_model/4,
+         describe_detector_model_analysis/2,
+         describe_detector_model_analysis/3,
          describe_input/2,
          describe_input/3,
          describe_logging_options/1,
          describe_logging_options/2,
+         get_detector_model_analysis_results/4,
+         get_detector_model_analysis_results/5,
          list_detector_model_versions/4,
          list_detector_model_versions/5,
          list_detector_models/3,
@@ -32,6 +36,8 @@
          list_tags_for_resource/3,
          put_logging_options/2,
          put_logging_options/3,
+         start_detector_model_analysis/2,
+         start_detector_model_analysis/3,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
@@ -135,6 +141,21 @@ describe_detector_model(Client, DetectorModelName, DetectorModelVersion, Options
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves execution information about a detector model analysis
+describe_detector_model_analysis(Client, AnalysisId)
+  when is_map(Client) ->
+    describe_detector_model_analysis(Client, AnalysisId, []).
+describe_detector_model_analysis(Client, AnalysisId, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/analysis/detector-models/", aws_util:encode_uri(AnalysisId), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Describes an input.
 describe_input(Client, InputName)
   when is_map(Client) ->
@@ -162,6 +183,26 @@ describe_logging_options(Client, Options)
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves one or more analysis results of the detector model.
+get_detector_model_analysis_results(Client, AnalysisId, MaxResults, NextToken)
+  when is_map(Client) ->
+    get_detector_model_analysis_results(Client, AnalysisId, MaxResults, NextToken, []).
+get_detector_model_analysis_results(Client, AnalysisId, MaxResults, NextToken, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/analysis/detector-models/", aws_util:encode_uri(AnalysisId), "/results"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -260,6 +301,25 @@ put_logging_options(Client, Input) ->
 put_logging_options(Client, Input0, Options) ->
     Method = put,
     Path = ["/logging"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Performs an analysis of your detector model.
+%%
+%% For more information, see Running detector model analyses in the AWS IoT
+%% Events Developer Guide.
+start_detector_model_analysis(Client, Input) ->
+    start_detector_model_analysis(Client, Input, []).
+start_detector_model_analysis(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/analysis/detector-models/"],
     SuccessStatusCode = undefined,
 
     Headers = [],

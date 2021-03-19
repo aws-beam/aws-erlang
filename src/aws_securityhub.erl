@@ -77,8 +77,8 @@
          describe_hub/3,
          describe_organization_configuration/1,
          describe_organization_configuration/2,
-         describe_products/3,
          describe_products/4,
+         describe_products/5,
          describe_standards/3,
          describe_standards/4,
          describe_standards_controls/4,
@@ -226,23 +226,28 @@ batch_enable_standards(Client, Input0, Options) ->
 %% the following finding fields and objects, which Security Hub customers use
 %% to manage their investigation workflow.
 %%
-%% <ul> <li> `Confidence'
-%%
-%% </li> <li> `Criticality'
-%%
-%% </li> <li> `Note'
-%%
-%% </li> <li> `RelatedFindings'
-%%
-%% </li> <li> `Severity'
-%%
-%% </li> <li> `Types'
+%% <ul> <li> `Note'
 %%
 %% </li> <li> `UserDefinedFields'
 %%
 %% </li> <li> `VerificationState'
 %%
 %% </li> <li> `Workflow'
+%%
+%% </li> </ul> `BatchImportFindings' can be used to update the following
+%% finding fields and objects only if they have not been updated using
+%% `BatchUpdateFindings'. After they are updated using `BatchUpdateFindings',
+%% these fields cannot be updated using `BatchImportFindings'.
+%%
+%% <ul> <li> `Confidence'
+%%
+%% </li> <li> `Criticality'
+%%
+%% </li> <li> `RelatedFindings'
+%%
+%% </li> <li> `Severity'
+%%
+%% </li> <li> `Types'
 %%
 %% </li> </ul>
 batch_import_findings(Client, Input) ->
@@ -554,13 +559,17 @@ describe_organization_configuration(Client, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns information about the available products that you can
-%% subscribe to and integrate with Security Hub in order to consolidate
-%% findings.
-describe_products(Client, MaxResults, NextToken)
+%% @doc Returns information about product integrations in Security Hub.
+%%
+%% You can optionally provide an integration ARN. If you provide an
+%% integration ARN, then the results only include that integration.
+%%
+%% If you do not provide an integration ARN, then the results include all of
+%% the available product integrations.
+describe_products(Client, MaxResults, NextToken, ProductArn)
   when is_map(Client) ->
-    describe_products(Client, MaxResults, NextToken, []).
-describe_products(Client, MaxResults, NextToken, Options)
+    describe_products(Client, MaxResults, NextToken, ProductArn, []).
+describe_products(Client, MaxResults, NextToken, ProductArn, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/products"],
     SuccessStatusCode = undefined,
@@ -570,7 +579,8 @@ describe_products(Client, MaxResults, NextToken, Options)
     Query0_ =
       [
         {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken}
+        {<<"NextToken">>, NextToken},
+        {<<"ProductArn">>, ProductArn}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

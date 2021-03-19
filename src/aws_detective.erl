@@ -12,13 +12,15 @@
 %%
 %% The Detective API primarily supports the creation and management of
 %% behavior graphs. A behavior graph contains the extracted data from a set
-%% of member accounts, and is created and managed by a master account.
+%% of member accounts, and is created and managed by an administrator
+%% account.
 %%
 %% Every behavior graph is specific to a Region. You can only use the API to
 %% manage graphs that belong to the Region that is associated with the
 %% currently selected endpoint.
 %%
-%% A Detective master account can use the Detective API to do the following:
+%% A Detective administrator account can use the Detective API to do the
+%% following:
 %%
 %% <ul> <li> Enable and disable Detective. Enabling Detective creates a new
 %% behavior graph.
@@ -42,6 +44,11 @@
 %%
 %% </li> </ul> All API actions are logged as CloudTrail events. See Logging
 %% Detective API Calls with CloudTrail.
+%%
+%% We replaced the term "master account" with the term "administrator
+%% account." An administrator account is used to centrally manage multiple
+%% accounts. In the case of Detective, the administrator account manages the
+%% accounts in their behavior graph.
 -module(aws_detective).
 
 -export([accept_invitation/2,
@@ -99,7 +106,7 @@ accept_invitation(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new behavior graph for the calling account, and sets that
-%% account as the master account.
+%% account as the administrator account.
 %%
 %% This operation is called by the account that is enabling Detective.
 %%
@@ -116,10 +123,10 @@ accept_invitation(Client, Input0, Options) ->
 %% `CreateGraph' triggers a process to create the corresponding data tables
 %% for the new behavior graph.
 %%
-%% An account can only be the master account for one behavior graph within a
-%% Region. If the same account calls `CreateGraph' with the same master
-%% account, it always returns the same behavior graph ARN. It does not create
-%% a new behavior graph.
+%% An account can only be the administrator account for one behavior graph
+%% within a Region. If the same account calls `CreateGraph' with the same
+%% administrator account, it always returns the same behavior graph ARN. It
+%% does not create a new behavior graph.
 create_graph(Client, Input) ->
     create_graph(Client, Input, []).
 create_graph(Client, Input0, Options) ->
@@ -138,11 +145,13 @@ create_graph(Client, Input0, Options) ->
 %% @doc Sends a request to invite the specified AWS accounts to be member
 %% accounts in the behavior graph.
 %%
-%% This operation can only be called by the master account for a behavior
-%% graph.
+%% This operation can only be called by the administrator account for a
+%% behavior graph.
 %%
-%% `CreateMembers' verifies the accounts and then sends invitations to the
-%% verified accounts.
+%% `CreateMembers' verifies the accounts and then invites the verified
+%% accounts. The administrator can optionally specify to not send invitation
+%% emails to the member accounts. This would be used when the administrator
+%% manages their member accounts centrally.
 %%
 %% The request provides the behavior graph ARN and the list of accounts to
 %% invite.
@@ -151,8 +160,8 @@ create_graph(Client, Input0, Options) ->
 %%
 %% <ul> <li> The accounts that `CreateMembers' was able to start the
 %% verification for. This list includes member accounts that are being
-%% verified, that have passed verification and are being sent an invitation,
-%% and that have failed verification.
+%% verified, that have passed verification and are to be invited, and that
+%% have failed verification.
 %%
 %% </li> <li> The accounts that `CreateMembers' was unable to process. This
 %% list includes accounts that were already invited to be member accounts in
@@ -179,8 +188,8 @@ create_members(Client, Input0, Options) ->
 %% This operation removes the graph from each member account's list of
 %% behavior graphs.
 %%
-%% `DeleteGraph' can only be called by the master account for a behavior
-%% graph.
+%% `DeleteGraph' can only be called by the administrator account for a
+%% behavior graph.
 delete_graph(Client, Input) ->
     delete_graph(Client, Input, []).
 delete_graph(Client, Input0, Options) ->
@@ -196,13 +205,13 @@ delete_graph(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes one or more member accounts from the master account behavior
-%% graph.
+%% @doc Deletes one or more member accounts from the administrator account's
+%% behavior graph.
 %%
-%% This operation can only be called by a Detective master account. That
-%% account cannot use `DeleteMembers' to delete their own account from the
-%% behavior graph. To disable a behavior graph, the master account uses the
-%% `DeleteGraph' API method.
+%% This operation can only be called by a Detective administrator account.
+%% That account cannot use `DeleteMembers' to delete their own account from
+%% the behavior graph. To disable a behavior graph, the administrator account
+%% uses the `DeleteGraph' API method.
 delete_members(Client, Input) ->
     delete_members(Client, Input, []).
 delete_members(Client, Input0, Options) ->
@@ -254,13 +263,13 @@ get_members(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns the list of behavior graphs that the calling account is a
-%% master of.
+%% @doc Returns the list of behavior graphs that the calling account is an
+%% administrator account of.
 %%
-%% This operation can only be called by a master account.
+%% This operation can only be called by an administrator account.
 %%
-%% Because an account can currently only be the master of one behavior graph
-%% within a Region, the results always contain a single graph.
+%% Because an account can currently only be the administrator of one behavior
+%% graph within a Region, the results always contain a single behavior graph.
 list_graphs(Client, Input) ->
     list_graphs(Client, Input, []).
 list_graphs(Client, Input0, Options) ->

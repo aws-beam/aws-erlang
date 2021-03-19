@@ -5,7 +5,9 @@
 %% (DNS) web service.
 -module(aws_route53).
 
--export([associate_vpc_with_hosted_zone/3,
+-export([activate_key_signing_key/4,
+         activate_key_signing_key/5,
+         associate_vpc_with_hosted_zone/3,
          associate_vpc_with_hosted_zone/4,
          change_resource_record_sets/3,
          change_resource_record_sets/4,
@@ -15,6 +17,8 @@
          create_health_check/3,
          create_hosted_zone/2,
          create_hosted_zone/3,
+         create_key_signing_key/2,
+         create_key_signing_key/3,
          create_query_logging_config/2,
          create_query_logging_config/3,
          create_reusable_delegation_set/2,
@@ -27,10 +31,14 @@
          create_traffic_policy_version/4,
          create_vpc_association_authorization/3,
          create_vpc_association_authorization/4,
+         deactivate_key_signing_key/4,
+         deactivate_key_signing_key/5,
          delete_health_check/3,
          delete_health_check/4,
          delete_hosted_zone/3,
          delete_hosted_zone/4,
+         delete_key_signing_key/4,
+         delete_key_signing_key/5,
          delete_query_logging_config/3,
          delete_query_logging_config/4,
          delete_reusable_delegation_set/3,
@@ -41,14 +49,20 @@
          delete_traffic_policy_instance/4,
          delete_vpc_association_authorization/3,
          delete_vpc_association_authorization/4,
+         disable_hosted_zone_dns_sec/3,
+         disable_hosted_zone_dns_sec/4,
          disassociate_vpc_from_hosted_zone/3,
          disassociate_vpc_from_hosted_zone/4,
+         enable_hosted_zone_dns_sec/3,
+         enable_hosted_zone_dns_sec/4,
          get_account_limit/2,
          get_account_limit/3,
          get_change/2,
          get_change/3,
          get_checker_ip_ranges/1,
          get_checker_ip_ranges/2,
+         get_dns_sec/2,
+         get_dns_sec/3,
          get_geo_location/4,
          get_geo_location/5,
          get_health_check/2,
@@ -125,6 +139,25 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Activates a key-signing key (KSK) so that it can be used for signing
+%% by DNSSEC.
+%%
+%% This operation changes the KSK status to `ACTIVE'.
+activate_key_signing_key(Client, HostedZoneId, Name, Input) ->
+    activate_key_signing_key(Client, HostedZoneId, Name, Input, []).
+activate_key_signing_key(Client, HostedZoneId, Name, Input0, Options) ->
+    Method = post,
+    Path = ["/2013-04-01/keysigningkey/", aws_util:encode_uri(HostedZoneId), "/", aws_util:encode_uri(Name), "/activate"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Associates an Amazon VPC with a private hosted zone.
 %%
@@ -384,6 +417,40 @@ create_hosted_zone(Client, Input) ->
 create_hosted_zone(Client, Input0, Options) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone"],
+    SuccessStatusCode = 201,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"Location">>, <<"Location">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Creates a new key-signing key (KSK) associated with a hosted zone.
+%%
+%% You can only have two KSKs per hosted zone.
+create_key_signing_key(Client, Input) ->
+    create_key_signing_key(Client, Input, []).
+create_key_signing_key(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/2013-04-01/keysigningkey"],
     SuccessStatusCode = 201,
 
     Headers = [],
@@ -766,6 +833,25 @@ create_vpc_association_authorization(Client, HostedZoneId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deactivates a key-signing key (KSK) so that it will not be used for
+%% signing by DNSSEC.
+%%
+%% This operation changes the KSK status to `INACTIVE'.
+deactivate_key_signing_key(Client, HostedZoneId, Name, Input) ->
+    deactivate_key_signing_key(Client, HostedZoneId, Name, Input, []).
+deactivate_key_signing_key(Client, HostedZoneId, Name, Input0, Options) ->
+    Method = post,
+    Path = ["/2013-04-01/keysigningkey/", aws_util:encode_uri(HostedZoneId), "/", aws_util:encode_uri(Name), "/deactivate"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a health check.
 %%
 %% Amazon Route 53 does not prevent you from deleting a health check even if
@@ -850,6 +936,26 @@ delete_hosted_zone(Client, Id, Input) ->
 delete_hosted_zone(Client, Id, Input0, Options) ->
     Method = delete,
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a key-signing key (KSK).
+%%
+%% Before you can delete a KSK, you must deactivate it. The KSK must be
+%% deactived before you can delete it regardless of whether the hosted zone
+%% is enabled for DNSSEC signing.
+delete_key_signing_key(Client, HostedZoneId, Name, Input) ->
+    delete_key_signing_key(Client, HostedZoneId, Name, Input, []).
+delete_key_signing_key(Client, HostedZoneId, Name, Input0, Options) ->
+    Method = delete,
+    Path = ["/2013-04-01/keysigningkey/", aws_util:encode_uri(HostedZoneId), "/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -984,6 +1090,25 @@ delete_vpc_association_authorization(Client, HostedZoneId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Disables DNSSEC signing in a specific hosted zone.
+%%
+%% This action does not deactivate any key-signing keys (KSKs) that are
+%% active in the hosted zone.
+disable_hosted_zone_dns_sec(Client, HostedZoneId, Input) ->
+    disable_hosted_zone_dns_sec(Client, HostedZoneId, Input, []).
+disable_hosted_zone_dns_sec(Client, HostedZoneId, Input0, Options) ->
+    Method = post,
+    Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/disable-dnssec"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Disassociates an Amazon Virtual Private Cloud (Amazon VPC) from an
 %% Amazon Route 53 private hosted zone.
 %%
@@ -1016,6 +1141,22 @@ disassociate_vpc_from_hosted_zone(Client, HostedZoneId, Input) ->
 disassociate_vpc_from_hosted_zone(Client, HostedZoneId, Input0, Options) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/disassociatevpc"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Enables DNSSEC signing in a specific hosted zone.
+enable_hosted_zone_dns_sec(Client, HostedZoneId, Input) ->
+    enable_hosted_zone_dns_sec(Client, HostedZoneId, Input, []).
+enable_hosted_zone_dns_sec(Client, HostedZoneId, Input0, Options) ->
+    Method = post,
+    Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/enable-dnssec"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1076,11 +1217,13 @@ get_change(Client, Id, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc `GetCheckerIpRanges' still works, but we recommend that you download
-%% ip-ranges.json, which includes IP address ranges for all AWS services.
+%% @doc Route 53 does not perform authorization for this API because it
+%% retrieves information that is already available to the public.
 %%
-%% For more information, see IP Address Ranges of Amazon Route 53 Servers in
-%% the Amazon Route 53 Developer Guide.
+%% `GetCheckerIpRanges' still works, but we recommend that you download
+%% ip-ranges.json, which includes IP address ranges for all AWS services. For
+%% more information, see IP Address Ranges of Amazon Route 53 Servers in the
+%% Amazon Route 53 Developer Guide.
 get_checker_ip_ranges(Client)
   when is_map(Client) ->
     get_checker_ip_ranges(Client, []).
@@ -1095,8 +1238,27 @@ get_checker_ip_ranges(Client, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns information about DNSSEC for a specific hosted zone,
+%% including the key-signing keys (KSKs) in the hosted zone.
+get_dns_sec(Client, HostedZoneId)
+  when is_map(Client) ->
+    get_dns_sec(Client, HostedZoneId, []).
+get_dns_sec(Client, HostedZoneId, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/dnssec"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets information about whether a specified geographic location is
 %% supported for Amazon Route 53 geolocation resource record sets.
+%%
+%% Route 53 does not perform authorization for this API because it retrieves
+%% information that is already available to the public.
 %%
 %% Use the following syntax to determine whether a continent is supported for
 %% geolocation:
@@ -1364,6 +1526,9 @@ get_traffic_policy_instance_count(Client, Options)
 %% Route 53 supports subdivisions for a country (for example, states or
 %% provinces), the subdivisions for that country are listed in alphabetical
 %% order immediately after the corresponding country.
+%%
+%% Route 53 does not perform authorization for this API because it retrieves
+%% information that is already available to the public.
 %%
 %% For a list of supported geolocation codes, see the GeoLocation data type.
 list_geo_locations(Client, MaxItems, StartContinentCode, StartCountryCode, StartSubdivisionCode)

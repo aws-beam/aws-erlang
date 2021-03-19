@@ -102,8 +102,8 @@
          get_object_lock_configuration/4,
          get_object_retention/6,
          get_object_retention/7,
-         get_object_tagging/5,
          get_object_tagging/6,
+         get_object_tagging/7,
          get_object_torrent/5,
          get_object_torrent/6,
          get_public_access_block/3,
@@ -363,6 +363,7 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options) ->
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
+            {<<"x-amz-server-side-encryption-bucket-key-enabled">>, <<"BucketKeyEnabled">>},
             {<<"x-amz-expiration">>, <<"Expiration">>},
             {<<"x-amz-request-charged">>, <<"RequestCharged">>},
             {<<"x-amz-server-side-encryption-aws-kms-key-id">>, <<"SSEKMSKeyId">>},
@@ -472,22 +473,20 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options) ->
 %% </li> </ul> All headers with the `x-amz-' prefix, including
 %% `x-amz-copy-source', must be signed.
 %%
-%% Encryption
+%% Server-side encryption
 %%
-%% The source object that you are copying can be encrypted or unencrypted.
-%% The source object can be encrypted with server-side encryption using AWS
-%% managed encryption keys (SSE-S3 or SSE-KMS) or by using a
-%% customer-provided encryption key. With server-side encryption, Amazon S3
-%% encrypts your data as it writes it to disks in its data centers and
-%% decrypts the data when you access it.
+%% When you perform a CopyObject operation, you can optionally use the
+%% appropriate encryption-related headers to encrypt the object using
+%% server-side encryption with AWS managed encryption keys (SSE-S3 or
+%% SSE-KMS) or a customer-provided encryption key. With server-side
+%% encryption, Amazon S3 encrypts your data as it writes it to disks in its
+%% data centers and decrypts the data when you access it. For more
+%% information about server-side encryption, see Using Server-Side
+%% Encryption.
 %%
-%% You can optionally use the appropriate encryption-related headers to
-%% request server-side encryption for the target object. You have the option
-%% to provide your own encryption key or use SSE-S3 or SSE-KMS, regardless of
-%% the form of server-side encryption that was used to encrypt the source
-%% object. You can even request encryption if the source object was not
-%% encrypted. For more information about server-side encryption, see Using
-%% Server-Side Encryption.
+%% If a target object uses SSE-KMS, you can enable an S3 Bucket Key for the
+%% object. For more information, see Amazon S3 Bucket Keys in the Amazon
+%% Simple Storage Service Developer Guide.
 %%
 %% Access Control List (ACL)-Specific Request Headers
 %%
@@ -547,6 +546,7 @@ copy_object(Client, Bucket, Key, Input0, Options) ->
                        {<<"x-amz-copy-source-server-side-encryption-customer-key-MD5">>, <<"CopySourceSSECustomerKeyMD5">>},
                        {<<"x-amz-object-lock-legal-hold">>, <<"ObjectLockLegalHoldStatus">>},
                        {<<"x-amz-copy-source-server-side-encryption-customer-key">>, <<"CopySourceSSECustomerKey">>},
+                       {<<"x-amz-server-side-encryption-bucket-key-enabled">>, <<"BucketKeyEnabled">>},
                        {<<"x-amz-server-side-encryption-customer-key-MD5">>, <<"SSECustomerKeyMD5">>},
                        {<<"x-amz-object-lock-retain-until-date">>, <<"ObjectLockRetainUntilDate">>},
                        {<<"x-amz-request-payer">>, <<"RequestPayer">>},
@@ -587,6 +587,7 @@ copy_object(Client, Bucket, Key, Input0, Options) ->
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
+            {<<"x-amz-server-side-encryption-bucket-key-enabled">>, <<"BucketKeyEnabled">>},
             {<<"x-amz-copy-source-version-id">>, <<"CopySourceVersionId">>},
             {<<"x-amz-expiration">>, <<"Expiration">>},
             {<<"x-amz-request-charged">>, <<"RequestCharged">>},
@@ -952,6 +953,7 @@ create_multipart_upload(Client, Bucket, Key, Input0, Options) ->
 
     HeadersMapping = [
                        {<<"x-amz-acl">>, <<"ACL">>},
+                       {<<"x-amz-server-side-encryption-bucket-key-enabled">>, <<"BucketKeyEnabled">>},
                        {<<"Cache-Control">>, <<"CacheControl">>},
                        {<<"Content-Disposition">>, <<"ContentDisposition">>},
                        {<<"Content-Encoding">>, <<"ContentEncoding">>},
@@ -988,6 +990,7 @@ create_multipart_upload(Client, Bucket, Key, Input0, Options) ->
           [
             {<<"x-amz-abort-date">>, <<"AbortDate">>},
             {<<"x-amz-abort-rule-id">>, <<"AbortRuleId">>},
+            {<<"x-amz-server-side-encryption-bucket-key-enabled">>, <<"BucketKeyEnabled">>},
             {<<"x-amz-request-charged">>, <<"RequestCharged">>},
             {<<"x-amz-server-side-encryption-customer-algorithm">>, <<"SSECustomerAlgorithm">>},
             {<<"x-amz-server-side-encryption-customer-key-MD5">>, <<"SSECustomerKeyMD5">>},
@@ -1907,6 +1910,10 @@ get_bucket_cors(Client, Bucket, ExpectedBucketOwner, Options)
 
 %% @doc Returns the default encryption configuration for an Amazon S3 bucket.
 %%
+%% If the bucket does not have a default encryption configuration,
+%% GetBucketEncryption returns
+%% `ServerSideEncryptionConfigurationNotFoundError'.
+%%
 %% For information about the Amazon S3 default encryption feature, see Amazon
 %% S3 Default Bucket Encryption.
 %%
@@ -2790,6 +2797,7 @@ get_object(Client, Bucket, Key, PartNumber, ResponseCacheControl, ResponseConten
         ResponseHeadersParams =
           [
             {<<"accept-ranges">>, <<"AcceptRanges">>},
+            {<<"x-amz-server-side-encryption-bucket-key-enabled">>, <<"BucketKeyEnabled">>},
             {<<"Cache-Control">>, <<"CacheControl">>},
             {<<"Content-Disposition">>, <<"ContentDisposition">>},
             {<<"Content-Encoding">>, <<"ContentEncoding">>},
@@ -2992,18 +3000,21 @@ get_object_retention(Client, Bucket, Key, VersionId, ExpectedBucketOwner, Reques
 %%
 %% <ul> <li> PutObjectTagging
 %%
+%% </li> <li> DeleteObjectTagging
+%%
 %% </li> </ul>
-get_object_tagging(Client, Bucket, Key, VersionId, ExpectedBucketOwner)
+get_object_tagging(Client, Bucket, Key, VersionId, ExpectedBucketOwner, RequestPayer)
   when is_map(Client) ->
-    get_object_tagging(Client, Bucket, Key, VersionId, ExpectedBucketOwner, []).
-get_object_tagging(Client, Bucket, Key, VersionId, ExpectedBucketOwner, Options)
+    get_object_tagging(Client, Bucket, Key, VersionId, ExpectedBucketOwner, RequestPayer, []).
+get_object_tagging(Client, Bucket, Key, VersionId, ExpectedBucketOwner, RequestPayer, Options)
   when is_map(Client), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?tagging"],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
-        {<<"x-amz-expected-bucket-owner">>, ExpectedBucketOwner}
+        {<<"x-amz-expected-bucket-owner">>, ExpectedBucketOwner},
+        {<<"x-amz-request-payer">>, RequestPayer}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
@@ -3135,8 +3146,12 @@ get_public_access_block(Client, Bucket, ExpectedBucketOwner, Options)
 %% permission to access it.
 %%
 %% The operation returns a `200 OK' if the bucket exists and you have
-%% permission to access it. Otherwise, the operation might return responses
-%% such as `404 Not Found' and `403 Forbidden'.
+%% permission to access it.
+%%
+%% If the bucket does not exist or you do not have permission to access it,
+%% the `HEAD' request returns a generic `404 Not Found' or `403 Forbidden'
+%% code. A message body is not included, so you cannot determine the
+%% exception beyond these error codes.
 %%
 %% To use this operation, you must have permissions to perform the
 %% `s3:ListBucket' action. The bucket owner has this permission by default
@@ -3168,7 +3183,9 @@ head_bucket(Client, Bucket, Input0, Options) ->
 %%
 %% A `HEAD' request has the same options as a `GET' operation on an object.
 %% The response is identical to the `GET' response except that there is no
-%% response body.
+%% response body. Because of this, if the `HEAD' request generates an error,
+%% it returns a generic `404 Not Found' or `403 Forbidden' code. It is not
+%% possible to retrieve the exact exception beyond these error codes.
 %%
 %% If you encrypt an object by using server-side encryption with
 %% customer-provided encryption keys (SSE-C) when you store the object in
@@ -3189,6 +3206,9 @@ head_bucket(Client, Bucket, Input0, Options) ->
 %% with CMKs stored in AWS KMS (SSE-KMS) or server-side encryption with
 %% Amazon S3–managed encryption keys (SSE-S3). If your object does use these
 %% types of keys, you’ll get an HTTP 400 BadRequest error.
+%%
+%% The last modified property in this case is the creation date of the
+%% object.
 %%
 %% Request headers are limited to 8 KB in size. For more information, see
 %% Common Request Headers.
@@ -3265,6 +3285,7 @@ head_object(Client, Bucket, Key, Input0, Options) ->
           [
             {<<"accept-ranges">>, <<"AcceptRanges">>},
             {<<"x-amz-archive-status">>, <<"ArchiveStatus">>},
+            {<<"x-amz-server-side-encryption-bucket-key-enabled">>, <<"BucketKeyEnabled">>},
             {<<"Cache-Control">>, <<"CacheControl">>},
             {<<"Content-Disposition">>, <<"ContentDisposition">>},
             {<<"Content-Encoding">>, <<"ContentEncoding">>},
@@ -3707,7 +3728,8 @@ list_objects(Client, Bucket, Delimiter, EncodingType, Marker, MaxKeys, Prefix, E
 %% You can use the request parameters as selection criteria to return a
 %% subset of the objects in a bucket. A `200 OK' response can contain valid
 %% or invalid XML. Make sure to design your application to parse the contents
-%% of the response and handle it appropriately.
+%% of the response and handle it appropriately. Objects are returned sorted
+%% in an ascending order of the respective key names in the list.
 %%
 %% To use this operation, you must have READ access to the bucket.
 %%
@@ -4205,14 +4227,16 @@ put_bucket_cors(Client, Bucket, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This implementation of the `PUT' operation uses the `encryption'
-%% subresource to set the default encryption state of an existing bucket.
+%% @doc This operation uses the `encryption' subresource to configure default
+%% encryption and Amazon S3 Bucket Key for an existing bucket.
 %%
-%% This implementation of the `PUT' operation sets default encryption for a
-%% bucket using server-side encryption with Amazon S3-managed keys SSE-S3 or
-%% AWS KMS customer master keys (CMKs) (SSE-KMS). For information about the
-%% Amazon S3 default encryption feature, see Amazon S3 Default Bucket
-%% Encryption.
+%% Default encryption for a bucket can use server-side encryption with Amazon
+%% S3-managed keys (SSE-S3) or AWS KMS customer master keys (SSE-KMS). If you
+%% specify default encryption using SSE-KMS, you can also configure Amazon S3
+%% Bucket Key. For information about default encryption, see Amazon S3
+%% default bucket encryption in the Amazon Simple Storage Service Developer
+%% Guide. For more information about S3 Bucket Keys, see Amazon S3 Bucket
+%% Keys in the Amazon Simple Storage Service Developer Guide.
 %%
 %% This operation requires AWS Signature Version 4. For more information, see
 %% Authenticating Requests (AWS Signature Version 4).
@@ -4251,6 +4275,8 @@ put_bucket_encryption(Client, Bucket, Input0, Options) ->
 
 %% @doc Puts a S3 Intelligent-Tiering configuration to the specified bucket.
 %%
+%% You can have up to 1,000 S3 Intelligent-Tiering configurations per bucket.
+%%
 %% The S3 Intelligent-Tiering storage class is designed to optimize storage
 %% costs by automatically moving data to the most cost-effective storage
 %% access tier, without additional operational overhead. S3
@@ -4276,7 +4302,35 @@ put_bucket_encryption(Client, Bucket, Input0, Options) ->
 %%
 %% </li> <li> ListBucketIntelligentTieringConfigurations
 %%
-%% </li> </ul>
+%% </li> </ul> You only need S3 Intelligent-Tiering enabled on a bucket if
+%% you want to automatically move objects stored in the S3
+%% Intelligent-Tiering storage class to the Archive Access or Deep Archive
+%% Access tier.
+%%
+%% == Special Errors ==
+%%
+%% <ul> <li> == HTTP 400 Bad Request Error ==
+%%
+%% <ul> <li> Code: InvalidArgument
+%%
+%% </li> <li> Cause: Invalid Argument
+%%
+%% </li> </ul> </li> <li> == HTTP 400 Bad Request Error ==
+%%
+%% <ul> <li> Code: TooManyConfigurations
+%%
+%% </li> <li> Cause: You are attempting to create a new configuration but
+%% have already reached the 1,000-configuration limit.
+%%
+%% </li> </ul> </li> <li> == HTTP 403 Forbidden Error ==
+%%
+%% <ul> <li> Code: AccessDenied
+%%
+%% </li> <li> Cause: You are not the owner of the specified bucket, or you do
+%% not have the `s3:PutIntelligentTieringConfiguration' bucket permission to
+%% set the configuration on the bucket.
+%%
+%% </li> </ul> </li> </ul>
 put_bucket_intelligent_tiering_configuration(Client, Bucket, Input) ->
     put_bucket_intelligent_tiering_configuration(Client, Bucket, Input, []).
 put_bucket_intelligent_tiering_configuration(Client, Bucket, Input0, Options) ->
@@ -4849,15 +4903,14 @@ put_bucket_policy(Client, Bucket, Input0, Options) ->
 %%
 %% Specify the replication configuration in the request body. In the
 %% replication configuration, you provide the name of the destination bucket
-%% where you want Amazon S3 to replicate objects, the IAM role that Amazon S3
-%% can assume to replicate objects on your behalf, and other relevant
-%% information.
+%% or buckets where you want Amazon S3 to replicate objects, the IAM role
+%% that Amazon S3 can assume to replicate objects on your behalf, and other
+%% relevant information.
 %%
 %% A replication configuration must include at least one rule, and can
 %% contain a maximum of 1,000. Each rule identifies a subset of objects to
 %% replicate by filtering the objects in the source bucket. To choose
 %% additional subsets of objects to replicate, add a rule for each subset.
-%% All rules must specify the same destination bucket.
 %%
 %% To specify a subset of the objects in the source bucket to apply a
 %% replication rule to, add the Filter element as a child of the Rule
@@ -5191,8 +5244,14 @@ put_bucket_website(Client, Bucket, Input0, Options) ->
 %% You can optionally request server-side encryption. With server-side
 %% encryption, Amazon S3 encrypts your data as it writes it to disks in its
 %% data centers and decrypts the data when you access it. You have the option
-%% to provide your own encryption key or use AWS managed encryption keys. For
-%% more information, see Using Server-Side Encryption.
+%% to provide your own encryption key or use AWS managed encryption keys
+%% (SSE-S3 or SSE-KMS). For more information, see Using Server-Side
+%% Encryption.
+%%
+%% If you request server-side encryption using AWS Key Management Service
+%% (SSE-KMS), you can enable an S3 Bucket Key at the object-level. For more
+%% information, see Amazon S3 Bucket Keys in the Amazon Simple Storage
+%% Service Developer Guide.
 %%
 %% Access Control List (ACL)-Specific Request Headers
 %%
@@ -5240,6 +5299,7 @@ put_object(Client, Bucket, Key, Input0, Options) ->
 
     HeadersMapping = [
                        {<<"x-amz-acl">>, <<"ACL">>},
+                       {<<"x-amz-server-side-encryption-bucket-key-enabled">>, <<"BucketKeyEnabled">>},
                        {<<"Cache-Control">>, <<"CacheControl">>},
                        {<<"Content-Disposition">>, <<"ContentDisposition">>},
                        {<<"Content-Encoding">>, <<"ContentEncoding">>},
@@ -5276,6 +5336,7 @@ put_object(Client, Bucket, Key, Input0, Options) ->
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
+            {<<"x-amz-server-side-encryption-bucket-key-enabled">>, <<"BucketKeyEnabled">>},
             {<<"ETag">>, <<"ETag">>},
             {<<"x-amz-expiration">>, <<"Expiration">>},
             {<<"x-amz-request-charged">>, <<"RequestCharged">>},
@@ -5667,6 +5728,8 @@ put_object_retention(Client, Bucket, Key, Input0, Options) ->
 %%
 %% <ul> <li> GetObjectTagging
 %%
+%% </li> <li> DeleteObjectTagging
+%%
 %% </li> </ul>
 put_object_tagging(Client, Bucket, Key, Input) ->
     put_object_tagging(Client, Bucket, Key, Input, []).
@@ -5677,7 +5740,8 @@ put_object_tagging(Client, Bucket, Key, Input0, Options) ->
 
     HeadersMapping = [
                        {<<"Content-MD5">>, <<"ContentMD5">>},
-                       {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
+                       {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>},
+                       {<<"x-amz-request-payer">>, <<"RequestPayer">>}
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
@@ -6245,6 +6309,7 @@ upload_part(Client, Bucket, Key, Input0, Options) ->
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
+            {<<"x-amz-server-side-encryption-bucket-key-enabled">>, <<"BucketKeyEnabled">>},
             {<<"ETag">>, <<"ETag">>},
             {<<"x-amz-request-charged">>, <<"RequestCharged">>},
             {<<"x-amz-server-side-encryption-customer-algorithm">>, <<"SSECustomerAlgorithm">>},
@@ -6410,6 +6475,7 @@ upload_part_copy(Client, Bucket, Key, Input0, Options) ->
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
+            {<<"x-amz-server-side-encryption-bucket-key-enabled">>, <<"BucketKeyEnabled">>},
             {<<"x-amz-copy-source-version-id">>, <<"CopySourceVersionId">>},
             {<<"x-amz-request-charged">>, <<"RequestCharged">>},
             {<<"x-amz-server-side-encryption-customer-algorithm">>, <<"SSECustomerAlgorithm">>},

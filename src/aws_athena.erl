@@ -54,6 +54,8 @@
          list_data_catalogs/3,
          list_databases/2,
          list_databases/3,
+         list_engine_versions/2,
+         list_engine_versions/3,
          list_named_queries/2,
          list_named_queries/3,
          list_query_executions/2,
@@ -187,7 +189,8 @@ get_data_catalog(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDataCatalog">>, Input, Options).
 
-%% @doc Returns a database object for the specfied database and data catalog.
+%% @doc Returns a database object for the specified database and data
+%% catalog.
 get_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_database(Client, Input, []).
@@ -273,6 +276,15 @@ list_databases(Client, Input)
 list_databases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDatabases">>, Input, Options).
+
+%% @doc Returns a list of engine versions that are available to choose from,
+%% including the Auto option.
+list_engine_versions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_engine_versions(Client, Input, []).
+list_engine_versions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListEngineVersions">>, Input, Options).
 
 %% @doc Provides a list of available query IDs only for queries saved in the
 %% specified workgroup.

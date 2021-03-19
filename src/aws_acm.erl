@@ -3,11 +3,11 @@
 
 %% @doc AWS Certificate Manager
 %%
-%% Welcome to the AWS Certificate Manager (ACM) API documentation.
+%% You can use AWS Certificate Manager (ACM) to manage SSL/TLS certificates
+%% for your AWS-based websites and applications.
 %%
-%% You can use ACM to manage SSL/TLS certificates for your AWS-based websites
-%% and applications. For general information about using ACM, see the AWS
-%% Certificate Manager User Guide .
+%% For more information about using ACM, see the AWS Certificate Manager User
+%% Guide.
 -module(aws_acm).
 
 -export([add_tags_to_certificate/2,
@@ -18,6 +18,8 @@
          describe_certificate/3,
          export_certificate/2,
          export_certificate/3,
+         get_account_configuration/2,
+         get_account_configuration/3,
          get_certificate/2,
          get_certificate/3,
          import_certificate/2,
@@ -26,6 +28,8 @@
          list_certificates/3,
          list_tags_for_certificate/2,
          list_tags_for_certificate/3,
+         put_account_configuration/2,
+         put_account_configuration/3,
          remove_tags_from_certificate/2,
          remove_tags_from_certificate/3,
          renew_certificate/2,
@@ -112,6 +116,15 @@ export_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExportCertificate">>, Input, Options).
 
+%% @doc Returns the account configuration options associated with an AWS
+%% account.
+get_account_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_account_configuration(Client, Input, []).
+get_account_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetAccountConfiguration">>, Input, Options).
+
 %% @doc Retrieves an Amazon-issued certificate and its certificate chain.
 %%
 %% The chain consists of the certificate of the issuing CA and the
@@ -145,6 +158,8 @@ get_certificate(Client, Input, Options)
 %% </li> <li> The private key must be unencrypted. You cannot import a
 %% private key that is protected by a password or a passphrase.
 %%
+%% </li> <li> The private key must be no larger than 5 KB (5,120 bytes).
+%%
 %% </li> <li> If the certificate you are importing is not self-signed, you
 %% must enter its certificate chain.
 %%
@@ -164,13 +179,13 @@ get_certificate(Client, Input, Options)
 %%
 %% </li> <li> To import a new certificate, omit the `CertificateArn'
 %% argument. Include this argument only when you want to replace a previously
-%% imported certifica
+%% imported certificate.
 %%
 %% </li> <li> When you import a certificate by using the CLI, you must
 %% specify the certificate, the certificate chain, and the private key by
-%% their file names preceded by `file://'. For example, you can specify a
+%% their file names preceded by `fileb://'. For example, you can specify a
 %% certificate saved in the `C:\temp' folder as
-%% `file://C:\temp\certificate_to_import.pem'. If you are making an HTTP or
+%% `fileb://C:\temp\certificate_to_import.pem'. If you are making an HTTP or
 %% HTTPS Query request, include these arguments as BLOBs.
 %%
 %% </li> <li> When you import a certificate by using an SDK, you must specify
@@ -216,6 +231,20 @@ list_tags_for_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForCertificate">>, Input, Options).
 
+%% @doc Adds or modifies account-level configurations in ACM.
+%%
+%% The supported configuration option is `DaysBeforeExpiry'. This option
+%% specifies the number of days prior to certificate expiration when ACM
+%% starts generating `EventBridge' events. ACM sends one event per day per
+%% certificate until the certificate expires. By default, accounts receive
+%% events starting 45 days before certificate expiration.
+put_account_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_account_configuration(Client, Input, []).
+put_account_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutAccountConfiguration">>, Input, Options).
+
 %% @doc Remove one or more tags from an ACM certificate.
 %%
 %% A tag consists of a key-value pair. If you do not specify the value
@@ -233,7 +262,7 @@ remove_tags_from_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTagsFromCertificate">>, Input, Options).
 
-%% @doc Renews an eligable ACM certificate.
+%% @doc Renews an eligible ACM certificate.
 %%
 %% At this time, only exported private certificates can be renewed with this
 %% operation. In order to renew your ACM PCA certificates with ACM, you must

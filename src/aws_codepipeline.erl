@@ -166,6 +166,8 @@
          disable_stage_transition/3,
          enable_stage_transition/2,
          enable_stage_transition/3,
+         get_action_type/2,
+         get_action_type/3,
          get_job_details/2,
          get_job_details/3,
          get_pipeline/2,
@@ -218,6 +220,8 @@
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
+         update_action_type/2,
+         update_action_type/3,
          update_pipeline/2,
          update_pipeline/3]).
 
@@ -339,6 +343,18 @@ enable_stage_transition(Client, Input)
 enable_stage_transition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableStageTransition">>, Input, Options).
+
+%% @doc Returns information about an action type created for an external
+%% provider, where the action is to be used by customers of the external
+%% provider.
+%%
+%% The action can be created with any supported integration model.
+get_action_type(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_action_type(Client, Input, []).
+get_action_type(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetActionType">>, Input, Options).
 
 %% @doc Returns information about a job.
 %%
@@ -636,6 +652,19 @@ untag_resource(Client, Input)
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc Updates an action type that was created with any supported
+%% integration model, where the action type is to be used by customers of the
+%% action type provider.
+%%
+%% Use a JSON file with the action definition and `UpdateActionType' to
+%% provide the full structure.
+update_action_type(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_action_type(Client, Input, []).
+update_action_type(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateActionType">>, Input, Options).
 
 %% @doc Updates a specified pipeline with edits or changes to its structure.
 %%

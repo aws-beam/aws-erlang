@@ -82,12 +82,16 @@
          describe_snapshots/3,
          describe_trusts/2,
          describe_trusts/3,
+         disable_client_authentication/2,
+         disable_client_authentication/3,
          disable_ldaps/2,
          disable_ldaps/3,
          disable_radius/2,
          disable_radius/3,
          disable_sso/2,
          disable_sso/3,
+         enable_client_authentication/2,
+         enable_client_authentication/3,
          enable_ldaps/2,
          enable_ldaps/3,
          enable_radius/2,
@@ -380,8 +384,8 @@ delete_trust(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTrust">>, Input, Options).
 
-%% @doc Deletes from the system the certificate that was registered for a
-%% secured LDAP connection.
+%% @doc Deletes from the system the certificate that was registered for
+%% secure LDAP or client certificate authentication.
 deregister_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_certificate(Client, Input, []).
@@ -398,8 +402,8 @@ deregister_event_topic(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterEventTopic">>, Input, Options).
 
-%% @doc Displays information about the certificate registered for a secured
-%% LDAP connection.
+%% @doc Displays information about the certificate registered for secure LDAP
+%% or client certificate authentication.
 describe_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_certificate(Client, Input, []).
@@ -514,6 +518,15 @@ describe_trusts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrusts">>, Input, Options).
 
+%% @doc Disables alternative client authentication methods for the specified
+%% directory.
+disable_client_authentication(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disable_client_authentication(Client, Input, []).
+disable_client_authentication(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisableClientAuthentication">>, Input, Options).
+
 %% @doc Deactivates LDAP secure calls for the specified directory.
 disable_ldaps(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -539,6 +552,15 @@ disable_sso(Client, Input)
 disable_sso(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableSso">>, Input, Options).
+
+%% @doc Enables alternative client authentication methods for the specified
+%% directory.
+enable_client_authentication(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    enable_client_authentication(Client, Input, []).
+enable_client_authentication(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"EnableClientAuthentication">>, Input, Options).
 
 %% @doc Activates the switch for the specific directory to always use LDAP
 %% secure calls.
@@ -588,7 +610,7 @@ get_snapshot_limits(Client, Input, Options)
     request(Client, <<"GetSnapshotLimits">>, Input, Options).
 
 %% @doc For the specified directory, lists all the certificates registered
-%% for a secured LDAP connection.
+%% for a secure LDAP or client certificate authentication.
 list_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_certificates(Client, Input, []).
@@ -628,7 +650,8 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
-%% @doc Registers a certificate for secured LDAP connection.
+%% @doc Registers a certificate for a secure LDAP or client certificate
+%% authentication.
 register_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_certificate(Client, Input, []).

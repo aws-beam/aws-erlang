@@ -29,8 +29,6 @@
          create_gateway/3,
          create_portal/2,
          create_portal/3,
-         create_presigned_portal_url/3,
-         create_presigned_portal_url/4,
          create_project/2,
          create_project/3,
          delete_access_policy/3,
@@ -81,6 +79,8 @@
          list_access_policies/9,
          list_asset_models/3,
          list_asset_models/4,
+         list_asset_relationships/5,
+         list_asset_relationships/6,
          list_assets/5,
          list_assets/6,
          list_associated_assets/6,
@@ -199,9 +199,9 @@ batch_disassociate_project_assets(Client, ProjectId, Input0, Options) ->
 %% property's alias, see UpdateAssetProperty.
 %%
 %% </li> </ul> With respect to Unix epoch time, AWS IoT SiteWise accepts only
-%% TQVs that have a timestamp of no more than 15 minutes in the past and no
-%% more than 5 minutes in the future. AWS IoT SiteWise rejects timestamps
-%% outside of the inclusive range of [-15, +5] minutes and returns a
+%% TQVs that have a timestamp of no more than 7 days in the past and no more
+%% than 5 minutes in the future. AWS IoT SiteWise rejects timestamps outside
+%% of the inclusive range of [-7 days, +5 minutes] and returns a
 %% `TimestampOutOfRangeException' error.
 %%
 %% For each asset property, AWS IoT SiteWise overwrites TQVs with duplicate
@@ -345,30 +345,6 @@ create_portal(Client, Input0, Options) ->
     Input = Input1,
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
-
-%% @doc Creates a pre-signed URL to a portal.
-%%
-%% Use this operation to create URLs to portals that use AWS Identity and
-%% Access Management (IAM) to authenticate users. An IAM user with access to
-%% a portal can call this API to get a URL to that portal. The URL contains
-%% an authentication token that lets the IAM user access the portal.
-create_presigned_portal_url(Client, PortalId, SessionDurationSeconds)
-  when is_map(Client) ->
-    create_presigned_portal_url(Client, PortalId, SessionDurationSeconds, []).
-create_presigned_portal_url(Client, PortalId, SessionDurationSeconds, Options)
-  when is_map(Client), is_list(Options) ->
-    Path = ["/portals/", aws_util:encode_uri(PortalId), "/presigned-url"],
-    SuccessStatusCode = 200,
-
-    Headers = [],
-
-    Query0_ =
-      [
-        {<<"sessionDurationSeconds">>, SessionDurationSeconds}
-      ],
-    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
-
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Creates a project in the specified portal.
 create_project(Client, Input) ->
@@ -883,6 +859,30 @@ list_asset_models(Client, MaxResults, NextToken, Options)
       [
         {<<"maxResults">>, MaxResults},
         {<<"nextToken">>, NextToken}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a paginated list of asset relationships for an asset.
+%%
+%% You can use this operation to identify an asset's root asset and all
+%% associated assets between that asset and its root.
+list_asset_relationships(Client, AssetId, MaxResults, NextToken, TraversalType)
+  when is_map(Client) ->
+    list_asset_relationships(Client, AssetId, MaxResults, NextToken, TraversalType, []).
+list_asset_relationships(Client, AssetId, MaxResults, NextToken, TraversalType, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/assets/", aws_util:encode_uri(AssetId), "/assetRelationships"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken},
+        {<<"traversalType">>, TraversalType}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

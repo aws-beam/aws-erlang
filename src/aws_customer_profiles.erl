@@ -1,0 +1,705 @@
+%% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
+%% See https://github.com/aws-beam/aws-codegen for more details.
+
+%% @doc Amazon Connect Customer Profiles
+%%
+%% Welcome to the Amazon Connect Customer Profiles API Reference.
+%%
+%% This guide provides information about the Amazon Connect Customer Profiles
+%% API, including supported operations, data types, parameters, and schemas.
+%%
+%% Amazon Connect Customer Profiles is a unified customer profile for your
+%% contact center that has pre-built connectors powered by AppFlow that make
+%% it easy to combine customer information from third party applications,
+%% such as Salesforce (CRM), ServiceNow (ITSM), and your enterprise resource
+%% planning (ERP), with contact history from your Amazon Connect contact
+%% center.
+%%
+%% If you're new to Amazon Connect, you might find it helpful to also review
+%% the Amazon Connect Administrator Guide.
+-module(aws_customer_profiles).
+
+-export([add_profile_key/3,
+         add_profile_key/4,
+         create_domain/3,
+         create_domain/4,
+         create_profile/3,
+         create_profile/4,
+         delete_domain/3,
+         delete_domain/4,
+         delete_integration/3,
+         delete_integration/4,
+         delete_profile/3,
+         delete_profile/4,
+         delete_profile_key/3,
+         delete_profile_key/4,
+         delete_profile_object/3,
+         delete_profile_object/4,
+         delete_profile_object_type/4,
+         delete_profile_object_type/5,
+         get_domain/2,
+         get_domain/3,
+         get_integration/3,
+         get_integration/4,
+         get_profile_object_type/3,
+         get_profile_object_type/4,
+         get_profile_object_type_template/2,
+         get_profile_object_type_template/3,
+         list_account_integrations/2,
+         list_account_integrations/3,
+         list_domains/3,
+         list_domains/4,
+         list_integrations/4,
+         list_integrations/5,
+         list_profile_object_type_templates/3,
+         list_profile_object_type_templates/4,
+         list_profile_object_types/4,
+         list_profile_object_types/5,
+         list_profile_objects/3,
+         list_profile_objects/4,
+         list_tags_for_resource/2,
+         list_tags_for_resource/3,
+         put_integration/3,
+         put_integration/4,
+         put_profile_object/3,
+         put_profile_object/4,
+         put_profile_object_type/4,
+         put_profile_object_type/5,
+         search_profiles/3,
+         search_profiles/4,
+         tag_resource/3,
+         tag_resource/4,
+         untag_resource/3,
+         untag_resource/4,
+         update_domain/3,
+         update_domain/4,
+         update_profile/3,
+         update_profile/4]).
+
+-include_lib("hackney/include/hackney_lib.hrl").
+
+%%====================================================================
+%% API
+%%====================================================================
+
+%% @doc Associates a new key value with a specific profile, such as a Contact
+%% Trace Record (CTR) ContactId.
+%%
+%% A profile object can have a single unique key and any number of additional
+%% keys that can be used to identify the profile that it belongs to.
+add_profile_key(Client, DomainName, Input) ->
+    add_profile_key(Client, DomainName, Input, []).
+add_profile_key(Client, DomainName, Input0, Options) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/keys"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a domain, which is a container for all customer data, such as
+%% customer profile attributes, object types, profile keys, and encryption
+%% keys.
+%%
+%% You can create multiple domains, and each domain can have multiple
+%% third-party integrations.
+%%
+%% Each Amazon Connect instance can be associated with only one domain.
+%% Multiple Amazon Connect instances can be associated with one domain.
+create_domain(Client, DomainName, Input) ->
+    create_domain(Client, DomainName, Input, []).
+create_domain(Client, DomainName, Input0, Options) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a standard profile.
+%%
+%% A standard profile represents the following attributes for a customer
+%% profile in a domain.
+create_profile(Client, DomainName, Input) ->
+    create_profile(Client, DomainName, Input, []).
+create_profile(Client, DomainName, Input0, Options) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a specific domain and all of its customer data, such as
+%% customer profile attributes and their related objects.
+delete_domain(Client, DomainName, Input) ->
+    delete_domain(Client, DomainName, Input, []).
+delete_domain(Client, DomainName, Input0, Options) ->
+    Method = delete,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes an integration from a specific domain.
+delete_integration(Client, DomainName, Input) ->
+    delete_integration(Client, DomainName, Input, []).
+delete_integration(Client, DomainName, Input0, Options) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/integrations/delete"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the standard customer profile and all data pertaining to the
+%% profile.
+delete_profile(Client, DomainName, Input) ->
+    delete_profile(Client, DomainName, Input, []).
+delete_profile(Client, DomainName, Input0, Options) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/delete"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes a searchable key from a customer profile.
+delete_profile_key(Client, DomainName, Input) ->
+    delete_profile_key(Client, DomainName, Input, []).
+delete_profile_key(Client, DomainName, Input0, Options) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/keys/delete"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes an object associated with a profile of a given
+%% ProfileObjectType.
+delete_profile_object(Client, DomainName, Input) ->
+    delete_profile_object(Client, DomainName, Input, []).
+delete_profile_object(Client, DomainName, Input0, Options) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/objects/delete"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes a ProfileObjectType from a specific domain as well as removes
+%% all the ProfileObjects of that type.
+%%
+%% It also disables integrations from this specific ProfileObjectType. In
+%% addition, it scrubs all of the fields of the standard profile that were
+%% populated from this ProfileObjectType.
+delete_profile_object_type(Client, DomainName, ObjectTypeName, Input) ->
+    delete_profile_object_type(Client, DomainName, ObjectTypeName, Input, []).
+delete_profile_object_type(Client, DomainName, ObjectTypeName, Input0, Options) ->
+    Method = delete,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/object-types/", aws_util:encode_uri(ObjectTypeName), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns information about a specific domain.
+get_domain(Client, DomainName)
+  when is_map(Client) ->
+    get_domain(Client, DomainName, []).
+get_domain(Client, DomainName, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns an integration for a domain.
+get_integration(Client, DomainName, Input) ->
+    get_integration(Client, DomainName, Input, []).
+get_integration(Client, DomainName, Input0, Options) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/integrations"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns the object types for a specific domain.
+get_profile_object_type(Client, DomainName, ObjectTypeName)
+  when is_map(Client) ->
+    get_profile_object_type(Client, DomainName, ObjectTypeName, []).
+get_profile_object_type(Client, DomainName, ObjectTypeName, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/object-types/", aws_util:encode_uri(ObjectTypeName), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the template information for a specific object type.
+%%
+%% A template is a predefined ProfileObjectType, such as “Salesforce-Account”
+%% or “Salesforce-Contact.” When a user sends a ProfileObject, using the
+%% PutProfileObject API, with an ObjectTypeName that matches one of the
+%% TemplateIds, it uses the mappings from the template.
+get_profile_object_type_template(Client, TemplateId)
+  when is_map(Client) ->
+    get_profile_object_type_template(Client, TemplateId, []).
+get_profile_object_type_template(Client, TemplateId, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/templates/", aws_util:encode_uri(TemplateId), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all of the integrations associated to a specific URI in the AWS
+%% account.
+list_account_integrations(Client, Input) ->
+    list_account_integrations(Client, Input, []).
+list_account_integrations(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/integrations"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    QueryMapping = [
+                     {<<"max-results">>, <<"MaxResults">>},
+                     {<<"next-token">>, <<"NextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a list of all the domains for an AWS account that have been
+%% created.
+list_domains(Client, MaxResults, NextToken)
+  when is_map(Client) ->
+    list_domains(Client, MaxResults, NextToken, []).
+list_domains(Client, MaxResults, NextToken, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/domains"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, MaxResults},
+        {<<"next-token">>, NextToken}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all of the integrations in your domain.
+list_integrations(Client, DomainName, MaxResults, NextToken)
+  when is_map(Client) ->
+    list_integrations(Client, DomainName, MaxResults, NextToken, []).
+list_integrations(Client, DomainName, MaxResults, NextToken, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/integrations"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, MaxResults},
+        {<<"next-token">>, NextToken}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all of the template information for object types.
+list_profile_object_type_templates(Client, MaxResults, NextToken)
+  when is_map(Client) ->
+    list_profile_object_type_templates(Client, MaxResults, NextToken, []).
+list_profile_object_type_templates(Client, MaxResults, NextToken, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/templates"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, MaxResults},
+        {<<"next-token">>, NextToken}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all of the templates available within the service.
+list_profile_object_types(Client, DomainName, MaxResults, NextToken)
+  when is_map(Client) ->
+    list_profile_object_types(Client, DomainName, MaxResults, NextToken, []).
+list_profile_object_types(Client, DomainName, MaxResults, NextToken, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/object-types"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, MaxResults},
+        {<<"next-token">>, NextToken}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of objects associated with a profile of a given
+%% ProfileObjectType.
+list_profile_objects(Client, DomainName, Input) ->
+    list_profile_objects(Client, DomainName, Input, []).
+list_profile_objects(Client, DomainName, Input0, Options) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/objects"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    QueryMapping = [
+                     {<<"max-results">>, <<"MaxResults">>},
+                     {<<"next-token">>, <<"NextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Displays the tags associated with an Amazon Connect Customer Profiles
+%% resource.
+%%
+%% In Connect Customer Profiles, domains, profile object types, and
+%% integrations can be tagged.
+list_tags_for_resource(Client, ResourceArn)
+  when is_map(Client) ->
+    list_tags_for_resource(Client, ResourceArn, []).
+list_tags_for_resource(Client, ResourceArn, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Adds an integration between the service and a third-party service,
+%% which includes Amazon AppFlow and Amazon Connect.
+%%
+%% An integration can belong to only one domain.
+put_integration(Client, DomainName, Input) ->
+    put_integration(Client, DomainName, Input, []).
+put_integration(Client, DomainName, Input0, Options) ->
+    Method = put,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/integrations"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Adds additional objects to customer profiles of a given ObjectType.
+%%
+%% When adding a specific profile object, like a Contact Trace Record (CTR),
+%% an inferred profile can get created if it is not mapped to an existing
+%% profile. The resulting profile will only have a phone number populated in
+%% the standard ProfileObject. Any additional CTRs with the same phone number
+%% will be mapped to the same inferred profile.
+%%
+%% When a ProfileObject is created and if a ProfileObjectType already exists
+%% for the ProfileObject, it will provide data to a standard profile
+%% depending on the ProfileObjectType definition.
+%%
+%% PutProfileObject needs an ObjectType, which can be created using
+%% PutProfileObjectType.
+put_profile_object(Client, DomainName, Input) ->
+    put_profile_object(Client, DomainName, Input, []).
+put_profile_object(Client, DomainName, Input0, Options) ->
+    Method = put,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/objects"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Defines a ProfileObjectType.
+put_profile_object_type(Client, DomainName, ObjectTypeName, Input) ->
+    put_profile_object_type(Client, DomainName, ObjectTypeName, Input, []).
+put_profile_object_type(Client, DomainName, ObjectTypeName, Input0, Options) ->
+    Method = put,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/object-types/", aws_util:encode_uri(ObjectTypeName), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Searches for profiles within a specific domain name using name, phone
+%% number, email address, account number, or a custom defined index.
+search_profiles(Client, DomainName, Input) ->
+    search_profiles(Client, DomainName, Input, []).
+search_profiles(Client, DomainName, Input0, Options) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/search"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    QueryMapping = [
+                     {<<"max-results">>, <<"MaxResults">>},
+                     {<<"next-token">>, <<"NextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Assigns one or more tags (key-value pairs) to the specified Amazon
+%% Connect Customer Profiles resource.
+%%
+%% Tags can help you organize and categorize your resources. You can also use
+%% them to scope user permissions by granting a user permission to access or
+%% change only resources with certain tag values. In Connect Customer
+%% Profiles, domains, profile object types, and integrations can be tagged.
+%%
+%% Tags don't have any semantic meaning to AWS and are interpreted strictly
+%% as strings of characters.
+%%
+%% You can use the TagResource action with a resource that already has tags.
+%% If you specify a new tag key, this tag is appended to the list of tags
+%% associated with the resource. If you specify a tag key that is already
+%% associated with the resource, the new tag value that you specify replaces
+%% the previous value for that tag.
+%%
+%% You can associate as many as 50 tags with a resource.
+tag_resource(Client, ResourceArn, Input) ->
+    tag_resource(Client, ResourceArn, Input, []).
+tag_resource(Client, ResourceArn, Input0, Options) ->
+    Method = post,
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes one or more tags from the specified Amazon Connect Customer
+%% Profiles resource.
+%%
+%% In Connect Customer Profiles, domains, profile object types, and
+%% integrations can be tagged.
+untag_resource(Client, ResourceArn, Input) ->
+    untag_resource(Client, ResourceArn, Input, []).
+untag_resource(Client, ResourceArn, Input0, Options) ->
+    Method = delete,
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    QueryMapping = [
+                     {<<"tagKeys">>, <<"tagKeys">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the properties of a domain, including creating or selecting a
+%% dead letter queue or an encryption key.
+%%
+%% Once a domain is created, the name can’t be changed.
+update_domain(Client, DomainName, Input) ->
+    update_domain(Client, DomainName, Input, []).
+update_domain(Client, DomainName, Input0, Options) ->
+    Method = put,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the properties of a profile.
+%%
+%% The ProfileId is required for updating a customer profile.
+%%
+%% When calling the UpdateProfile API, specifying an empty string value means
+%% that any existing value will be removed. Not specifying a string value
+%% means that any value already there will be kept.
+update_profile(Client, DomainName, Input) ->
+    update_profile(Client, DomainName, Input, []).
+update_profile(Client, DomainName, Input0, Options) ->
+    Method = put,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%%====================================================================
+%% Internal functions
+%%====================================================================
+
+-spec request(aws_client:aws_client(), atom(), iolist(), list(),
+              list(), map() | undefined, list(), pos_integer() | undefined) ->
+    {ok, Result, {integer(), list(), hackney:client()}} |
+    {error, Error, {integer(), list(), hackney:client()}} |
+    {error, term()} when
+    Result :: map(),
+    Error :: map().
+request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
+    Client1 = Client#{service => <<"profile">>},
+    Host = build_host(<<"profile">>, Client1),
+    URL0 = build_url(Host, Path, Client1),
+    URL = aws_request:add_query(URL0, Query),
+    AdditionalHeaders = [ {<<"Host">>, Host}
+                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                        ],
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
+
+    Payload =
+      case proplists:get_value(should_send_body_as_binary, Options) of
+        true ->
+          maps:get(<<"Body">>, Input, <<"">>);
+        undefined ->
+          encode_payload(Input)
+      end,
+
+    MethodBin = aws_request:method_to_binary(Method),
+    SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
+    Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
+    handle_response(Response, SuccessStatusCode).
+
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    case hackney:body(Client) of
+        {ok, <<>>} when StatusCode =:= 200;
+                        StatusCode =:= SuccessStatusCode ->
+            {ok, #{}, {StatusCode, ResponseHeaders, Client}};
+        {ok, Body} ->
+            Result = jsx:decode(Body),
+            {ok, Result, {StatusCode, ResponseHeaders, Client}}
+    end;
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+    {ok, Body} = hackney:body(Client),
+    Error = jsx:decode(Body),
+    {error, Error, {StatusCode, ResponseHeaders, Client}};
+handle_response({error, Reason}, _) ->
+  {error, Reason}.
+
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
+    Endpoint;
+build_host(_EndpointPrefix, #{region := <<"local">>}) ->
+    <<"localhost">>;
+build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
+    aws_util:binary_join([EndpointPrefix, Region, Endpoint], <<".">>).
+
+build_url(Host, Path0, Client) ->
+    Proto = maps:get(proto, Client),
+    Path = erlang:iolist_to_binary(Path0),
+    Port = maps:get(port, Client),
+    aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, Path], <<"">>).
+
+-spec encode_payload(undefined | map()) -> binary().
+encode_payload(undefined) ->
+  <<>>;
+encode_payload(Input) ->
+  jsx:encode(Input).

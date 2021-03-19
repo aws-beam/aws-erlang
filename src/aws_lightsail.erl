@@ -276,6 +276,8 @@
          reset_distribution_cache/3,
          send_contact_method_verification/2,
          send_contact_method_verification/3,
+         set_ip_address_type/2,
+         set_ip_address_type/3,
          start_instance/2,
          start_instance/3,
          start_relational_database/2,
@@ -431,12 +433,13 @@ copy_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CopySnapshot">>, Input, Options).
 
-%% @doc Creates an SSL/TLS certificate for a Amazon Lightsail content
-%% delivery network (CDN) distribution.
+%% @doc Creates an SSL/TLS certificate for an Amazon Lightsail content
+%% delivery network (CDN) distribution and a container service.
 %%
-%% After the certificate is created, use the
-%% `AttachCertificateToDistribution' action to attach the certificate to your
-%% distribution.
+%% After the certificate is valid, use the `AttachCertificateToDistribution'
+%% action to use the certificate and its domains with your distribution. Or
+%% use the `UpdateContainerService' action to use the certificate and its
+%% domains with your container service.
 %%
 %% Only certificates created in the `us-east-1' AWS Region can be attached to
 %% Lightsail distributions. Lightsail distributions are global resources that
@@ -525,9 +528,9 @@ create_container_service_deployment(Client, Input, Options)
 %% which point you will need to create a new set of log in credentials.
 %%
 %% You can only push container images to the container service registry of
-%% your Lightsail account. You cannot pull container images perform any other
-%% container image management actions on the container service registry of
-%% your Lightsail account.
+%% your Lightsail account. You cannot pull container images or perform any
+%% other container image management actions on the container service
+%% registry.
 %%
 %% After you push your container images to the container image registry of
 %% your Lightsail account, use the `RegisterContainerImage' action to
@@ -718,7 +721,7 @@ create_load_balancer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLoadBalancer">>, Input, Options).
 
-%% @doc Creates a Lightsail load balancer TLS certificate.
+%% @doc Creates an SSL/TLS certificate for an Amazon Lightsail load balancer.
 %%
 %% TLS is just an updated, more secure version of Secure Socket Layer (SSL).
 %%
@@ -1920,6 +1923,18 @@ send_contact_method_verification(Client, Input)
 send_contact_method_verification(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendContactMethodVerification">>, Input, Options).
+
+%% @doc Sets the IP address type for an Amazon Lightsail resource.
+%%
+%% Use this action to enable dual-stack for a resource, which enables IPv4
+%% and IPv6 for the specified resource. Alternately, you can use this action
+%% to disable dual-stack, and enable IPv4 only.
+set_ip_address_type(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    set_ip_address_type(Client, Input, []).
+set_ip_address_type(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SetIpAddressType">>, Input, Options).
 
 %% @doc Starts a specific Amazon Lightsail instance from a stopped state.
 %%

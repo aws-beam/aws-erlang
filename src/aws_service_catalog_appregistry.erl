@@ -36,6 +36,14 @@
          list_associated_resources/5,
          list_attribute_groups/3,
          list_attribute_groups/4,
+         list_tags_for_resource/2,
+         list_tags_for_resource/3,
+         sync_resource/4,
+         sync_resource/5,
+         tag_resource/3,
+         tag_resource/4,
+         untag_resource/3,
+         untag_resource/4,
          update_application/3,
          update_application/4,
          update_attribute_group/3,
@@ -327,6 +335,83 @@ list_attribute_groups(Client, MaxResults, NextToken, Options)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all of the tags on the resource.
+list_tags_for_resource(Client, ResourceArn)
+  when is_map(Client) ->
+    list_tags_for_resource(Client, ResourceArn, []).
+list_tags_for_resource(Client, ResourceArn, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Syncs the resource with what is currently recorded in App registry.
+%%
+%% Specifically, the resource’s App registry system tags are synced with its
+%% associated application. The resource is removed if it is not associated
+%% with the application. The caller must have permissions to read and update
+%% the resource.
+sync_resource(Client, Resource, ResourceType, Input) ->
+    sync_resource(Client, Resource, ResourceType, Input, []).
+sync_resource(Client, Resource, ResourceType, Input0, Options) ->
+    Method = post,
+    Path = ["/sync/", aws_util:encode_uri(ResourceType), "/", aws_util:encode_uri(Resource), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Assigns one or more tags (key-value pairs) to the specified resource.
+%%
+%% Each tag consists of a key and an optional value. If a tag with the same
+%% key is already associated with the resource, this action updates its
+%% value.
+%%
+%% This operation returns an empty response if the call was successful.
+tag_resource(Client, ResourceArn, Input) ->
+    tag_resource(Client, ResourceArn, Input, []).
+tag_resource(Client, ResourceArn, Input0, Options) ->
+    Method = post,
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes tags from a resource.
+%%
+%% This operation returns an empty response if the call was successful.
+untag_resource(Client, ResourceArn, Input) ->
+    untag_resource(Client, ResourceArn, Input, []).
+untag_resource(Client, ResourceArn, Input0, Options) ->
+    Method = delete,
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    QueryMapping = [
+                     {<<"tagKeys">>, <<"tagKeys">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing application with new attributes.
 update_application(Client, Application, Input) ->

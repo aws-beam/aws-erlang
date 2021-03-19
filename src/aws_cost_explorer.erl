@@ -43,6 +43,8 @@
          get_cost_and_usage/3,
          get_cost_and_usage_with_resources/2,
          get_cost_and_usage_with_resources/3,
+         get_cost_categories/2,
+         get_cost_categories/3,
          get_cost_forecast/2,
          get_cost_forecast/3,
          get_dimension_values/2,
@@ -224,6 +226,17 @@ get_cost_and_usage_with_resources(Client, Input)
 get_cost_and_usage_with_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCostAndUsageWithResources">>, Input, Options).
+
+%% @doc Retrieves an array of Cost Category names and values incurred cost.
+%%
+%% If some Cost Category names and values are not associated with any cost,
+%% they will not be returned by this API.
+get_cost_categories(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_cost_categories(Client, Input, []).
+get_cost_categories(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetCostCategories">>, Input, Options).
 
 %% @doc Retrieves a forecast for how much Amazon Web Services predicts that
 %% you will spend over the forecast time period that you select, based on

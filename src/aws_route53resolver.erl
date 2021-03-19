@@ -64,6 +64,8 @@
          disassociate_resolver_query_log_config/3,
          disassociate_resolver_rule/2,
          disassociate_resolver_rule/3,
+         get_resolver_dnssec_config/2,
+         get_resolver_dnssec_config/3,
          get_resolver_endpoint/2,
          get_resolver_endpoint/3,
          get_resolver_query_log_config/2,
@@ -78,6 +80,8 @@
          get_resolver_rule_association/3,
          get_resolver_rule_policy/2,
          get_resolver_rule_policy/3,
+         list_resolver_dnssec_configs/2,
+         list_resolver_dnssec_configs/3,
          list_resolver_endpoint_ip_addresses/2,
          list_resolver_endpoint_ip_addresses/3,
          list_resolver_endpoints/2,
@@ -100,6 +104,8 @@
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
+         update_resolver_dnssec_config/2,
+         update_resolver_dnssec_config/3,
          update_resolver_endpoint/2,
          update_resolver_endpoint/3,
          update_resolver_rule/2,
@@ -312,6 +318,14 @@ disassociate_resolver_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateResolverRule">>, Input, Options).
 
+%% @doc Gets DNSSEC validation information for a specified resource.
+get_resolver_dnssec_config(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_resolver_dnssec_config(Client, Input, []).
+get_resolver_dnssec_config(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetResolverDnssecConfig">>, Input, Options).
+
 %% @doc Gets information about a specified Resolver endpoint, such as whether
 %% it's an inbound or an outbound Resolver endpoint, and the current status
 %% of the endpoint.
@@ -376,16 +390,26 @@ get_resolver_rule_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResolverRuleAssociation">>, Input, Options).
 
-%% @doc Gets information about a Resolver rule policy.
+%% @doc Gets information about the Resolver rule policy for a specified rule.
 %%
-%% A Resolver rule policy specifies the Resolver operations and resources
-%% that you want to allow another AWS account to be able to use.
+%% A Resolver rule policy includes the rule that you want to share with
+%% another account, the account that you want to share the rule with, and the
+%% Resolver operations that you want to allow the account to use.
 get_resolver_rule_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resolver_rule_policy(Client, Input, []).
 get_resolver_rule_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResolverRulePolicy">>, Input, Options).
+
+%% @doc Lists the configurations for DNSSEC validation that are associated
+%% with the current AWS account.
+list_resolver_dnssec_configs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_resolver_dnssec_configs(Client, Input, []).
+list_resolver_dnssec_configs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListResolverDnssecConfigs">>, Input, Options).
 
 %% @doc Gets the IP addresses for a specified Resolver endpoint.
 list_resolver_endpoint_ip_addresses(Client, Input)
@@ -461,9 +485,9 @@ put_resolver_query_log_config_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutResolverQueryLogConfigPolicy">>, Input, Options).
 
-%% @doc Specifies an AWS account that you want to share rules with, the
-%% Resolver rules that you want to share, and the operations that you want
-%% the account to be able to perform on those rules.
+%% @doc Specifies an AWS rule that you want to share with another account,
+%% the account that you want to share the rule with, and the operations that
+%% you want the account to be able to perform on the rule.
 put_resolver_rule_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resolver_rule_policy(Client, Input, []).
@@ -486,6 +510,16 @@ untag_resource(Client, Input)
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc Updates an existing DNSSEC validation configuration.
+%%
+%% If there is no existing DNSSEC validation configuration, one is created.
+update_resolver_dnssec_config(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_resolver_dnssec_config(Client, Input, []).
+update_resolver_dnssec_config(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateResolverDnssecConfig">>, Input, Options).
 
 %% @doc Updates the name of an inbound or an outbound Resolver endpoint.
 update_resolver_endpoint(Client, Input)

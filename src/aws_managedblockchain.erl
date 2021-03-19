@@ -4,26 +4,36 @@
 %% @doc
 %%
 %% Amazon Managed Blockchain is a fully managed service for creating and
-%% managing blockchain networks using open source frameworks.
+%% managing blockchain networks using open-source frameworks.
 %%
 %% Blockchain allows you to build applications where multiple parties can
 %% securely and transparently run transactions and share data without the
-%% need for a trusted, central authority. Currently, Managed Blockchain
-%% supports the Hyperledger Fabric open source framework.
+%% need for a trusted, central authority.
+%%
+%% Managed Blockchain supports the Hyperledger Fabric and Ethereum
+%% open-source frameworks. Because of fundamental differences between the
+%% frameworks, some API actions or data types may only apply in the context
+%% of one framework and not the other. For example, actions related to
+%% Hyperledger Fabric network members such as `CreateMember' and
+%% `DeleteMember' do not apply to Ethereum.
+%%
+%% The description for each action indicates the framework or frameworks to
+%% which it applies. Data types and properties that apply only in the context
+%% of a particular framework are similarly indicated.
 -module(aws_managedblockchain).
 
 -export([create_member/3,
          create_member/4,
          create_network/2,
          create_network/3,
+         create_node/3,
          create_node/4,
-         create_node/5,
          create_proposal/3,
          create_proposal/4,
          delete_member/4,
          delete_member/5,
+         delete_node/4,
          delete_node/5,
-         delete_node/6,
          get_member/3,
          get_member/4,
          get_network/2,
@@ -44,12 +54,18 @@
          list_proposal_votes/6,
          list_proposals/4,
          list_proposals/5,
+         list_tags_for_resource/2,
+         list_tags_for_resource/3,
          reject_invitation/3,
          reject_invitation/4,
+         tag_resource/3,
+         tag_resource/4,
+         untag_resource/3,
+         untag_resource/4,
          update_member/4,
          update_member/5,
+         update_node/4,
          update_node/5,
-         update_node/6,
          vote_on_proposal/4,
          vote_on_proposal/5]).
 
@@ -60,6 +76,8 @@
 %%====================================================================
 
 %% @doc Creates a member within a Managed Blockchain network.
+%%
+%% Applies only to Hyperledger Fabric.
 create_member(Client, NetworkId, Input) ->
     create_member(Client, NetworkId, Input, []).
 create_member(Client, NetworkId, Input0, Options) ->
@@ -76,6 +94,8 @@ create_member(Client, NetworkId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new blockchain network using Amazon Managed Blockchain.
+%%
+%% Applies only to Hyperledger Fabric.
 create_network(Client, Input) ->
     create_network(Client, Input, []).
 create_network(Client, Input0, Options) ->
@@ -91,12 +111,14 @@ create_network(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a peer node in a member.
-create_node(Client, MemberId, NetworkId, Input) ->
-    create_node(Client, MemberId, NetworkId, Input, []).
-create_node(Client, MemberId, NetworkId, Input0, Options) ->
+%% @doc Creates a node on the specified blockchain network.
+%%
+%% Applies to Hyperledger Fabric and Ethereum.
+create_node(Client, NetworkId, Input) ->
+    create_node(Client, NetworkId, Input, []).
+create_node(Client, NetworkId, Input0, Options) ->
     Method = post,
-    Path = ["/networks/", aws_util:encode_uri(NetworkId), "/members/", aws_util:encode_uri(MemberId), "/nodes"],
+    Path = ["/networks/", aws_util:encode_uri(NetworkId), "/nodes"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -112,6 +134,8 @@ create_node(Client, MemberId, NetworkId, Input0, Options) ->
 %% the network.
 %%
 %% Any member can create a proposal.
+%%
+%% Applies only to Hyperledger Fabric.
 create_proposal(Client, NetworkId, Input) ->
     create_proposal(Client, NetworkId, Input, []).
 create_proposal(Client, NetworkId, Input0, Options) ->
@@ -136,6 +160,8 @@ create_proposal(Client, NetworkId, Input0, Options) ->
 %% carried out as the result of an approved proposal to remove a member. If
 %% `MemberId' is the last member in a network specified by the last AWS
 %% account, the network is deleted also.
+%%
+%% Applies only to Hyperledger Fabric.
 delete_member(Client, MemberId, NetworkId, Input) ->
     delete_member(Client, MemberId, NetworkId, Input, []).
 delete_member(Client, MemberId, NetworkId, Input0, Options) ->
@@ -151,25 +177,30 @@ delete_member(Client, MemberId, NetworkId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a peer node from a member that your AWS account owns.
+%% @doc Deletes a node that your AWS account owns.
 %%
 %% All data on the node is lost and cannot be recovered.
-delete_node(Client, MemberId, NetworkId, NodeId, Input) ->
-    delete_node(Client, MemberId, NetworkId, NodeId, Input, []).
-delete_node(Client, MemberId, NetworkId, NodeId, Input0, Options) ->
+%%
+%% Applies to Hyperledger Fabric and Ethereum.
+delete_node(Client, NetworkId, NodeId, Input) ->
+    delete_node(Client, NetworkId, NodeId, Input, []).
+delete_node(Client, NetworkId, NodeId, Input0, Options) ->
     Method = delete,
-    Path = ["/networks/", aws_util:encode_uri(NetworkId), "/members/", aws_util:encode_uri(MemberId), "/nodes/", aws_util:encode_uri(NodeId), ""],
+    Path = ["/networks/", aws_util:encode_uri(NetworkId), "/nodes/", aws_util:encode_uri(NodeId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
-
+    QueryMapping = [
+                     {<<"memberId">>, <<"MemberId">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns detailed information about a member.
+%%
+%% Applies only to Hyperledger Fabric.
 get_member(Client, MemberId, NetworkId)
   when is_map(Client) ->
     get_member(Client, MemberId, NetworkId, []).
@@ -185,6 +216,8 @@ get_member(Client, MemberId, NetworkId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns detailed information about a network.
+%%
+%% Applies to Hyperledger Fabric and Ethereum.
 get_network(Client, NetworkId)
   when is_map(Client) ->
     get_network(Client, NetworkId, []).
@@ -199,22 +232,30 @@ get_network(Client, NetworkId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns detailed information about a peer node.
-get_node(Client, MemberId, NetworkId, NodeId)
+%% @doc Returns detailed information about a node.
+%%
+%% Applies to Hyperledger Fabric and Ethereum.
+get_node(Client, NetworkId, NodeId, MemberId)
   when is_map(Client) ->
-    get_node(Client, MemberId, NetworkId, NodeId, []).
-get_node(Client, MemberId, NetworkId, NodeId, Options)
+    get_node(Client, NetworkId, NodeId, MemberId, []).
+get_node(Client, NetworkId, NodeId, MemberId, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/networks/", aws_util:encode_uri(NetworkId), "/members/", aws_util:encode_uri(MemberId), "/nodes/", aws_util:encode_uri(NodeId), ""],
+    Path = ["/networks/", aws_util:encode_uri(NetworkId), "/nodes/", aws_util:encode_uri(NodeId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"memberId">>, MemberId}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns detailed information about a proposal.
+%%
+%% Applies only to Hyperledger Fabric.
 get_proposal(Client, NetworkId, ProposalId)
   when is_map(Client) ->
     get_proposal(Client, NetworkId, ProposalId, []).
@@ -229,7 +270,9 @@ get_proposal(Client, NetworkId, ProposalId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a listing of all invitations for the current AWS account.
+%% @doc Returns a list of all invitations for the current AWS account.
+%%
+%% Applies only to Hyperledger Fabric.
 list_invitations(Client, MaxResults, NextToken)
   when is_map(Client) ->
     list_invitations(Client, MaxResults, NextToken, []).
@@ -249,8 +292,10 @@ list_invitations(Client, MaxResults, NextToken, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a listing of the members in a network and properties of their
+%% @doc Returns a list of the members in a network and properties of their
 %% configurations.
+%%
+%% Applies only to Hyperledger Fabric.
 list_members(Client, NetworkId, IsOwned, MaxResults, Name, NextToken, Status)
   when is_map(Client) ->
     list_members(Client, NetworkId, IsOwned, MaxResults, Name, NextToken, Status, []).
@@ -274,7 +319,9 @@ list_members(Client, NetworkId, IsOwned, MaxResults, Name, NextToken, Status, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about the networks in which the current AWS
-%% account has members.
+%% account participates.
+%%
+%% Applies to Hyperledger Fabric and Ethereum.
 list_networks(Client, Framework, MaxResults, Name, NextToken, Status)
   when is_map(Client) ->
     list_networks(Client, Framework, MaxResults, Name, NextToken, Status, []).
@@ -298,12 +345,14 @@ list_networks(Client, Framework, MaxResults, Name, NextToken, Status, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about the nodes within a network.
-list_nodes(Client, MemberId, NetworkId, MaxResults, NextToken, Status)
+%%
+%% Applies to Hyperledger Fabric and Ethereum.
+list_nodes(Client, NetworkId, MaxResults, MemberId, NextToken, Status)
   when is_map(Client) ->
-    list_nodes(Client, MemberId, NetworkId, MaxResults, NextToken, Status, []).
-list_nodes(Client, MemberId, NetworkId, MaxResults, NextToken, Status, Options)
+    list_nodes(Client, NetworkId, MaxResults, MemberId, NextToken, Status, []).
+list_nodes(Client, NetworkId, MaxResults, MemberId, NextToken, Status, Options)
   when is_map(Client), is_list(Options) ->
-    Path = ["/networks/", aws_util:encode_uri(NetworkId), "/members/", aws_util:encode_uri(MemberId), "/nodes"],
+    Path = ["/networks/", aws_util:encode_uri(NetworkId), "/nodes"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -311,6 +360,7 @@ list_nodes(Client, MemberId, NetworkId, MaxResults, NextToken, Status, Options)
     Query0_ =
       [
         {<<"maxResults">>, MaxResults},
+        {<<"memberId">>, MemberId},
         {<<"nextToken">>, NextToken},
         {<<"status">>, Status}
       ],
@@ -318,9 +368,11 @@ list_nodes(Client, MemberId, NetworkId, MaxResults, NextToken, Status, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns the listing of votes for a specified proposal, including the
+%% @doc Returns the list of votes for a specified proposal, including the
 %% value of each vote and the unique identifier of the member that cast the
 %% vote.
+%%
+%% Applies only to Hyperledger Fabric.
 list_proposal_votes(Client, NetworkId, ProposalId, MaxResults, NextToken)
   when is_map(Client) ->
     list_proposal_votes(Client, NetworkId, ProposalId, MaxResults, NextToken, []).
@@ -340,7 +392,9 @@ list_proposal_votes(Client, NetworkId, ProposalId, MaxResults, NextToken, Option
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a listing of proposals for the network.
+%% @doc Returns a list of proposals for the network.
+%%
+%% Applies only to Hyperledger Fabric.
 list_proposals(Client, NetworkId, MaxResults, NextToken)
   when is_map(Client) ->
     list_proposals(Client, NetworkId, MaxResults, NextToken, []).
@@ -360,10 +414,33 @@ list_proposals(Client, NetworkId, MaxResults, NextToken, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns a list of tags for the specified resource.
+%%
+%% Each tag consists of a key and optional value.
+%%
+%% For more information about tags, see Tagging Resources in the Amazon
+%% Managed Blockchain Ethereum Developer Guide, or Tagging Resources in the
+%% Amazon Managed Blockchain Hyperledger Fabric Developer Guide.
+list_tags_for_resource(Client, ResourceArn)
+  when is_map(Client) ->
+    list_tags_for_resource(Client, ResourceArn, []).
+list_tags_for_resource(Client, ResourceArn, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Rejects an invitation to join a network.
 %%
 %% This action can be called by a principal in an AWS account that has
 %% received an invitation to create a member and join a network.
+%%
+%% Applies only to Hyperledger Fabric.
 reject_invitation(Client, InvitationId, Input) ->
     reject_invitation(Client, InvitationId, Input, []).
 reject_invitation(Client, InvitationId, Input0, Options) ->
@@ -379,7 +456,60 @@ reject_invitation(Client, InvitationId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Adds or overwrites the specified tags for the specified Amazon
+%% Managed Blockchain resource.
+%%
+%% Each tag consists of a key and optional value.
+%%
+%% When you specify a tag key that already exists, the tag value is
+%% overwritten with the new value. Use `UntagResource' to remove tag keys.
+%%
+%% A resource can have up to 50 tags. If you try to create more than 50 tags
+%% for a resource, your request fails and returns an error.
+%%
+%% For more information about tags, see Tagging Resources in the Amazon
+%% Managed Blockchain Ethereum Developer Guide, or Tagging Resources in the
+%% Amazon Managed Blockchain Hyperledger Fabric Developer Guide.
+tag_resource(Client, ResourceArn, Input) ->
+    tag_resource(Client, ResourceArn, Input, []).
+tag_resource(Client, ResourceArn, Input0, Options) ->
+    Method = post,
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes the specified tags from the Amazon Managed Blockchain
+%% resource.
+%%
+%% For more information about tags, see Tagging Resources in the Amazon
+%% Managed Blockchain Ethereum Developer Guide, or Tagging Resources in the
+%% Amazon Managed Blockchain Hyperledger Fabric Developer Guide.
+untag_resource(Client, ResourceArn, Input) ->
+    untag_resource(Client, ResourceArn, Input, []).
+untag_resource(Client, ResourceArn, Input0, Options) ->
+    Method = delete,
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    QueryMapping = [
+                     {<<"tagKeys">>, <<"TagKeys">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates a member configuration with new parameters.
+%%
+%% Applies only to Hyperledger Fabric.
 update_member(Client, MemberId, NetworkId, Input) ->
     update_member(Client, MemberId, NetworkId, Input, []).
 update_member(Client, MemberId, NetworkId, Input0, Options) ->
@@ -396,11 +526,13 @@ update_member(Client, MemberId, NetworkId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a node configuration with new parameters.
-update_node(Client, MemberId, NetworkId, NodeId, Input) ->
-    update_node(Client, MemberId, NetworkId, NodeId, Input, []).
-update_node(Client, MemberId, NetworkId, NodeId, Input0, Options) ->
+%%
+%% Applies only to Hyperledger Fabric.
+update_node(Client, NetworkId, NodeId, Input) ->
+    update_node(Client, NetworkId, NodeId, Input, []).
+update_node(Client, NetworkId, NodeId, Input0, Options) ->
     Method = patch,
-    Path = ["/networks/", aws_util:encode_uri(NetworkId), "/members/", aws_util:encode_uri(MemberId), "/nodes/", aws_util:encode_uri(NodeId), ""],
+    Path = ["/networks/", aws_util:encode_uri(NetworkId), "/nodes/", aws_util:encode_uri(NodeId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -415,6 +547,8 @@ update_node(Client, MemberId, NetworkId, NodeId, Input0, Options) ->
 %%
 %% The member to vote as, specified by `VoterMemberId', must be in the same
 %% AWS account as the principal that calls the action.
+%%
+%% Applies only to Hyperledger Fabric.
 vote_on_proposal(Client, NetworkId, ProposalId, Input) ->
     vote_on_proposal(Client, NetworkId, ProposalId, Input, []).
 vote_on_proposal(Client, NetworkId, ProposalId, Input0, Options) ->

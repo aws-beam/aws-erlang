@@ -43,6 +43,8 @@
          get_open_id_token/3,
          get_open_id_token_for_developer_identity/2,
          get_open_id_token_for_developer_identity/3,
+         get_principal_tag_attribute_map/2,
+         get_principal_tag_attribute_map/3,
          list_identities/2,
          list_identities/3,
          list_identity_pools/2,
@@ -55,6 +57,8 @@
          merge_developer_identities/3,
          set_identity_pool_roles/2,
          set_identity_pool_roles/3,
+         set_principal_tag_attribute_map/2,
+         set_principal_tag_attribute_map/3,
          tag_resource/2,
          tag_resource/3,
          unlink_developer_identity/2,
@@ -186,7 +190,7 @@ get_identity_pool_roles(Client, Input, Options)
 %% additional logins for the identity. Supplying multiple logins creates an
 %% implicit link.
 %%
-%% The OpenId token is valid for 10 minutes.
+%% The OpenID token is valid for 10 minutes.
 %%
 %% This is a public API. You do not need any credentials to call this API.
 get_open_id_token(Client, Input)
@@ -219,6 +223,15 @@ get_open_id_token_for_developer_identity(Client, Input)
 get_open_id_token_for_developer_identity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOpenIdTokenForDeveloperIdentity">>, Input, Options).
+
+%% @doc Use `GetPrincipalTagAttributeMap' to list all mappings between
+%% `PrincipalTags' and user attributes.
+get_principal_tag_attribute_map(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_principal_tag_attribute_map(Client, Input, []).
+get_principal_tag_attribute_map(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetPrincipalTagAttributeMap">>, Input, Options).
 
 %% @doc Lists the identities in an identity pool.
 %%
@@ -317,7 +330,16 @@ set_identity_pool_roles(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetIdentityPoolRoles">>, Input, Options).
 
-%% @doc Assigns a set of tags to an Amazon Cognito identity pool.
+%% @doc You can use this operation to use default (username and clientID)
+%% attribute or custom attribute mappings.
+set_principal_tag_attribute_map(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    set_principal_tag_attribute_map(Client, Input, []).
+set_principal_tag_attribute_map(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SetPrincipalTagAttributeMap">>, Input, Options).
+
+%% @doc Assigns a set of tags to the specified Amazon Cognito identity pool.
 %%
 %% A tag is a label that you can use to categorize and manage identity pools
 %% in different ways, such as by purpose, owner, environment, or other
@@ -373,7 +395,8 @@ unlink_identity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UnlinkIdentity">>, Input, Options).
 
-%% @doc Removes the specified tags from an Amazon Cognito identity pool.
+%% @doc Removes the specified tags from the specified Amazon Cognito identity
+%% pool.
 %%
 %% You can use this action up to 5 times per second, per account
 untag_resource(Client, Input)

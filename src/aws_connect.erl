@@ -1,21 +1,21 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon Connect is a cloud-based contact center solution that makes it
-%% easy to set up and manage a customer contact center and provide reliable
+%% @doc Amazon Connect is a cloud-based contact center solution that you use
+%% to set up and manage a customer contact center and provide reliable
 %% customer engagement at any scale.
 %%
-%% Amazon Connect provides rich metrics and real-time reporting that allow
-%% you to optimize contact routing. You can also resolve customer issues more
-%% efficiently by putting customers in touch with the right agents.
+%% Amazon Connect provides metrics and real-time reporting that enable you to
+%% optimize contact routing. You can also resolve customer issues more
+%% efficiently by getting customers in touch with the appropriate agents.
 %%
 %% There are limits to the number of Amazon Connect resources that you can
-%% create and limits to the number of requests that you can make per second.
-%% For more information, see Amazon Connect Service Quotas in the Amazon
-%% Connect Administrator Guide.
+%% create. There are also limits to the number of requests that you can make
+%% per second. For more information, see Amazon Connect Service Quotas in the
+%% Amazon Connect Administrator Guide.
 %%
-%% To connect programmatically to an AWS service, you use an endpoint. For a
-%% list of Amazon Connect endpoints, see Amazon Connect Endpoints.
+%% You can connect programmatically to an AWS service by using an endpoint.
+%% For a list of Amazon Connect endpoints, see Amazon Connect Endpoints.
 %%
 %% Working with contact flows? Check out the Amazon Connect Flow language.
 -module(aws_connect).
@@ -28,6 +28,8 @@
          associate_lambda_function/4,
          associate_lex_bot/3,
          associate_lex_bot/4,
+         associate_queue_quick_connects/4,
+         associate_queue_quick_connects/5,
          associate_routing_profile_queues/4,
          associate_routing_profile_queues/5,
          associate_security_key/3,
@@ -36,26 +38,46 @@
          create_contact_flow/4,
          create_instance/2,
          create_instance/3,
+         create_integration_association/3,
+         create_integration_association/4,
+         create_queue/3,
+         create_queue/4,
+         create_quick_connect/3,
+         create_quick_connect/4,
          create_routing_profile/3,
          create_routing_profile/4,
+         create_use_case/4,
+         create_use_case/5,
          create_user/3,
          create_user/4,
          create_user_hierarchy_group/3,
          create_user_hierarchy_group/4,
          delete_instance/3,
          delete_instance/4,
+         delete_integration_association/4,
+         delete_integration_association/5,
+         delete_quick_connect/4,
+         delete_quick_connect/5,
+         delete_use_case/5,
+         delete_use_case/6,
          delete_user/4,
          delete_user/5,
          delete_user_hierarchy_group/4,
          delete_user_hierarchy_group/5,
          describe_contact_flow/3,
          describe_contact_flow/4,
+         describe_hours_of_operation/3,
+         describe_hours_of_operation/4,
          describe_instance/2,
          describe_instance/3,
          describe_instance_attribute/3,
          describe_instance_attribute/4,
          describe_instance_storage_config/4,
          describe_instance_storage_config/5,
+         describe_queue/3,
+         describe_queue/4,
+         describe_quick_connect/3,
+         describe_quick_connect/4,
          describe_routing_profile/3,
          describe_routing_profile/4,
          describe_user/3,
@@ -72,6 +94,8 @@
          disassociate_lambda_function/4,
          disassociate_lex_bot/3,
          disassociate_lex_bot/4,
+         disassociate_queue_quick_connects/4,
+         disassociate_queue_quick_connects/5,
          disassociate_routing_profile_queues/4,
          disassociate_routing_profile_queues/5,
          disassociate_security_key/4,
@@ -96,6 +120,8 @@
          list_instance_storage_configs/6,
          list_instances/3,
          list_instances/4,
+         list_integration_associations/4,
+         list_integration_associations/5,
          list_lambda_functions/4,
          list_lambda_functions/5,
          list_lex_bots/4,
@@ -104,8 +130,12 @@
          list_phone_numbers/7,
          list_prompts/4,
          list_prompts/5,
+         list_queue_quick_connects/5,
+         list_queue_quick_connects/6,
          list_queues/5,
          list_queues/6,
+         list_quick_connects/5,
+         list_quick_connects/6,
          list_routing_profile_queues/5,
          list_routing_profile_queues/6,
          list_routing_profiles/4,
@@ -116,6 +146,8 @@
          list_security_profiles/5,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         list_use_cases/5,
+         list_use_cases/6,
          list_user_hierarchy_groups/4,
          list_user_hierarchy_groups/5,
          list_users/4,
@@ -128,6 +160,8 @@
          start_contact_recording/3,
          start_outbound_voice_contact/2,
          start_outbound_voice_contact/3,
+         start_task_contact/2,
+         start_task_contact/3,
          stop_contact/2,
          stop_contact/3,
          stop_contact_recording/2,
@@ -148,6 +182,20 @@
          update_instance_attribute/5,
          update_instance_storage_config/4,
          update_instance_storage_config/5,
+         update_queue_hours_of_operation/4,
+         update_queue_hours_of_operation/5,
+         update_queue_max_contacts/4,
+         update_queue_max_contacts/5,
+         update_queue_name/4,
+         update_queue_name/5,
+         update_queue_outbound_caller_config/4,
+         update_queue_outbound_caller_config/5,
+         update_queue_status/4,
+         update_queue_status/5,
+         update_quick_connect_config/4,
+         update_quick_connect_config/5,
+         update_quick_connect_name/4,
+         update_quick_connect_name/5,
          update_routing_profile_concurrency/4,
          update_routing_profile_concurrency/5,
          update_routing_profile_default_outbound_queue/4,
@@ -177,7 +225,10 @@
 %% API
 %%====================================================================
 
-%% @doc Associates an approved origin to an Amazon Connect instance.
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Associates an approved origin to an Amazon Connect instance.
 associate_approved_origin(Client, InstanceId, Input) ->
     associate_approved_origin(Client, InstanceId, Input, []).
 associate_approved_origin(Client, InstanceId, Input0, Options) ->
@@ -193,16 +244,18 @@ associate_approved_origin(Client, InstanceId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Associates a storage resource type for the first time.
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
 %%
-%% You can only associate one type of storage configuration in a single call.
-%% This means, for example, that you can't define an instance with multiple
-%% S3 buckets for storing chat transcripts.
+%% Associates a storage resource type for the first time. You can only
+%% associate one type of storage configuration in a single call. This means,
+%% for example, that you can't define an instance with multiple S3 buckets
+%% for storing chat transcripts.
 %%
 %% This API does not create a resource that doesn't exist. It only associates
 %% it to the instance. Ensure that the resource being specified in the
-%% storage configuration, like an Amazon S3 bucket, exists when being used
-%% for association.
+%% storage configuration, like an S3 bucket, exists when being used for
+%% association.
 associate_instance_storage_config(Client, InstanceId, Input) ->
     associate_instance_storage_config(Client, InstanceId, Input, []).
 associate_instance_storage_config(Client, InstanceId, Input0, Options) ->
@@ -218,7 +271,10 @@ associate_instance_storage_config(Client, InstanceId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Allows the specified Amazon Connect instance to access the specified
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Allows the specified Amazon Connect instance to access the specified
 %% Lambda function.
 associate_lambda_function(Client, InstanceId, Input) ->
     associate_lambda_function(Client, InstanceId, Input, []).
@@ -235,13 +291,35 @@ associate_lambda_function(Client, InstanceId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Allows the specified Amazon Connect instance to access the specified
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Allows the specified Amazon Connect instance to access the specified
 %% Amazon Lex bot.
 associate_lex_bot(Client, InstanceId, Input) ->
     associate_lex_bot(Client, InstanceId, Input, []).
 associate_lex_bot(Client, InstanceId, Input0, Options) ->
     Method = put,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/lex-bot"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Associates a set of quick connects with a queue.
+associate_queue_quick_connects(Client, InstanceId, QueueId, Input) ->
+    associate_queue_quick_connects(Client, InstanceId, QueueId, Input, []).
+associate_queue_quick_connects(Client, InstanceId, QueueId, Input0, Options) ->
+    Method = post,
+    Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/associate-quick-connects"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -268,7 +346,10 @@ associate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0, O
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Associates a security key to the instance.
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Associates a security key to the instance.
 associate_security_key(Client, InstanceId, Input) ->
     associate_security_key(Client, InstanceId, Input, []).
 associate_security_key(Client, InstanceId, Input0, Options) ->
@@ -303,17 +384,75 @@ create_contact_flow(Client, InstanceId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Initiates an Amazon Connect instance with all the supported channels
-%% enabled.
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
 %%
-%% It does not attach any storage (such as Amazon S3, or Kinesis) or allow
-%% for any configurations on features such as Contact Lens for Amazon
-%% Connect.
+%% Initiates an Amazon Connect instance with all the supported channels
+%% enabled. It does not attach any storage, such as Amazon Simple Storage
+%% Service (Amazon S3) or Amazon Kinesis. It also does not allow for any
+%% configurations on features, such as Contact Lens for Amazon Connect.
 create_instance(Client, Input) ->
     create_instance(Client, Input, []).
 create_instance(Client, Input0, Options) ->
     Method = put,
     Path = ["/instance"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Create an AppIntegration association with an Amazon Connect instance.
+create_integration_association(Client, InstanceId, Input) ->
+    create_integration_association(Client, InstanceId, Input, []).
+create_integration_association(Client, InstanceId, Input0, Options) ->
+    Method = put,
+    Path = ["/instance/", aws_util:encode_uri(InstanceId), "/integration-associations"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Creates a new queue for the specified Amazon Connect instance.
+create_queue(Client, InstanceId, Input) ->
+    create_queue(Client, InstanceId, Input, []).
+create_queue(Client, InstanceId, Input0, Options) ->
+    Method = put,
+    Path = ["/queues/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Creates a quick connect for the specified Amazon Connect instance.
+create_quick_connect(Client, InstanceId, Input) ->
+    create_quick_connect(Client, InstanceId, Input, []).
+create_quick_connect(Client, InstanceId, Input0, Options) ->
+    Method = put,
+    Path = ["/quick-connects/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -330,6 +469,25 @@ create_routing_profile(Client, InstanceId, Input) ->
 create_routing_profile(Client, InstanceId, Input0, Options) ->
     Method = put,
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Creates a use case for an AppIntegration association.
+create_use_case(Client, InstanceId, IntegrationAssociationId, Input) ->
+    create_use_case(Client, InstanceId, IntegrationAssociationId, Input, []).
+create_use_case(Client, InstanceId, IntegrationAssociationId, Input0, Options) ->
+    Method = put,
+    Path = ["/instance/", aws_util:encode_uri(InstanceId), "/integration-associations/", aws_util:encode_uri(IntegrationAssociationId), "/use-cases"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -375,12 +533,73 @@ create_user_hierarchy_group(Client, InstanceId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the Amazon Connect instance.
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Deletes the Amazon Connect instance.
 delete_instance(Client, InstanceId, Input) ->
     delete_instance(Client, InstanceId, Input, []).
 delete_instance(Client, InstanceId, Input0, Options) ->
     Method = delete,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Deletes an AppIntegration association from an Amazon Connect instance. The
+%% association must not have any use cases associated with it.
+delete_integration_association(Client, InstanceId, IntegrationAssociationId, Input) ->
+    delete_integration_association(Client, InstanceId, IntegrationAssociationId, Input, []).
+delete_integration_association(Client, InstanceId, IntegrationAssociationId, Input0, Options) ->
+    Method = delete,
+    Path = ["/instance/", aws_util:encode_uri(InstanceId), "/integration-associations/", aws_util:encode_uri(IntegrationAssociationId), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Deletes a quick connect.
+delete_quick_connect(Client, InstanceId, QuickConnectId, Input) ->
+    delete_quick_connect(Client, InstanceId, QuickConnectId, Input, []).
+delete_quick_connect(Client, InstanceId, QuickConnectId, Input0, Options) ->
+    Method = delete,
+    Path = ["/quick-connects/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QuickConnectId), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Deletes a use case from an AppIntegration association.
+delete_use_case(Client, InstanceId, IntegrationAssociationId, UseCaseId, Input) ->
+    delete_use_case(Client, InstanceId, IntegrationAssociationId, UseCaseId, Input, []).
+delete_use_case(Client, InstanceId, IntegrationAssociationId, UseCaseId, Input0, Options) ->
+    Method = delete,
+    Path = ["/instance/", aws_util:encode_uri(InstanceId), "/integration-associations/", aws_util:encode_uri(IntegrationAssociationId), "/use-cases/", aws_util:encode_uri(UseCaseId), ""],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -447,10 +666,30 @@ describe_contact_flow(Client, ContactFlowId, InstanceId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns the current state of the specified instance identifier.
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
 %%
-%% It tracks the instance while it is being created and returns an error
-%% status if applicable.
+%% Describes the hours of operation.
+describe_hours_of_operation(Client, HoursOfOperationId, InstanceId)
+  when is_map(Client) ->
+    describe_hours_of_operation(Client, HoursOfOperationId, InstanceId, []).
+describe_hours_of_operation(Client, HoursOfOperationId, InstanceId, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/hours-of-operations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(HoursOfOperationId), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Returns the current state of the specified instance identifier. It tracks
+%% the instance while it is being created and returns an error status, if
+%% applicable.
 %%
 %% If an instance is not created successfully, the instance status reason
 %% field returns details relevant to the reason. The instance in a failed
@@ -470,7 +709,10 @@ describe_instance(Client, InstanceId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describes the specified instance attribute.
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Describes the specified instance attribute.
 describe_instance_attribute(Client, AttributeType, InstanceId)
   when is_map(Client) ->
     describe_instance_attribute(Client, AttributeType, InstanceId, []).
@@ -485,8 +727,11 @@ describe_instance_attribute(Client, AttributeType, InstanceId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves the current storage configurations for the specified
-%% resource type, association ID, and instance ID.
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Retrieves the current storage configurations for the specified resource
+%% type, association ID, and instance ID.
 describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType)
   when is_map(Client) ->
     describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType, []).
@@ -502,6 +747,42 @@ describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType
         {<<"resourceType">>, ResourceType}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Describes the specified queue.
+describe_queue(Client, InstanceId, QueueId)
+  when is_map(Client) ->
+    describe_queue(Client, InstanceId, QueueId, []).
+describe_queue(Client, InstanceId, QueueId, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Describes the quick connect.
+describe_quick_connect(Client, InstanceId, QuickConnectId)
+  when is_map(Client) ->
+    describe_quick_connect(Client, InstanceId, QuickConnectId, []).
+describe_quick_connect(Client, InstanceId, QuickConnectId, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/quick-connects/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QuickConnectId), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -570,7 +851,10 @@ describe_user_hierarchy_structure(Client, InstanceId, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Revokes access to integrated applications from Amazon Connect.
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Revokes access to integrated applications from Amazon Connect.
 disassociate_approved_origin(Client, InstanceId, Input) ->
     disassociate_approved_origin(Client, InstanceId, Input, []).
 disassociate_approved_origin(Client, InstanceId, Input0, Options) ->
@@ -587,8 +871,11 @@ disassociate_approved_origin(Client, InstanceId, Input0, Options) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes the storage type configurations for the specified resource
-%% type and association ID.
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Removes the storage type configurations for the specified resource type
+%% and association ID.
 disassociate_instance_storage_config(Client, AssociationId, InstanceId, Input) ->
     disassociate_instance_storage_config(Client, AssociationId, InstanceId, Input, []).
 disassociate_instance_storage_config(Client, AssociationId, InstanceId, Input0, Options) ->
@@ -605,8 +892,11 @@ disassociate_instance_storage_config(Client, AssociationId, InstanceId, Input0, 
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Remove the Lambda function from the drop-down options available in
-%% the relevant contact flow blocks.
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Remove the Lambda function from the dropdown options available in the
+%% relevant contact flow blocks.
 disassociate_lambda_function(Client, InstanceId, Input) ->
     disassociate_lambda_function(Client, InstanceId, Input, []).
 disassociate_lambda_function(Client, InstanceId, Input0, Options) ->
@@ -623,8 +913,11 @@ disassociate_lambda_function(Client, InstanceId, Input0, Options) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Revokes authorization from the specified instance to access the
-%% specified Amazon Lex bot.
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Revokes authorization from the specified instance to access the specified
+%% Amazon Lex bot.
 disassociate_lex_bot(Client, InstanceId, Input) ->
     disassociate_lex_bot(Client, InstanceId, Input, []).
 disassociate_lex_bot(Client, InstanceId, Input0, Options) ->
@@ -640,6 +933,25 @@ disassociate_lex_bot(Client, InstanceId, Input0, Options) ->
                      {<<"lexRegion">>, <<"LexRegion">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Disassociates a set of quick connects from a queue.
+disassociate_queue_quick_connects(Client, InstanceId, QueueId, Input) ->
+    disassociate_queue_quick_connects(Client, InstanceId, QueueId, Input, []).
+disassociate_queue_quick_connects(Client, InstanceId, QueueId, Input0, Options) ->
+    Method = post,
+    Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/disassociate-quick-connects"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates a set of queues from a routing profile.
@@ -658,7 +970,10 @@ disassociate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the specified security key.
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Deletes the specified security key.
 disassociate_security_key(Client, AssociationId, InstanceId, Input) ->
     disassociate_security_key(Client, AssociationId, InstanceId, Input, []).
 disassociate_security_key(Client, AssociationId, InstanceId, Input0, Options) ->
@@ -744,7 +1059,10 @@ get_metric_data(Client, InstanceId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a paginated list of all approved origins associated with the
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Returns a paginated list of all approved origins associated with the
 %% instance.
 list_approved_origins(Client, InstanceId, MaxResults, NextToken)
   when is_map(Client) ->
@@ -817,8 +1135,10 @@ list_hours_of_operations(Client, InstanceId, MaxResults, NextToken, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a paginated list of all attribute types for the given
-%% instance.
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Returns a paginated list of all attribute types for the given instance.
 list_instance_attributes(Client, InstanceId, MaxResults, NextToken)
   when is_map(Client) ->
     list_instance_attributes(Client, InstanceId, MaxResults, NextToken, []).
@@ -838,8 +1158,11 @@ list_instance_attributes(Client, InstanceId, MaxResults, NextToken, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a paginated list of storage configs for the identified
-%% instance and resource type.
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Returns a paginated list of storage configs for the identified instance
+%% and resource type.
 list_instance_storage_configs(Client, InstanceId, MaxResults, NextToken, ResourceType)
   when is_map(Client) ->
     list_instance_storage_configs(Client, InstanceId, MaxResults, NextToken, ResourceType, []).
@@ -860,11 +1183,13 @@ list_instance_storage_configs(Client, InstanceId, MaxResults, NextToken, Resourc
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Return a list of instances which are in active state,
-%% creation-in-progress state, and failed state.
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
 %%
-%% Instances that aren't successfully created (they are in a failed state)
-%% are returned only for 24 hours after the CreateInstance API was invoked.
+%% Return a list of instances which are in active state, creation-in-progress
+%% state, and failed state. Instances that aren't successfully created (they
+%% are in a failed state) are returned only for 24 hours after the
+%% CreateInstance API was invoked.
 list_instances(Client, MaxResults, NextToken)
   when is_map(Client) ->
     list_instances(Client, MaxResults, NextToken, []).
@@ -884,8 +1209,35 @@ list_instances(Client, MaxResults, NextToken, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a paginated list of all the Lambda functions that show up in
-%% the drop-down options in the relevant contact flow blocks.
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Provides summary information about the AppIntegration associations for the
+%% specified Amazon Connect instance.
+list_integration_associations(Client, InstanceId, MaxResults, NextToken)
+  when is_map(Client) ->
+    list_integration_associations(Client, InstanceId, MaxResults, NextToken, []).
+list_integration_associations(Client, InstanceId, MaxResults, NextToken, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/instance/", aws_util:encode_uri(InstanceId), "/integration-associations"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Returns a paginated list of all Lambda functions that display in the
+%% dropdown options in the relevant contact flow blocks.
 list_lambda_functions(Client, InstanceId, MaxResults, NextToken)
   when is_map(Client) ->
     list_lambda_functions(Client, InstanceId, MaxResults, NextToken, []).
@@ -905,8 +1257,11 @@ list_lambda_functions(Client, InstanceId, MaxResults, NextToken, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a paginated list of all the Amazon Lex bots currently
-%% associated with the instance.
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Returns a paginated list of all the Amazon Lex bots currently associated
+%% with the instance.
 list_lex_bots(Client, InstanceId, MaxResults, NextToken)
   when is_map(Client) ->
     list_lex_bots(Client, InstanceId, MaxResults, NextToken, []).
@@ -973,6 +1328,29 @@ list_prompts(Client, InstanceId, MaxResults, NextToken, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Lists the quick connects associated with a queue.
+list_queue_quick_connects(Client, InstanceId, QueueId, MaxResults, NextToken)
+  when is_map(Client) ->
+    list_queue_quick_connects(Client, InstanceId, QueueId, MaxResults, NextToken, []).
+list_queue_quick_connects(Client, InstanceId, QueueId, MaxResults, NextToken, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/quick-connects"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Provides information about the queues for the specified Amazon
 %% Connect instance.
 %%
@@ -998,7 +1376,32 @@ list_queues(Client, InstanceId, MaxResults, NextToken, QueueTypes, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc List the queues associated with a routing profile.
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Provides information about the quick connects for the specified Amazon
+%% Connect instance.
+list_quick_connects(Client, InstanceId, MaxResults, NextToken, QuickConnectTypes)
+  when is_map(Client) ->
+    list_quick_connects(Client, InstanceId, MaxResults, NextToken, QuickConnectTypes, []).
+list_quick_connects(Client, InstanceId, MaxResults, NextToken, QuickConnectTypes, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/quick-connects/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken},
+        {<<"QuickConnectTypes">>, QuickConnectTypes}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the queues associated with a routing profile.
 list_routing_profile_queues(Client, InstanceId, RoutingProfileId, MaxResults, NextToken)
   when is_map(Client) ->
     list_routing_profile_queues(Client, InstanceId, RoutingProfileId, MaxResults, NextToken, []).
@@ -1042,7 +1445,10 @@ list_routing_profiles(Client, InstanceId, MaxResults, NextToken, Options)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a paginated list of all security keys associated with the
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Returns a paginated list of all security keys associated with the
 %% instance.
 list_security_keys(Client, InstanceId, MaxResults, NextToken)
   when is_map(Client) ->
@@ -1102,6 +1508,29 @@ list_tags_for_resource(Client, ResourceArn, Options)
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Lists the use cases.
+list_use_cases(Client, InstanceId, IntegrationAssociationId, MaxResults, NextToken)
+  when is_map(Client) ->
+    list_use_cases(Client, InstanceId, IntegrationAssociationId, MaxResults, NextToken, []).
+list_use_cases(Client, InstanceId, IntegrationAssociationId, MaxResults, NextToken, Options)
+  when is_map(Client), is_list(Options) ->
+    Path = ["/instance/", aws_util:encode_uri(InstanceId), "/integration-associations/", aws_util:encode_uri(IntegrationAssociationId), "/use-cases"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, NextToken}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -1176,10 +1605,10 @@ resume_contact_recording(Client, Input0, Options) ->
 %% the CreateParticipantConnection API in the Amazon Connect Participant
 %% Service.
 %%
-%% When a new chat contact is successfully created, clients need to subscribe
-%% to the participant’s connection for the created chat within 5 minutes.
-%% This is achieved by invoking CreateParticipantConnection with WEBSOCKET
-%% and CONNECTION_CREDENTIALS.
+%% When a new chat contact is successfully created, clients must subscribe to
+%% the participant’s connection for the created chat within 5 minutes. This
+%% is achieved by invoking CreateParticipantConnection with WEBSOCKET and
+%% CONNECTION_CREDENTIALS.
 %%
 %% A 429 error occurs in two situations:
 %%
@@ -1189,8 +1618,8 @@ resume_contact_recording(Client, Input0, Options) ->
 %% </li> <li> The quota for concurrent active chats is exceeded. Active chat
 %% throttling returns a `LimitExceededException'.
 %%
-%% </li> </ul> For more information about how chat works, see Chat in the
-%% Amazon Connect Administrator Guide.
+%% </li> </ul> For more information about chat, see Chat in the Amazon
+%% Connect Administrator Guide.
 start_chat_contact(Client, Input) ->
     start_chat_contact(Client, Input, []).
 start_chat_contact(Client, Input0, Options) ->
@@ -1206,7 +1635,7 @@ start_chat_contact(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API starts recording the contact when the agent joins the call.
+%% @doc Starts recording the contact when the agent joins the call.
 %%
 %% StartContactRecording is a one-time action. For example, if you use
 %% StopContactRecording to stop recording an ongoing call, you can't use
@@ -1234,18 +1663,18 @@ start_contact_recording(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API places an outbound call to a contact, and then initiates the
-%% contact flow.
+%% @doc Places an outbound call to a contact, and then initiates the contact
+%% flow.
 %%
 %% It performs the actions in the contact flow that's specified (in
 %% `ContactFlowId').
 %%
-%% Agents are not involved in initiating the outbound API (that is, dialing
-%% the contact). If the contact flow places an outbound call to a contact,
-%% and then puts the contact in queue, that's when the call is routed to the
-%% agent, like any other inbound case.
+%% Agents do not initiate the outbound API, which means that they do not dial
+%% the contact. If the contact flow places an outbound call to a contact, and
+%% then puts the contact in queue, the call is then routed to the agent, like
+%% any other inbound case.
 %%
-%% There is a 60 second dialing timeout for this operation. If the call is
+%% There is a 60-second dialing timeout for this operation. If the call is
 %% not connected after 60 seconds, it fails.
 %%
 %% UK numbers with a 447 prefix are not allowed by default. Before you can
@@ -1257,6 +1686,22 @@ start_outbound_voice_contact(Client, Input) ->
 start_outbound_voice_contact(Client, Input0, Options) ->
     Method = put,
     Path = ["/contact/outbound-voice"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Initiates a contact flow to start a new task.
+start_task_contact(Client, Input) ->
+    start_task_contact(Client, Input, []).
+start_task_contact(Client, Input0, Options) ->
+    Method = put,
+    Path = ["/contact/task"],
     SuccessStatusCode = undefined,
 
     Headers = [],
@@ -1283,7 +1728,7 @@ stop_contact(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc When a contact is being recorded, this API stops recording the call.
+%% @doc Stops recording a call when a contact is being recorded.
 %%
 %% StopContactRecording is a one-time action. If you use StopContactRecording
 %% to stop recording an ongoing call, you can't use StartContactRecording to
@@ -1336,8 +1781,8 @@ suspend_contact_recording(Client, Input0, Options) ->
 
 %% @doc Adds the specified tags to the specified resource.
 %%
-%% The supported resource types are users, routing profiles, and contact
-%% flows.
+%% The supported resource types are users, routing profiles, queues, quick
+%% connects, and contact flows.
 %%
 %% For sample policies that use tags, see Amazon Connect Identity-Based
 %% Policy Examples in the Amazon Connect Administrator Guide.
@@ -1377,24 +1822,24 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 %% specified contact.
 %%
 %% You can add or update attributes for both ongoing and completed contacts.
-%% For example, you can update the customer's name or the reason the customer
-%% called while the call is active, or add notes about steps that the agent
-%% took during the call that are displayed to the next agent that takes the
+%% For example, while the call is active, you can update the customer's name
+%% or the reason the customer called. You can add notes about steps that the
+%% agent took during the call that display to the next agent that takes the
 %% call. You can also update attributes for a contact using data from your
 %% CRM application and save the data with the contact in Amazon Connect. You
-%% could also flag calls for additional analysis, such as legal review or
-%% identifying abusive callers.
+%% could also flag calls for additional analysis, such as legal review or to
+%% identify abusive callers.
 %%
 %% Contact attributes are available in Amazon Connect for 24 months, and are
 %% then deleted.
 %%
 %% Important: You cannot use the operation to update attributes for contacts
-%% that occurred prior to the release of the API, September 12, 2018. You can
-%% update attributes only for contacts that started after the release of the
-%% API. If you attempt to update attributes for a contact that occurred prior
-%% to the release of the API, a 400 error is returned. This applies also to
-%% queued callbacks that were initiated prior to the release of the API but
-%% are still active in your instance.
+%% that occurred prior to the release of the API, which was September 12,
+%% 2018. You can update attributes only for contacts that started after the
+%% release of the API. If you attempt to update attributes for a contact that
+%% occurred prior to the release of the API, a 400 error is returned. This
+%% applies also to queued callbacks that were initiated prior to the release
+%% of the API but are still active in your instance.
 update_contact_attributes(Client, Input) ->
     update_contact_attributes(Client, Input, []).
 update_contact_attributes(Client, Input0, Options) ->
@@ -1448,7 +1893,10 @@ update_contact_flow_name(Client, ContactFlowId, InstanceId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the value for the specified attribute type.
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Updates the value for the specified attribute type.
 update_instance_attribute(Client, AttributeType, InstanceId, Input) ->
     update_instance_attribute(Client, AttributeType, InstanceId, Input, []).
 update_instance_attribute(Client, AttributeType, InstanceId, Input0, Options) ->
@@ -1464,9 +1912,11 @@ update_instance_attribute(Client, AttributeType, InstanceId, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing configuration for a resource type.
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
 %%
-%% This API is idempotent.
+%% Updates an existing configuration for a resource type. This API is
+%% idempotent.
 update_instance_storage_config(Client, AssociationId, InstanceId, Input) ->
     update_instance_storage_config(Client, AssociationId, InstanceId, Input, []).
 update_instance_storage_config(Client, AssociationId, InstanceId, Input0, Options) ->
@@ -1481,6 +1931,144 @@ update_instance_storage_config(Client, AssociationId, InstanceId, Input0, Option
                      {<<"resourceType">>, <<"ResourceType">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Updates the hours of operation for the specified queue.
+update_queue_hours_of_operation(Client, InstanceId, QueueId, Input) ->
+    update_queue_hours_of_operation(Client, InstanceId, QueueId, Input, []).
+update_queue_hours_of_operation(Client, InstanceId, QueueId, Input0, Options) ->
+    Method = post,
+    Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/hours-of-operation"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Updates the maximum number of contacts allowed in a queue before it is
+%% considered full.
+update_queue_max_contacts(Client, InstanceId, QueueId, Input) ->
+    update_queue_max_contacts(Client, InstanceId, QueueId, Input, []).
+update_queue_max_contacts(Client, InstanceId, QueueId, Input0, Options) ->
+    Method = post,
+    Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/max-contacts"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Updates the name and description of a queue. At least `Name' or
+%% `Description' must be provided.
+update_queue_name(Client, InstanceId, QueueId, Input) ->
+    update_queue_name(Client, InstanceId, QueueId, Input, []).
+update_queue_name(Client, InstanceId, QueueId, Input0, Options) ->
+    Method = post,
+    Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/name"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Updates the outbound caller ID name, number, and outbound whisper flow for
+%% a specified queue.
+update_queue_outbound_caller_config(Client, InstanceId, QueueId, Input) ->
+    update_queue_outbound_caller_config(Client, InstanceId, QueueId, Input, []).
+update_queue_outbound_caller_config(Client, InstanceId, QueueId, Input0, Options) ->
+    Method = post,
+    Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/outbound-caller-config"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Updates the status of the queue.
+update_queue_status(Client, InstanceId, QueueId, Input) ->
+    update_queue_status(Client, InstanceId, QueueId, Input, []).
+update_queue_status(Client, InstanceId, QueueId, Input0, Options) ->
+    Method = post,
+    Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/status"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Updates the configuration settings for the specified quick connect.
+update_quick_connect_config(Client, InstanceId, QuickConnectId, Input) ->
+    update_quick_connect_config(Client, InstanceId, QuickConnectId, Input, []).
+update_quick_connect_config(Client, InstanceId, QuickConnectId, Input0, Options) ->
+    Method = post,
+    Path = ["/quick-connects/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QuickConnectId), "/config"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Updates the name and description of a quick connect. The request accepts
+%% the following data in JSON format. At least `Name' or `Description' must
+%% be provided.
+update_quick_connect_name(Client, InstanceId, QuickConnectId, Input) ->
+    update_quick_connect_name(Client, InstanceId, QuickConnectId, Input, []).
+update_quick_connect_name(Client, InstanceId, QuickConnectId, Input0, Options) ->
+    Method = post,
+    Path = ["/quick-connects/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QuickConnectId), "/name"],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the channels that agents can handle in the Contact Control
@@ -1603,13 +2191,13 @@ update_user_hierarchy_structure(Client, InstanceId, Input0, Options) ->
 
 %% @doc Updates the identity information for the specified user.
 %%
-%% Someone with the ability to invoke `UpdateUserIndentityInfo' can change
-%% the login credentials of other users by changing their email address. This
-%% poses a security risk to your organization. They can change the email
-%% address of a user to the attacker's email address, and then reset the
-%% password through email. We strongly recommend limiting who has the ability
-%% to invoke `UpdateUserIndentityInfo'. For more information, see Best
-%% Practices for Security Profiles in the Amazon Connect Administrator Guide.
+%% We strongly recommend limiting who has the ability to invoke
+%% `UpdateUserIdentityInfo'. Someone with that ability can change the login
+%% credentials of other users by changing their email address. This poses a
+%% security risk to your organization. They can change the email address of a
+%% user to the attacker's email address, and then reset the password through
+%% email. For more information, see Best Practices for Security Profiles in
+%% the Amazon Connect Administrator Guide.
 update_user_identity_info(Client, InstanceId, UserId, Input) ->
     update_user_identity_info(Client, InstanceId, UserId, Input, []).
 update_user_identity_info(Client, InstanceId, UserId, Input0, Options) ->

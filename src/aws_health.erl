@@ -83,7 +83,7 @@
 %% Before you can call this operation, you must first enable AWS Health to
 %% work with AWS Organizations. To do this, call the
 %% EnableHealthServiceAccessForOrganization operation from your
-%% organization's master account.
+%% organization's management account.
 %%
 %% This API operation uses pagination. Specify the `nextToken' parameter in
 %% the next request to return more results.
@@ -107,6 +107,11 @@ describe_affected_accounts_for_organization(Client, Input, Options)
 %%
 %% This API operation uses pagination. Specify the `nextToken' parameter in
 %% the next request to return more results.
+%%
+%% This operation supports resource-level permissions. You can use this
+%% operation to allow or deny access to specific AWS Health events. For more
+%% information, see Resource- and action-based conditions in the AWS Health
+%% User Guide.
 describe_affected_entities(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_affected_entities(Client, Input, []).
@@ -128,10 +133,15 @@ describe_affected_entities(Client, Input, Options)
 %% Before you can call this operation, you must first enable AWS Health to
 %% work with AWS Organizations. To do this, call the
 %% EnableHealthServiceAccessForOrganization operation from your
-%% organization's master account.
+%% organization's management account.
 %%
 %% This API operation uses pagination. Specify the `nextToken' parameter in
 %% the next request to return more results.
+%%
+%% This operation doesn't support resource-level permissions. You can't use
+%% this operation to allow or deny access to specific AWS Health events. For
+%% more information, see Resource- and action-based conditions in the AWS
+%% Health User Guide.
 describe_affected_entities_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_affected_entities_for_organization(Client, Input, []).
@@ -168,14 +178,19 @@ describe_event_aggregates(Client, Input, Options)
 
 %% @doc Returns detailed information about one or more specified events.
 %%
-%% Information includes standard event data (Region, service, and so on, as
-%% returned by DescribeEvents), a detailed event description, and possible
+%% Information includes standard event data (AWS Region, service, and so on,
+%% as returned by DescribeEvents), a detailed event description, and possible
 %% additional metadata that depends upon the nature of the event. Affected
 %% entities are not included. To retrieve those, use the
 %% DescribeAffectedEntities operation.
 %%
 %% If a specified event cannot be retrieved, an error message is returned for
 %% that event.
+%%
+%% This operation supports resource-level permissions. You can use this
+%% operation to allow or deny access to specific AWS Health events. For more
+%% information, see Resource- and action-based conditions in the AWS Health
+%% User Guide.
 describe_event_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_details(Client, Input, []).
@@ -186,16 +201,16 @@ describe_event_details(Client, Input, Options)
 %% @doc Returns detailed information about one or more specified events for
 %% one or more accounts in your organization.
 %%
-%% Information includes standard event data (Region, service, and so on, as
-%% returned by DescribeEventsForOrganization), a detailed event description,
-%% and possible additional metadata that depends upon the nature of the
-%% event. Affected entities are not included; to retrieve those, use the
-%% DescribeAffectedEntitiesForOrganization operation.
+%% Information includes standard event data (AWS Region, service, and so on,
+%% as returned by DescribeEventsForOrganization), a detailed event
+%% description, and possible additional metadata that depends upon the nature
+%% of the event. Affected entities are not included; to retrieve those, use
+%% the DescribeAffectedEntitiesForOrganization operation.
 %%
 %% Before you can call this operation, you must first enable AWS Health to
 %% work with AWS Organizations. To do this, call the
 %% EnableHealthServiceAccessForOrganization operation from your
-%% organization's master account.
+%% organization's management account.
 %%
 %% When you call the `DescribeEventDetailsForOrganization' operation, you
 %% specify the `organizationEventDetailFilters' object in the request.
@@ -212,6 +227,11 @@ describe_event_details(Client, Input, Options)
 %% AWS account in your organization.
 %%
 %% </li> </ul> For more information, see Event.
+%%
+%% This operation doesn't support resource-level permissions. You can't use
+%% this operation to allow or deny access to specific AWS Health events. For
+%% more information, see Resource- and action-based conditions in the AWS
+%% Health User Guide.
 describe_event_details_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_details_for_organization(Client, Input, []).
@@ -221,8 +241,12 @@ describe_event_details_for_organization(Client, Input, Options)
 
 %% @doc Returns the event types that meet the specified filter criteria.
 %%
-%% If no filter criteria are specified, all event types are returned, in no
-%% particular order.
+%% You can use this API operation to find information about the AWS Health
+%% event, such as the category, AWS service, and event code. The metadata for
+%% each event appears in the EventType object.
+%%
+%% If you don't specify a filter criteria, the API operation returns all
+%% event types, in no particular order.
 %%
 %% This API operation uses pagination. Specify the `nextToken' parameter in
 %% the next request to return more results.
@@ -288,7 +312,7 @@ describe_events(Client, Input, Options)
 %% Before you can call this operation, you must first enable AWS Health to
 %% work with AWS Organizations. To do this, call the
 %% EnableHealthServiceAccessForOrganization operation from your
-%% organization's master AWS account.
+%% organization's management account.
 %%
 %% This API operation uses pagination. Specify the `nextToken' parameter in
 %% the next request to return more results.
@@ -304,7 +328,7 @@ describe_events_for_organization(Client, Input, Options)
 %%
 %% To call this operation, you must sign in as an IAM user, assume an IAM
 %% role, or sign in as the root user (not recommended) in the organization's
-%% master account.
+%% management account.
 describe_health_service_status_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_health_service_status_for_organization(Client, Input, []).
@@ -316,14 +340,15 @@ describe_health_service_status_for_organization(Client, Input, Options)
 %%
 %% To call this operation, you must sign in as an AWS Identity and Access
 %% Management (IAM) user, assume an IAM role, or sign in as the root user
-%% (not recommended) in the organization's master AWS account. For more
+%% (not recommended) in the organization's management account. For more
 %% information, see Aggregating AWS Health events in the AWS Health User
 %% Guide.
 %%
-%% This operation doesn't remove the service-linked role (SLR) from the AWS
-%% master account in your organization. You must use the IAM console, API, or
-%% AWS Command Line Interface (AWS CLI) to remove the SLR. For more
-%% information, see Deleting a Service-Linked Role in the IAM User Guide.
+%% This operation doesn't remove the service-linked role from the management
+%% account in your organization. You must use the IAM console, API, or AWS
+%% Command Line Interface (AWS CLI) to remove the service-linked role. For
+%% more information, see Deleting a Service-Linked Role in the IAM User
+%% Guide.
 %%
 %% You can also disable the organizational feature by using the Organizations
 %% DisableAWSServiceAccess API operation. After you call this operation, AWS
@@ -338,16 +363,29 @@ disable_health_service_access_for_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableHealthServiceAccessForOrganization">>, Input, Options).
 
-%% @doc Calling this operation enables AWS Health to work with AWS
-%% Organizations.
+%% @doc Enables AWS Health to work with AWS Organizations.
 %%
-%% This applies a service-linked role (SLR) to the master account in the
-%% organization. To call this operation, you must sign in as an IAM user,
-%% assume an IAM role, or sign in as the root user (not recommended) in the
-%% organization's master account.
+%% You can use the organizational view feature to aggregate events from all
+%% AWS accounts in your organization in a centralized location.
 %%
-%% For more information, see Aggregating AWS Health events in the AWS Health
-%% User Guide.
+%% This operation also creates a service-linked role for the management
+%% account in the organization.
+%%
+%% To call this operation, you must meet the following requirements:
+%%
+%% You must have a Business or Enterprise support plan from AWS Support to
+%% use the AWS Health API. If you call the AWS Health API from an AWS account
+%% that doesn't have a Business or Enterprise support plan, you receive a
+%% `SubscriptionRequiredException' error.
+%%
+%% You must have permission to call this operation from the organization's
+%% management account. For example IAM policies, see AWS Health
+%% identity-based policy examples.
+%%
+%% If you don't have the required support plan, you can instead use the AWS
+%% Health console to enable the organizational view feature. For more
+%% information, see Aggregating AWS Health events in the AWS Health User
+%% Guide.
 enable_health_service_access_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_health_service_access_for_organization(Client, Input, []).

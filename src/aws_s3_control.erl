@@ -225,14 +225,14 @@ create_bucket(Client, Bucket, Input0, Options) ->
         Result
     end.
 
-%% @doc S3 Batch Operations performs large-scale Batch Operations on Amazon
-%% S3 objects.
+%% @doc You can use S3 Batch Operations to perform large-scale batch
+%% operations on Amazon S3 objects.
 %%
-%% Batch Operations can run a single operation or action on lists of Amazon
-%% S3 objects that you specify. For more information, see S3 Batch Operations
-%% in the Amazon Simple Storage Service Developer Guide.
+%% Batch Operations can run a single operation on lists of Amazon S3 objects
+%% that you specify. For more information, see S3 Batch Operations in the
+%% Amazon Simple Storage Service Developer Guide.
 %%
-%% This operation creates an S3 Batch Operations job.
+%% This operation creates a S3 Batch Operations job.
 %%
 %% Related actions include:
 %%
@@ -243,6 +243,8 @@ create_bucket(Client, Bucket, Input0, Options) ->
 %% </li> <li> UpdateJobPriority
 %%
 %% </li> <li> UpdateJobStatus
+%%
+%% </li> <li> JobOperation
 %%
 %% </li> </ul>
 create_job(Client, Input) ->
@@ -590,8 +592,9 @@ delete_public_access_block(Client, Input0, Options) ->
 
 %% @doc Deletes the Amazon S3 Storage Lens configuration.
 %%
-%% For more information about S3 Storage Lens, see Working with Amazon S3
-%% Storage Lens in the Amazon Simple Storage Service Developer Guide.
+%% For more information about S3 Storage Lens, see Assessing your storage
+%% activity and usage with Amazon S3 Storage Lens in the Amazon Simple
+%% Storage Service Developer Guide.
 %%
 %% To use this action, you must have permission to perform the
 %% `s3:DeleteStorageLensConfiguration' action. For more information, see
@@ -616,8 +619,9 @@ delete_storage_lens_configuration(Client, ConfigId, Input0, Options) ->
 
 %% @doc Deletes the Amazon S3 Storage Lens configuration tags.
 %%
-%% For more information about S3 Storage Lens, see Working with Amazon S3
-%% Storage Lens in the Amazon Simple Storage Service Developer Guide.
+%% For more information about S3 Storage Lens, see Assessing your storage
+%% activity and usage with Amazon S3 Storage Lens in the Amazon Simple
+%% Storage Service Developer Guide.
 %%
 %% To use this action, you must have permission to perform the
 %% `s3:DeleteStorageLensConfigurationTagging' action. For more information,
@@ -1053,8 +1057,9 @@ get_public_access_block(Client, AccountId, Options)
 
 %% @doc Gets the Amazon S3 Storage Lens configuration.
 %%
-%% For more information, see Working with Amazon S3 Storage Lens in the
-%% Amazon Simple Storage Service Developer Guide.
+%% For more information, see Assessing your storage activity and usage with
+%% Amazon S3 Storage Lens in the Amazon Simple Storage Service Developer
+%% Guide.
 %%
 %% To use this action, you must have permission to perform the
 %% `s3:GetStorageLensConfiguration' action. For more information, see Setting
@@ -1080,8 +1085,9 @@ get_storage_lens_configuration(Client, ConfigId, AccountId, Options)
 
 %% @doc Gets the tags of Amazon S3 Storage Lens configuration.
 %%
-%% For more information about S3 Storage Lens, see Working with Amazon S3
-%% Storage Lens in the Amazon Simple Storage Service Developer Guide.
+%% For more information about S3 Storage Lens, see Assessing your storage
+%% activity and usage with Amazon S3 Storage Lens in the Amazon Simple
+%% Storage Service Developer Guide.
 %%
 %% To use this action, you must have permission to perform the
 %% `s3:GetStorageLensConfigurationTagging' action. For more information, see
@@ -1229,8 +1235,9 @@ list_regional_buckets(Client, MaxResults, NextToken, AccountId, OutpostId, Optio
 
 %% @doc Gets a list of Amazon S3 Storage Lens configurations.
 %%
-%% For more information about S3 Storage Lens, see Working with Amazon S3
-%% Storage Lens in the Amazon Simple Storage Service Developer Guide.
+%% For more information about S3 Storage Lens, see Assessing your storage
+%% activity and usage with Amazon S3 Storage Lens in the Amazon Simple
+%% Storage Service Developer Guide.
 %%
 %% To use this action, you must have permission to perform the
 %% `s3:ListStorageLensConfigurations' action. For more information, see
@@ -1604,8 +1611,9 @@ put_storage_lens_configuration(Client, ConfigId, Input0, Options) ->
 %% @doc Put or replace tags on an existing Amazon S3 Storage Lens
 %% configuration.
 %%
-%% For more information about S3 Storage Lens, see Working with Amazon S3
-%% Storage Lens in the Amazon Simple Storage Service Developer Guide.
+%% For more information about S3 Storage Lens, see Assessing your storage
+%% activity and usage with Amazon S3 Storage Lens in the Amazon Simple
+%% Storage Service Developer Guide.
 %%
 %% To use this action, you must have permission to perform the
 %% `s3:PutStorageLensConfigurationTagging' action. For more information, see

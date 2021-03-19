@@ -11,16 +11,22 @@
 %% customers.
 -module(aws_connectparticipant).
 
--export([create_participant_connection/2,
+-export([complete_attachment_upload/2,
+         complete_attachment_upload/3,
+         create_participant_connection/2,
          create_participant_connection/3,
          disconnect_participant/2,
          disconnect_participant/3,
+         get_attachment/2,
+         get_attachment/3,
          get_transcript/2,
          get_transcript/3,
          send_event/2,
          send_event/3,
          send_message/2,
-         send_message/3]).
+         send_message/3,
+         start_attachment_upload/2,
+         start_attachment_upload/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -28,13 +34,32 @@
 %% API
 %%====================================================================
 
+%% @doc Allows you to confirm that the attachment has been uploaded using the
+%% pre-signed URL provided in StartAttachmentUpload API.
+complete_attachment_upload(Client, Input) ->
+    complete_attachment_upload(Client, Input, []).
+complete_attachment_upload(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/participant/complete-attachment-upload"],
+    SuccessStatusCode = undefined,
+
+    HeadersMapping = [
+                       {<<"X-Amz-Bearer">>, <<"ConnectionToken">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates the participant's connection.
 %%
 %% Note that ParticipantToken is used for invoking this API instead of
 %% ConnectionToken.
 %%
 %% The participant token is valid for the lifetime of the participant – until
-%% the they are part of a contact.
+%% they are part of a contact.
 %%
 %% The response URL for `WEBSOCKET' Type has a connect expiry timeout of
 %% 100s. Clients must manually connect to the returned websocket URL and
@@ -48,6 +73,9 @@
 %% Upon websocket URL expiry, as specified in the response ConnectionExpiry
 %% parameter, clients need to call this API again to obtain a new websocket
 %% URL and perform the same steps as before.
+%%
+%% The Amazon Connect Participant Service APIs do not use Signature Version 4
+%% authentication.
 create_participant_connection(Client, Input) ->
     create_participant_connection(Client, Input, []).
 create_participant_connection(Client, Input0, Options) ->
@@ -69,6 +97,9 @@ create_participant_connection(Client, Input0, Options) ->
 %%
 %% Note that ConnectionToken is used for invoking this API instead of
 %% ParticipantToken.
+%%
+%% The Amazon Connect Participant Service APIs do not use Signature Version 4
+%% authentication.
 disconnect_participant(Client, Input) ->
     disconnect_participant(Client, Input, []).
 disconnect_participant(Client, Input0, Options) ->
@@ -86,10 +117,34 @@ disconnect_participant(Client, Input0, Options) ->
 
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves a transcript of the session.
+%% @doc Provides a pre-signed URL for download of a completed attachment.
+%%
+%% This is an asynchronous API for use with active contacts.
+get_attachment(Client, Input) ->
+    get_attachment(Client, Input, []).
+get_attachment(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/participant/attachment"],
+    SuccessStatusCode = undefined,
+
+    HeadersMapping = [
+                       {<<"X-Amz-Bearer">>, <<"ConnectionToken">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves a transcript of the session, including details about any
+%% attachments.
 %%
 %% Note that ConnectionToken is used for invoking this API instead of
 %% ParticipantToken.
+%%
+%% The Amazon Connect Participant Service APIs do not use Signature Version 4
+%% authentication.
 get_transcript(Client, Input) ->
     get_transcript(Client, Input, []).
 get_transcript(Client, Input0, Options) ->
@@ -111,6 +166,9 @@ get_transcript(Client, Input0, Options) ->
 %%
 %% Note that ConnectionToken is used for invoking this API instead of
 %% ParticipantToken.
+%%
+%% The Amazon Connect Participant Service APIs do not use Signature Version 4
+%% authentication.
 send_event(Client, Input) ->
     send_event(Client, Input, []).
 send_event(Client, Input0, Options) ->
@@ -132,11 +190,33 @@ send_event(Client, Input0, Options) ->
 %%
 %% Note that ConnectionToken is used for invoking this API instead of
 %% ParticipantToken.
+%%
+%% The Amazon Connect Participant Service APIs do not use Signature Version 4
+%% authentication.
 send_message(Client, Input) ->
     send_message(Client, Input, []).
 send_message(Client, Input0, Options) ->
     Method = post,
     Path = ["/participant/message"],
+    SuccessStatusCode = undefined,
+
+    HeadersMapping = [
+                       {<<"X-Amz-Bearer">>, <<"ConnectionToken">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Provides a pre-signed Amazon S3 URL in response for uploading the
+%% file directly to S3.
+start_attachment_upload(Client, Input) ->
+    start_attachment_upload(Client, Input, []).
+start_attachment_upload(Client, Input0, Options) ->
+    Method = post,
+    Path = ["/participant/start-attachment-upload"],
     SuccessStatusCode = undefined,
 
     HeadersMapping = [

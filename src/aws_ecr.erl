@@ -26,6 +26,8 @@
          create_repository/3,
          delete_lifecycle_policy/2,
          delete_lifecycle_policy/3,
+         delete_registry_policy/2,
+         delete_registry_policy/3,
          delete_repository/2,
          delete_repository/3,
          delete_repository_policy/2,
@@ -34,6 +36,8 @@
          describe_image_scan_findings/3,
          describe_images/2,
          describe_images/3,
+         describe_registry/2,
+         describe_registry/3,
          describe_repositories/2,
          describe_repositories/3,
          get_authorization_token/2,
@@ -44,6 +48,8 @@
          get_lifecycle_policy/3,
          get_lifecycle_policy_preview/2,
          get_lifecycle_policy_preview/3,
+         get_registry_policy/2,
+         get_registry_policy/3,
          get_repository_policy/2,
          get_repository_policy/3,
          initiate_layer_upload/2,
@@ -60,6 +66,10 @@
          put_image_tag_mutability/3,
          put_lifecycle_policy/2,
          put_lifecycle_policy/3,
+         put_registry_policy/2,
+         put_registry_policy/3,
+         put_replication_configuration/2,
+         put_replication_configuration/3,
          set_repository_policy/2,
          set_repository_policy/3,
          start_image_scan/2,
@@ -164,6 +174,14 @@ delete_lifecycle_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLifecyclePolicy">>, Input, Options).
 
+%% @doc Deletes the registry permissions policy.
+delete_registry_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_registry_policy(Client, Input, []).
+delete_registry_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteRegistryPolicy">>, Input, Options).
+
 %% @doc Deletes a repository.
 %%
 %% If the repository contains images, you must either delete all images in
@@ -205,6 +223,17 @@ describe_images(Client, Input)
 describe_images(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeImages">>, Input, Options).
+
+%% @doc Describes the settings for a registry.
+%%
+%% The replication configuration for a repository can be created or updated
+%% with the `PutReplicationConfiguration' API action.
+describe_registry(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_registry(Client, Input, []).
+describe_registry(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeRegistry">>, Input, Options).
 
 %% @doc Describes image repositories in a registry.
 describe_repositories(Client, Input)
@@ -266,6 +295,14 @@ get_lifecycle_policy_preview(Client, Input)
 get_lifecycle_policy_preview(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLifecyclePolicyPreview">>, Input, Options).
+
+%% @doc Retrieves the permissions policy for a registry.
+get_registry_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_registry_policy(Client, Input, []).
+get_registry_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetRegistryPolicy">>, Input, Options).
 
 %% @doc Retrieves the repository policy for the specified repository.
 get_repository_policy(Client, Input)
@@ -362,6 +399,39 @@ put_lifecycle_policy(Client, Input)
 put_lifecycle_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutLifecyclePolicy">>, Input, Options).
+
+%% @doc Creates or updates the permissions policy for your registry.
+%%
+%% A registry policy is used to specify permissions for another AWS account
+%% and is used when configuring cross-account replication. For more
+%% information, see Registry permissions in the Amazon Elastic Container
+%% Registry User Guide.
+put_registry_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_registry_policy(Client, Input, []).
+put_registry_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutRegistryPolicy">>, Input, Options).
+
+%% @doc Creates or updates the replication configuration for a registry.
+%%
+%% The existing replication configuration for a repository can be retrieved
+%% with the `DescribeRegistry' API action. The first time the
+%% PutReplicationConfiguration API is called, a service-linked IAM role is
+%% created in your account for the replication process. For more information,
+%% see Using Service-Linked Roles for Amazon ECR in the Amazon Elastic
+%% Container Registry User Guide.
+%%
+%% When configuring cross-account replication, the destination account must
+%% grant the source account permission to replicate. This permission is
+%% controlled using a registry permissions policy. For more information, see
+%% `PutRegistryPolicy'.
+put_replication_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_replication_configuration(Client, Input, []).
+put_replication_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutReplicationConfiguration">>, Input, Options).
 
 %% @doc Applies a repository policy to the specified repository to control
 %% access permissions.

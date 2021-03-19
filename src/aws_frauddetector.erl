@@ -214,8 +214,8 @@ delete_detector_version(Client, Input, Options)
 %% You cannot delete an entity type that is included in an event type.
 %%
 %% When you delete an entity type, Amazon Fraud Detector permanently deletes
-%% that entity type from the evaluation history, and the data is no longer
-%% stored in Amazon Fraud Detector.
+%% that entity type and the data is no longer stored in Amazon Fraud
+%% Detector.
 delete_entity_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_entity_type(Client, Input, []).
@@ -226,8 +226,7 @@ delete_entity_type(Client, Input, Options)
 %% @doc Deletes the specified event.
 %%
 %% When you delete an event, Amazon Fraud Detector permanently deletes that
-%% event from the evaluation history, and the event data is no longer stored
-%% in Amazon Fraud Detector.
+%% event and the event data is no longer stored in Amazon Fraud Detector.
 delete_event(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_event(Client, Input, []).
@@ -240,8 +239,8 @@ delete_event(Client, Input, Options)
 %% You cannot delete an event type that is used in a detector or a model.
 %%
 %% When you delete an entity type, Amazon Fraud Detector permanently deletes
-%% that entity type from the evaluation history, and the data is no longer
-%% stored in Amazon Fraud Detector.
+%% that entity type and the data is no longer stored in Amazon Fraud
+%% Detector.
 delete_event_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_event_type(Client, Input, []).
@@ -270,8 +269,7 @@ delete_external_model(Client, Input, Options)
 %% the relevant event ID.
 %%
 %% When you delete a label, Amazon Fraud Detector permanently deletes that
-%% label from the evaluation history, and the data is no longer stored in
-%% Amazon Fraud Detector.
+%% label and the data is no longer stored in Amazon Fraud Detector.
 delete_label(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_label(Client, Input, []).
@@ -285,8 +283,7 @@ delete_label(Client, Input, Options)
 %% provided that they are not associated with a detector version.
 %%
 %% When you delete a model, Amazon Fraud Detector permanently deletes that
-%% model from the evaluation history, and the data is no longer stored in
-%% Amazon Fraud Detector.
+%% model and the data is no longer stored in Amazon Fraud Detector.
 delete_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_model(Client, Input, []).
@@ -300,8 +297,8 @@ delete_model(Client, Input, Options)
 %% provided that they are not associated with a detector version.
 %%
 %% When you delete a model version, Amazon Fraud Detector permanently deletes
-%% that model version from the evaluation history, and the data is no longer
-%% stored in Amazon Fraud Detector.
+%% that model version and the data is no longer stored in Amazon Fraud
+%% Detector.
 delete_model_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_model_version(Client, Input, []).
@@ -314,8 +311,7 @@ delete_model_version(Client, Input, Options)
 %% You cannot delete an outcome that is used in a rule version.
 %%
 %% When you delete an outcome, Amazon Fraud Detector permanently deletes that
-%% outcome from the evaluation history, and the data is no longer stored in
-%% Amazon Fraud Detector.
+%% outcome and the data is no longer stored in Amazon Fraud Detector.
 delete_outcome(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_outcome(Client, Input, []).
@@ -329,8 +325,7 @@ delete_outcome(Client, Input, Options)
 %% detector version.
 %%
 %% When you delete a rule, Amazon Fraud Detector permanently deletes that
-%% rule from the evaluation history, and the data is no longer stored in
-%% Amazon Fraud Detector.
+%% rule and the data is no longer stored in Amazon Fraud Detector.
 delete_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_rule(Client, Input, []).
@@ -348,8 +343,7 @@ delete_rule(Client, Input, Options)
 %% delete these variables manually.
 %%
 %% When you delete a variable, Amazon Fraud Detector permanently deletes that
-%% variable from the evaluation history, and the data is no longer stored in
-%% Amazon Fraud Detector.
+%% variable and the data is no longer stored in Amazon Fraud Detector.
 delete_variable(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_variable(Client, Input, []).

@@ -6,7 +6,9 @@
 -module(aws_workmailmessageflow).
 
 -export([get_raw_message_content/2,
-         get_raw_message_content/3]).
+         get_raw_message_content/3,
+         put_raw_message_content/3,
+         put_raw_message_content/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -29,6 +31,33 @@ get_raw_message_content(Client, MessageId, Options)
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Updates the raw content of an in-transit email message, in MIME
+%% format.
+%%
+%% This example describes how to update in-transit email message. For more
+%% information and examples for using this API, see Updating message content
+%% with AWS Lambda.
+%%
+%% Updates to an in-transit message only appear when you call
+%% `PutRawMessageContent' from an AWS Lambda function configured with a
+%% synchronous Run Lambda rule. If you call `PutRawMessageContent' on a
+%% delivered or sent message, the message remains unchanged, even though
+%% GetRawMessageContent returns an updated message.
+put_raw_message_content(Client, MessageId, Input) ->
+    put_raw_message_content(Client, MessageId, Input, []).
+put_raw_message_content(Client, MessageId, Input0, Options) ->
+    Method = post,
+    Path = ["/messages/", aws_util:encode_uri(MessageId), ""],
+    SuccessStatusCode = undefined,
+
+    Headers = [],
+    Input1 = Input0,
+
+    Query_ = [],
+    Input = Input1,
+
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %%====================================================================
 %% Internal functions

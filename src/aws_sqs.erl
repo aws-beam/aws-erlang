@@ -118,7 +118,7 @@
 %% `&AttributeName.2=second'
 %%
 %% Cross-account permissions don't apply to this action. For more
-%% information, see Grant Cross-Account Permissions to a Role and a User Name
+%% information, see Grant cross-account permissions to a role and a user name
 %% in the Amazon Simple Queue Service Developer Guide.
 add_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -263,7 +263,7 @@ change_message_visibility_batch(Client, Input, Options)
 %% `&AttributeName.2=second'
 %%
 %% Cross-account permissions don't apply to this action. For more
-%% information, see Grant Cross-Account Permissions to a Role and a User Name
+%% information, see Grant cross-account permissions to a role and a user name
 %% in the Amazon Simple Queue Service Developer Guide.
 create_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -340,7 +340,7 @@ delete_message_batch(Client, Input, Options)
 %% a queue with the same name.
 %%
 %% Cross-account permissions don't apply to this action. For more
-%% information, see Grant Cross-Account Permissions to a Role and a User Name
+%% information, see Grant cross-account permissions to a role and a user name
 %% in the Amazon Simple Queue Service Developer Guide.
 delete_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -402,7 +402,7 @@ list_dead_letter_source_queues(Client, Input, Options)
 %% Queue Service Developer Guide.
 %%
 %% Cross-account permissions don't apply to this action. For more
-%% information, see Grant Cross-Account Permissions to a Role and a User Name
+%% information, see Grant cross-account permissions to a role and a user name
 %% in the Amazon Simple Queue Service Developer Guide.
 list_queue_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -426,7 +426,7 @@ list_queue_tags(Client, Input, Options)
 %% the next page of results.
 %%
 %% Cross-account permissions don't apply to this action. For more
-%% information, see Grant Cross-Account Permissions to a Role and a User Name
+%% information, see Grant cross-account permissions to a role and a user name
 %% in the Amazon Simple Queue Service Developer Guide.
 list_queues(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -518,7 +518,7 @@ receive_message(Client, Input, Options)
 %% Only the owner of a queue can remove permissions from it.
 %%
 %% Cross-account permissions don't apply to this action. For more
-%% information, see Grant Cross-Account Permissions to a Role and a User Name
+%% information, see Grant cross-account permissions to a role and a user name
 %% in the Amazon Simple Queue Service Developer Guide.
 %%
 %% To remove the ability to change queue permissions, you must deny
@@ -600,7 +600,7 @@ send_message_batch(Client, Input, Options)
 %% handle new attributes gracefully.
 %%
 %% Cross-account permissions don't apply to this action. For more
-%% information, see Grant Cross-Account Permissions to a Role and a User Name
+%% information, see Grant cross-account permissions to a role and a user name
 %% in the Amazon Simple Queue Service Developer Guide.
 %%
 %% To remove the ability to change queue permissions, you must deny
@@ -634,7 +634,7 @@ set_queue_attributes(Client, Input, Options)
 %% Queues in the Amazon Simple Queue Service Developer Guide.
 %%
 %% Cross-account permissions don't apply to this action. For more
-%% information, see Grant Cross-Account Permissions to a Role and a User Name
+%% information, see Grant cross-account permissions to a role and a user name
 %% in the Amazon Simple Queue Service Developer Guide.
 tag_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -649,7 +649,7 @@ tag_queue(Client, Input, Options)
 %% Queue Service Developer Guide.
 %%
 %% Cross-account permissions don't apply to this action. For more
-%% information, see Grant Cross-Account Permissions to a Role and a User Name
+%% information, see Grant cross-account permissions to a role and a user name
 %% in the Amazon Simple Queue Service Developer Guide.
 untag_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
