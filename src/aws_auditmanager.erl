@@ -71,49 +71,71 @@
          disassociate_assessment_report_evidence_folder/3,
          disassociate_assessment_report_evidence_folder/4,
          get_account_status/1,
-         get_account_status/2,
+         get_account_status/3,
+         get_account_status/4,
          get_assessment/2,
-         get_assessment/3,
+         get_assessment/4,
+         get_assessment/5,
          get_assessment_framework/2,
-         get_assessment_framework/3,
+         get_assessment_framework/4,
+         get_assessment_framework/5,
          get_assessment_report_url/3,
-         get_assessment_report_url/4,
-         get_change_logs/6,
-         get_change_logs/7,
+         get_assessment_report_url/5,
+         get_assessment_report_url/6,
+         get_change_logs/2,
+         get_change_logs/4,
+         get_change_logs/5,
          get_control/2,
-         get_control/3,
+         get_control/4,
+         get_control/5,
+         get_delegations/1,
          get_delegations/3,
          get_delegations/4,
          get_evidence/5,
-         get_evidence/6,
+         get_evidence/7,
+         get_evidence/8,
+         get_evidence_by_evidence_folder/4,
          get_evidence_by_evidence_folder/6,
          get_evidence_by_evidence_folder/7,
          get_evidence_folder/4,
-         get_evidence_folder/5,
+         get_evidence_folder/6,
+         get_evidence_folder/7,
+         get_evidence_folders_by_assessment/2,
          get_evidence_folders_by_assessment/4,
          get_evidence_folders_by_assessment/5,
+         get_evidence_folders_by_assessment_control/4,
          get_evidence_folders_by_assessment_control/6,
          get_evidence_folders_by_assessment_control/7,
          get_organization_admin_account/1,
-         get_organization_admin_account/2,
+         get_organization_admin_account/3,
+         get_organization_admin_account/4,
          get_services_in_scope/1,
-         get_services_in_scope/2,
+         get_services_in_scope/3,
+         get_services_in_scope/4,
          get_settings/2,
-         get_settings/3,
+         get_settings/4,
+         get_settings/5,
+         list_assessment_frameworks/2,
          list_assessment_frameworks/4,
          list_assessment_frameworks/5,
+         list_assessment_reports/1,
          list_assessment_reports/3,
          list_assessment_reports/4,
+         list_assessments/1,
          list_assessments/3,
          list_assessments/4,
+         list_controls/2,
          list_controls/4,
          list_controls/5,
+         list_keywords_for_data_source/2,
          list_keywords_for_data_source/4,
          list_keywords_for_data_source/5,
+         list_notifications/1,
          list_notifications/3,
          list_notifications/4,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          register_account/2,
          register_account/3,
          register_organization_admin_account/2,
@@ -428,9 +450,14 @@ disassociate_assessment_report_evidence_folder(Client, AssessmentId, Input0, Opt
 %% @doc Returns the registration status of an account in AWS Audit Manager.
 get_account_status(Client)
   when is_map(Client) ->
-    get_account_status(Client, []).
-get_account_status(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    get_account_status(Client, #{}, #{}).
+
+get_account_status(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_account_status(Client, QueryMap, HeadersMap, []).
+
+get_account_status(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/account/status"],
     SuccessStatusCode = undefined,
 
@@ -443,9 +470,14 @@ get_account_status(Client, Options)
 %% @doc Returns an assessment from AWS Audit Manager.
 get_assessment(Client, AssessmentId)
   when is_map(Client) ->
-    get_assessment(Client, AssessmentId, []).
-get_assessment(Client, AssessmentId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_assessment(Client, AssessmentId, #{}, #{}).
+
+get_assessment(Client, AssessmentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_assessment(Client, AssessmentId, QueryMap, HeadersMap, []).
+
+get_assessment(Client, AssessmentId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), ""],
     SuccessStatusCode = undefined,
 
@@ -458,9 +490,14 @@ get_assessment(Client, AssessmentId, Options)
 %% @doc Returns a framework from AWS Audit Manager.
 get_assessment_framework(Client, FrameworkId)
   when is_map(Client) ->
-    get_assessment_framework(Client, FrameworkId, []).
-get_assessment_framework(Client, FrameworkId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_assessment_framework(Client, FrameworkId, #{}, #{}).
+
+get_assessment_framework(Client, FrameworkId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_assessment_framework(Client, FrameworkId, QueryMap, HeadersMap, []).
+
+get_assessment_framework(Client, FrameworkId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/assessmentFrameworks/", aws_util:encode_uri(FrameworkId), ""],
     SuccessStatusCode = undefined,
 
@@ -474,9 +511,14 @@ get_assessment_framework(Client, FrameworkId, Options)
 %% Manager.
 get_assessment_report_url(Client, AssessmentId, AssessmentReportId)
   when is_map(Client) ->
-    get_assessment_report_url(Client, AssessmentId, AssessmentReportId, []).
-get_assessment_report_url(Client, AssessmentId, AssessmentReportId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_assessment_report_url(Client, AssessmentId, AssessmentReportId, #{}, #{}).
+
+get_assessment_report_url(Client, AssessmentId, AssessmentReportId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_assessment_report_url(Client, AssessmentId, AssessmentReportId, QueryMap, HeadersMap, []).
+
+get_assessment_report_url(Client, AssessmentId, AssessmentReportId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/reports/", aws_util:encode_uri(AssessmentReportId), "/url"],
     SuccessStatusCode = undefined,
 
@@ -487,11 +529,16 @@ get_assessment_report_url(Client, AssessmentId, AssessmentReportId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of changelogs from AWS Audit Manager.
-get_change_logs(Client, AssessmentId, ControlId, ControlSetId, MaxResults, NextToken)
+get_change_logs(Client, AssessmentId)
   when is_map(Client) ->
-    get_change_logs(Client, AssessmentId, ControlId, ControlSetId, MaxResults, NextToken, []).
-get_change_logs(Client, AssessmentId, ControlId, ControlSetId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_change_logs(Client, AssessmentId, #{}, #{}).
+
+get_change_logs(Client, AssessmentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_change_logs(Client, AssessmentId, QueryMap, HeadersMap, []).
+
+get_change_logs(Client, AssessmentId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/changelogs"],
     SuccessStatusCode = undefined,
 
@@ -499,10 +546,10 @@ get_change_logs(Client, AssessmentId, ControlId, ControlSetId, MaxResults, NextT
 
     Query0_ =
       [
-        {<<"controlId">>, ControlId},
-        {<<"controlSetId">>, ControlSetId},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"controlId">>, maps:get(<<"controlId">>, QueryMap, undefined)},
+        {<<"controlSetId">>, maps:get(<<"controlSetId">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -511,9 +558,14 @@ get_change_logs(Client, AssessmentId, ControlId, ControlSetId, MaxResults, NextT
 %% @doc Returns a control from AWS Audit Manager.
 get_control(Client, ControlId)
   when is_map(Client) ->
-    get_control(Client, ControlId, []).
-get_control(Client, ControlId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_control(Client, ControlId, #{}, #{}).
+
+get_control(Client, ControlId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_control(Client, ControlId, QueryMap, HeadersMap, []).
+
+get_control(Client, ControlId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/controls/", aws_util:encode_uri(ControlId), ""],
     SuccessStatusCode = undefined,
 
@@ -524,11 +576,16 @@ get_control(Client, ControlId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of delegations from an audit owner to a delegate.
-get_delegations(Client, MaxResults, NextToken)
+get_delegations(Client)
   when is_map(Client) ->
-    get_delegations(Client, MaxResults, NextToken, []).
-get_delegations(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_delegations(Client, #{}, #{}).
+
+get_delegations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_delegations(Client, QueryMap, HeadersMap, []).
+
+get_delegations(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/delegations"],
     SuccessStatusCode = undefined,
 
@@ -536,8 +593,8 @@ get_delegations(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -546,9 +603,14 @@ get_delegations(Client, MaxResults, NextToken, Options)
 %% @doc Returns evidence from AWS Audit Manager.
 get_evidence(Client, AssessmentId, ControlSetId, EvidenceFolderId, EvidenceId)
   when is_map(Client) ->
-    get_evidence(Client, AssessmentId, ControlSetId, EvidenceFolderId, EvidenceId, []).
-get_evidence(Client, AssessmentId, ControlSetId, EvidenceFolderId, EvidenceId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_evidence(Client, AssessmentId, ControlSetId, EvidenceFolderId, EvidenceId, #{}, #{}).
+
+get_evidence(Client, AssessmentId, ControlSetId, EvidenceFolderId, EvidenceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_evidence(Client, AssessmentId, ControlSetId, EvidenceFolderId, EvidenceId, QueryMap, HeadersMap, []).
+
+get_evidence(Client, AssessmentId, ControlSetId, EvidenceFolderId, EvidenceId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/controlSets/", aws_util:encode_uri(ControlSetId), "/evidenceFolders/", aws_util:encode_uri(EvidenceFolderId), "/evidence/", aws_util:encode_uri(EvidenceId), ""],
     SuccessStatusCode = undefined,
 
@@ -560,11 +622,16 @@ get_evidence(Client, AssessmentId, ControlSetId, EvidenceFolderId, EvidenceId, O
 
 %% @doc Returns all evidence from a specified evidence folder in AWS Audit
 %% Manager.
-get_evidence_by_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, MaxResults, NextToken)
+get_evidence_by_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId)
   when is_map(Client) ->
-    get_evidence_by_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, MaxResults, NextToken, []).
-get_evidence_by_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_evidence_by_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, #{}, #{}).
+
+get_evidence_by_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_evidence_by_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, QueryMap, HeadersMap, []).
+
+get_evidence_by_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/controlSets/", aws_util:encode_uri(ControlSetId), "/evidenceFolders/", aws_util:encode_uri(EvidenceFolderId), "/evidence"],
     SuccessStatusCode = undefined,
 
@@ -572,8 +639,8 @@ get_evidence_by_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFold
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -583,9 +650,14 @@ get_evidence_by_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFold
 %% Manager.
 get_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId)
   when is_map(Client) ->
-    get_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, []).
-get_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, #{}, #{}).
+
+get_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, QueryMap, HeadersMap, []).
+
+get_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/controlSets/", aws_util:encode_uri(ControlSetId), "/evidenceFolders/", aws_util:encode_uri(EvidenceFolderId), ""],
     SuccessStatusCode = undefined,
 
@@ -597,11 +669,16 @@ get_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, Option
 
 %% @doc Returns the evidence folders from a specified assessment in AWS Audit
 %% Manager.
-get_evidence_folders_by_assessment(Client, AssessmentId, MaxResults, NextToken)
+get_evidence_folders_by_assessment(Client, AssessmentId)
   when is_map(Client) ->
-    get_evidence_folders_by_assessment(Client, AssessmentId, MaxResults, NextToken, []).
-get_evidence_folders_by_assessment(Client, AssessmentId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_evidence_folders_by_assessment(Client, AssessmentId, #{}, #{}).
+
+get_evidence_folders_by_assessment(Client, AssessmentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_evidence_folders_by_assessment(Client, AssessmentId, QueryMap, HeadersMap, []).
+
+get_evidence_folders_by_assessment(Client, AssessmentId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/evidenceFolders"],
     SuccessStatusCode = undefined,
 
@@ -609,8 +686,8 @@ get_evidence_folders_by_assessment(Client, AssessmentId, MaxResults, NextToken, 
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -618,11 +695,16 @@ get_evidence_folders_by_assessment(Client, AssessmentId, MaxResults, NextToken, 
 
 %% @doc Returns a list of evidence folders associated with a specified
 %% control of an assessment in AWS Audit Manager.
-get_evidence_folders_by_assessment_control(Client, AssessmentId, ControlId, ControlSetId, MaxResults, NextToken)
+get_evidence_folders_by_assessment_control(Client, AssessmentId, ControlId, ControlSetId)
   when is_map(Client) ->
-    get_evidence_folders_by_assessment_control(Client, AssessmentId, ControlId, ControlSetId, MaxResults, NextToken, []).
-get_evidence_folders_by_assessment_control(Client, AssessmentId, ControlId, ControlSetId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_evidence_folders_by_assessment_control(Client, AssessmentId, ControlId, ControlSetId, #{}, #{}).
+
+get_evidence_folders_by_assessment_control(Client, AssessmentId, ControlId, ControlSetId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_evidence_folders_by_assessment_control(Client, AssessmentId, ControlId, ControlSetId, QueryMap, HeadersMap, []).
+
+get_evidence_folders_by_assessment_control(Client, AssessmentId, ControlId, ControlSetId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/evidenceFolders-by-assessment-control/", aws_util:encode_uri(ControlSetId), "/", aws_util:encode_uri(ControlId), ""],
     SuccessStatusCode = undefined,
 
@@ -630,8 +712,8 @@ get_evidence_folders_by_assessment_control(Client, AssessmentId, ControlId, Cont
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -641,9 +723,14 @@ get_evidence_folders_by_assessment_control(Client, AssessmentId, ControlId, Cont
 %% AWS organization.
 get_organization_admin_account(Client)
   when is_map(Client) ->
-    get_organization_admin_account(Client, []).
-get_organization_admin_account(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    get_organization_admin_account(Client, #{}, #{}).
+
+get_organization_admin_account(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_organization_admin_account(Client, QueryMap, HeadersMap, []).
+
+get_organization_admin_account(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/account/organizationAdminAccount"],
     SuccessStatusCode = undefined,
 
@@ -657,9 +744,14 @@ get_organization_admin_account(Client, Options)
 %% assessment.
 get_services_in_scope(Client)
   when is_map(Client) ->
-    get_services_in_scope(Client, []).
-get_services_in_scope(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    get_services_in_scope(Client, #{}, #{}).
+
+get_services_in_scope(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_services_in_scope(Client, QueryMap, HeadersMap, []).
+
+get_services_in_scope(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/services"],
     SuccessStatusCode = undefined,
 
@@ -672,9 +764,14 @@ get_services_in_scope(Client, Options)
 %% @doc Returns the settings for the specified AWS account.
 get_settings(Client, Attribute)
   when is_map(Client) ->
-    get_settings(Client, Attribute, []).
-get_settings(Client, Attribute, Options)
-  when is_map(Client), is_list(Options) ->
+    get_settings(Client, Attribute, #{}, #{}).
+
+get_settings(Client, Attribute, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_settings(Client, Attribute, QueryMap, HeadersMap, []).
+
+get_settings(Client, Attribute, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/settings/", aws_util:encode_uri(Attribute), ""],
     SuccessStatusCode = undefined,
 
@@ -686,11 +783,16 @@ get_settings(Client, Attribute, Options)
 
 %% @doc Returns a list of the frameworks available in the AWS Audit Manager
 %% framework library.
-list_assessment_frameworks(Client, FrameworkType, MaxResults, NextToken)
+list_assessment_frameworks(Client, FrameworkType)
   when is_map(Client) ->
-    list_assessment_frameworks(Client, FrameworkType, MaxResults, NextToken, []).
-list_assessment_frameworks(Client, FrameworkType, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_assessment_frameworks(Client, FrameworkType, #{}, #{}).
+
+list_assessment_frameworks(Client, FrameworkType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_assessment_frameworks(Client, FrameworkType, QueryMap, HeadersMap, []).
+
+list_assessment_frameworks(Client, FrameworkType, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/assessmentFrameworks"],
     SuccessStatusCode = undefined,
 
@@ -699,19 +801,24 @@ list_assessment_frameworks(Client, FrameworkType, MaxResults, NextToken, Options
     Query0_ =
       [
         {<<"frameworkType">>, FrameworkType},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of assessment reports created in AWS Audit Manager.
-list_assessment_reports(Client, MaxResults, NextToken)
+list_assessment_reports(Client)
   when is_map(Client) ->
-    list_assessment_reports(Client, MaxResults, NextToken, []).
-list_assessment_reports(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_assessment_reports(Client, #{}, #{}).
+
+list_assessment_reports(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_assessment_reports(Client, QueryMap, HeadersMap, []).
+
+list_assessment_reports(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/assessmentReports"],
     SuccessStatusCode = undefined,
 
@@ -719,8 +826,8 @@ list_assessment_reports(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -728,11 +835,16 @@ list_assessment_reports(Client, MaxResults, NextToken, Options)
 
 %% @doc Returns a list of current and past assessments from AWS Audit
 %% Manager.
-list_assessments(Client, MaxResults, NextToken)
+list_assessments(Client)
   when is_map(Client) ->
-    list_assessments(Client, MaxResults, NextToken, []).
-list_assessments(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_assessments(Client, #{}, #{}).
+
+list_assessments(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_assessments(Client, QueryMap, HeadersMap, []).
+
+list_assessments(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/assessments"],
     SuccessStatusCode = undefined,
 
@@ -740,19 +852,24 @@ list_assessments(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of controls from AWS Audit Manager.
-list_controls(Client, ControlType, MaxResults, NextToken)
+list_controls(Client, ControlType)
   when is_map(Client) ->
-    list_controls(Client, ControlType, MaxResults, NextToken, []).
-list_controls(Client, ControlType, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_controls(Client, ControlType, #{}, #{}).
+
+list_controls(Client, ControlType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_controls(Client, ControlType, QueryMap, HeadersMap, []).
+
+list_controls(Client, ControlType, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/controls"],
     SuccessStatusCode = undefined,
 
@@ -761,8 +878,8 @@ list_controls(Client, ControlType, MaxResults, NextToken, Options)
     Query0_ =
       [
         {<<"controlType">>, ControlType},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -770,11 +887,16 @@ list_controls(Client, ControlType, MaxResults, NextToken, Options)
 
 %% @doc Returns a list of keywords that pre-mapped to the specified control
 %% data source.
-list_keywords_for_data_source(Client, MaxResults, NextToken, Source)
+list_keywords_for_data_source(Client, Source)
   when is_map(Client) ->
-    list_keywords_for_data_source(Client, MaxResults, NextToken, Source, []).
-list_keywords_for_data_source(Client, MaxResults, NextToken, Source, Options)
-  when is_map(Client), is_list(Options) ->
+    list_keywords_for_data_source(Client, Source, #{}, #{}).
+
+list_keywords_for_data_source(Client, Source, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_keywords_for_data_source(Client, Source, QueryMap, HeadersMap, []).
+
+list_keywords_for_data_source(Client, Source, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/dataSourceKeywords"],
     SuccessStatusCode = undefined,
 
@@ -782,8 +904,8 @@ list_keywords_for_data_source(Client, MaxResults, NextToken, Source, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"source">>, Source}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
@@ -791,11 +913,16 @@ list_keywords_for_data_source(Client, MaxResults, NextToken, Source, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all AWS Audit Manager notifications.
-list_notifications(Client, MaxResults, NextToken)
+list_notifications(Client)
   when is_map(Client) ->
-    list_notifications(Client, MaxResults, NextToken, []).
-list_notifications(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_notifications(Client, #{}, #{}).
+
+list_notifications(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_notifications(Client, QueryMap, HeadersMap, []).
+
+list_notifications(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/notifications"],
     SuccessStatusCode = undefined,
 
@@ -803,8 +930,8 @@ list_notifications(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -814,9 +941,14 @@ list_notifications(Client, MaxResults, NextToken, Options)
 %% Manager.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 

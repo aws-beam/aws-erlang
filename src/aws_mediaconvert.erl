@@ -27,23 +27,32 @@
          disassociate_certificate/3,
          disassociate_certificate/4,
          get_job/2,
-         get_job/3,
+         get_job/4,
+         get_job/5,
          get_job_template/2,
-         get_job_template/3,
+         get_job_template/4,
+         get_job_template/5,
          get_preset/2,
-         get_preset/3,
+         get_preset/4,
+         get_preset/5,
          get_queue/2,
-         get_queue/3,
-         list_job_templates/6,
-         list_job_templates/7,
-         list_jobs/6,
-         list_jobs/7,
-         list_presets/6,
-         list_presets/7,
-         list_queues/5,
-         list_queues/6,
+         get_queue/4,
+         get_queue/5,
+         list_job_templates/1,
+         list_job_templates/3,
+         list_job_templates/4,
+         list_jobs/1,
+         list_jobs/3,
+         list_jobs/4,
+         list_presets/1,
+         list_presets/3,
+         list_presets/4,
+         list_queues/1,
+         list_queues/3,
+         list_queues/4,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          tag_resource/2,
          tag_resource/3,
          untag_resource/3,
@@ -258,9 +267,14 @@ disassociate_certificate(Client, Arn, Input0, Options) ->
 %% @doc Retrieve the JSON for a specific completed transcoding job.
 get_job(Client, Id)
   when is_map(Client) ->
-    get_job(Client, Id, []).
-get_job(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    get_job(Client, Id, #{}, #{}).
+
+get_job(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_job(Client, Id, QueryMap, HeadersMap, []).
+
+get_job(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2017-08-29/jobs/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
@@ -273,9 +287,14 @@ get_job(Client, Id, Options)
 %% @doc Retrieve the JSON for a specific job template.
 get_job_template(Client, Name)
   when is_map(Client) ->
-    get_job_template(Client, Name, []).
-get_job_template(Client, Name, Options)
-  when is_map(Client), is_list(Options) ->
+    get_job_template(Client, Name, #{}, #{}).
+
+get_job_template(Client, Name, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_job_template(Client, Name, QueryMap, HeadersMap, []).
+
+get_job_template(Client, Name, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2017-08-29/jobTemplates/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
 
@@ -288,9 +307,14 @@ get_job_template(Client, Name, Options)
 %% @doc Retrieve the JSON for a specific preset.
 get_preset(Client, Name)
   when is_map(Client) ->
-    get_preset(Client, Name, []).
-get_preset(Client, Name, Options)
-  when is_map(Client), is_list(Options) ->
+    get_preset(Client, Name, #{}, #{}).
+
+get_preset(Client, Name, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_preset(Client, Name, QueryMap, HeadersMap, []).
+
+get_preset(Client, Name, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2017-08-29/presets/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
 
@@ -303,9 +327,14 @@ get_preset(Client, Name, Options)
 %% @doc Retrieve the JSON for a specific queue.
 get_queue(Client, Name)
   when is_map(Client) ->
-    get_queue(Client, Name, []).
-get_queue(Client, Name, Options)
-  when is_map(Client), is_list(Options) ->
+    get_queue(Client, Name, #{}, #{}).
+
+get_queue(Client, Name, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_queue(Client, Name, QueryMap, HeadersMap, []).
+
+get_queue(Client, Name, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2017-08-29/queues/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
 
@@ -320,11 +349,16 @@ get_queue(Client, Name, Options)
 %% This will return the templates themselves, not just a list of them. To
 %% retrieve the next twenty templates, use the nextToken string returned with
 %% the array
-list_job_templates(Client, Category, ListBy, MaxResults, NextToken, Order)
+list_job_templates(Client)
   when is_map(Client) ->
-    list_job_templates(Client, Category, ListBy, MaxResults, NextToken, Order, []).
-list_job_templates(Client, Category, ListBy, MaxResults, NextToken, Order, Options)
-  when is_map(Client), is_list(Options) ->
+    list_job_templates(Client, #{}, #{}).
+
+list_job_templates(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_job_templates(Client, QueryMap, HeadersMap, []).
+
+list_job_templates(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2017-08-29/jobTemplates"],
     SuccessStatusCode = 200,
 
@@ -332,11 +366,11 @@ list_job_templates(Client, Category, ListBy, MaxResults, NextToken, Order, Optio
 
     Query0_ =
       [
-        {<<"category">>, Category},
-        {<<"listBy">>, ListBy},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"order">>, Order}
+        {<<"category">>, maps:get(<<"category">>, QueryMap, undefined)},
+        {<<"listBy">>, maps:get(<<"listBy">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"order">>, maps:get(<<"order">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -349,11 +383,16 @@ list_job_templates(Client, Category, ListBy, MaxResults, NextToken, Order, Optio
 %% return the jobs themselves, not just a list of the jobs. To retrieve the
 %% twenty next most recent jobs, use the nextToken string returned with the
 %% array.
-list_jobs(Client, MaxResults, NextToken, Order, Queue, Status)
+list_jobs(Client)
   when is_map(Client) ->
-    list_jobs(Client, MaxResults, NextToken, Order, Queue, Status, []).
-list_jobs(Client, MaxResults, NextToken, Order, Queue, Status, Options)
-  when is_map(Client), is_list(Options) ->
+    list_jobs(Client, #{}, #{}).
+
+list_jobs(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_jobs(Client, QueryMap, HeadersMap, []).
+
+list_jobs(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2017-08-29/jobs"],
     SuccessStatusCode = 200,
 
@@ -361,11 +400,11 @@ list_jobs(Client, MaxResults, NextToken, Order, Queue, Status, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"order">>, Order},
-        {<<"queue">>, Queue},
-        {<<"status">>, Status}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"order">>, maps:get(<<"order">>, QueryMap, undefined)},
+        {<<"queue">>, maps:get(<<"queue">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -376,11 +415,16 @@ list_jobs(Client, MaxResults, NextToken, Order, Queue, Status, Options)
 %% This will return the presets themselves, not just a list of them. To
 %% retrieve the next twenty presets, use the nextToken string returned with
 %% the array.
-list_presets(Client, Category, ListBy, MaxResults, NextToken, Order)
+list_presets(Client)
   when is_map(Client) ->
-    list_presets(Client, Category, ListBy, MaxResults, NextToken, Order, []).
-list_presets(Client, Category, ListBy, MaxResults, NextToken, Order, Options)
-  when is_map(Client), is_list(Options) ->
+    list_presets(Client, #{}, #{}).
+
+list_presets(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_presets(Client, QueryMap, HeadersMap, []).
+
+list_presets(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2017-08-29/presets"],
     SuccessStatusCode = 200,
 
@@ -388,11 +432,11 @@ list_presets(Client, Category, ListBy, MaxResults, NextToken, Order, Options)
 
     Query0_ =
       [
-        {<<"category">>, Category},
-        {<<"listBy">>, ListBy},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"order">>, Order}
+        {<<"category">>, maps:get(<<"category">>, QueryMap, undefined)},
+        {<<"listBy">>, maps:get(<<"listBy">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"order">>, maps:get(<<"order">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -403,11 +447,16 @@ list_presets(Client, Category, ListBy, MaxResults, NextToken, Order, Options)
 %% This will return the queues themselves, not just a list of them. To
 %% retrieve the next twenty queues, use the nextToken string returned with
 %% the array.
-list_queues(Client, ListBy, MaxResults, NextToken, Order)
+list_queues(Client)
   when is_map(Client) ->
-    list_queues(Client, ListBy, MaxResults, NextToken, Order, []).
-list_queues(Client, ListBy, MaxResults, NextToken, Order, Options)
-  when is_map(Client), is_list(Options) ->
+    list_queues(Client, #{}, #{}).
+
+list_queues(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_queues(Client, QueryMap, HeadersMap, []).
+
+list_queues(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2017-08-29/queues"],
     SuccessStatusCode = 200,
 
@@ -415,10 +464,10 @@ list_queues(Client, ListBy, MaxResults, NextToken, Order, Options)
 
     Query0_ =
       [
-        {<<"listBy">>, ListBy},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"order">>, Order}
+        {<<"listBy">>, maps:get(<<"listBy">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"order">>, maps:get(<<"order">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -427,9 +476,14 @@ list_queues(Client, ListBy, MaxResults, NextToken, Order, Options)
 %% @doc Retrieve the tags for a MediaConvert resource.
 list_tags_for_resource(Client, Arn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, Arn, []).
-list_tags_for_resource(Client, Arn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, Arn, #{}, #{}).
+
+list_tags_for_resource(Client, Arn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2017-08-29/tags/", aws_util:encode_uri(Arn), ""],
     SuccessStatusCode = 200,
 

@@ -17,33 +17,47 @@
          delete_configuration/3,
          delete_configuration/4,
          describe_cluster/2,
-         describe_cluster/3,
+         describe_cluster/4,
+         describe_cluster/5,
          describe_cluster_operation/2,
-         describe_cluster_operation/3,
+         describe_cluster_operation/4,
+         describe_cluster_operation/5,
          describe_configuration/2,
-         describe_configuration/3,
+         describe_configuration/4,
+         describe_configuration/5,
          describe_configuration_revision/3,
-         describe_configuration_revision/4,
+         describe_configuration_revision/5,
+         describe_configuration_revision/6,
          get_bootstrap_brokers/2,
-         get_bootstrap_brokers/3,
-         get_compatible_kafka_versions/2,
+         get_bootstrap_brokers/4,
+         get_bootstrap_brokers/5,
+         get_compatible_kafka_versions/1,
          get_compatible_kafka_versions/3,
+         get_compatible_kafka_versions/4,
+         list_cluster_operations/2,
          list_cluster_operations/4,
          list_cluster_operations/5,
+         list_clusters/1,
+         list_clusters/3,
          list_clusters/4,
-         list_clusters/5,
+         list_configuration_revisions/2,
          list_configuration_revisions/4,
          list_configuration_revisions/5,
+         list_configurations/1,
          list_configurations/3,
          list_configurations/4,
+         list_kafka_versions/1,
          list_kafka_versions/3,
          list_kafka_versions/4,
+         list_nodes/2,
          list_nodes/4,
          list_nodes/5,
+         list_scram_secrets/2,
          list_scram_secrets/4,
          list_scram_secrets/5,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          reboot_broker/3,
          reboot_broker/4,
          tag_resource/3,
@@ -175,9 +189,14 @@ delete_configuration(Client, Arn, Input0, Options) ->
 %% (ARN) is specified in the request.
 describe_cluster(Client, ClusterArn)
   when is_map(Client) ->
-    describe_cluster(Client, ClusterArn, []).
-describe_cluster(Client, ClusterArn, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_cluster(Client, ClusterArn, #{}, #{}).
+
+describe_cluster(Client, ClusterArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_cluster(Client, ClusterArn, QueryMap, HeadersMap, []).
+
+describe_cluster(Client, ClusterArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), ""],
     SuccessStatusCode = 200,
 
@@ -190,9 +209,14 @@ describe_cluster(Client, ClusterArn, Options)
 %% @doc Returns a description of the cluster operation specified by the ARN.
 describe_cluster_operation(Client, ClusterOperationArn)
   when is_map(Client) ->
-    describe_cluster_operation(Client, ClusterOperationArn, []).
-describe_cluster_operation(Client, ClusterOperationArn, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_cluster_operation(Client, ClusterOperationArn, #{}, #{}).
+
+describe_cluster_operation(Client, ClusterOperationArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_cluster_operation(Client, ClusterOperationArn, QueryMap, HeadersMap, []).
+
+describe_cluster_operation(Client, ClusterOperationArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/operations/", aws_util:encode_uri(ClusterOperationArn), ""],
     SuccessStatusCode = 200,
 
@@ -205,9 +229,14 @@ describe_cluster_operation(Client, ClusterOperationArn, Options)
 %% @doc Returns a description of this MSK configuration.
 describe_configuration(Client, Arn)
   when is_map(Client) ->
-    describe_configuration(Client, Arn, []).
-describe_configuration(Client, Arn, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_configuration(Client, Arn, #{}, #{}).
+
+describe_configuration(Client, Arn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_configuration(Client, Arn, QueryMap, HeadersMap, []).
+
+describe_configuration(Client, Arn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/configurations/", aws_util:encode_uri(Arn), ""],
     SuccessStatusCode = 200,
 
@@ -220,9 +249,14 @@ describe_configuration(Client, Arn, Options)
 %% @doc Returns a description of this revision of the configuration.
 describe_configuration_revision(Client, Arn, Revision)
   when is_map(Client) ->
-    describe_configuration_revision(Client, Arn, Revision, []).
-describe_configuration_revision(Client, Arn, Revision, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_configuration_revision(Client, Arn, Revision, #{}, #{}).
+
+describe_configuration_revision(Client, Arn, Revision, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_configuration_revision(Client, Arn, Revision, QueryMap, HeadersMap, []).
+
+describe_configuration_revision(Client, Arn, Revision, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/configurations/", aws_util:encode_uri(Arn), "/revisions/", aws_util:encode_uri(Revision), ""],
     SuccessStatusCode = 200,
 
@@ -235,9 +269,14 @@ describe_configuration_revision(Client, Arn, Revision, Options)
 %% @doc A list of brokers that a client application can use to bootstrap.
 get_bootstrap_brokers(Client, ClusterArn)
   when is_map(Client) ->
-    get_bootstrap_brokers(Client, ClusterArn, []).
-get_bootstrap_brokers(Client, ClusterArn, Options)
-  when is_map(Client), is_list(Options) ->
+    get_bootstrap_brokers(Client, ClusterArn, #{}, #{}).
+
+get_bootstrap_brokers(Client, ClusterArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_bootstrap_brokers(Client, ClusterArn, QueryMap, HeadersMap, []).
+
+get_bootstrap_brokers(Client, ClusterArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/bootstrap-brokers"],
     SuccessStatusCode = 200,
 
@@ -249,11 +288,16 @@ get_bootstrap_brokers(Client, ClusterArn, Options)
 
 %% @doc Gets the Apache Kafka versions to which you can update the MSK
 %% cluster.
-get_compatible_kafka_versions(Client, ClusterArn)
+get_compatible_kafka_versions(Client)
   when is_map(Client) ->
-    get_compatible_kafka_versions(Client, ClusterArn, []).
-get_compatible_kafka_versions(Client, ClusterArn, Options)
-  when is_map(Client), is_list(Options) ->
+    get_compatible_kafka_versions(Client, #{}, #{}).
+
+get_compatible_kafka_versions(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_compatible_kafka_versions(Client, QueryMap, HeadersMap, []).
+
+get_compatible_kafka_versions(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/compatible-kafka-versions"],
     SuccessStatusCode = 200,
 
@@ -261,7 +305,7 @@ get_compatible_kafka_versions(Client, ClusterArn, Options)
 
     Query0_ =
       [
-        {<<"clusterArn">>, ClusterArn}
+        {<<"clusterArn">>, maps:get(<<"clusterArn">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -269,11 +313,16 @@ get_compatible_kafka_versions(Client, ClusterArn, Options)
 
 %% @doc Returns a list of all the operations that have been performed on the
 %% specified MSK cluster.
-list_cluster_operations(Client, ClusterArn, MaxResults, NextToken)
+list_cluster_operations(Client, ClusterArn)
   when is_map(Client) ->
-    list_cluster_operations(Client, ClusterArn, MaxResults, NextToken, []).
-list_cluster_operations(Client, ClusterArn, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_cluster_operations(Client, ClusterArn, #{}, #{}).
+
+list_cluster_operations(Client, ClusterArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_cluster_operations(Client, ClusterArn, QueryMap, HeadersMap, []).
+
+list_cluster_operations(Client, ClusterArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/operations"],
     SuccessStatusCode = 200,
 
@@ -281,19 +330,24 @@ list_cluster_operations(Client, ClusterArn, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all the MSK clusters in the current Region.
-list_clusters(Client, ClusterNameFilter, MaxResults, NextToken)
+list_clusters(Client)
   when is_map(Client) ->
-    list_clusters(Client, ClusterNameFilter, MaxResults, NextToken, []).
-list_clusters(Client, ClusterNameFilter, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_clusters(Client, #{}, #{}).
+
+list_clusters(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_clusters(Client, QueryMap, HeadersMap, []).
+
+list_clusters(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/clusters"],
     SuccessStatusCode = 200,
 
@@ -301,20 +355,25 @@ list_clusters(Client, ClusterNameFilter, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"clusterNameFilter">>, ClusterNameFilter},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"clusterNameFilter">>, maps:get(<<"clusterNameFilter">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all the revisions of an MSK configuration.
-list_configuration_revisions(Client, Arn, MaxResults, NextToken)
+list_configuration_revisions(Client, Arn)
   when is_map(Client) ->
-    list_configuration_revisions(Client, Arn, MaxResults, NextToken, []).
-list_configuration_revisions(Client, Arn, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_configuration_revisions(Client, Arn, #{}, #{}).
+
+list_configuration_revisions(Client, Arn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_configuration_revisions(Client, Arn, QueryMap, HeadersMap, []).
+
+list_configuration_revisions(Client, Arn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/configurations/", aws_util:encode_uri(Arn), "/revisions"],
     SuccessStatusCode = 200,
 
@@ -322,19 +381,24 @@ list_configuration_revisions(Client, Arn, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all the MSK configurations in this Region.
-list_configurations(Client, MaxResults, NextToken)
+list_configurations(Client)
   when is_map(Client) ->
-    list_configurations(Client, MaxResults, NextToken, []).
-list_configurations(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_configurations(Client, #{}, #{}).
+
+list_configurations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_configurations(Client, QueryMap, HeadersMap, []).
+
+list_configurations(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/configurations"],
     SuccessStatusCode = 200,
 
@@ -342,19 +406,24 @@ list_configurations(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of Kafka versions.
-list_kafka_versions(Client, MaxResults, NextToken)
+list_kafka_versions(Client)
   when is_map(Client) ->
-    list_kafka_versions(Client, MaxResults, NextToken, []).
-list_kafka_versions(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_kafka_versions(Client, #{}, #{}).
+
+list_kafka_versions(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_kafka_versions(Client, QueryMap, HeadersMap, []).
+
+list_kafka_versions(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/kafka-versions"],
     SuccessStatusCode = 200,
 
@@ -362,19 +431,24 @@ list_kafka_versions(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of the broker nodes in the cluster.
-list_nodes(Client, ClusterArn, MaxResults, NextToken)
+list_nodes(Client, ClusterArn)
   when is_map(Client) ->
-    list_nodes(Client, ClusterArn, MaxResults, NextToken, []).
-list_nodes(Client, ClusterArn, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_nodes(Client, ClusterArn, #{}, #{}).
+
+list_nodes(Client, ClusterArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_nodes(Client, ClusterArn, QueryMap, HeadersMap, []).
+
+list_nodes(Client, ClusterArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/nodes"],
     SuccessStatusCode = 200,
 
@@ -382,8 +456,8 @@ list_nodes(Client, ClusterArn, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -391,11 +465,16 @@ list_nodes(Client, ClusterArn, MaxResults, NextToken, Options)
 
 %% @doc Returns a list of the Scram Secrets associated with an Amazon MSK
 %% cluster.
-list_scram_secrets(Client, ClusterArn, MaxResults, NextToken)
+list_scram_secrets(Client, ClusterArn)
   when is_map(Client) ->
-    list_scram_secrets(Client, ClusterArn, MaxResults, NextToken, []).
-list_scram_secrets(Client, ClusterArn, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_scram_secrets(Client, ClusterArn, #{}, #{}).
+
+list_scram_secrets(Client, ClusterArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_scram_secrets(Client, ClusterArn, QueryMap, HeadersMap, []).
+
+list_scram_secrets(Client, ClusterArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/scram-secrets"],
     SuccessStatusCode = 200,
 
@@ -403,8 +482,8 @@ list_scram_secrets(Client, ClusterArn, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -413,9 +492,14 @@ list_scram_secrets(Client, ClusterArn, MaxResults, NextToken, Options)
 %% @doc Returns a list of the tags associated with the specified resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 

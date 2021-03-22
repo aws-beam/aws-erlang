@@ -12,21 +12,26 @@
 -export([claim_devices_by_claim_code/3,
          claim_devices_by_claim_code/4,
          describe_device/2,
-         describe_device/3,
+         describe_device/4,
+         describe_device/5,
          finalize_device_claim/3,
          finalize_device_claim/4,
          get_device_methods/2,
-         get_device_methods/3,
+         get_device_methods/4,
+         get_device_methods/5,
          initiate_device_claim/3,
          initiate_device_claim/4,
          invoke_device_method/3,
          invoke_device_method/4,
+         list_device_events/4,
          list_device_events/6,
          list_device_events/7,
+         list_devices/1,
+         list_devices/3,
          list_devices/4,
-         list_devices/5,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          tag_resource/3,
          tag_resource/4,
          unclaim_device/3,
@@ -65,9 +70,14 @@ claim_devices_by_claim_code(Client, ClaimCode, Input0, Options) ->
 %% details of the device.
 describe_device(Client, DeviceId)
   when is_map(Client) ->
-    describe_device(Client, DeviceId, []).
-describe_device(Client, DeviceId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_device(Client, DeviceId, #{}, #{}).
+
+describe_device(Client, DeviceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_device(Client, DeviceId, QueryMap, HeadersMap, []).
+
+describe_device(Client, DeviceId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/devices/", aws_util:encode_uri(DeviceId), ""],
     SuccessStatusCode = 200,
 
@@ -103,9 +113,14 @@ finalize_device_claim(Client, DeviceId, Input0, Options) ->
 %% device.
 get_device_methods(Client, DeviceId)
   when is_map(Client) ->
-    get_device_methods(Client, DeviceId, []).
-get_device_methods(Client, DeviceId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_device_methods(Client, DeviceId, #{}, #{}).
+
+get_device_methods(Client, DeviceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_device_methods(Client, DeviceId, QueryMap, HeadersMap, []).
+
+get_device_methods(Client, DeviceId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/devices/", aws_util:encode_uri(DeviceId), "/methods"],
     SuccessStatusCode = 200,
 
@@ -160,11 +175,16 @@ invoke_device_method(Client, DeviceId, Input0, Options) ->
 %% @doc Using a device ID, returns a DeviceEventsResponse object containing
 %% an
 %% array of events for the device.
-list_device_events(Client, DeviceId, FromTimeStamp, MaxResults, NextToken, ToTimeStamp)
+list_device_events(Client, DeviceId, FromTimeStamp, ToTimeStamp)
   when is_map(Client) ->
-    list_device_events(Client, DeviceId, FromTimeStamp, MaxResults, NextToken, ToTimeStamp, []).
-list_device_events(Client, DeviceId, FromTimeStamp, MaxResults, NextToken, ToTimeStamp, Options)
-  when is_map(Client), is_list(Options) ->
+    list_device_events(Client, DeviceId, FromTimeStamp, ToTimeStamp, #{}, #{}).
+
+list_device_events(Client, DeviceId, FromTimeStamp, ToTimeStamp, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_device_events(Client, DeviceId, FromTimeStamp, ToTimeStamp, QueryMap, HeadersMap, []).
+
+list_device_events(Client, DeviceId, FromTimeStamp, ToTimeStamp, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/devices/", aws_util:encode_uri(DeviceId), "/events"],
     SuccessStatusCode = 200,
 
@@ -173,8 +193,8 @@ list_device_events(Client, DeviceId, FromTimeStamp, MaxResults, NextToken, ToTim
     Query0_ =
       [
         {<<"fromTimeStamp">>, FromTimeStamp},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"toTimeStamp">>, ToTimeStamp}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
@@ -183,11 +203,16 @@ list_device_events(Client, DeviceId, FromTimeStamp, MaxResults, NextToken, ToTim
 
 %% @doc Lists the 1-Click compatible devices associated with your AWS
 %% account.
-list_devices(Client, DeviceType, MaxResults, NextToken)
+list_devices(Client)
   when is_map(Client) ->
-    list_devices(Client, DeviceType, MaxResults, NextToken, []).
-list_devices(Client, DeviceType, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_devices(Client, #{}, #{}).
+
+list_devices(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_devices(Client, QueryMap, HeadersMap, []).
+
+list_devices(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/devices"],
     SuccessStatusCode = 200,
 
@@ -195,9 +220,9 @@ list_devices(Client, DeviceType, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"deviceType">>, DeviceType},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"deviceType">>, maps:get(<<"deviceType">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -206,9 +231,14 @@ list_devices(Client, DeviceType, MaxResults, NextToken, Options)
 %% @doc Lists the tags associated with the specified resource ARN.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 

@@ -17,15 +17,18 @@
          batch_upsert_table_rows/4,
          batch_upsert_table_rows/5,
          describe_table_data_import_job/4,
-         describe_table_data_import_job/5,
+         describe_table_data_import_job/6,
+         describe_table_data_import_job/7,
          get_screen_data/2,
          get_screen_data/3,
          invoke_screen_automation/6,
          invoke_screen_automation/7,
-         list_table_columns/4,
+         list_table_columns/3,
          list_table_columns/5,
+         list_table_columns/6,
          list_table_rows/4,
          list_table_rows/5,
+         list_tables/2,
          list_tables/4,
          list_tables/5,
          query_table_rows/4,
@@ -143,9 +146,14 @@ batch_upsert_table_rows(Client, TableId, WorkbookId, Input0, Options) ->
 %% and details of a table data import job.
 describe_table_data_import_job(Client, JobId, TableId, WorkbookId)
   when is_map(Client) ->
-    describe_table_data_import_job(Client, JobId, TableId, WorkbookId, []).
-describe_table_data_import_job(Client, JobId, TableId, WorkbookId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_table_data_import_job(Client, JobId, TableId, WorkbookId, #{}, #{}).
+
+describe_table_data_import_job(Client, JobId, TableId, WorkbookId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_table_data_import_job(Client, JobId, TableId, WorkbookId, QueryMap, HeadersMap, []).
+
+describe_table_data_import_job(Client, JobId, TableId, WorkbookId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables/", aws_util:encode_uri(TableId), "/import/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = undefined,
 
@@ -198,11 +206,16 @@ invoke_screen_automation(Client, AppId, ScreenAutomationId, ScreenId, WorkbookId
 
 %% @doc The ListTableColumns API allows you to retrieve a list of all the
 %% columns in a table in a workbook.
-list_table_columns(Client, TableId, WorkbookId, NextToken)
+list_table_columns(Client, TableId, WorkbookId)
   when is_map(Client) ->
-    list_table_columns(Client, TableId, WorkbookId, NextToken, []).
-list_table_columns(Client, TableId, WorkbookId, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_table_columns(Client, TableId, WorkbookId, #{}, #{}).
+
+list_table_columns(Client, TableId, WorkbookId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_table_columns(Client, TableId, WorkbookId, QueryMap, HeadersMap, []).
+
+list_table_columns(Client, TableId, WorkbookId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables/", aws_util:encode_uri(TableId), "/columns"],
     SuccessStatusCode = undefined,
 
@@ -210,7 +223,7 @@ list_table_columns(Client, TableId, WorkbookId, NextToken, Options)
 
     Query0_ =
       [
-        {<<"nextToken">>, NextToken}
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -235,11 +248,16 @@ list_table_rows(Client, TableId, WorkbookId, Input0, Options) ->
 
 %% @doc The ListTables API allows you to retrieve a list of all the tables in
 %% a workbook.
-list_tables(Client, WorkbookId, MaxResults, NextToken)
+list_tables(Client, WorkbookId)
   when is_map(Client) ->
-    list_tables(Client, WorkbookId, MaxResults, NextToken, []).
-list_tables(Client, WorkbookId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tables(Client, WorkbookId, #{}, #{}).
+
+list_tables(Client, WorkbookId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tables(Client, WorkbookId, QueryMap, HeadersMap, []).
+
+list_tables(Client, WorkbookId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables"],
     SuccessStatusCode = undefined,
 
@@ -247,8 +265,8 @@ list_tables(Client, WorkbookId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

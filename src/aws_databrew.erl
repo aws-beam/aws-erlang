@@ -34,33 +34,47 @@
          delete_schedule/3,
          delete_schedule/4,
          describe_dataset/2,
-         describe_dataset/3,
+         describe_dataset/4,
+         describe_dataset/5,
          describe_job/2,
-         describe_job/3,
+         describe_job/4,
+         describe_job/5,
          describe_job_run/3,
-         describe_job_run/4,
+         describe_job_run/5,
+         describe_job_run/6,
          describe_project/2,
-         describe_project/3,
-         describe_recipe/3,
+         describe_project/4,
+         describe_project/5,
+         describe_recipe/2,
          describe_recipe/4,
+         describe_recipe/5,
          describe_schedule/2,
-         describe_schedule/3,
+         describe_schedule/4,
+         describe_schedule/5,
+         list_datasets/1,
          list_datasets/3,
          list_datasets/4,
+         list_job_runs/2,
          list_job_runs/4,
          list_job_runs/5,
-         list_jobs/5,
-         list_jobs/6,
+         list_jobs/1,
+         list_jobs/3,
+         list_jobs/4,
+         list_projects/1,
          list_projects/3,
          list_projects/4,
+         list_recipe_versions/2,
          list_recipe_versions/4,
          list_recipe_versions/5,
+         list_recipes/1,
+         list_recipes/3,
          list_recipes/4,
-         list_recipes/5,
+         list_schedules/1,
+         list_schedules/3,
          list_schedules/4,
-         list_schedules/5,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          publish_recipe/3,
          publish_recipe/4,
          send_project_session_action/3,
@@ -320,9 +334,14 @@ delete_schedule(Client, Name, Input0, Options) ->
 %% @doc Returns the definition of a specific DataBrew dataset.
 describe_dataset(Client, Name)
   when is_map(Client) ->
-    describe_dataset(Client, Name, []).
-describe_dataset(Client, Name, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_dataset(Client, Name, #{}, #{}).
+
+describe_dataset(Client, Name, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_dataset(Client, Name, QueryMap, HeadersMap, []).
+
+describe_dataset(Client, Name, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/datasets/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
 
@@ -335,9 +354,14 @@ describe_dataset(Client, Name, Options)
 %% @doc Returns the definition of a specific DataBrew job.
 describe_job(Client, Name)
   when is_map(Client) ->
-    describe_job(Client, Name, []).
-describe_job(Client, Name, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_job(Client, Name, #{}, #{}).
+
+describe_job(Client, Name, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_job(Client, Name, QueryMap, HeadersMap, []).
+
+describe_job(Client, Name, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/jobs/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
 
@@ -350,9 +374,14 @@ describe_job(Client, Name, Options)
 %% @doc Represents one run of a DataBrew job.
 describe_job_run(Client, Name, RunId)
   when is_map(Client) ->
-    describe_job_run(Client, Name, RunId, []).
-describe_job_run(Client, Name, RunId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_job_run(Client, Name, RunId, #{}, #{}).
+
+describe_job_run(Client, Name, RunId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_job_run(Client, Name, RunId, QueryMap, HeadersMap, []).
+
+describe_job_run(Client, Name, RunId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/jobs/", aws_util:encode_uri(Name), "/jobRun/", aws_util:encode_uri(RunId), ""],
     SuccessStatusCode = undefined,
 
@@ -365,9 +394,14 @@ describe_job_run(Client, Name, RunId, Options)
 %% @doc Returns the definition of a specific DataBrew project.
 describe_project(Client, Name)
   when is_map(Client) ->
-    describe_project(Client, Name, []).
-describe_project(Client, Name, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_project(Client, Name, #{}, #{}).
+
+describe_project(Client, Name, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_project(Client, Name, QueryMap, HeadersMap, []).
+
+describe_project(Client, Name, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/projects/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
 
@@ -379,11 +413,16 @@ describe_project(Client, Name, Options)
 
 %% @doc Returns the definition of a specific DataBrew recipe corresponding to
 %% a particular version.
-describe_recipe(Client, Name, RecipeVersion)
+describe_recipe(Client, Name)
   when is_map(Client) ->
-    describe_recipe(Client, Name, RecipeVersion, []).
-describe_recipe(Client, Name, RecipeVersion, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_recipe(Client, Name, #{}, #{}).
+
+describe_recipe(Client, Name, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_recipe(Client, Name, QueryMap, HeadersMap, []).
+
+describe_recipe(Client, Name, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/recipes/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
 
@@ -391,7 +430,7 @@ describe_recipe(Client, Name, RecipeVersion, Options)
 
     Query0_ =
       [
-        {<<"recipeVersion">>, RecipeVersion}
+        {<<"recipeVersion">>, maps:get(<<"recipeVersion">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -400,9 +439,14 @@ describe_recipe(Client, Name, RecipeVersion, Options)
 %% @doc Returns the definition of a specific DataBrew schedule.
 describe_schedule(Client, Name)
   when is_map(Client) ->
-    describe_schedule(Client, Name, []).
-describe_schedule(Client, Name, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_schedule(Client, Name, #{}, #{}).
+
+describe_schedule(Client, Name, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_schedule(Client, Name, QueryMap, HeadersMap, []).
+
+describe_schedule(Client, Name, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/schedules/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
 
@@ -413,11 +457,16 @@ describe_schedule(Client, Name, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all of the DataBrew datasets.
-list_datasets(Client, MaxResults, NextToken)
+list_datasets(Client)
   when is_map(Client) ->
-    list_datasets(Client, MaxResults, NextToken, []).
-list_datasets(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_datasets(Client, #{}, #{}).
+
+list_datasets(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_datasets(Client, QueryMap, HeadersMap, []).
+
+list_datasets(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/datasets"],
     SuccessStatusCode = undefined,
 
@@ -425,19 +474,24 @@ list_datasets(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all of the previous runs of a particular DataBrew job.
-list_job_runs(Client, Name, MaxResults, NextToken)
+list_job_runs(Client, Name)
   when is_map(Client) ->
-    list_job_runs(Client, Name, MaxResults, NextToken, []).
-list_job_runs(Client, Name, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_job_runs(Client, Name, #{}, #{}).
+
+list_job_runs(Client, Name, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_job_runs(Client, Name, QueryMap, HeadersMap, []).
+
+list_job_runs(Client, Name, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/jobs/", aws_util:encode_uri(Name), "/jobRuns"],
     SuccessStatusCode = undefined,
 
@@ -445,19 +499,24 @@ list_job_runs(Client, Name, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all of the DataBrew jobs that are defined.
-list_jobs(Client, DatasetName, MaxResults, NextToken, ProjectName)
+list_jobs(Client)
   when is_map(Client) ->
-    list_jobs(Client, DatasetName, MaxResults, NextToken, ProjectName, []).
-list_jobs(Client, DatasetName, MaxResults, NextToken, ProjectName, Options)
-  when is_map(Client), is_list(Options) ->
+    list_jobs(Client, #{}, #{}).
+
+list_jobs(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_jobs(Client, QueryMap, HeadersMap, []).
+
+list_jobs(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/jobs"],
     SuccessStatusCode = undefined,
 
@@ -465,21 +524,26 @@ list_jobs(Client, DatasetName, MaxResults, NextToken, ProjectName, Options)
 
     Query0_ =
       [
-        {<<"datasetName">>, DatasetName},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"projectName">>, ProjectName}
+        {<<"datasetName">>, maps:get(<<"datasetName">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"projectName">>, maps:get(<<"projectName">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all of the DataBrew projects that are defined.
-list_projects(Client, MaxResults, NextToken)
+list_projects(Client)
   when is_map(Client) ->
-    list_projects(Client, MaxResults, NextToken, []).
-list_projects(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_projects(Client, #{}, #{}).
+
+list_projects(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_projects(Client, QueryMap, HeadersMap, []).
+
+list_projects(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/projects"],
     SuccessStatusCode = undefined,
 
@@ -487,8 +551,8 @@ list_projects(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -496,11 +560,16 @@ list_projects(Client, MaxResults, NextToken, Options)
 
 %% @doc Lists the versions of a particular DataBrew recipe, except for
 %% `LATEST_WORKING'.
-list_recipe_versions(Client, MaxResults, Name, NextToken)
+list_recipe_versions(Client, Name)
   when is_map(Client) ->
-    list_recipe_versions(Client, MaxResults, Name, NextToken, []).
-list_recipe_versions(Client, MaxResults, Name, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_recipe_versions(Client, Name, #{}, #{}).
+
+list_recipe_versions(Client, Name, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_recipe_versions(Client, Name, QueryMap, HeadersMap, []).
+
+list_recipe_versions(Client, Name, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/recipeVersions"],
     SuccessStatusCode = undefined,
 
@@ -508,20 +577,25 @@ list_recipe_versions(Client, MaxResults, Name, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"name">>, Name},
-        {<<"nextToken">>, NextToken}
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all of the DataBrew recipes that are defined.
-list_recipes(Client, MaxResults, NextToken, RecipeVersion)
+list_recipes(Client)
   when is_map(Client) ->
-    list_recipes(Client, MaxResults, NextToken, RecipeVersion, []).
-list_recipes(Client, MaxResults, NextToken, RecipeVersion, Options)
-  when is_map(Client), is_list(Options) ->
+    list_recipes(Client, #{}, #{}).
+
+list_recipes(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_recipes(Client, QueryMap, HeadersMap, []).
+
+list_recipes(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/recipes"],
     SuccessStatusCode = undefined,
 
@@ -529,20 +603,25 @@ list_recipes(Client, MaxResults, NextToken, RecipeVersion, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"recipeVersion">>, RecipeVersion}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"recipeVersion">>, maps:get(<<"recipeVersion">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the DataBrew schedules that are defined.
-list_schedules(Client, JobName, MaxResults, NextToken)
+list_schedules(Client)
   when is_map(Client) ->
-    list_schedules(Client, JobName, MaxResults, NextToken, []).
-list_schedules(Client, JobName, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_schedules(Client, #{}, #{}).
+
+list_schedules(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_schedules(Client, QueryMap, HeadersMap, []).
+
+list_schedules(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/schedules"],
     SuccessStatusCode = undefined,
 
@@ -550,9 +629,9 @@ list_schedules(Client, JobName, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"jobName">>, JobName},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"jobName">>, maps:get(<<"jobName">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -561,9 +640,14 @@ list_schedules(Client, JobName, MaxResults, NextToken, Options)
 %% @doc Lists all the tags for a DataBrew resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 

@@ -15,23 +15,31 @@
          delete_flow/3,
          delete_flow/4,
          describe_flow/2,
-         describe_flow/3,
+         describe_flow/4,
+         describe_flow/5,
          describe_offering/2,
-         describe_offering/3,
+         describe_offering/4,
+         describe_offering/5,
          describe_reservation/2,
-         describe_reservation/3,
+         describe_reservation/4,
+         describe_reservation/5,
          grant_flow_entitlements/3,
          grant_flow_entitlements/4,
+         list_entitlements/1,
          list_entitlements/3,
          list_entitlements/4,
+         list_flows/1,
          list_flows/3,
          list_flows/4,
+         list_offerings/1,
          list_offerings/3,
          list_offerings/4,
+         list_reservations/1,
          list_reservations/3,
          list_reservations/4,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          purchase_offering/3,
          purchase_offering/4,
          remove_flow_output/4,
@@ -158,9 +166,14 @@ delete_flow(Client, FlowArn, Input0, Options) ->
 %% as details about the source, outputs, and entitlements.
 describe_flow(Client, FlowArn)
   when is_map(Client) ->
-    describe_flow(Client, FlowArn, []).
-describe_flow(Client, FlowArn, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_flow(Client, FlowArn, #{}, #{}).
+
+describe_flow(Client, FlowArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_flow(Client, FlowArn, QueryMap, HeadersMap, []).
+
+describe_flow(Client, FlowArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), ""],
     SuccessStatusCode = 200,
 
@@ -176,9 +189,14 @@ describe_flow(Client, FlowArn, Options)
 %% bandwidth, price, and Amazon Resource Name (ARN).
 describe_offering(Client, OfferingArn)
   when is_map(Client) ->
-    describe_offering(Client, OfferingArn, []).
-describe_offering(Client, OfferingArn, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_offering(Client, OfferingArn, #{}, #{}).
+
+describe_offering(Client, OfferingArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_offering(Client, OfferingArn, QueryMap, HeadersMap, []).
+
+describe_offering(Client, OfferingArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/offerings/", aws_util:encode_uri(OfferingArn), ""],
     SuccessStatusCode = 200,
 
@@ -195,9 +213,14 @@ describe_offering(Client, OfferingArn, Options)
 %% (such as price, duration, and outbound bandwidth).
 describe_reservation(Client, ReservationArn)
   when is_map(Client) ->
-    describe_reservation(Client, ReservationArn, []).
-describe_reservation(Client, ReservationArn, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_reservation(Client, ReservationArn, #{}, #{}).
+
+describe_reservation(Client, ReservationArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_reservation(Client, ReservationArn, QueryMap, HeadersMap, []).
+
+describe_reservation(Client, ReservationArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/reservations/", aws_util:encode_uri(ReservationArn), ""],
     SuccessStatusCode = 200,
 
@@ -227,11 +250,16 @@ grant_flow_entitlements(Client, FlowArn, Input0, Options) ->
 %% account.
 %%
 %% This request returns 20 results per page.
-list_entitlements(Client, MaxResults, NextToken)
+list_entitlements(Client)
   when is_map(Client) ->
-    list_entitlements(Client, MaxResults, NextToken, []).
-list_entitlements(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_entitlements(Client, #{}, #{}).
+
+list_entitlements(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_entitlements(Client, QueryMap, HeadersMap, []).
+
+list_entitlements(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/entitlements"],
     SuccessStatusCode = 200,
 
@@ -239,8 +267,8 @@ list_entitlements(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -249,11 +277,16 @@ list_entitlements(Client, MaxResults, NextToken, Options)
 %% @doc Displays a list of flows that are associated with this account.
 %%
 %% This request returns a paginated result.
-list_flows(Client, MaxResults, NextToken)
+list_flows(Client)
   when is_map(Client) ->
-    list_flows(Client, MaxResults, NextToken, []).
-list_flows(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_flows(Client, #{}, #{}).
+
+list_flows(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_flows(Client, QueryMap, HeadersMap, []).
+
+list_flows(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/flows"],
     SuccessStatusCode = 200,
 
@@ -261,8 +294,8 @@ list_flows(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -274,11 +307,16 @@ list_flows(Client, MaxResults, NextToken, Options)
 %% If you have an active reservation (which means you've purchased an
 %% offering that has already started and hasn't expired yet), your account
 %% isn't eligible for other offerings.
-list_offerings(Client, MaxResults, NextToken)
+list_offerings(Client)
   when is_map(Client) ->
-    list_offerings(Client, MaxResults, NextToken, []).
-list_offerings(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_offerings(Client, #{}, #{}).
+
+list_offerings(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_offerings(Client, QueryMap, HeadersMap, []).
+
+list_offerings(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/offerings"],
     SuccessStatusCode = 200,
 
@@ -286,8 +324,8 @@ list_offerings(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -298,11 +336,16 @@ list_offerings(Client, MaxResults, NextToken, Options)
 %%
 %% This list includes all reservations in all states (such as active and
 %% expired).
-list_reservations(Client, MaxResults, NextToken)
+list_reservations(Client)
   when is_map(Client) ->
-    list_reservations(Client, MaxResults, NextToken, []).
-list_reservations(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_reservations(Client, #{}, #{}).
+
+list_reservations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_reservations(Client, QueryMap, HeadersMap, []).
+
+list_reservations(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/reservations"],
     SuccessStatusCode = 200,
 
@@ -310,8 +353,8 @@ list_reservations(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -320,9 +363,14 @@ list_reservations(Client, MaxResults, NextToken, Options)
 %% @doc List all tags on an AWS Elemental MediaConnect resource
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 

@@ -19,19 +19,26 @@
          delete_packaging_group/3,
          delete_packaging_group/4,
          describe_asset/2,
-         describe_asset/3,
+         describe_asset/4,
+         describe_asset/5,
          describe_packaging_configuration/2,
-         describe_packaging_configuration/3,
+         describe_packaging_configuration/4,
+         describe_packaging_configuration/5,
          describe_packaging_group/2,
-         describe_packaging_group/3,
+         describe_packaging_group/4,
+         describe_packaging_group/5,
+         list_assets/1,
+         list_assets/3,
          list_assets/4,
-         list_assets/5,
+         list_packaging_configurations/1,
+         list_packaging_configurations/3,
          list_packaging_configurations/4,
-         list_packaging_configurations/5,
+         list_packaging_groups/1,
          list_packaging_groups/3,
          list_packaging_groups/4,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -161,9 +168,14 @@ delete_packaging_group(Client, Id, Input0, Options) ->
 %% @doc Returns a description of a MediaPackage VOD Asset resource.
 describe_asset(Client, Id)
   when is_map(Client) ->
-    describe_asset(Client, Id, []).
-describe_asset(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_asset(Client, Id, #{}, #{}).
+
+describe_asset(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_asset(Client, Id, QueryMap, HeadersMap, []).
+
+describe_asset(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/assets/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
@@ -177,9 +189,14 @@ describe_asset(Client, Id, Options)
 %% resource.
 describe_packaging_configuration(Client, Id)
   when is_map(Client) ->
-    describe_packaging_configuration(Client, Id, []).
-describe_packaging_configuration(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_packaging_configuration(Client, Id, #{}, #{}).
+
+describe_packaging_configuration(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_packaging_configuration(Client, Id, QueryMap, HeadersMap, []).
+
+describe_packaging_configuration(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/packaging_configurations/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
@@ -192,9 +209,14 @@ describe_packaging_configuration(Client, Id, Options)
 %% @doc Returns a description of a MediaPackage VOD PackagingGroup resource.
 describe_packaging_group(Client, Id)
   when is_map(Client) ->
-    describe_packaging_group(Client, Id, []).
-describe_packaging_group(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_packaging_group(Client, Id, #{}, #{}).
+
+describe_packaging_group(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_packaging_group(Client, Id, QueryMap, HeadersMap, []).
+
+describe_packaging_group(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/packaging_groups/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
@@ -205,11 +227,16 @@ describe_packaging_group(Client, Id, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a collection of MediaPackage VOD Asset resources.
-list_assets(Client, MaxResults, NextToken, PackagingGroupId)
+list_assets(Client)
   when is_map(Client) ->
-    list_assets(Client, MaxResults, NextToken, PackagingGroupId, []).
-list_assets(Client, MaxResults, NextToken, PackagingGroupId, Options)
-  when is_map(Client), is_list(Options) ->
+    list_assets(Client, #{}, #{}).
+
+list_assets(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_assets(Client, QueryMap, HeadersMap, []).
+
+list_assets(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/assets"],
     SuccessStatusCode = 200,
 
@@ -217,9 +244,9 @@ list_assets(Client, MaxResults, NextToken, PackagingGroupId, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"packagingGroupId">>, PackagingGroupId}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"packagingGroupId">>, maps:get(<<"packagingGroupId">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -227,11 +254,16 @@ list_assets(Client, MaxResults, NextToken, PackagingGroupId, Options)
 
 %% @doc Returns a collection of MediaPackage VOD PackagingConfiguration
 %% resources.
-list_packaging_configurations(Client, MaxResults, NextToken, PackagingGroupId)
+list_packaging_configurations(Client)
   when is_map(Client) ->
-    list_packaging_configurations(Client, MaxResults, NextToken, PackagingGroupId, []).
-list_packaging_configurations(Client, MaxResults, NextToken, PackagingGroupId, Options)
-  when is_map(Client), is_list(Options) ->
+    list_packaging_configurations(Client, #{}, #{}).
+
+list_packaging_configurations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_packaging_configurations(Client, QueryMap, HeadersMap, []).
+
+list_packaging_configurations(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/packaging_configurations"],
     SuccessStatusCode = 200,
 
@@ -239,20 +271,25 @@ list_packaging_configurations(Client, MaxResults, NextToken, PackagingGroupId, O
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"packagingGroupId">>, PackagingGroupId}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"packagingGroupId">>, maps:get(<<"packagingGroupId">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a collection of MediaPackage VOD PackagingGroup resources.
-list_packaging_groups(Client, MaxResults, NextToken)
+list_packaging_groups(Client)
   when is_map(Client) ->
-    list_packaging_groups(Client, MaxResults, NextToken, []).
-list_packaging_groups(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_packaging_groups(Client, #{}, #{}).
+
+list_packaging_groups(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_packaging_groups(Client, QueryMap, HeadersMap, []).
+
+list_packaging_groups(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/packaging_groups"],
     SuccessStatusCode = 200,
 
@@ -260,8 +297,8 @@ list_packaging_groups(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -270,9 +307,14 @@ list_packaging_groups(Client, MaxResults, NextToken, Options)
 %% @doc Returns a list of the tags assigned to the specified resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 

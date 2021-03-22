@@ -163,23 +163,32 @@
          delete_voice_connector_termination_credentials/3,
          delete_voice_connector_termination_credentials/4,
          describe_app_instance/2,
-         describe_app_instance/3,
+         describe_app_instance/4,
+         describe_app_instance/5,
          describe_app_instance_admin/3,
-         describe_app_instance_admin/4,
+         describe_app_instance_admin/5,
+         describe_app_instance_admin/6,
          describe_app_instance_user/2,
-         describe_app_instance_user/3,
-         describe_channel/3,
+         describe_app_instance_user/4,
+         describe_app_instance_user/5,
+         describe_channel/2,
          describe_channel/4,
-         describe_channel_ban/4,
+         describe_channel/5,
+         describe_channel_ban/3,
          describe_channel_ban/5,
-         describe_channel_membership/4,
+         describe_channel_ban/6,
+         describe_channel_membership/3,
          describe_channel_membership/5,
-         describe_channel_membership_for_app_instance_user/4,
+         describe_channel_membership/6,
+         describe_channel_membership_for_app_instance_user/3,
          describe_channel_membership_for_app_instance_user/5,
-         describe_channel_moderated_by_app_instance_user/4,
+         describe_channel_membership_for_app_instance_user/6,
+         describe_channel_moderated_by_app_instance_user/3,
          describe_channel_moderated_by_app_instance_user/5,
-         describe_channel_moderator/4,
+         describe_channel_moderated_by_app_instance_user/6,
+         describe_channel_moderator/3,
          describe_channel_moderator/5,
+         describe_channel_moderator/6,
          disassociate_phone_number_from_user/4,
          disassociate_phone_number_from_user/5,
          disassociate_phone_numbers_from_voice_connector/3,
@@ -189,123 +198,182 @@
          disassociate_signin_delegate_groups_from_account/3,
          disassociate_signin_delegate_groups_from_account/4,
          get_account/2,
-         get_account/3,
+         get_account/4,
+         get_account/5,
          get_account_settings/2,
-         get_account_settings/3,
+         get_account_settings/4,
+         get_account_settings/5,
          get_app_instance_retention_settings/2,
-         get_app_instance_retention_settings/3,
+         get_app_instance_retention_settings/4,
+         get_app_instance_retention_settings/5,
          get_app_instance_streaming_configurations/2,
-         get_app_instance_streaming_configurations/3,
+         get_app_instance_streaming_configurations/4,
+         get_app_instance_streaming_configurations/5,
          get_attendee/3,
-         get_attendee/4,
+         get_attendee/5,
+         get_attendee/6,
          get_bot/3,
-         get_bot/4,
-         get_channel_message/4,
+         get_bot/5,
+         get_bot/6,
+         get_channel_message/3,
          get_channel_message/5,
+         get_channel_message/6,
          get_events_configuration/3,
-         get_events_configuration/4,
+         get_events_configuration/5,
+         get_events_configuration/6,
          get_global_settings/1,
-         get_global_settings/2,
+         get_global_settings/3,
+         get_global_settings/4,
          get_meeting/2,
-         get_meeting/3,
+         get_meeting/4,
+         get_meeting/5,
          get_messaging_session_endpoint/1,
-         get_messaging_session_endpoint/2,
+         get_messaging_session_endpoint/3,
+         get_messaging_session_endpoint/4,
          get_phone_number/2,
-         get_phone_number/3,
+         get_phone_number/4,
+         get_phone_number/5,
          get_phone_number_order/2,
-         get_phone_number_order/3,
+         get_phone_number_order/4,
+         get_phone_number_order/5,
          get_phone_number_settings/1,
-         get_phone_number_settings/2,
+         get_phone_number_settings/3,
+         get_phone_number_settings/4,
          get_proxy_session/3,
-         get_proxy_session/4,
+         get_proxy_session/5,
+         get_proxy_session/6,
          get_retention_settings/2,
-         get_retention_settings/3,
+         get_retention_settings/4,
+         get_retention_settings/5,
          get_room/3,
-         get_room/4,
+         get_room/5,
+         get_room/6,
          get_sip_media_application/2,
-         get_sip_media_application/3,
+         get_sip_media_application/4,
+         get_sip_media_application/5,
          get_sip_media_application_logging_configuration/2,
-         get_sip_media_application_logging_configuration/3,
+         get_sip_media_application_logging_configuration/4,
+         get_sip_media_application_logging_configuration/5,
          get_sip_rule/2,
-         get_sip_rule/3,
+         get_sip_rule/4,
+         get_sip_rule/5,
          get_user/3,
-         get_user/4,
+         get_user/5,
+         get_user/6,
          get_user_settings/3,
-         get_user_settings/4,
+         get_user_settings/5,
+         get_user_settings/6,
          get_voice_connector/2,
-         get_voice_connector/3,
+         get_voice_connector/4,
+         get_voice_connector/5,
          get_voice_connector_emergency_calling_configuration/2,
-         get_voice_connector_emergency_calling_configuration/3,
+         get_voice_connector_emergency_calling_configuration/4,
+         get_voice_connector_emergency_calling_configuration/5,
          get_voice_connector_group/2,
-         get_voice_connector_group/3,
+         get_voice_connector_group/4,
+         get_voice_connector_group/5,
          get_voice_connector_logging_configuration/2,
-         get_voice_connector_logging_configuration/3,
+         get_voice_connector_logging_configuration/4,
+         get_voice_connector_logging_configuration/5,
          get_voice_connector_origination/2,
-         get_voice_connector_origination/3,
+         get_voice_connector_origination/4,
+         get_voice_connector_origination/5,
          get_voice_connector_proxy/2,
-         get_voice_connector_proxy/3,
+         get_voice_connector_proxy/4,
+         get_voice_connector_proxy/5,
          get_voice_connector_streaming_configuration/2,
-         get_voice_connector_streaming_configuration/3,
+         get_voice_connector_streaming_configuration/4,
+         get_voice_connector_streaming_configuration/5,
          get_voice_connector_termination/2,
-         get_voice_connector_termination/3,
+         get_voice_connector_termination/4,
+         get_voice_connector_termination/5,
          get_voice_connector_termination_health/2,
-         get_voice_connector_termination_health/3,
+         get_voice_connector_termination_health/4,
+         get_voice_connector_termination_health/5,
          invite_users/3,
          invite_users/4,
-         list_accounts/5,
-         list_accounts/6,
+         list_accounts/1,
+         list_accounts/3,
+         list_accounts/4,
+         list_app_instance_admins/2,
          list_app_instance_admins/4,
          list_app_instance_admins/5,
+         list_app_instance_users/2,
          list_app_instance_users/4,
          list_app_instance_users/5,
+         list_app_instances/1,
          list_app_instances/3,
          list_app_instances/4,
          list_attendee_tags/3,
-         list_attendee_tags/4,
+         list_attendee_tags/5,
+         list_attendee_tags/6,
+         list_attendees/2,
          list_attendees/4,
          list_attendees/5,
+         list_bots/2,
          list_bots/4,
          list_bots/5,
+         list_channel_bans/2,
+         list_channel_bans/4,
          list_channel_bans/5,
-         list_channel_bans/6,
-         list_channel_memberships/6,
-         list_channel_memberships/7,
-         list_channel_memberships_for_app_instance_user/5,
-         list_channel_memberships_for_app_instance_user/6,
-         list_channel_messages/8,
-         list_channel_messages/9,
+         list_channel_memberships/2,
+         list_channel_memberships/4,
+         list_channel_memberships/5,
+         list_channel_memberships_for_app_instance_user/1,
+         list_channel_memberships_for_app_instance_user/3,
+         list_channel_memberships_for_app_instance_user/4,
+         list_channel_messages/2,
+         list_channel_messages/4,
+         list_channel_messages/5,
+         list_channel_moderators/2,
+         list_channel_moderators/4,
          list_channel_moderators/5,
-         list_channel_moderators/6,
-         list_channels/6,
-         list_channels/7,
-         list_channels_moderated_by_app_instance_user/5,
-         list_channels_moderated_by_app_instance_user/6,
+         list_channels/2,
+         list_channels/4,
+         list_channels/5,
+         list_channels_moderated_by_app_instance_user/1,
+         list_channels_moderated_by_app_instance_user/3,
+         list_channels_moderated_by_app_instance_user/4,
          list_meeting_tags/2,
-         list_meeting_tags/3,
+         list_meeting_tags/4,
+         list_meeting_tags/5,
+         list_meetings/1,
          list_meetings/3,
          list_meetings/4,
+         list_phone_number_orders/1,
          list_phone_number_orders/3,
          list_phone_number_orders/4,
-         list_phone_numbers/7,
-         list_phone_numbers/8,
+         list_phone_numbers/1,
+         list_phone_numbers/3,
+         list_phone_numbers/4,
+         list_proxy_sessions/2,
+         list_proxy_sessions/4,
          list_proxy_sessions/5,
-         list_proxy_sessions/6,
+         list_room_memberships/3,
          list_room_memberships/5,
          list_room_memberships/6,
+         list_rooms/2,
+         list_rooms/4,
          list_rooms/5,
-         list_rooms/6,
+         list_sip_media_applications/1,
          list_sip_media_applications/3,
          list_sip_media_applications/4,
+         list_sip_rules/1,
+         list_sip_rules/3,
          list_sip_rules/4,
-         list_sip_rules/5,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
-         list_users/6,
-         list_users/7,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
+         list_users/2,
+         list_users/4,
+         list_users/5,
+         list_voice_connector_groups/1,
          list_voice_connector_groups/3,
          list_voice_connector_groups/4,
          list_voice_connector_termination_credentials/2,
-         list_voice_connector_termination_credentials/3,
+         list_voice_connector_termination_credentials/4,
+         list_voice_connector_termination_credentials/5,
+         list_voice_connectors/1,
          list_voice_connectors/3,
          list_voice_connectors/4,
          logout_user/4,
@@ -346,8 +414,9 @@
          reset_personal_pin/5,
          restore_phone_number/3,
          restore_phone_number/4,
-         search_available_phone_numbers/8,
-         search_available_phone_numbers/9,
+         search_available_phone_numbers/1,
+         search_available_phone_numbers/3,
+         search_available_phone_numbers/4,
          send_channel_message/3,
          send_channel_message/4,
          tag_attendee/4,
@@ -1677,9 +1746,14 @@ delete_voice_connector_termination_credentials(Client, VoiceConnectorId, Input0,
 %% @doc Returns the full details of an `AppInstance'.
 describe_app_instance(Client, AppInstanceArn)
   when is_map(Client) ->
-    describe_app_instance(Client, AppInstanceArn, []).
-describe_app_instance(Client, AppInstanceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_app_instance(Client, AppInstanceArn, #{}, #{}).
+
+describe_app_instance(Client, AppInstanceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_app_instance(Client, AppInstanceArn, QueryMap, HeadersMap, []).
+
+describe_app_instance(Client, AppInstanceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), ""],
     SuccessStatusCode = 200,
 
@@ -1692,9 +1766,14 @@ describe_app_instance(Client, AppInstanceArn, Options)
 %% @doc Returns the full details of an `AppInstanceAdmin'.
 describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn)
   when is_map(Client) ->
-    describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, []).
-describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, #{}, #{}).
+
+describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, QueryMap, HeadersMap, []).
+
+describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/admins/", aws_util:encode_uri(AppInstanceAdminArn), ""],
     SuccessStatusCode = 200,
 
@@ -1707,9 +1786,14 @@ describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, Options
 %% @doc Returns the full details of an `AppInstanceUser' .
 describe_app_instance_user(Client, AppInstanceUserArn)
   when is_map(Client) ->
-    describe_app_instance_user(Client, AppInstanceUserArn, []).
-describe_app_instance_user(Client, AppInstanceUserArn, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_app_instance_user(Client, AppInstanceUserArn, #{}, #{}).
+
+describe_app_instance_user(Client, AppInstanceUserArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_app_instance_user(Client, AppInstanceUserArn, QueryMap, HeadersMap, []).
+
+describe_app_instance_user(Client, AppInstanceUserArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/app-instance-users/", aws_util:encode_uri(AppInstanceUserArn), ""],
     SuccessStatusCode = 200,
 
@@ -1725,17 +1809,22 @@ describe_app_instance_user(Client, AppInstanceUserArn, Options)
 %% The `x-amz-chime-bearer' request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value in
 %% the header.
-describe_channel(Client, ChannelArn, ChimeBearer)
+describe_channel(Client, ChannelArn)
   when is_map(Client) ->
-    describe_channel(Client, ChannelArn, ChimeBearer, []).
-describe_channel(Client, ChannelArn, ChimeBearer, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_channel(Client, ChannelArn, #{}, #{}).
+
+describe_channel(Client, ChannelArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_channel(Client, ChannelArn, QueryMap, HeadersMap, []).
+
+describe_channel(Client, ChannelArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), ""],
     SuccessStatusCode = 200,
 
     Headers0 =
       [
-        {<<"x-amz-chime-bearer">>, ChimeBearer}
+        {<<"x-amz-chime-bearer">>, maps:get(<<"x-amz-chime-bearer">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
@@ -1748,17 +1837,22 @@ describe_channel(Client, ChannelArn, ChimeBearer, Options)
 %% The `x-amz-chime-bearer' request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value in
 %% the header.
-describe_channel_ban(Client, ChannelArn, MemberArn, ChimeBearer)
+describe_channel_ban(Client, ChannelArn, MemberArn)
   when is_map(Client) ->
-    describe_channel_ban(Client, ChannelArn, MemberArn, ChimeBearer, []).
-describe_channel_ban(Client, ChannelArn, MemberArn, ChimeBearer, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_channel_ban(Client, ChannelArn, MemberArn, #{}, #{}).
+
+describe_channel_ban(Client, ChannelArn, MemberArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_channel_ban(Client, ChannelArn, MemberArn, QueryMap, HeadersMap, []).
+
+describe_channel_ban(Client, ChannelArn, MemberArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/bans/", aws_util:encode_uri(MemberArn), ""],
     SuccessStatusCode = 200,
 
     Headers0 =
       [
-        {<<"x-amz-chime-bearer">>, ChimeBearer}
+        {<<"x-amz-chime-bearer">>, maps:get(<<"x-amz-chime-bearer">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
@@ -1771,17 +1865,22 @@ describe_channel_ban(Client, ChannelArn, MemberArn, ChimeBearer, Options)
 %% The `x-amz-chime-bearer' request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value in
 %% the header.
-describe_channel_membership(Client, ChannelArn, MemberArn, ChimeBearer)
+describe_channel_membership(Client, ChannelArn, MemberArn)
   when is_map(Client) ->
-    describe_channel_membership(Client, ChannelArn, MemberArn, ChimeBearer, []).
-describe_channel_membership(Client, ChannelArn, MemberArn, ChimeBearer, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_channel_membership(Client, ChannelArn, MemberArn, #{}, #{}).
+
+describe_channel_membership(Client, ChannelArn, MemberArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_channel_membership(Client, ChannelArn, MemberArn, QueryMap, HeadersMap, []).
+
+describe_channel_membership(Client, ChannelArn, MemberArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/memberships/", aws_util:encode_uri(MemberArn), ""],
     SuccessStatusCode = 200,
 
     Headers0 =
       [
-        {<<"x-amz-chime-bearer">>, ChimeBearer}
+        {<<"x-amz-chime-bearer">>, maps:get(<<"x-amz-chime-bearer">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
@@ -1795,17 +1894,22 @@ describe_channel_membership(Client, ChannelArn, MemberArn, ChimeBearer, Options)
 %% The `x-amz-chime-bearer' request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value in
 %% the header.
-describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanceUserArn, ChimeBearer)
+describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanceUserArn)
   when is_map(Client) ->
-    describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanceUserArn, ChimeBearer, []).
-describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanceUserArn, ChimeBearer, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanceUserArn, #{}, #{}).
+
+describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanceUserArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanceUserArn, QueryMap, HeadersMap, []).
+
+describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanceUserArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "?scope=app-instance-user-membership"],
     SuccessStatusCode = 200,
 
     Headers0 =
       [
-        {<<"x-amz-chime-bearer">>, ChimeBearer}
+        {<<"x-amz-chime-bearer">>, maps:get(<<"x-amz-chime-bearer">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
@@ -1823,17 +1927,22 @@ describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanc
 %% The `x-amz-chime-bearer' request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value in
 %% the header.
-describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceUserArn, ChimeBearer)
+describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceUserArn)
   when is_map(Client) ->
-    describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceUserArn, ChimeBearer, []).
-describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceUserArn, ChimeBearer, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceUserArn, #{}, #{}).
+
+describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceUserArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceUserArn, QueryMap, HeadersMap, []).
+
+describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceUserArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "?scope=app-instance-user-moderated-channel"],
     SuccessStatusCode = 200,
 
     Headers0 =
       [
-        {<<"x-amz-chime-bearer">>, ChimeBearer}
+        {<<"x-amz-chime-bearer">>, maps:get(<<"x-amz-chime-bearer">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
@@ -1850,17 +1959,22 @@ describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceU
 %% The `x-amz-chime-bearer' request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value in
 %% the header.
-describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn, ChimeBearer)
+describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn)
   when is_map(Client) ->
-    describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn, ChimeBearer, []).
-describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn, ChimeBearer, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn, #{}, #{}).
+
+describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn, QueryMap, HeadersMap, []).
+
+describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/moderators/", aws_util:encode_uri(ChannelModeratorArn), ""],
     SuccessStatusCode = 200,
 
     Headers0 =
       [
-        {<<"x-amz-chime-bearer">>, ChimeBearer}
+        {<<"x-amz-chime-bearer">>, maps:get(<<"x-amz-chime-bearer">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
@@ -1940,9 +2054,14 @@ disassociate_signin_delegate_groups_from_account(Client, AccountId, Input0, Opti
 %% account type and supported licenses.
 get_account(Client, AccountId)
   when is_map(Client) ->
-    get_account(Client, AccountId, []).
-get_account(Client, AccountId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_account(Client, AccountId, #{}, #{}).
+
+get_account(Client, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_account(Client, AccountId, QueryMap, HeadersMap, []).
+
+get_account(Client, AccountId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), ""],
     SuccessStatusCode = undefined,
 
@@ -1959,9 +2078,14 @@ get_account(Client, AccountId, Options)
 %% the Amazon Chime Administration Guide.
 get_account_settings(Client, AccountId)
   when is_map(Client) ->
-    get_account_settings(Client, AccountId, []).
-get_account_settings(Client, AccountId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_account_settings(Client, AccountId, #{}, #{}).
+
+get_account_settings(Client, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_account_settings(Client, AccountId, QueryMap, HeadersMap, []).
+
+get_account_settings(Client, AccountId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/settings"],
     SuccessStatusCode = undefined,
 
@@ -1974,9 +2098,14 @@ get_account_settings(Client, AccountId, Options)
 %% @doc Gets the retention settings for an `AppInstance'.
 get_app_instance_retention_settings(Client, AppInstanceArn)
   when is_map(Client) ->
-    get_app_instance_retention_settings(Client, AppInstanceArn, []).
-get_app_instance_retention_settings(Client, AppInstanceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    get_app_instance_retention_settings(Client, AppInstanceArn, #{}, #{}).
+
+get_app_instance_retention_settings(Client, AppInstanceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_app_instance_retention_settings(Client, AppInstanceArn, QueryMap, HeadersMap, []).
+
+get_app_instance_retention_settings(Client, AppInstanceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/retention-settings"],
     SuccessStatusCode = 200,
 
@@ -1989,9 +2118,14 @@ get_app_instance_retention_settings(Client, AppInstanceArn, Options)
 %% @doc Gets the streaming settings for an `AppInstance'.
 get_app_instance_streaming_configurations(Client, AppInstanceArn)
   when is_map(Client) ->
-    get_app_instance_streaming_configurations(Client, AppInstanceArn, []).
-get_app_instance_streaming_configurations(Client, AppInstanceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    get_app_instance_streaming_configurations(Client, AppInstanceArn, #{}, #{}).
+
+get_app_instance_streaming_configurations(Client, AppInstanceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_app_instance_streaming_configurations(Client, AppInstanceArn, QueryMap, HeadersMap, []).
+
+get_app_instance_streaming_configurations(Client, AppInstanceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/streaming-configurations"],
     SuccessStatusCode = 200,
 
@@ -2008,9 +2142,14 @@ get_app_instance_streaming_configurations(Client, AppInstanceArn, Options)
 %% Chime SDK in the Amazon Chime Developer Guide .
 get_attendee(Client, AttendeeId, MeetingId)
   when is_map(Client) ->
-    get_attendee(Client, AttendeeId, MeetingId, []).
-get_attendee(Client, AttendeeId, MeetingId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_attendee(Client, AttendeeId, MeetingId, #{}, #{}).
+
+get_attendee(Client, AttendeeId, MeetingId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_attendee(Client, AttendeeId, MeetingId, QueryMap, HeadersMap, []).
+
+get_attendee(Client, AttendeeId, MeetingId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees/", aws_util:encode_uri(AttendeeId), ""],
     SuccessStatusCode = 200,
 
@@ -2024,9 +2163,14 @@ get_attendee(Client, AttendeeId, MeetingId, Options)
 %% bot type, status, and display name.
 get_bot(Client, AccountId, BotId)
   when is_map(Client) ->
-    get_bot(Client, AccountId, BotId, []).
-get_bot(Client, AccountId, BotId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_bot(Client, AccountId, BotId, #{}, #{}).
+
+get_bot(Client, AccountId, BotId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_bot(Client, AccountId, BotId, QueryMap, HeadersMap, []).
+
+get_bot(Client, AccountId, BotId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots/", aws_util:encode_uri(BotId), ""],
     SuccessStatusCode = 200,
 
@@ -2041,17 +2185,22 @@ get_bot(Client, AccountId, BotId, Options)
 %% The x-amz-chime-bearer request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value in
 %% the header.
-get_channel_message(Client, ChannelArn, MessageId, ChimeBearer)
+get_channel_message(Client, ChannelArn, MessageId)
   when is_map(Client) ->
-    get_channel_message(Client, ChannelArn, MessageId, ChimeBearer, []).
-get_channel_message(Client, ChannelArn, MessageId, ChimeBearer, Options)
-  when is_map(Client), is_list(Options) ->
+    get_channel_message(Client, ChannelArn, MessageId, #{}, #{}).
+
+get_channel_message(Client, ChannelArn, MessageId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_channel_message(Client, ChannelArn, MessageId, QueryMap, HeadersMap, []).
+
+get_channel_message(Client, ChannelArn, MessageId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages/", aws_util:encode_uri(MessageId), ""],
     SuccessStatusCode = 200,
 
     Headers0 =
       [
-        {<<"x-amz-chime-bearer">>, ChimeBearer}
+        {<<"x-amz-chime-bearer">>, maps:get(<<"x-amz-chime-bearer">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
@@ -2063,9 +2212,14 @@ get_channel_message(Client, ChannelArn, MessageId, ChimeBearer, Options)
 %% outgoing events, such as an HTTPS endpoint or Lambda function ARN.
 get_events_configuration(Client, AccountId, BotId)
   when is_map(Client) ->
-    get_events_configuration(Client, AccountId, BotId, []).
-get_events_configuration(Client, AccountId, BotId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_events_configuration(Client, AccountId, BotId, #{}, #{}).
+
+get_events_configuration(Client, AccountId, BotId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_events_configuration(Client, AccountId, BotId, QueryMap, HeadersMap, []).
+
+get_events_configuration(Client, AccountId, BotId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots/", aws_util:encode_uri(BotId), "/events-configuration"],
     SuccessStatusCode = 200,
 
@@ -2080,9 +2234,14 @@ get_events_configuration(Client, AccountId, BotId, Options)
 %% settings.
 get_global_settings(Client)
   when is_map(Client) ->
-    get_global_settings(Client, []).
-get_global_settings(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    get_global_settings(Client, #{}, #{}).
+
+get_global_settings(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_global_settings(Client, QueryMap, HeadersMap, []).
+
+get_global_settings(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/settings"],
     SuccessStatusCode = 200,
 
@@ -2099,9 +2258,14 @@ get_global_settings(Client, Options)
 %% Chime SDK in the Amazon Chime Developer Guide .
 get_meeting(Client, MeetingId)
   when is_map(Client) ->
-    get_meeting(Client, MeetingId, []).
-get_meeting(Client, MeetingId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_meeting(Client, MeetingId, #{}, #{}).
+
+get_meeting(Client, MeetingId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_meeting(Client, MeetingId, QueryMap, HeadersMap, []).
+
+get_meeting(Client, MeetingId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), ""],
     SuccessStatusCode = 200,
 
@@ -2114,9 +2278,14 @@ get_meeting(Client, MeetingId, Options)
 %% @doc The details of the endpoint for the messaging session.
 get_messaging_session_endpoint(Client)
   when is_map(Client) ->
-    get_messaging_session_endpoint(Client, []).
-get_messaging_session_endpoint(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    get_messaging_session_endpoint(Client, #{}, #{}).
+
+get_messaging_session_endpoint(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_messaging_session_endpoint(Client, QueryMap, HeadersMap, []).
+
+get_messaging_session_endpoint(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/endpoints/messaging-session"],
     SuccessStatusCode = 200,
 
@@ -2130,9 +2299,14 @@ get_messaging_session_endpoint(Client, Options)
 %% associations, capabilities, and product type.
 get_phone_number(Client, PhoneNumberId)
   when is_map(Client) ->
-    get_phone_number(Client, PhoneNumberId, []).
-get_phone_number(Client, PhoneNumberId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_phone_number(Client, PhoneNumberId, #{}, #{}).
+
+get_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap, []).
+
+get_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/phone-numbers/", aws_util:encode_uri(PhoneNumberId), ""],
     SuccessStatusCode = undefined,
 
@@ -2147,9 +2321,14 @@ get_phone_number(Client, PhoneNumberId, Options)
 %% order status.
 get_phone_number_order(Client, PhoneNumberOrderId)
   when is_map(Client) ->
-    get_phone_number_order(Client, PhoneNumberOrderId, []).
-get_phone_number_order(Client, PhoneNumberOrderId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_phone_number_order(Client, PhoneNumberOrderId, #{}, #{}).
+
+get_phone_number_order(Client, PhoneNumberOrderId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_phone_number_order(Client, PhoneNumberOrderId, QueryMap, HeadersMap, []).
+
+get_phone_number_order(Client, PhoneNumberOrderId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/phone-number-orders/", aws_util:encode_uri(PhoneNumberOrderId), ""],
     SuccessStatusCode = 200,
 
@@ -2163,9 +2342,14 @@ get_phone_number_order(Client, PhoneNumberOrderId, Options)
 %% account, such as the default outbound calling name.
 get_phone_number_settings(Client)
   when is_map(Client) ->
-    get_phone_number_settings(Client, []).
-get_phone_number_settings(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    get_phone_number_settings(Client, #{}, #{}).
+
+get_phone_number_settings(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_phone_number_settings(Client, QueryMap, HeadersMap, []).
+
+get_phone_number_settings(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/settings/phone-number"],
     SuccessStatusCode = 200,
 
@@ -2179,9 +2363,14 @@ get_phone_number_settings(Client, Options)
 %% Chime Voice Connector.
 get_proxy_session(Client, ProxySessionId, VoiceConnectorId)
   when is_map(Client) ->
-    get_proxy_session(Client, ProxySessionId, VoiceConnectorId, []).
-get_proxy_session(Client, ProxySessionId, VoiceConnectorId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_proxy_session(Client, ProxySessionId, VoiceConnectorId, #{}, #{}).
+
+get_proxy_session(Client, ProxySessionId, VoiceConnectorId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_proxy_session(Client, ProxySessionId, VoiceConnectorId, QueryMap, HeadersMap, []).
+
+get_proxy_session(Client, ProxySessionId, VoiceConnectorId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/proxy-sessions/", aws_util:encode_uri(ProxySessionId), ""],
     SuccessStatusCode = 200,
 
@@ -2198,9 +2387,14 @@ get_proxy_session(Client, ProxySessionId, VoiceConnectorId, Options)
 %% Policies in the Amazon Chime Administration Guide .
 get_retention_settings(Client, AccountId)
   when is_map(Client) ->
-    get_retention_settings(Client, AccountId, []).
-get_retention_settings(Client, AccountId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_retention_settings(Client, AccountId, #{}, #{}).
+
+get_retention_settings(Client, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_retention_settings(Client, AccountId, QueryMap, HeadersMap, []).
+
+get_retention_settings(Client, AccountId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/retention-settings"],
     SuccessStatusCode = undefined,
 
@@ -2214,9 +2408,14 @@ get_retention_settings(Client, AccountId, Options)
 %% Amazon Chime Enterprise account.
 get_room(Client, AccountId, RoomId)
   when is_map(Client) ->
-    get_room(Client, AccountId, RoomId, []).
-get_room(Client, AccountId, RoomId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_room(Client, AccountId, RoomId, #{}, #{}).
+
+get_room(Client, AccountId, RoomId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_room(Client, AccountId, RoomId, QueryMap, HeadersMap, []).
+
+get_room(Client, AccountId, RoomId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), ""],
     SuccessStatusCode = 200,
 
@@ -2230,9 +2429,14 @@ get_room(Client, AccountId, RoomId, Options)
 %% name, AWS Region, and endpoints.
 get_sip_media_application(Client, SipMediaApplicationId)
   when is_map(Client) ->
-    get_sip_media_application(Client, SipMediaApplicationId, []).
-get_sip_media_application(Client, SipMediaApplicationId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_sip_media_application(Client, SipMediaApplicationId, #{}, #{}).
+
+get_sip_media_application(Client, SipMediaApplicationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_sip_media_application(Client, SipMediaApplicationId, QueryMap, HeadersMap, []).
+
+get_sip_media_application(Client, SipMediaApplicationId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), ""],
     SuccessStatusCode = 200,
 
@@ -2246,9 +2450,14 @@ get_sip_media_application(Client, SipMediaApplicationId, Options)
 %% application.
 get_sip_media_application_logging_configuration(Client, SipMediaApplicationId)
   when is_map(Client) ->
-    get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, []).
-get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, #{}, #{}).
+
+get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, QueryMap, HeadersMap, []).
+
+get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), "/logging-configuration"],
     SuccessStatusCode = 200,
 
@@ -2262,9 +2471,14 @@ get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, O
 %% triggers, and target endpoints.
 get_sip_rule(Client, SipRuleId)
   when is_map(Client) ->
-    get_sip_rule(Client, SipRuleId, []).
-get_sip_rule(Client, SipRuleId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_sip_rule(Client, SipRuleId, #{}, #{}).
+
+get_sip_rule(Client, SipRuleId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_sip_rule(Client, SipRuleId, QueryMap, HeadersMap, []).
+
+get_sip_rule(Client, SipRuleId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/sip-rules/", aws_util:encode_uri(SipRuleId), ""],
     SuccessStatusCode = 200,
 
@@ -2281,9 +2495,14 @@ get_sip_rule(Client, SipRuleId, Options)
 %% the `ListUsers' action, and then filter by email address.
 get_user(Client, AccountId, UserId)
   when is_map(Client) ->
-    get_user(Client, AccountId, UserId, []).
-get_user(Client, AccountId, UserId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_user(Client, AccountId, UserId, #{}, #{}).
+
+get_user(Client, AccountId, UserId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_user(Client, AccountId, UserId, QueryMap, HeadersMap, []).
+
+get_user(Client, AccountId, UserId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), ""],
     SuccessStatusCode = 200,
 
@@ -2297,9 +2516,14 @@ get_user(Client, AccountId, UserId, Options)
 %% phone number settings.
 get_user_settings(Client, AccountId, UserId)
   when is_map(Client) ->
-    get_user_settings(Client, AccountId, UserId, []).
-get_user_settings(Client, AccountId, UserId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_user_settings(Client, AccountId, UserId, #{}, #{}).
+
+get_user_settings(Client, AccountId, UserId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_user_settings(Client, AccountId, UserId, QueryMap, HeadersMap, []).
+
+get_user_settings(Client, AccountId, UserId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), "/settings"],
     SuccessStatusCode = 200,
 
@@ -2313,9 +2537,14 @@ get_user_settings(Client, AccountId, UserId, Options)
 %% such as timestamps,name, outbound host, and encryption requirements.
 get_voice_connector(Client, VoiceConnectorId)
   when is_map(Client) ->
-    get_voice_connector(Client, VoiceConnectorId, []).
-get_voice_connector(Client, VoiceConnectorId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_voice_connector(Client, VoiceConnectorId, #{}, #{}).
+
+get_voice_connector(Client, VoiceConnectorId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_voice_connector(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
+
+get_voice_connector(Client, VoiceConnectorId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), ""],
     SuccessStatusCode = 200,
 
@@ -2329,9 +2558,14 @@ get_voice_connector(Client, VoiceConnectorId, Options)
 %% Amazon Chime Voice Connector.
 get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId)
   when is_map(Client) ->
-    get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, []).
-get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, #{}, #{}).
+
+get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
+
+get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/emergency-calling-configuration"],
     SuccessStatusCode = 200,
 
@@ -2345,9 +2579,14 @@ get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Op
 %% group, such as timestamps,name, and associated `VoiceConnectorItems' .
 get_voice_connector_group(Client, VoiceConnectorGroupId)
   when is_map(Client) ->
-    get_voice_connector_group(Client, VoiceConnectorGroupId, []).
-get_voice_connector_group(Client, VoiceConnectorGroupId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_voice_connector_group(Client, VoiceConnectorGroupId, #{}, #{}).
+
+get_voice_connector_group(Client, VoiceConnectorGroupId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_voice_connector_group(Client, VoiceConnectorGroupId, QueryMap, HeadersMap, []).
+
+get_voice_connector_group(Client, VoiceConnectorGroupId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/voice-connector-groups/", aws_util:encode_uri(VoiceConnectorGroupId), ""],
     SuccessStatusCode = 200,
 
@@ -2364,9 +2603,14 @@ get_voice_connector_group(Client, VoiceConnectorGroupId, Options)
 %% CloudWatch Logs.
 get_voice_connector_logging_configuration(Client, VoiceConnectorId)
   when is_map(Client) ->
-    get_voice_connector_logging_configuration(Client, VoiceConnectorId, []).
-get_voice_connector_logging_configuration(Client, VoiceConnectorId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_voice_connector_logging_configuration(Client, VoiceConnectorId, #{}, #{}).
+
+get_voice_connector_logging_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_voice_connector_logging_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
+
+get_voice_connector_logging_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/logging-configuration"],
     SuccessStatusCode = 200,
 
@@ -2380,9 +2624,14 @@ get_voice_connector_logging_configuration(Client, VoiceConnectorId, Options)
 %% Voice Connector.
 get_voice_connector_origination(Client, VoiceConnectorId)
   when is_map(Client) ->
-    get_voice_connector_origination(Client, VoiceConnectorId, []).
-get_voice_connector_origination(Client, VoiceConnectorId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_voice_connector_origination(Client, VoiceConnectorId, #{}, #{}).
+
+get_voice_connector_origination(Client, VoiceConnectorId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_voice_connector_origination(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
+
+get_voice_connector_origination(Client, VoiceConnectorId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/origination"],
     SuccessStatusCode = 200,
 
@@ -2396,9 +2645,14 @@ get_voice_connector_origination(Client, VoiceConnectorId, Options)
 %% Voice Connector.
 get_voice_connector_proxy(Client, VoiceConnectorId)
   when is_map(Client) ->
-    get_voice_connector_proxy(Client, VoiceConnectorId, []).
-get_voice_connector_proxy(Client, VoiceConnectorId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_voice_connector_proxy(Client, VoiceConnectorId, #{}, #{}).
+
+get_voice_connector_proxy(Client, VoiceConnectorId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_voice_connector_proxy(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
+
+get_voice_connector_proxy(Client, VoiceConnectorId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/programmable-numbers/proxy"],
     SuccessStatusCode = 200,
 
@@ -2415,9 +2669,14 @@ get_voice_connector_proxy(Client, VoiceConnectorId, Options)
 %% also shows the retention period, in hours, for the Amazon Kinesis data.
 get_voice_connector_streaming_configuration(Client, VoiceConnectorId)
   when is_map(Client) ->
-    get_voice_connector_streaming_configuration(Client, VoiceConnectorId, []).
-get_voice_connector_streaming_configuration(Client, VoiceConnectorId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_voice_connector_streaming_configuration(Client, VoiceConnectorId, #{}, #{}).
+
+get_voice_connector_streaming_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_voice_connector_streaming_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
+
+get_voice_connector_streaming_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/streaming-configuration"],
     SuccessStatusCode = 200,
 
@@ -2431,9 +2690,14 @@ get_voice_connector_streaming_configuration(Client, VoiceConnectorId, Options)
 %% Voice Connector.
 get_voice_connector_termination(Client, VoiceConnectorId)
   when is_map(Client) ->
-    get_voice_connector_termination(Client, VoiceConnectorId, []).
-get_voice_connector_termination(Client, VoiceConnectorId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_voice_connector_termination(Client, VoiceConnectorId, #{}, #{}).
+
+get_voice_connector_termination(Client, VoiceConnectorId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_voice_connector_termination(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
+
+get_voice_connector_termination(Client, VoiceConnectorId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination"],
     SuccessStatusCode = 200,
 
@@ -2448,9 +2712,14 @@ get_voice_connector_termination(Client, VoiceConnectorId, Options)
 %% Connector.
 get_voice_connector_termination_health(Client, VoiceConnectorId)
   when is_map(Client) ->
-    get_voice_connector_termination_health(Client, VoiceConnectorId, []).
-get_voice_connector_termination_health(Client, VoiceConnectorId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_voice_connector_termination_health(Client, VoiceConnectorId, #{}, #{}).
+
+get_voice_connector_termination_health(Client, VoiceConnectorId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_voice_connector_termination_health(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
+
+get_voice_connector_termination_health(Client, VoiceConnectorId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination/health"],
     SuccessStatusCode = 200,
 
@@ -2485,11 +2754,16 @@ invite_users(Client, AccountId, Input0, Options) ->
 %% You can filter accounts by account name prefix. To find out which Amazon
 %% Chime account a user belongs to, toucan filter by the user's email
 %% address, which returns one account result.
-list_accounts(Client, MaxResults, Name, NextToken, UserEmail)
+list_accounts(Client)
   when is_map(Client) ->
-    list_accounts(Client, MaxResults, Name, NextToken, UserEmail, []).
-list_accounts(Client, MaxResults, Name, NextToken, UserEmail, Options)
-  when is_map(Client), is_list(Options) ->
+    list_accounts(Client, #{}, #{}).
+
+list_accounts(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_accounts(Client, QueryMap, HeadersMap, []).
+
+list_accounts(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts"],
     SuccessStatusCode = undefined,
 
@@ -2497,21 +2771,26 @@ list_accounts(Client, MaxResults, Name, NextToken, UserEmail, Options)
 
     Query0_ =
       [
-        {<<"max-results">>, MaxResults},
-        {<<"name">>, Name},
-        {<<"next-token">>, NextToken},
-        {<<"user-email">>, UserEmail}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"name">>, maps:get(<<"name">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)},
+        {<<"user-email">>, maps:get(<<"user-email">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of the administrators in the `AppInstance'.
-list_app_instance_admins(Client, AppInstanceArn, MaxResults, NextToken)
+list_app_instance_admins(Client, AppInstanceArn)
   when is_map(Client) ->
-    list_app_instance_admins(Client, AppInstanceArn, MaxResults, NextToken, []).
-list_app_instance_admins(Client, AppInstanceArn, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_app_instance_admins(Client, AppInstanceArn, #{}, #{}).
+
+list_app_instance_admins(Client, AppInstanceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_app_instance_admins(Client, AppInstanceArn, QueryMap, HeadersMap, []).
+
+list_app_instance_admins(Client, AppInstanceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/admins"],
     SuccessStatusCode = 200,
 
@@ -2519,19 +2798,24 @@ list_app_instance_admins(Client, AppInstanceArn, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List all `AppInstanceUsers' created under a single `AppInstance'.
-list_app_instance_users(Client, AppInstanceArn, MaxResults, NextToken)
+list_app_instance_users(Client, AppInstanceArn)
   when is_map(Client) ->
-    list_app_instance_users(Client, AppInstanceArn, MaxResults, NextToken, []).
-list_app_instance_users(Client, AppInstanceArn, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_app_instance_users(Client, AppInstanceArn, #{}, #{}).
+
+list_app_instance_users(Client, AppInstanceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_app_instance_users(Client, AppInstanceArn, QueryMap, HeadersMap, []).
+
+list_app_instance_users(Client, AppInstanceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/app-instance-users"],
     SuccessStatusCode = 200,
 
@@ -2540,8 +2824,8 @@ list_app_instance_users(Client, AppInstanceArn, MaxResults, NextToken, Options)
     Query0_ =
       [
         {<<"app-instance-arn">>, AppInstanceArn},
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -2549,11 +2833,16 @@ list_app_instance_users(Client, AppInstanceArn, MaxResults, NextToken, Options)
 
 %% @doc Lists all Amazon Chime `AppInstance's created under a single AWS
 %% account.
-list_app_instances(Client, MaxResults, NextToken)
+list_app_instances(Client)
   when is_map(Client) ->
-    list_app_instances(Client, MaxResults, NextToken, []).
-list_app_instances(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_app_instances(Client, #{}, #{}).
+
+list_app_instances(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_app_instances(Client, QueryMap, HeadersMap, []).
+
+list_app_instances(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/app-instances"],
     SuccessStatusCode = 200,
 
@@ -2561,8 +2850,8 @@ list_app_instances(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -2571,9 +2860,14 @@ list_app_instances(Client, MaxResults, NextToken, Options)
 %% @doc Lists the tags applied to an Amazon Chime SDK attendee resource.
 list_attendee_tags(Client, AttendeeId, MeetingId)
   when is_map(Client) ->
-    list_attendee_tags(Client, AttendeeId, MeetingId, []).
-list_attendee_tags(Client, AttendeeId, MeetingId, Options)
-  when is_map(Client), is_list(Options) ->
+    list_attendee_tags(Client, AttendeeId, MeetingId, #{}, #{}).
+
+list_attendee_tags(Client, AttendeeId, MeetingId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_attendee_tags(Client, AttendeeId, MeetingId, QueryMap, HeadersMap, []).
+
+list_attendee_tags(Client, AttendeeId, MeetingId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees/", aws_util:encode_uri(AttendeeId), "/tags"],
     SuccessStatusCode = 200,
 
@@ -2587,11 +2881,16 @@ list_attendee_tags(Client, AttendeeId, MeetingId, Options)
 %%
 %% For more information about the Amazon Chime SDK, see Using the Amazon
 %% Chime SDK in the Amazon Chime Developer Guide .
-list_attendees(Client, MeetingId, MaxResults, NextToken)
+list_attendees(Client, MeetingId)
   when is_map(Client) ->
-    list_attendees(Client, MeetingId, MaxResults, NextToken, []).
-list_attendees(Client, MeetingId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_attendees(Client, MeetingId, #{}, #{}).
+
+list_attendees(Client, MeetingId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_attendees(Client, MeetingId, QueryMap, HeadersMap, []).
+
+list_attendees(Client, MeetingId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees"],
     SuccessStatusCode = 200,
 
@@ -2599,8 +2898,8 @@ list_attendees(Client, MeetingId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -2608,11 +2907,16 @@ list_attendees(Client, MeetingId, MaxResults, NextToken, Options)
 
 %% @doc Lists the bots associated with the administrator's Amazon Chime
 %% Enterprise account ID.
-list_bots(Client, AccountId, MaxResults, NextToken)
+list_bots(Client, AccountId)
   when is_map(Client) ->
-    list_bots(Client, AccountId, MaxResults, NextToken, []).
-list_bots(Client, AccountId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_bots(Client, AccountId, #{}, #{}).
+
+list_bots(Client, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_bots(Client, AccountId, QueryMap, HeadersMap, []).
+
+list_bots(Client, AccountId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots"],
     SuccessStatusCode = 200,
 
@@ -2620,8 +2924,8 @@ list_bots(Client, AccountId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -2632,24 +2936,29 @@ list_bots(Client, AccountId, MaxResults, NextToken, Options)
 %% The `x-amz-chime-bearer' request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value in
 %% the header.
-list_channel_bans(Client, ChannelArn, MaxResults, NextToken, ChimeBearer)
+list_channel_bans(Client, ChannelArn)
   when is_map(Client) ->
-    list_channel_bans(Client, ChannelArn, MaxResults, NextToken, ChimeBearer, []).
-list_channel_bans(Client, ChannelArn, MaxResults, NextToken, ChimeBearer, Options)
-  when is_map(Client), is_list(Options) ->
+    list_channel_bans(Client, ChannelArn, #{}, #{}).
+
+list_channel_bans(Client, ChannelArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_channel_bans(Client, ChannelArn, QueryMap, HeadersMap, []).
+
+list_channel_bans(Client, ChannelArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/bans"],
     SuccessStatusCode = 200,
 
     Headers0 =
       [
-        {<<"x-amz-chime-bearer">>, ChimeBearer}
+        {<<"x-amz-chime-bearer">>, maps:get(<<"x-amz-chime-bearer">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
     Query0_ =
       [
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -2660,25 +2969,30 @@ list_channel_bans(Client, ChannelArn, MaxResults, NextToken, ChimeBearer, Option
 %% The `x-amz-chime-bearer' request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value in
 %% the header.
-list_channel_memberships(Client, ChannelArn, MaxResults, NextToken, Type, ChimeBearer)
+list_channel_memberships(Client, ChannelArn)
   when is_map(Client) ->
-    list_channel_memberships(Client, ChannelArn, MaxResults, NextToken, Type, ChimeBearer, []).
-list_channel_memberships(Client, ChannelArn, MaxResults, NextToken, Type, ChimeBearer, Options)
-  when is_map(Client), is_list(Options) ->
+    list_channel_memberships(Client, ChannelArn, #{}, #{}).
+
+list_channel_memberships(Client, ChannelArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_channel_memberships(Client, ChannelArn, QueryMap, HeadersMap, []).
+
+list_channel_memberships(Client, ChannelArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/memberships"],
     SuccessStatusCode = 200,
 
     Headers0 =
       [
-        {<<"x-amz-chime-bearer">>, ChimeBearer}
+        {<<"x-amz-chime-bearer">>, maps:get(<<"x-amz-chime-bearer">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
     Query0_ =
       [
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken},
-        {<<"type">>, Type}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)},
+        {<<"type">>, maps:get(<<"type">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -2692,25 +3006,30 @@ list_channel_memberships(Client, ChannelArn, MaxResults, NextToken, Type, ChimeB
 %% The `x-amz-chime-bearer' request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value in
 %% the header.
-list_channel_memberships_for_app_instance_user(Client, AppInstanceUserArn, MaxResults, NextToken, ChimeBearer)
+list_channel_memberships_for_app_instance_user(Client)
   when is_map(Client) ->
-    list_channel_memberships_for_app_instance_user(Client, AppInstanceUserArn, MaxResults, NextToken, ChimeBearer, []).
-list_channel_memberships_for_app_instance_user(Client, AppInstanceUserArn, MaxResults, NextToken, ChimeBearer, Options)
-  when is_map(Client), is_list(Options) ->
+    list_channel_memberships_for_app_instance_user(Client, #{}, #{}).
+
+list_channel_memberships_for_app_instance_user(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_channel_memberships_for_app_instance_user(Client, QueryMap, HeadersMap, []).
+
+list_channel_memberships_for_app_instance_user(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/channels?scope=app-instance-user-memberships"],
     SuccessStatusCode = 200,
 
     Headers0 =
       [
-        {<<"x-amz-chime-bearer">>, ChimeBearer}
+        {<<"x-amz-chime-bearer">>, maps:get(<<"x-amz-chime-bearer">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
     Query0_ =
       [
-        {<<"app-instance-user-arn">>, AppInstanceUserArn},
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken}
+        {<<"app-instance-user-arn">>, maps:get(<<"app-instance-user-arn">>, QueryMap, undefined)},
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -2728,27 +3047,32 @@ list_channel_memberships_for_app_instance_user(Client, AppInstanceUserArn, MaxRe
 %% Also, the x-amz-chime-bearer request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value in
 %% the header.
-list_channel_messages(Client, ChannelArn, MaxResults, NextToken, NotAfter, NotBefore, SortOrder, ChimeBearer)
+list_channel_messages(Client, ChannelArn)
   when is_map(Client) ->
-    list_channel_messages(Client, ChannelArn, MaxResults, NextToken, NotAfter, NotBefore, SortOrder, ChimeBearer, []).
-list_channel_messages(Client, ChannelArn, MaxResults, NextToken, NotAfter, NotBefore, SortOrder, ChimeBearer, Options)
-  when is_map(Client), is_list(Options) ->
+    list_channel_messages(Client, ChannelArn, #{}, #{}).
+
+list_channel_messages(Client, ChannelArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_channel_messages(Client, ChannelArn, QueryMap, HeadersMap, []).
+
+list_channel_messages(Client, ChannelArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages"],
     SuccessStatusCode = 200,
 
     Headers0 =
       [
-        {<<"x-amz-chime-bearer">>, ChimeBearer}
+        {<<"x-amz-chime-bearer">>, maps:get(<<"x-amz-chime-bearer">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
     Query0_ =
       [
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken},
-        {<<"not-after">>, NotAfter},
-        {<<"not-before">>, NotBefore},
-        {<<"sort-order">>, SortOrder}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)},
+        {<<"not-after">>, maps:get(<<"not-after">>, QueryMap, undefined)},
+        {<<"not-before">>, maps:get(<<"not-before">>, QueryMap, undefined)},
+        {<<"sort-order">>, maps:get(<<"sort-order">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -2759,24 +3083,29 @@ list_channel_messages(Client, ChannelArn, MaxResults, NextToken, NotAfter, NotBe
 %% The `x-amz-chime-bearer' request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value in
 %% the header.
-list_channel_moderators(Client, ChannelArn, MaxResults, NextToken, ChimeBearer)
+list_channel_moderators(Client, ChannelArn)
   when is_map(Client) ->
-    list_channel_moderators(Client, ChannelArn, MaxResults, NextToken, ChimeBearer, []).
-list_channel_moderators(Client, ChannelArn, MaxResults, NextToken, ChimeBearer, Options)
-  when is_map(Client), is_list(Options) ->
+    list_channel_moderators(Client, ChannelArn, #{}, #{}).
+
+list_channel_moderators(Client, ChannelArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_channel_moderators(Client, ChannelArn, QueryMap, HeadersMap, []).
+
+list_channel_moderators(Client, ChannelArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/moderators"],
     SuccessStatusCode = 200,
 
     Headers0 =
       [
-        {<<"x-amz-chime-bearer">>, ChimeBearer}
+        {<<"x-amz-chime-bearer">>, maps:get(<<"x-amz-chime-bearer">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
     Query0_ =
       [
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -2798,26 +3127,31 @@ list_channel_moderators(Client, ChannelArn, MaxResults, NextToken, ChimeBearer, 
 %% </li> </ul> The `x-amz-chime-bearer' request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value in
 %% the header.
-list_channels(Client, AppInstanceArn, MaxResults, NextToken, Privacy, ChimeBearer)
+list_channels(Client, AppInstanceArn)
   when is_map(Client) ->
-    list_channels(Client, AppInstanceArn, MaxResults, NextToken, Privacy, ChimeBearer, []).
-list_channels(Client, AppInstanceArn, MaxResults, NextToken, Privacy, ChimeBearer, Options)
-  when is_map(Client), is_list(Options) ->
+    list_channels(Client, AppInstanceArn, #{}, #{}).
+
+list_channels(Client, AppInstanceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_channels(Client, AppInstanceArn, QueryMap, HeadersMap, []).
+
+list_channels(Client, AppInstanceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/channels"],
     SuccessStatusCode = 200,
 
     Headers0 =
       [
-        {<<"x-amz-chime-bearer">>, ChimeBearer}
+        {<<"x-amz-chime-bearer">>, maps:get(<<"x-amz-chime-bearer">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
     Query0_ =
       [
         {<<"app-instance-arn">>, AppInstanceArn},
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken},
-        {<<"privacy">>, Privacy}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)},
+        {<<"privacy">>, maps:get(<<"privacy">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -2828,25 +3162,30 @@ list_channels(Client, AppInstanceArn, MaxResults, NextToken, Privacy, ChimeBeare
 %% The `x-amz-chime-bearer' request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value in
 %% the header.
-list_channels_moderated_by_app_instance_user(Client, AppInstanceUserArn, MaxResults, NextToken, ChimeBearer)
+list_channels_moderated_by_app_instance_user(Client)
   when is_map(Client) ->
-    list_channels_moderated_by_app_instance_user(Client, AppInstanceUserArn, MaxResults, NextToken, ChimeBearer, []).
-list_channels_moderated_by_app_instance_user(Client, AppInstanceUserArn, MaxResults, NextToken, ChimeBearer, Options)
-  when is_map(Client), is_list(Options) ->
+    list_channels_moderated_by_app_instance_user(Client, #{}, #{}).
+
+list_channels_moderated_by_app_instance_user(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_channels_moderated_by_app_instance_user(Client, QueryMap, HeadersMap, []).
+
+list_channels_moderated_by_app_instance_user(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/channels?scope=app-instance-user-moderated-channels"],
     SuccessStatusCode = 200,
 
     Headers0 =
       [
-        {<<"x-amz-chime-bearer">>, ChimeBearer}
+        {<<"x-amz-chime-bearer">>, maps:get(<<"x-amz-chime-bearer">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
     Query0_ =
       [
-        {<<"app-instance-user-arn">>, AppInstanceUserArn},
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken}
+        {<<"app-instance-user-arn">>, maps:get(<<"app-instance-user-arn">>, QueryMap, undefined)},
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -2855,9 +3194,14 @@ list_channels_moderated_by_app_instance_user(Client, AppInstanceUserArn, MaxResu
 %% @doc Lists the tags applied to an Amazon Chime SDK meeting resource.
 list_meeting_tags(Client, MeetingId)
   when is_map(Client) ->
-    list_meeting_tags(Client, MeetingId, []).
-list_meeting_tags(Client, MeetingId, Options)
-  when is_map(Client), is_list(Options) ->
+    list_meeting_tags(Client, MeetingId, #{}, #{}).
+
+list_meeting_tags(Client, MeetingId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_meeting_tags(Client, MeetingId, QueryMap, HeadersMap, []).
+
+list_meeting_tags(Client, MeetingId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/tags"],
     SuccessStatusCode = 200,
 
@@ -2871,11 +3215,16 @@ list_meeting_tags(Client, MeetingId, Options)
 %%
 %% For more information about the Amazon Chime SDK, see Using the Amazon
 %% Chime SDK in the Amazon Chime Developer Guide .
-list_meetings(Client, MaxResults, NextToken)
+list_meetings(Client)
   when is_map(Client) ->
-    list_meetings(Client, MaxResults, NextToken, []).
-list_meetings(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_meetings(Client, #{}, #{}).
+
+list_meetings(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_meetings(Client, QueryMap, HeadersMap, []).
+
+list_meetings(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/meetings"],
     SuccessStatusCode = 200,
 
@@ -2883,8 +3232,8 @@ list_meetings(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -2892,11 +3241,16 @@ list_meetings(Client, MaxResults, NextToken, Options)
 
 %% @doc Lists the phone number orders for the administrator's Amazon Chime
 %% account.
-list_phone_number_orders(Client, MaxResults, NextToken)
+list_phone_number_orders(Client)
   when is_map(Client) ->
-    list_phone_number_orders(Client, MaxResults, NextToken, []).
-list_phone_number_orders(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_phone_number_orders(Client, #{}, #{}).
+
+list_phone_number_orders(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_phone_number_orders(Client, QueryMap, HeadersMap, []).
+
+list_phone_number_orders(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/phone-number-orders"],
     SuccessStatusCode = 200,
 
@@ -2904,8 +3258,8 @@ list_phone_number_orders(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -2914,11 +3268,16 @@ list_phone_number_orders(Client, MaxResults, NextToken, Options)
 %% @doc Lists the phone numbers for the specified Amazon Chime account,
 %% Amazon Chime user, Amazon Chime Voice Connector, or Amazon Chime Voice
 %% Connector group.
-list_phone_numbers(Client, FilterName, FilterValue, MaxResults, NextToken, ProductType, Status)
+list_phone_numbers(Client)
   when is_map(Client) ->
-    list_phone_numbers(Client, FilterName, FilterValue, MaxResults, NextToken, ProductType, Status, []).
-list_phone_numbers(Client, FilterName, FilterValue, MaxResults, NextToken, ProductType, Status, Options)
-  when is_map(Client), is_list(Options) ->
+    list_phone_numbers(Client, #{}, #{}).
+
+list_phone_numbers(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_phone_numbers(Client, QueryMap, HeadersMap, []).
+
+list_phone_numbers(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/phone-numbers"],
     SuccessStatusCode = undefined,
 
@@ -2926,12 +3285,12 @@ list_phone_numbers(Client, FilterName, FilterValue, MaxResults, NextToken, Produ
 
     Query0_ =
       [
-        {<<"filter-name">>, FilterName},
-        {<<"filter-value">>, FilterValue},
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken},
-        {<<"product-type">>, ProductType},
-        {<<"status">>, Status}
+        {<<"filter-name">>, maps:get(<<"filter-name">>, QueryMap, undefined)},
+        {<<"filter-value">>, maps:get(<<"filter-value">>, QueryMap, undefined)},
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)},
+        {<<"product-type">>, maps:get(<<"product-type">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -2939,11 +3298,16 @@ list_phone_numbers(Client, FilterName, FilterValue, MaxResults, NextToken, Produ
 
 %% @doc Lists the proxy sessions for the specified Amazon Chime Voice
 %% Connector.
-list_proxy_sessions(Client, VoiceConnectorId, MaxResults, NextToken, Status)
+list_proxy_sessions(Client, VoiceConnectorId)
   when is_map(Client) ->
-    list_proxy_sessions(Client, VoiceConnectorId, MaxResults, NextToken, Status, []).
-list_proxy_sessions(Client, VoiceConnectorId, MaxResults, NextToken, Status, Options)
-  when is_map(Client), is_list(Options) ->
+    list_proxy_sessions(Client, VoiceConnectorId, #{}, #{}).
+
+list_proxy_sessions(Client, VoiceConnectorId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_proxy_sessions(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
+
+list_proxy_sessions(Client, VoiceConnectorId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/proxy-sessions"],
     SuccessStatusCode = 200,
 
@@ -2951,9 +3315,9 @@ list_proxy_sessions(Client, VoiceConnectorId, MaxResults, NextToken, Status, Opt
 
     Query0_ =
       [
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken},
-        {<<"status">>, Status}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -2962,11 +3326,16 @@ list_proxy_sessions(Client, VoiceConnectorId, MaxResults, NextToken, Status, Opt
 %% @doc Lists the membership details for the specified room in an Amazon
 %% Chime Enterprise account, such as the members' IDs, email addresses, and
 %% names.
-list_room_memberships(Client, AccountId, RoomId, MaxResults, NextToken)
+list_room_memberships(Client, AccountId, RoomId)
   when is_map(Client) ->
-    list_room_memberships(Client, AccountId, RoomId, MaxResults, NextToken, []).
-list_room_memberships(Client, AccountId, RoomId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_room_memberships(Client, AccountId, RoomId, #{}, #{}).
+
+list_room_memberships(Client, AccountId, RoomId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_room_memberships(Client, AccountId, RoomId, QueryMap, HeadersMap, []).
+
+list_room_memberships(Client, AccountId, RoomId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), "/memberships"],
     SuccessStatusCode = 200,
 
@@ -2974,8 +3343,8 @@ list_room_memberships(Client, AccountId, RoomId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -2986,11 +3355,16 @@ list_room_memberships(Client, AccountId, RoomId, MaxResults, NextToken, Options)
 %%
 %% Optionally, filter the results by a member ID (user ID or bot ID) to see a
 %% list of rooms that the member belongs to.
-list_rooms(Client, AccountId, MaxResults, MemberId, NextToken)
+list_rooms(Client, AccountId)
   when is_map(Client) ->
-    list_rooms(Client, AccountId, MaxResults, MemberId, NextToken, []).
-list_rooms(Client, AccountId, MaxResults, MemberId, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_rooms(Client, AccountId, #{}, #{}).
+
+list_rooms(Client, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_rooms(Client, AccountId, QueryMap, HeadersMap, []).
+
+list_rooms(Client, AccountId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms"],
     SuccessStatusCode = 200,
 
@@ -2998,9 +3372,9 @@ list_rooms(Client, AccountId, MaxResults, MemberId, NextToken, Options)
 
     Query0_ =
       [
-        {<<"max-results">>, MaxResults},
-        {<<"member-id">>, MemberId},
-        {<<"next-token">>, NextToken}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"member-id">>, maps:get(<<"member-id">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -3008,11 +3382,16 @@ list_rooms(Client, AccountId, MaxResults, MemberId, NextToken, Options)
 
 %% @doc Lists the SIP media applications under the administrator's AWS
 %% account.
-list_sip_media_applications(Client, MaxResults, NextToken)
+list_sip_media_applications(Client)
   when is_map(Client) ->
-    list_sip_media_applications(Client, MaxResults, NextToken, []).
-list_sip_media_applications(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_sip_media_applications(Client, #{}, #{}).
+
+list_sip_media_applications(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_sip_media_applications(Client, QueryMap, HeadersMap, []).
+
+list_sip_media_applications(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/sip-media-applications"],
     SuccessStatusCode = 200,
 
@@ -3020,19 +3399,24 @@ list_sip_media_applications(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the SIP rules under the administrator's AWS account.
-list_sip_rules(Client, MaxResults, NextToken, SipMediaApplicationId)
+list_sip_rules(Client)
   when is_map(Client) ->
-    list_sip_rules(Client, MaxResults, NextToken, SipMediaApplicationId, []).
-list_sip_rules(Client, MaxResults, NextToken, SipMediaApplicationId, Options)
-  when is_map(Client), is_list(Options) ->
+    list_sip_rules(Client, #{}, #{}).
+
+list_sip_rules(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_sip_rules(Client, QueryMap, HeadersMap, []).
+
+list_sip_rules(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/sip-rules"],
     SuccessStatusCode = 200,
 
@@ -3040,9 +3424,9 @@ list_sip_rules(Client, MaxResults, NextToken, SipMediaApplicationId, Options)
 
     Query0_ =
       [
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken},
-        {<<"sip-media-application">>, SipMediaApplicationId}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)},
+        {<<"sip-media-application">>, maps:get(<<"sip-media-application">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -3051,9 +3435,14 @@ list_sip_rules(Client, MaxResults, NextToken, SipMediaApplicationId, Options)
 %% @doc Lists the tags applied to an Amazon Chime SDK meeting resource.
 list_tags_for_resource(Client, ResourceARN)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceARN, []).
-list_tags_for_resource(Client, ResourceARN, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceARN, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags"],
     SuccessStatusCode = undefined,
 
@@ -3071,11 +3460,16 @@ list_tags_for_resource(Client, ResourceARN, Options)
 %%
 %% You can specify an email address to list only the user that the email
 %% address belongs to.
-list_users(Client, AccountId, MaxResults, NextToken, UserEmail, UserType)
+list_users(Client, AccountId)
   when is_map(Client) ->
-    list_users(Client, AccountId, MaxResults, NextToken, UserEmail, UserType, []).
-list_users(Client, AccountId, MaxResults, NextToken, UserEmail, UserType, Options)
-  when is_map(Client), is_list(Options) ->
+    list_users(Client, AccountId, #{}, #{}).
+
+list_users(Client, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_users(Client, AccountId, QueryMap, HeadersMap, []).
+
+list_users(Client, AccountId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users"],
     SuccessStatusCode = 200,
 
@@ -3083,10 +3477,10 @@ list_users(Client, AccountId, MaxResults, NextToken, UserEmail, UserType, Option
 
     Query0_ =
       [
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken},
-        {<<"user-email">>, UserEmail},
-        {<<"user-type">>, UserType}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)},
+        {<<"user-email">>, maps:get(<<"user-email">>, QueryMap, undefined)},
+        {<<"user-type">>, maps:get(<<"user-type">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -3094,11 +3488,16 @@ list_users(Client, AccountId, MaxResults, NextToken, UserEmail, UserType, Option
 
 %% @doc Lists the Amazon Chime Voice Connector groups for the administrator's
 %% AWS account.
-list_voice_connector_groups(Client, MaxResults, NextToken)
+list_voice_connector_groups(Client)
   when is_map(Client) ->
-    list_voice_connector_groups(Client, MaxResults, NextToken, []).
-list_voice_connector_groups(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_voice_connector_groups(Client, #{}, #{}).
+
+list_voice_connector_groups(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_voice_connector_groups(Client, QueryMap, HeadersMap, []).
+
+list_voice_connector_groups(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/voice-connector-groups"],
     SuccessStatusCode = 200,
 
@@ -3106,8 +3505,8 @@ list_voice_connector_groups(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -3117,9 +3516,14 @@ list_voice_connector_groups(Client, MaxResults, NextToken, Options)
 %% Connector.
 list_voice_connector_termination_credentials(Client, VoiceConnectorId)
   when is_map(Client) ->
-    list_voice_connector_termination_credentials(Client, VoiceConnectorId, []).
-list_voice_connector_termination_credentials(Client, VoiceConnectorId, Options)
-  when is_map(Client), is_list(Options) ->
+    list_voice_connector_termination_credentials(Client, VoiceConnectorId, #{}, #{}).
+
+list_voice_connector_termination_credentials(Client, VoiceConnectorId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_voice_connector_termination_credentials(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
+
+list_voice_connector_termination_credentials(Client, VoiceConnectorId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination/credentials"],
     SuccessStatusCode = 200,
 
@@ -3131,11 +3535,16 @@ list_voice_connector_termination_credentials(Client, VoiceConnectorId, Options)
 
 %% @doc Lists the Amazon Chime Voice Connectors for the administrator's AWS
 %% account.
-list_voice_connectors(Client, MaxResults, NextToken)
+list_voice_connectors(Client)
   when is_map(Client) ->
-    list_voice_connectors(Client, MaxResults, NextToken, []).
-list_voice_connectors(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_voice_connectors(Client, #{}, #{}).
+
+list_voice_connectors(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_voice_connectors(Client, QueryMap, HeadersMap, []).
+
+list_voice_connectors(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/voice-connectors"],
     SuccessStatusCode = 200,
 
@@ -3143,8 +3552,8 @@ list_voice_connectors(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -3511,11 +3920,16 @@ restore_phone_number(Client, PhoneNumberId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Searches phone numbers that can be ordered.
-search_available_phone_numbers(Client, AreaCode, City, Country, MaxResults, NextToken, State, TollFreePrefix)
+search_available_phone_numbers(Client)
   when is_map(Client) ->
-    search_available_phone_numbers(Client, AreaCode, City, Country, MaxResults, NextToken, State, TollFreePrefix, []).
-search_available_phone_numbers(Client, AreaCode, City, Country, MaxResults, NextToken, State, TollFreePrefix, Options)
-  when is_map(Client), is_list(Options) ->
+    search_available_phone_numbers(Client, #{}, #{}).
+
+search_available_phone_numbers(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    search_available_phone_numbers(Client, QueryMap, HeadersMap, []).
+
+search_available_phone_numbers(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/search?type=phone-numbers"],
     SuccessStatusCode = undefined,
 
@@ -3523,13 +3937,13 @@ search_available_phone_numbers(Client, AreaCode, City, Country, MaxResults, Next
 
     Query0_ =
       [
-        {<<"area-code">>, AreaCode},
-        {<<"city">>, City},
-        {<<"country">>, Country},
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken},
-        {<<"state">>, State},
-        {<<"toll-free-prefix">>, TollFreePrefix}
+        {<<"area-code">>, maps:get(<<"area-code">>, QueryMap, undefined)},
+        {<<"city">>, maps:get(<<"city">>, QueryMap, undefined)},
+        {<<"country">>, maps:get(<<"country">>, QueryMap, undefined)},
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)},
+        {<<"state">>, maps:get(<<"state">>, QueryMap, undefined)},
+        {<<"toll-free-prefix">>, maps:get(<<"toll-free-prefix">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

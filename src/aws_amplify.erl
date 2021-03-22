@@ -38,33 +38,48 @@
          generate_access_logs/3,
          generate_access_logs/4,
          get_app/2,
-         get_app/3,
+         get_app/4,
+         get_app/5,
          get_artifact_url/2,
-         get_artifact_url/3,
+         get_artifact_url/4,
+         get_artifact_url/5,
          get_backend_environment/3,
-         get_backend_environment/4,
+         get_backend_environment/5,
+         get_backend_environment/6,
          get_branch/3,
-         get_branch/4,
+         get_branch/5,
+         get_branch/6,
          get_domain_association/3,
-         get_domain_association/4,
+         get_domain_association/5,
+         get_domain_association/6,
          get_job/4,
-         get_job/5,
+         get_job/6,
+         get_job/7,
          get_webhook/2,
-         get_webhook/3,
+         get_webhook/4,
+         get_webhook/5,
+         list_apps/1,
          list_apps/3,
          list_apps/4,
+         list_artifacts/4,
          list_artifacts/6,
          list_artifacts/7,
+         list_backend_environments/2,
+         list_backend_environments/4,
          list_backend_environments/5,
-         list_backend_environments/6,
+         list_branches/2,
          list_branches/4,
          list_branches/5,
+         list_domain_associations/2,
          list_domain_associations/4,
          list_domain_associations/5,
+         list_jobs/3,
          list_jobs/5,
          list_jobs/6,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
+         list_webhooks/2,
          list_webhooks/4,
          list_webhooks/5,
          start_deployment/4,
@@ -308,9 +323,14 @@ generate_access_logs(Client, AppId, Input0, Options) ->
 %% @doc Returns an existing Amplify app by appID.
 get_app(Client, AppId)
   when is_map(Client) ->
-    get_app(Client, AppId, []).
-get_app(Client, AppId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_app(Client, AppId, #{}, #{}).
+
+get_app(Client, AppId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_app(Client, AppId, QueryMap, HeadersMap, []).
+
+get_app(Client, AppId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/apps/", aws_util:encode_uri(AppId), ""],
     SuccessStatusCode = undefined,
 
@@ -323,9 +343,14 @@ get_app(Client, AppId, Options)
 %% @doc Returns the artifact info that corresponds to an artifact id.
 get_artifact_url(Client, ArtifactId)
   when is_map(Client) ->
-    get_artifact_url(Client, ArtifactId, []).
-get_artifact_url(Client, ArtifactId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_artifact_url(Client, ArtifactId, #{}, #{}).
+
+get_artifact_url(Client, ArtifactId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_artifact_url(Client, ArtifactId, QueryMap, HeadersMap, []).
+
+get_artifact_url(Client, ArtifactId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/artifacts/", aws_util:encode_uri(ArtifactId), ""],
     SuccessStatusCode = undefined,
 
@@ -338,9 +363,14 @@ get_artifact_url(Client, ArtifactId, Options)
 %% @doc Returns a backend environment for an Amplify app.
 get_backend_environment(Client, AppId, EnvironmentName)
   when is_map(Client) ->
-    get_backend_environment(Client, AppId, EnvironmentName, []).
-get_backend_environment(Client, AppId, EnvironmentName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_backend_environment(Client, AppId, EnvironmentName, #{}, #{}).
+
+get_backend_environment(Client, AppId, EnvironmentName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_backend_environment(Client, AppId, EnvironmentName, QueryMap, HeadersMap, []).
+
+get_backend_environment(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/apps/", aws_util:encode_uri(AppId), "/backendenvironments/", aws_util:encode_uri(EnvironmentName), ""],
     SuccessStatusCode = undefined,
 
@@ -353,9 +383,14 @@ get_backend_environment(Client, AppId, EnvironmentName, Options)
 %% @doc Returns a branch for an Amplify app.
 get_branch(Client, AppId, BranchName)
   when is_map(Client) ->
-    get_branch(Client, AppId, BranchName, []).
-get_branch(Client, AppId, BranchName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_branch(Client, AppId, BranchName, #{}, #{}).
+
+get_branch(Client, AppId, BranchName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_branch(Client, AppId, BranchName, QueryMap, HeadersMap, []).
+
+get_branch(Client, AppId, BranchName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/apps/", aws_util:encode_uri(AppId), "/branches/", aws_util:encode_uri(BranchName), ""],
     SuccessStatusCode = undefined,
 
@@ -368,9 +403,14 @@ get_branch(Client, AppId, BranchName, Options)
 %% @doc Returns the domain information for an Amplify app.
 get_domain_association(Client, AppId, DomainName)
   when is_map(Client) ->
-    get_domain_association(Client, AppId, DomainName, []).
-get_domain_association(Client, AppId, DomainName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_domain_association(Client, AppId, DomainName, #{}, #{}).
+
+get_domain_association(Client, AppId, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_domain_association(Client, AppId, DomainName, QueryMap, HeadersMap, []).
+
+get_domain_association(Client, AppId, DomainName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/apps/", aws_util:encode_uri(AppId), "/domains/", aws_util:encode_uri(DomainName), ""],
     SuccessStatusCode = undefined,
 
@@ -383,9 +423,14 @@ get_domain_association(Client, AppId, DomainName, Options)
 %% @doc Returns a job for a branch of an Amplify app.
 get_job(Client, AppId, BranchName, JobId)
   when is_map(Client) ->
-    get_job(Client, AppId, BranchName, JobId, []).
-get_job(Client, AppId, BranchName, JobId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_job(Client, AppId, BranchName, JobId, #{}, #{}).
+
+get_job(Client, AppId, BranchName, JobId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_job(Client, AppId, BranchName, JobId, QueryMap, HeadersMap, []).
+
+get_job(Client, AppId, BranchName, JobId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/apps/", aws_util:encode_uri(AppId), "/branches/", aws_util:encode_uri(BranchName), "/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = undefined,
 
@@ -399,9 +444,14 @@ get_job(Client, AppId, BranchName, JobId, Options)
 %% webhook ID.
 get_webhook(Client, WebhookId)
   when is_map(Client) ->
-    get_webhook(Client, WebhookId, []).
-get_webhook(Client, WebhookId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_webhook(Client, WebhookId, #{}, #{}).
+
+get_webhook(Client, WebhookId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_webhook(Client, WebhookId, QueryMap, HeadersMap, []).
+
+get_webhook(Client, WebhookId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/webhooks/", aws_util:encode_uri(WebhookId), ""],
     SuccessStatusCode = undefined,
 
@@ -412,11 +462,16 @@ get_webhook(Client, WebhookId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of the existing Amplify apps.
-list_apps(Client, MaxResults, NextToken)
+list_apps(Client)
   when is_map(Client) ->
-    list_apps(Client, MaxResults, NextToken, []).
-list_apps(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_apps(Client, #{}, #{}).
+
+list_apps(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_apps(Client, QueryMap, HeadersMap, []).
+
+list_apps(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/apps"],
     SuccessStatusCode = undefined,
 
@@ -424,19 +479,24 @@ list_apps(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of artifacts for a specified app, branch, and job.
-list_artifacts(Client, AppId, BranchName, JobId, MaxResults, NextToken)
+list_artifacts(Client, AppId, BranchName, JobId)
   when is_map(Client) ->
-    list_artifacts(Client, AppId, BranchName, JobId, MaxResults, NextToken, []).
-list_artifacts(Client, AppId, BranchName, JobId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_artifacts(Client, AppId, BranchName, JobId, #{}, #{}).
+
+list_artifacts(Client, AppId, BranchName, JobId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_artifacts(Client, AppId, BranchName, JobId, QueryMap, HeadersMap, []).
+
+list_artifacts(Client, AppId, BranchName, JobId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/apps/", aws_util:encode_uri(AppId), "/branches/", aws_util:encode_uri(BranchName), "/jobs/", aws_util:encode_uri(JobId), "/artifacts"],
     SuccessStatusCode = undefined,
 
@@ -444,19 +504,24 @@ list_artifacts(Client, AppId, BranchName, JobId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the backend environments for an Amplify app.
-list_backend_environments(Client, AppId, EnvironmentName, MaxResults, NextToken)
+list_backend_environments(Client, AppId)
   when is_map(Client) ->
-    list_backend_environments(Client, AppId, EnvironmentName, MaxResults, NextToken, []).
-list_backend_environments(Client, AppId, EnvironmentName, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_backend_environments(Client, AppId, #{}, #{}).
+
+list_backend_environments(Client, AppId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_backend_environments(Client, AppId, QueryMap, HeadersMap, []).
+
+list_backend_environments(Client, AppId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/apps/", aws_util:encode_uri(AppId), "/backendenvironments"],
     SuccessStatusCode = undefined,
 
@@ -464,20 +529,25 @@ list_backend_environments(Client, AppId, EnvironmentName, MaxResults, NextToken,
 
     Query0_ =
       [
-        {<<"environmentName">>, EnvironmentName},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"environmentName">>, maps:get(<<"environmentName">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the branches of an Amplify app.
-list_branches(Client, AppId, MaxResults, NextToken)
+list_branches(Client, AppId)
   when is_map(Client) ->
-    list_branches(Client, AppId, MaxResults, NextToken, []).
-list_branches(Client, AppId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_branches(Client, AppId, #{}, #{}).
+
+list_branches(Client, AppId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_branches(Client, AppId, QueryMap, HeadersMap, []).
+
+list_branches(Client, AppId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/apps/", aws_util:encode_uri(AppId), "/branches"],
     SuccessStatusCode = undefined,
 
@@ -485,19 +555,24 @@ list_branches(Client, AppId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the domain associations for an Amplify app.
-list_domain_associations(Client, AppId, MaxResults, NextToken)
+list_domain_associations(Client, AppId)
   when is_map(Client) ->
-    list_domain_associations(Client, AppId, MaxResults, NextToken, []).
-list_domain_associations(Client, AppId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_domain_associations(Client, AppId, #{}, #{}).
+
+list_domain_associations(Client, AppId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_domain_associations(Client, AppId, QueryMap, HeadersMap, []).
+
+list_domain_associations(Client, AppId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/apps/", aws_util:encode_uri(AppId), "/domains"],
     SuccessStatusCode = undefined,
 
@@ -505,19 +580,24 @@ list_domain_associations(Client, AppId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the jobs for a branch of an Amplify app.
-list_jobs(Client, AppId, BranchName, MaxResults, NextToken)
+list_jobs(Client, AppId, BranchName)
   when is_map(Client) ->
-    list_jobs(Client, AppId, BranchName, MaxResults, NextToken, []).
-list_jobs(Client, AppId, BranchName, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_jobs(Client, AppId, BranchName, #{}, #{}).
+
+list_jobs(Client, AppId, BranchName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_jobs(Client, AppId, BranchName, QueryMap, HeadersMap, []).
+
+list_jobs(Client, AppId, BranchName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/apps/", aws_util:encode_uri(AppId), "/branches/", aws_util:encode_uri(BranchName), "/jobs"],
     SuccessStatusCode = undefined,
 
@@ -525,8 +605,8 @@ list_jobs(Client, AppId, BranchName, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -535,9 +615,14 @@ list_jobs(Client, AppId, BranchName, MaxResults, NextToken, Options)
 %% @doc Returns a list of tags for a specified Amazon Resource Name (ARN).
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
@@ -548,11 +633,16 @@ list_tags_for_resource(Client, ResourceArn, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of webhooks for an Amplify app.
-list_webhooks(Client, AppId, MaxResults, NextToken)
+list_webhooks(Client, AppId)
   when is_map(Client) ->
-    list_webhooks(Client, AppId, MaxResults, NextToken, []).
-list_webhooks(Client, AppId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_webhooks(Client, AppId, #{}, #{}).
+
+list_webhooks(Client, AppId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_webhooks(Client, AppId, QueryMap, HeadersMap, []).
+
+list_webhooks(Client, AppId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/apps/", aws_util:encode_uri(AppId), "/webhooks"],
     SuccessStatusCode = undefined,
 
@@ -560,8 +650,8 @@ list_webhooks(Client, AppId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

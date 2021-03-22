@@ -12,16 +12,21 @@
 
 -export([delete_lexicon/3,
          delete_lexicon/4,
-         describe_voices/5,
-         describe_voices/6,
+         describe_voices/1,
+         describe_voices/3,
+         describe_voices/4,
          get_lexicon/2,
-         get_lexicon/3,
+         get_lexicon/4,
+         get_lexicon/5,
          get_speech_synthesis_task/2,
-         get_speech_synthesis_task/3,
-         list_lexicons/2,
+         get_speech_synthesis_task/4,
+         get_speech_synthesis_task/5,
+         list_lexicons/1,
          list_lexicons/3,
+         list_lexicons/4,
+         list_speech_synthesis_tasks/1,
+         list_speech_synthesis_tasks/3,
          list_speech_synthesis_tasks/4,
-         list_speech_synthesis_tasks/5,
          put_lexicon/3,
          put_lexicon/4,
          start_speech_synthesis_task/2,
@@ -78,11 +83,16 @@ delete_lexicon(Client, Name, Input0, Options) ->
 %%
 %% This operation requires permissions to perform the `polly:DescribeVoices'
 %% action.
-describe_voices(Client, Engine, IncludeAdditionalLanguageCodes, LanguageCode, NextToken)
+describe_voices(Client)
   when is_map(Client) ->
-    describe_voices(Client, Engine, IncludeAdditionalLanguageCodes, LanguageCode, NextToken, []).
-describe_voices(Client, Engine, IncludeAdditionalLanguageCodes, LanguageCode, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_voices(Client, #{}, #{}).
+
+describe_voices(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_voices(Client, QueryMap, HeadersMap, []).
+
+describe_voices(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/voices"],
     SuccessStatusCode = 200,
 
@@ -90,10 +100,10 @@ describe_voices(Client, Engine, IncludeAdditionalLanguageCodes, LanguageCode, Ne
 
     Query0_ =
       [
-        {<<"Engine">>, Engine},
-        {<<"IncludeAdditionalLanguageCodes">>, IncludeAdditionalLanguageCodes},
-        {<<"LanguageCode">>, LanguageCode},
-        {<<"NextToken">>, NextToken}
+        {<<"Engine">>, maps:get(<<"Engine">>, QueryMap, undefined)},
+        {<<"IncludeAdditionalLanguageCodes">>, maps:get(<<"IncludeAdditionalLanguageCodes">>, QueryMap, undefined)},
+        {<<"LanguageCode">>, maps:get(<<"LanguageCode">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -105,9 +115,14 @@ describe_voices(Client, Engine, IncludeAdditionalLanguageCodes, LanguageCode, Ne
 %% For more information, see Managing Lexicons.
 get_lexicon(Client, Name)
   when is_map(Client) ->
-    get_lexicon(Client, Name, []).
-get_lexicon(Client, Name, Options)
-  when is_map(Client), is_list(Options) ->
+    get_lexicon(Client, Name, #{}, #{}).
+
+get_lexicon(Client, Name, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_lexicon(Client, Name, QueryMap, HeadersMap, []).
+
+get_lexicon(Client, Name, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/lexicons/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
 
@@ -124,9 +139,14 @@ get_lexicon(Client, Name, Options)
 %% the output of the task.
 get_speech_synthesis_task(Client, TaskId)
   when is_map(Client) ->
-    get_speech_synthesis_task(Client, TaskId, []).
-get_speech_synthesis_task(Client, TaskId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_speech_synthesis_task(Client, TaskId, #{}, #{}).
+
+get_speech_synthesis_task(Client, TaskId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_speech_synthesis_task(Client, TaskId, QueryMap, HeadersMap, []).
+
+get_speech_synthesis_task(Client, TaskId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/synthesisTasks/", aws_util:encode_uri(TaskId), ""],
     SuccessStatusCode = 200,
 
@@ -139,11 +159,16 @@ get_speech_synthesis_task(Client, TaskId, Options)
 %% @doc Returns a list of pronunciation lexicons stored in an AWS Region.
 %%
 %% For more information, see Managing Lexicons.
-list_lexicons(Client, NextToken)
+list_lexicons(Client)
   when is_map(Client) ->
-    list_lexicons(Client, NextToken, []).
-list_lexicons(Client, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_lexicons(Client, #{}, #{}).
+
+list_lexicons(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_lexicons(Client, QueryMap, HeadersMap, []).
+
+list_lexicons(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/lexicons"],
     SuccessStatusCode = 200,
 
@@ -151,7 +176,7 @@ list_lexicons(Client, NextToken, Options)
 
     Query0_ =
       [
-        {<<"NextToken">>, NextToken}
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -162,11 +187,16 @@ list_lexicons(Client, NextToken, Options)
 %%
 %% This operation can filter the tasks by their status, for example, allowing
 %% users to list only tasks that are completed.
-list_speech_synthesis_tasks(Client, MaxResults, NextToken, Status)
+list_speech_synthesis_tasks(Client)
   when is_map(Client) ->
-    list_speech_synthesis_tasks(Client, MaxResults, NextToken, Status, []).
-list_speech_synthesis_tasks(Client, MaxResults, NextToken, Status, Options)
-  when is_map(Client), is_list(Options) ->
+    list_speech_synthesis_tasks(Client, #{}, #{}).
+
+list_speech_synthesis_tasks(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_speech_synthesis_tasks(Client, QueryMap, HeadersMap, []).
+
+list_speech_synthesis_tasks(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/synthesisTasks"],
     SuccessStatusCode = 200,
 
@@ -174,9 +204,9 @@ list_speech_synthesis_tasks(Client, MaxResults, NextToken, Status, Options)
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken},
-        {<<"Status">>, Status}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"Status">>, maps:get(<<"Status">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

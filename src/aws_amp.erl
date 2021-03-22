@@ -9,9 +9,11 @@
          delete_workspace/3,
          delete_workspace/4,
          describe_workspace/2,
-         describe_workspace/3,
+         describe_workspace/4,
+         describe_workspace/5,
+         list_workspaces/1,
+         list_workspaces/3,
          list_workspaces/4,
-         list_workspaces/5,
          update_workspace_alias/3,
          update_workspace_alias/4]).
 
@@ -57,9 +59,14 @@ delete_workspace(Client, WorkspaceId, Input0, Options) ->
 %% @doc Describes an existing AMP workspace.
 describe_workspace(Client, WorkspaceId)
   when is_map(Client) ->
-    describe_workspace(Client, WorkspaceId, []).
-describe_workspace(Client, WorkspaceId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_workspace(Client, WorkspaceId, #{}, #{}).
+
+describe_workspace(Client, WorkspaceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_workspace(Client, WorkspaceId, QueryMap, HeadersMap, []).
+
+describe_workspace(Client, WorkspaceId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), ""],
     SuccessStatusCode = 200,
 
@@ -71,11 +78,16 @@ describe_workspace(Client, WorkspaceId, Options)
 
 %% @doc Lists all AMP workspaces, including workspaces being created or
 %% deleted.
-list_workspaces(Client, Alias, MaxResults, NextToken)
+list_workspaces(Client)
   when is_map(Client) ->
-    list_workspaces(Client, Alias, MaxResults, NextToken, []).
-list_workspaces(Client, Alias, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_workspaces(Client, #{}, #{}).
+
+list_workspaces(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_workspaces(Client, QueryMap, HeadersMap, []).
+
+list_workspaces(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/workspaces"],
     SuccessStatusCode = 200,
 
@@ -83,9 +95,9 @@ list_workspaces(Client, Alias, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"alias">>, Alias},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"alias">>, maps:get(<<"alias">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

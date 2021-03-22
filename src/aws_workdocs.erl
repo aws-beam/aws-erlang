@@ -73,38 +73,54 @@
          delete_notification_subscription/5,
          delete_user/3,
          delete_user/4,
-         describe_activities/11,
-         describe_activities/12,
+         describe_activities/1,
+         describe_activities/3,
+         describe_activities/4,
+         describe_comments/3,
+         describe_comments/5,
          describe_comments/6,
-         describe_comments/7,
-         describe_document_versions/7,
-         describe_document_versions/8,
-         describe_folder_contents/9,
-         describe_folder_contents/10,
-         describe_groups/6,
-         describe_groups/7,
+         describe_document_versions/2,
+         describe_document_versions/4,
+         describe_document_versions/5,
+         describe_folder_contents/2,
+         describe_folder_contents/4,
+         describe_folder_contents/5,
+         describe_groups/2,
+         describe_groups/4,
+         describe_groups/5,
+         describe_notification_subscriptions/2,
          describe_notification_subscriptions/4,
          describe_notification_subscriptions/5,
-         describe_resource_permissions/6,
-         describe_resource_permissions/7,
+         describe_resource_permissions/2,
+         describe_resource_permissions/4,
+         describe_resource_permissions/5,
+         describe_root_folders/2,
          describe_root_folders/4,
          describe_root_folders/5,
-         describe_users/11,
-         describe_users/12,
+         describe_users/1,
+         describe_users/3,
+         describe_users/4,
          get_current_user/2,
-         get_current_user/3,
+         get_current_user/4,
+         get_current_user/5,
+         get_document/2,
          get_document/4,
          get_document/5,
-         get_document_path/6,
-         get_document_path/7,
+         get_document_path/2,
+         get_document_path/4,
+         get_document_path/5,
+         get_document_version/3,
+         get_document_version/5,
          get_document_version/6,
-         get_document_version/7,
+         get_folder/2,
          get_folder/4,
          get_folder/5,
-         get_folder_path/6,
-         get_folder_path/7,
-         get_resources/6,
-         get_resources/7,
+         get_folder_path/2,
+         get_folder_path/4,
+         get_folder_path/5,
+         get_resources/1,
+         get_resources/3,
+         get_resources/4,
          initiate_document_version_upload/2,
          initiate_document_version_upload/3,
          remove_all_resource_permissions/3,
@@ -476,55 +492,65 @@ delete_user(Client, UserId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes the user activities in a specified time period.
-describe_activities(Client, ActivityTypes, EndTime, IncludeIndirectActivities, Limit, Marker, OrganizationId, ResourceId, StartTime, UserId, AuthenticationToken)
+describe_activities(Client)
   when is_map(Client) ->
-    describe_activities(Client, ActivityTypes, EndTime, IncludeIndirectActivities, Limit, Marker, OrganizationId, ResourceId, StartTime, UserId, AuthenticationToken, []).
-describe_activities(Client, ActivityTypes, EndTime, IncludeIndirectActivities, Limit, Marker, OrganizationId, ResourceId, StartTime, UserId, AuthenticationToken, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_activities(Client, #{}, #{}).
+
+describe_activities(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_activities(Client, QueryMap, HeadersMap, []).
+
+describe_activities(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/api/v1/activities"],
     SuccessStatusCode = 200,
 
     Headers0 =
       [
-        {<<"Authentication">>, AuthenticationToken}
+        {<<"Authentication">>, maps:get(<<"Authentication">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
     Query0_ =
       [
-        {<<"activityTypes">>, ActivityTypes},
-        {<<"endTime">>, EndTime},
-        {<<"includeIndirectActivities">>, IncludeIndirectActivities},
-        {<<"limit">>, Limit},
-        {<<"marker">>, Marker},
-        {<<"organizationId">>, OrganizationId},
-        {<<"resourceId">>, ResourceId},
-        {<<"startTime">>, StartTime},
-        {<<"userId">>, UserId}
+        {<<"activityTypes">>, maps:get(<<"activityTypes">>, QueryMap, undefined)},
+        {<<"endTime">>, maps:get(<<"endTime">>, QueryMap, undefined)},
+        {<<"includeIndirectActivities">>, maps:get(<<"includeIndirectActivities">>, QueryMap, undefined)},
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"marker">>, maps:get(<<"marker">>, QueryMap, undefined)},
+        {<<"organizationId">>, maps:get(<<"organizationId">>, QueryMap, undefined)},
+        {<<"resourceId">>, maps:get(<<"resourceId">>, QueryMap, undefined)},
+        {<<"startTime">>, maps:get(<<"startTime">>, QueryMap, undefined)},
+        {<<"userId">>, maps:get(<<"userId">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List all the comments for the specified document version.
-describe_comments(Client, DocumentId, VersionId, Limit, Marker, AuthenticationToken)
+describe_comments(Client, DocumentId, VersionId)
   when is_map(Client) ->
-    describe_comments(Client, DocumentId, VersionId, Limit, Marker, AuthenticationToken, []).
-describe_comments(Client, DocumentId, VersionId, Limit, Marker, AuthenticationToken, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_comments(Client, DocumentId, VersionId, #{}, #{}).
+
+describe_comments(Client, DocumentId, VersionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_comments(Client, DocumentId, VersionId, QueryMap, HeadersMap, []).
+
+describe_comments(Client, DocumentId, VersionId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), "/versions/", aws_util:encode_uri(VersionId), "/comments"],
     SuccessStatusCode = 200,
 
     Headers0 =
       [
-        {<<"Authentication">>, AuthenticationToken}
+        {<<"Authentication">>, maps:get(<<"Authentication">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
     Query0_ =
       [
-        {<<"limit">>, Limit},
-        {<<"marker">>, Marker}
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"marker">>, maps:get(<<"marker">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -533,26 +559,31 @@ describe_comments(Client, DocumentId, VersionId, Limit, Marker, AuthenticationTo
 %% @doc Retrieves the document versions for the specified document.
 %%
 %% By default, only active versions are returned.
-describe_document_versions(Client, DocumentId, Fields, Include, Limit, Marker, AuthenticationToken)
+describe_document_versions(Client, DocumentId)
   when is_map(Client) ->
-    describe_document_versions(Client, DocumentId, Fields, Include, Limit, Marker, AuthenticationToken, []).
-describe_document_versions(Client, DocumentId, Fields, Include, Limit, Marker, AuthenticationToken, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_document_versions(Client, DocumentId, #{}, #{}).
+
+describe_document_versions(Client, DocumentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_document_versions(Client, DocumentId, QueryMap, HeadersMap, []).
+
+describe_document_versions(Client, DocumentId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), "/versions"],
     SuccessStatusCode = 200,
 
     Headers0 =
       [
-        {<<"Authentication">>, AuthenticationToken}
+        {<<"Authentication">>, maps:get(<<"Authentication">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
     Query0_ =
       [
-        {<<"fields">>, Fields},
-        {<<"include">>, Include},
-        {<<"limit">>, Limit},
-        {<<"marker">>, Marker}
+        {<<"fields">>, maps:get(<<"fields">>, QueryMap, undefined)},
+        {<<"include">>, maps:get(<<"include">>, QueryMap, undefined)},
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"marker">>, maps:get(<<"marker">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -565,28 +596,33 @@ describe_document_versions(Client, DocumentId, Fields, Include, Limit, Marker, A
 %% folder metadata items. If there are more results, the response includes a
 %% marker that you can use to request the next set of results. You can also
 %% request initialized documents.
-describe_folder_contents(Client, FolderId, Include, Limit, Marker, Order, Sort, Type, AuthenticationToken)
+describe_folder_contents(Client, FolderId)
   when is_map(Client) ->
-    describe_folder_contents(Client, FolderId, Include, Limit, Marker, Order, Sort, Type, AuthenticationToken, []).
-describe_folder_contents(Client, FolderId, Include, Limit, Marker, Order, Sort, Type, AuthenticationToken, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_folder_contents(Client, FolderId, #{}, #{}).
+
+describe_folder_contents(Client, FolderId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_folder_contents(Client, FolderId, QueryMap, HeadersMap, []).
+
+describe_folder_contents(Client, FolderId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/api/v1/folders/", aws_util:encode_uri(FolderId), "/contents"],
     SuccessStatusCode = 200,
 
     Headers0 =
       [
-        {<<"Authentication">>, AuthenticationToken}
+        {<<"Authentication">>, maps:get(<<"Authentication">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
     Query0_ =
       [
-        {<<"include">>, Include},
-        {<<"limit">>, Limit},
-        {<<"marker">>, Marker},
-        {<<"order">>, Order},
-        {<<"sort">>, Sort},
-        {<<"type">>, Type}
+        {<<"include">>, maps:get(<<"include">>, QueryMap, undefined)},
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"marker">>, maps:get(<<"marker">>, QueryMap, undefined)},
+        {<<"order">>, maps:get(<<"order">>, QueryMap, undefined)},
+        {<<"sort">>, maps:get(<<"sort">>, QueryMap, undefined)},
+        {<<"type">>, maps:get(<<"type">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -595,25 +631,30 @@ describe_folder_contents(Client, FolderId, Include, Limit, Marker, Order, Sort, 
 %% @doc Describes the groups specified by the query.
 %%
 %% Groups are defined by the underlying Active Directory.
-describe_groups(Client, Limit, Marker, OrganizationId, SearchQuery, AuthenticationToken)
+describe_groups(Client, SearchQuery)
   when is_map(Client) ->
-    describe_groups(Client, Limit, Marker, OrganizationId, SearchQuery, AuthenticationToken, []).
-describe_groups(Client, Limit, Marker, OrganizationId, SearchQuery, AuthenticationToken, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_groups(Client, SearchQuery, #{}, #{}).
+
+describe_groups(Client, SearchQuery, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_groups(Client, SearchQuery, QueryMap, HeadersMap, []).
+
+describe_groups(Client, SearchQuery, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/api/v1/groups"],
     SuccessStatusCode = 200,
 
     Headers0 =
       [
-        {<<"Authentication">>, AuthenticationToken}
+        {<<"Authentication">>, maps:get(<<"Authentication">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
     Query0_ =
       [
-        {<<"limit">>, Limit},
-        {<<"marker">>, Marker},
-        {<<"organizationId">>, OrganizationId},
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"marker">>, maps:get(<<"marker">>, QueryMap, undefined)},
+        {<<"organizationId">>, maps:get(<<"organizationId">>, QueryMap, undefined)},
         {<<"searchQuery">>, SearchQuery}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
@@ -621,11 +662,16 @@ describe_groups(Client, Limit, Marker, OrganizationId, SearchQuery, Authenticati
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the specified notification subscriptions.
-describe_notification_subscriptions(Client, OrganizationId, Limit, Marker)
+describe_notification_subscriptions(Client, OrganizationId)
   when is_map(Client) ->
-    describe_notification_subscriptions(Client, OrganizationId, Limit, Marker, []).
-describe_notification_subscriptions(Client, OrganizationId, Limit, Marker, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_notification_subscriptions(Client, OrganizationId, #{}, #{}).
+
+describe_notification_subscriptions(Client, OrganizationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_notification_subscriptions(Client, OrganizationId, QueryMap, HeadersMap, []).
+
+describe_notification_subscriptions(Client, OrganizationId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/api/v1/organizations/", aws_util:encode_uri(OrganizationId), "/subscriptions"],
     SuccessStatusCode = 200,
 
@@ -633,33 +679,38 @@ describe_notification_subscriptions(Client, OrganizationId, Limit, Marker, Optio
 
     Query0_ =
       [
-        {<<"limit">>, Limit},
-        {<<"marker">>, Marker}
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"marker">>, maps:get(<<"marker">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes the permissions of a specified resource.
-describe_resource_permissions(Client, ResourceId, Limit, Marker, PrincipalId, AuthenticationToken)
+describe_resource_permissions(Client, ResourceId)
   when is_map(Client) ->
-    describe_resource_permissions(Client, ResourceId, Limit, Marker, PrincipalId, AuthenticationToken, []).
-describe_resource_permissions(Client, ResourceId, Limit, Marker, PrincipalId, AuthenticationToken, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_resource_permissions(Client, ResourceId, #{}, #{}).
+
+describe_resource_permissions(Client, ResourceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_resource_permissions(Client, ResourceId, QueryMap, HeadersMap, []).
+
+describe_resource_permissions(Client, ResourceId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/api/v1/resources/", aws_util:encode_uri(ResourceId), "/permissions"],
     SuccessStatusCode = 200,
 
     Headers0 =
       [
-        {<<"Authentication">>, AuthenticationToken}
+        {<<"Authentication">>, maps:get(<<"Authentication">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
     Query0_ =
       [
-        {<<"limit">>, Limit},
-        {<<"marker">>, Marker},
-        {<<"principalId">>, PrincipalId}
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"marker">>, maps:get(<<"marker">>, QueryMap, undefined)},
+        {<<"principalId">>, maps:get(<<"principalId">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -676,11 +727,16 @@ describe_resource_permissions(Client, ResourceId, Limit, Marker, PrincipalId, Au
 %% token, register an application with Amazon WorkDocs. For more information,
 %% see Authentication and Access Control for User Applications in the Amazon
 %% WorkDocs Developer Guide.
-describe_root_folders(Client, Limit, Marker, AuthenticationToken)
+describe_root_folders(Client, AuthenticationToken)
   when is_map(Client) ->
-    describe_root_folders(Client, Limit, Marker, AuthenticationToken, []).
-describe_root_folders(Client, Limit, Marker, AuthenticationToken, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_root_folders(Client, AuthenticationToken, #{}, #{}).
+
+describe_root_folders(Client, AuthenticationToken, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_root_folders(Client, AuthenticationToken, QueryMap, HeadersMap, []).
+
+describe_root_folders(Client, AuthenticationToken, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/api/v1/me/root"],
     SuccessStatusCode = 200,
 
@@ -692,8 +748,8 @@ describe_root_folders(Client, Limit, Marker, AuthenticationToken, Options)
 
     Query0_ =
       [
-        {<<"limit">>, Limit},
-        {<<"marker">>, Marker}
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"marker">>, maps:get(<<"marker">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -707,31 +763,36 @@ describe_root_folders(Client, Limit, Marker, AuthenticationToken, Options)
 %% By default, Amazon WorkDocs returns the first 24 active or pending users.
 %% If there are more results, the response includes a marker that you can use
 %% to request the next set of results.
-describe_users(Client, Fields, Include, Limit, Marker, Order, OrganizationId, Query, Sort, UserIds, AuthenticationToken)
+describe_users(Client)
   when is_map(Client) ->
-    describe_users(Client, Fields, Include, Limit, Marker, Order, OrganizationId, Query, Sort, UserIds, AuthenticationToken, []).
-describe_users(Client, Fields, Include, Limit, Marker, Order, OrganizationId, Query, Sort, UserIds, AuthenticationToken, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_users(Client, #{}, #{}).
+
+describe_users(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_users(Client, QueryMap, HeadersMap, []).
+
+describe_users(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/api/v1/users"],
     SuccessStatusCode = 200,
 
     Headers0 =
       [
-        {<<"Authentication">>, AuthenticationToken}
+        {<<"Authentication">>, maps:get(<<"Authentication">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
     Query0_ =
       [
-        {<<"fields">>, Fields},
-        {<<"include">>, Include},
-        {<<"limit">>, Limit},
-        {<<"marker">>, Marker},
-        {<<"order">>, Order},
-        {<<"organizationId">>, OrganizationId},
-        {<<"query">>, Query},
-        {<<"sort">>, Sort},
-        {<<"userIds">>, UserIds}
+        {<<"fields">>, maps:get(<<"fields">>, QueryMap, undefined)},
+        {<<"include">>, maps:get(<<"include">>, QueryMap, undefined)},
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"marker">>, maps:get(<<"marker">>, QueryMap, undefined)},
+        {<<"order">>, maps:get(<<"order">>, QueryMap, undefined)},
+        {<<"organizationId">>, maps:get(<<"organizationId">>, QueryMap, undefined)},
+        {<<"query">>, maps:get(<<"query">>, QueryMap, undefined)},
+        {<<"sort">>, maps:get(<<"sort">>, QueryMap, undefined)},
+        {<<"userIds">>, maps:get(<<"userIds">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -748,9 +809,14 @@ describe_users(Client, Fields, Include, Limit, Marker, Order, OrganizationId, Qu
 %% WorkDocs Developer Guide.
 get_current_user(Client, AuthenticationToken)
   when is_map(Client) ->
-    get_current_user(Client, AuthenticationToken, []).
-get_current_user(Client, AuthenticationToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_current_user(Client, AuthenticationToken, #{}, #{}).
+
+get_current_user(Client, AuthenticationToken, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_current_user(Client, AuthenticationToken, QueryMap, HeadersMap, []).
+
+get_current_user(Client, AuthenticationToken, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/api/v1/me"],
     SuccessStatusCode = 200,
 
@@ -765,23 +831,28 @@ get_current_user(Client, AuthenticationToken, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves details of a document.
-get_document(Client, DocumentId, IncludeCustomMetadata, AuthenticationToken)
+get_document(Client, DocumentId)
   when is_map(Client) ->
-    get_document(Client, DocumentId, IncludeCustomMetadata, AuthenticationToken, []).
-get_document(Client, DocumentId, IncludeCustomMetadata, AuthenticationToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_document(Client, DocumentId, #{}, #{}).
+
+get_document(Client, DocumentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_document(Client, DocumentId, QueryMap, HeadersMap, []).
+
+get_document(Client, DocumentId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), ""],
     SuccessStatusCode = 200,
 
     Headers0 =
       [
-        {<<"Authentication">>, AuthenticationToken}
+        {<<"Authentication">>, maps:get(<<"Authentication">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
     Query0_ =
       [
-        {<<"includeCustomMetadata">>, IncludeCustomMetadata}
+        {<<"includeCustomMetadata">>, maps:get(<<"includeCustomMetadata">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -794,72 +865,87 @@ get_document(Client, DocumentId, IncludeCustomMetadata, AuthenticationToken, Opt
 %% the requested document and only includes the IDs of the parent folders in
 %% the path. You can limit the maximum number of levels. You can also request
 %% the names of the parent folders.
-get_document_path(Client, DocumentId, Fields, Limit, Marker, AuthenticationToken)
+get_document_path(Client, DocumentId)
   when is_map(Client) ->
-    get_document_path(Client, DocumentId, Fields, Limit, Marker, AuthenticationToken, []).
-get_document_path(Client, DocumentId, Fields, Limit, Marker, AuthenticationToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_document_path(Client, DocumentId, #{}, #{}).
+
+get_document_path(Client, DocumentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_document_path(Client, DocumentId, QueryMap, HeadersMap, []).
+
+get_document_path(Client, DocumentId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), "/path"],
     SuccessStatusCode = 200,
 
     Headers0 =
       [
-        {<<"Authentication">>, AuthenticationToken}
+        {<<"Authentication">>, maps:get(<<"Authentication">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
     Query0_ =
       [
-        {<<"fields">>, Fields},
-        {<<"limit">>, Limit},
-        {<<"marker">>, Marker}
+        {<<"fields">>, maps:get(<<"fields">>, QueryMap, undefined)},
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"marker">>, maps:get(<<"marker">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves version metadata for the specified document.
-get_document_version(Client, DocumentId, VersionId, Fields, IncludeCustomMetadata, AuthenticationToken)
+get_document_version(Client, DocumentId, VersionId)
   when is_map(Client) ->
-    get_document_version(Client, DocumentId, VersionId, Fields, IncludeCustomMetadata, AuthenticationToken, []).
-get_document_version(Client, DocumentId, VersionId, Fields, IncludeCustomMetadata, AuthenticationToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_document_version(Client, DocumentId, VersionId, #{}, #{}).
+
+get_document_version(Client, DocumentId, VersionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_document_version(Client, DocumentId, VersionId, QueryMap, HeadersMap, []).
+
+get_document_version(Client, DocumentId, VersionId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), "/versions/", aws_util:encode_uri(VersionId), ""],
     SuccessStatusCode = 200,
 
     Headers0 =
       [
-        {<<"Authentication">>, AuthenticationToken}
+        {<<"Authentication">>, maps:get(<<"Authentication">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
     Query0_ =
       [
-        {<<"fields">>, Fields},
-        {<<"includeCustomMetadata">>, IncludeCustomMetadata}
+        {<<"fields">>, maps:get(<<"fields">>, QueryMap, undefined)},
+        {<<"includeCustomMetadata">>, maps:get(<<"includeCustomMetadata">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the metadata of the specified folder.
-get_folder(Client, FolderId, IncludeCustomMetadata, AuthenticationToken)
+get_folder(Client, FolderId)
   when is_map(Client) ->
-    get_folder(Client, FolderId, IncludeCustomMetadata, AuthenticationToken, []).
-get_folder(Client, FolderId, IncludeCustomMetadata, AuthenticationToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_folder(Client, FolderId, #{}, #{}).
+
+get_folder(Client, FolderId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_folder(Client, FolderId, QueryMap, HeadersMap, []).
+
+get_folder(Client, FolderId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/api/v1/folders/", aws_util:encode_uri(FolderId), ""],
     SuccessStatusCode = 200,
 
     Headers0 =
       [
-        {<<"Authentication">>, AuthenticationToken}
+        {<<"Authentication">>, maps:get(<<"Authentication">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
     Query0_ =
       [
-        {<<"includeCustomMetadata">>, IncludeCustomMetadata}
+        {<<"includeCustomMetadata">>, maps:get(<<"includeCustomMetadata">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -872,25 +958,30 @@ get_folder(Client, FolderId, IncludeCustomMetadata, AuthenticationToken, Options
 %% the requested folder and only includes the IDs of the parent folders in
 %% the path. You can limit the maximum number of levels. You can also request
 %% the parent folder names.
-get_folder_path(Client, FolderId, Fields, Limit, Marker, AuthenticationToken)
+get_folder_path(Client, FolderId)
   when is_map(Client) ->
-    get_folder_path(Client, FolderId, Fields, Limit, Marker, AuthenticationToken, []).
-get_folder_path(Client, FolderId, Fields, Limit, Marker, AuthenticationToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_folder_path(Client, FolderId, #{}, #{}).
+
+get_folder_path(Client, FolderId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_folder_path(Client, FolderId, QueryMap, HeadersMap, []).
+
+get_folder_path(Client, FolderId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/api/v1/folders/", aws_util:encode_uri(FolderId), "/path"],
     SuccessStatusCode = 200,
 
     Headers0 =
       [
-        {<<"Authentication">>, AuthenticationToken}
+        {<<"Authentication">>, maps:get(<<"Authentication">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
     Query0_ =
       [
-        {<<"fields">>, Fields},
-        {<<"limit">>, Limit},
-        {<<"marker">>, Marker}
+        {<<"fields">>, maps:get(<<"fields">>, QueryMap, undefined)},
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"marker">>, maps:get(<<"marker">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -899,26 +990,31 @@ get_folder_path(Client, FolderId, Fields, Limit, Marker, AuthenticationToken, Op
 %% @doc Retrieves a collection of resources, including folders and documents.
 %%
 %% The only `CollectionType' supported is `SHARED_WITH_ME'.
-get_resources(Client, CollectionType, Limit, Marker, UserId, AuthenticationToken)
+get_resources(Client)
   when is_map(Client) ->
-    get_resources(Client, CollectionType, Limit, Marker, UserId, AuthenticationToken, []).
-get_resources(Client, CollectionType, Limit, Marker, UserId, AuthenticationToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_resources(Client, #{}, #{}).
+
+get_resources(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_resources(Client, QueryMap, HeadersMap, []).
+
+get_resources(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/api/v1/resources"],
     SuccessStatusCode = 200,
 
     Headers0 =
       [
-        {<<"Authentication">>, AuthenticationToken}
+        {<<"Authentication">>, maps:get(<<"Authentication">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
     Query0_ =
       [
-        {<<"collectionType">>, CollectionType},
-        {<<"limit">>, Limit},
-        {<<"marker">>, Marker},
-        {<<"userId">>, UserId}
+        {<<"collectionType">>, maps:get(<<"collectionType">>, QueryMap, undefined)},
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"marker">>, maps:get(<<"marker">>, QueryMap, undefined)},
+        {<<"userId">>, maps:get(<<"userId">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

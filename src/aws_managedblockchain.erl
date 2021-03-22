@@ -35,27 +35,38 @@
          delete_node/4,
          delete_node/5,
          get_member/3,
-         get_member/4,
+         get_member/5,
+         get_member/6,
          get_network/2,
-         get_network/3,
-         get_node/4,
+         get_network/4,
+         get_network/5,
+         get_node/3,
          get_node/5,
+         get_node/6,
          get_proposal/3,
-         get_proposal/4,
+         get_proposal/5,
+         get_proposal/6,
+         list_invitations/1,
          list_invitations/3,
          list_invitations/4,
-         list_members/7,
-         list_members/8,
-         list_networks/6,
-         list_networks/7,
-         list_nodes/6,
-         list_nodes/7,
+         list_members/2,
+         list_members/4,
+         list_members/5,
+         list_networks/1,
+         list_networks/3,
+         list_networks/4,
+         list_nodes/2,
+         list_nodes/4,
+         list_nodes/5,
+         list_proposal_votes/3,
          list_proposal_votes/5,
          list_proposal_votes/6,
+         list_proposals/2,
          list_proposals/4,
          list_proposals/5,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          reject_invitation/3,
          reject_invitation/4,
          tag_resource/3,
@@ -203,9 +214,14 @@ delete_node(Client, NetworkId, NodeId, Input0, Options) ->
 %% Applies only to Hyperledger Fabric.
 get_member(Client, MemberId, NetworkId)
   when is_map(Client) ->
-    get_member(Client, MemberId, NetworkId, []).
-get_member(Client, MemberId, NetworkId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_member(Client, MemberId, NetworkId, #{}, #{}).
+
+get_member(Client, MemberId, NetworkId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_member(Client, MemberId, NetworkId, QueryMap, HeadersMap, []).
+
+get_member(Client, MemberId, NetworkId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/networks/", aws_util:encode_uri(NetworkId), "/members/", aws_util:encode_uri(MemberId), ""],
     SuccessStatusCode = undefined,
 
@@ -220,9 +236,14 @@ get_member(Client, MemberId, NetworkId, Options)
 %% Applies to Hyperledger Fabric and Ethereum.
 get_network(Client, NetworkId)
   when is_map(Client) ->
-    get_network(Client, NetworkId, []).
-get_network(Client, NetworkId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_network(Client, NetworkId, #{}, #{}).
+
+get_network(Client, NetworkId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_network(Client, NetworkId, QueryMap, HeadersMap, []).
+
+get_network(Client, NetworkId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/networks/", aws_util:encode_uri(NetworkId), ""],
     SuccessStatusCode = undefined,
 
@@ -235,11 +256,16 @@ get_network(Client, NetworkId, Options)
 %% @doc Returns detailed information about a node.
 %%
 %% Applies to Hyperledger Fabric and Ethereum.
-get_node(Client, NetworkId, NodeId, MemberId)
+get_node(Client, NetworkId, NodeId)
   when is_map(Client) ->
-    get_node(Client, NetworkId, NodeId, MemberId, []).
-get_node(Client, NetworkId, NodeId, MemberId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_node(Client, NetworkId, NodeId, #{}, #{}).
+
+get_node(Client, NetworkId, NodeId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_node(Client, NetworkId, NodeId, QueryMap, HeadersMap, []).
+
+get_node(Client, NetworkId, NodeId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/networks/", aws_util:encode_uri(NetworkId), "/nodes/", aws_util:encode_uri(NodeId), ""],
     SuccessStatusCode = undefined,
 
@@ -247,7 +273,7 @@ get_node(Client, NetworkId, NodeId, MemberId, Options)
 
     Query0_ =
       [
-        {<<"memberId">>, MemberId}
+        {<<"memberId">>, maps:get(<<"memberId">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -258,9 +284,14 @@ get_node(Client, NetworkId, NodeId, MemberId, Options)
 %% Applies only to Hyperledger Fabric.
 get_proposal(Client, NetworkId, ProposalId)
   when is_map(Client) ->
-    get_proposal(Client, NetworkId, ProposalId, []).
-get_proposal(Client, NetworkId, ProposalId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_proposal(Client, NetworkId, ProposalId, #{}, #{}).
+
+get_proposal(Client, NetworkId, ProposalId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_proposal(Client, NetworkId, ProposalId, QueryMap, HeadersMap, []).
+
+get_proposal(Client, NetworkId, ProposalId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/networks/", aws_util:encode_uri(NetworkId), "/proposals/", aws_util:encode_uri(ProposalId), ""],
     SuccessStatusCode = undefined,
 
@@ -273,11 +304,16 @@ get_proposal(Client, NetworkId, ProposalId, Options)
 %% @doc Returns a list of all invitations for the current AWS account.
 %%
 %% Applies only to Hyperledger Fabric.
-list_invitations(Client, MaxResults, NextToken)
+list_invitations(Client)
   when is_map(Client) ->
-    list_invitations(Client, MaxResults, NextToken, []).
-list_invitations(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_invitations(Client, #{}, #{}).
+
+list_invitations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_invitations(Client, QueryMap, HeadersMap, []).
+
+list_invitations(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/invitations"],
     SuccessStatusCode = undefined,
 
@@ -285,8 +321,8 @@ list_invitations(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -296,11 +332,16 @@ list_invitations(Client, MaxResults, NextToken, Options)
 %% configurations.
 %%
 %% Applies only to Hyperledger Fabric.
-list_members(Client, NetworkId, IsOwned, MaxResults, Name, NextToken, Status)
+list_members(Client, NetworkId)
   when is_map(Client) ->
-    list_members(Client, NetworkId, IsOwned, MaxResults, Name, NextToken, Status, []).
-list_members(Client, NetworkId, IsOwned, MaxResults, Name, NextToken, Status, Options)
-  when is_map(Client), is_list(Options) ->
+    list_members(Client, NetworkId, #{}, #{}).
+
+list_members(Client, NetworkId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_members(Client, NetworkId, QueryMap, HeadersMap, []).
+
+list_members(Client, NetworkId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/networks/", aws_util:encode_uri(NetworkId), "/members"],
     SuccessStatusCode = undefined,
 
@@ -308,11 +349,11 @@ list_members(Client, NetworkId, IsOwned, MaxResults, Name, NextToken, Status, Op
 
     Query0_ =
       [
-        {<<"isOwned">>, IsOwned},
-        {<<"maxResults">>, MaxResults},
-        {<<"name">>, Name},
-        {<<"nextToken">>, NextToken},
-        {<<"status">>, Status}
+        {<<"isOwned">>, maps:get(<<"isOwned">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"name">>, maps:get(<<"name">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -322,11 +363,16 @@ list_members(Client, NetworkId, IsOwned, MaxResults, Name, NextToken, Status, Op
 %% account participates.
 %%
 %% Applies to Hyperledger Fabric and Ethereum.
-list_networks(Client, Framework, MaxResults, Name, NextToken, Status)
+list_networks(Client)
   when is_map(Client) ->
-    list_networks(Client, Framework, MaxResults, Name, NextToken, Status, []).
-list_networks(Client, Framework, MaxResults, Name, NextToken, Status, Options)
-  when is_map(Client), is_list(Options) ->
+    list_networks(Client, #{}, #{}).
+
+list_networks(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_networks(Client, QueryMap, HeadersMap, []).
+
+list_networks(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/networks"],
     SuccessStatusCode = undefined,
 
@@ -334,11 +380,11 @@ list_networks(Client, Framework, MaxResults, Name, NextToken, Status, Options)
 
     Query0_ =
       [
-        {<<"framework">>, Framework},
-        {<<"maxResults">>, MaxResults},
-        {<<"name">>, Name},
-        {<<"nextToken">>, NextToken},
-        {<<"status">>, Status}
+        {<<"framework">>, maps:get(<<"framework">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"name">>, maps:get(<<"name">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -347,11 +393,16 @@ list_networks(Client, Framework, MaxResults, Name, NextToken, Status, Options)
 %% @doc Returns information about the nodes within a network.
 %%
 %% Applies to Hyperledger Fabric and Ethereum.
-list_nodes(Client, NetworkId, MaxResults, MemberId, NextToken, Status)
+list_nodes(Client, NetworkId)
   when is_map(Client) ->
-    list_nodes(Client, NetworkId, MaxResults, MemberId, NextToken, Status, []).
-list_nodes(Client, NetworkId, MaxResults, MemberId, NextToken, Status, Options)
-  when is_map(Client), is_list(Options) ->
+    list_nodes(Client, NetworkId, #{}, #{}).
+
+list_nodes(Client, NetworkId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_nodes(Client, NetworkId, QueryMap, HeadersMap, []).
+
+list_nodes(Client, NetworkId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/networks/", aws_util:encode_uri(NetworkId), "/nodes"],
     SuccessStatusCode = undefined,
 
@@ -359,10 +410,10 @@ list_nodes(Client, NetworkId, MaxResults, MemberId, NextToken, Status, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"memberId">>, MemberId},
-        {<<"nextToken">>, NextToken},
-        {<<"status">>, Status}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"memberId">>, maps:get(<<"memberId">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -373,11 +424,16 @@ list_nodes(Client, NetworkId, MaxResults, MemberId, NextToken, Status, Options)
 %% vote.
 %%
 %% Applies only to Hyperledger Fabric.
-list_proposal_votes(Client, NetworkId, ProposalId, MaxResults, NextToken)
+list_proposal_votes(Client, NetworkId, ProposalId)
   when is_map(Client) ->
-    list_proposal_votes(Client, NetworkId, ProposalId, MaxResults, NextToken, []).
-list_proposal_votes(Client, NetworkId, ProposalId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_proposal_votes(Client, NetworkId, ProposalId, #{}, #{}).
+
+list_proposal_votes(Client, NetworkId, ProposalId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_proposal_votes(Client, NetworkId, ProposalId, QueryMap, HeadersMap, []).
+
+list_proposal_votes(Client, NetworkId, ProposalId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/networks/", aws_util:encode_uri(NetworkId), "/proposals/", aws_util:encode_uri(ProposalId), "/votes"],
     SuccessStatusCode = undefined,
 
@@ -385,8 +441,8 @@ list_proposal_votes(Client, NetworkId, ProposalId, MaxResults, NextToken, Option
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -395,11 +451,16 @@ list_proposal_votes(Client, NetworkId, ProposalId, MaxResults, NextToken, Option
 %% @doc Returns a list of proposals for the network.
 %%
 %% Applies only to Hyperledger Fabric.
-list_proposals(Client, NetworkId, MaxResults, NextToken)
+list_proposals(Client, NetworkId)
   when is_map(Client) ->
-    list_proposals(Client, NetworkId, MaxResults, NextToken, []).
-list_proposals(Client, NetworkId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_proposals(Client, NetworkId, #{}, #{}).
+
+list_proposals(Client, NetworkId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_proposals(Client, NetworkId, QueryMap, HeadersMap, []).
+
+list_proposals(Client, NetworkId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/networks/", aws_util:encode_uri(NetworkId), "/proposals"],
     SuccessStatusCode = undefined,
 
@@ -407,8 +468,8 @@ list_proposals(Client, NetworkId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -423,9 +484,14 @@ list_proposals(Client, NetworkId, MaxResults, NextToken, Options)
 %% Amazon Managed Blockchain Hyperledger Fabric Developer Guide.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 

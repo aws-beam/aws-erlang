@@ -38,19 +38,26 @@
          delete_virtual_cluster/3,
          delete_virtual_cluster/4,
          describe_job_run/3,
-         describe_job_run/4,
+         describe_job_run/5,
+         describe_job_run/6,
          describe_managed_endpoint/3,
-         describe_managed_endpoint/4,
+         describe_managed_endpoint/5,
+         describe_managed_endpoint/6,
          describe_virtual_cluster/2,
-         describe_virtual_cluster/3,
-         list_job_runs/8,
-         list_job_runs/9,
-         list_managed_endpoints/8,
-         list_managed_endpoints/9,
+         describe_virtual_cluster/4,
+         describe_virtual_cluster/5,
+         list_job_runs/2,
+         list_job_runs/4,
+         list_job_runs/5,
+         list_managed_endpoints/2,
+         list_managed_endpoints/4,
+         list_managed_endpoints/5,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
-         list_virtual_clusters/8,
-         list_virtual_clusters/9,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
+         list_virtual_clusters/1,
+         list_virtual_clusters/3,
+         list_virtual_clusters/4,
          start_job_run/3,
          start_job_run/4,
          tag_resource/3,
@@ -173,9 +180,14 @@ delete_virtual_cluster(Client, Id, Input0, Options) ->
 %% SparkSQL query, that you submit to Amazon EMR on EKS.
 describe_job_run(Client, Id, VirtualClusterId)
   when is_map(Client) ->
-    describe_job_run(Client, Id, VirtualClusterId, []).
-describe_job_run(Client, Id, VirtualClusterId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_job_run(Client, Id, VirtualClusterId, #{}, #{}).
+
+describe_job_run(Client, Id, VirtualClusterId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_job_run(Client, Id, VirtualClusterId, QueryMap, HeadersMap, []).
+
+describe_job_run(Client, Id, VirtualClusterId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/virtualclusters/", aws_util:encode_uri(VirtualClusterId), "/jobruns/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
@@ -191,9 +203,14 @@ describe_job_run(Client, Id, VirtualClusterId, Options)
 %% EKS so that EMR Studio can communicate with your virtual cluster.
 describe_managed_endpoint(Client, Id, VirtualClusterId)
   when is_map(Client) ->
-    describe_managed_endpoint(Client, Id, VirtualClusterId, []).
-describe_managed_endpoint(Client, Id, VirtualClusterId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_managed_endpoint(Client, Id, VirtualClusterId, #{}, #{}).
+
+describe_managed_endpoint(Client, Id, VirtualClusterId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_managed_endpoint(Client, Id, VirtualClusterId, QueryMap, HeadersMap, []).
+
+describe_managed_endpoint(Client, Id, VirtualClusterId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/virtualclusters/", aws_util:encode_uri(VirtualClusterId), "/endpoints/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
@@ -213,9 +230,14 @@ describe_managed_endpoint(Client, Id, VirtualClusterId, Options)
 %% requirements.
 describe_virtual_cluster(Client, Id)
   when is_map(Client) ->
-    describe_virtual_cluster(Client, Id, []).
-describe_virtual_cluster(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_virtual_cluster(Client, Id, #{}, #{}).
+
+describe_virtual_cluster(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_virtual_cluster(Client, Id, QueryMap, HeadersMap, []).
+
+describe_virtual_cluster(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/virtualclusters/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
@@ -229,11 +251,16 @@ describe_virtual_cluster(Client, Id, Options)
 %%
 %% A job run is a unit of work, such as a Spark jar, PySpark script, or
 %% SparkSQL query, that you submit to Amazon EMR on EKS.
-list_job_runs(Client, VirtualClusterId, CreatedAfter, CreatedBefore, MaxResults, Name, NextToken, States)
+list_job_runs(Client, VirtualClusterId)
   when is_map(Client) ->
-    list_job_runs(Client, VirtualClusterId, CreatedAfter, CreatedBefore, MaxResults, Name, NextToken, States, []).
-list_job_runs(Client, VirtualClusterId, CreatedAfter, CreatedBefore, MaxResults, Name, NextToken, States, Options)
-  when is_map(Client), is_list(Options) ->
+    list_job_runs(Client, VirtualClusterId, #{}, #{}).
+
+list_job_runs(Client, VirtualClusterId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_job_runs(Client, VirtualClusterId, QueryMap, HeadersMap, []).
+
+list_job_runs(Client, VirtualClusterId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/virtualclusters/", aws_util:encode_uri(VirtualClusterId), "/jobruns"],
     SuccessStatusCode = undefined,
 
@@ -241,12 +268,12 @@ list_job_runs(Client, VirtualClusterId, CreatedAfter, CreatedBefore, MaxResults,
 
     Query0_ =
       [
-        {<<"createdAfter">>, CreatedAfter},
-        {<<"createdBefore">>, CreatedBefore},
-        {<<"maxResults">>, MaxResults},
-        {<<"name">>, Name},
-        {<<"nextToken">>, NextToken},
-        {<<"states">>, States}
+        {<<"createdAfter">>, maps:get(<<"createdAfter">>, QueryMap, undefined)},
+        {<<"createdBefore">>, maps:get(<<"createdBefore">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"name">>, maps:get(<<"name">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"states">>, maps:get(<<"states">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -256,11 +283,16 @@ list_job_runs(Client, VirtualClusterId, CreatedAfter, CreatedBefore, MaxResults,
 %%
 %% A managed endpoint is a gateway that connects EMR Studio to Amazon EMR on
 %% EKS so that EMR Studio can communicate with your virtual cluster.
-list_managed_endpoints(Client, VirtualClusterId, CreatedAfter, CreatedBefore, MaxResults, NextToken, States, Types)
+list_managed_endpoints(Client, VirtualClusterId)
   when is_map(Client) ->
-    list_managed_endpoints(Client, VirtualClusterId, CreatedAfter, CreatedBefore, MaxResults, NextToken, States, Types, []).
-list_managed_endpoints(Client, VirtualClusterId, CreatedAfter, CreatedBefore, MaxResults, NextToken, States, Types, Options)
-  when is_map(Client), is_list(Options) ->
+    list_managed_endpoints(Client, VirtualClusterId, #{}, #{}).
+
+list_managed_endpoints(Client, VirtualClusterId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_managed_endpoints(Client, VirtualClusterId, QueryMap, HeadersMap, []).
+
+list_managed_endpoints(Client, VirtualClusterId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/virtualclusters/", aws_util:encode_uri(VirtualClusterId), "/endpoints"],
     SuccessStatusCode = undefined,
 
@@ -268,12 +300,12 @@ list_managed_endpoints(Client, VirtualClusterId, CreatedAfter, CreatedBefore, Ma
 
     Query0_ =
       [
-        {<<"createdAfter">>, CreatedAfter},
-        {<<"createdBefore">>, CreatedBefore},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"states">>, States},
-        {<<"types">>, Types}
+        {<<"createdAfter">>, maps:get(<<"createdAfter">>, QueryMap, undefined)},
+        {<<"createdBefore">>, maps:get(<<"createdBefore">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"states">>, maps:get(<<"states">>, QueryMap, undefined)},
+        {<<"types">>, maps:get(<<"types">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -282,9 +314,14 @@ list_managed_endpoints(Client, VirtualClusterId, CreatedAfter, CreatedBefore, Ma
 %% @doc Lists the tags assigned to the resources.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
@@ -302,11 +339,16 @@ list_tags_for_resource(Client, ResourceArn, Options)
 %% single Kubernetes namespace. Given this relationship, you can model
 %% virtual clusters the same way you model Kubernetes namespaces to meet your
 %% requirements.
-list_virtual_clusters(Client, ContainerProviderId, ContainerProviderType, CreatedAfter, CreatedBefore, MaxResults, NextToken, States)
+list_virtual_clusters(Client)
   when is_map(Client) ->
-    list_virtual_clusters(Client, ContainerProviderId, ContainerProviderType, CreatedAfter, CreatedBefore, MaxResults, NextToken, States, []).
-list_virtual_clusters(Client, ContainerProviderId, ContainerProviderType, CreatedAfter, CreatedBefore, MaxResults, NextToken, States, Options)
-  when is_map(Client), is_list(Options) ->
+    list_virtual_clusters(Client, #{}, #{}).
+
+list_virtual_clusters(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_virtual_clusters(Client, QueryMap, HeadersMap, []).
+
+list_virtual_clusters(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/virtualclusters"],
     SuccessStatusCode = undefined,
 
@@ -314,13 +356,13 @@ list_virtual_clusters(Client, ContainerProviderId, ContainerProviderType, Create
 
     Query0_ =
       [
-        {<<"containerProviderId">>, ContainerProviderId},
-        {<<"containerProviderType">>, ContainerProviderType},
-        {<<"createdAfter">>, CreatedAfter},
-        {<<"createdBefore">>, CreatedBefore},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"states">>, States}
+        {<<"containerProviderId">>, maps:get(<<"containerProviderId">>, QueryMap, undefined)},
+        {<<"containerProviderType">>, maps:get(<<"containerProviderType">>, QueryMap, undefined)},
+        {<<"createdAfter">>, maps:get(<<"createdAfter">>, QueryMap, undefined)},
+        {<<"createdBefore">>, maps:get(<<"createdBefore">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"states">>, maps:get(<<"states">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

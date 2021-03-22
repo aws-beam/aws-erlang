@@ -68,33 +68,47 @@
          delete_hosted_configuration_version/5,
          delete_hosted_configuration_version/6,
          get_application/2,
-         get_application/3,
-         get_configuration/6,
+         get_application/4,
+         get_application/5,
+         get_configuration/5,
          get_configuration/7,
+         get_configuration/8,
          get_configuration_profile/3,
-         get_configuration_profile/4,
+         get_configuration_profile/5,
+         get_configuration_profile/6,
          get_deployment/4,
-         get_deployment/5,
+         get_deployment/6,
+         get_deployment/7,
          get_deployment_strategy/2,
-         get_deployment_strategy/3,
+         get_deployment_strategy/4,
+         get_deployment_strategy/5,
          get_environment/3,
-         get_environment/4,
+         get_environment/5,
+         get_environment/6,
          get_hosted_configuration_version/4,
-         get_hosted_configuration_version/5,
+         get_hosted_configuration_version/6,
+         get_hosted_configuration_version/7,
+         list_applications/1,
          list_applications/3,
          list_applications/4,
+         list_configuration_profiles/2,
          list_configuration_profiles/4,
          list_configuration_profiles/5,
+         list_deployment_strategies/1,
          list_deployment_strategies/3,
          list_deployment_strategies/4,
+         list_deployments/3,
          list_deployments/5,
          list_deployments/6,
+         list_environments/2,
          list_environments/4,
          list_environments/5,
+         list_hosted_configuration_versions/3,
          list_hosted_configuration_versions/5,
          list_hosted_configuration_versions/6,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          start_deployment/4,
          start_deployment/5,
          stop_deployment/5,
@@ -353,9 +367,14 @@ delete_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileI
 %% @doc Retrieve information about an application.
 get_application(Client, ApplicationId)
   when is_map(Client) ->
-    get_application(Client, ApplicationId, []).
-get_application(Client, ApplicationId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_application(Client, ApplicationId, #{}, #{}).
+
+get_application(Client, ApplicationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_application(Client, ApplicationId, QueryMap, HeadersMap, []).
+
+get_application(Client, ApplicationId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
     SuccessStatusCode = 200,
 
@@ -378,11 +397,16 @@ get_application(Client, ApplicationId, Options)
 %% This value must be saved on your client. Subsequent calls to
 %% `GetConfiguration' must pass this value by using the
 %% `ClientConfigurationVersion' parameter.
-get_configuration(Client, Application, Configuration, Environment, ClientConfigurationVersion, ClientId)
+get_configuration(Client, Application, Configuration, Environment, ClientId)
   when is_map(Client) ->
-    get_configuration(Client, Application, Configuration, Environment, ClientConfigurationVersion, ClientId, []).
-get_configuration(Client, Application, Configuration, Environment, ClientConfigurationVersion, ClientId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_configuration(Client, Application, Configuration, Environment, ClientId, #{}, #{}).
+
+get_configuration(Client, Application, Configuration, Environment, ClientId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_configuration(Client, Application, Configuration, Environment, ClientId, QueryMap, HeadersMap, []).
+
+get_configuration(Client, Application, Configuration, Environment, ClientId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/applications/", aws_util:encode_uri(Application), "/environments/", aws_util:encode_uri(Environment), "/configurations/", aws_util:encode_uri(Configuration), ""],
     SuccessStatusCode = 200,
 
@@ -390,7 +414,7 @@ get_configuration(Client, Application, Configuration, Environment, ClientConfigu
 
     Query0_ =
       [
-        {<<"client_configuration_version">>, ClientConfigurationVersion},
+        {<<"client_configuration_version">>, maps:get(<<"client_configuration_version">>, QueryMap, undefined)},
         {<<"client_id">>, ClientId}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
@@ -417,9 +441,14 @@ get_configuration(Client, Application, Configuration, Environment, ClientConfigu
 %% @doc Retrieve information about a configuration profile.
 get_configuration_profile(Client, ApplicationId, ConfigurationProfileId)
   when is_map(Client) ->
-    get_configuration_profile(Client, ApplicationId, ConfigurationProfileId, []).
-get_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_configuration_profile(Client, ApplicationId, ConfigurationProfileId, #{}, #{}).
+
+get_configuration_profile(Client, ApplicationId, ConfigurationProfileId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_configuration_profile(Client, ApplicationId, ConfigurationProfileId, QueryMap, HeadersMap, []).
+
+get_configuration_profile(Client, ApplicationId, ConfigurationProfileId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), ""],
     SuccessStatusCode = 200,
 
@@ -432,9 +461,14 @@ get_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Options
 %% @doc Retrieve information about a configuration deployment.
 get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId)
   when is_map(Client) ->
-    get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, []).
-get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, #{}, #{}).
+
+get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, QueryMap, HeadersMap, []).
+
+get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), "/deployments/", aws_util:encode_uri(DeploymentNumber), ""],
     SuccessStatusCode = 200,
 
@@ -453,9 +487,14 @@ get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, Options)
 %% grows, and bake time.
 get_deployment_strategy(Client, DeploymentStrategyId)
   when is_map(Client) ->
-    get_deployment_strategy(Client, DeploymentStrategyId, []).
-get_deployment_strategy(Client, DeploymentStrategyId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_deployment_strategy(Client, DeploymentStrategyId, #{}, #{}).
+
+get_deployment_strategy(Client, DeploymentStrategyId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_deployment_strategy(Client, DeploymentStrategyId, QueryMap, HeadersMap, []).
+
+get_deployment_strategy(Client, DeploymentStrategyId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/deploymentstrategies/", aws_util:encode_uri(DeploymentStrategyId), ""],
     SuccessStatusCode = 200,
 
@@ -475,9 +514,14 @@ get_deployment_strategy(Client, DeploymentStrategyId, Options)
 %% configuration.
 get_environment(Client, ApplicationId, EnvironmentId)
   when is_map(Client) ->
-    get_environment(Client, ApplicationId, EnvironmentId, []).
-get_environment(Client, ApplicationId, EnvironmentId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_environment(Client, ApplicationId, EnvironmentId, #{}, #{}).
+
+get_environment(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_environment(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap, []).
+
+get_environment(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), ""],
     SuccessStatusCode = 200,
 
@@ -490,9 +534,14 @@ get_environment(Client, ApplicationId, EnvironmentId, Options)
 %% @doc Get information about a specific configuration version.
 get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber)
   when is_map(Client) ->
-    get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, []).
-get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, Options)
-  when is_map(Client), is_list(Options) ->
+    get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, #{}, #{}).
+
+get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, QueryMap, HeadersMap, []).
+
+get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), "/hostedconfigurationversions/", aws_util:encode_uri(VersionNumber), ""],
     SuccessStatusCode = 200,
 
@@ -523,11 +572,16 @@ get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, 
     end.
 
 %% @doc List all applications in your AWS account.
-list_applications(Client, MaxResults, NextToken)
+list_applications(Client)
   when is_map(Client) ->
-    list_applications(Client, MaxResults, NextToken, []).
-list_applications(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_applications(Client, #{}, #{}).
+
+list_applications(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_applications(Client, QueryMap, HeadersMap, []).
+
+list_applications(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/applications"],
     SuccessStatusCode = 200,
 
@@ -535,19 +589,24 @@ list_applications(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"max_results">>, MaxResults},
-        {<<"next_token">>, NextToken}
+        {<<"max_results">>, maps:get(<<"max_results">>, QueryMap, undefined)},
+        {<<"next_token">>, maps:get(<<"next_token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the configuration profiles for an application.
-list_configuration_profiles(Client, ApplicationId, MaxResults, NextToken)
+list_configuration_profiles(Client, ApplicationId)
   when is_map(Client) ->
-    list_configuration_profiles(Client, ApplicationId, MaxResults, NextToken, []).
-list_configuration_profiles(Client, ApplicationId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_configuration_profiles(Client, ApplicationId, #{}, #{}).
+
+list_configuration_profiles(Client, ApplicationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_configuration_profiles(Client, ApplicationId, QueryMap, HeadersMap, []).
+
+list_configuration_profiles(Client, ApplicationId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles"],
     SuccessStatusCode = 200,
 
@@ -555,19 +614,24 @@ list_configuration_profiles(Client, ApplicationId, MaxResults, NextToken, Option
 
     Query0_ =
       [
-        {<<"max_results">>, MaxResults},
-        {<<"next_token">>, NextToken}
+        {<<"max_results">>, maps:get(<<"max_results">>, QueryMap, undefined)},
+        {<<"next_token">>, maps:get(<<"next_token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List deployment strategies.
-list_deployment_strategies(Client, MaxResults, NextToken)
+list_deployment_strategies(Client)
   when is_map(Client) ->
-    list_deployment_strategies(Client, MaxResults, NextToken, []).
-list_deployment_strategies(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_deployment_strategies(Client, #{}, #{}).
+
+list_deployment_strategies(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_deployment_strategies(Client, QueryMap, HeadersMap, []).
+
+list_deployment_strategies(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/deploymentstrategies"],
     SuccessStatusCode = 200,
 
@@ -575,19 +639,24 @@ list_deployment_strategies(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"max_results">>, MaxResults},
-        {<<"next_token">>, NextToken}
+        {<<"max_results">>, maps:get(<<"max_results">>, QueryMap, undefined)},
+        {<<"next_token">>, maps:get(<<"next_token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the deployments for an environment.
-list_deployments(Client, ApplicationId, EnvironmentId, MaxResults, NextToken)
+list_deployments(Client, ApplicationId, EnvironmentId)
   when is_map(Client) ->
-    list_deployments(Client, ApplicationId, EnvironmentId, MaxResults, NextToken, []).
-list_deployments(Client, ApplicationId, EnvironmentId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_deployments(Client, ApplicationId, EnvironmentId, #{}, #{}).
+
+list_deployments(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_deployments(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap, []).
+
+list_deployments(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), "/deployments"],
     SuccessStatusCode = 200,
 
@@ -595,19 +664,24 @@ list_deployments(Client, ApplicationId, EnvironmentId, MaxResults, NextToken, Op
 
     Query0_ =
       [
-        {<<"max_results">>, MaxResults},
-        {<<"next_token">>, NextToken}
+        {<<"max_results">>, maps:get(<<"max_results">>, QueryMap, undefined)},
+        {<<"next_token">>, maps:get(<<"next_token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the environments for an application.
-list_environments(Client, ApplicationId, MaxResults, NextToken)
+list_environments(Client, ApplicationId)
   when is_map(Client) ->
-    list_environments(Client, ApplicationId, MaxResults, NextToken, []).
-list_environments(Client, ApplicationId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_environments(Client, ApplicationId, #{}, #{}).
+
+list_environments(Client, ApplicationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_environments(Client, ApplicationId, QueryMap, HeadersMap, []).
+
+list_environments(Client, ApplicationId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments"],
     SuccessStatusCode = 200,
 
@@ -615,8 +689,8 @@ list_environments(Client, ApplicationId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"max_results">>, MaxResults},
-        {<<"next_token">>, NextToken}
+        {<<"max_results">>, maps:get(<<"max_results">>, QueryMap, undefined)},
+        {<<"next_token">>, maps:get(<<"next_token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -624,11 +698,16 @@ list_environments(Client, ApplicationId, MaxResults, NextToken, Options)
 
 %% @doc View a list of configurations stored in the AppConfig configuration
 %% store by version.
-list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId, MaxResults, NextToken)
+list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId)
   when is_map(Client) ->
-    list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId, MaxResults, NextToken, []).
-list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId, #{}, #{}).
+
+list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId, QueryMap, HeadersMap, []).
+
+list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), "/hostedconfigurationversions"],
     SuccessStatusCode = 200,
 
@@ -636,8 +715,8 @@ list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId
 
     Query0_ =
       [
-        {<<"max_results">>, MaxResults},
-        {<<"next_token">>, NextToken}
+        {<<"max_results">>, maps:get(<<"max_results">>, QueryMap, undefined)},
+        {<<"next_token">>, maps:get(<<"next_token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -646,9 +725,14 @@ list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId
 %% @doc Retrieves the list of key-value tags assigned to the resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 

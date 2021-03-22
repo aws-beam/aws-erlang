@@ -60,9 +60,11 @@
          delete_threat_intel_set/4,
          delete_threat_intel_set/5,
          describe_organization_configuration/2,
-         describe_organization_configuration/3,
+         describe_organization_configuration/4,
+         describe_organization_configuration/5,
          describe_publishing_destination/3,
-         describe_publishing_destination/4,
+         describe_publishing_destination/5,
+         describe_publishing_destination/6,
          disable_organization_admin_account/2,
          disable_organization_admin_account/3,
          disassociate_from_master_account/3,
@@ -72,47 +74,62 @@
          enable_organization_admin_account/2,
          enable_organization_admin_account/3,
          get_detector/2,
-         get_detector/3,
+         get_detector/4,
+         get_detector/5,
          get_filter/3,
-         get_filter/4,
+         get_filter/5,
+         get_filter/6,
          get_findings/3,
          get_findings/4,
          get_findings_statistics/3,
          get_findings_statistics/4,
          get_invitations_count/1,
-         get_invitations_count/2,
+         get_invitations_count/3,
+         get_invitations_count/4,
          get_ip_set/3,
-         get_ip_set/4,
+         get_ip_set/5,
+         get_ip_set/6,
          get_master_account/2,
-         get_master_account/3,
+         get_master_account/4,
+         get_master_account/5,
          get_member_detectors/3,
          get_member_detectors/4,
          get_members/3,
          get_members/4,
          get_threat_intel_set/3,
-         get_threat_intel_set/4,
+         get_threat_intel_set/5,
+         get_threat_intel_set/6,
          get_usage_statistics/3,
          get_usage_statistics/4,
          invite_members/3,
          invite_members/4,
+         list_detectors/1,
          list_detectors/3,
          list_detectors/4,
+         list_filters/2,
          list_filters/4,
          list_filters/5,
          list_findings/3,
          list_findings/4,
+         list_invitations/1,
          list_invitations/3,
          list_invitations/4,
+         list_ip_sets/2,
          list_ip_sets/4,
          list_ip_sets/5,
+         list_members/2,
+         list_members/4,
          list_members/5,
-         list_members/6,
+         list_organization_admin_accounts/1,
          list_organization_admin_accounts/3,
          list_organization_admin_accounts/4,
+         list_publishing_destinations/2,
          list_publishing_destinations/4,
          list_publishing_destinations/5,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
+         list_threat_intel_sets/2,
          list_threat_intel_sets/4,
          list_threat_intel_sets/5,
          start_monitoring_members/3,
@@ -470,9 +487,14 @@ delete_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input0, Options) -
 %% administrator for GuardDuty.
 describe_organization_configuration(Client, DetectorId)
   when is_map(Client) ->
-    describe_organization_configuration(Client, DetectorId, []).
-describe_organization_configuration(Client, DetectorId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_organization_configuration(Client, DetectorId, #{}, #{}).
+
+describe_organization_configuration(Client, DetectorId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_organization_configuration(Client, DetectorId, QueryMap, HeadersMap, []).
+
+describe_organization_configuration(Client, DetectorId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/admin"],
     SuccessStatusCode = 200,
 
@@ -486,9 +508,14 @@ describe_organization_configuration(Client, DetectorId, Options)
 %% provided `destinationId'.
 describe_publishing_destination(Client, DestinationId, DetectorId)
   when is_map(Client) ->
-    describe_publishing_destination(Client, DestinationId, DetectorId, []).
-describe_publishing_destination(Client, DestinationId, DetectorId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_publishing_destination(Client, DestinationId, DetectorId, #{}, #{}).
+
+describe_publishing_destination(Client, DestinationId, DetectorId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_publishing_destination(Client, DestinationId, DetectorId, QueryMap, HeadersMap, []).
+
+describe_publishing_destination(Client, DestinationId, DetectorId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/publishingDestination/", aws_util:encode_uri(DestinationId), ""],
     SuccessStatusCode = 200,
 
@@ -569,9 +596,14 @@ enable_organization_admin_account(Client, Input0, Options) ->
 %% @doc Retrieves an Amazon GuardDuty detector specified by the detectorId.
 get_detector(Client, DetectorId)
   when is_map(Client) ->
-    get_detector(Client, DetectorId, []).
-get_detector(Client, DetectorId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_detector(Client, DetectorId, #{}, #{}).
+
+get_detector(Client, DetectorId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_detector(Client, DetectorId, QueryMap, HeadersMap, []).
+
+get_detector(Client, DetectorId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), ""],
     SuccessStatusCode = 200,
 
@@ -584,9 +616,14 @@ get_detector(Client, DetectorId, Options)
 %% @doc Returns the details of the filter specified by the filter name.
 get_filter(Client, DetectorId, FilterName)
   when is_map(Client) ->
-    get_filter(Client, DetectorId, FilterName, []).
-get_filter(Client, DetectorId, FilterName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_filter(Client, DetectorId, FilterName, #{}, #{}).
+
+get_filter(Client, DetectorId, FilterName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_filter(Client, DetectorId, FilterName, QueryMap, HeadersMap, []).
+
+get_filter(Client, DetectorId, FilterName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/filter/", aws_util:encode_uri(FilterName), ""],
     SuccessStatusCode = 200,
 
@@ -634,9 +671,14 @@ get_findings_statistics(Client, DetectorId, Input0, Options) ->
 %% invitation.
 get_invitations_count(Client)
   when is_map(Client) ->
-    get_invitations_count(Client, []).
-get_invitations_count(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    get_invitations_count(Client, #{}, #{}).
+
+get_invitations_count(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_invitations_count(Client, QueryMap, HeadersMap, []).
+
+get_invitations_count(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/invitation/count"],
     SuccessStatusCode = 200,
 
@@ -649,9 +691,14 @@ get_invitations_count(Client, Options)
 %% @doc Retrieves the IPSet specified by the `ipSetId'.
 get_ip_set(Client, DetectorId, IpSetId)
   when is_map(Client) ->
-    get_ip_set(Client, DetectorId, IpSetId, []).
-get_ip_set(Client, DetectorId, IpSetId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_ip_set(Client, DetectorId, IpSetId, #{}, #{}).
+
+get_ip_set(Client, DetectorId, IpSetId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_ip_set(Client, DetectorId, IpSetId, QueryMap, HeadersMap, []).
+
+get_ip_set(Client, DetectorId, IpSetId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset/", aws_util:encode_uri(IpSetId), ""],
     SuccessStatusCode = 200,
 
@@ -665,9 +712,14 @@ get_ip_set(Client, DetectorId, IpSetId, Options)
 %% associated with the current GuardDuty member account.
 get_master_account(Client, DetectorId)
   when is_map(Client) ->
-    get_master_account(Client, DetectorId, []).
-get_master_account(Client, DetectorId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_master_account(Client, DetectorId, #{}, #{}).
+
+get_master_account(Client, DetectorId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_master_account(Client, DetectorId, QueryMap, HeadersMap, []).
+
+get_master_account(Client, DetectorId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/master"],
     SuccessStatusCode = 200,
 
@@ -715,9 +767,14 @@ get_members(Client, DetectorId, Input0, Options) ->
 %% ID.
 get_threat_intel_set(Client, DetectorId, ThreatIntelSetId)
   when is_map(Client) ->
-    get_threat_intel_set(Client, DetectorId, ThreatIntelSetId, []).
-get_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_threat_intel_set(Client, DetectorId, ThreatIntelSetId, #{}, #{}).
+
+get_threat_intel_set(Client, DetectorId, ThreatIntelSetId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_threat_intel_set(Client, DetectorId, ThreatIntelSetId, QueryMap, HeadersMap, []).
+
+get_threat_intel_set(Client, DetectorId, ThreatIntelSetId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/threatintelset/", aws_util:encode_uri(ThreatIntelSetId), ""],
     SuccessStatusCode = 200,
 
@@ -771,11 +828,16 @@ invite_members(Client, DetectorId, Input0, Options) ->
 
 %% @doc Lists detectorIds of all the existing Amazon GuardDuty detector
 %% resources.
-list_detectors(Client, MaxResults, NextToken)
+list_detectors(Client)
   when is_map(Client) ->
-    list_detectors(Client, MaxResults, NextToken, []).
-list_detectors(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_detectors(Client, #{}, #{}).
+
+list_detectors(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_detectors(Client, QueryMap, HeadersMap, []).
+
+list_detectors(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/detector"],
     SuccessStatusCode = 200,
 
@@ -783,19 +845,24 @@ list_detectors(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a paginated list of the current filters.
-list_filters(Client, DetectorId, MaxResults, NextToken)
+list_filters(Client, DetectorId)
   when is_map(Client) ->
-    list_filters(Client, DetectorId, MaxResults, NextToken, []).
-list_filters(Client, DetectorId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_filters(Client, DetectorId, #{}, #{}).
+
+list_filters(Client, DetectorId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_filters(Client, DetectorId, QueryMap, HeadersMap, []).
+
+list_filters(Client, DetectorId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/filter"],
     SuccessStatusCode = 200,
 
@@ -803,8 +870,8 @@ list_filters(Client, DetectorId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -828,11 +895,16 @@ list_findings(Client, DetectorId, Input0, Options) ->
 
 %% @doc Lists all GuardDuty membership invitations that were sent to the
 %% current AWS account.
-list_invitations(Client, MaxResults, NextToken)
+list_invitations(Client)
   when is_map(Client) ->
-    list_invitations(Client, MaxResults, NextToken, []).
-list_invitations(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_invitations(Client, #{}, #{}).
+
+list_invitations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_invitations(Client, QueryMap, HeadersMap, []).
+
+list_invitations(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/invitation"],
     SuccessStatusCode = 200,
 
@@ -840,8 +912,8 @@ list_invitations(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -852,11 +924,16 @@ list_invitations(Client, MaxResults, NextToken, Options)
 %%
 %% If you use this operation from a member account, the IPSets returned are
 %% the IPSets from the associated administrator account.
-list_ip_sets(Client, DetectorId, MaxResults, NextToken)
+list_ip_sets(Client, DetectorId)
   when is_map(Client) ->
-    list_ip_sets(Client, DetectorId, MaxResults, NextToken, []).
-list_ip_sets(Client, DetectorId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_ip_sets(Client, DetectorId, #{}, #{}).
+
+list_ip_sets(Client, DetectorId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_ip_sets(Client, DetectorId, QueryMap, HeadersMap, []).
+
+list_ip_sets(Client, DetectorId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset"],
     SuccessStatusCode = 200,
 
@@ -864,8 +941,8 @@ list_ip_sets(Client, DetectorId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -873,11 +950,16 @@ list_ip_sets(Client, DetectorId, MaxResults, NextToken, Options)
 
 %% @doc Lists details about all member accounts for the current GuardDuty
 %% administrator account.
-list_members(Client, DetectorId, MaxResults, NextToken, OnlyAssociated)
+list_members(Client, DetectorId)
   when is_map(Client) ->
-    list_members(Client, DetectorId, MaxResults, NextToken, OnlyAssociated, []).
-list_members(Client, DetectorId, MaxResults, NextToken, OnlyAssociated, Options)
-  when is_map(Client), is_list(Options) ->
+    list_members(Client, DetectorId, #{}, #{}).
+
+list_members(Client, DetectorId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_members(Client, DetectorId, QueryMap, HeadersMap, []).
+
+list_members(Client, DetectorId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member"],
     SuccessStatusCode = 200,
 
@@ -885,20 +967,25 @@ list_members(Client, DetectorId, MaxResults, NextToken, OnlyAssociated, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"onlyAssociated">>, OnlyAssociated}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"onlyAssociated">>, maps:get(<<"onlyAssociated">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the accounts configured as GuardDuty delegated administrators.
-list_organization_admin_accounts(Client, MaxResults, NextToken)
+list_organization_admin_accounts(Client)
   when is_map(Client) ->
-    list_organization_admin_accounts(Client, MaxResults, NextToken, []).
-list_organization_admin_accounts(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_organization_admin_accounts(Client, #{}, #{}).
+
+list_organization_admin_accounts(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_organization_admin_accounts(Client, QueryMap, HeadersMap, []).
+
+list_organization_admin_accounts(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/admin"],
     SuccessStatusCode = 200,
 
@@ -906,8 +993,8 @@ list_organization_admin_accounts(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -915,11 +1002,16 @@ list_organization_admin_accounts(Client, MaxResults, NextToken, Options)
 
 %% @doc Returns a list of publishing destinations associated with the
 %% specified `dectectorId'.
-list_publishing_destinations(Client, DetectorId, MaxResults, NextToken)
+list_publishing_destinations(Client, DetectorId)
   when is_map(Client) ->
-    list_publishing_destinations(Client, DetectorId, MaxResults, NextToken, []).
-list_publishing_destinations(Client, DetectorId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_publishing_destinations(Client, DetectorId, #{}, #{}).
+
+list_publishing_destinations(Client, DetectorId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_publishing_destinations(Client, DetectorId, QueryMap, HeadersMap, []).
+
+list_publishing_destinations(Client, DetectorId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/publishingDestination"],
     SuccessStatusCode = 200,
 
@@ -927,8 +1019,8 @@ list_publishing_destinations(Client, DetectorId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -941,9 +1033,14 @@ list_publishing_destinations(Client, DetectorId, MaxResults, NextToken, Options)
 %% this operation returns all assigned tags for a given resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 
@@ -958,11 +1055,16 @@ list_tags_for_resource(Client, ResourceArn, Options)
 %%
 %% If you use this operation from a member account, the ThreatIntelSets
 %% associated with the administrator account are returned.
-list_threat_intel_sets(Client, DetectorId, MaxResults, NextToken)
+list_threat_intel_sets(Client, DetectorId)
   when is_map(Client) ->
-    list_threat_intel_sets(Client, DetectorId, MaxResults, NextToken, []).
-list_threat_intel_sets(Client, DetectorId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_threat_intel_sets(Client, DetectorId, #{}, #{}).
+
+list_threat_intel_sets(Client, DetectorId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_threat_intel_sets(Client, DetectorId, QueryMap, HeadersMap, []).
+
+list_threat_intel_sets(Client, DetectorId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/threatintelset"],
     SuccessStatusCode = 200,
 
@@ -970,8 +1072,8 @@ list_threat_intel_sets(Client, DetectorId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

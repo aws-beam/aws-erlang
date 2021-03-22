@@ -35,45 +35,65 @@
          delete_utterances/4,
          delete_utterances/5,
          get_bot/3,
-         get_bot/4,
+         get_bot/5,
+         get_bot/6,
          get_bot_alias/3,
-         get_bot_alias/4,
+         get_bot_alias/5,
+         get_bot_alias/6,
+         get_bot_aliases/2,
+         get_bot_aliases/4,
          get_bot_aliases/5,
-         get_bot_aliases/6,
          get_bot_channel_association/4,
-         get_bot_channel_association/5,
+         get_bot_channel_association/6,
+         get_bot_channel_association/7,
+         get_bot_channel_associations/3,
+         get_bot_channel_associations/5,
          get_bot_channel_associations/6,
-         get_bot_channel_associations/7,
+         get_bot_versions/2,
          get_bot_versions/4,
          get_bot_versions/5,
+         get_bots/1,
+         get_bots/3,
          get_bots/4,
-         get_bots/5,
          get_builtin_intent/2,
-         get_builtin_intent/3,
-         get_builtin_intents/5,
-         get_builtin_intents/6,
-         get_builtin_slot_types/5,
-         get_builtin_slot_types/6,
+         get_builtin_intent/4,
+         get_builtin_intent/5,
+         get_builtin_intents/1,
+         get_builtin_intents/3,
+         get_builtin_intents/4,
+         get_builtin_slot_types/1,
+         get_builtin_slot_types/3,
+         get_builtin_slot_types/4,
          get_export/5,
-         get_export/6,
+         get_export/7,
+         get_export/8,
          get_import/2,
-         get_import/3,
+         get_import/4,
+         get_import/5,
          get_intent/3,
-         get_intent/4,
+         get_intent/5,
+         get_intent/6,
+         get_intent_versions/2,
          get_intent_versions/4,
          get_intent_versions/5,
+         get_intents/1,
+         get_intents/3,
          get_intents/4,
-         get_intents/5,
          get_slot_type/3,
-         get_slot_type/4,
+         get_slot_type/5,
+         get_slot_type/6,
+         get_slot_type_versions/2,
          get_slot_type_versions/4,
          get_slot_type_versions/5,
+         get_slot_types/1,
+         get_slot_types/3,
          get_slot_types/4,
-         get_slot_types/5,
          get_utterances_view/4,
-         get_utterances_view/5,
+         get_utterances_view/6,
+         get_utterances_view/7,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          put_bot/3,
          put_bot/4,
          put_bot_alias/4,
@@ -428,9 +448,14 @@ delete_utterances(Client, BotName, UserId, Input0, Options) ->
 %% This operation requires permissions for the `lex:GetBot' action.
 get_bot(Client, Name, VersionOrAlias)
   when is_map(Client) ->
-    get_bot(Client, Name, VersionOrAlias, []).
-get_bot(Client, Name, VersionOrAlias, Options)
-  when is_map(Client), is_list(Options) ->
+    get_bot(Client, Name, VersionOrAlias, #{}, #{}).
+
+get_bot(Client, Name, VersionOrAlias, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_bot(Client, Name, VersionOrAlias, QueryMap, HeadersMap, []).
+
+get_bot(Client, Name, VersionOrAlias, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/bots/", aws_util:encode_uri(Name), "/versions/", aws_util:encode_uri(VersionOrAlias), ""],
     SuccessStatusCode = 200,
 
@@ -447,9 +472,14 @@ get_bot(Client, Name, VersionOrAlias, Options)
 %% This operation requires permissions for the `lex:GetBotAlias' action.
 get_bot_alias(Client, BotName, Name)
   when is_map(Client) ->
-    get_bot_alias(Client, BotName, Name, []).
-get_bot_alias(Client, BotName, Name, Options)
-  when is_map(Client), is_list(Options) ->
+    get_bot_alias(Client, BotName, Name, #{}, #{}).
+
+get_bot_alias(Client, BotName, Name, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_bot_alias(Client, BotName, Name, QueryMap, HeadersMap, []).
+
+get_bot_alias(Client, BotName, Name, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/bots/", aws_util:encode_uri(BotName), "/aliases/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
 
@@ -462,11 +492,16 @@ get_bot_alias(Client, BotName, Name, Options)
 %% @doc Returns a list of aliases for a specified Amazon Lex bot.
 %%
 %% This operation requires permissions for the `lex:GetBotAliases' action.
-get_bot_aliases(Client, BotName, MaxResults, NameContains, NextToken)
+get_bot_aliases(Client, BotName)
   when is_map(Client) ->
-    get_bot_aliases(Client, BotName, MaxResults, NameContains, NextToken, []).
-get_bot_aliases(Client, BotName, MaxResults, NameContains, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_bot_aliases(Client, BotName, #{}, #{}).
+
+get_bot_aliases(Client, BotName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_bot_aliases(Client, BotName, QueryMap, HeadersMap, []).
+
+get_bot_aliases(Client, BotName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/bots/", aws_util:encode_uri(BotName), "/aliases/"],
     SuccessStatusCode = 200,
 
@@ -474,9 +509,9 @@ get_bot_aliases(Client, BotName, MaxResults, NameContains, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nameContains">>, NameContains},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nameContains">>, maps:get(<<"nameContains">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -489,9 +524,14 @@ get_bot_aliases(Client, BotName, MaxResults, NameContains, NextToken, Options)
 %% action.
 get_bot_channel_association(Client, BotAlias, BotName, Name)
   when is_map(Client) ->
-    get_bot_channel_association(Client, BotAlias, BotName, Name, []).
-get_bot_channel_association(Client, BotAlias, BotName, Name, Options)
-  when is_map(Client), is_list(Options) ->
+    get_bot_channel_association(Client, BotAlias, BotName, Name, #{}, #{}).
+
+get_bot_channel_association(Client, BotAlias, BotName, Name, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_bot_channel_association(Client, BotAlias, BotName, Name, QueryMap, HeadersMap, []).
+
+get_bot_channel_association(Client, BotAlias, BotName, Name, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/bots/", aws_util:encode_uri(BotName), "/aliases/", aws_util:encode_uri(BotAlias), "/channels/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
 
@@ -506,11 +546,16 @@ get_bot_channel_association(Client, BotAlias, BotName, Name, Options)
 %%
 %% The `GetBotChannelAssociations' operation requires permissions for the
 %% `lex:GetBotChannelAssociations' action.
-get_bot_channel_associations(Client, BotAlias, BotName, MaxResults, NameContains, NextToken)
+get_bot_channel_associations(Client, BotAlias, BotName)
   when is_map(Client) ->
-    get_bot_channel_associations(Client, BotAlias, BotName, MaxResults, NameContains, NextToken, []).
-get_bot_channel_associations(Client, BotAlias, BotName, MaxResults, NameContains, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_bot_channel_associations(Client, BotAlias, BotName, #{}, #{}).
+
+get_bot_channel_associations(Client, BotAlias, BotName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_bot_channel_associations(Client, BotAlias, BotName, QueryMap, HeadersMap, []).
+
+get_bot_channel_associations(Client, BotAlias, BotName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/bots/", aws_util:encode_uri(BotName), "/aliases/", aws_util:encode_uri(BotAlias), "/channels/"],
     SuccessStatusCode = 200,
 
@@ -518,9 +563,9 @@ get_bot_channel_associations(Client, BotAlias, BotName, MaxResults, NameContains
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nameContains">>, NameContains},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nameContains">>, maps:get(<<"nameContains">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -537,11 +582,16 @@ get_bot_channel_associations(Client, BotAlias, BotName, MaxResults, NameContains
 %% `$LATEST' version.
 %%
 %% This operation requires permissions for the `lex:GetBotVersions' action.
-get_bot_versions(Client, Name, MaxResults, NextToken)
+get_bot_versions(Client, Name)
   when is_map(Client) ->
-    get_bot_versions(Client, Name, MaxResults, NextToken, []).
-get_bot_versions(Client, Name, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_bot_versions(Client, Name, #{}, #{}).
+
+get_bot_versions(Client, Name, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_bot_versions(Client, Name, QueryMap, HeadersMap, []).
+
+get_bot_versions(Client, Name, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/bots/", aws_util:encode_uri(Name), "/versions/"],
     SuccessStatusCode = 200,
 
@@ -549,8 +599,8 @@ get_bot_versions(Client, Name, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -567,11 +617,16 @@ get_bot_versions(Client, Name, MaxResults, NextToken, Options)
 %%
 %% </li> </ul> This operation requires permission for the `lex:GetBots'
 %% action.
-get_bots(Client, MaxResults, NameContains, NextToken)
+get_bots(Client)
   when is_map(Client) ->
-    get_bots(Client, MaxResults, NameContains, NextToken, []).
-get_bots(Client, MaxResults, NameContains, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_bots(Client, #{}, #{}).
+
+get_bots(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_bots(Client, QueryMap, HeadersMap, []).
+
+get_bots(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/bots/"],
     SuccessStatusCode = 200,
 
@@ -579,9 +634,9 @@ get_bots(Client, MaxResults, NameContains, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nameContains">>, NameContains},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nameContains">>, maps:get(<<"nameContains">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -592,9 +647,14 @@ get_bots(Client, MaxResults, NameContains, NextToken, Options)
 %% This operation requires permission for the `lex:GetBuiltinIntent' action.
 get_builtin_intent(Client, Signature)
   when is_map(Client) ->
-    get_builtin_intent(Client, Signature, []).
-get_builtin_intent(Client, Signature, Options)
-  when is_map(Client), is_list(Options) ->
+    get_builtin_intent(Client, Signature, #{}, #{}).
+
+get_builtin_intent(Client, Signature, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_builtin_intent(Client, Signature, QueryMap, HeadersMap, []).
+
+get_builtin_intent(Client, Signature, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/builtins/intents/", aws_util:encode_uri(Signature), ""],
     SuccessStatusCode = 200,
 
@@ -607,11 +667,16 @@ get_builtin_intent(Client, Signature, Options)
 %% @doc Gets a list of built-in intents that meet the specified criteria.
 %%
 %% This operation requires permission for the `lex:GetBuiltinIntents' action.
-get_builtin_intents(Client, Locale, MaxResults, NextToken, SignatureContains)
+get_builtin_intents(Client)
   when is_map(Client) ->
-    get_builtin_intents(Client, Locale, MaxResults, NextToken, SignatureContains, []).
-get_builtin_intents(Client, Locale, MaxResults, NextToken, SignatureContains, Options)
-  when is_map(Client), is_list(Options) ->
+    get_builtin_intents(Client, #{}, #{}).
+
+get_builtin_intents(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_builtin_intents(Client, QueryMap, HeadersMap, []).
+
+get_builtin_intents(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/builtins/intents/"],
     SuccessStatusCode = 200,
 
@@ -619,10 +684,10 @@ get_builtin_intents(Client, Locale, MaxResults, NextToken, SignatureContains, Op
 
     Query0_ =
       [
-        {<<"locale">>, Locale},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"signatureContains">>, SignatureContains}
+        {<<"locale">>, maps:get(<<"locale">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"signatureContains">>, maps:get(<<"signatureContains">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -635,11 +700,16 @@ get_builtin_intents(Client, Locale, MaxResults, NextToken, SignatureContains, Op
 %%
 %% This operation requires permission for the `lex:GetBuiltInSlotTypes'
 %% action.
-get_builtin_slot_types(Client, Locale, MaxResults, NextToken, SignatureContains)
+get_builtin_slot_types(Client)
   when is_map(Client) ->
-    get_builtin_slot_types(Client, Locale, MaxResults, NextToken, SignatureContains, []).
-get_builtin_slot_types(Client, Locale, MaxResults, NextToken, SignatureContains, Options)
-  when is_map(Client), is_list(Options) ->
+    get_builtin_slot_types(Client, #{}, #{}).
+
+get_builtin_slot_types(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_builtin_slot_types(Client, QueryMap, HeadersMap, []).
+
+get_builtin_slot_types(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/builtins/slottypes/"],
     SuccessStatusCode = 200,
 
@@ -647,10 +717,10 @@ get_builtin_slot_types(Client, Locale, MaxResults, NextToken, SignatureContains,
 
     Query0_ =
       [
-        {<<"locale">>, Locale},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"signatureContains">>, SignatureContains}
+        {<<"locale">>, maps:get(<<"locale">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"signatureContains">>, maps:get(<<"signatureContains">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -659,9 +729,14 @@ get_builtin_slot_types(Client, Locale, MaxResults, NextToken, SignatureContains,
 %% @doc Exports the contents of a Amazon Lex resource in a specified format.
 get_export(Client, ExportType, Name, ResourceType, Version)
   when is_map(Client) ->
-    get_export(Client, ExportType, Name, ResourceType, Version, []).
-get_export(Client, ExportType, Name, ResourceType, Version, Options)
-  when is_map(Client), is_list(Options) ->
+    get_export(Client, ExportType, Name, ResourceType, Version, #{}, #{}).
+
+get_export(Client, ExportType, Name, ResourceType, Version, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_export(Client, ExportType, Name, ResourceType, Version, QueryMap, HeadersMap, []).
+
+get_export(Client, ExportType, Name, ResourceType, Version, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/exports/"],
     SuccessStatusCode = 200,
 
@@ -682,9 +757,14 @@ get_export(Client, ExportType, Name, ResourceType, Version, Options)
 %% operation.
 get_import(Client, ImportId)
   when is_map(Client) ->
-    get_import(Client, ImportId, []).
-get_import(Client, ImportId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_import(Client, ImportId, #{}, #{}).
+
+get_import(Client, ImportId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_import(Client, ImportId, QueryMap, HeadersMap, []).
+
+get_import(Client, ImportId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/imports/", aws_util:encode_uri(ImportId), ""],
     SuccessStatusCode = 200,
 
@@ -701,9 +781,14 @@ get_import(Client, ImportId, Options)
 %% This operation requires permissions to perform the `lex:GetIntent' action.
 get_intent(Client, Name, Version)
   when is_map(Client) ->
-    get_intent(Client, Name, Version, []).
-get_intent(Client, Name, Version, Options)
-  when is_map(Client), is_list(Options) ->
+    get_intent(Client, Name, Version, #{}, #{}).
+
+get_intent(Client, Name, Version, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_intent(Client, Name, Version, QueryMap, HeadersMap, []).
+
+get_intent(Client, Name, Version, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/intents/", aws_util:encode_uri(Name), "/versions/", aws_util:encode_uri(Version), ""],
     SuccessStatusCode = 200,
 
@@ -726,11 +811,16 @@ get_intent(Client, Name, Version, Options)
 %%
 %% This operation requires permissions for the `lex:GetIntentVersions'
 %% action.
-get_intent_versions(Client, Name, MaxResults, NextToken)
+get_intent_versions(Client, Name)
   when is_map(Client) ->
-    get_intent_versions(Client, Name, MaxResults, NextToken, []).
-get_intent_versions(Client, Name, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_intent_versions(Client, Name, #{}, #{}).
+
+get_intent_versions(Client, Name, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_intent_versions(Client, Name, QueryMap, HeadersMap, []).
+
+get_intent_versions(Client, Name, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/intents/", aws_util:encode_uri(Name), "/versions/"],
     SuccessStatusCode = 200,
 
@@ -738,8 +828,8 @@ get_intent_versions(Client, Name, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -755,11 +845,16 @@ get_intent_versions(Client, Name, MaxResults, NextToken, Options)
 %%
 %% </li> </ul> The operation requires permission for the `lex:GetIntents'
 %% action.
-get_intents(Client, MaxResults, NameContains, NextToken)
+get_intents(Client)
   when is_map(Client) ->
-    get_intents(Client, MaxResults, NameContains, NextToken, []).
-get_intents(Client, MaxResults, NameContains, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_intents(Client, #{}, #{}).
+
+get_intents(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_intents(Client, QueryMap, HeadersMap, []).
+
+get_intents(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/intents/"],
     SuccessStatusCode = 200,
 
@@ -767,9 +862,9 @@ get_intents(Client, MaxResults, NameContains, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nameContains">>, NameContains},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nameContains">>, maps:get(<<"nameContains">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -783,9 +878,14 @@ get_intents(Client, MaxResults, NameContains, NextToken, Options)
 %% This operation requires permissions for the `lex:GetSlotType' action.
 get_slot_type(Client, Name, Version)
   when is_map(Client) ->
-    get_slot_type(Client, Name, Version, []).
-get_slot_type(Client, Name, Version, Options)
-  when is_map(Client), is_list(Options) ->
+    get_slot_type(Client, Name, Version, #{}, #{}).
+
+get_slot_type(Client, Name, Version, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_slot_type(Client, Name, Version, QueryMap, HeadersMap, []).
+
+get_slot_type(Client, Name, Version, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/slottypes/", aws_util:encode_uri(Name), "/versions/", aws_util:encode_uri(Version), ""],
     SuccessStatusCode = 200,
 
@@ -808,11 +908,16 @@ get_slot_type(Client, Name, Version, Options)
 %%
 %% This operation requires permissions for the `lex:GetSlotTypeVersions'
 %% action.
-get_slot_type_versions(Client, Name, MaxResults, NextToken)
+get_slot_type_versions(Client, Name)
   when is_map(Client) ->
-    get_slot_type_versions(Client, Name, MaxResults, NextToken, []).
-get_slot_type_versions(Client, Name, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_slot_type_versions(Client, Name, #{}, #{}).
+
+get_slot_type_versions(Client, Name, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_slot_type_versions(Client, Name, QueryMap, HeadersMap, []).
+
+get_slot_type_versions(Client, Name, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/slottypes/", aws_util:encode_uri(Name), "/versions/"],
     SuccessStatusCode = 200,
 
@@ -820,8 +925,8 @@ get_slot_type_versions(Client, Name, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -837,11 +942,16 @@ get_slot_type_versions(Client, Name, MaxResults, NextToken, Options)
 %%
 %% </li> </ul> The operation requires permission for the `lex:GetSlotTypes'
 %% action.
-get_slot_types(Client, MaxResults, NameContains, NextToken)
+get_slot_types(Client)
   when is_map(Client) ->
-    get_slot_types(Client, MaxResults, NameContains, NextToken, []).
-get_slot_types(Client, MaxResults, NameContains, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_slot_types(Client, #{}, #{}).
+
+get_slot_types(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_slot_types(Client, QueryMap, HeadersMap, []).
+
+get_slot_types(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/slottypes/"],
     SuccessStatusCode = 200,
 
@@ -849,9 +959,9 @@ get_slot_types(Client, MaxResults, NameContains, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nameContains">>, NameContains},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nameContains">>, maps:get(<<"nameContains">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -887,9 +997,14 @@ get_slot_types(Client, MaxResults, NameContains, NextToken, Options)
 %% action.
 get_utterances_view(Client, BotName, BotVersions, StatusType)
   when is_map(Client) ->
-    get_utterances_view(Client, BotName, BotVersions, StatusType, []).
-get_utterances_view(Client, BotName, BotVersions, StatusType, Options)
-  when is_map(Client), is_list(Options) ->
+    get_utterances_view(Client, BotName, BotVersions, StatusType, #{}, #{}).
+
+get_utterances_view(Client, BotName, BotVersions, StatusType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_utterances_view(Client, BotName, BotVersions, StatusType, QueryMap, HeadersMap, []).
+
+get_utterances_view(Client, BotName, BotVersions, StatusType, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/bots/", aws_util:encode_uri(BotName), "/utterances?view=aggregation"],
     SuccessStatusCode = 200,
 
@@ -910,9 +1025,14 @@ get_utterances_view(Client, BotName, BotVersions, StatusType, Options)
 %% them.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 

@@ -19,11 +19,14 @@
 -export([delete_playback_configuration/3,
          delete_playback_configuration/4,
          get_playback_configuration/2,
-         get_playback_configuration/3,
+         get_playback_configuration/4,
+         get_playback_configuration/5,
+         list_playback_configurations/1,
          list_playback_configurations/3,
          list_playback_configurations/4,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          put_playback_configuration/2,
          put_playback_configuration/3,
          tag_resource/3,
@@ -56,9 +59,14 @@ delete_playback_configuration(Client, Name, Input0, Options) ->
 %% @doc Returns the playback configuration for the specified name.
 get_playback_configuration(Client, Name)
   when is_map(Client) ->
-    get_playback_configuration(Client, Name, []).
-get_playback_configuration(Client, Name, Options)
-  when is_map(Client), is_list(Options) ->
+    get_playback_configuration(Client, Name, #{}, #{}).
+
+get_playback_configuration(Client, Name, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_playback_configuration(Client, Name, QueryMap, HeadersMap, []).
+
+get_playback_configuration(Client, Name, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/playbackConfiguration/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
 
@@ -76,11 +84,16 @@ get_playback_configuration(Client, Name, Options)
 %% MediaTailor has more configurations than the specified maximum, it
 %% provides parameters in the response that you can use to retrieve the next
 %% pageful.
-list_playback_configurations(Client, MaxResults, NextToken)
+list_playback_configurations(Client)
   when is_map(Client) ->
-    list_playback_configurations(Client, MaxResults, NextToken, []).
-list_playback_configurations(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_playback_configurations(Client, #{}, #{}).
+
+list_playback_configurations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_playback_configurations(Client, QueryMap, HeadersMap, []).
+
+list_playback_configurations(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/playbackConfigurations"],
     SuccessStatusCode = 200,
 
@@ -88,8 +101,8 @@ list_playback_configurations(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -99,9 +112,14 @@ list_playback_configurations(Client, MaxResults, NextToken, Options)
 %% configuration resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 

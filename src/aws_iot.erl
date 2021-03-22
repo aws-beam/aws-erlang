@@ -57,7 +57,8 @@
          clear_default_authorizer/2,
          clear_default_authorizer/3,
          confirm_topic_rule_destination/2,
-         confirm_topic_rule_destination/3,
+         confirm_topic_rule_destination/4,
+         confirm_topic_rule_destination/5,
          create_audit_suppression/2,
          create_audit_suppression/3,
          create_authorizer/3,
@@ -171,65 +172,94 @@
          deprecate_thing_type/3,
          deprecate_thing_type/4,
          describe_account_audit_configuration/1,
-         describe_account_audit_configuration/2,
+         describe_account_audit_configuration/3,
+         describe_account_audit_configuration/4,
          describe_audit_finding/2,
-         describe_audit_finding/3,
+         describe_audit_finding/4,
+         describe_audit_finding/5,
          describe_audit_mitigation_actions_task/2,
-         describe_audit_mitigation_actions_task/3,
+         describe_audit_mitigation_actions_task/4,
+         describe_audit_mitigation_actions_task/5,
          describe_audit_suppression/2,
          describe_audit_suppression/3,
          describe_audit_task/2,
-         describe_audit_task/3,
+         describe_audit_task/4,
+         describe_audit_task/5,
          describe_authorizer/2,
-         describe_authorizer/3,
+         describe_authorizer/4,
+         describe_authorizer/5,
          describe_billing_group/2,
-         describe_billing_group/3,
+         describe_billing_group/4,
+         describe_billing_group/5,
          describe_ca_certificate/2,
-         describe_ca_certificate/3,
+         describe_ca_certificate/4,
+         describe_ca_certificate/5,
          describe_certificate/2,
-         describe_certificate/3,
+         describe_certificate/4,
+         describe_certificate/5,
          describe_custom_metric/2,
-         describe_custom_metric/3,
+         describe_custom_metric/4,
+         describe_custom_metric/5,
          describe_default_authorizer/1,
-         describe_default_authorizer/2,
+         describe_default_authorizer/3,
+         describe_default_authorizer/4,
          describe_detect_mitigation_actions_task/2,
-         describe_detect_mitigation_actions_task/3,
+         describe_detect_mitigation_actions_task/4,
+         describe_detect_mitigation_actions_task/5,
          describe_dimension/2,
-         describe_dimension/3,
+         describe_dimension/4,
+         describe_dimension/5,
          describe_domain_configuration/2,
-         describe_domain_configuration/3,
-         describe_endpoint/2,
+         describe_domain_configuration/4,
+         describe_domain_configuration/5,
+         describe_endpoint/1,
          describe_endpoint/3,
+         describe_endpoint/4,
          describe_event_configurations/1,
-         describe_event_configurations/2,
+         describe_event_configurations/3,
+         describe_event_configurations/4,
          describe_index/2,
-         describe_index/3,
+         describe_index/4,
+         describe_index/5,
          describe_job/2,
-         describe_job/3,
-         describe_job_execution/4,
+         describe_job/4,
+         describe_job/5,
+         describe_job_execution/3,
          describe_job_execution/5,
+         describe_job_execution/6,
          describe_mitigation_action/2,
-         describe_mitigation_action/3,
+         describe_mitigation_action/4,
+         describe_mitigation_action/5,
          describe_provisioning_template/2,
-         describe_provisioning_template/3,
+         describe_provisioning_template/4,
+         describe_provisioning_template/5,
          describe_provisioning_template_version/3,
-         describe_provisioning_template_version/4,
+         describe_provisioning_template_version/5,
+         describe_provisioning_template_version/6,
          describe_role_alias/2,
-         describe_role_alias/3,
+         describe_role_alias/4,
+         describe_role_alias/5,
          describe_scheduled_audit/2,
-         describe_scheduled_audit/3,
+         describe_scheduled_audit/4,
+         describe_scheduled_audit/5,
          describe_security_profile/2,
-         describe_security_profile/3,
+         describe_security_profile/4,
+         describe_security_profile/5,
          describe_stream/2,
-         describe_stream/3,
+         describe_stream/4,
+         describe_stream/5,
          describe_thing/2,
-         describe_thing/3,
+         describe_thing/4,
+         describe_thing/5,
          describe_thing_group/2,
-         describe_thing_group/3,
+         describe_thing_group/4,
+         describe_thing_group/5,
          describe_thing_registration_task/2,
-         describe_thing_registration_task/3,
+         describe_thing_registration_task/4,
+         describe_thing_registration_task/5,
          describe_thing_type/2,
-         describe_thing_type/3,
+         describe_thing_type/4,
+         describe_thing_type/5,
          detach_policy/3,
          detach_policy/4,
          detach_principal_policy/3,
@@ -242,140 +272,199 @@
          disable_topic_rule/4,
          enable_topic_rule/3,
          enable_topic_rule/4,
+         get_behavior_model_training_summaries/1,
+         get_behavior_model_training_summaries/3,
          get_behavior_model_training_summaries/4,
-         get_behavior_model_training_summaries/5,
          get_cardinality/2,
          get_cardinality/3,
          get_effective_policies/2,
          get_effective_policies/3,
          get_indexing_configuration/1,
-         get_indexing_configuration/2,
+         get_indexing_configuration/3,
+         get_indexing_configuration/4,
          get_job_document/2,
-         get_job_document/3,
+         get_job_document/4,
+         get_job_document/5,
          get_logging_options/1,
-         get_logging_options/2,
+         get_logging_options/3,
+         get_logging_options/4,
          get_ota_update/2,
-         get_ota_update/3,
+         get_ota_update/4,
+         get_ota_update/5,
          get_percentiles/2,
          get_percentiles/3,
          get_policy/2,
-         get_policy/3,
+         get_policy/4,
+         get_policy/5,
          get_policy_version/3,
-         get_policy_version/4,
+         get_policy_version/5,
+         get_policy_version/6,
          get_registration_code/1,
-         get_registration_code/2,
+         get_registration_code/3,
+         get_registration_code/4,
          get_statistics/2,
          get_statistics/3,
          get_topic_rule/2,
-         get_topic_rule/3,
+         get_topic_rule/4,
+         get_topic_rule/5,
          get_topic_rule_destination/2,
-         get_topic_rule_destination/3,
+         get_topic_rule_destination/4,
+         get_topic_rule_destination/5,
          get_v2_logging_options/1,
-         get_v2_logging_options/2,
-         list_active_violations/7,
-         list_active_violations/8,
+         get_v2_logging_options/3,
+         get_v2_logging_options/4,
+         list_active_violations/1,
+         list_active_violations/3,
+         list_active_violations/4,
          list_attached_policies/3,
          list_attached_policies/4,
          list_audit_findings/2,
          list_audit_findings/3,
+         list_audit_mitigation_actions_executions/3,
+         list_audit_mitigation_actions_executions/5,
          list_audit_mitigation_actions_executions/6,
-         list_audit_mitigation_actions_executions/7,
-         list_audit_mitigation_actions_tasks/8,
-         list_audit_mitigation_actions_tasks/9,
+         list_audit_mitigation_actions_tasks/3,
+         list_audit_mitigation_actions_tasks/5,
+         list_audit_mitigation_actions_tasks/6,
          list_audit_suppressions/2,
          list_audit_suppressions/3,
-         list_audit_tasks/7,
-         list_audit_tasks/8,
-         list_authorizers/5,
-         list_authorizers/6,
+         list_audit_tasks/3,
+         list_audit_tasks/5,
+         list_audit_tasks/6,
+         list_authorizers/1,
+         list_authorizers/3,
+         list_authorizers/4,
+         list_billing_groups/1,
+         list_billing_groups/3,
          list_billing_groups/4,
-         list_billing_groups/5,
+         list_ca_certificates/1,
+         list_ca_certificates/3,
          list_ca_certificates/4,
-         list_ca_certificates/5,
+         list_certificates/1,
+         list_certificates/3,
          list_certificates/4,
-         list_certificates/5,
+         list_certificates_by_ca/2,
+         list_certificates_by_ca/4,
          list_certificates_by_ca/5,
-         list_certificates_by_ca/6,
+         list_custom_metrics/1,
          list_custom_metrics/3,
          list_custom_metrics/4,
-         list_detect_mitigation_actions_executions/8,
-         list_detect_mitigation_actions_executions/9,
+         list_detect_mitigation_actions_executions/1,
+         list_detect_mitigation_actions_executions/3,
+         list_detect_mitigation_actions_executions/4,
+         list_detect_mitigation_actions_tasks/3,
          list_detect_mitigation_actions_tasks/5,
          list_detect_mitigation_actions_tasks/6,
+         list_dimensions/1,
          list_dimensions/3,
          list_dimensions/4,
+         list_domain_configurations/1,
+         list_domain_configurations/3,
          list_domain_configurations/4,
-         list_domain_configurations/5,
+         list_indices/1,
          list_indices/3,
          list_indices/4,
+         list_job_executions_for_job/2,
+         list_job_executions_for_job/4,
          list_job_executions_for_job/5,
-         list_job_executions_for_job/6,
-         list_job_executions_for_thing/6,
-         list_job_executions_for_thing/7,
-         list_jobs/8,
-         list_jobs/9,
+         list_job_executions_for_thing/2,
+         list_job_executions_for_thing/4,
+         list_job_executions_for_thing/5,
+         list_jobs/1,
+         list_jobs/3,
+         list_jobs/4,
+         list_mitigation_actions/1,
+         list_mitigation_actions/3,
          list_mitigation_actions/4,
-         list_mitigation_actions/5,
+         list_ota_updates/1,
+         list_ota_updates/3,
          list_ota_updates/4,
-         list_ota_updates/5,
+         list_outgoing_certificates/1,
+         list_outgoing_certificates/3,
          list_outgoing_certificates/4,
-         list_outgoing_certificates/5,
+         list_policies/1,
+         list_policies/3,
          list_policies/4,
-         list_policies/5,
+         list_policy_principals/2,
+         list_policy_principals/4,
          list_policy_principals/5,
-         list_policy_principals/6,
          list_policy_versions/2,
-         list_policy_versions/3,
+         list_policy_versions/4,
+         list_policy_versions/5,
+         list_principal_policies/2,
+         list_principal_policies/4,
          list_principal_policies/5,
-         list_principal_policies/6,
+         list_principal_things/2,
          list_principal_things/4,
          list_principal_things/5,
+         list_provisioning_template_versions/2,
          list_provisioning_template_versions/4,
          list_provisioning_template_versions/5,
+         list_provisioning_templates/1,
          list_provisioning_templates/3,
          list_provisioning_templates/4,
+         list_role_aliases/1,
+         list_role_aliases/3,
          list_role_aliases/4,
-         list_role_aliases/5,
+         list_scheduled_audits/1,
          list_scheduled_audits/3,
          list_scheduled_audits/4,
-         list_security_profiles/5,
-         list_security_profiles/6,
+         list_security_profiles/1,
+         list_security_profiles/3,
+         list_security_profiles/4,
+         list_security_profiles_for_target/2,
+         list_security_profiles_for_target/4,
          list_security_profiles_for_target/5,
-         list_security_profiles_for_target/6,
+         list_streams/1,
+         list_streams/3,
          list_streams/4,
-         list_streams/5,
-         list_tags_for_resource/3,
+         list_tags_for_resource/2,
          list_tags_for_resource/4,
+         list_tags_for_resource/5,
          list_targets_for_policy/3,
          list_targets_for_policy/4,
+         list_targets_for_security_profile/2,
          list_targets_for_security_profile/4,
          list_targets_for_security_profile/5,
-         list_thing_groups/6,
-         list_thing_groups/7,
+         list_thing_groups/1,
+         list_thing_groups/3,
+         list_thing_groups/4,
+         list_thing_groups_for_thing/2,
          list_thing_groups_for_thing/4,
          list_thing_groups_for_thing/5,
+         list_thing_principals/2,
          list_thing_principals/4,
          list_thing_principals/5,
+         list_thing_registration_task_reports/3,
          list_thing_registration_task_reports/5,
          list_thing_registration_task_reports/6,
+         list_thing_registration_tasks/1,
+         list_thing_registration_tasks/3,
          list_thing_registration_tasks/4,
-         list_thing_registration_tasks/5,
+         list_thing_types/1,
+         list_thing_types/3,
          list_thing_types/4,
-         list_thing_types/5,
-         list_things/6,
-         list_things/7,
+         list_things/1,
+         list_things/3,
+         list_things/4,
+         list_things_in_billing_group/2,
          list_things_in_billing_group/4,
          list_things_in_billing_group/5,
+         list_things_in_thing_group/2,
+         list_things_in_thing_group/4,
          list_things_in_thing_group/5,
-         list_things_in_thing_group/6,
+         list_topic_rule_destinations/1,
          list_topic_rule_destinations/3,
          list_topic_rule_destinations/4,
-         list_topic_rules/5,
-         list_topic_rules/6,
+         list_topic_rules/1,
+         list_topic_rules/3,
+         list_topic_rules/4,
+         list_v2_logging_levels/1,
+         list_v2_logging_levels/3,
          list_v2_logging_levels/4,
-         list_v2_logging_levels/5,
-         list_violation_events/9,
-         list_violation_events/10,
+         list_violation_events/3,
+         list_violation_events/5,
+         list_violation_events/6,
          register_ca_certificate/2,
          register_ca_certificate/3,
          register_certificate/2,
@@ -778,9 +867,14 @@ clear_default_authorizer(Client, Input0, Options) ->
 %% the endpoint.
 confirm_topic_rule_destination(Client, ConfirmationToken)
   when is_map(Client) ->
-    confirm_topic_rule_destination(Client, ConfirmationToken, []).
-confirm_topic_rule_destination(Client, ConfirmationToken, Options)
-  when is_map(Client), is_list(Options) ->
+    confirm_topic_rule_destination(Client, ConfirmationToken, #{}, #{}).
+
+confirm_topic_rule_destination(Client, ConfirmationToken, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    confirm_topic_rule_destination(Client, ConfirmationToken, QueryMap, HeadersMap, []).
+
+confirm_topic_rule_destination(Client, ConfirmationToken, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/confirmdestination/", aws_util:encode_multi_segment_uri(ConfirmationToken), ""],
     SuccessStatusCode = undefined,
 
@@ -1869,9 +1963,14 @@ deprecate_thing_type(Client, ThingTypeName, Input0, Options) ->
 %% are enabled or disabled.
 describe_account_audit_configuration(Client)
   when is_map(Client) ->
-    describe_account_audit_configuration(Client, []).
-describe_account_audit_configuration(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_account_audit_configuration(Client, #{}, #{}).
+
+describe_account_audit_configuration(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_account_audit_configuration(Client, QueryMap, HeadersMap, []).
+
+describe_account_audit_configuration(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/audit/configuration"],
     SuccessStatusCode = undefined,
 
@@ -1887,9 +1986,14 @@ describe_account_audit_configuration(Client, Options)
 %% issue, and the start time when the audit that returned the finding.
 describe_audit_finding(Client, FindingId)
   when is_map(Client) ->
-    describe_audit_finding(Client, FindingId, []).
-describe_audit_finding(Client, FindingId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_audit_finding(Client, FindingId, #{}, #{}).
+
+describe_audit_finding(Client, FindingId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_audit_finding(Client, FindingId, QueryMap, HeadersMap, []).
+
+describe_audit_finding(Client, FindingId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/audit/findings/", aws_util:encode_uri(FindingId), ""],
     SuccessStatusCode = undefined,
 
@@ -1906,9 +2010,14 @@ describe_audit_finding(Client, FindingId, Options)
 %% they're being applied, the task status, and aggregated task statistics.
 describe_audit_mitigation_actions_task(Client, TaskId)
   when is_map(Client) ->
-    describe_audit_mitigation_actions_task(Client, TaskId, []).
-describe_audit_mitigation_actions_task(Client, TaskId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_audit_mitigation_actions_task(Client, TaskId, #{}, #{}).
+
+describe_audit_mitigation_actions_task(Client, TaskId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_audit_mitigation_actions_task(Client, TaskId, QueryMap, HeadersMap, []).
+
+describe_audit_mitigation_actions_task(Client, TaskId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/audit/mitigationactions/tasks/", aws_util:encode_uri(TaskId), ""],
     SuccessStatusCode = undefined,
 
@@ -1937,9 +2046,14 @@ describe_audit_suppression(Client, Input0, Options) ->
 %% @doc Gets information about a Device Defender audit.
 describe_audit_task(Client, TaskId)
   when is_map(Client) ->
-    describe_audit_task(Client, TaskId, []).
-describe_audit_task(Client, TaskId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_audit_task(Client, TaskId, #{}, #{}).
+
+describe_audit_task(Client, TaskId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_audit_task(Client, TaskId, QueryMap, HeadersMap, []).
+
+describe_audit_task(Client, TaskId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/audit/tasks/", aws_util:encode_uri(TaskId), ""],
     SuccessStatusCode = undefined,
 
@@ -1952,9 +2066,14 @@ describe_audit_task(Client, TaskId, Options)
 %% @doc Describes an authorizer.
 describe_authorizer(Client, AuthorizerName)
   when is_map(Client) ->
-    describe_authorizer(Client, AuthorizerName, []).
-describe_authorizer(Client, AuthorizerName, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_authorizer(Client, AuthorizerName, #{}, #{}).
+
+describe_authorizer(Client, AuthorizerName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_authorizer(Client, AuthorizerName, QueryMap, HeadersMap, []).
+
+describe_authorizer(Client, AuthorizerName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/authorizer/", aws_util:encode_uri(AuthorizerName), ""],
     SuccessStatusCode = undefined,
 
@@ -1967,9 +2086,14 @@ describe_authorizer(Client, AuthorizerName, Options)
 %% @doc Returns information about a billing group.
 describe_billing_group(Client, BillingGroupName)
   when is_map(Client) ->
-    describe_billing_group(Client, BillingGroupName, []).
-describe_billing_group(Client, BillingGroupName, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_billing_group(Client, BillingGroupName, #{}, #{}).
+
+describe_billing_group(Client, BillingGroupName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_billing_group(Client, BillingGroupName, QueryMap, HeadersMap, []).
+
+describe_billing_group(Client, BillingGroupName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/billing-groups/", aws_util:encode_uri(BillingGroupName), ""],
     SuccessStatusCode = undefined,
 
@@ -1982,9 +2106,14 @@ describe_billing_group(Client, BillingGroupName, Options)
 %% @doc Describes a registered CA certificate.
 describe_ca_certificate(Client, CertificateId)
   when is_map(Client) ->
-    describe_ca_certificate(Client, CertificateId, []).
-describe_ca_certificate(Client, CertificateId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_ca_certificate(Client, CertificateId, #{}, #{}).
+
+describe_ca_certificate(Client, CertificateId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_ca_certificate(Client, CertificateId, QueryMap, HeadersMap, []).
+
+describe_ca_certificate(Client, CertificateId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/cacertificate/", aws_util:encode_uri(CertificateId), ""],
     SuccessStatusCode = undefined,
 
@@ -1997,9 +2126,14 @@ describe_ca_certificate(Client, CertificateId, Options)
 %% @doc Gets information about the specified certificate.
 describe_certificate(Client, CertificateId)
   when is_map(Client) ->
-    describe_certificate(Client, CertificateId, []).
-describe_certificate(Client, CertificateId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_certificate(Client, CertificateId, #{}, #{}).
+
+describe_certificate(Client, CertificateId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_certificate(Client, CertificateId, QueryMap, HeadersMap, []).
+
+describe_certificate(Client, CertificateId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/certificates/", aws_util:encode_uri(CertificateId), ""],
     SuccessStatusCode = undefined,
 
@@ -2012,9 +2146,14 @@ describe_certificate(Client, CertificateId, Options)
 %% @doc Gets information about a Device Defender detect custom metric.
 describe_custom_metric(Client, MetricName)
   when is_map(Client) ->
-    describe_custom_metric(Client, MetricName, []).
-describe_custom_metric(Client, MetricName, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_custom_metric(Client, MetricName, #{}, #{}).
+
+describe_custom_metric(Client, MetricName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_custom_metric(Client, MetricName, QueryMap, HeadersMap, []).
+
+describe_custom_metric(Client, MetricName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/custom-metric/", aws_util:encode_uri(MetricName), ""],
     SuccessStatusCode = undefined,
 
@@ -2027,9 +2166,14 @@ describe_custom_metric(Client, MetricName, Options)
 %% @doc Describes the default authorizer.
 describe_default_authorizer(Client)
   when is_map(Client) ->
-    describe_default_authorizer(Client, []).
-describe_default_authorizer(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_default_authorizer(Client, #{}, #{}).
+
+describe_default_authorizer(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_default_authorizer(Client, QueryMap, HeadersMap, []).
+
+describe_default_authorizer(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/default-authorizer"],
     SuccessStatusCode = undefined,
 
@@ -2042,9 +2186,14 @@ describe_default_authorizer(Client, Options)
 %% @doc Gets information about a Device Defender ML Detect mitigation action.
 describe_detect_mitigation_actions_task(Client, TaskId)
   when is_map(Client) ->
-    describe_detect_mitigation_actions_task(Client, TaskId, []).
-describe_detect_mitigation_actions_task(Client, TaskId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_detect_mitigation_actions_task(Client, TaskId, #{}, #{}).
+
+describe_detect_mitigation_actions_task(Client, TaskId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_detect_mitigation_actions_task(Client, TaskId, QueryMap, HeadersMap, []).
+
+describe_detect_mitigation_actions_task(Client, TaskId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/detect/mitigationactions/tasks/", aws_util:encode_uri(TaskId), ""],
     SuccessStatusCode = undefined,
 
@@ -2058,9 +2207,14 @@ describe_detect_mitigation_actions_task(Client, TaskId, Options)
 %% account.
 describe_dimension(Client, Name)
   when is_map(Client) ->
-    describe_dimension(Client, Name, []).
-describe_dimension(Client, Name, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_dimension(Client, Name, #{}, #{}).
+
+describe_dimension(Client, Name, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_dimension(Client, Name, QueryMap, HeadersMap, []).
+
+describe_dimension(Client, Name, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/dimensions/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
 
@@ -2076,9 +2230,14 @@ describe_dimension(Client, Name, Options)
 %% change.
 describe_domain_configuration(Client, DomainConfigurationName)
   when is_map(Client) ->
-    describe_domain_configuration(Client, DomainConfigurationName, []).
-describe_domain_configuration(Client, DomainConfigurationName, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_domain_configuration(Client, DomainConfigurationName, #{}, #{}).
+
+describe_domain_configuration(Client, DomainConfigurationName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_domain_configuration(Client, DomainConfigurationName, QueryMap, HeadersMap, []).
+
+describe_domain_configuration(Client, DomainConfigurationName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/domainConfigurations/", aws_util:encode_uri(DomainConfigurationName), ""],
     SuccessStatusCode = undefined,
 
@@ -2090,11 +2249,16 @@ describe_domain_configuration(Client, DomainConfigurationName, Options)
 
 %% @doc Returns a unique endpoint specific to the AWS account making the
 %% call.
-describe_endpoint(Client, EndpointType)
+describe_endpoint(Client)
   when is_map(Client) ->
-    describe_endpoint(Client, EndpointType, []).
-describe_endpoint(Client, EndpointType, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_endpoint(Client, #{}, #{}).
+
+describe_endpoint(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_endpoint(Client, QueryMap, HeadersMap, []).
+
+describe_endpoint(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/endpoint"],
     SuccessStatusCode = undefined,
 
@@ -2102,7 +2266,7 @@ describe_endpoint(Client, EndpointType, Options)
 
     Query0_ =
       [
-        {<<"endpointType">>, EndpointType}
+        {<<"endpointType">>, maps:get(<<"endpointType">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -2111,9 +2275,14 @@ describe_endpoint(Client, EndpointType, Options)
 %% @doc Describes event configurations.
 describe_event_configurations(Client)
   when is_map(Client) ->
-    describe_event_configurations(Client, []).
-describe_event_configurations(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_event_configurations(Client, #{}, #{}).
+
+describe_event_configurations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_event_configurations(Client, QueryMap, HeadersMap, []).
+
+describe_event_configurations(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/event-configurations"],
     SuccessStatusCode = undefined,
 
@@ -2126,9 +2295,14 @@ describe_event_configurations(Client, Options)
 %% @doc Describes a search index.
 describe_index(Client, IndexName)
   when is_map(Client) ->
-    describe_index(Client, IndexName, []).
-describe_index(Client, IndexName, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_index(Client, IndexName, #{}, #{}).
+
+describe_index(Client, IndexName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_index(Client, IndexName, QueryMap, HeadersMap, []).
+
+describe_index(Client, IndexName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/indices/", aws_util:encode_uri(IndexName), ""],
     SuccessStatusCode = undefined,
 
@@ -2141,9 +2315,14 @@ describe_index(Client, IndexName, Options)
 %% @doc Describes a job.
 describe_job(Client, JobId)
   when is_map(Client) ->
-    describe_job(Client, JobId, []).
-describe_job(Client, JobId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_job(Client, JobId, #{}, #{}).
+
+describe_job(Client, JobId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_job(Client, JobId, QueryMap, HeadersMap, []).
+
+describe_job(Client, JobId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = undefined,
 
@@ -2154,11 +2333,16 @@ describe_job(Client, JobId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes a job execution.
-describe_job_execution(Client, JobId, ThingName, ExecutionNumber)
+describe_job_execution(Client, JobId, ThingName)
   when is_map(Client) ->
-    describe_job_execution(Client, JobId, ThingName, ExecutionNumber, []).
-describe_job_execution(Client, JobId, ThingName, ExecutionNumber, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_job_execution(Client, JobId, ThingName, #{}, #{}).
+
+describe_job_execution(Client, JobId, ThingName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_job_execution(Client, JobId, ThingName, QueryMap, HeadersMap, []).
+
+describe_job_execution(Client, JobId, ThingName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/things/", aws_util:encode_uri(ThingName), "/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = undefined,
 
@@ -2166,7 +2350,7 @@ describe_job_execution(Client, JobId, ThingName, ExecutionNumber, Options)
 
     Query0_ =
       [
-        {<<"executionNumber">>, ExecutionNumber}
+        {<<"executionNumber">>, maps:get(<<"executionNumber">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -2175,9 +2359,14 @@ describe_job_execution(Client, JobId, ThingName, ExecutionNumber, Options)
 %% @doc Gets information about a mitigation action.
 describe_mitigation_action(Client, ActionName)
   when is_map(Client) ->
-    describe_mitigation_action(Client, ActionName, []).
-describe_mitigation_action(Client, ActionName, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_mitigation_action(Client, ActionName, #{}, #{}).
+
+describe_mitigation_action(Client, ActionName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_mitigation_action(Client, ActionName, QueryMap, HeadersMap, []).
+
+describe_mitigation_action(Client, ActionName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/mitigationactions/actions/", aws_util:encode_uri(ActionName), ""],
     SuccessStatusCode = undefined,
 
@@ -2190,9 +2379,14 @@ describe_mitigation_action(Client, ActionName, Options)
 %% @doc Returns information about a fleet provisioning template.
 describe_provisioning_template(Client, TemplateName)
   when is_map(Client) ->
-    describe_provisioning_template(Client, TemplateName, []).
-describe_provisioning_template(Client, TemplateName, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_provisioning_template(Client, TemplateName, #{}, #{}).
+
+describe_provisioning_template(Client, TemplateName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_provisioning_template(Client, TemplateName, QueryMap, HeadersMap, []).
+
+describe_provisioning_template(Client, TemplateName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/provisioning-templates/", aws_util:encode_uri(TemplateName), ""],
     SuccessStatusCode = undefined,
 
@@ -2205,9 +2399,14 @@ describe_provisioning_template(Client, TemplateName, Options)
 %% @doc Returns information about a fleet provisioning template version.
 describe_provisioning_template_version(Client, TemplateName, VersionId)
   when is_map(Client) ->
-    describe_provisioning_template_version(Client, TemplateName, VersionId, []).
-describe_provisioning_template_version(Client, TemplateName, VersionId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_provisioning_template_version(Client, TemplateName, VersionId, #{}, #{}).
+
+describe_provisioning_template_version(Client, TemplateName, VersionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_provisioning_template_version(Client, TemplateName, VersionId, QueryMap, HeadersMap, []).
+
+describe_provisioning_template_version(Client, TemplateName, VersionId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/provisioning-templates/", aws_util:encode_uri(TemplateName), "/versions/", aws_util:encode_uri(VersionId), ""],
     SuccessStatusCode = undefined,
 
@@ -2220,9 +2419,14 @@ describe_provisioning_template_version(Client, TemplateName, VersionId, Options)
 %% @doc Describes a role alias.
 describe_role_alias(Client, RoleAlias)
   when is_map(Client) ->
-    describe_role_alias(Client, RoleAlias, []).
-describe_role_alias(Client, RoleAlias, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_role_alias(Client, RoleAlias, #{}, #{}).
+
+describe_role_alias(Client, RoleAlias, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_role_alias(Client, RoleAlias, QueryMap, HeadersMap, []).
+
+describe_role_alias(Client, RoleAlias, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/role-aliases/", aws_util:encode_uri(RoleAlias), ""],
     SuccessStatusCode = undefined,
 
@@ -2235,9 +2439,14 @@ describe_role_alias(Client, RoleAlias, Options)
 %% @doc Gets information about a scheduled audit.
 describe_scheduled_audit(Client, ScheduledAuditName)
   when is_map(Client) ->
-    describe_scheduled_audit(Client, ScheduledAuditName, []).
-describe_scheduled_audit(Client, ScheduledAuditName, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_scheduled_audit(Client, ScheduledAuditName, #{}, #{}).
+
+describe_scheduled_audit(Client, ScheduledAuditName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_scheduled_audit(Client, ScheduledAuditName, QueryMap, HeadersMap, []).
+
+describe_scheduled_audit(Client, ScheduledAuditName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/audit/scheduledaudits/", aws_util:encode_uri(ScheduledAuditName), ""],
     SuccessStatusCode = undefined,
 
@@ -2250,9 +2459,14 @@ describe_scheduled_audit(Client, ScheduledAuditName, Options)
 %% @doc Gets information about a Device Defender security profile.
 describe_security_profile(Client, SecurityProfileName)
   when is_map(Client) ->
-    describe_security_profile(Client, SecurityProfileName, []).
-describe_security_profile(Client, SecurityProfileName, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_security_profile(Client, SecurityProfileName, #{}, #{}).
+
+describe_security_profile(Client, SecurityProfileName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_security_profile(Client, SecurityProfileName, QueryMap, HeadersMap, []).
+
+describe_security_profile(Client, SecurityProfileName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/security-profiles/", aws_util:encode_uri(SecurityProfileName), ""],
     SuccessStatusCode = undefined,
 
@@ -2265,9 +2479,14 @@ describe_security_profile(Client, SecurityProfileName, Options)
 %% @doc Gets information about a stream.
 describe_stream(Client, StreamId)
   when is_map(Client) ->
-    describe_stream(Client, StreamId, []).
-describe_stream(Client, StreamId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_stream(Client, StreamId, #{}, #{}).
+
+describe_stream(Client, StreamId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_stream(Client, StreamId, QueryMap, HeadersMap, []).
+
+describe_stream(Client, StreamId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/streams/", aws_util:encode_uri(StreamId), ""],
     SuccessStatusCode = undefined,
 
@@ -2280,9 +2499,14 @@ describe_stream(Client, StreamId, Options)
 %% @doc Gets information about the specified thing.
 describe_thing(Client, ThingName)
   when is_map(Client) ->
-    describe_thing(Client, ThingName, []).
-describe_thing(Client, ThingName, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_thing(Client, ThingName, #{}, #{}).
+
+describe_thing(Client, ThingName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_thing(Client, ThingName, QueryMap, HeadersMap, []).
+
+describe_thing(Client, ThingName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/things/", aws_util:encode_uri(ThingName), ""],
     SuccessStatusCode = undefined,
 
@@ -2295,9 +2519,14 @@ describe_thing(Client, ThingName, Options)
 %% @doc Describe a thing group.
 describe_thing_group(Client, ThingGroupName)
   when is_map(Client) ->
-    describe_thing_group(Client, ThingGroupName, []).
-describe_thing_group(Client, ThingGroupName, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_thing_group(Client, ThingGroupName, #{}, #{}).
+
+describe_thing_group(Client, ThingGroupName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_thing_group(Client, ThingGroupName, QueryMap, HeadersMap, []).
+
+describe_thing_group(Client, ThingGroupName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/thing-groups/", aws_util:encode_uri(ThingGroupName), ""],
     SuccessStatusCode = undefined,
 
@@ -2310,9 +2539,14 @@ describe_thing_group(Client, ThingGroupName, Options)
 %% @doc Describes a bulk thing provisioning task.
 describe_thing_registration_task(Client, TaskId)
   when is_map(Client) ->
-    describe_thing_registration_task(Client, TaskId, []).
-describe_thing_registration_task(Client, TaskId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_thing_registration_task(Client, TaskId, #{}, #{}).
+
+describe_thing_registration_task(Client, TaskId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_thing_registration_task(Client, TaskId, QueryMap, HeadersMap, []).
+
+describe_thing_registration_task(Client, TaskId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/thing-registration-tasks/", aws_util:encode_uri(TaskId), ""],
     SuccessStatusCode = undefined,
 
@@ -2325,9 +2559,14 @@ describe_thing_registration_task(Client, TaskId, Options)
 %% @doc Gets information about the specified thing type.
 describe_thing_type(Client, ThingTypeName)
   when is_map(Client) ->
-    describe_thing_type(Client, ThingTypeName, []).
-describe_thing_type(Client, ThingTypeName, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_thing_type(Client, ThingTypeName, #{}, #{}).
+
+describe_thing_type(Client, ThingTypeName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_thing_type(Client, ThingTypeName, QueryMap, HeadersMap, []).
+
+describe_thing_type(Client, ThingTypeName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/thing-types/", aws_util:encode_uri(ThingTypeName), ""],
     SuccessStatusCode = undefined,
 
@@ -2449,11 +2688,16 @@ enable_topic_rule(Client, RuleName, Input0, Options) ->
 
 %% @doc Returns a Device Defender's ML Detect Security Profile training
 %% model's status.
-get_behavior_model_training_summaries(Client, MaxResults, NextToken, SecurityProfileName)
+get_behavior_model_training_summaries(Client)
   when is_map(Client) ->
-    get_behavior_model_training_summaries(Client, MaxResults, NextToken, SecurityProfileName, []).
-get_behavior_model_training_summaries(Client, MaxResults, NextToken, SecurityProfileName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_behavior_model_training_summaries(Client, #{}, #{}).
+
+get_behavior_model_training_summaries(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_behavior_model_training_summaries(Client, QueryMap, HeadersMap, []).
+
+get_behavior_model_training_summaries(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/behavior-model-training/summaries"],
     SuccessStatusCode = undefined,
 
@@ -2461,9 +2705,9 @@ get_behavior_model_training_summaries(Client, MaxResults, NextToken, SecurityPro
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"securityProfileName">>, SecurityProfileName}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"securityProfileName">>, maps:get(<<"securityProfileName">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -2507,9 +2751,14 @@ get_effective_policies(Client, Input0, Options) ->
 %% @doc Gets the indexing configuration.
 get_indexing_configuration(Client)
   when is_map(Client) ->
-    get_indexing_configuration(Client, []).
-get_indexing_configuration(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    get_indexing_configuration(Client, #{}, #{}).
+
+get_indexing_configuration(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_indexing_configuration(Client, QueryMap, HeadersMap, []).
+
+get_indexing_configuration(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/indexing/config"],
     SuccessStatusCode = undefined,
 
@@ -2522,9 +2771,14 @@ get_indexing_configuration(Client, Options)
 %% @doc Gets a job document.
 get_job_document(Client, JobId)
   when is_map(Client) ->
-    get_job_document(Client, JobId, []).
-get_job_document(Client, JobId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_job_document(Client, JobId, #{}, #{}).
+
+get_job_document(Client, JobId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_job_document(Client, JobId, QueryMap, HeadersMap, []).
+
+get_job_document(Client, JobId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/jobs/", aws_util:encode_uri(JobId), "/job-document"],
     SuccessStatusCode = undefined,
 
@@ -2540,9 +2794,14 @@ get_job_document(Client, JobId, Options)
 %% instead.
 get_logging_options(Client)
   when is_map(Client) ->
-    get_logging_options(Client, []).
-get_logging_options(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    get_logging_options(Client, #{}, #{}).
+
+get_logging_options(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_logging_options(Client, QueryMap, HeadersMap, []).
+
+get_logging_options(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/loggingOptions"],
     SuccessStatusCode = undefined,
 
@@ -2555,9 +2814,14 @@ get_logging_options(Client, Options)
 %% @doc Gets an OTA update.
 get_ota_update(Client, OtaUpdateId)
   when is_map(Client) ->
-    get_ota_update(Client, OtaUpdateId, []).
-get_ota_update(Client, OtaUpdateId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_ota_update(Client, OtaUpdateId, #{}, #{}).
+
+get_ota_update(Client, OtaUpdateId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_ota_update(Client, OtaUpdateId, QueryMap, HeadersMap, []).
+
+get_ota_update(Client, OtaUpdateId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/otaUpdates/", aws_util:encode_uri(OtaUpdateId), ""],
     SuccessStatusCode = undefined,
 
@@ -2598,9 +2862,14 @@ get_percentiles(Client, Input0, Options) ->
 %% of the default version.
 get_policy(Client, PolicyName)
   when is_map(Client) ->
-    get_policy(Client, PolicyName, []).
-get_policy(Client, PolicyName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_policy(Client, PolicyName, #{}, #{}).
+
+get_policy(Client, PolicyName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_policy(Client, PolicyName, QueryMap, HeadersMap, []).
+
+get_policy(Client, PolicyName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/policies/", aws_util:encode_uri(PolicyName), ""],
     SuccessStatusCode = undefined,
 
@@ -2613,9 +2882,14 @@ get_policy(Client, PolicyName, Options)
 %% @doc Gets information about the specified policy version.
 get_policy_version(Client, PolicyName, PolicyVersionId)
   when is_map(Client) ->
-    get_policy_version(Client, PolicyName, PolicyVersionId, []).
-get_policy_version(Client, PolicyName, PolicyVersionId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_policy_version(Client, PolicyName, PolicyVersionId, #{}, #{}).
+
+get_policy_version(Client, PolicyName, PolicyVersionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_policy_version(Client, PolicyName, PolicyVersionId, QueryMap, HeadersMap, []).
+
+get_policy_version(Client, PolicyName, PolicyVersionId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/policies/", aws_util:encode_uri(PolicyName), "/version/", aws_util:encode_uri(PolicyVersionId), ""],
     SuccessStatusCode = undefined,
 
@@ -2629,9 +2903,14 @@ get_policy_version(Client, PolicyName, PolicyVersionId, Options)
 %% IoT.
 get_registration_code(Client)
   when is_map(Client) ->
-    get_registration_code(Client, []).
-get_registration_code(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    get_registration_code(Client, #{}, #{}).
+
+get_registration_code(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_registration_code(Client, QueryMap, HeadersMap, []).
+
+get_registration_code(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/registrationcode"],
     SuccessStatusCode = undefined,
 
@@ -2664,9 +2943,14 @@ get_statistics(Client, Input0, Options) ->
 %% @doc Gets information about the rule.
 get_topic_rule(Client, RuleName)
   when is_map(Client) ->
-    get_topic_rule(Client, RuleName, []).
-get_topic_rule(Client, RuleName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_topic_rule(Client, RuleName, #{}, #{}).
+
+get_topic_rule(Client, RuleName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_topic_rule(Client, RuleName, QueryMap, HeadersMap, []).
+
+get_topic_rule(Client, RuleName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/rules/", aws_util:encode_uri(RuleName), ""],
     SuccessStatusCode = undefined,
 
@@ -2679,9 +2963,14 @@ get_topic_rule(Client, RuleName, Options)
 %% @doc Gets information about a topic rule destination.
 get_topic_rule_destination(Client, Arn)
   when is_map(Client) ->
-    get_topic_rule_destination(Client, Arn, []).
-get_topic_rule_destination(Client, Arn, Options)
-  when is_map(Client), is_list(Options) ->
+    get_topic_rule_destination(Client, Arn, #{}, #{}).
+
+get_topic_rule_destination(Client, Arn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_topic_rule_destination(Client, Arn, QueryMap, HeadersMap, []).
+
+get_topic_rule_destination(Client, Arn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/destinations/", aws_util:encode_multi_segment_uri(Arn), ""],
     SuccessStatusCode = undefined,
 
@@ -2694,9 +2983,14 @@ get_topic_rule_destination(Client, Arn, Options)
 %% @doc Gets the fine grained logging options.
 get_v2_logging_options(Client)
   when is_map(Client) ->
-    get_v2_logging_options(Client, []).
-get_v2_logging_options(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    get_v2_logging_options(Client, #{}, #{}).
+
+get_v2_logging_options(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_v2_logging_options(Client, QueryMap, HeadersMap, []).
+
+get_v2_logging_options(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v2LoggingOptions"],
     SuccessStatusCode = undefined,
 
@@ -2708,11 +3002,16 @@ get_v2_logging_options(Client, Options)
 
 %% @doc Lists the active violations for a given Device Defender security
 %% profile.
-list_active_violations(Client, BehaviorCriteriaType, ListSuppressedAlerts, MaxResults, NextToken, SecurityProfileName, ThingName)
+list_active_violations(Client)
   when is_map(Client) ->
-    list_active_violations(Client, BehaviorCriteriaType, ListSuppressedAlerts, MaxResults, NextToken, SecurityProfileName, ThingName, []).
-list_active_violations(Client, BehaviorCriteriaType, ListSuppressedAlerts, MaxResults, NextToken, SecurityProfileName, ThingName, Options)
-  when is_map(Client), is_list(Options) ->
+    list_active_violations(Client, #{}, #{}).
+
+list_active_violations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_active_violations(Client, QueryMap, HeadersMap, []).
+
+list_active_violations(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/active-violations"],
     SuccessStatusCode = undefined,
 
@@ -2720,12 +3019,12 @@ list_active_violations(Client, BehaviorCriteriaType, ListSuppressedAlerts, MaxRe
 
     Query0_ =
       [
-        {<<"behaviorCriteriaType">>, BehaviorCriteriaType},
-        {<<"listSuppressedAlerts">>, ListSuppressedAlerts},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"securityProfileName">>, SecurityProfileName},
-        {<<"thingName">>, ThingName}
+        {<<"behaviorCriteriaType">>, maps:get(<<"behaviorCriteriaType">>, QueryMap, undefined)},
+        {<<"listSuppressedAlerts">>, maps:get(<<"listSuppressedAlerts">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"securityProfileName">>, maps:get(<<"securityProfileName">>, QueryMap, undefined)},
+        {<<"thingName">>, maps:get(<<"thingName">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -2770,11 +3069,16 @@ list_audit_findings(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets the status of audit mitigation action tasks that were executed.
-list_audit_mitigation_actions_executions(Client, ActionStatus, FindingId, MaxResults, NextToken, TaskId)
+list_audit_mitigation_actions_executions(Client, FindingId, TaskId)
   when is_map(Client) ->
-    list_audit_mitigation_actions_executions(Client, ActionStatus, FindingId, MaxResults, NextToken, TaskId, []).
-list_audit_mitigation_actions_executions(Client, ActionStatus, FindingId, MaxResults, NextToken, TaskId, Options)
-  when is_map(Client), is_list(Options) ->
+    list_audit_mitigation_actions_executions(Client, FindingId, TaskId, #{}, #{}).
+
+list_audit_mitigation_actions_executions(Client, FindingId, TaskId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_audit_mitigation_actions_executions(Client, FindingId, TaskId, QueryMap, HeadersMap, []).
+
+list_audit_mitigation_actions_executions(Client, FindingId, TaskId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/audit/mitigationactions/executions"],
     SuccessStatusCode = undefined,
 
@@ -2782,10 +3086,10 @@ list_audit_mitigation_actions_executions(Client, ActionStatus, FindingId, MaxRes
 
     Query0_ =
       [
-        {<<"actionStatus">>, ActionStatus},
+        {<<"actionStatus">>, maps:get(<<"actionStatus">>, QueryMap, undefined)},
         {<<"findingId">>, FindingId},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"taskId">>, TaskId}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
@@ -2794,11 +3098,16 @@ list_audit_mitigation_actions_executions(Client, ActionStatus, FindingId, MaxRes
 
 %% @doc Gets a list of audit mitigation action tasks that match the specified
 %% filters.
-list_audit_mitigation_actions_tasks(Client, AuditTaskId, EndTime, FindingId, MaxResults, NextToken, StartTime, TaskStatus)
+list_audit_mitigation_actions_tasks(Client, EndTime, StartTime)
   when is_map(Client) ->
-    list_audit_mitigation_actions_tasks(Client, AuditTaskId, EndTime, FindingId, MaxResults, NextToken, StartTime, TaskStatus, []).
-list_audit_mitigation_actions_tasks(Client, AuditTaskId, EndTime, FindingId, MaxResults, NextToken, StartTime, TaskStatus, Options)
-  when is_map(Client), is_list(Options) ->
+    list_audit_mitigation_actions_tasks(Client, EndTime, StartTime, #{}, #{}).
+
+list_audit_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_audit_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap, []).
+
+list_audit_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/audit/mitigationactions/tasks"],
     SuccessStatusCode = undefined,
 
@@ -2806,13 +3115,13 @@ list_audit_mitigation_actions_tasks(Client, AuditTaskId, EndTime, FindingId, Max
 
     Query0_ =
       [
-        {<<"auditTaskId">>, AuditTaskId},
+        {<<"auditTaskId">>, maps:get(<<"auditTaskId">>, QueryMap, undefined)},
         {<<"endTime">>, EndTime},
-        {<<"findingId">>, FindingId},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
+        {<<"findingId">>, maps:get(<<"findingId">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"startTime">>, StartTime},
-        {<<"taskStatus">>, TaskStatus}
+        {<<"taskStatus">>, maps:get(<<"taskStatus">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -2836,11 +3145,16 @@ list_audit_suppressions(Client, Input0, Options) ->
 
 %% @doc Lists the Device Defender audits that have been performed during a
 %% given time period.
-list_audit_tasks(Client, EndTime, MaxResults, NextToken, StartTime, TaskStatus, TaskType)
+list_audit_tasks(Client, EndTime, StartTime)
   when is_map(Client) ->
-    list_audit_tasks(Client, EndTime, MaxResults, NextToken, StartTime, TaskStatus, TaskType, []).
-list_audit_tasks(Client, EndTime, MaxResults, NextToken, StartTime, TaskStatus, TaskType, Options)
-  when is_map(Client), is_list(Options) ->
+    list_audit_tasks(Client, EndTime, StartTime, #{}, #{}).
+
+list_audit_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_audit_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap, []).
+
+list_audit_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/audit/tasks"],
     SuccessStatusCode = undefined,
 
@@ -2849,22 +3163,27 @@ list_audit_tasks(Client, EndTime, MaxResults, NextToken, StartTime, TaskStatus, 
     Query0_ =
       [
         {<<"endTime">>, EndTime},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"startTime">>, StartTime},
-        {<<"taskStatus">>, TaskStatus},
-        {<<"taskType">>, TaskType}
+        {<<"taskStatus">>, maps:get(<<"taskStatus">>, QueryMap, undefined)},
+        {<<"taskType">>, maps:get(<<"taskType">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the authorizers registered in your account.
-list_authorizers(Client, AscendingOrder, Marker, PageSize, Status)
+list_authorizers(Client)
   when is_map(Client) ->
-    list_authorizers(Client, AscendingOrder, Marker, PageSize, Status, []).
-list_authorizers(Client, AscendingOrder, Marker, PageSize, Status, Options)
-  when is_map(Client), is_list(Options) ->
+    list_authorizers(Client, #{}, #{}).
+
+list_authorizers(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_authorizers(Client, QueryMap, HeadersMap, []).
+
+list_authorizers(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/authorizers/"],
     SuccessStatusCode = undefined,
 
@@ -2872,21 +3191,26 @@ list_authorizers(Client, AscendingOrder, Marker, PageSize, Status, Options)
 
     Query0_ =
       [
-        {<<"isAscendingOrder">>, AscendingOrder},
-        {<<"marker">>, Marker},
-        {<<"pageSize">>, PageSize},
-        {<<"status">>, Status}
+        {<<"isAscendingOrder">>, maps:get(<<"isAscendingOrder">>, QueryMap, undefined)},
+        {<<"marker">>, maps:get(<<"marker">>, QueryMap, undefined)},
+        {<<"pageSize">>, maps:get(<<"pageSize">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the billing groups you have created.
-list_billing_groups(Client, MaxResults, NamePrefixFilter, NextToken)
+list_billing_groups(Client)
   when is_map(Client) ->
-    list_billing_groups(Client, MaxResults, NamePrefixFilter, NextToken, []).
-list_billing_groups(Client, MaxResults, NamePrefixFilter, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_billing_groups(Client, #{}, #{}).
+
+list_billing_groups(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_billing_groups(Client, QueryMap, HeadersMap, []).
+
+list_billing_groups(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/billing-groups"],
     SuccessStatusCode = undefined,
 
@@ -2894,9 +3218,9 @@ list_billing_groups(Client, MaxResults, NamePrefixFilter, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"namePrefixFilter">>, NamePrefixFilter},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"namePrefixFilter">>, maps:get(<<"namePrefixFilter">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -2906,11 +3230,16 @@ list_billing_groups(Client, MaxResults, NamePrefixFilter, NextToken, Options)
 %%
 %% The results are paginated with a default page size of 25. You can use the
 %% returned marker to retrieve additional results.
-list_ca_certificates(Client, AscendingOrder, Marker, PageSize)
+list_ca_certificates(Client)
   when is_map(Client) ->
-    list_ca_certificates(Client, AscendingOrder, Marker, PageSize, []).
-list_ca_certificates(Client, AscendingOrder, Marker, PageSize, Options)
-  when is_map(Client), is_list(Options) ->
+    list_ca_certificates(Client, #{}, #{}).
+
+list_ca_certificates(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_ca_certificates(Client, QueryMap, HeadersMap, []).
+
+list_ca_certificates(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/cacertificates"],
     SuccessStatusCode = undefined,
 
@@ -2918,9 +3247,9 @@ list_ca_certificates(Client, AscendingOrder, Marker, PageSize, Options)
 
     Query0_ =
       [
-        {<<"isAscendingOrder">>, AscendingOrder},
-        {<<"marker">>, Marker},
-        {<<"pageSize">>, PageSize}
+        {<<"isAscendingOrder">>, maps:get(<<"isAscendingOrder">>, QueryMap, undefined)},
+        {<<"marker">>, maps:get(<<"marker">>, QueryMap, undefined)},
+        {<<"pageSize">>, maps:get(<<"pageSize">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -2930,11 +3259,16 @@ list_ca_certificates(Client, AscendingOrder, Marker, PageSize, Options)
 %%
 %% The results are paginated with a default page size of 25. You can use the
 %% returned marker to retrieve additional results.
-list_certificates(Client, AscendingOrder, Marker, PageSize)
+list_certificates(Client)
   when is_map(Client) ->
-    list_certificates(Client, AscendingOrder, Marker, PageSize, []).
-list_certificates(Client, AscendingOrder, Marker, PageSize, Options)
-  when is_map(Client), is_list(Options) ->
+    list_certificates(Client, #{}, #{}).
+
+list_certificates(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_certificates(Client, QueryMap, HeadersMap, []).
+
+list_certificates(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/certificates"],
     SuccessStatusCode = undefined,
 
@@ -2942,20 +3276,25 @@ list_certificates(Client, AscendingOrder, Marker, PageSize, Options)
 
     Query0_ =
       [
-        {<<"isAscendingOrder">>, AscendingOrder},
-        {<<"marker">>, Marker},
-        {<<"pageSize">>, PageSize}
+        {<<"isAscendingOrder">>, maps:get(<<"isAscendingOrder">>, QueryMap, undefined)},
+        {<<"marker">>, maps:get(<<"marker">>, QueryMap, undefined)},
+        {<<"pageSize">>, maps:get(<<"pageSize">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the device certificates signed by the specified CA certificate.
-list_certificates_by_ca(Client, CaCertificateId, AscendingOrder, Marker, PageSize)
+list_certificates_by_ca(Client, CaCertificateId)
   when is_map(Client) ->
-    list_certificates_by_ca(Client, CaCertificateId, AscendingOrder, Marker, PageSize, []).
-list_certificates_by_ca(Client, CaCertificateId, AscendingOrder, Marker, PageSize, Options)
-  when is_map(Client), is_list(Options) ->
+    list_certificates_by_ca(Client, CaCertificateId, #{}, #{}).
+
+list_certificates_by_ca(Client, CaCertificateId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_certificates_by_ca(Client, CaCertificateId, QueryMap, HeadersMap, []).
+
+list_certificates_by_ca(Client, CaCertificateId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/certificates-by-ca/", aws_util:encode_uri(CaCertificateId), ""],
     SuccessStatusCode = undefined,
 
@@ -2963,20 +3302,25 @@ list_certificates_by_ca(Client, CaCertificateId, AscendingOrder, Marker, PageSiz
 
     Query0_ =
       [
-        {<<"isAscendingOrder">>, AscendingOrder},
-        {<<"marker">>, Marker},
-        {<<"pageSize">>, PageSize}
+        {<<"isAscendingOrder">>, maps:get(<<"isAscendingOrder">>, QueryMap, undefined)},
+        {<<"marker">>, maps:get(<<"marker">>, QueryMap, undefined)},
+        {<<"pageSize">>, maps:get(<<"pageSize">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists your Device Defender detect custom metrics.
-list_custom_metrics(Client, MaxResults, NextToken)
+list_custom_metrics(Client)
   when is_map(Client) ->
-    list_custom_metrics(Client, MaxResults, NextToken, []).
-list_custom_metrics(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_custom_metrics(Client, #{}, #{}).
+
+list_custom_metrics(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_custom_metrics(Client, QueryMap, HeadersMap, []).
+
+list_custom_metrics(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/custom-metrics"],
     SuccessStatusCode = undefined,
 
@@ -2984,8 +3328,8 @@ list_custom_metrics(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -2993,11 +3337,16 @@ list_custom_metrics(Client, MaxResults, NextToken, Options)
 
 %% @doc Lists mitigation actions executions for a Device Defender ML Detect
 %% Security Profile.
-list_detect_mitigation_actions_executions(Client, EndTime, MaxResults, NextToken, StartTime, TaskId, ThingName, ViolationId)
+list_detect_mitigation_actions_executions(Client)
   when is_map(Client) ->
-    list_detect_mitigation_actions_executions(Client, EndTime, MaxResults, NextToken, StartTime, TaskId, ThingName, ViolationId, []).
-list_detect_mitigation_actions_executions(Client, EndTime, MaxResults, NextToken, StartTime, TaskId, ThingName, ViolationId, Options)
-  when is_map(Client), is_list(Options) ->
+    list_detect_mitigation_actions_executions(Client, #{}, #{}).
+
+list_detect_mitigation_actions_executions(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_detect_mitigation_actions_executions(Client, QueryMap, HeadersMap, []).
+
+list_detect_mitigation_actions_executions(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/detect/mitigationactions/executions"],
     SuccessStatusCode = undefined,
 
@@ -3005,24 +3354,29 @@ list_detect_mitigation_actions_executions(Client, EndTime, MaxResults, NextToken
 
     Query0_ =
       [
-        {<<"endTime">>, EndTime},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"startTime">>, StartTime},
-        {<<"taskId">>, TaskId},
-        {<<"thingName">>, ThingName},
-        {<<"violationId">>, ViolationId}
+        {<<"endTime">>, maps:get(<<"endTime">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"startTime">>, maps:get(<<"startTime">>, QueryMap, undefined)},
+        {<<"taskId">>, maps:get(<<"taskId">>, QueryMap, undefined)},
+        {<<"thingName">>, maps:get(<<"thingName">>, QueryMap, undefined)},
+        {<<"violationId">>, maps:get(<<"violationId">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List of Device Defender ML Detect mitigation actions tasks.
-list_detect_mitigation_actions_tasks(Client, EndTime, MaxResults, NextToken, StartTime)
+list_detect_mitigation_actions_tasks(Client, EndTime, StartTime)
   when is_map(Client) ->
-    list_detect_mitigation_actions_tasks(Client, EndTime, MaxResults, NextToken, StartTime, []).
-list_detect_mitigation_actions_tasks(Client, EndTime, MaxResults, NextToken, StartTime, Options)
-  when is_map(Client), is_list(Options) ->
+    list_detect_mitigation_actions_tasks(Client, EndTime, StartTime, #{}, #{}).
+
+list_detect_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_detect_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap, []).
+
+list_detect_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/detect/mitigationactions/tasks"],
     SuccessStatusCode = undefined,
 
@@ -3031,8 +3385,8 @@ list_detect_mitigation_actions_tasks(Client, EndTime, MaxResults, NextToken, Sta
     Query0_ =
       [
         {<<"endTime">>, EndTime},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"startTime">>, StartTime}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
@@ -3040,11 +3394,16 @@ list_detect_mitigation_actions_tasks(Client, EndTime, MaxResults, NextToken, Sta
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the set of dimensions that are defined for your AWS account.
-list_dimensions(Client, MaxResults, NextToken)
+list_dimensions(Client)
   when is_map(Client) ->
-    list_dimensions(Client, MaxResults, NextToken, []).
-list_dimensions(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_dimensions(Client, #{}, #{}).
+
+list_dimensions(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_dimensions(Client, QueryMap, HeadersMap, []).
+
+list_dimensions(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/dimensions"],
     SuccessStatusCode = undefined,
 
@@ -3052,8 +3411,8 @@ list_dimensions(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -3065,11 +3424,16 @@ list_dimensions(Client, MaxResults, NextToken, Options)
 %%
 %% The domain configuration feature is in public preview and is subject to
 %% change.
-list_domain_configurations(Client, Marker, PageSize, ServiceType)
+list_domain_configurations(Client)
   when is_map(Client) ->
-    list_domain_configurations(Client, Marker, PageSize, ServiceType, []).
-list_domain_configurations(Client, Marker, PageSize, ServiceType, Options)
-  when is_map(Client), is_list(Options) ->
+    list_domain_configurations(Client, #{}, #{}).
+
+list_domain_configurations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_domain_configurations(Client, QueryMap, HeadersMap, []).
+
+list_domain_configurations(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/domainConfigurations"],
     SuccessStatusCode = undefined,
 
@@ -3077,20 +3441,25 @@ list_domain_configurations(Client, Marker, PageSize, ServiceType, Options)
 
     Query0_ =
       [
-        {<<"marker">>, Marker},
-        {<<"pageSize">>, PageSize},
-        {<<"serviceType">>, ServiceType}
+        {<<"marker">>, maps:get(<<"marker">>, QueryMap, undefined)},
+        {<<"pageSize">>, maps:get(<<"pageSize">>, QueryMap, undefined)},
+        {<<"serviceType">>, maps:get(<<"serviceType">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the search indices.
-list_indices(Client, MaxResults, NextToken)
+list_indices(Client)
   when is_map(Client) ->
-    list_indices(Client, MaxResults, NextToken, []).
-list_indices(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_indices(Client, #{}, #{}).
+
+list_indices(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_indices(Client, QueryMap, HeadersMap, []).
+
+list_indices(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/indices"],
     SuccessStatusCode = undefined,
 
@@ -3098,19 +3467,24 @@ list_indices(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the job executions for a job.
-list_job_executions_for_job(Client, JobId, MaxResults, NextToken, Status)
+list_job_executions_for_job(Client, JobId)
   when is_map(Client) ->
-    list_job_executions_for_job(Client, JobId, MaxResults, NextToken, Status, []).
-list_job_executions_for_job(Client, JobId, MaxResults, NextToken, Status, Options)
-  when is_map(Client), is_list(Options) ->
+    list_job_executions_for_job(Client, JobId, #{}, #{}).
+
+list_job_executions_for_job(Client, JobId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_job_executions_for_job(Client, JobId, QueryMap, HeadersMap, []).
+
+list_job_executions_for_job(Client, JobId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/jobs/", aws_util:encode_uri(JobId), "/things"],
     SuccessStatusCode = undefined,
 
@@ -3118,20 +3492,25 @@ list_job_executions_for_job(Client, JobId, MaxResults, NextToken, Status, Option
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"status">>, Status}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the job executions for the specified thing.
-list_job_executions_for_thing(Client, ThingName, MaxResults, NamespaceId, NextToken, Status)
+list_job_executions_for_thing(Client, ThingName)
   when is_map(Client) ->
-    list_job_executions_for_thing(Client, ThingName, MaxResults, NamespaceId, NextToken, Status, []).
-list_job_executions_for_thing(Client, ThingName, MaxResults, NamespaceId, NextToken, Status, Options)
-  when is_map(Client), is_list(Options) ->
+    list_job_executions_for_thing(Client, ThingName, #{}, #{}).
+
+list_job_executions_for_thing(Client, ThingName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_job_executions_for_thing(Client, ThingName, QueryMap, HeadersMap, []).
+
+list_job_executions_for_thing(Client, ThingName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/things/", aws_util:encode_uri(ThingName), "/jobs"],
     SuccessStatusCode = undefined,
 
@@ -3139,21 +3518,26 @@ list_job_executions_for_thing(Client, ThingName, MaxResults, NamespaceId, NextTo
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"namespaceId">>, NamespaceId},
-        {<<"nextToken">>, NextToken},
-        {<<"status">>, Status}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"namespaceId">>, maps:get(<<"namespaceId">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists jobs.
-list_jobs(Client, MaxResults, NamespaceId, NextToken, Status, TargetSelection, ThingGroupId, ThingGroupName)
+list_jobs(Client)
   when is_map(Client) ->
-    list_jobs(Client, MaxResults, NamespaceId, NextToken, Status, TargetSelection, ThingGroupId, ThingGroupName, []).
-list_jobs(Client, MaxResults, NamespaceId, NextToken, Status, TargetSelection, ThingGroupId, ThingGroupName, Options)
-  when is_map(Client), is_list(Options) ->
+    list_jobs(Client, #{}, #{}).
+
+list_jobs(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_jobs(Client, QueryMap, HeadersMap, []).
+
+list_jobs(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/jobs"],
     SuccessStatusCode = undefined,
 
@@ -3161,13 +3545,13 @@ list_jobs(Client, MaxResults, NamespaceId, NextToken, Status, TargetSelection, T
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"namespaceId">>, NamespaceId},
-        {<<"nextToken">>, NextToken},
-        {<<"status">>, Status},
-        {<<"targetSelection">>, TargetSelection},
-        {<<"thingGroupId">>, ThingGroupId},
-        {<<"thingGroupName">>, ThingGroupName}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"namespaceId">>, maps:get(<<"namespaceId">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)},
+        {<<"targetSelection">>, maps:get(<<"targetSelection">>, QueryMap, undefined)},
+        {<<"thingGroupId">>, maps:get(<<"thingGroupId">>, QueryMap, undefined)},
+        {<<"thingGroupName">>, maps:get(<<"thingGroupName">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -3175,11 +3559,16 @@ list_jobs(Client, MaxResults, NamespaceId, NextToken, Status, TargetSelection, T
 
 %% @doc Gets a list of all mitigation actions that match the specified filter
 %% criteria.
-list_mitigation_actions(Client, ActionType, MaxResults, NextToken)
+list_mitigation_actions(Client)
   when is_map(Client) ->
-    list_mitigation_actions(Client, ActionType, MaxResults, NextToken, []).
-list_mitigation_actions(Client, ActionType, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_mitigation_actions(Client, #{}, #{}).
+
+list_mitigation_actions(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_mitigation_actions(Client, QueryMap, HeadersMap, []).
+
+list_mitigation_actions(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/mitigationactions/actions"],
     SuccessStatusCode = undefined,
 
@@ -3187,20 +3576,25 @@ list_mitigation_actions(Client, ActionType, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"actionType">>, ActionType},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"actionType">>, maps:get(<<"actionType">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists OTA updates.
-list_ota_updates(Client, MaxResults, NextToken, OtaUpdateStatus)
+list_ota_updates(Client)
   when is_map(Client) ->
-    list_ota_updates(Client, MaxResults, NextToken, OtaUpdateStatus, []).
-list_ota_updates(Client, MaxResults, NextToken, OtaUpdateStatus, Options)
-  when is_map(Client), is_list(Options) ->
+    list_ota_updates(Client, #{}, #{}).
+
+list_ota_updates(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_ota_updates(Client, QueryMap, HeadersMap, []).
+
+list_ota_updates(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/otaUpdates"],
     SuccessStatusCode = undefined,
 
@@ -3208,20 +3602,25 @@ list_ota_updates(Client, MaxResults, NextToken, OtaUpdateStatus, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"otaUpdateStatus">>, OtaUpdateStatus}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"otaUpdateStatus">>, maps:get(<<"otaUpdateStatus">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists certificates that are being transferred but not yet accepted.
-list_outgoing_certificates(Client, AscendingOrder, Marker, PageSize)
+list_outgoing_certificates(Client)
   when is_map(Client) ->
-    list_outgoing_certificates(Client, AscendingOrder, Marker, PageSize, []).
-list_outgoing_certificates(Client, AscendingOrder, Marker, PageSize, Options)
-  when is_map(Client), is_list(Options) ->
+    list_outgoing_certificates(Client, #{}, #{}).
+
+list_outgoing_certificates(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_outgoing_certificates(Client, QueryMap, HeadersMap, []).
+
+list_outgoing_certificates(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/certificates-out-going"],
     SuccessStatusCode = undefined,
 
@@ -3229,20 +3628,25 @@ list_outgoing_certificates(Client, AscendingOrder, Marker, PageSize, Options)
 
     Query0_ =
       [
-        {<<"isAscendingOrder">>, AscendingOrder},
-        {<<"marker">>, Marker},
-        {<<"pageSize">>, PageSize}
+        {<<"isAscendingOrder">>, maps:get(<<"isAscendingOrder">>, QueryMap, undefined)},
+        {<<"marker">>, maps:get(<<"marker">>, QueryMap, undefined)},
+        {<<"pageSize">>, maps:get(<<"pageSize">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists your policies.
-list_policies(Client, AscendingOrder, Marker, PageSize)
+list_policies(Client)
   when is_map(Client) ->
-    list_policies(Client, AscendingOrder, Marker, PageSize, []).
-list_policies(Client, AscendingOrder, Marker, PageSize, Options)
-  when is_map(Client), is_list(Options) ->
+    list_policies(Client, #{}, #{}).
+
+list_policies(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_policies(Client, QueryMap, HeadersMap, []).
+
+list_policies(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/policies"],
     SuccessStatusCode = undefined,
 
@@ -3250,9 +3654,9 @@ list_policies(Client, AscendingOrder, Marker, PageSize, Options)
 
     Query0_ =
       [
-        {<<"isAscendingOrder">>, AscendingOrder},
-        {<<"marker">>, Marker},
-        {<<"pageSize">>, PageSize}
+        {<<"isAscendingOrder">>, maps:get(<<"isAscendingOrder">>, QueryMap, undefined)},
+        {<<"marker">>, maps:get(<<"marker">>, QueryMap, undefined)},
+        {<<"pageSize">>, maps:get(<<"pageSize">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -3261,11 +3665,16 @@ list_policies(Client, AscendingOrder, Marker, PageSize, Options)
 %% @doc Lists the principals associated with the specified policy.
 %%
 %% Note: This API is deprecated. Please use `ListTargetsForPolicy' instead.
-list_policy_principals(Client, AscendingOrder, Marker, PageSize, PolicyName)
+list_policy_principals(Client, PolicyName)
   when is_map(Client) ->
-    list_policy_principals(Client, AscendingOrder, Marker, PageSize, PolicyName, []).
-list_policy_principals(Client, AscendingOrder, Marker, PageSize, PolicyName, Options)
-  when is_map(Client), is_list(Options) ->
+    list_policy_principals(Client, PolicyName, #{}, #{}).
+
+list_policy_principals(Client, PolicyName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_policy_principals(Client, PolicyName, QueryMap, HeadersMap, []).
+
+list_policy_principals(Client, PolicyName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/policy-principals"],
     SuccessStatusCode = undefined,
 
@@ -3277,9 +3686,9 @@ list_policy_principals(Client, AscendingOrder, Marker, PageSize, PolicyName, Opt
 
     Query0_ =
       [
-        {<<"isAscendingOrder">>, AscendingOrder},
-        {<<"marker">>, Marker},
-        {<<"pageSize">>, PageSize}
+        {<<"isAscendingOrder">>, maps:get(<<"isAscendingOrder">>, QueryMap, undefined)},
+        {<<"marker">>, maps:get(<<"marker">>, QueryMap, undefined)},
+        {<<"pageSize">>, maps:get(<<"pageSize">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -3289,9 +3698,14 @@ list_policy_principals(Client, AscendingOrder, Marker, PageSize, PolicyName, Opt
 %% version.
 list_policy_versions(Client, PolicyName)
   when is_map(Client) ->
-    list_policy_versions(Client, PolicyName, []).
-list_policy_versions(Client, PolicyName, Options)
-  when is_map(Client), is_list(Options) ->
+    list_policy_versions(Client, PolicyName, #{}, #{}).
+
+list_policy_versions(Client, PolicyName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_policy_versions(Client, PolicyName, QueryMap, HeadersMap, []).
+
+list_policy_versions(Client, PolicyName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/policies/", aws_util:encode_uri(PolicyName), "/version"],
     SuccessStatusCode = undefined,
 
@@ -3307,11 +3721,16 @@ list_policy_versions(Client, PolicyName, Options)
 %% format.
 %%
 %% Note: This API is deprecated. Please use `ListAttachedPolicies' instead.
-list_principal_policies(Client, AscendingOrder, Marker, PageSize, Principal)
+list_principal_policies(Client, Principal)
   when is_map(Client) ->
-    list_principal_policies(Client, AscendingOrder, Marker, PageSize, Principal, []).
-list_principal_policies(Client, AscendingOrder, Marker, PageSize, Principal, Options)
-  when is_map(Client), is_list(Options) ->
+    list_principal_policies(Client, Principal, #{}, #{}).
+
+list_principal_policies(Client, Principal, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_principal_policies(Client, Principal, QueryMap, HeadersMap, []).
+
+list_principal_policies(Client, Principal, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/principal-policies"],
     SuccessStatusCode = undefined,
 
@@ -3323,9 +3742,9 @@ list_principal_policies(Client, AscendingOrder, Marker, PageSize, Principal, Opt
 
     Query0_ =
       [
-        {<<"isAscendingOrder">>, AscendingOrder},
-        {<<"marker">>, Marker},
-        {<<"pageSize">>, PageSize}
+        {<<"isAscendingOrder">>, maps:get(<<"isAscendingOrder">>, QueryMap, undefined)},
+        {<<"marker">>, maps:get(<<"marker">>, QueryMap, undefined)},
+        {<<"pageSize">>, maps:get(<<"pageSize">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -3335,11 +3754,16 @@ list_principal_policies(Client, AscendingOrder, Marker, PageSize, Principal, Opt
 %%
 %% A principal can be X.509 certificates, IAM users, groups, and roles,
 %% Amazon Cognito identities or federated identities.
-list_principal_things(Client, MaxResults, NextToken, Principal)
+list_principal_things(Client, Principal)
   when is_map(Client) ->
-    list_principal_things(Client, MaxResults, NextToken, Principal, []).
-list_principal_things(Client, MaxResults, NextToken, Principal, Options)
-  when is_map(Client), is_list(Options) ->
+    list_principal_things(Client, Principal, #{}, #{}).
+
+list_principal_things(Client, Principal, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_principal_things(Client, Principal, QueryMap, HeadersMap, []).
+
+list_principal_things(Client, Principal, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/principals/things"],
     SuccessStatusCode = undefined,
 
@@ -3351,19 +3775,24 @@ list_principal_things(Client, MaxResults, NextToken, Principal, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc A list of fleet provisioning template versions.
-list_provisioning_template_versions(Client, TemplateName, MaxResults, NextToken)
+list_provisioning_template_versions(Client, TemplateName)
   when is_map(Client) ->
-    list_provisioning_template_versions(Client, TemplateName, MaxResults, NextToken, []).
-list_provisioning_template_versions(Client, TemplateName, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_provisioning_template_versions(Client, TemplateName, #{}, #{}).
+
+list_provisioning_template_versions(Client, TemplateName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_provisioning_template_versions(Client, TemplateName, QueryMap, HeadersMap, []).
+
+list_provisioning_template_versions(Client, TemplateName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/provisioning-templates/", aws_util:encode_uri(TemplateName), "/versions"],
     SuccessStatusCode = undefined,
 
@@ -3371,19 +3800,24 @@ list_provisioning_template_versions(Client, TemplateName, MaxResults, NextToken,
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the fleet provisioning templates in your AWS account.
-list_provisioning_templates(Client, MaxResults, NextToken)
+list_provisioning_templates(Client)
   when is_map(Client) ->
-    list_provisioning_templates(Client, MaxResults, NextToken, []).
-list_provisioning_templates(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_provisioning_templates(Client, #{}, #{}).
+
+list_provisioning_templates(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_provisioning_templates(Client, QueryMap, HeadersMap, []).
+
+list_provisioning_templates(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/provisioning-templates"],
     SuccessStatusCode = undefined,
 
@@ -3391,19 +3825,24 @@ list_provisioning_templates(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the role aliases registered in your account.
-list_role_aliases(Client, AscendingOrder, Marker, PageSize)
+list_role_aliases(Client)
   when is_map(Client) ->
-    list_role_aliases(Client, AscendingOrder, Marker, PageSize, []).
-list_role_aliases(Client, AscendingOrder, Marker, PageSize, Options)
-  when is_map(Client), is_list(Options) ->
+    list_role_aliases(Client, #{}, #{}).
+
+list_role_aliases(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_role_aliases(Client, QueryMap, HeadersMap, []).
+
+list_role_aliases(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/role-aliases"],
     SuccessStatusCode = undefined,
 
@@ -3411,20 +3850,25 @@ list_role_aliases(Client, AscendingOrder, Marker, PageSize, Options)
 
     Query0_ =
       [
-        {<<"isAscendingOrder">>, AscendingOrder},
-        {<<"marker">>, Marker},
-        {<<"pageSize">>, PageSize}
+        {<<"isAscendingOrder">>, maps:get(<<"isAscendingOrder">>, QueryMap, undefined)},
+        {<<"marker">>, maps:get(<<"marker">>, QueryMap, undefined)},
+        {<<"pageSize">>, maps:get(<<"pageSize">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all of your scheduled audits.
-list_scheduled_audits(Client, MaxResults, NextToken)
+list_scheduled_audits(Client)
   when is_map(Client) ->
-    list_scheduled_audits(Client, MaxResults, NextToken, []).
-list_scheduled_audits(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_scheduled_audits(Client, #{}, #{}).
+
+list_scheduled_audits(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_scheduled_audits(Client, QueryMap, HeadersMap, []).
+
+list_scheduled_audits(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/audit/scheduledaudits"],
     SuccessStatusCode = undefined,
 
@@ -3432,8 +3876,8 @@ list_scheduled_audits(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -3444,11 +3888,16 @@ list_scheduled_audits(Client, MaxResults, NextToken, Options)
 %% You can filter security profiles by dimension or custom metric.
 %%
 %% `dimensionName' and `metricName' cannot be used in the same request.
-list_security_profiles(Client, DimensionName, MaxResults, MetricName, NextToken)
+list_security_profiles(Client)
   when is_map(Client) ->
-    list_security_profiles(Client, DimensionName, MaxResults, MetricName, NextToken, []).
-list_security_profiles(Client, DimensionName, MaxResults, MetricName, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_security_profiles(Client, #{}, #{}).
+
+list_security_profiles(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_security_profiles(Client, QueryMap, HeadersMap, []).
+
+list_security_profiles(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/security-profiles"],
     SuccessStatusCode = undefined,
 
@@ -3456,10 +3905,10 @@ list_security_profiles(Client, DimensionName, MaxResults, MetricName, NextToken,
 
     Query0_ =
       [
-        {<<"dimensionName">>, DimensionName},
-        {<<"maxResults">>, MaxResults},
-        {<<"metricName">>, MetricName},
-        {<<"nextToken">>, NextToken}
+        {<<"dimensionName">>, maps:get(<<"dimensionName">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"metricName">>, maps:get(<<"metricName">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -3467,11 +3916,16 @@ list_security_profiles(Client, DimensionName, MaxResults, MetricName, NextToken,
 
 %% @doc Lists the Device Defender security profiles attached to a target
 %% (thing group).
-list_security_profiles_for_target(Client, MaxResults, NextToken, Recursive, SecurityProfileTargetArn)
+list_security_profiles_for_target(Client, SecurityProfileTargetArn)
   when is_map(Client) ->
-    list_security_profiles_for_target(Client, MaxResults, NextToken, Recursive, SecurityProfileTargetArn, []).
-list_security_profiles_for_target(Client, MaxResults, NextToken, Recursive, SecurityProfileTargetArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_security_profiles_for_target(Client, SecurityProfileTargetArn, #{}, #{}).
+
+list_security_profiles_for_target(Client, SecurityProfileTargetArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_security_profiles_for_target(Client, SecurityProfileTargetArn, QueryMap, HeadersMap, []).
+
+list_security_profiles_for_target(Client, SecurityProfileTargetArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/security-profiles-for-target"],
     SuccessStatusCode = undefined,
 
@@ -3479,9 +3933,9 @@ list_security_profiles_for_target(Client, MaxResults, NextToken, Recursive, Secu
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"recursive">>, Recursive},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"recursive">>, maps:get(<<"recursive">>, QueryMap, undefined)},
         {<<"securityProfileTargetArn">>, SecurityProfileTargetArn}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
@@ -3489,11 +3943,16 @@ list_security_profiles_for_target(Client, MaxResults, NextToken, Recursive, Secu
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all of the streams in your AWS account.
-list_streams(Client, AscendingOrder, MaxResults, NextToken)
+list_streams(Client)
   when is_map(Client) ->
-    list_streams(Client, AscendingOrder, MaxResults, NextToken, []).
-list_streams(Client, AscendingOrder, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_streams(Client, #{}, #{}).
+
+list_streams(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_streams(Client, QueryMap, HeadersMap, []).
+
+list_streams(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/streams"],
     SuccessStatusCode = undefined,
 
@@ -3501,20 +3960,25 @@ list_streams(Client, AscendingOrder, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"isAscendingOrder">>, AscendingOrder},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"isAscendingOrder">>, maps:get(<<"isAscendingOrder">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags (metadata) you have assigned to the resource.
-list_tags_for_resource(Client, NextToken, ResourceArn)
+list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, NextToken, ResourceArn, []).
-list_tags_for_resource(Client, NextToken, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags"],
     SuccessStatusCode = undefined,
 
@@ -3522,7 +3986,7 @@ list_tags_for_resource(Client, NextToken, ResourceArn, Options)
 
     Query0_ =
       [
-        {<<"nextToken">>, NextToken},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"resourceArn">>, ResourceArn}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
@@ -3549,11 +4013,16 @@ list_targets_for_policy(Client, PolicyName, Input0, Options) ->
 
 %% @doc Lists the targets (thing groups) associated with a given Device
 %% Defender security profile.
-list_targets_for_security_profile(Client, SecurityProfileName, MaxResults, NextToken)
+list_targets_for_security_profile(Client, SecurityProfileName)
   when is_map(Client) ->
-    list_targets_for_security_profile(Client, SecurityProfileName, MaxResults, NextToken, []).
-list_targets_for_security_profile(Client, SecurityProfileName, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_targets_for_security_profile(Client, SecurityProfileName, #{}, #{}).
+
+list_targets_for_security_profile(Client, SecurityProfileName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_targets_for_security_profile(Client, SecurityProfileName, QueryMap, HeadersMap, []).
+
+list_targets_for_security_profile(Client, SecurityProfileName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/security-profiles/", aws_util:encode_uri(SecurityProfileName), "/targets"],
     SuccessStatusCode = undefined,
 
@@ -3561,19 +4030,24 @@ list_targets_for_security_profile(Client, SecurityProfileName, MaxResults, NextT
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the thing groups in your account.
-list_thing_groups(Client, MaxResults, NamePrefixFilter, NextToken, ParentGroup, Recursive)
+list_thing_groups(Client)
   when is_map(Client) ->
-    list_thing_groups(Client, MaxResults, NamePrefixFilter, NextToken, ParentGroup, Recursive, []).
-list_thing_groups(Client, MaxResults, NamePrefixFilter, NextToken, ParentGroup, Recursive, Options)
-  when is_map(Client), is_list(Options) ->
+    list_thing_groups(Client, #{}, #{}).
+
+list_thing_groups(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_thing_groups(Client, QueryMap, HeadersMap, []).
+
+list_thing_groups(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/thing-groups"],
     SuccessStatusCode = undefined,
 
@@ -3581,22 +4055,27 @@ list_thing_groups(Client, MaxResults, NamePrefixFilter, NextToken, ParentGroup, 
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"namePrefixFilter">>, NamePrefixFilter},
-        {<<"nextToken">>, NextToken},
-        {<<"parentGroup">>, ParentGroup},
-        {<<"recursive">>, Recursive}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"namePrefixFilter">>, maps:get(<<"namePrefixFilter">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"parentGroup">>, maps:get(<<"parentGroup">>, QueryMap, undefined)},
+        {<<"recursive">>, maps:get(<<"recursive">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the thing groups to which the specified thing belongs.
-list_thing_groups_for_thing(Client, ThingName, MaxResults, NextToken)
+list_thing_groups_for_thing(Client, ThingName)
   when is_map(Client) ->
-    list_thing_groups_for_thing(Client, ThingName, MaxResults, NextToken, []).
-list_thing_groups_for_thing(Client, ThingName, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_thing_groups_for_thing(Client, ThingName, #{}, #{}).
+
+list_thing_groups_for_thing(Client, ThingName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_thing_groups_for_thing(Client, ThingName, QueryMap, HeadersMap, []).
+
+list_thing_groups_for_thing(Client, ThingName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/things/", aws_util:encode_uri(ThingName), "/thing-groups"],
     SuccessStatusCode = undefined,
 
@@ -3604,8 +4083,8 @@ list_thing_groups_for_thing(Client, ThingName, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -3615,11 +4094,16 @@ list_thing_groups_for_thing(Client, ThingName, MaxResults, NextToken, Options)
 %%
 %% A principal can be X.509 certificates, IAM users, groups, and roles,
 %% Amazon Cognito identities or federated identities.
-list_thing_principals(Client, ThingName, MaxResults, NextToken)
+list_thing_principals(Client, ThingName)
   when is_map(Client) ->
-    list_thing_principals(Client, ThingName, MaxResults, NextToken, []).
-list_thing_principals(Client, ThingName, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_thing_principals(Client, ThingName, #{}, #{}).
+
+list_thing_principals(Client, ThingName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_thing_principals(Client, ThingName, QueryMap, HeadersMap, []).
+
+list_thing_principals(Client, ThingName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/things/", aws_util:encode_uri(ThingName), "/principals"],
     SuccessStatusCode = undefined,
 
@@ -3627,19 +4111,24 @@ list_thing_principals(Client, ThingName, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Information about the thing registration tasks.
-list_thing_registration_task_reports(Client, TaskId, MaxResults, NextToken, ReportType)
+list_thing_registration_task_reports(Client, TaskId, ReportType)
   when is_map(Client) ->
-    list_thing_registration_task_reports(Client, TaskId, MaxResults, NextToken, ReportType, []).
-list_thing_registration_task_reports(Client, TaskId, MaxResults, NextToken, ReportType, Options)
-  when is_map(Client), is_list(Options) ->
+    list_thing_registration_task_reports(Client, TaskId, ReportType, #{}, #{}).
+
+list_thing_registration_task_reports(Client, TaskId, ReportType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_thing_registration_task_reports(Client, TaskId, ReportType, QueryMap, HeadersMap, []).
+
+list_thing_registration_task_reports(Client, TaskId, ReportType, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/thing-registration-tasks/", aws_util:encode_uri(TaskId), "/reports"],
     SuccessStatusCode = undefined,
 
@@ -3647,8 +4136,8 @@ list_thing_registration_task_reports(Client, TaskId, MaxResults, NextToken, Repo
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"reportType">>, ReportType}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
@@ -3656,11 +4145,16 @@ list_thing_registration_task_reports(Client, TaskId, MaxResults, NextToken, Repo
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List bulk thing provisioning tasks.
-list_thing_registration_tasks(Client, MaxResults, NextToken, Status)
+list_thing_registration_tasks(Client)
   when is_map(Client) ->
-    list_thing_registration_tasks(Client, MaxResults, NextToken, Status, []).
-list_thing_registration_tasks(Client, MaxResults, NextToken, Status, Options)
-  when is_map(Client), is_list(Options) ->
+    list_thing_registration_tasks(Client, #{}, #{}).
+
+list_thing_registration_tasks(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_thing_registration_tasks(Client, QueryMap, HeadersMap, []).
+
+list_thing_registration_tasks(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/thing-registration-tasks"],
     SuccessStatusCode = undefined,
 
@@ -3668,20 +4162,25 @@ list_thing_registration_tasks(Client, MaxResults, NextToken, Status, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"status">>, Status}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the existing thing types.
-list_thing_types(Client, MaxResults, NextToken, ThingTypeName)
+list_thing_types(Client)
   when is_map(Client) ->
-    list_thing_types(Client, MaxResults, NextToken, ThingTypeName, []).
-list_thing_types(Client, MaxResults, NextToken, ThingTypeName, Options)
-  when is_map(Client), is_list(Options) ->
+    list_thing_types(Client, #{}, #{}).
+
+list_thing_types(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_thing_types(Client, QueryMap, HeadersMap, []).
+
+list_thing_types(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/thing-types"],
     SuccessStatusCode = undefined,
 
@@ -3689,9 +4188,9 @@ list_thing_types(Client, MaxResults, NextToken, ThingTypeName, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"thingTypeName">>, ThingTypeName}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"thingTypeName">>, maps:get(<<"thingTypeName">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -3708,11 +4207,16 @@ list_thing_types(Client, MaxResults, NextToken, ThingTypeName, Options)
 %% is returned. You will also not be charged if no attributes or pagination
 %% token was provided in request and no pagination token and no results were
 %% returned.
-list_things(Client, AttributeName, AttributeValue, MaxResults, NextToken, ThingTypeName)
+list_things(Client)
   when is_map(Client) ->
-    list_things(Client, AttributeName, AttributeValue, MaxResults, NextToken, ThingTypeName, []).
-list_things(Client, AttributeName, AttributeValue, MaxResults, NextToken, ThingTypeName, Options)
-  when is_map(Client), is_list(Options) ->
+    list_things(Client, #{}, #{}).
+
+list_things(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_things(Client, QueryMap, HeadersMap, []).
+
+list_things(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/things"],
     SuccessStatusCode = undefined,
 
@@ -3720,22 +4224,27 @@ list_things(Client, AttributeName, AttributeValue, MaxResults, NextToken, ThingT
 
     Query0_ =
       [
-        {<<"attributeName">>, AttributeName},
-        {<<"attributeValue">>, AttributeValue},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"thingTypeName">>, ThingTypeName}
+        {<<"attributeName">>, maps:get(<<"attributeName">>, QueryMap, undefined)},
+        {<<"attributeValue">>, maps:get(<<"attributeValue">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"thingTypeName">>, maps:get(<<"thingTypeName">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the things you have added to the given billing group.
-list_things_in_billing_group(Client, BillingGroupName, MaxResults, NextToken)
+list_things_in_billing_group(Client, BillingGroupName)
   when is_map(Client) ->
-    list_things_in_billing_group(Client, BillingGroupName, MaxResults, NextToken, []).
-list_things_in_billing_group(Client, BillingGroupName, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_things_in_billing_group(Client, BillingGroupName, #{}, #{}).
+
+list_things_in_billing_group(Client, BillingGroupName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_things_in_billing_group(Client, BillingGroupName, QueryMap, HeadersMap, []).
+
+list_things_in_billing_group(Client, BillingGroupName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/billing-groups/", aws_util:encode_uri(BillingGroupName), "/things"],
     SuccessStatusCode = undefined,
 
@@ -3743,19 +4252,24 @@ list_things_in_billing_group(Client, BillingGroupName, MaxResults, NextToken, Op
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the things in the specified group.
-list_things_in_thing_group(Client, ThingGroupName, MaxResults, NextToken, Recursive)
+list_things_in_thing_group(Client, ThingGroupName)
   when is_map(Client) ->
-    list_things_in_thing_group(Client, ThingGroupName, MaxResults, NextToken, Recursive, []).
-list_things_in_thing_group(Client, ThingGroupName, MaxResults, NextToken, Recursive, Options)
-  when is_map(Client), is_list(Options) ->
+    list_things_in_thing_group(Client, ThingGroupName, #{}, #{}).
+
+list_things_in_thing_group(Client, ThingGroupName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_things_in_thing_group(Client, ThingGroupName, QueryMap, HeadersMap, []).
+
+list_things_in_thing_group(Client, ThingGroupName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/thing-groups/", aws_util:encode_uri(ThingGroupName), "/things"],
     SuccessStatusCode = undefined,
 
@@ -3763,20 +4277,25 @@ list_things_in_thing_group(Client, ThingGroupName, MaxResults, NextToken, Recurs
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"recursive">>, Recursive}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"recursive">>, maps:get(<<"recursive">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all the topic rule destinations in your AWS account.
-list_topic_rule_destinations(Client, MaxResults, NextToken)
+list_topic_rule_destinations(Client)
   when is_map(Client) ->
-    list_topic_rule_destinations(Client, MaxResults, NextToken, []).
-list_topic_rule_destinations(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_topic_rule_destinations(Client, #{}, #{}).
+
+list_topic_rule_destinations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_topic_rule_destinations(Client, QueryMap, HeadersMap, []).
+
+list_topic_rule_destinations(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/destinations"],
     SuccessStatusCode = undefined,
 
@@ -3784,19 +4303,24 @@ list_topic_rule_destinations(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the rules for the specific topic.
-list_topic_rules(Client, MaxResults, NextToken, RuleDisabled, Topic)
+list_topic_rules(Client)
   when is_map(Client) ->
-    list_topic_rules(Client, MaxResults, NextToken, RuleDisabled, Topic, []).
-list_topic_rules(Client, MaxResults, NextToken, RuleDisabled, Topic, Options)
-  when is_map(Client), is_list(Options) ->
+    list_topic_rules(Client, #{}, #{}).
+
+list_topic_rules(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_topic_rules(Client, QueryMap, HeadersMap, []).
+
+list_topic_rules(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/rules"],
     SuccessStatusCode = undefined,
 
@@ -3804,21 +4328,26 @@ list_topic_rules(Client, MaxResults, NextToken, RuleDisabled, Topic, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"ruleDisabled">>, RuleDisabled},
-        {<<"topic">>, Topic}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"ruleDisabled">>, maps:get(<<"ruleDisabled">>, QueryMap, undefined)},
+        {<<"topic">>, maps:get(<<"topic">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists logging levels.
-list_v2_logging_levels(Client, MaxResults, NextToken, TargetType)
+list_v2_logging_levels(Client)
   when is_map(Client) ->
-    list_v2_logging_levels(Client, MaxResults, NextToken, TargetType, []).
-list_v2_logging_levels(Client, MaxResults, NextToken, TargetType, Options)
-  when is_map(Client), is_list(Options) ->
+    list_v2_logging_levels(Client, #{}, #{}).
+
+list_v2_logging_levels(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_v2_logging_levels(Client, QueryMap, HeadersMap, []).
+
+list_v2_logging_levels(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v2LoggingLevel"],
     SuccessStatusCode = undefined,
 
@@ -3826,9 +4355,9 @@ list_v2_logging_levels(Client, MaxResults, NextToken, TargetType, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"targetType">>, TargetType}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"targetType">>, maps:get(<<"targetType">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -3839,11 +4368,16 @@ list_v2_logging_levels(Client, MaxResults, NextToken, TargetType, Options)
 %%
 %% You can use filters to limit the results to those alerts issued for a
 %% particular security profile, behavior, or thing (device).
-list_violation_events(Client, BehaviorCriteriaType, EndTime, ListSuppressedAlerts, MaxResults, NextToken, SecurityProfileName, StartTime, ThingName)
+list_violation_events(Client, EndTime, StartTime)
   when is_map(Client) ->
-    list_violation_events(Client, BehaviorCriteriaType, EndTime, ListSuppressedAlerts, MaxResults, NextToken, SecurityProfileName, StartTime, ThingName, []).
-list_violation_events(Client, BehaviorCriteriaType, EndTime, ListSuppressedAlerts, MaxResults, NextToken, SecurityProfileName, StartTime, ThingName, Options)
-  when is_map(Client), is_list(Options) ->
+    list_violation_events(Client, EndTime, StartTime, #{}, #{}).
+
+list_violation_events(Client, EndTime, StartTime, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_violation_events(Client, EndTime, StartTime, QueryMap, HeadersMap, []).
+
+list_violation_events(Client, EndTime, StartTime, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/violation-events"],
     SuccessStatusCode = undefined,
 
@@ -3851,14 +4385,14 @@ list_violation_events(Client, BehaviorCriteriaType, EndTime, ListSuppressedAlert
 
     Query0_ =
       [
-        {<<"behaviorCriteriaType">>, BehaviorCriteriaType},
+        {<<"behaviorCriteriaType">>, maps:get(<<"behaviorCriteriaType">>, QueryMap, undefined)},
         {<<"endTime">>, EndTime},
-        {<<"listSuppressedAlerts">>, ListSuppressedAlerts},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"securityProfileName">>, SecurityProfileName},
+        {<<"listSuppressedAlerts">>, maps:get(<<"listSuppressedAlerts">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"securityProfileName">>, maps:get(<<"securityProfileName">>, QueryMap, undefined)},
         {<<"startTime">>, StartTime},
-        {<<"thingName">>, ThingName}
+        {<<"thingName">>, maps:get(<<"thingName">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

@@ -18,12 +18,15 @@
          create_lifecycle_policy/3,
          delete_lifecycle_policy/3,
          delete_lifecycle_policy/4,
-         get_lifecycle_policies/6,
-         get_lifecycle_policies/7,
+         get_lifecycle_policies/1,
+         get_lifecycle_policies/3,
+         get_lifecycle_policies/4,
          get_lifecycle_policy/2,
-         get_lifecycle_policy/3,
+         get_lifecycle_policy/4,
+         get_lifecycle_policy/5,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -77,11 +80,16 @@ delete_lifecycle_policy(Client, PolicyId, Input0, Options) ->
 %% policies.
 %%
 %% To get complete information about a policy, use `GetLifecyclePolicy'.
-get_lifecycle_policies(Client, PolicyIds, ResourceTypes, State, TagsToAdd, TargetTags)
+get_lifecycle_policies(Client)
   when is_map(Client) ->
-    get_lifecycle_policies(Client, PolicyIds, ResourceTypes, State, TagsToAdd, TargetTags, []).
-get_lifecycle_policies(Client, PolicyIds, ResourceTypes, State, TagsToAdd, TargetTags, Options)
-  when is_map(Client), is_list(Options) ->
+    get_lifecycle_policies(Client, #{}, #{}).
+
+get_lifecycle_policies(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_lifecycle_policies(Client, QueryMap, HeadersMap, []).
+
+get_lifecycle_policies(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/policies"],
     SuccessStatusCode = undefined,
 
@@ -89,11 +97,11 @@ get_lifecycle_policies(Client, PolicyIds, ResourceTypes, State, TagsToAdd, Targe
 
     Query0_ =
       [
-        {<<"policyIds">>, PolicyIds},
-        {<<"resourceTypes">>, ResourceTypes},
-        {<<"state">>, State},
-        {<<"tagsToAdd">>, TagsToAdd},
-        {<<"targetTags">>, TargetTags}
+        {<<"policyIds">>, maps:get(<<"policyIds">>, QueryMap, undefined)},
+        {<<"resourceTypes">>, maps:get(<<"resourceTypes">>, QueryMap, undefined)},
+        {<<"state">>, maps:get(<<"state">>, QueryMap, undefined)},
+        {<<"tagsToAdd">>, maps:get(<<"tagsToAdd">>, QueryMap, undefined)},
+        {<<"targetTags">>, maps:get(<<"targetTags">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -102,9 +110,14 @@ get_lifecycle_policies(Client, PolicyIds, ResourceTypes, State, TagsToAdd, Targe
 %% @doc Gets detailed information about the specified lifecycle policy.
 get_lifecycle_policy(Client, PolicyId)
   when is_map(Client) ->
-    get_lifecycle_policy(Client, PolicyId, []).
-get_lifecycle_policy(Client, PolicyId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_lifecycle_policy(Client, PolicyId, #{}, #{}).
+
+get_lifecycle_policy(Client, PolicyId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_lifecycle_policy(Client, PolicyId, QueryMap, HeadersMap, []).
+
+get_lifecycle_policy(Client, PolicyId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/policies/", aws_util:encode_uri(PolicyId), "/"],
     SuccessStatusCode = undefined,
 
@@ -117,9 +130,14 @@ get_lifecycle_policy(Client, PolicyId, Options)
 %% @doc Lists the tags for the specified resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 

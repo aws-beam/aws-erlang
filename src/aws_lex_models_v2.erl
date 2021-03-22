@@ -35,19 +35,26 @@
          delete_slot_type/6,
          delete_slot_type/7,
          describe_bot/2,
-         describe_bot/3,
+         describe_bot/4,
+         describe_bot/5,
          describe_bot_alias/3,
-         describe_bot_alias/4,
+         describe_bot_alias/5,
+         describe_bot_alias/6,
          describe_bot_locale/4,
-         describe_bot_locale/5,
+         describe_bot_locale/6,
+         describe_bot_locale/7,
          describe_bot_version/3,
-         describe_bot_version/4,
+         describe_bot_version/5,
+         describe_bot_version/6,
          describe_intent/5,
-         describe_intent/6,
+         describe_intent/7,
+         describe_intent/8,
          describe_slot/6,
-         describe_slot/7,
+         describe_slot/8,
+         describe_slot/9,
          describe_slot_type/5,
-         describe_slot_type/6,
+         describe_slot_type/7,
+         describe_slot_type/8,
          list_bot_aliases/3,
          list_bot_aliases/4,
          list_bot_locales/4,
@@ -67,7 +74,8 @@
          list_slots/6,
          list_slots/7,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -419,9 +427,14 @@ delete_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, Input0, Option
 %% @doc Provides metadata information about a bot.
 describe_bot(Client, BotId)
   when is_map(Client) ->
-    describe_bot(Client, BotId, []).
-describe_bot(Client, BotId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_bot(Client, BotId, #{}, #{}).
+
+describe_bot(Client, BotId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_bot(Client, BotId, QueryMap, HeadersMap, []).
+
+describe_bot(Client, BotId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/"],
     SuccessStatusCode = 200,
 
@@ -434,9 +447,14 @@ describe_bot(Client, BotId, Options)
 %% @doc Get information about a specific bot alias.
 describe_bot_alias(Client, BotAliasId, BotId)
   when is_map(Client) ->
-    describe_bot_alias(Client, BotAliasId, BotId, []).
-describe_bot_alias(Client, BotAliasId, BotId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_bot_alias(Client, BotAliasId, BotId, #{}, #{}).
+
+describe_bot_alias(Client, BotAliasId, BotId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_bot_alias(Client, BotAliasId, BotId, QueryMap, HeadersMap, []).
+
+describe_bot_alias(Client, BotAliasId, BotId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botaliases/", aws_util:encode_uri(BotAliasId), "/"],
     SuccessStatusCode = 200,
 
@@ -449,9 +467,14 @@ describe_bot_alias(Client, BotAliasId, BotId, Options)
 %% @doc Describes the settings that a bot has for a specific locale.
 describe_bot_locale(Client, BotId, BotVersion, LocaleId)
   when is_map(Client) ->
-    describe_bot_locale(Client, BotId, BotVersion, LocaleId, []).
-describe_bot_locale(Client, BotId, BotVersion, LocaleId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_bot_locale(Client, BotId, BotVersion, LocaleId, #{}, #{}).
+
+describe_bot_locale(Client, BotId, BotVersion, LocaleId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_bot_locale(Client, BotId, BotVersion, LocaleId, QueryMap, HeadersMap, []).
+
+describe_bot_locale(Client, BotId, BotVersion, LocaleId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/"],
     SuccessStatusCode = 200,
 
@@ -464,9 +487,14 @@ describe_bot_locale(Client, BotId, BotVersion, LocaleId, Options)
 %% @doc Provides metadata about a version of a bot.
 describe_bot_version(Client, BotId, BotVersion)
   when is_map(Client) ->
-    describe_bot_version(Client, BotId, BotVersion, []).
-describe_bot_version(Client, BotId, BotVersion, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_bot_version(Client, BotId, BotVersion, #{}, #{}).
+
+describe_bot_version(Client, BotId, BotVersion, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_bot_version(Client, BotId, BotVersion, QueryMap, HeadersMap, []).
+
+describe_bot_version(Client, BotId, BotVersion, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/"],
     SuccessStatusCode = 200,
 
@@ -479,9 +507,14 @@ describe_bot_version(Client, BotId, BotVersion, Options)
 %% @doc Returns metadata about an intent.
 describe_intent(Client, BotId, BotVersion, IntentId, LocaleId)
   when is_map(Client) ->
-    describe_intent(Client, BotId, BotVersion, IntentId, LocaleId, []).
-describe_intent(Client, BotId, BotVersion, IntentId, LocaleId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_intent(Client, BotId, BotVersion, IntentId, LocaleId, #{}, #{}).
+
+describe_intent(Client, BotId, BotVersion, IntentId, LocaleId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_intent(Client, BotId, BotVersion, IntentId, LocaleId, QueryMap, HeadersMap, []).
+
+describe_intent(Client, BotId, BotVersion, IntentId, LocaleId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/intents/", aws_util:encode_uri(IntentId), "/"],
     SuccessStatusCode = 200,
 
@@ -494,9 +527,14 @@ describe_intent(Client, BotId, BotVersion, IntentId, LocaleId, Options)
 %% @doc Gets metadata information about a slot.
 describe_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId)
   when is_map(Client) ->
-    describe_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, []).
-describe_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, #{}, #{}).
+
+describe_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, QueryMap, HeadersMap, []).
+
+describe_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/intents/", aws_util:encode_uri(IntentId), "/slots/", aws_util:encode_uri(SlotId), "/"],
     SuccessStatusCode = 200,
 
@@ -509,9 +547,14 @@ describe_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, Options)
 %% @doc Gets metadata information about a slot type.
 describe_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId)
   when is_map(Client) ->
-    describe_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, []).
-describe_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, #{}, #{}).
+
+describe_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, QueryMap, HeadersMap, []).
+
+describe_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/slottypes/", aws_util:encode_uri(SlotTypeId), "/"],
     SuccessStatusCode = 200,
 
@@ -685,9 +728,14 @@ list_slots(Client, BotId, BotVersion, IntentId, LocaleId, Input0, Options) ->
 %% them.
 list_tags_for_resource(Client, ResourceARN)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceARN, []).
-list_tags_for_resource(Client, ResourceARN, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceARN, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceARN), ""],
     SuccessStatusCode = 200,
 

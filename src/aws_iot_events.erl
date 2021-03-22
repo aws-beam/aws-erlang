@@ -16,24 +16,33 @@
          delete_detector_model/4,
          delete_input/3,
          delete_input/4,
-         describe_detector_model/3,
+         describe_detector_model/2,
          describe_detector_model/4,
+         describe_detector_model/5,
          describe_detector_model_analysis/2,
-         describe_detector_model_analysis/3,
+         describe_detector_model_analysis/4,
+         describe_detector_model_analysis/5,
          describe_input/2,
-         describe_input/3,
+         describe_input/4,
+         describe_input/5,
          describe_logging_options/1,
-         describe_logging_options/2,
+         describe_logging_options/3,
+         describe_logging_options/4,
+         get_detector_model_analysis_results/2,
          get_detector_model_analysis_results/4,
          get_detector_model_analysis_results/5,
+         list_detector_model_versions/2,
          list_detector_model_versions/4,
          list_detector_model_versions/5,
+         list_detector_models/1,
          list_detector_models/3,
          list_detector_models/4,
+         list_inputs/1,
          list_inputs/3,
          list_inputs/4,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          put_logging_options/2,
          put_logging_options/3,
          start_detector_model_analysis/2,
@@ -123,11 +132,16 @@ delete_input(Client, InputName, Input0, Options) ->
 %%
 %% If the `version' parameter is not specified, information about the latest
 %% version is returned.
-describe_detector_model(Client, DetectorModelName, DetectorModelVersion)
+describe_detector_model(Client, DetectorModelName)
   when is_map(Client) ->
-    describe_detector_model(Client, DetectorModelName, DetectorModelVersion, []).
-describe_detector_model(Client, DetectorModelName, DetectorModelVersion, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_detector_model(Client, DetectorModelName, #{}, #{}).
+
+describe_detector_model(Client, DetectorModelName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_detector_model(Client, DetectorModelName, QueryMap, HeadersMap, []).
+
+describe_detector_model(Client, DetectorModelName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/detector-models/", aws_util:encode_uri(DetectorModelName), ""],
     SuccessStatusCode = undefined,
 
@@ -135,7 +149,7 @@ describe_detector_model(Client, DetectorModelName, DetectorModelVersion, Options
 
     Query0_ =
       [
-        {<<"version">>, DetectorModelVersion}
+        {<<"version">>, maps:get(<<"version">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -144,9 +158,14 @@ describe_detector_model(Client, DetectorModelName, DetectorModelVersion, Options
 %% @doc Retrieves execution information about a detector model analysis
 describe_detector_model_analysis(Client, AnalysisId)
   when is_map(Client) ->
-    describe_detector_model_analysis(Client, AnalysisId, []).
-describe_detector_model_analysis(Client, AnalysisId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_detector_model_analysis(Client, AnalysisId, #{}, #{}).
+
+describe_detector_model_analysis(Client, AnalysisId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_detector_model_analysis(Client, AnalysisId, QueryMap, HeadersMap, []).
+
+describe_detector_model_analysis(Client, AnalysisId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/analysis/detector-models/", aws_util:encode_uri(AnalysisId), ""],
     SuccessStatusCode = undefined,
 
@@ -159,9 +178,14 @@ describe_detector_model_analysis(Client, AnalysisId, Options)
 %% @doc Describes an input.
 describe_input(Client, InputName)
   when is_map(Client) ->
-    describe_input(Client, InputName, []).
-describe_input(Client, InputName, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_input(Client, InputName, #{}, #{}).
+
+describe_input(Client, InputName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_input(Client, InputName, QueryMap, HeadersMap, []).
+
+describe_input(Client, InputName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/inputs/", aws_util:encode_uri(InputName), ""],
     SuccessStatusCode = undefined,
 
@@ -174,9 +198,14 @@ describe_input(Client, InputName, Options)
 %% @doc Retrieves the current settings of the AWS IoT Events logging options.
 describe_logging_options(Client)
   when is_map(Client) ->
-    describe_logging_options(Client, []).
-describe_logging_options(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_logging_options(Client, #{}, #{}).
+
+describe_logging_options(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_logging_options(Client, QueryMap, HeadersMap, []).
+
+describe_logging_options(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/logging"],
     SuccessStatusCode = undefined,
 
@@ -187,11 +216,16 @@ describe_logging_options(Client, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves one or more analysis results of the detector model.
-get_detector_model_analysis_results(Client, AnalysisId, MaxResults, NextToken)
+get_detector_model_analysis_results(Client, AnalysisId)
   when is_map(Client) ->
-    get_detector_model_analysis_results(Client, AnalysisId, MaxResults, NextToken, []).
-get_detector_model_analysis_results(Client, AnalysisId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_detector_model_analysis_results(Client, AnalysisId, #{}, #{}).
+
+get_detector_model_analysis_results(Client, AnalysisId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_detector_model_analysis_results(Client, AnalysisId, QueryMap, HeadersMap, []).
+
+get_detector_model_analysis_results(Client, AnalysisId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/analysis/detector-models/", aws_util:encode_uri(AnalysisId), "/results"],
     SuccessStatusCode = undefined,
 
@@ -199,8 +233,8 @@ get_detector_model_analysis_results(Client, AnalysisId, MaxResults, NextToken, O
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -209,11 +243,16 @@ get_detector_model_analysis_results(Client, AnalysisId, MaxResults, NextToken, O
 %% @doc Lists all the versions of a detector model.
 %%
 %% Only the metadata associated with each detector model version is returned.
-list_detector_model_versions(Client, DetectorModelName, MaxResults, NextToken)
+list_detector_model_versions(Client, DetectorModelName)
   when is_map(Client) ->
-    list_detector_model_versions(Client, DetectorModelName, MaxResults, NextToken, []).
-list_detector_model_versions(Client, DetectorModelName, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_detector_model_versions(Client, DetectorModelName, #{}, #{}).
+
+list_detector_model_versions(Client, DetectorModelName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_detector_model_versions(Client, DetectorModelName, QueryMap, HeadersMap, []).
+
+list_detector_model_versions(Client, DetectorModelName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/detector-models/", aws_util:encode_uri(DetectorModelName), "/versions"],
     SuccessStatusCode = undefined,
 
@@ -221,8 +260,8 @@ list_detector_model_versions(Client, DetectorModelName, MaxResults, NextToken, O
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -231,11 +270,16 @@ list_detector_model_versions(Client, DetectorModelName, MaxResults, NextToken, O
 %% @doc Lists the detector models you have created.
 %%
 %% Only the metadata associated with each detector model is returned.
-list_detector_models(Client, MaxResults, NextToken)
+list_detector_models(Client)
   when is_map(Client) ->
-    list_detector_models(Client, MaxResults, NextToken, []).
-list_detector_models(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_detector_models(Client, #{}, #{}).
+
+list_detector_models(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_detector_models(Client, QueryMap, HeadersMap, []).
+
+list_detector_models(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/detector-models"],
     SuccessStatusCode = undefined,
 
@@ -243,19 +287,24 @@ list_detector_models(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the inputs you have created.
-list_inputs(Client, MaxResults, NextToken)
+list_inputs(Client)
   when is_map(Client) ->
-    list_inputs(Client, MaxResults, NextToken, []).
-list_inputs(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_inputs(Client, #{}, #{}).
+
+list_inputs(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_inputs(Client, QueryMap, HeadersMap, []).
+
+list_inputs(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/inputs"],
     SuccessStatusCode = undefined,
 
@@ -263,8 +312,8 @@ list_inputs(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -273,9 +322,14 @@ list_inputs(Client, MaxResults, NextToken, Options)
 %% @doc Lists the tags (metadata) you have assigned to the resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags"],
     SuccessStatusCode = undefined,
 

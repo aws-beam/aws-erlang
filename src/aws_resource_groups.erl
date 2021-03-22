@@ -54,7 +54,8 @@
          get_group_query/2,
          get_group_query/3,
          get_tags/2,
-         get_tags/3,
+         get_tags/4,
+         get_tags/5,
          group_resources/2,
          group_resources/3,
          list_group_resources/2,
@@ -230,9 +231,14 @@ get_group_query(Client, Input0, Options) ->
 %% </li> </ul>
 get_tags(Client, Arn)
   when is_map(Client) ->
-    get_tags(Client, Arn, []).
-get_tags(Client, Arn, Options)
-  when is_map(Client), is_list(Options) ->
+    get_tags(Client, Arn, #{}, #{}).
+
+get_tags(Client, Arn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_tags(Client, Arn, QueryMap, HeadersMap, []).
+
+get_tags(Client, Arn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/resources/", aws_util:encode_uri(Arn), "/tags"],
     SuccessStatusCode = undefined,
 

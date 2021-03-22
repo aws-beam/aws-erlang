@@ -23,9 +23,12 @@
 -module(aws_sso).
 
 -export([get_role_credentials/4,
-         get_role_credentials/5,
+         get_role_credentials/6,
+         get_role_credentials/7,
+         list_account_roles/3,
          list_account_roles/5,
          list_account_roles/6,
+         list_accounts/2,
          list_accounts/4,
          list_accounts/5,
          logout/2,
@@ -41,9 +44,14 @@
 %% assigned to the user.
 get_role_credentials(Client, AccountId, RoleName, AccessToken)
   when is_map(Client) ->
-    get_role_credentials(Client, AccountId, RoleName, AccessToken, []).
-get_role_credentials(Client, AccountId, RoleName, AccessToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_role_credentials(Client, AccountId, RoleName, AccessToken, #{}, #{}).
+
+get_role_credentials(Client, AccountId, RoleName, AccessToken, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_role_credentials(Client, AccountId, RoleName, AccessToken, QueryMap, HeadersMap, []).
+
+get_role_credentials(Client, AccountId, RoleName, AccessToken, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/federation/credentials"],
     SuccessStatusCode = undefined,
 
@@ -64,11 +72,16 @@ get_role_credentials(Client, AccountId, RoleName, AccessToken, Options)
 
 %% @doc Lists all roles that are assigned to the user for a given AWS
 %% account.
-list_account_roles(Client, AccountId, MaxResults, NextToken, AccessToken)
+list_account_roles(Client, AccountId, AccessToken)
   when is_map(Client) ->
-    list_account_roles(Client, AccountId, MaxResults, NextToken, AccessToken, []).
-list_account_roles(Client, AccountId, MaxResults, NextToken, AccessToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_account_roles(Client, AccountId, AccessToken, #{}, #{}).
+
+list_account_roles(Client, AccountId, AccessToken, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_account_roles(Client, AccountId, AccessToken, QueryMap, HeadersMap, []).
+
+list_account_roles(Client, AccountId, AccessToken, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/assignment/roles"],
     SuccessStatusCode = undefined,
 
@@ -81,8 +94,8 @@ list_account_roles(Client, AccountId, MaxResults, NextToken, AccessToken, Option
     Query0_ =
       [
         {<<"account_id">>, AccountId},
-        {<<"max_result">>, MaxResults},
-        {<<"next_token">>, NextToken}
+        {<<"max_result">>, maps:get(<<"max_result">>, QueryMap, undefined)},
+        {<<"next_token">>, maps:get(<<"next_token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -93,11 +106,16 @@ list_account_roles(Client, AccountId, MaxResults, NextToken, AccessToken, Option
 %% These AWS accounts are assigned by the administrator of the account. For
 %% more information, see Assign User Access in the AWS SSO User Guide. This
 %% operation returns a paginated response.
-list_accounts(Client, MaxResults, NextToken, AccessToken)
+list_accounts(Client, AccessToken)
   when is_map(Client) ->
-    list_accounts(Client, MaxResults, NextToken, AccessToken, []).
-list_accounts(Client, MaxResults, NextToken, AccessToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_accounts(Client, AccessToken, #{}, #{}).
+
+list_accounts(Client, AccessToken, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_accounts(Client, AccessToken, QueryMap, HeadersMap, []).
+
+list_accounts(Client, AccessToken, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/assignment/accounts"],
     SuccessStatusCode = undefined,
 
@@ -109,8 +127,8 @@ list_accounts(Client, MaxResults, NextToken, AccessToken, Options)
 
     Query0_ =
       [
-        {<<"max_result">>, MaxResults},
-        {<<"next_token">>, NextToken}
+        {<<"max_result">>, maps:get(<<"max_result">>, QueryMap, undefined)},
+        {<<"next_token">>, maps:get(<<"next_token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

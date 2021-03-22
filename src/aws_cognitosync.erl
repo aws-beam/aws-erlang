@@ -29,23 +29,31 @@
          delete_dataset/5,
          delete_dataset/6,
          describe_dataset/4,
-         describe_dataset/5,
+         describe_dataset/6,
+         describe_dataset/7,
          describe_identity_pool_usage/2,
-         describe_identity_pool_usage/3,
+         describe_identity_pool_usage/4,
+         describe_identity_pool_usage/5,
          describe_identity_usage/3,
-         describe_identity_usage/4,
+         describe_identity_usage/5,
+         describe_identity_usage/6,
          get_bulk_publish_details/3,
          get_bulk_publish_details/4,
          get_cognito_events/2,
-         get_cognito_events/3,
+         get_cognito_events/4,
+         get_cognito_events/5,
          get_identity_pool_configuration/2,
-         get_identity_pool_configuration/3,
+         get_identity_pool_configuration/4,
+         get_identity_pool_configuration/5,
+         list_datasets/3,
          list_datasets/5,
          list_datasets/6,
+         list_identity_pool_usage/1,
          list_identity_pool_usage/3,
          list_identity_pool_usage/4,
-         list_records/8,
-         list_records/9,
+         list_records/4,
+         list_records/6,
+         list_records/7,
          register_device/4,
          register_device/5,
          set_cognito_events/3,
@@ -124,9 +132,14 @@ delete_dataset(Client, DatasetName, IdentityId, IdentityPoolId, Input0, Options)
 %% credentials to make this API call.
 describe_dataset(Client, DatasetName, IdentityId, IdentityPoolId)
   when is_map(Client) ->
-    describe_dataset(Client, DatasetName, IdentityId, IdentityPoolId, []).
-describe_dataset(Client, DatasetName, IdentityId, IdentityPoolId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_dataset(Client, DatasetName, IdentityId, IdentityPoolId, #{}, #{}).
+
+describe_dataset(Client, DatasetName, IdentityId, IdentityPoolId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_dataset(Client, DatasetName, IdentityId, IdentityPoolId, QueryMap, HeadersMap, []).
+
+describe_dataset(Client, DatasetName, IdentityId, IdentityPoolId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/identities/", aws_util:encode_uri(IdentityId), "/datasets/", aws_util:encode_uri(DatasetName), ""],
     SuccessStatusCode = 200,
 
@@ -143,9 +156,14 @@ describe_dataset(Client, DatasetName, IdentityId, IdentityPoolId, Options)
 %% this API with the temporary user credentials provided by Cognito Identity.
 describe_identity_pool_usage(Client, IdentityPoolId)
   when is_map(Client) ->
-    describe_identity_pool_usage(Client, IdentityPoolId, []).
-describe_identity_pool_usage(Client, IdentityPoolId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_identity_pool_usage(Client, IdentityPoolId, #{}, #{}).
+
+describe_identity_pool_usage(Client, IdentityPoolId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_identity_pool_usage(Client, IdentityPoolId, QueryMap, HeadersMap, []).
+
+describe_identity_pool_usage(Client, IdentityPoolId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), ""],
     SuccessStatusCode = 200,
 
@@ -162,9 +180,14 @@ describe_identity_pool_usage(Client, IdentityPoolId, Options)
 %% Identity or with developer credentials.
 describe_identity_usage(Client, IdentityId, IdentityPoolId)
   when is_map(Client) ->
-    describe_identity_usage(Client, IdentityId, IdentityPoolId, []).
-describe_identity_usage(Client, IdentityId, IdentityPoolId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_identity_usage(Client, IdentityId, IdentityPoolId, #{}, #{}).
+
+describe_identity_usage(Client, IdentityId, IdentityPoolId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_identity_usage(Client, IdentityId, IdentityPoolId, QueryMap, HeadersMap, []).
+
+describe_identity_usage(Client, IdentityId, IdentityPoolId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/identities/", aws_util:encode_uri(IdentityId), ""],
     SuccessStatusCode = 200,
 
@@ -201,9 +224,14 @@ get_bulk_publish_details(Client, IdentityPoolId, Input0, Options) ->
 %% this API with the temporary user credentials provided by Cognito Identity.
 get_cognito_events(Client, IdentityPoolId)
   when is_map(Client) ->
-    get_cognito_events(Client, IdentityPoolId, []).
-get_cognito_events(Client, IdentityPoolId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_cognito_events(Client, IdentityPoolId, #{}, #{}).
+
+get_cognito_events(Client, IdentityPoolId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_cognito_events(Client, IdentityPoolId, QueryMap, HeadersMap, []).
+
+get_cognito_events(Client, IdentityPoolId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/events"],
     SuccessStatusCode = 200,
 
@@ -219,9 +247,14 @@ get_cognito_events(Client, IdentityPoolId, Options)
 %% this API with the temporary user credentials provided by Cognito Identity.
 get_identity_pool_configuration(Client, IdentityPoolId)
   when is_map(Client) ->
-    get_identity_pool_configuration(Client, IdentityPoolId, []).
-get_identity_pool_configuration(Client, IdentityPoolId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_identity_pool_configuration(Client, IdentityPoolId, #{}, #{}).
+
+get_identity_pool_configuration(Client, IdentityPoolId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_identity_pool_configuration(Client, IdentityPoolId, QueryMap, HeadersMap, []).
+
+get_identity_pool_configuration(Client, IdentityPoolId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/configuration"],
     SuccessStatusCode = 200,
 
@@ -240,11 +273,16 @@ get_identity_pool_configuration(Client, IdentityPoolId, Options)
 %% ListDatasets can be called with temporary user credentials provided by
 %% Cognito Identity or with developer credentials. You should use the Cognito
 %% Identity credentials to make this API call.
-list_datasets(Client, IdentityId, IdentityPoolId, MaxResults, NextToken)
+list_datasets(Client, IdentityId, IdentityPoolId)
   when is_map(Client) ->
-    list_datasets(Client, IdentityId, IdentityPoolId, MaxResults, NextToken, []).
-list_datasets(Client, IdentityId, IdentityPoolId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_datasets(Client, IdentityId, IdentityPoolId, #{}, #{}).
+
+list_datasets(Client, IdentityId, IdentityPoolId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_datasets(Client, IdentityId, IdentityPoolId, QueryMap, HeadersMap, []).
+
+list_datasets(Client, IdentityId, IdentityPoolId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/identities/", aws_util:encode_uri(IdentityId), "/datasets"],
     SuccessStatusCode = 200,
 
@@ -252,8 +290,8 @@ list_datasets(Client, IdentityId, IdentityPoolId, MaxResults, NextToken, Options
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -264,11 +302,16 @@ list_datasets(Client, IdentityId, IdentityPoolId, MaxResults, NextToken, Options
 %% ListIdentityPoolUsage can only be called with developer credentials. You
 %% cannot make this API call with the temporary user credentials provided by
 %% Cognito Identity.
-list_identity_pool_usage(Client, MaxResults, NextToken)
+list_identity_pool_usage(Client)
   when is_map(Client) ->
-    list_identity_pool_usage(Client, MaxResults, NextToken, []).
-list_identity_pool_usage(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_identity_pool_usage(Client, #{}, #{}).
+
+list_identity_pool_usage(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_identity_pool_usage(Client, QueryMap, HeadersMap, []).
+
+list_identity_pool_usage(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/identitypools"],
     SuccessStatusCode = 200,
 
@@ -276,8 +319,8 @@ list_identity_pool_usage(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -293,11 +336,16 @@ list_identity_pool_usage(Client, MaxResults, NextToken, Options)
 %% ListRecords can be called with temporary user credentials provided by
 %% Cognito Identity or with developer credentials. You should use Cognito
 %% Identity credentials to make this API call.
-list_records(Client, DatasetName, IdentityId, IdentityPoolId, LastSyncCount, MaxResults, NextToken, SyncSessionToken)
+list_records(Client, DatasetName, IdentityId, IdentityPoolId)
   when is_map(Client) ->
-    list_records(Client, DatasetName, IdentityId, IdentityPoolId, LastSyncCount, MaxResults, NextToken, SyncSessionToken, []).
-list_records(Client, DatasetName, IdentityId, IdentityPoolId, LastSyncCount, MaxResults, NextToken, SyncSessionToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_records(Client, DatasetName, IdentityId, IdentityPoolId, #{}, #{}).
+
+list_records(Client, DatasetName, IdentityId, IdentityPoolId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_records(Client, DatasetName, IdentityId, IdentityPoolId, QueryMap, HeadersMap, []).
+
+list_records(Client, DatasetName, IdentityId, IdentityPoolId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/identities/", aws_util:encode_uri(IdentityId), "/datasets/", aws_util:encode_uri(DatasetName), "/records"],
     SuccessStatusCode = 200,
 
@@ -305,10 +353,10 @@ list_records(Client, DatasetName, IdentityId, IdentityPoolId, LastSyncCount, Max
 
     Query0_ =
       [
-        {<<"lastSyncCount">>, LastSyncCount},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"syncSessionToken">>, SyncSessionToken}
+        {<<"lastSyncCount">>, maps:get(<<"lastSyncCount">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"syncSessionToken">>, maps:get(<<"syncSessionToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

@@ -38,35 +38,48 @@
          delete_nodegroup/4,
          delete_nodegroup/5,
          describe_addon/3,
-         describe_addon/4,
-         describe_addon_versions/5,
-         describe_addon_versions/6,
+         describe_addon/5,
+         describe_addon/6,
+         describe_addon_versions/1,
+         describe_addon_versions/3,
+         describe_addon_versions/4,
          describe_cluster/2,
-         describe_cluster/3,
+         describe_cluster/4,
+         describe_cluster/5,
          describe_fargate_profile/3,
-         describe_fargate_profile/4,
+         describe_fargate_profile/5,
+         describe_fargate_profile/6,
          describe_identity_provider_config/3,
          describe_identity_provider_config/4,
          describe_nodegroup/3,
-         describe_nodegroup/4,
+         describe_nodegroup/5,
+         describe_nodegroup/6,
+         describe_update/3,
          describe_update/5,
          describe_update/6,
          disassociate_identity_provider_config/3,
          disassociate_identity_provider_config/4,
+         list_addons/2,
          list_addons/4,
          list_addons/5,
+         list_clusters/1,
          list_clusters/3,
          list_clusters/4,
+         list_fargate_profiles/2,
          list_fargate_profiles/4,
          list_fargate_profiles/5,
+         list_identity_provider_configs/2,
          list_identity_provider_configs/4,
          list_identity_provider_configs/5,
+         list_nodegroups/2,
          list_nodegroups/4,
          list_nodegroups/5,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
-         list_updates/6,
-         list_updates/7,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
+         list_updates/2,
+         list_updates/4,
+         list_updates/5,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -365,9 +378,14 @@ delete_nodegroup(Client, ClusterName, NodegroupName, Input0, Options) ->
 %% @doc Describes an Amazon EKS add-on.
 describe_addon(Client, AddonName, ClusterName)
   when is_map(Client) ->
-    describe_addon(Client, AddonName, ClusterName, []).
-describe_addon(Client, AddonName, ClusterName, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_addon(Client, AddonName, ClusterName, #{}, #{}).
+
+describe_addon(Client, AddonName, ClusterName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_addon(Client, AddonName, ClusterName, QueryMap, HeadersMap, []).
+
+describe_addon(Client, AddonName, ClusterName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/addons/", aws_util:encode_uri(AddonName), ""],
     SuccessStatusCode = undefined,
 
@@ -378,11 +396,16 @@ describe_addon(Client, AddonName, ClusterName, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes the Kubernetes versions that the add-on can be used with.
-describe_addon_versions(Client, AddonName, KubernetesVersion, MaxResults, NextToken)
+describe_addon_versions(Client)
   when is_map(Client) ->
-    describe_addon_versions(Client, AddonName, KubernetesVersion, MaxResults, NextToken, []).
-describe_addon_versions(Client, AddonName, KubernetesVersion, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_addon_versions(Client, #{}, #{}).
+
+describe_addon_versions(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_addon_versions(Client, QueryMap, HeadersMap, []).
+
+describe_addon_versions(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/addons/supported-versions"],
     SuccessStatusCode = undefined,
 
@@ -390,10 +413,10 @@ describe_addon_versions(Client, AddonName, KubernetesVersion, MaxResults, NextTo
 
     Query0_ =
       [
-        {<<"addonName">>, AddonName},
-        {<<"kubernetesVersion">>, KubernetesVersion},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"addonName">>, maps:get(<<"addonName">>, QueryMap, undefined)},
+        {<<"kubernetesVersion">>, maps:get(<<"kubernetesVersion">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -410,9 +433,14 @@ describe_addon_versions(Client, AddonName, KubernetesVersion, MaxResults, NextTo
 %% until the cluster reaches the `ACTIVE' state.
 describe_cluster(Client, Name)
   when is_map(Client) ->
-    describe_cluster(Client, Name, []).
-describe_cluster(Client, Name, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_cluster(Client, Name, #{}, #{}).
+
+describe_cluster(Client, Name, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_cluster(Client, Name, QueryMap, HeadersMap, []).
+
+describe_cluster(Client, Name, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/clusters/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
 
@@ -425,9 +453,14 @@ describe_cluster(Client, Name, Options)
 %% @doc Returns descriptive information about an AWS Fargate profile.
 describe_fargate_profile(Client, ClusterName, FargateProfileName)
   when is_map(Client) ->
-    describe_fargate_profile(Client, ClusterName, FargateProfileName, []).
-describe_fargate_profile(Client, ClusterName, FargateProfileName, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_fargate_profile(Client, ClusterName, FargateProfileName, #{}, #{}).
+
+describe_fargate_profile(Client, ClusterName, FargateProfileName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_fargate_profile(Client, ClusterName, FargateProfileName, QueryMap, HeadersMap, []).
+
+describe_fargate_profile(Client, ClusterName, FargateProfileName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/fargate-profiles/", aws_util:encode_uri(FargateProfileName), ""],
     SuccessStatusCode = undefined,
 
@@ -457,9 +490,14 @@ describe_identity_provider_config(Client, ClusterName, Input0, Options) ->
 %% @doc Returns descriptive information about an Amazon EKS node group.
 describe_nodegroup(Client, ClusterName, NodegroupName)
   when is_map(Client) ->
-    describe_nodegroup(Client, ClusterName, NodegroupName, []).
-describe_nodegroup(Client, ClusterName, NodegroupName, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_nodegroup(Client, ClusterName, NodegroupName, #{}, #{}).
+
+describe_nodegroup(Client, ClusterName, NodegroupName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_nodegroup(Client, ClusterName, NodegroupName, QueryMap, HeadersMap, []).
+
+describe_nodegroup(Client, ClusterName, NodegroupName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/node-groups/", aws_util:encode_uri(NodegroupName), ""],
     SuccessStatusCode = undefined,
 
@@ -475,11 +513,16 @@ describe_nodegroup(Client, ClusterName, NodegroupName, Options)
 %% When the status of the update is `Succeeded', the update is complete. If
 %% an update fails, the status is `Failed', and an error detail explains the
 %% reason for the failure.
-describe_update(Client, Name, UpdateId, AddonName, NodegroupName)
+describe_update(Client, Name, UpdateId)
   when is_map(Client) ->
-    describe_update(Client, Name, UpdateId, AddonName, NodegroupName, []).
-describe_update(Client, Name, UpdateId, AddonName, NodegroupName, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_update(Client, Name, UpdateId, #{}, #{}).
+
+describe_update(Client, Name, UpdateId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_update(Client, Name, UpdateId, QueryMap, HeadersMap, []).
+
+describe_update(Client, Name, UpdateId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/clusters/", aws_util:encode_uri(Name), "/updates/", aws_util:encode_uri(UpdateId), ""],
     SuccessStatusCode = undefined,
 
@@ -487,8 +530,8 @@ describe_update(Client, Name, UpdateId, AddonName, NodegroupName, Options)
 
     Query0_ =
       [
-        {<<"addonName">>, AddonName},
-        {<<"nodegroupName">>, NodegroupName}
+        {<<"addonName">>, maps:get(<<"addonName">>, QueryMap, undefined)},
+        {<<"nodegroupName">>, maps:get(<<"nodegroupName">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -515,11 +558,16 @@ disassociate_identity_provider_config(Client, ClusterName, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the available add-ons.
-list_addons(Client, ClusterName, MaxResults, NextToken)
+list_addons(Client, ClusterName)
   when is_map(Client) ->
-    list_addons(Client, ClusterName, MaxResults, NextToken, []).
-list_addons(Client, ClusterName, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_addons(Client, ClusterName, #{}, #{}).
+
+list_addons(Client, ClusterName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_addons(Client, ClusterName, QueryMap, HeadersMap, []).
+
+list_addons(Client, ClusterName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/addons"],
     SuccessStatusCode = undefined,
 
@@ -527,8 +575,8 @@ list_addons(Client, ClusterName, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -536,11 +584,16 @@ list_addons(Client, ClusterName, MaxResults, NextToken, Options)
 
 %% @doc Lists the Amazon EKS clusters in your AWS account in the specified
 %% Region.
-list_clusters(Client, MaxResults, NextToken)
+list_clusters(Client)
   when is_map(Client) ->
-    list_clusters(Client, MaxResults, NextToken, []).
-list_clusters(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_clusters(Client, #{}, #{}).
+
+list_clusters(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_clusters(Client, QueryMap, HeadersMap, []).
+
+list_clusters(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/clusters"],
     SuccessStatusCode = undefined,
 
@@ -548,8 +601,8 @@ list_clusters(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -557,11 +610,16 @@ list_clusters(Client, MaxResults, NextToken, Options)
 
 %% @doc Lists the AWS Fargate profiles associated with the specified cluster
 %% in your AWS account in the specified Region.
-list_fargate_profiles(Client, ClusterName, MaxResults, NextToken)
+list_fargate_profiles(Client, ClusterName)
   when is_map(Client) ->
-    list_fargate_profiles(Client, ClusterName, MaxResults, NextToken, []).
-list_fargate_profiles(Client, ClusterName, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_fargate_profiles(Client, ClusterName, #{}, #{}).
+
+list_fargate_profiles(Client, ClusterName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_fargate_profiles(Client, ClusterName, QueryMap, HeadersMap, []).
+
+list_fargate_profiles(Client, ClusterName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/fargate-profiles"],
     SuccessStatusCode = undefined,
 
@@ -569,19 +627,24 @@ list_fargate_profiles(Client, ClusterName, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc A list of identity provider configurations.
-list_identity_provider_configs(Client, ClusterName, MaxResults, NextToken)
+list_identity_provider_configs(Client, ClusterName)
   when is_map(Client) ->
-    list_identity_provider_configs(Client, ClusterName, MaxResults, NextToken, []).
-list_identity_provider_configs(Client, ClusterName, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_identity_provider_configs(Client, ClusterName, #{}, #{}).
+
+list_identity_provider_configs(Client, ClusterName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_identity_provider_configs(Client, ClusterName, QueryMap, HeadersMap, []).
+
+list_identity_provider_configs(Client, ClusterName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/identity-provider-configs"],
     SuccessStatusCode = undefined,
 
@@ -589,8 +652,8 @@ list_identity_provider_configs(Client, ClusterName, MaxResults, NextToken, Optio
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -600,11 +663,16 @@ list_identity_provider_configs(Client, ClusterName, MaxResults, NextToken, Optio
 %% specified cluster in your AWS account in the specified Region.
 %%
 %% Self-managed node groups are not listed.
-list_nodegroups(Client, ClusterName, MaxResults, NextToken)
+list_nodegroups(Client, ClusterName)
   when is_map(Client) ->
-    list_nodegroups(Client, ClusterName, MaxResults, NextToken, []).
-list_nodegroups(Client, ClusterName, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_nodegroups(Client, ClusterName, #{}, #{}).
+
+list_nodegroups(Client, ClusterName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_nodegroups(Client, ClusterName, QueryMap, HeadersMap, []).
+
+list_nodegroups(Client, ClusterName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/node-groups"],
     SuccessStatusCode = undefined,
 
@@ -612,8 +680,8 @@ list_nodegroups(Client, ClusterName, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -622,9 +690,14 @@ list_nodegroups(Client, ClusterName, MaxResults, NextToken, Options)
 %% @doc List the tags for an Amazon EKS resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
@@ -636,11 +709,16 @@ list_tags_for_resource(Client, ResourceArn, Options)
 
 %% @doc Lists the updates associated with an Amazon EKS cluster or managed
 %% node group in your AWS account, in the specified Region.
-list_updates(Client, Name, AddonName, MaxResults, NextToken, NodegroupName)
+list_updates(Client, Name)
   when is_map(Client) ->
-    list_updates(Client, Name, AddonName, MaxResults, NextToken, NodegroupName, []).
-list_updates(Client, Name, AddonName, MaxResults, NextToken, NodegroupName, Options)
-  when is_map(Client), is_list(Options) ->
+    list_updates(Client, Name, #{}, #{}).
+
+list_updates(Client, Name, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_updates(Client, Name, QueryMap, HeadersMap, []).
+
+list_updates(Client, Name, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/clusters/", aws_util:encode_uri(Name), "/updates"],
     SuccessStatusCode = undefined,
 
@@ -648,10 +726,10 @@ list_updates(Client, Name, AddonName, MaxResults, NextToken, NodegroupName, Opti
 
     Query0_ =
       [
-        {<<"addonName">>, AddonName},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"nodegroupName">>, NodegroupName}
+        {<<"addonName">>, maps:get(<<"addonName">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"nodegroupName">>, maps:get(<<"nodegroupName">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

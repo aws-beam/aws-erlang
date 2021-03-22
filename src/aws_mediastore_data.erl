@@ -12,10 +12,12 @@
          delete_object/4,
          describe_object/3,
          describe_object/4,
-         get_object/3,
+         get_object/2,
          get_object/4,
+         get_object/5,
+         list_items/1,
+         list_items/3,
          list_items/4,
-         list_items/5,
          put_object/3,
          put_object/4]).
 
@@ -81,17 +83,22 @@ describe_object(Client, Path, Input0, Options) ->
 %%
 %% If the object’s upload availability is set to `streaming', AWS Elemental
 %% MediaStore downloads the object even if it’s still uploading the object.
-get_object(Client, Path, Range)
+get_object(Client, Path)
   when is_map(Client) ->
-    get_object(Client, Path, Range, []).
-get_object(Client, Path, Range, Options)
-  when is_map(Client), is_list(Options) ->
+    get_object(Client, Path, #{}, #{}).
+
+get_object(Client, Path, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_object(Client, Path, QueryMap, HeadersMap, []).
+
+get_object(Client, Path, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_multi_segment_uri(Path), ""],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
-        {<<"Range">>, Range}
+        {<<"Range">>, maps:get(<<"Range">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
@@ -122,11 +129,16 @@ get_object(Client, Path, Range, Options)
 
 %% @doc Provides a list of metadata entries about folders and objects in the
 %% specified folder.
-list_items(Client, MaxResults, NextToken, Path)
+list_items(Client)
   when is_map(Client) ->
-    list_items(Client, MaxResults, NextToken, Path, []).
-list_items(Client, MaxResults, NextToken, Path, Options)
-  when is_map(Client), is_list(Options) ->
+    list_items(Client, #{}, #{}).
+
+list_items(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_items(Client, QueryMap, HeadersMap, []).
+
+list_items(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/"],
     SuccessStatusCode = undefined,
 
@@ -134,9 +146,9 @@ list_items(Client, MaxResults, NextToken, Path, Options)
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken},
-        {<<"Path">>, Path}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"Path">>, maps:get(<<"Path">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

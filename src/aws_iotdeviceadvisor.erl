@@ -19,20 +19,27 @@
          create_suite_definition/3,
          delete_suite_definition/3,
          delete_suite_definition/4,
-         get_suite_definition/3,
+         get_suite_definition/2,
          get_suite_definition/4,
+         get_suite_definition/5,
          get_suite_run/3,
-         get_suite_run/4,
+         get_suite_run/5,
+         get_suite_run/6,
          get_suite_run_report/3,
-         get_suite_run_report/4,
+         get_suite_run_report/5,
+         get_suite_run_report/6,
+         list_suite_definitions/1,
          list_suite_definitions/3,
          list_suite_definitions/4,
-         list_suite_runs/5,
-         list_suite_runs/6,
+         list_suite_runs/1,
+         list_suite_runs/3,
+         list_suite_runs/4,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
+         list_test_cases/1,
+         list_test_cases/3,
          list_test_cases/4,
-         list_test_cases/5,
          start_suite_run/3,
          start_suite_run/4,
          tag_resource/3,
@@ -81,11 +88,16 @@ delete_suite_definition(Client, SuiteDefinitionId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets information about a Device Advisor test suite.
-get_suite_definition(Client, SuiteDefinitionId, SuiteDefinitionVersion)
+get_suite_definition(Client, SuiteDefinitionId)
   when is_map(Client) ->
-    get_suite_definition(Client, SuiteDefinitionId, SuiteDefinitionVersion, []).
-get_suite_definition(Client, SuiteDefinitionId, SuiteDefinitionVersion, Options)
-  when is_map(Client), is_list(Options) ->
+    get_suite_definition(Client, SuiteDefinitionId, #{}, #{}).
+
+get_suite_definition(Client, SuiteDefinitionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_suite_definition(Client, SuiteDefinitionId, QueryMap, HeadersMap, []).
+
+get_suite_definition(Client, SuiteDefinitionId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/suiteDefinitions/", aws_util:encode_uri(SuiteDefinitionId), ""],
     SuccessStatusCode = undefined,
 
@@ -93,7 +105,7 @@ get_suite_definition(Client, SuiteDefinitionId, SuiteDefinitionVersion, Options)
 
     Query0_ =
       [
-        {<<"suiteDefinitionVersion">>, SuiteDefinitionVersion}
+        {<<"suiteDefinitionVersion">>, maps:get(<<"suiteDefinitionVersion">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -102,9 +114,14 @@ get_suite_definition(Client, SuiteDefinitionId, SuiteDefinitionVersion, Options)
 %% @doc Gets information about a Device Advisor test suite run.
 get_suite_run(Client, SuiteDefinitionId, SuiteRunId)
   when is_map(Client) ->
-    get_suite_run(Client, SuiteDefinitionId, SuiteRunId, []).
-get_suite_run(Client, SuiteDefinitionId, SuiteRunId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_suite_run(Client, SuiteDefinitionId, SuiteRunId, #{}, #{}).
+
+get_suite_run(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_suite_run(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap, []).
+
+get_suite_run(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/suiteDefinitions/", aws_util:encode_uri(SuiteDefinitionId), "/suiteRuns/", aws_util:encode_uri(SuiteRunId), ""],
     SuccessStatusCode = undefined,
 
@@ -118,9 +135,14 @@ get_suite_run(Client, SuiteDefinitionId, SuiteRunId, Options)
 %% qualifying test suite run.
 get_suite_run_report(Client, SuiteDefinitionId, SuiteRunId)
   when is_map(Client) ->
-    get_suite_run_report(Client, SuiteDefinitionId, SuiteRunId, []).
-get_suite_run_report(Client, SuiteDefinitionId, SuiteRunId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_suite_run_report(Client, SuiteDefinitionId, SuiteRunId, #{}, #{}).
+
+get_suite_run_report(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_suite_run_report(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap, []).
+
+get_suite_run_report(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/suiteDefinitions/", aws_util:encode_uri(SuiteDefinitionId), "/suiteRuns/", aws_util:encode_uri(SuiteRunId), "/report"],
     SuccessStatusCode = undefined,
 
@@ -131,11 +153,16 @@ get_suite_run_report(Client, SuiteDefinitionId, SuiteRunId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the Device Advisor test suites you have created.
-list_suite_definitions(Client, MaxResults, NextToken)
+list_suite_definitions(Client)
   when is_map(Client) ->
-    list_suite_definitions(Client, MaxResults, NextToken, []).
-list_suite_definitions(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_suite_definitions(Client, #{}, #{}).
+
+list_suite_definitions(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_suite_definitions(Client, QueryMap, HeadersMap, []).
+
+list_suite_definitions(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/suiteDefinitions"],
     SuccessStatusCode = undefined,
 
@@ -143,8 +170,8 @@ list_suite_definitions(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -154,11 +181,16 @@ list_suite_definitions(Client, MaxResults, NextToken, Options)
 %%
 %% You can list all runs of the test suite, or the runs of a specific version
 %% of the test suite.
-list_suite_runs(Client, MaxResults, NextToken, SuiteDefinitionId, SuiteDefinitionVersion)
+list_suite_runs(Client)
   when is_map(Client) ->
-    list_suite_runs(Client, MaxResults, NextToken, SuiteDefinitionId, SuiteDefinitionVersion, []).
-list_suite_runs(Client, MaxResults, NextToken, SuiteDefinitionId, SuiteDefinitionVersion, Options)
-  when is_map(Client), is_list(Options) ->
+    list_suite_runs(Client, #{}, #{}).
+
+list_suite_runs(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_suite_runs(Client, QueryMap, HeadersMap, []).
+
+list_suite_runs(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/suiteRuns"],
     SuccessStatusCode = undefined,
 
@@ -166,10 +198,10 @@ list_suite_runs(Client, MaxResults, NextToken, SuiteDefinitionId, SuiteDefinitio
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"suiteDefinitionId">>, SuiteDefinitionId},
-        {<<"suiteDefinitionVersion">>, SuiteDefinitionVersion}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"suiteDefinitionId">>, maps:get(<<"suiteDefinitionId">>, QueryMap, undefined)},
+        {<<"suiteDefinitionVersion">>, maps:get(<<"suiteDefinitionVersion">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -178,9 +210,14 @@ list_suite_runs(Client, MaxResults, NextToken, SuiteDefinitionId, SuiteDefinitio
 %% @doc Lists the tags attached to an IoT Device Advisor resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
@@ -191,11 +228,16 @@ list_tags_for_resource(Client, ResourceArn, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all the test cases in the test suite.
-list_test_cases(Client, IntendedForQualification, MaxResults, NextToken)
+list_test_cases(Client)
   when is_map(Client) ->
-    list_test_cases(Client, IntendedForQualification, MaxResults, NextToken, []).
-list_test_cases(Client, IntendedForQualification, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_test_cases(Client, #{}, #{}).
+
+list_test_cases(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_test_cases(Client, QueryMap, HeadersMap, []).
+
+list_test_cases(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/testCases"],
     SuccessStatusCode = undefined,
 
@@ -203,9 +245,9 @@ list_test_cases(Client, IntendedForQualification, MaxResults, NextToken, Options
 
     Query0_ =
       [
-        {<<"intendedForQualification">>, IntendedForQualification},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"intendedForQualification">>, maps:get(<<"intendedForQualification">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

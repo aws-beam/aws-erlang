@@ -19,23 +19,32 @@
          delete_revision/4,
          delete_revision/5,
          get_asset/4,
-         get_asset/5,
+         get_asset/6,
+         get_asset/7,
          get_data_set/2,
-         get_data_set/3,
+         get_data_set/4,
+         get_data_set/5,
          get_job/2,
-         get_job/3,
+         get_job/4,
+         get_job/5,
          get_revision/3,
-         get_revision/4,
+         get_revision/5,
+         get_revision/6,
+         list_data_set_revisions/2,
          list_data_set_revisions/4,
          list_data_set_revisions/5,
+         list_data_sets/1,
+         list_data_sets/3,
          list_data_sets/4,
-         list_data_sets/5,
-         list_jobs/5,
-         list_jobs/6,
+         list_jobs/1,
+         list_jobs/3,
+         list_jobs/4,
+         list_revision_assets/3,
          list_revision_assets/5,
          list_revision_assets/6,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          start_job/3,
          start_job/4,
          tag_resource/3,
@@ -172,9 +181,14 @@ delete_revision(Client, DataSetId, RevisionId, Input0, Options) ->
 %% @doc This operation returns information about an asset.
 get_asset(Client, AssetId, DataSetId, RevisionId)
   when is_map(Client) ->
-    get_asset(Client, AssetId, DataSetId, RevisionId, []).
-get_asset(Client, AssetId, DataSetId, RevisionId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_asset(Client, AssetId, DataSetId, RevisionId, #{}, #{}).
+
+get_asset(Client, AssetId, DataSetId, RevisionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_asset(Client, AssetId, DataSetId, RevisionId, QueryMap, HeadersMap, []).
+
+get_asset(Client, AssetId, DataSetId, RevisionId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), "/revisions/", aws_util:encode_uri(RevisionId), "/assets/", aws_util:encode_uri(AssetId), ""],
     SuccessStatusCode = 200,
 
@@ -187,9 +201,14 @@ get_asset(Client, AssetId, DataSetId, RevisionId, Options)
 %% @doc This operation returns information about a data set.
 get_data_set(Client, DataSetId)
   when is_map(Client) ->
-    get_data_set(Client, DataSetId, []).
-get_data_set(Client, DataSetId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_data_set(Client, DataSetId, #{}, #{}).
+
+get_data_set(Client, DataSetId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_data_set(Client, DataSetId, QueryMap, HeadersMap, []).
+
+get_data_set(Client, DataSetId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), ""],
     SuccessStatusCode = 200,
 
@@ -202,9 +221,14 @@ get_data_set(Client, DataSetId, Options)
 %% @doc This operation returns information about a job.
 get_job(Client, JobId)
   when is_map(Client) ->
-    get_job(Client, JobId, []).
-get_job(Client, JobId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_job(Client, JobId, #{}, #{}).
+
+get_job(Client, JobId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_job(Client, JobId, QueryMap, HeadersMap, []).
+
+get_job(Client, JobId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = 200,
 
@@ -217,9 +241,14 @@ get_job(Client, JobId, Options)
 %% @doc This operation returns information about a revision.
 get_revision(Client, DataSetId, RevisionId)
   when is_map(Client) ->
-    get_revision(Client, DataSetId, RevisionId, []).
-get_revision(Client, DataSetId, RevisionId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_revision(Client, DataSetId, RevisionId, #{}, #{}).
+
+get_revision(Client, DataSetId, RevisionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_revision(Client, DataSetId, RevisionId, QueryMap, HeadersMap, []).
+
+get_revision(Client, DataSetId, RevisionId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), "/revisions/", aws_util:encode_uri(RevisionId), ""],
     SuccessStatusCode = 200,
 
@@ -231,11 +260,16 @@ get_revision(Client, DataSetId, RevisionId, Options)
 
 %% @doc This operation lists a data set's revisions sorted by CreatedAt in
 %% descending order.
-list_data_set_revisions(Client, DataSetId, MaxResults, NextToken)
+list_data_set_revisions(Client, DataSetId)
   when is_map(Client) ->
-    list_data_set_revisions(Client, DataSetId, MaxResults, NextToken, []).
-list_data_set_revisions(Client, DataSetId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_data_set_revisions(Client, DataSetId, #{}, #{}).
+
+list_data_set_revisions(Client, DataSetId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_data_set_revisions(Client, DataSetId, QueryMap, HeadersMap, []).
+
+list_data_set_revisions(Client, DataSetId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), "/revisions"],
     SuccessStatusCode = 200,
 
@@ -243,8 +277,8 @@ list_data_set_revisions(Client, DataSetId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -255,11 +289,16 @@ list_data_set_revisions(Client, DataSetId, MaxResults, NextToken, Options)
 %% When listing by origin OWNED, results are sorted by CreatedAt in
 %% descending order. When listing by origin ENTITLED, there is no order and
 %% the maxResults parameter is ignored.
-list_data_sets(Client, MaxResults, NextToken, Origin)
+list_data_sets(Client)
   when is_map(Client) ->
-    list_data_sets(Client, MaxResults, NextToken, Origin, []).
-list_data_sets(Client, MaxResults, NextToken, Origin, Options)
-  when is_map(Client), is_list(Options) ->
+    list_data_sets(Client, #{}, #{}).
+
+list_data_sets(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_data_sets(Client, QueryMap, HeadersMap, []).
+
+list_data_sets(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/data-sets"],
     SuccessStatusCode = 200,
 
@@ -267,9 +306,9 @@ list_data_sets(Client, MaxResults, NextToken, Origin, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"origin">>, Origin}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"origin">>, maps:get(<<"origin">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -277,11 +316,16 @@ list_data_sets(Client, MaxResults, NextToken, Origin, Options)
 
 %% @doc This operation lists your jobs sorted by CreatedAt in descending
 %% order.
-list_jobs(Client, DataSetId, MaxResults, NextToken, RevisionId)
+list_jobs(Client)
   when is_map(Client) ->
-    list_jobs(Client, DataSetId, MaxResults, NextToken, RevisionId, []).
-list_jobs(Client, DataSetId, MaxResults, NextToken, RevisionId, Options)
-  when is_map(Client), is_list(Options) ->
+    list_jobs(Client, #{}, #{}).
+
+list_jobs(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_jobs(Client, QueryMap, HeadersMap, []).
+
+list_jobs(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/jobs"],
     SuccessStatusCode = 200,
 
@@ -289,10 +333,10 @@ list_jobs(Client, DataSetId, MaxResults, NextToken, RevisionId, Options)
 
     Query0_ =
       [
-        {<<"dataSetId">>, DataSetId},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"revisionId">>, RevisionId}
+        {<<"dataSetId">>, maps:get(<<"dataSetId">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"revisionId">>, maps:get(<<"revisionId">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -300,11 +344,16 @@ list_jobs(Client, DataSetId, MaxResults, NextToken, RevisionId, Options)
 
 %% @doc This operation lists a revision's assets sorted alphabetically in
 %% descending order.
-list_revision_assets(Client, DataSetId, RevisionId, MaxResults, NextToken)
+list_revision_assets(Client, DataSetId, RevisionId)
   when is_map(Client) ->
-    list_revision_assets(Client, DataSetId, RevisionId, MaxResults, NextToken, []).
-list_revision_assets(Client, DataSetId, RevisionId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_revision_assets(Client, DataSetId, RevisionId, #{}, #{}).
+
+list_revision_assets(Client, DataSetId, RevisionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_revision_assets(Client, DataSetId, RevisionId, QueryMap, HeadersMap, []).
+
+list_revision_assets(Client, DataSetId, RevisionId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), "/revisions/", aws_util:encode_uri(RevisionId), "/assets"],
     SuccessStatusCode = 200,
 
@@ -312,8 +361,8 @@ list_revision_assets(Client, DataSetId, RevisionId, MaxResults, NextToken, Optio
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -322,9 +371,14 @@ list_revision_assets(Client, DataSetId, RevisionId, MaxResults, NextToken, Optio
 %% @doc This operation lists the tags on the resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 

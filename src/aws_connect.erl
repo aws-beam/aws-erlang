@@ -65,27 +65,38 @@
          delete_user_hierarchy_group/4,
          delete_user_hierarchy_group/5,
          describe_contact_flow/3,
-         describe_contact_flow/4,
+         describe_contact_flow/5,
+         describe_contact_flow/6,
          describe_hours_of_operation/3,
-         describe_hours_of_operation/4,
+         describe_hours_of_operation/5,
+         describe_hours_of_operation/6,
          describe_instance/2,
-         describe_instance/3,
+         describe_instance/4,
+         describe_instance/5,
          describe_instance_attribute/3,
-         describe_instance_attribute/4,
+         describe_instance_attribute/5,
+         describe_instance_attribute/6,
          describe_instance_storage_config/4,
-         describe_instance_storage_config/5,
+         describe_instance_storage_config/6,
+         describe_instance_storage_config/7,
          describe_queue/3,
-         describe_queue/4,
+         describe_queue/5,
+         describe_queue/6,
          describe_quick_connect/3,
-         describe_quick_connect/4,
+         describe_quick_connect/5,
+         describe_quick_connect/6,
          describe_routing_profile/3,
-         describe_routing_profile/4,
+         describe_routing_profile/5,
+         describe_routing_profile/6,
          describe_user/3,
-         describe_user/4,
+         describe_user/5,
+         describe_user/6,
          describe_user_hierarchy_group/3,
-         describe_user_hierarchy_group/4,
+         describe_user_hierarchy_group/5,
+         describe_user_hierarchy_group/6,
          describe_user_hierarchy_structure/2,
-         describe_user_hierarchy_structure/3,
+         describe_user_hierarchy_structure/4,
+         describe_user_hierarchy_structure/5,
          disassociate_approved_origin/3,
          disassociate_approved_origin/4,
          disassociate_instance_storage_config/4,
@@ -101,55 +112,79 @@
          disassociate_security_key/4,
          disassociate_security_key/5,
          get_contact_attributes/3,
-         get_contact_attributes/4,
+         get_contact_attributes/5,
+         get_contact_attributes/6,
          get_current_metric_data/3,
          get_current_metric_data/4,
          get_federation_token/2,
-         get_federation_token/3,
+         get_federation_token/4,
+         get_federation_token/5,
          get_metric_data/3,
          get_metric_data/4,
+         list_approved_origins/2,
          list_approved_origins/4,
          list_approved_origins/5,
+         list_contact_flows/2,
+         list_contact_flows/4,
          list_contact_flows/5,
-         list_contact_flows/6,
+         list_hours_of_operations/2,
          list_hours_of_operations/4,
          list_hours_of_operations/5,
+         list_instance_attributes/2,
          list_instance_attributes/4,
          list_instance_attributes/5,
+         list_instance_storage_configs/3,
          list_instance_storage_configs/5,
          list_instance_storage_configs/6,
+         list_instances/1,
          list_instances/3,
          list_instances/4,
+         list_integration_associations/2,
          list_integration_associations/4,
          list_integration_associations/5,
+         list_lambda_functions/2,
          list_lambda_functions/4,
          list_lambda_functions/5,
+         list_lex_bots/2,
          list_lex_bots/4,
          list_lex_bots/5,
-         list_phone_numbers/6,
-         list_phone_numbers/7,
+         list_phone_numbers/2,
+         list_phone_numbers/4,
+         list_phone_numbers/5,
+         list_prompts/2,
          list_prompts/4,
          list_prompts/5,
+         list_queue_quick_connects/3,
          list_queue_quick_connects/5,
          list_queue_quick_connects/6,
+         list_queues/2,
+         list_queues/4,
          list_queues/5,
-         list_queues/6,
+         list_quick_connects/2,
+         list_quick_connects/4,
          list_quick_connects/5,
-         list_quick_connects/6,
+         list_routing_profile_queues/3,
          list_routing_profile_queues/5,
          list_routing_profile_queues/6,
+         list_routing_profiles/2,
          list_routing_profiles/4,
          list_routing_profiles/5,
+         list_security_keys/2,
          list_security_keys/4,
          list_security_keys/5,
+         list_security_profiles/2,
          list_security_profiles/4,
          list_security_profiles/5,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
+         list_use_cases/3,
          list_use_cases/5,
          list_use_cases/6,
+         list_user_hierarchy_groups/2,
          list_user_hierarchy_groups/4,
          list_user_hierarchy_groups/5,
+         list_users/2,
          list_users/4,
          list_users/5,
          resume_contact_recording/2,
@@ -654,9 +689,14 @@ delete_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, Input0, Option
 %% language.
 describe_contact_flow(Client, ContactFlowId, InstanceId)
   when is_map(Client) ->
-    describe_contact_flow(Client, ContactFlowId, InstanceId, []).
-describe_contact_flow(Client, ContactFlowId, InstanceId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_contact_flow(Client, ContactFlowId, InstanceId, #{}, #{}).
+
+describe_contact_flow(Client, ContactFlowId, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_contact_flow(Client, ContactFlowId, InstanceId, QueryMap, HeadersMap, []).
+
+describe_contact_flow(Client, ContactFlowId, InstanceId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowId), ""],
     SuccessStatusCode = undefined,
 
@@ -672,9 +712,14 @@ describe_contact_flow(Client, ContactFlowId, InstanceId, Options)
 %% Describes the hours of operation.
 describe_hours_of_operation(Client, HoursOfOperationId, InstanceId)
   when is_map(Client) ->
-    describe_hours_of_operation(Client, HoursOfOperationId, InstanceId, []).
-describe_hours_of_operation(Client, HoursOfOperationId, InstanceId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_hours_of_operation(Client, HoursOfOperationId, InstanceId, #{}, #{}).
+
+describe_hours_of_operation(Client, HoursOfOperationId, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_hours_of_operation(Client, HoursOfOperationId, InstanceId, QueryMap, HeadersMap, []).
+
+describe_hours_of_operation(Client, HoursOfOperationId, InstanceId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/hours-of-operations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(HoursOfOperationId), ""],
     SuccessStatusCode = undefined,
 
@@ -697,9 +742,14 @@ describe_hours_of_operation(Client, HoursOfOperationId, InstanceId, Options)
 %% invoked.
 describe_instance(Client, InstanceId)
   when is_map(Client) ->
-    describe_instance(Client, InstanceId, []).
-describe_instance(Client, InstanceId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_instance(Client, InstanceId, #{}, #{}).
+
+describe_instance(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_instance(Client, InstanceId, QueryMap, HeadersMap, []).
+
+describe_instance(Client, InstanceId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
 
@@ -715,9 +765,14 @@ describe_instance(Client, InstanceId, Options)
 %% Describes the specified instance attribute.
 describe_instance_attribute(Client, AttributeType, InstanceId)
   when is_map(Client) ->
-    describe_instance_attribute(Client, AttributeType, InstanceId, []).
-describe_instance_attribute(Client, AttributeType, InstanceId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_instance_attribute(Client, AttributeType, InstanceId, #{}, #{}).
+
+describe_instance_attribute(Client, AttributeType, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_instance_attribute(Client, AttributeType, InstanceId, QueryMap, HeadersMap, []).
+
+describe_instance_attribute(Client, AttributeType, InstanceId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/attribute/", aws_util:encode_uri(AttributeType), ""],
     SuccessStatusCode = undefined,
 
@@ -734,9 +789,14 @@ describe_instance_attribute(Client, AttributeType, InstanceId, Options)
 %% type, association ID, and instance ID.
 describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType)
   when is_map(Client) ->
-    describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType, []).
-describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType, #{}, #{}).
+
+describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType, QueryMap, HeadersMap, []).
+
+describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/storage-config/", aws_util:encode_uri(AssociationId), ""],
     SuccessStatusCode = undefined,
 
@@ -756,9 +816,14 @@ describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType
 %% Describes the specified queue.
 describe_queue(Client, InstanceId, QueueId)
   when is_map(Client) ->
-    describe_queue(Client, InstanceId, QueueId, []).
-describe_queue(Client, InstanceId, QueueId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_queue(Client, InstanceId, QueueId, #{}, #{}).
+
+describe_queue(Client, InstanceId, QueueId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_queue(Client, InstanceId, QueueId, QueryMap, HeadersMap, []).
+
+describe_queue(Client, InstanceId, QueueId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), ""],
     SuccessStatusCode = undefined,
 
@@ -774,9 +839,14 @@ describe_queue(Client, InstanceId, QueueId, Options)
 %% Describes the quick connect.
 describe_quick_connect(Client, InstanceId, QuickConnectId)
   when is_map(Client) ->
-    describe_quick_connect(Client, InstanceId, QuickConnectId, []).
-describe_quick_connect(Client, InstanceId, QuickConnectId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_quick_connect(Client, InstanceId, QuickConnectId, #{}, #{}).
+
+describe_quick_connect(Client, InstanceId, QuickConnectId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_quick_connect(Client, InstanceId, QuickConnectId, QueryMap, HeadersMap, []).
+
+describe_quick_connect(Client, InstanceId, QuickConnectId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/quick-connects/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QuickConnectId), ""],
     SuccessStatusCode = undefined,
 
@@ -789,9 +859,14 @@ describe_quick_connect(Client, InstanceId, QuickConnectId, Options)
 %% @doc Describes the specified routing profile.
 describe_routing_profile(Client, InstanceId, RoutingProfileId)
   when is_map(Client) ->
-    describe_routing_profile(Client, InstanceId, RoutingProfileId, []).
-describe_routing_profile(Client, InstanceId, RoutingProfileId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_routing_profile(Client, InstanceId, RoutingProfileId, #{}, #{}).
+
+describe_routing_profile(Client, InstanceId, RoutingProfileId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_routing_profile(Client, InstanceId, RoutingProfileId, QueryMap, HeadersMap, []).
+
+describe_routing_profile(Client, InstanceId, RoutingProfileId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), ""],
     SuccessStatusCode = undefined,
 
@@ -808,9 +883,14 @@ describe_routing_profile(Client, InstanceId, RoutingProfileId, Options)
 %% and note the IDs provided in the output.
 describe_user(Client, InstanceId, UserId)
   when is_map(Client) ->
-    describe_user(Client, InstanceId, UserId, []).
-describe_user(Client, InstanceId, UserId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_user(Client, InstanceId, UserId, #{}, #{}).
+
+describe_user(Client, InstanceId, UserId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_user(Client, InstanceId, UserId, QueryMap, HeadersMap, []).
+
+describe_user(Client, InstanceId, UserId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), ""],
     SuccessStatusCode = undefined,
 
@@ -823,9 +903,14 @@ describe_user(Client, InstanceId, UserId, Options)
 %% @doc Describes the specified hierarchy group.
 describe_user_hierarchy_group(Client, HierarchyGroupId, InstanceId)
   when is_map(Client) ->
-    describe_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, []).
-describe_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, #{}, #{}).
+
+describe_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, QueryMap, HeadersMap, []).
+
+describe_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/user-hierarchy-groups/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(HierarchyGroupId), ""],
     SuccessStatusCode = undefined,
 
@@ -839,9 +924,14 @@ describe_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, Options)
 %% instance.
 describe_user_hierarchy_structure(Client, InstanceId)
   when is_map(Client) ->
-    describe_user_hierarchy_structure(Client, InstanceId, []).
-describe_user_hierarchy_structure(Client, InstanceId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_user_hierarchy_structure(Client, InstanceId, #{}, #{}).
+
+describe_user_hierarchy_structure(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_user_hierarchy_structure(Client, InstanceId, QueryMap, HeadersMap, []).
+
+describe_user_hierarchy_structure(Client, InstanceId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/user-hierarchy-structure/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
 
@@ -992,9 +1082,14 @@ disassociate_security_key(Client, AssociationId, InstanceId, Input0, Options) ->
 %% @doc Retrieves the contact attributes for the specified contact.
 get_contact_attributes(Client, InitialContactId, InstanceId)
   when is_map(Client) ->
-    get_contact_attributes(Client, InitialContactId, InstanceId, []).
-get_contact_attributes(Client, InitialContactId, InstanceId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_contact_attributes(Client, InitialContactId, InstanceId, #{}, #{}).
+
+get_contact_attributes(Client, InitialContactId, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_contact_attributes(Client, InitialContactId, InstanceId, QueryMap, HeadersMap, []).
+
+get_contact_attributes(Client, InitialContactId, InstanceId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/contact/attributes/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(InitialContactId), ""],
     SuccessStatusCode = undefined,
 
@@ -1027,9 +1122,14 @@ get_current_metric_data(Client, InstanceId, Input0, Options) ->
 %% @doc Retrieves a token for federation.
 get_federation_token(Client, InstanceId)
   when is_map(Client) ->
-    get_federation_token(Client, InstanceId, []).
-get_federation_token(Client, InstanceId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_federation_token(Client, InstanceId, #{}, #{}).
+
+get_federation_token(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_federation_token(Client, InstanceId, QueryMap, HeadersMap, []).
+
+get_federation_token(Client, InstanceId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/user/federate/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
 
@@ -1064,11 +1164,16 @@ get_metric_data(Client, InstanceId, Input0, Options) ->
 %%
 %% Returns a paginated list of all approved origins associated with the
 %% instance.
-list_approved_origins(Client, InstanceId, MaxResults, NextToken)
+list_approved_origins(Client, InstanceId)
   when is_map(Client) ->
-    list_approved_origins(Client, InstanceId, MaxResults, NextToken, []).
-list_approved_origins(Client, InstanceId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_approved_origins(Client, InstanceId, #{}, #{}).
+
+list_approved_origins(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_approved_origins(Client, InstanceId, QueryMap, HeadersMap, []).
+
+list_approved_origins(Client, InstanceId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/approved-origins"],
     SuccessStatusCode = undefined,
 
@@ -1076,8 +1181,8 @@ list_approved_origins(Client, InstanceId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1091,11 +1196,16 @@ list_approved_origins(Client, InstanceId, MaxResults, NextToken, Options)
 %%
 %% For more information about contact flows, see Contact Flows in the Amazon
 %% Connect Administrator Guide.
-list_contact_flows(Client, InstanceId, ContactFlowTypes, MaxResults, NextToken)
+list_contact_flows(Client, InstanceId)
   when is_map(Client) ->
-    list_contact_flows(Client, InstanceId, ContactFlowTypes, MaxResults, NextToken, []).
-list_contact_flows(Client, InstanceId, ContactFlowTypes, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_contact_flows(Client, InstanceId, #{}, #{}).
+
+list_contact_flows(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_contact_flows(Client, InstanceId, QueryMap, HeadersMap, []).
+
+list_contact_flows(Client, InstanceId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/contact-flows-summary/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
 
@@ -1103,9 +1213,9 @@ list_contact_flows(Client, InstanceId, ContactFlowTypes, MaxResults, NextToken, 
 
     Query0_ =
       [
-        {<<"contactFlowTypes">>, ContactFlowTypes},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"contactFlowTypes">>, maps:get(<<"contactFlowTypes">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1116,11 +1226,16 @@ list_contact_flows(Client, InstanceId, ContactFlowTypes, MaxResults, NextToken, 
 %%
 %% For more information about hours of operation, see Set the Hours of
 %% Operation for a Queue in the Amazon Connect Administrator Guide.
-list_hours_of_operations(Client, InstanceId, MaxResults, NextToken)
+list_hours_of_operations(Client, InstanceId)
   when is_map(Client) ->
-    list_hours_of_operations(Client, InstanceId, MaxResults, NextToken, []).
-list_hours_of_operations(Client, InstanceId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_hours_of_operations(Client, InstanceId, #{}, #{}).
+
+list_hours_of_operations(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_hours_of_operations(Client, InstanceId, QueryMap, HeadersMap, []).
+
+list_hours_of_operations(Client, InstanceId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/hours-of-operations-summary/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
 
@@ -1128,8 +1243,8 @@ list_hours_of_operations(Client, InstanceId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1139,11 +1254,16 @@ list_hours_of_operations(Client, InstanceId, MaxResults, NextToken, Options)
 %% change.
 %%
 %% Returns a paginated list of all attribute types for the given instance.
-list_instance_attributes(Client, InstanceId, MaxResults, NextToken)
+list_instance_attributes(Client, InstanceId)
   when is_map(Client) ->
-    list_instance_attributes(Client, InstanceId, MaxResults, NextToken, []).
-list_instance_attributes(Client, InstanceId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_instance_attributes(Client, InstanceId, #{}, #{}).
+
+list_instance_attributes(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_instance_attributes(Client, InstanceId, QueryMap, HeadersMap, []).
+
+list_instance_attributes(Client, InstanceId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/attributes"],
     SuccessStatusCode = undefined,
 
@@ -1151,8 +1271,8 @@ list_instance_attributes(Client, InstanceId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1163,11 +1283,16 @@ list_instance_attributes(Client, InstanceId, MaxResults, NextToken, Options)
 %%
 %% Returns a paginated list of storage configs for the identified instance
 %% and resource type.
-list_instance_storage_configs(Client, InstanceId, MaxResults, NextToken, ResourceType)
+list_instance_storage_configs(Client, InstanceId, ResourceType)
   when is_map(Client) ->
-    list_instance_storage_configs(Client, InstanceId, MaxResults, NextToken, ResourceType, []).
-list_instance_storage_configs(Client, InstanceId, MaxResults, NextToken, ResourceType, Options)
-  when is_map(Client), is_list(Options) ->
+    list_instance_storage_configs(Client, InstanceId, ResourceType, #{}, #{}).
+
+list_instance_storage_configs(Client, InstanceId, ResourceType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_instance_storage_configs(Client, InstanceId, ResourceType, QueryMap, HeadersMap, []).
+
+list_instance_storage_configs(Client, InstanceId, ResourceType, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/storage-configs"],
     SuccessStatusCode = undefined,
 
@@ -1175,8 +1300,8 @@ list_instance_storage_configs(Client, InstanceId, MaxResults, NextToken, Resourc
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"resourceType">>, ResourceType}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
@@ -1190,11 +1315,16 @@ list_instance_storage_configs(Client, InstanceId, MaxResults, NextToken, Resourc
 %% state, and failed state. Instances that aren't successfully created (they
 %% are in a failed state) are returned only for 24 hours after the
 %% CreateInstance API was invoked.
-list_instances(Client, MaxResults, NextToken)
+list_instances(Client)
   when is_map(Client) ->
-    list_instances(Client, MaxResults, NextToken, []).
-list_instances(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_instances(Client, #{}, #{}).
+
+list_instances(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_instances(Client, QueryMap, HeadersMap, []).
+
+list_instances(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/instance"],
     SuccessStatusCode = undefined,
 
@@ -1202,8 +1332,8 @@ list_instances(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1214,11 +1344,16 @@ list_instances(Client, MaxResults, NextToken, Options)
 %%
 %% Provides summary information about the AppIntegration associations for the
 %% specified Amazon Connect instance.
-list_integration_associations(Client, InstanceId, MaxResults, NextToken)
+list_integration_associations(Client, InstanceId)
   when is_map(Client) ->
-    list_integration_associations(Client, InstanceId, MaxResults, NextToken, []).
-list_integration_associations(Client, InstanceId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_integration_associations(Client, InstanceId, #{}, #{}).
+
+list_integration_associations(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_integration_associations(Client, InstanceId, QueryMap, HeadersMap, []).
+
+list_integration_associations(Client, InstanceId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/integration-associations"],
     SuccessStatusCode = undefined,
 
@@ -1226,8 +1361,8 @@ list_integration_associations(Client, InstanceId, MaxResults, NextToken, Options
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1238,11 +1373,16 @@ list_integration_associations(Client, InstanceId, MaxResults, NextToken, Options
 %%
 %% Returns a paginated list of all Lambda functions that display in the
 %% dropdown options in the relevant contact flow blocks.
-list_lambda_functions(Client, InstanceId, MaxResults, NextToken)
+list_lambda_functions(Client, InstanceId)
   when is_map(Client) ->
-    list_lambda_functions(Client, InstanceId, MaxResults, NextToken, []).
-list_lambda_functions(Client, InstanceId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_lambda_functions(Client, InstanceId, #{}, #{}).
+
+list_lambda_functions(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_lambda_functions(Client, InstanceId, QueryMap, HeadersMap, []).
+
+list_lambda_functions(Client, InstanceId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/lambda-functions"],
     SuccessStatusCode = undefined,
 
@@ -1250,8 +1390,8 @@ list_lambda_functions(Client, InstanceId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1262,11 +1402,16 @@ list_lambda_functions(Client, InstanceId, MaxResults, NextToken, Options)
 %%
 %% Returns a paginated list of all the Amazon Lex bots currently associated
 %% with the instance.
-list_lex_bots(Client, InstanceId, MaxResults, NextToken)
+list_lex_bots(Client, InstanceId)
   when is_map(Client) ->
-    list_lex_bots(Client, InstanceId, MaxResults, NextToken, []).
-list_lex_bots(Client, InstanceId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_lex_bots(Client, InstanceId, #{}, #{}).
+
+list_lex_bots(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_lex_bots(Client, InstanceId, QueryMap, HeadersMap, []).
+
+list_lex_bots(Client, InstanceId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/lex-bots"],
     SuccessStatusCode = undefined,
 
@@ -1274,8 +1419,8 @@ list_lex_bots(Client, InstanceId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1286,11 +1431,16 @@ list_lex_bots(Client, InstanceId, MaxResults, NextToken, Options)
 %%
 %% For more information about phone numbers, see Set Up Phone Numbers for
 %% Your Contact Center in the Amazon Connect Administrator Guide.
-list_phone_numbers(Client, InstanceId, MaxResults, NextToken, PhoneNumberCountryCodes, PhoneNumberTypes)
+list_phone_numbers(Client, InstanceId)
   when is_map(Client) ->
-    list_phone_numbers(Client, InstanceId, MaxResults, NextToken, PhoneNumberCountryCodes, PhoneNumberTypes, []).
-list_phone_numbers(Client, InstanceId, MaxResults, NextToken, PhoneNumberCountryCodes, PhoneNumberTypes, Options)
-  when is_map(Client), is_list(Options) ->
+    list_phone_numbers(Client, InstanceId, #{}, #{}).
+
+list_phone_numbers(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_phone_numbers(Client, InstanceId, QueryMap, HeadersMap, []).
+
+list_phone_numbers(Client, InstanceId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/phone-numbers-summary/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
 
@@ -1298,10 +1448,10 @@ list_phone_numbers(Client, InstanceId, MaxResults, NextToken, PhoneNumberCountry
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"phoneNumberCountryCodes">>, PhoneNumberCountryCodes},
-        {<<"phoneNumberTypes">>, PhoneNumberTypes}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"phoneNumberCountryCodes">>, maps:get(<<"phoneNumberCountryCodes">>, QueryMap, undefined)},
+        {<<"phoneNumberTypes">>, maps:get(<<"phoneNumberTypes">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1309,11 +1459,16 @@ list_phone_numbers(Client, InstanceId, MaxResults, NextToken, PhoneNumberCountry
 
 %% @doc Provides information about the prompts for the specified Amazon
 %% Connect instance.
-list_prompts(Client, InstanceId, MaxResults, NextToken)
+list_prompts(Client, InstanceId)
   when is_map(Client) ->
-    list_prompts(Client, InstanceId, MaxResults, NextToken, []).
-list_prompts(Client, InstanceId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_prompts(Client, InstanceId, #{}, #{}).
+
+list_prompts(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_prompts(Client, InstanceId, QueryMap, HeadersMap, []).
+
+list_prompts(Client, InstanceId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/prompts-summary/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
 
@@ -1321,8 +1476,8 @@ list_prompts(Client, InstanceId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1332,11 +1487,16 @@ list_prompts(Client, InstanceId, MaxResults, NextToken, Options)
 %% change.
 %%
 %% Lists the quick connects associated with a queue.
-list_queue_quick_connects(Client, InstanceId, QueueId, MaxResults, NextToken)
+list_queue_quick_connects(Client, InstanceId, QueueId)
   when is_map(Client) ->
-    list_queue_quick_connects(Client, InstanceId, QueueId, MaxResults, NextToken, []).
-list_queue_quick_connects(Client, InstanceId, QueueId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_queue_quick_connects(Client, InstanceId, QueueId, #{}, #{}).
+
+list_queue_quick_connects(Client, InstanceId, QueueId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_queue_quick_connects(Client, InstanceId, QueueId, QueryMap, HeadersMap, []).
+
+list_queue_quick_connects(Client, InstanceId, QueueId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/quick-connects"],
     SuccessStatusCode = undefined,
 
@@ -1344,8 +1504,8 @@ list_queue_quick_connects(Client, InstanceId, QueueId, MaxResults, NextToken, Op
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1356,11 +1516,16 @@ list_queue_quick_connects(Client, InstanceId, QueueId, MaxResults, NextToken, Op
 %%
 %% For more information about queues, see Queues: Standard and Agent in the
 %% Amazon Connect Administrator Guide.
-list_queues(Client, InstanceId, MaxResults, NextToken, QueueTypes)
+list_queues(Client, InstanceId)
   when is_map(Client) ->
-    list_queues(Client, InstanceId, MaxResults, NextToken, QueueTypes, []).
-list_queues(Client, InstanceId, MaxResults, NextToken, QueueTypes, Options)
-  when is_map(Client), is_list(Options) ->
+    list_queues(Client, InstanceId, #{}, #{}).
+
+list_queues(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_queues(Client, InstanceId, QueryMap, HeadersMap, []).
+
+list_queues(Client, InstanceId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/queues-summary/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
 
@@ -1368,9 +1533,9 @@ list_queues(Client, InstanceId, MaxResults, NextToken, QueueTypes, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"queueTypes">>, QueueTypes}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"queueTypes">>, maps:get(<<"queueTypes">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1381,11 +1546,16 @@ list_queues(Client, InstanceId, MaxResults, NextToken, QueueTypes, Options)
 %%
 %% Provides information about the quick connects for the specified Amazon
 %% Connect instance.
-list_quick_connects(Client, InstanceId, MaxResults, NextToken, QuickConnectTypes)
+list_quick_connects(Client, InstanceId)
   when is_map(Client) ->
-    list_quick_connects(Client, InstanceId, MaxResults, NextToken, QuickConnectTypes, []).
-list_quick_connects(Client, InstanceId, MaxResults, NextToken, QuickConnectTypes, Options)
-  when is_map(Client), is_list(Options) ->
+    list_quick_connects(Client, InstanceId, #{}, #{}).
+
+list_quick_connects(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_quick_connects(Client, InstanceId, QueryMap, HeadersMap, []).
+
+list_quick_connects(Client, InstanceId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/quick-connects/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
 
@@ -1393,20 +1563,25 @@ list_quick_connects(Client, InstanceId, MaxResults, NextToken, QuickConnectTypes
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"QuickConnectTypes">>, QuickConnectTypes}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"QuickConnectTypes">>, maps:get(<<"QuickConnectTypes">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the queues associated with a routing profile.
-list_routing_profile_queues(Client, InstanceId, RoutingProfileId, MaxResults, NextToken)
+list_routing_profile_queues(Client, InstanceId, RoutingProfileId)
   when is_map(Client) ->
-    list_routing_profile_queues(Client, InstanceId, RoutingProfileId, MaxResults, NextToken, []).
-list_routing_profile_queues(Client, InstanceId, RoutingProfileId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_routing_profile_queues(Client, InstanceId, RoutingProfileId, #{}, #{}).
+
+list_routing_profile_queues(Client, InstanceId, RoutingProfileId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_routing_profile_queues(Client, InstanceId, RoutingProfileId, QueryMap, HeadersMap, []).
+
+list_routing_profile_queues(Client, InstanceId, RoutingProfileId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/queues"],
     SuccessStatusCode = undefined,
 
@@ -1414,8 +1589,8 @@ list_routing_profile_queues(Client, InstanceId, RoutingProfileId, MaxResults, Ne
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1426,11 +1601,16 @@ list_routing_profile_queues(Client, InstanceId, RoutingProfileId, MaxResults, Ne
 %%
 %% For more information about routing profiles, see Routing Profiles and
 %% Create a Routing Profile in the Amazon Connect Administrator Guide.
-list_routing_profiles(Client, InstanceId, MaxResults, NextToken)
+list_routing_profiles(Client, InstanceId)
   when is_map(Client) ->
-    list_routing_profiles(Client, InstanceId, MaxResults, NextToken, []).
-list_routing_profiles(Client, InstanceId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_routing_profiles(Client, InstanceId, #{}, #{}).
+
+list_routing_profiles(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_routing_profiles(Client, InstanceId, QueryMap, HeadersMap, []).
+
+list_routing_profiles(Client, InstanceId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/routing-profiles-summary/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
 
@@ -1438,8 +1618,8 @@ list_routing_profiles(Client, InstanceId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1450,11 +1630,16 @@ list_routing_profiles(Client, InstanceId, MaxResults, NextToken, Options)
 %%
 %% Returns a paginated list of all security keys associated with the
 %% instance.
-list_security_keys(Client, InstanceId, MaxResults, NextToken)
+list_security_keys(Client, InstanceId)
   when is_map(Client) ->
-    list_security_keys(Client, InstanceId, MaxResults, NextToken, []).
-list_security_keys(Client, InstanceId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_security_keys(Client, InstanceId, #{}, #{}).
+
+list_security_keys(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_security_keys(Client, InstanceId, QueryMap, HeadersMap, []).
+
+list_security_keys(Client, InstanceId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/security-keys"],
     SuccessStatusCode = undefined,
 
@@ -1462,8 +1647,8 @@ list_security_keys(Client, InstanceId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1474,11 +1659,16 @@ list_security_keys(Client, InstanceId, MaxResults, NextToken, Options)
 %%
 %% For more information about security profiles, see Security Profiles in the
 %% Amazon Connect Administrator Guide.
-list_security_profiles(Client, InstanceId, MaxResults, NextToken)
+list_security_profiles(Client, InstanceId)
   when is_map(Client) ->
-    list_security_profiles(Client, InstanceId, MaxResults, NextToken, []).
-list_security_profiles(Client, InstanceId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_security_profiles(Client, InstanceId, #{}, #{}).
+
+list_security_profiles(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_security_profiles(Client, InstanceId, QueryMap, HeadersMap, []).
+
+list_security_profiles(Client, InstanceId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/security-profiles-summary/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
 
@@ -1486,8 +1676,8 @@ list_security_profiles(Client, InstanceId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1499,9 +1689,14 @@ list_security_profiles(Client, InstanceId, MaxResults, NextToken, Options)
 %% Policy Examples in the Amazon Connect Administrator Guide.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
@@ -1515,11 +1710,16 @@ list_tags_for_resource(Client, ResourceArn, Options)
 %% change.
 %%
 %% Lists the use cases.
-list_use_cases(Client, InstanceId, IntegrationAssociationId, MaxResults, NextToken)
+list_use_cases(Client, InstanceId, IntegrationAssociationId)
   when is_map(Client) ->
-    list_use_cases(Client, InstanceId, IntegrationAssociationId, MaxResults, NextToken, []).
-list_use_cases(Client, InstanceId, IntegrationAssociationId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_use_cases(Client, InstanceId, IntegrationAssociationId, #{}, #{}).
+
+list_use_cases(Client, InstanceId, IntegrationAssociationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_use_cases(Client, InstanceId, IntegrationAssociationId, QueryMap, HeadersMap, []).
+
+list_use_cases(Client, InstanceId, IntegrationAssociationId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/integration-associations/", aws_util:encode_uri(IntegrationAssociationId), "/use-cases"],
     SuccessStatusCode = undefined,
 
@@ -1527,8 +1727,8 @@ list_use_cases(Client, InstanceId, IntegrationAssociationId, MaxResults, NextTok
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1539,11 +1739,16 @@ list_use_cases(Client, InstanceId, IntegrationAssociationId, MaxResults, NextTok
 %%
 %% For more information about agent hierarchies, see Set Up Agent Hierarchies
 %% in the Amazon Connect Administrator Guide.
-list_user_hierarchy_groups(Client, InstanceId, MaxResults, NextToken)
+list_user_hierarchy_groups(Client, InstanceId)
   when is_map(Client) ->
-    list_user_hierarchy_groups(Client, InstanceId, MaxResults, NextToken, []).
-list_user_hierarchy_groups(Client, InstanceId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_user_hierarchy_groups(Client, InstanceId, #{}, #{}).
+
+list_user_hierarchy_groups(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_user_hierarchy_groups(Client, InstanceId, QueryMap, HeadersMap, []).
+
+list_user_hierarchy_groups(Client, InstanceId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/user-hierarchy-groups-summary/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
 
@@ -1551,8 +1756,8 @@ list_user_hierarchy_groups(Client, InstanceId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1560,11 +1765,16 @@ list_user_hierarchy_groups(Client, InstanceId, MaxResults, NextToken, Options)
 
 %% @doc Provides summary information about the users for the specified Amazon
 %% Connect instance.
-list_users(Client, InstanceId, MaxResults, NextToken)
+list_users(Client, InstanceId)
   when is_map(Client) ->
-    list_users(Client, InstanceId, MaxResults, NextToken, []).
-list_users(Client, InstanceId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_users(Client, InstanceId, #{}, #{}).
+
+list_users(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_users(Client, InstanceId, QueryMap, HeadersMap, []).
+
+list_users(Client, InstanceId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/users-summary/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
 
@@ -1572,8 +1782,8 @@ list_users(Client, InstanceId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

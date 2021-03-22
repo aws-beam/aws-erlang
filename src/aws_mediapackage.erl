@@ -17,19 +17,26 @@
          delete_origin_endpoint/3,
          delete_origin_endpoint/4,
          describe_channel/2,
-         describe_channel/3,
+         describe_channel/4,
+         describe_channel/5,
          describe_harvest_job/2,
-         describe_harvest_job/3,
+         describe_harvest_job/4,
+         describe_harvest_job/5,
          describe_origin_endpoint/2,
-         describe_origin_endpoint/3,
+         describe_origin_endpoint/4,
+         describe_origin_endpoint/5,
+         list_channels/1,
          list_channels/3,
          list_channels/4,
-         list_harvest_jobs/5,
-         list_harvest_jobs/6,
+         list_harvest_jobs/1,
+         list_harvest_jobs/3,
+         list_harvest_jobs/4,
+         list_origin_endpoints/1,
+         list_origin_endpoints/3,
          list_origin_endpoints/4,
-         list_origin_endpoints/5,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          rotate_channel_credentials/3,
          rotate_channel_credentials/4,
          rotate_ingest_endpoint_credentials/4,
@@ -148,9 +155,14 @@ delete_origin_endpoint(Client, Id, Input0, Options) ->
 %% @doc Gets details about a Channel.
 describe_channel(Client, Id)
   when is_map(Client) ->
-    describe_channel(Client, Id, []).
-describe_channel(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_channel(Client, Id, #{}, #{}).
+
+describe_channel(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_channel(Client, Id, QueryMap, HeadersMap, []).
+
+describe_channel(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/channels/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
@@ -163,9 +175,14 @@ describe_channel(Client, Id, Options)
 %% @doc Gets details about an existing HarvestJob.
 describe_harvest_job(Client, Id)
   when is_map(Client) ->
-    describe_harvest_job(Client, Id, []).
-describe_harvest_job(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_harvest_job(Client, Id, #{}, #{}).
+
+describe_harvest_job(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_harvest_job(Client, Id, QueryMap, HeadersMap, []).
+
+describe_harvest_job(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/harvest_jobs/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
@@ -178,9 +195,14 @@ describe_harvest_job(Client, Id, Options)
 %% @doc Gets details about an existing OriginEndpoint.
 describe_origin_endpoint(Client, Id)
   when is_map(Client) ->
-    describe_origin_endpoint(Client, Id, []).
-describe_origin_endpoint(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_origin_endpoint(Client, Id, #{}, #{}).
+
+describe_origin_endpoint(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_origin_endpoint(Client, Id, QueryMap, HeadersMap, []).
+
+describe_origin_endpoint(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/origin_endpoints/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
@@ -191,11 +213,16 @@ describe_origin_endpoint(Client, Id, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a collection of Channels.
-list_channels(Client, MaxResults, NextToken)
+list_channels(Client)
   when is_map(Client) ->
-    list_channels(Client, MaxResults, NextToken, []).
-list_channels(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_channels(Client, #{}, #{}).
+
+list_channels(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_channels(Client, QueryMap, HeadersMap, []).
+
+list_channels(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/channels"],
     SuccessStatusCode = 200,
 
@@ -203,19 +230,24 @@ list_channels(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a collection of HarvestJob records.
-list_harvest_jobs(Client, IncludeChannelId, IncludeStatus, MaxResults, NextToken)
+list_harvest_jobs(Client)
   when is_map(Client) ->
-    list_harvest_jobs(Client, IncludeChannelId, IncludeStatus, MaxResults, NextToken, []).
-list_harvest_jobs(Client, IncludeChannelId, IncludeStatus, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_harvest_jobs(Client, #{}, #{}).
+
+list_harvest_jobs(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_harvest_jobs(Client, QueryMap, HeadersMap, []).
+
+list_harvest_jobs(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/harvest_jobs"],
     SuccessStatusCode = 200,
 
@@ -223,21 +255,26 @@ list_harvest_jobs(Client, IncludeChannelId, IncludeStatus, MaxResults, NextToken
 
     Query0_ =
       [
-        {<<"includeChannelId">>, IncludeChannelId},
-        {<<"includeStatus">>, IncludeStatus},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"includeChannelId">>, maps:get(<<"includeChannelId">>, QueryMap, undefined)},
+        {<<"includeStatus">>, maps:get(<<"includeStatus">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a collection of OriginEndpoint records.
-list_origin_endpoints(Client, ChannelId, MaxResults, NextToken)
+list_origin_endpoints(Client)
   when is_map(Client) ->
-    list_origin_endpoints(Client, ChannelId, MaxResults, NextToken, []).
-list_origin_endpoints(Client, ChannelId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_origin_endpoints(Client, #{}, #{}).
+
+list_origin_endpoints(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_origin_endpoints(Client, QueryMap, HeadersMap, []).
+
+list_origin_endpoints(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/origin_endpoints"],
     SuccessStatusCode = 200,
 
@@ -245,9 +282,9 @@ list_origin_endpoints(Client, ChannelId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"channelId">>, ChannelId},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"channelId">>, maps:get(<<"channelId">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -256,9 +293,14 @@ list_origin_endpoints(Client, ChannelId, MaxResults, NextToken, Options)
 
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 

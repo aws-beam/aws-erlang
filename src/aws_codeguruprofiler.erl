@@ -34,25 +34,35 @@
          delete_profiling_group/3,
          delete_profiling_group/4,
          describe_profiling_group/2,
-         describe_profiling_group/3,
+         describe_profiling_group/4,
+         describe_profiling_group/5,
+         get_findings_report_account_summary/1,
+         get_findings_report_account_summary/3,
          get_findings_report_account_summary/4,
-         get_findings_report_account_summary/5,
          get_notification_configuration/2,
-         get_notification_configuration/3,
+         get_notification_configuration/4,
+         get_notification_configuration/5,
          get_policy/2,
-         get_policy/3,
-         get_profile/7,
-         get_profile/8,
-         get_recommendations/5,
+         get_policy/4,
+         get_policy/5,
+         get_profile/2,
+         get_profile/4,
+         get_profile/5,
+         get_recommendations/4,
          get_recommendations/6,
+         get_recommendations/7,
+         list_findings_reports/4,
+         list_findings_reports/6,
          list_findings_reports/7,
-         list_findings_reports/8,
+         list_profile_times/5,
+         list_profile_times/7,
          list_profile_times/8,
-         list_profile_times/9,
+         list_profiling_groups/1,
+         list_profiling_groups/3,
          list_profiling_groups/4,
-         list_profiling_groups/5,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          post_agent_profile/3,
          post_agent_profile/4,
          put_permission/4,
@@ -170,9 +180,14 @@ delete_profiling_group(Client, ProfilingGroupName, Input0, Options) ->
 %% information about the requested profiling group.
 describe_profiling_group(Client, ProfilingGroupName)
   when is_map(Client) ->
-    describe_profiling_group(Client, ProfilingGroupName, []).
-describe_profiling_group(Client, ProfilingGroupName, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_profiling_group(Client, ProfilingGroupName, #{}, #{}).
+
+describe_profiling_group(Client, ProfilingGroupName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_profiling_group(Client, ProfilingGroupName, QueryMap, HeadersMap, []).
+
+describe_profiling_group(Client, ProfilingGroupName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), ""],
     SuccessStatusCode = 200,
 
@@ -184,11 +199,16 @@ describe_profiling_group(Client, ProfilingGroupName, Options)
 
 %% @doc Returns a list of `FindingsReportSummary' objects that contain
 %% analysis results for all profiling groups in your AWS account.
-get_findings_report_account_summary(Client, DailyReportsOnly, MaxResults, NextToken)
+get_findings_report_account_summary(Client)
   when is_map(Client) ->
-    get_findings_report_account_summary(Client, DailyReportsOnly, MaxResults, NextToken, []).
-get_findings_report_account_summary(Client, DailyReportsOnly, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_findings_report_account_summary(Client, #{}, #{}).
+
+get_findings_report_account_summary(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_findings_report_account_summary(Client, QueryMap, HeadersMap, []).
+
+get_findings_report_account_summary(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/internal/findingsReports"],
     SuccessStatusCode = 200,
 
@@ -196,9 +216,9 @@ get_findings_report_account_summary(Client, DailyReportsOnly, MaxResults, NextTo
 
     Query0_ =
       [
-        {<<"dailyReportsOnly">>, DailyReportsOnly},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"dailyReportsOnly">>, maps:get(<<"dailyReportsOnly">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -208,9 +228,14 @@ get_findings_report_account_summary(Client, DailyReportsOnly, MaxResults, NextTo
 %% profiling group.
 get_notification_configuration(Client, ProfilingGroupName)
   when is_map(Client) ->
-    get_notification_configuration(Client, ProfilingGroupName, []).
-get_notification_configuration(Client, ProfilingGroupName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_notification_configuration(Client, ProfilingGroupName, #{}, #{}).
+
+get_notification_configuration(Client, ProfilingGroupName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_notification_configuration(Client, ProfilingGroupName, QueryMap, HeadersMap, []).
+
+get_notification_configuration(Client, ProfilingGroupName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/notificationConfiguration"],
     SuccessStatusCode = 200,
 
@@ -224,9 +249,14 @@ get_notification_configuration(Client, ProfilingGroupName, Options)
 %% group.
 get_policy(Client, ProfilingGroupName)
   when is_map(Client) ->
-    get_policy(Client, ProfilingGroupName, []).
-get_policy(Client, ProfilingGroupName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_policy(Client, ProfilingGroupName, #{}, #{}).
+
+get_policy(Client, ProfilingGroupName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_policy(Client, ProfilingGroupName, QueryMap, HeadersMap, []).
+
+get_policy(Client, ProfilingGroupName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/policy"],
     SuccessStatusCode = 200,
 
@@ -275,26 +305,31 @@ get_policy(Client, ProfilingGroupName, Options)
 %% requested time range is from 00:00 to 00:20, and the existing aggregated
 %% profiles are from 00:15 and 00:25, then the aggregated profiles from 00:15
 %% to 00:20 are returned. </p> </li> </ol>
-get_profile(Client, ProfilingGroupName, EndTime, MaxDepth, Period, StartTime, Accept)
+get_profile(Client, ProfilingGroupName)
   when is_map(Client) ->
-    get_profile(Client, ProfilingGroupName, EndTime, MaxDepth, Period, StartTime, Accept, []).
-get_profile(Client, ProfilingGroupName, EndTime, MaxDepth, Period, StartTime, Accept, Options)
-  when is_map(Client), is_list(Options) ->
+    get_profile(Client, ProfilingGroupName, #{}, #{}).
+
+get_profile(Client, ProfilingGroupName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_profile(Client, ProfilingGroupName, QueryMap, HeadersMap, []).
+
+get_profile(Client, ProfilingGroupName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/profile"],
     SuccessStatusCode = 200,
 
     Headers0 =
       [
-        {<<"Accept">>, Accept}
+        {<<"Accept">>, maps:get(<<"Accept">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
     Query0_ =
       [
-        {<<"endTime">>, EndTime},
-        {<<"maxDepth">>, MaxDepth},
-        {<<"period">>, Period},
-        {<<"startTime">>, StartTime}
+        {<<"endTime">>, maps:get(<<"endTime">>, QueryMap, undefined)},
+        {<<"maxDepth">>, maps:get(<<"maxDepth">>, QueryMap, undefined)},
+        {<<"period">>, maps:get(<<"period">>, QueryMap, undefined)},
+        {<<"startTime">>, maps:get(<<"startTime">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -322,11 +357,16 @@ get_profile(Client, ProfilingGroupName, EndTime, MaxDepth, Period, StartTime, Ac
 %%
 %% A list of `Anomaly' objects that contains details about anomalies detected
 %% in the profiling group for the same time period is also returned.
-get_recommendations(Client, ProfilingGroupName, EndTime, Locale, StartTime)
+get_recommendations(Client, ProfilingGroupName, EndTime, StartTime)
   when is_map(Client) ->
-    get_recommendations(Client, ProfilingGroupName, EndTime, Locale, StartTime, []).
-get_recommendations(Client, ProfilingGroupName, EndTime, Locale, StartTime, Options)
-  when is_map(Client), is_list(Options) ->
+    get_recommendations(Client, ProfilingGroupName, EndTime, StartTime, #{}, #{}).
+
+get_recommendations(Client, ProfilingGroupName, EndTime, StartTime, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_recommendations(Client, ProfilingGroupName, EndTime, StartTime, QueryMap, HeadersMap, []).
+
+get_recommendations(Client, ProfilingGroupName, EndTime, StartTime, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/internal/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/recommendations"],
     SuccessStatusCode = 200,
 
@@ -335,7 +375,7 @@ get_recommendations(Client, ProfilingGroupName, EndTime, Locale, StartTime, Opti
     Query0_ =
       [
         {<<"endTime">>, EndTime},
-        {<<"locale">>, Locale},
+        {<<"locale">>, maps:get(<<"locale">>, QueryMap, undefined)},
         {<<"startTime">>, StartTime}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
@@ -344,11 +384,16 @@ get_recommendations(Client, ProfilingGroupName, EndTime, Locale, StartTime, Opti
 
 %% @doc List the available reports for a given profiling group and time
 %% range.
-list_findings_reports(Client, ProfilingGroupName, DailyReportsOnly, EndTime, MaxResults, NextToken, StartTime)
+list_findings_reports(Client, ProfilingGroupName, EndTime, StartTime)
   when is_map(Client) ->
-    list_findings_reports(Client, ProfilingGroupName, DailyReportsOnly, EndTime, MaxResults, NextToken, StartTime, []).
-list_findings_reports(Client, ProfilingGroupName, DailyReportsOnly, EndTime, MaxResults, NextToken, StartTime, Options)
-  when is_map(Client), is_list(Options) ->
+    list_findings_reports(Client, ProfilingGroupName, EndTime, StartTime, #{}, #{}).
+
+list_findings_reports(Client, ProfilingGroupName, EndTime, StartTime, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_findings_reports(Client, ProfilingGroupName, EndTime, StartTime, QueryMap, HeadersMap, []).
+
+list_findings_reports(Client, ProfilingGroupName, EndTime, StartTime, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/internal/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/findingsReports"],
     SuccessStatusCode = 200,
 
@@ -356,10 +401,10 @@ list_findings_reports(Client, ProfilingGroupName, DailyReportsOnly, EndTime, Max
 
     Query0_ =
       [
-        {<<"dailyReportsOnly">>, DailyReportsOnly},
+        {<<"dailyReportsOnly">>, maps:get(<<"dailyReportsOnly">>, QueryMap, undefined)},
         {<<"endTime">>, EndTime},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"startTime">>, StartTime}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
@@ -368,11 +413,16 @@ list_findings_reports(Client, ProfilingGroupName, DailyReportsOnly, EndTime, Max
 
 %% @doc Lists the start times of the available aggregated profiles of a
 %% profiling group for an aggregation period within the specified time range.
-list_profile_times(Client, ProfilingGroupName, EndTime, MaxResults, NextToken, OrderBy, Period, StartTime)
+list_profile_times(Client, ProfilingGroupName, EndTime, Period, StartTime)
   when is_map(Client) ->
-    list_profile_times(Client, ProfilingGroupName, EndTime, MaxResults, NextToken, OrderBy, Period, StartTime, []).
-list_profile_times(Client, ProfilingGroupName, EndTime, MaxResults, NextToken, OrderBy, Period, StartTime, Options)
-  when is_map(Client), is_list(Options) ->
+    list_profile_times(Client, ProfilingGroupName, EndTime, Period, StartTime, #{}, #{}).
+
+list_profile_times(Client, ProfilingGroupName, EndTime, Period, StartTime, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_profile_times(Client, ProfilingGroupName, EndTime, Period, StartTime, QueryMap, HeadersMap, []).
+
+list_profile_times(Client, ProfilingGroupName, EndTime, Period, StartTime, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/profileTimes"],
     SuccessStatusCode = 200,
 
@@ -381,9 +431,9 @@ list_profile_times(Client, ProfilingGroupName, EndTime, MaxResults, NextToken, O
     Query0_ =
       [
         {<<"endTime">>, EndTime},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"orderBy">>, OrderBy},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"orderBy">>, maps:get(<<"orderBy">>, QueryMap, undefined)},
         {<<"period">>, Period},
         {<<"startTime">>, StartTime}
       ],
@@ -394,11 +444,16 @@ list_profile_times(Client, ProfilingGroupName, EndTime, MaxResults, NextToken, O
 %% @doc Returns a list of profiling groups.
 %%
 %% The profiling groups are returned as `ProfilingGroupDescription' objects.
-list_profiling_groups(Client, IncludeDescription, MaxResults, NextToken)
+list_profiling_groups(Client)
   when is_map(Client) ->
-    list_profiling_groups(Client, IncludeDescription, MaxResults, NextToken, []).
-list_profiling_groups(Client, IncludeDescription, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_profiling_groups(Client, #{}, #{}).
+
+list_profiling_groups(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_profiling_groups(Client, QueryMap, HeadersMap, []).
+
+list_profiling_groups(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/profilingGroups"],
     SuccessStatusCode = 200,
 
@@ -406,9 +461,9 @@ list_profiling_groups(Client, IncludeDescription, MaxResults, NextToken, Options
 
     Query0_ =
       [
-        {<<"includeDescription">>, IncludeDescription},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"includeDescription">>, maps:get(<<"includeDescription">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -417,9 +472,14 @@ list_profiling_groups(Client, IncludeDescription, MaxResults, NextToken, Options
 %% @doc Returns a list of the tags that are assigned to a specified resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 

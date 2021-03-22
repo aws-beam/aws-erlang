@@ -25,25 +25,36 @@
          delete_user/4,
          delete_user/5,
          describe_broker/2,
-         describe_broker/3,
+         describe_broker/4,
+         describe_broker/5,
+         describe_broker_engine_types/1,
+         describe_broker_engine_types/3,
          describe_broker_engine_types/4,
-         describe_broker_engine_types/5,
-         describe_broker_instance_options/6,
-         describe_broker_instance_options/7,
+         describe_broker_instance_options/1,
+         describe_broker_instance_options/3,
+         describe_broker_instance_options/4,
          describe_configuration/2,
-         describe_configuration/3,
+         describe_configuration/4,
+         describe_configuration/5,
          describe_configuration_revision/3,
-         describe_configuration_revision/4,
+         describe_configuration_revision/5,
+         describe_configuration_revision/6,
          describe_user/3,
-         describe_user/4,
+         describe_user/5,
+         describe_user/6,
+         list_brokers/1,
          list_brokers/3,
          list_brokers/4,
+         list_configuration_revisions/2,
          list_configuration_revisions/4,
          list_configuration_revisions/5,
+         list_configurations/1,
          list_configurations/3,
          list_configurations/4,
          list_tags/2,
-         list_tags/3,
+         list_tags/4,
+         list_tags/5,
+         list_users/2,
          list_users/4,
          list_users/5,
          reboot_broker/3,
@@ -183,9 +194,14 @@ delete_user(Client, BrokerId, Username, Input0, Options) ->
 %% @doc Returns information about the specified broker.
 describe_broker(Client, BrokerId)
   when is_map(Client) ->
-    describe_broker(Client, BrokerId, []).
-describe_broker(Client, BrokerId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_broker(Client, BrokerId, #{}, #{}).
+
+describe_broker(Client, BrokerId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_broker(Client, BrokerId, QueryMap, HeadersMap, []).
+
+describe_broker(Client, BrokerId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/brokers/", aws_util:encode_uri(BrokerId), ""],
     SuccessStatusCode = 200,
 
@@ -196,11 +212,16 @@ describe_broker(Client, BrokerId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describe available engine types and versions.
-describe_broker_engine_types(Client, EngineType, MaxResults, NextToken)
+describe_broker_engine_types(Client)
   when is_map(Client) ->
-    describe_broker_engine_types(Client, EngineType, MaxResults, NextToken, []).
-describe_broker_engine_types(Client, EngineType, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_broker_engine_types(Client, #{}, #{}).
+
+describe_broker_engine_types(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_broker_engine_types(Client, QueryMap, HeadersMap, []).
+
+describe_broker_engine_types(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/broker-engine-types"],
     SuccessStatusCode = 200,
 
@@ -208,20 +229,25 @@ describe_broker_engine_types(Client, EngineType, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"engineType">>, EngineType},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"engineType">>, maps:get(<<"engineType">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describe available broker instance options.
-describe_broker_instance_options(Client, EngineType, HostInstanceType, MaxResults, NextToken, StorageType)
+describe_broker_instance_options(Client)
   when is_map(Client) ->
-    describe_broker_instance_options(Client, EngineType, HostInstanceType, MaxResults, NextToken, StorageType, []).
-describe_broker_instance_options(Client, EngineType, HostInstanceType, MaxResults, NextToken, StorageType, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_broker_instance_options(Client, #{}, #{}).
+
+describe_broker_instance_options(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_broker_instance_options(Client, QueryMap, HeadersMap, []).
+
+describe_broker_instance_options(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/broker-instance-options"],
     SuccessStatusCode = 200,
 
@@ -229,11 +255,11 @@ describe_broker_instance_options(Client, EngineType, HostInstanceType, MaxResult
 
     Query0_ =
       [
-        {<<"engineType">>, EngineType},
-        {<<"hostInstanceType">>, HostInstanceType},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"storageType">>, StorageType}
+        {<<"engineType">>, maps:get(<<"engineType">>, QueryMap, undefined)},
+        {<<"hostInstanceType">>, maps:get(<<"hostInstanceType">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"storageType">>, maps:get(<<"storageType">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -242,9 +268,14 @@ describe_broker_instance_options(Client, EngineType, HostInstanceType, MaxResult
 %% @doc Returns information about the specified configuration.
 describe_configuration(Client, ConfigurationId)
   when is_map(Client) ->
-    describe_configuration(Client, ConfigurationId, []).
-describe_configuration(Client, ConfigurationId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_configuration(Client, ConfigurationId, #{}, #{}).
+
+describe_configuration(Client, ConfigurationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_configuration(Client, ConfigurationId, QueryMap, HeadersMap, []).
+
+describe_configuration(Client, ConfigurationId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/configurations/", aws_util:encode_uri(ConfigurationId), ""],
     SuccessStatusCode = 200,
 
@@ -258,9 +289,14 @@ describe_configuration(Client, ConfigurationId, Options)
 %% configuration.
 describe_configuration_revision(Client, ConfigurationId, ConfigurationRevision)
   when is_map(Client) ->
-    describe_configuration_revision(Client, ConfigurationId, ConfigurationRevision, []).
-describe_configuration_revision(Client, ConfigurationId, ConfigurationRevision, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_configuration_revision(Client, ConfigurationId, ConfigurationRevision, #{}, #{}).
+
+describe_configuration_revision(Client, ConfigurationId, ConfigurationRevision, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_configuration_revision(Client, ConfigurationId, ConfigurationRevision, QueryMap, HeadersMap, []).
+
+describe_configuration_revision(Client, ConfigurationId, ConfigurationRevision, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/configurations/", aws_util:encode_uri(ConfigurationId), "/revisions/", aws_util:encode_uri(ConfigurationRevision), ""],
     SuccessStatusCode = 200,
 
@@ -273,9 +309,14 @@ describe_configuration_revision(Client, ConfigurationId, ConfigurationRevision, 
 %% @doc Returns information about an ActiveMQ user.
 describe_user(Client, BrokerId, Username)
   when is_map(Client) ->
-    describe_user(Client, BrokerId, Username, []).
-describe_user(Client, BrokerId, Username, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_user(Client, BrokerId, Username, #{}, #{}).
+
+describe_user(Client, BrokerId, Username, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_user(Client, BrokerId, Username, QueryMap, HeadersMap, []).
+
+describe_user(Client, BrokerId, Username, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/brokers/", aws_util:encode_uri(BrokerId), "/users/", aws_util:encode_uri(Username), ""],
     SuccessStatusCode = 200,
 
@@ -286,11 +327,16 @@ describe_user(Client, BrokerId, Username, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all brokers.
-list_brokers(Client, MaxResults, NextToken)
+list_brokers(Client)
   when is_map(Client) ->
-    list_brokers(Client, MaxResults, NextToken, []).
-list_brokers(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_brokers(Client, #{}, #{}).
+
+list_brokers(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_brokers(Client, QueryMap, HeadersMap, []).
+
+list_brokers(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/brokers"],
     SuccessStatusCode = 200,
 
@@ -298,19 +344,24 @@ list_brokers(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all revisions for the specified configuration.
-list_configuration_revisions(Client, ConfigurationId, MaxResults, NextToken)
+list_configuration_revisions(Client, ConfigurationId)
   when is_map(Client) ->
-    list_configuration_revisions(Client, ConfigurationId, MaxResults, NextToken, []).
-list_configuration_revisions(Client, ConfigurationId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_configuration_revisions(Client, ConfigurationId, #{}, #{}).
+
+list_configuration_revisions(Client, ConfigurationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_configuration_revisions(Client, ConfigurationId, QueryMap, HeadersMap, []).
+
+list_configuration_revisions(Client, ConfigurationId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/configurations/", aws_util:encode_uri(ConfigurationId), "/revisions"],
     SuccessStatusCode = 200,
 
@@ -318,19 +369,24 @@ list_configuration_revisions(Client, ConfigurationId, MaxResults, NextToken, Opt
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all configurations.
-list_configurations(Client, MaxResults, NextToken)
+list_configurations(Client)
   when is_map(Client) ->
-    list_configurations(Client, MaxResults, NextToken, []).
-list_configurations(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_configurations(Client, #{}, #{}).
+
+list_configurations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_configurations(Client, QueryMap, HeadersMap, []).
+
+list_configurations(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/configurations"],
     SuccessStatusCode = 200,
 
@@ -338,8 +394,8 @@ list_configurations(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -348,9 +404,14 @@ list_configurations(Client, MaxResults, NextToken, Options)
 %% @doc Lists tags for a resource.
 list_tags(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags(Client, ResourceArn, []).
-list_tags(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags(Client, ResourceArn, #{}, #{}).
+
+list_tags(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 
@@ -361,11 +422,16 @@ list_tags(Client, ResourceArn, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all ActiveMQ users.
-list_users(Client, BrokerId, MaxResults, NextToken)
+list_users(Client, BrokerId)
   when is_map(Client) ->
-    list_users(Client, BrokerId, MaxResults, NextToken, []).
-list_users(Client, BrokerId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_users(Client, BrokerId, #{}, #{}).
+
+list_users(Client, BrokerId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_users(Client, BrokerId, QueryMap, HeadersMap, []).
+
+list_users(Client, BrokerId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/brokers/", aws_util:encode_uri(BrokerId), "/users"],
     SuccessStatusCode = 200,
 
@@ -373,8 +439,8 @@ list_users(Client, BrokerId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

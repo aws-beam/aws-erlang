@@ -15,19 +15,25 @@
          delete_project/3,
          delete_project/4,
          describe_placement/3,
-         describe_placement/4,
+         describe_placement/5,
+         describe_placement/6,
          describe_project/2,
-         describe_project/3,
+         describe_project/4,
+         describe_project/5,
          disassociate_device_from_placement/5,
          disassociate_device_from_placement/6,
          get_devices_in_placement/3,
-         get_devices_in_placement/4,
+         get_devices_in_placement/5,
+         get_devices_in_placement/6,
+         list_placements/2,
          list_placements/4,
          list_placements/5,
+         list_projects/1,
          list_projects/3,
          list_projects/4,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -137,9 +143,14 @@ delete_project(Client, ProjectName, Input0, Options) ->
 %% @doc Describes a placement in a project.
 describe_placement(Client, PlacementName, ProjectName)
   when is_map(Client) ->
-    describe_placement(Client, PlacementName, ProjectName, []).
-describe_placement(Client, PlacementName, ProjectName, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_placement(Client, PlacementName, ProjectName, #{}, #{}).
+
+describe_placement(Client, PlacementName, ProjectName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_placement(Client, PlacementName, ProjectName, QueryMap, HeadersMap, []).
+
+describe_placement(Client, PlacementName, ProjectName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/projects/", aws_util:encode_uri(ProjectName), "/placements/", aws_util:encode_uri(PlacementName), ""],
     SuccessStatusCode = undefined,
 
@@ -152,9 +163,14 @@ describe_placement(Client, PlacementName, ProjectName, Options)
 %% @doc Returns an object describing a project.
 describe_project(Client, ProjectName)
   when is_map(Client) ->
-    describe_project(Client, ProjectName, []).
-describe_project(Client, ProjectName, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_project(Client, ProjectName, #{}, #{}).
+
+describe_project(Client, ProjectName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_project(Client, ProjectName, QueryMap, HeadersMap, []).
+
+describe_project(Client, ProjectName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/projects/", aws_util:encode_uri(ProjectName), ""],
     SuccessStatusCode = undefined,
 
@@ -183,9 +199,14 @@ disassociate_device_from_placement(Client, DeviceTemplateName, PlacementName, Pr
 %% @doc Returns an object enumerating the devices in a placement.
 get_devices_in_placement(Client, PlacementName, ProjectName)
   when is_map(Client) ->
-    get_devices_in_placement(Client, PlacementName, ProjectName, []).
-get_devices_in_placement(Client, PlacementName, ProjectName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_devices_in_placement(Client, PlacementName, ProjectName, #{}, #{}).
+
+get_devices_in_placement(Client, PlacementName, ProjectName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_devices_in_placement(Client, PlacementName, ProjectName, QueryMap, HeadersMap, []).
+
+get_devices_in_placement(Client, PlacementName, ProjectName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/projects/", aws_util:encode_uri(ProjectName), "/placements/", aws_util:encode_uri(PlacementName), "/devices"],
     SuccessStatusCode = undefined,
 
@@ -196,11 +217,16 @@ get_devices_in_placement(Client, PlacementName, ProjectName, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the placement(s) of a project.
-list_placements(Client, ProjectName, MaxResults, NextToken)
+list_placements(Client, ProjectName)
   when is_map(Client) ->
-    list_placements(Client, ProjectName, MaxResults, NextToken, []).
-list_placements(Client, ProjectName, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_placements(Client, ProjectName, #{}, #{}).
+
+list_placements(Client, ProjectName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_placements(Client, ProjectName, QueryMap, HeadersMap, []).
+
+list_placements(Client, ProjectName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/projects/", aws_util:encode_uri(ProjectName), "/placements"],
     SuccessStatusCode = undefined,
 
@@ -208,8 +234,8 @@ list_placements(Client, ProjectName, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -217,11 +243,16 @@ list_placements(Client, ProjectName, MaxResults, NextToken, Options)
 
 %% @doc Lists the AWS IoT 1-Click project(s) associated with your AWS account
 %% and region.
-list_projects(Client, MaxResults, NextToken)
+list_projects(Client)
   when is_map(Client) ->
-    list_projects(Client, MaxResults, NextToken, []).
-list_projects(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_projects(Client, #{}, #{}).
+
+list_projects(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_projects(Client, QueryMap, HeadersMap, []).
+
+list_projects(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/projects"],
     SuccessStatusCode = undefined,
 
@@ -229,8 +260,8 @@ list_projects(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -240,9 +271,14 @@ list_projects(Client, MaxResults, NextToken, Options)
 %% the resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 

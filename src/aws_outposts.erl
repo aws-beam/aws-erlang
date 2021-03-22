@@ -17,15 +17,20 @@
          delete_site/3,
          delete_site/4,
          get_outpost/2,
-         get_outpost/3,
+         get_outpost/4,
+         get_outpost/5,
+         get_outpost_instance_types/2,
          get_outpost_instance_types/4,
          get_outpost_instance_types/5,
+         list_outposts/1,
          list_outposts/3,
          list_outposts/4,
+         list_sites/1,
          list_sites/3,
          list_sites/4,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -88,9 +93,14 @@ delete_site(Client, SiteId, Input0, Options) ->
 %% @doc Gets information about the specified Outpost.
 get_outpost(Client, OutpostId)
   when is_map(Client) ->
-    get_outpost(Client, OutpostId, []).
-get_outpost(Client, OutpostId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_outpost(Client, OutpostId, #{}, #{}).
+
+get_outpost(Client, OutpostId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_outpost(Client, OutpostId, QueryMap, HeadersMap, []).
+
+get_outpost(Client, OutpostId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/outposts/", aws_util:encode_uri(OutpostId), ""],
     SuccessStatusCode = undefined,
 
@@ -101,11 +111,16 @@ get_outpost(Client, OutpostId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the instance types for the specified Outpost.
-get_outpost_instance_types(Client, OutpostId, MaxResults, NextToken)
+get_outpost_instance_types(Client, OutpostId)
   when is_map(Client) ->
-    get_outpost_instance_types(Client, OutpostId, MaxResults, NextToken, []).
-get_outpost_instance_types(Client, OutpostId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_outpost_instance_types(Client, OutpostId, #{}, #{}).
+
+get_outpost_instance_types(Client, OutpostId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_outpost_instance_types(Client, OutpostId, QueryMap, HeadersMap, []).
+
+get_outpost_instance_types(Client, OutpostId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/outposts/", aws_util:encode_uri(OutpostId), "/instanceTypes"],
     SuccessStatusCode = undefined,
 
@@ -113,19 +128,24 @@ get_outpost_instance_types(Client, OutpostId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the Outposts for your AWS account.
-list_outposts(Client, MaxResults, NextToken)
+list_outposts(Client)
   when is_map(Client) ->
-    list_outposts(Client, MaxResults, NextToken, []).
-list_outposts(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_outposts(Client, #{}, #{}).
+
+list_outposts(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_outposts(Client, QueryMap, HeadersMap, []).
+
+list_outposts(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/outposts"],
     SuccessStatusCode = undefined,
 
@@ -133,19 +153,24 @@ list_outposts(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the sites for the specified AWS account.
-list_sites(Client, MaxResults, NextToken)
+list_sites(Client)
   when is_map(Client) ->
-    list_sites(Client, MaxResults, NextToken, []).
-list_sites(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_sites(Client, #{}, #{}).
+
+list_sites(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_sites(Client, QueryMap, HeadersMap, []).
+
+list_sites(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/sites"],
     SuccessStatusCode = undefined,
 
@@ -153,8 +178,8 @@ list_sites(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -163,9 +188,14 @@ list_sites(Client, MaxResults, NextToken, Options)
 %% @doc Lists the tags for the specified resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 

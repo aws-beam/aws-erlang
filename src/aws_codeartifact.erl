@@ -208,28 +208,36 @@
          delete_repository/3,
          delete_repository_permissions_policy/2,
          delete_repository_permissions_policy/3,
-         describe_domain/3,
+         describe_domain/2,
          describe_domain/4,
+         describe_domain/5,
+         describe_package_version/6,
          describe_package_version/8,
          describe_package_version/9,
-         describe_repository/4,
+         describe_repository/3,
          describe_repository/5,
+         describe_repository/6,
          disassociate_external_connection/2,
          disassociate_external_connection/3,
          dispose_package_versions/2,
          dispose_package_versions/3,
          get_authorization_token/2,
          get_authorization_token/3,
-         get_domain_permissions_policy/3,
+         get_domain_permissions_policy/2,
          get_domain_permissions_policy/4,
+         get_domain_permissions_policy/5,
+         get_package_version_asset/7,
+         get_package_version_asset/9,
          get_package_version_asset/10,
-         get_package_version_asset/11,
+         get_package_version_readme/6,
          get_package_version_readme/8,
          get_package_version_readme/9,
-         get_repository_endpoint/5,
+         get_repository_endpoint/4,
          get_repository_endpoint/6,
-         get_repository_permissions_policy/4,
+         get_repository_endpoint/7,
+         get_repository_permissions_policy/3,
          get_repository_permissions_policy/5,
+         get_repository_permissions_policy/6,
          list_domains/2,
          list_domains/3,
          list_package_version_assets/2,
@@ -481,11 +489,16 @@ delete_repository_permissions_policy(Client, Input0, Options) ->
 
 %% @doc Returns a `DomainDescription' object that contains information about
 %% the requested domain.
-describe_domain(Client, Domain, DomainOwner)
+describe_domain(Client, Domain)
   when is_map(Client) ->
-    describe_domain(Client, Domain, DomainOwner, []).
-describe_domain(Client, Domain, DomainOwner, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_domain(Client, Domain, #{}, #{}).
+
+describe_domain(Client, Domain, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_domain(Client, Domain, QueryMap, HeadersMap, []).
+
+describe_domain(Client, Domain, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/domain"],
     SuccessStatusCode = undefined,
 
@@ -494,7 +507,7 @@ describe_domain(Client, Domain, DomainOwner, Options)
     Query0_ =
       [
         {<<"domain">>, Domain},
-        {<<"domain-owner">>, DomainOwner}
+        {<<"domain-owner">>, maps:get(<<"domain-owner">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -502,11 +515,16 @@ describe_domain(Client, Domain, DomainOwner, Options)
 
 %% @doc Returns a `PackageVersionDescription' object that contains
 %% information about the requested package version.
-describe_package_version(Client, Domain, DomainOwner, Format, Namespace, Package, PackageVersion, Repository)
+describe_package_version(Client, Domain, Format, Package, PackageVersion, Repository)
   when is_map(Client) ->
-    describe_package_version(Client, Domain, DomainOwner, Format, Namespace, Package, PackageVersion, Repository, []).
-describe_package_version(Client, Domain, DomainOwner, Format, Namespace, Package, PackageVersion, Repository, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_package_version(Client, Domain, Format, Package, PackageVersion, Repository, #{}, #{}).
+
+describe_package_version(Client, Domain, Format, Package, PackageVersion, Repository, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_package_version(Client, Domain, Format, Package, PackageVersion, Repository, QueryMap, HeadersMap, []).
+
+describe_package_version(Client, Domain, Format, Package, PackageVersion, Repository, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/package/version"],
     SuccessStatusCode = undefined,
 
@@ -515,9 +533,9 @@ describe_package_version(Client, Domain, DomainOwner, Format, Namespace, Package
     Query0_ =
       [
         {<<"domain">>, Domain},
-        {<<"domain-owner">>, DomainOwner},
+        {<<"domain-owner">>, maps:get(<<"domain-owner">>, QueryMap, undefined)},
         {<<"format">>, Format},
-        {<<"namespace">>, Namespace},
+        {<<"namespace">>, maps:get(<<"namespace">>, QueryMap, undefined)},
         {<<"package">>, Package},
         {<<"version">>, PackageVersion},
         {<<"repository">>, Repository}
@@ -528,11 +546,16 @@ describe_package_version(Client, Domain, DomainOwner, Format, Namespace, Package
 
 %% @doc Returns a `RepositoryDescription' object that contains detailed
 %% information about the requested repository.
-describe_repository(Client, Domain, DomainOwner, Repository)
+describe_repository(Client, Domain, Repository)
   when is_map(Client) ->
-    describe_repository(Client, Domain, DomainOwner, Repository, []).
-describe_repository(Client, Domain, DomainOwner, Repository, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_repository(Client, Domain, Repository, #{}, #{}).
+
+describe_repository(Client, Domain, Repository, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_repository(Client, Domain, Repository, QueryMap, HeadersMap, []).
+
+describe_repository(Client, Domain, Repository, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/repository"],
     SuccessStatusCode = undefined,
 
@@ -541,7 +564,7 @@ describe_repository(Client, Domain, DomainOwner, Repository, Options)
     Query0_ =
       [
         {<<"domain">>, Domain},
-        {<<"domain-owner">>, DomainOwner},
+        {<<"domain-owner">>, maps:get(<<"domain-owner">>, QueryMap, undefined)},
         {<<"repository">>, Repository}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
@@ -645,11 +668,16 @@ get_authorization_token(Client, Input0, Options) ->
 %% The policy is a resource-based policy, not an identity-based policy. For
 %% more information, see Identity-based policies and resource-based policies
 %% in the AWS Identity and Access Management User Guide.
-get_domain_permissions_policy(Client, Domain, DomainOwner)
+get_domain_permissions_policy(Client, Domain)
   when is_map(Client) ->
-    get_domain_permissions_policy(Client, Domain, DomainOwner, []).
-get_domain_permissions_policy(Client, Domain, DomainOwner, Options)
-  when is_map(Client), is_list(Options) ->
+    get_domain_permissions_policy(Client, Domain, #{}, #{}).
+
+get_domain_permissions_policy(Client, Domain, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_domain_permissions_policy(Client, Domain, QueryMap, HeadersMap, []).
+
+get_domain_permissions_policy(Client, Domain, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/domain/permissions/policy"],
     SuccessStatusCode = undefined,
 
@@ -658,7 +686,7 @@ get_domain_permissions_policy(Client, Domain, DomainOwner, Options)
     Query0_ =
       [
         {<<"domain">>, Domain},
-        {<<"domain-owner">>, DomainOwner}
+        {<<"domain-owner">>, maps:get(<<"domain-owner">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -669,11 +697,16 @@ get_domain_permissions_policy(Client, Domain, DomainOwner, Options)
 %% For example, for a Maven package version, use `GetPackageVersionAsset' to
 %% download a `JAR' file, a `POM' file, or any other assets in the package
 %% version.
-get_package_version_asset(Client, Asset, Domain, DomainOwner, Format, Namespace, Package, PackageVersion, PackageVersionRevision, Repository)
+get_package_version_asset(Client, Asset, Domain, Format, Package, PackageVersion, Repository)
   when is_map(Client) ->
-    get_package_version_asset(Client, Asset, Domain, DomainOwner, Format, Namespace, Package, PackageVersion, PackageVersionRevision, Repository, []).
-get_package_version_asset(Client, Asset, Domain, DomainOwner, Format, Namespace, Package, PackageVersion, PackageVersionRevision, Repository, Options)
-  when is_map(Client), is_list(Options) ->
+    get_package_version_asset(Client, Asset, Domain, Format, Package, PackageVersion, Repository, #{}, #{}).
+
+get_package_version_asset(Client, Asset, Domain, Format, Package, PackageVersion, Repository, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_package_version_asset(Client, Asset, Domain, Format, Package, PackageVersion, Repository, QueryMap, HeadersMap, []).
+
+get_package_version_asset(Client, Asset, Domain, Format, Package, PackageVersion, Repository, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/package/version/asset"],
     SuccessStatusCode = undefined,
 
@@ -683,12 +716,12 @@ get_package_version_asset(Client, Asset, Domain, DomainOwner, Format, Namespace,
       [
         {<<"asset">>, Asset},
         {<<"domain">>, Domain},
-        {<<"domain-owner">>, DomainOwner},
+        {<<"domain-owner">>, maps:get(<<"domain-owner">>, QueryMap, undefined)},
         {<<"format">>, Format},
-        {<<"namespace">>, Namespace},
+        {<<"namespace">>, maps:get(<<"namespace">>, QueryMap, undefined)},
         {<<"package">>, Package},
         {<<"version">>, PackageVersion},
-        {<<"revision">>, PackageVersionRevision},
+        {<<"revision">>, maps:get(<<"revision">>, QueryMap, undefined)},
         {<<"repository">>, Repository}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
@@ -721,11 +754,16 @@ get_package_version_asset(Client, Asset, Domain, DomainOwner, Format, Namespace,
 %%
 %% The returned text might contain formatting. For example, it might contain
 %% formatting for Markdown or reStructuredText.
-get_package_version_readme(Client, Domain, DomainOwner, Format, Namespace, Package, PackageVersion, Repository)
+get_package_version_readme(Client, Domain, Format, Package, PackageVersion, Repository)
   when is_map(Client) ->
-    get_package_version_readme(Client, Domain, DomainOwner, Format, Namespace, Package, PackageVersion, Repository, []).
-get_package_version_readme(Client, Domain, DomainOwner, Format, Namespace, Package, PackageVersion, Repository, Options)
-  when is_map(Client), is_list(Options) ->
+    get_package_version_readme(Client, Domain, Format, Package, PackageVersion, Repository, #{}, #{}).
+
+get_package_version_readme(Client, Domain, Format, Package, PackageVersion, Repository, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_package_version_readme(Client, Domain, Format, Package, PackageVersion, Repository, QueryMap, HeadersMap, []).
+
+get_package_version_readme(Client, Domain, Format, Package, PackageVersion, Repository, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/package/version/readme"],
     SuccessStatusCode = undefined,
 
@@ -734,9 +772,9 @@ get_package_version_readme(Client, Domain, DomainOwner, Format, Namespace, Packa
     Query0_ =
       [
         {<<"domain">>, Domain},
-        {<<"domain-owner">>, DomainOwner},
+        {<<"domain-owner">>, maps:get(<<"domain-owner">>, QueryMap, undefined)},
         {<<"format">>, Format},
-        {<<"namespace">>, Namespace},
+        {<<"namespace">>, maps:get(<<"namespace">>, QueryMap, undefined)},
         {<<"package">>, Package},
         {<<"version">>, PackageVersion},
         {<<"repository">>, Repository}
@@ -758,11 +796,16 @@ get_package_version_readme(Client, Domain, DomainOwner, Format, Namespace, Packa
 %% </li> <li> `nuget'
 %%
 %% </li> </ul>
-get_repository_endpoint(Client, Domain, DomainOwner, Format, Repository)
+get_repository_endpoint(Client, Domain, Format, Repository)
   when is_map(Client) ->
-    get_repository_endpoint(Client, Domain, DomainOwner, Format, Repository, []).
-get_repository_endpoint(Client, Domain, DomainOwner, Format, Repository, Options)
-  when is_map(Client), is_list(Options) ->
+    get_repository_endpoint(Client, Domain, Format, Repository, #{}, #{}).
+
+get_repository_endpoint(Client, Domain, Format, Repository, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_repository_endpoint(Client, Domain, Format, Repository, QueryMap, HeadersMap, []).
+
+get_repository_endpoint(Client, Domain, Format, Repository, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/repository/endpoint"],
     SuccessStatusCode = undefined,
 
@@ -771,7 +814,7 @@ get_repository_endpoint(Client, Domain, DomainOwner, Format, Repository, Options
     Query0_ =
       [
         {<<"domain">>, Domain},
-        {<<"domain-owner">>, DomainOwner},
+        {<<"domain-owner">>, maps:get(<<"domain-owner">>, QueryMap, undefined)},
         {<<"format">>, Format},
         {<<"repository">>, Repository}
       ],
@@ -780,11 +823,16 @@ get_repository_endpoint(Client, Domain, DomainOwner, Format, Repository, Options
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the resource policy that is set on a repository.
-get_repository_permissions_policy(Client, Domain, DomainOwner, Repository)
+get_repository_permissions_policy(Client, Domain, Repository)
   when is_map(Client) ->
-    get_repository_permissions_policy(Client, Domain, DomainOwner, Repository, []).
-get_repository_permissions_policy(Client, Domain, DomainOwner, Repository, Options)
-  when is_map(Client), is_list(Options) ->
+    get_repository_permissions_policy(Client, Domain, Repository, #{}, #{}).
+
+get_repository_permissions_policy(Client, Domain, Repository, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_repository_permissions_policy(Client, Domain, Repository, QueryMap, HeadersMap, []).
+
+get_repository_permissions_policy(Client, Domain, Repository, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/repository/permissions/policy"],
     SuccessStatusCode = undefined,
 
@@ -793,7 +841,7 @@ get_repository_permissions_policy(Client, Domain, DomainOwner, Repository, Optio
     Query0_ =
       [
         {<<"domain">>, Domain},
-        {<<"domain-owner">>, DomainOwner},
+        {<<"domain-owner">>, maps:get(<<"domain-owner">>, QueryMap, undefined)},
         {<<"repository">>, Repository}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],

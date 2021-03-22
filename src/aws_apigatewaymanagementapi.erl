@@ -14,7 +14,8 @@
 -export([delete_connection/3,
          delete_connection/4,
          get_connection/2,
-         get_connection/3,
+         get_connection/4,
+         get_connection/5,
          post_to_connection/3,
          post_to_connection/4]).
 
@@ -43,9 +44,14 @@ delete_connection(Client, ConnectionId, Input0, Options) ->
 %% @doc Get information about the connection with the provided id.
 get_connection(Client, ConnectionId)
   when is_map(Client) ->
-    get_connection(Client, ConnectionId, []).
-get_connection(Client, ConnectionId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_connection(Client, ConnectionId, #{}, #{}).
+
+get_connection(Client, ConnectionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_connection(Client, ConnectionId, QueryMap, HeadersMap, []).
+
+get_connection(Client, ConnectionId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/@connections/", aws_util:encode_uri(ConnectionId), ""],
     SuccessStatusCode = 200,
 

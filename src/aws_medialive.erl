@@ -47,45 +47,65 @@
          delete_tags/3,
          delete_tags/4,
          describe_channel/2,
-         describe_channel/3,
+         describe_channel/4,
+         describe_channel/5,
          describe_input/2,
-         describe_input/3,
+         describe_input/4,
+         describe_input/5,
          describe_input_device/2,
-         describe_input_device/3,
+         describe_input_device/4,
+         describe_input_device/5,
          describe_input_device_thumbnail/3,
-         describe_input_device_thumbnail/4,
+         describe_input_device_thumbnail/5,
+         describe_input_device_thumbnail/6,
          describe_input_security_group/2,
-         describe_input_security_group/3,
+         describe_input_security_group/4,
+         describe_input_security_group/5,
          describe_multiplex/2,
-         describe_multiplex/3,
+         describe_multiplex/4,
+         describe_multiplex/5,
          describe_multiplex_program/3,
-         describe_multiplex_program/4,
+         describe_multiplex_program/5,
+         describe_multiplex_program/6,
          describe_offering/2,
-         describe_offering/3,
+         describe_offering/4,
+         describe_offering/5,
          describe_reservation/2,
-         describe_reservation/3,
+         describe_reservation/4,
+         describe_reservation/5,
+         describe_schedule/2,
          describe_schedule/4,
          describe_schedule/5,
+         list_channels/1,
          list_channels/3,
          list_channels/4,
+         list_input_device_transfers/2,
          list_input_device_transfers/4,
          list_input_device_transfers/5,
+         list_input_devices/1,
          list_input_devices/3,
          list_input_devices/4,
+         list_input_security_groups/1,
          list_input_security_groups/3,
          list_input_security_groups/4,
+         list_inputs/1,
          list_inputs/3,
          list_inputs/4,
+         list_multiplex_programs/2,
          list_multiplex_programs/4,
          list_multiplex_programs/5,
+         list_multiplexes/1,
          list_multiplexes/3,
          list_multiplexes/4,
-         list_offerings/13,
-         list_offerings/14,
-         list_reservations/11,
-         list_reservations/12,
+         list_offerings/1,
+         list_offerings/3,
+         list_offerings/4,
+         list_reservations/1,
+         list_reservations/3,
+         list_reservations/4,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          purchase_offering/3,
          purchase_offering/4,
          reject_input_device_transfer/3,
@@ -469,9 +489,14 @@ delete_tags(Client, ResourceArn, Input0, Options) ->
 %% @doc Gets details about a channel
 describe_channel(Client, ChannelId)
   when is_map(Client) ->
-    describe_channel(Client, ChannelId, []).
-describe_channel(Client, ChannelId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_channel(Client, ChannelId, #{}, #{}).
+
+describe_channel(Client, ChannelId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_channel(Client, ChannelId, QueryMap, HeadersMap, []).
+
+describe_channel(Client, ChannelId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), ""],
     SuccessStatusCode = 200,
 
@@ -484,9 +509,14 @@ describe_channel(Client, ChannelId, Options)
 %% @doc Produces details about an input
 describe_input(Client, InputId)
   when is_map(Client) ->
-    describe_input(Client, InputId, []).
-describe_input(Client, InputId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_input(Client, InputId, #{}, #{}).
+
+describe_input(Client, InputId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_input(Client, InputId, QueryMap, HeadersMap, []).
+
+describe_input(Client, InputId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/prod/inputs/", aws_util:encode_uri(InputId), ""],
     SuccessStatusCode = 200,
 
@@ -499,9 +529,14 @@ describe_input(Client, InputId, Options)
 %% @doc Gets the details for the input device
 describe_input_device(Client, InputDeviceId)
   when is_map(Client) ->
-    describe_input_device(Client, InputDeviceId, []).
-describe_input_device(Client, InputDeviceId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_input_device(Client, InputDeviceId, #{}, #{}).
+
+describe_input_device(Client, InputDeviceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_input_device(Client, InputDeviceId, QueryMap, HeadersMap, []).
+
+describe_input_device(Client, InputDeviceId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), ""],
     SuccessStatusCode = 200,
 
@@ -514,9 +549,14 @@ describe_input_device(Client, InputDeviceId, Options)
 %% @doc Get the latest thumbnail data for the input device.
 describe_input_device_thumbnail(Client, InputDeviceId, Accept)
   when is_map(Client) ->
-    describe_input_device_thumbnail(Client, InputDeviceId, Accept, []).
-describe_input_device_thumbnail(Client, InputDeviceId, Accept, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_input_device_thumbnail(Client, InputDeviceId, Accept, #{}, #{}).
+
+describe_input_device_thumbnail(Client, InputDeviceId, Accept, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_input_device_thumbnail(Client, InputDeviceId, Accept, QueryMap, HeadersMap, []).
+
+describe_input_device_thumbnail(Client, InputDeviceId, Accept, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), "/thumbnailData"],
     SuccessStatusCode = 200,
 
@@ -552,9 +592,14 @@ describe_input_device_thumbnail(Client, InputDeviceId, Accept, Options)
 %% @doc Produces a summary of an Input Security Group
 describe_input_security_group(Client, InputSecurityGroupId)
   when is_map(Client) ->
-    describe_input_security_group(Client, InputSecurityGroupId, []).
-describe_input_security_group(Client, InputSecurityGroupId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_input_security_group(Client, InputSecurityGroupId, #{}, #{}).
+
+describe_input_security_group(Client, InputSecurityGroupId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_input_security_group(Client, InputSecurityGroupId, QueryMap, HeadersMap, []).
+
+describe_input_security_group(Client, InputSecurityGroupId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/prod/inputSecurityGroups/", aws_util:encode_uri(InputSecurityGroupId), ""],
     SuccessStatusCode = 200,
 
@@ -567,9 +612,14 @@ describe_input_security_group(Client, InputSecurityGroupId, Options)
 %% @doc Gets details about a multiplex.
 describe_multiplex(Client, MultiplexId)
   when is_map(Client) ->
-    describe_multiplex(Client, MultiplexId, []).
-describe_multiplex(Client, MultiplexId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_multiplex(Client, MultiplexId, #{}, #{}).
+
+describe_multiplex(Client, MultiplexId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_multiplex(Client, MultiplexId, QueryMap, HeadersMap, []).
+
+describe_multiplex(Client, MultiplexId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), ""],
     SuccessStatusCode = 200,
 
@@ -582,9 +632,14 @@ describe_multiplex(Client, MultiplexId, Options)
 %% @doc Get the details for a program in a multiplex.
 describe_multiplex_program(Client, MultiplexId, ProgramName)
   when is_map(Client) ->
-    describe_multiplex_program(Client, MultiplexId, ProgramName, []).
-describe_multiplex_program(Client, MultiplexId, ProgramName, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_multiplex_program(Client, MultiplexId, ProgramName, #{}, #{}).
+
+describe_multiplex_program(Client, MultiplexId, ProgramName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_multiplex_program(Client, MultiplexId, ProgramName, QueryMap, HeadersMap, []).
+
+describe_multiplex_program(Client, MultiplexId, ProgramName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), "/programs/", aws_util:encode_uri(ProgramName), ""],
     SuccessStatusCode = 200,
 
@@ -597,9 +652,14 @@ describe_multiplex_program(Client, MultiplexId, ProgramName, Options)
 %% @doc Get details for an offering.
 describe_offering(Client, OfferingId)
   when is_map(Client) ->
-    describe_offering(Client, OfferingId, []).
-describe_offering(Client, OfferingId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_offering(Client, OfferingId, #{}, #{}).
+
+describe_offering(Client, OfferingId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_offering(Client, OfferingId, QueryMap, HeadersMap, []).
+
+describe_offering(Client, OfferingId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/prod/offerings/", aws_util:encode_uri(OfferingId), ""],
     SuccessStatusCode = 200,
 
@@ -612,9 +672,14 @@ describe_offering(Client, OfferingId, Options)
 %% @doc Get details for a reservation.
 describe_reservation(Client, ReservationId)
   when is_map(Client) ->
-    describe_reservation(Client, ReservationId, []).
-describe_reservation(Client, ReservationId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_reservation(Client, ReservationId, #{}, #{}).
+
+describe_reservation(Client, ReservationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_reservation(Client, ReservationId, QueryMap, HeadersMap, []).
+
+describe_reservation(Client, ReservationId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/prod/reservations/", aws_util:encode_uri(ReservationId), ""],
     SuccessStatusCode = 200,
 
@@ -625,11 +690,16 @@ describe_reservation(Client, ReservationId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get a channel schedule
-describe_schedule(Client, ChannelId, MaxResults, NextToken)
+describe_schedule(Client, ChannelId)
   when is_map(Client) ->
-    describe_schedule(Client, ChannelId, MaxResults, NextToken, []).
-describe_schedule(Client, ChannelId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_schedule(Client, ChannelId, #{}, #{}).
+
+describe_schedule(Client, ChannelId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_schedule(Client, ChannelId, QueryMap, HeadersMap, []).
+
+describe_schedule(Client, ChannelId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), "/schedule"],
     SuccessStatusCode = 200,
 
@@ -637,19 +707,24 @@ describe_schedule(Client, ChannelId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Produces list of channels that have been created
-list_channels(Client, MaxResults, NextToken)
+list_channels(Client)
   when is_map(Client) ->
-    list_channels(Client, MaxResults, NextToken, []).
-list_channels(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_channels(Client, #{}, #{}).
+
+list_channels(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_channels(Client, QueryMap, HeadersMap, []).
+
+list_channels(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/prod/channels"],
     SuccessStatusCode = 200,
 
@@ -657,8 +732,8 @@ list_channels(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -668,11 +743,16 @@ list_channels(Client, MaxResults, NextToken, Options)
 %%
 %% List input devices that you are transferring from your AWS account or
 %% input devices that another AWS account is transferring to you.
-list_input_device_transfers(Client, MaxResults, NextToken, TransferType)
+list_input_device_transfers(Client, TransferType)
   when is_map(Client) ->
-    list_input_device_transfers(Client, MaxResults, NextToken, TransferType, []).
-list_input_device_transfers(Client, MaxResults, NextToken, TransferType, Options)
-  when is_map(Client), is_list(Options) ->
+    list_input_device_transfers(Client, TransferType, #{}, #{}).
+
+list_input_device_transfers(Client, TransferType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_input_device_transfers(Client, TransferType, QueryMap, HeadersMap, []).
+
+list_input_device_transfers(Client, TransferType, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/prod/inputDeviceTransfers"],
     SuccessStatusCode = 200,
 
@@ -680,8 +760,8 @@ list_input_device_transfers(Client, MaxResults, NextToken, TransferType, Options
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"transferType">>, TransferType}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
@@ -689,11 +769,16 @@ list_input_device_transfers(Client, MaxResults, NextToken, TransferType, Options
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List input devices
-list_input_devices(Client, MaxResults, NextToken)
+list_input_devices(Client)
   when is_map(Client) ->
-    list_input_devices(Client, MaxResults, NextToken, []).
-list_input_devices(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_input_devices(Client, #{}, #{}).
+
+list_input_devices(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_input_devices(Client, QueryMap, HeadersMap, []).
+
+list_input_devices(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/prod/inputDevices"],
     SuccessStatusCode = 200,
 
@@ -701,19 +786,24 @@ list_input_devices(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Produces a list of Input Security Groups for an account
-list_input_security_groups(Client, MaxResults, NextToken)
+list_input_security_groups(Client)
   when is_map(Client) ->
-    list_input_security_groups(Client, MaxResults, NextToken, []).
-list_input_security_groups(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_input_security_groups(Client, #{}, #{}).
+
+list_input_security_groups(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_input_security_groups(Client, QueryMap, HeadersMap, []).
+
+list_input_security_groups(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/prod/inputSecurityGroups"],
     SuccessStatusCode = 200,
 
@@ -721,19 +811,24 @@ list_input_security_groups(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Produces list of inputs that have been created
-list_inputs(Client, MaxResults, NextToken)
+list_inputs(Client)
   when is_map(Client) ->
-    list_inputs(Client, MaxResults, NextToken, []).
-list_inputs(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_inputs(Client, #{}, #{}).
+
+list_inputs(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_inputs(Client, QueryMap, HeadersMap, []).
+
+list_inputs(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/prod/inputs"],
     SuccessStatusCode = 200,
 
@@ -741,19 +836,24 @@ list_inputs(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the programs that currently exist for a specific multiplex.
-list_multiplex_programs(Client, MultiplexId, MaxResults, NextToken)
+list_multiplex_programs(Client, MultiplexId)
   when is_map(Client) ->
-    list_multiplex_programs(Client, MultiplexId, MaxResults, NextToken, []).
-list_multiplex_programs(Client, MultiplexId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_multiplex_programs(Client, MultiplexId, #{}, #{}).
+
+list_multiplex_programs(Client, MultiplexId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_multiplex_programs(Client, MultiplexId, QueryMap, HeadersMap, []).
+
+list_multiplex_programs(Client, MultiplexId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), "/programs"],
     SuccessStatusCode = 200,
 
@@ -761,19 +861,24 @@ list_multiplex_programs(Client, MultiplexId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieve a list of the existing multiplexes.
-list_multiplexes(Client, MaxResults, NextToken)
+list_multiplexes(Client)
   when is_map(Client) ->
-    list_multiplexes(Client, MaxResults, NextToken, []).
-list_multiplexes(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_multiplexes(Client, #{}, #{}).
+
+list_multiplexes(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_multiplexes(Client, QueryMap, HeadersMap, []).
+
+list_multiplexes(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/prod/multiplexes"],
     SuccessStatusCode = 200,
 
@@ -781,19 +886,24 @@ list_multiplexes(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List offerings available for purchase.
-list_offerings(Client, ChannelClass, ChannelConfiguration, Codec, Duration, MaxResults, MaximumBitrate, MaximumFramerate, NextToken, Resolution, ResourceType, SpecialFeature, VideoQuality)
+list_offerings(Client)
   when is_map(Client) ->
-    list_offerings(Client, ChannelClass, ChannelConfiguration, Codec, Duration, MaxResults, MaximumBitrate, MaximumFramerate, NextToken, Resolution, ResourceType, SpecialFeature, VideoQuality, []).
-list_offerings(Client, ChannelClass, ChannelConfiguration, Codec, Duration, MaxResults, MaximumBitrate, MaximumFramerate, NextToken, Resolution, ResourceType, SpecialFeature, VideoQuality, Options)
-  when is_map(Client), is_list(Options) ->
+    list_offerings(Client, #{}, #{}).
+
+list_offerings(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_offerings(Client, QueryMap, HeadersMap, []).
+
+list_offerings(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/prod/offerings"],
     SuccessStatusCode = 200,
 
@@ -801,29 +911,34 @@ list_offerings(Client, ChannelClass, ChannelConfiguration, Codec, Duration, MaxR
 
     Query0_ =
       [
-        {<<"channelClass">>, ChannelClass},
-        {<<"channelConfiguration">>, ChannelConfiguration},
-        {<<"codec">>, Codec},
-        {<<"duration">>, Duration},
-        {<<"maxResults">>, MaxResults},
-        {<<"maximumBitrate">>, MaximumBitrate},
-        {<<"maximumFramerate">>, MaximumFramerate},
-        {<<"nextToken">>, NextToken},
-        {<<"resolution">>, Resolution},
-        {<<"resourceType">>, ResourceType},
-        {<<"specialFeature">>, SpecialFeature},
-        {<<"videoQuality">>, VideoQuality}
+        {<<"channelClass">>, maps:get(<<"channelClass">>, QueryMap, undefined)},
+        {<<"channelConfiguration">>, maps:get(<<"channelConfiguration">>, QueryMap, undefined)},
+        {<<"codec">>, maps:get(<<"codec">>, QueryMap, undefined)},
+        {<<"duration">>, maps:get(<<"duration">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"maximumBitrate">>, maps:get(<<"maximumBitrate">>, QueryMap, undefined)},
+        {<<"maximumFramerate">>, maps:get(<<"maximumFramerate">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"resolution">>, maps:get(<<"resolution">>, QueryMap, undefined)},
+        {<<"resourceType">>, maps:get(<<"resourceType">>, QueryMap, undefined)},
+        {<<"specialFeature">>, maps:get(<<"specialFeature">>, QueryMap, undefined)},
+        {<<"videoQuality">>, maps:get(<<"videoQuality">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List purchased reservations.
-list_reservations(Client, ChannelClass, Codec, MaxResults, MaximumBitrate, MaximumFramerate, NextToken, Resolution, ResourceType, SpecialFeature, VideoQuality)
+list_reservations(Client)
   when is_map(Client) ->
-    list_reservations(Client, ChannelClass, Codec, MaxResults, MaximumBitrate, MaximumFramerate, NextToken, Resolution, ResourceType, SpecialFeature, VideoQuality, []).
-list_reservations(Client, ChannelClass, Codec, MaxResults, MaximumBitrate, MaximumFramerate, NextToken, Resolution, ResourceType, SpecialFeature, VideoQuality, Options)
-  when is_map(Client), is_list(Options) ->
+    list_reservations(Client, #{}, #{}).
+
+list_reservations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_reservations(Client, QueryMap, HeadersMap, []).
+
+list_reservations(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/prod/reservations"],
     SuccessStatusCode = 200,
 
@@ -831,16 +946,16 @@ list_reservations(Client, ChannelClass, Codec, MaxResults, MaximumBitrate, Maxim
 
     Query0_ =
       [
-        {<<"channelClass">>, ChannelClass},
-        {<<"codec">>, Codec},
-        {<<"maxResults">>, MaxResults},
-        {<<"maximumBitrate">>, MaximumBitrate},
-        {<<"maximumFramerate">>, MaximumFramerate},
-        {<<"nextToken">>, NextToken},
-        {<<"resolution">>, Resolution},
-        {<<"resourceType">>, ResourceType},
-        {<<"specialFeature">>, SpecialFeature},
-        {<<"videoQuality">>, VideoQuality}
+        {<<"channelClass">>, maps:get(<<"channelClass">>, QueryMap, undefined)},
+        {<<"codec">>, maps:get(<<"codec">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"maximumBitrate">>, maps:get(<<"maximumBitrate">>, QueryMap, undefined)},
+        {<<"maximumFramerate">>, maps:get(<<"maximumFramerate">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"resolution">>, maps:get(<<"resolution">>, QueryMap, undefined)},
+        {<<"resourceType">>, maps:get(<<"resourceType">>, QueryMap, undefined)},
+        {<<"specialFeature">>, maps:get(<<"specialFeature">>, QueryMap, undefined)},
+        {<<"videoQuality">>, maps:get(<<"videoQuality">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -849,9 +964,14 @@ list_reservations(Client, ChannelClass, Codec, MaxResults, MaximumBitrate, Maxim
 %% @doc Produces list of tags that have been created for a resource
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/prod/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 

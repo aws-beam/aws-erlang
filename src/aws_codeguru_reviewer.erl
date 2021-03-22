@@ -26,23 +26,31 @@
          create_code_review/2,
          create_code_review/3,
          describe_code_review/2,
-         describe_code_review/3,
-         describe_recommendation_feedback/4,
+         describe_code_review/4,
+         describe_code_review/5,
+         describe_recommendation_feedback/3,
          describe_recommendation_feedback/5,
+         describe_recommendation_feedback/6,
          describe_repository_association/2,
-         describe_repository_association/3,
+         describe_repository_association/4,
+         describe_repository_association/5,
          disassociate_repository/3,
          disassociate_repository/4,
-         list_code_reviews/7,
-         list_code_reviews/8,
-         list_recommendation_feedback/6,
-         list_recommendation_feedback/7,
+         list_code_reviews/2,
+         list_code_reviews/4,
+         list_code_reviews/5,
+         list_recommendation_feedback/2,
+         list_recommendation_feedback/4,
+         list_recommendation_feedback/5,
+         list_recommendations/2,
          list_recommendations/4,
          list_recommendations/5,
-         list_repository_associations/7,
-         list_repository_associations/8,
+         list_repository_associations/1,
+         list_repository_associations/3,
+         list_repository_associations/4,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          put_recommendation_feedback/2,
          put_recommendation_feedback/3,
          tag_resource/3,
@@ -118,9 +126,14 @@ create_code_review(Client, Input0, Options) ->
 %% status.
 describe_code_review(Client, CodeReviewArn)
   when is_map(Client) ->
-    describe_code_review(Client, CodeReviewArn, []).
-describe_code_review(Client, CodeReviewArn, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_code_review(Client, CodeReviewArn, #{}, #{}).
+
+describe_code_review(Client, CodeReviewArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_code_review(Client, CodeReviewArn, QueryMap, HeadersMap, []).
+
+describe_code_review(Client, CodeReviewArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/codereviews/", aws_util:encode_uri(CodeReviewArn), ""],
     SuccessStatusCode = undefined,
 
@@ -132,11 +145,16 @@ describe_code_review(Client, CodeReviewArn, Options)
 
 %% @doc Describes the customer feedback for a CodeGuru Reviewer
 %% recommendation.
-describe_recommendation_feedback(Client, CodeReviewArn, RecommendationId, UserId)
+describe_recommendation_feedback(Client, CodeReviewArn, RecommendationId)
   when is_map(Client) ->
-    describe_recommendation_feedback(Client, CodeReviewArn, RecommendationId, UserId, []).
-describe_recommendation_feedback(Client, CodeReviewArn, RecommendationId, UserId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_recommendation_feedback(Client, CodeReviewArn, RecommendationId, #{}, #{}).
+
+describe_recommendation_feedback(Client, CodeReviewArn, RecommendationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_recommendation_feedback(Client, CodeReviewArn, RecommendationId, QueryMap, HeadersMap, []).
+
+describe_recommendation_feedback(Client, CodeReviewArn, RecommendationId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/feedback/", aws_util:encode_uri(CodeReviewArn), ""],
     SuccessStatusCode = undefined,
 
@@ -145,7 +163,7 @@ describe_recommendation_feedback(Client, CodeReviewArn, RecommendationId, UserId
     Query0_ =
       [
         {<<"RecommendationId">>, RecommendationId},
-        {<<"UserId">>, UserId}
+        {<<"UserId">>, maps:get(<<"UserId">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -155,9 +173,14 @@ describe_recommendation_feedback(Client, CodeReviewArn, RecommendationId, UserId
 %% about the requested repository association.
 describe_repository_association(Client, AssociationArn)
   when is_map(Client) ->
-    describe_repository_association(Client, AssociationArn, []).
-describe_repository_association(Client, AssociationArn, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_repository_association(Client, AssociationArn, #{}, #{}).
+
+describe_repository_association(Client, AssociationArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_repository_association(Client, AssociationArn, QueryMap, HeadersMap, []).
+
+describe_repository_association(Client, AssociationArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/associations/", aws_util:encode_uri(AssociationArn), ""],
     SuccessStatusCode = undefined,
 
@@ -186,11 +209,16 @@ disassociate_repository(Client, AssociationArn, Input0, Options) ->
 
 %% @doc Lists all the code reviews that the customer has created in the past
 %% 90 days.
-list_code_reviews(Client, MaxResults, NextToken, ProviderTypes, RepositoryNames, States, Type)
+list_code_reviews(Client, Type)
   when is_map(Client) ->
-    list_code_reviews(Client, MaxResults, NextToken, ProviderTypes, RepositoryNames, States, Type, []).
-list_code_reviews(Client, MaxResults, NextToken, ProviderTypes, RepositoryNames, States, Type, Options)
-  when is_map(Client), is_list(Options) ->
+    list_code_reviews(Client, Type, #{}, #{}).
+
+list_code_reviews(Client, Type, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_code_reviews(Client, Type, QueryMap, HeadersMap, []).
+
+list_code_reviews(Client, Type, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/codereviews"],
     SuccessStatusCode = undefined,
 
@@ -198,11 +226,11 @@ list_code_reviews(Client, MaxResults, NextToken, ProviderTypes, RepositoryNames,
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken},
-        {<<"ProviderTypes">>, ProviderTypes},
-        {<<"RepositoryNames">>, RepositoryNames},
-        {<<"States">>, States},
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"ProviderTypes">>, maps:get(<<"ProviderTypes">>, QueryMap, undefined)},
+        {<<"RepositoryNames">>, maps:get(<<"RepositoryNames">>, QueryMap, undefined)},
+        {<<"States">>, maps:get(<<"States">>, QueryMap, undefined)},
         {<<"Type">>, Type}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
@@ -211,11 +239,16 @@ list_code_reviews(Client, MaxResults, NextToken, ProviderTypes, RepositoryNames,
 
 %% @doc Returns a list of `RecommendationFeedbackSummary' objects that
 %% contain customer recommendation feedback for all CodeGuru Reviewer users.
-list_recommendation_feedback(Client, CodeReviewArn, MaxResults, NextToken, RecommendationIds, UserIds)
+list_recommendation_feedback(Client, CodeReviewArn)
   when is_map(Client) ->
-    list_recommendation_feedback(Client, CodeReviewArn, MaxResults, NextToken, RecommendationIds, UserIds, []).
-list_recommendation_feedback(Client, CodeReviewArn, MaxResults, NextToken, RecommendationIds, UserIds, Options)
-  when is_map(Client), is_list(Options) ->
+    list_recommendation_feedback(Client, CodeReviewArn, #{}, #{}).
+
+list_recommendation_feedback(Client, CodeReviewArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_recommendation_feedback(Client, CodeReviewArn, QueryMap, HeadersMap, []).
+
+list_recommendation_feedback(Client, CodeReviewArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/feedback/", aws_util:encode_uri(CodeReviewArn), "/RecommendationFeedback"],
     SuccessStatusCode = undefined,
 
@@ -223,21 +256,26 @@ list_recommendation_feedback(Client, CodeReviewArn, MaxResults, NextToken, Recom
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken},
-        {<<"RecommendationIds">>, RecommendationIds},
-        {<<"UserIds">>, UserIds}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"RecommendationIds">>, maps:get(<<"RecommendationIds">>, QueryMap, undefined)},
+        {<<"UserIds">>, maps:get(<<"UserIds">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the list of all recommendations for a completed code review.
-list_recommendations(Client, CodeReviewArn, MaxResults, NextToken)
+list_recommendations(Client, CodeReviewArn)
   when is_map(Client) ->
-    list_recommendations(Client, CodeReviewArn, MaxResults, NextToken, []).
-list_recommendations(Client, CodeReviewArn, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_recommendations(Client, CodeReviewArn, #{}, #{}).
+
+list_recommendations(Client, CodeReviewArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_recommendations(Client, CodeReviewArn, QueryMap, HeadersMap, []).
+
+list_recommendations(Client, CodeReviewArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/codereviews/", aws_util:encode_uri(CodeReviewArn), "/Recommendations"],
     SuccessStatusCode = undefined,
 
@@ -245,8 +283,8 @@ list_recommendations(Client, CodeReviewArn, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -257,11 +295,16 @@ list_recommendations(Client, CodeReviewArn, MaxResults, NextToken, Options)
 %%
 %% You can filter the returned list by `ProviderType' , `Name' , `State' ,
 %% and `Owner' .
-list_repository_associations(Client, MaxResults, Names, NextToken, Owners, ProviderTypes, States)
+list_repository_associations(Client)
   when is_map(Client) ->
-    list_repository_associations(Client, MaxResults, Names, NextToken, Owners, ProviderTypes, States, []).
-list_repository_associations(Client, MaxResults, Names, NextToken, Owners, ProviderTypes, States, Options)
-  when is_map(Client), is_list(Options) ->
+    list_repository_associations(Client, #{}, #{}).
+
+list_repository_associations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_repository_associations(Client, QueryMap, HeadersMap, []).
+
+list_repository_associations(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/associations"],
     SuccessStatusCode = undefined,
 
@@ -269,12 +312,12 @@ list_repository_associations(Client, MaxResults, Names, NextToken, Owners, Provi
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"Name">>, Names},
-        {<<"NextToken">>, NextToken},
-        {<<"Owner">>, Owners},
-        {<<"ProviderType">>, ProviderTypes},
-        {<<"State">>, States}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"Name">>, maps:get(<<"Name">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"Owner">>, maps:get(<<"Owner">>, QueryMap, undefined)},
+        {<<"ProviderType">>, maps:get(<<"ProviderType">>, QueryMap, undefined)},
+        {<<"State">>, maps:get(<<"State">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -284,9 +327,14 @@ list_repository_associations(Client, MaxResults, Names, NextToken, Owners, Provi
 %% resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 

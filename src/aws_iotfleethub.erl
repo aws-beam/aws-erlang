@@ -14,11 +14,14 @@
          delete_application/3,
          delete_application/4,
          describe_application/2,
-         describe_application/3,
-         list_applications/2,
+         describe_application/4,
+         describe_application/5,
+         list_applications/1,
          list_applications/3,
+         list_applications/4,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -78,9 +81,14 @@ delete_application(Client, ApplicationId, Input0, Options) ->
 %% subject to change.
 describe_application(Client, ApplicationId)
   when is_map(Client) ->
-    describe_application(Client, ApplicationId, []).
-describe_application(Client, ApplicationId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_application(Client, ApplicationId, #{}, #{}).
+
+describe_application(Client, ApplicationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_application(Client, ApplicationId, QueryMap, HeadersMap, []).
+
+describe_application(Client, ApplicationId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
     SuccessStatusCode = 200,
 
@@ -95,11 +103,16 @@ describe_application(Client, ApplicationId, Options)
 %%
 %% Fleet Hub for AWS IoT Device Management is in public preview and is
 %% subject to change.
-list_applications(Client, NextToken)
+list_applications(Client)
   when is_map(Client) ->
-    list_applications(Client, NextToken, []).
-list_applications(Client, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_applications(Client, #{}, #{}).
+
+list_applications(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_applications(Client, QueryMap, HeadersMap, []).
+
+list_applications(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/applications"],
     SuccessStatusCode = 200,
 
@@ -107,7 +120,7 @@ list_applications(Client, NextToken, Options)
 
     Query0_ =
       [
-        {<<"nextToken">>, NextToken}
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -119,9 +132,14 @@ list_applications(Client, NextToken, Options)
 %% subject to change.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 

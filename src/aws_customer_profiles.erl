@@ -38,27 +38,35 @@
          delete_profile_object_type/4,
          delete_profile_object_type/5,
          get_domain/2,
-         get_domain/3,
+         get_domain/4,
+         get_domain/5,
          get_integration/3,
          get_integration/4,
          get_profile_object_type/3,
-         get_profile_object_type/4,
+         get_profile_object_type/5,
+         get_profile_object_type/6,
          get_profile_object_type_template/2,
-         get_profile_object_type_template/3,
+         get_profile_object_type_template/4,
+         get_profile_object_type_template/5,
          list_account_integrations/2,
          list_account_integrations/3,
+         list_domains/1,
          list_domains/3,
          list_domains/4,
+         list_integrations/2,
          list_integrations/4,
          list_integrations/5,
+         list_profile_object_type_templates/1,
          list_profile_object_type_templates/3,
          list_profile_object_type_templates/4,
+         list_profile_object_types/2,
          list_profile_object_types/4,
          list_profile_object_types/5,
          list_profile_objects/3,
          list_profile_objects/4,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          put_integration/3,
          put_integration/4,
          put_profile_object/3,
@@ -252,9 +260,14 @@ delete_profile_object_type(Client, DomainName, ObjectTypeName, Input0, Options) 
 %% @doc Returns information about a specific domain.
 get_domain(Client, DomainName)
   when is_map(Client) ->
-    get_domain(Client, DomainName, []).
-get_domain(Client, DomainName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_domain(Client, DomainName, #{}, #{}).
+
+get_domain(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_domain(Client, DomainName, QueryMap, HeadersMap, []).
+
+get_domain(Client, DomainName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), ""],
     SuccessStatusCode = undefined,
 
@@ -283,9 +296,14 @@ get_integration(Client, DomainName, Input0, Options) ->
 %% @doc Returns the object types for a specific domain.
 get_profile_object_type(Client, DomainName, ObjectTypeName)
   when is_map(Client) ->
-    get_profile_object_type(Client, DomainName, ObjectTypeName, []).
-get_profile_object_type(Client, DomainName, ObjectTypeName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_profile_object_type(Client, DomainName, ObjectTypeName, #{}, #{}).
+
+get_profile_object_type(Client, DomainName, ObjectTypeName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_profile_object_type(Client, DomainName, ObjectTypeName, QueryMap, HeadersMap, []).
+
+get_profile_object_type(Client, DomainName, ObjectTypeName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/object-types/", aws_util:encode_uri(ObjectTypeName), ""],
     SuccessStatusCode = undefined,
 
@@ -303,9 +321,14 @@ get_profile_object_type(Client, DomainName, ObjectTypeName, Options)
 %% TemplateIds, it uses the mappings from the template.
 get_profile_object_type_template(Client, TemplateId)
   when is_map(Client) ->
-    get_profile_object_type_template(Client, TemplateId, []).
-get_profile_object_type_template(Client, TemplateId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_profile_object_type_template(Client, TemplateId, #{}, #{}).
+
+get_profile_object_type_template(Client, TemplateId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_profile_object_type_template(Client, TemplateId, QueryMap, HeadersMap, []).
+
+get_profile_object_type_template(Client, TemplateId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/templates/", aws_util:encode_uri(TemplateId), ""],
     SuccessStatusCode = undefined,
 
@@ -336,11 +359,16 @@ list_account_integrations(Client, Input0, Options) ->
 
 %% @doc Returns a list of all the domains for an AWS account that have been
 %% created.
-list_domains(Client, MaxResults, NextToken)
+list_domains(Client)
   when is_map(Client) ->
-    list_domains(Client, MaxResults, NextToken, []).
-list_domains(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_domains(Client, #{}, #{}).
+
+list_domains(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_domains(Client, QueryMap, HeadersMap, []).
+
+list_domains(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/domains"],
     SuccessStatusCode = undefined,
 
@@ -348,19 +376,24 @@ list_domains(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all of the integrations in your domain.
-list_integrations(Client, DomainName, MaxResults, NextToken)
+list_integrations(Client, DomainName)
   when is_map(Client) ->
-    list_integrations(Client, DomainName, MaxResults, NextToken, []).
-list_integrations(Client, DomainName, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_integrations(Client, DomainName, #{}, #{}).
+
+list_integrations(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_integrations(Client, DomainName, QueryMap, HeadersMap, []).
+
+list_integrations(Client, DomainName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/integrations"],
     SuccessStatusCode = undefined,
 
@@ -368,19 +401,24 @@ list_integrations(Client, DomainName, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all of the template information for object types.
-list_profile_object_type_templates(Client, MaxResults, NextToken)
+list_profile_object_type_templates(Client)
   when is_map(Client) ->
-    list_profile_object_type_templates(Client, MaxResults, NextToken, []).
-list_profile_object_type_templates(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_profile_object_type_templates(Client, #{}, #{}).
+
+list_profile_object_type_templates(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_profile_object_type_templates(Client, QueryMap, HeadersMap, []).
+
+list_profile_object_type_templates(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/templates"],
     SuccessStatusCode = undefined,
 
@@ -388,19 +426,24 @@ list_profile_object_type_templates(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all of the templates available within the service.
-list_profile_object_types(Client, DomainName, MaxResults, NextToken)
+list_profile_object_types(Client, DomainName)
   when is_map(Client) ->
-    list_profile_object_types(Client, DomainName, MaxResults, NextToken, []).
-list_profile_object_types(Client, DomainName, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_profile_object_types(Client, DomainName, #{}, #{}).
+
+list_profile_object_types(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_profile_object_types(Client, DomainName, QueryMap, HeadersMap, []).
+
+list_profile_object_types(Client, DomainName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/object-types"],
     SuccessStatusCode = undefined,
 
@@ -408,8 +451,8 @@ list_profile_object_types(Client, DomainName, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -441,9 +484,14 @@ list_profile_objects(Client, DomainName, Input0, Options) ->
 %% integrations can be tagged.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 

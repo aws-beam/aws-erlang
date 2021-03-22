@@ -31,37 +31,53 @@
          delete_storage_lens_configuration_tagging/3,
          delete_storage_lens_configuration_tagging/4,
          describe_job/3,
-         describe_job/4,
+         describe_job/5,
+         describe_job/6,
          get_access_point/3,
-         get_access_point/4,
+         get_access_point/5,
+         get_access_point/6,
          get_access_point_policy/3,
-         get_access_point_policy/4,
+         get_access_point_policy/5,
+         get_access_point_policy/6,
          get_access_point_policy_status/3,
-         get_access_point_policy_status/4,
+         get_access_point_policy_status/5,
+         get_access_point_policy_status/6,
          get_bucket/3,
-         get_bucket/4,
+         get_bucket/5,
+         get_bucket/6,
          get_bucket_lifecycle_configuration/3,
-         get_bucket_lifecycle_configuration/4,
+         get_bucket_lifecycle_configuration/5,
+         get_bucket_lifecycle_configuration/6,
          get_bucket_policy/3,
-         get_bucket_policy/4,
+         get_bucket_policy/5,
+         get_bucket_policy/6,
          get_bucket_tagging/3,
-         get_bucket_tagging/4,
+         get_bucket_tagging/5,
+         get_bucket_tagging/6,
          get_job_tagging/3,
-         get_job_tagging/4,
+         get_job_tagging/5,
+         get_job_tagging/6,
          get_public_access_block/2,
-         get_public_access_block/3,
+         get_public_access_block/4,
+         get_public_access_block/5,
          get_storage_lens_configuration/3,
-         get_storage_lens_configuration/4,
+         get_storage_lens_configuration/5,
+         get_storage_lens_configuration/6,
          get_storage_lens_configuration_tagging/3,
-         get_storage_lens_configuration_tagging/4,
+         get_storage_lens_configuration_tagging/5,
+         get_storage_lens_configuration_tagging/6,
+         list_access_points/2,
+         list_access_points/4,
          list_access_points/5,
-         list_access_points/6,
+         list_jobs/2,
+         list_jobs/4,
          list_jobs/5,
-         list_jobs/6,
+         list_regional_buckets/2,
+         list_regional_buckets/4,
          list_regional_buckets/5,
-         list_regional_buckets/6,
-         list_storage_lens_configurations/3,
+         list_storage_lens_configurations/2,
          list_storage_lens_configurations/4,
+         list_storage_lens_configurations/5,
          put_access_point_policy/3,
          put_access_point_policy/4,
          put_bucket_lifecycle_configuration/3,
@@ -663,9 +679,14 @@ delete_storage_lens_configuration_tagging(Client, ConfigId, Input0, Options) ->
 %% </li> </ul>
 describe_job(Client, JobId, AccountId)
   when is_map(Client) ->
-    describe_job(Client, JobId, AccountId, []).
-describe_job(Client, JobId, AccountId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_job(Client, JobId, AccountId, #{}, #{}).
+
+describe_job(Client, JobId, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_job(Client, JobId, AccountId, QueryMap, HeadersMap, []).
+
+describe_job(Client, JobId, AccountId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v20180820/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = undefined,
 
@@ -699,9 +720,14 @@ describe_job(Client, JobId, AccountId, Options)
 %% </li> </ul>
 get_access_point(Client, Name, AccountId)
   when is_map(Client) ->
-    get_access_point(Client, Name, AccountId, []).
-get_access_point(Client, Name, AccountId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_access_point(Client, Name, AccountId, #{}, #{}).
+
+get_access_point(Client, Name, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_access_point(Client, Name, AccountId, QueryMap, HeadersMap, []).
+
+get_access_point(Client, Name, AccountId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v20180820/accesspoint/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
 
@@ -727,9 +753,14 @@ get_access_point(Client, Name, AccountId, Options)
 %% </li> </ul>
 get_access_point_policy(Client, Name, AccountId)
   when is_map(Client) ->
-    get_access_point_policy(Client, Name, AccountId, []).
-get_access_point_policy(Client, Name, AccountId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_access_point_policy(Client, Name, AccountId, #{}, #{}).
+
+get_access_point_policy(Client, Name, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_access_point_policy(Client, Name, AccountId, QueryMap, HeadersMap, []).
+
+get_access_point_policy(Client, Name, AccountId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v20180820/accesspoint/", aws_util:encode_uri(Name), "/policy"],
     SuccessStatusCode = undefined,
 
@@ -751,9 +782,14 @@ get_access_point_policy(Client, Name, AccountId, Options)
 %% Storage Service Developer Guide.
 get_access_point_policy_status(Client, Name, AccountId)
   when is_map(Client) ->
-    get_access_point_policy_status(Client, Name, AccountId, []).
-get_access_point_policy_status(Client, Name, AccountId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_access_point_policy_status(Client, Name, AccountId, #{}, #{}).
+
+get_access_point_policy_status(Client, Name, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_access_point_policy_status(Client, Name, AccountId, QueryMap, HeadersMap, []).
+
+get_access_point_policy_status(Client, Name, AccountId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v20180820/accesspoint/", aws_util:encode_uri(Name), "/policyStatus"],
     SuccessStatusCode = undefined,
 
@@ -802,9 +838,14 @@ get_access_point_policy_status(Client, Name, AccountId, Options)
 %% </li> </ul>
 get_bucket(Client, Bucket, AccountId)
   when is_map(Client) ->
-    get_bucket(Client, Bucket, AccountId, []).
-get_bucket(Client, Bucket, AccountId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_bucket(Client, Bucket, AccountId, #{}, #{}).
+
+get_bucket(Client, Bucket, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_bucket(Client, Bucket, AccountId, QueryMap, HeadersMap, []).
+
+get_bucket(Client, Bucket, AccountId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), ""],
     SuccessStatusCode = undefined,
 
@@ -863,9 +904,14 @@ get_bucket(Client, Bucket, AccountId, Options)
 %% </li> </ul>
 get_bucket_lifecycle_configuration(Client, Bucket, AccountId)
   when is_map(Client) ->
-    get_bucket_lifecycle_configuration(Client, Bucket, AccountId, []).
-get_bucket_lifecycle_configuration(Client, Bucket, AccountId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_bucket_lifecycle_configuration(Client, Bucket, AccountId, #{}, #{}).
+
+get_bucket_lifecycle_configuration(Client, Bucket, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_bucket_lifecycle_configuration(Client, Bucket, AccountId, QueryMap, HeadersMap, []).
+
+get_bucket_lifecycle_configuration(Client, Bucket, AccountId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/lifecycleconfiguration"],
     SuccessStatusCode = undefined,
 
@@ -924,9 +970,14 @@ get_bucket_lifecycle_configuration(Client, Bucket, AccountId, Options)
 %% </li> </ul>
 get_bucket_policy(Client, Bucket, AccountId)
   when is_map(Client) ->
-    get_bucket_policy(Client, Bucket, AccountId, []).
-get_bucket_policy(Client, Bucket, AccountId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_bucket_policy(Client, Bucket, AccountId, #{}, #{}).
+
+get_bucket_policy(Client, Bucket, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_bucket_policy(Client, Bucket, AccountId, QueryMap, HeadersMap, []).
+
+get_bucket_policy(Client, Bucket, AccountId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/policy"],
     SuccessStatusCode = undefined,
 
@@ -976,9 +1027,14 @@ get_bucket_policy(Client, Bucket, AccountId, Options)
 %% </li> </ul>
 get_bucket_tagging(Client, Bucket, AccountId)
   when is_map(Client) ->
-    get_bucket_tagging(Client, Bucket, AccountId, []).
-get_bucket_tagging(Client, Bucket, AccountId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_bucket_tagging(Client, Bucket, AccountId, #{}, #{}).
+
+get_bucket_tagging(Client, Bucket, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_bucket_tagging(Client, Bucket, AccountId, QueryMap, HeadersMap, []).
+
+get_bucket_tagging(Client, Bucket, AccountId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/tagging"],
     SuccessStatusCode = undefined,
 
@@ -1010,9 +1066,14 @@ get_bucket_tagging(Client, Bucket, AccountId, Options)
 %% </li> </ul>
 get_job_tagging(Client, JobId, AccountId)
   when is_map(Client) ->
-    get_job_tagging(Client, JobId, AccountId, []).
-get_job_tagging(Client, JobId, AccountId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_job_tagging(Client, JobId, AccountId, #{}, #{}).
+
+get_job_tagging(Client, JobId, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_job_tagging(Client, JobId, AccountId, QueryMap, HeadersMap, []).
+
+get_job_tagging(Client, JobId, AccountId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v20180820/jobs/", aws_util:encode_uri(JobId), "/tagging"],
     SuccessStatusCode = undefined,
 
@@ -1039,9 +1100,14 @@ get_job_tagging(Client, JobId, AccountId, Options)
 %% </li> </ul>
 get_public_access_block(Client, AccountId)
   when is_map(Client) ->
-    get_public_access_block(Client, AccountId, []).
-get_public_access_block(Client, AccountId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_public_access_block(Client, AccountId, #{}, #{}).
+
+get_public_access_block(Client, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_public_access_block(Client, AccountId, QueryMap, HeadersMap, []).
+
+get_public_access_block(Client, AccountId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v20180820/configuration/publicAccessBlock"],
     SuccessStatusCode = undefined,
 
@@ -1067,9 +1133,14 @@ get_public_access_block(Client, AccountId, Options)
 %% Service Developer Guide.
 get_storage_lens_configuration(Client, ConfigId, AccountId)
   when is_map(Client) ->
-    get_storage_lens_configuration(Client, ConfigId, AccountId, []).
-get_storage_lens_configuration(Client, ConfigId, AccountId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_storage_lens_configuration(Client, ConfigId, AccountId, #{}, #{}).
+
+get_storage_lens_configuration(Client, ConfigId, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_storage_lens_configuration(Client, ConfigId, AccountId, QueryMap, HeadersMap, []).
+
+get_storage_lens_configuration(Client, ConfigId, AccountId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v20180820/storagelens/", aws_util:encode_uri(ConfigId), ""],
     SuccessStatusCode = undefined,
 
@@ -1095,9 +1166,14 @@ get_storage_lens_configuration(Client, ConfigId, AccountId, Options)
 %% Storage Service Developer Guide.
 get_storage_lens_configuration_tagging(Client, ConfigId, AccountId)
   when is_map(Client) ->
-    get_storage_lens_configuration_tagging(Client, ConfigId, AccountId, []).
-get_storage_lens_configuration_tagging(Client, ConfigId, AccountId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_storage_lens_configuration_tagging(Client, ConfigId, AccountId, #{}, #{}).
+
+get_storage_lens_configuration_tagging(Client, ConfigId, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_storage_lens_configuration_tagging(Client, ConfigId, AccountId, QueryMap, HeadersMap, []).
+
+get_storage_lens_configuration_tagging(Client, ConfigId, AccountId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v20180820/storagelens/", aws_util:encode_uri(ConfigId), "/tagging"],
     SuccessStatusCode = undefined,
 
@@ -1135,11 +1211,16 @@ get_storage_lens_configuration_tagging(Client, ConfigId, AccountId, Options)
 %% </li> <li> GetAccessPoint
 %%
 %% </li> </ul>
-list_access_points(Client, Bucket, MaxResults, NextToken, AccountId)
+list_access_points(Client, AccountId)
   when is_map(Client) ->
-    list_access_points(Client, Bucket, MaxResults, NextToken, AccountId, []).
-list_access_points(Client, Bucket, MaxResults, NextToken, AccountId, Options)
-  when is_map(Client), is_list(Options) ->
+    list_access_points(Client, AccountId, #{}, #{}).
+
+list_access_points(Client, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_access_points(Client, AccountId, QueryMap, HeadersMap, []).
+
+list_access_points(Client, AccountId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v20180820/accesspoint"],
     SuccessStatusCode = undefined,
 
@@ -1151,9 +1232,9 @@ list_access_points(Client, Bucket, MaxResults, NextToken, AccountId, Options)
 
     Query0_ =
       [
-        {<<"bucket">>, Bucket},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"bucket">>, maps:get(<<"bucket">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1176,11 +1257,16 @@ list_access_points(Client, Bucket, MaxResults, NextToken, AccountId, Options)
 %% </li> <li> UpdateJobStatus
 %%
 %% </li> </ul>
-list_jobs(Client, JobStatuses, MaxResults, NextToken, AccountId)
+list_jobs(Client, AccountId)
   when is_map(Client) ->
-    list_jobs(Client, JobStatuses, MaxResults, NextToken, AccountId, []).
-list_jobs(Client, JobStatuses, MaxResults, NextToken, AccountId, Options)
-  when is_map(Client), is_list(Options) ->
+    list_jobs(Client, AccountId, #{}, #{}).
+
+list_jobs(Client, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_jobs(Client, AccountId, QueryMap, HeadersMap, []).
+
+list_jobs(Client, AccountId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v20180820/jobs"],
     SuccessStatusCode = undefined,
 
@@ -1192,9 +1278,9 @@ list_jobs(Client, JobStatuses, MaxResults, NextToken, AccountId, Options)
 
     Query0_ =
       [
-        {<<"jobStatuses">>, JobStatuses},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"jobStatuses">>, maps:get(<<"jobStatuses">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1209,25 +1295,30 @@ list_jobs(Client, JobStatuses, MaxResults, NextToken, AccountId, Options)
 %% For an example of the request syntax for Amazon S3 on Outposts that uses
 %% the S3 on Outposts endpoint hostname prefix and `x-amz-outpost-id' in your
 %% request, see the Examples section.
-list_regional_buckets(Client, MaxResults, NextToken, AccountId, OutpostId)
+list_regional_buckets(Client, AccountId)
   when is_map(Client) ->
-    list_regional_buckets(Client, MaxResults, NextToken, AccountId, OutpostId, []).
-list_regional_buckets(Client, MaxResults, NextToken, AccountId, OutpostId, Options)
-  when is_map(Client), is_list(Options) ->
+    list_regional_buckets(Client, AccountId, #{}, #{}).
+
+list_regional_buckets(Client, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_regional_buckets(Client, AccountId, QueryMap, HeadersMap, []).
+
+list_regional_buckets(Client, AccountId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v20180820/bucket"],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
         {<<"x-amz-account-id">>, AccountId},
-        {<<"x-amz-outpost-id">>, OutpostId}
+        {<<"x-amz-outpost-id">>, maps:get(<<"x-amz-outpost-id">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1243,11 +1334,16 @@ list_regional_buckets(Client, MaxResults, NextToken, AccountId, OutpostId, Optio
 %% `s3:ListStorageLensConfigurations' action. For more information, see
 %% Setting permissions to use Amazon S3 Storage Lens in the Amazon Simple
 %% Storage Service Developer Guide.
-list_storage_lens_configurations(Client, NextToken, AccountId)
+list_storage_lens_configurations(Client, AccountId)
   when is_map(Client) ->
-    list_storage_lens_configurations(Client, NextToken, AccountId, []).
-list_storage_lens_configurations(Client, NextToken, AccountId, Options)
-  when is_map(Client), is_list(Options) ->
+    list_storage_lens_configurations(Client, AccountId, #{}, #{}).
+
+list_storage_lens_configurations(Client, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_storage_lens_configurations(Client, AccountId, QueryMap, HeadersMap, []).
+
+list_storage_lens_configurations(Client, AccountId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v20180820/storagelens"],
     SuccessStatusCode = undefined,
 
@@ -1259,7 +1355,7 @@ list_storage_lens_configurations(Client, NextToken, AccountId, Options)
 
     Query0_ =
       [
-        {<<"nextToken">>, NextToken}
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

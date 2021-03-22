@@ -38,27 +38,38 @@
          delete_infrastructure_configuration/2,
          delete_infrastructure_configuration/3,
          get_component/2,
-         get_component/3,
+         get_component/4,
+         get_component/5,
          get_component_policy/2,
-         get_component_policy/3,
+         get_component_policy/4,
+         get_component_policy/5,
          get_container_recipe/2,
-         get_container_recipe/3,
+         get_container_recipe/4,
+         get_container_recipe/5,
          get_container_recipe_policy/2,
-         get_container_recipe_policy/3,
+         get_container_recipe_policy/4,
+         get_container_recipe_policy/5,
          get_distribution_configuration/2,
-         get_distribution_configuration/3,
+         get_distribution_configuration/4,
+         get_distribution_configuration/5,
          get_image/2,
-         get_image/3,
+         get_image/4,
+         get_image/5,
          get_image_pipeline/2,
-         get_image_pipeline/3,
+         get_image_pipeline/4,
+         get_image_pipeline/5,
          get_image_policy/2,
-         get_image_policy/3,
+         get_image_policy/4,
+         get_image_policy/5,
          get_image_recipe/2,
-         get_image_recipe/3,
+         get_image_recipe/4,
+         get_image_recipe/5,
          get_image_recipe_policy/2,
-         get_image_recipe_policy/3,
+         get_image_recipe_policy/4,
+         get_image_recipe_policy/5,
          get_infrastructure_configuration/2,
-         get_infrastructure_configuration/3,
+         get_infrastructure_configuration/4,
+         get_infrastructure_configuration/5,
          import_component/2,
          import_component/3,
          list_component_build_versions/2,
@@ -84,7 +95,8 @@
          list_infrastructure_configurations/2,
          list_infrastructure_configurations/3,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          put_component_policy/2,
          put_component_policy/3,
          put_container_recipe_policy/2,
@@ -381,9 +393,14 @@ delete_infrastructure_configuration(Client, Input0, Options) ->
 %% @doc Gets a component object.
 get_component(Client, ComponentBuildVersionArn)
   when is_map(Client) ->
-    get_component(Client, ComponentBuildVersionArn, []).
-get_component(Client, ComponentBuildVersionArn, Options)
-  when is_map(Client), is_list(Options) ->
+    get_component(Client, ComponentBuildVersionArn, #{}, #{}).
+
+get_component(Client, ComponentBuildVersionArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_component(Client, ComponentBuildVersionArn, QueryMap, HeadersMap, []).
+
+get_component(Client, ComponentBuildVersionArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/GetComponent"],
     SuccessStatusCode = undefined,
 
@@ -400,9 +417,14 @@ get_component(Client, ComponentBuildVersionArn, Options)
 %% @doc Gets a component policy.
 get_component_policy(Client, ComponentArn)
   when is_map(Client) ->
-    get_component_policy(Client, ComponentArn, []).
-get_component_policy(Client, ComponentArn, Options)
-  when is_map(Client), is_list(Options) ->
+    get_component_policy(Client, ComponentArn, #{}, #{}).
+
+get_component_policy(Client, ComponentArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_component_policy(Client, ComponentArn, QueryMap, HeadersMap, []).
+
+get_component_policy(Client, ComponentArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/GetComponentPolicy"],
     SuccessStatusCode = undefined,
 
@@ -419,9 +441,14 @@ get_component_policy(Client, ComponentArn, Options)
 %% @doc Retrieves a container recipe.
 get_container_recipe(Client, ContainerRecipeArn)
   when is_map(Client) ->
-    get_container_recipe(Client, ContainerRecipeArn, []).
-get_container_recipe(Client, ContainerRecipeArn, Options)
-  when is_map(Client), is_list(Options) ->
+    get_container_recipe(Client, ContainerRecipeArn, #{}, #{}).
+
+get_container_recipe(Client, ContainerRecipeArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_container_recipe(Client, ContainerRecipeArn, QueryMap, HeadersMap, []).
+
+get_container_recipe(Client, ContainerRecipeArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/GetContainerRecipe"],
     SuccessStatusCode = undefined,
 
@@ -438,9 +465,14 @@ get_container_recipe(Client, ContainerRecipeArn, Options)
 %% @doc Retrieves the policy for a container recipe.
 get_container_recipe_policy(Client, ContainerRecipeArn)
   when is_map(Client) ->
-    get_container_recipe_policy(Client, ContainerRecipeArn, []).
-get_container_recipe_policy(Client, ContainerRecipeArn, Options)
-  when is_map(Client), is_list(Options) ->
+    get_container_recipe_policy(Client, ContainerRecipeArn, #{}, #{}).
+
+get_container_recipe_policy(Client, ContainerRecipeArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_container_recipe_policy(Client, ContainerRecipeArn, QueryMap, HeadersMap, []).
+
+get_container_recipe_policy(Client, ContainerRecipeArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/GetContainerRecipePolicy"],
     SuccessStatusCode = undefined,
 
@@ -457,9 +489,14 @@ get_container_recipe_policy(Client, ContainerRecipeArn, Options)
 %% @doc Gets a distribution configuration.
 get_distribution_configuration(Client, DistributionConfigurationArn)
   when is_map(Client) ->
-    get_distribution_configuration(Client, DistributionConfigurationArn, []).
-get_distribution_configuration(Client, DistributionConfigurationArn, Options)
-  when is_map(Client), is_list(Options) ->
+    get_distribution_configuration(Client, DistributionConfigurationArn, #{}, #{}).
+
+get_distribution_configuration(Client, DistributionConfigurationArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_distribution_configuration(Client, DistributionConfigurationArn, QueryMap, HeadersMap, []).
+
+get_distribution_configuration(Client, DistributionConfigurationArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/GetDistributionConfiguration"],
     SuccessStatusCode = undefined,
 
@@ -476,9 +513,14 @@ get_distribution_configuration(Client, DistributionConfigurationArn, Options)
 %% @doc Gets an image.
 get_image(Client, ImageBuildVersionArn)
   when is_map(Client) ->
-    get_image(Client, ImageBuildVersionArn, []).
-get_image(Client, ImageBuildVersionArn, Options)
-  when is_map(Client), is_list(Options) ->
+    get_image(Client, ImageBuildVersionArn, #{}, #{}).
+
+get_image(Client, ImageBuildVersionArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_image(Client, ImageBuildVersionArn, QueryMap, HeadersMap, []).
+
+get_image(Client, ImageBuildVersionArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/GetImage"],
     SuccessStatusCode = undefined,
 
@@ -495,9 +537,14 @@ get_image(Client, ImageBuildVersionArn, Options)
 %% @doc Gets an image pipeline.
 get_image_pipeline(Client, ImagePipelineArn)
   when is_map(Client) ->
-    get_image_pipeline(Client, ImagePipelineArn, []).
-get_image_pipeline(Client, ImagePipelineArn, Options)
-  when is_map(Client), is_list(Options) ->
+    get_image_pipeline(Client, ImagePipelineArn, #{}, #{}).
+
+get_image_pipeline(Client, ImagePipelineArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_image_pipeline(Client, ImagePipelineArn, QueryMap, HeadersMap, []).
+
+get_image_pipeline(Client, ImagePipelineArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/GetImagePipeline"],
     SuccessStatusCode = undefined,
 
@@ -514,9 +561,14 @@ get_image_pipeline(Client, ImagePipelineArn, Options)
 %% @doc Gets an image policy.
 get_image_policy(Client, ImageArn)
   when is_map(Client) ->
-    get_image_policy(Client, ImageArn, []).
-get_image_policy(Client, ImageArn, Options)
-  when is_map(Client), is_list(Options) ->
+    get_image_policy(Client, ImageArn, #{}, #{}).
+
+get_image_policy(Client, ImageArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_image_policy(Client, ImageArn, QueryMap, HeadersMap, []).
+
+get_image_policy(Client, ImageArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/GetImagePolicy"],
     SuccessStatusCode = undefined,
 
@@ -533,9 +585,14 @@ get_image_policy(Client, ImageArn, Options)
 %% @doc Gets an image recipe.
 get_image_recipe(Client, ImageRecipeArn)
   when is_map(Client) ->
-    get_image_recipe(Client, ImageRecipeArn, []).
-get_image_recipe(Client, ImageRecipeArn, Options)
-  when is_map(Client), is_list(Options) ->
+    get_image_recipe(Client, ImageRecipeArn, #{}, #{}).
+
+get_image_recipe(Client, ImageRecipeArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_image_recipe(Client, ImageRecipeArn, QueryMap, HeadersMap, []).
+
+get_image_recipe(Client, ImageRecipeArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/GetImageRecipe"],
     SuccessStatusCode = undefined,
 
@@ -552,9 +609,14 @@ get_image_recipe(Client, ImageRecipeArn, Options)
 %% @doc Gets an image recipe policy.
 get_image_recipe_policy(Client, ImageRecipeArn)
   when is_map(Client) ->
-    get_image_recipe_policy(Client, ImageRecipeArn, []).
-get_image_recipe_policy(Client, ImageRecipeArn, Options)
-  when is_map(Client), is_list(Options) ->
+    get_image_recipe_policy(Client, ImageRecipeArn, #{}, #{}).
+
+get_image_recipe_policy(Client, ImageRecipeArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_image_recipe_policy(Client, ImageRecipeArn, QueryMap, HeadersMap, []).
+
+get_image_recipe_policy(Client, ImageRecipeArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/GetImageRecipePolicy"],
     SuccessStatusCode = undefined,
 
@@ -571,9 +633,14 @@ get_image_recipe_policy(Client, ImageRecipeArn, Options)
 %% @doc Gets an infrastructure configuration.
 get_infrastructure_configuration(Client, InfrastructureConfigurationArn)
   when is_map(Client) ->
-    get_infrastructure_configuration(Client, InfrastructureConfigurationArn, []).
-get_infrastructure_configuration(Client, InfrastructureConfigurationArn, Options)
-  when is_map(Client), is_list(Options) ->
+    get_infrastructure_configuration(Client, InfrastructureConfigurationArn, #{}, #{}).
+
+get_infrastructure_configuration(Client, InfrastructureConfigurationArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_infrastructure_configuration(Client, InfrastructureConfigurationArn, QueryMap, HeadersMap, []).
+
+get_infrastructure_configuration(Client, InfrastructureConfigurationArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/GetInfrastructureConfiguration"],
     SuccessStatusCode = undefined,
 
@@ -786,9 +853,14 @@ list_infrastructure_configurations(Client, Input0, Options) ->
 %% @doc Returns the list of tags for the specified resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 

@@ -71,90 +71,133 @@
          delete_user/6,
          delete_user_by_principal_id/5,
          delete_user_by_principal_id/6,
+         describe_account_customization/2,
          describe_account_customization/4,
          describe_account_customization/5,
          describe_account_settings/2,
-         describe_account_settings/3,
+         describe_account_settings/4,
+         describe_account_settings/5,
          describe_analysis/3,
-         describe_analysis/4,
+         describe_analysis/5,
+         describe_analysis/6,
          describe_analysis_permissions/3,
-         describe_analysis_permissions/4,
+         describe_analysis_permissions/5,
+         describe_analysis_permissions/6,
+         describe_dashboard/3,
          describe_dashboard/5,
          describe_dashboard/6,
          describe_dashboard_permissions/3,
-         describe_dashboard_permissions/4,
+         describe_dashboard_permissions/5,
+         describe_dashboard_permissions/6,
          describe_data_set/3,
-         describe_data_set/4,
+         describe_data_set/5,
+         describe_data_set/6,
          describe_data_set_permissions/3,
-         describe_data_set_permissions/4,
+         describe_data_set_permissions/5,
+         describe_data_set_permissions/6,
          describe_data_source/3,
-         describe_data_source/4,
+         describe_data_source/5,
+         describe_data_source/6,
          describe_data_source_permissions/3,
-         describe_data_source_permissions/4,
+         describe_data_source_permissions/5,
+         describe_data_source_permissions/6,
          describe_group/4,
-         describe_group/5,
+         describe_group/6,
+         describe_group/7,
          describe_iam_policy_assignment/4,
-         describe_iam_policy_assignment/5,
+         describe_iam_policy_assignment/6,
+         describe_iam_policy_assignment/7,
          describe_ingestion/4,
-         describe_ingestion/5,
+         describe_ingestion/6,
+         describe_ingestion/7,
          describe_namespace/3,
-         describe_namespace/4,
+         describe_namespace/5,
+         describe_namespace/6,
+         describe_template/3,
          describe_template/5,
          describe_template/6,
          describe_template_alias/4,
-         describe_template_alias/5,
+         describe_template_alias/6,
+         describe_template_alias/7,
          describe_template_permissions/3,
-         describe_template_permissions/4,
+         describe_template_permissions/5,
+         describe_template_permissions/6,
+         describe_theme/3,
          describe_theme/5,
          describe_theme/6,
          describe_theme_alias/4,
-         describe_theme_alias/5,
+         describe_theme_alias/6,
+         describe_theme_alias/7,
          describe_theme_permissions/3,
-         describe_theme_permissions/4,
+         describe_theme_permissions/5,
+         describe_theme_permissions/6,
          describe_user/4,
-         describe_user/5,
-         get_dashboard_embed_url/11,
-         get_dashboard_embed_url/12,
+         describe_user/6,
+         describe_user/7,
+         get_dashboard_embed_url/4,
+         get_dashboard_embed_url/6,
+         get_dashboard_embed_url/7,
+         get_session_embed_url/2,
+         get_session_embed_url/4,
          get_session_embed_url/5,
-         get_session_embed_url/6,
+         list_analyses/2,
          list_analyses/4,
          list_analyses/5,
+         list_dashboard_versions/3,
          list_dashboard_versions/5,
          list_dashboard_versions/6,
+         list_dashboards/2,
          list_dashboards/4,
          list_dashboards/5,
+         list_data_sets/2,
          list_data_sets/4,
          list_data_sets/5,
+         list_data_sources/2,
          list_data_sources/4,
          list_data_sources/5,
+         list_group_memberships/4,
          list_group_memberships/6,
          list_group_memberships/7,
+         list_groups/3,
          list_groups/5,
          list_groups/6,
+         list_iam_policy_assignments/3,
          list_iam_policy_assignments/5,
          list_iam_policy_assignments/6,
+         list_iam_policy_assignments_for_user/4,
          list_iam_policy_assignments_for_user/6,
          list_iam_policy_assignments_for_user/7,
+         list_ingestions/3,
          list_ingestions/5,
          list_ingestions/6,
+         list_namespaces/2,
          list_namespaces/4,
          list_namespaces/5,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
+         list_template_aliases/3,
          list_template_aliases/5,
          list_template_aliases/6,
+         list_template_versions/3,
          list_template_versions/5,
          list_template_versions/6,
+         list_templates/2,
          list_templates/4,
          list_templates/5,
+         list_theme_aliases/3,
          list_theme_aliases/5,
          list_theme_aliases/6,
+         list_theme_versions/3,
          list_theme_versions/5,
          list_theme_versions/6,
+         list_themes/2,
+         list_themes/4,
          list_themes/5,
-         list_themes/6,
+         list_user_groups/4,
          list_user_groups/6,
          list_user_groups/7,
+         list_users/3,
          list_users/5,
          list_users/6,
          register_user/4,
@@ -857,11 +900,16 @@ delete_user_by_principal_id(Client, AwsAccountId, Namespace, PrincipalId, Input0
 %% each AWS Region where you want to apply the same customizations.
 %%
 %% </li> </ul>
-describe_account_customization(Client, AwsAccountId, Namespace, Resolved)
+describe_account_customization(Client, AwsAccountId)
   when is_map(Client) ->
-    describe_account_customization(Client, AwsAccountId, Namespace, Resolved, []).
-describe_account_customization(Client, AwsAccountId, Namespace, Resolved, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_account_customization(Client, AwsAccountId, #{}, #{}).
+
+describe_account_customization(Client, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_account_customization(Client, AwsAccountId, QueryMap, HeadersMap, []).
+
+describe_account_customization(Client, AwsAccountId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/customizations"],
     SuccessStatusCode = undefined,
 
@@ -869,8 +917,8 @@ describe_account_customization(Client, AwsAccountId, Namespace, Resolved, Option
 
     Query0_ =
       [
-        {<<"namespace">>, Namespace},
-        {<<"resolved">>, Resolved}
+        {<<"namespace">>, maps:get(<<"namespace">>, QueryMap, undefined)},
+        {<<"resolved">>, maps:get(<<"resolved">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -880,9 +928,14 @@ describe_account_customization(Client, AwsAccountId, Namespace, Resolved, Option
 %% subscription was first created in this AWS account.
 describe_account_settings(Client, AwsAccountId)
   when is_map(Client) ->
-    describe_account_settings(Client, AwsAccountId, []).
-describe_account_settings(Client, AwsAccountId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_account_settings(Client, AwsAccountId, #{}, #{}).
+
+describe_account_settings(Client, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_account_settings(Client, AwsAccountId, QueryMap, HeadersMap, []).
+
+describe_account_settings(Client, AwsAccountId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/settings"],
     SuccessStatusCode = undefined,
 
@@ -895,9 +948,14 @@ describe_account_settings(Client, AwsAccountId, Options)
 %% @doc Provides a summary of the metadata for an analysis.
 describe_analysis(Client, AnalysisId, AwsAccountId)
   when is_map(Client) ->
-    describe_analysis(Client, AnalysisId, AwsAccountId, []).
-describe_analysis(Client, AnalysisId, AwsAccountId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_analysis(Client, AnalysisId, AwsAccountId, #{}, #{}).
+
+describe_analysis(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_analysis(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap, []).
+
+describe_analysis(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses/", aws_util:encode_uri(AnalysisId), ""],
     SuccessStatusCode = undefined,
 
@@ -910,9 +968,14 @@ describe_analysis(Client, AnalysisId, AwsAccountId, Options)
 %% @doc Provides the read and write permissions for an analysis.
 describe_analysis_permissions(Client, AnalysisId, AwsAccountId)
   when is_map(Client) ->
-    describe_analysis_permissions(Client, AnalysisId, AwsAccountId, []).
-describe_analysis_permissions(Client, AnalysisId, AwsAccountId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_analysis_permissions(Client, AnalysisId, AwsAccountId, #{}, #{}).
+
+describe_analysis_permissions(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_analysis_permissions(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap, []).
+
+describe_analysis_permissions(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses/", aws_util:encode_uri(AnalysisId), "/permissions"],
     SuccessStatusCode = undefined,
 
@@ -923,11 +986,16 @@ describe_analysis_permissions(Client, AnalysisId, AwsAccountId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides a summary for a dashboard.
-describe_dashboard(Client, AwsAccountId, DashboardId, AliasName, VersionNumber)
+describe_dashboard(Client, AwsAccountId, DashboardId)
   when is_map(Client) ->
-    describe_dashboard(Client, AwsAccountId, DashboardId, AliasName, VersionNumber, []).
-describe_dashboard(Client, AwsAccountId, DashboardId, AliasName, VersionNumber, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_dashboard(Client, AwsAccountId, DashboardId, #{}, #{}).
+
+describe_dashboard(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_dashboard(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, []).
+
+describe_dashboard(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), ""],
     SuccessStatusCode = undefined,
 
@@ -935,8 +1003,8 @@ describe_dashboard(Client, AwsAccountId, DashboardId, AliasName, VersionNumber, 
 
     Query0_ =
       [
-        {<<"alias-name">>, AliasName},
-        {<<"version-number">>, VersionNumber}
+        {<<"alias-name">>, maps:get(<<"alias-name">>, QueryMap, undefined)},
+        {<<"version-number">>, maps:get(<<"version-number">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -945,9 +1013,14 @@ describe_dashboard(Client, AwsAccountId, DashboardId, AliasName, VersionNumber, 
 %% @doc Describes read and write permissions for a dashboard.
 describe_dashboard_permissions(Client, AwsAccountId, DashboardId)
   when is_map(Client) ->
-    describe_dashboard_permissions(Client, AwsAccountId, DashboardId, []).
-describe_dashboard_permissions(Client, AwsAccountId, DashboardId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_dashboard_permissions(Client, AwsAccountId, DashboardId, #{}, #{}).
+
+describe_dashboard_permissions(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_dashboard_permissions(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, []).
+
+describe_dashboard_permissions(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/permissions"],
     SuccessStatusCode = undefined,
 
@@ -960,9 +1033,14 @@ describe_dashboard_permissions(Client, AwsAccountId, DashboardId, Options)
 %% @doc Describes a dataset.
 describe_data_set(Client, AwsAccountId, DataSetId)
   when is_map(Client) ->
-    describe_data_set(Client, AwsAccountId, DataSetId, []).
-describe_data_set(Client, AwsAccountId, DataSetId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_data_set(Client, AwsAccountId, DataSetId, #{}, #{}).
+
+describe_data_set(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_data_set(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, []).
+
+describe_data_set(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), ""],
     SuccessStatusCode = undefined,
 
@@ -978,9 +1056,14 @@ describe_data_set(Client, AwsAccountId, DataSetId, Options)
 %% `arn:aws:quicksight:region:aws-account-id:dataset/data-set-id'.
 describe_data_set_permissions(Client, AwsAccountId, DataSetId)
   when is_map(Client) ->
-    describe_data_set_permissions(Client, AwsAccountId, DataSetId, []).
-describe_data_set_permissions(Client, AwsAccountId, DataSetId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_data_set_permissions(Client, AwsAccountId, DataSetId, #{}, #{}).
+
+describe_data_set_permissions(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_data_set_permissions(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, []).
+
+describe_data_set_permissions(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/permissions"],
     SuccessStatusCode = undefined,
 
@@ -993,9 +1076,14 @@ describe_data_set_permissions(Client, AwsAccountId, DataSetId, Options)
 %% @doc Describes a data source.
 describe_data_source(Client, AwsAccountId, DataSourceId)
   when is_map(Client) ->
-    describe_data_source(Client, AwsAccountId, DataSourceId, []).
-describe_data_source(Client, AwsAccountId, DataSourceId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_data_source(Client, AwsAccountId, DataSourceId, #{}, #{}).
+
+describe_data_source(Client, AwsAccountId, DataSourceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_data_source(Client, AwsAccountId, DataSourceId, QueryMap, HeadersMap, []).
+
+describe_data_source(Client, AwsAccountId, DataSourceId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources/", aws_util:encode_uri(DataSourceId), ""],
     SuccessStatusCode = undefined,
 
@@ -1008,9 +1096,14 @@ describe_data_source(Client, AwsAccountId, DataSourceId, Options)
 %% @doc Describes the resource permissions for a data source.
 describe_data_source_permissions(Client, AwsAccountId, DataSourceId)
   when is_map(Client) ->
-    describe_data_source_permissions(Client, AwsAccountId, DataSourceId, []).
-describe_data_source_permissions(Client, AwsAccountId, DataSourceId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_data_source_permissions(Client, AwsAccountId, DataSourceId, #{}, #{}).
+
+describe_data_source_permissions(Client, AwsAccountId, DataSourceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_data_source_permissions(Client, AwsAccountId, DataSourceId, QueryMap, HeadersMap, []).
+
+describe_data_source_permissions(Client, AwsAccountId, DataSourceId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources/", aws_util:encode_uri(DataSourceId), "/permissions"],
     SuccessStatusCode = undefined,
 
@@ -1024,9 +1117,14 @@ describe_data_source_permissions(Client, AwsAccountId, DataSourceId, Options)
 %% Name (ARN).
 describe_group(Client, AwsAccountId, GroupName, Namespace)
   when is_map(Client) ->
-    describe_group(Client, AwsAccountId, GroupName, Namespace, []).
-describe_group(Client, AwsAccountId, GroupName, Namespace, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_group(Client, AwsAccountId, GroupName, Namespace, #{}, #{}).
+
+describe_group(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_group(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap, []).
+
+describe_group(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups/", aws_util:encode_uri(GroupName), ""],
     SuccessStatusCode = undefined,
 
@@ -1040,9 +1138,14 @@ describe_group(Client, AwsAccountId, GroupName, Namespace, Options)
 %% assignment name.
 describe_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace)
   when is_map(Client) ->
-    describe_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, []).
-describe_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, #{}, #{}).
+
+describe_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, QueryMap, HeadersMap, []).
+
+describe_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/iam-policy-assignments/", aws_util:encode_uri(AssignmentName), ""],
     SuccessStatusCode = undefined,
 
@@ -1055,9 +1158,14 @@ describe_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, 
 %% @doc Describes a SPICE ingestion.
 describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId)
   when is_map(Client) ->
-    describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId, []).
-describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId, #{}, #{}).
+
+describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId, QueryMap, HeadersMap, []).
+
+describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/ingestions/", aws_util:encode_uri(IngestionId), ""],
     SuccessStatusCode = undefined,
 
@@ -1070,9 +1178,14 @@ describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Options)
 %% @doc Describes the current namespace.
 describe_namespace(Client, AwsAccountId, Namespace)
   when is_map(Client) ->
-    describe_namespace(Client, AwsAccountId, Namespace, []).
-describe_namespace(Client, AwsAccountId, Namespace, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_namespace(Client, AwsAccountId, Namespace, #{}, #{}).
+
+describe_namespace(Client, AwsAccountId, Namespace, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_namespace(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, []).
+
+describe_namespace(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), ""],
     SuccessStatusCode = undefined,
 
@@ -1083,11 +1196,16 @@ describe_namespace(Client, AwsAccountId, Namespace, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes a template's metadata.
-describe_template(Client, AwsAccountId, TemplateId, AliasName, VersionNumber)
+describe_template(Client, AwsAccountId, TemplateId)
   when is_map(Client) ->
-    describe_template(Client, AwsAccountId, TemplateId, AliasName, VersionNumber, []).
-describe_template(Client, AwsAccountId, TemplateId, AliasName, VersionNumber, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_template(Client, AwsAccountId, TemplateId, #{}, #{}).
+
+describe_template(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_template(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, []).
+
+describe_template(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), ""],
     SuccessStatusCode = undefined,
 
@@ -1095,8 +1213,8 @@ describe_template(Client, AwsAccountId, TemplateId, AliasName, VersionNumber, Op
 
     Query0_ =
       [
-        {<<"alias-name">>, AliasName},
-        {<<"version-number">>, VersionNumber}
+        {<<"alias-name">>, maps:get(<<"alias-name">>, QueryMap, undefined)},
+        {<<"version-number">>, maps:get(<<"version-number">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1105,9 +1223,14 @@ describe_template(Client, AwsAccountId, TemplateId, AliasName, VersionNumber, Op
 %% @doc Describes the template alias for a template.
 describe_template_alias(Client, AliasName, AwsAccountId, TemplateId)
   when is_map(Client) ->
-    describe_template_alias(Client, AliasName, AwsAccountId, TemplateId, []).
-describe_template_alias(Client, AliasName, AwsAccountId, TemplateId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_template_alias(Client, AliasName, AwsAccountId, TemplateId, #{}, #{}).
+
+describe_template_alias(Client, AliasName, AwsAccountId, TemplateId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_template_alias(Client, AliasName, AwsAccountId, TemplateId, QueryMap, HeadersMap, []).
+
+describe_template_alias(Client, AliasName, AwsAccountId, TemplateId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/aliases/", aws_util:encode_uri(AliasName), ""],
     SuccessStatusCode = undefined,
 
@@ -1120,9 +1243,14 @@ describe_template_alias(Client, AliasName, AwsAccountId, TemplateId, Options)
 %% @doc Describes read and write permissions on a template.
 describe_template_permissions(Client, AwsAccountId, TemplateId)
   when is_map(Client) ->
-    describe_template_permissions(Client, AwsAccountId, TemplateId, []).
-describe_template_permissions(Client, AwsAccountId, TemplateId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_template_permissions(Client, AwsAccountId, TemplateId, #{}, #{}).
+
+describe_template_permissions(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_template_permissions(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, []).
+
+describe_template_permissions(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/permissions"],
     SuccessStatusCode = undefined,
 
@@ -1133,11 +1261,16 @@ describe_template_permissions(Client, AwsAccountId, TemplateId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes a theme.
-describe_theme(Client, AwsAccountId, ThemeId, AliasName, VersionNumber)
+describe_theme(Client, AwsAccountId, ThemeId)
   when is_map(Client) ->
-    describe_theme(Client, AwsAccountId, ThemeId, AliasName, VersionNumber, []).
-describe_theme(Client, AwsAccountId, ThemeId, AliasName, VersionNumber, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_theme(Client, AwsAccountId, ThemeId, #{}, #{}).
+
+describe_theme(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_theme(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, []).
+
+describe_theme(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), ""],
     SuccessStatusCode = undefined,
 
@@ -1145,8 +1278,8 @@ describe_theme(Client, AwsAccountId, ThemeId, AliasName, VersionNumber, Options)
 
     Query0_ =
       [
-        {<<"alias-name">>, AliasName},
-        {<<"version-number">>, VersionNumber}
+        {<<"alias-name">>, maps:get(<<"alias-name">>, QueryMap, undefined)},
+        {<<"version-number">>, maps:get(<<"version-number">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1155,9 +1288,14 @@ describe_theme(Client, AwsAccountId, ThemeId, AliasName, VersionNumber, Options)
 %% @doc Describes the alias for a theme.
 describe_theme_alias(Client, AliasName, AwsAccountId, ThemeId)
   when is_map(Client) ->
-    describe_theme_alias(Client, AliasName, AwsAccountId, ThemeId, []).
-describe_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_theme_alias(Client, AliasName, AwsAccountId, ThemeId, #{}, #{}).
+
+describe_theme_alias(Client, AliasName, AwsAccountId, ThemeId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_theme_alias(Client, AliasName, AwsAccountId, ThemeId, QueryMap, HeadersMap, []).
+
+describe_theme_alias(Client, AliasName, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/aliases/", aws_util:encode_uri(AliasName), ""],
     SuccessStatusCode = undefined,
 
@@ -1170,9 +1308,14 @@ describe_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Options)
 %% @doc Describes the read and write permissions for a theme.
 describe_theme_permissions(Client, AwsAccountId, ThemeId)
   when is_map(Client) ->
-    describe_theme_permissions(Client, AwsAccountId, ThemeId, []).
-describe_theme_permissions(Client, AwsAccountId, ThemeId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_theme_permissions(Client, AwsAccountId, ThemeId, #{}, #{}).
+
+describe_theme_permissions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_theme_permissions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, []).
+
+describe_theme_permissions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/permissions"],
     SuccessStatusCode = undefined,
 
@@ -1185,9 +1328,14 @@ describe_theme_permissions(Client, AwsAccountId, ThemeId, Options)
 %% @doc Returns information about a user, given the user name.
 describe_user(Client, AwsAccountId, Namespace, UserName)
   when is_map(Client) ->
-    describe_user(Client, AwsAccountId, Namespace, UserName, []).
-describe_user(Client, AwsAccountId, Namespace, UserName, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_user(Client, AwsAccountId, Namespace, UserName, #{}, #{}).
+
+describe_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, []).
+
+describe_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users/", aws_util:encode_uri(UserName), ""],
     SuccessStatusCode = undefined,
 
@@ -1217,11 +1365,16 @@ describe_user(Client, AwsAccountId, Namespace, UserName, Options)
 %%
 %% </li> </ul> For more information, see Embedded Analytics in the Amazon
 %% QuickSight User Guide.
-get_dashboard_embed_url(Client, AwsAccountId, DashboardId, AdditionalDashboardIds, IdentityType, Namespace, ResetDisabled, SessionLifetimeInMinutes, StatePersistenceEnabled, UndoRedoDisabled, UserArn)
+get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType)
   when is_map(Client) ->
-    get_dashboard_embed_url(Client, AwsAccountId, DashboardId, AdditionalDashboardIds, IdentityType, Namespace, ResetDisabled, SessionLifetimeInMinutes, StatePersistenceEnabled, UndoRedoDisabled, UserArn, []).
-get_dashboard_embed_url(Client, AwsAccountId, DashboardId, AdditionalDashboardIds, IdentityType, Namespace, ResetDisabled, SessionLifetimeInMinutes, StatePersistenceEnabled, UndoRedoDisabled, UserArn, Options)
-  when is_map(Client), is_list(Options) ->
+    get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, #{}, #{}).
+
+get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, QueryMap, HeadersMap, []).
+
+get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/embed-url"],
     SuccessStatusCode = undefined,
 
@@ -1229,14 +1382,14 @@ get_dashboard_embed_url(Client, AwsAccountId, DashboardId, AdditionalDashboardId
 
     Query0_ =
       [
-        {<<"additional-dashboard-ids">>, AdditionalDashboardIds},
+        {<<"additional-dashboard-ids">>, maps:get(<<"additional-dashboard-ids">>, QueryMap, undefined)},
         {<<"creds-type">>, IdentityType},
-        {<<"namespace">>, Namespace},
-        {<<"reset-disabled">>, ResetDisabled},
-        {<<"session-lifetime">>, SessionLifetimeInMinutes},
-        {<<"state-persistence-enabled">>, StatePersistenceEnabled},
-        {<<"undo-redo-disabled">>, UndoRedoDisabled},
-        {<<"user-arn">>, UserArn}
+        {<<"namespace">>, maps:get(<<"namespace">>, QueryMap, undefined)},
+        {<<"reset-disabled">>, maps:get(<<"reset-disabled">>, QueryMap, undefined)},
+        {<<"session-lifetime">>, maps:get(<<"session-lifetime">>, QueryMap, undefined)},
+        {<<"state-persistence-enabled">>, maps:get(<<"state-persistence-enabled">>, QueryMap, undefined)},
+        {<<"undo-redo-disabled">>, maps:get(<<"undo-redo-disabled">>, QueryMap, undefined)},
+        {<<"user-arn">>, maps:get(<<"user-arn">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1260,11 +1413,16 @@ get_dashboard_embed_url(Client, AwsAccountId, DashboardId, AdditionalDashboardId
 %% </li> <li> Customizing Access to the Amazon QuickSight Console
 %%
 %% </li> </ul>
-get_session_embed_url(Client, AwsAccountId, EntryPoint, SessionLifetimeInMinutes, UserArn)
+get_session_embed_url(Client, AwsAccountId)
   when is_map(Client) ->
-    get_session_embed_url(Client, AwsAccountId, EntryPoint, SessionLifetimeInMinutes, UserArn, []).
-get_session_embed_url(Client, AwsAccountId, EntryPoint, SessionLifetimeInMinutes, UserArn, Options)
-  when is_map(Client), is_list(Options) ->
+    get_session_embed_url(Client, AwsAccountId, #{}, #{}).
+
+get_session_embed_url(Client, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_session_embed_url(Client, AwsAccountId, QueryMap, HeadersMap, []).
+
+get_session_embed_url(Client, AwsAccountId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/session-embed-url"],
     SuccessStatusCode = undefined,
 
@@ -1272,9 +1430,9 @@ get_session_embed_url(Client, AwsAccountId, EntryPoint, SessionLifetimeInMinutes
 
     Query0_ =
       [
-        {<<"entry-point">>, EntryPoint},
-        {<<"session-lifetime">>, SessionLifetimeInMinutes},
-        {<<"user-arn">>, UserArn}
+        {<<"entry-point">>, maps:get(<<"entry-point">>, QueryMap, undefined)},
+        {<<"session-lifetime">>, maps:get(<<"session-lifetime">>, QueryMap, undefined)},
+        {<<"user-arn">>, maps:get(<<"user-arn">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1282,11 +1440,16 @@ get_session_embed_url(Client, AwsAccountId, EntryPoint, SessionLifetimeInMinutes
 
 %% @doc Lists Amazon QuickSight analyses that exist in the specified AWS
 %% account.
-list_analyses(Client, AwsAccountId, MaxResults, NextToken)
+list_analyses(Client, AwsAccountId)
   when is_map(Client) ->
-    list_analyses(Client, AwsAccountId, MaxResults, NextToken, []).
-list_analyses(Client, AwsAccountId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_analyses(Client, AwsAccountId, #{}, #{}).
+
+list_analyses(Client, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_analyses(Client, AwsAccountId, QueryMap, HeadersMap, []).
+
+list_analyses(Client, AwsAccountId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses"],
     SuccessStatusCode = undefined,
 
@@ -1294,8 +1457,8 @@ list_analyses(Client, AwsAccountId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1303,11 +1466,16 @@ list_analyses(Client, AwsAccountId, MaxResults, NextToken, Options)
 
 %% @doc Lists all the versions of the dashboards in the QuickSight
 %% subscription.
-list_dashboard_versions(Client, AwsAccountId, DashboardId, MaxResults, NextToken)
+list_dashboard_versions(Client, AwsAccountId, DashboardId)
   when is_map(Client) ->
-    list_dashboard_versions(Client, AwsAccountId, DashboardId, MaxResults, NextToken, []).
-list_dashboard_versions(Client, AwsAccountId, DashboardId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_dashboard_versions(Client, AwsAccountId, DashboardId, #{}, #{}).
+
+list_dashboard_versions(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_dashboard_versions(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, []).
+
+list_dashboard_versions(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/versions"],
     SuccessStatusCode = undefined,
 
@@ -1315,19 +1483,24 @@ list_dashboard_versions(Client, AwsAccountId, DashboardId, MaxResults, NextToken
 
     Query0_ =
       [
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists dashboards in an AWS account.
-list_dashboards(Client, AwsAccountId, MaxResults, NextToken)
+list_dashboards(Client, AwsAccountId)
   when is_map(Client) ->
-    list_dashboards(Client, AwsAccountId, MaxResults, NextToken, []).
-list_dashboards(Client, AwsAccountId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_dashboards(Client, AwsAccountId, #{}, #{}).
+
+list_dashboards(Client, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_dashboards(Client, AwsAccountId, QueryMap, HeadersMap, []).
+
+list_dashboards(Client, AwsAccountId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards"],
     SuccessStatusCode = undefined,
 
@@ -1335,8 +1508,8 @@ list_dashboards(Client, AwsAccountId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1347,11 +1520,16 @@ list_dashboards(Client, AwsAccountId, MaxResults, NextToken, Options)
 %%
 %% The permissions resource is
 %% `arn:aws:quicksight:region:aws-account-id:dataset/*'.
-list_data_sets(Client, AwsAccountId, MaxResults, NextToken)
+list_data_sets(Client, AwsAccountId)
   when is_map(Client) ->
-    list_data_sets(Client, AwsAccountId, MaxResults, NextToken, []).
-list_data_sets(Client, AwsAccountId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_data_sets(Client, AwsAccountId, #{}, #{}).
+
+list_data_sets(Client, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_data_sets(Client, AwsAccountId, QueryMap, HeadersMap, []).
+
+list_data_sets(Client, AwsAccountId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets"],
     SuccessStatusCode = undefined,
 
@@ -1359,8 +1537,8 @@ list_data_sets(Client, AwsAccountId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1368,11 +1546,16 @@ list_data_sets(Client, AwsAccountId, MaxResults, NextToken, Options)
 
 %% @doc Lists data sources in current AWS Region that belong to this AWS
 %% account.
-list_data_sources(Client, AwsAccountId, MaxResults, NextToken)
+list_data_sources(Client, AwsAccountId)
   when is_map(Client) ->
-    list_data_sources(Client, AwsAccountId, MaxResults, NextToken, []).
-list_data_sources(Client, AwsAccountId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_data_sources(Client, AwsAccountId, #{}, #{}).
+
+list_data_sources(Client, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_data_sources(Client, AwsAccountId, QueryMap, HeadersMap, []).
+
+list_data_sources(Client, AwsAccountId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources"],
     SuccessStatusCode = undefined,
 
@@ -1380,19 +1563,24 @@ list_data_sources(Client, AwsAccountId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists member users in a group.
-list_group_memberships(Client, AwsAccountId, GroupName, Namespace, MaxResults, NextToken)
+list_group_memberships(Client, AwsAccountId, GroupName, Namespace)
   when is_map(Client) ->
-    list_group_memberships(Client, AwsAccountId, GroupName, Namespace, MaxResults, NextToken, []).
-list_group_memberships(Client, AwsAccountId, GroupName, Namespace, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_group_memberships(Client, AwsAccountId, GroupName, Namespace, #{}, #{}).
+
+list_group_memberships(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_group_memberships(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap, []).
+
+list_group_memberships(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups/", aws_util:encode_uri(GroupName), "/members"],
     SuccessStatusCode = undefined,
 
@@ -1400,19 +1588,24 @@ list_group_memberships(Client, AwsAccountId, GroupName, Namespace, MaxResults, N
 
     Query0_ =
       [
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all user groups in Amazon QuickSight.
-list_groups(Client, AwsAccountId, Namespace, MaxResults, NextToken)
+list_groups(Client, AwsAccountId, Namespace)
   when is_map(Client) ->
-    list_groups(Client, AwsAccountId, Namespace, MaxResults, NextToken, []).
-list_groups(Client, AwsAccountId, Namespace, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_groups(Client, AwsAccountId, Namespace, #{}, #{}).
+
+list_groups(Client, AwsAccountId, Namespace, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_groups(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, []).
+
+list_groups(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups"],
     SuccessStatusCode = undefined,
 
@@ -1420,8 +1613,8 @@ list_groups(Client, AwsAccountId, Namespace, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1429,11 +1622,16 @@ list_groups(Client, AwsAccountId, Namespace, MaxResults, NextToken, Options)
 
 %% @doc Lists IAM policy assignments in the current Amazon QuickSight
 %% account.
-list_iam_policy_assignments(Client, AwsAccountId, Namespace, MaxResults, NextToken)
+list_iam_policy_assignments(Client, AwsAccountId, Namespace)
   when is_map(Client) ->
-    list_iam_policy_assignments(Client, AwsAccountId, Namespace, MaxResults, NextToken, []).
-list_iam_policy_assignments(Client, AwsAccountId, Namespace, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_iam_policy_assignments(Client, AwsAccountId, Namespace, #{}, #{}).
+
+list_iam_policy_assignments(Client, AwsAccountId, Namespace, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_iam_policy_assignments(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, []).
+
+list_iam_policy_assignments(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/iam-policy-assignments"],
     SuccessStatusCode = undefined,
 
@@ -1441,8 +1639,8 @@ list_iam_policy_assignments(Client, AwsAccountId, Namespace, MaxResults, NextTok
 
     Query0_ =
       [
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1451,11 +1649,16 @@ list_iam_policy_assignments(Client, AwsAccountId, Namespace, MaxResults, NextTok
 %% @doc Lists all the IAM policy assignments, including the Amazon Resource
 %% Names (ARNs) for the IAM policies assigned to the specified user and group
 %% or groups that the user belongs to.
-list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, MaxResults, NextToken)
+list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName)
   when is_map(Client) ->
-    list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, MaxResults, NextToken, []).
-list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, #{}, #{}).
+
+list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, []).
+
+list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users/", aws_util:encode_uri(UserName), "/iam-policy-assignments"],
     SuccessStatusCode = undefined,
 
@@ -1463,19 +1666,24 @@ list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, 
 
     Query0_ =
       [
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the history of SPICE ingestions for a dataset.
-list_ingestions(Client, AwsAccountId, DataSetId, MaxResults, NextToken)
+list_ingestions(Client, AwsAccountId, DataSetId)
   when is_map(Client) ->
-    list_ingestions(Client, AwsAccountId, DataSetId, MaxResults, NextToken, []).
-list_ingestions(Client, AwsAccountId, DataSetId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_ingestions(Client, AwsAccountId, DataSetId, #{}, #{}).
+
+list_ingestions(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_ingestions(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, []).
+
+list_ingestions(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/ingestions"],
     SuccessStatusCode = undefined,
 
@@ -1483,19 +1691,24 @@ list_ingestions(Client, AwsAccountId, DataSetId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the namespaces for the specified AWS account.
-list_namespaces(Client, AwsAccountId, MaxResults, NextToken)
+list_namespaces(Client, AwsAccountId)
   when is_map(Client) ->
-    list_namespaces(Client, AwsAccountId, MaxResults, NextToken, []).
-list_namespaces(Client, AwsAccountId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_namespaces(Client, AwsAccountId, #{}, #{}).
+
+list_namespaces(Client, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_namespaces(Client, AwsAccountId, QueryMap, HeadersMap, []).
+
+list_namespaces(Client, AwsAccountId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces"],
     SuccessStatusCode = undefined,
 
@@ -1503,8 +1716,8 @@ list_namespaces(Client, AwsAccountId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1513,9 +1726,14 @@ list_namespaces(Client, AwsAccountId, MaxResults, NextToken, Options)
 %% @doc Lists the tags assigned to a resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/resources/", aws_util:encode_uri(ResourceArn), "/tags"],
     SuccessStatusCode = undefined,
 
@@ -1526,11 +1744,16 @@ list_tags_for_resource(Client, ResourceArn, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all the aliases of a template.
-list_template_aliases(Client, AwsAccountId, TemplateId, MaxResults, NextToken)
+list_template_aliases(Client, AwsAccountId, TemplateId)
   when is_map(Client) ->
-    list_template_aliases(Client, AwsAccountId, TemplateId, MaxResults, NextToken, []).
-list_template_aliases(Client, AwsAccountId, TemplateId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_template_aliases(Client, AwsAccountId, TemplateId, #{}, #{}).
+
+list_template_aliases(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_template_aliases(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, []).
+
+list_template_aliases(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/aliases"],
     SuccessStatusCode = undefined,
 
@@ -1538,8 +1761,8 @@ list_template_aliases(Client, AwsAccountId, TemplateId, MaxResults, NextToken, O
 
     Query0_ =
       [
-        {<<"max-result">>, MaxResults},
-        {<<"next-token">>, NextToken}
+        {<<"max-result">>, maps:get(<<"max-result">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1547,11 +1770,16 @@ list_template_aliases(Client, AwsAccountId, TemplateId, MaxResults, NextToken, O
 
 %% @doc Lists all the versions of the templates in the current Amazon
 %% QuickSight account.
-list_template_versions(Client, AwsAccountId, TemplateId, MaxResults, NextToken)
+list_template_versions(Client, AwsAccountId, TemplateId)
   when is_map(Client) ->
-    list_template_versions(Client, AwsAccountId, TemplateId, MaxResults, NextToken, []).
-list_template_versions(Client, AwsAccountId, TemplateId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_template_versions(Client, AwsAccountId, TemplateId, #{}, #{}).
+
+list_template_versions(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_template_versions(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, []).
+
+list_template_versions(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/versions"],
     SuccessStatusCode = undefined,
 
@@ -1559,19 +1787,24 @@ list_template_versions(Client, AwsAccountId, TemplateId, MaxResults, NextToken, 
 
     Query0_ =
       [
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all the templates in the current Amazon QuickSight account.
-list_templates(Client, AwsAccountId, MaxResults, NextToken)
+list_templates(Client, AwsAccountId)
   when is_map(Client) ->
-    list_templates(Client, AwsAccountId, MaxResults, NextToken, []).
-list_templates(Client, AwsAccountId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_templates(Client, AwsAccountId, #{}, #{}).
+
+list_templates(Client, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_templates(Client, AwsAccountId, QueryMap, HeadersMap, []).
+
+list_templates(Client, AwsAccountId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates"],
     SuccessStatusCode = undefined,
 
@@ -1579,19 +1812,24 @@ list_templates(Client, AwsAccountId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"max-result">>, MaxResults},
-        {<<"next-token">>, NextToken}
+        {<<"max-result">>, maps:get(<<"max-result">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all the aliases of a theme.
-list_theme_aliases(Client, AwsAccountId, ThemeId, MaxResults, NextToken)
+list_theme_aliases(Client, AwsAccountId, ThemeId)
   when is_map(Client) ->
-    list_theme_aliases(Client, AwsAccountId, ThemeId, MaxResults, NextToken, []).
-list_theme_aliases(Client, AwsAccountId, ThemeId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_theme_aliases(Client, AwsAccountId, ThemeId, #{}, #{}).
+
+list_theme_aliases(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_theme_aliases(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, []).
+
+list_theme_aliases(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/aliases"],
     SuccessStatusCode = undefined,
 
@@ -1599,19 +1837,24 @@ list_theme_aliases(Client, AwsAccountId, ThemeId, MaxResults, NextToken, Options
 
     Query0_ =
       [
-        {<<"max-result">>, MaxResults},
-        {<<"next-token">>, NextToken}
+        {<<"max-result">>, maps:get(<<"max-result">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all the versions of the themes in the current AWS account.
-list_theme_versions(Client, AwsAccountId, ThemeId, MaxResults, NextToken)
+list_theme_versions(Client, AwsAccountId, ThemeId)
   when is_map(Client) ->
-    list_theme_versions(Client, AwsAccountId, ThemeId, MaxResults, NextToken, []).
-list_theme_versions(Client, AwsAccountId, ThemeId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_theme_versions(Client, AwsAccountId, ThemeId, #{}, #{}).
+
+list_theme_versions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_theme_versions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, []).
+
+list_theme_versions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/versions"],
     SuccessStatusCode = undefined,
 
@@ -1619,19 +1862,24 @@ list_theme_versions(Client, AwsAccountId, ThemeId, MaxResults, NextToken, Option
 
     Query0_ =
       [
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all the themes in the current AWS account.
-list_themes(Client, AwsAccountId, MaxResults, NextToken, Type)
+list_themes(Client, AwsAccountId)
   when is_map(Client) ->
-    list_themes(Client, AwsAccountId, MaxResults, NextToken, Type, []).
-list_themes(Client, AwsAccountId, MaxResults, NextToken, Type, Options)
-  when is_map(Client), is_list(Options) ->
+    list_themes(Client, AwsAccountId, #{}, #{}).
+
+list_themes(Client, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_themes(Client, AwsAccountId, QueryMap, HeadersMap, []).
+
+list_themes(Client, AwsAccountId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes"],
     SuccessStatusCode = undefined,
 
@@ -1639,9 +1887,9 @@ list_themes(Client, AwsAccountId, MaxResults, NextToken, Type, Options)
 
     Query0_ =
       [
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken},
-        {<<"type">>, Type}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)},
+        {<<"type">>, maps:get(<<"type">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1649,11 +1897,16 @@ list_themes(Client, AwsAccountId, MaxResults, NextToken, Type, Options)
 
 %% @doc Lists the Amazon QuickSight groups that an Amazon QuickSight user is
 %% a member of.
-list_user_groups(Client, AwsAccountId, Namespace, UserName, MaxResults, NextToken)
+list_user_groups(Client, AwsAccountId, Namespace, UserName)
   when is_map(Client) ->
-    list_user_groups(Client, AwsAccountId, Namespace, UserName, MaxResults, NextToken, []).
-list_user_groups(Client, AwsAccountId, Namespace, UserName, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_user_groups(Client, AwsAccountId, Namespace, UserName, #{}, #{}).
+
+list_user_groups(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_user_groups(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, []).
+
+list_user_groups(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users/", aws_util:encode_uri(UserName), "/groups"],
     SuccessStatusCode = undefined,
 
@@ -1661,8 +1914,8 @@ list_user_groups(Client, AwsAccountId, Namespace, UserName, MaxResults, NextToke
 
     Query0_ =
       [
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1670,11 +1923,16 @@ list_user_groups(Client, AwsAccountId, Namespace, UserName, MaxResults, NextToke
 
 %% @doc Returns a list of all of the Amazon QuickSight users belonging to
 %% this account.
-list_users(Client, AwsAccountId, Namespace, MaxResults, NextToken)
+list_users(Client, AwsAccountId, Namespace)
   when is_map(Client) ->
-    list_users(Client, AwsAccountId, Namespace, MaxResults, NextToken, []).
-list_users(Client, AwsAccountId, Namespace, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_users(Client, AwsAccountId, Namespace, #{}, #{}).
+
+list_users(Client, AwsAccountId, Namespace, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_users(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, []).
+
+list_users(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users"],
     SuccessStatusCode = undefined,
 
@@ -1682,8 +1940,8 @@ list_users(Client, AwsAccountId, Namespace, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"max-results">>, MaxResults},
-        {<<"next-token">>, NextToken}
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

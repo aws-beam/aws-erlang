@@ -74,95 +74,140 @@
          disassociate_service_role_from_account/2,
          disassociate_service_role_from_account/3,
          get_associated_role/2,
-         get_associated_role/3,
+         get_associated_role/4,
+         get_associated_role/5,
          get_bulk_deployment_status/2,
-         get_bulk_deployment_status/3,
+         get_bulk_deployment_status/4,
+         get_bulk_deployment_status/5,
          get_connectivity_info/2,
-         get_connectivity_info/3,
+         get_connectivity_info/4,
+         get_connectivity_info/5,
          get_connector_definition/2,
-         get_connector_definition/3,
-         get_connector_definition_version/4,
+         get_connector_definition/4,
+         get_connector_definition/5,
+         get_connector_definition_version/3,
          get_connector_definition_version/5,
+         get_connector_definition_version/6,
          get_core_definition/2,
-         get_core_definition/3,
+         get_core_definition/4,
+         get_core_definition/5,
          get_core_definition_version/3,
-         get_core_definition_version/4,
+         get_core_definition_version/5,
+         get_core_definition_version/6,
          get_deployment_status/3,
-         get_deployment_status/4,
+         get_deployment_status/5,
+         get_deployment_status/6,
          get_device_definition/2,
-         get_device_definition/3,
-         get_device_definition_version/4,
+         get_device_definition/4,
+         get_device_definition/5,
+         get_device_definition_version/3,
          get_device_definition_version/5,
+         get_device_definition_version/6,
          get_function_definition/2,
-         get_function_definition/3,
-         get_function_definition_version/4,
+         get_function_definition/4,
+         get_function_definition/5,
+         get_function_definition_version/3,
          get_function_definition_version/5,
+         get_function_definition_version/6,
          get_group/2,
-         get_group/3,
+         get_group/4,
+         get_group/5,
          get_group_certificate_authority/3,
-         get_group_certificate_authority/4,
+         get_group_certificate_authority/5,
+         get_group_certificate_authority/6,
          get_group_certificate_configuration/2,
-         get_group_certificate_configuration/3,
+         get_group_certificate_configuration/4,
+         get_group_certificate_configuration/5,
          get_group_version/3,
-         get_group_version/4,
+         get_group_version/5,
+         get_group_version/6,
          get_logger_definition/2,
-         get_logger_definition/3,
-         get_logger_definition_version/4,
+         get_logger_definition/4,
+         get_logger_definition/5,
+         get_logger_definition_version/3,
          get_logger_definition_version/5,
+         get_logger_definition_version/6,
          get_resource_definition/2,
-         get_resource_definition/3,
+         get_resource_definition/4,
+         get_resource_definition/5,
          get_resource_definition_version/3,
-         get_resource_definition_version/4,
+         get_resource_definition_version/5,
+         get_resource_definition_version/6,
          get_service_role_for_account/1,
-         get_service_role_for_account/2,
+         get_service_role_for_account/3,
+         get_service_role_for_account/4,
          get_subscription_definition/2,
-         get_subscription_definition/3,
-         get_subscription_definition_version/4,
+         get_subscription_definition/4,
+         get_subscription_definition/5,
+         get_subscription_definition_version/3,
          get_subscription_definition_version/5,
+         get_subscription_definition_version/6,
          get_thing_runtime_configuration/2,
-         get_thing_runtime_configuration/3,
+         get_thing_runtime_configuration/4,
+         get_thing_runtime_configuration/5,
+         list_bulk_deployment_detailed_reports/2,
          list_bulk_deployment_detailed_reports/4,
          list_bulk_deployment_detailed_reports/5,
+         list_bulk_deployments/1,
          list_bulk_deployments/3,
          list_bulk_deployments/4,
+         list_connector_definition_versions/2,
          list_connector_definition_versions/4,
          list_connector_definition_versions/5,
+         list_connector_definitions/1,
          list_connector_definitions/3,
          list_connector_definitions/4,
+         list_core_definition_versions/2,
          list_core_definition_versions/4,
          list_core_definition_versions/5,
+         list_core_definitions/1,
          list_core_definitions/3,
          list_core_definitions/4,
+         list_deployments/2,
          list_deployments/4,
          list_deployments/5,
+         list_device_definition_versions/2,
          list_device_definition_versions/4,
          list_device_definition_versions/5,
+         list_device_definitions/1,
          list_device_definitions/3,
          list_device_definitions/4,
+         list_function_definition_versions/2,
          list_function_definition_versions/4,
          list_function_definition_versions/5,
+         list_function_definitions/1,
          list_function_definitions/3,
          list_function_definitions/4,
          list_group_certificate_authorities/2,
-         list_group_certificate_authorities/3,
+         list_group_certificate_authorities/4,
+         list_group_certificate_authorities/5,
+         list_group_versions/2,
          list_group_versions/4,
          list_group_versions/5,
+         list_groups/1,
          list_groups/3,
          list_groups/4,
+         list_logger_definition_versions/2,
          list_logger_definition_versions/4,
          list_logger_definition_versions/5,
+         list_logger_definitions/1,
          list_logger_definitions/3,
          list_logger_definitions/4,
+         list_resource_definition_versions/2,
          list_resource_definition_versions/4,
          list_resource_definition_versions/5,
+         list_resource_definitions/1,
          list_resource_definitions/3,
          list_resource_definitions/4,
+         list_subscription_definition_versions/2,
          list_subscription_definition_versions/4,
          list_subscription_definition_versions/5,
+         list_subscription_definitions/1,
          list_subscription_definitions/3,
          list_subscription_definitions/4,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          reset_deployments/3,
          reset_deployments/4,
          start_bulk_deployment/2,
@@ -799,9 +844,14 @@ disassociate_service_role_from_account(Client, Input0, Options) ->
 %% @doc Retrieves the role associated with a particular group.
 get_associated_role(Client, GroupId)
   when is_map(Client) ->
-    get_associated_role(Client, GroupId, []).
-get_associated_role(Client, GroupId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_associated_role(Client, GroupId, #{}, #{}).
+
+get_associated_role(Client, GroupId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_associated_role(Client, GroupId, QueryMap, HeadersMap, []).
+
+get_associated_role(Client, GroupId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/role"],
     SuccessStatusCode = 200,
 
@@ -814,9 +864,14 @@ get_associated_role(Client, GroupId, Options)
 %% @doc Returns the status of a bulk deployment.
 get_bulk_deployment_status(Client, BulkDeploymentId)
   when is_map(Client) ->
-    get_bulk_deployment_status(Client, BulkDeploymentId, []).
-get_bulk_deployment_status(Client, BulkDeploymentId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_bulk_deployment_status(Client, BulkDeploymentId, #{}, #{}).
+
+get_bulk_deployment_status(Client, BulkDeploymentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_bulk_deployment_status(Client, BulkDeploymentId, QueryMap, HeadersMap, []).
+
+get_bulk_deployment_status(Client, BulkDeploymentId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/bulk/deployments/", aws_util:encode_uri(BulkDeploymentId), "/status"],
     SuccessStatusCode = 200,
 
@@ -829,9 +884,14 @@ get_bulk_deployment_status(Client, BulkDeploymentId, Options)
 %% @doc Retrieves the connectivity information for a core.
 get_connectivity_info(Client, ThingName)
   when is_map(Client) ->
-    get_connectivity_info(Client, ThingName, []).
-get_connectivity_info(Client, ThingName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_connectivity_info(Client, ThingName, #{}, #{}).
+
+get_connectivity_info(Client, ThingName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_connectivity_info(Client, ThingName, QueryMap, HeadersMap, []).
+
+get_connectivity_info(Client, ThingName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/things/", aws_util:encode_uri(ThingName), "/connectivityInfo"],
     SuccessStatusCode = 200,
 
@@ -844,9 +904,14 @@ get_connectivity_info(Client, ThingName, Options)
 %% @doc Retrieves information about a connector definition.
 get_connector_definition(Client, ConnectorDefinitionId)
   when is_map(Client) ->
-    get_connector_definition(Client, ConnectorDefinitionId, []).
-get_connector_definition(Client, ConnectorDefinitionId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_connector_definition(Client, ConnectorDefinitionId, #{}, #{}).
+
+get_connector_definition(Client, ConnectorDefinitionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_connector_definition(Client, ConnectorDefinitionId, QueryMap, HeadersMap, []).
+
+get_connector_definition(Client, ConnectorDefinitionId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/definition/connectors/", aws_util:encode_uri(ConnectorDefinitionId), ""],
     SuccessStatusCode = 200,
 
@@ -861,11 +926,16 @@ get_connector_definition(Client, ConnectorDefinitionId, Options)
 %%
 %% Connectors are prebuilt modules that interact with local infrastructure,
 %% device protocols, AWS, and other cloud services.
-get_connector_definition_version(Client, ConnectorDefinitionId, ConnectorDefinitionVersionId, NextToken)
+get_connector_definition_version(Client, ConnectorDefinitionId, ConnectorDefinitionVersionId)
   when is_map(Client) ->
-    get_connector_definition_version(Client, ConnectorDefinitionId, ConnectorDefinitionVersionId, NextToken, []).
-get_connector_definition_version(Client, ConnectorDefinitionId, ConnectorDefinitionVersionId, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_connector_definition_version(Client, ConnectorDefinitionId, ConnectorDefinitionVersionId, #{}, #{}).
+
+get_connector_definition_version(Client, ConnectorDefinitionId, ConnectorDefinitionVersionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_connector_definition_version(Client, ConnectorDefinitionId, ConnectorDefinitionVersionId, QueryMap, HeadersMap, []).
+
+get_connector_definition_version(Client, ConnectorDefinitionId, ConnectorDefinitionVersionId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/definition/connectors/", aws_util:encode_uri(ConnectorDefinitionId), "/versions/", aws_util:encode_uri(ConnectorDefinitionVersionId), ""],
     SuccessStatusCode = 200,
 
@@ -873,7 +943,7 @@ get_connector_definition_version(Client, ConnectorDefinitionId, ConnectorDefinit
 
     Query0_ =
       [
-        {<<"NextToken">>, NextToken}
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -882,9 +952,14 @@ get_connector_definition_version(Client, ConnectorDefinitionId, ConnectorDefinit
 %% @doc Retrieves information about a core definition version.
 get_core_definition(Client, CoreDefinitionId)
   when is_map(Client) ->
-    get_core_definition(Client, CoreDefinitionId, []).
-get_core_definition(Client, CoreDefinitionId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_core_definition(Client, CoreDefinitionId, #{}, #{}).
+
+get_core_definition(Client, CoreDefinitionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_core_definition(Client, CoreDefinitionId, QueryMap, HeadersMap, []).
+
+get_core_definition(Client, CoreDefinitionId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/definition/cores/", aws_util:encode_uri(CoreDefinitionId), ""],
     SuccessStatusCode = 200,
 
@@ -897,9 +972,14 @@ get_core_definition(Client, CoreDefinitionId, Options)
 %% @doc Retrieves information about a core definition version.
 get_core_definition_version(Client, CoreDefinitionId, CoreDefinitionVersionId)
   when is_map(Client) ->
-    get_core_definition_version(Client, CoreDefinitionId, CoreDefinitionVersionId, []).
-get_core_definition_version(Client, CoreDefinitionId, CoreDefinitionVersionId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_core_definition_version(Client, CoreDefinitionId, CoreDefinitionVersionId, #{}, #{}).
+
+get_core_definition_version(Client, CoreDefinitionId, CoreDefinitionVersionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_core_definition_version(Client, CoreDefinitionId, CoreDefinitionVersionId, QueryMap, HeadersMap, []).
+
+get_core_definition_version(Client, CoreDefinitionId, CoreDefinitionVersionId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/definition/cores/", aws_util:encode_uri(CoreDefinitionId), "/versions/", aws_util:encode_uri(CoreDefinitionVersionId), ""],
     SuccessStatusCode = 200,
 
@@ -912,9 +992,14 @@ get_core_definition_version(Client, CoreDefinitionId, CoreDefinitionVersionId, O
 %% @doc Returns the status of a deployment.
 get_deployment_status(Client, DeploymentId, GroupId)
   when is_map(Client) ->
-    get_deployment_status(Client, DeploymentId, GroupId, []).
-get_deployment_status(Client, DeploymentId, GroupId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_deployment_status(Client, DeploymentId, GroupId, #{}, #{}).
+
+get_deployment_status(Client, DeploymentId, GroupId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_deployment_status(Client, DeploymentId, GroupId, QueryMap, HeadersMap, []).
+
+get_deployment_status(Client, DeploymentId, GroupId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/deployments/", aws_util:encode_uri(DeploymentId), "/status"],
     SuccessStatusCode = 200,
 
@@ -927,9 +1012,14 @@ get_deployment_status(Client, DeploymentId, GroupId, Options)
 %% @doc Retrieves information about a device definition.
 get_device_definition(Client, DeviceDefinitionId)
   when is_map(Client) ->
-    get_device_definition(Client, DeviceDefinitionId, []).
-get_device_definition(Client, DeviceDefinitionId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_device_definition(Client, DeviceDefinitionId, #{}, #{}).
+
+get_device_definition(Client, DeviceDefinitionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_device_definition(Client, DeviceDefinitionId, QueryMap, HeadersMap, []).
+
+get_device_definition(Client, DeviceDefinitionId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/definition/devices/", aws_util:encode_uri(DeviceDefinitionId), ""],
     SuccessStatusCode = 200,
 
@@ -940,11 +1030,16 @@ get_device_definition(Client, DeviceDefinitionId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a device definition version.
-get_device_definition_version(Client, DeviceDefinitionId, DeviceDefinitionVersionId, NextToken)
+get_device_definition_version(Client, DeviceDefinitionId, DeviceDefinitionVersionId)
   when is_map(Client) ->
-    get_device_definition_version(Client, DeviceDefinitionId, DeviceDefinitionVersionId, NextToken, []).
-get_device_definition_version(Client, DeviceDefinitionId, DeviceDefinitionVersionId, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_device_definition_version(Client, DeviceDefinitionId, DeviceDefinitionVersionId, #{}, #{}).
+
+get_device_definition_version(Client, DeviceDefinitionId, DeviceDefinitionVersionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_device_definition_version(Client, DeviceDefinitionId, DeviceDefinitionVersionId, QueryMap, HeadersMap, []).
+
+get_device_definition_version(Client, DeviceDefinitionId, DeviceDefinitionVersionId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/definition/devices/", aws_util:encode_uri(DeviceDefinitionId), "/versions/", aws_util:encode_uri(DeviceDefinitionVersionId), ""],
     SuccessStatusCode = 200,
 
@@ -952,7 +1047,7 @@ get_device_definition_version(Client, DeviceDefinitionId, DeviceDefinitionVersio
 
     Query0_ =
       [
-        {<<"NextToken">>, NextToken}
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -962,9 +1057,14 @@ get_device_definition_version(Client, DeviceDefinitionId, DeviceDefinitionVersio
 %% its creation time and latest version.
 get_function_definition(Client, FunctionDefinitionId)
   when is_map(Client) ->
-    get_function_definition(Client, FunctionDefinitionId, []).
-get_function_definition(Client, FunctionDefinitionId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_function_definition(Client, FunctionDefinitionId, #{}, #{}).
+
+get_function_definition(Client, FunctionDefinitionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_function_definition(Client, FunctionDefinitionId, QueryMap, HeadersMap, []).
+
+get_function_definition(Client, FunctionDefinitionId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/definition/functions/", aws_util:encode_uri(FunctionDefinitionId), ""],
     SuccessStatusCode = 200,
 
@@ -977,11 +1077,16 @@ get_function_definition(Client, FunctionDefinitionId, Options)
 %% @doc Retrieves information about a Lambda function definition version,
 %% including which Lambda functions are included in the version and their
 %% configurations.
-get_function_definition_version(Client, FunctionDefinitionId, FunctionDefinitionVersionId, NextToken)
+get_function_definition_version(Client, FunctionDefinitionId, FunctionDefinitionVersionId)
   when is_map(Client) ->
-    get_function_definition_version(Client, FunctionDefinitionId, FunctionDefinitionVersionId, NextToken, []).
-get_function_definition_version(Client, FunctionDefinitionId, FunctionDefinitionVersionId, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_function_definition_version(Client, FunctionDefinitionId, FunctionDefinitionVersionId, #{}, #{}).
+
+get_function_definition_version(Client, FunctionDefinitionId, FunctionDefinitionVersionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_function_definition_version(Client, FunctionDefinitionId, FunctionDefinitionVersionId, QueryMap, HeadersMap, []).
+
+get_function_definition_version(Client, FunctionDefinitionId, FunctionDefinitionVersionId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/definition/functions/", aws_util:encode_uri(FunctionDefinitionId), "/versions/", aws_util:encode_uri(FunctionDefinitionVersionId), ""],
     SuccessStatusCode = 200,
 
@@ -989,7 +1094,7 @@ get_function_definition_version(Client, FunctionDefinitionId, FunctionDefinition
 
     Query0_ =
       [
-        {<<"NextToken">>, NextToken}
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -998,9 +1103,14 @@ get_function_definition_version(Client, FunctionDefinitionId, FunctionDefinition
 %% @doc Retrieves information about a group.
 get_group(Client, GroupId)
   when is_map(Client) ->
-    get_group(Client, GroupId, []).
-get_group(Client, GroupId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_group(Client, GroupId, #{}, #{}).
+
+get_group(Client, GroupId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_group(Client, GroupId, QueryMap, HeadersMap, []).
+
+get_group(Client, GroupId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), ""],
     SuccessStatusCode = 200,
 
@@ -1015,9 +1125,14 @@ get_group(Client, GroupId, Options)
 %% Returns the public key of the CA.
 get_group_certificate_authority(Client, CertificateAuthorityId, GroupId)
   when is_map(Client) ->
-    get_group_certificate_authority(Client, CertificateAuthorityId, GroupId, []).
-get_group_certificate_authority(Client, CertificateAuthorityId, GroupId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_group_certificate_authority(Client, CertificateAuthorityId, GroupId, #{}, #{}).
+
+get_group_certificate_authority(Client, CertificateAuthorityId, GroupId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_group_certificate_authority(Client, CertificateAuthorityId, GroupId, QueryMap, HeadersMap, []).
+
+get_group_certificate_authority(Client, CertificateAuthorityId, GroupId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/certificateauthorities/", aws_util:encode_uri(CertificateAuthorityId), ""],
     SuccessStatusCode = 200,
 
@@ -1030,9 +1145,14 @@ get_group_certificate_authority(Client, CertificateAuthorityId, GroupId, Options
 %% @doc Retrieves the current configuration for the CA used by the group.
 get_group_certificate_configuration(Client, GroupId)
   when is_map(Client) ->
-    get_group_certificate_configuration(Client, GroupId, []).
-get_group_certificate_configuration(Client, GroupId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_group_certificate_configuration(Client, GroupId, #{}, #{}).
+
+get_group_certificate_configuration(Client, GroupId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_group_certificate_configuration(Client, GroupId, QueryMap, HeadersMap, []).
+
+get_group_certificate_configuration(Client, GroupId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/certificateauthorities/configuration/expiry"],
     SuccessStatusCode = 200,
 
@@ -1045,9 +1165,14 @@ get_group_certificate_configuration(Client, GroupId, Options)
 %% @doc Retrieves information about a group version.
 get_group_version(Client, GroupId, GroupVersionId)
   when is_map(Client) ->
-    get_group_version(Client, GroupId, GroupVersionId, []).
-get_group_version(Client, GroupId, GroupVersionId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_group_version(Client, GroupId, GroupVersionId, #{}, #{}).
+
+get_group_version(Client, GroupId, GroupVersionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_group_version(Client, GroupId, GroupVersionId, QueryMap, HeadersMap, []).
+
+get_group_version(Client, GroupId, GroupVersionId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/versions/", aws_util:encode_uri(GroupVersionId), ""],
     SuccessStatusCode = 200,
 
@@ -1060,9 +1185,14 @@ get_group_version(Client, GroupId, GroupVersionId, Options)
 %% @doc Retrieves information about a logger definition.
 get_logger_definition(Client, LoggerDefinitionId)
   when is_map(Client) ->
-    get_logger_definition(Client, LoggerDefinitionId, []).
-get_logger_definition(Client, LoggerDefinitionId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_logger_definition(Client, LoggerDefinitionId, #{}, #{}).
+
+get_logger_definition(Client, LoggerDefinitionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_logger_definition(Client, LoggerDefinitionId, QueryMap, HeadersMap, []).
+
+get_logger_definition(Client, LoggerDefinitionId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/definition/loggers/", aws_util:encode_uri(LoggerDefinitionId), ""],
     SuccessStatusCode = 200,
 
@@ -1073,11 +1203,16 @@ get_logger_definition(Client, LoggerDefinitionId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a logger definition version.
-get_logger_definition_version(Client, LoggerDefinitionId, LoggerDefinitionVersionId, NextToken)
+get_logger_definition_version(Client, LoggerDefinitionId, LoggerDefinitionVersionId)
   when is_map(Client) ->
-    get_logger_definition_version(Client, LoggerDefinitionId, LoggerDefinitionVersionId, NextToken, []).
-get_logger_definition_version(Client, LoggerDefinitionId, LoggerDefinitionVersionId, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_logger_definition_version(Client, LoggerDefinitionId, LoggerDefinitionVersionId, #{}, #{}).
+
+get_logger_definition_version(Client, LoggerDefinitionId, LoggerDefinitionVersionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_logger_definition_version(Client, LoggerDefinitionId, LoggerDefinitionVersionId, QueryMap, HeadersMap, []).
+
+get_logger_definition_version(Client, LoggerDefinitionId, LoggerDefinitionVersionId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/definition/loggers/", aws_util:encode_uri(LoggerDefinitionId), "/versions/", aws_util:encode_uri(LoggerDefinitionVersionId), ""],
     SuccessStatusCode = 200,
 
@@ -1085,7 +1220,7 @@ get_logger_definition_version(Client, LoggerDefinitionId, LoggerDefinitionVersio
 
     Query0_ =
       [
-        {<<"NextToken">>, NextToken}
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1095,9 +1230,14 @@ get_logger_definition_version(Client, LoggerDefinitionId, LoggerDefinitionVersio
 %% creation time and latest version.
 get_resource_definition(Client, ResourceDefinitionId)
   when is_map(Client) ->
-    get_resource_definition(Client, ResourceDefinitionId, []).
-get_resource_definition(Client, ResourceDefinitionId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_resource_definition(Client, ResourceDefinitionId, #{}, #{}).
+
+get_resource_definition(Client, ResourceDefinitionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_resource_definition(Client, ResourceDefinitionId, QueryMap, HeadersMap, []).
+
+get_resource_definition(Client, ResourceDefinitionId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/definition/resources/", aws_util:encode_uri(ResourceDefinitionId), ""],
     SuccessStatusCode = 200,
 
@@ -1111,9 +1251,14 @@ get_resource_definition(Client, ResourceDefinitionId, Options)
 %% which resources are included in the version.
 get_resource_definition_version(Client, ResourceDefinitionId, ResourceDefinitionVersionId)
   when is_map(Client) ->
-    get_resource_definition_version(Client, ResourceDefinitionId, ResourceDefinitionVersionId, []).
-get_resource_definition_version(Client, ResourceDefinitionId, ResourceDefinitionVersionId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_resource_definition_version(Client, ResourceDefinitionId, ResourceDefinitionVersionId, #{}, #{}).
+
+get_resource_definition_version(Client, ResourceDefinitionId, ResourceDefinitionVersionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_resource_definition_version(Client, ResourceDefinitionId, ResourceDefinitionVersionId, QueryMap, HeadersMap, []).
+
+get_resource_definition_version(Client, ResourceDefinitionId, ResourceDefinitionVersionId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/definition/resources/", aws_util:encode_uri(ResourceDefinitionId), "/versions/", aws_util:encode_uri(ResourceDefinitionVersionId), ""],
     SuccessStatusCode = 200,
 
@@ -1126,9 +1271,14 @@ get_resource_definition_version(Client, ResourceDefinitionId, ResourceDefinition
 %% @doc Retrieves the service role that is attached to your account.
 get_service_role_for_account(Client)
   when is_map(Client) ->
-    get_service_role_for_account(Client, []).
-get_service_role_for_account(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    get_service_role_for_account(Client, #{}, #{}).
+
+get_service_role_for_account(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_service_role_for_account(Client, QueryMap, HeadersMap, []).
+
+get_service_role_for_account(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/servicerole"],
     SuccessStatusCode = 200,
 
@@ -1141,9 +1291,14 @@ get_service_role_for_account(Client, Options)
 %% @doc Retrieves information about a subscription definition.
 get_subscription_definition(Client, SubscriptionDefinitionId)
   when is_map(Client) ->
-    get_subscription_definition(Client, SubscriptionDefinitionId, []).
-get_subscription_definition(Client, SubscriptionDefinitionId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_subscription_definition(Client, SubscriptionDefinitionId, #{}, #{}).
+
+get_subscription_definition(Client, SubscriptionDefinitionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_subscription_definition(Client, SubscriptionDefinitionId, QueryMap, HeadersMap, []).
+
+get_subscription_definition(Client, SubscriptionDefinitionId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/definition/subscriptions/", aws_util:encode_uri(SubscriptionDefinitionId), ""],
     SuccessStatusCode = 200,
 
@@ -1154,11 +1309,16 @@ get_subscription_definition(Client, SubscriptionDefinitionId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a subscription definition version.
-get_subscription_definition_version(Client, SubscriptionDefinitionId, SubscriptionDefinitionVersionId, NextToken)
+get_subscription_definition_version(Client, SubscriptionDefinitionId, SubscriptionDefinitionVersionId)
   when is_map(Client) ->
-    get_subscription_definition_version(Client, SubscriptionDefinitionId, SubscriptionDefinitionVersionId, NextToken, []).
-get_subscription_definition_version(Client, SubscriptionDefinitionId, SubscriptionDefinitionVersionId, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_subscription_definition_version(Client, SubscriptionDefinitionId, SubscriptionDefinitionVersionId, #{}, #{}).
+
+get_subscription_definition_version(Client, SubscriptionDefinitionId, SubscriptionDefinitionVersionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_subscription_definition_version(Client, SubscriptionDefinitionId, SubscriptionDefinitionVersionId, QueryMap, HeadersMap, []).
+
+get_subscription_definition_version(Client, SubscriptionDefinitionId, SubscriptionDefinitionVersionId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/definition/subscriptions/", aws_util:encode_uri(SubscriptionDefinitionId), "/versions/", aws_util:encode_uri(SubscriptionDefinitionVersionId), ""],
     SuccessStatusCode = 200,
 
@@ -1166,7 +1326,7 @@ get_subscription_definition_version(Client, SubscriptionDefinitionId, Subscripti
 
     Query0_ =
       [
-        {<<"NextToken">>, NextToken}
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1175,9 +1335,14 @@ get_subscription_definition_version(Client, SubscriptionDefinitionId, Subscripti
 %% @doc Get the runtime configuration of a thing.
 get_thing_runtime_configuration(Client, ThingName)
   when is_map(Client) ->
-    get_thing_runtime_configuration(Client, ThingName, []).
-get_thing_runtime_configuration(Client, ThingName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_thing_runtime_configuration(Client, ThingName, #{}, #{}).
+
+get_thing_runtime_configuration(Client, ThingName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_thing_runtime_configuration(Client, ThingName, QueryMap, HeadersMap, []).
+
+get_thing_runtime_configuration(Client, ThingName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/things/", aws_util:encode_uri(ThingName), "/runtimeconfig"],
     SuccessStatusCode = 200,
 
@@ -1189,11 +1354,16 @@ get_thing_runtime_configuration(Client, ThingName, Options)
 
 %% @doc Gets a paginated list of the deployments that have been started in a
 %% bulk deployment operation, and their current deployment status.
-list_bulk_deployment_detailed_reports(Client, BulkDeploymentId, MaxResults, NextToken)
+list_bulk_deployment_detailed_reports(Client, BulkDeploymentId)
   when is_map(Client) ->
-    list_bulk_deployment_detailed_reports(Client, BulkDeploymentId, MaxResults, NextToken, []).
-list_bulk_deployment_detailed_reports(Client, BulkDeploymentId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_bulk_deployment_detailed_reports(Client, BulkDeploymentId, #{}, #{}).
+
+list_bulk_deployment_detailed_reports(Client, BulkDeploymentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_bulk_deployment_detailed_reports(Client, BulkDeploymentId, QueryMap, HeadersMap, []).
+
+list_bulk_deployment_detailed_reports(Client, BulkDeploymentId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/bulk/deployments/", aws_util:encode_uri(BulkDeploymentId), "/detailed-reports"],
     SuccessStatusCode = 200,
 
@@ -1201,19 +1371,24 @@ list_bulk_deployment_detailed_reports(Client, BulkDeploymentId, MaxResults, Next
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of bulk deployments.
-list_bulk_deployments(Client, MaxResults, NextToken)
+list_bulk_deployments(Client)
   when is_map(Client) ->
-    list_bulk_deployments(Client, MaxResults, NextToken, []).
-list_bulk_deployments(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_bulk_deployments(Client, #{}, #{}).
+
+list_bulk_deployments(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_bulk_deployments(Client, QueryMap, HeadersMap, []).
+
+list_bulk_deployments(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/bulk/deployments"],
     SuccessStatusCode = 200,
 
@@ -1221,8 +1396,8 @@ list_bulk_deployments(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1234,11 +1409,16 @@ list_bulk_deployments(Client, MaxResults, NextToken, Options)
 %% Connectors run on the Greengrass core and contain built-in integration
 %% with local infrastructure, device protocols, AWS, and other cloud
 %% services.
-list_connector_definition_versions(Client, ConnectorDefinitionId, MaxResults, NextToken)
+list_connector_definition_versions(Client, ConnectorDefinitionId)
   when is_map(Client) ->
-    list_connector_definition_versions(Client, ConnectorDefinitionId, MaxResults, NextToken, []).
-list_connector_definition_versions(Client, ConnectorDefinitionId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_connector_definition_versions(Client, ConnectorDefinitionId, #{}, #{}).
+
+list_connector_definition_versions(Client, ConnectorDefinitionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_connector_definition_versions(Client, ConnectorDefinitionId, QueryMap, HeadersMap, []).
+
+list_connector_definition_versions(Client, ConnectorDefinitionId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/definition/connectors/", aws_util:encode_uri(ConnectorDefinitionId), "/versions"],
     SuccessStatusCode = 200,
 
@@ -1246,19 +1426,24 @@ list_connector_definition_versions(Client, ConnectorDefinitionId, MaxResults, Ne
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of connector definitions.
-list_connector_definitions(Client, MaxResults, NextToken)
+list_connector_definitions(Client)
   when is_map(Client) ->
-    list_connector_definitions(Client, MaxResults, NextToken, []).
-list_connector_definitions(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_connector_definitions(Client, #{}, #{}).
+
+list_connector_definitions(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_connector_definitions(Client, QueryMap, HeadersMap, []).
+
+list_connector_definitions(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/definition/connectors"],
     SuccessStatusCode = 200,
 
@@ -1266,19 +1451,24 @@ list_connector_definitions(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the versions of a core definition.
-list_core_definition_versions(Client, CoreDefinitionId, MaxResults, NextToken)
+list_core_definition_versions(Client, CoreDefinitionId)
   when is_map(Client) ->
-    list_core_definition_versions(Client, CoreDefinitionId, MaxResults, NextToken, []).
-list_core_definition_versions(Client, CoreDefinitionId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_core_definition_versions(Client, CoreDefinitionId, #{}, #{}).
+
+list_core_definition_versions(Client, CoreDefinitionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_core_definition_versions(Client, CoreDefinitionId, QueryMap, HeadersMap, []).
+
+list_core_definition_versions(Client, CoreDefinitionId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/definition/cores/", aws_util:encode_uri(CoreDefinitionId), "/versions"],
     SuccessStatusCode = 200,
 
@@ -1286,19 +1476,24 @@ list_core_definition_versions(Client, CoreDefinitionId, MaxResults, NextToken, O
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of core definitions.
-list_core_definitions(Client, MaxResults, NextToken)
+list_core_definitions(Client)
   when is_map(Client) ->
-    list_core_definitions(Client, MaxResults, NextToken, []).
-list_core_definitions(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_core_definitions(Client, #{}, #{}).
+
+list_core_definitions(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_core_definitions(Client, QueryMap, HeadersMap, []).
+
+list_core_definitions(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/definition/cores"],
     SuccessStatusCode = 200,
 
@@ -1306,19 +1501,24 @@ list_core_definitions(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a history of deployments for the group.
-list_deployments(Client, GroupId, MaxResults, NextToken)
+list_deployments(Client, GroupId)
   when is_map(Client) ->
-    list_deployments(Client, GroupId, MaxResults, NextToken, []).
-list_deployments(Client, GroupId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_deployments(Client, GroupId, #{}, #{}).
+
+list_deployments(Client, GroupId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_deployments(Client, GroupId, QueryMap, HeadersMap, []).
+
+list_deployments(Client, GroupId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/deployments"],
     SuccessStatusCode = 200,
 
@@ -1326,19 +1526,24 @@ list_deployments(Client, GroupId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the versions of a device definition.
-list_device_definition_versions(Client, DeviceDefinitionId, MaxResults, NextToken)
+list_device_definition_versions(Client, DeviceDefinitionId)
   when is_map(Client) ->
-    list_device_definition_versions(Client, DeviceDefinitionId, MaxResults, NextToken, []).
-list_device_definition_versions(Client, DeviceDefinitionId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_device_definition_versions(Client, DeviceDefinitionId, #{}, #{}).
+
+list_device_definition_versions(Client, DeviceDefinitionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_device_definition_versions(Client, DeviceDefinitionId, QueryMap, HeadersMap, []).
+
+list_device_definition_versions(Client, DeviceDefinitionId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/definition/devices/", aws_util:encode_uri(DeviceDefinitionId), "/versions"],
     SuccessStatusCode = 200,
 
@@ -1346,19 +1551,24 @@ list_device_definition_versions(Client, DeviceDefinitionId, MaxResults, NextToke
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of device definitions.
-list_device_definitions(Client, MaxResults, NextToken)
+list_device_definitions(Client)
   when is_map(Client) ->
-    list_device_definitions(Client, MaxResults, NextToken, []).
-list_device_definitions(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_device_definitions(Client, #{}, #{}).
+
+list_device_definitions(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_device_definitions(Client, QueryMap, HeadersMap, []).
+
+list_device_definitions(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/definition/devices"],
     SuccessStatusCode = 200,
 
@@ -1366,19 +1576,24 @@ list_device_definitions(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the versions of a Lambda function definition.
-list_function_definition_versions(Client, FunctionDefinitionId, MaxResults, NextToken)
+list_function_definition_versions(Client, FunctionDefinitionId)
   when is_map(Client) ->
-    list_function_definition_versions(Client, FunctionDefinitionId, MaxResults, NextToken, []).
-list_function_definition_versions(Client, FunctionDefinitionId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_function_definition_versions(Client, FunctionDefinitionId, #{}, #{}).
+
+list_function_definition_versions(Client, FunctionDefinitionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_function_definition_versions(Client, FunctionDefinitionId, QueryMap, HeadersMap, []).
+
+list_function_definition_versions(Client, FunctionDefinitionId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/definition/functions/", aws_util:encode_uri(FunctionDefinitionId), "/versions"],
     SuccessStatusCode = 200,
 
@@ -1386,19 +1601,24 @@ list_function_definition_versions(Client, FunctionDefinitionId, MaxResults, Next
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of Lambda function definitions.
-list_function_definitions(Client, MaxResults, NextToken)
+list_function_definitions(Client)
   when is_map(Client) ->
-    list_function_definitions(Client, MaxResults, NextToken, []).
-list_function_definitions(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_function_definitions(Client, #{}, #{}).
+
+list_function_definitions(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_function_definitions(Client, QueryMap, HeadersMap, []).
+
+list_function_definitions(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/definition/functions"],
     SuccessStatusCode = 200,
 
@@ -1406,8 +1626,8 @@ list_function_definitions(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1416,9 +1636,14 @@ list_function_definitions(Client, MaxResults, NextToken, Options)
 %% @doc Retrieves the current CAs for a group.
 list_group_certificate_authorities(Client, GroupId)
   when is_map(Client) ->
-    list_group_certificate_authorities(Client, GroupId, []).
-list_group_certificate_authorities(Client, GroupId, Options)
-  when is_map(Client), is_list(Options) ->
+    list_group_certificate_authorities(Client, GroupId, #{}, #{}).
+
+list_group_certificate_authorities(Client, GroupId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_group_certificate_authorities(Client, GroupId, QueryMap, HeadersMap, []).
+
+list_group_certificate_authorities(Client, GroupId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/certificateauthorities"],
     SuccessStatusCode = 200,
 
@@ -1429,11 +1654,16 @@ list_group_certificate_authorities(Client, GroupId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the versions of a group.
-list_group_versions(Client, GroupId, MaxResults, NextToken)
+list_group_versions(Client, GroupId)
   when is_map(Client) ->
-    list_group_versions(Client, GroupId, MaxResults, NextToken, []).
-list_group_versions(Client, GroupId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_group_versions(Client, GroupId, #{}, #{}).
+
+list_group_versions(Client, GroupId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_group_versions(Client, GroupId, QueryMap, HeadersMap, []).
+
+list_group_versions(Client, GroupId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/versions"],
     SuccessStatusCode = 200,
 
@@ -1441,19 +1671,24 @@ list_group_versions(Client, GroupId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of groups.
-list_groups(Client, MaxResults, NextToken)
+list_groups(Client)
   when is_map(Client) ->
-    list_groups(Client, MaxResults, NextToken, []).
-list_groups(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_groups(Client, #{}, #{}).
+
+list_groups(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_groups(Client, QueryMap, HeadersMap, []).
+
+list_groups(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/groups"],
     SuccessStatusCode = 200,
 
@@ -1461,19 +1696,24 @@ list_groups(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the versions of a logger definition.
-list_logger_definition_versions(Client, LoggerDefinitionId, MaxResults, NextToken)
+list_logger_definition_versions(Client, LoggerDefinitionId)
   when is_map(Client) ->
-    list_logger_definition_versions(Client, LoggerDefinitionId, MaxResults, NextToken, []).
-list_logger_definition_versions(Client, LoggerDefinitionId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_logger_definition_versions(Client, LoggerDefinitionId, #{}, #{}).
+
+list_logger_definition_versions(Client, LoggerDefinitionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_logger_definition_versions(Client, LoggerDefinitionId, QueryMap, HeadersMap, []).
+
+list_logger_definition_versions(Client, LoggerDefinitionId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/definition/loggers/", aws_util:encode_uri(LoggerDefinitionId), "/versions"],
     SuccessStatusCode = 200,
 
@@ -1481,19 +1721,24 @@ list_logger_definition_versions(Client, LoggerDefinitionId, MaxResults, NextToke
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of logger definitions.
-list_logger_definitions(Client, MaxResults, NextToken)
+list_logger_definitions(Client)
   when is_map(Client) ->
-    list_logger_definitions(Client, MaxResults, NextToken, []).
-list_logger_definitions(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_logger_definitions(Client, #{}, #{}).
+
+list_logger_definitions(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_logger_definitions(Client, QueryMap, HeadersMap, []).
+
+list_logger_definitions(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/definition/loggers"],
     SuccessStatusCode = 200,
 
@@ -1501,19 +1746,24 @@ list_logger_definitions(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the versions of a resource definition.
-list_resource_definition_versions(Client, ResourceDefinitionId, MaxResults, NextToken)
+list_resource_definition_versions(Client, ResourceDefinitionId)
   when is_map(Client) ->
-    list_resource_definition_versions(Client, ResourceDefinitionId, MaxResults, NextToken, []).
-list_resource_definition_versions(Client, ResourceDefinitionId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_resource_definition_versions(Client, ResourceDefinitionId, #{}, #{}).
+
+list_resource_definition_versions(Client, ResourceDefinitionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_resource_definition_versions(Client, ResourceDefinitionId, QueryMap, HeadersMap, []).
+
+list_resource_definition_versions(Client, ResourceDefinitionId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/definition/resources/", aws_util:encode_uri(ResourceDefinitionId), "/versions"],
     SuccessStatusCode = 200,
 
@@ -1521,19 +1771,24 @@ list_resource_definition_versions(Client, ResourceDefinitionId, MaxResults, Next
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of resource definitions.
-list_resource_definitions(Client, MaxResults, NextToken)
+list_resource_definitions(Client)
   when is_map(Client) ->
-    list_resource_definitions(Client, MaxResults, NextToken, []).
-list_resource_definitions(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_resource_definitions(Client, #{}, #{}).
+
+list_resource_definitions(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_resource_definitions(Client, QueryMap, HeadersMap, []).
+
+list_resource_definitions(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/definition/resources"],
     SuccessStatusCode = 200,
 
@@ -1541,19 +1796,24 @@ list_resource_definitions(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the versions of a subscription definition.
-list_subscription_definition_versions(Client, SubscriptionDefinitionId, MaxResults, NextToken)
+list_subscription_definition_versions(Client, SubscriptionDefinitionId)
   when is_map(Client) ->
-    list_subscription_definition_versions(Client, SubscriptionDefinitionId, MaxResults, NextToken, []).
-list_subscription_definition_versions(Client, SubscriptionDefinitionId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_subscription_definition_versions(Client, SubscriptionDefinitionId, #{}, #{}).
+
+list_subscription_definition_versions(Client, SubscriptionDefinitionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_subscription_definition_versions(Client, SubscriptionDefinitionId, QueryMap, HeadersMap, []).
+
+list_subscription_definition_versions(Client, SubscriptionDefinitionId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/definition/subscriptions/", aws_util:encode_uri(SubscriptionDefinitionId), "/versions"],
     SuccessStatusCode = 200,
 
@@ -1561,19 +1821,24 @@ list_subscription_definition_versions(Client, SubscriptionDefinitionId, MaxResul
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of subscription definitions.
-list_subscription_definitions(Client, MaxResults, NextToken)
+list_subscription_definitions(Client)
   when is_map(Client) ->
-    list_subscription_definitions(Client, MaxResults, NextToken, []).
-list_subscription_definitions(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_subscription_definitions(Client, #{}, #{}).
+
+list_subscription_definitions(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_subscription_definitions(Client, QueryMap, HeadersMap, []).
+
+list_subscription_definitions(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/definition/subscriptions"],
     SuccessStatusCode = 200,
 
@@ -1581,8 +1846,8 @@ list_subscription_definitions(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1591,9 +1856,14 @@ list_subscription_definitions(Client, MaxResults, NextToken, Options)
 %% @doc Retrieves a list of resource tags for a resource arn.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 

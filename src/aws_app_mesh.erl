@@ -48,36 +48,51 @@
          delete_virtual_router/5,
          delete_virtual_service/4,
          delete_virtual_service/5,
-         describe_gateway_route/5,
+         describe_gateway_route/4,
          describe_gateway_route/6,
-         describe_mesh/3,
+         describe_gateway_route/7,
+         describe_mesh/2,
          describe_mesh/4,
-         describe_route/5,
+         describe_mesh/5,
+         describe_route/4,
          describe_route/6,
-         describe_virtual_gateway/4,
+         describe_route/7,
+         describe_virtual_gateway/3,
          describe_virtual_gateway/5,
-         describe_virtual_node/4,
+         describe_virtual_gateway/6,
+         describe_virtual_node/3,
          describe_virtual_node/5,
-         describe_virtual_router/4,
+         describe_virtual_node/6,
+         describe_virtual_router/3,
          describe_virtual_router/5,
-         describe_virtual_service/4,
+         describe_virtual_router/6,
+         describe_virtual_service/3,
          describe_virtual_service/5,
+         describe_virtual_service/6,
+         list_gateway_routes/3,
+         list_gateway_routes/5,
          list_gateway_routes/6,
-         list_gateway_routes/7,
+         list_meshes/1,
          list_meshes/3,
          list_meshes/4,
+         list_routes/3,
+         list_routes/5,
          list_routes/6,
-         list_routes/7,
+         list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         list_virtual_gateways/2,
+         list_virtual_gateways/4,
          list_virtual_gateways/5,
-         list_virtual_gateways/6,
+         list_virtual_nodes/2,
+         list_virtual_nodes/4,
          list_virtual_nodes/5,
-         list_virtual_nodes/6,
+         list_virtual_routers/2,
+         list_virtual_routers/4,
          list_virtual_routers/5,
-         list_virtual_routers/6,
+         list_virtual_services/2,
+         list_virtual_services/4,
          list_virtual_services/5,
-         list_virtual_services/6,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
@@ -428,11 +443,16 @@ delete_virtual_service(Client, MeshName, VirtualServiceName, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes an existing gateway route.
-describe_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, MeshOwner)
+describe_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName)
   when is_map(Client) ->
-    describe_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, MeshOwner, []).
-describe_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, MeshOwner, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, #{}, #{}).
+
+describe_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, QueryMap, HeadersMap, []).
+
+describe_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualGateway/", aws_util:encode_uri(VirtualGatewayName), "/gatewayRoutes/", aws_util:encode_uri(GatewayRouteName), ""],
     SuccessStatusCode = 200,
 
@@ -440,18 +460,23 @@ describe_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, M
 
     Query0_ =
       [
-        {<<"meshOwner">>, MeshOwner}
+        {<<"meshOwner">>, maps:get(<<"meshOwner">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes an existing service mesh.
-describe_mesh(Client, MeshName, MeshOwner)
+describe_mesh(Client, MeshName)
   when is_map(Client) ->
-    describe_mesh(Client, MeshName, MeshOwner, []).
-describe_mesh(Client, MeshName, MeshOwner, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_mesh(Client, MeshName, #{}, #{}).
+
+describe_mesh(Client, MeshName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_mesh(Client, MeshName, QueryMap, HeadersMap, []).
+
+describe_mesh(Client, MeshName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), ""],
     SuccessStatusCode = 200,
 
@@ -459,18 +484,23 @@ describe_mesh(Client, MeshName, MeshOwner, Options)
 
     Query0_ =
       [
-        {<<"meshOwner">>, MeshOwner}
+        {<<"meshOwner">>, maps:get(<<"meshOwner">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes an existing route.
-describe_route(Client, MeshName, RouteName, VirtualRouterName, MeshOwner)
+describe_route(Client, MeshName, RouteName, VirtualRouterName)
   when is_map(Client) ->
-    describe_route(Client, MeshName, RouteName, VirtualRouterName, MeshOwner, []).
-describe_route(Client, MeshName, RouteName, VirtualRouterName, MeshOwner, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_route(Client, MeshName, RouteName, VirtualRouterName, #{}, #{}).
+
+describe_route(Client, MeshName, RouteName, VirtualRouterName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_route(Client, MeshName, RouteName, VirtualRouterName, QueryMap, HeadersMap, []).
+
+describe_route(Client, MeshName, RouteName, VirtualRouterName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualRouter/", aws_util:encode_uri(VirtualRouterName), "/routes/", aws_util:encode_uri(RouteName), ""],
     SuccessStatusCode = 200,
 
@@ -478,18 +508,23 @@ describe_route(Client, MeshName, RouteName, VirtualRouterName, MeshOwner, Option
 
     Query0_ =
       [
-        {<<"meshOwner">>, MeshOwner}
+        {<<"meshOwner">>, maps:get(<<"meshOwner">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes an existing virtual gateway.
-describe_virtual_gateway(Client, MeshName, VirtualGatewayName, MeshOwner)
+describe_virtual_gateway(Client, MeshName, VirtualGatewayName)
   when is_map(Client) ->
-    describe_virtual_gateway(Client, MeshName, VirtualGatewayName, MeshOwner, []).
-describe_virtual_gateway(Client, MeshName, VirtualGatewayName, MeshOwner, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_virtual_gateway(Client, MeshName, VirtualGatewayName, #{}, #{}).
+
+describe_virtual_gateway(Client, MeshName, VirtualGatewayName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_virtual_gateway(Client, MeshName, VirtualGatewayName, QueryMap, HeadersMap, []).
+
+describe_virtual_gateway(Client, MeshName, VirtualGatewayName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualGateways/", aws_util:encode_uri(VirtualGatewayName), ""],
     SuccessStatusCode = 200,
 
@@ -497,18 +532,23 @@ describe_virtual_gateway(Client, MeshName, VirtualGatewayName, MeshOwner, Option
 
     Query0_ =
       [
-        {<<"meshOwner">>, MeshOwner}
+        {<<"meshOwner">>, maps:get(<<"meshOwner">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes an existing virtual node.
-describe_virtual_node(Client, MeshName, VirtualNodeName, MeshOwner)
+describe_virtual_node(Client, MeshName, VirtualNodeName)
   when is_map(Client) ->
-    describe_virtual_node(Client, MeshName, VirtualNodeName, MeshOwner, []).
-describe_virtual_node(Client, MeshName, VirtualNodeName, MeshOwner, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_virtual_node(Client, MeshName, VirtualNodeName, #{}, #{}).
+
+describe_virtual_node(Client, MeshName, VirtualNodeName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_virtual_node(Client, MeshName, VirtualNodeName, QueryMap, HeadersMap, []).
+
+describe_virtual_node(Client, MeshName, VirtualNodeName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualNodes/", aws_util:encode_uri(VirtualNodeName), ""],
     SuccessStatusCode = 200,
 
@@ -516,18 +556,23 @@ describe_virtual_node(Client, MeshName, VirtualNodeName, MeshOwner, Options)
 
     Query0_ =
       [
-        {<<"meshOwner">>, MeshOwner}
+        {<<"meshOwner">>, maps:get(<<"meshOwner">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes an existing virtual router.
-describe_virtual_router(Client, MeshName, VirtualRouterName, MeshOwner)
+describe_virtual_router(Client, MeshName, VirtualRouterName)
   when is_map(Client) ->
-    describe_virtual_router(Client, MeshName, VirtualRouterName, MeshOwner, []).
-describe_virtual_router(Client, MeshName, VirtualRouterName, MeshOwner, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_virtual_router(Client, MeshName, VirtualRouterName, #{}, #{}).
+
+describe_virtual_router(Client, MeshName, VirtualRouterName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_virtual_router(Client, MeshName, VirtualRouterName, QueryMap, HeadersMap, []).
+
+describe_virtual_router(Client, MeshName, VirtualRouterName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualRouters/", aws_util:encode_uri(VirtualRouterName), ""],
     SuccessStatusCode = 200,
 
@@ -535,18 +580,23 @@ describe_virtual_router(Client, MeshName, VirtualRouterName, MeshOwner, Options)
 
     Query0_ =
       [
-        {<<"meshOwner">>, MeshOwner}
+        {<<"meshOwner">>, maps:get(<<"meshOwner">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes an existing virtual service.
-describe_virtual_service(Client, MeshName, VirtualServiceName, MeshOwner)
+describe_virtual_service(Client, MeshName, VirtualServiceName)
   when is_map(Client) ->
-    describe_virtual_service(Client, MeshName, VirtualServiceName, MeshOwner, []).
-describe_virtual_service(Client, MeshName, VirtualServiceName, MeshOwner, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_virtual_service(Client, MeshName, VirtualServiceName, #{}, #{}).
+
+describe_virtual_service(Client, MeshName, VirtualServiceName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_virtual_service(Client, MeshName, VirtualServiceName, QueryMap, HeadersMap, []).
+
+describe_virtual_service(Client, MeshName, VirtualServiceName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualServices/", aws_util:encode_uri(VirtualServiceName), ""],
     SuccessStatusCode = 200,
 
@@ -554,7 +604,7 @@ describe_virtual_service(Client, MeshName, VirtualServiceName, MeshOwner, Option
 
     Query0_ =
       [
-        {<<"meshOwner">>, MeshOwner}
+        {<<"meshOwner">>, maps:get(<<"meshOwner">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -562,11 +612,16 @@ describe_virtual_service(Client, MeshName, VirtualServiceName, MeshOwner, Option
 
 %% @doc Returns a list of existing gateway routes that are associated to a
 %% virtual gateway.
-list_gateway_routes(Client, MeshName, VirtualGatewayName, Limit, MeshOwner, NextToken)
+list_gateway_routes(Client, MeshName, VirtualGatewayName)
   when is_map(Client) ->
-    list_gateway_routes(Client, MeshName, VirtualGatewayName, Limit, MeshOwner, NextToken, []).
-list_gateway_routes(Client, MeshName, VirtualGatewayName, Limit, MeshOwner, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_gateway_routes(Client, MeshName, VirtualGatewayName, #{}, #{}).
+
+list_gateway_routes(Client, MeshName, VirtualGatewayName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_gateway_routes(Client, MeshName, VirtualGatewayName, QueryMap, HeadersMap, []).
+
+list_gateway_routes(Client, MeshName, VirtualGatewayName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualGateway/", aws_util:encode_uri(VirtualGatewayName), "/gatewayRoutes"],
     SuccessStatusCode = 200,
 
@@ -574,20 +629,25 @@ list_gateway_routes(Client, MeshName, VirtualGatewayName, Limit, MeshOwner, Next
 
     Query0_ =
       [
-        {<<"limit">>, Limit},
-        {<<"meshOwner">>, MeshOwner},
-        {<<"nextToken">>, NextToken}
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"meshOwner">>, maps:get(<<"meshOwner">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of existing service meshes.
-list_meshes(Client, Limit, NextToken)
+list_meshes(Client)
   when is_map(Client) ->
-    list_meshes(Client, Limit, NextToken, []).
-list_meshes(Client, Limit, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_meshes(Client, #{}, #{}).
+
+list_meshes(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_meshes(Client, QueryMap, HeadersMap, []).
+
+list_meshes(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v20190125/meshes"],
     SuccessStatusCode = 200,
 
@@ -595,19 +655,24 @@ list_meshes(Client, Limit, NextToken, Options)
 
     Query0_ =
       [
-        {<<"limit">>, Limit},
-        {<<"nextToken">>, NextToken}
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of existing routes in a service mesh.
-list_routes(Client, MeshName, VirtualRouterName, Limit, MeshOwner, NextToken)
+list_routes(Client, MeshName, VirtualRouterName)
   when is_map(Client) ->
-    list_routes(Client, MeshName, VirtualRouterName, Limit, MeshOwner, NextToken, []).
-list_routes(Client, MeshName, VirtualRouterName, Limit, MeshOwner, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_routes(Client, MeshName, VirtualRouterName, #{}, #{}).
+
+list_routes(Client, MeshName, VirtualRouterName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_routes(Client, MeshName, VirtualRouterName, QueryMap, HeadersMap, []).
+
+list_routes(Client, MeshName, VirtualRouterName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualRouter/", aws_util:encode_uri(VirtualRouterName), "/routes"],
     SuccessStatusCode = 200,
 
@@ -615,20 +680,25 @@ list_routes(Client, MeshName, VirtualRouterName, Limit, MeshOwner, NextToken, Op
 
     Query0_ =
       [
-        {<<"limit">>, Limit},
-        {<<"meshOwner">>, MeshOwner},
-        {<<"nextToken">>, NextToken}
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"meshOwner">>, maps:get(<<"meshOwner">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the tags for an App Mesh resource.
-list_tags_for_resource(Client, Limit, NextToken, ResourceArn)
+list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, Limit, NextToken, ResourceArn, []).
-list_tags_for_resource(Client, Limit, NextToken, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v20190125/tags"],
     SuccessStatusCode = 200,
 
@@ -636,8 +706,8 @@ list_tags_for_resource(Client, Limit, NextToken, ResourceArn, Options)
 
     Query0_ =
       [
-        {<<"limit">>, Limit},
-        {<<"nextToken">>, NextToken},
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"resourceArn">>, ResourceArn}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
@@ -645,11 +715,16 @@ list_tags_for_resource(Client, Limit, NextToken, ResourceArn, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of existing virtual gateways in a service mesh.
-list_virtual_gateways(Client, MeshName, Limit, MeshOwner, NextToken)
+list_virtual_gateways(Client, MeshName)
   when is_map(Client) ->
-    list_virtual_gateways(Client, MeshName, Limit, MeshOwner, NextToken, []).
-list_virtual_gateways(Client, MeshName, Limit, MeshOwner, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_virtual_gateways(Client, MeshName, #{}, #{}).
+
+list_virtual_gateways(Client, MeshName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_virtual_gateways(Client, MeshName, QueryMap, HeadersMap, []).
+
+list_virtual_gateways(Client, MeshName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualGateways"],
     SuccessStatusCode = 200,
 
@@ -657,20 +732,25 @@ list_virtual_gateways(Client, MeshName, Limit, MeshOwner, NextToken, Options)
 
     Query0_ =
       [
-        {<<"limit">>, Limit},
-        {<<"meshOwner">>, MeshOwner},
-        {<<"nextToken">>, NextToken}
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"meshOwner">>, maps:get(<<"meshOwner">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of existing virtual nodes.
-list_virtual_nodes(Client, MeshName, Limit, MeshOwner, NextToken)
+list_virtual_nodes(Client, MeshName)
   when is_map(Client) ->
-    list_virtual_nodes(Client, MeshName, Limit, MeshOwner, NextToken, []).
-list_virtual_nodes(Client, MeshName, Limit, MeshOwner, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_virtual_nodes(Client, MeshName, #{}, #{}).
+
+list_virtual_nodes(Client, MeshName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_virtual_nodes(Client, MeshName, QueryMap, HeadersMap, []).
+
+list_virtual_nodes(Client, MeshName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualNodes"],
     SuccessStatusCode = 200,
 
@@ -678,20 +758,25 @@ list_virtual_nodes(Client, MeshName, Limit, MeshOwner, NextToken, Options)
 
     Query0_ =
       [
-        {<<"limit">>, Limit},
-        {<<"meshOwner">>, MeshOwner},
-        {<<"nextToken">>, NextToken}
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"meshOwner">>, maps:get(<<"meshOwner">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of existing virtual routers in a service mesh.
-list_virtual_routers(Client, MeshName, Limit, MeshOwner, NextToken)
+list_virtual_routers(Client, MeshName)
   when is_map(Client) ->
-    list_virtual_routers(Client, MeshName, Limit, MeshOwner, NextToken, []).
-list_virtual_routers(Client, MeshName, Limit, MeshOwner, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_virtual_routers(Client, MeshName, #{}, #{}).
+
+list_virtual_routers(Client, MeshName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_virtual_routers(Client, MeshName, QueryMap, HeadersMap, []).
+
+list_virtual_routers(Client, MeshName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualRouters"],
     SuccessStatusCode = 200,
 
@@ -699,20 +784,25 @@ list_virtual_routers(Client, MeshName, Limit, MeshOwner, NextToken, Options)
 
     Query0_ =
       [
-        {<<"limit">>, Limit},
-        {<<"meshOwner">>, MeshOwner},
-        {<<"nextToken">>, NextToken}
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"meshOwner">>, maps:get(<<"meshOwner">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of existing virtual services in a service mesh.
-list_virtual_services(Client, MeshName, Limit, MeshOwner, NextToken)
+list_virtual_services(Client, MeshName)
   when is_map(Client) ->
-    list_virtual_services(Client, MeshName, Limit, MeshOwner, NextToken, []).
-list_virtual_services(Client, MeshName, Limit, MeshOwner, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_virtual_services(Client, MeshName, #{}, #{}).
+
+list_virtual_services(Client, MeshName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_virtual_services(Client, MeshName, QueryMap, HeadersMap, []).
+
+list_virtual_services(Client, MeshName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualServices"],
     SuccessStatusCode = 200,
 
@@ -720,9 +810,9 @@ list_virtual_services(Client, MeshName, Limit, MeshOwner, NextToken, Options)
 
     Query0_ =
       [
-        {<<"limit">>, Limit},
-        {<<"meshOwner">>, MeshOwner},
-        {<<"nextToken">>, NextToken}
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"meshOwner">>, maps:get(<<"meshOwner">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

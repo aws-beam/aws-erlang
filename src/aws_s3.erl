@@ -48,90 +48,130 @@
          delete_objects/4,
          delete_public_access_block/3,
          delete_public_access_block/4,
-         get_bucket_accelerate_configuration/3,
+         get_bucket_accelerate_configuration/2,
          get_bucket_accelerate_configuration/4,
-         get_bucket_acl/3,
+         get_bucket_accelerate_configuration/5,
+         get_bucket_acl/2,
          get_bucket_acl/4,
-         get_bucket_analytics_configuration/4,
+         get_bucket_acl/5,
+         get_bucket_analytics_configuration/3,
          get_bucket_analytics_configuration/5,
-         get_bucket_cors/3,
+         get_bucket_analytics_configuration/6,
+         get_bucket_cors/2,
          get_bucket_cors/4,
-         get_bucket_encryption/3,
+         get_bucket_cors/5,
+         get_bucket_encryption/2,
          get_bucket_encryption/4,
+         get_bucket_encryption/5,
          get_bucket_intelligent_tiering_configuration/3,
-         get_bucket_intelligent_tiering_configuration/4,
-         get_bucket_inventory_configuration/4,
+         get_bucket_intelligent_tiering_configuration/5,
+         get_bucket_intelligent_tiering_configuration/6,
+         get_bucket_inventory_configuration/3,
          get_bucket_inventory_configuration/5,
-         get_bucket_lifecycle/3,
+         get_bucket_inventory_configuration/6,
+         get_bucket_lifecycle/2,
          get_bucket_lifecycle/4,
-         get_bucket_lifecycle_configuration/3,
+         get_bucket_lifecycle/5,
+         get_bucket_lifecycle_configuration/2,
          get_bucket_lifecycle_configuration/4,
-         get_bucket_location/3,
+         get_bucket_lifecycle_configuration/5,
+         get_bucket_location/2,
          get_bucket_location/4,
-         get_bucket_logging/3,
+         get_bucket_location/5,
+         get_bucket_logging/2,
          get_bucket_logging/4,
-         get_bucket_metrics_configuration/4,
+         get_bucket_logging/5,
+         get_bucket_metrics_configuration/3,
          get_bucket_metrics_configuration/5,
-         get_bucket_notification/3,
+         get_bucket_metrics_configuration/6,
+         get_bucket_notification/2,
          get_bucket_notification/4,
-         get_bucket_notification_configuration/3,
+         get_bucket_notification/5,
+         get_bucket_notification_configuration/2,
          get_bucket_notification_configuration/4,
-         get_bucket_ownership_controls/3,
+         get_bucket_notification_configuration/5,
+         get_bucket_ownership_controls/2,
          get_bucket_ownership_controls/4,
-         get_bucket_policy/3,
+         get_bucket_ownership_controls/5,
+         get_bucket_policy/2,
          get_bucket_policy/4,
-         get_bucket_policy_status/3,
+         get_bucket_policy/5,
+         get_bucket_policy_status/2,
          get_bucket_policy_status/4,
-         get_bucket_replication/3,
+         get_bucket_policy_status/5,
+         get_bucket_replication/2,
          get_bucket_replication/4,
-         get_bucket_request_payment/3,
+         get_bucket_replication/5,
+         get_bucket_request_payment/2,
          get_bucket_request_payment/4,
-         get_bucket_tagging/3,
+         get_bucket_request_payment/5,
+         get_bucket_tagging/2,
          get_bucket_tagging/4,
-         get_bucket_versioning/3,
+         get_bucket_tagging/5,
+         get_bucket_versioning/2,
          get_bucket_versioning/4,
-         get_bucket_website/3,
+         get_bucket_versioning/5,
+         get_bucket_website/2,
          get_bucket_website/4,
-         get_object/21,
-         get_object/22,
+         get_bucket_website/5,
+         get_object/3,
+         get_object/5,
+         get_object/6,
+         get_object_acl/3,
+         get_object_acl/5,
          get_object_acl/6,
-         get_object_acl/7,
+         get_object_legal_hold/3,
+         get_object_legal_hold/5,
          get_object_legal_hold/6,
-         get_object_legal_hold/7,
-         get_object_lock_configuration/3,
+         get_object_lock_configuration/2,
          get_object_lock_configuration/4,
+         get_object_lock_configuration/5,
+         get_object_retention/3,
+         get_object_retention/5,
          get_object_retention/6,
-         get_object_retention/7,
+         get_object_tagging/3,
+         get_object_tagging/5,
          get_object_tagging/6,
-         get_object_tagging/7,
+         get_object_torrent/3,
          get_object_torrent/5,
          get_object_torrent/6,
-         get_public_access_block/3,
+         get_public_access_block/2,
          get_public_access_block/4,
+         get_public_access_block/5,
          head_bucket/3,
          head_bucket/4,
          head_object/4,
          head_object/5,
+         list_bucket_analytics_configurations/2,
          list_bucket_analytics_configurations/4,
          list_bucket_analytics_configurations/5,
-         list_bucket_intelligent_tiering_configurations/3,
+         list_bucket_intelligent_tiering_configurations/2,
          list_bucket_intelligent_tiering_configurations/4,
+         list_bucket_intelligent_tiering_configurations/5,
+         list_bucket_inventory_configurations/2,
          list_bucket_inventory_configurations/4,
          list_bucket_inventory_configurations/5,
+         list_bucket_metrics_configurations/2,
          list_bucket_metrics_configurations/4,
          list_bucket_metrics_configurations/5,
          list_buckets/1,
-         list_buckets/2,
-         list_multipart_uploads/9,
-         list_multipart_uploads/10,
-         list_object_versions/9,
-         list_object_versions/10,
-         list_objects/9,
-         list_objects/10,
-         list_objects_v2/11,
-         list_objects_v2/12,
-         list_parts/8,
-         list_parts/9,
+         list_buckets/3,
+         list_buckets/4,
+         list_multipart_uploads/2,
+         list_multipart_uploads/4,
+         list_multipart_uploads/5,
+         list_object_versions/2,
+         list_object_versions/4,
+         list_object_versions/5,
+         list_objects/2,
+         list_objects/4,
+         list_objects/5,
+         list_objects_v2/2,
+         list_objects_v2/4,
+         list_objects_v2/5,
+         list_parts/4,
+         list_parts/6,
+         list_parts/7,
          put_bucket_accelerate_configuration/3,
          put_bucket_accelerate_configuration/4,
          put_bucket_acl/3,
@@ -1779,17 +1819,22 @@ delete_public_access_block(Client, Bucket, Input0, Options) ->
 %% <ul> <li> PutBucketAccelerateConfiguration
 %%
 %% </li> </ul>
-get_bucket_accelerate_configuration(Client, Bucket, ExpectedBucketOwner)
+get_bucket_accelerate_configuration(Client, Bucket)
   when is_map(Client) ->
-    get_bucket_accelerate_configuration(Client, Bucket, ExpectedBucketOwner, []).
-get_bucket_accelerate_configuration(Client, Bucket, ExpectedBucketOwner, Options)
-  when is_map(Client), is_list(Options) ->
+    get_bucket_accelerate_configuration(Client, Bucket, #{}, #{}).
+
+get_bucket_accelerate_configuration(Client, Bucket, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_bucket_accelerate_configuration(Client, Bucket, QueryMap, HeadersMap, []).
+
+get_bucket_accelerate_configuration(Client, Bucket, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?accelerate"],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
-        {<<"x-amz-expected-bucket-owner">>, ExpectedBucketOwner}
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
@@ -1810,17 +1855,22 @@ get_bucket_accelerate_configuration(Client, Bucket, ExpectedBucketOwner, Options
 %% <ul> <li> ListObjects
 %%
 %% </li> </ul>
-get_bucket_acl(Client, Bucket, ExpectedBucketOwner)
+get_bucket_acl(Client, Bucket)
   when is_map(Client) ->
-    get_bucket_acl(Client, Bucket, ExpectedBucketOwner, []).
-get_bucket_acl(Client, Bucket, ExpectedBucketOwner, Options)
-  when is_map(Client), is_list(Options) ->
+    get_bucket_acl(Client, Bucket, #{}, #{}).
+
+get_bucket_acl(Client, Bucket, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_bucket_acl(Client, Bucket, QueryMap, HeadersMap, []).
+
+get_bucket_acl(Client, Bucket, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?acl"],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
-        {<<"x-amz-expected-bucket-owner">>, ExpectedBucketOwner}
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
@@ -1852,17 +1902,22 @@ get_bucket_acl(Client, Bucket, ExpectedBucketOwner, Options)
 %% </li> <li> PutBucketAnalyticsConfiguration
 %%
 %% </li> </ul>
-get_bucket_analytics_configuration(Client, Bucket, Id, ExpectedBucketOwner)
+get_bucket_analytics_configuration(Client, Bucket, Id)
   when is_map(Client) ->
-    get_bucket_analytics_configuration(Client, Bucket, Id, ExpectedBucketOwner, []).
-get_bucket_analytics_configuration(Client, Bucket, Id, ExpectedBucketOwner, Options)
-  when is_map(Client), is_list(Options) ->
+    get_bucket_analytics_configuration(Client, Bucket, Id, #{}, #{}).
+
+get_bucket_analytics_configuration(Client, Bucket, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_bucket_analytics_configuration(Client, Bucket, Id, QueryMap, HeadersMap, []).
+
+get_bucket_analytics_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?analytics"],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
-        {<<"x-amz-expected-bucket-owner">>, ExpectedBucketOwner}
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
@@ -1890,17 +1945,22 @@ get_bucket_analytics_configuration(Client, Bucket, Id, ExpectedBucketOwner, Opti
 %% </li> <li> DeleteBucketCors
 %%
 %% </li> </ul>
-get_bucket_cors(Client, Bucket, ExpectedBucketOwner)
+get_bucket_cors(Client, Bucket)
   when is_map(Client) ->
-    get_bucket_cors(Client, Bucket, ExpectedBucketOwner, []).
-get_bucket_cors(Client, Bucket, ExpectedBucketOwner, Options)
-  when is_map(Client), is_list(Options) ->
+    get_bucket_cors(Client, Bucket, #{}, #{}).
+
+get_bucket_cors(Client, Bucket, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_bucket_cors(Client, Bucket, QueryMap, HeadersMap, []).
+
+get_bucket_cors(Client, Bucket, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?cors"],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
-        {<<"x-amz-expected-bucket-owner">>, ExpectedBucketOwner}
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
@@ -1931,17 +1991,22 @@ get_bucket_cors(Client, Bucket, ExpectedBucketOwner, Options)
 %% </li> <li> DeleteBucketEncryption
 %%
 %% </li> </ul>
-get_bucket_encryption(Client, Bucket, ExpectedBucketOwner)
+get_bucket_encryption(Client, Bucket)
   when is_map(Client) ->
-    get_bucket_encryption(Client, Bucket, ExpectedBucketOwner, []).
-get_bucket_encryption(Client, Bucket, ExpectedBucketOwner, Options)
-  when is_map(Client), is_list(Options) ->
+    get_bucket_encryption(Client, Bucket, #{}, #{}).
+
+get_bucket_encryption(Client, Bucket, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_bucket_encryption(Client, Bucket, QueryMap, HeadersMap, []).
+
+get_bucket_encryption(Client, Bucket, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?encryption"],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
-        {<<"x-amz-expected-bucket-owner">>, ExpectedBucketOwner}
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
@@ -1980,9 +2045,14 @@ get_bucket_encryption(Client, Bucket, ExpectedBucketOwner, Options)
 %% </li> </ul>
 get_bucket_intelligent_tiering_configuration(Client, Bucket, Id)
   when is_map(Client) ->
-    get_bucket_intelligent_tiering_configuration(Client, Bucket, Id, []).
-get_bucket_intelligent_tiering_configuration(Client, Bucket, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    get_bucket_intelligent_tiering_configuration(Client, Bucket, Id, #{}, #{}).
+
+get_bucket_intelligent_tiering_configuration(Client, Bucket, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_bucket_intelligent_tiering_configuration(Client, Bucket, Id, QueryMap, HeadersMap, []).
+
+get_bucket_intelligent_tiering_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?intelligent-tiering"],
     SuccessStatusCode = undefined,
 
@@ -2018,17 +2088,22 @@ get_bucket_intelligent_tiering_configuration(Client, Bucket, Id, Options)
 %% </li> <li> PutBucketInventoryConfiguration
 %%
 %% </li> </ul>
-get_bucket_inventory_configuration(Client, Bucket, Id, ExpectedBucketOwner)
+get_bucket_inventory_configuration(Client, Bucket, Id)
   when is_map(Client) ->
-    get_bucket_inventory_configuration(Client, Bucket, Id, ExpectedBucketOwner, []).
-get_bucket_inventory_configuration(Client, Bucket, Id, ExpectedBucketOwner, Options)
-  when is_map(Client), is_list(Options) ->
+    get_bucket_inventory_configuration(Client, Bucket, Id, #{}, #{}).
+
+get_bucket_inventory_configuration(Client, Bucket, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_bucket_inventory_configuration(Client, Bucket, Id, QueryMap, HeadersMap, []).
+
+get_bucket_inventory_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?inventory"],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
-        {<<"x-amz-expected-bucket-owner">>, ExpectedBucketOwner}
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
@@ -2078,17 +2153,22 @@ get_bucket_inventory_configuration(Client, Bucket, Id, ExpectedBucketOwner, Opti
 %% </li> <li> DeleteBucketLifecycle
 %%
 %% </li> </ul>
-get_bucket_lifecycle(Client, Bucket, ExpectedBucketOwner)
+get_bucket_lifecycle(Client, Bucket)
   when is_map(Client) ->
-    get_bucket_lifecycle(Client, Bucket, ExpectedBucketOwner, []).
-get_bucket_lifecycle(Client, Bucket, ExpectedBucketOwner, Options)
-  when is_map(Client), is_list(Options) ->
+    get_bucket_lifecycle(Client, Bucket, #{}, #{}).
+
+get_bucket_lifecycle(Client, Bucket, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_bucket_lifecycle(Client, Bucket, QueryMap, HeadersMap, []).
+
+get_bucket_lifecycle(Client, Bucket, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?lifecycle"],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
-        {<<"x-amz-expected-bucket-owner">>, ExpectedBucketOwner}
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
@@ -2137,17 +2217,22 @@ get_bucket_lifecycle(Client, Bucket, ExpectedBucketOwner, Options)
 %% </li> <li> DeleteBucketLifecycle
 %%
 %% </li> </ul>
-get_bucket_lifecycle_configuration(Client, Bucket, ExpectedBucketOwner)
+get_bucket_lifecycle_configuration(Client, Bucket)
   when is_map(Client) ->
-    get_bucket_lifecycle_configuration(Client, Bucket, ExpectedBucketOwner, []).
-get_bucket_lifecycle_configuration(Client, Bucket, ExpectedBucketOwner, Options)
-  when is_map(Client), is_list(Options) ->
+    get_bucket_lifecycle_configuration(Client, Bucket, #{}, #{}).
+
+get_bucket_lifecycle_configuration(Client, Bucket, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_bucket_lifecycle_configuration(Client, Bucket, QueryMap, HeadersMap, []).
+
+get_bucket_lifecycle_configuration(Client, Bucket, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?lifecycle"],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
-        {<<"x-amz-expected-bucket-owner">>, ExpectedBucketOwner}
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
@@ -2170,17 +2255,22 @@ get_bucket_lifecycle_configuration(Client, Bucket, ExpectedBucketOwner, Options)
 %% </li> <li> CreateBucket
 %%
 %% </li> </ul>
-get_bucket_location(Client, Bucket, ExpectedBucketOwner)
+get_bucket_location(Client, Bucket)
   when is_map(Client) ->
-    get_bucket_location(Client, Bucket, ExpectedBucketOwner, []).
-get_bucket_location(Client, Bucket, ExpectedBucketOwner, Options)
-  when is_map(Client), is_list(Options) ->
+    get_bucket_location(Client, Bucket, #{}, #{}).
+
+get_bucket_location(Client, Bucket, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_bucket_location(Client, Bucket, QueryMap, HeadersMap, []).
+
+get_bucket_location(Client, Bucket, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?location"],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
-        {<<"x-amz-expected-bucket-owner">>, ExpectedBucketOwner}
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
@@ -2200,17 +2290,22 @@ get_bucket_location(Client, Bucket, ExpectedBucketOwner, Options)
 %% </li> <li> PutBucketLogging
 %%
 %% </li> </ul>
-get_bucket_logging(Client, Bucket, ExpectedBucketOwner)
+get_bucket_logging(Client, Bucket)
   when is_map(Client) ->
-    get_bucket_logging(Client, Bucket, ExpectedBucketOwner, []).
-get_bucket_logging(Client, Bucket, ExpectedBucketOwner, Options)
-  when is_map(Client), is_list(Options) ->
+    get_bucket_logging(Client, Bucket, #{}, #{}).
+
+get_bucket_logging(Client, Bucket, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_bucket_logging(Client, Bucket, QueryMap, HeadersMap, []).
+
+get_bucket_logging(Client, Bucket, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?logging"],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
-        {<<"x-amz-expected-bucket-owner">>, ExpectedBucketOwner}
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
@@ -2244,17 +2339,22 @@ get_bucket_logging(Client, Bucket, ExpectedBucketOwner, Options)
 %% </li> <li> Monitoring Metrics with Amazon CloudWatch
 %%
 %% </li> </ul>
-get_bucket_metrics_configuration(Client, Bucket, Id, ExpectedBucketOwner)
+get_bucket_metrics_configuration(Client, Bucket, Id)
   when is_map(Client) ->
-    get_bucket_metrics_configuration(Client, Bucket, Id, ExpectedBucketOwner, []).
-get_bucket_metrics_configuration(Client, Bucket, Id, ExpectedBucketOwner, Options)
-  when is_map(Client), is_list(Options) ->
+    get_bucket_metrics_configuration(Client, Bucket, Id, #{}, #{}).
+
+get_bucket_metrics_configuration(Client, Bucket, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_bucket_metrics_configuration(Client, Bucket, Id, QueryMap, HeadersMap, []).
+
+get_bucket_metrics_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?metrics"],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
-        {<<"x-amz-expected-bucket-owner">>, ExpectedBucketOwner}
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
@@ -2267,17 +2367,22 @@ get_bucket_metrics_configuration(Client, Bucket, Id, ExpectedBucketOwner, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc No longer used, see GetBucketNotificationConfiguration.
-get_bucket_notification(Client, Bucket, ExpectedBucketOwner)
+get_bucket_notification(Client, Bucket)
   when is_map(Client) ->
-    get_bucket_notification(Client, Bucket, ExpectedBucketOwner, []).
-get_bucket_notification(Client, Bucket, ExpectedBucketOwner, Options)
-  when is_map(Client), is_list(Options) ->
+    get_bucket_notification(Client, Bucket, #{}, #{}).
+
+get_bucket_notification(Client, Bucket, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_bucket_notification(Client, Bucket, QueryMap, HeadersMap, []).
+
+get_bucket_notification(Client, Bucket, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?notification"],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
-        {<<"x-amz-expected-bucket-owner">>, ExpectedBucketOwner}
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
@@ -2304,17 +2409,22 @@ get_bucket_notification(Client, Bucket, ExpectedBucketOwner, Options)
 %% <ul> <li> PutBucketNotification
 %%
 %% </li> </ul>
-get_bucket_notification_configuration(Client, Bucket, ExpectedBucketOwner)
+get_bucket_notification_configuration(Client, Bucket)
   when is_map(Client) ->
-    get_bucket_notification_configuration(Client, Bucket, ExpectedBucketOwner, []).
-get_bucket_notification_configuration(Client, Bucket, ExpectedBucketOwner, Options)
-  when is_map(Client), is_list(Options) ->
+    get_bucket_notification_configuration(Client, Bucket, #{}, #{}).
+
+get_bucket_notification_configuration(Client, Bucket, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_bucket_notification_configuration(Client, Bucket, QueryMap, HeadersMap, []).
+
+get_bucket_notification_configuration(Client, Bucket, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?notification"],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
-        {<<"x-amz-expected-bucket-owner">>, ExpectedBucketOwner}
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
@@ -2338,17 +2448,22 @@ get_bucket_notification_configuration(Client, Bucket, ExpectedBucketOwner, Optio
 %% </li> <li> `DeleteBucketOwnershipControls'
 %%
 %% </li> </ul>
-get_bucket_ownership_controls(Client, Bucket, ExpectedBucketOwner)
+get_bucket_ownership_controls(Client, Bucket)
   when is_map(Client) ->
-    get_bucket_ownership_controls(Client, Bucket, ExpectedBucketOwner, []).
-get_bucket_ownership_controls(Client, Bucket, ExpectedBucketOwner, Options)
-  when is_map(Client), is_list(Options) ->
+    get_bucket_ownership_controls(Client, Bucket, #{}, #{}).
+
+get_bucket_ownership_controls(Client, Bucket, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_bucket_ownership_controls(Client, Bucket, QueryMap, HeadersMap, []).
+
+get_bucket_ownership_controls(Client, Bucket, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?ownershipControls"],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
-        {<<"x-amz-expected-bucket-owner">>, ExpectedBucketOwner}
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
@@ -2380,17 +2495,22 @@ get_bucket_ownership_controls(Client, Bucket, ExpectedBucketOwner, Options)
 %% <ul> <li> GetObject
 %%
 %% </li> </ul>
-get_bucket_policy(Client, Bucket, ExpectedBucketOwner)
+get_bucket_policy(Client, Bucket)
   when is_map(Client) ->
-    get_bucket_policy(Client, Bucket, ExpectedBucketOwner, []).
-get_bucket_policy(Client, Bucket, ExpectedBucketOwner, Options)
-  when is_map(Client), is_list(Options) ->
+    get_bucket_policy(Client, Bucket, #{}, #{}).
+
+get_bucket_policy(Client, Bucket, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_bucket_policy(Client, Bucket, QueryMap, HeadersMap, []).
+
+get_bucket_policy(Client, Bucket, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?policy"],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
-        {<<"x-amz-expected-bucket-owner">>, ExpectedBucketOwner}
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
@@ -2419,17 +2539,22 @@ get_bucket_policy(Client, Bucket, ExpectedBucketOwner, Options)
 %% </li> <li> DeletePublicAccessBlock
 %%
 %% </li> </ul>
-get_bucket_policy_status(Client, Bucket, ExpectedBucketOwner)
+get_bucket_policy_status(Client, Bucket)
   when is_map(Client) ->
-    get_bucket_policy_status(Client, Bucket, ExpectedBucketOwner, []).
-get_bucket_policy_status(Client, Bucket, ExpectedBucketOwner, Options)
-  when is_map(Client), is_list(Options) ->
+    get_bucket_policy_status(Client, Bucket, #{}, #{}).
+
+get_bucket_policy_status(Client, Bucket, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_bucket_policy_status(Client, Bucket, QueryMap, HeadersMap, []).
+
+get_bucket_policy_status(Client, Bucket, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?policyStatus"],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
-        {<<"x-amz-expected-bucket-owner">>, ExpectedBucketOwner}
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
@@ -2464,17 +2589,22 @@ get_bucket_policy_status(Client, Bucket, ExpectedBucketOwner, Options)
 %% </li> <li> DeleteBucketReplication
 %%
 %% </li> </ul>
-get_bucket_replication(Client, Bucket, ExpectedBucketOwner)
+get_bucket_replication(Client, Bucket)
   when is_map(Client) ->
-    get_bucket_replication(Client, Bucket, ExpectedBucketOwner, []).
-get_bucket_replication(Client, Bucket, ExpectedBucketOwner, Options)
-  when is_map(Client), is_list(Options) ->
+    get_bucket_replication(Client, Bucket, #{}, #{}).
+
+get_bucket_replication(Client, Bucket, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_bucket_replication(Client, Bucket, QueryMap, HeadersMap, []).
+
+get_bucket_replication(Client, Bucket, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?replication"],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
-        {<<"x-amz-expected-bucket-owner">>, ExpectedBucketOwner}
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
@@ -2492,17 +2622,22 @@ get_bucket_replication(Client, Bucket, ExpectedBucketOwner, Options)
 %% <ul> <li> ListObjects
 %%
 %% </li> </ul>
-get_bucket_request_payment(Client, Bucket, ExpectedBucketOwner)
+get_bucket_request_payment(Client, Bucket)
   when is_map(Client) ->
-    get_bucket_request_payment(Client, Bucket, ExpectedBucketOwner, []).
-get_bucket_request_payment(Client, Bucket, ExpectedBucketOwner, Options)
-  when is_map(Client), is_list(Options) ->
+    get_bucket_request_payment(Client, Bucket, #{}, #{}).
+
+get_bucket_request_payment(Client, Bucket, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_bucket_request_payment(Client, Bucket, QueryMap, HeadersMap, []).
+
+get_bucket_request_payment(Client, Bucket, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?requestPayment"],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
-        {<<"x-amz-expected-bucket-owner">>, ExpectedBucketOwner}
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
@@ -2530,17 +2665,22 @@ get_bucket_request_payment(Client, Bucket, ExpectedBucketOwner, Options)
 %% </li> <li> DeleteBucketTagging
 %%
 %% </li> </ul>
-get_bucket_tagging(Client, Bucket, ExpectedBucketOwner)
+get_bucket_tagging(Client, Bucket)
   when is_map(Client) ->
-    get_bucket_tagging(Client, Bucket, ExpectedBucketOwner, []).
-get_bucket_tagging(Client, Bucket, ExpectedBucketOwner, Options)
-  when is_map(Client), is_list(Options) ->
+    get_bucket_tagging(Client, Bucket, #{}, #{}).
+
+get_bucket_tagging(Client, Bucket, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_bucket_tagging(Client, Bucket, QueryMap, HeadersMap, []).
+
+get_bucket_tagging(Client, Bucket, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?tagging"],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
-        {<<"x-amz-expected-bucket-owner">>, ExpectedBucketOwner}
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
@@ -2566,17 +2706,22 @@ get_bucket_tagging(Client, Bucket, ExpectedBucketOwner, Options)
 %% </li> <li> DeleteObject
 %%
 %% </li> </ul>
-get_bucket_versioning(Client, Bucket, ExpectedBucketOwner)
+get_bucket_versioning(Client, Bucket)
   when is_map(Client) ->
-    get_bucket_versioning(Client, Bucket, ExpectedBucketOwner, []).
-get_bucket_versioning(Client, Bucket, ExpectedBucketOwner, Options)
-  when is_map(Client), is_list(Options) ->
+    get_bucket_versioning(Client, Bucket, #{}, #{}).
+
+get_bucket_versioning(Client, Bucket, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_bucket_versioning(Client, Bucket, QueryMap, HeadersMap, []).
+
+get_bucket_versioning(Client, Bucket, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?versioning"],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
-        {<<"x-amz-expected-bucket-owner">>, ExpectedBucketOwner}
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
@@ -2603,17 +2748,22 @@ get_bucket_versioning(Client, Bucket, ExpectedBucketOwner, Options)
 %% </li> <li> PutBucketWebsite
 %%
 %% </li> </ul>
-get_bucket_website(Client, Bucket, ExpectedBucketOwner)
+get_bucket_website(Client, Bucket)
   when is_map(Client) ->
-    get_bucket_website(Client, Bucket, ExpectedBucketOwner, []).
-get_bucket_website(Client, Bucket, ExpectedBucketOwner, Options)
-  when is_map(Client), is_list(Options) ->
+    get_bucket_website(Client, Bucket, #{}, #{}).
+
+get_bucket_website(Client, Bucket, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_bucket_website(Client, Bucket, QueryMap, HeadersMap, []).
+
+get_bucket_website(Client, Bucket, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?website"],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
-        {<<"x-amz-expected-bucket-owner">>, ExpectedBucketOwner}
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
@@ -2756,39 +2906,44 @@ get_bucket_website(Client, Bucket, ExpectedBucketOwner, Options)
 %% </li> <li> GetObjectAcl
 %%
 %% </li> </ul>
-get_object(Client, Bucket, Key, PartNumber, ResponseCacheControl, ResponseContentDisposition, ResponseContentEncoding, ResponseContentLanguage, ResponseContentType, ResponseExpires, VersionId, ExpectedBucketOwner, IfMatch, IfModifiedSince, IfNoneMatch, IfUnmodifiedSince, Range, RequestPayer, SSECustomerAlgorithm, SSECustomerKey, SSECustomerKeyMD5)
+get_object(Client, Bucket, Key)
   when is_map(Client) ->
-    get_object(Client, Bucket, Key, PartNumber, ResponseCacheControl, ResponseContentDisposition, ResponseContentEncoding, ResponseContentLanguage, ResponseContentType, ResponseExpires, VersionId, ExpectedBucketOwner, IfMatch, IfModifiedSince, IfNoneMatch, IfUnmodifiedSince, Range, RequestPayer, SSECustomerAlgorithm, SSECustomerKey, SSECustomerKeyMD5, []).
-get_object(Client, Bucket, Key, PartNumber, ResponseCacheControl, ResponseContentDisposition, ResponseContentEncoding, ResponseContentLanguage, ResponseContentType, ResponseExpires, VersionId, ExpectedBucketOwner, IfMatch, IfModifiedSince, IfNoneMatch, IfUnmodifiedSince, Range, RequestPayer, SSECustomerAlgorithm, SSECustomerKey, SSECustomerKeyMD5, Options)
-  when is_map(Client), is_list(Options) ->
+    get_object(Client, Bucket, Key, #{}, #{}).
+
+get_object(Client, Bucket, Key, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_object(Client, Bucket, Key, QueryMap, HeadersMap, []).
+
+get_object(Client, Bucket, Key, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), ""],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
-        {<<"x-amz-expected-bucket-owner">>, ExpectedBucketOwner},
-        {<<"If-Match">>, IfMatch},
-        {<<"If-Modified-Since">>, IfModifiedSince},
-        {<<"If-None-Match">>, IfNoneMatch},
-        {<<"If-Unmodified-Since">>, IfUnmodifiedSince},
-        {<<"Range">>, Range},
-        {<<"x-amz-request-payer">>, RequestPayer},
-        {<<"x-amz-server-side-encryption-customer-algorithm">>, SSECustomerAlgorithm},
-        {<<"x-amz-server-side-encryption-customer-key">>, SSECustomerKey},
-        {<<"x-amz-server-side-encryption-customer-key-MD5">>, SSECustomerKeyMD5}
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)},
+        {<<"If-Match">>, maps:get(<<"If-Match">>, HeadersMap, undefined)},
+        {<<"If-Modified-Since">>, maps:get(<<"If-Modified-Since">>, HeadersMap, undefined)},
+        {<<"If-None-Match">>, maps:get(<<"If-None-Match">>, HeadersMap, undefined)},
+        {<<"If-Unmodified-Since">>, maps:get(<<"If-Unmodified-Since">>, HeadersMap, undefined)},
+        {<<"Range">>, maps:get(<<"Range">>, HeadersMap, undefined)},
+        {<<"x-amz-request-payer">>, maps:get(<<"x-amz-request-payer">>, HeadersMap, undefined)},
+        {<<"x-amz-server-side-encryption-customer-algorithm">>, maps:get(<<"x-amz-server-side-encryption-customer-algorithm">>, HeadersMap, undefined)},
+        {<<"x-amz-server-side-encryption-customer-key">>, maps:get(<<"x-amz-server-side-encryption-customer-key">>, HeadersMap, undefined)},
+        {<<"x-amz-server-side-encryption-customer-key-MD5">>, maps:get(<<"x-amz-server-side-encryption-customer-key-MD5">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
     Query0_ =
       [
-        {<<"partNumber">>, PartNumber},
-        {<<"response-cache-control">>, ResponseCacheControl},
-        {<<"response-content-disposition">>, ResponseContentDisposition},
-        {<<"response-content-encoding">>, ResponseContentEncoding},
-        {<<"response-content-language">>, ResponseContentLanguage},
-        {<<"response-content-type">>, ResponseContentType},
-        {<<"response-expires">>, ResponseExpires},
-        {<<"versionId">>, VersionId}
+        {<<"partNumber">>, maps:get(<<"partNumber">>, QueryMap, undefined)},
+        {<<"response-cache-control">>, maps:get(<<"response-cache-control">>, QueryMap, undefined)},
+        {<<"response-content-disposition">>, maps:get(<<"response-content-disposition">>, QueryMap, undefined)},
+        {<<"response-content-encoding">>, maps:get(<<"response-content-encoding">>, QueryMap, undefined)},
+        {<<"response-content-language">>, maps:get(<<"response-content-language">>, QueryMap, undefined)},
+        {<<"response-content-type">>, maps:get(<<"response-content-type">>, QueryMap, undefined)},
+        {<<"response-expires">>, maps:get(<<"response-expires">>, QueryMap, undefined)},
+        {<<"versionId">>, maps:get(<<"versionId">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -2860,24 +3015,29 @@ get_object(Client, Bucket, Key, PartNumber, ResponseCacheControl, ResponseConten
 %% </li> <li> PutObject
 %%
 %% </li> </ul>
-get_object_acl(Client, Bucket, Key, VersionId, ExpectedBucketOwner, RequestPayer)
+get_object_acl(Client, Bucket, Key)
   when is_map(Client) ->
-    get_object_acl(Client, Bucket, Key, VersionId, ExpectedBucketOwner, RequestPayer, []).
-get_object_acl(Client, Bucket, Key, VersionId, ExpectedBucketOwner, RequestPayer, Options)
-  when is_map(Client), is_list(Options) ->
+    get_object_acl(Client, Bucket, Key, #{}, #{}).
+
+get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap, []).
+
+get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?acl"],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
-        {<<"x-amz-expected-bucket-owner">>, ExpectedBucketOwner},
-        {<<"x-amz-request-payer">>, RequestPayer}
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)},
+        {<<"x-amz-request-payer">>, maps:get(<<"x-amz-request-payer">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
     Query0_ =
       [
-        {<<"versionId">>, VersionId}
+        {<<"versionId">>, maps:get(<<"versionId">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -2904,24 +3064,29 @@ get_object_acl(Client, Bucket, Key, VersionId, ExpectedBucketOwner, RequestPayer
 %% For more information, see Locking Objects.
 %%
 %% This action is not supported by Amazon S3 on Outposts.
-get_object_legal_hold(Client, Bucket, Key, VersionId, ExpectedBucketOwner, RequestPayer)
+get_object_legal_hold(Client, Bucket, Key)
   when is_map(Client) ->
-    get_object_legal_hold(Client, Bucket, Key, VersionId, ExpectedBucketOwner, RequestPayer, []).
-get_object_legal_hold(Client, Bucket, Key, VersionId, ExpectedBucketOwner, RequestPayer, Options)
-  when is_map(Client), is_list(Options) ->
+    get_object_legal_hold(Client, Bucket, Key, #{}, #{}).
+
+get_object_legal_hold(Client, Bucket, Key, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_object_legal_hold(Client, Bucket, Key, QueryMap, HeadersMap, []).
+
+get_object_legal_hold(Client, Bucket, Key, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?legal-hold"],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
-        {<<"x-amz-expected-bucket-owner">>, ExpectedBucketOwner},
-        {<<"x-amz-request-payer">>, RequestPayer}
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)},
+        {<<"x-amz-request-payer">>, maps:get(<<"x-amz-request-payer">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
     Query0_ =
       [
-        {<<"versionId">>, VersionId}
+        {<<"versionId">>, maps:get(<<"versionId">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -2932,17 +3097,22 @@ get_object_legal_hold(Client, Bucket, Key, VersionId, ExpectedBucketOwner, Reque
 %% The rule specified in the Object Lock configuration will be applied by
 %% default to every new object placed in the specified bucket. For more
 %% information, see Locking Objects.
-get_object_lock_configuration(Client, Bucket, ExpectedBucketOwner)
+get_object_lock_configuration(Client, Bucket)
   when is_map(Client) ->
-    get_object_lock_configuration(Client, Bucket, ExpectedBucketOwner, []).
-get_object_lock_configuration(Client, Bucket, ExpectedBucketOwner, Options)
-  when is_map(Client), is_list(Options) ->
+    get_object_lock_configuration(Client, Bucket, #{}, #{}).
+
+get_object_lock_configuration(Client, Bucket, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_object_lock_configuration(Client, Bucket, QueryMap, HeadersMap, []).
+
+get_object_lock_configuration(Client, Bucket, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?object-lock"],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
-        {<<"x-amz-expected-bucket-owner">>, ExpectedBucketOwner}
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
@@ -2955,24 +3125,29 @@ get_object_lock_configuration(Client, Bucket, ExpectedBucketOwner, Options)
 %% For more information, see Locking Objects.
 %%
 %% This action is not supported by Amazon S3 on Outposts.
-get_object_retention(Client, Bucket, Key, VersionId, ExpectedBucketOwner, RequestPayer)
+get_object_retention(Client, Bucket, Key)
   when is_map(Client) ->
-    get_object_retention(Client, Bucket, Key, VersionId, ExpectedBucketOwner, RequestPayer, []).
-get_object_retention(Client, Bucket, Key, VersionId, ExpectedBucketOwner, RequestPayer, Options)
-  when is_map(Client), is_list(Options) ->
+    get_object_retention(Client, Bucket, Key, #{}, #{}).
+
+get_object_retention(Client, Bucket, Key, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_object_retention(Client, Bucket, Key, QueryMap, HeadersMap, []).
+
+get_object_retention(Client, Bucket, Key, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?retention"],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
-        {<<"x-amz-expected-bucket-owner">>, ExpectedBucketOwner},
-        {<<"x-amz-request-payer">>, RequestPayer}
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)},
+        {<<"x-amz-request-payer">>, maps:get(<<"x-amz-request-payer">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
     Query0_ =
       [
-        {<<"versionId">>, VersionId}
+        {<<"versionId">>, maps:get(<<"versionId">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -3003,24 +3178,29 @@ get_object_retention(Client, Bucket, Key, VersionId, ExpectedBucketOwner, Reques
 %% </li> <li> DeleteObjectTagging
 %%
 %% </li> </ul>
-get_object_tagging(Client, Bucket, Key, VersionId, ExpectedBucketOwner, RequestPayer)
+get_object_tagging(Client, Bucket, Key)
   when is_map(Client) ->
-    get_object_tagging(Client, Bucket, Key, VersionId, ExpectedBucketOwner, RequestPayer, []).
-get_object_tagging(Client, Bucket, Key, VersionId, ExpectedBucketOwner, RequestPayer, Options)
-  when is_map(Client), is_list(Options) ->
+    get_object_tagging(Client, Bucket, Key, #{}, #{}).
+
+get_object_tagging(Client, Bucket, Key, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_object_tagging(Client, Bucket, Key, QueryMap, HeadersMap, []).
+
+get_object_tagging(Client, Bucket, Key, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?tagging"],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
-        {<<"x-amz-expected-bucket-owner">>, ExpectedBucketOwner},
-        {<<"x-amz-request-payer">>, RequestPayer}
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)},
+        {<<"x-amz-request-payer">>, maps:get(<<"x-amz-request-payer">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
     Query0_ =
       [
-        {<<"versionId">>, VersionId}
+        {<<"versionId">>, maps:get(<<"versionId">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -3061,18 +3241,23 @@ get_object_tagging(Client, Bucket, Key, VersionId, ExpectedBucketOwner, RequestP
 %% <ul> <li> GetObject
 %%
 %% </li> </ul>
-get_object_torrent(Client, Bucket, Key, ExpectedBucketOwner, RequestPayer)
+get_object_torrent(Client, Bucket, Key)
   when is_map(Client) ->
-    get_object_torrent(Client, Bucket, Key, ExpectedBucketOwner, RequestPayer, []).
-get_object_torrent(Client, Bucket, Key, ExpectedBucketOwner, RequestPayer, Options)
-  when is_map(Client), is_list(Options) ->
+    get_object_torrent(Client, Bucket, Key, #{}, #{}).
+
+get_object_torrent(Client, Bucket, Key, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_object_torrent(Client, Bucket, Key, QueryMap, HeadersMap, []).
+
+get_object_torrent(Client, Bucket, Key, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?torrent"],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
-        {<<"x-amz-expected-bucket-owner">>, ExpectedBucketOwner},
-        {<<"x-amz-request-payer">>, RequestPayer}
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)},
+        {<<"x-amz-request-payer">>, maps:get(<<"x-amz-request-payer">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
@@ -3124,17 +3309,22 @@ get_object_torrent(Client, Bucket, Key, ExpectedBucketOwner, RequestPayer, Optio
 %% </li> <li> DeletePublicAccessBlock
 %%
 %% </li> </ul>
-get_public_access_block(Client, Bucket, ExpectedBucketOwner)
+get_public_access_block(Client, Bucket)
   when is_map(Client) ->
-    get_public_access_block(Client, Bucket, ExpectedBucketOwner, []).
-get_public_access_block(Client, Bucket, ExpectedBucketOwner, Options)
-  when is_map(Client), is_list(Options) ->
+    get_public_access_block(Client, Bucket, #{}, #{}).
+
+get_public_access_block(Client, Bucket, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_public_access_block(Client, Bucket, QueryMap, HeadersMap, []).
+
+get_public_access_block(Client, Bucket, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?publicAccessBlock"],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
-        {<<"x-amz-expected-bucket-owner">>, ExpectedBucketOwner}
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
@@ -3358,23 +3548,28 @@ head_object(Client, Bucket, Key, Input0, Options) ->
 %% </li> <li> PutBucketAnalyticsConfiguration
 %%
 %% </li> </ul>
-list_bucket_analytics_configurations(Client, Bucket, ContinuationToken, ExpectedBucketOwner)
+list_bucket_analytics_configurations(Client, Bucket)
   when is_map(Client) ->
-    list_bucket_analytics_configurations(Client, Bucket, ContinuationToken, ExpectedBucketOwner, []).
-list_bucket_analytics_configurations(Client, Bucket, ContinuationToken, ExpectedBucketOwner, Options)
-  when is_map(Client), is_list(Options) ->
+    list_bucket_analytics_configurations(Client, Bucket, #{}, #{}).
+
+list_bucket_analytics_configurations(Client, Bucket, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_bucket_analytics_configurations(Client, Bucket, QueryMap, HeadersMap, []).
+
+list_bucket_analytics_configurations(Client, Bucket, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?analytics"],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
-        {<<"x-amz-expected-bucket-owner">>, ExpectedBucketOwner}
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
     Query0_ =
       [
-        {<<"continuation-token">>, ContinuationToken}
+        {<<"continuation-token">>, maps:get(<<"continuation-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -3410,11 +3605,16 @@ list_bucket_analytics_configurations(Client, Bucket, ContinuationToken, Expected
 %% </li> <li> GetBucketIntelligentTieringConfiguration
 %%
 %% </li> </ul>
-list_bucket_intelligent_tiering_configurations(Client, Bucket, ContinuationToken)
+list_bucket_intelligent_tiering_configurations(Client, Bucket)
   when is_map(Client) ->
-    list_bucket_intelligent_tiering_configurations(Client, Bucket, ContinuationToken, []).
-list_bucket_intelligent_tiering_configurations(Client, Bucket, ContinuationToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_bucket_intelligent_tiering_configurations(Client, Bucket, #{}, #{}).
+
+list_bucket_intelligent_tiering_configurations(Client, Bucket, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_bucket_intelligent_tiering_configurations(Client, Bucket, QueryMap, HeadersMap, []).
+
+list_bucket_intelligent_tiering_configurations(Client, Bucket, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?intelligent-tiering"],
     SuccessStatusCode = undefined,
 
@@ -3422,7 +3622,7 @@ list_bucket_intelligent_tiering_configurations(Client, Bucket, ContinuationToken
 
     Query0_ =
       [
-        {<<"continuation-token">>, ContinuationToken}
+        {<<"continuation-token">>, maps:get(<<"continuation-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -3461,23 +3661,28 @@ list_bucket_intelligent_tiering_configurations(Client, Bucket, ContinuationToken
 %% </li> <li> PutBucketInventoryConfiguration
 %%
 %% </li> </ul>
-list_bucket_inventory_configurations(Client, Bucket, ContinuationToken, ExpectedBucketOwner)
+list_bucket_inventory_configurations(Client, Bucket)
   when is_map(Client) ->
-    list_bucket_inventory_configurations(Client, Bucket, ContinuationToken, ExpectedBucketOwner, []).
-list_bucket_inventory_configurations(Client, Bucket, ContinuationToken, ExpectedBucketOwner, Options)
-  when is_map(Client), is_list(Options) ->
+    list_bucket_inventory_configurations(Client, Bucket, #{}, #{}).
+
+list_bucket_inventory_configurations(Client, Bucket, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_bucket_inventory_configurations(Client, Bucket, QueryMap, HeadersMap, []).
+
+list_bucket_inventory_configurations(Client, Bucket, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?inventory"],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
-        {<<"x-amz-expected-bucket-owner">>, ExpectedBucketOwner}
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
     Query0_ =
       [
-        {<<"continuation-token">>, ContinuationToken}
+        {<<"continuation-token">>, maps:get(<<"continuation-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -3517,23 +3722,28 @@ list_bucket_inventory_configurations(Client, Bucket, ContinuationToken, Expected
 %% </li> <li> DeleteBucketMetricsConfiguration
 %%
 %% </li> </ul>
-list_bucket_metrics_configurations(Client, Bucket, ContinuationToken, ExpectedBucketOwner)
+list_bucket_metrics_configurations(Client, Bucket)
   when is_map(Client) ->
-    list_bucket_metrics_configurations(Client, Bucket, ContinuationToken, ExpectedBucketOwner, []).
-list_bucket_metrics_configurations(Client, Bucket, ContinuationToken, ExpectedBucketOwner, Options)
-  when is_map(Client), is_list(Options) ->
+    list_bucket_metrics_configurations(Client, Bucket, #{}, #{}).
+
+list_bucket_metrics_configurations(Client, Bucket, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_bucket_metrics_configurations(Client, Bucket, QueryMap, HeadersMap, []).
+
+list_bucket_metrics_configurations(Client, Bucket, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?metrics"],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
-        {<<"x-amz-expected-bucket-owner">>, ExpectedBucketOwner}
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
     Query0_ =
       [
-        {<<"continuation-token">>, ContinuationToken}
+        {<<"continuation-token">>, maps:get(<<"continuation-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -3543,9 +3753,14 @@ list_bucket_metrics_configurations(Client, Bucket, ContinuationToken, ExpectedBu
 %% the request.
 list_buckets(Client)
   when is_map(Client) ->
-    list_buckets(Client, []).
-list_buckets(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    list_buckets(Client, #{}, #{}).
+
+list_buckets(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_buckets(Client, QueryMap, HeadersMap, []).
+
+list_buckets(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/"],
     SuccessStatusCode = undefined,
 
@@ -3594,28 +3809,33 @@ list_buckets(Client, Options)
 %% </li> <li> AbortMultipartUpload
 %%
 %% </li> </ul>
-list_multipart_uploads(Client, Bucket, Delimiter, EncodingType, KeyMarker, MaxUploads, Prefix, UploadIdMarker, ExpectedBucketOwner)
+list_multipart_uploads(Client, Bucket)
   when is_map(Client) ->
-    list_multipart_uploads(Client, Bucket, Delimiter, EncodingType, KeyMarker, MaxUploads, Prefix, UploadIdMarker, ExpectedBucketOwner, []).
-list_multipart_uploads(Client, Bucket, Delimiter, EncodingType, KeyMarker, MaxUploads, Prefix, UploadIdMarker, ExpectedBucketOwner, Options)
-  when is_map(Client), is_list(Options) ->
+    list_multipart_uploads(Client, Bucket, #{}, #{}).
+
+list_multipart_uploads(Client, Bucket, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_multipart_uploads(Client, Bucket, QueryMap, HeadersMap, []).
+
+list_multipart_uploads(Client, Bucket, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?uploads"],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
-        {<<"x-amz-expected-bucket-owner">>, ExpectedBucketOwner}
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
     Query0_ =
       [
-        {<<"delimiter">>, Delimiter},
-        {<<"encoding-type">>, EncodingType},
-        {<<"key-marker">>, KeyMarker},
-        {<<"max-uploads">>, MaxUploads},
-        {<<"prefix">>, Prefix},
-        {<<"upload-id-marker">>, UploadIdMarker}
+        {<<"delimiter">>, maps:get(<<"delimiter">>, QueryMap, undefined)},
+        {<<"encoding-type">>, maps:get(<<"encoding-type">>, QueryMap, undefined)},
+        {<<"key-marker">>, maps:get(<<"key-marker">>, QueryMap, undefined)},
+        {<<"max-uploads">>, maps:get(<<"max-uploads">>, QueryMap, undefined)},
+        {<<"prefix">>, maps:get(<<"prefix">>, QueryMap, undefined)},
+        {<<"upload-id-marker">>, maps:get(<<"upload-id-marker">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -3645,28 +3865,33 @@ list_multipart_uploads(Client, Bucket, Delimiter, EncodingType, KeyMarker, MaxUp
 %% </li> <li> DeleteObject
 %%
 %% </li> </ul>
-list_object_versions(Client, Bucket, Delimiter, EncodingType, KeyMarker, MaxKeys, Prefix, VersionIdMarker, ExpectedBucketOwner)
+list_object_versions(Client, Bucket)
   when is_map(Client) ->
-    list_object_versions(Client, Bucket, Delimiter, EncodingType, KeyMarker, MaxKeys, Prefix, VersionIdMarker, ExpectedBucketOwner, []).
-list_object_versions(Client, Bucket, Delimiter, EncodingType, KeyMarker, MaxKeys, Prefix, VersionIdMarker, ExpectedBucketOwner, Options)
-  when is_map(Client), is_list(Options) ->
+    list_object_versions(Client, Bucket, #{}, #{}).
+
+list_object_versions(Client, Bucket, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_object_versions(Client, Bucket, QueryMap, HeadersMap, []).
+
+list_object_versions(Client, Bucket, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?versions"],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
-        {<<"x-amz-expected-bucket-owner">>, ExpectedBucketOwner}
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
     Query0_ =
       [
-        {<<"delimiter">>, Delimiter},
-        {<<"encoding-type">>, EncodingType},
-        {<<"key-marker">>, KeyMarker},
-        {<<"max-keys">>, MaxKeys},
-        {<<"prefix">>, Prefix},
-        {<<"version-id-marker">>, VersionIdMarker}
+        {<<"delimiter">>, maps:get(<<"delimiter">>, QueryMap, undefined)},
+        {<<"encoding-type">>, maps:get(<<"encoding-type">>, QueryMap, undefined)},
+        {<<"key-marker">>, maps:get(<<"key-marker">>, QueryMap, undefined)},
+        {<<"max-keys">>, maps:get(<<"max-keys">>, QueryMap, undefined)},
+        {<<"prefix">>, maps:get(<<"prefix">>, QueryMap, undefined)},
+        {<<"version-id-marker">>, maps:get(<<"version-id-marker">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -3696,28 +3921,33 @@ list_object_versions(Client, Bucket, Delimiter, EncodingType, KeyMarker, MaxKeys
 %% </li> <li> ListBuckets
 %%
 %% </li> </ul>
-list_objects(Client, Bucket, Delimiter, EncodingType, Marker, MaxKeys, Prefix, ExpectedBucketOwner, RequestPayer)
+list_objects(Client, Bucket)
   when is_map(Client) ->
-    list_objects(Client, Bucket, Delimiter, EncodingType, Marker, MaxKeys, Prefix, ExpectedBucketOwner, RequestPayer, []).
-list_objects(Client, Bucket, Delimiter, EncodingType, Marker, MaxKeys, Prefix, ExpectedBucketOwner, RequestPayer, Options)
-  when is_map(Client), is_list(Options) ->
+    list_objects(Client, Bucket, #{}, #{}).
+
+list_objects(Client, Bucket, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_objects(Client, Bucket, QueryMap, HeadersMap, []).
+
+list_objects(Client, Bucket, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(Bucket), ""],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
-        {<<"x-amz-expected-bucket-owner">>, ExpectedBucketOwner},
-        {<<"x-amz-request-payer">>, RequestPayer}
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)},
+        {<<"x-amz-request-payer">>, maps:get(<<"x-amz-request-payer">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
     Query0_ =
       [
-        {<<"delimiter">>, Delimiter},
-        {<<"encoding-type">>, EncodingType},
-        {<<"marker">>, Marker},
-        {<<"max-keys">>, MaxKeys},
-        {<<"prefix">>, Prefix}
+        {<<"delimiter">>, maps:get(<<"delimiter">>, QueryMap, undefined)},
+        {<<"encoding-type">>, maps:get(<<"encoding-type">>, QueryMap, undefined)},
+        {<<"marker">>, maps:get(<<"marker">>, QueryMap, undefined)},
+        {<<"max-keys">>, maps:get(<<"max-keys">>, QueryMap, undefined)},
+        {<<"prefix">>, maps:get(<<"prefix">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -3756,30 +3986,35 @@ list_objects(Client, Bucket, Delimiter, EncodingType, Marker, MaxKeys, Prefix, E
 %% </li> <li> CreateBucket
 %%
 %% </li> </ul>
-list_objects_v2(Client, Bucket, ContinuationToken, Delimiter, EncodingType, FetchOwner, MaxKeys, Prefix, StartAfter, ExpectedBucketOwner, RequestPayer)
+list_objects_v2(Client, Bucket)
   when is_map(Client) ->
-    list_objects_v2(Client, Bucket, ContinuationToken, Delimiter, EncodingType, FetchOwner, MaxKeys, Prefix, StartAfter, ExpectedBucketOwner, RequestPayer, []).
-list_objects_v2(Client, Bucket, ContinuationToken, Delimiter, EncodingType, FetchOwner, MaxKeys, Prefix, StartAfter, ExpectedBucketOwner, RequestPayer, Options)
-  when is_map(Client), is_list(Options) ->
+    list_objects_v2(Client, Bucket, #{}, #{}).
+
+list_objects_v2(Client, Bucket, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_objects_v2(Client, Bucket, QueryMap, HeadersMap, []).
+
+list_objects_v2(Client, Bucket, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?list-type=2"],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
-        {<<"x-amz-expected-bucket-owner">>, ExpectedBucketOwner},
-        {<<"x-amz-request-payer">>, RequestPayer}
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)},
+        {<<"x-amz-request-payer">>, maps:get(<<"x-amz-request-payer">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
     Query0_ =
       [
-        {<<"continuation-token">>, ContinuationToken},
-        {<<"delimiter">>, Delimiter},
-        {<<"encoding-type">>, EncodingType},
-        {<<"fetch-owner">>, FetchOwner},
-        {<<"max-keys">>, MaxKeys},
-        {<<"prefix">>, Prefix},
-        {<<"start-after">>, StartAfter}
+        {<<"continuation-token">>, maps:get(<<"continuation-token">>, QueryMap, undefined)},
+        {<<"delimiter">>, maps:get(<<"delimiter">>, QueryMap, undefined)},
+        {<<"encoding-type">>, maps:get(<<"encoding-type">>, QueryMap, undefined)},
+        {<<"fetch-owner">>, maps:get(<<"fetch-owner">>, QueryMap, undefined)},
+        {<<"max-keys">>, maps:get(<<"max-keys">>, QueryMap, undefined)},
+        {<<"prefix">>, maps:get(<<"prefix">>, QueryMap, undefined)},
+        {<<"start-after">>, maps:get(<<"start-after">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -3818,25 +4053,30 @@ list_objects_v2(Client, Bucket, ContinuationToken, Delimiter, EncodingType, Fetc
 %% </li> <li> ListMultipartUploads
 %%
 %% </li> </ul>
-list_parts(Client, Bucket, Key, MaxParts, PartNumberMarker, UploadId, ExpectedBucketOwner, RequestPayer)
+list_parts(Client, Bucket, Key, UploadId)
   when is_map(Client) ->
-    list_parts(Client, Bucket, Key, MaxParts, PartNumberMarker, UploadId, ExpectedBucketOwner, RequestPayer, []).
-list_parts(Client, Bucket, Key, MaxParts, PartNumberMarker, UploadId, ExpectedBucketOwner, RequestPayer, Options)
-  when is_map(Client), is_list(Options) ->
+    list_parts(Client, Bucket, Key, UploadId, #{}, #{}).
+
+list_parts(Client, Bucket, Key, UploadId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_parts(Client, Bucket, Key, UploadId, QueryMap, HeadersMap, []).
+
+list_parts(Client, Bucket, Key, UploadId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), ""],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
-        {<<"x-amz-expected-bucket-owner">>, ExpectedBucketOwner},
-        {<<"x-amz-request-payer">>, RequestPayer}
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)},
+        {<<"x-amz-request-payer">>, maps:get(<<"x-amz-request-payer">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
     Query0_ =
       [
-        {<<"max-parts">>, MaxParts},
-        {<<"part-number-marker">>, PartNumberMarker},
+        {<<"max-parts">>, maps:get(<<"max-parts">>, QueryMap, undefined)},
+        {<<"part-number-marker">>, maps:get(<<"part-number-marker">>, QueryMap, undefined)},
         {<<"uploadId">>, UploadId}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],

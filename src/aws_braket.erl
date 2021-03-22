@@ -10,11 +10,14 @@
          create_quantum_task/2,
          create_quantum_task/3,
          get_device/2,
-         get_device/3,
+         get_device/4,
+         get_device/5,
          get_quantum_task/2,
-         get_quantum_task/3,
+         get_quantum_task/4,
+         get_quantum_task/5,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          search_devices/2,
          search_devices/3,
          search_quantum_tasks/2,
@@ -65,9 +68,14 @@ create_quantum_task(Client, Input0, Options) ->
 %% @doc Retrieves the devices available in Amazon Braket.
 get_device(Client, DeviceArn)
   when is_map(Client) ->
-    get_device(Client, DeviceArn, []).
-get_device(Client, DeviceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    get_device(Client, DeviceArn, #{}, #{}).
+
+get_device(Client, DeviceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_device(Client, DeviceArn, QueryMap, HeadersMap, []).
+
+get_device(Client, DeviceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/device/", aws_util:encode_uri(DeviceArn), ""],
     SuccessStatusCode = 200,
 
@@ -80,9 +88,14 @@ get_device(Client, DeviceArn, Options)
 %% @doc Retrieves the specified quantum task.
 get_quantum_task(Client, QuantumTaskArn)
   when is_map(Client) ->
-    get_quantum_task(Client, QuantumTaskArn, []).
-get_quantum_task(Client, QuantumTaskArn, Options)
-  when is_map(Client), is_list(Options) ->
+    get_quantum_task(Client, QuantumTaskArn, #{}, #{}).
+
+get_quantum_task(Client, QuantumTaskArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_quantum_task(Client, QuantumTaskArn, QueryMap, HeadersMap, []).
+
+get_quantum_task(Client, QuantumTaskArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/quantum-task/", aws_util:encode_uri(QuantumTaskArn), ""],
     SuccessStatusCode = 200,
 
@@ -95,9 +108,14 @@ get_quantum_task(Client, QuantumTaskArn, Options)
 %% @doc Shows the tags associated with this resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 
