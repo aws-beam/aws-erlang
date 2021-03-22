@@ -7,7 +7,7 @@ Here is an example:
 ```erlang
 Client = aws_client:make_client(<<"access-key-id">>, <<"secret-access-key">>, <<"us-east-1">>),
 {ok, Output, _Response} = aws_kinesis:list_streams(Client, #{}, []),
-io:format("~p~n", [Result]).
+io:format("~p~n", [Output]).
 ```
 
 This outputs:
