@@ -12,15 +12,19 @@
          delete_project/3,
          delete_project/4,
          describe_bundle/2,
-         describe_bundle/3,
-         describe_project/3,
+         describe_bundle/4,
+         describe_bundle/5,
+         describe_project/2,
          describe_project/4,
+         describe_project/5,
          export_bundle/3,
          export_bundle/4,
          export_project/3,
          export_project/4,
+         list_bundles/1,
          list_bundles/3,
          list_bundles/4,
+         list_projects/1,
          list_projects/3,
          list_projects/4,
          update_project/2,
@@ -70,9 +74,14 @@ delete_project(Client, ProjectId, Input0, Options) ->
 %% @doc Get the bundle details for the requested bundle id.
 describe_bundle(Client, BundleId)
   when is_map(Client) ->
-    describe_bundle(Client, BundleId, []).
-describe_bundle(Client, BundleId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_bundle(Client, BundleId, #{}, #{}).
+
+describe_bundle(Client, BundleId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_bundle(Client, BundleId, QueryMap, HeadersMap, []).
+
+describe_bundle(Client, BundleId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/bundles/", aws_util:encode_uri(BundleId), ""],
     SuccessStatusCode = undefined,
 
@@ -83,11 +92,16 @@ describe_bundle(Client, BundleId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets details about a project in AWS Mobile Hub.
-describe_project(Client, ProjectId, SyncFromResources)
+describe_project(Client, ProjectId)
   when is_map(Client) ->
-    describe_project(Client, ProjectId, SyncFromResources, []).
-describe_project(Client, ProjectId, SyncFromResources, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_project(Client, ProjectId, #{}, #{}).
+
+describe_project(Client, ProjectId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_project(Client, ProjectId, QueryMap, HeadersMap, []).
+
+describe_project(Client, ProjectId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/project"],
     SuccessStatusCode = undefined,
 
@@ -96,7 +110,7 @@ describe_project(Client, ProjectId, SyncFromResources, Options)
     Query0_ =
       [
         {<<"projectId">>, ProjectId},
-        {<<"syncFromResources">>, SyncFromResources}
+        {<<"syncFromResources">>, maps:get(<<"syncFromResources">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -143,11 +157,16 @@ export_project(Client, ProjectId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc List all available bundles.
-list_bundles(Client, MaxResults, NextToken)
+list_bundles(Client)
   when is_map(Client) ->
-    list_bundles(Client, MaxResults, NextToken, []).
-list_bundles(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_bundles(Client, #{}, #{}).
+
+list_bundles(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_bundles(Client, QueryMap, HeadersMap, []).
+
+list_bundles(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/bundles"],
     SuccessStatusCode = undefined,
 
@@ -155,19 +174,24 @@ list_bundles(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists projects in AWS Mobile Hub.
-list_projects(Client, MaxResults, NextToken)
+list_projects(Client)
   when is_map(Client) ->
-    list_projects(Client, MaxResults, NextToken, []).
-list_projects(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_projects(Client, #{}, #{}).
+
+list_projects(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_projects(Client, QueryMap, HeadersMap, []).
+
+list_projects(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/projects"],
     SuccessStatusCode = undefined,
 
@@ -175,8 +199,8 @@ list_projects(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

@@ -56,75 +56,109 @@
          enable_hosted_zone_dns_sec/3,
          enable_hosted_zone_dns_sec/4,
          get_account_limit/2,
-         get_account_limit/3,
+         get_account_limit/4,
+         get_account_limit/5,
          get_change/2,
-         get_change/3,
+         get_change/4,
+         get_change/5,
          get_checker_ip_ranges/1,
-         get_checker_ip_ranges/2,
+         get_checker_ip_ranges/3,
+         get_checker_ip_ranges/4,
          get_dns_sec/2,
-         get_dns_sec/3,
+         get_dns_sec/4,
+         get_dns_sec/5,
+         get_geo_location/1,
+         get_geo_location/3,
          get_geo_location/4,
-         get_geo_location/5,
          get_health_check/2,
-         get_health_check/3,
+         get_health_check/4,
+         get_health_check/5,
          get_health_check_count/1,
-         get_health_check_count/2,
+         get_health_check_count/3,
+         get_health_check_count/4,
          get_health_check_last_failure_reason/2,
-         get_health_check_last_failure_reason/3,
+         get_health_check_last_failure_reason/4,
+         get_health_check_last_failure_reason/5,
          get_health_check_status/2,
-         get_health_check_status/3,
+         get_health_check_status/4,
+         get_health_check_status/5,
          get_hosted_zone/2,
-         get_hosted_zone/3,
+         get_hosted_zone/4,
+         get_hosted_zone/5,
          get_hosted_zone_count/1,
-         get_hosted_zone_count/2,
+         get_hosted_zone_count/3,
+         get_hosted_zone_count/4,
          get_hosted_zone_limit/3,
-         get_hosted_zone_limit/4,
+         get_hosted_zone_limit/5,
+         get_hosted_zone_limit/6,
          get_query_logging_config/2,
-         get_query_logging_config/3,
+         get_query_logging_config/4,
+         get_query_logging_config/5,
          get_reusable_delegation_set/2,
-         get_reusable_delegation_set/3,
+         get_reusable_delegation_set/4,
+         get_reusable_delegation_set/5,
          get_reusable_delegation_set_limit/3,
-         get_reusable_delegation_set_limit/4,
+         get_reusable_delegation_set_limit/5,
+         get_reusable_delegation_set_limit/6,
          get_traffic_policy/3,
-         get_traffic_policy/4,
+         get_traffic_policy/5,
+         get_traffic_policy/6,
          get_traffic_policy_instance/2,
-         get_traffic_policy_instance/3,
+         get_traffic_policy_instance/4,
+         get_traffic_policy_instance/5,
          get_traffic_policy_instance_count/1,
-         get_traffic_policy_instance_count/2,
-         list_geo_locations/5,
-         list_geo_locations/6,
+         get_traffic_policy_instance_count/3,
+         get_traffic_policy_instance_count/4,
+         list_geo_locations/1,
+         list_geo_locations/3,
+         list_geo_locations/4,
+         list_health_checks/1,
          list_health_checks/3,
          list_health_checks/4,
+         list_hosted_zones/1,
+         list_hosted_zones/3,
          list_hosted_zones/4,
-         list_hosted_zones/5,
+         list_hosted_zones_by_name/1,
+         list_hosted_zones_by_name/3,
          list_hosted_zones_by_name/4,
-         list_hosted_zones_by_name/5,
+         list_hosted_zones_by_vpc/3,
          list_hosted_zones_by_vpc/5,
          list_hosted_zones_by_vpc/6,
+         list_query_logging_configs/1,
+         list_query_logging_configs/3,
          list_query_logging_configs/4,
-         list_query_logging_configs/5,
-         list_resource_record_sets/6,
-         list_resource_record_sets/7,
+         list_resource_record_sets/2,
+         list_resource_record_sets/4,
+         list_resource_record_sets/5,
+         list_reusable_delegation_sets/1,
          list_reusable_delegation_sets/3,
          list_reusable_delegation_sets/4,
          list_tags_for_resource/3,
-         list_tags_for_resource/4,
+         list_tags_for_resource/5,
+         list_tags_for_resource/6,
          list_tags_for_resources/3,
          list_tags_for_resources/4,
+         list_traffic_policies/1,
          list_traffic_policies/3,
          list_traffic_policies/4,
-         list_traffic_policy_instances/5,
-         list_traffic_policy_instances/6,
+         list_traffic_policy_instances/1,
+         list_traffic_policy_instances/3,
+         list_traffic_policy_instances/4,
+         list_traffic_policy_instances_by_hosted_zone/2,
+         list_traffic_policy_instances_by_hosted_zone/4,
          list_traffic_policy_instances_by_hosted_zone/5,
-         list_traffic_policy_instances_by_hosted_zone/6,
-         list_traffic_policy_instances_by_policy/7,
-         list_traffic_policy_instances_by_policy/8,
+         list_traffic_policy_instances_by_policy/3,
+         list_traffic_policy_instances_by_policy/5,
+         list_traffic_policy_instances_by_policy/6,
+         list_traffic_policy_versions/2,
          list_traffic_policy_versions/4,
          list_traffic_policy_versions/5,
+         list_vpc_association_authorizations/2,
          list_vpc_association_authorizations/4,
          list_vpc_association_authorizations/5,
+         test_dns_answer/4,
+         test_dns_answer/6,
          test_dns_answer/7,
-         test_dns_answer/8,
          update_health_check/3,
          update_health_check/4,
          update_hosted_zone_comment/3,
@@ -1179,9 +1213,14 @@ enable_hosted_zone_dns_sec(Client, HostedZoneId, Input0, Options) ->
 %% in the navigation pane.
 get_account_limit(Client, Type)
   when is_map(Client) ->
-    get_account_limit(Client, Type, []).
-get_account_limit(Client, Type, Options)
-  when is_map(Client), is_list(Options) ->
+    get_account_limit(Client, Type, #{}, #{}).
+
+get_account_limit(Client, Type, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_account_limit(Client, Type, QueryMap, HeadersMap, []).
+
+get_account_limit(Client, Type, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2013-04-01/accountlimit/", aws_util:encode_uri(Type), ""],
     SuccessStatusCode = undefined,
 
@@ -1205,9 +1244,14 @@ get_account_limit(Client, Type, Options)
 %% </li> </ul>
 get_change(Client, Id)
   when is_map(Client) ->
-    get_change(Client, Id, []).
-get_change(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    get_change(Client, Id, #{}, #{}).
+
+get_change(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_change(Client, Id, QueryMap, HeadersMap, []).
+
+get_change(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2013-04-01/change/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
@@ -1226,9 +1270,14 @@ get_change(Client, Id, Options)
 %% Amazon Route 53 Developer Guide.
 get_checker_ip_ranges(Client)
   when is_map(Client) ->
-    get_checker_ip_ranges(Client, []).
-get_checker_ip_ranges(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    get_checker_ip_ranges(Client, #{}, #{}).
+
+get_checker_ip_ranges(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_checker_ip_ranges(Client, QueryMap, HeadersMap, []).
+
+get_checker_ip_ranges(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2013-04-01/checkeripranges"],
     SuccessStatusCode = undefined,
 
@@ -1242,9 +1291,14 @@ get_checker_ip_ranges(Client, Options)
 %% including the key-signing keys (KSKs) in the hosted zone.
 get_dns_sec(Client, HostedZoneId)
   when is_map(Client) ->
-    get_dns_sec(Client, HostedZoneId, []).
-get_dns_sec(Client, HostedZoneId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_dns_sec(Client, HostedZoneId, #{}, #{}).
+
+get_dns_sec(Client, HostedZoneId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_dns_sec(Client, HostedZoneId, QueryMap, HeadersMap, []).
+
+get_dns_sec(Client, HostedZoneId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/dnssec"],
     SuccessStatusCode = undefined,
 
@@ -1276,11 +1330,16 @@ get_dns_sec(Client, HostedZoneId, Options)
 %%
 %% `GET /2013-04-01/geolocation?countrycode=two-character country
 %% code&subdivisioncode=subdivision code '
-get_geo_location(Client, ContinentCode, CountryCode, SubdivisionCode)
+get_geo_location(Client)
   when is_map(Client) ->
-    get_geo_location(Client, ContinentCode, CountryCode, SubdivisionCode, []).
-get_geo_location(Client, ContinentCode, CountryCode, SubdivisionCode, Options)
-  when is_map(Client), is_list(Options) ->
+    get_geo_location(Client, #{}, #{}).
+
+get_geo_location(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_geo_location(Client, QueryMap, HeadersMap, []).
+
+get_geo_location(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2013-04-01/geolocation"],
     SuccessStatusCode = undefined,
 
@@ -1288,9 +1347,9 @@ get_geo_location(Client, ContinentCode, CountryCode, SubdivisionCode, Options)
 
     Query0_ =
       [
-        {<<"continentcode">>, ContinentCode},
-        {<<"countrycode">>, CountryCode},
-        {<<"subdivisioncode">>, SubdivisionCode}
+        {<<"continentcode">>, maps:get(<<"continentcode">>, QueryMap, undefined)},
+        {<<"countrycode">>, maps:get(<<"countrycode">>, QueryMap, undefined)},
+        {<<"subdivisioncode">>, maps:get(<<"subdivisioncode">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1299,9 +1358,14 @@ get_geo_location(Client, ContinentCode, CountryCode, SubdivisionCode, Options)
 %% @doc Gets information about a specified health check.
 get_health_check(Client, HealthCheckId)
   when is_map(Client) ->
-    get_health_check(Client, HealthCheckId, []).
-get_health_check(Client, HealthCheckId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_health_check(Client, HealthCheckId, #{}, #{}).
+
+get_health_check(Client, HealthCheckId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_health_check(Client, HealthCheckId, QueryMap, HeadersMap, []).
+
+get_health_check(Client, HealthCheckId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2013-04-01/healthcheck/", aws_util:encode_uri(HealthCheckId), ""],
     SuccessStatusCode = undefined,
 
@@ -1315,9 +1379,14 @@ get_health_check(Client, HealthCheckId, Options)
 %% current AWS account.
 get_health_check_count(Client)
   when is_map(Client) ->
-    get_health_check_count(Client, []).
-get_health_check_count(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    get_health_check_count(Client, #{}, #{}).
+
+get_health_check_count(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_health_check_count(Client, QueryMap, HeadersMap, []).
+
+get_health_check_count(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2013-04-01/healthcheckcount"],
     SuccessStatusCode = undefined,
 
@@ -1330,9 +1399,14 @@ get_health_check_count(Client, Options)
 %% @doc Gets the reason that a specified health check failed most recently.
 get_health_check_last_failure_reason(Client, HealthCheckId)
   when is_map(Client) ->
-    get_health_check_last_failure_reason(Client, HealthCheckId, []).
-get_health_check_last_failure_reason(Client, HealthCheckId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_health_check_last_failure_reason(Client, HealthCheckId, #{}, #{}).
+
+get_health_check_last_failure_reason(Client, HealthCheckId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_health_check_last_failure_reason(Client, HealthCheckId, QueryMap, HeadersMap, []).
+
+get_health_check_last_failure_reason(Client, HealthCheckId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2013-04-01/healthcheck/", aws_util:encode_uri(HealthCheckId), "/lastfailurereason"],
     SuccessStatusCode = undefined,
 
@@ -1345,9 +1419,14 @@ get_health_check_last_failure_reason(Client, HealthCheckId, Options)
 %% @doc Gets status of a specified health check.
 get_health_check_status(Client, HealthCheckId)
   when is_map(Client) ->
-    get_health_check_status(Client, HealthCheckId, []).
-get_health_check_status(Client, HealthCheckId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_health_check_status(Client, HealthCheckId, #{}, #{}).
+
+get_health_check_status(Client, HealthCheckId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_health_check_status(Client, HealthCheckId, QueryMap, HeadersMap, []).
+
+get_health_check_status(Client, HealthCheckId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2013-04-01/healthcheck/", aws_util:encode_uri(HealthCheckId), "/status"],
     SuccessStatusCode = undefined,
 
@@ -1361,9 +1440,14 @@ get_health_check_status(Client, HealthCheckId, Options)
 %% name servers assigned to the hosted zone.
 get_hosted_zone(Client, Id)
   when is_map(Client) ->
-    get_hosted_zone(Client, Id, []).
-get_hosted_zone(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    get_hosted_zone(Client, Id, #{}, #{}).
+
+get_hosted_zone(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_hosted_zone(Client, Id, QueryMap, HeadersMap, []).
+
+get_hosted_zone(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
@@ -1377,9 +1461,14 @@ get_hosted_zone(Client, Id, Options)
 %% current AWS account.
 get_hosted_zone_count(Client)
   when is_map(Client) ->
-    get_hosted_zone_count(Client, []).
-get_hosted_zone_count(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    get_hosted_zone_count(Client, #{}, #{}).
+
+get_hosted_zone_count(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_hosted_zone_count(Client, QueryMap, HeadersMap, []).
+
+get_hosted_zone_count(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2013-04-01/hostedzonecount"],
     SuccessStatusCode = undefined,
 
@@ -1396,9 +1485,14 @@ get_hosted_zone_count(Client, Options)
 %% To request a higher limit, open a case.
 get_hosted_zone_limit(Client, HostedZoneId, Type)
   when is_map(Client) ->
-    get_hosted_zone_limit(Client, HostedZoneId, Type, []).
-get_hosted_zone_limit(Client, HostedZoneId, Type, Options)
-  when is_map(Client), is_list(Options) ->
+    get_hosted_zone_limit(Client, HostedZoneId, Type, #{}, #{}).
+
+get_hosted_zone_limit(Client, HostedZoneId, Type, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_hosted_zone_limit(Client, HostedZoneId, Type, QueryMap, HeadersMap, []).
+
+get_hosted_zone_limit(Client, HostedZoneId, Type, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2013-04-01/hostedzonelimit/", aws_util:encode_uri(HostedZoneId), "/", aws_util:encode_uri(Type), ""],
     SuccessStatusCode = undefined,
 
@@ -1415,9 +1509,14 @@ get_hosted_zone_limit(Client, HostedZoneId, Type, Options)
 %% and Logging DNS Queries.
 get_query_logging_config(Client, Id)
   when is_map(Client) ->
-    get_query_logging_config(Client, Id, []).
-get_query_logging_config(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    get_query_logging_config(Client, Id, #{}, #{}).
+
+get_query_logging_config(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_query_logging_config(Client, Id, QueryMap, HeadersMap, []).
+
+get_query_logging_config(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2013-04-01/queryloggingconfig/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
@@ -1431,9 +1530,14 @@ get_query_logging_config(Client, Id, Options)
 %% including the four name servers that are assigned to the delegation set.
 get_reusable_delegation_set(Client, Id)
   when is_map(Client) ->
-    get_reusable_delegation_set(Client, Id, []).
-get_reusable_delegation_set(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    get_reusable_delegation_set(Client, Id, #{}, #{}).
+
+get_reusable_delegation_set(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_reusable_delegation_set(Client, Id, QueryMap, HeadersMap, []).
+
+get_reusable_delegation_set(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2013-04-01/delegationset/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
@@ -1450,9 +1554,14 @@ get_reusable_delegation_set(Client, Id, Options)
 %% To request a higher limit, open a case.
 get_reusable_delegation_set_limit(Client, DelegationSetId, Type)
   when is_map(Client) ->
-    get_reusable_delegation_set_limit(Client, DelegationSetId, Type, []).
-get_reusable_delegation_set_limit(Client, DelegationSetId, Type, Options)
-  when is_map(Client), is_list(Options) ->
+    get_reusable_delegation_set_limit(Client, DelegationSetId, Type, #{}, #{}).
+
+get_reusable_delegation_set_limit(Client, DelegationSetId, Type, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_reusable_delegation_set_limit(Client, DelegationSetId, Type, QueryMap, HeadersMap, []).
+
+get_reusable_delegation_set_limit(Client, DelegationSetId, Type, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2013-04-01/reusabledelegationsetlimit/", aws_util:encode_uri(DelegationSetId), "/", aws_util:encode_uri(Type), ""],
     SuccessStatusCode = undefined,
 
@@ -1468,9 +1577,14 @@ get_reusable_delegation_set_limit(Client, DelegationSetId, Type, Options)
 %% response from `GetTrafficPolicy', see DeleteTrafficPolicy.
 get_traffic_policy(Client, Id, Version)
   when is_map(Client) ->
-    get_traffic_policy(Client, Id, Version, []).
-get_traffic_policy(Client, Id, Version, Options)
-  when is_map(Client), is_list(Options) ->
+    get_traffic_policy(Client, Id, Version, #{}, #{}).
+
+get_traffic_policy(Client, Id, Version, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_traffic_policy(Client, Id, Version, QueryMap, HeadersMap, []).
+
+get_traffic_policy(Client, Id, Version, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2013-04-01/trafficpolicy/", aws_util:encode_uri(Id), "/", aws_util:encode_uri(Version), ""],
     SuccessStatusCode = undefined,
 
@@ -1492,9 +1606,14 @@ get_traffic_policy(Client, Id, Version, Options)
 %% records.
 get_traffic_policy_instance(Client, Id)
   when is_map(Client) ->
-    get_traffic_policy_instance(Client, Id, []).
-get_traffic_policy_instance(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    get_traffic_policy_instance(Client, Id, #{}, #{}).
+
+get_traffic_policy_instance(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_traffic_policy_instance(Client, Id, QueryMap, HeadersMap, []).
+
+get_traffic_policy_instance(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2013-04-01/trafficpolicyinstance/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
@@ -1508,9 +1627,14 @@ get_traffic_policy_instance(Client, Id, Options)
 %% the current AWS account.
 get_traffic_policy_instance_count(Client)
   when is_map(Client) ->
-    get_traffic_policy_instance_count(Client, []).
-get_traffic_policy_instance_count(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    get_traffic_policy_instance_count(Client, #{}, #{}).
+
+get_traffic_policy_instance_count(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_traffic_policy_instance_count(Client, QueryMap, HeadersMap, []).
+
+get_traffic_policy_instance_count(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2013-04-01/trafficpolicyinstancecount"],
     SuccessStatusCode = undefined,
 
@@ -1531,11 +1655,16 @@ get_traffic_policy_instance_count(Client, Options)
 %% information that is already available to the public.
 %%
 %% For a list of supported geolocation codes, see the GeoLocation data type.
-list_geo_locations(Client, MaxItems, StartContinentCode, StartCountryCode, StartSubdivisionCode)
+list_geo_locations(Client)
   when is_map(Client) ->
-    list_geo_locations(Client, MaxItems, StartContinentCode, StartCountryCode, StartSubdivisionCode, []).
-list_geo_locations(Client, MaxItems, StartContinentCode, StartCountryCode, StartSubdivisionCode, Options)
-  when is_map(Client), is_list(Options) ->
+    list_geo_locations(Client, #{}, #{}).
+
+list_geo_locations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_geo_locations(Client, QueryMap, HeadersMap, []).
+
+list_geo_locations(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2013-04-01/geolocations"],
     SuccessStatusCode = undefined,
 
@@ -1543,10 +1672,10 @@ list_geo_locations(Client, MaxItems, StartContinentCode, StartCountryCode, Start
 
     Query0_ =
       [
-        {<<"maxitems">>, MaxItems},
-        {<<"startcontinentcode">>, StartContinentCode},
-        {<<"startcountrycode">>, StartCountryCode},
-        {<<"startsubdivisioncode">>, StartSubdivisionCode}
+        {<<"maxitems">>, maps:get(<<"maxitems">>, QueryMap, undefined)},
+        {<<"startcontinentcode">>, maps:get(<<"startcontinentcode">>, QueryMap, undefined)},
+        {<<"startcountrycode">>, maps:get(<<"startcountrycode">>, QueryMap, undefined)},
+        {<<"startsubdivisioncode">>, maps:get(<<"startsubdivisioncode">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1554,11 +1683,16 @@ list_geo_locations(Client, MaxItems, StartContinentCode, StartCountryCode, Start
 
 %% @doc Retrieve a list of the health checks that are associated with the
 %% current AWS account.
-list_health_checks(Client, Marker, MaxItems)
+list_health_checks(Client)
   when is_map(Client) ->
-    list_health_checks(Client, Marker, MaxItems, []).
-list_health_checks(Client, Marker, MaxItems, Options)
-  when is_map(Client), is_list(Options) ->
+    list_health_checks(Client, #{}, #{}).
+
+list_health_checks(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_health_checks(Client, QueryMap, HeadersMap, []).
+
+list_health_checks(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2013-04-01/healthcheck"],
     SuccessStatusCode = undefined,
 
@@ -1566,8 +1700,8 @@ list_health_checks(Client, Marker, MaxItems, Options)
 
     Query0_ =
       [
-        {<<"marker">>, Marker},
-        {<<"maxitems">>, MaxItems}
+        {<<"marker">>, maps:get(<<"marker">>, QueryMap, undefined)},
+        {<<"maxitems">>, maps:get(<<"maxitems">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1581,11 +1715,16 @@ list_health_checks(Client, Marker, MaxItems, Options)
 %% Amazon Route 53 returns a maximum of 100 items in each response. If you
 %% have a lot of hosted zones, you can use the `maxitems' parameter to list
 %% them in groups of up to 100.
-list_hosted_zones(Client, DelegationSetId, Marker, MaxItems)
+list_hosted_zones(Client)
   when is_map(Client) ->
-    list_hosted_zones(Client, DelegationSetId, Marker, MaxItems, []).
-list_hosted_zones(Client, DelegationSetId, Marker, MaxItems, Options)
-  when is_map(Client), is_list(Options) ->
+    list_hosted_zones(Client, #{}, #{}).
+
+list_hosted_zones(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_hosted_zones(Client, QueryMap, HeadersMap, []).
+
+list_hosted_zones(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2013-04-01/hostedzone"],
     SuccessStatusCode = undefined,
 
@@ -1593,9 +1732,9 @@ list_hosted_zones(Client, DelegationSetId, Marker, MaxItems, Options)
 
     Query0_ =
       [
-        {<<"delegationsetid">>, DelegationSetId},
-        {<<"marker">>, Marker},
-        {<<"maxitems">>, MaxItems}
+        {<<"delegationsetid">>, maps:get(<<"delegationsetid">>, QueryMap, undefined)},
+        {<<"marker">>, maps:get(<<"marker">>, QueryMap, undefined)},
+        {<<"maxitems">>, maps:get(<<"maxitems">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1656,11 +1795,16 @@ list_hosted_zones(Client, DelegationSetId, Marker, MaxItems, Options)
 %% and `hostedzoneid' parameters, respectively.
 %%
 %% </li> </ul>
-list_hosted_zones_by_name(Client, DNSName, HostedZoneId, MaxItems)
+list_hosted_zones_by_name(Client)
   when is_map(Client) ->
-    list_hosted_zones_by_name(Client, DNSName, HostedZoneId, MaxItems, []).
-list_hosted_zones_by_name(Client, DNSName, HostedZoneId, MaxItems, Options)
-  when is_map(Client), is_list(Options) ->
+    list_hosted_zones_by_name(Client, #{}, #{}).
+
+list_hosted_zones_by_name(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_hosted_zones_by_name(Client, QueryMap, HeadersMap, []).
+
+list_hosted_zones_by_name(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2013-04-01/hostedzonesbyname"],
     SuccessStatusCode = undefined,
 
@@ -1668,9 +1812,9 @@ list_hosted_zones_by_name(Client, DNSName, HostedZoneId, MaxItems, Options)
 
     Query0_ =
       [
-        {<<"dnsname">>, DNSName},
-        {<<"hostedzoneid">>, HostedZoneId},
-        {<<"maxitems">>, MaxItems}
+        {<<"dnsname">>, maps:get(<<"dnsname">>, QueryMap, undefined)},
+        {<<"hostedzoneid">>, maps:get(<<"hostedzoneid">>, QueryMap, undefined)},
+        {<<"maxitems">>, maps:get(<<"maxitems">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1693,11 +1837,16 @@ list_hosted_zones_by_name(Client, DNSName, HostedZoneId, MaxItems, Options)
 %% is `efs.amazonaws.com'.
 %%
 %% </li> </ul>
-list_hosted_zones_by_vpc(Client, MaxItems, NextToken, VPCId, VPCRegion)
+list_hosted_zones_by_vpc(Client, VPCId, VPCRegion)
   when is_map(Client) ->
-    list_hosted_zones_by_vpc(Client, MaxItems, NextToken, VPCId, VPCRegion, []).
-list_hosted_zones_by_vpc(Client, MaxItems, NextToken, VPCId, VPCRegion, Options)
-  when is_map(Client), is_list(Options) ->
+    list_hosted_zones_by_vpc(Client, VPCId, VPCRegion, #{}, #{}).
+
+list_hosted_zones_by_vpc(Client, VPCId, VPCRegion, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_hosted_zones_by_vpc(Client, VPCId, VPCRegion, QueryMap, HeadersMap, []).
+
+list_hosted_zones_by_vpc(Client, VPCId, VPCRegion, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2013-04-01/hostedzonesbyvpc"],
     SuccessStatusCode = undefined,
 
@@ -1705,8 +1854,8 @@ list_hosted_zones_by_vpc(Client, MaxItems, NextToken, VPCId, VPCRegion, Options)
 
     Query0_ =
       [
-        {<<"maxitems">>, MaxItems},
-        {<<"nexttoken">>, NextToken},
+        {<<"maxitems">>, maps:get(<<"maxitems">>, QueryMap, undefined)},
+        {<<"nexttoken">>, maps:get(<<"nexttoken">>, QueryMap, undefined)},
         {<<"vpcid">>, VPCId},
         {<<"vpcregion">>, VPCRegion}
       ],
@@ -1721,11 +1870,16 @@ list_hosted_zones_by_vpc(Client, MaxItems, NextToken, VPCId, VPCRegion, Options)
 %% For more information about DNS query logs, see CreateQueryLoggingConfig.
 %% Additional information, including the format of DNS query logs, appears in
 %% Logging DNS Queries in the Amazon Route 53 Developer Guide.
-list_query_logging_configs(Client, HostedZoneId, MaxResults, NextToken)
+list_query_logging_configs(Client)
   when is_map(Client) ->
-    list_query_logging_configs(Client, HostedZoneId, MaxResults, NextToken, []).
-list_query_logging_configs(Client, HostedZoneId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_query_logging_configs(Client, #{}, #{}).
+
+list_query_logging_configs(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_query_logging_configs(Client, QueryMap, HeadersMap, []).
+
+list_query_logging_configs(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2013-04-01/queryloggingconfig"],
     SuccessStatusCode = undefined,
 
@@ -1733,9 +1887,9 @@ list_query_logging_configs(Client, HostedZoneId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"hostedzoneid">>, HostedZoneId},
-        {<<"maxresults">>, MaxResults},
-        {<<"nexttoken">>, NextToken}
+        {<<"hostedzoneid">>, maps:get(<<"hostedzoneid">>, QueryMap, undefined)},
+        {<<"maxresults">>, maps:get(<<"maxresults">>, QueryMap, undefined)},
+        {<<"nexttoken">>, maps:get(<<"nexttoken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1803,11 +1957,16 @@ list_query_logging_configs(Client, HostedZoneId, MaxResults, NextToken, Options)
 %% `NextRecordIdentifier' (if any) from the response. Then submit another
 %% `ListResourceRecordSets' request, and specify those values for
 %% `StartRecordName', `StartRecordType', and `StartRecordIdentifier'.
-list_resource_record_sets(Client, HostedZoneId, MaxItems, StartRecordIdentifier, StartRecordName, StartRecordType)
+list_resource_record_sets(Client, HostedZoneId)
   when is_map(Client) ->
-    list_resource_record_sets(Client, HostedZoneId, MaxItems, StartRecordIdentifier, StartRecordName, StartRecordType, []).
-list_resource_record_sets(Client, HostedZoneId, MaxItems, StartRecordIdentifier, StartRecordName, StartRecordType, Options)
-  when is_map(Client), is_list(Options) ->
+    list_resource_record_sets(Client, HostedZoneId, #{}, #{}).
+
+list_resource_record_sets(Client, HostedZoneId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_resource_record_sets(Client, HostedZoneId, QueryMap, HeadersMap, []).
+
+list_resource_record_sets(Client, HostedZoneId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/rrset"],
     SuccessStatusCode = undefined,
 
@@ -1815,10 +1974,10 @@ list_resource_record_sets(Client, HostedZoneId, MaxItems, StartRecordIdentifier,
 
     Query0_ =
       [
-        {<<"maxitems">>, MaxItems},
-        {<<"identifier">>, StartRecordIdentifier},
-        {<<"name">>, StartRecordName},
-        {<<"type">>, StartRecordType}
+        {<<"maxitems">>, maps:get(<<"maxitems">>, QueryMap, undefined)},
+        {<<"identifier">>, maps:get(<<"identifier">>, QueryMap, undefined)},
+        {<<"name">>, maps:get(<<"name">>, QueryMap, undefined)},
+        {<<"type">>, maps:get(<<"type">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1826,11 +1985,16 @@ list_resource_record_sets(Client, HostedZoneId, MaxItems, StartRecordIdentifier,
 
 %% @doc Retrieves a list of the reusable delegation sets that are associated
 %% with the current AWS account.
-list_reusable_delegation_sets(Client, Marker, MaxItems)
+list_reusable_delegation_sets(Client)
   when is_map(Client) ->
-    list_reusable_delegation_sets(Client, Marker, MaxItems, []).
-list_reusable_delegation_sets(Client, Marker, MaxItems, Options)
-  when is_map(Client), is_list(Options) ->
+    list_reusable_delegation_sets(Client, #{}, #{}).
+
+list_reusable_delegation_sets(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_reusable_delegation_sets(Client, QueryMap, HeadersMap, []).
+
+list_reusable_delegation_sets(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2013-04-01/delegationset"],
     SuccessStatusCode = undefined,
 
@@ -1838,8 +2002,8 @@ list_reusable_delegation_sets(Client, Marker, MaxItems, Options)
 
     Query0_ =
       [
-        {<<"marker">>, Marker},
-        {<<"maxitems">>, MaxItems}
+        {<<"marker">>, maps:get(<<"marker">>, QueryMap, undefined)},
+        {<<"maxitems">>, maps:get(<<"maxitems">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1851,9 +2015,14 @@ list_reusable_delegation_sets(Client, Marker, MaxItems, Options)
 %% Allocation Tags in the AWS Billing and Cost Management User Guide.
 list_tags_for_resource(Client, ResourceId, ResourceType)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceId, ResourceType, []).
-list_tags_for_resource(Client, ResourceId, ResourceType, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceId, ResourceType, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceId, ResourceType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceId, ResourceType, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceId, ResourceType, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2013-04-01/tags/", aws_util:encode_uri(ResourceType), "/", aws_util:encode_uri(ResourceId), ""],
     SuccessStatusCode = undefined,
 
@@ -1889,11 +2058,16 @@ list_tags_for_resources(Client, ResourceType, Input0, Options) ->
 %%
 %% For information about how of deleting a traffic policy affects the
 %% response from `ListTrafficPolicies', see DeleteTrafficPolicy.
-list_traffic_policies(Client, MaxItems, TrafficPolicyIdMarker)
+list_traffic_policies(Client)
   when is_map(Client) ->
-    list_traffic_policies(Client, MaxItems, TrafficPolicyIdMarker, []).
-list_traffic_policies(Client, MaxItems, TrafficPolicyIdMarker, Options)
-  when is_map(Client), is_list(Options) ->
+    list_traffic_policies(Client, #{}, #{}).
+
+list_traffic_policies(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_traffic_policies(Client, QueryMap, HeadersMap, []).
+
+list_traffic_policies(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2013-04-01/trafficpolicies"],
     SuccessStatusCode = undefined,
 
@@ -1901,8 +2075,8 @@ list_traffic_policies(Client, MaxItems, TrafficPolicyIdMarker, Options)
 
     Query0_ =
       [
-        {<<"maxitems">>, MaxItems},
-        {<<"trafficpolicyid">>, TrafficPolicyIdMarker}
+        {<<"maxitems">>, maps:get(<<"maxitems">>, QueryMap, undefined)},
+        {<<"trafficpolicyid">>, maps:get(<<"trafficpolicyid">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1919,11 +2093,16 @@ list_traffic_policies(Client, MaxItems, TrafficPolicyIdMarker, Options)
 %% Route 53 returns a maximum of 100 items in each response. If you have a
 %% lot of traffic policy instances, you can use the `MaxItems' parameter to
 %% list them in groups of up to 100.
-list_traffic_policy_instances(Client, HostedZoneIdMarker, MaxItems, TrafficPolicyInstanceNameMarker, TrafficPolicyInstanceTypeMarker)
+list_traffic_policy_instances(Client)
   when is_map(Client) ->
-    list_traffic_policy_instances(Client, HostedZoneIdMarker, MaxItems, TrafficPolicyInstanceNameMarker, TrafficPolicyInstanceTypeMarker, []).
-list_traffic_policy_instances(Client, HostedZoneIdMarker, MaxItems, TrafficPolicyInstanceNameMarker, TrafficPolicyInstanceTypeMarker, Options)
-  when is_map(Client), is_list(Options) ->
+    list_traffic_policy_instances(Client, #{}, #{}).
+
+list_traffic_policy_instances(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_traffic_policy_instances(Client, QueryMap, HeadersMap, []).
+
+list_traffic_policy_instances(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2013-04-01/trafficpolicyinstances"],
     SuccessStatusCode = undefined,
 
@@ -1931,10 +2110,10 @@ list_traffic_policy_instances(Client, HostedZoneIdMarker, MaxItems, TrafficPolic
 
     Query0_ =
       [
-        {<<"hostedzoneid">>, HostedZoneIdMarker},
-        {<<"maxitems">>, MaxItems},
-        {<<"trafficpolicyinstancename">>, TrafficPolicyInstanceNameMarker},
-        {<<"trafficpolicyinstancetype">>, TrafficPolicyInstanceTypeMarker}
+        {<<"hostedzoneid">>, maps:get(<<"hostedzoneid">>, QueryMap, undefined)},
+        {<<"maxitems">>, maps:get(<<"maxitems">>, QueryMap, undefined)},
+        {<<"trafficpolicyinstancename">>, maps:get(<<"trafficpolicyinstancename">>, QueryMap, undefined)},
+        {<<"trafficpolicyinstancetype">>, maps:get(<<"trafficpolicyinstancetype">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1952,11 +2131,16 @@ list_traffic_policy_instances(Client, HostedZoneIdMarker, MaxItems, TrafficPolic
 %% Route 53 returns a maximum of 100 items in each response. If you have a
 %% lot of traffic policy instances, you can use the `MaxItems' parameter to
 %% list them in groups of up to 100.
-list_traffic_policy_instances_by_hosted_zone(Client, HostedZoneId, MaxItems, TrafficPolicyInstanceNameMarker, TrafficPolicyInstanceTypeMarker)
+list_traffic_policy_instances_by_hosted_zone(Client, HostedZoneId)
   when is_map(Client) ->
-    list_traffic_policy_instances_by_hosted_zone(Client, HostedZoneId, MaxItems, TrafficPolicyInstanceNameMarker, TrafficPolicyInstanceTypeMarker, []).
-list_traffic_policy_instances_by_hosted_zone(Client, HostedZoneId, MaxItems, TrafficPolicyInstanceNameMarker, TrafficPolicyInstanceTypeMarker, Options)
-  when is_map(Client), is_list(Options) ->
+    list_traffic_policy_instances_by_hosted_zone(Client, HostedZoneId, #{}, #{}).
+
+list_traffic_policy_instances_by_hosted_zone(Client, HostedZoneId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_traffic_policy_instances_by_hosted_zone(Client, HostedZoneId, QueryMap, HeadersMap, []).
+
+list_traffic_policy_instances_by_hosted_zone(Client, HostedZoneId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2013-04-01/trafficpolicyinstances/hostedzone"],
     SuccessStatusCode = undefined,
 
@@ -1965,9 +2149,9 @@ list_traffic_policy_instances_by_hosted_zone(Client, HostedZoneId, MaxItems, Tra
     Query0_ =
       [
         {<<"id">>, HostedZoneId},
-        {<<"maxitems">>, MaxItems},
-        {<<"trafficpolicyinstancename">>, TrafficPolicyInstanceNameMarker},
-        {<<"trafficpolicyinstancetype">>, TrafficPolicyInstanceTypeMarker}
+        {<<"maxitems">>, maps:get(<<"maxitems">>, QueryMap, undefined)},
+        {<<"trafficpolicyinstancename">>, maps:get(<<"trafficpolicyinstancename">>, QueryMap, undefined)},
+        {<<"trafficpolicyinstancetype">>, maps:get(<<"trafficpolicyinstancetype">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1985,11 +2169,16 @@ list_traffic_policy_instances_by_hosted_zone(Client, HostedZoneId, MaxItems, Tra
 %% Route 53 returns a maximum of 100 items in each response. If you have a
 %% lot of traffic policy instances, you can use the `MaxItems' parameter to
 %% list them in groups of up to 100.
-list_traffic_policy_instances_by_policy(Client, HostedZoneIdMarker, MaxItems, TrafficPolicyId, TrafficPolicyInstanceNameMarker, TrafficPolicyInstanceTypeMarker, TrafficPolicyVersion)
+list_traffic_policy_instances_by_policy(Client, TrafficPolicyId, TrafficPolicyVersion)
   when is_map(Client) ->
-    list_traffic_policy_instances_by_policy(Client, HostedZoneIdMarker, MaxItems, TrafficPolicyId, TrafficPolicyInstanceNameMarker, TrafficPolicyInstanceTypeMarker, TrafficPolicyVersion, []).
-list_traffic_policy_instances_by_policy(Client, HostedZoneIdMarker, MaxItems, TrafficPolicyId, TrafficPolicyInstanceNameMarker, TrafficPolicyInstanceTypeMarker, TrafficPolicyVersion, Options)
-  when is_map(Client), is_list(Options) ->
+    list_traffic_policy_instances_by_policy(Client, TrafficPolicyId, TrafficPolicyVersion, #{}, #{}).
+
+list_traffic_policy_instances_by_policy(Client, TrafficPolicyId, TrafficPolicyVersion, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_traffic_policy_instances_by_policy(Client, TrafficPolicyId, TrafficPolicyVersion, QueryMap, HeadersMap, []).
+
+list_traffic_policy_instances_by_policy(Client, TrafficPolicyId, TrafficPolicyVersion, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2013-04-01/trafficpolicyinstances/trafficpolicy"],
     SuccessStatusCode = undefined,
 
@@ -1997,11 +2186,11 @@ list_traffic_policy_instances_by_policy(Client, HostedZoneIdMarker, MaxItems, Tr
 
     Query0_ =
       [
-        {<<"hostedzoneid">>, HostedZoneIdMarker},
-        {<<"maxitems">>, MaxItems},
+        {<<"hostedzoneid">>, maps:get(<<"hostedzoneid">>, QueryMap, undefined)},
+        {<<"maxitems">>, maps:get(<<"maxitems">>, QueryMap, undefined)},
         {<<"id">>, TrafficPolicyId},
-        {<<"trafficpolicyinstancename">>, TrafficPolicyInstanceNameMarker},
-        {<<"trafficpolicyinstancetype">>, TrafficPolicyInstanceTypeMarker},
+        {<<"trafficpolicyinstancename">>, maps:get(<<"trafficpolicyinstancename">>, QueryMap, undefined)},
+        {<<"trafficpolicyinstancetype">>, maps:get(<<"trafficpolicyinstancetype">>, QueryMap, undefined)},
         {<<"version">>, TrafficPolicyVersion}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
@@ -2012,11 +2201,16 @@ list_traffic_policy_instances_by_policy(Client, HostedZoneIdMarker, MaxItems, Tr
 %% policy.
 %%
 %% Traffic policy versions are listed in numerical order by `VersionNumber'.
-list_traffic_policy_versions(Client, Id, MaxItems, TrafficPolicyVersionMarker)
+list_traffic_policy_versions(Client, Id)
   when is_map(Client) ->
-    list_traffic_policy_versions(Client, Id, MaxItems, TrafficPolicyVersionMarker, []).
-list_traffic_policy_versions(Client, Id, MaxItems, TrafficPolicyVersionMarker, Options)
-  when is_map(Client), is_list(Options) ->
+    list_traffic_policy_versions(Client, Id, #{}, #{}).
+
+list_traffic_policy_versions(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_traffic_policy_versions(Client, Id, QueryMap, HeadersMap, []).
+
+list_traffic_policy_versions(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2013-04-01/trafficpolicies/", aws_util:encode_uri(Id), "/versions"],
     SuccessStatusCode = undefined,
 
@@ -2024,8 +2218,8 @@ list_traffic_policy_versions(Client, Id, MaxItems, TrafficPolicyVersionMarker, O
 
     Query0_ =
       [
-        {<<"maxitems">>, MaxItems},
-        {<<"trafficpolicyversion">>, TrafficPolicyVersionMarker}
+        {<<"maxitems">>, maps:get(<<"maxitems">>, QueryMap, undefined)},
+        {<<"trafficpolicyversion">>, maps:get(<<"trafficpolicyversion">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -2037,11 +2231,16 @@ list_traffic_policy_versions(Client, Id, MaxItems, TrafficPolicyVersionMarker, O
 %%
 %% The response includes a `VPCs' element with a `VPC' child element for each
 %% VPC that can be associated with the hosted zone.
-list_vpc_association_authorizations(Client, HostedZoneId, MaxResults, NextToken)
+list_vpc_association_authorizations(Client, HostedZoneId)
   when is_map(Client) ->
-    list_vpc_association_authorizations(Client, HostedZoneId, MaxResults, NextToken, []).
-list_vpc_association_authorizations(Client, HostedZoneId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_vpc_association_authorizations(Client, HostedZoneId, #{}, #{}).
+
+list_vpc_association_authorizations(Client, HostedZoneId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_vpc_association_authorizations(Client, HostedZoneId, QueryMap, HeadersMap, []).
+
+list_vpc_association_authorizations(Client, HostedZoneId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/authorizevpcassociation"],
     SuccessStatusCode = undefined,
 
@@ -2049,8 +2248,8 @@ list_vpc_association_authorizations(Client, HostedZoneId, MaxResults, NextToken,
 
     Query0_ =
       [
-        {<<"maxresults">>, MaxResults},
-        {<<"nexttoken">>, NextToken}
+        {<<"maxresults">>, maps:get(<<"maxresults">>, QueryMap, undefined)},
+        {<<"nexttoken">>, maps:get(<<"nexttoken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -2061,11 +2260,16 @@ list_vpc_association_authorizations(Client, HostedZoneId, MaxResults, NextToken,
 %%
 %% You can optionally specify the IP address of a DNS resolver, an EDNS0
 %% client subnet IP address, and a subnet mask.
-test_dns_answer(Client, EDNS0ClientSubnetIP, EDNS0ClientSubnetMask, HostedZoneId, RecordName, RecordType, ResolverIP)
+test_dns_answer(Client, HostedZoneId, RecordName, RecordType)
   when is_map(Client) ->
-    test_dns_answer(Client, EDNS0ClientSubnetIP, EDNS0ClientSubnetMask, HostedZoneId, RecordName, RecordType, ResolverIP, []).
-test_dns_answer(Client, EDNS0ClientSubnetIP, EDNS0ClientSubnetMask, HostedZoneId, RecordName, RecordType, ResolverIP, Options)
-  when is_map(Client), is_list(Options) ->
+    test_dns_answer(Client, HostedZoneId, RecordName, RecordType, #{}, #{}).
+
+test_dns_answer(Client, HostedZoneId, RecordName, RecordType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    test_dns_answer(Client, HostedZoneId, RecordName, RecordType, QueryMap, HeadersMap, []).
+
+test_dns_answer(Client, HostedZoneId, RecordName, RecordType, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2013-04-01/testdnsanswer"],
     SuccessStatusCode = undefined,
 
@@ -2073,12 +2277,12 @@ test_dns_answer(Client, EDNS0ClientSubnetIP, EDNS0ClientSubnetMask, HostedZoneId
 
     Query0_ =
       [
-        {<<"edns0clientsubnetip">>, EDNS0ClientSubnetIP},
-        {<<"edns0clientsubnetmask">>, EDNS0ClientSubnetMask},
+        {<<"edns0clientsubnetip">>, maps:get(<<"edns0clientsubnetip">>, QueryMap, undefined)},
+        {<<"edns0clientsubnetmask">>, maps:get(<<"edns0clientsubnetmask">>, QueryMap, undefined)},
         {<<"hostedzoneid">>, HostedZoneId},
         {<<"recordname">>, RecordName},
         {<<"recordtype">>, RecordType},
-        {<<"resolverip">>, ResolverIP}
+        {<<"resolverip">>, maps:get(<<"resolverip">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

@@ -17,13 +17,17 @@
          delete_event_integration/3,
          delete_event_integration/4,
          get_event_integration/2,
-         get_event_integration/3,
+         get_event_integration/4,
+         get_event_integration/5,
+         list_event_integration_associations/2,
          list_event_integration_associations/4,
          list_event_integration_associations/5,
+         list_event_integrations/1,
          list_event_integrations/3,
          list_event_integrations/4,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -86,9 +90,14 @@ delete_event_integration(Client, Name, Input0, Options) ->
 %% Return information about the event integration.
 get_event_integration(Client, Name)
   when is_map(Client) ->
-    get_event_integration(Client, Name, []).
-get_event_integration(Client, Name, Options)
-  when is_map(Client), is_list(Options) ->
+    get_event_integration(Client, Name, #{}, #{}).
+
+get_event_integration(Client, Name, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_event_integration(Client, Name, QueryMap, HeadersMap, []).
+
+get_event_integration(Client, Name, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/eventIntegrations/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
 
@@ -102,11 +111,16 @@ get_event_integration(Client, Name, Options)
 %% subject to change.
 %%
 %% Returns a paginated list of event integration associations in the account.
-list_event_integration_associations(Client, EventIntegrationName, MaxResults, NextToken)
+list_event_integration_associations(Client, EventIntegrationName)
   when is_map(Client) ->
-    list_event_integration_associations(Client, EventIntegrationName, MaxResults, NextToken, []).
-list_event_integration_associations(Client, EventIntegrationName, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_event_integration_associations(Client, EventIntegrationName, #{}, #{}).
+
+list_event_integration_associations(Client, EventIntegrationName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_event_integration_associations(Client, EventIntegrationName, QueryMap, HeadersMap, []).
+
+list_event_integration_associations(Client, EventIntegrationName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/eventIntegrations/", aws_util:encode_uri(EventIntegrationName), "/associations"],
     SuccessStatusCode = undefined,
 
@@ -114,8 +128,8 @@ list_event_integration_associations(Client, EventIntegrationName, MaxResults, Ne
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -125,11 +139,16 @@ list_event_integration_associations(Client, EventIntegrationName, MaxResults, Ne
 %% subject to change.
 %%
 %% Returns a paginated list of event integrations in the account.
-list_event_integrations(Client, MaxResults, NextToken)
+list_event_integrations(Client)
   when is_map(Client) ->
-    list_event_integrations(Client, MaxResults, NextToken, []).
-list_event_integrations(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_event_integrations(Client, #{}, #{}).
+
+list_event_integrations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_event_integrations(Client, QueryMap, HeadersMap, []).
+
+list_event_integrations(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/eventIntegrations"],
     SuccessStatusCode = undefined,
 
@@ -137,8 +156,8 @@ list_event_integrations(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -150,9 +169,14 @@ list_event_integrations(Client, MaxResults, NextToken, Options)
 %% Lists the tags for the specified resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 

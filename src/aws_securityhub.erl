@@ -73,14 +73,19 @@
          delete_members/3,
          describe_action_targets/2,
          describe_action_targets/3,
-         describe_hub/2,
+         describe_hub/1,
          describe_hub/3,
+         describe_hub/4,
          describe_organization_configuration/1,
-         describe_organization_configuration/2,
+         describe_organization_configuration/3,
+         describe_organization_configuration/4,
+         describe_products/1,
+         describe_products/3,
          describe_products/4,
-         describe_products/5,
+         describe_standards/1,
          describe_standards/3,
          describe_standards/4,
+         describe_standards_controls/2,
          describe_standards_controls/4,
          describe_standards_controls/5,
          disable_import_findings_for_product/3,
@@ -104,27 +109,35 @@
          get_findings/2,
          get_findings/3,
          get_insight_results/2,
-         get_insight_results/3,
+         get_insight_results/4,
+         get_insight_results/5,
          get_insights/2,
          get_insights/3,
          get_invitations_count/1,
-         get_invitations_count/2,
+         get_invitations_count/3,
+         get_invitations_count/4,
          get_master_account/1,
-         get_master_account/2,
+         get_master_account/3,
+         get_master_account/4,
          get_members/2,
          get_members/3,
          invite_members/2,
          invite_members/3,
+         list_enabled_products_for_import/1,
          list_enabled_products_for_import/3,
          list_enabled_products_for_import/4,
+         list_invitations/1,
          list_invitations/3,
          list_invitations/4,
+         list_members/1,
+         list_members/3,
          list_members/4,
-         list_members/5,
+         list_organization_admin_accounts/1,
          list_organization_admin_accounts/3,
          list_organization_admin_accounts/4,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -523,11 +536,16 @@ describe_action_targets(Client, Input0, Options) ->
 
 %% @doc Returns details about the Hub resource in your account, including the
 %% `HubArn' and the time when you enabled Security Hub.
-describe_hub(Client, HubArn)
+describe_hub(Client)
   when is_map(Client) ->
-    describe_hub(Client, HubArn, []).
-describe_hub(Client, HubArn, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_hub(Client, #{}, #{}).
+
+describe_hub(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_hub(Client, QueryMap, HeadersMap, []).
+
+describe_hub(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts"],
     SuccessStatusCode = undefined,
 
@@ -535,7 +553,7 @@ describe_hub(Client, HubArn, Options)
 
     Query0_ =
       [
-        {<<"HubArn">>, HubArn}
+        {<<"HubArn">>, maps:get(<<"HubArn">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -547,9 +565,14 @@ describe_hub(Client, HubArn, Options)
 %% Can only be called from a Security Hub administrator account.
 describe_organization_configuration(Client)
   when is_map(Client) ->
-    describe_organization_configuration(Client, []).
-describe_organization_configuration(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_organization_configuration(Client, #{}, #{}).
+
+describe_organization_configuration(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_organization_configuration(Client, QueryMap, HeadersMap, []).
+
+describe_organization_configuration(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/organization/configuration"],
     SuccessStatusCode = undefined,
 
@@ -566,11 +589,16 @@ describe_organization_configuration(Client, Options)
 %%
 %% If you do not provide an integration ARN, then the results include all of
 %% the available product integrations.
-describe_products(Client, MaxResults, NextToken, ProductArn)
+describe_products(Client)
   when is_map(Client) ->
-    describe_products(Client, MaxResults, NextToken, ProductArn, []).
-describe_products(Client, MaxResults, NextToken, ProductArn, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_products(Client, #{}, #{}).
+
+describe_products(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_products(Client, QueryMap, HeadersMap, []).
+
+describe_products(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/products"],
     SuccessStatusCode = undefined,
 
@@ -578,9 +606,9 @@ describe_products(Client, MaxResults, NextToken, ProductArn, Options)
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken},
-        {<<"ProductArn">>, ProductArn}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"ProductArn">>, maps:get(<<"ProductArn">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -590,11 +618,16 @@ describe_products(Client, MaxResults, NextToken, ProductArn, Options)
 %%
 %% For each standard, the results include the standard ARN, the name, and a
 %% description.
-describe_standards(Client, MaxResults, NextToken)
+describe_standards(Client)
   when is_map(Client) ->
-    describe_standards(Client, MaxResults, NextToken, []).
-describe_standards(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_standards(Client, #{}, #{}).
+
+describe_standards(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_standards(Client, QueryMap, HeadersMap, []).
+
+describe_standards(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/standards"],
     SuccessStatusCode = undefined,
 
@@ -602,8 +635,8 @@ describe_standards(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -613,11 +646,16 @@ describe_standards(Client, MaxResults, NextToken, Options)
 %%
 %% For each control, the results include information about whether it is
 %% currently enabled, the severity, and a link to remediation information.
-describe_standards_controls(Client, StandardsSubscriptionArn, MaxResults, NextToken)
+describe_standards_controls(Client, StandardsSubscriptionArn)
   when is_map(Client) ->
-    describe_standards_controls(Client, StandardsSubscriptionArn, MaxResults, NextToken, []).
-describe_standards_controls(Client, StandardsSubscriptionArn, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_standards_controls(Client, StandardsSubscriptionArn, #{}, #{}).
+
+describe_standards_controls(Client, StandardsSubscriptionArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_standards_controls(Client, StandardsSubscriptionArn, QueryMap, HeadersMap, []).
+
+describe_standards_controls(Client, StandardsSubscriptionArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/standards/controls/", aws_util:encode_multi_segment_uri(StandardsSubscriptionArn), ""],
     SuccessStatusCode = undefined,
 
@@ -625,8 +663,8 @@ describe_standards_controls(Client, StandardsSubscriptionArn, MaxResults, NextTo
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -857,9 +895,14 @@ get_findings(Client, Input0, Options) ->
 %% insight ARN.
 get_insight_results(Client, InsightArn)
   when is_map(Client) ->
-    get_insight_results(Client, InsightArn, []).
-get_insight_results(Client, InsightArn, Options)
-  when is_map(Client), is_list(Options) ->
+    get_insight_results(Client, InsightArn, #{}, #{}).
+
+get_insight_results(Client, InsightArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_insight_results(Client, InsightArn, QueryMap, HeadersMap, []).
+
+get_insight_results(Client, InsightArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/insights/results/", aws_util:encode_multi_segment_uri(InsightArn), ""],
     SuccessStatusCode = undefined,
 
@@ -890,9 +933,14 @@ get_insights(Client, Input0, Options) ->
 %% accepted invitation.
 get_invitations_count(Client)
   when is_map(Client) ->
-    get_invitations_count(Client, []).
-get_invitations_count(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    get_invitations_count(Client, #{}, #{}).
+
+get_invitations_count(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_invitations_count(Client, QueryMap, HeadersMap, []).
+
+get_invitations_count(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/invitations/count"],
     SuccessStatusCode = undefined,
 
@@ -909,9 +957,14 @@ get_invitations_count(Client, Options)
 %% accounts that were invited manually.
 get_master_account(Client)
   when is_map(Client) ->
-    get_master_account(Client, []).
-get_master_account(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    get_master_account(Client, #{}, #{}).
+
+get_master_account(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_master_account(Client, QueryMap, HeadersMap, []).
+
+get_master_account(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/master"],
     SuccessStatusCode = undefined,
 
@@ -974,11 +1027,16 @@ invite_members(Client, Input0, Options) ->
 
 %% @doc Lists all findings-generating solutions (products) that you are
 %% subscribed to receive findings from in Security Hub.
-list_enabled_products_for_import(Client, MaxResults, NextToken)
+list_enabled_products_for_import(Client)
   when is_map(Client) ->
-    list_enabled_products_for_import(Client, MaxResults, NextToken, []).
-list_enabled_products_for_import(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_enabled_products_for_import(Client, #{}, #{}).
+
+list_enabled_products_for_import(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_enabled_products_for_import(Client, QueryMap, HeadersMap, []).
+
+list_enabled_products_for_import(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/productSubscriptions"],
     SuccessStatusCode = undefined,
 
@@ -986,8 +1044,8 @@ list_enabled_products_for_import(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -998,11 +1056,16 @@ list_enabled_products_for_import(Client, MaxResults, NextToken, Options)
 %%
 %% This operation is only used by accounts that do not belong to an
 %% organization. Organization accounts do not receive invitations.
-list_invitations(Client, MaxResults, NextToken)
+list_invitations(Client)
   when is_map(Client) ->
-    list_invitations(Client, MaxResults, NextToken, []).
-list_invitations(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_invitations(Client, #{}, #{}).
+
+list_invitations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_invitations(Client, QueryMap, HeadersMap, []).
+
+list_invitations(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/invitations"],
     SuccessStatusCode = undefined,
 
@@ -1010,8 +1073,8 @@ list_invitations(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1022,11 +1085,16 @@ list_invitations(Client, MaxResults, NextToken, Options)
 %%
 %% The results include both member accounts that belong to an organization
 %% and member accounts that were invited manually.
-list_members(Client, MaxResults, NextToken, OnlyAssociated)
+list_members(Client)
   when is_map(Client) ->
-    list_members(Client, MaxResults, NextToken, OnlyAssociated, []).
-list_members(Client, MaxResults, NextToken, OnlyAssociated, Options)
-  when is_map(Client), is_list(Options) ->
+    list_members(Client, #{}, #{}).
+
+list_members(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_members(Client, QueryMap, HeadersMap, []).
+
+list_members(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/members"],
     SuccessStatusCode = undefined,
 
@@ -1034,9 +1102,9 @@ list_members(Client, MaxResults, NextToken, OnlyAssociated, Options)
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken},
-        {<<"OnlyAssociated">>, OnlyAssociated}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"OnlyAssociated">>, maps:get(<<"OnlyAssociated">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1045,11 +1113,16 @@ list_members(Client, MaxResults, NextToken, OnlyAssociated, Options)
 %% @doc Lists the Security Hub administrator accounts.
 %%
 %% Can only be called by the organization management account.
-list_organization_admin_accounts(Client, MaxResults, NextToken)
+list_organization_admin_accounts(Client)
   when is_map(Client) ->
-    list_organization_admin_accounts(Client, MaxResults, NextToken, []).
-list_organization_admin_accounts(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_organization_admin_accounts(Client, #{}, #{}).
+
+list_organization_admin_accounts(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_organization_admin_accounts(Client, QueryMap, HeadersMap, []).
+
+list_organization_admin_accounts(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/organization/admin"],
     SuccessStatusCode = undefined,
 
@@ -1057,8 +1130,8 @@ list_organization_admin_accounts(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1067,9 +1140,14 @@ list_organization_admin_accounts(Client, MaxResults, NextToken, Options)
 %% @doc Returns a list of tags associated with a resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 

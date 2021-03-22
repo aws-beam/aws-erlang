@@ -21,10 +21,12 @@
 %% progress of a job on a specific target and for all the targets of the job
 -module(aws_iot_jobs_data_plane).
 
--export([describe_job_execution/5,
+-export([describe_job_execution/3,
+         describe_job_execution/5,
          describe_job_execution/6,
          get_pending_job_executions/2,
-         get_pending_job_executions/3,
+         get_pending_job_executions/4,
+         get_pending_job_executions/5,
          start_next_pending_job_execution/3,
          start_next_pending_job_execution/4,
          update_job_execution/4,
@@ -37,11 +39,16 @@
 %%====================================================================
 
 %% @doc Gets details of a job execution.
-describe_job_execution(Client, JobId, ThingName, ExecutionNumber, IncludeJobDocument)
+describe_job_execution(Client, JobId, ThingName)
   when is_map(Client) ->
-    describe_job_execution(Client, JobId, ThingName, ExecutionNumber, IncludeJobDocument, []).
-describe_job_execution(Client, JobId, ThingName, ExecutionNumber, IncludeJobDocument, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_job_execution(Client, JobId, ThingName, #{}, #{}).
+
+describe_job_execution(Client, JobId, ThingName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_job_execution(Client, JobId, ThingName, QueryMap, HeadersMap, []).
+
+describe_job_execution(Client, JobId, ThingName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/things/", aws_util:encode_uri(ThingName), "/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = undefined,
 
@@ -49,8 +56,8 @@ describe_job_execution(Client, JobId, ThingName, ExecutionNumber, IncludeJobDocu
 
     Query0_ =
       [
-        {<<"executionNumber">>, ExecutionNumber},
-        {<<"includeJobDocument">>, IncludeJobDocument}
+        {<<"executionNumber">>, maps:get(<<"executionNumber">>, QueryMap, undefined)},
+        {<<"includeJobDocument">>, maps:get(<<"includeJobDocument">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -60,9 +67,14 @@ describe_job_execution(Client, JobId, ThingName, ExecutionNumber, IncludeJobDocu
 %% status.
 get_pending_job_executions(Client, ThingName)
   when is_map(Client) ->
-    get_pending_job_executions(Client, ThingName, []).
-get_pending_job_executions(Client, ThingName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_pending_job_executions(Client, ThingName, #{}, #{}).
+
+get_pending_job_executions(Client, ThingName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_pending_job_executions(Client, ThingName, QueryMap, HeadersMap, []).
+
+get_pending_job_executions(Client, ThingName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/things/", aws_util:encode_uri(ThingName), "/jobs"],
     SuccessStatusCode = undefined,
 

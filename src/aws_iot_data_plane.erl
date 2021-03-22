@@ -23,8 +23,10 @@
 
 -export([delete_thing_shadow/3,
          delete_thing_shadow/4,
-         get_thing_shadow/3,
+         get_thing_shadow/2,
          get_thing_shadow/4,
+         get_thing_shadow/5,
+         list_named_shadows_for_thing/2,
          list_named_shadows_for_thing/4,
          list_named_shadows_for_thing/5,
          publish/3,
@@ -61,11 +63,16 @@ delete_thing_shadow(Client, ThingName, Input0, Options) ->
 %% @doc Gets the shadow for the specified thing.
 %%
 %% For more information, see GetThingShadow in the AWS IoT Developer Guide.
-get_thing_shadow(Client, ThingName, ShadowName)
+get_thing_shadow(Client, ThingName)
   when is_map(Client) ->
-    get_thing_shadow(Client, ThingName, ShadowName, []).
-get_thing_shadow(Client, ThingName, ShadowName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_thing_shadow(Client, ThingName, #{}, #{}).
+
+get_thing_shadow(Client, ThingName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_thing_shadow(Client, ThingName, QueryMap, HeadersMap, []).
+
+get_thing_shadow(Client, ThingName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/things/", aws_util:encode_uri(ThingName), "/shadow"],
     SuccessStatusCode = undefined,
 
@@ -73,18 +80,23 @@ get_thing_shadow(Client, ThingName, ShadowName, Options)
 
     Query0_ =
       [
-        {<<"name">>, ShadowName}
+        {<<"name">>, maps:get(<<"name">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the shadows for the specified thing.
-list_named_shadows_for_thing(Client, ThingName, NextToken, PageSize)
+list_named_shadows_for_thing(Client, ThingName)
   when is_map(Client) ->
-    list_named_shadows_for_thing(Client, ThingName, NextToken, PageSize, []).
-list_named_shadows_for_thing(Client, ThingName, NextToken, PageSize, Options)
-  when is_map(Client), is_list(Options) ->
+    list_named_shadows_for_thing(Client, ThingName, #{}, #{}).
+
+list_named_shadows_for_thing(Client, ThingName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_named_shadows_for_thing(Client, ThingName, QueryMap, HeadersMap, []).
+
+list_named_shadows_for_thing(Client, ThingName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/api/things/shadow/ListNamedShadowsForThing/", aws_util:encode_uri(ThingName), ""],
     SuccessStatusCode = undefined,
 
@@ -92,8 +104,8 @@ list_named_shadows_for_thing(Client, ThingName, NextToken, PageSize, Options)
 
     Query0_ =
       [
-        {<<"nextToken">>, NextToken},
-        {<<"pageSize">>, PageSize}
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"pageSize">>, maps:get(<<"pageSize">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

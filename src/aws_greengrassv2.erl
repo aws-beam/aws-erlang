@@ -32,29 +32,41 @@
          delete_core_device/3,
          delete_core_device/4,
          describe_component/2,
-         describe_component/3,
-         get_component/3,
+         describe_component/4,
+         describe_component/5,
+         get_component/2,
          get_component/4,
+         get_component/5,
          get_component_version_artifact/3,
-         get_component_version_artifact/4,
+         get_component_version_artifact/5,
+         get_component_version_artifact/6,
          get_core_device/2,
-         get_core_device/3,
+         get_core_device/4,
+         get_core_device/5,
          get_deployment/2,
-         get_deployment/3,
+         get_deployment/4,
+         get_deployment/5,
+         list_component_versions/2,
          list_component_versions/4,
          list_component_versions/5,
+         list_components/1,
+         list_components/3,
          list_components/4,
-         list_components/5,
-         list_core_devices/5,
-         list_core_devices/6,
-         list_deployments/5,
-         list_deployments/6,
+         list_core_devices/1,
+         list_core_devices/3,
+         list_core_devices/4,
+         list_deployments/1,
+         list_deployments/3,
+         list_deployments/4,
+         list_effective_deployments/2,
          list_effective_deployments/4,
          list_effective_deployments/5,
+         list_installed_components/2,
          list_installed_components/4,
          list_installed_components/5,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          resolve_component_candidates/2,
          resolve_component_candidates/3,
          tag_resource/3,
@@ -226,9 +238,14 @@ delete_core_device(Client, CoreDeviceThingName, Input0, Options) ->
 %% @doc Retrieves metadata for a version of a component.
 describe_component(Client, Arn)
   when is_map(Client) ->
-    describe_component(Client, Arn, []).
-describe_component(Client, Arn, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_component(Client, Arn, #{}, #{}).
+
+describe_component(Client, Arn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_component(Client, Arn, QueryMap, HeadersMap, []).
+
+describe_component(Client, Arn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/v2/components/", aws_util:encode_uri(Arn), "/metadata"],
     SuccessStatusCode = undefined,
 
@@ -242,11 +259,16 @@ describe_component(Client, Arn, Options)
 %%
 %% Core devices can call this operation to identify the artifacts and
 %% requirements to install a component.
-get_component(Client, Arn, RecipeOutputFormat)
+get_component(Client, Arn)
   when is_map(Client) ->
-    get_component(Client, Arn, RecipeOutputFormat, []).
-get_component(Client, Arn, RecipeOutputFormat, Options)
-  when is_map(Client), is_list(Options) ->
+    get_component(Client, Arn, #{}, #{}).
+
+get_component(Client, Arn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_component(Client, Arn, QueryMap, HeadersMap, []).
+
+get_component(Client, Arn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/v2/components/", aws_util:encode_uri(Arn), ""],
     SuccessStatusCode = undefined,
 
@@ -254,7 +276,7 @@ get_component(Client, Arn, RecipeOutputFormat, Options)
 
     Query0_ =
       [
-        {<<"recipeOutputFormat">>, RecipeOutputFormat}
+        {<<"recipeOutputFormat">>, maps:get(<<"recipeOutputFormat">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -266,9 +288,14 @@ get_component(Client, Arn, RecipeOutputFormat, Options)
 %% download an artifact to install.
 get_component_version_artifact(Client, Arn, ArtifactName)
   when is_map(Client) ->
-    get_component_version_artifact(Client, Arn, ArtifactName, []).
-get_component_version_artifact(Client, Arn, ArtifactName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_component_version_artifact(Client, Arn, ArtifactName, #{}, #{}).
+
+get_component_version_artifact(Client, Arn, ArtifactName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_component_version_artifact(Client, Arn, ArtifactName, QueryMap, HeadersMap, []).
+
+get_component_version_artifact(Client, Arn, ArtifactName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/v2/components/", aws_util:encode_uri(Arn), "/artifacts/", aws_util:encode_multi_segment_uri(ArtifactName), ""],
     SuccessStatusCode = undefined,
 
@@ -281,9 +308,14 @@ get_component_version_artifact(Client, Arn, ArtifactName, Options)
 %% @doc Retrieves metadata for a AWS IoT Greengrass core device.
 get_core_device(Client, CoreDeviceThingName)
   when is_map(Client) ->
-    get_core_device(Client, CoreDeviceThingName, []).
-get_core_device(Client, CoreDeviceThingName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_core_device(Client, CoreDeviceThingName, #{}, #{}).
+
+get_core_device(Client, CoreDeviceThingName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_core_device(Client, CoreDeviceThingName, QueryMap, HeadersMap, []).
+
+get_core_device(Client, CoreDeviceThingName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/v2/coreDevices/", aws_util:encode_uri(CoreDeviceThingName), ""],
     SuccessStatusCode = undefined,
 
@@ -299,9 +331,14 @@ get_core_device(Client, CoreDeviceThingName, Options)
 %% devices.
 get_deployment(Client, DeploymentId)
   when is_map(Client) ->
-    get_deployment(Client, DeploymentId, []).
-get_deployment(Client, DeploymentId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_deployment(Client, DeploymentId, #{}, #{}).
+
+get_deployment(Client, DeploymentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_deployment(Client, DeploymentId, QueryMap, HeadersMap, []).
+
+get_deployment(Client, DeploymentId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/v2/deployments/", aws_util:encode_uri(DeploymentId), ""],
     SuccessStatusCode = undefined,
 
@@ -312,11 +349,16 @@ get_deployment(Client, DeploymentId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a paginated list of all versions for a component.
-list_component_versions(Client, Arn, MaxResults, NextToken)
+list_component_versions(Client, Arn)
   when is_map(Client) ->
-    list_component_versions(Client, Arn, MaxResults, NextToken, []).
-list_component_versions(Client, Arn, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_component_versions(Client, Arn, #{}, #{}).
+
+list_component_versions(Client, Arn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_component_versions(Client, Arn, QueryMap, HeadersMap, []).
+
+list_component_versions(Client, Arn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/v2/components/", aws_util:encode_uri(Arn), "/versions"],
     SuccessStatusCode = undefined,
 
@@ -324,8 +366,8 @@ list_component_versions(Client, Arn, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -334,11 +376,16 @@ list_component_versions(Client, Arn, MaxResults, NextToken, Options)
 %% @doc Retrieves a paginated list of component summaries.
 %%
 %% This list includes components that you have permission to view.
-list_components(Client, MaxResults, NextToken, Scope)
+list_components(Client)
   when is_map(Client) ->
-    list_components(Client, MaxResults, NextToken, Scope, []).
-list_components(Client, MaxResults, NextToken, Scope, Options)
-  when is_map(Client), is_list(Options) ->
+    list_components(Client, #{}, #{}).
+
+list_components(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_components(Client, QueryMap, HeadersMap, []).
+
+list_components(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/v2/components"],
     SuccessStatusCode = undefined,
 
@@ -346,20 +393,25 @@ list_components(Client, MaxResults, NextToken, Scope, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"scope">>, Scope}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"scope">>, maps:get(<<"scope">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a paginated list of AWS IoT Greengrass core devices.
-list_core_devices(Client, MaxResults, NextToken, Status, ThingGroupArn)
+list_core_devices(Client)
   when is_map(Client) ->
-    list_core_devices(Client, MaxResults, NextToken, Status, ThingGroupArn, []).
-list_core_devices(Client, MaxResults, NextToken, Status, ThingGroupArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_core_devices(Client, #{}, #{}).
+
+list_core_devices(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_core_devices(Client, QueryMap, HeadersMap, []).
+
+list_core_devices(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/v2/coreDevices"],
     SuccessStatusCode = undefined,
 
@@ -367,21 +419,26 @@ list_core_devices(Client, MaxResults, NextToken, Status, ThingGroupArn, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"status">>, Status},
-        {<<"thingGroupArn">>, ThingGroupArn}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)},
+        {<<"thingGroupArn">>, maps:get(<<"thingGroupArn">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a paginated list of deployments.
-list_deployments(Client, HistoryFilter, MaxResults, NextToken, TargetArn)
+list_deployments(Client)
   when is_map(Client) ->
-    list_deployments(Client, HistoryFilter, MaxResults, NextToken, TargetArn, []).
-list_deployments(Client, HistoryFilter, MaxResults, NextToken, TargetArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_deployments(Client, #{}, #{}).
+
+list_deployments(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_deployments(Client, QueryMap, HeadersMap, []).
+
+list_deployments(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/v2/deployments"],
     SuccessStatusCode = undefined,
 
@@ -389,10 +446,10 @@ list_deployments(Client, HistoryFilter, MaxResults, NextToken, TargetArn, Option
 
     Query0_ =
       [
-        {<<"historyFilter">>, HistoryFilter},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"targetArn">>, TargetArn}
+        {<<"historyFilter">>, maps:get(<<"historyFilter">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"targetArn">>, maps:get(<<"targetArn">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -400,11 +457,16 @@ list_deployments(Client, HistoryFilter, MaxResults, NextToken, TargetArn, Option
 
 %% @doc Retrieves a paginated list of deployment jobs that AWS IoT Greengrass
 %% sends to AWS IoT Greengrass core devices.
-list_effective_deployments(Client, CoreDeviceThingName, MaxResults, NextToken)
+list_effective_deployments(Client, CoreDeviceThingName)
   when is_map(Client) ->
-    list_effective_deployments(Client, CoreDeviceThingName, MaxResults, NextToken, []).
-list_effective_deployments(Client, CoreDeviceThingName, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_effective_deployments(Client, CoreDeviceThingName, #{}, #{}).
+
+list_effective_deployments(Client, CoreDeviceThingName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_effective_deployments(Client, CoreDeviceThingName, QueryMap, HeadersMap, []).
+
+list_effective_deployments(Client, CoreDeviceThingName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/v2/coreDevices/", aws_util:encode_uri(CoreDeviceThingName), "/effectiveDeployments"],
     SuccessStatusCode = undefined,
 
@@ -412,8 +474,8 @@ list_effective_deployments(Client, CoreDeviceThingName, MaxResults, NextToken, O
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -421,11 +483,16 @@ list_effective_deployments(Client, CoreDeviceThingName, MaxResults, NextToken, O
 
 %% @doc Retrieves a paginated list of the components that a AWS IoT
 %% Greengrass core device runs.
-list_installed_components(Client, CoreDeviceThingName, MaxResults, NextToken)
+list_installed_components(Client, CoreDeviceThingName)
   when is_map(Client) ->
-    list_installed_components(Client, CoreDeviceThingName, MaxResults, NextToken, []).
-list_installed_components(Client, CoreDeviceThingName, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_installed_components(Client, CoreDeviceThingName, #{}, #{}).
+
+list_installed_components(Client, CoreDeviceThingName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_installed_components(Client, CoreDeviceThingName, QueryMap, HeadersMap, []).
+
+list_installed_components(Client, CoreDeviceThingName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/greengrass/v2/coreDevices/", aws_util:encode_uri(CoreDeviceThingName), "/installedComponents"],
     SuccessStatusCode = undefined,
 
@@ -433,8 +500,8 @@ list_installed_components(Client, CoreDeviceThingName, MaxResults, NextToken, Op
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -443,9 +510,14 @@ list_installed_components(Client, CoreDeviceThingName, MaxResults, NextToken, Op
 %% @doc Retrieves the list of tags for an AWS IoT Greengrass resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 

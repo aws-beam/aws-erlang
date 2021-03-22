@@ -60,58 +60,85 @@
          delete_stage/5,
          delete_vpc_link/3,
          delete_vpc_link/4,
+         export_api/4,
+         export_api/6,
          export_api/7,
-         export_api/8,
          get_api/2,
-         get_api/3,
+         get_api/4,
+         get_api/5,
          get_api_mapping/3,
-         get_api_mapping/4,
+         get_api_mapping/5,
+         get_api_mapping/6,
+         get_api_mappings/2,
          get_api_mappings/4,
          get_api_mappings/5,
+         get_apis/1,
          get_apis/3,
          get_apis/4,
          get_authorizer/3,
-         get_authorizer/4,
+         get_authorizer/5,
+         get_authorizer/6,
+         get_authorizers/2,
          get_authorizers/4,
          get_authorizers/5,
          get_deployment/3,
-         get_deployment/4,
+         get_deployment/5,
+         get_deployment/6,
+         get_deployments/2,
          get_deployments/4,
          get_deployments/5,
          get_domain_name/2,
-         get_domain_name/3,
+         get_domain_name/4,
+         get_domain_name/5,
+         get_domain_names/1,
          get_domain_names/3,
          get_domain_names/4,
          get_integration/3,
-         get_integration/4,
+         get_integration/5,
+         get_integration/6,
          get_integration_response/4,
-         get_integration_response/5,
+         get_integration_response/6,
+         get_integration_response/7,
+         get_integration_responses/3,
          get_integration_responses/5,
          get_integration_responses/6,
+         get_integrations/2,
          get_integrations/4,
          get_integrations/5,
          get_model/3,
-         get_model/4,
+         get_model/5,
+         get_model/6,
          get_model_template/3,
-         get_model_template/4,
+         get_model_template/5,
+         get_model_template/6,
+         get_models/2,
          get_models/4,
          get_models/5,
          get_route/3,
-         get_route/4,
+         get_route/5,
+         get_route/6,
          get_route_response/4,
-         get_route_response/5,
+         get_route_response/6,
+         get_route_response/7,
+         get_route_responses/3,
          get_route_responses/5,
          get_route_responses/6,
+         get_routes/2,
          get_routes/4,
          get_routes/5,
          get_stage/3,
-         get_stage/4,
+         get_stage/5,
+         get_stage/6,
+         get_stages/2,
          get_stages/4,
          get_stages/5,
          get_tags/2,
-         get_tags/3,
+         get_tags/4,
+         get_tags/5,
          get_vpc_link/2,
-         get_vpc_link/3,
+         get_vpc_link/4,
+         get_vpc_link/5,
+         get_vpc_links/1,
          get_vpc_links/3,
          get_vpc_links/4,
          import_api/2,
@@ -607,11 +634,16 @@ delete_vpc_link(Client, VpcLinkId, Input0, Options) ->
 
 %% @doc Exports a definition of an API in a particular output format and
 %% specification.
-export_api(Client, ApiId, Specification, ExportVersion, IncludeExtensions, OutputType, StageName)
+export_api(Client, ApiId, Specification, OutputType)
   when is_map(Client) ->
-    export_api(Client, ApiId, Specification, ExportVersion, IncludeExtensions, OutputType, StageName, []).
-export_api(Client, ApiId, Specification, ExportVersion, IncludeExtensions, OutputType, StageName, Options)
-  when is_map(Client), is_list(Options) ->
+    export_api(Client, ApiId, Specification, OutputType, #{}, #{}).
+
+export_api(Client, ApiId, Specification, OutputType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    export_api(Client, ApiId, Specification, OutputType, QueryMap, HeadersMap, []).
+
+export_api(Client, ApiId, Specification, OutputType, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/exports/", aws_util:encode_uri(Specification), ""],
     SuccessStatusCode = 200,
 
@@ -619,10 +651,10 @@ export_api(Client, ApiId, Specification, ExportVersion, IncludeExtensions, Outpu
 
     Query0_ =
       [
-        {<<"exportVersion">>, ExportVersion},
-        {<<"includeExtensions">>, IncludeExtensions},
+        {<<"exportVersion">>, maps:get(<<"exportVersion">>, QueryMap, undefined)},
+        {<<"includeExtensions">>, maps:get(<<"includeExtensions">>, QueryMap, undefined)},
         {<<"outputType">>, OutputType},
-        {<<"stageName">>, StageName}
+        {<<"stageName">>, maps:get(<<"stageName">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -631,9 +663,14 @@ export_api(Client, ApiId, Specification, ExportVersion, IncludeExtensions, Outpu
 %% @doc Gets an Api resource.
 get_api(Client, ApiId)
   when is_map(Client) ->
-    get_api(Client, ApiId, []).
-get_api(Client, ApiId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_api(Client, ApiId, #{}, #{}).
+
+get_api(Client, ApiId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_api(Client, ApiId, QueryMap, HeadersMap, []).
+
+get_api(Client, ApiId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), ""],
     SuccessStatusCode = 200,
 
@@ -646,9 +683,14 @@ get_api(Client, ApiId, Options)
 %% @doc Gets an API mapping.
 get_api_mapping(Client, ApiMappingId, DomainName)
   when is_map(Client) ->
-    get_api_mapping(Client, ApiMappingId, DomainName, []).
-get_api_mapping(Client, ApiMappingId, DomainName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_api_mapping(Client, ApiMappingId, DomainName, #{}, #{}).
+
+get_api_mapping(Client, ApiMappingId, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_api_mapping(Client, ApiMappingId, DomainName, QueryMap, HeadersMap, []).
+
+get_api_mapping(Client, ApiMappingId, DomainName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v2/domainnames/", aws_util:encode_uri(DomainName), "/apimappings/", aws_util:encode_uri(ApiMappingId), ""],
     SuccessStatusCode = 200,
 
@@ -659,11 +701,16 @@ get_api_mapping(Client, ApiMappingId, DomainName, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets API mappings.
-get_api_mappings(Client, DomainName, MaxResults, NextToken)
+get_api_mappings(Client, DomainName)
   when is_map(Client) ->
-    get_api_mappings(Client, DomainName, MaxResults, NextToken, []).
-get_api_mappings(Client, DomainName, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_api_mappings(Client, DomainName, #{}, #{}).
+
+get_api_mappings(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_api_mappings(Client, DomainName, QueryMap, HeadersMap, []).
+
+get_api_mappings(Client, DomainName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v2/domainnames/", aws_util:encode_uri(DomainName), "/apimappings"],
     SuccessStatusCode = 200,
 
@@ -671,19 +718,24 @@ get_api_mappings(Client, DomainName, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a collection of Api resources.
-get_apis(Client, MaxResults, NextToken)
+get_apis(Client)
   when is_map(Client) ->
-    get_apis(Client, MaxResults, NextToken, []).
-get_apis(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_apis(Client, #{}, #{}).
+
+get_apis(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_apis(Client, QueryMap, HeadersMap, []).
+
+get_apis(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v2/apis"],
     SuccessStatusCode = 200,
 
@@ -691,8 +743,8 @@ get_apis(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -701,9 +753,14 @@ get_apis(Client, MaxResults, NextToken, Options)
 %% @doc Gets an Authorizer.
 get_authorizer(Client, ApiId, AuthorizerId)
   when is_map(Client) ->
-    get_authorizer(Client, ApiId, AuthorizerId, []).
-get_authorizer(Client, ApiId, AuthorizerId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_authorizer(Client, ApiId, AuthorizerId, #{}, #{}).
+
+get_authorizer(Client, ApiId, AuthorizerId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_authorizer(Client, ApiId, AuthorizerId, QueryMap, HeadersMap, []).
+
+get_authorizer(Client, ApiId, AuthorizerId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/authorizers/", aws_util:encode_uri(AuthorizerId), ""],
     SuccessStatusCode = 200,
 
@@ -714,11 +771,16 @@ get_authorizer(Client, ApiId, AuthorizerId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the Authorizers for an API.
-get_authorizers(Client, ApiId, MaxResults, NextToken)
+get_authorizers(Client, ApiId)
   when is_map(Client) ->
-    get_authorizers(Client, ApiId, MaxResults, NextToken, []).
-get_authorizers(Client, ApiId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_authorizers(Client, ApiId, #{}, #{}).
+
+get_authorizers(Client, ApiId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_authorizers(Client, ApiId, QueryMap, HeadersMap, []).
+
+get_authorizers(Client, ApiId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/authorizers"],
     SuccessStatusCode = 200,
 
@@ -726,8 +788,8 @@ get_authorizers(Client, ApiId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -736,9 +798,14 @@ get_authorizers(Client, ApiId, MaxResults, NextToken, Options)
 %% @doc Gets a Deployment.
 get_deployment(Client, ApiId, DeploymentId)
   when is_map(Client) ->
-    get_deployment(Client, ApiId, DeploymentId, []).
-get_deployment(Client, ApiId, DeploymentId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_deployment(Client, ApiId, DeploymentId, #{}, #{}).
+
+get_deployment(Client, ApiId, DeploymentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_deployment(Client, ApiId, DeploymentId, QueryMap, HeadersMap, []).
+
+get_deployment(Client, ApiId, DeploymentId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/deployments/", aws_util:encode_uri(DeploymentId), ""],
     SuccessStatusCode = 200,
 
@@ -749,11 +816,16 @@ get_deployment(Client, ApiId, DeploymentId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the Deployments for an API.
-get_deployments(Client, ApiId, MaxResults, NextToken)
+get_deployments(Client, ApiId)
   when is_map(Client) ->
-    get_deployments(Client, ApiId, MaxResults, NextToken, []).
-get_deployments(Client, ApiId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_deployments(Client, ApiId, #{}, #{}).
+
+get_deployments(Client, ApiId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_deployments(Client, ApiId, QueryMap, HeadersMap, []).
+
+get_deployments(Client, ApiId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/deployments"],
     SuccessStatusCode = 200,
 
@@ -761,8 +833,8 @@ get_deployments(Client, ApiId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -771,9 +843,14 @@ get_deployments(Client, ApiId, MaxResults, NextToken, Options)
 %% @doc Gets a domain name.
 get_domain_name(Client, DomainName)
   when is_map(Client) ->
-    get_domain_name(Client, DomainName, []).
-get_domain_name(Client, DomainName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_domain_name(Client, DomainName, #{}, #{}).
+
+get_domain_name(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_domain_name(Client, DomainName, QueryMap, HeadersMap, []).
+
+get_domain_name(Client, DomainName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v2/domainnames/", aws_util:encode_uri(DomainName), ""],
     SuccessStatusCode = 200,
 
@@ -784,11 +861,16 @@ get_domain_name(Client, DomainName, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the domain names for an AWS account.
-get_domain_names(Client, MaxResults, NextToken)
+get_domain_names(Client)
   when is_map(Client) ->
-    get_domain_names(Client, MaxResults, NextToken, []).
-get_domain_names(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_domain_names(Client, #{}, #{}).
+
+get_domain_names(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_domain_names(Client, QueryMap, HeadersMap, []).
+
+get_domain_names(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v2/domainnames"],
     SuccessStatusCode = 200,
 
@@ -796,8 +878,8 @@ get_domain_names(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -806,9 +888,14 @@ get_domain_names(Client, MaxResults, NextToken, Options)
 %% @doc Gets an Integration.
 get_integration(Client, ApiId, IntegrationId)
   when is_map(Client) ->
-    get_integration(Client, ApiId, IntegrationId, []).
-get_integration(Client, ApiId, IntegrationId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_integration(Client, ApiId, IntegrationId, #{}, #{}).
+
+get_integration(Client, ApiId, IntegrationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_integration(Client, ApiId, IntegrationId, QueryMap, HeadersMap, []).
+
+get_integration(Client, ApiId, IntegrationId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/integrations/", aws_util:encode_uri(IntegrationId), ""],
     SuccessStatusCode = 200,
 
@@ -821,9 +908,14 @@ get_integration(Client, ApiId, IntegrationId, Options)
 %% @doc Gets an IntegrationResponses.
 get_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId)
   when is_map(Client) ->
-    get_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, []).
-get_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, #{}, #{}).
+
+get_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, QueryMap, HeadersMap, []).
+
+get_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/integrations/", aws_util:encode_uri(IntegrationId), "/integrationresponses/", aws_util:encode_uri(IntegrationResponseId), ""],
     SuccessStatusCode = 200,
 
@@ -834,11 +926,16 @@ get_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the IntegrationResponses for an Integration.
-get_integration_responses(Client, ApiId, IntegrationId, MaxResults, NextToken)
+get_integration_responses(Client, ApiId, IntegrationId)
   when is_map(Client) ->
-    get_integration_responses(Client, ApiId, IntegrationId, MaxResults, NextToken, []).
-get_integration_responses(Client, ApiId, IntegrationId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_integration_responses(Client, ApiId, IntegrationId, #{}, #{}).
+
+get_integration_responses(Client, ApiId, IntegrationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_integration_responses(Client, ApiId, IntegrationId, QueryMap, HeadersMap, []).
+
+get_integration_responses(Client, ApiId, IntegrationId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/integrations/", aws_util:encode_uri(IntegrationId), "/integrationresponses"],
     SuccessStatusCode = 200,
 
@@ -846,19 +943,24 @@ get_integration_responses(Client, ApiId, IntegrationId, MaxResults, NextToken, O
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the Integrations for an API.
-get_integrations(Client, ApiId, MaxResults, NextToken)
+get_integrations(Client, ApiId)
   when is_map(Client) ->
-    get_integrations(Client, ApiId, MaxResults, NextToken, []).
-get_integrations(Client, ApiId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_integrations(Client, ApiId, #{}, #{}).
+
+get_integrations(Client, ApiId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_integrations(Client, ApiId, QueryMap, HeadersMap, []).
+
+get_integrations(Client, ApiId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/integrations"],
     SuccessStatusCode = 200,
 
@@ -866,8 +968,8 @@ get_integrations(Client, ApiId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -876,9 +978,14 @@ get_integrations(Client, ApiId, MaxResults, NextToken, Options)
 %% @doc Gets a Model.
 get_model(Client, ApiId, ModelId)
   when is_map(Client) ->
-    get_model(Client, ApiId, ModelId, []).
-get_model(Client, ApiId, ModelId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_model(Client, ApiId, ModelId, #{}, #{}).
+
+get_model(Client, ApiId, ModelId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_model(Client, ApiId, ModelId, QueryMap, HeadersMap, []).
+
+get_model(Client, ApiId, ModelId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/models/", aws_util:encode_uri(ModelId), ""],
     SuccessStatusCode = 200,
 
@@ -891,9 +998,14 @@ get_model(Client, ApiId, ModelId, Options)
 %% @doc Gets a model template.
 get_model_template(Client, ApiId, ModelId)
   when is_map(Client) ->
-    get_model_template(Client, ApiId, ModelId, []).
-get_model_template(Client, ApiId, ModelId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_model_template(Client, ApiId, ModelId, #{}, #{}).
+
+get_model_template(Client, ApiId, ModelId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_model_template(Client, ApiId, ModelId, QueryMap, HeadersMap, []).
+
+get_model_template(Client, ApiId, ModelId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/models/", aws_util:encode_uri(ModelId), "/template"],
     SuccessStatusCode = 200,
 
@@ -904,11 +1016,16 @@ get_model_template(Client, ApiId, ModelId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the Models for an API.
-get_models(Client, ApiId, MaxResults, NextToken)
+get_models(Client, ApiId)
   when is_map(Client) ->
-    get_models(Client, ApiId, MaxResults, NextToken, []).
-get_models(Client, ApiId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_models(Client, ApiId, #{}, #{}).
+
+get_models(Client, ApiId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_models(Client, ApiId, QueryMap, HeadersMap, []).
+
+get_models(Client, ApiId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/models"],
     SuccessStatusCode = 200,
 
@@ -916,8 +1033,8 @@ get_models(Client, ApiId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -926,9 +1043,14 @@ get_models(Client, ApiId, MaxResults, NextToken, Options)
 %% @doc Gets a Route.
 get_route(Client, ApiId, RouteId)
   when is_map(Client) ->
-    get_route(Client, ApiId, RouteId, []).
-get_route(Client, ApiId, RouteId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_route(Client, ApiId, RouteId, #{}, #{}).
+
+get_route(Client, ApiId, RouteId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_route(Client, ApiId, RouteId, QueryMap, HeadersMap, []).
+
+get_route(Client, ApiId, RouteId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes/", aws_util:encode_uri(RouteId), ""],
     SuccessStatusCode = 200,
 
@@ -941,9 +1063,14 @@ get_route(Client, ApiId, RouteId, Options)
 %% @doc Gets a RouteResponse.
 get_route_response(Client, ApiId, RouteId, RouteResponseId)
   when is_map(Client) ->
-    get_route_response(Client, ApiId, RouteId, RouteResponseId, []).
-get_route_response(Client, ApiId, RouteId, RouteResponseId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_route_response(Client, ApiId, RouteId, RouteResponseId, #{}, #{}).
+
+get_route_response(Client, ApiId, RouteId, RouteResponseId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_route_response(Client, ApiId, RouteId, RouteResponseId, QueryMap, HeadersMap, []).
+
+get_route_response(Client, ApiId, RouteId, RouteResponseId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes/", aws_util:encode_uri(RouteId), "/routeresponses/", aws_util:encode_uri(RouteResponseId), ""],
     SuccessStatusCode = 200,
 
@@ -954,11 +1081,16 @@ get_route_response(Client, ApiId, RouteId, RouteResponseId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the RouteResponses for a Route.
-get_route_responses(Client, ApiId, RouteId, MaxResults, NextToken)
+get_route_responses(Client, ApiId, RouteId)
   when is_map(Client) ->
-    get_route_responses(Client, ApiId, RouteId, MaxResults, NextToken, []).
-get_route_responses(Client, ApiId, RouteId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_route_responses(Client, ApiId, RouteId, #{}, #{}).
+
+get_route_responses(Client, ApiId, RouteId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_route_responses(Client, ApiId, RouteId, QueryMap, HeadersMap, []).
+
+get_route_responses(Client, ApiId, RouteId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes/", aws_util:encode_uri(RouteId), "/routeresponses"],
     SuccessStatusCode = 200,
 
@@ -966,19 +1098,24 @@ get_route_responses(Client, ApiId, RouteId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the Routes for an API.
-get_routes(Client, ApiId, MaxResults, NextToken)
+get_routes(Client, ApiId)
   when is_map(Client) ->
-    get_routes(Client, ApiId, MaxResults, NextToken, []).
-get_routes(Client, ApiId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_routes(Client, ApiId, #{}, #{}).
+
+get_routes(Client, ApiId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_routes(Client, ApiId, QueryMap, HeadersMap, []).
+
+get_routes(Client, ApiId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes"],
     SuccessStatusCode = 200,
 
@@ -986,8 +1123,8 @@ get_routes(Client, ApiId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -996,9 +1133,14 @@ get_routes(Client, ApiId, MaxResults, NextToken, Options)
 %% @doc Gets a Stage.
 get_stage(Client, ApiId, StageName)
   when is_map(Client) ->
-    get_stage(Client, ApiId, StageName, []).
-get_stage(Client, ApiId, StageName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_stage(Client, ApiId, StageName, #{}, #{}).
+
+get_stage(Client, ApiId, StageName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_stage(Client, ApiId, StageName, QueryMap, HeadersMap, []).
+
+get_stage(Client, ApiId, StageName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/stages/", aws_util:encode_uri(StageName), ""],
     SuccessStatusCode = 200,
 
@@ -1009,11 +1151,16 @@ get_stage(Client, ApiId, StageName, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the Stages for an API.
-get_stages(Client, ApiId, MaxResults, NextToken)
+get_stages(Client, ApiId)
   when is_map(Client) ->
-    get_stages(Client, ApiId, MaxResults, NextToken, []).
-get_stages(Client, ApiId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_stages(Client, ApiId, #{}, #{}).
+
+get_stages(Client, ApiId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_stages(Client, ApiId, QueryMap, HeadersMap, []).
+
+get_stages(Client, ApiId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/stages"],
     SuccessStatusCode = 200,
 
@@ -1021,8 +1168,8 @@ get_stages(Client, ApiId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1031,9 +1178,14 @@ get_stages(Client, ApiId, MaxResults, NextToken, Options)
 %% @doc Gets a collection of Tag resources.
 get_tags(Client, ResourceArn)
   when is_map(Client) ->
-    get_tags(Client, ResourceArn, []).
-get_tags(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    get_tags(Client, ResourceArn, #{}, #{}).
+
+get_tags(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_tags(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+get_tags(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v2/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 
@@ -1046,9 +1198,14 @@ get_tags(Client, ResourceArn, Options)
 %% @doc Gets a VPC link.
 get_vpc_link(Client, VpcLinkId)
   when is_map(Client) ->
-    get_vpc_link(Client, VpcLinkId, []).
-get_vpc_link(Client, VpcLinkId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_vpc_link(Client, VpcLinkId, #{}, #{}).
+
+get_vpc_link(Client, VpcLinkId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_vpc_link(Client, VpcLinkId, QueryMap, HeadersMap, []).
+
+get_vpc_link(Client, VpcLinkId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v2/vpclinks/", aws_util:encode_uri(VpcLinkId), ""],
     SuccessStatusCode = 200,
 
@@ -1059,11 +1216,16 @@ get_vpc_link(Client, VpcLinkId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a collection of VPC links.
-get_vpc_links(Client, MaxResults, NextToken)
+get_vpc_links(Client)
   when is_map(Client) ->
-    get_vpc_links(Client, MaxResults, NextToken, []).
-get_vpc_links(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_vpc_links(Client, #{}, #{}).
+
+get_vpc_links(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_vpc_links(Client, QueryMap, HeadersMap, []).
+
+get_vpc_links(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v2/vpclinks"],
     SuccessStatusCode = 200,
 
@@ -1071,8 +1233,8 @@ get_vpc_links(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

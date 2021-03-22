@@ -18,20 +18,27 @@
          delete_pipeline/4,
          delete_preset/3,
          delete_preset/4,
+         list_jobs_by_pipeline/2,
          list_jobs_by_pipeline/4,
          list_jobs_by_pipeline/5,
+         list_jobs_by_status/2,
          list_jobs_by_status/4,
          list_jobs_by_status/5,
+         list_pipelines/1,
          list_pipelines/3,
          list_pipelines/4,
+         list_presets/1,
          list_presets/3,
          list_presets/4,
          read_job/2,
-         read_job/3,
+         read_job/4,
+         read_job/5,
          read_pipeline/2,
-         read_pipeline/3,
+         read_pipeline/4,
+         read_pipeline/5,
          read_preset/2,
-         read_preset/3,
+         read_preset/4,
+         read_preset/5,
          test_role/2,
          test_role/3,
          update_pipeline/3,
@@ -186,11 +193,16 @@ delete_preset(Client, Id, Input0, Options) ->
 %% Elastic Transcoder returns all of the jobs currently in the specified
 %% pipeline. The response body contains one element for each job that
 %% satisfies the search criteria.
-list_jobs_by_pipeline(Client, PipelineId, Ascending, PageToken)
+list_jobs_by_pipeline(Client, PipelineId)
   when is_map(Client) ->
-    list_jobs_by_pipeline(Client, PipelineId, Ascending, PageToken, []).
-list_jobs_by_pipeline(Client, PipelineId, Ascending, PageToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_jobs_by_pipeline(Client, PipelineId, #{}, #{}).
+
+list_jobs_by_pipeline(Client, PipelineId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_jobs_by_pipeline(Client, PipelineId, QueryMap, HeadersMap, []).
+
+list_jobs_by_pipeline(Client, PipelineId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2012-09-25/jobsByPipeline/", aws_util:encode_uri(PipelineId), ""],
     SuccessStatusCode = undefined,
 
@@ -198,8 +210,8 @@ list_jobs_by_pipeline(Client, PipelineId, Ascending, PageToken, Options)
 
     Query0_ =
       [
-        {<<"Ascending">>, Ascending},
-        {<<"PageToken">>, PageToken}
+        {<<"Ascending">>, maps:get(<<"Ascending">>, QueryMap, undefined)},
+        {<<"PageToken">>, maps:get(<<"PageToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -210,11 +222,16 @@ list_jobs_by_pipeline(Client, PipelineId, Ascending, PageToken, Options)
 %%
 %% The response body contains one element for each job that satisfies the
 %% search criteria.
-list_jobs_by_status(Client, Status, Ascending, PageToken)
+list_jobs_by_status(Client, Status)
   when is_map(Client) ->
-    list_jobs_by_status(Client, Status, Ascending, PageToken, []).
-list_jobs_by_status(Client, Status, Ascending, PageToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_jobs_by_status(Client, Status, #{}, #{}).
+
+list_jobs_by_status(Client, Status, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_jobs_by_status(Client, Status, QueryMap, HeadersMap, []).
+
+list_jobs_by_status(Client, Status, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2012-09-25/jobsByStatus/", aws_util:encode_uri(Status), ""],
     SuccessStatusCode = undefined,
 
@@ -222,8 +239,8 @@ list_jobs_by_status(Client, Status, Ascending, PageToken, Options)
 
     Query0_ =
       [
-        {<<"Ascending">>, Ascending},
-        {<<"PageToken">>, PageToken}
+        {<<"Ascending">>, maps:get(<<"Ascending">>, QueryMap, undefined)},
+        {<<"PageToken">>, maps:get(<<"PageToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -231,11 +248,16 @@ list_jobs_by_status(Client, Status, Ascending, PageToken, Options)
 
 %% @doc The ListPipelines operation gets a list of the pipelines associated
 %% with the current AWS account.
-list_pipelines(Client, Ascending, PageToken)
+list_pipelines(Client)
   when is_map(Client) ->
-    list_pipelines(Client, Ascending, PageToken, []).
-list_pipelines(Client, Ascending, PageToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_pipelines(Client, #{}, #{}).
+
+list_pipelines(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_pipelines(Client, QueryMap, HeadersMap, []).
+
+list_pipelines(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2012-09-25/pipelines"],
     SuccessStatusCode = undefined,
 
@@ -243,8 +265,8 @@ list_pipelines(Client, Ascending, PageToken, Options)
 
     Query0_ =
       [
-        {<<"Ascending">>, Ascending},
-        {<<"PageToken">>, PageToken}
+        {<<"Ascending">>, maps:get(<<"Ascending">>, QueryMap, undefined)},
+        {<<"PageToken">>, maps:get(<<"PageToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -253,11 +275,16 @@ list_pipelines(Client, Ascending, PageToken, Options)
 %% @doc The ListPresets operation gets a list of the default presets included
 %% with Elastic Transcoder and the presets that you've added in an AWS
 %% region.
-list_presets(Client, Ascending, PageToken)
+list_presets(Client)
   when is_map(Client) ->
-    list_presets(Client, Ascending, PageToken, []).
-list_presets(Client, Ascending, PageToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_presets(Client, #{}, #{}).
+
+list_presets(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_presets(Client, QueryMap, HeadersMap, []).
+
+list_presets(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2012-09-25/presets"],
     SuccessStatusCode = undefined,
 
@@ -265,8 +292,8 @@ list_presets(Client, Ascending, PageToken, Options)
 
     Query0_ =
       [
-        {<<"Ascending">>, Ascending},
-        {<<"PageToken">>, PageToken}
+        {<<"Ascending">>, maps:get(<<"Ascending">>, QueryMap, undefined)},
+        {<<"PageToken">>, maps:get(<<"PageToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -275,9 +302,14 @@ list_presets(Client, Ascending, PageToken, Options)
 %% @doc The ReadJob operation returns detailed information about a job.
 read_job(Client, Id)
   when is_map(Client) ->
-    read_job(Client, Id, []).
-read_job(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    read_job(Client, Id, #{}, #{}).
+
+read_job(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    read_job(Client, Id, QueryMap, HeadersMap, []).
+
+read_job(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2012-09-25/jobs/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
@@ -291,9 +323,14 @@ read_job(Client, Id, Options)
 %% pipeline.
 read_pipeline(Client, Id)
   when is_map(Client) ->
-    read_pipeline(Client, Id, []).
-read_pipeline(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    read_pipeline(Client, Id, #{}, #{}).
+
+read_pipeline(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    read_pipeline(Client, Id, QueryMap, HeadersMap, []).
+
+read_pipeline(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2012-09-25/pipelines/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
@@ -306,9 +343,14 @@ read_pipeline(Client, Id, Options)
 %% @doc The ReadPreset operation gets detailed information about a preset.
 read_preset(Client, Id)
   when is_map(Client) ->
-    read_preset(Client, Id, []).
-read_preset(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    read_preset(Client, Id, #{}, #{}).
+
+read_preset(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    read_preset(Client, Id, QueryMap, HeadersMap, []).
+
+read_preset(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2012-09-25/presets/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 

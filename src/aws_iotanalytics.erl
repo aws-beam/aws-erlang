@@ -54,36 +54,49 @@
          delete_datastore/4,
          delete_pipeline/3,
          delete_pipeline/4,
-         describe_channel/3,
+         describe_channel/2,
          describe_channel/4,
+         describe_channel/5,
          describe_dataset/2,
-         describe_dataset/3,
-         describe_datastore/3,
+         describe_dataset/4,
+         describe_dataset/5,
+         describe_datastore/2,
          describe_datastore/4,
+         describe_datastore/5,
          describe_logging_options/1,
-         describe_logging_options/2,
+         describe_logging_options/3,
+         describe_logging_options/4,
          describe_pipeline/2,
-         describe_pipeline/3,
-         get_dataset_content/3,
+         describe_pipeline/4,
+         describe_pipeline/5,
+         get_dataset_content/2,
          get_dataset_content/4,
+         get_dataset_content/5,
+         list_channels/1,
          list_channels/3,
          list_channels/4,
-         list_dataset_contents/6,
-         list_dataset_contents/7,
+         list_dataset_contents/2,
+         list_dataset_contents/4,
+         list_dataset_contents/5,
+         list_datasets/1,
          list_datasets/3,
          list_datasets/4,
+         list_datastores/1,
          list_datastores/3,
          list_datastores/4,
+         list_pipelines/1,
          list_pipelines/3,
          list_pipelines/4,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          put_logging_options/2,
          put_logging_options/3,
          run_pipeline_activity/2,
          run_pipeline_activity/3,
+         sample_channel_data/2,
+         sample_channel_data/4,
          sample_channel_data/5,
-         sample_channel_data/6,
          start_pipeline_reprocessing/3,
          start_pipeline_reprocessing/4,
          tag_resource/2,
@@ -318,11 +331,16 @@ delete_pipeline(Client, PipelineName, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a channel.
-describe_channel(Client, ChannelName, IncludeStatistics)
+describe_channel(Client, ChannelName)
   when is_map(Client) ->
-    describe_channel(Client, ChannelName, IncludeStatistics, []).
-describe_channel(Client, ChannelName, IncludeStatistics, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_channel(Client, ChannelName, #{}, #{}).
+
+describe_channel(Client, ChannelName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_channel(Client, ChannelName, QueryMap, HeadersMap, []).
+
+describe_channel(Client, ChannelName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelName), ""],
     SuccessStatusCode = undefined,
 
@@ -330,7 +348,7 @@ describe_channel(Client, ChannelName, IncludeStatistics, Options)
 
     Query0_ =
       [
-        {<<"includeStatistics">>, IncludeStatistics}
+        {<<"includeStatistics">>, maps:get(<<"includeStatistics">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -339,9 +357,14 @@ describe_channel(Client, ChannelName, IncludeStatistics, Options)
 %% @doc Retrieves information about a dataset.
 describe_dataset(Client, DatasetName)
   when is_map(Client) ->
-    describe_dataset(Client, DatasetName, []).
-describe_dataset(Client, DatasetName, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_dataset(Client, DatasetName, #{}, #{}).
+
+describe_dataset(Client, DatasetName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_dataset(Client, DatasetName, QueryMap, HeadersMap, []).
+
+describe_dataset(Client, DatasetName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/datasets/", aws_util:encode_uri(DatasetName), ""],
     SuccessStatusCode = undefined,
 
@@ -352,11 +375,16 @@ describe_dataset(Client, DatasetName, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a data store.
-describe_datastore(Client, DatastoreName, IncludeStatistics)
+describe_datastore(Client, DatastoreName)
   when is_map(Client) ->
-    describe_datastore(Client, DatastoreName, IncludeStatistics, []).
-describe_datastore(Client, DatastoreName, IncludeStatistics, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_datastore(Client, DatastoreName, #{}, #{}).
+
+describe_datastore(Client, DatastoreName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_datastore(Client, DatastoreName, QueryMap, HeadersMap, []).
+
+describe_datastore(Client, DatastoreName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/datastores/", aws_util:encode_uri(DatastoreName), ""],
     SuccessStatusCode = undefined,
 
@@ -364,7 +392,7 @@ describe_datastore(Client, DatastoreName, IncludeStatistics, Options)
 
     Query0_ =
       [
-        {<<"includeStatistics">>, IncludeStatistics}
+        {<<"includeStatistics">>, maps:get(<<"includeStatistics">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -374,9 +402,14 @@ describe_datastore(Client, DatastoreName, IncludeStatistics, Options)
 %% options.
 describe_logging_options(Client)
   when is_map(Client) ->
-    describe_logging_options(Client, []).
-describe_logging_options(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_logging_options(Client, #{}, #{}).
+
+describe_logging_options(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_logging_options(Client, QueryMap, HeadersMap, []).
+
+describe_logging_options(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/logging"],
     SuccessStatusCode = undefined,
 
@@ -389,9 +422,14 @@ describe_logging_options(Client, Options)
 %% @doc Retrieves information about a pipeline.
 describe_pipeline(Client, PipelineName)
   when is_map(Client) ->
-    describe_pipeline(Client, PipelineName, []).
-describe_pipeline(Client, PipelineName, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_pipeline(Client, PipelineName, #{}, #{}).
+
+describe_pipeline(Client, PipelineName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_pipeline(Client, PipelineName, QueryMap, HeadersMap, []).
+
+describe_pipeline(Client, PipelineName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/pipelines/", aws_util:encode_uri(PipelineName), ""],
     SuccessStatusCode = undefined,
 
@@ -402,11 +440,16 @@ describe_pipeline(Client, PipelineName, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the contents of a data set as presigned URIs.
-get_dataset_content(Client, DatasetName, VersionId)
+get_dataset_content(Client, DatasetName)
   when is_map(Client) ->
-    get_dataset_content(Client, DatasetName, VersionId, []).
-get_dataset_content(Client, DatasetName, VersionId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_dataset_content(Client, DatasetName, #{}, #{}).
+
+get_dataset_content(Client, DatasetName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_dataset_content(Client, DatasetName, QueryMap, HeadersMap, []).
+
+get_dataset_content(Client, DatasetName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/datasets/", aws_util:encode_uri(DatasetName), "/content"],
     SuccessStatusCode = undefined,
 
@@ -414,18 +457,23 @@ get_dataset_content(Client, DatasetName, VersionId, Options)
 
     Query0_ =
       [
-        {<<"versionId">>, VersionId}
+        {<<"versionId">>, maps:get(<<"versionId">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of channels.
-list_channels(Client, MaxResults, NextToken)
+list_channels(Client)
   when is_map(Client) ->
-    list_channels(Client, MaxResults, NextToken, []).
-list_channels(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_channels(Client, #{}, #{}).
+
+list_channels(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_channels(Client, QueryMap, HeadersMap, []).
+
+list_channels(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/channels"],
     SuccessStatusCode = undefined,
 
@@ -433,19 +481,24 @@ list_channels(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists information about data set contents that have been created.
-list_dataset_contents(Client, DatasetName, MaxResults, NextToken, ScheduledBefore, ScheduledOnOrAfter)
+list_dataset_contents(Client, DatasetName)
   when is_map(Client) ->
-    list_dataset_contents(Client, DatasetName, MaxResults, NextToken, ScheduledBefore, ScheduledOnOrAfter, []).
-list_dataset_contents(Client, DatasetName, MaxResults, NextToken, ScheduledBefore, ScheduledOnOrAfter, Options)
-  when is_map(Client), is_list(Options) ->
+    list_dataset_contents(Client, DatasetName, #{}, #{}).
+
+list_dataset_contents(Client, DatasetName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_dataset_contents(Client, DatasetName, QueryMap, HeadersMap, []).
+
+list_dataset_contents(Client, DatasetName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/datasets/", aws_util:encode_uri(DatasetName), "/contents"],
     SuccessStatusCode = undefined,
 
@@ -453,21 +506,26 @@ list_dataset_contents(Client, DatasetName, MaxResults, NextToken, ScheduledBefor
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"scheduledBefore">>, ScheduledBefore},
-        {<<"scheduledOnOrAfter">>, ScheduledOnOrAfter}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"scheduledBefore">>, maps:get(<<"scheduledBefore">>, QueryMap, undefined)},
+        {<<"scheduledOnOrAfter">>, maps:get(<<"scheduledOnOrAfter">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about data sets.
-list_datasets(Client, MaxResults, NextToken)
+list_datasets(Client)
   when is_map(Client) ->
-    list_datasets(Client, MaxResults, NextToken, []).
-list_datasets(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_datasets(Client, #{}, #{}).
+
+list_datasets(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_datasets(Client, QueryMap, HeadersMap, []).
+
+list_datasets(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/datasets"],
     SuccessStatusCode = undefined,
 
@@ -475,19 +533,24 @@ list_datasets(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of data stores.
-list_datastores(Client, MaxResults, NextToken)
+list_datastores(Client)
   when is_map(Client) ->
-    list_datastores(Client, MaxResults, NextToken, []).
-list_datastores(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_datastores(Client, #{}, #{}).
+
+list_datastores(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_datastores(Client, QueryMap, HeadersMap, []).
+
+list_datastores(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/datastores"],
     SuccessStatusCode = undefined,
 
@@ -495,19 +558,24 @@ list_datastores(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of pipelines.
-list_pipelines(Client, MaxResults, NextToken)
+list_pipelines(Client)
   when is_map(Client) ->
-    list_pipelines(Client, MaxResults, NextToken, []).
-list_pipelines(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_pipelines(Client, #{}, #{}).
+
+list_pipelines(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_pipelines(Client, QueryMap, HeadersMap, []).
+
+list_pipelines(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/pipelines"],
     SuccessStatusCode = undefined,
 
@@ -515,8 +583,8 @@ list_pipelines(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -525,9 +593,14 @@ list_pipelines(Client, MaxResults, NextToken, Options)
 %% @doc Lists the tags (metadata) that you have assigned to the resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags"],
     SuccessStatusCode = undefined,
 
@@ -584,11 +657,16 @@ run_pipeline_activity(Client, Input0, Options) ->
 %% during the specified timeframe.
 %%
 %% Up to 10 messages can be retrieved.
-sample_channel_data(Client, ChannelName, EndTime, MaxMessages, StartTime)
+sample_channel_data(Client, ChannelName)
   when is_map(Client) ->
-    sample_channel_data(Client, ChannelName, EndTime, MaxMessages, StartTime, []).
-sample_channel_data(Client, ChannelName, EndTime, MaxMessages, StartTime, Options)
-  when is_map(Client), is_list(Options) ->
+    sample_channel_data(Client, ChannelName, #{}, #{}).
+
+sample_channel_data(Client, ChannelName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    sample_channel_data(Client, ChannelName, QueryMap, HeadersMap, []).
+
+sample_channel_data(Client, ChannelName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelName), "/sample"],
     SuccessStatusCode = undefined,
 
@@ -596,9 +674,9 @@ sample_channel_data(Client, ChannelName, EndTime, MaxMessages, StartTime, Option
 
     Query0_ =
       [
-        {<<"endTime">>, EndTime},
-        {<<"maxMessages">>, MaxMessages},
-        {<<"startTime">>, StartTime}
+        {<<"endTime">>, maps:get(<<"endTime">>, QueryMap, undefined)},
+        {<<"maxMessages">>, maps:get(<<"maxMessages">>, QueryMap, undefined)},
+        {<<"startTime">>, maps:get(<<"startTime">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

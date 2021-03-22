@@ -18,11 +18,14 @@
          delete_environment/3,
          delete_environment/4,
          get_environment/2,
-         get_environment/3,
+         get_environment/4,
+         get_environment/5,
+         list_environments/1,
          list_environments/3,
          list_environments/4,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          publish_metrics/3,
          publish_metrics/4,
          tag_resource/3,
@@ -106,9 +109,14 @@ delete_environment(Client, Name, Input0, Options) ->
 %% @doc Get details of an existing environment.
 get_environment(Client, Name)
   when is_map(Client) ->
-    get_environment(Client, Name, []).
-get_environment(Client, Name, Options)
-  when is_map(Client), is_list(Options) ->
+    get_environment(Client, Name, #{}, #{}).
+
+get_environment(Client, Name, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_environment(Client, Name, QueryMap, HeadersMap, []).
+
+get_environment(Client, Name, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/environments/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
 
@@ -119,11 +127,16 @@ get_environment(Client, Name, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List Amazon MWAA Environments.
-list_environments(Client, MaxResults, NextToken)
+list_environments(Client)
   when is_map(Client) ->
-    list_environments(Client, MaxResults, NextToken, []).
-list_environments(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_environments(Client, #{}, #{}).
+
+list_environments(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_environments(Client, QueryMap, HeadersMap, []).
+
+list_environments(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/environments"],
     SuccessStatusCode = 200,
 
@@ -131,8 +144,8 @@ list_environments(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -141,9 +154,14 @@ list_environments(Client, MaxResults, NextToken, Options)
 %% @doc List the tags for MWAA environments.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 

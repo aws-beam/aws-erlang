@@ -36,35 +36,51 @@
          flush_api_cache/3,
          flush_api_cache/4,
          get_api_cache/2,
-         get_api_cache/3,
+         get_api_cache/4,
+         get_api_cache/5,
          get_data_source/3,
-         get_data_source/4,
+         get_data_source/5,
+         get_data_source/6,
          get_function/3,
-         get_function/4,
+         get_function/5,
+         get_function/6,
          get_graphql_api/2,
-         get_graphql_api/3,
-         get_introspection_schema/4,
+         get_graphql_api/4,
+         get_graphql_api/5,
+         get_introspection_schema/3,
          get_introspection_schema/5,
+         get_introspection_schema/6,
          get_resolver/4,
-         get_resolver/5,
+         get_resolver/6,
+         get_resolver/7,
          get_schema_creation_status/2,
-         get_schema_creation_status/3,
+         get_schema_creation_status/4,
+         get_schema_creation_status/5,
          get_type/4,
-         get_type/5,
+         get_type/6,
+         get_type/7,
+         list_api_keys/2,
          list_api_keys/4,
          list_api_keys/5,
+         list_data_sources/2,
          list_data_sources/4,
          list_data_sources/5,
+         list_functions/2,
          list_functions/4,
          list_functions/5,
+         list_graphql_apis/1,
          list_graphql_apis/3,
          list_graphql_apis/4,
+         list_resolvers/3,
          list_resolvers/5,
          list_resolvers/6,
+         list_resolvers_by_function/3,
          list_resolvers_by_function/5,
          list_resolvers_by_function/6,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
+         list_types/3,
          list_types/5,
          list_types/6,
          start_schema_creation/3,
@@ -344,9 +360,14 @@ flush_api_cache(Client, ApiId, Input0, Options) ->
 %% @doc Retrieves an `ApiCache' object.
 get_api_cache(Client, ApiId)
   when is_map(Client) ->
-    get_api_cache(Client, ApiId, []).
-get_api_cache(Client, ApiId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_api_cache(Client, ApiId, #{}, #{}).
+
+get_api_cache(Client, ApiId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_api_cache(Client, ApiId, QueryMap, HeadersMap, []).
+
+get_api_cache(Client, ApiId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/ApiCaches"],
     SuccessStatusCode = undefined,
 
@@ -359,9 +380,14 @@ get_api_cache(Client, ApiId, Options)
 %% @doc Retrieves a `DataSource' object.
 get_data_source(Client, ApiId, Name)
   when is_map(Client) ->
-    get_data_source(Client, ApiId, Name, []).
-get_data_source(Client, ApiId, Name, Options)
-  when is_map(Client), is_list(Options) ->
+    get_data_source(Client, ApiId, Name, #{}, #{}).
+
+get_data_source(Client, ApiId, Name, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_data_source(Client, ApiId, Name, QueryMap, HeadersMap, []).
+
+get_data_source(Client, ApiId, Name, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/datasources/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
 
@@ -374,9 +400,14 @@ get_data_source(Client, ApiId, Name, Options)
 %% @doc Get a `Function'.
 get_function(Client, ApiId, FunctionId)
   when is_map(Client) ->
-    get_function(Client, ApiId, FunctionId, []).
-get_function(Client, ApiId, FunctionId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_function(Client, ApiId, FunctionId, #{}, #{}).
+
+get_function(Client, ApiId, FunctionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_function(Client, ApiId, FunctionId, QueryMap, HeadersMap, []).
+
+get_function(Client, ApiId, FunctionId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/functions/", aws_util:encode_uri(FunctionId), ""],
     SuccessStatusCode = undefined,
 
@@ -389,9 +420,14 @@ get_function(Client, ApiId, FunctionId, Options)
 %% @doc Retrieves a `GraphqlApi' object.
 get_graphql_api(Client, ApiId)
   when is_map(Client) ->
-    get_graphql_api(Client, ApiId, []).
-get_graphql_api(Client, ApiId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_graphql_api(Client, ApiId, #{}, #{}).
+
+get_graphql_api(Client, ApiId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_graphql_api(Client, ApiId, QueryMap, HeadersMap, []).
+
+get_graphql_api(Client, ApiId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), ""],
     SuccessStatusCode = undefined,
 
@@ -402,11 +438,16 @@ get_graphql_api(Client, ApiId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the introspection schema for a GraphQL API.
-get_introspection_schema(Client, ApiId, Format, IncludeDirectives)
+get_introspection_schema(Client, ApiId, Format)
   when is_map(Client) ->
-    get_introspection_schema(Client, ApiId, Format, IncludeDirectives, []).
-get_introspection_schema(Client, ApiId, Format, IncludeDirectives, Options)
-  when is_map(Client), is_list(Options) ->
+    get_introspection_schema(Client, ApiId, Format, #{}, #{}).
+
+get_introspection_schema(Client, ApiId, Format, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_introspection_schema(Client, ApiId, Format, QueryMap, HeadersMap, []).
+
+get_introspection_schema(Client, ApiId, Format, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/schema"],
     SuccessStatusCode = undefined,
 
@@ -415,7 +456,7 @@ get_introspection_schema(Client, ApiId, Format, IncludeDirectives, Options)
     Query0_ =
       [
         {<<"format">>, Format},
-        {<<"includeDirectives">>, IncludeDirectives}
+        {<<"includeDirectives">>, maps:get(<<"includeDirectives">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -424,9 +465,14 @@ get_introspection_schema(Client, ApiId, Format, IncludeDirectives, Options)
 %% @doc Retrieves a `Resolver' object.
 get_resolver(Client, ApiId, FieldName, TypeName)
   when is_map(Client) ->
-    get_resolver(Client, ApiId, FieldName, TypeName, []).
-get_resolver(Client, ApiId, FieldName, TypeName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_resolver(Client, ApiId, FieldName, TypeName, #{}, #{}).
+
+get_resolver(Client, ApiId, FieldName, TypeName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_resolver(Client, ApiId, FieldName, TypeName, QueryMap, HeadersMap, []).
+
+get_resolver(Client, ApiId, FieldName, TypeName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), "/resolvers/", aws_util:encode_uri(FieldName), ""],
     SuccessStatusCode = undefined,
 
@@ -439,9 +485,14 @@ get_resolver(Client, ApiId, FieldName, TypeName, Options)
 %% @doc Retrieves the current status of a schema creation operation.
 get_schema_creation_status(Client, ApiId)
   when is_map(Client) ->
-    get_schema_creation_status(Client, ApiId, []).
-get_schema_creation_status(Client, ApiId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_schema_creation_status(Client, ApiId, #{}, #{}).
+
+get_schema_creation_status(Client, ApiId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_schema_creation_status(Client, ApiId, QueryMap, HeadersMap, []).
+
+get_schema_creation_status(Client, ApiId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/schemacreation"],
     SuccessStatusCode = undefined,
 
@@ -454,9 +505,14 @@ get_schema_creation_status(Client, ApiId, Options)
 %% @doc Retrieves a `Type' object.
 get_type(Client, ApiId, TypeName, Format)
   when is_map(Client) ->
-    get_type(Client, ApiId, TypeName, Format, []).
-get_type(Client, ApiId, TypeName, Format, Options)
-  when is_map(Client), is_list(Options) ->
+    get_type(Client, ApiId, TypeName, Format, #{}, #{}).
+
+get_type(Client, ApiId, TypeName, Format, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_type(Client, ApiId, TypeName, Format, QueryMap, HeadersMap, []).
+
+get_type(Client, ApiId, TypeName, Format, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), ""],
     SuccessStatusCode = undefined,
 
@@ -476,11 +532,16 @@ get_type(Client, ApiId, TypeName, Format, Options)
 %% they may still be included in the response until they have actually been
 %% deleted. You can safely call `DeleteApiKey' to manually delete a key
 %% before it's automatically deleted.
-list_api_keys(Client, ApiId, MaxResults, NextToken)
+list_api_keys(Client, ApiId)
   when is_map(Client) ->
-    list_api_keys(Client, ApiId, MaxResults, NextToken, []).
-list_api_keys(Client, ApiId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_api_keys(Client, ApiId, #{}, #{}).
+
+list_api_keys(Client, ApiId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_api_keys(Client, ApiId, QueryMap, HeadersMap, []).
+
+list_api_keys(Client, ApiId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/apikeys"],
     SuccessStatusCode = undefined,
 
@@ -488,19 +549,24 @@ list_api_keys(Client, ApiId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the data sources for a given API.
-list_data_sources(Client, ApiId, MaxResults, NextToken)
+list_data_sources(Client, ApiId)
   when is_map(Client) ->
-    list_data_sources(Client, ApiId, MaxResults, NextToken, []).
-list_data_sources(Client, ApiId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_data_sources(Client, ApiId, #{}, #{}).
+
+list_data_sources(Client, ApiId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_data_sources(Client, ApiId, QueryMap, HeadersMap, []).
+
+list_data_sources(Client, ApiId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/datasources"],
     SuccessStatusCode = undefined,
 
@@ -508,19 +574,24 @@ list_data_sources(Client, ApiId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List multiple functions.
-list_functions(Client, ApiId, MaxResults, NextToken)
+list_functions(Client, ApiId)
   when is_map(Client) ->
-    list_functions(Client, ApiId, MaxResults, NextToken, []).
-list_functions(Client, ApiId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_functions(Client, ApiId, #{}, #{}).
+
+list_functions(Client, ApiId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_functions(Client, ApiId, QueryMap, HeadersMap, []).
+
+list_functions(Client, ApiId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/functions"],
     SuccessStatusCode = undefined,
 
@@ -528,19 +599,24 @@ list_functions(Client, ApiId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists your GraphQL APIs.
-list_graphql_apis(Client, MaxResults, NextToken)
+list_graphql_apis(Client)
   when is_map(Client) ->
-    list_graphql_apis(Client, MaxResults, NextToken, []).
-list_graphql_apis(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_graphql_apis(Client, #{}, #{}).
+
+list_graphql_apis(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_graphql_apis(Client, QueryMap, HeadersMap, []).
+
+list_graphql_apis(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apis"],
     SuccessStatusCode = undefined,
 
@@ -548,19 +624,24 @@ list_graphql_apis(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the resolvers for a given API and type.
-list_resolvers(Client, ApiId, TypeName, MaxResults, NextToken)
+list_resolvers(Client, ApiId, TypeName)
   when is_map(Client) ->
-    list_resolvers(Client, ApiId, TypeName, MaxResults, NextToken, []).
-list_resolvers(Client, ApiId, TypeName, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_resolvers(Client, ApiId, TypeName, #{}, #{}).
+
+list_resolvers(Client, ApiId, TypeName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_resolvers(Client, ApiId, TypeName, QueryMap, HeadersMap, []).
+
+list_resolvers(Client, ApiId, TypeName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), "/resolvers"],
     SuccessStatusCode = undefined,
 
@@ -568,19 +649,24 @@ list_resolvers(Client, ApiId, TypeName, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the resolvers that are associated with a specific function.
-list_resolvers_by_function(Client, ApiId, FunctionId, MaxResults, NextToken)
+list_resolvers_by_function(Client, ApiId, FunctionId)
   when is_map(Client) ->
-    list_resolvers_by_function(Client, ApiId, FunctionId, MaxResults, NextToken, []).
-list_resolvers_by_function(Client, ApiId, FunctionId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_resolvers_by_function(Client, ApiId, FunctionId, #{}, #{}).
+
+list_resolvers_by_function(Client, ApiId, FunctionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_resolvers_by_function(Client, ApiId, FunctionId, QueryMap, HeadersMap, []).
+
+list_resolvers_by_function(Client, ApiId, FunctionId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/functions/", aws_util:encode_uri(FunctionId), "/resolvers"],
     SuccessStatusCode = undefined,
 
@@ -588,8 +674,8 @@ list_resolvers_by_function(Client, ApiId, FunctionId, MaxResults, NextToken, Opt
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -598,9 +684,14 @@ list_resolvers_by_function(Client, ApiId, FunctionId, MaxResults, NextToken, Opt
 %% @doc Lists the tags for a resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
@@ -611,11 +702,16 @@ list_tags_for_resource(Client, ResourceArn, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the types for a given API.
-list_types(Client, ApiId, Format, MaxResults, NextToken)
+list_types(Client, ApiId, Format)
   when is_map(Client) ->
-    list_types(Client, ApiId, Format, MaxResults, NextToken, []).
-list_types(Client, ApiId, Format, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_types(Client, ApiId, Format, #{}, #{}).
+
+list_types(Client, ApiId, Format, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_types(Client, ApiId, Format, QueryMap, HeadersMap, []).
+
+list_types(Client, ApiId, Format, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types"],
     SuccessStatusCode = undefined,
 
@@ -624,8 +720,8 @@ list_types(Client, ApiId, Format, MaxResults, NextToken, Options)
     Query0_ =
       [
         {<<"format">>, Format},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

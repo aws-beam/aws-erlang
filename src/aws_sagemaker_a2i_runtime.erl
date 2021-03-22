@@ -40,9 +40,11 @@
 -export([delete_human_loop/3,
          delete_human_loop/4,
          describe_human_loop/2,
-         describe_human_loop/3,
-         list_human_loops/7,
-         list_human_loops/8,
+         describe_human_loop/4,
+         describe_human_loop/5,
+         list_human_loops/2,
+         list_human_loops/4,
+         list_human_loops/5,
          start_human_loop/2,
          start_human_loop/3,
          stop_human_loop/2,
@@ -73,9 +75,14 @@ delete_human_loop(Client, HumanLoopName, Input0, Options) ->
 %% @doc Returns information about the specified human loop.
 describe_human_loop(Client, HumanLoopName)
   when is_map(Client) ->
-    describe_human_loop(Client, HumanLoopName, []).
-describe_human_loop(Client, HumanLoopName, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_human_loop(Client, HumanLoopName, #{}, #{}).
+
+describe_human_loop(Client, HumanLoopName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_human_loop(Client, HumanLoopName, QueryMap, HeadersMap, []).
+
+describe_human_loop(Client, HumanLoopName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/human-loops/", aws_util:encode_uri(HumanLoopName), ""],
     SuccessStatusCode = undefined,
 
@@ -89,11 +96,16 @@ describe_human_loop(Client, HumanLoopName, Options)
 %% parameters.
 %%
 %% If a human loop was deleted, it will not be included.
-list_human_loops(Client, CreationTimeAfter, CreationTimeBefore, FlowDefinitionArn, MaxResults, NextToken, SortOrder)
+list_human_loops(Client, FlowDefinitionArn)
   when is_map(Client) ->
-    list_human_loops(Client, CreationTimeAfter, CreationTimeBefore, FlowDefinitionArn, MaxResults, NextToken, SortOrder, []).
-list_human_loops(Client, CreationTimeAfter, CreationTimeBefore, FlowDefinitionArn, MaxResults, NextToken, SortOrder, Options)
-  when is_map(Client), is_list(Options) ->
+    list_human_loops(Client, FlowDefinitionArn, #{}, #{}).
+
+list_human_loops(Client, FlowDefinitionArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_human_loops(Client, FlowDefinitionArn, QueryMap, HeadersMap, []).
+
+list_human_loops(Client, FlowDefinitionArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/human-loops"],
     SuccessStatusCode = undefined,
 
@@ -101,12 +113,12 @@ list_human_loops(Client, CreationTimeAfter, CreationTimeBefore, FlowDefinitionAr
 
     Query0_ =
       [
-        {<<"CreationTimeAfter">>, CreationTimeAfter},
-        {<<"CreationTimeBefore">>, CreationTimeBefore},
+        {<<"CreationTimeAfter">>, maps:get(<<"CreationTimeAfter">>, QueryMap, undefined)},
+        {<<"CreationTimeBefore">>, maps:get(<<"CreationTimeBefore">>, QueryMap, undefined)},
         {<<"FlowDefinitionArn">>, FlowDefinitionArn},
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken},
-        {<<"SortOrder">>, SortOrder}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"SortOrder">>, maps:get(<<"SortOrder">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

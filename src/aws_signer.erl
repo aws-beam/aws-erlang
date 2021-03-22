@@ -26,21 +26,29 @@
          cancel_signing_profile/3,
          cancel_signing_profile/4,
          describe_signing_job/2,
-         describe_signing_job/3,
+         describe_signing_job/4,
+         describe_signing_job/5,
          get_signing_platform/2,
-         get_signing_platform/3,
-         get_signing_profile/3,
+         get_signing_platform/4,
+         get_signing_platform/5,
+         get_signing_profile/2,
          get_signing_profile/4,
-         list_profile_permissions/3,
+         get_signing_profile/5,
+         list_profile_permissions/2,
          list_profile_permissions/4,
-         list_signing_jobs/10,
-         list_signing_jobs/11,
-         list_signing_platforms/6,
-         list_signing_platforms/7,
-         list_signing_profiles/6,
-         list_signing_profiles/7,
+         list_profile_permissions/5,
+         list_signing_jobs/1,
+         list_signing_jobs/3,
+         list_signing_jobs/4,
+         list_signing_platforms/1,
+         list_signing_platforms/3,
+         list_signing_platforms/4,
+         list_signing_profiles/1,
+         list_signing_profiles/3,
+         list_signing_profiles/4,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          put_signing_profile/3,
          put_signing_profile/4,
          remove_profile_permission/4,
@@ -104,9 +112,14 @@ cancel_signing_profile(Client, ProfileName, Input0, Options) ->
 %% `StartSigningJob' operation.
 describe_signing_job(Client, JobId)
   when is_map(Client) ->
-    describe_signing_job(Client, JobId, []).
-describe_signing_job(Client, JobId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_signing_job(Client, JobId, #{}, #{}).
+
+describe_signing_job(Client, JobId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_signing_job(Client, JobId, QueryMap, HeadersMap, []).
+
+describe_signing_job(Client, JobId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/signing-jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = undefined,
 
@@ -119,9 +132,14 @@ describe_signing_job(Client, JobId, Options)
 %% @doc Returns information on a specific signing platform.
 get_signing_platform(Client, PlatformId)
   when is_map(Client) ->
-    get_signing_platform(Client, PlatformId, []).
-get_signing_platform(Client, PlatformId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_signing_platform(Client, PlatformId, #{}, #{}).
+
+get_signing_platform(Client, PlatformId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_signing_platform(Client, PlatformId, QueryMap, HeadersMap, []).
+
+get_signing_platform(Client, PlatformId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/signing-platforms/", aws_util:encode_uri(PlatformId), ""],
     SuccessStatusCode = undefined,
 
@@ -132,11 +150,16 @@ get_signing_platform(Client, PlatformId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information on a specific signing profile.
-get_signing_profile(Client, ProfileName, ProfileOwner)
+get_signing_profile(Client, ProfileName)
   when is_map(Client) ->
-    get_signing_profile(Client, ProfileName, ProfileOwner, []).
-get_signing_profile(Client, ProfileName, ProfileOwner, Options)
-  when is_map(Client), is_list(Options) ->
+    get_signing_profile(Client, ProfileName, #{}, #{}).
+
+get_signing_profile(Client, ProfileName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_signing_profile(Client, ProfileName, QueryMap, HeadersMap, []).
+
+get_signing_profile(Client, ProfileName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/signing-profiles/", aws_util:encode_uri(ProfileName), ""],
     SuccessStatusCode = undefined,
 
@@ -144,7 +167,7 @@ get_signing_profile(Client, ProfileName, ProfileOwner, Options)
 
     Query0_ =
       [
-        {<<"profileOwner">>, ProfileOwner}
+        {<<"profileOwner">>, maps:get(<<"profileOwner">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -152,11 +175,16 @@ get_signing_profile(Client, ProfileName, ProfileOwner, Options)
 
 %% @doc Lists the cross-account permissions associated with a signing
 %% profile.
-list_profile_permissions(Client, ProfileName, NextToken)
+list_profile_permissions(Client, ProfileName)
   when is_map(Client) ->
-    list_profile_permissions(Client, ProfileName, NextToken, []).
-list_profile_permissions(Client, ProfileName, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_profile_permissions(Client, ProfileName, #{}, #{}).
+
+list_profile_permissions(Client, ProfileName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_profile_permissions(Client, ProfileName, QueryMap, HeadersMap, []).
+
+list_profile_permissions(Client, ProfileName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/signing-profiles/", aws_util:encode_uri(ProfileName), "/permissions"],
     SuccessStatusCode = undefined,
 
@@ -164,7 +192,7 @@ list_profile_permissions(Client, ProfileName, NextToken, Options)
 
     Query0_ =
       [
-        {<<"nextToken">>, NextToken}
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -179,11 +207,16 @@ list_profile_permissions(Client, ProfileName, NextToken, Options)
 %% calling `ListSigningJobs' with your `maxResults' parameter and with new
 %% values that code signing returns in the `nextToken' parameter until all of
 %% your signing jobs have been returned.
-list_signing_jobs(Client, IsRevoked, JobInvoker, MaxResults, NextToken, PlatformId, RequestedBy, SignatureExpiresAfter, SignatureExpiresBefore, Status)
+list_signing_jobs(Client)
   when is_map(Client) ->
-    list_signing_jobs(Client, IsRevoked, JobInvoker, MaxResults, NextToken, PlatformId, RequestedBy, SignatureExpiresAfter, SignatureExpiresBefore, Status, []).
-list_signing_jobs(Client, IsRevoked, JobInvoker, MaxResults, NextToken, PlatformId, RequestedBy, SignatureExpiresAfter, SignatureExpiresBefore, Status, Options)
-  when is_map(Client), is_list(Options) ->
+    list_signing_jobs(Client, #{}, #{}).
+
+list_signing_jobs(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_signing_jobs(Client, QueryMap, HeadersMap, []).
+
+list_signing_jobs(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/signing-jobs"],
     SuccessStatusCode = undefined,
 
@@ -191,15 +224,15 @@ list_signing_jobs(Client, IsRevoked, JobInvoker, MaxResults, NextToken, Platform
 
     Query0_ =
       [
-        {<<"isRevoked">>, IsRevoked},
-        {<<"jobInvoker">>, JobInvoker},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"platformId">>, PlatformId},
-        {<<"requestedBy">>, RequestedBy},
-        {<<"signatureExpiresAfter">>, SignatureExpiresAfter},
-        {<<"signatureExpiresBefore">>, SignatureExpiresBefore},
-        {<<"status">>, Status}
+        {<<"isRevoked">>, maps:get(<<"isRevoked">>, QueryMap, undefined)},
+        {<<"jobInvoker">>, maps:get(<<"jobInvoker">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"platformId">>, maps:get(<<"platformId">>, QueryMap, undefined)},
+        {<<"requestedBy">>, maps:get(<<"requestedBy">>, QueryMap, undefined)},
+        {<<"signatureExpiresAfter">>, maps:get(<<"signatureExpiresAfter">>, QueryMap, undefined)},
+        {<<"signatureExpiresBefore">>, maps:get(<<"signatureExpiresBefore">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -214,11 +247,16 @@ list_signing_jobs(Client, IsRevoked, JobInvoker, MaxResults, NextToken, Platform
 %% `maxResults' parameter and with new values that code signing returns in
 %% the `nextToken' parameter until all of your signing jobs have been
 %% returned.
-list_signing_platforms(Client, Category, MaxResults, NextToken, Partner, Target)
+list_signing_platforms(Client)
   when is_map(Client) ->
-    list_signing_platforms(Client, Category, MaxResults, NextToken, Partner, Target, []).
-list_signing_platforms(Client, Category, MaxResults, NextToken, Partner, Target, Options)
-  when is_map(Client), is_list(Options) ->
+    list_signing_platforms(Client, #{}, #{}).
+
+list_signing_platforms(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_signing_platforms(Client, QueryMap, HeadersMap, []).
+
+list_signing_platforms(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/signing-platforms"],
     SuccessStatusCode = undefined,
 
@@ -226,11 +264,11 @@ list_signing_platforms(Client, Category, MaxResults, NextToken, Partner, Target,
 
     Query0_ =
       [
-        {<<"category">>, Category},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"partner">>, Partner},
-        {<<"target">>, Target}
+        {<<"category">>, maps:get(<<"category">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"partner">>, maps:get(<<"partner">>, QueryMap, undefined)},
+        {<<"target">>, maps:get(<<"target">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -245,11 +283,16 @@ list_signing_platforms(Client, Category, MaxResults, NextToken, Partner, Target,
 %% calling `ListSigningJobs' with your `maxResults' parameter and with new
 %% values that code signing returns in the `nextToken' parameter until all of
 %% your signing jobs have been returned.
-list_signing_profiles(Client, IncludeCanceled, MaxResults, NextToken, PlatformId, Statuses)
+list_signing_profiles(Client)
   when is_map(Client) ->
-    list_signing_profiles(Client, IncludeCanceled, MaxResults, NextToken, PlatformId, Statuses, []).
-list_signing_profiles(Client, IncludeCanceled, MaxResults, NextToken, PlatformId, Statuses, Options)
-  when is_map(Client), is_list(Options) ->
+    list_signing_profiles(Client, #{}, #{}).
+
+list_signing_profiles(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_signing_profiles(Client, QueryMap, HeadersMap, []).
+
+list_signing_profiles(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/signing-profiles"],
     SuccessStatusCode = undefined,
 
@@ -257,11 +300,11 @@ list_signing_profiles(Client, IncludeCanceled, MaxResults, NextToken, PlatformId
 
     Query0_ =
       [
-        {<<"includeCanceled">>, IncludeCanceled},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"platformId">>, PlatformId},
-        {<<"statuses">>, Statuses}
+        {<<"includeCanceled">>, maps:get(<<"includeCanceled">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"platformId">>, maps:get(<<"platformId">>, QueryMap, undefined)},
+        {<<"statuses">>, maps:get(<<"statuses">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -271,9 +314,14 @@ list_signing_profiles(Client, IncludeCanceled, MaxResults, NextToken, PlatformId
 %% resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 

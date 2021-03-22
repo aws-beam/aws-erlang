@@ -23,8 +23,9 @@
 
 -export([delete_record/3,
          delete_record/4,
-         get_record/4,
+         get_record/3,
          get_record/5,
+         get_record/6,
          put_record/3,
          put_record/4]).
 
@@ -61,11 +62,16 @@ delete_record(Client, FeatureGroupName, Input0, Options) ->
 %% Only the latest records stored in the `OnlineStore' can be retrieved. If
 %% no Record with `RecordIdentifierValue' is found, then an empty result is
 %% returned.
-get_record(Client, FeatureGroupName, FeatureNames, RecordIdentifierValueAsString)
+get_record(Client, FeatureGroupName, RecordIdentifierValueAsString)
   when is_map(Client) ->
-    get_record(Client, FeatureGroupName, FeatureNames, RecordIdentifierValueAsString, []).
-get_record(Client, FeatureGroupName, FeatureNames, RecordIdentifierValueAsString, Options)
-  when is_map(Client), is_list(Options) ->
+    get_record(Client, FeatureGroupName, RecordIdentifierValueAsString, #{}, #{}).
+
+get_record(Client, FeatureGroupName, RecordIdentifierValueAsString, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_record(Client, FeatureGroupName, RecordIdentifierValueAsString, QueryMap, HeadersMap, []).
+
+get_record(Client, FeatureGroupName, RecordIdentifierValueAsString, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/FeatureGroup/", aws_util:encode_uri(FeatureGroupName), ""],
     SuccessStatusCode = undefined,
 
@@ -73,7 +79,7 @@ get_record(Client, FeatureGroupName, FeatureNames, RecordIdentifierValueAsString
 
     Query0_ =
       [
-        {<<"FeatureName">>, FeatureNames},
+        {<<"FeatureName">>, maps:get(<<"FeatureName">>, QueryMap, undefined)},
         {<<"RecordIdentifierValueAsString">>, RecordIdentifierValueAsString}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],

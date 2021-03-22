@@ -20,36 +20,49 @@
          delete_schema/5,
          delete_schema_version/5,
          delete_schema_version/6,
-         describe_code_binding/5,
+         describe_code_binding/4,
          describe_code_binding/6,
+         describe_code_binding/7,
          describe_discoverer/2,
-         describe_discoverer/3,
+         describe_discoverer/4,
+         describe_discoverer/5,
          describe_registry/2,
-         describe_registry/3,
-         describe_schema/4,
+         describe_registry/4,
+         describe_registry/5,
+         describe_schema/3,
          describe_schema/5,
-         export_schema/5,
+         describe_schema/6,
+         export_schema/4,
          export_schema/6,
-         get_code_binding_source/5,
+         export_schema/7,
+         get_code_binding_source/4,
          get_code_binding_source/6,
+         get_code_binding_source/7,
          get_discovered_schema/2,
          get_discovered_schema/3,
-         get_resource_policy/2,
+         get_resource_policy/1,
          get_resource_policy/3,
-         list_discoverers/5,
-         list_discoverers/6,
-         list_registries/5,
-         list_registries/6,
+         get_resource_policy/4,
+         list_discoverers/1,
+         list_discoverers/3,
+         list_discoverers/4,
+         list_registries/1,
+         list_registries/3,
+         list_registries/4,
+         list_schema_versions/3,
          list_schema_versions/5,
          list_schema_versions/6,
+         list_schemas/2,
+         list_schemas/4,
          list_schemas/5,
-         list_schemas/6,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          put_code_binding/5,
          put_code_binding/6,
          put_resource_policy/2,
          put_resource_policy/3,
+         search_schemas/3,
          search_schemas/5,
          search_schemas/6,
          start_discoverer/3,
@@ -205,11 +218,16 @@ delete_schema_version(Client, RegistryName, SchemaName, SchemaVersion, Input0, O
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describe the code binding URI.
-describe_code_binding(Client, Language, RegistryName, SchemaName, SchemaVersion)
+describe_code_binding(Client, Language, RegistryName, SchemaName)
   when is_map(Client) ->
-    describe_code_binding(Client, Language, RegistryName, SchemaName, SchemaVersion, []).
-describe_code_binding(Client, Language, RegistryName, SchemaName, SchemaVersion, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_code_binding(Client, Language, RegistryName, SchemaName, #{}, #{}).
+
+describe_code_binding(Client, Language, RegistryName, SchemaName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_code_binding(Client, Language, RegistryName, SchemaName, QueryMap, HeadersMap, []).
+
+describe_code_binding(Client, Language, RegistryName, SchemaName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas/name/", aws_util:encode_uri(SchemaName), "/language/", aws_util:encode_uri(Language), ""],
     SuccessStatusCode = 200,
 
@@ -217,7 +235,7 @@ describe_code_binding(Client, Language, RegistryName, SchemaName, SchemaVersion,
 
     Query0_ =
       [
-        {<<"schemaVersion">>, SchemaVersion}
+        {<<"schemaVersion">>, maps:get(<<"schemaVersion">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -226,9 +244,14 @@ describe_code_binding(Client, Language, RegistryName, SchemaName, SchemaVersion,
 %% @doc Describes the discoverer.
 describe_discoverer(Client, DiscovererId)
   when is_map(Client) ->
-    describe_discoverer(Client, DiscovererId, []).
-describe_discoverer(Client, DiscovererId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_discoverer(Client, DiscovererId, #{}, #{}).
+
+describe_discoverer(Client, DiscovererId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_discoverer(Client, DiscovererId, QueryMap, HeadersMap, []).
+
+describe_discoverer(Client, DiscovererId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/discoverers/id/", aws_util:encode_uri(DiscovererId), ""],
     SuccessStatusCode = 200,
 
@@ -241,9 +264,14 @@ describe_discoverer(Client, DiscovererId, Options)
 %% @doc Describes the registry.
 describe_registry(Client, RegistryName)
   when is_map(Client) ->
-    describe_registry(Client, RegistryName, []).
-describe_registry(Client, RegistryName, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_registry(Client, RegistryName, #{}, #{}).
+
+describe_registry(Client, RegistryName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_registry(Client, RegistryName, QueryMap, HeadersMap, []).
+
+describe_registry(Client, RegistryName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), ""],
     SuccessStatusCode = 200,
 
@@ -254,11 +282,16 @@ describe_registry(Client, RegistryName, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieve the schema definition.
-describe_schema(Client, RegistryName, SchemaName, SchemaVersion)
+describe_schema(Client, RegistryName, SchemaName)
   when is_map(Client) ->
-    describe_schema(Client, RegistryName, SchemaName, SchemaVersion, []).
-describe_schema(Client, RegistryName, SchemaName, SchemaVersion, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_schema(Client, RegistryName, SchemaName, #{}, #{}).
+
+describe_schema(Client, RegistryName, SchemaName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_schema(Client, RegistryName, SchemaName, QueryMap, HeadersMap, []).
+
+describe_schema(Client, RegistryName, SchemaName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas/name/", aws_util:encode_uri(SchemaName), ""],
     SuccessStatusCode = 200,
 
@@ -266,18 +299,23 @@ describe_schema(Client, RegistryName, SchemaName, SchemaVersion, Options)
 
     Query0_ =
       [
-        {<<"schemaVersion">>, SchemaVersion}
+        {<<"schemaVersion">>, maps:get(<<"schemaVersion">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Exports a schema to a different specification.
-export_schema(Client, RegistryName, SchemaName, SchemaVersion, Type)
+export_schema(Client, RegistryName, SchemaName, Type)
   when is_map(Client) ->
-    export_schema(Client, RegistryName, SchemaName, SchemaVersion, Type, []).
-export_schema(Client, RegistryName, SchemaName, SchemaVersion, Type, Options)
-  when is_map(Client), is_list(Options) ->
+    export_schema(Client, RegistryName, SchemaName, Type, #{}, #{}).
+
+export_schema(Client, RegistryName, SchemaName, Type, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    export_schema(Client, RegistryName, SchemaName, Type, QueryMap, HeadersMap, []).
+
+export_schema(Client, RegistryName, SchemaName, Type, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas/name/", aws_util:encode_uri(SchemaName), "/export"],
     SuccessStatusCode = 200,
 
@@ -285,7 +323,7 @@ export_schema(Client, RegistryName, SchemaName, SchemaVersion, Type, Options)
 
     Query0_ =
       [
-        {<<"schemaVersion">>, SchemaVersion},
+        {<<"schemaVersion">>, maps:get(<<"schemaVersion">>, QueryMap, undefined)},
         {<<"type">>, Type}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
@@ -293,11 +331,16 @@ export_schema(Client, RegistryName, SchemaName, SchemaVersion, Type, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get the code binding source URI.
-get_code_binding_source(Client, Language, RegistryName, SchemaName, SchemaVersion)
+get_code_binding_source(Client, Language, RegistryName, SchemaName)
   when is_map(Client) ->
-    get_code_binding_source(Client, Language, RegistryName, SchemaName, SchemaVersion, []).
-get_code_binding_source(Client, Language, RegistryName, SchemaName, SchemaVersion, Options)
-  when is_map(Client), is_list(Options) ->
+    get_code_binding_source(Client, Language, RegistryName, SchemaName, #{}, #{}).
+
+get_code_binding_source(Client, Language, RegistryName, SchemaName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_code_binding_source(Client, Language, RegistryName, SchemaName, QueryMap, HeadersMap, []).
+
+get_code_binding_source(Client, Language, RegistryName, SchemaName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas/name/", aws_util:encode_uri(SchemaName), "/language/", aws_util:encode_uri(Language), "/source"],
     SuccessStatusCode = 200,
 
@@ -305,7 +348,7 @@ get_code_binding_source(Client, Language, RegistryName, SchemaName, SchemaVersio
 
     Query0_ =
       [
-        {<<"schemaVersion">>, SchemaVersion}
+        {<<"schemaVersion">>, maps:get(<<"schemaVersion">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -328,11 +371,16 @@ get_discovered_schema(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the resource-based policy attached to a given registry.
-get_resource_policy(Client, RegistryName)
+get_resource_policy(Client)
   when is_map(Client) ->
-    get_resource_policy(Client, RegistryName, []).
-get_resource_policy(Client, RegistryName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_resource_policy(Client, #{}, #{}).
+
+get_resource_policy(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_resource_policy(Client, QueryMap, HeadersMap, []).
+
+get_resource_policy(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/policy"],
     SuccessStatusCode = 200,
 
@@ -340,18 +388,23 @@ get_resource_policy(Client, RegistryName, Options)
 
     Query0_ =
       [
-        {<<"registryName">>, RegistryName}
+        {<<"registryName">>, maps:get(<<"registryName">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the discoverers.
-list_discoverers(Client, DiscovererIdPrefix, Limit, NextToken, SourceArnPrefix)
+list_discoverers(Client)
   when is_map(Client) ->
-    list_discoverers(Client, DiscovererIdPrefix, Limit, NextToken, SourceArnPrefix, []).
-list_discoverers(Client, DiscovererIdPrefix, Limit, NextToken, SourceArnPrefix, Options)
-  when is_map(Client), is_list(Options) ->
+    list_discoverers(Client, #{}, #{}).
+
+list_discoverers(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_discoverers(Client, QueryMap, HeadersMap, []).
+
+list_discoverers(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/discoverers"],
     SuccessStatusCode = 200,
 
@@ -359,21 +412,26 @@ list_discoverers(Client, DiscovererIdPrefix, Limit, NextToken, SourceArnPrefix, 
 
     Query0_ =
       [
-        {<<"discovererIdPrefix">>, DiscovererIdPrefix},
-        {<<"limit">>, Limit},
-        {<<"nextToken">>, NextToken},
-        {<<"sourceArnPrefix">>, SourceArnPrefix}
+        {<<"discovererIdPrefix">>, maps:get(<<"discovererIdPrefix">>, QueryMap, undefined)},
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"sourceArnPrefix">>, maps:get(<<"sourceArnPrefix">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the registries.
-list_registries(Client, Limit, NextToken, RegistryNamePrefix, Scope)
+list_registries(Client)
   when is_map(Client) ->
-    list_registries(Client, Limit, NextToken, RegistryNamePrefix, Scope, []).
-list_registries(Client, Limit, NextToken, RegistryNamePrefix, Scope, Options)
-  when is_map(Client), is_list(Options) ->
+    list_registries(Client, #{}, #{}).
+
+list_registries(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_registries(Client, QueryMap, HeadersMap, []).
+
+list_registries(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/registries"],
     SuccessStatusCode = 200,
 
@@ -381,21 +439,26 @@ list_registries(Client, Limit, NextToken, RegistryNamePrefix, Scope, Options)
 
     Query0_ =
       [
-        {<<"limit">>, Limit},
-        {<<"nextToken">>, NextToken},
-        {<<"registryNamePrefix">>, RegistryNamePrefix},
-        {<<"scope">>, Scope}
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"registryNamePrefix">>, maps:get(<<"registryNamePrefix">>, QueryMap, undefined)},
+        {<<"scope">>, maps:get(<<"scope">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides a list of the schema versions and related information.
-list_schema_versions(Client, RegistryName, SchemaName, Limit, NextToken)
+list_schema_versions(Client, RegistryName, SchemaName)
   when is_map(Client) ->
-    list_schema_versions(Client, RegistryName, SchemaName, Limit, NextToken, []).
-list_schema_versions(Client, RegistryName, SchemaName, Limit, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_schema_versions(Client, RegistryName, SchemaName, #{}, #{}).
+
+list_schema_versions(Client, RegistryName, SchemaName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_schema_versions(Client, RegistryName, SchemaName, QueryMap, HeadersMap, []).
+
+list_schema_versions(Client, RegistryName, SchemaName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas/name/", aws_util:encode_uri(SchemaName), "/versions"],
     SuccessStatusCode = 200,
 
@@ -403,19 +466,24 @@ list_schema_versions(Client, RegistryName, SchemaName, Limit, NextToken, Options
 
     Query0_ =
       [
-        {<<"limit">>, Limit},
-        {<<"nextToken">>, NextToken}
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the schemas.
-list_schemas(Client, RegistryName, Limit, NextToken, SchemaNamePrefix)
+list_schemas(Client, RegistryName)
   when is_map(Client) ->
-    list_schemas(Client, RegistryName, Limit, NextToken, SchemaNamePrefix, []).
-list_schemas(Client, RegistryName, Limit, NextToken, SchemaNamePrefix, Options)
-  when is_map(Client), is_list(Options) ->
+    list_schemas(Client, RegistryName, #{}, #{}).
+
+list_schemas(Client, RegistryName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_schemas(Client, RegistryName, QueryMap, HeadersMap, []).
+
+list_schemas(Client, RegistryName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas"],
     SuccessStatusCode = 200,
 
@@ -423,9 +491,9 @@ list_schemas(Client, RegistryName, Limit, NextToken, SchemaNamePrefix, Options)
 
     Query0_ =
       [
-        {<<"limit">>, Limit},
-        {<<"nextToken">>, NextToken},
-        {<<"schemaNamePrefix">>, SchemaNamePrefix}
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"schemaNamePrefix">>, maps:get(<<"schemaNamePrefix">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -434,9 +502,14 @@ list_schemas(Client, RegistryName, Limit, NextToken, SchemaNamePrefix, Options)
 %% @doc Get tags for resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 
@@ -481,11 +554,16 @@ put_resource_policy(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Search the schemas
-search_schemas(Client, RegistryName, Keywords, Limit, NextToken)
+search_schemas(Client, RegistryName, Keywords)
   when is_map(Client) ->
-    search_schemas(Client, RegistryName, Keywords, Limit, NextToken, []).
-search_schemas(Client, RegistryName, Keywords, Limit, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    search_schemas(Client, RegistryName, Keywords, #{}, #{}).
+
+search_schemas(Client, RegistryName, Keywords, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    search_schemas(Client, RegistryName, Keywords, QueryMap, HeadersMap, []).
+
+search_schemas(Client, RegistryName, Keywords, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas/search"],
     SuccessStatusCode = 200,
 
@@ -494,8 +572,8 @@ search_schemas(Client, RegistryName, Keywords, Limit, NextToken, Options)
     Query0_ =
       [
         {<<"keywords">>, Keywords},
-        {<<"limit">>, Limit},
-        {<<"nextToken">>, NextToken}
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

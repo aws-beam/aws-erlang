@@ -11,11 +11,14 @@
          delete_ledger/3,
          delete_ledger/4,
          describe_journal_kinesis_stream/3,
-         describe_journal_kinesis_stream/4,
+         describe_journal_kinesis_stream/5,
+         describe_journal_kinesis_stream/6,
          describe_journal_s3_export/3,
-         describe_journal_s3_export/4,
+         describe_journal_s3_export/5,
+         describe_journal_s3_export/6,
          describe_ledger/2,
-         describe_ledger/3,
+         describe_ledger/4,
+         describe_ledger/5,
          export_journal_to_s3/3,
          export_journal_to_s3/4,
          get_block/3,
@@ -24,16 +27,21 @@
          get_digest/4,
          get_revision/3,
          get_revision/4,
+         list_journal_kinesis_streams_for_ledger/2,
          list_journal_kinesis_streams_for_ledger/4,
          list_journal_kinesis_streams_for_ledger/5,
+         list_journal_s3_exports/1,
          list_journal_s3_exports/3,
          list_journal_s3_exports/4,
+         list_journal_s3_exports_for_ledger/2,
          list_journal_s3_exports_for_ledger/4,
          list_journal_s3_exports_for_ledger/5,
+         list_ledgers/1,
          list_ledgers/3,
          list_ledgers/4,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          stream_journal_to_kinesis/3,
          stream_journal_to_kinesis/4,
          tag_resource/3,
@@ -119,9 +127,14 @@ delete_ledger(Client, Name, Input0, Options) ->
 %% request.
 describe_journal_kinesis_stream(Client, LedgerName, StreamId)
   when is_map(Client) ->
-    describe_journal_kinesis_stream(Client, LedgerName, StreamId, []).
-describe_journal_kinesis_stream(Client, LedgerName, StreamId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_journal_kinesis_stream(Client, LedgerName, StreamId, #{}, #{}).
+
+describe_journal_kinesis_stream(Client, LedgerName, StreamId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_journal_kinesis_stream(Client, LedgerName, StreamId, QueryMap, HeadersMap, []).
+
+describe_journal_kinesis_stream(Client, LedgerName, StreamId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/ledgers/", aws_util:encode_uri(LedgerName), "/journal-kinesis-streams/", aws_util:encode_uri(StreamId), ""],
     SuccessStatusCode = undefined,
 
@@ -145,9 +158,14 @@ describe_journal_kinesis_stream(Client, LedgerName, StreamId, Options)
 %% `ResourceNotFoundException'.
 describe_journal_s3_export(Client, ExportId, Name)
   when is_map(Client) ->
-    describe_journal_s3_export(Client, ExportId, Name, []).
-describe_journal_s3_export(Client, ExportId, Name, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_journal_s3_export(Client, ExportId, Name, #{}, #{}).
+
+describe_journal_s3_export(Client, ExportId, Name, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_journal_s3_export(Client, ExportId, Name, QueryMap, HeadersMap, []).
+
+describe_journal_s3_export(Client, ExportId, Name, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/ledgers/", aws_util:encode_uri(Name), "/journal-s3-exports/", aws_util:encode_uri(ExportId), ""],
     SuccessStatusCode = undefined,
 
@@ -161,9 +179,14 @@ describe_journal_s3_export(Client, ExportId, Name, Options)
 %% was created.
 describe_ledger(Client, Name)
   when is_map(Client) ->
-    describe_ledger(Client, Name, []).
-describe_ledger(Client, Name, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_ledger(Client, Name, #{}, #{}).
+
+describe_ledger(Client, Name, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_ledger(Client, Name, QueryMap, HeadersMap, []).
+
+describe_ledger(Client, Name, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/ledgers/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
 
@@ -281,11 +304,16 @@ get_revision(Client, Name, Input0, Options) ->
 %% This action returns a maximum of `MaxResults' items. It is paginated so
 %% that you can retrieve all the items by calling
 %% `ListJournalKinesisStreamsForLedger' multiple times.
-list_journal_kinesis_streams_for_ledger(Client, LedgerName, MaxResults, NextToken)
+list_journal_kinesis_streams_for_ledger(Client, LedgerName)
   when is_map(Client) ->
-    list_journal_kinesis_streams_for_ledger(Client, LedgerName, MaxResults, NextToken, []).
-list_journal_kinesis_streams_for_ledger(Client, LedgerName, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_journal_kinesis_streams_for_ledger(Client, LedgerName, #{}, #{}).
+
+list_journal_kinesis_streams_for_ledger(Client, LedgerName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_journal_kinesis_streams_for_ledger(Client, LedgerName, QueryMap, HeadersMap, []).
+
+list_journal_kinesis_streams_for_ledger(Client, LedgerName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/ledgers/", aws_util:encode_uri(LedgerName), "/journal-kinesis-streams"],
     SuccessStatusCode = undefined,
 
@@ -293,8 +321,8 @@ list_journal_kinesis_streams_for_ledger(Client, LedgerName, MaxResults, NextToke
 
     Query0_ =
       [
-        {<<"max_results">>, MaxResults},
-        {<<"next_token">>, NextToken}
+        {<<"max_results">>, maps:get(<<"max_results">>, QueryMap, undefined)},
+        {<<"next_token">>, maps:get(<<"next_token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -309,11 +337,16 @@ list_journal_kinesis_streams_for_ledger(Client, LedgerName, MaxResults, NextToke
 %%
 %% This action does not return any expired export jobs. For more information,
 %% see Export Job Expiration in the Amazon QLDB Developer Guide.
-list_journal_s3_exports(Client, MaxResults, NextToken)
+list_journal_s3_exports(Client)
   when is_map(Client) ->
-    list_journal_s3_exports(Client, MaxResults, NextToken, []).
-list_journal_s3_exports(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_journal_s3_exports(Client, #{}, #{}).
+
+list_journal_s3_exports(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_journal_s3_exports(Client, QueryMap, HeadersMap, []).
+
+list_journal_s3_exports(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/journal-s3-exports"],
     SuccessStatusCode = undefined,
 
@@ -321,8 +354,8 @@ list_journal_s3_exports(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"max_results">>, MaxResults},
-        {<<"next_token">>, NextToken}
+        {<<"max_results">>, maps:get(<<"max_results">>, QueryMap, undefined)},
+        {<<"next_token">>, maps:get(<<"next_token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -337,11 +370,16 @@ list_journal_s3_exports(Client, MaxResults, NextToken, Options)
 %%
 %% This action does not return any expired export jobs. For more information,
 %% see Export Job Expiration in the Amazon QLDB Developer Guide.
-list_journal_s3_exports_for_ledger(Client, Name, MaxResults, NextToken)
+list_journal_s3_exports_for_ledger(Client, Name)
   when is_map(Client) ->
-    list_journal_s3_exports_for_ledger(Client, Name, MaxResults, NextToken, []).
-list_journal_s3_exports_for_ledger(Client, Name, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_journal_s3_exports_for_ledger(Client, Name, #{}, #{}).
+
+list_journal_s3_exports_for_ledger(Client, Name, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_journal_s3_exports_for_ledger(Client, Name, QueryMap, HeadersMap, []).
+
+list_journal_s3_exports_for_ledger(Client, Name, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/ledgers/", aws_util:encode_uri(Name), "/journal-s3-exports"],
     SuccessStatusCode = undefined,
 
@@ -349,8 +387,8 @@ list_journal_s3_exports_for_ledger(Client, Name, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"max_results">>, MaxResults},
-        {<<"next_token">>, NextToken}
+        {<<"max_results">>, maps:get(<<"max_results">>, QueryMap, undefined)},
+        {<<"next_token">>, maps:get(<<"next_token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -361,11 +399,16 @@ list_journal_s3_exports_for_ledger(Client, Name, MaxResults, NextToken, Options)
 %%
 %% This action returns a maximum of 100 items and is paginated so that you
 %% can retrieve all the items by calling `ListLedgers' multiple times.
-list_ledgers(Client, MaxResults, NextToken)
+list_ledgers(Client)
   when is_map(Client) ->
-    list_ledgers(Client, MaxResults, NextToken, []).
-list_ledgers(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_ledgers(Client, #{}, #{}).
+
+list_ledgers(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_ledgers(Client, QueryMap, HeadersMap, []).
+
+list_ledgers(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/ledgers"],
     SuccessStatusCode = undefined,
 
@@ -373,8 +416,8 @@ list_ledgers(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"max_results">>, MaxResults},
-        {<<"next_token">>, NextToken}
+        {<<"max_results">>, maps:get(<<"max_results">>, QueryMap, undefined)},
+        {<<"next_token">>, maps:get(<<"next_token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -383,9 +426,14 @@ list_ledgers(Client, MaxResults, NextToken, Options)
 %% @doc Returns all tags for a specified Amazon QLDB resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 

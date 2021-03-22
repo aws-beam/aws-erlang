@@ -35,9 +35,11 @@
          get_backend_auth/4,
          get_backend_auth/5,
          get_backend_job/4,
-         get_backend_job/5,
+         get_backend_job/6,
+         get_backend_job/7,
          get_token/3,
-         get_token/4,
+         get_token/5,
+         get_token/6,
          list_backend_jobs/4,
          list_backend_jobs/5,
          remove_all_backends/3,
@@ -305,9 +307,14 @@ get_backend_auth(Client, AppId, BackendEnvironmentName, Input0, Options) ->
 %% @doc Returns information about a specific job.
 get_backend_job(Client, AppId, BackendEnvironmentName, JobId)
   when is_map(Client) ->
-    get_backend_job(Client, AppId, BackendEnvironmentName, JobId, []).
-get_backend_job(Client, AppId, BackendEnvironmentName, JobId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_backend_job(Client, AppId, BackendEnvironmentName, JobId, #{}, #{}).
+
+get_backend_job(Client, AppId, BackendEnvironmentName, JobId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_backend_job(Client, AppId, BackendEnvironmentName, JobId, QueryMap, HeadersMap, []).
+
+get_backend_job(Client, AppId, BackendEnvironmentName, JobId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/backend/", aws_util:encode_uri(AppId), "/job/", aws_util:encode_uri(BackendEnvironmentName), "/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = 200,
 
@@ -320,9 +327,14 @@ get_backend_job(Client, AppId, BackendEnvironmentName, JobId, Options)
 %% @doc Gets the challenge token based on the given appId and sessionId.
 get_token(Client, AppId, SessionId)
   when is_map(Client) ->
-    get_token(Client, AppId, SessionId, []).
-get_token(Client, AppId, SessionId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_token(Client, AppId, SessionId, #{}, #{}).
+
+get_token(Client, AppId, SessionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_token(Client, AppId, SessionId, QueryMap, HeadersMap, []).
+
+get_token(Client, AppId, SessionId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/backend/", aws_util:encode_uri(AppId), "/challenge/", aws_util:encode_uri(SessionId), ""],
     SuccessStatusCode = 200,
 

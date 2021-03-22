@@ -90,95 +90,141 @@
          generate_client_certificate/2,
          generate_client_certificate/3,
          get_account/1,
-         get_account/2,
-         get_api_key/3,
+         get_account/3,
+         get_account/4,
+         get_api_key/2,
          get_api_key/4,
-         get_api_keys/6,
-         get_api_keys/7,
+         get_api_key/5,
+         get_api_keys/1,
+         get_api_keys/3,
+         get_api_keys/4,
          get_authorizer/3,
-         get_authorizer/4,
+         get_authorizer/5,
+         get_authorizer/6,
+         get_authorizers/2,
          get_authorizers/4,
          get_authorizers/5,
          get_base_path_mapping/3,
-         get_base_path_mapping/4,
+         get_base_path_mapping/5,
+         get_base_path_mapping/6,
+         get_base_path_mappings/2,
          get_base_path_mappings/4,
          get_base_path_mappings/5,
          get_client_certificate/2,
-         get_client_certificate/3,
+         get_client_certificate/4,
+         get_client_certificate/5,
+         get_client_certificates/1,
          get_client_certificates/3,
          get_client_certificates/4,
-         get_deployment/4,
+         get_deployment/3,
          get_deployment/5,
+         get_deployment/6,
+         get_deployments/2,
          get_deployments/4,
          get_deployments/5,
          get_documentation_part/3,
-         get_documentation_part/4,
-         get_documentation_parts/8,
-         get_documentation_parts/9,
+         get_documentation_part/5,
+         get_documentation_part/6,
+         get_documentation_parts/2,
+         get_documentation_parts/4,
+         get_documentation_parts/5,
          get_documentation_version/3,
-         get_documentation_version/4,
+         get_documentation_version/5,
+         get_documentation_version/6,
+         get_documentation_versions/2,
          get_documentation_versions/4,
          get_documentation_versions/5,
          get_domain_name/2,
-         get_domain_name/3,
+         get_domain_name/4,
+         get_domain_name/5,
+         get_domain_names/1,
          get_domain_names/3,
          get_domain_names/4,
+         get_export/4,
          get_export/6,
          get_export/7,
          get_gateway_response/3,
-         get_gateway_response/4,
+         get_gateway_response/5,
+         get_gateway_response/6,
+         get_gateway_responses/2,
          get_gateway_responses/4,
          get_gateway_responses/5,
          get_integration/4,
-         get_integration/5,
+         get_integration/6,
+         get_integration/7,
          get_integration_response/5,
-         get_integration_response/6,
+         get_integration_response/7,
+         get_integration_response/8,
          get_method/4,
-         get_method/5,
+         get_method/6,
+         get_method/7,
          get_method_response/5,
-         get_method_response/6,
-         get_model/4,
+         get_method_response/7,
+         get_method_response/8,
+         get_model/3,
          get_model/5,
+         get_model/6,
          get_model_template/3,
-         get_model_template/4,
+         get_model_template/5,
+         get_model_template/6,
+         get_models/2,
          get_models/4,
          get_models/5,
          get_request_validator/3,
-         get_request_validator/4,
+         get_request_validator/5,
+         get_request_validator/6,
+         get_request_validators/2,
          get_request_validators/4,
          get_request_validators/5,
-         get_resource/4,
+         get_resource/3,
          get_resource/5,
+         get_resource/6,
+         get_resources/2,
+         get_resources/4,
          get_resources/5,
-         get_resources/6,
          get_rest_api/2,
-         get_rest_api/3,
+         get_rest_api/4,
+         get_rest_api/5,
+         get_rest_apis/1,
          get_rest_apis/3,
          get_rest_apis/4,
-         get_sdk/5,
+         get_sdk/4,
          get_sdk/6,
+         get_sdk/7,
          get_sdk_type/2,
-         get_sdk_type/3,
+         get_sdk_type/4,
+         get_sdk_type/5,
+         get_sdk_types/1,
          get_sdk_types/3,
          get_sdk_types/4,
          get_stage/3,
-         get_stage/4,
-         get_stages/3,
+         get_stage/5,
+         get_stage/6,
+         get_stages/2,
          get_stages/4,
+         get_stages/5,
+         get_tags/2,
          get_tags/4,
          get_tags/5,
+         get_usage/4,
+         get_usage/6,
          get_usage/7,
-         get_usage/8,
          get_usage_plan/2,
-         get_usage_plan/3,
+         get_usage_plan/4,
+         get_usage_plan/5,
          get_usage_plan_key/3,
-         get_usage_plan_key/4,
+         get_usage_plan_key/5,
+         get_usage_plan_key/6,
+         get_usage_plan_keys/2,
+         get_usage_plan_keys/4,
          get_usage_plan_keys/5,
-         get_usage_plan_keys/6,
+         get_usage_plans/1,
+         get_usage_plans/3,
          get_usage_plans/4,
-         get_usage_plans/5,
          get_vpc_link/2,
-         get_vpc_link/3,
+         get_vpc_link/4,
+         get_vpc_link/5,
+         get_vpc_links/1,
          get_vpc_links/3,
          get_vpc_links/4,
          import_api_keys/2,
@@ -906,9 +952,14 @@ generate_client_certificate(Client, Input0, Options) ->
 %% @doc Gets information about the current `Account' resource.
 get_account(Client)
   when is_map(Client) ->
-    get_account(Client, []).
-get_account(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    get_account(Client, #{}, #{}).
+
+get_account(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_account(Client, QueryMap, HeadersMap, []).
+
+get_account(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/account"],
     SuccessStatusCode = undefined,
 
@@ -919,11 +970,16 @@ get_account(Client, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about the current `ApiKey' resource.
-get_api_key(Client, ApiKey, IncludeValue)
+get_api_key(Client, ApiKey)
   when is_map(Client) ->
-    get_api_key(Client, ApiKey, IncludeValue, []).
-get_api_key(Client, ApiKey, IncludeValue, Options)
-  when is_map(Client), is_list(Options) ->
+    get_api_key(Client, ApiKey, #{}, #{}).
+
+get_api_key(Client, ApiKey, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_api_key(Client, ApiKey, QueryMap, HeadersMap, []).
+
+get_api_key(Client, ApiKey, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/apikeys/", aws_util:encode_uri(ApiKey), ""],
     SuccessStatusCode = undefined,
 
@@ -931,18 +987,23 @@ get_api_key(Client, ApiKey, IncludeValue, Options)
 
     Query0_ =
       [
-        {<<"includeValue">>, IncludeValue}
+        {<<"includeValue">>, maps:get(<<"includeValue">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about the current `ApiKeys' resource.
-get_api_keys(Client, CustomerId, IncludeValues, Limit, NameQuery, Position)
+get_api_keys(Client)
   when is_map(Client) ->
-    get_api_keys(Client, CustomerId, IncludeValues, Limit, NameQuery, Position, []).
-get_api_keys(Client, CustomerId, IncludeValues, Limit, NameQuery, Position, Options)
-  when is_map(Client), is_list(Options) ->
+    get_api_keys(Client, #{}, #{}).
+
+get_api_keys(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_api_keys(Client, QueryMap, HeadersMap, []).
+
+get_api_keys(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/apikeys"],
     SuccessStatusCode = undefined,
 
@@ -950,11 +1011,11 @@ get_api_keys(Client, CustomerId, IncludeValues, Limit, NameQuery, Position, Opti
 
     Query0_ =
       [
-        {<<"customerId">>, CustomerId},
-        {<<"includeValues">>, IncludeValues},
-        {<<"limit">>, Limit},
-        {<<"name">>, NameQuery},
-        {<<"position">>, Position}
+        {<<"customerId">>, maps:get(<<"customerId">>, QueryMap, undefined)},
+        {<<"includeValues">>, maps:get(<<"includeValues">>, QueryMap, undefined)},
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"name">>, maps:get(<<"name">>, QueryMap, undefined)},
+        {<<"position">>, maps:get(<<"position">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -965,9 +1026,14 @@ get_api_keys(Client, CustomerId, IncludeValues, Limit, NameQuery, Position, Opti
 %% See also: AWS CLI
 get_authorizer(Client, AuthorizerId, RestApiId)
   when is_map(Client) ->
-    get_authorizer(Client, AuthorizerId, RestApiId, []).
-get_authorizer(Client, AuthorizerId, RestApiId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_authorizer(Client, AuthorizerId, RestApiId, #{}, #{}).
+
+get_authorizer(Client, AuthorizerId, RestApiId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_authorizer(Client, AuthorizerId, RestApiId, QueryMap, HeadersMap, []).
+
+get_authorizer(Client, AuthorizerId, RestApiId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/authorizers/", aws_util:encode_uri(AuthorizerId), ""],
     SuccessStatusCode = undefined,
 
@@ -980,11 +1046,16 @@ get_authorizer(Client, AuthorizerId, RestApiId, Options)
 %% @doc Describe an existing `Authorizers' resource.
 %%
 %% See also: AWS CLI
-get_authorizers(Client, RestApiId, Limit, Position)
+get_authorizers(Client, RestApiId)
   when is_map(Client) ->
-    get_authorizers(Client, RestApiId, Limit, Position, []).
-get_authorizers(Client, RestApiId, Limit, Position, Options)
-  when is_map(Client), is_list(Options) ->
+    get_authorizers(Client, RestApiId, #{}, #{}).
+
+get_authorizers(Client, RestApiId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_authorizers(Client, RestApiId, QueryMap, HeadersMap, []).
+
+get_authorizers(Client, RestApiId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/authorizers"],
     SuccessStatusCode = undefined,
 
@@ -992,8 +1063,8 @@ get_authorizers(Client, RestApiId, Limit, Position, Options)
 
     Query0_ =
       [
-        {<<"limit">>, Limit},
-        {<<"position">>, Position}
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"position">>, maps:get(<<"position">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1002,9 +1073,14 @@ get_authorizers(Client, RestApiId, Limit, Position, Options)
 %% @doc Describe a `BasePathMapping' resource.
 get_base_path_mapping(Client, BasePath, DomainName)
   when is_map(Client) ->
-    get_base_path_mapping(Client, BasePath, DomainName, []).
-get_base_path_mapping(Client, BasePath, DomainName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_base_path_mapping(Client, BasePath, DomainName, #{}, #{}).
+
+get_base_path_mapping(Client, BasePath, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_base_path_mapping(Client, BasePath, DomainName, QueryMap, HeadersMap, []).
+
+get_base_path_mapping(Client, BasePath, DomainName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/domainnames/", aws_util:encode_uri(DomainName), "/basepathmappings/", aws_util:encode_uri(BasePath), ""],
     SuccessStatusCode = undefined,
 
@@ -1015,11 +1091,16 @@ get_base_path_mapping(Client, BasePath, DomainName, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Represents a collection of `BasePathMapping' resources.
-get_base_path_mappings(Client, DomainName, Limit, Position)
+get_base_path_mappings(Client, DomainName)
   when is_map(Client) ->
-    get_base_path_mappings(Client, DomainName, Limit, Position, []).
-get_base_path_mappings(Client, DomainName, Limit, Position, Options)
-  when is_map(Client), is_list(Options) ->
+    get_base_path_mappings(Client, DomainName, #{}, #{}).
+
+get_base_path_mappings(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_base_path_mappings(Client, DomainName, QueryMap, HeadersMap, []).
+
+get_base_path_mappings(Client, DomainName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/domainnames/", aws_util:encode_uri(DomainName), "/basepathmappings"],
     SuccessStatusCode = undefined,
 
@@ -1027,8 +1108,8 @@ get_base_path_mappings(Client, DomainName, Limit, Position, Options)
 
     Query0_ =
       [
-        {<<"limit">>, Limit},
-        {<<"position">>, Position}
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"position">>, maps:get(<<"position">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1037,9 +1118,14 @@ get_base_path_mappings(Client, DomainName, Limit, Position, Options)
 %% @doc Gets information about the current `ClientCertificate' resource.
 get_client_certificate(Client, ClientCertificateId)
   when is_map(Client) ->
-    get_client_certificate(Client, ClientCertificateId, []).
-get_client_certificate(Client, ClientCertificateId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_client_certificate(Client, ClientCertificateId, #{}, #{}).
+
+get_client_certificate(Client, ClientCertificateId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_client_certificate(Client, ClientCertificateId, QueryMap, HeadersMap, []).
+
+get_client_certificate(Client, ClientCertificateId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/clientcertificates/", aws_util:encode_uri(ClientCertificateId), ""],
     SuccessStatusCode = undefined,
 
@@ -1050,11 +1136,16 @@ get_client_certificate(Client, ClientCertificateId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a collection of `ClientCertificate' resources.
-get_client_certificates(Client, Limit, Position)
+get_client_certificates(Client)
   when is_map(Client) ->
-    get_client_certificates(Client, Limit, Position, []).
-get_client_certificates(Client, Limit, Position, Options)
-  when is_map(Client), is_list(Options) ->
+    get_client_certificates(Client, #{}, #{}).
+
+get_client_certificates(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_client_certificates(Client, QueryMap, HeadersMap, []).
+
+get_client_certificates(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/clientcertificates"],
     SuccessStatusCode = undefined,
 
@@ -1062,19 +1153,24 @@ get_client_certificates(Client, Limit, Position, Options)
 
     Query0_ =
       [
-        {<<"limit">>, Limit},
-        {<<"position">>, Position}
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"position">>, maps:get(<<"position">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a `Deployment' resource.
-get_deployment(Client, DeploymentId, RestApiId, Embed)
+get_deployment(Client, DeploymentId, RestApiId)
   when is_map(Client) ->
-    get_deployment(Client, DeploymentId, RestApiId, Embed, []).
-get_deployment(Client, DeploymentId, RestApiId, Embed, Options)
-  when is_map(Client), is_list(Options) ->
+    get_deployment(Client, DeploymentId, RestApiId, #{}, #{}).
+
+get_deployment(Client, DeploymentId, RestApiId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_deployment(Client, DeploymentId, RestApiId, QueryMap, HeadersMap, []).
+
+get_deployment(Client, DeploymentId, RestApiId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/deployments/", aws_util:encode_uri(DeploymentId), ""],
     SuccessStatusCode = undefined,
 
@@ -1082,18 +1178,23 @@ get_deployment(Client, DeploymentId, RestApiId, Embed, Options)
 
     Query0_ =
       [
-        {<<"embed">>, Embed}
+        {<<"embed">>, maps:get(<<"embed">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a `Deployments' collection.
-get_deployments(Client, RestApiId, Limit, Position)
+get_deployments(Client, RestApiId)
   when is_map(Client) ->
-    get_deployments(Client, RestApiId, Limit, Position, []).
-get_deployments(Client, RestApiId, Limit, Position, Options)
-  when is_map(Client), is_list(Options) ->
+    get_deployments(Client, RestApiId, #{}, #{}).
+
+get_deployments(Client, RestApiId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_deployments(Client, RestApiId, QueryMap, HeadersMap, []).
+
+get_deployments(Client, RestApiId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/deployments"],
     SuccessStatusCode = undefined,
 
@@ -1101,8 +1202,8 @@ get_deployments(Client, RestApiId, Limit, Position, Options)
 
     Query0_ =
       [
-        {<<"limit">>, Limit},
-        {<<"position">>, Position}
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"position">>, maps:get(<<"position">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1111,9 +1212,14 @@ get_deployments(Client, RestApiId, Limit, Position, Options)
 
 get_documentation_part(Client, DocumentationPartId, RestApiId)
   when is_map(Client) ->
-    get_documentation_part(Client, DocumentationPartId, RestApiId, []).
-get_documentation_part(Client, DocumentationPartId, RestApiId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_documentation_part(Client, DocumentationPartId, RestApiId, #{}, #{}).
+
+get_documentation_part(Client, DocumentationPartId, RestApiId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_documentation_part(Client, DocumentationPartId, RestApiId, QueryMap, HeadersMap, []).
+
+get_documentation_part(Client, DocumentationPartId, RestApiId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/documentation/parts/", aws_util:encode_uri(DocumentationPartId), ""],
     SuccessStatusCode = undefined,
 
@@ -1124,11 +1230,16 @@ get_documentation_part(Client, DocumentationPartId, RestApiId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 
-get_documentation_parts(Client, RestApiId, Limit, LocationStatus, NameQuery, Path, Position, Type)
+get_documentation_parts(Client, RestApiId)
   when is_map(Client) ->
-    get_documentation_parts(Client, RestApiId, Limit, LocationStatus, NameQuery, Path, Position, Type, []).
-get_documentation_parts(Client, RestApiId, Limit, LocationStatus, NameQuery, Path, Position, Type, Options)
-  when is_map(Client), is_list(Options) ->
+    get_documentation_parts(Client, RestApiId, #{}, #{}).
+
+get_documentation_parts(Client, RestApiId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_documentation_parts(Client, RestApiId, QueryMap, HeadersMap, []).
+
+get_documentation_parts(Client, RestApiId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/documentation/parts"],
     SuccessStatusCode = undefined,
 
@@ -1136,12 +1247,12 @@ get_documentation_parts(Client, RestApiId, Limit, LocationStatus, NameQuery, Pat
 
     Query0_ =
       [
-        {<<"limit">>, Limit},
-        {<<"locationStatus">>, LocationStatus},
-        {<<"name">>, NameQuery},
-        {<<"path">>, Path},
-        {<<"position">>, Position},
-        {<<"type">>, Type}
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"locationStatus">>, maps:get(<<"locationStatus">>, QueryMap, undefined)},
+        {<<"name">>, maps:get(<<"name">>, QueryMap, undefined)},
+        {<<"path">>, maps:get(<<"path">>, QueryMap, undefined)},
+        {<<"position">>, maps:get(<<"position">>, QueryMap, undefined)},
+        {<<"type">>, maps:get(<<"type">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1150,9 +1261,14 @@ get_documentation_parts(Client, RestApiId, Limit, LocationStatus, NameQuery, Pat
 
 get_documentation_version(Client, DocumentationVersion, RestApiId)
   when is_map(Client) ->
-    get_documentation_version(Client, DocumentationVersion, RestApiId, []).
-get_documentation_version(Client, DocumentationVersion, RestApiId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_documentation_version(Client, DocumentationVersion, RestApiId, #{}, #{}).
+
+get_documentation_version(Client, DocumentationVersion, RestApiId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_documentation_version(Client, DocumentationVersion, RestApiId, QueryMap, HeadersMap, []).
+
+get_documentation_version(Client, DocumentationVersion, RestApiId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/documentation/versions/", aws_util:encode_uri(DocumentationVersion), ""],
     SuccessStatusCode = undefined,
 
@@ -1163,11 +1279,16 @@ get_documentation_version(Client, DocumentationVersion, RestApiId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 
-get_documentation_versions(Client, RestApiId, Limit, Position)
+get_documentation_versions(Client, RestApiId)
   when is_map(Client) ->
-    get_documentation_versions(Client, RestApiId, Limit, Position, []).
-get_documentation_versions(Client, RestApiId, Limit, Position, Options)
-  when is_map(Client), is_list(Options) ->
+    get_documentation_versions(Client, RestApiId, #{}, #{}).
+
+get_documentation_versions(Client, RestApiId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_documentation_versions(Client, RestApiId, QueryMap, HeadersMap, []).
+
+get_documentation_versions(Client, RestApiId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/documentation/versions"],
     SuccessStatusCode = undefined,
 
@@ -1175,8 +1296,8 @@ get_documentation_versions(Client, RestApiId, Limit, Position, Options)
 
     Query0_ =
       [
-        {<<"limit">>, Limit},
-        {<<"position">>, Position}
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"position">>, maps:get(<<"position">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1186,9 +1307,14 @@ get_documentation_versions(Client, RestApiId, Limit, Position, Options)
 %% intuitive URL that can be called.
 get_domain_name(Client, DomainName)
   when is_map(Client) ->
-    get_domain_name(Client, DomainName, []).
-get_domain_name(Client, DomainName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_domain_name(Client, DomainName, #{}, #{}).
+
+get_domain_name(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_domain_name(Client, DomainName, QueryMap, HeadersMap, []).
+
+get_domain_name(Client, DomainName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/domainnames/", aws_util:encode_uri(DomainName), ""],
     SuccessStatusCode = undefined,
 
@@ -1199,11 +1325,16 @@ get_domain_name(Client, DomainName, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Represents a collection of `DomainName' resources.
-get_domain_names(Client, Limit, Position)
+get_domain_names(Client)
   when is_map(Client) ->
-    get_domain_names(Client, Limit, Position, []).
-get_domain_names(Client, Limit, Position, Options)
-  when is_map(Client), is_list(Options) ->
+    get_domain_names(Client, #{}, #{}).
+
+get_domain_names(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_domain_names(Client, QueryMap, HeadersMap, []).
+
+get_domain_names(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/domainnames"],
     SuccessStatusCode = undefined,
 
@@ -1211,31 +1342,36 @@ get_domain_names(Client, Limit, Position, Options)
 
     Query0_ =
       [
-        {<<"limit">>, Limit},
-        {<<"position">>, Position}
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"position">>, maps:get(<<"position">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Exports a deployed version of a `RestApi' in a specified format.
-get_export(Client, ExportType, RestApiId, StageName, Parameters, Accepts)
+get_export(Client, ExportType, RestApiId, StageName)
   when is_map(Client) ->
-    get_export(Client, ExportType, RestApiId, StageName, Parameters, Accepts, []).
-get_export(Client, ExportType, RestApiId, StageName, Parameters, Accepts, Options)
-  when is_map(Client), is_list(Options) ->
+    get_export(Client, ExportType, RestApiId, StageName, #{}, #{}).
+
+get_export(Client, ExportType, RestApiId, StageName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_export(Client, ExportType, RestApiId, StageName, QueryMap, HeadersMap, []).
+
+get_export(Client, ExportType, RestApiId, StageName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/stages/", aws_util:encode_uri(StageName), "/exports/", aws_util:encode_uri(ExportType), ""],
     SuccessStatusCode = 200,
 
     Headers0 =
       [
-        {<<"Accept">>, Accepts}
+        {<<"Accept">>, maps:get(<<"Accept">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
     Query0_ =
       [
-        {<<"">>, Parameters}
+        {<<"">>, maps:get(<<"">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1262,9 +1398,14 @@ get_export(Client, ExportType, RestApiId, StageName, Parameters, Accepts, Option
 %% `RestApi'.
 get_gateway_response(Client, ResponseType, RestApiId)
   when is_map(Client) ->
-    get_gateway_response(Client, ResponseType, RestApiId, []).
-get_gateway_response(Client, ResponseType, RestApiId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_gateway_response(Client, ResponseType, RestApiId, #{}, #{}).
+
+get_gateway_response(Client, ResponseType, RestApiId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_gateway_response(Client, ResponseType, RestApiId, QueryMap, HeadersMap, []).
+
+get_gateway_response(Client, ResponseType, RestApiId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/gatewayresponses/", aws_util:encode_uri(ResponseType), ""],
     SuccessStatusCode = undefined,
 
@@ -1279,11 +1420,16 @@ get_gateway_response(Client, ResponseType, RestApiId, Options)
 %% If an API developer has not added any definitions for gateway responses,
 %% the result will be the API Gateway-generated default `GatewayResponses'
 %% collection for the supported response types.
-get_gateway_responses(Client, RestApiId, Limit, Position)
+get_gateway_responses(Client, RestApiId)
   when is_map(Client) ->
-    get_gateway_responses(Client, RestApiId, Limit, Position, []).
-get_gateway_responses(Client, RestApiId, Limit, Position, Options)
-  when is_map(Client), is_list(Options) ->
+    get_gateway_responses(Client, RestApiId, #{}, #{}).
+
+get_gateway_responses(Client, RestApiId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_gateway_responses(Client, RestApiId, QueryMap, HeadersMap, []).
+
+get_gateway_responses(Client, RestApiId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/gatewayresponses"],
     SuccessStatusCode = undefined,
 
@@ -1291,8 +1437,8 @@ get_gateway_responses(Client, RestApiId, Limit, Position, Options)
 
     Query0_ =
       [
-        {<<"limit">>, Limit},
-        {<<"position">>, Position}
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"position">>, maps:get(<<"position">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1301,9 +1447,14 @@ get_gateway_responses(Client, RestApiId, Limit, Position, Options)
 %% @doc Get the integration settings.
 get_integration(Client, HttpMethod, ResourceId, RestApiId)
   when is_map(Client) ->
-    get_integration(Client, HttpMethod, ResourceId, RestApiId, []).
-get_integration(Client, HttpMethod, ResourceId, RestApiId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_integration(Client, HttpMethod, ResourceId, RestApiId, #{}, #{}).
+
+get_integration(Client, HttpMethod, ResourceId, RestApiId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_integration(Client, HttpMethod, ResourceId, RestApiId, QueryMap, HeadersMap, []).
+
+get_integration(Client, HttpMethod, ResourceId, RestApiId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), "/integration"],
     SuccessStatusCode = undefined,
 
@@ -1316,9 +1467,14 @@ get_integration(Client, HttpMethod, ResourceId, RestApiId, Options)
 %% @doc Represents a get integration response.
 get_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode)
   when is_map(Client) ->
-    get_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, []).
-get_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Options)
-  when is_map(Client), is_list(Options) ->
+    get_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, #{}, #{}).
+
+get_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, QueryMap, HeadersMap, []).
+
+get_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), "/integration/responses/", aws_util:encode_uri(StatusCode), ""],
     SuccessStatusCode = undefined,
 
@@ -1331,9 +1487,14 @@ get_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, 
 %% @doc Describe an existing `Method' resource.
 get_method(Client, HttpMethod, ResourceId, RestApiId)
   when is_map(Client) ->
-    get_method(Client, HttpMethod, ResourceId, RestApiId, []).
-get_method(Client, HttpMethod, ResourceId, RestApiId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_method(Client, HttpMethod, ResourceId, RestApiId, #{}, #{}).
+
+get_method(Client, HttpMethod, ResourceId, RestApiId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_method(Client, HttpMethod, ResourceId, RestApiId, QueryMap, HeadersMap, []).
+
+get_method(Client, HttpMethod, ResourceId, RestApiId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), ""],
     SuccessStatusCode = undefined,
 
@@ -1346,9 +1507,14 @@ get_method(Client, HttpMethod, ResourceId, RestApiId, Options)
 %% @doc Describes a `MethodResponse' resource.
 get_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode)
   when is_map(Client) ->
-    get_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, []).
-get_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Options)
-  when is_map(Client), is_list(Options) ->
+    get_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, #{}, #{}).
+
+get_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, QueryMap, HeadersMap, []).
+
+get_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), "/responses/", aws_util:encode_uri(StatusCode), ""],
     SuccessStatusCode = undefined,
 
@@ -1359,11 +1525,16 @@ get_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes an existing model defined for a `RestApi' resource.
-get_model(Client, ModelName, RestApiId, Flatten)
+get_model(Client, ModelName, RestApiId)
   when is_map(Client) ->
-    get_model(Client, ModelName, RestApiId, Flatten, []).
-get_model(Client, ModelName, RestApiId, Flatten, Options)
-  when is_map(Client), is_list(Options) ->
+    get_model(Client, ModelName, RestApiId, #{}, #{}).
+
+get_model(Client, ModelName, RestApiId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_model(Client, ModelName, RestApiId, QueryMap, HeadersMap, []).
+
+get_model(Client, ModelName, RestApiId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/models/", aws_util:encode_uri(ModelName), ""],
     SuccessStatusCode = undefined,
 
@@ -1371,7 +1542,7 @@ get_model(Client, ModelName, RestApiId, Flatten, Options)
 
     Query0_ =
       [
-        {<<"flatten">>, Flatten}
+        {<<"flatten">>, maps:get(<<"flatten">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1381,9 +1552,14 @@ get_model(Client, ModelName, RestApiId, Flatten, Options)
 %% payload into the structure of a model.
 get_model_template(Client, ModelName, RestApiId)
   when is_map(Client) ->
-    get_model_template(Client, ModelName, RestApiId, []).
-get_model_template(Client, ModelName, RestApiId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_model_template(Client, ModelName, RestApiId, #{}, #{}).
+
+get_model_template(Client, ModelName, RestApiId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_model_template(Client, ModelName, RestApiId, QueryMap, HeadersMap, []).
+
+get_model_template(Client, ModelName, RestApiId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/models/", aws_util:encode_uri(ModelName), "/default_template"],
     SuccessStatusCode = undefined,
 
@@ -1394,11 +1570,16 @@ get_model_template(Client, ModelName, RestApiId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes existing `Models' defined for a `RestApi' resource.
-get_models(Client, RestApiId, Limit, Position)
+get_models(Client, RestApiId)
   when is_map(Client) ->
-    get_models(Client, RestApiId, Limit, Position, []).
-get_models(Client, RestApiId, Limit, Position, Options)
-  when is_map(Client), is_list(Options) ->
+    get_models(Client, RestApiId, #{}, #{}).
+
+get_models(Client, RestApiId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_models(Client, RestApiId, QueryMap, HeadersMap, []).
+
+get_models(Client, RestApiId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/models"],
     SuccessStatusCode = undefined,
 
@@ -1406,8 +1587,8 @@ get_models(Client, RestApiId, Limit, Position, Options)
 
     Query0_ =
       [
-        {<<"limit">>, Limit},
-        {<<"position">>, Position}
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"position">>, maps:get(<<"position">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1416,9 +1597,14 @@ get_models(Client, RestApiId, Limit, Position, Options)
 %% @doc Gets a `RequestValidator' of a given `RestApi'.
 get_request_validator(Client, RequestValidatorId, RestApiId)
   when is_map(Client) ->
-    get_request_validator(Client, RequestValidatorId, RestApiId, []).
-get_request_validator(Client, RequestValidatorId, RestApiId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_request_validator(Client, RequestValidatorId, RestApiId, #{}, #{}).
+
+get_request_validator(Client, RequestValidatorId, RestApiId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_request_validator(Client, RequestValidatorId, RestApiId, QueryMap, HeadersMap, []).
+
+get_request_validator(Client, RequestValidatorId, RestApiId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/requestvalidators/", aws_util:encode_uri(RequestValidatorId), ""],
     SuccessStatusCode = undefined,
 
@@ -1429,11 +1615,16 @@ get_request_validator(Client, RequestValidatorId, RestApiId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the `RequestValidators' collection of a given `RestApi'.
-get_request_validators(Client, RestApiId, Limit, Position)
+get_request_validators(Client, RestApiId)
   when is_map(Client) ->
-    get_request_validators(Client, RestApiId, Limit, Position, []).
-get_request_validators(Client, RestApiId, Limit, Position, Options)
-  when is_map(Client), is_list(Options) ->
+    get_request_validators(Client, RestApiId, #{}, #{}).
+
+get_request_validators(Client, RestApiId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_request_validators(Client, RestApiId, QueryMap, HeadersMap, []).
+
+get_request_validators(Client, RestApiId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/requestvalidators"],
     SuccessStatusCode = undefined,
 
@@ -1441,19 +1632,24 @@ get_request_validators(Client, RestApiId, Limit, Position, Options)
 
     Query0_ =
       [
-        {<<"limit">>, Limit},
-        {<<"position">>, Position}
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"position">>, maps:get(<<"position">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists information about a resource.
-get_resource(Client, ResourceId, RestApiId, Embed)
+get_resource(Client, ResourceId, RestApiId)
   when is_map(Client) ->
-    get_resource(Client, ResourceId, RestApiId, Embed, []).
-get_resource(Client, ResourceId, RestApiId, Embed, Options)
-  when is_map(Client), is_list(Options) ->
+    get_resource(Client, ResourceId, RestApiId, #{}, #{}).
+
+get_resource(Client, ResourceId, RestApiId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_resource(Client, ResourceId, RestApiId, QueryMap, HeadersMap, []).
+
+get_resource(Client, ResourceId, RestApiId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), ""],
     SuccessStatusCode = undefined,
 
@@ -1461,18 +1657,23 @@ get_resource(Client, ResourceId, RestApiId, Embed, Options)
 
     Query0_ =
       [
-        {<<"embed">>, Embed}
+        {<<"embed">>, maps:get(<<"embed">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists information about a collection of `Resource' resources.
-get_resources(Client, RestApiId, Embed, Limit, Position)
+get_resources(Client, RestApiId)
   when is_map(Client) ->
-    get_resources(Client, RestApiId, Embed, Limit, Position, []).
-get_resources(Client, RestApiId, Embed, Limit, Position, Options)
-  when is_map(Client), is_list(Options) ->
+    get_resources(Client, RestApiId, #{}, #{}).
+
+get_resources(Client, RestApiId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_resources(Client, RestApiId, QueryMap, HeadersMap, []).
+
+get_resources(Client, RestApiId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources"],
     SuccessStatusCode = undefined,
 
@@ -1480,9 +1681,9 @@ get_resources(Client, RestApiId, Embed, Limit, Position, Options)
 
     Query0_ =
       [
-        {<<"embed">>, Embed},
-        {<<"limit">>, Limit},
-        {<<"position">>, Position}
+        {<<"embed">>, maps:get(<<"embed">>, QueryMap, undefined)},
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"position">>, maps:get(<<"position">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1491,9 +1692,14 @@ get_resources(Client, RestApiId, Embed, Limit, Position, Options)
 %% @doc Lists the `RestApi' resource in the collection.
 get_rest_api(Client, RestApiId)
   when is_map(Client) ->
-    get_rest_api(Client, RestApiId, []).
-get_rest_api(Client, RestApiId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_rest_api(Client, RestApiId, #{}, #{}).
+
+get_rest_api(Client, RestApiId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_rest_api(Client, RestApiId, QueryMap, HeadersMap, []).
+
+get_rest_api(Client, RestApiId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), ""],
     SuccessStatusCode = undefined,
 
@@ -1504,11 +1710,16 @@ get_rest_api(Client, RestApiId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the `RestApis' resources for your collection.
-get_rest_apis(Client, Limit, Position)
+get_rest_apis(Client)
   when is_map(Client) ->
-    get_rest_apis(Client, Limit, Position, []).
-get_rest_apis(Client, Limit, Position, Options)
-  when is_map(Client), is_list(Options) ->
+    get_rest_apis(Client, #{}, #{}).
+
+get_rest_apis(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_rest_apis(Client, QueryMap, HeadersMap, []).
+
+get_rest_apis(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/restapis"],
     SuccessStatusCode = undefined,
 
@@ -1516,19 +1727,24 @@ get_rest_apis(Client, Limit, Position, Options)
 
     Query0_ =
       [
-        {<<"limit">>, Limit},
-        {<<"position">>, Position}
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"position">>, maps:get(<<"position">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Generates a client SDK for a `RestApi' and `Stage'.
-get_sdk(Client, RestApiId, SdkType, StageName, Parameters)
+get_sdk(Client, RestApiId, SdkType, StageName)
   when is_map(Client) ->
-    get_sdk(Client, RestApiId, SdkType, StageName, Parameters, []).
-get_sdk(Client, RestApiId, SdkType, StageName, Parameters, Options)
-  when is_map(Client), is_list(Options) ->
+    get_sdk(Client, RestApiId, SdkType, StageName, #{}, #{}).
+
+get_sdk(Client, RestApiId, SdkType, StageName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_sdk(Client, RestApiId, SdkType, StageName, QueryMap, HeadersMap, []).
+
+get_sdk(Client, RestApiId, SdkType, StageName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/stages/", aws_util:encode_uri(StageName), "/sdks/", aws_util:encode_uri(SdkType), ""],
     SuccessStatusCode = 200,
 
@@ -1536,7 +1752,7 @@ get_sdk(Client, RestApiId, SdkType, StageName, Parameters, Options)
 
     Query0_ =
       [
-        {<<"">>, Parameters}
+        {<<"">>, maps:get(<<"">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1562,9 +1778,14 @@ get_sdk(Client, RestApiId, SdkType, StageName, Parameters, Options)
 
 get_sdk_type(Client, Id)
   when is_map(Client) ->
-    get_sdk_type(Client, Id, []).
-get_sdk_type(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    get_sdk_type(Client, Id, #{}, #{}).
+
+get_sdk_type(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_sdk_type(Client, Id, QueryMap, HeadersMap, []).
+
+get_sdk_type(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/sdktypes/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
@@ -1575,11 +1796,16 @@ get_sdk_type(Client, Id, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 
-get_sdk_types(Client, Limit, Position)
+get_sdk_types(Client)
   when is_map(Client) ->
-    get_sdk_types(Client, Limit, Position, []).
-get_sdk_types(Client, Limit, Position, Options)
-  when is_map(Client), is_list(Options) ->
+    get_sdk_types(Client, #{}, #{}).
+
+get_sdk_types(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_sdk_types(Client, QueryMap, HeadersMap, []).
+
+get_sdk_types(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/sdktypes"],
     SuccessStatusCode = undefined,
 
@@ -1587,8 +1813,8 @@ get_sdk_types(Client, Limit, Position, Options)
 
     Query0_ =
       [
-        {<<"limit">>, Limit},
-        {<<"position">>, Position}
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"position">>, maps:get(<<"position">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1597,9 +1823,14 @@ get_sdk_types(Client, Limit, Position, Options)
 %% @doc Gets information about a `Stage' resource.
 get_stage(Client, RestApiId, StageName)
   when is_map(Client) ->
-    get_stage(Client, RestApiId, StageName, []).
-get_stage(Client, RestApiId, StageName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_stage(Client, RestApiId, StageName, #{}, #{}).
+
+get_stage(Client, RestApiId, StageName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_stage(Client, RestApiId, StageName, QueryMap, HeadersMap, []).
+
+get_stage(Client, RestApiId, StageName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/stages/", aws_util:encode_uri(StageName), ""],
     SuccessStatusCode = undefined,
 
@@ -1610,11 +1841,16 @@ get_stage(Client, RestApiId, StageName, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about one or more `Stage' resources.
-get_stages(Client, RestApiId, DeploymentId)
+get_stages(Client, RestApiId)
   when is_map(Client) ->
-    get_stages(Client, RestApiId, DeploymentId, []).
-get_stages(Client, RestApiId, DeploymentId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_stages(Client, RestApiId, #{}, #{}).
+
+get_stages(Client, RestApiId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_stages(Client, RestApiId, QueryMap, HeadersMap, []).
+
+get_stages(Client, RestApiId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/stages"],
     SuccessStatusCode = undefined,
 
@@ -1622,18 +1858,23 @@ get_stages(Client, RestApiId, DeploymentId, Options)
 
     Query0_ =
       [
-        {<<"deploymentId">>, DeploymentId}
+        {<<"deploymentId">>, maps:get(<<"deploymentId">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the `Tags' collection for a given resource.
-get_tags(Client, ResourceArn, Limit, Position)
+get_tags(Client, ResourceArn)
   when is_map(Client) ->
-    get_tags(Client, ResourceArn, Limit, Position, []).
-get_tags(Client, ResourceArn, Limit, Position, Options)
-  when is_map(Client), is_list(Options) ->
+    get_tags(Client, ResourceArn, #{}, #{}).
+
+get_tags(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_tags(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+get_tags(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
@@ -1641,19 +1882,24 @@ get_tags(Client, ResourceArn, Limit, Position, Options)
 
     Query0_ =
       [
-        {<<"limit">>, Limit},
-        {<<"position">>, Position}
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"position">>, maps:get(<<"position">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the usage data of a usage plan in a specified time interval.
-get_usage(Client, UsagePlanId, EndDate, KeyId, Limit, Position, StartDate)
+get_usage(Client, UsagePlanId, EndDate, StartDate)
   when is_map(Client) ->
-    get_usage(Client, UsagePlanId, EndDate, KeyId, Limit, Position, StartDate, []).
-get_usage(Client, UsagePlanId, EndDate, KeyId, Limit, Position, StartDate, Options)
-  when is_map(Client), is_list(Options) ->
+    get_usage(Client, UsagePlanId, EndDate, StartDate, #{}, #{}).
+
+get_usage(Client, UsagePlanId, EndDate, StartDate, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_usage(Client, UsagePlanId, EndDate, StartDate, QueryMap, HeadersMap, []).
+
+get_usage(Client, UsagePlanId, EndDate, StartDate, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/usageplans/", aws_util:encode_uri(UsagePlanId), "/usage"],
     SuccessStatusCode = undefined,
 
@@ -1662,9 +1908,9 @@ get_usage(Client, UsagePlanId, EndDate, KeyId, Limit, Position, StartDate, Optio
     Query0_ =
       [
         {<<"endDate">>, EndDate},
-        {<<"keyId">>, KeyId},
-        {<<"limit">>, Limit},
-        {<<"position">>, Position},
+        {<<"keyId">>, maps:get(<<"keyId">>, QueryMap, undefined)},
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"position">>, maps:get(<<"position">>, QueryMap, undefined)},
         {<<"startDate">>, StartDate}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
@@ -1674,9 +1920,14 @@ get_usage(Client, UsagePlanId, EndDate, KeyId, Limit, Position, StartDate, Optio
 %% @doc Gets a usage plan of a given plan identifier.
 get_usage_plan(Client, UsagePlanId)
   when is_map(Client) ->
-    get_usage_plan(Client, UsagePlanId, []).
-get_usage_plan(Client, UsagePlanId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_usage_plan(Client, UsagePlanId, #{}, #{}).
+
+get_usage_plan(Client, UsagePlanId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_usage_plan(Client, UsagePlanId, QueryMap, HeadersMap, []).
+
+get_usage_plan(Client, UsagePlanId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/usageplans/", aws_util:encode_uri(UsagePlanId), ""],
     SuccessStatusCode = undefined,
 
@@ -1689,9 +1940,14 @@ get_usage_plan(Client, UsagePlanId, Options)
 %% @doc Gets a usage plan key of a given key identifier.
 get_usage_plan_key(Client, KeyId, UsagePlanId)
   when is_map(Client) ->
-    get_usage_plan_key(Client, KeyId, UsagePlanId, []).
-get_usage_plan_key(Client, KeyId, UsagePlanId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_usage_plan_key(Client, KeyId, UsagePlanId, #{}, #{}).
+
+get_usage_plan_key(Client, KeyId, UsagePlanId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_usage_plan_key(Client, KeyId, UsagePlanId, QueryMap, HeadersMap, []).
+
+get_usage_plan_key(Client, KeyId, UsagePlanId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/usageplans/", aws_util:encode_uri(UsagePlanId), "/keys/", aws_util:encode_uri(KeyId), ""],
     SuccessStatusCode = 200,
 
@@ -1703,11 +1959,16 @@ get_usage_plan_key(Client, KeyId, UsagePlanId, Options)
 
 %% @doc Gets all the usage plan keys representing the API keys added to a
 %% specified usage plan.
-get_usage_plan_keys(Client, UsagePlanId, Limit, NameQuery, Position)
+get_usage_plan_keys(Client, UsagePlanId)
   when is_map(Client) ->
-    get_usage_plan_keys(Client, UsagePlanId, Limit, NameQuery, Position, []).
-get_usage_plan_keys(Client, UsagePlanId, Limit, NameQuery, Position, Options)
-  when is_map(Client), is_list(Options) ->
+    get_usage_plan_keys(Client, UsagePlanId, #{}, #{}).
+
+get_usage_plan_keys(Client, UsagePlanId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_usage_plan_keys(Client, UsagePlanId, QueryMap, HeadersMap, []).
+
+get_usage_plan_keys(Client, UsagePlanId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/usageplans/", aws_util:encode_uri(UsagePlanId), "/keys"],
     SuccessStatusCode = undefined,
 
@@ -1715,20 +1976,25 @@ get_usage_plan_keys(Client, UsagePlanId, Limit, NameQuery, Position, Options)
 
     Query0_ =
       [
-        {<<"limit">>, Limit},
-        {<<"name">>, NameQuery},
-        {<<"position">>, Position}
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"name">>, maps:get(<<"name">>, QueryMap, undefined)},
+        {<<"position">>, maps:get(<<"position">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets all the usage plans of the caller's account.
-get_usage_plans(Client, KeyId, Limit, Position)
+get_usage_plans(Client)
   when is_map(Client) ->
-    get_usage_plans(Client, KeyId, Limit, Position, []).
-get_usage_plans(Client, KeyId, Limit, Position, Options)
-  when is_map(Client), is_list(Options) ->
+    get_usage_plans(Client, #{}, #{}).
+
+get_usage_plans(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_usage_plans(Client, QueryMap, HeadersMap, []).
+
+get_usage_plans(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/usageplans"],
     SuccessStatusCode = undefined,
 
@@ -1736,9 +2002,9 @@ get_usage_plans(Client, KeyId, Limit, Position, Options)
 
     Query0_ =
       [
-        {<<"keyId">>, KeyId},
-        {<<"limit">>, Limit},
-        {<<"position">>, Position}
+        {<<"keyId">>, maps:get(<<"keyId">>, QueryMap, undefined)},
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"position">>, maps:get(<<"position">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1747,9 +2013,14 @@ get_usage_plans(Client, KeyId, Limit, Position, Options)
 %% @doc Gets a specified VPC link under the caller's account in a region.
 get_vpc_link(Client, VpcLinkId)
   when is_map(Client) ->
-    get_vpc_link(Client, VpcLinkId, []).
-get_vpc_link(Client, VpcLinkId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_vpc_link(Client, VpcLinkId, #{}, #{}).
+
+get_vpc_link(Client, VpcLinkId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_vpc_link(Client, VpcLinkId, QueryMap, HeadersMap, []).
+
+get_vpc_link(Client, VpcLinkId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/vpclinks/", aws_util:encode_uri(VpcLinkId), ""],
     SuccessStatusCode = undefined,
 
@@ -1761,11 +2032,16 @@ get_vpc_link(Client, VpcLinkId, Options)
 
 %% @doc Gets the `VpcLinks' collection under the caller's account in a
 %% selected region.
-get_vpc_links(Client, Limit, Position)
+get_vpc_links(Client)
   when is_map(Client) ->
-    get_vpc_links(Client, Limit, Position, []).
-get_vpc_links(Client, Limit, Position, Options)
-  when is_map(Client), is_list(Options) ->
+    get_vpc_links(Client, #{}, #{}).
+
+get_vpc_links(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_vpc_links(Client, QueryMap, HeadersMap, []).
+
+get_vpc_links(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/vpclinks"],
     SuccessStatusCode = undefined,
 
@@ -1773,8 +2049,8 @@ get_vpc_links(Client, Limit, Position, Options)
 
     Query0_ =
       [
-        {<<"limit">>, Limit},
-        {<<"position">>, Position}
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"position">>, maps:get(<<"position">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

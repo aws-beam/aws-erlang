@@ -46,57 +46,82 @@
          delete_project/3,
          delete_project/4,
          describe_access_policy/2,
-         describe_access_policy/3,
+         describe_access_policy/4,
+         describe_access_policy/5,
          describe_asset/2,
-         describe_asset/3,
+         describe_asset/4,
+         describe_asset/5,
          describe_asset_model/2,
-         describe_asset_model/3,
+         describe_asset_model/4,
+         describe_asset_model/5,
          describe_asset_property/3,
-         describe_asset_property/4,
+         describe_asset_property/5,
+         describe_asset_property/6,
          describe_dashboard/2,
-         describe_dashboard/3,
+         describe_dashboard/4,
+         describe_dashboard/5,
          describe_default_encryption_configuration/1,
-         describe_default_encryption_configuration/2,
+         describe_default_encryption_configuration/3,
+         describe_default_encryption_configuration/4,
          describe_gateway/2,
-         describe_gateway/3,
+         describe_gateway/4,
+         describe_gateway/5,
          describe_gateway_capability_configuration/3,
-         describe_gateway_capability_configuration/4,
+         describe_gateway_capability_configuration/5,
+         describe_gateway_capability_configuration/6,
          describe_logging_options/1,
-         describe_logging_options/2,
+         describe_logging_options/3,
+         describe_logging_options/4,
          describe_portal/2,
-         describe_portal/3,
+         describe_portal/4,
+         describe_portal/5,
          describe_project/2,
-         describe_project/3,
+         describe_project/4,
+         describe_project/5,
          disassociate_assets/3,
          disassociate_assets/4,
-         get_asset_property_aggregates/12,
-         get_asset_property_aggregates/13,
+         get_asset_property_aggregates/5,
+         get_asset_property_aggregates/7,
+         get_asset_property_aggregates/8,
+         get_asset_property_value/1,
+         get_asset_property_value/3,
          get_asset_property_value/4,
-         get_asset_property_value/5,
-         get_asset_property_value_history/10,
-         get_asset_property_value_history/11,
-         list_access_policies/8,
-         list_access_policies/9,
+         get_asset_property_value_history/1,
+         get_asset_property_value_history/3,
+         get_asset_property_value_history/4,
+         list_access_policies/1,
+         list_access_policies/3,
+         list_access_policies/4,
+         list_asset_models/1,
          list_asset_models/3,
          list_asset_models/4,
+         list_asset_relationships/3,
          list_asset_relationships/5,
          list_asset_relationships/6,
-         list_assets/5,
-         list_assets/6,
-         list_associated_assets/6,
-         list_associated_assets/7,
+         list_assets/1,
+         list_assets/3,
+         list_assets/4,
+         list_associated_assets/2,
+         list_associated_assets/4,
+         list_associated_assets/5,
+         list_dashboards/2,
          list_dashboards/4,
          list_dashboards/5,
+         list_gateways/1,
          list_gateways/3,
          list_gateways/4,
+         list_portals/1,
          list_portals/3,
          list_portals/4,
+         list_project_assets/2,
          list_project_assets/4,
          list_project_assets/5,
+         list_projects/2,
          list_projects/4,
          list_projects/5,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          put_default_encryption_configuration/2,
          put_default_encryption_configuration/3,
          put_logging_options/2,
@@ -504,9 +529,14 @@ delete_project(Client, ProjectId, Input0, Options) ->
 %% an AWS IoT SiteWise Monitor portal or project.
 describe_access_policy(Client, AccessPolicyId)
   when is_map(Client) ->
-    describe_access_policy(Client, AccessPolicyId, []).
-describe_access_policy(Client, AccessPolicyId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_access_policy(Client, AccessPolicyId, #{}, #{}).
+
+describe_access_policy(Client, AccessPolicyId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_access_policy(Client, AccessPolicyId, QueryMap, HeadersMap, []).
+
+describe_access_policy(Client, AccessPolicyId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/access-policies/", aws_util:encode_uri(AccessPolicyId), ""],
     SuccessStatusCode = 200,
 
@@ -519,9 +549,14 @@ describe_access_policy(Client, AccessPolicyId, Options)
 %% @doc Retrieves information about an asset.
 describe_asset(Client, AssetId)
   when is_map(Client) ->
-    describe_asset(Client, AssetId, []).
-describe_asset(Client, AssetId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_asset(Client, AssetId, #{}, #{}).
+
+describe_asset(Client, AssetId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_asset(Client, AssetId, QueryMap, HeadersMap, []).
+
+describe_asset(Client, AssetId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/assets/", aws_util:encode_uri(AssetId), ""],
     SuccessStatusCode = undefined,
 
@@ -534,9 +569,14 @@ describe_asset(Client, AssetId, Options)
 %% @doc Retrieves information about an asset model.
 describe_asset_model(Client, AssetModelId)
   when is_map(Client) ->
-    describe_asset_model(Client, AssetModelId, []).
-describe_asset_model(Client, AssetModelId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_asset_model(Client, AssetModelId, #{}, #{}).
+
+describe_asset_model(Client, AssetModelId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_asset_model(Client, AssetModelId, QueryMap, HeadersMap, []).
+
+describe_asset_model(Client, AssetModelId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), ""],
     SuccessStatusCode = undefined,
 
@@ -557,9 +597,14 @@ describe_asset_model(Client, AssetModelId, Options)
 %% value of an asset property, use GetAssetPropertyValue.
 describe_asset_property(Client, AssetId, PropertyId)
   when is_map(Client) ->
-    describe_asset_property(Client, AssetId, PropertyId, []).
-describe_asset_property(Client, AssetId, PropertyId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_asset_property(Client, AssetId, PropertyId, #{}, #{}).
+
+describe_asset_property(Client, AssetId, PropertyId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_asset_property(Client, AssetId, PropertyId, QueryMap, HeadersMap, []).
+
+describe_asset_property(Client, AssetId, PropertyId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/assets/", aws_util:encode_uri(AssetId), "/properties/", aws_util:encode_uri(PropertyId), ""],
     SuccessStatusCode = undefined,
 
@@ -572,9 +617,14 @@ describe_asset_property(Client, AssetId, PropertyId, Options)
 %% @doc Retrieves information about a dashboard.
 describe_dashboard(Client, DashboardId)
   when is_map(Client) ->
-    describe_dashboard(Client, DashboardId, []).
-describe_dashboard(Client, DashboardId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_dashboard(Client, DashboardId, #{}, #{}).
+
+describe_dashboard(Client, DashboardId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_dashboard(Client, DashboardId, QueryMap, HeadersMap, []).
+
+describe_dashboard(Client, DashboardId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/dashboards/", aws_util:encode_uri(DashboardId), ""],
     SuccessStatusCode = 200,
 
@@ -591,9 +641,14 @@ describe_dashboard(Client, DashboardId, Options)
 %% Guide.
 describe_default_encryption_configuration(Client)
   when is_map(Client) ->
-    describe_default_encryption_configuration(Client, []).
-describe_default_encryption_configuration(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_default_encryption_configuration(Client, #{}, #{}).
+
+describe_default_encryption_configuration(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_default_encryption_configuration(Client, QueryMap, HeadersMap, []).
+
+describe_default_encryption_configuration(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/configuration/account/encryption"],
     SuccessStatusCode = undefined,
 
@@ -606,9 +661,14 @@ describe_default_encryption_configuration(Client, Options)
 %% @doc Retrieves information about a gateway.
 describe_gateway(Client, GatewayId)
   when is_map(Client) ->
-    describe_gateway(Client, GatewayId, []).
-describe_gateway(Client, GatewayId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_gateway(Client, GatewayId, #{}, #{}).
+
+describe_gateway(Client, GatewayId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_gateway(Client, GatewayId, QueryMap, HeadersMap, []).
+
+describe_gateway(Client, GatewayId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/20200301/gateways/", aws_util:encode_uri(GatewayId), ""],
     SuccessStatusCode = undefined,
 
@@ -627,9 +687,14 @@ describe_gateway(Client, GatewayId, Options)
 %% all capability configurations for a gateway, use DescribeGateway.
 describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId)
   when is_map(Client) ->
-    describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId, []).
-describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId, #{}, #{}).
+
+describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId, QueryMap, HeadersMap, []).
+
+describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/20200301/gateways/", aws_util:encode_uri(GatewayId), "/capability/", aws_util:encode_uri(CapabilityNamespace), ""],
     SuccessStatusCode = undefined,
 
@@ -642,9 +707,14 @@ describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId
 %% @doc Retrieves the current AWS IoT SiteWise logging options.
 describe_logging_options(Client)
   when is_map(Client) ->
-    describe_logging_options(Client, []).
-describe_logging_options(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_logging_options(Client, #{}, #{}).
+
+describe_logging_options(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_logging_options(Client, QueryMap, HeadersMap, []).
+
+describe_logging_options(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/logging"],
     SuccessStatusCode = undefined,
 
@@ -657,9 +727,14 @@ describe_logging_options(Client, Options)
 %% @doc Retrieves information about a portal.
 describe_portal(Client, PortalId)
   when is_map(Client) ->
-    describe_portal(Client, PortalId, []).
-describe_portal(Client, PortalId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_portal(Client, PortalId, #{}, #{}).
+
+describe_portal(Client, PortalId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_portal(Client, PortalId, QueryMap, HeadersMap, []).
+
+describe_portal(Client, PortalId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/portals/", aws_util:encode_uri(PortalId), ""],
     SuccessStatusCode = 200,
 
@@ -672,9 +747,14 @@ describe_portal(Client, PortalId, Options)
 %% @doc Retrieves information about a project.
 describe_project(Client, ProjectId)
   when is_map(Client) ->
-    describe_project(Client, ProjectId, []).
-describe_project(Client, ProjectId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_project(Client, ProjectId, #{}, #{}).
+
+describe_project(Client, ProjectId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_project(Client, ProjectId, QueryMap, HeadersMap, []).
+
+describe_project(Client, ProjectId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/projects/", aws_util:encode_uri(ProjectId), ""],
     SuccessStatusCode = 200,
 
@@ -715,11 +795,16 @@ disassociate_assets(Client, AssetId, Input0, Options) ->
 %% property's alias, see UpdateAssetProperty.
 %%
 %% </li> </ul>
-get_asset_property_aggregates(Client, AggregateTypes, AssetId, EndDate, MaxResults, NextToken, PropertyAlias, PropertyId, Qualities, Resolution, StartDate, TimeOrdering)
+get_asset_property_aggregates(Client, AggregateTypes, EndDate, Resolution, StartDate)
   when is_map(Client) ->
-    get_asset_property_aggregates(Client, AggregateTypes, AssetId, EndDate, MaxResults, NextToken, PropertyAlias, PropertyId, Qualities, Resolution, StartDate, TimeOrdering, []).
-get_asset_property_aggregates(Client, AggregateTypes, AssetId, EndDate, MaxResults, NextToken, PropertyAlias, PropertyId, Qualities, Resolution, StartDate, TimeOrdering, Options)
-  when is_map(Client), is_list(Options) ->
+    get_asset_property_aggregates(Client, AggregateTypes, EndDate, Resolution, StartDate, #{}, #{}).
+
+get_asset_property_aggregates(Client, AggregateTypes, EndDate, Resolution, StartDate, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_asset_property_aggregates(Client, AggregateTypes, EndDate, Resolution, StartDate, QueryMap, HeadersMap, []).
+
+get_asset_property_aggregates(Client, AggregateTypes, EndDate, Resolution, StartDate, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/properties/aggregates"],
     SuccessStatusCode = undefined,
 
@@ -728,16 +813,16 @@ get_asset_property_aggregates(Client, AggregateTypes, AssetId, EndDate, MaxResul
     Query0_ =
       [
         {<<"aggregateTypes">>, AggregateTypes},
-        {<<"assetId">>, AssetId},
+        {<<"assetId">>, maps:get(<<"assetId">>, QueryMap, undefined)},
         {<<"endDate">>, EndDate},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"propertyAlias">>, PropertyAlias},
-        {<<"propertyId">>, PropertyId},
-        {<<"qualities">>, Qualities},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"propertyAlias">>, maps:get(<<"propertyAlias">>, QueryMap, undefined)},
+        {<<"propertyId">>, maps:get(<<"propertyId">>, QueryMap, undefined)},
+        {<<"qualities">>, maps:get(<<"qualities">>, QueryMap, undefined)},
         {<<"resolution">>, Resolution},
         {<<"startDate">>, StartDate},
-        {<<"timeOrdering">>, TimeOrdering}
+        {<<"timeOrdering">>, maps:get(<<"timeOrdering">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -757,11 +842,16 @@ get_asset_property_aggregates(Client, AggregateTypes, AssetId, EndDate, MaxResul
 %% property's alias, see UpdateAssetProperty.
 %%
 %% </li> </ul>
-get_asset_property_value(Client, AssetId, PropertyAlias, PropertyId)
+get_asset_property_value(Client)
   when is_map(Client) ->
-    get_asset_property_value(Client, AssetId, PropertyAlias, PropertyId, []).
-get_asset_property_value(Client, AssetId, PropertyAlias, PropertyId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_asset_property_value(Client, #{}, #{}).
+
+get_asset_property_value(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_asset_property_value(Client, QueryMap, HeadersMap, []).
+
+get_asset_property_value(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/properties/latest"],
     SuccessStatusCode = undefined,
 
@@ -769,9 +859,9 @@ get_asset_property_value(Client, AssetId, PropertyAlias, PropertyId, Options)
 
     Query0_ =
       [
-        {<<"assetId">>, AssetId},
-        {<<"propertyAlias">>, PropertyAlias},
-        {<<"propertyId">>, PropertyId}
+        {<<"assetId">>, maps:get(<<"assetId">>, QueryMap, undefined)},
+        {<<"propertyAlias">>, maps:get(<<"propertyAlias">>, QueryMap, undefined)},
+        {<<"propertyId">>, maps:get(<<"propertyId">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -791,11 +881,16 @@ get_asset_property_value(Client, AssetId, PropertyAlias, PropertyId, Options)
 %% property's alias, see UpdateAssetProperty.
 %%
 %% </li> </ul>
-get_asset_property_value_history(Client, AssetId, EndDate, MaxResults, NextToken, PropertyAlias, PropertyId, Qualities, StartDate, TimeOrdering)
+get_asset_property_value_history(Client)
   when is_map(Client) ->
-    get_asset_property_value_history(Client, AssetId, EndDate, MaxResults, NextToken, PropertyAlias, PropertyId, Qualities, StartDate, TimeOrdering, []).
-get_asset_property_value_history(Client, AssetId, EndDate, MaxResults, NextToken, PropertyAlias, PropertyId, Qualities, StartDate, TimeOrdering, Options)
-  when is_map(Client), is_list(Options) ->
+    get_asset_property_value_history(Client, #{}, #{}).
+
+get_asset_property_value_history(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_asset_property_value_history(Client, QueryMap, HeadersMap, []).
+
+get_asset_property_value_history(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/properties/history"],
     SuccessStatusCode = undefined,
 
@@ -803,15 +898,15 @@ get_asset_property_value_history(Client, AssetId, EndDate, MaxResults, NextToken
 
     Query0_ =
       [
-        {<<"assetId">>, AssetId},
-        {<<"endDate">>, EndDate},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"propertyAlias">>, PropertyAlias},
-        {<<"propertyId">>, PropertyId},
-        {<<"qualities">>, Qualities},
-        {<<"startDate">>, StartDate},
-        {<<"timeOrdering">>, TimeOrdering}
+        {<<"assetId">>, maps:get(<<"assetId">>, QueryMap, undefined)},
+        {<<"endDate">>, maps:get(<<"endDate">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"propertyAlias">>, maps:get(<<"propertyAlias">>, QueryMap, undefined)},
+        {<<"propertyId">>, maps:get(<<"propertyId">>, QueryMap, undefined)},
+        {<<"qualities">>, maps:get(<<"qualities">>, QueryMap, undefined)},
+        {<<"startDate">>, maps:get(<<"startDate">>, QueryMap, undefined)},
+        {<<"timeOrdering">>, maps:get(<<"timeOrdering">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -820,11 +915,16 @@ get_asset_property_value_history(Client, AssetId, EndDate, MaxResults, NextToken
 %% @doc Retrieves a paginated list of access policies for an identity (an AWS
 %% SSO user, an AWS SSO group, or an IAM user) or an AWS IoT SiteWise Monitor
 %% resource (a portal or project).
-list_access_policies(Client, IamArn, IdentityId, IdentityType, MaxResults, NextToken, ResourceId, ResourceType)
+list_access_policies(Client)
   when is_map(Client) ->
-    list_access_policies(Client, IamArn, IdentityId, IdentityType, MaxResults, NextToken, ResourceId, ResourceType, []).
-list_access_policies(Client, IamArn, IdentityId, IdentityType, MaxResults, NextToken, ResourceId, ResourceType, Options)
-  when is_map(Client), is_list(Options) ->
+    list_access_policies(Client, #{}, #{}).
+
+list_access_policies(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_access_policies(Client, QueryMap, HeadersMap, []).
+
+list_access_policies(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/access-policies"],
     SuccessStatusCode = 200,
 
@@ -832,24 +932,29 @@ list_access_policies(Client, IamArn, IdentityId, IdentityType, MaxResults, NextT
 
     Query0_ =
       [
-        {<<"iamArn">>, IamArn},
-        {<<"identityId">>, IdentityId},
-        {<<"identityType">>, IdentityType},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"resourceId">>, ResourceId},
-        {<<"resourceType">>, ResourceType}
+        {<<"iamArn">>, maps:get(<<"iamArn">>, QueryMap, undefined)},
+        {<<"identityId">>, maps:get(<<"identityId">>, QueryMap, undefined)},
+        {<<"identityType">>, maps:get(<<"identityType">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"resourceId">>, maps:get(<<"resourceId">>, QueryMap, undefined)},
+        {<<"resourceType">>, maps:get(<<"resourceType">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a paginated list of summaries of all asset models.
-list_asset_models(Client, MaxResults, NextToken)
+list_asset_models(Client)
   when is_map(Client) ->
-    list_asset_models(Client, MaxResults, NextToken, []).
-list_asset_models(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_asset_models(Client, #{}, #{}).
+
+list_asset_models(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_asset_models(Client, QueryMap, HeadersMap, []).
+
+list_asset_models(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/asset-models"],
     SuccessStatusCode = undefined,
 
@@ -857,8 +962,8 @@ list_asset_models(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -868,11 +973,16 @@ list_asset_models(Client, MaxResults, NextToken, Options)
 %%
 %% You can use this operation to identify an asset's root asset and all
 %% associated assets between that asset and its root.
-list_asset_relationships(Client, AssetId, MaxResults, NextToken, TraversalType)
+list_asset_relationships(Client, AssetId, TraversalType)
   when is_map(Client) ->
-    list_asset_relationships(Client, AssetId, MaxResults, NextToken, TraversalType, []).
-list_asset_relationships(Client, AssetId, MaxResults, NextToken, TraversalType, Options)
-  when is_map(Client), is_list(Options) ->
+    list_asset_relationships(Client, AssetId, TraversalType, #{}, #{}).
+
+list_asset_relationships(Client, AssetId, TraversalType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_asset_relationships(Client, AssetId, TraversalType, QueryMap, HeadersMap, []).
+
+list_asset_relationships(Client, AssetId, TraversalType, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/assets/", aws_util:encode_uri(AssetId), "/assetRelationships"],
     SuccessStatusCode = undefined,
 
@@ -880,8 +990,8 @@ list_asset_relationships(Client, AssetId, MaxResults, NextToken, TraversalType, 
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"traversalType">>, TraversalType}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
@@ -900,11 +1010,16 @@ list_asset_relationships(Client, AssetId, MaxResults, NextToken, TraversalType, 
 %% summaries for all of your assets, use ListAssetModels to get all of your
 %% asset model IDs. Then, use ListAssets to get all assets for each asset
 %% model.
-list_assets(Client, AssetModelId, Filter, MaxResults, NextToken)
+list_assets(Client)
   when is_map(Client) ->
-    list_assets(Client, AssetModelId, Filter, MaxResults, NextToken, []).
-list_assets(Client, AssetModelId, Filter, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_assets(Client, #{}, #{}).
+
+list_assets(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_assets(Client, QueryMap, HeadersMap, []).
+
+list_assets(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/assets"],
     SuccessStatusCode = undefined,
 
@@ -912,10 +1027,10 @@ list_assets(Client, AssetModelId, Filter, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"assetModelId">>, AssetModelId},
-        {<<"filter">>, Filter},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"assetModelId">>, maps:get(<<"assetModelId">>, QueryMap, undefined)},
+        {<<"filter">>, maps:get(<<"filter">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -931,11 +1046,16 @@ list_assets(Client, AssetModelId, Filter, MaxResults, NextToken, Options)
 %% </li> <li> List an asset's parent asset.
 %%
 %% </li> </ul>
-list_associated_assets(Client, AssetId, HierarchyId, MaxResults, NextToken, TraversalDirection)
+list_associated_assets(Client, AssetId)
   when is_map(Client) ->
-    list_associated_assets(Client, AssetId, HierarchyId, MaxResults, NextToken, TraversalDirection, []).
-list_associated_assets(Client, AssetId, HierarchyId, MaxResults, NextToken, TraversalDirection, Options)
-  when is_map(Client), is_list(Options) ->
+    list_associated_assets(Client, AssetId, #{}, #{}).
+
+list_associated_assets(Client, AssetId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_associated_assets(Client, AssetId, QueryMap, HeadersMap, []).
+
+list_associated_assets(Client, AssetId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/assets/", aws_util:encode_uri(AssetId), "/hierarchies"],
     SuccessStatusCode = undefined,
 
@@ -943,10 +1063,10 @@ list_associated_assets(Client, AssetId, HierarchyId, MaxResults, NextToken, Trav
 
     Query0_ =
       [
-        {<<"hierarchyId">>, HierarchyId},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"traversalDirection">>, TraversalDirection}
+        {<<"hierarchyId">>, maps:get(<<"hierarchyId">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"traversalDirection">>, maps:get(<<"traversalDirection">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -954,11 +1074,16 @@ list_associated_assets(Client, AssetId, HierarchyId, MaxResults, NextToken, Trav
 
 %% @doc Retrieves a paginated list of dashboards for an AWS IoT SiteWise
 %% Monitor project.
-list_dashboards(Client, MaxResults, NextToken, ProjectId)
+list_dashboards(Client, ProjectId)
   when is_map(Client) ->
-    list_dashboards(Client, MaxResults, NextToken, ProjectId, []).
-list_dashboards(Client, MaxResults, NextToken, ProjectId, Options)
-  when is_map(Client), is_list(Options) ->
+    list_dashboards(Client, ProjectId, #{}, #{}).
+
+list_dashboards(Client, ProjectId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_dashboards(Client, ProjectId, QueryMap, HeadersMap, []).
+
+list_dashboards(Client, ProjectId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/dashboards"],
     SuccessStatusCode = 200,
 
@@ -966,8 +1091,8 @@ list_dashboards(Client, MaxResults, NextToken, ProjectId, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"projectId">>, ProjectId}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
@@ -975,11 +1100,16 @@ list_dashboards(Client, MaxResults, NextToken, ProjectId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a paginated list of gateways.
-list_gateways(Client, MaxResults, NextToken)
+list_gateways(Client)
   when is_map(Client) ->
-    list_gateways(Client, MaxResults, NextToken, []).
-list_gateways(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_gateways(Client, #{}, #{}).
+
+list_gateways(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_gateways(Client, QueryMap, HeadersMap, []).
+
+list_gateways(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/20200301/gateways"],
     SuccessStatusCode = undefined,
 
@@ -987,19 +1117,24 @@ list_gateways(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a paginated list of AWS IoT SiteWise Monitor portals.
-list_portals(Client, MaxResults, NextToken)
+list_portals(Client)
   when is_map(Client) ->
-    list_portals(Client, MaxResults, NextToken, []).
-list_portals(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_portals(Client, #{}, #{}).
+
+list_portals(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_portals(Client, QueryMap, HeadersMap, []).
+
+list_portals(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/portals"],
     SuccessStatusCode = 200,
 
@@ -1007,8 +1142,8 @@ list_portals(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1016,11 +1151,16 @@ list_portals(Client, MaxResults, NextToken, Options)
 
 %% @doc Retrieves a paginated list of assets associated with an AWS IoT
 %% SiteWise Monitor project.
-list_project_assets(Client, ProjectId, MaxResults, NextToken)
+list_project_assets(Client, ProjectId)
   when is_map(Client) ->
-    list_project_assets(Client, ProjectId, MaxResults, NextToken, []).
-list_project_assets(Client, ProjectId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_project_assets(Client, ProjectId, #{}, #{}).
+
+list_project_assets(Client, ProjectId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_project_assets(Client, ProjectId, QueryMap, HeadersMap, []).
+
+list_project_assets(Client, ProjectId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/projects/", aws_util:encode_uri(ProjectId), "/assets"],
     SuccessStatusCode = 200,
 
@@ -1028,8 +1168,8 @@ list_project_assets(Client, ProjectId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1037,11 +1177,16 @@ list_project_assets(Client, ProjectId, MaxResults, NextToken, Options)
 
 %% @doc Retrieves a paginated list of projects for an AWS IoT SiteWise
 %% Monitor portal.
-list_projects(Client, MaxResults, NextToken, PortalId)
+list_projects(Client, PortalId)
   when is_map(Client) ->
-    list_projects(Client, MaxResults, NextToken, PortalId, []).
-list_projects(Client, MaxResults, NextToken, PortalId, Options)
-  when is_map(Client), is_list(Options) ->
+    list_projects(Client, PortalId, #{}, #{}).
+
+list_projects(Client, PortalId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_projects(Client, PortalId, QueryMap, HeadersMap, []).
+
+list_projects(Client, PortalId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/projects"],
     SuccessStatusCode = 200,
 
@@ -1049,8 +1194,8 @@ list_projects(Client, MaxResults, NextToken, PortalId, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"portalId">>, PortalId}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
@@ -1060,9 +1205,14 @@ list_projects(Client, MaxResults, NextToken, PortalId, Options)
 %% @doc Retrieves the list of tags for an AWS IoT SiteWise resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags"],
     SuccessStatusCode = undefined,
 

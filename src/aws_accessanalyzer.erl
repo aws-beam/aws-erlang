@@ -27,23 +27,30 @@
          delete_archive_rule/4,
          delete_archive_rule/5,
          get_analyzed_resource/3,
-         get_analyzed_resource/4,
+         get_analyzed_resource/5,
+         get_analyzed_resource/6,
          get_analyzer/2,
-         get_analyzer/3,
+         get_analyzer/4,
+         get_analyzer/5,
          get_archive_rule/3,
-         get_archive_rule/4,
+         get_archive_rule/5,
+         get_archive_rule/6,
          get_finding/3,
-         get_finding/4,
+         get_finding/5,
+         get_finding/6,
          list_analyzed_resources/2,
          list_analyzed_resources/3,
+         list_analyzers/1,
+         list_analyzers/3,
          list_analyzers/4,
-         list_analyzers/5,
+         list_archive_rules/2,
          list_archive_rules/4,
          list_archive_rules/5,
          list_findings/2,
          list_findings/3,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          start_resource_scan/2,
          start_resource_scan/3,
          tag_resource/3,
@@ -154,9 +161,14 @@ delete_archive_rule(Client, AnalyzerName, RuleName, Input0, Options) ->
 %% @doc Retrieves information about a resource that was analyzed.
 get_analyzed_resource(Client, AnalyzerArn, ResourceArn)
   when is_map(Client) ->
-    get_analyzed_resource(Client, AnalyzerArn, ResourceArn, []).
-get_analyzed_resource(Client, AnalyzerArn, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    get_analyzed_resource(Client, AnalyzerArn, ResourceArn, #{}, #{}).
+
+get_analyzed_resource(Client, AnalyzerArn, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_analyzed_resource(Client, AnalyzerArn, ResourceArn, QueryMap, HeadersMap, []).
+
+get_analyzed_resource(Client, AnalyzerArn, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/analyzed-resource"],
     SuccessStatusCode = 200,
 
@@ -174,9 +186,14 @@ get_analyzed_resource(Client, AnalyzerArn, ResourceArn, Options)
 %% @doc Retrieves information about the specified analyzer.
 get_analyzer(Client, AnalyzerName)
   when is_map(Client) ->
-    get_analyzer(Client, AnalyzerName, []).
-get_analyzer(Client, AnalyzerName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_analyzer(Client, AnalyzerName, #{}, #{}).
+
+get_analyzer(Client, AnalyzerName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_analyzer(Client, AnalyzerName, QueryMap, HeadersMap, []).
+
+get_analyzer(Client, AnalyzerName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/analyzer/", aws_util:encode_uri(AnalyzerName), ""],
     SuccessStatusCode = 200,
 
@@ -192,9 +209,14 @@ get_analyzer(Client, AnalyzerName, Options)
 %% Access Analyzer filter keys in the IAM User Guide.
 get_archive_rule(Client, AnalyzerName, RuleName)
   when is_map(Client) ->
-    get_archive_rule(Client, AnalyzerName, RuleName, []).
-get_archive_rule(Client, AnalyzerName, RuleName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_archive_rule(Client, AnalyzerName, RuleName, #{}, #{}).
+
+get_archive_rule(Client, AnalyzerName, RuleName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_archive_rule(Client, AnalyzerName, RuleName, QueryMap, HeadersMap, []).
+
+get_archive_rule(Client, AnalyzerName, RuleName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/analyzer/", aws_util:encode_uri(AnalyzerName), "/archive-rule/", aws_util:encode_uri(RuleName), ""],
     SuccessStatusCode = 200,
 
@@ -207,9 +229,14 @@ get_archive_rule(Client, AnalyzerName, RuleName, Options)
 %% @doc Retrieves information about the specified finding.
 get_finding(Client, Id, AnalyzerArn)
   when is_map(Client) ->
-    get_finding(Client, Id, AnalyzerArn, []).
-get_finding(Client, Id, AnalyzerArn, Options)
-  when is_map(Client), is_list(Options) ->
+    get_finding(Client, Id, AnalyzerArn, #{}, #{}).
+
+get_finding(Client, Id, AnalyzerArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_finding(Client, Id, AnalyzerArn, QueryMap, HeadersMap, []).
+
+get_finding(Client, Id, AnalyzerArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/finding/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
@@ -241,11 +268,16 @@ list_analyzed_resources(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of analyzers.
-list_analyzers(Client, MaxResults, NextToken, Type)
+list_analyzers(Client)
   when is_map(Client) ->
-    list_analyzers(Client, MaxResults, NextToken, Type, []).
-list_analyzers(Client, MaxResults, NextToken, Type, Options)
-  when is_map(Client), is_list(Options) ->
+    list_analyzers(Client, #{}, #{}).
+
+list_analyzers(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_analyzers(Client, QueryMap, HeadersMap, []).
+
+list_analyzers(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/analyzer"],
     SuccessStatusCode = 200,
 
@@ -253,20 +285,25 @@ list_analyzers(Client, MaxResults, NextToken, Type, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"type">>, Type}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"type">>, maps:get(<<"type">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of archive rules created for the specified analyzer.
-list_archive_rules(Client, AnalyzerName, MaxResults, NextToken)
+list_archive_rules(Client, AnalyzerName)
   when is_map(Client) ->
-    list_archive_rules(Client, AnalyzerName, MaxResults, NextToken, []).
-list_archive_rules(Client, AnalyzerName, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_archive_rules(Client, AnalyzerName, #{}, #{}).
+
+list_archive_rules(Client, AnalyzerName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_archive_rules(Client, AnalyzerName, QueryMap, HeadersMap, []).
+
+list_archive_rules(Client, AnalyzerName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/analyzer/", aws_util:encode_uri(AnalyzerName), "/archive-rule"],
     SuccessStatusCode = 200,
 
@@ -274,8 +311,8 @@ list_archive_rules(Client, AnalyzerName, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -303,9 +340,14 @@ list_findings(Client, Input0, Options) ->
 %% @doc Retrieves a list of tags applied to the specified resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 

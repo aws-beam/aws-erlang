@@ -25,36 +25,49 @@
          delete_workload_share/5,
          disassociate_lenses/3,
          disassociate_lenses/4,
-         get_answer/5,
+         get_answer/4,
          get_answer/6,
-         get_lens_review/4,
+         get_answer/7,
+         get_lens_review/3,
          get_lens_review/5,
-         get_lens_review_report/4,
+         get_lens_review/6,
+         get_lens_review_report/3,
          get_lens_review_report/5,
+         get_lens_review_report/6,
          get_lens_version_difference/3,
-         get_lens_version_difference/4,
+         get_lens_version_difference/5,
+         get_lens_version_difference/6,
          get_milestone/3,
-         get_milestone/4,
+         get_milestone/5,
+         get_milestone/6,
          get_workload/2,
-         get_workload/3,
-         list_answers/7,
-         list_answers/8,
-         list_lens_review_improvements/7,
-         list_lens_review_improvements/8,
+         get_workload/4,
+         get_workload/5,
+         list_answers/3,
+         list_answers/5,
+         list_answers/6,
+         list_lens_review_improvements/3,
+         list_lens_review_improvements/5,
+         list_lens_review_improvements/6,
+         list_lens_reviews/2,
+         list_lens_reviews/4,
          list_lens_reviews/5,
-         list_lens_reviews/6,
+         list_lenses/1,
          list_lenses/3,
          list_lenses/4,
          list_milestones/3,
          list_milestones/4,
          list_notifications/2,
          list_notifications/3,
+         list_share_invitations/1,
+         list_share_invitations/3,
          list_share_invitations/4,
-         list_share_invitations/5,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
+         list_workload_shares/2,
+         list_workload_shares/4,
          list_workload_shares/5,
-         list_workload_shares/6,
          list_workloads/2,
          list_workloads/3,
          tag_resource/3,
@@ -212,11 +225,16 @@ disassociate_lenses(Client, WorkloadId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Get lens review.
-get_answer(Client, LensAlias, QuestionId, WorkloadId, MilestoneNumber)
+get_answer(Client, LensAlias, QuestionId, WorkloadId)
   when is_map(Client) ->
-    get_answer(Client, LensAlias, QuestionId, WorkloadId, MilestoneNumber, []).
-get_answer(Client, LensAlias, QuestionId, WorkloadId, MilestoneNumber, Options)
-  when is_map(Client), is_list(Options) ->
+    get_answer(Client, LensAlias, QuestionId, WorkloadId, #{}, #{}).
+
+get_answer(Client, LensAlias, QuestionId, WorkloadId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_answer(Client, LensAlias, QuestionId, WorkloadId, QueryMap, HeadersMap, []).
+
+get_answer(Client, LensAlias, QuestionId, WorkloadId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/lensReviews/", aws_util:encode_uri(LensAlias), "/answers/", aws_util:encode_uri(QuestionId), ""],
     SuccessStatusCode = undefined,
 
@@ -224,18 +242,23 @@ get_answer(Client, LensAlias, QuestionId, WorkloadId, MilestoneNumber, Options)
 
     Query0_ =
       [
-        {<<"MilestoneNumber">>, MilestoneNumber}
+        {<<"MilestoneNumber">>, maps:get(<<"MilestoneNumber">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get lens review.
-get_lens_review(Client, LensAlias, WorkloadId, MilestoneNumber)
+get_lens_review(Client, LensAlias, WorkloadId)
   when is_map(Client) ->
-    get_lens_review(Client, LensAlias, WorkloadId, MilestoneNumber, []).
-get_lens_review(Client, LensAlias, WorkloadId, MilestoneNumber, Options)
-  when is_map(Client), is_list(Options) ->
+    get_lens_review(Client, LensAlias, WorkloadId, #{}, #{}).
+
+get_lens_review(Client, LensAlias, WorkloadId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_lens_review(Client, LensAlias, WorkloadId, QueryMap, HeadersMap, []).
+
+get_lens_review(Client, LensAlias, WorkloadId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/lensReviews/", aws_util:encode_uri(LensAlias), ""],
     SuccessStatusCode = undefined,
 
@@ -243,18 +266,23 @@ get_lens_review(Client, LensAlias, WorkloadId, MilestoneNumber, Options)
 
     Query0_ =
       [
-        {<<"MilestoneNumber">>, MilestoneNumber}
+        {<<"MilestoneNumber">>, maps:get(<<"MilestoneNumber">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get lens review report.
-get_lens_review_report(Client, LensAlias, WorkloadId, MilestoneNumber)
+get_lens_review_report(Client, LensAlias, WorkloadId)
   when is_map(Client) ->
-    get_lens_review_report(Client, LensAlias, WorkloadId, MilestoneNumber, []).
-get_lens_review_report(Client, LensAlias, WorkloadId, MilestoneNumber, Options)
-  when is_map(Client), is_list(Options) ->
+    get_lens_review_report(Client, LensAlias, WorkloadId, #{}, #{}).
+
+get_lens_review_report(Client, LensAlias, WorkloadId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_lens_review_report(Client, LensAlias, WorkloadId, QueryMap, HeadersMap, []).
+
+get_lens_review_report(Client, LensAlias, WorkloadId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/lensReviews/", aws_util:encode_uri(LensAlias), "/report"],
     SuccessStatusCode = undefined,
 
@@ -262,7 +290,7 @@ get_lens_review_report(Client, LensAlias, WorkloadId, MilestoneNumber, Options)
 
     Query0_ =
       [
-        {<<"MilestoneNumber">>, MilestoneNumber}
+        {<<"MilestoneNumber">>, maps:get(<<"MilestoneNumber">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -271,9 +299,14 @@ get_lens_review_report(Client, LensAlias, WorkloadId, MilestoneNumber, Options)
 %% @doc Get lens version differences.
 get_lens_version_difference(Client, LensAlias, BaseLensVersion)
   when is_map(Client) ->
-    get_lens_version_difference(Client, LensAlias, BaseLensVersion, []).
-get_lens_version_difference(Client, LensAlias, BaseLensVersion, Options)
-  when is_map(Client), is_list(Options) ->
+    get_lens_version_difference(Client, LensAlias, BaseLensVersion, #{}, #{}).
+
+get_lens_version_difference(Client, LensAlias, BaseLensVersion, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_lens_version_difference(Client, LensAlias, BaseLensVersion, QueryMap, HeadersMap, []).
+
+get_lens_version_difference(Client, LensAlias, BaseLensVersion, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/lenses/", aws_util:encode_uri(LensAlias), "/versionDifference"],
     SuccessStatusCode = undefined,
 
@@ -290,9 +323,14 @@ get_lens_version_difference(Client, LensAlias, BaseLensVersion, Options)
 %% @doc Get a milestone for an existing workload.
 get_milestone(Client, MilestoneNumber, WorkloadId)
   when is_map(Client) ->
-    get_milestone(Client, MilestoneNumber, WorkloadId, []).
-get_milestone(Client, MilestoneNumber, WorkloadId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_milestone(Client, MilestoneNumber, WorkloadId, #{}, #{}).
+
+get_milestone(Client, MilestoneNumber, WorkloadId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_milestone(Client, MilestoneNumber, WorkloadId, QueryMap, HeadersMap, []).
+
+get_milestone(Client, MilestoneNumber, WorkloadId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/milestones/", aws_util:encode_uri(MilestoneNumber), ""],
     SuccessStatusCode = undefined,
 
@@ -305,9 +343,14 @@ get_milestone(Client, MilestoneNumber, WorkloadId, Options)
 %% @doc Get an existing workload.
 get_workload(Client, WorkloadId)
   when is_map(Client) ->
-    get_workload(Client, WorkloadId, []).
-get_workload(Client, WorkloadId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_workload(Client, WorkloadId, #{}, #{}).
+
+get_workload(Client, WorkloadId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_workload(Client, WorkloadId, QueryMap, HeadersMap, []).
+
+get_workload(Client, WorkloadId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), ""],
     SuccessStatusCode = undefined,
 
@@ -318,11 +361,16 @@ get_workload(Client, WorkloadId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List of answers.
-list_answers(Client, LensAlias, WorkloadId, MaxResults, MilestoneNumber, NextToken, PillarId)
+list_answers(Client, LensAlias, WorkloadId)
   when is_map(Client) ->
-    list_answers(Client, LensAlias, WorkloadId, MaxResults, MilestoneNumber, NextToken, PillarId, []).
-list_answers(Client, LensAlias, WorkloadId, MaxResults, MilestoneNumber, NextToken, PillarId, Options)
-  when is_map(Client), is_list(Options) ->
+    list_answers(Client, LensAlias, WorkloadId, #{}, #{}).
+
+list_answers(Client, LensAlias, WorkloadId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_answers(Client, LensAlias, WorkloadId, QueryMap, HeadersMap, []).
+
+list_answers(Client, LensAlias, WorkloadId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/lensReviews/", aws_util:encode_uri(LensAlias), "/answers"],
     SuccessStatusCode = undefined,
 
@@ -330,21 +378,26 @@ list_answers(Client, LensAlias, WorkloadId, MaxResults, MilestoneNumber, NextTok
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"MilestoneNumber">>, MilestoneNumber},
-        {<<"NextToken">>, NextToken},
-        {<<"PillarId">>, PillarId}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"MilestoneNumber">>, maps:get(<<"MilestoneNumber">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"PillarId">>, maps:get(<<"PillarId">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List lens review improvements.
-list_lens_review_improvements(Client, LensAlias, WorkloadId, MaxResults, MilestoneNumber, NextToken, PillarId)
+list_lens_review_improvements(Client, LensAlias, WorkloadId)
   when is_map(Client) ->
-    list_lens_review_improvements(Client, LensAlias, WorkloadId, MaxResults, MilestoneNumber, NextToken, PillarId, []).
-list_lens_review_improvements(Client, LensAlias, WorkloadId, MaxResults, MilestoneNumber, NextToken, PillarId, Options)
-  when is_map(Client), is_list(Options) ->
+    list_lens_review_improvements(Client, LensAlias, WorkloadId, #{}, #{}).
+
+list_lens_review_improvements(Client, LensAlias, WorkloadId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_lens_review_improvements(Client, LensAlias, WorkloadId, QueryMap, HeadersMap, []).
+
+list_lens_review_improvements(Client, LensAlias, WorkloadId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/lensReviews/", aws_util:encode_uri(LensAlias), "/improvements"],
     SuccessStatusCode = undefined,
 
@@ -352,21 +405,26 @@ list_lens_review_improvements(Client, LensAlias, WorkloadId, MaxResults, Milesto
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"MilestoneNumber">>, MilestoneNumber},
-        {<<"NextToken">>, NextToken},
-        {<<"PillarId">>, PillarId}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"MilestoneNumber">>, maps:get(<<"MilestoneNumber">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"PillarId">>, maps:get(<<"PillarId">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List lens reviews.
-list_lens_reviews(Client, WorkloadId, MaxResults, MilestoneNumber, NextToken)
+list_lens_reviews(Client, WorkloadId)
   when is_map(Client) ->
-    list_lens_reviews(Client, WorkloadId, MaxResults, MilestoneNumber, NextToken, []).
-list_lens_reviews(Client, WorkloadId, MaxResults, MilestoneNumber, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_lens_reviews(Client, WorkloadId, #{}, #{}).
+
+list_lens_reviews(Client, WorkloadId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_lens_reviews(Client, WorkloadId, QueryMap, HeadersMap, []).
+
+list_lens_reviews(Client, WorkloadId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/lensReviews"],
     SuccessStatusCode = undefined,
 
@@ -374,20 +432,25 @@ list_lens_reviews(Client, WorkloadId, MaxResults, MilestoneNumber, NextToken, Op
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"MilestoneNumber">>, MilestoneNumber},
-        {<<"NextToken">>, NextToken}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"MilestoneNumber">>, maps:get(<<"MilestoneNumber">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the available lenses.
-list_lenses(Client, MaxResults, NextToken)
+list_lenses(Client)
   when is_map(Client) ->
-    list_lenses(Client, MaxResults, NextToken, []).
-list_lenses(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_lenses(Client, #{}, #{}).
+
+list_lenses(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_lenses(Client, QueryMap, HeadersMap, []).
+
+list_lenses(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/lenses"],
     SuccessStatusCode = undefined,
 
@@ -395,8 +458,8 @@ list_lenses(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -435,11 +498,16 @@ list_notifications(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc List the workload invitations.
-list_share_invitations(Client, MaxResults, NextToken, WorkloadNamePrefix)
+list_share_invitations(Client)
   when is_map(Client) ->
-    list_share_invitations(Client, MaxResults, NextToken, WorkloadNamePrefix, []).
-list_share_invitations(Client, MaxResults, NextToken, WorkloadNamePrefix, Options)
-  when is_map(Client), is_list(Options) ->
+    list_share_invitations(Client, #{}, #{}).
+
+list_share_invitations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_share_invitations(Client, QueryMap, HeadersMap, []).
+
+list_share_invitations(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/shareInvitations"],
     SuccessStatusCode = undefined,
 
@@ -447,9 +515,9 @@ list_share_invitations(Client, MaxResults, NextToken, WorkloadNamePrefix, Option
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken},
-        {<<"WorkloadNamePrefix">>, WorkloadNamePrefix}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"WorkloadNamePrefix">>, maps:get(<<"WorkloadNamePrefix">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -458,9 +526,14 @@ list_share_invitations(Client, MaxResults, NextToken, WorkloadNamePrefix, Option
 %% @doc List the tags for a resource.
 list_tags_for_resource(Client, WorkloadArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, WorkloadArn, []).
-list_tags_for_resource(Client, WorkloadArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, WorkloadArn, #{}, #{}).
+
+list_tags_for_resource(Client, WorkloadArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, WorkloadArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, WorkloadArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(WorkloadArn), ""],
     SuccessStatusCode = undefined,
 
@@ -471,11 +544,16 @@ list_tags_for_resource(Client, WorkloadArn, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the workload shares associated with the workload.
-list_workload_shares(Client, WorkloadId, MaxResults, NextToken, SharedWithPrefix)
+list_workload_shares(Client, WorkloadId)
   when is_map(Client) ->
-    list_workload_shares(Client, WorkloadId, MaxResults, NextToken, SharedWithPrefix, []).
-list_workload_shares(Client, WorkloadId, MaxResults, NextToken, SharedWithPrefix, Options)
-  when is_map(Client), is_list(Options) ->
+    list_workload_shares(Client, WorkloadId, #{}, #{}).
+
+list_workload_shares(Client, WorkloadId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_workload_shares(Client, WorkloadId, QueryMap, HeadersMap, []).
+
+list_workload_shares(Client, WorkloadId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/shares"],
     SuccessStatusCode = undefined,
 
@@ -483,9 +561,9 @@ list_workload_shares(Client, WorkloadId, MaxResults, NextToken, SharedWithPrefix
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken},
-        {<<"SharedWithPrefix">>, SharedWithPrefix}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"SharedWithPrefix">>, maps:get(<<"SharedWithPrefix">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

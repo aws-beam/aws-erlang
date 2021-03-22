@@ -60,39 +60,56 @@
          delete_email_identity/3,
          delete_email_identity/4,
          get_account/1,
-         get_account/2,
+         get_account/3,
+         get_account/4,
          get_blacklist_reports/2,
-         get_blacklist_reports/3,
+         get_blacklist_reports/4,
+         get_blacklist_reports/5,
          get_configuration_set/2,
-         get_configuration_set/3,
+         get_configuration_set/4,
+         get_configuration_set/5,
          get_configuration_set_event_destinations/2,
-         get_configuration_set_event_destinations/3,
+         get_configuration_set_event_destinations/4,
+         get_configuration_set_event_destinations/5,
          get_dedicated_ip/2,
-         get_dedicated_ip/3,
+         get_dedicated_ip/4,
+         get_dedicated_ip/5,
+         get_dedicated_ips/1,
+         get_dedicated_ips/3,
          get_dedicated_ips/4,
-         get_dedicated_ips/5,
          get_deliverability_dashboard_options/1,
-         get_deliverability_dashboard_options/2,
+         get_deliverability_dashboard_options/3,
+         get_deliverability_dashboard_options/4,
          get_deliverability_test_report/2,
-         get_deliverability_test_report/3,
+         get_deliverability_test_report/4,
+         get_deliverability_test_report/5,
          get_domain_deliverability_campaign/2,
-         get_domain_deliverability_campaign/3,
+         get_domain_deliverability_campaign/4,
+         get_domain_deliverability_campaign/5,
          get_domain_statistics_report/4,
-         get_domain_statistics_report/5,
+         get_domain_statistics_report/6,
+         get_domain_statistics_report/7,
          get_email_identity/2,
-         get_email_identity/3,
+         get_email_identity/4,
+         get_email_identity/5,
+         list_configuration_sets/1,
          list_configuration_sets/3,
          list_configuration_sets/4,
+         list_dedicated_ip_pools/1,
          list_dedicated_ip_pools/3,
          list_dedicated_ip_pools/4,
+         list_deliverability_test_reports/1,
          list_deliverability_test_reports/3,
          list_deliverability_test_reports/4,
+         list_domain_deliverability_campaigns/4,
          list_domain_deliverability_campaigns/6,
          list_domain_deliverability_campaigns/7,
+         list_email_identities/1,
          list_email_identities/3,
          list_email_identities/4,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          put_account_dedicated_ip_warmup_attributes/2,
          put_account_dedicated_ip_warmup_attributes/3,
          put_account_sending_attributes/2,
@@ -343,9 +360,14 @@ delete_email_identity(Client, EmailIdentity, Input0, Options) ->
 %% your Amazon Pinpoint account in the current AWS Region.
 get_account(Client)
   when is_map(Client) ->
-    get_account(Client, []).
-get_account(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    get_account(Client, #{}, #{}).
+
+get_account(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_account(Client, QueryMap, HeadersMap, []).
+
+get_account(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/email/account"],
     SuccessStatusCode = undefined,
 
@@ -359,9 +381,14 @@ get_account(Client, Options)
 %% appear on.
 get_blacklist_reports(Client, BlacklistItemNames)
   when is_map(Client) ->
-    get_blacklist_reports(Client, BlacklistItemNames, []).
-get_blacklist_reports(Client, BlacklistItemNames, Options)
-  when is_map(Client), is_list(Options) ->
+    get_blacklist_reports(Client, BlacklistItemNames, #{}, #{}).
+
+get_blacklist_reports(Client, BlacklistItemNames, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_blacklist_reports(Client, BlacklistItemNames, QueryMap, HeadersMap, []).
+
+get_blacklist_reports(Client, BlacklistItemNames, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/email/deliverability-dashboard/blacklist-report"],
     SuccessStatusCode = undefined,
 
@@ -386,9 +413,14 @@ get_blacklist_reports(Client, BlacklistItemNames, Options)
 %% that configuration set are applied to the email.
 get_configuration_set(Client, ConfigurationSetName)
   when is_map(Client) ->
-    get_configuration_set(Client, ConfigurationSetName, []).
-get_configuration_set(Client, ConfigurationSetName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_configuration_set(Client, ConfigurationSetName, #{}, #{}).
+
+get_configuration_set(Client, ConfigurationSetName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_configuration_set(Client, ConfigurationSetName, QueryMap, HeadersMap, []).
+
+get_configuration_set(Client, ConfigurationSetName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), ""],
     SuccessStatusCode = undefined,
 
@@ -409,9 +441,14 @@ get_configuration_set(Client, ConfigurationSetName, Options)
 %% to Amazon S3 for long-term storage.
 get_configuration_set_event_destinations(Client, ConfigurationSetName)
   when is_map(Client) ->
-    get_configuration_set_event_destinations(Client, ConfigurationSetName, []).
-get_configuration_set_event_destinations(Client, ConfigurationSetName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_configuration_set_event_destinations(Client, ConfigurationSetName, #{}, #{}).
+
+get_configuration_set_event_destinations(Client, ConfigurationSetName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_configuration_set_event_destinations(Client, ConfigurationSetName, QueryMap, HeadersMap, []).
+
+get_configuration_set_event_destinations(Client, ConfigurationSetName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/event-destinations"],
     SuccessStatusCode = undefined,
 
@@ -426,9 +463,14 @@ get_configuration_set_event_destinations(Client, ConfigurationSetName, Options)
 %% the automatic warm-up process for the address.
 get_dedicated_ip(Client, Ip)
   when is_map(Client) ->
-    get_dedicated_ip(Client, Ip, []).
-get_dedicated_ip(Client, Ip, Options)
-  when is_map(Client), is_list(Options) ->
+    get_dedicated_ip(Client, Ip, #{}, #{}).
+
+get_dedicated_ip(Client, Ip, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_dedicated_ip(Client, Ip, QueryMap, HeadersMap, []).
+
+get_dedicated_ip(Client, Ip, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/email/dedicated-ips/", aws_util:encode_uri(Ip), ""],
     SuccessStatusCode = undefined,
 
@@ -440,11 +482,16 @@ get_dedicated_ip(Client, Ip, Options)
 
 %% @doc List the dedicated IP addresses that are associated with your Amazon
 %% Pinpoint account.
-get_dedicated_ips(Client, NextToken, PageSize, PoolName)
+get_dedicated_ips(Client)
   when is_map(Client) ->
-    get_dedicated_ips(Client, NextToken, PageSize, PoolName, []).
-get_dedicated_ips(Client, NextToken, PageSize, PoolName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_dedicated_ips(Client, #{}, #{}).
+
+get_dedicated_ips(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_dedicated_ips(Client, QueryMap, HeadersMap, []).
+
+get_dedicated_ips(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/email/dedicated-ips"],
     SuccessStatusCode = undefined,
 
@@ -452,9 +499,9 @@ get_dedicated_ips(Client, NextToken, PageSize, PoolName, Options)
 
     Query0_ =
       [
-        {<<"NextToken">>, NextToken},
-        {<<"PageSize">>, PageSize},
-        {<<"PoolName">>, PoolName}
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"PageSize">>, maps:get(<<"PageSize">>, QueryMap, undefined)},
+        {<<"PoolName">>, maps:get(<<"PoolName">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -474,9 +521,14 @@ get_dedicated_ips(Client, NextToken, PageSize, PoolName, Options)
 %% Deliverability dashboard subscription, see Amazon Pinpoint Pricing.
 get_deliverability_dashboard_options(Client)
   when is_map(Client) ->
-    get_deliverability_dashboard_options(Client, []).
-get_deliverability_dashboard_options(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    get_deliverability_dashboard_options(Client, #{}, #{}).
+
+get_deliverability_dashboard_options(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_deliverability_dashboard_options(Client, QueryMap, HeadersMap, []).
+
+get_deliverability_dashboard_options(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/email/deliverability-dashboard"],
     SuccessStatusCode = undefined,
 
@@ -489,9 +541,14 @@ get_deliverability_dashboard_options(Client, Options)
 %% @doc Retrieve the results of a predictive inbox placement test.
 get_deliverability_test_report(Client, ReportId)
   when is_map(Client) ->
-    get_deliverability_test_report(Client, ReportId, []).
-get_deliverability_test_report(Client, ReportId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_deliverability_test_report(Client, ReportId, #{}, #{}).
+
+get_deliverability_test_report(Client, ReportId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_deliverability_test_report(Client, ReportId, QueryMap, HeadersMap, []).
+
+get_deliverability_test_report(Client, ReportId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/email/deliverability-dashboard/test-reports/", aws_util:encode_uri(ReportId), ""],
     SuccessStatusCode = undefined,
 
@@ -508,9 +565,14 @@ get_deliverability_test_report(Client, ReportId, Options)
 %% (`PutDeliverabilityDashboardOption' operation).
 get_domain_deliverability_campaign(Client, CampaignId)
   when is_map(Client) ->
-    get_domain_deliverability_campaign(Client, CampaignId, []).
-get_domain_deliverability_campaign(Client, CampaignId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_domain_deliverability_campaign(Client, CampaignId, #{}, #{}).
+
+get_domain_deliverability_campaign(Client, CampaignId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_domain_deliverability_campaign(Client, CampaignId, QueryMap, HeadersMap, []).
+
+get_domain_deliverability_campaign(Client, CampaignId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/email/deliverability-dashboard/campaigns/", aws_util:encode_uri(CampaignId), ""],
     SuccessStatusCode = undefined,
 
@@ -524,9 +586,14 @@ get_domain_deliverability_campaign(Client, CampaignId, Options)
 %% you use to send email.
 get_domain_statistics_report(Client, Domain, EndDate, StartDate)
   when is_map(Client) ->
-    get_domain_statistics_report(Client, Domain, EndDate, StartDate, []).
-get_domain_statistics_report(Client, Domain, EndDate, StartDate, Options)
-  when is_map(Client), is_list(Options) ->
+    get_domain_statistics_report(Client, Domain, EndDate, StartDate, #{}, #{}).
+
+get_domain_statistics_report(Client, Domain, EndDate, StartDate, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_domain_statistics_report(Client, Domain, EndDate, StartDate, QueryMap, HeadersMap, []).
+
+get_domain_statistics_report(Client, Domain, EndDate, StartDate, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/email/deliverability-dashboard/statistics-report/", aws_util:encode_uri(Domain), ""],
     SuccessStatusCode = undefined,
 
@@ -546,9 +613,14 @@ get_domain_statistics_report(Client, Domain, EndDate, StartDate, Options)
 %% DKIM authentication status, and its custom Mail-From settings.
 get_email_identity(Client, EmailIdentity)
   when is_map(Client) ->
-    get_email_identity(Client, EmailIdentity, []).
-get_email_identity(Client, EmailIdentity, Options)
-  when is_map(Client), is_list(Options) ->
+    get_email_identity(Client, EmailIdentity, #{}, #{}).
+
+get_email_identity(Client, EmailIdentity, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_email_identity(Client, EmailIdentity, QueryMap, HeadersMap, []).
+
+get_email_identity(Client, EmailIdentity, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/email/identities/", aws_util:encode_uri(EmailIdentity), ""],
     SuccessStatusCode = undefined,
 
@@ -566,11 +638,16 @@ get_email_identity(Client, EmailIdentity, Options)
 %% including a reference to the configuration set in the headers of the
 %% email. When you apply a configuration set to an email, all of the rules in
 %% that configuration set are applied to the email.
-list_configuration_sets(Client, NextToken, PageSize)
+list_configuration_sets(Client)
   when is_map(Client) ->
-    list_configuration_sets(Client, NextToken, PageSize, []).
-list_configuration_sets(Client, NextToken, PageSize, Options)
-  when is_map(Client), is_list(Options) ->
+    list_configuration_sets(Client, #{}, #{}).
+
+list_configuration_sets(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_configuration_sets(Client, QueryMap, HeadersMap, []).
+
+list_configuration_sets(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/email/configuration-sets"],
     SuccessStatusCode = undefined,
 
@@ -578,8 +655,8 @@ list_configuration_sets(Client, NextToken, PageSize, Options)
 
     Query0_ =
       [
-        {<<"NextToken">>, NextToken},
-        {<<"PageSize">>, PageSize}
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"PageSize">>, maps:get(<<"PageSize">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -587,11 +664,16 @@ list_configuration_sets(Client, NextToken, PageSize, Options)
 
 %% @doc List all of the dedicated IP pools that exist in your Amazon Pinpoint
 %% account in the current AWS Region.
-list_dedicated_ip_pools(Client, NextToken, PageSize)
+list_dedicated_ip_pools(Client)
   when is_map(Client) ->
-    list_dedicated_ip_pools(Client, NextToken, PageSize, []).
-list_dedicated_ip_pools(Client, NextToken, PageSize, Options)
-  when is_map(Client), is_list(Options) ->
+    list_dedicated_ip_pools(Client, #{}, #{}).
+
+list_dedicated_ip_pools(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_dedicated_ip_pools(Client, QueryMap, HeadersMap, []).
+
+list_dedicated_ip_pools(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/email/dedicated-ip-pools"],
     SuccessStatusCode = undefined,
 
@@ -599,8 +681,8 @@ list_dedicated_ip_pools(Client, NextToken, PageSize, Options)
 
     Query0_ =
       [
-        {<<"NextToken">>, NextToken},
-        {<<"PageSize">>, PageSize}
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"PageSize">>, maps:get(<<"PageSize">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -611,11 +693,16 @@ list_dedicated_ip_pools(Client, NextToken, PageSize, Options)
 %%
 %% For predictive inbox placement tests that are complete, you can use the
 %% `GetDeliverabilityTestReport' operation to view the results.
-list_deliverability_test_reports(Client, NextToken, PageSize)
+list_deliverability_test_reports(Client)
   when is_map(Client) ->
-    list_deliverability_test_reports(Client, NextToken, PageSize, []).
-list_deliverability_test_reports(Client, NextToken, PageSize, Options)
-  when is_map(Client), is_list(Options) ->
+    list_deliverability_test_reports(Client, #{}, #{}).
+
+list_deliverability_test_reports(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_deliverability_test_reports(Client, QueryMap, HeadersMap, []).
+
+list_deliverability_test_reports(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/email/deliverability-dashboard/test-reports"],
     SuccessStatusCode = undefined,
 
@@ -623,8 +710,8 @@ list_deliverability_test_reports(Client, NextToken, PageSize, Options)
 
     Query0_ =
       [
-        {<<"NextToken">>, NextToken},
-        {<<"PageSize">>, PageSize}
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"PageSize">>, maps:get(<<"PageSize">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -635,11 +722,16 @@ list_deliverability_test_reports(Client, NextToken, PageSize, Options)
 %%
 %% This data is available for a domain only if you enabled the Deliverability
 %% dashboard (`PutDeliverabilityDashboardOption' operation) for the domain.
-list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, NextToken, PageSize, StartDate)
+list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, StartDate)
   when is_map(Client) ->
-    list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, NextToken, PageSize, StartDate, []).
-list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, NextToken, PageSize, StartDate, Options)
-  when is_map(Client), is_list(Options) ->
+    list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, StartDate, #{}, #{}).
+
+list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, StartDate, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, StartDate, QueryMap, HeadersMap, []).
+
+list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, StartDate, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/email/deliverability-dashboard/domains/", aws_util:encode_uri(SubscribedDomain), "/campaigns"],
     SuccessStatusCode = undefined,
 
@@ -648,8 +740,8 @@ list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, NextToke
     Query0_ =
       [
         {<<"EndDate">>, EndDate},
-        {<<"NextToken">>, NextToken},
-        {<<"PageSize">>, PageSize},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"PageSize">>, maps:get(<<"PageSize">>, QueryMap, undefined)},
         {<<"StartDate">>, StartDate}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
@@ -661,11 +753,16 @@ list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, NextToke
 %%
 %% An identity can be either an email address or a domain. This operation
 %% returns identities that are verified as well as those that aren't.
-list_email_identities(Client, NextToken, PageSize)
+list_email_identities(Client)
   when is_map(Client) ->
-    list_email_identities(Client, NextToken, PageSize, []).
-list_email_identities(Client, NextToken, PageSize, Options)
-  when is_map(Client), is_list(Options) ->
+    list_email_identities(Client, #{}, #{}).
+
+list_email_identities(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_email_identities(Client, QueryMap, HeadersMap, []).
+
+list_email_identities(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/email/identities"],
     SuccessStatusCode = undefined,
 
@@ -673,8 +770,8 @@ list_email_identities(Client, NextToken, PageSize, Options)
 
     Query0_ =
       [
-        {<<"NextToken">>, NextToken},
-        {<<"PageSize">>, PageSize}
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"PageSize">>, maps:get(<<"PageSize">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -690,9 +787,14 @@ list_email_identities(Client, NextToken, PageSize, Options)
 %% within a tag key.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/email/tags"],
     SuccessStatusCode = undefined,
 

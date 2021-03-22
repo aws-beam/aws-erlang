@@ -23,21 +23,27 @@
 -export([add_notification_channel/2,
          add_notification_channel/3,
          describe_account_health/1,
-         describe_account_health/2,
+         describe_account_health/3,
+         describe_account_health/4,
          describe_account_overview/2,
          describe_account_overview/3,
          describe_anomaly/2,
-         describe_anomaly/3,
+         describe_anomaly/4,
+         describe_anomaly/5,
          describe_feedback/2,
          describe_feedback/3,
          describe_insight/2,
-         describe_insight/3,
-         describe_resource_collection_health/3,
+         describe_insight/4,
+         describe_insight/5,
+         describe_resource_collection_health/2,
          describe_resource_collection_health/4,
+         describe_resource_collection_health/5,
          describe_service_integration/1,
-         describe_service_integration/2,
-         get_resource_collection/3,
+         describe_service_integration/3,
+         describe_service_integration/4,
+         get_resource_collection/2,
          get_resource_collection/4,
+         get_resource_collection/5,
          list_anomalies_for_insight/3,
          list_anomalies_for_insight/4,
          list_events/2,
@@ -102,9 +108,14 @@ add_notification_channel(Client, Input0, Options) ->
 %% Use these numbers to gauge the health of operations in your AWS account.
 describe_account_health(Client)
   when is_map(Client) ->
-    describe_account_health(Client, []).
-describe_account_health(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_account_health(Client, #{}, #{}).
+
+describe_account_health(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_account_health(Client, QueryMap, HeadersMap, []).
+
+describe_account_health(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/health"],
     SuccessStatusCode = 200,
 
@@ -136,9 +147,14 @@ describe_account_overview(Client, Input0, Options) ->
 %% @doc Returns details about an anomaly that you specify using its ID.
 describe_anomaly(Client, Id)
   when is_map(Client) ->
-    describe_anomaly(Client, Id, []).
-describe_anomaly(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_anomaly(Client, Id, #{}, #{}).
+
+describe_anomaly(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_anomaly(Client, Id, QueryMap, HeadersMap, []).
+
+describe_anomaly(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/anomalies/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
@@ -168,9 +184,14 @@ describe_feedback(Client, Input0, Options) ->
 %% @doc Returns details about an insight that you specify using its ID.
 describe_insight(Client, Id)
   when is_map(Client) ->
-    describe_insight(Client, Id, []).
-describe_insight(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_insight(Client, Id, #{}, #{}).
+
+describe_insight(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_insight(Client, Id, QueryMap, HeadersMap, []).
+
+describe_insight(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/insights/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
@@ -188,11 +209,16 @@ describe_insight(Client, Id, Options)
 %% resource collection supported is AWS CloudFormation stacks. DevOps Guru
 %% can be configured to analyze only the AWS resources that are defined in
 %% the stacks.
-describe_resource_collection_health(Client, ResourceCollectionType, NextToken)
+describe_resource_collection_health(Client, ResourceCollectionType)
   when is_map(Client) ->
-    describe_resource_collection_health(Client, ResourceCollectionType, NextToken, []).
-describe_resource_collection_health(Client, ResourceCollectionType, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_resource_collection_health(Client, ResourceCollectionType, #{}, #{}).
+
+describe_resource_collection_health(Client, ResourceCollectionType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_resource_collection_health(Client, ResourceCollectionType, QueryMap, HeadersMap, []).
+
+describe_resource_collection_health(Client, ResourceCollectionType, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/accounts/health/resource-collection/", aws_util:encode_uri(ResourceCollectionType), ""],
     SuccessStatusCode = 200,
 
@@ -200,7 +226,7 @@ describe_resource_collection_health(Client, ResourceCollectionType, NextToken, O
 
     Query0_ =
       [
-        {<<"NextToken">>, NextToken}
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -214,9 +240,14 @@ describe_resource_collection_health(Client, ResourceCollectionType, NextToken, O
 %% insight.
 describe_service_integration(Client)
   when is_map(Client) ->
-    describe_service_integration(Client, []).
-describe_service_integration(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_service_integration(Client, #{}, #{}).
+
+describe_service_integration(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_service_integration(Client, QueryMap, HeadersMap, []).
+
+describe_service_integration(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/service-integrations"],
     SuccessStatusCode = 200,
 
@@ -232,11 +263,16 @@ describe_service_integration(Client, Options)
 %% The one type of AWS resource collection supported is AWS CloudFormation
 %% stacks. DevOps Guru can be configured to analyze only the AWS resources
 %% that are defined in the stacks.
-get_resource_collection(Client, ResourceCollectionType, NextToken)
+get_resource_collection(Client, ResourceCollectionType)
   when is_map(Client) ->
-    get_resource_collection(Client, ResourceCollectionType, NextToken, []).
-get_resource_collection(Client, ResourceCollectionType, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_resource_collection(Client, ResourceCollectionType, #{}, #{}).
+
+get_resource_collection(Client, ResourceCollectionType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_resource_collection(Client, ResourceCollectionType, QueryMap, HeadersMap, []).
+
+get_resource_collection(Client, ResourceCollectionType, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/resource-collections/", aws_util:encode_uri(ResourceCollectionType), ""],
     SuccessStatusCode = 200,
 
@@ -244,7 +280,7 @@ get_resource_collection(Client, ResourceCollectionType, NextToken, Options)
 
     Query0_ =
       [
-        {<<"NextToken">>, NextToken}
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

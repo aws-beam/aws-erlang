@@ -8,6 +8,7 @@
          create_endpoint/3,
          delete_endpoint/2,
          delete_endpoint/3,
+         list_endpoints/1,
          list_endpoints/3,
          list_endpoints/4]).
 
@@ -95,11 +96,16 @@ delete_endpoint(Client, Input0, Options) ->
 %% </li> <li> DeleteEndpoint
 %%
 %% </li> </ul>
-list_endpoints(Client, MaxResults, NextToken)
+list_endpoints(Client)
   when is_map(Client) ->
-    list_endpoints(Client, MaxResults, NextToken, []).
-list_endpoints(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_endpoints(Client, #{}, #{}).
+
+list_endpoints(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_endpoints(Client, QueryMap, HeadersMap, []).
+
+list_endpoints(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/S3Outposts/ListEndpoints"],
     SuccessStatusCode = undefined,
 
@@ -107,8 +113,8 @@ list_endpoints(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

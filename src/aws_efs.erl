@@ -30,22 +30,31 @@
          delete_mount_target/4,
          delete_tags/3,
          delete_tags/4,
-         describe_access_points/5,
-         describe_access_points/6,
+         describe_access_points/1,
+         describe_access_points/3,
+         describe_access_points/4,
          describe_backup_policy/2,
-         describe_backup_policy/3,
+         describe_backup_policy/4,
+         describe_backup_policy/5,
          describe_file_system_policy/2,
-         describe_file_system_policy/3,
-         describe_file_systems/5,
-         describe_file_systems/6,
+         describe_file_system_policy/4,
+         describe_file_system_policy/5,
+         describe_file_systems/1,
+         describe_file_systems/3,
+         describe_file_systems/4,
          describe_lifecycle_configuration/2,
-         describe_lifecycle_configuration/3,
+         describe_lifecycle_configuration/4,
+         describe_lifecycle_configuration/5,
          describe_mount_target_security_groups/2,
-         describe_mount_target_security_groups/3,
-         describe_mount_targets/6,
-         describe_mount_targets/7,
+         describe_mount_target_security_groups/4,
+         describe_mount_target_security_groups/5,
+         describe_mount_targets/1,
+         describe_mount_targets/3,
+         describe_mount_targets/4,
+         describe_tags/2,
          describe_tags/4,
          describe_tags/5,
+         list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
          modify_mount_target_security_groups/3,
@@ -465,11 +474,16 @@ delete_tags(Client, FileSystemId, Input0, Options) ->
 %%
 %% This operation requires permissions for the
 %% `elasticfilesystem:DescribeAccessPoints' action.
-describe_access_points(Client, AccessPointId, FileSystemId, MaxResults, NextToken)
+describe_access_points(Client)
   when is_map(Client) ->
-    describe_access_points(Client, AccessPointId, FileSystemId, MaxResults, NextToken, []).
-describe_access_points(Client, AccessPointId, FileSystemId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_access_points(Client, #{}, #{}).
+
+describe_access_points(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_access_points(Client, QueryMap, HeadersMap, []).
+
+describe_access_points(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2015-02-01/access-points"],
     SuccessStatusCode = 200,
 
@@ -477,10 +491,10 @@ describe_access_points(Client, AccessPointId, FileSystemId, MaxResults, NextToke
 
     Query0_ =
       [
-        {<<"AccessPointId">>, AccessPointId},
-        {<<"FileSystemId">>, FileSystemId},
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken}
+        {<<"AccessPointId">>, maps:get(<<"AccessPointId">>, QueryMap, undefined)},
+        {<<"FileSystemId">>, maps:get(<<"FileSystemId">>, QueryMap, undefined)},
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -489,9 +503,14 @@ describe_access_points(Client, AccessPointId, FileSystemId, MaxResults, NextToke
 %% @doc Returns the backup policy for the specified EFS file system.
 describe_backup_policy(Client, FileSystemId)
   when is_map(Client) ->
-    describe_backup_policy(Client, FileSystemId, []).
-describe_backup_policy(Client, FileSystemId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_backup_policy(Client, FileSystemId, #{}, #{}).
+
+describe_backup_policy(Client, FileSystemId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_backup_policy(Client, FileSystemId, QueryMap, HeadersMap, []).
+
+describe_backup_policy(Client, FileSystemId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(FileSystemId), "/backup-policy"],
     SuccessStatusCode = 200,
 
@@ -507,9 +526,14 @@ describe_backup_policy(Client, FileSystemId, Options)
 %% `elasticfilesystem:DescribeFileSystemPolicy' action.
 describe_file_system_policy(Client, FileSystemId)
   when is_map(Client) ->
-    describe_file_system_policy(Client, FileSystemId, []).
-describe_file_system_policy(Client, FileSystemId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_file_system_policy(Client, FileSystemId, #{}, #{}).
+
+describe_file_system_policy(Client, FileSystemId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_file_system_policy(Client, FileSystemId, QueryMap, HeadersMap, []).
+
+describe_file_system_policy(Client, FileSystemId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(FileSystemId), "/policy"],
     SuccessStatusCode = 200,
 
@@ -545,11 +569,16 @@ describe_file_system_policy(Client, FileSystemId, Options)
 %%
 %% This operation requires permissions for the
 %% `elasticfilesystem:DescribeFileSystems' action.
-describe_file_systems(Client, CreationToken, FileSystemId, Marker, MaxItems)
+describe_file_systems(Client)
   when is_map(Client) ->
-    describe_file_systems(Client, CreationToken, FileSystemId, Marker, MaxItems, []).
-describe_file_systems(Client, CreationToken, FileSystemId, Marker, MaxItems, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_file_systems(Client, #{}, #{}).
+
+describe_file_systems(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_file_systems(Client, QueryMap, HeadersMap, []).
+
+describe_file_systems(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2015-02-01/file-systems"],
     SuccessStatusCode = 200,
 
@@ -557,10 +586,10 @@ describe_file_systems(Client, CreationToken, FileSystemId, Marker, MaxItems, Opt
 
     Query0_ =
       [
-        {<<"CreationToken">>, CreationToken},
-        {<<"FileSystemId">>, FileSystemId},
-        {<<"Marker">>, Marker},
-        {<<"MaxItems">>, MaxItems}
+        {<<"CreationToken">>, maps:get(<<"CreationToken">>, QueryMap, undefined)},
+        {<<"FileSystemId">>, maps:get(<<"FileSystemId">>, QueryMap, undefined)},
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -578,9 +607,14 @@ describe_file_systems(Client, CreationToken, FileSystemId, Marker, MaxItems, Opt
 %% `elasticfilesystem:DescribeLifecycleConfiguration' operation.
 describe_lifecycle_configuration(Client, FileSystemId)
   when is_map(Client) ->
-    describe_lifecycle_configuration(Client, FileSystemId, []).
-describe_lifecycle_configuration(Client, FileSystemId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_lifecycle_configuration(Client, FileSystemId, #{}, #{}).
+
+describe_lifecycle_configuration(Client, FileSystemId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_lifecycle_configuration(Client, FileSystemId, QueryMap, HeadersMap, []).
+
+describe_lifecycle_configuration(Client, FileSystemId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(FileSystemId), "/lifecycle-configuration"],
     SuccessStatusCode = 200,
 
@@ -606,9 +640,14 @@ describe_lifecycle_configuration(Client, FileSystemId, Options)
 %% </li> </ul>
 describe_mount_target_security_groups(Client, MountTargetId)
   when is_map(Client) ->
-    describe_mount_target_security_groups(Client, MountTargetId, []).
-describe_mount_target_security_groups(Client, MountTargetId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_mount_target_security_groups(Client, MountTargetId, #{}, #{}).
+
+describe_mount_target_security_groups(Client, MountTargetId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_mount_target_security_groups(Client, MountTargetId, QueryMap, HeadersMap, []).
+
+describe_mount_target_security_groups(Client, MountTargetId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2015-02-01/mount-targets/", aws_util:encode_uri(MountTargetId), "/security-groups"],
     SuccessStatusCode = 200,
 
@@ -628,11 +667,16 @@ describe_mount_target_security_groups(Client, MountTargetId, Options)
 %% `elasticfilesystem:DescribeMountTargets' action, on either the file system
 %% ID that you specify in `FileSystemId', or on the file system of the mount
 %% target that you specify in `MountTargetId'.
-describe_mount_targets(Client, AccessPointId, FileSystemId, Marker, MaxItems, MountTargetId)
+describe_mount_targets(Client)
   when is_map(Client) ->
-    describe_mount_targets(Client, AccessPointId, FileSystemId, Marker, MaxItems, MountTargetId, []).
-describe_mount_targets(Client, AccessPointId, FileSystemId, Marker, MaxItems, MountTargetId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_mount_targets(Client, #{}, #{}).
+
+describe_mount_targets(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_mount_targets(Client, QueryMap, HeadersMap, []).
+
+describe_mount_targets(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2015-02-01/mount-targets"],
     SuccessStatusCode = 200,
 
@@ -640,11 +684,11 @@ describe_mount_targets(Client, AccessPointId, FileSystemId, Marker, MaxItems, Mo
 
     Query0_ =
       [
-        {<<"AccessPointId">>, AccessPointId},
-        {<<"FileSystemId">>, FileSystemId},
-        {<<"Marker">>, Marker},
-        {<<"MaxItems">>, MaxItems},
-        {<<"MountTargetId">>, MountTargetId}
+        {<<"AccessPointId">>, maps:get(<<"AccessPointId">>, QueryMap, undefined)},
+        {<<"FileSystemId">>, maps:get(<<"FileSystemId">>, QueryMap, undefined)},
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)},
+        {<<"MountTargetId">>, maps:get(<<"MountTargetId">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -658,11 +702,16 @@ describe_mount_targets(Client, AccessPointId, FileSystemId, Marker, MaxItems, Mo
 %%
 %% This operation requires permissions for the
 %% `elasticfilesystem:DescribeTags' action.
-describe_tags(Client, FileSystemId, Marker, MaxItems)
+describe_tags(Client, FileSystemId)
   when is_map(Client) ->
-    describe_tags(Client, FileSystemId, Marker, MaxItems, []).
-describe_tags(Client, FileSystemId, Marker, MaxItems, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_tags(Client, FileSystemId, #{}, #{}).
+
+describe_tags(Client, FileSystemId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_tags(Client, FileSystemId, QueryMap, HeadersMap, []).
+
+describe_tags(Client, FileSystemId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2015-02-01/tags/", aws_util:encode_uri(FileSystemId), "/"],
     SuccessStatusCode = 200,
 
@@ -670,8 +719,8 @@ describe_tags(Client, FileSystemId, Marker, MaxItems, Options)
 
     Query0_ =
       [
-        {<<"Marker">>, Marker},
-        {<<"MaxItems">>, MaxItems}
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -684,11 +733,16 @@ describe_tags(Client, FileSystemId, Marker, MaxItems, Options)
 %%
 %% This operation requires permissions for the
 %% `elasticfilesystem:DescribeAccessPoints' action.
-list_tags_for_resource(Client, ResourceId, MaxResults, NextToken)
+list_tags_for_resource(Client, ResourceId)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceId, MaxResults, NextToken, []).
-list_tags_for_resource(Client, ResourceId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceId, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceId, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2015-02-01/resource-tags/", aws_util:encode_uri(ResourceId), ""],
     SuccessStatusCode = 200,
 
@@ -696,8 +750,8 @@ list_tags_for_resource(Client, ResourceId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"MaxResults">>, MaxResults},
-        {<<"NextToken">>, NextToken}
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

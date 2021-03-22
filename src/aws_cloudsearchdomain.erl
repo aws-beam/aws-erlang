@@ -13,10 +13,12 @@
 %% For more information, see the Amazon CloudSearch Developer Guide.
 -module(aws_cloudsearchdomain).
 
--export([search/15,
-         search/16,
-         suggest/4,
+-export([search/2,
+         search/4,
+         search/5,
+         suggest/3,
          suggest/5,
+         suggest/6,
          upload_documents/2,
          upload_documents/3]).
 
@@ -48,11 +50,16 @@
 %% endpoint for your domain, use the Amazon CloudSearch configuration service
 %% `DescribeDomains' action. A domain's endpoints are also displayed on the
 %% domain dashboard in the Amazon CloudSearch console.
-search(Client, Cursor, Expr, Facet, FilterQuery, Highlight, Partial, Query, QueryOptions, QueryParser, Return, Size, Sort, Start, Stats)
+search(Client, Query)
   when is_map(Client) ->
-    search(Client, Cursor, Expr, Facet, FilterQuery, Highlight, Partial, Query, QueryOptions, QueryParser, Return, Size, Sort, Start, Stats, []).
-search(Client, Cursor, Expr, Facet, FilterQuery, Highlight, Partial, Query, QueryOptions, QueryParser, Return, Size, Sort, Start, Stats, Options)
-  when is_map(Client), is_list(Options) ->
+    search(Client, Query, #{}, #{}).
+
+search(Client, Query, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    search(Client, Query, QueryMap, HeadersMap, []).
+
+search(Client, Query, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2013-01-01/search?format=sdk&pretty=true"],
     SuccessStatusCode = undefined,
 
@@ -60,20 +67,20 @@ search(Client, Cursor, Expr, Facet, FilterQuery, Highlight, Partial, Query, Quer
 
     Query0_ =
       [
-        {<<"cursor">>, Cursor},
-        {<<"expr">>, Expr},
-        {<<"facet">>, Facet},
-        {<<"fq">>, FilterQuery},
-        {<<"highlight">>, Highlight},
-        {<<"partial">>, Partial},
+        {<<"cursor">>, maps:get(<<"cursor">>, QueryMap, undefined)},
+        {<<"expr">>, maps:get(<<"expr">>, QueryMap, undefined)},
+        {<<"facet">>, maps:get(<<"facet">>, QueryMap, undefined)},
+        {<<"fq">>, maps:get(<<"fq">>, QueryMap, undefined)},
+        {<<"highlight">>, maps:get(<<"highlight">>, QueryMap, undefined)},
+        {<<"partial">>, maps:get(<<"partial">>, QueryMap, undefined)},
         {<<"q">>, Query},
-        {<<"q.options">>, QueryOptions},
-        {<<"q.parser">>, QueryParser},
-        {<<"return">>, Return},
-        {<<"size">>, Size},
-        {<<"sort">>, Sort},
-        {<<"start">>, Start},
-        {<<"stats">>, Stats}
+        {<<"q.options">>, maps:get(<<"q.options">>, QueryMap, undefined)},
+        {<<"q.parser">>, maps:get(<<"q.parser">>, QueryMap, undefined)},
+        {<<"return">>, maps:get(<<"return">>, QueryMap, undefined)},
+        {<<"size">>, maps:get(<<"size">>, QueryMap, undefined)},
+        {<<"sort">>, maps:get(<<"sort">>, QueryMap, undefined)},
+        {<<"start">>, maps:get(<<"start">>, QueryMap, undefined)},
+        {<<"stats">>, maps:get(<<"stats">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -97,11 +104,16 @@ search(Client, Cursor, Expr, Facet, FilterQuery, Highlight, Partial, Query, Quer
 %% endpoint for your domain, use the Amazon CloudSearch configuration service
 %% `DescribeDomains' action. A domain's endpoints are also displayed on the
 %% domain dashboard in the Amazon CloudSearch console.
-suggest(Client, Query, Size, Suggester)
+suggest(Client, Query, Suggester)
   when is_map(Client) ->
-    suggest(Client, Query, Size, Suggester, []).
-suggest(Client, Query, Size, Suggester, Options)
-  when is_map(Client), is_list(Options) ->
+    suggest(Client, Query, Suggester, #{}, #{}).
+
+suggest(Client, Query, Suggester, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    suggest(Client, Query, Suggester, QueryMap, HeadersMap, []).
+
+suggest(Client, Query, Suggester, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2013-01-01/suggest?format=sdk&pretty=true"],
     SuccessStatusCode = undefined,
 
@@ -110,7 +122,7 @@ suggest(Client, Query, Size, Suggester, Options)
     Query0_ =
       [
         {<<"q">>, Query},
-        {<<"size">>, Size},
+        {<<"size">>, maps:get(<<"size">>, QueryMap, undefined)},
         {<<"suggester">>, Suggester}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],

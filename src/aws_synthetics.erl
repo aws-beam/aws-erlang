@@ -32,11 +32,13 @@
          describe_runtime_versions/2,
          describe_runtime_versions/3,
          get_canary/2,
-         get_canary/3,
+         get_canary/4,
+         get_canary/5,
          get_canary_runs/3,
          get_canary_runs/4,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          start_canary/3,
          start_canary/4,
          stop_canary/3,
@@ -193,9 +195,14 @@ describe_runtime_versions(Client, Input0, Options) ->
 %% canaries and their names, use DescribeCanaries.
 get_canary(Client, Name)
   when is_map(Client) ->
-    get_canary(Client, Name, []).
-get_canary(Client, Name, Options)
-  when is_map(Client), is_list(Options) ->
+    get_canary(Client, Name, #{}, #{}).
+
+get_canary(Client, Name, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_canary(Client, Name, QueryMap, HeadersMap, []).
+
+get_canary(Client, Name, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/canary/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
 
@@ -224,9 +231,14 @@ get_canary_runs(Client, Name, Input0, Options) ->
 %% @doc Displays the tags associated with a canary.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 

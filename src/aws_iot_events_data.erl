@@ -12,10 +12,12 @@
          batch_put_message/3,
          batch_update_detector/2,
          batch_update_detector/3,
-         describe_detector/3,
+         describe_detector/2,
          describe_detector/4,
-         list_detectors/5,
-         list_detectors/6]).
+         describe_detector/5,
+         list_detectors/2,
+         list_detectors/4,
+         list_detectors/5]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -63,11 +65,16 @@ batch_update_detector(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns information about the specified detector (instance).
-describe_detector(Client, DetectorModelName, KeyValue)
+describe_detector(Client, DetectorModelName)
   when is_map(Client) ->
-    describe_detector(Client, DetectorModelName, KeyValue, []).
-describe_detector(Client, DetectorModelName, KeyValue, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_detector(Client, DetectorModelName, #{}, #{}).
+
+describe_detector(Client, DetectorModelName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_detector(Client, DetectorModelName, QueryMap, HeadersMap, []).
+
+describe_detector(Client, DetectorModelName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/detectors/", aws_util:encode_uri(DetectorModelName), "/keyValues/"],
     SuccessStatusCode = undefined,
 
@@ -75,18 +82,23 @@ describe_detector(Client, DetectorModelName, KeyValue, Options)
 
     Query0_ =
       [
-        {<<"keyValue">>, KeyValue}
+        {<<"keyValue">>, maps:get(<<"keyValue">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists detectors (the instances of a detector model).
-list_detectors(Client, DetectorModelName, MaxResults, NextToken, StateName)
+list_detectors(Client, DetectorModelName)
   when is_map(Client) ->
-    list_detectors(Client, DetectorModelName, MaxResults, NextToken, StateName, []).
-list_detectors(Client, DetectorModelName, MaxResults, NextToken, StateName, Options)
-  when is_map(Client), is_list(Options) ->
+    list_detectors(Client, DetectorModelName, #{}, #{}).
+
+list_detectors(Client, DetectorModelName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_detectors(Client, DetectorModelName, QueryMap, HeadersMap, []).
+
+list_detectors(Client, DetectorModelName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/detectors/", aws_util:encode_uri(DetectorModelName), ""],
     SuccessStatusCode = undefined,
 
@@ -94,9 +106,9 @@ list_detectors(Client, DetectorModelName, MaxResults, NextToken, StateName, Opti
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"stateName">>, StateName}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"stateName">>, maps:get(<<"stateName">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

@@ -38,32 +38,42 @@
          delete_site/5,
          deregister_transit_gateway/4,
          deregister_transit_gateway/5,
+         describe_global_networks/1,
+         describe_global_networks/3,
          describe_global_networks/4,
-         describe_global_networks/5,
          disassociate_customer_gateway/4,
          disassociate_customer_gateway/5,
          disassociate_link/3,
          disassociate_link/4,
          disassociate_transit_gateway_connect_peer/4,
          disassociate_transit_gateway_connect_peer/5,
-         get_connections/6,
-         get_connections/7,
+         get_connections/2,
+         get_connections/4,
+         get_connections/5,
+         get_customer_gateway_associations/2,
+         get_customer_gateway_associations/4,
          get_customer_gateway_associations/5,
-         get_customer_gateway_associations/6,
-         get_devices/6,
-         get_devices/7,
-         get_link_associations/6,
-         get_link_associations/7,
-         get_links/8,
-         get_links/9,
+         get_devices/2,
+         get_devices/4,
+         get_devices/5,
+         get_link_associations/2,
+         get_link_associations/4,
+         get_link_associations/5,
+         get_links/2,
+         get_links/4,
+         get_links/5,
+         get_sites/2,
+         get_sites/4,
          get_sites/5,
-         get_sites/6,
+         get_transit_gateway_connect_peer_associations/2,
+         get_transit_gateway_connect_peer_associations/4,
          get_transit_gateway_connect_peer_associations/5,
-         get_transit_gateway_connect_peer_associations/6,
+         get_transit_gateway_registrations/2,
+         get_transit_gateway_registrations/4,
          get_transit_gateway_registrations/5,
-         get_transit_gateway_registrations/6,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          register_transit_gateway/3,
          register_transit_gateway/4,
          tag_resource/3,
@@ -365,11 +375,16 @@ deregister_transit_gateway(Client, GlobalNetworkId, TransitGatewayArn, Input0, O
 %% your global network, you must use the appropriate `Get*' action. For
 %% example, to list the transit gateways in your global network, use
 %% `GetTransitGatewayRegistrations'.
-describe_global_networks(Client, GlobalNetworkIds, MaxResults, NextToken)
+describe_global_networks(Client)
   when is_map(Client) ->
-    describe_global_networks(Client, GlobalNetworkIds, MaxResults, NextToken, []).
-describe_global_networks(Client, GlobalNetworkIds, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_global_networks(Client, #{}, #{}).
+
+describe_global_networks(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_global_networks(Client, QueryMap, HeadersMap, []).
+
+describe_global_networks(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/global-networks"],
     SuccessStatusCode = undefined,
 
@@ -377,9 +392,9 @@ describe_global_networks(Client, GlobalNetworkIds, MaxResults, NextToken, Option
 
     Query0_ =
       [
-        {<<"globalNetworkIds">>, GlobalNetworkIds},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"globalNetworkIds">>, maps:get(<<"globalNetworkIds">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -440,11 +455,16 @@ disassociate_transit_gateway_connect_peer(Client, GlobalNetworkId, TransitGatewa
 
 %% @doc Gets information about one or more of your connections in a global
 %% network.
-get_connections(Client, GlobalNetworkId, ConnectionIds, DeviceId, MaxResults, NextToken)
+get_connections(Client, GlobalNetworkId)
   when is_map(Client) ->
-    get_connections(Client, GlobalNetworkId, ConnectionIds, DeviceId, MaxResults, NextToken, []).
-get_connections(Client, GlobalNetworkId, ConnectionIds, DeviceId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_connections(Client, GlobalNetworkId, #{}, #{}).
+
+get_connections(Client, GlobalNetworkId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_connections(Client, GlobalNetworkId, QueryMap, HeadersMap, []).
+
+get_connections(Client, GlobalNetworkId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/connections"],
     SuccessStatusCode = undefined,
 
@@ -452,10 +472,10 @@ get_connections(Client, GlobalNetworkId, ConnectionIds, DeviceId, MaxResults, Ne
 
     Query0_ =
       [
-        {<<"connectionIds">>, ConnectionIds},
-        {<<"deviceId">>, DeviceId},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"connectionIds">>, maps:get(<<"connectionIds">>, QueryMap, undefined)},
+        {<<"deviceId">>, maps:get(<<"deviceId">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -463,11 +483,16 @@ get_connections(Client, GlobalNetworkId, ConnectionIds, DeviceId, MaxResults, Ne
 
 %% @doc Gets the association information for customer gateways that are
 %% associated with devices and links in your global network.
-get_customer_gateway_associations(Client, GlobalNetworkId, CustomerGatewayArns, MaxResults, NextToken)
+get_customer_gateway_associations(Client, GlobalNetworkId)
   when is_map(Client) ->
-    get_customer_gateway_associations(Client, GlobalNetworkId, CustomerGatewayArns, MaxResults, NextToken, []).
-get_customer_gateway_associations(Client, GlobalNetworkId, CustomerGatewayArns, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_customer_gateway_associations(Client, GlobalNetworkId, #{}, #{}).
+
+get_customer_gateway_associations(Client, GlobalNetworkId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_customer_gateway_associations(Client, GlobalNetworkId, QueryMap, HeadersMap, []).
+
+get_customer_gateway_associations(Client, GlobalNetworkId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/customer-gateway-associations"],
     SuccessStatusCode = undefined,
 
@@ -475,9 +500,9 @@ get_customer_gateway_associations(Client, GlobalNetworkId, CustomerGatewayArns, 
 
     Query0_ =
       [
-        {<<"customerGatewayArns">>, CustomerGatewayArns},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"customerGatewayArns">>, maps:get(<<"customerGatewayArns">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -485,11 +510,16 @@ get_customer_gateway_associations(Client, GlobalNetworkId, CustomerGatewayArns, 
 
 %% @doc Gets information about one or more of your devices in a global
 %% network.
-get_devices(Client, GlobalNetworkId, DeviceIds, MaxResults, NextToken, SiteId)
+get_devices(Client, GlobalNetworkId)
   when is_map(Client) ->
-    get_devices(Client, GlobalNetworkId, DeviceIds, MaxResults, NextToken, SiteId, []).
-get_devices(Client, GlobalNetworkId, DeviceIds, MaxResults, NextToken, SiteId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_devices(Client, GlobalNetworkId, #{}, #{}).
+
+get_devices(Client, GlobalNetworkId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_devices(Client, GlobalNetworkId, QueryMap, HeadersMap, []).
+
+get_devices(Client, GlobalNetworkId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/devices"],
     SuccessStatusCode = undefined,
 
@@ -497,10 +527,10 @@ get_devices(Client, GlobalNetworkId, DeviceIds, MaxResults, NextToken, SiteId, O
 
     Query0_ =
       [
-        {<<"deviceIds">>, DeviceIds},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"siteId">>, SiteId}
+        {<<"deviceIds">>, maps:get(<<"deviceIds">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"siteId">>, maps:get(<<"siteId">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -509,11 +539,16 @@ get_devices(Client, GlobalNetworkId, DeviceIds, MaxResults, NextToken, SiteId, O
 %% @doc Gets the link associations for a device or a link.
 %%
 %% Either the device ID or the link ID must be specified.
-get_link_associations(Client, GlobalNetworkId, DeviceId, LinkId, MaxResults, NextToken)
+get_link_associations(Client, GlobalNetworkId)
   when is_map(Client) ->
-    get_link_associations(Client, GlobalNetworkId, DeviceId, LinkId, MaxResults, NextToken, []).
-get_link_associations(Client, GlobalNetworkId, DeviceId, LinkId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_link_associations(Client, GlobalNetworkId, #{}, #{}).
+
+get_link_associations(Client, GlobalNetworkId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_link_associations(Client, GlobalNetworkId, QueryMap, HeadersMap, []).
+
+get_link_associations(Client, GlobalNetworkId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/link-associations"],
     SuccessStatusCode = undefined,
 
@@ -521,10 +556,10 @@ get_link_associations(Client, GlobalNetworkId, DeviceId, LinkId, MaxResults, Nex
 
     Query0_ =
       [
-        {<<"deviceId">>, DeviceId},
-        {<<"linkId">>, LinkId},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"deviceId">>, maps:get(<<"deviceId">>, QueryMap, undefined)},
+        {<<"linkId">>, maps:get(<<"linkId">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -535,11 +570,16 @@ get_link_associations(Client, GlobalNetworkId, DeviceId, LinkId, MaxResults, Nex
 %%
 %% If you specify the site ID, you cannot specify the type or provider in the
 %% same request. You can specify the type and provider in the same request.
-get_links(Client, GlobalNetworkId, LinkIds, MaxResults, NextToken, Provider, SiteId, Type)
+get_links(Client, GlobalNetworkId)
   when is_map(Client) ->
-    get_links(Client, GlobalNetworkId, LinkIds, MaxResults, NextToken, Provider, SiteId, Type, []).
-get_links(Client, GlobalNetworkId, LinkIds, MaxResults, NextToken, Provider, SiteId, Type, Options)
-  when is_map(Client), is_list(Options) ->
+    get_links(Client, GlobalNetworkId, #{}, #{}).
+
+get_links(Client, GlobalNetworkId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_links(Client, GlobalNetworkId, QueryMap, HeadersMap, []).
+
+get_links(Client, GlobalNetworkId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/links"],
     SuccessStatusCode = undefined,
 
@@ -547,23 +587,28 @@ get_links(Client, GlobalNetworkId, LinkIds, MaxResults, NextToken, Provider, Sit
 
     Query0_ =
       [
-        {<<"linkIds">>, LinkIds},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"provider">>, Provider},
-        {<<"siteId">>, SiteId},
-        {<<"type">>, Type}
+        {<<"linkIds">>, maps:get(<<"linkIds">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"provider">>, maps:get(<<"provider">>, QueryMap, undefined)},
+        {<<"siteId">>, maps:get(<<"siteId">>, QueryMap, undefined)},
+        {<<"type">>, maps:get(<<"type">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about one or more of your sites in a global network.
-get_sites(Client, GlobalNetworkId, MaxResults, NextToken, SiteIds)
+get_sites(Client, GlobalNetworkId)
   when is_map(Client) ->
-    get_sites(Client, GlobalNetworkId, MaxResults, NextToken, SiteIds, []).
-get_sites(Client, GlobalNetworkId, MaxResults, NextToken, SiteIds, Options)
-  when is_map(Client), is_list(Options) ->
+    get_sites(Client, GlobalNetworkId, #{}, #{}).
+
+get_sites(Client, GlobalNetworkId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_sites(Client, GlobalNetworkId, QueryMap, HeadersMap, []).
+
+get_sites(Client, GlobalNetworkId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/sites"],
     SuccessStatusCode = undefined,
 
@@ -571,9 +616,9 @@ get_sites(Client, GlobalNetworkId, MaxResults, NextToken, SiteIds, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"siteIds">>, SiteIds}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"siteIds">>, maps:get(<<"siteIds">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -581,11 +626,16 @@ get_sites(Client, GlobalNetworkId, MaxResults, NextToken, SiteIds, Options)
 
 %% @doc Gets information about one or more of your transit gateway Connect
 %% peer associations in a global network.
-get_transit_gateway_connect_peer_associations(Client, GlobalNetworkId, MaxResults, NextToken, TransitGatewayConnectPeerArns)
+get_transit_gateway_connect_peer_associations(Client, GlobalNetworkId)
   when is_map(Client) ->
-    get_transit_gateway_connect_peer_associations(Client, GlobalNetworkId, MaxResults, NextToken, TransitGatewayConnectPeerArns, []).
-get_transit_gateway_connect_peer_associations(Client, GlobalNetworkId, MaxResults, NextToken, TransitGatewayConnectPeerArns, Options)
-  when is_map(Client), is_list(Options) ->
+    get_transit_gateway_connect_peer_associations(Client, GlobalNetworkId, #{}, #{}).
+
+get_transit_gateway_connect_peer_associations(Client, GlobalNetworkId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_transit_gateway_connect_peer_associations(Client, GlobalNetworkId, QueryMap, HeadersMap, []).
+
+get_transit_gateway_connect_peer_associations(Client, GlobalNetworkId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/transit-gateway-connect-peer-associations"],
     SuccessStatusCode = undefined,
 
@@ -593,9 +643,9 @@ get_transit_gateway_connect_peer_associations(Client, GlobalNetworkId, MaxResult
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"transitGatewayConnectPeerArns">>, TransitGatewayConnectPeerArns}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"transitGatewayConnectPeerArns">>, maps:get(<<"transitGatewayConnectPeerArns">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -603,11 +653,16 @@ get_transit_gateway_connect_peer_associations(Client, GlobalNetworkId, MaxResult
 
 %% @doc Gets information about the transit gateway registrations in a
 %% specified global network.
-get_transit_gateway_registrations(Client, GlobalNetworkId, MaxResults, NextToken, TransitGatewayArns)
+get_transit_gateway_registrations(Client, GlobalNetworkId)
   when is_map(Client) ->
-    get_transit_gateway_registrations(Client, GlobalNetworkId, MaxResults, NextToken, TransitGatewayArns, []).
-get_transit_gateway_registrations(Client, GlobalNetworkId, MaxResults, NextToken, TransitGatewayArns, Options)
-  when is_map(Client), is_list(Options) ->
+    get_transit_gateway_registrations(Client, GlobalNetworkId, #{}, #{}).
+
+get_transit_gateway_registrations(Client, GlobalNetworkId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_transit_gateway_registrations(Client, GlobalNetworkId, QueryMap, HeadersMap, []).
+
+get_transit_gateway_registrations(Client, GlobalNetworkId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/transit-gateway-registrations"],
     SuccessStatusCode = undefined,
 
@@ -615,9 +670,9 @@ get_transit_gateway_registrations(Client, GlobalNetworkId, MaxResults, NextToken
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"transitGatewayArns">>, TransitGatewayArns}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"transitGatewayArns">>, maps:get(<<"transitGatewayArns">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -626,9 +681,14 @@ get_transit_gateway_registrations(Client, GlobalNetworkId, MaxResults, NextToken
 %% @doc Lists the tags for a specified resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 

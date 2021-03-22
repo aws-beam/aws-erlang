@@ -7,7 +7,8 @@
 -export([delete_session/6,
          delete_session/7,
          get_session/5,
-         get_session/6,
+         get_session/7,
+         get_session/8,
          put_session/6,
          put_session/7,
          recognize_text/6,
@@ -63,9 +64,14 @@ delete_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options) 
 %% the alias, you receive a `BadRequestException'.
 get_session(Client, BotAliasId, BotId, LocaleId, SessionId)
   when is_map(Client) ->
-    get_session(Client, BotAliasId, BotId, LocaleId, SessionId, []).
-get_session(Client, BotAliasId, BotId, LocaleId, SessionId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_session(Client, BotAliasId, BotId, LocaleId, SessionId, #{}, #{}).
+
+get_session(Client, BotAliasId, BotId, LocaleId, SessionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_session(Client, BotAliasId, BotId, LocaleId, SessionId, QueryMap, HeadersMap, []).
+
+get_session(Client, BotAliasId, BotId, LocaleId, SessionId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botAliases/", aws_util:encode_uri(BotAliasId), "/botLocales/", aws_util:encode_uri(LocaleId), "/sessions/", aws_util:encode_uri(SessionId), ""],
     SuccessStatusCode = undefined,
 

@@ -29,61 +29,89 @@
          delete_recovery_point/4,
          delete_recovery_point/5,
          describe_backup_job/2,
-         describe_backup_job/3,
+         describe_backup_job/4,
+         describe_backup_job/5,
          describe_backup_vault/2,
-         describe_backup_vault/3,
+         describe_backup_vault/4,
+         describe_backup_vault/5,
          describe_copy_job/2,
-         describe_copy_job/3,
+         describe_copy_job/4,
+         describe_copy_job/5,
          describe_global_settings/1,
-         describe_global_settings/2,
+         describe_global_settings/3,
+         describe_global_settings/4,
          describe_protected_resource/2,
-         describe_protected_resource/3,
+         describe_protected_resource/4,
+         describe_protected_resource/5,
          describe_recovery_point/3,
-         describe_recovery_point/4,
+         describe_recovery_point/5,
+         describe_recovery_point/6,
          describe_region_settings/1,
-         describe_region_settings/2,
+         describe_region_settings/3,
+         describe_region_settings/4,
          describe_restore_job/2,
-         describe_restore_job/3,
+         describe_restore_job/4,
+         describe_restore_job/5,
          export_backup_plan_template/2,
-         export_backup_plan_template/3,
-         get_backup_plan/3,
+         export_backup_plan_template/4,
+         export_backup_plan_template/5,
+         get_backup_plan/2,
          get_backup_plan/4,
+         get_backup_plan/5,
          get_backup_plan_from_json/2,
          get_backup_plan_from_json/3,
          get_backup_plan_from_template/2,
-         get_backup_plan_from_template/3,
+         get_backup_plan_from_template/4,
+         get_backup_plan_from_template/5,
          get_backup_selection/3,
-         get_backup_selection/4,
+         get_backup_selection/5,
+         get_backup_selection/6,
          get_backup_vault_access_policy/2,
-         get_backup_vault_access_policy/3,
+         get_backup_vault_access_policy/4,
+         get_backup_vault_access_policy/5,
          get_backup_vault_notifications/2,
-         get_backup_vault_notifications/3,
+         get_backup_vault_notifications/4,
+         get_backup_vault_notifications/5,
          get_recovery_point_restore_metadata/3,
-         get_recovery_point_restore_metadata/4,
+         get_recovery_point_restore_metadata/5,
+         get_recovery_point_restore_metadata/6,
          get_supported_resource_types/1,
-         get_supported_resource_types/2,
-         list_backup_jobs/10,
-         list_backup_jobs/11,
+         get_supported_resource_types/3,
+         get_supported_resource_types/4,
+         list_backup_jobs/1,
+         list_backup_jobs/3,
+         list_backup_jobs/4,
+         list_backup_plan_templates/1,
          list_backup_plan_templates/3,
          list_backup_plan_templates/4,
+         list_backup_plan_versions/2,
          list_backup_plan_versions/4,
          list_backup_plan_versions/5,
+         list_backup_plans/1,
+         list_backup_plans/3,
          list_backup_plans/4,
-         list_backup_plans/5,
+         list_backup_selections/2,
          list_backup_selections/4,
          list_backup_selections/5,
+         list_backup_vaults/1,
          list_backup_vaults/3,
          list_backup_vaults/4,
-         list_copy_jobs/10,
-         list_copy_jobs/11,
+         list_copy_jobs/1,
+         list_copy_jobs/3,
+         list_copy_jobs/4,
+         list_protected_resources/1,
          list_protected_resources/3,
          list_protected_resources/4,
-         list_recovery_points_by_backup_vault/9,
-         list_recovery_points_by_backup_vault/10,
+         list_recovery_points_by_backup_vault/2,
+         list_recovery_points_by_backup_vault/4,
+         list_recovery_points_by_backup_vault/5,
+         list_recovery_points_by_resource/2,
          list_recovery_points_by_resource/4,
          list_recovery_points_by_resource/5,
-         list_restore_jobs/7,
-         list_restore_jobs/8,
+         list_restore_jobs/1,
+         list_restore_jobs/3,
+         list_restore_jobs/4,
+         list_tags/2,
          list_tags/4,
          list_tags/5,
          put_backup_vault_access_policy/3,
@@ -315,9 +343,14 @@ delete_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input0, Options
 %% @doc Returns backup job details for the specified `BackupJobId'.
 describe_backup_job(Client, BackupJobId)
   when is_map(Client) ->
-    describe_backup_job(Client, BackupJobId, []).
-describe_backup_job(Client, BackupJobId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_backup_job(Client, BackupJobId, #{}, #{}).
+
+describe_backup_job(Client, BackupJobId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_backup_job(Client, BackupJobId, QueryMap, HeadersMap, []).
+
+describe_backup_job(Client, BackupJobId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/backup-jobs/", aws_util:encode_uri(BackupJobId), ""],
     SuccessStatusCode = undefined,
 
@@ -330,9 +363,14 @@ describe_backup_job(Client, BackupJobId, Options)
 %% @doc Returns metadata about a backup vault specified by its name.
 describe_backup_vault(Client, BackupVaultName)
   when is_map(Client) ->
-    describe_backup_vault(Client, BackupVaultName, []).
-describe_backup_vault(Client, BackupVaultName, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_backup_vault(Client, BackupVaultName, #{}, #{}).
+
+describe_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap, []).
+
+describe_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), ""],
     SuccessStatusCode = undefined,
 
@@ -345,9 +383,14 @@ describe_backup_vault(Client, BackupVaultName, Options)
 %% @doc Returns metadata associated with creating a copy of a resource.
 describe_copy_job(Client, CopyJobId)
   when is_map(Client) ->
-    describe_copy_job(Client, CopyJobId, []).
-describe_copy_job(Client, CopyJobId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_copy_job(Client, CopyJobId, #{}, #{}).
+
+describe_copy_job(Client, CopyJobId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_copy_job(Client, CopyJobId, QueryMap, HeadersMap, []).
+
+describe_copy_job(Client, CopyJobId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/copy-jobs/", aws_util:encode_uri(CopyJobId), ""],
     SuccessStatusCode = undefined,
 
@@ -361,9 +404,14 @@ describe_copy_job(Client, CopyJobId, Options)
 %% it is opted in to cross-account backup.
 describe_global_settings(Client)
   when is_map(Client) ->
-    describe_global_settings(Client, []).
-describe_global_settings(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_global_settings(Client, #{}, #{}).
+
+describe_global_settings(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_global_settings(Client, QueryMap, HeadersMap, []).
+
+describe_global_settings(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/global-settings"],
     SuccessStatusCode = undefined,
 
@@ -378,9 +426,14 @@ describe_global_settings(Client, Options)
 %% of the saved resource.
 describe_protected_resource(Client, ResourceArn)
   when is_map(Client) ->
-    describe_protected_resource(Client, ResourceArn, []).
-describe_protected_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_protected_resource(Client, ResourceArn, #{}, #{}).
+
+describe_protected_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_protected_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+describe_protected_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/resources/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
@@ -394,9 +447,14 @@ describe_protected_resource(Client, ResourceArn, Options)
 %% status, encryption, and lifecycle.
 describe_recovery_point(Client, BackupVaultName, RecoveryPointArn)
   when is_map(Client) ->
-    describe_recovery_point(Client, BackupVaultName, RecoveryPointArn, []).
-describe_recovery_point(Client, BackupVaultName, RecoveryPointArn, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_recovery_point(Client, BackupVaultName, RecoveryPointArn, #{}, #{}).
+
+describe_recovery_point(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_recovery_point(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap, []).
+
+describe_recovery_point(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/", aws_util:encode_uri(RecoveryPointArn), ""],
     SuccessStatusCode = undefined,
 
@@ -415,9 +473,14 @@ describe_recovery_point(Client, BackupVaultName, RecoveryPointArn, Options)
 %% does not try to protect that service's resources in this Region.
 describe_region_settings(Client)
   when is_map(Client) ->
-    describe_region_settings(Client, []).
-describe_region_settings(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_region_settings(Client, #{}, #{}).
+
+describe_region_settings(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_region_settings(Client, QueryMap, HeadersMap, []).
+
+describe_region_settings(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/account-settings"],
     SuccessStatusCode = undefined,
 
@@ -431,9 +494,14 @@ describe_region_settings(Client, Options)
 %% job ID.
 describe_restore_job(Client, RestoreJobId)
   when is_map(Client) ->
-    describe_restore_job(Client, RestoreJobId, []).
-describe_restore_job(Client, RestoreJobId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_restore_job(Client, RestoreJobId, #{}, #{}).
+
+describe_restore_job(Client, RestoreJobId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_restore_job(Client, RestoreJobId, QueryMap, HeadersMap, []).
+
+describe_restore_job(Client, RestoreJobId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/restore-jobs/", aws_util:encode_uri(RestoreJobId), ""],
     SuccessStatusCode = undefined,
 
@@ -447,9 +515,14 @@ describe_restore_job(Client, RestoreJobId, Options)
 %% template.
 export_backup_plan_template(Client, BackupPlanId)
   when is_map(Client) ->
-    export_backup_plan_template(Client, BackupPlanId, []).
-export_backup_plan_template(Client, BackupPlanId, Options)
-  when is_map(Client), is_list(Options) ->
+    export_backup_plan_template(Client, BackupPlanId, #{}, #{}).
+
+export_backup_plan_template(Client, BackupPlanId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    export_backup_plan_template(Client, BackupPlanId, QueryMap, HeadersMap, []).
+
+export_backup_plan_template(Client, BackupPlanId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/toTemplate/"],
     SuccessStatusCode = undefined,
 
@@ -463,11 +536,16 @@ export_backup_plan_template(Client, BackupPlanId, Options)
 %%
 %% Returns the body of a backup plan in JSON format, in addition to plan
 %% metadata.
-get_backup_plan(Client, BackupPlanId, VersionId)
+get_backup_plan(Client, BackupPlanId)
   when is_map(Client) ->
-    get_backup_plan(Client, BackupPlanId, VersionId, []).
-get_backup_plan(Client, BackupPlanId, VersionId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_backup_plan(Client, BackupPlanId, #{}, #{}).
+
+get_backup_plan(Client, BackupPlanId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_backup_plan(Client, BackupPlanId, QueryMap, HeadersMap, []).
+
+get_backup_plan(Client, BackupPlanId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/"],
     SuccessStatusCode = undefined,
 
@@ -475,7 +553,7 @@ get_backup_plan(Client, BackupPlanId, VersionId, Options)
 
     Query0_ =
       [
-        {<<"versionId">>, VersionId}
+        {<<"versionId">>, maps:get(<<"versionId">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -500,9 +578,14 @@ get_backup_plan_from_json(Client, Input0, Options) ->
 %% @doc Returns the template specified by its `templateId' as a backup plan.
 get_backup_plan_from_template(Client, BackupPlanTemplateId)
   when is_map(Client) ->
-    get_backup_plan_from_template(Client, BackupPlanTemplateId, []).
-get_backup_plan_from_template(Client, BackupPlanTemplateId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_backup_plan_from_template(Client, BackupPlanTemplateId, #{}, #{}).
+
+get_backup_plan_from_template(Client, BackupPlanTemplateId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_backup_plan_from_template(Client, BackupPlanTemplateId, QueryMap, HeadersMap, []).
+
+get_backup_plan_from_template(Client, BackupPlanTemplateId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/backup/template/plans/", aws_util:encode_uri(BackupPlanTemplateId), "/toPlan"],
     SuccessStatusCode = undefined,
 
@@ -516,9 +599,14 @@ get_backup_plan_from_template(Client, BackupPlanTemplateId, Options)
 %% specifies a list of resources that are associated with a backup plan.
 get_backup_selection(Client, BackupPlanId, SelectionId)
   when is_map(Client) ->
-    get_backup_selection(Client, BackupPlanId, SelectionId, []).
-get_backup_selection(Client, BackupPlanId, SelectionId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_backup_selection(Client, BackupPlanId, SelectionId, #{}, #{}).
+
+get_backup_selection(Client, BackupPlanId, SelectionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_backup_selection(Client, BackupPlanId, SelectionId, QueryMap, HeadersMap, []).
+
+get_backup_selection(Client, BackupPlanId, SelectionId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/selections/", aws_util:encode_uri(SelectionId), ""],
     SuccessStatusCode = undefined,
 
@@ -532,9 +620,14 @@ get_backup_selection(Client, BackupPlanId, SelectionId, Options)
 %% backup vault.
 get_backup_vault_access_policy(Client, BackupVaultName)
   when is_map(Client) ->
-    get_backup_vault_access_policy(Client, BackupVaultName, []).
-get_backup_vault_access_policy(Client, BackupVaultName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_backup_vault_access_policy(Client, BackupVaultName, #{}, #{}).
+
+get_backup_vault_access_policy(Client, BackupVaultName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_backup_vault_access_policy(Client, BackupVaultName, QueryMap, HeadersMap, []).
+
+get_backup_vault_access_policy(Client, BackupVaultName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/access-policy"],
     SuccessStatusCode = undefined,
 
@@ -547,9 +640,14 @@ get_backup_vault_access_policy(Client, BackupVaultName, Options)
 %% @doc Returns event notifications for the specified backup vault.
 get_backup_vault_notifications(Client, BackupVaultName)
   when is_map(Client) ->
-    get_backup_vault_notifications(Client, BackupVaultName, []).
-get_backup_vault_notifications(Client, BackupVaultName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_backup_vault_notifications(Client, BackupVaultName, #{}, #{}).
+
+get_backup_vault_notifications(Client, BackupVaultName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_backup_vault_notifications(Client, BackupVaultName, QueryMap, HeadersMap, []).
+
+get_backup_vault_notifications(Client, BackupVaultName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/notification-configuration"],
     SuccessStatusCode = undefined,
 
@@ -563,9 +661,14 @@ get_backup_vault_notifications(Client, BackupVaultName, Options)
 %% the backup.
 get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn)
   when is_map(Client) ->
-    get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn, []).
-get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn, Options)
-  when is_map(Client), is_list(Options) ->
+    get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn, #{}, #{}).
+
+get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap, []).
+
+get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/", aws_util:encode_uri(RecoveryPointArn), "/restore-metadata"],
     SuccessStatusCode = undefined,
 
@@ -578,9 +681,14 @@ get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn, O
 %% @doc Returns the AWS resource types supported by AWS Backup.
 get_supported_resource_types(Client)
   when is_map(Client) ->
-    get_supported_resource_types(Client, []).
-get_supported_resource_types(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    get_supported_resource_types(Client, #{}, #{}).
+
+get_supported_resource_types(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_supported_resource_types(Client, QueryMap, HeadersMap, []).
+
+get_supported_resource_types(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/supported-resource-types"],
     SuccessStatusCode = undefined,
 
@@ -591,11 +699,16 @@ get_supported_resource_types(Client, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of existing backup jobs for an authenticated account.
-list_backup_jobs(Client, ByAccountId, ByBackupVaultName, ByCreatedAfter, ByCreatedBefore, ByResourceArn, ByResourceType, ByState, MaxResults, NextToken)
+list_backup_jobs(Client)
   when is_map(Client) ->
-    list_backup_jobs(Client, ByAccountId, ByBackupVaultName, ByCreatedAfter, ByCreatedBefore, ByResourceArn, ByResourceType, ByState, MaxResults, NextToken, []).
-list_backup_jobs(Client, ByAccountId, ByBackupVaultName, ByCreatedAfter, ByCreatedBefore, ByResourceArn, ByResourceType, ByState, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_backup_jobs(Client, #{}, #{}).
+
+list_backup_jobs(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_backup_jobs(Client, QueryMap, HeadersMap, []).
+
+list_backup_jobs(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/backup-jobs/"],
     SuccessStatusCode = undefined,
 
@@ -603,15 +716,15 @@ list_backup_jobs(Client, ByAccountId, ByBackupVaultName, ByCreatedAfter, ByCreat
 
     Query0_ =
       [
-        {<<"accountId">>, ByAccountId},
-        {<<"backupVaultName">>, ByBackupVaultName},
-        {<<"createdAfter">>, ByCreatedAfter},
-        {<<"createdBefore">>, ByCreatedBefore},
-        {<<"resourceArn">>, ByResourceArn},
-        {<<"resourceType">>, ByResourceType},
-        {<<"state">>, ByState},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"accountId">>, maps:get(<<"accountId">>, QueryMap, undefined)},
+        {<<"backupVaultName">>, maps:get(<<"backupVaultName">>, QueryMap, undefined)},
+        {<<"createdAfter">>, maps:get(<<"createdAfter">>, QueryMap, undefined)},
+        {<<"createdBefore">>, maps:get(<<"createdBefore">>, QueryMap, undefined)},
+        {<<"resourceArn">>, maps:get(<<"resourceArn">>, QueryMap, undefined)},
+        {<<"resourceType">>, maps:get(<<"resourceType">>, QueryMap, undefined)},
+        {<<"state">>, maps:get(<<"state">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -619,11 +732,16 @@ list_backup_jobs(Client, ByAccountId, ByBackupVaultName, ByCreatedAfter, ByCreat
 
 %% @doc Returns metadata of your saved backup plan templates, including the
 %% template ID, name, and the creation and deletion dates.
-list_backup_plan_templates(Client, MaxResults, NextToken)
+list_backup_plan_templates(Client)
   when is_map(Client) ->
-    list_backup_plan_templates(Client, MaxResults, NextToken, []).
-list_backup_plan_templates(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_backup_plan_templates(Client, #{}, #{}).
+
+list_backup_plan_templates(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_backup_plan_templates(Client, QueryMap, HeadersMap, []).
+
+list_backup_plan_templates(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/backup/template/plans"],
     SuccessStatusCode = undefined,
 
@@ -631,8 +749,8 @@ list_backup_plan_templates(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -641,11 +759,16 @@ list_backup_plan_templates(Client, MaxResults, NextToken, Options)
 %% @doc Returns version metadata of your backup plans, including Amazon
 %% Resource Names (ARNs), backup plan IDs, creation and deletion dates, plan
 %% names, and version IDs.
-list_backup_plan_versions(Client, BackupPlanId, MaxResults, NextToken)
+list_backup_plan_versions(Client, BackupPlanId)
   when is_map(Client) ->
-    list_backup_plan_versions(Client, BackupPlanId, MaxResults, NextToken, []).
-list_backup_plan_versions(Client, BackupPlanId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_backup_plan_versions(Client, BackupPlanId, #{}, #{}).
+
+list_backup_plan_versions(Client, BackupPlanId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_backup_plan_versions(Client, BackupPlanId, QueryMap, HeadersMap, []).
+
+list_backup_plan_versions(Client, BackupPlanId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/versions/"],
     SuccessStatusCode = undefined,
 
@@ -653,8 +776,8 @@ list_backup_plan_versions(Client, BackupPlanId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -666,11 +789,16 @@ list_backup_plan_versions(Client, BackupPlanId, MaxResults, NextToken, Options)
 %% plan. The list contains information such as Amazon Resource Names (ARNs),
 %% plan IDs, creation and deletion dates, version IDs, plan names, and
 %% creator request IDs.
-list_backup_plans(Client, IncludeDeleted, MaxResults, NextToken)
+list_backup_plans(Client)
   when is_map(Client) ->
-    list_backup_plans(Client, IncludeDeleted, MaxResults, NextToken, []).
-list_backup_plans(Client, IncludeDeleted, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_backup_plans(Client, #{}, #{}).
+
+list_backup_plans(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_backup_plans(Client, QueryMap, HeadersMap, []).
+
+list_backup_plans(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/backup/plans/"],
     SuccessStatusCode = undefined,
 
@@ -678,9 +806,9 @@ list_backup_plans(Client, IncludeDeleted, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"includeDeleted">>, IncludeDeleted},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"includeDeleted">>, maps:get(<<"includeDeleted">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -688,11 +816,16 @@ list_backup_plans(Client, IncludeDeleted, MaxResults, NextToken, Options)
 
 %% @doc Returns an array containing metadata of the resources associated with
 %% the target backup plan.
-list_backup_selections(Client, BackupPlanId, MaxResults, NextToken)
+list_backup_selections(Client, BackupPlanId)
   when is_map(Client) ->
-    list_backup_selections(Client, BackupPlanId, MaxResults, NextToken, []).
-list_backup_selections(Client, BackupPlanId, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_backup_selections(Client, BackupPlanId, #{}, #{}).
+
+list_backup_selections(Client, BackupPlanId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_backup_selections(Client, BackupPlanId, QueryMap, HeadersMap, []).
+
+list_backup_selections(Client, BackupPlanId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/selections/"],
     SuccessStatusCode = undefined,
 
@@ -700,8 +833,8 @@ list_backup_selections(Client, BackupPlanId, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -709,11 +842,16 @@ list_backup_selections(Client, BackupPlanId, MaxResults, NextToken, Options)
 
 %% @doc Returns a list of recovery point storage containers along with
 %% information about them.
-list_backup_vaults(Client, MaxResults, NextToken)
+list_backup_vaults(Client)
   when is_map(Client) ->
-    list_backup_vaults(Client, MaxResults, NextToken, []).
-list_backup_vaults(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_backup_vaults(Client, #{}, #{}).
+
+list_backup_vaults(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_backup_vaults(Client, QueryMap, HeadersMap, []).
+
+list_backup_vaults(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/backup-vaults/"],
     SuccessStatusCode = undefined,
 
@@ -721,19 +859,24 @@ list_backup_vaults(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns metadata about your copy jobs.
-list_copy_jobs(Client, ByAccountId, ByCreatedAfter, ByCreatedBefore, ByDestinationVaultArn, ByResourceArn, ByResourceType, ByState, MaxResults, NextToken)
+list_copy_jobs(Client)
   when is_map(Client) ->
-    list_copy_jobs(Client, ByAccountId, ByCreatedAfter, ByCreatedBefore, ByDestinationVaultArn, ByResourceArn, ByResourceType, ByState, MaxResults, NextToken, []).
-list_copy_jobs(Client, ByAccountId, ByCreatedAfter, ByCreatedBefore, ByDestinationVaultArn, ByResourceArn, ByResourceType, ByState, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_copy_jobs(Client, #{}, #{}).
+
+list_copy_jobs(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_copy_jobs(Client, QueryMap, HeadersMap, []).
+
+list_copy_jobs(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/copy-jobs/"],
     SuccessStatusCode = undefined,
 
@@ -741,15 +884,15 @@ list_copy_jobs(Client, ByAccountId, ByCreatedAfter, ByCreatedBefore, ByDestinati
 
     Query0_ =
       [
-        {<<"accountId">>, ByAccountId},
-        {<<"createdAfter">>, ByCreatedAfter},
-        {<<"createdBefore">>, ByCreatedBefore},
-        {<<"destinationVaultArn">>, ByDestinationVaultArn},
-        {<<"resourceArn">>, ByResourceArn},
-        {<<"resourceType">>, ByResourceType},
-        {<<"state">>, ByState},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"accountId">>, maps:get(<<"accountId">>, QueryMap, undefined)},
+        {<<"createdAfter">>, maps:get(<<"createdAfter">>, QueryMap, undefined)},
+        {<<"createdBefore">>, maps:get(<<"createdBefore">>, QueryMap, undefined)},
+        {<<"destinationVaultArn">>, maps:get(<<"destinationVaultArn">>, QueryMap, undefined)},
+        {<<"resourceArn">>, maps:get(<<"resourceArn">>, QueryMap, undefined)},
+        {<<"resourceType">>, maps:get(<<"resourceType">>, QueryMap, undefined)},
+        {<<"state">>, maps:get(<<"state">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -758,11 +901,16 @@ list_copy_jobs(Client, ByAccountId, ByCreatedAfter, ByCreatedBefore, ByDestinati
 %% @doc Returns an array of resources successfully backed up by AWS Backup,
 %% including the time the resource was saved, an Amazon Resource Name (ARN)
 %% of the resource, and a resource type.
-list_protected_resources(Client, MaxResults, NextToken)
+list_protected_resources(Client)
   when is_map(Client) ->
-    list_protected_resources(Client, MaxResults, NextToken, []).
-list_protected_resources(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_protected_resources(Client, #{}, #{}).
+
+list_protected_resources(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_protected_resources(Client, QueryMap, HeadersMap, []).
+
+list_protected_resources(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/resources/"],
     SuccessStatusCode = undefined,
 
@@ -770,8 +918,8 @@ list_protected_resources(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -779,11 +927,16 @@ list_protected_resources(Client, MaxResults, NextToken, Options)
 
 %% @doc Returns detailed information about the recovery points stored in a
 %% backup vault.
-list_recovery_points_by_backup_vault(Client, BackupVaultName, ByBackupPlanId, ByCreatedAfter, ByCreatedBefore, ByResourceArn, ByResourceType, MaxResults, NextToken)
+list_recovery_points_by_backup_vault(Client, BackupVaultName)
   when is_map(Client) ->
-    list_recovery_points_by_backup_vault(Client, BackupVaultName, ByBackupPlanId, ByCreatedAfter, ByCreatedBefore, ByResourceArn, ByResourceType, MaxResults, NextToken, []).
-list_recovery_points_by_backup_vault(Client, BackupVaultName, ByBackupPlanId, ByCreatedAfter, ByCreatedBefore, ByResourceArn, ByResourceType, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_recovery_points_by_backup_vault(Client, BackupVaultName, #{}, #{}).
+
+list_recovery_points_by_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_recovery_points_by_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap, []).
+
+list_recovery_points_by_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/"],
     SuccessStatusCode = undefined,
 
@@ -791,13 +944,13 @@ list_recovery_points_by_backup_vault(Client, BackupVaultName, ByBackupPlanId, By
 
     Query0_ =
       [
-        {<<"backupPlanId">>, ByBackupPlanId},
-        {<<"createdAfter">>, ByCreatedAfter},
-        {<<"createdBefore">>, ByCreatedBefore},
-        {<<"resourceArn">>, ByResourceArn},
-        {<<"resourceType">>, ByResourceType},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"backupPlanId">>, maps:get(<<"backupPlanId">>, QueryMap, undefined)},
+        {<<"createdAfter">>, maps:get(<<"createdAfter">>, QueryMap, undefined)},
+        {<<"createdBefore">>, maps:get(<<"createdBefore">>, QueryMap, undefined)},
+        {<<"resourceArn">>, maps:get(<<"resourceArn">>, QueryMap, undefined)},
+        {<<"resourceType">>, maps:get(<<"resourceType">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -805,11 +958,16 @@ list_recovery_points_by_backup_vault(Client, BackupVaultName, ByBackupPlanId, By
 
 %% @doc Returns detailed information about recovery points of the type
 %% specified by a resource Amazon Resource Name (ARN).
-list_recovery_points_by_resource(Client, ResourceArn, MaxResults, NextToken)
+list_recovery_points_by_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_recovery_points_by_resource(Client, ResourceArn, MaxResults, NextToken, []).
-list_recovery_points_by_resource(Client, ResourceArn, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_recovery_points_by_resource(Client, ResourceArn, #{}, #{}).
+
+list_recovery_points_by_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_recovery_points_by_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_recovery_points_by_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/resources/", aws_util:encode_uri(ResourceArn), "/recovery-points/"],
     SuccessStatusCode = undefined,
 
@@ -817,8 +975,8 @@ list_recovery_points_by_resource(Client, ResourceArn, MaxResults, NextToken, Opt
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -826,11 +984,16 @@ list_recovery_points_by_resource(Client, ResourceArn, MaxResults, NextToken, Opt
 
 %% @doc Returns a list of jobs that AWS Backup initiated to restore a saved
 %% resource, including metadata about the recovery process.
-list_restore_jobs(Client, ByAccountId, ByCreatedAfter, ByCreatedBefore, ByStatus, MaxResults, NextToken)
+list_restore_jobs(Client)
   when is_map(Client) ->
-    list_restore_jobs(Client, ByAccountId, ByCreatedAfter, ByCreatedBefore, ByStatus, MaxResults, NextToken, []).
-list_restore_jobs(Client, ByAccountId, ByCreatedAfter, ByCreatedBefore, ByStatus, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_restore_jobs(Client, #{}, #{}).
+
+list_restore_jobs(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_restore_jobs(Client, QueryMap, HeadersMap, []).
+
+list_restore_jobs(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/restore-jobs/"],
     SuccessStatusCode = undefined,
 
@@ -838,12 +1001,12 @@ list_restore_jobs(Client, ByAccountId, ByCreatedAfter, ByCreatedBefore, ByStatus
 
     Query0_ =
       [
-        {<<"accountId">>, ByAccountId},
-        {<<"createdAfter">>, ByCreatedAfter},
-        {<<"createdBefore">>, ByCreatedBefore},
-        {<<"status">>, ByStatus},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"accountId">>, maps:get(<<"accountId">>, QueryMap, undefined)},
+        {<<"createdAfter">>, maps:get(<<"createdAfter">>, QueryMap, undefined)},
+        {<<"createdBefore">>, maps:get(<<"createdBefore">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -853,11 +1016,16 @@ list_restore_jobs(Client, ByAccountId, ByCreatedAfter, ByCreatedBefore, ByStatus
 %% point, backup plan, or backup vault.
 %%
 %% `ListTags' are currently only supported with Amazon EFS backups.
-list_tags(Client, ResourceArn, MaxResults, NextToken)
+list_tags(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags(Client, ResourceArn, MaxResults, NextToken, []).
-list_tags(Client, ResourceArn, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags(Client, ResourceArn, #{}, #{}).
+
+list_tags(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), "/"],
     SuccessStatusCode = undefined,
 
@@ -865,8 +1033,8 @@ list_tags(Client, ResourceArn, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

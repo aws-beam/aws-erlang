@@ -18,8 +18,9 @@
 
 -export([delete_session/5,
          delete_session/6,
-         get_session/5,
+         get_session/4,
          get_session/6,
+         get_session/7,
          post_content/5,
          post_content/6,
          post_text/5,
@@ -50,11 +51,16 @@ delete_session(Client, BotAlias, BotName, UserId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns session information for a specified bot, alias, and user ID.
-get_session(Client, BotAlias, BotName, UserId, CheckpointLabelFilter)
+get_session(Client, BotAlias, BotName, UserId)
   when is_map(Client) ->
-    get_session(Client, BotAlias, BotName, UserId, CheckpointLabelFilter, []).
-get_session(Client, BotAlias, BotName, UserId, CheckpointLabelFilter, Options)
-  when is_map(Client), is_list(Options) ->
+    get_session(Client, BotAlias, BotName, UserId, #{}, #{}).
+
+get_session(Client, BotAlias, BotName, UserId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_session(Client, BotAlias, BotName, UserId, QueryMap, HeadersMap, []).
+
+get_session(Client, BotAlias, BotName, UserId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/bot/", aws_util:encode_uri(BotName), "/alias/", aws_util:encode_uri(BotAlias), "/user/", aws_util:encode_uri(UserId), "/session/"],
     SuccessStatusCode = undefined,
 
@@ -62,7 +68,7 @@ get_session(Client, BotAlias, BotName, UserId, CheckpointLabelFilter, Options)
 
     Query0_ =
       [
-        {<<"checkpointLabelFilter">>, CheckpointLabelFilter}
+        {<<"checkpointLabelFilter">>, maps:get(<<"checkpointLabelFilter">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

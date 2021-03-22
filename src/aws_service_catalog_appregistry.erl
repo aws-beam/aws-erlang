@@ -25,19 +25,26 @@
          disassociate_resource/5,
          disassociate_resource/6,
          get_application/2,
-         get_application/3,
+         get_application/4,
+         get_application/5,
          get_attribute_group/2,
-         get_attribute_group/3,
+         get_attribute_group/4,
+         get_attribute_group/5,
+         list_applications/1,
          list_applications/3,
          list_applications/4,
+         list_associated_attribute_groups/2,
          list_associated_attribute_groups/4,
          list_associated_attribute_groups/5,
+         list_associated_resources/2,
          list_associated_resources/4,
          list_associated_resources/5,
+         list_attribute_groups/1,
          list_attribute_groups/3,
          list_attribute_groups/4,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          sync_resource/4,
          sync_resource/5,
          tag_resource/3,
@@ -217,9 +224,14 @@ disassociate_resource(Client, Application, Resource, ResourceType, Input0, Optio
 %% thrown, avoiding the ABA addressing problem.
 get_application(Client, Application)
   when is_map(Client) ->
-    get_application(Client, Application, []).
-get_application(Client, Application, Options)
-  when is_map(Client), is_list(Options) ->
+    get_application(Client, Application, #{}, #{}).
+
+get_application(Client, Application, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_application(Client, Application, QueryMap, HeadersMap, []).
+
+get_application(Client, Application, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/applications/", aws_util:encode_uri(Application), ""],
     SuccessStatusCode = undefined,
 
@@ -235,9 +247,14 @@ get_application(Client, Application, Options)
 %% name.
 get_attribute_group(Client, AttributeGroup)
   when is_map(Client) ->
-    get_attribute_group(Client, AttributeGroup, []).
-get_attribute_group(Client, AttributeGroup, Options)
-  when is_map(Client), is_list(Options) ->
+    get_attribute_group(Client, AttributeGroup, #{}, #{}).
+
+get_attribute_group(Client, AttributeGroup, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_attribute_group(Client, AttributeGroup, QueryMap, HeadersMap, []).
+
+get_attribute_group(Client, AttributeGroup, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/attribute-groups/", aws_util:encode_uri(AttributeGroup), ""],
     SuccessStatusCode = undefined,
 
@@ -250,11 +267,16 @@ get_attribute_group(Client, AttributeGroup, Options)
 %% @doc Retrieves a list of all of your applications.
 %%
 %% Results are paginated.
-list_applications(Client, MaxResults, NextToken)
+list_applications(Client)
   when is_map(Client) ->
-    list_applications(Client, MaxResults, NextToken, []).
-list_applications(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_applications(Client, #{}, #{}).
+
+list_applications(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_applications(Client, QueryMap, HeadersMap, []).
+
+list_applications(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/applications"],
     SuccessStatusCode = undefined,
 
@@ -262,8 +284,8 @@ list_applications(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -273,11 +295,16 @@ list_applications(Client, MaxResults, NextToken, Options)
 %% application.
 %%
 %% Results are paginated.
-list_associated_attribute_groups(Client, Application, MaxResults, NextToken)
+list_associated_attribute_groups(Client, Application)
   when is_map(Client) ->
-    list_associated_attribute_groups(Client, Application, MaxResults, NextToken, []).
-list_associated_attribute_groups(Client, Application, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_associated_attribute_groups(Client, Application, #{}, #{}).
+
+list_associated_attribute_groups(Client, Application, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_associated_attribute_groups(Client, Application, QueryMap, HeadersMap, []).
+
+list_associated_attribute_groups(Client, Application, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/applications/", aws_util:encode_uri(Application), "/attribute-groups"],
     SuccessStatusCode = undefined,
 
@@ -285,8 +312,8 @@ list_associated_attribute_groups(Client, Application, MaxResults, NextToken, Opt
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -295,11 +322,16 @@ list_associated_attribute_groups(Client, Application, MaxResults, NextToken, Opt
 %% @doc Lists all resources that are associated with specified application.
 %%
 %% Results are paginated.
-list_associated_resources(Client, Application, MaxResults, NextToken)
+list_associated_resources(Client, Application)
   when is_map(Client) ->
-    list_associated_resources(Client, Application, MaxResults, NextToken, []).
-list_associated_resources(Client, Application, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_associated_resources(Client, Application, #{}, #{}).
+
+list_associated_resources(Client, Application, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_associated_resources(Client, Application, QueryMap, HeadersMap, []).
+
+list_associated_resources(Client, Application, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/applications/", aws_util:encode_uri(Application), "/resources"],
     SuccessStatusCode = undefined,
 
@@ -307,8 +339,8 @@ list_associated_resources(Client, Application, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -317,11 +349,16 @@ list_associated_resources(Client, Application, MaxResults, NextToken, Options)
 %% @doc Lists all attribute groups which you have access to.
 %%
 %% Results are paginated.
-list_attribute_groups(Client, MaxResults, NextToken)
+list_attribute_groups(Client)
   when is_map(Client) ->
-    list_attribute_groups(Client, MaxResults, NextToken, []).
-list_attribute_groups(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_attribute_groups(Client, #{}, #{}).
+
+list_attribute_groups(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_attribute_groups(Client, QueryMap, HeadersMap, []).
+
+list_attribute_groups(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/attribute-groups"],
     SuccessStatusCode = undefined,
 
@@ -329,8 +366,8 @@ list_attribute_groups(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -339,9 +376,14 @@ list_attribute_groups(Client, MaxResults, NextToken, Options)
 %% @doc Lists all of the tags on the resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 

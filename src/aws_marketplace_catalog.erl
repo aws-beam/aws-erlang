@@ -15,9 +15,11 @@
 -export([cancel_change_set/2,
          cancel_change_set/3,
          describe_change_set/3,
-         describe_change_set/4,
+         describe_change_set/5,
+         describe_change_set/6,
          describe_entity/3,
-         describe_entity/4,
+         describe_entity/5,
+         describe_entity/6,
          list_change_sets/2,
          list_change_sets/3,
          list_entities/2,
@@ -56,9 +58,14 @@ cancel_change_set(Client, Input0, Options) ->
 %% @doc Provides information about a given change set.
 describe_change_set(Client, Catalog, ChangeSetId)
   when is_map(Client) ->
-    describe_change_set(Client, Catalog, ChangeSetId, []).
-describe_change_set(Client, Catalog, ChangeSetId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_change_set(Client, Catalog, ChangeSetId, #{}, #{}).
+
+describe_change_set(Client, Catalog, ChangeSetId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_change_set(Client, Catalog, ChangeSetId, QueryMap, HeadersMap, []).
+
+describe_change_set(Client, Catalog, ChangeSetId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/DescribeChangeSet"],
     SuccessStatusCode = undefined,
 
@@ -76,9 +83,14 @@ describe_change_set(Client, Catalog, ChangeSetId, Options)
 %% @doc Returns the metadata and content of the entity.
 describe_entity(Client, Catalog, EntityId)
   when is_map(Client) ->
-    describe_entity(Client, Catalog, EntityId, []).
-describe_entity(Client, Catalog, EntityId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_entity(Client, Catalog, EntityId, #{}, #{}).
+
+describe_entity(Client, Catalog, EntityId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_entity(Client, Catalog, EntityId, QueryMap, HeadersMap, []).
+
+describe_entity(Client, Catalog, EntityId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/DescribeEntity"],
     SuccessStatusCode = undefined,
 

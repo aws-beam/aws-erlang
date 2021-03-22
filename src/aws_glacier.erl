@@ -57,35 +57,48 @@
          delete_vault_notifications/4,
          delete_vault_notifications/5,
          describe_job/4,
-         describe_job/5,
+         describe_job/6,
+         describe_job/7,
          describe_vault/3,
-         describe_vault/4,
+         describe_vault/5,
+         describe_vault/6,
          get_data_retrieval_policy/2,
-         get_data_retrieval_policy/3,
-         get_job_output/5,
+         get_data_retrieval_policy/4,
+         get_data_retrieval_policy/5,
+         get_job_output/4,
          get_job_output/6,
+         get_job_output/7,
          get_vault_access_policy/3,
-         get_vault_access_policy/4,
+         get_vault_access_policy/5,
+         get_vault_access_policy/6,
          get_vault_lock/3,
-         get_vault_lock/4,
+         get_vault_lock/5,
+         get_vault_lock/6,
          get_vault_notifications/3,
-         get_vault_notifications/4,
+         get_vault_notifications/5,
+         get_vault_notifications/6,
          initiate_job/4,
          initiate_job/5,
          initiate_multipart_upload/4,
          initiate_multipart_upload/5,
          initiate_vault_lock/4,
          initiate_vault_lock/5,
-         list_jobs/7,
-         list_jobs/8,
+         list_jobs/3,
+         list_jobs/5,
+         list_jobs/6,
+         list_multipart_uploads/3,
          list_multipart_uploads/5,
          list_multipart_uploads/6,
+         list_parts/4,
          list_parts/6,
          list_parts/7,
          list_provisioned_capacity/2,
-         list_provisioned_capacity/3,
+         list_provisioned_capacity/4,
+         list_provisioned_capacity/5,
          list_tags_for_vault/3,
-         list_tags_for_vault/4,
+         list_tags_for_vault/5,
+         list_tags_for_vault/6,
+         list_vaults/2,
          list_vaults/4,
          list_vaults/5,
          purchase_provisioned_capacity/3,
@@ -532,9 +545,14 @@ delete_vault_notifications(Client, AccountId, VaultName, Input0, Options) ->
 %% Guide.
 describe_job(Client, AccountId, JobId, VaultName)
   when is_map(Client) ->
-    describe_job(Client, AccountId, JobId, VaultName, []).
-describe_job(Client, AccountId, JobId, VaultName, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_job(Client, AccountId, JobId, VaultName, #{}, #{}).
+
+describe_job(Client, AccountId, JobId, VaultName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_job(Client, AccountId, JobId, VaultName, QueryMap, HeadersMap, []).
+
+describe_job(Client, AccountId, JobId, VaultName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = undefined,
 
@@ -568,9 +586,14 @@ describe_job(Client, AccountId, JobId, VaultName, Options)
 %% Developer Guide.
 describe_vault(Client, AccountId, VaultName)
   when is_map(Client) ->
-    describe_vault(Client, AccountId, VaultName, []).
-describe_vault(Client, AccountId, VaultName, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_vault(Client, AccountId, VaultName, #{}, #{}).
+
+describe_vault(Client, AccountId, VaultName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_vault(Client, AccountId, VaultName, QueryMap, HeadersMap, []).
+
+describe_vault(Client, AccountId, VaultName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), ""],
     SuccessStatusCode = undefined,
 
@@ -587,9 +610,14 @@ describe_vault(Client, AccountId, VaultName, Options)
 %% Data Retrieval Policies.
 get_data_retrieval_policy(Client, AccountId)
   when is_map(Client) ->
-    get_data_retrieval_policy(Client, AccountId, []).
-get_data_retrieval_policy(Client, AccountId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_data_retrieval_policy(Client, AccountId, #{}, #{}).
+
+get_data_retrieval_policy(Client, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_data_retrieval_policy(Client, AccountId, QueryMap, HeadersMap, []).
+
+get_data_retrieval_policy(Client, AccountId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/policies/data-retrieval"],
     SuccessStatusCode = undefined,
 
@@ -644,17 +672,22 @@ get_data_retrieval_policy(Client, AccountId, Options)
 %%
 %% For conceptual information and the underlying REST API, see Downloading a
 %% Vault Inventory, Downloading an Archive, and Get Job Output
-get_job_output(Client, AccountId, JobId, VaultName, Range)
+get_job_output(Client, AccountId, JobId, VaultName)
   when is_map(Client) ->
-    get_job_output(Client, AccountId, JobId, VaultName, Range, []).
-get_job_output(Client, AccountId, JobId, VaultName, Range, Options)
-  when is_map(Client), is_list(Options) ->
+    get_job_output(Client, AccountId, JobId, VaultName, #{}, #{}).
+
+get_job_output(Client, AccountId, JobId, VaultName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_job_output(Client, AccountId, JobId, VaultName, QueryMap, HeadersMap, []).
+
+get_job_output(Client, AccountId, JobId, VaultName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/jobs/", aws_util:encode_uri(JobId), "/output"],
     SuccessStatusCode = undefined,
 
     Headers0 =
       [
-        {<<"Range">>, Range}
+        {<<"Range">>, maps:get(<<"Range">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
@@ -691,9 +724,14 @@ get_job_output(Client, AccountId, JobId, VaultName, Range, Options)
 %% see Amazon Glacier Access Control with Vault Access Policies.
 get_vault_access_policy(Client, AccountId, VaultName)
   when is_map(Client) ->
-    get_vault_access_policy(Client, AccountId, VaultName, []).
-get_vault_access_policy(Client, AccountId, VaultName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_vault_access_policy(Client, AccountId, VaultName, #{}, #{}).
+
+get_vault_access_policy(Client, AccountId, VaultName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_vault_access_policy(Client, AccountId, VaultName, QueryMap, HeadersMap, []).
+
+get_vault_access_policy(Client, AccountId, VaultName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/access-policy"],
     SuccessStatusCode = undefined,
 
@@ -728,9 +766,14 @@ get_vault_access_policy(Client, AccountId, VaultName, Options)
 %% Amazon Glacier Access Control with Vault Lock Policies.
 get_vault_lock(Client, AccountId, VaultName)
   when is_map(Client) ->
-    get_vault_lock(Client, AccountId, VaultName, []).
-get_vault_lock(Client, AccountId, VaultName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_vault_lock(Client, AccountId, VaultName, #{}, #{}).
+
+get_vault_lock(Client, AccountId, VaultName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_vault_lock(Client, AccountId, VaultName, QueryMap, HeadersMap, []).
+
+get_vault_lock(Client, AccountId, VaultName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/lock-policy"],
     SuccessStatusCode = undefined,
 
@@ -760,9 +803,14 @@ get_vault_lock(Client, AccountId, VaultName, Options)
 %% Configuration in the Amazon Glacier Developer Guide.
 get_vault_notifications(Client, AccountId, VaultName)
   when is_map(Client) ->
-    get_vault_notifications(Client, AccountId, VaultName, []).
-get_vault_notifications(Client, AccountId, VaultName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_vault_notifications(Client, AccountId, VaultName, #{}, #{}).
+
+get_vault_notifications(Client, AccountId, VaultName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_vault_notifications(Client, AccountId, VaultName, QueryMap, HeadersMap, []).
+
+get_vault_notifications(Client, AccountId, VaultName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/notification-configuration"],
     SuccessStatusCode = undefined,
 
@@ -982,11 +1030,16 @@ initiate_vault_lock(Client, AccountId, VaultName, Input0, Options) ->
 %%
 %% For more information about using this operation, see the documentation for
 %% the underlying REST API List Jobs.
-list_jobs(Client, AccountId, VaultName, Completed, Limit, Marker, Statuscode)
+list_jobs(Client, AccountId, VaultName)
   when is_map(Client) ->
-    list_jobs(Client, AccountId, VaultName, Completed, Limit, Marker, Statuscode, []).
-list_jobs(Client, AccountId, VaultName, Completed, Limit, Marker, Statuscode, Options)
-  when is_map(Client), is_list(Options) ->
+    list_jobs(Client, AccountId, VaultName, #{}, #{}).
+
+list_jobs(Client, AccountId, VaultName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_jobs(Client, AccountId, VaultName, QueryMap, HeadersMap, []).
+
+list_jobs(Client, AccountId, VaultName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/jobs"],
     SuccessStatusCode = undefined,
 
@@ -994,10 +1047,10 @@ list_jobs(Client, AccountId, VaultName, Completed, Limit, Marker, Statuscode, Op
 
     Query0_ =
       [
-        {<<"completed">>, Completed},
-        {<<"limit">>, Limit},
-        {<<"marker">>, Marker},
-        {<<"statuscode">>, Statuscode}
+        {<<"completed">>, maps:get(<<"completed">>, QueryMap, undefined)},
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"marker">>, maps:get(<<"marker">>, QueryMap, undefined)},
+        {<<"statuscode">>, maps:get(<<"statuscode">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1035,11 +1088,16 @@ list_jobs(Client, AccountId, VaultName, Completed, Limit, Marker, Statuscode, Op
 %% For conceptual information and the underlying REST API, see Working with
 %% Archives in Amazon S3 Glacier and List Multipart Uploads in the Amazon
 %% Glacier Developer Guide.
-list_multipart_uploads(Client, AccountId, VaultName, Limit, Marker)
+list_multipart_uploads(Client, AccountId, VaultName)
   when is_map(Client) ->
-    list_multipart_uploads(Client, AccountId, VaultName, Limit, Marker, []).
-list_multipart_uploads(Client, AccountId, VaultName, Limit, Marker, Options)
-  when is_map(Client), is_list(Options) ->
+    list_multipart_uploads(Client, AccountId, VaultName, #{}, #{}).
+
+list_multipart_uploads(Client, AccountId, VaultName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_multipart_uploads(Client, AccountId, VaultName, QueryMap, HeadersMap, []).
+
+list_multipart_uploads(Client, AccountId, VaultName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/multipart-uploads"],
     SuccessStatusCode = undefined,
 
@@ -1047,8 +1105,8 @@ list_multipart_uploads(Client, AccountId, VaultName, Limit, Marker, Options)
 
     Query0_ =
       [
-        {<<"limit">>, Limit},
-        {<<"marker">>, Marker}
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"marker">>, maps:get(<<"marker">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1080,11 +1138,16 @@ list_multipart_uploads(Client, AccountId, VaultName, Limit, Marker, Options)
 %% For conceptual information and the underlying REST API, see Working with
 %% Archives in Amazon S3 Glacier and List Parts in the Amazon Glacier
 %% Developer Guide.
-list_parts(Client, AccountId, UploadId, VaultName, Limit, Marker)
+list_parts(Client, AccountId, UploadId, VaultName)
   when is_map(Client) ->
-    list_parts(Client, AccountId, UploadId, VaultName, Limit, Marker, []).
-list_parts(Client, AccountId, UploadId, VaultName, Limit, Marker, Options)
-  when is_map(Client), is_list(Options) ->
+    list_parts(Client, AccountId, UploadId, VaultName, #{}, #{}).
+
+list_parts(Client, AccountId, UploadId, VaultName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_parts(Client, AccountId, UploadId, VaultName, QueryMap, HeadersMap, []).
+
+list_parts(Client, AccountId, UploadId, VaultName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/multipart-uploads/", aws_util:encode_uri(UploadId), ""],
     SuccessStatusCode = undefined,
 
@@ -1092,8 +1155,8 @@ list_parts(Client, AccountId, UploadId, VaultName, Limit, Marker, Options)
 
     Query0_ =
       [
-        {<<"limit">>, Limit},
-        {<<"marker">>, Marker}
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"marker">>, maps:get(<<"marker">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1103,9 +1166,14 @@ list_parts(Client, AccountId, UploadId, VaultName, Limit, Marker, Options)
 %% AWS account.
 list_provisioned_capacity(Client, AccountId)
   when is_map(Client) ->
-    list_provisioned_capacity(Client, AccountId, []).
-list_provisioned_capacity(Client, AccountId, Options)
-  when is_map(Client), is_list(Options) ->
+    list_provisioned_capacity(Client, AccountId, #{}, #{}).
+
+list_provisioned_capacity(Client, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_provisioned_capacity(Client, AccountId, QueryMap, HeadersMap, []).
+
+list_provisioned_capacity(Client, AccountId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/provisioned-capacity"],
     SuccessStatusCode = undefined,
 
@@ -1121,9 +1189,14 @@ list_provisioned_capacity(Client, AccountId, Options)
 %% information about tags, see Tagging Amazon S3 Glacier Resources.
 list_tags_for_vault(Client, AccountId, VaultName)
   when is_map(Client) ->
-    list_tags_for_vault(Client, AccountId, VaultName, []).
-list_tags_for_vault(Client, AccountId, VaultName, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_vault(Client, AccountId, VaultName, #{}, #{}).
+
+list_tags_for_vault(Client, AccountId, VaultName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_vault(Client, AccountId, VaultName, QueryMap, HeadersMap, []).
+
+list_tags_for_vault(Client, AccountId, VaultName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/tags"],
     SuccessStatusCode = undefined,
 
@@ -1155,11 +1228,16 @@ list_tags_for_vault(Client, AccountId, VaultName, Options)
 %% For conceptual information and underlying REST API, see Retrieving Vault
 %% Metadata in Amazon S3 Glacier and List Vaults in the Amazon Glacier
 %% Developer Guide.
-list_vaults(Client, AccountId, Limit, Marker)
+list_vaults(Client, AccountId)
   when is_map(Client) ->
-    list_vaults(Client, AccountId, Limit, Marker, []).
-list_vaults(Client, AccountId, Limit, Marker, Options)
-  when is_map(Client), is_list(Options) ->
+    list_vaults(Client, AccountId, #{}, #{}).
+
+list_vaults(Client, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_vaults(Client, AccountId, QueryMap, HeadersMap, []).
+
+list_vaults(Client, AccountId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults"],
     SuccessStatusCode = undefined,
 
@@ -1167,8 +1245,8 @@ list_vaults(Client, AccountId, Limit, Marker, Options)
 
     Query0_ =
       [
-        {<<"limit">>, Limit},
-        {<<"marker">>, Marker}
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"marker">>, maps:get(<<"marker">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

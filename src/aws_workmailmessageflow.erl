@@ -6,7 +6,8 @@
 -module(aws_workmailmessageflow).
 
 -export([get_raw_message_content/2,
-         get_raw_message_content/3,
+         get_raw_message_content/4,
+         get_raw_message_content/5,
          put_raw_message_content/3,
          put_raw_message_content/4]).
 
@@ -20,9 +21,14 @@
 %% format.
 get_raw_message_content(Client, MessageId)
   when is_map(Client) ->
-    get_raw_message_content(Client, MessageId, []).
-get_raw_message_content(Client, MessageId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_raw_message_content(Client, MessageId, #{}, #{}).
+
+get_raw_message_content(Client, MessageId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_raw_message_content(Client, MessageId, QueryMap, HeadersMap, []).
+
+get_raw_message_content(Client, MessageId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/messages/", aws_util:encode_uri(MessageId), ""],
     SuccessStatusCode = undefined,
 

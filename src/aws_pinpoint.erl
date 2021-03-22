@@ -71,101 +71,149 @@
          delete_voice_template/3,
          delete_voice_template/4,
          get_adm_channel/2,
-         get_adm_channel/3,
+         get_adm_channel/4,
+         get_adm_channel/5,
          get_apns_channel/2,
-         get_apns_channel/3,
+         get_apns_channel/4,
+         get_apns_channel/5,
          get_apns_sandbox_channel/2,
-         get_apns_sandbox_channel/3,
+         get_apns_sandbox_channel/4,
+         get_apns_sandbox_channel/5,
          get_apns_voip_channel/2,
-         get_apns_voip_channel/3,
+         get_apns_voip_channel/4,
+         get_apns_voip_channel/5,
          get_apns_voip_sandbox_channel/2,
-         get_apns_voip_sandbox_channel/3,
+         get_apns_voip_sandbox_channel/4,
+         get_apns_voip_sandbox_channel/5,
          get_app/2,
-         get_app/3,
-         get_application_date_range_kpi/7,
-         get_application_date_range_kpi/8,
+         get_app/4,
+         get_app/5,
+         get_application_date_range_kpi/3,
+         get_application_date_range_kpi/5,
+         get_application_date_range_kpi/6,
          get_application_settings/2,
-         get_application_settings/3,
+         get_application_settings/4,
+         get_application_settings/5,
+         get_apps/1,
          get_apps/3,
          get_apps/4,
          get_baidu_channel/2,
-         get_baidu_channel/3,
+         get_baidu_channel/4,
+         get_baidu_channel/5,
          get_campaign/3,
-         get_campaign/4,
+         get_campaign/5,
+         get_campaign/6,
+         get_campaign_activities/3,
          get_campaign_activities/5,
          get_campaign_activities/6,
-         get_campaign_date_range_kpi/8,
-         get_campaign_date_range_kpi/9,
+         get_campaign_date_range_kpi/4,
+         get_campaign_date_range_kpi/6,
+         get_campaign_date_range_kpi/7,
          get_campaign_version/4,
-         get_campaign_version/5,
+         get_campaign_version/6,
+         get_campaign_version/7,
+         get_campaign_versions/3,
          get_campaign_versions/5,
          get_campaign_versions/6,
+         get_campaigns/2,
          get_campaigns/4,
          get_campaigns/5,
          get_channels/2,
-         get_channels/3,
+         get_channels/4,
+         get_channels/5,
          get_email_channel/2,
-         get_email_channel/3,
-         get_email_template/3,
+         get_email_channel/4,
+         get_email_channel/5,
+         get_email_template/2,
          get_email_template/4,
+         get_email_template/5,
          get_endpoint/3,
-         get_endpoint/4,
+         get_endpoint/5,
+         get_endpoint/6,
          get_event_stream/2,
-         get_event_stream/3,
+         get_event_stream/4,
+         get_event_stream/5,
          get_export_job/3,
-         get_export_job/4,
+         get_export_job/5,
+         get_export_job/6,
+         get_export_jobs/2,
          get_export_jobs/4,
          get_export_jobs/5,
          get_gcm_channel/2,
-         get_gcm_channel/3,
+         get_gcm_channel/4,
+         get_gcm_channel/5,
          get_import_job/3,
-         get_import_job/4,
+         get_import_job/5,
+         get_import_job/6,
+         get_import_jobs/2,
          get_import_jobs/4,
          get_import_jobs/5,
          get_journey/3,
-         get_journey/4,
-         get_journey_date_range_kpi/8,
-         get_journey_date_range_kpi/9,
+         get_journey/5,
+         get_journey/6,
+         get_journey_date_range_kpi/4,
+         get_journey_date_range_kpi/6,
+         get_journey_date_range_kpi/7,
+         get_journey_execution_activity_metrics/4,
          get_journey_execution_activity_metrics/6,
          get_journey_execution_activity_metrics/7,
+         get_journey_execution_metrics/3,
          get_journey_execution_metrics/5,
          get_journey_execution_metrics/6,
-         get_push_template/3,
+         get_push_template/2,
          get_push_template/4,
+         get_push_template/5,
          get_recommender_configuration/2,
-         get_recommender_configuration/3,
+         get_recommender_configuration/4,
+         get_recommender_configuration/5,
+         get_recommender_configurations/1,
          get_recommender_configurations/3,
          get_recommender_configurations/4,
          get_segment/3,
-         get_segment/4,
+         get_segment/5,
+         get_segment/6,
+         get_segment_export_jobs/3,
          get_segment_export_jobs/5,
          get_segment_export_jobs/6,
+         get_segment_import_jobs/3,
          get_segment_import_jobs/5,
          get_segment_import_jobs/6,
          get_segment_version/4,
-         get_segment_version/5,
+         get_segment_version/6,
+         get_segment_version/7,
+         get_segment_versions/3,
          get_segment_versions/5,
          get_segment_versions/6,
+         get_segments/2,
          get_segments/4,
          get_segments/5,
          get_sms_channel/2,
-         get_sms_channel/3,
-         get_sms_template/3,
+         get_sms_channel/4,
+         get_sms_channel/5,
+         get_sms_template/2,
          get_sms_template/4,
+         get_sms_template/5,
          get_user_endpoints/3,
-         get_user_endpoints/4,
+         get_user_endpoints/5,
+         get_user_endpoints/6,
          get_voice_channel/2,
-         get_voice_channel/3,
-         get_voice_template/3,
+         get_voice_channel/4,
+         get_voice_channel/5,
+         get_voice_template/2,
          get_voice_template/4,
+         get_voice_template/5,
+         list_journeys/2,
          list_journeys/4,
          list_journeys/5,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
+         list_template_versions/3,
          list_template_versions/5,
          list_template_versions/6,
-         list_templates/5,
-         list_templates/6,
+         list_templates/1,
+         list_templates/3,
+         list_templates/4,
          phone_number_validate/2,
          phone_number_validate/3,
          put_event_stream/3,
@@ -793,9 +841,14 @@ delete_voice_template(Client, TemplateName, Input0, Options) ->
 %% channel for an application.
 get_adm_channel(Client, ApplicationId)
   when is_map(Client) ->
-    get_adm_channel(Client, ApplicationId, []).
-get_adm_channel(Client, ApplicationId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_adm_channel(Client, ApplicationId, #{}, #{}).
+
+get_adm_channel(Client, ApplicationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_adm_channel(Client, ApplicationId, QueryMap, HeadersMap, []).
+
+get_adm_channel(Client, ApplicationId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/adm"],
     SuccessStatusCode = 200,
 
@@ -809,9 +862,14 @@ get_adm_channel(Client, ApplicationId, Options)
 %% channel for an application.
 get_apns_channel(Client, ApplicationId)
   when is_map(Client) ->
-    get_apns_channel(Client, ApplicationId, []).
-get_apns_channel(Client, ApplicationId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_apns_channel(Client, ApplicationId, #{}, #{}).
+
+get_apns_channel(Client, ApplicationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_apns_channel(Client, ApplicationId, QueryMap, HeadersMap, []).
+
+get_apns_channel(Client, ApplicationId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/apns"],
     SuccessStatusCode = 200,
 
@@ -825,9 +883,14 @@ get_apns_channel(Client, ApplicationId, Options)
 %% sandbox channel for an application.
 get_apns_sandbox_channel(Client, ApplicationId)
   when is_map(Client) ->
-    get_apns_sandbox_channel(Client, ApplicationId, []).
-get_apns_sandbox_channel(Client, ApplicationId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_apns_sandbox_channel(Client, ApplicationId, #{}, #{}).
+
+get_apns_sandbox_channel(Client, ApplicationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_apns_sandbox_channel(Client, ApplicationId, QueryMap, HeadersMap, []).
+
+get_apns_sandbox_channel(Client, ApplicationId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/apns_sandbox"],
     SuccessStatusCode = 200,
 
@@ -841,9 +904,14 @@ get_apns_sandbox_channel(Client, ApplicationId, Options)
 %% channel for an application.
 get_apns_voip_channel(Client, ApplicationId)
   when is_map(Client) ->
-    get_apns_voip_channel(Client, ApplicationId, []).
-get_apns_voip_channel(Client, ApplicationId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_apns_voip_channel(Client, ApplicationId, #{}, #{}).
+
+get_apns_voip_channel(Client, ApplicationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_apns_voip_channel(Client, ApplicationId, QueryMap, HeadersMap, []).
+
+get_apns_voip_channel(Client, ApplicationId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/apns_voip"],
     SuccessStatusCode = 200,
 
@@ -857,9 +925,14 @@ get_apns_voip_channel(Client, ApplicationId, Options)
 %% sandbox channel for an application.
 get_apns_voip_sandbox_channel(Client, ApplicationId)
   when is_map(Client) ->
-    get_apns_voip_sandbox_channel(Client, ApplicationId, []).
-get_apns_voip_sandbox_channel(Client, ApplicationId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_apns_voip_sandbox_channel(Client, ApplicationId, #{}, #{}).
+
+get_apns_voip_sandbox_channel(Client, ApplicationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_apns_voip_sandbox_channel(Client, ApplicationId, QueryMap, HeadersMap, []).
+
+get_apns_voip_sandbox_channel(Client, ApplicationId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/apns_voip_sandbox"],
     SuccessStatusCode = 200,
 
@@ -872,9 +945,14 @@ get_apns_voip_sandbox_channel(Client, ApplicationId, Options)
 %% @doc Retrieves information about an application.
 get_app(Client, ApplicationId)
   when is_map(Client) ->
-    get_app(Client, ApplicationId, []).
-get_app(Client, ApplicationId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_app(Client, ApplicationId, #{}, #{}).
+
+get_app(Client, ApplicationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_app(Client, ApplicationId, QueryMap, HeadersMap, []).
+
+get_app(Client, ApplicationId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), ""],
     SuccessStatusCode = 200,
 
@@ -886,11 +964,16 @@ get_app(Client, ApplicationId, Options)
 
 %% @doc Retrieves (queries) pre-aggregated data for a standard metric that
 %% applies to an application.
-get_application_date_range_kpi(Client, ApplicationId, KpiName, EndTime, NextToken, PageSize, StartTime)
+get_application_date_range_kpi(Client, ApplicationId, KpiName)
   when is_map(Client) ->
-    get_application_date_range_kpi(Client, ApplicationId, KpiName, EndTime, NextToken, PageSize, StartTime, []).
-get_application_date_range_kpi(Client, ApplicationId, KpiName, EndTime, NextToken, PageSize, StartTime, Options)
-  when is_map(Client), is_list(Options) ->
+    get_application_date_range_kpi(Client, ApplicationId, KpiName, #{}, #{}).
+
+get_application_date_range_kpi(Client, ApplicationId, KpiName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_application_date_range_kpi(Client, ApplicationId, KpiName, QueryMap, HeadersMap, []).
+
+get_application_date_range_kpi(Client, ApplicationId, KpiName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/kpis/daterange/", aws_util:encode_uri(KpiName), ""],
     SuccessStatusCode = 200,
 
@@ -898,10 +981,10 @@ get_application_date_range_kpi(Client, ApplicationId, KpiName, EndTime, NextToke
 
     Query0_ =
       [
-        {<<"end-time">>, EndTime},
-        {<<"next-token">>, NextToken},
-        {<<"page-size">>, PageSize},
-        {<<"start-time">>, StartTime}
+        {<<"end-time">>, maps:get(<<"end-time">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)},
+        {<<"page-size">>, maps:get(<<"page-size">>, QueryMap, undefined)},
+        {<<"start-time">>, maps:get(<<"start-time">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -910,9 +993,14 @@ get_application_date_range_kpi(Client, ApplicationId, KpiName, EndTime, NextToke
 %% @doc Retrieves information about the settings for an application.
 get_application_settings(Client, ApplicationId)
   when is_map(Client) ->
-    get_application_settings(Client, ApplicationId, []).
-get_application_settings(Client, ApplicationId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_application_settings(Client, ApplicationId, #{}, #{}).
+
+get_application_settings(Client, ApplicationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_application_settings(Client, ApplicationId, QueryMap, HeadersMap, []).
+
+get_application_settings(Client, ApplicationId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/settings"],
     SuccessStatusCode = 200,
 
@@ -924,11 +1012,16 @@ get_application_settings(Client, ApplicationId, Options)
 
 %% @doc Retrieves information about all the applications that are associated
 %% with your Amazon Pinpoint account.
-get_apps(Client, PageSize, Token)
+get_apps(Client)
   when is_map(Client) ->
-    get_apps(Client, PageSize, Token, []).
-get_apps(Client, PageSize, Token, Options)
-  when is_map(Client), is_list(Options) ->
+    get_apps(Client, #{}, #{}).
+
+get_apps(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_apps(Client, QueryMap, HeadersMap, []).
+
+get_apps(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apps"],
     SuccessStatusCode = 200,
 
@@ -936,8 +1029,8 @@ get_apps(Client, PageSize, Token, Options)
 
     Query0_ =
       [
-        {<<"page-size">>, PageSize},
-        {<<"token">>, Token}
+        {<<"page-size">>, maps:get(<<"page-size">>, QueryMap, undefined)},
+        {<<"token">>, maps:get(<<"token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -947,9 +1040,14 @@ get_apps(Client, PageSize, Token, Options)
 %% channel for an application.
 get_baidu_channel(Client, ApplicationId)
   when is_map(Client) ->
-    get_baidu_channel(Client, ApplicationId, []).
-get_baidu_channel(Client, ApplicationId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_baidu_channel(Client, ApplicationId, #{}, #{}).
+
+get_baidu_channel(Client, ApplicationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_baidu_channel(Client, ApplicationId, QueryMap, HeadersMap, []).
+
+get_baidu_channel(Client, ApplicationId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/baidu"],
     SuccessStatusCode = 200,
 
@@ -963,9 +1061,14 @@ get_baidu_channel(Client, ApplicationId, Options)
 %% settings for a campaign.
 get_campaign(Client, ApplicationId, CampaignId)
   when is_map(Client) ->
-    get_campaign(Client, ApplicationId, CampaignId, []).
-get_campaign(Client, ApplicationId, CampaignId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_campaign(Client, ApplicationId, CampaignId, #{}, #{}).
+
+get_campaign(Client, ApplicationId, CampaignId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_campaign(Client, ApplicationId, CampaignId, QueryMap, HeadersMap, []).
+
+get_campaign(Client, ApplicationId, CampaignId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/campaigns/", aws_util:encode_uri(CampaignId), ""],
     SuccessStatusCode = 200,
 
@@ -976,11 +1079,16 @@ get_campaign(Client, ApplicationId, CampaignId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about all the activities for a campaign.
-get_campaign_activities(Client, ApplicationId, CampaignId, PageSize, Token)
+get_campaign_activities(Client, ApplicationId, CampaignId)
   when is_map(Client) ->
-    get_campaign_activities(Client, ApplicationId, CampaignId, PageSize, Token, []).
-get_campaign_activities(Client, ApplicationId, CampaignId, PageSize, Token, Options)
-  when is_map(Client), is_list(Options) ->
+    get_campaign_activities(Client, ApplicationId, CampaignId, #{}, #{}).
+
+get_campaign_activities(Client, ApplicationId, CampaignId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_campaign_activities(Client, ApplicationId, CampaignId, QueryMap, HeadersMap, []).
+
+get_campaign_activities(Client, ApplicationId, CampaignId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/campaigns/", aws_util:encode_uri(CampaignId), "/activities"],
     SuccessStatusCode = 200,
 
@@ -988,8 +1096,8 @@ get_campaign_activities(Client, ApplicationId, CampaignId, PageSize, Token, Opti
 
     Query0_ =
       [
-        {<<"page-size">>, PageSize},
-        {<<"token">>, Token}
+        {<<"page-size">>, maps:get(<<"page-size">>, QueryMap, undefined)},
+        {<<"token">>, maps:get(<<"token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -997,11 +1105,16 @@ get_campaign_activities(Client, ApplicationId, CampaignId, PageSize, Token, Opti
 
 %% @doc Retrieves (queries) pre-aggregated data for a standard metric that
 %% applies to a campaign.
-get_campaign_date_range_kpi(Client, ApplicationId, CampaignId, KpiName, EndTime, NextToken, PageSize, StartTime)
+get_campaign_date_range_kpi(Client, ApplicationId, CampaignId, KpiName)
   when is_map(Client) ->
-    get_campaign_date_range_kpi(Client, ApplicationId, CampaignId, KpiName, EndTime, NextToken, PageSize, StartTime, []).
-get_campaign_date_range_kpi(Client, ApplicationId, CampaignId, KpiName, EndTime, NextToken, PageSize, StartTime, Options)
-  when is_map(Client), is_list(Options) ->
+    get_campaign_date_range_kpi(Client, ApplicationId, CampaignId, KpiName, #{}, #{}).
+
+get_campaign_date_range_kpi(Client, ApplicationId, CampaignId, KpiName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_campaign_date_range_kpi(Client, ApplicationId, CampaignId, KpiName, QueryMap, HeadersMap, []).
+
+get_campaign_date_range_kpi(Client, ApplicationId, CampaignId, KpiName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/campaigns/", aws_util:encode_uri(CampaignId), "/kpis/daterange/", aws_util:encode_uri(KpiName), ""],
     SuccessStatusCode = 200,
 
@@ -1009,10 +1122,10 @@ get_campaign_date_range_kpi(Client, ApplicationId, CampaignId, KpiName, EndTime,
 
     Query0_ =
       [
-        {<<"end-time">>, EndTime},
-        {<<"next-token">>, NextToken},
-        {<<"page-size">>, PageSize},
-        {<<"start-time">>, StartTime}
+        {<<"end-time">>, maps:get(<<"end-time">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)},
+        {<<"page-size">>, maps:get(<<"page-size">>, QueryMap, undefined)},
+        {<<"start-time">>, maps:get(<<"start-time">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1022,9 +1135,14 @@ get_campaign_date_range_kpi(Client, ApplicationId, CampaignId, KpiName, EndTime,
 %% settings for a specific version of a campaign.
 get_campaign_version(Client, ApplicationId, CampaignId, Version)
   when is_map(Client) ->
-    get_campaign_version(Client, ApplicationId, CampaignId, Version, []).
-get_campaign_version(Client, ApplicationId, CampaignId, Version, Options)
-  when is_map(Client), is_list(Options) ->
+    get_campaign_version(Client, ApplicationId, CampaignId, Version, #{}, #{}).
+
+get_campaign_version(Client, ApplicationId, CampaignId, Version, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_campaign_version(Client, ApplicationId, CampaignId, Version, QueryMap, HeadersMap, []).
+
+get_campaign_version(Client, ApplicationId, CampaignId, Version, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/campaigns/", aws_util:encode_uri(CampaignId), "/versions/", aws_util:encode_uri(Version), ""],
     SuccessStatusCode = 200,
 
@@ -1036,11 +1154,16 @@ get_campaign_version(Client, ApplicationId, CampaignId, Version, Options)
 
 %% @doc Retrieves information about the status, configuration, and other
 %% settings for all versions of a campaign.
-get_campaign_versions(Client, ApplicationId, CampaignId, PageSize, Token)
+get_campaign_versions(Client, ApplicationId, CampaignId)
   when is_map(Client) ->
-    get_campaign_versions(Client, ApplicationId, CampaignId, PageSize, Token, []).
-get_campaign_versions(Client, ApplicationId, CampaignId, PageSize, Token, Options)
-  when is_map(Client), is_list(Options) ->
+    get_campaign_versions(Client, ApplicationId, CampaignId, #{}, #{}).
+
+get_campaign_versions(Client, ApplicationId, CampaignId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_campaign_versions(Client, ApplicationId, CampaignId, QueryMap, HeadersMap, []).
+
+get_campaign_versions(Client, ApplicationId, CampaignId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/campaigns/", aws_util:encode_uri(CampaignId), "/versions"],
     SuccessStatusCode = 200,
 
@@ -1048,8 +1171,8 @@ get_campaign_versions(Client, ApplicationId, CampaignId, PageSize, Token, Option
 
     Query0_ =
       [
-        {<<"page-size">>, PageSize},
-        {<<"token">>, Token}
+        {<<"page-size">>, maps:get(<<"page-size">>, QueryMap, undefined)},
+        {<<"token">>, maps:get(<<"token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1057,11 +1180,16 @@ get_campaign_versions(Client, ApplicationId, CampaignId, PageSize, Token, Option
 
 %% @doc Retrieves information about the status, configuration, and other
 %% settings for all the campaigns that are associated with an application.
-get_campaigns(Client, ApplicationId, PageSize, Token)
+get_campaigns(Client, ApplicationId)
   when is_map(Client) ->
-    get_campaigns(Client, ApplicationId, PageSize, Token, []).
-get_campaigns(Client, ApplicationId, PageSize, Token, Options)
-  when is_map(Client), is_list(Options) ->
+    get_campaigns(Client, ApplicationId, #{}, #{}).
+
+get_campaigns(Client, ApplicationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_campaigns(Client, ApplicationId, QueryMap, HeadersMap, []).
+
+get_campaigns(Client, ApplicationId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/campaigns"],
     SuccessStatusCode = 200,
 
@@ -1069,8 +1197,8 @@ get_campaigns(Client, ApplicationId, PageSize, Token, Options)
 
     Query0_ =
       [
-        {<<"page-size">>, PageSize},
-        {<<"token">>, Token}
+        {<<"page-size">>, maps:get(<<"page-size">>, QueryMap, undefined)},
+        {<<"token">>, maps:get(<<"token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1080,9 +1208,14 @@ get_campaigns(Client, ApplicationId, PageSize, Token, Options)
 %% for an application.
 get_channels(Client, ApplicationId)
   when is_map(Client) ->
-    get_channels(Client, ApplicationId, []).
-get_channels(Client, ApplicationId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_channels(Client, ApplicationId, #{}, #{}).
+
+get_channels(Client, ApplicationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_channels(Client, ApplicationId, QueryMap, HeadersMap, []).
+
+get_channels(Client, ApplicationId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels"],
     SuccessStatusCode = 200,
 
@@ -1096,9 +1229,14 @@ get_channels(Client, ApplicationId, Options)
 %% channel for an application.
 get_email_channel(Client, ApplicationId)
   when is_map(Client) ->
-    get_email_channel(Client, ApplicationId, []).
-get_email_channel(Client, ApplicationId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_email_channel(Client, ApplicationId, #{}, #{}).
+
+get_email_channel(Client, ApplicationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_email_channel(Client, ApplicationId, QueryMap, HeadersMap, []).
+
+get_email_channel(Client, ApplicationId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/email"],
     SuccessStatusCode = 200,
 
@@ -1110,11 +1248,16 @@ get_email_channel(Client, ApplicationId, Options)
 
 %% @doc Retrieves the content and settings of a message template for messages
 %% that are sent through the email channel.
-get_email_template(Client, TemplateName, Version)
+get_email_template(Client, TemplateName)
   when is_map(Client) ->
-    get_email_template(Client, TemplateName, Version, []).
-get_email_template(Client, TemplateName, Version, Options)
-  when is_map(Client), is_list(Options) ->
+    get_email_template(Client, TemplateName, #{}, #{}).
+
+get_email_template(Client, TemplateName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_email_template(Client, TemplateName, QueryMap, HeadersMap, []).
+
+get_email_template(Client, TemplateName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/email"],
     SuccessStatusCode = 200,
 
@@ -1122,7 +1265,7 @@ get_email_template(Client, TemplateName, Version, Options)
 
     Query0_ =
       [
-        {<<"version">>, Version}
+        {<<"version">>, maps:get(<<"version">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1132,9 +1275,14 @@ get_email_template(Client, TemplateName, Version, Options)
 %% endpoint for an application.
 get_endpoint(Client, ApplicationId, EndpointId)
   when is_map(Client) ->
-    get_endpoint(Client, ApplicationId, EndpointId, []).
-get_endpoint(Client, ApplicationId, EndpointId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_endpoint(Client, ApplicationId, EndpointId, #{}, #{}).
+
+get_endpoint(Client, ApplicationId, EndpointId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_endpoint(Client, ApplicationId, EndpointId, QueryMap, HeadersMap, []).
+
+get_endpoint(Client, ApplicationId, EndpointId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/endpoints/", aws_util:encode_uri(EndpointId), ""],
     SuccessStatusCode = 200,
 
@@ -1148,9 +1296,14 @@ get_endpoint(Client, ApplicationId, EndpointId, Options)
 %% application.
 get_event_stream(Client, ApplicationId)
   when is_map(Client) ->
-    get_event_stream(Client, ApplicationId, []).
-get_event_stream(Client, ApplicationId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_event_stream(Client, ApplicationId, #{}, #{}).
+
+get_event_stream(Client, ApplicationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_event_stream(Client, ApplicationId, QueryMap, HeadersMap, []).
+
+get_event_stream(Client, ApplicationId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/eventstream"],
     SuccessStatusCode = 200,
 
@@ -1164,9 +1317,14 @@ get_event_stream(Client, ApplicationId, Options)
 %% export job for an application.
 get_export_job(Client, ApplicationId, JobId)
   when is_map(Client) ->
-    get_export_job(Client, ApplicationId, JobId, []).
-get_export_job(Client, ApplicationId, JobId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_export_job(Client, ApplicationId, JobId, #{}, #{}).
+
+get_export_job(Client, ApplicationId, JobId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_export_job(Client, ApplicationId, JobId, QueryMap, HeadersMap, []).
+
+get_export_job(Client, ApplicationId, JobId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/jobs/export/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = 200,
 
@@ -1178,11 +1336,16 @@ get_export_job(Client, ApplicationId, JobId, Options)
 
 %% @doc Retrieves information about the status and settings of all the export
 %% jobs for an application.
-get_export_jobs(Client, ApplicationId, PageSize, Token)
+get_export_jobs(Client, ApplicationId)
   when is_map(Client) ->
-    get_export_jobs(Client, ApplicationId, PageSize, Token, []).
-get_export_jobs(Client, ApplicationId, PageSize, Token, Options)
-  when is_map(Client), is_list(Options) ->
+    get_export_jobs(Client, ApplicationId, #{}, #{}).
+
+get_export_jobs(Client, ApplicationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_export_jobs(Client, ApplicationId, QueryMap, HeadersMap, []).
+
+get_export_jobs(Client, ApplicationId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/jobs/export"],
     SuccessStatusCode = 200,
 
@@ -1190,8 +1353,8 @@ get_export_jobs(Client, ApplicationId, PageSize, Token, Options)
 
     Query0_ =
       [
-        {<<"page-size">>, PageSize},
-        {<<"token">>, Token}
+        {<<"page-size">>, maps:get(<<"page-size">>, QueryMap, undefined)},
+        {<<"token">>, maps:get(<<"token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1201,9 +1364,14 @@ get_export_jobs(Client, ApplicationId, PageSize, Token, Options)
 %% channel for an application.
 get_gcm_channel(Client, ApplicationId)
   when is_map(Client) ->
-    get_gcm_channel(Client, ApplicationId, []).
-get_gcm_channel(Client, ApplicationId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_gcm_channel(Client, ApplicationId, #{}, #{}).
+
+get_gcm_channel(Client, ApplicationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_gcm_channel(Client, ApplicationId, QueryMap, HeadersMap, []).
+
+get_gcm_channel(Client, ApplicationId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/gcm"],
     SuccessStatusCode = 200,
 
@@ -1217,9 +1385,14 @@ get_gcm_channel(Client, ApplicationId, Options)
 %% import job for an application.
 get_import_job(Client, ApplicationId, JobId)
   when is_map(Client) ->
-    get_import_job(Client, ApplicationId, JobId, []).
-get_import_job(Client, ApplicationId, JobId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_import_job(Client, ApplicationId, JobId, #{}, #{}).
+
+get_import_job(Client, ApplicationId, JobId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_import_job(Client, ApplicationId, JobId, QueryMap, HeadersMap, []).
+
+get_import_job(Client, ApplicationId, JobId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/jobs/import/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = 200,
 
@@ -1231,11 +1404,16 @@ get_import_job(Client, ApplicationId, JobId, Options)
 
 %% @doc Retrieves information about the status and settings of all the import
 %% jobs for an application.
-get_import_jobs(Client, ApplicationId, PageSize, Token)
+get_import_jobs(Client, ApplicationId)
   when is_map(Client) ->
-    get_import_jobs(Client, ApplicationId, PageSize, Token, []).
-get_import_jobs(Client, ApplicationId, PageSize, Token, Options)
-  when is_map(Client), is_list(Options) ->
+    get_import_jobs(Client, ApplicationId, #{}, #{}).
+
+get_import_jobs(Client, ApplicationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_import_jobs(Client, ApplicationId, QueryMap, HeadersMap, []).
+
+get_import_jobs(Client, ApplicationId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/jobs/import"],
     SuccessStatusCode = 200,
 
@@ -1243,8 +1421,8 @@ get_import_jobs(Client, ApplicationId, PageSize, Token, Options)
 
     Query0_ =
       [
-        {<<"page-size">>, PageSize},
-        {<<"token">>, Token}
+        {<<"page-size">>, maps:get(<<"page-size">>, QueryMap, undefined)},
+        {<<"token">>, maps:get(<<"token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1254,9 +1432,14 @@ get_import_jobs(Client, ApplicationId, PageSize, Token, Options)
 %% settings for a journey.
 get_journey(Client, ApplicationId, JourneyId)
   when is_map(Client) ->
-    get_journey(Client, ApplicationId, JourneyId, []).
-get_journey(Client, ApplicationId, JourneyId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_journey(Client, ApplicationId, JourneyId, #{}, #{}).
+
+get_journey(Client, ApplicationId, JourneyId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_journey(Client, ApplicationId, JourneyId, QueryMap, HeadersMap, []).
+
+get_journey(Client, ApplicationId, JourneyId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/journeys/", aws_util:encode_uri(JourneyId), ""],
     SuccessStatusCode = 200,
 
@@ -1268,11 +1451,16 @@ get_journey(Client, ApplicationId, JourneyId, Options)
 
 %% @doc Retrieves (queries) pre-aggregated data for a standard engagement
 %% metric that applies to a journey.
-get_journey_date_range_kpi(Client, ApplicationId, JourneyId, KpiName, EndTime, NextToken, PageSize, StartTime)
+get_journey_date_range_kpi(Client, ApplicationId, JourneyId, KpiName)
   when is_map(Client) ->
-    get_journey_date_range_kpi(Client, ApplicationId, JourneyId, KpiName, EndTime, NextToken, PageSize, StartTime, []).
-get_journey_date_range_kpi(Client, ApplicationId, JourneyId, KpiName, EndTime, NextToken, PageSize, StartTime, Options)
-  when is_map(Client), is_list(Options) ->
+    get_journey_date_range_kpi(Client, ApplicationId, JourneyId, KpiName, #{}, #{}).
+
+get_journey_date_range_kpi(Client, ApplicationId, JourneyId, KpiName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_journey_date_range_kpi(Client, ApplicationId, JourneyId, KpiName, QueryMap, HeadersMap, []).
+
+get_journey_date_range_kpi(Client, ApplicationId, JourneyId, KpiName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/journeys/", aws_util:encode_uri(JourneyId), "/kpis/daterange/", aws_util:encode_uri(KpiName), ""],
     SuccessStatusCode = 200,
 
@@ -1280,10 +1468,10 @@ get_journey_date_range_kpi(Client, ApplicationId, JourneyId, KpiName, EndTime, N
 
     Query0_ =
       [
-        {<<"end-time">>, EndTime},
-        {<<"next-token">>, NextToken},
-        {<<"page-size">>, PageSize},
-        {<<"start-time">>, StartTime}
+        {<<"end-time">>, maps:get(<<"end-time">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)},
+        {<<"page-size">>, maps:get(<<"page-size">>, QueryMap, undefined)},
+        {<<"start-time">>, maps:get(<<"start-time">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1291,11 +1479,16 @@ get_journey_date_range_kpi(Client, ApplicationId, JourneyId, KpiName, EndTime, N
 
 %% @doc Retrieves (queries) pre-aggregated data for a standard execution
 %% metric that applies to a journey activity.
-get_journey_execution_activity_metrics(Client, ApplicationId, JourneyActivityId, JourneyId, NextToken, PageSize)
+get_journey_execution_activity_metrics(Client, ApplicationId, JourneyActivityId, JourneyId)
   when is_map(Client) ->
-    get_journey_execution_activity_metrics(Client, ApplicationId, JourneyActivityId, JourneyId, NextToken, PageSize, []).
-get_journey_execution_activity_metrics(Client, ApplicationId, JourneyActivityId, JourneyId, NextToken, PageSize, Options)
-  when is_map(Client), is_list(Options) ->
+    get_journey_execution_activity_metrics(Client, ApplicationId, JourneyActivityId, JourneyId, #{}, #{}).
+
+get_journey_execution_activity_metrics(Client, ApplicationId, JourneyActivityId, JourneyId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_journey_execution_activity_metrics(Client, ApplicationId, JourneyActivityId, JourneyId, QueryMap, HeadersMap, []).
+
+get_journey_execution_activity_metrics(Client, ApplicationId, JourneyActivityId, JourneyId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/journeys/", aws_util:encode_uri(JourneyId), "/activities/", aws_util:encode_uri(JourneyActivityId), "/execution-metrics"],
     SuccessStatusCode = 200,
 
@@ -1303,8 +1496,8 @@ get_journey_execution_activity_metrics(Client, ApplicationId, JourneyActivityId,
 
     Query0_ =
       [
-        {<<"next-token">>, NextToken},
-        {<<"page-size">>, PageSize}
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)},
+        {<<"page-size">>, maps:get(<<"page-size">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1312,11 +1505,16 @@ get_journey_execution_activity_metrics(Client, ApplicationId, JourneyActivityId,
 
 %% @doc Retrieves (queries) pre-aggregated data for a standard execution
 %% metric that applies to a journey.
-get_journey_execution_metrics(Client, ApplicationId, JourneyId, NextToken, PageSize)
+get_journey_execution_metrics(Client, ApplicationId, JourneyId)
   when is_map(Client) ->
-    get_journey_execution_metrics(Client, ApplicationId, JourneyId, NextToken, PageSize, []).
-get_journey_execution_metrics(Client, ApplicationId, JourneyId, NextToken, PageSize, Options)
-  when is_map(Client), is_list(Options) ->
+    get_journey_execution_metrics(Client, ApplicationId, JourneyId, #{}, #{}).
+
+get_journey_execution_metrics(Client, ApplicationId, JourneyId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_journey_execution_metrics(Client, ApplicationId, JourneyId, QueryMap, HeadersMap, []).
+
+get_journey_execution_metrics(Client, ApplicationId, JourneyId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/journeys/", aws_util:encode_uri(JourneyId), "/execution-metrics"],
     SuccessStatusCode = 200,
 
@@ -1324,8 +1522,8 @@ get_journey_execution_metrics(Client, ApplicationId, JourneyId, NextToken, PageS
 
     Query0_ =
       [
-        {<<"next-token">>, NextToken},
-        {<<"page-size">>, PageSize}
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)},
+        {<<"page-size">>, maps:get(<<"page-size">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1333,11 +1531,16 @@ get_journey_execution_metrics(Client, ApplicationId, JourneyId, NextToken, PageS
 
 %% @doc Retrieves the content and settings of a message template for messages
 %% that are sent through a push notification channel.
-get_push_template(Client, TemplateName, Version)
+get_push_template(Client, TemplateName)
   when is_map(Client) ->
-    get_push_template(Client, TemplateName, Version, []).
-get_push_template(Client, TemplateName, Version, Options)
-  when is_map(Client), is_list(Options) ->
+    get_push_template(Client, TemplateName, #{}, #{}).
+
+get_push_template(Client, TemplateName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_push_template(Client, TemplateName, QueryMap, HeadersMap, []).
+
+get_push_template(Client, TemplateName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/push"],
     SuccessStatusCode = 200,
 
@@ -1345,7 +1548,7 @@ get_push_template(Client, TemplateName, Version, Options)
 
     Query0_ =
       [
-        {<<"version">>, Version}
+        {<<"version">>, maps:get(<<"version">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1355,9 +1558,14 @@ get_push_template(Client, TemplateName, Version, Options)
 %% recommender model.
 get_recommender_configuration(Client, RecommenderId)
   when is_map(Client) ->
-    get_recommender_configuration(Client, RecommenderId, []).
-get_recommender_configuration(Client, RecommenderId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_recommender_configuration(Client, RecommenderId, #{}, #{}).
+
+get_recommender_configuration(Client, RecommenderId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_recommender_configuration(Client, RecommenderId, QueryMap, HeadersMap, []).
+
+get_recommender_configuration(Client, RecommenderId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/recommenders/", aws_util:encode_uri(RecommenderId), ""],
     SuccessStatusCode = 200,
 
@@ -1369,11 +1577,16 @@ get_recommender_configuration(Client, RecommenderId, Options)
 
 %% @doc Retrieves information about all the recommender model configurations
 %% that are associated with your Amazon Pinpoint account.
-get_recommender_configurations(Client, PageSize, Token)
+get_recommender_configurations(Client)
   when is_map(Client) ->
-    get_recommender_configurations(Client, PageSize, Token, []).
-get_recommender_configurations(Client, PageSize, Token, Options)
-  when is_map(Client), is_list(Options) ->
+    get_recommender_configurations(Client, #{}, #{}).
+
+get_recommender_configurations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_recommender_configurations(Client, QueryMap, HeadersMap, []).
+
+get_recommender_configurations(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/recommenders"],
     SuccessStatusCode = 200,
 
@@ -1381,8 +1594,8 @@ get_recommender_configurations(Client, PageSize, Token, Options)
 
     Query0_ =
       [
-        {<<"page-size">>, PageSize},
-        {<<"token">>, Token}
+        {<<"page-size">>, maps:get(<<"page-size">>, QueryMap, undefined)},
+        {<<"token">>, maps:get(<<"token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1392,9 +1605,14 @@ get_recommender_configurations(Client, PageSize, Token, Options)
 %% settings for a specific segment that's associated with an application.
 get_segment(Client, ApplicationId, SegmentId)
   when is_map(Client) ->
-    get_segment(Client, ApplicationId, SegmentId, []).
-get_segment(Client, ApplicationId, SegmentId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_segment(Client, ApplicationId, SegmentId, #{}, #{}).
+
+get_segment(Client, ApplicationId, SegmentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_segment(Client, ApplicationId, SegmentId, QueryMap, HeadersMap, []).
+
+get_segment(Client, ApplicationId, SegmentId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/segments/", aws_util:encode_uri(SegmentId), ""],
     SuccessStatusCode = 200,
 
@@ -1406,11 +1624,16 @@ get_segment(Client, ApplicationId, SegmentId, Options)
 
 %% @doc Retrieves information about the status and settings of the export
 %% jobs for a segment.
-get_segment_export_jobs(Client, ApplicationId, SegmentId, PageSize, Token)
+get_segment_export_jobs(Client, ApplicationId, SegmentId)
   when is_map(Client) ->
-    get_segment_export_jobs(Client, ApplicationId, SegmentId, PageSize, Token, []).
-get_segment_export_jobs(Client, ApplicationId, SegmentId, PageSize, Token, Options)
-  when is_map(Client), is_list(Options) ->
+    get_segment_export_jobs(Client, ApplicationId, SegmentId, #{}, #{}).
+
+get_segment_export_jobs(Client, ApplicationId, SegmentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_segment_export_jobs(Client, ApplicationId, SegmentId, QueryMap, HeadersMap, []).
+
+get_segment_export_jobs(Client, ApplicationId, SegmentId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/segments/", aws_util:encode_uri(SegmentId), "/jobs/export"],
     SuccessStatusCode = 200,
 
@@ -1418,8 +1641,8 @@ get_segment_export_jobs(Client, ApplicationId, SegmentId, PageSize, Token, Optio
 
     Query0_ =
       [
-        {<<"page-size">>, PageSize},
-        {<<"token">>, Token}
+        {<<"page-size">>, maps:get(<<"page-size">>, QueryMap, undefined)},
+        {<<"token">>, maps:get(<<"token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1427,11 +1650,16 @@ get_segment_export_jobs(Client, ApplicationId, SegmentId, PageSize, Token, Optio
 
 %% @doc Retrieves information about the status and settings of the import
 %% jobs for a segment.
-get_segment_import_jobs(Client, ApplicationId, SegmentId, PageSize, Token)
+get_segment_import_jobs(Client, ApplicationId, SegmentId)
   when is_map(Client) ->
-    get_segment_import_jobs(Client, ApplicationId, SegmentId, PageSize, Token, []).
-get_segment_import_jobs(Client, ApplicationId, SegmentId, PageSize, Token, Options)
-  when is_map(Client), is_list(Options) ->
+    get_segment_import_jobs(Client, ApplicationId, SegmentId, #{}, #{}).
+
+get_segment_import_jobs(Client, ApplicationId, SegmentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_segment_import_jobs(Client, ApplicationId, SegmentId, QueryMap, HeadersMap, []).
+
+get_segment_import_jobs(Client, ApplicationId, SegmentId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/segments/", aws_util:encode_uri(SegmentId), "/jobs/import"],
     SuccessStatusCode = 200,
 
@@ -1439,8 +1667,8 @@ get_segment_import_jobs(Client, ApplicationId, SegmentId, PageSize, Token, Optio
 
     Query0_ =
       [
-        {<<"page-size">>, PageSize},
-        {<<"token">>, Token}
+        {<<"page-size">>, maps:get(<<"page-size">>, QueryMap, undefined)},
+        {<<"token">>, maps:get(<<"token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1451,9 +1679,14 @@ get_segment_import_jobs(Client, ApplicationId, SegmentId, PageSize, Token, Optio
 %% application.
 get_segment_version(Client, ApplicationId, SegmentId, Version)
   when is_map(Client) ->
-    get_segment_version(Client, ApplicationId, SegmentId, Version, []).
-get_segment_version(Client, ApplicationId, SegmentId, Version, Options)
-  when is_map(Client), is_list(Options) ->
+    get_segment_version(Client, ApplicationId, SegmentId, Version, #{}, #{}).
+
+get_segment_version(Client, ApplicationId, SegmentId, Version, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_segment_version(Client, ApplicationId, SegmentId, Version, QueryMap, HeadersMap, []).
+
+get_segment_version(Client, ApplicationId, SegmentId, Version, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/segments/", aws_util:encode_uri(SegmentId), "/versions/", aws_util:encode_uri(Version), ""],
     SuccessStatusCode = 200,
 
@@ -1466,11 +1699,16 @@ get_segment_version(Client, ApplicationId, SegmentId, Version, Options)
 %% @doc Retrieves information about the configuration, dimension, and other
 %% settings for all the versions of a specific segment that's associated with
 %% an application.
-get_segment_versions(Client, ApplicationId, SegmentId, PageSize, Token)
+get_segment_versions(Client, ApplicationId, SegmentId)
   when is_map(Client) ->
-    get_segment_versions(Client, ApplicationId, SegmentId, PageSize, Token, []).
-get_segment_versions(Client, ApplicationId, SegmentId, PageSize, Token, Options)
-  when is_map(Client), is_list(Options) ->
+    get_segment_versions(Client, ApplicationId, SegmentId, #{}, #{}).
+
+get_segment_versions(Client, ApplicationId, SegmentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_segment_versions(Client, ApplicationId, SegmentId, QueryMap, HeadersMap, []).
+
+get_segment_versions(Client, ApplicationId, SegmentId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/segments/", aws_util:encode_uri(SegmentId), "/versions"],
     SuccessStatusCode = 200,
 
@@ -1478,8 +1716,8 @@ get_segment_versions(Client, ApplicationId, SegmentId, PageSize, Token, Options)
 
     Query0_ =
       [
-        {<<"page-size">>, PageSize},
-        {<<"token">>, Token}
+        {<<"page-size">>, maps:get(<<"page-size">>, QueryMap, undefined)},
+        {<<"token">>, maps:get(<<"token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1487,11 +1725,16 @@ get_segment_versions(Client, ApplicationId, SegmentId, PageSize, Token, Options)
 
 %% @doc Retrieves information about the configuration, dimension, and other
 %% settings for all the segments that are associated with an application.
-get_segments(Client, ApplicationId, PageSize, Token)
+get_segments(Client, ApplicationId)
   when is_map(Client) ->
-    get_segments(Client, ApplicationId, PageSize, Token, []).
-get_segments(Client, ApplicationId, PageSize, Token, Options)
-  when is_map(Client), is_list(Options) ->
+    get_segments(Client, ApplicationId, #{}, #{}).
+
+get_segments(Client, ApplicationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_segments(Client, ApplicationId, QueryMap, HeadersMap, []).
+
+get_segments(Client, ApplicationId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/segments"],
     SuccessStatusCode = 200,
 
@@ -1499,8 +1742,8 @@ get_segments(Client, ApplicationId, PageSize, Token, Options)
 
     Query0_ =
       [
-        {<<"page-size">>, PageSize},
-        {<<"token">>, Token}
+        {<<"page-size">>, maps:get(<<"page-size">>, QueryMap, undefined)},
+        {<<"token">>, maps:get(<<"token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1510,9 +1753,14 @@ get_segments(Client, ApplicationId, PageSize, Token, Options)
 %% channel for an application.
 get_sms_channel(Client, ApplicationId)
   when is_map(Client) ->
-    get_sms_channel(Client, ApplicationId, []).
-get_sms_channel(Client, ApplicationId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_sms_channel(Client, ApplicationId, #{}, #{}).
+
+get_sms_channel(Client, ApplicationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_sms_channel(Client, ApplicationId, QueryMap, HeadersMap, []).
+
+get_sms_channel(Client, ApplicationId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/sms"],
     SuccessStatusCode = 200,
 
@@ -1524,11 +1772,16 @@ get_sms_channel(Client, ApplicationId, Options)
 
 %% @doc Retrieves the content and settings of a message template for messages
 %% that are sent through the SMS channel.
-get_sms_template(Client, TemplateName, Version)
+get_sms_template(Client, TemplateName)
   when is_map(Client) ->
-    get_sms_template(Client, TemplateName, Version, []).
-get_sms_template(Client, TemplateName, Version, Options)
-  when is_map(Client), is_list(Options) ->
+    get_sms_template(Client, TemplateName, #{}, #{}).
+
+get_sms_template(Client, TemplateName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_sms_template(Client, TemplateName, QueryMap, HeadersMap, []).
+
+get_sms_template(Client, TemplateName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/sms"],
     SuccessStatusCode = 200,
 
@@ -1536,7 +1789,7 @@ get_sms_template(Client, TemplateName, Version, Options)
 
     Query0_ =
       [
-        {<<"version">>, Version}
+        {<<"version">>, maps:get(<<"version">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1546,9 +1799,14 @@ get_sms_template(Client, TemplateName, Version, Options)
 %% with a specific user ID.
 get_user_endpoints(Client, ApplicationId, UserId)
   when is_map(Client) ->
-    get_user_endpoints(Client, ApplicationId, UserId, []).
-get_user_endpoints(Client, ApplicationId, UserId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_user_endpoints(Client, ApplicationId, UserId, #{}, #{}).
+
+get_user_endpoints(Client, ApplicationId, UserId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_user_endpoints(Client, ApplicationId, UserId, QueryMap, HeadersMap, []).
+
+get_user_endpoints(Client, ApplicationId, UserId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/users/", aws_util:encode_uri(UserId), ""],
     SuccessStatusCode = 200,
 
@@ -1562,9 +1820,14 @@ get_user_endpoints(Client, ApplicationId, UserId, Options)
 %% channel for an application.
 get_voice_channel(Client, ApplicationId)
   when is_map(Client) ->
-    get_voice_channel(Client, ApplicationId, []).
-get_voice_channel(Client, ApplicationId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_voice_channel(Client, ApplicationId, #{}, #{}).
+
+get_voice_channel(Client, ApplicationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_voice_channel(Client, ApplicationId, QueryMap, HeadersMap, []).
+
+get_voice_channel(Client, ApplicationId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/voice"],
     SuccessStatusCode = 200,
 
@@ -1576,11 +1839,16 @@ get_voice_channel(Client, ApplicationId, Options)
 
 %% @doc Retrieves the content and settings of a message template for messages
 %% that are sent through the voice channel.
-get_voice_template(Client, TemplateName, Version)
+get_voice_template(Client, TemplateName)
   when is_map(Client) ->
-    get_voice_template(Client, TemplateName, Version, []).
-get_voice_template(Client, TemplateName, Version, Options)
-  when is_map(Client), is_list(Options) ->
+    get_voice_template(Client, TemplateName, #{}, #{}).
+
+get_voice_template(Client, TemplateName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_voice_template(Client, TemplateName, QueryMap, HeadersMap, []).
+
+get_voice_template(Client, TemplateName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/voice"],
     SuccessStatusCode = 200,
 
@@ -1588,7 +1856,7 @@ get_voice_template(Client, TemplateName, Version, Options)
 
     Query0_ =
       [
-        {<<"version">>, Version}
+        {<<"version">>, maps:get(<<"version">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1596,11 +1864,16 @@ get_voice_template(Client, TemplateName, Version, Options)
 
 %% @doc Retrieves information about the status, configuration, and other
 %% settings for all the journeys that are associated with an application.
-list_journeys(Client, ApplicationId, PageSize, Token)
+list_journeys(Client, ApplicationId)
   when is_map(Client) ->
-    list_journeys(Client, ApplicationId, PageSize, Token, []).
-list_journeys(Client, ApplicationId, PageSize, Token, Options)
-  when is_map(Client), is_list(Options) ->
+    list_journeys(Client, ApplicationId, #{}, #{}).
+
+list_journeys(Client, ApplicationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_journeys(Client, ApplicationId, QueryMap, HeadersMap, []).
+
+list_journeys(Client, ApplicationId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/journeys"],
     SuccessStatusCode = 200,
 
@@ -1608,8 +1881,8 @@ list_journeys(Client, ApplicationId, PageSize, Token, Options)
 
     Query0_ =
       [
-        {<<"page-size">>, PageSize},
-        {<<"token">>, Token}
+        {<<"page-size">>, maps:get(<<"page-size">>, QueryMap, undefined)},
+        {<<"token">>, maps:get(<<"token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1619,9 +1892,14 @@ list_journeys(Client, ApplicationId, PageSize, Token, Options)
 %% application, campaign, message template, or segment.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 
@@ -1633,11 +1911,16 @@ list_tags_for_resource(Client, ResourceArn, Options)
 
 %% @doc Retrieves information about all the versions of a specific message
 %% template.
-list_template_versions(Client, TemplateName, TemplateType, NextToken, PageSize)
+list_template_versions(Client, TemplateName, TemplateType)
   when is_map(Client) ->
-    list_template_versions(Client, TemplateName, TemplateType, NextToken, PageSize, []).
-list_template_versions(Client, TemplateName, TemplateType, NextToken, PageSize, Options)
-  when is_map(Client), is_list(Options) ->
+    list_template_versions(Client, TemplateName, TemplateType, #{}, #{}).
+
+list_template_versions(Client, TemplateName, TemplateType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_template_versions(Client, TemplateName, TemplateType, QueryMap, HeadersMap, []).
+
+list_template_versions(Client, TemplateName, TemplateType, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/", aws_util:encode_uri(TemplateType), "/versions"],
     SuccessStatusCode = 200,
 
@@ -1645,8 +1928,8 @@ list_template_versions(Client, TemplateName, TemplateType, NextToken, PageSize, 
 
     Query0_ =
       [
-        {<<"next-token">>, NextToken},
-        {<<"page-size">>, PageSize}
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)},
+        {<<"page-size">>, maps:get(<<"page-size">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1654,11 +1937,16 @@ list_template_versions(Client, TemplateName, TemplateType, NextToken, PageSize, 
 
 %% @doc Retrieves information about all the message templates that are
 %% associated with your Amazon Pinpoint account.
-list_templates(Client, NextToken, PageSize, Prefix, TemplateType)
+list_templates(Client)
   when is_map(Client) ->
-    list_templates(Client, NextToken, PageSize, Prefix, TemplateType, []).
-list_templates(Client, NextToken, PageSize, Prefix, TemplateType, Options)
-  when is_map(Client), is_list(Options) ->
+    list_templates(Client, #{}, #{}).
+
+list_templates(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_templates(Client, QueryMap, HeadersMap, []).
+
+list_templates(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/templates"],
     SuccessStatusCode = 200,
 
@@ -1666,10 +1954,10 @@ list_templates(Client, NextToken, PageSize, Prefix, TemplateType, Options)
 
     Query0_ =
       [
-        {<<"next-token">>, NextToken},
-        {<<"page-size">>, PageSize},
-        {<<"prefix">>, Prefix},
-        {<<"template-type">>, TemplateType}
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)},
+        {<<"page-size">>, maps:get(<<"page-size">>, QueryMap, undefined)},
+        {<<"prefix">>, maps:get(<<"prefix">>, QueryMap, undefined)},
+        {<<"template-type">>, maps:get(<<"template-type">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

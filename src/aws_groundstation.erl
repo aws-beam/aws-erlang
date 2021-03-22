@@ -24,31 +24,42 @@
          delete_mission_profile/3,
          delete_mission_profile/4,
          describe_contact/2,
-         describe_contact/3,
+         describe_contact/4,
+         describe_contact/5,
          get_config/3,
-         get_config/4,
+         get_config/5,
+         get_config/6,
          get_dataflow_endpoint_group/2,
-         get_dataflow_endpoint_group/3,
+         get_dataflow_endpoint_group/4,
+         get_dataflow_endpoint_group/5,
          get_minute_usage/2,
          get_minute_usage/3,
          get_mission_profile/2,
-         get_mission_profile/3,
+         get_mission_profile/4,
+         get_mission_profile/5,
          get_satellite/2,
-         get_satellite/3,
+         get_satellite/4,
+         get_satellite/5,
+         list_configs/1,
          list_configs/3,
          list_configs/4,
          list_contacts/2,
          list_contacts/3,
+         list_dataflow_endpoint_groups/1,
          list_dataflow_endpoint_groups/3,
          list_dataflow_endpoint_groups/4,
+         list_ground_stations/1,
+         list_ground_stations/3,
          list_ground_stations/4,
-         list_ground_stations/5,
+         list_mission_profiles/1,
          list_mission_profiles/3,
          list_mission_profiles/4,
+         list_satellites/1,
          list_satellites/3,
          list_satellites/4,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          reserve_contact/2,
          reserve_contact/3,
          tag_resource/3,
@@ -194,9 +205,14 @@ delete_mission_profile(Client, MissionProfileId, Input0, Options) ->
 %% @doc Describes an existing contact.
 describe_contact(Client, ContactId)
   when is_map(Client) ->
-    describe_contact(Client, ContactId, []).
-describe_contact(Client, ContactId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_contact(Client, ContactId, #{}, #{}).
+
+describe_contact(Client, ContactId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_contact(Client, ContactId, QueryMap, HeadersMap, []).
+
+describe_contact(Client, ContactId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/contact/", aws_util:encode_uri(ContactId), ""],
     SuccessStatusCode = 200,
 
@@ -211,9 +227,14 @@ describe_contact(Client, ContactId, Options)
 %% Only one `Config' response can be returned.
 get_config(Client, ConfigId, ConfigType)
   when is_map(Client) ->
-    get_config(Client, ConfigId, ConfigType, []).
-get_config(Client, ConfigId, ConfigType, Options)
-  when is_map(Client), is_list(Options) ->
+    get_config(Client, ConfigId, ConfigType, #{}, #{}).
+
+get_config(Client, ConfigId, ConfigType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_config(Client, ConfigId, ConfigType, QueryMap, HeadersMap, []).
+
+get_config(Client, ConfigId, ConfigType, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/config/", aws_util:encode_uri(ConfigType), "/", aws_util:encode_uri(ConfigId), ""],
     SuccessStatusCode = 200,
 
@@ -226,9 +247,14 @@ get_config(Client, ConfigId, ConfigType, Options)
 %% @doc Returns the dataflow endpoint group.
 get_dataflow_endpoint_group(Client, DataflowEndpointGroupId)
   when is_map(Client) ->
-    get_dataflow_endpoint_group(Client, DataflowEndpointGroupId, []).
-get_dataflow_endpoint_group(Client, DataflowEndpointGroupId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_dataflow_endpoint_group(Client, DataflowEndpointGroupId, #{}, #{}).
+
+get_dataflow_endpoint_group(Client, DataflowEndpointGroupId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_dataflow_endpoint_group(Client, DataflowEndpointGroupId, QueryMap, HeadersMap, []).
+
+get_dataflow_endpoint_group(Client, DataflowEndpointGroupId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/dataflowEndpointGroup/", aws_util:encode_uri(DataflowEndpointGroupId), ""],
     SuccessStatusCode = 200,
 
@@ -257,9 +283,14 @@ get_minute_usage(Client, Input0, Options) ->
 %% @doc Returns a mission profile.
 get_mission_profile(Client, MissionProfileId)
   when is_map(Client) ->
-    get_mission_profile(Client, MissionProfileId, []).
-get_mission_profile(Client, MissionProfileId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_mission_profile(Client, MissionProfileId, #{}, #{}).
+
+get_mission_profile(Client, MissionProfileId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_mission_profile(Client, MissionProfileId, QueryMap, HeadersMap, []).
+
+get_mission_profile(Client, MissionProfileId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/missionprofile/", aws_util:encode_uri(MissionProfileId), ""],
     SuccessStatusCode = 200,
 
@@ -272,9 +303,14 @@ get_mission_profile(Client, MissionProfileId, Options)
 %% @doc Returns a satellite.
 get_satellite(Client, SatelliteId)
   when is_map(Client) ->
-    get_satellite(Client, SatelliteId, []).
-get_satellite(Client, SatelliteId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_satellite(Client, SatelliteId, #{}, #{}).
+
+get_satellite(Client, SatelliteId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_satellite(Client, SatelliteId, QueryMap, HeadersMap, []).
+
+get_satellite(Client, SatelliteId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/satellite/", aws_util:encode_uri(SatelliteId), ""],
     SuccessStatusCode = 200,
 
@@ -285,11 +321,16 @@ get_satellite(Client, SatelliteId, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of `Config' objects.
-list_configs(Client, MaxResults, NextToken)
+list_configs(Client)
   when is_map(Client) ->
-    list_configs(Client, MaxResults, NextToken, []).
-list_configs(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_configs(Client, #{}, #{}).
+
+list_configs(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_configs(Client, QueryMap, HeadersMap, []).
+
+list_configs(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/config"],
     SuccessStatusCode = 200,
 
@@ -297,8 +338,8 @@ list_configs(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -324,11 +365,16 @@ list_contacts(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of `DataflowEndpoint' groups.
-list_dataflow_endpoint_groups(Client, MaxResults, NextToken)
+list_dataflow_endpoint_groups(Client)
   when is_map(Client) ->
-    list_dataflow_endpoint_groups(Client, MaxResults, NextToken, []).
-list_dataflow_endpoint_groups(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_dataflow_endpoint_groups(Client, #{}, #{}).
+
+list_dataflow_endpoint_groups(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_dataflow_endpoint_groups(Client, QueryMap, HeadersMap, []).
+
+list_dataflow_endpoint_groups(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/dataflowEndpointGroup"],
     SuccessStatusCode = 200,
 
@@ -336,19 +382,24 @@ list_dataflow_endpoint_groups(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of ground stations.
-list_ground_stations(Client, MaxResults, NextToken, SatelliteId)
+list_ground_stations(Client)
   when is_map(Client) ->
-    list_ground_stations(Client, MaxResults, NextToken, SatelliteId, []).
-list_ground_stations(Client, MaxResults, NextToken, SatelliteId, Options)
-  when is_map(Client), is_list(Options) ->
+    list_ground_stations(Client, #{}, #{}).
+
+list_ground_stations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_ground_stations(Client, QueryMap, HeadersMap, []).
+
+list_ground_stations(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/groundstation"],
     SuccessStatusCode = 200,
 
@@ -356,20 +407,25 @@ list_ground_stations(Client, MaxResults, NextToken, SatelliteId, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"satelliteId">>, SatelliteId}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"satelliteId">>, maps:get(<<"satelliteId">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of mission profiles.
-list_mission_profiles(Client, MaxResults, NextToken)
+list_mission_profiles(Client)
   when is_map(Client) ->
-    list_mission_profiles(Client, MaxResults, NextToken, []).
-list_mission_profiles(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_mission_profiles(Client, #{}, #{}).
+
+list_mission_profiles(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_mission_profiles(Client, QueryMap, HeadersMap, []).
+
+list_mission_profiles(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/missionprofile"],
     SuccessStatusCode = 200,
 
@@ -377,19 +433,24 @@ list_mission_profiles(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of satellites.
-list_satellites(Client, MaxResults, NextToken)
+list_satellites(Client)
   when is_map(Client) ->
-    list_satellites(Client, MaxResults, NextToken, []).
-list_satellites(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_satellites(Client, #{}, #{}).
+
+list_satellites(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_satellites(Client, QueryMap, HeadersMap, []).
+
+list_satellites(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/satellite"],
     SuccessStatusCode = 200,
 
@@ -397,8 +458,8 @@ list_satellites(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -407,9 +468,14 @@ list_satellites(Client, MaxResults, NextToken, Options)
 %% @doc Returns a list of tags for a specified resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 

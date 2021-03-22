@@ -59,16 +59,22 @@
          create_cloud_formation_template/4,
          delete_application/3,
          delete_application/4,
-         get_application/3,
+         get_application/2,
          get_application/4,
+         get_application/5,
          get_application_policy/2,
-         get_application_policy/3,
+         get_application_policy/4,
+         get_application_policy/5,
          get_cloud_formation_template/3,
-         get_cloud_formation_template/4,
+         get_cloud_formation_template/5,
+         get_cloud_formation_template/6,
+         list_application_dependencies/2,
+         list_application_dependencies/4,
          list_application_dependencies/5,
-         list_application_dependencies/6,
+         list_application_versions/2,
          list_application_versions/4,
          list_application_versions/5,
+         list_applications/1,
          list_applications/3,
          list_applications/4,
          put_application_policy/3,
@@ -166,11 +172,16 @@ delete_application(Client, ApplicationId, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets the specified application.
-get_application(Client, ApplicationId, SemanticVersion)
+get_application(Client, ApplicationId)
   when is_map(Client) ->
-    get_application(Client, ApplicationId, SemanticVersion, []).
-get_application(Client, ApplicationId, SemanticVersion, Options)
-  when is_map(Client), is_list(Options) ->
+    get_application(Client, ApplicationId, #{}, #{}).
+
+get_application(Client, ApplicationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_application(Client, ApplicationId, QueryMap, HeadersMap, []).
+
+get_application(Client, ApplicationId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
     SuccessStatusCode = 200,
 
@@ -178,7 +189,7 @@ get_application(Client, ApplicationId, SemanticVersion, Options)
 
     Query0_ =
       [
-        {<<"semanticVersion">>, SemanticVersion}
+        {<<"semanticVersion">>, maps:get(<<"semanticVersion">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -187,9 +198,14 @@ get_application(Client, ApplicationId, SemanticVersion, Options)
 %% @doc Retrieves the policy for the application.
 get_application_policy(Client, ApplicationId)
   when is_map(Client) ->
-    get_application_policy(Client, ApplicationId, []).
-get_application_policy(Client, ApplicationId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_application_policy(Client, ApplicationId, #{}, #{}).
+
+get_application_policy(Client, ApplicationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_application_policy(Client, ApplicationId, QueryMap, HeadersMap, []).
+
+get_application_policy(Client, ApplicationId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/policy"],
     SuccessStatusCode = 200,
 
@@ -202,9 +218,14 @@ get_application_policy(Client, ApplicationId, Options)
 %% @doc Gets the specified AWS CloudFormation template.
 get_cloud_formation_template(Client, ApplicationId, TemplateId)
   when is_map(Client) ->
-    get_cloud_formation_template(Client, ApplicationId, TemplateId, []).
-get_cloud_formation_template(Client, ApplicationId, TemplateId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_cloud_formation_template(Client, ApplicationId, TemplateId, #{}, #{}).
+
+get_cloud_formation_template(Client, ApplicationId, TemplateId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_cloud_formation_template(Client, ApplicationId, TemplateId, QueryMap, HeadersMap, []).
+
+get_cloud_formation_template(Client, ApplicationId, TemplateId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/templates/", aws_util:encode_uri(TemplateId), ""],
     SuccessStatusCode = 200,
 
@@ -216,11 +237,16 @@ get_cloud_formation_template(Client, ApplicationId, TemplateId, Options)
 
 %% @doc Retrieves the list of applications nested in the containing
 %% application.
-list_application_dependencies(Client, ApplicationId, MaxItems, NextToken, SemanticVersion)
+list_application_dependencies(Client, ApplicationId)
   when is_map(Client) ->
-    list_application_dependencies(Client, ApplicationId, MaxItems, NextToken, SemanticVersion, []).
-list_application_dependencies(Client, ApplicationId, MaxItems, NextToken, SemanticVersion, Options)
-  when is_map(Client), is_list(Options) ->
+    list_application_dependencies(Client, ApplicationId, #{}, #{}).
+
+list_application_dependencies(Client, ApplicationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_application_dependencies(Client, ApplicationId, QueryMap, HeadersMap, []).
+
+list_application_dependencies(Client, ApplicationId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/dependencies"],
     SuccessStatusCode = 200,
 
@@ -228,20 +254,25 @@ list_application_dependencies(Client, ApplicationId, MaxItems, NextToken, Semant
 
     Query0_ =
       [
-        {<<"maxItems">>, MaxItems},
-        {<<"nextToken">>, NextToken},
-        {<<"semanticVersion">>, SemanticVersion}
+        {<<"maxItems">>, maps:get(<<"maxItems">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"semanticVersion">>, maps:get(<<"semanticVersion">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists versions for the specified application.
-list_application_versions(Client, ApplicationId, MaxItems, NextToken)
+list_application_versions(Client, ApplicationId)
   when is_map(Client) ->
-    list_application_versions(Client, ApplicationId, MaxItems, NextToken, []).
-list_application_versions(Client, ApplicationId, MaxItems, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_application_versions(Client, ApplicationId, #{}, #{}).
+
+list_application_versions(Client, ApplicationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_application_versions(Client, ApplicationId, QueryMap, HeadersMap, []).
+
+list_application_versions(Client, ApplicationId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/versions"],
     SuccessStatusCode = 200,
 
@@ -249,19 +280,24 @@ list_application_versions(Client, ApplicationId, MaxItems, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxItems">>, MaxItems},
-        {<<"nextToken">>, NextToken}
+        {<<"maxItems">>, maps:get(<<"maxItems">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists applications owned by the requester.
-list_applications(Client, MaxItems, NextToken)
+list_applications(Client)
   when is_map(Client) ->
-    list_applications(Client, MaxItems, NextToken, []).
-list_applications(Client, MaxItems, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_applications(Client, #{}, #{}).
+
+list_applications(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_applications(Client, QueryMap, HeadersMap, []).
+
+list_applications(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/applications"],
     SuccessStatusCode = 200,
 
@@ -269,8 +305,8 @@ list_applications(Client, MaxItems, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxItems">>, MaxItems},
-        {<<"nextToken">>, NextToken}
+        {<<"maxItems">>, maps:get(<<"maxItems">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

@@ -49,45 +49,66 @@
          disassociate_wireless_gateway_from_thing/3,
          disassociate_wireless_gateway_from_thing/4,
          get_destination/2,
-         get_destination/3,
+         get_destination/4,
+         get_destination/5,
          get_device_profile/2,
-         get_device_profile/3,
+         get_device_profile/4,
+         get_device_profile/5,
          get_partner_account/3,
-         get_partner_account/4,
-         get_service_endpoint/2,
+         get_partner_account/5,
+         get_partner_account/6,
+         get_service_endpoint/1,
          get_service_endpoint/3,
+         get_service_endpoint/4,
          get_service_profile/2,
-         get_service_profile/3,
+         get_service_profile/4,
+         get_service_profile/5,
          get_wireless_device/3,
-         get_wireless_device/4,
+         get_wireless_device/5,
+         get_wireless_device/6,
          get_wireless_device_statistics/2,
-         get_wireless_device_statistics/3,
+         get_wireless_device_statistics/4,
+         get_wireless_device_statistics/5,
          get_wireless_gateway/3,
-         get_wireless_gateway/4,
+         get_wireless_gateway/5,
+         get_wireless_gateway/6,
          get_wireless_gateway_certificate/2,
-         get_wireless_gateway_certificate/3,
+         get_wireless_gateway_certificate/4,
+         get_wireless_gateway_certificate/5,
          get_wireless_gateway_firmware_information/2,
-         get_wireless_gateway_firmware_information/3,
+         get_wireless_gateway_firmware_information/4,
+         get_wireless_gateway_firmware_information/5,
          get_wireless_gateway_statistics/2,
-         get_wireless_gateway_statistics/3,
+         get_wireless_gateway_statistics/4,
+         get_wireless_gateway_statistics/5,
          get_wireless_gateway_task/2,
-         get_wireless_gateway_task/3,
+         get_wireless_gateway_task/4,
+         get_wireless_gateway_task/5,
          get_wireless_gateway_task_definition/2,
-         get_wireless_gateway_task_definition/3,
+         get_wireless_gateway_task_definition/4,
+         get_wireless_gateway_task_definition/5,
+         list_destinations/1,
          list_destinations/3,
          list_destinations/4,
+         list_device_profiles/1,
          list_device_profiles/3,
          list_device_profiles/4,
+         list_partner_accounts/1,
          list_partner_accounts/3,
          list_partner_accounts/4,
+         list_service_profiles/1,
          list_service_profiles/3,
          list_service_profiles/4,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
-         list_wireless_devices/7,
-         list_wireless_devices/8,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
+         list_wireless_devices/1,
+         list_wireless_devices/3,
+         list_wireless_devices/4,
+         list_wireless_gateway_task_definitions/1,
+         list_wireless_gateway_task_definitions/3,
          list_wireless_gateway_task_definitions/4,
-         list_wireless_gateway_task_definitions/5,
+         list_wireless_gateways/1,
          list_wireless_gateways/3,
          list_wireless_gateways/4,
          send_data_to_wireless_device/3,
@@ -477,9 +498,14 @@ disassociate_wireless_gateway_from_thing(Client, Id, Input0, Options) ->
 %% @doc Gets information about a destination.
 get_destination(Client, Name)
   when is_map(Client) ->
-    get_destination(Client, Name, []).
-get_destination(Client, Name, Options)
-  when is_map(Client), is_list(Options) ->
+    get_destination(Client, Name, #{}, #{}).
+
+get_destination(Client, Name, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_destination(Client, Name, QueryMap, HeadersMap, []).
+
+get_destination(Client, Name, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/destinations/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
 
@@ -492,9 +518,14 @@ get_destination(Client, Name, Options)
 %% @doc Gets information about a device profile.
 get_device_profile(Client, Id)
   when is_map(Client) ->
-    get_device_profile(Client, Id, []).
-get_device_profile(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    get_device_profile(Client, Id, #{}, #{}).
+
+get_device_profile(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_device_profile(Client, Id, QueryMap, HeadersMap, []).
+
+get_device_profile(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/device-profiles/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
@@ -510,9 +541,14 @@ get_device_profile(Client, Id, Options)
 %% accounts.
 get_partner_account(Client, PartnerAccountId, PartnerType)
   when is_map(Client) ->
-    get_partner_account(Client, PartnerAccountId, PartnerType, []).
-get_partner_account(Client, PartnerAccountId, PartnerType, Options)
-  when is_map(Client), is_list(Options) ->
+    get_partner_account(Client, PartnerAccountId, PartnerType, #{}, #{}).
+
+get_partner_account(Client, PartnerAccountId, PartnerType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_partner_account(Client, PartnerAccountId, PartnerType, QueryMap, HeadersMap, []).
+
+get_partner_account(Client, PartnerAccountId, PartnerType, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/partner-accounts/", aws_util:encode_uri(PartnerAccountId), ""],
     SuccessStatusCode = undefined,
 
@@ -528,11 +564,16 @@ get_partner_account(Client, PartnerAccountId, PartnerType, Options)
 
 %% @doc Gets the account-specific endpoint for Configuration and Update
 %% Server (CUPS) protocol or LoRaWAN Network Server (LNS) connections.
-get_service_endpoint(Client, ServiceType)
+get_service_endpoint(Client)
   when is_map(Client) ->
-    get_service_endpoint(Client, ServiceType, []).
-get_service_endpoint(Client, ServiceType, Options)
-  when is_map(Client), is_list(Options) ->
+    get_service_endpoint(Client, #{}, #{}).
+
+get_service_endpoint(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_service_endpoint(Client, QueryMap, HeadersMap, []).
+
+get_service_endpoint(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/service-endpoint"],
     SuccessStatusCode = undefined,
 
@@ -540,7 +581,7 @@ get_service_endpoint(Client, ServiceType, Options)
 
     Query0_ =
       [
-        {<<"serviceType">>, ServiceType}
+        {<<"serviceType">>, maps:get(<<"serviceType">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -549,9 +590,14 @@ get_service_endpoint(Client, ServiceType, Options)
 %% @doc Gets information about a service profile.
 get_service_profile(Client, Id)
   when is_map(Client) ->
-    get_service_profile(Client, Id, []).
-get_service_profile(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    get_service_profile(Client, Id, #{}, #{}).
+
+get_service_profile(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_service_profile(Client, Id, QueryMap, HeadersMap, []).
+
+get_service_profile(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/service-profiles/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
@@ -564,9 +610,14 @@ get_service_profile(Client, Id, Options)
 %% @doc Gets information about a wireless device.
 get_wireless_device(Client, Identifier, IdentifierType)
   when is_map(Client) ->
-    get_wireless_device(Client, Identifier, IdentifierType, []).
-get_wireless_device(Client, Identifier, IdentifierType, Options)
-  when is_map(Client), is_list(Options) ->
+    get_wireless_device(Client, Identifier, IdentifierType, #{}, #{}).
+
+get_wireless_device(Client, Identifier, IdentifierType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_wireless_device(Client, Identifier, IdentifierType, QueryMap, HeadersMap, []).
+
+get_wireless_device(Client, Identifier, IdentifierType, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/wireless-devices/", aws_util:encode_uri(Identifier), ""],
     SuccessStatusCode = undefined,
 
@@ -583,9 +634,14 @@ get_wireless_device(Client, Identifier, IdentifierType, Options)
 %% @doc Gets operating information about a wireless device.
 get_wireless_device_statistics(Client, WirelessDeviceId)
   when is_map(Client) ->
-    get_wireless_device_statistics(Client, WirelessDeviceId, []).
-get_wireless_device_statistics(Client, WirelessDeviceId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_wireless_device_statistics(Client, WirelessDeviceId, #{}, #{}).
+
+get_wireless_device_statistics(Client, WirelessDeviceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_wireless_device_statistics(Client, WirelessDeviceId, QueryMap, HeadersMap, []).
+
+get_wireless_device_statistics(Client, WirelessDeviceId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/wireless-devices/", aws_util:encode_uri(WirelessDeviceId), "/statistics"],
     SuccessStatusCode = 200,
 
@@ -598,9 +654,14 @@ get_wireless_device_statistics(Client, WirelessDeviceId, Options)
 %% @doc Gets information about a wireless gateway.
 get_wireless_gateway(Client, Identifier, IdentifierType)
   when is_map(Client) ->
-    get_wireless_gateway(Client, Identifier, IdentifierType, []).
-get_wireless_gateway(Client, Identifier, IdentifierType, Options)
-  when is_map(Client), is_list(Options) ->
+    get_wireless_gateway(Client, Identifier, IdentifierType, #{}, #{}).
+
+get_wireless_gateway(Client, Identifier, IdentifierType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_wireless_gateway(Client, Identifier, IdentifierType, QueryMap, HeadersMap, []).
+
+get_wireless_gateway(Client, Identifier, IdentifierType, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/wireless-gateways/", aws_util:encode_uri(Identifier), ""],
     SuccessStatusCode = undefined,
 
@@ -618,9 +679,14 @@ get_wireless_gateway(Client, Identifier, IdentifierType, Options)
 %% wireless gateway.
 get_wireless_gateway_certificate(Client, Id)
   when is_map(Client) ->
-    get_wireless_gateway_certificate(Client, Id, []).
-get_wireless_gateway_certificate(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    get_wireless_gateway_certificate(Client, Id, #{}, #{}).
+
+get_wireless_gateway_certificate(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_wireless_gateway_certificate(Client, Id, QueryMap, HeadersMap, []).
+
+get_wireless_gateway_certificate(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/wireless-gateways/", aws_util:encode_uri(Id), "/certificate"],
     SuccessStatusCode = undefined,
 
@@ -634,9 +700,14 @@ get_wireless_gateway_certificate(Client, Id, Options)
 %% gateway.
 get_wireless_gateway_firmware_information(Client, Id)
   when is_map(Client) ->
-    get_wireless_gateway_firmware_information(Client, Id, []).
-get_wireless_gateway_firmware_information(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    get_wireless_gateway_firmware_information(Client, Id, #{}, #{}).
+
+get_wireless_gateway_firmware_information(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_wireless_gateway_firmware_information(Client, Id, QueryMap, HeadersMap, []).
+
+get_wireless_gateway_firmware_information(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/wireless-gateways/", aws_util:encode_uri(Id), "/firmware-information"],
     SuccessStatusCode = undefined,
 
@@ -649,9 +720,14 @@ get_wireless_gateway_firmware_information(Client, Id, Options)
 %% @doc Gets operating information about a wireless gateway.
 get_wireless_gateway_statistics(Client, WirelessGatewayId)
   when is_map(Client) ->
-    get_wireless_gateway_statistics(Client, WirelessGatewayId, []).
-get_wireless_gateway_statistics(Client, WirelessGatewayId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_wireless_gateway_statistics(Client, WirelessGatewayId, #{}, #{}).
+
+get_wireless_gateway_statistics(Client, WirelessGatewayId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_wireless_gateway_statistics(Client, WirelessGatewayId, QueryMap, HeadersMap, []).
+
+get_wireless_gateway_statistics(Client, WirelessGatewayId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/wireless-gateways/", aws_util:encode_uri(WirelessGatewayId), "/statistics"],
     SuccessStatusCode = 200,
 
@@ -664,9 +740,14 @@ get_wireless_gateway_statistics(Client, WirelessGatewayId, Options)
 %% @doc Gets information about a wireless gateway task.
 get_wireless_gateway_task(Client, Id)
   when is_map(Client) ->
-    get_wireless_gateway_task(Client, Id, []).
-get_wireless_gateway_task(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    get_wireless_gateway_task(Client, Id, #{}, #{}).
+
+get_wireless_gateway_task(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_wireless_gateway_task(Client, Id, QueryMap, HeadersMap, []).
+
+get_wireless_gateway_task(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/wireless-gateways/", aws_util:encode_uri(Id), "/tasks"],
     SuccessStatusCode = undefined,
 
@@ -679,9 +760,14 @@ get_wireless_gateway_task(Client, Id, Options)
 %% @doc Gets information about a wireless gateway task definition.
 get_wireless_gateway_task_definition(Client, Id)
   when is_map(Client) ->
-    get_wireless_gateway_task_definition(Client, Id, []).
-get_wireless_gateway_task_definition(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    get_wireless_gateway_task_definition(Client, Id, #{}, #{}).
+
+get_wireless_gateway_task_definition(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_wireless_gateway_task_definition(Client, Id, QueryMap, HeadersMap, []).
+
+get_wireless_gateway_task_definition(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/wireless-gateway-task-definitions/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
@@ -692,11 +778,16 @@ get_wireless_gateway_task_definition(Client, Id, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the destinations registered to your AWS account.
-list_destinations(Client, MaxResults, NextToken)
+list_destinations(Client)
   when is_map(Client) ->
-    list_destinations(Client, MaxResults, NextToken, []).
-list_destinations(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_destinations(Client, #{}, #{}).
+
+list_destinations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_destinations(Client, QueryMap, HeadersMap, []).
+
+list_destinations(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/destinations"],
     SuccessStatusCode = undefined,
 
@@ -704,19 +795,24 @@ list_destinations(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the device profiles registered to your AWS account.
-list_device_profiles(Client, MaxResults, NextToken)
+list_device_profiles(Client)
   when is_map(Client) ->
-    list_device_profiles(Client, MaxResults, NextToken, []).
-list_device_profiles(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_device_profiles(Client, #{}, #{}).
+
+list_device_profiles(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_device_profiles(Client, QueryMap, HeadersMap, []).
+
+list_device_profiles(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/device-profiles"],
     SuccessStatusCode = undefined,
 
@@ -724,19 +820,24 @@ list_device_profiles(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the partner accounts associated with your AWS account.
-list_partner_accounts(Client, MaxResults, NextToken)
+list_partner_accounts(Client)
   when is_map(Client) ->
-    list_partner_accounts(Client, MaxResults, NextToken, []).
-list_partner_accounts(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_partner_accounts(Client, #{}, #{}).
+
+list_partner_accounts(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_partner_accounts(Client, QueryMap, HeadersMap, []).
+
+list_partner_accounts(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/partner-accounts"],
     SuccessStatusCode = undefined,
 
@@ -744,19 +845,24 @@ list_partner_accounts(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the service profiles registered to your AWS account.
-list_service_profiles(Client, MaxResults, NextToken)
+list_service_profiles(Client)
   when is_map(Client) ->
-    list_service_profiles(Client, MaxResults, NextToken, []).
-list_service_profiles(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_service_profiles(Client, #{}, #{}).
+
+list_service_profiles(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_service_profiles(Client, QueryMap, HeadersMap, []).
+
+list_service_profiles(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/service-profiles"],
     SuccessStatusCode = undefined,
 
@@ -764,8 +870,8 @@ list_service_profiles(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -774,9 +880,14 @@ list_service_profiles(Client, MaxResults, NextToken, Options)
 %% @doc Lists the tags (metadata) you have assigned to the resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags"],
     SuccessStatusCode = undefined,
 
@@ -791,11 +902,16 @@ list_tags_for_resource(Client, ResourceArn, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the wireless devices registered to your AWS account.
-list_wireless_devices(Client, DestinationName, DeviceProfileId, MaxResults, NextToken, ServiceProfileId, WirelessDeviceType)
+list_wireless_devices(Client)
   when is_map(Client) ->
-    list_wireless_devices(Client, DestinationName, DeviceProfileId, MaxResults, NextToken, ServiceProfileId, WirelessDeviceType, []).
-list_wireless_devices(Client, DestinationName, DeviceProfileId, MaxResults, NextToken, ServiceProfileId, WirelessDeviceType, Options)
-  when is_map(Client), is_list(Options) ->
+    list_wireless_devices(Client, #{}, #{}).
+
+list_wireless_devices(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_wireless_devices(Client, QueryMap, HeadersMap, []).
+
+list_wireless_devices(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/wireless-devices"],
     SuccessStatusCode = undefined,
 
@@ -803,12 +919,12 @@ list_wireless_devices(Client, DestinationName, DeviceProfileId, MaxResults, Next
 
     Query0_ =
       [
-        {<<"destinationName">>, DestinationName},
-        {<<"deviceProfileId">>, DeviceProfileId},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"serviceProfileId">>, ServiceProfileId},
-        {<<"wirelessDeviceType">>, WirelessDeviceType}
+        {<<"destinationName">>, maps:get(<<"destinationName">>, QueryMap, undefined)},
+        {<<"deviceProfileId">>, maps:get(<<"deviceProfileId">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"serviceProfileId">>, maps:get(<<"serviceProfileId">>, QueryMap, undefined)},
+        {<<"wirelessDeviceType">>, maps:get(<<"wirelessDeviceType">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -816,11 +932,16 @@ list_wireless_devices(Client, DestinationName, DeviceProfileId, MaxResults, Next
 
 %% @doc List the wireless gateway tasks definitions registered to your AWS
 %% account.
-list_wireless_gateway_task_definitions(Client, MaxResults, NextToken, TaskDefinitionType)
+list_wireless_gateway_task_definitions(Client)
   when is_map(Client) ->
-    list_wireless_gateway_task_definitions(Client, MaxResults, NextToken, TaskDefinitionType, []).
-list_wireless_gateway_task_definitions(Client, MaxResults, NextToken, TaskDefinitionType, Options)
-  when is_map(Client), is_list(Options) ->
+    list_wireless_gateway_task_definitions(Client, #{}, #{}).
+
+list_wireless_gateway_task_definitions(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_wireless_gateway_task_definitions(Client, QueryMap, HeadersMap, []).
+
+list_wireless_gateway_task_definitions(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/wireless-gateway-task-definitions"],
     SuccessStatusCode = undefined,
 
@@ -828,20 +949,25 @@ list_wireless_gateway_task_definitions(Client, MaxResults, NextToken, TaskDefini
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"taskDefinitionType">>, TaskDefinitionType}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"taskDefinitionType">>, maps:get(<<"taskDefinitionType">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the wireless gateways registered to your AWS account.
-list_wireless_gateways(Client, MaxResults, NextToken)
+list_wireless_gateways(Client)
   when is_map(Client) ->
-    list_wireless_gateways(Client, MaxResults, NextToken, []).
-list_wireless_gateways(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_wireless_gateways(Client, #{}, #{}).
+
+list_wireless_gateways(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_wireless_gateways(Client, QueryMap, HeadersMap, []).
+
+list_wireless_gateways(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/wireless-gateways"],
     SuccessStatusCode = undefined,
 
@@ -849,8 +975,8 @@ list_wireless_gateways(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

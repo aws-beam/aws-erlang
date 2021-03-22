@@ -42,9 +42,11 @@
          describe_buckets/2,
          describe_buckets/3,
          describe_classification_job/2,
-         describe_classification_job/3,
+         describe_classification_job/4,
+         describe_classification_job/5,
          describe_organization_configuration/1,
-         describe_organization_configuration/2,
+         describe_organization_configuration/3,
+         describe_organization_configuration/4,
          disable_macie/2,
          disable_macie/3,
          disable_organization_admin_account/2,
@@ -60,47 +62,61 @@
          enable_organization_admin_account/2,
          enable_organization_admin_account/3,
          get_administrator_account/1,
-         get_administrator_account/2,
+         get_administrator_account/3,
+         get_administrator_account/4,
          get_bucket_statistics/2,
          get_bucket_statistics/3,
          get_classification_export_configuration/1,
-         get_classification_export_configuration/2,
+         get_classification_export_configuration/3,
+         get_classification_export_configuration/4,
          get_custom_data_identifier/2,
-         get_custom_data_identifier/3,
+         get_custom_data_identifier/4,
+         get_custom_data_identifier/5,
          get_finding_statistics/2,
          get_finding_statistics/3,
          get_findings/2,
          get_findings/3,
          get_findings_filter/2,
-         get_findings_filter/3,
+         get_findings_filter/4,
+         get_findings_filter/5,
          get_invitations_count/1,
-         get_invitations_count/2,
+         get_invitations_count/3,
+         get_invitations_count/4,
          get_macie_session/1,
-         get_macie_session/2,
+         get_macie_session/3,
+         get_macie_session/4,
          get_master_account/1,
-         get_master_account/2,
+         get_master_account/3,
+         get_master_account/4,
          get_member/2,
-         get_member/3,
+         get_member/4,
+         get_member/5,
          get_usage_statistics/2,
          get_usage_statistics/3,
-         get_usage_totals/2,
+         get_usage_totals/1,
          get_usage_totals/3,
+         get_usage_totals/4,
          list_classification_jobs/2,
          list_classification_jobs/3,
          list_custom_data_identifiers/2,
          list_custom_data_identifiers/3,
          list_findings/2,
          list_findings/3,
+         list_findings_filters/1,
          list_findings_filters/3,
          list_findings_filters/4,
+         list_invitations/1,
          list_invitations/3,
          list_invitations/4,
+         list_members/1,
+         list_members/3,
          list_members/4,
-         list_members/5,
+         list_organization_admin_accounts/1,
          list_organization_admin_accounts/3,
          list_organization_admin_accounts/4,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          put_classification_export_configuration/2,
          put_classification_export_configuration/3,
          tag_resource/3,
@@ -360,9 +376,14 @@ describe_buckets(Client, Input0, Options) ->
 %% @doc Retrieves the status and settings for a classification job.
 describe_classification_job(Client, JobId)
   when is_map(Client) ->
-    describe_classification_job(Client, JobId, []).
-describe_classification_job(Client, JobId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_classification_job(Client, JobId, #{}, #{}).
+
+describe_classification_job(Client, JobId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_classification_job(Client, JobId, QueryMap, HeadersMap, []).
+
+describe_classification_job(Client, JobId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = 200,
 
@@ -376,9 +397,14 @@ describe_classification_job(Client, JobId, Options)
 %% organization.
 describe_organization_configuration(Client)
   when is_map(Client) ->
-    describe_organization_configuration(Client, []).
-describe_organization_configuration(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_organization_configuration(Client, #{}, #{}).
+
+describe_organization_configuration(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_organization_configuration(Client, QueryMap, HeadersMap, []).
+
+describe_organization_configuration(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/admin/configuration"],
     SuccessStatusCode = 200,
 
@@ -515,9 +541,14 @@ enable_organization_admin_account(Client, Input0, Options) ->
 %% for an account.
 get_administrator_account(Client)
   when is_map(Client) ->
-    get_administrator_account(Client, []).
-get_administrator_account(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    get_administrator_account(Client, #{}, #{}).
+
+get_administrator_account(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_administrator_account(Client, QueryMap, HeadersMap, []).
+
+get_administrator_account(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/administrator"],
     SuccessStatusCode = 200,
 
@@ -548,9 +579,14 @@ get_bucket_statistics(Client, Input0, Options) ->
 %% results.
 get_classification_export_configuration(Client)
   when is_map(Client) ->
-    get_classification_export_configuration(Client, []).
-get_classification_export_configuration(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    get_classification_export_configuration(Client, #{}, #{}).
+
+get_classification_export_configuration(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_classification_export_configuration(Client, QueryMap, HeadersMap, []).
+
+get_classification_export_configuration(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/classification-export-configuration"],
     SuccessStatusCode = 200,
 
@@ -564,9 +600,14 @@ get_classification_export_configuration(Client, Options)
 %% identifier.
 get_custom_data_identifier(Client, Id)
   when is_map(Client) ->
-    get_custom_data_identifier(Client, Id, []).
-get_custom_data_identifier(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    get_custom_data_identifier(Client, Id, #{}, #{}).
+
+get_custom_data_identifier(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_custom_data_identifier(Client, Id, QueryMap, HeadersMap, []).
+
+get_custom_data_identifier(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/custom-data-identifiers/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
@@ -611,9 +652,14 @@ get_findings(Client, Input0, Options) ->
 %% @doc Retrieves the criteria and other settings for a findings filter.
 get_findings_filter(Client, Id)
   when is_map(Client) ->
-    get_findings_filter(Client, Id, []).
-get_findings_filter(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    get_findings_filter(Client, Id, #{}, #{}).
+
+get_findings_filter(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_findings_filter(Client, Id, QueryMap, HeadersMap, []).
+
+get_findings_filter(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/findingsfilters/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
@@ -627,9 +673,14 @@ get_findings_filter(Client, Id, Options)
 %% received by an account.
 get_invitations_count(Client)
   when is_map(Client) ->
-    get_invitations_count(Client, []).
-get_invitations_count(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    get_invitations_count(Client, #{}, #{}).
+
+get_invitations_count(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_invitations_count(Client, QueryMap, HeadersMap, []).
+
+get_invitations_count(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/invitations/count"],
     SuccessStatusCode = 200,
 
@@ -643,9 +694,14 @@ get_invitations_count(Client, Options)
 %% Macie account.
 get_macie_session(Client)
   when is_map(Client) ->
-    get_macie_session(Client, []).
-get_macie_session(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    get_macie_session(Client, #{}, #{}).
+
+get_macie_session(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_macie_session(Client, QueryMap, HeadersMap, []).
+
+get_macie_session(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/macie"],
     SuccessStatusCode = 200,
 
@@ -661,9 +717,14 @@ get_macie_session(Client, Options)
 %% This operation has been replaced by the GetAdministratorAccount operation.
 get_master_account(Client)
   when is_map(Client) ->
-    get_master_account(Client, []).
-get_master_account(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    get_master_account(Client, #{}, #{}).
+
+get_master_account(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_master_account(Client, QueryMap, HeadersMap, []).
+
+get_master_account(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/master"],
     SuccessStatusCode = 200,
 
@@ -677,9 +738,14 @@ get_master_account(Client, Options)
 %% Amazon Macie administrator account.
 get_member(Client, Id)
   when is_map(Client) ->
-    get_member(Client, Id, []).
-get_member(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    get_member(Client, Id, #{}, #{}).
+
+get_member(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_member(Client, Id, QueryMap, HeadersMap, []).
+
+get_member(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/members/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
 
@@ -707,11 +773,16 @@ get_usage_statistics(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves (queries) aggregated usage data for an account.
-get_usage_totals(Client, TimeRange)
+get_usage_totals(Client)
   when is_map(Client) ->
-    get_usage_totals(Client, TimeRange, []).
-get_usage_totals(Client, TimeRange, Options)
-  when is_map(Client), is_list(Options) ->
+    get_usage_totals(Client, #{}, #{}).
+
+get_usage_totals(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_usage_totals(Client, QueryMap, HeadersMap, []).
+
+get_usage_totals(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/usage"],
     SuccessStatusCode = 200,
 
@@ -719,7 +790,7 @@ get_usage_totals(Client, TimeRange, Options)
 
     Query0_ =
       [
-        {<<"timeRange">>, TimeRange}
+        {<<"timeRange">>, maps:get(<<"timeRange">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -777,11 +848,16 @@ list_findings(Client, Input0, Options) ->
 
 %% @doc Retrieves a subset of information about all the findings filters for
 %% an account.
-list_findings_filters(Client, MaxResults, NextToken)
+list_findings_filters(Client)
   when is_map(Client) ->
-    list_findings_filters(Client, MaxResults, NextToken, []).
-list_findings_filters(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_findings_filters(Client, #{}, #{}).
+
+list_findings_filters(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_findings_filters(Client, QueryMap, HeadersMap, []).
+
+list_findings_filters(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/findingsfilters"],
     SuccessStatusCode = 200,
 
@@ -789,8 +865,8 @@ list_findings_filters(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -798,11 +874,16 @@ list_findings_filters(Client, MaxResults, NextToken, Options)
 
 %% @doc Retrieves information about all the Amazon Macie membership
 %% invitations that were received by an account.
-list_invitations(Client, MaxResults, NextToken)
+list_invitations(Client)
   when is_map(Client) ->
-    list_invitations(Client, MaxResults, NextToken, []).
-list_invitations(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_invitations(Client, #{}, #{}).
+
+list_invitations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_invitations(Client, QueryMap, HeadersMap, []).
+
+list_invitations(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/invitations"],
     SuccessStatusCode = 200,
 
@@ -810,8 +891,8 @@ list_invitations(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -819,11 +900,16 @@ list_invitations(Client, MaxResults, NextToken, Options)
 
 %% @doc Retrieves information about the accounts that are associated with an
 %% Amazon Macie administrator account.
-list_members(Client, MaxResults, NextToken, OnlyAssociated)
+list_members(Client)
   when is_map(Client) ->
-    list_members(Client, MaxResults, NextToken, OnlyAssociated, []).
-list_members(Client, MaxResults, NextToken, OnlyAssociated, Options)
-  when is_map(Client), is_list(Options) ->
+    list_members(Client, #{}, #{}).
+
+list_members(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_members(Client, QueryMap, HeadersMap, []).
+
+list_members(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/members"],
     SuccessStatusCode = 200,
 
@@ -831,9 +917,9 @@ list_members(Client, MaxResults, NextToken, OnlyAssociated, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"onlyAssociated">>, OnlyAssociated}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"onlyAssociated">>, maps:get(<<"onlyAssociated">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -841,11 +927,16 @@ list_members(Client, MaxResults, NextToken, OnlyAssociated, Options)
 
 %% @doc Retrieves information about the delegated Amazon Macie administrator
 %% account for an AWS organization.
-list_organization_admin_accounts(Client, MaxResults, NextToken)
+list_organization_admin_accounts(Client)
   when is_map(Client) ->
-    list_organization_admin_accounts(Client, MaxResults, NextToken, []).
-list_organization_admin_accounts(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_organization_admin_accounts(Client, #{}, #{}).
+
+list_organization_admin_accounts(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_organization_admin_accounts(Client, QueryMap, HeadersMap, []).
+
+list_organization_admin_accounts(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/admin"],
     SuccessStatusCode = 200,
 
@@ -853,8 +944,8 @@ list_organization_admin_accounts(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -865,9 +956,14 @@ list_organization_admin_accounts(Client, MaxResults, NextToken, Options)
 %% account.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
 

@@ -34,29 +34,39 @@
          delete_tracker/3,
          delete_tracker/4,
          describe_geofence_collection/2,
-         describe_geofence_collection/3,
+         describe_geofence_collection/4,
+         describe_geofence_collection/5,
          describe_map/2,
-         describe_map/3,
+         describe_map/4,
+         describe_map/5,
          describe_place_index/2,
-         describe_place_index/3,
+         describe_place_index/4,
+         describe_place_index/5,
          describe_tracker/2,
-         describe_tracker/3,
+         describe_tracker/4,
+         describe_tracker/5,
          disassociate_tracker_consumer/4,
          disassociate_tracker_consumer/5,
          get_device_position/3,
-         get_device_position/4,
+         get_device_position/5,
+         get_device_position/6,
          get_device_position_history/4,
          get_device_position_history/5,
          get_geofence/3,
-         get_geofence/4,
+         get_geofence/5,
+         get_geofence/6,
          get_map_glyphs/4,
-         get_map_glyphs/5,
+         get_map_glyphs/6,
+         get_map_glyphs/7,
          get_map_sprites/3,
-         get_map_sprites/4,
+         get_map_sprites/5,
+         get_map_sprites/6,
          get_map_style_descriptor/2,
-         get_map_style_descriptor/3,
+         get_map_style_descriptor/4,
+         get_map_style_descriptor/5,
          get_map_tile/5,
-         get_map_tile/6,
+         get_map_tile/7,
+         get_map_tile/8,
          list_geofence_collections/2,
          list_geofence_collections/3,
          list_geofences/3,
@@ -358,9 +368,14 @@ delete_tracker(Client, TrackerName, Input0, Options) ->
 %% @doc Retrieves the geofence collection details.
 describe_geofence_collection(Client, CollectionName)
   when is_map(Client) ->
-    describe_geofence_collection(Client, CollectionName, []).
-describe_geofence_collection(Client, CollectionName, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_geofence_collection(Client, CollectionName, #{}, #{}).
+
+describe_geofence_collection(Client, CollectionName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_geofence_collection(Client, CollectionName, QueryMap, HeadersMap, []).
+
+describe_geofence_collection(Client, CollectionName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/geofencing/v0/collections/", aws_util:encode_uri(CollectionName), ""],
     SuccessStatusCode = 200,
 
@@ -373,9 +388,14 @@ describe_geofence_collection(Client, CollectionName, Options)
 %% @doc Retrieves the map resource details.
 describe_map(Client, MapName)
   when is_map(Client) ->
-    describe_map(Client, MapName, []).
-describe_map(Client, MapName, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_map(Client, MapName, #{}, #{}).
+
+describe_map(Client, MapName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_map(Client, MapName, QueryMap, HeadersMap, []).
+
+describe_map(Client, MapName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/maps/v0/maps/", aws_util:encode_uri(MapName), ""],
     SuccessStatusCode = 200,
 
@@ -388,9 +408,14 @@ describe_map(Client, MapName, Options)
 %% @doc Retrieves the Place index resource details.
 describe_place_index(Client, IndexName)
   when is_map(Client) ->
-    describe_place_index(Client, IndexName, []).
-describe_place_index(Client, IndexName, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_place_index(Client, IndexName, #{}, #{}).
+
+describe_place_index(Client, IndexName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_place_index(Client, IndexName, QueryMap, HeadersMap, []).
+
+describe_place_index(Client, IndexName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/places/v0/indexes/", aws_util:encode_uri(IndexName), ""],
     SuccessStatusCode = 200,
 
@@ -403,9 +428,14 @@ describe_place_index(Client, IndexName, Options)
 %% @doc Retrieves the tracker resource details.
 describe_tracker(Client, TrackerName)
   when is_map(Client) ->
-    describe_tracker(Client, TrackerName, []).
-describe_tracker(Client, TrackerName, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_tracker(Client, TrackerName, #{}, #{}).
+
+describe_tracker(Client, TrackerName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_tracker(Client, TrackerName, QueryMap, HeadersMap, []).
+
+describe_tracker(Client, TrackerName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), ""],
     SuccessStatusCode = 200,
 
@@ -440,9 +470,14 @@ disassociate_tracker_consumer(Client, ConsumerArn, TrackerName, Input0, Options)
 %% Limitation — Device positions are deleted after one year.
 get_device_position(Client, DeviceId, TrackerName)
   when is_map(Client) ->
-    get_device_position(Client, DeviceId, TrackerName, []).
-get_device_position(Client, DeviceId, TrackerName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_device_position(Client, DeviceId, TrackerName, #{}, #{}).
+
+get_device_position(Client, DeviceId, TrackerName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_device_position(Client, DeviceId, TrackerName, QueryMap, HeadersMap, []).
+
+get_device_position(Client, DeviceId, TrackerName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), "/devices/", aws_util:encode_uri(DeviceId), "/positions/latest"],
     SuccessStatusCode = 200,
 
@@ -474,9 +509,14 @@ get_device_position_history(Client, DeviceId, TrackerName, Input0, Options) ->
 %% @doc Retrieves the geofence details from a geofence collection.
 get_geofence(Client, CollectionName, GeofenceId)
   when is_map(Client) ->
-    get_geofence(Client, CollectionName, GeofenceId, []).
-get_geofence(Client, CollectionName, GeofenceId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_geofence(Client, CollectionName, GeofenceId, #{}, #{}).
+
+get_geofence(Client, CollectionName, GeofenceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_geofence(Client, CollectionName, GeofenceId, QueryMap, HeadersMap, []).
+
+get_geofence(Client, CollectionName, GeofenceId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/geofencing/v0/collections/", aws_util:encode_uri(CollectionName), "/geofences/", aws_util:encode_uri(GeofenceId), ""],
     SuccessStatusCode = 200,
 
@@ -489,9 +529,14 @@ get_geofence(Client, CollectionName, GeofenceId, Options)
 %% @doc Retrieves glyphs used to display labels on a map.
 get_map_glyphs(Client, FontStack, FontUnicodeRange, MapName)
   when is_map(Client) ->
-    get_map_glyphs(Client, FontStack, FontUnicodeRange, MapName, []).
-get_map_glyphs(Client, FontStack, FontUnicodeRange, MapName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_map_glyphs(Client, FontStack, FontUnicodeRange, MapName, #{}, #{}).
+
+get_map_glyphs(Client, FontStack, FontUnicodeRange, MapName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_map_glyphs(Client, FontStack, FontUnicodeRange, MapName, QueryMap, HeadersMap, []).
+
+get_map_glyphs(Client, FontStack, FontUnicodeRange, MapName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/maps/v0/maps/", aws_util:encode_uri(MapName), "/glyphs/", aws_util:encode_uri(FontStack), "/", aws_util:encode_uri(FontUnicodeRange), ""],
     SuccessStatusCode = 200,
 
@@ -523,9 +568,14 @@ get_map_glyphs(Client, FontStack, FontUnicodeRange, MapName, Options)
 %% offsets of individual icons that will be displayed on a rendered map.
 get_map_sprites(Client, FileName, MapName)
   when is_map(Client) ->
-    get_map_sprites(Client, FileName, MapName, []).
-get_map_sprites(Client, FileName, MapName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_map_sprites(Client, FileName, MapName, #{}, #{}).
+
+get_map_sprites(Client, FileName, MapName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_map_sprites(Client, FileName, MapName, QueryMap, HeadersMap, []).
+
+get_map_sprites(Client, FileName, MapName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/maps/v0/maps/", aws_util:encode_uri(MapName), "/sprites/", aws_util:encode_uri(FileName), ""],
     SuccessStatusCode = 200,
 
@@ -559,9 +609,14 @@ get_map_sprites(Client, FileName, MapName, Options)
 %% Specification.
 get_map_style_descriptor(Client, MapName)
   when is_map(Client) ->
-    get_map_style_descriptor(Client, MapName, []).
-get_map_style_descriptor(Client, MapName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_map_style_descriptor(Client, MapName, #{}, #{}).
+
+get_map_style_descriptor(Client, MapName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_map_style_descriptor(Client, MapName, QueryMap, HeadersMap, []).
+
+get_map_style_descriptor(Client, MapName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/maps/v0/maps/", aws_util:encode_uri(MapName), "/style-descriptor"],
     SuccessStatusCode = 200,
 
@@ -598,9 +653,14 @@ get_map_style_descriptor(Client, MapName, Options)
 %% 1/0/1, 1/1/0, 1/1/1).
 get_map_tile(Client, MapName, X, Y, Z)
   when is_map(Client) ->
-    get_map_tile(Client, MapName, X, Y, Z, []).
-get_map_tile(Client, MapName, X, Y, Z, Options)
-  when is_map(Client), is_list(Options) ->
+    get_map_tile(Client, MapName, X, Y, Z, #{}, #{}).
+
+get_map_tile(Client, MapName, X, Y, Z, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_map_tile(Client, MapName, X, Y, Z, QueryMap, HeadersMap, []).
+
+get_map_tile(Client, MapName, X, Y, Z, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/maps/v0/maps/", aws_util:encode_uri(MapName), "/tiles/", aws_util:encode_uri(Z), "/", aws_util:encode_uri(X), "/", aws_util:encode_uri(Y), ""],
     SuccessStatusCode = 200,
 

@@ -33,11 +33,14 @@
 -export([complete_snapshot/3,
          complete_snapshot/4,
          get_snapshot_block/4,
-         get_snapshot_block/5,
-         list_changed_blocks/6,
-         list_changed_blocks/7,
+         get_snapshot_block/6,
+         get_snapshot_block/7,
+         list_changed_blocks/2,
+         list_changed_blocks/4,
+         list_changed_blocks/5,
+         list_snapshot_blocks/2,
+         list_snapshot_blocks/4,
          list_snapshot_blocks/5,
-         list_snapshot_blocks/6,
          put_snapshot_block/4,
          put_snapshot_block/5,
          start_snapshot/2,
@@ -78,9 +81,14 @@ complete_snapshot(Client, SnapshotId, Input0, Options) ->
 %% snapshot.
 get_snapshot_block(Client, BlockIndex, SnapshotId, BlockToken)
   when is_map(Client) ->
-    get_snapshot_block(Client, BlockIndex, SnapshotId, BlockToken, []).
-get_snapshot_block(Client, BlockIndex, SnapshotId, BlockToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_snapshot_block(Client, BlockIndex, SnapshotId, BlockToken, #{}, #{}).
+
+get_snapshot_block(Client, BlockIndex, SnapshotId, BlockToken, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_snapshot_block(Client, BlockIndex, SnapshotId, BlockToken, QueryMap, HeadersMap, []).
+
+get_snapshot_block(Client, BlockIndex, SnapshotId, BlockToken, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/snapshots/", aws_util:encode_uri(SnapshotId), "/blocks/", aws_util:encode_uri(BlockIndex), ""],
     SuccessStatusCode = undefined,
 
@@ -114,11 +122,16 @@ get_snapshot_block(Client, BlockIndex, SnapshotId, BlockToken, Options)
 
 %% @doc Returns information about the blocks that are different between two
 %% Amazon Elastic Block Store snapshots of the same volume/snapshot lineage.
-list_changed_blocks(Client, SecondSnapshotId, FirstSnapshotId, MaxResults, NextToken, StartingBlockIndex)
+list_changed_blocks(Client, SecondSnapshotId)
   when is_map(Client) ->
-    list_changed_blocks(Client, SecondSnapshotId, FirstSnapshotId, MaxResults, NextToken, StartingBlockIndex, []).
-list_changed_blocks(Client, SecondSnapshotId, FirstSnapshotId, MaxResults, NextToken, StartingBlockIndex, Options)
-  when is_map(Client), is_list(Options) ->
+    list_changed_blocks(Client, SecondSnapshotId, #{}, #{}).
+
+list_changed_blocks(Client, SecondSnapshotId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_changed_blocks(Client, SecondSnapshotId, QueryMap, HeadersMap, []).
+
+list_changed_blocks(Client, SecondSnapshotId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/snapshots/", aws_util:encode_uri(SecondSnapshotId), "/changedblocks"],
     SuccessStatusCode = undefined,
 
@@ -126,10 +139,10 @@ list_changed_blocks(Client, SecondSnapshotId, FirstSnapshotId, MaxResults, NextT
 
     Query0_ =
       [
-        {<<"firstSnapshotId">>, FirstSnapshotId},
-        {<<"maxResults">>, MaxResults},
-        {<<"pageToken">>, NextToken},
-        {<<"startingBlockIndex">>, StartingBlockIndex}
+        {<<"firstSnapshotId">>, maps:get(<<"firstSnapshotId">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"pageToken">>, maps:get(<<"pageToken">>, QueryMap, undefined)},
+        {<<"startingBlockIndex">>, maps:get(<<"startingBlockIndex">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -137,11 +150,16 @@ list_changed_blocks(Client, SecondSnapshotId, FirstSnapshotId, MaxResults, NextT
 
 %% @doc Returns information about the blocks in an Amazon Elastic Block Store
 %% snapshot.
-list_snapshot_blocks(Client, SnapshotId, MaxResults, NextToken, StartingBlockIndex)
+list_snapshot_blocks(Client, SnapshotId)
   when is_map(Client) ->
-    list_snapshot_blocks(Client, SnapshotId, MaxResults, NextToken, StartingBlockIndex, []).
-list_snapshot_blocks(Client, SnapshotId, MaxResults, NextToken, StartingBlockIndex, Options)
-  when is_map(Client), is_list(Options) ->
+    list_snapshot_blocks(Client, SnapshotId, #{}, #{}).
+
+list_snapshot_blocks(Client, SnapshotId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_snapshot_blocks(Client, SnapshotId, QueryMap, HeadersMap, []).
+
+list_snapshot_blocks(Client, SnapshotId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/snapshots/", aws_util:encode_uri(SnapshotId), "/blocks"],
     SuccessStatusCode = undefined,
 
@@ -149,9 +167,9 @@ list_snapshot_blocks(Client, SnapshotId, MaxResults, NextToken, StartingBlockInd
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"pageToken">>, NextToken},
-        {<<"startingBlockIndex">>, StartingBlockIndex}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"pageToken">>, maps:get(<<"pageToken">>, QueryMap, undefined)},
+        {<<"startingBlockIndex">>, maps:get(<<"startingBlockIndex">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

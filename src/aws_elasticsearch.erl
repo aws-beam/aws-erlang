@@ -41,47 +41,63 @@
          delete_package/3,
          delete_package/4,
          describe_domain_auto_tunes/2,
-         describe_domain_auto_tunes/3,
+         describe_domain_auto_tunes/4,
+         describe_domain_auto_tunes/5,
          describe_elasticsearch_domain/2,
-         describe_elasticsearch_domain/3,
+         describe_elasticsearch_domain/4,
+         describe_elasticsearch_domain/5,
          describe_elasticsearch_domain_config/2,
-         describe_elasticsearch_domain_config/3,
+         describe_elasticsearch_domain_config/4,
+         describe_elasticsearch_domain_config/5,
          describe_elasticsearch_domains/2,
          describe_elasticsearch_domains/3,
-         describe_elasticsearch_instance_type_limits/4,
+         describe_elasticsearch_instance_type_limits/3,
          describe_elasticsearch_instance_type_limits/5,
+         describe_elasticsearch_instance_type_limits/6,
          describe_inbound_cross_cluster_search_connections/2,
          describe_inbound_cross_cluster_search_connections/3,
          describe_outbound_cross_cluster_search_connections/2,
          describe_outbound_cross_cluster_search_connections/3,
          describe_packages/2,
          describe_packages/3,
+         describe_reserved_elasticsearch_instance_offerings/1,
+         describe_reserved_elasticsearch_instance_offerings/3,
          describe_reserved_elasticsearch_instance_offerings/4,
-         describe_reserved_elasticsearch_instance_offerings/5,
+         describe_reserved_elasticsearch_instances/1,
+         describe_reserved_elasticsearch_instances/3,
          describe_reserved_elasticsearch_instances/4,
-         describe_reserved_elasticsearch_instances/5,
          dissociate_package/4,
          dissociate_package/5,
-         get_compatible_elasticsearch_versions/2,
+         get_compatible_elasticsearch_versions/1,
          get_compatible_elasticsearch_versions/3,
+         get_compatible_elasticsearch_versions/4,
+         get_package_version_history/2,
          get_package_version_history/4,
          get_package_version_history/5,
+         get_upgrade_history/2,
          get_upgrade_history/4,
          get_upgrade_history/5,
          get_upgrade_status/2,
-         get_upgrade_status/3,
+         get_upgrade_status/4,
+         get_upgrade_status/5,
          list_domain_names/1,
-         list_domain_names/2,
+         list_domain_names/3,
+         list_domain_names/4,
+         list_domains_for_package/2,
          list_domains_for_package/4,
          list_domains_for_package/5,
+         list_elasticsearch_instance_types/2,
+         list_elasticsearch_instance_types/4,
          list_elasticsearch_instance_types/5,
-         list_elasticsearch_instance_types/6,
+         list_elasticsearch_versions/1,
          list_elasticsearch_versions/3,
          list_elasticsearch_versions/4,
+         list_packages_for_domain/2,
          list_packages_for_domain/4,
          list_packages_for_domain/5,
          list_tags/2,
-         list_tags/3,
+         list_tags/4,
+         list_tags/5,
          purchase_reserved_elasticsearch_instance_offering/2,
          purchase_reserved_elasticsearch_instance_offering/3,
          reject_inbound_cross_cluster_search_connection/3,
@@ -323,9 +339,14 @@ delete_package(Client, PackageID, Input0, Options) ->
 %% scheduled date.
 describe_domain_auto_tunes(Client, DomainName)
   when is_map(Client) ->
-    describe_domain_auto_tunes(Client, DomainName, []).
-describe_domain_auto_tunes(Client, DomainName, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_domain_auto_tunes(Client, DomainName, #{}, #{}).
+
+describe_domain_auto_tunes(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_domain_auto_tunes(Client, DomainName, QueryMap, HeadersMap, []).
+
+describe_domain_auto_tunes(Client, DomainName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2015-01-01/es/domain/", aws_util:encode_uri(DomainName), "/autoTunes"],
     SuccessStatusCode = undefined,
 
@@ -340,9 +361,14 @@ describe_domain_auto_tunes(Client, DomainName, Options)
 %% ARN.
 describe_elasticsearch_domain(Client, DomainName)
   when is_map(Client) ->
-    describe_elasticsearch_domain(Client, DomainName, []).
-describe_elasticsearch_domain(Client, DomainName, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_elasticsearch_domain(Client, DomainName, #{}, #{}).
+
+describe_elasticsearch_domain(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_elasticsearch_domain(Client, DomainName, QueryMap, HeadersMap, []).
+
+describe_elasticsearch_domain(Client, DomainName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2015-01-01/es/domain/", aws_util:encode_uri(DomainName), ""],
     SuccessStatusCode = undefined,
 
@@ -357,9 +383,14 @@ describe_elasticsearch_domain(Client, DomainName, Options)
 %% and update date for cluster options.
 describe_elasticsearch_domain_config(Client, DomainName)
   when is_map(Client) ->
-    describe_elasticsearch_domain_config(Client, DomainName, []).
-describe_elasticsearch_domain_config(Client, DomainName, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_elasticsearch_domain_config(Client, DomainName, #{}, #{}).
+
+describe_elasticsearch_domain_config(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_elasticsearch_domain_config(Client, DomainName, QueryMap, HeadersMap, []).
+
+describe_elasticsearch_domain_config(Client, DomainName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2015-01-01/es/domain/", aws_util:encode_uri(DomainName), "/config"],
     SuccessStatusCode = undefined,
 
@@ -392,11 +423,16 @@ describe_elasticsearch_domains(Client, Input0, Options) ->
 %%
 %% When modifying existing Domain, specify the ` `DomainName' ' to know what
 %% Limits are supported for modifying.
-describe_elasticsearch_instance_type_limits(Client, ElasticsearchVersion, InstanceType, DomainName)
+describe_elasticsearch_instance_type_limits(Client, ElasticsearchVersion, InstanceType)
   when is_map(Client) ->
-    describe_elasticsearch_instance_type_limits(Client, ElasticsearchVersion, InstanceType, DomainName, []).
-describe_elasticsearch_instance_type_limits(Client, ElasticsearchVersion, InstanceType, DomainName, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_elasticsearch_instance_type_limits(Client, ElasticsearchVersion, InstanceType, #{}, #{}).
+
+describe_elasticsearch_instance_type_limits(Client, ElasticsearchVersion, InstanceType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_elasticsearch_instance_type_limits(Client, ElasticsearchVersion, InstanceType, QueryMap, HeadersMap, []).
+
+describe_elasticsearch_instance_type_limits(Client, ElasticsearchVersion, InstanceType, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2015-01-01/es/instanceTypeLimits/", aws_util:encode_uri(ElasticsearchVersion), "/", aws_util:encode_uri(InstanceType), ""],
     SuccessStatusCode = undefined,
 
@@ -404,7 +440,7 @@ describe_elasticsearch_instance_type_limits(Client, ElasticsearchVersion, Instan
 
     Query0_ =
       [
-        {<<"domainName">>, DomainName}
+        {<<"domainName">>, maps:get(<<"domainName">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -464,11 +500,16 @@ describe_packages(Client, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists available reserved Elasticsearch instance offerings.
-describe_reserved_elasticsearch_instance_offerings(Client, MaxResults, NextToken, ReservedElasticsearchInstanceOfferingId)
+describe_reserved_elasticsearch_instance_offerings(Client)
   when is_map(Client) ->
-    describe_reserved_elasticsearch_instance_offerings(Client, MaxResults, NextToken, ReservedElasticsearchInstanceOfferingId, []).
-describe_reserved_elasticsearch_instance_offerings(Client, MaxResults, NextToken, ReservedElasticsearchInstanceOfferingId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_reserved_elasticsearch_instance_offerings(Client, #{}, #{}).
+
+describe_reserved_elasticsearch_instance_offerings(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_reserved_elasticsearch_instance_offerings(Client, QueryMap, HeadersMap, []).
+
+describe_reserved_elasticsearch_instance_offerings(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2015-01-01/es/reservedInstanceOfferings"],
     SuccessStatusCode = undefined,
 
@@ -476,9 +517,9 @@ describe_reserved_elasticsearch_instance_offerings(Client, MaxResults, NextToken
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"offeringId">>, ReservedElasticsearchInstanceOfferingId}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"offeringId">>, maps:get(<<"offeringId">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -486,11 +527,16 @@ describe_reserved_elasticsearch_instance_offerings(Client, MaxResults, NextToken
 
 %% @doc Returns information about reserved Elasticsearch instances for this
 %% account.
-describe_reserved_elasticsearch_instances(Client, MaxResults, NextToken, ReservedElasticsearchInstanceId)
+describe_reserved_elasticsearch_instances(Client)
   when is_map(Client) ->
-    describe_reserved_elasticsearch_instances(Client, MaxResults, NextToken, ReservedElasticsearchInstanceId, []).
-describe_reserved_elasticsearch_instances(Client, MaxResults, NextToken, ReservedElasticsearchInstanceId, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_reserved_elasticsearch_instances(Client, #{}, #{}).
+
+describe_reserved_elasticsearch_instances(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_reserved_elasticsearch_instances(Client, QueryMap, HeadersMap, []).
+
+describe_reserved_elasticsearch_instances(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2015-01-01/es/reservedInstances"],
     SuccessStatusCode = undefined,
 
@@ -498,9 +544,9 @@ describe_reserved_elasticsearch_instances(Client, MaxResults, NextToken, Reserve
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"reservationId">>, ReservedElasticsearchInstanceId}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"reservationId">>, maps:get(<<"reservationId">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -526,11 +572,16 @@ dissociate_package(Client, DomainName, PackageID, Input0, Options) ->
 %%
 %% You can optionally pass a ` `DomainName' ' to get all upgrade compatible
 %% Elasticsearch versions for that specific domain.
-get_compatible_elasticsearch_versions(Client, DomainName)
+get_compatible_elasticsearch_versions(Client)
   when is_map(Client) ->
-    get_compatible_elasticsearch_versions(Client, DomainName, []).
-get_compatible_elasticsearch_versions(Client, DomainName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_compatible_elasticsearch_versions(Client, #{}, #{}).
+
+get_compatible_elasticsearch_versions(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_compatible_elasticsearch_versions(Client, QueryMap, HeadersMap, []).
+
+get_compatible_elasticsearch_versions(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2015-01-01/es/compatibleVersions"],
     SuccessStatusCode = undefined,
 
@@ -538,7 +589,7 @@ get_compatible_elasticsearch_versions(Client, DomainName, Options)
 
     Query0_ =
       [
-        {<<"domainName">>, DomainName}
+        {<<"domainName">>, maps:get(<<"domainName">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -546,11 +597,16 @@ get_compatible_elasticsearch_versions(Client, DomainName, Options)
 
 %% @doc Returns a list of versions of the package, along with their creation
 %% time and commit message.
-get_package_version_history(Client, PackageID, MaxResults, NextToken)
+get_package_version_history(Client, PackageID)
   when is_map(Client) ->
-    get_package_version_history(Client, PackageID, MaxResults, NextToken, []).
-get_package_version_history(Client, PackageID, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_package_version_history(Client, PackageID, #{}, #{}).
+
+get_package_version_history(Client, PackageID, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_package_version_history(Client, PackageID, QueryMap, HeadersMap, []).
+
+get_package_version_history(Client, PackageID, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2015-01-01/packages/", aws_util:encode_uri(PackageID), "/history"],
     SuccessStatusCode = undefined,
 
@@ -558,8 +614,8 @@ get_package_version_history(Client, PackageID, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -567,11 +623,16 @@ get_package_version_history(Client, PackageID, MaxResults, NextToken, Options)
 
 %% @doc Retrieves the complete history of the last 10 upgrades that were
 %% performed on the domain.
-get_upgrade_history(Client, DomainName, MaxResults, NextToken)
+get_upgrade_history(Client, DomainName)
   when is_map(Client) ->
-    get_upgrade_history(Client, DomainName, MaxResults, NextToken, []).
-get_upgrade_history(Client, DomainName, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    get_upgrade_history(Client, DomainName, #{}, #{}).
+
+get_upgrade_history(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_upgrade_history(Client, DomainName, QueryMap, HeadersMap, []).
+
+get_upgrade_history(Client, DomainName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2015-01-01/es/upgradeDomain/", aws_util:encode_uri(DomainName), "/history"],
     SuccessStatusCode = undefined,
 
@@ -579,8 +640,8 @@ get_upgrade_history(Client, DomainName, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -590,9 +651,14 @@ get_upgrade_history(Client, DomainName, MaxResults, NextToken, Options)
 %% eligibility check that was performed on the domain.
 get_upgrade_status(Client, DomainName)
   when is_map(Client) ->
-    get_upgrade_status(Client, DomainName, []).
-get_upgrade_status(Client, DomainName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_upgrade_status(Client, DomainName, #{}, #{}).
+
+get_upgrade_status(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_upgrade_status(Client, DomainName, QueryMap, HeadersMap, []).
+
+get_upgrade_status(Client, DomainName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2015-01-01/es/upgradeDomain/", aws_util:encode_uri(DomainName), "/status"],
     SuccessStatusCode = undefined,
 
@@ -606,9 +672,14 @@ get_upgrade_status(Client, DomainName, Options)
 %% user's account.
 list_domain_names(Client)
   when is_map(Client) ->
-    list_domain_names(Client, []).
-list_domain_names(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    list_domain_names(Client, #{}, #{}).
+
+list_domain_names(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_domain_names(Client, QueryMap, HeadersMap, []).
+
+list_domain_names(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2015-01-01/domain"],
     SuccessStatusCode = undefined,
 
@@ -619,11 +690,16 @@ list_domain_names(Client, Options)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all Amazon ES domains associated with the package.
-list_domains_for_package(Client, PackageID, MaxResults, NextToken)
+list_domains_for_package(Client, PackageID)
   when is_map(Client) ->
-    list_domains_for_package(Client, PackageID, MaxResults, NextToken, []).
-list_domains_for_package(Client, PackageID, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_domains_for_package(Client, PackageID, #{}, #{}).
+
+list_domains_for_package(Client, PackageID, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_domains_for_package(Client, PackageID, QueryMap, HeadersMap, []).
+
+list_domains_for_package(Client, PackageID, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2015-01-01/packages/", aws_util:encode_uri(PackageID), "/domains"],
     SuccessStatusCode = undefined,
 
@@ -631,8 +707,8 @@ list_domains_for_package(Client, PackageID, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -640,11 +716,16 @@ list_domains_for_package(Client, PackageID, MaxResults, NextToken, Options)
 
 %% @doc List all Elasticsearch instance types that are supported for given
 %% ElasticsearchVersion
-list_elasticsearch_instance_types(Client, ElasticsearchVersion, DomainName, MaxResults, NextToken)
+list_elasticsearch_instance_types(Client, ElasticsearchVersion)
   when is_map(Client) ->
-    list_elasticsearch_instance_types(Client, ElasticsearchVersion, DomainName, MaxResults, NextToken, []).
-list_elasticsearch_instance_types(Client, ElasticsearchVersion, DomainName, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_elasticsearch_instance_types(Client, ElasticsearchVersion, #{}, #{}).
+
+list_elasticsearch_instance_types(Client, ElasticsearchVersion, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_elasticsearch_instance_types(Client, ElasticsearchVersion, QueryMap, HeadersMap, []).
+
+list_elasticsearch_instance_types(Client, ElasticsearchVersion, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2015-01-01/es/instanceTypes/", aws_util:encode_uri(ElasticsearchVersion), ""],
     SuccessStatusCode = undefined,
 
@@ -652,20 +733,25 @@ list_elasticsearch_instance_types(Client, ElasticsearchVersion, DomainName, MaxR
 
     Query0_ =
       [
-        {<<"domainName">>, DomainName},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"domainName">>, maps:get(<<"domainName">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List all supported Elasticsearch versions
-list_elasticsearch_versions(Client, MaxResults, NextToken)
+list_elasticsearch_versions(Client)
   when is_map(Client) ->
-    list_elasticsearch_versions(Client, MaxResults, NextToken, []).
-list_elasticsearch_versions(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_elasticsearch_versions(Client, #{}, #{}).
+
+list_elasticsearch_versions(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_elasticsearch_versions(Client, QueryMap, HeadersMap, []).
+
+list_elasticsearch_versions(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2015-01-01/es/versions"],
     SuccessStatusCode = undefined,
 
@@ -673,19 +759,24 @@ list_elasticsearch_versions(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all packages associated with the Amazon ES domain.
-list_packages_for_domain(Client, DomainName, MaxResults, NextToken)
+list_packages_for_domain(Client, DomainName)
   when is_map(Client) ->
-    list_packages_for_domain(Client, DomainName, MaxResults, NextToken, []).
-list_packages_for_domain(Client, DomainName, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_packages_for_domain(Client, DomainName, #{}, #{}).
+
+list_packages_for_domain(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_packages_for_domain(Client, DomainName, QueryMap, HeadersMap, []).
+
+list_packages_for_domain(Client, DomainName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2015-01-01/domain/", aws_util:encode_uri(DomainName), "/packages"],
     SuccessStatusCode = undefined,
 
@@ -693,8 +784,8 @@ list_packages_for_domain(Client, DomainName, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -703,9 +794,14 @@ list_packages_for_domain(Client, DomainName, MaxResults, NextToken, Options)
 %% @doc Returns all tags for the given Elasticsearch domain.
 list_tags(Client, ARN)
   when is_map(Client) ->
-    list_tags(Client, ARN, []).
-list_tags(Client, ARN, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags(Client, ARN, #{}, #{}).
+
+list_tags(Client, ARN, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags(Client, ARN, QueryMap, HeadersMap, []).
+
+list_tags(Client, ARN, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2015-01-01/tags/"],
     SuccessStatusCode = undefined,
 

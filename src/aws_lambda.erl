@@ -44,57 +44,82 @@
          delete_provisioned_concurrency_config/3,
          delete_provisioned_concurrency_config/4,
          get_account_settings/1,
-         get_account_settings/2,
+         get_account_settings/3,
+         get_account_settings/4,
          get_alias/3,
-         get_alias/4,
+         get_alias/5,
+         get_alias/6,
          get_code_signing_config/2,
-         get_code_signing_config/3,
+         get_code_signing_config/4,
+         get_code_signing_config/5,
          get_event_source_mapping/2,
-         get_event_source_mapping/3,
-         get_function/3,
+         get_event_source_mapping/4,
+         get_event_source_mapping/5,
+         get_function/2,
          get_function/4,
+         get_function/5,
          get_function_code_signing_config/2,
-         get_function_code_signing_config/3,
+         get_function_code_signing_config/4,
+         get_function_code_signing_config/5,
          get_function_concurrency/2,
-         get_function_concurrency/3,
-         get_function_configuration/3,
+         get_function_concurrency/4,
+         get_function_concurrency/5,
+         get_function_configuration/2,
          get_function_configuration/4,
-         get_function_event_invoke_config/3,
+         get_function_configuration/5,
+         get_function_event_invoke_config/2,
          get_function_event_invoke_config/4,
+         get_function_event_invoke_config/5,
          get_layer_version/3,
-         get_layer_version/4,
+         get_layer_version/5,
+         get_layer_version/6,
          get_layer_version_by_arn/2,
-         get_layer_version_by_arn/3,
+         get_layer_version_by_arn/4,
+         get_layer_version_by_arn/5,
          get_layer_version_policy/3,
-         get_layer_version_policy/4,
-         get_policy/3,
+         get_layer_version_policy/5,
+         get_layer_version_policy/6,
+         get_policy/2,
          get_policy/4,
+         get_policy/5,
          get_provisioned_concurrency_config/3,
-         get_provisioned_concurrency_config/4,
+         get_provisioned_concurrency_config/5,
+         get_provisioned_concurrency_config/6,
          invoke/3,
          invoke/4,
          invoke_async/3,
          invoke_async/4,
+         list_aliases/2,
+         list_aliases/4,
          list_aliases/5,
-         list_aliases/6,
+         list_code_signing_configs/1,
          list_code_signing_configs/3,
          list_code_signing_configs/4,
-         list_event_source_mappings/5,
-         list_event_source_mappings/6,
+         list_event_source_mappings/1,
+         list_event_source_mappings/3,
+         list_event_source_mappings/4,
+         list_function_event_invoke_configs/2,
          list_function_event_invoke_configs/4,
          list_function_event_invoke_configs/5,
-         list_functions/5,
-         list_functions/6,
+         list_functions/1,
+         list_functions/3,
+         list_functions/4,
+         list_functions_by_code_signing_config/2,
          list_functions_by_code_signing_config/4,
          list_functions_by_code_signing_config/5,
+         list_layer_versions/2,
+         list_layer_versions/4,
          list_layer_versions/5,
-         list_layer_versions/6,
+         list_layers/1,
+         list_layers/3,
          list_layers/4,
-         list_layers/5,
+         list_provisioned_concurrency_configs/2,
          list_provisioned_concurrency_configs/4,
          list_provisioned_concurrency_configs/5,
          list_tags/2,
-         list_tags/3,
+         list_tags/4,
+         list_tags/5,
+         list_versions_by_function/2,
          list_versions_by_function/4,
          list_versions_by_function/5,
          publish_layer_version/3,
@@ -531,9 +556,14 @@ delete_provisioned_concurrency_config(Client, FunctionName, Input0, Options) ->
 %% Region.
 get_account_settings(Client)
   when is_map(Client) ->
-    get_account_settings(Client, []).
-get_account_settings(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    get_account_settings(Client, #{}, #{}).
+
+get_account_settings(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_account_settings(Client, QueryMap, HeadersMap, []).
+
+get_account_settings(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2016-08-19/account-settings/"],
     SuccessStatusCode = 200,
 
@@ -546,9 +576,14 @@ get_account_settings(Client, Options)
 %% @doc Returns details about a Lambda function alias.
 get_alias(Client, FunctionName, Name)
   when is_map(Client) ->
-    get_alias(Client, FunctionName, Name, []).
-get_alias(Client, FunctionName, Name, Options)
-  when is_map(Client), is_list(Options) ->
+    get_alias(Client, FunctionName, Name, #{}, #{}).
+
+get_alias(Client, FunctionName, Name, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_alias(Client, FunctionName, Name, QueryMap, HeadersMap, []).
+
+get_alias(Client, FunctionName, Name, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/aliases/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
 
@@ -561,9 +596,14 @@ get_alias(Client, FunctionName, Name, Options)
 %% @doc Returns information about the specified code signing configuration.
 get_code_signing_config(Client, CodeSigningConfigArn)
   when is_map(Client) ->
-    get_code_signing_config(Client, CodeSigningConfigArn, []).
-get_code_signing_config(Client, CodeSigningConfigArn, Options)
-  when is_map(Client), is_list(Options) ->
+    get_code_signing_config(Client, CodeSigningConfigArn, #{}, #{}).
+
+get_code_signing_config(Client, CodeSigningConfigArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_code_signing_config(Client, CodeSigningConfigArn, QueryMap, HeadersMap, []).
+
+get_code_signing_config(Client, CodeSigningConfigArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-04-22/code-signing-configs/", aws_util:encode_uri(CodeSigningConfigArn), ""],
     SuccessStatusCode = 200,
 
@@ -579,9 +619,14 @@ get_code_signing_config(Client, CodeSigningConfigArn, Options)
 %% `ListEventSourceMappings'.
 get_event_source_mapping(Client, UUID)
   when is_map(Client) ->
-    get_event_source_mapping(Client, UUID, []).
-get_event_source_mapping(Client, UUID, Options)
-  when is_map(Client), is_list(Options) ->
+    get_event_source_mapping(Client, UUID, #{}, #{}).
+
+get_event_source_mapping(Client, UUID, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_event_source_mapping(Client, UUID, QueryMap, HeadersMap, []).
+
+get_event_source_mapping(Client, UUID, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2015-03-31/event-source-mappings/", aws_util:encode_uri(UUID), ""],
     SuccessStatusCode = 200,
 
@@ -596,11 +641,16 @@ get_event_source_mapping(Client, UUID, Options)
 %%
 %% If you specify a function version, only details that are specific to that
 %% version are returned.
-get_function(Client, FunctionName, Qualifier)
+get_function(Client, FunctionName)
   when is_map(Client) ->
-    get_function(Client, FunctionName, Qualifier, []).
-get_function(Client, FunctionName, Qualifier, Options)
-  when is_map(Client), is_list(Options) ->
+    get_function(Client, FunctionName, #{}, #{}).
+
+get_function(Client, FunctionName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_function(Client, FunctionName, QueryMap, HeadersMap, []).
+
+get_function(Client, FunctionName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), ""],
     SuccessStatusCode = 200,
 
@@ -608,7 +658,7 @@ get_function(Client, FunctionName, Qualifier, Options)
 
     Query0_ =
       [
-        {<<"Qualifier">>, Qualifier}
+        {<<"Qualifier">>, maps:get(<<"Qualifier">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -617,9 +667,14 @@ get_function(Client, FunctionName, Qualifier, Options)
 %% @doc Returns the code signing configuration for the specified function.
 get_function_code_signing_config(Client, FunctionName)
   when is_map(Client) ->
-    get_function_code_signing_config(Client, FunctionName, []).
-get_function_code_signing_config(Client, FunctionName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_function_code_signing_config(Client, FunctionName, #{}, #{}).
+
+get_function_code_signing_config(Client, FunctionName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_function_code_signing_config(Client, FunctionName, QueryMap, HeadersMap, []).
+
+get_function_code_signing_config(Client, FunctionName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-06-30/functions/", aws_util:encode_uri(FunctionName), "/code-signing-config"],
     SuccessStatusCode = 200,
 
@@ -635,9 +690,14 @@ get_function_code_signing_config(Client, FunctionName, Options)
 %% To set a concurrency limit for a function, use `PutFunctionConcurrency'.
 get_function_concurrency(Client, FunctionName)
   when is_map(Client) ->
-    get_function_concurrency(Client, FunctionName, []).
-get_function_concurrency(Client, FunctionName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_function_concurrency(Client, FunctionName, #{}, #{}).
+
+get_function_concurrency(Client, FunctionName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_function_concurrency(Client, FunctionName, QueryMap, HeadersMap, []).
+
+get_function_concurrency(Client, FunctionName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2019-09-30/functions/", aws_util:encode_uri(FunctionName), "/concurrency"],
     SuccessStatusCode = 200,
 
@@ -655,11 +715,16 @@ get_function_concurrency(Client, FunctionName, Options)
 %%
 %% To get all of a function's details, including function-level settings, use
 %% `GetFunction'.
-get_function_configuration(Client, FunctionName, Qualifier)
+get_function_configuration(Client, FunctionName)
   when is_map(Client) ->
-    get_function_configuration(Client, FunctionName, Qualifier, []).
-get_function_configuration(Client, FunctionName, Qualifier, Options)
-  when is_map(Client), is_list(Options) ->
+    get_function_configuration(Client, FunctionName, #{}, #{}).
+
+get_function_configuration(Client, FunctionName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_function_configuration(Client, FunctionName, QueryMap, HeadersMap, []).
+
+get_function_configuration(Client, FunctionName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/configuration"],
     SuccessStatusCode = 200,
 
@@ -667,7 +732,7 @@ get_function_configuration(Client, FunctionName, Qualifier, Options)
 
     Query0_ =
       [
-        {<<"Qualifier">>, Qualifier}
+        {<<"Qualifier">>, maps:get(<<"Qualifier">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -678,11 +743,16 @@ get_function_configuration(Client, FunctionName, Qualifier, Options)
 %%
 %% To configure options for asynchronous invocation, use
 %% `PutFunctionEventInvokeConfig'.
-get_function_event_invoke_config(Client, FunctionName, Qualifier)
+get_function_event_invoke_config(Client, FunctionName)
   when is_map(Client) ->
-    get_function_event_invoke_config(Client, FunctionName, Qualifier, []).
-get_function_event_invoke_config(Client, FunctionName, Qualifier, Options)
-  when is_map(Client), is_list(Options) ->
+    get_function_event_invoke_config(Client, FunctionName, #{}, #{}).
+
+get_function_event_invoke_config(Client, FunctionName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_function_event_invoke_config(Client, FunctionName, QueryMap, HeadersMap, []).
+
+get_function_event_invoke_config(Client, FunctionName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2019-09-25/functions/", aws_util:encode_uri(FunctionName), "/event-invoke-config"],
     SuccessStatusCode = 200,
 
@@ -690,7 +760,7 @@ get_function_event_invoke_config(Client, FunctionName, Qualifier, Options)
 
     Query0_ =
       [
-        {<<"Qualifier">>, Qualifier}
+        {<<"Qualifier">>, maps:get(<<"Qualifier">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -700,9 +770,14 @@ get_function_event_invoke_config(Client, FunctionName, Qualifier, Options)
 %% link to download the layer archive that's valid for 10 minutes.
 get_layer_version(Client, LayerName, VersionNumber)
   when is_map(Client) ->
-    get_layer_version(Client, LayerName, VersionNumber, []).
-get_layer_version(Client, LayerName, VersionNumber, Options)
-  when is_map(Client), is_list(Options) ->
+    get_layer_version(Client, LayerName, VersionNumber, #{}, #{}).
+
+get_layer_version(Client, LayerName, VersionNumber, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_layer_version(Client, LayerName, VersionNumber, QueryMap, HeadersMap, []).
+
+get_layer_version(Client, LayerName, VersionNumber, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2018-10-31/layers/", aws_util:encode_uri(LayerName), "/versions/", aws_util:encode_uri(VersionNumber), ""],
     SuccessStatusCode = 200,
 
@@ -716,9 +791,14 @@ get_layer_version(Client, LayerName, VersionNumber, Options)
 %% link to download the layer archive that's valid for 10 minutes.
 get_layer_version_by_arn(Client, Arn)
   when is_map(Client) ->
-    get_layer_version_by_arn(Client, Arn, []).
-get_layer_version_by_arn(Client, Arn, Options)
-  when is_map(Client), is_list(Options) ->
+    get_layer_version_by_arn(Client, Arn, #{}, #{}).
+
+get_layer_version_by_arn(Client, Arn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_layer_version_by_arn(Client, Arn, QueryMap, HeadersMap, []).
+
+get_layer_version_by_arn(Client, Arn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2018-10-31/layers?find=LayerVersion"],
     SuccessStatusCode = 200,
 
@@ -737,9 +817,14 @@ get_layer_version_by_arn(Client, Arn, Options)
 %% For more information, see `AddLayerVersionPermission'.
 get_layer_version_policy(Client, LayerName, VersionNumber)
   when is_map(Client) ->
-    get_layer_version_policy(Client, LayerName, VersionNumber, []).
-get_layer_version_policy(Client, LayerName, VersionNumber, Options)
-  when is_map(Client), is_list(Options) ->
+    get_layer_version_policy(Client, LayerName, VersionNumber, #{}, #{}).
+
+get_layer_version_policy(Client, LayerName, VersionNumber, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_layer_version_policy(Client, LayerName, VersionNumber, QueryMap, HeadersMap, []).
+
+get_layer_version_policy(Client, LayerName, VersionNumber, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2018-10-31/layers/", aws_util:encode_uri(LayerName), "/versions/", aws_util:encode_uri(VersionNumber), "/policy"],
     SuccessStatusCode = 200,
 
@@ -751,11 +836,16 @@ get_layer_version_policy(Client, LayerName, VersionNumber, Options)
 
 %% @doc Returns the resource-based IAM policy for a function, version, or
 %% alias.
-get_policy(Client, FunctionName, Qualifier)
+get_policy(Client, FunctionName)
   when is_map(Client) ->
-    get_policy(Client, FunctionName, Qualifier, []).
-get_policy(Client, FunctionName, Qualifier, Options)
-  when is_map(Client), is_list(Options) ->
+    get_policy(Client, FunctionName, #{}, #{}).
+
+get_policy(Client, FunctionName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_policy(Client, FunctionName, QueryMap, HeadersMap, []).
+
+get_policy(Client, FunctionName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/policy"],
     SuccessStatusCode = 200,
 
@@ -763,7 +853,7 @@ get_policy(Client, FunctionName, Qualifier, Options)
 
     Query0_ =
       [
-        {<<"Qualifier">>, Qualifier}
+        {<<"Qualifier">>, maps:get(<<"Qualifier">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -773,9 +863,14 @@ get_policy(Client, FunctionName, Qualifier, Options)
 %% alias or version.
 get_provisioned_concurrency_config(Client, FunctionName, Qualifier)
   when is_map(Client) ->
-    get_provisioned_concurrency_config(Client, FunctionName, Qualifier, []).
-get_provisioned_concurrency_config(Client, FunctionName, Qualifier, Options)
-  when is_map(Client), is_list(Options) ->
+    get_provisioned_concurrency_config(Client, FunctionName, Qualifier, #{}, #{}).
+
+get_provisioned_concurrency_config(Client, FunctionName, Qualifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_provisioned_concurrency_config(Client, FunctionName, Qualifier, QueryMap, HeadersMap, []).
+
+get_provisioned_concurrency_config(Client, FunctionName, Qualifier, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2019-09-30/functions/", aws_util:encode_uri(FunctionName), "/provisioned-concurrency"],
     SuccessStatusCode = 200,
 
@@ -885,11 +980,16 @@ invoke_async(Client, FunctionName, Input0, Options) ->
     request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of aliases for a Lambda function.
-list_aliases(Client, FunctionName, FunctionVersion, Marker, MaxItems)
+list_aliases(Client, FunctionName)
   when is_map(Client) ->
-    list_aliases(Client, FunctionName, FunctionVersion, Marker, MaxItems, []).
-list_aliases(Client, FunctionName, FunctionVersion, Marker, MaxItems, Options)
-  when is_map(Client), is_list(Options) ->
+    list_aliases(Client, FunctionName, #{}, #{}).
+
+list_aliases(Client, FunctionName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_aliases(Client, FunctionName, QueryMap, HeadersMap, []).
+
+list_aliases(Client, FunctionName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/aliases"],
     SuccessStatusCode = 200,
 
@@ -897,9 +997,9 @@ list_aliases(Client, FunctionName, FunctionVersion, Marker, MaxItems, Options)
 
     Query0_ =
       [
-        {<<"FunctionVersion">>, FunctionVersion},
-        {<<"Marker">>, Marker},
-        {<<"MaxItems">>, MaxItems}
+        {<<"FunctionVersion">>, maps:get(<<"FunctionVersion">>, QueryMap, undefined)},
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -909,11 +1009,16 @@ list_aliases(Client, FunctionName, FunctionVersion, Marker, MaxItems, Options)
 %%
 %% A request returns up to 10,000 configurations per call. You can use the
 %% `MaxItems' parameter to return fewer configurations per call.
-list_code_signing_configs(Client, Marker, MaxItems)
+list_code_signing_configs(Client)
   when is_map(Client) ->
-    list_code_signing_configs(Client, Marker, MaxItems, []).
-list_code_signing_configs(Client, Marker, MaxItems, Options)
-  when is_map(Client), is_list(Options) ->
+    list_code_signing_configs(Client, #{}, #{}).
+
+list_code_signing_configs(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_code_signing_configs(Client, QueryMap, HeadersMap, []).
+
+list_code_signing_configs(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-04-22/code-signing-configs/"],
     SuccessStatusCode = 200,
 
@@ -921,8 +1026,8 @@ list_code_signing_configs(Client, Marker, MaxItems, Options)
 
     Query0_ =
       [
-        {<<"Marker">>, Marker},
-        {<<"MaxItems">>, MaxItems}
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -932,11 +1037,16 @@ list_code_signing_configs(Client, Marker, MaxItems, Options)
 %%
 %% Specify an `EventSourceArn' to only show event source mappings for a
 %% single event source.
-list_event_source_mappings(Client, EventSourceArn, FunctionName, Marker, MaxItems)
+list_event_source_mappings(Client)
   when is_map(Client) ->
-    list_event_source_mappings(Client, EventSourceArn, FunctionName, Marker, MaxItems, []).
-list_event_source_mappings(Client, EventSourceArn, FunctionName, Marker, MaxItems, Options)
-  when is_map(Client), is_list(Options) ->
+    list_event_source_mappings(Client, #{}, #{}).
+
+list_event_source_mappings(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_event_source_mappings(Client, QueryMap, HeadersMap, []).
+
+list_event_source_mappings(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2015-03-31/event-source-mappings/"],
     SuccessStatusCode = 200,
 
@@ -944,10 +1054,10 @@ list_event_source_mappings(Client, EventSourceArn, FunctionName, Marker, MaxItem
 
     Query0_ =
       [
-        {<<"EventSourceArn">>, EventSourceArn},
-        {<<"FunctionName">>, FunctionName},
-        {<<"Marker">>, Marker},
-        {<<"MaxItems">>, MaxItems}
+        {<<"EventSourceArn">>, maps:get(<<"EventSourceArn">>, QueryMap, undefined)},
+        {<<"FunctionName">>, maps:get(<<"FunctionName">>, QueryMap, undefined)},
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -958,11 +1068,16 @@ list_event_source_mappings(Client, EventSourceArn, FunctionName, Marker, MaxItem
 %%
 %% To configure options for asynchronous invocation, use
 %% `PutFunctionEventInvokeConfig'.
-list_function_event_invoke_configs(Client, FunctionName, Marker, MaxItems)
+list_function_event_invoke_configs(Client, FunctionName)
   when is_map(Client) ->
-    list_function_event_invoke_configs(Client, FunctionName, Marker, MaxItems, []).
-list_function_event_invoke_configs(Client, FunctionName, Marker, MaxItems, Options)
-  when is_map(Client), is_list(Options) ->
+    list_function_event_invoke_configs(Client, FunctionName, #{}, #{}).
+
+list_function_event_invoke_configs(Client, FunctionName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_function_event_invoke_configs(Client, FunctionName, QueryMap, HeadersMap, []).
+
+list_function_event_invoke_configs(Client, FunctionName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2019-09-25/functions/", aws_util:encode_uri(FunctionName), "/event-invoke-config/list"],
     SuccessStatusCode = 200,
 
@@ -970,8 +1085,8 @@ list_function_event_invoke_configs(Client, FunctionName, Marker, MaxItems, Optio
 
     Query0_ =
       [
-        {<<"Marker">>, Marker},
-        {<<"MaxItems">>, MaxItems}
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -985,11 +1100,16 @@ list_function_event_invoke_configs(Client, FunctionName, Marker, MaxItems, Optio
 %% Set `FunctionVersion' to `ALL' to include all published versions of each
 %% function in addition to the unpublished version. To get more information
 %% about a function or version, use `GetFunction'.
-list_functions(Client, FunctionVersion, Marker, MasterRegion, MaxItems)
+list_functions(Client)
   when is_map(Client) ->
-    list_functions(Client, FunctionVersion, Marker, MasterRegion, MaxItems, []).
-list_functions(Client, FunctionVersion, Marker, MasterRegion, MaxItems, Options)
-  when is_map(Client), is_list(Options) ->
+    list_functions(Client, #{}, #{}).
+
+list_functions(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_functions(Client, QueryMap, HeadersMap, []).
+
+list_functions(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2015-03-31/functions/"],
     SuccessStatusCode = 200,
 
@@ -997,10 +1117,10 @@ list_functions(Client, FunctionVersion, Marker, MasterRegion, MaxItems, Options)
 
     Query0_ =
       [
-        {<<"FunctionVersion">>, FunctionVersion},
-        {<<"Marker">>, Marker},
-        {<<"MasterRegion">>, MasterRegion},
-        {<<"MaxItems">>, MaxItems}
+        {<<"FunctionVersion">>, maps:get(<<"FunctionVersion">>, QueryMap, undefined)},
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MasterRegion">>, maps:get(<<"MasterRegion">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1010,11 +1130,16 @@ list_functions(Client, FunctionVersion, Marker, MasterRegion, MaxItems, Options)
 %%
 %% You can use this method prior to deleting a code signing configuration, to
 %% verify that no functions are using it.
-list_functions_by_code_signing_config(Client, CodeSigningConfigArn, Marker, MaxItems)
+list_functions_by_code_signing_config(Client, CodeSigningConfigArn)
   when is_map(Client) ->
-    list_functions_by_code_signing_config(Client, CodeSigningConfigArn, Marker, MaxItems, []).
-list_functions_by_code_signing_config(Client, CodeSigningConfigArn, Marker, MaxItems, Options)
-  when is_map(Client), is_list(Options) ->
+    list_functions_by_code_signing_config(Client, CodeSigningConfigArn, #{}, #{}).
+
+list_functions_by_code_signing_config(Client, CodeSigningConfigArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_functions_by_code_signing_config(Client, CodeSigningConfigArn, QueryMap, HeadersMap, []).
+
+list_functions_by_code_signing_config(Client, CodeSigningConfigArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-04-22/code-signing-configs/", aws_util:encode_uri(CodeSigningConfigArn), "/functions"],
     SuccessStatusCode = 200,
 
@@ -1022,8 +1147,8 @@ list_functions_by_code_signing_config(Client, CodeSigningConfigArn, Marker, MaxI
 
     Query0_ =
       [
-        {<<"Marker">>, Marker},
-        {<<"MaxItems">>, MaxItems}
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1034,11 +1159,16 @@ list_functions_by_code_signing_config(Client, CodeSigningConfigArn, Marker, MaxI
 %% Versions that have been deleted aren't listed. Specify a runtime
 %% identifier to list only versions that indicate that they're compatible
 %% with that runtime.
-list_layer_versions(Client, LayerName, CompatibleRuntime, Marker, MaxItems)
+list_layer_versions(Client, LayerName)
   when is_map(Client) ->
-    list_layer_versions(Client, LayerName, CompatibleRuntime, Marker, MaxItems, []).
-list_layer_versions(Client, LayerName, CompatibleRuntime, Marker, MaxItems, Options)
-  when is_map(Client), is_list(Options) ->
+    list_layer_versions(Client, LayerName, #{}, #{}).
+
+list_layer_versions(Client, LayerName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_layer_versions(Client, LayerName, QueryMap, HeadersMap, []).
+
+list_layer_versions(Client, LayerName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2018-10-31/layers/", aws_util:encode_uri(LayerName), "/versions"],
     SuccessStatusCode = 200,
 
@@ -1046,9 +1176,9 @@ list_layer_versions(Client, LayerName, CompatibleRuntime, Marker, MaxItems, Opti
 
     Query0_ =
       [
-        {<<"CompatibleRuntime">>, CompatibleRuntime},
-        {<<"Marker">>, Marker},
-        {<<"MaxItems">>, MaxItems}
+        {<<"CompatibleRuntime">>, maps:get(<<"CompatibleRuntime">>, QueryMap, undefined)},
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1059,11 +1189,16 @@ list_layer_versions(Client, LayerName, CompatibleRuntime, Marker, MaxItems, Opti
 %%
 %% Specify a runtime identifier to list only layers that indicate that
 %% they're compatible with that runtime.
-list_layers(Client, CompatibleRuntime, Marker, MaxItems)
+list_layers(Client)
   when is_map(Client) ->
-    list_layers(Client, CompatibleRuntime, Marker, MaxItems, []).
-list_layers(Client, CompatibleRuntime, Marker, MaxItems, Options)
-  when is_map(Client), is_list(Options) ->
+    list_layers(Client, #{}, #{}).
+
+list_layers(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_layers(Client, QueryMap, HeadersMap, []).
+
+list_layers(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2018-10-31/layers"],
     SuccessStatusCode = 200,
 
@@ -1071,9 +1206,9 @@ list_layers(Client, CompatibleRuntime, Marker, MaxItems, Options)
 
     Query0_ =
       [
-        {<<"CompatibleRuntime">>, CompatibleRuntime},
-        {<<"Marker">>, Marker},
-        {<<"MaxItems">>, MaxItems}
+        {<<"CompatibleRuntime">>, maps:get(<<"CompatibleRuntime">>, QueryMap, undefined)},
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1081,11 +1216,16 @@ list_layers(Client, CompatibleRuntime, Marker, MaxItems, Options)
 
 %% @doc Retrieves a list of provisioned concurrency configurations for a
 %% function.
-list_provisioned_concurrency_configs(Client, FunctionName, Marker, MaxItems)
+list_provisioned_concurrency_configs(Client, FunctionName)
   when is_map(Client) ->
-    list_provisioned_concurrency_configs(Client, FunctionName, Marker, MaxItems, []).
-list_provisioned_concurrency_configs(Client, FunctionName, Marker, MaxItems, Options)
-  when is_map(Client), is_list(Options) ->
+    list_provisioned_concurrency_configs(Client, FunctionName, #{}, #{}).
+
+list_provisioned_concurrency_configs(Client, FunctionName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_provisioned_concurrency_configs(Client, FunctionName, QueryMap, HeadersMap, []).
+
+list_provisioned_concurrency_configs(Client, FunctionName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2019-09-30/functions/", aws_util:encode_uri(FunctionName), "/provisioned-concurrency?List=ALL"],
     SuccessStatusCode = 200,
 
@@ -1093,8 +1233,8 @@ list_provisioned_concurrency_configs(Client, FunctionName, Marker, MaxItems, Opt
 
     Query0_ =
       [
-        {<<"Marker">>, Marker},
-        {<<"MaxItems">>, MaxItems}
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1105,9 +1245,14 @@ list_provisioned_concurrency_configs(Client, FunctionName, Marker, MaxItems, Opt
 %% You can also view tags with `GetFunction'.
 list_tags(Client, Resource)
   when is_map(Client) ->
-    list_tags(Client, Resource, []).
-list_tags(Client, Resource, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags(Client, Resource, #{}, #{}).
+
+list_tags(Client, Resource, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags(Client, Resource, QueryMap, HeadersMap, []).
+
+list_tags(Client, Resource, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2017-03-31/tags/", aws_util:encode_uri(Resource), ""],
     SuccessStatusCode = undefined,
 
@@ -1121,11 +1266,16 @@ list_tags(Client, Resource, Options)
 %% of each.
 %%
 %% Lambda returns up to 50 versions per call.
-list_versions_by_function(Client, FunctionName, Marker, MaxItems)
+list_versions_by_function(Client, FunctionName)
   when is_map(Client) ->
-    list_versions_by_function(Client, FunctionName, Marker, MaxItems, []).
-list_versions_by_function(Client, FunctionName, Marker, MaxItems, Options)
-  when is_map(Client), is_list(Options) ->
+    list_versions_by_function(Client, FunctionName, #{}, #{}).
+
+list_versions_by_function(Client, FunctionName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_versions_by_function(Client, FunctionName, QueryMap, HeadersMap, []).
+
+list_versions_by_function(Client, FunctionName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/versions"],
     SuccessStatusCode = 200,
 
@@ -1133,8 +1283,8 @@ list_versions_by_function(Client, FunctionName, Marker, MaxItems, Options)
 
     Query0_ =
       [
-        {<<"Marker">>, Marker},
-        {<<"MaxItems">>, MaxItems}
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

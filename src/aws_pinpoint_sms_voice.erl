@@ -13,7 +13,9 @@
          delete_configuration_set_event_destination/4,
          delete_configuration_set_event_destination/5,
          get_configuration_set_event_destinations/2,
-         get_configuration_set_event_destinations/3,
+         get_configuration_set_event_destinations/4,
+         get_configuration_set_event_destinations/5,
+         list_configuration_sets/1,
          list_configuration_sets/3,
          list_configuration_sets/4,
          send_voice_message/2,
@@ -99,9 +101,14 @@ delete_configuration_set_event_destination(Client, ConfigurationSetName, EventDe
 %% the name of the event destination.
 get_configuration_set_event_destinations(Client, ConfigurationSetName)
   when is_map(Client) ->
-    get_configuration_set_event_destinations(Client, ConfigurationSetName, []).
-get_configuration_set_event_destinations(Client, ConfigurationSetName, Options)
-  when is_map(Client), is_list(Options) ->
+    get_configuration_set_event_destinations(Client, ConfigurationSetName, #{}, #{}).
+
+get_configuration_set_event_destinations(Client, ConfigurationSetName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_configuration_set_event_destinations(Client, ConfigurationSetName, QueryMap, HeadersMap, []).
+
+get_configuration_set_event_destinations(Client, ConfigurationSetName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/sms-voice/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/event-destinations"],
     SuccessStatusCode = 200,
 
@@ -113,11 +120,16 @@ get_configuration_set_event_destinations(Client, ConfigurationSetName, Options)
 
 %% @doc List all of the configuration sets associated with your Amazon
 %% Pinpoint account in the current region.
-list_configuration_sets(Client, NextToken, PageSize)
+list_configuration_sets(Client)
   when is_map(Client) ->
-    list_configuration_sets(Client, NextToken, PageSize, []).
-list_configuration_sets(Client, NextToken, PageSize, Options)
-  when is_map(Client), is_list(Options) ->
+    list_configuration_sets(Client, #{}, #{}).
+
+list_configuration_sets(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_configuration_sets(Client, QueryMap, HeadersMap, []).
+
+list_configuration_sets(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/v1/sms-voice/configuration-sets"],
     SuccessStatusCode = 200,
 
@@ -125,8 +137,8 @@ list_configuration_sets(Client, NextToken, PageSize, Options)
 
     Query0_ =
       [
-        {<<"NextToken">>, NextToken},
-        {<<"PageSize">>, PageSize}
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"PageSize">>, maps:get(<<"PageSize">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

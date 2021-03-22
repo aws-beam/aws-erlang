@@ -27,21 +27,28 @@
          delete_project/3,
          delete_project/4,
          describe_dataset/3,
-         describe_dataset/4,
+         describe_dataset/5,
+         describe_dataset/6,
          describe_model/3,
-         describe_model/4,
+         describe_model/5,
+         describe_model/6,
          describe_project/2,
-         describe_project/3,
+         describe_project/4,
+         describe_project/5,
          detect_anomalies/4,
          detect_anomalies/5,
-         list_dataset_entries/10,
-         list_dataset_entries/11,
+         list_dataset_entries/3,
+         list_dataset_entries/5,
+         list_dataset_entries/6,
+         list_models/2,
          list_models/4,
          list_models/5,
+         list_projects/1,
          list_projects/3,
          list_projects/4,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          start_model/4,
          start_model/5,
          stop_model/4,
@@ -248,9 +255,14 @@ delete_project(Client, ProjectName, Input0, Options) ->
 %% `lookoutvision:DescribeDataset' operation.
 describe_dataset(Client, DatasetType, ProjectName)
   when is_map(Client) ->
-    describe_dataset(Client, DatasetType, ProjectName, []).
-describe_dataset(Client, DatasetType, ProjectName, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_dataset(Client, DatasetType, ProjectName, #{}, #{}).
+
+describe_dataset(Client, DatasetType, ProjectName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_dataset(Client, DatasetType, ProjectName, QueryMap, HeadersMap, []).
+
+describe_dataset(Client, DatasetType, ProjectName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/datasets/", aws_util:encode_uri(DatasetType), ""],
     SuccessStatusCode = undefined,
 
@@ -266,9 +278,14 @@ describe_dataset(Client, DatasetType, ProjectName, Options)
 %% `lookoutvision:DescribeModel' operation.
 describe_model(Client, ModelVersion, ProjectName)
   when is_map(Client) ->
-    describe_model(Client, ModelVersion, ProjectName, []).
-describe_model(Client, ModelVersion, ProjectName, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_model(Client, ModelVersion, ProjectName, #{}, #{}).
+
+describe_model(Client, ModelVersion, ProjectName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_model(Client, ModelVersion, ProjectName, QueryMap, HeadersMap, []).
+
+describe_model(Client, ModelVersion, ProjectName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/models/", aws_util:encode_uri(ModelVersion), ""],
     SuccessStatusCode = undefined,
 
@@ -284,9 +301,14 @@ describe_model(Client, ModelVersion, ProjectName, Options)
 %% `lookoutvision:DescribeProject' operation.
 describe_project(Client, ProjectName)
   when is_map(Client) ->
-    describe_project(Client, ProjectName, []).
-describe_project(Client, ProjectName, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_project(Client, ProjectName, #{}, #{}).
+
+describe_project(Client, ProjectName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_project(Client, ProjectName, QueryMap, HeadersMap, []).
+
+describe_project(Client, ProjectName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), ""],
     SuccessStatusCode = undefined,
 
@@ -334,11 +356,16 @@ detect_anomalies(Client, ModelVersion, ProjectName, Input0, Options) ->
 %%
 %% This operation requires permissions to perform the
 %% `lookoutvision:ListDatasetEntries' operation.
-list_dataset_entries(Client, DatasetType, ProjectName, AfterCreationDate, AnomalyClass, BeforeCreationDate, Labeled, MaxResults, NextToken, SourceRefContains)
+list_dataset_entries(Client, DatasetType, ProjectName)
   when is_map(Client) ->
-    list_dataset_entries(Client, DatasetType, ProjectName, AfterCreationDate, AnomalyClass, BeforeCreationDate, Labeled, MaxResults, NextToken, SourceRefContains, []).
-list_dataset_entries(Client, DatasetType, ProjectName, AfterCreationDate, AnomalyClass, BeforeCreationDate, Labeled, MaxResults, NextToken, SourceRefContains, Options)
-  when is_map(Client), is_list(Options) ->
+    list_dataset_entries(Client, DatasetType, ProjectName, #{}, #{}).
+
+list_dataset_entries(Client, DatasetType, ProjectName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_dataset_entries(Client, DatasetType, ProjectName, QueryMap, HeadersMap, []).
+
+list_dataset_entries(Client, DatasetType, ProjectName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/datasets/", aws_util:encode_uri(DatasetType), "/entries"],
     SuccessStatusCode = undefined,
 
@@ -346,13 +373,13 @@ list_dataset_entries(Client, DatasetType, ProjectName, AfterCreationDate, Anomal
 
     Query0_ =
       [
-        {<<"createdAfter">>, AfterCreationDate},
-        {<<"anomalyClass">>, AnomalyClass},
-        {<<"createdBefore">>, BeforeCreationDate},
-        {<<"labeled">>, Labeled},
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken},
-        {<<"sourceRefContains">>, SourceRefContains}
+        {<<"createdAfter">>, maps:get(<<"createdAfter">>, QueryMap, undefined)},
+        {<<"anomalyClass">>, maps:get(<<"anomalyClass">>, QueryMap, undefined)},
+        {<<"createdBefore">>, maps:get(<<"createdBefore">>, QueryMap, undefined)},
+        {<<"labeled">>, maps:get(<<"labeled">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"sourceRefContains">>, maps:get(<<"sourceRefContains">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -363,11 +390,16 @@ list_dataset_entries(Client, DatasetType, ProjectName, AfterCreationDate, Anomal
 %%
 %% This operation requires permissions to perform the
 %% `lookoutvision:ListModels' operation.
-list_models(Client, ProjectName, MaxResults, NextToken)
+list_models(Client, ProjectName)
   when is_map(Client) ->
-    list_models(Client, ProjectName, MaxResults, NextToken, []).
-list_models(Client, ProjectName, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_models(Client, ProjectName, #{}, #{}).
+
+list_models(Client, ProjectName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_models(Client, ProjectName, QueryMap, HeadersMap, []).
+
+list_models(Client, ProjectName, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/models"],
     SuccessStatusCode = undefined,
 
@@ -375,8 +407,8 @@ list_models(Client, ProjectName, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -386,11 +418,16 @@ list_models(Client, ProjectName, MaxResults, NextToken, Options)
 %%
 %% This operation requires permissions to perform the
 %% `lookoutvision:ListProjects' operation.
-list_projects(Client, MaxResults, NextToken)
+list_projects(Client)
   when is_map(Client) ->
-    list_projects(Client, MaxResults, NextToken, []).
-list_projects(Client, MaxResults, NextToken, Options)
-  when is_map(Client), is_list(Options) ->
+    list_projects(Client, #{}, #{}).
+
+list_projects(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_projects(Client, QueryMap, HeadersMap, []).
+
+list_projects(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-11-20/projects"],
     SuccessStatusCode = undefined,
 
@@ -398,8 +435,8 @@ list_projects(Client, MaxResults, NextToken, Options)
 
     Query0_ =
       [
-        {<<"maxResults">>, MaxResults},
-        {<<"nextToken">>, NextToken}
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -412,9 +449,14 @@ list_projects(Client, MaxResults, NextToken, Options)
 %% `lookoutvision:ListTagsForResource' operation.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-11-20/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 

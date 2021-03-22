@@ -61,81 +61,117 @@
          delete_streaming_distribution/3,
          delete_streaming_distribution/4,
          get_cache_policy/2,
-         get_cache_policy/3,
+         get_cache_policy/4,
+         get_cache_policy/5,
          get_cache_policy_config/2,
-         get_cache_policy_config/3,
+         get_cache_policy_config/4,
+         get_cache_policy_config/5,
          get_cloud_front_origin_access_identity/2,
-         get_cloud_front_origin_access_identity/3,
+         get_cloud_front_origin_access_identity/4,
+         get_cloud_front_origin_access_identity/5,
          get_cloud_front_origin_access_identity_config/2,
-         get_cloud_front_origin_access_identity_config/3,
+         get_cloud_front_origin_access_identity_config/4,
+         get_cloud_front_origin_access_identity_config/5,
          get_distribution/2,
-         get_distribution/3,
+         get_distribution/4,
+         get_distribution/5,
          get_distribution_config/2,
-         get_distribution_config/3,
+         get_distribution_config/4,
+         get_distribution_config/5,
          get_field_level_encryption/2,
-         get_field_level_encryption/3,
+         get_field_level_encryption/4,
+         get_field_level_encryption/5,
          get_field_level_encryption_config/2,
-         get_field_level_encryption_config/3,
+         get_field_level_encryption_config/4,
+         get_field_level_encryption_config/5,
          get_field_level_encryption_profile/2,
-         get_field_level_encryption_profile/3,
+         get_field_level_encryption_profile/4,
+         get_field_level_encryption_profile/5,
          get_field_level_encryption_profile_config/2,
-         get_field_level_encryption_profile_config/3,
+         get_field_level_encryption_profile_config/4,
+         get_field_level_encryption_profile_config/5,
          get_invalidation/3,
-         get_invalidation/4,
+         get_invalidation/5,
+         get_invalidation/6,
          get_key_group/2,
-         get_key_group/3,
+         get_key_group/4,
+         get_key_group/5,
          get_key_group_config/2,
-         get_key_group_config/3,
+         get_key_group_config/4,
+         get_key_group_config/5,
          get_monitoring_subscription/2,
-         get_monitoring_subscription/3,
+         get_monitoring_subscription/4,
+         get_monitoring_subscription/5,
          get_origin_request_policy/2,
-         get_origin_request_policy/3,
+         get_origin_request_policy/4,
+         get_origin_request_policy/5,
          get_origin_request_policy_config/2,
-         get_origin_request_policy_config/3,
+         get_origin_request_policy_config/4,
+         get_origin_request_policy_config/5,
          get_public_key/2,
-         get_public_key/3,
+         get_public_key/4,
+         get_public_key/5,
          get_public_key_config/2,
-         get_public_key_config/3,
+         get_public_key_config/4,
+         get_public_key_config/5,
          get_realtime_log_config/2,
          get_realtime_log_config/3,
          get_streaming_distribution/2,
-         get_streaming_distribution/3,
+         get_streaming_distribution/4,
+         get_streaming_distribution/5,
          get_streaming_distribution_config/2,
-         get_streaming_distribution_config/3,
+         get_streaming_distribution_config/4,
+         get_streaming_distribution_config/5,
+         list_cache_policies/1,
+         list_cache_policies/3,
          list_cache_policies/4,
-         list_cache_policies/5,
+         list_cloud_front_origin_access_identities/1,
          list_cloud_front_origin_access_identities/3,
          list_cloud_front_origin_access_identities/4,
+         list_distributions/1,
          list_distributions/3,
          list_distributions/4,
+         list_distributions_by_cache_policy_id/2,
          list_distributions_by_cache_policy_id/4,
          list_distributions_by_cache_policy_id/5,
+         list_distributions_by_key_group/2,
          list_distributions_by_key_group/4,
          list_distributions_by_key_group/5,
+         list_distributions_by_origin_request_policy_id/2,
          list_distributions_by_origin_request_policy_id/4,
          list_distributions_by_origin_request_policy_id/5,
          list_distributions_by_realtime_log_config/2,
          list_distributions_by_realtime_log_config/3,
+         list_distributions_by_web_acl_id/2,
          list_distributions_by_web_acl_id/4,
          list_distributions_by_web_acl_id/5,
+         list_field_level_encryption_configs/1,
          list_field_level_encryption_configs/3,
          list_field_level_encryption_configs/4,
+         list_field_level_encryption_profiles/1,
          list_field_level_encryption_profiles/3,
          list_field_level_encryption_profiles/4,
+         list_invalidations/2,
          list_invalidations/4,
          list_invalidations/5,
+         list_key_groups/1,
          list_key_groups/3,
          list_key_groups/4,
+         list_origin_request_policies/1,
+         list_origin_request_policies/3,
          list_origin_request_policies/4,
-         list_origin_request_policies/5,
+         list_public_keys/1,
          list_public_keys/3,
          list_public_keys/4,
+         list_realtime_log_configs/1,
          list_realtime_log_configs/3,
          list_realtime_log_configs/4,
+         list_streaming_distributions/1,
          list_streaming_distributions/3,
          list_streaming_distributions/4,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
@@ -974,9 +1010,14 @@ delete_streaming_distribution(Client, Id, Input0, Options) ->
 %% behavior, you can get the identifier using `ListCachePolicies'.
 get_cache_policy(Client, Id)
   when is_map(Client) ->
-    get_cache_policy(Client, Id, []).
-get_cache_policy(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    get_cache_policy(Client, Id, #{}, #{}).
+
+get_cache_policy(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_cache_policy(Client, Id, QueryMap, HeadersMap, []).
+
+get_cache_policy(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-05-31/cache-policy/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
@@ -1011,9 +1052,14 @@ get_cache_policy(Client, Id, Options)
 %% behavior, you can get the identifier using `ListCachePolicies'.
 get_cache_policy_config(Client, Id)
   when is_map(Client) ->
-    get_cache_policy_config(Client, Id, []).
-get_cache_policy_config(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    get_cache_policy_config(Client, Id, #{}, #{}).
+
+get_cache_policy_config(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_cache_policy_config(Client, Id, QueryMap, HeadersMap, []).
+
+get_cache_policy_config(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-05-31/cache-policy/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
 
@@ -1042,9 +1088,14 @@ get_cache_policy_config(Client, Id, Options)
 %% @doc Get the information about an origin access identity.
 get_cloud_front_origin_access_identity(Client, Id)
   when is_map(Client) ->
-    get_cloud_front_origin_access_identity(Client, Id, []).
-get_cloud_front_origin_access_identity(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    get_cloud_front_origin_access_identity(Client, Id, #{}, #{}).
+
+get_cloud_front_origin_access_identity(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_cloud_front_origin_access_identity(Client, Id, QueryMap, HeadersMap, []).
+
+get_cloud_front_origin_access_identity(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-05-31/origin-access-identity/cloudfront/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
@@ -1073,9 +1124,14 @@ get_cloud_front_origin_access_identity(Client, Id, Options)
 %% @doc Get the configuration information about an origin access identity.
 get_cloud_front_origin_access_identity_config(Client, Id)
   when is_map(Client) ->
-    get_cloud_front_origin_access_identity_config(Client, Id, []).
-get_cloud_front_origin_access_identity_config(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    get_cloud_front_origin_access_identity_config(Client, Id, #{}, #{}).
+
+get_cloud_front_origin_access_identity_config(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_cloud_front_origin_access_identity_config(Client, Id, QueryMap, HeadersMap, []).
+
+get_cloud_front_origin_access_identity_config(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-05-31/origin-access-identity/cloudfront/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
 
@@ -1104,9 +1160,14 @@ get_cloud_front_origin_access_identity_config(Client, Id, Options)
 %% @doc Get the information about a distribution.
 get_distribution(Client, Id)
   when is_map(Client) ->
-    get_distribution(Client, Id, []).
-get_distribution(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    get_distribution(Client, Id, #{}, #{}).
+
+get_distribution(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_distribution(Client, Id, QueryMap, HeadersMap, []).
+
+get_distribution(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-05-31/distribution/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
@@ -1135,9 +1196,14 @@ get_distribution(Client, Id, Options)
 %% @doc Get the configuration information about a distribution.
 get_distribution_config(Client, Id)
   when is_map(Client) ->
-    get_distribution_config(Client, Id, []).
-get_distribution_config(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    get_distribution_config(Client, Id, #{}, #{}).
+
+get_distribution_config(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_distribution_config(Client, Id, QueryMap, HeadersMap, []).
+
+get_distribution_config(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-05-31/distribution/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
 
@@ -1166,9 +1232,14 @@ get_distribution_config(Client, Id, Options)
 %% @doc Get the field-level encryption configuration information.
 get_field_level_encryption(Client, Id)
   when is_map(Client) ->
-    get_field_level_encryption(Client, Id, []).
-get_field_level_encryption(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    get_field_level_encryption(Client, Id, #{}, #{}).
+
+get_field_level_encryption(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_field_level_encryption(Client, Id, QueryMap, HeadersMap, []).
+
+get_field_level_encryption(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-05-31/field-level-encryption/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
@@ -1197,9 +1268,14 @@ get_field_level_encryption(Client, Id, Options)
 %% @doc Get the field-level encryption configuration information.
 get_field_level_encryption_config(Client, Id)
   when is_map(Client) ->
-    get_field_level_encryption_config(Client, Id, []).
-get_field_level_encryption_config(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    get_field_level_encryption_config(Client, Id, #{}, #{}).
+
+get_field_level_encryption_config(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_field_level_encryption_config(Client, Id, QueryMap, HeadersMap, []).
+
+get_field_level_encryption_config(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-05-31/field-level-encryption/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
 
@@ -1228,9 +1304,14 @@ get_field_level_encryption_config(Client, Id, Options)
 %% @doc Get the field-level encryption profile information.
 get_field_level_encryption_profile(Client, Id)
   when is_map(Client) ->
-    get_field_level_encryption_profile(Client, Id, []).
-get_field_level_encryption_profile(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    get_field_level_encryption_profile(Client, Id, #{}, #{}).
+
+get_field_level_encryption_profile(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_field_level_encryption_profile(Client, Id, QueryMap, HeadersMap, []).
+
+get_field_level_encryption_profile(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-05-31/field-level-encryption-profile/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
@@ -1259,9 +1340,14 @@ get_field_level_encryption_profile(Client, Id, Options)
 %% @doc Get the field-level encryption profile configuration information.
 get_field_level_encryption_profile_config(Client, Id)
   when is_map(Client) ->
-    get_field_level_encryption_profile_config(Client, Id, []).
-get_field_level_encryption_profile_config(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    get_field_level_encryption_profile_config(Client, Id, #{}, #{}).
+
+get_field_level_encryption_profile_config(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_field_level_encryption_profile_config(Client, Id, QueryMap, HeadersMap, []).
+
+get_field_level_encryption_profile_config(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-05-31/field-level-encryption-profile/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
 
@@ -1290,9 +1376,14 @@ get_field_level_encryption_profile_config(Client, Id, Options)
 %% @doc Get the information about an invalidation.
 get_invalidation(Client, DistributionId, Id)
   when is_map(Client) ->
-    get_invalidation(Client, DistributionId, Id, []).
-get_invalidation(Client, DistributionId, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    get_invalidation(Client, DistributionId, Id, #{}, #{}).
+
+get_invalidation(Client, DistributionId, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_invalidation(Client, DistributionId, Id, QueryMap, HeadersMap, []).
+
+get_invalidation(Client, DistributionId, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-05-31/distribution/", aws_util:encode_uri(DistributionId), "/invalidation/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
@@ -1312,9 +1403,14 @@ get_invalidation(Client, DistributionId, Id, Options)
 %% identifier using `ListKeyGroups'.
 get_key_group(Client, Id)
   when is_map(Client) ->
-    get_key_group(Client, Id, []).
-get_key_group(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    get_key_group(Client, Id, #{}, #{}).
+
+get_key_group(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_key_group(Client, Id, QueryMap, HeadersMap, []).
+
+get_key_group(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-05-31/key-group/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
@@ -1349,9 +1445,14 @@ get_key_group(Client, Id, Options)
 %% behavior, you can get the identifier using `ListKeyGroups'.
 get_key_group_config(Client, Id)
   when is_map(Client) ->
-    get_key_group_config(Client, Id, []).
-get_key_group_config(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    get_key_group_config(Client, Id, #{}, #{}).
+
+get_key_group_config(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_key_group_config(Client, Id, QueryMap, HeadersMap, []).
+
+get_key_group_config(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-05-31/key-group/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
 
@@ -1381,9 +1482,14 @@ get_key_group_config(Client, Id, Options)
 %% enabled for the specified CloudFront distribution.
 get_monitoring_subscription(Client, DistributionId)
   when is_map(Client) ->
-    get_monitoring_subscription(Client, DistributionId, []).
-get_monitoring_subscription(Client, DistributionId, Options)
-  when is_map(Client), is_list(Options) ->
+    get_monitoring_subscription(Client, DistributionId, #{}, #{}).
+
+get_monitoring_subscription(Client, DistributionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_monitoring_subscription(Client, DistributionId, QueryMap, HeadersMap, []).
+
+get_monitoring_subscription(Client, DistributionId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-05-31/distributions/", aws_util:encode_uri(DistributionId), "/monitoring-subscription"],
     SuccessStatusCode = undefined,
 
@@ -1407,9 +1513,14 @@ get_monitoring_subscription(Client, DistributionId, Options)
 %% `ListOriginRequestPolicies'.
 get_origin_request_policy(Client, Id)
   when is_map(Client) ->
-    get_origin_request_policy(Client, Id, []).
-get_origin_request_policy(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    get_origin_request_policy(Client, Id, #{}, #{}).
+
+get_origin_request_policy(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_origin_request_policy(Client, Id, QueryMap, HeadersMap, []).
+
+get_origin_request_policy(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-05-31/origin-request-policy/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
@@ -1445,9 +1556,14 @@ get_origin_request_policy(Client, Id, Options)
 %% `ListOriginRequestPolicies'.
 get_origin_request_policy_config(Client, Id)
   when is_map(Client) ->
-    get_origin_request_policy_config(Client, Id, []).
-get_origin_request_policy_config(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    get_origin_request_policy_config(Client, Id, #{}, #{}).
+
+get_origin_request_policy_config(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_origin_request_policy_config(Client, Id, QueryMap, HeadersMap, []).
+
+get_origin_request_policy_config(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-05-31/origin-request-policy/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
 
@@ -1476,9 +1592,14 @@ get_origin_request_policy_config(Client, Id, Options)
 %% @doc Gets a public key.
 get_public_key(Client, Id)
   when is_map(Client) ->
-    get_public_key(Client, Id, []).
-get_public_key(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    get_public_key(Client, Id, #{}, #{}).
+
+get_public_key(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_public_key(Client, Id, QueryMap, HeadersMap, []).
+
+get_public_key(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-05-31/public-key/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
@@ -1507,9 +1628,14 @@ get_public_key(Client, Id, Options)
 %% @doc Gets a public key configuration.
 get_public_key_config(Client, Id)
   when is_map(Client) ->
-    get_public_key_config(Client, Id, []).
-get_public_key_config(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    get_public_key_config(Client, Id, #{}, #{}).
+
+get_public_key_config(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_public_key_config(Client, Id, QueryMap, HeadersMap, []).
+
+get_public_key_config(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-05-31/public-key/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
 
@@ -1560,9 +1686,14 @@ get_realtime_log_config(Client, Input0, Options) ->
 %% distribution configuration.
 get_streaming_distribution(Client, Id)
   when is_map(Client) ->
-    get_streaming_distribution(Client, Id, []).
-get_streaming_distribution(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    get_streaming_distribution(Client, Id, #{}, #{}).
+
+get_streaming_distribution(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_streaming_distribution(Client, Id, QueryMap, HeadersMap, []).
+
+get_streaming_distribution(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-05-31/streaming-distribution/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
 
@@ -1591,9 +1722,14 @@ get_streaming_distribution(Client, Id, Options)
 %% @doc Get the configuration information about a streaming distribution.
 get_streaming_distribution_config(Client, Id)
   when is_map(Client) ->
-    get_streaming_distribution_config(Client, Id, []).
-get_streaming_distribution_config(Client, Id, Options)
-  when is_map(Client), is_list(Options) ->
+    get_streaming_distribution_config(Client, Id, #{}, #{}).
+
+get_streaming_distribution_config(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_streaming_distribution_config(Client, Id, QueryMap, HeadersMap, []).
+
+get_streaming_distribution_config(Client, Id, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-05-31/streaming-distribution/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
 
@@ -1630,11 +1766,16 @@ get_streaming_distribution_config(Client, Id, Options)
 %% get the next page of items, send a subsequent request that specifies the
 %% `NextMarker' value from the current response as the `Marker' value in the
 %% subsequent request.
-list_cache_policies(Client, Marker, MaxItems, Type)
+list_cache_policies(Client)
   when is_map(Client) ->
-    list_cache_policies(Client, Marker, MaxItems, Type, []).
-list_cache_policies(Client, Marker, MaxItems, Type, Options)
-  when is_map(Client), is_list(Options) ->
+    list_cache_policies(Client, #{}, #{}).
+
+list_cache_policies(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_cache_policies(Client, QueryMap, HeadersMap, []).
+
+list_cache_policies(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-05-31/cache-policy"],
     SuccessStatusCode = undefined,
 
@@ -1642,20 +1783,25 @@ list_cache_policies(Client, Marker, MaxItems, Type, Options)
 
     Query0_ =
       [
-        {<<"Marker">>, Marker},
-        {<<"MaxItems">>, MaxItems},
-        {<<"Type">>, Type}
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)},
+        {<<"Type">>, maps:get(<<"Type">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists origin access identities.
-list_cloud_front_origin_access_identities(Client, Marker, MaxItems)
+list_cloud_front_origin_access_identities(Client)
   when is_map(Client) ->
-    list_cloud_front_origin_access_identities(Client, Marker, MaxItems, []).
-list_cloud_front_origin_access_identities(Client, Marker, MaxItems, Options)
-  when is_map(Client), is_list(Options) ->
+    list_cloud_front_origin_access_identities(Client, #{}, #{}).
+
+list_cloud_front_origin_access_identities(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_cloud_front_origin_access_identities(Client, QueryMap, HeadersMap, []).
+
+list_cloud_front_origin_access_identities(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-05-31/origin-access-identity/cloudfront"],
     SuccessStatusCode = undefined,
 
@@ -1663,19 +1809,24 @@ list_cloud_front_origin_access_identities(Client, Marker, MaxItems, Options)
 
     Query0_ =
       [
-        {<<"Marker">>, Marker},
-        {<<"MaxItems">>, MaxItems}
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List CloudFront distributions.
-list_distributions(Client, Marker, MaxItems)
+list_distributions(Client)
   when is_map(Client) ->
-    list_distributions(Client, Marker, MaxItems, []).
-list_distributions(Client, Marker, MaxItems, Options)
-  when is_map(Client), is_list(Options) ->
+    list_distributions(Client, #{}, #{}).
+
+list_distributions(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_distributions(Client, QueryMap, HeadersMap, []).
+
+list_distributions(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-05-31/distribution"],
     SuccessStatusCode = undefined,
 
@@ -1683,8 +1834,8 @@ list_distributions(Client, Marker, MaxItems, Options)
 
     Query0_ =
       [
-        {<<"Marker">>, Marker},
-        {<<"MaxItems">>, MaxItems}
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1699,11 +1850,16 @@ list_distributions(Client, Marker, MaxItems, Options)
 %% get the next page of items, send a subsequent request that specifies the
 %% `NextMarker' value from the current response as the `Marker' value in the
 %% subsequent request.
-list_distributions_by_cache_policy_id(Client, CachePolicyId, Marker, MaxItems)
+list_distributions_by_cache_policy_id(Client, CachePolicyId)
   when is_map(Client) ->
-    list_distributions_by_cache_policy_id(Client, CachePolicyId, Marker, MaxItems, []).
-list_distributions_by_cache_policy_id(Client, CachePolicyId, Marker, MaxItems, Options)
-  when is_map(Client), is_list(Options) ->
+    list_distributions_by_cache_policy_id(Client, CachePolicyId, #{}, #{}).
+
+list_distributions_by_cache_policy_id(Client, CachePolicyId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_distributions_by_cache_policy_id(Client, CachePolicyId, QueryMap, HeadersMap, []).
+
+list_distributions_by_cache_policy_id(Client, CachePolicyId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-05-31/distributionsByCachePolicyId/", aws_util:encode_uri(CachePolicyId), ""],
     SuccessStatusCode = undefined,
 
@@ -1711,8 +1867,8 @@ list_distributions_by_cache_policy_id(Client, CachePolicyId, Marker, MaxItems, O
 
     Query0_ =
       [
-        {<<"Marker">>, Marker},
-        {<<"MaxItems">>, MaxItems}
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1727,11 +1883,16 @@ list_distributions_by_cache_policy_id(Client, CachePolicyId, Marker, MaxItems, O
 %% get the next page of items, send a subsequent request that specifies the
 %% `NextMarker' value from the current response as the `Marker' value in the
 %% subsequent request.
-list_distributions_by_key_group(Client, KeyGroupId, Marker, MaxItems)
+list_distributions_by_key_group(Client, KeyGroupId)
   when is_map(Client) ->
-    list_distributions_by_key_group(Client, KeyGroupId, Marker, MaxItems, []).
-list_distributions_by_key_group(Client, KeyGroupId, Marker, MaxItems, Options)
-  when is_map(Client), is_list(Options) ->
+    list_distributions_by_key_group(Client, KeyGroupId, #{}, #{}).
+
+list_distributions_by_key_group(Client, KeyGroupId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_distributions_by_key_group(Client, KeyGroupId, QueryMap, HeadersMap, []).
+
+list_distributions_by_key_group(Client, KeyGroupId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-05-31/distributionsByKeyGroupId/", aws_util:encode_uri(KeyGroupId), ""],
     SuccessStatusCode = undefined,
 
@@ -1739,8 +1900,8 @@ list_distributions_by_key_group(Client, KeyGroupId, Marker, MaxItems, Options)
 
     Query0_ =
       [
-        {<<"Marker">>, Marker},
-        {<<"MaxItems">>, MaxItems}
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1755,11 +1916,16 @@ list_distributions_by_key_group(Client, KeyGroupId, Marker, MaxItems, Options)
 %% get the next page of items, send a subsequent request that specifies the
 %% `NextMarker' value from the current response as the `Marker' value in the
 %% subsequent request.
-list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, Marker, MaxItems)
+list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId)
   when is_map(Client) ->
-    list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, Marker, MaxItems, []).
-list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, Marker, MaxItems, Options)
-  when is_map(Client), is_list(Options) ->
+    list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, #{}, #{}).
+
+list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, QueryMap, HeadersMap, []).
+
+list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-05-31/distributionsByOriginRequestPolicyId/", aws_util:encode_uri(OriginRequestPolicyId), ""],
     SuccessStatusCode = undefined,
 
@@ -1767,8 +1933,8 @@ list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, Ma
 
     Query0_ =
       [
-        {<<"Marker">>, Marker},
-        {<<"MaxItems">>, MaxItems}
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1805,11 +1971,16 @@ list_distributions_by_realtime_log_config(Client, Input0, Options) ->
 
 %% @doc List the distributions that are associated with a specified AWS WAF
 %% web ACL.
-list_distributions_by_web_acl_id(Client, WebACLId, Marker, MaxItems)
+list_distributions_by_web_acl_id(Client, WebACLId)
   when is_map(Client) ->
-    list_distributions_by_web_acl_id(Client, WebACLId, Marker, MaxItems, []).
-list_distributions_by_web_acl_id(Client, WebACLId, Marker, MaxItems, Options)
-  when is_map(Client), is_list(Options) ->
+    list_distributions_by_web_acl_id(Client, WebACLId, #{}, #{}).
+
+list_distributions_by_web_acl_id(Client, WebACLId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_distributions_by_web_acl_id(Client, WebACLId, QueryMap, HeadersMap, []).
+
+list_distributions_by_web_acl_id(Client, WebACLId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-05-31/distributionsByWebACLId/", aws_util:encode_uri(WebACLId), ""],
     SuccessStatusCode = undefined,
 
@@ -1817,8 +1988,8 @@ list_distributions_by_web_acl_id(Client, WebACLId, Marker, MaxItems, Options)
 
     Query0_ =
       [
-        {<<"Marker">>, Marker},
-        {<<"MaxItems">>, MaxItems}
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1826,11 +1997,16 @@ list_distributions_by_web_acl_id(Client, WebACLId, Marker, MaxItems, Options)
 
 %% @doc List all field-level encryption configurations that have been created
 %% in CloudFront for this account.
-list_field_level_encryption_configs(Client, Marker, MaxItems)
+list_field_level_encryption_configs(Client)
   when is_map(Client) ->
-    list_field_level_encryption_configs(Client, Marker, MaxItems, []).
-list_field_level_encryption_configs(Client, Marker, MaxItems, Options)
-  when is_map(Client), is_list(Options) ->
+    list_field_level_encryption_configs(Client, #{}, #{}).
+
+list_field_level_encryption_configs(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_field_level_encryption_configs(Client, QueryMap, HeadersMap, []).
+
+list_field_level_encryption_configs(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-05-31/field-level-encryption"],
     SuccessStatusCode = undefined,
 
@@ -1838,8 +2014,8 @@ list_field_level_encryption_configs(Client, Marker, MaxItems, Options)
 
     Query0_ =
       [
-        {<<"Marker">>, Marker},
-        {<<"MaxItems">>, MaxItems}
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1847,11 +2023,16 @@ list_field_level_encryption_configs(Client, Marker, MaxItems, Options)
 
 %% @doc Request a list of field-level encryption profiles that have been
 %% created in CloudFront for this account.
-list_field_level_encryption_profiles(Client, Marker, MaxItems)
+list_field_level_encryption_profiles(Client)
   when is_map(Client) ->
-    list_field_level_encryption_profiles(Client, Marker, MaxItems, []).
-list_field_level_encryption_profiles(Client, Marker, MaxItems, Options)
-  when is_map(Client), is_list(Options) ->
+    list_field_level_encryption_profiles(Client, #{}, #{}).
+
+list_field_level_encryption_profiles(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_field_level_encryption_profiles(Client, QueryMap, HeadersMap, []).
+
+list_field_level_encryption_profiles(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-05-31/field-level-encryption-profile"],
     SuccessStatusCode = undefined,
 
@@ -1859,19 +2040,24 @@ list_field_level_encryption_profiles(Client, Marker, MaxItems, Options)
 
     Query0_ =
       [
-        {<<"Marker">>, Marker},
-        {<<"MaxItems">>, MaxItems}
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists invalidation batches.
-list_invalidations(Client, DistributionId, Marker, MaxItems)
+list_invalidations(Client, DistributionId)
   when is_map(Client) ->
-    list_invalidations(Client, DistributionId, Marker, MaxItems, []).
-list_invalidations(Client, DistributionId, Marker, MaxItems, Options)
-  when is_map(Client), is_list(Options) ->
+    list_invalidations(Client, DistributionId, #{}, #{}).
+
+list_invalidations(Client, DistributionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_invalidations(Client, DistributionId, QueryMap, HeadersMap, []).
+
+list_invalidations(Client, DistributionId, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-05-31/distribution/", aws_util:encode_uri(DistributionId), "/invalidation"],
     SuccessStatusCode = undefined,
 
@@ -1879,8 +2065,8 @@ list_invalidations(Client, DistributionId, Marker, MaxItems, Options)
 
     Query0_ =
       [
-        {<<"Marker">>, Marker},
-        {<<"MaxItems">>, MaxItems}
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1894,11 +2080,16 @@ list_invalidations(Client, DistributionId, Marker, MaxItems, Options)
 %% get the next page of items, send a subsequent request that specifies the
 %% `NextMarker' value from the current response as the `Marker' value in the
 %% subsequent request.
-list_key_groups(Client, Marker, MaxItems)
+list_key_groups(Client)
   when is_map(Client) ->
-    list_key_groups(Client, Marker, MaxItems, []).
-list_key_groups(Client, Marker, MaxItems, Options)
-  when is_map(Client), is_list(Options) ->
+    list_key_groups(Client, #{}, #{}).
+
+list_key_groups(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_key_groups(Client, QueryMap, HeadersMap, []).
+
+list_key_groups(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-05-31/key-group"],
     SuccessStatusCode = undefined,
 
@@ -1906,8 +2097,8 @@ list_key_groups(Client, Marker, MaxItems, Options)
 
     Query0_ =
       [
-        {<<"Marker">>, Marker},
-        {<<"MaxItems">>, MaxItems}
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1924,11 +2115,16 @@ list_key_groups(Client, Marker, MaxItems, Options)
 %% get the next page of items, send a subsequent request that specifies the
 %% `NextMarker' value from the current response as the `Marker' value in the
 %% subsequent request.
-list_origin_request_policies(Client, Marker, MaxItems, Type)
+list_origin_request_policies(Client)
   when is_map(Client) ->
-    list_origin_request_policies(Client, Marker, MaxItems, Type, []).
-list_origin_request_policies(Client, Marker, MaxItems, Type, Options)
-  when is_map(Client), is_list(Options) ->
+    list_origin_request_policies(Client, #{}, #{}).
+
+list_origin_request_policies(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_origin_request_policies(Client, QueryMap, HeadersMap, []).
+
+list_origin_request_policies(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-05-31/origin-request-policy"],
     SuccessStatusCode = undefined,
 
@@ -1936,9 +2132,9 @@ list_origin_request_policies(Client, Marker, MaxItems, Type, Options)
 
     Query0_ =
       [
-        {<<"Marker">>, Marker},
-        {<<"MaxItems">>, MaxItems},
-        {<<"Type">>, Type}
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)},
+        {<<"Type">>, maps:get(<<"Type">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1946,11 +2142,16 @@ list_origin_request_policies(Client, Marker, MaxItems, Type, Options)
 
 %% @doc List all public keys that have been added to CloudFront for this
 %% account.
-list_public_keys(Client, Marker, MaxItems)
+list_public_keys(Client)
   when is_map(Client) ->
-    list_public_keys(Client, Marker, MaxItems, []).
-list_public_keys(Client, Marker, MaxItems, Options)
-  when is_map(Client), is_list(Options) ->
+    list_public_keys(Client, #{}, #{}).
+
+list_public_keys(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_public_keys(Client, QueryMap, HeadersMap, []).
+
+list_public_keys(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-05-31/public-key"],
     SuccessStatusCode = undefined,
 
@@ -1958,8 +2159,8 @@ list_public_keys(Client, Marker, MaxItems, Options)
 
     Query0_ =
       [
-        {<<"Marker">>, Marker},
-        {<<"MaxItems">>, MaxItems}
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1973,11 +2174,16 @@ list_public_keys(Client, Marker, MaxItems, Options)
 %% get the next page of items, send a subsequent request that specifies the
 %% `NextMarker' value from the current response as the `Marker' value in the
 %% subsequent request.
-list_realtime_log_configs(Client, Marker, MaxItems)
+list_realtime_log_configs(Client)
   when is_map(Client) ->
-    list_realtime_log_configs(Client, Marker, MaxItems, []).
-list_realtime_log_configs(Client, Marker, MaxItems, Options)
-  when is_map(Client), is_list(Options) ->
+    list_realtime_log_configs(Client, #{}, #{}).
+
+list_realtime_log_configs(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_realtime_log_configs(Client, QueryMap, HeadersMap, []).
+
+list_realtime_log_configs(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-05-31/realtime-log-config"],
     SuccessStatusCode = undefined,
 
@@ -1985,19 +2191,24 @@ list_realtime_log_configs(Client, Marker, MaxItems, Options)
 
     Query0_ =
       [
-        {<<"Marker">>, Marker},
-        {<<"MaxItems">>, MaxItems}
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List streaming distributions.
-list_streaming_distributions(Client, Marker, MaxItems)
+list_streaming_distributions(Client)
   when is_map(Client) ->
-    list_streaming_distributions(Client, Marker, MaxItems, []).
-list_streaming_distributions(Client, Marker, MaxItems, Options)
-  when is_map(Client), is_list(Options) ->
+    list_streaming_distributions(Client, #{}, #{}).
+
+list_streaming_distributions(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_streaming_distributions(Client, QueryMap, HeadersMap, []).
+
+list_streaming_distributions(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-05-31/streaming-distribution"],
     SuccessStatusCode = undefined,
 
@@ -2005,8 +2216,8 @@ list_streaming_distributions(Client, Marker, MaxItems, Options)
 
     Query0_ =
       [
-        {<<"Marker">>, Marker},
-        {<<"MaxItems">>, MaxItems}
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -2015,9 +2226,14 @@ list_streaming_distributions(Client, Marker, MaxItems, Options)
 %% @doc List tags for a CloudFront resource.
 list_tags_for_resource(Client, Resource)
   when is_map(Client) ->
-    list_tags_for_resource(Client, Resource, []).
-list_tags_for_resource(Client, Resource, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, Resource, #{}, #{}).
+
+list_tags_for_resource(Client, Resource, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, Resource, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, Resource, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/2020-05-31/tagging"],
     SuccessStatusCode = undefined,
 

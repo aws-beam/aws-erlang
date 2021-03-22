@@ -7,11 +7,13 @@
 -export([describe_accelerator_offerings/2,
          describe_accelerator_offerings/3,
          describe_accelerator_types/1,
-         describe_accelerator_types/2,
+         describe_accelerator_types/3,
+         describe_accelerator_types/4,
          describe_accelerators/2,
          describe_accelerators/3,
          list_tags_for_resource/2,
-         list_tags_for_resource/3,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -44,9 +46,14 @@ describe_accelerator_offerings(Client, Input0, Options) ->
 %% as their characteristics, such as memory and throughput.
 describe_accelerator_types(Client)
   when is_map(Client) ->
-    describe_accelerator_types(Client, []).
-describe_accelerator_types(Client, Options)
-  when is_map(Client), is_list(Options) ->
+    describe_accelerator_types(Client, #{}, #{}).
+
+describe_accelerator_types(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_accelerator_types(Client, QueryMap, HeadersMap, []).
+
+describe_accelerator_types(Client, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/describe-accelerator-types"],
     SuccessStatusCode = undefined,
 
@@ -76,9 +83,14 @@ describe_accelerators(Client, Input0, Options) ->
 %% @doc Returns all tags of an Elastic Inference Accelerator.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, []).
-list_tags_for_resource(Client, ResourceArn, Options)
-  when is_map(Client), is_list(Options) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
 
