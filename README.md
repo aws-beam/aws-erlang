@@ -32,13 +32,13 @@ how to upload a file to _S3_ and how to fetch it back:
 
 ```erlang
 > Client = aws_client:make_temporary_client(<<"my-access-key-id">>, <<"my-secret-access-key">>, <<"my-token">>, <<"eu-west-1">>).
-
+[...]
 > {ok, Content} = file:read_file("/tmp/erlang-logo.png").
-
+[...]
 > aws_s3:put_object(Client, <<"my-bucket">>, <<"my-key">>, #{<<"Body">> => Content}).
-
+[...]
 > {ok, Response, _} = aws_s3:get_object(Client, <<"my-bucket">>, <<"my-key">>).
-
+[...]
 > Content = maps:get(<<"Body">>, Response).
 ```
 
@@ -64,8 +64,11 @@ Here is an example on how to obtain credentials:
 
 ```erlang
 > Credentials = aws_credentials:get_credentials().
-
-> #{access_key_id := AccessKeyId, token := Token, region := Region, secret_access_key := SecretAccessKey} = Credentials.
+[...]
+> #{ access_key_id := AccessKeyId
+   , token := Token
+   , region := Region
+   , secret_access_key := SecretAccessKey } = Credentials.
 ```
 
 The `aws_credentials` application can be installed by adding the following to your `rebar.config`:
@@ -84,7 +87,7 @@ The rest of the code is manually written and used as support for the generated c
 
 Online:
 
-* [Hex Docs|https://hexdocs.pm/aws_erlang/]
+* [Hex Docs](https://hexdocs.pm/aws_erlang/)
 
 Locally:
 
