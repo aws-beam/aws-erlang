@@ -52,10 +52,14 @@
 %% received a claim code with the device(s).
 claim_devices_by_claim_code(Client, ClaimCode, Input) ->
     claim_devices_by_claim_code(Client, ClaimCode, Input, []).
-claim_devices_by_claim_code(Client, ClaimCode, Input0, Options) ->
+claim_devices_by_claim_code(Client, ClaimCode, Input0, Options0) ->
     Method = put,
     Path = ["/claims/", aws_util:encode_uri(ClaimCode), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -76,10 +80,13 @@ describe_device(Client, DeviceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_device(Client, DeviceId, QueryMap, HeadersMap, []).
 
-describe_device(Client, DeviceId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_device(Client, DeviceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/devices/", aws_util:encode_uri(DeviceId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -96,10 +103,14 @@ describe_device(Client, DeviceId, QueryMap, HeadersMap, Options)
 %% be published by simply clicking the device.
 finalize_device_claim(Client, DeviceId, Input) ->
     finalize_device_claim(Client, DeviceId, Input, []).
-finalize_device_claim(Client, DeviceId, Input0, Options) ->
+finalize_device_claim(Client, DeviceId, Input0, Options0) ->
     Method = put,
     Path = ["/devices/", aws_util:encode_uri(DeviceId), "/finalize-claim"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -119,10 +130,13 @@ get_device_methods(Client, DeviceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_device_methods(Client, DeviceId, QueryMap, HeadersMap, []).
 
-get_device_methods(Client, DeviceId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_device_methods(Client, DeviceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/devices/", aws_util:encode_uri(DeviceId), "/methods"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -139,10 +153,14 @@ get_device_methods(Client, DeviceId, QueryMap, HeadersMap, Options)
 %% be published by simply clicking the device.
 initiate_device_claim(Client, DeviceId, Input) ->
     initiate_device_claim(Client, DeviceId, Input, []).
-initiate_device_claim(Client, DeviceId, Input0, Options) ->
+initiate_device_claim(Client, DeviceId, Input0, Options0) ->
     Method = put,
     Path = ["/devices/", aws_util:encode_uri(DeviceId), "/initiate-claim"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -159,10 +177,14 @@ initiate_device_claim(Client, DeviceId, Input0, Options) ->
 %% See the "Example POST" code snippet below.
 invoke_device_method(Client, DeviceId, Input) ->
     invoke_device_method(Client, DeviceId, Input, []).
-invoke_device_method(Client, DeviceId, Input0, Options) ->
+invoke_device_method(Client, DeviceId, Input0, Options0) ->
     Method = post,
     Path = ["/devices/", aws_util:encode_uri(DeviceId), "/methods"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -183,10 +205,13 @@ list_device_events(Client, DeviceId, FromTimeStamp, ToTimeStamp, QueryMap, Heade
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_device_events(Client, DeviceId, FromTimeStamp, ToTimeStamp, QueryMap, HeadersMap, []).
 
-list_device_events(Client, DeviceId, FromTimeStamp, ToTimeStamp, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_device_events(Client, DeviceId, FromTimeStamp, ToTimeStamp, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/devices/", aws_util:encode_uri(DeviceId), "/events"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -211,10 +236,13 @@ list_devices(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_devices(Client, QueryMap, HeadersMap, []).
 
-list_devices(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_devices(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/devices"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -237,10 +265,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -255,10 +286,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
 %% resource.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
-tag_resource(Client, ResourceArn, Input0, Options) ->
+tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -271,10 +306,14 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Disassociates a device from your AWS account using its device ID.
 unclaim_device(Client, DeviceId, Input) ->
     unclaim_device(Client, DeviceId, Input, []).
-unclaim_device(Client, DeviceId, Input0, Options) ->
+unclaim_device(Client, DeviceId, Input0, Options0) ->
     Method = put,
     Path = ["/devices/", aws_util:encode_uri(DeviceId), "/unclaim"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -289,10 +328,14 @@ unclaim_device(Client, DeviceId, Input0, Options) ->
 %% resource ARN.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
-untag_resource(Client, ResourceArn, Input0, Options) ->
+untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -307,10 +350,14 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 %% enables or disables the device given a device ID.
 update_device_state(Client, DeviceId, Input) ->
     update_device_state(Client, DeviceId, Input, []).
-update_device_state(Client, DeviceId, Input0, Options) ->
+update_device_state(Client, DeviceId, Input0, Options0) ->
     Method = put,
     Path = ["/devices/", aws_util:encode_uri(DeviceId), "/state"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -342,19 +389,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -364,14 +412,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

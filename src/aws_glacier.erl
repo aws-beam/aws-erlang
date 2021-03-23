@@ -144,10 +144,14 @@
 %% Glacier Developer Guide.
 abort_multipart_upload(Client, AccountId, UploadId, VaultName, Input) ->
     abort_multipart_upload(Client, AccountId, UploadId, VaultName, Input, []).
-abort_multipart_upload(Client, AccountId, UploadId, VaultName, Input0, Options) ->
+abort_multipart_upload(Client, AccountId, UploadId, VaultName, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/multipart-uploads/", aws_util:encode_uri(UploadId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -177,10 +181,14 @@ abort_multipart_upload(Client, AccountId, UploadId, VaultName, Input0, Options) 
 %% is no policy associated with the vault.
 abort_vault_lock(Client, AccountId, VaultName, Input) ->
     abort_vault_lock(Client, AccountId, VaultName, Input, []).
-abort_vault_lock(Client, AccountId, VaultName, Input0, Options) ->
+abort_vault_lock(Client, AccountId, VaultName, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/lock-policy"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -200,10 +208,14 @@ abort_vault_lock(Client, AccountId, VaultName, Input0, Options) ->
 %% Amazon S3 Glacier Resources.
 add_tags_to_vault(Client, AccountId, VaultName, Input) ->
     add_tags_to_vault(Client, AccountId, VaultName, Input, []).
-add_tags_to_vault(Client, AccountId, VaultName, Input0, Options) ->
+add_tags_to_vault(Client, AccountId, VaultName, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/tags?operation=add"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -260,10 +272,14 @@ add_tags_to_vault(Client, AccountId, VaultName, Input0, Options) ->
 %% Amazon Glacier Developer Guide.
 complete_multipart_upload(Client, AccountId, UploadId, VaultName, Input) ->
     complete_multipart_upload(Client, AccountId, UploadId, VaultName, Input, []).
-complete_multipart_upload(Client, AccountId, UploadId, VaultName, Input0, Options) ->
+complete_multipart_upload(Client, AccountId, UploadId, VaultName, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/multipart-uploads/", aws_util:encode_uri(UploadId), ""],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-archive-size">>, <<"archiveSize">>},
@@ -314,10 +330,14 @@ complete_multipart_upload(Client, AccountId, UploadId, VaultName, Input0, Option
 %% error.
 complete_vault_lock(Client, AccountId, LockId, VaultName, Input) ->
     complete_vault_lock(Client, AccountId, LockId, VaultName, Input, []).
-complete_vault_lock(Client, AccountId, LockId, VaultName, Input0, Options) ->
+complete_vault_lock(Client, AccountId, LockId, VaultName, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/lock-policy/", aws_util:encode_uri(LockId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -352,10 +372,14 @@ complete_vault_lock(Client, AccountId, LockId, VaultName, Input0, Options) ->
 %% in Amazon Glacier and Create Vault in the Amazon Glacier Developer Guide.
 create_vault(Client, AccountId, VaultName, Input) ->
     create_vault(Client, AccountId, VaultName, Input, []).
-create_vault(Client, AccountId, VaultName, Input0, Options) ->
+create_vault(Client, AccountId, VaultName, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), ""],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -409,10 +433,14 @@ create_vault(Client, AccountId, VaultName, Input0, Options) ->
 %% Developer Guide.
 delete_archive(Client, AccountId, ArchiveId, VaultName, Input) ->
     delete_archive(Client, AccountId, ArchiveId, VaultName, Input, []).
-delete_archive(Client, AccountId, ArchiveId, VaultName, Input0, Options) ->
+delete_archive(Client, AccountId, ArchiveId, VaultName, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/archives/", aws_util:encode_uri(ArchiveId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -447,10 +475,14 @@ delete_archive(Client, AccountId, ArchiveId, VaultName, Input0, Options) ->
 %% Guide.
 delete_vault(Client, AccountId, VaultName, Input) ->
     delete_vault(Client, AccountId, VaultName, Input, []).
-delete_vault(Client, AccountId, VaultName, Input0, Options) ->
+delete_vault(Client, AccountId, VaultName, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -474,10 +506,14 @@ delete_vault(Client, AccountId, VaultName, Input0, Options) ->
 %% Access Policies.
 delete_vault_access_policy(Client, AccountId, VaultName, Input) ->
     delete_vault_access_policy(Client, AccountId, VaultName, Input, []).
-delete_vault_access_policy(Client, AccountId, VaultName, Input0, Options) ->
+delete_vault_access_policy(Client, AccountId, VaultName, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/access-policy"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -506,10 +542,14 @@ delete_vault_access_policy(Client, AccountId, VaultName, Input0, Options) ->
 %% Configuration in the Amazon S3 Glacier Developer Guide.
 delete_vault_notifications(Client, AccountId, VaultName, Input) ->
     delete_vault_notifications(Client, AccountId, VaultName, Input, []).
-delete_vault_notifications(Client, AccountId, VaultName, Input0, Options) ->
+delete_vault_notifications(Client, AccountId, VaultName, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/notification-configuration"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -551,10 +591,13 @@ describe_job(Client, AccountId, JobId, VaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_job(Client, AccountId, JobId, VaultName, QueryMap, HeadersMap, []).
 
-describe_job(Client, AccountId, JobId, VaultName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_job(Client, AccountId, JobId, VaultName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -592,10 +635,13 @@ describe_vault(Client, AccountId, VaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_vault(Client, AccountId, VaultName, QueryMap, HeadersMap, []).
 
-describe_vault(Client, AccountId, VaultName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_vault(Client, AccountId, VaultName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -616,10 +662,13 @@ get_data_retrieval_policy(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_data_retrieval_policy(Client, AccountId, QueryMap, HeadersMap, []).
 
-get_data_retrieval_policy(Client, AccountId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_data_retrieval_policy(Client, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/policies/data-retrieval"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -680,10 +729,13 @@ get_job_output(Client, AccountId, JobId, VaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_job_output(Client, AccountId, JobId, VaultName, QueryMap, HeadersMap, []).
 
-get_job_output(Client, AccountId, JobId, VaultName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_job_output(Client, AccountId, JobId, VaultName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/jobs/", aws_util:encode_uri(JobId), "/output"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -730,10 +782,13 @@ get_vault_access_policy(Client, AccountId, VaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_vault_access_policy(Client, AccountId, VaultName, QueryMap, HeadersMap, []).
 
-get_vault_access_policy(Client, AccountId, VaultName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_vault_access_policy(Client, AccountId, VaultName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/access-policy"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -772,10 +827,13 @@ get_vault_lock(Client, AccountId, VaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_vault_lock(Client, AccountId, VaultName, QueryMap, HeadersMap, []).
 
-get_vault_lock(Client, AccountId, VaultName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_vault_lock(Client, AccountId, VaultName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/lock-policy"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -809,10 +867,13 @@ get_vault_notifications(Client, AccountId, VaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_vault_notifications(Client, AccountId, VaultName, QueryMap, HeadersMap, []).
 
-get_vault_notifications(Client, AccountId, VaultName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_vault_notifications(Client, AccountId, VaultName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/notification-configuration"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -827,10 +888,14 @@ get_vault_notifications(Client, AccountId, VaultName, QueryMap, HeadersMap, Opti
 %% the underlying REST API Initiate a Job.
 initiate_job(Client, AccountId, VaultName, Input) ->
     initiate_job(Client, AccountId, VaultName, Input, []).
-initiate_job(Client, AccountId, VaultName, Input0, Options) ->
+initiate_job(Client, AccountId, VaultName, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/jobs"],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -896,10 +961,14 @@ initiate_job(Client, AccountId, VaultName, Input0, Options) ->
 %% Amazon Glacier Developer Guide.
 initiate_multipart_upload(Client, AccountId, VaultName, Input) ->
     initiate_multipart_upload(Client, AccountId, VaultName, Input, []).
-initiate_multipart_upload(Client, AccountId, VaultName, Input0, Options) ->
+initiate_multipart_upload(Client, AccountId, VaultName, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/multipart-uploads"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-archive-description">>, <<"archiveDescription">>},
@@ -963,10 +1032,14 @@ initiate_multipart_upload(Client, AccountId, VaultName, Input0, Options) ->
 %% before you can initiate a new vault lock policy.
 initiate_vault_lock(Client, AccountId, VaultName, Input) ->
     initiate_vault_lock(Client, AccountId, VaultName, Input, []).
-initiate_vault_lock(Client, AccountId, VaultName, Input0, Options) ->
+initiate_vault_lock(Client, AccountId, VaultName, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/lock-policy"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1038,10 +1111,13 @@ list_jobs(Client, AccountId, VaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_jobs(Client, AccountId, VaultName, QueryMap, HeadersMap, []).
 
-list_jobs(Client, AccountId, VaultName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_jobs(Client, AccountId, VaultName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/jobs"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1096,10 +1172,13 @@ list_multipart_uploads(Client, AccountId, VaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_multipart_uploads(Client, AccountId, VaultName, QueryMap, HeadersMap, []).
 
-list_multipart_uploads(Client, AccountId, VaultName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_multipart_uploads(Client, AccountId, VaultName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/multipart-uploads"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1146,10 +1225,13 @@ list_parts(Client, AccountId, UploadId, VaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_parts(Client, AccountId, UploadId, VaultName, QueryMap, HeadersMap, []).
 
-list_parts(Client, AccountId, UploadId, VaultName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_parts(Client, AccountId, UploadId, VaultName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/multipart-uploads/", aws_util:encode_uri(UploadId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1172,10 +1254,13 @@ list_provisioned_capacity(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_provisioned_capacity(Client, AccountId, QueryMap, HeadersMap, []).
 
-list_provisioned_capacity(Client, AccountId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_provisioned_capacity(Client, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/provisioned-capacity"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1195,10 +1280,13 @@ list_tags_for_vault(Client, AccountId, VaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_vault(Client, AccountId, VaultName, QueryMap, HeadersMap, []).
 
-list_tags_for_vault(Client, AccountId, VaultName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_vault(Client, AccountId, VaultName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/tags"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1236,10 +1324,13 @@ list_vaults(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_vaults(Client, AccountId, QueryMap, HeadersMap, []).
 
-list_vaults(Client, AccountId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_vaults(Client, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1256,10 +1347,14 @@ list_vaults(Client, AccountId, QueryMap, HeadersMap, Options)
 %% account.
 purchase_provisioned_capacity(Client, AccountId, Input) ->
     purchase_provisioned_capacity(Client, AccountId, Input, []).
-purchase_provisioned_capacity(Client, AccountId, Input0, Options) ->
+purchase_provisioned_capacity(Client, AccountId, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(AccountId), "/provisioned-capacity"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1293,10 +1388,14 @@ purchase_provisioned_capacity(Client, AccountId, Input0, Options) ->
 %% there are no tags attached to the vault.
 remove_tags_from_vault(Client, AccountId, VaultName, Input) ->
     remove_tags_from_vault(Client, AccountId, VaultName, Input, []).
-remove_tags_from_vault(Client, AccountId, VaultName, Input0, Options) ->
+remove_tags_from_vault(Client, AccountId, VaultName, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/tags?operation=remove"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1317,10 +1416,14 @@ remove_tags_from_vault(Client, AccountId, VaultName, Input0, Options) ->
 %% retrieval policies, see Amazon Glacier Data Retrieval Policies.
 set_data_retrieval_policy(Client, AccountId, Input) ->
     set_data_retrieval_policy(Client, AccountId, Input, []).
-set_data_retrieval_policy(Client, AccountId, Input0, Options) ->
+set_data_retrieval_policy(Client, AccountId, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(AccountId), "/policies/data-retrieval"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1341,10 +1444,14 @@ set_data_retrieval_policy(Client, AccountId, Input0, Options) ->
 %% with Vault Access Policies.
 set_vault_access_policy(Client, AccountId, VaultName, Input) ->
     set_vault_access_policy(Client, AccountId, VaultName, Input, []).
-set_vault_access_policy(Client, AccountId, VaultName, Input0, Options) ->
+set_vault_access_policy(Client, AccountId, VaultName, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/access-policy"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1392,10 +1499,14 @@ set_vault_access_policy(Client, AccountId, VaultName, Input0, Options) ->
 %% Configuration in the Amazon Glacier Developer Guide.
 set_vault_notifications(Client, AccountId, VaultName, Input) ->
     set_vault_notifications(Client, AccountId, VaultName, Input, []).
-set_vault_notifications(Client, AccountId, VaultName, Input0, Options) ->
+set_vault_notifications(Client, AccountId, VaultName, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/notification-configuration"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1445,10 +1556,14 @@ set_vault_notifications(Client, AccountId, VaultName, Input0, Options) ->
 %% Developer Guide.
 upload_archive(Client, AccountId, VaultName, Input) ->
     upload_archive(Client, AccountId, VaultName, Input, []).
-upload_archive(Client, AccountId, VaultName, Input0, Options) ->
+upload_archive(Client, AccountId, VaultName, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/archives"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-archive-description">>, <<"archiveDescription">>},
@@ -1526,10 +1641,14 @@ upload_archive(Client, AccountId, VaultName, Input0, Options) ->
 %% Developer Guide.
 upload_multipart_part(Client, AccountId, UploadId, VaultName, Input) ->
     upload_multipart_part(Client, AccountId, UploadId, VaultName, Input, []).
-upload_multipart_part(Client, AccountId, UploadId, VaultName, Input0, Options) ->
+upload_multipart_part(Client, AccountId, UploadId, VaultName, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/multipart-uploads/", aws_util:encode_uri(UploadId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-sha256-tree-hash">>, <<"checksum">>},
@@ -1580,19 +1699,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -1602,14 +1722,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

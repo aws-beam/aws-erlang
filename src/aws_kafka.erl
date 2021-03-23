@@ -88,10 +88,14 @@
 %% @doc Associates one or more Scram Secrets with an Amazon MSK cluster.
 batch_associate_scram_secret(Client, ClusterArn, Input) ->
     batch_associate_scram_secret(Client, ClusterArn, Input, []).
-batch_associate_scram_secret(Client, ClusterArn, Input0, Options) ->
+batch_associate_scram_secret(Client, ClusterArn, Input0, Options0) ->
     Method = post,
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/scram-secrets"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -104,10 +108,14 @@ batch_associate_scram_secret(Client, ClusterArn, Input0, Options) ->
 %% @doc Disassociates one or more Scram Secrets from an Amazon MSK cluster.
 batch_disassociate_scram_secret(Client, ClusterArn, Input) ->
     batch_disassociate_scram_secret(Client, ClusterArn, Input, []).
-batch_disassociate_scram_secret(Client, ClusterArn, Input0, Options) ->
+batch_disassociate_scram_secret(Client, ClusterArn, Input0, Options0) ->
     Method = patch,
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/scram-secrets"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -120,10 +128,14 @@ batch_disassociate_scram_secret(Client, ClusterArn, Input0, Options) ->
 %% @doc Creates a new MSK cluster.
 create_cluster(Client, Input) ->
     create_cluster(Client, Input, []).
-create_cluster(Client, Input0, Options) ->
+create_cluster(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/clusters"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -136,10 +148,14 @@ create_cluster(Client, Input0, Options) ->
 %% @doc Creates a new MSK configuration.
 create_configuration(Client, Input) ->
     create_configuration(Client, Input, []).
-create_configuration(Client, Input0, Options) ->
+create_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/configurations"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -153,10 +169,14 @@ create_configuration(Client, Input0, Options) ->
 %% in the request.
 delete_cluster(Client, ClusterArn, Input) ->
     delete_cluster(Client, ClusterArn, Input, []).
-delete_cluster(Client, ClusterArn, Input0, Options) ->
+delete_cluster(Client, ClusterArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -172,10 +192,14 @@ delete_cluster(Client, ClusterArn, Input0, Options) ->
 %% The configuration must be in the ACTIVE or DELETE_FAILED state.
 delete_configuration(Client, Arn, Input) ->
     delete_configuration(Client, Arn, Input, []).
-delete_configuration(Client, Arn, Input0, Options) ->
+delete_configuration(Client, Arn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/configurations/", aws_util:encode_uri(Arn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -195,10 +219,13 @@ describe_cluster(Client, ClusterArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_cluster(Client, ClusterArn, QueryMap, HeadersMap, []).
 
-describe_cluster(Client, ClusterArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_cluster(Client, ClusterArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -215,10 +242,13 @@ describe_cluster_operation(Client, ClusterOperationArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_cluster_operation(Client, ClusterOperationArn, QueryMap, HeadersMap, []).
 
-describe_cluster_operation(Client, ClusterOperationArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_cluster_operation(Client, ClusterOperationArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/operations/", aws_util:encode_uri(ClusterOperationArn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -235,10 +265,13 @@ describe_configuration(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_configuration(Client, Arn, QueryMap, HeadersMap, []).
 
-describe_configuration(Client, Arn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_configuration(Client, Arn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/configurations/", aws_util:encode_uri(Arn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -255,10 +288,13 @@ describe_configuration_revision(Client, Arn, Revision, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_configuration_revision(Client, Arn, Revision, QueryMap, HeadersMap, []).
 
-describe_configuration_revision(Client, Arn, Revision, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_configuration_revision(Client, Arn, Revision, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/configurations/", aws_util:encode_uri(Arn), "/revisions/", aws_util:encode_uri(Revision), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -275,10 +311,13 @@ get_bootstrap_brokers(Client, ClusterArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bootstrap_brokers(Client, ClusterArn, QueryMap, HeadersMap, []).
 
-get_bootstrap_brokers(Client, ClusterArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_bootstrap_brokers(Client, ClusterArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/bootstrap-brokers"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -296,10 +335,13 @@ get_compatible_kafka_versions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_compatible_kafka_versions(Client, QueryMap, HeadersMap, []).
 
-get_compatible_kafka_versions(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_compatible_kafka_versions(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/compatible-kafka-versions"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -321,10 +363,13 @@ list_cluster_operations(Client, ClusterArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_cluster_operations(Client, ClusterArn, QueryMap, HeadersMap, []).
 
-list_cluster_operations(Client, ClusterArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_cluster_operations(Client, ClusterArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/operations"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -346,10 +391,13 @@ list_clusters(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_clusters(Client, QueryMap, HeadersMap, []).
 
-list_clusters(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_clusters(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/clusters"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -372,10 +420,13 @@ list_configuration_revisions(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_configuration_revisions(Client, Arn, QueryMap, HeadersMap, []).
 
-list_configuration_revisions(Client, Arn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_configuration_revisions(Client, Arn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/configurations/", aws_util:encode_uri(Arn), "/revisions"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -397,10 +448,13 @@ list_configurations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_configurations(Client, QueryMap, HeadersMap, []).
 
-list_configurations(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_configurations(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/configurations"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -422,10 +476,13 @@ list_kafka_versions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_kafka_versions(Client, QueryMap, HeadersMap, []).
 
-list_kafka_versions(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_kafka_versions(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/kafka-versions"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -447,10 +504,13 @@ list_nodes(Client, ClusterArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_nodes(Client, ClusterArn, QueryMap, HeadersMap, []).
 
-list_nodes(Client, ClusterArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_nodes(Client, ClusterArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/nodes"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -473,10 +533,13 @@ list_scram_secrets(Client, ClusterArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_scram_secrets(Client, ClusterArn, QueryMap, HeadersMap, []).
 
-list_scram_secrets(Client, ClusterArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_scram_secrets(Client, ClusterArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/scram-secrets"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -498,10 +561,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -512,10 +578,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
 %% @doc Executes a reboot on a broker.
 reboot_broker(Client, ClusterArn, Input) ->
     reboot_broker(Client, ClusterArn, Input, []).
-reboot_broker(Client, ClusterArn, Input0, Options) ->
+reboot_broker(Client, ClusterArn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/reboot-broker"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -528,10 +598,14 @@ reboot_broker(Client, ClusterArn, Input0, Options) ->
 %% @doc Adds tags to the specified MSK resource.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
-tag_resource(Client, ResourceArn, Input0, Options) ->
+tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -545,10 +619,14 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 %% query.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
-untag_resource(Client, ResourceArn, Input0, Options) ->
+untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -565,10 +643,14 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 %% existing cluster. You can't decrease the number of brokers.
 update_broker_count(Client, ClusterArn, Input) ->
     update_broker_count(Client, ClusterArn, Input, []).
-update_broker_count(Client, ClusterArn, Input0, Options) ->
+update_broker_count(Client, ClusterArn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/nodes/count"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -581,10 +663,14 @@ update_broker_count(Client, ClusterArn, Input0, Options) ->
 %% @doc Updates the EBS storage associated with MSK brokers.
 update_broker_storage(Client, ClusterArn, Input) ->
     update_broker_storage(Client, ClusterArn, Input, []).
-update_broker_storage(Client, ClusterArn, Input0, Options) ->
+update_broker_storage(Client, ClusterArn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/nodes/storage"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -597,10 +683,14 @@ update_broker_storage(Client, ClusterArn, Input0, Options) ->
 %% @doc Updates all the brokers in the cluster to the specified type.
 update_broker_type(Client, ClusterArn, Input) ->
     update_broker_type(Client, ClusterArn, Input, []).
-update_broker_type(Client, ClusterArn, Input0, Options) ->
+update_broker_type(Client, ClusterArn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/nodes/type"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -614,10 +704,14 @@ update_broker_type(Client, ClusterArn, Input0, Options) ->
 %% request body.
 update_cluster_configuration(Client, ClusterArn, Input) ->
     update_cluster_configuration(Client, ClusterArn, Input, []).
-update_cluster_configuration(Client, ClusterArn, Input0, Options) ->
+update_cluster_configuration(Client, ClusterArn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/configuration"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -630,10 +724,14 @@ update_cluster_configuration(Client, ClusterArn, Input0, Options) ->
 %% @doc Updates the Apache Kafka version for the cluster.
 update_cluster_kafka_version(Client, ClusterArn, Input) ->
     update_cluster_kafka_version(Client, ClusterArn, Input, []).
-update_cluster_kafka_version(Client, ClusterArn, Input0, Options) ->
+update_cluster_kafka_version(Client, ClusterArn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/version"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -648,10 +746,14 @@ update_cluster_kafka_version(Client, ClusterArn, Input0, Options) ->
 %% The configuration must be in the Active state.
 update_configuration(Client, Arn, Input) ->
     update_configuration(Client, Arn, Input, []).
-update_configuration(Client, Arn, Input0, Options) ->
+update_configuration(Client, Arn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/configurations/", aws_util:encode_uri(Arn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -668,10 +770,14 @@ update_configuration(Client, Arn, Input0, Options) ->
 %% open monitoring with Prometheus.
 update_monitoring(Client, ClusterArn, Input) ->
     update_monitoring(Client, ClusterArn, Input, []).
-update_monitoring(Client, ClusterArn, Input0, Options) ->
+update_monitoring(Client, ClusterArn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/monitoring"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -703,19 +809,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -725,14 +832,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

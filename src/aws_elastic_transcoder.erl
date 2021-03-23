@@ -61,10 +61,14 @@
 %% identifier, use `UpdatePipelineStatus' to temporarily pause the pipeline.
 cancel_job(Client, Id, Input) ->
     cancel_job(Client, Id, Input, []).
-cancel_job(Client, Id, Input0, Options) ->
+cancel_job(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2012-09-25/jobs/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -84,10 +88,14 @@ cancel_job(Client, Id, Input0, Options) ->
 %% opposed to the AWS Console).
 create_job(Client, Input) ->
     create_job(Client, Input, []).
-create_job(Client, Input0, Options) ->
+create_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2012-09-25/jobs"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -101,10 +109,14 @@ create_job(Client, Input0, Options) ->
 %% you specify.
 create_pipeline(Client, Input) ->
     create_pipeline(Client, Input, []).
-create_pipeline(Client, Input0, Options) ->
+create_pipeline(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2012-09-25/pipelines"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -134,10 +146,14 @@ create_pipeline(Client, Input0, Options) ->
 %% services.
 create_preset(Client, Input) ->
     create_preset(Client, Input, []).
-create_preset(Client, Input0, Options) ->
+create_preset(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2012-09-25/presets"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -154,10 +170,14 @@ create_preset(Client, Input0, Options) ->
 %% currently in use, `DeletePipeline' returns an error.
 delete_pipeline(Client, Id, Input) ->
     delete_pipeline(Client, Id, Input, []).
-delete_pipeline(Client, Id, Input0, Options) ->
+delete_pipeline(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2012-09-25/pipelines/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -174,10 +194,14 @@ delete_pipeline(Client, Id, Input0, Options) ->
 %% Transcoder.
 delete_preset(Client, Id, Input) ->
     delete_preset(Client, Id, Input, []).
-delete_preset(Client, Id, Input0, Options) ->
+delete_preset(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2012-09-25/presets/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -201,10 +225,13 @@ list_jobs_by_pipeline(Client, PipelineId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_jobs_by_pipeline(Client, PipelineId, QueryMap, HeadersMap, []).
 
-list_jobs_by_pipeline(Client, PipelineId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_jobs_by_pipeline(Client, PipelineId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2012-09-25/jobsByPipeline/", aws_util:encode_uri(PipelineId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -230,10 +257,13 @@ list_jobs_by_status(Client, Status, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_jobs_by_status(Client, Status, QueryMap, HeadersMap, []).
 
-list_jobs_by_status(Client, Status, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_jobs_by_status(Client, Status, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2012-09-25/jobsByStatus/", aws_util:encode_uri(Status), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -256,10 +286,13 @@ list_pipelines(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_pipelines(Client, QueryMap, HeadersMap, []).
 
-list_pipelines(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_pipelines(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2012-09-25/pipelines"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -283,10 +316,13 @@ list_presets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_presets(Client, QueryMap, HeadersMap, []).
 
-list_presets(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_presets(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2012-09-25/presets"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -308,10 +344,13 @@ read_job(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     read_job(Client, Id, QueryMap, HeadersMap, []).
 
-read_job(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+read_job(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2012-09-25/jobs/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -329,10 +368,13 @@ read_pipeline(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     read_pipeline(Client, Id, QueryMap, HeadersMap, []).
 
-read_pipeline(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+read_pipeline(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2012-09-25/pipelines/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -349,10 +391,13 @@ read_preset(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     read_preset(Client, Id, QueryMap, HeadersMap, []).
 
-read_preset(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+read_preset(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2012-09-25/presets/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -371,10 +416,14 @@ read_preset(Client, Id, QueryMap, HeadersMap, Options)
 %% specify.
 test_role(Client, Input) ->
     test_role(Client, Input, []).
-test_role(Client, Input0, Options) ->
+test_role(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2012-09-25/roleTests"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -392,10 +441,14 @@ test_role(Client, Input0, Options) ->
 %% you change settings.
 update_pipeline(Client, Id, Input) ->
     update_pipeline(Client, Id, Input, []).
-update_pipeline(Client, Id, Input0, Options) ->
+update_pipeline(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2012-09-25/pipelines/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -412,10 +465,14 @@ update_pipeline(Client, Id, Input0, Options) ->
 %% the values that you specified in the request.
 update_pipeline_notifications(Client, Id, Input) ->
     update_pipeline_notifications(Client, Id, Input, []).
-update_pipeline_notifications(Client, Id, Input0, Options) ->
+update_pipeline_notifications(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/2012-09-25/pipelines/", aws_util:encode_uri(Id), "/notifications"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -435,10 +492,14 @@ update_pipeline_notifications(Client, Id, Input0, Options) ->
 %% cancel, and to send a `CancelJob' request.
 update_pipeline_status(Client, Id, Input) ->
     update_pipeline_status(Client, Id, Input, []).
-update_pipeline_status(Client, Id, Input0, Options) ->
+update_pipeline_status(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/2012-09-25/pipelines/", aws_util:encode_uri(Id), "/status"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -470,19 +531,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -492,14 +554,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

@@ -131,10 +131,14 @@
 %% This operation requires permission for the `lex:CreateBotVersion' action.
 create_bot_version(Client, Name, Input) ->
     create_bot_version(Client, Name, Input, []).
-create_bot_version(Client, Name, Input0, Options) ->
+create_bot_version(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(Name), "/versions"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -163,10 +167,14 @@ create_bot_version(Client, Name, Input0, Options) ->
 %% `lex:CreateIntentVersion' action.
 create_intent_version(Client, Name, Input) ->
     create_intent_version(Client, Name, Input, []).
-create_intent_version(Client, Name, Input0, Options) ->
+create_intent_version(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/intents/", aws_util:encode_uri(Name), "/versions"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -195,10 +203,14 @@ create_intent_version(Client, Name, Input0, Options) ->
 %% action.
 create_slot_type_version(Client, Name, Input) ->
     create_slot_type_version(Client, Name, Input, []).
-create_slot_type_version(Client, Name, Input0, Options) ->
+create_slot_type_version(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/slottypes/", aws_util:encode_uri(Name), "/versions"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -228,10 +240,14 @@ create_slot_type_version(Client, Name, Input0, Options) ->
 %% This operation requires permissions for the `lex:DeleteBot' action.
 delete_bot(Client, Name, Input) ->
     delete_bot(Client, Name, Input, []).
-delete_bot(Client, Name, Input0, Options) ->
+delete_bot(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/bots/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -252,10 +268,14 @@ delete_bot(Client, Name, Input0, Options) ->
 %% association until the `DeleteBotAlias' operation is successful.
 delete_bot_alias(Client, BotName, Name, Input) ->
     delete_bot_alias(Client, BotName, Name, Input, []).
-delete_bot_alias(Client, BotName, Name, Input0, Options) ->
+delete_bot_alias(Client, BotName, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/bots/", aws_util:encode_uri(BotName), "/aliases/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -272,10 +292,14 @@ delete_bot_alias(Client, BotName, Name, Input0, Options) ->
 %% `lex:DeleteBotChannelAssociation' action.
 delete_bot_channel_association(Client, BotAlias, BotName, Name, Input) ->
     delete_bot_channel_association(Client, BotAlias, BotName, Name, Input, []).
-delete_bot_channel_association(Client, BotAlias, BotName, Name, Input0, Options) ->
+delete_bot_channel_association(Client, BotAlias, BotName, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/bots/", aws_util:encode_uri(BotName), "/aliases/", aws_util:encode_uri(BotAlias), "/channels/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -292,10 +316,14 @@ delete_bot_channel_association(Client, BotAlias, BotName, Name, Input0, Options)
 %% This operation requires permissions for the `lex:DeleteBotVersion' action.
 delete_bot_version(Client, Name, Version, Input) ->
     delete_bot_version(Client, Name, Version, Input, []).
-delete_bot_version(Client, Name, Version, Input0, Options) ->
+delete_bot_version(Client, Name, Version, Input0, Options0) ->
     Method = delete,
     Path = ["/bots/", aws_util:encode_uri(Name), "/versions/", aws_util:encode_uri(Version), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -324,10 +352,14 @@ delete_bot_version(Client, Name, Version, Input0, Options) ->
 %% This operation requires permission for the `lex:DeleteIntent' action.
 delete_intent(Client, Name, Input) ->
     delete_intent(Client, Name, Input, []).
-delete_intent(Client, Name, Input0, Options) ->
+delete_intent(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/intents/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -345,10 +377,14 @@ delete_intent(Client, Name, Input0, Options) ->
 %% action.
 delete_intent_version(Client, Name, Version, Input) ->
     delete_intent_version(Client, Name, Version, Input, []).
-delete_intent_version(Client, Name, Version, Input0, Options) ->
+delete_intent_version(Client, Name, Version, Input0, Options0) ->
     Method = delete,
     Path = ["/intents/", aws_util:encode_uri(Name), "/versions/", aws_util:encode_uri(Version), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -378,10 +414,14 @@ delete_intent_version(Client, Name, Version, Input0, Options) ->
 %% This operation requires permission for the `lex:DeleteSlotType' action.
 delete_slot_type(Client, Name, Input) ->
     delete_slot_type(Client, Name, Input, []).
-delete_slot_type(Client, Name, Input0, Options) ->
+delete_slot_type(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/slottypes/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -399,10 +439,14 @@ delete_slot_type(Client, Name, Input0, Options) ->
 %% action.
 delete_slot_type_version(Client, Name, Version, Input) ->
     delete_slot_type_version(Client, Name, Version, Input, []).
-delete_slot_type_version(Client, Name, Version, Input0, Options) ->
+delete_slot_type_version(Client, Name, Version, Input0, Options0) ->
     Method = delete,
     Path = ["/slottypes/", aws_util:encode_uri(Name), "/version/", aws_util:encode_uri(Version), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -428,10 +472,14 @@ delete_slot_type_version(Client, Name, Version, Input0, Options) ->
 %% This operation requires permissions for the `lex:DeleteUtterances' action.
 delete_utterances(Client, BotName, UserId, Input) ->
     delete_utterances(Client, BotName, UserId, Input, []).
-delete_utterances(Client, BotName, UserId, Input0, Options) ->
+delete_utterances(Client, BotName, UserId, Input0, Options0) ->
     Method = delete,
     Path = ["/bots/", aws_util:encode_uri(BotName), "/utterances/", aws_util:encode_uri(UserId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -454,10 +502,13 @@ get_bot(Client, Name, VersionOrAlias, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bot(Client, Name, VersionOrAlias, QueryMap, HeadersMap, []).
 
-get_bot(Client, Name, VersionOrAlias, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_bot(Client, Name, VersionOrAlias, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots/", aws_util:encode_uri(Name), "/versions/", aws_util:encode_uri(VersionOrAlias), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -478,10 +529,13 @@ get_bot_alias(Client, BotName, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bot_alias(Client, BotName, Name, QueryMap, HeadersMap, []).
 
-get_bot_alias(Client, BotName, Name, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_bot_alias(Client, BotName, Name, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotName), "/aliases/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -500,10 +554,13 @@ get_bot_aliases(Client, BotName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bot_aliases(Client, BotName, QueryMap, HeadersMap, []).
 
-get_bot_aliases(Client, BotName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_bot_aliases(Client, BotName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotName), "/aliases/"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -530,10 +587,13 @@ get_bot_channel_association(Client, BotAlias, BotName, Name, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bot_channel_association(Client, BotAlias, BotName, Name, QueryMap, HeadersMap, []).
 
-get_bot_channel_association(Client, BotAlias, BotName, Name, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_bot_channel_association(Client, BotAlias, BotName, Name, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotName), "/aliases/", aws_util:encode_uri(BotAlias), "/channels/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -554,10 +614,13 @@ get_bot_channel_associations(Client, BotAlias, BotName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bot_channel_associations(Client, BotAlias, BotName, QueryMap, HeadersMap, []).
 
-get_bot_channel_associations(Client, BotAlias, BotName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_bot_channel_associations(Client, BotAlias, BotName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotName), "/aliases/", aws_util:encode_uri(BotAlias), "/channels/"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -590,10 +653,13 @@ get_bot_versions(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bot_versions(Client, Name, QueryMap, HeadersMap, []).
 
-get_bot_versions(Client, Name, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_bot_versions(Client, Name, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots/", aws_util:encode_uri(Name), "/versions/"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -625,10 +691,13 @@ get_bots(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bots(Client, QueryMap, HeadersMap, []).
 
-get_bots(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_bots(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots/"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -653,10 +722,13 @@ get_builtin_intent(Client, Signature, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_builtin_intent(Client, Signature, QueryMap, HeadersMap, []).
 
-get_builtin_intent(Client, Signature, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_builtin_intent(Client, Signature, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/builtins/intents/", aws_util:encode_uri(Signature), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -675,10 +747,13 @@ get_builtin_intents(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_builtin_intents(Client, QueryMap, HeadersMap, []).
 
-get_builtin_intents(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_builtin_intents(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/builtins/intents/"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -708,10 +783,13 @@ get_builtin_slot_types(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_builtin_slot_types(Client, QueryMap, HeadersMap, []).
 
-get_builtin_slot_types(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_builtin_slot_types(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/builtins/slottypes/"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -735,10 +813,13 @@ get_export(Client, ExportType, Name, ResourceType, Version, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_export(Client, ExportType, Name, ResourceType, Version, QueryMap, HeadersMap, []).
 
-get_export(Client, ExportType, Name, ResourceType, Version, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_export(Client, ExportType, Name, ResourceType, Version, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/exports/"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -763,10 +844,13 @@ get_import(Client, ImportId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_import(Client, ImportId, QueryMap, HeadersMap, []).
 
-get_import(Client, ImportId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_import(Client, ImportId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/imports/", aws_util:encode_uri(ImportId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -787,10 +871,13 @@ get_intent(Client, Name, Version, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_intent(Client, Name, Version, QueryMap, HeadersMap, []).
 
-get_intent(Client, Name, Version, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_intent(Client, Name, Version, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/intents/", aws_util:encode_uri(Name), "/versions/", aws_util:encode_uri(Version), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -819,10 +906,13 @@ get_intent_versions(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_intent_versions(Client, Name, QueryMap, HeadersMap, []).
 
-get_intent_versions(Client, Name, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_intent_versions(Client, Name, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/intents/", aws_util:encode_uri(Name), "/versions/"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -853,10 +943,13 @@ get_intents(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_intents(Client, QueryMap, HeadersMap, []).
 
-get_intents(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_intents(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/intents/"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -884,10 +977,13 @@ get_slot_type(Client, Name, Version, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_slot_type(Client, Name, Version, QueryMap, HeadersMap, []).
 
-get_slot_type(Client, Name, Version, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_slot_type(Client, Name, Version, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/slottypes/", aws_util:encode_uri(Name), "/versions/", aws_util:encode_uri(Version), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -916,10 +1012,13 @@ get_slot_type_versions(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_slot_type_versions(Client, Name, QueryMap, HeadersMap, []).
 
-get_slot_type_versions(Client, Name, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_slot_type_versions(Client, Name, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/slottypes/", aws_util:encode_uri(Name), "/versions/"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -950,10 +1049,13 @@ get_slot_types(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_slot_types(Client, QueryMap, HeadersMap, []).
 
-get_slot_types(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_slot_types(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/slottypes/"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1003,10 +1105,13 @@ get_utterances_view(Client, BotName, BotVersions, StatusType, QueryMap, HeadersM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_utterances_view(Client, BotName, BotVersions, StatusType, QueryMap, HeadersMap, []).
 
-get_utterances_view(Client, BotName, BotVersions, StatusType, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_utterances_view(Client, BotName, BotVersions, StatusType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotName), "/utterances?view=aggregation"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1031,10 +1136,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1066,10 +1174,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
 %% '''
 put_bot(Client, Name, Input) ->
     put_bot(Client, Name, Input, []).
-put_bot(Client, Name, Input0, Options) ->
+put_bot(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/bots/", aws_util:encode_uri(Name), "/versions/$LATEST"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1088,10 +1200,14 @@ put_bot(Client, Name, Input0, Options) ->
 %% This operation requires permissions for the `lex:PutBotAlias' action.
 put_bot_alias(Client, BotName, Name, Input) ->
     put_bot_alias(Client, BotName, Name, Input, []).
-put_bot_alias(Client, BotName, Name, Input0, Options) ->
+put_bot_alias(Client, BotName, Name, Input0, Options0) ->
     Method = put,
     Path = ["/bots/", aws_util:encode_uri(BotName), "/aliases/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1152,10 +1268,14 @@ put_bot_alias(Client, BotName, Name, Input0, Options) ->
 %% This operation requires permissions for the `lex:PutIntent' action.
 put_intent(Client, Name, Input) ->
     put_intent(Client, Name, Input, []).
-put_intent(Client, Name, Input0, Options) ->
+put_intent(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/intents/", aws_util:encode_uri(Name), "/versions/$LATEST"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1182,10 +1302,14 @@ put_intent(Client, Name, Input0, Options) ->
 %% This operation requires permissions for the `lex:PutSlotType' action.
 put_slot_type(Client, Name, Input) ->
     put_slot_type(Client, Name, Input, []).
-put_slot_type(Client, Name, Input0, Options) ->
+put_slot_type(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/slottypes/", aws_util:encode_uri(Name), "/versions/$LATEST"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1198,10 +1322,14 @@ put_slot_type(Client, Name, Input0, Options) ->
 %% @doc Starts a job to import a resource to Amazon Lex.
 start_import(Client, Input) ->
     start_import(Client, Input, []).
-start_import(Client, Input0, Options) ->
+start_import(Client, Input0, Options0) ->
     Method = post,
     Path = ["/imports/"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1217,10 +1345,14 @@ start_import(Client, Input0, Options) ->
 %% value.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
-tag_resource(Client, ResourceArn, Input0, Options) ->
+tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1233,10 +1365,14 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Removes tags from a bot, bot alias or bot channel.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
-untag_resource(Client, ResourceArn, Input0, Options) ->
+untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1269,19 +1405,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -1291,14 +1428,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

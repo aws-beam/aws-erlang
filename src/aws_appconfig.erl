@@ -143,10 +143,14 @@
 %% on behalf of others.
 create_application(Client, Input) ->
     create_application(Client, Input, []).
-create_application(Client, Input0, Options) ->
+create_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/applications"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -175,10 +179,14 @@ create_application(Client, Input0, Options) ->
 %% Configuration Profile in the AWS AppConfig User Guide.
 create_configuration_profile(Client, ApplicationId, Input) ->
     create_configuration_profile(Client, ApplicationId, Input, []).
-create_configuration_profile(Client, ApplicationId, Input0, Options) ->
+create_configuration_profile(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -196,10 +204,14 @@ create_configuration_profile(Client, ApplicationId, Input0, Options) ->
 %% algorithm that defines how percentage grows, and bake time.
 create_deployment_strategy(Client, Input) ->
     create_deployment_strategy(Client, Input, []).
-create_deployment_strategy(Client, Input0, Options) ->
+create_deployment_strategy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deploymentstrategies"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -220,10 +232,14 @@ create_deployment_strategy(Client, Input0, Options) ->
 %% back the configuration.
 create_environment(Client, ApplicationId, Input) ->
     create_environment(Client, ApplicationId, Input, []).
-create_environment(Client, ApplicationId, Input0, Options) ->
+create_environment(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -236,10 +252,14 @@ create_environment(Client, ApplicationId, Input0, Options) ->
 %% @doc Create a new configuration in the AppConfig configuration store.
 create_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, Input) ->
     create_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, Input, []).
-create_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, Input0, Options) ->
+create_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), "/hostedconfigurationversions"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Content-Type">>, <<"ContentType">>},
@@ -278,10 +298,14 @@ create_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileI
 %% Deleting an application does not delete a configuration from a host.
 delete_application(Client, ApplicationId, Input) ->
     delete_application(Client, ApplicationId, Input, []).
-delete_application(Client, ApplicationId, Input0, Options) ->
+delete_application(Client, ApplicationId, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -297,10 +321,14 @@ delete_application(Client, ApplicationId, Input0, Options) ->
 %% host.
 delete_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Input) ->
     delete_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Input, []).
-delete_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Input0, Options) ->
+delete_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -316,10 +344,14 @@ delete_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Inpu
 %% host.
 delete_deployment_strategy(Client, DeploymentStrategyId, Input) ->
     delete_deployment_strategy(Client, DeploymentStrategyId, Input, []).
-delete_deployment_strategy(Client, DeploymentStrategyId, Input0, Options) ->
+delete_deployment_strategy(Client, DeploymentStrategyId, Input0, Options0) ->
     Method = delete,
     Path = ["/deployementstrategies/", aws_util:encode_uri(DeploymentStrategyId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -334,10 +366,14 @@ delete_deployment_strategy(Client, DeploymentStrategyId, Input0, Options) ->
 %% Deleting an environment does not delete a configuration from a host.
 delete_environment(Client, ApplicationId, EnvironmentId, Input) ->
     delete_environment(Client, ApplicationId, EnvironmentId, Input, []).
-delete_environment(Client, ApplicationId, EnvironmentId, Input0, Options) ->
+delete_environment(Client, ApplicationId, EnvironmentId, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -351,10 +387,14 @@ delete_environment(Client, ApplicationId, EnvironmentId, Input0, Options) ->
 %% store.
 delete_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, Input) ->
     delete_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, Input, []).
-delete_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, Input0, Options) ->
+delete_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), "/hostedconfigurationversions/", aws_util:encode_uri(VersionNumber), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -373,10 +413,13 @@ get_application(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_application(Client, ApplicationId, QueryMap, HeadersMap, []).
 
-get_application(Client, ApplicationId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_application(Client, ApplicationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -405,10 +448,13 @@ get_configuration(Client, Application, Configuration, Environment, ClientId, Que
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_configuration(Client, Application, Configuration, Environment, ClientId, QueryMap, HeadersMap, []).
 
-get_configuration(Client, Application, Configuration, Environment, ClientId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_configuration(Client, Application, Configuration, Environment, ClientId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(Application), "/environments/", aws_util:encode_uri(Environment), "/configurations/", aws_util:encode_uri(Configuration), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -447,10 +493,13 @@ get_configuration_profile(Client, ApplicationId, ConfigurationProfileId, QueryMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_configuration_profile(Client, ApplicationId, ConfigurationProfileId, QueryMap, HeadersMap, []).
 
-get_configuration_profile(Client, ApplicationId, ConfigurationProfileId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_configuration_profile(Client, ApplicationId, ConfigurationProfileId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -467,10 +516,13 @@ get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, QueryMap,
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, QueryMap, HeadersMap, []).
 
-get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), "/deployments/", aws_util:encode_uri(DeploymentNumber), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -493,10 +545,13 @@ get_deployment_strategy(Client, DeploymentStrategyId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_deployment_strategy(Client, DeploymentStrategyId, QueryMap, HeadersMap, []).
 
-get_deployment_strategy(Client, DeploymentStrategyId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_deployment_strategy(Client, DeploymentStrategyId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/deploymentstrategies/", aws_util:encode_uri(DeploymentStrategyId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -520,10 +575,13 @@ get_environment(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_environment(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap, []).
 
-get_environment(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_environment(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -540,10 +598,13 @@ get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, QueryMap, HeadersMap, []).
 
-get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), "/hostedconfigurationversions/", aws_util:encode_uri(VersionNumber), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -580,10 +641,13 @@ list_applications(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_applications(Client, QueryMap, HeadersMap, []).
 
-list_applications(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_applications(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -605,10 +669,13 @@ list_configuration_profiles(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_configuration_profiles(Client, ApplicationId, QueryMap, HeadersMap, []).
 
-list_configuration_profiles(Client, ApplicationId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_configuration_profiles(Client, ApplicationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -630,10 +697,13 @@ list_deployment_strategies(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_deployment_strategies(Client, QueryMap, HeadersMap, []).
 
-list_deployment_strategies(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_deployment_strategies(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/deploymentstrategies"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -655,10 +725,13 @@ list_deployments(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_deployments(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap, []).
 
-list_deployments(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_deployments(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), "/deployments"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -680,10 +753,13 @@ list_environments(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_environments(Client, ApplicationId, QueryMap, HeadersMap, []).
 
-list_environments(Client, ApplicationId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_environments(Client, ApplicationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -706,10 +782,13 @@ list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId, QueryMap, HeadersMap, []).
 
-list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), "/hostedconfigurationversions"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -731,10 +810,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -745,10 +827,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
 %% @doc Starts a deployment.
 start_deployment(Client, ApplicationId, EnvironmentId, Input) ->
     start_deployment(Client, ApplicationId, EnvironmentId, Input, []).
-start_deployment(Client, ApplicationId, EnvironmentId, Input0, Options) ->
+start_deployment(Client, ApplicationId, EnvironmentId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), "/deployments"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -765,10 +851,14 @@ start_deployment(Client, ApplicationId, EnvironmentId, Input0, Options) ->
 %% `ROLLED_BACK'.
 stop_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, Input) ->
     stop_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, Input, []).
-stop_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, Input0, Options) ->
+stop_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), "/deployments/", aws_util:encode_uri(DeploymentNumber), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -785,10 +875,14 @@ stop_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, Input0, 
 %% specify a maximum of 50 tags for a resource.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
-tag_resource(Client, ResourceArn, Input0, Options) ->
+tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -801,10 +895,14 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Deletes a tag key and value from an AppConfig resource.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
-untag_resource(Client, ResourceArn, Input0, Options) ->
+untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -818,10 +916,14 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Updates an application.
 update_application(Client, ApplicationId, Input) ->
     update_application(Client, ApplicationId, Input, []).
-update_application(Client, ApplicationId, Input0, Options) ->
+update_application(Client, ApplicationId, Input0, Options0) ->
     Method = patch,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -834,10 +936,14 @@ update_application(Client, ApplicationId, Input0, Options) ->
 %% @doc Updates a configuration profile.
 update_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Input) ->
     update_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Input, []).
-update_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Input0, Options) ->
+update_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Input0, Options0) ->
     Method = patch,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -850,10 +956,14 @@ update_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Inpu
 %% @doc Updates a deployment strategy.
 update_deployment_strategy(Client, DeploymentStrategyId, Input) ->
     update_deployment_strategy(Client, DeploymentStrategyId, Input, []).
-update_deployment_strategy(Client, DeploymentStrategyId, Input0, Options) ->
+update_deployment_strategy(Client, DeploymentStrategyId, Input0, Options0) ->
     Method = patch,
     Path = ["/deploymentstrategies/", aws_util:encode_uri(DeploymentStrategyId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -866,10 +976,14 @@ update_deployment_strategy(Client, DeploymentStrategyId, Input0, Options) ->
 %% @doc Updates an environment.
 update_environment(Client, ApplicationId, EnvironmentId, Input) ->
     update_environment(Client, ApplicationId, EnvironmentId, Input, []).
-update_environment(Client, ApplicationId, EnvironmentId, Input0, Options) ->
+update_environment(Client, ApplicationId, EnvironmentId, Input0, Options0) ->
     Method = patch,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -883,10 +997,14 @@ update_environment(Client, ApplicationId, EnvironmentId, Input0, Options) ->
 %% configuration.
 validate_configuration(Client, ApplicationId, ConfigurationProfileId, Input) ->
     validate_configuration(Client, ApplicationId, ConfigurationProfileId, Input, []).
-validate_configuration(Client, ApplicationId, ConfigurationProfileId, Input0, Options) ->
+validate_configuration(Client, ApplicationId, ConfigurationProfileId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), "/validators"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -919,19 +1037,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -941,14 +1060,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

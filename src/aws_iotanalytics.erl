@@ -121,10 +121,14 @@
 %% @doc Sends messages to a channel.
 batch_put_message(Client, Input) ->
     batch_put_message(Client, Input, []).
-batch_put_message(Client, Input0, Options) ->
+batch_put_message(Client, Input0, Options0) ->
     Method = post,
     Path = ["/messages/batch"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -137,10 +141,14 @@ batch_put_message(Client, Input0, Options) ->
 %% @doc Cancels the reprocessing of data through the pipeline.
 cancel_pipeline_reprocessing(Client, PipelineName, ReprocessingId, Input) ->
     cancel_pipeline_reprocessing(Client, PipelineName, ReprocessingId, Input, []).
-cancel_pipeline_reprocessing(Client, PipelineName, ReprocessingId, Input0, Options) ->
+cancel_pipeline_reprocessing(Client, PipelineName, ReprocessingId, Input0, Options0) ->
     Method = delete,
     Path = ["/pipelines/", aws_util:encode_uri(PipelineName), "/reprocessing/", aws_util:encode_uri(ReprocessingId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -156,10 +164,14 @@ cancel_pipeline_reprocessing(Client, PipelineName, ReprocessingId, Input0, Optio
 %% unprocessed messages before publishing the data to a pipeline.
 create_channel(Client, Input) ->
     create_channel(Client, Input, []).
-create_channel(Client, Input0, Options) ->
+create_channel(Client, Input0, Options0) ->
     Method = post,
     Path = ["/channels"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -179,10 +191,14 @@ create_channel(Client, Input0, Options) ->
 %% specify.
 create_dataset(Client, Input) ->
     create_dataset(Client, Input, []).
-create_dataset(Client, Input0, Options) ->
+create_dataset(Client, Input0, Options0) ->
     Method = post,
     Path = ["/datasets"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -196,10 +212,14 @@ create_dataset(Client, Input0, Options) ->
 %% query) or a `containerAction' (executing a containerized application).
 create_dataset_content(Client, DatasetName, Input) ->
     create_dataset_content(Client, DatasetName, Input, []).
-create_dataset_content(Client, DatasetName, Input0, Options) ->
+create_dataset_content(Client, DatasetName, Input0, Options0) ->
     Method = post,
     Path = ["/datasets/", aws_util:encode_uri(DatasetName), "/content"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -212,10 +232,14 @@ create_dataset_content(Client, DatasetName, Input0, Options) ->
 %% @doc Creates a data store, which is a repository for messages.
 create_datastore(Client, Input) ->
     create_datastore(Client, Input, []).
-create_datastore(Client, Input0, Options) ->
+create_datastore(Client, Input0, Options0) ->
     Method = post,
     Path = ["/datastores"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -233,10 +257,14 @@ create_datastore(Client, Input0, Options) ->
 %% additional activities in the `pipelineActivities' array.
 create_pipeline(Client, Input) ->
     create_pipeline(Client, Input, []).
-create_pipeline(Client, Input0, Options) ->
+create_pipeline(Client, Input0, Options0) ->
     Method = post,
     Path = ["/pipelines"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -249,10 +277,14 @@ create_pipeline(Client, Input0, Options) ->
 %% @doc Deletes the specified channel.
 delete_channel(Client, ChannelName, Input) ->
     delete_channel(Client, ChannelName, Input, []).
-delete_channel(Client, ChannelName, Input0, Options) ->
+delete_channel(Client, ChannelName, Input0, Options0) ->
     Method = delete,
     Path = ["/channels/", aws_util:encode_uri(ChannelName), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -268,10 +300,14 @@ delete_channel(Client, ChannelName, Input0, Options) ->
 %% this operation.
 delete_dataset(Client, DatasetName, Input) ->
     delete_dataset(Client, DatasetName, Input, []).
-delete_dataset(Client, DatasetName, Input0, Options) ->
+delete_dataset(Client, DatasetName, Input0, Options0) ->
     Method = delete,
     Path = ["/datasets/", aws_util:encode_uri(DatasetName), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -284,10 +320,14 @@ delete_dataset(Client, DatasetName, Input0, Options) ->
 %% @doc Deletes the content of the specified dataset.
 delete_dataset_content(Client, DatasetName, Input) ->
     delete_dataset_content(Client, DatasetName, Input, []).
-delete_dataset_content(Client, DatasetName, Input0, Options) ->
+delete_dataset_content(Client, DatasetName, Input0, Options0) ->
     Method = delete,
     Path = ["/datasets/", aws_util:encode_uri(DatasetName), "/content"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -301,10 +341,14 @@ delete_dataset_content(Client, DatasetName, Input0, Options) ->
 %% @doc Deletes the specified data store.
 delete_datastore(Client, DatastoreName, Input) ->
     delete_datastore(Client, DatastoreName, Input, []).
-delete_datastore(Client, DatastoreName, Input0, Options) ->
+delete_datastore(Client, DatastoreName, Input0, Options0) ->
     Method = delete,
     Path = ["/datastores/", aws_util:encode_uri(DatastoreName), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -317,10 +361,14 @@ delete_datastore(Client, DatastoreName, Input0, Options) ->
 %% @doc Deletes the specified pipeline.
 delete_pipeline(Client, PipelineName, Input) ->
     delete_pipeline(Client, PipelineName, Input, []).
-delete_pipeline(Client, PipelineName, Input0, Options) ->
+delete_pipeline(Client, PipelineName, Input0, Options0) ->
     Method = delete,
     Path = ["/pipelines/", aws_util:encode_uri(PipelineName), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -339,10 +387,13 @@ describe_channel(Client, ChannelName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_channel(Client, ChannelName, QueryMap, HeadersMap, []).
 
-describe_channel(Client, ChannelName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_channel(Client, ChannelName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -363,10 +414,13 @@ describe_dataset(Client, DatasetName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_dataset(Client, DatasetName, QueryMap, HeadersMap, []).
 
-describe_dataset(Client, DatasetName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_dataset(Client, DatasetName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/datasets/", aws_util:encode_uri(DatasetName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -383,10 +437,13 @@ describe_datastore(Client, DatastoreName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_datastore(Client, DatastoreName, QueryMap, HeadersMap, []).
 
-describe_datastore(Client, DatastoreName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_datastore(Client, DatastoreName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/datastores/", aws_util:encode_uri(DatastoreName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -408,10 +465,13 @@ describe_logging_options(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_logging_options(Client, QueryMap, HeadersMap, []).
 
-describe_logging_options(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_logging_options(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/logging"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -428,10 +488,13 @@ describe_pipeline(Client, PipelineName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_pipeline(Client, PipelineName, QueryMap, HeadersMap, []).
 
-describe_pipeline(Client, PipelineName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_pipeline(Client, PipelineName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/pipelines/", aws_util:encode_uri(PipelineName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -448,10 +511,13 @@ get_dataset_content(Client, DatasetName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_dataset_content(Client, DatasetName, QueryMap, HeadersMap, []).
 
-get_dataset_content(Client, DatasetName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_dataset_content(Client, DatasetName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/datasets/", aws_util:encode_uri(DatasetName), "/content"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -472,10 +538,13 @@ list_channels(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channels(Client, QueryMap, HeadersMap, []).
 
-list_channels(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_channels(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -497,10 +566,13 @@ list_dataset_contents(Client, DatasetName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_dataset_contents(Client, DatasetName, QueryMap, HeadersMap, []).
 
-list_dataset_contents(Client, DatasetName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_dataset_contents(Client, DatasetName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/datasets/", aws_util:encode_uri(DatasetName), "/contents"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -524,10 +596,13 @@ list_datasets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_datasets(Client, QueryMap, HeadersMap, []).
 
-list_datasets(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_datasets(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/datasets"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -549,10 +624,13 @@ list_datastores(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_datastores(Client, QueryMap, HeadersMap, []).
 
-list_datastores(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_datastores(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/datastores"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -574,10 +652,13 @@ list_pipelines(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_pipelines(Client, QueryMap, HeadersMap, []).
 
-list_pipelines(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_pipelines(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/pipelines"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -599,10 +680,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -623,10 +707,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
 %% take effect.
 put_logging_options(Client, Input) ->
     put_logging_options(Client, Input, []).
-put_logging_options(Client, Input0, Options) ->
+put_logging_options(Client, Input0, Options0) ->
     Method = put,
     Path = ["/logging"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -640,10 +728,14 @@ put_logging_options(Client, Input0, Options) ->
 %% payload.
 run_pipeline_activity(Client, Input) ->
     run_pipeline_activity(Client, Input, []).
-run_pipeline_activity(Client, Input0, Options) ->
+run_pipeline_activity(Client, Input0, Options0) ->
     Method = post,
     Path = ["/pipelineactivities/run"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -665,10 +757,13 @@ sample_channel_data(Client, ChannelName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     sample_channel_data(Client, ChannelName, QueryMap, HeadersMap, []).
 
-sample_channel_data(Client, ChannelName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+sample_channel_data(Client, ChannelName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelName), "/sample"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -685,10 +780,14 @@ sample_channel_data(Client, ChannelName, QueryMap, HeadersMap, Options)
 %% @doc Starts the reprocessing of raw message data through the pipeline.
 start_pipeline_reprocessing(Client, PipelineName, Input) ->
     start_pipeline_reprocessing(Client, PipelineName, Input, []).
-start_pipeline_reprocessing(Client, PipelineName, Input0, Options) ->
+start_pipeline_reprocessing(Client, PipelineName, Input0, Options0) ->
     Method = post,
     Path = ["/pipelines/", aws_util:encode_uri(PipelineName), "/reprocessing"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -703,10 +802,14 @@ start_pipeline_reprocessing(Client, PipelineName, Input0, Options) ->
 %% Tags are metadata that can be used to manage a resource.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
-tag_resource(Client, Input0, Options) ->
+tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tags"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -720,10 +823,14 @@ tag_resource(Client, Input0, Options) ->
 %% @doc Removes the given tags (metadata) from the resource.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
-untag_resource(Client, Input0, Options) ->
+untag_resource(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/tags"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -738,10 +845,14 @@ untag_resource(Client, Input0, Options) ->
 %% @doc Updates the settings of a channel.
 update_channel(Client, ChannelName, Input) ->
     update_channel(Client, ChannelName, Input, []).
-update_channel(Client, ChannelName, Input0, Options) ->
+update_channel(Client, ChannelName, Input0, Options0) ->
     Method = put,
     Path = ["/channels/", aws_util:encode_uri(ChannelName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -754,10 +865,14 @@ update_channel(Client, ChannelName, Input0, Options) ->
 %% @doc Updates the settings of a data set.
 update_dataset(Client, DatasetName, Input) ->
     update_dataset(Client, DatasetName, Input, []).
-update_dataset(Client, DatasetName, Input0, Options) ->
+update_dataset(Client, DatasetName, Input0, Options0) ->
     Method = put,
     Path = ["/datasets/", aws_util:encode_uri(DatasetName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -770,10 +885,14 @@ update_dataset(Client, DatasetName, Input0, Options) ->
 %% @doc Updates the settings of a data store.
 update_datastore(Client, DatastoreName, Input) ->
     update_datastore(Client, DatastoreName, Input, []).
-update_datastore(Client, DatastoreName, Input0, Options) ->
+update_datastore(Client, DatastoreName, Input0, Options0) ->
     Method = put,
     Path = ["/datastores/", aws_util:encode_uri(DatastoreName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -790,10 +909,14 @@ update_datastore(Client, DatastoreName, Input0, Options) ->
 %% `pipelineActivities' array.
 update_pipeline(Client, PipelineName, Input) ->
     update_pipeline(Client, PipelineName, Input, []).
-update_pipeline(Client, PipelineName, Input0, Options) ->
+update_pipeline(Client, PipelineName, Input0, Options0) ->
     Method = put,
     Path = ["/pipelines/", aws_util:encode_uri(PipelineName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -825,19 +948,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -847,14 +971,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

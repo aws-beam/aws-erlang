@@ -144,10 +144,14 @@
 %% </li> </ul>
 create_access_point(Client, Name, Input) ->
     create_access_point(Client, Name, Input, []).
-create_access_point(Client, Name, Input0, Options) ->
+create_access_point(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/accesspoint/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -203,10 +207,14 @@ create_access_point(Client, Name, Input0, Options) ->
 %% </li> </ul>
 create_bucket(Client, Bucket, Input) ->
     create_bucket(Client, Bucket, Input, []).
-create_bucket(Client, Bucket, Input0, Options) ->
+create_bucket(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-acl">>, <<"ACL">>},
@@ -265,10 +273,14 @@ create_bucket(Client, Bucket, Input0, Options) ->
 %% </li> </ul>
 create_job(Client, Input) ->
     create_job(Client, Input, []).
-create_job(Client, Input0, Options) ->
+create_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v20180820/jobs"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -300,10 +312,14 @@ create_job(Client, Input0, Options) ->
 %% </li> </ul>
 delete_access_point(Client, Name, Input) ->
     delete_access_point(Client, Name, Input, []).
-delete_access_point(Client, Name, Input0, Options) ->
+delete_access_point(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/accesspoint/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -333,10 +349,14 @@ delete_access_point(Client, Name, Input0, Options) ->
 %% </li> </ul>
 delete_access_point_policy(Client, Name, Input) ->
     delete_access_point_policy(Client, Name, Input, []).
-delete_access_point_policy(Client, Name, Input0, Options) ->
+delete_access_point_policy(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/accesspoint/", aws_util:encode_uri(Name), "/policy"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -376,10 +396,14 @@ delete_access_point_policy(Client, Name, Input0, Options) ->
 %% </li> </ul>
 delete_bucket(Client, Bucket, Input) ->
     delete_bucket(Client, Bucket, Input, []).
-delete_bucket(Client, Bucket, Input0, Options) ->
+delete_bucket(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -429,10 +453,14 @@ delete_bucket(Client, Bucket, Input0, Options) ->
 %% </li> </ul>
 delete_bucket_lifecycle_configuration(Client, Bucket, Input) ->
     delete_bucket_lifecycle_configuration(Client, Bucket, Input, []).
-delete_bucket_lifecycle_configuration(Client, Bucket, Input0, Options) ->
+delete_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/lifecycleconfiguration"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -486,10 +514,14 @@ delete_bucket_lifecycle_configuration(Client, Bucket, Input0, Options) ->
 %% </li> </ul>
 delete_bucket_policy(Client, Bucket, Input) ->
     delete_bucket_policy(Client, Bucket, Input, []).
-delete_bucket_policy(Client, Bucket, Input0, Options) ->
+delete_bucket_policy(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/policy"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -529,10 +561,14 @@ delete_bucket_policy(Client, Bucket, Input0, Options) ->
 %% </li> </ul>
 delete_bucket_tagging(Client, Bucket, Input) ->
     delete_bucket_tagging(Client, Bucket, Input, []).
-delete_bucket_tagging(Client, Bucket, Input0, Options) ->
+delete_bucket_tagging(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/tagging"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -563,10 +599,14 @@ delete_bucket_tagging(Client, Bucket, Input0, Options) ->
 %% </li> </ul>
 delete_job_tagging(Client, JobId, Input) ->
     delete_job_tagging(Client, JobId, Input, []).
-delete_job_tagging(Client, JobId, Input0, Options) ->
+delete_job_tagging(Client, JobId, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/jobs/", aws_util:encode_uri(JobId), "/tagging"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -591,10 +631,14 @@ delete_job_tagging(Client, JobId, Input0, Options) ->
 %% </li> </ul>
 delete_public_access_block(Client, Input) ->
     delete_public_access_block(Client, Input, []).
-delete_public_access_block(Client, Input0, Options) ->
+delete_public_access_block(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/configuration/publicAccessBlock"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -618,10 +662,14 @@ delete_public_access_block(Client, Input0, Options) ->
 %% Storage Service Developer Guide.
 delete_storage_lens_configuration(Client, ConfigId, Input) ->
     delete_storage_lens_configuration(Client, ConfigId, Input, []).
-delete_storage_lens_configuration(Client, ConfigId, Input0, Options) ->
+delete_storage_lens_configuration(Client, ConfigId, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/storagelens/", aws_util:encode_uri(ConfigId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -645,10 +693,14 @@ delete_storage_lens_configuration(Client, ConfigId, Input0, Options) ->
 %% Storage Service Developer Guide.
 delete_storage_lens_configuration_tagging(Client, ConfigId, Input) ->
     delete_storage_lens_configuration_tagging(Client, ConfigId, Input, []).
-delete_storage_lens_configuration_tagging(Client, ConfigId, Input0, Options) ->
+delete_storage_lens_configuration_tagging(Client, ConfigId, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/storagelens/", aws_util:encode_uri(ConfigId), "/tagging"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -685,10 +737,13 @@ describe_job(Client, JobId, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_job(Client, JobId, AccountId, QueryMap, HeadersMap, []).
 
-describe_job(Client, JobId, AccountId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_job(Client, JobId, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -726,10 +781,13 @@ get_access_point(Client, Name, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_access_point(Client, Name, AccountId, QueryMap, HeadersMap, []).
 
-get_access_point(Client, Name, AccountId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_access_point(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accesspoint/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -759,10 +817,13 @@ get_access_point_policy(Client, Name, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_access_point_policy(Client, Name, AccountId, QueryMap, HeadersMap, []).
 
-get_access_point_policy(Client, Name, AccountId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_access_point_policy(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accesspoint/", aws_util:encode_uri(Name), "/policy"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -788,10 +849,13 @@ get_access_point_policy_status(Client, Name, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_access_point_policy_status(Client, Name, AccountId, QueryMap, HeadersMap, []).
 
-get_access_point_policy_status(Client, Name, AccountId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_access_point_policy_status(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accesspoint/", aws_util:encode_uri(Name), "/policyStatus"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -844,10 +908,13 @@ get_bucket(Client, Bucket, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket(Client, Bucket, AccountId, QueryMap, HeadersMap, []).
 
-get_bucket(Client, Bucket, AccountId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_bucket(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -910,10 +977,13 @@ get_bucket_lifecycle_configuration(Client, Bucket, AccountId, QueryMap, HeadersM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_lifecycle_configuration(Client, Bucket, AccountId, QueryMap, HeadersMap, []).
 
-get_bucket_lifecycle_configuration(Client, Bucket, AccountId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_bucket_lifecycle_configuration(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/lifecycleconfiguration"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -976,10 +1046,13 @@ get_bucket_policy(Client, Bucket, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_policy(Client, Bucket, AccountId, QueryMap, HeadersMap, []).
 
-get_bucket_policy(Client, Bucket, AccountId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_bucket_policy(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/policy"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -1033,10 +1106,13 @@ get_bucket_tagging(Client, Bucket, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_tagging(Client, Bucket, AccountId, QueryMap, HeadersMap, []).
 
-get_bucket_tagging(Client, Bucket, AccountId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_bucket_tagging(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/tagging"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -1072,10 +1148,13 @@ get_job_tagging(Client, JobId, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_job_tagging(Client, JobId, AccountId, QueryMap, HeadersMap, []).
 
-get_job_tagging(Client, JobId, AccountId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_job_tagging(Client, JobId, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/jobs/", aws_util:encode_uri(JobId), "/tagging"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -1106,10 +1185,13 @@ get_public_access_block(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_public_access_block(Client, AccountId, QueryMap, HeadersMap, []).
 
-get_public_access_block(Client, AccountId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_public_access_block(Client, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/configuration/publicAccessBlock"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -1139,10 +1221,13 @@ get_storage_lens_configuration(Client, ConfigId, AccountId, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_storage_lens_configuration(Client, ConfigId, AccountId, QueryMap, HeadersMap, []).
 
-get_storage_lens_configuration(Client, ConfigId, AccountId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_storage_lens_configuration(Client, ConfigId, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/storagelens/", aws_util:encode_uri(ConfigId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -1172,10 +1257,13 @@ get_storage_lens_configuration_tagging(Client, ConfigId, AccountId, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_storage_lens_configuration_tagging(Client, ConfigId, AccountId, QueryMap, HeadersMap, []).
 
-get_storage_lens_configuration_tagging(Client, ConfigId, AccountId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_storage_lens_configuration_tagging(Client, ConfigId, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/storagelens/", aws_util:encode_uri(ConfigId), "/tagging"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -1219,10 +1307,13 @@ list_access_points(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_access_points(Client, AccountId, QueryMap, HeadersMap, []).
 
-list_access_points(Client, AccountId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_access_points(Client, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accesspoint"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -1265,10 +1356,13 @@ list_jobs(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_jobs(Client, AccountId, QueryMap, HeadersMap, []).
 
-list_jobs(Client, AccountId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_jobs(Client, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/jobs"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -1303,10 +1397,13 @@ list_regional_buckets(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_regional_buckets(Client, AccountId, QueryMap, HeadersMap, []).
 
-list_regional_buckets(Client, AccountId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_regional_buckets(Client, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/bucket"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -1342,10 +1439,13 @@ list_storage_lens_configurations(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_storage_lens_configurations(Client, AccountId, QueryMap, HeadersMap, []).
 
-list_storage_lens_configurations(Client, AccountId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_storage_lens_configurations(Client, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/storagelens"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -1382,10 +1482,14 @@ list_storage_lens_configurations(Client, AccountId, QueryMap, HeadersMap, Option
 %% </li> </ul>
 put_access_point_policy(Client, Name, Input) ->
     put_access_point_policy(Client, Name, Input, []).
-put_access_point_policy(Client, Name, Input0, Options) ->
+put_access_point_policy(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/accesspoint/", aws_util:encode_uri(Name), "/policy"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -1425,10 +1529,14 @@ put_access_point_policy(Client, Name, Input0, Options) ->
 %% </li> </ul>
 put_bucket_lifecycle_configuration(Client, Bucket, Input) ->
     put_bucket_lifecycle_configuration(Client, Bucket, Input, []).
-put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options) ->
+put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/lifecycleconfiguration"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -1482,10 +1590,14 @@ put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options) ->
 %% </li> </ul>
 put_bucket_policy(Client, Bucket, Input) ->
     put_bucket_policy(Client, Bucket, Input, []).
-put_bucket_policy(Client, Bucket, Input0, Options) ->
+put_bucket_policy(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/policy"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>},
@@ -1567,10 +1679,14 @@ put_bucket_policy(Client, Bucket, Input0, Options) ->
 %% </li> </ul>
 put_bucket_tagging(Client, Bucket, Input) ->
     put_bucket_tagging(Client, Bucket, Input, []).
-put_bucket_tagging(Client, Bucket, Input0, Options) ->
+put_bucket_tagging(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/tagging"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -1634,10 +1750,14 @@ put_bucket_tagging(Client, Bucket, Input0, Options) ->
 %% </li> </ul>
 put_job_tagging(Client, JobId, Input) ->
     put_job_tagging(Client, JobId, Input, []).
-put_job_tagging(Client, JobId, Input0, Options) ->
+put_job_tagging(Client, JobId, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/jobs/", aws_util:encode_uri(JobId), "/tagging"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -1663,10 +1783,14 @@ put_job_tagging(Client, JobId, Input0, Options) ->
 %% </li> </ul>
 put_public_access_block(Client, Input) ->
     put_public_access_block(Client, Input, []).
-put_public_access_block(Client, Input0, Options) ->
+put_public_access_block(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/configuration/publicAccessBlock"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -1689,10 +1813,14 @@ put_public_access_block(Client, Input0, Options) ->
 %% Service Developer Guide.
 put_storage_lens_configuration(Client, ConfigId, Input) ->
     put_storage_lens_configuration(Client, ConfigId, Input, []).
-put_storage_lens_configuration(Client, ConfigId, Input0, Options) ->
+put_storage_lens_configuration(Client, ConfigId, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/storagelens/", aws_util:encode_uri(ConfigId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -1717,10 +1845,14 @@ put_storage_lens_configuration(Client, ConfigId, Input0, Options) ->
 %% Storage Service Developer Guide.
 put_storage_lens_configuration_tagging(Client, ConfigId, Input) ->
     put_storage_lens_configuration_tagging(Client, ConfigId, Input, []).
-put_storage_lens_configuration_tagging(Client, ConfigId, Input0, Options) ->
+put_storage_lens_configuration_tagging(Client, ConfigId, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/storagelens/", aws_util:encode_uri(ConfigId), "/tagging"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -1750,10 +1882,14 @@ put_storage_lens_configuration_tagging(Client, ConfigId, Input0, Options) ->
 %% </li> </ul>
 update_job_priority(Client, JobId, Input) ->
     update_job_priority(Client, JobId, Input, []).
-update_job_priority(Client, JobId, Input0, Options) ->
+update_job_priority(Client, JobId, Input0, Options0) ->
     Method = post,
     Path = ["/v20180820/jobs/", aws_util:encode_uri(JobId), "/priority"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -1785,10 +1921,14 @@ update_job_priority(Client, JobId, Input0, Options) ->
 %% </li> </ul>
 update_job_status(Client, JobId, Input) ->
     update_job_status(Client, JobId, Input, []).
-update_job_status(Client, JobId, Input0, Options) ->
+update_job_status(Client, JobId, Input0, Options0) ->
     Method = post,
     Path = ["/v20180820/jobs/", aws_util:encode_uri(JobId), "/status"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -1825,19 +1965,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -1847,14 +1988,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = aws_util:decode_xml(Body),
+            Result = case DecodeBody of
+                       true -> aws_util:decode_xml(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = aws_util:decode_xml(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_AccountId, _EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

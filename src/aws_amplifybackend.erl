@@ -64,10 +64,14 @@
 %% @doc This operation clones an existing backend.
 clone_backend(Client, AppId, BackendEnvironmentName, Input) ->
     clone_backend(Client, AppId, BackendEnvironmentName, Input, []).
-clone_backend(Client, AppId, BackendEnvironmentName, Input0, Options) ->
+clone_backend(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/environments/", aws_util:encode_uri(BackendEnvironmentName), "/clone"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -82,10 +86,14 @@ clone_backend(Client, AppId, BackendEnvironmentName, Input0, Options) ->
 %% Backends are automatically created at the time of app creation.
 create_backend(Client, Input) ->
     create_backend(Client, Input, []).
-create_backend(Client, Input0, Options) ->
+create_backend(Client, Input0, Options0) ->
     Method = post,
     Path = ["/backend"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -98,10 +106,14 @@ create_backend(Client, Input0, Options) ->
 %% @doc Creates a new backend API resource.
 create_backend_api(Client, AppId, Input) ->
     create_backend_api(Client, AppId, Input, []).
-create_backend_api(Client, AppId, Input0, Options) ->
+create_backend_api(Client, AppId, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/api"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -114,10 +126,14 @@ create_backend_api(Client, AppId, Input0, Options) ->
 %% @doc Creates a new backend authentication resource.
 create_backend_auth(Client, AppId, Input) ->
     create_backend_auth(Client, AppId, Input, []).
-create_backend_auth(Client, AppId, Input0, Options) ->
+create_backend_auth(Client, AppId, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/auth"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -130,10 +146,14 @@ create_backend_auth(Client, AppId, Input0, Options) ->
 %% @doc Creates a config object for a backend.
 create_backend_config(Client, AppId, Input) ->
     create_backend_config(Client, AppId, Input, []).
-create_backend_config(Client, AppId, Input0, Options) ->
+create_backend_config(Client, AppId, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/config"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -147,10 +167,14 @@ create_backend_config(Client, AppId, Input0, Options) ->
 %% Amplify Admin UI.
 create_token(Client, AppId, Input) ->
     create_token(Client, AppId, Input, []).
-create_token(Client, AppId, Input0, Options) ->
+create_token(Client, AppId, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/challenge"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -163,10 +187,14 @@ create_token(Client, AppId, Input0, Options) ->
 %% @doc Removes an existing environment from your Amplify project.
 delete_backend(Client, AppId, BackendEnvironmentName, Input) ->
     delete_backend(Client, AppId, BackendEnvironmentName, Input, []).
-delete_backend(Client, AppId, BackendEnvironmentName, Input0, Options) ->
+delete_backend(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/environments/", aws_util:encode_uri(BackendEnvironmentName), "/remove"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -179,10 +207,14 @@ delete_backend(Client, AppId, BackendEnvironmentName, Input0, Options) ->
 %% @doc Deletes an existing backend API resource.
 delete_backend_api(Client, AppId, BackendEnvironmentName, Input) ->
     delete_backend_api(Client, AppId, BackendEnvironmentName, Input, []).
-delete_backend_api(Client, AppId, BackendEnvironmentName, Input0, Options) ->
+delete_backend_api(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/api/", aws_util:encode_uri(BackendEnvironmentName), "/remove"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -195,10 +227,14 @@ delete_backend_api(Client, AppId, BackendEnvironmentName, Input0, Options) ->
 %% @doc Deletes an existing backend authentication resource.
 delete_backend_auth(Client, AppId, BackendEnvironmentName, Input) ->
     delete_backend_auth(Client, AppId, BackendEnvironmentName, Input, []).
-delete_backend_auth(Client, AppId, BackendEnvironmentName, Input0, Options) ->
+delete_backend_auth(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/auth/", aws_util:encode_uri(BackendEnvironmentName), "/remove"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -211,10 +247,14 @@ delete_backend_auth(Client, AppId, BackendEnvironmentName, Input0, Options) ->
 %% @doc Deletes the challenge token based on the given appId and sessionId.
 delete_token(Client, AppId, SessionId, Input) ->
     delete_token(Client, AppId, SessionId, Input, []).
-delete_token(Client, AppId, SessionId, Input0, Options) ->
+delete_token(Client, AppId, SessionId, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/challenge/", aws_util:encode_uri(SessionId), "/remove"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -227,10 +267,14 @@ delete_token(Client, AppId, SessionId, Input0, Options) ->
 %% @doc Generates a model schema for an existing backend API resource.
 generate_backend_api_models(Client, AppId, BackendEnvironmentName, Input) ->
     generate_backend_api_models(Client, AppId, BackendEnvironmentName, Input, []).
-generate_backend_api_models(Client, AppId, BackendEnvironmentName, Input0, Options) ->
+generate_backend_api_models(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/api/", aws_util:encode_uri(BackendEnvironmentName), "/generateModels"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -243,10 +287,14 @@ generate_backend_api_models(Client, AppId, BackendEnvironmentName, Input0, Optio
 %% @doc Provides project-level details for your Amplify UI project.
 get_backend(Client, AppId, Input) ->
     get_backend(Client, AppId, Input, []).
-get_backend(Client, AppId, Input0, Options) ->
+get_backend(Client, AppId, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/details"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -259,10 +307,14 @@ get_backend(Client, AppId, Input0, Options) ->
 %% @doc Gets the details for a backend API.
 get_backend_api(Client, AppId, BackendEnvironmentName, Input) ->
     get_backend_api(Client, AppId, BackendEnvironmentName, Input, []).
-get_backend_api(Client, AppId, BackendEnvironmentName, Input0, Options) ->
+get_backend_api(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/api/", aws_util:encode_uri(BackendEnvironmentName), "/details"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -275,10 +327,14 @@ get_backend_api(Client, AppId, BackendEnvironmentName, Input0, Options) ->
 %% @doc Generates a model schema for existing backend API resource.
 get_backend_api_models(Client, AppId, BackendEnvironmentName, Input) ->
     get_backend_api_models(Client, AppId, BackendEnvironmentName, Input, []).
-get_backend_api_models(Client, AppId, BackendEnvironmentName, Input0, Options) ->
+get_backend_api_models(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/api/", aws_util:encode_uri(BackendEnvironmentName), "/getModels"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -291,10 +347,14 @@ get_backend_api_models(Client, AppId, BackendEnvironmentName, Input0, Options) -
 %% @doc Gets backend auth details.
 get_backend_auth(Client, AppId, BackendEnvironmentName, Input) ->
     get_backend_auth(Client, AppId, BackendEnvironmentName, Input, []).
-get_backend_auth(Client, AppId, BackendEnvironmentName, Input0, Options) ->
+get_backend_auth(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/auth/", aws_util:encode_uri(BackendEnvironmentName), "/details"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -313,10 +373,13 @@ get_backend_job(Client, AppId, BackendEnvironmentName, JobId, QueryMap, HeadersM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_backend_job(Client, AppId, BackendEnvironmentName, JobId, QueryMap, HeadersMap, []).
 
-get_backend_job(Client, AppId, BackendEnvironmentName, JobId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_backend_job(Client, AppId, BackendEnvironmentName, JobId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backend/", aws_util:encode_uri(AppId), "/job/", aws_util:encode_uri(BackendEnvironmentName), "/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -333,10 +396,13 @@ get_token(Client, AppId, SessionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_token(Client, AppId, SessionId, QueryMap, HeadersMap, []).
 
-get_token(Client, AppId, SessionId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_token(Client, AppId, SessionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backend/", aws_util:encode_uri(AppId), "/challenge/", aws_util:encode_uri(SessionId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -347,10 +413,14 @@ get_token(Client, AppId, SessionId, QueryMap, HeadersMap, Options)
 %% @doc Lists the jobs for the backend of an Amplify app.
 list_backend_jobs(Client, AppId, BackendEnvironmentName, Input) ->
     list_backend_jobs(Client, AppId, BackendEnvironmentName, Input, []).
-list_backend_jobs(Client, AppId, BackendEnvironmentName, Input0, Options) ->
+list_backend_jobs(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/job/", aws_util:encode_uri(BackendEnvironmentName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -363,10 +433,14 @@ list_backend_jobs(Client, AppId, BackendEnvironmentName, Input0, Options) ->
 %% @doc Removes all backend environments from your Amplify project.
 remove_all_backends(Client, AppId, Input) ->
     remove_all_backends(Client, AppId, Input, []).
-remove_all_backends(Client, AppId, Input0, Options) ->
+remove_all_backends(Client, AppId, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/remove"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -380,10 +454,14 @@ remove_all_backends(Client, AppId, Input0, Options) ->
 %% Admin UI.
 remove_backend_config(Client, AppId, Input) ->
     remove_backend_config(Client, AppId, Input, []).
-remove_backend_config(Client, AppId, Input0, Options) ->
+remove_backend_config(Client, AppId, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/config/remove"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -396,10 +474,14 @@ remove_backend_config(Client, AppId, Input0, Options) ->
 %% @doc Updates an existing backend API resource.
 update_backend_api(Client, AppId, BackendEnvironmentName, Input) ->
     update_backend_api(Client, AppId, BackendEnvironmentName, Input, []).
-update_backend_api(Client, AppId, BackendEnvironmentName, Input0, Options) ->
+update_backend_api(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/api/", aws_util:encode_uri(BackendEnvironmentName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -412,10 +494,14 @@ update_backend_api(Client, AppId, BackendEnvironmentName, Input0, Options) ->
 %% @doc Updates an existing backend authentication resource.
 update_backend_auth(Client, AppId, BackendEnvironmentName, Input) ->
     update_backend_auth(Client, AppId, BackendEnvironmentName, Input, []).
-update_backend_auth(Client, AppId, BackendEnvironmentName, Input0, Options) ->
+update_backend_auth(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/auth/", aws_util:encode_uri(BackendEnvironmentName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -429,10 +515,14 @@ update_backend_auth(Client, AppId, BackendEnvironmentName, Input0, Options) ->
 %% Admin UI.
 update_backend_config(Client, AppId, Input) ->
     update_backend_config(Client, AppId, Input, []).
-update_backend_config(Client, AppId, Input0, Options) ->
+update_backend_config(Client, AppId, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/config/update"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -445,10 +535,14 @@ update_backend_config(Client, AppId, Input0, Options) ->
 %% @doc Updates a specific job.
 update_backend_job(Client, AppId, BackendEnvironmentName, JobId, Input) ->
     update_backend_job(Client, AppId, BackendEnvironmentName, JobId, Input, []).
-update_backend_job(Client, AppId, BackendEnvironmentName, JobId, Input0, Options) ->
+update_backend_job(Client, AppId, BackendEnvironmentName, JobId, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/job/", aws_util:encode_uri(BackendEnvironmentName), "/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -480,19 +574,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -502,14 +597,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

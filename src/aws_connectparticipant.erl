@@ -38,10 +38,14 @@
 %% pre-signed URL provided in StartAttachmentUpload API.
 complete_attachment_upload(Client, Input) ->
     complete_attachment_upload(Client, Input, []).
-complete_attachment_upload(Client, Input0, Options) ->
+complete_attachment_upload(Client, Input0, Options0) ->
     Method = post,
     Path = ["/participant/complete-attachment-upload"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"X-Amz-Bearer">>, <<"ConnectionToken">>}
@@ -78,10 +82,14 @@ complete_attachment_upload(Client, Input0, Options) ->
 %% authentication.
 create_participant_connection(Client, Input) ->
     create_participant_connection(Client, Input, []).
-create_participant_connection(Client, Input0, Options) ->
+create_participant_connection(Client, Input0, Options0) ->
     Method = post,
     Path = ["/participant/connection"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"X-Amz-Bearer">>, <<"ParticipantToken">>}
@@ -102,10 +110,14 @@ create_participant_connection(Client, Input0, Options) ->
 %% authentication.
 disconnect_participant(Client, Input) ->
     disconnect_participant(Client, Input, []).
-disconnect_participant(Client, Input0, Options) ->
+disconnect_participant(Client, Input0, Options0) ->
     Method = post,
     Path = ["/participant/disconnect"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"X-Amz-Bearer">>, <<"ConnectionToken">>}
@@ -122,10 +134,14 @@ disconnect_participant(Client, Input0, Options) ->
 %% This is an asynchronous API for use with active contacts.
 get_attachment(Client, Input) ->
     get_attachment(Client, Input, []).
-get_attachment(Client, Input0, Options) ->
+get_attachment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/participant/attachment"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"X-Amz-Bearer">>, <<"ConnectionToken">>}
@@ -147,10 +163,14 @@ get_attachment(Client, Input0, Options) ->
 %% authentication.
 get_transcript(Client, Input) ->
     get_transcript(Client, Input, []).
-get_transcript(Client, Input0, Options) ->
+get_transcript(Client, Input0, Options0) ->
     Method = post,
     Path = ["/participant/transcript"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"X-Amz-Bearer">>, <<"ConnectionToken">>}
@@ -171,10 +191,14 @@ get_transcript(Client, Input0, Options) ->
 %% authentication.
 send_event(Client, Input) ->
     send_event(Client, Input, []).
-send_event(Client, Input0, Options) ->
+send_event(Client, Input0, Options0) ->
     Method = post,
     Path = ["/participant/event"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"X-Amz-Bearer">>, <<"ConnectionToken">>}
@@ -195,10 +219,14 @@ send_event(Client, Input0, Options) ->
 %% authentication.
 send_message(Client, Input) ->
     send_message(Client, Input, []).
-send_message(Client, Input0, Options) ->
+send_message(Client, Input0, Options0) ->
     Method = post,
     Path = ["/participant/message"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"X-Amz-Bearer">>, <<"ConnectionToken">>}
@@ -214,10 +242,14 @@ send_message(Client, Input0, Options) ->
 %% file directly to S3.
 start_attachment_upload(Client, Input) ->
     start_attachment_upload(Client, Input, []).
-start_attachment_upload(Client, Input0, Options) ->
+start_attachment_upload(Client, Input0, Options0) ->
     Method = post,
     Path = ["/participant/start-attachment-upload"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"X-Amz-Bearer">>, <<"ConnectionToken">>}
@@ -251,19 +283,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -273,14 +306,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

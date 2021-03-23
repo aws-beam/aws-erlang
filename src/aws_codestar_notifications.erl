@@ -95,10 +95,14 @@
 %% (such as SNS topics) where you want to receive them.
 create_notification_rule(Client, Input) ->
     create_notification_rule(Client, Input, []).
-create_notification_rule(Client, Input0, Options) ->
+create_notification_rule(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createNotificationRule"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -111,10 +115,14 @@ create_notification_rule(Client, Input0, Options) ->
 %% @doc Deletes a notification rule for a resource.
 delete_notification_rule(Client, Input) ->
     delete_notification_rule(Client, Input, []).
-delete_notification_rule(Client, Input0, Options) ->
+delete_notification_rule(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteNotificationRule"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -127,10 +135,14 @@ delete_notification_rule(Client, Input0, Options) ->
 %% @doc Deletes a specified target for notifications.
 delete_target(Client, Input) ->
     delete_target(Client, Input, []).
-delete_target(Client, Input0, Options) ->
+delete_target(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteTarget"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -143,10 +155,14 @@ delete_target(Client, Input0, Options) ->
 %% @doc Returns information about a specified notification rule.
 describe_notification_rule(Client, Input) ->
     describe_notification_rule(Client, Input, []).
-describe_notification_rule(Client, Input0, Options) ->
+describe_notification_rule(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeNotificationRule"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -160,10 +176,14 @@ describe_notification_rule(Client, Input0, Options) ->
 %% notifications.
 list_event_types(Client, Input) ->
     list_event_types(Client, Input, []).
-list_event_types(Client, Input0, Options) ->
+list_event_types(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listEventTypes"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -176,10 +196,14 @@ list_event_types(Client, Input0, Options) ->
 %% @doc Returns a list of the notification rules for an AWS account.
 list_notification_rules(Client, Input) ->
     list_notification_rules(Client, Input, []).
-list_notification_rules(Client, Input0, Options) ->
+list_notification_rules(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listNotificationRules"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -192,10 +216,14 @@ list_notification_rules(Client, Input0, Options) ->
 %% @doc Returns a list of the tags associated with a notification rule.
 list_tags_for_resource(Client, Input) ->
     list_tags_for_resource(Client, Input, []).
-list_tags_for_resource(Client, Input0, Options) ->
+list_tags_for_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listTagsForResource"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -208,10 +236,14 @@ list_tags_for_resource(Client, Input0, Options) ->
 %% @doc Returns a list of the notification rule targets for an AWS account.
 list_targets(Client, Input) ->
     list_targets(Client, Input, []).
-list_targets(Client, Input0, Options) ->
+list_targets(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listTargets"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -226,10 +258,14 @@ list_targets(Client, Input0, Options) ->
 %% described in the rule are triggered.
 subscribe(Client, Input) ->
     subscribe(Client, Input, []).
-subscribe(Client, Input0, Options) ->
+subscribe(Client, Input0, Options0) ->
     Method = post,
     Path = ["/subscribe"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -242,10 +278,14 @@ subscribe(Client, Input0, Options) ->
 %% @doc Associates a set of provided tags with a notification rule.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
-tag_resource(Client, Input0, Options) ->
+tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tagResource"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -260,10 +300,14 @@ tag_resource(Client, Input0, Options) ->
 %% the events described in the rule are triggered.
 unsubscribe(Client, Input) ->
     unsubscribe(Client, Input, []).
-unsubscribe(Client, Input0, Options) ->
+unsubscribe(Client, Input0, Options0) ->
     Method = post,
     Path = ["/unsubscribe"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -277,10 +321,14 @@ unsubscribe(Client, Input0, Options) ->
 %% notification rule.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
-untag_resource(Client, Input0, Options) ->
+untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/untagResource"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -299,10 +347,14 @@ untag_resource(Client, Input0, Options) ->
 %% and `UntagResource'.
 update_notification_rule(Client, Input) ->
     update_notification_rule(Client, Input, []).
-update_notification_rule(Client, Input0, Options) ->
+update_notification_rule(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateNotificationRule"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -334,19 +386,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -356,14 +409,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

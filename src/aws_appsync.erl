@@ -113,10 +113,14 @@
 %% @doc Creates a cache for the GraphQL API.
 create_api_cache(Client, ApiId, Input) ->
     create_api_cache(Client, ApiId, Input, []).
-create_api_cache(Client, ApiId, Input0, Options) ->
+create_api_cache(Client, ApiId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/ApiCaches"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -130,10 +134,14 @@ create_api_cache(Client, ApiId, Input0, Options) ->
 %% executing your API.
 create_api_key(Client, ApiId, Input) ->
     create_api_key(Client, ApiId, Input, []).
-create_api_key(Client, ApiId, Input0, Options) ->
+create_api_key(Client, ApiId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/apikeys"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -146,10 +154,14 @@ create_api_key(Client, ApiId, Input0, Options) ->
 %% @doc Creates a `DataSource' object.
 create_data_source(Client, ApiId, Input) ->
     create_data_source(Client, ApiId, Input, []).
-create_data_source(Client, ApiId, Input0, Options) ->
+create_data_source(Client, ApiId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/datasources"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -165,10 +177,14 @@ create_data_source(Client, ApiId, Input0, Options) ->
 %% the resolver logic.
 create_function(Client, ApiId, Input) ->
     create_function(Client, ApiId, Input, []).
-create_function(Client, ApiId, Input0, Options) ->
+create_function(Client, ApiId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/functions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -181,10 +197,14 @@ create_function(Client, ApiId, Input0, Options) ->
 %% @doc Creates a `GraphqlApi' object.
 create_graphql_api(Client, Input) ->
     create_graphql_api(Client, Input, []).
-create_graphql_api(Client, Input0, Options) ->
+create_graphql_api(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -200,10 +220,14 @@ create_graphql_api(Client, Input0, Options) ->
 %% understand and converts the data source's responses into GraphQL.
 create_resolver(Client, ApiId, TypeName, Input) ->
     create_resolver(Client, ApiId, TypeName, Input, []).
-create_resolver(Client, ApiId, TypeName, Input0, Options) ->
+create_resolver(Client, ApiId, TypeName, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), "/resolvers"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -216,10 +240,14 @@ create_resolver(Client, ApiId, TypeName, Input0, Options) ->
 %% @doc Creates a `Type' object.
 create_type(Client, ApiId, Input) ->
     create_type(Client, ApiId, Input, []).
-create_type(Client, ApiId, Input0, Options) ->
+create_type(Client, ApiId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -232,10 +260,14 @@ create_type(Client, ApiId, Input0, Options) ->
 %% @doc Deletes an `ApiCache' object.
 delete_api_cache(Client, ApiId, Input) ->
     delete_api_cache(Client, ApiId, Input, []).
-delete_api_cache(Client, ApiId, Input0, Options) ->
+delete_api_cache(Client, ApiId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/ApiCaches"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -248,10 +280,14 @@ delete_api_cache(Client, ApiId, Input0, Options) ->
 %% @doc Deletes an API key.
 delete_api_key(Client, ApiId, Id, Input) ->
     delete_api_key(Client, ApiId, Id, Input, []).
-delete_api_key(Client, ApiId, Id, Input0, Options) ->
+delete_api_key(Client, ApiId, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/apikeys/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -264,10 +300,14 @@ delete_api_key(Client, ApiId, Id, Input0, Options) ->
 %% @doc Deletes a `DataSource' object.
 delete_data_source(Client, ApiId, Name, Input) ->
     delete_data_source(Client, ApiId, Name, Input, []).
-delete_data_source(Client, ApiId, Name, Input0, Options) ->
+delete_data_source(Client, ApiId, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/datasources/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -280,10 +320,14 @@ delete_data_source(Client, ApiId, Name, Input0, Options) ->
 %% @doc Deletes a `Function'.
 delete_function(Client, ApiId, FunctionId, Input) ->
     delete_function(Client, ApiId, FunctionId, Input, []).
-delete_function(Client, ApiId, FunctionId, Input0, Options) ->
+delete_function(Client, ApiId, FunctionId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/functions/", aws_util:encode_uri(FunctionId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -296,10 +340,14 @@ delete_function(Client, ApiId, FunctionId, Input0, Options) ->
 %% @doc Deletes a `GraphqlApi' object.
 delete_graphql_api(Client, ApiId, Input) ->
     delete_graphql_api(Client, ApiId, Input, []).
-delete_graphql_api(Client, ApiId, Input0, Options) ->
+delete_graphql_api(Client, ApiId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -312,10 +360,14 @@ delete_graphql_api(Client, ApiId, Input0, Options) ->
 %% @doc Deletes a `Resolver' object.
 delete_resolver(Client, ApiId, FieldName, TypeName, Input) ->
     delete_resolver(Client, ApiId, FieldName, TypeName, Input, []).
-delete_resolver(Client, ApiId, FieldName, TypeName, Input0, Options) ->
+delete_resolver(Client, ApiId, FieldName, TypeName, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), "/resolvers/", aws_util:encode_uri(FieldName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -328,10 +380,14 @@ delete_resolver(Client, ApiId, FieldName, TypeName, Input0, Options) ->
 %% @doc Deletes a `Type' object.
 delete_type(Client, ApiId, TypeName, Input) ->
     delete_type(Client, ApiId, TypeName, Input, []).
-delete_type(Client, ApiId, TypeName, Input0, Options) ->
+delete_type(Client, ApiId, TypeName, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -344,10 +400,14 @@ delete_type(Client, ApiId, TypeName, Input0, Options) ->
 %% @doc Flushes an `ApiCache' object.
 flush_api_cache(Client, ApiId, Input) ->
     flush_api_cache(Client, ApiId, Input, []).
-flush_api_cache(Client, ApiId, Input0, Options) ->
+flush_api_cache(Client, ApiId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/FlushCache"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -366,10 +426,13 @@ get_api_cache(Client, ApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_api_cache(Client, ApiId, QueryMap, HeadersMap, []).
 
-get_api_cache(Client, ApiId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_api_cache(Client, ApiId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/ApiCaches"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -386,10 +449,13 @@ get_data_source(Client, ApiId, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_data_source(Client, ApiId, Name, QueryMap, HeadersMap, []).
 
-get_data_source(Client, ApiId, Name, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_data_source(Client, ApiId, Name, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/datasources/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -406,10 +472,13 @@ get_function(Client, ApiId, FunctionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_function(Client, ApiId, FunctionId, QueryMap, HeadersMap, []).
 
-get_function(Client, ApiId, FunctionId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_function(Client, ApiId, FunctionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/functions/", aws_util:encode_uri(FunctionId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -426,10 +495,13 @@ get_graphql_api(Client, ApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_graphql_api(Client, ApiId, QueryMap, HeadersMap, []).
 
-get_graphql_api(Client, ApiId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_graphql_api(Client, ApiId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -446,10 +518,13 @@ get_introspection_schema(Client, ApiId, Format, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_introspection_schema(Client, ApiId, Format, QueryMap, HeadersMap, []).
 
-get_introspection_schema(Client, ApiId, Format, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_introspection_schema(Client, ApiId, Format, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/schema"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -471,10 +546,13 @@ get_resolver(Client, ApiId, FieldName, TypeName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_resolver(Client, ApiId, FieldName, TypeName, QueryMap, HeadersMap, []).
 
-get_resolver(Client, ApiId, FieldName, TypeName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_resolver(Client, ApiId, FieldName, TypeName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), "/resolvers/", aws_util:encode_uri(FieldName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -491,10 +569,13 @@ get_schema_creation_status(Client, ApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_schema_creation_status(Client, ApiId, QueryMap, HeadersMap, []).
 
-get_schema_creation_status(Client, ApiId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_schema_creation_status(Client, ApiId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/schemacreation"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -511,10 +592,13 @@ get_type(Client, ApiId, TypeName, Format, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_type(Client, ApiId, TypeName, Format, QueryMap, HeadersMap, []).
 
-get_type(Client, ApiId, TypeName, Format, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_type(Client, ApiId, TypeName, Format, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -540,10 +624,13 @@ list_api_keys(Client, ApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_api_keys(Client, ApiId, QueryMap, HeadersMap, []).
 
-list_api_keys(Client, ApiId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_api_keys(Client, ApiId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/apikeys"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -565,10 +652,13 @@ list_data_sources(Client, ApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_data_sources(Client, ApiId, QueryMap, HeadersMap, []).
 
-list_data_sources(Client, ApiId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_data_sources(Client, ApiId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/datasources"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -590,10 +680,13 @@ list_functions(Client, ApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_functions(Client, ApiId, QueryMap, HeadersMap, []).
 
-list_functions(Client, ApiId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_functions(Client, ApiId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/functions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -615,10 +708,13 @@ list_graphql_apis(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_graphql_apis(Client, QueryMap, HeadersMap, []).
 
-list_graphql_apis(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_graphql_apis(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -640,10 +736,13 @@ list_resolvers(Client, ApiId, TypeName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_resolvers(Client, ApiId, TypeName, QueryMap, HeadersMap, []).
 
-list_resolvers(Client, ApiId, TypeName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_resolvers(Client, ApiId, TypeName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), "/resolvers"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -665,10 +764,13 @@ list_resolvers_by_function(Client, ApiId, FunctionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_resolvers_by_function(Client, ApiId, FunctionId, QueryMap, HeadersMap, []).
 
-list_resolvers_by_function(Client, ApiId, FunctionId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_resolvers_by_function(Client, ApiId, FunctionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/functions/", aws_util:encode_uri(FunctionId), "/resolvers"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -690,10 +792,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -710,10 +815,13 @@ list_types(Client, ApiId, Format, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_types(Client, ApiId, Format, QueryMap, HeadersMap, []).
 
-list_types(Client, ApiId, Format, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_types(Client, ApiId, Format, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -732,10 +840,14 @@ list_types(Client, ApiId, Format, QueryMap, HeadersMap, Options)
 %% This operation is asynchronous. Use to determine when it has completed.
 start_schema_creation(Client, ApiId, Input) ->
     start_schema_creation(Client, ApiId, Input, []).
-start_schema_creation(Client, ApiId, Input0, Options) ->
+start_schema_creation(Client, ApiId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/schemacreation"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -748,10 +860,14 @@ start_schema_creation(Client, ApiId, Input0, Options) ->
 %% @doc Tags a resource with user-supplied tags.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
-tag_resource(Client, ResourceArn, Input0, Options) ->
+tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -764,10 +880,14 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Untags a resource.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
-untag_resource(Client, ResourceArn, Input0, Options) ->
+untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -781,10 +901,14 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Updates the cache for the GraphQL API.
 update_api_cache(Client, ApiId, Input) ->
     update_api_cache(Client, ApiId, Input, []).
-update_api_cache(Client, ApiId, Input0, Options) ->
+update_api_cache(Client, ApiId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/ApiCaches/update"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -799,10 +923,14 @@ update_api_cache(Client, ApiId, Input0, Options) ->
 %% The key can be updated while it is not deleted.
 update_api_key(Client, ApiId, Id, Input) ->
     update_api_key(Client, ApiId, Id, Input, []).
-update_api_key(Client, ApiId, Id, Input0, Options) ->
+update_api_key(Client, ApiId, Id, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/apikeys/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -815,10 +943,14 @@ update_api_key(Client, ApiId, Id, Input0, Options) ->
 %% @doc Updates a `DataSource' object.
 update_data_source(Client, ApiId, Name, Input) ->
     update_data_source(Client, ApiId, Name, Input, []).
-update_data_source(Client, ApiId, Name, Input0, Options) ->
+update_data_source(Client, ApiId, Name, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/datasources/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -831,10 +963,14 @@ update_data_source(Client, ApiId, Name, Input0, Options) ->
 %% @doc Updates a `Function' object.
 update_function(Client, ApiId, FunctionId, Input) ->
     update_function(Client, ApiId, FunctionId, Input, []).
-update_function(Client, ApiId, FunctionId, Input0, Options) ->
+update_function(Client, ApiId, FunctionId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/functions/", aws_util:encode_uri(FunctionId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -847,10 +983,14 @@ update_function(Client, ApiId, FunctionId, Input0, Options) ->
 %% @doc Updates a `GraphqlApi' object.
 update_graphql_api(Client, ApiId, Input) ->
     update_graphql_api(Client, ApiId, Input, []).
-update_graphql_api(Client, ApiId, Input0, Options) ->
+update_graphql_api(Client, ApiId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -863,10 +1003,14 @@ update_graphql_api(Client, ApiId, Input0, Options) ->
 %% @doc Updates a `Resolver' object.
 update_resolver(Client, ApiId, FieldName, TypeName, Input) ->
     update_resolver(Client, ApiId, FieldName, TypeName, Input, []).
-update_resolver(Client, ApiId, FieldName, TypeName, Input0, Options) ->
+update_resolver(Client, ApiId, FieldName, TypeName, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), "/resolvers/", aws_util:encode_uri(FieldName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -879,10 +1023,14 @@ update_resolver(Client, ApiId, FieldName, TypeName, Input0, Options) ->
 %% @doc Updates a `Type' object.
 update_type(Client, ApiId, TypeName, Input) ->
     update_type(Client, ApiId, TypeName, Input, []).
-update_type(Client, ApiId, TypeName, Input0, Options) ->
+update_type(Client, ApiId, TypeName, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -914,19 +1062,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -936,14 +1085,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

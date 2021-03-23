@@ -59,10 +59,14 @@
 %% write new blocks to a snapshot after it has been completed.
 complete_snapshot(Client, SnapshotId, Input) ->
     complete_snapshot(Client, SnapshotId, Input, []).
-complete_snapshot(Client, SnapshotId, Input0, Options) ->
+complete_snapshot(Client, SnapshotId, Input0, Options0) ->
     Method = post,
     Path = ["/snapshots/completion/", aws_util:encode_uri(SnapshotId), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-ChangedBlocksCount">>, <<"ChangedBlocksCount">>},
@@ -87,10 +91,13 @@ get_snapshot_block(Client, BlockIndex, SnapshotId, BlockToken, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_snapshot_block(Client, BlockIndex, SnapshotId, BlockToken, QueryMap, HeadersMap, []).
 
-get_snapshot_block(Client, BlockIndex, SnapshotId, BlockToken, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_snapshot_block(Client, BlockIndex, SnapshotId, BlockToken, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/snapshots/", aws_util:encode_uri(SnapshotId), "/blocks/", aws_util:encode_uri(BlockIndex), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -130,10 +137,13 @@ list_changed_blocks(Client, SecondSnapshotId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_changed_blocks(Client, SecondSnapshotId, QueryMap, HeadersMap, []).
 
-list_changed_blocks(Client, SecondSnapshotId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_changed_blocks(Client, SecondSnapshotId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/snapshots/", aws_util:encode_uri(SecondSnapshotId), "/changedblocks"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -158,10 +168,13 @@ list_snapshot_blocks(Client, SnapshotId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_snapshot_blocks(Client, SnapshotId, QueryMap, HeadersMap, []).
 
-list_snapshot_blocks(Client, SnapshotId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_snapshot_blocks(Client, SnapshotId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/snapshots/", aws_util:encode_uri(SnapshotId), "/blocks"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -183,10 +196,14 @@ list_snapshot_blocks(Client, SnapshotId, QueryMap, HeadersMap, Options)
 %% Data written to a snapshot must be aligned with 512-byte sectors.
 put_snapshot_block(Client, BlockIndex, SnapshotId, Input) ->
     put_snapshot_block(Client, BlockIndex, SnapshotId, Input, []).
-put_snapshot_block(Client, BlockIndex, SnapshotId, Input0, Options) ->
+put_snapshot_block(Client, BlockIndex, SnapshotId, Input0, Options0) ->
     Method = put,
     Path = ["/snapshots/", aws_util:encode_uri(SnapshotId), "/blocks/", aws_util:encode_uri(BlockIndex), ""],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-Checksum">>, <<"Checksum">>},
@@ -226,10 +243,14 @@ put_snapshot_block(Client, BlockIndex, SnapshotId, Input0, Options) ->
 %% to the snapshot.
 start_snapshot(Client, Input) ->
     start_snapshot(Client, Input, []).
-start_snapshot(Client, Input0, Options) ->
+start_snapshot(Client, Input0, Options0) ->
     Method = post,
     Path = ["/snapshots"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -261,19 +282,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -283,14 +305,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

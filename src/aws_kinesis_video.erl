@@ -54,10 +54,14 @@
 %% `CreateSignalingChannel' is an asynchronous operation.
 create_signaling_channel(Client, Input) ->
     create_signaling_channel(Client, Input, []).
-create_signaling_channel(Client, Input0, Options) ->
+create_signaling_channel(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createSignalingChannel"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -80,10 +84,14 @@ create_signaling_channel(Client, Input0, Options) ->
 %% You must have permissions for the `KinesisVideo:CreateStream' action.
 create_stream(Client, Input) ->
     create_stream(Client, Input, []).
-create_stream(Client, Input0, Options) ->
+create_stream(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createStream"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -99,10 +107,14 @@ create_stream(Client, Input0, Options) ->
 %% specify the channel's current version, the most recent version is deleted.
 delete_signaling_channel(Client, Input) ->
     delete_signaling_channel(Client, Input, []).
-delete_signaling_channel(Client, Input0, Options) ->
+delete_signaling_channel(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteSignalingChannel"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -127,10 +139,14 @@ delete_signaling_channel(Client, Input0, Options) ->
 %% action.
 delete_stream(Client, Input) ->
     delete_stream(Client, Input, []).
-delete_stream(Client, Input0, Options) ->
+delete_stream(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteStream"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -146,10 +162,14 @@ delete_stream(Client, Input0, Options) ->
 %% channel that you want to describe.
 describe_signaling_channel(Client, Input) ->
     describe_signaling_channel(Client, Input, []).
-describe_signaling_channel(Client, Input0, Options) ->
+describe_signaling_channel(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeSignalingChannel"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -164,10 +184,14 @@ describe_signaling_channel(Client, Input0, Options) ->
 %% You must specify either the `StreamName' or the `StreamARN'.
 describe_stream(Client, Input) ->
     describe_stream(Client, Input, []).
-describe_stream(Client, Input0, Options) ->
+describe_stream(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeStream"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -190,10 +214,14 @@ describe_stream(Client, Input0, Options) ->
 %% In the request, specify the stream either by `StreamName' or `StreamARN'.
 get_data_endpoint(Client, Input) ->
     get_data_endpoint(Client, Input, []).
-get_data_endpoint(Client, Input0, Options) ->
+get_data_endpoint(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getDataEndpoint"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -221,10 +249,14 @@ get_data_endpoint(Client, Input0, Options) ->
 %% `MASTER'.
 get_signaling_channel_endpoint(Client, Input) ->
     get_signaling_channel_endpoint(Client, Input, []).
-get_signaling_channel_endpoint(Client, Input0, Options) ->
+get_signaling_channel_endpoint(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getSignalingChannelEndpoint"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -241,10 +273,14 @@ get_signaling_channel_endpoint(Client, Input0, Options) ->
 %% `ChannelNameCondition'.
 list_signaling_channels(Client, Input) ->
     list_signaling_channels(Client, Input, []).
-list_signaling_channels(Client, Input0, Options) ->
+list_signaling_channels(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listSignalingChannels"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -260,10 +296,14 @@ list_signaling_channels(Client, Input0, Options) ->
 %% specific condition, you can specify a `StreamNameCondition'.
 list_streams(Client, Input) ->
     list_streams(Client, Input, []).
-list_streams(Client, Input0, Options) ->
+list_streams(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listStreams"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -277,10 +317,14 @@ list_streams(Client, Input0, Options) ->
 %% channel.
 list_tags_for_resource(Client, Input) ->
     list_tags_for_resource(Client, Input, []).
-list_tags_for_resource(Client, Input0, Options) ->
+list_tags_for_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListTagsForResource"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -296,10 +340,14 @@ list_tags_for_resource(Client, Input0, Options) ->
 %% `StreamARN'.
 list_tags_for_stream(Client, Input) ->
     list_tags_for_stream(Client, Input, []).
-list_tags_for_stream(Client, Input0, Options) ->
+list_tags_for_stream(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listTagsForStream"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -318,10 +366,14 @@ list_tags_for_stream(Client, Input0, Options) ->
 %% Management User Guide.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
-tag_resource(Client, Input0, Options) ->
+tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/TagResource"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -347,10 +399,14 @@ tag_resource(Client, Input0, Options) ->
 %% Kinesis video streams support up to 50 tags.
 tag_stream(Client, Input) ->
     tag_stream(Client, Input, []).
-tag_stream(Client, Input0, Options) ->
+tag_stream(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tagStream"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -366,10 +422,14 @@ tag_stream(Client, Input0, Options) ->
 %% If you specify a tag key that does not exist, it's ignored.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
-untag_resource(Client, Input0, Options) ->
+untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UntagResource"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -387,10 +447,14 @@ untag_resource(Client, Input0, Options) ->
 %% In the request, you must provide the `StreamName' or `StreamARN'.
 untag_stream(Client, Input) ->
     untag_stream(Client, Input, []).
-untag_stream(Client, Input0, Options) ->
+untag_stream(Client, Input0, Options0) ->
     Method = post,
     Path = ["/untagStream"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -429,10 +493,14 @@ untag_stream(Client, Input0, Options) ->
 %% </li> </ul>
 update_data_retention(Client, Input) ->
     update_data_retention(Client, Input, []).
-update_data_retention(Client, Input0, Options) ->
+update_data_retention(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateDataRetention"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -452,10 +520,14 @@ update_data_retention(Client, Input0, Options) ->
 %% `MessageTtlSeconds' value.
 update_signaling_channel(Client, Input) ->
     update_signaling_channel(Client, Input, []).
-update_signaling_channel(Client, Input0, Options) ->
+update_signaling_channel(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateSignalingChannel"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -479,10 +551,14 @@ update_signaling_channel(Client, Input0, Options) ->
 %% `UpdateStream' is an asynchronous operation, and takes time to complete.
 update_stream(Client, Input) ->
     update_stream(Client, Input, []).
-update_stream(Client, Input0, Options) ->
+update_stream(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateStream"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -514,19 +590,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -536,14 +613,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

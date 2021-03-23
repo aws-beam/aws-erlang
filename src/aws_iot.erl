@@ -576,10 +576,14 @@
 %% enumerate your certificates.
 accept_certificate_transfer(Client, CertificateId, Input) ->
     accept_certificate_transfer(Client, CertificateId, Input, []).
-accept_certificate_transfer(Client, CertificateId, Input0, Options) ->
+accept_certificate_transfer(Client, CertificateId, Input0, Options0) ->
     Method = patch,
     Path = ["/accept-certificate-transfer/", aws_util:encode_uri(CertificateId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -593,10 +597,14 @@ accept_certificate_transfer(Client, CertificateId, Input0, Options) ->
 %% @doc Adds a thing to a billing group.
 add_thing_to_billing_group(Client, Input) ->
     add_thing_to_billing_group(Client, Input, []).
-add_thing_to_billing_group(Client, Input0, Options) ->
+add_thing_to_billing_group(Client, Input0, Options0) ->
     Method = put,
     Path = ["/billing-groups/addThingToBillingGroup"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -609,10 +617,14 @@ add_thing_to_billing_group(Client, Input0, Options) ->
 %% @doc Adds a thing to a thing group.
 add_thing_to_thing_group(Client, Input) ->
     add_thing_to_thing_group(Client, Input, []).
-add_thing_to_thing_group(Client, Input0, Options) ->
+add_thing_to_thing_group(Client, Input0, Options0) ->
     Method = put,
     Path = ["/thing-groups/addThingToThingGroup"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -637,10 +649,14 @@ add_thing_to_thing_group(Client, Input0, Options) ->
 %% </li> </ul>
 associate_targets_with_job(Client, JobId, Input) ->
     associate_targets_with_job(Client, JobId, Input, []).
-associate_targets_with_job(Client, JobId, Input0, Options) ->
+associate_targets_with_job(Client, JobId, Input0, Options0) ->
     Method = post,
     Path = ["/jobs/", aws_util:encode_uri(JobId), "/targets"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -654,10 +670,14 @@ associate_targets_with_job(Client, JobId, Input0, Options) ->
 %% @doc Attaches a policy to the specified target.
 attach_policy(Client, PolicyName, Input) ->
     attach_policy(Client, PolicyName, Input, []).
-attach_policy(Client, PolicyName, Input0, Options) ->
+attach_policy(Client, PolicyName, Input0, Options0) ->
     Method = put,
     Path = ["/target-policies/", aws_util:encode_uri(PolicyName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -673,10 +693,14 @@ attach_policy(Client, PolicyName, Input0, Options) ->
 %% Note: This API is deprecated. Please use `AttachPolicy' instead.
 attach_principal_policy(Client, PolicyName, Input) ->
     attach_principal_policy(Client, PolicyName, Input, []).
-attach_principal_policy(Client, PolicyName, Input0, Options) ->
+attach_principal_policy(Client, PolicyName, Input0, Options0) ->
     Method = put,
     Path = ["/principal-policies/", aws_util:encode_uri(PolicyName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amzn-iot-principal">>, <<"principal">>}
@@ -695,10 +719,14 @@ attach_principal_policy(Client, PolicyName, Input0, Options) ->
 %% associated with it.
 attach_security_profile(Client, SecurityProfileName, Input) ->
     attach_security_profile(Client, SecurityProfileName, Input, []).
-attach_security_profile(Client, SecurityProfileName, Input0, Options) ->
+attach_security_profile(Client, SecurityProfileName, Input0, Options0) ->
     Method = put,
     Path = ["/security-profiles/", aws_util:encode_uri(SecurityProfileName), "/targets"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -715,10 +743,14 @@ attach_security_profile(Client, SecurityProfileName, Input0, Options) ->
 %% Amazon Cognito identities or federated identities.
 attach_thing_principal(Client, ThingName, Input) ->
     attach_thing_principal(Client, ThingName, Input, []).
-attach_thing_principal(Client, ThingName, Input0, Options) ->
+attach_thing_principal(Client, ThingName, Input0, Options0) ->
     Method = put,
     Path = ["/things/", aws_util:encode_uri(ThingName), "/principals"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amzn-principal">>, <<"principal">>}
@@ -735,10 +767,14 @@ attach_thing_principal(Client, ThingName, Input0, Options) ->
 %% If the task is not in progress, an InvalidRequestException occurs.
 cancel_audit_mitigation_actions_task(Client, TaskId, Input) ->
     cancel_audit_mitigation_actions_task(Client, TaskId, Input, []).
-cancel_audit_mitigation_actions_task(Client, TaskId, Input0, Options) ->
+cancel_audit_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
     Method = put,
     Path = ["/audit/mitigationactions/tasks/", aws_util:encode_uri(TaskId), "/cancel"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -754,10 +790,14 @@ cancel_audit_mitigation_actions_task(Client, TaskId, Input0, Options) ->
 %% progress, an "InvalidRequestException" occurs.
 cancel_audit_task(Client, TaskId, Input) ->
     cancel_audit_task(Client, TaskId, Input, []).
-cancel_audit_task(Client, TaskId, Input0, Options) ->
+cancel_audit_task(Client, TaskId, Input0, Options0) ->
     Method = put,
     Path = ["/audit/tasks/", aws_util:encode_uri(TaskId), "/cancel"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -779,10 +819,14 @@ cancel_audit_task(Client, TaskId, Input0, Options) ->
 %% changes from PENDING_TRANSFER to INACTIVE.
 cancel_certificate_transfer(Client, CertificateId, Input) ->
     cancel_certificate_transfer(Client, CertificateId, Input, []).
-cancel_certificate_transfer(Client, CertificateId, Input0, Options) ->
+cancel_certificate_transfer(Client, CertificateId, Input0, Options0) ->
     Method = patch,
     Path = ["/cancel-certificate-transfer/", aws_util:encode_uri(CertificateId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -795,10 +839,14 @@ cancel_certificate_transfer(Client, CertificateId, Input0, Options) ->
 %% @doc Cancels a Device Defender ML Detect mitigation action.
 cancel_detect_mitigation_actions_task(Client, TaskId, Input) ->
     cancel_detect_mitigation_actions_task(Client, TaskId, Input, []).
-cancel_detect_mitigation_actions_task(Client, TaskId, Input0, Options) ->
+cancel_detect_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
     Method = put,
     Path = ["/detect/mitigationactions/tasks/", aws_util:encode_uri(TaskId), "/cancel"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -811,10 +859,14 @@ cancel_detect_mitigation_actions_task(Client, TaskId, Input0, Options) ->
 %% @doc Cancels a job.
 cancel_job(Client, JobId, Input) ->
     cancel_job(Client, JobId, Input, []).
-cancel_job(Client, JobId, Input0, Options) ->
+cancel_job(Client, JobId, Input0, Options0) ->
     Method = put,
     Path = ["/jobs/", aws_util:encode_uri(JobId), "/cancel"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -828,10 +880,14 @@ cancel_job(Client, JobId, Input0, Options) ->
 %% @doc Cancels the execution of a job for a given thing.
 cancel_job_execution(Client, JobId, ThingName, Input) ->
     cancel_job_execution(Client, JobId, ThingName, Input, []).
-cancel_job_execution(Client, JobId, ThingName, Input0, Options) ->
+cancel_job_execution(Client, JobId, ThingName, Input0, Options0) ->
     Method = put,
     Path = ["/things/", aws_util:encode_uri(ThingName), "/jobs/", aws_util:encode_uri(JobId), "/cancel"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -845,10 +901,14 @@ cancel_job_execution(Client, JobId, ThingName, Input0, Options) ->
 %% @doc Clears the default authorizer.
 clear_default_authorizer(Client, Input) ->
     clear_default_authorizer(Client, Input, []).
-clear_default_authorizer(Client, Input0, Options) ->
+clear_default_authorizer(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/default-authorizer"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -873,10 +933,13 @@ confirm_topic_rule_destination(Client, ConfirmationToken, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     confirm_topic_rule_destination(Client, ConfirmationToken, QueryMap, HeadersMap, []).
 
-confirm_topic_rule_destination(Client, ConfirmationToken, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+confirm_topic_rule_destination(Client, ConfirmationToken, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/confirmdestination/", aws_util:encode_multi_segment_uri(ConfirmationToken), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -887,10 +950,14 @@ confirm_topic_rule_destination(Client, ConfirmationToken, QueryMap, HeadersMap, 
 %% @doc Creates a Device Defender audit suppression.
 create_audit_suppression(Client, Input) ->
     create_audit_suppression(Client, Input, []).
-create_audit_suppression(Client, Input0, Options) ->
+create_audit_suppression(Client, Input0, Options0) ->
     Method = post,
     Path = ["/audit/suppressions/create"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -903,10 +970,14 @@ create_audit_suppression(Client, Input0, Options) ->
 %% @doc Creates an authorizer.
 create_authorizer(Client, AuthorizerName, Input) ->
     create_authorizer(Client, AuthorizerName, Input, []).
-create_authorizer(Client, AuthorizerName, Input0, Options) ->
+create_authorizer(Client, AuthorizerName, Input0, Options0) ->
     Method = post,
     Path = ["/authorizer/", aws_util:encode_uri(AuthorizerName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -919,10 +990,14 @@ create_authorizer(Client, AuthorizerName, Input0, Options) ->
 %% @doc Creates a billing group.
 create_billing_group(Client, BillingGroupName, Input) ->
     create_billing_group(Client, BillingGroupName, Input, []).
-create_billing_group(Client, BillingGroupName, Input0, Options) ->
+create_billing_group(Client, BillingGroupName, Input0, Options0) ->
     Method = post,
     Path = ["/billing-groups/", aws_util:encode_uri(BillingGroupName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -979,10 +1054,14 @@ create_billing_group(Client, BillingGroupName, Input0, Options) ->
 %% create-certificate-from-csr --certificate-signing-request file://@path"
 create_certificate_from_csr(Client, Input) ->
     create_certificate_from_csr(Client, Input, []).
-create_certificate_from_csr(Client, Input0, Options) ->
+create_certificate_from_csr(Client, Input0, Options0) ->
     Method = post,
     Path = ["/certificates"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -997,10 +1076,14 @@ create_certificate_from_csr(Client, Input0, Options) ->
 %% Device Defender.
 create_custom_metric(Client, MetricName, Input) ->
     create_custom_metric(Client, MetricName, Input, []).
-create_custom_metric(Client, MetricName, Input0, Options) ->
+create_custom_metric(Client, MetricName, Input0, Options0) ->
     Method = post,
     Path = ["/custom-metric/", aws_util:encode_uri(MetricName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1018,10 +1101,14 @@ create_custom_metric(Client, MetricName, Input0, Options) ->
 %% specified in the dimension.
 create_dimension(Client, Name, Input) ->
     create_dimension(Client, Name, Input, []).
-create_dimension(Client, Name, Input0, Options) ->
+create_dimension(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/dimensions/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1037,10 +1124,14 @@ create_dimension(Client, Name, Input0, Options) ->
 %% change.
 create_domain_configuration(Client, DomainConfigurationName, Input) ->
     create_domain_configuration(Client, DomainConfigurationName, Input, []).
-create_domain_configuration(Client, DomainConfigurationName, Input0, Options) ->
+create_domain_configuration(Client, DomainConfigurationName, Input0, Options0) ->
     Method = post,
     Path = ["/domainConfigurations/", aws_util:encode_uri(DomainConfigurationName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1053,10 +1144,14 @@ create_domain_configuration(Client, DomainConfigurationName, Input0, Options) ->
 %% @doc Creates a dynamic thing group.
 create_dynamic_thing_group(Client, ThingGroupName, Input) ->
     create_dynamic_thing_group(Client, ThingGroupName, Input, []).
-create_dynamic_thing_group(Client, ThingGroupName, Input0, Options) ->
+create_dynamic_thing_group(Client, ThingGroupName, Input0, Options0) ->
     Method = post,
     Path = ["/dynamic-thing-groups/", aws_util:encode_uri(ThingGroupName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1069,10 +1164,14 @@ create_dynamic_thing_group(Client, ThingGroupName, Input0, Options) ->
 %% @doc Creates a job.
 create_job(Client, JobId, Input) ->
     create_job(Client, JobId, Input, []).
-create_job(Client, JobId, Input0, Options) ->
+create_job(Client, JobId, Input0, Options0) ->
     Method = put,
     Path = ["/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1092,10 +1191,14 @@ create_job(Client, JobId, Input0, Options) ->
 %% certificate, so it is important to keep it in a secure location.
 create_keys_and_certificate(Client, Input) ->
     create_keys_and_certificate(Client, Input, []).
-create_keys_and_certificate(Client, Input0, Options) ->
+create_keys_and_certificate(Client, Input0, Options0) ->
     Method = post,
     Path = ["/keys-and-certificate"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1114,10 +1217,14 @@ create_keys_and_certificate(Client, Input0, Options) ->
 %% action can apply only one type of change.
 create_mitigation_action(Client, ActionName, Input) ->
     create_mitigation_action(Client, ActionName, Input, []).
-create_mitigation_action(Client, ActionName, Input0, Options) ->
+create_mitigation_action(Client, ActionName, Input0, Options0) ->
     Method = post,
     Path = ["/mitigationactions/actions/", aws_util:encode_uri(ActionName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1130,10 +1237,14 @@ create_mitigation_action(Client, ActionName, Input0, Options) ->
 %% @doc Creates an AWS IoT OTAUpdate on a target group of things or groups.
 create_ota_update(Client, OtaUpdateId, Input) ->
     create_ota_update(Client, OtaUpdateId, Input, []).
-create_ota_update(Client, OtaUpdateId, Input0, Options) ->
+create_ota_update(Client, OtaUpdateId, Input0, Options0) ->
     Method = post,
     Path = ["/otaUpdates/", aws_util:encode_uri(OtaUpdateId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1150,10 +1261,14 @@ create_ota_update(Client, OtaUpdateId, Input0, Options) ->
 %% policy's default version.
 create_policy(Client, PolicyName, Input) ->
     create_policy(Client, PolicyName, Input, []).
-create_policy(Client, PolicyName, Input0, Options) ->
+create_policy(Client, PolicyName, Input0, Options0) ->
     Method = post,
     Path = ["/policies/", aws_util:encode_uri(PolicyName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1175,10 +1290,14 @@ create_policy(Client, PolicyName, Input0, Options) ->
 %% in effect for the certificates to which the policy is attached).
 create_policy_version(Client, PolicyName, Input) ->
     create_policy_version(Client, PolicyName, Input, []).
-create_policy_version(Client, PolicyName, Input0, Options) ->
+create_policy_version(Client, PolicyName, Input0, Options0) ->
     Method = post,
     Path = ["/policies/", aws_util:encode_uri(PolicyName), "/version"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1192,10 +1311,14 @@ create_policy_version(Client, PolicyName, Input0, Options) ->
 %% @doc Creates a provisioning claim.
 create_provisioning_claim(Client, TemplateName, Input) ->
     create_provisioning_claim(Client, TemplateName, Input, []).
-create_provisioning_claim(Client, TemplateName, Input0, Options) ->
+create_provisioning_claim(Client, TemplateName, Input0, Options0) ->
     Method = post,
     Path = ["/provisioning-templates/", aws_util:encode_uri(TemplateName), "/provisioning-claim"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1208,10 +1331,14 @@ create_provisioning_claim(Client, TemplateName, Input0, Options) ->
 %% @doc Creates a fleet provisioning template.
 create_provisioning_template(Client, Input) ->
     create_provisioning_template(Client, Input, []).
-create_provisioning_template(Client, Input0, Options) ->
+create_provisioning_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/provisioning-templates"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1224,10 +1351,14 @@ create_provisioning_template(Client, Input0, Options) ->
 %% @doc Creates a new version of a fleet provisioning template.
 create_provisioning_template_version(Client, TemplateName, Input) ->
     create_provisioning_template_version(Client, TemplateName, Input, []).
-create_provisioning_template_version(Client, TemplateName, Input0, Options) ->
+create_provisioning_template_version(Client, TemplateName, Input0, Options0) ->
     Method = post,
     Path = ["/provisioning-templates/", aws_util:encode_uri(TemplateName), "/versions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1241,10 +1372,14 @@ create_provisioning_template_version(Client, TemplateName, Input0, Options) ->
 %% @doc Creates a role alias.
 create_role_alias(Client, RoleAlias, Input) ->
     create_role_alias(Client, RoleAlias, Input, []).
-create_role_alias(Client, RoleAlias, Input0, Options) ->
+create_role_alias(Client, RoleAlias, Input0, Options0) ->
     Method = post,
     Path = ["/role-aliases/", aws_util:encode_uri(RoleAlias), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1257,10 +1392,14 @@ create_role_alias(Client, RoleAlias, Input0, Options) ->
 %% @doc Creates a scheduled audit that is run at a specified time interval.
 create_scheduled_audit(Client, ScheduledAuditName, Input) ->
     create_scheduled_audit(Client, ScheduledAuditName, Input, []).
-create_scheduled_audit(Client, ScheduledAuditName, Input0, Options) ->
+create_scheduled_audit(Client, ScheduledAuditName, Input0, Options0) ->
     Method = post,
     Path = ["/audit/scheduledaudits/", aws_util:encode_uri(ScheduledAuditName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1273,10 +1412,14 @@ create_scheduled_audit(Client, ScheduledAuditName, Input0, Options) ->
 %% @doc Creates a Device Defender security profile.
 create_security_profile(Client, SecurityProfileName, Input) ->
     create_security_profile(Client, SecurityProfileName, Input, []).
-create_security_profile(Client, SecurityProfileName, Input0, Options) ->
+create_security_profile(Client, SecurityProfileName, Input0, Options0) ->
     Method = post,
     Path = ["/security-profiles/", aws_util:encode_uri(SecurityProfileName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1294,10 +1437,14 @@ create_security_profile(Client, SecurityProfileName, Input0, Options) ->
 %% with a stream.
 create_stream(Client, StreamId, Input) ->
     create_stream(Client, StreamId, Input, []).
-create_stream(Client, StreamId, Input0, Options) ->
+create_stream(Client, StreamId, Input0, Options0) ->
     Method = post,
     Path = ["/streams/", aws_util:encode_uri(StreamId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1318,10 +1465,14 @@ create_stream(Client, StreamId, Input0, Options) ->
 %% authorizing control plane actions.
 create_thing(Client, ThingName, Input) ->
     create_thing(Client, ThingName, Input, []).
-create_thing(Client, ThingName, Input0, Options) ->
+create_thing(Client, ThingName, Input0, Options0) ->
     Method = post,
     Path = ["/things/", aws_util:encode_uri(ThingName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1337,10 +1488,14 @@ create_thing(Client, ThingName, Input0, Options) ->
 %% authorizing control plane actions.
 create_thing_group(Client, ThingGroupName, Input) ->
     create_thing_group(Client, ThingGroupName, Input, []).
-create_thing_group(Client, ThingGroupName, Input0, Options) ->
+create_thing_group(Client, ThingGroupName, Input0, Options0) ->
     Method = post,
     Path = ["/thing-groups/", aws_util:encode_uri(ThingGroupName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1353,10 +1508,14 @@ create_thing_group(Client, ThingGroupName, Input0, Options) ->
 %% @doc Creates a new thing type.
 create_thing_type(Client, ThingTypeName, Input) ->
     create_thing_type(Client, ThingTypeName, Input, []).
-create_thing_type(Client, ThingTypeName, Input0, Options) ->
+create_thing_type(Client, ThingTypeName, Input0, Options0) ->
     Method = post,
     Path = ["/thing-types/", aws_util:encode_uri(ThingTypeName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1373,10 +1532,14 @@ create_thing_type(Client, ThingTypeName, Input0, Options) ->
 %% rule.
 create_topic_rule(Client, RuleName, Input) ->
     create_topic_rule(Client, RuleName, Input, []).
-create_topic_rule(Client, RuleName, Input0, Options) ->
+create_topic_rule(Client, RuleName, Input0, Options0) ->
     Method = post,
     Path = ["/rules/", aws_util:encode_uri(RuleName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-tagging">>, <<"tags">>}
@@ -1393,10 +1556,14 @@ create_topic_rule(Client, RuleName, Input0, Options) ->
 %% The destination must be confirmed prior to use.
 create_topic_rule_destination(Client, Input) ->
     create_topic_rule_destination(Client, Input, []).
-create_topic_rule_destination(Client, Input0, Options) ->
+create_topic_rule_destination(Client, Input0, Options0) ->
     Method = post,
     Path = ["/destinations"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1413,10 +1580,14 @@ create_topic_rule_destination(Client, Input0, Options) ->
 %% reset to disabled.
 delete_account_audit_configuration(Client, Input) ->
     delete_account_audit_configuration(Client, Input, []).
-delete_account_audit_configuration(Client, Input0, Options) ->
+delete_account_audit_configuration(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/audit/configuration"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1430,10 +1601,14 @@ delete_account_audit_configuration(Client, Input0, Options) ->
 %% @doc Deletes a Device Defender audit suppression.
 delete_audit_suppression(Client, Input) ->
     delete_audit_suppression(Client, Input, []).
-delete_audit_suppression(Client, Input0, Options) ->
+delete_audit_suppression(Client, Input0, Options0) ->
     Method = post,
     Path = ["/audit/suppressions/delete"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1446,10 +1621,14 @@ delete_audit_suppression(Client, Input0, Options) ->
 %% @doc Deletes an authorizer.
 delete_authorizer(Client, AuthorizerName, Input) ->
     delete_authorizer(Client, AuthorizerName, Input, []).
-delete_authorizer(Client, AuthorizerName, Input0, Options) ->
+delete_authorizer(Client, AuthorizerName, Input0, Options0) ->
     Method = delete,
     Path = ["/authorizer/", aws_util:encode_uri(AuthorizerName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1462,10 +1641,14 @@ delete_authorizer(Client, AuthorizerName, Input0, Options) ->
 %% @doc Deletes the billing group.
 delete_billing_group(Client, BillingGroupName, Input) ->
     delete_billing_group(Client, BillingGroupName, Input, []).
-delete_billing_group(Client, BillingGroupName, Input0, Options) ->
+delete_billing_group(Client, BillingGroupName, Input0, Options0) ->
     Method = delete,
     Path = ["/billing-groups/", aws_util:encode_uri(BillingGroupName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1479,10 +1662,14 @@ delete_billing_group(Client, BillingGroupName, Input0, Options) ->
 %% @doc Deletes a registered CA certificate.
 delete_ca_certificate(Client, CertificateId, Input) ->
     delete_ca_certificate(Client, CertificateId, Input, []).
-delete_ca_certificate(Client, CertificateId, Input0, Options) ->
+delete_ca_certificate(Client, CertificateId, Input0, Options0) ->
     Method = delete,
     Path = ["/cacertificate/", aws_util:encode_uri(CertificateId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1500,10 +1687,14 @@ delete_ca_certificate(Client, CertificateId, Input0, Options) ->
 %% `UpdateCertificate' API to set the certificate to the INACTIVE status.
 delete_certificate(Client, CertificateId, Input) ->
     delete_certificate(Client, CertificateId, Input, []).
-delete_certificate(Client, CertificateId, Input0, Options) ->
+delete_certificate(Client, CertificateId, Input0, Options0) ->
     Method = delete,
     Path = ["/certificates/", aws_util:encode_uri(CertificateId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1524,10 +1715,14 @@ delete_certificate(Client, CertificateId, Input0, Options) ->
 %% Deletes a Device Defender detect custom metric.
 delete_custom_metric(Client, MetricName, Input) ->
     delete_custom_metric(Client, MetricName, Input, []).
-delete_custom_metric(Client, MetricName, Input0, Options) ->
+delete_custom_metric(Client, MetricName, Input0, Options0) ->
     Method = delete,
     Path = ["/custom-metric/", aws_util:encode_uri(MetricName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1540,10 +1735,14 @@ delete_custom_metric(Client, MetricName, Input0, Options) ->
 %% @doc Removes the specified dimension from your AWS account.
 delete_dimension(Client, Name, Input) ->
     delete_dimension(Client, Name, Input, []).
-delete_dimension(Client, Name, Input0, Options) ->
+delete_dimension(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/dimensions/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1559,10 +1758,14 @@ delete_dimension(Client, Name, Input0, Options) ->
 %% change.
 delete_domain_configuration(Client, DomainConfigurationName, Input) ->
     delete_domain_configuration(Client, DomainConfigurationName, Input, []).
-delete_domain_configuration(Client, DomainConfigurationName, Input0, Options) ->
+delete_domain_configuration(Client, DomainConfigurationName, Input0, Options0) ->
     Method = delete,
     Path = ["/domainConfigurations/", aws_util:encode_uri(DomainConfigurationName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1575,10 +1778,14 @@ delete_domain_configuration(Client, DomainConfigurationName, Input0, Options) ->
 %% @doc Deletes a dynamic thing group.
 delete_dynamic_thing_group(Client, ThingGroupName, Input) ->
     delete_dynamic_thing_group(Client, ThingGroupName, Input, []).
-delete_dynamic_thing_group(Client, ThingGroupName, Input0, Options) ->
+delete_dynamic_thing_group(Client, ThingGroupName, Input0, Options0) ->
     Method = delete,
     Path = ["/dynamic-thing-groups/", aws_util:encode_uri(ThingGroupName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1601,10 +1808,14 @@ delete_dynamic_thing_group(Client, ThingGroupName, Input0, Options) ->
 %% LimitExceededException will occur.
 delete_job(Client, JobId, Input) ->
     delete_job(Client, JobId, Input, []).
-delete_job(Client, JobId, Input0, Options) ->
+delete_job(Client, JobId, Input0, Options0) ->
     Method = delete,
     Path = ["/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1619,10 +1830,14 @@ delete_job(Client, JobId, Input0, Options) ->
 %% @doc Deletes a job execution.
 delete_job_execution(Client, ExecutionNumber, JobId, ThingName, Input) ->
     delete_job_execution(Client, ExecutionNumber, JobId, ThingName, Input, []).
-delete_job_execution(Client, ExecutionNumber, JobId, ThingName, Input0, Options) ->
+delete_job_execution(Client, ExecutionNumber, JobId, ThingName, Input0, Options0) ->
     Method = delete,
     Path = ["/things/", aws_util:encode_uri(ThingName), "/jobs/", aws_util:encode_uri(JobId), "/executionNumber/", aws_util:encode_uri(ExecutionNumber), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1637,10 +1852,14 @@ delete_job_execution(Client, ExecutionNumber, JobId, ThingName, Input0, Options)
 %% @doc Deletes a defined mitigation action from your AWS account.
 delete_mitigation_action(Client, ActionName, Input) ->
     delete_mitigation_action(Client, ActionName, Input, []).
-delete_mitigation_action(Client, ActionName, Input0, Options) ->
+delete_mitigation_action(Client, ActionName, Input0, Options0) ->
     Method = delete,
     Path = ["/mitigationactions/actions/", aws_util:encode_uri(ActionName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1653,10 +1872,14 @@ delete_mitigation_action(Client, ActionName, Input0, Options) ->
 %% @doc Delete an OTA update.
 delete_ota_update(Client, OtaUpdateId, Input) ->
     delete_ota_update(Client, OtaUpdateId, Input, []).
-delete_ota_update(Client, OtaUpdateId, Input0, Options) ->
+delete_ota_update(Client, OtaUpdateId, Input0, Options0) ->
     Method = delete,
     Path = ["/otaUpdates/", aws_util:encode_uri(OtaUpdateId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1682,10 +1905,14 @@ delete_ota_update(Client, OtaUpdateId, Input0, Options) ->
 %% deleted with it.
 delete_policy(Client, PolicyName, Input) ->
     delete_policy(Client, PolicyName, Input, []).
-delete_policy(Client, PolicyName, Input0, Options) ->
+delete_policy(Client, PolicyName, Input0, Options0) ->
     Method = delete,
     Path = ["/policies/", aws_util:encode_uri(PolicyName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1703,10 +1930,14 @@ delete_policy(Client, PolicyName, Input0, Options) ->
 %% ListPolicyVersions.
 delete_policy_version(Client, PolicyName, PolicyVersionId, Input) ->
     delete_policy_version(Client, PolicyName, PolicyVersionId, Input, []).
-delete_policy_version(Client, PolicyName, PolicyVersionId, Input0, Options) ->
+delete_policy_version(Client, PolicyName, PolicyVersionId, Input0, Options0) ->
     Method = delete,
     Path = ["/policies/", aws_util:encode_uri(PolicyName), "/version/", aws_util:encode_uri(PolicyVersionId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1719,10 +1950,14 @@ delete_policy_version(Client, PolicyName, PolicyVersionId, Input0, Options) ->
 %% @doc Deletes a fleet provisioning template.
 delete_provisioning_template(Client, TemplateName, Input) ->
     delete_provisioning_template(Client, TemplateName, Input, []).
-delete_provisioning_template(Client, TemplateName, Input0, Options) ->
+delete_provisioning_template(Client, TemplateName, Input0, Options0) ->
     Method = delete,
     Path = ["/provisioning-templates/", aws_util:encode_uri(TemplateName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1735,10 +1970,14 @@ delete_provisioning_template(Client, TemplateName, Input0, Options) ->
 %% @doc Deletes a fleet provisioning template version.
 delete_provisioning_template_version(Client, TemplateName, VersionId, Input) ->
     delete_provisioning_template_version(Client, TemplateName, VersionId, Input, []).
-delete_provisioning_template_version(Client, TemplateName, VersionId, Input0, Options) ->
+delete_provisioning_template_version(Client, TemplateName, VersionId, Input0, Options0) ->
     Method = delete,
     Path = ["/provisioning-templates/", aws_util:encode_uri(TemplateName), "/versions/", aws_util:encode_uri(VersionId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1751,10 +1990,14 @@ delete_provisioning_template_version(Client, TemplateName, VersionId, Input0, Op
 %% @doc Deletes a CA certificate registration code.
 delete_registration_code(Client, Input) ->
     delete_registration_code(Client, Input, []).
-delete_registration_code(Client, Input0, Options) ->
+delete_registration_code(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/registrationcode"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1767,10 +2010,14 @@ delete_registration_code(Client, Input0, Options) ->
 %% @doc Deletes a role alias
 delete_role_alias(Client, RoleAlias, Input) ->
     delete_role_alias(Client, RoleAlias, Input, []).
-delete_role_alias(Client, RoleAlias, Input0, Options) ->
+delete_role_alias(Client, RoleAlias, Input0, Options0) ->
     Method = delete,
     Path = ["/role-aliases/", aws_util:encode_uri(RoleAlias), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1783,10 +2030,14 @@ delete_role_alias(Client, RoleAlias, Input0, Options) ->
 %% @doc Deletes a scheduled audit.
 delete_scheduled_audit(Client, ScheduledAuditName, Input) ->
     delete_scheduled_audit(Client, ScheduledAuditName, Input, []).
-delete_scheduled_audit(Client, ScheduledAuditName, Input0, Options) ->
+delete_scheduled_audit(Client, ScheduledAuditName, Input0, Options0) ->
     Method = delete,
     Path = ["/audit/scheduledaudits/", aws_util:encode_uri(ScheduledAuditName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1799,10 +2050,14 @@ delete_scheduled_audit(Client, ScheduledAuditName, Input0, Options) ->
 %% @doc Deletes a Device Defender security profile.
 delete_security_profile(Client, SecurityProfileName, Input) ->
     delete_security_profile(Client, SecurityProfileName, Input, []).
-delete_security_profile(Client, SecurityProfileName, Input0, Options) ->
+delete_security_profile(Client, SecurityProfileName, Input0, Options0) ->
     Method = delete,
     Path = ["/security-profiles/", aws_util:encode_uri(SecurityProfileName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1816,10 +2071,14 @@ delete_security_profile(Client, SecurityProfileName, Input0, Options) ->
 %% @doc Deletes a stream.
 delete_stream(Client, StreamId, Input) ->
     delete_stream(Client, StreamId, Input, []).
-delete_stream(Client, StreamId, Input0, Options) ->
+delete_stream(Client, StreamId, Input0, Options0) ->
     Method = delete,
     Path = ["/streams/", aws_util:encode_uri(StreamId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1835,10 +2094,14 @@ delete_stream(Client, StreamId, Input0, Options) ->
 %% specify a thing that doesn't exist.
 delete_thing(Client, ThingName, Input) ->
     delete_thing(Client, ThingName, Input, []).
-delete_thing(Client, ThingName, Input0, Options) ->
+delete_thing(Client, ThingName, Input0, Options0) ->
     Method = delete,
     Path = ["/things/", aws_util:encode_uri(ThingName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1852,10 +2115,14 @@ delete_thing(Client, ThingName, Input0, Options) ->
 %% @doc Deletes a thing group.
 delete_thing_group(Client, ThingGroupName, Input) ->
     delete_thing_group(Client, ThingGroupName, Input, []).
-delete_thing_group(Client, ThingGroupName, Input0, Options) ->
+delete_thing_group(Client, ThingGroupName, Input0, Options0) ->
     Method = delete,
     Path = ["/thing-groups/", aws_util:encode_uri(ThingGroupName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1875,10 +2142,14 @@ delete_thing_group(Client, ThingGroupName, Input0, Options) ->
 %% finally use `DeleteThingType' to delete the thing type.
 delete_thing_type(Client, ThingTypeName, Input) ->
     delete_thing_type(Client, ThingTypeName, Input, []).
-delete_thing_type(Client, ThingTypeName, Input0, Options) ->
+delete_thing_type(Client, ThingTypeName, Input0, Options0) ->
     Method = delete,
     Path = ["/thing-types/", aws_util:encode_uri(ThingTypeName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1891,10 +2162,14 @@ delete_thing_type(Client, ThingTypeName, Input0, Options) ->
 %% @doc Deletes the rule.
 delete_topic_rule(Client, RuleName, Input) ->
     delete_topic_rule(Client, RuleName, Input, []).
-delete_topic_rule(Client, RuleName, Input0, Options) ->
+delete_topic_rule(Client, RuleName, Input0, Options0) ->
     Method = delete,
     Path = ["/rules/", aws_util:encode_uri(RuleName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1907,10 +2182,14 @@ delete_topic_rule(Client, RuleName, Input0, Options) ->
 %% @doc Deletes a topic rule destination.
 delete_topic_rule_destination(Client, Arn, Input) ->
     delete_topic_rule_destination(Client, Arn, Input, []).
-delete_topic_rule_destination(Client, Arn, Input0, Options) ->
+delete_topic_rule_destination(Client, Arn, Input0, Options0) ->
     Method = delete,
     Path = ["/destinations/", aws_util:encode_multi_segment_uri(Arn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1923,10 +2202,14 @@ delete_topic_rule_destination(Client, Arn, Input0, Options) ->
 %% @doc Deletes a logging level.
 delete_v2_logging_level(Client, Input) ->
     delete_v2_logging_level(Client, Input, []).
-delete_v2_logging_level(Client, Input0, Options) ->
+delete_v2_logging_level(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/v2LoggingLevel"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1943,10 +2226,14 @@ delete_v2_logging_level(Client, Input0, Options) ->
 %% You can not associate new things with deprecated thing type.
 deprecate_thing_type(Client, ThingTypeName, Input) ->
     deprecate_thing_type(Client, ThingTypeName, Input, []).
-deprecate_thing_type(Client, ThingTypeName, Input0, Options) ->
+deprecate_thing_type(Client, ThingTypeName, Input0, Options0) ->
     Method = post,
     Path = ["/thing-types/", aws_util:encode_uri(ThingTypeName), "/deprecate"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1969,10 +2256,13 @@ describe_account_audit_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_account_audit_configuration(Client, QueryMap, HeadersMap, []).
 
-describe_account_audit_configuration(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_account_audit_configuration(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/configuration"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1992,10 +2282,13 @@ describe_audit_finding(Client, FindingId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_audit_finding(Client, FindingId, QueryMap, HeadersMap, []).
 
-describe_audit_finding(Client, FindingId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_audit_finding(Client, FindingId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/findings/", aws_util:encode_uri(FindingId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2016,10 +2309,13 @@ describe_audit_mitigation_actions_task(Client, TaskId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_audit_mitigation_actions_task(Client, TaskId, QueryMap, HeadersMap, []).
 
-describe_audit_mitigation_actions_task(Client, TaskId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_audit_mitigation_actions_task(Client, TaskId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/mitigationactions/tasks/", aws_util:encode_uri(TaskId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2030,10 +2326,14 @@ describe_audit_mitigation_actions_task(Client, TaskId, QueryMap, HeadersMap, Opt
 %% @doc Gets information about a Device Defender audit suppression.
 describe_audit_suppression(Client, Input) ->
     describe_audit_suppression(Client, Input, []).
-describe_audit_suppression(Client, Input0, Options) ->
+describe_audit_suppression(Client, Input0, Options0) ->
     Method = post,
     Path = ["/audit/suppressions/describe"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2052,10 +2352,13 @@ describe_audit_task(Client, TaskId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_audit_task(Client, TaskId, QueryMap, HeadersMap, []).
 
-describe_audit_task(Client, TaskId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_audit_task(Client, TaskId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/tasks/", aws_util:encode_uri(TaskId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2072,10 +2375,13 @@ describe_authorizer(Client, AuthorizerName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_authorizer(Client, AuthorizerName, QueryMap, HeadersMap, []).
 
-describe_authorizer(Client, AuthorizerName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_authorizer(Client, AuthorizerName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/authorizer/", aws_util:encode_uri(AuthorizerName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2092,10 +2398,13 @@ describe_billing_group(Client, BillingGroupName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_billing_group(Client, BillingGroupName, QueryMap, HeadersMap, []).
 
-describe_billing_group(Client, BillingGroupName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_billing_group(Client, BillingGroupName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/billing-groups/", aws_util:encode_uri(BillingGroupName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2112,10 +2421,13 @@ describe_ca_certificate(Client, CertificateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_ca_certificate(Client, CertificateId, QueryMap, HeadersMap, []).
 
-describe_ca_certificate(Client, CertificateId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_ca_certificate(Client, CertificateId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/cacertificate/", aws_util:encode_uri(CertificateId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2132,10 +2444,13 @@ describe_certificate(Client, CertificateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_certificate(Client, CertificateId, QueryMap, HeadersMap, []).
 
-describe_certificate(Client, CertificateId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_certificate(Client, CertificateId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/certificates/", aws_util:encode_uri(CertificateId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2152,10 +2467,13 @@ describe_custom_metric(Client, MetricName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_custom_metric(Client, MetricName, QueryMap, HeadersMap, []).
 
-describe_custom_metric(Client, MetricName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_custom_metric(Client, MetricName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/custom-metric/", aws_util:encode_uri(MetricName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2172,10 +2490,13 @@ describe_default_authorizer(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_default_authorizer(Client, QueryMap, HeadersMap, []).
 
-describe_default_authorizer(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_default_authorizer(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/default-authorizer"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2192,10 +2513,13 @@ describe_detect_mitigation_actions_task(Client, TaskId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_detect_mitigation_actions_task(Client, TaskId, QueryMap, HeadersMap, []).
 
-describe_detect_mitigation_actions_task(Client, TaskId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_detect_mitigation_actions_task(Client, TaskId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detect/mitigationactions/tasks/", aws_util:encode_uri(TaskId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2213,10 +2537,13 @@ describe_dimension(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_dimension(Client, Name, QueryMap, HeadersMap, []).
 
-describe_dimension(Client, Name, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_dimension(Client, Name, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/dimensions/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2236,10 +2563,13 @@ describe_domain_configuration(Client, DomainConfigurationName, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_domain_configuration(Client, DomainConfigurationName, QueryMap, HeadersMap, []).
 
-describe_domain_configuration(Client, DomainConfigurationName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_domain_configuration(Client, DomainConfigurationName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domainConfigurations/", aws_util:encode_uri(DomainConfigurationName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2257,10 +2587,13 @@ describe_endpoint(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_endpoint(Client, QueryMap, HeadersMap, []).
 
-describe_endpoint(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_endpoint(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/endpoint"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2281,10 +2614,13 @@ describe_event_configurations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_event_configurations(Client, QueryMap, HeadersMap, []).
 
-describe_event_configurations(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_event_configurations(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/event-configurations"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2301,10 +2637,13 @@ describe_index(Client, IndexName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_index(Client, IndexName, QueryMap, HeadersMap, []).
 
-describe_index(Client, IndexName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_index(Client, IndexName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/indices/", aws_util:encode_uri(IndexName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2321,10 +2660,13 @@ describe_job(Client, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_job(Client, JobId, QueryMap, HeadersMap, []).
 
-describe_job(Client, JobId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_job(Client, JobId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2341,10 +2683,13 @@ describe_job_execution(Client, JobId, ThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_job_execution(Client, JobId, ThingName, QueryMap, HeadersMap, []).
 
-describe_job_execution(Client, JobId, ThingName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_job_execution(Client, JobId, ThingName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/things/", aws_util:encode_uri(ThingName), "/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2365,10 +2710,13 @@ describe_mitigation_action(Client, ActionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_mitigation_action(Client, ActionName, QueryMap, HeadersMap, []).
 
-describe_mitigation_action(Client, ActionName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_mitigation_action(Client, ActionName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/mitigationactions/actions/", aws_util:encode_uri(ActionName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2385,10 +2733,13 @@ describe_provisioning_template(Client, TemplateName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_provisioning_template(Client, TemplateName, QueryMap, HeadersMap, []).
 
-describe_provisioning_template(Client, TemplateName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_provisioning_template(Client, TemplateName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/provisioning-templates/", aws_util:encode_uri(TemplateName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2405,10 +2756,13 @@ describe_provisioning_template_version(Client, TemplateName, VersionId, QueryMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_provisioning_template_version(Client, TemplateName, VersionId, QueryMap, HeadersMap, []).
 
-describe_provisioning_template_version(Client, TemplateName, VersionId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_provisioning_template_version(Client, TemplateName, VersionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/provisioning-templates/", aws_util:encode_uri(TemplateName), "/versions/", aws_util:encode_uri(VersionId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2425,10 +2779,13 @@ describe_role_alias(Client, RoleAlias, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_role_alias(Client, RoleAlias, QueryMap, HeadersMap, []).
 
-describe_role_alias(Client, RoleAlias, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_role_alias(Client, RoleAlias, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/role-aliases/", aws_util:encode_uri(RoleAlias), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2445,10 +2802,13 @@ describe_scheduled_audit(Client, ScheduledAuditName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_scheduled_audit(Client, ScheduledAuditName, QueryMap, HeadersMap, []).
 
-describe_scheduled_audit(Client, ScheduledAuditName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_scheduled_audit(Client, ScheduledAuditName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/scheduledaudits/", aws_util:encode_uri(ScheduledAuditName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2465,10 +2825,13 @@ describe_security_profile(Client, SecurityProfileName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_security_profile(Client, SecurityProfileName, QueryMap, HeadersMap, []).
 
-describe_security_profile(Client, SecurityProfileName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_security_profile(Client, SecurityProfileName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/security-profiles/", aws_util:encode_uri(SecurityProfileName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2485,10 +2848,13 @@ describe_stream(Client, StreamId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_stream(Client, StreamId, QueryMap, HeadersMap, []).
 
-describe_stream(Client, StreamId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_stream(Client, StreamId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/streams/", aws_util:encode_uri(StreamId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2505,10 +2871,13 @@ describe_thing(Client, ThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_thing(Client, ThingName, QueryMap, HeadersMap, []).
 
-describe_thing(Client, ThingName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_thing(Client, ThingName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/things/", aws_util:encode_uri(ThingName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2525,10 +2894,13 @@ describe_thing_group(Client, ThingGroupName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_thing_group(Client, ThingGroupName, QueryMap, HeadersMap, []).
 
-describe_thing_group(Client, ThingGroupName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_thing_group(Client, ThingGroupName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/thing-groups/", aws_util:encode_uri(ThingGroupName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2545,10 +2917,13 @@ describe_thing_registration_task(Client, TaskId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_thing_registration_task(Client, TaskId, QueryMap, HeadersMap, []).
 
-describe_thing_registration_task(Client, TaskId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_thing_registration_task(Client, TaskId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/thing-registration-tasks/", aws_util:encode_uri(TaskId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2565,10 +2940,13 @@ describe_thing_type(Client, ThingTypeName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_thing_type(Client, ThingTypeName, QueryMap, HeadersMap, []).
 
-describe_thing_type(Client, ThingTypeName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_thing_type(Client, ThingTypeName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/thing-types/", aws_util:encode_uri(ThingTypeName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2579,10 +2957,14 @@ describe_thing_type(Client, ThingTypeName, QueryMap, HeadersMap, Options)
 %% @doc Detaches a policy from the specified target.
 detach_policy(Client, PolicyName, Input) ->
     detach_policy(Client, PolicyName, Input, []).
-detach_policy(Client, PolicyName, Input0, Options) ->
+detach_policy(Client, PolicyName, Input0, Options0) ->
     Method = post,
     Path = ["/target-policies/", aws_util:encode_uri(PolicyName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2597,10 +2979,14 @@ detach_policy(Client, PolicyName, Input0, Options) ->
 %% Note: This API is deprecated. Please use `DetachPolicy' instead.
 detach_principal_policy(Client, PolicyName, Input) ->
     detach_principal_policy(Client, PolicyName, Input, []).
-detach_principal_policy(Client, PolicyName, Input0, Options) ->
+detach_principal_policy(Client, PolicyName, Input0, Options0) ->
     Method = delete,
     Path = ["/principal-policies/", aws_util:encode_uri(PolicyName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amzn-iot-principal">>, <<"principal">>}
@@ -2616,10 +3002,14 @@ detach_principal_policy(Client, PolicyName, Input0, Options) ->
 %% or from this account.
 detach_security_profile(Client, SecurityProfileName, Input) ->
     detach_security_profile(Client, SecurityProfileName, Input, []).
-detach_security_profile(Client, SecurityProfileName, Input0, Options) ->
+detach_security_profile(Client, SecurityProfileName, Input0, Options0) ->
     Method = delete,
     Path = ["/security-profiles/", aws_util:encode_uri(SecurityProfileName), "/targets"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2639,10 +3029,14 @@ detach_security_profile(Client, SecurityProfileName, Input0, Options) ->
 %% detachment to propagate.
 detach_thing_principal(Client, ThingName, Input) ->
     detach_thing_principal(Client, ThingName, Input, []).
-detach_thing_principal(Client, ThingName, Input0, Options) ->
+detach_thing_principal(Client, ThingName, Input0, Options0) ->
     Method = delete,
     Path = ["/things/", aws_util:encode_uri(ThingName), "/principals"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amzn-principal">>, <<"principal">>}
@@ -2657,10 +3051,14 @@ detach_thing_principal(Client, ThingName, Input0, Options) ->
 %% @doc Disables the rule.
 disable_topic_rule(Client, RuleName, Input) ->
     disable_topic_rule(Client, RuleName, Input, []).
-disable_topic_rule(Client, RuleName, Input0, Options) ->
+disable_topic_rule(Client, RuleName, Input0, Options0) ->
     Method = post,
     Path = ["/rules/", aws_util:encode_uri(RuleName), "/disable"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2673,10 +3071,14 @@ disable_topic_rule(Client, RuleName, Input0, Options) ->
 %% @doc Enables the rule.
 enable_topic_rule(Client, RuleName, Input) ->
     enable_topic_rule(Client, RuleName, Input, []).
-enable_topic_rule(Client, RuleName, Input0, Options) ->
+enable_topic_rule(Client, RuleName, Input0, Options0) ->
     Method = post,
     Path = ["/rules/", aws_util:encode_uri(RuleName), "/enable"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2696,10 +3098,13 @@ get_behavior_model_training_summaries(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_behavior_model_training_summaries(Client, QueryMap, HeadersMap, []).
 
-get_behavior_model_training_summaries(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_behavior_model_training_summaries(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/behavior-model-training/summaries"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2716,10 +3121,14 @@ get_behavior_model_training_summaries(Client, QueryMap, HeadersMap, Options)
 %% @doc Returns the approximate count of unique values that match the query.
 get_cardinality(Client, Input) ->
     get_cardinality(Client, Input, []).
-get_cardinality(Client, Input0, Options) ->
+get_cardinality(Client, Input0, Options0) ->
     Method = post,
     Path = ["/indices/cardinality"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2734,10 +3143,14 @@ get_cardinality(Client, Input0, Options) ->
 %% gateway.
 get_effective_policies(Client, Input) ->
     get_effective_policies(Client, Input, []).
-get_effective_policies(Client, Input0, Options) ->
+get_effective_policies(Client, Input0, Options0) ->
     Method = post,
     Path = ["/effective-policies"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2757,10 +3170,13 @@ get_indexing_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_indexing_configuration(Client, QueryMap, HeadersMap, []).
 
-get_indexing_configuration(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_indexing_configuration(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/indexing/config"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2777,10 +3193,13 @@ get_job_document(Client, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_job_document(Client, JobId, QueryMap, HeadersMap, []).
 
-get_job_document(Client, JobId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_job_document(Client, JobId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/jobs/", aws_util:encode_uri(JobId), "/job-document"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2800,10 +3219,13 @@ get_logging_options(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_logging_options(Client, QueryMap, HeadersMap, []).
 
-get_logging_options(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_logging_options(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/loggingOptions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2820,10 +3242,13 @@ get_ota_update(Client, OtaUpdateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_ota_update(Client, OtaUpdateId, QueryMap, HeadersMap, []).
 
-get_ota_update(Client, OtaUpdateId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_ota_update(Client, OtaUpdateId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/otaUpdates/", aws_util:encode_uri(OtaUpdateId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2845,10 +3270,14 @@ get_ota_update(Client, OtaUpdateId, QueryMap, HeadersMap, Options)
 %% query, the more accurate the percentile values.
 get_percentiles(Client, Input) ->
     get_percentiles(Client, Input, []).
-get_percentiles(Client, Input0, Options) ->
+get_percentiles(Client, Input0, Options0) ->
     Method = post,
     Path = ["/indices/percentiles"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2868,10 +3297,13 @@ get_policy(Client, PolicyName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_policy(Client, PolicyName, QueryMap, HeadersMap, []).
 
-get_policy(Client, PolicyName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_policy(Client, PolicyName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/policies/", aws_util:encode_uri(PolicyName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2888,10 +3320,13 @@ get_policy_version(Client, PolicyName, PolicyVersionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_policy_version(Client, PolicyName, PolicyVersionId, QueryMap, HeadersMap, []).
 
-get_policy_version(Client, PolicyName, PolicyVersionId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_policy_version(Client, PolicyName, PolicyVersionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/policies/", aws_util:encode_uri(PolicyName), "/version/", aws_util:encode_uri(PolicyVersionId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2909,10 +3344,13 @@ get_registration_code(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_registration_code(Client, QueryMap, HeadersMap, []).
 
-get_registration_code(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_registration_code(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/registrationcode"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2927,10 +3365,14 @@ get_registration_code(Client, QueryMap, HeadersMap, Options)
 %% returned.
 get_statistics(Client, Input) ->
     get_statistics(Client, Input, []).
-get_statistics(Client, Input0, Options) ->
+get_statistics(Client, Input0, Options0) ->
     Method = post,
     Path = ["/indices/statistics"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2949,10 +3391,13 @@ get_topic_rule(Client, RuleName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_topic_rule(Client, RuleName, QueryMap, HeadersMap, []).
 
-get_topic_rule(Client, RuleName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_topic_rule(Client, RuleName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/rules/", aws_util:encode_uri(RuleName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2969,10 +3414,13 @@ get_topic_rule_destination(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_topic_rule_destination(Client, Arn, QueryMap, HeadersMap, []).
 
-get_topic_rule_destination(Client, Arn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_topic_rule_destination(Client, Arn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/destinations/", aws_util:encode_multi_segment_uri(Arn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2989,10 +3437,13 @@ get_v2_logging_options(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_v2_logging_options(Client, QueryMap, HeadersMap, []).
 
-get_v2_logging_options(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_v2_logging_options(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2LoggingOptions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3010,10 +3461,13 @@ list_active_violations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_active_violations(Client, QueryMap, HeadersMap, []).
 
-list_active_violations(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_active_violations(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/active-violations"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3033,10 +3487,14 @@ list_active_violations(Client, QueryMap, HeadersMap, Options)
 %% @doc Lists the policies attached to the specified thing group.
 list_attached_policies(Client, Target, Input) ->
     list_attached_policies(Client, Target, Input, []).
-list_attached_policies(Client, Target, Input0, Options) ->
+list_attached_policies(Client, Target, Input0, Options0) ->
     Method = post,
     Path = ["/attached-policies/", aws_util:encode_uri(Target), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -3055,10 +3513,14 @@ list_attached_policies(Client, Target, Input0, Options) ->
 %% (Findings are retained for 90 days.)
 list_audit_findings(Client, Input) ->
     list_audit_findings(Client, Input, []).
-list_audit_findings(Client, Input0, Options) ->
+list_audit_findings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/audit/findings"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -3077,10 +3539,13 @@ list_audit_mitigation_actions_executions(Client, FindingId, TaskId, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_audit_mitigation_actions_executions(Client, FindingId, TaskId, QueryMap, HeadersMap, []).
 
-list_audit_mitigation_actions_executions(Client, FindingId, TaskId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_audit_mitigation_actions_executions(Client, FindingId, TaskId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/mitigationactions/executions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3106,10 +3571,13 @@ list_audit_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, Header
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_audit_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap, []).
 
-list_audit_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_audit_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/mitigationactions/tasks"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3130,10 +3598,14 @@ list_audit_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, Header
 %% @doc Lists your Device Defender audit listings.
 list_audit_suppressions(Client, Input) ->
     list_audit_suppressions(Client, Input, []).
-list_audit_suppressions(Client, Input0, Options) ->
+list_audit_suppressions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/audit/suppressions/list"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -3153,10 +3625,13 @@ list_audit_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_audit_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap, []).
 
-list_audit_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_audit_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/tasks"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3182,10 +3657,13 @@ list_authorizers(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_authorizers(Client, QueryMap, HeadersMap, []).
 
-list_authorizers(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_authorizers(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/authorizers/"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3209,10 +3687,13 @@ list_billing_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_billing_groups(Client, QueryMap, HeadersMap, []).
 
-list_billing_groups(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_billing_groups(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/billing-groups"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3238,10 +3719,13 @@ list_ca_certificates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_ca_certificates(Client, QueryMap, HeadersMap, []).
 
-list_ca_certificates(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_ca_certificates(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/cacertificates"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3267,10 +3751,13 @@ list_certificates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_certificates(Client, QueryMap, HeadersMap, []).
 
-list_certificates(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_certificates(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/certificates"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3293,10 +3780,13 @@ list_certificates_by_ca(Client, CaCertificateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_certificates_by_ca(Client, CaCertificateId, QueryMap, HeadersMap, []).
 
-list_certificates_by_ca(Client, CaCertificateId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_certificates_by_ca(Client, CaCertificateId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/certificates-by-ca/", aws_util:encode_uri(CaCertificateId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3319,10 +3809,13 @@ list_custom_metrics(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_custom_metrics(Client, QueryMap, HeadersMap, []).
 
-list_custom_metrics(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_custom_metrics(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/custom-metrics"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3345,10 +3838,13 @@ list_detect_mitigation_actions_executions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_detect_mitigation_actions_executions(Client, QueryMap, HeadersMap, []).
 
-list_detect_mitigation_actions_executions(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_detect_mitigation_actions_executions(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detect/mitigationactions/executions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3375,10 +3871,13 @@ list_detect_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, Heade
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_detect_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap, []).
 
-list_detect_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_detect_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detect/mitigationactions/tasks"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3402,10 +3901,13 @@ list_dimensions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_dimensions(Client, QueryMap, HeadersMap, []).
 
-list_dimensions(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_dimensions(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/dimensions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3432,10 +3934,13 @@ list_domain_configurations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_domain_configurations(Client, QueryMap, HeadersMap, []).
 
-list_domain_configurations(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_domain_configurations(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domainConfigurations"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3458,10 +3963,13 @@ list_indices(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_indices(Client, QueryMap, HeadersMap, []).
 
-list_indices(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_indices(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/indices"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3483,10 +3991,13 @@ list_job_executions_for_job(Client, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_job_executions_for_job(Client, JobId, QueryMap, HeadersMap, []).
 
-list_job_executions_for_job(Client, JobId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_job_executions_for_job(Client, JobId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/jobs/", aws_util:encode_uri(JobId), "/things"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3509,10 +4020,13 @@ list_job_executions_for_thing(Client, ThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_job_executions_for_thing(Client, ThingName, QueryMap, HeadersMap, []).
 
-list_job_executions_for_thing(Client, ThingName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_job_executions_for_thing(Client, ThingName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/things/", aws_util:encode_uri(ThingName), "/jobs"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3536,10 +4050,13 @@ list_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_jobs(Client, QueryMap, HeadersMap, []).
 
-list_jobs(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_jobs(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/jobs"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3567,10 +4084,13 @@ list_mitigation_actions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_mitigation_actions(Client, QueryMap, HeadersMap, []).
 
-list_mitigation_actions(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_mitigation_actions(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/mitigationactions/actions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3593,10 +4113,13 @@ list_ota_updates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_ota_updates(Client, QueryMap, HeadersMap, []).
 
-list_ota_updates(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_ota_updates(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/otaUpdates"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3619,10 +4142,13 @@ list_outgoing_certificates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_outgoing_certificates(Client, QueryMap, HeadersMap, []).
 
-list_outgoing_certificates(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_outgoing_certificates(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/certificates-out-going"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3645,10 +4171,13 @@ list_policies(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_policies(Client, QueryMap, HeadersMap, []).
 
-list_policies(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_policies(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/policies"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3673,10 +4202,13 @@ list_policy_principals(Client, PolicyName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_policy_principals(Client, PolicyName, QueryMap, HeadersMap, []).
 
-list_policy_principals(Client, PolicyName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_policy_principals(Client, PolicyName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/policy-principals"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -3704,10 +4236,13 @@ list_policy_versions(Client, PolicyName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_policy_versions(Client, PolicyName, QueryMap, HeadersMap, []).
 
-list_policy_versions(Client, PolicyName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_policy_versions(Client, PolicyName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/policies/", aws_util:encode_uri(PolicyName), "/version"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3729,10 +4264,13 @@ list_principal_policies(Client, Principal, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_principal_policies(Client, Principal, QueryMap, HeadersMap, []).
 
-list_principal_policies(Client, Principal, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_principal_policies(Client, Principal, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/principal-policies"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -3762,10 +4300,13 @@ list_principal_things(Client, Principal, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_principal_things(Client, Principal, QueryMap, HeadersMap, []).
 
-list_principal_things(Client, Principal, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_principal_things(Client, Principal, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/principals/things"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -3791,10 +4332,13 @@ list_provisioning_template_versions(Client, TemplateName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_provisioning_template_versions(Client, TemplateName, QueryMap, HeadersMap, []).
 
-list_provisioning_template_versions(Client, TemplateName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_provisioning_template_versions(Client, TemplateName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/provisioning-templates/", aws_util:encode_uri(TemplateName), "/versions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3816,10 +4360,13 @@ list_provisioning_templates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_provisioning_templates(Client, QueryMap, HeadersMap, []).
 
-list_provisioning_templates(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_provisioning_templates(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/provisioning-templates"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3841,10 +4388,13 @@ list_role_aliases(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_role_aliases(Client, QueryMap, HeadersMap, []).
 
-list_role_aliases(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_role_aliases(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/role-aliases"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3867,10 +4417,13 @@ list_scheduled_audits(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_scheduled_audits(Client, QueryMap, HeadersMap, []).
 
-list_scheduled_audits(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_scheduled_audits(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/scheduledaudits"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3896,10 +4449,13 @@ list_security_profiles(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_security_profiles(Client, QueryMap, HeadersMap, []).
 
-list_security_profiles(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_security_profiles(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/security-profiles"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3924,10 +4480,13 @@ list_security_profiles_for_target(Client, SecurityProfileTargetArn, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_security_profiles_for_target(Client, SecurityProfileTargetArn, QueryMap, HeadersMap, []).
 
-list_security_profiles_for_target(Client, SecurityProfileTargetArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_security_profiles_for_target(Client, SecurityProfileTargetArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/security-profiles-for-target"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3951,10 +4510,13 @@ list_streams(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_streams(Client, QueryMap, HeadersMap, []).
 
-list_streams(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_streams(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/streams"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3977,10 +4539,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3996,10 +4561,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
 %% @doc List targets for the specified policy.
 list_targets_for_policy(Client, PolicyName, Input) ->
     list_targets_for_policy(Client, PolicyName, Input, []).
-list_targets_for_policy(Client, PolicyName, Input0, Options) ->
+list_targets_for_policy(Client, PolicyName, Input0, Options0) ->
     Method = post,
     Path = ["/policy-targets/", aws_util:encode_uri(PolicyName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4021,10 +4590,13 @@ list_targets_for_security_profile(Client, SecurityProfileName, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_targets_for_security_profile(Client, SecurityProfileName, QueryMap, HeadersMap, []).
 
-list_targets_for_security_profile(Client, SecurityProfileName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_targets_for_security_profile(Client, SecurityProfileName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/security-profiles/", aws_util:encode_uri(SecurityProfileName), "/targets"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -4046,10 +4618,13 @@ list_thing_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_thing_groups(Client, QueryMap, HeadersMap, []).
 
-list_thing_groups(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_thing_groups(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/thing-groups"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -4074,10 +4649,13 @@ list_thing_groups_for_thing(Client, ThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_thing_groups_for_thing(Client, ThingName, QueryMap, HeadersMap, []).
 
-list_thing_groups_for_thing(Client, ThingName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_thing_groups_for_thing(Client, ThingName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/things/", aws_util:encode_uri(ThingName), "/thing-groups"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -4102,10 +4680,13 @@ list_thing_principals(Client, ThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_thing_principals(Client, ThingName, QueryMap, HeadersMap, []).
 
-list_thing_principals(Client, ThingName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_thing_principals(Client, ThingName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/things/", aws_util:encode_uri(ThingName), "/principals"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -4127,10 +4708,13 @@ list_thing_registration_task_reports(Client, TaskId, ReportType, QueryMap, Heade
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_thing_registration_task_reports(Client, TaskId, ReportType, QueryMap, HeadersMap, []).
 
-list_thing_registration_task_reports(Client, TaskId, ReportType, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_thing_registration_task_reports(Client, TaskId, ReportType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/thing-registration-tasks/", aws_util:encode_uri(TaskId), "/reports"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -4153,10 +4737,13 @@ list_thing_registration_tasks(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_thing_registration_tasks(Client, QueryMap, HeadersMap, []).
 
-list_thing_registration_tasks(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_thing_registration_tasks(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/thing-registration-tasks"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -4179,10 +4766,13 @@ list_thing_types(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_thing_types(Client, QueryMap, HeadersMap, []).
 
-list_thing_types(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_thing_types(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/thing-types"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -4215,10 +4805,13 @@ list_things(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_things(Client, QueryMap, HeadersMap, []).
 
-list_things(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_things(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/things"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -4243,10 +4836,13 @@ list_things_in_billing_group(Client, BillingGroupName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_things_in_billing_group(Client, BillingGroupName, QueryMap, HeadersMap, []).
 
-list_things_in_billing_group(Client, BillingGroupName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_things_in_billing_group(Client, BillingGroupName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/billing-groups/", aws_util:encode_uri(BillingGroupName), "/things"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -4268,10 +4864,13 @@ list_things_in_thing_group(Client, ThingGroupName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_things_in_thing_group(Client, ThingGroupName, QueryMap, HeadersMap, []).
 
-list_things_in_thing_group(Client, ThingGroupName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_things_in_thing_group(Client, ThingGroupName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/thing-groups/", aws_util:encode_uri(ThingGroupName), "/things"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -4294,10 +4893,13 @@ list_topic_rule_destinations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_topic_rule_destinations(Client, QueryMap, HeadersMap, []).
 
-list_topic_rule_destinations(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_topic_rule_destinations(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/destinations"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -4319,10 +4921,13 @@ list_topic_rules(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_topic_rules(Client, QueryMap, HeadersMap, []).
 
-list_topic_rules(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_topic_rules(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/rules"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -4346,10 +4951,13 @@ list_v2_logging_levels(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_v2_logging_levels(Client, QueryMap, HeadersMap, []).
 
-list_v2_logging_levels(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_v2_logging_levels(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2LoggingLevel"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -4376,10 +4984,13 @@ list_violation_events(Client, EndTime, StartTime, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_violation_events(Client, EndTime, StartTime, QueryMap, HeadersMap, []).
 
-list_violation_events(Client, EndTime, StartTime, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_violation_events(Client, EndTime, StartTime, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/violation-events"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -4409,10 +5020,14 @@ list_violation_events(Client, EndTime, StartTime, QueryMap, HeadersMap, Options)
 %% certificates with the RegisterCertificate API.
 register_ca_certificate(Client, Input) ->
     register_ca_certificate(Client, Input, []).
-register_ca_certificate(Client, Input0, Options) ->
+register_ca_certificate(Client, Input0, Options0) ->
     Method = post,
     Path = ["/cacertificate"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4431,10 +5046,14 @@ register_ca_certificate(Client, Input0, Options) ->
 %% certificate being registered.
 register_certificate(Client, Input) ->
     register_certificate(Client, Input, []).
-register_certificate(Client, Input0, Options) ->
+register_certificate(Client, Input0, Options0) ->
     Method = post,
     Path = ["/certificate/register"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4449,10 +5068,14 @@ register_certificate(Client, Input0, Options) ->
 %% (CA).
 register_certificate_without_ca(Client, Input) ->
     register_certificate_without_ca(Client, Input, []).
-register_certificate_without_ca(Client, Input0, Options) ->
+register_certificate_without_ca(Client, Input0, Options0) ->
     Method = post,
     Path = ["/certificate/register-no-ca"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4470,10 +5093,14 @@ register_certificate_without_ca(Client, Input0, Options) ->
 %% limits if necessary.
 register_thing(Client, Input) ->
     register_thing(Client, Input, []).
-register_thing(Client, Input0, Options) ->
+register_thing(Client, Input0, Options0) ->
     Method = post,
     Path = ["/things"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4496,10 +5123,14 @@ register_thing(Client, Input0, Options) ->
 %% INACTIVE state.
 reject_certificate_transfer(Client, CertificateId, Input) ->
     reject_certificate_transfer(Client, CertificateId, Input, []).
-reject_certificate_transfer(Client, CertificateId, Input0, Options) ->
+reject_certificate_transfer(Client, CertificateId, Input0, Options0) ->
     Method = patch,
     Path = ["/reject-certificate-transfer/", aws_util:encode_uri(CertificateId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4512,10 +5143,14 @@ reject_certificate_transfer(Client, CertificateId, Input0, Options) ->
 %% @doc Removes the given thing from the billing group.
 remove_thing_from_billing_group(Client, Input) ->
     remove_thing_from_billing_group(Client, Input, []).
-remove_thing_from_billing_group(Client, Input0, Options) ->
+remove_thing_from_billing_group(Client, Input0, Options0) ->
     Method = put,
     Path = ["/billing-groups/removeThingFromBillingGroup"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4532,10 +5167,14 @@ remove_thing_from_billing_group(Client, Input0, Options) ->
 %% identify the thing to remove from the thing group.
 remove_thing_from_thing_group(Client, Input) ->
     remove_thing_from_thing_group(Client, Input, []).
-remove_thing_from_thing_group(Client, Input0, Options) ->
+remove_thing_from_thing_group(Client, Input0, Options0) ->
     Method = put,
     Path = ["/thing-groups/removeThingFromThingGroup"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4552,10 +5191,14 @@ remove_thing_from_thing_group(Client, Input0, Options) ->
 %% will be able to access data processed by the rule.
 replace_topic_rule(Client, RuleName, Input) ->
     replace_topic_rule(Client, RuleName, Input, []).
-replace_topic_rule(Client, RuleName, Input0, Options) ->
+replace_topic_rule(Client, RuleName, Input0, Options0) ->
     Method = patch,
     Path = ["/rules/", aws_util:encode_uri(RuleName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4568,10 +5211,14 @@ replace_topic_rule(Client, RuleName, Input0, Options) ->
 %% @doc The query search index.
 search_index(Client, Input) ->
     search_index(Client, Input, []).
-search_index(Client, Input0, Options) ->
+search_index(Client, Input0, Options0) ->
     Method = post,
     Path = ["/indices/search"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4587,10 +5234,14 @@ search_index(Client, Input0, Options) ->
 %% authorizer.
 set_default_authorizer(Client, Input) ->
     set_default_authorizer(Client, Input, []).
-set_default_authorizer(Client, Input0, Options) ->
+set_default_authorizer(Client, Input0, Options0) ->
     Method = post,
     Path = ["/default-authorizer"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4608,10 +5259,14 @@ set_default_authorizer(Client, Input0, Options) ->
 %% API.
 set_default_policy_version(Client, PolicyName, PolicyVersionId, Input) ->
     set_default_policy_version(Client, PolicyName, PolicyVersionId, Input, []).
-set_default_policy_version(Client, PolicyName, PolicyVersionId, Input0, Options) ->
+set_default_policy_version(Client, PolicyName, PolicyVersionId, Input0, Options0) ->
     Method = patch,
     Path = ["/policies/", aws_util:encode_uri(PolicyName), "/version/", aws_util:encode_uri(PolicyVersionId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4627,10 +5282,14 @@ set_default_policy_version(Client, PolicyName, PolicyVersionId, Input0, Options)
 %% instead.
 set_logging_options(Client, Input) ->
     set_logging_options(Client, Input, []).
-set_logging_options(Client, Input0, Options) ->
+set_logging_options(Client, Input0, Options0) ->
     Method = post,
     Path = ["/loggingOptions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4643,10 +5302,14 @@ set_logging_options(Client, Input0, Options) ->
 %% @doc Sets the logging level.
 set_v2_logging_level(Client, Input) ->
     set_v2_logging_level(Client, Input, []).
-set_v2_logging_level(Client, Input0, Options) ->
+set_v2_logging_level(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2LoggingLevel"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4659,10 +5322,14 @@ set_v2_logging_level(Client, Input0, Options) ->
 %% @doc Sets the logging options for the V2 logging service.
 set_v2_logging_options(Client, Input) ->
     set_v2_logging_options(Client, Input, []).
-set_v2_logging_options(Client, Input0, Options) ->
+set_v2_logging_options(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2LoggingOptions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4676,10 +5343,14 @@ set_v2_logging_options(Client, Input0, Options) ->
 %% specified target.
 start_audit_mitigation_actions_task(Client, TaskId, Input) ->
     start_audit_mitigation_actions_task(Client, TaskId, Input, []).
-start_audit_mitigation_actions_task(Client, TaskId, Input0, Options) ->
+start_audit_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
     Method = post,
     Path = ["/audit/mitigationactions/tasks/", aws_util:encode_uri(TaskId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4692,10 +5363,14 @@ start_audit_mitigation_actions_task(Client, TaskId, Input0, Options) ->
 %% @doc Starts a Device Defender ML Detect mitigation actions task.
 start_detect_mitigation_actions_task(Client, TaskId, Input) ->
     start_detect_mitigation_actions_task(Client, TaskId, Input, []).
-start_detect_mitigation_actions_task(Client, TaskId, Input0, Options) ->
+start_detect_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
     Method = put,
     Path = ["/detect/mitigationactions/tasks/", aws_util:encode_uri(TaskId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4708,10 +5383,14 @@ start_detect_mitigation_actions_task(Client, TaskId, Input0, Options) ->
 %% @doc Starts an on-demand Device Defender audit.
 start_on_demand_audit_task(Client, Input) ->
     start_on_demand_audit_task(Client, Input, []).
-start_on_demand_audit_task(Client, Input0, Options) ->
+start_on_demand_audit_task(Client, Input0, Options0) ->
     Method = post,
     Path = ["/audit/tasks"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4724,10 +5403,14 @@ start_on_demand_audit_task(Client, Input0, Options) ->
 %% @doc Creates a bulk thing provisioning task.
 start_thing_registration_task(Client, Input) ->
     start_thing_registration_task(Client, Input, []).
-start_thing_registration_task(Client, Input0, Options) ->
+start_thing_registration_task(Client, Input0, Options0) ->
     Method = post,
     Path = ["/thing-registration-tasks"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4740,10 +5423,14 @@ start_thing_registration_task(Client, Input0, Options) ->
 %% @doc Cancels a bulk thing provisioning task.
 stop_thing_registration_task(Client, TaskId, Input) ->
     stop_thing_registration_task(Client, TaskId, Input, []).
-stop_thing_registration_task(Client, TaskId, Input0, Options) ->
+stop_thing_registration_task(Client, TaskId, Input0, Options0) ->
     Method = put,
     Path = ["/thing-registration-tasks/", aws_util:encode_uri(TaskId), "/cancel"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4758,10 +5445,14 @@ stop_thing_registration_task(Client, TaskId, Input0, Options) ->
 %% Tags are metadata which can be used to manage a resource.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
-tag_resource(Client, Input0, Options) ->
+tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tags"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4778,10 +5469,14 @@ tag_resource(Client, Input0, Options) ->
 %% connect to the AWS IoT device gateway.
 test_authorization(Client, Input) ->
     test_authorization(Client, Input, []).
-test_authorization(Client, Input0, Options) ->
+test_authorization(Client, Input0, Options0) ->
     Method = post,
     Path = ["/test-authorization"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4799,10 +5494,14 @@ test_authorization(Client, Input0, Options) ->
 %% that connect to the AWS IoT device gateway.
 test_invoke_authorizer(Client, AuthorizerName, Input) ->
     test_invoke_authorizer(Client, AuthorizerName, Input, []).
-test_invoke_authorizer(Client, AuthorizerName, Input0, Options) ->
+test_invoke_authorizer(Client, AuthorizerName, Input0, Options0) ->
     Method = post,
     Path = ["/authorizer/", aws_util:encode_uri(AuthorizerName), "/test"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4826,10 +5525,14 @@ test_invoke_authorizer(Client, AuthorizerName, Input0, Options) ->
 %% DetachPrincipalPolicy API to detach them.
 transfer_certificate(Client, CertificateId, Input) ->
     transfer_certificate(Client, CertificateId, Input, []).
-transfer_certificate(Client, CertificateId, Input0, Options) ->
+transfer_certificate(Client, CertificateId, Input0, Options0) ->
     Method = patch,
     Path = ["/transfer-certificate/", aws_util:encode_uri(CertificateId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4843,10 +5546,14 @@ transfer_certificate(Client, CertificateId, Input0, Options) ->
 %% @doc Removes the given tags (metadata) from the resource.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
-untag_resource(Client, Input0, Options) ->
+untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/untag"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4863,10 +5570,14 @@ untag_resource(Client, Input0, Options) ->
 %% are enabled or disabled.
 update_account_audit_configuration(Client, Input) ->
     update_account_audit_configuration(Client, Input, []).
-update_account_audit_configuration(Client, Input0, Options) ->
+update_account_audit_configuration(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/audit/configuration"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4879,10 +5590,14 @@ update_account_audit_configuration(Client, Input0, Options) ->
 %% @doc Updates a Device Defender audit suppression.
 update_audit_suppression(Client, Input) ->
     update_audit_suppression(Client, Input, []).
-update_audit_suppression(Client, Input0, Options) ->
+update_audit_suppression(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/audit/suppressions/update"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4895,10 +5610,14 @@ update_audit_suppression(Client, Input0, Options) ->
 %% @doc Updates an authorizer.
 update_authorizer(Client, AuthorizerName, Input) ->
     update_authorizer(Client, AuthorizerName, Input, []).
-update_authorizer(Client, AuthorizerName, Input0, Options) ->
+update_authorizer(Client, AuthorizerName, Input0, Options0) ->
     Method = put,
     Path = ["/authorizer/", aws_util:encode_uri(AuthorizerName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4911,10 +5630,14 @@ update_authorizer(Client, AuthorizerName, Input0, Options) ->
 %% @doc Updates information about the billing group.
 update_billing_group(Client, BillingGroupName, Input) ->
     update_billing_group(Client, BillingGroupName, Input, []).
-update_billing_group(Client, BillingGroupName, Input0, Options) ->
+update_billing_group(Client, BillingGroupName, Input0, Options0) ->
     Method = patch,
     Path = ["/billing-groups/", aws_util:encode_uri(BillingGroupName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4927,10 +5650,14 @@ update_billing_group(Client, BillingGroupName, Input0, Options) ->
 %% @doc Updates a registered CA certificate.
 update_ca_certificate(Client, CertificateId, Input) ->
     update_ca_certificate(Client, CertificateId, Input, []).
-update_ca_certificate(Client, CertificateId, Input0, Options) ->
+update_ca_certificate(Client, CertificateId, Input0, Options0) ->
     Method = put,
     Path = ["/cacertificate/", aws_util:encode_uri(CertificateId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4955,10 +5682,14 @@ update_ca_certificate(Client, CertificateId, Input0, Options) ->
 %% the ACTIVE state to reconnect.
 update_certificate(Client, CertificateId, Input) ->
     update_certificate(Client, CertificateId, Input, []).
-update_certificate(Client, CertificateId, Input0, Options) ->
+update_certificate(Client, CertificateId, Input0, Options0) ->
     Method = put,
     Path = ["/certificates/", aws_util:encode_uri(CertificateId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4972,10 +5703,14 @@ update_certificate(Client, CertificateId, Input0, Options) ->
 %% @doc Updates a Device Defender detect custom metric.
 update_custom_metric(Client, MetricName, Input) ->
     update_custom_metric(Client, MetricName, Input, []).
-update_custom_metric(Client, MetricName, Input0, Options) ->
+update_custom_metric(Client, MetricName, Input0, Options0) ->
     Method = patch,
     Path = ["/custom-metric/", aws_util:encode_uri(MetricName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4991,10 +5726,14 @@ update_custom_metric(Client, MetricName, Input0, Options) ->
 %% delete it and recreate it).
 update_dimension(Client, Name, Input) ->
     update_dimension(Client, Name, Input, []).
-update_dimension(Client, Name, Input0, Options) ->
+update_dimension(Client, Name, Input0, Options0) ->
     Method = patch,
     Path = ["/dimensions/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -5012,10 +5751,14 @@ update_dimension(Client, Name, Input0, Options) ->
 %% change.
 update_domain_configuration(Client, DomainConfigurationName, Input) ->
     update_domain_configuration(Client, DomainConfigurationName, Input, []).
-update_domain_configuration(Client, DomainConfigurationName, Input0, Options) ->
+update_domain_configuration(Client, DomainConfigurationName, Input0, Options0) ->
     Method = put,
     Path = ["/domainConfigurations/", aws_util:encode_uri(DomainConfigurationName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -5028,10 +5771,14 @@ update_domain_configuration(Client, DomainConfigurationName, Input0, Options) ->
 %% @doc Updates a dynamic thing group.
 update_dynamic_thing_group(Client, ThingGroupName, Input) ->
     update_dynamic_thing_group(Client, ThingGroupName, Input, []).
-update_dynamic_thing_group(Client, ThingGroupName, Input0, Options) ->
+update_dynamic_thing_group(Client, ThingGroupName, Input0, Options0) ->
     Method = patch,
     Path = ["/dynamic-thing-groups/", aws_util:encode_uri(ThingGroupName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -5044,10 +5791,14 @@ update_dynamic_thing_group(Client, ThingGroupName, Input0, Options) ->
 %% @doc Updates the event configurations.
 update_event_configurations(Client, Input) ->
     update_event_configurations(Client, Input, []).
-update_event_configurations(Client, Input0, Options) ->
+update_event_configurations(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/event-configurations"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -5060,10 +5811,14 @@ update_event_configurations(Client, Input0, Options) ->
 %% @doc Updates the search configuration.
 update_indexing_configuration(Client, Input) ->
     update_indexing_configuration(Client, Input, []).
-update_indexing_configuration(Client, Input0, Options) ->
+update_indexing_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/indexing/config"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -5076,10 +5831,14 @@ update_indexing_configuration(Client, Input0, Options) ->
 %% @doc Updates supported fields of the specified job.
 update_job(Client, JobId, Input) ->
     update_job(Client, JobId, Input, []).
-update_job(Client, JobId, Input0, Options) ->
+update_job(Client, JobId, Input0, Options0) ->
     Method = patch,
     Path = ["/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -5093,10 +5852,14 @@ update_job(Client, JobId, Input0, Options) ->
 %% @doc Updates the definition for the specified mitigation action.
 update_mitigation_action(Client, ActionName, Input) ->
     update_mitigation_action(Client, ActionName, Input, []).
-update_mitigation_action(Client, ActionName, Input0, Options) ->
+update_mitigation_action(Client, ActionName, Input0, Options0) ->
     Method = patch,
     Path = ["/mitigationactions/actions/", aws_util:encode_uri(ActionName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -5109,10 +5872,14 @@ update_mitigation_action(Client, ActionName, Input0, Options) ->
 %% @doc Updates a fleet provisioning template.
 update_provisioning_template(Client, TemplateName, Input) ->
     update_provisioning_template(Client, TemplateName, Input, []).
-update_provisioning_template(Client, TemplateName, Input0, Options) ->
+update_provisioning_template(Client, TemplateName, Input0, Options0) ->
     Method = patch,
     Path = ["/provisioning-templates/", aws_util:encode_uri(TemplateName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -5125,10 +5892,14 @@ update_provisioning_template(Client, TemplateName, Input0, Options) ->
 %% @doc Updates a role alias.
 update_role_alias(Client, RoleAlias, Input) ->
     update_role_alias(Client, RoleAlias, Input, []).
-update_role_alias(Client, RoleAlias, Input0, Options) ->
+update_role_alias(Client, RoleAlias, Input0, Options0) ->
     Method = put,
     Path = ["/role-aliases/", aws_util:encode_uri(RoleAlias), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -5142,10 +5913,14 @@ update_role_alias(Client, RoleAlias, Input0, Options) ->
 %% how often the audit takes place.
 update_scheduled_audit(Client, ScheduledAuditName, Input) ->
     update_scheduled_audit(Client, ScheduledAuditName, Input, []).
-update_scheduled_audit(Client, ScheduledAuditName, Input0, Options) ->
+update_scheduled_audit(Client, ScheduledAuditName, Input0, Options0) ->
     Method = patch,
     Path = ["/audit/scheduledaudits/", aws_util:encode_uri(ScheduledAuditName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -5158,10 +5933,14 @@ update_scheduled_audit(Client, ScheduledAuditName, Input0, Options) ->
 %% @doc Updates a Device Defender security profile.
 update_security_profile(Client, SecurityProfileName, Input) ->
     update_security_profile(Client, SecurityProfileName, Input, []).
-update_security_profile(Client, SecurityProfileName, Input0, Options) ->
+update_security_profile(Client, SecurityProfileName, Input0, Options0) ->
     Method = patch,
     Path = ["/security-profiles/", aws_util:encode_uri(SecurityProfileName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -5177,10 +5956,14 @@ update_security_profile(Client, SecurityProfileName, Input0, Options) ->
 %% The stream version will be incremented by one.
 update_stream(Client, StreamId, Input) ->
     update_stream(Client, StreamId, Input, []).
-update_stream(Client, StreamId, Input0, Options) ->
+update_stream(Client, StreamId, Input0, Options0) ->
     Method = put,
     Path = ["/streams/", aws_util:encode_uri(StreamId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -5193,10 +5976,14 @@ update_stream(Client, StreamId, Input0, Options) ->
 %% @doc Updates the data for a thing.
 update_thing(Client, ThingName, Input) ->
     update_thing(Client, ThingName, Input, []).
-update_thing(Client, ThingName, Input0, Options) ->
+update_thing(Client, ThingName, Input0, Options0) ->
     Method = patch,
     Path = ["/things/", aws_util:encode_uri(ThingName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -5209,10 +5996,14 @@ update_thing(Client, ThingName, Input0, Options) ->
 %% @doc Update a thing group.
 update_thing_group(Client, ThingGroupName, Input) ->
     update_thing_group(Client, ThingGroupName, Input, []).
-update_thing_group(Client, ThingGroupName, Input0, Options) ->
+update_thing_group(Client, ThingGroupName, Input0, Options0) ->
     Method = patch,
     Path = ["/thing-groups/", aws_util:encode_uri(ThingGroupName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -5225,10 +6016,14 @@ update_thing_group(Client, ThingGroupName, Input0, Options) ->
 %% @doc Updates the groups to which the thing belongs.
 update_thing_groups_for_thing(Client, Input) ->
     update_thing_groups_for_thing(Client, Input, []).
-update_thing_groups_for_thing(Client, Input0, Options) ->
+update_thing_groups_for_thing(Client, Input0, Options0) ->
     Method = put,
     Path = ["/thing-groups/updateThingGroupsForThing"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -5244,10 +6039,14 @@ update_thing_groups_for_thing(Client, Input0, Options) ->
 %% the destination.
 update_topic_rule_destination(Client, Input) ->
     update_topic_rule_destination(Client, Input, []).
-update_topic_rule_destination(Client, Input0, Options) ->
+update_topic_rule_destination(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/destinations"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -5260,10 +6059,14 @@ update_topic_rule_destination(Client, Input0, Options) ->
 %% @doc Validates a Device Defender security profile behaviors specification.
 validate_security_profile_behaviors(Client, Input) ->
     validate_security_profile_behaviors(Client, Input, []).
-validate_security_profile_behaviors(Client, Input0, Options) ->
+validate_security_profile_behaviors(Client, Input0, Options0) ->
     Method = post,
     Path = ["/security-profile-behaviors/validate"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -5295,19 +6098,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -5317,14 +6121,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

@@ -158,10 +158,14 @@
 %% that configuration set are applied to the email.
 create_configuration_set(Client, Input) ->
     create_configuration_set(Client, Input, []).
-create_configuration_set(Client, Input0, Options) ->
+create_configuration_set(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/email/configuration-sets"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -183,10 +187,14 @@ create_configuration_set(Client, Input0, Options) ->
 %% A single configuration set can include more than one event destination.
 create_configuration_set_event_destination(Client, ConfigurationSetName, Input) ->
     create_configuration_set_event_destination(Client, ConfigurationSetName, Input, []).
-create_configuration_set_event_destination(Client, ConfigurationSetName, Input0, Options) ->
+create_configuration_set_event_destination(Client, ConfigurationSetName, Input0, Options0) ->
     Method = post,
     Path = ["/v1/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/event-destinations"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -205,10 +213,14 @@ create_configuration_set_event_destination(Client, ConfigurationSetName, Input0,
 %% associated pool.
 create_dedicated_ip_pool(Client, Input) ->
     create_dedicated_ip_pool(Client, Input, []).
-create_dedicated_ip_pool(Client, Input0, Options) ->
+create_dedicated_ip_pool(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/email/dedicated-ip-pools"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -230,10 +242,14 @@ create_dedicated_ip_pool(Client, Input0, Options) ->
 %% results of the test.
 create_deliverability_test_report(Client, Input) ->
     create_deliverability_test_report(Client, Input, []).
-create_deliverability_test_report(Client, Input0, Options) ->
+create_deliverability_test_report(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/email/deliverability-dashboard/test"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -263,10 +279,14 @@ create_deliverability_test_report(Client, Input0, Options) ->
 %% process.
 create_email_identity(Client, Input) ->
     create_email_identity(Client, Input, []).
-create_email_identity(Client, Input0, Options) ->
+create_email_identity(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/email/identities"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -285,10 +305,14 @@ create_email_identity(Client, Input0, Options) ->
 %% that configuration set are applied to the email.
 delete_configuration_set(Client, ConfigurationSetName, Input) ->
     delete_configuration_set(Client, ConfigurationSetName, Input, []).
-delete_configuration_set(Client, ConfigurationSetName, Input0, Options) ->
+delete_configuration_set(Client, ConfigurationSetName, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -308,10 +332,14 @@ delete_configuration_set(Client, ConfigurationSetName, Input0, Options) ->
 %% to Amazon S3 for long-term storage.
 delete_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input) ->
     delete_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input, []).
-delete_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input0, Options) ->
+delete_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/event-destinations/", aws_util:encode_uri(EventDestinationName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -324,10 +352,14 @@ delete_configuration_set_event_destination(Client, ConfigurationSetName, EventDe
 %% @doc Delete a dedicated IP pool.
 delete_dedicated_ip_pool(Client, PoolName, Input) ->
     delete_dedicated_ip_pool(Client, PoolName, Input, []).
-delete_dedicated_ip_pool(Client, PoolName, Input0, Options) ->
+delete_dedicated_ip_pool(Client, PoolName, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/email/dedicated-ip-pools/", aws_util:encode_uri(PoolName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -343,10 +375,14 @@ delete_dedicated_ip_pool(Client, PoolName, Input0, Options) ->
 %% An identity can be either an email address or a domain name.
 delete_email_identity(Client, EmailIdentity, Input) ->
     delete_email_identity(Client, EmailIdentity, Input, []).
-delete_email_identity(Client, EmailIdentity, Input0, Options) ->
+delete_email_identity(Client, EmailIdentity, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/email/identities/", aws_util:encode_uri(EmailIdentity), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -366,10 +402,13 @@ get_account(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_account(Client, QueryMap, HeadersMap, []).
 
-get_account(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_account(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/email/account"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -387,10 +426,13 @@ get_blacklist_reports(Client, BlacklistItemNames, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_blacklist_reports(Client, BlacklistItemNames, QueryMap, HeadersMap, []).
 
-get_blacklist_reports(Client, BlacklistItemNames, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_blacklist_reports(Client, BlacklistItemNames, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/email/deliverability-dashboard/blacklist-report"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -419,10 +461,13 @@ get_configuration_set(Client, ConfigurationSetName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_configuration_set(Client, ConfigurationSetName, QueryMap, HeadersMap, []).
 
-get_configuration_set(Client, ConfigurationSetName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_configuration_set(Client, ConfigurationSetName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -447,10 +492,13 @@ get_configuration_set_event_destinations(Client, ConfigurationSetName, QueryMap,
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_configuration_set_event_destinations(Client, ConfigurationSetName, QueryMap, HeadersMap, []).
 
-get_configuration_set_event_destinations(Client, ConfigurationSetName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_configuration_set_event_destinations(Client, ConfigurationSetName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/event-destinations"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -469,10 +517,13 @@ get_dedicated_ip(Client, Ip, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_dedicated_ip(Client, Ip, QueryMap, HeadersMap, []).
 
-get_dedicated_ip(Client, Ip, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_dedicated_ip(Client, Ip, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/email/dedicated-ips/", aws_util:encode_uri(Ip), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -490,10 +541,13 @@ get_dedicated_ips(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_dedicated_ips(Client, QueryMap, HeadersMap, []).
 
-get_dedicated_ips(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_dedicated_ips(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/email/dedicated-ips"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -527,10 +581,13 @@ get_deliverability_dashboard_options(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_deliverability_dashboard_options(Client, QueryMap, HeadersMap, []).
 
-get_deliverability_dashboard_options(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_deliverability_dashboard_options(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/email/deliverability-dashboard"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -547,10 +604,13 @@ get_deliverability_test_report(Client, ReportId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_deliverability_test_report(Client, ReportId, QueryMap, HeadersMap, []).
 
-get_deliverability_test_report(Client, ReportId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_deliverability_test_report(Client, ReportId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/email/deliverability-dashboard/test-reports/", aws_util:encode_uri(ReportId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -571,10 +631,13 @@ get_domain_deliverability_campaign(Client, CampaignId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_domain_deliverability_campaign(Client, CampaignId, QueryMap, HeadersMap, []).
 
-get_domain_deliverability_campaign(Client, CampaignId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_domain_deliverability_campaign(Client, CampaignId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/email/deliverability-dashboard/campaigns/", aws_util:encode_uri(CampaignId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -592,10 +655,13 @@ get_domain_statistics_report(Client, Domain, EndDate, StartDate, QueryMap, Heade
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_domain_statistics_report(Client, Domain, EndDate, StartDate, QueryMap, HeadersMap, []).
 
-get_domain_statistics_report(Client, Domain, EndDate, StartDate, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_domain_statistics_report(Client, Domain, EndDate, StartDate, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/email/deliverability-dashboard/statistics-report/", aws_util:encode_uri(Domain), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -619,10 +685,13 @@ get_email_identity(Client, EmailIdentity, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_email_identity(Client, EmailIdentity, QueryMap, HeadersMap, []).
 
-get_email_identity(Client, EmailIdentity, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_email_identity(Client, EmailIdentity, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/email/identities/", aws_util:encode_uri(EmailIdentity), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -646,10 +715,13 @@ list_configuration_sets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_configuration_sets(Client, QueryMap, HeadersMap, []).
 
-list_configuration_sets(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_configuration_sets(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/email/configuration-sets"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -672,10 +744,13 @@ list_dedicated_ip_pools(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_dedicated_ip_pools(Client, QueryMap, HeadersMap, []).
 
-list_dedicated_ip_pools(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_dedicated_ip_pools(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/email/dedicated-ip-pools"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -701,10 +776,13 @@ list_deliverability_test_reports(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_deliverability_test_reports(Client, QueryMap, HeadersMap, []).
 
-list_deliverability_test_reports(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_deliverability_test_reports(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/email/deliverability-dashboard/test-reports"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -730,10 +808,13 @@ list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, StartDat
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, StartDate, QueryMap, HeadersMap, []).
 
-list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, StartDate, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, StartDate, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/email/deliverability-dashboard/domains/", aws_util:encode_uri(SubscribedDomain), "/campaigns"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -761,10 +842,13 @@ list_email_identities(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_email_identities(Client, QueryMap, HeadersMap, []).
 
-list_email_identities(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_email_identities(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/email/identities"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -793,10 +877,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/email/tags"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -812,10 +899,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
 %% addresses.
 put_account_dedicated_ip_warmup_attributes(Client, Input) ->
     put_account_dedicated_ip_warmup_attributes(Client, Input, []).
-put_account_dedicated_ip_warmup_attributes(Client, Input0, Options) ->
+put_account_dedicated_ip_warmup_attributes(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v1/email/account/dedicated-ips/warmup"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -828,10 +919,14 @@ put_account_dedicated_ip_warmup_attributes(Client, Input0, Options) ->
 %% @doc Enable or disable the ability of your account to send email.
 put_account_sending_attributes(Client, Input) ->
     put_account_sending_attributes(Client, Input, []).
-put_account_sending_attributes(Client, Input0, Options) ->
+put_account_sending_attributes(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v1/email/account/sending"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -847,10 +942,14 @@ put_account_sending_attributes(Client, Input0, Options) ->
 %% for sending specific types of email.
 put_configuration_set_delivery_options(Client, ConfigurationSetName, Input) ->
     put_configuration_set_delivery_options(Client, ConfigurationSetName, Input, []).
-put_configuration_set_delivery_options(Client, ConfigurationSetName, Input0, Options) ->
+put_configuration_set_delivery_options(Client, ConfigurationSetName, Input0, Options0) ->
     Method = put,
     Path = ["/v1/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/delivery-options"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -864,10 +963,14 @@ put_configuration_set_delivery_options(Client, ConfigurationSetName, Input0, Opt
 %% you send using a particular configuration set in a specific AWS Region.
 put_configuration_set_reputation_options(Client, ConfigurationSetName, Input) ->
     put_configuration_set_reputation_options(Client, ConfigurationSetName, Input, []).
-put_configuration_set_reputation_options(Client, ConfigurationSetName, Input0, Options) ->
+put_configuration_set_reputation_options(Client, ConfigurationSetName, Input0, Options0) ->
     Method = put,
     Path = ["/v1/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/reputation-options"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -881,10 +984,14 @@ put_configuration_set_reputation_options(Client, ConfigurationSetName, Input0, O
 %% configuration set in a specific AWS Region.
 put_configuration_set_sending_options(Client, ConfigurationSetName, Input) ->
     put_configuration_set_sending_options(Client, ConfigurationSetName, Input, []).
-put_configuration_set_sending_options(Client, ConfigurationSetName, Input0, Options) ->
+put_configuration_set_sending_options(Client, ConfigurationSetName, Input0, Options0) ->
     Method = put,
     Path = ["/v1/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/sending"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -898,10 +1005,14 @@ put_configuration_set_sending_options(Client, ConfigurationSetName, Input0, Opti
 %% in email that you send using Amazon Pinpoint.
 put_configuration_set_tracking_options(Client, ConfigurationSetName, Input) ->
     put_configuration_set_tracking_options(Client, ConfigurationSetName, Input, []).
-put_configuration_set_tracking_options(Client, ConfigurationSetName, Input0, Options) ->
+put_configuration_set_tracking_options(Client, ConfigurationSetName, Input0, Options0) ->
     Method = put,
     Path = ["/v1/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/tracking-options"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -920,10 +1031,14 @@ put_configuration_set_tracking_options(Client, ConfigurationSetName, Input0, Opt
 %% pool by using the `CreateDedicatedIpPool' operation.
 put_dedicated_ip_in_pool(Client, Ip, Input) ->
     put_dedicated_ip_in_pool(Client, Ip, Input, []).
-put_dedicated_ip_in_pool(Client, Ip, Input0, Options) ->
+put_dedicated_ip_in_pool(Client, Ip, Input0, Options0) ->
     Method = put,
     Path = ["/v1/email/dedicated-ips/", aws_util:encode_uri(Ip), "/pool"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -936,10 +1051,14 @@ put_dedicated_ip_in_pool(Client, Ip, Input0, Options) ->
 %% @doc
 put_dedicated_ip_warmup_attributes(Client, Ip, Input) ->
     put_dedicated_ip_warmup_attributes(Client, Ip, Input, []).
-put_dedicated_ip_warmup_attributes(Client, Ip, Input0, Options) ->
+put_dedicated_ip_warmup_attributes(Client, Ip, Input0, Options0) ->
     Method = put,
     Path = ["/v1/email/dedicated-ips/", aws_util:encode_uri(Ip), "/warmup"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -963,10 +1082,14 @@ put_dedicated_ip_warmup_attributes(Client, Ip, Input0, Options) ->
 %% Deliverability dashboard subscription, see Amazon Pinpoint Pricing.
 put_deliverability_dashboard_option(Client, Input) ->
     put_deliverability_dashboard_option(Client, Input, []).
-put_deliverability_dashboard_option(Client, Input0, Options) ->
+put_deliverability_dashboard_option(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v1/email/deliverability-dashboard"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -979,10 +1102,14 @@ put_deliverability_dashboard_option(Client, Input0, Options) ->
 %% @doc Used to enable or disable DKIM authentication for an email identity.
 put_email_identity_dkim_attributes(Client, EmailIdentity, Input) ->
     put_email_identity_dkim_attributes(Client, EmailIdentity, Input, []).
-put_email_identity_dkim_attributes(Client, EmailIdentity, Input0, Options) ->
+put_email_identity_dkim_attributes(Client, EmailIdentity, Input0, Options0) ->
     Method = put,
     Path = ["/v1/email/identities/", aws_util:encode_uri(EmailIdentity), "/dkim"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1010,10 +1137,14 @@ put_email_identity_dkim_attributes(Client, EmailIdentity, Input0, Options) ->
 %% events occur (even if this setting is disabled).
 put_email_identity_feedback_attributes(Client, EmailIdentity, Input) ->
     put_email_identity_feedback_attributes(Client, EmailIdentity, Input, []).
-put_email_identity_feedback_attributes(Client, EmailIdentity, Input0, Options) ->
+put_email_identity_feedback_attributes(Client, EmailIdentity, Input0, Options0) ->
     Method = put,
     Path = ["/v1/email/identities/", aws_util:encode_uri(EmailIdentity), "/feedback"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1027,10 +1158,14 @@ put_email_identity_feedback_attributes(Client, EmailIdentity, Input0, Options) -
 %% for an email identity.
 put_email_identity_mail_from_attributes(Client, EmailIdentity, Input) ->
     put_email_identity_mail_from_attributes(Client, EmailIdentity, Input, []).
-put_email_identity_mail_from_attributes(Client, EmailIdentity, Input0, Options) ->
+put_email_identity_mail_from_attributes(Client, EmailIdentity, Input0, Options0) ->
     Method = put,
     Path = ["/v1/email/identities/", aws_util:encode_uri(EmailIdentity), "/mail-from"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1057,10 +1192,14 @@ put_email_identity_mail_from_attributes(Client, EmailIdentity, Input0, Options) 
 %% </li> </ul>
 send_email(Client, Input) ->
     send_email(Client, Input, []).
-send_email(Client, Input0, Options) ->
+send_email(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/email/outbound-emails"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1083,10 +1222,14 @@ send_email(Client, Input0, Options) ->
 %% tag key.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
-tag_resource(Client, Input0, Options) ->
+tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/email/tags"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1099,10 +1242,14 @@ tag_resource(Client, Input0, Options) ->
 %% @doc Remove one or more tags (keys and values) from a specified resource.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
-untag_resource(Client, Input0, Options) ->
+untag_resource(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/email/tags"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1125,10 +1272,14 @@ untag_resource(Client, Input0, Options) ->
 %% to Amazon S3 for long-term storage.
 update_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input) ->
     update_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input, []).
-update_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input0, Options) ->
+update_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input0, Options0) ->
     Method = put,
     Path = ["/v1/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/event-destinations/", aws_util:encode_uri(EventDestinationName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1160,19 +1311,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -1182,14 +1334,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

@@ -74,10 +74,14 @@
 %% (ARN) with AWS Elemental MediaConvert.
 associate_certificate(Client, Input) ->
     associate_certificate(Client, Input, []).
-associate_certificate(Client, Input0, Options) ->
+associate_certificate(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2017-08-29/certificates"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -92,10 +96,14 @@ associate_certificate(Client, Input0, Options) ->
 %% Once you have canceled a job, you can't start it again.
 cancel_job(Client, Id, Input) ->
     cancel_job(Client, Id, Input, []).
-cancel_job(Client, Id, Input0, Options) ->
+cancel_job(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2017-08-29/jobs/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -111,10 +119,14 @@ cancel_job(Client, Id, Input0, Options) ->
 %% http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 create_job(Client, Input) ->
     create_job(Client, Input, []).
-create_job(Client, Input0, Options) ->
+create_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2017-08-29/jobs"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -130,10 +142,14 @@ create_job(Client, Input0, Options) ->
 %% http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 create_job_template(Client, Input) ->
     create_job_template(Client, Input, []).
-create_job_template(Client, Input0, Options) ->
+create_job_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2017-08-29/jobTemplates"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -149,10 +165,14 @@ create_job_template(Client, Input0, Options) ->
 %% http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 create_preset(Client, Input) ->
     create_preset(Client, Input, []).
-create_preset(Client, Input0, Options) ->
+create_preset(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2017-08-29/presets"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -168,10 +188,14 @@ create_preset(Client, Input0, Options) ->
 %% https://docs.aws.amazon.com/mediaconvert/latest/ug/working-with-queues.html
 create_queue(Client, Input) ->
     create_queue(Client, Input, []).
-create_queue(Client, Input0, Options) ->
+create_queue(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2017-08-29/queues"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -184,10 +208,14 @@ create_queue(Client, Input0, Options) ->
 %% @doc Permanently delete a job template you have created.
 delete_job_template(Client, Name, Input) ->
     delete_job_template(Client, Name, Input, []).
-delete_job_template(Client, Name, Input0, Options) ->
+delete_job_template(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/2017-08-29/jobTemplates/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -200,10 +228,14 @@ delete_job_template(Client, Name, Input0, Options) ->
 %% @doc Permanently delete a preset you have created.
 delete_preset(Client, Name, Input) ->
     delete_preset(Client, Name, Input, []).
-delete_preset(Client, Name, Input0, Options) ->
+delete_preset(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/2017-08-29/presets/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -216,10 +248,14 @@ delete_preset(Client, Name, Input0, Options) ->
 %% @doc Permanently delete a queue you have created.
 delete_queue(Client, Name, Input) ->
     delete_queue(Client, Name, Input, []).
-delete_queue(Client, Name, Input0, Options) ->
+delete_queue(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/2017-08-29/queues/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -233,10 +269,14 @@ delete_queue(Client, Name, Input0, Options) ->
 %% get your account API endpoint.
 describe_endpoints(Client, Input) ->
     describe_endpoints(Client, Input, []).
-describe_endpoints(Client, Input0, Options) ->
+describe_endpoints(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2017-08-29/endpoints"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -251,10 +291,14 @@ describe_endpoints(Client, Input0, Options) ->
 %% MediaConvert resource.
 disassociate_certificate(Client, Arn, Input) ->
     disassociate_certificate(Client, Arn, Input, []).
-disassociate_certificate(Client, Arn, Input0, Options) ->
+disassociate_certificate(Client, Arn, Input0, Options0) ->
     Method = delete,
     Path = ["/2017-08-29/certificates/", aws_util:encode_uri(Arn), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -273,10 +317,13 @@ get_job(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_job(Client, Id, QueryMap, HeadersMap, []).
 
-get_job(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_job(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2017-08-29/jobs/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -293,10 +340,13 @@ get_job_template(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_job_template(Client, Name, QueryMap, HeadersMap, []).
 
-get_job_template(Client, Name, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_job_template(Client, Name, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2017-08-29/jobTemplates/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -313,10 +363,13 @@ get_preset(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_preset(Client, Name, QueryMap, HeadersMap, []).
 
-get_preset(Client, Name, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_preset(Client, Name, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2017-08-29/presets/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -333,10 +386,13 @@ get_queue(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_queue(Client, Name, QueryMap, HeadersMap, []).
 
-get_queue(Client, Name, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_queue(Client, Name, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2017-08-29/queues/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -357,10 +413,13 @@ list_job_templates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_job_templates(Client, QueryMap, HeadersMap, []).
 
-list_job_templates(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_job_templates(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2017-08-29/jobTemplates"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -391,10 +450,13 @@ list_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_jobs(Client, QueryMap, HeadersMap, []).
 
-list_jobs(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_jobs(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2017-08-29/jobs"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -423,10 +485,13 @@ list_presets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_presets(Client, QueryMap, HeadersMap, []).
 
-list_presets(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_presets(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2017-08-29/presets"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -455,10 +520,13 @@ list_queues(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_queues(Client, QueryMap, HeadersMap, []).
 
-list_queues(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_queues(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2017-08-29/queues"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -482,10 +550,13 @@ list_tags_for_resource(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2017-08-29/tags/", aws_util:encode_uri(Arn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -499,10 +570,14 @@ list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, Options)
 %% https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
-tag_resource(Client, Input0, Options) ->
+tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2017-08-29/tags"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -518,10 +593,14 @@ tag_resource(Client, Input0, Options) ->
 %% https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html
 untag_resource(Client, Arn, Input) ->
     untag_resource(Client, Arn, Input, []).
-untag_resource(Client, Arn, Input0, Options) ->
+untag_resource(Client, Arn, Input0, Options0) ->
     Method = put,
     Path = ["/2017-08-29/tags/", aws_util:encode_uri(Arn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -534,10 +613,14 @@ untag_resource(Client, Arn, Input0, Options) ->
 %% @doc Modify one of your existing job templates.
 update_job_template(Client, Name, Input) ->
     update_job_template(Client, Name, Input, []).
-update_job_template(Client, Name, Input0, Options) ->
+update_job_template(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/2017-08-29/jobTemplates/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -550,10 +633,14 @@ update_job_template(Client, Name, Input0, Options) ->
 %% @doc Modify one of your existing presets.
 update_preset(Client, Name, Input) ->
     update_preset(Client, Name, Input, []).
-update_preset(Client, Name, Input0, Options) ->
+update_preset(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/2017-08-29/presets/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -566,10 +653,14 @@ update_preset(Client, Name, Input0, Options) ->
 %% @doc Modify one of your existing queues.
 update_queue(Client, Name, Input) ->
     update_queue(Client, Name, Input, []).
-update_queue(Client, Name, Input0, Options) ->
+update_queue(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/2017-08-29/queues/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -601,19 +692,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -623,14 +715,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

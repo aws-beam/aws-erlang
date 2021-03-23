@@ -123,10 +123,14 @@
 %% cross-cluster search connection request.
 accept_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input) ->
     accept_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input, []).
-accept_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input0, Options) ->
+accept_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input0, Options0) ->
     Method = put,
     Path = ["/2015-01-01/es/ccs/inboundConnection/", aws_util:encode_uri(CrossClusterSearchConnectionId), "/accept"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -143,10 +147,14 @@ accept_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnect
 %% for more information.
 add_tags(Client, Input) ->
     add_tags(Client, Input, []).
-add_tags(Client, Input0, Options) ->
+add_tags(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/tags"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -159,10 +167,14 @@ add_tags(Client, Input0, Options) ->
 %% @doc Associates a package with an Amazon ES domain.
 associate_package(Client, DomainName, PackageID, Input) ->
     associate_package(Client, DomainName, PackageID, Input, []).
-associate_package(Client, DomainName, PackageID, Input0, Options) ->
+associate_package(Client, DomainName, PackageID, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/packages/associate/", aws_util:encode_uri(PackageID), "/", aws_util:encode_uri(DomainName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -178,10 +190,14 @@ associate_package(Client, DomainName, PackageID, Input0, Options) ->
 %% when the `UpdateStatus' is in the `PENDING_UPDATE' state.
 cancel_elasticsearch_service_software_update(Client, Input) ->
     cancel_elasticsearch_service_software_update(Client, Input, []).
-cancel_elasticsearch_service_software_update(Client, Input0, Options) ->
+cancel_elasticsearch_service_software_update(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/es/serviceSoftwareUpdate/cancel"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -197,10 +213,14 @@ cancel_elasticsearch_service_software_update(Client, Input0, Options) ->
 %% Elasticsearch Service Developer Guide.
 create_elasticsearch_domain(Client, Input) ->
     create_elasticsearch_domain(Client, Input, []).
-create_elasticsearch_domain(Client, Input0, Options) ->
+create_elasticsearch_domain(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/es/domain"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -214,10 +234,14 @@ create_elasticsearch_domain(Client, Input0, Options) ->
 %% a destination domain.
 create_outbound_cross_cluster_search_connection(Client, Input) ->
     create_outbound_cross_cluster_search_connection(Client, Input, []).
-create_outbound_cross_cluster_search_connection(Client, Input0, Options) ->
+create_outbound_cross_cluster_search_connection(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/es/ccs/outboundConnection"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -230,10 +254,14 @@ create_outbound_cross_cluster_search_connection(Client, Input0, Options) ->
 %% @doc Create a package for use with Amazon ES domains.
 create_package(Client, Input) ->
     create_package(Client, Input, []).
-create_package(Client, Input0, Options) ->
+create_package(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/packages"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -249,10 +277,14 @@ create_package(Client, Input0, Options) ->
 %% Once a domain is deleted, it cannot be recovered.
 delete_elasticsearch_domain(Client, DomainName, Input) ->
     delete_elasticsearch_domain(Client, DomainName, Input, []).
-delete_elasticsearch_domain(Client, DomainName, Input0, Options) ->
+delete_elasticsearch_domain(Client, DomainName, Input0, Options0) ->
     Method = delete,
     Path = ["/2015-01-01/es/domain/", aws_util:encode_uri(DomainName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -271,10 +303,14 @@ delete_elasticsearch_domain(Client, DomainName, Input0, Options) ->
 %% Elasticsearch Service Domains.
 delete_elasticsearch_service_role(Client, Input) ->
     delete_elasticsearch_service_role(Client, Input, []).
-delete_elasticsearch_service_role(Client, Input0, Options) ->
+delete_elasticsearch_service_role(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/2015-01-01/es/role"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -288,10 +324,14 @@ delete_elasticsearch_service_role(Client, Input0, Options) ->
 %% cross-cluster search connection.
 delete_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input) ->
     delete_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input, []).
-delete_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input0, Options) ->
+delete_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input0, Options0) ->
     Method = delete,
     Path = ["/2015-01-01/es/ccs/inboundConnection/", aws_util:encode_uri(CrossClusterSearchConnectionId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -305,10 +345,14 @@ delete_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnect
 %% cross-cluster search connection.
 delete_outbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input) ->
     delete_outbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input, []).
-delete_outbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input0, Options) ->
+delete_outbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input0, Options0) ->
     Method = delete,
     Path = ["/2015-01-01/es/ccs/outboundConnection/", aws_util:encode_uri(CrossClusterSearchConnectionId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -321,10 +365,14 @@ delete_outbound_cross_cluster_search_connection(Client, CrossClusterSearchConnec
 %% @doc Delete the package.
 delete_package(Client, PackageID, Input) ->
     delete_package(Client, PackageID, Input, []).
-delete_package(Client, PackageID, Input0, Options) ->
+delete_package(Client, PackageID, Input0, Options0) ->
     Method = delete,
     Path = ["/2015-01-01/packages/", aws_util:encode_uri(PackageID), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -345,10 +393,13 @@ describe_domain_auto_tunes(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_domain_auto_tunes(Client, DomainName, QueryMap, HeadersMap, []).
 
-describe_domain_auto_tunes(Client, DomainName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_domain_auto_tunes(Client, DomainName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-01-01/es/domain/", aws_util:encode_uri(DomainName), "/autoTunes"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -367,10 +418,13 @@ describe_elasticsearch_domain(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_elasticsearch_domain(Client, DomainName, QueryMap, HeadersMap, []).
 
-describe_elasticsearch_domain(Client, DomainName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_elasticsearch_domain(Client, DomainName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-01-01/es/domain/", aws_util:encode_uri(DomainName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -389,10 +443,13 @@ describe_elasticsearch_domain_config(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_elasticsearch_domain_config(Client, DomainName, QueryMap, HeadersMap, []).
 
-describe_elasticsearch_domain_config(Client, DomainName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_elasticsearch_domain_config(Client, DomainName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-01-01/es/domain/", aws_util:encode_uri(DomainName), "/config"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -405,10 +462,14 @@ describe_elasticsearch_domain_config(Client, DomainName, QueryMap, HeadersMap, O
 %% domain ARN.
 describe_elasticsearch_domains(Client, Input) ->
     describe_elasticsearch_domains(Client, Input, []).
-describe_elasticsearch_domains(Client, Input0, Options) ->
+describe_elasticsearch_domains(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/es/domain-info"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -431,10 +492,13 @@ describe_elasticsearch_instance_type_limits(Client, ElasticsearchVersion, Instan
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_elasticsearch_instance_type_limits(Client, ElasticsearchVersion, InstanceType, QueryMap, HeadersMap, []).
 
-describe_elasticsearch_instance_type_limits(Client, ElasticsearchVersion, InstanceType, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_elasticsearch_instance_type_limits(Client, ElasticsearchVersion, InstanceType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-01-01/es/instanceTypeLimits/", aws_util:encode_uri(ElasticsearchVersion), "/", aws_util:encode_uri(InstanceType), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -450,10 +514,14 @@ describe_elasticsearch_instance_type_limits(Client, ElasticsearchVersion, Instan
 %% destination domain.
 describe_inbound_cross_cluster_search_connections(Client, Input) ->
     describe_inbound_cross_cluster_search_connections(Client, Input, []).
-describe_inbound_cross_cluster_search_connections(Client, Input0, Options) ->
+describe_inbound_cross_cluster_search_connections(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/es/ccs/inboundConnection/search"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -467,10 +535,14 @@ describe_inbound_cross_cluster_search_connections(Client, Input0, Options) ->
 %% domain.
 describe_outbound_cross_cluster_search_connections(Client, Input) ->
     describe_outbound_cross_cluster_search_connections(Client, Input, []).
-describe_outbound_cross_cluster_search_connections(Client, Input0, Options) ->
+describe_outbound_cross_cluster_search_connections(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/es/ccs/outboundConnection/search"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -486,10 +558,14 @@ describe_outbound_cross_cluster_search_connections(Client, Input0, Options) ->
 %% pagination.
 describe_packages(Client, Input) ->
     describe_packages(Client, Input, []).
-describe_packages(Client, Input0, Options) ->
+describe_packages(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/packages/describe"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -508,10 +584,13 @@ describe_reserved_elasticsearch_instance_offerings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_reserved_elasticsearch_instance_offerings(Client, QueryMap, HeadersMap, []).
 
-describe_reserved_elasticsearch_instance_offerings(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_reserved_elasticsearch_instance_offerings(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-01-01/es/reservedInstanceOfferings"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -535,10 +614,13 @@ describe_reserved_elasticsearch_instances(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_reserved_elasticsearch_instances(Client, QueryMap, HeadersMap, []).
 
-describe_reserved_elasticsearch_instances(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_reserved_elasticsearch_instances(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-01-01/es/reservedInstances"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -555,10 +637,14 @@ describe_reserved_elasticsearch_instances(Client, QueryMap, HeadersMap, Options)
 %% @doc Dissociates a package from the Amazon ES domain.
 dissociate_package(Client, DomainName, PackageID, Input) ->
     dissociate_package(Client, DomainName, PackageID, Input, []).
-dissociate_package(Client, DomainName, PackageID, Input0, Options) ->
+dissociate_package(Client, DomainName, PackageID, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/packages/dissociate/", aws_util:encode_uri(PackageID), "/", aws_util:encode_uri(DomainName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -580,10 +666,13 @@ get_compatible_elasticsearch_versions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_compatible_elasticsearch_versions(Client, QueryMap, HeadersMap, []).
 
-get_compatible_elasticsearch_versions(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_compatible_elasticsearch_versions(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-01-01/es/compatibleVersions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -605,10 +694,13 @@ get_package_version_history(Client, PackageID, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_package_version_history(Client, PackageID, QueryMap, HeadersMap, []).
 
-get_package_version_history(Client, PackageID, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_package_version_history(Client, PackageID, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-01-01/packages/", aws_util:encode_uri(PackageID), "/history"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -631,10 +723,13 @@ get_upgrade_history(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_upgrade_history(Client, DomainName, QueryMap, HeadersMap, []).
 
-get_upgrade_history(Client, DomainName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_upgrade_history(Client, DomainName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-01-01/es/upgradeDomain/", aws_util:encode_uri(DomainName), "/history"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -657,10 +752,13 @@ get_upgrade_status(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_upgrade_status(Client, DomainName, QueryMap, HeadersMap, []).
 
-get_upgrade_status(Client, DomainName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_upgrade_status(Client, DomainName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-01-01/es/upgradeDomain/", aws_util:encode_uri(DomainName), "/status"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -678,10 +776,13 @@ list_domain_names(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_domain_names(Client, QueryMap, HeadersMap, []).
 
-list_domain_names(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_domain_names(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-01-01/domain"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -698,10 +799,13 @@ list_domains_for_package(Client, PackageID, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_domains_for_package(Client, PackageID, QueryMap, HeadersMap, []).
 
-list_domains_for_package(Client, PackageID, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_domains_for_package(Client, PackageID, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-01-01/packages/", aws_util:encode_uri(PackageID), "/domains"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -724,10 +828,13 @@ list_elasticsearch_instance_types(Client, ElasticsearchVersion, QueryMap, Header
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_elasticsearch_instance_types(Client, ElasticsearchVersion, QueryMap, HeadersMap, []).
 
-list_elasticsearch_instance_types(Client, ElasticsearchVersion, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_elasticsearch_instance_types(Client, ElasticsearchVersion, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-01-01/es/instanceTypes/", aws_util:encode_uri(ElasticsearchVersion), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -750,10 +857,13 @@ list_elasticsearch_versions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_elasticsearch_versions(Client, QueryMap, HeadersMap, []).
 
-list_elasticsearch_versions(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_elasticsearch_versions(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-01-01/es/versions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -775,10 +885,13 @@ list_packages_for_domain(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_packages_for_domain(Client, DomainName, QueryMap, HeadersMap, []).
 
-list_packages_for_domain(Client, DomainName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_packages_for_domain(Client, DomainName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-01-01/domain/", aws_util:encode_uri(DomainName), "/packages"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -800,10 +913,13 @@ list_tags(Client, ARN, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags(Client, ARN, QueryMap, HeadersMap, []).
 
-list_tags(Client, ARN, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags(Client, ARN, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-01-01/tags/"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -818,10 +934,14 @@ list_tags(Client, ARN, QueryMap, HeadersMap, Options)
 %% @doc Allows you to purchase reserved Elasticsearch instances.
 purchase_reserved_elasticsearch_instance_offering(Client, Input) ->
     purchase_reserved_elasticsearch_instance_offering(Client, Input, []).
-purchase_reserved_elasticsearch_instance_offering(Client, Input0, Options) ->
+purchase_reserved_elasticsearch_instance_offering(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/es/purchaseReservedInstanceOffering"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -835,10 +955,14 @@ purchase_reserved_elasticsearch_instance_offering(Client, Input0, Options) ->
 %% cross-cluster search connection request.
 reject_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input) ->
     reject_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input, []).
-reject_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input0, Options) ->
+reject_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input0, Options0) ->
     Method = put,
     Path = ["/2015-01-01/es/ccs/inboundConnection/", aws_util:encode_uri(CrossClusterSearchConnectionId), "/reject"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -852,10 +976,14 @@ reject_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnect
 %% domain.
 remove_tags(Client, Input) ->
     remove_tags(Client, Input, []).
-remove_tags(Client, Input0, Options) ->
+remove_tags(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/tags-removal"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -868,10 +996,14 @@ remove_tags(Client, Input0, Options) ->
 %% @doc Schedules a service software update for an Amazon ES domain.
 start_elasticsearch_service_software_update(Client, Input) ->
     start_elasticsearch_service_software_update(Client, Input, []).
-start_elasticsearch_service_software_update(Client, Input0, Options) ->
+start_elasticsearch_service_software_update(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/es/serviceSoftwareUpdate/start"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -885,10 +1017,14 @@ start_elasticsearch_service_software_update(Client, Input0, Options) ->
 %% domain, setting as setting the instance type and the number of instances.
 update_elasticsearch_domain_config(Client, DomainName, Input) ->
     update_elasticsearch_domain_config(Client, DomainName, Input, []).
-update_elasticsearch_domain_config(Client, DomainName, Input0, Options) ->
+update_elasticsearch_domain_config(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/es/domain/", aws_util:encode_uri(DomainName), "/config"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -901,10 +1037,14 @@ update_elasticsearch_domain_config(Client, DomainName, Input0, Options) ->
 %% @doc Updates a package for use with Amazon ES domains.
 update_package(Client, Input) ->
     update_package(Client, Input, []).
-update_package(Client, Input0, Options) ->
+update_package(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/packages/update"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -918,10 +1058,14 @@ update_package(Client, Input0, Options) ->
 %% eligibility check to a compatible Elasticsearch version.
 upgrade_elasticsearch_domain(Client, Input) ->
     upgrade_elasticsearch_domain(Client, Input, []).
-upgrade_elasticsearch_domain(Client, Input0, Options) ->
+upgrade_elasticsearch_domain(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/es/upgradeDomain"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -953,19 +1097,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -975,14 +1120,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

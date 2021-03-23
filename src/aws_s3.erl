@@ -272,10 +272,14 @@
 %% </li> </ul>
 abort_multipart_upload(Client, Bucket, Key, Input) ->
     abort_multipart_upload(Client, Bucket, Key, Input, []).
-abort_multipart_upload(Client, Bucket, Key, Input0, Options) ->
+abort_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>},
@@ -384,10 +388,14 @@ abort_multipart_upload(Client, Bucket, Key, Input0, Options) ->
 %% </li> </ul>
 complete_multipart_upload(Client, Bucket, Key, Input) ->
     complete_multipart_upload(Client, Bucket, Key, Input, []).
-complete_multipart_upload(Client, Bucket, Key, Input0, Options) ->
+complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>},
@@ -574,10 +582,14 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options) ->
 %% </li> </ul> For more information, see Copying Objects.
 copy_object(Client, Bucket, Key, Input) ->
     copy_object(Client, Bucket, Key, Input, []).
-copy_object(Client, Bucket, Key, Input0, Options) ->
+copy_object(Client, Bucket, Key, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-copy-source-if-modified-since">>, <<"CopySourceIfModifiedSince">>},
@@ -744,10 +756,14 @@ copy_object(Client, Bucket, Key, Input0, Options) ->
 %% </li> </ul>
 create_bucket(Client, Bucket, Input) ->
     create_bucket(Client, Bucket, Input, []).
-create_bucket(Client, Bucket, Input0, Options) ->
+create_bucket(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-acl">>, <<"ACL">>},
@@ -986,10 +1002,14 @@ create_bucket(Client, Bucket, Input0, Options) ->
 %% </li> </ul>
 create_multipart_upload(Client, Bucket, Key, Input) ->
     create_multipart_upload(Client, Bucket, Key, Input, []).
-create_multipart_upload(Client, Bucket, Key, Input0, Options) ->
+create_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?uploads"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-acl">>, <<"ACL">>},
@@ -1064,10 +1084,14 @@ create_multipart_upload(Client, Bucket, Key, Input0, Options) ->
 %% </li> </ul>
 delete_bucket(Client, Bucket, Input) ->
     delete_bucket(Client, Bucket, Input, []).
-delete_bucket(Client, Bucket, Input0, Options) ->
+delete_bucket(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
@@ -1104,10 +1128,14 @@ delete_bucket(Client, Bucket, Input0, Options) ->
 %% </li> </ul>
 delete_bucket_analytics_configuration(Client, Bucket, Input) ->
     delete_bucket_analytics_configuration(Client, Bucket, Input, []).
-delete_bucket_analytics_configuration(Client, Bucket, Input0, Options) ->
+delete_bucket_analytics_configuration(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "?analytics"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
@@ -1138,10 +1166,14 @@ delete_bucket_analytics_configuration(Client, Bucket, Input0, Options) ->
 %% </li> </ul>
 delete_bucket_cors(Client, Bucket, Input) ->
     delete_bucket_cors(Client, Bucket, Input, []).
-delete_bucket_cors(Client, Bucket, Input0, Options) ->
+delete_bucket_cors(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "?cors"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
@@ -1176,10 +1208,14 @@ delete_bucket_cors(Client, Bucket, Input0, Options) ->
 %% </li> </ul>
 delete_bucket_encryption(Client, Bucket, Input) ->
     delete_bucket_encryption(Client, Bucket, Input, []).
-delete_bucket_encryption(Client, Bucket, Input0, Options) ->
+delete_bucket_encryption(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "?encryption"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
@@ -1223,10 +1259,14 @@ delete_bucket_encryption(Client, Bucket, Input0, Options) ->
 %% </li> </ul>
 delete_bucket_intelligent_tiering_configuration(Client, Bucket, Input) ->
     delete_bucket_intelligent_tiering_configuration(Client, Bucket, Input, []).
-delete_bucket_intelligent_tiering_configuration(Client, Bucket, Input0, Options) ->
+delete_bucket_intelligent_tiering_configuration(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "?intelligent-tiering"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1261,10 +1301,14 @@ delete_bucket_intelligent_tiering_configuration(Client, Bucket, Input0, Options)
 %% </li> </ul>
 delete_bucket_inventory_configuration(Client, Bucket, Input) ->
     delete_bucket_inventory_configuration(Client, Bucket, Input, []).
-delete_bucket_inventory_configuration(Client, Bucket, Input0, Options) ->
+delete_bucket_inventory_configuration(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "?inventory"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
@@ -1303,10 +1347,14 @@ delete_bucket_inventory_configuration(Client, Bucket, Input0, Options) ->
 %% </li> </ul>
 delete_bucket_lifecycle(Client, Bucket, Input) ->
     delete_bucket_lifecycle(Client, Bucket, Input, []).
-delete_bucket_lifecycle(Client, Bucket, Input0, Options) ->
+delete_bucket_lifecycle(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "?lifecycle"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
@@ -1347,10 +1395,14 @@ delete_bucket_lifecycle(Client, Bucket, Input0, Options) ->
 %% </li> </ul>
 delete_bucket_metrics_configuration(Client, Bucket, Input) ->
     delete_bucket_metrics_configuration(Client, Bucket, Input, []).
-delete_bucket_metrics_configuration(Client, Bucket, Input0, Options) ->
+delete_bucket_metrics_configuration(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "?metrics"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
@@ -1381,10 +1433,14 @@ delete_bucket_metrics_configuration(Client, Bucket, Input0, Options) ->
 %% </li> </ul>
 delete_bucket_ownership_controls(Client, Bucket, Input) ->
     delete_bucket_ownership_controls(Client, Bucket, Input, []).
-delete_bucket_ownership_controls(Client, Bucket, Input0, Options) ->
+delete_bucket_ownership_controls(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "?ownershipControls"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
@@ -1425,10 +1481,14 @@ delete_bucket_ownership_controls(Client, Bucket, Input0, Options) ->
 %% </li> </ul>
 delete_bucket_policy(Client, Bucket, Input) ->
     delete_bucket_policy(Client, Bucket, Input, []).
-delete_bucket_policy(Client, Bucket, Input0, Options) ->
+delete_bucket_policy(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "?policy"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
@@ -1463,10 +1523,14 @@ delete_bucket_policy(Client, Bucket, Input0, Options) ->
 %% </li> </ul>
 delete_bucket_replication(Client, Bucket, Input) ->
     delete_bucket_replication(Client, Bucket, Input, []).
-delete_bucket_replication(Client, Bucket, Input0, Options) ->
+delete_bucket_replication(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "?replication"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
@@ -1493,10 +1557,14 @@ delete_bucket_replication(Client, Bucket, Input0, Options) ->
 %% </li> </ul>
 delete_bucket_tagging(Client, Bucket, Input) ->
     delete_bucket_tagging(Client, Bucket, Input, []).
-delete_bucket_tagging(Client, Bucket, Input0, Options) ->
+delete_bucket_tagging(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "?tagging"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
@@ -1534,10 +1602,14 @@ delete_bucket_tagging(Client, Bucket, Input0, Options) ->
 %% </li> </ul>
 delete_bucket_website(Client, Bucket, Input) ->
     delete_bucket_website(Client, Bucket, Input, []).
-delete_bucket_website(Client, Bucket, Input0, Options) ->
+delete_bucket_website(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "?website"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
@@ -1581,10 +1653,14 @@ delete_bucket_website(Client, Bucket, Input0, Options) ->
 %% </li> </ul>
 delete_object(Client, Bucket, Key, Input) ->
     delete_object(Client, Bucket, Key, Input, []).
-delete_object(Client, Bucket, Key, Input0, Options) ->
+delete_object(Client, Bucket, Key, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-bypass-governance-retention">>, <<"BypassGovernanceRetention">>},
@@ -1639,10 +1715,14 @@ delete_object(Client, Bucket, Key, Input0, Options) ->
 %% </li> </ul>
 delete_object_tagging(Client, Bucket, Key, Input) ->
     delete_object_tagging(Client, Bucket, Key, Input, []).
-delete_object_tagging(Client, Bucket, Key, Input0, Options) ->
+delete_object_tagging(Client, Bucket, Key, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?tagging"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
@@ -1720,10 +1800,14 @@ delete_object_tagging(Client, Bucket, Key, Input0, Options) ->
 %% </li> </ul>
 delete_objects(Client, Bucket, Input) ->
     delete_objects(Client, Bucket, Input, []).
-delete_objects(Client, Bucket, Input0, Options) ->
+delete_objects(Client, Bucket, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(Bucket), "?delete"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-bypass-governance-retention">>, <<"BypassGovernanceRetention">>},
@@ -1775,10 +1859,14 @@ delete_objects(Client, Bucket, Input0, Options) ->
 %% </li> </ul>
 delete_public_access_block(Client, Bucket, Input) ->
     delete_public_access_block(Client, Bucket, Input, []).
-delete_public_access_block(Client, Bucket, Input0, Options) ->
+delete_public_access_block(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "?publicAccessBlock"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
@@ -1827,10 +1915,13 @@ get_bucket_accelerate_configuration(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_accelerate_configuration(Client, Bucket, QueryMap, HeadersMap, []).
 
-get_bucket_accelerate_configuration(Client, Bucket, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_bucket_accelerate_configuration(Client, Bucket, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?accelerate"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -1863,10 +1954,13 @@ get_bucket_acl(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_acl(Client, Bucket, QueryMap, HeadersMap, []).
 
-get_bucket_acl(Client, Bucket, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_bucket_acl(Client, Bucket, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?acl"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -1910,10 +2004,13 @@ get_bucket_analytics_configuration(Client, Bucket, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_analytics_configuration(Client, Bucket, Id, QueryMap, HeadersMap, []).
 
-get_bucket_analytics_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_bucket_analytics_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?analytics"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -1953,10 +2050,13 @@ get_bucket_cors(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_cors(Client, Bucket, QueryMap, HeadersMap, []).
 
-get_bucket_cors(Client, Bucket, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_bucket_cors(Client, Bucket, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?cors"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -1999,10 +2099,13 @@ get_bucket_encryption(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_encryption(Client, Bucket, QueryMap, HeadersMap, []).
 
-get_bucket_encryption(Client, Bucket, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_bucket_encryption(Client, Bucket, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?encryption"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -2051,10 +2154,13 @@ get_bucket_intelligent_tiering_configuration(Client, Bucket, Id, QueryMap, Heade
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_intelligent_tiering_configuration(Client, Bucket, Id, QueryMap, HeadersMap, []).
 
-get_bucket_intelligent_tiering_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_bucket_intelligent_tiering_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?intelligent-tiering"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2096,10 +2202,13 @@ get_bucket_inventory_configuration(Client, Bucket, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_inventory_configuration(Client, Bucket, Id, QueryMap, HeadersMap, []).
 
-get_bucket_inventory_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_bucket_inventory_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?inventory"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -2161,10 +2270,13 @@ get_bucket_lifecycle(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_lifecycle(Client, Bucket, QueryMap, HeadersMap, []).
 
-get_bucket_lifecycle(Client, Bucket, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_bucket_lifecycle(Client, Bucket, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?lifecycle"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -2225,10 +2337,13 @@ get_bucket_lifecycle_configuration(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_lifecycle_configuration(Client, Bucket, QueryMap, HeadersMap, []).
 
-get_bucket_lifecycle_configuration(Client, Bucket, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_bucket_lifecycle_configuration(Client, Bucket, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?lifecycle"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -2263,10 +2378,13 @@ get_bucket_location(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_location(Client, Bucket, QueryMap, HeadersMap, []).
 
-get_bucket_location(Client, Bucket, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_bucket_location(Client, Bucket, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?location"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -2298,10 +2416,13 @@ get_bucket_logging(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_logging(Client, Bucket, QueryMap, HeadersMap, []).
 
-get_bucket_logging(Client, Bucket, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_bucket_logging(Client, Bucket, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?logging"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -2347,10 +2468,13 @@ get_bucket_metrics_configuration(Client, Bucket, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_metrics_configuration(Client, Bucket, Id, QueryMap, HeadersMap, []).
 
-get_bucket_metrics_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_bucket_metrics_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?metrics"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -2375,10 +2499,13 @@ get_bucket_notification(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_notification(Client, Bucket, QueryMap, HeadersMap, []).
 
-get_bucket_notification(Client, Bucket, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_bucket_notification(Client, Bucket, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?notification"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -2417,10 +2544,13 @@ get_bucket_notification_configuration(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_notification_configuration(Client, Bucket, QueryMap, HeadersMap, []).
 
-get_bucket_notification_configuration(Client, Bucket, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_bucket_notification_configuration(Client, Bucket, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?notification"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -2456,10 +2586,13 @@ get_bucket_ownership_controls(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_ownership_controls(Client, Bucket, QueryMap, HeadersMap, []).
 
-get_bucket_ownership_controls(Client, Bucket, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_bucket_ownership_controls(Client, Bucket, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?ownershipControls"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -2503,10 +2636,13 @@ get_bucket_policy(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_policy(Client, Bucket, QueryMap, HeadersMap, []).
 
-get_bucket_policy(Client, Bucket, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_bucket_policy(Client, Bucket, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?policy"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -2547,10 +2683,13 @@ get_bucket_policy_status(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_policy_status(Client, Bucket, QueryMap, HeadersMap, []).
 
-get_bucket_policy_status(Client, Bucket, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_bucket_policy_status(Client, Bucket, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?policyStatus"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -2597,10 +2736,13 @@ get_bucket_replication(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_replication(Client, Bucket, QueryMap, HeadersMap, []).
 
-get_bucket_replication(Client, Bucket, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_bucket_replication(Client, Bucket, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?replication"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -2630,10 +2772,13 @@ get_bucket_request_payment(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_request_payment(Client, Bucket, QueryMap, HeadersMap, []).
 
-get_bucket_request_payment(Client, Bucket, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_bucket_request_payment(Client, Bucket, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?requestPayment"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -2673,10 +2818,13 @@ get_bucket_tagging(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_tagging(Client, Bucket, QueryMap, HeadersMap, []).
 
-get_bucket_tagging(Client, Bucket, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_bucket_tagging(Client, Bucket, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?tagging"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -2714,10 +2862,13 @@ get_bucket_versioning(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_versioning(Client, Bucket, QueryMap, HeadersMap, []).
 
-get_bucket_versioning(Client, Bucket, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_bucket_versioning(Client, Bucket, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?versioning"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -2756,10 +2907,13 @@ get_bucket_website(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_website(Client, Bucket, QueryMap, HeadersMap, []).
 
-get_bucket_website(Client, Bucket, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_bucket_website(Client, Bucket, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?website"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -2914,10 +3068,13 @@ get_object(Client, Bucket, Key, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_object(Client, Bucket, Key, QueryMap, HeadersMap, []).
 
-get_object(Client, Bucket, Key, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_object(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, true}
+               | Options0],
 
     Headers0 =
       [
@@ -3023,10 +3180,13 @@ get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap, []).
 
-get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?acl"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -3072,10 +3232,13 @@ get_object_legal_hold(Client, Bucket, Key, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_object_legal_hold(Client, Bucket, Key, QueryMap, HeadersMap, []).
 
-get_object_legal_hold(Client, Bucket, Key, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_object_legal_hold(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?legal-hold"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -3105,10 +3268,13 @@ get_object_lock_configuration(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_object_lock_configuration(Client, Bucket, QueryMap, HeadersMap, []).
 
-get_object_lock_configuration(Client, Bucket, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_object_lock_configuration(Client, Bucket, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?object-lock"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -3133,10 +3299,13 @@ get_object_retention(Client, Bucket, Key, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_object_retention(Client, Bucket, Key, QueryMap, HeadersMap, []).
 
-get_object_retention(Client, Bucket, Key, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_object_retention(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?retention"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -3186,10 +3355,13 @@ get_object_tagging(Client, Bucket, Key, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_object_tagging(Client, Bucket, Key, QueryMap, HeadersMap, []).
 
-get_object_tagging(Client, Bucket, Key, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_object_tagging(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?tagging"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -3249,10 +3421,13 @@ get_object_torrent(Client, Bucket, Key, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_object_torrent(Client, Bucket, Key, QueryMap, HeadersMap, []).
 
-get_object_torrent(Client, Bucket, Key, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_object_torrent(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?torrent"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, true}
+               | Options0],
 
     Headers0 =
       [
@@ -3317,10 +3492,13 @@ get_public_access_block(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_public_access_block(Client, Bucket, QueryMap, HeadersMap, []).
 
-get_public_access_block(Client, Bucket, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_public_access_block(Client, Bucket, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?publicAccessBlock"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -3350,10 +3528,14 @@ get_public_access_block(Client, Bucket, QueryMap, HeadersMap, Options)
 %% Managing Access Permissions to Your Amazon S3 Resources.
 head_bucket(Client, Bucket, Input) ->
     head_bucket(Client, Bucket, Input, []).
-head_bucket(Client, Bucket, Input0, Options) ->
+head_bucket(Client, Bucket, Input0, Options0) ->
     Method = head,
     Path = ["/", aws_util:encode_uri(Bucket), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
@@ -3445,10 +3627,14 @@ head_bucket(Client, Bucket, Input0, Options) ->
 %% </li> </ul>
 head_object(Client, Bucket, Key, Input) ->
     head_object(Client, Bucket, Key, Input, []).
-head_object(Client, Bucket, Key, Input0, Options) ->
+head_object(Client, Bucket, Key, Input0, Options0) ->
     Method = head,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>},
@@ -3556,10 +3742,13 @@ list_bucket_analytics_configurations(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_bucket_analytics_configurations(Client, Bucket, QueryMap, HeadersMap, []).
 
-list_bucket_analytics_configurations(Client, Bucket, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_bucket_analytics_configurations(Client, Bucket, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?analytics"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -3613,10 +3802,13 @@ list_bucket_intelligent_tiering_configurations(Client, Bucket, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_bucket_intelligent_tiering_configurations(Client, Bucket, QueryMap, HeadersMap, []).
 
-list_bucket_intelligent_tiering_configurations(Client, Bucket, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_bucket_intelligent_tiering_configurations(Client, Bucket, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?intelligent-tiering"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3669,10 +3861,13 @@ list_bucket_inventory_configurations(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_bucket_inventory_configurations(Client, Bucket, QueryMap, HeadersMap, []).
 
-list_bucket_inventory_configurations(Client, Bucket, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_bucket_inventory_configurations(Client, Bucket, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?inventory"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -3730,10 +3925,13 @@ list_bucket_metrics_configurations(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_bucket_metrics_configurations(Client, Bucket, QueryMap, HeadersMap, []).
 
-list_bucket_metrics_configurations(Client, Bucket, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_bucket_metrics_configurations(Client, Bucket, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?metrics"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -3759,10 +3957,13 @@ list_buckets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_buckets(Client, QueryMap, HeadersMap, []).
 
-list_buckets(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_buckets(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3817,10 +4018,13 @@ list_multipart_uploads(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_multipart_uploads(Client, Bucket, QueryMap, HeadersMap, []).
 
-list_multipart_uploads(Client, Bucket, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_multipart_uploads(Client, Bucket, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?uploads"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -3873,10 +4077,13 @@ list_object_versions(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_object_versions(Client, Bucket, QueryMap, HeadersMap, []).
 
-list_object_versions(Client, Bucket, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_object_versions(Client, Bucket, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?versions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -3929,10 +4136,13 @@ list_objects(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_objects(Client, Bucket, QueryMap, HeadersMap, []).
 
-list_objects(Client, Bucket, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_objects(Client, Bucket, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -3994,10 +4204,13 @@ list_objects_v2(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_objects_v2(Client, Bucket, QueryMap, HeadersMap, []).
 
-list_objects_v2(Client, Bucket, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_objects_v2(Client, Bucket, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?list-type=2"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -4061,10 +4274,13 @@ list_parts(Client, Bucket, Key, UploadId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_parts(Client, Bucket, Key, UploadId, QueryMap, HeadersMap, []).
 
-list_parts(Client, Bucket, Key, UploadId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_parts(Client, Bucket, Key, UploadId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -4143,10 +4359,14 @@ list_parts(Client, Bucket, Key, UploadId, QueryMap, HeadersMap, Options)
 %% </li> </ul>
 put_bucket_accelerate_configuration(Client, Bucket, Input) ->
     put_bucket_accelerate_configuration(Client, Bucket, Input, []).
-put_bucket_accelerate_configuration(Client, Bucket, Input0, Options) ->
+put_bucket_accelerate_configuration(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?accelerate"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
@@ -4301,10 +4521,14 @@ put_bucket_accelerate_configuration(Client, Bucket, Input0, Options) ->
 %% </li> </ul>
 put_bucket_acl(Client, Bucket, Input) ->
     put_bucket_acl(Client, Bucket, Input, []).
-put_bucket_acl(Client, Bucket, Input0, Options) ->
+put_bucket_acl(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?acl"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-acl">>, <<"ACL">>},
@@ -4384,10 +4608,14 @@ put_bucket_acl(Client, Bucket, Input0, Options) ->
 %% </li> </ul>
 put_bucket_analytics_configuration(Client, Bucket, Input) ->
     put_bucket_analytics_configuration(Client, Bucket, Input, []).
-put_bucket_analytics_configuration(Client, Bucket, Input0, Options) ->
+put_bucket_analytics_configuration(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?analytics"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
@@ -4451,10 +4679,14 @@ put_bucket_analytics_configuration(Client, Bucket, Input0, Options) ->
 %% </li> </ul>
 put_bucket_cors(Client, Bucket, Input) ->
     put_bucket_cors(Client, Bucket, Input, []).
-put_bucket_cors(Client, Bucket, Input0, Options) ->
+put_bucket_cors(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?cors"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Content-MD5">>, <<"ContentMD5">>},
@@ -4497,10 +4729,14 @@ put_bucket_cors(Client, Bucket, Input0, Options) ->
 %% </li> </ul>
 put_bucket_encryption(Client, Bucket, Input) ->
     put_bucket_encryption(Client, Bucket, Input, []).
-put_bucket_encryption(Client, Bucket, Input0, Options) ->
+put_bucket_encryption(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?encryption"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Content-MD5">>, <<"ContentMD5">>},
@@ -4573,10 +4809,14 @@ put_bucket_encryption(Client, Bucket, Input0, Options) ->
 %% </li> </ul> </li> </ul>
 put_bucket_intelligent_tiering_configuration(Client, Bucket, Input) ->
     put_bucket_intelligent_tiering_configuration(Client, Bucket, Input, []).
-put_bucket_intelligent_tiering_configuration(Client, Bucket, Input0, Options) ->
+put_bucket_intelligent_tiering_configuration(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?intelligent-tiering"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4652,10 +4892,14 @@ put_bucket_intelligent_tiering_configuration(Client, Bucket, Input0, Options) ->
 %% </li> </ul>
 put_bucket_inventory_configuration(Client, Bucket, Input) ->
     put_bucket_inventory_configuration(Client, Bucket, Input, []).
-put_bucket_inventory_configuration(Client, Bucket, Input0, Options) ->
+put_bucket_inventory_configuration(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?inventory"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
@@ -4725,10 +4969,14 @@ put_bucket_inventory_configuration(Client, Bucket, Input0, Options) ->
 %% </li> </ul> </li> </ul>
 put_bucket_lifecycle(Client, Bucket, Input) ->
     put_bucket_lifecycle(Client, Bucket, Input, []).
-put_bucket_lifecycle(Client, Bucket, Input0, Options) ->
+put_bucket_lifecycle(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?lifecycle"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Content-MD5">>, <<"ContentMD5">>},
@@ -4811,10 +5059,14 @@ put_bucket_lifecycle(Client, Bucket, Input0, Options) ->
 %% </li> </ul>
 put_bucket_lifecycle_configuration(Client, Bucket, Input) ->
     put_bucket_lifecycle_configuration(Client, Bucket, Input, []).
-put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options) ->
+put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?lifecycle"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
@@ -4889,10 +5141,14 @@ put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options) ->
 %% </li> </ul>
 put_bucket_logging(Client, Bucket, Input) ->
     put_bucket_logging(Client, Bucket, Input, []).
-put_bucket_logging(Client, Bucket, Input0, Options) ->
+put_bucket_logging(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?logging"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Content-MD5">>, <<"ContentMD5">>},
@@ -4943,10 +5199,14 @@ put_bucket_logging(Client, Bucket, Input0, Options) ->
 %% </li> </ul> </li> </ul>
 put_bucket_metrics_configuration(Client, Bucket, Input) ->
     put_bucket_metrics_configuration(Client, Bucket, Input, []).
-put_bucket_metrics_configuration(Client, Bucket, Input0, Options) ->
+put_bucket_metrics_configuration(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?metrics"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
@@ -4962,10 +5222,14 @@ put_bucket_metrics_configuration(Client, Bucket, Input0, Options) ->
 %% @doc No longer used, see the PutBucketNotificationConfiguration operation.
 put_bucket_notification(Client, Bucket, Input) ->
     put_bucket_notification(Client, Bucket, Input, []).
-put_bucket_notification(Client, Bucket, Input0, Options) ->
+put_bucket_notification(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?notification"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Content-MD5">>, <<"ContentMD5">>},
@@ -5040,10 +5304,14 @@ put_bucket_notification(Client, Bucket, Input0, Options) ->
 %% </li> </ul>
 put_bucket_notification_configuration(Client, Bucket, Input) ->
     put_bucket_notification_configuration(Client, Bucket, Input, []).
-put_bucket_notification_configuration(Client, Bucket, Input0, Options) ->
+put_bucket_notification_configuration(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?notification"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
@@ -5073,10 +5341,14 @@ put_bucket_notification_configuration(Client, Bucket, Input0, Options) ->
 %% </li> </ul>
 put_bucket_ownership_controls(Client, Bucket, Input) ->
     put_bucket_ownership_controls(Client, Bucket, Input, []).
-put_bucket_ownership_controls(Client, Bucket, Input0, Options) ->
+put_bucket_ownership_controls(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?ownershipControls"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Content-MD5">>, <<"ContentMD5">>},
@@ -5117,10 +5389,14 @@ put_bucket_ownership_controls(Client, Bucket, Input0, Options) ->
 %% </li> </ul>
 put_bucket_policy(Client, Bucket, Input) ->
     put_bucket_policy(Client, Bucket, Input, []).
-put_bucket_policy(Client, Bucket, Input0, Options) ->
+put_bucket_policy(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?policy"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-confirm-remove-self-bucket-access">>, <<"ConfirmRemoveSelfBucketAccess">>},
@@ -5193,10 +5469,14 @@ put_bucket_policy(Client, Bucket, Input0, Options) ->
 %% </li> </ul>
 put_bucket_replication(Client, Bucket, Input) ->
     put_bucket_replication(Client, Bucket, Input, []).
-put_bucket_replication(Client, Bucket, Input0, Options) ->
+put_bucket_replication(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?replication"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Content-MD5">>, <<"ContentMD5">>},
@@ -5226,10 +5506,14 @@ put_bucket_replication(Client, Bucket, Input0, Options) ->
 %% </li> </ul>
 put_bucket_request_payment(Client, Bucket, Input) ->
     put_bucket_request_payment(Client, Bucket, Input, []).
-put_bucket_request_payment(Client, Bucket, Input0, Options) ->
+put_bucket_request_payment(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?requestPayment"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Content-MD5">>, <<"ContentMD5">>},
@@ -5296,10 +5580,14 @@ put_bucket_request_payment(Client, Bucket, Input0, Options) ->
 %% </li> </ul>
 put_bucket_tagging(Client, Bucket, Input) ->
     put_bucket_tagging(Client, Bucket, Input, []).
-put_bucket_tagging(Client, Bucket, Input0, Options) ->
+put_bucket_tagging(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?tagging"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Content-MD5">>, <<"ContentMD5">>},
@@ -5352,10 +5640,14 @@ put_bucket_tagging(Client, Bucket, Input0, Options) ->
 %% </li> </ul>
 put_bucket_versioning(Client, Bucket, Input) ->
     put_bucket_versioning(Client, Bucket, Input, []).
-put_bucket_versioning(Client, Bucket, Input0, Options) ->
+put_bucket_versioning(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?versioning"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Content-MD5">>, <<"ContentMD5">>},
@@ -5440,10 +5732,14 @@ put_bucket_versioning(Client, Bucket, Input0, Options) ->
 %% in the Amazon Simple Storage Service Developer Guide.
 put_bucket_website(Client, Bucket, Input) ->
     put_bucket_website(Client, Bucket, Input, []).
-put_bucket_website(Client, Bucket, Input0, Options) ->
+put_bucket_website(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?website"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Content-MD5">>, <<"ContentMD5">>},
@@ -5532,10 +5828,14 @@ put_bucket_website(Client, Bucket, Input0, Options) ->
 %% </li> </ul>
 put_object(Client, Bucket, Key, Input) ->
     put_object(Client, Bucket, Key, Input, []).
-put_object(Client, Bucket, Key, Input0, Options) ->
+put_object(Client, Bucket, Key, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, true},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-acl">>, <<"ACL">>},
@@ -5572,7 +5872,7 @@ put_object(Client, Bucket, Key, Input0, Options) ->
     Query_ = [],
     Input = Input1,
 
-    case request(Client, Method, Path, Query_, Headers, Input, Options ++ [{should_send_body_as_binary, true}], SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -5740,10 +6040,14 @@ put_object(Client, Bucket, Key, Input0, Options) ->
 %% </li> </ul>
 put_object_acl(Client, Bucket, Key, Input) ->
     put_object_acl(Client, Bucket, Key, Input, []).
-put_object_acl(Client, Bucket, Key, Input0, Options) ->
+put_object_acl(Client, Bucket, Key, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?acl"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-acl">>, <<"ACL">>},
@@ -5791,10 +6095,14 @@ put_object_acl(Client, Bucket, Key, Input0, Options) ->
 %% </li> </ul>
 put_object_legal_hold(Client, Bucket, Key, Input) ->
     put_object_legal_hold(Client, Bucket, Key, Input, []).
-put_object_legal_hold(Client, Bucket, Key, Input0, Options) ->
+put_object_legal_hold(Client, Bucket, Key, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?legal-hold"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Content-MD5">>, <<"ContentMD5">>},
@@ -5840,10 +6148,14 @@ put_object_legal_hold(Client, Bucket, Key, Input0, Options) ->
 %% </li> </ul>
 put_object_lock_configuration(Client, Bucket, Input) ->
     put_object_lock_configuration(Client, Bucket, Input, []).
-put_object_lock_configuration(Client, Bucket, Input0, Options) ->
+put_object_lock_configuration(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?object-lock"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Content-MD5">>, <<"ContentMD5">>},
@@ -5885,10 +6197,14 @@ put_object_lock_configuration(Client, Bucket, Input0, Options) ->
 %% </li> </ul>
 put_object_retention(Client, Bucket, Key, Input) ->
     put_object_retention(Client, Bucket, Key, Input, []).
-put_object_retention(Client, Bucket, Key, Input0, Options) ->
+put_object_retention(Client, Bucket, Key, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?retention"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-bypass-governance-retention">>, <<"BypassGovernanceRetention">>},
@@ -5973,10 +6289,14 @@ put_object_retention(Client, Bucket, Key, Input0, Options) ->
 %% </li> </ul>
 put_object_tagging(Client, Bucket, Key, Input) ->
     put_object_tagging(Client, Bucket, Key, Input, []).
-put_object_tagging(Client, Bucket, Key, Input0, Options) ->
+put_object_tagging(Client, Bucket, Key, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?tagging"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Content-MD5">>, <<"ContentMD5">>},
@@ -6037,10 +6357,14 @@ put_object_tagging(Client, Bucket, Key, Input0, Options) ->
 %% </li> </ul>
 put_public_access_block(Client, Bucket, Input) ->
     put_public_access_block(Client, Bucket, Input, []).
-put_public_access_block(Client, Bucket, Input0, Options) ->
+put_public_access_block(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?publicAccessBlock"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Content-MD5">>, <<"ContentMD5">>},
@@ -6277,10 +6601,14 @@ put_public_access_block(Client, Bucket, Input0, Options) ->
 %% </li> </ul>
 restore_object(Client, Bucket, Key, Input) ->
     restore_object(Client, Bucket, Key, Input, []).
-restore_object(Client, Bucket, Key, Input0, Options) ->
+restore_object(Client, Bucket, Key, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?restore"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>},
@@ -6409,10 +6737,14 @@ restore_object(Client, Bucket, Key, Input0, Options) ->
 %% </li> </ul>
 select_object_content(Client, Bucket, Key, Input) ->
     select_object_content(Client, Bucket, Key, Input, []).
-select_object_content(Client, Bucket, Key, Input0, Options) ->
+select_object_content(Client, Bucket, Key, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?select&select-type=2"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>},
@@ -6524,10 +6856,14 @@ select_object_content(Client, Bucket, Key, Input0, Options) ->
 %% </li> </ul>
 upload_part(Client, Bucket, Key, Input) ->
     upload_part(Client, Bucket, Key, Input, []).
-upload_part(Client, Bucket, Key, Input0, Options) ->
+upload_part(Client, Bucket, Key, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, true},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Content-Length">>, <<"ContentLength">>},
@@ -6545,7 +6881,7 @@ upload_part(Client, Bucket, Key, Input0, Options) ->
                      {<<"uploadId">>, <<"UploadId">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
-    case request(Client, Method, Path, Query_, Headers, Input, Options ++ [{should_send_body_as_binary, true}], SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -6682,10 +7018,14 @@ upload_part(Client, Bucket, Key, Input0, Options) ->
 %% </li> </ul>
 upload_part_copy(Client, Bucket, Key, Input) ->
     upload_part_copy(Client, Bucket, Key, Input, []).
-upload_part_copy(Client, Bucket, Key, Input0, Options) ->
+upload_part_copy(Client, Bucket, Key, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-copy-source">>, <<"CopySource">>},
@@ -6757,19 +7097,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -6779,14 +7120,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = aws_util:decode_xml(Body),
+            Result = case DecodeBody of
+                       true -> aws_util:decode_xml(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = aws_util:decode_xml(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

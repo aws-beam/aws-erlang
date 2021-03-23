@@ -224,10 +224,14 @@
 %% @doc Performs `GetChannel' on multiple ARNs simultaneously.
 batch_get_channel(Client, Input) ->
     batch_get_channel(Client, Input, []).
-batch_get_channel(Client, Input0, Options) ->
+batch_get_channel(Client, Input0, Options0) ->
     Method = post,
     Path = ["/BatchGetChannel"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -240,10 +244,14 @@ batch_get_channel(Client, Input0, Options) ->
 %% @doc Performs `GetStreamKey' on multiple ARNs simultaneously.
 batch_get_stream_key(Client, Input) ->
     batch_get_stream_key(Client, Input, []).
-batch_get_stream_key(Client, Input0, Options) ->
+batch_get_stream_key(Client, Input0, Options0) ->
     Method = post,
     Path = ["/BatchGetStreamKey"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -257,10 +265,14 @@ batch_get_stream_key(Client, Input0, Options) ->
 %% streaming.
 create_channel(Client, Input) ->
     create_channel(Client, Input, []).
-create_channel(Client, Input0, Options) ->
+create_channel(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateChannel"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -280,10 +292,14 @@ create_channel(Client, Input0, Options) ->
 %% CreateStreamKey.
 create_stream_key(Client, Input) ->
     create_stream_key(Client, Input, []).
-create_stream_key(Client, Input0, Options) ->
+create_stream_key(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateStreamKey"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -296,10 +312,14 @@ create_stream_key(Client, Input0, Options) ->
 %% @doc Deletes the specified channel and its associated stream keys.
 delete_channel(Client, Input) ->
     delete_channel(Client, Input, []).
-delete_channel(Client, Input0, Options) ->
+delete_channel(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteChannel"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -315,10 +335,14 @@ delete_channel(Client, Input0, Options) ->
 %% `privateKey'.
 delete_playback_key_pair(Client, Input) ->
     delete_playback_key_pair(Client, Input, []).
-delete_playback_key_pair(Client, Input0, Options) ->
+delete_playback_key_pair(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeletePlaybackKeyPair"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -332,10 +356,14 @@ delete_playback_key_pair(Client, Input0, Options) ->
 %% used to stream.
 delete_stream_key(Client, Input) ->
     delete_stream_key(Client, Input, []).
-delete_stream_key(Client, Input0, Options) ->
+delete_stream_key(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteStreamKey"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -350,10 +378,14 @@ delete_stream_key(Client, Input0, Options) ->
 %% See also `BatchGetChannel'.
 get_channel(Client, Input) ->
     get_channel(Client, Input, []).
-get_channel(Client, Input0, Options) ->
+get_channel(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetChannel"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -370,10 +402,14 @@ get_channel(Client, Input0, Options) ->
 %% authorization tokens, to grant viewers access to authorized channels.
 get_playback_key_pair(Client, Input) ->
     get_playback_key_pair(Client, Input, []).
-get_playback_key_pair(Client, Input0, Options) ->
+get_playback_key_pair(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetPlaybackKeyPair"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -387,10 +423,14 @@ get_playback_key_pair(Client, Input0, Options) ->
 %% channel.
 get_stream(Client, Input) ->
     get_stream(Client, Input, []).
-get_stream(Client, Input0, Options) ->
+get_stream(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetStream"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -403,10 +443,14 @@ get_stream(Client, Input0, Options) ->
 %% @doc Gets stream-key information for a specified ARN.
 get_stream_key(Client, Input) ->
     get_stream_key(Client, Input, []).
-get_stream_key(Client, Input0, Options) ->
+get_stream_key(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetStreamKey"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -423,10 +467,14 @@ get_stream_key(Client, Input0, Options) ->
 %% to grant viewers access to authorized channels.
 import_playback_key_pair(Client, Input) ->
     import_playback_key_pair(Client, Input, []).
-import_playback_key_pair(Client, Input0, Options) ->
+import_playback_key_pair(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ImportPlaybackKeyPair"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -442,10 +490,14 @@ import_playback_key_pair(Client, Input0, Options) ->
 %% This list can be filtered to match a specified string.
 list_channels(Client, Input) ->
     list_channels(Client, Input, []).
-list_channels(Client, Input0, Options) ->
+list_channels(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListChannels"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -458,10 +510,14 @@ list_channels(Client, Input0, Options) ->
 %% @doc Gets summary information about playback key pairs.
 list_playback_key_pairs(Client, Input) ->
     list_playback_key_pairs(Client, Input, []).
-list_playback_key_pairs(Client, Input0, Options) ->
+list_playback_key_pairs(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListPlaybackKeyPairs"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -474,10 +530,14 @@ list_playback_key_pairs(Client, Input0, Options) ->
 %% @doc Gets summary information about stream keys for the specified channel.
 list_stream_keys(Client, Input) ->
     list_stream_keys(Client, Input, []).
-list_stream_keys(Client, Input0, Options) ->
+list_stream_keys(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListStreamKeys"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -491,10 +551,14 @@ list_stream_keys(Client, Input0, Options) ->
 %% AWS region where the API request is processed.
 list_streams(Client, Input) ->
     list_streams(Client, Input, []).
-list_streams(Client, Input0, Options) ->
+list_streams(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListStreams"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -513,10 +577,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -530,10 +597,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
 %% maximum 1KB payload.
 put_metadata(Client, Input) ->
     put_metadata(Client, Input, []).
-put_metadata(Client, Input0, Options) ->
+put_metadata(Client, Input0, Options0) ->
     Method = post,
     Path = ["/PutMetadata"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -553,10 +624,14 @@ put_metadata(Client, Input0, Options) ->
 %% revoke the `streamKey' attached to the channel.
 stop_stream(Client, Input) ->
     stop_stream(Client, Input, []).
-stop_stream(Client, Input0, Options) ->
+stop_stream(Client, Input0, Options0) ->
     Method = post,
     Path = ["/StopStream"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -569,10 +644,14 @@ stop_stream(Client, Input0, Options) ->
 %% @doc Adds or updates tags for the AWS resource with the specified ARN.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
-tag_resource(Client, ResourceArn, Input0, Options) ->
+tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -585,10 +664,14 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Removes tags from the resource with the specified ARN.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
-untag_resource(Client, ResourceArn, Input0, Options) ->
+untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -605,10 +688,14 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 %% restart the stream for the changes to take effect.
 update_channel(Client, Input) ->
     update_channel(Client, Input, []).
-update_channel(Client, Input0, Options) ->
+update_channel(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateChannel"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -640,19 +727,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -662,14 +750,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

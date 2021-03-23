@@ -69,10 +69,14 @@
 %% details that are machine-readable, such as third-party integrations.
 associate_attribute_group(Client, Application, AttributeGroup, Input) ->
     associate_attribute_group(Client, Application, AttributeGroup, Input, []).
-associate_attribute_group(Client, Application, AttributeGroup, Input0, Options) ->
+associate_attribute_group(Client, Application, AttributeGroup, Input0, Options0) ->
     Method = put,
     Path = ["/applications/", aws_util:encode_uri(Application), "/attribute-groups/", aws_util:encode_uri(AttributeGroup), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -88,10 +92,14 @@ associate_attribute_group(Client, Application, AttributeGroup, Input0, Options) 
 %% name.
 associate_resource(Client, Application, Resource, ResourceType, Input) ->
     associate_resource(Client, Application, Resource, ResourceType, Input, []).
-associate_resource(Client, Application, Resource, ResourceType, Input0, Options) ->
+associate_resource(Client, Application, Resource, ResourceType, Input0, Options0) ->
     Method = put,
     Path = ["/applications/", aws_util:encode_uri(Application), "/resources/", aws_util:encode_uri(ResourceType), "/", aws_util:encode_uri(Resource), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -105,10 +113,14 @@ associate_resource(Client, Application, Resource, ResourceType, Input0, Options)
 %% of related cloud resource abstractions.
 create_application(Client, Input) ->
     create_application(Client, Input, []).
-create_application(Client, Input0, Options) ->
+create_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/applications"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -126,10 +138,14 @@ create_application(Client, Input0, Options) ->
 %% integration with automated workflows and third-party tools.
 create_attribute_group(Client, Input) ->
     create_attribute_group(Client, Input, []).
-create_attribute_group(Client, Input0, Options) ->
+create_attribute_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/attribute-groups"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -146,10 +162,14 @@ create_attribute_group(Client, Input0, Options) ->
 %% it before deleting an application.
 delete_application(Client, Application, Input) ->
     delete_application(Client, Application, Input, []).
-delete_application(Client, Application, Input0, Options) ->
+delete_application(Client, Application, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(Application), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -163,10 +183,14 @@ delete_application(Client, Application, Input0, Options) ->
 %% ID or name.
 delete_attribute_group(Client, AttributeGroup, Input) ->
     delete_attribute_group(Client, AttributeGroup, Input, []).
-delete_attribute_group(Client, AttributeGroup, Input0, Options) ->
+delete_attribute_group(Client, AttributeGroup, Input0, Options0) ->
     Method = delete,
     Path = ["/attribute-groups/", aws_util:encode_uri(AttributeGroup), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -183,10 +207,14 @@ delete_attribute_group(Client, AttributeGroup, Input0, Options) ->
 %% This operation reverts `AssociateAttributeGroup'.
 disassociate_attribute_group(Client, Application, AttributeGroup, Input) ->
     disassociate_attribute_group(Client, Application, AttributeGroup, Input, []).
-disassociate_attribute_group(Client, Application, AttributeGroup, Input0, Options) ->
+disassociate_attribute_group(Client, Application, AttributeGroup, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(Application), "/attribute-groups/", aws_util:encode_uri(AttributeGroup), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -202,10 +230,14 @@ disassociate_attribute_group(Client, Application, AttributeGroup, Input0, Option
 %% name.
 disassociate_resource(Client, Application, Resource, ResourceType, Input) ->
     disassociate_resource(Client, Application, Resource, ResourceType, Input, []).
-disassociate_resource(Client, Application, Resource, ResourceType, Input0, Options) ->
+disassociate_resource(Client, Application, Resource, ResourceType, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(Application), "/resources/", aws_util:encode_uri(ResourceType), "/", aws_util:encode_uri(Resource), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -230,10 +262,13 @@ get_application(Client, Application, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_application(Client, Application, QueryMap, HeadersMap, []).
 
-get_application(Client, Application, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_application(Client, Application, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(Application), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -253,10 +288,13 @@ get_attribute_group(Client, AttributeGroup, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_attribute_group(Client, AttributeGroup, QueryMap, HeadersMap, []).
 
-get_attribute_group(Client, AttributeGroup, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_attribute_group(Client, AttributeGroup, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/attribute-groups/", aws_util:encode_uri(AttributeGroup), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -275,10 +313,13 @@ list_applications(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_applications(Client, QueryMap, HeadersMap, []).
 
-list_applications(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_applications(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -303,10 +344,13 @@ list_associated_attribute_groups(Client, Application, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_associated_attribute_groups(Client, Application, QueryMap, HeadersMap, []).
 
-list_associated_attribute_groups(Client, Application, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_associated_attribute_groups(Client, Application, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(Application), "/attribute-groups"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -330,10 +374,13 @@ list_associated_resources(Client, Application, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_associated_resources(Client, Application, QueryMap, HeadersMap, []).
 
-list_associated_resources(Client, Application, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_associated_resources(Client, Application, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(Application), "/resources"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -357,10 +404,13 @@ list_attribute_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_attribute_groups(Client, QueryMap, HeadersMap, []).
 
-list_attribute_groups(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_attribute_groups(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/attribute-groups"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -382,10 +432,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -401,10 +454,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
 %% the resource.
 sync_resource(Client, Resource, ResourceType, Input) ->
     sync_resource(Client, Resource, ResourceType, Input, []).
-sync_resource(Client, Resource, ResourceType, Input0, Options) ->
+sync_resource(Client, Resource, ResourceType, Input0, Options0) ->
     Method = post,
     Path = ["/sync/", aws_util:encode_uri(ResourceType), "/", aws_util:encode_uri(Resource), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -423,10 +480,14 @@ sync_resource(Client, Resource, ResourceType, Input0, Options) ->
 %% This operation returns an empty response if the call was successful.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
-tag_resource(Client, ResourceArn, Input0, Options) ->
+tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -441,10 +502,14 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 %% This operation returns an empty response if the call was successful.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
-untag_resource(Client, ResourceArn, Input0, Options) ->
+untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -458,10 +523,14 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Updates an existing application with new attributes.
 update_application(Client, Application, Input) ->
     update_application(Client, Application, Input, []).
-update_application(Client, Application, Input0, Options) ->
+update_application(Client, Application, Input0, Options0) ->
     Method = patch,
     Path = ["/applications/", aws_util:encode_uri(Application), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -474,10 +543,14 @@ update_application(Client, Application, Input0, Options) ->
 %% @doc Updates an existing attribute group with new details.
 update_attribute_group(Client, AttributeGroup, Input) ->
     update_attribute_group(Client, AttributeGroup, Input, []).
-update_attribute_group(Client, AttributeGroup, Input0, Options) ->
+update_attribute_group(Client, AttributeGroup, Input0, Options0) ->
     Method = patch,
     Path = ["/attribute-groups/", aws_util:encode_uri(AttributeGroup), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -509,19 +582,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -531,14 +605,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

@@ -39,10 +39,14 @@
 %% @doc Creates an AWS Mobile Hub project.
 create_project(Client, Input) ->
     create_project(Client, Input, []).
-create_project(Client, Input0, Options) ->
+create_project(Client, Input0, Options0) ->
     Method = post,
     Path = ["/projects"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -58,10 +62,14 @@ create_project(Client, Input0, Options) ->
 %% @doc Delets a project in AWS Mobile Hub.
 delete_project(Client, ProjectId, Input) ->
     delete_project(Client, ProjectId, Input, []).
-delete_project(Client, ProjectId, Input0, Options) ->
+delete_project(Client, ProjectId, Input0, Options0) ->
     Method = delete,
     Path = ["/projects/", aws_util:encode_uri(ProjectId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -80,10 +88,13 @@ describe_bundle(Client, BundleId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_bundle(Client, BundleId, QueryMap, HeadersMap, []).
 
-describe_bundle(Client, BundleId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_bundle(Client, BundleId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bundles/", aws_util:encode_uri(BundleId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -100,10 +111,13 @@ describe_project(Client, ProjectId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_project(Client, ProjectId, QueryMap, HeadersMap, []).
 
-describe_project(Client, ProjectId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_project(Client, ProjectId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/project"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -121,10 +135,14 @@ describe_project(Client, ProjectId, QueryMap, HeadersMap, Options)
 %% AWS resources.
 export_bundle(Client, BundleId, Input) ->
     export_bundle(Client, BundleId, Input, []).
-export_bundle(Client, BundleId, Input0, Options) ->
+export_bundle(Client, BundleId, Input0, Options0) ->
     Method = post,
     Path = ["/bundles/", aws_util:encode_uri(BundleId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -143,10 +161,14 @@ export_bundle(Client, BundleId, Input0, Options) ->
 %% so they can only be shared successfully within the same AWS account.
 export_project(Client, ProjectId, Input) ->
     export_project(Client, ProjectId, Input, []).
-export_project(Client, ProjectId, Input0, Options) ->
+export_project(Client, ProjectId, Input0, Options0) ->
     Method = post,
     Path = ["/exports/", aws_util:encode_uri(ProjectId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -165,10 +187,13 @@ list_bundles(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_bundles(Client, QueryMap, HeadersMap, []).
 
-list_bundles(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_bundles(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bundles"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -190,10 +215,13 @@ list_projects(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_projects(Client, QueryMap, HeadersMap, []).
 
-list_projects(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_projects(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -209,10 +237,14 @@ list_projects(Client, QueryMap, HeadersMap, Options)
 %% @doc Update an existing project.
 update_project(Client, Input) ->
     update_project(Client, Input, []).
-update_project(Client, Input0, Options) ->
+update_project(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -245,19 +277,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -267,14 +300,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

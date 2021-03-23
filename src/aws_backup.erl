@@ -154,10 +154,14 @@
 %% `AlreadyExistsException' is returned.
 create_backup_plan(Client, Input) ->
     create_backup_plan(Client, Input, []).
-create_backup_plan(Client, Input0, Options) ->
+create_backup_plan(Client, Input0, Options0) ->
     Method = put,
     Path = ["/backup/plans/"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -201,10 +205,14 @@ create_backup_plan(Client, Input0, Options) ->
 %% are selected for backup.
 create_backup_selection(Client, BackupPlanId, Input) ->
     create_backup_selection(Client, BackupPlanId, Input, []).
-create_backup_selection(Client, BackupPlanId, Input0, Options) ->
+create_backup_selection(Client, BackupPlanId, Input0, Options0) ->
     Method = put,
     Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/selections/"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -223,10 +231,14 @@ create_backup_selection(Client, BackupPlanId, Input0, Options) ->
 %% of a backup vault.
 create_backup_vault(Client, BackupVaultName, Input) ->
     create_backup_vault(Client, BackupVaultName, Input, []).
-create_backup_vault(Client, BackupVaultName, Input0, Options) ->
+create_backup_vault(Client, BackupVaultName, Input0, Options0) ->
     Method = put,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -243,10 +255,14 @@ create_backup_vault(Client, BackupVaultName, Input0, Options) ->
 %% version of a backup plan. Previous versions, if any, will still exist.
 delete_backup_plan(Client, BackupPlanId, Input) ->
     delete_backup_plan(Client, BackupPlanId, Input, []).
-delete_backup_plan(Client, BackupPlanId, Input0, Options) ->
+delete_backup_plan(Client, BackupPlanId, Input0, Options0) ->
     Method = delete,
     Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -260,10 +276,14 @@ delete_backup_plan(Client, BackupPlanId, Input0, Options) ->
 %% specified by the `SelectionId'.
 delete_backup_selection(Client, BackupPlanId, SelectionId, Input) ->
     delete_backup_selection(Client, BackupPlanId, SelectionId, Input, []).
-delete_backup_selection(Client, BackupPlanId, SelectionId, Input0, Options) ->
+delete_backup_selection(Client, BackupPlanId, SelectionId, Input0, Options0) ->
     Method = delete,
     Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/selections/", aws_util:encode_uri(SelectionId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -278,10 +298,14 @@ delete_backup_selection(Client, BackupPlanId, SelectionId, Input0, Options) ->
 %% A vault can be deleted only if it is empty.
 delete_backup_vault(Client, BackupVaultName, Input) ->
     delete_backup_vault(Client, BackupVaultName, Input, []).
-delete_backup_vault(Client, BackupVaultName, Input0, Options) ->
+delete_backup_vault(Client, BackupVaultName, Input0, Options0) ->
     Method = delete,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -295,10 +319,14 @@ delete_backup_vault(Client, BackupVaultName, Input0, Options) ->
 %% vault.
 delete_backup_vault_access_policy(Client, BackupVaultName, Input) ->
     delete_backup_vault_access_policy(Client, BackupVaultName, Input, []).
-delete_backup_vault_access_policy(Client, BackupVaultName, Input0, Options) ->
+delete_backup_vault_access_policy(Client, BackupVaultName, Input0, Options0) ->
     Method = delete,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/access-policy"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -311,10 +339,14 @@ delete_backup_vault_access_policy(Client, BackupVaultName, Input0, Options) ->
 %% @doc Deletes event notifications for the specified backup vault.
 delete_backup_vault_notifications(Client, BackupVaultName, Input) ->
     delete_backup_vault_notifications(Client, BackupVaultName, Input, []).
-delete_backup_vault_notifications(Client, BackupVaultName, Input0, Options) ->
+delete_backup_vault_notifications(Client, BackupVaultName, Input0, Options0) ->
     Method = delete,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/notification-configuration"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -327,10 +359,14 @@ delete_backup_vault_notifications(Client, BackupVaultName, Input0, Options) ->
 %% @doc Deletes the recovery point specified by a recovery point ID.
 delete_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input) ->
     delete_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input, []).
-delete_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input0, Options) ->
+delete_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input0, Options0) ->
     Method = delete,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/", aws_util:encode_uri(RecoveryPointArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -349,10 +385,13 @@ describe_backup_job(Client, BackupJobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_backup_job(Client, BackupJobId, QueryMap, HeadersMap, []).
 
-describe_backup_job(Client, BackupJobId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_backup_job(Client, BackupJobId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup-jobs/", aws_util:encode_uri(BackupJobId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -369,10 +408,13 @@ describe_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap, []).
 
-describe_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -389,10 +431,13 @@ describe_copy_job(Client, CopyJobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_copy_job(Client, CopyJobId, QueryMap, HeadersMap, []).
 
-describe_copy_job(Client, CopyJobId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_copy_job(Client, CopyJobId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/copy-jobs/", aws_util:encode_uri(CopyJobId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -410,10 +455,13 @@ describe_global_settings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_global_settings(Client, QueryMap, HeadersMap, []).
 
-describe_global_settings(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_global_settings(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-settings"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -432,10 +480,13 @@ describe_protected_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_protected_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-describe_protected_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_protected_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/resources/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -453,10 +504,13 @@ describe_recovery_point(Client, BackupVaultName, RecoveryPointArn, QueryMap, Hea
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_recovery_point(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap, []).
 
-describe_recovery_point(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_recovery_point(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/", aws_util:encode_uri(RecoveryPointArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -479,10 +533,13 @@ describe_region_settings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_region_settings(Client, QueryMap, HeadersMap, []).
 
-describe_region_settings(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_region_settings(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/account-settings"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -500,10 +557,13 @@ describe_restore_job(Client, RestoreJobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_restore_job(Client, RestoreJobId, QueryMap, HeadersMap, []).
 
-describe_restore_job(Client, RestoreJobId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_restore_job(Client, RestoreJobId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restore-jobs/", aws_util:encode_uri(RestoreJobId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -521,10 +581,13 @@ export_backup_plan_template(Client, BackupPlanId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     export_backup_plan_template(Client, BackupPlanId, QueryMap, HeadersMap, []).
 
-export_backup_plan_template(Client, BackupPlanId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+export_backup_plan_template(Client, BackupPlanId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/toTemplate/"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -544,10 +607,13 @@ get_backup_plan(Client, BackupPlanId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_backup_plan(Client, BackupPlanId, QueryMap, HeadersMap, []).
 
-get_backup_plan(Client, BackupPlanId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_backup_plan(Client, BackupPlanId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -562,10 +628,14 @@ get_backup_plan(Client, BackupPlanId, QueryMap, HeadersMap, Options)
 %% @doc Returns a valid JSON document specifying a backup plan or an error.
 get_backup_plan_from_json(Client, Input) ->
     get_backup_plan_from_json(Client, Input, []).
-get_backup_plan_from_json(Client, Input0, Options) ->
+get_backup_plan_from_json(Client, Input0, Options0) ->
     Method = post,
     Path = ["/backup/template/json/toPlan"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -584,10 +654,13 @@ get_backup_plan_from_template(Client, BackupPlanTemplateId, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_backup_plan_from_template(Client, BackupPlanTemplateId, QueryMap, HeadersMap, []).
 
-get_backup_plan_from_template(Client, BackupPlanTemplateId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_backup_plan_from_template(Client, BackupPlanTemplateId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup/template/plans/", aws_util:encode_uri(BackupPlanTemplateId), "/toPlan"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -605,10 +678,13 @@ get_backup_selection(Client, BackupPlanId, SelectionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_backup_selection(Client, BackupPlanId, SelectionId, QueryMap, HeadersMap, []).
 
-get_backup_selection(Client, BackupPlanId, SelectionId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_backup_selection(Client, BackupPlanId, SelectionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/selections/", aws_util:encode_uri(SelectionId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -626,10 +702,13 @@ get_backup_vault_access_policy(Client, BackupVaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_backup_vault_access_policy(Client, BackupVaultName, QueryMap, HeadersMap, []).
 
-get_backup_vault_access_policy(Client, BackupVaultName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_backup_vault_access_policy(Client, BackupVaultName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/access-policy"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -646,10 +725,13 @@ get_backup_vault_notifications(Client, BackupVaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_backup_vault_notifications(Client, BackupVaultName, QueryMap, HeadersMap, []).
 
-get_backup_vault_notifications(Client, BackupVaultName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_backup_vault_notifications(Client, BackupVaultName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/notification-configuration"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -667,10 +749,13 @@ get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn, Q
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap, []).
 
-get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/", aws_util:encode_uri(RecoveryPointArn), "/restore-metadata"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -687,10 +772,13 @@ get_supported_resource_types(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_supported_resource_types(Client, QueryMap, HeadersMap, []).
 
-get_supported_resource_types(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_supported_resource_types(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/supported-resource-types"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -707,10 +795,13 @@ list_backup_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_backup_jobs(Client, QueryMap, HeadersMap, []).
 
-list_backup_jobs(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_backup_jobs(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup-jobs/"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -740,10 +831,13 @@ list_backup_plan_templates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_backup_plan_templates(Client, QueryMap, HeadersMap, []).
 
-list_backup_plan_templates(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_backup_plan_templates(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup/template/plans"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -767,10 +861,13 @@ list_backup_plan_versions(Client, BackupPlanId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_backup_plan_versions(Client, BackupPlanId, QueryMap, HeadersMap, []).
 
-list_backup_plan_versions(Client, BackupPlanId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_backup_plan_versions(Client, BackupPlanId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/versions/"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -797,10 +894,13 @@ list_backup_plans(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_backup_plans(Client, QueryMap, HeadersMap, []).
 
-list_backup_plans(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_backup_plans(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup/plans/"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -824,10 +924,13 @@ list_backup_selections(Client, BackupPlanId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_backup_selections(Client, BackupPlanId, QueryMap, HeadersMap, []).
 
-list_backup_selections(Client, BackupPlanId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_backup_selections(Client, BackupPlanId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/selections/"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -850,10 +953,13 @@ list_backup_vaults(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_backup_vaults(Client, QueryMap, HeadersMap, []).
 
-list_backup_vaults(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_backup_vaults(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup-vaults/"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -875,10 +981,13 @@ list_copy_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_copy_jobs(Client, QueryMap, HeadersMap, []).
 
-list_copy_jobs(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_copy_jobs(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/copy-jobs/"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -909,10 +1018,13 @@ list_protected_resources(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_protected_resources(Client, QueryMap, HeadersMap, []).
 
-list_protected_resources(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_protected_resources(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/resources/"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -935,10 +1047,13 @@ list_recovery_points_by_backup_vault(Client, BackupVaultName, QueryMap, HeadersM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_recovery_points_by_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap, []).
 
-list_recovery_points_by_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_recovery_points_by_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -966,10 +1081,13 @@ list_recovery_points_by_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_recovery_points_by_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_recovery_points_by_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_recovery_points_by_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/resources/", aws_util:encode_uri(ResourceArn), "/recovery-points/"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -992,10 +1110,13 @@ list_restore_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_restore_jobs(Client, QueryMap, HeadersMap, []).
 
-list_restore_jobs(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_restore_jobs(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restore-jobs/"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1024,10 +1145,13 @@ list_tags(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), "/"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1046,10 +1170,14 @@ list_tags(Client, ResourceArn, QueryMap, HeadersMap, Options)
 %% Requires a backup vault name and an access policy document in JSON format.
 put_backup_vault_access_policy(Client, BackupVaultName, Input) ->
     put_backup_vault_access_policy(Client, BackupVaultName, Input, []).
-put_backup_vault_access_policy(Client, BackupVaultName, Input0, Options) ->
+put_backup_vault_access_policy(Client, BackupVaultName, Input0, Options0) ->
     Method = put,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/access-policy"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1063,10 +1191,14 @@ put_backup_vault_access_policy(Client, BackupVaultName, Input0, Options) ->
 %% events.
 put_backup_vault_notifications(Client, BackupVaultName, Input) ->
     put_backup_vault_notifications(Client, BackupVaultName, Input, []).
-put_backup_vault_notifications(Client, BackupVaultName, Input0, Options) ->
+put_backup_vault_notifications(Client, BackupVaultName, Input0, Options0) ->
     Method = put,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/notification-configuration"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1079,10 +1211,14 @@ put_backup_vault_notifications(Client, BackupVaultName, Input0, Options) ->
 %% @doc Starts an on-demand backup job for the specified resource.
 start_backup_job(Client, Input) ->
     start_backup_job(Client, Input, []).
-start_backup_job(Client, Input0, Options) ->
+start_backup_job(Client, Input0, Options0) ->
     Method = put,
     Path = ["/backup-jobs"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1095,10 +1231,14 @@ start_backup_job(Client, Input0, Options) ->
 %% @doc Starts a job to create a one-time copy of the specified resource.
 start_copy_job(Client, Input) ->
     start_copy_job(Client, Input, []).
-start_copy_job(Client, Input0, Options) ->
+start_copy_job(Client, Input0, Options0) ->
     Method = put,
     Path = ["/copy-jobs"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1112,10 +1252,14 @@ start_copy_job(Client, Input0, Options) ->
 %% (ARN).
 start_restore_job(Client, Input) ->
     start_restore_job(Client, Input, []).
-start_restore_job(Client, Input0, Options) ->
+start_restore_job(Client, Input0, Options0) ->
     Method = put,
     Path = ["/restore-jobs"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1128,10 +1272,14 @@ start_restore_job(Client, Input0, Options) ->
 %% @doc Attempts to cancel a job to create a one-time backup of a resource.
 stop_backup_job(Client, BackupJobId, Input) ->
     stop_backup_job(Client, BackupJobId, Input, []).
-stop_backup_job(Client, BackupJobId, Input0, Options) ->
+stop_backup_job(Client, BackupJobId, Input0, Options0) ->
     Method = post,
     Path = ["/backup-jobs/", aws_util:encode_uri(BackupJobId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1145,10 +1293,14 @@ stop_backup_job(Client, BackupJobId, Input0, Options) ->
 %% backup vault identified by an Amazon Resource Name (ARN).
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
-tag_resource(Client, ResourceArn, Input0, Options) ->
+tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1162,10 +1314,14 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 %% or backup vault identified by an Amazon Resource Name (ARN)
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
-untag_resource(Client, ResourceArn, Input0, Options) ->
+untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/untag/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1181,10 +1337,14 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 %% The new version is uniquely identified by a `VersionId'.
 update_backup_plan(Client, BackupPlanId, Input) ->
     update_backup_plan(Client, BackupPlanId, Input, []).
-update_backup_plan(Client, BackupPlanId, Input0, Options) ->
+update_backup_plan(Client, BackupPlanId, Input0, Options0) ->
     Method = post,
     Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1199,10 +1359,14 @@ update_backup_plan(Client, BackupPlanId, Input0, Options) ->
 %% Use the `DescribeGlobalSettings' API to determine the current settings.
 update_global_settings(Client, Input) ->
     update_global_settings(Client, Input, []).
-update_global_settings(Client, Input0, Options) ->
+update_global_settings(Client, Input0, Options0) ->
     Method = put,
     Path = ["/global-settings"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1227,10 +1391,14 @@ update_global_settings(Client, Input0, Options) ->
 %% Only Amazon EFS file system backups can be transitioned to cold storage.
 update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input) ->
     update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input, []).
-update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input0, Options) ->
+update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input0, Options0) ->
     Method = post,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/", aws_util:encode_uri(RecoveryPointArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1250,10 +1418,14 @@ update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input
 %% supported.
 update_region_settings(Client, Input) ->
     update_region_settings(Client, Input, []).
-update_region_settings(Client, Input0, Options) ->
+update_region_settings(Client, Input0, Options0) ->
     Method = put,
     Path = ["/account-settings"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1285,19 +1457,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -1307,14 +1480,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

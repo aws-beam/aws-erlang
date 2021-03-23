@@ -93,10 +93,14 @@
 %% `elasticfilesystem:CreateAccessPoint' action.
 create_access_point(Client, Input) ->
     create_access_point(Client, Input, []).
-create_access_point(Client, Input0, Options) ->
+create_access_point(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-02-01/access-points"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -158,10 +162,14 @@ create_access_point(Client, Input0, Options) ->
 %% `elasticfilesystem:CreateFileSystem' action.
 create_file_system(Client, Input) ->
     create_file_system(Client, Input, []).
-create_file_system(Client, Input0, Options) ->
+create_file_system(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-02-01/file-systems"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -281,10 +289,14 @@ create_file_system(Client, Input0, Options) ->
 %% </li> </ul>
 create_mount_target(Client, Input) ->
     create_mount_target(Client, Input, []).
-create_mount_target(Client, Input0, Options) ->
+create_mount_target(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-02-01/mount-targets"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -306,10 +318,14 @@ create_mount_target(Client, Input0, Options) ->
 %% action.
 create_tags(Client, FileSystemId, Input) ->
     create_tags(Client, FileSystemId, Input, []).
-create_tags(Client, FileSystemId, Input0, Options) ->
+create_tags(Client, FileSystemId, Input0, Options0) ->
     Method = post,
     Path = ["/2015-02-01/create-tags/", aws_util:encode_uri(FileSystemId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -329,10 +345,14 @@ create_tags(Client, FileSystemId, Input0, Options) ->
 %% `elasticfilesystem:DeleteAccessPoint' action.
 delete_access_point(Client, AccessPointId, Input) ->
     delete_access_point(Client, AccessPointId, Input, []).
-delete_access_point(Client, AccessPointId, Input0, Options) ->
+delete_access_point(Client, AccessPointId, Input0, Options0) ->
     Method = delete,
     Path = ["/2015-02-01/access-points/", aws_util:encode_uri(AccessPointId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -362,10 +382,14 @@ delete_access_point(Client, AccessPointId, Input0, Options) ->
 %% `elasticfilesystem:DeleteFileSystem' action.
 delete_file_system(Client, FileSystemId, Input) ->
     delete_file_system(Client, FileSystemId, Input, []).
-delete_file_system(Client, FileSystemId, Input0, Options) ->
+delete_file_system(Client, FileSystemId, Input0, Options0) ->
     Method = delete,
     Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(FileSystemId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -385,10 +409,14 @@ delete_file_system(Client, FileSystemId, Input0, Options) ->
 %% `elasticfilesystem:DeleteFileSystemPolicy' action.
 delete_file_system_policy(Client, FileSystemId, Input) ->
     delete_file_system_policy(Client, FileSystemId, Input, []).
-delete_file_system_policy(Client, FileSystemId, Input0, Options) ->
+delete_file_system_policy(Client, FileSystemId, Input0, Options0) ->
     Method = delete,
     Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(FileSystemId), "/policy"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -428,10 +456,14 @@ delete_file_system_policy(Client, FileSystemId, Input0, Options) ->
 %% </li> </ul>
 delete_mount_target(Client, MountTargetId, Input) ->
     delete_mount_target(Client, MountTargetId, Input, []).
-delete_mount_target(Client, MountTargetId, Input0, Options) ->
+delete_mount_target(Client, MountTargetId, Input0, Options0) ->
     Method = delete,
     Path = ["/2015-02-01/mount-targets/", aws_util:encode_uri(MountTargetId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -452,10 +484,14 @@ delete_mount_target(Client, MountTargetId, Input0, Options) ->
 %% action.
 delete_tags(Client, FileSystemId, Input) ->
     delete_tags(Client, FileSystemId, Input, []).
-delete_tags(Client, FileSystemId, Input0, Options) ->
+delete_tags(Client, FileSystemId, Input0, Options0) ->
     Method = post,
     Path = ["/2015-02-01/delete-tags/", aws_util:encode_uri(FileSystemId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -482,10 +518,13 @@ describe_access_points(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_access_points(Client, QueryMap, HeadersMap, []).
 
-describe_access_points(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_access_points(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-02-01/access-points"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -509,10 +548,13 @@ describe_backup_policy(Client, FileSystemId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_backup_policy(Client, FileSystemId, QueryMap, HeadersMap, []).
 
-describe_backup_policy(Client, FileSystemId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_backup_policy(Client, FileSystemId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(FileSystemId), "/backup-policy"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -532,10 +574,13 @@ describe_file_system_policy(Client, FileSystemId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_file_system_policy(Client, FileSystemId, QueryMap, HeadersMap, []).
 
-describe_file_system_policy(Client, FileSystemId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_file_system_policy(Client, FileSystemId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(FileSystemId), "/policy"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -577,10 +622,13 @@ describe_file_systems(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_file_systems(Client, QueryMap, HeadersMap, []).
 
-describe_file_systems(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_file_systems(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-02-01/file-systems"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -613,10 +661,13 @@ describe_lifecycle_configuration(Client, FileSystemId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_lifecycle_configuration(Client, FileSystemId, QueryMap, HeadersMap, []).
 
-describe_lifecycle_configuration(Client, FileSystemId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_lifecycle_configuration(Client, FileSystemId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(FileSystemId), "/lifecycle-configuration"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -646,10 +697,13 @@ describe_mount_target_security_groups(Client, MountTargetId, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_mount_target_security_groups(Client, MountTargetId, QueryMap, HeadersMap, []).
 
-describe_mount_target_security_groups(Client, MountTargetId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_mount_target_security_groups(Client, MountTargetId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-02-01/mount-targets/", aws_util:encode_uri(MountTargetId), "/security-groups"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -675,10 +729,13 @@ describe_mount_targets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_mount_targets(Client, QueryMap, HeadersMap, []).
 
-describe_mount_targets(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_mount_targets(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-02-01/mount-targets"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -710,10 +767,13 @@ describe_tags(Client, FileSystemId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_tags(Client, FileSystemId, QueryMap, HeadersMap, []).
 
-describe_tags(Client, FileSystemId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_tags(Client, FileSystemId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-02-01/tags/", aws_util:encode_uri(FileSystemId), "/"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -741,10 +801,13 @@ list_tags_for_resource(Client, ResourceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceId, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-02-01/resource-tags/", aws_util:encode_uri(ResourceId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -778,10 +841,14 @@ list_tags_for_resource(Client, ResourceId, QueryMap, HeadersMap, Options)
 %% </li> </ul>
 modify_mount_target_security_groups(Client, MountTargetId, Input) ->
     modify_mount_target_security_groups(Client, MountTargetId, Input, []).
-modify_mount_target_security_groups(Client, MountTargetId, Input0, Options) ->
+modify_mount_target_security_groups(Client, MountTargetId, Input0, Options0) ->
     Method = put,
     Path = ["/2015-02-01/mount-targets/", aws_util:encode_uri(MountTargetId), "/security-groups"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -796,10 +863,14 @@ modify_mount_target_security_groups(Client, MountTargetId, Input0, Options) ->
 %% Use this action to start or stop automatic backups of the file system.
 put_backup_policy(Client, FileSystemId, Input) ->
     put_backup_policy(Client, FileSystemId, Input, []).
-put_backup_policy(Client, FileSystemId, Input0, Options) ->
+put_backup_policy(Client, FileSystemId, Input0, Options0) ->
     Method = put,
     Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(FileSystemId), "/backup-policy"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -823,10 +894,14 @@ put_backup_policy(Client, FileSystemId, Input0, Options) ->
 %% `elasticfilesystem:PutFileSystemPolicy' action.
 put_file_system_policy(Client, FileSystemId, Input) ->
     put_file_system_policy(Client, FileSystemId, Input, []).
-put_file_system_policy(Client, FileSystemId, Input0, Options) ->
+put_file_system_policy(Client, FileSystemId, Input0, Options0) ->
     Method = put,
     Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(FileSystemId), "/policy"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -869,10 +944,14 @@ put_file_system_policy(Client, FileSystemId, Input0, Options) ->
 %% you created the encrypted file system.
 put_lifecycle_configuration(Client, FileSystemId, Input) ->
     put_lifecycle_configuration(Client, FileSystemId, Input, []).
-put_lifecycle_configuration(Client, FileSystemId, Input0, Options) ->
+put_lifecycle_configuration(Client, FileSystemId, Input0, Options0) ->
     Method = put,
     Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(FileSystemId), "/lifecycle-configuration"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -891,10 +970,14 @@ put_lifecycle_configuration(Client, FileSystemId, Input0, Options) ->
 %% `elasticfilesystem:TagResource' action.
 tag_resource(Client, ResourceId, Input) ->
     tag_resource(Client, ResourceId, Input, []).
-tag_resource(Client, ResourceId, Input0, Options) ->
+tag_resource(Client, ResourceId, Input0, Options0) ->
     Method = post,
     Path = ["/2015-02-01/resource-tags/", aws_util:encode_uri(ResourceId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -913,10 +996,14 @@ tag_resource(Client, ResourceId, Input0, Options) ->
 %% `elasticfilesystem:UntagResource' action.
 untag_resource(Client, ResourceId, Input) ->
     untag_resource(Client, ResourceId, Input, []).
-untag_resource(Client, ResourceId, Input0, Options) ->
+untag_resource(Client, ResourceId, Input0, Options0) ->
     Method = delete,
     Path = ["/2015-02-01/resource-tags/", aws_util:encode_uri(ResourceId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -931,10 +1018,14 @@ untag_resource(Client, ResourceId, Input0, Options) ->
 %% of an existing file system.
 update_file_system(Client, FileSystemId, Input) ->
     update_file_system(Client, FileSystemId, Input, []).
-update_file_system(Client, FileSystemId, Input0, Options) ->
+update_file_system(Client, FileSystemId, Input0, Options0) ->
     Method = put,
     Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(FileSystemId), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -966,19 +1057,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -988,14 +1080,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

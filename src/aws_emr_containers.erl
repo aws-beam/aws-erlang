@@ -77,10 +77,14 @@
 %% SparkSQL query, that you submit to Amazon EMR on EKS.
 cancel_job_run(Client, Id, VirtualClusterId, Input) ->
     cancel_job_run(Client, Id, VirtualClusterId, Input, []).
-cancel_job_run(Client, Id, VirtualClusterId, Input0, Options) ->
+cancel_job_run(Client, Id, VirtualClusterId, Input0, Options0) ->
     Method = delete,
     Path = ["/virtualclusters/", aws_util:encode_uri(VirtualClusterId), "/jobruns/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -96,10 +100,14 @@ cancel_job_run(Client, Id, VirtualClusterId, Input0, Options) ->
 %% EKS so that EMR Studio can communicate with your virtual cluster.
 create_managed_endpoint(Client, VirtualClusterId, Input) ->
     create_managed_endpoint(Client, VirtualClusterId, Input, []).
-create_managed_endpoint(Client, VirtualClusterId, Input0, Options) ->
+create_managed_endpoint(Client, VirtualClusterId, Input0, Options0) ->
     Method = post,
     Path = ["/virtualclusters/", aws_util:encode_uri(VirtualClusterId), "/endpoints"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -119,10 +127,14 @@ create_managed_endpoint(Client, VirtualClusterId, Input0, Options) ->
 %% requirements.
 create_virtual_cluster(Client, Input) ->
     create_virtual_cluster(Client, Input, []).
-create_virtual_cluster(Client, Input0, Options) ->
+create_virtual_cluster(Client, Input0, Options0) ->
     Method = post,
     Path = ["/virtualclusters"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -138,10 +150,14 @@ create_virtual_cluster(Client, Input0, Options) ->
 %% EKS so that EMR Studio can communicate with your virtual cluster.
 delete_managed_endpoint(Client, Id, VirtualClusterId, Input) ->
     delete_managed_endpoint(Client, Id, VirtualClusterId, Input, []).
-delete_managed_endpoint(Client, Id, VirtualClusterId, Input0, Options) ->
+delete_managed_endpoint(Client, Id, VirtualClusterId, Input0, Options0) ->
     Method = delete,
     Path = ["/virtualclusters/", aws_util:encode_uri(VirtualClusterId), "/endpoints/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -161,10 +177,14 @@ delete_managed_endpoint(Client, Id, VirtualClusterId, Input0, Options) ->
 %% requirements.
 delete_virtual_cluster(Client, Id, Input) ->
     delete_virtual_cluster(Client, Id, Input, []).
-delete_virtual_cluster(Client, Id, Input0, Options) ->
+delete_virtual_cluster(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/virtualclusters/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -186,10 +206,13 @@ describe_job_run(Client, Id, VirtualClusterId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_job_run(Client, Id, VirtualClusterId, QueryMap, HeadersMap, []).
 
-describe_job_run(Client, Id, VirtualClusterId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_job_run(Client, Id, VirtualClusterId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/virtualclusters/", aws_util:encode_uri(VirtualClusterId), "/jobruns/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -209,10 +232,13 @@ describe_managed_endpoint(Client, Id, VirtualClusterId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_managed_endpoint(Client, Id, VirtualClusterId, QueryMap, HeadersMap, []).
 
-describe_managed_endpoint(Client, Id, VirtualClusterId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_managed_endpoint(Client, Id, VirtualClusterId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/virtualclusters/", aws_util:encode_uri(VirtualClusterId), "/endpoints/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -236,10 +262,13 @@ describe_virtual_cluster(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_virtual_cluster(Client, Id, QueryMap, HeadersMap, []).
 
-describe_virtual_cluster(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_virtual_cluster(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/virtualclusters/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -259,10 +288,13 @@ list_job_runs(Client, VirtualClusterId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_job_runs(Client, VirtualClusterId, QueryMap, HeadersMap, []).
 
-list_job_runs(Client, VirtualClusterId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_job_runs(Client, VirtualClusterId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/virtualclusters/", aws_util:encode_uri(VirtualClusterId), "/jobruns"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -291,10 +323,13 @@ list_managed_endpoints(Client, VirtualClusterId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_managed_endpoints(Client, VirtualClusterId, QueryMap, HeadersMap, []).
 
-list_managed_endpoints(Client, VirtualClusterId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_managed_endpoints(Client, VirtualClusterId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/virtualclusters/", aws_util:encode_uri(VirtualClusterId), "/endpoints"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -320,10 +355,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -347,10 +385,13 @@ list_virtual_clusters(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_virtual_clusters(Client, QueryMap, HeadersMap, []).
 
-list_virtual_clusters(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_virtual_clusters(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/virtualclusters"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -374,10 +415,14 @@ list_virtual_clusters(Client, QueryMap, HeadersMap, Options)
 %% SparkSQL query, that you submit to Amazon EMR on EKS.
 start_job_run(Client, VirtualClusterId, Input) ->
     start_job_run(Client, VirtualClusterId, Input, []).
-start_job_run(Client, VirtualClusterId, Input0, Options) ->
+start_job_run(Client, VirtualClusterId, Input0, Options0) ->
     Method = post,
     Path = ["/virtualclusters/", aws_util:encode_uri(VirtualClusterId), "/jobruns"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -401,10 +446,14 @@ start_job_run(Client, VirtualClusterId, Input0, Options) ->
 %% you add.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
-tag_resource(Client, ResourceArn, Input0, Options) ->
+tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -417,10 +466,14 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Removes tags from resources.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
-untag_resource(Client, ResourceArn, Input0, Options) ->
+untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -453,19 +506,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -475,14 +529,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

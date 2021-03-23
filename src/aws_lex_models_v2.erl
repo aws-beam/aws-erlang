@@ -105,10 +105,14 @@
 %% choose a specific build of the bot.
 build_bot_locale(Client, BotId, BotVersion, LocaleId, Input) ->
     build_bot_locale(Client, BotId, BotVersion, LocaleId, Input, []).
-build_bot_locale(Client, BotId, BotVersion, LocaleId, Input0, Options) ->
+build_bot_locale(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/"],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -121,10 +125,14 @@ build_bot_locale(Client, BotId, BotVersion, LocaleId, Input0, Options) ->
 %% @doc Creates an Amazon Lex conversational bot.
 create_bot(Client, Input) ->
     create_bot(Client, Input, []).
-create_bot(Client, Input0, Options) ->
+create_bot(Client, Input0, Options0) ->
     Method = put,
     Path = ["/bots/"],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -143,10 +151,14 @@ create_bot(Client, Input0, Options) ->
 %% use to call the Amazon Lex bot.
 create_bot_alias(Client, BotId, Input) ->
     create_bot_alias(Client, BotId, Input, []).
-create_bot_alias(Client, BotId, Input0, Options) ->
+create_bot_alias(Client, BotId, Input0, Options0) ->
     Method = put,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botaliases/"],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -164,10 +176,14 @@ create_bot_alias(Client, BotId, Input0, Options) ->
 %% bot.
 create_bot_locale(Client, BotId, BotVersion, Input) ->
     create_bot_locale(Client, BotId, BotVersion, Input, []).
-create_bot_locale(Client, BotId, BotVersion, Input0, Options) ->
+create_bot_locale(Client, BotId, BotVersion, Input0, Options0) ->
     Method = put,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/"],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -187,10 +203,14 @@ create_bot_locale(Client, BotId, BotVersion, Input0, Options) ->
 %% 1. Subsequent versions increment by 1.
 create_bot_version(Client, BotId, Input) ->
     create_bot_version(Client, BotId, Input, []).
-create_bot_version(Client, BotId, Input0, Options) ->
+create_bot_version(Client, BotId, Input0, Options0) ->
     Method = put,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/"],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -234,10 +254,14 @@ create_bot_version(Client, BotId, Input0, Options) ->
 %% </li> </ul>
 create_intent(Client, BotId, BotVersion, LocaleId, Input) ->
     create_intent(Client, BotId, BotVersion, LocaleId, Input, []).
-create_intent(Client, BotId, BotVersion, LocaleId, Input0, Options) ->
+create_intent(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     Method = put,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/intents/"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -255,10 +279,14 @@ create_intent(Client, BotId, BotVersion, LocaleId, Input0, Options) ->
 %% uses to elicit a response from the user.
 create_slot(Client, BotId, BotVersion, IntentId, LocaleId, Input) ->
     create_slot(Client, BotId, BotVersion, IntentId, LocaleId, Input, []).
-create_slot(Client, BotId, BotVersion, IntentId, LocaleId, Input0, Options) ->
+create_slot(Client, BotId, BotVersion, IntentId, LocaleId, Input0, Options0) ->
     Method = put,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/intents/", aws_util:encode_uri(IntentId), "/slots/"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -274,10 +302,14 @@ create_slot(Client, BotId, BotVersion, IntentId, LocaleId, Input0, Options) ->
 %% of enumeration values, the values that a slot of this type can assume.
 create_slot_type(Client, BotId, BotVersion, LocaleId, Input) ->
     create_slot_type(Client, BotId, BotVersion, LocaleId, Input, []).
-create_slot_type(Client, BotId, BotVersion, LocaleId, Input0, Options) ->
+create_slot_type(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     Method = put,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/slottypes/"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -300,10 +332,14 @@ create_slot_type(Client, BotId, BotVersion, LocaleId, Input0, Options) ->
 %% alias, set the `skipResourceInUseCheck' parameter to `true'.
 delete_bot(Client, BotId, Input) ->
     delete_bot(Client, BotId, Input, []).
-delete_bot(Client, BotId, Input0, Options) ->
+delete_bot(Client, BotId, Input0, Options0) ->
     Method = delete,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/"],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -317,10 +353,14 @@ delete_bot(Client, BotId, Input0, Options) ->
 %% @doc Deletes the specified bot alias.
 delete_bot_alias(Client, BotAliasId, BotId, Input) ->
     delete_bot_alias(Client, BotAliasId, BotId, Input, []).
-delete_bot_alias(Client, BotAliasId, BotId, Input0, Options) ->
+delete_bot_alias(Client, BotAliasId, BotId, Input0, Options0) ->
     Method = delete,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botaliases/", aws_util:encode_uri(BotAliasId), "/"],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -337,10 +377,14 @@ delete_bot_alias(Client, BotAliasId, BotId, Input0, Options) ->
 %% the locale are also deleted.
 delete_bot_locale(Client, BotId, BotVersion, LocaleId, Input) ->
     delete_bot_locale(Client, BotId, BotVersion, LocaleId, Input, []).
-delete_bot_locale(Client, BotId, BotVersion, LocaleId, Input0, Options) ->
+delete_bot_locale(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     Method = delete,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/"],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -355,10 +399,14 @@ delete_bot_locale(Client, BotId, BotVersion, LocaleId, Input0, Options) ->
 %% To delete all version of a bot, use the `DeleteBot' operation.
 delete_bot_version(Client, BotId, BotVersion, Input) ->
     delete_bot_version(Client, BotId, BotVersion, Input, []).
-delete_bot_version(Client, BotId, BotVersion, Input0, Options) ->
+delete_bot_version(Client, BotId, BotVersion, Input0, Options0) ->
     Method = delete,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/"],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -374,10 +422,14 @@ delete_bot_version(Client, BotId, BotVersion, Input0, Options) ->
 %% Deleting an intent also deletes the slots associated with the intent.
 delete_intent(Client, BotId, BotVersion, IntentId, LocaleId, Input) ->
     delete_intent(Client, BotId, BotVersion, IntentId, LocaleId, Input, []).
-delete_intent(Client, BotId, BotVersion, IntentId, LocaleId, Input0, Options) ->
+delete_intent(Client, BotId, BotVersion, IntentId, LocaleId, Input0, Options0) ->
     Method = delete,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/intents/", aws_util:encode_uri(IntentId), "/"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -390,10 +442,14 @@ delete_intent(Client, BotId, BotVersion, IntentId, LocaleId, Input0, Options) ->
 %% @doc Deletes the specified slot from an intent.
 delete_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, Input) ->
     delete_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, Input, []).
-delete_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, Input0, Options) ->
+delete_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, Input0, Options0) ->
     Method = delete,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/intents/", aws_util:encode_uri(IntentId), "/slots/", aws_util:encode_uri(SlotId), "/"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -410,10 +466,14 @@ delete_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, Input0, Optio
 %% `skipResourceInUseCheck' parameter to `true'.
 delete_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, Input) ->
     delete_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, Input, []).
-delete_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, Input0, Options) ->
+delete_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, Input0, Options0) ->
     Method = delete,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/slottypes/", aws_util:encode_uri(SlotTypeId), "/"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -433,10 +493,13 @@ describe_bot(Client, BotId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_bot(Client, BotId, QueryMap, HeadersMap, []).
 
-describe_bot(Client, BotId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_bot(Client, BotId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -453,10 +516,13 @@ describe_bot_alias(Client, BotAliasId, BotId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_bot_alias(Client, BotAliasId, BotId, QueryMap, HeadersMap, []).
 
-describe_bot_alias(Client, BotAliasId, BotId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_bot_alias(Client, BotAliasId, BotId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botaliases/", aws_util:encode_uri(BotAliasId), "/"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -473,10 +539,13 @@ describe_bot_locale(Client, BotId, BotVersion, LocaleId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_bot_locale(Client, BotId, BotVersion, LocaleId, QueryMap, HeadersMap, []).
 
-describe_bot_locale(Client, BotId, BotVersion, LocaleId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_bot_locale(Client, BotId, BotVersion, LocaleId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -493,10 +562,13 @@ describe_bot_version(Client, BotId, BotVersion, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_bot_version(Client, BotId, BotVersion, QueryMap, HeadersMap, []).
 
-describe_bot_version(Client, BotId, BotVersion, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_bot_version(Client, BotId, BotVersion, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -513,10 +585,13 @@ describe_intent(Client, BotId, BotVersion, IntentId, LocaleId, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_intent(Client, BotId, BotVersion, IntentId, LocaleId, QueryMap, HeadersMap, []).
 
-describe_intent(Client, BotId, BotVersion, IntentId, LocaleId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_intent(Client, BotId, BotVersion, IntentId, LocaleId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/intents/", aws_util:encode_uri(IntentId), "/"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -533,10 +608,13 @@ describe_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, QueryMap, H
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, QueryMap, HeadersMap, []).
 
-describe_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/intents/", aws_util:encode_uri(IntentId), "/slots/", aws_util:encode_uri(SlotId), "/"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -553,10 +631,13 @@ describe_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, QueryMap, HeadersMap, []).
 
-describe_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/slottypes/", aws_util:encode_uri(SlotTypeId), "/"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -567,10 +648,14 @@ describe_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, QueryMap, He
 %% @doc Gets a list of aliases for the specified bot.
 list_bot_aliases(Client, BotId, Input) ->
     list_bot_aliases(Client, BotId, Input, []).
-list_bot_aliases(Client, BotId, Input0, Options) ->
+list_bot_aliases(Client, BotId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botaliases/"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -583,10 +668,14 @@ list_bot_aliases(Client, BotId, Input0, Options) ->
 %% @doc Gets a list of locales for the specified bot.
 list_bot_locales(Client, BotId, BotVersion, Input) ->
     list_bot_locales(Client, BotId, BotVersion, Input, []).
-list_bot_locales(Client, BotId, BotVersion, Input0, Options) ->
+list_bot_locales(Client, BotId, BotVersion, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -607,10 +696,14 @@ list_bot_locales(Client, BotId, BotVersion, Input0, Options) ->
 %% `DRAFT' version.
 list_bot_versions(Client, BotId, Input) ->
     list_bot_versions(Client, BotId, Input, []).
-list_bot_versions(Client, BotId, Input0, Options) ->
+list_bot_versions(Client, BotId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -623,10 +716,14 @@ list_bot_versions(Client, BotId, Input0, Options) ->
 %% @doc Gets a list of available bots.
 list_bots(Client, Input) ->
     list_bots(Client, Input, []).
-list_bots(Client, Input0, Options) ->
+list_bots(Client, Input0, Options0) ->
     Method = post,
     Path = ["/bots/"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -645,10 +742,14 @@ list_bots(Client, Input0, Options) ->
 %% `CreateIntent'.
 list_built_in_intents(Client, LocaleId, Input) ->
     list_built_in_intents(Client, LocaleId, Input, []).
-list_built_in_intents(Client, LocaleId, Input0, Options) ->
+list_built_in_intents(Client, LocaleId, Input0, Options0) ->
     Method = post,
     Path = ["/builtins/locales/", aws_util:encode_uri(LocaleId), "/intents/"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -661,10 +762,14 @@ list_built_in_intents(Client, LocaleId, Input0, Options) ->
 %% @doc Gets a list of built-in slot types that meet the specified criteria.
 list_built_in_slot_types(Client, LocaleId, Input) ->
     list_built_in_slot_types(Client, LocaleId, Input, []).
-list_built_in_slot_types(Client, LocaleId, Input0, Options) ->
+list_built_in_slot_types(Client, LocaleId, Input0, Options0) ->
     Method = post,
     Path = ["/builtins/locales/", aws_util:encode_uri(LocaleId), "/slottypes/"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -677,10 +782,14 @@ list_built_in_slot_types(Client, LocaleId, Input0, Options) ->
 %% @doc Get a list of intents that meet the specified criteria.
 list_intents(Client, BotId, BotVersion, LocaleId, Input) ->
     list_intents(Client, BotId, BotVersion, LocaleId, Input, []).
-list_intents(Client, BotId, BotVersion, LocaleId, Input0, Options) ->
+list_intents(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/intents/"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -693,10 +802,14 @@ list_intents(Client, BotId, BotVersion, LocaleId, Input0, Options) ->
 %% @doc Gets a list of slot types that match the specified criteria.
 list_slot_types(Client, BotId, BotVersion, LocaleId, Input) ->
     list_slot_types(Client, BotId, BotVersion, LocaleId, Input, []).
-list_slot_types(Client, BotId, BotVersion, LocaleId, Input0, Options) ->
+list_slot_types(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/slottypes/"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -709,10 +822,14 @@ list_slot_types(Client, BotId, BotVersion, LocaleId, Input0, Options) ->
 %% @doc Gets a list of slots that match the specified criteria.
 list_slots(Client, BotId, BotVersion, IntentId, LocaleId, Input) ->
     list_slots(Client, BotId, BotVersion, IntentId, LocaleId, Input, []).
-list_slots(Client, BotId, BotVersion, IntentId, LocaleId, Input0, Options) ->
+list_slots(Client, BotId, BotVersion, IntentId, LocaleId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/intents/", aws_util:encode_uri(IntentId), "/slots/"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -734,10 +851,13 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceARN), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -751,10 +871,14 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options)
 %% value.
 tag_resource(Client, ResourceARN, Input) ->
     tag_resource(Client, ResourceARN, Input, []).
-tag_resource(Client, ResourceARN, Input0, Options) ->
+tag_resource(Client, ResourceARN, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceARN), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -767,10 +891,14 @@ tag_resource(Client, ResourceARN, Input0, Options) ->
 %% @doc Removes tags from a bot, bot alias, or bot channel.
 untag_resource(Client, ResourceARN, Input) ->
     untag_resource(Client, ResourceARN, Input, []).
-untag_resource(Client, ResourceARN, Input0, Options) ->
+untag_resource(Client, ResourceARN, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceARN), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -784,10 +912,14 @@ untag_resource(Client, ResourceARN, Input0, Options) ->
 %% @doc Updates the configuration of an existing bot.
 update_bot(Client, BotId, Input) ->
     update_bot(Client, BotId, Input, []).
-update_bot(Client, BotId, Input0, Options) ->
+update_bot(Client, BotId, Input0, Options0) ->
     Method = put,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/"],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -800,10 +932,14 @@ update_bot(Client, BotId, Input0, Options) ->
 %% @doc Updates the configuration of an existing bot alias.
 update_bot_alias(Client, BotAliasId, BotId, Input) ->
     update_bot_alias(Client, BotAliasId, BotId, Input, []).
-update_bot_alias(Client, BotAliasId, BotId, Input0, Options) ->
+update_bot_alias(Client, BotAliasId, BotId, Input0, Options0) ->
     Method = put,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botaliases/", aws_util:encode_uri(BotAliasId), "/"],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -816,10 +952,14 @@ update_bot_alias(Client, BotAliasId, BotId, Input0, Options) ->
 %% @doc Updates the settings that a bot has for a specific locale.
 update_bot_locale(Client, BotId, BotVersion, LocaleId, Input) ->
     update_bot_locale(Client, BotId, BotVersion, LocaleId, Input, []).
-update_bot_locale(Client, BotId, BotVersion, LocaleId, Input0, Options) ->
+update_bot_locale(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     Method = put,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/"],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -832,10 +972,14 @@ update_bot_locale(Client, BotId, BotVersion, LocaleId, Input0, Options) ->
 %% @doc Updates the settings for an intent.
 update_intent(Client, BotId, BotVersion, IntentId, LocaleId, Input) ->
     update_intent(Client, BotId, BotVersion, IntentId, LocaleId, Input, []).
-update_intent(Client, BotId, BotVersion, IntentId, LocaleId, Input0, Options) ->
+update_intent(Client, BotId, BotVersion, IntentId, LocaleId, Input0, Options0) ->
     Method = put,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/intents/", aws_util:encode_uri(IntentId), "/"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -848,10 +992,14 @@ update_intent(Client, BotId, BotVersion, IntentId, LocaleId, Input0, Options) ->
 %% @doc Updates the settings for a slot.
 update_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, Input) ->
     update_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, Input, []).
-update_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, Input0, Options) ->
+update_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, Input0, Options0) ->
     Method = put,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/intents/", aws_util:encode_uri(IntentId), "/slots/", aws_util:encode_uri(SlotId), "/"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -864,10 +1012,14 @@ update_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, Input0, Optio
 %% @doc Updates the configuration of an existing slot type.
 update_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, Input) ->
     update_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, Input, []).
-update_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, Input0, Options) ->
+update_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, Input0, Options0) ->
     Method = put,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/slottypes/", aws_util:encode_uri(SlotTypeId), "/"],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -899,19 +1051,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -921,14 +1074,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

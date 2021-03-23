@@ -92,10 +92,14 @@
 %% The member account status in the graph must be `INVITED'.
 accept_invitation(Client, Input) ->
     accept_invitation(Client, Input, []).
-accept_invitation(Client, Input0, Options) ->
+accept_invitation(Client, Input0, Options0) ->
     Method = put,
     Path = ["/invitation"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -129,10 +133,14 @@ accept_invitation(Client, Input0, Options) ->
 %% does not create a new behavior graph.
 create_graph(Client, Input) ->
     create_graph(Client, Input, []).
-create_graph(Client, Input0, Options) ->
+create_graph(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graph"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -170,10 +178,14 @@ create_graph(Client, Input0, Options) ->
 %% </li> </ul>
 create_members(Client, Input) ->
     create_members(Client, Input, []).
-create_members(Client, Input0, Options) ->
+create_members(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graph/members"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -192,10 +204,14 @@ create_members(Client, Input0, Options) ->
 %% behavior graph.
 delete_graph(Client, Input) ->
     delete_graph(Client, Input, []).
-delete_graph(Client, Input0, Options) ->
+delete_graph(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graph/removal"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -214,10 +230,14 @@ delete_graph(Client, Input0, Options) ->
 %% uses the `DeleteGraph' API method.
 delete_members(Client, Input) ->
     delete_members(Client, Input, []).
-delete_members(Client, Input0, Options) ->
+delete_members(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graph/members/removal"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -233,10 +253,14 @@ delete_members(Client, Input0, Options) ->
 %% `ENABLED' status.
 disassociate_membership(Client, Input) ->
     disassociate_membership(Client, Input, []).
-disassociate_membership(Client, Input0, Options) ->
+disassociate_membership(Client, Input0, Options0) ->
     Method = post,
     Path = ["/membership/removal"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -250,10 +274,14 @@ disassociate_membership(Client, Input0, Options) ->
 %% behavior graph.
 get_members(Client, Input) ->
     get_members(Client, Input, []).
-get_members(Client, Input0, Options) ->
+get_members(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graph/members/get"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -272,10 +300,14 @@ get_members(Client, Input0, Options) ->
 %% graph within a Region, the results always contain a single behavior graph.
 list_graphs(Client, Input) ->
     list_graphs(Client, Input, []).
-list_graphs(Client, Input0, Options) ->
+list_graphs(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graphs/list"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -298,10 +330,14 @@ list_graphs(Client, Input0, Options) ->
 %% that the member account resigned from or was removed from.
 list_invitations(Client, Input) ->
     list_invitations(Client, Input, []).
-list_invitations(Client, Input0, Options) ->
+list_invitations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/invitations/list"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -316,10 +352,14 @@ list_invitations(Client, Input0, Options) ->
 %% Does not return member accounts that were removed from the behavior graph.
 list_members(Client, Input) ->
     list_members(Client, Input, []).
-list_members(Client, Input0, Options) ->
+list_members(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graph/members/list"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -336,10 +376,14 @@ list_members(Client, Input0, Options) ->
 %% status.
 reject_invitation(Client, Input) ->
     reject_invitation(Client, Input, []).
-reject_invitation(Client, Input0, Options) ->
+reject_invitation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/invitation/removal"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -363,10 +407,14 @@ reject_invitation(Client, Input0, Options) ->
 %% </li> </ul>
 start_monitoring_member(Client, Input) ->
     start_monitoring_member(Client, Input, []).
-start_monitoring_member(Client, Input0, Options) ->
+start_monitoring_member(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graph/member/monitoringstate"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -398,19 +446,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -420,14 +469,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

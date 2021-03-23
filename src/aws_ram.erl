@@ -71,10 +71,14 @@
 %% @doc Accepts an invitation to a resource share from another AWS account.
 accept_resource_share_invitation(Client, Input) ->
     accept_resource_share_invitation(Client, Input, []).
-accept_resource_share_invitation(Client, Input0, Options) ->
+accept_resource_share_invitation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/acceptresourceshareinvitation"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -88,10 +92,14 @@ accept_resource_share_invitation(Client, Input0, Options) ->
 %% and resources.
 associate_resource_share(Client, Input) ->
     associate_resource_share(Client, Input, []).
-associate_resource_share(Client, Input0, Options) ->
+associate_resource_share(Client, Input0, Options0) ->
     Method = post,
     Path = ["/associateresourceshare"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -104,10 +112,14 @@ associate_resource_share(Client, Input0, Options) ->
 %% @doc Associates a permission with a resource share.
 associate_resource_share_permission(Client, Input) ->
     associate_resource_share_permission(Client, Input, []).
-associate_resource_share_permission(Client, Input0, Options) ->
+associate_resource_share_permission(Client, Input0, Options0) ->
     Method = post,
     Path = ["/associateresourcesharepermission"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -120,10 +132,14 @@ associate_resource_share_permission(Client, Input0, Options) ->
 %% @doc Creates a resource share.
 create_resource_share(Client, Input) ->
     create_resource_share(Client, Input, []).
-create_resource_share(Client, Input0, Options) ->
+create_resource_share(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createresourceshare"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -136,10 +152,14 @@ create_resource_share(Client, Input0, Options) ->
 %% @doc Deletes the specified resource share.
 delete_resource_share(Client, Input) ->
     delete_resource_share(Client, Input, []).
-delete_resource_share(Client, Input0, Options) ->
+delete_resource_share(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/deleteresourceshare"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -155,10 +175,14 @@ delete_resource_share(Client, Input0, Options) ->
 %% specified resource share.
 disassociate_resource_share(Client, Input) ->
     disassociate_resource_share(Client, Input, []).
-disassociate_resource_share(Client, Input0, Options) ->
+disassociate_resource_share(Client, Input0, Options0) ->
     Method = post,
     Path = ["/disassociateresourceshare"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -171,10 +195,14 @@ disassociate_resource_share(Client, Input0, Options) ->
 %% @doc Disassociates an AWS RAM permission from a resource share.
 disassociate_resource_share_permission(Client, Input) ->
     disassociate_resource_share_permission(Client, Input, []).
-disassociate_resource_share_permission(Client, Input0, Options) ->
+disassociate_resource_share_permission(Client, Input0, Options0) ->
     Method = post,
     Path = ["/disassociateresourcesharepermission"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -189,10 +217,14 @@ disassociate_resource_share_permission(Client, Input0, Options) ->
 %% The caller must be the master account for the AWS Organization.
 enable_sharing_with_aws_organization(Client, Input) ->
     enable_sharing_with_aws_organization(Client, Input, []).
-enable_sharing_with_aws_organization(Client, Input0, Options) ->
+enable_sharing_with_aws_organization(Client, Input0, Options0) ->
     Method = post,
     Path = ["/enablesharingwithawsorganization"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -205,10 +237,14 @@ enable_sharing_with_aws_organization(Client, Input0, Options) ->
 %% @doc Gets the contents of an AWS RAM permission in JSON format.
 get_permission(Client, Input) ->
     get_permission(Client, Input, []).
-get_permission(Client, Input0, Options) ->
+get_permission(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getpermission"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -222,10 +258,14 @@ get_permission(Client, Input0, Options) ->
 %% shared.
 get_resource_policies(Client, Input) ->
     get_resource_policies(Client, Input, []).
-get_resource_policies(Client, Input0, Options) ->
+get_resource_policies(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getresourcepolicies"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -239,10 +279,14 @@ get_resource_policies(Client, Input0, Options) ->
 %% own.
 get_resource_share_associations(Client, Input) ->
     get_resource_share_associations(Client, Input, []).
-get_resource_share_associations(Client, Input0, Options) ->
+get_resource_share_associations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getresourceshareassociations"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -255,10 +299,14 @@ get_resource_share_associations(Client, Input0, Options) ->
 %% @doc Gets the invitations for resource sharing that you've received.
 get_resource_share_invitations(Client, Input) ->
     get_resource_share_invitations(Client, Input, []).
-get_resource_share_invitations(Client, Input0, Options) ->
+get_resource_share_invitations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getresourceshareinvitations"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -272,10 +320,14 @@ get_resource_share_invitations(Client, Input0, Options) ->
 %% shared with you.
 get_resource_shares(Client, Input) ->
     get_resource_shares(Client, Input, []).
-get_resource_shares(Client, Input0, Options) ->
+get_resource_shares(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getresourceshares"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -289,10 +341,14 @@ get_resource_shares(Client, Input0, Options) ->
 %% that the invitation is still pending for.
 list_pending_invitation_resources(Client, Input) ->
     list_pending_invitation_resources(Client, Input, []).
-list_pending_invitation_resources(Client, Input0, Options) ->
+list_pending_invitation_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listpendinginvitationresources"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -305,10 +361,14 @@ list_pending_invitation_resources(Client, Input0, Options) ->
 %% @doc Lists the AWS RAM permissions.
 list_permissions(Client, Input) ->
     list_permissions(Client, Input, []).
-list_permissions(Client, Input0, Options) ->
+list_permissions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listpermissions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -322,10 +382,14 @@ list_permissions(Client, Input0, Options) ->
 %% shared resources with you.
 list_principals(Client, Input) ->
     list_principals(Client, Input, []).
-list_principals(Client, Input0, Options) ->
+list_principals(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listprincipals"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -339,10 +403,14 @@ list_principals(Client, Input0, Options) ->
 %% share.
 list_resource_share_permissions(Client, Input) ->
     list_resource_share_permissions(Client, Input, []).
-list_resource_share_permissions(Client, Input0, Options) ->
+list_resource_share_permissions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listresourcesharepermissions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -355,10 +423,14 @@ list_resource_share_permissions(Client, Input0, Options) ->
 %% @doc Lists the shareable resource types supported by AWS RAM.
 list_resource_types(Client, Input) ->
     list_resource_types(Client, Input, []).
-list_resource_types(Client, Input0, Options) ->
+list_resource_types(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listresourcetypes"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -372,10 +444,14 @@ list_resource_types(Client, Input0, Options) ->
 %% resources that are shared with you.
 list_resources(Client, Input) ->
     list_resources(Client, Input, []).
-list_resources(Client, Input0, Options) ->
+list_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listresources"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -399,10 +475,14 @@ list_resources(Client, Input0, Options) ->
 %% </li> </ul>
 promote_resource_share_created_from_policy(Client, Input) ->
     promote_resource_share_created_from_policy(Client, Input, []).
-promote_resource_share_created_from_policy(Client, Input0, Options) ->
+promote_resource_share_created_from_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/promoteresourcesharecreatedfrompolicy"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -416,10 +496,14 @@ promote_resource_share_created_from_policy(Client, Input0, Options) ->
 %% @doc Rejects an invitation to a resource share from another AWS account.
 reject_resource_share_invitation(Client, Input) ->
     reject_resource_share_invitation(Client, Input, []).
-reject_resource_share_invitation(Client, Input0, Options) ->
+reject_resource_share_invitation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/rejectresourceshareinvitation"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -432,10 +516,14 @@ reject_resource_share_invitation(Client, Input0, Options) ->
 %% @doc Adds the specified tags to the specified resource share that you own.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
-tag_resource(Client, Input0, Options) ->
+tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tagresource"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -449,10 +537,14 @@ tag_resource(Client, Input0, Options) ->
 %% own.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
-untag_resource(Client, Input0, Options) ->
+untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/untagresource"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -465,10 +557,14 @@ untag_resource(Client, Input0, Options) ->
 %% @doc Updates the specified resource share that you own.
 update_resource_share(Client, Input) ->
     update_resource_share(Client, Input, []).
-update_resource_share(Client, Input0, Options) ->
+update_resource_share(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateresourceshare"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -500,19 +596,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -522,14 +619,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

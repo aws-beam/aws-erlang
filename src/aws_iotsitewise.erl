@@ -162,10 +162,14 @@
 %% Guide.
 associate_assets(Client, AssetId, Input) ->
     associate_assets(Client, AssetId, Input, []).
-associate_assets(Client, AssetId, Input0, Options) ->
+associate_assets(Client, AssetId, Input0, Options0) ->
     Method = post,
     Path = ["/assets/", aws_util:encode_uri(AssetId), "/associate"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -179,10 +183,14 @@ associate_assets(Client, AssetId, Input0, Options) ->
 %% project.
 batch_associate_project_assets(Client, ProjectId, Input) ->
     batch_associate_project_assets(Client, ProjectId, Input, []).
-batch_associate_project_assets(Client, ProjectId, Input0, Options) ->
+batch_associate_project_assets(Client, ProjectId, Input0, Options0) ->
     Method = post,
     Path = ["/projects/", aws_util:encode_uri(ProjectId), "/assets/associate"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -196,10 +204,14 @@ batch_associate_project_assets(Client, ProjectId, Input0, Options) ->
 %% Monitor project.
 batch_disassociate_project_assets(Client, ProjectId, Input) ->
     batch_disassociate_project_assets(Client, ProjectId, Input, []).
-batch_disassociate_project_assets(Client, ProjectId, Input0, Options) ->
+batch_disassociate_project_assets(Client, ProjectId, Input0, Options0) ->
     Method = post,
     Path = ["/projects/", aws_util:encode_uri(ProjectId), "/assets/disassociate"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -239,10 +251,14 @@ batch_disassociate_project_assets(Client, ProjectId, Input0, Options) ->
 %% authorization in the AWS IoT SiteWise User Guide.
 batch_put_asset_property_value(Client, Input) ->
     batch_put_asset_property_value(Client, Input, []).
-batch_put_asset_property_value(Client, Input0, Options) ->
+batch_put_asset_property_value(Client, Input0, Options0) ->
     Method = post,
     Path = ["/properties"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -257,10 +273,14 @@ batch_put_asset_property_value(Client, Input0, Options) ->
 %% Monitor portal or project resource.
 create_access_policy(Client, Input) ->
     create_access_policy(Client, Input, []).
-create_access_policy(Client, Input0, Options) ->
+create_access_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/access-policies"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -276,10 +296,14 @@ create_access_policy(Client, Input0, Options) ->
 %% Guide.
 create_asset(Client, Input) ->
     create_asset(Client, Input, []).
-create_asset(Client, Input0, Options) ->
+create_asset(Client, Input0, Options0) ->
     Method = post,
     Path = ["/assets"],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -299,10 +323,14 @@ create_asset(Client, Input0, Options) ->
 %% the AWS IoT SiteWise User Guide.
 create_asset_model(Client, Input) ->
     create_asset_model(Client, Input, []).
-create_asset_model(Client, Input0, Options) ->
+create_asset_model(Client, Input0, Options0) ->
     Method = post,
     Path = ["/asset-models"],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -315,10 +343,14 @@ create_asset_model(Client, Input0, Options) ->
 %% @doc Creates a dashboard in an AWS IoT SiteWise Monitor project.
 create_dashboard(Client, Input) ->
     create_dashboard(Client, Input, []).
-create_dashboard(Client, Input0, Options) ->
+create_dashboard(Client, Input0, Options0) ->
     Method = post,
     Path = ["/dashboards"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -335,10 +367,14 @@ create_dashboard(Client, Input0, Options) ->
 %% SiteWise User Guide.
 create_gateway(Client, Input) ->
     create_gateway(Client, Input, []).
-create_gateway(Client, Input0, Options) ->
+create_gateway(Client, Input0, Options0) ->
     Method = post,
     Path = ["/20200301/gateways"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -358,10 +394,14 @@ create_gateway(Client, Input0, Options) ->
 %% administrators in the AWS IoT SiteWise User Guide.
 create_portal(Client, Input) ->
     create_portal(Client, Input, []).
-create_portal(Client, Input0, Options) ->
+create_portal(Client, Input0, Options0) ->
     Method = post,
     Path = ["/portals"],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -374,10 +414,14 @@ create_portal(Client, Input0, Options) ->
 %% @doc Creates a project in the specified portal.
 create_project(Client, Input) ->
     create_project(Client, Input, []).
-create_project(Client, Input0, Options) ->
+create_project(Client, Input0, Options0) ->
     Method = post,
     Path = ["/projects"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -394,10 +438,14 @@ create_project(Client, Input0, Options) ->
 %% resource.
 delete_access_policy(Client, AccessPolicyId, Input) ->
     delete_access_policy(Client, AccessPolicyId, Input, []).
-delete_access_policy(Client, AccessPolicyId, Input0, Options) ->
+delete_access_policy(Client, AccessPolicyId, Input0, Options0) ->
     Method = delete,
     Path = ["/access-policies/", aws_util:encode_uri(AccessPolicyId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -417,10 +465,14 @@ delete_access_policy(Client, AccessPolicyId, Input0, Options) ->
 %% information, see DisassociateAssets.
 delete_asset(Client, AssetId, Input) ->
     delete_asset(Client, AssetId, Input, []).
-delete_asset(Client, AssetId, Input0, Options) ->
+delete_asset(Client, AssetId, Input0, Options0) ->
     Method = delete,
     Path = ["/assets/", aws_util:encode_uri(AssetId), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -441,10 +493,14 @@ delete_asset(Client, AssetId, Input0, Options) ->
 %% IoT SiteWise User Guide.
 delete_asset_model(Client, AssetModelId, Input) ->
     delete_asset_model(Client, AssetModelId, Input, []).
-delete_asset_model(Client, AssetModelId, Input0, Options) ->
+delete_asset_model(Client, AssetModelId, Input0, Options0) ->
     Method = delete,
     Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -458,10 +514,14 @@ delete_asset_model(Client, AssetModelId, Input0, Options) ->
 %% @doc Deletes a dashboard from AWS IoT SiteWise Monitor.
 delete_dashboard(Client, DashboardId, Input) ->
     delete_dashboard(Client, DashboardId, Input, []).
-delete_dashboard(Client, DashboardId, Input0, Options) ->
+delete_dashboard(Client, DashboardId, Input0, Options0) ->
     Method = delete,
     Path = ["/dashboards/", aws_util:encode_uri(DashboardId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -478,10 +538,14 @@ delete_dashboard(Client, DashboardId, Input0, Options) ->
 %% gateway's file system.
 delete_gateway(Client, GatewayId, Input) ->
     delete_gateway(Client, GatewayId, Input, []).
-delete_gateway(Client, GatewayId, Input0, Options) ->
+delete_gateway(Client, GatewayId, Input0, Options0) ->
     Method = delete,
     Path = ["/20200301/gateways/", aws_util:encode_uri(GatewayId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -494,10 +558,14 @@ delete_gateway(Client, GatewayId, Input0, Options) ->
 %% @doc Deletes a portal from AWS IoT SiteWise Monitor.
 delete_portal(Client, PortalId, Input) ->
     delete_portal(Client, PortalId, Input, []).
-delete_portal(Client, PortalId, Input0, Options) ->
+delete_portal(Client, PortalId, Input0, Options0) ->
     Method = delete,
     Path = ["/portals/", aws_util:encode_uri(PortalId), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -511,10 +579,14 @@ delete_portal(Client, PortalId, Input0, Options) ->
 %% @doc Deletes a project from AWS IoT SiteWise Monitor.
 delete_project(Client, ProjectId, Input) ->
     delete_project(Client, ProjectId, Input, []).
-delete_project(Client, ProjectId, Input0, Options) ->
+delete_project(Client, ProjectId, Input0, Options0) ->
     Method = delete,
     Path = ["/projects/", aws_util:encode_uri(ProjectId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -535,10 +607,13 @@ describe_access_policy(Client, AccessPolicyId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_access_policy(Client, AccessPolicyId, QueryMap, HeadersMap, []).
 
-describe_access_policy(Client, AccessPolicyId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_access_policy(Client, AccessPolicyId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/access-policies/", aws_util:encode_uri(AccessPolicyId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -555,10 +630,13 @@ describe_asset(Client, AssetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_asset(Client, AssetId, QueryMap, HeadersMap, []).
 
-describe_asset(Client, AssetId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_asset(Client, AssetId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assets/", aws_util:encode_uri(AssetId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -575,10 +653,13 @@ describe_asset_model(Client, AssetModelId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_asset_model(Client, AssetModelId, QueryMap, HeadersMap, []).
 
-describe_asset_model(Client, AssetModelId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_asset_model(Client, AssetModelId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -603,10 +684,13 @@ describe_asset_property(Client, AssetId, PropertyId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_asset_property(Client, AssetId, PropertyId, QueryMap, HeadersMap, []).
 
-describe_asset_property(Client, AssetId, PropertyId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_asset_property(Client, AssetId, PropertyId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assets/", aws_util:encode_uri(AssetId), "/properties/", aws_util:encode_uri(PropertyId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -623,10 +707,13 @@ describe_dashboard(Client, DashboardId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_dashboard(Client, DashboardId, QueryMap, HeadersMap, []).
 
-describe_dashboard(Client, DashboardId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_dashboard(Client, DashboardId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/dashboards/", aws_util:encode_uri(DashboardId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -647,10 +734,13 @@ describe_default_encryption_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_default_encryption_configuration(Client, QueryMap, HeadersMap, []).
 
-describe_default_encryption_configuration(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_default_encryption_configuration(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/configuration/account/encryption"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -667,10 +757,13 @@ describe_gateway(Client, GatewayId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_gateway(Client, GatewayId, QueryMap, HeadersMap, []).
 
-describe_gateway(Client, GatewayId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_gateway(Client, GatewayId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/20200301/gateways/", aws_util:encode_uri(GatewayId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -693,10 +786,13 @@ describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId, QueryMap, HeadersMap, []).
 
-describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/20200301/gateways/", aws_util:encode_uri(GatewayId), "/capability/", aws_util:encode_uri(CapabilityNamespace), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -713,10 +809,13 @@ describe_logging_options(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_logging_options(Client, QueryMap, HeadersMap, []).
 
-describe_logging_options(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_logging_options(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/logging"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -733,10 +832,13 @@ describe_portal(Client, PortalId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_portal(Client, PortalId, QueryMap, HeadersMap, []).
 
-describe_portal(Client, PortalId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_portal(Client, PortalId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/portals/", aws_util:encode_uri(PortalId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -753,10 +855,13 @@ describe_project(Client, ProjectId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_project(Client, ProjectId, QueryMap, HeadersMap, []).
 
-describe_project(Client, ProjectId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_project(Client, ProjectId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects/", aws_util:encode_uri(ProjectId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -768,10 +873,14 @@ describe_project(Client, ProjectId, QueryMap, HeadersMap, Options)
 %% hierarchy defined in the parent asset's model.
 disassociate_assets(Client, AssetId, Input) ->
     disassociate_assets(Client, AssetId, Input, []).
-disassociate_assets(Client, AssetId, Input0, Options) ->
+disassociate_assets(Client, AssetId, Input0, Options0) ->
     Method = post,
     Path = ["/assets/", aws_util:encode_uri(AssetId), "/disassociate"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -803,10 +912,13 @@ get_asset_property_aggregates(Client, AggregateTypes, EndDate, Resolution, Start
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_asset_property_aggregates(Client, AggregateTypes, EndDate, Resolution, StartDate, QueryMap, HeadersMap, []).
 
-get_asset_property_aggregates(Client, AggregateTypes, EndDate, Resolution, StartDate, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_asset_property_aggregates(Client, AggregateTypes, EndDate, Resolution, StartDate, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/properties/aggregates"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -850,10 +962,13 @@ get_asset_property_value(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_asset_property_value(Client, QueryMap, HeadersMap, []).
 
-get_asset_property_value(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_asset_property_value(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/properties/latest"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -889,10 +1004,13 @@ get_asset_property_value_history(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_asset_property_value_history(Client, QueryMap, HeadersMap, []).
 
-get_asset_property_value_history(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_asset_property_value_history(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/properties/history"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -923,10 +1041,13 @@ list_access_policies(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_access_policies(Client, QueryMap, HeadersMap, []).
 
-list_access_policies(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_access_policies(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/access-policies"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -953,10 +1074,13 @@ list_asset_models(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_asset_models(Client, QueryMap, HeadersMap, []).
 
-list_asset_models(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_asset_models(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/asset-models"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -981,10 +1105,13 @@ list_asset_relationships(Client, AssetId, TraversalType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_asset_relationships(Client, AssetId, TraversalType, QueryMap, HeadersMap, []).
 
-list_asset_relationships(Client, AssetId, TraversalType, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_asset_relationships(Client, AssetId, TraversalType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assets/", aws_util:encode_uri(AssetId), "/assetRelationships"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1018,10 +1145,13 @@ list_assets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_assets(Client, QueryMap, HeadersMap, []).
 
-list_assets(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_assets(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assets"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1054,10 +1184,13 @@ list_associated_assets(Client, AssetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_associated_assets(Client, AssetId, QueryMap, HeadersMap, []).
 
-list_associated_assets(Client, AssetId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_associated_assets(Client, AssetId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assets/", aws_util:encode_uri(AssetId), "/hierarchies"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1082,10 +1215,13 @@ list_dashboards(Client, ProjectId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_dashboards(Client, ProjectId, QueryMap, HeadersMap, []).
 
-list_dashboards(Client, ProjectId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_dashboards(Client, ProjectId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/dashboards"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1108,10 +1244,13 @@ list_gateways(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_gateways(Client, QueryMap, HeadersMap, []).
 
-list_gateways(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_gateways(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/20200301/gateways"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1133,10 +1272,13 @@ list_portals(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_portals(Client, QueryMap, HeadersMap, []).
 
-list_portals(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_portals(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/portals"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1159,10 +1301,13 @@ list_project_assets(Client, ProjectId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_project_assets(Client, ProjectId, QueryMap, HeadersMap, []).
 
-list_project_assets(Client, ProjectId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_project_assets(Client, ProjectId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects/", aws_util:encode_uri(ProjectId), "/assets"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1185,10 +1330,13 @@ list_projects(Client, PortalId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_projects(Client, PortalId, QueryMap, HeadersMap, []).
 
-list_projects(Client, PortalId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_projects(Client, PortalId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1211,10 +1359,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1232,10 +1383,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
 %% Guide.
 put_default_encryption_configuration(Client, Input) ->
     put_default_encryption_configuration(Client, Input, []).
-put_default_encryption_configuration(Client, Input0, Options) ->
+put_default_encryption_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/configuration/account/encryption"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1248,10 +1403,14 @@ put_default_encryption_configuration(Client, Input0, Options) ->
 %% @doc Sets logging options for AWS IoT SiteWise.
 put_logging_options(Client, Input) ->
     put_logging_options(Client, Input, []).
-put_logging_options(Client, Input0, Options) ->
+put_logging_options(Client, Input0, Options0) ->
     Method = put,
     Path = ["/logging"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1267,10 +1426,14 @@ put_logging_options(Client, Input0, Options) ->
 %% value.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
-tag_resource(Client, Input0, Options) ->
+tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tags"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1284,10 +1447,14 @@ tag_resource(Client, Input0, Options) ->
 %% @doc Removes a tag from an AWS IoT SiteWise resource.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
-untag_resource(Client, Input0, Options) ->
+untag_resource(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/tags"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1303,10 +1470,14 @@ untag_resource(Client, Input0, Options) ->
 %% to an AWS IoT SiteWise Monitor portal or project resource.
 update_access_policy(Client, AccessPolicyId, Input) ->
     update_access_policy(Client, AccessPolicyId, Input, []).
-update_access_policy(Client, AccessPolicyId, Input0, Options) ->
+update_access_policy(Client, AccessPolicyId, Input0, Options0) ->
     Method = put,
     Path = ["/access-policies/", aws_util:encode_uri(AccessPolicyId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1322,10 +1493,14 @@ update_access_policy(Client, AccessPolicyId, Input0, Options) ->
 %% SiteWise User Guide.
 update_asset(Client, AssetId, Input) ->
     update_asset(Client, AssetId, Input, []).
-update_asset(Client, AssetId, Input0, Options) ->
+update_asset(Client, AssetId, Input0, Options0) ->
     Method = put,
     Path = ["/assets/", aws_util:encode_uri(AssetId), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1354,10 +1529,14 @@ update_asset(Client, AssetId, Input0, Options) ->
 %% property.
 update_asset_model(Client, AssetModelId, Input) ->
     update_asset_model(Client, AssetModelId, Input, []).
-update_asset_model(Client, AssetModelId, Input0, Options) ->
+update_asset_model(Client, AssetModelId, Input0, Options0) ->
     Method = put,
     Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1375,10 +1554,14 @@ update_asset_model(Client, AssetModelId, Input0, Options) ->
 %% more information, see DescribeAssetProperty.
 update_asset_property(Client, AssetId, PropertyId, Input) ->
     update_asset_property(Client, AssetId, PropertyId, Input, []).
-update_asset_property(Client, AssetId, PropertyId, Input0, Options) ->
+update_asset_property(Client, AssetId, PropertyId, Input0, Options0) ->
     Method = put,
     Path = ["/assets/", aws_util:encode_uri(AssetId), "/properties/", aws_util:encode_uri(PropertyId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1391,10 +1574,14 @@ update_asset_property(Client, AssetId, PropertyId, Input0, Options) ->
 %% @doc Updates an AWS IoT SiteWise Monitor dashboard.
 update_dashboard(Client, DashboardId, Input) ->
     update_dashboard(Client, DashboardId, Input, []).
-update_dashboard(Client, DashboardId, Input0, Options) ->
+update_dashboard(Client, DashboardId, Input0, Options0) ->
     Method = put,
     Path = ["/dashboards/", aws_util:encode_uri(DashboardId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1407,10 +1594,14 @@ update_dashboard(Client, DashboardId, Input0, Options) ->
 %% @doc Updates a gateway's name.
 update_gateway(Client, GatewayId, Input) ->
     update_gateway(Client, GatewayId, Input, []).
-update_gateway(Client, GatewayId, Input0, Options) ->
+update_gateway(Client, GatewayId, Input0, Options0) ->
     Method = put,
     Path = ["/20200301/gateways/", aws_util:encode_uri(GatewayId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1430,10 +1621,14 @@ update_gateway(Client, GatewayId, Input0, Options) ->
 %% all capability configurations for a gateway, use DescribeGateway.
 update_gateway_capability_configuration(Client, GatewayId, Input) ->
     update_gateway_capability_configuration(Client, GatewayId, Input, []).
-update_gateway_capability_configuration(Client, GatewayId, Input0, Options) ->
+update_gateway_capability_configuration(Client, GatewayId, Input0, Options0) ->
     Method = post,
     Path = ["/20200301/gateways/", aws_util:encode_uri(GatewayId), "/capability"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1446,10 +1641,14 @@ update_gateway_capability_configuration(Client, GatewayId, Input0, Options) ->
 %% @doc Updates an AWS IoT SiteWise Monitor portal.
 update_portal(Client, PortalId, Input) ->
     update_portal(Client, PortalId, Input, []).
-update_portal(Client, PortalId, Input0, Options) ->
+update_portal(Client, PortalId, Input0, Options0) ->
     Method = put,
     Path = ["/portals/", aws_util:encode_uri(PortalId), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1462,10 +1661,14 @@ update_portal(Client, PortalId, Input0, Options) ->
 %% @doc Updates an AWS IoT SiteWise Monitor project.
 update_project(Client, ProjectId, Input) ->
     update_project(Client, ProjectId, Input, []).
-update_project(Client, ProjectId, Input0, Options) ->
+update_project(Client, ProjectId, Input0, Options0) ->
     Method = put,
     Path = ["/projects/", aws_util:encode_uri(ProjectId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1497,19 +1700,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -1519,14 +1723,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

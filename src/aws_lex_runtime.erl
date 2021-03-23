@@ -37,10 +37,14 @@
 %% @doc Removes session information for a specified bot, alias, and user ID.
 delete_session(Client, BotAlias, BotName, UserId, Input) ->
     delete_session(Client, BotAlias, BotName, UserId, Input, []).
-delete_session(Client, BotAlias, BotName, UserId, Input0, Options) ->
+delete_session(Client, BotAlias, BotName, UserId, Input0, Options0) ->
     Method = delete,
     Path = ["/bot/", aws_util:encode_uri(BotName), "/alias/", aws_util:encode_uri(BotAlias), "/user/", aws_util:encode_uri(UserId), "/session"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -59,10 +63,13 @@ get_session(Client, BotAlias, BotName, UserId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_session(Client, BotAlias, BotName, UserId, QueryMap, HeadersMap, []).
 
-get_session(Client, BotAlias, BotName, UserId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_session(Client, BotAlias, BotName, UserId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bot/", aws_util:encode_uri(BotName), "/alias/", aws_util:encode_uri(BotAlias), "/user/", aws_util:encode_uri(UserId), "/session/"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -134,10 +141,14 @@ get_session(Client, BotAlias, BotName, UserId, QueryMap, HeadersMap, Options)
 %% Context.
 post_content(Client, BotAlias, BotName, UserId, Input) ->
     post_content(Client, BotAlias, BotName, UserId, Input, []).
-post_content(Client, BotAlias, BotName, UserId, Input0, Options) ->
+post_content(Client, BotAlias, BotName, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/bot/", aws_util:encode_uri(BotName), "/alias/", aws_util:encode_uri(BotAlias), "/user/", aws_util:encode_uri(UserId), "/content"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Accept">>, <<"accept">>},
@@ -239,10 +250,14 @@ post_content(Client, BotAlias, BotName, UserId, Input0, Options) ->
 %% Context.
 post_text(Client, BotAlias, BotName, UserId, Input) ->
     post_text(Client, BotAlias, BotName, UserId, Input, []).
-post_text(Client, BotAlias, BotName, UserId, Input0, Options) ->
+post_text(Client, BotAlias, BotName, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/bot/", aws_util:encode_uri(BotName), "/alias/", aws_util:encode_uri(BotAlias), "/user/", aws_util:encode_uri(UserId), "/text"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -260,10 +275,14 @@ post_text(Client, BotAlias, BotName, UserId, Input0, Options) ->
 %% For more information, see Managing Sessions.
 put_session(Client, BotAlias, BotName, UserId, Input) ->
     put_session(Client, BotAlias, BotName, UserId, Input, []).
-put_session(Client, BotAlias, BotName, UserId, Input0, Options) ->
+put_session(Client, BotAlias, BotName, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/bot/", aws_util:encode_uri(BotName), "/alias/", aws_util:encode_uri(BotAlias), "/user/", aws_util:encode_uri(UserId), "/session"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Accept">>, <<"accept">>}
@@ -322,19 +341,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -344,14 +364,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

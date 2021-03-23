@@ -66,10 +66,14 @@
 %% automatically deleted after this limit expires.
 cancel_journal_kinesis_stream(Client, LedgerName, StreamId, Input) ->
     cancel_journal_kinesis_stream(Client, LedgerName, StreamId, Input, []).
-cancel_journal_kinesis_stream(Client, LedgerName, StreamId, Input0, Options) ->
+cancel_journal_kinesis_stream(Client, LedgerName, StreamId, Input0, Options0) ->
     Method = delete,
     Path = ["/ledgers/", aws_util:encode_uri(LedgerName), "/journal-kinesis-streams/", aws_util:encode_uri(StreamId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -82,10 +86,14 @@ cancel_journal_kinesis_stream(Client, LedgerName, StreamId, Input0, Options) ->
 %% @doc Creates a new ledger in your AWS account.
 create_ledger(Client, Input) ->
     create_ledger(Client, Input, []).
-create_ledger(Client, Input0, Options) ->
+create_ledger(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ledgers"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -106,10 +114,14 @@ create_ledger(Client, Input0, Options) ->
 %% you when you use it to delete a ledger.
 delete_ledger(Client, Name, Input) ->
     delete_ledger(Client, Name, Input, []).
-delete_ledger(Client, Name, Input0, Options) ->
+delete_ledger(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/ledgers/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -133,10 +145,13 @@ describe_journal_kinesis_stream(Client, LedgerName, StreamId, QueryMap, HeadersM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_journal_kinesis_stream(Client, LedgerName, StreamId, QueryMap, HeadersMap, []).
 
-describe_journal_kinesis_stream(Client, LedgerName, StreamId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_journal_kinesis_stream(Client, LedgerName, StreamId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/ledgers/", aws_util:encode_uri(LedgerName), "/journal-kinesis-streams/", aws_util:encode_uri(StreamId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -164,10 +179,13 @@ describe_journal_s3_export(Client, ExportId, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_journal_s3_export(Client, ExportId, Name, QueryMap, HeadersMap, []).
 
-describe_journal_s3_export(Client, ExportId, Name, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_journal_s3_export(Client, ExportId, Name, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/ledgers/", aws_util:encode_uri(Name), "/journal-s3-exports/", aws_util:encode_uri(ExportId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -185,10 +203,13 @@ describe_ledger(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_ledger(Client, Name, QueryMap, HeadersMap, []).
 
-describe_ledger(Client, Name, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_ledger(Client, Name, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/ledgers/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -212,10 +233,14 @@ describe_ledger(Client, Name, QueryMap, HeadersMap, Options)
 %% `LimitExceededException'.
 export_journal_to_s3(Client, Name, Input) ->
     export_journal_to_s3(Client, Name, Input, []).
-export_journal_to_s3(Client, Name, Input0, Options) ->
+export_journal_to_s3(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/ledgers/", aws_util:encode_uri(Name), "/journal-s3-exports"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -243,10 +268,14 @@ export_journal_to_s3(Client, Name, Input0, Options) ->
 %% `InvalidParameterException'.
 get_block(Client, Name, Input) ->
     get_block(Client, Name, Input, []).
-get_block(Client, Name, Input0, Options) ->
+get_block(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/ledgers/", aws_util:encode_uri(Name), "/block"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -262,10 +291,14 @@ get_block(Client, Name, Input0, Options) ->
 %% The response includes a 256-bit hash value and a block address.
 get_digest(Client, Name, Input) ->
     get_digest(Client, Name, Input, []).
-get_digest(Client, Name, Input0, Options) ->
+get_digest(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/ledgers/", aws_util:encode_uri(Name), "/digest"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -282,10 +315,14 @@ get_digest(Client, Name, Input0, Options) ->
 %% `DigestTipAddress' is provided.
 get_revision(Client, Name, Input) ->
     get_revision(Client, Name, Input, []).
-get_revision(Client, Name, Input0, Options) ->
+get_revision(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/ledgers/", aws_util:encode_uri(Name), "/revision"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -312,10 +349,13 @@ list_journal_kinesis_streams_for_ledger(Client, LedgerName, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_journal_kinesis_streams_for_ledger(Client, LedgerName, QueryMap, HeadersMap, []).
 
-list_journal_kinesis_streams_for_ledger(Client, LedgerName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_journal_kinesis_streams_for_ledger(Client, LedgerName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/ledgers/", aws_util:encode_uri(LedgerName), "/journal-kinesis-streams"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -345,10 +385,13 @@ list_journal_s3_exports(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_journal_s3_exports(Client, QueryMap, HeadersMap, []).
 
-list_journal_s3_exports(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_journal_s3_exports(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/journal-s3-exports"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -378,10 +421,13 @@ list_journal_s3_exports_for_ledger(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_journal_s3_exports_for_ledger(Client, Name, QueryMap, HeadersMap, []).
 
-list_journal_s3_exports_for_ledger(Client, Name, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_journal_s3_exports_for_ledger(Client, Name, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/ledgers/", aws_util:encode_uri(Name), "/journal-s3-exports"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -407,10 +453,13 @@ list_ledgers(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_ledgers(Client, QueryMap, HeadersMap, []).
 
-list_ledgers(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_ledgers(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/ledgers"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -432,10 +481,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -450,10 +502,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
 %% Streams resource.
 stream_journal_to_kinesis(Client, LedgerName, Input) ->
     stream_journal_to_kinesis(Client, LedgerName, Input, []).
-stream_journal_to_kinesis(Client, LedgerName, Input0, Options) ->
+stream_journal_to_kinesis(Client, LedgerName, Input0, Options0) ->
     Method = post,
     Path = ["/ledgers/", aws_util:encode_uri(LedgerName), "/journal-kinesis-streams"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -469,10 +525,14 @@ stream_journal_to_kinesis(Client, LedgerName, Input0, Options) ->
 %% for a resource, your request fails and returns an error.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
-tag_resource(Client, ResourceArn, Input0, Options) ->
+tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -487,10 +547,14 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 %% You can specify up to 50 tag keys to remove.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
-untag_resource(Client, ResourceArn, Input0, Options) ->
+untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -504,10 +568,14 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Updates properties on a ledger.
 update_ledger(Client, Name, Input) ->
     update_ledger(Client, Name, Input, []).
-update_ledger(Client, Name, Input0, Options) ->
+update_ledger(Client, Name, Input0, Options0) ->
     Method = patch,
     Path = ["/ledgers/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -539,19 +607,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -561,14 +630,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

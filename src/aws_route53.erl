@@ -180,10 +180,14 @@
 %% This operation changes the KSK status to `ACTIVE'.
 activate_key_signing_key(Client, HostedZoneId, Name, Input) ->
     activate_key_signing_key(Client, HostedZoneId, Name, Input, []).
-activate_key_signing_key(Client, HostedZoneId, Name, Input0, Options) ->
+activate_key_signing_key(Client, HostedZoneId, Name, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/keysigningkey/", aws_util:encode_uri(HostedZoneId), "/", aws_util:encode_uri(Name), "/activate"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -206,10 +210,14 @@ activate_key_signing_key(Client, HostedZoneId, Name, Input0, Options) ->
 %% the VPC must submit an `AssociateVPCWithHostedZone' request.
 associate_vpc_with_hosted_zone(Client, HostedZoneId, Input) ->
     associate_vpc_with_hosted_zone(Client, HostedZoneId, Input, []).
-associate_vpc_with_hosted_zone(Client, HostedZoneId, Input0, Options) ->
+associate_vpc_with_hosted_zone(Client, HostedZoneId, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/associatevpc"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -308,10 +316,14 @@ associate_vpc_with_hosted_zone(Client, HostedZoneId, Input0, Options) ->
 %% see Limits in the Amazon Route 53 Developer Guide.
 change_resource_record_sets(Client, HostedZoneId, Input) ->
     change_resource_record_sets(Client, HostedZoneId, Input, []).
-change_resource_record_sets(Client, HostedZoneId, Input0, Options) ->
+change_resource_record_sets(Client, HostedZoneId, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/rrset/"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -327,10 +339,14 @@ change_resource_record_sets(Client, HostedZoneId, Input0, Options) ->
 %% Allocation Tags in the AWS Billing and Cost Management User Guide.
 change_tags_for_resource(Client, ResourceId, ResourceType, Input) ->
     change_tags_for_resource(Client, ResourceId, ResourceType, Input, []).
-change_tags_for_resource(Client, ResourceId, ResourceType, Input0, Options) ->
+change_tags_for_resource(Client, ResourceId, ResourceType, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/tags/", aws_util:encode_uri(ResourceType), "/", aws_util:encode_uri(ResourceId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -376,10 +392,14 @@ change_tags_for_resource(Client, ResourceId, ResourceType, Input0, Options) ->
 %% </li> </ul>
 create_health_check(Client, Input) ->
     create_health_check(Client, Input, []).
-create_health_check(Client, Input0, Options) ->
+create_health_check(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/healthcheck"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -448,10 +468,14 @@ create_health_check(Client, Input0, Options) ->
 %% zone changes to `INSYNC'.
 create_hosted_zone(Client, Input) ->
     create_hosted_zone(Client, Input, []).
-create_hosted_zone(Client, Input0, Options) ->
+create_hosted_zone(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -482,10 +506,14 @@ create_hosted_zone(Client, Input0, Options) ->
 %% You can only have two KSKs per hosted zone.
 create_key_signing_key(Client, Input) ->
     create_key_signing_key(Client, Input, []).
-create_key_signing_key(Client, Input0, Options) ->
+create_key_signing_key(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/keysigningkey"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -616,10 +644,14 @@ create_key_signing_key(Client, Input0, Options) ->
 %% </dd> </dl>
 create_query_logging_config(Client, Input) ->
     create_query_logging_config(Client, Input, []).
-create_query_logging_config(Client, Input0, Options) ->
+create_query_logging_config(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/queryloggingconfig"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -697,10 +729,14 @@ create_query_logging_config(Client, Input0, Options) ->
 %% </li> </ul>
 create_reusable_delegation_set(Client, Input) ->
     create_reusable_delegation_set(Client, Input, []).
-create_reusable_delegation_set(Client, Input0, Options) ->
+create_reusable_delegation_set(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/delegationset"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -731,10 +767,14 @@ create_reusable_delegation_set(Client, Input0, Options) ->
 %% subdomain name (such as www.example.com).
 create_traffic_policy(Client, Input) ->
     create_traffic_policy(Client, Input, []).
-create_traffic_policy(Client, Input0, Options) ->
+create_traffic_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/trafficpolicy"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -770,10 +810,14 @@ create_traffic_policy(Client, Input0, Options) ->
 %% `CreateTrafficPolicyInstance' created.
 create_traffic_policy_instance(Client, Input) ->
     create_traffic_policy_instance(Client, Input, []).
-create_traffic_policy_instance(Client, Input0, Options) ->
+create_traffic_policy_instance(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/trafficpolicyinstance"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -811,10 +855,14 @@ create_traffic_policy_instance(Client, Input0, Options) ->
 %% traffic policy.
 create_traffic_policy_version(Client, Id, Input) ->
     create_traffic_policy_version(Client, Id, Input, []).
-create_traffic_policy_version(Client, Id, Input0, Options) ->
+create_traffic_policy_version(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/trafficpolicy/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -854,10 +902,14 @@ create_traffic_policy_version(Client, Id, Input0, Options) ->
 %% you must submit one authorization request for each VPC.
 create_vpc_association_authorization(Client, HostedZoneId, Input) ->
     create_vpc_association_authorization(Client, HostedZoneId, Input, []).
-create_vpc_association_authorization(Client, HostedZoneId, Input0, Options) ->
+create_vpc_association_authorization(Client, HostedZoneId, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/authorizevpcassociation"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -873,10 +925,14 @@ create_vpc_association_authorization(Client, HostedZoneId, Input0, Options) ->
 %% This operation changes the KSK status to `INACTIVE'.
 deactivate_key_signing_key(Client, HostedZoneId, Name, Input) ->
     deactivate_key_signing_key(Client, HostedZoneId, Name, Input, []).
-deactivate_key_signing_key(Client, HostedZoneId, Name, Input0, Options) ->
+deactivate_key_signing_key(Client, HostedZoneId, Name, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/keysigningkey/", aws_util:encode_uri(HostedZoneId), "/", aws_util:encode_uri(Name), "/deactivate"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -904,10 +960,14 @@ deactivate_key_signing_key(Client, HostedZoneId, Name, Input0, Options) ->
 %% from Route 53.
 delete_health_check(Client, HealthCheckId, Input) ->
     delete_health_check(Client, HealthCheckId, Input, []).
-delete_health_check(Client, HealthCheckId, Input0, Options) ->
+delete_health_check(Client, HealthCheckId, Input0, Options0) ->
     Method = delete,
     Path = ["/2013-04-01/healthcheck/", aws_util:encode_uri(HealthCheckId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -967,10 +1027,14 @@ delete_health_check(Client, HealthCheckId, Input0, Options) ->
 %% </li> </ul>
 delete_hosted_zone(Client, Id, Input) ->
     delete_hosted_zone(Client, Id, Input, []).
-delete_hosted_zone(Client, Id, Input0, Options) ->
+delete_hosted_zone(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -987,10 +1051,14 @@ delete_hosted_zone(Client, Id, Input0, Options) ->
 %% is enabled for DNSSEC signing.
 delete_key_signing_key(Client, HostedZoneId, Name, Input) ->
     delete_key_signing_key(Client, HostedZoneId, Name, Input, []).
-delete_key_signing_key(Client, HostedZoneId, Name, Input0, Options) ->
+delete_key_signing_key(Client, HostedZoneId, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/2013-04-01/keysigningkey/", aws_util:encode_uri(HostedZoneId), "/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1009,10 +1077,14 @@ delete_key_signing_key(Client, HostedZoneId, Name, Input0, Options) ->
 %% For more information about DNS query logs, see CreateQueryLoggingConfig.
 delete_query_logging_config(Client, Id, Input) ->
     delete_query_logging_config(Client, Id, Input, []).
-delete_query_logging_config(Client, Id, Input0, Options) ->
+delete_query_logging_config(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2013-04-01/queryloggingconfig/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1032,10 +1104,14 @@ delete_query_logging_config(Client, Id, Input0, Options) ->
 %% of the reusable delegation set that you want to delete.
 delete_reusable_delegation_set(Client, Id, Input) ->
     delete_reusable_delegation_set(Client, Id, Input, []).
-delete_reusable_delegation_set(Client, Id, Input0, Options) ->
+delete_reusable_delegation_set(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2013-04-01/delegationset/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1063,10 +1139,14 @@ delete_reusable_delegation_set(Client, Id, Input0, Options) ->
 %% </li> </ul>
 delete_traffic_policy(Client, Id, Version, Input) ->
     delete_traffic_policy(Client, Id, Version, Input, []).
-delete_traffic_policy(Client, Id, Version, Input0, Options) ->
+delete_traffic_policy(Client, Id, Version, Input0, Options0) ->
     Method = delete,
     Path = ["/2013-04-01/trafficpolicy/", aws_util:encode_uri(Id), "/", aws_util:encode_uri(Version), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1083,10 +1163,14 @@ delete_traffic_policy(Client, Id, Version, Input0, Options) ->
 %% records.
 delete_traffic_policy_instance(Client, Id, Input) ->
     delete_traffic_policy_instance(Client, Id, Input, []).
-delete_traffic_policy_instance(Client, Id, Input0, Options) ->
+delete_traffic_policy_instance(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2013-04-01/trafficpolicyinstance/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1111,10 +1195,14 @@ delete_traffic_policy_instance(Client, Id, Input0, Options) ->
 %% `DisassociateVPCFromHostedZone'.
 delete_vpc_association_authorization(Client, HostedZoneId, Input) ->
     delete_vpc_association_authorization(Client, HostedZoneId, Input, []).
-delete_vpc_association_authorization(Client, HostedZoneId, Input0, Options) ->
+delete_vpc_association_authorization(Client, HostedZoneId, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/deauthorizevpcassociation"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1130,10 +1218,14 @@ delete_vpc_association_authorization(Client, HostedZoneId, Input0, Options) ->
 %% active in the hosted zone.
 disable_hosted_zone_dns_sec(Client, HostedZoneId, Input) ->
     disable_hosted_zone_dns_sec(Client, HostedZoneId, Input, []).
-disable_hosted_zone_dns_sec(Client, HostedZoneId, Input0, Options) ->
+disable_hosted_zone_dns_sec(Client, HostedZoneId, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/disable-dnssec"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1172,10 +1264,14 @@ disable_hosted_zone_dns_sec(Client, HostedZoneId, Input0, Options) ->
 %% </li> </ul>
 disassociate_vpc_from_hosted_zone(Client, HostedZoneId, Input) ->
     disassociate_vpc_from_hosted_zone(Client, HostedZoneId, Input, []).
-disassociate_vpc_from_hosted_zone(Client, HostedZoneId, Input0, Options) ->
+disassociate_vpc_from_hosted_zone(Client, HostedZoneId, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/disassociatevpc"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1188,10 +1284,14 @@ disassociate_vpc_from_hosted_zone(Client, HostedZoneId, Input0, Options) ->
 %% @doc Enables DNSSEC signing in a specific hosted zone.
 enable_hosted_zone_dns_sec(Client, HostedZoneId, Input) ->
     enable_hosted_zone_dns_sec(Client, HostedZoneId, Input, []).
-enable_hosted_zone_dns_sec(Client, HostedZoneId, Input0, Options) ->
+enable_hosted_zone_dns_sec(Client, HostedZoneId, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/enable-dnssec"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1219,10 +1319,13 @@ get_account_limit(Client, Type, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_account_limit(Client, Type, QueryMap, HeadersMap, []).
 
-get_account_limit(Client, Type, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_account_limit(Client, Type, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/accountlimit/", aws_util:encode_uri(Type), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1250,10 +1353,13 @@ get_change(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_change(Client, Id, QueryMap, HeadersMap, []).
 
-get_change(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_change(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/change/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1276,10 +1382,13 @@ get_checker_ip_ranges(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_checker_ip_ranges(Client, QueryMap, HeadersMap, []).
 
-get_checker_ip_ranges(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_checker_ip_ranges(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/checkeripranges"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1297,10 +1406,13 @@ get_dns_sec(Client, HostedZoneId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_dns_sec(Client, HostedZoneId, QueryMap, HeadersMap, []).
 
-get_dns_sec(Client, HostedZoneId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_dns_sec(Client, HostedZoneId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/dnssec"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1338,10 +1450,13 @@ get_geo_location(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_geo_location(Client, QueryMap, HeadersMap, []).
 
-get_geo_location(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_geo_location(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/geolocation"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1364,10 +1479,13 @@ get_health_check(Client, HealthCheckId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_health_check(Client, HealthCheckId, QueryMap, HeadersMap, []).
 
-get_health_check(Client, HealthCheckId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_health_check(Client, HealthCheckId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/healthcheck/", aws_util:encode_uri(HealthCheckId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1385,10 +1503,13 @@ get_health_check_count(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_health_check_count(Client, QueryMap, HeadersMap, []).
 
-get_health_check_count(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_health_check_count(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/healthcheckcount"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1405,10 +1526,13 @@ get_health_check_last_failure_reason(Client, HealthCheckId, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_health_check_last_failure_reason(Client, HealthCheckId, QueryMap, HeadersMap, []).
 
-get_health_check_last_failure_reason(Client, HealthCheckId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_health_check_last_failure_reason(Client, HealthCheckId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/healthcheck/", aws_util:encode_uri(HealthCheckId), "/lastfailurereason"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1425,10 +1549,13 @@ get_health_check_status(Client, HealthCheckId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_health_check_status(Client, HealthCheckId, QueryMap, HeadersMap, []).
 
-get_health_check_status(Client, HealthCheckId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_health_check_status(Client, HealthCheckId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/healthcheck/", aws_util:encode_uri(HealthCheckId), "/status"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1446,10 +1573,13 @@ get_hosted_zone(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_hosted_zone(Client, Id, QueryMap, HeadersMap, []).
 
-get_hosted_zone(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_hosted_zone(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1467,10 +1597,13 @@ get_hosted_zone_count(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_hosted_zone_count(Client, QueryMap, HeadersMap, []).
 
-get_hosted_zone_count(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_hosted_zone_count(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/hostedzonecount"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1491,10 +1624,13 @@ get_hosted_zone_limit(Client, HostedZoneId, Type, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_hosted_zone_limit(Client, HostedZoneId, Type, QueryMap, HeadersMap, []).
 
-get_hosted_zone_limit(Client, HostedZoneId, Type, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_hosted_zone_limit(Client, HostedZoneId, Type, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/hostedzonelimit/", aws_util:encode_uri(HostedZoneId), "/", aws_util:encode_uri(Type), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1515,10 +1651,13 @@ get_query_logging_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_query_logging_config(Client, Id, QueryMap, HeadersMap, []).
 
-get_query_logging_config(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_query_logging_config(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/queryloggingconfig/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1536,10 +1675,13 @@ get_reusable_delegation_set(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_reusable_delegation_set(Client, Id, QueryMap, HeadersMap, []).
 
-get_reusable_delegation_set(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_reusable_delegation_set(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/delegationset/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1560,10 +1702,13 @@ get_reusable_delegation_set_limit(Client, DelegationSetId, Type, QueryMap, Heade
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_reusable_delegation_set_limit(Client, DelegationSetId, Type, QueryMap, HeadersMap, []).
 
-get_reusable_delegation_set_limit(Client, DelegationSetId, Type, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_reusable_delegation_set_limit(Client, DelegationSetId, Type, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/reusabledelegationsetlimit/", aws_util:encode_uri(DelegationSetId), "/", aws_util:encode_uri(Type), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1583,10 +1728,13 @@ get_traffic_policy(Client, Id, Version, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_traffic_policy(Client, Id, Version, QueryMap, HeadersMap, []).
 
-get_traffic_policy(Client, Id, Version, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_traffic_policy(Client, Id, Version, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/trafficpolicy/", aws_util:encode_uri(Id), "/", aws_util:encode_uri(Version), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1612,10 +1760,13 @@ get_traffic_policy_instance(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_traffic_policy_instance(Client, Id, QueryMap, HeadersMap, []).
 
-get_traffic_policy_instance(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_traffic_policy_instance(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/trafficpolicyinstance/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1633,10 +1784,13 @@ get_traffic_policy_instance_count(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_traffic_policy_instance_count(Client, QueryMap, HeadersMap, []).
 
-get_traffic_policy_instance_count(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_traffic_policy_instance_count(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/trafficpolicyinstancecount"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1663,10 +1817,13 @@ list_geo_locations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_geo_locations(Client, QueryMap, HeadersMap, []).
 
-list_geo_locations(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_geo_locations(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/geolocations"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1691,10 +1848,13 @@ list_health_checks(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_health_checks(Client, QueryMap, HeadersMap, []).
 
-list_health_checks(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_health_checks(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/healthcheck"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1723,10 +1883,13 @@ list_hosted_zones(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_hosted_zones(Client, QueryMap, HeadersMap, []).
 
-list_hosted_zones(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_hosted_zones(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/hostedzone"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1803,10 +1966,13 @@ list_hosted_zones_by_name(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_hosted_zones_by_name(Client, QueryMap, HeadersMap, []).
 
-list_hosted_zones_by_name(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_hosted_zones_by_name(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/hostedzonesbyname"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1845,10 +2011,13 @@ list_hosted_zones_by_vpc(Client, VPCId, VPCRegion, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_hosted_zones_by_vpc(Client, VPCId, VPCRegion, QueryMap, HeadersMap, []).
 
-list_hosted_zones_by_vpc(Client, VPCId, VPCRegion, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_hosted_zones_by_vpc(Client, VPCId, VPCRegion, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/hostedzonesbyvpc"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1878,10 +2047,13 @@ list_query_logging_configs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_query_logging_configs(Client, QueryMap, HeadersMap, []).
 
-list_query_logging_configs(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_query_logging_configs(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/queryloggingconfig"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1965,10 +2137,13 @@ list_resource_record_sets(Client, HostedZoneId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_resource_record_sets(Client, HostedZoneId, QueryMap, HeadersMap, []).
 
-list_resource_record_sets(Client, HostedZoneId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_resource_record_sets(Client, HostedZoneId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/rrset"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1993,10 +2168,13 @@ list_reusable_delegation_sets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_reusable_delegation_sets(Client, QueryMap, HeadersMap, []).
 
-list_reusable_delegation_sets(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_reusable_delegation_sets(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/delegationset"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2021,10 +2199,13 @@ list_tags_for_resource(Client, ResourceId, ResourceType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceId, ResourceType, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceId, ResourceType, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceId, ResourceType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/tags/", aws_util:encode_uri(ResourceType), "/", aws_util:encode_uri(ResourceId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2038,10 +2219,14 @@ list_tags_for_resource(Client, ResourceId, ResourceType, QueryMap, HeadersMap, O
 %% Allocation Tags in the AWS Billing and Cost Management User Guide.
 list_tags_for_resources(Client, ResourceType, Input) ->
     list_tags_for_resources(Client, ResourceType, Input, []).
-list_tags_for_resources(Client, ResourceType, Input0, Options) ->
+list_tags_for_resources(Client, ResourceType, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/tags/", aws_util:encode_uri(ResourceType), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2066,10 +2251,13 @@ list_traffic_policies(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_traffic_policies(Client, QueryMap, HeadersMap, []).
 
-list_traffic_policies(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_traffic_policies(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/trafficpolicies"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2101,10 +2289,13 @@ list_traffic_policy_instances(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_traffic_policy_instances(Client, QueryMap, HeadersMap, []).
 
-list_traffic_policy_instances(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_traffic_policy_instances(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/trafficpolicyinstances"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2139,10 +2330,13 @@ list_traffic_policy_instances_by_hosted_zone(Client, HostedZoneId, QueryMap, Hea
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_traffic_policy_instances_by_hosted_zone(Client, HostedZoneId, QueryMap, HeadersMap, []).
 
-list_traffic_policy_instances_by_hosted_zone(Client, HostedZoneId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_traffic_policy_instances_by_hosted_zone(Client, HostedZoneId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/trafficpolicyinstances/hostedzone"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2177,10 +2371,13 @@ list_traffic_policy_instances_by_policy(Client, TrafficPolicyId, TrafficPolicyVe
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_traffic_policy_instances_by_policy(Client, TrafficPolicyId, TrafficPolicyVersion, QueryMap, HeadersMap, []).
 
-list_traffic_policy_instances_by_policy(Client, TrafficPolicyId, TrafficPolicyVersion, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_traffic_policy_instances_by_policy(Client, TrafficPolicyId, TrafficPolicyVersion, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/trafficpolicyinstances/trafficpolicy"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2209,10 +2406,13 @@ list_traffic_policy_versions(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_traffic_policy_versions(Client, Id, QueryMap, HeadersMap, []).
 
-list_traffic_policy_versions(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_traffic_policy_versions(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/trafficpolicies/", aws_util:encode_uri(Id), "/versions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2239,10 +2439,13 @@ list_vpc_association_authorizations(Client, HostedZoneId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_vpc_association_authorizations(Client, HostedZoneId, QueryMap, HeadersMap, []).
 
-list_vpc_association_authorizations(Client, HostedZoneId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_vpc_association_authorizations(Client, HostedZoneId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/authorizevpcassociation"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2268,10 +2471,13 @@ test_dns_answer(Client, HostedZoneId, RecordName, RecordType, QueryMap, HeadersM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     test_dns_answer(Client, HostedZoneId, RecordName, RecordType, QueryMap, HeadersMap, []).
 
-test_dns_answer(Client, HostedZoneId, RecordName, RecordType, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+test_dns_answer(Client, HostedZoneId, RecordName, RecordType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/testdnsanswer"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2296,10 +2502,14 @@ test_dns_answer(Client, HostedZoneId, RecordName, RecordType, QueryMap, HeadersM
 %% and Deleting Health Checks in the Amazon Route 53 Developer Guide.
 update_health_check(Client, HealthCheckId, Input) ->
     update_health_check(Client, HealthCheckId, Input, []).
-update_health_check(Client, HealthCheckId, Input0, Options) ->
+update_health_check(Client, HealthCheckId, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/healthcheck/", aws_util:encode_uri(HealthCheckId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2312,10 +2522,14 @@ update_health_check(Client, HealthCheckId, Input0, Options) ->
 %% @doc Updates the comment for a specified hosted zone.
 update_hosted_zone_comment(Client, Id, Input) ->
     update_hosted_zone_comment(Client, Id, Input, []).
-update_hosted_zone_comment(Client, Id, Input0, Options) ->
+update_hosted_zone_comment(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2328,10 +2542,14 @@ update_hosted_zone_comment(Client, Id, Input0, Options) ->
 %% @doc Updates the comment for a specified traffic policy version.
 update_traffic_policy_comment(Client, Id, Version, Input) ->
     update_traffic_policy_comment(Client, Id, Version, Input, []).
-update_traffic_policy_comment(Client, Id, Version, Input0, Options) ->
+update_traffic_policy_comment(Client, Id, Version, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/trafficpolicy/", aws_util:encode_uri(Id), "/", aws_util:encode_uri(Version), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2364,10 +2582,14 @@ update_traffic_policy_comment(Client, Id, Version, Input0, Options) ->
 %% </li> </ol>
 update_traffic_policy_instance(Client, Id, Input) ->
     update_traffic_policy_instance(Client, Id, Input, []).
-update_traffic_policy_instance(Client, Id, Input0, Options) ->
+update_traffic_policy_instance(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/trafficpolicyinstance/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2400,19 +2622,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -2422,14 +2645,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = aws_util:decode_xml(Body),
+            Result = case DecodeBody of
+                       true -> aws_util:decode_xml(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = aws_util:decode_xml(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

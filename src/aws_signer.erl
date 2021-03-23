@@ -73,10 +73,14 @@
 %% @doc Adds cross-account permissions to a signing profile.
 add_profile_permission(Client, ProfileName, Input) ->
     add_profile_permission(Client, ProfileName, Input, []).
-add_profile_permission(Client, ProfileName, Input0, Options) ->
+add_profile_permission(Client, ProfileName, Input0, Options0) ->
     Method = post,
     Path = ["/signing-profiles/", aws_util:encode_uri(ProfileName), "/permissions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -93,10 +97,14 @@ add_profile_permission(Client, ProfileName, Input0, Options) ->
 %% years after cancelation.
 cancel_signing_profile(Client, ProfileName, Input) ->
     cancel_signing_profile(Client, ProfileName, Input, []).
-cancel_signing_profile(Client, ProfileName, Input0, Options) ->
+cancel_signing_profile(Client, ProfileName, Input0, Options0) ->
     Method = delete,
     Path = ["/signing-profiles/", aws_util:encode_uri(ProfileName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -118,10 +126,13 @@ describe_signing_job(Client, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_signing_job(Client, JobId, QueryMap, HeadersMap, []).
 
-describe_signing_job(Client, JobId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_signing_job(Client, JobId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/signing-jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -138,10 +149,13 @@ get_signing_platform(Client, PlatformId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_signing_platform(Client, PlatformId, QueryMap, HeadersMap, []).
 
-get_signing_platform(Client, PlatformId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_signing_platform(Client, PlatformId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/signing-platforms/", aws_util:encode_uri(PlatformId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -158,10 +172,13 @@ get_signing_profile(Client, ProfileName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_signing_profile(Client, ProfileName, QueryMap, HeadersMap, []).
 
-get_signing_profile(Client, ProfileName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_signing_profile(Client, ProfileName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/signing-profiles/", aws_util:encode_uri(ProfileName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -183,10 +200,13 @@ list_profile_permissions(Client, ProfileName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_profile_permissions(Client, ProfileName, QueryMap, HeadersMap, []).
 
-list_profile_permissions(Client, ProfileName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_profile_permissions(Client, ProfileName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/signing-profiles/", aws_util:encode_uri(ProfileName), "/permissions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -215,10 +235,13 @@ list_signing_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_signing_jobs(Client, QueryMap, HeadersMap, []).
 
-list_signing_jobs(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_signing_jobs(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/signing-jobs"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -255,10 +278,13 @@ list_signing_platforms(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_signing_platforms(Client, QueryMap, HeadersMap, []).
 
-list_signing_platforms(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_signing_platforms(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/signing-platforms"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -291,10 +317,13 @@ list_signing_profiles(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_signing_profiles(Client, QueryMap, HeadersMap, []).
 
-list_signing_profiles(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_signing_profiles(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/signing-profiles"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -320,10 +349,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -338,10 +370,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
 %% [http://docs.aws.amazon.com/signer/latest/developerguide/gs-profile.html]
 put_signing_profile(Client, ProfileName, Input) ->
     put_signing_profile(Client, ProfileName, Input, []).
-put_signing_profile(Client, ProfileName, Input0, Options) ->
+put_signing_profile(Client, ProfileName, Input0, Options0) ->
     Method = put,
     Path = ["/signing-profiles/", aws_util:encode_uri(ProfileName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -354,10 +390,14 @@ put_signing_profile(Client, ProfileName, Input0, Options) ->
 %% @doc Removes cross-account permissions from a signing profile.
 remove_profile_permission(Client, ProfileName, StatementId, Input) ->
     remove_profile_permission(Client, ProfileName, StatementId, Input, []).
-remove_profile_permission(Client, ProfileName, StatementId, Input0, Options) ->
+remove_profile_permission(Client, ProfileName, StatementId, Input0, Options0) ->
     Method = delete,
     Path = ["/signing-profiles/", aws_util:encode_uri(ProfileName), "/permissions/", aws_util:encode_uri(StatementId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -373,10 +413,14 @@ remove_profile_permission(Client, ProfileName, StatementId, Input0, Options) ->
 %% This indicates that the signature is no longer valid.
 revoke_signature(Client, JobId, Input) ->
     revoke_signature(Client, JobId, Input, []).
-revoke_signature(Client, JobId, Input0, Options) ->
+revoke_signature(Client, JobId, Input0, Options0) ->
     Method = put,
     Path = ["/signing-jobs/", aws_util:encode_uri(JobId), "/revoke"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -392,10 +436,14 @@ revoke_signature(Client, JobId, Input0, Options) ->
 %% an effective start date are no longer valid.
 revoke_signing_profile(Client, ProfileName, Input) ->
     revoke_signing_profile(Client, ProfileName, Input, []).
-revoke_signing_profile(Client, ProfileName, Input0, Options) ->
+revoke_signing_profile(Client, ProfileName, Input0, Options0) ->
     Method = put,
     Path = ["/signing-profiles/", aws_util:encode_uri(ProfileName), "/revoke"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -431,10 +479,14 @@ revoke_signing_profile(Client, ProfileName, Input0, Options) ->
 %% [http://docs.aws.amazon.com/acm/latest/userguide/]
 start_signing_job(Client, Input) ->
     start_signing_job(Client, Input, []).
-start_signing_job(Client, Input0, Options) ->
+start_signing_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/signing-jobs"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -452,10 +504,14 @@ start_signing_job(Client, Input0, Options) ->
 %% tag, use a key-value pair.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
-tag_resource(Client, ResourceArn, Input0, Options) ->
+tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -470,10 +526,14 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 %% To remove the tags, specify a list of tag keys.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
-untag_resource(Client, ResourceArn, Input0, Options) ->
+untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -506,19 +566,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -528,14 +589,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

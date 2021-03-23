@@ -171,10 +171,14 @@
 %% the master account to view findings generated in the member account.
 accept_invitation(Client, Input) ->
     accept_invitation(Client, Input, []).
-accept_invitation(Client, Input0, Options) ->
+accept_invitation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/master"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -191,10 +195,14 @@ accept_invitation(Client, Input0, Options) ->
 %% Hub User Guide.
 batch_disable_standards(Client, Input) ->
     batch_disable_standards(Client, Input, []).
-batch_disable_standards(Client, Input0, Options) ->
+batch_disable_standards(Client, Input0, Options0) ->
     Method = post,
     Path = ["/standards/deregister"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -213,10 +221,14 @@ batch_disable_standards(Client, Input0, Options) ->
 %% Security Hub User Guide.
 batch_enable_standards(Client, Input) ->
     batch_enable_standards(Client, Input, []).
-batch_enable_standards(Client, Input0, Options) ->
+batch_enable_standards(Client, Input0, Options0) ->
     Method = post,
     Path = ["/standards/register"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -265,10 +277,14 @@ batch_enable_standards(Client, Input0, Options) ->
 %% </li> </ul>
 batch_import_findings(Client, Input) ->
     batch_import_findings(Client, Input, []).
-batch_import_findings(Client, Input0, Options) ->
+batch_import_findings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/findings/import"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -315,10 +331,14 @@ batch_import_findings(Client, Input0, Options) ->
 %% access to BatchUpdateFindings in the AWS Security Hub User Guide.
 batch_update_findings(Client, Input) ->
     batch_update_findings(Client, Input, []).
-batch_update_findings(Client, Input0, Options) ->
+batch_update_findings(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/findings/batchupdate"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -334,10 +354,14 @@ batch_update_findings(Client, Input0, Options) ->
 %% trigger target actions in Amazon CloudWatch Events.
 create_action_target(Client, Input) ->
     create_action_target(Client, Input, []).
-create_action_target(Client, Input0, Options) ->
+create_action_target(Client, Input0, Options0) ->
     Method = post,
     Path = ["/actionTargets"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -355,10 +379,14 @@ create_action_target(Client, Input0, Options) ->
 %% To group the related findings in the insight, use the `GroupByAttribute'.
 create_insight(Client, Input) ->
     create_insight(Client, Input, []).
-create_insight(Client, Input0, Options) ->
+create_insight(Client, Input0, Options0) ->
     Method = post,
     Path = ["/insights"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -410,10 +438,14 @@ create_insight(Client, Input0, Options) ->
 %% operation.
 create_members(Client, Input) ->
     create_members(Client, Input, []).
-create_members(Client, Input0, Options) ->
+create_members(Client, Input0, Options0) ->
     Method = post,
     Path = ["/members"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -429,10 +461,14 @@ create_members(Client, Input0, Options) ->
 %% organization. Organization accounts do not receive invitations.
 decline_invitations(Client, Input) ->
     decline_invitations(Client, Input, []).
-decline_invitations(Client, Input0, Options) ->
+decline_invitations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/invitations/decline"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -449,10 +485,14 @@ decline_invitations(Client, Input0, Options) ->
 %% action.
 delete_action_target(Client, ActionTargetArn, Input) ->
     delete_action_target(Client, ActionTargetArn, Input, []).
-delete_action_target(Client, ActionTargetArn, Input0, Options) ->
+delete_action_target(Client, ActionTargetArn, Input0, Options0) ->
     Method = delete,
     Path = ["/actionTargets/", aws_util:encode_multi_segment_uri(ActionTargetArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -465,10 +505,14 @@ delete_action_target(Client, ActionTargetArn, Input0, Options) ->
 %% @doc Deletes the insight specified by the `InsightArn'.
 delete_insight(Client, InsightArn, Input) ->
     delete_insight(Client, InsightArn, Input, []).
-delete_insight(Client, InsightArn, Input0, Options) ->
+delete_insight(Client, InsightArn, Input0, Options0) ->
     Method = delete,
     Path = ["/insights/", aws_util:encode_multi_segment_uri(InsightArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -485,10 +529,14 @@ delete_insight(Client, InsightArn, Input0, Options) ->
 %% organization. Organization accounts do not receive invitations.
 delete_invitations(Client, Input) ->
     delete_invitations(Client, Input, []).
-delete_invitations(Client, Input0, Options) ->
+delete_invitations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/invitations/delete"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -504,10 +552,14 @@ delete_invitations(Client, Input0, Options) ->
 %% well as member accounts that were invited manually.
 delete_members(Client, Input) ->
     delete_members(Client, Input, []).
-delete_members(Client, Input0, Options) ->
+delete_members(Client, Input0, Options0) ->
     Method = post,
     Path = ["/members/delete"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -521,10 +573,14 @@ delete_members(Client, Input0, Options) ->
 %% account.
 describe_action_targets(Client, Input) ->
     describe_action_targets(Client, Input, []).
-describe_action_targets(Client, Input0, Options) ->
+describe_action_targets(Client, Input0, Options0) ->
     Method = post,
     Path = ["/actionTargets/get"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -544,10 +600,13 @@ describe_hub(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_hub(Client, QueryMap, HeadersMap, []).
 
-describe_hub(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_hub(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -571,10 +630,13 @@ describe_organization_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_organization_configuration(Client, QueryMap, HeadersMap, []).
 
-describe_organization_configuration(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_organization_configuration(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/organization/configuration"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -597,10 +659,13 @@ describe_products(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_products(Client, QueryMap, HeadersMap, []).
 
-describe_products(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_products(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/products"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -626,10 +691,13 @@ describe_standards(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_standards(Client, QueryMap, HeadersMap, []).
 
-describe_standards(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_standards(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/standards"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -654,10 +722,13 @@ describe_standards_controls(Client, StandardsSubscriptionArn, QueryMap, HeadersM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_standards_controls(Client, StandardsSubscriptionArn, QueryMap, HeadersMap, []).
 
-describe_standards_controls(Client, StandardsSubscriptionArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_standards_controls(Client, StandardsSubscriptionArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/standards/controls/", aws_util:encode_multi_segment_uri(StandardsSubscriptionArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -676,10 +747,14 @@ describe_standards_controls(Client, StandardsSubscriptionArn, QueryMap, HeadersM
 %% longer sent to Security Hub.
 disable_import_findings_for_product(Client, ProductSubscriptionArn, Input) ->
     disable_import_findings_for_product(Client, ProductSubscriptionArn, Input, []).
-disable_import_findings_for_product(Client, ProductSubscriptionArn, Input0, Options) ->
+disable_import_findings_for_product(Client, ProductSubscriptionArn, Input0, Options0) ->
     Method = delete,
     Path = ["/productSubscriptions/", aws_util:encode_multi_segment_uri(ProductSubscriptionArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -694,10 +769,14 @@ disable_import_findings_for_product(Client, ProductSubscriptionArn, Input0, Opti
 %% Can only be called by the organization management account.
 disable_organization_admin_account(Client, Input) ->
     disable_organization_admin_account(Client, Input, []).
-disable_organization_admin_account(Client, Input0, Options) ->
+disable_organization_admin_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/organization/admin/disable"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -724,10 +803,14 @@ disable_organization_admin_account(Client, Input0, Options) ->
 %% you disable Security Hub.
 disable_security_hub(Client, Input) ->
     disable_security_hub(Client, Input, []).
-disable_security_hub(Client, Input0, Options) ->
+disable_security_hub(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -745,10 +828,14 @@ disable_security_hub(Client, Input0, Options) ->
 %% designated Security Hub administrator) can disassociate a member account.
 disassociate_from_master_account(Client, Input) ->
     disassociate_from_master_account(Client, Input, []).
-disassociate_from_master_account(Client, Input0, Options) ->
+disassociate_from_master_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/master/disassociate"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -765,10 +852,14 @@ disassociate_from_master_account(Client, Input0, Options) ->
 %% accounts that were invited manually.
 disassociate_members(Client, Input) ->
     disassociate_members(Client, Input, []).
-disassociate_members(Client, Input0, Options) ->
+disassociate_members(Client, Input0, Options0) ->
     Method = post,
     Path = ["/members/disassociate"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -786,10 +877,14 @@ disassociate_members(Client, Input0, Options) ->
 %% permission for the product to send findings to Security Hub is applied.
 enable_import_findings_for_product(Client, Input) ->
     enable_import_findings_for_product(Client, Input, []).
-enable_import_findings_for_product(Client, Input0, Options) ->
+enable_import_findings_for_product(Client, Input0, Options0) ->
     Method = post,
     Path = ["/productSubscriptions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -805,10 +900,14 @@ enable_import_findings_for_product(Client, Input0, Options) ->
 %% Can only be called by the organization management account.
 enable_organization_admin_account(Client, Input) ->
     enable_organization_admin_account(Client, Input, []).
-enable_organization_admin_account(Client, Input0, Options) ->
+enable_organization_admin_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/organization/admin/enable"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -846,10 +945,14 @@ enable_organization_admin_account(Client, Input0, Options) ->
 %% User Guide.
 enable_security_hub(Client, Input) ->
     enable_security_hub(Client, Input, []).
-enable_security_hub(Client, Input0, Options) ->
+enable_security_hub(Client, Input0, Options0) ->
     Method = post,
     Path = ["/accounts"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -862,10 +965,14 @@ enable_security_hub(Client, Input0, Options) ->
 %% @doc Returns a list of the standards that are currently enabled.
 get_enabled_standards(Client, Input) ->
     get_enabled_standards(Client, Input, []).
-get_enabled_standards(Client, Input0, Options) ->
+get_enabled_standards(Client, Input0, Options0) ->
     Method = post,
     Path = ["/standards/get"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -878,10 +985,14 @@ get_enabled_standards(Client, Input0, Options) ->
 %% @doc Returns a list of findings that match the specified criteria.
 get_findings(Client, Input) ->
     get_findings(Client, Input, []).
-get_findings(Client, Input0, Options) ->
+get_findings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/findings"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -901,10 +1012,13 @@ get_insight_results(Client, InsightArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_insight_results(Client, InsightArn, QueryMap, HeadersMap, []).
 
-get_insight_results(Client, InsightArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_insight_results(Client, InsightArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/insights/results/", aws_util:encode_multi_segment_uri(InsightArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -915,10 +1029,14 @@ get_insight_results(Client, InsightArn, QueryMap, HeadersMap, Options)
 %% @doc Lists and describes insights for the specified insight ARNs.
 get_insights(Client, Input) ->
     get_insights(Client, Input, []).
-get_insights(Client, Input0, Options) ->
+get_insights(Client, Input0, Options0) ->
     Method = post,
     Path = ["/insights/get"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -939,10 +1057,13 @@ get_invitations_count(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_invitations_count(Client, QueryMap, HeadersMap, []).
 
-get_invitations_count(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_invitations_count(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/invitations/count"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -963,10 +1084,13 @@ get_master_account(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_master_account(Client, QueryMap, HeadersMap, []).
 
-get_master_account(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_master_account(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/master"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -985,10 +1109,14 @@ get_master_account(Client, QueryMap, HeadersMap, Options)
 %% accounts that were invited manually.
 get_members(Client, Input) ->
     get_members(Client, Input, []).
-get_members(Client, Input0, Options) ->
+get_members(Client, Input0, Options0) ->
     Method = post,
     Path = ["/members/get"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1012,10 +1140,14 @@ get_members(Client, Input0, Options) ->
 %% generated from the member account.
 invite_members(Client, Input) ->
     invite_members(Client, Input, []).
-invite_members(Client, Input0, Options) ->
+invite_members(Client, Input0, Options0) ->
     Method = post,
     Path = ["/members/invite"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1035,10 +1167,13 @@ list_enabled_products_for_import(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_enabled_products_for_import(Client, QueryMap, HeadersMap, []).
 
-list_enabled_products_for_import(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_enabled_products_for_import(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/productSubscriptions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1064,10 +1199,13 @@ list_invitations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_invitations(Client, QueryMap, HeadersMap, []).
 
-list_invitations(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_invitations(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/invitations"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1093,10 +1231,13 @@ list_members(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_members(Client, QueryMap, HeadersMap, []).
 
-list_members(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_members(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/members"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1121,10 +1262,13 @@ list_organization_admin_accounts(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_organization_admin_accounts(Client, QueryMap, HeadersMap, []).
 
-list_organization_admin_accounts(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_organization_admin_accounts(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/organization/admin"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1146,10 +1290,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1160,10 +1307,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
 %% @doc Adds one or more tags to a resource.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
-tag_resource(Client, ResourceArn, Input0, Options) ->
+tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1176,10 +1327,14 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Removes one or more tags from a resource.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
-untag_resource(Client, ResourceArn, Input0, Options) ->
+untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1194,10 +1349,14 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 %% Security Hub.
 update_action_target(Client, ActionTargetArn, Input) ->
     update_action_target(Client, ActionTargetArn, Input, []).
-update_action_target(Client, ActionTargetArn, Input0, Options) ->
+update_action_target(Client, ActionTargetArn, Input0, Options0) ->
     Method = patch,
     Path = ["/actionTargets/", aws_util:encode_multi_segment_uri(ActionTargetArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1216,10 +1375,14 @@ update_action_target(Client, ActionTargetArn, Input0, Options) ->
 %% view the finding also sees the update to the finding.
 update_findings(Client, Input) ->
     update_findings(Client, Input, []).
-update_findings(Client, Input0, Options) ->
+update_findings(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/findings"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1233,10 +1396,14 @@ update_findings(Client, Input0, Options) ->
 %% ARN.
 update_insight(Client, InsightArn, Input) ->
     update_insight(Client, InsightArn, Input, []).
-update_insight(Client, InsightArn, Input0, Options) ->
+update_insight(Client, InsightArn, Input0, Options0) ->
     Method = patch,
     Path = ["/insights/", aws_util:encode_multi_segment_uri(InsightArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1251,10 +1418,14 @@ update_insight(Client, InsightArn, Input0, Options) ->
 %% Can only be called from a Security Hub administrator account.
 update_organization_configuration(Client, Input) ->
     update_organization_configuration(Client, Input, []).
-update_organization_configuration(Client, Input0, Options) ->
+update_organization_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/organization/configuration"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1267,10 +1438,14 @@ update_organization_configuration(Client, Input0, Options) ->
 %% @doc Updates configuration options for Security Hub.
 update_security_hub_configuration(Client, Input) ->
     update_security_hub_configuration(Client, Input, []).
-update_security_hub_configuration(Client, Input0, Options) ->
+update_security_hub_configuration(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/accounts"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1284,10 +1459,14 @@ update_security_hub_configuration(Client, Input0, Options) ->
 %% enabled or disabled.
 update_standards_control(Client, StandardsControlArn, Input) ->
     update_standards_control(Client, StandardsControlArn, Input, []).
-update_standards_control(Client, StandardsControlArn, Input0, Options) ->
+update_standards_control(Client, StandardsControlArn, Input0, Options0) ->
     Method = patch,
     Path = ["/standards/control/", aws_util:encode_multi_segment_uri(StandardsControlArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1319,19 +1498,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -1341,14 +1521,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

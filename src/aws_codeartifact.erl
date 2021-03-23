@@ -281,10 +281,14 @@
 %% connection.
 associate_external_connection(Client, Input) ->
     associate_external_connection(Client, Input, []).
-associate_external_connection(Client, Input0, Options) ->
+associate_external_connection(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/repository/external-connection"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -305,10 +309,14 @@ associate_external_connection(Client, Input0, Options) ->
 %% both.
 copy_package_versions(Client, Input) ->
     copy_package_versions(Client, Input, []).
-copy_package_versions(Client, Input0, Options) ->
+copy_package_versions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/package/versions/copy"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -338,10 +346,14 @@ copy_package_versions(Client, Input0, Options) ->
 %% domain to test changes to the production domain configuration.
 create_domain(Client, Input) ->
     create_domain(Client, Input, []).
-create_domain(Client, Input0, Options) ->
+create_domain(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/domain"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -355,10 +367,14 @@ create_domain(Client, Input0, Options) ->
 %% @doc Creates a repository.
 create_repository(Client, Input) ->
     create_repository(Client, Input, []).
-create_repository(Client, Input0, Options) ->
+create_repository(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/repository"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -377,10 +393,14 @@ create_repository(Client, Input0, Options) ->
 %% delete a domain with repositories, first delete its repositories.
 delete_domain(Client, Input) ->
     delete_domain(Client, Input, []).
-delete_domain(Client, Input0, Options) ->
+delete_domain(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/domain"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -395,10 +415,14 @@ delete_domain(Client, Input0, Options) ->
 %% @doc Deletes the resource policy set on a domain.
 delete_domain_permissions_policy(Client, Input) ->
     delete_domain_permissions_policy(Client, Input, []).
-delete_domain_permissions_policy(Client, Input0, Options) ->
+delete_domain_permissions_policy(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/domain/permissions/policy"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -421,10 +445,14 @@ delete_domain_permissions_policy(Client, Input0, Options) ->
 %% UpdatePackageVersionsStatus '.
 delete_package_versions(Client, Input) ->
     delete_package_versions(Client, Input, []).
-delete_package_versions(Client, Input0, Options) ->
+delete_package_versions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/package/versions/delete"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -443,10 +471,14 @@ delete_package_versions(Client, Input0, Options) ->
 %% @doc Deletes a repository.
 delete_repository(Client, Input) ->
     delete_repository(Client, Input, []).
-delete_repository(Client, Input0, Options) ->
+delete_repository(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/repository"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -470,10 +502,14 @@ delete_repository(Client, Input0, Options) ->
 %% repository actions granted by the deleted policy.
 delete_repository_permissions_policy(Client, Input) ->
     delete_repository_permissions_policy(Client, Input, []).
-delete_repository_permissions_policy(Client, Input0, Options) ->
+delete_repository_permissions_policy(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/repository/permissions/policies"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -497,10 +533,13 @@ describe_domain(Client, Domain, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_domain(Client, Domain, QueryMap, HeadersMap, []).
 
-describe_domain(Client, Domain, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_domain(Client, Domain, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/domain"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -523,10 +562,13 @@ describe_package_version(Client, Domain, Format, Package, PackageVersion, Reposi
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_package_version(Client, Domain, Format, Package, PackageVersion, Repository, QueryMap, HeadersMap, []).
 
-describe_package_version(Client, Domain, Format, Package, PackageVersion, Repository, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_package_version(Client, Domain, Format, Package, PackageVersion, Repository, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/package/version"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -554,10 +596,13 @@ describe_repository(Client, Domain, Repository, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_repository(Client, Domain, Repository, QueryMap, HeadersMap, []).
 
-describe_repository(Client, Domain, Repository, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_repository(Client, Domain, Repository, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/repository"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -574,10 +619,14 @@ describe_repository(Client, Domain, Repository, QueryMap, HeadersMap, Options)
 %% @doc Removes an existing external connection from a repository.
 disassociate_external_connection(Client, Input) ->
     disassociate_external_connection(Client, Input, []).
-disassociate_external_connection(Client, Input0, Options) ->
+disassociate_external_connection(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/repository/external-connection"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -604,10 +653,14 @@ disassociate_external_connection(Client, Input0, Options) ->
 %% `DescribePackageVersion' ..
 dispose_package_versions(Client, Input) ->
     dispose_package_versions(Client, Input, []).
-dispose_package_versions(Client, Input0, Options) ->
+dispose_package_versions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/package/versions/dispose"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -647,10 +700,14 @@ dispose_package_versions(Client, Input0, Options) ->
 %% See Using IAM Roles for more information on controlling session duration.
 get_authorization_token(Client, Input) ->
     get_authorization_token(Client, Input, []).
-get_authorization_token(Client, Input0, Options) ->
+get_authorization_token(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/authorization-token"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -676,10 +733,13 @@ get_domain_permissions_policy(Client, Domain, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_domain_permissions_policy(Client, Domain, QueryMap, HeadersMap, []).
 
-get_domain_permissions_policy(Client, Domain, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_domain_permissions_policy(Client, Domain, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/domain/permissions/policy"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -705,10 +765,13 @@ get_package_version_asset(Client, Asset, Domain, Format, Package, PackageVersion
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_package_version_asset(Client, Asset, Domain, Format, Package, PackageVersion, Repository, QueryMap, HeadersMap, []).
 
-get_package_version_asset(Client, Asset, Domain, Format, Package, PackageVersion, Repository, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_package_version_asset(Client, Asset, Domain, Format, Package, PackageVersion, Repository, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/package/version/asset"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -762,10 +825,13 @@ get_package_version_readme(Client, Domain, Format, Package, PackageVersion, Repo
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_package_version_readme(Client, Domain, Format, Package, PackageVersion, Repository, QueryMap, HeadersMap, []).
 
-get_package_version_readme(Client, Domain, Format, Package, PackageVersion, Repository, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_package_version_readme(Client, Domain, Format, Package, PackageVersion, Repository, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/package/version/readme"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -804,10 +870,13 @@ get_repository_endpoint(Client, Domain, Format, Repository, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_repository_endpoint(Client, Domain, Format, Repository, QueryMap, HeadersMap, []).
 
-get_repository_endpoint(Client, Domain, Format, Repository, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_repository_endpoint(Client, Domain, Format, Repository, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/repository/endpoint"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -831,10 +900,13 @@ get_repository_permissions_policy(Client, Domain, Repository, QueryMap, HeadersM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_repository_permissions_policy(Client, Domain, Repository, QueryMap, HeadersMap, []).
 
-get_repository_permissions_policy(Client, Domain, Repository, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_repository_permissions_policy(Client, Domain, Repository, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/repository/permissions/policy"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -854,10 +926,14 @@ get_repository_permissions_policy(Client, Domain, Repository, QueryMap, HeadersM
 %% Each returned `DomainSummary' object contains information about a domain.
 list_domains(Client, Input) ->
     list_domains(Client, Input, []).
-list_domains(Client, Input0, Options) ->
+list_domains(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/domains"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -871,10 +947,14 @@ list_domains(Client, Input0, Options) ->
 %% version.
 list_package_version_assets(Client, Input) ->
     list_package_version_assets(Client, Input, []).
-list_package_version_assets(Client, Input0, Options) ->
+list_package_version_assets(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/package/version/assets"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -902,10 +982,14 @@ list_package_version_assets(Client, Input0, Options) ->
 %% are not listed in the configuration file are not returned.
 list_package_version_dependencies(Client, Input) ->
     list_package_version_dependencies(Client, Input, []).
-list_package_version_dependencies(Client, Input0, Options) ->
+list_package_version_dependencies(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/package/version/dependencies"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -927,10 +1011,14 @@ list_package_version_dependencies(Client, Input0, Options) ->
 %% versions in a repository that match the request parameters.
 list_package_versions(Client, Input) ->
     list_package_versions(Client, Input, []).
-list_package_versions(Client, Input0, Options) ->
+list_package_versions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/package/versions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -954,10 +1042,14 @@ list_package_versions(Client, Input0, Options) ->
 %% repository that match the request parameters.
 list_packages(Client, Input) ->
     list_packages(Client, Input, []).
-list_packages(Client, Input0, Options) ->
+list_packages(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/packages"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -981,10 +1073,14 @@ list_packages(Client, Input0, Options) ->
 %% specified AWS account and that matches the input parameters.
 list_repositories(Client, Input) ->
     list_repositories(Client, Input, []).
-list_repositories(Client, Input0, Options) ->
+list_repositories(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/repositories"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1003,10 +1099,14 @@ list_repositories(Client, Input0, Options) ->
 %% specified domain and that matches the input parameters.
 list_repositories_in_domain(Client, Input) ->
     list_repositories_in_domain(Client, Input, []).
-list_repositories_in_domain(Client, Input0, Options) ->
+list_repositories_in_domain(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/domain/repositories"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1026,10 +1126,14 @@ list_repositories_in_domain(Client, Input0, Options) ->
 %% (ARN) in AWS CodeArtifact.
 list_tags_for_resource(Client, Input) ->
     list_tags_for_resource(Client, Input, []).
-list_tags_for_resource(Client, Input0, Options) ->
+list_tags_for_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/tags"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1049,10 +1153,14 @@ list_tags_for_resource(Client, Input0, Options) ->
 %% them from being able to update the resource policy.
 put_domain_permissions_policy(Client, Input) ->
     put_domain_permissions_policy(Client, Input, []).
-put_domain_permissions_policy(Client, Input0, Options) ->
+put_domain_permissions_policy(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v1/domain/permissions/policy"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1071,10 +1179,14 @@ put_domain_permissions_policy(Client, Input0, Options) ->
 %% would prevent them from being able to update the resource policy.
 put_repository_permissions_policy(Client, Input) ->
     put_repository_permissions_policy(Client, Input, []).
-put_repository_permissions_policy(Client, Input0, Options) ->
+put_repository_permissions_policy(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v1/repository/permissions/policy"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1090,10 +1202,14 @@ put_repository_permissions_policy(Client, Input0, Options) ->
 %% @doc Adds or updates tags for a resource in AWS CodeArtifact.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
-tag_resource(Client, Input0, Options) ->
+tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/tag"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1107,10 +1223,14 @@ tag_resource(Client, Input0, Options) ->
 %% @doc Removes tags from a resource in AWS CodeArtifact.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
-untag_resource(Client, Input0, Options) ->
+untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/untag"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1124,10 +1244,14 @@ untag_resource(Client, Input0, Options) ->
 %% @doc Updates the status of one or more versions of a package.
 update_package_versions_status(Client, Input) ->
     update_package_versions_status(Client, Input, []).
-update_package_versions_status(Client, Input0, Options) ->
+update_package_versions_status(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/package/versions/update_status"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1146,10 +1270,14 @@ update_package_versions_status(Client, Input0, Options) ->
 %% @doc Update the properties of a repository.
 update_repository(Client, Input) ->
     update_repository(Client, Input, []).
-update_repository(Client, Input0, Options) ->
+update_repository(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v1/repository"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1184,19 +1312,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -1206,14 +1335,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

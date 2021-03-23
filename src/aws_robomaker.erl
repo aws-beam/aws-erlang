@@ -130,10 +130,14 @@
 %% @doc Deletes one or more worlds in a batch operation.
 batch_delete_worlds(Client, Input) ->
     batch_delete_worlds(Client, Input, []).
-batch_delete_worlds(Client, Input0, Options) ->
+batch_delete_worlds(Client, Input0, Options0) ->
     Method = post,
     Path = ["/batchDeleteWorlds"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -146,10 +150,14 @@ batch_delete_worlds(Client, Input0, Options) ->
 %% @doc Describes one or more simulation jobs.
 batch_describe_simulation_job(Client, Input) ->
     batch_describe_simulation_job(Client, Input, []).
-batch_describe_simulation_job(Client, Input0, Options) ->
+batch_describe_simulation_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/batchDescribeSimulationJob"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -162,10 +170,14 @@ batch_describe_simulation_job(Client, Input0, Options) ->
 %% @doc Cancels the specified deployment job.
 cancel_deployment_job(Client, Input) ->
     cancel_deployment_job(Client, Input, []).
-cancel_deployment_job(Client, Input0, Options) ->
+cancel_deployment_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/cancelDeploymentJob"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -178,10 +190,14 @@ cancel_deployment_job(Client, Input0, Options) ->
 %% @doc Cancels the specified simulation job.
 cancel_simulation_job(Client, Input) ->
     cancel_simulation_job(Client, Input, []).
-cancel_simulation_job(Client, Input0, Options) ->
+cancel_simulation_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/cancelSimulationJob"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -197,10 +213,14 @@ cancel_simulation_job(Client, Input0, Options) ->
 %% active simulation jobs created as part of the batch.
 cancel_simulation_job_batch(Client, Input) ->
     cancel_simulation_job_batch(Client, Input, []).
-cancel_simulation_job_batch(Client, Input0, Options) ->
+cancel_simulation_job_batch(Client, Input0, Options0) ->
     Method = post,
     Path = ["/cancelSimulationJobBatch"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -213,10 +233,14 @@ cancel_simulation_job_batch(Client, Input0, Options) ->
 %% @doc Cancels the specified export job.
 cancel_world_export_job(Client, Input) ->
     cancel_world_export_job(Client, Input, []).
-cancel_world_export_job(Client, Input0, Options) ->
+cancel_world_export_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/cancelWorldExportJob"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -229,10 +253,14 @@ cancel_world_export_job(Client, Input0, Options) ->
 %% @doc Cancels the specified world generator job.
 cancel_world_generation_job(Client, Input) ->
     cancel_world_generation_job(Client, Input, []).
-cancel_world_generation_job(Client, Input0, Options) ->
+cancel_world_generation_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/cancelWorldGenerationJob"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -254,10 +282,14 @@ cancel_world_generation_job(Client, Input0, Options) ->
 %% longer be accessible.
 create_deployment_job(Client, Input) ->
     create_deployment_job(Client, Input, []).
-create_deployment_job(Client, Input0, Options) ->
+create_deployment_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createDeploymentJob"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -271,10 +303,14 @@ create_deployment_job(Client, Input0, Options) ->
 %% application.
 create_fleet(Client, Input) ->
     create_fleet(Client, Input, []).
-create_fleet(Client, Input0, Options) ->
+create_fleet(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createFleet"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -287,10 +323,14 @@ create_fleet(Client, Input0, Options) ->
 %% @doc Creates a robot.
 create_robot(Client, Input) ->
     create_robot(Client, Input, []).
-create_robot(Client, Input0, Options) ->
+create_robot(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createRobot"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -303,10 +343,14 @@ create_robot(Client, Input0, Options) ->
 %% @doc Creates a robot application.
 create_robot_application(Client, Input) ->
     create_robot_application(Client, Input, []).
-create_robot_application(Client, Input0, Options) ->
+create_robot_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createRobotApplication"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -319,10 +363,14 @@ create_robot_application(Client, Input0, Options) ->
 %% @doc Creates a version of a robot application.
 create_robot_application_version(Client, Input) ->
     create_robot_application_version(Client, Input, []).
-create_robot_application_version(Client, Input0, Options) ->
+create_robot_application_version(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createRobotApplicationVersion"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -335,10 +383,14 @@ create_robot_application_version(Client, Input0, Options) ->
 %% @doc Creates a simulation application.
 create_simulation_application(Client, Input) ->
     create_simulation_application(Client, Input, []).
-create_simulation_application(Client, Input0, Options) ->
+create_simulation_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createSimulationApplication"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -351,10 +403,14 @@ create_simulation_application(Client, Input0, Options) ->
 %% @doc Creates a simulation application with a specific revision id.
 create_simulation_application_version(Client, Input) ->
     create_simulation_application_version(Client, Input, []).
-create_simulation_application_version(Client, Input0, Options) ->
+create_simulation_application_version(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createSimulationApplicationVersion"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -370,10 +426,14 @@ create_simulation_application_version(Client, Input0, Options) ->
 %% longer be accessible.
 create_simulation_job(Client, Input) ->
     create_simulation_job(Client, Input, []).
-create_simulation_job(Client, Input0, Options) ->
+create_simulation_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createSimulationJob"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -386,10 +446,14 @@ create_simulation_job(Client, Input0, Options) ->
 %% @doc Creates a world export job.
 create_world_export_job(Client, Input) ->
     create_world_export_job(Client, Input, []).
-create_world_export_job(Client, Input0, Options) ->
+create_world_export_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createWorldExportJob"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -402,10 +466,14 @@ create_world_export_job(Client, Input0, Options) ->
 %% @doc Creates worlds using the specified template.
 create_world_generation_job(Client, Input) ->
     create_world_generation_job(Client, Input, []).
-create_world_generation_job(Client, Input0, Options) ->
+create_world_generation_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createWorldGenerationJob"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -418,10 +486,14 @@ create_world_generation_job(Client, Input0, Options) ->
 %% @doc Creates a world template.
 create_world_template(Client, Input) ->
     create_world_template(Client, Input, []).
-create_world_template(Client, Input0, Options) ->
+create_world_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createWorldTemplate"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -434,10 +506,14 @@ create_world_template(Client, Input0, Options) ->
 %% @doc Deletes a fleet.
 delete_fleet(Client, Input) ->
     delete_fleet(Client, Input, []).
-delete_fleet(Client, Input0, Options) ->
+delete_fleet(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteFleet"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -450,10 +526,14 @@ delete_fleet(Client, Input0, Options) ->
 %% @doc Deletes a robot.
 delete_robot(Client, Input) ->
     delete_robot(Client, Input, []).
-delete_robot(Client, Input0, Options) ->
+delete_robot(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteRobot"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -466,10 +546,14 @@ delete_robot(Client, Input0, Options) ->
 %% @doc Deletes a robot application.
 delete_robot_application(Client, Input) ->
     delete_robot_application(Client, Input, []).
-delete_robot_application(Client, Input0, Options) ->
+delete_robot_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteRobotApplication"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -482,10 +566,14 @@ delete_robot_application(Client, Input0, Options) ->
 %% @doc Deletes a simulation application.
 delete_simulation_application(Client, Input) ->
     delete_simulation_application(Client, Input, []).
-delete_simulation_application(Client, Input0, Options) ->
+delete_simulation_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteSimulationApplication"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -498,10 +586,14 @@ delete_simulation_application(Client, Input0, Options) ->
 %% @doc Deletes a world template.
 delete_world_template(Client, Input) ->
     delete_world_template(Client, Input, []).
-delete_world_template(Client, Input0, Options) ->
+delete_world_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteWorldTemplate"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -514,10 +606,14 @@ delete_world_template(Client, Input0, Options) ->
 %% @doc Deregisters a robot.
 deregister_robot(Client, Input) ->
     deregister_robot(Client, Input, []).
-deregister_robot(Client, Input0, Options) ->
+deregister_robot(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deregisterRobot"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -530,10 +626,14 @@ deregister_robot(Client, Input0, Options) ->
 %% @doc Describes a deployment job.
 describe_deployment_job(Client, Input) ->
     describe_deployment_job(Client, Input, []).
-describe_deployment_job(Client, Input0, Options) ->
+describe_deployment_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeDeploymentJob"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -546,10 +646,14 @@ describe_deployment_job(Client, Input0, Options) ->
 %% @doc Describes a fleet.
 describe_fleet(Client, Input) ->
     describe_fleet(Client, Input, []).
-describe_fleet(Client, Input0, Options) ->
+describe_fleet(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeFleet"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -562,10 +666,14 @@ describe_fleet(Client, Input0, Options) ->
 %% @doc Describes a robot.
 describe_robot(Client, Input) ->
     describe_robot(Client, Input, []).
-describe_robot(Client, Input0, Options) ->
+describe_robot(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeRobot"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -578,10 +686,14 @@ describe_robot(Client, Input0, Options) ->
 %% @doc Describes a robot application.
 describe_robot_application(Client, Input) ->
     describe_robot_application(Client, Input, []).
-describe_robot_application(Client, Input0, Options) ->
+describe_robot_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeRobotApplication"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -594,10 +706,14 @@ describe_robot_application(Client, Input0, Options) ->
 %% @doc Describes a simulation application.
 describe_simulation_application(Client, Input) ->
     describe_simulation_application(Client, Input, []).
-describe_simulation_application(Client, Input0, Options) ->
+describe_simulation_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeSimulationApplication"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -610,10 +726,14 @@ describe_simulation_application(Client, Input0, Options) ->
 %% @doc Describes a simulation job.
 describe_simulation_job(Client, Input) ->
     describe_simulation_job(Client, Input, []).
-describe_simulation_job(Client, Input0, Options) ->
+describe_simulation_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeSimulationJob"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -626,10 +746,14 @@ describe_simulation_job(Client, Input0, Options) ->
 %% @doc Describes a simulation job batch.
 describe_simulation_job_batch(Client, Input) ->
     describe_simulation_job_batch(Client, Input, []).
-describe_simulation_job_batch(Client, Input0, Options) ->
+describe_simulation_job_batch(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeSimulationJobBatch"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -642,10 +766,14 @@ describe_simulation_job_batch(Client, Input0, Options) ->
 %% @doc Describes a world.
 describe_world(Client, Input) ->
     describe_world(Client, Input, []).
-describe_world(Client, Input0, Options) ->
+describe_world(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeWorld"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -658,10 +786,14 @@ describe_world(Client, Input0, Options) ->
 %% @doc Describes a world export job.
 describe_world_export_job(Client, Input) ->
     describe_world_export_job(Client, Input, []).
-describe_world_export_job(Client, Input0, Options) ->
+describe_world_export_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeWorldExportJob"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -674,10 +806,14 @@ describe_world_export_job(Client, Input0, Options) ->
 %% @doc Describes a world generation job.
 describe_world_generation_job(Client, Input) ->
     describe_world_generation_job(Client, Input, []).
-describe_world_generation_job(Client, Input0, Options) ->
+describe_world_generation_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeWorldGenerationJob"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -690,10 +826,14 @@ describe_world_generation_job(Client, Input0, Options) ->
 %% @doc Describes a world template.
 describe_world_template(Client, Input) ->
     describe_world_template(Client, Input, []).
-describe_world_template(Client, Input0, Options) ->
+describe_world_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeWorldTemplate"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -706,10 +846,14 @@ describe_world_template(Client, Input0, Options) ->
 %% @doc Gets the world template body.
 get_world_template_body(Client, Input) ->
     get_world_template_body(Client, Input, []).
-get_world_template_body(Client, Input0, Options) ->
+get_world_template_body(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getWorldTemplateBody"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -724,10 +868,14 @@ get_world_template_body(Client, Input0, Options) ->
 %% You can optionally provide filters to retrieve specific deployment jobs.
 list_deployment_jobs(Client, Input) ->
     list_deployment_jobs(Client, Input, []).
-list_deployment_jobs(Client, Input0, Options) ->
+list_deployment_jobs(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listDeploymentJobs"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -742,10 +890,14 @@ list_deployment_jobs(Client, Input0, Options) ->
 %% You can optionally provide filters to retrieve specific fleets.
 list_fleets(Client, Input) ->
     list_fleets(Client, Input, []).
-list_fleets(Client, Input0, Options) ->
+list_fleets(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listFleets"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -761,10 +913,14 @@ list_fleets(Client, Input0, Options) ->
 %% applications.
 list_robot_applications(Client, Input) ->
     list_robot_applications(Client, Input, []).
-list_robot_applications(Client, Input0, Options) ->
+list_robot_applications(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listRobotApplications"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -779,10 +935,14 @@ list_robot_applications(Client, Input0, Options) ->
 %% You can optionally provide filters to retrieve specific robots.
 list_robots(Client, Input) ->
     list_robots(Client, Input, []).
-list_robots(Client, Input0, Options) ->
+list_robots(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listRobots"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -798,10 +958,14 @@ list_robots(Client, Input0, Options) ->
 %% applications.
 list_simulation_applications(Client, Input) ->
     list_simulation_applications(Client, Input, []).
-list_simulation_applications(Client, Input0, Options) ->
+list_simulation_applications(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listSimulationApplications"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -817,10 +981,14 @@ list_simulation_applications(Client, Input0, Options) ->
 %% jobs.
 list_simulation_job_batches(Client, Input) ->
     list_simulation_job_batches(Client, Input, []).
-list_simulation_job_batches(Client, Input0, Options) ->
+list_simulation_job_batches(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listSimulationJobBatches"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -835,10 +1003,14 @@ list_simulation_job_batches(Client, Input0, Options) ->
 %% You can optionally provide filters to retrieve specific simulation jobs.
 list_simulation_jobs(Client, Input) ->
     list_simulation_jobs(Client, Input, []).
-list_simulation_jobs(Client, Input0, Options) ->
+list_simulation_jobs(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listSimulationJobs"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -857,10 +1029,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -871,10 +1046,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
 %% @doc Lists world export jobs.
 list_world_export_jobs(Client, Input) ->
     list_world_export_jobs(Client, Input, []).
-list_world_export_jobs(Client, Input0, Options) ->
+list_world_export_jobs(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listWorldExportJobs"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -887,10 +1066,14 @@ list_world_export_jobs(Client, Input0, Options) ->
 %% @doc Lists world generator jobs.
 list_world_generation_jobs(Client, Input) ->
     list_world_generation_jobs(Client, Input, []).
-list_world_generation_jobs(Client, Input0, Options) ->
+list_world_generation_jobs(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listWorldGenerationJobs"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -903,10 +1086,14 @@ list_world_generation_jobs(Client, Input0, Options) ->
 %% @doc Lists world templates.
 list_world_templates(Client, Input) ->
     list_world_templates(Client, Input, []).
-list_world_templates(Client, Input0, Options) ->
+list_world_templates(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listWorldTemplates"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -919,10 +1106,14 @@ list_world_templates(Client, Input0, Options) ->
 %% @doc Lists worlds.
 list_worlds(Client, Input) ->
     list_worlds(Client, Input, []).
-list_worlds(Client, Input0, Options) ->
+list_worlds(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listWorlds"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -935,10 +1126,14 @@ list_worlds(Client, Input0, Options) ->
 %% @doc Registers a robot with a fleet.
 register_robot(Client, Input) ->
     register_robot(Client, Input, []).
-register_robot(Client, Input0, Options) ->
+register_robot(Client, Input0, Options0) ->
     Method = post,
     Path = ["/registerRobot"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -951,10 +1146,14 @@ register_robot(Client, Input0, Options) ->
 %% @doc Restarts a running simulation job.
 restart_simulation_job(Client, Input) ->
     restart_simulation_job(Client, Input, []).
-restart_simulation_job(Client, Input0, Options) ->
+restart_simulation_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/restartSimulationJob"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -969,10 +1168,14 @@ restart_simulation_job(Client, Input0, Options) ->
 %% The batch is defined using one or more `SimulationJobRequest' objects.
 start_simulation_job_batch(Client, Input) ->
     start_simulation_job_batch(Client, Input, []).
-start_simulation_job_batch(Client, Input0, Options) ->
+start_simulation_job_batch(Client, Input0, Options0) ->
     Method = post,
     Path = ["/startSimulationJobBatch"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -987,10 +1190,14 @@ start_simulation_job_batch(Client, Input0, Options) ->
 %% This is helpful if robots were added after a deployment.
 sync_deployment_job(Client, Input) ->
     sync_deployment_job(Client, Input, []).
-sync_deployment_job(Client, Input0, Options) ->
+sync_deployment_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/syncDeploymentJob"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1010,10 +1217,14 @@ sync_deployment_job(Client, Input0, Options) ->
 %% Guide.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
-tag_resource(Client, ResourceArn, Input0, Options) ->
+tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1029,10 +1240,14 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 %% existing tag key, use `TagResource' .
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
-untag_resource(Client, ResourceArn, Input0, Options) ->
+untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1046,10 +1261,14 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Updates a robot application.
 update_robot_application(Client, Input) ->
     update_robot_application(Client, Input, []).
-update_robot_application(Client, Input0, Options) ->
+update_robot_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateRobotApplication"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1062,10 +1281,14 @@ update_robot_application(Client, Input0, Options) ->
 %% @doc Updates a simulation application.
 update_simulation_application(Client, Input) ->
     update_simulation_application(Client, Input, []).
-update_simulation_application(Client, Input0, Options) ->
+update_simulation_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateSimulationApplication"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1078,10 +1301,14 @@ update_simulation_application(Client, Input0, Options) ->
 %% @doc Updates a world template.
 update_world_template(Client, Input) ->
     update_world_template(Client, Input, []).
-update_world_template(Client, Input0, Options) ->
+update_world_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateWorldTemplate"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1113,19 +1340,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -1135,14 +1363,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

@@ -59,10 +59,14 @@
 %% @doc Changes the Channel's properities to configure log subscription
 configure_logs(Client, Id, Input) ->
     configure_logs(Client, Id, Input, []).
-configure_logs(Client, Id, Input0, Options) ->
+configure_logs(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/channels/", aws_util:encode_uri(Id), "/configure_logs"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -75,10 +79,14 @@ configure_logs(Client, Id, Input0, Options) ->
 %% @doc Creates a new Channel.
 create_channel(Client, Input) ->
     create_channel(Client, Input, []).
-create_channel(Client, Input0, Options) ->
+create_channel(Client, Input0, Options0) ->
     Method = post,
     Path = ["/channels"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -91,10 +99,14 @@ create_channel(Client, Input0, Options) ->
 %% @doc Creates a new HarvestJob record.
 create_harvest_job(Client, Input) ->
     create_harvest_job(Client, Input, []).
-create_harvest_job(Client, Input0, Options) ->
+create_harvest_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/harvest_jobs"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -107,10 +119,14 @@ create_harvest_job(Client, Input0, Options) ->
 %% @doc Creates a new OriginEndpoint record.
 create_origin_endpoint(Client, Input) ->
     create_origin_endpoint(Client, Input, []).
-create_origin_endpoint(Client, Input0, Options) ->
+create_origin_endpoint(Client, Input0, Options0) ->
     Method = post,
     Path = ["/origin_endpoints"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -123,10 +139,14 @@ create_origin_endpoint(Client, Input0, Options) ->
 %% @doc Deletes an existing Channel.
 delete_channel(Client, Id, Input) ->
     delete_channel(Client, Id, Input, []).
-delete_channel(Client, Id, Input0, Options) ->
+delete_channel(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/channels/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -139,10 +159,14 @@ delete_channel(Client, Id, Input0, Options) ->
 %% @doc Deletes an existing OriginEndpoint.
 delete_origin_endpoint(Client, Id, Input) ->
     delete_origin_endpoint(Client, Id, Input, []).
-delete_origin_endpoint(Client, Id, Input0, Options) ->
+delete_origin_endpoint(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/origin_endpoints/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -161,10 +185,13 @@ describe_channel(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_channel(Client, Id, QueryMap, HeadersMap, []).
 
-describe_channel(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_channel(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -181,10 +208,13 @@ describe_harvest_job(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_harvest_job(Client, Id, QueryMap, HeadersMap, []).
 
-describe_harvest_job(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_harvest_job(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/harvest_jobs/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -201,10 +231,13 @@ describe_origin_endpoint(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_origin_endpoint(Client, Id, QueryMap, HeadersMap, []).
 
-describe_origin_endpoint(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_origin_endpoint(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/origin_endpoints/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -221,10 +254,13 @@ list_channels(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channels(Client, QueryMap, HeadersMap, []).
 
-list_channels(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_channels(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -246,10 +282,13 @@ list_harvest_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_harvest_jobs(Client, QueryMap, HeadersMap, []).
 
-list_harvest_jobs(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_harvest_jobs(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/harvest_jobs"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -273,10 +312,13 @@ list_origin_endpoints(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_origin_endpoints(Client, QueryMap, HeadersMap, []).
 
-list_origin_endpoints(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_origin_endpoints(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/origin_endpoints"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -299,10 +341,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -316,10 +361,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
 %% RotateIngestEndpointCredentials instead
 rotate_channel_credentials(Client, Id, Input) ->
     rotate_channel_credentials(Client, Id, Input, []).
-rotate_channel_credentials(Client, Id, Input0, Options) ->
+rotate_channel_credentials(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/channels/", aws_util:encode_uri(Id), "/credentials"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -333,10 +382,14 @@ rotate_channel_credentials(Client, Id, Input0, Options) ->
 %% the IngestEndpoint's id.
 rotate_ingest_endpoint_credentials(Client, Id, IngestEndpointId, Input) ->
     rotate_ingest_endpoint_credentials(Client, Id, IngestEndpointId, Input, []).
-rotate_ingest_endpoint_credentials(Client, Id, IngestEndpointId, Input0, Options) ->
+rotate_ingest_endpoint_credentials(Client, Id, IngestEndpointId, Input0, Options0) ->
     Method = put,
     Path = ["/channels/", aws_util:encode_uri(Id), "/ingest_endpoints/", aws_util:encode_uri(IngestEndpointId), "/credentials"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -349,10 +402,14 @@ rotate_ingest_endpoint_credentials(Client, Id, IngestEndpointId, Input0, Options
 
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
-tag_resource(Client, ResourceArn, Input0, Options) ->
+tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -365,10 +422,14 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
-untag_resource(Client, ResourceArn, Input0, Options) ->
+untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -382,10 +443,14 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Updates an existing Channel.
 update_channel(Client, Id, Input) ->
     update_channel(Client, Id, Input, []).
-update_channel(Client, Id, Input0, Options) ->
+update_channel(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/channels/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -398,10 +463,14 @@ update_channel(Client, Id, Input0, Options) ->
 %% @doc Updates an existing OriginEndpoint.
 update_origin_endpoint(Client, Id, Input) ->
     update_origin_endpoint(Client, Id, Input, []).
-update_origin_endpoint(Client, Id, Input0, Options) ->
+update_origin_endpoint(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/origin_endpoints/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -433,19 +502,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -455,14 +525,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

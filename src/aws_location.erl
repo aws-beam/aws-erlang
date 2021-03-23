@@ -99,10 +99,14 @@
 %% linked geofence collection.
 associate_tracker_consumer(Client, TrackerName, Input) ->
     associate_tracker_consumer(Client, TrackerName, Input, []).
-associate_tracker_consumer(Client, TrackerName, Input0, Options) ->
+associate_tracker_consumer(Client, TrackerName, Input0, Options0) ->
     Method = post,
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), "/consumers"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -117,10 +121,14 @@ associate_tracker_consumer(Client, TrackerName, Input0, Options) ->
 %% This action deletes the resource permanently. You can't undo this action.
 batch_delete_geofence(Client, CollectionName, Input) ->
     batch_delete_geofence(Client, CollectionName, Input, []).
-batch_delete_geofence(Client, CollectionName, Input0, Options) ->
+batch_delete_geofence(Client, CollectionName, Input0, Options0) ->
     Method = post,
     Path = ["/geofencing/v0/collections/", aws_util:encode_uri(CollectionName), "/delete-geofences"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -136,10 +144,14 @@ batch_delete_geofence(Client, CollectionName, Input0, Options) ->
 %% geofence collection.
 batch_evaluate_geofences(Client, CollectionName, Input) ->
     batch_evaluate_geofences(Client, CollectionName, Input, []).
-batch_evaluate_geofences(Client, CollectionName, Input0, Options) ->
+batch_evaluate_geofences(Client, CollectionName, Input0, Options0) ->
     Method = post,
     Path = ["/geofencing/v0/collections/", aws_util:encode_uri(CollectionName), "/positions"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -154,10 +166,14 @@ batch_evaluate_geofences(Client, CollectionName, Input0, Options) ->
 %% The response will return the device positions from the last 24 hours.
 batch_get_device_position(Client, TrackerName, Input) ->
     batch_get_device_position(Client, TrackerName, Input, []).
-batch_get_device_position(Client, TrackerName, Input0, Options) ->
+batch_get_device_position(Client, TrackerName, Input0, Options0) ->
     Method = post,
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), "/get-positions"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -171,10 +187,14 @@ batch_get_device_position(Client, TrackerName, Input0, Options) ->
 %% collection.
 batch_put_geofence(Client, CollectionName, Input) ->
     batch_put_geofence(Client, CollectionName, Input, []).
-batch_put_geofence(Client, CollectionName, Input0, Options) ->
+batch_put_geofence(Client, CollectionName, Input0, Options0) ->
     Method = post,
     Path = ["/geofencing/v0/collections/", aws_util:encode_uri(CollectionName), "/put-geofences"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -194,10 +214,14 @@ batch_put_geofence(Client, CollectionName, Input0, Options) ->
 %% second interval, and retained for 1 year before it is deleted.
 batch_update_device_position(Client, TrackerName, Input) ->
     batch_update_device_position(Client, TrackerName, Input, []).
-batch_update_device_position(Client, TrackerName, Input0, Options) ->
+batch_update_device_position(Client, TrackerName, Input0, Options0) ->
     Method = post,
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), "/positions"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -210,10 +234,14 @@ batch_update_device_position(Client, TrackerName, Input0, Options) ->
 %% @doc Creates a geofence collection, which manages and stores geofences.
 create_geofence_collection(Client, Input) ->
     create_geofence_collection(Client, Input, []).
-create_geofence_collection(Client, Input0, Options) ->
+create_geofence_collection(Client, Input0, Options0) ->
     Method = post,
     Path = ["/geofencing/v0/collections"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -232,10 +260,14 @@ create_geofence_collection(Client, Input0, Options) ->
 %% Terms for Amazon Location Service.
 create_map(Client, Input) ->
     create_map(Client, Input, []).
-create_map(Client, Input0, Options) ->
+create_map(Client, Input0, Options0) ->
     Method = post,
     Path = ["/maps/v0/maps"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -258,10 +290,14 @@ create_map(Client, Input0, Options) ->
 %% for Amazon Location Service.
 create_place_index(Client, Input) ->
     create_place_index(Client, Input, []).
-create_place_index(Client, Input0, Options) ->
+create_place_index(Client, Input0, Options0) ->
     Method = post,
     Path = ["/places/v0/indexes"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -275,10 +311,14 @@ create_place_index(Client, Input0, Options) ->
 %% retrieve current and historical location of devices.
 create_tracker(Client, Input) ->
     create_tracker(Client, Input, []).
-create_tracker(Client, Input0, Options) ->
+create_tracker(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tracking/v0/trackers"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -295,10 +335,14 @@ create_tracker(Client, Input0, Options) ->
 %% devices will no longer be monitored.
 delete_geofence_collection(Client, CollectionName, Input) ->
     delete_geofence_collection(Client, CollectionName, Input, []).
-delete_geofence_collection(Client, CollectionName, Input0, Options) ->
+delete_geofence_collection(Client, CollectionName, Input0, Options0) ->
     Method = delete,
     Path = ["/geofencing/v0/collections/", aws_util:encode_uri(CollectionName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -314,10 +358,14 @@ delete_geofence_collection(Client, CollectionName, Input0, Options) ->
 %% If the map is being used in an application, the map may not render.
 delete_map(Client, MapName, Input) ->
     delete_map(Client, MapName, Input, []).
-delete_map(Client, MapName, Input0, Options) ->
+delete_map(Client, MapName, Input0, Options0) ->
     Method = delete,
     Path = ["/maps/v0/maps/", aws_util:encode_uri(MapName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -332,10 +380,14 @@ delete_map(Client, MapName, Input0, Options) ->
 %% This action deletes the resource permanently. You cannot undo this action.
 delete_place_index(Client, IndexName, Input) ->
     delete_place_index(Client, IndexName, Input, []).
-delete_place_index(Client, IndexName, Input0, Options) ->
+delete_place_index(Client, IndexName, Input0, Options0) ->
     Method = delete,
     Path = ["/places/v0/indexes/", aws_util:encode_uri(IndexName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -352,10 +404,14 @@ delete_place_index(Client, IndexName, Input0, Options) ->
 %% that the target resource is not a dependency for your applications.
 delete_tracker(Client, TrackerName, Input) ->
     delete_tracker(Client, TrackerName, Input, []).
-delete_tracker(Client, TrackerName, Input0, Options) ->
+delete_tracker(Client, TrackerName, Input0, Options0) ->
     Method = delete,
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -374,10 +430,13 @@ describe_geofence_collection(Client, CollectionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_geofence_collection(Client, CollectionName, QueryMap, HeadersMap, []).
 
-describe_geofence_collection(Client, CollectionName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_geofence_collection(Client, CollectionName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/geofencing/v0/collections/", aws_util:encode_uri(CollectionName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -394,10 +453,13 @@ describe_map(Client, MapName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_map(Client, MapName, QueryMap, HeadersMap, []).
 
-describe_map(Client, MapName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_map(Client, MapName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/maps/v0/maps/", aws_util:encode_uri(MapName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -414,10 +476,13 @@ describe_place_index(Client, IndexName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_place_index(Client, IndexName, QueryMap, HeadersMap, []).
 
-describe_place_index(Client, IndexName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_place_index(Client, IndexName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/places/v0/indexes/", aws_util:encode_uri(IndexName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -434,10 +499,13 @@ describe_tracker(Client, TrackerName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_tracker(Client, TrackerName, QueryMap, HeadersMap, []).
 
-describe_tracker(Client, TrackerName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_tracker(Client, TrackerName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -452,10 +520,14 @@ describe_tracker(Client, TrackerName, QueryMap, HeadersMap, Options)
 %% positions will no longer be automatically evaluated against geofences.
 disassociate_tracker_consumer(Client, ConsumerArn, TrackerName, Input) ->
     disassociate_tracker_consumer(Client, ConsumerArn, TrackerName, Input, []).
-disassociate_tracker_consumer(Client, ConsumerArn, TrackerName, Input0, Options) ->
+disassociate_tracker_consumer(Client, ConsumerArn, TrackerName, Input0, Options0) ->
     Method = delete,
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), "/consumers/", aws_util:encode_uri(ConsumerArn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -476,10 +548,13 @@ get_device_position(Client, DeviceId, TrackerName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_device_position(Client, DeviceId, TrackerName, QueryMap, HeadersMap, []).
 
-get_device_position(Client, DeviceId, TrackerName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_device_position(Client, DeviceId, TrackerName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), "/devices/", aws_util:encode_uri(DeviceId), "/positions/latest"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -493,10 +568,14 @@ get_device_position(Client, DeviceId, TrackerName, QueryMap, HeadersMap, Options
 %% Limitation — Device positions are deleted after one year.
 get_device_position_history(Client, DeviceId, TrackerName, Input) ->
     get_device_position_history(Client, DeviceId, TrackerName, Input, []).
-get_device_position_history(Client, DeviceId, TrackerName, Input0, Options) ->
+get_device_position_history(Client, DeviceId, TrackerName, Input0, Options0) ->
     Method = post,
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), "/devices/", aws_util:encode_uri(DeviceId), "/list-positions"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -515,10 +594,13 @@ get_geofence(Client, CollectionName, GeofenceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_geofence(Client, CollectionName, GeofenceId, QueryMap, HeadersMap, []).
 
-get_geofence(Client, CollectionName, GeofenceId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_geofence(Client, CollectionName, GeofenceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/geofencing/v0/collections/", aws_util:encode_uri(CollectionName), "/geofences/", aws_util:encode_uri(GeofenceId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -535,10 +617,13 @@ get_map_glyphs(Client, FontStack, FontUnicodeRange, MapName, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_map_glyphs(Client, FontStack, FontUnicodeRange, MapName, QueryMap, HeadersMap, []).
 
-get_map_glyphs(Client, FontStack, FontUnicodeRange, MapName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_map_glyphs(Client, FontStack, FontUnicodeRange, MapName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/maps/v0/maps/", aws_util:encode_uri(MapName), "/glyphs/", aws_util:encode_uri(FontStack), "/", aws_util:encode_uri(FontUnicodeRange), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -574,10 +659,13 @@ get_map_sprites(Client, FileName, MapName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_map_sprites(Client, FileName, MapName, QueryMap, HeadersMap, []).
 
-get_map_sprites(Client, FileName, MapName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_map_sprites(Client, FileName, MapName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/maps/v0/maps/", aws_util:encode_uri(MapName), "/sprites/", aws_util:encode_uri(FileName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -615,10 +703,13 @@ get_map_style_descriptor(Client, MapName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_map_style_descriptor(Client, MapName, QueryMap, HeadersMap, []).
 
-get_map_style_descriptor(Client, MapName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_map_style_descriptor(Client, MapName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/maps/v0/maps/", aws_util:encode_uri(MapName), "/style-descriptor"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -659,10 +750,13 @@ get_map_tile(Client, MapName, X, Y, Z, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_map_tile(Client, MapName, X, Y, Z, QueryMap, HeadersMap, []).
 
-get_map_tile(Client, MapName, X, Y, Z, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_map_tile(Client, MapName, X, Y, Z, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/maps/v0/maps/", aws_util:encode_uri(MapName), "/tiles/", aws_util:encode_uri(Z), "/", aws_util:encode_uri(X), "/", aws_util:encode_uri(Y), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -689,10 +783,14 @@ get_map_tile(Client, MapName, X, Y, Z, QueryMap, HeadersMap, Options)
 %% @doc Lists geofence collections in your AWS account.
 list_geofence_collections(Client, Input) ->
     list_geofence_collections(Client, Input, []).
-list_geofence_collections(Client, Input0, Options) ->
+list_geofence_collections(Client, Input0, Options0) ->
     Method = post,
     Path = ["/geofencing/v0/list-collections"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -705,10 +803,14 @@ list_geofence_collections(Client, Input0, Options) ->
 %% @doc Lists geofences stored in a given geofence collection.
 list_geofences(Client, CollectionName, Input) ->
     list_geofences(Client, CollectionName, Input, []).
-list_geofences(Client, CollectionName, Input0, Options) ->
+list_geofences(Client, CollectionName, Input0, Options0) ->
     Method = post,
     Path = ["/geofencing/v0/collections/", aws_util:encode_uri(CollectionName), "/list-geofences"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -721,10 +823,14 @@ list_geofences(Client, CollectionName, Input0, Options) ->
 %% @doc Lists map resources in your AWS account.
 list_maps(Client, Input) ->
     list_maps(Client, Input, []).
-list_maps(Client, Input0, Options) ->
+list_maps(Client, Input0, Options0) ->
     Method = post,
     Path = ["/maps/v0/list-maps"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -737,10 +843,14 @@ list_maps(Client, Input0, Options) ->
 %% @doc Lists Place index resources in your AWS account.
 list_place_indexes(Client, Input) ->
     list_place_indexes(Client, Input, []).
-list_place_indexes(Client, Input0, Options) ->
+list_place_indexes(Client, Input0, Options0) ->
     Method = post,
     Path = ["/places/v0/list-indexes"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -754,10 +864,14 @@ list_place_indexes(Client, Input0, Options) ->
 %% resource.
 list_tracker_consumers(Client, TrackerName, Input) ->
     list_tracker_consumers(Client, TrackerName, Input, []).
-list_tracker_consumers(Client, TrackerName, Input0, Options) ->
+list_tracker_consumers(Client, TrackerName, Input0, Options0) ->
     Method = post,
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), "/list-consumers"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -770,10 +884,14 @@ list_tracker_consumers(Client, TrackerName, Input0, Options) ->
 %% @doc Lists tracker resources in your AWS account.
 list_trackers(Client, Input) ->
     list_trackers(Client, Input, []).
-list_trackers(Client, Input0, Options) ->
+list_trackers(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tracking/v0/list-trackers"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -788,10 +906,14 @@ list_trackers(Client, Input0, Options) ->
 %% request.
 put_geofence(Client, CollectionName, GeofenceId, Input) ->
     put_geofence(Client, CollectionName, GeofenceId, Input, []).
-put_geofence(Client, CollectionName, GeofenceId, Input0, Options) ->
+put_geofence(Client, CollectionName, GeofenceId, Input0, Options0) ->
     Method = put,
     Path = ["/geofencing/v0/collections/", aws_util:encode_uri(CollectionName), "/geofences/", aws_util:encode_uri(GeofenceId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -815,10 +937,14 @@ put_geofence(Client, CollectionName, GeofenceId, Input0, Options) ->
 %% for Amazon Location Service.
 search_place_index_for_position(Client, IndexName, Input) ->
     search_place_index_for_position(Client, IndexName, Input, []).
-search_place_index_for_position(Client, IndexName, Input0, Options) ->
+search_place_index_for_position(Client, IndexName, Input0, Options0) ->
     Method = post,
     Path = ["/places/v0/indexes/", aws_util:encode_uri(IndexName), "/search/position"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -848,10 +974,14 @@ search_place_index_for_position(Client, IndexName, Input0, Options) ->
 %% information, see the AWS Service Terms for Amazon Location Service.
 search_place_index_for_text(Client, IndexName, Input) ->
     search_place_index_for_text(Client, IndexName, Input, []).
-search_place_index_for_text(Client, IndexName, Input0, Options) ->
+search_place_index_for_text(Client, IndexName, Input0, Options0) ->
     Method = post,
     Path = ["/places/v0/indexes/", aws_util:encode_uri(IndexName), "/search/text"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -883,19 +1013,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -905,14 +1036,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

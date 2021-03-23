@@ -146,10 +146,14 @@
 %% a specific account.
 accept_invitation(Client, Input) ->
     accept_invitation(Client, Input, []).
-accept_invitation(Client, Input0, Options) ->
+accept_invitation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/invitations/accept"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -162,10 +166,14 @@ accept_invitation(Client, Input0, Options) ->
 %% @doc Retrieves information about one or more custom data identifiers.
 batch_get_custom_data_identifiers(Client, Input) ->
     batch_get_custom_data_identifiers(Client, Input, []).
-batch_get_custom_data_identifiers(Client, Input0, Options) ->
+batch_get_custom_data_identifiers(Client, Input0, Options0) ->
     Method = post,
     Path = ["/custom-data-identifiers/get"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -178,10 +186,14 @@ batch_get_custom_data_identifiers(Client, Input0, Options) ->
 %% @doc Creates and defines the settings for a classification job.
 create_classification_job(Client, Input) ->
     create_classification_job(Client, Input, []).
-create_classification_job(Client, Input0, Options) ->
+create_classification_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/jobs"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -195,10 +207,14 @@ create_classification_job(Client, Input0, Options) ->
 %% identifier.
 create_custom_data_identifier(Client, Input) ->
     create_custom_data_identifier(Client, Input, []).
-create_custom_data_identifier(Client, Input0, Options) ->
+create_custom_data_identifier(Client, Input0, Options0) ->
     Method = post,
     Path = ["/custom-data-identifiers"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -212,10 +228,14 @@ create_custom_data_identifier(Client, Input0, Options) ->
 %% filter.
 create_findings_filter(Client, Input) ->
     create_findings_filter(Client, Input, []).
-create_findings_filter(Client, Input0, Options) ->
+create_findings_filter(Client, Input0, Options0) ->
     Method = post,
     Path = ["/findingsfilters"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -228,10 +248,14 @@ create_findings_filter(Client, Input0, Options) ->
 %% @doc Sends an Amazon Macie membership invitation to one or more accounts.
 create_invitations(Client, Input) ->
     create_invitations(Client, Input, []).
-create_invitations(Client, Input0, Options) ->
+create_invitations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/invitations"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -244,10 +268,14 @@ create_invitations(Client, Input0, Options) ->
 %% @doc Associates an account with an Amazon Macie administrator account.
 create_member(Client, Input) ->
     create_member(Client, Input, []).
-create_member(Client, Input0, Options) ->
+create_member(Client, Input0, Options0) ->
     Method = post,
     Path = ["/members"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -260,10 +288,14 @@ create_member(Client, Input0, Options) ->
 %% @doc Creates sample findings.
 create_sample_findings(Client, Input) ->
     create_sample_findings(Client, Input, []).
-create_sample_findings(Client, Input0, Options) ->
+create_sample_findings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/findings/sample"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -277,10 +309,14 @@ create_sample_findings(Client, Input0, Options) ->
 %% specific accounts.
 decline_invitations(Client, Input) ->
     decline_invitations(Client, Input, []).
-decline_invitations(Client, Input0, Options) ->
+decline_invitations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/invitations/decline"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -293,10 +329,14 @@ decline_invitations(Client, Input0, Options) ->
 %% @doc Soft deletes a custom data identifier.
 delete_custom_data_identifier(Client, Id, Input) ->
     delete_custom_data_identifier(Client, Id, Input, []).
-delete_custom_data_identifier(Client, Id, Input0, Options) ->
+delete_custom_data_identifier(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/custom-data-identifiers/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -309,10 +349,14 @@ delete_custom_data_identifier(Client, Id, Input0, Options) ->
 %% @doc Deletes a findings filter.
 delete_findings_filter(Client, Id, Input) ->
     delete_findings_filter(Client, Id, Input, []).
-delete_findings_filter(Client, Id, Input0, Options) ->
+delete_findings_filter(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/findingsfilters/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -326,10 +370,14 @@ delete_findings_filter(Client, Id, Input0, Options) ->
 %% specific accounts.
 delete_invitations(Client, Input) ->
     delete_invitations(Client, Input, []).
-delete_invitations(Client, Input0, Options) ->
+delete_invitations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/invitations/delete"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -343,10 +391,14 @@ delete_invitations(Client, Input0, Options) ->
 %% and an account.
 delete_member(Client, Id, Input) ->
     delete_member(Client, Id, Input, []).
-delete_member(Client, Id, Input0, Options) ->
+delete_member(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/members/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -360,10 +412,14 @@ delete_member(Client, Id, Input0, Options) ->
 %% or more S3 buckets that Amazon Macie monitors and analyzes.
 describe_buckets(Client, Input) ->
     describe_buckets(Client, Input, []).
-describe_buckets(Client, Input0, Options) ->
+describe_buckets(Client, Input0, Options0) ->
     Method = post,
     Path = ["/datasources/s3"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -382,10 +438,13 @@ describe_classification_job(Client, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_classification_job(Client, JobId, QueryMap, HeadersMap, []).
 
-describe_classification_job(Client, JobId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_classification_job(Client, JobId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -403,10 +462,13 @@ describe_organization_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_organization_configuration(Client, QueryMap, HeadersMap, []).
 
-describe_organization_configuration(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_organization_configuration(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/admin/configuration"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -418,10 +480,14 @@ describe_organization_configuration(Client, QueryMap, HeadersMap, Options)
 %% account.
 disable_macie(Client, Input) ->
     disable_macie(Client, Input, []).
-disable_macie(Client, Input0, Options) ->
+disable_macie(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/macie"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -435,10 +501,14 @@ disable_macie(Client, Input0, Options) ->
 %% account for an AWS organization.
 disable_organization_admin_account(Client, Input) ->
     disable_organization_admin_account(Client, Input, []).
-disable_organization_admin_account(Client, Input0, Options) ->
+disable_organization_admin_account(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/admin"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -453,10 +523,14 @@ disable_organization_admin_account(Client, Input0, Options) ->
 %% account.
 disassociate_from_administrator_account(Client, Input) ->
     disassociate_from_administrator_account(Client, Input, []).
-disassociate_from_administrator_account(Client, Input0, Options) ->
+disassociate_from_administrator_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/administrator/disassociate"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -473,10 +547,14 @@ disassociate_from_administrator_account(Client, Input0, Options) ->
 %% DisassociateFromAdministratorAccount operation.
 disassociate_from_master_account(Client, Input) ->
     disassociate_from_master_account(Client, Input, []).
-disassociate_from_master_account(Client, Input0, Options) ->
+disassociate_from_master_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/master/disassociate"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -490,10 +568,14 @@ disassociate_from_master_account(Client, Input0, Options) ->
 %% account.
 disassociate_member(Client, Id, Input) ->
     disassociate_member(Client, Id, Input, []).
-disassociate_member(Client, Id, Input0, Options) ->
+disassociate_member(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/members/disassociate/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -507,10 +589,14 @@ disassociate_member(Client, Id, Input0, Options) ->
 %% Macie account.
 enable_macie(Client, Input) ->
     enable_macie(Client, Input, []).
-enable_macie(Client, Input0, Options) ->
+enable_macie(Client, Input0, Options0) ->
     Method = post,
     Path = ["/macie"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -524,10 +610,14 @@ enable_macie(Client, Input0, Options) ->
 %% account for an AWS organization.
 enable_organization_admin_account(Client, Input) ->
     enable_organization_admin_account(Client, Input, []).
-enable_organization_admin_account(Client, Input0, Options) ->
+enable_organization_admin_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/admin"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -547,10 +637,13 @@ get_administrator_account(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_administrator_account(Client, QueryMap, HeadersMap, []).
 
-get_administrator_account(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_administrator_account(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/administrator"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -562,10 +655,14 @@ get_administrator_account(Client, QueryMap, HeadersMap, Options)
 %% buckets that Amazon Macie monitors and analyzes.
 get_bucket_statistics(Client, Input) ->
     get_bucket_statistics(Client, Input, []).
-get_bucket_statistics(Client, Input0, Options) ->
+get_bucket_statistics(Client, Input0, Options0) ->
     Method = post,
     Path = ["/datasources/s3/statistics"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -585,10 +682,13 @@ get_classification_export_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_classification_export_configuration(Client, QueryMap, HeadersMap, []).
 
-get_classification_export_configuration(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_classification_export_configuration(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/classification-export-configuration"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -606,10 +706,13 @@ get_custom_data_identifier(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_custom_data_identifier(Client, Id, QueryMap, HeadersMap, []).
 
-get_custom_data_identifier(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_custom_data_identifier(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/custom-data-identifiers/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -620,10 +723,14 @@ get_custom_data_identifier(Client, Id, QueryMap, HeadersMap, Options)
 %% @doc Retrieves (queries) aggregated statistical data about findings.
 get_finding_statistics(Client, Input) ->
     get_finding_statistics(Client, Input, []).
-get_finding_statistics(Client, Input0, Options) ->
+get_finding_statistics(Client, Input0, Options0) ->
     Method = post,
     Path = ["/findings/statistics"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -636,10 +743,14 @@ get_finding_statistics(Client, Input0, Options) ->
 %% @doc Retrieves the details of one or more findings.
 get_findings(Client, Input) ->
     get_findings(Client, Input, []).
-get_findings(Client, Input0, Options) ->
+get_findings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/findings/describe"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -658,10 +769,13 @@ get_findings_filter(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_findings_filter(Client, Id, QueryMap, HeadersMap, []).
 
-get_findings_filter(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_findings_filter(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/findingsfilters/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -679,10 +793,13 @@ get_invitations_count(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_invitations_count(Client, QueryMap, HeadersMap, []).
 
-get_invitations_count(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_invitations_count(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/invitations/count"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -700,10 +817,13 @@ get_macie_session(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_macie_session(Client, QueryMap, HeadersMap, []).
 
-get_macie_session(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_macie_session(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/macie"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -723,10 +843,13 @@ get_master_account(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_master_account(Client, QueryMap, HeadersMap, []).
 
-get_master_account(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_master_account(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/master"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -744,10 +867,13 @@ get_member(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_member(Client, Id, QueryMap, HeadersMap, []).
 
-get_member(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_member(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/members/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -759,10 +885,14 @@ get_member(Client, Id, QueryMap, HeadersMap, Options)
 %% accounts.
 get_usage_statistics(Client, Input) ->
     get_usage_statistics(Client, Input, []).
-get_usage_statistics(Client, Input0, Options) ->
+get_usage_statistics(Client, Input0, Options0) ->
     Method = post,
     Path = ["/usage/statistics"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -781,10 +911,13 @@ get_usage_totals(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_usage_totals(Client, QueryMap, HeadersMap, []).
 
-get_usage_totals(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_usage_totals(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/usage"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -800,10 +933,14 @@ get_usage_totals(Client, QueryMap, HeadersMap, Options)
 %% jobs.
 list_classification_jobs(Client, Input) ->
     list_classification_jobs(Client, Input, []).
-list_classification_jobs(Client, Input0, Options) ->
+list_classification_jobs(Client, Input0, Options0) ->
     Method = post,
     Path = ["/jobs/list"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -817,10 +954,14 @@ list_classification_jobs(Client, Input0, Options) ->
 %% identifiers for an account.
 list_custom_data_identifiers(Client, Input) ->
     list_custom_data_identifiers(Client, Input, []).
-list_custom_data_identifiers(Client, Input0, Options) ->
+list_custom_data_identifiers(Client, Input0, Options0) ->
     Method = post,
     Path = ["/custom-data-identifiers/list"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -833,10 +974,14 @@ list_custom_data_identifiers(Client, Input0, Options) ->
 %% @doc Retrieves a subset of information about one or more findings.
 list_findings(Client, Input) ->
     list_findings(Client, Input, []).
-list_findings(Client, Input0, Options) ->
+list_findings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/findings"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -856,10 +1001,13 @@ list_findings_filters(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_findings_filters(Client, QueryMap, HeadersMap, []).
 
-list_findings_filters(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_findings_filters(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/findingsfilters"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -882,10 +1030,13 @@ list_invitations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_invitations(Client, QueryMap, HeadersMap, []).
 
-list_invitations(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_invitations(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/invitations"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -908,10 +1059,13 @@ list_members(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_members(Client, QueryMap, HeadersMap, []).
 
-list_members(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_members(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/members"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -935,10 +1089,13 @@ list_organization_admin_accounts(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_organization_admin_accounts(Client, QueryMap, HeadersMap, []).
 
-list_organization_admin_accounts(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_organization_admin_accounts(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/admin"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -962,10 +1119,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -977,10 +1137,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
 %% classification results.
 put_classification_export_configuration(Client, Input) ->
     put_classification_export_configuration(Client, Input, []).
-put_classification_export_configuration(Client, Input0, Options) ->
+put_classification_export_configuration(Client, Input0, Options0) ->
     Method = put,
     Path = ["/classification-export-configuration"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -995,10 +1159,14 @@ put_classification_export_configuration(Client, Input0, Options) ->
 %% filter, or member account.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
-tag_resource(Client, ResourceArn, Input0, Options) ->
+tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1011,10 +1179,14 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Tests a custom data identifier.
 test_custom_data_identifier(Client, Input) ->
     test_custom_data_identifier(Client, Input, []).
-test_custom_data_identifier(Client, Input0, Options) ->
+test_custom_data_identifier(Client, Input0, Options0) ->
     Method = post,
     Path = ["/custom-data-identifiers/test"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1028,10 +1200,14 @@ test_custom_data_identifier(Client, Input0, Options) ->
 %% custom data identifier, findings filter, or member account.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
-untag_resource(Client, ResourceArn, Input0, Options) ->
+untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1045,10 +1221,14 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Changes the status of a classification job.
 update_classification_job(Client, JobId, Input) ->
     update_classification_job(Client, JobId, Input, []).
-update_classification_job(Client, JobId, Input0, Options) ->
+update_classification_job(Client, JobId, Input0, Options0) ->
     Method = patch,
     Path = ["/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1061,10 +1241,14 @@ update_classification_job(Client, JobId, Input0, Options) ->
 %% @doc Updates the criteria and other settings for a findings filter.
 update_findings_filter(Client, Id, Input) ->
     update_findings_filter(Client, Id, Input, []).
-update_findings_filter(Client, Id, Input0, Options) ->
+update_findings_filter(Client, Id, Input0, Options0) ->
     Method = patch,
     Path = ["/findingsfilters/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1078,10 +1262,14 @@ update_findings_filter(Client, Id, Input0, Options) ->
 %% configuration settings for a Macie account.
 update_macie_session(Client, Input) ->
     update_macie_session(Client, Input, []).
-update_macie_session(Client, Input0, Options) ->
+update_macie_session(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/macie"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1095,10 +1283,14 @@ update_macie_session(Client, Input0, Options) ->
 %% member account.
 update_member_session(Client, Id, Input) ->
     update_member_session(Client, Id, Input, []).
-update_member_session(Client, Id, Input0, Options) ->
+update_member_session(Client, Id, Input0, Options0) ->
     Method = patch,
     Path = ["/macie/members/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1112,10 +1304,14 @@ update_member_session(Client, Id, Input0, Options) ->
 %% organization.
 update_organization_configuration(Client, Input) ->
     update_organization_configuration(Client, Input, []).
-update_organization_configuration(Client, Input0, Options) ->
+update_organization_configuration(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/admin/configuration"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1147,19 +1343,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -1169,14 +1366,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

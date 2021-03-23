@@ -88,10 +88,14 @@
 %% SNS topics.
 add_notification_channel(Client, Input) ->
     add_notification_channel(Client, Input, []).
-add_notification_channel(Client, Input0, Options) ->
+add_notification_channel(Client, Input0, Options0) ->
     Method = put,
     Path = ["/channels"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -114,10 +118,13 @@ describe_account_health(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_account_health(Client, QueryMap, HeadersMap, []).
 
-describe_account_health(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_account_health(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/health"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -131,10 +138,14 @@ describe_account_health(Client, QueryMap, HeadersMap, Options)
 %% insights.
 describe_account_overview(Client, Input) ->
     describe_account_overview(Client, Input, []).
-describe_account_overview(Client, Input0, Options) ->
+describe_account_overview(Client, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/overview"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -153,10 +164,13 @@ describe_anomaly(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_anomaly(Client, Id, QueryMap, HeadersMap, []).
 
-describe_anomaly(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_anomaly(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/anomalies/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -168,10 +182,14 @@ describe_anomaly(Client, Id, QueryMap, HeadersMap, Options)
 %% and Region.
 describe_feedback(Client, Input) ->
     describe_feedback(Client, Input, []).
-describe_feedback(Client, Input0, Options) ->
+describe_feedback(Client, Input0, Options0) ->
     Method = post,
     Path = ["/feedback"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -190,10 +208,13 @@ describe_insight(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_insight(Client, Id, QueryMap, HeadersMap, []).
 
-describe_insight(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_insight(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/insights/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -217,10 +238,13 @@ describe_resource_collection_health(Client, ResourceCollectionType, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_resource_collection_health(Client, ResourceCollectionType, QueryMap, HeadersMap, []).
 
-describe_resource_collection_health(Client, ResourceCollectionType, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_resource_collection_health(Client, ResourceCollectionType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/health/resource-collection/", aws_util:encode_uri(ResourceCollectionType), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -246,10 +270,13 @@ describe_service_integration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_service_integration(Client, QueryMap, HeadersMap, []).
 
-describe_service_integration(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_service_integration(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/service-integrations"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -271,10 +298,13 @@ get_resource_collection(Client, ResourceCollectionType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_resource_collection(Client, ResourceCollectionType, QueryMap, HeadersMap, []).
 
-get_resource_collection(Client, ResourceCollectionType, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_resource_collection(Client, ResourceCollectionType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/resource-collections/", aws_util:encode_uri(ResourceCollectionType), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -290,10 +320,14 @@ get_resource_collection(Client, ResourceCollectionType, QueryMap, HeadersMap, Op
 %% specify using its ID.
 list_anomalies_for_insight(Client, InsightId, Input) ->
     list_anomalies_for_insight(Client, InsightId, Input, []).
-list_anomalies_for_insight(Client, InsightId, Input0, Options) ->
+list_anomalies_for_insight(Client, InsightId, Input0, Options0) ->
     Method = post,
     Path = ["/anomalies/insight/", aws_util:encode_uri(InsightId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -309,10 +343,14 @@ list_anomalies_for_insight(Client, InsightId, Input0, Options) ->
 %% You can use filters to specify which events are returned.
 list_events(Client, Input) ->
     list_events(Client, Input, []).
-list_events(Client, Input0, Options) ->
+list_events(Client, Input0, Options0) ->
     Method = post,
     Path = ["/events"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -328,10 +366,14 @@ list_events(Client, Input0, Options) ->
 %% (`ONGOING', `CLOSED', or `ANY').
 list_insights(Client, Input) ->
     list_insights(Client, Input, []).
-list_insights(Client, Input0, Options) ->
+list_insights(Client, Input0, Options0) ->
     Method = post,
     Path = ["/insights"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -349,10 +391,14 @@ list_insights(Client, Input0, Options) ->
 %% Service (Amazon SNS).
 list_notification_channels(Client, Input) ->
     list_notification_channels(Client, Input, []).
-list_notification_channels(Client, Input0, Options) ->
+list_notification_channels(Client, Input0, Options0) ->
     Method = post,
     Path = ["/channels"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -368,10 +414,14 @@ list_notification_channels(Client, Input0, Options) ->
 %% related events.
 list_recommendations(Client, Input) ->
     list_recommendations(Client, Input, []).
-list_recommendations(Client, Input0, Options) ->
+list_recommendations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/recommendations"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -384,10 +434,14 @@ list_recommendations(Client, Input0, Options) ->
 %% @doc Collects customer feedback about the specified insight.
 put_feedback(Client, Input) ->
     put_feedback(Client, Input, []).
-put_feedback(Client, Input0, Options) ->
+put_feedback(Client, Input0, Options0) ->
     Method = put,
     Path = ["/feedback"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -403,10 +457,14 @@ put_feedback(Client, Input0, Options) ->
 %% insight that contains information about how to improve your operations.
 remove_notification_channel(Client, Id, Input) ->
     remove_notification_channel(Client, Id, Input, []).
-remove_notification_channel(Client, Id, Input0, Options) ->
+remove_notification_channel(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/channels/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -427,10 +485,14 @@ remove_notification_channel(Client, Id, Input0, Options) ->
 %% in your search.
 search_insights(Client, Input) ->
     search_insights(Client, Input, []).
-search_insights(Client, Input0, Options) ->
+search_insights(Client, Input0, Options0) ->
     Method = post,
     Path = ["/insights/search"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -448,10 +510,14 @@ search_insights(Client, Input0, Options) ->
 %% required for you to use DevOps Guru.
 update_resource_collection(Client, Input) ->
     update_resource_collection(Client, Input, []).
-update_resource_collection(Client, Input0, Options) ->
+update_resource_collection(Client, Input0, Options0) ->
     Method = put,
     Path = ["/resource-collections"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -469,10 +535,14 @@ update_resource_collection(Client, Input0, Options) ->
 %% insight.
 update_service_integration(Client, Input) ->
     update_service_integration(Client, Input, []).
-update_service_integration(Client, Input0, Options) ->
+update_service_integration(Client, Input0, Options0) ->
     Method = put,
     Path = ["/service-integrations"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -504,19 +574,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -526,14 +597,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

@@ -157,10 +157,14 @@
 %% An object can have more than one facet applied on it.
 add_facet_to_object(Client, Input) ->
     add_facet_to_object(Client, Input, []).
-add_facet_to_object(Client, Input0, Options) ->
+add_facet_to_object(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/object/facets"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -177,10 +181,14 @@ add_facet_to_object(Client, Input0, Options) ->
 %% schema.
 apply_schema(Client, Input) ->
     apply_schema(Client, Input, []).
-apply_schema(Client, Input0, Options) ->
+apply_schema(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/schema/apply"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -203,10 +211,14 @@ apply_schema(Client, Input0, Options) ->
 %% </li> </ol>
 attach_object(Client, Input) ->
     attach_object(Client, Input, []).
-attach_object(Client, Input0, Options) ->
+attach_object(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/object/attach"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -223,10 +235,14 @@ attach_object(Client, Input0, Options) ->
 %% An object can have a limited number of attached policies.
 attach_policy(Client, Input) ->
     attach_policy(Client, Input, []).
-attach_policy(Client, Input0, Options) ->
+attach_policy(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/policy/attach"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -241,10 +257,14 @@ attach_policy(Client, Input0, Options) ->
 %% @doc Attaches the specified object to the specified index.
 attach_to_index(Client, Input) ->
     attach_to_index(Client, Input, []).
-attach_to_index(Client, Input0, Options) ->
+attach_to_index(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/index/attach"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -261,10 +281,14 @@ attach_to_index(Client, Input0, Options) ->
 %% For more information, see Typed Links.
 attach_typed_link(Client, Input) ->
     attach_typed_link(Client, Input, []).
-attach_typed_link(Client, Input0, Options) ->
+attach_typed_link(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/attach"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -279,10 +303,14 @@ attach_typed_link(Client, Input0, Options) ->
 %% @doc Performs all the read operations in a batch.
 batch_read(Client, Input) ->
     batch_read(Client, Input, []).
-batch_read(Client, Input0, Options) ->
+batch_read(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/batchread"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-consistency-level">>, <<"ConsistencyLevel">>},
@@ -300,10 +328,14 @@ batch_read(Client, Input0, Options) ->
 %% Either all the operations succeed or none.
 batch_write(Client, Input) ->
     batch_write(Client, Input, []).
-batch_write(Client, Input0, Options) ->
+batch_write(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/batchwrite"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -325,10 +357,14 @@ batch_write(Client, Input0, Options) ->
 %% Cloud Directory Developer Guide.
 create_directory(Client, Input) ->
     create_directory(Client, Input, []).
-create_directory(Client, Input0, Options) ->
+create_directory(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/directory/create"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -345,10 +381,14 @@ create_directory(Client, Input0, Options) ->
 %% Facet creation is allowed only in development or applied schemas.
 create_facet(Client, Input) ->
     create_facet(Client, Input, []).
-create_facet(Client, Input0, Options) ->
+create_facet(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/facet/create"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -365,10 +405,14 @@ create_facet(Client, Input0, Options) ->
 %% See Indexing and search for more information.
 create_index(Client, Input) ->
     create_index(Client, Input, []).
-create_index(Client, Input0, Options) ->
+create_index(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/index"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -388,10 +432,14 @@ create_index(Client, Input0, Options) ->
 %% the facet from which you create the object is a policy facet.
 create_object(Client, Input) ->
     create_object(Client, Input, []).
-create_object(Client, Input0, Options) ->
+create_object(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/object"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -422,10 +470,14 @@ create_object(Client, Input0, Options) ->
 %% </li> </ul>
 create_schema(Client, Input) ->
     create_schema(Client, Input, []).
-create_schema(Client, Input0, Options) ->
+create_schema(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/schema/create"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -440,10 +492,14 @@ create_schema(Client, Input0, Options) ->
 %% For more information, see Typed Links.
 create_typed_link_facet(Client, Input) ->
     create_typed_link_facet(Client, Input, []).
-create_typed_link_facet(Client, Input0, Options) ->
+create_typed_link_facet(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/facet/create"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -461,10 +517,14 @@ create_typed_link_facet(Client, Input0, Options) ->
 %% undone. Exercise extreme caution when deleting directories.
 delete_directory(Client, Input) ->
     delete_directory(Client, Input, []).
-delete_directory(Client, Input0, Options) ->
+delete_directory(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/directory"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -482,10 +542,14 @@ delete_directory(Client, Input0, Options) ->
 %% deleted. Only development schema facets are allowed deletion.
 delete_facet(Client, Input) ->
     delete_facet(Client, Input, []).
-delete_facet(Client, Input0, Options) ->
+delete_facet(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/facet/delete"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -504,10 +568,14 @@ delete_facet(Client, Input0, Options) ->
 %% For more information, see Amazon Cloud Directory Limits.
 delete_object(Client, Input) ->
     delete_object(Client, Input, []).
-delete_object(Client, Input0, Options) ->
+delete_object(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/object/delete"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -524,10 +592,14 @@ delete_object(Client, Input0, Options) ->
 %% Schemas in a development and published state can only be deleted.
 delete_schema(Client, Input) ->
     delete_schema(Client, Input, []).
-delete_schema(Client, Input0, Options) ->
+delete_schema(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/schema"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -544,10 +616,14 @@ delete_schema(Client, Input0, Options) ->
 %% For more information, see Typed Links.
 delete_typed_link_facet(Client, Input) ->
     delete_typed_link_facet(Client, Input, []).
-delete_typed_link_facet(Client, Input0, Options) ->
+delete_typed_link_facet(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/facet/delete"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -562,10 +638,14 @@ delete_typed_link_facet(Client, Input0, Options) ->
 %% @doc Detaches the specified object from the specified index.
 detach_from_index(Client, Input) ->
     detach_from_index(Client, Input, []).
-detach_from_index(Client, Input0, Options) ->
+detach_from_index(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/index/detach"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -583,10 +663,14 @@ detach_from_index(Client, Input0, Options) ->
 %% name.
 detach_object(Client, Input) ->
     detach_object(Client, Input, []).
-detach_object(Client, Input0, Options) ->
+detach_object(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/object/detach"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -601,10 +685,14 @@ detach_object(Client, Input0, Options) ->
 %% @doc Detaches a policy from an object.
 detach_policy(Client, Input) ->
     detach_policy(Client, Input, []).
-detach_policy(Client, Input0, Options) ->
+detach_policy(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/policy/detach"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -621,10 +709,14 @@ detach_policy(Client, Input0, Options) ->
 %% For more information, see Typed Links.
 detach_typed_link(Client, Input) ->
     detach_typed_link(Client, Input, []).
-detach_typed_link(Client, Input0, Options) ->
+detach_typed_link(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/detach"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -642,10 +734,14 @@ detach_typed_link(Client, Input0, Options) ->
 %% directories can be disabled. Disabled directories may be reenabled.
 disable_directory(Client, Input) ->
     disable_directory(Client, Input, []).
-disable_directory(Client, Input0, Options) ->
+disable_directory(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/directory/disable"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -663,10 +759,14 @@ disable_directory(Client, Input0, Options) ->
 %% then be read and written to.
 enable_directory(Client, Input) ->
     enable_directory(Client, Input, []).
-enable_directory(Client, Input0, Options) ->
+enable_directory(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/directory/enable"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -682,10 +782,14 @@ enable_directory(Client, Input0, Options) ->
 %% version in use.
 get_applied_schema_version(Client, Input) ->
     get_applied_schema_version(Client, Input, []).
-get_applied_schema_version(Client, Input0, Options) ->
+get_applied_schema_version(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/schema/getappliedschema"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -698,10 +802,14 @@ get_applied_schema_version(Client, Input0, Options) ->
 %% @doc Retrieves metadata about a directory.
 get_directory(Client, Input) ->
     get_directory(Client, Input, []).
-get_directory(Client, Input0, Options) ->
+get_directory(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/directory/get"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -720,10 +828,14 @@ get_directory(Client, Input0, Options) ->
 %% or applied.
 get_facet(Client, Input) ->
     get_facet(Client, Input, []).
-get_facet(Client, Input0, Options) ->
+get_facet(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/facet"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -738,10 +850,14 @@ get_facet(Client, Input0, Options) ->
 %% @doc Retrieves attributes that are associated with a typed link.
 get_link_attributes(Client, Input) ->
     get_link_attributes(Client, Input, []).
-get_link_attributes(Client, Input0, Options) ->
+get_link_attributes(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/attributes/get"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -757,10 +873,14 @@ get_link_attributes(Client, Input0, Options) ->
 %% object.
 get_object_attributes(Client, Input) ->
     get_object_attributes(Client, Input, []).
-get_object_attributes(Client, Input0, Options) ->
+get_object_attributes(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/object/attributes/get"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-consistency-level">>, <<"ConsistencyLevel">>},
@@ -776,10 +896,14 @@ get_object_attributes(Client, Input0, Options) ->
 %% @doc Retrieves metadata about an object.
 get_object_information(Client, Input) ->
     get_object_information(Client, Input, []).
-get_object_information(Client, Input0, Options) ->
+get_object_information(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/object/information"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-consistency-level">>, <<"ConsistencyLevel">>},
@@ -797,10 +921,14 @@ get_object_information(Client, Input0, Options) ->
 %% See JSON Schema Format for more information.
 get_schema_as_json(Client, Input) ->
     get_schema_as_json(Client, Input, []).
-get_schema_as_json(Client, Input0, Options) ->
+get_schema_as_json(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/schema/json"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -817,10 +945,14 @@ get_schema_as_json(Client, Input0, Options) ->
 %% For more information, see Typed Links.
 get_typed_link_facet_information(Client, Input) ->
     get_typed_link_facet_information(Client, Input, []).
-get_typed_link_facet_information(Client, Input0, Options) ->
+get_typed_link_facet_information(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/facet/get"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -837,10 +969,14 @@ get_typed_link_facet_information(Client, Input0, Options) ->
 %% If `SchemaArn' is provided, lists the minor version.
 list_applied_schema_arns(Client, Input) ->
     list_applied_schema_arns(Client, Input, []).
-list_applied_schema_arns(Client, Input0, Options) ->
+list_applied_schema_arns(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/schema/applied"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -853,10 +989,14 @@ list_applied_schema_arns(Client, Input0, Options) ->
 %% @doc Lists indices attached to the specified object.
 list_attached_indices(Client, Input) ->
     list_attached_indices(Client, Input, []).
-list_attached_indices(Client, Input0, Options) ->
+list_attached_indices(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/object/indices"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-consistency-level">>, <<"ConsistencyLevel">>},
@@ -873,10 +1013,14 @@ list_attached_indices(Client, Input0, Options) ->
 %% development state.
 list_development_schema_arns(Client, Input) ->
     list_development_schema_arns(Client, Input, []).
-list_development_schema_arns(Client, Input0, Options) ->
+list_development_schema_arns(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/schema/development"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -889,10 +1033,14 @@ list_development_schema_arns(Client, Input0, Options) ->
 %% @doc Lists directories created within an account.
 list_directories(Client, Input) ->
     list_directories(Client, Input, []).
-list_directories(Client, Input0, Options) ->
+list_directories(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/directory/list"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -905,10 +1053,14 @@ list_directories(Client, Input0, Options) ->
 %% @doc Retrieves attributes attached to the facet.
 list_facet_attributes(Client, Input) ->
     list_facet_attributes(Client, Input, []).
-list_facet_attributes(Client, Input0, Options) ->
+list_facet_attributes(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/facet/attributes"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -923,10 +1075,14 @@ list_facet_attributes(Client, Input0, Options) ->
 %% @doc Retrieves the names of facets that exist in a schema.
 list_facet_names(Client, Input) ->
     list_facet_names(Client, Input, []).
-list_facet_names(Client, Input0, Options) ->
+list_facet_names(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/facet/list"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -945,10 +1101,14 @@ list_facet_names(Client, Input0, Options) ->
 %% For more information, see Typed Links.
 list_incoming_typed_links(Client, Input) ->
     list_incoming_typed_links(Client, Input, []).
-list_incoming_typed_links(Client, Input0, Options) ->
+list_incoming_typed_links(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/incoming"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -963,10 +1123,14 @@ list_incoming_typed_links(Client, Input0, Options) ->
 %% @doc Lists objects attached to the specified index.
 list_index(Client, Input) ->
     list_index(Client, Input, []).
-list_index(Client, Input0, Options) ->
+list_index(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/index/targets"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-consistency-level">>, <<"ConsistencyLevel">>},
@@ -985,10 +1149,14 @@ list_index(Client, Input0, Options) ->
 %% revisions in that family are listed instead.
 list_managed_schema_arns(Client, Input) ->
     list_managed_schema_arns(Client, Input, []).
-list_managed_schema_arns(Client, Input0, Options) ->
+list_managed_schema_arns(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/schema/managed"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1001,10 +1169,14 @@ list_managed_schema_arns(Client, Input0, Options) ->
 %% @doc Lists all attributes that are associated with an object.
 list_object_attributes(Client, Input) ->
     list_object_attributes(Client, Input, []).
-list_object_attributes(Client, Input0, Options) ->
+list_object_attributes(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/object/attributes"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-consistency-level">>, <<"ConsistencyLevel">>},
@@ -1021,10 +1193,14 @@ list_object_attributes(Client, Input0, Options) ->
 %% given object.
 list_object_children(Client, Input) ->
     list_object_children(Client, Input, []).
-list_object_children(Client, Input0, Options) ->
+list_object_children(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/object/children"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-consistency-level">>, <<"ConsistencyLevel">>},
@@ -1051,10 +1227,14 @@ list_object_children(Client, Input0, Options) ->
 %% the target object.
 list_object_parent_paths(Client, Input) ->
     list_object_parent_paths(Client, Input, []).
-list_object_parent_paths(Client, Input0, Options) ->
+list_object_parent_paths(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/object/parentpaths"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -1070,10 +1250,14 @@ list_object_parent_paths(Client, Input0, Options) ->
 %% pagination fashion.
 list_object_parents(Client, Input) ->
     list_object_parents(Client, Input, []).
-list_object_parents(Client, Input0, Options) ->
+list_object_parents(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/object/parent"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-consistency-level">>, <<"ConsistencyLevel">>},
@@ -1089,10 +1273,14 @@ list_object_parents(Client, Input0, Options) ->
 %% @doc Returns policies attached to an object in pagination fashion.
 list_object_policies(Client, Input) ->
     list_object_policies(Client, Input, []).
-list_object_policies(Client, Input0, Options) ->
+list_object_policies(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/object/policy"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-consistency-level">>, <<"ConsistencyLevel">>},
@@ -1112,10 +1300,14 @@ list_object_policies(Client, Input0, Options) ->
 %% For more information, see Typed Links.
 list_outgoing_typed_links(Client, Input) ->
     list_outgoing_typed_links(Client, Input, []).
-list_outgoing_typed_links(Client, Input0, Options) ->
+list_outgoing_typed_links(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/outgoing"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -1131,10 +1323,14 @@ list_outgoing_typed_links(Client, Input0, Options) ->
 %% attached.
 list_policy_attachments(Client, Input) ->
     list_policy_attachments(Client, Input, []).
-list_policy_attachments(Client, Input0, Options) ->
+list_policy_attachments(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/policy/attachment"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-consistency-level">>, <<"ConsistencyLevel">>},
@@ -1153,10 +1349,14 @@ list_policy_attachments(Client, Input0, Options) ->
 %% revisions in that family are listed instead.
 list_published_schema_arns(Client, Input) ->
     list_published_schema_arns(Client, Input, []).
-list_published_schema_arns(Client, Input0, Options) ->
+list_published_schema_arns(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/schema/published"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1173,10 +1373,14 @@ list_published_schema_arns(Client, Input0, Options) ->
 %% this API call.
 list_tags_for_resource(Client, Input) ->
     list_tags_for_resource(Client, Input, []).
-list_tags_for_resource(Client, Input0, Options) ->
+list_tags_for_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/tags"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1192,10 +1396,14 @@ list_tags_for_resource(Client, Input0, Options) ->
 %% For more information, see Typed Links.
 list_typed_link_facet_attributes(Client, Input) ->
     list_typed_link_facet_attributes(Client, Input, []).
-list_typed_link_facet_attributes(Client, Input0, Options) ->
+list_typed_link_facet_attributes(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/facet/attributes"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -1213,10 +1421,14 @@ list_typed_link_facet_attributes(Client, Input0, Options) ->
 %% For more information, see Typed Links.
 list_typed_link_facet_names(Client, Input) ->
     list_typed_link_facet_names(Client, Input, []).
-list_typed_link_facet_names(Client, Input0, Options) ->
+list_typed_link_facet_names(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/facet/list"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -1239,10 +1451,14 @@ list_typed_link_facet_names(Client, Input0, Options) ->
 %% information, see Policies.
 lookup_policy(Client, Input) ->
     lookup_policy(Client, Input, []).
-lookup_policy(Client, Input0, Options) ->
+lookup_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/policy/lookup"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -1258,10 +1474,14 @@ lookup_policy(Client, Input0, Options) ->
 %% minor version.
 publish_schema(Client, Input) ->
     publish_schema(Client, Input, []).
-publish_schema(Client, Input0, Options) ->
+publish_schema(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/schema/publish"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DevelopmentSchemaArn">>}
@@ -1279,10 +1499,14 @@ publish_schema(Client, Input0, Options) ->
 %% information.
 put_schema_from_json(Client, Input) ->
     put_schema_from_json(Client, Input, []).
-put_schema_from_json(Client, Input0, Options) ->
+put_schema_from_json(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/schema/json"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -1297,10 +1521,14 @@ put_schema_from_json(Client, Input0, Options) ->
 %% @doc Removes the specified facet from the specified object.
 remove_facet_from_object(Client, Input) ->
     remove_facet_from_object(Client, Input, []).
-remove_facet_from_object(Client, Input0, Options) ->
+remove_facet_from_object(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/object/facets/delete"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -1315,10 +1543,14 @@ remove_facet_from_object(Client, Input0, Options) ->
 %% @doc An API operation for adding tags to a resource.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
-tag_resource(Client, Input0, Options) ->
+tag_resource(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/tags/add"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1331,10 +1563,14 @@ tag_resource(Client, Input0, Options) ->
 %% @doc An API operation for removing tags from a resource.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
-untag_resource(Client, Input0, Options) ->
+untag_resource(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/tags/remove"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1355,10 +1591,14 @@ untag_resource(Client, Input0, Options) ->
 %% </li> </ol>
 update_facet(Client, Input) ->
     update_facet(Client, Input, []).
-update_facet(Client, Input0, Options) ->
+update_facet(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/facet"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -1376,10 +1616,14 @@ update_facet(Client, Input0, Options) ->
 %% as defined by its `IdentityAttributeOrder'.
 update_link_attributes(Client, Input) ->
     update_link_attributes(Client, Input, []).
-update_link_attributes(Client, Input0, Options) ->
+update_link_attributes(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/attributes/update"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -1394,10 +1638,14 @@ update_link_attributes(Client, Input0, Options) ->
 %% @doc Updates a given object's attributes.
 update_object_attributes(Client, Input) ->
     update_object_attributes(Client, Input, []).
-update_object_attributes(Client, Input0, Options) ->
+update_object_attributes(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/object/update"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -1414,10 +1662,14 @@ update_object_attributes(Client, Input0, Options) ->
 %% Only development schema names can be updated.
 update_schema(Client, Input) ->
     update_schema(Client, Input, []).
-update_schema(Client, Input0, Options) ->
+update_schema(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/schema/update"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -1434,10 +1686,14 @@ update_schema(Client, Input0, Options) ->
 %% For more information, see Typed Links.
 update_typed_link_facet(Client, Input) ->
     update_typed_link_facet(Client, Input, []).
-update_typed_link_facet(Client, Input0, Options) ->
+update_typed_link_facet(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/facet"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -1459,10 +1715,14 @@ update_typed_link_facet(Client, Input0, Options) ->
 %% API on each directory.
 upgrade_applied_schema(Client, Input) ->
     upgrade_applied_schema(Client, Input, []).
-upgrade_applied_schema(Client, Input0, Options) ->
+upgrade_applied_schema(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/schema/upgradeapplied"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1476,10 +1736,14 @@ upgrade_applied_schema(Client, Input0, Options) ->
 %% the current contents of `DevelopmentSchemaArn'.
 upgrade_published_schema(Client, Input) ->
     upgrade_published_schema(Client, Input, []).
-upgrade_published_schema(Client, Input0, Options) ->
+upgrade_published_schema(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/schema/upgradepublished"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1511,19 +1775,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -1533,14 +1798,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
