@@ -1,5 +1,7 @@
 _build/
+_checkouts/
 .rebar3/
 doc/
 ebin/
 edoc/
+erlang_ls.config
